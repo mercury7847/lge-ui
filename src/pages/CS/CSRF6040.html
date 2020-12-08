@@ -24,92 +24,101 @@
                             <div class="store-list-box">
                                 <!-- search -->
                                 <div class="sch-box">
-                                    <div class="tabs-wrap ui_store_search_tab">
+                                    <!--<div class="tabs-wrap ui_store_search_tab">-->
+                                        <div class="tabs-wrap border-type ui_tab">
                                         <ul class="tabs">
-                                            <li class="on"><a href="#tab1">검색<em class="blind">선택됨</em></a></li>
-                                            <li><a href="#tab2">지역</a></li>
-                                            <li><a href="#tab3">도로명</a></li>
-                                            <li><a href="#tab4">지하철역</a></li>
+                                            <li class="on"><a href="#tab1">지역</a></li>
+                                            <li><a href="#tab2">지하철역</a></li>
+                                            <li><a href="#tab3">검색<em class="blind">선택됨</em></a></li>
                                         </ul>
                                     </div>
 
+                                    
+
                                     <div id="tab1" class="tabs-contents">
+                                        <div class="form-wrap sch-input-wrap select">
+                                            <div class="btn-area">
+                                                <button type="button" class="btn size-m dark-gray"><span>내 주소로 검색</span></button>
+                                            </div>
+                                            <div class="forms">
+                                                <div class="select-wrap">
+                                                    <select class="ui_selectbox" id="select1" title="시/도 선택">
+                                                        <option value="">시/도 선택</option>
+                                                        <option value="서울">서울</option>
+                                                        <option value="인천">인천</option>
+                                                        <option value="부산">부산</option>
+                                                        <option value="대구">대구</option>
+                                                        <option value="대전">대전</option>
+                                                        <option value="광주">광주</option>
+                                                        <option value="울산">울산</option>
+                                                        <option value="제주">제주</option>
+                                                        <option value="경기">경기</option>
+                                                        <option value="세종">세종</option>
+                                                        <option value="경남">경남</option>
+                                                        <option value="경북">경북</option>
+                                                        <option value="충남">충남</option>
+                                                        <option value="충북">충북</option>
+                                                        <option value="전남">전남</option>
+                                                        <option value="전북">전북</option>
+                                                        <option value="강원">강원</option>
+                                                    </select>
+                                                </div>
+                                                <div class="box">
+                                                    <div class="select-wrap">
+                                                        <select class="ui_selectbox" id="select2" title="구/군 선택" disabled>
+                                                            <option value="">구/군 선택</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <button type="button" class="btn pink" disabled><span>검색</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="desc">지역을 선택하시고 근처 LG전자 매장을 찾아보세요.</p>
+                                    </div>
+                                    <div id="tab2" class="tabs-contents">
+                                        <div class="form-wrap sch-input-wrap select type2">
+                                            <div class="forms">
+                                                <div class="select-wrap">
+                                                    <select class="ui_selectbox" id="select3" title="지역 선택">
+                                                        <option value="">지역 선택</option>
+                                                        <option value="수도권">수도권</option>
+                                                        <option value="부산">부산</option>
+                                                        <option value="대전">대전</option>
+                                                        <option value="대구">대구</option>
+                                                        <option value="광주">광주</option>
+                                                    </select>
+                                                </div>
+                                                <div class="select-wrap">
+                                                    <select class="ui_selectbox" id="select4" title="호선 선택">
+                                                        <option value="">호선 선택</option>
+                                                    </select>
+                                                </div>
+                                                <div class="box">    
+                                                    <div class="select-wrap">
+                                                        <select class="ui_selectbox" id="select5" title="역 선택">
+                                                            <option value="">역 선택</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <button type="button" class="btn pink"><span>검색</span></button>
+                                                    </div>
+                                                </div> 
+                                            </div>       
+                                        </div>
+                                        <p class="desc">지하철 역을 선택하고 근처 LG전자 매장을 찾아보세요.</p>
+                                    </div>
+
+                                    <div id="tab3" class="tabs-contents">
                                         <div class="sch-input-wrap">
                                             <div class="input-sch">
                                                 <input type="text" placeholder="매장명 혹은 지역을 입력해주세요." class="txt">
                                                 <button type="button" class="btn-search"><span class="blind">검색</span></button>
                                             </div>
                                         </div>
+                                        <!-- 검색 결과 없을 때 class : none 추가 -->
                                         <p class="desc">지역이나 매장명을 검색하여 근처 매장을 찾아보세요.</p>
-                                    </div>
-
-                                    <div id="tab2" class="tabs-contents">
-                                        <div class="sch-input-wrap select">
-                                            <div class="select-wrap">
-                                                <select class="ui_selectbox" id="select1" title="시/도 선택">
-                                                    <option value="">시/도 선택</option>
-                                                    <option value="서울">서울</option>
-                                                    <option value="인천">인천</option>
-                                                    <option value="부산">부산</option>
-                                                    <option value="대구">대구</option>
-                                                    <option value="대전">대전</option>
-                                                    <option value="광주">광주</option>
-                                                    <option value="울산">울산</option>
-                                                    <option value="제주">제주</option>
-                                                    <option value="경기">경기</option>
-                                                    <option value="세종">세종</option>
-                                                    <option value="경남">경남</option>
-                                                    <option value="경북">경북</option>
-                                                    <option value="충남">충남</option>
-                                                    <option value="충북">충북</option>
-                                                    <option value="전남">전남</option>
-                                                    <option value="전북">전북</option>
-                                                    <option value="강원">강원</option>
-                                                </select>
-                                            </div>
-                                            <div class="select-wrap">
-                                                <select class="ui_selectbox" id="select2" title="구/군 선택">
-                                                    <option value="">구/군 선택</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <p class="desc">지역을 선택하시고 근처 LG전자 매장을 찾아보세요.</p>
-                                    </div>
-
-                                    <div id="tab3" class="tabs-contents">
-                                        <div class="sch-input-wrap">
-                                            <div class="input-sch">
-                                                <input type="text" placeholder="주소를 입력해주세요." class="txt">
-                                                <button type="button" class="btn-search"><span class="blind">검색</span></button>
-                                            </div>
-                                        </div>
-                                        <p class="desc">도로명 주소를 입력하고 근처 LG전자 매장을 찾아보세요.</p>
-                                    </div>
-
-                                    <div id="tab4" class="tabs-contents">
-                                        <div class="sch-input-wrap select">
-                                            <div class="select-wrap">
-                                                <select class="ui_selectbox" id="select3" title="지역 선택">
-                                                    <option value="">지역 선택</option>
-                                                    <option value="수도권">수도권</option>
-                                                    <option value="부산">부산</option>
-                                                    <option value="대전">대전</option>
-                                                    <option value="대구">대구</option>
-                                                    <option value="광주">광주</option>
-                                                </select>
-                                            </div>
-                                            <div class="select-wrap">
-                                                <select class="ui_selectbox" id="select4" title="호선 선택">
-                                                    <option value="">호선 선택</option>
-                                                </select>
-                                            </div>
-                                            <div class="select-wrap">
-                                                <select class="ui_selectbox" id="select5" title="역 선택">
-                                                    <option value="">역 선택</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <p class="desc">지하철 역을 선택하고 근처 LG전자 매장을 찾아보세요.</p>
                                     </div>
 
                                     <div class="view-info-btn">
@@ -123,14 +132,14 @@
                                 <div class="result-list-box">
                                     <h3 class="blind">매장찾기 검색 결과 리스트</h3>
                                     <div class="result-btn-wrap">
-                                        <button type="button" class="btn-back"><span>다시 검색하기</span></button>
+                                        <button type="button" class="btn-back"><span>돌아가기</span></button>
                                         <div class="view-info-btn">
                                             <button type="button" class="btn-view map"><span>지도보기</span></button>
                                             <!-- <button type="button" class="btn-view list"><span>리스트보기</span></button> -->
                                         </div>
                                     </div>
                                     <div class="result-list">
-                                        <p class="result-txt"><strong>“강남”</strong>과 가까운 <strong>10개</strong>의 매장을 찾았습니다.</p>
+                                        <p class="result-txt">“<strong>강남</strong>”과 가까운 <strong>10개</strong>의 매장을 찾았습니다.</p>
                                     </div>
                                 </div>
                                 <!-- //result -->
@@ -138,7 +147,15 @@
                                 <!-- list -->
                                 <div class="list-wrap"><!-- 검색하면 top값 계산 : [.result-btn-wrap + .result-list] -->
                                     <h3 class="blind">매장 리스트</h3>
-                                    @@include('./common/partials/CSRF6040-list.html')
+                                        @@include('./common/partials/CSRF6040-list.html')
+
+                                    <!-- 검색 결과 없을 때 
+                                    <div class="no-data">
+                                        <p>
+                                            &ldquo;<span>ABCDEF</span>&rdquo;에 대한 검색 결과가 없습니다.
+                                        </p>
+                                    </div>
+                                    -->
                                 </div>
                                 <!-- // list -->
 
@@ -148,41 +165,41 @@
                                     <div class="opt-layer" aria-labelledby="opt-label">
                                         <div class="scroll-wrap">
                                             <div class="list-item">
-                                                <dl>
-                                                    <dt>매장 종류 형태</dt>
+                                                <dl class="list-type2">
+                                                    <dt>매장 형태</dt>
                                                     <dd>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="rdo1-1" name="rdo1" checked>
-                                                            <label for="rdo1-1">BESTSHOP</label>
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk1-1" name="chk1" checked>
+                                                            <label for="chk1-1">BESTSHOP</label>
                                                         </span>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="rdo1-2" name="rdo1">
-                                                            <label for="rdo1-2">백화점</label>
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk1-2" name="chk1" checked>
+                                                            <label for="chk1-2">백화점</label>
                                                         </span>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="rdo1-3" name="rdo1">
-                                                            <label for="rdo1-3">냉난방시스템</label>
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk1-3" name="chk1" checked>
+                                                            <label for="chk1-3">냉난방시스템</label>
                                                         </span>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="rdo1-4" name="rdo1">
-                                                            <label for="rdo1-4">커머셜</label>
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk1-4" name="chk1" checked>
+                                                            <label for="chk1-4">커머셜</label>
                                                         </span>
                                                     </dd>
                                                 </dl>
                                                 <dl>
                                                     <dt>서비스센터 입점 형태</dt>
                                                     <dd>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="rdo2-1" name="rdo2" checked>
-                                                            <label for="rdo2-1">전 제품 접수 가능</label>
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk2-1" name="chk2" checked>
+                                                            <label for="chk2-1">전 제품 접수 가능</label>
                                                         </span>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="rdo2-2" name="rdo2">
-                                                            <label for="rdo2-2">휴대폰 + PC제품 접수 가능</label>
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk2-2" name="chk2">
+                                                            <label for="chk2-2">휴대폰 + PC제품 접수 가능</label>
                                                         </span>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="rdo2-3" name="rdo2">
-                                                            <label for="rdo2-3">휴대폰 접수 가능</label>
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk2-3" name="chk2">
+                                                            <label for="chk2-3">휴대폰 접수 가능</label>
                                                         </span>
                                                     </dd>
                                                 </dl>

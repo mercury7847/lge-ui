@@ -4,37 +4,30 @@
 @import "../../utilities/mixins";
 
 .support {
-    &.suggestions {
-        .search-info {
-            background-color: #f4f4f4;
-            text-align: center;
-            padding: 32px 0;
-            border-radius: 8px;
-            margin-bottom: 80px;
+    .form-wrap {
+        padding-right:117px;
+        .forms {
             .tit {
-                margin-bottom:16px;
-                font-size:20px;
-                font-weight:700;
-                line-height:24px;
+                width:210px + 24px;
             }
-            .desc {
-                font-size:16px;
-                line-height:24px
+            .conts {
+                width:calc(100% - 234px);
             }
-            @include mobile {
-                padding: 20px 16px;
-                margin-bottom: 40px;
+        }
+        @include mobile {
+            padding-right:0;
+            .forms {
                 .tit {
-                    margin-bottom:12px;
-                    font-size:16px;
-                    line-height:24px;
+                    width:100%;
                 }
-                .desc {
-                    font-size:14px;
-                    line-height:18px;
+                .conts {
+                    width:100%;
                 }
             }
         }
+    }
+
+    &.suggestions {
         .mymem-lists {
             font-size:0;
             display: flex;
@@ -84,6 +77,40 @@
         .result-wrap {
             @include mobile {
                 padding:0 16px;
+            }
+        }
+    }
+
+    // 나의 글 보기
+    &.my-status {
+        .search-info {
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 32px 0;
+            border-radius: 8px;
+            margin-bottom: 80px;
+            .tit {
+                margin-bottom:16px;
+                font-size:20px;
+                font-weight:700;
+                line-height:24px;
+            }
+            .desc {
+                font-size:16px;
+                line-height:24px
+            }
+            @include mobile {
+                padding: 20px 16px;
+                margin-bottom: 40px;
+                .tit {
+                    margin-bottom:12px;
+                    font-size:16px;
+                    line-height:24px;
+                }
+                .desc {
+                    font-size:14px;
+                    line-height:18px;
+                }
             }
         }
     }
