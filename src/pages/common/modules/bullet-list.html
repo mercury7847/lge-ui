@@ -15,13 +15,19 @@
             <dd class="b-txt">`+bulletTxt[i]+`</dd>
         }
     </dl>
-} @@if ( !context.bulletTit ) {
+} 
+@@if ( !context.bulletTit ) {
     @@if ( context.topBorder ) {
     <ul class="bullet-list top-border">
     }
     @@if ( !context.topBorder ) {
         @@if ( !context.bgGray ) {
-        <ul class="bullet-list">
+            @@if(context.bulletClass){
+                <ul class="bullet-list @@bulletClass">
+            }
+            @@if(!context.bulletClass){
+                <dl class="bullet-list">
+            }
         }
         @@if ( context.bgGray ) {
         <ul class="bullet-list bgGray">

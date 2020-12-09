@@ -1,0 +1,165 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "total": 2,
+        "page": 2,
+        "startDate": "20200919",
+        "endDate": "20201218",
+        "orderList": [
+            {
+                "orderDate": "2020.09.05",
+                "orderNumber": "20203987102999",
+                "orderTotal": "3",
+                "cancelAbled": "Y",
+                "takebackAbled": "N",
+                "productList": [
+                    {
+                        "modelID": "ADC495769328",
+                        "productNameKR": "LG 디오스 상냉장하냉동",
+                        "productNameEN": "OLED55BXPUA",
+                        "productImage": "/lg5-common/images/dummy/@img-product.jpg",
+                        "productPDPurl": "http://www.lge.com",
+                        "productDetailUrl": "http://www.lge.com",
+                        "specList": ["주요스펙1", "주요스펙2"],
+                        "productTotal": "1",
+                        "productPrice": "1,760,000",
+                        "orderStatus": {
+                            "disabled": "",
+                            "statusText": "결제완료",
+                            "statusClass": "",
+                            "deliveryDate": "2020.09.18"
+                        },
+                        "statusButtonList": [],
+                        "cancelAbled": "Y",
+                        "takebackAbled": "N"
+                    },
+                    {
+                        "modelID": "ADC4957639428",
+                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
+                        "productNameEN": "OLED552445UA",
+                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
+                        "productPDPurl": "http://www.lge.com",
+                        "productDetailUrl": "http://www.lge.com",
+                        "specList": [],
+                        "productTotal": "1",
+                        "productPrice": "50,000",
+                        "orderStatus": {
+                            "disabled": "",
+                            "statusText": "결제완료",
+                            "statusClass": "",
+                            "deliveryDate": "2020.09.18"
+                        },
+                        "statusButtonList": [
+                            {
+                                "className": "deliveryInquiry",
+                                "buttonName": "배송조회"
+                            },
+                            {
+                                "className": "deliveryRequest",
+                                "buttonName": "배송문의"
+                            },
+                            {
+                                "className": "takeBackInner",
+                                "buttonName": "반품신청"
+                            }
+                        ]
+                    },
+                    {
+                        "modelID": "ADC4957639428",
+                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
+                        "productNameEN": "OLED552445UA",
+                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
+                        "productPDPurl": "http://www.lge.com",
+                        "productDetailUrl": "http://www.lge.com",
+                        "specList": [],
+                        "productTotal": "1",
+                        "productPrice": "50,000",
+                        "orderStatus": {
+                            "disabled": "",
+                            "statusText": "결제완료",
+                            "statusClass": "",
+                            "deliveryDate": "2020.09.18"
+                        },
+                        "statusButtonList": [
+                            {
+                                "className": "deliveryInquiry",
+                                "buttonName": "배송조회"
+                            },
+                            {
+                                "className": "deliveryRequest",
+                                "buttonName": "배송문의"
+                            },
+                            {
+                                "className": "productReview",
+                                "buttonName": "제품리뷰"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderDate": "2020.09.05",
+                "orderNumber": "20203987102999",
+                "orderTotal": "3",
+                "cancelAbled": "Y",
+                "takebackAbled": "N",
+                "productList": [
+                    {
+                        "modelID": "ADC495769328",
+                        "productNameKR": "LG 디오스 상냉장하냉동",
+                        "productNameEN": "OLED55BXPUA",
+                        "productImage": "/lg5-common/images/dummy/@img-product.jpg",
+                        "productPDPurl": "http://www.lge.com",
+                        "productDetailUrl": "http://www.lge.com",
+                        "specList": ["주요스펙1", "주요스펙2"],
+                        "productTotal": "1",
+                        "productPrice": "1,760,000",
+                        "orderStatus": {
+                            "disabled": "disabled",
+                            "statusText": "취소완료",
+                            "statusClass": "cancel",
+                            "deliveryDate": ""
+                        },
+                        "statusButtonList": [],
+                        "cancelAbled": "Y",
+                        "takebackAbled": "N"
+                    },
+                    {
+                        "modelID": "ADC4957639428",
+                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
+                        "productNameEN": "OLED552445UA",
+                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
+                        "productPDPurl": "http://www.lge.com",
+                        "productDetailUrl": "http://www.lge.com",
+                        "specList": [],
+                        "productTotal": "1",
+                        "productPrice": "50,000",
+                        "orderStatus": {
+                            "disabled": "",
+                            "statusText": "결제완료",
+                            "statusClass": "",
+                            "deliveryDate": "2020.09.18"
+                        },
+                        "statusButtonList": [
+                            {
+                                "className": "deliveryInquiry",
+                                "buttonName": "배송조회"
+                            },
+                            {
+                                "className": "deliveryRequest",
+                                "buttonName": "배송문의"
+                            },
+                            {
+                                "className": "takeBackInner",
+                                "buttonName": "반품신청"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
