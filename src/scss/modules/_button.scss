@@ -87,8 +87,8 @@
     // 중간사이즈 버튼
     &.size-m {
         min-width:64px;
-        padding: 6px 16px;
-        border-radius:16px;
+        padding: 7px 16px;
+        border-radius:20px;
         @include font-small;
         @include mobile {
             font-size:14px;

@@ -5,7 +5,6 @@
 
 .KRP0036 {
     @include mobile {
-        background: $color-bg;
         .page-header {
             background: #fff;
         }
@@ -14,15 +13,7 @@
         max-width: 100%;
         padding: 0;
     }
-    .tabs-bg {
-        .tabs-wrap.bar-type {
-            max-width: 1146px;
-            padding-right: 150px;
-            @include mobile {
-                padding-right: 0;
-            }
-        }
-    }
+
     
     // tab
     /*

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="84px" height="84px" viewBox="0 0 84 84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-point2</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-13">
+            <rect id="Rectangle" x="0" y="0" width="84" height="84"></rect>
+            <g id="Group-17" transform="translate(15.000000, 16.000000)">
+                <g id="Group-28" fill="#F4F4F4">
+                    <rect id="Rectangle" stroke="#222222" stroke-width="1.5" stroke-linecap="round" x="0" y="8.05058723" width="34.3965517" height="28.5504904"></rect>
+                    <g id="Group-27" transform="translate(-0.000000, 0.000000)">
+                        <g id="Group-25" transform="translate(0.000000, 29.500000)">
+                            <ellipse id="Oval" stroke="#222222" stroke-width="1.5" stroke-linecap="round" cx="17.1982759" cy="7.5" rx="17.1982759" ry="7.5"></ellipse>
+                            <rect id="Rectangle" x="0.71673215" y="0.5" width="32.9630874" height="7"></rect>
+                        </g>
+                        <g id="Group-25" transform="translate(0.000000, 22.000000)">
+                            <ellipse id="Oval" stroke="#222222" stroke-width="1.5" stroke-linecap="round" cx="17.1982759" cy="7.5" rx="17.1982759" ry="7.5"></ellipse>
+                            <rect id="Rectangle" x="0.692347226" y="0.5" width="33.0118573" height="7"></rect>
+                        </g>
+                        <g id="Group-25" transform="translate(0.000000, 14.500000)">
+                            <ellipse id="Oval" stroke="#222222" stroke-width="1.5" stroke-linecap="round" cx="17.1982759" cy="7.5" rx="17.1982759" ry="7.5"></ellipse>
+                            <rect id="Rectangle" x="0.760063632" y="0.5" width="32.8764245" height="7"></rect>
+                        </g>
+                        <g id="Group-26" transform="translate(0.000000, 7.000000)">
+                            <ellipse id="Oval" stroke="#222222" stroke-width="1.5" stroke-linecap="round" cx="17.1982759" cy="7.5" rx="17.1982759" ry="7.5"></ellipse>
+                            <rect id="Rectangle" x="0.743046815" y="0.5" width="32.9104581" height="7"></rect>
+                        </g>
+                        <ellipse id="Oval" stroke="#222222" stroke-width="1.5" stroke-linecap="round" cx="17.1982759" cy="7.5" rx="17.1982759" ry="7.5"></ellipse>
+                    </g>
+                </g>
+                <g id="Group-29" transform="translate(20.500000, 17.500000)">
+                    <circle id="Oval" stroke="#222222" stroke-width="1.5" fill="#F4F4F4" stroke-linecap="round" cx="16.761787" cy="16.761787" r="16.761787"></circle>
+                    <path d="M14.9903422,25.761787 L14.9903422,19.4197541 L18.2925844,19.4197541 C20.4605963,19.4197541 22.1577563,18.9108255 23.3840642,17.8929683 C24.6103721,16.8751112 25.2235261,15.4843145 25.2235261,13.7205782 C25.2235261,12.5584903 24.9431076,11.5220892 24.3822705,10.6113749 C23.8214334,9.70066065 23.0199386,8.99805076 21.9777862,8.50354526 C20.9356337,8.00903977 19.7281599,7.76178702 18.3553647,7.76178702 L18.3553647,7.76178702 L11.2235261,7.76178702 L11.2235261,25.761787 L14.9903422,25.761787 Z M18.3553647,16.4156332 L14.9903422,16.4156332 L14.9903422,10.7659079 L18.443257,10.7659079 C19.372405,10.7823914 20.1006561,11.0626112 20.6280104,11.6065672 C21.1553647,12.1505233 21.4190418,12.8634354 21.4190418,13.7453035 C21.4190418,14.6024464 21.1574573,15.261787 20.6342884,15.7233255 C20.1111195,16.1848639 19.3514783,16.4156332 18.3553647,16.4156332 L18.3553647,16.4156332 Z" id="P" fill="#111111" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
