@@ -1,0 +1,292 @@
+.card-benefit-contents {
+    padding-top:40px;
+    @include mobile {
+        padding-top:32px;
+    }
+    // 카드 종류
+    .cardinfo-tab-wrap {
+        @include mobile {
+            .tabs-wrap {
+                margin:0 -16px;
+            }
+        }
+        .card-tab-contents {
+            padding-top:48px;
+            @include mobile {
+                padding-top:40px;
+            }
+            .inner {
+                @include clearfix;
+                .card-image-wrap {
+                    float:left;
+                    width:28.5%;
+                    text-align:center;
+                    @include mobile {
+                        float:none;
+                        width:100%;
+                    }
+                    .images {
+                        display:block;
+                        text-align:center;
+                        img {
+                            width:100%;
+                            height:auto;
+                            vertical-align:top;
+                            @include mobile {
+                                max-width:265px;
+                            }
+                        }
+                        &.type2 {
+                            img {
+                                max-width:206px;
+                            }
+                        }
+                    }
+                    .btn-link {
+                        margin-top:24px;
+                    }
+                    &.type2 {
+                        text-align:left;
+                        .application-btn {
+                            margin-top:24px;
+                            text-align:center;
+                        }
+                        .btn-link {
+                            margin-top:12px;
+                        }
+                    }
+                }
+                .card-info-wrap {
+                    float:right;
+                    width:100% - 28.5%;
+                    padding-left:64px;
+                    @include mobile {
+                        float:none;
+                        width:100%;
+                        margin-top:40px;
+                        padding:0;
+                    }
+                    .info-sect {
+                        margin-top:32px;
+                        @include mobile {
+                            margin-top:40px;
+                        }
+                        &:first-child {
+                            margin-top:0;
+                        }
+                    }
+                    .tit {
+                        margin-bottom:16px;
+                        color:#222;
+                        @include font-large-1;
+                        font-weight:700;
+                    }
+                    .benefit-lists {
+                        li {
+                            position:relative;
+                            margin-top:8px;
+                            padding-left:11px;
+                            color:#222;
+                            @include font-medium;
+                            word-break:keep-all;
+                            &:first-child {
+                                margin-top:0;
+                            }
+                            &::before {
+                                content:' ';
+                                position:absolute;
+                                top:12px;
+                                left:0;
+                                width:3px;
+                                height:3px;
+                                border-radius:50%;
+                                background:#222;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // 카드사별 혜택
+    .card-benefit-accordion {
+        > ul {
+            > li.lists {
+                border-top:1px solid #ddd;
+                &:first-child {
+                    border-top:none;
+                }
+                @include pc {
+                    .head {
+                        display:none;
+                    }
+                }
+                @include mobile {
+                    .head {
+                        .accord-btn {
+                            display:block;
+                            position:relative;
+                            padding:16px 28px 16px 0;
+                            &::after {
+                                content:' ';
+                                position:absolute;
+                                top:19px;
+                                right:12px;
+                                width:16px;
+                                height:16px;
+                                background:url("/lg5-common/images/icons/btn-arr-24x24-black.svg") center no-repeat;
+                                background-size:100%;
+                                transform:rotate(90deg);
+                                transition:all 0.3s;
+                            }
+                        }
+                        .title {
+                            color:#222;
+                            font-size:14px;
+                            line-height:22px;
+                            font-weight:500;
+                        }
+                    }
+                    &.on .head {
+                        .accord-btn::after {
+                            transform:rotate(270deg);
+                        }
+                    }
+                }
+                .accord-cont {
+                    &.ui_accord_content {
+                        @include pc {
+                            display:block !important;
+                        }
+                    }
+                    padding:32px 0;
+                    @include mobile {
+                        padding:16px 0 32px;
+                    }
+                    .card-name {
+                        margin-bottom:12px;
+                        color:#222;
+                        @include font-small;
+                        font-weight:700;
+                        text-align:left;
+                        @include mobile {
+                            display:none;
+                        }
+                    }
+                    .accord-inner {
+                        display:table;
+                        width:100%;
+                        max-width:444px + 234px;
+                        @include mobile {
+                            display:block;
+                        }
+                        .cell {
+                            display:table-cell;
+                            @include mobile {
+                                display:block;
+                            }
+                            &:first-child {
+                                width:234px;
+                                padding-right:24px;
+                                @include mobile {
+                                    width:100%;
+                                    padding-right:0;
+                                    margin-bottom:24px;
+                                }
+                            }
+                            &.cis {
+                                text-align:center;
+                                vertical-align:middle;
+                                @include mobile {
+                                    text-align:left;
+                                    .pc-only {
+                                        display:none;
+                                    }
+                                }
+                                .ci {
+                                    display:inline-block;
+                                    img {
+                                        width:120px;
+                                        height:auto;
+                                        vertical-align:top;
+                                    }
+                                }
+                            }
+                            &.cards {
+                                text-align:center;
+                                vertical-align:top;
+                                .image {
+                                    display:block;
+                                    text-align:center;
+                                    img {
+                                        width:100%;
+                                        height:auto;
+                                        vertical-align:top;
+                                        @include mobile {
+                                            max-width:270px;
+                                        }
+                                    }
+                                    &.type2 {
+                                        img {
+                                            max-width:128px;
+                                            @include mobile {
+                                                max-width:165px;
+                                            }
+                                        }
+                                    }
+                                }
+                                .btn {
+                                    margin-top:24px;
+                                }
+                                .num {
+                                    margin-top:16px;
+                                    color:#222;
+                                    @include font-small;
+                                    font-weight:500;
+                                }
+                            }
+                        }
+                        .infos-wrap {
+                            .info-sect {
+                                margin-top:24px;
+                                &:first-child {
+                                    margin-top:0;
+                                }
+                                .tit {
+                                    margin-bottom:4px;
+                                    color:#222;
+                                    @include font-small;
+                                    font-weight:500;
+                                }
+                                .tb_row {
+                                    margin-top:12px;
+                                    @include mobile {
+                                        margin-top:16px;
+                                    }
+                                }
+                                .desc {
+                                    li {
+                                        color:#767676;
+                                        @include font-small;
+                                        font-weight:500;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &:last-child {
+                    .accord-cont {
+                        padding-bottom:0;
+                    }
+                }
+            }
+        }
+    }
+    .accord-desc {
+        margin:12px 0 8px;
+        color:#222;
+        @include font-medium;
+    }
+}
