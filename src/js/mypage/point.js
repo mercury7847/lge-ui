@@ -22,6 +22,22 @@
                 self.$pointTotal = self.$contWrap.find('.point-use-list .total dd');
                 self.$noData = self.$contWrap.find('div.no-data');
 
+                var register = {
+                    startDate:{
+                        required: true,
+                        errorMsg: "조회기간을 설정해주세요.",
+                        msgTarget: '.err-block'
+                    },
+                    endDate:{
+                        required: true,
+                        errorMsg: "조회기간을 설정해주세요.",
+                        msgTarget: '.err-block'
+                    },
+                };
+                vcui.require(['ui/validation'], function () {
+                    self.validation = new vcui.ui.Validation('div.cont-wrap div.filters',{register:register});
+                });
+
                 self.bindEvents();
                 self.checkNoData();
             },
@@ -35,15 +51,18 @@
                 });
 
                 self.$inquiryButton.on('click',function (e) {
-                    var startDate = self.$dateFilterStartDate.vcCalendar('getyyyyMMdd');
-                    var endDate = self.$dateFilterEndDate.vcCalendar('getyyyyMMdd');
-                    if(startDate && endDate) {
-                        var param = {
-                            "startDate":startDate,
-                            "endDate":endDate,
-                            "pointUseType":self.$dateFilter.find('input[name="pointUseType"]:checked').val()
+                    var result = self.validation.validate();
+                    if(result.success){
+                        var startDate = self.$dateFilterStartDate.vcCalendar('getyyyyMMdd');
+                        var endDate = self.$dateFilterEndDate.vcCalendar('getyyyyMMdd');
+                        if(startDate && endDate) {
+                            var param = {
+                                "startDate":startDate,
+                                "endDate":endDate,
+                                "pointUseType":self.$dateFilter.find('input[name="pointUseType"]:checked').val()
+                            }
+                            self.requestData(param);
                         }
-                        self.requestData(param);
                     }
                 });
             },
@@ -73,10 +92,10 @@
             checkNoData: function() {
                 var self = this;
                 if( self.$pointList.find('li').length > 0) {
-                    self.$pointList.show();
+                    self.$pointList.parent().show();
                     self.$noData.hide();
                 } else {
-                    self.$pointList.hide();
+                    self.$pointList.parent().hide();
                     self.$noData.show();
                 }
             },

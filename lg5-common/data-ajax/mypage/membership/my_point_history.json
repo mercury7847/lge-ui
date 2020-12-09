@@ -1,29 +1,36 @@
 {
-    "status":"success",
-    "message":null,
-    "param": {
-        "startDate" : "20200101",
-        "endDate" : "20200910",
-        "pointUseType" : "all"
-    },
+    "status": "success",
+    "message": null,
     "data": {
-        "totalPoint":"1000",
-        "pointHistory":[
+        "totalPoint": "12000",
+        "listData":[
             {
-                "date":"20171102",
-                "shop":"LG BEST SHOP 서초점",
-                "increase":"+",
-                "point":"3000",
-                "purpose":"적립",
-                "description":"포인트적립"
+                "date": "20200911",
+                "place": "LG BEST SHOP 강남점",
+                "pointSign": "+",
+                "point": "4001",
+                "pointUseType": "적립"
             },
             {
-                "date":"20191228",
-                "shop":"LG BEST SHOP 서초점",
-                "increase":"-",
-                "point":"2000",
-                "purpose":"사용",
-                "description":"포인트사용"
+                "date": "20200912",
+                "place": "LG BEST SHOP 서초점",
+                "pointSign": "-",
+                "point": "4002",
+                "pointUseType": "사용"
+            },
+            {
+                "date": "20200913",
+                "place": "LG BEST SHOP 강남점",
+                "pointSign": "+",
+                "point": "4003",
+                "pointUseType": "적립"
+            },
+            {
+                "date": "20200914",
+                "place": "LG BEST SHOP 강남점",
+                "pointSign": "+",
+                "point": "4004",
+                "pointUseType": "적립"
             }
         ]
     }

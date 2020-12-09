@@ -330,6 +330,9 @@
                 height:auto;
                 margin-bottom:32px;
                 border-bottom:none;
+                @include mobile {
+                    margin-bottom:20px;
+                }
                 .tit {
                     float:none;
                     padding-bottom:0;
@@ -338,6 +341,10 @@
                     margin-top:12px;
                     color:#222;
                     @include font-medium;
+                    word-break:keep-all;
+                    @include mobile {
+                        margin-top:8px;
+                    }
                 }
             }
         }

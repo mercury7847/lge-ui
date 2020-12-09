@@ -1,8 +1,9 @@
 .form-wrap {
 	.select-half {
+		margin-top:8px;
 		.select-wrap {
 			width:calc((100% - 8px) / 2);
-			margin-left:8px;
+			margin:0 0 0 8px;
 			&:first-child {
 				margin-left:0;
 			}
@@ -42,7 +43,7 @@
 			margin-top:6px;
 			.select-wrap {
 				width:100%;
-				margin-left:0;
+				margin:6px 0 0;
 			}
 		}
 	}
