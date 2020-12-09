@@ -28,34 +28,61 @@
             init: function() {
                 var self = this;
                 self.$contWrap = $('div.cont-wrap');
-
+                self.$editButton = self.$contWrap.find('#membershipEditButton');
                 self.$dateFilter = self.$contWrap.find('div.filters');
                 self.$dateFilterStartDate = self.$dateFilter.find('#date-input1');
                 self.$dateFilterEndDate = self.$dateFilter.find('#date-input2');
                 self.$inquiryButton = self.$dateFilter.find('button.calendarInquiry-btn');
                 self.$productSlide = $('div.slide-wrap');
+                self.$noData = self.$contWrap.find('div.no-data');
+
+                var register = {
+                    startDate:{
+                        required: true,
+                        errorMsg: "조회기간을 설정해주세요.",
+                        msgTarget: '.err-block'
+                    },
+                    endDate:{
+                        required: true,
+                        errorMsg: "조회기간을 설정해주세요.",
+                        msgTarget: '.err-block'
+                    },
+                };
+                vcui.require(['ui/validation'], function () {
+                    self.validation = new vcui.ui.Validation('div.cont-wrap div.filters',{register:register});
+                });
 
                 self.bindEvents();
+                self.checkNoData();
             },
 
             bindEvents: function() {
                 var self = this;
 
+                self.$editButton.on('click', function (e) {
+                    console.log(self.$editButton);
+                    var url = $(this).attr('data-link-url');
+                    location.href = url;
+                });
+ 
                 self.$dateFilterStartDate.on('calendarinsertdate', function (e, data) {
                     //시작일을 선택시 종료일의 시작날짜를 변경한다.
                     self.$dateFilterEndDate.vcCalendar('setMinDate', data.date);
                 });
 
                 self.$inquiryButton.on('click',function (e) {
-                    var startDate = self.$dateFilterStartDate.vcCalendar('getyyyyMMdd');
-                    var endDate = self.$dateFilterEndDate.vcCalendar('getyyyyMMdd');
-                    if(startDate && endDate) {
-                        var param = {
-                            "startDate":startDate,
-                            "endDate":endDate,
-                            "purchaseType":self.$dateFilter.find('input[name="purchaseType"]:checked').val()
+                    var result = self.validation.validate();
+                    if(result.success){
+                        var startDate = self.$dateFilterStartDate.vcCalendar('getyyyyMMdd');
+                        var endDate = self.$dateFilterEndDate.vcCalendar('getyyyyMMdd');
+                        if(startDate && endDate) {
+                            var param = {
+                                "startDate":startDate,
+                                "endDate":endDate,
+                                "purchaseType":self.$dateFilter.find('input[name="purchaseType"]:checked').val()
+                            }
+                            self.requestData(param);
                         }
-                        self.requestData(param);
                     }
                 });
             },
@@ -69,7 +96,6 @@
                     var $list = self.$productSlide.find('div.slide-track');
                     $list.empty();
                     if(arr.length > 0) {
-                        //self.$dateFilter.siblings('div.no-data').hide();
                         arr.forEach(function(item, index) {
                             item.date = vcui.date.format(item.date,'yyyy. MM. dd');
                             $list.append(vcui.template(listItemTemplate, item));
@@ -78,10 +104,23 @@
                         self.$productSlide.show();
                     } else {
                         self.$productSlide.hide();
-                        //self.$dateFilter.siblings('div.no-data').show();
                     }
+                    self.checkNoData();
                 });
-            }
+            },
+
+            checkNoData: function() {
+                var self = this;
+                var $list = self.$productSlide.find('div.slide-track');
+                console.log($list.find('div.slide-conts').length);
+                if( $list.find('div.slide-conts').length > 0) {
+                    self.$productSlide.show();
+                    self.$noData.hide();
+                } else {
+                    self.$productSlide.hide();
+                    self.$noData.show();
+                }
+            },
         };
 
         myMembership.init();                
