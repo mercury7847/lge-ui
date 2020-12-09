@@ -60,7 +60,12 @@
             }
         }
     }
+
+    // 칭찬합니다.
     &.feedback {
+        .cont-wrap {
+            max-width:1146px + 80px;
+        }
         .search-wrap {
             max-width:848px;
             margin:0 auto;
