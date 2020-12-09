@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-join03</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_main_bestshop_64">
+            <rect id="Mask-Copy-8" x="0" y="0" width="64" height="64"></rect>
+            <g id="Group-6" transform="translate(5.000000, 5.600000)" stroke-width="2.4">
+                <polygon id="Path-44" stroke="#222222" fill="#FFFFFF" stroke-linejoin="round" points="0.4 21.3432956 16.3054457 10 32.4 21.3432956 32.4 51.6 0.4 51.6"></polygon>
+                <polygon id="Path-44" stroke="#222222" fill="#FFFFFF" stroke-linejoin="round" points="32.4 30.6530508 43.533812 22.8 54.8 30.6530508 54.8 51.6 32.4 51.6"></polygon>
+                <path d="M43.6,1.6 C41.0604019,1.6 38.7572054,2.61150655 37.0894004,4.2472384 C35.4301191,5.87461043 34.4,8.12086602 34.4,10.6 C34.4,16.8348093 42.1270188,24.8020961 43.5998165,26.2709406 C45.0719604,24.8031487 52.8,16.8352212 52.8,10.6 C52.8,8.12086602 51.7698809,5.87461043 50.1105996,4.2472384 C48.4427946,2.61150655 46.1395981,1.6 43.6,1.6 Z" id="Path" stroke="#EC455A" fill="#F4F4F4"></path>
+                <rect id="Rectangle" stroke="#222222" fill="#F4F4F4" x="6.4" y="25.6" width="20" height="5.6" rx="2"></rect>
+                <rect id="Rectangle" stroke="#222222" fill="#F4F4F4" x="6.4" y="38.4" width="20" height="5.6" rx="2"></rect>
+                <rect id="Rectangle" stroke="#EC455A" fill="#F4F4F4" x="40" y="7.2" width="7.2" height="7.2" rx="3.6"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
