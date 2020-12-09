@@ -1,19 +1,14 @@
 	@@if ( context.videoType == "youtube") {
-			<div class="visual-area">
-				<div class="visual-box">
-					<!-- youtube 타입 -->
-					<div class="video-container video-box youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
-						<div class="thumnail">
-							<img data-pc-src="/lg5-common/images/dummy/@img-1029x578.png" data-m-src="/lg5-common/images/dummy/@img-656x369.png" alt="">
-							<p class="hidden pc">graphic description : </p>
-							<p class="hidden mobile">graphic description : </p>
-							<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-link-area="" data-link-name="{video id}" aria-describedby="title01">plays audio description video</a>
-						</div>
-						<button type="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" title="opens in a new layer popup, plays video" aria-describedby="title01">영상 보기</button>
-						<!-- iframe loca -->
-					</div>
-				</div>
-			</div>	
+		<div class="visual-area">
+			<div class="visual-box">
+				<div class="box-inner">
+					<img data-pc-src="/lg5-common/images/dummy/@img-1029x578.png" data-m-src="/lg5-common/images/dummy/@img-656x369.png" alt="">
+					<p class="hidden pc">graphic description : </p>
+					<p class="hidden mobile">graphic description : </p>
+					<iframe src="https://www.youtube.com/embed/PetoQo1eUww" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube video player"></iframe>
+				</div>	
+			</div>
+		</div>
 		}
 		@@if ( context.videoType == "animation") {		
 			<!-- 1. animation 타입인 경우 animation-box 클래스 추가 -->
