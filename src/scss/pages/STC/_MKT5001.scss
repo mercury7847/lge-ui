@@ -6,6 +6,9 @@
 }
 .cnt02 {
 	margin-top:80px;
+	@include mobile {
+		margin-top:40px;
+	}
 }
 
 .cont-wrap {
@@ -104,6 +107,9 @@
 	max-width:1146px + 80px;
 	margin:0 auto;
 	padding:0 40px;
+	@include mobile {
+		padding:0 16px;
+	}
 	.bullet-list {
 		margin-top:12px;
 	}
@@ -208,7 +214,7 @@
 				border-spacing:0;
 				li {
 					display:block;
-					margin-top:48px;
+					margin-top:24px;
 					dl {
 						padding-top:12px;
 						dt {
@@ -228,93 +234,169 @@
 	.accordion-border-wrap {
 		margin-top:120px;
 		border-top:2px solid #222;
+		.accord-btn {
+			.title {
+				font-weight:700;
+				> span {
+					margin-left:16px;
+					color:#767676;
+					font-weight:normal;
+				}
+			}
+		}
 		.accord-cont {
 			padding:44px 0 65px;
-		}
-		.title {
-			font-weight:700;
-			> span {
-				margin-left:16px;
-				color:#767676;
-				font-weight:normal;
-			}
-		}
-		.step-list {
-			margin-top:64px;
-			&:first-child {
-				margin-top:0;
-			}
-			.tit {
-				color:#222;
-				font-size:28px;
-				font-weight:700;
-				line-height:38px;
-				text-align:center;
-			}
-			.info {
-				display:table;
-				table-layout:fixed;
-				width:100%;
-				margin-top:32px;
-				font-size:0;
-				> li {
-					display:table-cell;
-					padding:0 45px;
+			.step-list {
+				margin-top:64px;
+				&:first-child {
+					margin-top:0;
+				}
+				.tit {
+					color:#222;
+					font-size:28px;
+					font-weight:700;
+					line-height:38px;
 					text-align:center;
-					vertical-align:top;
-					.img {
-						img {
-							width:100%;
-							max-width:258px;
-						}
-					}
-					p {
-						padding-top:12px;
-						color:#222;
-						font-size:16px;
-						line-height:26px;
+				}
+				.info {
+					display:table;
+					table-layout:fixed;
+					width:100%;
+					margin-top:32px;
+					font-size:0;
+					> li {
+						display:table-cell;
+						padding:0 45px;
 						text-align:center;
-					}
-					.bullet-list {
-						text-align:left;
-					}
-				}
-			}
-			&.twin {
-				.info {
-					padding:0 220px;
-					> li {
-						padding:0 32px;
-					}
-				}
-			}
-			&.big {
-				.info {
-					> li {
+						vertical-align:top;
 						.img {
 							img {
-								max-width:678px;
+								width:100%;
+								max-width:258px;
+							}
+						}
+						p {
+							padding-top:12px;
+							color:#222;
+							font-size:16px;
+							line-height:26px;
+							text-align:center;
+						}
+						.bullet-list {
+							display:inline-block;
+							text-align:left;
+						}
+					}
+				}
+				&.twin {
+					.info {
+						padding:0 19%;
+						> li {
+							padding:0 32px;
+						}
+					}
+				}
+				&.big {
+					.info {
+						> li {
+							.img {
+								img {
+									max-width:678px;
+								}
 							}
 						}
 					}
-				}
-				.qa-list {
-					margin-top:25px;
-					text-align:center;
-					& + .qa-list {
-						margin-top:64px;
+					.qa-list {
+						margin-top:25px;
+						text-align:center;
+						& + .qa-list {
+							margin-top:64px;
+						}
+						dt {
+							color:#222;
+							font-size:18px;
+							font-weight:700;
+							line-height:28px;
+						}
+						dd {
+							margin-top:20px;
+							color:#222;
+							font-size:16px;
+							line-height:26px;
+						}
 					}
-					dt {
-						color:#222;
-						font-size:18px;
-						font-weight:700;
+				}
+			}
+		}
+		@include mobile {
+			margin:60px -16px 0;
+			.accord-btn {
+				.title {
+					font-size:15px;
+					line-height:23px;
+					> span {
+						margin-left:12px;
+					}
+				}
+			}
+			.accord-cont {
+				padding:17px 0 60px;
+				.step-list {
+					margin-top:60px;
+					&:first-child {
+						margin-top:0;
+					}
+					.tit {
+						font-size:20px;
 						line-height:28px;
 					}
-					dd {
-						margin-top:20px;
-						color:#222;
-						font-size:16px;
-						line-height:26px;
+					.info {
+						display:block;
+						> li {
+							display:block;
+							margin-top:24px;
+							padding:0 11px;
+							&:first-child {
+								margin-top:0;
+							}
+							.img {
+								padding:0 23px;
+								img {
+									max-width:100%;
+								}
+							}
+							p {
+								padding-top:16px;
+							}
+							.bullet-list {
+								padding:0 34px;
+							}
+						}
+					}
+					&.twin {
+						.info {
+							padding:0;
+							> li {
+								padding:0 11px;
+							}
+						}
+					}
+					&.big {
+						.info {
+							> li {
+								padding:0;
+								.img {
+									padding:0;
+								}
+							}
+						}
+						.qa-list {
+							margin-top:15px;
+							padding:0 11px;
+							& + .qa-list {
+								margin-top:32px;
+							}
+						}
 					}
 				}
 			}
