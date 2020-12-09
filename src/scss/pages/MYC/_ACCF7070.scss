@@ -55,8 +55,6 @@
 }
 
 .sort-area {
-	height:38px;
-	border-bottom:2px solid #222;
 	.list-count {
 		font-size:14px;
 		font-weight:700;
@@ -72,7 +70,7 @@
 		}
 	}
 	& + .my-lists {
-		border-top:none;
+		margin-top:12px;
 	}
 }
 

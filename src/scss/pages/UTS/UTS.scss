@@ -867,7 +867,9 @@
 // list-sorting 
 @media screen and (max-width: 1024px) {
     .btn-filter {
-        position: static;
+        position: relative;
+        left: auto;
+        top: auto;
     }
 }
 

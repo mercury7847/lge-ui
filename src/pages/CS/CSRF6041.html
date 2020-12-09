@@ -9,21 +9,37 @@
             <!-- 메장정보 -->
             <div class="contents store-info-wrap">
                 <div class="cont-wrap">
-                    <h1 class="h1-tit">매장 정보</h1>
+                    <div class="headline">
+                        <h1 class="h1-tit">매장 정보</h1>
+                    </div>
                     <div class="tit-wrap">
                         <div class="tit-info">
-                            <h2 class="name"><span class="blind">매장명</span>강남본점 BESTSHOP</h2>
-                            <div class="flag-wrap">
+                            <div class="flag-wrap bar-type">
                                 <span class="flag">NEW</span>
                                 <span class="flag">이벤트</span>
-                                <span class="flag">서비스센터</span>
+                                <span class="flag green">서비스센터</span>
+                            </div>
+                            <h2 class="name"><span class="blind">매장명</span>강남본점 BESTSHOP</h2>
+                        </div>
+                        <div class="tit-info-r">
+                           <div class="bookmark-wrap">
+                                <span class="chk-bookmark-wrap">
+                                    <input type="checkbox" id="mark-shop" name="mark-shop">
+                                    <label for="mark-shop"></label>
+                                </span>
+                           </div>
+                           @@include('./common/modules/tooltip.html', {
+                            "share" : true,
+                            "type" : "include",
+                            "fixed" : "fixed-right",
+                            "page" : "tooltip-share"
+                            })
+                            <div class="link-btn-wrap pc"><!-- pc 일 경우 보임 -->
+                                <a href="#n" class="btn border size"><span>매장 상담 신청</span></a>
                             </div>
                         </div>
                     </div>
-                    <div class="link-btn-wrap">
-                        <a href="#n" class="btn gray"><span>길찾기</span></a>
-                        <a href="#n" class="btn pink"><span>매장 상담 신청</span></a>
-                    </div>
+                    
                     <div class="detail-info-wrap">
                         <div class="left-box">
                             <div class="manager-info">
@@ -36,41 +52,30 @@
                                     <p class="txt"><span class="blind">인사말</span>“LG전자 강남 본점을 찾아주셔서 감사합니다. 친철하고 편안하게 모시겠습니다.”</p>
                                 </div>
                             </div>
-                            <div class="sns-wrap">
-                                <!-- 
-                                    data-url : 공유될 url 주소 , 미 사용시 메타태그 url 사용.
-                                    data-title : 공유될 타이틀 명 , 미사용시 페이지 타이틀이 사용됨
-                                    data-image : 공유이미지로 사용될 이미지, 미사용시 메타태그에 지정된 이미지가 사용됨
-                                    data-desc : 공유 디스크립션. 미 사용시 메타태그 description 사용.
-        
-                                    각 sns 버튼에 적용.
-                                -->
-                                <ul class="sns-list">
-                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook"><span class="blind">페이스북으로 페이지 공유하기</span></a></li>
-                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter"><span class="blind">트위터로 페이지 공유하기</span></a></li>
-                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk"><span class="blind">카카오톡으로 페이지 공유하기</span></a></li>
-                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn url" data-link-name="copy_url"><span class="blind">URL 복사하기</span></a></li>
-                                </ul>
-                            </div>
                         </div>
                         <div class="right-box">
                             <!-- 매장안내 -->
                             <div class="info-list">
-                                <h3 class="h3-tit">매장안내</h3>
+                                <div class="info-tit-wrap"> 
+                                    <h3 class="h3-tit">매장안내</h3>
+                                    <div class="link-btn-wrap mo"><!-- mobile 일 경우 보임 -->
+                                        <a href="#n" class="btn border size"><span>매장 상담 신청</span></a>
+                                    </div>
+                                </div>
                                 <dl>
                                     <dt>매장 운영시간</dt>
                                     <dd>
                                         <ul class="item">
                                             <li>
-                                                <span class="key"><span>평</span><span>일</span></span>
+                                                <span class="key">평<span class="sp">일</span> :</span>
                                                 <span class="value">10:30~20:30</span>
                                             </li>
                                             <li>
-                                                <span class="key"><span>토</span><span>요</span><span>일</span></span>
+                                                <span class="key">토요일 :</span>
                                                 <span class="value">10:30~20:30</span>
                                             </li>
                                             <li>
-                                                <span class="key"><span>일</span><span>요</span><span>일</span></span>
+                                                <span class="key">일요일 :</span>
                                                 <span class="value">10:30~20:30</span>
                                             </li>
                                         </ul>
@@ -82,16 +87,24 @@
                                     </dd>
                                 </dl>
                                 <dl>
+                                    <dt>취급제품</dt>
+                                    <dd>
+                                        <div class="info-txt">
+                                            TV, 냉장고, 세탁기, 에어컨, 건조기, 전기레인지, 식기세척기,맥주제조기, 스타일러, 공기청정기, 청소기, 프라엘, 김치냉장고, PC, 모니터, 광파오븐, 전자레인지, 제습기, 안마의자, LG 오브제, LG 시그니처, LG 소형가전
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
                                     <dt>주소</dt>
                                     <dd>
                                         <div class="addr-info">
-                                            <span class="key"><span>[</span><span>도</span><span>로</span><span>명</span><span>]</span></span>
-                                            <p class="addr">서울특별시 강남구 도산대로 403 (청담동)</p>
+                                            <span class="key">[지번]</span>
+                                            <span class="addr">서울특별시 강남구 청담동 86-1 LG 청담빌딩 LG BEST SHOP</span>
                                         </div>
                                         <div class="addr-info">
-                                            <span class="key"><span>[</span><span>지</span><span>번</span><span>]</span></span>
-                                            <p class="addr">서울특별시 강남구 청담동 86-1 LG 청담빌딩 1층</p>
-                                        </div>
+                                            <span class="key">[도로명]</span>
+                                            <span class="addr">서울특별시 강남구 도산대로 403 (청담동) LG BEST SHOP</span>
+                                        </div> 
                                     </dd>
                                 </dl>
                                 <dl>
@@ -99,11 +112,11 @@
                                     <dd>
                                         <ul class="item">
                                             <li>
-                                                <span class="key"><span>전</span><span>화</span></span>
+                                                <span class="key">전화</span>
                                                 <span class="value">02-3448-5191</span>
                                             </li>
                                             <li>
-                                                <span class="key"><span>팩</span><span>스</span></span>
+                                                <span class="key">팩스</span>
                                                 <span class="value">02-3448-5190</span>
                                             </li>
                                         </ul>
@@ -114,21 +127,21 @@
 
                             <!-- 서비스센터안내 -->
                             <div class="info-list">
-                                <h3 class="h3-tit">서비스 센터 안내<a href="#n" class="btn-text">강남본점 서비스센터</a></h3>
+                                <h3 class="h3-tit">서비스 센터 안내</h3>
                                 <dl>
-                                    <dt>휴대폰 + PC 센터 운영시간</dt>
+                                    <dt>휴대폰 + PC 센터</dt>
                                     <dd>
                                         <ul class="item">
                                             <li>
-                                                <span class="key"><span>평</span><span>일</span></span>
+                                                <span class="key">월요일-금요일 :</span>
                                                 <span class="value">09:00~18:00</span>
                                             </li>
                                             <li>
-                                                <span class="key"><span>토</span><span>요</span><span>일</span></span>
+                                                <span class="key">토요일 :</span>
                                                 <span class="value">09:00~13:00</span>
                                             </li>
                                             <li>
-                                                <span class="key"><span>일</span><span>요</span><span>일</span></span>
+                                                <span class="key">일요일 :</span>
                                                 <span class="value">휴무</span>
                                             </li>
                                         </ul>
@@ -139,59 +152,14 @@
                                         })
                                     </dd>
                                 </dl>
+                                <div class="btn-area">
+                                    <a href="#n" class="btn-link">강남본점 서비스센터</a>
+                                </div>
                             </div>
                             <!-- //서비스센터안내 -->
 
-                            <!-- 오시는길 -->
-                            <div class="info-list">
-                                <h3 class="h3-tit">오시는길</h3>
-                                <div class="map">
-                                    <img src="/lg5-common/images/dummy/@img-map2.jpg" alt="">
-                                </div>
-                                <div class="tabs-wrap border-type ui_tab">
-                                    <ul class="tabs">
-                                        <li class="on"><a href="#tab1">버스<em class="blind">선택됨</em></a></li>
-                                        <li><a href="#tab2">자가용</a></li>
-                                        <li><a href="#tab3">지하철</a></li>
-                                        <li><a href="#tab4">주차장</a></li>
-                                    </ul>
-                                    <div id="tab1" class="tabs-contents">
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "bulletTxt" : [
-                                                "강남구청역 방향에서 4412/301 승차 일지아트홀 정류장(학동사거리) 하차",
-                                                "압구정동 방향에서 2411/143승차 영동고교앞 정류장하차 학동사거리 200미터 도보",
-                                                "신사동 방향에서 4212/145/4412 승차 호림아트홀 정류장 하차 학동사거리 150미터 도보",
-                                                "영동대교 방향에서 4212 승차 호림아트홀 하차 학동사거리 150미터 도보"
-                                            ]
-                                        })
-                                    </div>
-                                    <div id="tab2" class="tabs-contents">
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "bulletTxt" : [
-                                                "7호선 강남구청역 4번 출구에서 학동사거리 방향 700미터 학동사거리 횡단보도 건너 위치, 분당선 압구정로데오역 4번 출구에서 학동사거리 방향 350미터 위치"
-                                            ]
-                                        })
-                                    </div>
-                                    <div id="tab3" class="tabs-contents">
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "bulletTxt" : [
-                                                "영동대교 남단 방향에서 도산대로 방향 우회전→청담사거리 직진 →학동사거리(학동역 사거리 와는 틀림) 건너기 전 우측 코너에 위치"
-                                            ]
-                                        })
-                                    </div>
-                                    <div id="tab4" class="tabs-contents">
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "bulletTxt" : [
-                                                "강남본점 건물 22대 주차 가능합니다"
-                                            ]
-                                        })
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- //오시는길 -->
-
                             <!-- 매장사진 -->
-                            <div class="info-list">
+                            <div class="info-list photo">
                                 <h3 class="h3-tit">매장사진</h3>
                                 <div class="slide-wrap ui_carousel_slider">
                                     <div class="indi-wrap">
@@ -239,12 +207,16 @@
                                             <!-- //slide -->
                                         </div>
                                     </div>
+                                    <div class="slide-controls">
+                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                    </div>
                                 </div>
                             </div>
                             <!-- //매장사진 -->
 
-                            <!-- 매장사진 -->
-                            <div class="info-list">
+                            <!-- 이벤트 -->
+                            <div class="info-list event">
                                 <h3 class="h3-tit">강남본점에서 진행중인 이벤트</h3>
                                 <div class="slide-wrap ui_carousel_slider">
                                     <div class="indi-wrap">
@@ -258,7 +230,21 @@
                                             <div class="slide-conts ui_carousel_slide">
                                                 <div class="cont-wrap">
                                                     <div class="img">
-                                                        <img src="/lg5-common/images/dummy/@img-store03.jpg" alt="매장사진">
+                                                        <img src="/lg5-common/images/dummy/@img-pop-event.jpg" alt="매장사진">
+                                                    </div>
+                                                    <div class="desc">
+                                                        <p class="subject">최대 2줄까지 노출 되는 것으로 정의 이벤트 타이틀 최대 2줄 이벤트 타이틀 최대 2줄 이벤트 타이틀 최대 2줄
+                                                            이벤트 타이틀 최대 2줄</p>
+                                                        <p class="date">2020.03.03~2020.09.21</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-pop-event.jpg" alt="매장사진">
                                                     </div>
                                                     <div class="desc">
                                                         <p class="subject">결혼X이사 이벤트</p>
@@ -271,7 +257,7 @@
                                             <div class="slide-conts ui_carousel_slide">
                                                 <div class="cont-wrap">
                                                     <div class="img">
-                                                        <img src="/lg5-common/images/dummy/@img-store04.jpg" alt="매장사진">
+                                                        <img src="/lg5-common/images/dummy/@img-pop-event.jpg" alt="매장사진">
                                                     </div>
                                                     <div class="desc">
                                                         <p class="subject">결혼X이사 이벤트</p>
@@ -284,20 +270,7 @@
                                             <div class="slide-conts ui_carousel_slide">
                                                 <div class="cont-wrap">
                                                     <div class="img">
-                                                        <img src="/lg5-common/images/dummy/@img-store03.jpg" alt="매장사진">
-                                                    </div>
-                                                    <div class="desc">
-                                                        <p class="subject">결혼X이사 이벤트</p>
-                                                        <p class="date">2020.03.03~2020.09.21</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- //slide -->
-                                            <!-- slide -->
-                                            <div class="slide-conts ui_carousel_slide">
-                                                <div class="cont-wrap">
-                                                    <div class="img">
-                                                        <img src="/lg5-common/images/dummy/@img-store04.jpg" alt="매장사진">
+                                                        <img src="/lg5-common/images/dummy/@img-pop-event.jpg" alt="매장사진">
                                                     </div>
                                                     <div class="desc">
                                                         <p class="subject">결혼X이사 이벤트</p>
@@ -310,14 +283,71 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- //매장사진 -->
+                            <!-- //이벤트 -->
+
+                            <!-- 오시는길 -->
+                            <div class="info-list">
+                                <div class="info-tit-wrap">
+                                    <h3 class="h3-tit">오시는길</h3>
+                                    <a href="#n" class="btn border size"><span>길찾기</span></a>
+                                </div>
+                                <div class="map">
+                                    <img src="/lg5-common/images/dummy/@img-map3.jpg" alt="">
+                                </div>
+                                <div class="tabs-wrap border-type ui_tab">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#tab1">버스<em class="blind">선택됨</em></a></li>
+                                        <li><a href="#tab2">자가용</a></li>
+                                        <li><a href="#tab3">지하철</a></li>
+                                        <li><a href="#tab4">주차장</a></li>
+                                    </ul>
+                                    <div id="tab1" class="tabs-contents">
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "강남구청역 방향에서 4412/301 승차 일지아트홀 정류장(학동사거리) 하차",
+                                                "압구정동 방향에서 2411/143승차 영동고교앞 정류장하차 학동사거리 200미터 도보",
+                                                "신사동 방향에서 4212/145/4412 승차 호림아트홀 정류장 하차 학동사거리 150미터 도보",
+                                                "영동대교 방향에서 4212 승차 호림아트홀 하차 학동사거리 150미터 도보"
+                                            ]
+                                        })
+                                    </div>
+                                    <div id="tab2" class="tabs-contents">
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "7호선 강남구청역 4번 출구에서 학동사거리 방향 700미터 학동사거리 횡단보도 건너 위치, 분당선 압구정로데오역 4번 출구에서 학동사거리 방향 350미터 위치"
+                                            ]
+                                        })
+                                    </div>
+                                    <div id="tab3" class="tabs-contents">
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "영동대교 남단 방향에서 도산대로 방향 우회전→청담사거리 직진 →학동사거리(학동역 사거리 와는 틀림) 건너기 전 우측 코너에 위치"
+                                            ]
+                                        })
+                                    </div>
+                                    <div id="tab4" class="tabs-contents">
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "강남본점 건물 22대 주차 가능합니다"
+                                            ]
+                                        })
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //오시는길 -->
 
                             <div class="notice-info">
-                                <div class="txt">“강남본점”의 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</div>
-                                <a href="#n" class="btn bd-pink"><span>평가하기</span></a>
+                                <div class="txt">“<span class="point">강남본점</span>”의 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</div>
+                                <a href="#n" class="btn dark-gray size-m"><span>평가하기</span></a>
                             </div>
                         </div>
+                        
                     </div>
+                    <footer class="footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn pink"><span>고객지원 메인</span></button>
+                        </div>
+                    </footer>
                     <button type="button" class="btn-close"><span class="blind">닫기</span></button>
                 </div>
             </div>
@@ -328,7 +358,7 @@
     <script>
         $(function(){
             vcui.require(['ui/carousel'], function () {
-                $('.ui_carousel_slider').vcCarousel({
+                $('.photo .ui_carousel_slider').vcCarousel({
                     infinite: false,
                     slidesToShow: 2,
                     slidesToScroll: 2,
@@ -350,7 +380,29 @@
                             settings: {
                                 infinite: false,
                                 variableWidth : true,
-                                dots: false,
+                                dots: true,
+                                slidesToShow: 1, 
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                });
+
+                $('.event .ui_carousel_slider').vcCarousel({
+                    infinite: false,
+                    slidesToShow: 2, 
+                    slidesToScroll: 2,
+                    responsive: [
+                        {
+                            breakpoint: 10000,
+                            settings: 'unslick'
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                infinite: false,
+                                variableWidth : true,
+                                dots: true,
                                 slidesToShow: 1, 
                                 slidesToScroll: 1
                             }

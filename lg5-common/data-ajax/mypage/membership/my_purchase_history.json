@@ -1,35 +1,96 @@
 {
     "status":"success",
     "message":null,
-    "data": {
-        "purchaseItems" : [
-            {
-                "modelName":"LG TROMM ThinQ",
-                "modelNumber":"A9579I",
-                "purchaseQuantity":"2",
-                "purchaseStore":"LG BEST SHOP 서초점",
-                "purchaseDate":"20190729",
-                "modelImageAddr":"/lg5-common/images/membership/img-prod01.jpg",
-                "purchaseType" : "buy"
-            },
-            {
-                "modelName":"LG SIGNATURE 트윈워시",
-                "modelNumber":"F12WHTS",
-                "purchaseQuantity":"3",
-                "purchaseStore":"LG BEST SHOP 서초점",
-                "purchaseDate":"20191229",
-                "modelImageAddr":"/lg5-common/images/membership/img-prod02.jpg",
-                "purchaseType" : "cancel"
-            },
-            {
-                "modelName":"LG 올레드 AI ThinQ TV",
-                "modelNumber":"OLED65B9GNA",
-                "purchaseQuantity":"4",
-                "purchaseStore":"LG BEST SHOP 서초점",
-                "purchaseDate":"20200304",
-                "modelImageAddr":"/lg5-common/images/membership/img-prod03.jpg",
-                "purchaseType" : "cancel"
-            }
-        ]
-    }
+    "data": [
+        {
+            "produncName":"LG TROMM ThinQ",
+            "squ":"A9579I",
+            "quantity":"2",
+            "store":"LG BEST SHOP 서초점",
+            "date":"20190729",
+            "imageUrl":"/lg5-common/images/membership/img-prod01.jpg",
+            "imageAlt":"LG TROMM ThinQ",
+            "type" : "구매"
+        },
+        {
+            "produncName":"LG SIGNATURE 트윈워시",
+            "squ":"F12WHTS",
+            "quantity":"3",
+            "store":"LG BEST SHOP 서초점",
+            "date":"20191229",
+            "imageUrl":"/lg5-common/images/membership/img-prod02.jpg",
+            "imageAlt":"LG SIGNATURE 트윈워시",
+            "type" : "취소"
+        },
+        {
+            "produncName":"LG 올레드 AI ThinQ TV",
+            "squ":"OLED65B9GNA",
+            "quantity":"4",
+            "store":"LG BEST SHOP 서초점",
+            "date":"20200304",
+            "imageUrl":"/lg5-common/images/membership/img-prod03.jpg",
+            "imageAlt":"LG 올레드 AI ThinQ TV",
+            "type" : "취소"
+        },
+        {
+            "produncName":"LG TROMM ThinQ",
+            "squ":"A9579I",
+            "quantity":"2",
+            "store":"LG BEST SHOP 서초점",
+            "date":"20190729",
+            "imageUrl":"/lg5-common/images/membership/img-prod01.jpg",
+            "imageAlt":"LG TROMM ThinQ",
+            "type" : "구매"
+        },
+        {
+            "produncName":"LG SIGNATURE 트윈워시",
+            "squ":"F12WHTS",
+            "quantity":"3",
+            "store":"LG BEST SHOP 서초점",
+            "date":"20191229",
+            "imageUrl":"/lg5-common/images/membership/img-prod02.jpg",
+            "imageAlt":"LG SIGNATURE 트윈워시",
+            "type" : "취소"
+        },
+        {
+            "produncName":"LG 올레드 AI ThinQ TV",
+            "squ":"OLED65B9GNA",
+            "quantity":"4",
+            "store":"LG BEST SHOP 서초점",
+            "date":"20200304",
+            "imageUrl":"/lg5-common/images/membership/img-prod03.jpg",
+            "imageAlt":"LG 올레드 AI ThinQ TV",
+            "type" : "취소"
+        },
+        {
+            "produncName":"LG TROMM ThinQ",
+            "squ":"A9579I",
+            "quantity":"2",
+            "store":"LG BEST SHOP 서초점",
+            "date":"20190729",
+            "imageUrl":"/lg5-common/images/membership/img-prod01.jpg",
+            "imageAlt":"LG TROMM ThinQ",
+            "type" : "구매"
+        },
+        {
+            "produncName":"LG SIGNATURE 트윈워시",
+            "squ":"F12WHTS",
+            "quantity":"3",
+            "store":"LG BEST SHOP 서초점",
+            "date":"20191229",
+            "imageUrl":"/lg5-common/images/membership/img-prod02.jpg",
+            "imageAlt":"LG SIGNATURE 트윈워시",
+            "type" : "취소"
+        },
+        {
+            "produncName":"LG 올레드 AI ThinQ TV",
+            "squ":"OLED65B9GNA",
+            "quantity":"4",
+            "store":"LG BEST SHOP 서초점",
+            "date":"20200304",
+            "imageUrl":"/lg5-common/images/membership/img-prod03.jpg",
+            "imageAlt":"LG 올레드 AI ThinQ TV",
+            "type" : "취소"
+        }
+    ]
 }

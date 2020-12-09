@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-join01</title>
+    <defs>
+        <rect id="path-1" x="0.5" y="0" width="51" height="38.8860759" rx="1.82278481"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-16">
+            <rect id="Rectangle" x="0" y="0" width="64" height="64"></rect>
+            <g id="Group-12" transform="translate(6.000000, 7.000000)">
+                <g id="Rectangle">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" stroke="#222222" stroke-width="2.06896552" xlink:href="#path-1"></use>
+                    <rect stroke="#222222" stroke-width="2.06896552" mask="url(#mask-2)" x="0" y="29.164557" width="52" height="11.660942"></rect>
+                    <g id="Point" mask="url(#mask-2)" fill="#EC455A">
+                        <g transform="translate(16.000000, 20.247196)">
+                            <circle id="Oval" cx="2.49150064" cy="2.49150064" r="2.49150064"></circle>
+                            <circle id="Oval" cx="8.48240907" cy="2.49150064" r="1.2803181"></circle>
+                            <circle id="Oval-Copy" cx="13.262135" cy="2.49150064" r="1.2803181"></circle>
+                            <circle id="Oval-Copy-5" cx="18.0418609" cy="2.49150064" r="1.2803181"></circle>
+                        </g>
+                    </g>
+                </g>
+                <path d="M35.2370144,37.8515932 L17.3705805,37.8515932 L17.3705805,49.0344828 L35.2370144,49.0344828 L35.2370144,37.8515932 Z M33.168,39.92 L33.168,46.965 L19.439,46.965 L19.439,39.92 L33.168,39.92 Z" id="Rectangle" fill="#222222" fill-rule="nonzero"></path>
+                <rect id="Rectangle" fill="#222222" x="10.549914" y="46.75" width="31.5077669" height="2.5" rx="1.25"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

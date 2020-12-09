@@ -13,51 +13,82 @@
                 CS.UI.$form = $('#submitForm');
                 CS.UI.$confirmPop = $('#layPop');
 
+                $('.btn-cancel').on('click', function() {
+                    var obj = {title:'', typeClass:'', ok : function(){ 
+            
+                    }};
+                    var desc = '';
+                    obj = $.extend(obj, {
+                        title:'취소 하시겠습니까?'
+                    });
+                    lgkorUI.confirm(desc, obj);
+                });
+
                 vcui.require(['ui/validation', 'ui/formatter'], function () {
                     $('#input-phoneNo').vcFormatter({'format':'num', "maxlength":11});
 
                     var register = {
                         privacy: {
                             required: true,
-                            errorMsg: '개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다'
+                            errorMsg: '개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다',
+                            msgTarget: '.err-block'
                         },
-                        name: {
+                        inputName: {
                             required: true,
-                            errorMsg: '이름을 입력해주세요',
-                            nameMsg: '이름은 한글 또는 영문으로만 입력해주세요'
+                            msgTarget: '.err-block'
                         },
-                        phoneNo: {
+                        inputPhoneNo: {
                             required: true,
                             pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                            errorMsg: '휴대전화를 정확히 입력해주세요',
-                            phoneNoMsg: '휴대전화를 정확히 입력해주세요'
+                            msgTarget: '.err-block'
                         },
-                        email:{
+                        inputEmail:{
                             required: true,
                             pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                            errorMsg: '이메일 주소를 입력해주세요',
-                            emailMsg:'올바른 이메일 형식이 아닙니다. '
+                            msgTarget: '.err-block'
                         },
                         replay: {
                             required: true,
-                            errorMsg: '회신 여부를 선택해주세요.'
+                            errorMsg: '회신 여부를 선택해주세요.',
+                            msgTarget: '.err-block'
                         },
-                        title: {
+                        inputTitle: {
                             required: true,
-                            errorMsg: '제목을 입력해주세요.'
+                            msgTarget: '.err-block'
                         },
-                        content: {
+                        inputContent: {
                             required: true,
-                            errorMsg: '내용을 입력해주세요.'
+                            msgTarget: '.err-block'
                         },
                         desc: {
                             required: true,
-                            errorMsg: '전달사항을 입력해주세요.'
+                            errorMsg: '전달사항을 입력해주세요.',
+                            msgTarget: '.err-block'
                         }
                     }
     
-                    CS.UI.validation = new vcui.ui.CsValidation('#submitForm', {register:register});
+                    // CS.UI.validation = new vcui.ui.CsValidation('#submitForm', {register:register});
+                    var validation = new vcui.ui.CsValidation('#submitForm', {register:register});
                     
+                    $('.btn-confirm').on('click', function(e) {
+                        var result = validation.validate();
+        
+                        if (result.success == true) {
+                            var id = $(e.currentTarget).data('id');
+                            var obj = {title:'', typeClass:'', ok : function(){ 
+                
+                            }};
+                            var desc = '';
+                
+                            if (id == "#confirmPop") {
+                                obj = $.extend(obj, {
+                                    title:'저장 하시겠습니까?'
+                                });
+                            }
+                            lgkorUI.confirm(desc, obj);
+                        }
+                    });
+
                     _self.bindEvent();
                 });
             },
@@ -69,14 +100,12 @@
                         authName: {
                             required: true,
                             pattern: /^[가-힣a-zA-Z]+$/,
-                            errorMsg: '이름을 입력해주세요',
-                            authNameMsg: '이름은 한글 또는 영문으로만 입력해주세요'
+                            msgTarget: '.err-block'
                         },
                         authPhoneNo: {
                             required: true,
                             pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                            errorMsg: '휴대전화를 정확히 입력해주세요',
-                            authPhoneNoMsg: '휴대전화를 정확히 입력해주세요'
+                            msgTarget: '.err-block'
                         },
                         authNo:{
                             required: true,
@@ -114,10 +143,11 @@
                                 }).fail(function(err){
                                     alert(err.message);
                                 });
-                            }
+                            },
+                            msgTarget: '.err-block'
                         }
                     }
-                    var validation = new vcui.ui.CsValidation('#certificationPopup .field-wrap', {register:register});
+                    var validation = new vcui.ui.CsValidation('#certificationPopup .form-wrap', {register:register});
 
                     $('#certificationPopup').find('.btn-auth').off('click').on('click', function() {
                         validation.validate();
@@ -189,7 +219,7 @@
                         $error = $('[name="'+key+'"]');
 
                         if ($error.length > 0) {
-                            $error.closest('.input-wrap, .select-wrap').addClass('error');
+                            // $error.closest('.input-wrap, .select-wrap').addClass('error');
                         }
                     }
                 });
@@ -198,7 +228,6 @@
                 });
             }
         }
-        
         custom.init();
     });
 })();

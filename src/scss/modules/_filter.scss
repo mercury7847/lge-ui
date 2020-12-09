@@ -558,17 +558,19 @@
         }
     }
     &.applied {
+        .ico-filter {
         position: relative;
-        &:after {
-            position: absolute;
-            top: -7px;
-            right: 0;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background-color: #ec455a;
-            content: '';
-        }
+            &:after {
+                position: absolute;
+                top: -7px;
+                right: 0;
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background-color: #ec455a;
+                content: '';
+            }
+        } 
     }
 }
 

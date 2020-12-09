@@ -33,6 +33,33 @@
 /* //삭제 예정 */
 
 .support {
+    .login-guide {
+        padding:20px 0;
+        text-align:center;
+        background:url(/lg5-common/images/CS/bg-login-guide.jpg) no-repeat;
+        background-position:center;
+        .txt {
+            max-width:590px;
+            margin:0 auto 16px;
+            color:#fff;
+            font-weight:$font-weight-bold;
+            @include font-large-1;
+            word-break:keep-all;
+        }
+        @include mobile {
+            padding:16px;
+            background-image:url(/lg5-common/images/CS/bg-login-guide-m.jpg);
+            background-size:cover;
+            .txt {
+                max-width:none;
+                margin-bottom:12px;
+            }
+        }
+    }
+
+
+
+
     .service-menu-wrap {
         .inner {
             max-width:1380px + 40px;
@@ -357,7 +384,7 @@
 }
 
 //add file new
-.file-wrap {
+.image-file-wrap {
     @include clearfix;
     .file-item {
         float:left;

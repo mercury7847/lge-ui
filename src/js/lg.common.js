@@ -122,6 +122,16 @@
                 slidesToShow: 1,
                 slidesToScroll: 1
             });
+            this.find('.ui_wide_dot_slider').vcCarousel({
+                autoplay:true,
+                autoplaySpped:5000,
+                infinite: true,
+                pauseOnHover:false,
+                pauseOnFocus:false,
+                swipeToSlide: true,
+                slidesToShow: 1,
+                slidesToScroll: 1
+            });
             this.find('.ui_carousel_4_slider').vcCarousel({
                 infinite: false,
                 autoplay: false,

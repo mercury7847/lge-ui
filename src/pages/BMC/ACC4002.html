@@ -8,123 +8,144 @@
         @@include('./common/header.html')
 
         <div class="container">
-            @@include('./common/modules/page-header.html', {
-                "pageTitle": "가입 안내",
-                "pageArr" : [
-                    { "page" : "멤버십 혜택", "on" : "" },
-                    { "page" : "VIP 멤버십 혜택", "on": "" },
-                    { "page" : "가입 안내", "on": "on" }
-                ]
-            })
             <!-- membership -->
             <div class="contents membership">
-                <div class="cont-wrap">
-                    <div class="section">
-                        <h3 class="sec-tit">가입 안내</h3>
-                        <div class="cont-box">
-                            <div class="btn-tabs-wrap ui_tab">
-                                <ul class="tabs">
-                                    <li class="on"><a href="#tab1" class="internet">인터넷<em class="blind">선택됨</em></a></li>
-                                    <li><a href="#tab2" class="phone">스마트폰 앱</a></li>
-                                    <li><a href="#tab3" class="shop">매장 방문</a></li>
-                                </ul>
-                            </div>
-                            <div id="tab1" class="tabs-contents">
-                                @@include('./common/modules/mem-step.html', {
-                                    "stepArr" : [
-                                        {
-                                            "step" : "STEP1",
-                                            "tit" : "온라인 회원가입",
-                                            "desc" : "LG전자 홈페이지에서<br>멤버십 가입하기 버튼을<br>클릭하세요."
-                                        },
-                                        {
-                                            "step" : "STEP2",
-                                            "tit" : "신청서 작성",
-                                            "desc" : "본인인증을 완료한 후<br>가입에 필요한 정보를<br>입력합니다."
-                                        },
-                                        {
-                                            "step" : "STEP3",
-                                            "tit" : "가입 완료",
-                                            "desc" : "온라인으로 가입이<br>완료됩니다."
-                                        }
-                                    ]
-                                })
+                <!-- visual slider -->
+                <div class="visual-wrap">
+                    @@include('./common/modules/main_carousel.html', {
+                        "slides" : [
+                            {
+                                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                                "eyebrow" : "LG전자 멤버십 앱",
+                                "title" : "신규 설치 고객<br>경품 추천 이벤트",
+                                "btn" : "자세히 보기"
+                            },
+                            {
+                                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                                "eyebrow" : "LG전자 멤버십 앱",
+                                "title" : "신규 설치 고객<br>경품 추천 이벤트2",
+                                "btn" : "자세히 보기"
+                            },
+                            {
+                                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                                "eyebrow" : "LG전자 멤버십 앱",
+                                "title" : "신규 설치 고객<br>경품 추천 이벤트3",
+                                "btn" : "자세히 보기"
+                            }
+                        ]
+                    })
+                </div>
+                <!-- // visual slider -->
 
-                                <ul class="link-list">
-                                    <li><a href="#n" target="_blank" title="새창열림">구글플레이가기</a></li>
-                                    <li><a href="#n" target="_blank" title="새창열림">앱스토어가기</a></li>
-                                </ul>
+                <div class="page-tabs">
+                    <div class="tabs-wrap btn-type ui_tab">
+                        <ul class="tabs">
+                            <li class="on"><a href="#n">멤버십 소개<em class="blind">선택됨</em></a></li>
+                            <li><a href="#n">등급별 혜택</a></li>
+                            <li><a href="#n">가입 안내</a></li>
+                        </ul>
+                    </div>
+                </div>
 
-                                <ul class="qr-list">
-                                    <li>
-                                        <span class="img"><img src="/lg5-common/images/membership/img-qr1.jpg" alt="안드로이드 전용 LG전자 멤버십 앱 다운로드로 이동하는 QR코드 이미지입니다."></span>
-                                        <p>안드로이드</p>
-                                    </li>
-                                    <li>
-                                        <span class="img"><img src="/lg5-common/images/membership/img-qr2.jpg" alt="아이폰 전용 LG전자 멤버십 앱 다운로드로 이동하는 QR코드 이미지입니다."></span>
-                                        <p>아이폰</p>
-                                    </li>
-                                </ul>
+                <div class="cont-wrap narrow">
+                    <div class="section-wrap">
+                        <div class="sects">
+                            <div class="tit-wrap">
+                                <h2 class="tit">LG전자 멤버십 혜택</h2>
                             </div>
-                            <div id="tab2" class="tabs-contents">
-                                @@include('./common/modules/mem-step.html', {
-                                    "stepArr" : [
-                                        {
-                                            "step" : "STEP1",
-                                            "tit" : "스마트폰 앱 다운",
-                                            "desc" : "구글플레이/앱스토어<br>에서 'LG전자 멤버십'<br>앱을 다운로드 받으세요."
-                                        },
-                                        {
-                                            "step" : "STEP2",
-                                            "tit" : "회원가입/로그인",
-                                            "desc" : "멤버십이 처음이면 회원<br>가입, 회원이라면<br>로그인을 진행하세요."
-                                        },
-                                        {
-                                            "step" : "STEP3",
-                                            "tit" : "가입 완료",
-                                            "desc" : "스마트폰 앱으로 가입이<br>완료됩니다."
-                                        }
+                            <div class="section-inner type2">
+                                <div class="benefit-info-box">
+                                    <ul>
+                                        <li class="lists">
+                                            <dl>
+                                                <dt class="tit">포인트 적립 및 혜택 제공</dt>
+                                                <dd class="desc">제품 구매 금액과 온라인 활동(구매후기, 제품등록, 댓글 등)에 따라 등급별 쿠폰 및 포인트가 지급됩니다.</dd>
+                                            </dl>
+                                        </li>
+                                        <li class="lists">
+                                            <dl>
+                                                <dt class="tit">현금처럼 사용하는 포인트</dt>
+                                                <dd class="desc">1포인트는 1원! 전국 베스트샵/서비스센터/렌탈 구매 시 멤버십 포인트를 현금처럼 사용하세요.</dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "topBorder" : true,
+                                    "bulletTit" : "멤버십 포인트 제도 안내",
+                                    "bulletTxt" : [
+                                        "전국 BEST SHOP 매장 내 구매 및 온라인 활동(구매후기, 제품등록, 댓글 등)에 따라 적립됩니다.",
+                                        "전국 BEST SHOP 매장에서 적립/사용이 가능하며, 현금처럼 사용할 수 있습니다. (1포인트=현금 1원)",
+                                        "LG전자 서비스 센터에서 제품 수리시/렌탈 구매 시에도 멤버십 포인트를 현금처럼 사용할 수 있습니다."
                                     ]
                                 })
                             </div>
-                            <div id="tab3" class="tabs-contents">
-                                @@include('./common/modules/mem-step.html', {
-                                    "stepArr" : [
-                                        {
-                                            "step" : "STEP1",
-                                            "tit" : "매장 방문",
-                                            "desc" : "가까운 베스트샵 매장을<br>방문하세요."
-                                        },
-                                        {
-                                            "step" : "STEP2",
-                                            "tit" : "신청서 작성",
-                                            "desc" : "LG전자 멤버십 가입<br>신청서를 작성하세요."
-                                        },
-                                        {
-                                            "step" : "STEP3",
-                                            "tit" : "가입 완료",
-                                            "desc" : "베스트샵 매장방문으로<br>가입이 완료됩니다."
-                                        }
+                        </div>
+
+                        <div class="sects">
+                            <div class="tit-wrap">
+                                <h2 class="tit">무상 서비스 기간연장 혜택제품 안내</h2>
+                            </div>
+                            <div class="section-inner type2">
+                                <p class="inner-sub-tit">골드, 로얄골드 등급과 LG SIGNATURE 별도 케어서비스의 등급 선정 전/후 1년간 구매한 5대 가전에 무상 서비스 기간연장 혜택 서비스가 적용됩니다.</p>
+                                <div class="product-list-wrap type2">
+                                    <ul class="product-lists ui_flexible_height">
+                                        @@loop('./common/modules/product-list-loop.html', [
+                                            {
+                                                "img" : "/lg5-common/images/STC/img-prod01.jpg",
+                                                "name" : "TV",
+                                                "info" : [
+                                                    "LED, LCD, PDP, 울트라HD, 올레드 <small>* 벽걸이/스탠드 자재 제외</small>"
+                                                ]
+                                            },
+                                            {
+                                                "img" : "/lg5-common/images/STC/img-prod01.jpg",
+                                                "name" : "김치 냉장고",
+                                                "info" : [
+                                                    "김치 냉장고 전제품"
+                                                ]
+                                            },
+                                            {
+                                                "img" : "/lg5-common/images/STC/img-prod01.jpg",
+                                                "name" : "세탁기",
+                                                "info" : [
+                                                    "트윈워시, 트롬, 통돌이, 미니세탁기(미니워시, 꼬망스) <small>* 세탁기 받침대 제외</small>"
+                                                ]
+                                            },
+                                            {
+                                                "img" : "/lg5-common/images/STC/img-prod01.jpg",
+                                                "name" : "냉장고",
+                                                "info" : [
+                                                    "상냉장, 양문형, 정수기냉장고, 일반, 냉동고, 와인셀러"
+                                                ]
+                                            },
+                                            {
+                                                "img" : "/lg5-common/images/STC/img-prod01.jpg",
+                                                "name" : "에어컨",
+                                                "info" : [
+                                                    "스탠드, 벽걸이, 일반 냉난방기, 시스템 에어컨, 배관자재 제외"
+                                                ]
+                                            }
+                                        ])
+                                    </ul>
+                                </div>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "topBorder" : true,
+                                    "bulletTit" : "무상 서비스 적용기준",
+                                    "bulletTxt" : [
+                                        "무상 서비스 기간 : 설치 일자 기준 3년 적용",
+                                        "멤버십 등급 산정 : 멤버십 가입한 고객의 1년간 구매금액 합산 관리",
+                                        "고장성 불량에 한해서 적용(소비자 과실에 의한 서비스는 미 적용), 온라인 몰 구매제품 제외"
                                     ]
                                 })
                             </div>
-                            
-                            @@include('./common/modules/bullet-list.html', {
-                                "topBorder" : true,
-                                "bulletTit" : "유의사항",
-                                "bulletTxt" : [
-                                    "제품 구매처가 달라도 전국 BEST SHOP 매장에서 적립/사용이 가능합니다.",
-                                    "1포인트 이상 적립 시 현금처럼 사용 하실 수 있습니다. (1포인트 = 현금 1원과 동일)",
-                                    "LG전자 서비스 센터에서 수리 또는 렌탈 구매시 현금처럼 사용하실 수 있습니다.",
-                                    "멤버십 포인트의 유효기간은 BEST SHOP 홈페이지에 로그인 후, BEST SHOP > 멤버십 멤버십 포인트 조회에서 확인하실 수 있습니다."
-                                ]
-                            })
                         </div>
                     </div>
-
-                    <div class="btn-wrap right">
-                        <a href="#a" class="btn text-type pink">가까운 매장찾기</a>
-                        <a href="#a" class="btn pink">멤버십 가입하기</a>
+                    <div class="btn-group center">
+                        <button type="button" class="btn"><span>멤버십 가입</span></button>
                     </div>
                 </div>
             </div>

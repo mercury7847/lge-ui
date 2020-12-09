@@ -4,10 +4,10 @@
     @include font-small;
     @include mobile {
         margin-top:12px;
-        color:#808080;
     }
     .b-tit {
         margin-bottom:2px;
+        color:#222;
         font-weight:700;
         @include mobile {
             margin-bottom:4px;

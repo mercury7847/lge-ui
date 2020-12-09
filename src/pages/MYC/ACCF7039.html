@@ -97,7 +97,7 @@
                                     </div>
                                     <div class="section-inner">
                                         <div class="inner-box">
-                                            <div class="filters rdo-type2">
+                                            <div class="filters rdo-type2" data-list-url="/lg5-common/data-ajax/mypage/membership/my_purchase_history.json">
                                                 <!-- filter -->
                                                 @@include('./common/modules/mem-filter.html', {
                                                     "tabType" : true,
@@ -105,9 +105,9 @@
                                                     "datepicker" : true,
                                                     "rdoCheck" : true,
                                                     "list" : [
-                                                        { "id" : "rdk-cehck1-1", "name" : "rdk-check1",  "label" : "전체"},
-                                                        { "id" : "rdk-cehck1-2", "name" : "rdk-check1",  "label" : "구매", "checked": "checked"},
-                                                        { "id" : "rdk-cehck1-3", "name" : "rdk-check1",  "label" : "취소"}
+                                                        { "id" : "rdk-cehck1-1", "name" : "purchaseType",  "label" : "전체", "value":"all"},
+                                                        { "id" : "rdk-cehck1-2", "name" : "purchaseType",  "label" : "구매", "value":"buy", "checked": "checked"},
+                                                        { "id" : "rdk-cehck1-3", "name" : "purchaseType",  "label" : "취소", "value":"cancel"}
                                                     ]
                                                 })
                                                 <!-- // filter -->
