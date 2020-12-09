@@ -1,233 +1,151 @@
 (function() {
-    function setMessage($el, msg) {
-        var msgTarget = $el.data('msgTarget');
+    var validation;
+    var authValidation;
 
-        $(msgTarget).text(msg).show();
+    var custom = {
+        init: function() {
+            var self = this;
+            
+            self.$form = $('#submitForm');
+            self.$authPopup = $('#certificationPopup');
+
+            vcui.require(['ui/validation', 'ui/formatter'], function () {
+                $('#phoneNo').vcFormatter({'format':'num', "maxlength":11});
+
+                var register = {
+                    privacy: {
+                        msgTarget: '.err-block'
+                    },
+                    userName: {
+                        msgTarget: '.err-block'
+                    },
+                    phoneNo: {
+                        pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
+                        msgTarget: '.err-block'
+                    },
+                    email:{
+                        pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        msgTarget: '.err-block'
+                    },
+                    title: {
+                        msgTarget: '.err-block'
+                    },
+                    content: {
+                        msgTarget: '.err-block'
+                    }
+                }
+
+                validation = new vcui.ui.CsValidation('#submitForm', {register:register});
+
+                self.bindEvent();
+            });
+        },
+        
+        bindEvent: function() {
+            var self = this;
+
+            self.$form.find('.btn-confirm').on('click', function() {
+                var result = validation.validate();
+
+                if (result.success == true) {                        
+                    lgkorUI.confirm('', {
+                        title:'저장 하시겠습니까?',
+                        okBtnName: '확인',
+                        cancelBtnName: '취소',
+                        ok: function() {
+                            var ajaxUrl = self.$form.data('ajax');
+                            var data = validation.getAllValues();
+                            lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
+                                if (result.data == 'Y') {
+                                    self.$form.submit();
+                                }
+                            })
+                        }
+                    });
+                }
+            });
+            self.$form.find('.btn-cancel').on('click', function() {
+                var url = $(this).data('url');
+                lgkorUI.confirm('', {
+                    title:'취소 하시겠습니까?',
+                    okBtnName: '확인',
+                    cancelBtnName: '취소',
+                    cancel: function() {
+                        location.href = url;
+                    }
+                });
+            });
+
+
+            self.$authPopup.on('modalshown', function() {
+                var $this = $(this);
+                var register = {
+                    authName: {
+                        pattern: /^[가-힣a-zA-Z]+$/,
+                        msgTarget: '.err-block'
+                    },
+                    authPhoneNo: {
+                        pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
+                        msgTarget: '.err-block'
+                    },
+                    authNo:{
+                        msgTarget: '.err-block'
+                    }
+                };
+
+                authValidation = new vcui.ui.CsValidation('#certificationPopup .form-wrap', {register:register});
+
+                $this.find('.btn-send').off('click').on('click', function() {
+                    var $btnSend = $(this),
+                        ajaxUrl = $btnSend.data('ajax'),
+                        data = {
+                            authName: $this.find('#authName').val(),
+                            authPhoneNo: $this.find('#authPhoneNo').val()
+                        };
+
+                    lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
+                        if (result.data.resultFlag == 'Y') {
+                            $btnSend.text('인증번호 재발송');
+                            $this.find('#authNo').prop('disabled', false);
+                        }
+
+                        lgkorUI.alert('', {
+                            title: result.data.resultMessage
+                        });
+                    })
+                });
+
+                $this.find('.btn-auth').off('click').on('click', function() {
+                    var result = authValidation.validate(),
+                        ajaxUrl = $this.find('.form-wrap').data('ajax'),
+                        data = authValidation.getAllValues();
+
+                    if (result.success == true) {
+                        lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
+                            if (result.data.resultFlag == 'Y') {
+                                self.$form.find('#userName').val(self.$authPopup.find('#authName').val());
+                                self.$form.find('#phoneNo').val(self.$authPopup.find('#authPhoneNo').val());
+                            
+                                self.$authPopup.vcModal('hide');
+                            }
+
+                            lgkorUI.alert('', {title: result.data.resultMessage});
+                        });
+                    }
+                });
+            });
+
+            self.$authPopup.on('modalhide', function() {
+                var $this = $(this);
+
+                $this.find('.btn-send').text('인증번호 발송');
+                $this.find('#authNo').prop('disabled', true);
+                $this.find('input').val('');
+            });
+        }
     }
 
     $(window).ready(function() {
-        var custom = {
-            init: function() {
-                var _self = this;
-                
-                CS.UI.$form = $('#submitForm');
-                CS.UI.$confirmPop = $('#layPop');
-
-                $('.btn-cancel').on('click', function() {
-                    var obj = {title:'', typeClass:'', ok : function(){ 
-            
-                    }};
-                    var desc = '';
-                    obj = $.extend(obj, {
-                        title:'취소 하시겠습니까?'
-                    });
-                    lgkorUI.confirm(desc, obj);
-                });
-
-                vcui.require(['ui/validation', 'ui/formatter'], function () {
-                    $('#input-phoneNo').vcFormatter({'format':'num', "maxlength":11});
-
-                    var register = {
-                        privacy: {
-                            required: true,
-                            errorMsg: '개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다',
-                            msgTarget: '.err-block'
-                        },
-                        inputName: {
-                            required: true,
-                            msgTarget: '.err-block'
-                        },
-                        inputPhoneNo: {
-                            required: true,
-                            pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                            msgTarget: '.err-block'
-                        },
-                        inputEmail:{
-                            required: true,
-                            pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                            msgTarget: '.err-block'
-                        },
-                        replay: {
-                            required: true,
-                            errorMsg: '회신 여부를 선택해주세요.',
-                            msgTarget: '.err-block'
-                        },
-                        inputTitle: {
-                            required: true,
-                            msgTarget: '.err-block'
-                        },
-                        inputContent: {
-                            required: true,
-                            msgTarget: '.err-block'
-                        },
-                        desc: {
-                            required: true,
-                            errorMsg: '전달사항을 입력해주세요.',
-                            msgTarget: '.err-block'
-                        }
-                    }
-    
-                    // CS.UI.validation = new vcui.ui.CsValidation('#submitForm', {register:register});
-                    var validation = new vcui.ui.CsValidation('#submitForm', {register:register});
-                    
-                    $('.btn-confirm').on('click', function(e) {
-                        var result = validation.validate();
-        
-                        if (result.success == true) {
-                            var id = $(e.currentTarget).data('id');
-                            var obj = {title:'', typeClass:'', ok : function(){ 
-                
-                            }};
-                            var desc = '';
-                
-                            if (id == "#confirmPop") {
-                                obj = $.extend(obj, {
-                                    title:'저장 하시겠습니까?'
-                                });
-                            }
-                            lgkorUI.confirm(desc, obj);
-                        }
-                    });
-
-                    _self.bindEvent();
-                });
-            },
-            bindEvent: function() {
-                var _self = this;
-
-                $('#certificationPopup').on('modalshown', function() {
-                    var register = {
-                        authName: {
-                            required: true,
-                            pattern: /^[가-힣a-zA-Z]+$/,
-                            msgTarget: '.err-block'
-                        },
-                        authPhoneNo: {
-                            required: true,
-                            pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                            msgTarget: '.err-block'
-                        },
-                        authNo:{
-                            required: true,
-                            validate: function(name, val) {
-                                var $el = $('[name="'+name+'"]');
-
-                                if ($el.is(':disabled')) {
-                                    setMessage($('#authNo'), '인증 번호 발송 버튼을 선택해 주세요');
-                                    return false;
-                                }
-
-                                $.ajax({
-                                    type: 'POST',
-                                    async: false,
-                                    url: url,
-                                    dataType: 'json',
-                                    data: data
-                                }).done(function (result) {
-                                    if (result.ssoCheckUrl != undefined && result.ssoCheckUrl != null && result.ssoCheckUrl != '') {
-                                        location.href = result.ssoCheckUrl;                    
-                                        return;
-                                    }
-                    
-                                    if(result.status != 'success'){
-                                        alert(result.message ? result.message : '오류발생');
-                                        return;
-                                    }
-                                    
-                                    if (result.data.resultFlag == 'N') {
-                                        setMessage($('#authNo'), '입력하신 인증 번호가 발송된 인증 번호와 맞지 않습니다');
-                                    } else {
-                                        setMessage($('#authNo'), '휴대전화 인증이 완료되었습니다');
-                                    }
-                                    
-                                }).fail(function(err){
-                                    alert(err.message);
-                                });
-                            },
-                            msgTarget: '.err-block'
-                        }
-                    }
-                    var validation = new vcui.ui.CsValidation('#certificationPopup .form-wrap', {register:register});
-
-                    $('#certificationPopup').find('.btn-auth').off('click').on('click', function() {
-                        validation.validate();
-                    });
-
-                    $('#certificationPopup').find('.btn-send').off('click').on('click', function() {
-                        var url = '/lg5-common/data-ajax/support/auth.json',
-                            data = '';
-
-                        $.ajax({
-                            type: 'POST',
-                            url: url,
-                            dataType: 'json',
-                            data: data
-                        }).done(function (result) {
-                            if (result.ssoCheckUrl != undefined && result.ssoCheckUrl != null && result.ssoCheckUrl != '') {
-                                location.href = result.ssoCheckUrl;                    
-                                return;
-                            }
-            
-                            if(result.status != 'success'){
-                                alert(result.message ? result.message : '오류발생');
-                                return;
-                            }
-                            
-                            if (result.data.resultFlag == 'Y') {
-                                $(this).text('인증번호 재발송');
-                                $('#authNo').prop('disabled', false);
-                                setMessage($('#authNo'), '입력하신 휴대 전화 번호로 인증 번호를 보내드렸습니다');
-                            } else {
-                                setMessage($('#authNo'), '1분 당 2회만 인증 번호 발송이 가능합니다');
-                            }
-                            
-                        }).fail(function(err){
-                            alert(err.message);
-                        });
-                    });
-                });
-                $('#certificationPopup').on('modalhide', function() {
-                    
-                });
-
-                CS.UI.$form.find('.btn-confirm').on('click', function() {
-                    CS.UI.validation.validate();
-                });
-                CS.UI.validation.on('success', function() {
-                    var $item;
-
-                    for (var key in CS.UI.validation.nameArr) { 
-                        $item = CS.UI.validation.$el.find('[name="'+key+'"]');
-                        $item.closest('.input-wrap, .select-wrap').addClass('error');
-                    }
-
-                    CS.UI.$confirmPop.vcModal();
-                    CS.UI.$confirmPop.find('.btn-wrap .btn:not(.ui_modal_close)').off('click').on('click', function() {
-                        var url = CS.UI.$form.data('ajax'),
-                            params = CS.UI.$form.serialize();
-                        
-                        lgkorUI.showLoading();
-                        lgkorUI.requestAjaxData(url, params, function(d) {
-                            CS.UI.$form.submit(); 
-                        });
-                    });
-                });
-                CS.UI.validation.on('validerror', function(e, errors) {
-                    var $error;
-
-                    for (var key in errors) {
-                        $error = $('[name="'+key+'"]');
-
-                        if ($error.length > 0) {
-                            // $error.closest('.input-wrap, .select-wrap').addClass('error');
-                        }
-                    }
-                });
-                CS.UI.validation.on('errors', function(obj) {
-                    console.log(obj);
-                });
-            }
-        }
         custom.init();
     });
 })();

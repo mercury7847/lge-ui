@@ -46,7 +46,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 var required = $(item).data('required'); 
                 var msgTarget = $(item).data('msgTarget'); 
                 var errorMsg = $(item).data('errorMsg') || self.options.defaultErrorMsg;
-                var patternMsg = $(item).data(item.name+'Msg') || '';
+                var patternMsg = $(item).data('patternMsg') || '';
                 
                 if(required && /true/i.test(required)){
                     
@@ -73,7 +73,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     if(maxLength) newObj[item.name]['maxLength'] = maxLength;
                     if(validate) newObj[item.name]['validate'] = validate;
                     if(msgTarget) newObj[item.name]['msgTarget'] = msgTarget;
-                    if(patternMsg) newObj[item.name][item.name+'Msg'] = patternMsg;
+                    if(patternMsg) newObj[item.name]['patternMsg'] = patternMsg;
                     newObj[item.name] = $.extend(newObj[item.name], register[item.name] || {}); 
                 }else{
 
@@ -551,21 +551,21 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             if (self._defaultCheckFunc(val) != isFalse) {
                 if(obj.validate){
                     if(obj.validate(val) == isFalse){
-                        rObj[key] = isFalse? val : obj[key + 'Msg'];
+                        rObj[key] = isFalse? val : obj['patternMsg'];
                     }else{
                         delete rObj[key];
                     }            
                 }else{       
                     if (obj.pattern) {
                         if (self._regexCheckFunc(obj.pattern, val) == isFalse) {  
-                            rObj[key] = isFalse? val : obj[key + 'Msg'];
+                            rObj[key] = isFalse? val : obj['patternMsg'];
                         }else{
                             delete rObj[key];
                         }
                     }else{
                         if (obj.minLength || obj.maxLength) {
                             if(self._lenCheckFunc(val, obj.minLength? obj.minLength : 0 , obj.maxLength? obj.maxLength : self.options.maxLength) == isFalse) {
-                                rObj[key] = isFalse? val : obj[key + 'Msg'];
+                                rObj[key] = isFalse? val : obj['patternMsg'];
                             }else{
                                 delete rObj[key];
                             }
