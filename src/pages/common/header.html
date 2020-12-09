@@ -3,28 +3,24 @@
     <div class="skip-content">
         <a href="#content" id="skipToContent">본문 바로가기</a>
     </div>
+    <div class="non-javascript">
+        <p>현재 브라우저에서 자바스크립트 적용이 불가합니다. LG전자 웹사이트, 상품, 서비스의 이용을 위해 자바스크립트를 확인해주세요.</p>
+    </div>
     <div class="header-wrap">
         <!-- [D] 스크롤 시 .mobile-sticky-on 추가 -->
-        <!-- [D] Depth 케이스 .mobile-category-depth 추가 -->
-        @@if (context.mobileCase === undefined || context.mobileCase === "all" || context.mobileCase === "main" || context.mobileCase === "subStore" || context.mobileCase === "subStory" || context.mobileCase === "subCS") {
         <div class="header-top">
-        }
-        @@if (context.mobileCase === "isDepth" || context.mobileCase === "noneDepth") {
-        <div class="header-top mobile-category-depth">
-        }
             <div class="logo"><a href="#"><em class="blind">LG전자</em></a></div>
             <div class="utility">
                 <ul class="shortcut">
                     <li class="search"><a href="#"><em class="blind">검색</em></a></li>
-                    <li class="mypage">
-                        <!-- [D] Hover, Focus - .on 추가
-                                Click 시 로그인 전 - 로그인 페이지로 이동
-                                         로그인 후 - 마이페이지로 이동 -->
-                        <a href="#"><em class="blind">마이페이지</em></a>
-                        <!-- 로그인 전 -->
+                    <!-- 로그인 전 -->
+                    <li class="mypage before-login">
+                        <!-- [D] Hover, Focus - .on 추가 -->
+                        <a href="#" class="on"><em class="blind">마이페이지</em></a>
                         <div class="mypage-layer">
-                            <div class="mypage-layer-inner logout">
-                                <a href="#" class="btn-text">로그인</a>
+                            <div class="mypage-layer-inner">
+                                <a href="#">로그인</a>
+                                <a href="#">회원가입</a>
                                 <ul class="mypage-shortcut">
                                     <li><a href="#">주문/배송 조회</a></li>
                                     <li><a href="#">멤버십 가입</a></li>
@@ -32,10 +28,15 @@
                                 </ul>
                             </div>
                         </div>
-                        <!-- 로그인 후
+                    </li>
+                    <!-- // 로그인 전 -->
+                    <!-- 로그인 후 -->
+                    <li class="mypage after-login">
+                        <!-- [D] Hover, Focus - .on 추가 -->
+                        <a href="#"><em class="blind">마이페이지</em></a>
                         <div class="mypage-layer">
-                            <div class="mypage-layer-inner login">
-                                <a href="#" class="btn-text">로그아웃</a>
+                            <div class="mypage-layer-inner">
+                                <a href="#">로그아웃</a>
                                 <ul class="mypage-shortcut">
                                     <li><a href="#">주문/배송 조회</a></li>
                                     <li><a href="#">케어솔루션/케어십</a></li>
@@ -43,8 +44,9 @@
                                     <li><a href="#">제품 등록</a></li>
                                 </ul>
                             </div>
-                        </div> -->
+                        </div>
                     </li>
+                    <!-- // 로그인 후 -->
                     <li class="cart">
                         <a href="#"><em class="blind">장바구니</em></a>
                         <span class="count">
@@ -64,89 +66,30 @@
 
             @@if (context.mobileCase === undefined || context.mobileCase === "all" || context.mobileCase === "main") {
             <!-- Mobile 메인 메뉴 -->
-            <div class="mobile-nav-category mobile-main-nav">
-                <a href="#none" class="nav-item">홈</a>
-                <div class="mobile-category-container">
-                    <ul>
-                        <li><a href="#" class="category-item active">스토어</a></li>
-                        <li><a href="#" class="category-item">스토리</a></li>
-                        <li><a href="#" class="category-item">고객지원</a></li>
-                    </ul>
-                </div>
-            </div>
-            }
-
-            @@if (context.mobileCase === "all" || context.mobileCase === "subStore") {
-            <!-- Mobile 서브메뉴 스토어 메인 -->
-            <div class="mobile-nav-category mobile-main-nav is-sub">
-                <a href="#none" class="nav-item">스토어</a>
-                <div class="mobile-category-container">
-                    <ul>
-                        <li>
-                            <!-- [D] Click, Hover - .active 추가 -->
-                            <a href="#" class="category-item active">스토어</a>
-                            <div class="category">
-                                <ul>
-                                    <li><a href="#" class="active">제품</a></li>
-                                    <li><a href="#">케어솔루션</a></li>
-                                    <li><a href="#">이벤트/멤버십</a></li>
-                                    <li><a href="#">케어용품/소모품</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="#" class="category-item">스토리</a></li>
-                        <li><a href="#" class="category-item">고객지원</a></li>
-                    </ul>
-                </div>
-            </div>
-            }
-
-            @@if (context.mobileCase === "all" || context.mobileCase === "subStory") {
-            <!-- Mobile 서브메뉴 스토리 메인 -->
-            <div class="mobile-nav-category mobile-main-nav is-sub">
-                <a href="#none" class="nav-item">스토리</a>
-                <div class="mobile-category-container">
-                    <ul>
-                        <li><a href="#" class="category-item">스토어</a></li>
-                        <li>
-                            <!-- [D] Click, Hover - .active 추가 -->
-                            <a href="#" class="category-item active">스토리</a>
-                            <div class="category">
-                                <ul>
-                                    <li><a href="#">홈</a></li>
-                                    <li><a href="#">매거진</a></li>
-                                    <li><a href="#">활용가이드</a></li>
-                                    <li><a href="#">뉴스룸</a></li>
-                                    <li><a href="#">e-카탈로그</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="#" class="category-item">고객지원</a></li>
-                    </ul>
-                </div>
-            </div>
-            }
-
-            @@if (context.mobileCase === "all" || context.mobileCase === "subCS") {
-            <!-- Mobile 서브메뉴 고객지원 메인 -->
-            <div class="mobile-nav-category mobile-main-nav">
-                <a href="#none" class="nav-item">고객지원</a>
-                <div class="mobile-category-container">
-                    <ul>
-                        <li><a href="#" class="category-item">스토어</a></li>
-                        <li><a href="#" class="category-item">스토리</a></li>
-                        <li><a href="#" class="category-item active">고객지원</a></li>
-                    </ul>
-                </div>
+            <div class="mobile-nav">
+                <ul>
+                    <li><a href="#n" class="nav-item">홈</a></li>
+                    <li><a href="#n" class="nav-item">스토어</a></li>
+                    <li><a href="#n" class="nav-item">케어솔루션</a></li>
+                    <li><a href="#n" class="nav-item">스토리</a></li>
+                    <li><a href="#n" class="nav-item">고객지원</a></li>
+                </ul>
+<!--                <div class="mobile-category-container">-->
+<!--                    <ul>-->
+<!--                        <li><a href="#" class="category-item active">스토어</a></li>-->
+<!--                        <li><a href="#" class="category-item">스토리</a></li>-->
+<!--                        <li><a href="#" class="category-item">고객지원</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
             </div>
             }
 
             @@if (context.mobileCase === "all" || context.mobileCase === "isDepth") {
             <!-- Mobile Depth (동일메뉴 존재) -->
             <!-- [D] .header-top 에 .mobile-category-depth 추가 -->
-            <div class="mobile-nav-category is-depth">
+            <div class="mobile-nav is-depth">
                 <a href="#" class="btn-back"><span class="blind">뒤로가기</span></a>
-                <a href="#none" class="nav-item">청소기</a>
+                <a href="#n" class="nav-item">청소기</a>
                 <div class="nav-category-container">
                     <ul>
                         <li><a href="#" class="active">워시타워</a></li>
@@ -162,7 +105,7 @@
             @@if (context.mobileCase === "all" || context.mobileCase === "noneDepth") {
             <!-- Mobile Depth (동일메뉴, 하위메뉴 미존재) -->
             <!-- [D] .header-top 에 .mobile-category-depth 추가 -->
-            <div class="mobile-nav-category">
+            <div class="mobile-nav">
                 <a href="#" class="btn-back"><span class="blind">뒤로가기</span></a>
                 <span class="nav-item">코드제로 A9</span>
             </div>
@@ -232,32 +175,34 @@
                     <span class="blind">브랜드관</span>
                     <!-- 브랜드 로고 이미지 사용의 경우 -->
                     <ul class="brand-link">
-                        <li><a href="#"><img src="/lg5-common/images/header/logo-objet-collection.svg" alt="LG Objet Collection"></a></li>
                         <li><a href="#"><img src="/lg5-common/images/header/logo-signature.svg" alt="LG SIGNATURE"></a></li>
                         <li><a href="#"><img src="/lg5-common/images/header/logo-thinq.png" alt="LG ThinQ"></a></li>
+                        <li><a href="#"><img src="/lg5-common/images/header/logo-objet-collection.svg" alt="LG Objet Collection"></a></li>
                     </ul>
                     <!-- 브랜드 텍스트 사용의 경우
-                    <ul class="brand-link">
-                        <li><a href="#"><span>LG Objet Collection</span></a></li>
+                    <ul class="brand-link text">
                         <li><a href="#"><span>LG SIGNATURE</span></a></li>
                         <li><a href="#"><span>LG ThinQ</span></a></li>
-                    </ul> -->
+                        <li><a href="#"><span>LG Objet Collection</span></a></li>
+                    </ul>
+                    -->
                 </div>
                 <div class="nav-brand-gate-mobile">
                     <span class="title">브랜드관</span>
                     <!-- 브랜드 텍스트 -->
                     <ul class="brand-link">
                         <li><a href="#"><span>LG SIGNATURE</span></a></li>
-                        <li><a href="#"><span>LG Object Collection</span></a></li>
                         <li><a href="#"><span>LG ThinQ</span></a></li>
+                        <li><a href="#"><span>LG Object Collection</span></a></li>
                     </ul>
                 </div>
                 <ul class="nav">
+                    <!-- [D] Click, Hover - .active 추가 -->
                     <li class="nav-category">
                         <!-- [D] [1Depth] Click, Hover - .active 추가 -->
                         <a href="#" class="nav-item">
-                            제품
-                            <i class="icon-nav"><em class="blind">제품 메뉴 열기</em></i>
+                            스토어
+                            <i class="icon-nav"><em class="blind">스토어 메뉴 열기</em></i>
                         </a>
                         <!-- Category Container -->
                         <div class="nav-category-container">
@@ -303,18 +248,17 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                    <div class="column">
-                                                        <div class="category-service">
+                                                    <div class="column additional-category">
+                                                        <div class="category-related">
                                                             <ul>
-                                                                <li><a href="#" class="service-link">시네빔 화질체험존</a></li>
-                                                                <li><a href="#" class="service-link">매장상담신청</a></li>
+                                                                <li><a href="#" class="link-item">매장상담신청</a></li>
                                                             </ul>
                                                         </div>
                                                         <div class="category-hashtag">
                                                             <ul>
-                                                                <li><a href="#" class="tag-item"># 으뜸효율</a></li>
-                                                                <li><a href="#" class="tag-item"># 올레드경품증정 이벤트</a></li>
-                                                                <li><a href="#" class="tag-item"># TV 보상판매</a></li>
+                                                                <li><a href="#" class="tag-item">#으뜸효율</a></li>
+                                                                <li><a href="#" class="tag-item">#올레드경품증정이벤트</a></li>
+                                                                <li><a href="#" class="tag-item">#TV보상판매</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -331,22 +275,32 @@
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
                                                                 <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
-                                                                        <span>LG올레드 AI ThinQ</span>
-                                                                        <p>구매 고객 감사 경품<br>증정 이벤트</p>
+                                                                        <p class="text">차원이 다른 LG 올레드 AI ThinQ LG 올레드 AI ThinQ LG 올레드 AI ThinQ 올레드 AI ThinQ</p>
                                                                     </div>
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
                                                                 <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
-                                                                        <span>LG올레드 AI ThinQ</span>
-                                                                        <p>구매 고객 감사 경품<br>증정 이벤트</p>
+                                                                        <p class="text">차원이 다른<br>LG 올레드 AI ThinQ</p>
                                                                     </div>
                                                                 </a>
                                                             </div>
+                                                            <div class="ui_carousel_slide">
+                                                                <a href="none" class="banner-box">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner03.jpg" alt="" class="lazyload">
+                                                                    <div class="banner-text">
+                                                                        <p class="text">LG 올레드 AI ThinQ</p>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="slide-controls">
+                                                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                                                         </div>
                                                     </div>
                                                     <!-- // 슬라이드 이미지 배너 -->
@@ -392,17 +346,17 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                    <div class="column">
-                                                        <div class="category-service">
+                                                    <div class="column additional-category">
+                                                        <div class="category-related">
                                                             <ul>
-                                                                <li><a href="#" class="service-link">펀&amp;이슈</a></li>
-                                                                <li><a href="#" class="service-link">가이드</a></li>
+                                                                <li><a href="#" class="link-item">펀&amp;이슈</a></li>
+                                                                <li><a href="#" class="link-item">가이드</a></li>
                                                             </ul>
                                                         </div>
                                                         <div class="category-hashtag">
                                                             <ul>
-                                                                <li><a href="#" class="tag-item"># 울트라기어</a></li>
-                                                                <li><a href="#" class="tag-item"># LG gram</a></li>
+                                                                <li><a href="#" class="tag-item">#울트라기어</a></li>
+                                                                <li><a href="#" class="tag-item">#LG gram</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -419,22 +373,24 @@
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
                                                                 <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
-                                                                        <span>LG올레드 AI ThinQ</span>
-                                                                        <p>구매 고객 감사 경품<br>증정 이벤트</p>
+                                                                        <p class="text">썸머 gram 혜택 이벤트</p>
                                                                     </div>
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
                                                                 <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
-                                                                        <span>LG올레드 AI ThinQ</span>
-                                                                        <p>구매 고객 감사 경품<br>증정 이벤트</p>
+                                                                        <p class="text">썸머 gram 혜택 이벤트</p>
                                                                     </div>
                                                                 </a>
                                                             </div>
+                                                        </div>
+                                                        <div class="slide-controls">
+                                                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                                                         </div>
                                                     </div>
                                                     <!-- // 슬라이드 이미지 배너 -->
@@ -468,7 +424,7 @@
                                                                 <a href="#" class="category-item">김치냉장고</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="#">스탠드형</a></li>
-                                                                    <li><a href="#">뚜껑식</a></li>
+                                                                    <li><a href="#">뚜껑식형</a></li>
                                                                     <li><a href="#">프리스타일</a></li>
                                                                 </ul>
                                                             </li>
@@ -476,7 +432,7 @@
                                                                 <a href="#" class="category-item">전자레인지/오븐</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="#">광파오븐</a></li>
-                                                                    <li><a href="#">상냉장/하냉동</a></li>
+                                                                    <li><a href="#">전자레인지</a></li>
                                                                 </ul>
                                                             </li>
                                                         </ul>
@@ -504,17 +460,17 @@
                                                             <li><a href="#" class="category-item">빌트인가전</a></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="column">
-                                                        <div class="category-service">
+                                                    <div class="column additional-category">
+                                                        <div class="category-related">
                                                             <ul>
-                                                                <li><a href="#" class="service-link">체험리뷰</a></li>
-                                                                <li><a href="#" class="service-link">케어솔루션</a></li>
+                                                                <li><a href="#" class="link-item">체험리뷰</a></li>
+                                                                <li><a href="#" class="link-item">케어솔루션</a></li>
                                                             </ul>
                                                         </div>
                                                         <div class="category-hashtag">
                                                             <ul>
-                                                                <li><a href="#" class="tag-item"># 시그니처 키친 스위트</a></li>
-                                                                <li><a href="#" class="tag-item"># LG Objet 냉장고</a></li>
+                                                                <li><a href="#" class="tag-item">#시그니처 키친 스위트</a></li>
+                                                                <li><a href="#" class="tag-item">#LG Objet 냉장고</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -531,22 +487,24 @@
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
                                                                 <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
-                                                                        <span>LG올레드 AI ThinQ</span>
-                                                                        <p>구매 고객 감사 경품<br>증정 이벤트</p>
+                                                                        <p class="text">LG DIOS 얼음정수기냉장고<br>구매고객 대상 특별 혜택 이벤트</p>
                                                                     </div>
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
                                                                 <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
-                                                                        <span>LG올레드 AI ThinQ</span>
-                                                                        <p>구매 고객 감사 경품<br>증정 이벤트</p>
+                                                                        <p class="text">LG DIOS 얼음정수기냉장고<br>구매고객 대상 특별 혜택 이벤트</p>
                                                                     </div>
                                                                 </a>
                                                             </div>
+                                                        </div>
+                                                        <div class="slide-controls">
+                                                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                                                         </div>
                                                     </div>
                                                     <!-- // 슬라이드 이미지 배너 -->
@@ -589,12 +547,12 @@
                                                                     <li><a href="#">코드제로 T9</a></li>
                                                                     <li><a href="#">핸디스틱</a></li>
                                                                     <li><a href="#">로보킹</a></li>
-                                                                    <li><a href="#">사이킹</a></li>
+                                                                    <li><a href="#">싸이킹</a></li>
                                                                 </ul>
                                                             </li>
                                                             <li><a href="#" class="category-item">안마의자</a></li>
                                                             <li>
-                                                                <a href="#" class="category-item">뷰티 디자인</a>
+                                                                <a href="#" class="category-item">뷰티 디바이스</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="#">LED 마스크</a></li>
                                                                     <li><a href="#">LED 넥케어</a></li>
@@ -605,17 +563,17 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                    <div class="column">
-                                                        <div class="category-service">
+                                                    <div class="column additional-category">
+                                                        <div class="category-related">
                                                             <ul>
-                                                                <li><a href="#" class="service-link">체험리뷰</a></li>
-                                                                <li><a href="#" class="service-link">펀&amp;이슈</a></li>
+                                                                <li><a href="#" class="link-item">체험리뷰</a></li>
+                                                                <li><a href="#" class="link-item">펀&amp;이슈</a></li>
                                                             </ul>
                                                         </div>
                                                         <div class="category-hashtag">
                                                             <ul>
-                                                                <li><a href="#" class="tag-item"># 코드제로</a></li>
-                                                                <li><a href="#" class="tag-item"># 으뜸효율</a></li>
+                                                                <li><a href="#" class="tag-item">#코드제로</a></li>
+                                                                <li><a href="#" class="tag-item">#으뜸효율</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -632,22 +590,24 @@
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
                                                                 <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
-                                                                        <span>LG올레드 AI ThinQ</span>
-                                                                        <p>구매 고객 감사 경품<br>증정 이벤트</p>
+                                                                        <p class="text">국내 최초<br>원바디 세탁 건조기</p>
                                                                     </div>
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
                                                                 <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
-                                                                        <span>LG올레드 AI ThinQ</span>
-                                                                        <p>구매 고객 감사 경품<br>증정 이벤트</p>
+                                                                        <p class="text">국내 최초<br>원바디 세탁 건조기</p>
                                                                     </div>
                                                                 </a>
                                                             </div>
+                                                        </div>
+                                                        <div class="slide-controls">
+                                                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                                                         </div>
                                                     </div>
                                                     <!-- // 슬라이드 이미지 배너 -->
@@ -670,8 +630,8 @@
                                                                 <a href="#" class="category-item">에어컨</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="#">스탠드형</a></li>
-                                                                    <li><a href="#">2 in 1</a></li>
-                                                                    <li><a href="#">3 in 1</a></li>
+                                                                    <li><a href="#">2in1</a></li>
+                                                                    <li><a href="#">3in1</a></li>
                                                                     <li><a href="#">벽걸이형</a></li>
                                                                     <li><a href="#">이동식 에어컨</a></li>
                                                                     <li><a href="#">상업용 냉방기</a></li>
@@ -694,17 +654,17 @@
                                                             <li><a href="#" class="category-item">가습기</a></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="column">
-                                                        <div class="category-service">
+                                                    <div class="column additional-category">
+                                                        <div class="category-related">
                                                             <ul>
-                                                                <li><a href="#" class="service-link">체험리뷰</a></li>
-                                                                <li><a href="#" class="service-link">가이드</a></li>
+                                                                <li><a href="#" class="link-item">체험리뷰</a></li>
+                                                                <li><a href="#" class="link-item">가이드</a></li>
                                                             </ul>
                                                         </div>
                                                         <div class="category-hashtag">
                                                             <ul>
-                                                                <li><a href="#" class="tag-item"># LGObjet가습공기청정기</a></li>
-                                                                <li><a href="#" class="tag-item"># 인공지능 LG휘센</a></li>
+                                                                <li><a href="#" class="tag-item">#LGObjet가습공기청정기</a></li>
+                                                                <li><a href="#" class="tag-item">#인공지능 LG휘센</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -721,20 +681,24 @@
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
                                                                 <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
-                                                                        <p>LG휘센 20주년<br>브랜드 감사 행사</p>
+                                                                        <p class="text">국내 최초<br>원바디 세탁 건조기</p>
                                                                     </div>
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
                                                                 <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
-                                                                        <p>LG휘센 20주년<br>브랜드 감사 행사</p>
+                                                                        <p class="text">국내 최초<br>원바디 세탁 건조기</p>
                                                                     </div>
                                                                 </a>
                                                             </div>
+                                                        </div>
+                                                        <div class="slide-controls">
+                                                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                                                         </div>
                                                     </div>
                                                     <!-- // 슬라이드 이미지 배너 -->
@@ -777,20 +741,20 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                    <div class="column">
-                                                        <div class="category-service">
+                                                    <div class="column additional-category">
+                                                        <div class="category-related">
                                                             <ul>
-                                                                <li><a href="#" class="service-link">LG 듀얼 스크린</a></li>
-                                                                <li><a href="#" class="service-link">LG 페이</a></li>
-                                                                <li><a href="#" class="service-link">LG 모바일 스위치</a></li>
-                                                                <li><a href="#" class="service-link">다운로드 센터</a></li>
-                                                                <li><a href="#" class="service-link">모바일 새로운 기능 안내</a></li>
+                                                                <li><a href="#" class="link-item">LG 듀얼 스크린</a></li>
+                                                                <li><a href="#" class="link-item">LG 페이</a></li>
+                                                                <li><a href="#" class="link-item">LG 모바일 스위치</a></li>
+                                                                <li><a href="#" class="link-item">다운로드 센터</a></li>
+                                                                <li><a href="#" class="link-item">모바일 새로운 기능 안내</a></li>
                                                             </ul>
                                                         </div>
                                                         <div class="category-hashtag">
                                                             <ul>
-                                                                <li><a href="#" class="tag-item"># LG벨벳</a></li>
-                                                                <li><a href="#" class="tag-item"># LG Q51</a></li>
+                                                                <li><a href="#" class="tag-item">#LG벨벳</a></li>
+                                                                <li><a href="#" class="tag-item">#LG Q51</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -807,20 +771,24 @@
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
                                                                 <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
-                                                                        <p>LG VELVET<br>특별 구매 혜택</p>
+                                                                        <p class="text">국내 최초<br>원바디 세탁 건조기</p>
                                                                     </div>
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
                                                                 <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
-                                                                        <p>LG VELVET<br>특별 구매 혜택</p>
+                                                                        <p class="text">국내 최초<br>원바디 세탁 건조기</p>
                                                                     </div>
                                                                 </a>
                                                             </div>
+                                                        </div>
+                                                        <div class="slide-controls">
+                                                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                                                         </div>
                                                     </div>
                                                     <!-- // 슬라이드 이미지 배너 -->
@@ -841,13 +809,204 @@
                                                         <ul class="category">
                                                             <li><a href="#" class="category-item">LED 마스크</a></li>
                                                             <li><a href="#" class="category-item">LED 넥케어</a></li>
+                                                            <li><a href="#" class="category-item">탄력기기</a></li>
+                                                            <li><a href="#" class="category-item">흡수촉진기</a></li>
+                                                            <li><a href="#" class="category-item">클렌징 기기</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="column additional-category">
+                                                        <div class="category-related">
+                                                            <ul>
+                                                                <li><a href="#" class="link-item">체험리뷰</a></li>
+                                                                <li><a href="#" class="link-item">펀&amp;이슈</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="category-hashtag">
+                                                            <ul>
+                                                                <li><a href="#" class="tag-item">#더마 LED 마스크</a></li>
+                                                                <li><a href="#" class="tag-item">#토탈 타이트 업 케어</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 슬라이드 이미지 배너 -->
+                                                    <div class="column category-banner ui_carousel_slider">
+                                                        <div class="indi-wrap">
+                                                            <ul class="ui_carousel_dots">
+                                                                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                                            </ul>
+                                                            <span class="ui_carousel_play play">
+                                                                <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
+                                                            </span>
+                                                        </div>
+                                                        <div class="items ui_carousel_track">
+                                                            <div class="ui_carousel_slide">
+                                                                <a href="none" class="banner-box">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
+                                                                    <div class="banner-text">
+                                                                        <p class="text">LG VELVET<br>특별 구매 혜택</p>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="ui_carousel_slide">
+                                                                <a href="none" class="banner-box">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
+                                                                    <div class="banner-text">
+                                                                        <p class="text">LG VELVET<br>특별 구매 혜택</p>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="slide-controls">
+                                                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- // 슬라이드 이미지 배너 -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <!-- [D] [2Depth] Click, Hover - .active 추가 -->
+                                    <a href="#" class="super-category-item">케어용품/소모품</a>
+                                    <div class="nav-category-layer">
+                                        <div class="nav-category-inner">
+                                            <div class="nav-category-wrap">
+                                                <div class="category-title">케어용품/소모품</div>
+                                                <div class="category-box">
+                                                    <div class="column">
+                                                        <ul class="category">
+                                                            <li>
+                                                                <span class="category-item">PC</span>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">노트북</a></li>
+                                                                    <li><a href="#">데스크탑</a></li>
+                                                                    <li><a href="#">탭북</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="category-item">TV/모니터</a>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">TV</a></li>
+                                                                    <li><a href="#">모니터</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <span class="category-item">가습기</span>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">가습기</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <span class="category-item">건조기</span>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">건조기</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <span class="category-item">공기청정기</span>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">공기청정기</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="category-item">냉장고</a>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">양문 냉장고</a></li>
+                                                                    <li><a href="#">일반 냉장고</a></li>
+                                                                    <li><a href="#">김치 냉장고</a></li>
+                                                                </ul>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                     <div class="column">
                                                         <ul class="category">
-                                                            <li><a href="#" class="category-item">탄력기기</a></li>
-                                                            <li><a href="#" class="category-item">흡수촉진기</a></li>
-                                                            <li><a href="#" class="category-item">클렌징 기기</a></li>
+                                                            <li>
+                                                                <a href="#" class="category-item">뷰티기기</a>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">프라엘</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="category-item">세탁기</a>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">통돌이 세탁기</a></li>
+                                                                    <li><a href="#">드럼 세탁기</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="category-item">스마트폰</a>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">스마트폰</a></li>
+                                                                    <li><a href="#">G-Pad</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a href="#" class="category-item">스타일러</a></li>
+                                                            <li><a href="#" class="category-item">식기세척기</a></li>
+                                                            <li>
+                                                                <a href="#" class="category-item">에어컨</a>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">스탠드 에어컨</a></li>
+                                                                    <li><a href="#">벽걸이 에어컨</a></li>
+                                                                    <li><a href="#">천정형 에어컨</a></li>
+                                                                    <li><a href="#">창문형 에어컨</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="category-item">정수기/이온수기</a>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">정수기</a></li>
+                                                                    <li><a href="#">이온수기</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="column">
+                                                        <ul class="category">
+                                                            <li>
+                                                                <a href="#" class="category-item">정수기/이온수기</a>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">정수기</a></li>
+                                                                    <li><a href="#">이온수기</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="category-item">제습기</a>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">제습기</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="category-item">조리기기</a>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">전자레인지</a></li>
+                                                                    <li><a href="#">가스레인지</a></li>
+                                                                    <li><a href="#">광파오븐레인지</a></li>
+                                                                    <li><a href="#">가스오븐레인지</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="category-item">청소기</a>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">유/무선 청소기</a></li>
+                                                                    <li><a href="#">로봇 청소기</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="category-item">프로젝터/미니빔</a>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">프로젝터</a></li>
+                                                                    <li><a href="#">미니빔</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="category-item">프린터</a>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">잉크젯 프린터</a></li>
+                                                                    <li><a href="#">레이저젯 프린터</a></li>
+                                                                </ul>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                     <!-- 슬라이드 이미지 배너 -->
@@ -863,22 +1022,24 @@
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
                                                                 <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
-                                                                        <span>차원 다른 전문가의 가전관리</span>
-                                                                        <p>LG전자<br>케어솔루션</p>
+                                                                        <p class="text">TV 케이블</p>
                                                                     </div>
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
                                                                 <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
-                                                                        <span>차원 다른 전문가의 가전관리</span>
-                                                                        <p>LG전자<br>케어솔루션</p>
+                                                                        <p class="text">TV 케이블</p>
                                                                     </div>
                                                                 </a>
                                                             </div>
+                                                        </div>
+                                                        <div class="slide-controls">
+                                                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                                                         </div>
                                                     </div>
                                                     <!-- // 슬라이드 이미지 배너 -->
@@ -889,59 +1050,126 @@
                                 </li>
                                 <li>
                                     <!-- [D] [2Depth] Click, Hover - .active 추가 -->
-                                    <a href="#" class="super-category-item">브랜드관</a>
+                                    <a href="#" class="super-category-item">LG Objet Collectoin</a>
                                     <div class="nav-category-layer">
                                         <div class="nav-category-inner">
                                             <div class="nav-category-wrap">
-                                                <div class="category-title">브랜드관</div>
+                                                <div class="category-title">LG Objet Collectoin</div>
+                                                <div class="category-box">
+                                                    <div class="column">
+                                                        <ul class="category">
+                                                            <li><a href="#" class="category-item">상냉장/하냉동</a></li>
+                                                            <li>
+                                                                <a href="#" class="category-item">컨버터블 패키지</a>
+                                                                <ul class="sub-category">
+                                                                    <li><a href="#">냉장고</a></li>
+                                                                    <li><a href="#">냉동고</a></li>
+                                                                    <li><a href="#">김치냉장고</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a href="#" class="category-item">김치냉장고</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="column">
+                                                        <ul class="category">
+                                                            <li><a href="#" class="category-item">워시타워</a></li>
+                                                            <li><a href="#" class="category-item">스타일러</a></li>
+                                                            <li><a href="#" class="category-item">광파 오븐</a></li>
+                                                            <li><a href="#" class="category-item">식기세척기</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="column category-banner">
+                                                        <a href="#n" class="banner-box">
+                                                            <img data-src="/lg5-common/images/header/@banner.jpg" alt="" class="lazyload">
+                                                            <div class="banner-text">
+                                                                <p class="text">다양한 소재와 색상을 입힌<br>나만의 오브제 컬렉션 체험하기</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <!-- 슬라이드 이미지 배너 -->
+                                                    <div class="column category-banner ui_carousel_slider">
+                                                        <div class="indi-wrap">
+                                                            <ul class="ui_carousel_dots">
+                                                                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                                            </ul>
+                                                            <span class="ui_carousel_play play">
+                                                                <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
+                                                            </span>
+                                                        </div>
+                                                        <div class="items ui_carousel_track">
+                                                            <div class="ui_carousel_slide">
+                                                                <a href="none" class="banner-box">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
+                                                                    <div class="banner-text">
+                                                                        <p class="text">LG Objet Collection<br>브랜드 스토리</p>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="ui_carousel_slide">
+                                                                <a href="none" class="banner-box">
+                                                                    <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
+                                                                    <div class="banner-text">
+                                                                        <p class="text">LG Objet Collection<br>브랜드 스토리</p>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="slide-controls">
+                                                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- // 슬라이드 이미지 배너 -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <!-- [D] [2Depth] Click, Hover - .active 추가 -->
+                                    <a href="#" class="super-category-item">LG SIGNATURE</a>
+                                    <div class="nav-category-layer">
+                                        <div class="nav-category-inner">
+                                            <div class="nav-category-wrap">
+                                                <div class="category-title">LG SIGNATURE</div>
                                                 <div class="category-box category-image-box">
                                                     <div class="column">
                                                         <ul class="category">
                                                             <li>
-                                                                <a href="#" class="category-item">LG SIGNATURE</a>
+                                                                <a href="#" class="category-item">TV</a>
                                                                 <div class="category-image">
-                                                                    <img src="/lg5-common/images/dummy/@header-category1.jpg" alt="">
+                                                                    <img src="/lg5-common/images/header/signature01.jpg" alt="">
                                                                 </div>
-                                                                <ul class="category-content">
-                                                                    <li><a href="#">LG SIGNATURE OLED 8K</a></li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category brand-category">
-                                                            <li><a href="#" class="category-item">제품정보</a></li>
-                                                            <li><a href="#" class="category-item">아트 가이드</a></li>
-                                                            <li><a href="#" class="category-item">쇼룸</a></li>
-                                                            <li><a href="#" class="category-item">테마영상</a></li>
-                                                            <li><a href="#" class="category-item">브랜드스토리</a></li>
-                                                            <li><a href="#" class="category-item">사진전</a></li>
-                                                            <li><a href="#" class="category-item">수상내역</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li>
-                                                                <a href="#" class="category-item">LG ThinQ</a>
-                                                                <div class="category-image">
-                                                                    <img src="/lg5-common/images/dummy/@header-category2.jpg" alt="">
-                                                                </div>
-                                                                <ul class="category-content">
-                                                                    <li><a href="#">LG 코드제로 ThinQ</a></li>
-                                                                </ul>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                     <div class="column">
                                                         <ul class="category">
                                                             <li>
-                                                                <a href="#" class="category-item">LG Objet Collection</a>
+                                                                <a href="#" class="category-item">냉장고</a>
                                                                 <div class="category-image">
-                                                                    <img src="/lg5-common/images/dummy/@header-category3.jpg" alt="">
+                                                                    <img src="/lg5-common/images/header/signature02.jpg" alt="">
                                                                 </div>
-                                                                <ul class="category-content">
-                                                                    <li><a href="#">LG Objet 가습공기청정기</a></li>
-                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="column">
+                                                        <ul class="category">
+                                                            <li>
+                                                                <a href="#" class="category-item">세탁기</a>
+                                                                <div class="category-image">
+                                                                    <img src="/lg5-common/images/header/signature03.jpg" alt="">
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="column">
+                                                        <ul class="category">
+                                                            <li>
+                                                                <a href="#" class="category-item">세탁기</a>
+                                                                <div class="category-image">
+                                                                    <img src="/lg5-common/images/header/signature03.jpg" alt="">
+                                                                </div>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -967,7 +1195,7 @@
                                             <ul class="category">
                                                 <li>
                                                     <!-- [D] Mobile Only [2Depth] Click - .active 추가 -->
-                                                    <a href="#" class="category-item">제품 안내</a>
+                                                    <a href="#" class="category-item">케어솔루션 제품 안내</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">정수기</a></li>
                                                         <li><a href="#">맥주제조기</a></li>
@@ -993,16 +1221,16 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="column">
-                                            <div class="category-service">
+                                        <div class="column additional-category">
+                                            <div class="category-related">
                                                 <ul>
-                                                    <li><a href="#" class="service-link">케어플래너로 견적내기</a></li>
+                                                    <li><a href="#" class="link-item">케어플래너로 견적내기</a></li>
                                                 </ul>
                                             </div>
                                             <div class="category-hashtag">
                                                 <ul>
-                                                    <li><a href="#" class="tag-item"># LG 퓨리케어 정수기</a></li>
-                                                    <li><a href="#" class="tag-item"># 보이는 ARS</a></li>
+                                                    <li><a href="#" class="tag-item">#LG 퓨리케어 정수기</a></li>
+                                                    <li><a href="#" class="tag-item">#보이는 ARS</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -1019,22 +1247,24 @@
                                             <div class="items ui_carousel_track">
                                                 <div class="ui_carousel_slide">
                                                     <a href="none" class="banner-box">
-                                                        <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                        <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                         <div class="banner-text">
-                                                            <span>LG전자 케어솔루션</span>
-                                                            <p>차원 다른 전문가의<br>가전관리</p>
+                                                            <p class="text">차원 다른 전문가의 가전관리<br>LG전자 케어솔루션</p>
                                                         </div>
                                                     </a>
                                                 </div>
                                                 <div class="ui_carousel_slide">
                                                     <a href="none" class="banner-box">
-                                                        <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                        <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                         <div class="banner-text">
-                                                            <span>LG전자 케어솔루션</span>
-                                                            <p>차원 다른 전문가의<br>가전관리</p>
+                                                            <p class="text">차원 다른 전문가의 가전관리<br>LG전자 케어솔루션</p>
                                                         </div>
                                                     </a>
                                                 </div>
+                                            </div>
+                                            <div class="slide-controls">
+                                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                                             </div>
                                         </div>
                                         <!-- // 슬라이드 이미지 배너 -->
@@ -1044,511 +1274,97 @@
                         </div>
                         <!-- //Category Layer -->
                     </li>
-                    <li class="nav-category">
-                        <a href="#" class="nav-item">
-                            케어용품/소모품
-                            <i class="icon-nav"><em class="blind">케어용품/소모품 메뉴 열기</em></i>
-                        </a>
-                        <!-- Category Container -->
-                        <div class="nav-category-container">
-                            <ul>
-                                <li>
-                                    <!-- [D] [2Depth] Click, Hover - .active 추가 -->
-                                    <a href="#" class="super-category-item">TV/AV</a>
-                                    <div class="nav-category-layer">
-                                        <div class="nav-category-inner">
-                                            <div class="nav-category-wrap">
-                                                <div class="category-title">TV/AV</div>
-                                                <div class="category-box">
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li>
-                                                                <a href="#" class="category-item">TV</a>
-                                                                <ul class="sub-category">
-                                                                    <li><a href="#">올레드 TV</a></li>
-                                                                    <li><a href="#">나노셀 TV</a></li>
-                                                                    <li><a href="#">울트라 HD TV</a></li>
-                                                                    <li><a href="#">LED TV</a></li>
-                                                                    <li><a href="#">LCD TV</a></li>
-                                                                </ul>
-                                                            </li>
-                                                            <li><a href="#" class="category-item">프로젝터</a></li>
-                                                            <li><a href="#" class="category-item">PDP</a></li>
-                                                            <li><a href="#" class="category-item">일반/슬림</a></li>
-                                                            <li><a href="#" class="category-item">사운드바/홈시어터</a></li>
-                                                            <li><a href="#" class="category-item">오디오</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li><a href="#" class="category-item">블루레이</a></li>
-                                                            <li><a href="#" class="category-item">DVD</a></li>
-                                                            <li><a href="#" class="category-item">비디오</a></li>
-                                                            <li><a href="#" class="category-item">셋톱박스</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <!-- 슬라이드 이미지 배너 -->
-                                                    <div class="column category-banner ui_carousel_slider">
-                                                        <div class="indi-wrap">
-                                                            <ul class="ui_carousel_dots">
-                                                                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                            </ul>
-                                                            <span class="ui_carousel_play play">
-                                                                <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
-                                                            </span>
-                                                        </div>
-                                                        <div class="items ui_carousel_track">
-                                                            <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                                    <div class="banner-text">
-                                                                        <p>LG TV 케이블</p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                            <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                                    <div class="banner-text">
-                                                                        <p>LG TV 케이블</p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- // 슬라이드 이미지 배너 -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!-- [D] [2Depth] Click, Hover - .active 추가 -->
-                                    <a href="#" class="super-category-item">IT</a>
-                                    <div class="nav-category-layer">
-                                        <div class="nav-category-inner">
-                                            <div class="nav-category-wrap">
-                                                <div class="category-title">IT</div>
-                                                <div class="category-box">
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li><a href="#" class="category-item">노트북/탭북</a></li>
-                                                            <li><a href="#" class="category-item">데스크톱/일체형</a></li>
-                                                            <li><a href="#" class="category-item">모니터</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li><a href="#" class="category-item">프린터</a></li>
-                                                            <li><a href="#" class="category-item">키즈패드</a></li>
-                                                            <li><a href="#" class="category-item">IT부품/주변기기</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <!-- 슬라이드 이미지 배너 -->
-                                                    <div class="column category-banner ui_carousel_slider">
-                                                        <div class="indi-wrap">
-                                                            <ul class="ui_carousel_dots">
-                                                                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                            </ul>
-                                                            <span class="ui_carousel_play play">
-                                                                <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
-                                                            </span>
-                                                        </div>
-                                                        <div class="items ui_carousel_track">
-                                                            <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                                    <div class="banner-text">
-                                                                        <span>차원 다른 전문가의 가전관리</span>
-                                                                        <p>LG전자<br>케어솔루션</p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                            <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                                    <div class="banner-text">
-                                                                        <span>차원 다른 전문가의 가전관리</span>
-                                                                        <p>LG전자<br>케어솔루션</p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- // 슬라이드 이미지 배너 -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!-- [D] [2Depth] Click, Hover - .active 추가 -->
-                                    <a href="#" class="super-category-item">주방가전</a>
-                                    <div class="nav-category-layer">
-                                        <div class="nav-category-inner">
-                                            <div class="nav-category-wrap">
-                                                <div class="category-title">주방가전</div>
-                                                <div class="category-box">
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li>
-                                                                <a href="#" class="category-item">냉장/냉동고</a>
-                                                                <ul class="sub-category">
-                                                                    <li><a href="#">냉장/냉동고</a></li>
-                                                                    <li><a href="#">양문형</a></li>
-                                                                    <li><a href="#">읿반형</a></li>
-                                                                    <li><a href="#">업소용</a></li>
-                                                                    <li><a href="#">김치 냉장고</a></li>
-                                                                    <li><a href="#">와인셀러</a></li>
-                                                                </ul>
-                                                            </li>
-                                                            <li><a href="#" class="category-item">광파오븐</a></li>
-                                                            <li><a href="#" class="category-item">가스오븐</a></li>
-                                                            <li><a href="#" class="category-item">전자레인지</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li><a href="#" class="category-item">전기레인지</a></li>
-                                                            <li><a href="#" class="category-item">가스레인지</a></li>
-                                                            <li><a href="#" class="category-item">식기세척기</a></li>
-                                                            <li><a href="#" class="category-item">정수기</a></li>
-                                                            <li><a href="#" class="category-item">맥주제조기</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <!-- 슬라이드 이미지 배너 -->
-                                                    <div class="column category-banner ui_carousel_slider">
-                                                        <div class="indi-wrap">
-                                                            <ul class="ui_carousel_dots">
-                                                                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                            </ul>
-                                                            <span class="ui_carousel_play play">
-                                                                <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
-                                                            </span>
-                                                        </div>
-                                                        <div class="items ui_carousel_track">
-                                                            <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                                    <div class="banner-text">
-                                                                        <span>차원 다른 전문가의 가전관리</span>
-                                                                        <p>LG전자<br>케어솔루션</p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                            <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                                    <div class="banner-text">
-                                                                        <span>차원 다른 전문가의 가전관리</span>
-                                                                        <p>LG전자<br>케어솔루션</p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- // 슬라이드 이미지 배너 -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!-- [D] [2Depth] Click, Hover - .active 추가 -->
-                                    <a href="#" class="super-category-item">생활가전</a>
-                                    <div class="nav-category-layer">
-                                        <div class="nav-category-inner">
-                                            <div class="nav-category-wrap">
-                                                <div class="category-title">생활가전</div>
-                                                <div class="category-box">
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li>
-                                                                <a href="#" class="category-item">세탁기</a>
-                                                                <ul class="sub-category">
-                                                                    <li><a href="#">드럼 세탁기</a></li>
-                                                                    <li><a href="#">일반 세탁기</a></li>
-                                                                </ul>
-                                                            </li>
-                                                            <li><a href="#" class="category-item">건조기</a></li>
-                                                            <li><a href="#" class="category-item">스타일러</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <div class="column">
-                                                                <ul class="category">
-                                                                    <li><a href="#" class="category-item">전기레인지</a></li>
-                                                                    <li><a href="#" class="category-item">가스레인지</a></li>
-                                                                    <li><a href="#" class="category-item">식기세척기</a></li>
-                                                                    <li><a href="#" class="category-item">정수기</a></li>
-                                                                    <li><a href="#" class="category-item">맥주제조기</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </ul>
-                                                    </div>
-                                                    <!-- 슬라이드 이미지 배너 -->
-                                                    <div class="column category-banner ui_carousel_slider">
-                                                        <div class="indi-wrap">
-                                                            <ul class="ui_carousel_dots">
-                                                                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                            </ul>
-                                                            <span class="ui_carousel_play play">
-                                                                <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
-                                                            </span>
-                                                        </div>
-                                                        <div class="items ui_carousel_track">
-                                                            <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                                    <div class="banner-text">
-                                                                        <span>차원 다른 전문가의 가전관리</span>
-                                                                        <p>LG전자<br>케어솔루션</p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                            <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                                    <div class="banner-text">
-                                                                        <span>차원 다른 전문가의 가전관리</span>
-                                                                        <p>LG전자<br>케어솔루션</p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- // 슬라이드 이미지 배너 -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!-- [D] [2Depth] Click, Hover - .active 추가 -->
-                                    <a href="#" class="super-category-item">에어컨/에어케어</a>
-                                    <div class="nav-category-layer">
-                                        <div class="nav-category-inner">
-                                            <div class="nav-category-wrap">
-                                                <div class="category-title">에어컨/에어케어</div>
-                                                <div class="category-box">
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li>
-                                                                <a href="#" class="category-item">에어컨</a>
-                                                                <ul class="sub-category">
-                                                                    <li><a href="#">3in1/ 2in1</a></li>
-                                                                    <li><a href="#">가정용 스탠드형</a></li>
-                                                                    <li><a href="#">업소용 스탠드형</a></li>
-                                                                    <li><a href="#">벽걸이형</a></li>
-                                                                    <li><a href="#">창문형/이동식</a></li>
-                                                                    <li><a href="#">시스템 에어컨</a></li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li><a href="#" class="category-item">공기청정기</a></li>
-                                                            <li><a href="#" class="category-item">제습기</a></li>
-                                                            <li><a href="#" class="category-item">가습기</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <!-- 슬라이드 이미지 배너 -->
-                                                    <div class="column category-banner ui_carousel_slider">
-                                                        <div class="indi-wrap">
-                                                            <ul class="ui_carousel_dots">
-                                                                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                            </ul>
-                                                            <span class="ui_carousel_play play">
-                                                                <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
-                                                            </span>
-                                                        </div>
-                                                        <div class="items ui_carousel_track">
-                                                            <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                                    <div class="banner-text">
-                                                                        <span>차원 다른 전문가의 가전관리</span>
-                                                                        <p>LG전자<br>케어솔루션</p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                            <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                                    <div class="banner-text">
-                                                                        <span>차원 다른 전문가의 가전관리</span>
-                                                                        <p>LG전자<br>케어솔루션</p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- // 슬라이드 이미지 배너 -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!-- [D] [2Depth] Click, Hover - .active 추가 -->
-                                    <a href="#" class="super-category-item">모바일</a>
-                                    <div class="nav-category-layer">
-                                        <div class="nav-category-inner">
-                                            <div class="nav-category-wrap">
-                                                <div class="category-title">모바일</div>
-                                                <div class="category-box">
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li><a href="#" class="category-item">스마트폰</a></li>
-                                                            <li><a href="#" class="category-item">태블릿</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li><a href="#" class="category-item">일반폰</a></li>
-                                                            <li><a href="#" class="category-item">G워치</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <!-- 슬라이드 이미지 배너 -->
-                                                    <div class="column category-banner ui_carousel_slider">
-                                                        <div class="indi-wrap">
-                                                            <ul class="ui_carousel_dots">
-                                                                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                            </ul>
-                                                            <span class="ui_carousel_play play">
-                                                                <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
-                                                            </span>
-                                                        </div>
-                                                        <div class="items ui_carousel_track">
-                                                            <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                                    <div class="banner-text">
-                                                                        <span>차원 다른 전문가의 가전관리</span>
-                                                                        <p>LG전자<br>케어솔루션</p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                            <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                                    <div class="banner-text">
-                                                                        <span>차원 다른 전문가의 가전관리</span>
-                                                                        <p>LG전자<br>케어솔루션</p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- // 슬라이드 이미지 배너 -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!-- [D] [2Depth] Click, Hover - .active 추가 -->
-                                    <a href="#" class="super-category-item">뷰티</a>
-                                    <div class="nav-category-layer">
-                                        <div class="nav-category-inner">
-                                            <div class="nav-category-wrap">
-                                                <div class="category-title">뷰티</div>
-                                                <div class="category-box">
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li><a href="#" class="category-item">LED 마스크</a></li>
-                                                            <li><a href="#" class="category-item">LED 넥케어</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li><a href="#" class="category-item">탄력기기</a></li>
-                                                            <li><a href="#" class="category-item">흡수촉진기</a></li>
-                                                            <li><a href="#" class="category-item">클렌징 기기</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <!-- 슬라이드 이미지 배너 -->
-                                                    <div class="column category-banner ui_carousel_slider">
-                                                        <div class="indi-wrap">
-                                                            <ul class="ui_carousel_dots">
-                                                                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                            </ul>
-                                                            <span class="ui_carousel_play play">
-                                                                <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
-                                                            </span>
-                                                        </div>
-                                                        <div class="items ui_carousel_track">
-                                                            <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                                    <div class="banner-text">
-                                                                        <span>차원 다른 전문가의 가전관리</span>
-                                                                        <p>LG전자<br>케어솔루션</p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                            <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
-                                                                    <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                                    <div class="banner-text">
-                                                                        <span>차원 다른 전문가의 가전관리</span>
-                                                                        <p>LG전자<br>케어솔루션</p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- // 슬라이드 이미지 배너 -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- //Category Container -->
-                    </li>
                     <li>
                         <!-- [D] [1Depth] Click, Hover - .active 추가 -->
-                        <a href="#" class="nav-item">멤버십/혜택</a>
+                        <a href="#" class="nav-item">스토리</a>
                         <!-- Category Layer -->
                         <div class="nav-category-layer">
                             <div class="nav-category-inner">
                                 <div class="nav-category-wrap">
-                                    <div class="category-title">이벤트/멤버십</div>
+                                    <div class="category-title">스토리</div>
                                     <div class="category-box">
                                         <div class="column">
                                             <ul class="category">
-                                                <li>
-                                                    <a href="#" class="category-item">이벤트</a>
-                                                    <ul class="sub-category">
-                                                        <li><a href="#">진행중인 이벤트</a></li>
-                                                        <li><a href="#">종료된 이벤트</a></li>
-                                                        <li><a href="#">당첨자 발표</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#" class="category-item">기획전</a></li>
+                                                <li><a href="#" class="category-item">비하인드 스토리</a></li>
+                                                <li><a href="#" class="category-item">체험 리뷰</a></li>
+                                                <li><a href="#" class="category-item">제품 활용 팁</a></li>
                                             </ul>
                                         </div>
                                         <div class="column">
                                             <ul class="category">
-                                                <li>
-                                                    <a href="#" class="category-item">멤버십</a>
-                                                    <ul class="sub-category">
-                                                        <li><a href="#">멤버십 혜택</a></li>
-                                                        <li><a href="#">멤버십 가입</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#" class="category-item">쿠폰</a></li>
+                                                <li><a href="#" class="category-item">광고/캠페인 영상</a></li>
+                                                <li><a href="#" class="category-item">LG 뉴스</a></li>
+                                                <li><a href="#" class="category-item">수상내역</a></li>
                                             </ul>
                                         </div>
                                         <div class="column category-banner">
-                                            <a href="#none" class="banner-box">
-                                                <img data-src="/lg5-common/images/dummy/@header-banner.png" alt="" class="lazyload">
+                                            <a href="#n" class="banner-box">
+                                                <img data-src="/lg5-common/images/header/@banner.jpg" alt="" class="lazyload">
                                                 <div class="banner-text">
-                                                    <p>전자제품<br>구매 혜택 이벤트</p>
+                                                    <p class="text">익숙함에 새로움을 더한<br>&lsquo;LG 윙(LG WING)&rsquo; 공개</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <!-- 슬라이드 이미지 배너 -->
+                                        <div class="column category-banner ui_carousel_slider">
+                                            <div class="indi-wrap">
+                                                <ul class="ui_carousel_dots">
+                                                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                                </ul>
+                                                <span class="ui_carousel_play play">
+                                                    <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
+                                                </span>
+                                            </div>
+                                            <div class="items ui_carousel_track">
+                                                <div class="ui_carousel_slide">
+                                                    <a href="none" class="banner-box">
+                                                        <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
+                                                        <div class="banner-text">
+                                                            <p class="text">LG스타일러<br>제품 활용 팁</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="ui_carousel_slide">
+                                                    <a href="none" class="banner-box">
+                                                        <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
+                                                        <div class="banner-text">
+                                                            <p class="text">LG스타일러<br>제품 활용 팁</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="slide-controls">
+                                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                            </div>
+                                        </div>
+                                        <!-- // 슬라이드 이미지 배너 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //Category Layer -->
+                    </li>
+                    <li>
+                        <!-- [D] [1Depth] Click, Hover - .active 추가 -->
+                        <a href="#" class="nav-item">멤버십</a>
+                        <!-- Category Layer -->
+                        <div class="nav-category-layer">
+                            <div class="nav-category-inner">
+                                <div class="nav-category-wrap">
+                                    <div class="category-title">멤버십</div>
+                                    <div class="category-box">
+                                        <div class="column">
+                                            <ul class="category">
+                                                <li><a href="#" class="category-item">멤버십 혜택</a></li>
+                                                <li><a href="#" class="category-item">멤버십 가입</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="column category-banner">
+                                            <a href="#n" class="banner-box">
+                                                <img data-src="/lg5-common/images/header/@banner.jpg" alt="" class="lazyload">
+                                                <div class="banner-text">
+                                                    <p class="text">LG V50 ThinQ<br>구매혜택 이벤트</p>
                                                 </div>
                                             </a>
                                         </div>
@@ -1565,22 +1381,24 @@
                                             <div class="ui_carousel_track">
                                                 <div class="ui_carousel_slide">
                                                     <a href="none" class="banner-box">
-                                                        <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                        <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                         <div class="banner-text">
-                                                            <span>LG올레드 AI ThinQ</span>
-                                                            <p>구매 고객 감사 경품<br>증정 이벤트</p>
+                                                            <p class="text">LG 베스트샵<br>이달의 카드 혜택</p>
                                                         </div>
                                                     </a>
                                                 </div>
                                                 <div class="ui_carousel_slide">
                                                     <a href="none" class="banner-box">
-                                                        <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                        <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                         <div class="banner-text">
-                                                            <span>LG올레드 AI ThinQ</span>
-                                                            <p>구매 고객 감사 경품<br>증정 이벤트</p>
+                                                            <p class="text">LG 베스트샵<br>이달의 카드 혜택</p>
                                                         </div>
                                                     </a>
                                                 </div>
+                                            </div>
+                                            <div class="slide-controls">
+                                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                                             </div>
                                         </div>
                                         <!-- // 슬라이드 이미지 배너 -->
@@ -1592,136 +1410,39 @@
                     </li>
                     <li>
                         <!-- [D] [1Depth] Click, Hover - .active 추가 -->
-                        <a href="#" class="nav-item">e-카탈로그</a>
+                        <a href="#" class="nav-item">기획전/이벤트</a>
                         <!-- Category Layer -->
                         <div class="nav-category-layer">
                             <div class="nav-category-inner">
                                 <div class="nav-category-wrap">
-                                    <div class="category-title">e-카탈로그</div>
+                                    <div class="category-title">기획전/이벤트</div>
                                     <div class="category-box category-image-box">
                                         <div class="column">
                                             <ul class="category">
                                                 <li>
-                                                    <a href="#" class="category-item">매거진</a>
+                                                    <a href="#" class="category-item">이벤트</a>
                                                     <div class="category-image">
-                                                        <img src="/lg5-common/images/dummy/@header-category1.jpg" alt="">
+                                                        <img src="/lg5-common/images/header/event01.jpg" alt="">
                                                     </div>
-                                                    <ul class="category-content">
-                                                        <li><a href="#">제품큐레이션</a></li>
-                                                        <li><a href="#">라이프스타일 컨설팅</a></li>
-                                                        <li><a href="#">비하인드 스토리</a></li>
-                                                    </ul>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="column">
                                             <ul class="category">
                                                 <li>
-                                                    <a href="#" class="category-item">활용가이드</a>
+                                                    <a href="#" class="category-item">기획전</a>
                                                     <div class="category-image">
-                                                        <img src="/lg5-common/images/dummy/@header-category2.jpg" alt="">
+                                                        <img src="/lg5-common/images/header/event02.jpg" alt="">
                                                     </div>
-                                                    <ul class="category-content">
-                                                        <li><a href="#">체험 리뷰</a></li>
-                                                        <li><a href="#">제품 관리 팁</a></li>
-                                                        <li><a href="#">레시피</a></li>
-                                                        <li><a href="#">모바일 서비스</a></li>
-                                                    </ul>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="column">
                                             <ul class="category">
                                                 <li>
-                                                    <a href="#" class="category-item">뉴스룸</a>
+                                                    <a href="#" class="category-item">카드혜택</a>
                                                     <div class="category-image">
-                                                        <img src="/lg5-common/images/dummy/@header-category3.jpg" alt="">
-                                                    </div>
-                                                    <ul class="category-content">
-                                                        <li><a href="#">NEWS</a></li>
-                                                        <li><a href="#">광고/캠페인 영상</a></li>
-                                                        <li><a href="#">히스토리</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
-                                                <li>
-                                                    <a href="#" class="category-item">e-카달로그</a>
-                                                    <div class="category-image">
-                                                        <img src="/lg5-common/images/dummy/@header-category1.jpg" alt="">
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- //Category Layer -->
-                    </li>
-                    <li>
-                        <!-- [D] [1Depth] Click, Hover - .active 추가 -->
-                        <a href="#" class="nav-item">스토리</a>
-                        <!-- Category Layer -->
-                        <div class="nav-category-layer">
-                            <div class="nav-category-inner">
-                                <div class="nav-category-wrap">
-                                    <div class="category-title">스토리</div>
-                                    <div class="category-box category-image-box">
-                                        <div class="column">
-                                            <ul class="category">
-                                                <li>
-                                                    <a href="#" class="category-item">매거진</a>
-                                                    <div class="category-image">
-                                                        <img src="/lg5-common/images/dummy/@header-category1.jpg" alt="">
-                                                    </div>
-                                                    <ul class="category-content">
-                                                        <li><a href="#">제품큐레이션</a></li>
-                                                        <li><a href="#">라이프스타일 컨설팅</a></li>
-                                                        <li><a href="#">비하인드 스토리</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
-                                                <li>
-                                                    <a href="#" class="category-item">활용가이드</a>
-                                                    <div class="category-image">
-                                                        <img src="/lg5-common/images/dummy/@header-category2.jpg" alt="">
-                                                    </div>
-                                                    <ul class="category-content">
-                                                        <li><a href="#">체험 리뷰</a></li>
-                                                        <li><a href="#">제품 관리 팁</a></li>
-                                                        <li><a href="#">레시피</a></li>
-                                                        <li><a href="#">모바일 서비스</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
-                                                <li>
-                                                    <a href="#" class="category-item">뉴스룸</a>
-                                                    <div class="category-image">
-                                                        <img src="/lg5-common/images/dummy/@header-category3.jpg" alt="">
-                                                    </div>
-                                                    <ul class="category-content">
-                                                        <li><a href="#">NEWS</a></li>
-                                                        <li><a href="#">광고/캠페인 영상</a></li>
-                                                        <li><a href="#">히스토리</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
-                                                <li>
-                                                    <a href="#" class="category-item">e-카달로그</a>
-                                                    <div class="category-image">
-                                                        <img src="/lg5-common/images/dummy/@header-category1.jpg" alt="">
+                                                        <img src="/lg5-common/images/header/event03.jpg" alt="">
                                                     </div>
                                                 </li>
                                             </ul>
@@ -1744,7 +1465,7 @@
                                         <div class="column">
                                             <ul class="category">
                                                 <li>
-                                                    <a href="#" class="category-item">제품 사용 지원</a>
+                                                    <span class="category-item">제품 사용 지원</span>
                                                     <ul class="sub-category">
                                                         <li><a href="#">제품 문제 해결</a></li>
                                                         <li><a href="#">동영상 가이드</a></li>
@@ -1756,10 +1477,10 @@
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="#" class="category-item">서비스 상담</a>
+                                                    <span class="category-item">서비스 상담</span>
                                                     <ul class="sub-category">
                                                         <li><a href="#">이메일 문의</a></li>
-                                                        <li><a href="#">전화상담 문의</a></li>
+                                                        <li><a href="#">전화상담 예약</a></li>
                                                         <li><a href="#">원격상담 예약</a></li>
                                                         <li><a href="#">영상상담 예약</a></li>
                                                         <li><a href="#">상담결과 조회/변경</a></li>
@@ -1770,7 +1491,7 @@
                                         <div class="column">
                                             <ul class="category">
                                                 <li>
-                                                    <a href="#" class="category-item">서비스 예약</a>
+                                                    <span class="category-item">서비스 예약</span>
                                                     <ul class="sub-category">
                                                         <li><a href="#">출장 서비스 예약</a></li>
                                                         <li><a href="#">제품 설치/철거 예약</a></li>
@@ -1778,18 +1499,18 @@
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="#" class="category-item">센터/매장 찾기</a>
+                                                    <span class="category-item">센터/매장 찾기</span>
                                                     <ul class="sub-category">
                                                         <li><a href="#">센터 찾기</a></li>
-                                                        <li><a href="#">센터 방문 예약</a></li>
+                                                        <li><a href="#">센터방문 예약</a></li>
                                                         <li><a href="#">매장 찾기</a></li>
-                                                        <li><a href="#">매장 방문 예약</a></li>
+                                                        <li><a href="#">매장방문 예약</a></li>
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="#" class="category-item">고객의 소리</a>
+                                                    <span class="category-item">고객의 소리</span>
                                                     <ul class="sub-category">
-                                                        <li><a href="#">칭찬합니다</a></li>
+                                                        <li><a href="#">칭찬합니다.</a></li>
                                                         <li><a href="#">개선해주세요</a></li>
                                                         <li><a href="#">나의 글 보기</a></li>
                                                         <li><a href="#">칭찬 글 보기</a></li>
@@ -1801,23 +1522,16 @@
                                         <div class="column">
                                             <ul class="category">
                                                 <li>
-                                                    <a href="#" class="category-item">서비스 안내</a>
+                                                    <span class="category-item">서비스 안내</span>
                                                     <ul class="sub-category">
                                                         <li><a href="#">서비스 뉴스</a></li>
                                                         <li><a href="#">공지사항</a></li>
-                                                        <li><a href="#">SW 업데이트 알리미</a></li>
                                                         <li><a href="#">요금/보증 안내</a></li>
                                                         <li><a href="#">재생부품 가격 공지</a></li>
                                                         <li><a href="#">이용가이드/FAQ</a></li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="#" class="category-item">제품 등록</a></li>
                                             </ul>
-                                            <div class="category-hashtag">
-                                                <ul>
-                                                    <li><a href="#" class="tag-item"># LG벨벳</a></li>
-                                                </ul>
-                                            </div>
                                         </div>
                                         <!-- 슬라이드 이미지 배너 -->
                                         <div class="column category-banner ui_carousel_slider">
@@ -1832,157 +1546,27 @@
                                             <div class="ui_carousel_track">
                                                 <div class="ui_carousel_slide">
                                                     <a href="none" class="banner-box">
-                                                        <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                        <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                         <div class="banner-text">
-                                                            <p>TV 일부 모델,<br>파워보드 자발적<br>무상 교체 서비스</p>
+                                                            <p class="text">TV 일부 모델, 파워보드<br>자발적 무상 교체 서비스</p>
                                                         </div>
                                                     </a>
                                                 </div>
                                                 <div class="ui_carousel_slide">
                                                     <a href="none" class="banner-box">
-                                                        <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
+                                                        <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                         <div class="banner-text">
-                                                            <p>TV 일부 모델,<br>파워보드 자발적<br>무상 교체 서비스</p>
+                                                            <p class="text">TV 일부 모델, 파워보드<br>자발적 무상 교체 서비스</p>
                                                         </div>
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- // 슬라이드 이미지 배너 -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- //Category Layer -->
-                    </li>
-                    <li>
-                        <!-- [D] [1Depth] Click, Hover - .active 추가 -->
-                        <a href="#" class="nav-item">마이페이지</a>
-                        <!-- Category Layer -->
-                        <div class="nav-category-layer">
-                            <div class="nav-category-inner">
-                                <div class="nav-category-wrap">
-                                    <div class="category-title">마이페이지</div>
-                                    <div class="category-box">
-                                        <div class="column">
-                                            <ul class="category">
-                                                <li>
-                                                    <a href="#" class="category-item">쇼핑 관리</a>
-                                                    <ul class="sub-category">
-                                                        <li><a href="#">주문/배송 조회</a></li>
-                                                        <li><a href="#">배송지 주소 관리</a></li>
-                                                        <li><a href="#">쿠폰/사은품</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="category-item">케어솔루션</a>
-                                                    <ul class="sub-category">
-                                                        <li><a href="#">계약 현황</a></li>
-                                                        <li><a href="#">납부 내역</a></li>
-                                                        <li><a href="#">방문 알리미</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="category-item">관심 목록</a>
-                                                    <ul class="sub-category">
-                                                        <li><a href="#">찜한 제품</a></li>
-                                                        <li><a href="#">최근 본 제품</a></li>
-                                                        <li><a href="#">구독</a></li>
-                                                        <li><a href="#">관심 매장</a></li>
-                                                        <li><a href="#">보유 제품 등록</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="category-item">보유 제품 등록</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
-                                                <li>
-                                                    <a href="#" class="category-item">고객지원 관리</a>
-                                                    <ul class="sub-category">
-                                                        <li><a href="#">나의 글 보기</a></li>
-                                                        <li><a href="#">문의/예약 결과 조회</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="category-item">멤버십 관리</a>
-                                                    <ul class="sub-category">
-                                                        <li><a href="#">멤버십 가입 정보</a></li>
-                                                        <li><a href="#">멤버십 포인트 조회</a></li>
-                                                        <li><a href="#">영수증 등록</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="category-item">활동 관리</a>
-                                                    <ul class="sub-category">
-                                                        <li><a href="#">리뷰 관리</a></li>
-                                                        <li><a href="#">참여 이벤트</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="category-item">회원 정보</a>
-                                                    <ul class="sub-category">
-                                                        <li><a href="#">개인정보 수정</a></li>
-                                                        <li><a href="#">회원탈퇴</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="category-item">알림</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
-                                                <li>
-                                                    <a href="#" class="category-item">공지사항</a>
-                                                    <ul class="sub-category">
-                                                        <li><a href="#">서비스 뉴스</a></li>
-                                                        <li><a href="#">공지사항</a></li>
-                                                        <li><a href="#">요금/보증 안내</a></li>
-                                                        <li><a href="#">재생부품 가격 공지</a></li>
-                                                        <li><a href="#">이용가이드/FAQ</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#" class="category-item">제품 등록</a></li>
-                                            </ul>
-                                            <div class="category-hashtag">
-                                                <ul>
-                                                    <li><a href="#" class="tag-item"># LG벨벳</a></li>
-                                                </ul>
+                                            <div class="slide-controls">
+                                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                                             </div>
                                         </div>
-                                        <!-- 슬라이드 이미지 배너 -->
-                                        <div class="column category-banner ui_carousel_slider">
-                                            <div class="indi-wrap">
-                                                <ul class="ui_carousel_dots">
-                                                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                </ul>
-                                                <span class="ui_carousel_play play">
-                                                    <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
-                                                </span>
-                                            </div>
-                                            <div class="ui_carousel_track">
-                                                <div class="ui_carousel_slide">
-                                                    <a href="none" class="banner-box">
-                                                        <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                        <div class="banner-text">
-                                                            <p>TV 일부 모델,<br>파워보드 자발적<br>무상 교체 서비스</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="ui_carousel_slide">
-                                                    <a href="none" class="banner-box">
-                                                        <img data-src="/lg5-common/images/dummy/@header-slide-banner.png" alt="" class="lazyload">
-                                                        <div class="banner-text">
-                                                            <p>TV 일부 모델,<br>파워보드 자발적<br>무상 교체 서비스</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- // 슬라이드 이미지 배너 -->
+                                        jpg
                                     </div>
                                 </div>
                             </div>
@@ -2000,7 +1584,7 @@
             </div>
             <div class="nav-service">
                 <span class="title">기타 서비스</span>
-                <ul class="service-link">
+                <ul class="link-item">
                     <li><a href="#">내게맞는 제품 찾기</a></li>
                     <li><a href="#">케어플래너</a></li>
                     <li><a href="#">보유제품 등록</a></li>

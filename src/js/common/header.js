@@ -287,6 +287,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _setOver: function(item){
             var self = this;
 
+            $(item).addClass('active');
             $(item).find('> a').addClass('active'); 
 
             var catecontainer = $(item).find('> .nav-category-container');
@@ -316,10 +317,12 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var catecontainer = $(item).find('> .nav-category-container');
             if(catecontainer.length){
                 catecontainer.stop().animate({width:0}, 150, function(){
+                    $(item).removeClass('active');
                     $(item).find('> a').removeClass('active');
                     $(item).find('> .nav-category-container').css('display', 'none');
                 });
             } else{
+                $(item).removeClass('active');
                 $(item).find('> a').removeClass('active');
             }
 
