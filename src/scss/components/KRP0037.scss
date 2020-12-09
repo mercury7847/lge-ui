@@ -204,7 +204,7 @@
             clear: both;
             display: flex;
             align-items: flex-end;
-            height: 74px;
+            //height: 74px;
             margin-bottom: 18px;
             @include mobile {
                 height: auto;
@@ -215,8 +215,8 @@
                 flex-wrap: wrap;
                 align-items: center;
                 //width: 100%;
-                padding: 12px 12px 12px 16px;
-                border-radius: 36px;
+                padding: 5px 16px;
+                border-radius: 16px;
                 border: 1px solid #222;  
                 .btn-text {
                     flex: 1;
@@ -268,6 +268,10 @@
                 position: absolute;
                 top: 0;
                 right: 0;
+                @include mobile {
+                    top: auto;
+                    bottom: 21px;
+                }
             }
         }
         .desc {
@@ -331,10 +335,11 @@
                         @include font-small;
                     }
                 }
+                
                 @include mobile {
-                    padding: 10px 0;
+                    /*padding: 10px 0;
                     white-space: nowrap;
-                    overflow-x: auto;
+                    overflow-x: auto;*/
                 }
             }
 
