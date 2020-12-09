@@ -21,6 +21,9 @@
         &.type3 {
             padding-top:0;
             margin-bottom:0;
+            @include mobile {
+                padding:10px 0;
+            }
         }
     }
 
