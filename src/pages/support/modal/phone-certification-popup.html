@@ -15,25 +15,34 @@
                     </div>
                     <div class="conts">
                         <div class="input-wrap">
-                            <input type="text" name="authName" id="authName" placeholder="이름을 입력해주세요." data-required="true" data-msg-target=".err-msg" required>
+                            <input type="text" name="authName" id="authName" placeholder="이름을 입력해주세요."  data-msg-target=".err-block" data-error-msg="이름을 입력해주세요" data-authName-error-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" required>
+                            <div class="btm-more err-block">
+                                <p class="err-msg"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="forms">
                     <div class="tit">
-                        <label for="input-phoneNumber" class="req">휴대 전화 <span class="blind">필수입력</span></label>
+                        <label for="authPhoneNo" class="req">휴대 전화 <span class="blind">필수입력</span></label>
                     </div>
                     <div class="conts">
                         <div class="box">
                             <div class="input-wrap">
-                                <input type="tel" name="authPhoneNo" id="authPhoneNo" placeholder="휴대전화 번호를 입력해주세요." data-required="true" data-msg-target=".err-msg" required>
+                                <input type="tel" name="authPhoneNo" id="authPhoneNo" placeholder="휴대전화 번호를 입력해주세요."  data-msg-target=".err-block" data-error-msg="휴대전화를 정확히 입력해주세요" data-authPhoneNo-error-msg="휴대전화를 정확히 입력해주세요" data-required="true" required>
+                                <div class="btm-more err-block">
+                                    <p class="err-msg"></p>
+                                </div>
                             </div>
                             <div class="cell">
-                                <button type="button" class="btn">인증번호 발송</button>
+                                <button type="button" class="btn btn-send">인증번호 발송</button>
                             </div>
                         </div>
                         <div class="input-wrap">
-                            <input type="number" name="authNo" id="authNo" placeholder="인증번호를 입력해주세요." data-required="true" data-msg-target=".err-msg" disabled required>
+                            <input type="number" name="authNo" id="authNo" placeholder="인증번호를 입력해주세요"  data-msg-target=".err-block" data-error-msg="인증번호를 입력해주세요" data-authNo-error-msg="인증번호를 입력해주세요" data-required="true" required>
+                            <div class="btm-more err-block">
+                                <p class="err-msg"></p>
+                            </div>
                         </div>
                     </div>
                 </div>

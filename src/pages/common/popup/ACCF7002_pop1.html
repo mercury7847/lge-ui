@@ -73,6 +73,7 @@
             <div class="tit-wrap">
                 <h2 class="h2-tit">취소 정보</h2>
             </div>
+            @@if ( !context.nonMembers ) {
             <div class="tb-scroll">
                 <div class="tb_row tb-row-bl">
                     <table>
@@ -99,9 +100,36 @@
                     </table>
                 </div>
             </div>
+            }
+            @@if ( context.nonMembers ) {
+            <div class="tb-scroll">
+                <div class="tb_row tb-row-bl">
+                    <table>
+                        <caption>취소 정보를 제품금액, 취소 신청 금액 순으로 안내</caption>
+                        <colgroup>
+                            <col style="width:50%">
+                            <col>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">제품 금액</th>
+                                <th scope="col">취소 신청 금액</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5,300,000원</td>
+                                <td><em class="bold black">5,300,000원</em></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            }
         </div>
         <!-- // 취소 정보 -->
 
+        @@if ( !context.nonMembers ) {
         <!-- 취소 정보 : 멤버십 포인트 내역 있는 case -->
         <div class="sect-wrap">
             <div class="tit-wrap">
@@ -138,6 +166,7 @@
             </div>
         </div>
         <!-- 취소 정보 : 멤버십 포인트 내역 있는 case -->
+        }
 
         <!-- 취소 사유 -->
         <div class="sect-wrap">

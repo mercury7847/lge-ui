@@ -148,7 +148,8 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
                         }
                     });
 
-                    if(self.$input.val().length){
+                    var val = self.$input.val();
+                    if(val && val.length){
                         self.$input.addClass('selected');
                     }
                 }

@@ -430,6 +430,21 @@
             }
         }
     }
+    .text-area {
+        padding: 46px 8px 0;
+        .tit {
+            margin-bottom: 8px;
+            font-size: 18px;
+            line-height: 26px;
+            text-align: center;
+        }
+        .text {
+            font-size: 14px;
+            line-height: 22px;
+            text-align: center;
+        }
+
+    }
 }
 
 
@@ -1000,6 +1015,8 @@
         }  
     }
 }
+
+
 
 // window popup
 .win-popup-wrap {
