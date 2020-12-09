@@ -192,16 +192,16 @@
                     }
                 }
             }
-            .agree-cont-wrap{
-                .tit-wrap{
-                    margin-bottom:0;
-                    .tit{
-                        @include font-medium;
-                        border-bottom:0;
-                        padding-bottom:0;
-                    }
-                }
-            }
+            // .agree-cont-wrap{
+            //     .tit-wrap{
+            //         margin-bottom:0;
+            //         .tit{
+            //             @include font-medium;
+            //             border-bottom:0;
+            //             padding-bottom:0;
+            //         }
+            //     }
+            // }
             &.bg-gray {
                 background-color: #f4f4f4;
             }

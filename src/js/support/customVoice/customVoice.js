@@ -75,7 +75,13 @@
                     }
                 });
             });
-
+            self.$form.find('#privcyCheck').on('change', function() {
+                if ($(this).is(':checked')) {
+                    self.$form.find('.btn-open').prop('disabled', false);
+                } else {
+                    self.$form.find('.btn-open').prop('disabled', true);
+                }
+            });
 
             self.$authPopup.on('modalshown', function() {
                 var $this = $(this);
