@@ -98,21 +98,22 @@
                 $this.find('.btn-send').off('click').on('click', function() {
                     var $btnSend = $(this),
                         ajaxUrl = $btnSend.data('ajax'),
-                        data = {
-                            authName: $this.find('#authName').val(),
-                            authPhoneNo: $this.find('#authPhoneNo').val()
-                        };
+                        data = authValidation.getAllValues();
 
-                    lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
-                        if (result.data.resultFlag == 'Y') {
-                            $btnSend.text('인증번호 재발송');
-                            $this.find('#authNo').prop('disabled', false);
-                        }
+                    var result = authValidation.validate();
 
-                        lgkorUI.alert('', {
-                            title: result.data.resultMessage
-                        });
-                    })
+                    if (result.success == true) {
+                        lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
+                            if (result.data.resultFlag == 'Y') {
+                                $btnSend.text('인증번호 재발송');
+                                $this.find('#authNo').prop('disabled', false);
+                            }
+    
+                            lgkorUI.alert('', {
+                                title: result.data.resultMessage
+                            });
+                        })
+                    }
                 });
 
                 $this.find('.btn-auth').off('click').on('click', function() {
@@ -125,6 +126,8 @@
                             if (result.data.resultFlag == 'Y') {
                                 self.$form.find('#userName').val(self.$authPopup.find('#authName').val());
                                 self.$form.find('#phoneNo').val(self.$authPopup.find('#authPhoneNo').val());
+                                self.$form.find('.btn-open span').html('휴대전화 인증 완료');
+                                self.$form.find('.btn-open').prop('disabled', true);
                             
                                 self.$authPopup.vcModal('hide');
                             }
@@ -138,7 +141,7 @@
             self.$authPopup.on('modalhide', function() {
                 var $this = $(this);
 
-                $this.find('.btn-send').text('인증번호 발송');
+                self.$authPopup.find('.btn-send').text('인증번호 발송');
                 $this.find('#authNo').prop('disabled', true);
                 $this.find('input').val('');
             });
