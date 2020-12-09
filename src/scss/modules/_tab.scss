@@ -241,13 +241,26 @@
     }
 }
 
-.tabs-bg {
+
+.page-header .tabs-bg {
     max-width: 100%;
     background-color: $color-bg;
-    .tabs-wrap {
+    @include mobile {
+        background: #fff;
+    }
+    .tabs-wrap.bar-type {
         position: relative; 
+        max-width: calc(1146px + 80px);
+        padding: 0 40px;
+        background: #f4f4f4;
+        &.w-btn {
+            padding: 0 190px 0 40px;
+        }
+        @include mobile {
+            padding: 0;
+        }
         .tabs {
-            padding: 16px;
+            padding: 16px 16px 8px 16px;
             @include mobile {
                 padding: 16px;
             }
@@ -257,12 +270,15 @@
     .btn-area {
         position: absolute;
         top: 50%;
-        right: 0;
+        right: 40px;
         transform: translateY(-50%);
+        margin-top: 4px;
         @include mobile {
             position: static;
             transform: translateY(0);
-            margin-top: 40px;
+            margin-top: 0;
+            padding: 25px 16px 0;
+            background-color: #fff;
         }
         .btn {
             background-color: transparent;
