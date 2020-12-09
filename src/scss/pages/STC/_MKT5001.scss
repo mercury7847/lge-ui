@@ -120,6 +120,11 @@
 			font-weight:700;
 			line-height:52px;
 		}
+		.desc {
+			margin-top:24px;
+			font-size:18px;
+			line-height:30px;
+		}
 		.btn {
 			margin-top:24px;
 		}
@@ -128,6 +133,9 @@
 			img {
 				max-width:912px;
 				width:100%;
+			}
+			& + .bullet-list {
+				display:inline-block;
 			}
 		}
 		@include mobile {
@@ -226,6 +234,60 @@
 							font-size:14px;
 							line-height:22px;
 						}
+					}
+				}
+			}
+		}
+	}
+	.dual-type3 {
+		.text-img-wrap {
+			display:table;
+			width:100%;
+			font-size:0;
+			> div {
+				display:table-cell;
+				width:50%;
+				vertical-align:middle;
+			}
+			.text {
+				dl {
+					dt {
+						font-size:28px;
+						font-weight:700;
+						line-height:38px;
+					}
+					dd {
+						margin-top:16px;
+						font-size:16px;
+						line-height:26px;
+					}
+				}
+			}
+			.img {
+				img {
+					width:100%;
+				}
+			}
+			&.type1 {
+				> div {
+					&:first-child {
+						padding-right:24px;
+					}
+					&:last-child {
+						padding-left:24px;
+					}
+				}
+			}
+			&.type2 {
+				.text {
+					width:40%;
+				}
+				.img {
+					width:60%;
+					text-align:right;
+					img {
+						max-width:677px;
+						width:100%;
 					}
 				}
 			}
