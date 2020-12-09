@@ -742,7 +742,52 @@
         requestAjaxDataPost: function(url, data, callback) {
             var self = this;
             self.requestAjaxData(url, data, callback, "POST");
-        }    
+        },
+
+        getHiddenInputData: function(iptname, wrapname){
+            var hiddenWrapName = wrapname || "hidden-input-group";
+            var hiddenWrap = $('.' + hiddenWrapName).eq(0);
+            var data, str, name;
+
+            if(iptname){
+                if(vcui.isArray(iptname)){
+                    data = {};
+                    for(str in iptname){
+                        name = iptname[str];
+                        data[name] = hiddenWrap.find('input[name=' + name + ']').val();
+                    }
+
+                    return data;
+                } else{
+                    return hiddenWrap.find('input[name=' + iptname + ']').val();
+                }
+            } else{
+                data = {};
+                hiddenWrap.find('input[type=hidden]').each(function(idx, item){
+                    name = $(item).attr('name');
+                    data[name] = $(item).val();
+                });
+
+                return data;
+            }
+        },
+
+        setHiddenInputData: function(iptname, value, wrapname){
+            if(!iptname) return false;
+
+            var hiddenWrapName = wrapname || "hidden-input-group";
+            var hiddenWrap = $('.' + hiddenWrapName).eq(0);
+            var str, name, val;
+
+            if(typeof iptname === "object"){
+                for(str in iptname){
+                    hiddenWrap.find('input[name=' + str + ']').val(iptname[str]);
+                }
+            } else{
+                val = vcui.isArray(value) ? value.join() : value;
+                hiddenWrap.find('input[name=' + iptname + ']').val(val);
+            }
+        }
     }
 
     document.addEventListener('DOMContentLoaded', function () {

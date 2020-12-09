@@ -11,7 +11,7 @@
             <div class="cell rdo-cell">
                 @@for ( var i = 0; i < rdoArr.length; i++ ) {
                 <span class="rdo-wrap btn-type">
-                    <input type="radio" id="`+rdoArr[i].id+`" name="periodSelect" `+rdoArr[i].checked+`>
+                    <input type="radio" id="`+rdoArr[i].id+`" name="periodSelect" value="`+rdoArr[i].value+`" `+rdoArr[i].checked+`>
                     <label for="`+rdoArr[i].id+`">`+rdoArr[i].label+`</label>
                 </span>
                 }

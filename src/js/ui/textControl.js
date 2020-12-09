@@ -239,39 +239,41 @@
                 o = self.options;
 
             // 붙여넣기
-            if (!o.allowPaste) {
-                self.on('paste', function (e) {
-                    e.preventDefault();
-                    alert("죄송합니다. \n도배글 등을 방지하기 위해 붙여넣기를 하실 수 없습니다.");
-                });
-            }
-
-            // 자동 리사이징
-            if (self.$el.is('textarea') && o.autoResize) {
-                self._autoResize();
-            }
-
-            // 입력글자 수 체크
-            if (o.checkCount) {
-                // subviews에다 설정하면 release가 호출될 때, subviews에 들어있는 컨트롤들의 release도 알아서 호출해준다.
-                self.on('textcounter:change', function () {
-                    var $countTarget = $(self.options.countTarget),
-                        strUtil = core.string,
-                        showCount = function showCount(len, limit) {
-                        $countTarget.html(strUtil.format(self.options.countText, {
-                            len: numUtil.addComma(len) || 0,
-                            limit: numUtil.addComma(limit) || 0
-                        }));
-                    };
-
-                    showCount(self.currentLength, o.limit);
-                    return function (e, data) {
-                        if (self.$el.val() === self.$el.attr('placeholder')) {
-                            return;
-                        }
-                        showCount(data.textLength, o.limit);
-                    };
-                }());
+            if(o != undefined){
+                if (!o.allowPaste) {
+                    self.on('paste', function (e) {
+                        e.preventDefault();
+                        alert("죄송합니다. \n도배글 등을 방지하기 위해 붙여넣기를 하실 수 없습니다.");
+                    });
+                }
+    
+                // 자동 리사이징
+                if (self.$el.is('textarea') && o.autoResize) {
+                    self._autoResize();
+                }
+    
+                // 입력글자 수 체크
+                if (o.checkCount) {
+                    // subviews에다 설정하면 release가 호출될 때, subviews에 들어있는 컨트롤들의 release도 알아서 호출해준다.
+                    self.on('textcounter:change', function () {
+                        var $countTarget = $(self.options.countTarget),
+                            strUtil = core.string,
+                            showCount = function showCount(len, limit) {
+                            $countTarget.html(strUtil.format(self.options.countText, {
+                                len: numUtil.addComma(len) || 0,
+                                limit: numUtil.addComma(limit) || 0
+                            }));
+                        };
+    
+                        showCount(self.currentLength, o.limit);
+                        return function (e, data) {
+                            if (self.$el.val() === self.$el.attr('placeholder')) {
+                                return;
+                            }
+                            showCount(data.textLength, o.limit);
+                        };
+                    }());
+                }
             }
         },
 
