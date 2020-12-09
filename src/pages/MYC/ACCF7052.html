@@ -13,9 +13,7 @@
                 "pageTitle": "멤버십 포인트 조회"
             })
             <!-- mypage -->
-            <div class="contents mypage"
-                data-point-inquiry="/lg5-common/data-ajax/mypage/pointInquiry.json"
-            >
+            <div class="contents mypage">
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
@@ -28,7 +26,7 @@
                         <div class="lnb-contents">
                             <!-- 상세 -->
                             <!-- 조회기간 -->
-                            <div class="filters rdo-type2 type2">
+                            <div class="filters rdo-type2 type2" data-list-url="/lg5-common/data-ajax/mypage/pointInquiry.json">
                                 <!-- filter -->
                                 @@include('./common/modules/mem-filter.html', {
                                     "tabType" : true,
@@ -36,9 +34,9 @@
                                     "datepicker" : true,
                                     "rdoCheck" : true,
                                     "list" : [
-                                        { "id" : "rdk-cehck1-1", "name" : "pointInquiry",  "label" : "전체", "value": "all", "checked": "checked"},
-                                        { "id" : "rdk-cehck1-2", "name" : "pointInquiry",  "label" : "적립", "value": "save"},
-                                        { "id" : "rdk-cehck1-3", "name" : "pointInquiry",  "label" : "사용", "value": "use"}
+                                        { "id" : "rdk-cehck1-1", "name" : "pointUseType",  "label" : "전체", "value": "all", "checked": "checked"},
+                                        { "id" : "rdk-cehck1-2", "name" : "pointUseType",  "label" : "적립", "value": "save"},
+                                        { "id" : "rdk-cehck1-3", "name" : "pointUseType",  "label" : "사용", "value": "use"}
                                     ]
                                 })
                                 <!-- // filter -->
@@ -71,14 +69,12 @@
                                         </ul>
                                         <dl class="total">
                                             <dt>총 보유 포인트</dt>
-                                            <dd id="my_totalpoint">1,000P</dd>
+                                            <dd>1,000P</dd>
                                         </dl>
                                     </div>
-                                    <!-- 조회 결과가 없는 경우 --
                                     <div class="no-data">
                                         <p>조회 결과가 없습니다.</p>
                                     </div>
-                                    !-- //조회 결과가 없는 경우 -->
                                     @@include('./common/modules/bullet-list.html', {
                                         "size2" : true,
                                         "topBorder" : true,

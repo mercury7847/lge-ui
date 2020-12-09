@@ -14,6 +14,14 @@
                 text-align:center;
             }
         }
+        &.type2 {
+            margin-bottom:0;
+            border-bottom:none;
+        }
+        &.type3 {
+            padding-top:0;
+            margin-bottom:0;
+        }
     }
 
     // MAIN
@@ -22,18 +30,17 @@
     // SUB PAGES
     .cont-wrap {
         // partials
-        // 멤버십 혜택
-        @import "ACC4004";
-
-        // VIP 멤버십 혜택
-        @import "ACC4005";
-        
-        // 가입 안내
+        // 멤버십 소개
         @import "ACC4002";
 
-        .tit-desc + .product-list-wrap {
-            margin-top:32px;
-        }
+        // 등급별 혜택
+        @import "ACC4003";
+
+        // 가입안내
+        @import "ACC4004";
+
+        // 카드혜택
+        @import "ACC4005";
     }
 }
 
