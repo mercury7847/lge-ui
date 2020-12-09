@@ -18,6 +18,10 @@
             margin-bottom:0;
             border-bottom:none;
         }
+        &.type3 {
+            padding-top:0;
+            margin-bottom:0;
+        }
     }
 
     // MAIN
@@ -34,6 +38,9 @@
 
         // 가입안내
         @import "ACC4004";
+
+        // 카드혜택
+        @import "ACC4005";
     }
 }
 
