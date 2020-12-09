@@ -5,7 +5,7 @@
             @@if ( !context.disabled ) {
             <div class="row">
             }
-                <div class="col-table">
+                <div class="col-table" data-model-id="@@col1.modelID">
                     @@if ( context.col1 ) {
                     <div class="col col1">
                         <span class="blind">@@col1.blind</span>
@@ -65,13 +65,13 @@
                             @@if ( context.col2.stateType.btn ) {
                             <div class="state-btns">
                                 @@if ( context.col2.stateType.btn ) {
-                                <a href="#n" class="btn size border"><span>@@col2.stateType.btn</span></a>
+                                <a href="#n" class="btn size border @@col2.stateType.btnClass"><span>@@col2.stateType.btn</span></a>
                                 }
                                 @@if ( context.col2.stateType.btn2 ) {
-                                <a href="#n" class="btn size border"><span>@@col2.stateType.btn2</span></a>
+                                <a href="#n" class="btn size border @@col2.stateType.btn2Class"><span>@@col2.stateType.btn2</span></a>
                                 }  
                                 @@if ( context.col2.stateType.btn3 ) {
-                                <a href="#n" class="btn size border"><span>@@col2.stateType.btn3</span></a>
+                                <a href="#n" class="btn size border @@col2.stateType.btn3Class"><span>@@col2.stateType.btn3</span></a>
                                 }                            
                             </div>
                             }
