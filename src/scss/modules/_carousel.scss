@@ -64,7 +64,6 @@
 // visual slide COMMON
 .slide-wrap {
     position:relative;
-    overflow: hidden;
     .indi-wrap {
         position:absolute;
         left:0;
@@ -341,6 +340,9 @@
 // Carousel slide (1 on pc, 4 on pc, 3 on pc)
 .slide-wrap.carousel-type {
     margin:0 auto;
+    @include mobile {
+        overflow:hidden;
+    }
     .slide-content {
         @include mobile {
             overflow:visible !important;
