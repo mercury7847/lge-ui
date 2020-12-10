@@ -259,6 +259,10 @@
 
 .btn-moreview {
     display:inline-block;
+    padding:3px 11px;
+    border:1px solid #222;
+    border-radius:16px;
+    color:#222;
     font-size:14px;
     line-height:24px;
     font-weight:500;
@@ -275,8 +279,8 @@
     }
     &.block {
         display:block;
-        width:100%;
-        margin-top:32px;
+        width:auto;
+        margin:32px auto 0;
         @include mobile {
             margin-top:24px;
         }
