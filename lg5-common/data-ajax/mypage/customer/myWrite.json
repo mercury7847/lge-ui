@@ -1,0 +1,48 @@
+{
+    "status": "success",
+    "message": null,
+    "param":{
+        "pagination":{
+            "page":"5",
+            "visibleCount":"7",
+            "totalCount":"23"
+        }
+    },
+    "data": {
+        "totalCount": "14",
+        "listData":[
+            {
+                "id": "mw00001",
+                "regNumber": "S2009354211",
+                "progress": "답변중",
+                "category": "칭찬합니다",
+                "title": "타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀타이틀 타이틀 타이틀 초과",
+                "date": "20200911"
+            },
+            {
+                "id": "mw00002",
+                "regNumber": "S2009354212",
+                "progress": "접수",
+                "category": "칭찬합니다",
+                "title": "타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀타이틀 타이틀 타이틀 초과",
+                "date": "20200912"
+            },
+            {
+                "id": "mw00003",
+                "regNumber": "S2009354213",
+                "progress": "답변완료",
+                "category": "경영진에게 제안",
+                "title": "타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀타이틀 타이틀 타이틀 초과",
+                "date": "20200913"
+            },
+            {
+                "id": "mw00004",
+                "regNumber": "S2009354214",
+                "progress": "답변완료",
+                "category": "개선해 주세요",
+                "title": "타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀타이틀 타이틀 타이틀 초과",
+                "date": "20200914"
+            }
+        ]
+    }
+}
