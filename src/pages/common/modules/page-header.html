@@ -27,6 +27,11 @@
         }
         </div>
     }
+    @@if ( context.pageLink ) {
+        <div class="link-desc @@pageLink.arrowPos">
+            <a href="#n" class="btn-link"><span>@@pageLink.text</span></a>
+        </div>
+    }
     @@if ( context.pageArr ) {
     <div class="tabs-wrap btn-type">
         <ul class="tabs">
