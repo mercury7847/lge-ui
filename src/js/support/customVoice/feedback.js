@@ -56,7 +56,7 @@
                             var ajaxUrl = self.$form.data('ajax');
                             var data = validation.getAllValues();
                             lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
-                                if (result.data == 'Y') {
+                                if (result.data.resultFlag == 'Y') {
                                     self.$form.submit();
                                 }
                             })
@@ -70,7 +70,7 @@
                     title:'취소 하시겠습니까?',
                     okBtnName: '확인',
                     cancelBtnName: '취소',
-                    cancel: function() {
+                    ok: function() {
                         location.href = url;
                     }
                 });

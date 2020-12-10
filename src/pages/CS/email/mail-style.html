@@ -1,0 +1,67 @@
+<style>
+    /* *{margin:0;padding:0;-webkit-text-size-adjust:none;word-break:keep-all;box-sizing:border-box;} */
+    .dummy {background-color:rgba(255, 70, 70, 0.2);font-size:28.5px;font-weight:bold;line-height:1.37;color:#ffffff;text-align:center;display: flex;align-items: center;justify-content: center;}
+    .logo {margin: 0;margin-bottom: 48px;text-align: left;}
+    .logo img {width: 80px;height: 22px;}
+    .title {font-size: 40px;font-weight: normal;color: #222;text-align: left;margin-bottom: 36px;line-height: 1.2;}
+    .sub-title {font-size: 16px;font-weight: normal;line-height: 1.5;color: #616161;margin-bottom: 13px;}
+    .sub-title strong {font-weight: bold;color: #222;}
+    .email-title {margin-bottom: 32px;padding-bottom: 12px;font-size: 20px;font-weight: bold;text-align: left;border-bottom: 2px solid #222;}
+    .content {border: 1px solid #ddd;padding: 48px 56px 38px;}
+    table {background-color: #fff;font-size: 16px;line-height: 1.83;font-family: 'Noto Sans',맑은고딕,'Malgun Gothic',arial,sans-serif;border-collapse: collapse;}
+    th, td {text-align: left;}
+    td {padding: 10px 0 10px 0;vertical-align: top;}
+    .dt {font-size: 16px;color: #767676;width: 180px;}
+    .dd {font-size: 16px;color: #222222;}
+    .color-2 {color: #222;}
+    .color-3 {color: #ec455a;}
+    .color-4 {color: #f04e3e;}
+    .underline {text-decoration: underline;}
+    a {text-decoration: none;color: inherit;}
+    p {margin: 0;}
+    .footer {font-size: 12px; font-weight: normal; line-height: 1.83; text-align: left; color: #979797;}
+    ul {padding: 0;}
+    ul li {list-style: none}
+    .bullet-list {padding: 0;padding-top: 12px;border-top: 1px solid #ddd;color: #515151;font-size: 14px;line-height: 20px;}
+    .bullet-list .b-txt {position: relative;margin-top: 4px;padding-left: 10px;background: url(https://wwwdev50.lge.co.kr/lg5-common/images/dot-mail.png) no-repeat left 8px;}
+    .bullet-list .b-txt:first-child {margin-top: 0;}
+    .btn-link {position: relative;display: inline-block;margin-left: 8px;padding-right: 24px;font-size: inherit;color: inherit;vertical-align: top;background: url(https://wwwdev50.lge.co.kr/lg5-common/images/icons/btn-arrow-right-16.svg) no-repeat right center;background-size: 20px;}
+    .btn {display: inline-block;min-width: 124px;padding: 0 28px;line-height: 50px;height: 50px;font-weight: bold;font-size: 16px;text-align: center;vertical-align: top;border: 1px solid #111;border-radius: 25px;background-color: transparent;}
+    .btn.pink {color: #fff;background-color: #ec455a;border: none;}
+    .btn.pink a {color: #fff;text-decoration: none;}
+    .btn-wrap {text-align: center;padding-top: 54px;padding-bottom: 48px;}
+    .btn-wrap table {width: 100%;}
+    .status-title {font-size: 14px;color: #616161;}
+    .status-count {font-size: 20px;font-weight: bold;color: #222;margin-bottom: 12px;}
+    .status-text {font-size: 28px;font-weight: bold;color: #222;margin-top: 10px;}
+    .status-board {font-size: 14px;color: #979797;}
+    .status-board-down {color:#f04e3e;padding: 0 0 0 17px;position: relative;font-size: 16px;font-weight: bold;}
+    .status-board-down i {font-size: 0;color: transparent;display: inline-block;width: 10px;height: 6px;position: absolute;left: 0;top: 8px;background: url(https://wwwdev50.lge.co.kr/lg5-common/images/icons/icon-mail-status-board-down.png) no-repeat center;}
+    .status-board-up {color:#0091ff;padding: 0 0 0 17px;position: relative;font-size: 16px;font-weight: bold;}
+    .status-board-up i {font-size: 0;color: transparent;display: inline-block;width: 10px;height: 6px;position: absolute;left: 0;top: 8px;background: url(https://wwwdev50.lge.co.kr/lg5-common/images/icons/icon-mail-status-board-up.png) no-repeat center;}
+    .status-board-1 {padding: 0 14px 0 0;margin: 0 12px 0 0;border-right: 1px solid #dddddd;}
+    .status-table {padding: 0 0 10px 0;}
+    .status-table td {border:1px solid #dddddd;padding: 32px 32px 32px 32px;}
+    .sub-table-title {font-size: 16px;font-weight: bold;color: #222222;padding-bottom: 12px;float: left;width: 100%;}
+    .sub-table-title::after {content: '';clear: both;display: block;}
+    .sub-table-title-info {font-size: 12px;font-weight: 500;line-height: 1.83;float: right;color: #767676;}
+    .sub-table {font-size: 12px;color: #222222;margin-top: 64px;}
+    .sub-table:first-child {margin-top: 0;}
+    .sub-table th, .sub-table td {border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;padding: 12px;}
+    .sub-table th:last-child, .sub-table td:last-child {border-right: 0;}
+    .sub-table th {color: #616161;font-weight: normal;text-align: center;background-color: #f4f4f4;}
+    .sub-table td {text-align: right;}
+    .sub-table td:first-child {text-align: left;}
+    .sub-table.type-border-top {border-top: 2px solid #222;}
+    .sub-table.type-border-top th, .sub-table.type-border-top td {text-align: center;}
+    .sub-table.type-border-top th {font-weight: 500;}
+    .sub-table.type-borderless th, .sub-table.type-borderless td {border-right-color: transparent;}
+    .sub-table.type-borderless td {text-align: left;}
+
+    .point td {background-color: #faf2f2;}
+    .tfoot td {background-color: #f4f4f4;}
+    .pt32 {padding-top: 32px;}
+    .progress {margin-bottom: 26px;}
+    .annotation td {border: none;font-size: 12px;padding-top: 8px;padding-left: 0;}
+    .annotation-text {padding-left: 10px;background: url(https://wwwdev50.lge.co.kr/lg5-common/images/dot-mail.png) no-repeat left 8px;color: #767676;}
+</style>
