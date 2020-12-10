@@ -17,11 +17,23 @@
         background:url('/lg5-common/images/icons/btn-arr-56x56.svg') no-repeat;
     }
     &.disabled, &.ui_carousel_hidden {
-        display:none !important;
+        opacity:0.7;
     }
     &.prev {
         &::before {
             transform:rotate(180deg);
+        }
+    }
+}
+
+.slide-wrap.carousel-type {
+    .btn-arrow {
+        width:40px;
+        height:40px;
+        &::before {
+            width:40px;
+            height:40px;
+            background-size:40px;
         }
     }
 }
@@ -150,9 +162,9 @@
                 }
                 .inner {
                     width:auto;
-                    max-width:1380px + 72px + 72px;
+                    max-width:1550px;
                     margin:0 auto;
-                    padding:0 72px;
+                    padding:0 88px;
                     @include mobile {
                         padding:0 16px;
                     }
@@ -314,8 +326,9 @@
         top:50%;
         left:0;
         right:0;
-        @include mobile {
-            display:none !important;
+        .outer {
+            width:100%;
+            padding:0 16px;
         }
         .inner {
             position:relative;
