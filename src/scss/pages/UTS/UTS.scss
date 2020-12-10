@@ -843,8 +843,20 @@
             }
         }
         .agree-cont-wrap {
+            .agree-cont-box {
+                max-height:200px;
+                border-radius:8px;
+                @include mobile {
+                    max-height:160px;
+                }
+            }
             .agree-input {
                 margin-top:16px;
+                padding:0;
+                border:none;
+                @include mobile {
+                    margin-top:13px;
+                }
             }
         }
     }

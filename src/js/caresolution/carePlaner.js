@@ -222,8 +222,6 @@
 
             loadCategoryList();
         });
-
-
     }
 
     function setting(){
@@ -237,6 +235,7 @@
 
         _totalContract = $('.ui_total_prod').data('prodTotal');
 
+        _putMaxCount = $caresolutionContainer.data("maxCount");
         _categoryListUrl = $caresolutionContainer.data("cateList");
         _prodListUrl = $caresolutionContainer.data("prodList");
 
@@ -349,6 +348,7 @@
         lgkorUI.showLoading();
 
         var tabID = getTabID();
+        console.log("tabID :", tabID)
         lgkorUI.requestAjaxData(_categoryListUrl, {tabID: tabID}, function(result){
             $categoryTab.find('.tabs').empty();
 
@@ -465,6 +465,11 @@
     }
 
     function addPutItem(item){ 
+        //lgkorUI.showLoading();
+
+        var sendata = {
+
+        }
         var idx = $(item).parents('.prd-care-vertical').data('index')-1;
         var optdata = getOptionData(item);
         var data = {
@@ -472,13 +477,13 @@
             putID : _currentItemList[idx]['modelId'] + "-" + parseInt(Math.random()*999) + "-" + parseInt(Math.random()*99) + "-" + parseInt(Math.random()*9999),
             selectOptions: optdata
         }
-
+        
         var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
         if(putItemStorage[lgkorUI.CAREPLANER_ID] == undefined){
             putItemStorage[lgkorUI.CAREPLANER_ID] = [data];
         } else{
             var leng = putItemStorage[lgkorUI.CAREPLANER_ID].length;
-            if(leng + _totalContract < lgkorUI.CAREPLANER_LIMIT){
+            if(leng + _totalContract < _putMaxCount){
                 putItemStorage[lgkorUI.CAREPLANER_ID].unshift(data);
 
                 $(window).trigger("toastshow", "제품 담기가 완료되었습니다.");
@@ -642,12 +647,8 @@
     }
 
     function getTabID(){
-        var tabIndx = $categoryTabCtrler.getTabIndex();
-
         var uitab = $fixedTab.find('.service_tab').vcTab('instance');
-        console.log(uitab.getSelectIdx())
-
-        return tabIndx;
+        return uitab.getSelectIdx();
     }
 
     function getCategoryID(){

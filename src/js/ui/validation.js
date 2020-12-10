@@ -530,8 +530,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                                 nArr.push($(item).val())
                             });
                             val = $target.is(':radio')? nArr[0] : nArr;
-                            if(val=='on') val = '';
-
+                            if(val=='on' || val == undefined) val = '';
                         }else{
                             val = $target.val();
                         }

@@ -25,139 +25,109 @@
                             ]
                         })
                         <div class="lnb-contents">
-							<div class="parti-event-list">
-								<ul>
-									<!-- list -->
-									<li>
-										<div class="conts-wrap">
-											<div class="evt">
-												<a href="#n" class="evt-link" target="_blank" title="새 창">
-													<span class="thumb">
-														<img src="/lg5-common/images/dummy/@img-event01.jpg" alt="" aria-hidden="true">
-													</span>
-													<div class="event-info">
-														<div class="flag-wrap">
-															<span class="flag"><span class="blind">이벤트 구분</span>매장</span>
-															<span class="flag"><span class="blind">이벤트 유형</span>구매혜택</span>
-														</div>
-														<p class="tit"><span class="blind">이벤트 제목</span>2020 NEW 올레드와 함께하는 홈라이프2020 NEW 올레드와 함께하는 홈라이프2020 NEW 올레드와 함께하는 홈라이프</p>
-														<p class="date">당첨자 발표 예정일 : 매월 n일</p>
-													</div>
-												</a>
-											</div>
-										</div>
-									</li>
-									<!-- //list -->
-									<!-- list -->
-									<li>
-										<div class="conts-wrap">
-											<div class="evt">
-												<a href="#n" class="evt-link" target="_blank" title="새 창">
-													<span class="thumb">
-														<img src="/lg5-common/images/dummy/@img-event02.jpg" alt="" aria-hidden="true">
-													</span>
-													<div class="event-info">
-														<div class="flag-wrap">
-															<span class="flag"><span class="blind">이벤트 구분</span>온라인</span>
-															<span class="flag"><span class="blind">이벤트 유형</span>경품응모</span>
-														</div>
-														<p class="tit"><span class="blind">이벤트 제목</span>미리미리 페스티벌</p>
-													</div>
-												</a>
-											</div>
-										</div>
-									</li>
-									<!-- //list -->
-									<!-- list -->
-									<li>
-										<div class="conts-wrap">
-											<div class="evt">
-												<a href="#n" class="evt-link" target="_blank" title="새 창">
-													<span class="thumb">
-														<img src="/lg5-common/images/dummy/@img-event03.jpg" alt="" aria-hidden="true">
-														<span class="event-end">
-															<em>종료된 이벤트</em>
-														</span>
-													</span>
-													<div class="event-info">
-														<div class="flag-wrap">
-															<span class="flag"><span class="blind">이벤트 구분</span>온라인</span>
-															<span class="flag"><span class="blind">이벤트 유형</span>사은품</span>
-														</div>
-														<p class="tit"><span class="blind">이벤트 제목</span>LG 이동식 에어컨 창문 잠금장치 신청 이벤트</p>
-														<p class="date">당첨자 발표 예정일 : 매월 n일</p>
-													</div>
-												</a>
-												<a href="#n" class="btn-link"><span>당첨자 발표</span></a>
-											</div>
-										</div>
-									</li>
-									<!-- //list -->
-									<!-- list -->
-									<li>
-										<div class="conts-wrap">
-											<div class="evt">
-												<a href="#n" class="evt-link" target="_blank" title="새 창">
-													<span class="thumb">
-														<img src="/lg5-common/images/dummy/@img-event01.jpg" alt="" aria-hidden="true">
-													</span>
-													<div class="event-info">
-														<div class="flag-wrap">
-															<span class="flag"><span class="blind">이벤트 구분</span>매장</span>
-															<span class="flag"><span class="blind">이벤트 유형</span>구매혜택</span>
-														</div>
-														<p class="tit"><span class="blind">이벤트 제목</span>2020 NEW 올레드와 함께하는 홈라이프</p>
-														<p class="date">당첨자 발표 예정일 : 매월 n일</p>
-													</div>
-												</a>
-											</div>
-										</div>
-									</li>
-									<!-- //list -->
-									<!-- list -->
-									<li>
-										<div class="conts-wrap">
-											<div class="evt">
-												<a href="#n" class="evt-link" target="_blank" title="새 창">
-													<span class="thumb">
-														<img src="/lg5-common/images/dummy/@img-event02.jpg" alt="" aria-hidden="true">
-													</span>
-													<div class="event-info">
-														<div class="flag-wrap">
-															<span class="flag"><span class="blind">이벤트 구분</span>온라인</span>
-															<span class="flag"><span class="blind">이벤트 유형</span>경품응모</span>
-														</div>
-														<p class="tit"><span class="blind">이벤트 제목</span>미리미리 페스티벌</p>
-													</div>
-												</a>
-											</div>
-										</div>
-									</li>
-									<!-- //list -->
-									<!-- list -->
-									<li>
-										<div class="conts-wrap">
-											<div class="evt">
-												<a href="#n" class="evt-link" target="_blank" title="새 창">
-													<span class="thumb">
-														<img src="/lg5-common/images/dummy/@img-event03.jpg" alt="" aria-hidden="true">
-													</span>
-													<div class="event-info">
-														<div class="flag-wrap">
-															<span class="flag"><span class="blind">이벤트 구분</span>온라인</span>
-															<span class="flag"><span class="blind">이벤트 유형</span>사은품</span>
-														</div>
-														<p class="tit"><span class="blind">이벤트 제목</span>LG 이동식 에어컨 창문 잠금장치 신청 이벤트</p>
-														<p class="date">당첨자 발표 예정일 : 매월 n일</p>
-													</div>
-												</a>
-											</div>
-										</div>
-									</li>
-									<!-- //list -->
+							<!-- 이벤트 리스트 컴포넌트와 돔구조 싱크 맞춤 -->
+							<div class="box-list event-type">
+								@@if ( !context.eventPage ) {
+								<ul class="box-list-inner">
+									@@loop('./common/modules/list-box.html', [
+										{
+											"img" : "dummy/@img-event01.jpg",
+											
+											"flagInfo1" : true,
+											"flagInf1" : "이벤트 구분",
+											"flagInf1-1" : "매장",
+											"flagInf2" : "이벤트 유형",
+											"flagInf2-1" : "구매혜택",
+				
+											"title-hd" : "이벤트 제목",
+											"title" : "2020 NEW 올레드와 함께하는 홈라이프",
+											"date-hd" : "이벤트 기간",
+											"date" : "당첨자 발표 예정일 : 매월 15일"
+										},
+										{
+											"img" : "dummy/@img-event02.jpg",
+											
+											"flagInfo1" : true,
+											"flagInf1" : "이벤트 구분",
+											"flagInf1-1" : "온라인",
+											"flagInf2" : "이벤트 유형",
+											"flagInf2-1" : "사은품",
+				
+											"title-hd" : "이벤트 제목",
+											"title" : "LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!", 
+											"date-hd" : "이벤트 기간",
+											"date" : "당첨자 발표 예정일 : 매월 15일"
+										},
+										{
+											"img" : "dummy/@img-event03.jpg",
+											
+											"flagInfo1" : true,
+											"flagInf1" : "이벤트 구분",
+											"flagInf1-1" : "온라인",
+											"flagInf2" : "이벤트 유형",
+											"flagInf2-1" : "사은품",
+				
+											"title-hd" : "이벤트 제목",
+											"title" : "LG 이동식 에어컨 창문 잠금장치 신청 이벤트", 
+											"date-hd" : "이벤트 기간",
+											"date" : "당첨자 발표 예정일 : 매월 15일",
+				
+											"endEvent" : true,
+				
+											"btnOnly" : "당첨자 발표"
+										},
+										{
+											"img" : "dummy/@img-event01.jpg",
+											
+											"flagInfo1" : true,
+											"flagInf1" : "이벤트 구분",
+											"flagInf1-1" : "매장",
+											"flagInf2" : "이벤트 유형",
+											"flagInf2-1" : "구매혜택",
+				
+											"title-hd" : "이벤트 제목",
+											"title" : "2020 NEW 올레드와 함께하는 홈라이프",
+											"date-hd" : "이벤트 기간",
+											"date" : "당첨자 발표 예정일 : 매월 15일"
+										},
+										{
+											"img" : "dummy/@img-event02.jpg",
+											
+											"flagInfo1" : true,
+											"flagInf1" : "이벤트 구분",
+											"flagInf1-1" : "온라인",
+											"flagInf2" : "이벤트 유형",
+											"flagInf2-1" : "사은품",
+				
+											"title-hd" : "이벤트 제목",
+											"title" : "LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!", 
+											"date-hd" : "이벤트 기간",
+											"date" : "당첨자 발표 예정일 : 매월 15일"
+										},
+										{
+											"img" : "dummy/@img-event03.jpg",
+											
+											"flagInfo1" : true,
+											"flagInf1" : "이벤트 구분",
+											"flagInf1-1" : "온라인",
+											"flagInf2" : "이벤트 유형",
+											"flagInf2-1" : "사은품",
+				
+											"title-hd" : "이벤트 제목",
+											"title" : "LG 이동식 에어컨 창문 잠금장치 신청 이벤트", 
+											"date-hd" : "이벤트 기간",
+											"date" : "당첨자 발표 예정일 : 매월 15일",
+				
+											"endEvent" : true,
+				
+											"btnOnly" : "당첨자 발표"
+										}
+									])
 								</ul>
+								}
 								<button type="button" class="btn-moreview block"><span>더보기</span></button>
 							</div>
+							<!-- //이벤트 리스트 컴포넌트와 돔구조 싱크 맞춤 -->
                         </div>
                     </div>
                 </div>

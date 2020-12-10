@@ -86,9 +86,19 @@
     }
 }
 
+.select-list-wrap {
+    & > ul {
+        li {
+            &:first-child {
+                padding-left:0;
+            }
+        }
+    }
+}
+
 /* button */
 .btn-group {
-    margin:40px auto 0;
+    margin:80px auto 0;
     @include mobile {
         margin-top: 32px;
         padding: 0 16px;

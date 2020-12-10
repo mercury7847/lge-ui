@@ -11,18 +11,35 @@
     }
     .cont-wrap {
         .section {
-            margin-top:80px;
-            &:first-child {
-                margin-top:0;
+            & + .section {
+                margin-top:80px;
+            }
+            &-box {
+                & + .section-box {
+                    margin-top:64px;
+                }
+                .sub-tit {
+                    margin-bottom:24px;
+                    @include font-large;
+                    font-weight:$font-weight-bold;
+                }
             }
         }
         @include mobile {
             .section {
                 margin-top:0;
                 padding:32px 16px 60px;
-                border-top:12px solid #f4f4f4;
-                &:first-child {
-                    border-top:0;
+                & + .section {
+                    margin-top:80px;
+                    border-top:12px solid #f4f4f4;
+                }
+                &-box {
+                    & + .section-box {
+                        margin-top:40px;
+                    }
+                    .sub-tit {
+                        margin-bottom:12px;
+                    }
                 }
             }
         }
