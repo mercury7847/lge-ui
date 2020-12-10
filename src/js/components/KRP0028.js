@@ -87,9 +87,11 @@
             },
 
             requestModal: function(dm) {
+                console.log("2");
                 var _self = this;
                 var ajaxUrl = $(dm).attr('href');
                 lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
+                    console.log(result);
                     _self.openModalFromHtml(result);
                 }, null, "html");
             },
