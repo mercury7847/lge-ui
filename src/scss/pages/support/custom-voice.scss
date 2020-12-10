@@ -68,6 +68,9 @@
         }
         .form-infos {
             margin-top:12px;
+            @include mobile {
+                margin-bottom:0;
+            }
         }
         .bullet-list {
             .btn-link {
