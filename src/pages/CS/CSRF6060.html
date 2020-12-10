@@ -33,7 +33,14 @@
                                     <div class="tit-wrap">
                                         <h2 class="tit">접수번호로 빠르게 조회</h2>        
                                     </div>
-                                    <form action="/html/CS/CSRF6061.html" method="POST" data-ajax="/lg5-common/data-ajax/support/flag.json" id="numberForm" novalidate>
+                                    <!-- 
+                                        1. 접수 내역이 있는 경우
+                                        /lg5-common/data-ajax/support/receptionDetailsSuccess.json
+
+                                        2. 접수 내역이 없는 경우
+                                        /lg5-common/data-ajax/support/receptionDetailsFail.json
+                                     -->
+                                    <form action="/html/CS/CSRF6061.html" method="POST" data-ajax="/lg5-common/data-ajax/support/receptionDetailsSuccess.json" id="numberForm" novalidate>
                                         <div class="form-wrap">
                                             <div class="forms block-type">
                                                 <div class="tit">
@@ -63,7 +70,7 @@
                                             </div>
                                         </div>
                                         <div class="btn-group center">
-                                            <button type="button" class="btn pink btn-confirm"><span>확인</span></button>
+                                            <button type="button" class="btn btn-confirm"><span>확인</span></button>
                                         </div>
                                     </form>
                                 </div>
@@ -73,13 +80,13 @@
                                         <h2 class="tit">휴대폰 인증으로 한번에 조회</h2>        
                                     </div>
                                     <!-- 
-                                        1. 인증이 성공된 경우
-                                        /lg5-common/data-ajax/support/authSuccess.json
+                                        1. 접수 내역이 있는 경우
+                                        /lg5-common/data-ajax/support/receptionDetailsSuccess.json
 
-                                        2. 인증 번호가 틀릴 경우
-                                        /lg5-common/data-ajax/support/authFail.json
+                                        2. 접수 내역이 없는 경우
+                                        /lg5-common/data-ajax/support/receptionDetailsFail.json
                                     -->
-                                    <form action="/html/CS/CSRF6061.html" method="POST" data-ajax="/lg5-common/data-ajax/support/authSuccess.json" id="phoneForm" novalidate>
+                                    <form action="/html/CS/CSRF6061.html" method="POST" data-ajax="/lg5-common/data-ajax/support/receptionDetailsSuccess.json" id="phoneForm" novalidate>
                                         <div class="form-wrap">
                                             <div class="forms block-type">
                                                 <div class="tit">
@@ -162,27 +169,6 @@
         "popId" : "laypop2",
         "msgOnly" : true,
         "msg" : "인증 번호 발송 버튼을 선택해 주세요."
-    })
-
-    <!-- 인증이 성공된 경우 -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop3",
-        "msgOnly" : true,
-        "msg" : "휴대전화 인증이 완료되었습니다."
-    })
-
-    <!-- 인증 번호 발송/재발송 버튼 선택 시 -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop4",
-        "msgOnly" : true,
-        "msg" : "입력하신 휴대 전화 번호로 인증 번호를 보내드렸습니다."
-    })
-
-    <!-- 1분 내 인증 번호/재발송 버튼을 3회 선택 시 -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop5",
-        "msgOnly" : true,
-        "msg" : "1분 당 2회만 인증 번호 발송이 가능합니다."
     })
 
     <!-- support script -->

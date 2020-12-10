@@ -248,6 +248,13 @@
     <!-- 휴대폰인증 팝업 -->
     @@include('./support/modal/phone-certification-popup.html')
 
+    <!-- 인증 번호 발송 버튼을 클릭하지 않고 확인 버튼 눌렀을 경우 -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop1",
+        "msgOnly" : true,
+        "msg" : "인증 번호 발송 버튼을 선택해 주세요."
+    })
+
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
     <script src="/lg5-common/js/support/customVoice/feedback.min.js"></script>
