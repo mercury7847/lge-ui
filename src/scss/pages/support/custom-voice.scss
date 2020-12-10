@@ -4,6 +4,12 @@
 @import "../../utilities/mixins";
 
 .support {
+    .form-infos {
+        margin-top:12px;
+        @include mobile {
+            margin-bottom:0;
+        }
+    }
     .form-wrap {
         padding-right:117px;
         .forms {
@@ -27,6 +33,42 @@
         }
     }
 
+    // 칭찬합니다.
+    &.feedback {
+        .cont-wrap {
+            max-width:1146px + 80px;
+        }
+        .bullet-list {
+            .btn-link {
+                margin-left:24px;
+            }
+            @include mobile {
+                .btn-link {
+                    margin:12px 0 0 0;
+                }
+            }
+        }
+        .search-wrap {
+            max-width:848px;
+            margin:0 auto;
+            padding-bottom:64px;
+            &.search-layer {
+                max-width:444px;
+                padding-bottom: 48px;
+            }
+            @include mobile {
+                padding:0 20px 32px;
+                background:#fff;
+            }
+        }
+        .result-wrap {
+            @include mobile {
+                padding:0 16px;
+            }
+        }
+    }
+
+    // 경영진에게 제안
     &.suggestions {
         .mymem-lists {
             font-size:0;
@@ -59,58 +101,8 @@
                 border-radius:4px;
             }
         }
-    }
-
-    // 칭찬합니다.
-    &.feedback {
         .cont-wrap {
             max-width:1146px + 80px;
-        }
-        .form-infos {
-            margin-top:12px;
-            @include mobile {
-                margin-bottom:0;
-            }
-        }
-        .bullet-list {
-            .btn-link {
-                margin-left:24px;
-            }
-            @include mobile {
-                .btn-link {
-                    margin:12px 0 0 0;
-                }
-            }
-        }
-        .search-wrap {
-            max-width:848px;
-            margin:0 auto;
-            padding-bottom:64px;
-            &.search-layer {
-                max-width:444px;
-                padding-bottom: 48px;
-            }
-            @include mobile {
-                padding:0 20px 32px;
-                background:#fff;
-            }
-        }
-        .result-wrap {
-            @include mobile {
-                padding:0 16px;
-            }
-        }
-    }
-
-    &.suggestions-company {
-        .cont-wrap {
-            max-width:1146px + 80px;
-        }
-        .form-infos {
-            margin-top:12px;
-            @include mobile {
-                margin-bottom:0;
-            }
         }
     }
 
