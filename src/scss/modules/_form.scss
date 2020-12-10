@@ -702,6 +702,12 @@
             padding:12px 16px;
         }
     }
+    .btm-more {
+        margin-top:4px;
+        &.err-block {
+            display:none;
+        }
+    }
 }
 .agree-all-chk {
     font-weight:700;
