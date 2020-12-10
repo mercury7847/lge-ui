@@ -131,12 +131,12 @@ var res = {
 					"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
 				},
 				"Footer" : {
-					"개인정보취급방침" : ["/html/UTS/COMF2000.html","","진행중"],
-					"이벤트 개인정보처리방침(리스트)" : ["/html/UTS/COMF2001.html","","진행중"],
-					"이벤트 개인정보처리방침(상세)" : ["/html/UTS/COMF2001_view.html","","진행중"],
-					"이용약관" : ["/html/UTS/COMF2003.html","","진행중"],
-					"이메일 무단수집 거부" : ["/html/UTS/COMF2005.html","","진행중"],
-					"소식지 신청" : ["/html/UTS/COMF2004.html","","진행중"]
+					// "개인정보취급방침" : ["/html/UTS/COMF2000.html","","진행중"],
+					// "이벤트 개인정보처리방침(리스트)" : ["/html/UTS/COMF2001.html","","진행중"],
+					// "이벤트 개인정보처리방침(상세)" : ["/html/UTS/COMF2001_view.html","","진행중"],
+					// "이용약관" : ["/html/UTS/COMF2003.html","","진행중"],
+					// "이메일 무단수집 거부" : ["/html/UTS/COMF2005.html","","진행중"],
+					"소식지 신청" : ["/html/UTS/COMF2004.html","","검수요청"]
 				}
 			},
 			"스토리(STC)" : {
@@ -172,7 +172,7 @@ var res = {
 					"케어플래너_렌탈케어솔루션" : ["/html/SLC/RMSF2003.html","","검수완료"],
 					"케어플래너_케어십" : ["/html/SLC/RMSF2003_01.html","","검수완료"],
 					"케어플래너_상세견적확인" : ["/html/SLC/RMSF2020.html","","검수완료"],
-					"고객혜택" : ["/html/SLC/RMSF2015.html","","진행중"]
+					"고객혜택" : ["/html/SLC/RMSF2015.html","","검수요청"]
 				},
 				"홈" : ["/html/SLC/RMSF2001.html","",""]
 			},
@@ -198,11 +198,11 @@ var res = {
 					"상세_기본타입" : ["/html/BMC/OBS4002.html","","검수완료"],
 				},
 				"멤버십" : {
-					"멤버십 메인" : ["/html/BMC/ACC4001.html","","진행중"],
-					"멤버십 소개" : ["/html/BMC/ACC4002.html","","진행중"],
-					"멤버십 혜택" : ["/html/BMC/ACC4003.html","","진행중"],
-					"멤버십 가입안내" : ["/html/BMC/ACC4004.html","","진행중"],
-					"카드혜택" : ["/html/BMC/ACC4005.html","","진행중"],
+					"멤버십 메인" : ["/html/BMC/ACC4001.html","","검수요청"],
+					"멤버십 소개" : ["/html/BMC/ACC4002.html","","검수요청"],
+					"멤버십 혜택" : ["/html/BMC/ACC4003.html","","검수요청"],
+					"멤버십 가입안내" : ["/html/BMC/ACC4004.html","","검수요청"],
+					"카드혜택" : ["/html/BMC/ACC4005.html","","검수요청"],
 				}
 			},
 			"마이페이지(MYC)" : {
@@ -285,10 +285,10 @@ var res = {
 					//"케어솔루션 주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
 				},
 				"비회원" : {
-					"비회원 주문번호 로그인" : ["/html/UTC/OBSF9038.html","",""],
-					"비회원 주문배송조회 상세" : ["/html/UTC/OBSF9039.html","",""],
-					"비회원 주문/결제 팝업" : ["/html/UTC/OBSF9039_popup.html","",""],
-					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=no",""],
+					"비회원 주문번호 로그인" : ["/html/UTC/OBSF9038.html","","검수요청"],
+					"비회원 주문배송조회 상세" : ["/html/UTC/OBSF9039.html","","검수요청"],
+					"비회원 주문/결제 팝업" : ["/html/UTC/OBSF9039_popup.html","","검수요청"],
+					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=no","검수요청"],
 				}
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],

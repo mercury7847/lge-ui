@@ -23,7 +23,7 @@
                     <div class="dp-cell">
                         <div class="input-wrap datepicker left">
                             <div class="box">
-                                <input type="text" id="date-input1" placeholder="날짜 선택">
+                                <input type="text" id="date-input1" name="startDate" placeholder="날짜 선택" data-required="true">
                                 <div class="cell">
                                     <button type="button" class="ui_calendar startDate" data-input-target="#date-input1"><span class="blind">달력보기</span></button>
                                 </div>
@@ -32,12 +32,13 @@
                         <span class="bar">~</span>
                         <div class="input-wrap datepicker right">
                             <div class="box">
-                                <input type="text" id="date-input2" placeholder="날짜 선택">
+                                <input type="text" id="date-input2" name="endDate" placeholder="날짜 선택" data-required="true">
                                 <div class="cell">
                                     <button type="button" class="ui_calendar endDate" data-input-target="#date-input2"><span class="blind">달력보기</span></button>
                                 </div>
                             </div>
                         </div>
+                        <div class="err-block"><p class="err-msg"></p></div>
                     </div>
                     <div class="btn-cell">
                         <button type="button" class="btn calendarInquiry-btn"><span>조회</span></button>

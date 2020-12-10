@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["MYC/MYC"]
+		pageCSS: ["MYC/MYC"],
+		pageJS: ["mypage/receiptRegistration"]
     })
 <body>
     <div class="wrap">
@@ -24,13 +25,13 @@
                         })
                         <div class="lnb-contents">
 							<!-- 상세 -->
-							<div class="form-wrap">
+							<div class="form-wrap" data-select-url="/lg5-common/data-ajax/mypage/membership/store_brand_list.json", data-receipt-url="/lg5-common/data-ajax/mypage/membership/registration_receipt.json">
 								<!-- 구매처 -->
 								<dl class="forms">
-									<dt class="tit"><label for="buy01" class="req">구매처<span class="blind">필수입력</span></label></dt>
+									<dt class="tit"><label for="categorySelect" class="req">구매처<span class="blind">필수입력</span></label></dt>
 									<dd class="conts">
 										<div class="select-wrap">
-											<select class="ui_selectbox" id="buy01" title="구매처 선택">
+											<select class="ui_selectbox" id="categorySelect" name="category" title="구매처 선택" data-required="true">
 												<option value="" class="placeholder">구매처 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
 												<option value="">이마트</option>
 												<option value="">이마트</option>
@@ -38,27 +39,28 @@
 										</div>
 										<div class="select-half">
 											<div class="select-wrap">
-												<select class="ui_selectbox" title="지역 선택">
+												<select class="ui_selectbox" id="areaSelect" name="area" title="지역 선택">
 													<option value="" class="placeholder">지역 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
 													<option value="">지역 선택</option>
 													<option value="">지역 선택</option>
 												</select>
 											</div>
 											<div class="select-wrap">
-												<select class="ui_selectbox" title="지점 선택">
+												<select class="ui_selectbox" id="branchSelect" name="branch" title="지점 선택" data-required="true">
 													<option value="" class="placeholder">지점 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
 													<option value="">지점 선택</option>
 													<option value="">지점 선택</option>
 												</select>
 											</div>
 										</div>
+										<div class="err-block"><p class="err-msg"></p></div>
 									</dd>
 								</dl>
 								<!-- //구매처 -->
 								<!-- 영수증 바코드 번호 -->
 								<dl class="forms">
 									<dt class="tit">
-										<label for="buy02" class="req">영수증 바코드 번호<span class="blind">필수입력</span></label>
+										<label for="inputReceipt" class="req">영수증 바코드 번호<span class="blind">필수입력</span></label>
 										@@include('./common/modules/tooltip.html', {
 											"type" : "include",
 											"page" : "tooltip-ACCF7037"
@@ -67,10 +69,11 @@
 									<dd class="conts">
 										<div class="box">
 											<div class="input-wrap">
-												<input type="text" id="buy02" value="" placeholder="구매 영수증의 바코드 번호를 입력하세요.">
+												<input type="text" id="inputReceipt" name="receipt" value="" placeholder="구매 영수증의 바코드 번호를 입력하세요." data-required="true">
+												<div class="err-block"><p class="err-msg"></p></div>
 											</div>
 											<div class="cell">
-												<button type="button" class="btn"><span>영수증 등록</span></button>
+												<button type="button" class="btn" id="inquiryButton"><span>영수증 등록</span></button>
 											</div>
 										</div>
 										@@include('./common/modules/bullet-list.html', {

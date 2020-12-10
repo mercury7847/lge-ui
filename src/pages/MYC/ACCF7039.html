@@ -65,7 +65,7 @@
                                     <div class="tit-wrap">
                                         <h3 class="tit">멤버십 가입 정보</h3>
                                         <div class="flt-cont">
-                                            <button type="button" class="btn border size"><span>수정하기</span></button>
+                                            <button type="button" class="btn border size" id="membershipEditButton" data-link-url="#"><span>수정하기</span></button>
                                         </div>
                                     </div>
                                     <div class="section-inner type2">
@@ -138,6 +138,9 @@
                                                     }
                                                 ]
                                             })
+                                            <div class="no-data">
+                                                <p>조회 결과가 없습니다.</p>
+                                            </div>
                                         </div>
                                         @@include('./common/modules/bullet-list.html', {
                                             "size2" : true,
