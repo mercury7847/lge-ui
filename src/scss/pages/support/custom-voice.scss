@@ -102,6 +102,18 @@
         }
     }
 
+    &.suggestions-company {
+        .cont-wrap {
+            max-width:1146px + 80px;
+        }
+        .form-infos {
+            margin-top:12px;
+            @include mobile {
+                margin-bottom:0;
+            }
+        }
+    }
+
     // 나의 글 보기
     &.my-status {
         .search-info {
