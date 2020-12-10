@@ -8,11 +8,13 @@
         ], function() {   
             var numberValidation = new vcui.ui.CsValidation('#numberForm', {
                 register: {
-                    name1: {
+                    userName1: {
+                        msgTarget: '.err-block',
                         pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z\*]+$/,
                         maxLength: 30
                     },
                     number: {
+                        msgTarget: '.err-block',
                         pattern: /^[0-9]+$/,
                         maxLength: 20
                     }
@@ -20,16 +22,18 @@
             });
             var phoneValidation = new vcui.ui.CsValidation('#phoneForm', {
                 register: {
-                    name2: {
+                    userName2: {
+                        msgTarget: '.err-block',
                         pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z\*]+$/,
                         maxLength: 30
                     },
-                    phone: {
+                    phoneNo: {
+                        msgTarget: '.err-block',
                         pattern: /^[0-9]+$/,
                         maxLength: 11
                     },
-                    certiNumber: {
-                        
+                    authNo: {
+                        msgTarget: '.err-block',
                     }
                 }
             });
@@ -59,7 +63,7 @@
                     data = phoneValidation.getAllValues();
 
                 if (result.success) {
-                    if ($('#certiNumber').prop('disabled')) {
+                    if ($('#authNo').prop('disabled')) {
                         $('#laypop2').vcModal(); 
                         return true;
                     }
@@ -78,10 +82,10 @@
                 }
             });
 
-            $('.btn-certi').on('click', function() {
+            $('.btn-send').on('click', function() {
                 var data = {
-                    name2: $('#name2').val(),
-                    phone: $('#phone').val()    
+                    userName2: $('#userName2').val(),
+                    phoneNo: $('#phoneNo').val()    
                 }
                 
                 
@@ -90,7 +94,7 @@
 
                     if (data.resultFlag == 'Y') {
                         $(this).find('span').html('인증 번호 재발송');
-                        $('#certiNumber').prop('disabled', false).focus();
+                        $('#authNo').prop('disabled', false).focus();
                     } else {
                         $('#laypop4').vcModal();
                     }

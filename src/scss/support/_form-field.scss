@@ -86,6 +86,16 @@
     }
 }
 
+.select-list-wrap {
+    & > ul {
+        li {
+            &:first-child {
+                padding-left:0;
+            }
+        }
+    }
+}
+
 /* button */
 .btn-group {
     margin:80px auto 0;
