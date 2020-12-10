@@ -67,9 +67,15 @@ br.m {
         padding-top:0;
     }
     .bar-type {
-        margin-top:32px;
+        margin:32px -40px 0;
+        .tabs {
+            padding:0 40px;
+        }
         @include mobile {
             margin:24px -16px 0;
+            .tabs {
+                padding:0 16px;
+            }
         }
     }
     .csn-itr-cont {
@@ -78,13 +84,19 @@ br.m {
             margin-top:16px;
         }
     }
+    .prd-list-count {
+        margin:48px 0 16px;
+        color:#222;
+        @include font-medium;
+        font-weight:700;
+    }
 
     .cont-wrap {
         padding-bottom:120px;
         @include mobile {
             padding:0;
         }
-        .section {
+        .csn-section {
             width:100%;
             max-width:initial;
             margin-top:120px;
@@ -191,7 +203,12 @@ br.m {
             }
             .img {
                 width:auto;
-                margin:32px -16px -60px;
+                margin:32px -16px 0;
+            }
+            &:last-child {
+                .img {
+                    margin-bottom:-60px;
+                }
             }
         }
     }
@@ -317,6 +334,7 @@ br.m {
                         width:50%;
                         margin-top:44px;
                         padding-left:50px;
+                        vertical-align:top;
                         @include mobile {
                             display:block;
                             width:100%;
@@ -328,7 +346,7 @@ br.m {
                         }
                         dl {
                             position:relative;
-                            max-width:522px;
+                            max-width:472px;
                             min-height:80px;
                             padding-left:112px;
                             @include mobile {
@@ -348,43 +366,12 @@ br.m {
                                 background-size:60px;
                                 background-repeat:no-repeat;
                                 background-position:center;
+                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
                                 @include mobile {
-                                    top:50%;
                                     width:60px;
                                     height:60px;
-                                    margin-top:-30px;
                                     background-size:40px;
                                 }
-                            }
-                            &.svc1-1::before {
-                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
-                            }
-                            &.svc1-2::before {
-                                background-image:url('/lg5-common/images/icons/icon-03-120.svg');
-                            }
-                            &.svc1-3::before {
-                                background-image:url('/lg5-common/images/icons/icon-06-120.svg');
-                            }
-                            &.svc1-4::before {
-                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
-                            }
-                            &.svc1-5::before {
-                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
-                            }
-                            &.mng1::before {
-                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
-                            }
-                            &.mng2::before {
-                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
-                            }
-                            &.mng3::before {
-                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
-                            }
-                            &.mng4::before {
-                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
-                            }
-                            &.mng5::before {
-                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
                             }
                             dt {
                                 position:relative;
@@ -411,6 +398,14 @@ br.m {
                                 word-break:keep-all;
                             }
                         }
+                        .bullet-list {
+                            max-width:472px;
+                            margin-top:8px;
+                            padding-left:112px;
+                            @include mobile {
+                                padding-left:80px;
+                            }
+                        }
                     }
                 }
             }
@@ -419,6 +414,41 @@ br.m {
                 @include mobile {
                     margin-top:40px;
                 }
+            }
+        }
+    }
+    .prd-list-wrap {
+        .inner {
+            @include clearfix;
+            margin:-24px 0 0 -24px;
+            @include mobile {
+                margin:0;
+            }
+            .item {
+                float:left;
+                width:calc((100% - 96px) / 4);
+                margin:24px 0 0 24px;
+                @media screen and (max-width:1200px) {
+                    width:calc((100% - 72px) / 3);
+                }
+                @media screen and (max-width:900px) {
+                    width:calc((100% - 48px) / 2);
+                }
+                @include mobile {
+                    width:100%;
+                    margin:12px 0 0 0;
+                    &:first-child {
+                        margin-top:0;
+                    }
+                }
+            }
+        }
+        .prd-care-vertical {
+            height:644px;
+            max-height:644px;
+            @include mobile {
+                height:auto;
+                max-height:100%;
             }
         }
     }
