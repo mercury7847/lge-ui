@@ -85,18 +85,12 @@
                 var self = this;
                 
                 self.$searchWrap.find('.btn-search').on('click', function() {
-                    var val = self.$searchWrap.find('#keyword').val();
-
-                    if (val.length > 1) {
-                        self.params = $.extend({}, self.params, {
-                            'keyword': self.$searchWrap.find('#keyword').val(),
-                            'page': 1
-                        });
-                        
-                        self.searchList();
-                    } else {
-                        
-                    }
+                    self.params = $.extend({}, self.params, {
+                        'keyword': self.$searchWrap.find('#keyword').val(),
+                        'page': 1
+                    });
+                    
+                    self.searchList();
                 });
 
                 self.$sortSelect.on('change', function() {

@@ -38,6 +38,7 @@
                 }
             });
 
+
             $('#numberForm').find('.btn-confirm').on('click', function() {
                 var result = numberValidation.validate(),
                     data = numberValidation.getAllValues();
@@ -47,7 +48,7 @@
                     lgkorUI.requestAjaxDataPost($('#numberForm').data('ajax'), data, function(result) {
                         var data = result.data;
 
-                        if (data.resultFlag == 'Y') {
+                        if (result.data.resultFlag == 'Y') {
                             $('#numberForm').submit();
                         } else if (data.resultFlag == 'N') {
                             $('#laypop1').vcModal();
@@ -65,13 +66,13 @@
                 if (result.success) {
                     if ($('#authNo').prop('disabled')) {
                         $('#laypop2').vcModal(); 
-                        return true;
+                        return false;
                     }
 
                     lgkorUI.showLoading();
                     lgkorUI.requestAjaxDataPost($('#numberForm').data('ajax'), data, function(result) {
 
-                        if (data.resultFlag == 'Y') {
+                        if (result.data.resultFlag == 'Y') {
                             $('#phoneForm').submit();
                         } else if (data.resultFlag == 'N') {
                             $('#laypop1').vcModal();
@@ -83,23 +84,24 @@
             });
 
             $('.btn-send').on('click', function() {
-                var data = {
-                    userName2: $('#userName2').val(),
-                    phoneNo: $('#phoneNo').val()    
-                }
-                
-                
-                lgkorUI.requestAjaxDataPost($(this).data('ajax'), data, function(result) {
-                    var data = result.data;
+                var result = phoneValidation.validate(['userName2', 'phoneNo']),
+                    ajaxUrl = $(this).data('ajax'),
+                    data = phoneValidation.getValues(['userName2','phoneNo']);
 
-                    if (data.resultFlag == 'Y') {
-                        $(this).find('span').html('인증 번호 재발송');
-                        $('#authNo').prop('disabled', false).focus();
-                    } else {
-                        $('#laypop4').vcModal();
-                    }
-                });
-                
+                if (result.success) {
+                    lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
+                        var data = result.data;
+    
+                        if (data.resultFlag == 'Y') {
+                            $(this).find('span').html('인증 번호 재발송');
+                            $('#authNo').prop('disabled', false);
+                        }
+
+                        lgkorUI.alert('', {
+                            title: result.data.resultMessage
+                        });
+                    });
+                }
             });
         });
     });
