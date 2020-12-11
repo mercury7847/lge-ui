@@ -213,7 +213,8 @@ var res = {
 						"이벤트/기획전" : ["/html/UTS/SERF9005.html","","검수완료"],
 						"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
 						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
-						//"고객지원" : ["/html/UTS/SERF9008.html","","검수요청"],
+						"고객지원" : ["/html/UTS/SERF9008.html","","검수요청"],
+						"센터/매장" : ["/html/UTS/SERF9015.html","",""],
 					},
 					"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
 				},
