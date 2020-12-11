@@ -74,7 +74,7 @@
                     @@if(context.cs) {
                     <a href="#" class="cs">
                         <span class="cs-inner">
-                            <span>IT/모니터</span>><span>데스크톱/일체형</span>
+                            <span>IT/모니터</span>&#62;<span>데스크톱/일체형</span>
                         </span>
                         <span class="cs-inner">
                             통합 드라이버 설치 프로그램 
@@ -89,7 +89,8 @@
                     }
                     @@if (context.skuTy2) {
                         <div class="sku"><a href="#">@@skuTy2</a></div>
-                        }
+                    }
+                    
                     @@if (context.review) {
                     <div class="review-info">
                         <a href="#">
@@ -114,52 +115,48 @@
                     @@if ( !context.shopInfo) {
                     <div class="info-btm">
                     }    
-                        @@if (context.date) {
-                        <span class="text date">@@date</span>
+                    @@if (context.date) {
+                    <span class="text date">@@date</span>
+                    }
+                    @@if (context.hashtag) {
+                    <div class="text hashtag-wrap">
+                        @@for ( var i=0; i < hashtag.length; i++ ) {
+                        <span class="hashtag"><span>#</span>`+hashtag[i]+`</span>
                         }
-                        @@if (context.hashtag) {
-                        <div class="text hashtag-wrap">
-                            @@for ( var i=0; i < hashtag.length; i++ ) {
-                            <span class="hashtag"><span>#</span>`+hashtag[i]+`</span>
-                            }
-                        </div>
-                        }
-                        @@if (context.model) {
-                        <div class="text model">
-                            @@model
-                        </div>
-                        }
-                        @@if (context.careflag) {
-                        <span class="text careflag">
-                            케어십 가능
-                        </span>
-                        }
+                    </div>
+                    }
+                    @@if (context.model) {
+                    <div class="text model">
+                        @@model
+                    </div>
+                    }
+                    @@if (context.careflag) {
+                    <span class="text careflag">
+                        케어십 가능
+                    </span>
+                    }
 
-                        @@if (context.infoLink) {
-                        <a href="#" class="text text-btn">제품사용설명서</a>
-                        <a href="#" class="text text-btn">드라이버/소프트웨어</a>
-                        <a href="#" class="text text-btn">제품문제해결</a>
-                        } 
-                        @@if (context.InfoText) {
-                            @@for ( var i=0; i < InfoText.length; i++ ) {
-                            <span class="text">`+InfoText[i]+`</span>
-                            }
+                    @@if (context.InfoText) {
+                        @@for ( var i=0; i < InfoText.length; i++ ) {
+                        <span class="text">`+InfoText[i]+`</span>
                         }
+                    }
 
                     @@if ( !context.shopInfo) {    
                     </div>
                     }
-
-                    @@if (context.shopInfo) {
-                    <a href="#" class="shop-info">
-                        <span class="desc add">서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP</span>
-                        @@if (context.shopTime) {
-                        <span class="desc time">월~금 09:00~18:00 토요일 09:00~13:00</span>
-                        }
-                        @@if (context.shopTel) {
-                        <span class="desc tel">02-3448-5191</span>
-                        }
-                    </a>
+                    @@if( !context.itemLink) {
+                        @@if (context.shopInfo) {
+                        <div href="#" class="shop-info">
+                            <a href="#" class="desc add">서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP</a>
+                            @@if (context.shopTime) {
+                            <a href="#" class="desc time">월~금 09:00~18:00 토요일 09:00~13:00</a>
+                            }
+                            @@if (context.shopTel) {
+                            <span class="desc tel">02-3448-5191</span>
+                            }
+                        </div>
+                    }
                     @@if (context.state) {
                     <div class="shop-state">
                         <span class="@@stateClass">@@state</span>
@@ -171,46 +168,54 @@
                 
             </div>
 
-            @@if (context.btnA) {
-            <div class="btn-area">
-                @@for ( var i=0; i < btnA.length; i++ ) {
-                <a href="#n" class="btn border size"><span>`+btnA[i]+`</span></a> 
+                @@if (context.btnA) {
+                <div class="btn-area">
+                    @@for ( var i=0; i < btnA.length; i++ ) {
+                    <a href="#n" class="btn border size"><span>`+btnA[i]+`</span></a> 
+                    }
+                </div>    
+                }  
+                @@if (context.btnB) { 
+                <div class="btn-area">   
+                    @@for ( var i=0; i < btnB.length; i++ ) {
+                    <button type="button" class="btn border size"><span>`+btnB[i]+`</span></button>
+                    }
+                </div>
                 }
-            </div>    
-            }  
-            @@if (context.btnB) { 
-            <div class="btn-area">   
-                @@for ( var i=0; i < btnB.length; i++ ) {
-                <button type="button" class="btn border size"><span>`+btnB[i]+`</span></button>
-                }
-            </div>
+                @@if (context.videoB) { 
+                <div class="video-info">   
+                    <span class="hidden">동영상 포함</span>
+                </div>
             }
-            @@if (context.videoB) { 
-            <div class="video-info">   
-                <span class="hidden">동영상 포함</span>
-            </div>
-            }
+            
+
             
             @@if (context.priceInfo) {
             <div class="info-price">
-                @@if (context.priceRental) {
-                <div class="price-info rental">
-                    <p class="tit">케어솔루션</p>
-                    <span class="price"><em>월</em> 40,900<em>원</em></span>
-                </div>
+                @@if ( !context.itemLink) {
+                <a href="#">
                 }
-                @@if (context.priceSales) {
-                    <div class="price-info sales">
-                        <div class="original">
-                            <em class="blind">원가</em>
-                            <span class="price">5,600,000<em>원</em></span>
-                        </div>
-                        <div class="price-in">
-                            <p class="tit">구매</p>
-                            <span class="price">5,200,000<em>원</em></span>
-                        </div>
+                    @@if (context.priceRental) {
+                    <div class="price-info rental">
+                        <p class="tit">케어솔루션</p>
+                        <span class="price"><em>월</em> 40,900<em>원</em></span>
                     </div>
                     }
+                    @@if (context.priceSales) {
+                        <div class="price-info sales">
+                            <div class="original">
+                                <em class="blind">원가</em>
+                                <span class="price">5,600,000<em>원</em></span>
+                            </div>
+                            <div class="price-in">
+                                <p class="tit">구매</p>
+                                <span class="price">5,200,000<em>원</em></span>
+                            </div>
+                        </div>
+                        }
+                @@if ( !context.itemLink) {        
+                </a>
+            }
             </div>
             }
             @@if (context.priceInfo2) {

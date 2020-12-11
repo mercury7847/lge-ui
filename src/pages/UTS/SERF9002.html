@@ -265,7 +265,7 @@
                                             "btnA" : ["길찾기","방문 예약 신청"]
                                         },{
                                             "itemClass" : "",
-                                            "flagsTy2" : "<span class='flag orange'>센터</span>",
+                                            "flagsTy2" : "<span class='flag green'>매장</span><span class='flag'>NEW</span><span class='flag'>이벤트</span>",
                                             "tit" : "<span class='search-word'>홍대</span>입구역 서비스센터",
                                             "shopInfo" : true,
                                             "shopTime" : true,
@@ -274,7 +274,7 @@
                                             "btnA" : ["길찾기","방문 예약 신청"]
                                         },{
                                             "itemClass" : "",
-                                            "flagsTy2" : "<span class='flag red'>센터</span>",
+                                            "flagsTy2" : "<span class='flag green'>센터</span>",
                                             "tit" : "<span class='search-word'>홍대</span>입구역 서비스센터",
                                             "shopInfo" : true,
                                             "shopTime" : true,
@@ -305,43 +305,45 @@
                                 <ul class="result-list support-list">
                                     @@loop('./common/modules/result-list.html', [
                                         {
+                                            "itemLink" : true,
                                             "itemClass" : "",
                                             "img" : "/lg5-common/images/noimage.png",
                                             "tit" : "LG XPION A50PH XPION A50PH",
-                                            "skuTy2" : "LG 올레드 AI ThinQ",
-                                            "infoLink" : true
+                                            "sku" : "LG 올레드 AI ThinQ",
+                                            "InfoText" : ["제품사용설명서", "드라이버/소프트웨어", "제품문제해결"]
 
                                         }, {
+                                            "itemLink" : true,
                                             "itemClass" : "",
                                             "img" : "/lg5-common/images/dummy/@img-cs.jpg",
                                             "tit" : "LG XPION A50PH XPION A50PH",
-                                            "skuTy2" : "LG 올레드 AI ThinQ",
-                                            "infoLink" : true
+                                            "sku" : "LG 올레드 AI ThinQ",
+                                            "InfoText" : ["제품사용설명서", "드라이버/소프트웨어", "제품문제해결"]
 
                                         }, {
-                                            "itemLink" : true,
                                             "itemClass" : "",
                                             "flags" : ["제품사용설명서"],
-                                            "tit" : "[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램",
+                                            "tit" : "HTML 사용설명서",
                                             "cs" : true,
-                                            "model" : "적용모델 : H-62HSGAKOR 외",
+                                            "InfoText" : ["2020.11.03", "한글"],
                                             "btnB" : ["ZIP", "HTML"]
                                         }, {
-                                            "itemLink" : true,
                                             "itemClass" : "",
-                                            "flags" : ["제품사용설명서"],
+                                            "flags" : ["드라이버/소프트웨어"],
                                             "tit" : "[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램",
                                             "cs" : true,
-                                            "model" : "적용모델 : H-62HSGAKOR 외",
-                                            "videoB" : true
-                                        }, {
-                                            "itemLink" : true,
-                                            "itemClass" : "",
-                                            "flags" : ["제품사용설명서"],
-                                            "tit" : "[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램",
-                                            "cs" : true,
-                                            "model" : "적용모델 : H-62HSGAKOR 외",
+                                            "InfoText" : ["2020.11.03", "ver 7.7PHV1", "통합 드라이버 설치 프로그램"],
                                             "btnB" : ["다운로드 1118.4MB"]
+                                            
+                                        }, {
+                                            "itemClass" : "",
+                                            "itemLink" : true,
+                                            "flags" : ["제품문제해결"],
+                                            "tit" : "Miracast 또는 MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
+                                            "cs" : true,
+                                            "InfoText" : ["2020.11.03", "조회수 5,692"],
+                                            "videoB" : true
+                                            
                                         }
                                     ])
                                 </ul>

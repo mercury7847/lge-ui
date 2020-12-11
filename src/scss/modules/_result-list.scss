@@ -274,6 +274,9 @@
                         }
                     }
                 }
+                &.model {
+                    @include textEllipsisClamp(1);
+                }
             }
         }
         .hashtag-wrap {
