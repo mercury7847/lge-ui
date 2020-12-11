@@ -2,149 +2,29 @@
 
 @import "../components-app";
 
+
 .KRC0024 {
-    width: 100%;
+	position:relative;
+    width:100%;
 
-    .component-box {
-        max-width: 1920px;
-        margin: 0 auto;
-    }
-
-    &.full-size {
-		.component-box {
-			max-width:1980px !important;
-		}
-    }
-    &.wide-size {
-		.component-box {
-			max-width:1660px !important;
-		}
-    }
-    &.medium-size {
-		.component-box {
-			max-width:1344px !important;
-		}
+	.ui_carousel_list {
+		overflow:hidden;
 	}
 
-    .ui_carousel_list {
-        overflow:hidden;
+	.carousel-wrap-box {
+        max-width:1600px;
+		margin:0 auto;
+		overflow:hidden;
+		@include mobile {
+			max-width: 100%;
+		}
+
+		.carousel-box {
+			position: relative;
+		}
     }
 
-    .btn-arrow {
-        position: absolute;
-        top: 50%;
-        margin-top: -28px;
-        &.prev {
-            left: 120px;
-        }
-        &.next {
-            right: 120px;
-        }
-        @include mobile {
-            display: none !important;
-        }
-    }
-
-    .indi-wrap {
-        position: absolute;
-        bottom: 0;
-        padding: 0 0 30px;
-        left: 0;
-        width: 100%;
-        height: 42px;
-        text-align: center;
-        font-size: 0;
-        z-index: 2;
-
-        li {
-            padding:0 4px;
-            .btn-indi {
-                display: inline-block;
-                width: 10px;
-                height: 10px;
-                border-radius: 5px;
-                background-color: #ddd;
-                font-size: 0;
-            }
-            &.on .btn-indi {
-                width: 20px;
-                background-color: #111;
-            }
-        }
-
-        .ui_carousel_dots,
-        .ui_carousel_play {
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .ui_carousel_play {
-            .btn-play {
-                position: relative;
-                display: inline-block;
-                width: 16px;
-                height: 16px;
-                margin-left: 12px;
-                border-radius: 50%;
-                background-color: #fff;
-                font-size: 0;
-            }
-            &.play {
-                .btn-play {
-                    &:after {
-                        position: absolute;
-                        @include calc(top,50%,4px);
-                        @include calc(left,50%,3px);
-                        border-left: 7px solid #111;
-                        border-top: 4px solid transparent;
-                        border-bottom: 4px solid transparent;
-                        content: '';
-                    }
-                }
-            }
-            &.stop {
-                .btn-play {
-                    &:before,
-                    &:after {
-                        position: absolute;
-                        @include calc(top,50%,4px);
-                        width: 2px;
-                        height: 8px;
-                        background-color: #111;
-                        content: '';
-                    }
-                    &:before {
-                        @include calc(left,50%,3px);
-                    }
-                    &:after {
-                        @include calc(left,50%,-1px);
-                    }
-                }
-            }
-        }
-    }
-
-    .carousel-box {
-        position: relative;
-    }
-
-    .animation-box {
-        .animation-area {
-            //z-index: auto;
-            .controller-wrap {
-                @include calc(right,50%,20px);
-                bottom: 24px;
-                z-index: 10;
-            }
-        }
-        &.ui_carousel_slide {
-            .animation-area .controller-wrap {
-                bottom: 85px;
-            }
-        }
-    }
-
-    .visual-area {
+	.visual-area {
         position: relative;
         overflow: hidden;
         img {
@@ -154,84 +34,100 @@
         }
     }
 
-    .contents-area {
-        position: absolute;
-        top: 0;
-        right: 60px;
-        bottom: 0;
-        left: 60px;
-        z-index: 2;
-        padding: 125px 0;
-        @include mobile {
-            right:0;
-            left:0;
-        }
-        //padding: 56px 0;
-        .text-area {
-            position: relative;
-            z-index: 1;
-            .text-wrap {
-                width: 100%;
-                max-width: 1284px + 60px;
-                margin: 0 auto;
-                padding-right: 30px;
-                padding-left: 30px;
-
-                @include mobile {
-                    max-width: 100%;
-                    padding-right: 20px;
-                    padding-left: 20px;
-                }
-            }
-        }
-    }
-
     .video-asset {
-        z-index: 2;
+        z-index: 3;
     }
 
-    .text-block {
-        margin-bottom: 40px;
-        .eyebrow {
-            margin-bottom: 16px;
-            @include font-family($font-weight-bold);
-            font-size: 16px;
-        }
-        .title {
-            margin-bottom: 16px;
-            h1, h2, h3, h4, h5, h6 {
-                @include font-family($font-weight-bold);
-                font-size: 40px;
-                line-height: 46px;
+	.text-area {
+		position:absolute;
+		width:100%;
+		max-width: 848px;
+		margin: 0 auto;
+		top:64px;
+		left:0;
+		right:0;
+		z-index:3;
+
+		@include mobile {
+			max-width: 100%;
+			padding-right: 24px;
+			padding-left: 24px;
+		}
+		
+		&.text-black {
+			color:#111;
+		}
+		&.text-white {
+			color:#fff;
+			
+			.link-text {
+				color:#fff;
+			}
+		}
+
+		.title h2 {
+			margin-bottom:14px;
+			font-size:24px;
+			line-height:34px;	
+		}
+		.copy {
+			font-size:14px;
+			line-height:20px;
+		}
+	}
+
+	.indi-wrap {
+		@include pc {
+			display:none !important;
+		}
+        position:absolute;
+        bottom:0;
+        padding:0 0 24px;
+        left:0;
+        width:100%;
+        height:34px;
+        text-align:center;
+        font-size:0;
+        z-index:2;
+
+        li {
+            padding:0 4px;
+            .btn-indi {
+                display: inline-block;
+                width:10px;
+                height:10px;
+                border-radius:5px;
+                background-color:rgba(255, 255, 255, .5);
+                font-size:0;
+            }
+            &.on .btn-indi {
+                width:20px;
+                background-color:#fff;
             }
         }
-        .copy {
-            font-size: 14px;
-            line-height: 20px;
+	}
+
+	.btn-arrow {
+        position: absolute;
+        top:50%;
+        margin-top:-28px;
+        &.prev {
+            left:32px;
+        }
+        &.next {
+            right:32px;
+        }
+        @include mobile {
+            display:none !important;
         }
     }
 
-    .cta-button,
-    .cta-link {
-        display: inline-block;
-        font-size: 0;
-        span {
-            display: inline-block;
-        }
-    }
-    .btn {
-        min-width: 100px;
-        padding: 7px 0;
-        @include font-family($font-weight-medium);
-        font-size: 14px;
-        line-height: 20px;
-    }
-    .link-text {
+	.link-text {
         font-size: 16px;
         line-height: 24px;
     }
     .video-link {
-        margin-top: 20px;
+        margin-top:32px;
         .link-text {
             position: relative;
             padding-bottom: 0;
@@ -249,12 +145,12 @@
                     width: 24px;
                     height: 24px;
                     border-radius: 50%;
-                    background-color: #e9e9ea;
+                    background-color:rgba(255, 255, 255, .5);
                 }
                 &:after {
                     @include calc(top,50%,4px);
                     left: 10px;
-                    border-left: 6px solid #111;
+                    border-left: 6px solid #fff;
                     border-top: 4px solid transparent;
                     border-bottom: 4px solid transparent;
                 }
@@ -262,341 +158,35 @@
         }
     }
 
-    @include mobile {
-        .mobile-text-block-left,
-        .mobile-text-block-right,
-        .mobile-text-block-center {
-            .contents-area {
-                position: static;
-                padding: 0;
-                .align-top,
-                .align-middle,
-                .align-bottom {
-                    &.text-area {
-                        &.text-white {
-                            background-color: #000;
-                        }
-                        &.text-black {
-                            background-color: #fff;
-                        }
-                        .text-wrap {
-                            position: static;
-                            padding: 24px 20px 60px;
-                            transform: translateY(0);
-                        }
-                    }
-                }
-            }
-            &.carousel-box {
-                &:last-child {
-                    .contents-area {
-                        .align-top,
-                        .align-middle,
-                        .align-bottom {
-                            &.text-area {
-                                .text-wrap {
-                                    padding-bottom: 24px;
-                                }
-                            }
-                        }
-                    }
-                }
+	.animation-box {
+        .animation-area {
+            //z-index: auto;
+            .controller-wrap {
+                @include calc(right,50%,20px);
+                bottom: 24px;
+                z-index: 10;
             }
         }
-        .mobile-text-block-left {
-            .text-area {
-                .inner {
-                    text-align: left;
-                }
-            }
-        }
-        .mobile-text-block-right {
-            .text-area {
-                .inner {
-                    text-align: right !important;
-                }
-            }
-        }
-        .mobile-text-block-center {
-            .text-area {
-                .inner {
-                    text-align: center !important;
-                }
-            }
-        }
-    }
-
-    .type-wide {
-        .text-wrap {
-            .inner {
-                .text-block {
-                    max-width:100%;
-                }
-            }
-        }
-    }
-    .type-narrow {
-        .text-wrap {
-            .inner {
-                .text-block {
-                    max-width:60%;
-                    @include mobile {
-                        max-width:100%;
-                    }
-                }
-            }
-        }
-    }
-
-    // 텍스트 가로정렬 및 버튼 사이 간격
-    $align: (left, right, center, top, middle, bottom);
-    @each $key in $align {
-        .align-#{$key} {
-            @if $key == left {
-                .text-wrap {
-                    .inner {
-                        text-align: left;
-                        .text-block {
-                            margin-right:auto;
-                        }
-                    }
-                }
-                .cta-button,
-                .cta-link {
-                    span {
-                        margin: 0 24px 12px 0;
-                        &:last-child {
-                            margin-right: 0;
-                        }
-                    }
-                }
-            }
-            @if $key == right {
-                .text-wrap {
-                    .inner {
-                        text-align: right;
-                        .text-block {
-                            margin-left:auto;
-                        }
-                    }
-                }
-                .cta-button,
-                .cta-link {
-                    span {
-                        margin: 0 0 12px 24px;
-                        &:first-child {
-                            margin-left: 0;
-                        }
-                    }
-                }
-            }
-            @if $key == center {
-                .text-wrap {
-                    .inner {
-                        .text-block {
-                            margin-left:auto;
-                            margin-right:auto;
-                        }
-                    }
-                }
-                .cta-button,
-                .cta-link {
-                    margin: 0 -12px;
-                    span {
-                        margin: 0 12px 12px;
-                    }
-                }
-            }
-            @include mobile {
-                .cta-button,
-                .cta-link {
-                    span {
-                        display: block;
-                        margin-right: 0;
-                        margin-left: 0;
-                    }
-                }
-            }
-
-            @if $key == top {
-                &.text-area {
-                    height: 100%;
-                    .text-wrap {
-                        position: absolute;
-                        top: -69px;
-                        right: 0;
-                        left: 0;
-                        @include mobile {
-                            top: -65px;
-                        }
-                    }
-                }
-            }
-            @if $key == middle {
-                &.text-area {
-                    height: 100%;
-                    .text-wrap {
-                        position: absolute;
-                        top: 50%;
-                        right: 0;
-                        left: 0;
-                        transform:translateY(-50%);
-                    }
-                }
-            }
-            @if $key == bottom {
-                &.text-area {
-                    height: 100%;
-                    .text-wrap {
-                        position: absolute;
-                        bottom: -69px;
-                        right: 0;
-                        left: 0;
-                        @include mobile {
-                            top: -65px;
-                            bottom: 0;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    .disclaimer-wrap {
-        display: none;
-    }
-
-    // 컬러값 설정
-    $color: (lightgray, dark, black, white);
-    @each $bg in $color {
-        &.bg-#{$bg} {
-            @if $bg == lightgray {
-                background: #f4f4f4;
-            } @else if $bg == dark {
-                background: #333;
-            } @else if $bg == black {
-                background: #000;
-                .indi-wrap {
-                    li {
-                        .btn-indi {
-                            background-color: rgba(255, 255, 255, 0.5);
-                        }
-                        &.on .btn-indi {
-                            background-color: #fff;
-
-                        }
-                    }
-                }
-            } @else if $bg == white {
-                background: #fff;
-                .indi-wrap {
-                    li {
-                        .btn-indi {
-                            background-color: #ddd;
-                        }
-                        &.on .btn-indi {
-                            background-color: #111;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    @each $text in $color {
-        .text-#{$text} {
-            @if $text == white {
-                .text-block {
-                    .eyebrow {
-                        color: #fff;
-                    }
-                    .title {
-                        h1, h2, h3, h4, h5, h6 {
-                            color: #fff;
-                        }
-                    }
-                    .copy {
-                        color: #fff;
-                    }
-                }
-                .btn {
-                    &.btn-primary {
-                        border-color: #fff;
-                        background-color: transparent;
-                        color: #fff;
-                    }
-                    &.btn-outline-secondary {
-                        border-color: #fff;
-                        background-color: #fff;
-                        color: #111;
-                    }
-                }
-                .link-text {
-                    border-bottom-color: #fff;
-                    color: #fff;
-                    &.ico-right {
-                        &:after {
-                            border-color: #fff;
-                        }
-                    }
-                }
-            }
-            @if $text == black {
-                .text-block {
-                    .eyebrow {
-                        color: #111;
-                    }
-                    .title {
-                        h1, h2, h3, h4, h5, h6 {
-                            color: #111;
-                        }
-                    }
-                    .copy {
-                        color: #111;
-                    }
-                }
-                .btn {
-                    &.btn-primary {
-                        border-color: #111;
-                        background-color: #111;
-                        color: #fff;
-                    }
-                    &.btn-outline-secondary {
-                        border-color: #212121;
-                        background-color: #fff;
-                        color: #111;
-                    }
-                }
-                .link-text {
-                    border-bottom-color: #111;
-                    color: #111;
-                    &.ico-right {
-                        &:after {
-                            border-color: #111;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-.animation-box {
-    &.animation-box-full {
         &.ui_carousel_slide {
-            .play-animaion-btn {
-                @include calc(top,50%,-20px);
-            }
-            .animation-area {
-                top: 50%;
-                transform: translateY(-100%);
-                video {
-                    height: auto;
-                }
-                .controller-wrap {
-                    @include calc(bottom,-50%,-85px);
-                }
+            .animation-area .controller-wrap {
+                bottom: 85px;
             }
         }
     }
+
+    $color: (lightgray, dark, black, white);
+	@each $bg in $color {
+		&.bg-#{$bg} {
+			@if $bg == lightgray {
+				background-color: #f4f4f4;
+			} @else if $bg == dark {
+				background-color: #333;
+			} @else if $bg == black {
+				background-color: #000;
+			} @else if $bg == white {
+				background-color: #fff;
+			}
+		}
+	}
 }
+

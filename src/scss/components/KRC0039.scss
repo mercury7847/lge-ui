@@ -2,152 +2,156 @@
 
 @import "../components-app";
 
-
 .KRC0039 {
-	width: 100%;
-	// max-width: 1284px;
-	// margin: 0 auto;
+    // font color option
+    $fontColor : (type-black, type-white);
+    @each $colorClass in $fontColor {
+        .#{$colorClass} {
+            @if $colorClass == type-black {
+                color:#222;
+            }
+            @else if $colorClass == type-white {
+                color:#fff;
+                @include mobile {
+                    color:#222;
+                }
+            }
+        }
+    }
 
-	@include mobile {
-		max-width: 100%;
-		padding-right: 24px;
-		padding-left: 24px;
-	}
+    // align option 
+    $align : (align-left, align-center, align-right);
+    @each $alignClass in $align {
+        .#{$alignClass} {
+            @if $alignClass == align-left {
+                text-align:left;
+            }
+            @else if $alignClass == align-center {
+                text-align:center;
+            }
+            @else if $alignClass == align-right {
+                text-align:right;
+            }
+        }
+    }
 
-	.box {
-		position: relative;
-		width: 100%;
-		max-width: 1066px + 60px;
-		margin: 0 auto;
-		padding: 0 30px;
-		.btn-area {
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-		}
-
-		&.align-left {
-			padding-right: 132px + 54px;
-			.btn-area {
-				right: 30px;
-			}
-		}
-		&.align-right {
-			padding-left: 132px + 54px;
-			.btn-area {
-				left: 30px;
-			}
-		}
-
-		@include mobile {
-			max-width: 100%;
-			padding: 0 24px;
-			.btn-area {
-				position: static;
-				transform: none;
-				margin-top: 40px;
-			}
-			&.align-left,
-			&.align-right {
-				padding: 60px 24px;
-			}
-		}
-	}
-
-	.title {
-		margin-bottom: 8px;
-		&, * {
-			font-weight: 700;
-			font-size: 24px;
-			line-height: 32px;
-		}
-	}
-
-	.headline {
-		margin-bottom: 16px;
-		font-weight: 700;
-		font-size: 20px;
-		line-height: 32px;
-	}
-
-	.text {
-		font-size: 16px;
-		line-height: 24px;
-	}
-
-	.btn-area {
-		.btn-primary {
-			min-width: 132px;
-			padding:10px 0;
-			border: 1px solid #bcbcbc;
-			border-radius: 8px;
-			background-color: #fff;
-			color: #111;
-		}
-	}
-
-	$color: (lightgray, dark, black, white);
-	@each $bg in $color {
-		&.bg-#{$bg} {
-			@if $bg == lightgray {
-				background-color: #f4f4f4;
-				.title {
-					&, * {
-						color: #111;
-					}
-				}
-				.headline {
-					color: #111;
-				}
-				.text {
-					color: #515151;
-				}
-			} @else if $bg == dark {
-				background-color: #333;
-				.title {
-					&, * {
-						color: #fff;
-					}
-				}
-				.headline {
-					color: #fff;
-				}
-				.text {
-					color: #fff;
-				}
-				.btn-area .btn-primary {
-					color:#111 !important;
-				}
-			} @else if $bg == black {
-				background-color: #000;
-				.title {
-					&, * {
-						color: #fff;
-					}
-				}
-				.headline {
-					color: #fff;
-				}
-				.text {
-					color: #fff;
-				}
-				.btn-area .btn-primary {
-					color:#111 !important;
-				}
-			} @else if $bg == white {
-				background-color: #fff;
-				.title {
-					&, * {
-						color: #111;
-					}
-				}
-				.headline {
-					color: #111;
-				}
-				.text {
-					color: #515151;
-				}
-			}
-		}
-	}
+    .inner {
+        max-width:1380px + 80px;
+        margin:0 auto;
+        padding:0 40px;
+        @include mobile {
+            padding:0 16px;
+        }
+        .tbl-layout {
+            display:table;
+            width:100%;
+            table-layout:fixed;
+            @include mobile {
+                display:block;
+                padding:0 16px;
+            }
+            &.vertical-top {
+                .visual-cell,
+                .text-area {
+                    vertical-align:top;
+                }
+            }
+            &.vertical-middle {
+                .visual-cell,
+                .text-area {
+                    vertical-align:middle;
+                }
+            }
+            &.vertical-bottom {
+                .visual-cell,
+                .text-area {
+                    vertical-align:bottom;
+                }
+            }
+            &.visual-left {
+                .text-area {
+                    padding-left:24px;
+                    @include mobile {
+                        margin-top:24px;
+                        padding-left:0;
+                    }
+                }
+            }
+            &.visual-right {
+                .visual-cell {
+                    margin-top:24px;
+                }
+                .text-area {
+                    padding-right:24px;
+                    @include mobile {
+                        padding-right:0;
+                    }
+                }
+            }
+        }
+        .visual-cell {
+            display:table-cell;
+            width:66%;
+            @include mobile {
+                display:block;
+                width:100%;
+            }
+            img {
+                width:100%;
+                height:auto;
+                vertical-align:top;
+            }
+        }
+        .text-area {
+            display:table-cell;
+            width:34%;
+            @include mobile {
+                display:block;
+                width:100%;
+                padding:0;
+            }
+            .text-inner {
+                margin-top:56px;
+                @include mobile {
+                    margin-top:28px;
+                }
+                &:first-child {
+                    margin-top:0;
+                }
+                .title * {
+                    max-height:128px;
+                    font-size:48px;
+                    line-height:64px;
+                    font-weight:700;
+                    @include textEllipsisClamp(2);
+                    @include mobile {
+                        max-height:66px;
+                        font-size:24px;
+                        line-height:33px;
+                    }
+                }
+                .body-copy {
+                    margin-top:24px;
+                    font-size:20px;
+                    line-height:30px;
+                    @include mobile {
+                        margin-top:16px;
+                        font-size:16px;
+                        line-height:24px;
+                    }
+                }
+                .images {
+                    margin-top:16px;
+                    @include mobile {
+                        margin-top:20px;
+                    }
+                    img {
+                        max-width:100%;
+                        height:auto;
+                        vertical-align:top;
+                    }
+                }
+            }
+        }
+    }
 }

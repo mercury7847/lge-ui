@@ -1,0 +1,22 @@
+{
+    "status": "success",
+    "message": null,
+    "data": {
+        "id": "mw00001",
+        "regNumber": "S2009354211",
+        "progress": "답변중",
+        "progressLevel": "2",
+        "category": "칭찬합니다",
+        "title": "타이틀 아티을",
+        "date": "20200911 14:30",
+        "desc": "내용 내용 내용",
+        "product": "1prod>2prod",
+        "productName": "OLED48CXKNA",
+        "reply": {
+            "title": "답변 타이틀 아티을",
+            "date": "20200911 14:30",
+            "desc": "답변 내용 내용 내용"
+        }
+
+    }
+}

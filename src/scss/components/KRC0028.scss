@@ -2,142 +2,186 @@
 
 @import "../components-app";
 
-
 .KRC0028 {
+    img {
+        width:100%;
+        height:auto;
+        vertical-align:top;
+    }
 
-	.square {
-		display: inline-block;
-		vertical-align: top;
-		@include mobile {
-			width: 100%;
-		}
+    // max-width:(1284px + 60px);
+    // margin:0 auto;
+    // padding:0 30px;
+    
+    @include mobile {
+        //padding:0 24px;
+        padding: 0;
+        .component-inner {
+            padding: 0;
+        }
+    }
+    .inner {
+        .title {
+            margin-bottom:56px;
+            @include mobile {
+                margin-bottom:24px;
+                padding: 0 16px;
+            }
+            * {
+                color:#222;
+                font-size:48px;
+                line-height:64px;
+                font-weight:700;
+                @include mobile {
+                    font-size:24px;
+                    line-height:33px;
+                }
+            }
+        }
 
-		.common-area {
-			position: relative;
-			display: block;
-			width: 100%;
-			height: 100%;
+        .ui_carousel_list {
+            overflow:hidden;
+            .ui_carousel_track {
+                @include clearfix;
+            }
+        }
 
-			&:hover {
-				color:inherit !important;
-			}
+        .visual-box {
+            .item {
+                .txt-box {
+                    margin-top:24px;
+                    padding:0 8.5%;
+                    color:#222;
+                    font-size:20px;
+                    line-height:34px;
+                    @include mobile {
+                        padding: 0 16px;
+                        font-size:16px;
+                        line-height:24px;
+                    }
+                }
+            }
+        }
 
-			&.case-of-video:before {
-				content: "";
-				display: block;
-				position: absolute;
-				bottom: 16px;
-				left: 16px;
-				z-index: 1;
-				width: 64px;
-				height: 64px;
-				border-radius: 50% 50%;
-				background: url('/lg5-common/images/btn-video-play.svg') 50% 50% no-repeat;
-			}
-		}
+        .indi-wrap {
+            display:none !important;
+            @include mobile {
+                display:block !important;
+                margin-top:48px;
+            }
+        }
 
-		.visual-area {
-			img {
-				//display: none;
-				width: 100%;
-			}
-		}
+    }
+    .item.visual-area.video .see-video {
+        position: relative;
+    }
+    .item.visual-area.video .see-video.acc-video-content {
+        position: absolute !important;
+    }
+    .slider.thumbnail {
+        position:relative;
+        //max-width:1178px;
+        max-width:1306px;
+        margin:40px auto 0;
+        padding:0 79px;
+        .ui_carousel_list {
+            overflow:hidden;
+            .ui_carousel_track {
+                @include clearfix;
+            }
+        }
+        .item {
+            position:relative;
+            width:20%;
+            padding:0 12px;
+            a {
+                display:block;
+                position:relative;
+                &::before {
+                    display:none;
+                    content:' ';
+                    position:absolute;
+                    top:0;
+                    right:0;
+                    bottom:0;
+                    left:0;
+                    background:rgba(#000, .2);
+                }
+                &::after {
+                    display:none;
+                    content:' ';
+                    position:absolute;
+                    top:0;
+                    right:0;
+                    bottom:0;
+                    left:0;
+                    border:4px solid #EC455A;
+                }
+                &.sub-tit {
+                    display: -webkit-box;
+                    -webkit-line-clamp:2;
+                    -webkit-box-orient: vertical;
+                    max-height:62px;
+                    padding: 12px 12px 0;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space:initial;
+                    font-size: 18px;
+                    line-height: 26px;
+                    text-align: center;
+                    font-weight: 700;
 
-		.copy-boxing-area {
-			position: absolute;
-			z-index: 1;
-			top: 25px;
-			left: 20px;
-			margin: auto;
-			background-color: transparent;
-			font-size: 16px;
-			line-height: 24px;
+                    &::before,
+                    &::after {
+                        display: none !important;
+                    }
+                }
+            }
 
-			.category,
-			.head {
-			}
+            &.ui_carousel_current {
+                a {
+                    &::before, &::after {
+                        display:block;
+                    }
+                }
+            }
+            &.video::after {
+                content:'';
+				position:absolute;
+				left:50%;
+				top: calc(50% - 31px);
+                width:35%;
+                max-width:64px;
+                height:0;
+                transform:translate(-50%, -50%);
+                padding-bottom:100%;
+				background:url('/lg5-common/images/btn-video-play.svg') no-repeat 0 0;
+				background-size:100% 100%;
+                border-radius:50% 50%;
+                cursor:pointer;
+            }
+        }
+        .btn-arrow {
+            position:absolute;
+            top:50%;
+            margin-top:-28px;
+            &.ui_carousel_hidden {
+                display:none !important;
+            }
+            &.prev {
+                left:0;
+            }
+            &.next {
+                right:0;
+            }
+        }
 
-			.category {
-				margin-bottom: 8px;
-				max-width: 220px;
-			}
+        @include mobile {
+            display:none !important;
+        }
+    }
 
-			.head {
-				margin-bottom: 16px;
-				h2, h3, h4, h5, h6 {
-					font-size: inherit;
-					line-height: inherit;
-				}
-			}
-
-			.desc {
-				max-width: 320px;
-			}
-		}
-
-		&.text-white {
-			.copy-boxing-area {
-				* {
-					color: #fff;
-				}
-			}
-		}
-
-		&.text-black {
-			.copy-boxing-area {
-				.category,
-				.head {
-					color: #111;
-				}
-				.desc {
-					color: #616161;
-				}
-			}
-		}
-	}
-
-	// mixin
-	@mixin square($calc-type, $part-size, $container-size){
-		@if($calc-type == "w"){
-			width:($part-size * 100%) / $container-size;
-		};
-		@if($calc-type == "h"){
-			height:($part-size * 100%) / $container-size;
-		};
-		@if($calc-type == "mr"){
-			margin-right:($part-size * 100%) / $container-size;
-		};
-		@if($calc-type == "ml"){
-			margin-left:($part-size * 100%) / $container-size;
-		};
-	}
-	&.flow-right {
-		text-align: right;
-		.square-partition {
-			&.top, &.bottom {
-				left: 0;
-			}
-		}
-	}
-
-	&.flow-left {
-		.square-partition {
-			&.top, &.bottom {
-				right: 0;
-			}
-		}
-	}
-
-	&.flow-mix {
-		text-align: right;
-		.square-partition {
-			&.top, &.bottom {
-				left:0;
-			}
-		}
-	}
-
-	$color: (lightgray, dark, black, white);
+    $color: (lightgray, dark, black, white);
 	@each $bg in $color {
 		&.bg-#{$bg} {
 			@if $bg == lightgray {
@@ -153,6 +197,9 @@
 					&, * {
 						color: #fff;
 					}
+				}
+				.inner .visual-box .item .txt-box {
+                    color:#fff;
                 }
 			} @else if $bg == black {
 				background-color: #000;
@@ -160,6 +207,9 @@
 					&, * {
 						color: #fff;
 					}
+                }
+                .inner .visual-box .item .txt-box {
+                    color:#fff;
                 }
 			} @else if $bg == white {
 				background-color: #fff;
@@ -171,125 +221,5 @@
 			}
 		}
 	}
-
-	.inner {
-		position: relative;
-		font-size: 0;
-	}
-	@include mobile {
-		.component-inner {
-			padding:0;
-		}
-	}
-	.square-partition {
-		display:inline-block;
-		vertical-align:top;
-		text-align: left;
-		&.tall {
-			@include square(w, 521px, 1284px);
-			@include mobile {
-				width:100%;
-			}
-		}
-		&.top, &.bottom {
-			width:100%;
-			@include square(w, (1284px - 521px - 24px), 1284px);
-			@include pc {
-				position: absolute;
-			}
-			@include mobile {
-				width:100%;
-			}
-		}
-		&.top {
-			top: 0;
-		}
-		&.bottom {
-			bottom:0;
-		}
-	}
-	&:not(.type-triple) .square-partition{
-		&.top, &.bottom {
-			@include square(h, 363px, 750px);
-			.square:first-child{
-				@include square(mr, 24px, (1284px - 521px - 24px));
-			}
-		}
-		&.bottom {
-			$margin : (24px * 100%) / 992px;
-		}
-	}
-	// square level
-	.square {
-		position:relative;
-		width:100%;
-		@include pc {
-			&.length-md {
-				@include square(w, 412px, (1284px - 521px - 24px));
-			}
-			&.length-sm {
-				@include square(w, 303px, (1284px - 521px - 24px));
-			}
-		}
-		@include mobile {
-			margin-top: 24px;
-		}
-		.acc-video-content {
-			position:absolute;
-			top:20px;
-			right:20px;
-			width:32px;
-			height:32px;
-			overflow:hidden;
-			z-index:9;
-			text-indent:-9999px;
-			&:before {
-				content:'';
-				display:inline-block;
-				position:absolute;
-				top:0;
-				right:0;
-				left:inherit;
-				width:32px;
-				height:32px;
-				margin:0;
-				background:url('/lg5-common/images/btn-AD-on.svg');
-				background-size:100% 100%;
-				border-radius:inherit;
-			}
-		}
-		//&.sub {
-		//	.acc-video-content {
-		//		position:absolute;
-		//		bottom:60px;
-		//		left:20px;
-		//		top:inherit;
-		//		right:inherit;
-		//		&:before {
-		//			left:0;
-		//		}
-		//	}
-		//}
-		//&.main .head{
-		//	max-width: 300px;
-		//	font-size:32px;
-		//	line-height:36px;
-		//	margin-top:2px;
-		//}
-		//&.sub .head{
-		//	max-width:250px;
-		//	font-size:28px;
-		//	line-height:32px;
-		//	margin-top:1px;
-		//}
-		//&.main {
-		//	.category,
-		//	.head,
-		//	.desc {
-		//	}
-		//	&.text-white {
-		//		background:#000;
-		//	}
-		//}
-	}
+    
 }

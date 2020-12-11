@@ -1,219 +1,51 @@
 <!DOCTYPE html>
 <html lang="ko">
-    @@include('./common/head.html', {
-        componentID: "KRC0022",
-        isJScompile: true
-    })
+@@include('./common/head.html', {
+componentID: "KRC0022",
+isJScompile: false
+})
 <body>
-    <div class="wrap">
-        <div class="container">
-            <!-- component KRC0026 -->
-            <!-- component image 좌측형, 텍스트 왼쪽정렬 -->
-            @@include('./common/partials/KRC0022.html', {
-                "headline1":"<h2>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다.</h2>",
-                "headline2-1":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 1</h3>",
-                "headline2-2":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 2</h3>",
-                "headline2-3":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 3</h3>",
-                "align-class1": "align-left",
-                "large-align": "large-align-left",
-                "font-class1": "font-regular",
-                "font-class2": "font-regular",
-                "font-style1": "font-underline",
-                "font-style2": "",
-                "size" : "",
-                "bg" : "bg-lightgray"
-            })
-            <!-- // component image 좌측형, 텍스트 왼쪽정렬 -->
+<div class="wrap">
+    <div class="container">
 
-            <!-- component video 좌측형, 텍스트 왼쪽정렬 -->
-            @@include('./common/partials/KRC0022-video.html', {
-                "headline1":"<h2>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다.</h2>",
-                "headline2-1":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 1</h3>",
-                "headline2-2":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 2</h3>",
-                "headline2-3":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 3</h3>",
-                "align-class1": "align-left",
-                "large-align": "large-align-left",
-                "font-class1": "font-regular",
-                "font-class2": "font-regular-italic",
-                "font-style1": "font-underline",
-                "font-style2": "",
-                "size" : "",
-                "bg" : "bg-black"
-            })
-            <!-- // component video 좌측형, 텍스트 왼쪽정렬 -->
+        <!-- component KRC0022 -->
+        <!-- component 텍스트 좌측 정렬 -->
+        @@include('./common/partials/KRC0022.html', {
+        "headline":"<h2>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다, 그리드 내에서 줄바꿈 처리 가능합니다 1 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다, 그리드 내에서 줄바꿈 처리 가능합니다 2</h2>",
+        "align-class1": "align-right",
+        "align-class2": "large-align-left",
+        "font-class1": "font-regular",
+        "font-style1": "",
+        "bg": "bg-black",
+        "size": "full"
+        })
+        <!-- // component -->
 
-            <!-- component image 좌측형, 텍스트 오른쪽정렬 -->
-            @@include('./common/partials/KRC0022.html', {
-                "headline1":"<h2>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다.</h2>",
-                "headline2-1":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 1</h3>",
-                "headline2-2":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 2</h3>",
-                "headline2-3":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 3</h3>",
-                "align-class1": "align-right",
-                "large-align": "large-align-left",
-                "font-class1": "font-regular",
-                "font-class2": "font-regular-italic",
-                "font-style1": "font-underline",
-                "font-style2": "",
-                "size" : "",
-                "bg" : "bg-lightgray"
-            })
-            <!-- // component image 좌측형, 텍스트 오른쪽정렬 -->
+        <!-- component 텍스트 가운데 정렬 -->
+        @@include('./common/partials/KRC0022.html', {
+        "headline":"<h2>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다, 그리드 내에서 줄바꿈 처리 가능합니다 1 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다, 그리드 내에서 줄바꿈 처리 가능합니다 2</h2>",
+        "align-class1": "align-center",
+        "align-class2": "large-align-right",
+        "font-class1": "font-regular",
+        "font-style1": "",
+        "bg": "bg-white",
+        "size": "full"
+        })
+        <!-- // component -->
 
-            <!-- component video 좌측형, 텍스트 오른쪽정렬 -->
-            @@include('./common/partials/KRC0022-video.html', {
-                "headline1":"<h2>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다.</h2>",
-                "headline2-1":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 1</h3>",
-                "headline2-2":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 2</h3>",
-                "headline2-3":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 3</h3>",
-                "align-class1": "align-right",
-                "large-align": "large-align-left",
-                "font-class1": "font-regular",
-                "font-class2": "font-regular-italic",
-                "font-style1": "",
-                "font-style2": "font-underline",
-                "size" : "",
-                "bg" : "bg-lightgray"
-            })
-            <!-- // component video 좌측형, 텍스트 오른쪽정렬 -->
+        <!-- component 텍스트 우측 정렬 -->
+        @@include('./common/partials/KRC0022.html', {
+        "headline":"<h2>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다, 그리드 내에서 줄바꿈 처리 가능합니다 1 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다, 그리드 내에서 줄바꿈 처리 가능합니다 2</h2>",
+        "align-class1": "align-left",
+        "font-class1": "font-regular",
+        "font-style1": "font-underline",
+        "bg": "bg-gray",
+        "size": "full"
+        })
+        <!-- // component -->
+        <!-- //component KRC0022 -->
 
-            <!-- component image 좌측형, 텍스트 중앙정렬 -->
-            <!-- @@include('./common/partials/KRC0022.html', {
-                "headline1":"<h2>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다.</h2>",
-                "headline2-1":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 1</h3>",
-                "headline2-2":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 2</h3>",
-                "headline2-3":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 3</h3>",
-                "align-class1": "align-center",
-                "large-align": "large-align-left",
-                "font-class1": "font-regular",
-                "font-class2": "font-regular-italic",
-                "font-style1": "font-underline",
-                "font-style2": "",
-                "size" : "full",
-                "bg" : "bg-black"
-            }) -->
-            <!-- // component image 좌측형, 텍스트 중앙정렬 -->
-
-            <!-- component video 좌측형, 텍스트 중앙정렬 -->
-            @@include('./common/partials/KRC0022-video.html', {
-                "headline1":"<h2>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다.</h2>",
-                "headline2-1":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 1</h3>",
-                "headline2-2":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 2</h3>",
-                "headline2-3":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 3</h3>",
-                "align-class1": "align-center",
-                "large-align": "large-align-left",
-                "font-class1": "font-regular",
-                "font-class2": "font-regular-italic",
-                "font-style1": "font-underline",
-                "font-style2": "full",
-                "size" : "",
-                "bg" : "bg-black"
-            })
-            <!-- // component video 좌측형, 텍스트 중앙정렬 -->
-
-            <!-- component image 우측형, 텍스트 왼쪽정렬 -->
-            @@include('./common/partials/KRC0022.html', {
-                "headline1":"<h2>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다.</h2>",
-                "headline2-1":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 1</h3>",
-                "headline2-2":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 2</h3>",
-                "headline2-3":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 3</h3>",
-                "align-class1": "align-left",
-                "large-align": "large-align-right",
-                "font-class1": "font-regular",
-                "font-class2": "font-regular-italic",
-                "font-style1": "font-underline",
-                "font-style2": "",
-                "size" : "",
-                "bg" : "bg-black"
-            })
-            <!-- // component image 우측형, 텍스트 왼쪽정렬 -->
-
-            <!-- component video 우측형, 텍스트 왼쪽정렬 -->
-            @@include('./common/partials/KRC0022-video.html', {
-                "headline1":"<h2>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다.</h2>",
-                "headline2-1":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 1</h3>",
-                "headline2-2":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 2</h3>",
-                "headline2-3":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 3</h3>",
-                "align-class1": "align-left",
-                "large-align": "large-align-right",
-                "font-class1": "font-regular",
-                "font-class2": "font-regular-italic",
-                "font-style1": "font-underline",
-                "font-style2": "",
-                "size" : "",
-                "bg" : "bg-lightgray"
-            })
-            <!-- // component video 우측형, 텍스트 왼쪽정렬 -->
-                        
-            <!-- component image 우측형, 텍스트 오른쪽정렬 -->
-            @@include('./common/partials/KRC0022.html', {
-                "headline1":"<h2>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다.</h2>",
-                "headline2-1":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 1</h3>",
-                "headline2-2":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 2</h3>",
-                "headline2-3":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 3</h3>",
-                "align-class1": "align-right",
-                "large-align": "large-align-right",
-                "font-class1": "font-regular",
-                "font-class2": "font-regular-italic",
-                "font-style1": "font-underline",
-                "font-style2": "",
-                "size" : "",
-                "bg" : "bg-black"
-            })
-            <!-- // component image 우측형, 텍스트 오른쪽정렬 -->
-
-            <!-- component video 우측형, 텍스트 오른쪽정렬 -->
-            @@include('./common/partials/KRC0022-video.html', {
-                "headline1":"<h2>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다.</h2>",
-                "headline2-1":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 1</h3>",
-                "headline2-2":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 2</h3>",
-                "headline2-3":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 3</h3>",
-                "align-class1": "align-right",
-                "large-align": "large-align-right",
-                "font-class1": "font-regular",
-                "font-class2": "font-regular-italic",
-                "font-style1": "",
-                "font-style2": "font-underline",
-                "size" : "",
-                "bg" : "bg-lightgray"
-            })
-            <!-- // component video 우측형, 텍스트 오른쪽정렬 -->
-
-            <!-- component image 우측형, 텍스트 중앙정렬 -->
-            <!-- @@include('./common/partials/KRC0022.html', {
-                "headline1":"<h2>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다.</h2>",
-                "headline2-1":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 1</h3>",
-                "headline2-2":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 2</h3>",
-                "headline2-3":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 3</h3>",
-                "align-class1": "align-center",
-                "large-align": "large-align-right",
-                "font-class1": "font-regular",
-                "font-class2": "font-regular-italic",
-                "font-style1": "font-underline",
-                "font-style2": "",
-                "size" : "full",
-                "bg" : "bg-black"
-            }) -->
-            <!-- // component image 우측형, 텍스트 중앙정렬 -->
-
-            <!-- component video 우측형, 텍스트 중앙정렬 -->
-            <!-- @@include('./common/partials/KRC0022-video.html', {
-                "headline1":"<h2>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다.</h2>",
-                "headline2-1":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 1</h3>",
-                "headline2-2":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 2</h3>",
-                "headline2-3":"<h3>깨끗함 위의 깨끗함, LG 트윈워시 <br>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다. 3</h3>",
-                "align-class1": "align-center",
-                "large-align": "large-align-right",
-                "font-class1": "font-regular",
-                "font-class2": "font-regular-italic",
-                "font-style1": "font-underline",
-                "font-style2": "",
-                "size" : "full",
-                "bg" : "bg-black"
-            }) -->
-            <!-- // component video 우측형, 텍스트 중앙정렬 -->
-            
-            <!-- component KRC0022 -->
-		</div>
-    </div>     
+    </div>
+</div>
 </body>
 </html>

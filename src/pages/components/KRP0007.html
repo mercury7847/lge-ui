@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        componentID: "KRP0007",
+        isJScompile: true
+    })
+    <script src="/lg5-common/js/components/KRP0015.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0015.min.css">
+<body>
+    <script>
+        var firstFilterList = []; //data[0].filterList 의 내용을 넣어주세요.
+    </script>
+    <input type="hidden" name="categoryId" value="CT30005620"> <!-- categoryId 을 가져오기 위한 테스트 용 -->
+    
+    <div class="wrap">
+<!--        @@include('./common/header.html')-->
+        <div class="container">
+
+            <div class="component-wrap full">
+                <!--
+                    [.component-wrap 옵션]
+                    1. 여백
+                    .zero-top : 상단여백 없음
+                    .zero-btm : 하단여백 없음
+                -->
+                
+                <!-- component KRC0009 -->
+                <section class="component KRP0007" aria-label="{category명} product list">
+                    <!-- component -->
+                   @@include('./common/partials/KRP0007-cate.html')
+                    <!-- // component -->
+
+                    <div class="plp-list-wrap" data-prod-list="/lg5-common/data-ajax/filter/retrieveCategoryProductList.json">
+                        <!-- component -->
+                        
+                       @@include('./common/modules/list-filter.html', {
+                           "btmLink" : [
+                                {"text" : "나에게 맞는<br>케어솔루션 제품 찾기", "img" : "/lg5-common/images/icons/icon-img02-64.svg"},
+                                {"text" : "매장 방문 예약", "img" : "/lg5-common/images/icons/ic-main-calender-48.svg"}
+                           ]
+                       })
+                        <!-- // component -->
+
+                        <!-- component -->
+                        <div class="product-list-area">
+                            @@include('./common/modules/list-sorting.html', {
+                                "select" : [
+                                    {"option" : "추천순"},
+                                    {"option" : "인기순"},
+                                    {"option" : "최신순"},
+                                    {"option" : "가격 높은순"},
+                                    {"option" : "가격 낮은순"},
+                                    {"option" : "리뷰 많은순"}
+                                ]
+                            })
+                            <div class="list-wrap">
+                                <ul class="product-items">
+                                    @@loop('./common/modules/product-item.html', [
+                                        {
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product1-color1",
+                                                    "name": "product1",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product1-color2",
+                                                    "name": "product1",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product1-color3",
+                                                    "name": "product1",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-1.png' alt='으뜸효율 10%'></span><span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-2.png' alt='코리아세일 페스타'></span>",
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='A342352345234'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : ["캐시백","사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk1",
+                                                    "name": "wish-chk1",
+                                                    "checked": "checked"
+                                                },
+                                                "button" : "자세히 보기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "optionText" : true,
+                                            "textSet" : [
+                                                {
+                                                    "title": "옵션1",
+                                                    "id": "product2-text1",
+                                                    "name": "product2",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "옵션2",
+                                                    "id": "product2-text2",
+                                                    "name": "product2",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "옵션3",
+                                                    "id": "product2-text3",
+                                                    "name": "product2",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "옵션4",
+                                                    "id": "product2-text4",
+                                                    "name": "product2",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "옵션5",
+                                                    "id": "product2-text5",
+                                                    "name": "product2",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "옵션6",
+                                                    "id": "product2-text6",
+                                                    "name": "product2",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-1.png' alt='으뜸효율 10%'></span><span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-3.png' alt='아카데미 페스티벌'></span>",
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' class='on' data-id='B1234513'><span>비교하기<em class='blind'>선택됨</em></span></a>",
+                                            "bottom" : {
+                                                "benefit" : ["캐시백","사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk2",
+                                                    "name": "wish-chk2",
+                                                    "checked": ""
+                                                },
+                                                "button" : "자세히 보기"
+                                            }
+                                        },{
+                                            "banner" : {
+                                                "moduleType" : "",
+                                                "visual": "data-pc-src='/lg5-common/images/dummy/@img-product-banner-lg.jpg' data-m-src='/lg5-common/images/dummy/@img-product-banner.jpg'",
+                                                "title": "각 얼음 세팅해줘!",
+                                                "copy": "말로 제어하는 디오스 라이프",
+                                                "button": "더 알아보기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product3-color1",
+                                                    "name": "product3-color",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product3-color2",
+                                                    "name": "product3-color",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product3-color3",
+                                                    "name": "product3-color",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "optionText" : true,
+                                            "textSet" : [
+                                                {
+                                                    "title": "지급제",
+                                                    "id": "product3-text1",
+                                                    "name": "product3-text",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "SKT",
+                                                    "id": "product3-text2",
+                                                    "name": "product3-text",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "KT",
+                                                    "id": "product3-text3",
+                                                    "name": "product3-text",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "LGU+",
+                                                    "id": "product3-text4",
+                                                    "name": "product3-text",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-1.png' alt='으뜸효율 10%'></span>",
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='C342352345234'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : ["캐시백","사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk3",
+                                                    "name": "wish-chk3",
+                                                    "checked": ""
+                                                },
+                                                "button" : "자세히 보기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product4-color1",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product4-color2",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product4-color3",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "Matte Black Stainless Steel",
+                                                    "color": "HA_REF_Matte_Black_Stainless_Steel",
+                                                    "id": "product4-color4",
+                                                    "name": "product4",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "Smooth White",
+                                                    "color": "smooth-white",
+                                                    "id": "product4-color5",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "LG SIGNATURE Textured Steel™",
+                                                    "color": "HA_REF_SIGNATURE_Textured_Steel",
+                                                    "id": "product4-color6",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "Espresso",
+                                                    "color": "Espresso",
+                                                    "id": "product4-color7",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "Shine Gold",
+                                                    "color": "Shine-Gold",
+                                                    "id": "product4-color8",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "Graphite Steel",
+                                                    "color": "graphite-steel",
+                                                    "id": "product4-color9",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "Pearl Gray",
+                                                    "color": "pearl-gray",
+                                                    "id": "product4-color10",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "Lavender",
+                                                    "color": "lavender",
+                                                    "id": "product4-color11",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "LeatherYellow",
+                                                    "color": "LeatherYellow",
+                                                    "id": "product4-color12",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='A34235212342234'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : ["캐시백","사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk4",
+                                                    "name": "wish-chk4",
+                                                    "checked": ""
+                                                },
+                                                "button" : "자세히 보기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product5-color1",
+                                                    "name": "product5",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product5-color2",
+                                                    "name": "product5",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product5-color3",
+                                                    "name": "product5",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-5.png' alt='에어컨 예약판매'></span>",
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='A342123345234'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : ["캐시백","사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk5",
+                                                    "name": "wish-chk5",
+                                                    "checked": ""
+                                                },
+                                                "button" : "자세히 보기"
+                                            }
+                                        },{
+                                            "banner" : {
+                                                "moduleType" : "large",
+                                                "visual": "data-pc-src='/lg5-common/images/dummy/@img-product-banner2-lg.jpg' data-m-src='/lg5-common/images/dummy/@img-product-banner2.jpg'",
+                                                "title": "마트 가기 전, 음료가 있는지 없는지 헷갈린다면?",
+                                                "copy": "말로 제어하는 디오스 라이프",
+                                                "button": "더 알아보기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product6-color1",
+                                                    "name": "product6",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product6-color2",
+                                                    "name": "product6",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product6-color3",
+                                                    "name": "product6",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='A3421244345234'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : ["캐시백","사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk6",
+                                                    "name": "wish-chk6",
+                                                    "checked": ""
+                                                },
+                                                "button" : "자세히 보기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product7-color1",
+                                                    "name": "product7",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product7-color2",
+                                                    "name": "product7",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product7-color3",
+                                                    "name": "product7",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-4.png' alt='미리미리 페스티벌'></span>",
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='A315972345234'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : ["캐시백","사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk7",
+                                                    "name": "wish-chk7",
+                                                    "checked": ""
+                                                },
+                                                "button" : "자세히 보기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product8-color1",
+                                                    "name": "product8",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product8-color2",
+                                                    "name": "product8",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product8-color3",
+                                                    "name": "product8",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-4.png' alt='미리미리 페스티벌'></span>",
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='A34235234fs5234'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : ["캐시백","사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk8",
+                                                    "name": "wish-chk8",
+                                                    "checked": ""
+                                                },
+                                                "button" : "자세히 보기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product9-color1",
+                                                    "name": "product9",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product9-color2",
+                                                    "name": "product9",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product9-color3",
+                                                    "name": "product9",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-4.png' alt='미리미리 페스티벌'></span>",
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='A342fertgg45234'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : ["캐시백","사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk9",
+                                                    "name": "wish-chk9",
+                                                    "checked": ""
+                                                },
+                                                "button" : "자세히 보기"
+                                            }
+                                        }
+                                    ])
+                                </ul>
+
+                                <div class="read-more-area">
+                                    <button type="button" class="read-more"><span><em>제품 </em>더보기</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // component -->
+                    </div>
+                </section>
+                <!-- //component KRC0009 -->
+            </div>
+            <!-- component -->
+            @@include('./common/partials/KRP0015.html')
+            <!-- // component -->
+            @@include('./common/modules/toast-message.html', {
+                 "messageArr": [
+                     {"message" : "2개까지 비교가능합니다. "},
+                     {"message" : "비교하기 기능이 초기화되었습니다. "}
+                 ]
+             }) 
+        </div>
+<!--        @@include('./common/footer.html')-->
+    </div>
+</body>
+</html>

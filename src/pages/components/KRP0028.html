@@ -7,19 +7,16 @@
 <body>
 	<div class="wrap">
 		<div class="container">
-			<!-- component -->
-            @@include('./common/partials/KRP0028.html', {
-				eventPage:true,
-				eventModalID:"event-modal"
-			})
-			<!-- // component -->
-			
 
-			<!-- component -->
-            @@include('./common/partials/KRP0028.html', {
-				eventModalID:"event-modal-pop"
+			
+			<!-- component KRP0028 -->
+			@@include('./common/partials/KRP0028.html', {
+				"zero" : "zero-top zero-btm",
+				"class" : "full",
+				"tabBarType" : true,
+				"type" : ""
 			})
-            <!-- // component -->
+			<!-- // component KRP0028 -->
 		</div>
 	</div>
 </body>
