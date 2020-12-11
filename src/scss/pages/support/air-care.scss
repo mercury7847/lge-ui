@@ -7,7 +7,9 @@
 .air-care {
     .gray-box {
         background-color: #f4f4f4;
-        padding: 44px 47px;
+        padding: 48px;
+        color: #767676;
+        font-size: 16px;
         .bullet-list {
             margin-top: 0;
         }
@@ -15,9 +17,22 @@
             padding: 44px 20px;
         }
     }
+    .white-box {
+        background-color: #fff;
+        padding: 24px;
+        .bullet-list {
+            font-size: 16px;
+            color: #222;
+            font-weight: normal;
+        }
+    }
     .text-box {
         line-height: 1.5;
         margin-bottom: 42px;
+    }
+    .btn-group {
+        text-align: center;
+        margin-top: 24px;
     }
     .sub-infomation {
         margin-bottom: 15px;
