@@ -237,6 +237,7 @@
         COMPARE_LIMIT: 3,
         CAREPLANER_KEY: "care_planer",
         CAREPLANER_ID: "putitem_list",
+        STICKY_MODULES:[],
         init: function(){
             this._preloadComponents();
             this._addTopButtonCtrl();
@@ -786,6 +787,35 @@
                 val = vcui.isArray(value) ? value.join() : value;
                 hiddenWrap.find('input[name=' + iptname + ']').val(val);
             }
+        },
+
+        addStickyModule: function(hei){
+            var self = this;
+
+            var moduleIDs = vcui.array.map(self.STICKY_MODULES, function(item){
+                return item.uniqueID;
+            });
+            console.log("moduleIDs :", moduleIDs);
+
+            var uniqueID = self.setUniqueID();
+            while(vcui.array.has(moduleIDs, uniqueID)) uniqueID = setUniqueID();
+
+            self.STICKY_MODULES.push({
+                uniqueID: uniqueID,
+                moduleHeight: hei
+            });
+
+            return uniqueID;
+        },
+
+        setUniqueID: function(){
+            var id = "";
+            for(var i=0;i<10;i++){
+                var ran = parseInt(Math.random()*10);
+                id += ran.toString();
+            }
+
+            return id;
         }
     }
 
