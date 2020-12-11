@@ -801,6 +801,7 @@
                 > ul {
                     > li {
                         width:14%;
+                        padding-left:0;
                         @include mobile {
                             width:auto;
                             margin-top:12px;
