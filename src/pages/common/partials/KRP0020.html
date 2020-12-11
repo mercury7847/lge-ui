@@ -1,4 +1,4 @@
-<div class="component-wrap full"><!-- [KR수정] .full class추가 -->
+<div class="component-wrap full zero-top zero-btm"><!-- [KR수정] .full class추가 -->
 	<!--
 		[.component-wrap 옵션]
 		1. 여백
@@ -319,7 +319,7 @@
 					<ul>
                         @@include('./common/partials/KRP0020-level.html', {
                             "depth" : "dep1",
-                            "dep1" : "고객지원"
+                            "dep1" : "원"
                         })
                         <li class="category-column upperframe">                   
                             <ul class="category-column">
@@ -350,6 +350,22 @@
                                     "dep3" : [
                                         "카드뉴스",
                                         "가전제품 생활의 팁"
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0020-level.html', {
+                                    "depth" : "dep2",
+                                    "dep2" : [
+                                        "서비스 상담"
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0020-level.html', {
+                                    "depth" : "dep3",
+                                    "dep3" : [
+                                        "이메일 문의",
+                                        "전화상담 예약",
+                                        "원격상담 예약",
+                                        "영상상담 예약",
+                                        "상담결과 조회/변경"
                                     ]
                                 })
 							</ul>
