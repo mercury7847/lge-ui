@@ -14,8 +14,13 @@
             @@include('./common/modules/page-header.html', {
                 'pageTitle': '이메일 문의가 완료되었습니다.'
             })
-            
             <div class="contents support reservation subscribe">
+                <ol class="reception-progress type-1">
+                    <li><span class="text">제품 선택</span></li>
+                    <li><span class="text">예약 내용 입력</span></li>
+                    <li><span class="text">예약 완료</span></li>
+                </ol>
+                
                 <div class="reservation-info-box type-email">
                     <figure class="reservation-area">
                         <div class="reservation-info">
@@ -30,7 +35,19 @@
                         </div>
                     </figure>
                 </div>
+
                 <div class="cont-wrap">
+                    <ol class="reception-progress type-2" data-step="2">
+                        <li><span class="text">접수</span></li>
+                        <li><span class="text">처리중</span></li>
+                        <li><span class="text">처리중</span></li>
+                        <li><span class="text">처리중</span></li>
+                        <li><span class="text">확인중</span></li>
+                        <li><span class="text">답변중</span></li>
+                        <li><span class="text">답변중</span></li>
+                        <li><span class="text">답변완료</span></li>
+                    </ol>
+
                     <div class="section">
                         <div class="tit-wrap">
                             <h2 class="tit">이메일 문의 접수 내용</h2>

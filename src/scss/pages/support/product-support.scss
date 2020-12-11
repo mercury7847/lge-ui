@@ -115,14 +115,6 @@
             background-position:top left;
         }
     }
-    .login-txt {
-        color:#fff;
-        @include font-medium;
-        font-weight:700;
-        @include mobile {
-            margin-right:16px;
-        }
-    }
 }
 
 // 설치 전 주의사항 및 사용법 팝업

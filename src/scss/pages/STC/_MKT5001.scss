@@ -106,13 +106,12 @@
         text-align:center;
     }
 }
-
 .dual-con-wrap {
 	max-width:1146px + 80px;
 	margin:0 auto;
-	padding:0 40px 120px;
+	padding:0 40px;
 	@include mobile {
-		padding:0 16px 60px;
+		padding:0 16px;
 	}
 	.bullet-list {
 		margin-top:12px;
@@ -254,9 +253,6 @@
 			}
 			.desc {
 				margin-top:32px;
-				@include mobile {
-					
-				}
 			}
 		}
 		.dual-tip {
@@ -295,6 +291,44 @@
 			.btn {
 				width:100%;
 				margin-top:32px;
+			}
+			.img {
+				margin-top:16px;
+				&.big {
+					img {
+						width:auto;
+						// height:183px;
+					}
+				}
+			}
+			.dual-tip {
+				.slide-wrap {
+					.slide-controls {
+						.prev {
+							left:4px;
+						}
+						.next {
+							right:4px;
+						}
+					}
+					.indi-wrap {
+						bottom:-72px;
+						li {
+							padding:0 4px;
+						}
+					}
+				}
+			}
+		}
+		&.bullet-left {
+			.bullet-list {
+				display:block;
+				max-width:1146px;
+				margin:12px auto 0;
+				@include mobile {
+					display:inline-block;
+					max-width:100%;
+				}
 			}
 		}
 	}
@@ -510,8 +544,17 @@
 			}
 		}
 	}
+}
+
+.accordion-border-sec {
+	max-width:1146px + 80px;
+	margin:120px auto 0;
+	padding:0 40px 120px;
+	@include mobile {
+		padding:0 16px 60px;
+	}
 	.accordion-border-wrap {
-		margin-top:120px;
+		position:relative;
 		border-top:2px solid #222;
 		.accord-btn {
 			.title {
@@ -524,6 +567,7 @@
 			}
 		}
 		.accord-cont {
+			position:relative;
 			padding:44px 0 65px;
 			.step-list {
 				margin-top:64px;
@@ -548,7 +592,25 @@
 						padding:0 45px;
 						text-align:center;
 						vertical-align:top;
+						& + li {
+							.img:before {
+								content:' ';
+								display:block;
+								position:absolute;
+								top:50%;
+								left:0;
+								width:52px;
+								height:54px;
+								margin-left:-70px;
+								background:url('/lg5-common/images/STC/img-acc-arrow52x54.svg') no-repeat 0 0;
+								transform:translateY(-50%);
+								@include mobile {
+									display:none;
+								}
+							}
+						}
 						.img {
+							position:relative;
 							img {
 								width:100%;
 								max-width:258px;
@@ -572,6 +634,11 @@
 						padding:0 19%;
 						> li {
 							padding:0 32px;
+							& + li {
+								.img:before {
+									margin-left:-58px;
+								}
+							}
 						}
 					}
 				}
@@ -606,7 +673,28 @@
 					}
 				}
 			}
-		}
+			.btn-close {
+				position:absolute;
+				right:24px;
+				bottom:24px;
+				width:32px;
+				height:32px;
+				@include mobile {
+					right:16px;
+					bottom:32px;
+				}
+				&:before {
+					content:' ';
+					position:absolute;
+					top:0;
+					left:0;
+					width:32px;
+					height:32px;
+					background:url('/lg5-common/images/icons/btn-close-32.svg') no-repeat;
+		
+				}
+			}
+		}		
 		@include mobile {
 			margin:60px -16px 0;
 			.accord-btn {

@@ -139,7 +139,7 @@
             .sch-box {
                 position:relative;
                 margin:0 40px;
-
+                z-index: 10;
                 @include csmobile {
                     margin:0 20px;
                 }
@@ -160,6 +160,7 @@
                     }
                 }
                 .sch-input-wrap {
+                    position: relative;
                     padding-bottom:48px;
 
                     @include csmobile {
@@ -167,6 +168,16 @@
                         padding-bottom:0;
                         border:none;
                     }
+                    .select-wrap {
+                        .ui-select-scrollarea {
+                            ul {
+                                overflow-y: scroll;
+                                max-height: 200px;
+                            }
+                        }
+                        
+                    }
+
                     .btn-area {
                         @include csmobile {
                             position: absolute;

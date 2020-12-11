@@ -51,97 +51,97 @@
                                 <a href="#n" id="filterModalLink" class="ico-filter"><span class="blind">옵션필터</span></a>
                             </div>
 
-                            <div class="list-sorting">
-                                <div class="sort-area left">
-                                    <p class="list-count">총 59개</p>
-                                </div>
-                                <div class="sort-area">
-                                    <div class="sort-list">
-                                        <div class="sort-check-area">
-                                            <span class="chk-wrap">
-                                                <input type="checkbox" id="chk-pd" name="chk-soldout">
-                                                <label for="chk-pd">구매 가능한 제품</label>
-                                            </span>
-                                        </div>
-                                        <div class="sort-search-area">
-                                            <div class="search-inner">
-                                                <input type="text" class="inp-txt" placeholder="결과 내 검색" value="" title="검색어 입력">
-                                                <button type="button" class="btn-sch"><span class="blind">검색</span></button> 
+                            <div class="list-sorting fixed"><!-- 스크롤시 상단 고정 class : fixed -->
+                                <div class="list-sorting-inner">
+                                    <div class="sort-area left">
+                                        <p class="list-count">총 59개</p>
+                                    </div>
+                                    <div class="sort-area right">
+                                        <div class="sort-list">
+                                            <div class="sort-check-area">
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" id="chk-pd" name="chk-soldout">
+                                                    <label for="chk-pd">구매 가능한 제품</label>
+                                                </span>
+                                            </div>
+                                            <!-- 검색 영역 -->
+                                            @@include('./common/modules/search.html', {
+                                                "value" : "노크온 매직스페이스",
+                                            })
+                                            <!-- // 검색 영역 -->
+                                            <div class="sort-search-area">
+                                                <div class="search-inner">
+                                                    <input type="text" class="inp-txt" placeholder="결과 내 검색" value="" title="검색어 입력">
+                                                    <button type="button" class="btn-sch"><span class="blind">검색</span></button> 
+                                                </div>
+                                            </div>
+                                            <div class="sort-select-wrap">
+                                                <select class="ui_selectbox" id="select1" title="조회할 연차 선택">
+                                                    <option value="">정확도순</option>
+                                                    <option value="">인기순</option>
+                                                    <option value="">최신순</option>
+                                                    <option value="">가격 높은순</option>
+                                                    <option value="">가격 낮은순</option>
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="sort-select-wrap">
-                                            <select class="ui_selectbox" id="select1" title="조회할 연차 선택">
-                                                <option value="">정확도순</option>
-                                                <option value="">인기순</option>
-                                                <option value="">최신순</option>
-                                                <option value="">가격 높은순</option>
-                                                <option value="">가격 낮은순</option>
-                                            </select>
-                                        </div>
                                     </div>
-                                </div>
+                                </div>    
                             </div>
 
                             <div class="result-list-wrap">
                                 <div class="list-wrap">
                                     <ul class="result-list product-list">
                                         @@loop('./common/modules/result-list.html', [
-                                            {
-                                                "itemClass" : "",
-                                                "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-1.png' alt='으뜸효율 10%'></span>",
-                                                "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                                "flags" : ["베스트", "신제품"],                    
-                                                "tit" : "LG DIOS <span class='search-word'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
-                                                "sku"  : true,
-                                                "review" : true,
-                                                "isReview" : true,
-                                                "hashtag" : ["#베스트", "#신제품"],
-                                                "careflag" : true,
-                                                "priceInfo" : true,
-                                                "priceSales" : true,
-                                                "priceRental" : true
-                                            }, {
-                                                "itemClass" : "",
-                                                "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-1.png' alt='으뜸효율 10%'></span>",
-                                                "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                                "flags" : ["베스트", "신제품"],                    
-                                                "tit" : "LG DIOS <span class='search-word'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
-                                                "sku"  : true,
-                                                "review" : true,
-                                                "isReview" : true,
-                                                "hashtag" : ["#베스트", "#신제품"],
-                                                "careflag" : true,
-                                                "priceInfo" : true,
-                                                "priceSales" : true,
-                                                "priceRental" : true
-                                            }, {
-                                                "itemClass" : "",
-                                                "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                                "flags" : ["베스트", "신제품"],                    
-                                                "tit" : "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
-                                                "sku"  : true,
-                                                "review" : true,
-                                                "isReview" : true,
-                                                "hashtag" : ["#베스트", "#신제품"],
-                                                "careflag" : true,
-                                                "priceInfo" : true,
-                                                "priceRental" : true
-                                            }, {
-                                                "itemClass" : "",
-                                                "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-1.png' alt='으뜸효율 10%'></span>",
-                                                "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                                "flags" : ["베스트", "신제품"],                    
-                                                "tit" : "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
-                                                "sku"  : true,
-                                                "review" : true,
-                                                "isReview" : true,
-                                                "hashtag" : ["#베스트", "#신제품"],
-                                                "careflag" : true,
-                                                "priceInfo" : true,
-                                                "priceSales" : true,
-                                                "priceRental" : true
-                                            }
-                                        ])
+                                        {
+                                            "itemClass" : "",
+                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                            "flags" : ["미리미리 페스타", "으뜸효율 10%", "베스트", "신제품"],
+                                            "tit" : "LG DIOS <span class='search-word'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                            "sku" : "5203FI3754D",
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "hashtag" : ["가전", "여름가전"],
+                                            "careflag" : true,
+                                            "priceInfo" : true,
+                                            "priceSales" : true,
+                                            "priceRental" : true
+                                        }, {
+                                            "itemClass" : "",
+                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                            "flags" : ["베스트", "신제품"],
+                                            "tit" : "LG DIOS <span class='search-word'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                            "sku" : "5203FI3754D",
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "hashtag" : ["가전", "여름가전"],
+                                            "careflag" : true
+                                        }, {
+                                            "itemClass" : "",
+                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                            "flags" : ["베스트", "신제품"],
+                                            "tit" : "LG DIOS <span class='search-word'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                            "sku" : "5203FI3754D",
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "hashtag" : ["가전", "여름가전"],
+                                            "careflag" : true,
+                                            "priceInfo" : true,
+                                            "priceRental" : true
+                                        }, {
+                                            "itemClass" : "",
+                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                            "flags" : ["베스트", "신제품"],
+                                            "tit" : "LG DIOS <span class='search-word'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                            "sku" : "5203FI3754D",
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "hashtag" : ["가전", "여름가전"],
+                                            "careflag" : true,
+                                            "priceInfo" : true,
+                                            "priceSales" : true
+                                        }
+                                    ])
                                     </ul>
                                 </div>
                             </div>

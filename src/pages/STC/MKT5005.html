@@ -47,13 +47,12 @@
                     </ul>
                 </div>
 
-                <div class="bullet-list-box">
-                    @@include('./common/modules/bullet-list.html', {
-                        "bulletTxt" : [
-                            "생산일자에 따라, 일부 단말은 펌웨어 업그레이드 후 사용 가능합니다."
-                        ]
-                    })
-                </div>
+                @@include('./common/modules/bullet-list.html', {
+                    "topBorder" : true,
+                    "bulletTxt" : [
+                        "생산일자에 따라, 일부 단말은 펌웨어 업그레이드 후 사용 가능합니다."
+                    ]
+                })
             </div>
         </section>
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
