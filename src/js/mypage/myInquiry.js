@@ -7,7 +7,6 @@
             '{{#if product}}<li>{{product}}</li>{{/if}}' +
             '<li>접수일 {{date}}</li>' +
             '<li>접수번호 {{regNumber}}</li>' +
-            '<li>등록일 {{date}}</li>' +
         '</ul></div>' +
     '</li>';
 
@@ -15,6 +14,8 @@
         '{{#if data}}{{#each item in data}}<li>{{item.title}} <em>{{item.count}}</em></li>{{/each}}' +
         '{{#else}}<li>-</li>{{/if}}' +
     '</ul></dd></dl>'
+
+    var popupDetailItemTemplate = '<li><dl><dt>{{title}}</dt><dd>{{#raw desc}}</dd></dl></li>'
 
     $(window).ready(function() {
         var myWrite = {
@@ -40,7 +41,6 @@
                 self.$myLists = self.$sectionInner.find('div.my-lists ul');
                 self.$pagination = self.$sectionInner.find('div.pagination');
                 self.$noData = self.$lnbContents.find('div.no-data');
-                self.$detailPopup = self.$contWrap.find('#popupDetail');
             },
 
             bindEvents: function() {
@@ -53,8 +53,7 @@
                 self.$myLists.on("click", "a", function(e){
                     e.preventDefault();
                     var _id = $(this).attr('href').replace("#","");
-                    //self.openDetailPopup(_id);
-                    console.log(_id);
+                    self.openServiceDetailPopup(_id);
                 });
 
                 self.$pagination.vcPagination().on('page_click', function(e, data) {
@@ -66,6 +65,39 @@
                         "page": data
                     });
                 });
+
+                //서비스 상세 팝업
+                var $detailPopup = self.$contWrap.find('#popupServiceDetail');
+
+                //예약취소 버튼
+                $detailPopup.on('click', 'div.flt-cont button:eq(1)', function(e) {
+                    var _id = $(this).parents('article').attr('data-id');
+                    self.openServiceCancelPopup(_id);
+                });
+
+                //원문보기 버튼
+                $detailPopup.on('click', 'footer.pop-footer button:not(.ui_modal_close)', function(e) {
+                    var _id = $(this).parents('article').attr('data-id');
+                    self.openDetailPopup(_id);
+                });
+
+                //팝업내 a태그 이동
+                $detailPopup.on('click', 'div.gray-box a', function(e) {
+                    e.preventDefault();
+                    $(this).parents('article').vcModal('close');
+                    var url = $(this).attr('href');
+                    location.href = url;
+                });
+
+                //서비스 취소 팝업
+                var $cancelPopup = self.$contWrap.find('#popupServiceCancel');
+
+                //취소 확인 버튼
+                $detailPopup.on('click', 'footer.pop-footer button:not(.ui_modal_close)', function(e) {
+                    var _id = $(this).parents('article').attr('data-id');
+                    self.openDetailPopup(_id);
+                });
+
             },
 
             requestData: function(param) {
@@ -106,12 +138,10 @@
 
                     var arr = data.listData instanceof Array ? data.listData : [];
                     self.$myLists.empty();
-                    if(arr.length > 0) {
-                        arr.forEach(function(item, index) {
-                            item.date = vcui.date.format(item.date,'yyyy.MM.dd');
-                            self.$myLists.append(vcui.template(listItemTemplate, item));
-                        });
-                    }
+                    arr.forEach(function(item, index) {
+                        item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                        self.$myLists.append(vcui.template(listItemTemplate, item));
+                    });
                     self.checkNoData();
                 });
             },
@@ -127,15 +157,149 @@
                 }
             },
 
+            openServiceDetailPopup: function(id) {
+                var self = this;
+                var ajaxUrl = self.$lnbContents.attr('data-service-url');
+                lgkorUI.requestAjaxDataPost(ajaxUrl, {"id":id}, function(result) {
+                    var data = result.data;
+
+                    var $detailPopup = self.$contWrap.find('#popupServiceDetail');
+                    if(data.type == 'service') {
+                        $detailPopup.attr('data-id',data.id);
+
+                        //타이틀
+                        var $findItem = $detailPopup.find('div.custom-step-area p.tit');
+                        $findItem.text(data.title);
+
+                        //처리레벨
+                        var progressLevel = parseInt(data.progressLevel);
+                        $findItem = $detailPopup.find('div.step-inner div.bar');
+                        $findItem.removeClass("bar1 bar2 bar3");
+                        switch(progressLevel) {
+                            case 1:
+                                $findItem.addClass('bar1');
+                                break;
+                            case 2:
+                                $findItem.addClass('bar2');
+                                break;
+                            case 3:
+                                $findItem.addClass('bar3');
+                                break;
+                            default:
+                                break;
+                        }
+
+                        $findItem = $detailPopup.find('ul.step-txt li');
+                        $findItem.each(function(idx, obj) {
+                            if(idx < progressLevel) {
+                                $(obj).addClass('comp').find('span').empty();
+                            } else if (idx == progressLevel) {
+                                $(obj).addClass('comp').find('span').text('현재 단계');
+                            } else {
+                                $(obj).removeClass('comp').find('span').empty();
+                            }
+                        });
+                        
+                        var $infobox = $detailPopup.find('div.info-box');
+                        //엔지니어
+                        $findItem = $infobox.find('img');
+                        $findItem.attr({"src":data.imageUrl,"alt":data.imageAlt});
+                        $findItem = $infobox.find('p:eq(0)');
+                        $findItem.text(data.person);
+                        //접수번호
+                        $findItem = $infobox.find('p:eq(1)');
+                        $findItem.text(data.regNumber);
+
+                        //원글 내용
+                        $findItem = $detailPopup.find('div.dl-infolist-wrap ul');
+                        $findItem.empty();
+                        var arr = data.listData instanceof Array ? data.listData : [];
+                        arr.forEach(function(item, index) {
+                            $findItem.append(vcui.template(popupDetailItemTemplate, item));
+                        });
+                    } else {
+                        $detailPopup = self.$contWrap.find('#popupDetail');
+                        $detailPopup.attr('data-id',data.id);
+                    }
+                    
+                    $detailPopup.vcModal();
+                    self.$currentPopup = $detailPopup;
+                });
+            },
+
+            openServiceCancelPopup: function(id) {
+                var self = this;
+                var ajaxUrl = self.$lnbContents.attr('data-service-url');
+                lgkorUI.requestAjaxDataPost(ajaxUrl, {"id":id}, function(result) {
+                    var data = result.data;
+
+                    var $detailPopup = self.$contWrap.find('#popupServiceCancel');
+                    if(data.type == 'service') {
+                        $detailPopup.attr('data-id',data.id);
+
+                        //타이틀
+                        var $findItem = $detailPopup.find('div.custom-step-area p.tit');
+                        $findItem.text(data.title);
+
+                        //처리레벨
+                        var progressLevel = parseInt(data.progressLevel);
+                        $findItem = $detailPopup.find('div.step-inner div.bar');
+                        $findItem.removeClass("bar1 bar2 bar3");
+                        switch(progressLevel) {
+                            case 1:
+                                $findItem.addClass('bar1');
+                                break;
+                            case 2:
+                                $findItem.addClass('bar2');
+                                break;
+                            case 3:
+                                $findItem.addClass('bar3');
+                                break;
+                            default:
+                                break;
+                        }
+
+                        $findItem = $detailPopup.find('ul.step-txt li');
+                        $findItem.each(function(idx, obj) {
+                            if(idx < progressLevel) {
+                                $(obj).addClass('comp').find('span').empty();
+                            } else if (idx == progressLevel) {
+                                $(obj).addClass('comp').find('span').text('현재 단계');
+                            } else {
+                                $(obj).removeClass('comp').find('span').empty();
+                            }
+                        });
+                        
+                        var $infobox = $detailPopup.find('div.info-box');
+                        //엔지니어
+                        $findItem = $infobox.find('img');
+                        $findItem.attr({"src":data.imageUrl,"alt":data.imageAlt});
+                        $findItem = $infobox.find('p:eq(0)');
+                        $findItem.text(data.person);
+                        //접수번호
+                        $findItem = $infobox.find('p:eq(1)');
+                        $findItem.text(data.regNumber);
+
+                    } else {
+                        $detailPopup = self.$contWrap.find('#popupDetail');
+                        $detailPopup.attr('data-id',data.id);
+                    }
+                    
+                    self.$currentPopup.vcModal('close');
+                    $detailPopup.vcModal();
+                });
+            },
+
             openDetailPopup: function(id) {
                 var self = this;
                 var ajaxUrl = self.$lnbContents.attr('data-detail-url');
                 lgkorUI.requestAjaxDataPost(ajaxUrl, {"id":id}, function(result) {
                     var data = result.data;
+                    var $detailPopup = self.$contWrap.find('#popupDetail');
 
                     //처리레벨
                     var progressLevel = parseInt(data.progressLevel);
-                    $findItem = self.$detailPopup.find('div.step-inner div.bar');
+                    var $findItem = $detailPopup.find('div.step-inner div.bar');
                     $findItem.removeClass("bar1 bar2 bar3");
                     switch(progressLevel) {
                         case 1:
@@ -151,7 +315,7 @@
                             break;
                     }
 
-                    $findItem = self.$detailPopup.find('ul.step-txt li');
+                    $findItem = $detailPopup.find('ul.step-txt li');
                     $findItem.each(function(idx, obj) {
                         if(idx < progressLevel) {
                             $(obj).addClass('comp').find('span').empty();
@@ -163,33 +327,34 @@
                     });
                     
                     //접수번호
-                    $findItem = self.$detailPopup.find('div.info-box p span');
+                    $findItem = $detailPopup.find('div.info-box p span');
                     $findItem.text(data.regNumber);
 
                     //원글 내용
-                    $findItem = self.$detailPopup.find('div.dl-infolist-wrap li dd');
-                    $findItem.eq(0).text(data.category);
-                    $findItem.eq(1).text(data.date);
-                    $findItem.eq(2).text(data.progress);
-                    $findItem.eq(3).text(data.product);
-                    $findItem.eq(4).text(data.productName);
-                    $findItem.eq(5).text(data.title);
-                    $findItem.eq(6).text(data.desc);
+                    var $innerBox = $detailPopup.find('div.inner-box:eq(0)');
+                    $findItem =$innerBox.find('div.dl-infolist-wrap ul');
+                    $findItem.empty();
+                    var arr = data.listData instanceof Array ? data.listData : [];
+                    arr.forEach(function(item, index) {
+                        $findItem.append(vcui.template(popupDetailItemTemplate, item));
+                    });
                     
                     //답변내용
                     var reply = data.reply;
-                    var $innerBox = self.$detailPopup.find('div.inner-box:eq(1)');
+                    $innerBox = $detailPopup.find('div.inner-box:eq(1)');
                     if(reply) {
                         $innerBox.show();
-                        $findItem = $innerBox.find('div.dl-infolist-wrap li dd');
-                        $findItem.eq(0).text(reply.title);
-                        $findItem.eq(1).text(reply.desc);
-                        $findItem.eq(2).text(reply.date);
+                        $findItem = $innerBox.find('div.dl-infolist-wrap ul');
+                        $findItem.empty();
+                        var arr = reply instanceof Array ? reply : [];
+                        arr.forEach(function(item, index) {
+                            $findItem.append(vcui.template(popupDetailItemTemplate, item));
+                        });
                     } else {
                         $innerBox.hide();
                     }
 
-                    self.$detailPopup.vcModal();
+                    $detailPopup.vcModal();
                 });
             }
         };

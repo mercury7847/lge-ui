@@ -9,6 +9,8 @@
         '</ul></div>' +
     '</li>';
 
+    var popupDetailItemTemplate = '<li><dl><dt>{{title}}</dt><dd>{{#raw desc}}</dd></dl></li>'
+
     $(window).ready(function() {
         var myWrite = {
             init: function() {
@@ -71,12 +73,10 @@
                     self.$listCount.text(vcui.number.addComma(data.totalCount));
                     var arr = data.listData instanceof Array ? data.listData : [];
                     self.$myLists.empty();
-                    if(arr.length > 0) {
-                        arr.forEach(function(item, index) {
-                            item.date = vcui.date.format(item.date,'yyyy.MM.dd');
-                            self.$myLists.append(vcui.template(listItemTemplate, item));
-                        });
-                    }
+                    arr.forEach(function(item, index) {
+                        item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                        self.$myLists.append(vcui.template(listItemTemplate, item));
+                    });
                     self.checkNoData();
                 });
             },
@@ -102,7 +102,7 @@
 
                     //처리레벨
                     var progressLevel = parseInt(data.progressLevel);
-                    $findItem = self.$detailPopup.find('div.step-inner div.bar');
+                    var $findItem = self.$detailPopup.find('div.step-inner div.bar');
                     $findItem.removeClass("bar1 bar2 bar3");
                     switch(progressLevel) {
                         case 1:
@@ -134,24 +134,25 @@
                     $findItem.text(data.regNumber);
 
                     //원글 내용
-                    $findItem = self.$detailPopup.find('div.dl-infolist-wrap li dd');
-                    $findItem.eq(0).text(data.category);
-                    $findItem.eq(1).text(data.date);
-                    $findItem.eq(2).text(data.progress);
-                    $findItem.eq(3).text(data.product);
-                    $findItem.eq(4).text(data.productName);
-                    $findItem.eq(5).text(data.title);
-                    $findItem.eq(6).text(data.desc);
-                    
+                    var $innerBox = self.$detailPopup.find('div.inner-box:eq(0)');
+                    $findItem =$innerBox.find('div.dl-infolist-wrap ul');
+                    $findItem.empty();
+                    var arr = data.listData instanceof Array ? data.listData : [];
+                    arr.forEach(function(item, index) {
+                        $findItem.append(vcui.template(popupDetailItemTemplate, item));
+                    });
+
                     //답변내용
                     var reply = data.reply;
-                    var $innerBox = self.$detailPopup.find('div.inner-box:eq(1)');
+                    $innerBox = self.$detailPopup.find('div.inner-box:eq(1)');
                     if(reply) {
                         $innerBox.show();
-                        $findItem = $innerBox.find('div.dl-infolist-wrap li dd');
-                        $findItem.eq(0).text(reply.title);
-                        $findItem.eq(1).text(reply.desc);
-                        $findItem.eq(2).text(reply.date);
+                        $findItem = $innerBox.find('div.dl-infolist-wrap ul');
+                        $findItem.empty();
+                        var arr = reply instanceof Array ? reply : [];
+                        arr.forEach(function(item, index) {
+                            $findItem.append(vcui.template(popupDetailItemTemplate, item));
+                        });
                     } else {
                         $innerBox.hide();
                     }

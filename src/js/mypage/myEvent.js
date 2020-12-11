@@ -61,11 +61,9 @@
                     var data = result.data;
                     var arr = data instanceof Array ? data : [];
                     var $ul = self.$list.find('ul');
-                    if(arr.length > 0) {
-                        arr.forEach(function(item, index) {
-                            $ul.append(vcui.template(eventItemList, item));
-                        });
-                    }
+                    arr.forEach(function(item, index) {
+                        $ul.append(vcui.template(eventItemList, item));
+                    });
                     self.checkNoData();
                 });
             },

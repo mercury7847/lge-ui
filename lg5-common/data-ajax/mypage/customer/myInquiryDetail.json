@@ -2,21 +2,40 @@
     "status": "success",
     "message": null,
     "data": {
+        "type": "service",
         "id": "mw00001",
-        "regNumber": "S2009354211",
+        "regNumber": "접수번호: S2009354211",
+        "person": "엔지니어: 홍길동 / 서대문 서비스센터",
         "progress": "답변중",
         "progressLevel": "2",
-        "category": "칭찬합니다",
-        "title": "타이틀 아티을",
-        "date": "20200911 14:30",
-        "desc": "내용 내용 내용",
-        "product": "1prod>2prod",
-        "productName": "OLED48CXKNA",
-        "reply": {
-            "title": "답변 타이틀 아티을",
-            "date": "20200911 14:30",
-            "desc": "답변 내용 내용 내용"
-        }
-
+        "title": "2020.08.17 11:20에 전문 엔지니어가 방문하여 고장 증상을 해결해드릴 예정입니다.",
+        "imageUrl": "/lg5-common/images/MYC/@img-cs-engineer.jpg",
+        "imageAlt": "엔지니어",
+        "listData": [
+            {
+                "title": "접수 일시",
+                "desc": "2020년 10월 2일 11시 01분"
+            },
+            {
+                "title": "진행 상태",
+                "desc": "<em>답변완료</em>"
+            },
+            {
+                "title": "제품",
+                "desc": "세탁기/스타일러>데스크톱"
+            },
+            {
+                "title": "방문 센터",
+                "desc": "서대문 서비스 센터"
+            },
+            {
+                "title": "서비스 비용",
+                "desc": "1,252,000원<br>※서비스 비용 외 별도 금액을 지불한 경우 엔지니어를 통해 받으신 영수증과는 상이할 수 있습니다."
+            },
+            {
+                "title": "전달 사항",
+                "desc": "전달사항 표기"
+            }
+        ]
     }
 }
