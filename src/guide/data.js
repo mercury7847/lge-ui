@@ -36,7 +36,7 @@ var res = {
 			"KRC" : {
 				"KRC0001_Selective offering" : ["/html/components/KRC0001.html","","검수완료"],
 				"KRC0002_Vertical Selector[KRC0003]" : ["/html/components/KRC0002.html","","검수완료"],
-				"KRC0003_Event - Hero[KRC0006]" : ["/html/components/KRC0003.html","","검수완료"],
+				"KRC0003_Event - Hero[KRC0006]" : ["/html/components/KRC0003.html","",""],
 				"KRC0004_Image - Text(folding feature)[KRC0012]" : ["/html/components/KRC0004.html","","검수완료"],
 				"KRC0005_Side Image - Text[KRC0013]" : ["/html/components/KRC0005.html","","검수완료"],
 				"KRC0006_Side Image(2 - Text)[KRC0014]" : ["/html/components/KRC0006.html","","검수완료"],
@@ -74,9 +74,9 @@ var res = {
 				"KRC0038_Switching Hero Image[KRC0063]" : ["/html/components/KRC0038.html","","검수완료"],
 				"KRC0039_Widthways Switching Images[KRC0064]" : ["/html/components/KRC0039.html","","검수완료"],
 				"KRC0040_Tab Anchor_USP[KRC0065]" : ["/html/components/KRC0040.html","","검수완료"],
-				"KRC0041_BG Image 6 Text[KRC0066]" : ["/html/components/KRC0041.html","","검수완료"],
+				"KRC0041_BG Image 6 Text[KRC0066]" : ["/html/components/KRC0041.html","",""],
 				"KRC0042_Image-Layered Text[KRC0018]" : ["/html/components/KRC0042.html","","검수완료"],
-				"KRC9999_HTML Component" : ["/html/components/KRC9999.html","","검수완료"],
+				"KRC9999_HTML Component" : ["/html/components/KRC9999.html","",""],
 			},
 			"KRP" : {
 				"KRP0001_GNB" : ["/html/components/KRP0001.html","","검수완료"],
