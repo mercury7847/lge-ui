@@ -330,6 +330,7 @@
         }
     }
     &.video {
+        overflow: visible;
         max-width: 1284px;
         border-radius: 0;
         @include mobile {
@@ -344,13 +345,14 @@
             }
         }
         .btn-close {
-            width:42px;
-            height:42px;
-            &::before, &::after {
-                width: 3px;
-                height: 32px;
-                margin-top: -16px;
-                background-color: #fff;
+            top: -87px;
+            right: 0;
+            width:48px;
+            height:48px;
+            &:before {
+                width:48px;
+                height:48px;
+                background-image: url('/lg5-common/images/icons/btn-close-48-white.svg');
             }
             @include mobile {
                 top:24px;
