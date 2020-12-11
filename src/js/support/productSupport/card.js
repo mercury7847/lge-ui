@@ -39,25 +39,19 @@
         var url = CS.UI.$surveyWrap.data('ajax');
 
         lgkorUI.showLoading();
-        lgkorUI.requestAjaxDataPost(url, param, function(d) {
-            var obj = $.extend(obj,{typeClass:'type2', title:'평가해 주셔서 감사합니다.'});
+        lgkorUI.requestAjaxDataPost(url, param, function(result) {
+            var data = result.data;
+            var obj = {title:'평가해 주셔서 감사합니다.'};
             var desc = '더 나은 콘텐츠를 제공해 드리기 위한 자료로 활용합니다.';
 
-            // var content =    
-            //     '<p>평가해 주신 내용은 더 나은 콘텐츠를 제공해 드리기 위한 자료로 활용합니다.</p>' +
-            //     '<p><span class="star-rating-wrap">';
-                
-            // for (var i = 0; i < 5; i++) {
-            //     if (i < data.score) {
-            //         content += '<span class="star on"></span>';
-            //     } else {
-            //         content += '<span class="star"></span>';
-            //     }
-            // }
-            // content += '</span></p><p>' + '평가결과 ' + data.score + ' / ' + data.count + '명 참여</p>';
+            if (data.resultFlag == 'Y') {
 
-            // $('#surveyPop .lay-conts').html(content);
-            // $('#surveyPop').vcModal();
+            } else {
+                obj = $.extend(obj, {
+                    title: data.resultMessage
+                });
+                desc = '';
+            }
 
             lgkorUI.hideLoading();
             lgkorUI.alert(desc, obj);
@@ -78,6 +72,7 @@
                 CS.UI.$sortSelect = $contents.find('.ui_selectbox');
                 CS.UI.$listWrap = $contents.find('.card-list-wrap');
                 CS.UI.$surveyWrap = $contents.find('.survey-content');
+                CS.UI.$boardWrap = $contents.find('.board-view-wrap');
 
                 _self.params = {
                     'orderType': CS.UI.$sortSelect.vcSelectbox('value'),
@@ -157,10 +152,12 @@
                     if (result.success) {
                         var score = CS.UI.$surveyWrap.find('#rating').vcStarRating('value'),
                             text = CS.UI.$surveyWrap.find('#ratingContent').val();
+                            seq = CS.UI.$boardWrap.find('#seq').val();
 
                         suveyContent({
-                            'score': score,
-                            'input': text
+                            score: score,
+                            input: text,
+                            seq: seq
                         });
                     }
                 });

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+	@@include('./common/head.html', {
+		componentID: "KRP0022",
+		isJScompile: true,
+	})
+<body>
+	<div class="wrap">
+		<div class="container">
+			<!-- component -->
+            @@include('./common/partials/KRP0022.html', {
+				eventPage:true,
+				eventModalID:"event-modal"
+			})
+			<!-- // component -->
+			
+
+			<!-- component -->
+            @@include('./common/partials/KRP0022.html', {
+				eventModalID:"event-modal-pop"
+			})
+            <!-- // component -->
+		</div>
+	</div>
+</body>
+</html>

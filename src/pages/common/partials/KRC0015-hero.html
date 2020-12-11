@@ -1,0 +1,421 @@
+<!-- components/partials/KRC0015-hero.html -->
+<div class="component-wrap @@common.marginTop @@common.marginBtm @@common.bg-color">
+    <section class="component KRC0015 @@common.bg-color"><!-- [KR수정] bg-color 추가 -->
+        <!--
+        Hero로 사용될 경우에는, eyebrow, title, desc, cta, video link만 사용합니다.
+        (date, tech spec, bg animation 없음)
+
+        [component-wrap 옵션]
+        1. 여백
+        .zero-top : 상단여백 없음
+        .zero-btm : 하단여백 없음
+
+        [carousel-wrap 옵션]
+        1. 종류
+        .type-hero : Hero 영역에서 사용 (Hero 여부 Y인 경우)
+        .type-etc : 그외 영역에서 사용 (Hero 여부 N인 경우)
+
+        [text-area 옵션]
+        1. 가로 정렬
+        .align-left : 텍스트 영역이 왼쪽
+        .align-right : 텍스트 영역이 오른쪽
+        .align-center : 텍스트 영역이 가운데
+
+        2. 세로 정렬
+        .align-top: 텍스트 영역이 상단
+        .align-middle: 텍스트 영역이 중간
+        .align-bottom: 텍스트 영역이 하단
+
+        3. 텍스트 영역 넓이
+        .type-wide : 넓음
+        .type-narrow : 좁음
+
+        4. 폰트 컬러
+        .text-black : 검정색
+        .text-white : 흰색
+
+        [copy 옵션]
+        1. 폰트 종류 :
+        .font-regular : 레귤러
+        .font-bold : 볼드
+        .font-regular-italic : 레귤러 이탤릭
+        .font-bold-italic : 볼드 이탤릭
+
+        2. 폰트 스타일:
+        기본은 언더라인 없음
+        .font-underline : 언더라인
+
+        ** video-box 클래스는 소개 영상 보기 링크와 같이, video가 배경 이미지 영역에 출력되는경우에만 추가 해 주세요.
+
+
+        *** 컴포넌트 추가 위치조정 ***
+        .textblock-top-compo-top,
+        .textblock-top-compo-middle,
+        .textblock-top-compo-bottom,
+        .textblock-bottom-compo-top,
+        .textblock-bottom-compo-middle,
+        .textblock-bottom-compo-bottom,
+        .textblock-middle-compo-top,
+        .textblock-middle-compo-bottom
+
+        -->
+        <div class="component-box"><!-- [KR수정] .component-box DOM 추가 -->
+            <!-- <div class="slick-indicator">
+                <div class="slick-dot-wrap"></div>
+                <a href="#none" class="slide-pause pause" data-title-stop="Stop" data-title-play="Play">Stop</a>
+            </div> [KR수정] indicator DOM 삭제 -->
+            <div class="carousel-wrap @@carousel.type ui_carousel_slider"><!-- [KR수정] .ui_carousel_slider 추가 -->
+                <!-- [KR수정] indicator DOM 추가 -->
+                <div class="indi-wrap">
+                    <ul class="ui_carousel_dots">
+                        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                    </ul>
+                    <span class="ui_carousel_play play">
+                        <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
+                    </span>
+                </div>
+                <!-- // [KR수정] indicator DOM 추가 -->
+                <div class="ui_carousel_track"><!-- [KR수정] .ui_carousel_track DOM 추가 -->
+                    <!-- animation 타입인 경우 animation-box 클래스 추가 -->
+                    <div class="carousel-box animation-box @@carousel.item1.font-color @@carousel.item1.componentType ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+                        <div class="visual-area">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="@@carousel.item2.visual1" />
+                                <source media="(max-width: 767px)" srcset="@@carousel.item2.visual2" />
+                                <img data-pc-src="@@carousel.item1.visual1" data-m-src="@@carousel.item1.visual2" class="lazyload" alt=""><!-- [KR수정] img 수정 -->
+                            </picture>
+
+                            <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                        </div>
+                        <!-- 3-2. animation play/pause -->
+                        <div class="animation-area">
+                            <a href="#none" role="button" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">changes a audio description video</a>
+                            <!-- loop 되는 영상이 아닌 경우
+                                <video autoplay muted>
+                            -->
+                            <!-- loop 되는 영상인 경우 -->
+                            <video autoplay muted loop class="pc">
+                                <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                <!-- WEBM 동영상을 제공하는 경우
+                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                -->
+                            </video>
+                            <!-- 아래 모바일용 동영상은 모바일 동영상이 업로드 되어 있고 Mobile Use Flag가 Y인 경우에만 출력합니다. -->
+                            <video autoplay muted loop class="mobile">
+                                <source src="/lg5-common/videos/Highlight_backround.mp4" type="video/mp4">
+                                <!-- WEBM 동영상을 제공하는 경우
+                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                -->
+                            </video>
+                            <!-- 모바일 동영상이 업로드 되어 있고 Mobile Use Flag가 N인 경우에는 아래 controller-wrap에 hidden-xs 클래스를 넣어 주세요 -->
+                            <div class="controller-wrap wa-btn">
+                                <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                            </div>
+                        </div>
+                        <!--
+                            *** 컴포넌트 추가 위치조정 ***
+                            top-align-start : 컴포넌트 텍스트블럭 상단, 컴포넌트 내부 상단
+                            top-align-center: 컴포넌트 텍스트블럭 상단, 컴포넌트 내부 중단
+                            top-align-end: 컴포넌트 텍스트블럭 상단, 컴포넌트 내부 하단
+                            bottom-align-start : 컴포넌트 텍스트블럭 하단, 컴포넌트 내부 상단
+                            bottom-align-center: 컴포넌트 텍스트블럭 하단, 컴포넌트 내부 중단
+                            bottom-align-end: 컴포넌트 텍스트블럭 하단, 컴포넌트 내부 하단
+
+                            text-area-middle-top:  텍스트블럭 세로 풀사이즈, 컴포넌트 상단
+                            text-area-middle-bottom: 텍스트블럭 세로 풀사이즈, 컴포넌트 하단
+                        -->
+                        <!-- // 3-2. animation play/pause -->
+
+                        <!-- contents-area -->
+                        <div class="contents-area">
+
+                            <div class="text-area @@carousel.item1.font-color @@carousel.item1.align-class1 @@carousel.item1.align-class2 @@carousel.item1.width-class">
+                                <div class="text-wrap">
+                                    <div class="inner">
+                                        <div class="text-block">
+                                            <div class="eyebrow">8K에서 더욱 빛나는 올레드 픽셀디밍</div>
+                                            <div class="title">
+                                                <h2>LG SIGNATURE</h2>
+                                            </div>
+                                            <div class="copy font-regular">
+                                                올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며<br>홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다.
+                                            </div>
+                                        </div>
+                                        <div class="cta">
+                                            <div class="cta-button">
+                                                <span><a href="#none" class="btn btn-primary btn-lg" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>
+                                                <span><a href="#none" class="btn btn-outline-secondary btn-lg" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // contents-area -->
+
+                    </div>
+                    <!-- animation 타입인 경우 animation-box 클래스 추가 - animation 가득차게 들어가는 경우 -->
+                    <div class="carousel-box animation-box animation-box-full @@carousel.item2.font-color @@carousel.item2.componentType ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide, animation-box-full(새로운 유형) 추가 -->
+                        <div class="visual-area">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="@@carousel.item2.visual1" />
+                                <source media="(max-width: 767px)" srcset="@@carousel.item2.visual2" />
+                                <img data-pc-src="@@carousel.item2.visual1" data-m-src="@@carousel.item2.visual2" class="lazyload" alt=""><!-- [KR수정] img 수정 -->
+                            </picture>
+                            <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                        </div>
+                        <!-- 3-2. animation play/pause -->
+                        <div class="animation-area">
+                            <a href="#none" role="button" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">changes a audio description video</a>
+                            <!-- loop 되는 영상이 아닌 경우
+                                <video autoplay muted>
+                            -->
+                            <!-- loop 되는 영상인 경우 -->
+                            <video autoplay muted loop class="pc">
+                                <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                <!-- WEBM 동영상을 제공하는 경우
+                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                -->
+                            </video>
+                            <!-- 아래 모바일용 동영상은 모바일 동영상이 업로드 되어 있고 Mobile Use Flag가 Y인 경우에만 출력합니다. -->
+                            <video autoplay muted loop class="mobile">
+                                <source src="/lg5-common/videos/Highlight_backround.mp4" type="video/mp4">
+                                <!-- WEBM 동영상을 제공하는 경우
+                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                -->
+                            </video>
+                            <!-- 모바일 동영상이 업로드 되어 있고 Mobile Use Flag가 N인 경우에는 아래 controller-wrap에 hidden-xs 클래스를 넣어 주세요 -->
+                            <div class="controller-wrap wa-btn">
+                                <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                            </div>
+                        </div>
+                        <!--
+                            *** 컴포넌트 추가 위치조정 ***
+                            top-align-start : 컴포넌트 텍스트블럭 상단, 컴포넌트 내부 상단
+                            top-align-center: 컴포넌트 텍스트블럭 상단, 컴포넌트 내부 중단
+                            top-align-end: 컴포넌트 텍스트블럭 상단, 컴포넌트 내부 하단
+                            bottom-align-start : 컴포넌트 텍스트블럭 하단, 컴포넌트 내부 상단
+                            bottom-align-center: 컴포넌트 텍스트블럭 하단, 컴포넌트 내부 중단
+                            bottom-align-end: 컴포넌트 텍스트블럭 하단, 컴포넌트 내부 하단
+
+                            text-area-middle-top:  텍스트블럭 세로 풀사이즈, 컴포넌트 상단
+                            text-area-middle-bottom: 텍스트블럭 세로 풀사이즈, 컴포넌트 하단
+                        -->
+                        <!-- // 3-2. animation play/pause -->
+
+                        <!-- contents-area -->
+                        <div class="contents-area">
+
+                            <div class="text-area @@carousel.item2.font-color @@carousel.item2.align-class1 @@carousel.item2.align-class2 @@carousel.item2.width-class">
+                                <div class="text-wrap">
+                                    <div class="inner">
+                                        <div class="text-block">
+                                            <div class="eyebrow">8K에서 더욱 빛나는 올레드 픽셀디밍</div>
+                                            <div class="title">
+                                                <h2>LG SIGNATURE</h2>
+                                            </div>
+                                            <div class="copy font-regular">
+                                                올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며<br>홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다.
+                                            </div>
+                                        </div>
+                                        <div class="cta">
+                                            <div class="cta-button">
+                                                <span><a href="#none" class="btn btn-primary btn-lg" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>
+                                                <span><a href="#none" class="btn btn-outline-secondary btn-lg" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // contents-area -->
+
+                    </div>
+                    <!-- video인 경우 video-box 추가 -->
+                    <div class="carousel-box video-box youtube-box @@carousel.item3.font-color @@carousel.item3.componentType ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+                        <!-- 3. image -->
+                        <div class="visual-area">
+                            <img data-pc-src="@@carousel.item3.visual1" data-m-src="@@carousel.item3.visual2" class="lazyload" alt=""><!-- [KR수정] img 수정 -->
+                            <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                        </div>
+                        <!-- // 3. image -->
+
+                        <!-- contents-area -->
+                        <div class="contents-area">
+
+                            <div class="text-area @@carousel.item3.font-color @@carousel.item3.align-class1 @@carousel.item3.align-class2 @@carousel.item3.width-class">
+                                <div class="text-wrap">
+                                    <div class="inner">
+                                        <div class="text-block">
+                                            <!-- 4. eyebrow -->
+                                            <div class="eyebrow">8K에서 더욱 빛나는 올레드 픽셀디밍</div>
+                                            <!-- // 4. eyebrow -->
+                                            <!-- 5. headline -->
+                                            <div class="title">
+                                                <h2>LG SIGNATURE</h2>
+                                            </div>
+                                            <!-- // 5. headline -->
+                                            <!-- 7. body copy -->
+                                            <div class="copy font-regular">
+                                                올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며<br>홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다.
+                                            </div>
+                                            <!-- // 7. body copy -->
+                                        </div>
+                                        <!-- 8. cta -->
+                                        <div class="cta">
+                                            <div class="cta-button">
+                                                <span><a href="#none" class="btn btn-primary btn-lg" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>
+                                            </div>
+                                        </div>
+                                        <!-- // 8. cta -->
+                                        <!-- 3-1 video play button -->
+                                        <div class="video-link">
+                                            <!-- * youtube video modal은 아래의 방식으로 입력 -->
+                                            <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww?autoplay=1&" class="link-text ico-left see-video" data-type="youtube" data-link-area="hero_image-video_play" data-link-name="{video id}">소개 영상 보기</a>
+                                        </div>
+                                        <!-- // 3-1 video play button -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //contents-area -->
+
+                    </div>
+                    <div class="carousel-box video-box youtube-box @@carousel.item4.font-color @@carousel.item4.componentType ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+                        <div class="visual-area">
+                            <img data-pc-src="@@carousel.item4.visual1" data-m-src="@@carousel.item4.visual2" class="lazyload" alt=""><!-- [KR수정] img 수정 -->
+                            <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                        </div>
+                        <!-- contents-area -->
+                        <div class="contents-area">
+
+                            <div class="text-area @@carousel.item4.font-color @@carousel.item4.align-class1 @@carousel.item4.align-class2 @@carousel.item4.width-class">
+                                <div class="text-wrap">
+                                    <div class="inner">
+                                        <div class="text-block">
+                                            <div class="eyebrow">8K에서 더욱 빛나는 올레드 픽셀디밍</div>
+                                            <div class="title">
+                                                <h2>LG SIGNATURE</h2>
+                                            </div>
+                                            <div class="copy font-regular">
+                                                올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며<br>홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다.
+                                            </div>
+                                        </div>
+                                        <div class="cta">
+                                            <!--
+                                                1. a tag에 target="_blank" (optional)
+                                                2. cta-button 과 cta-link 는 동시 출력되지 않음. 한종류만 선택하여 출력되고 최대 2개까지 출력
+                                            -->
+                                            <div class="cta-link">
+                                                <span><a href="#none" class="link-text bold ico-right" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>
+                                                <span><a href="#none" class="link-text bold ico-right" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="video-link">
+                                            <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww?autoplay=1&" class="link-text ico-left see-video" data-type="youtube" data-link-area="hero_image-video_play" data-link-name="{video id}">소개 영상 보기</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--// contents-area -->
+
+                    </div>
+                    <div class="carousel-box @@carousel.item5.font-color @@carousel.item5.componentType ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+                        <div class="visual-area">
+                            <img data-pc-src="@@carousel.item5.visual1" data-m-src="@@carousel.item5.visual2" class="lazyload" alt=""><!-- [KR수정] img 수정 -->
+                            <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                        </div>
+                        <!-- contents-area -->
+                        <div class="contents-area">
+                            <div class="text-area @@carousel.item5.font-color @@carousel.item5.align-class1 @@carousel.item5.align-class2 @@carousel.item5.width-class">
+                                <div class="text-wrap">
+                                    <div class="inner">
+                                        <div class="text-block">
+                                            <div class="eyebrow">8K에서 더욱 빛나는 올레드 픽셀디밍</div>
+                                            <div class="title">
+                                                <h2>LG SIGNATURE</h2>
+                                            </div>
+                                            <div class="copy font-regular">
+                                                올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며<br>홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다.
+                                            </div>
+                                        </div>
+                                        <div class="cta">
+                                            <div class="cta-button">
+                                                <span><a href="#none" class="btn btn-primary btn-lg" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>
+                                                <span><a href="#none" class="btn btn-outline-secondary btn-lg" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // contents-area -->
+                    </div>
+                    <div class="carousel-box @@carousel.item6.font-color @@carousel.item6.componentType ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+                        <div class="visual-area">
+                            <img data-pc-src="@@carousel.item6.visual1" data-m-src="@@carousel.item6.visual2" class="lazyload" alt=""><!-- [KR수정] img 수정 -->
+                            <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                        </div>
+                        <!-- contents-area -->
+                        <div class="contents-area">
+                            <div class="text-area @@carousel.item6.font-color @@carousel.item6.align-class1 @@carousel.item6.align-class2 @@carousel.item6.width-class">
+                                <div class="text-wrap">
+                                    <div class="inner">
+                                        <div class="text-block">
+                                            <div class="eyebrow">8K에서 더욱 빛나는 올레드 픽셀디밍</div>
+                                            <div class="title">
+                                                <h2>LG SIGNATURE</h2>
+                                            </div>
+                                            <div class="copy font-regular">
+                                                올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며<br>홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다.
+                                            </div>
+                                        </div>
+                                        <div class="cta">
+                                            <div class="cta-link">
+                                                <span><a href="#none" class="link-text bold ico-right" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>
+                                                <span><a href="#none" class="link-text bold ico-right" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--// contents-area -->
+                    </div>
+                    <div class="carousel-box @@carousel.item7.font-color @@carousel.item7.componentType ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+                        <div class="visual-area">
+                            <img data-pc-src="@@carousel.item7.visual1" data-m-src="@@carousel.item7.visual2" class="lazyload" alt=""><!-- [KR수정] img 수정 -->
+                            <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                        </div>
+                        <!-- contents-area -->
+                        <div class="contents-area">
+                            <div class="text-area @@carousel.item7.font-color @@carousel.item7.align-class1 @@carousel.item7.align-class2 @@carousel.item7.width-class">
+                                <div class="text-wrap">
+                                    <div class="inner">
+                                        <div class="text-block">
+                                            <div class="eyebrow">8K에서 더욱 빛나는 올레드 픽셀디밍</div>
+                                            <div class="title">@@title.headline</div>
+                                            <div class="copy font-regular">@@title.copy</div>
+                                        </div>
+                                        <div class="cta">
+                                            <div class="cta-link">
+                                                <span><a href="#none" class="link-text bold ico-right" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>
+                                                <span><a href="#none" class="link-text bold ico-right" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--// contents-area -->
+                    </div>
+                </div><!-- [KR수정] .ui_carousel_track DOM 추가 -->
+                <!-- [KR수정] prev/next button DOM 추가 -->
+                <button type="button" class="btn-arrow prev">이전</button>
+                <button type="button" class="btn-arrow next">다음</button>
+                <!-- // [KR수정] prev/next button DOM 추가 -->
+            </div>
+        </div><!-- [KR수정] .component-box DOM 추가 -->
+    </section>
+</div>

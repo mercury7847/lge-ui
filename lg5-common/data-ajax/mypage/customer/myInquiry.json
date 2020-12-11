@@ -1,0 +1,167 @@
+{
+    "status": "success",
+    "message": null,
+    "param":{
+        "pagination":{
+            "page":"5",
+            "visibleCount":"7",
+            "totalCount":"23"
+        }
+    },
+    "data": {
+        "service":{
+            "useCount": "48",
+            "inquiry":{
+                "count":"5",
+                "listData":[
+                    {
+                        "title":"이메일 문의",
+                        "data":[
+                            {
+                                "title":"진행중",
+                                "count":"2"
+                            },
+                            {
+                                "title":"완료",
+                                "count":"0"
+                            },
+                            {
+                                "title":"전체",
+                                "count":"2"
+                            }
+                        ]
+                    },
+                    {
+                        "title":"전화 상담",
+                        "data":[
+                            {
+                                "title":"진행중",
+                                "count":"0"
+                            },
+                            {
+                                "title":"완료",
+                                "count":"1"
+                            },
+                            {
+                                "title":"전체",
+                                "count":"1"
+                            }
+                        ]
+                    },
+                    {
+                        "title":"원격 상담",
+                        "data":[
+                            {
+                                "title":"진행중",
+                                "count":"0"
+                            },
+                            {
+                                "title":"완료",
+                                "count":"2"
+                            },
+                            {
+                                "title":"전체",
+                                "count":"2"
+                            }
+                        ]
+                    },
+                    {
+                        "title":"영상 상담",
+                        "data":null
+                    }
+                ]
+            },
+            "trip":{
+                "count":"3",
+                "listData":[
+                    {
+                        "title":"출장 서비스",
+                        "data":[
+                            {
+                                "title":"진행중",
+                                "count":"3"
+                            },
+                            {
+                                "title":"완료",
+                                "count":"0"
+                            },
+                            {
+                                "title":"전체",
+                                "count":"3"
+                            }
+                        ]
+                    },
+                    {
+                        "title":"제품 설치/철거",
+                        "data":[
+                            {
+                                "title":"완료",
+                                "count":"1"
+                            },
+                            {
+                                "title":"전체",
+                                "count":"1"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "visit":{
+                "count":"1",
+                "listData":[
+                    {
+                        "title":"서비스 센터 방문",
+                        "data":[
+                            {
+                                "title":"완료",
+                                "count":"1"
+                            },
+                            {
+                                "title":"전체",
+                                "count":"1"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "listData":[
+            {
+                "id": "mw00001",
+                "regNumber": "S2009354211",
+                "progress": "답변중",
+                "category": "이메일 문의",
+                "title": "타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀타이틀 타이틀 타이틀 초과",
+                "date": "20200911",
+                "product": "제품1>제품2"
+            },
+            {
+                "id": "mw00002",
+                "regNumber": "S2009354212",
+                "progress": "접수",
+                "category": "이메일 문의",
+                "title": "타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀타이틀 타이틀 타이틀 초과",
+                "date": "20200912",
+                "product": "제품1>제품2"
+            },
+            {
+                "id": "mw00003",
+                "regNumber": "S2009354213",
+                "progress": "처리대기",
+                "category": "이메일 문의",
+                "title": "타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀타이틀 타이틀 타이틀 초과",
+                "date": "20200913",
+                "product": "제품1>제품2"
+            },
+            {
+                "id": "mw00004",
+                "regNumber": "S2009354214",
+                "progress": "처리대기",
+                "category": "이메일 문의",
+                "title": "타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀타이틀 타이틀 타이틀 초과",
+                "date": "20200914",
+                "product": "제품1>제품2"
+            }
+        ]
+    }
+}

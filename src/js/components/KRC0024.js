@@ -6,13 +6,12 @@ $(window).ready(function(){
     vcui.require(['ui/carousel'], function () {
         $('.KRC0024').find('.ui_carousel_slider').vcCarousel({
             infinite: false,
-            autoplay: true,
+            autoplay: false,
             swipeToSlide: true,
             slidesToShow: 1,
             slidesToScroll: 1,
             prevArrow:'.btn-arrow.prev',
-            nextArrow:'.btn-arrow.next',
-            playSelector: '.btn-play.play'
+            nextArrow:'.btn-arrow.next'
         }).on('carouselbeforechange', function(e, slide, prev, next){
             if($(slide.$slides.get(prev)).attr("ui-modules") == "VideoBox"){
                 $(slide.$slides.get(prev)).find("video").get(0).pause();

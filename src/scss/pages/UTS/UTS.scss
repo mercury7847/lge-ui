@@ -18,6 +18,11 @@
     //    background-color: red;
     //    opacity: .2;
     //}
+    .lay-filter {
+        @include pc {
+            padding-top: 46px;
+        }
+    }
     .search-tabs-wrap {
         padding-bottom: 24px;
         border-bottom: 8px solid $color-bg;
@@ -46,6 +51,7 @@
         }
         .btn-moreview {
             margin-top: 20px;
+            border: 0;
         }
         &.on {
             .inner {
@@ -192,7 +198,7 @@
                     margin-left:0;
                 }
             }
-        }   
+        }  
     }
 }
 
@@ -202,8 +208,11 @@
     @include clearfix;
      //max-width: 1284px;
      max-width: 1146px;
+     min-height: 1000px;
      margin: 0 auto;
-
+    @include mobile {
+        min-height: auto;
+    }
     .result-area {
         //float: left;
         width: 100%;
@@ -801,6 +810,7 @@
                 > ul {
                     > li {
                         width:14%;
+                        padding-left:0;
                         @include mobile {
                             width:auto;
                             margin-top:12px;
@@ -886,62 +896,138 @@
 }
 
 .list-sorting {
+    .input-keyword-wrap {
+        display: none;
+    }
     .sort-area {
         .list-count {
             margin-top: 8px;
             font-size: 16px;
             line-height: 26px;
         }
-    }
-    @media screen and (max-width: 1024px) {
-        .sort-list {
-            margin-top: 10px;
+        @media screen and (max-width: 1024px) {
+            .sort-list {
+                margin-top: 10px;
+            }
         }
-    }
-}
-.sort-select-wrap {
-    margin-left: 34px;
-    vertical-align: middle;
-}
-.sort-check-area {
-    display: inline-block;
-    vertical-align: middle;
-    .chk-wrap input + label {
-        @include font-small; 
-    }
-}
-.sort-search-area {
-    display: inline-block;
-    position: relative;
-    vertical-align: middle;
-    margin-left: 24px;
-    @media screen and (max-width: 1024px) {
-        display: none;
-    }
-    .search-inner {
-         width: 210px;
-         height: 34px;
-         padding: 5px 52px 5px 16px;
-         border-radius: 17px;
-         background-color: #f4f4f4;
-         .inp-txt {
-            width: 100%; 
-            background-color: #f4f4f4;
-            font-size: 14px;
-            line-height: 24px;
-            color: #767676;
-         }
-         .btn-sch {
+        .sort-select-wrap {
+            margin-left: 34px;
+            vertical-align: middle;
+        }
+        .sort-check-area {
             display: inline-block;
-            position: absolute;
-            top: 7px;
-            right: 16px;
-            width: 20px;
-            height: 20px;
-            background: url('/lg5-common/images/icons/icon-search-20.svg');
+            vertical-align: middle;
+            .chk-wrap input + label {
+                @include font-small; 
+            }
+        }
+        .sort-search-area {
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+            margin-left: 24px;
+            @media screen and (max-width: 1024px) {
+                display: none;
+            }
+            .search-inner {
+                 width: 210px;
+                 height: 34px;
+                 padding: 5px 52px 5px 16px;
+                 border-radius: 17px;
+                 background-color: #f4f4f4;
+                 .inp-txt {
+                    width: 100%; 
+                    background-color: #f4f4f4;
+                    font-size: 14px;
+                    line-height: 24px;
+                    color: #767676;
+                 }
+                 .btn-sch {
+                    display: inline-block;
+                    position: absolute;
+                    top: 7px;
+                    right: 16px;
+                    width: 20px;
+                    height: 20px;
+                    background: url('/lg5-common/images/icons/icon-search-20.svg');
+                }
+            }
+        } 
+
+    }
+    &.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 104px;
+        padding-bottom: 0;
+        background: #fff;
+        z-index: 102;
+        box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14);
+        @media screen and (max-width: 1024px) {
+            height: 80px;
+        }
+        .list-sorting-inner {
+            display: flex;
+            align-items: center;
+            max-width: calc(1380px + 80px);
+            margin: 0 auto;
+            padding: 0 40px;
+            height: 100%;
+            .sort-area {
+                float: none;
+                .list-count {
+                    margin-top: 0;
+                }
+                .sort-list {
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                    .input-keyword-wrap {
+                        display: block;
+                        flex: 1;
+                        margin-left: 24px;
+                        padding: 0;
+                    }
+                }
+            }
+            .sort-area + .sort-area,
+            .sort-area.right {
+                flex: 1;
+                margin-left: 24px;
+            }
+        }
+        @media screen and (max-width: 1024px) {
+            .sort-area.left {display: none}
+            .sort-area.right {
+                margin-left: 0 !important;
+                .sort-list {
+                    margin-top: 0;
+                    .sort-check-area,
+                    .sort-search-area, 
+                    .sort-select-wrap {
+                        display: none
+                    }
+                    .input-keyword-wrap {
+                        margin: 0;
+                        .input-keyword {
+                            padding: 0 !important;
+                        }
+                    }
+                }
+            }
+           
+        }
+        @include mobile {
+            .list-sorting-inner {
+                padding: 0 16px;
+            }
         }
     }
-} 
+    
+}
+
 
 .mobile-service-link {
     display: none;

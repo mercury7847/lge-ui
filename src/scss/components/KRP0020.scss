@@ -4,151 +4,153 @@
 
 
 .KRP0020 {
-    .inner {
-        padding-bottom:104px;
-        .title {
-            padding:40px 0;
-            background:#fff;
-            color:#222;
-            @include font-large-3;
-            font-weight:700;
-            text-align:center;
-        }
-        > ul {
-            max-width:1147px + 80px;
-            margin:0 auto;
-            padding:0 40px;
-
-            // cluster layout
-            @media screen and (min-width:992px) {
-                .category-cluster {
-                    display:table;
-                    width:100%;
-                    table-layout:fixed;
-                    border-collapse:collapse;
-                    > ul {
-                        display:table-cell;
-                        padding:48px 40px;
-                        font-size:0;
-                        .category-column {
-                            display:inline-block;
-                            width:50%;
-                            vertical-align:top;
-                            &.upperframe {
-                                width:100%;
-                            }
-                        }
-                        &:only-child {
-                            .category-column.upperframe {
-                                width:50%;
-                            }
-                        }
-                    }
+    .component-inner { 
+        .evt-bnr {
+            @include clearfix;
+            @include mobile {
+                padding-bottom:35px;
+            }
+            h2.tit {
+                padding:0 0 36px;
+                font-size:24px;
+                line-height:32px;
+                font-weight:700;
+                text-align:center;
+                @include mobile {
+                    font-size:16px;
+                    line-height:23px;
                 }
             }
-            @media screen and (max-width:991px) {
-                .category-cluster {
-                    font-size:0;
-                    > ul {
-                        margin-top:12px;
-                        padding:48px 40px;
-                        background:#fff;
-                        font-size:0;
-                        .category-column {
-                            display:inline-block;
-                            width:50%;
-                            vertical-align:top;
-                            &.upperframe {
-                                display:block;
-                                width:100%;
-                            }
-                        }
-                        .category-column.upperframe + .category-column.upperframe {
-                            margin-top:56px;
-                        }
+            .btn-text {
+                float:right;
+                margin-top:16px;
+            }
+            .slide-wrap {
+                @include mobile {
+                    box-shadow:3px 4px 15px 0 rgba(#000, .12);
+                    border-radius:8px;
+                }
+                .slide-content {
+                    margin:0 -6px;
+                    @include mobile {
+                        margin:0;
+                    }
 
+                    // .slide-conts {
+                    //     width:calc(100% / 3);
+                    //     @include mobile {
+                    //         width:100%;
+                    //     }
+                    // }
+                    .conts-wrap {
+                        margin:0 6px;
                         @include mobile {
-                            padding:48px 24px 56px;
+                            margin:0;
                         }
-                    }
-                }
-            }
-            
-
-            // depth style
-            .category-cluster {
-                .level-1 {
-                    padding-bottom:12px;
-                    border-bottom:2px solid #222;
-                    margin-bottom:40px;
-                    h2 * {
-                        display:inline-block;
-                        color:#222;
-                        font-size:22px;
-                        line-height:32px;
-                        font-weight:700;
-                        vertical-align:top;
-                    }
-                }
-
-                .level-2 {
-                    margin-top:16px;
-                    h3 * {
-                        display:inline-block;
-                        color:#222;
-                        font-size:16px;
-                        line-height:26px;
-                        font-weight:700;
-                        vertical-align:top;
-                    }
-                }
-
-                .level-3 {
-                    margin-top:8px;
-                    * {
-                        display:inline-block;
-                        color:#222;
-                        font-size:16px;
-                        line-height:26px;
-                        vertical-align:top;
-                    }
-                }
-
-                .level-2 + .level-3 {
-                    margin-top:16px;
-                }
-
-                .level-3 + .level-2 {
-                    margin-top:32px;
-                }
-
-                @for $i from 1 through 4 {
-                    .category-depth.level-#{$i} {
-                        a[target="_blank"] {
-                            &::after {
-                                content:' ';
-                                display:inline-block;
-                                width:14px;
-                                height:26px;
-                                margin-left:4px;
-                                vertical-align:top;
-                                @if ( $i == 2 ) {
-                                    background:url('/lg5-common/images/icons/icon-blank-arr2.svg') center no-repeat;
-                                } @else if ( $i == 3 ) {
-                                    background:url('/lg5-common/images/icons/icon-blank-arr2.svg') center no-repeat;
+                        .evt {
+                            position:relative;
+                            padding-bottom:76px;
+                            background:#fff;
+                            overflow:hidden;
+                            @include mobile {
+                                padding-bottom:20px;
+                                border-radius:8px;
+                            }
+                            .evt-link {
+                                display:block;
+                            }
+                            .thumb {
+                                display:block;
+                                position:relative;
+                                border-radius:4px;
+                                overflow:hidden;
+                                img {
+                                    width:100%;
+                                    height:auto;
+                                    vertical-align:top;
+                                }
+                                > .flag-wrap {
+                                    position:absolute;
+                                    top:24px;
+                                    left:24px;
+                                    @include mobile {
+                                        top:20px;
+                                        left:20px;
+                                    }
+                                }
+                            }
+                            .event-info {
+                                padding:24px;
+                                padding-bottom:0;
+                                @include mobile {
+                                    padding:16px 20px 0;
+                                }
+                                .flag-wrap {
+                                    margin-bottom:8px;
+                                }
+                                .tit {
+                                    height:30px;
+                                    color:#222;
+                                    font-size:20px;
+                                    line-height:30px;
+                                    font-weight:700;
+                                    overflow:hidden;
+                                    text-overflow:ellipsis;
+                                    white-space:nowrap;
+                                    @include mobile {
+                                        height:18px;
+                                        font-size:14px;
+                                        line-height:18px;
+                                    }
+                                }
+                                .date {
+                                    height:24px;
+                                    color:#222;
+                                    font-size:16px;
+                                    line-height:24px;
+                                    overflow:hidden;
+                                    text-overflow:ellipsis;
+                                    white-space:nowrap;
+                                    @include mobile {
+                                        height:16px;
+                                        font-size:12px;
+                                        line-height:16px;
+                                    }
+                                }
+                            }
+                            .end-flag {
+                                position:absolute;
+                                top:0;
+                                right:0;
+                                width:60px;
+                                height:60px;
+                                padding:10px 0 10px 5px;
+                                border-radius:0 4px 0 4px;
+                                background-image:linear-gradient(#F04E3E, #EC455A);
+                                color:#fff;
+                                font-size:12px;
+                                letter-spacing:5px;
+                                line-height:20px;
+                                text-align:center;
+                                z-index:10;
+                                @include mobile {
+                                    width:48px;
+                                    height:48px;
+                                    padding:8px 0 8px 4px;
+                                    font-size:10px;
+                                    line-height:16px;
+                                    letter-spacing:4px;
                                 }
                             }
                         }
                     }
                 }
-
-                .category-depth {
-                    padding-right:12px;
-                    &:first-child {
-                        margin-top:0;
-                    }
+    
+                .indi-wrap {
+                    bottom:-69px;
                 }
             }
         }
     }
+    
 }

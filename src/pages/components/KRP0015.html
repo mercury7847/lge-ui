@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        componentID: "KRP0015"
+        componentID: "KRP0015",
+        isJScompile: true
     })
 <body>
-    <div class="wrap">
+    <div class="wrap">    
         <div class="container">
-
-            <!-- component -->
-            <div class="component-wrap">
-                <section class="component KRP0015">
-                    <div class="component-inner">
-						<!-- 솔루션 영역 -->
-                        <div class="solution-review-wrap">
-							<div class="visual-area">
-								<img data-pc-src="/lg5-common/images/KRP0015/@sample-1284x2225.jpg" data-m-src="/lg5-common/images/KRP0015/@sample-720x3371.jpg" class="lazyload" alt="" src="/lg5-common/images/KRP0015/@sample-1284x2225.jpg">
-							</div>
-						</div>
-						<!-- //솔루션 영역 -->
-                    </div>
-                </section>
-            </div>
-            <!-- // component -->
+           <!-- component -->
+           @@include('./common/partials/KRP0015.html')
+           <!-- // component -->
+           @@include('./common/modules/toast-message.html', {
+                "messageArr": [
+                    {"message" : "2개까지 비교가능합니다. "},
+                    {"message" : "비교하기 기능이 초기화되었습니다. "}
+                ]
+            }) 
 
         </div>
-    </div>
+    </div>     
 </body>
 </html>

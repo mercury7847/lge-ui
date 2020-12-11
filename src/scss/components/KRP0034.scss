@@ -2,33 +2,48 @@
 
 @import "../components-app";
 
-.component.KRP0034 {
-	
-	 .component-inner {
-		max-width: calc(1146px + 80px);
-		padding: 0 40px;
+.KRP0034 {
+	.title {
+		font-size:24px;
+		font-weight:700;
+		line-height:32px;
+	}
+	ul {
+		margin-top:24px;
+		color:#767676;
+		@include font-small;
 		@include mobile {
-			padding: 0 16px;
+			color:#808080;
+		}
+		li {
+			position:relative;
+			margin-top:2px;
+			padding-left:10px;
+			font-weight:500;
+			@include mobile {
+				margin-top:0;
+			}
+			&::before {
+				content:' ';
+				position:absolute;
+				top:11px;
+				left:0;
+				width:3px;
+				height:3px;
+				border-radius:50%;
+				background:#767676;
+			}
+			&:first-child {
+				margin-top:0;
+			}
 		}
 	}
-	.tag-list {
-		max-width: 1460px;
-		margin: -12px auto 0;
-		font-size: 0;
-		text-align: center;
-
-		.hashtag {
-			display: inline-block;
-			margin-right: 8px;
-			margin-top: 12px;
-			padding: 8px 16px;
-			border: 1px solid $color-border;
-			border-radius: 8px;
-			@include font-medium;
-			color: $color-default;
-			@include mobile {
-				@include font-small;
-			}
+	@include mobile {
+		.title {
+			line-height:30px;
+		}
+		ul {
+			margin-top:20px;
 		}
 	}
 }

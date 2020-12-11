@@ -8,9 +8,9 @@
         <link rel="stylesheet" href="/lg5-common/css/reset.min.css" />
         <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
         <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRC0032.min.css" />
-        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0034.min.css" />
-        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0035.min.css" />
-        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0036.min.css" />
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0023.min.css" />
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0025.min.css" />
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0026.min.css" />
         <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
         <script src="/lg5-common/js/libs/jquery.transit.min.js"></script>
         <script src="/lg5-common/js/libs/jquery.event.move.min.js"></script>
@@ -19,7 +19,7 @@
         <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
         <script src="/lg5-common/js/lg.common.min.js"></script>
 
-        <script src="/lg5-common/js/components/KRP0035.min.js"></script>
+        <script src="/lg5-common/js/components/KRP0025.min.js"></script>
     </head>
     <!-- // 템플릿으로 진행되는 화면. 제대로 display되도록 임시 삽입 -->
 <body>
@@ -28,11 +28,11 @@
 
         <div class="container">
             <div class="page-header">
-                <h2 class="title">비하인드 스토리</h2>
+                <h2 class="title">제품 활용 팁</h2>
             </div>
 
             <!-- component -->
-            @@include('./common/partials/KRP0034.html', {
+            @@include('./common/partials/KRP0023.html', {
                 "zero" : "zero-top zero-btm",
 				"hashtag" : [
                     "#활용백서", "#노하우", "#오래쓰는법", "#꿀팁", "#일상"
@@ -40,14 +40,14 @@
 			})
 
             <!-- component -->
-            @@include('./common/partials/KRP0035.html', {
+            @@include('./common/partials/KRP0025.html', {
                 "zero" : ""
             })
             <!-- // component -->
 
 
             <!-- component -->
-            @@include('./common/partials/KRP0036.html', {
+            @@include('./common/partials/KRP0026.html', {
                 "zero" : "zero-top",
                 "tabBarType" : true,
                 "lgVisual" : false

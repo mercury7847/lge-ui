@@ -7,103 +7,71 @@
 <body>
     <div class="wrap">
         <div class="container">
+            <!-- component -->
+            <!-- carousel type -->
+            @@include('./common/partials/KRC0009.html', {
+                "carousel" : true,
+                "itemCount" : 8,
+                "imgType" : "image",
+                "bg-color": "bg-white"
+            })
+            <!-- // carousel type -->
+            <!-- // component -->
 
-			<!-- component KRC0008 -->
-            <div class="component-wrap">
-                <section class="component KRC0009"><!-- [KR수정] page class 수정 -->
-                    <div class="component-inner"><!-- [KR수정] unit-wrap -> component-inner class명 수정 -->
-                        <div class="inner">
-                            <div class="unit-title align-center"><h3>당신만을 위한 프로모션</h3></div>
-                            <form action="/data-ajax/mkt/promotionList-C0028.json" novalidate>                     
-                                <input type="hidden" name="page" value="1">     
-                                <input type="hidden" name="pagePosition">
-                            </form>            
-                            <div class="list-wrap ui_carousel_slider"><!-- [KR수정] .ui_carousel_slider class 추가 -->
-                                <!-- [KR수정] indicator DOM 추가-->
-                                <ul class="indi-wrap ui_carousel_dots">
-                                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                </ul>
-                                <!-- // [KR수정] indicator DOM 추가-->
-                                <template class="contents-template">
-                                    <li class="unit-box ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide class 추가 -->
-                                        <div class="visual-area image">
-                                            <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
-                                                <!-- <img class="lazyload" data-src="*thumbnailImageAddr*" alt="*imageAltText*"/> -->
-                                                <img class="lazyload" data-src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="*imageAltText*"/><!-- 이미지 경로 확인용 -->
-                                                <p class="hidden">graphic description : </p>
-                                            </a>
-                                        </div>
-                                        <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
-                                        <p class="body-copy">08/01 ~ 08/31/2020</p>
-                                        <div class="btn-box">
-                                            <span>
-                                                <a href="*promotionLinkUrl*" class="btn btn-primary" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">프로모션 보기</a>
-                                            </span>
-                                        </div>
-                                    </li>
-                                </template> 
-                                <!-- 
-                                    [KR수정] div.unit-list -> ul.unit-list 로 DOM 수정
-                                -->                                      
-                                <ul class="unit-list ui_carousel_track"><!-- [KR수정] .align-center class 삭제(기획서상 해당 영역 정렬옵션 지원하지 않음), .ui_carousel_track class 추가 -->
-                                    <!-- 화면상 디자인 반영 노출을 위해 template DOM 생성 후 작업 -->
-                                    <li class="unit-box ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide class 추가 -->
-                                        <div class="visual-area image">
-                                            <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
-                                                <!-- <img class="lazyload" data-src="*thumbnailImageAddr*" alt="*imageAltText*"/> -->
-                                                <img class="lazyload" data-src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="*imageAltText*"/><!-- 이미지 경로 확인용 -->
-                                                <p class="hidden">graphic description : </p>
-                                            </a>
-                                        </div>
-                                        <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
-                                        <p class="body-copy">08/01 ~ 08/31/2020</p>
-                                        <div class="btn-box">
-                                            <span>
-                                                <a href="*promotionLinkUrl*" class="btn btn-primary" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">프로모션 보기</a>
-                                            </span>
-                                        </div>
-                                    </li>
-                                    <li class="unit-box ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide class 추가 -->
-                                        <div class="visual-area image">
-                                            <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
-                                                <!-- <img class="lazyload" data-src="*thumbnailImageAddr*" alt="*imageAltText*"/> -->
-                                                <img class="lazyload" data-src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="*imageAltText*"/><!-- 이미지 경로 확인용 -->
-                                                <p class="hidden">graphic description : </p>
-                                            </a>
-                                        </div>
-                                        <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
-                                        <p class="body-copy">08/01 ~ 08/31/2020</p>
-                                        <div class="btn-box">
-                                            <span>
-                                                <a href="*promotionLinkUrl*" class="btn btn-primary" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">프로모션 보기</a>
-                                            </span>
-                                        </div>
-                                    </li>
-                                    <li class="unit-box ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide class 추가 -->
-                                        <div class="visual-area image">
-                                            <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
-                                                <!-- <img class="lazyload" data-src="*thumbnailImageAddr*" alt="*imageAltText*"/> -->
-                                                <img class="lazyload" data-src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="*imageAltText*"/><!-- 이미지 경로 확인용 -->
-                                                <p class="hidden">graphic description : </p>
-                                            </a>
-                                        </div>
-                                        <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
-                                        <p class="body-copy">08/01 ~ 08/31/2020</p>
-                                        <div class="btn-box">
-                                            <span>
-                                                <a href="*promotionLinkUrl*" class="btn btn-primary" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">프로모션 보기</a>
-                                            </span>
-                                        </div>
-                                    </li>                                    
-                                </ul>
-                                <!-- 
-                                    [KR수정] div.unit-list -> ul.unit-list 로 DOM 수정
-                                -->  
-                            </div>                             
-                        </div>
-                    </div>
-                </section>
-            </div>
+            <!-- component -->
+            <!-- non carousel type -->
+            @@include('./common/partials/KRC0009.html', {
+                "itemCount" : 8,
+                "column" : "item6",
+                "imgType" : "video",
+                "bg-color": "bg-white"
+            })
+            <!-- // non carousel type -->
+            <!-- // component -->
+
+            <!-- component -->
+            <!-- non carousel type -->
+            @@include('./common/partials/KRC0009.html', {
+                "itemCount" : 8,
+                "column" : "item5",
+                "imgType" : "animation",
+                "bg-color": "bg-white"
+            })
+            <!-- // non carousel type -->
+            <!-- // component -->
+
+            <!-- component -->
+            <!-- non carousel type -->
+            @@include('./common/partials/KRC0009.html', {
+                "itemCount" : 8,
+                "column" : "item4",
+                "imgType" : "image",
+                "bg-color": "bg-white"
+            })
+            <!-- // non carousel type -->
+            <!-- // component -->
+
+            <!-- component -->
+            <!-- non carousel type -->
+            @@include('./common/partials/KRC0009.html', {
+                "itemCount" : 8,
+                "column" : "item3",
+                "imgType" : "video",
+                "bg-color": "bg-white"
+            })
+            <!-- // non carousel type -->
+            <!-- // component -->
+
+            <!-- component -->
+            <!-- non carousel type -->
+            @@include('./common/partials/KRC0009.html', {
+                "itemCount" : 8,
+                "column" : "item2",
+                "imgType" : "video",
+                "bg-color": "bg-white"
+            })
+            <!-- // non carousel type -->
+            <!-- // component -->
 		</div>
     </div>     
 </body>

@@ -2,89 +2,267 @@
 
 @import "../components-app";
 
-
 .KRC0009 {
-    .hidden {position:absolute;z-index:-10;width:0 !important;height:0 !important;overflow:hidden !important;font-size:medium;line-height:normal;word-break:break-all}
-    .unit-title h3 {
-        color:#111;
-        font-size:24px;
-        line-height:34px;
-        font-weight:700;
+
+    $color: (lightgray, dark, black, white);
+	@each $bg in $color {
+		&.bg-#{$bg} {
+			@if $bg == lightgray {
+				background-color: #f4f4f4;
+				.title {
+					&, * {
+						color: #111;
+					}
+				}
+			} @else if $bg == dark {
+				background-color: #333;
+				.title {
+					&, * {
+						color: #fff;
+					}
+				}
+                .caption {
+                    color:#fff;
+                }
+                .link-text.ico-right {
+                    border-color:#fff;
+                    color:#fff;
+                    &:after {
+                        border-color:#fff;
+                    }
+				}
+			} @else if $bg == black {
+				background-color: #000;
+				.title {
+					&, * {
+						color: #fff;
+					}
+				}
+				.caption {
+                    color:#fff;
+                }
+                .link-text.ico-right {
+                    border-color:#fff;
+                    color:#fff;
+                    &:after {
+                        border-color:#fff;
+                    }
+				}
+			} @else if $bg == white {
+				background-color: #fff;
+				.title {
+					&, * {
+						color: #111;
+					}
+				}
+			}
+		}
+	}
+
+    .btn {
+        display: inline-block;
+        min-width:194px;
+        padding:15px 0;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: #fff;
+        line-height: 24px;
+        @include font-family($font-weight-bold);
+        font-size: 16px;
+        color: #111;
+        text-align: center;
+        vertical-align: top;
+
+        &.btn-outline-primary {
+            border-color: #212121;
+            background-color: #fff;
+            color: #111;
+        }
+        &.btn-primary {
+            border-color: #111;
+            background-color: #111;
+            color: #fff;
+        }
     }
-    .list-wrap {
-        position:relative;
-        margin-top:48px;
-        @include mobile {
-            padding-bottom:34px;
-        }
-        .ui_carousel_list {
-            overflow:hidden;
-            margin:0 -12px;
-            @include mobile {
-                margin:0;
+
+    .link-text {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #212121;
+        font-size: 14px;
+        line-height: 20px;
+        color: #111;
+        vertical-align: top;
+
+        &.ico-right {
+            margin-right: 14px;
+            &:after {
+                position: absolute;
+                @include calc(top, 50%, 6px);
+                right: -12px;
+                width: 8px;
+                height: 8px;
+                border: solid #111;
+                border-width: 2px 2px 0 0;
+                transform: rotate(45deg);
+                content: '';
             }
         }
-        .unit-list {
-            @include clearfix;
-            .unit-box {
-                float:left;
-                width:calc(100% / 3);
-                padding:0 12px;
+
+        &.bold {
+            @include font-family($font-weight-bold);
+        }
+    }
+
+    // page common
+    .visual-area {
+        a {
+            display:block;
+            position:relative;
+            height:0;
+            padding-bottom:100%;
+            img {
+                position:absolute;
+                top:0;
+                right:0;
+                bottom:0;
+                left:0;
+                width:100%;
+                height:100%;
+                vertical-align:top;
+            }
+        }
+        &.video {
+            .see-video:before {
+                z-index:1;
+                width:32px;
+                height:32px;
+                margin:-16px 0 0 -16px;
+            }
+        }
+        &.animation-box {
+            .play-animaion-btn {
+                position: absolute;
+            }
+            img {
+                width:100%;
+                height:auto;
+                vertical-align:top;
+            }
+
+        }
+    }
+    .caption {
+        margin-top:16px;
+        color:#616161;
+        font-size:16px;
+        line-height:24px;
+        text-align:center;
+    }
+    .bottom-btn {
+        margin-top:24px;
+        text-align:center;
+        .btn {
+            @include mobile {
+                min-width:100%;
+                padding:15px 0;
+                font-size:16px;
+                line-height:24px;
+            }
+        }
+    }
+
+    // Carousel Case
+    .carousel-box {
+        margin:0 -28px;
+        .list-box {
+            position:relative;
+            padding:0 16px;
+            @include mobile {
+                padding-bottom:34px;
+            }
+            .indi-wrap {
+                display:none !important;
+                position:absolute;
+                left:0;
+                right:0;
+                bottom:0;
                 @include mobile {
-                    padding:0;
+                    display:block !important;
                 }
-                .visual-area {
-                    a {
-                        display:block;
-                        img {
-                            width:100%;
-                            height:auto;
-                            vertical-align:top;
-                        }
-                    }
+            }
+            .btn-arrow {
+                display:none;
+                position:absolute;
+                top:69px;
+                z-index:10;
+                &.prev {
+                    left:0;
                 }
-                .head-copy {
-                    margin-top:16px;
-                    color:#111;
-                    font-size:18px;
-                    line-height:26px;
-                    font-weight:700;
-                    @include mobile {
-                        text-align:center;
-                    }
+                &.next {
+                    right:0;
                 }
-                .body-copy {
-                    margin-top:4px;
-                    color:#616161;
-                    font-size:14px;
-                    line-height:26px;
-                    font-weight:700;
-                    @include mobile {
-                        text-align:center;
-                    }
+                @include mobile {
+                    display:none !important;
                 }
-                .btn-box {
-                    margin-top:24px;
-                    .btn {
-                        min-width:194px;
-                        padding:0;
-                        font-size:16px;
-                        line-height:54px;
-                    }
-                    @include mobile {
-                        text-align:center;
+            }
+            .ui_carousel_list {
+                overflow:hidden;
+            }
+            .items {
+                margin:0 auto;
+                @include clearfix;
+                .item {
+                    float:left;
+                    > div, > p {
+                        width:194px;
+                        margin-left:auto;
+                        margin-right:auto;
                     }
                 }
             }
         }
-        .indi-wrap {
-            display:none !important;
-            position:absolute;
-            right:0;
-            bottom:0;
-            left:0;
+    }
+
+    // Non Carousel Case 
+    .non-carousel-box {
+        .list-box {
+            overflow:hidden;
+        }
+        .items {
+            margin:0 auto;
+            margin-bottom:-60px;
+            font-size:0;
+            text-align:center;
+            .item {
+                display:inline-block;
+                width:194px;
+                margin:0 12px;
+                padding-bottom:60px; 
+                vertical-align:top;
+            }
             @include mobile {
-                display:block !important;
+                .item {
+                    width:calc((100% - 24px) / 2);
+                    margin:0 6px;
+                }
+            }
+        }
+        @for $i from 2 through 6 {
+            &.item#{$i} {
+                .items {
+                    max-width:(194px + 24px) * $i;
+                    @if $i == 6 {
+                        margin:0 -12px -60px;
+                    }
+                }
+                @include mobile {
+                    .items {
+                        max-width:inherit;
+                        margin:0 -6px -60px;
+                    }
+                }
             }
         }
     }
