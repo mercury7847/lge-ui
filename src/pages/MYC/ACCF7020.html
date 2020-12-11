@@ -23,7 +23,7 @@
                                 { "on": "", "page": "방문 알리미" }
                             ]
                         })
-                        <div class="lnb-contents">
+                        <div class="lnb-contents" data-list-url="/lg5-common/data-ajax/mypage/customer/myInquiry.json">
 							<!-- 상세 -->
 							<div class="filters type2">
 								<!-- filter -->
@@ -223,15 +223,22 @@
 												</li>
 											</ul>
 										</div>
-										@@include('./common/modules/pagination.html', {
+										<!-- @@include('./common/modules/pagination.html', {
 											count: 5
-										})
+										}) -->
+										<div class="pagination" data-page="10" data-visible-count="7" data-total-count="33"></div>
+									</div>
+									<div class="no-data">
+										<p>조회 결과가 없습니다.</p>
 									</div>
 								</div>
 							</div>
                             <!-- // 상세 -->
                         </div>
-                    </div>
+					</div>
+
+					<article></article>
+
                 </div>
             </div>
             <!-- // mypage -->

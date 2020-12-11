@@ -4,6 +4,8 @@
         '<p class="title"><a href="#{{id}}">[{{category}}] {{title}}</a>' +
         '</p>' +
         '<div class="info"><ul>' +
+            '{{#if product}}<li>{{product}}</li>{{/if}}' +
+            '<li>접수일 {{date}}</li>' +
             '<li>접수번호 {{regNumber}}</li>' +
             '<li>등록일 {{date}}</li>' +
         '</ul></div>' +
@@ -25,8 +27,8 @@
                 self.$contWrap = $('div.cont-wrap');
                 self.$lnbContents = self.$contWrap.find('div.lnb-contents');
                 self.$mySort = self.$lnbContents.find('div.my-sort');
+
                 self.$sectionInner = self.$lnbContents.find('div.section-inner');
-                self.$listCount = self.$sectionInner.find('p.list-count em');
                 self.$myLists = self.$sectionInner.find('div.my-lists ul');
                 self.$pagination = self.$sectionInner.find('div.pagination');
                 self.$noData = self.$lnbContents.find('div.no-data');
@@ -38,24 +40,25 @@
                 self.$mySort.on("click", "a", function(e){
                     e.preventDefault();
                     if(!$(this).parent().hasClass('on')) {
-                        var category = $(this).attr('href').replace("#","");
+                        var term = $(this).attr('href').replace("#","");
                         self.$mySort.find('li').removeClass('on');
                         $(this).parent().addClass('on');
-                        self.requestData({"category":category});
+                        self.requestData({"term":term});
                     }
                 });
 
                 self.$myLists.on("click", "a", function(e){
                     e.preventDefault();
                     var _id = $(this).attr('href').replace("#","");
-                    self.openDetailPopup(_id);
+                    //self.openDetailPopup(_id);
+                    console.log(_id);
                 });
 
                 self.$pagination.vcPagination().on('page_click', function(e) {
                     var $a = self.$mySort.find('li.on a');
                     var category = $a.attr('href').replace("#","");
                     self.requestData({
-                        "category":category,
+                        "term":term,
                         "page": e.page
                     });
                 });
