@@ -73,7 +73,7 @@ var res = {
 				"KRC0037_Feature Icon(no action)[KRC0062]" : ["/html/components/KRC0037.html","","검수완료"],
 				"KRC0038_Switching Hero Image[KRC0063]" : ["/html/components/KRC0038.html","","검수완료"],
 				"KRC0039_Widthways Switching Images[KRC0064]" : ["/html/components/KRC0039.html","","검수완료"],
-				"KRC0040_Tab Anchor_USP[KRC0065]" : ["/html/components/KRC0040.html","","검수완료"],
+				"KRC0040_Tab Anchor_USP[KRC0065]" : ["/html/components/KRC0040.html","","검수요청"],
 				"KRC0041_BG Image 6 Text[KRC0066]" : ["/html/components/KRC0041.html","",""],
 				"KRC0042_Image-Layered Text[KRC0018]" : ["/html/components/KRC0042.html","","검수완료"],
 				"KRC9999_HTML Component" : ["/html/components/KRC9999.html","",""],
@@ -214,7 +214,7 @@ var res = {
 						"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
 						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
 						"고객지원" : ["/html/UTS/SERF9008.html","","검수요청"],
-						"센터/매장" : ["/html/UTS/SERF9015.html","",""],
+						"센터/매장" : ["/html/UTS/SERF9015.html","","검수요청"],
 					},
 					"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
 				},
@@ -228,11 +228,11 @@ var res = {
 				}
 			},
 			"스토어(CPR)" : {
-				"비교하기 결과" : ["/html/CPR/MKTF1010.html","","진행중"]
+				"비교하기 결과" : ["/html/CPR/MKTF1010.html","","검수요청"]
 			},
 			"스토리(STC)" : {
 				"모바일 서비스" : {
-					"LG 듀얼스크린" : ["/html/STC/MKT5001.html","","진행중"]
+					"LG 듀얼스크린" : ["/html/STC/MKT5001.html","","검수요청"]
 				},
 				"LG 페이" : {
 					"LG 페이" : ["/html/STC/MKT5003.html","","진행중"],
@@ -260,7 +260,7 @@ var res = {
 				},
 				"케어솔루션안내" : {
 					"WHY케어솔루션" : ["/html/SLC/RMSF2002.html","","검수완료"],
-					"WHY케어십" : ["/html/SLC/RMSF2014.html","",""],
+					"WHY케어십" : ["/html/SLC/RMSF2014.html","","검수요청"],
 					"케어플래너_렌탈케어솔루션" : ["/html/SLC/RMSF2003.html","","검수완료"],
 					"케어플래너_케어십" : ["/html/SLC/RMSF2003_01.html","","검수완료"],
 					"케어플래너_상세견적확인" : ["/html/SLC/RMSF2020.html","","검수완료"],
@@ -352,11 +352,11 @@ var res = {
 				"알림" : ["/html/MYC/ACCF7062.html","","검수완료"]
 			},
 			"고객지원(CS)" : {
-				"센터/매장찾기" : {
-					"매장칮기 검색/결과 " : ["/html/CS/CSRF6040.html","",""],
-					"매장 상세" : ["/html/CS/CSRF6041.html","",""],
-					"위치정보제공동의 팝업" : ["/html/CS/CSRF6098.html","",""],
-					"현재위치정보 팝업" : ["/html/CS/CSRF6099.html","",""],
+				"4찾기" : {
+					"매장칮기 검색/결과 " : ["/html/CS/CSRF6040.html","","검수요청"],
+					"매장 상세" : ["/html/CS/CSRF6041.html","","검수요청"],
+					"위치정보제공동의 팝업" : ["/html/CS/CSRF6098.html","","검수요청"],
+					"현재위치정보 팝업" : ["/html/CS/CSRF6099.html","","검수요청"],
 					//"매장상담 신청" : ["/html/CS/CSRF6042.html","","진행중"]
 				},
 				"공지사항" : {
