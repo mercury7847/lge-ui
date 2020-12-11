@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="150" height="150" viewBox="0 0 150 150">
+    <defs>
+        <filter id="c9bea8yjda" width="106.8%" height="145.3%" x="-3.4%" y="-22.7%" filterUnits="objectBoundingBox">
+            <feOffset dx="2" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="8"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <filter id="rfx44mzhxb" width="188.6%" height="188.6%" x="-40.9%" y="-37.5%" filterUnits="objectBoundingBox">
+            <feOffset dx="2" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="8"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0"/>
+        </filter>
+        <rect id="nvhlsd0cpc" width="58.667" height="58.667" x="0" y="0" rx="29.333"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g filter="url(#c9bea8yjda)" transform="translate(-1505 -1888) translate(0 158) translate(510 271) translate(0 1418)">
+                        <g>
+                            <path d="M0 0H64V64H0z" transform="translate(1036 80)"/>
+                            <g>
+                                <g transform="translate(1036 80) translate(2.667 2.667)">
+                                    <use fill="#000" filter="url(#rfx44mzhxb)" xlink:href="#nvhlsd0cpc"/>
+                                    <use fill="#FFF" xlink:href="#nvhlsd0cpc"/>
+                                </g>
+                                <path fill="#767676" d="M25.31 16.401L41.826 27.24c.788.517 1.007 1.575.49 2.363-.128.195-.295.362-.49.49L25.31 40.934c-.788.516-1.846.297-2.364-.491-.182-.278-.28-.604-.28-.937V17.828c0-.943.765-1.707 1.707-1.707.333 0 .659.098.937.28z" transform="translate(1036 80) translate(2.667 2.667)"/>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
