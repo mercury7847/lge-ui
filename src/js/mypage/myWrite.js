@@ -22,6 +22,8 @@
 
             setting: function() {
                 var self = this;
+
+                
                 self.$contWrap = $('div.cont-wrap');
                 self.$lnbContents = self.$contWrap.find('div.lnb-contents');
                 self.$mySort = self.$lnbContents.find('div.my-sort');
