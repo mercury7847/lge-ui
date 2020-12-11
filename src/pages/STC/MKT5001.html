@@ -673,7 +673,7 @@
 												<dd>듀얼 스크린이 360도 프리스탑으로 다각도에서 고정이<br>가능해지면서 좀 더 안정적인 사용을 위해 기존의 후면 단자 방식에서 <br class="pc"> C타입 케이블 연동 방식으로 바뀌었습니다.</dd>
 											</dl>
 										</div>
-										<button type="button" class="btn-close ui_accord_content"><span class="blind">닫기</span></button>
+										<button type="button" class="btn-close"><span class="blind">닫기</span></button>
 									</div>
 								</li>
 							</ul>
@@ -687,7 +687,7 @@
 	</div>
 	<script>
         $(function(){
-            vcui.require(['ui/carousel'], function () {
+            vcui.require(['ui/carousel', "ui/accordion"], function () {
                 $('.dual-tip .ui_carousel_slider').vcCarousel({
                     infinite: true,
                     slidesToShow: 1,
@@ -717,7 +717,11 @@
                         }
                     ]
                 });
-            });
+			});
+			
+			$('.accordion-border-wrap.ui_accordion').on('click', '.btn-close', function(e){
+				$('.accordion-border-wrap.ui_accordion').vcAccordion('collapseAll');
+			});
         });
     </script>
 </body>

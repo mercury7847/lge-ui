@@ -66,7 +66,7 @@ var res = {
 				"KRC0030_Article List[KRC0045]" : ["/html/components/KRC0030.html","","검수완료"],
 				"KRC0031_Layered component - Multi type[KRC0049]" : ["/html/components/KRC0031.html","","검수완료"],
 				"KRC0032_USP BANNER[KRC0055]" : ["/html/components/KRC0032.html","","검수완료"],
-				"KRC0033_BG 4TEXT[KRC0056]" : ["/html/components/KRC0033.html","",""],
+				"KRC0033_BG 4TEXT[KRC0056]" : ["/html/components/KRC0033.html","","검수완료"],
 				"KRC0034_BG-3 Image-Textoverlay[KRC0057]" : ["/html/components/KRC0034.html","","검수완료"],
 				"KRC0035_Side Slide Image - Text[KRC0058]" : ["/html/components/KRC0035.html","","검수완료"],
 				"KRC0036_BG-Video-Textoverlay[KRC0061]" : ["/html/components/KRC0036.html","","검수완료"],

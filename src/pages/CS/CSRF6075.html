@@ -12,6 +12,7 @@
 
         <div class="container">
             <div class="contents support psp">
+
                 <div class="product-header">
                     <div class="product-header-inner">
                         <div class="visual">
@@ -53,12 +54,9 @@
                     </div>
                 </div>
     
-                <div class="guide-wrap">
-                    <div class="guide-bar">
-                        <p class="login-txt">로그인을 하시면 LG전자에서 제공하는 다양한 서비스를 이용할 수 있습니다.</p>
-                        <a href="#" class="btn border size"><span>로그인</span></a>
-                    </div>
-                </div>
+                @@include('./common/support/login-guide.html', {
+                    'text': '로그인을 하시면 LG전자에서 제공하는 다양한 서비스를 이용할 수 있습니다.'
+                })
     
                 <div class="anchors-tabs-wrap">
                     <div class="anchors-tabs ui_anchor_sticky">
@@ -141,7 +139,7 @@
                         <button type="button" class="btn-moreview block"><span>설명서 더보기</span></button>
 
                         <!-- data 없을 때 -->
-                        <div class="no-data">
+                        <div class="no-data" style="display:none">
                             <p>제품사용 설명서 자료가 없습니다.</p>
                         </div>
                         <!-- // data 없을 때 -->
@@ -361,7 +359,7 @@
                                             <button type="button" class="btn-search"><span class="blind">검색</span></button>
                                         </div>
                                         <span class="chk-wrap">
-                                            <input type="checkbox" id="chk1-1" name="chk1" checked>
+                                            <input type="checkbox" name="chk1" id="chk1-1" checked>
                                             <label for="chk1-1">결과 내 검색</label>
                                         </span>
                                     </div> 
@@ -437,12 +435,12 @@
                                 })
                             </div>
                         </div>
+                    </div>
 
-                        <div class="survey-banner-wrap">
-                            <div class="banner">    
-                                <p class="tit">고객님이 선택하신 [<strong class="point">OLED48CXKNB</strong>] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
-                                <button type="button" class="btn dark-gray size" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button>
-                            </div>
+                    <div class="survey-banner-wrap">
+                        <div class="banner">    
+                            <p class="tit">고객님이 선택하신 [<strong class="point">OLED48CXKNB</strong>] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
+                            <button type="button" class="btn dark-gray size" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button>
                         </div>
                     </div>
 
