@@ -32,7 +32,7 @@
                     <div class="dual-con-wrap" id="dual01">
                         <div class="dual-type1">
 							<p class="tit">제대로 보다!<br>Display&Design</p>
-							<button type="button" class="btn border"><span>더 알아보기</span></button>
+							<button type="button" class="btn border more-btn" data-more-id="1"><span>더 알아보기</span></button>
 							<div class="img">
 								<img src="/lg5-common/images/STC/img-dual-tab1-01.jpg" alt="">
 							</div>
@@ -87,7 +87,7 @@
 						</div>
 						<div class="dual-type1 cnt02">
 							<p class="tit">제대로 만들다!<br>Performance &amp; Professional</p>
-							<button type="button" class="btn border"><span>더 알아보기</span></button>
+							<button type="button" class="btn border more-btn" data-more-id="2"><span>더 알아보기</span></button>
 							<div class="img">
 								<img src="/lg5-common/images/STC/img-dual-tab1-08.jpg" alt="">
 							</div>
@@ -155,7 +155,7 @@
 						</div>
 						<div class="dual-type1 cnt02">
 							<p class="tit">제대로 즐기다!<br>듀얼 스크린으로 게임 즐기기</p>
-							<button type="button" class="btn border"><span>더 알아보기</span></button>
+							<button type="button" class="btn border more-btn" data-more-id="3"><span>더 알아보기</span></button>
 							<div class="img"><img src="/lg5-common/images/STC/img-dual-tab1-16.jpg" alt=""></div>
 						</div>
 						<div class="dual-type2 cnt01">
@@ -687,7 +687,7 @@
 	</div>
 	<script>
         $(function(){
-            vcui.require(['ui/carousel', "ui/accordion"], function () {
+            vcui.require(['ui/carousel', "ui/accordion", "ui/tab"], function () {
                 $('.dual-tip .ui_carousel_slider').vcCarousel({
                     infinite: true,
                     slidesToShow: 1,
@@ -721,6 +721,15 @@
 			
 			$('.accordion-border-wrap.ui_accordion').on('click', '.btn-close', function(e){
 				$('.accordion-border-wrap.ui_accordion').vcAccordion('collapseAll');
+			});
+
+			$('.more-btn').on('click', function(e){
+				var id = $(this).data("moreId");
+				$('.tabs-wrap.ui_tab').vcTab("select", id);
+
+				var scrolltop = $(window).scrollTop();
+				var tabtop = $('.tabs-wrap.ui_tab').offset().top;
+				if(-scrolltop + tabtop < 0) $('html, body').scrollTop(tabtop)
 			});
         });
     </script>
