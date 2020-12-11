@@ -1,0 +1,126 @@
+<div class="component-wrap @@zero @@class">
+    <!--
+        [component-wrap 옵션]
+        1. 여백
+        .zero-top : 상단여백 없음
+        .zero-btm : 하단여백 없음
+    -->
+    <section class="component KRP0028 ">
+        <div class="page-header wide border">
+            <h2 class="title">수상내역</h2>
+            <div class="tabs-wrap btn-type ui_tab ui_smooth_scroll">
+                <ul class="tabs">
+                    <li class="on"><a href="#n">전체<em class="blind">선택됨</em></a></li>
+                    <li><a href="#n">TV/AV</a></li>
+                    <li><a href="#n">IT</a></li>
+                    <li><a href="#n">주방가전</a></li>
+                    <li><a href="#n">생활가전</a></li>
+                    <li><a href="#n">에어컨/에어케어</a></li>
+                    <li><a href="#n">모바일</a></li>
+                    <li><a href="#n">케어솔루션</a></li>
+                </ul>
+            </div>
+            @@if (context.tabBarType) {
+            <div class="tabs-bg @@type">
+                <div class="tabs-wrap bar-type ui_tab ui_smooth_scroll">
+                    <ul class="tabs">
+                        <li class="on"><a href="#tab1">전체<em class="blind">선택됨</em></a></li>
+                        <li><a href="#tab2">스마트폰</a></li>
+                        <li><a href="#tab2">피처폰</a></li>
+                        <li><a href="#tab2">스마트 디바이스</a></li>
+                        <li><a href="#tab2">스마트</a></li>
+                    </ul>
+                </div>
+            </div>
+        }
+        </div>	
+        <div class="cont-wrap award-breakdown-wrap">
+            @@include('./common/modules/list-sorting.html', {
+                "select" : [
+                    {"option" : "인기순"},
+                    {"option" : "2020"},
+                    {"option" : "2019"}
+                ]
+            })
+            <div class="award-breakdown">
+                <ul class="award-list">
+
+                @@loop('./common/partials/KRP0028-list.html', [
+                    {
+                        "img" : "/lg5-common/images/KRP0028/award01.jpg",
+                        "flags" : ["주방가전"],
+                        "tit" : "2021 ENERGY WINNER 수상 2021 ENERGY WINNER 수상",
+                        "desc" : "2019 우리아이를 위한 베스트브랜드(BBKI 2019) 소비자조사 결과 LG Puricare 정수기가 7년 연속 1위를 차지하였습니다.",
+                        "btn1" : "제품 DPName 출력 최대25자까지 입력가능",
+                        "btnMore" : true
+                    },{
+                        "img" : "/lg5-common/images/KRP0028/award01.jpg",
+                        "flags" : ["주방가전"],
+                        "tit" : "2021 ENERGY WINNER 수상",
+                        "desc" : "2019 우리아이를 위한 베스트브랜드(BBKI 2019) 소비자조사 결과 LG Puricare 정수기가 7년 연속 1위를 차지하였습니다.",
+                        "btn1" : "제품 DPName 출력 최대25자까지 입력가능",
+                        "btnMore" : true
+                    },{
+                        "img" : "/lg5-common/images/KRP0028/award01.jpg",
+                        "flags" : ["주방가전"],
+                        "tit" : "2021 ENERGY 수상",
+                        "desc" : "2019 우리아이를 위한 베스트브랜드(BBKI 2019) 소비자조사 결과 LG Puricare 정수기가 7년 연속 1위를 차지하였습니다.",
+                        "btn1" : "제품 DPName 출력 최대25자까지 입력가능",
+                        "btnMore" : true
+                    },{
+                        "img" : "/lg5-common/images/KRP0028/award01.jpg",
+                        "flags" : ["주방가전"],
+                        "tit" : "2021 ENERGY 수상",
+                        "desc" : "2019 우리아이를 위한 베스트브랜드(BBKI 2019) 소비자조사 결과 LG Puricare 정수기가 7년 연속 1위를 차지하였습니다.",
+                        "btn1" : "상냉장/하냉동",
+                        "btnMore" : true
+                    },{
+                        "img" : "/lg5-common/images/KRP0028/award01.jpg",
+                        "flags" : ["주방가전"],
+                        "tit" : "2021 ENERGY WINNER 수상",
+                        "desc" : "2019 우리아이를 위한 베스트브랜드(BBKI 2019) 소비자조사 결과 LG Puricare 정수기가 7년 연속 1위를 차지하였습니다.",
+                        "btn1" : "제품 DPName 출력 최대25자까지 입력가능",
+                        "btnMore" : true
+                    },
+                    {
+                        "img" : "/lg5-common/images/KRP0028/award01.jpg",
+                        "flags" : ["주방가전"],
+                        "tit" : "2021 ENERGY WINNER 수상",
+                        "desc" : "2019 우리아이를 위한 베스트브랜드(BBKI 2019) 소비자조사 결과 LG Puricare 정수기가 7년 연속 1위를 차지하였습니다.",
+                        "btn1" : "제품 DPName 출력 최대25자까지 입력가능",
+                        "btnMore" : true
+                    },
+                    {
+                        "img" : "/lg5-common/images/KRP0028/award01.jpg",
+                        "flags" : ["주방가전"],
+                        "tit" : "2021 ENERGY WINNER 수상",
+                        "desc" : "2019 우리아이를 위한 베스트브랜드(BBKI 2019) 소비자조사 결과 LG Puricare 정수기가 7년 연속 1위를 차지하였습니다.",
+                        "btn1" : "제품 DPName 출력 최대25자까지 입력가능",
+                        "btnMore" : true
+                    },
+                    {
+                        "img" : "/lg5-common/images/KRP0028/award01.jpg",
+                        "flags" : ["주방가전"],
+                        "tit" : "2021 ENERGY WINNER 수상",
+                        "desc" : "2019 우리아이를 위한 베스트브랜드(BBKI 2019) 소비자조사 결과 LG Puricare 정수기가 7년 연속 1위를 차지하였습니다.",
+                        "btn1" : "제품 DPName 출력 최대25자까지 입력가능",
+                        "btnMore" : true
+                    }
+                ])
+
+                </ul>
+                @@include('./common/support/pagination.html', {
+                    count: 5
+                })
+            </div>
+        </div>
+
+        @@include('./common/partials/modal/story-pop.html', {
+            "popupID" : "",
+            "tit" : "수상 제품 카테고리 및 모델명",
+            "subtit" : "나노셀 TV",
+            "list" : ["LG 나노셀 8K AI ThinQ", "LG 나노셀 AI ThinQ"]
+
+        })
+    </section>
+</div>
