@@ -3,53 +3,226 @@
 @import "../components-app";
 
 .KRC0033 {
+	&.stage-full {
+		width:100%;
+	}
+	&.stage-wide {
+		max-width:1600px;
+		margin:0 auto;
+	}
+
+	// font color option
+    $fontColor : (type-black, type-white);
+    @each $colorClass in $fontColor {
+        .#{$colorClass} {
+            @if $colorClass == type-black {
+				color:#222;
+				.body-copy {
+					color:#767676;
+				}
+				.bullet-list {
+					color:#767676;
+				}
+				.btn.border {
+					border-color:#222;
+					color:#222;
+				}
+            }
+            @else if $colorClass == type-white {
+				color:#fff;
+				.bullet-list {
+					color:#fff;
+					li::before {
+						background:#fff;
+					}
+				}
+				.btn.border {
+					border-color:#fff;
+					color:#fff;
+				}
+                @include mobile {
+					color:#222;
+					.bullet-list {
+						color:#767676;
+						li::before {
+							background:#767676;
+						}
+					}
+					.btn.border {
+						border-color:#222;
+						color:#222;
+					}
+                }
+            }
+        }
+	}
+	// align option 
+    $align : (align-left, align-center, align-right);
+    @each $alignClass in $align {
+        .#{$alignClass} {
+            @if $alignClass == align-left {
+                text-align:left;
+            }
+            @else if $alignClass == align-center {
+                text-align:center;
+            }
+            @else if $alignClass == align-right {
+                text-align:right;
+            }
+        }
+    }
+	
 	position:relative;
 	// common
 	// visual area
 	.visual-area {
 		z-index:1;
-		img {
-			width:100%;
-			height:auto;
-			vertical-align:top;
+		.visual {
+			display:block;
+			&.pc {
+				width:100%;
+				height:2500px;
+				background-size:cover !important;
+			}
+			&.mob {
+				display:none;
+				img {
+					width:100%;
+					height:auto;
+					vertical-align:top;
+				}
+			}
+			@include mobile {
+				&.pc {
+					display:none;
+				}
+				&.mob {
+					display:block;
+				}
+			}
 		}
 	}
-	.size-inner {
-		position:relative;
-	}
 
-	@each $size in full, wide {
-		&.#{$size} {
-			@if $size == full {
-
-			} @else if $size == wide {
-				
+	// text
+	.text-position {
+		position:absolute;
+		top:80px;
+		left:0;
+		right:0;
+		bottom:80px;
+		z-index:10;
+		@include mobile {
+			position:relative;
+			top:auto;
+			left:auto;
+			right:auto;
+			bottom:auto;
+			padding:24px 16px 40px;
+		}
+		.text-set-wrap {
+			position:absolute;
+			left:0;
+			right:0;
+			@include mobile {
+				position:relative;
 			}
-
-			@if $size == full {
-				width:100%;
-			} @else if $size == wide {
-				max-width:1680px;
-				margin:0 auto;
+			&.vertical-top {
+				top:0;
+				@include mobile {
+					top:auto;
+				}
+			}
+			&.vertical-middle {
+				top:50%;
+				transform:translateY(-50%);
+				@include mobile {
+					top:auto;
+					transform:translateY(0);
+				}
+			}
+			&.vertical-bottom {
+				bottom:0;
+				@include mobile {
+					bottom:auto;
+				}
+			}
+			&.box-align-left {
+				.text-set-row {
+					.text-set {
+						margin-right:auto;
+					}
+				}
+			}
+			&.box-align-right {
+				.text-set-row {
+					.text-set {
+						margin-left:auto;
+					}
+				}
+			}
+			.text-set-row {
+				max-width:1146px + 80px;
+				margin:56px auto 0;
 				padding:0 40px;
-			}
-
-			// text
-			.text-set-wrap {
-				position:absolute;
-				z-index:10;
-				@if $size == full {
-					top:0;
-					left:0;
-					right:0;
-					bottom:0;
-				} @else if $size == wide {
-					top:0;
-					bottom:0;
-					left:50%;
-					width:100%;
-					max-width:1380px;
-					transform:translateX(-50%);
+				@include mobile {
+					padding:0;
+				}
+				&:first-child {
+					margin-top:0;
+				}
+				.text-set {
+					width:444px;
+					@include mobile {
+						width:100%;
+						text-align:left;
+					}
+					.title * {
+						@include font-large-2;
+						font-weight:700;
+					}
+					.sub-tit {
+						margin-top:8px;
+						@include font-large;
+						font-weight:700;
+					}
+					.body-copy {
+						margin-top:8px;
+						@include font-medium;
+					}
+					.cta-box {
+						margin-top:16px;
+						.btn {
+							background:transparent;
+						}
+					}
+					.thumbnail-box {
+						margin-top:16px;
+						img {
+							width:100%;
+							max-width:240px;
+							height:auto;
+							vertical-align:top;
+						}
+					}
+					.bullet-list {
+						margin-top:8px;
+						li {
+							padding-left:0;
+							&::before {
+								content:' ';
+								position:relative;
+								top:auto;
+								left:auto;
+								display:inline-block;
+								margin-top:11px;
+								margin-right:8px;
+								vertical-align:top;
+								@include mobile {
+									margin-top:9px;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
