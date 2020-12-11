@@ -32,6 +32,29 @@
                 margin:0 4px;
             }
         }
+        .link-desc {
+            margin-top: 8px;
+            .btn-link {
+                color: $color-default;
+                &:after {
+                    background-image: url('/lg5-common/images/icons/btn-arr-20x20-black.svg');
+                }
+            }
+            &.arrow-left {
+                .btn-link {
+                    padding-right: 0;
+                    padding-left: 22px;
+                    &:after {
+                        right: auto;
+                        left: 0;
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+            @include mobile {
+                display: none;
+            }
+        }
         .tabs-wrap {
             max-width:1280px;
             margin:0 auto;

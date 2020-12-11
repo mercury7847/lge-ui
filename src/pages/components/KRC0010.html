@@ -2,99 +2,233 @@
 <html lang="ko">
 @@include('./common/head.html', {
     componentID: "KRC0010",
-    isJScompile: false
+    isJScompile: true
 })
 <body>
     <div class="wrap">
         <div class="container">
 
 			<!-- component KRC0010 -->
-            <!-- component 텍스트 좌측 정렬 -->
+            <!-- component text 상단형, 텍스트 왼쪽정렬 -->
             @@include('./common/partials/KRC0010.html', {
-                "bg" : "bg-black",
-                "textColor" : "text-white",
-                "full" : "full",
-                "heading1": "<h2>이달의 구매혜택을 비롯한 풍성한 혜택을 놓치지 마세요</h2>",
-                "heading-line" : {
-                    "align-class1": "align-left"
+                "headline":"<h2>8K에서 더욱 빛나는 올레드 픽셀디밍<br>최대 2줄까지</h2>",
+                "component": {
+                "type-class":"",
+                "bg-color":""
                 },
-                    "banner-line" : {
-                    "align-class1": "align-left textblock-top-compo-top",
-                        "font-color":"text-black"
+                "text-area": {
+                "align-class":"align-left"
                 },
-                    "unit-line" : {
-                    "align-class1": "align-left"
+                "body-copy": {
+                "font-class":"",
+                "font-style":""
                 },
-                "visual1":"/lg5-common/images/KRC0010/@sample-1284x562.png",
-                "visual2":"/lg5-common/images/KRC0010/@sample-720x920.png",
-                "component-class" : {
-                    "margin" : "zero-top zero-btm",
-                    "color" : "text-white",
-                    "textAlign": "text-center",
-                    "type" : "horizontal",
-                    "bg" : "bg-black",
-                    "slide" : "none-slide"
-                }
+                "disclaimer": {
+                "font-class":"",
+                "font-style":"",
+                "align-class":""
+                },
+                "visual": {
+                "img": "/lg5-common/images/KRC0010/@sample-1696x954.jpg",
+                "img-mobile": "/lg5-common/images/KRC0010/@sample-720x540.jpg",
+                "img-cover": "/lg5-common/images/KRC0010/@sample-1696x954-cover.jpg",
+                "img-cover-mobile": "/lg5-common/images/KRC0010/@sample-720x540-cover.jpg"
+                },
+                "text-position": {
+                "pc-left":"p-middle p-center",
+                "pc-right":"p-bottom p-center",
+                "m-left":"p-middle p-right",
+                "m-right":"p-middle p-center",
+                "text-style":"font-bg-white"
+                },
+                "title-style" : "title-top title-center"
             })
-            <!-- // component -->
+            <!-- // component text 상단형, 텍스트 왼쪽정렬 -->
 
-            <!-- component 텍스트 가운데 정렬 -->
-            @@include('./common/partials/KRC0010.html', {
-                "bg" : "bg-black",
-                "textColor" : "text-white",
-                "full" : "",
-                "heading1": "<h2>이달의 구매혜택을 비롯한 풍성한 혜택을 놓치지 마세요</h2>",
-                "heading-line" : {
-                    "align-class1": "align-center"
-                },
-                    "banner-line" : {
-                    "align-class1": "align-center textblock-bottom-compo-middle",
-                    "font-color":"text-white"
-                },
-                    "unit-line" : {
-                    "align-class1": "align-center"
-                },
-                "visual1":"/lg5-common/images/KRC0010/@sample-1284x562.png",
-                "visual2":"/lg5-common/images/KRC0010/@sample-720x920.png",
-                "component-class" : {
-                    "margin" : "zero-top zero-btm",
-                    "color" : "text-black",
-                    "textAlign": "text-center",
-                    "type" : "horizontal",
-                    "bg" : "bg-white",
-                    "slide" : ""
-                }
-            })
-            <!-- // component -->
 
-            <!-- component 텍스트 우측 정렬 -->
+            <!-- component text 상단형, 텍스트 중앙정렬 -->
             @@include('./common/partials/KRC0010.html', {
-                "bg" : "bg-gray",
-                "textColor" : "text-black",
-                "full" : "full",
-                "heading1": "<h2>이달의 구매혜택을 비롯한 풍성한 혜택을 놓치지 마세요</h2>",
-                "heading-line" : {
-                    "align-class1": "align-right"
+                "headline":"<h2>8K에서 더욱 빛나는 올레드 픽셀디밍<br>최대 2줄까지</h2>",
+                "component": {
+                "type-class":"",
+                "bg-color":"bg-lightgray"
                 },
-                "banner-line" : {
-                    "align-class1": "align-right textblock-bottom-compo-top",
-                    "font-color":"text-black"
+                "text-area": {
+                "align-class":"align-center"
                 },
-                "unit-line" : {
-                    "align-class1": "align-right"
+                "body-copy": {
+                "font-class":"",
+                "font-style":""
                 },
-                "visual1":"/lg5-common/images/KRC0010/@sample-1284x562.png",
-                "visual2":"/lg5-common/images/KRC0010/@sample-720x920.png",
-                "component-class" : {
-                    "margin" : "zero-top zero-btm",
-                    "color" : "text-white",
-                    "textAlign": "text-center",
-                    "type" : "horizontal",
-                    "bg" : "bg-black",
-                    "slide" : ""
-                }
+                "disclaimer": {
+                "font-class":"",
+                "font-style":"",
+                "align-class":"align-center"
+                },
+                "visual": {
+                "img": "/lg5-common/images/KRC0010/@sample-1696x954.jpg",
+                "img-mobile": "/lg5-common/images/KRC0010/@sample-720x540.jpg",
+                "img-cover": "/lg5-common/images/KRC0010/@sample-1696x954-cover.jpg",
+                "img-cover-mobile": "/lg5-common/images/KRC0010/@sample-720x540-cover.jpg"
+                },
+                "text-position": {
+                "pc-left":"p-middle p-right",
+                "pc-right":"p-bottom p-left",
+                "m-left":"p-middle p-right",
+                "m-right":"p-middle p-left",
+                "text-style":"font-bg-black"
+                },
+                "title-style" : "title-bottom title-right"
             })
-            <!-- // component -->
+            <!-- // component text 상단형, 텍스트 중앙정렬 -->
+
+
+            <!-- component text 상단형, 텍스트 오른쪽정렬 -->
+            @@include('./common/partials/KRC0010.html', {
+                "headline":"<h2>8K에서 더욱 빛나는 올레드 픽셀디밍<br>최대 2줄까지</h2>",
+                "component": {
+                "type-class":"",
+                "bg-color":"bg-dark"
+                },
+                "text-area": {
+                "align-class":"align-right"
+                },
+                "body-copy": {
+                "font-class":"",
+                "font-style":""
+                },
+                "disclaimer": {
+                "font-class":"",
+                "font-style":"",
+                "align-class":"align-right"
+                },
+                "visual": {
+                "img": "/lg5-common/images/KRC0010/@sample-1696x954.jpg",
+                "img-mobile": "/lg5-common/images/KRC0010/@sample-720x540.jpg",
+                "img-cover": "/lg5-common/images/KRC0010/@sample-1696x954-cover.jpg",
+                "img-cover-mobile": "/lg5-common/images/KRC0010/@sample-720x540-cover.jpg"
+                },
+                "text-position": {
+                "pc-left":"p-bottom p-left",
+                "pc-right":"p-bottom p-right",
+                "m-left":"p-middle p-right",
+                "m-right":"p-middle p-left",
+                "text-style":"font-bg-white"
+                },
+                "title-style" : "title-bottom title-center"
+            })
+            <!-- // component text 상단형, 텍스트 오른쪽정렬 -->
+
+
+            <!-- component text 하단형, 텍스트 왼쪽정렬 -->
+            @@include('./common/partials/KRC0010-tbottom.html', {
+                "headline":"<h2>8K에서 더욱 빛나는 올레드 픽셀디밍<br>최대 2줄까지</h2>",
+                "component": {
+                "type-class":"type-bottom",
+                "bg-color":""
+                },
+                "text-area": {
+                "align-class":"align-left"
+                },
+                "body-copy": {
+                "font-class":"",
+                "font-style":""
+                },
+                "disclaimer": {
+                "font-class":"",
+                "font-style":"",
+                "align-class":""
+                },
+                "visual": {
+                "img": "/lg5-common/images/KRC0010/@sample-1696x954.jpg",
+                "img-mobile": "/lg5-common/images/KRC0010/@sample-720x540.jpg",
+                "img-cover": "/lg5-common/images/KRC0010/@sample-1696x954-cover.jpg",
+                "img-cover-mobile": "/lg5-common/images/KRC0010/@sample-720x540-cover.jpg"
+                },
+                "text-position": {
+                "pc-left":"p-top p-right",
+                "pc-right":"p-bottom p-left",
+                "m-left":"p-middle p-right",
+                "m-right":"p-middle p-left",
+                "text-style":"font-text-black"
+                },
+                "title-style" : "title-top title-right"
+            })
+            <!-- // component text 하단형, 텍스트 왼쪽정렬 -->
+
+
+            <!-- component text 하단형, 텍스트 중앙정렬 -->
+            @@include('./common/partials/KRC0010-tbottom.html', {
+                "headline":"<h2>8K에서 더욱 빛나는 올레드 픽셀디밍<br>최대 2줄까지</h2>",
+                "component": {
+                "type-class":"type-bottom",
+                "bg-color":"bg-lightgray"
+                },
+                "text-area": {
+                "align-class":"align-center"
+                },
+                "body-copy": {
+                "font-class":"",
+                "font-style":""
+                },
+                "disclaimer": {
+                "font-class":"",
+                "font-style":"",
+                "align-class":"align-center"
+                },
+                "visual": {
+                "img": "/lg5-common/images/KRC0010/@sample-1696x954.jpg",
+                "img-mobile": "/lg5-common/images/KRC0010/@sample-720x540.jpg",
+                "img-cover": "/lg5-common/images/KRC0010/@sample-1696x954-cover.jpg",
+                "img-cover-mobile": "/lg5-common/images/KRC0010/@sample-720x540-cover.jpg"
+                },
+                "text-position": {
+                "pc-left":"p-middle p-right",
+                "pc-right":"p-middle p-left",
+                "m-left":"p-middle p-right",
+                "m-right":"p-middle p-left",
+                "text-style":"font-text-white"
+                },
+                "title-style" : "title-bottom title-left"
+            })
+            <!-- // component text 하단형, 텍스트 중앙정렬 -->
+
+
+            <!-- component text 하단형, 텍스트 오른쪽정렬 -->
+            @@include('./common/partials/KRC0010-tbottom.html', {
+                "headline":"<h2>8K에서 더욱 빛나는 올레드 픽셀디밍<br>최대 2줄까지</h2>",
+                "component": {
+                "type-class":"type-bottom",
+                "bg-color":"bg-black"
+                },
+                "text-area": {
+                "align-class":"align-right"
+                },
+                "body-copy": {
+                "font-class":"",
+                "font-style":""
+                },
+                "disclaimer": {
+                "font-class":"",
+                "font-style":"",
+                "align-class":"align-right"
+                },
+                "visual": {
+                "img": "/lg5-common/images/KRC0010/@sample-1696x954.jpg",
+                "img-mobile": "/lg5-common/images/KRC0010/@sample-720x540.jpg",
+                "img-cover": "/lg5-common/images/KRC0010/@sample-1696x954-cover.jpg",
+                "img-cover-mobile": "/lg5-common/images/KRC0010/@sample-720x540-cover.jpg"
+                },
+                "text-position": {
+                "pc-left":"p-top p-center",
+                "pc-right":"p-bottom p-center",
+                "m-left":"p-middle p-center",
+                "m-right":"p-middle p-center",
+                "text-style":"font-bg-black"
+                },
+                "title-style" : "title-top title-center"
+            })
+            <!-- // component text 하단형, 텍스트 오른쪽정렬 -->
             <!-- //component KRC0010 -->
 		
 		</div>

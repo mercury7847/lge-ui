@@ -1,145 +1,116 @@
 <!DOCTYPE html>
 <html lang="ko">
-	@@include('./common/head.html', {
-		componentID: "KRC0042",
-		isJScompile: true,
-	})
+    @@include('./common/head.html', {
+        componentID: "KRC0042",
+        isJScompile: false
+    })
 <body>
-	<div class="wrap">
-		<div class="container">
+    <div class="wrap">
+        <div class="container">
+            <!-- component -->
+            <!-- full / image align left / textbox align right / bg-lightgray type -->
+            @@include('./common/partials/KRC0042.html', {
+                 "align-class": "align-left",
+                 "place-class": "large-align-right",
+                 "visualType": "video",
+                 "view-page-link" : {
+                        "link-url1" : "#",
+                        "link-target1" : "_balck",
+                        "link-url2" : "#",
+                        "link-target2" : "_self"
+                 },
+                 "option-type": {
+                    "type": "full",
+                    "bg-color": "bg-lightgray",
+                    "font-class": "font-regular",
+                    "font-style": "font-underline",
+                    "img": {
+                        "visual1":"/lg5-common/images/KRC0042/@thumb01.jpg",
+                        "visual2":"/lg5-common/images/KRC0042/@thumb01_m.jpg"
+                    }
+                }
+            })
+            <!-- // full / image align left / textbox align right / bg-lightgray type -->
+            <!-- // component -->
 
-			<div class="component-wrap">
-				<!--
-					1. 여백
-					.zero-top : 상단여백 없음
-					.zero-btm : 하단여백 없음
-				-->
-				<section class="component KRC0042">
-					<div class="component-inner">
-						<strong class="blind">태그 별 제품 추천</strong>
-						<div class="tabs-wrap border-type ui_tab">
-							<ul class="tabs">
-								<li class="on"><a href="#tab1">NEW<em class="blind">선택됨</em></a></li>
-								<li><a href="#tab2">#미세먼지</a></li>
-								<li><a href="#tab3">#청소기</a></li>
-								<li><a href="#tab4">#혼수</a></li>
-								<li><a href="#tab5">#이사</a></li>
-								<li><a href="#tab6">#가을</a></li>
-							</ul>
-						</div>
-						<div class="recommend-list-wrap" id="tab1">
-							@@include('./common/partials/KRC0042-list.html', {
-								"items": [
-									{
-										"productImage": "/lg5-common/images/KRC0042/@img-product-visual.jpg",
-										"productName": "LG 코드제로 A9",
-										"modelName": "A970",
-										"reducedPrice": "800,000",
-										"purchasePrice": "1,000,000",
-										"discountRate": "20",
-									},
-									{
-										"productImage": "/lg5-common/images/KRC0042/@img-product-visual.jpg",
-										"productName": "LG 코드제로 A9",
-										"modelName": "A970",
-										"reducedPrice": "800,000",
-										"purchasePrice": "1,000,000",
-										"discountRate": "20",
-									},
-									{
-										"productImage": "/lg5-common/images/KRC0042/@img-product-visual.jpg",
-										"productName": "LG 코드제로 A9",
-										"modelName": "A970",
-										"reducedPrice": "800,000",
-										"purchasePrice": "1,000,000",
-										"discountRate": "20",
-									},
-									{
-										"productImage": "/lg5-common/images/KRC0042/@img-product-visual.jpg",
-										"productName": "LG 코드제로 A9",
-										"modelName": "A970",
-										"reducedPrice": "800,000",
-										"purchasePrice": "1,000,000",
-										"discountRate": "20",
-									},
-								]
-							})
-						</div>
-						<div class="recommend-list-wrap" id="tab2">
-							@@include('./common/partials/KRC0042-list.html', {
-								"items": [
-									{
-										"productImage": "/lg5-common/images/KRC0042/@img-product-visual.jpg",
-										"productName": "LG 코드제로 A92",
-										"modelName": "A970",
-										"reducedPrice": "800,000",
-										"purchasePrice": "1,000,000",
-										"discountRate": "20",
-									}
-								]
-							})
-						</div>
-						<div class="recommend-list-wrap" id="tab3">
-							@@include('./common/partials/KRC0042-list.html', {
-								"items": [
-									{
-										"productImage": "/lg5-common/images/KRC0042/@img-product-visual.jpg",
-										"productName": "LG 코드제로 A93",
-										"modelName": "A970",
-										"reducedPrice": "800,000",
-										"purchasePrice": "1,000,000",
-										"discountRate": "20",
-									}
-								]
-							})
-						</div>
-						<div class="recommend-list-wrap" id="tab4">
-							@@include('./common/partials/KRC0042-list.html', {
-								"items": [
-									{
-										"productImage": "/lg5-common/images/KRC0042/@img-product-visual.jpg",
-										"productName": "LG 코드제로 A94",
-										"modelName": "A970",
-										"reducedPrice": "800,000",
-										"purchasePrice": "1,000,000",
-										"discountRate": "20",
-									}
-								]
-							})
-						</div>
-						<div class="recommend-list-wrap" id="tab5">
-							@@include('./common/partials/KRC0042-list.html', {
-								"items": [
-									{
-										"productImage": "/lg5-common/images/KRC0042/@img-product-visual.jpg",
-										"productName": "LG 코드제로 A95",
-										"modelName": "A970",
-										"reducedPrice": "800,000",
-										"purchasePrice": "1,000,000",
-										"discountRate": "20",
-									}
-								]
-							})
-						</div>
-						<div class="recommend-list-wrap" id="tab6">
-							@@include('./common/partials/KRC0042-list.html', {
-								"items": [
-									{
-										"productImage": "/lg5-common/images/KRC0042/@img-product-visual.jpg",
-										"productName": "LG 코드제로 A96",
-										"modelName": "A970",
-										"reducedPrice": "800,000",
-										"purchasePrice": "1,000,000",
-										"discountRate": "20",
-									}
-								]
-							})
-						</div>
-					</div>
-				</section>
-			</div> <!-- //.component-wrap-->
+            <!-- component -->
+            <!-- wide / image align right / textbox align left / bg-dark type -->
+            @@include('./common/partials/KRC0042.html', {
+                "align-class": "align-left",
+                "place-class": "large-align-left",
+                "visualType": "image",
+                "view-page-link" : {
+                       "link-url1" : "#",
+                       "link-target1" : "_balck",
+                       "link-url2" : "#",
+                       "link-target2" : "_self"
+                },
+                "option-type": {
+                   "type": "wide",
+                   "bg-color": "bg-dark",
+                   "font-class": "font-regular",
+                   "font-style": "font-underline",
+                   "img": {
+                       "visual1":"/lg5-common/images/KRC0042/@thumb02.jpg",
+                       "visual2":"/lg5-common/images/KRC0042/@thumb02_m.jpg"
+                    }
+                }
+            })
+            <!-- // wide / image align right / textbox align left / bg-dark type -->
+            <!-- // component -->
 
+            <!-- component -->
+            <!-- standard / image align right / textbox align left / bg-white type -->
+            @@include('./common/partials/KRC0042.html', {
+                "align-class": "align-left",
+                "place-class": "large-align-left",
+                "visualType": "animation",
+                "view-page-link" : {
+                       "link-url1" : "#",
+                       "link-target1" : "_balck",
+                       "link-url2" : "#",
+                       "link-target2" : "_self"
+                },
+                "option-type": {
+                   "type": "standard",
+                   "bg-color": "bg-white",
+                   "font-class": "font-regular",
+                   "font-style": "font-underline",
+                   "img": {
+                       "visual1":"/lg5-common/images/KRC0042/@thumb03.jpg",
+                       "visual2":"/lg5-common/images/KRC0042/@thumb02_m.jpg"
+                    }
+                }
+            })
+           <!-- // standard / image align right / textbox align left / bg-white type -->
+           <!-- // component -->
+
+            <!-- component -->
+            <!-- high / image align left / textbox align center / bg-black type -->
+            @@include('./common/partials/KRC0042.html', {
+                "align-class": "align-center",
+                "place-class": "large-align-right",
+                "visualType": "video",
+                "view-page-link" : {
+                       "link-url1" : "#",
+                       "link-target1" : "_balck",
+                       "link-url2" : "#",
+                       "link-target2" : "_self"
+                },
+                "option-type": {
+                   "type": "high",
+                   "bg-color": "bg-black",
+                   "font-class": "font-regular",
+                   "font-style": "font-underline",
+                   "img": {
+                       "visual1":"/lg5-common/images/KRC0042/@thumb04.jpg",
+                       "visual2":"/lg5-common/images/KRC0042/@thumb04_m.jpg"
+                    }
+                }
+            })
+            <!-- // high / image align left / textbox align center / bg-black type -->
+            <!-- // component -->
 		</div>
-	</div>
+    </div>     
 </body>
 </html>

@@ -2,114 +2,15 @@
 <html lang="ko">
     @@include('./common/head.html', {
         componentID: "KRC0040",
-        isJScompile: false
+        isJScompile: true
     })
-<body>
+<body style="background-color:#f4f4f4;">
     <div class="wrap">
         <div class="container">
-            <!-- component -->
-            @@include('./common/partials/KRC0040.html', {
-                "blockClass" : "block1",
-                "contType" : "animation",
-                "titleNum" : "title01",
-                "align-class1" : "align-left",
-                "align-class2" : "align-left",
-                "alignClass3" : "align-top",
-                "font-class": "font-regular",
-                "font-style": "",
-                "headline":"<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>",
-                "bg-color": "bg-white"
-            })
-            <!-- // component -->
-
-            <!-- component -->
-            @@include('./common/partials/KRC0040.html', {
-                "blockClass" : "block1",
-                "contType" : "image",
-                "titleNum" : "title02",
-                "align-class1" : "align-left",
-                "align-class2" : "align-left",
-                "alignClass3" : "align-top",
-                "font-class": "font-regular",
-                "font-style": "",
-                "headline":"<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>",
-                "bg-color": "bg-white"
-            })
-            <!-- // component -->
-
-            <!-- component -->
-            @@include('./common/partials/KRC0040.html', {
-                "blockClass" : "block2",
-                "titleNum1" : "title03-1",
-                "titleNum2" : "title03-2",
-                "align-class1" : "align-left",
-                "align-class2" : "align-left",
-                "alignClass3" : "align-top",
-                "font-class": "font-regular",
-                "font-style": "",
-                "headline":"<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>",
-                "bg-color": "bg-white"
-            })
-            <!-- // component -->
-
-            <!-- component -->
-            @@include('./common/partials/KRC0040.html', {
-                "blockClass" : "block3",
-                "align-class1" : "align-right",
-                "alignClass3" : "align-top",
-                "blockArr" : [
-                    { "titleNum" : "title04-1", "alignClass2" : "align-right", "fontClass": "font-regular", "fontStyle": "font-underline", "headline":"<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>", "ctaColor" : "text-black" },
-                    { "titleNum" : "title04-2", "alignClass2" : "align-right", "fontClass": "font-regular", "fontStyle": "font-underline", "headline":"<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>", "ctaColor" : "text-white" },
-                    { "titleNum" : "title04-3", "alignClass2" : "align-right", "fontClass": "font-regular", "fontStyle": "font-underline", "headline":"<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>", "ctaColor" : "text-black" }
-                ],
-                "bg-color": "bg-white"
-            })
-            <!-- // component -->
-
-            <!-- component -->
-            @@include('./common/partials/KRC0040.html', {
-                "blockClass" : "block1",
-                "contType" : "image",
-                "titleNum" : "title05",
-                "align-class1" : "align-left",
-                "align-class2" : "align-left",
-                "alignClass3" : "align-bottom",
-                "font-class": "font-regular",
-                "font-style": "",
-                "headline":"<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>",
-                "bg-color": "bg-white"
-            })
-            <!-- // component -->
-
-            <!-- component -->
-            @@include('./common/partials/KRC0040.html', {
-                "blockClass" : "block2",
-                "titleNum1" : "title06-1",
-                "titleNum2" : "title06-2",
-                "align-class1" : "align-center",
-                "align-class2" : "align-center",
-                "alignClass3" : "align-bottom",
-                "font-class": "font-regular",
-                "font-style": "",
-                "headline":"<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>",
-                "bg-color": "bg-white"
-            })
-            <!-- // component -->
-
-            <!-- component -->
-            @@include('./common/partials/KRC0040.html', {
-                "blockClass" : "block3",
-                "align-class1" : "align-right",
-                "alignClass3" : "align-bottom",
-                "blockArr" : [
-                    { "titleNum" : "title07-1", "alignClass2" : "align-right", "fontClass": "font-regular", "fontStyle": "font-underline", "headline":"<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>", "ctaColor" : "text-black" },
-                    { "titleNum" : "title07-2", "alignClass2" : "align-right", "fontClass": "font-regular", "fontStyle": "font-underline", "headline":"<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>", "ctaColor" : "text-white" },
-                    { "titleNum" : "title07-3", "alignClass2" : "align-right", "fontClass": "font-regular", "fontStyle": "font-underline", "headline":"<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>", "ctaColor" : "text-black" }
-                ],
-                "bg-color": "bg-white"
-            })
-            <!-- // component -->
-		</div>
-    </div>     
+            <div style="width:100%;height:200px;"></div>
+            @@include('./common/partials/KRC0040.html')
+            <div style="width:100%;height:2000px;"></div> <!-- 스크롤테스트를 위한 임시 돔. 개발시 삭제-->
+        </div>
+    </div>
 </body>
 </html>

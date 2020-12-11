@@ -37,7 +37,7 @@
 }
 
 @include pc {
-    .mobile-nav,
+    .mobile-nav-wrap,
     .mobile-nav-button,
     .login-mobile,
     .nav-service,
@@ -86,8 +86,15 @@
 }
 
 @include mobile {
-    .mobile-nav {
+    .mobile-nav-wrap {
         position: relative;
+        margin-top: 13px;
+        .nav {
+            > li {
+                display: inline-block;
+                border-top: 0;
+            }
+        }
         .btn-back {
             position: relative;
             display: inline-block;
@@ -345,9 +352,8 @@
         float: none;
         padding-left: 0;
         a {
-            @include calc-mobile-size('width', 160px);
-            @include calc-mobile-size('height', 42px);
-            margin-top: -2px;
+            @include calc-mobile-size('width', 168px);
+            @include calc-mobile-size('height', 44px);
         }
     }
 
@@ -706,7 +712,7 @@
     
         .nav-item {
             position: relative;
-            padding: 20px;
+            padding: 14px 8px;
             font-weight: 700;
             font-size: 15px;
             line-height: 21px;
@@ -1053,6 +1059,7 @@
             top: 1px;
             width: 32px;
             height: 32px;
+            border-radius: 16px;
             background: url('/lg5-common/images/icons/btn-arr-32x32.svg') no-repeat 0 0;
             box-shadow: 1px 3px 9px 0 rgba(0, 0, 0, 0.14);
             content: '';
@@ -1062,7 +1069,7 @@
             background-image: linear-gradient(to right, #fff, rgba(255, 255, 255, 0) 60%);
             &:after {
                 left: 24px;
-                transform: rotate(180deg);
+                transform: rotateY(180deg);
             }
         }
         &.next {

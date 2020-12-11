@@ -464,6 +464,21 @@ br.pc-only {
                 position:static;
                 margin-top:24px;
             }
+            &.type2 {
+                dt {
+                    vertical-align:middle;
+                    color:#767676;
+                    @include font-small;
+                    font-weight:500;
+                }
+                dd {
+                    vertical-align:middle;
+                    color:#222;
+                    @include font-large-1;
+                    font-weight:700;
+                    text-align:right;
+                }
+            }
             .total-price {
                 @include clearfix;
                 .price {

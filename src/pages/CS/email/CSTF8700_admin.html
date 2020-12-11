@@ -1,117 +1,114 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>lge ::이메일문의_사용자</title>
+        <title>lge ::이메일문의_관리자</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <style>
-            /* *{margin:0;padding:0;-webkit-text-size-adjust:none;word-break:keep-all;box-sizing:border-box;} */
-            .dummy {background-color:rgba(255, 70, 70, 0.2);font-size:28.5px;font-weight:bold;line-height:1.37;color:#ffffff;text-align:center;display: flex;align-items: center;justify-content: center;}
-            .logo {margin: 0;margin-bottom: 48px;text-align: left;}
-            .logo img {width: 80px;height: 22px;}
-            .title {font-size: 40px;font-weight: normal;color: #222;text-align: left;margin-bottom: 56px;line-height: 1.2;}
-            .sub-title {font-size: 16px;font-weight: normal;line-height: 1.5;color: #616161;margin-bottom: 32px;}
-            .sub-title strong {font-weight: bold;color: #222;}
-            .email-title {margin: 0 0 18px;padding-bottom: 12px;font-size: 20px;font-weight: bold;text-align: left;border-bottom: 2px solid #222;}
-            .content {border: 1px solid #ddd;padding: 56px;}
-            table {background-color: #fff;font-size: 16px;font-family: 'Noto Sans',맑은고딕,'Malgun Gothic',arial,sans-serif;}
-            th, td {text-align: left;}
-            td {padding: 10px 0;vertical-align: top;}
-            .dt {font-size: 16px;color: #616161;width: 180px;}
-            .dd {font-size: 16px;color: #222222;}
-            .color-3 {color: #ec455a;}
-            .underline {text-decoration: underline;}
-            a {text-decoration: none;}
-            p {margin: 0;}
-            .footer {font-size: 12px; font-weight: normal; line-height: 1.5; text-align: left; color: #979797;}
-            ul {padding: 0;}
-            ul li {list-style: inside}
-            .bullet-list {padding: 0;margin-bottom: 16px;padding-bottom: 40px;border-bottom: 1px solid #ddd;color: #515151;font-size: 14px;line-height: 20px;}
-            .bullet-list .b-txt {position: relative;margin-top: 4px;padding-left: 10px;}
-            .bullet-list .b-txt:first-child {margin-top: 0;}
-            .btn-link {position: relative;display: inline-block;margin-left: 8px;padding-right: 23px;font-weight: bold;font-size: inherit;color: #222;vertical-align: top;}
-            .btn-link i {position: absolute;top: calc( 50% - 3px);right: 9px;width: 6px;height: 6px;border: 2px solid #222;border-width: 2px 2px 0 0;transform: rotate(45deg);content: '';}
-            .btn {display: inline-block;min-width: 124px;padding: 13px 32px;line-height: 24px;font-weight: bold;font-size: 16px;text-align: center;vertical-align: top;border: 1px solid #111;border-radius: 8px;background-color: transparent;}
-            .btn.bd-pink {color: #ec455a;border-color: #ec455a;}
-            .btn-wrap {text-align: center;margin-top: 56px;float: left;width: 100%;}
-        </style>
+        @@include('./CS/email/mail-style.html')
     </head>
     <body style="padding: 40px 48px 80px;margin: 0;float: left;">
         <table align="left" border="0" cellpadding="0" cellspacing="0" width="848">
-            <thead>
-                <tr>
-                    <th><h1 class="logo"><img src="https://wwwdev50.lge.co.kr/lg5-common/images/email-logo.png" alt="LG전자"></h1></th>
-                </tr>
-                <tr>
-                    <th><p class="title">고객님의 문의가<br>접수 되었습니다.</p></th>
-                </tr>
-                <tr>
-                    <th>
-                        <p class="sub-title">LG전자 사이트(www.lge.com/kr)의 이메일상담을 통해 고객 문의가 접수되었습니다.<br>확인 후 24시간 내에 답변 바랍니다.<br>반드시 "답변하기" 버튼을 클릭하시어 답변해주시기 바랍니다. <br>※ 24시간 내 미답변시 부서장에게 미처리 건으로 전달됩니다.</p>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="content">
-                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
-                            <colgroup>
-                                <col width="180px">
-                                <col>
-                            </colgroup>
-                            <thead>
-                                <tr class="title">
-                                    <th colspan="2"><h2 class="email-title">경영진에게 제안</h2></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="dt">접수번호</td>
-                                    <td class="dd"><strong class="color-3">S2008335631</strong></td>
-                                </tr>
-                                <tr>
-                                    <td class="dt">작성일시</td>
-                                    <td class="dd">2020년 07월 01일</td>
-                                </tr>
-                                <tr>
-                                    <td class="dt">구분</td>
-                                    <td class="dd">고객지원 > 고객의 소리 > 경영진에게 제안</td>
-                                </tr>
-                                <tr>
-                                    <td class="dt">제목</td>
-                                    <td class="dd">통돌이 세탁기에 대한 개선</td>
-                                </tr>
-                                <tr>
-                                    <td class="dt">내용</td>
-                                    <td class="dd">통돌이 세탁기를 사용하고 있는데요. 몇가지 의견이 있어요. 통돌이 통세척을 용이하게 할 순 없나요? 아님 통돌이 세탁기 관리해주는 서비스 같은게 있으면 좋겠어요.(정수기나 공기청정기처럼요)</td>
-                                </tr>
-                                <tr>
-                                    <td class="dt">첨부파일</td>
-                                    <td class="dd">
-                                        <p class="underline">세탁기.jpg</p>
-                                        <p class="underline">image01.gif</p>
-                                        <p class="underline">LG냉장고08.jpg</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="btn-wrap">
-                            <button class="btn bd-pink"><span>답변하기</span></button>
-                        </p>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td>
-                        <ul class="bullet-list">
-                            <li class="b-txt">본 메일은 발신 전용으로 회신되지 않습니다.</li>
-                            <li class="b-txt">이메일 문의 시스템(담당자변경/권한설정 등) 관련 사항은 이현숙(malguya@cnspartner.com), 문주희(juhee.moon@lge.com)로 문의 바랍니다.</a></li>
-                        </ul>
-                        <p class="footer">(주)LG전자 | 대표이사 : 권봉석, 배두용  | 사업자등록번호 : 107-86-14075 |  통신판매업신고번호 : 제1997-00084호<br>주소 : 서울시 영등포구 여의대로 128 LG트윈타워 | 제품 및 서비스문의 : 1544-7777 <br>COPYRIGHTⓒ 2020 LG ELECTRONICS. ALL RIGHTS RESERVED.</p>
-                    </td>
-                </tr>
-            </tfoot>
+            <tr>
+                <th><h1 class="logo"><img src="https://wwwdev50.lge.co.kr/lg5-common/images/email-logo.png" alt="LG전자"></h1></th>
+            </tr>
+            <tr>
+                <th>
+                    <p class="sub-title">LG전자 사이트(www.lge.com/kr)의 이메일상담을 통해 고객 문의가 접수되었습니다.<br>
+                        확인 후 24시간 내에 답변 바랍니다.<br>
+                        반드시 "답변하기" 버튼을 클릭하시어 답변해주시기 바랍니다. <br>
+                        <span class="color-2">※24시간 내 미답변시 부서장에게 미처리 건으로 전달됩니다.</span></p>
+                </th>
+            </tr>
+            <tr>
+                <td class="content">
+                    <table width="100%">
+                        <tr>
+                            <td colspan="3">
+                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <colgroup>
+                                        <col width="180px">
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                        <tr class="title">
+                                            <th colspan="2"><h2 class="email-title">문의 내용</h2></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="dt">작성자</td>
+                                            <td class="dd">김엘지</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="dt">작성일시</td>
+                                            <td class="dd">2020.07.01 17:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="dt">구분</td>
+                                            <td class="dd">1depth > 2depth</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="dt">제목</td>
+                                            <td class="dd">이메일 문의 제목</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="dt">내용</td>
+                                            <td class="dd">이메일 문의 내용</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="dt">첨부파일</td>
+                                            <td class="dd">
+                                                <p>세탁기.jpg</p>
+                                                <p>image01.gif</p>
+                                                <p>LG냉장고08.jpg</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="261"></td>
+                            <td width="212">
+                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td class="btn-wrap">
+                                            <table>
+                                                <colgroup>
+                                                    <col width="212">
+                                                </colgroup>
+                                                <tr>
+                                                    <td class="btn pink"><a href="" target="_blank" title="새 창에서 열림">답변하기</a></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="261"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td>
+                                            <ul class="bullet-list">
+                                                <li class="b-txt">본 메일은 발신 전용으로 회신되지 않습니다.</li>
+                                                <li class="b-txt">이메일 문의 시스템(담당자변경/권한설정 등) 관련 사항은<br><span class="color-2">허승희(shheo36@cnspartner.com), 김경림(kyounglim.kim@lge.com)</span>로 문의 바랍니다.</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="footer">(주)LG전자 | 대표이사 : 권봉석, 배두용  | 사업자등록번호 : 107-86-14075 |  통신판매업신고번호 : 제1997-00084호<br>주소 : 서울시 영등포구 여의대로 128 LG트윈타워<br>COPYRIGHTⓒ 2020 LG ELECTRONICS. ALL RIGHTS RESERVED.</p>
+                </td>
+            </tr>
         </table>
     </body>
 </html> 

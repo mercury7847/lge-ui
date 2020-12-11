@@ -1,109 +1,76 @@
 <!DOCTYPE html>
 <html lang="ko">
-@@include('./common/head.html', {
-    componentID: "KRC0012",
-    isJScompile: true
-})
+    @@include('./common/head.html', {
+        componentID: "KRC0012",
+        isJScompile: true
+    })
 <body>
     <div class="wrap">
         <div class="container">
-
-            <!-- component KRC0012 -->
-            <!-- component Full 이미지 텍스트 상단형 L -->
-            @@include('./common/partials/KRC0012-full.html',{
-                "fixarea" : {
-                    "bgcolor" : "bg-black text-white",
-                    "head-align" : "align-center text-right",
-                    "desc-align" : "align-left",
-                    "headline" : "<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>",
-                    "img" : "/lg5-common/images/KRC0012/@thumb01.jpg",
-                    "img-mobile" : "/lg5-common/images/KRC0012/@thumb01_m.jpg"
-                },
-                "foldarea" : {
-                    "content-align" : "align-center text-left",
-                    "list1-headline" : "“패널이 스스로 빛나는 올레드 TV는 픽셀 하나하나가 섬세하게<br>빛을 조절하여 자연색 그대로의 색감을 표현합니다.”",
-                    "list2-headline" : "“패널이 스스로 빛나는 올레드 TV는 픽셀 하나하나가 섬세하게<br>빛을 조절하여 자연색 그대로의 색감을 표현합니다.”",
-                    "list1-img": "/lg5-common/images/KRC0012/@thumb01.jpg",
-                    "list2-img": "/lg5-common/images/KRC0012/@thumb01.jpg"
-                }
+            <!-- component Standard 텍스트 왼쪽정렬, 배경 Black -->
+            @@include('./common/partials/KRC0012.html', {
+                "bg-color": "bg-black",
+                "align-class1": "align-left",
+                "font-class1": "font-regular-italic",
+                "font-class2": "font-bold",
+                "font-class3": "font-regular",
+                "font-style1": "",
+                "font-style2": "",
+                "font-style3": "",
+                "align-class2": "align-left",
+                "font-class4": "font-regular",
+                "font-style4": ""
             })
-            <!-- // component Full 이미지 텍스트 상단형 L -->
+            <!-- // component Standard 텍스트 왼쪽정렬, 배경 Black -->
 
-            <!-- component Full 이미지 텍스트 상단형 R -->
-            @@include('./common/partials/KRC0012-full-ani.html', {
-                "fixarea" : {
-                    "bgcolor" : "bg-white",
-                    "head-align" : "align-right",
-                    "desc-align" : "align-left",
-                    "headline" : "<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>",
-                    "img" : "/lg5-common/images/KRC0012/@thumb01.jpg",
-                    "img-mobile" : "/lg5-common/images/KRC0012/@thumb01_m.jpg"
-                },
-                "foldarea" : {
-                    "content-align" : "align-right",
-                    "list1-headline" : "“패널이 스스로 빛나는 올레드 TV는 픽셀 하나하나가 섬세하게<br>빛을 조절하여 자연색 그대로의 색감을 표현합니다.”",
-                    "list2-headline" : "“패널이 스스로 빛나는 올레드 TV는 픽셀 하나하나가 섬세하게<br>빛을 조절하여 자연색 그대로의 색감을 표현합니다.”",
-                    "list1-img": "/lg5-common/images/KRC0012/@thumb01.jpg",
-                    "list2-img": "/lg5-common/images/KRC0012/@thumb01.jpg"
-                }
+            <!-- component Standard 텍스트 센터정렬, 배경 dark -->
+            @@include('./common/partials/KRC0012.html', {
+                "bg-color": "bg-dark",
+                "align-class1": "align-center",
+                "font-class1": "font-regular",
+                "font-class2": "font-regular",
+                "font-class3": "font-regular",
+                "font-style1": "",
+                "font-style2": "",
+                "font-style3": "",
+                "align-class2": "align-center",
+                "font-class4": "font-regular",
+                "font-style4": ""
             })
-            <!-- // component Full 이미지 텍스트 상단형 R -->
+            <!-- // component Standard 텍스트 왼쪽정렬, 배경 dark -->
 
-            <!-- component wide 이미지 텍스트 상단형 C -->
-            @@include('./common/partials/KRC0012-wide-ani.html', {
-                "fixarea" : {
-                    "bgcolor" : "bg-black",
-                    "head-align" : "align-center",
-                    "desc-align" : "align-left",
-                    "headline" : "<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>",
-                    "img" : "/lg5-common/images/KRC0012/@thumb01.jpg",
-                    "img-mobile" : "/lg5-common/images/KRC0012/@thumb01_m.jpg"
-                }
+            <!-- component Standard 텍스트 센터정렬, 배경 light gray -->
+            @@include('./common/partials/KRC0012.html', {
+                "bg-color": "bg-lightgray",
+                "align-class1": "align-center",
+                "font-class1": "font-regular",
+                "font-class2": "font-bold",
+                "font-class3": "font-regular-italic",
+                "font-style1": "",
+                "font-style2": "",
+                "font-style3": "",
+                "align-class2": "align-left",
+                "font-class4": "font-regular",
+                "font-style4": ""
             })
-            <!-- // component wide 이미지 텍스트 상단형 C -->
+            <!-- // component Standard 텍스트 센터정렬, 배경 light gray -->
 
-            <!-- component Full 이미지 텍스트 하단형 -->
-            @@include('./common/partials/KRC0012-full-bottom.html', {
-                "fixarea" : {
-                    "bgcolor" : "bg-white",
-                    "head-align" : "align-center",
-                    "desc-align" : "align-left",
-                    "headline" : "<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>",
-                    "img" : "/lg5-common/images/KRC0012/@thumb01.jpg",
-                    "img-mobile" : "/lg5-common/images/KRC0012/@thumb01_m.jpg"
-                }
+            <!-- component Standard 텍스트 왼쪽정렬, 배경 white -->
+            @@include('./common/partials/KRC0012.html', {
+                "bg-color": "bg-white",
+                "align-class1": "align-left",
+                "font-class1": "font-regular",
+                "font-class2": "font-bold",
+                "font-class3": "font-regular-italic",
+                "font-style1": "",
+                "font-style2": "",
+                "font-style3": "",
+                "align-class2": "align-right",
+                "font-class4": "font-regular",
+                "font-style4": ""
             })
-            <!-- // component Full 이미지 텍스트 하단형 -->
-
-            <!-- component  Wide 이미지 텍스트 하단형 -->
-            @@include('./common/partials/KRC0012-wide-bottom.html', {
-                "fixarea" : {
-                    "bgcolor" : "bg-dark",
-                    "head-align" : "align-center",
-                    "desc-align" : "align-left",
-                    "headline" : "<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>",
-                    "img" : "/lg5-common/images/KRC0012/@thumb01.jpg",
-                    "img-mobile" : "/lg5-common/images/KRC0012/@thumb01_m.jpg"
-                }
-            })
-            <!-- // component Wide 이미지 텍스트 하단형 -->
-
-            <!-- component  Wide 이미지 텍스트 하단형 -->
-            @@include('./common/partials/KRC0012-wide.html', {
-                "fixarea" : {
-                    "bgcolor" : "bg-dark",
-                    "head-align" : "align-center",
-                    "desc-align" : "align-left",
-                    "headline" : "<h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2>",
-                    "img" : "/lg5-common/images/KRC0012/@thumb01.jpg",
-                    "img-mobile" : "/lg5-common/images/KRC0012/@thumb01_m.jpg"
-                }
-            })
-            <!-- // component Wide 이미지 텍스트 하단형 -->
-
-        
-            <!-- //component KRC0012 -->
+            <!-- // component Standard 텍스트 왼쪽정렬, 배경 white-->
 		</div>
-    </div>      
+    </div>     
 </body>
 </html>

@@ -1,6 +1,7 @@
 (function() {
     var validation;
     var authValidation;
+    var sendValidation;
 
     var custom = {
         init: function() {
@@ -47,7 +48,7 @@
             self.$form.find('.btn-confirm').on('click', function() {
                 var result = validation.validate();
 
-                if (result.success == true) {                        
+                if (result.success == true) {   
                     lgkorUI.confirm('', {
                         title:'저장 하시겠습니까?',
                         okBtnName: '확인',
@@ -56,7 +57,7 @@
                             var ajaxUrl = self.$form.data('ajax');
                             var data = validation.getAllValues();
                             lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
-                                if (result.data == 'Y') {
+                                if (result.data.resultFlag == 'Y') {
                                     self.$form.submit();
                                 }
                             })
@@ -70,7 +71,7 @@
                     title:'취소 하시겠습니까?',
                     okBtnName: '확인',
                     cancelBtnName: '취소',
-                    cancel: function() {
+                    ok: function() {
                         location.href = url;
                     }
                 });
@@ -104,9 +105,9 @@
                 $this.find('.btn-send').off('click').on('click', function() {
                     var $btnSend = $(this),
                         ajaxUrl = $btnSend.data('ajax'),
-                        data = authValidation.getAllValues();
+                        data = authValidation.getValues(['authName','authPhoneNo']);
 
-                    var result = authValidation.validate();
+                    var result = authValidation.validate(['authName','authPhoneNo']);
 
                     if (result.success == true) {
                         lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
@@ -125,9 +126,14 @@
                 $this.find('.btn-auth').off('click').on('click', function() {
                     var result = authValidation.validate(),
                         ajaxUrl = $this.find('.form-wrap').data('ajax'),
-                        data = authValidation.getAllValues();
+                        data = authValidation.getValues(['authName','authPhoneNo']);
 
                     if (result.success == true) {
+                        if ($('#authNo').prop('disabled')) {
+                            $('#laypop1').vcModal(); 
+                            return false;
+                        }
+
                         lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
                             if (result.data.resultFlag == 'Y') {
                                 self.$form.find('#userName').val(self.$authPopup.find('#authName').val());

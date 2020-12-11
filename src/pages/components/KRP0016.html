@@ -1,24 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
-@@include('./common/head.html', {
-    componentID: "KRP0016",
-    isJScompile: false
-})
+    @@include('./common/head.html', {
+        componentID: "KRP0016",
+        isJScompile: true
+    })
 <body>
-    <div class="wrap">
+    <div class="wrap">    
         <div class="container">
+           <!-- component -->
+           @@include('./common/partials/KRP0016.html')
+           <!-- // component -->
 
-			<!-- component KRP0016 -->
-            @@include('./common/partials/KRP0016.html', {
-                "component-class" : {
-                    "margin" : "zero-top"
-                }
-            })
-            <!-- // component -->
-
-            <!-- //component KRP0016 -->
-		
-		</div>
-    </div>      
+        </div>
+    </div>     
 </body>
 </html>

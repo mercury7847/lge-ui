@@ -88,7 +88,7 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
             reader.readAsDataURL(file);
             reader.onload = function(e){
                 $fileBox.addClass('on');
-                $fileBox.find('.file-preview').css('background-image', 'url(' + e.target.result + ')' );
+                $fileBox.find('.file-preview').html('<img src="'+e.target.result+'" alt="첨부파일 썸네일">')
                 $fileBox.find('.name').val(file.name);
             }
         },
@@ -113,7 +113,7 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
             
                             $this.val('');
                             $box.removeClass('on');
-                            $box.find('.file-preview').css('background-image', '');
+                            $box.find('.file-preview').html('');
                             $box.find('.name').val('');
                         
                             var index = $(this).closest('.image-file-wrap').find('.btn-del').index($(this));

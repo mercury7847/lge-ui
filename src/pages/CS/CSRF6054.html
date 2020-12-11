@@ -51,7 +51,7 @@
                                         </div>
                                         <div class="agree-input">
                                             <span class="chk-wrap">
-                                                <input type="checkbox" name="privcyCheck" id="privcyCheck" value="" data-msg-target=".err-block" data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다." data-required="true">
+                                                <input type="checkbox" name="privcyCheck" id="privcyCheck" value="Y" data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다." data-required="true">
                                                 <label for="privcyCheck">동의합니다.</label>
                                             </span>
                                         </div>
@@ -79,7 +79,7 @@
                                         </div>
                                         <div class="agree-input">
                                             <span class="chk-wrap">
-                                                <input type="checkbox" name="marketingCheck" id="marketingCheck" value="">
+                                                <input type="checkbox" name="marketingCheck" id="marketingCheck" value="Y">
                                                 <label for="marketingCheck">동의합니다.</label>
                                             </span>
                                         </div>
@@ -103,7 +103,7 @@
                                                 회원일 경우 회원정보 이름 제공 
                                                 value="홍길동"
                                             -->
-                                            <input type="text" name="userName" id="userName"  value="" placeholder="이름을 입력해주세요."  data-msg-target=".err-block" data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" readonly required>
+                                            <input type="text" name="userName" id="userName"  value="" placeholder="이름을 입력해주세요."  data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" readonly required>
                                         </div>
                                         <div class="btm-more err-block">
                                             <p class="err-msg"></p>
@@ -122,7 +122,7 @@
                                                     회원일 경우 회원정보 휴대 전화 제공 
                                                     value="01011112222"
                                                 -->
-                                                <input type="text" name="phoneNo" id="phoneNo" value="" placeholder="휴대전화 인증 진행"  data-msg-target=".err-block" data-error-msg="휴대전화를 정확히 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" readonly required>
+                                                <input type="text" name="phoneNo" id="phoneNo" value="" placeholder="휴대전화 인증 진행"  data-error-msg="휴대전화를 정확히 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" readonly required>
                                             </div>
                                             <div class="cell">
                                                 <!-- 
@@ -142,7 +142,7 @@
                                     <div class="tit">
                                         <label for="email" class="req">이메일 주소<span class="blind">필수항목</span></label>
                                         <div class="tooltip-wrap">
-                                            <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget">자세히 보기</span>
+                                            <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
                                             <div class="tooltip-box">
                                                 <p>일부 이메일(gmail.com, hotmail.com, live.co.kr, outlook.com, nate.com, dreamwiz.com, empal.com등)은 답변 메일 수신이 원활하지 않을 수 있습니다.</p>
                                                 <button type="button" class="btn-close"><span class="blind">닫기</span></button>
@@ -151,7 +151,7 @@
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap">
-                                            <input type="text" name="email" id="email" placeholder="이메일 주소를 입력해주세요." data-msg-target=".err-block" data-error-msg="이메일 주소를 입력해주세요." data-pattern-msg="올바른 이메일 형식이 아닙니다." data-required="true" required aria-describedby="emailError">
+                                            <input type="text" name="email" id="email" placeholder="이메일 주소를 입력해주세요." data-error-msg="이메일 주소를 입력해주세요." data-pattern-msg="올바른 이메일 형식이 아닙니다." data-required="true" required>
                                         </div>
                                         <div class="btm-more err-block">
                                             <p class="err-msg"></p>
@@ -201,7 +201,7 @@
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap count">
-                                            <input type="text" class="ui_textcontrol" name="title" id="title" placeholder="제목을 입력해주세요." maxlength="100" data-limit="100" data-count-target="#txt-count1" data-msg-target=".err-msg" data-error-msg="제목을 입력해주세요" data-required="true" required>
+                                            <input type="text" class="ui_textcontrol" name="title" id="title" placeholder="제목을 입력해주세요." maxlength="100" data-limit="100" data-count-target="#txt-count1" data-error-msg="제목을 입력해주세요" data-required="true" required>
                                             <span id="txt-count1" class="cell total"><em>0</em> / 100</span>
                                             <p class="err-msg"></p>
                                         </div>
@@ -214,7 +214,7 @@
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap count">
-                                            <textarea class="ui_textcontrol" name="content" id="content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-msg-target=".err-msg" data-error-msg="내용을 입력해주세요" data-required="true" required></textarea>
+                                            <textarea class="ui_textcontrol" name="content" id="content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-error-msg="내용을 입력해주세요" data-required="true" required></textarea>
                                             <span id="txt-count2" class="cell total"><em>0</em> / 1000</span>
                                             <p class="err-msg"></p>
                                         </div>
@@ -247,6 +247,13 @@
 
     <!-- 휴대폰인증 팝업 -->
     @@include('./support/modal/phone-certification-popup.html')
+
+    <!-- 인증 번호 발송 버튼을 클릭하지 않고 확인 버튼 눌렀을 경우 -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop1",
+        "msgOnly" : true,
+        "msg" : "인증 번호 발송 버튼을 선택해 주세요."
+    })
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>

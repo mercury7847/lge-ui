@@ -4,29 +4,73 @@
 @import "../../utilities/mixins";
 
 .support {
-    .form-wrap {
-        padding-right:117px;
-        .forms {
-            .tit {
-                width:210px + 24px;
-            }
-            .conts {
-                width:calc(100% - 234px);
-            }
-        }
+    .form-infos {
+        margin-top:12px;
         @include mobile {
-            padding-right:0;
+            margin-bottom:0;
+        }
+    }
+    &:not(.my-status) {
+        .form-wrap {
+            padding-right:117px;
             .forms {
                 .tit {
-                    width:100%;
+                    width:210px + 24px;
                 }
                 .conts {
-                    width:100%;
+                    width:calc(100% - 234px);
+                }
+            }
+            @include mobile {
+                padding-right:0;
+                .forms {
+                    .tit {
+                        width:100%;
+                    }
+                    .conts {
+                        width:100%;
+                    }
                 }
             }
         }
     }
 
+    // 칭찬합니다.
+    &.feedback {
+        .cont-wrap {
+            max-width:1146px + 80px;
+        }
+        .bullet-list {
+            .btn-link {
+                margin-left:24px;
+            }
+            @include mobile {
+                .btn-link {
+                    margin:12px 0 0 0;
+                }
+            }
+        }
+        .search-wrap {
+            max-width:848px;
+            margin:0 auto;
+            padding-bottom:64px;
+            &.search-layer {
+                max-width:444px;
+                padding-bottom: 48px;
+            }
+            @include mobile {
+                padding:0 20px 32px;
+                background:#fff;
+            }
+        }
+        .result-wrap {
+            @include mobile {
+                padding:0 16px;
+            }
+        }
+    }
+
+    // 경영진에게 제안
     &.suggestions {
         .mymem-lists {
             font-size:0;
@@ -59,51 +103,22 @@
                 border-radius:4px;
             }
         }
-    }
-
-    // 칭찬합니다.
-    &.feedback {
         .cont-wrap {
             max-width:1146px + 80px;
-        }
-        .form-infos {
-            margin-top:12px;
-            @include mobile {
-                margin-bottom:0;
-            }
-        }
-        .bullet-list {
-            .btn-link {
-                margin-left:24px;
-            }
-            @include mobile {
-                .btn-link {
-                    margin:12px 0 0 0;
-                }
-            }
-        }
-        .search-wrap {
-            max-width:848px;
-            margin:0 auto;
-            padding-bottom:64px;
-            &.search-layer {
-                max-width:444px;
-                padding-bottom: 48px;
-            }
-            @include mobile {
-                padding:0 20px 32px;
-                background:#fff;
-            }
-        }
-        .result-wrap {
-            @include mobile {
-                padding:0 16px;
-            }
         }
     }
 
     // 나의 글 보기
     &.my-status {
+        .login-guide {
+            margin-bottom:80px;
+            @include mobile {
+                margin-bottom:40px;
+            }
+        }
+        .cont-wrap {
+            max-width:1146px + 80px;
+        }
         .search-info {
             background-color: #f4f4f4;
             text-align: center;
@@ -118,7 +133,10 @@
             }
             .desc {
                 font-size:16px;
-                line-height:24px
+                line-height:24px;
+                .point {
+                    color:#ec455a;
+                }
             }
             @include mobile {
                 padding: 20px 16px;
@@ -131,6 +149,109 @@
                 .desc {
                     font-size:14px;
                     line-height:18px;
+                }
+            }
+        }
+        .my-status-info {
+            margin:-32px -6px 64px;
+            & > ul {
+                @include clearfix;
+                li {
+                    float:left;
+                    width:25%;
+                    padding:0 6px;
+                    a {
+                        display:block;
+                        height:58px;
+                        padding:15px 12px;
+                        @include font-medium;
+                        font-weight:$font-weight-medium;
+                        text-align:center;
+                        border-radius:8px;
+                        box-shadow:2px 3.5px 16px 0 rgba(0, 0, 0, 0.14);
+                    }
+
+                    &.on {
+                        a {
+                            padding:13px 12px;
+                            color:#ec455a;
+                            border: solid 2px #ec455a;
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                margin:-8px -4px 32px;
+                & > ul {
+                    li {
+                        width:50%;
+                        margin-top:8px;
+                        padding:0 4px;
+                    }
+                }
+            }
+        }
+        .my-status-list {
+            table {
+                table-layout:fixed;
+                a {
+                    display:block;
+                    @include textEllipsis;
+                }
+            }
+            @include mobile {
+                display:none;
+            }
+            &-m {
+                border-top:2px solid #222;
+                border-bottom:1px solid #ddd;
+                & > ul {
+                    & > li {
+                        padding:16px 0;
+                        border-bottom:1px solid #ddd;
+                        &:last-child {
+                            border-bottom:0;
+                        }
+                    }
+                }
+                .flag-wrap {
+                    margin-bottom:4px;
+                }
+                .tit {
+                    margin-bottom:12px;
+                    a {
+                        display:block;
+                        @include font-medium;
+                        @include textEllipsis;
+                    }
+                }
+                .options {
+                    li {
+                        font-size:0
+                    }
+                    .option-tit, .option-desc {
+                        display:inline-block;
+                        color:#767676;
+                        @include font-small;
+                        vertical-align:middle;
+                    }
+                    .option-desc {
+                        position:relative;
+                        margin-left:8px;
+                        padding-left:9px;
+                        &:before {
+                            content:'';
+                            position:absolute;
+                            left:0;
+                            top:6px;
+                            width:1px;
+                            height:10px;
+                            background:#ddd;
+                        }
+                    }
+                }
+                @include pc {
+                    display:none;
                 }
             }
         }

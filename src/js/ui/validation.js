@@ -483,43 +483,51 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
             self.setValues(nObj);
         },
-        _swicthErrorMsg : function _swicthErrorMsg(obj){
+        _swicthErrorMsg : function _swicthErrorMsg(obj, targetArr){
             var self = this;
-            var $target, msg;
-            
+            var $target, msg, nobj;
+
             for(var key in self.register){
-                var nobj = self.register[key];
+                if (targetArr && !vcui.array.include(targetArr, key)) continue;
+
+                nobj = self.register[key];
                 if(nobj.required){
                     $target = self.$el.find('[name='+ key +']');
-                    if (!$target.prop('disabled')) {
-                        msg = nobj['msgTarget'];
-                        if(msg) {
-                            var msgBlock = self._getMsgBlock($target, msg),
-                                msgField = self._getMsgField(msgBlock);
-                            
-                            if (vcui.hasOwn(obj, key)) {
-                                msgField.text(obj[key]).attr('id', key + 'Error');;
-                                msgBlock.show();
-                                
-                                $target.attr('aria-describedby', key + 'Error');
-                            } else {
-                                msgField.text('').removeAttr('id');
-                                msgBlock.hide()
-                                
-                                $target.removeAttr('aria-describedby');
-                            }
-                        }
+                    msg = nobj['msgTarget'];
+                    if(msg) {
+                        var errblock = self._getMsgBlock($target, msg);
+                        errblock.hide();
+                        $target.removeAttr('aria-describedby');
+                    }
+                }
+            }
+            
+            for(var prop in obj){
+                if (targetArr && !vcui.array.include(targetArr, prop)) continue;
+
+                $target = self.$el.find('[name='+ prop +']');
+                nobj = self.register[prop];
+                msg = nobj['msgTarget'];
+                if (!$target.prop('disabled')) {
+                    if(msg){ 
+                        var errblock = self._getMsgBlock($target, msg);
+                        errblock.show();
+
+                        var errfield = self._getMsgField(errblock);
+                        errfield.text(nobj.errorMsg);
+                        $target.attr('aria-describedby', prop + 'Error');
                     }
                 }
             }
         },
-        _setCheckValidate : function _setCheckValidate(flag){
+        _setCheckValidate : function _setCheckValidate(flag, targetArr){
             var self = this;
             var rObj = {};
             var $target, val, key, obj;
+            var nameArr = targetArr ? targetArr : self.nameArr;
 
-            for(var i=0;i<self.nameArr.length; i++){
-                key = self.nameArr[i];
+            for(var i=0;i<nameArr.length; i++){
+                key = nameArr[i];
                 obj = self.register[key];
                 if(obj && obj.required){
                     $target = self.$el.find('[name='+ key +']');
@@ -530,8 +538,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                                 nArr.push($(item).val())
                             });
                             val = $target.is(':radio')? nArr[0] : nArr;
-                            if(val=='on') val = '';
-
+                            if(val=='on' || val == undefined) val = '';
                         }else{
                             val = $target.val();
                         }
@@ -580,6 +587,54 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
             return rObj;
         },
+        validate : function validate(targetArr){
+            var self = this;
+            var rObj = self._setCheckValidate(false, targetArr);
+
+            var firstName = vcui.object.keys(rObj)[0];
+            if(firstName){
+                var $first = self.$el.find('[name='+ firstName +']');
+
+                if($first.is(':radio') || $first.is(':checkbox')){
+                    var $checked =self.$el.find('[name='+ firstName +']:checked');
+                    if($checked.length>0){
+                        $checked.focus();
+                    }else{
+                        $first.eq(0).focus();
+                    }
+                    
+                }else{
+                    $first.focus();
+                }                
+                self.triggerHandler('nextfocus', [$first]);
+            }
+
+            self.validItemObj = rObj;
+
+            var isSuccess = false;
+            if(vcui.isEmpty(rObj)){
+                isSuccess = true;
+                self.triggerHandler('success');
+            }else{
+                self.triggerHandler('validerror', [self.validItemObj]);
+            }
+            self._swicthErrorMsg(self.validItemObj, targetArr);
+
+            var arr = [];
+            for(var key in rObj) arr.push({key: key, errmsg: rObj[key]});
+            arr.sort(function(a, b){
+                var ipta = self.$el.find('[name='+a.key+']').parent().offset().top;
+                var iptb = self.$el.find('[name='+b.key+']').parent().offset().top;
+
+                return ipta - iptb;
+            });
+            
+            return {
+                success: isSuccess,
+                validItem: self.validItemObj,
+                validArray: arr
+            };
+        }
     });
 
     if ($('.contents.support').length) {

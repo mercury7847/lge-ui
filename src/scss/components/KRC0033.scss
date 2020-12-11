@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRC0033 {
+	position:relative;
+	// common
+	// visual area
+	.visual-area {
+		z-index:1;
+		img {
+			width:100%;
+			height:auto;
+			vertical-align:top;
+		}
+	}
+	.size-inner {
+		position:relative;
+	}
+
+	@each $size in full, wide {
+		&.#{$size} {
+			@if $size == full {
+
+			} @else if $size == wide {
+				
+			}
+
+			@if $size == full {
+				width:100%;
+			} @else if $size == wide {
+				max-width:1680px;
+				margin:0 auto;
+				padding:0 40px;
+			}
+
+			// text
+			.text-set-wrap {
+				position:absolute;
+				z-index:10;
+				@if $size == full {
+					top:0;
+					left:0;
+					right:0;
+					bottom:0;
+				} @else if $size == wide {
+					top:0;
+					bottom:0;
+					left:50%;
+					width:100%;
+					max-width:1380px;
+					transform:translateX(-50%);
+				}
+			}
+		}
+	}
+}

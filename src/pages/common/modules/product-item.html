@@ -15,7 +15,7 @@
         }
         <div class="product-image" aria-hidden="true">
             @@if(!context.singleImage) {
-            @@include('./common/partials/KRP0009-carousel.html', {
+            @@include('./common/partials/KRP0007-carousel.html', {
                 "slideArr" : [
                     {"visual" : "/lg5-common/images/dummy/@img-product.jpg"},
                     {"visual" : "/lg5-common/images/dummy/@img-product2.jpg"}
@@ -23,11 +23,9 @@
             })
             }
             @@if(context.singleImage) {
-            @@include('./common/partials/KRP0009-carousel.html', {
-                "slideArr" : [
-                    {"visual" : "/lg5-common/images/dummy/@img-product.jpg"}
-                ]
-            })
+                <a href="#">
+                    <img src="@@singleImage" alt="">
+                </a>
             }
         </div>
         <div class="product-contents">
@@ -118,6 +116,9 @@
                 @@if (context.spec2) {
                 <p class="spec-info2">적용모델 : H-62HSGAKOR 외 </p>
                 }
+                @@if (context.spec3) {
+                <div class="spec-info3">케어십 가능</div>
+                }
             </div>
             @@if (context.benefit) {
             <!-- 2차 디자인 변경에 의해 앞으로 사용하는지 확인 해야함 -->
@@ -146,9 +147,9 @@
         }
         @@if (context.singleButton) {
         <div class="product-bottom">
-            @@if (context.price) {
+            @@if (context.singleButton.price) {
             <div class="price-area">
-                @@if (context.originalPrice) {
+                @@if (context.singleButton.originalPrice) {
                 <div class="original">
                     <em class="blind">판매가격</em>
                     <span class="price">5,200,000<em>원</em></span>
@@ -160,7 +161,7 @@
                 </div>
             </div>
             }
-            @@if (context.carePrice) {
+            @@if (context.singleButton.carePrice) {
             <div class="price-area">
                 <div class="total-price">
                     <em class="blind">최대 혜택가격</em>
@@ -169,8 +170,8 @@
                 <span class="small-text">(3개월/1회 방문)</span>
             </div>
             }
-            <div class="product-button">
-                <a href="#n" class="btn border">@@singleButton</a>
+            <div class="product-button single">
+                <a href="#n" class="btn border">@@singleButton.button</a>
             </div>
         </div>
         }

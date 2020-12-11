@@ -15,32 +15,16 @@
                 'pageTitle': '나의 글 보기',
                 'pageDesc': '서비스센터 홈페이지를 통해 등록하신 칭찬, 개선 건에 대한 내역조회를 하실 수 있습니다.'
             })
-            <div class="contents support suggestions">
+            <div class="contents support my-status">
                 <div class="cont-wrap">
 
                     <div class="section">
-                        <div class="section-content">
-                            <div class="process-bar-wrap">
-                                <div class="bar-track">
-                                    <div class="bar" style="width:50%">
-                                        <span class="txt">답변 중</span>
-                                    </div>
-                                </div>
-                                @@include('./common/modules/bullet-list.html', {
-                                    "bulletTxt" : [
-                                        "접수 > 답변 중 > 답변 완료 순으로 진행됩니다."
-                                    ]
-                                })
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="section">
                         <div class="tit-wrap">
-                            <h2 class="tit">작성 내용</h2>
-                            <p class="tit-text">접수번호는 나의 글 보기 시 꼭 필요합니다. 메일과 휴대전화번호로 전송된 접수번호를 반드시 보관하시기 바랍니다.</p>
+                            <h2 class="tit">나의 글 보기 접수 내용</h2>
                         </div>
-                        <div class="section-content">
+
+                        <div class="section-box">
+                            <h3 class="sub-tit">작성 내용</h3>
                             <ul class="inquiry-list">
                                 <li>
                                     <div class="title"><strong>구분</strong></div>
@@ -52,7 +36,7 @@
                                 </li>
                                 <li>
                                     <div class="title"><strong>접수 일시</strong></div>
-                                    <div class="description">2020년 09월 01일 00시 00분</div>
+                                    <div class="description">2020.07.01 17:30</div>
                                 </li>
                                 <li>
                                     <div class="title"><strong>진행 상태</strong></div>
@@ -85,14 +69,16 @@
                                     </div>
                                 </li>
                             </ul>
+                            @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true,
+                                "bulletTxt" : [
+                                    "접수번호는 나의 글 보기 시 꼭 필요합니다. 메일과 휴대전화번호로 전송된 접수번호를 반드시 보관하시기 바랍니다."
+                                ]
+                            })
                         </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="tit-wrap">
-                            <h2 class="tit">답변</h2>
-                        </div>
-                        <div class="section-content">
+                        
+                        <div class="section-box">
+                            <h3 class="sub-tit">답변</h3>
                             <ul class="inquiry-list">
                                 <li>
                                     <div class="title"><strong>제목</strong></div>
@@ -112,17 +98,13 @@
                                 </li>
                                 <li>
                                     <div class="title"><strong>답변일시</strong></div>
-                                    <div class="description">2020년 09월 02일 00시 00분</div>
+                                    <div class="description">2020.09.02 00:00</div>
                                 </li>
                             </ul>
                         </div>
-                    </div>
 
-                    <div class="section">
-                        <div class="tit-wrap">
-                            <h2 class="tit">작성자 정보</h2>
-                        </div>
-                        <div class="section-content">
+                        <div class="section-box">
+                            <h3 class="sub-tit">고객 정보</h3>
                             <ul class="inquiry-list">
                                 <li>
                                     <div class="title"><strong>이름</strong></div>
@@ -149,7 +131,7 @@
                     </div>
 
                     <div class="btn-group center">
-                        <a href="/html/support/CSTF1000.html" class="btn pink"><span>목록</span></a>
+                        <a href="/html/CS/CSRF6061.html" class="btn"><span>목록</span></a>
                     </div>
 
                 </div>
@@ -160,7 +142,6 @@
     </div>
 
     <!-- support script -->
-    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
 </body>
 </html> 

@@ -16,11 +16,9 @@
                 'pageDesc': '서비스센터 홈페이지를 통해 등록하신 칭찬, 개선 건에 대한 내역조회를 하실 수 있습니다.'
             })
             <div class="contents support my-status">
-                <div class="login-guide">
-                    <p class="txt">출장서비스 예약 메뉴를 LG전자 통합 사이트의 회원으로 이용하시면 보다 편리하게 이용할 수 있습니다.</p>
-                    <a href="#" class="btn mix size"><span>로그인</span></a>
-                </div>
-
+                @@include('./common/support/login-guide.html', {
+                    'text': '로그인을 하시면 더욱 편리하게 이용하실 수 있습니다.<br>개인 정보 자동 입력, 저장해 놓은 제품 선택 등'
+                })
                 <div class="cont-wrap">
 
                     <div class="section">
@@ -35,15 +33,22 @@
                                     <div class="tit-wrap">
                                         <h2 class="tit">접수번호로 빠르게 조회</h2>        
                                     </div>
-                                    <form action="/html/CS/CSRF6061.html" data-ajax="/lg5-common/data-ajax/support/flag.json" id="numberForm" novalidate>
+                                    <!-- 
+                                        1. 접수 내역이 있는 경우
+                                        /lg5-common/data-ajax/support/receptionDetailsSuccess.json
+
+                                        2. 접수 내역이 없는 경우
+                                        /lg5-common/data-ajax/support/receptionDetailsFail.json
+                                     -->
+                                    <form action="/html/CS/CSRF6061.html" method="POST" data-ajax="/lg5-common/data-ajax/support/receptionDetailsSuccess.json" id="numberForm" novalidate>
                                         <div class="form-wrap">
                                             <div class="forms block-type">
                                                 <div class="tit">
-                                                    <label for="name1" class="req">이름<span class="blind">필수입력</span></label>
+                                                    <label for="userName1" class="req">이름<span class="blind">필수입력</span></label>
                                                 </div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="name1" id="name1" placeholder="이름 입력" data-msg-target=".err-block" data-error-msg="이름을 입력해 주세요." data-name1-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
+                                                        <input type="text" name="userName1" id="userName1" placeholder="이름 입력" data-error-msg="이름을 입력해 주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
@@ -56,7 +61,7 @@
                                                 </div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="number" name="number" id="number" placeholder="접수 번호 입력" data-msg-target=".err-block" data-error-msg="접수번호를 입력해 주세요." data-required="true" required>
+                                                        <input type="number" name="number" id="number" placeholder="접수 번호 입력" data-error-msg="접수번호를 입력해 주세요." data-required="true" required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
@@ -65,7 +70,7 @@
                                             </div>
                                         </div>
                                         <div class="btn-group center">
-                                            <button type="button" class="btn pink btn-confirm"><span>확인</span></button>
+                                            <button type="button" class="btn btn-confirm"><span>확인</span></button>
                                         </div>
                                     </form>
                                 </div>
@@ -74,15 +79,22 @@
                                     <div class="tit-wrap">
                                         <h2 class="tit">휴대폰 인증으로 한번에 조회</h2>        
                                     </div>
-                                    <form action="/html/CS/CSRF6061.html" data-ajax="/lg5-common/data-ajax/support/flag.json" id="phoneForm" novalidate>
+                                    <!-- 
+                                        1. 접수 내역이 있는 경우
+                                        /lg5-common/data-ajax/support/receptionDetailsSuccess.json
+
+                                        2. 접수 내역이 없는 경우
+                                        /lg5-common/data-ajax/support/receptionDetailsFail.json
+                                    -->
+                                    <form action="/html/CS/CSRF6061.html" method="POST" data-ajax="/lg5-common/data-ajax/support/receptionDetailsSuccess.json" id="phoneForm" novalidate>
                                         <div class="form-wrap">
                                             <div class="forms block-type">
                                                 <div class="tit">
-                                                    <label for="name2" class="req">이름<span class="blind">필수입력</span></label>
+                                                    <label for="userName2" class="req">이름<span class="blind">필수입력</span></label>
                                                 </div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="name2" id="name2" placeholder="이름 입력" data-msg-target=".err-block" data-error-msg="이름을 입력해 주세요." data-name2-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
+                                                        <input type="text" name="userName2" id="userName2" placeholder="이름 입력" data-error-msg="이름을 입력해 주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
@@ -91,19 +103,29 @@
                                             </div>
                                             <div class="forms block-type">
                                                 <div class="tit">
-                                                    <label for="phone" class="req">휴대전화<span class="blind">필수입력</span></label>
+                                                    <label for="phoneNo" class="req">휴대전화<span class="blind">필수입력</span></label>
                                                 </div>
                                                 <div class="conts">
                                                     <div class="box">
                                                         <div class="input-wrap">
-                                                            <input type="tel" name="phone" id="phone" placeholder="휴대전화 번호 입력" maxlength="11" data-msg-target=".err-block" data-error-msg="휴대전화를 입력해 주세요." data-required="true" required>
+                                                            <input type="tel" name="phoneNo" id="phoneNo" placeholder="휴대전화 번호 입력" maxlength="11" data-error-msg="휴대전화를 입력해 주세요." data-required="true" required>
                                                         </div>
                                                         <div class="cell">
-                                                            <button type="button" class="btn btn-certi" data-ajax="/lg5-common/data-ajax/support/auth.json"><span>인증 번호 발송</span></button>
+                                                            <!-- 
+                                                                1. 이름, 휴대전화 유효성 체크 통과 후
+                                                                /lg5-common/data-ajax/support/authSendSuccess.json
+
+                                                                2. 1분 내 인증 번호 발송/재발송 버튼을 2회 째 클릭 시
+                                                                /lg5-common/data-ajax/support/authSendRetry.json
+
+                                                                3. 1분 내 인증 번호/재발송 버튼을 3회 째 선택 시
+                                                                /lg5-common/data-ajax/support/authSendFail.json
+                                                            -->
+                                                            <button type="button" class="btn btn-send" data-ajax="/lg5-common/data-ajax/support/authSendSuccess.json"><span>인증 번호 발송</span></button>
                                                         </div>
                                                     </div>
                                                     <div class="input-wrap">
-                                                        <input type="number" name="certiNumber" id="certiNumber" placeholder="인증번호 입력"  data-msg-target=".err-block" data-error-msg="인증번호를 입력해 주세요." data-required="true" disabled required>
+                                                        <input type="number" name="authNo" id="authNo" placeholder="인증번호 입력"  data-error-msg="인증번호를 입력해 주세요." data-required="true" disabled required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
@@ -112,7 +134,7 @@
                                             </div>
                                         </div>
                                         <div class="btn-group center">
-                                            <button type="button" class="btn pink btn-confirm"><span>확인</span></button>
+                                            <button type="button" class="btn btn-confirm"><span>확인</span></button>
                                         </div>
                                     </form>
                                 </div>
@@ -149,29 +171,8 @@
         "msg" : "인증 번호 발송 버튼을 선택해 주세요."
     })
 
-    <!-- 인증이 성공된 경우 -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop3",
-        "msgOnly" : true,
-        "msg" : "휴대전화 인증이 완료되었습니다."
-    })
-
-    <!-- 인증 번호 발송/재발송 버튼 선택 시 -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop4",
-        "msgOnly" : true,
-        "msg" : "입력하신 휴대 전화 번호로 인증 번호를 보내드렸습니다."
-    })
-
-    <!-- 1분 내 인증 번호/재발송 버튼을 3회 선택 시 -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop5",
-        "msgOnly" : true,
-        "msg" : "1분 당 2회만 인증 번호 발송이 가능합니다."
-    })
-
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
-    <script src="/lg5-common/js/support/myStatus.min.js"></script>
+    <script src="/lg5-common/js/support/customVoice/myStatus.min.js"></script>
 </body>
 </html> 
