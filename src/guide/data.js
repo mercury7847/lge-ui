@@ -66,7 +66,7 @@ var res = {
 				"KRC0030_Article List[KRC0045]" : ["/html/components/KRC0030.html","","검수완료"],
 				"KRC0031_Layered component - Multi type[KRC0049]" : ["/html/components/KRC0031.html","","검수완료"],
 				"KRC0032_USP BANNER[KRC0055]" : ["/html/components/KRC0032.html","","검수완료"],
-				"KRC0033_BG 4TEXT[KRC0056]" : ["/html/components/KRC0033.html","","검수완료"],
+				"KRC0033_BG 4TEXT[KRC0056]" : ["/html/components/KRC0033.html","","검수요청"],
 				"KRC0034_BG-3 Image-Textoverlay[KRC0057]" : ["/html/components/KRC0034.html","","검수완료"],
 				"KRC0035_Side Slide Image - Text[KRC0058]" : ["/html/components/KRC0035.html","","검수완료"],
 				"KRC0036_BG-Video-Textoverlay[KRC0061]" : ["/html/components/KRC0036.html","","검수완료"],
@@ -95,7 +95,7 @@ var res = {
 				"KRP0014_PDP_FAQ[KRC0011]" : ["/html/components/KRP0014.html","","검수완료"],
 				"KRP0015_Sticky Compare[KRP0018]" : ["/html/components/KRP0015.html","","검수완료"],
 				"KRP0016_Social Share[KRP0019]" : ["/html/components/KRP0016.html","","검수완료"],
-				"KRP0017_Sitemap[KRP0020]" : ["/html/components/KRP0017.html","","검수완료"],
+				"KRP0017_Sitemap[KRP0020]" : ["/html/components/KRP0017.html","","검수요청"],
 				"KRP0018_Story tag[KRP0023]" : ["/html/components/KRP0018.html","","검수완료"],
 				"KRP0019_Best review[KRP0024]" : ["/html/components/KRP0019.html","","검수완료"],
 				"KRP0020_Event list for category[KRP0025]" : ["/html/components/KRP0020.html","","검수완료"],
@@ -352,7 +352,7 @@ var res = {
 				"알림" : ["/html/MYC/ACCF7062.html","","검수완료"]
 			},
 			"고객지원(CS)" : {
-				"4찾기" : {
+				"매장찾기" : {
 					"매장칮기 검색/결과 " : ["/html/CS/CSRF6040.html","","검수요청"],
 					"매장 상세" : ["/html/CS/CSRF6041.html","","검수요청"],
 					"위치정보제공동의 팝업" : ["/html/CS/CSRF6098.html","","검수요청"],
