@@ -1,121 +1,100 @@
 .cont-wrap {
-    padding: 48px 0 120px;
+    max-width:100%;
+    padding: 0;
     background-color: #fff;
     @include mobile {
-        padding: 56px 0 61px;
-    }
-    .page-header {
-        padding: 0 40px 56px;
-        .title {
-            margin-top: 0;
-            font-size: 24px;
-            line-height: 36px;
-        }
-        .tabs-wrap {
-            margin-top: 20px;
-            .tabs {
-                padding: 10px 0;
-            }
-        }
+        border:none;
     }
 }
-// Top Visual
-.top-visual-area {
-    position: relative;
-    height: 380px;
-    background: url('/lg5-common/images/STC/img-lgpay-banner.jpg') no-repeat 50% 50%;
-    background-size: cover;
-    @include mobile {
-        height: 320px;
-        background: url('/lg5-common/images/STC/img-lgpay-banner-m.jpg') no-repeat 50% 50%;
-        background-size: 100% 100%;
+
+.visual-wrap {
+    position:relative;
+    img {
+        width:100%;
     }
-    //background-size: 100% 100%;
-    /*.visual-img {
-        &.full {
-            width: 100%;
+    @include mobile {
+        // padding:0 20px;
+    }
+    .bg {
+        display:block;
+        width:100%;
+        height:100%;
+        background-position:center center;
+        background-size:auto 100%;
+        background-repeat:no-repeat;
+    }
+    .tit-wrap {
+        position:absolute;
+        top:50%;
+        left:19.4792vw;
+        transform:translateY(-50%);
+        @include mobile {
+            top:44px;
+            left:40px;
+            right:40px;
+            transform:translateY(0);
         }
-        &.wide {
-            max-width: 1920px;
-        }
-        img {
-            max-width: 100%;
-        }
-    }*/
-    .visual-text {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        .inner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            max-width: 1284px;
-            padding: 0 56px;
-            color: #fff;
-            transform: translate(-50%, -50%);
+        .tit {
+            font-size:48px;
+            line-height:64px;
+            font-weight:700;
+            color: #222;
             @include mobile {
-                padding: 0 40px;
+                font-size:26px;
+                line-height:35px;
             }
-            .tit {
-                font-size: 40px;
-                line-height: 46px;
-                color: #fff;
-                @include mobile {
-                    font-size: 24px;
-                    line-height: 29px;
-                }
+        }
+        .txt {
+            display:block;
+            padding-top:8px;
+            font-size:24px;
+            line-height:34px;
+            font-weight:700;
+            color: #222;
+            @include mobile {
+                padding-top:6px;
+                font-size:16px;
+                line-height:24px;
             }
-            .desc {
-                margin-top: 4px;
-                font-size: 20px;
-                line-height: 30px;
-                color: #fff;
-                @include mobile {
-                    margin-top: 2px;
-                    font-size: 16px;
-                    line-height: 23px;
-                }
-            }
-            .desc2 {
-                margin-top: 4px;
-                font-size: 14px;
-                line-height: 20px;
-                color: #ccc;
-                @include mobile {
-                    margin-top: 10px;
-                    font-size: 16px;
-                    line-height: 24px;
-                }
-            }
-            .btn-area {
-                margin-top: 52px;
-                @include mobile {
-                    margin-top: 97px; 
-                }
-                .btn {
-                    color: #fff;
-                    border-color: #fff;
-                }
+        }
+        .btn-area {
+            margin-top: 24px;
+            .btn {
+                background-color: transparent;
             }
         }
     }
 }
 
+@include mobile {
+    .page-header {
+        padding:0;
+        &.border {
+            border-bottom:12px solid #f4f4f4;
+        }
+        .title {
+            display:none;
+        }
+    }
+    .tabs-wrap.btn-type {
+        padding-top:40px;
+        text-align:center;
+    }
+}
+
 .lgpay-content {
     width: 100%;
-    max-width: calc(1284px + 60px);
+    max-width: calc(1146px + 80px);
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 40px;
     @include mobile {
-        padding: 0;
+        max-width: 100%;
+        padding: 0 16px;
     }
     .lgpay-introdution {
         display: flex;
-        margin-bottom: 120px;
+        justify-content: space-between;
+        margin-bottom: 80px;
         @include mobile {
             display: block;
             margin-bottom: 40px;
@@ -128,40 +107,33 @@
                 width: 100%;
                 padding: 0 20px 32px;
             }
+            .num {
+                margin-bottom: 12px;
+                font-weight: 700;
+                @include font-large-2;
+                color: $color-gray-1;
+            }
             .tit {
-                font-size: 32px;
-                line-height: 38px;
-                color: #222;
-                @include mobile {
-                    font-size: 20px;
-                    line-height: 27px;
-                }
+                @include font-large-2;
             }
             .desc {
-                margin-top: 32px;
-                font-size: 16px;
-                line-height: 24px;
-                color: #222;
+                margin-top: 12px;
+                @include font-medium;
                 @include mobile {
                     margin-top: 16px;
-                    font-size: 14px;
-                    line-height: 18px;
                 }
                 .txt {
                     display: block;
                     margin-top: 16px;
-                    font-size: 16px;
-                    line-height: 24px;
-                    color: #808080;   
+                    @include font-small;
+                    color: $color-gray-1;
                     @include mobile {
                         margin-top: 12px;
-                        font-size: 14px;
-                        line-height: 18px;
                     } 
                 }
             }
             .btn-area {
-                margin-top: 64px;
+                margin-top: 24px;
                 @include mobile {
                     margin-top: 24px;
                     .btn {
@@ -172,7 +144,7 @@
             
         }
         .lgpay-visual {
-            max-width: 848px;
+            max-width: 678px;
             flex: 1;
             img {
                 max-width: 100%;
