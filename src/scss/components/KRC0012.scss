@@ -1,0 +1,301 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+$color: (lightgray, dark, black, white);
+
+.KRC0012 {
+    // padding:60px 0;
+
+    .btn {
+        display: inline-block;
+        min-width:194px;
+        padding:15px 0;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: #fff;
+        line-height: 24px;
+        @include font-family($font-weight-bold);
+        font-size: 16px;
+        color: #111;
+        text-align: center;
+        vertical-align: top;
+
+        &.btn-outline-primary {
+            border-color: #212121;
+            background-color: #fff;
+            color: #111;
+        }
+        &.btn-primary {
+            border-color: #111;
+            background-color: #111;
+            color: #fff;
+        }
+    }
+
+    .link-text {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #212121;
+        font-size: 14px;
+        line-height: 20px;
+        color: #111;
+        vertical-align: top;
+
+        &.ico-right {
+            margin-right: 14px;
+            &:after {
+                position: absolute;
+                @include calc(top, 50%, 6px);
+                right: -12px;
+                width: 8px;
+                height: 8px;
+                border: solid #111;
+                border-width: 2px 2px 0 0;
+                transform: rotate(45deg);
+                content: '';
+            }
+        }
+
+        &.bold {
+            @include font-family($font-weight-bold);
+        }
+    }
+
+    .component-box {
+        max-width:1284px;
+        margin:0 auto;
+        @include mobile {
+            padding:0 24px;
+        }
+        .items-group {
+            position:relative;
+            padding:0 109px;
+            @include mobile {
+                padding:0;
+            }
+            .indi-wrap {
+                display:none !important;
+                @include mobile {
+                    display:block !important;
+                    position:absolute;
+                    left:0;
+                    right:0;
+                    button {
+                        position:relative;
+                        z-index:50;
+                    }
+                }
+            }
+            .ui_carousel_list {
+                overflow:hidden;
+            }
+            .items {
+                @include clearfix;
+                .item-box {
+                    @include clearfix;
+                    .visual-wrap {
+                        float:left;
+                        width:412px;
+                        .visual-area a {
+                            display:block;
+                            overflow:hidden;
+                            height:0;
+                            padding-bottom:75%;
+                            img {
+                                width:100%;
+                                height:auto;
+                                vertical-align:top;
+                            }
+                        }
+                        .visual-area.animation-box {
+                            .play-animaion-btn {
+                                height: 36px;
+                                padding-bottom: 0;
+                            }
+                            img {
+                                width:100%;
+                                height:auto;
+                                vertical-align:top;
+                            }
+                        }
+                        @include mobile {
+                            float:none;
+                            width:auto;
+                        }
+                    }
+                    .text-wrap {
+                        margin-left:(412px + 24px);
+                        .title * {
+                            font-size:18px;
+                            line-height:26px;
+                            font-weight:700;
+                        }
+                        .text {
+                            font-size:16px;
+                            line-height:24px;
+                            margin-top:22px;
+                        }
+                        .btn-type-box {
+                            margin:21px -10px 0;
+                            span {
+                                display:inline-block;
+                                margin:12px 10px 0;
+                                vertical-align:top;
+                            }
+                        }
+                        .btn-type-text {
+                            margin:26px -12px 0;
+                            span {
+                                display:inline-block;
+                                margin:24px 12px 0;
+                                vertical-align:top;
+                            }
+                        }
+                        @include mobile {
+                            margin-left:0;
+                            padding-top:54px;
+                        }
+                    }
+                }
+            }
+            .btn-arrow {
+                position:absolute;
+                top:50%;
+                margin-top:-28px;
+                &.prev {
+                    left:0;
+                }
+                &.next {
+                    right:0;
+                }
+                @include mobile {
+                    display:none !important;
+                }
+            }
+        }
+        .desc {
+            margin:24px 109px 0;
+            padding:11px 23px;
+            border:1px solid #ddd;
+            background:#fff;
+            color:#111;
+            font-size:14px;
+            line-height:20px;
+            @include mobile {
+                margin:24px 0 0;
+            }
+        }
+    }
+    @each $bg in $color {
+        &.bg-#{$bg} {
+            @if $bg == lightgray {
+                background:#f4f4f4;
+            } @else if $bg == dark {
+                background:#333;
+            } @else if $bg == black {
+                background:#000;
+            } @else if $bg == white {
+                background:#fff;
+            }
+
+            .text-wrap {
+                .title * {
+                    @if $bg == lightgray {
+                        color:#111;
+                    } @else if $bg == white {
+                        color:#111;
+                    } @else if $bg == black {
+                        color:#fff;
+                    } @else if $bg == dark {
+                        color:#fff;
+                    }
+                }
+                .text {
+                    @if $bg == lightgray {
+                        color:#616161;
+                    } @else if $bg == white {
+                        color:#616161;
+                    } @else if $bg == black {
+                        color:#fff;
+                    } @else if $bg == dark {
+                        color:#fff;
+                    }
+                }
+                .btn-type-box {
+                    .btn-outline-primary {
+                        @if $bg == black {
+                            border-color:#fff;
+                            background:transparent;
+                            color:#fff !important;
+                        } @else if $bg == dark {
+                            border-color:#fff;
+                            background:#fff;
+                            color:#111 !important;
+                        } @else if $bg == lightgray {
+                            background:transparent;
+                        }
+                    }
+                    .btn-primary {
+                        @if $bg == black {
+                            border-color:#fff;
+                            background:#fff;
+                            color:#111;
+                        } 
+                    }
+                }
+                .btn-type-text {
+                    .link-text {
+                        @if $bg == black {
+                            color:#fff;
+                            border-color:#fff;
+                            &::after {
+                                border-color:#fff;
+                            }
+                        } @else if $bg == dark {
+                            color:#fff;
+                            border-color:#fff;
+                            &::after {
+                                border-color:#fff;
+                            }
+                        }
+                    }
+                }
+            }
+            .desc {
+                @if $bg == black {
+                    border:1px solid transparent;
+                    background:rgba(#fff, .1);
+                    color:#fff;
+                } @else if $bg == dark {
+                    color:#fff;
+                    border:1px solid transparent;
+                    background:rgba(#fff, .1);
+                }
+            }
+            .indi-wrap {
+                @if $bg == black {
+                    li {
+                        .btn-indi {
+                            background:rgba(#fff, .5);
+                        }
+                        &.on .btn-indi {
+                            background:#fff;
+                        }
+                    }
+                } @else if $bg == dark {
+                    li {
+                        .btn-indi {
+                            background:rgba(#fff, .5);
+                        }
+                        &.on .btn-indi {
+                            background:#fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

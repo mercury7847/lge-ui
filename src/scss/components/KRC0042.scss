@@ -1,0 +1,311 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+
+.KRC0042 {
+    padding:60px 0;
+    &.bg-lightgray {
+        background:#f4f4f4;
+    }
+    &.bg-dark {
+        background:#333;
+        .link-text {
+            color:#111 !important;
+        }
+    }
+    &.bg-black {
+        background:#000;
+        .link-text {
+            color:#111 !important;
+        }
+    }
+    &.bg-white {
+        background:#fff;
+    }
+
+    .btn {
+        display: inline-block;
+        min-width:194px;
+        padding:15px 0;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: #fff;
+        line-height: 24px;
+        @include font-family($font-weight-bold);
+        font-size: 16px;
+        color: #111;
+        text-align: center;
+        vertical-align: top;
+
+        &.btn-outline-primary {
+            border-color: #212121;
+            background-color: #fff;
+            color: #111;
+        }
+        &.btn-primary {
+            border-color: #111;
+            background-color: #111;
+            color: #fff;
+        }
+    }
+
+    .link-text {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #212121 !important;
+        font-size: 14px;
+        line-height: 20px;
+        color: #111;
+        vertical-align: top;
+
+        &.ico-right {
+            margin-right: 14px;
+            &:after {
+                position: absolute;
+                @include calc(top, 50%, 6px);
+                right: -12px;
+                width: 8px;
+                height: 8px;
+                border: solid #111;
+                border-color:#111 !important;
+                border-width: 2px 2px 0 0;
+                transform: rotate(45deg);
+                content: '';
+            }
+        }
+
+        &.bold {
+            @include font-family($font-weight-bold);
+        }
+    }
+
+    // $class : component size class
+    // $size : inner max-size
+    // $imgW : visual-wrap max-width
+    // $imgWF : visual-wrap max-width(768~1109)
+    // $textW : text-box-area max-width
+    // $pb : text-box-area padding-bottom
+    // $pbF : text-box-area padding-bottom(768~1109)
+    // $bottom : text-wrap bottom position
+    // $minW :text-wrap width
+    // $block : button layout 'block'
+    // $mt : text-wrap mobile minus margin-top
+    $full:      (full,      1600px, 100%,   100%,   1284px, 96px,   150px,  0,      630px,  null,   -35px);
+    $wide:      (wide,      1284px, 1066px, 70%,    100%,   86px,   150px,  0,      630px,  null,   -40px);
+    $standard:  (standard,  1066px, 740px,  62%,    100%,   132px,  180px,  0,      424px,  block,  -35px);
+    $high:      (high,      1066px, 630px,  52%,    100%,   0,      150px,  70px,   630px,  null,   -80px);
+    @each $class, $size, $imgW, $imgWF, $textW, $pb, $pbF, $bottom, $minW, $block, $mt in $full, $wide, $standard, $high {
+        // 사이즈별 스타일
+        &.#{$class} {
+            .inner {
+                position:relative;
+                margin:0 auto;
+                max-width:$size;
+                
+                .visual-wrap {
+                    max-width:$imgW;
+                    @media screen and (min-width:768px) and (max-width:1109px) {
+                        max-width:$imgWF;
+                    }
+                    @include mobile {
+                        max-width:100%;
+                    }
+                    a.see-video:not(.acc-video-content) {
+                        display:block;
+                        position:relative;
+                        img {
+                            width:100%;
+                            height:auto;
+                            vertical-align:top;
+                        }
+                    }
+                    .visual-area.image,
+                    .visual-area.animation-box {
+                        img {
+                            width:100%;
+                            height:auto;
+                            vertical-align:top;
+                        }
+                    }
+                }
+                .text-box-area {
+                    position:relative;
+                    max-width:$textW;
+                    height:0;
+                    margin:0 auto;
+                    padding-bottom:$pb;
+                    z-index: 6;
+                    .text-wrap {
+                        width:$minW;
+                        padding:56px 32px;
+                        background:#fff;
+                        .title *,
+                        .text,
+                        .btn-outline-primary
+                         {
+                            color:#111;
+                        }
+                        .btn-primary {
+                            color:#fff;
+                        }
+                    }
+                    @media screen and (min-width:768px) and (max-width:1109px) {
+                        padding-bottom:$pbF;
+                    }
+                    @include mobile {
+                        height:auto;
+                        padding-bottom:0;
+                        .text-wrap {
+                            width:auto;
+                            margin-top:$mt;
+                            padding:56px 12px;
+                        }
+                    }
+                    .title * {
+                        color:#111;
+                        font-size:20px;
+                        line-height:30px;
+                        font-weight:700;
+                    }
+                    .text {
+                        margin-top:16px;
+                        color:#111;
+                        font-size:16px;
+                        line-height:24px;
+                    }
+                    .btn-type-box, .btn-type-text {
+                        margin-top:28px;
+                        font-size:0;
+                        span {
+                            @if $block {
+                                display:$block;
+                            } @else {
+                                display:inline-block;
+                                vertical-align:top;
+                            }
+                            margin-top:12px;
+                            margin-right:24px;
+                            &:last-child {
+                                margin-left:0;
+                            }
+                        }
+
+                        @include mobile {
+                            span {
+                                display:block;
+                            }
+                            .btn {
+                                min-width:194px;
+                                padding:15px 0;
+                                font-size:16px;
+                                line-height:24px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // left, right 옵션 별 스타일
+            $pst: (left, right);
+            @each $key in $pst {
+                .inner.large-align-#{$key} {
+                    .visual-wrap {
+                        @if $key == left {
+                            margin-left:auto;
+                            .animation-box .caption {
+                                text-align: right;
+                                @include mobile {
+                                    text-align: left;
+                                }
+                            }
+                        } @else if $key == right {
+                            margin-right:auto;
+                            .animation-box .caption {
+                                text-align: left;
+                                @include mobile {
+                                    text-align: left;
+                                }
+                            }
+                        }
+                        @include mobile {
+                            @if $class == full {
+                                margin:auto;
+                            } @else if $class == wide {
+                                @if $key == left {
+                                    margin-left:24px;
+                                } @else if $key == right {
+                                    margin-right:24px;
+                                }
+                            } @else if $class == standard {
+                                @if $key == left {
+                                    margin-left:24px;
+                                } @else if $key == right {
+                                    margin-right:24px;
+                                }
+                            } @else if $class == high {
+                                @if $key == left {
+                                    margin-left:48px;
+                                } @else if $key == right {
+                                    margin-right:48px;
+                                }
+                            }
+                        }
+                    }
+                    .text-box-area {
+                        .text-wrap {
+                            @media screen and (min-width:1110px) {
+                                @if $class == high {
+                                    bottom:$bottom;
+                                }
+                            }
+                            @media screen and (min-width:768px) and (max-width:1109px) {
+                                @if $class == high {
+                                    bottom:0;
+                                }
+                            }
+                            @media screen and (min-width:768px) {
+                                position:absolute;
+                                @if $class != high {
+                                    bottom:$bottom;
+                                }
+                                
+                                @if $key == left {
+                                    left:0;
+                                } @else if $key == right {
+                                    right:0;
+                                }
+                            }
+                            @include mobile {
+                                @if $class == full {
+                                    margin-left:24px;
+                                    margin-right:24px;
+                                } @else if $class == wide {
+                                    @if $key == left {
+                                        margin-right:24px;
+                                    } @else if $key == right {
+                                        margin-left:24px;
+                                    }
+                                } @else if $class == standard {
+                                    @if $key == left {
+                                        margin-right:48px;
+                                    } @else if $key == right {
+                                        margin-left:48px;
+                                    }
+                                } @else if $class == high {
+                                    @if $key == left {
+                                        margin-right:48px;
+                                    } @else if $key == right {
+                                        margin-left:48px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

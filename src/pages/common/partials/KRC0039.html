@@ -1,0 +1,100 @@
+<!-- components/partials/KRC0039.html -->
+<div class="component-wrap @@bg-color">
+	<!--
+		[.component-wrap 옵션]
+		1. 여백
+		.zero-top : 상단여백 없음
+		.zero-btm : 하단여백 없음
+
+        [.text-area 옵션]
+		1. text-align
+		.text-left : 왼쪽 정렬
+		.text-right : 오른쪽 정렬
+        .text-center : 중앙 정렬
+        
+        2. font color
+        .type-black : font-color #222
+        .type-white : font-color #fff
+
+        [.tbl-layout 옵션]
+        1. vertical align
+        .vertical-top : vertical Top
+        .vertical-middle : vertical Middle
+        .vertical-bottom : vertical Bottom
+
+        2. visual order (DOM 순서 변경도 필요)
+        .visual-left : visual image Left
+        .visual-right : visual image Right
+
+		[.body-copy 옵션]
+		1. 폰트 종류 : 
+		.font-regular : 레귤러
+		.font-bold : 볼드
+		.font-regular-italic : 레귤러 이탤릭
+		.font-bold-italic : 볼드 이탤릭
+
+		2. 폰트 스타일: 
+		기본은 언더라인 없음 
+		.font-underline : 언더라인
+	-->
+	<section class="component KRC0039">
+		<div class="inner">
+            <div class="tbl-layout @@verticalType @@if(context.visualFirst){visual-left}@@if(context.visualLast){visual-right}">
+                @@if ( context.visualFirst ) {
+                <!-- visual -->
+                <div class="visual-cell">
+                    <div class="visual-area ui_carousel_slider">
+                        <div class="slide-content ui_carousel_list">
+                            <ul class="slide-track ui_carousel_track">
+                                @@for ( var i=0; i < images; i++ ) {
+                                <li class="slide-conts ui_carousel_slide">
+                                    <img src="/lg5-common/images/KRC0039/@img`+[i+1]+`.jpg" data-pc-src="/lg5-common/images/KRC0039/@img`+[i+1]+`.jpg" data-m-src="/lg5-common/images/KRC0039/@img-m`+[i+1]+`.jpg" alt="">
+                                    <p class="hidden">graphic description : </p>
+                                </li>
+                                }
+                            </ul> 
+                        </div>
+                    </div>
+                </div>
+                <!-- // visual -->
+                }
+
+                <!-- text area -->
+                <div class="text-area @@alignType1 @@fontColor1">
+                    @@for ( var j=0; j < lists; j++ ) {
+                    <div class="text-inner">
+                        <div class="title">
+                            <h2>헤드라인 텍스트 글자 수 최대 40자까지 사용 가능 최대 2줄 노출</h2>
+                        </div>
+                        <p class="body-copy @@fontStyle1">공백 포함 400자까지 글자수를 제한합니다. 공백 포함 400자까지 글자수를 제한합니다.</p>
+                        <div class="images">
+                            <img src="/lg5-common/images/KRC0039/@img-add.jpg" alt="">
+                            <p class="hidden">graphic description : </p>
+                        </div>
+                    </div>
+                    }
+                </div>
+                <!-- // text area -->
+
+                @@if ( context.visualLast ) {
+                <!-- visual -->
+                <div class="visual-cell">
+                    <div class="visual-area ui_carousel_slider">
+                        <div class="slide-content ui_carousel_list">
+                            <ul class="slide-track ui_carousel_track">
+                                @@for ( var i=0; i < images; i++ ) {
+                                <li class="slide-conts ui_carousel_slide">
+                                    <img src="/lg5-common/images/KRC0039/@img`+[i+1]+`.jpg" data-pc-src="/lg5-common/images/KRC0039/@img`+[i+1]+`.jpg" data-m-src="/lg5-common/images/KRC0039/@img-m`+[i+1]+`.jpg" alt="">
+                                    <p class="hidden">graphic description : </p>
+                                </li>
+                                }
+                            </ul> 
+                        </div>
+                    </div>
+                </div>
+                <!-- // visual -->
+                }
+            </div>
+        </div>
+	</section>
+</div>

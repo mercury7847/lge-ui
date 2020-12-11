@@ -1,0 +1,212 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRC0021 {
+    width: 100%;
+    // max-width: (1284px + 60px);
+    // margin: 0 auto;
+    // padding-right: 30px;
+    // padding-left: 30px;
+
+    @include mobile {
+        max-width: 100%;
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+    $color: (lightgray, dark, black, white);
+	@each $bg in $color {
+		&.bg-#{$bg} {
+			@if $bg == lightgray {
+				background-color: #f4f4f4;
+				.title {
+					&, * {
+						color: #111;
+					}
+				}
+			} @else if $bg == dark {
+                background-color: #333;
+                .unit-box {
+                    & .head-copy,
+                    & .title,
+                    & .body-copy {
+                        color: #fff;
+                    }
+                }
+                .btn-box .btn.btn-primary {
+                    border-color:#fff;
+                    background-color:#fff;
+                    color:#111 !important;
+                }
+                .link-text.ico-right {
+                    color:#fff;
+				}
+			} @else if $bg == black {
+				background-color: #000;
+				.unit-box {
+                    & .head-copy,
+                    & .title,
+                    & .body-copy {
+                        color: #fff;
+                    }
+                }
+                .btn-box .btn.btn-primary {
+                    border-color:#fff;
+                    background-color:#fff;
+                    color:#111 !important;
+                }
+                .link-text.ico-right {
+                    color:#fff;
+				}
+			} @else if $bg == white {
+				background-color: #fff;
+				.title {
+					&, * {
+						color: #111;
+					}
+				}
+			}
+		}
+	}
+
+    .btn {
+        display: inline-block;
+        min-width:194px;
+        padding:15px 0;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: #fff;
+        line-height: 24px;
+        @include font-family($font-weight-bold);
+        font-size: 16px;
+        color: #111;
+        text-align: center;
+        vertical-align: top;
+
+        &.btn-outline-primary {
+            border-color: #212121;
+            background-color: #fff;
+            color: #111;
+        }
+        &.btn-primary {
+            border-color: #111;
+            background-color: #111;
+            color: #fff;
+        }
+    }
+
+    .unit-list {
+        @include grid-row;
+        .unit-box {
+            @include grid-col(left,4,12);
+            padding: 0 24px;
+            @include mobile {
+                margin-bottom: 60px;
+                padding: 0 6px;
+            }
+        }
+
+        &.half-type {
+            .unit-box {
+                @include grid-col(left,6,12);
+                padding: 0 24px;
+            }
+        }
+    }
+
+    .visual-area {
+        img {
+            width: 100%;
+        }
+    }
+
+    .unit-box {
+        .visual-area {
+            margin: 0 -12px 16px;
+            @include mobile {
+                margin: 0 0 16px;
+            }
+        }
+        .head-copy {
+            margin-bottom: 16px;
+            font-size: 16px;
+            line-height: 24px;
+            color: #616161;
+        }
+        .title {
+            margin-bottom: 16px;
+            @include font-family($font-weight-bold);
+            font-size: 24px;
+            line-height: 34px;
+            color: #111;
+            @include textClipClamp(2);
+        }
+        .body-copy {
+            margin-bottom: 40px;
+            font-size: 16px;
+            line-height: 24px;
+            color: #616161;
+        }
+    }
+
+    .btn-box {
+        margin-top: 64px - 12px;
+        text-align: center;
+        .btn {
+            width: 630px;
+        }
+        @include mobile {
+            margin-top: 4px;
+            .btn {
+                width: 100%;
+            }
+        }
+    }
+
+    // 텍스트 가로정렬 및 버튼 사이 간격
+    .align-left {
+        .bottom-btn {
+            span {
+                display: inline-block;
+                margin: 0 24px 12px 0;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+    .align-right {
+        .bottom-btn {
+            span {
+                display: inline-block;
+                margin: 0 0 12px 24px;
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+    .align-center {
+        .bottom-btn {
+            margin: 0 -12px;
+            span {
+                display: inline-block;
+                margin: 0 12px 12px;
+            }
+        }
+    }
+    @include mobile {
+        .align-left,
+        .align-right,
+        .align-center {
+            .bottom-btn {
+                span {
+                    display: block;
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,16 @@
+<!-- components/partials/KRC0031-list.html -->
+
+<div class="lay-cont-wrap @@vAlign">
+	@@if (context.hasBG) {
+		<span class="bg ui_bg_switch" data-pc-src="@@bgPC" data-m-src="@@bgMo" aria-hidden="true"></span>
+	}
+	<div class="cont-box @@textColor">
+		<strong class="lay-tit">@@title</strong>
+		<p class="lay-txt">@@text</p>
+		<ul class="bullet-list">
+			@@for (var i = 0; i < bullets.length; i++) {
+				<li class="b-txt">`+bullets[i]+`</li>
+			}
+		</ul>
+	</div>
+</div>

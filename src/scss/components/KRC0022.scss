@@ -1,0 +1,263 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRC0022 {
+    width: 100%;
+    // max-width: (1284px + 60px);
+    // margin: 0 auto;
+    // padding-right: 30px;
+    // padding-left: 30px;
+    // padding: 0 30px;
+
+    @include mobile {
+        max-width: 100%;
+        padding: 0 24px;
+    }
+
+    .btn {
+        display: inline-block;
+        min-width:194px;
+        padding:15px 0;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: #fff;
+        line-height: 24px;
+        @include font-family($font-weight-bold);
+        font-size: 16px;
+        color: #111;
+        text-align: center;
+        vertical-align: top;
+
+        &.btn-outline-primary {
+            border-color: #212121;
+            background-color: #fff;
+            color: #111;
+        }
+        &.btn-primary {
+            border-color: #111;
+            background-color: #111;
+            color: #fff;
+        }
+    }
+
+    .link-text {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #212121;
+        font-size: 14px;
+        line-height: 20px;
+        color: #111;
+        vertical-align: top;
+
+        &.ico-right {
+            margin-right: 14px;
+            &:after {
+                position: absolute;
+                @include calc(top, 50%, 6px);
+                right: -12px;
+                width: 8px;
+                height: 8px;
+                border: solid #111;
+                border-width: 2px 2px 0 0;
+                transform: rotate(45deg);
+                content: '';
+            }
+        }
+
+        &.bold {
+            @include font-family($font-weight-bold);
+        }
+    }
+
+    &.full-size {
+		.heading-box {
+			max-width:1980px !important;
+		}
+    }
+    &.wide-size {
+		.heading-box {
+			max-width:1660px !important;
+		}
+    }
+    &.medium-size {
+		.heading-box {
+			max-width:1344px !important;
+		}
+	}
+
+    /* bg, color 추가 */
+    &.bg-black {
+        background-color: #000;
+        .heading-box {
+            .head-copy{
+                color: #fff;
+            }
+            .title {
+                color: #fff;
+                h1, h2, h3, h4, h5, h6 {
+                    color: #fff;
+                }
+            }
+            .body-copy {
+                color:#f8f8f8;
+            }
+            .btn-box{
+                .btn-primary {
+                    border-color: #fff;
+                    background: #fff;
+                    color: #111 !important;
+                }
+                .btn-outline-primary {
+                    border-color: #fff;
+                    background: 0 0;
+                    color: #fff !important;
+                }
+                .link-text {
+                    color:#f8f8f8;
+                    border-bottom: 1px solid #fff;
+                    &::after {
+                        border-color: #fff;
+                    }
+                }
+                .ico-right{
+                    &:after {
+                        background: url('/lg5-common/images/common/icons/link-right-light-gray.svg') no-repeat 0 1px;
+                    }
+                }
+            }
+        }
+    }
+    &.bg-dark-gray {
+        background-color: #333;
+        .heading-box {
+            .head-copy{
+                color: #fff;
+            }
+            .title {
+                color: #fff;
+                h1, h2, h3, h4, h5, h6 {
+                    color: #fff;
+                }
+            }
+            .body-copy {
+                color:#f8f8f8;
+            }
+            .btn-box{
+                .link-text {
+                    color:#f8f8f8;
+                }
+            }
+        }
+    }
+    &.bg-gray {
+        background-color: #f4f4f4;
+    }
+    &.bg-white {
+        background-color: #fff;
+    }
+    /* // bg, color 추가 */
+    .heading-box {
+        // max-width:1284px;
+        margin:0 auto;
+        padding:0 30px;
+        @include clearfix;
+        .head-copy{
+            width:100%;
+            margin-bottom:16px;
+            font-size:16px;
+            line-height:24px;
+            color:#616161;
+            @include mobile {
+                max-width:100%;
+            }
+        }
+        .title, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6 {
+            width:100%;
+            @include font-family($font-weight-bold);
+            margin-bottom:12px;
+            font-size:24px;
+            line-height:34px;
+            color:#111;
+        }
+        .body-copy {
+            width:100%;
+            font-size:16px;
+            line-height:24px;
+            color:#616161;
+            margin:0 0 40px 0;
+            @include mobile {
+                max-width:100%;
+            }
+        }
+        .btn-box{
+            font-size: 0;
+            @include mobile {
+                max-width:100%;
+            }
+            span {
+                display: inline-block;
+            }
+
+            @include mobile {
+                span {
+                    display: block;
+                }
+                span + span {
+                    margin-top: 24px;
+                }
+                .btn {
+                    min-width:194px;
+                    padding:16px 0;
+                    line-height: 24px;
+                    font-size: 16px;
+                }
+            }
+
+        }
+    }
+    .align-left {
+        .btn-box {
+            span {
+                margin: 0 24px 12px 0;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    .align-center{
+        text-align:center;
+        .head-copy, .title, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .body-copy, .btn-box {
+            margin-left:auto;margin-right:auto;
+        }
+        .btn-box {
+            margin: 0 -12px;
+            span {
+                margin: 0 12px 12px;
+            }
+        }
+    }
+    .align-right{
+        text-align:right;
+        .head-copy, .title, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .body-copy, .btn-box {
+            float:right;clear:both;
+        }
+        .btn-box {
+            span {
+                margin: 0 0 12px 24px;
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+    @include mobile {
+        padding-left:24px !important;
+        padding-right:24px !important;
+    }
+
+}
