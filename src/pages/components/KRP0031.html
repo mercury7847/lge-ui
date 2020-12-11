@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+	@@include('./common/head.html', {
+		componentID: "KRP0031",
+		isJScompile: true
+	})
+<body>
+	<div class="wrap">
+		<div class="container">
+
+			<div class="component-wrap zero-top zero-btm">
+				<!--
+                    [component-wrap 옵션]
+                    1. 여백
+                    .zero-top : 상단여백 없음
+                    .zero-btm : 하단여백 없음
+				-->
+				<section class="component KRP0031">
+					<div class="search-wrap">
+						<div class="search-box">
+							<form id="searchForm" action="/html/UTS/SERF9007.html" method="post" target="_blank">
+								<div class="input-wrap">
+									<div class="box">
+										<input type="text" name="keyword" id="keyword" placeholder="두 글자 이상 입력해주세요." autocomplete="off">
+										<div class="cell">
+											<button type="button" class="btn-search"><span class="blind">검색</span></button>
+										</div>
+									</div>
+									<p class="err-msg"></p>
+								</div>
+							</form>
+						</div>	
+						<div class="info-box">
+							<button type="button" class="btn-text pink small" data-id="" data-control="modal"><span>모델명 확인방법</span></button>
+						</div>
+					</div>
+				</section>
+			</div> <!-- //.component-wrap-->
+
+		</div>
+	</div>
+</body>
+</html>

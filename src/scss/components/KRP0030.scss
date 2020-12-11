@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRP0030 {
+    /*
+    .component-inner { 
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .page-header {
+        margin-bottom: 48px;
+        &.border {
+            padding-bottom: 33px;
+            border-bottom: 8px solid #f4f4f4;
+        }
+        .tabs-wrap.btn-type {
+            padding-top: 53px;
+        }
+    }*/
+
+    .review-wrap {
+        max-width: calc(1380px + 80px);
+        margin: 0 auto;
+        padding: 0 40px;
+        @include mobile {
+            padding: 0 16px;
+        }
+
+
+    }
+
+
+}

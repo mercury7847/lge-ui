@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRP0031 {
+	.search-wrap {
+		position:relative;
+		max-width:908px;
+		margin:0 auto;
+		padding:40px 30px;
+		@include mobile {
+            padding:40px 20px;
+		}
+		.search-box {
+			.input-wrap {
+				display:block;
+				position:relative;
+				.box {
+					width:100%; 
+					.btn-search {
+						width:24px;
+						height:24px;
+						background:url('/lg5-common/images/icons/icon-search2.svg') no-repeat;
+						background-size:100%;
+					}
+				}
+				.cell {
+					width:1%;
+				}
+				.err-msg {
+					display:none;
+					position:absolute;
+					left:0;
+					top:100%;
+					margin-top:4px;
+				}
+			}
+			@include mobile {
+				padding-top:30px;
+				.input-wrap .err-msg {
+					position:static;
+				}
+			}
+		}
+		.info-box {
+			margin-top:8px;
+			text-align:right;
+			@include mobile {
+				margin:0;
+				position:absolute;
+				right:20px;
+				top:40px;
+			}
+		}
+	}
+}
