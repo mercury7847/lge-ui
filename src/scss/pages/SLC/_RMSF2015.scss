@@ -27,7 +27,13 @@ br.m {
     }
     .csn-tab-contents .cont-wrap .section .tit-wrap .tit {
         border-bottom:none;
+        font-size:36px;
+        line-height:52px;
         text-align:center;
+        @include mobile {
+            font-size:24px;
+            line-height:32px;
+        }
     }
     .csn-tab-contents .gray-block-wrap {
         max-width:1194px;

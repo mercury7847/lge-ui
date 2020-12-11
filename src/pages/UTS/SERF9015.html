@@ -79,56 +79,52 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>    
                             </div>
 
                             <div class="result-list-wrap">
                                 <div class="list-wrap">
-                                    <ul class="result-list support-list">
+                                    <ul class="result-list shop-list">
                                         @@loop('./common/modules/result-list.html', [
-                                            {
-                                                "itemClass" : "",
-                                                "img" : "/lg5-common/images/dummy/@img-cs.jpg",
-                                                "tit" : "LG XPION A50PH XPION A50PH",
-                                                "skuTy2" : "LG 올레드 AI ThinQ",
-                                                "infoLink" : true
-    
-                                            }, {
-                                                "itemClass" : "",
-                                                "img" : "/lg5-common/images/dummy/@img-cs.jpg",
-                                                "tit" : "LG XPION A50PH XPION A50PH",
-                                                "skuTy2" : "LG 올레드 AI ThinQ",
-                                                "infoLink" : true
-    
-                                            }, {
-                                                "itemLink" : true,
-                                                "itemClass" : "",
-                                                "flags" : ["제품사용설명서"],
-                                                "tit" : "[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램",
-                                                "cs" : true,
-                                                "model" : "적용모델 : H-62HSGAKOR 외",
-                                                "btnB" : ["ZIP", "HTML"]
-                                            }, {
-                                                "itemLink" : true,
-                                                "itemClass" : "",
-                                                "flags" : ["제품사용설명서"],
-                                                "tit" : "[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램",
-                                                "cs" : true,
-                                                "model" : "적용모델 : H-62HSGAKOR 외",
-                                                "videoB" : true
-                                            }, {
-                                                "itemLink" : true,
-                                                "itemClass" : "",
-                                                "flags" : ["제품사용설명서"],
-                                                "tit" : "[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램",
-                                                "cs" : true,
-                                                "model" : "적용모델 : H-62HSGAKOR 외",
-                                                "btnB" : ["다운로드 1118.4MB"]
-                                            }
-                                        ])
+                                        {
+                                            "itemClass" : "",
+                                            "flagsTy2" : "<span class='flag green'>센터</span>",
+                                            "tit" : "<span class='search-word'>홍대</span>입구역 서비스센터",
+                                            "shopInfo" : true,
+                                            "shopTime" : true,
+                                            "state" : "원활",
+                                            "stateClass" : "green",
+                                            "btnA" : ["길찾기","방문 예약 신청"]
+                                        },{
+                                            "itemClass" : "",
+                                            "flagsTy2" : "<span class='flag green'>매장</span><span class='flag'>NEW</span><span class='flag'>이벤트</span>",
+                                            "tit" : "<span class='search-word'>홍대</span>입구역 서비스센터",
+                                            "shopInfo" : true,
+                                            "shopTime" : true,
+                                            "state" : "보통",
+                                            "stateClass" : "orange",
+                                            "btnA" : ["길찾기","방문 예약 신청"]
+                                        },{
+                                            "itemClass" : "",
+                                            "flagsTy2" : "<span class='flag green'>센터</span>",
+                                            "tit" : "<span class='search-word'>홍대</span>입구역 서비스센터",
+                                            "shopInfo" : true,
+                                            "shopTime" : true,
+                                            "state" : "혼잡",
+                                            "stateClass" : "red",
+                                            "btnA" : ["길찾기","방문 예약 신청"]
+                                        },{
+                                            "itemClass" : "",
+                                            "flagsTy2" : "<span class='flag green'>센터</span>",
+                                            "tit" : "<span class='search-word'>홍대</span>입구역 서비스센터",
+                                            "shopInfo" : true,
+                                            "shopTime" : true,
+                                            "btnA" : ["길찾기","방문 예약 신청"]
+                                        }
+                                    ])
                                     </ul>
                                 </div>
-                            </div> <!-- // 고객지원-->
+                            </div> <!-- // 센터, 매장-->
 
                             @@include('./common/modules/pagination.html', {
                                 count: 5

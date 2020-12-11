@@ -302,3 +302,26 @@ $wide-screen: "(min-width: 1600px)";
         content: '';
     }
 }
+
+@mixin progress-on-icon {
+    color: #ec455a;
+    &::before {
+        border: 1px solid #aaa;
+        background: url(/lg5-common/images/bg-chk-red.svg) no-repeat center #fff;
+        background-size: 12px;
+    }
+}
+@mixin progress-on-bar {
+    &::after {
+        background-color: #ec455a;
+    }
+}
+@mixin progress-on-text {
+    &::before {
+        background: #fff;
+        border: 1px solid #aaa;
+    }
+    .text {
+        color: #222;
+    }
+}

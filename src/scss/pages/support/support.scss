@@ -241,6 +241,336 @@
         color: #767676;
         background: url(/lg5-common/images/icons/icon-more-pk-20.svg) no-repeat left center;
     }
+
+    .reception-progress {
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        position: relative;
+        li {
+            text-align: center;
+            position: relative;
+            &::before {
+                content: '';
+                display: flex;
+                margin: 0 auto;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                position: relative;
+                z-index: 1;
+            }
+            &::after {
+                display: block;
+            }
+        }
+        &.type-1 {
+            max-width: 678px;
+            margin: 0 auto;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: bold;
+            color: #222;
+            line-height: 1;
+            counter-reset: process-counter;
+            &::before {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: #ededed;
+                position: absolute;
+                left: 0;
+                top: 15px;
+            }
+            li {
+                counter-increment: process-counter;
+                $progress-line-width: 290px;
+                padding-bottom: 20px;
+                .text {
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 100px;
+                }
+                &:first-child {
+                    margin-left: 0;
+                    &::after {
+                        display: none;
+                    }
+                }
+                &::before {
+                    content: counter(process-counter) '';
+                    width: 32px;
+                    height: 32px;
+                    background-color: #000;
+                    color: #fff;
+                    font-size: 14px;
+                }
+                &::after {
+                    content: '';
+                    height: 2px;
+                    background-color: #ededed;
+                    position: absolute;
+                    top: 16px;
+                }
+            }
+            @include mobile {
+                margin: 0 42px;
+            }
+        }
+        &.type-2 {
+            justify-content: space-between;
+            font-size: 16px;
+            font-weight: 500;
+            color: #aaa;
+            line-height: 1;
+            &::before {
+                // content: '';
+                // display: block;
+                // width: 100%;
+                // height: 12px;
+                // background-color: #f4f4f4;
+                // position: absolute;
+                // left: 0;
+                // top: 6px;
+            }
+            li {
+                padding-bottom: 24px;
+                .text {
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 100px;
+                }
+                &:first-child {
+                    margin-left: 0;
+                    &::after {
+                        display: none;
+                    }
+                    &:first-child, {
+                        // @include progress-on;
+                    }
+                }
+                &::before {
+                    width: 24px;
+                    height: 24px;
+                    background-color: #aaa;
+                    color: #fff;
+                    font-size: 14px;
+                }
+                &::after {
+                    content: '';
+                    display: block;
+                    height: 12px;
+                    background-color: #f4f4f4;
+                    position: absolute;
+                    top: 6px;
+                }
+            }
+            &[data-step="1"] {
+                li {
+                    &:nth-child(1) {
+                        @include progress-on-text;
+                    }
+                }
+            }
+            &[data-step="2"] {
+                li {
+                    &:nth-child(n+1):nth-child(-n+1) {
+                        @include progress-on-icon;
+                    }
+                    &:nth-child(2) {
+                        @include progress-on-text;
+                    }
+                }
+            }
+            &[data-step="3"] {
+                li {
+                    &:nth-child(n+1):nth-child(-n+2) {
+                        @include progress-on-icon;
+                    }
+                    &:nth-child(3) {
+                        @include progress-on-text;
+                    }
+                }
+            }
+            &[data-step="4"] {
+                li {
+                    &:nth-child(n+1):nth-child(-n+3) {
+                        @include progress-on-icon;
+                    }
+                    &:nth-child(4) {
+                        @include progress-on-text;
+                    }
+                }
+            }
+            &[data-step="5"] {
+                li {
+                    &:nth-child(n+1):nth-child(-n+4) {
+                        @include progress-on-icon;
+                    }
+                    &:nth-child(5) {
+                        @include progress-on-text;
+                    }
+                }
+            }
+            &[data-step="6"] {
+                li {
+                    &:nth-child(n+1):nth-child(-n+5) {
+                        @include progress-on-icon;
+                    }
+                    &:nth-child(6) {
+                        @include progress-on-text;
+                    }
+                }
+            }
+            &[data-step="7"] {
+                li {
+                    &:nth-child(n+1):nth-child(-n+6) {
+                        @include progress-on-icon;
+                    }
+                    &:nth-child(7) {
+                        @include progress-on-text;
+                    }
+                }
+            }
+            &[data-step="8"] {
+                li {
+                    &:nth-child(n+1):nth-child(-n+7) {
+                        @include progress-on-icon;
+                    }
+                    &:nth-child(8) {
+                        @include progress-on-text;
+                    }
+                }
+            }
+            @include pc {
+                margin-bottom: 64px;
+                li {
+                    &::after {
+                        width: calc(1380px / 7);
+                        left: calc(-1380px / 7);
+                    }
+                }
+                &::after {
+                    content: '';
+                    display: block;
+                    height: 12px;
+                    background-color: #ec455a;
+                    position: absolute;
+                    top: 6px;
+                    left: 0;
+                    border-radius: 25px;
+                }
+                &[data-step="2"] {
+                    &::after {
+                        width: 15%;
+                    }
+                }
+                &[data-step="3"] {
+                    &::after {
+                        width: 29%;
+                    }
+                }
+                &[data-step="4"] {
+                    &::after {
+                        width: 43%;
+                    }
+                }
+                &[data-step="5"] {
+                    &::after {
+                        width: 57%;
+                    }
+                }
+                &[data-step="6"] {
+                    &::after {
+                        width: 71%;
+                    }
+                }
+                &[data-step="7"] {
+                    &::after {
+                        width: 85%;
+                    }
+                }
+                &[data-step="8"] {
+                    &::after {
+                        width: 100%;
+                    }
+                }
+            }
+            @include mobile {
+                flex-wrap: wrap;
+                margin: 40px 0 60px;
+                li {
+                    width: 25%;
+                    &::after {
+                        width: 100%;
+                        left: -50%;
+                    }
+                    &:nth-child(5n) {
+                        &::after {
+                            display: none;
+                        }
+                    }
+                    &:nth-child(n+5) {
+                        margin-top: 24px;
+                    }
+                }
+                &[data-step="2"] {
+                    li {
+                        &:nth-child(n+1):nth-child(-n+2) {
+                            @include progress-on-bar;
+                        }
+                    }
+                }
+                &[data-step="3"] {
+                    li {
+                        &:nth-child(n+1):nth-child(-n+3) {
+                            @include progress-on-bar;
+                        }
+                    }
+                }
+                &[data-step="4"] {
+                    li {
+                        &:nth-child(n+1):nth-child(-n+4) {
+                            @include progress-on-bar;
+                        }
+                    }
+                }
+                &[data-step="5"] {
+                    li {
+                        &:nth-child(n+1):nth-child(-n+5) {
+                            @include progress-on-bar;
+                        }
+                    }
+                }
+                &[data-step="6"] {
+                    li {
+                        &:nth-child(n+1):nth-child(-n+6) {
+                            @include progress-on-bar;
+                        }
+                    }
+                }
+                &[data-step="7"] {
+                    li {
+                        &:nth-child(n+1):nth-child(-n+7) {
+                            @include progress-on-bar;
+                        }
+                    }
+                }
+                &[data-step="8"] {
+                    li {
+                        &:nth-child(n+1):nth-child(-n+8) {
+                            @include progress-on-bar;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 
@@ -459,5 +789,5 @@
         & + .file-item {
             margin-left:24px;
         }
-    }    
+    }
 }
