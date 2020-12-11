@@ -18,6 +18,11 @@
     //    background-color: red;
     //    opacity: .2;
     //}
+    .lay-filter {
+        @include pc {
+            padding-top: 46px;
+        }
+    }
     .search-tabs-wrap {
         padding-bottom: 24px;
         border-bottom: 8px solid $color-bg;
@@ -805,6 +810,7 @@
                 > ul {
                     > li {
                         width:14%;
+                        padding-left:0;
                         @include mobile {
                             width:auto;
                             margin-top:12px;
