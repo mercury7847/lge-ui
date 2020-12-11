@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["MYC/MYC"]
+		pageCSS: ["MYC/MYC"],
+		pageJS: ["mypage/myInquiry"]
     })
 <body>
     <div class="wrap">
@@ -32,10 +33,10 @@
 									"wrapTit" : "조회기간",
 									"btntypeRadio" : true,
 									"rdoArr" : [
-										{ "id" : "period1", "label" : "3개월", "checked" : " " },
-										{ "id" : "period2", "label" : "6개월", "checked" : " " },
-										{ "id" : "period3", "label" : "12개월", "checked" : "checked" },
-										{ "id" : "period4", "label" : "전체", "checked" : " " },
+										{ "id" : "period1", "label" : "3개월", "checked" : " ", value:"3" },
+										{ "id" : "period2", "label" : "6개월", "checked" : " ", value:"6" },
+										{ "id" : "period3", "label" : "12개월", "checked" : "checked", value:"12" },
+										{ "id" : "period4", "label" : "전체", "checked" : " ", value:"all" },
 									]
 								})
 								<!-- // filter -->

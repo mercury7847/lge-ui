@@ -11,6 +11,11 @@
         '</ul></div>' +
     '</li>';
 
+    var serviceCountItemTemplate = '<dl><dt>{{title}}</dt><dd><ul>' +
+        '{{#if data}}{{#each item in data}}<li>{{item.title}} <em>{{item.count}}</em></li>{{/each}}' +
+        '{{#else}}<li>-</li>{{/if}}' +
+    '</ul></dd></dl>'
+
     $(window).ready(function() {
         var myWrite = {
             init: function() {
@@ -26,7 +31,10 @@
                 var self = this;
                 self.$contWrap = $('div.cont-wrap');
                 self.$lnbContents = self.$contWrap.find('div.lnb-contents');
-                self.$mySort = self.$lnbContents.find('div.my-sort');
+                self.$termFilter = self.$lnbContents.find('div.term-filter');
+
+                self.$serviceUseCount = self.$lnbContents.find('div.tit-wrap tit em');
+                self.$serviceUseList = self.$lnbContents.find('div.service-use-list');
 
                 self.$sectionInner = self.$lnbContents.find('div.section-inner');
                 self.$myLists = self.$sectionInner.find('div.my-lists ul');
@@ -37,14 +45,9 @@
 
             bindEvents: function() {
                 var self = this;
-                self.$mySort.on("click", "a", function(e){
-                    e.preventDefault();
-                    if(!$(this).parent().hasClass('on')) {
-                        var term = $(this).attr('href').replace("#","");
-                        self.$mySort.find('li').removeClass('on');
-                        $(this).parent().addClass('on');
-                        self.requestData({"term":term});
-                    }
+                self.$termFilter.on("click", "input", function(e){
+                    var term = $(this).val();
+                    self.requestData({"term":term});
                 });
 
                 self.$myLists.on("click", "a", function(e){
@@ -54,12 +57,13 @@
                     console.log(_id);
                 });
 
-                self.$pagination.vcPagination().on('page_click', function(e) {
-                    var $a = self.$mySort.find('li.on a');
-                    var category = $a.attr('href').replace("#","");
+                self.$pagination.vcPagination().on('page_click', function(e, data) {
+                    var $input = self.$termFilter.find('input:checked');
+                    var term = $input.val();
+                    console.log(data);
                     self.requestData({
                         "term":term,
-                        "page": e.page
+                        "page": data
                     });
                 });
             },
@@ -71,7 +75,35 @@
                     var data = result.data;
                     var param = result.param;
                     self.$pagination.vcPagination('setPageInfo',param.pagination);
-                    self.$listCount.text(vcui.number.addComma(data.totalCount));
+
+                    var service = data.service;
+                    self.$serviceUseCount.text(vcui.number.addComma(service.useCount));
+                    self.$serviceUseList.find('>ul>li').each(function(idx, obj){
+                        var $obj = $(obj);
+                        $obj.find('dl').empty();
+                        var data = null;
+                        switch(idx) {
+                            case 0:
+                                data = service.inquiry;
+                                break;
+                            case 1:
+                                data = service.trip;
+                                break;
+                            case 2:
+                                data = service.visit;
+                                break;
+                            default:
+                                data = null;
+                                break;
+                        }
+                        if(data) {
+                            $obj.find('strong em').text(data.count);
+                            data.listData.forEach(function(item){
+                                $obj.append(vcui.template(serviceCountItemTemplate, item));
+                            });
+                        }
+                    });
+
                     var arr = data.listData instanceof Array ? data.listData : [];
                     self.$myLists.empty();
                     if(arr.length > 0) {
@@ -87,11 +119,9 @@
             checkNoData: function() {
                 var self = this;
                 if(self.$myLists.find('li').length > 0) {
-                    self.$mySort.show();
                     self.$sectionInner.show();
                     self.$noData.hide();
                 } else {
-                    self.$mySort.hide();
                     self.$sectionInner.hide();
                     self.$noData.show();
                 }
