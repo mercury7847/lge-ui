@@ -5,10 +5,10 @@
                 <g>
                     <g>
                         <g>
-                            <g transform="translate(-434 -75) translate(40 64) translate(331) translate(63 11)">
+                            <g transform="translate(-514 -75) translate(120 64) translate(331) translate(63 11)">
                                 <rect width="14" height="14" fill="#DDD" rx="7"/>
                                 <g stroke="#222" stroke-linecap="round">
-                                    <path d="M0 3M3 0L3 6" transform="rotate(90 3 7)"/>
+                                    <path d="M1 0L1 6" transform="rotate(90 2 8)"/>
                                 </g>
                             </g>
                         </g>
