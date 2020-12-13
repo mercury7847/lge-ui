@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/etc"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '고객지원',
+                'pageDesc': '제품에 대한 문제를 빠르게 진단하고 해결할 수 있도록 도와드리겠습니다.'
+            })
+            <div class="contents support appgate">
+                <div class="cont-wrap">
+                    <form action="/html/CS/CSRF6002.html" method="GET" id="submitForm">
+                        <input type="hidden" name="categoryNm" id="categoryNm" value="모바일">
+                        <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="스마트폰">
+                        <input type="hidden" name="category" id="category" value="1018">
+                        <input type="hidden" name="subCategory" id="subCategory" value="C000136">
+                        <input type="hidden" name="modelCode" id="modelCode" value="LMG710N">
+                    </form>
+
+                    <div class="section">
+                        <div class="appgate-title">
+                            <h2 class="tit">고객님의 사용 제품 입니다.</h2>
+                        </div>
+                        <div class="appgate-box">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="/lg5-common/images/dummy/@img-product8.png" alt="제품 이미지">
+                                </div>
+                                <div class="product-info">
+                                    <div class="img">
+                                        <img src="/lg5-common/images/dummy/@img-product8-title.png" alt="LG G7 ThinQ / G7+ ThinQ">
+                                    </div>
+                                    <p class="name">모델명 <em>LM-G710N</em></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-list">
+                            <ul>
+                                <li>
+                                    <a href="#"><span>사용 설명서</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span>드라이버/SW</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span>소모품 구매</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span>S/W 업데이트 소식</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span>사용 제품 등록</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <div class="tit-wrap">
+                            <h2 class="tit">검색을 통해 문제 해결 도움을 받으세요.</h2>
+                        </div>
+                        <div class="form-wrap">
+                            <div class="forms">
+                                <div class="conts">
+                                    <div class="select-wrap"> 
+                                        <select name="topic" id="topic" class="ui_selectbox" title="증상 선택" data-target="#subTopic" data-ajax="/lg5-common/data-ajax/support/subTopicOption.json">
+                                            <option value="" class="placeholder">증상 선택</option>
+                                            <option value="">옵션 1</option>
+                                            <option value="">옵션 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="select-wrap"> 
+                                        <select name="subTopic" id="subTopic" class="ui_selectbox" title="상세 증상을 선택" data-placeholder="상세 증상을 선택" disabled>
+                                            <option value="" class="placeholder">상세 증상을 선택</option>
+                                            <option value="">옵션 1</option>
+                                            <option value="">옵션 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="keyword-search type-A">
+                                        <div class="input-wrap">
+                                            <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="검색어 입력" title="검색어 입력" data-clear-button="button.btn-delete" data-required="true" data-error-msg="검색어를 입력하고 조회해주세요.">
+                                            <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+                                            <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                        </div>
+                                        <p class="err-msg"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dummy" style="margin-top:80px;">상담 관련 노출 영역</div> 
+                    <div class="dummy">조회/변경 관련 노출 영역</div>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/appgate.min.js"></script>
+</body>
+</html> 

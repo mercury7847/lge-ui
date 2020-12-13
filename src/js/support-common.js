@@ -35,7 +35,6 @@ CS.MD.plugin = function(pluginName, Plugin) {
 * @option callback()
 * */
 CS.MD.drawOption = function() {
-
     var pluginName = 'drawOption';
 
     function Plugin(el, opt) {
@@ -54,33 +53,48 @@ CS.MD.drawOption = function() {
         _bindEvent: function() {
             var self = this;
 
-            self.$el.on('change', function() {
-                var params = $(element).serialize();
+            self.$el.on('change', function(e) {
+                var resetFlag = $(this.options[this.selectedIndex]).hasClass('placeholder');
+                var params = $(this).serialize();
 
-                self._ajax(params);
+                if (resetFlag) {
+                    self.reset();
+                } else {
+                    self._ajax(params);
+                }
             });
         },
         _ajax: function(params) {
             var self = this;
-            var opt = self.options;
+            var url = self.$el.data('ajax'),
+                opt = self.options;
 
             lgkorUI.showLoading();
-            lgkorUI.requestAjaxDataPost(url, params, function(d) {
-                if (d.data) {
-                    self.draw(d.data);
+            lgkorUI.requestAjaxDataPost(url, params, function(result) {
+                if (result.data) {
+                    self.draw(result.data.optionData);
                     if (opt.callback) opt.callback();
                 }
                  
                 lgkorUI.hideLoading();
             });
         },
-        draw: function() {
+        reset: function() {
+            var self = this;
+            var $target = $(self.options.target);
+
+            $target.find('option').remove();
+            $target.html('<option value="" class="placeholder">'+ $target.data('placeholder') +'</option>')
+            $target.prop('disabled', true);
+            $target.vcSelectbox('update');
+        },
+        draw: function(data) {
             var self = this;
             var $target = $(self.options.target),
                 html = '';
 
             for (var key in data) {
-                html += '<option value="'+ key +'">'+ data[key] +'</option>'
+                html += '<option value="'+ data[key] +'">'+ key +'</option>'
             }
 
             $target.html(html);
