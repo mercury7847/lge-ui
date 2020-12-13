@@ -9,38 +9,60 @@
 <body>
     <div class="wrap">
         @@include('./common/header.html')
-
         <div class="container">
             @@include('./common/modules/page-header.html', {
+                'pageTitle': '고객지원',
                 'pageDesc': '제품에 대한 문제를 빠르게 진단하고 해결할 수 있도록 도와드리겠습니다.'
             })
-            
-            <div class="contents support qr-code">
+            <div class="contents support appgate">
+                @@include('./common/support/login-guide.html', {
+                    'text': '로그인을 하시면 더욱 편리하게 이용하실 수 있습니다.'
+                })
                 <div class="cont-wrap">
                     
-                    <section class="section bg-gray">
-                        <div class="section-title">
-                            <h3 class="tit">고객님의 사용 제품 입니다.</h3>
+                    <form action="/html/CS/CSRF6002.html" method="GET" id="submitForm">
+                        <input type="hidden" name="categoryNm" id="categoryNm" value="모바일">
+                        <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="스마트폰">
+                        <input type="hidden" name="category" id="category" value="1018">
+                        <input type="hidden" name="subCategory" id="subCategory" value="C000136">
+                        <input type="hidden" name="modelCode" id="modelCode" value="LMG710N">
+                    </form>
+                    <div class="section">
+                        <div class="appgate-title">
+                            <h2 class="tit">고객님의 사용 제품 입니다.</h2>
                         </div>
-                        <div class="section-content">
-                            <div class="appgate-figure-box">
-                                <figure class="appgate-figure type-A">
-                                    <div class="appgate-figure-img"><img src="/lg5-common/images/dummy/@img-product8.png" alt="제품 이미지" style="opacity: 1;"></div>
-                                    <figcaption>
-                                        <div class="appgate-figure-title">TV>올레드</div>
-                                        모델명 <strong class="color-3">55LN5400.AKR</strong>
-                                    </figcaption>
-                                </figure>
+                        <div class="appgate-box">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="/lg5-common/images/dummy/@img-product8.png" alt="제품 이미지">
+                                </div>
+                                <div class="product-info">
+                                    <p class="category">모바일 &gt; 스마트폰</p>
+                                    <p class="name">모델명 <em>LM-G710N</em></p>
+                                </div>
                             </div>
-
-                            <ul class="swipe-content">
-                                <li class="swipe-item"><a href="CSRF6008.html" class="swipe-link" target="_blank" title="새 창에서 열림">제품사용 설명서</a></li>
-                                <li class="swipe-item"><a href="" class="swipe-link" target="_blank" title="새 창에서 열림">소모품 구매</a></li>
+                        </div>
+                        <div class="service-list">
+                            <ul>
+                                <li>
+                                    <a href="#"><span>사용 설명서</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span>드라이버/SW</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span>소모품 구매</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span>S/W 업데이트 소식</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span>사용 제품 등록</span></a>
+                                </li>
                             </ul>
                         </div>
-                    </section>
-                    
-                    <section class="section">
+                    </div>
+                    <div class="section">
                         <div class="tit-wrap">
                             <h2 class="tit">검색을 통해 문제 해결 도움을 받으세요.</h2>
                         </div>
@@ -48,34 +70,34 @@
                             <div class="forms">
                                 <div class="conts">
                                     <div class="select-wrap"> 
-                                        <select class="ui_selectbox" id="select1" title="증상 선택">
-                                            <option value="" class="placeholder">증상을 선택</option>
+                                        <select name="topic" id="topic" class="ui_selectbox" title="증상 선택" data-target="#subTopic" data-ajax="/lg5-common/data-ajax/support/subTopicOption.json">
+                                            <option value="" class="placeholder">증상 선택</option>
                                             <option value="">옵션 1</option>
                                             <option value="">옵션 2</option>
                                         </select>
                                     </div>
                                     <div class="select-wrap"> 
-                                        <select class="ui_selectbox" id="select2" title="상세 증상 선택" disabled>
+                                        <select name="subTopic" id="subTopic" class="ui_selectbox" title="상세 증상을 선택" data-placeholder="상세 증상을 선택" disabled>
                                             <option value="" class="placeholder">상세 증상을 선택</option>
                                             <option value="">옵션 1</option>
                                             <option value="">옵션 2</option>
                                         </select>
                                     </div>
-                                    <div class="keyword-search input-wrap type-A">
+                                    <div class="keyword-search type-A">
                                         <div class="input-wrap">
-                                            <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="검색어 입력" title="검색어 입력" data-clear-button="button.btn-delete" ui-modules="InputClearButton">
-                                            <button type="button" class="btn-delete" style="display: none;"><span class="blind">검색어 삭제</span></button>
+                                            <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="검색어 입력" title="검색어 입력" data-clear-button="button.btn-delete" data-required="true" data-error-msg="검색어를 입력하고 조회해주세요.">
+                                            <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
                                             <button type="button" class="btn-search"><span class="blind">검색</span></button>
                                         </div>
-                                        <p class="err-msg">검색어를 입력해주세요.</p>
+                                        <p class="err-msg"></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
 
-                    <div class="dummy" style="display: flex;align-items: center;justify-content: center;height:150px;margin-top: 60px;border-top: 12px solid #f4f4f4;">문제를 해결하지 못하셨다면 다른 서비스를 이용해보세요.</div>
-                    <div class="dummy" style="display: flex;align-items: center;justify-content: center;height:150px;border-top: 12px solid #f4f4f4;">고객 서비스에 대한 조회 및 변경사항을 확인하실 수 있어요.</div>
+                    <div class="dummy" style="margin-top:80px;">상담 관련 노출 영역</div> 
+                    <div class="dummy">조회/변경 관련 노출 영역</div>
 
                 </div>
             </div>
@@ -83,5 +105,9 @@
              
         @@include('./common/footer.html')
     </div>      
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/appgate.min.js"></script>
 </body>
 </html> 
