@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+	@@include('./common/head.html', {
+		componentID: "KRC0036",
+		isJScompile: false,
+	})
+<body>
+	<div class="wrap">
+		<div class="container">
+            <!-- stage FUll / title Center / text box Left -->
+			@@include('./common/partials/KRC0036.html', {
+                stageSize : "stage-full",
+                textAlign : "align-center",
+                textColor1 : "type-black",
+                boxAlign : "box-align-left",
+                textColor2 : "type-black",
+                textAlign2 : "align-left"
+            })
+            <!-- // stage FUll / title Center / text box Left -->
+
+            <!-- stage Wide / title Left / text box Left -->
+			@@include('./common/partials/KRC0036.html', {
+                stageSize : "stage-wide",
+                textAlign : "align-left",
+                textColor1 : "type-black",
+                boxAlign : "box-align-left",
+                textColor2 : "type-black",
+                textAlign2 : "align-left"
+            })
+            <!-- // stage Wide / title Left / text box Left -->
+
+            <!-- stage FUll / title Right / text box Right -->
+			@@include('./common/partials/KRC0036.html', {
+                stageSize : "stage-full",
+                textAlign : "align-right",
+                textColor1 : "type-black",
+                boxAlign : "box-align-right",
+                textColor2 : "type-white",
+                textAlign2 : "align-right"
+            })
+            <!-- // stage FUll / title Right / text box Right -->
+
+            <!-- stage Wide / title Center / text box Center -->
+			@@include('./common/partials/KRC0036.html', {
+                stageSize : "stage-wide",
+                textAlign : "align-center",
+                textColor1 : "type-black",
+                boxAlign : "box-align-center",
+                textColor2 : "type-black",
+                textAlign2 : "align-center"
+            })
+            <!-- // stage Wide / title Center / text box Center -->
+		</div>
+	</div>
+</body>
+</html>

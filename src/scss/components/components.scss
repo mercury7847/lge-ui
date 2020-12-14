@@ -33,6 +33,17 @@
     }
 }
 
+// title font size mixin (56px/74px);
+@mixin font-title {
+    font-size:56px;
+    line-height:74px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size:32px;
+        line-height:42px;
+    }
+}
+
 // component container
 .iw_placeholder .iw_component {
     // don't remove
@@ -352,6 +363,25 @@
         // &[class*=bg-] {
         //     padding:60px 0;
         // }
+    }
+
+    .text-link {
+        display:inline-block;
+        position:relative;
+        padding-right:20px;
+        @include font-small;
+        color:#222;
+        font-weight:500;
+        &::after {
+            content:' ';
+            position:absolute;
+            top:50%;
+            right:0;
+            width:16px;
+            height:16px;
+            margin-top:-8px;
+            background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+        }
     }
     
 
