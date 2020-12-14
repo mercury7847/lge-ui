@@ -3,6 +3,43 @@
 @import "../components-app";
 
 .KRC0032 {
+    $fontColor : (type-black, type-white);
+    @each $colorClass in $fontColor {
+        .#{$colorClass} {
+            @if $colorClass == type-black {
+				color:#222;
+            }
+            @else if $colorClass == type-white {
+                @include pc {
+                    color:#fff;
+                    .bullet-list {
+                        .b-txt {
+                            color:#fff;
+                            &::before {
+                                background:#fff;
+                            }
+                        }
+                    }
+                    .banner-btn {
+                        .btn.border {
+                            border-color:#fff;
+                            color:#fff;
+                        }
+                        .text-link {
+                            color:#fff;
+                            &::after {
+                                background-image:url("/lg5-common/images/icons/icon-arr-16-wt.svg");
+                            }
+                        }
+                    }
+                    @include mobile {
+                        color:#222;
+                    }
+                }
+            }
+        }
+	}
+
 	&.stage-full {
 		max-width:100%;
     }
@@ -180,6 +217,12 @@
 				}
 				.banner-btn {
                     margin-top:24px;
+                    .text-link {
+                        margin-left:16px;
+                        &:first-child {
+                            margin-left:0;
+                        }
+                    }
                     @include mobile {
                         .btn.border {
                             display:block;
