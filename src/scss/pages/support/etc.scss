@@ -221,6 +221,32 @@
 }
 
 // 접수 제품 및 설치 환경 사진 등록
+.issue-register {
+    .cont-wrap {
+        @include mobile {
+            padding-bottom:0;
+            .btn-group {
+                padding:0;
+                .btn {
+                    border-radius:0;
+                }
+            }
+        }
+    }
+}
+.logo span {
+    display:block;
+    width:90px;
+    height:24px;
+    background-image:url(/lg5-common/images/header/logo.svg);
+    background-size:100% 100%;
+    @include mobile {
+        span {
+            width:84px;
+            height:22px;
+        }
+    }
+}
 .example-desc {
     margin-bottom:6px;
     @include font-small;
