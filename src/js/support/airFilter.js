@@ -28,10 +28,20 @@
                         pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                         msgTarget: '.err-block'
                     },
-                    title: {
+                    product_family: {
                         msgTarget: '.err-block'
                     },
-                    content: {
+                    model: {
+                        pattern : /^[A-Za-z0-9+]*$/,
+                        msgTarget: '.err-block'
+                    },
+                    serial_number: {
+                        msgTarget: '.err-block'
+                    },
+                    zipcode1: {
+                        msgTarget: '.err-block'
+                    },
+                    zipcode2: {
                         msgTarget: '.err-block'
                     }
                 }
@@ -50,7 +60,7 @@
 
                 if (result.success == true) {   
                     lgkorUI.confirm('', {
-                        title:'저장 하시겠습니까?',
+                        title:'공기청정 필터 신청을 접수하시겠습니까?',
                         okBtnName: '확인',
                         cancelBtnName: '취소',
                         ok: function() {
@@ -68,7 +78,7 @@
             self.$form.find('.btn-cancel').on('click', function() {
                 var url = $(this).data('url');
                 lgkorUI.confirm('', {
-                    title:'취소 하시겠습니까?',
+                    title:'입력하신 정보가 모두 삭제됩니다.<br>신청을 취소 취소하시겠습니까?',
                     okBtnName: '확인',
                     cancelBtnName: '취소',
                     ok: function() {
