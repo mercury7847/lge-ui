@@ -13,7 +13,7 @@
                 "pageTitle": "알림"
             })
             <!-- mypage -->
-            <div class="contents mypage" data-url='/lg5-common/data-ajax/mypage/alarm/my_alarm.json' data-deleteurl='/lg5-common/data-ajax/mypage/alarm/delete_alarm.json' data-type='all'>
+            <div class="contents mypage">
                 <div class="cont-wrap no-bd">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
@@ -25,19 +25,19 @@
                         })
                         <div class="lnb-contents">
                             <!-- tab contents : filtering results -->
-                            <div class="tab-contents notice-contents">
+                            <div class="tab-contents notice-contents" data-more-url='/lg5-common/data-ajax/mypage/alarm/my_alarm.json' data-delete-url='/lg5-common/data-ajax/mypage/alarm/delete_alarm.json'>
                                 <ul class="setting-btns">
                                     <!-- <li><button type="button" id="alarm-setting" class="btn-text"><span>설정</span></button></li> -->
-                                    <li><button type="button" id="alarm-removeall" class="btn-text" data-href="#laypop" data-control="modal"><span>읽은알림 삭제</span></button></li>
+                                    <li><button type="button" id="alarm-remove-read" class="btn-text" data-href="#laypop" data-control="modal"><span>읽은 알림 삭제</span></button></li>
                                     
-                                    <li><button type="button" id="alarm-removeall" class="btn-text" data-href="#laypop" data-control="modal" disabled><span>전체삭제</span></button></li> <!-- 알림이 없을 때 disabled -->
+                                    <li><button type="button" id="alarm-remove-all" class="btn-text" data-href="#laypop" data-control="modal"><span>전체삭제</span></button></li> <!-- 알림이 없을 때 disabled -->
                                 </ul>
                                 
                                 <!-- 알림 리스트 -->
                                 <div class="notice-list-wrap">
                                     <ul class="notice-lists">
                                         <!-- 알림 -->
-                                        <li class="list">
+                                        <li class="list" data-alarm-id="ar00001">
                                             <div class="notice-box">
                                                 <span class="icons">
                                                     알림 확인 상태 : <em class="on">안읽음</em>
@@ -50,13 +50,13 @@
                                                     <div class="bottom-btn">
                                                         <a href="#n" class="btn border size">사용 설명서 확인하기</a>
                                                     </div>
-                                                    <button type="button" class="btn-del" data-id="ar0001"><span>알림 삭제</span></button>
+                                                    <button type="button" class="btn-del"><span>알림 삭제</span></button>
                                                 </div>
                                             </div>
                                         </li>
                                         <!-- // 알림 -->
 
-                                        <li class="list">
+                                        <li class="list" data-alarm-id="ar00002">
                                             <div class="notice-box">
                                                 <span class="icons">
                                                     알림 확인 상태 : <em class="on">안읽음</em>
@@ -69,12 +69,12 @@
                                                     <div class="bottom-btn">
                                                         <a href="#n" class="btn border size">업데이트 하러 가기</a>
                                                     </div>
-                                                    <button type="button" class="btn-del" data-id="ar0001"><span>알림 삭제</span></button>
+                                                    <button type="button" class="btn-del"><span>알림 삭제</span></button>
                                                 </div>
                                             </div>
                                         </li>
 
-                                        <li class="list read"> <!-- 읽었을 경우 read 클래스 추가 -->
+                                        <li class="list read" data-alarm-id="ar00003"> <!-- 읽었을 경우 read 클래스 추가 -->
                                             <div class="notice-box">
                                                 <span class="icons">
                                                     알림 확인 상태 : <em class="off">읽음</em>
@@ -87,12 +87,12 @@
                                                     <div class="bottom-btn">
                                                         <a href="#n" class="btn border size">간편 해결 방법 확인하기</a>
                                                     </div>
-                                                    <button type="button" class="btn-del" data-id="ar0001"><span>알림 삭제</span></button>
+                                                    <button type="button" class="btn-del"><span>알림 삭제</span></button>
                                                 </div>
                                             </div>
                                         </li>
 
-                                        <li class="list read"> <!-- 읽었을 경우 read 클래스 추가 -->
+                                        <li class="list read" data-alarm-id="ar00004"> <!-- 읽었을 경우 read 클래스 추가 -->
                                             <div class="notice-box">
                                                 <span class="icons">
                                                     알림 확인 상태 : <em class="off">읽음</em>
@@ -104,7 +104,7 @@
                                                     <div class="bottom-btn">
                                                         <a href="#n" class="btn border size">사용 설명서 확인하기</a>
                                                     </div>
-                                                    <button type="button" class="btn-del" data-id="ar0001"><span>알림 삭제</span></button>
+                                                    <button type="button" class="btn-del"><span>알림 삭제</span></button>
                                                 </div>
                                             </div>
                                         </li>
@@ -130,7 +130,7 @@
     @@include('./common/modules/alert-modal.html', {
         "popId" : "laypop",
         "msgOnly" : true,
-        "msg" : "받은 알림을 전체삭제<br>하시겠습니까?",
+        "msg" : "알림을 삭제하시겠습니까?<br>삭제하신 알림은 복구가 불가합니다.",
         "twobtn" : true
     })
 </body>

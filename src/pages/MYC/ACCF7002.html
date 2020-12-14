@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["MYC/MYC"]
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/orderInquiry"]
     })
 <body>
     <div class="wrap">
@@ -12,14 +13,21 @@
                 "pageTitle": "주문/배송 조회"
             })
             <!-- mypage -->
-            <div class="contents mypage">
+            <div class="contents mypage"
+                data-order-inquiry-list="/lg5-common/data-ajax/mypage/orderProductList.json"
+            >
+            <div class="hidden-input-group">
+                <input type="hidden" name="total" value="5"/>
+                <input type="hidden" name="page" value="1"/>
+                <input type="hidden" name="startDate" value="20200919"/>
+                <input type="hidden" name="endDate" value="20201218"/>
+            </div>
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
                             "sect1" : [
                                 { "on": "on", "page": "주문/배송 조회" },
                                 { "on": "", "page": "배송지 주소 관리" },
-                                { "on": "", "page": "사은품 신청" },
                                 { "on": "", "page": "쿠폰" }
                             ]
                         })
@@ -35,7 +43,7 @@
                             
                             <!-- '구매' contents -->
                             <div class="section-wrap">
-                                <div class="filters">
+                                <div class="filters inquiryPeriodFilter">
                                     <!-- filter -->
                                     @@include('./common/modules/mem-filter.html', {
                                         "tabType" : true,
@@ -43,16 +51,18 @@
                                         "btntypeRadio" : true,
                                         "datepicker" : true,
                                         "rdoArr" : [
-                                            { "id" : "period1", "label" : "1주일", "checked" : " " },
-                                            { "id" : "period2", "label" : "1개월", "checked" : " " },
-                                            { "id" : "period3", "label" : "3개월", "checked" : "checked" },
-                                            { "id" : "period4", "label" : "6개월", "checked" : " " },
+                                            { "id" : "period1", "label" : "1주일", value:"7", "checked" : " " },
+                                            { "id" : "period2", "label" : "1개월", value:"30", "checked" : " " },
+                                            { "id" : "period3", "label" : "3개월", value:"90", "checked" : "checked" },
+                                            { "id" : "period4", "label" : "6개월", value:"180", "checked" : " " },
                                         ]
                                     })
                                     <!-- // filter -->
                                 </div>
+
+                                <!-- data 있을 때 -->
                                 <!-- list -->
-                                <div class="info-tbl-wrap">
+                                <div class="info-tbl-wrap inquiry-list-wrap">
                                     <!-- loop -->
                                     @@include('./common/modules/info-tbl-wrap-infos.html', {
                                         "infos" : [
@@ -67,6 +77,7 @@
                                     @@loop('./common/modules/info-tbl-wrap-loop.html', [
                                         {
                                             "col1" : {
+                                                "modelID": "ABC345234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
@@ -90,6 +101,7 @@
                                         },
                                         {
                                             "col1" : {
+                                                "modelID": "ABGE345234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
@@ -105,7 +117,9 @@
                                                     "tit" : "배송중",
                                                     "desc" : "배송희망일 2020.09.18",
                                                     "btn" : "배송조회",
-                                                    "btn2" : "배송문의"
+                                                    "btn2" : "배송문의",
+                                                    "btnClass": "deliveryInquiry-btn",
+                                                    "btn2Class" : "deliveryRequest-btn"
                                                 }
                                             }
                                         }
@@ -130,6 +144,7 @@
                                     @@loop('./common/modules/info-tbl-wrap-loop.html', [
                                         {
                                             "col1" : {
+                                                "modelID": "AQW345234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
@@ -148,12 +163,14 @@
                                                 "stateType" : {
                                                     "tit" : "배송중",
                                                     "desc" : "배송희망일 2020.09.18",
-                                                    "btn" : "배송문의"
+                                                    "btn" : "배송문의",
+                                                    "btnClass": "deliveryRequest-btn"
                                                 }
                                             }
                                         },
                                         {
                                             "col1" : {
+                                                "modelID": "AMK345234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
@@ -168,9 +185,12 @@
                                                 "stateType" : {
                                                     "tit" : "배송완료",
                                                     "desc" : "배송희망일 2020.09.18",
-                                                    "btn" : "반품신청",
+                                                    "btn" : "배송조회",
                                                     "btn2" : "제품리뷰", 
-                                                    "btn3" : "배송조회"
+                                                    "btn3" : "반품신청",
+                                                    "btnClass": "deliveryInquiry-btn",
+                                                    "btn2Class" : "productReview-btn",
+                                                    "btn3Class" : "takeBackInner-btn"
                                                 }
                                             }
                                         }
@@ -194,6 +214,7 @@
                                     @@loop('./common/modules/info-tbl-wrap-loop.html', [
                                         {
                                             "col1" : {
+                                                "modelID": "AQS2355234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
@@ -217,6 +238,7 @@
                                         },
                                         {
                                             "col1" : {
+                                                "modelID": "AOP1234234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
@@ -231,7 +253,8 @@
                                                 "stateType" : {
                                                     "tit" : "배송중",
                                                     "desc" : "배송희망일 2020.09.18",
-                                                    "btn" : "배송문의"
+                                                    "btn" : "배송문의",
+                                                    "btnClass": "deliveryRequest-btn"
                                                 }
                                             }
                                         }
@@ -256,6 +279,7 @@
                                     @@loop('./common/modules/info-tbl-wrap-loop.html', [
                                         {
                                             "col1" : {
+                                                "modelID": "AKJ345234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
@@ -274,12 +298,14 @@
                                                 "stateType" : {
                                                     "tit" : "배송중",
                                                     "desc" : "배송희망일 2020.09.18",
-                                                    "btn" : "배송문의"
+                                                    "btn" : "배송문의",
+                                                    "btnClass": "deliveryRequest-btn"
                                                 }
                                             }
                                         },
                                         {
                                             "col1" : {
+                                                "modelID": "AVC093234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
@@ -295,7 +321,9 @@
                                                     "tit" : "배송중",
                                                     "desc" : "배송희망일 2020.09.18",
                                                     "btn" : "배송조회",
-                                                    "btn2" : "배송문의"
+                                                    "btn2" : "배송문의",
+                                                    "btnClass": "deliveryInquiry-btn",
+                                                    "btn2Class" : "deliveryRequest-btn"
                                                 }
                                             }
                                         }
@@ -319,6 +347,7 @@
                                     @@loop('./common/modules/info-tbl-wrap-loop.html', [
                                         {
                                             "col1" : {
+                                                "modelID": "AQZ2344234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
@@ -337,12 +366,14 @@
                                                 "stateType" : {
                                                     "tit" : "배송준비중",
                                                     "desc" : "배송희망일 2020.09.18",
-                                                    "btn" : "배송문의"
+                                                    "btn" : "배송문의",
+                                                    "btnClass": "deliveryRequest-btn"
                                                 }
                                             }
                                         },
                                         {
                                             "col1" : {
+                                                "modelID": "AJM244234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
@@ -361,7 +392,7 @@
                                         }
                                     ])
                                     @@include('./common/modules/info-tbl-wrap-bottom.html', {
-                                        "cancel" : true,
+                                        "return" : true,
                                         "btns" : "주문/배송 상세보기"
                                     })
                                     <!-- // loop -->
@@ -380,6 +411,7 @@
                                     @@loop('./common/modules/info-tbl-wrap-loop.html', [
                                         {
                                             "col1" : {
+                                                "modelID": "AAK23434534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
@@ -401,8 +433,9 @@
                                             }
                                         },
                                         {
-                                            "canceled" : true,
+                                            "disabled" : true,
                                             "col1" : {
+                                                "modelID": "ANN345234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
@@ -427,16 +460,24 @@
                                 </div>
                                 <!-- // list -->
                                 @@include('./common/modules/bullet-list.html', {
+                                    "bulletClass": "inquiry-list-notify",
                                     "bulletTxt" : [
                                         "주문 진행 상태에 따라 취소/반품 신청이 가능합니다. 취소/반품 신청 버튼이 없을 경우 고객 센터(000-0000)에 문의 하세요."
                                     ]
                                 })
                                 <button type="button" class="btn-moreview block"><span>더보기</span></button>
+                                <!-- // data 있을 때 -->
+
+                                <!-- data 없을 때 --
+                                <div class="no-data">
+                                    <p>주문 내역이 없습니다.</p>
+                                </div>
+                                !-- // data 없을 때 -->
 
                                 <!-- 주문/배송 진행단계 안내 -->
                                 <div class="sects">
                                     <div class="tit-wrap type2">
-                                        <h6 class="tit">주문/배송 진행단계 안내</h6>
+                                        <p class="tit">주문/배송 진행단계 안내</p>
                                     </div>
                                     @@include('./common/modules/contract-steps.html', {
                                         "delivery" : true,
@@ -452,11 +493,13 @@
                                         "topBorder" : true,
                                         "bulletTit" : "확인하세요.",
                                         "bulletTxt" : [
-                                            "주문/배송 내역은 PC웹에서는 5년, 모바일웹에서는 1년까지 조회 가능합니다.",
-                                            "확인은 배송이 시작되기 전까지만 가능하며 단순 변심에 의한 반품은 제품 배송 완료 후 7일 이내에 온라인 접수가 가능합니다.<br>단, 설치 제품의 경우 인수 완료 후에는 반품이 불가하니 이점 유의하시기 바랍니다. 배송 완료 후 7일 이후의 건에 대해서는 고객 서비스 센터(000-0000)로 문의하세요.<br>제품 반품 시 반품 사유에 따라 배송비가 발생할 수 있습니다.",
-                                            "다수의 제품을 분할 결제나 포인트로 결제하신 경우, 부분 취소 또는 부분 반품이 불가하니 주문 건 전체를 취소하신 후 다시 결제하여 주세요.",
+                                            "주문/배송 내역은 PC 웹에서는 5년, 모바일웹에서는 1년까지 조회 가능합니다.",
+                                            "취소 신청은 배송이 시작되기 전까지만 가능하며 단순 변심에 의한 반품은 제품 배송 완료 후 7일 이내에 온라인 접수가 가능합니다.",
+                                            "단, 설치 제품의 경우 인수 완료 후에는 반품이 불가하니 이점 유의하시기 바랍니다.",
+                                            "배송 완료 후 7일 이후의 건에 대해서는 고객 서비스 센터(000-0000)로 문의하세요.",
                                             "멤버십 포인트는 구매 제품은 배송 완료 후, 케어솔루션(렌탈) 제품의 경우 배송 및 설치 완료 14일 이후 적립됩니다.",
-                                            "배송 상태는 ‘배송중’ 상태 부터 확인 가능합니다. (소모품 구입에만 해당)",
+                                            "배송 조회는 '배송중' 상태부터 확인 가능합니다. (소모품 구입에만 해당)",
+                                            "배송지 변경이 필요하신 경우 고객 서비스 센터(000-0000)로 문의하세요."
                                         ]
                                     })
                                 </div>
@@ -472,5 +515,90 @@
         
         @@include('./common/footer.html')
     </div>
+    
+    <!-- 취소신청-->
+    @@include('./common/popup/ACCF7002_pop1.html', {
+        popupID: 'popup-cancel'
+    })
+    <!-- // 취소신청 -->
+
+    <!-- 반품신청-->
+    @@include('./common/popup/ACCF7002_pop2.html', {
+        popupID: 'popup-takeback'
+    })
+    <!-- // 반품신청 -->
 </body>
+<script type="text/x-jquery-tmpl" id="tmpl-orderProduct">
+    <div class="box">    
+        <div class="info-wrap">
+            <ul class="infos">                
+                <li>주문일<em>${orderDate}</em></li>                
+                <li>주문번호<em>${orderNumber}</em></li>                
+            </ul>            
+            <p class="totals">총 ${orderTotal}건</p>            
+        </div>
+        <div class="tbl-layout ">
+            <div class="thead" aria-hidden="true">                
+                <span class="th col1">제품정보(주문/배송 상세보기)</span>                
+                <span class="th col2">진행상태</span>
+            </div>
+            <div class="tbody">
+                {{each productList}}
+                <div class="row ${$value.orderStatus.disabled}">
+                    <div class="col-table" data-model-id="${$value.modelID}">                        
+                        <div class="col col1">
+                            <span class="blind">제품정보</span>
+                            <div class="product-info">
+                                <div class="thumb">
+                                    <a href="${$value.productPDPurl}"><img src="${$value.productImage}" alt="${$value.productNameKR}"></a>
+                                </div>
+                                <div class="infos">                                    
+                                    <p class="name"><a href="${$value.productDetailUrl}}"><span class="blind">제품명</span>${$value.productNameKR}</a></p>
+                                    <p class="e-name"><span class="blind">영문제품번호</span>${$value.productNameEN}</p>  
+                                    {{if specList && specList.length > 0}}                                  
+                                    <div class="more">
+                                        <span class="blind">제품스펙</span>
+                                        <ul>
+                                            {{each specList}}
+                                            <li>${$value}</li>     
+                                            {{/each}}                                
+                                        </ul>
+                                    </div>
+                                    {{/if}}
+                                    <p class="count">수량 : ${$value.productTotal}</p>
+                                </div>
+                                <p class="price">
+                                    <span class="blind">구매가격</span>${$value.productPrice}원
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col col2">
+                            <div class="state-box">
+                                <p class="tit ${$value.orderStatus.statusClass}"><span class="blind">진행상태</span>${$value.orderStatus.statusText}</p>
+                                {{if $value.orderStatus.deliveryDate !=""}}<p class="desc">배송희망일 ${$value.orderStatus.deliveryDate}</p>{{/if}}
+                                {{if $value.statusButtonList && $value.statusButtonList.length > 0}}
+                                <div class="state-btns">
+                                    {{each $value.statusButtonList}}
+                                    <a href="#n" class="btn size border ${$value.className}-btn"><span>${$value.buttonName}</span></a>
+                                    {{/each}}       
+                                </div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{if cancelAbled == "Y"}}
+        <a href="#n" class="btn-link orderCancel-btn">취소신청</a>
+        {{/if}}
+        {{if takebackAbled == "Y"}}
+        <a href="#n" class="btn-link takeBack-btn">반품신청</a>
+        {{/if}}
+        <div class="btns">
+            <a href="#n" class="btn-link">주문/배송 상세보기</a>
+        </div>        
+    </div>
+</script>
 </html>

@@ -1,12 +1,7 @@
 <!-- 스크롤 시 .fixed-top 추가 (mobile만 해당) -->
 <div class="input-keyword-wrap">
     <!-- input focus 시 .focus-on 추가 -->
-        @@if(!context.confirm) {
-    <div class="input-keyword">
-        }
-        @@if(context.confirm) {
-    <div class="input-keyword focus-on">
-        }
+    <div class="input-keyword" @@if(context.value){data-searchValue="@@value"}>
         @@include('./common/modules/search-input.html', {
             "value" : "@@value"
         })
@@ -22,11 +17,11 @@
             <div class="auto-complete">
                 <div class="keyword-list">
                     <ul>
-                        <li class="on"><a href="#"><span class="search-word">에어</span>컨</a></li>
-                        <li><a href="#"><span class="search-word">에어</span>컨 설치</a></li>
-                        <li><a href="#"><span class="search-word">에어</span>컨 고장 수리</a></li>
-                        <li><a href="#"><span class="search-word">에어</span>케어</a></li>
-                        <li><a href="#">노크존 <span class="search-word">에어</span>컨 가격</a></li>
+                        <li class="on"><a href="#에어컨"><span class="search-word">에어</span>컨</a></li>
+                        <li><a href="#에어컨 설치"><span class="search-word">에어</span>컨 설치</a></li>
+                        <li><a href="#에어컨 고장 수리"><span class="search-word">에어</span>컨 고장 수리</a></li>
+                        <li><a href="#에어케어"><span class="search-word">에어</span>케어</a></li>
+                        <li><a href="#에어컨 가격">노크존 <span class="search-word">에어</span>컨 가격</a></li>
                     </ul>
                 </div>
             </div>
@@ -38,31 +33,31 @@
                         <ul>
                             <li>
                                 <span class="box">
-                                    <a href="#">올레드 TV</a>
+                                    <a href="#올레드 TV">올레드 TV</a>
                                     <button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button>
                                 </span>
                             </li>
                             <li>
                                 <span class="box">
-                                    <a href="#">2020년형 LG 그램 노트북 프로 2020년형 LG 그램 노트북 프로 2020년형 LG 그램 노트북 프로</a>
+                                    <a href="#2020년형 LG 그램 노트북 프로 2020년형 LG 그램 노트북 프로 2020년형 LG 그램 노트북 프로">2020년형 LG 그램 노트북 프로 2020년형 LG 그램 노트북 프로 2020년형 LG 그램 노트북 프로</a>
                                     <button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button>
                                 </span>
                             </li>
                             <li>
                                 <span class="box">
-                                    <a href="#">공기 청정기 필터 나눔 이벤트</a>
+                                    <a href="#공기 청정기 필터 나눔 이벤트">공기 청정기 필터 나눔 이벤트</a>
                                     <button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button>
                                 </span>
                             </li>
                             <li>
                                 <span class="box">
-                                    <a href="#">LED 마스크</a>
+                                    <a href="#LED 마스크">LED 마스크</a>
                                     <button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button>
                                 </span>
                             </li>
                             <li>
                                 <span class="box">
-                                    <a href="#">15Z995-VR5DK</a>
+                                    <a href="#15Z995-VR5DK">15Z995-VR5DK</a>
                                     <button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button>
                                 </span>
                             </li>
@@ -75,9 +70,9 @@
                     <span class="title">인기 검색어</span>
                     <div class="keyword-list">
                         <ul>
-                            <li><a href="#">LG 그램 17</a></li>
-                            <li><a href="#">스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형</a></li>
-                            <li><a href="#">LG 스타일러</a></li>
+                            <li><a href="#LG 그램 17">LG 그램 17</a></li>
+                            <li><a href="#스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형">스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형</a></li>
+                            <li><a href="#LG 스타일러">LG 스타일러</a></li>
                         </ul>
                     </div>
                 </div>
@@ -98,12 +93,12 @@
         <div class="inner">
             <span class="title">연관검색어</span>
             <ul class="keyword-list">
-                <li><a href="#">OLED TV</a></li>
-                <li><a href="#">SUPER OLED TV</a></li>
-                <li><a href="#">LG DIOS 스페이스 냉장고</a></li>
-                <li><a href="#">노크온 매직스페이스</a></li>
-                <li><a href="#">OLED TV/AV</a></li>
-                <li><a href="#">홈라이프</a></li>
+                <li><a href="#OLED TV">OLED TV</a></li>
+                <li><a href="#SUPER OLED TV">SUPER OLED TV</a></li>
+                <li><a href="#LG DIOS 스페이스 냉장고">LG DIOS 스페이스 냉장고</a></li>
+                <li><a href="#노크온 매직스페이스">노크온 매직스페이스</a></li>
+                <li><a href="#OLED TV/AV">OLED TV/AV</a></li>
+                <li><a href="#홈라이프">홈라이프</a></li>
             </ul>
         </div>
         <div class="mobile-more-btn">
@@ -114,7 +109,7 @@
     @@if(context.similar) {
     <div class="search-similar">
         <div class="search-result-text"><span class="search-word">&ldquo;티비&rdquo;</span> 검색 결과</div>
-        <a href="#" class="similar-text">&ldquo;xlql&rdquo; 검색 결과로 이동</a>
+        <a href="#xlql" class="similar-text">&ldquo;xlql&rdquo; 검색 결과로 이동</a>
     </div>
     }
 </div>

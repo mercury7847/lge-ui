@@ -1,0 +1,8 @@
+{   
+    "status": "success",
+    "message": null,
+    "data": {
+        "resultFlag": "N",
+        "resultMessage": "입력하신 인증 번호가 발송된 인증 번호와 맞지 않습니다."
+    }
+}

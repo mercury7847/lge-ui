@@ -2,7 +2,9 @@
     "status": "success",
     "message":null,
     "data": {
+        "resultFlag": "Y",
         "score": 4,
+        "input": "별로에요",
         "count": 107 
     }
 }

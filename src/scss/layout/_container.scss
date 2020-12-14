@@ -8,7 +8,7 @@
         padding:10px 40px 48px;
         text-align:center;
         @include mobile {
-            padding:32px 16px 24px;
+            padding:32px 16px;
         }
         .title {
             @include font-large-3;
@@ -24,9 +24,35 @@
             }
         }
         .btn-desc {
+            margin-top:21px;
             font-size:0;
+            /* display: flex;
+            justify-content: center; */
             .btn {
                 margin:0 4px;
+            }
+        }
+        .link-desc {
+            margin-top: 8px;
+            .btn-link {
+                color: $color-default;
+                &:after {
+                    background-image: url('/lg5-common/images/icons/btn-arr-20x20-black.svg');
+                }
+            }
+            &.arrow-left {
+                .btn-link {
+                    padding-right: 0;
+                    padding-left: 22px;
+                    &:after {
+                        right: auto;
+                        left: 0;
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+            @include mobile {
+                display: none;
             }
         }
         .tabs-wrap {
@@ -43,11 +69,45 @@
             padding:48px 0 24px;
             background:#f4f4f4;
         }
+        // 추가
+        &.border {
+            border-bottom: 8px solid $color-bg;
+            @include mobile {
+                border-bottom: 0;
+            }
+            .tabs-wrap.btn-type {
+                padding-bottom: 24px;
+                @include mobile {
+                    padding-bottom: 12px;
+                }
+            }
+        }
+        &.wide {
+            max-width: 100%;
+            margin-bottom: 48px;
+            padding: 10px 0 0;
+            @include mobile {
+                margin-bottom: 32px;
+                padding: 0;
+            }
+            h2 {
+                max-width: 1380px;
+                margin: 0 auto;
+                padding: 0 40px;
+                @include mobile {
+                    padding: 0 16px;
+                }
+            }
+
+        }
     }
 
     // sub page common layout : title + white box layout
     .cont-wrap {
         max-width: 1380px + 80px;
+        &.narrow {  // 서브 화면 중 1380보다 작은 타입 추가
+            max-width:1146px + 80px;
+        }
         margin: 0 auto;
         padding: 0 40px 120px;
         @include mobile {
@@ -135,11 +195,13 @@
             .tit-wrap {
                 position:relative;
                 margin-bottom:48px;
+                &.agree{
+                    margin-bottom:17px;
+                }
                 .tit {
                     color:#222;
                     font-size:20px;
                     font-weight:700;
-                    line-height:30px;
                     padding-bottom:16px;
                     border-bottom:2px solid #222;
                     .point {
@@ -153,9 +215,21 @@
                     }
                 }
             }
+            // .agree-cont-wrap{
+            //     .tit-wrap{
+            //         margin-bottom:0;
+            //         .tit{
+            //             @include font-medium;
+            //             border-bottom:0;
+            //             padding-bottom:0;
+            //         }
+            //     }
+            // }
+            &.bg-gray {
+                background-color: #f4f4f4;
+            }
             @include mobile {
-                padding:40px 16px 56px;
-                border-top:12px solid #f4f4f4;
+                padding:40px 16px 0;
                 &:first-child {
                     border-top:none;
                     &:before {
@@ -166,11 +240,10 @@
                     margin-bottom:32px;
                 }
                 .tit-wrap {
-                    padding-bottom:16px;
                     margin-bottom:20px;
                     .tit {
                         font-size:18px;
-                        line-height:26px;
+                        padding-bottom: 12px;
                     }
                 }
             }
@@ -185,6 +258,213 @@
     }
 }
 
+// mypage 사용하던 section-wrap 가져옴
+.section-wrap {
+    .sects {
+        margin-top:80px;
+        @include mobile {
+            margin:0;
+            padding:32px 16px 60px;
+            border-top:12px solid #f4f4f4;
+        }
+        &:first-child {
+            margin-top:0;
+            @include mobile {
+                padding-top:0;
+                border-top:none;
+            }
+        }
+        &:last-child {
+            @include mobile {
+                padding-bottom:0;
+            }
+        }
+        // title
+        > .tit-wrap {
+            position:relative;
+            @include clearfix;
+            margin-bottom:0;
+            border-bottom:2px solid #222;
+            @include mobile {
+                padding-bottom:8px;
+            }
+            .tit {
+                float:left;
+                padding-bottom:16px;
+                color:#222;
+                @include font-large-1;
+                font-weight:700;
+                em {
+                    color:#EC455A;
+                }
+                @include mobile {
+                    padding:4px 0;
+                    font-size:18px;
+                    line-height:26px;
+                    &:only-child {
+                        padding-top:0;
+                    }
+                }
+            }
+            .flt-cont {
+                float:right;
+                font-size:0;
+                &.left {
+                    float:left;
+                    .tit {
+                        float:none;
+                        display:inline-block;
+                        vertical-align:top;
+                        @include mobile {
+                            vertical-align:middle;
+                        }
+                    }
+                    .tooltip-wrap {
+                        margin-top:3px;
+                        margin-left:4px;
+                        @include mobile {
+                            margin-top:0;
+                            vertical-align:middle;
+                            .tooltip-box {
+                                left:0;
+                                right:0;
+                            }
+                        }
+                    }
+                }
+            }
+            &.type2 {
+                height:auto;
+                margin-bottom:12px;
+                border-bottom:none;
+                @include mobile {
+                    padding-bottom:0;
+                }
+                .tit {
+                    @include font-large;
+                    @include mobile {
+                        padding:0;
+                        font-size:18px;
+                        line-height:26px;
+                    }
+                }
+            }
+            &.type3 {
+                height:auto;
+                margin-bottom:32px;
+                border-bottom:none;
+                @include mobile {
+                    margin-bottom:20px;
+                }
+                .tit {
+                    float:none;
+                    padding-bottom:0;
+                }
+                .desc {
+                    margin-top:12px;
+                    color:#222;
+                    @include font-medium;
+                    word-break:keep-all;
+                    @include mobile {
+                        margin-top:8px;
+                    }
+                }
+            }
+        }
+        // contents
+        .section-inner {
+            padding-top:48px;
+            @include mobile {
+                padding-top:20px;
+            }
+            &.type2 {
+                padding-top:16px;
+            }
+            &.type3 {
+                padding-top:64px;
+                @include mobile {
+                    padding-top:40px;
+                }
+            }
+            // 탭 밑에 붙을 때 type4
+            &.type4 {
+                padding-top:24px;
+                @include mobile {
+                    padding-top:16px;
+                }
+            }
+            .inner-sub-tit {
+                margin-bottom:48px;
+                color:#222;
+                @include font-medium;
+            }
+            .inner-box {
+                margin-top:64px;
+                &.type2 {
+                    margin-top:48px;
+                }
+                @include mobile {
+                    margin-top:40px;
+                }
+                &:first-child {
+                    margin-top:0;
+                }
+                .inner-tit {
+                    margin-bottom:24px;
+                    color:#222;
+                    @include font-large;
+                    font-weight:700;
+                    @include mobile {
+                        font-size:16px;
+                        line-height:24px;
+                        margin-bottom:12px;
+                    }
+                }
+                div.inner-tit {
+                    font-size:0;
+                    @include mobile {
+                        margin-bottom:12px;
+                    }
+                    > p {
+                        display:inline-block;
+                        @include font-large;
+                        font-weight:700;
+                        vertical-align:middle;
+                        @include mobile {
+                            font-size:16px;
+                            line-height:24px;
+                        }
+                    }
+                    .tooltip-wrap {
+                        margin-left:4px;
+                        padding-top:0;
+                        vertical-align:middle;
+                    }
+                }
+            }
+            .btn-group {
+                margin-top:32px;
+            }
+            .btn-moreview {
+                margin-top:32px;
+                @include mobile {
+                    margin-top:24px;
+                }
+            }
+        }
+        &.modify{
+            display:none;
+        }
+    }
+    & + .btn-group {
+        margin-top:80px;
+        @include mobile {
+            margin-top:32px;
+            padding:0 16px;
+        }
+    }
+}
+
 // no-data
 .no-data {
     // margin-top:60px;
@@ -195,13 +475,9 @@
     //     line-height:24px;
     // }
     margin:0;
-    padding:160px 0;
+    padding:140px 0;
     background-color: #fff;
     text-align:center;
-    @include mobile {
-        padding:40px 0;
-        width: calc(100vw - 40px);
-    }
     &.mg-type {
         padding:0;
         margin:140px 0;
@@ -226,5 +502,8 @@
     }
     &.full {
         padding:(140px - 56px) 0;
+    }
+    @include mobile {
+        padding: 40px 0;
     }
 }

@@ -4,10 +4,10 @@
     border-radius:8px;
     background:#f4f4f4;
     @include mobile {
-        margin-bottom:36px;
+        margin-bottom:40px;
         padding:32px 12px;
     }
-    > h4.tit {
+    > p.tit {
         color:#222;
         @include font-large-1;
         font-weight:700;

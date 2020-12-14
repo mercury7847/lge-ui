@@ -39,37 +39,37 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 infoWindow: 
                     '<div class="info-overlaybox">'+
                     '   <div class="inner">'+
-                    '       <p class="name">{{agName}}</p>'+
-                    '       <p class="adress">{{agAddr1}}</p>'+
+                    '       <p class="name">{{shopName}}</p>'+
+                    '       <p class="adress">{{shopAdress}}</p>'+
                     '       <div class="store-info">'+
                     '           <dl>'+
                     '               <dt>전화</dt>'+
-                    '               <dd>{{agTel}}</dd>'+
+                    '               <dd>{{shopTelphone}}</dd>'+
                     '           </dl>'+
-                    '           {{#if agFax != null}}'+
+                    '           {{#if shopFax != null}}'+
                     '           <dl>'+
                     '               <dt>팩스</dt>'+
-                    '               <dd>{{agFax}}</dd>'+
+                    '               <dd>{{shopFax}}</dd>'+
                     '           </dl>'+
                     '           {{/if}}'+
                     '       </div>'+
                     '       <div class="hour-info">'+
                     '           <dl>'+
                     '               <dt>평&nbsp;&nbsp;일</dt>'+
-                    '               <dd>{{agWeekday}}</dd>'+
+                    '               <dd>{{bizHours.week}}</dd>'+
                     '           </dl>'+
                     '           <dl>'+
                     '               <dt>토요일</dt>'+
-                    '               <dd>{{agSaturday}}</dd>'+
+                    '               <dd>{{bizHours.saturday}}</dd>'+
                     '           </dl>'+
                     '           <dl>'+
                     '               <dt>일요일</dt>'+
-                    '               <dd>{{agSunday}}</dd>'+
+                    '               <dd>{{bizHours.subday}}</dd>'+
                     '           </dl>'+
                     '       </div>'+
                     '       <div class="btn-group">'+
-                    '           <a href="#n" class="btn">매장 상담 신청</a>'+
-                    '           <a href="#{{agNum}}" class="btn detail-view">상세 정보</a>'+
+                    '           <a href="#n" class="btn border size">매장 상담 신청</a>'+
+                    '           <a href="#{{shopID}}" class="btn border size detail-view">상세 정보</a>'+
                     '       </div>'+
                     '   </div>'+
                     '</div>'
@@ -162,7 +162,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 {
                     id : info.id, 
                     num : idx < 99 ? idx+1 : "-",
-                    title: info.agName,
+                    title: info.shopID,
                     selected: info.selected ? " on" : "",
                     select_txt: info.selected ? "선택됨" : "선택안됨"
                 }
@@ -293,7 +293,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             var info = null;
             for(var i=0; i<self.itemArr.length; i++){
                 info = self.itemArr[i].info;
-                bounds.extend(new naver.maps.LatLng(info.agGpsX, info.agGpsY));
+                bounds.extend(new naver.maps.LatLng(info.gpsInfo.gpsx, info.gpsInfo.gpsy));
             }
             self.map.fitBounds(bounds);  
         },
@@ -345,7 +345,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 
             for(var i=0; i<arr.length; i++){
                 var obj = arr[i];
-                self._addCustomMarker(obj.agGpsX, obj.agGpsY, obj, i);
+                self._addCustomMarker(obj.gpsInfo.gpsx, obj.gpsInfo.gpsy, obj, i);
             }
         },   
 

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/reservation",
+        "support/custom-voice"
+    ]
+})
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '이메일 문의'
+            })
+            <div class="contents support reservation">
+               <!-- @@include('./common/support/login-guide.html', {
+                    'text': '출장 서비스를 신청하기 위해 계정이 필요하지 않지만, 로그인을 하시면 고객님의 세부 정보가 자동으로 입력됩니다.'
+                })
+            -->
+                <div class="cont-wrap">
+
+                    <form action="/html/support/CSTF3010.html" id="submitForm" autocomplete="off">
+
+                        <div class="section">
+                            <div class="tit-wrap">
+                                <h2 class="tit">모델명 선택</h2>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="tit-wrap">
+                                <h2 class="tit">문의 유형을 선택해주세요.</h2>
+                            </div>
+                            <div class="rdo-wrap-list choice-input">
+                                <span class="rdo-wrap btn-type2">
+                                    <input type="radio" id="inquiry-1" name="inquiry" checked>
+                                    <label for="inquiry-1">기업 정보</label>
+                                </span>
+                                <span class="rdo-wrap btn-type2">
+                                    <input type="radio" id="inquiry-2" name="inquiry">
+                                    <label for="inquiry-2">뉴스 관련</label>
+                                </span>
+                                <span class="rdo-wrap btn-type2">
+                                    <input type="radio" id="inquiry-3" name="inquiry">
+                                    <label for="inquiry-3">주식 관련</label>
+                                </span>
+                                <span class="rdo-wrap btn-type2">
+                                    <input type="radio" id="inquiry-4" name="inquiry">
+                                    <label for="inquiry-4">재무 관련</label>
+                                </span>
+                                <span class="rdo-wrap btn-type2">
+                                    <input type="radio" id="inquiry-5" name="inquiry">
+                                    <label for="inquiry-5">사회 공헌</label>
+                                </span>
+                                <span class="rdo-wrap btn-type2">
+                                    <input type="radio" id="inquiry-6" name="inquiry">
+                                    <label for="inquiry-6">인사 제도 관련</label>
+                                </span>
+                                <span class="rdo-wrap btn-type2">
+                                    <input type="radio" id="inquiry-7" name="inquiry">
+                                    <label for="inquiry-7">LG전자 회원 관련</label>
+                                </span>
+                                <span class="rdo-wrap btn-type2">
+                                    <input type="radio" id="inquiry-8" name="inquiry">
+                                    <label for="inquiry-8">멤버십 관련</label>
+                                </span>
+                                <span class="rdo-wrap btn-type2">
+                                    <input type="radio" id="inquiry-9" name="inquiry">
+                                    <label for="inquiry-9">사이트 이용 관련</label>
+                                </span>
+                                <span class="rdo-wrap btn-type2">
+                                    <input type="radio" id="inquiry-10" name="inquiry">
+                                    <label for="inquiry-10">온라인몰 관련</label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="tit-wrap">
+                                <h2 class="tit">문의 내용을 입력해주세요.</h2>
+                            </div>
+                            <div class="form-wrap">
+                                <div class="forms">
+                                    <div class="tit">
+                                        <label for="input-title" class="req">제목<span class="blind">필수입력</span></label>
+                                    </div>
+                                    <div class="conts">
+                                        <div class="input-wrap count">
+                                            <input type="text" name="title" id="input-title" placeholder="제목 입력" data-required="true" data-msg-target=".err-msg" required>
+                                            <div class="btn-more"><p class="err-msg"></p></div>
+                                            <span id="txt-count1" class="cell total"><em>0</em>/40자</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="forms">
+                                    <div class="tit">
+                                        <label for="input-content" class="req">내용<span class="blind">필수입력</span></label>
+                                        <div class="tooltip-wrap"><!-- 활성화시 active -->
+                                            <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget">자세히 보기</span>
+                                            <div class="tooltip-box">
+                                                <ul class="bullet-list">
+                                                    <li class="b-txt">스마트폰일 경우, OS버전을 적어 주시면 도움이 됩니다<br />OS 버전 확인 방법(예시):메뉴 → 휴대폰정보 → 소프트웨어 정보 → Android 버전</li>
+                                                </ul>
+                                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="conts">
+                                        <div class="input-wrap count">
+                                            <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-msg-target=".err-msg" data-required="true"></textarea>
+                                            <span id="txt-count2" class="cell total"><em>0</em> / 1000자</span>
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="forms">
+                                    <div class="tit">
+                                        <label for="inp02-2">파일첨부(선택)</label>
+                                        <div class="tooltip-wrap"><!-- 활성화시 active -->
+                                            <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget">자세히 보기</span>
+                                            <div class="tooltip-box">
+                                                <ul class="bullet-list">
+                                                    <li class="b-txt">첨부파일은 최대 3개까지 가능하며, 전체 용량은 10MB 이하까지 업로드 가능합니다.</li>
+                                                    <li class="b-txt">첨부파일 이름은 특수기호(? ! , . & ^ ~ )를 사용할 수 없으며 첨부 가능 확장자는 JPG, GIF입니다.</li>
+                                                </ul>
+                                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="conts">
+                                        <div class="add-file-wrap">
+                                            <div class="upload-wrap">
+                                                <div class="upload-img-area">
+                                                    <div class="uploadpreview img01"></div>
+                                                    <div class="upload-btn-area">
+                                                        <label for="img01" class="btn-ipt-file"></label>
+                                                        <input id="img01" type="file" accept="image/*" name="uploadBtn" class="ipt-file uploadBtn">
+                                                        <div class="btn-ipt-del"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="upload-file-name">
+                                                    <input type="text" class="ipt-file-name fileName" id="fileName01" placeholder="파일선택" disabled="disabled">
+                                                </div>
+                                            </div>
+                                            <div class="upload-wrap">
+                                                <div class="upload-img-area">
+                                                    <div class="uploadpreview img02"></div>
+                                                    <div class="upload-btn-area">
+                                                        <label for="img02" class="btn-ipt-file"></label>
+                                                        <input id="img02" type="file" accept="image/*" name="uploadBtn" class="ipt-file uploadBtn">
+                                                        <div class="btn-ipt-del"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="upload-file-name">
+                                                    <input type="text" class="ipt-file-name fileName" id="fileName02" placeholder="파일선택" disabled="disabled">
+                                                </div>
+                                            </div>
+                                            <div class="upload-wrap">
+                                                <div class="upload-img-area">
+                                                    <div class="uploadpreview img03"></div>
+                                                    <div class="upload-btn-area">
+                                                        <label for="img03" class="btn-ipt-file"></label>
+                                                        <input id="img03" type="file" accept="image/*" name="uploadBtn" class="ipt-file uploadBtn">
+                                                        <div class="btn-ipt-del"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="upload-file-name">
+                                                    <input type="text" class="ipt-file-name fileName" id="fileName03" placeholder="파일선택" disabled="disabled">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="tit-wrap">
+                                <h2 class="tit">고객 정보를 확인해주세요.</h2>
+                            </div>
+                            <div class="form-wrap">
+                                <div class="forms">
+                                    <div class="tit"><label for="input-name" class="req">이름<span class="blind">필수입력</span></label></div>
+                                    <div class="conts">
+                                        <div class="input-wrap">
+                                            <input type="text" name="name" id="input-name" placeholder="이름 입력" data-required="true" data-msg-target=".err-msg" required>
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="forms">
+                                    <div class="tit"><label for="input-email" class="req">이메일<span class="blind">필수입력</span></label></div>
+                                    <div class="conts">
+                                        <div class="input-wrap">
+                                            <input type="text" name="email" id="input-email" placeholder="이메일 입력" value="" data-required="true" data-msg-target=".err-msg" required>
+                                            <p class="err-msg"></p>
+                                        </div>
+                                        <ul class="bullet-list top-border">
+                                            <li class="b-txt">이메일 문의는 평일 근무시간 상담사가 문의 내용을 확인 후 답변하는 관계로 토요일/일요일/공휴일 및 연휴에 문의하신 건의 답변은 지연될 수 있습니다.</li>
+                                            <li class="b-txt">답변은 서비스 홈페이지 문의/예약 결과조회 메뉴를 통해 확인 가능합니다. (단, 답변일로부터 1개월간, 접수번호 필요)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-group center">
+                            <a href="#" class="btn gray"><span>취소</span></a>
+                            <button type="button" class="btn pink" id="completeBtn">문의</button>
+                            <!-- <button type="button" class="btn pink" id="completeBtn" data-href="#completePop" data-control="modal">인증/예약</button> -->
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- 유상 및 보증기간 팝업 -->
+    @@include('./support/modal/rates-warranty-guide-popup.html')
+    
+    <!-- 휴대폰인증 팝업 -->
+    @@include('./support/modal/phone-certification-popup.html')
+
+    <!-- 제품 해결 팝업 -->
+    @@include('./support/modal/solutions-popup.html')
+
+    <!-- 엔지니어 선택 팝업 -->
+    @@include('./support/modal/choice-engineer-popup.html')
+
+    <!-- 예약 완료 팝업 -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "completePop",
+        "msgOnly" : true,
+        "msg" : "출장 서비스를<br>예약하겠습니까?",
+        "twobtn" : true
+    })
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/reservation.min.js"></script>
+    <script src="/lg5-common/js/support/customVoice/customVoice.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/addfile.min.js"></script>
+</body>
+</html> 

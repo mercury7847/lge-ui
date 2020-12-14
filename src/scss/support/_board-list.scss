@@ -376,21 +376,6 @@
             }
         }
     }
-    & + .btn-wrap {
-        margin-top:32px;
-        text-align:center;
-        .btn-more { 
-            @include font-small;
-            font-weight:500;
-            span {
-                padding-left:22px;
-                background:url(/lg5-common/images/icons/btn-more-20.svg) no-repeat;
-            }
-        }
-        @include mobile {
-            margin-top:24px;
-        }
-    }
 }
 
 /* card list */
@@ -460,11 +445,6 @@
             }
         }
     }
-    .title-type{
-        .item-image {
-            padding-top:75%;
-        }
-    }
     @include tablet {
         .card-list {
             > li {
@@ -511,7 +491,7 @@
 .video-list-wrap {
     .video-list {
         > li {
-            padding:16px 0;
+            padding:24px 0;
             border-bottom:1px solid #ddd;
             > a {
                 display:block;
@@ -561,30 +541,47 @@
                 line-height:20px;
             }
             .topic {
-                color:#ec455a;
+                color:#767676;
+                margin-bottom: 2px;
             }
             .category {
-                color:#979797;
+                color:#ec455a;
+                margin-bottom: 2px;
             }
             .tit {
-                margin-top:8px;
-                font-size:16px;
+                font-size:18px;
                 line-height:24px;
                 @include textEllipsisClamp(2);
+            }
+            .flag-wrap {
+                margin-bottom: 12px;
+                &.bar-type {
+                    .flag {
+                        font-size: 14px;
+                        font-weight: 500;
+                        &::before {
+                            width: 1px;
+                            height: 14px;
+                            background-color: #ddd;
+                            margin: 0 8px;
+                        }
+                    }
+                }
             }
         } 
     }
     @include mobile {
         .video-list {
             > li {
-                padding:20px 0;
+                padding:16px 0;
             }
             .video-thumb {
-                width:96px;
-                height:72px;
+                width:120px;
+                height:90px;
             }
             .video-cont {
-                @include calc('width', 100%, 96px);
+                @include calc('width', 100%, 120px);
+                padding-left:12px;
                 .topic, .category {
                     font-size:12px;
                     line-height:16px;
@@ -592,6 +589,18 @@
                 .tit {
                     font-size:14px;
                     line-height:18px;
+                }
+                .flag-wrap {
+                    margin-bottom: 3px;
+                    &.bar-type {
+                        .flag {
+                            font-size: 12px;
+                            display: block;
+                            &::before {
+                                display: none;
+                            }
+                        }
+                    }
                 }
             } 
         }

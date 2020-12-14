@@ -8,6 +8,7 @@
         "localListUrl": "/lg5-common/data-ajax/searchshop/bestShopArea.json",
         "subwayListUrl": "/lg5-common/data-ajax/searchshop/selectSubwayList.json",
         "stationListUrl": "/lg5-common/data-ajax/searchshop/selectStation.json",
+        "userAdressCheckedUrl": "/lg5-common/data-ajax/searchshop/userAdressChecked.json",
         "detailPageUrl": "/html/CS/CSRF6041.html",
         "mapID": "vsay0tnzme",
         "appKey": "oqYmIfzrl6E72lYDAvNeII5x9wEWUNwKrcUctzVa",

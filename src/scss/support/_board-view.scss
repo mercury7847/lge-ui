@@ -2,7 +2,7 @@
 
 /* notice view */
 .board-view-wrap {
-    padding-top:48px;
+    padding-top:64px;
     @include mobile {
         padding-top:32px;
     }
@@ -46,6 +46,9 @@
                                 background:#979797;
                             }
                         }
+                        .point {
+                            color:#ec455a;
+                        }
                     }
                 }
             }
@@ -67,10 +70,10 @@
                 }
             }
         }
-        &-sns {
+        &-sub {
             display:flex;
             align-items:center;
-            justify-content:flex-end;
+            justify-content:space-between;
             padding:16px 0;
             border-bottom: 1px solid #ddd;
             .sns-wrap:only-child {
@@ -78,66 +81,99 @@
             }
         }
         &-body {
-            padding:48px 0;
+            padding:48px 0 80px;
             .view-content {
-                strong, p {
-                    font-size:16px;
-                    line-height:24px;
-                }
-                p {
-                    color:#616161;
-                    &.view-content-title {
-                        color:#222;
-                        margin-bottom: 16px;
-                        display: inline-block;
-                        &::before {
-                            content: '';
-                            display: inline-block;
-                            width: 2px;
-                            height: 12px;
-                            background-color: #222;
-                            margin-right: 4px;
+                /* video detail */
+                .video-content {
+                    padding:64px 40px;
+                    border-radius: 8px;
+                    background-color: #f4f4f4;
+                    margin-bottom: 40px;
+                    @include mobile {
+                        padding: 32px 16px 60px;
+                        margin: 0 -16px 40px;
+                    }
+                    .video-box {
+                        height:360px;
+                        max-width:1146px;
+                        margin:0 auto;
+                        @include clearfix;
+                        .column {
+                            float:left;
+                            width:56%;
+                            height:100%;
+                            & + .column {
+                                width:calc(44% - 24px);
+                                margin-left:24px;
+                            }
+                            iframe {
+                                width:100%;
+                                height:100%,
+                            }
+                            .subtitles-tit {
+                                margin-bottom: 24px;
+                                color: #222;
+                                font-size:24px;
+                                font-weight:$font-weight-bold;
+                                line-height:34px;
+                                @include mobile {
+                                    margin-bottom: 12px;
+                                    font-size: 14px;
+                                    line-height:22px;
+                                }
+                            }
+                            .subtitles-cont {
+                                overflow-y:auto;
+                                height: calc(100% - 58px);
+                                color:#222;
+                                font-size:16px;
+                                line-height:26px;
+                            }
                         }
-                        &-1 {
-                            font-size: 20px;
-                            font-weight: bold;
-                            line-height: 1.4;
-                            margin-bottom: 16px;
-                            color: #222;
-                            &::before {
-                                display: none;
+                        @include mobile {
+                            height:auto;
+                            .column {
+                                float:none;
+                                width:100%;
+                                height:auto;
+                                & + .column {
+                                    width:100%;
+                                    margin:8px 0 0;
+                                }
+                                iframe {
+                                    height: 220px;
+                                }
+                                .subtitles-wrap {
+                                    height: 165px;
+                                    font-size:13px;
+                                    line-height:21px;
+                                }
                             }
                         }
                     }
                 }
-                &-img {
-                    text-align: center;
+                .text-content {
+                    max-width: 1146px;;
+                    margin: 0 auto;
+                    @include mobile {
+                        width: 100%;
+                    }
+                }   
+            }
+            #viewContent {
+                padding:0 24px;
+                p, strong {
+                    color:#222;
+                    @include font-medium;
                 }
                 img {
                     max-width:100%;
                 }
-                .life-tips {
-                    max-width: 1146px;
-                    margin: 0 auto;
-                }
-                &#viewContent {
-                    padding:0 24px;
-                    p, strong {
-                        color:#222;
-                        @include font-medium;
-                    }
-                }
             }
             @include mobile {
                 padding:32px 0 40px;
-                .view-content {
-                    strong, p {
-                        font-size:14px;
-                        line-height:18px;
-                    }
-                    &#viewContent {
-                        padding:0;
-                    }
+                #viewContent {
+                    padding:0;
                 }
             }
         }
@@ -207,24 +243,53 @@
             }
         }
     }
-    .board-survey {
+    .survey-content {
         position:relative;
-        margin-top:32px;
-        padding:56px;
-        border-radius:4px;
-        background:#fff;
+        max-width:1146px;
+        margin:64px auto 0;
+        .title-wrap {
+            .tit {
+                margin-bottom:8px;
+                font-size:20px;
+                font-weight:$font-weight-bold;
+                line-height:28px;
+            }
+            .desc {
+                color:#767676;
+                font-size:16px;
+                font-weight:$font-weight-medium;
+                line-height:26px;
+            }
+        }
         .star-rating-wrap {
             margin-top:24px;
         }
         .input-wrap {
-            margin-top:16px;
+            margin-top:8px;
         }
         .btn-wrap {
-            margin-top:48px;
+            margin-top:24px;
             text-align:center;
         }
         @include mobile {
-            padding: 40px 20px 56px;
+            margin-top:40px;
+            .title-wrap {
+                .tit {
+                    font-size:14px;
+                    line-height:22px;
+                }
+                .desc {
+                    font-size:13px;
+                    line-height:21px;
+                }
+            }
+            .btn-wrap {
+                margin-top:32px;
+                padding:0 20px;
+                .btn {
+                    width:100%;
+                }
+            }
         }
     }
 }

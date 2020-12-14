@@ -1,8 +1,10 @@
 {
-    "status":"success",
-    "message":"영수증 등록이 완료되었습니다.",
+    "status": "success",
+    "message": null,
     "data": {
-        "date":"20200619",
-        "product":"얼음 정수기 냉장고"
+        "alert":{
+            "title":"영수증 등록이 완료되었습니다.",
+            "desc":"구매이력조회는 다음날인 2020.11.03부터<br>조회하실 수 있습니다."
+        }
     }
 }

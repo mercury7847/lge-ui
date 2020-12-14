@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: [
+            "MYC/MYC", "UTC/UTC"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "비회원 주문/배송 조회",
+                "pageDesc" : "주문 시 입력한 정보와 주문완료시 안내 드린 주문번호로 조회할 수 있습니다."
+            })
+            <!-- 비회원 주문/배송 조회 -->
+            <div class="contents mypage non-members">
+                <div class="cont-wrap login-type">
+                    <!-- tab -->
+                    <div class="tabs-wrap new-type ui_tab">
+                        <ul class="tabs">
+                            <li class="on"><a href="#login-type1">이메일로 조회<em class="blind">선택됨</em></a></li>
+                            <li><a href="#login-type2">휴대폰 번호로 조회</a></li>
+                        </ul>
+                    </div>
+                    <!-- // tab -->
+
+                    <!-- 이메일로 조회 -->
+                    <div id="login-type1" class="non-members-login-tabs">
+                        <div class="form-wrap">
+                            <dl class="forms inner-type type2">
+                                <dt class="tit"><label for="inp01" class="req">주문번호<span class="blind">필수입력</span></label></dt>
+                                <dd class="conts">
+                                    <div class="input-wrap">
+                                        <input type="text" id="inp01" placeholder="주문번호를 입력하세요.">
+                                    </div>
+                                    <div class="btm-more">
+                                        <p class="err-msg">주문번호를 입력해주세요.</p>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="forms inner-type type2">
+                                <dt class="tit"><label for="inp02" class="req">이메일<span class="blind">필수입력</span></label></dt>
+                                <dd class="conts">
+                                    <div class="input-wrap">
+                                        <input type="text" id="inp02" placeholder="이메일을 입력하세요.">
+                                    </div>
+                                    <div class="btm-more">
+                                        <p class="err-msg">이메일 주소를 입력해주세요.</p>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="forms inner-type type2">
+                                <dt class="tit"><label for="inp03" class="req">이름<span class="blind">필수입력</span></label></dt>
+                                <dd class="conts">
+                                    <div class="input-wrap">
+                                        <input type="text" id="inp03" placeholder="주문하신 분의 이름을 입력하세요.">
+                                    </div>
+                                    <div class="btm-more">
+                                        <p class="err-msg">주문하신 분의 이름을 입력해주세요.</p>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="btn-group center">
+                            <button type="button" class="btn"><span>확인</span></button>
+                        </div>
+                    </div>
+                    <!-- // 이메일로 조회 -->
+
+                    <!-- 휴대폰 번호로 조회 -->
+                    <div id="login-type2" class="non-members-login-tabs" style="display:none;">
+                        <div class="form-wrap">
+                            <dl class="forms inner-type type2">
+                                <dt class="tit"><label for="inp01-2" class="req">주문번호<span class="blind">필수입력</span></label></dt>
+                                <dd class="conts">
+                                    <div class="input-wrap">
+                                        <input type="text" id="inp01-2" placeholder="주문번호를 입력하세요.">
+                                    </div>
+                                    <div class="btm-more">
+                                        <p class="err-msg">주문번호를 입력해주세요.</p>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="forms inner-type type2">
+                                <dt class="tit"><label for="inp02-2" class="req">휴대폰번호<span class="blind">필수입력</span></label></dt>
+                                <dd class="conts">
+                                    <div class="input-wrap">
+                                        <input type="text" id="inp02-2" placeholder="&quot;-&quot;없이 숫자만 입력하세요.">
+                                    </div>
+                                    <div class="btm-more">
+                                        <p class="err-msg">휴대폰 번호를 입력해주세요.</p>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="forms inner-type type2">
+                                <dt class="tit"><label for="inp03-2" class="req">이름<span class="blind">필수입력</span></label></dt>
+                                <dd class="conts">
+                                    <div class="input-wrap">
+                                        <input type="text" id="inp03-2" placeholder="주문하신 분의 이름을 입력하세요.">
+                                    </div>
+                                    <div class="btm-more">
+                                        <p class="err-msg">주문하신 분의 이름을 입력해주세요.</p>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="btn-group center">
+                            <button type="button" class="btn"><span>확인</span></button>
+                        </div>
+                    </div>
+                    <!-- // 휴대폰 번호로 조회 -->
+                    <div class="customer-center-info type2">
+                        <p class="hello">주문일로 부터 3개월까지 주문내역을 조회할 수 있습니다. 3개월 이전의 주문내역은 고객센터로 문의해주세요.</p>
+                        <div class="call-info">
+                            <ul>
+                                <li>LG전자<br> 고객센터 번호 <em>1544-7777</em></li>
+                                <li>LG소모품<br> 고객센터 번호 <em>1644-7101</em></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 회원가입 안내 -->
+                    <div class="welcome-joinus">
+                        <p class="cell text">LG전자 멤버십 회원으로 가입하시면 더 많은 혜택이 적용됩니다.</p>
+                        <div class="cell btns">
+                            <a href="#n" class="btn mix size"><span>회원가입</span></a>
+                        </div>
+                    </div>
+                    <!-- // 회원가입 안내 -->
+                </div>
+            </div>
+            <!-- // 비회원 주문/배송 조회 -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

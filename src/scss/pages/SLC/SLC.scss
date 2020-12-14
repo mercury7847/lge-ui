@@ -15,9 +15,17 @@
 //케어솔루션 안내 - 케어플래너, 케어십
 @import "RMSF2003";
 
+//케어솔루션 안내 - 고객혜택
+@import "RMSF2015";
+
 .pop-conts.care-planner-pop {
     //상세 견적 확인
     @import "RMSF2020";
+}
+
+// 케어솔루션 home
+.contents.caresolution.home {
+    @import "RMSF2001";
 }
 
 

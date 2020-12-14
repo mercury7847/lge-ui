@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        componentID: "KRP0012",
-        isJScompile: true
+        componentID: "KRP0012"
     })
-<body style="background-color:#f4f4f4;">
+<body>
     <div class="wrap">
         <div class="container">
-            
-            <div style="width:100%;height:200px;"></div>
-            <!-- 품절제품-->
-            @@include('./common/partials/KRP0012.html', {
-                "component-class.margin" : "zero-top zero-btm",
-                "product" : {
-                    "name" : "LG TROMM 스타일러LG TROMM 스타일러LG TROMM 스타일러"
-                },
-                "tabMenu" : {
-                    careSolution : true
-                },
-                "extraMenu" : {
-                    "style1" : "pink",
-                    "style2" : "disabled",
-                    "text" : "품절",
-                    "link-url" : "#"
-                },
-                "type": "sticky",
-                "type-btn": "type-btn"
-            })
-            <!-- //품절제품 -->
-            <div style="width:100%;height:2000px;"></div> <!-- 스크롤테스트를 위한 임시 돔. 개발시 삭제-->
+
+            <!-- component -->
+            <div class="component-wrap">
+                <section class="component KRP0012">
+                    <div class="component-inner">
+						<!-- 솔루션 영역 -->
+                        <div class="solution-review-wrap">
+							<div class="visual-area">
+								<img data-pc-src="/lg5-common/images/KRP0012/@sample-1284x2225.jpg" data-m-src="/lg5-common/images/KRP0012/@sample-720x3371.jpg" class="lazyload" alt="" src="/lg5-common/images/KRP0012/@sample-1284x2225.jpg">
+							</div>
+						</div>
+						<!-- //솔루션 영역 -->
+                    </div>
+                </section>
+            </div>
+            <!-- // component -->
+
         </div>
     </div>
 </body>

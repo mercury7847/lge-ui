@@ -1,98 +1,56 @@
-.btn-tabs-wrap {
-    .tabs {
-        margin:0 -12px;
-        font-size:0;
-        li {
-            display:inline-block;
-            width:calc(100% / 3);
-            max-width:220px;
-            padding:0 12px;
+.benefit-info-box {
+    ul {
+        display:table;
+        width:calc(100% + 48px);
+        margin:0 -24px;
+        border-collapse:separate;
+        border-spacing:24px 0;
+        table-layout:fixed;
+        @include mobile {
+            display:block;
+            width:auto;
+            margin:0;
+        }
+        li.lists {
+            display:table-cell;
+            padding:32px 40px;
+            border-radius:8px;
+            background:#f4f4f4;
+            text-align:center;
             vertical-align:top;
-            a {
+            @include mobile {
                 display:block;
-                padding:23px 0;
-                border:1px solid #ddd;
-                border-radius:4px;
-                color:#a1a1a1;
-                font-size:14px;
-                line-height:20px;
-                font-weight:700;
-                text-align:center;
+                margin-top:24px;
+                padding:32px 12px;
+                &:first-child {
+                    margin-top:0;
+                }
+            }
+            dl {
                 &::before {
                     content:' ';
                     display:block;
                     width:48px;
                     height:48px;
-                    margin:0 auto;
-                }
-                @each $name in internet, phone, shop {
-                    &.#{$name}::before {
-                        background:url('/lg5-common/images/membership/icon-#{$name}.svg') center no-repeat;
-                        background-size:100%;
+                    margin:0 auto 12px;
+                    background:url("/lg5-common/images/icons/icon-point-48.svg") center no-repeat;
+                    @include mobile {
+                        margin-bottom:15px;
                     }
                 }
-            }
-            &.on {
-                a {
-                    border-color:#EC455A;
-                    color:#EC455A;
-                    @each $name in internet, phone, shop {
-                        &.#{$name}::before {
-                            background:url('/lg5-common/images/membership/icon-#{$name}-on.svg') center no-repeat;
-                            background-size:100%;
-                        }
-                    }
+                dt {
+                    color:#222;
+                    @include font-large;
+                    font-weight:700;
+                }
+                dd {
+                    margin-top:8px;
+                    padding:0 40px;
+                    color:#222;
+                    @include font-medium;
+                    word-break:keep-all;
                 }
             }
-        }
-    }
-}
-.tabs-contents {
-    padding-top:60px;
-}
-.link-list {
-    margin-top:32px;
-    font-size:0;
-    li {
-        display:inline-block;
-        margin-left:16px;
-        vertical-align:top;
-        &:first-child {
-            margin-left:0;
-        }
-        a {
-            display:block;
-            color:#EC455A;
-            font-size:14px;
-            line-height:20px;
-        }
-    }
-}
-.qr-list {
-    margin-top:32px;
-    font-size:0;
-    li {
-        display:inline-block;
-        margin-left:36px;
-        vertical-align:top;
-        &:first-child {
-            margin-left:0;
-        }
-        .img {
-            display:block;
-            width:88px;
-            border:1px solid #ddd;
-            img {
-                width:100%;
-                height:auto;
-                vertical-align:top;
-            }
-        }
-        p {
-            margin-top:8px;
-            color:#111;
-            font-size:16px;
-            line-height:24px;
         }
     }
 }

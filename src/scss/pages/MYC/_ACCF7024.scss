@@ -79,8 +79,93 @@
             }
         }
 
+        &.title-type {
+            .box-title {
+                margin-bottom:12px;
+                font-size:0;
+                p {
+                    display:inline-block;
+                    color:#222;
+                    @include font-small;
+                    font-weight:700;
+                    vertical-align:top;
+                }
+            }
+            @include mobile {
+                border-radius:0;
+                box-shadow:none;
+                overflow:initial;
+                .tbl-layout {
+                    border-radius:8px;
+                    box-shadow:2px 4px 16px 0 rgba(#000, .14);
+                }
+                > .btn-link {
+                    top:0;
+                    right:0;
+                }
+            }
+        }
+
+        &.chk-type {
+            .chk-wrap {
+                display:block;
+                margin-bottom:12px;
+                @include mobile {
+                    margin-bottom:16px;
+                }
+            }
+            .cancel-select {
+                position:absolute;
+                top:34px;
+                left:0;
+                @include mobile {
+                    top:28px;
+                }
+            }
+            @include mobile {
+                border-radius:0;
+                box-shadow:none;
+                overflow:initial;
+                .tbl-layout {
+                    border-radius:8px;
+                    box-shadow:2px 4px 16px 0 rgba(#000, .14);
+                    .tbody .row {
+                        padding-top:58px;
+                    }
+                }
+                > .btn-link {
+                    top:0;
+                    right:0;
+                }
+            }
+        }
+
+        &.no-title-type {
+            @include mobile {
+                border-radius:0;
+                box-shadow:none;
+                overflow:initial;
+                .tbl-layout .tbody {
+                    padding:0;
+                    .row {
+                        margin-top:12px;
+                        padding-left:112px;
+                        padding-right:16px;
+                        border-radius:8px;
+                        border-top:none;
+                        box-shadow:2px 4px 16px 0 rgba(#000, .14);
+                        overflow:hidden;
+                        &:first-child {
+                            margin-top:0;
+                        }
+                    }
+                }
+            }
+        }
+
         // display table box
         .tbl-layout {
+            position:relative;
             .thead {
                 display:table;
                 width:100%;
@@ -112,16 +197,19 @@
                     border-bottom:none;
                 }
                 .row {
-                    display:table;
-                    table-layout:fixed;
-                    width:100%;
+                    position:relative;
                     border-top:1px solid #ddd;
                     @include mobile {
                         display:block;
-                        padding:28px 0 32px 96px;
+                        padding:24px 0 32px 96px;
                     }
                     &:first-child {
                         border-top:none;
+                    }
+                    .col-table {
+                        display:table;
+                        width:100%;
+                        table-layout:fixed;
                     }
                     .col {
                         display:table-cell;
@@ -133,16 +221,146 @@
                         &.col1 {
                             padding:32px 48px 32px 0;
                         }
-                        &.col2 {
+                        &.col2,
+                        &.col3,
+                        &.col4 {
                             padding:32px 12px;
                         }
                         @include mobile {
                             display:block;
                             border-left:none;
                             &.col1,
-                            &.col2 {
+                            &.col2,
+                            &.col3,
+                            &.col4 {
                                 padding:0;
                             }
+                        }
+                    }
+                }
+            }
+            .bill-btns {
+                position:absolute;
+                top:0;
+                right:0;
+                bottom:0;
+                width:calc(17.6% + 1px);
+                @include mobile {
+                    position:relative;
+                    top:auto;
+                    right:auto;
+                    bottom:auto;
+                    width:100%;
+                    padding:16px 0;
+                    border-top:1px solid #ddd;
+                    text-align:center;
+                }
+                &::before {
+                    content:' ';
+                    position:absolute;
+                    top:2px;
+                    left:0;
+                    bottom:0;
+                    width:1px;
+                    background:#ddd;
+                    @include mobile {
+                        display:none;
+                    }
+                }
+                .title {
+                    @include pc {
+                        padding:16px 0;
+                        border-top:2px solid #222;
+                        background:#f4f4f4;
+                        text-align:center;
+                        font-size:0;
+                        white-space:nowrap;
+                        p {
+                            display:inline-block;
+                            @include font-medium;
+                            font-weight:500;
+                            vertical-align:middle;
+                        }
+                        .tooltip-wrap {
+                            vertical-align:middle;
+                            margin-left:4px;
+                            padding-top:0;
+                        }
+                    }
+                    @include mobile {
+                        height:34px;
+                        padding:0 16px;
+                        text-align:right;
+                        > p {
+                            float:left;
+                            font-size:0;
+                        }
+                        .tooltip-wrap {
+                            margin-top:7px;
+                            .tooltip-box {
+                                left:0;
+                                right:0;
+                            }
+                        }
+                    }
+                }
+                .btn-area {
+                    @include pc {
+                        position:relative;
+                        width:100%;
+                        height:calc(100% - 60px);
+                        border-bottom:1px solid #ddd;
+                        vertical-align:top;
+                        text-align:center;
+                        z-index:10;
+                        .btn {
+                            position:absolute;
+                            top:50%;
+                            left:50%;
+                            margin-top:-16px;
+                            transform:translateX(-50%);
+                        }
+                        .desc {
+                            position:absolute;
+                            top:50%;
+                            left:16px;
+                            right:16px;
+                            color:#767676;
+                            word-break:keep-all;
+                            @include font-medium;
+                            transform:translateY(-50%);
+                            span {
+                                display:inline-block;
+                            }
+                        }
+                    }
+                    @include mobile {
+                        position:absolute;
+                        top:50%;
+                        left:50%;
+                        transform:translateX(-50%) translateY(-50%);
+                        .desc {
+                            color:#767676;
+                            @include font-medium;
+                            span {
+                                display:inline-block;
+                                margin:0 2px;
+                            }
+                        }
+                    }
+                }
+                &.type2 {
+                    @include mobile {
+                        .title {
+                            position:absolute;
+                            top:0;
+                            left:0;
+                        }
+                        .btn-area {
+                            position:relative;
+                            top:auto;
+                            left:auto;
+                            transform:translate(0);
                         }
                     }
                 }
@@ -154,6 +372,29 @@
                 @include mobile {
                     width:100%;
                     max-width:100%;
+                }
+            }
+
+            &.size3 {
+                .thead,
+                .tbody {
+                    margin-right:17.6%;
+                    width:82.4%;
+                    @include mobile {
+                        margin-right:0;
+                        width:100%;
+                    }
+                }
+            }
+
+            &.size4 {
+                .col2,
+                .col3,
+                .col4 {
+                    width:18.3%;
+                    @include mobile {
+                        width:100%;
+                    }
                 }
             }
         }
@@ -204,6 +445,7 @@
             @include mobile {
                 display:block;
                 position:relative;
+                min-height:100px;
             }
             .thumb {
                 display:table-cell;
@@ -306,32 +548,6 @@
                         margin-top:2px;
                     }
                 }
-                .cancel-box {
-                    position:absolute;
-                    right:0;
-                    top:50%;
-                    width:164px;
-                    transform:translateY(-50%);
-                    text-align:center;
-                    @include mobile {
-                        float:left;
-                        position:relative;
-                        right:auto;
-                        top:auto;
-                        width:auto;
-                        margin-top:12px;
-                        transform:translateY(0);
-                        text-align:left;
-                    }
-                }
-                .buttons {
-                    margin-top:21px;
-                    text-align:right;
-                    @include mobile {
-                        float:right;
-                        margin-top:12px;
-                    }
-                }
             }
             .price {
                 display:table-cell;
@@ -341,6 +557,13 @@
                 font-weight:700;
                 vertical-align:middle;
                 white-space:nowrap;
+                small {
+                    display:block;
+                    color:#767676;
+                    @include font-small;
+                    font-weight:400;
+                    text-decoration:line-through;
+                }
                 @include mobile {
                     display:block;
                     margin-top:12px;
@@ -350,17 +573,8 @@
                     text-align:left;
                 }
             }
-
-            &.count-type {
-                .infos {
-                    .tit-wrap {
-                        min-height:92px;
-                    }
-                }
-            }
         }
-
-        .row.canceled {
+        .row.disabled {
             .product-info {
                 .thumb {
                     > a img {
@@ -383,6 +597,9 @@
                 }
                 .price {
                     color:#aaa;
+                    small {
+                        color:#aaa;
+                    }
                 }
             }
         }
@@ -434,10 +651,12 @@
                 text-align:left;
             }
         }
-
-        .row.canceled {
+        .row.disabled {
             .state-box {
                 .tit {
+                    color:#aaa;
+                }
+                .desc {
                     color:#aaa;
                 }
             }
@@ -451,31 +670,198 @@
                 color:#F04E3E;
             }
         }
+
+        // 재입고 알림
+        .application-date {
+            color:#767676;
+            @include font-medium;
+            font-weight:500;
+            text-align:center;
+            &.small {
+                @include font-small;
+                @include mobile {
+                    font-size:14px;
+                    line-height:22px;
+                }
+            }
+            @include pc {
+                .m-only {
+                    position:absolute;z-index:-10;width:0 !important;height:0 !important;overflow:hidden !important;font-size:medium;line-height:normal;word-break:break-all
+                }
+            }
+            @include mobile {
+                text-align:left;
+                @at-root .col2 {
+                    .application-date {
+                        margin-top:24px;
+                    }
+                }
+            }
+        }
+
+        .soldout-msg {
+            margin-top:24px;
+            color:#F04E3E;
+            @include font-small;
+            font-weight:500;
+            &::before {
+                content:' ';
+                display:inline-block;
+                width:20px;
+                height:20px;
+                margin:2px 4px 0 0;
+                background:url('/lg5-common/images/icons/icon-error.svg') center no-repeat;
+                vertical-align:top;
+            }
+            @include pc {
+                &.pc-view {
+                    display:block;
+                }
+                &.m-view {
+                    display:none;
+                }
+            }
+            @include mobile {
+                &.pc-view {
+                    display:none;
+                }
+                &.m-view {
+                    display:block;
+                }
+            }
+        }
+
+        .no-data {
+            border-top:2px solid #222;
+            @include mobile {
+                border-top:none;
+            }
+        }
     }
 
+    // 찜한 제품, 최근 본 제품
+    &.type2 {
+        border-top:2px solid #222;
+        .box {
+            position:relative;
+            margin:0;
+            border-top:1px solid #ddd;
+            &:first-child {
+                border-top:none;
+            }
+            @include mobile {
+                padding:32px 0;
+                border-radius:0;
+                box-shadow:none;
+                overflow:initial;
+            }
+            .col-table {
+                display:table;
+                width:100%;
+                @include mobile {
+                    display:block;
+                    padding-top:30px;
+                    padding-left:112px;
+                }
+                .col {
+                    display:table-cell;
+                    padding:32px 24px;
+                    padding-left:0;
+                    vertical-align:middle;
+                    @include mobile {
+                        display:block;
+                        padding:0;
+                    }
+                    &.btn-col {
+                        width:15.8%;
+                        text-align:right;
+                        white-space:nowrap;
+                        @include mobile {
+                            width:100%;
+                            margin-top:12px;
+                            text-align:left;
+                        }
+                    }
+                }
+            }
+            .btn-delete {
+                position:absolute;
+                top:32px;
+                right:0;
+                width:24px;
+                height:24px;
+                background:url("/lg5-common/images/icons/btn-close-24.svg") no-repeat;
+            }
+            .chk-wish-wrap {
+                position:absolute;
+                top:32px;
+                right:36px;
+            }
+            &.disabled {
+                .col-table {
+                    padding-right:15.8%;
+                }
+                .product-info {
+                    .thumb {
+                        > a img {
+                            opacity:.3;
+                        }
+                    }
+                    .infos {
+                        .name {
+                            color:#aaa;
+                        }
+                        .e-name {
+                            color:#aaa;
+                        }
+                        .more ul li {
+                            color:#aaa;
+                        }
+                        .count {
+                            color:#aaa;
+                        }
+                    }
+                    .price {
+                        color:#aaa;
+                        small {
+                            color:#aaa;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 // 청약 계약 진행단계 안내
 .contract-steps {
+    margin-top:24px;
+    overflow:hidden;
     > ol {
         position:relative;
+        margin-bottom:-32px;
         font-size:0;
+        @include mobile {
+            margin-bottom:0;
+        }
         .steps {
             display:inline-block;
             position:relative;
-            width:234px;
+            width:20%;
+            min-width:210px;
+            margin-bottom:32px;
             padding-right:94px;
             vertical-align:top;
             @include mobile {
                 display:block;
                 width:100%;
                 min-height:48px;
+                margin-bottom:0;
                 padding-left:68px;
                 padding-right:0;
                 padding-bottom:40px;
             }
             &:last-child {
-                width:210px;
                 @include mobile {
                     width:100%;
                     padding-bottom:0;

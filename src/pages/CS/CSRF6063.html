@@ -3,8 +3,7 @@
     @@include('./common/head.html', {
         "pageCSS": [
             "support/support",
-            "support/custom-voice",
-            "UTS/UTS"
+            "support/custom-voice"
         ]
     })
 <body>
@@ -13,106 +12,76 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '칭찬 글 보기'
+                'pageTitle': '칭찬 글 보기',
+                'pageDesc': '고객님의 격려에 감사드리며, 감동 서비스로 보답하겠습니다.'
             })
-            <div class="contents support suggestions">
+            <div class="contents support feedback">
                 <div class="cont-wrap">
                     
-                    <div class="section">
-                        <div class="search-wrap typa-A search-layer" data-ajax="">
-                            <div class="input-keyword">
-                                @@include('./common/modules/search-input.html', {
-                                    "value" : "검색어 입력"
-                                })
+                    <div class="search-wrap" data-ajax="/lg5-common/data-ajax/support/feedbackList.json">
+                        <div class="keyword-search">
+                            <div class="input-wrap">
+                                <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="검색어 입력" title="검색어 입력" data-clear-button="button.btn-delete">
+                                <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+                                <button type="button" class="btn-search"><span class="blind">검색</span></button>
                             </div>
-                        </div>
+                        </div>  
+                    </div>
 
-                        <div class="section-content">
-                            <div class="sorting-wrap">
-                                <div class="total">전체 <em class="count" id="count">184</em>건</div>
-                                <div class="sort-box">
-                                    <div class="sort-select-wrap">
-                                        <select class="ui_selectbox" title="정렬 기준 선택">
-                                            <option value="등록순">최신순</option>
-                                            <option value="조회수">조회수</option>
-                                        </select>
-                                    </div>
+                    <div class="result-wrap">
+                        <div class="sorting-wrap">
+                            <div class="total">전체 <em id="count" class="count">184</em>건</div>
+                            <div class="sort-box">
+                                <div class="sort-select-wrap">
+                                    <select class="ui_selectbox" name="orderType" id="orderType" title="정렬 기준 선택">
+                                        <option value="등록순">최신순</option>
+                                        <option value="조회수">조회수</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="tbl scroll-x">
-                                <table class="tbl-list type-A">
-                                    <colgroup>
-                                        <col width="">
-                                        <col width="15%">
-                                        <col width="15%">
-                                    </colgroup>
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">제목</th>
-                                            <th scope="col">등록일</th>
-                                            <th scope="col">조회수</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><p class="textEllipsisClamp2">타이틀 노출 영역 최대 1줄. 타이틀 노출 영역 최대 1줄. 타이틀 노출 영역 최대 1줄. 타이틀 노출 영역 최대 1줄.타이틀 노출 영역 최대 1줄. 타이틀 노출 영역 최대 1줄. 타이틀 노출 영역 최대 1줄. 타이틀 노출 영역 최대 1줄.타이틀 노출 영역 최대 1줄. 타이틀 노출 영역 최대 1줄. 타이틀 노출 영역 최대 1줄. 타이틀 노출 영역 최대 1줄.</p></td>
-                                            <td class="align-center">2020.09.09</td>
-                                            <td class="align-center">3,555</td>
-                                        </tr>
-                                        <tr>
-                                            <td><p class="textEllipsisClamp2">냉장고가 고장 나서 힘들었는데 친절한 기사님이 오셔서 너무 좋았어요</p></td>
-                                            <td class="align-center">2020.09.09</td>
-                                            <td class="align-center">3,555</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            @@include('./common/support/pagination.html', {
-                                count: 5
-                            })
                         </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-content">
-                            <div class="sorting-wrap">
-                                <div class="total">전체 <em class="count" id="count">0</em>건</div>
-                            </div>
-                            <div class="tbl scroll-x">
-                                <table class="tbl-list">
-                                    <colgroup>
-                                        <col width="12%">
-                                        <col width="12%">
-                                        <col width="">
-                                        <col width="15%">
-                                        <col width="12%">
-                                        <col width="12%">
-                                    </colgroup>
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">구분</th>
-                                            <th scope="col">접수번호</th>
-                                            <th scope="col">제목</th>
-                                            <th scope="col">로그인 후 작성 여부</th>
-                                            <th scope="col">진행상태</th>
-                                            <th scope="col">등록일시</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="6">
-                                                <div class="no-data">
-                                                    <p>검색된 결과가 없습니다.</p>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="tb_row board-type">
+                            <table>
+                                <caption>칭찬 글 보기 제목, 등록일, 조회수</caption>
+                                <colgroup>
+                                    <col >
+                                    <col style="width:148px">
+                                    <col style="width:128px">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th scope="col">제목</th>
+                                    <th scope="col">등록일</th>
+                                    <th scope="col">조회수</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @@for (var i = 0; i < 10; i++) {
+                                    <tr>
+                                        <td class="board-tit">
+                                            <a href="#">
+                                                <p>오늘 오신 엔지니어 기사님 너무 친절하셔서 감사합니다. 너무 친절하셔서 눈물이 앞을 가릴 정도 였어요. 2줄 이상 되면 어떻게 처리할까요? …으로 처리 2줄 이상 되면 어떻게처리할까요? …으로 처리 2줄 이상 되면 어떻게처리할까요? …으...</p>
+                                            </a>
+                                        </td>
+                                        <td>2020.07.27</td>
+                                        <td>3,021</td>
+                                    </tr>
+                                    }
+                                    <tr class="empty-row" style="display:none;">
+                                        <td colspan="3">
+                                            <div class="no-data">
+                                                <p>검색된 결과가 없습니다.</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
 
+                        @@include('./common/support/pagination.html', {
+                            count: 5
+                        })
+                    </div>
                 </div>
             </div>
         </div>
@@ -120,15 +89,8 @@
         @@include('./common/footer.html')
     </div>
 
-    <!-- 검색어 오류 팝업 -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop",
-        "msgOnly" : true,
-        "msg" : "검색어를 입력해주세요."
-    })
-
     <!-- support script -->
-    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/customVoice/allFeedback.min.js"></script>
 </body>
 </html> 

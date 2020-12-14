@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["SLC/SLC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html', {
+            mobileCase: "noneDepth"
+        })
+
+        <main class="container">
+            <div class="contents caresolution home">
+
+
+                <!-- Hero -->
+                <!-- DOM -->
+                <div class="hero-banner slide-wrap ui_wide_slider" style="background:#ccc;">
+                    <div class="custom-indi-wrap">
+                        <div class="custom-indis">
+                            <ul class="indis ui_wideslider_dots">
+                                <li>
+                                    <button type="button" class="btn-indi">
+                                        <p>No.1의 혁신1</p>
+                                        <div class="bar"></div>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="btn-indi">
+                                        <p>No.1의 혁신2</p>
+                                        <div class="bar"></div>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="btn-indi">
+                                        <p>No.1의 혁신3</p>
+                                        <div class="bar"></div>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <button type="button" class="indi-control ui_carousel_play play">
+                            <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
+                        </button>
+                    </div>
+                    <div class="slide-content ui_carousel_list">
+                        <div class="slide-track ui_carousel_track">
+                            <!-- slide -->
+                            <div class="slide-conts ui_carousel_slide">
+                                <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
+                                <div class="slide-info-area">
+                                    <div class="boxs">
+                                        <p class="desc" id="tit01"> 
+                                            <small>나의 첫번째 5G 폰0</small>
+                                            LG Q92 5G 구매혜택
+                                        </p>
+                                        <p class="date">2020.08.01~2020.09.31</p>
+                                        <a href="#n" class="btn bd-black" aria-labelledby="tit01">자세히 보기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // slide -->
+                            <!-- slide -->
+                            <div class="slide-conts ui_carousel_slide">
+                                <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
+                                <div class="slide-info-area">
+                                    <div class="boxs">
+                                        <p class="desc" id="tit01"> 
+                                            <small>나의 첫번째 5G 폰1</small>
+                                            LG Q92 5G 구매혜택
+                                        </p>
+                                        <p class="date">2020.08.01~2020.09.31</p>
+                                        <a href="#n" class="btn bd-black" aria-labelledby="tit01">자세히 보기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // slide -->
+                            <!-- slide -->
+                            <div class="slide-conts ui_carousel_slide">
+                                <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
+                                <div class="slide-info-area">
+                                    <div class="boxs">
+                                        <p class="desc" id="tit01"> 
+                                            <small>나의 첫번째 5G 폰2</small>
+                                            LG Q92 5G 구매혜택
+                                        </p>
+                                        <p class="date">2020.08.01~2020.09.31</p>
+                                        <a href="#n" class="btn bd-black" aria-labelledby="tit01">자세히 보기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // slide -->
+                        </div>
+                    </div>
+                </div>
+                <!-- // DOM -->
+                <!-- //Hero -->
+
+
+                <!-- contents -->
+                <!-- 케솔 링크 -->
+                <div>
+                    <ul>
+                        <li class="on">
+                            <p>전문가 케어!<br> 어떤 서비스를<br>받을까?</p>
+                            <a href="">혜택보러가기</a>
+                        </li>
+                        <li>
+                            <p>내가 찜한 제품<br> 월 구독료<br> 얼마일까?</p>
+                            <a href="">견적받아보기</a>
+                        </li>
+                        <li>
+                            <p>내 제품<br>관리 일정은<br>어떻게 되지?</p>
+                            <a href="">나의 케어솔루션</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- //케솔 링크 -->
+
+                <!-- 플로우배너 -->
+                <div>
+                    <ul>
+                        <li>
+                            <img src="" alt="">
+                            <p>냉장고</p>
+                            <button>렌탈하기</button>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li></li>
+                    </ul>
+
+                </div>
+                <!-- //플로우배너 -->
+
+                <!-- 케솔 추천제품 -->
+                <div>
+                    <h3 class="set-tit">케어솔루션 추천 제품</h3>
+                    <div class="tabs-wrap border-type ui_tab">
+                        <ul class="tabs">
+                            <li class="on"><a href="#tab1">컨텐츠1<em class="blind">선택됨</em></a></li>
+                            <li><a href="#tab2">컨텐츠2</a></li>
+                            <li><a href="#tab3">컨텐츠3</a></li>
+                            <li><a href="#tab4">컨텐츠4</a></li>
+                        </ul>
+                    </div>
+                    <div id="tab1" class="tab-content" aria-labelledby="tab1" role="tabpanel">컨텐츠1</div>
+                    <div id="tab2" class="tab-content" aria-labelledby="tab2" role="tabpanel">컨텐츠2</div>
+                    <div id="tab3" class="tab-content" aria-labelledby="tab3" role="tabpanel">컨텐츠3</div>
+                    <div id="tab4" class="tab-content" aria-labelledby="tab4" role="tabpanel">컨텐츠4</div>
+                </div>
+                <!-- //케솔 추천제품 -->
+                                
+                <!-- Why 케솔 -->
+                <div>
+                    <h3>WHY 케어솔루션</h3>
+                    관리가 필요한 가전 제품을 가전 전문가들이 마음을 담아 케어해주어?고객의 삶에 안전과 편리, 위생을 더하는 LG전자만의 차원이 다른 가전 관리 서비스입니다.
+                    <button>자세히 보기</button>
+
+                    <div class="slide-wrap ui_carousel_slider">
+                        <div class="indi-wrap">
+                            <ul class="indi-conts ui_carousel_dots">
+                                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                            </ul>
+                        </div>
+                        <div class="slide-content ui_carousel_list">
+                            <div class="slide-track ui_carousel_track">
+                                <!-- slide -->
+                                <div class="slide-conts ui_carousel_slide">
+                                    <div class="cont-wrap">
+                                        <div class="img">
+                                            <img src="/lg5-common/images/dummy/@img-store01.jpg" alt="매장사진">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- //slide -->
+                                <!-- slide -->
+                                <div class="slide-conts ui_carousel_slide">
+                                    <div class="cont-wrap">
+                                        <div class="img">
+                                            <img src="/lg5-common/images/dummy/@img-store02.jpg" alt="매장사진">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- //slide -->
+                                <!-- slide -->
+                                <div class="slide-conts ui_carousel_slide">
+                                    <div class="cont-wrap">
+                                        <div class="img">
+                                            <img src="/lg5-common/images/dummy/@img-store01.jpg" alt="매장사진">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- //slide -->
+                                <!-- slide -->
+                                <div class="slide-conts ui_carousel_slide">
+                                    <div class="cont-wrap">
+                                        <div class="img">
+                                            <img src="/lg5-common/images/dummy/@img-store02.jpg" alt="매장사진">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- //slide -->
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                </div>
+                <!-- //Why 케솔 -->
+
+                <!-- 케솔 가이드(탭)-->
+                <div>
+                    <h3 class="set-tit">케어솔루션 가이드</h3>
+                    <div class="tabs-wrap border-type ui_tab">
+                        <ul class="tabs">
+                            <li class="on"><a href="#tab01">컨텐츠1<em class="blind">선택됨</em></a></li>
+                            <li><a href="#tab02">컨텐츠2</a></li>
+                            <li><a href="#tab03">컨텐츠3</a></li>
+                            <li><a href="#tab04">컨텐츠4</a></li>
+                        </ul>
+                    </div>
+                    <div id="tab01" class="tab-content" aria-labelledby="tab01" role="tabpanel">컨텐츠1</div>
+                    <div id="tab02" class="tab-content" aria-labelledby="tab02" role="tabpanel">컨텐츠2</div>
+                    <div id="tab03" class="tab-content" aria-labelledby="tab03" role="tabpanel">컨텐츠3</div>
+                    <div id="tab04" class="tab-content" aria-labelledby="tab04" role="tabpanel">컨텐츠4</div>
+                </div>
+                <!-- //케솔 가이드(탭)-->
+
+                <!-- 케솔 혜택(탭) -->
+                <div>
+                    <h3 class="set-tit">케어솔루션 혜택</h3>
+                    <div class="tabs-wrap border-type ui_tab">
+                        <ul class="tabs">
+                            <li class="on"><a href="#tab001">컨텐츠1<em class="blind">선택됨</em></a></li>
+                            <li><a href="#tab002">컨텐츠2</a></li>
+                            <li><a href="#tab003">컨텐츠3</a></li>
+                            <li><a href="#tab004">컨텐츠4</a></li>
+                        </ul>
+                    </div>
+                    <div id="tab001" class="tab-content" aria-labelledby="tab001" role="tabpanel">컨텐츠1</div>
+                    <div id="tab002" class="tab-content" aria-labelledby="tab002" role="tabpanel">컨텐츠2</div>
+                    <div id="tab003" class="tab-content" aria-labelledby="tab003" role="tabpanel">컨텐츠3</div>
+                    <div id="tab004" class="tab-content" aria-labelledby="tab004" role="tabpanel">컨텐츠4</div>
+                </div>
+                <!-- //케솔 혜택(탭) -->
+
+                <!-- 다른 케솔 -->
+                <div>
+                    <h3>이미 케어솔루션을 이용하고 계신가요?</h3>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <!-- //다른 케솔 -->
+
+                <!-- 내삶을바꾸는케솔 -->
+                <div>
+                    <h3>내 삶을 바꾸는 케어솔루션</h3>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <!-- //내삶을바꾸는케솔 -->
+
+                <!-- // contents -->
+            </div>
+        </main>
+        
+        @@include('./common/footer.html')
+    </div> 
+
+    
+</body>
+</html>

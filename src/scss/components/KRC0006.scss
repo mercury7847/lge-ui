@@ -1,0 +1,224 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRC0006 {
+    $color: (lightgray, dark, black, white);
+	@each $bg in $color {
+		&.bg-#{$bg} {
+			@if $bg == lightgray {
+				background-color: #f4f4f4;
+				.title {
+					&, * {
+						color: #111;
+					}
+				}
+				.text {
+					color: #515151;
+				}
+			} @else if $bg == dark {
+				background-color: #333;
+				.side-right-text .title {
+					&, * {
+						color: #fff;
+					}
+				}
+				.side-right-text .text {
+					color: #fff;
+				}
+				.visual-wrap .desc {
+					color:#fff;
+				}
+				.link-text {
+					border-bottom-color:#fff;
+					color:#fff;
+					&.ico-right:after {
+						border-color:#fff;
+					}
+				}
+			} @else if $bg == black {
+				background-color: #000;
+				.side-right-text .title {
+					&, * {
+						color: #fff;
+					}
+				}
+				.side-right-text .text {
+					color: #fff;
+				}
+				.visual-wrap .desc {
+					color:#fff;
+				}
+				.link-text {
+					border-bottom-color:#fff;
+					color:#fff;
+					&.ico-right:after {
+						border-color:#fff;
+					}
+				}
+			} @else if $bg == white {
+				background-color: #fff;
+				.title {
+					&, * {
+						color: #111;
+					}
+				}
+				.text {
+					color: #515151;
+				}
+			}
+		}
+	}
+
+    .btn {
+        display: inline-block;
+        min-width:194px;
+        padding:15px 0;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: #fff;
+        line-height: 24px;
+        @include font-family($font-weight-bold);
+        font-size: 16px;
+        color: #111;
+        text-align: center;
+        vertical-align: top;
+
+        &.btn-outline-primary {
+            border-color: #212121;
+            background-color: #fff;
+            color: #111;
+        }
+        &.btn-primary {
+            border-color: #111;
+            background-color: #111;
+            color: #fff;
+        }
+    }
+
+    .link-text {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #212121;
+        font-size: 14px;
+        line-height: 20px;
+        color: #111;
+        vertical-align: top;
+
+        &.ico-right {
+            margin-right: 14px;
+            &:after {
+                position: absolute;
+                @include calc(top, 50%, 6px);
+                right: -12px;
+                width: 8px;
+                height: 8px;
+                border: solid #111;
+                border-width: 2px 2px 0 0;
+                transform: rotate(45deg);
+                content: '';
+            }
+        }
+
+        &.bold {
+            @include font-family($font-weight-bold);
+        }
+    }
+
+    .inner {
+        @include clearfix;
+        margin:0 -12px;
+        @include mobile {
+            margin:0;
+        }
+    }
+    
+    .visual-wrap {
+        width:calc((100% / 3) * 2);
+        @include clearfix;
+        &.image-align-left {
+            float:left;
+        }
+        &.image-align-right {
+            float:right;
+        }
+        .visual-area {
+            float:left;
+            width:calc((100% - 48px) / 2);
+            margin:0 12px;
+ 
+            a {
+                position:relative;
+                img {
+                    width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
+            }
+           
+            &.animation-box {
+                a.play-animaion-btn {
+                    position: absolute;
+                }
+                img {
+                    width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
+            }
+            @include mobile {
+                float:none;
+                width:100%;
+                margin:0;
+                margin-bottom:24px;
+            }
+        }
+
+        @media screen and (max-width:1200px) {
+            width:auto;
+            &.image-align-left,
+            &.image-align-right {
+                float:none;
+            }
+        }
+        @include mobile {
+            margin:0 -20px;
+        }
+    }
+    .side-right-text {
+        float:left;
+        width:calc((100% / 3));
+        padding:0 12px;
+        .title * {
+            color:#111;
+            font-size:20px;
+            line-height:30px;
+            font-weight:700;
+        }
+        .text {
+            margin-top:16px;
+            color:#616161;
+            font-size:16px;
+            line-height:24px;
+        }
+        div[class^="btn-type"] {
+            margin:20px -12px 0;
+            font-size:0;
+            span {
+                display:inline-block;
+                margin:12px 12px 0;
+                vertical-align:top;
+            }
+        }
+        @media screen and (max-width:1200px) {
+            float:none;
+            width:100%;
+            margin-top:40px;
+        }
+        @include mobile {
+            padding:0;
+        }
+    }
+}

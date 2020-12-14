@@ -1,10 +1,45 @@
         </div>
         <!-- // tbody -->
+        @@if ( context.billBtn ) {
+        <div class="bill-btns">
+            <div class="title">
+                <p>영수증 내역</p>
+                @@if ( context.tooltips ) {
+                    @@include('./common/modules/tooltip.html', {
+                        "type" : "text",
+                        "text" : "배송 완료 시 현금영수증 확인이 가능합니다.",
+                        "fixed" : "fixed-right"
+                    })
+                }
+            </div>
+            <div class="btn-area">
+                <a href="#n" class="btn size border"><span>@@billBtn</span></a>
+            </div>
+        </div>
+        }
+        @@if ( context.mobileBill ) {
+        <div class="bill-btns type2">
+            <div class="title">
+                <p>영수증 내역</p>
+            </div>
+            <div class="btn-area">
+                <p class="desc"><span>010-0000-0000</span><span>해당 통신사 문의</span></p>
+            </div>
+        </div>
+        }
     </div>
     @@if ( context.cancel ) {
-    <a href="#n" class="btn-link">취소신청</a>
+    <a href="#n" class="btn-link orderCancel-btn">취소신청</a>
     }
+    @@if ( context.return ) {
+    <a href="#n" class="btn-link takeBack-btn">반품신청</a>
+    }
+    @@if ( context.linkBtn ) {
+    <a href="#n" class="btn-link">@@linkBtn</a>
+    }
+    @@if ( context.btns ) {
     <div class="btns">
         <a href="#n" class="btn-link">@@btns</a>
     </div>
+    }
 </div>

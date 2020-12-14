@@ -10,76 +10,89 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                "pageTitle": "나의 멤버십",
-                "pageArr" : [
-                    { "page" : "나의 멤버십 정보", "on" : "" },
-                    { "page" : "포인트 조회", "on": "on" }
-                ]
+                "pageTitle": "멤버십 포인트 조회"
             })
             <!-- mypage -->
             <div class="contents mypage">
                 <div class="cont-wrap">
-                    <div class="section">
-                        <h3 class="sec-tit">포인트 적립 / 사용내역</h3>
-                        <div class="cont-box"><!-- filter -->
-                            @@include('./common/modules/mem-filter.html', {
-                                "url" : "/lg5-common/data-ajax/mypage/membership/my_point_history.json",
-                                "wrapTit" : "조회기간",
-                                "inputType" : "radio",
-                                "inputArr" : [
-                                    { "id" : "rdo1-1", "name" : "rdo1", "label" : "전체", "value" : "all", "checked" : "checked" },
-                                    { "id" : "rdo1-2", "name" : "rdo1", "label" : "적립", "value" : "save", "checked" : "" },
-                                    { "id" : "rdo1-3", "name" : "rdo1", "label" : "사용", "value" : "use", "checked" : "" }
-                                ]
-                            })
-                            <!-- // filter -->
-
-                            <!-- 결과값 있을 때 -->
-                            <div class="point-use-list">
-                                <h4 class="blind">포인트 적립 / 사용내역 정보 리스트 </h4>
-                                <ul class="lists">
-                                    <li>
-                                        <p class="date">2017. 11. 01</p>
-                                        <p class="desc">LG BEST SHOP 서초점</p>
-                                        <p class="point">
-                                            <span class="mo_txt">포인트적립</span>
-                                            <span class="num">+2,000P<em class="pc_txt"> 적립</em></span>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p class="date">2019. 12. 29</p>
-                                        <p class="desc">LG BEST SHOP 서초점</p>
-                                        <p class="point">
-                                            <span class="mo_txt">포인트사용</span>
-                                            <span class="num">-2,000P<em class="pc_txt"> 사용</em></span>
-                                        </p>
-                                    </li>
-                                </ul>
-                                <dl class="total">
-                                    <dt>총 보유 포인트</dt>
-                                    <dd id="my_totalpoint">1,000P</dd>
-                                </dl>
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect2" : [
+                                { "on": "on", "page": "계약현황" },
+                                { "on": "", "page": "납부내역" },
+                                { "on": "", "page": "방문 알리미" }
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <!-- 상세 -->
+                            <!-- 조회기간 -->
+                            <div class="filters rdo-type2 type2" data-list-url="/lg5-common/data-ajax/mypage/membership/my_point_history.json">
+                                <!-- filter -->
+                                @@include('./common/modules/mem-filter.html', {
+                                    "tabType" : true,
+                                    "wrapTit" : "조회기간",
+                                    "datepicker" : true,
+                                    "rdoCheck" : true,
+                                    "list" : [
+                                        { "id" : "rdk-cehck1-1", "name" : "pointUseType",  "label" : "전체", "value": "all", "checked": "checked"},
+                                        { "id" : "rdk-cehck1-2", "name" : "pointUseType",  "label" : "적립", "value": "save"},
+                                        { "id" : "rdk-cehck1-3", "name" : "pointUseType",  "label" : "사용", "value": "use"}
+                                    ]
+                                })
+                                <!-- // filter -->
                             </div>
-                            @@include('./common/modules/bullet-list.html', {
-                                "bulletTxt" : [
-                                    "적립된 포인트 사용기간은 적립일로부터 3년이며 고객님께서 3년 내에 사용하지 않은 적립 포인트는 자동 소멸됩니다."
-                                ]
-                            })
-                            <!-- //결과값 있을 때 -->
-
-                            <!-- 결과값 없을 때 -->
-                            <div class="no-data">
-                                <p>조회기간 내 결과가 없습니다.</p>
+                            <!-- // 조회기간 -->
+                            <div class="section-wrap">
+                                <!-- 포인트 조회 내역 -->
+                                <div class="sects point-inquiry-area">
+                                    <div class="tit-wrap">
+                                        <h3 class="tit">포인트 조회 내역</h3>
+                                    </div>
+                                    <div class="point-use-list">
+                                        <ul class="lists">
+                                            <li>
+                                                <p class="date">2017. 11. 01</p>
+                                                <p class="desc">LG BEST SHOP 서초점</p>
+                                                <p class="point">
+                                                    <span class="mo_txt">포인트적립</span>
+                                                    <span class="num">+2,000P<em class="pc_txt"> 적립</em></span>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p class="date">2019. 12. 29</p>
+                                                <p class="desc">LG BEST SHOP 서초점</p>
+                                                <p class="point">
+                                                    <span class="mo_txt">포인트사용</span>
+                                                    <span class="num">-2,000P<em class="pc_txt"> 사용</em></span>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                        <dl class="total">
+                                            <dt>총 보유 포인트</dt>
+                                            <dd>1,000P</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="no-data">
+                                        <p>조회 결과가 없습니다.</p>
+                                    </div>
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "size2" : true,
+                                        "topBorder" : true,
+                                        "bulletTxt" : [
+                                            "적립된 포인트 사용기간은 적립일로부터 3년이며, 고객님께서 3년 내에 사용하지 않은 적립 포인트는 자동 소멸됩니다."
+                                        ]
+                                    })
+                                </div>
+                                <!-- //포인트 조회 내역 -->
                             </div>
-                            <!-- // 결과값 없을 때 -->
+                            <!-- // 상세 -->
                         </div>
                     </div>
                 </div>
             </div>
             <!-- // mypage -->
         </div>
-        
         @@include('./common/footer.html')
-    </div>     
+    </div>
 </body>
 </html>

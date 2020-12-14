@@ -2,79 +2,50 @@
 <html lang="ko">
     @@include('./common/head.html', {
         componentID: "KRC0028",
-        isJScompile: false
+        isJScompile: true
     })
 <body>
     <div class="wrap">
         <div class="container">
-
-            <!-- component KRC0028 -->
-
-            <!-- component C0059-5ea.hbs -->
-            @@include('./common/partials/KRC0028-5ea.html', {
-                "head" : "<h2>차원이 다른 OLED 화질,<br>LG SIGNATURE OLED W</h2>",
-                "flow-type" : "flow-left",
-                "bg-color": "bg-white"
+            <!-- component -->
+            @@include('./common/partials/KRC0028.html', {
+                "align-class1" : "align-left",
+                "headline":"<h2>헤드라인 카피 최대 40자까지 입력<br> 샘플 텍스트입니다.</h2>",
+                "text-box1" : {
+                    "font-class1": "font-regular",
+                    "font-class2": "font-underline"
+                },
+                "text-box2" : {
+                    "font-class1": "font-regular-italic",
+                    "font-class2": "font-underline"
+                },
+                "text-box3" : {
+                    "font-class1": "font-bold",
+                    "font-class2": ""
+                },
+                "bg-color":"bg-white"
             })
             <!-- // component -->
 
-
-            <!-- component C0059-5ea.hbs -->
-            @@include('./common/partials/KRC0028-5ea.html', {
-                "head" : "<h2>차원이 다른 OLED 화질,<br>LG SIGNATURE OLED W</h2>",
-                "flow-type" : "flow-right",
-                "bg-color": "bg-white"
-            })
+            <!-- component -->
+            <!-- @@include('./common/partials/KRC0028.html', {
+                "align-class1" : "align-right",
+                "headline":"<h2>한 손에 가볍게, LG 그램<br>PC기준 최대 2줄까지 작성 가능합니다.</h2>",
+                "text-box1" : {
+                    "font-class1": "font-regular",
+                    "font-class2": "font-underline"
+                },
+                "text-box2" : {
+                    "font-class1": "font-regular-italic",
+                    "font-class2": "font-underline"
+                },
+                "text-box3" : {
+                    "font-class1": "font-bold",
+                    "font-class2": ""
+                }
+            }) -->
             <!-- // component -->
-
-
-            <!-- component C0059-4ea.hbs -->
-            @@include('./common/partials/KRC0028-4ea.html', {
-                "head" : "<h2>차원이 다른 OLED 화질,<br>LG SIGNATURE OLED W</h2>",
-                "flow-type" : "flow-left",
-                "bg-color": "bg-white"
-            })
-            <!-- // component -->
-
-
-            <!-- component C0059-4ea.hbs -->
-            @@include('./common/partials/KRC0028-4ea.html', {
-                "head" : "<h2>차원이 다른 OLED 화질,<br>LG SIGNATURE OLED W</h2>",
-                "flow-type" : "flow-right",
-                "bg-color": "bg-white"
-            })
-            <!-- // component -->
-
-
-            <!-- component C0059-4ea-2.hbs -->
-            @@include('./common/partials/KRC0028-4ea-2.html',{
-                "head" : "<h2>차원이 다른 OLED 화질,<br>LG SIGNATURE OLED W</h2>",
-                "flow-type" : "flow-mix",
-                "bg-color": "bg-white"
-            })
-            <!-- // component -->
-
-
-            <!-- component C0059-3ea.hbs -->
-            @@include('./common/partials/KRC0028-3ea.html', {
-                "head" : "<h2>차원이 다른 OLED 화질,<br>LG SIGNATURE OLED W</h2>",
-                "flow-type" : "flow-left",
-                "bg-color": "bg-white"
-            })
-            <!-- // component -->
-
-
-            <!-- component C0059-3ea.hbs -->
-            @@include('./common/partials/KRC0028-3ea.html', {
-                "head" : "<h2>차원이 다른 OLED 화질,<br>LG SIGNATURE OLED W</h2>",
-                "flow-type" : "flow-right",
-                "bg-color": "bg-white"
-            })
-            <!-- // component -->
-
-            <!-- //component KRC0028 -->
-
-        </div>
-    </div>
+		</div>
+    </div>     
 </body>
 </html>

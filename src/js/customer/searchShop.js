@@ -1,31 +1,5 @@
 (function(){
 
-    var listTemplate = ''+
-        '<li data-id="{{agNum}}">'+
-        '   <div class="store-info-list ui_marker_selector" role="button" tabindex="0">'+
-        '        <div class="point-wrap">'+
-        '           <div class="point{{selected}}">'+
-        '                <span class="num">{{num}}</span>'+
-        '                <span class="blind">선택안됨</span>'+
-        '            </div>'+
-        '        </div>'+
-        '        <div class="info-wrap">'+
-        '            <div class="tit-wrap">'+
-        '                <p class="name"><span class="blind">매장명</span>{{agName}}</p>'+
-        '                <div class="flag-wrap">'+
-        '                    {{#if agNewShopComment != null }}<span class="flag">NEW</span>{{/if}}'+
-        '                    {{#if isEvent}}<span class="flag">이벤트</span>{{/if}}'+
-        '                    {{#if agCenterWeekday != null }}<span class="flag">서비스센터</span>{{/if}}'+
-        '               </div>'+
-        '            </div>'+
-        '            <p class="addr"><span class="blind">주소</span>{{agAddr1}}</p>'+
-        '            <div class="etc-info">'+
-        '                <span class="tel"><span class="blind">전화번호</span>{{agTel}}</span>'+
-        '                <a href="#{{agNum}}" class="btn-detail">상세보기</a>'+
-        '            </div>'+
-        '        </div>'+
-        '    </div>'+
-        '</li>';
 
     var searchResultText = {
         search: '<strong>"{{keyword}}"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
@@ -63,6 +37,9 @@
             self.stationUrl = "";
             self.detailUrl = "";
 
+            self.userCityName = "";
+            self.userBoroughName = "";
+
             self.storeData = [];
 
             self.$leftContainer = $('.store-list-wrap'); //좌측 검색&리스트 컨테이너...
@@ -82,23 +59,21 @@
             self.searchKeyword = "";
             self.schReaultTmplID = "";
 
-            self.$searchField = $('#tab1 .input-sch input');
-            self.$searchButton = $('#tab1 .btn-search');
+            self.$searchField = $('#tab3 .input-sch input');
+            self.$searchButton = $('#tab3 .btn-search');
 
             self.$searchResultContainer = $('.result-list-box');
 
-            self.$searchRoadField = $('#tab3 .input-sch input');
-            self.$searchRoadButton = $('#tab3 .btn-search');
-
             self._resize();
             
-            vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox'], function () {
+            vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox', 'libs/jquery-tmpl-1.0.0.min'], function () {
                 lgkorUI.requestAjaxData(self.configUrl, {}, function(result){
                     self.bestShopUrl = result.data.bestShopUrl;
                     self.localUrl = result.data.localListUrl;
                     self.subwayUrl = result.data.subwayListUrl;
                     self.stationUrl = result.data.stationListUrl;
                     self.detailUrl = result.data.detailPageUrl;
+                    self.userAdressCheckedUrl = result.data.userAdressCheckedUrl;
 
                     self.$mapContainer.vcStoreMap({
                         keyID: result.data.mapID,
@@ -138,12 +113,14 @@
                 });
 
                 self.$citySelect = $('#select1');
-
                 self.$boroughSelect = $('#select2');
+                self.$localSearchButton = $('.search-local');
+                self.$searchUserAdressButton = $('.search-userAdress');
 
                 self.$subwayCitySelect = $('#select3');
                 self.$subwayLineSelect = $('#select4');
                 self.$subwayStationSelect = $('#select5');
+                self.$searchSubwayButton = $('.search-subway');
 			});
         },
 
@@ -166,7 +143,7 @@
                 e.preventDefault();
 
                 var id = $(this).attr("href").replace("#", "");
-                window.open(self.detailUrl+"?agNum="+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no")
+                window.open(self.detailUrl+"?shopID="+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no")
             });
 
             self.$searchField.on('focus', function(e){
@@ -180,16 +157,6 @@
                 self._setSearch();
             });
 
-            self.$searchRoadField.on('focus', function(e){
-                $(window).on('keyup.searchShop', function(e){
-                    if(e.keyCode == 13) self._setRoadSearch();
-                });
-            });
-            self.$searchRoadButton.on('click', function(e){
-                e.preventDefault();
-                
-                self._setRoadSearch();
-            })
 
             self.$searchResultContainer.on('click', '.btn-back', function(e){
                 e.preventDefault();
@@ -228,8 +195,11 @@
             self.$citySelect.on('change', function(e){
                 self._loadLocalAreaList(e.target.value);
             });
-            self.$boroughSelect.on('change', function(e){
+            self.$localSearchButton.on('click', function(e){
                 self._setLocalSearch();
+            });
+            self.$searchUserAdressButton.on('click', function(e){
+                self._setUserAdressSearch();
             });
 
             self.$subwayCitySelect.on('change', function(e){
@@ -242,7 +212,7 @@
                     self._setSubwayOption(result.data, self.$subwayStationSelect, {title:"역 선택", value:""}, "codeName");
                 });
             });
-            self.$subwayStationSelect.on('change', function(e){
+            self.$searchSubwayButton.on('click', function(e){
                 self._setSubwaySearch();
             });
 
@@ -254,8 +224,6 @@
             var self = this;
             
             self.$searchField.val('');
-
-            self.$searchRoadField.val('');
 
             self.$citySelect.val();
             self.$boroughSelect.val();
@@ -269,11 +237,13 @@
 
             lgkorUI.requestAjaxData(self.bestShopUrl, self._getKeyword(), function(result){
                 self.storeData = vcui.array.map(result.data, function(item, index){
-                    item['id'] = item['agNum']; //info.agNum || agCode    
+                    item['id'] = item['shopID']; //info.shopID || agCode    
                     item['info'] = false;
                     return item;
                 });
                 self.$map.applyMapData(self.storeData);
+
+                self.userCityName = self.userBoroughName = "";
             });
         },
 
@@ -282,7 +252,10 @@
 
             lgkorUI.requestAjaxData(self.localUrl, {city:encodeURI(val)}, function(result){
                 self._setSelectOption(self.$boroughSelect, result.data);
+                self.$boroughSelect.prop('disabled', false);
                 self.$boroughSelect.vcSelectbox('update');
+
+                self.$localSearchButton.prop('disabled', false);
             });
         },
 
@@ -434,9 +407,8 @@
 
             var keywords = {
                 searchKeyword: self.$searchField.val(),
-                searchCity: self.$citySelect.val(),
-                searchBorough: self.$boroughSelect.val(),
-                searchRoadName: self.$searchRoadField.val(),
+                searchCity: self.userCityName ? self.userCityName : self.$citySelect.val(),
+                searchBorough: self.userBoroughName ? self.userBoroughName : self.$boroughSelect.val(),
                 searchSubwayLocal: self.$subwayCitySelect.val(),
                 searchSubwayLine: self.$subwayLineSelect.val(),
                 searchSubwayStation: self.$subwayStationSelect.val()
@@ -459,7 +431,34 @@
                 $(window).off('keyup.searchShop');
 
                 self._loadStoreData();
+            } else{
+                lgkorUI.alert("", {
+                    title: "검색어를 입력해주세요."
+                });
             }
+        },
+
+        _setUserAdressSearch: function(){
+            var self = this;
+
+            lgkorUI.requestAjaxData(self.userAdressCheckedUrl, {}, function(result){
+                if(result.data.success == "Y"){
+                    self.userCityName = result.data.userAdress.cityValue;
+                    self.userBoroughName = result.data.userAdress.boroughValue;
+                    self.searchResultMode = true;
+                    self.schReaultTmplID = "localSearch";
+
+                    self._loadStoreData();
+                } else{
+                    if(result.data.location && result.data.location != ""){
+                        location.href = result.data.location;
+                    } else{
+                        lgkorUI.alert("", {
+                            title: result.data.alert.title
+                        });
+                    }
+                }
+            });
         },
 
         //지역 검색...
@@ -473,27 +472,16 @@
                 self.schReaultTmplID = "localSearch";
                 
                 self._loadStoreData();
-            }
-        },
-
-        _setRoadSearch: function(){
-            var self = this;
-            
-            var keyword = self.$searchRoadField.val();
-            var trim = keyword.replace(/\s/gi, '');
-            if(trim.length){
-                self.schReaultTmplID = "roadSearch";
-                self.searchResultMode = true;
-
-                $(window).off('keyup.searchShop');
-
-                self._loadStoreData();
+            } else{
+                lgkorUI.alert("", {
+                    title: "구/군을 선택해주세요."
+                });
             }
         },
 
         _setSubwaySearch: function(){
             var self = this;
-            
+            console.log("_setSubwaySearch")
             var keyword = self.$subwayStationSelect.val();
             var trim = keyword.replace(/\s/gi, '');
             if(trim.length){
@@ -501,6 +489,10 @@
                 self.searchResultMode = true;
 
                 self._loadStoreData();
+            } else{
+                lgkorUI.alert("", {
+                    title: "지하철 검색의 역명을 선택해 주세요."
+                });
             }
         },
 
@@ -531,17 +523,16 @@
              for(var i=0; i<data.length; i++){
                  var listData = {
                      num: i+1,
-                     agName: data[i].info.agName,
-                     agCenterWeekday: data[i].info.agCenterWeekday,
-                     agNewShopComment: data[i].info.agNewShopComment,
-                     isEvent: self._getEventInfo(data[i].id).length ? true : false,
-                     agAddr1: data[i].info.agAddr1,
-                     agTel: data[i].info.agTel,
-                     agNum: data[i].info.agNum,
+                     shopName: data[i].info.shopName,
+                     bizHours: data[i].info.bizHours,
+                     flagInfo: data[i].info.flagInfo,
+                     shopAdress: data[i].info.shopAdress,
+                     shopTelphone: data[i].info.shopTelphone,
+                     shopID: data[i].info.shopID,
                      selected: data[i].info.selected ? " on" : ""
                  }
-                 var list = vcui.template(listTemplate, listData);
-                 self.$defaultListLayer.append($(list).get(0));
+                 var list = $.tmpl( $('#tmpl-searchShop-list').html(), listData);
+                 self.$defaultListLayer.append(list);
              }
         },
 
@@ -555,10 +546,6 @@
                 var scrolltop = scrollwrap.scrollTop();
                 var itemtop = parent.position().top;
                 var itembottom = -scrolltop + itemtop + parent.height();
-                console.log("parent :", parent);
-                console.log("scrolltop :", scrolltop);
-                console.log("itemtop :", itemtop);
-                console.log("itembottom :", itembottom);
                 if(itemtop < scrolltop || itembottom > scrollwrap.height()){
                     self.$defaultListContainer.find('.scroll-wrap').stop().animate({scrollTop: itemtop}, 220);
                 }
@@ -582,7 +569,10 @@
                     $('.result-list-box').css('display', 'none');
 
                     self.$defaultListContainer.css({position:'relative', top:0});
+
+                    self._setListArea();
                 });
+                self.$defaultListContainer.find('.scroll-wrap').animate({scrollTop:0}, 120);
             };
         },
 
@@ -603,6 +593,7 @@
                 });
 
                 self._setListArea();
+                self.$defaultListContainer.find('.scroll-wrap').animate({scrollTop:0}, 120);
             }
         },
 
@@ -625,12 +616,16 @@
             var scheight = self.$searchContainer.outerHeight(true);
             var optheight = self.$optionContainer.height();
             var resultheight = $('.result-list-box').height();
+            var paddingtop = parseInt(self.$defaultListContainer.find('.sch-list').css('padding-top'));
+            
+
+            console.log(top, titheight, scheight, optheight, resultheight)
 
             var listheight;
             if(self.searchResultMode){
-                listheight = self.windowHeight - top - resultheight - optheight;
+                listheight = self.windowHeight - top - resultheight - optheight - paddingtop - 5;
             } else{
-                listheight = self.windowHeight - top - titheight - scheight - optheight;
+                listheight = self.windowHeight - top - titheight - scheight - optheight - paddingtop - 5;
             }
             
             self.$defaultListContainer.find('.scroll-wrap').height(listheight);
@@ -640,13 +635,13 @@
             var self = this;
 
             self.windowWidth = $(window).width();
-            self.windowHeight = $(window).height();
+            self.windowHeight = $(window).innerHeight();
 
             self._setListArea();
 
             var listwidth = self.$leftContainer.width();
             var mapwidth, mapheight, mapmargin;
-            if(self.windowWidth < 768){
+            if(window.breakpoint.isMobile){
                 mapmargin = 0;
                 mapwidth = self.windowWidth;
 

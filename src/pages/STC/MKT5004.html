@@ -9,7 +9,7 @@
     <button type="button" data-href="#laypop01" data-control="modal" class="btn pink"><span>제휴카드 안내</span></button>
 
 
-    <article id="laypop01" class="popup-wrap full">
+    <article id="laypop01" class="popup-wrap wide">
         <header class="pop-header">
             <h1 class="tit"><span>제휴카드 안내</span></h1>
         </header>
@@ -19,31 +19,46 @@
                 <div class="card-lists">
                     <ul class="card-list">
                         <li class="sh-card">
-                            <dl>
+                            <div class="image-box">
+                                <img src="/lg5-common/images/STC/logo-sh.png" alt="">
+                            </div>
+                            <dl class="text-box">
                                 <dt>신한카드</dt>
                                 <dd>개인, 법인, 체크 가족카드 가능</dd>
                             </dl>
                         </li>
                         <li class="kb-card">
-                            <dl>
+                            <div class="image-box">
+                                <img src="/lg5-common/images/STC/logo-kb.png" alt="">
+                            </div>
+                            <dl class="text-box">
                                 <dt>국민카드</dt>
                                 <dd>개인, 법인, 체크 가족카드 가능</dd>
                             </dl>
                         </li>
                         <li class="hd-card">
-                            <dl>
+                            <div class="image-box">
+                                <img src="/lg5-common/images/STC/logo-hd.png" alt="">
+                            </div>
+                            <dl class="text-box">
                                 <dt>현대카드</dt>
                                 <dd>개인, 법인, 체크 가족카드 가능</dd>
                             </dl>
                         </li>
                         <li class="hn-card">
-                            <dl>
+                            <div class="image-box">
+                                <img src="/lg5-common/images/STC/logo-hn.png" alt="">
+                            </div>
+                            <dl class="text-box">
                                 <dt>하나카드</dt>
                                 <dd>개인, 법인, 체크 가족카드 가능</dd>
                             </dl>
                         </li>
                         <li class="kko-card">
-                            <dl>
+                            <div class="image-box">
+                                <img src="/lg5-common/images/STC/logo-kko.png" alt="">
+                            </div>
+                            <dl class="text-box">
                                 <dt>카카오뱅크</dt>
                                 <dd>개인 체크카드 가능</dd>
                             </dl>
@@ -51,38 +66,49 @@
                     </ul>
                     <ul class="card-list">
                         <li class="lt-card">
-                            <dl>
+                            <div class="image-box">
+                                <img src="/lg5-common/images/STC/logo-lt.png" alt="">
+                            </div>
+                            <dl class="text-box">
                                 <dt>롯데카드</dt>
                                 <dd>개인, 법인, 체크 가족카드 가능</dd>
                             </dl>
                         </li>
                         <li class="bc-card">
-                            <dl>
+                            <div class="image-box">
+                                <img src="/lg5-common/images/STC/logo-bc.png" alt="">
+                            </div>
+                            <dl class="text-box">
                                 <dt>BC카드</dt>
                                 <dd>BC자체, 우리, IBK기업, SC제일, NH농협, 대구은행, 경남은행, 부산은행, 전북은행, 수협, 광주은행, 제주은행 등 가능</dd>
                             </dl>
                         </li>
                         <li class="nh-card">
-                            <dl>
+                            <div class="image-box">
+                                <img src="/lg5-common/images/STC/logo-nh.png" alt="">
+                            </div>
+                            <dl class="text-box">
                                 <dt>NH 농협카드</dt>
                                 <dd>개인, 법인 체크 가족카드 가능</dd>
                             </dl>
                         </li>
                         <li class="ss-card">
-                            <dl>
+                            <div class="image-box">
+                                <img src="/lg5-common/images/STC/logo-ss.png" alt="">
+                            </div>
+                            <dl class="text-box">
                                 <dt>삼성카드</dt>
                                 <dd>개인, 법인 체크 가족카드 가능</dd>
                             </dl>
                         </li>
                     </ul>
                 </div>
-                <div class="bullet-list-box">
-                    @@include('./common/modules/bullet-list.html', {
-                        "bulletTxt" : [
-                            "카드사 상품에 따라 지원 여부가 상이하므로, 카드사 고객센터에 문의하시기 바랍니다."
-                        ]
-                    })
-                </div>
+                @@include('./common/modules/bullet-list.html', {
+                    "topBorder" : true,
+                    "bulletTxt" : [
+                        "카드사 상품에 따라 지원 여부가 상이하므로, 카드사 고객센터에 문의하시기 바랍니다."
+                    ]
+                })
 
             </div>
         </section>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "태그 구독 관리"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect3" : [
+                                { "on": "", "page": "찜한 제품" },
+                                { "on": "", "page": "최근 본 제품" },
+                                { "on": "on", "page": "구독" },
+                                { "on": "", "page": "단골매장" },
+                                { "on": "", "page": "재입고 알림" },
+                            ]
+                        })
+                        <div class="lnb-contents">  
+                            <div class="tag-subscribe-wrap">
+                                <!-- 스토리 홈 가기 버튼 -->
+                                <div class="top">
+                                    <a href="#n" class="btn size dark-gray"><span>스토리 홈 가기</span></a>
+                                </div>
+                                <!-- // 스토리 홈 가기 버튼 -->
+
+                                <!-- 태그 리스트 시작 -->
+                                <ul class="tag-lists">
+                                    @@loop('./common/modules/tag-subscribe-list.html', [
+                                        {
+                                            title : "시즌",
+                                            tags : [
+                                                { id : "tag1", label : "봄", checked : "checked" },
+                                                { id : "tag1", label : "미세먼지", checked : "" },
+                                                { id : "tag1", label : "눈", checked : "" },
+                                                { id : "tag1", label : "환절기", checked : "" },
+                                                { id : "tag1", label : "여름", checked : "" },
+                                                { id : "tag1", label : "황사", checked : "" },
+                                                { id : "tag1", label : "크리스마스", checked : "checked" },
+                                                { id : "tag1", label : "연휴", checked : "" },
+                                                { id : "tag1", label : "수능시험", checked : "" },
+                                                { id : "tag1", label : "새해", checked : "" },
+                                                { id : "tag1", label : "김장", checked : "checked" },
+                                            ]
+                                        },
+                                        {
+                                            title : "공간",
+                                            tags : [
+                                                { id : "tag2", label : "거실", checked : "" },
+                                                { id : "tag2", label : "주방", checked : "" },
+                                                { id : "tag2", label : "서재", checked : "" },
+                                                { id : "tag2", label : "안방", checked : "" },
+                                            ]
+                                        },
+                                        {
+                                            title : "평수",
+                                            tags : [
+                                                { id : "tag3", label : "10평 미만", checked : "" },
+                                                { id : "tag3", label : "10평대", checked : "" },
+                                                { id : "tag3", label : "20평대", checked : "checked" },
+                                                { id : "tag3", label : "30평대", checked : "" },
+                                                { id : "tag3", label : "40평대", checked : "" },
+                                                { id : "tag3", label : "50평대 이상", checked : "" },
+                                            ]
+                                        },
+                                        {
+                                            title : "라이프스타일",
+                                            tags : [
+                                                { id : "tag4", label : "반려동물", checked : "checked" },
+                                                { id : "tag4", label : "아이", checked : "" },
+                                                { id : "tag4", label : "여행", checked : "" },
+                                                { id : "tag4", label : "인테리어", checked : "" },
+                                                { id : "tag4", label : "요리", checked : "" },
+                                                { id : "tag4", label : "식물", checked : "" },
+                                                { id : "tag4", label : "싱글라이프", checked : "checked" },
+                                                { id : "tag4", label : "미니멀", checked : "" },
+                                                { id : "tag4", label : "비즈니스", checked : "" },
+                                                { id : "tag4", label : "워라밸", checked : "" },
+                                                { id : "tag4", label : "스포츠", checked : "" },
+                                                { id : "tag4", label : "집들이", checked : "" },
+                                                { id : "tag4", label : "게임", checked : "" },
+                                            ]
+                                        },
+                                        {
+                                            title : "관리&amp;케어",
+                                            tags : [
+                                                { id : "tag5", label : "반려동물", checked : "checked" },
+                                                { id : "tag5", label : "아이", checked : "" },
+                                                { id : "tag5", label : "여행", checked : "" },
+                                                { id : "tag5", label : "인테리어", checked : "" },
+                                                { id : "tag5", label : "요리", checked : "" },
+                                                { id : "tag5", label : "식물", checked : "" },
+                                                { id : "tag5", label : "싱글라이프", checked : "" },
+                                                { id : "tag5", label : "미니멀", checked : "" },
+                                                { id : "tag5", label : "비즈니스", checked : "" },
+                                                { id : "tag5", label : "워라밸", checked : "" },
+                                                { id : "tag5", label : "스포츠", checked : "" },
+                                                { id : "tag5", label : "집들이", checked : "" },
+                                                { id : "tag5", label : "게임", checked : "" },
+                                            ]
+                                        }
+                                    ])
+                                </ul>
+                                <!-- // 태그 리스트 시작 -->
+                            </div>
+                            <div class="btn-group center">
+                                <button type="button" class="btn gray"><span>초기화</span></button><!-- 비활성화시 .disabled -->
+                                <button type="button" class="btn"><span>완료 <em class="count">(8)</em></span></button><!-- 진입 후 변경 없을 시 .disabled -->
+                            </div>
+                            <div class="btn-group center">
+                                <button type="button" class="btn gray" disabled><span>초기화</span></button><!-- 비활성화시 .disabled -->
+                                <button type="button" class="btn" disabled><span>완료 <em class="count">(8)</em></span></button><!-- 진입 후 변경 없을 시 .disabled -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

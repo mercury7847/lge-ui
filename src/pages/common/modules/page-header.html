@@ -23,8 +23,13 @@
     @@if ( context.pageBtn ) {
         <div class="btn-desc">
         @@for (var i=0; i < context.pageBtn.length; i++) {
-            <button class="btn bd-black btn-small"><span>`+pageBtn[i].btn+`</span></button>
+            <button class="btn border size"><span>`+pageBtn[i].btn+`</span></button>
         }
+        </div>
+    }
+    @@if ( context.pageLink ) {
+        <div class="link-desc @@pageLink.arrowPos">
+            <a href="#n" class="btn-link"><span>@@pageLink.text</span></a>
         </div>
     }
     @@if ( context.pageArr ) {

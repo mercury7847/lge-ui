@@ -1,64 +1,83 @@
 <!DOCTYPE html>
 <html lang="ko">
-@@include('./common/head.html', {
-    componentID: "KRC0029",
-    isJScompile: false
-})
+    @@include('./common/head.html', {
+        componentID: "KRC0029",
+        isJScompile: true
+    })
 <body>
     <div class="wrap">
         <div class="container">
 
-			<!-- component KRC0029 -->
-            <!-- component -->
-            @@include('./common/partials/KRC0029.html',{
-                "flow-type" : "flow-left",
-                "fisrt-square" : {
-                    "class" : "main",
-                    "head" : "<h2>더 작아진 바디, 한 손에 가볍게<br>LG Gram 17</h2>",
-                    "img-src" : "/lg5-common/images/KRC0029/@sample-860x400",
-                    "img-src-m" : "/lg5-common/images/KRC0029/@sample-720x600",
-                    "img-type" : "jpg"
+            <!-- component KRC0029 -->
+
+            <!-- Carousel -->
+            <!-- Hero type -->
+            @@include('./common/partials/KRC0029.html', {
+                "common": {
+                    "marginTop": "",
+                    "marginBtm": ""
                 },
-     
-                "secondSquare" : {
-                    "class" : "sub",
-                    "head" : "<h2>더 작아진 바디, 한 손에 가볍게<br>LG Gram 17</h2>",
-                    "img-src" : "/lg5-common/images/KRC0029/@sample-424x400",
-                    "img-src-m" : "/lg5-common/images/KRC0029/@sample-720x600",
-                    "img-type" : "gif",
-                    "videoType" : "animation"
-                },
-                "bg-color":"bg-white"
+                "carousel": {
+                    "item1": {
+                        "visual1":"/lg5-common/images/KRC0029/@thumb-1920x380.png",
+                        "visual2":"/lg5-common/images/KRC0029/@thumb-720x1012.png",
+                        "align-class1":"align-left",
+                        "align-class2":"align-middle",
+                        "width-class":"type-wide",
+                        "font-color":"text-black",
+                        "font-class1":"font-regular",
+                        "font-class2":""
+                    },
+                    "item2": {
+                        "visual1":"/lg5-common/images/KRC0029/@thumb-1920x380.png",
+                        "visual2":"/lg5-common/images/KRC0029/@thumb-720x1012.png",
+                        "align-class1":"align-center",
+                        "align-class2":"align-bottom",
+                        "width-class":"type-narrow",
+                        "font-color":"text-white",
+                        "font-class1":"font-bold",
+                        "font-class2":""
+                    },
+                    "item3": {
+                        "visual1":"/lg5-common/images/KRC0029/@thumb-1920x380.png",
+                        "visual2":"/lg5-common/images/KRC0029/@thumb-720x1012.png",
+                        "align-class1":"align-right",
+                        "align-class2":"align-middle",
+                        "width-class":"type-narrow",
+                        "font-color":"text-white",
+                        "font-class1":"font-bold",
+                        "font-class2":""
+                    }
+                }
             })
-            <!-- // component -->
+            <!-- // Carousel -->
 
 
-            <!-- component -->
-            @@include('./common/partials/KRC0029.html',{
-                "flow-type" : "flow-right",
-                "fisrt-square" : {
-                    "class" : "sub",
-                    "head" : "<h2>더 작아진 바디, 한 손에 가볍게<br>LG Gram 17</h2>",
-                    "img-src" : "/lg5-common/images/KRC0029/@sample-424x400",
-                    "img-src-m" : "/lg5-common/images/KRC0029/@sample-720x600",
-                    "img-type" : "jpg"
+            <!-- Non Carousel -->
+            <!-- Hero type -->
+            @@include('./common/partials/KRC0029-one.html', {
+                "common": {
+                    "marginTop": "",
+                    "marginBtm": ""
                 },
-
-                "secondSquare" : {
-                    "class" : "main",
-                    "head" : "<h2>더 작아진 바디, 한 손에 가볍게<br>LG Gram 17</h2>",
-                    "img-src" : "/lg5-common/images/KRC0029/@sample-860x400",
-                    "img-src-m" : "/lg5-common/images/KRC0029/@sample-720x600",
-                    "img-type" : "jpg",
-                    "videoType" : "youtube"
-                    
-                },
-                "bg-color":"bg-white"
+                "carousel": {
+                    "item1": {
+                        "visual1":"/lg5-common/images/KRC0029/@thumb-1920x380.png",
+                        "visual2":"/lg5-common/images/KRC0029/@thumb-720x1012.png",
+                        "align-class1":"align-left",
+                        "align-class2":"align-middle",
+                        "width-class":"type-wide",
+                        "font-color":"text-black",
+                        "font-class1":"font-regular",
+                        "font-class2":""
+                    }
+                }
             })
-            <!-- // component -->
+            <!-- // Non Carousel -->
+
             <!-- //component KRC0029 -->
-		
-		</div>
-    </div>      
+
+        </div>
+    </div>
 </body>
 </html>

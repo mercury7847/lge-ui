@@ -1,12 +1,10 @@
 // 제품리스트(gray-box list, script)
 .product-list-wrap {
-    overflow:hidden;
-
     .product-lists {
         margin:-24px -12px 0;
         font-size:0;
         @include mobile {
-            margin:-12px -6px 0;
+            margin:-8px -4px 0;
         }
         li.lists {
             display:inline-block;
@@ -14,60 +12,50 @@
             margin-top:24px;
             vertical-align:top;
             @include mobile {
+                margin-top:8px;
                 width:50%;
-                margin-top:12px;
             }
             div {
                 margin:0 12px;
-                border-radius:4px;
-                background:#f4f4f4;
-                overflow:hidden;
+                border-radius:8px;
+                box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
                 @include mobile {
-                    margin:0 6px;
+                    margin:0 4px;
+                    box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.14);
                 }
             }
             dl {
                 position:relative;
-                padding:32px 0 28px;
-                // border-radius:4px;
-                // background:#f4f4f4;
-                text-align:left;
+                padding:32px 38px;
+                text-align:center;
                 @include mobile {
-                    // margin:0 6px;
-                    padding:0 0 20px;
-                    text-align:center;
+                    padding:12px 15px 24px;
                 }
                 dt {
                     position:relative;
-                    color:$color-default;
+                    color:#222;
                     .img {
                         display:block;
                         margin-bottom:16px;
                         text-align:center;
+                        @include mobile {
+                            margin-bottom:10px;
+                        }
                         img {
                             width:100%;
+                            max-width:180px;
                             height:auto;
                             vertical-align:top;
                         }
                     }
                     p {
-                        padding:0 40px;
-                        @include mobile {
-                            padding:0 12px;
-                        }
                         &.name {
-                            display:-webkit-box;
-                            -webkit-line-clamp:2;
-                            -webkit-box-orient:vertical;
-                            max-height:48px;
-                            overflow:hidden;
-                            font-size:16px;
-                            line-height:24px;
+                            max-height:56px;
+                            @include textEllipsisClamp(2);
+                            @include font-large;
                             font-weight:700;
-                            text-overflow:ellipsis;
                             @include mobile {
-                                font-size:14px;
-                                line-height:18px;
+                                max-height:46px;
                             }
                         }
                         &.num {
@@ -88,22 +76,22 @@
                 }
                 dd {
                     margin-top:4px;
-                    padding:0 40px;
                     @include mobile {
-                        padding:0 12px;
+                        margin-top:7px;
                     }
                     .infos {
                         li {
-                            color:$color-default;
-                            font-size:14px;
-                            line-height:20px;
-                            small {
-                                display:block;
-                                color:#616161;
-                            }
+                            color:#767676;
+                            @include font-medium;
+                            word-break:keep-all;
                             @include mobile {
-                                font-size:12px;
-                                line-height:16px;
+                                font-weight:500;
+                            }
+                            small {
+                                display:inline-block;
+                                font-size:inherit;
+                                line-height:inherit;
+                                vertical-align:top;
                             }
                         }
                     }
@@ -143,62 +131,34 @@
             }
         }
     }
-
-    &.shadow-box-list {
-        overflow: visible;
-        .product-lists {
-            //margin-top: 0;
-            li.lists {
-                @include mobile {
-                    width: 100%;
-                    margin-top: 16px;
-                }
-                div {
-                    background:#fff;
-                    box-shadow: 0 3px 14px 0 rgba(0, 0, 0, 0.06);
-                }
-                dl {
-                    padding:0 0 32px;
-                     dt {
-                         .img {
-                             max-width: 226px;
-                             margin: 0 auto 26px;
-                         }
-                         p {
-                             padding:0 28px;
-                             &.name {
-                                 font-size: 20px;
-                                 line-height: 32px;
-                             }
-                         }
-                     }
-                    dd {
-                        padding:0 28px;
-                        .infos {
-                            li {
-                                color: #616161;
-                            }
-                        }
+    &.type2 {
+        @include pc {
+            .product-lists {
+                margin:-12px -6px 0;
+                li.lists {
+                    margin-top:12px;
+                    div {
+                        margin:0 6px;
                     }
-                    @include mobile {
-                        padding-bottom: 26px;
-                        text-align: left;
+                    dl {
+                        padding:40px;
                         dt {
                             .img {
-                                max-width: 172px;
-                                margin: 0 auto 18px;
-                            }
-                            p {
-                                padding:0 20px;
-                                &.name {
-                                    font-size: 16px;
-                                    line-height: 23px;
+                                margin-bottom:24px;
+                                img {
+                                    max-width:268px;
                                 }
+                            }
+                            p.name {
+                                max-height:60px;
+                                @include font-large-1;
                             }
                         }
                         dd {
-                            margin-top: 8px;
-                            padding:0 20px;
+                            margin-top:14px;
+                            .infos li {
+                                color:#222;
+                            }
                         }
                     }
                 }
@@ -267,7 +227,7 @@
 .dl-infolist-wrap {
     .lists {
         li {
-            margin-top:16px;
+            margin-top:20px;
             @include mobile {
                 margin-top:14px;
             }
@@ -295,6 +255,9 @@
                     color:#222;
                     @include font-medium;
                     vertical-align:top;
+                    em {
+                        font-weight:700;
+                    }
                     .btn-link {
                         margin-top:1px;
                         margin-left:24px;
@@ -308,6 +271,79 @@
                         .btn-link {
                             margin-top:6px;
                             margin-left:0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 태그 구독 태그리스트
+.tag-subscribe-wrap {
+    // 마이페이지 내 버튼 대응. 스토리에서 <div class="top"> 삭제.
+    .top {
+        margin-bottom:12px;
+        text-align:right;
+    }
+    // 공통 시작
+    .tag-lists {
+        .sect {
+            margin-top:48px;
+            @include mobile {
+                margin-top:40px;
+            }
+            &:first-child {
+                margin-top:0;
+            }
+            .tag-title {
+                margin-bottom:12px;
+                color:#222;
+                @include font-large;
+                font-weight:700;
+            }
+            .tag-group {
+                > ul {
+                    margin:-12px 0 0 -8px;
+                    font-size:0;
+                    .tags {
+                        display:inline-block;
+                        margin:12px 0 0 8px;
+                        vertical-align:top;
+                        .chk-btn {
+                            position:relative;
+                            input {
+                                position:absolute;
+                                overflow:hidden;
+                                width:1px;
+                                height:1px;
+                                margin:-1px;
+                                padding:0;
+                                border:none;
+                                clip:rect(0, 0, 0, 0);
+                                & + label {
+                                    position:relative;
+                                    display:inline-block;
+                                    width:auto;
+                                    min-width:64px;
+                                    padding:7px 15px;
+                                    border:1px solid #ddd;
+                                    border-radius:8px;
+                                    color:#aaa;
+                                    @include font-medium;
+                                    font-weight:500;
+                                    text-align:center;
+                                    white-space:nowrap;
+                                    cursor:pointer;
+                                    @include mobile {
+                                        min-width:74px;
+                                    }
+                                }
+                                &:checked + label {
+                                    border-color:#E51346;
+                                    color:#E51346;
+                                }
+                            }
                         }
                     }
                 }

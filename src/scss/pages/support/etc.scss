@@ -1,91 +1,81 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
+// 엔지니어 사진 등록
 .profile-upload {
-    .heading-title {
-        font-size: 32px;
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 40px;
+    .cont-wrap {
+        max-width:678px;
+        min-height:100vh;
+        margin:0 auto;
+        padding-top:40px;
+        padding-bottom:39px;
     }
-    .contents-inner {
-        min-height: 100vh;
-        max-width: 848px;
-        margin: 0 auto;
-        padding: 80px 0 100px;
+    .tit-wrap {
+        margin-bottom:48px;
+        .tit {
+            padding-bottom:24px;
+            @include font-large-3;
+            font-weight:700;
+            border-bottom:2px solid #222;
+        }
     }
-    .icon-download {
-        width: 14px;
-        height: 14px;
-        &-btn {
-            font-size: 14px;
-            color: #222;
+    .btn-download {
+        display: inline-block;
+        margin-top:4px;
+        @include font-small;
+        &:after {
+            content:'';
             display: inline-block;
-            margin-top: 17px;
+            width:21px;
+            height:15px;
+            margin-left:4px;
+            background:url(/lg5-common/images/icons/icon-download2.svg) no-repeat center;
         }
-    }
-    .file-box {
-        .file-input {
-            width: 100%;
-        }
-    }
-    .btn-group {
-        padding: 0;
     }
 
-    .profile-regist {
-        position: relative;
-        margin: 48px auto 0;
-        &-box {
-            width: calc(50% - 12px);
-            height: 310px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-            position: relative;
+    @include mobile {
+        .cont-wrap {
+            max-width:none;
+            padding:40px 16px 0;
         }
-        &-wrap {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-        }
-        &-img {
-            width: 180px;
-            height: 180px;
-            // background: url(/lg5-common/images/no-profile-image.png) no-repeat center;
-            // background-size: 100%;
+    }
+}
+
+// 엔지니어 정보 확인
+.engineer-info {
+    .engineer-info-box {
+        overflow:hidden;
+        padding:20px 20px 32px;
+        text-align:center;
+        border-radius:16px;
+        box-shadow:0px 4px 16px 0 rgba(0, 0, 0, 0.14);
+        .image {
+            position:relative;
+            width:184px;
+            height:184px;
+            margin:0 auto 24px;
+            &:before {
+                content:'';
+                position:absolute;
+                left:0;
+                top:0;
+                width:100%;
+                height:100%;
+                background:url(/lg5-common/images/CS/default-engineer.jpg) no-repeat;
+                background-size:100%;
+            }
             img {
-                width: 100%;
-                height: 100%;
+                position:relative;
+                width:100%;
             }
         }
-        &-text {
-            font-size: 14px;
-            color: #616161;
-            text-align: center;
-            margin-top: 16px;
+        .name {
+            @include font-large-1;
         }
-        &-file {
-            margin-top: 40px;
-        }
-        &-filed {
-            position: absolute;
-            top: 56px;
-            right: 56px;
-            width: calc(50% - 68px);
-        }
-        @include mobile {
-            .section-content {
-                padding: 40px 20px 58px;
-            }
-            &-filed {
-                position: static;
-            }
-            &-box,
-            &-filed {
-                width: 100%;
-                margin-top: 40px;
-            }
+        .center {
+            margin-top:2px;
+            color:#767676;
+            @include font-medium;
         }
     }
 }
@@ -120,6 +110,10 @@
                 max-height: 100%;
             }
         }
+        .appgate-figure-title {
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
         figcaption {
             text-align: left;
             padding-right: 40px;
@@ -144,15 +138,20 @@
         margin-left: 11px;
         img {
             border-radius: 1.1111vw;
+            width:100%;
         }
         &:first-child {
             margin-left: 0;
         }
         figcaption {
-            font-size: 14px;
+            font-size: 12px;
             text-align: center;
-            margin-top: 12px;
+            margin-top: 6px;
         }
+    }
+    &-title {
+        font-size: 12px;
+        margin-bottom: 6px;
     }
 }
 
@@ -179,6 +178,7 @@
         width: 76px;
         height: 76px;
         text-align: center;
+        line-height: 1.62;
     }
 }
 
@@ -255,6 +255,13 @@
         @include mobile {
         }
     }
+    .swipe-content {
+        padding-bottom: 40px;
+    }
+}
+
+.banner-figure {
+    margin-top: 40px;
 }
 
 @include mobile {

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/custom-voice"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '칭찬합니다',
+                'pageDesc': '칭찬이나 고마운 마음을 전하실 수 있습니다.'
+            })
+            <div class="contents support feedback">
+                @@include('./common/support/login-guide.html', {
+                    'text': '로그인을 하시면 더욱 편리하게 이용하실 수 있습니다.<br>개인 정보 자동 입력, 저장해 놓은 제품 선택 등'
+                })
+                <div class="cont-wrap">
+                    <form action="/html/CS/CSRF6055.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/save.json" novalidate>
+                        <div class="form-infos">
+                            <p class="req" aria-disabled="true">필수 입력 항목</p>
+                        </div>
+                        <div class="section">
+                            <div class="agree-wrap ui_all_checkbox"> 
+                                <div class="agree-all-chk">
+                                    <span class="chk-wrap">
+                                        <input type="checkbox" name="allCheck" id="allCheck" class="ui_all_checker">
+                                        <label for="allCheck">전체 동의 <span class="desc">개인정보 수집 및 이용동의(필수), 마케팅 수신동의(선택)에 모두 동의합니다.</span></label>
+                                    </span>
+                                </div>
+                                <div class="input-info">
+                                    <div class="agree-tit">
+                                        <p class="tit">개인정보 수집 및 이용에 대한 동의</p>
+                                    </div>
+                                    <div class="agree-cont-wrap">
+                                        <div class="agree-cont-box">
+                                            LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                                            1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                            ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                            - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                            - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
+                                            LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
+                                            1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                            ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                            - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                            - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
+                                        </div>
+                                        <div class="agree-input">
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" name="privcyCheck" id="privcyCheck" value="Y" data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다." data-required="true">
+                                                <label for="privcyCheck">동의합니다.</label>
+                                            </span>
+                                        </div>
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-info">
+                                    <div class="agree-tit">
+                                        <p class="tit">마케팅 수신 동의 (선택)</p>
+                                    </div>
+                                    <div class="agree-cont-wrap">
+                                        <div class="agree-cont-box">
+                                            LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                                            1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                            ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                            - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                            - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
+                                            LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
+                                            1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                            ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                            - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                            - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
+                                        </div>
+                                        <div class="agree-input">
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" name="marketingCheck" id="marketingCheck" value="Y">
+                                                <label for="marketingCheck">동의합니다.</label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section">
+                            <div class="tit-wrap">
+                                <h2 class="tit">칭찬하시는 분의 정보를 입력해주세요.</h2>
+                            </div>
+                            <div class="form-wrap">
+                                <div class="forms">
+                                    <div class="tit">
+                                        <label for="userName" class="req">이름<span class="blind">필수항목</span></label>
+                                    </div>
+                                    <div class="conts">
+                                        <div class="input-wrap">
+                                            <!-- 
+                                                회원일 경우 회원정보 이름 제공 
+                                                value="홍길동"
+                                            -->
+                                            <input type="text" name="userName" id="userName"  value="" placeholder="이름을 입력해주세요."  data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" readonly required>
+                                        </div>
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="forms">
+                                    <div class="tit">
+                                        <label for="phoneNo" class="req">휴대 전화<span class="blind">필수항목</span></label>
+                                    </div>
+                                    <div class="conts">
+                                        <div class="box">
+                                            <div class="input-wrap">
+                                                <!-- 
+                                                    회원일 경우 회원정보 휴대 전화 제공 
+                                                    value="01011112222"
+                                                -->
+                                                <input type="text" name="phoneNo" id="phoneNo" value="" placeholder="휴대전화 인증 진행"  data-error-msg="휴대전화를 정확히 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" readonly required>
+                                            </div>
+                                            <div class="cell">
+                                                <!-- 
+                                                    비회원일 경우 disabled 추가
+                                                    회원일 경우 disabled 삭제
+                                                 -->
+                                                <button type="button" class="btn btn-open" data-href="#certificationPopup" data-control="modal" disabled><span>휴대전화 인증</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="forms">
+                                    <div class="tit">
+                                        <label for="email" class="req">이메일 주소<span class="blind">필수항목</span></label>
+                                        <div class="tooltip-wrap">
+                                            <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
+                                            <div class="tooltip-box">
+                                                <p>일부 이메일(gmail.com, hotmail.com, live.co.kr, outlook.com, nate.com, dreamwiz.com, empal.com등)은 답변 메일 수신이 원활하지 않을 수 있습니다.</p>
+                                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="conts">
+                                        <div class="input-wrap">
+                                            <input type="text" name="email" id="email" placeholder="이메일 주소를 입력해주세요." data-error-msg="이메일 주소를 입력해주세요." data-pattern-msg="올바른 이메일 형식이 아닙니다." data-required="true" required>
+                                        </div>
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="forms">
+                                    <div class="tit">
+                                        <label for="contactPhoneNo1">연락가능 전화번호</label>
+                                        <div class="tooltip-wrap">
+                                            <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget">자세히 보기</span>
+                                            <div class="tooltip-box">
+                                                <p>서비스 접수할 때 입력 또는 알려주신 고객님 전화번호를 입력해 주세요.</p>
+                                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="conts">
+                                        <div class="contact-box">
+                                            <div class="input-wrap">
+                                                <input type="text" name="contactPhoneNo1" id="contactPhoneNo1">
+                                            </div>
+                                            <span class="at">-</span>
+                                            <div class="input-wrap">
+                                                <input type="text" name="contactPhoneNo2" id="contactPhoneNo2">
+                                            </div>
+                                            <span class="at">-</span>
+                                            <div class="input-wrap">
+                                                <input type="text" name="contactPhoneNo3" id="contactPhoneNo3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- // 회원 -->
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="tit-wrap">
+                                <h2 class="tit">칭찬 내용을 입력해주세요.</h2>
+                            </div>
+                            <div class="form-wrap">
+                                <div class="forms">
+                                    <div class="tit">
+                                        <label for="title" class="req">제목<span class="blind">필수항목</span></label>
+                                    </div>
+                                    <div class="conts">
+                                        <div class="input-wrap count">
+                                            <input type="text" class="ui_textcontrol" name="title" id="title" placeholder="제목을 입력해주세요." maxlength="100" data-limit="100" data-count-target="#txt-count1" data-error-msg="제목을 입력해주세요" data-required="true" required>
+                                            <span id="txt-count1" class="cell total"><em>0</em> / 100</span>
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="forms">
+                                    <div class="tit">
+                                        <label for="content" class="req">내용<span class="blind">필수항목</span></label>
+                                    </div>
+                                    <div class="conts">
+                                        <div class="input-wrap count">
+                                            <textarea class="ui_textcontrol" name="content" id="content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-error-msg="내용을 입력해주세요" data-required="true" required></textarea>
+                                            <span id="txt-count2" class="cell total"><em>0</em> / 1000</span>
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "topBorder" : true,
+                                    "bulletTxt" : [
+                                        "답변은 서비스 홈페이지 나의 글 보기 메뉴를 통해 가능합니다. (단, 답변일로부터 1개월간, 접수번호 또는 휴대전화 인증 필요)"
+                                    ]
+                                })
+                            </div>
+                        </div>
+
+                        <div class="btn-group center">
+                            <!-- 
+                                data-url="support main 주소"
+                             -->
+                            <button type="button" class="btn gray btn-cancel" data-id="#cancelPop" data-control="modal" data-url="/html/CS/CSRF6001"><span>취소</span></button>
+                            <button type="button" class="btn btn-confirm" data-id="#confirmPop" data-control="modal"><span>확인</span></button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- 휴대폰인증 팝업 -->
+    @@include('./support/modal/phone-certification-popup.html')
+
+    <!-- 인증 번호 발송 버튼을 클릭하지 않고 확인 버튼 눌렀을 경우 -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop1",
+        "msgOnly" : true,
+        "msg" : "인증 번호 발송 버튼을 선택해 주세요."
+    })
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/customVoice/feedback.min.js"></script>
+</body>
+</html> 

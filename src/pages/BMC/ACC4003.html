@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <!-- membership -->
+            <div class="contents membership">
+                <!-- visual slider -->
+                <div class="visual-wrap">
+                    @@include('./common/modules/main_carousel.html', {
+                        "slides" : [
+                            {
+                                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                                "eyebrow" : "LG전자 멤버십 앱",
+                                "title" : "신규 설치 고객<br>경품 추천 이벤트",
+                                "btn" : "자세히 보기"
+                            },
+                            {
+                                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                                "eyebrow" : "LG전자 멤버십 앱",
+                                "title" : "신규 설치 고객<br>경품 추천 이벤트2",
+                                "btn" : "자세히 보기"
+                            },
+                            {
+                                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                                "eyebrow" : "LG전자 멤버십 앱",
+                                "title" : "신규 설치 고객<br>경품 추천 이벤트3",
+                                "btn" : "자세히 보기"
+                            }
+                        ]
+                    })
+                </div>
+                <!-- // visual slider -->
+
+                <div class="page-tabs">
+                    <div class="tabs-wrap btn-type">
+                        <ul class="tabs">
+                            <li><a href="#n">멤버십 소개</a></li>
+                            <li class="on"><a href="#n"><em class="blind">현재 화면</em>등급별 혜택</a></li>
+                            <li><a href="#n">가입 안내</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cont-wrap narrow">
+                    <div class="section-wrap">
+                        <div class="sects">
+                            <div class="tit-wrap">
+                                <h2 class="tit">멤버십 등급별 기준 및 혜택</h2>
+                            </div>
+                            
+                            <!-- pc table layout -->
+                            <div class="membership-table">
+                                <table>
+                                    <caption>멤버십 등급별 기준 및 혜택 안내</caption>
+                                    <colgroup>
+                                        <col>
+                                        <col style="width:22%;">
+                                        <col style="width:22%;">
+                                        <col style="width:22%;">
+                                        <col style="width:22%;">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">등 급</th>
+                                            <td id="grade1">
+                                                <div class="grade-box grade1">
+                                                    <p class="tit">스탠다드</p>
+                                                    <p class="desc"><span class="blind">등급 기준</span>연간 구매금액 <em>500만원 미만</em></p>
+                                                </div>
+                                            </td>
+                                            <td id="grade2">
+                                                <div class="grade-box grade2">
+                                                    <p class="tit">골드</p>
+                                                    <p class="desc"><span class="blind">등급 기준</span>연간 구매금액 <em>500만원~1000만원 미만</em></p>
+                                                </div>
+                                            </td>
+                                            <td id="grade3">
+                                                <div class="grade-box grade3">
+                                                    <p class="tit">로얄골드</p>
+                                                    <p class="desc"><span class="blind">등급 기준</span>연간 구매금액 <em>1000만원 이상</em></p>
+                                                </div>
+                                            </td>
+                                            <td id="grade4">
+                                                <div class="grade-box grade4">
+                                                    <p class="tit">LG SIGNATURE 별도 케어서비스</p>
+                                                    <p class="desc"><span class="blind">등급 기준</span>LG 시그니처 제품<br>구매 고객</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" rowspan="4">혜 택</th>
+                                            <td headers="grade1">
+                                                <dl class="grade-info">
+                                                    <dt>추가 포인트 지급</dt>
+                                                    <dd>
+                                                        <p>구매금액의 <em>0.2%</em></p>
+                                                        <p>(1년 적립 한도 30,000P)</p>
+                                                    </dd>
+                                                </dl>
+                                            </td>
+                                            <td headers="grade2">
+                                                <dl class="grade-info">
+                                                    <dt>추가 포인트 지급</dt>
+                                                    <dd>
+                                                        <p>구매금액의 <em>0.5%</em></p>
+                                                        <p>(1년 적립 한도 50,000P)</p>
+                                                    </dd>
+                                                </dl>
+                                            </td>
+                                            <td headers="grade3">
+                                                <dl class="grade-info">
+                                                    <dt>추가 포인트 지급</dt>
+                                                    <dd>
+                                                        <p>구매금액의 <em>1%</em></p>
+                                                        <p>(1년 적립 한도 100,000P)</p>
+                                                    </dd>
+                                                </dl>
+                                            </td>
+                                            <td headers="grade4" rowspan="2">
+                                                <dl class="grade-info">
+                                                    <dt>서비스 혜택</dt>
+                                                    <dd>
+                                                        <ul>
+                                                            <li>보유제품 무상이전 서비스</li>
+                                                            <li>보유제품 무상점검 서비스</li>
+                                                            <li>사전점검서비스 (년1회/3년3회)</li>
+                                                            <li>전용 핫라인</li>
+                                                            <li>최대 110만원 기프트카드 발송<br>(년1회/3년3회 지급, 롤러블TV 50만원)</li>
+                                                        </ul>
+                                                    </dd>
+                                                </dl>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="grade1">
+                                                <p class="blind">없음</p>
+                                            </td>
+                                            <td headers="grade2">
+                                                <dl class="grade-info">
+                                                    <dt>승급 포인트 지급</dt>
+                                                    <dd>
+                                                        <p>승급 시 <em>30,000P</em> 제공</p>
+                                                    </dd>
+                                                </dl>
+                                            </td>
+                                            <td headers="grade3">
+                                                <dl class="grade-info">
+                                                    <dt>승급 포인트 지급</dt>
+                                                    <dd>
+                                                        <p>승급 시 <em>50,000P</em> 제공</p>
+                                                        <p>(등급 유지 내 승급 시 20,000P 제공)</p>
+                                                    </dd>
+                                                </dl>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="grade1">
+                                                <p class="blind">없음</p>
+                                            </td>
+                                            <td headers="grade2">
+                                                <dl class="grade-info">
+                                                    <dt>문화/스포츠 혜택 및 이벤트 초청</dt>
+                                                    <dd>
+                                                        <ul>
+                                                            <li>화담숲 할인쿠폰</li>
+                                                            <li>야구/농구 초대권</li>
+                                                            <li>스포츠, 문화, 초청행사 참여기회</li>
+                                                        </ul>
+                                                    </dd>
+                                                </dl>
+                                            </td>
+                                            <td headers="grade3">
+                                                <dl class="grade-info">
+                                                    <dt>문화/스포츠 혜택 및 이벤트 초청</dt>
+                                                    <dd>
+                                                        <ul>
+                                                            <li>화담숲 할인쿠폰</li>
+                                                            <li>야구/농구 초대권</li>
+                                                            <li>스포츠, 문화, 초청행사 참여기회</li>
+                                                        </ul>
+                                                    </dd>
+                                                </dl>
+                                            </td>
+                                            <td headers="grade4">
+                                                <dl class="grade-info">
+                                                    <dt>문화/스포츠 혜택 및 이벤트 초청</dt>
+                                                    <dd>
+                                                        <ul>
+                                                            <li>화담숲 할인쿠폰</li>
+                                                            <li>야구/농구 초대권</li>
+                                                            <li>스포츠, 문화, 초청행사 <em>우선</em> 참여기회</li>
+                                                        </ul>
+                                                    </dd>
+                                                </dl>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="grade1">
+                                                <p class="blind">없음</p>
+                                            </td>
+                                            <td headers="grade2">
+                                                <dl class="grade-info">
+                                                    <dt>무상서비스 기간연장</dt>
+                                                    <dd>
+                                                        <p>등급선정 전/후 1년간 구매한 5대가전</p>
+                                                        <p>(TV, REF, W/M, RAC, 김치냉장고)</p>
+                                                    </dd>
+                                                </dl>
+                                            </td>
+                                            <td headers="grade3">
+                                                <dl class="grade-info">
+                                                    <dt>무상서비스 기간연장</dt>
+                                                    <dd>
+                                                        <p>등급선정 전/후 1년간 구매한 5대가전</p>
+                                                        <p>(TV, REF, W/M, RAC, 김치냉장고)</p>
+                                                    </dd>
+                                                </dl>
+                                            </td>
+                                            <td headers="grade4">
+                                                <dl class="grade-info">
+                                                    <dt>무상서비스 기간연장</dt>
+                                                    <dd>
+                                                        <p>등급선정 전/후 1년간 구매한 5대가전</p>
+                                                        <p>(TV, REF, W/M, RAC, 김치냉장고)</p>
+                                                    </dd>
+                                                </dl>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- // pc table layout -->
+
+                            <!-- mobile layout -->
+                            <div class="membership-tabs-cont">
+                                <div class="mem-tabs-wrap ui_tab">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#tab1" class="grade1">스탠다드<em class="blind">선택됨</em></a></li>
+                                        <li><a href="#tab2" class="grade2">골드</a></li>
+                                        <li><a href="#tab3" class="grade3">로얄골드</a></li>
+                                        <li><a href="#tab4" class="grade4">LG SIGNATURE<br>별도 케어서비스</a></li>
+                                    </ul>
+                                </div>
+                                <div id="tab1" class="tab-content">
+                                    <div class="guide">
+                                        <span class="blind">등급 기준</span>
+                                        <p>연간 구매금액<em>500만원 미만</em></p>
+                                    </div>
+                                    <span class="blind">등급 혜택</span>
+                                    <ul class="benefits">
+                                        <li class="list">
+                                            <dl>
+                                                <dt>추가 포인트 지급</dt>
+                                                <dd>구매금액의 <em>0.2%</em><br>(1년 적립 한도 30,000P)</dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="tab2" class="tab-content">
+                                    <div class="guide">
+                                        <span class="blind">등급 기준</span>
+                                        <p>연간 구매금액<em>500만원~1000만원 미만</em></p>
+                                    </div>
+                                    <span class="blind">등급 혜택</span>
+                                    <ul class="benefits">
+                                        <li class="list">
+                                            <dl>
+                                                <dt>추가 포인트 지급</dt>
+                                                <dd>구매금액의 <em>0.5%</em><br>(1년 적립 한도 50,000P)</dd>
+                                            </dl>
+                                        </li>
+                                        <li class="list">
+                                            <dl>
+                                                <dt>승급 포인트 지급</dt>
+                                                <dd>승급시 <em>30,000P</em> 제공</dd>
+                                            </dl>
+                                        </li>
+                                        <li class="list">
+                                            <dl>
+                                                <dt>문화/스포츠 혜택 및 이벤트 초청</dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li>화담숲 할인쿠폰</li>
+                                                        <li>야구/농구 초대권</li>
+                                                        <li>스포츠, 문화, 초청행사 참여기회</li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li class="list">
+                                            <dl>
+                                                <dt>무상서비스 기간연장</dt>
+                                                <dd>
+                                                    등급선정 전/후 1년간 구매한 5대가전<br>
+                                                    (TV,REF,W/M,RAC,김치냉장고)
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="tab3" class="tab-content">
+                                    <div class="guide">
+                                        <span class="blind">등급 기준</span>
+                                        <p>연간 구매금액<em>1000만원 이상</em></p>
+                                    </div>
+                                    <span class="blind">등급 혜택</span>
+                                    <ul class="benefits">
+                                        <li class="list">
+                                            <dl>
+                                                <dt>추가 포인트 지급</dt>
+                                                <dd>구매금액의 <em>1%</em><br>(1년 적립 한도 100,000P)</dd>
+                                            </dl>
+                                        </li>
+                                        <li class="list">
+                                            <dl>
+                                                <dt>승급 포인트 지급</dt>
+                                                <dd>승급시 <em>50,000P</em> 제공<br>(등급 유지 내 승급 시 20,000P 제공)</dd>
+                                            </dl>
+                                        </li>
+                                        <li class="list">
+                                            <dl>
+                                                <dt>문화/스포츠 혜택 및 이벤트 초청</dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li>화담숲 할인쿠폰</li>
+                                                        <li>야구/농구 초대권</li>
+                                                        <li>스포츠, 문화, 초청행사 참여기회</li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li class="list">
+                                            <dl>
+                                                <dt>무상서비스 기간연장</dt>
+                                                <dd>
+                                                    등급선정 전/후 1년간 구매한 5대가전<br>
+                                                    (TV,REF,W/M,RAC,김치냉장고)
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="tab4" class="tab-content">
+                                    <div class="guide">
+                                        <span class="blind">등급 기준</span>
+                                        <p class="type2">LG 시그니처 제품 구매고객</p>
+                                    </div>
+                                    <span class="blind">등급 혜택</span>
+                                    <ul class="benefits">
+                                        <li class="list">
+                                            <dl>
+                                                <dt>서비스 혜택</dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li>보유제품 무상이전 서비스</li>
+                                                        <li>보유제품 무상점검 서비스</li>
+                                                        <li>사전점검서비스 (년1회/3년3회)</li>
+                                                        <li>전용 핫라인</li>
+                                                        <li>최대 110만원 기프트카드 발송<br>(년1회/3년3회 지급, 롤러블TV 50만원)</li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li class="list">
+                                            <dl>
+                                                <dt>문화/스포츠 혜택 및 이벤트 초청</dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li>화담숲 할인쿠폰</li>
+                                                        <li>야구/농구 초대권</li>
+                                                        <li>스포츠, 문화, 초청행사 <em>우선</em> 참여기회</li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li class="list">
+                                            <dl>
+                                                <dt>무상서비스 기간연장</dt>
+                                                <dd>
+                                                    등급선정 전/후 1년간 구매한 5대가전<br>
+                                                    (TV,REF,W/M,RAC,김치냉장고)
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- // mobile layout -->
+
+                            @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true,
+                                "bulletTit" : "유의사항 안내",
+                                "bulletTxt" : [
+                                    "멤버십 등급 유지기간 1년(취득월 기준) : 스탠다드, 골드, 로얄골드",
+                                    "멤버십 등급 유지기간 3년(취득월 기준) : LG SIGNATURE 별도 케어서비스",
+                                    "문화/스포츠 혜택 : 화담숲 할인쿠폰 및 야구/농구 초대권 연 1회 제공",
+                                    "승급 포인트 지급은 선정 1회 한정 제공"
+                                ]
+                            })
+                        </div>
+                    </div>
+                    <div class="btn-group center">
+                        <a href="#n" class="btn"><span>멤버십 가입</span></a>
+                    </div>
+                </div>
+            </div>
+            <!-- // membership -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>     
+</body>
+</html>

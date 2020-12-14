@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <!-- 템플릿으로 진행되는 화면. 제대로 display되도록 임시 삽입 -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <title>lge</title>
+        <link rel="stylesheet" href="/lg5-common/css/reset.min.css" />
+        <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRC0032.min.css" />
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0023.min.css" />
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0025.min.css" />
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0026.min.css" />
+        <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
+        <script src="/lg5-common/js/libs/jquery.transit.min.js"></script>
+        <script src="/lg5-common/js/libs/jquery.event.move.min.js"></script>
+        <script src="/lg5-common/js/libs/jquery.twentytwenty.min.js"></script>
+        <script src="/lg5-common/js/vcui.min.js"></script>
+        <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
+        <script src="/lg5-common/js/lg.common.min.js"></script>
+
+        <script src="/lg5-common/js/components/KRP0025.min.js"></script>
+    </head>
+    <!-- // 템플릿으로 진행되는 화면. 제대로 display되도록 임시 삽입 -->
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <div class="page-header">
+                <h2 class="title">비하인드 스토리</h2>
+            </div>
+
+            <!-- component -->
+            @@include('./common/partials/KRP0023.html', {
+                "zero" : "zero-top zero-btm",
+				"hashtag" : [
+                    "AI", "AIX", "LGSTORY", "LGThinQ", "LG스토리", "LG씽큐", "LG스토리", "인공지능", "인공지능발전단계", "LGSTORY", "AI", "인공지능발전단계", "LGSTORY", "LG스토리", "인공지능발전단계", "LG씽큐", "LGSTORY"
+				]
+			})
+
+            <!-- component -->
+            @@include('./common/partials/KRP0025.html', {
+                "zero" : ""
+            })
+            <!-- // component -->
+
+
+            <!-- component -->
+            @@include('./common/partials/KRP0026.html', {
+                "zero" : "zero-top",
+                "tabBarType" : false,
+                "lgVisual" : false
+            })
+            <!-- // component -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>     
+</body>
+</html>

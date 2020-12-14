@@ -1,0 +1,8 @@
+{   
+    "status": "success",
+    "message": null,
+    "data": {
+        "resultFlag": "N",
+        "resultMessage": "1분 당 2회만 인증 번호 발송이 가능합니다."
+    }
+}

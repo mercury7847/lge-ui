@@ -1,0 +1,82 @@
+<article id="@@popupID" class="popup-wrap">
+    <header class="pop-header">
+        <h1 class="tit"><span>@@title</span></h1>
+    </header>
+    <section class="pop-conts no-footer common-pop">
+        <div class="sect-wrap">
+            <div class="tit-wrap type2">
+                <h2 class="h2-tit">@@h2Tit</h2>
+            </div>
+            <div class="fee-info-wrap">
+                <dl>
+                    <dt>예상월요금</dt>
+                    <dd>@@fee1</dd>
+                </dl>
+                <dl>
+                    <dt>제휴카드[신한] LG전자 렌탈애(愛)</dt>
+                    <dd class="minus">@@fee2</dd>
+                </dl>
+                <dl class="total">
+                    <dt>최적 혜택가격</dt>
+                    <dd>@@fee3</dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="sect-wrap">
+            <div class="tit-wrap">
+                <h3 class="h2-tit">연차별 납부금액</h3>
+            </div>
+            <div class="tb-scroll">
+                <div class="tb_row tb-row-bl">
+                    <table>
+                        <caption>연차별 납부금액을 연차(납부회차), 납부금액, 비고 순으로 안내</caption>
+                        <colgroup>
+                            <col style="width:33%">
+                            <col style="width:33%">
+                            <col>
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th scope="col">연차 (납부회차)</th>
+                            <th scope="col">납부금액</th>
+                            <th scope="col">비고</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @@for( var i=0; i < tableArr.length; i++ ) {
+                            <tr>
+                                <td>`+tableArr[i].td1+`</td>
+                                <td>`+tableArr[i].td2+`</td>
+                                <td>`+tableArr[i].td3+`</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="sect-wrap">
+            <dl class="fee-txt">
+                <dt>@@feeDt</dt>
+                <dd>
+                    납부 월 회차 : <em>@@freeMonth회차</em> 월 납부 금액 할인 (0원)
+                    <small>※ 최적 혜택가격은 적용 제휴카드에 따라 다르게 계산되며, 제휴카드의 전월 실적에 따라 케어솔루션 월 요금이 청구할인 됩니다.</small>
+                    <a href="#n" class="btn size dark-gray"><span>제휴카드 할인 혜택 자세히 보기</span></a>
+                </dd>
+            </dl>
+        </div>
+
+        @@include('./common/modules/bullet-list.html', {
+            "topBorder" : true,
+            "bulletTit" : "@@bTit",
+            "bulletTxt" : [
+                @@for ( var j=0; j < bTxt.length; j++ ) {
+                    "`+bTxt[j]+`",
+                }
+            ]
+        })
+    </section>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>

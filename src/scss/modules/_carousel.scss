@@ -17,11 +17,23 @@
         background:url('/lg5-common/images/icons/btn-arr-56x56.svg') no-repeat;
     }
     &.disabled, &.ui_carousel_hidden {
-        display:none !important;
+        opacity:0.7;
     }
     &.prev {
         &::before {
             transform:rotate(180deg);
+        }
+    }
+}
+
+.slide-wrap.carousel-type {
+    .btn-arrow {
+        width:40px;
+        height:40px;
+        &::before {
+            width:40px;
+            height:40px;
+            background-size:40px;
         }
     }
 }
@@ -32,24 +44,31 @@
     text-align:center;
     li {
         display:inline-block;
-        padding:0 4px;
+        padding:0 6px;
         vertical-align:top;
+        @include mobile {
+            padding:0 8px;
+        }
         .btn-indi {
             display:inline-block;
-            width:10px;
-            height:10px;
+            width:12px;
+            height:12px;
             border-radius:50%;
-            background:#adadad;
+            background:#aaa;
             font-size:0;
             @include mobile {
-                width:7px;
-                height:7px;
+                width:8px;
+                height:8px;
             }
         }
         &.on .btn-indi {
-            width:20px;
-            border-radius:5px;
-            background:#ec455a
+            width:28px;
+            border-radius:6px;
+            background:#ec455a;
+            @include mobile {
+                width:18px;
+                border-radius:4px;
+            }
         }
     }
 }
@@ -61,7 +80,7 @@
         position:absolute;
         left:0;
         right:0;
-        bottom:30px;
+        bottom:24px;
         z-index:10;
         @include mobile {
             bottom:17px;
@@ -108,100 +127,86 @@
 .slide-wrap.hero-banner {
     .slide-content {
         .slide-track {
-            height:382px;
+            height:480px;
             @include mobile {
                 height:auto;
             }
         }
         .slide-conts {
-            height:382px;
+            height:480px;
             .bg {
                 display:block;
                 width:100%;
                 height:100%;
                 background-position:center center;
                 background-size:auto 100%;
-                &:before {
-                    content:' '; 
-                    display:block; 
-                    position:absolute; 
-                    bottom:0; 
-                    width:100%; 
-                    height:72px; 
-                    background-image: linear-gradient(to top, #000000, rgba(0, 0, 0, 0)); 
-                    opacity:.25;
-                    @include mobile {
-                        height:60px;
-                    }
-                }
+                background-repeat:no-repeat;
             }
             @include mobile {
                 height:auto;
                 .bg {
                     height:0;
-                    padding-bottom:100%;
+                    padding-bottom:116.6%;
                     background-size:cover;
                 }
             }
             .slide-info-area {
                 position:absolute;
-                top:0;
-                bottom:0;
-                left:50%;
-                width:100%;
-                max-width:1284px;
-                transform:translateX(-50%);
+                top:50%;
+                left:0;
+                right:0;
+                transform:translateY(-50%);
                 @include mobile {
-                    left:0;
-                    transform:translateX(0);
+                    top:32px;
+                    transform:translateY(0);
                 }
-                .boxs {
-                    position:absolute;
-                    top:50%;
-                    left:56px;
-                    transform:translateY(-50%);
+                .inner {
+                    width:auto;
+                    max-width:1550px;
+                    margin:0 auto;
+                    padding:0 88px;
                     @include mobile {
-                        top:44px;
-                        left:20px;
-                        transform:translateY(0);
+                        padding:0 16px;
                     }
-                    .desc {
+                    .title-box {
                         color:#222;
-                        font-size:40px;
-                        line-height:46px;
                         font-weight:700;
-                        small {
-                            display:block;
-                            margin-bottom:4px;
-                            font-size:20px;
-                            line-height:30px;
-                            font-weight:500;
-                        }
-                        @include mobile {
+                        .eyebrow {
+                            margin-bottom:8px;
                             font-size:24px;
-                            line-height:29px;
-                            small {
+                            line-height:34px;
+                            @include mobile {
+                                margin-bottom:6px;
                                 font-size:16px;
-                                line-height:23px;
+                                line-height:24px;
+                            }
+                        }
+                        .tit {
+                            font-size:48px;
+                            line-height:64px;
+                            @include mobile {
+                                font-size:26px;
+                                line-height:35px;
                             }
                         }
                     }
-                    .date {
-                        margin-top:20px;
-                        color:#616161;
-                        font-size:16px;
-                        line-height:24px;
+                    .slide-btn {
+                        display:inline-block;
+                        width:auto;
+                        min-width:124px;
+                        margin-top:24px;
+                        border:1px solid #222;
+                        border-radius:25px;
+                        padding:11px 13px;
+                        @include font-medium;
+                        font-weight:500;
+                        color:#222;
+                        text-align:center;
                         @include mobile {
-                            margin-top:12px;
-                            font-size:14px;
-                            line-height:19px;
-                        }
-                    }
-                    .btn.bd-black {
-                        margin-top:40px;
-                        background:transparent;
-                        @include mobile {
-                            margin-top:24px;
+                            min-width:auto;
+                            margin-top:20px;
+                            padding:5px 15px;
+                            border-radius:30px;
                         }
                     }
                 }
@@ -316,11 +321,41 @@
             }
         }
     }
+    .slide-control-wrap {
+        position:absolute;
+        top:50%;
+        left:0;
+        right:0;
+        .outer {
+            width:100%;
+            padding:0 16px;
+        }
+        .inner {
+            position:relative;
+            width:100%;
+            max-width:1380px + 72px + 72px;
+            margin:0 auto;
+            .btn-arrow {
+                position:absolute;
+                top:0;
+                margin-top:-28px;
+                &.prev {
+                    left:0;
+                }
+                &.next {
+                    right:0;
+                }
+            }
+        }
+    }
 }
 
 // Carousel slide (1 on pc, 4 on pc, 3 on pc)
 .slide-wrap.carousel-type {
     margin:0 auto;
+    @include mobile {
+        overflow:hidden;
+    }
     .slide-content {
         @include mobile {
             overflow:visible !important;
@@ -658,40 +693,6 @@
                 top:24px;
                 right:24px;
                 z-index:20;
-            }
-        }
-    }
-
-    //card news : CSTF2510
-    &.cardNews-type {
-        max-width: 720px;
-        margin: 0 auto;
-
-        .view-content-img {
-            margin-bottom: 106px;
-        }
-        .indi-wrap {
-            position: absolute;
-            margin: 0;
-            bottom: 240px;
-        }
-        .slide-controls {
-            .btn-arrow {
-                &.next,
-                &.prev {
-                    transform: none;
-                }
-                &.next {
-                    right: -80px;
-                }
-                &.prev {
-                    left: -80px;
-                }
-            }
-        }
-        .slide-content {
-            @include mobile {
-                overflow:hidden !important;
             }
         }
     }

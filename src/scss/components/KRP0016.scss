@@ -2,196 +2,108 @@
 
 @import "../components-app";
 
+
 .KRP0016 {
-	background-color: #fff;
-
-	@include mobile {
-		background-color: #fff;
-	}
-
-    .support-box {
-		max-width: 1086px + 60px;
-		margin: 0 auto;
-		padding: 60px 0;
-
-		@include mobile {
-			max-width: 100%;
-			padding: 40px 24px;
-		}
-	}
-
-	.title {
-		margin-bottom: 12px;
-		font-weight: bold;
-		font-size: 28px;
-		line-height: 1.5;
-		color: #222;
-		text-align:center;
-
-		@include mobile {
-			margin-bottom: 20px;
-			color: #222;
-		}
-	}
-
-	.list-box {
-		font-size: 0;
-		li {
-			display: inline-block;
-			width: 33.33%;
-			margin-top:48px;
-			vertical-align: top;
-
-			span,
-			strong {
-				display: block;
-			}
-			strong {
-				margin-bottom: 4px;
-				font-weight: bold;
-				font-size: 16px;
-				line-height: 26px;
-				color: #222;
-			}
-			span {
-				position:relative;
-				font-size: 14px;
-				line-height: 24px;
-				color: #767676;
-				&:after {
-					content:' ';
-					display:inline-block;
-					width:20px;
-					height:20px;
-					margin-left:4px;
-					background:url('/lg5-common/images/icons/btn-arr-20x20-dgray.svg') no-repeat 0 0;
-					background-size:20px 20px;
-					vertical-align:middle;
-				}
-			}
-
-			a {
-				position: relative;
-				display: block;
-				text-align:center;
-
-				&:before {
-					display:block;
-					margin:0 auto 16px;
-					width: 64px;
-					height: 64px;
-					background: no-repeat 0 0;
-					background-size: 64px 64px;
-					content: '';
-				}
-				&.item-telephone {
-					&:before {
-						background-image: url("/lg5-common/images/icons/icon-01-80.svg");
-					}
-				}
-				&.item-live-chat {
-					&:before {
-						background-image: url("/lg5-common/images/icons/icon-02-80.svg");
-					}
-				}
-				&.item-email {
-					&:before {
-						background-image: url("/lg5-common/images/icons/icon-03-80.svg");
-					}
-				}
-				&.item-manual {
-					&:before {
-						background-image: url("/lg5-common/images/icons/icon-04-80.svg");
-					}
-				}
-				&.item-download {
-					&:before {
-						background-image: url("/lg5-common/images/icons/icon-05-80.svg");
-					}
-				}
-				&.item-location {
-					&:before {
-						background-image: url("/lg5-common/images/icons/icon-06-80.svg");
-					}
-				}
-
-				// &:hover,
-				// &:focus {
-				// 	z-index: 1;
-				// 	background-color: #fff;
-				// 	box-shadow: 0 16px 20px 0 rgba(0,0,0,.16);
-				// 	opacity: 1;
-
-				// 	strong {
-				// 		color: #ec455a;
-				// 	}
-				// 	span {
-				// 		color: #111;
-				// 	}
-
-				// 	&.item-telephone {
-				// 		&:before {
-				// 			background-image: url("/lg5-common/images/icons/icon-telephone-on.svg");
-				// 		}
-				// 	}
-				// 	&.item-live-chat {
-				// 		&:before {
-				// 			background-image: url("/lg5-common/images/icons/icon-live-chat-on.svg");
-				// 		}
-				// 	}
-				// 	&.item-email {
-				// 		&:before {
-				// 			background-image: url("/lg5-common/images/icons/icon-email-on.svg");
-				// 		}
-				// 	}
-				// 	&.item-manual {
-				// 		&:before {
-				// 			background-image: url("/lg5-common/images/icons/icon-manual-on.svg");
-				// 		}
-				// 	}
-				// 	&.item-download {
-				// 		&:before {
-				// 			background-image: url("/lg5-common/images/icons/icon-save-on.svg");
-				// 		}
-				// 	}
-				// 	&.item-location {
-				// 		&:before {
-				// 			background-image: url("/lg5-common/images/icons/icon-location-on.svg");
-				// 		}
-				// 	}
-				// }
-			}
-
-			@include mobile {
-				width: 50%;
-				margin-top:32px;
-
-				strong {
-					font-size:14px;
-					line-height: 22px;
-				}
-				span {
-					font-size:13px;
-					line-height: 21px;
-					color: #767676;
-				}
-
-				a {
-					padding: 16px 12px;
-
-					&:before {
-						width:62px;
-						height:62px;
-						background-size:62px 62px;
-					}
-
-					&:hover,
-					&:focus {
-						border: 1px solid #ec455a;
-						box-shadow: none;
-					}
-				}
-			}
-		}
-	}
+    position:relative;
+    z-index:100;
+    .inner {
+        max-width:1284px;
+        margin:0 auto;
+        padding:24px;
+        text-align:right;
+        font-size:0;
+        @include mobile {
+            padding:20px;
+        }
+        .control {
+            display:inline-block;
+            vertical-align:top;
+            .link-download {
+                display:block;
+                width:32px;
+                height:32px;
+                font-size:0;
+                background:url('/lg5-common/images/KRP0016/icon-download.svg') center no-repeat;
+            }
+        }
+        .sns-area {
+            display:inline-block;
+            position:relative;
+            margin-left:16px;
+            vertical-align:top;
+            button.sns {
+                display:block;
+                width:32px;
+                height:32px;
+                font-size:0;
+                background:url('/lg5-common/images/KRP0016/icon-share.svg') center no-repeat;
+            }
+            .list {
+                display:none;
+                position:absolute;
+                right:0;
+                top:40px;
+                padding:24px 24px 16px;
+                border:1px solid #222;
+                border-radius:8px;
+                background:#fff;
+                box-shadow:2px 4px 12px 0 rgba(#000, .16);
+                .sns-share {
+                    font-size:0;
+                    white-space:nowrap;
+                    li {
+                        display:inline-block;
+                        margin-left:16px;
+                        &:first-child {
+                            margin-left:0;
+                        }
+                        a {
+                            display:block;
+                            position:relative;
+                            padding-top:40px;
+                            color:#222;
+                            font-size:14px;
+                            line-height:20px;
+                            @include mobile {
+                                min-width:40px;
+                                padding-top:48px;
+                                font-size:13px;
+                                line-height:17px;
+                            }
+                            &.share-facebook::before {
+                                background-image:url('/lg5-common/images/KRP0016/icon-facebook.svg');
+                            }
+                            &.share-twitter::before {
+                                background-image:url('/lg5-common/images/KRP0016/icon-twitter.svg');
+                            }
+                            &.share-kakao::before {
+                                background-image:url('/lg5-common/images/KRP0016/icon-kakaotalk.svg');
+                            }
+                            &.share-url::before {
+                                background-image:url('/lg5-common/images/KRP0016/icon-url.svg');
+                            }
+                            &::before {
+                                content:' ';
+                                position:absolute;
+                                top:0;
+                                left:50%;
+                                width:32px;
+                                height:32px;
+                                margin-left:-16px;
+                                background-size:100%;
+                                @include mobile {
+                                    width:40px;
+                                    height:40px;
+                                    margin-left:-20px;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.active {
+                    display:block;
+                }
+            }
+        }
+    }
 }

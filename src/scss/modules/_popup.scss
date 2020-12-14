@@ -233,7 +233,7 @@
         padding:48px 48px 0;
         overflow-y:auto;
         &.no-footer {
-            max-height:576px;
+            max-height:576px + 130px;
             padding-bottom:48px;
             text-align:left;
             @include mobile {
@@ -264,7 +264,6 @@
         padding:32px 48px 48px;
         background:transparent;
         font-size:0;
-        text-align:right;
         &.center {
             text-align:center;
         }
@@ -331,6 +330,7 @@
         }
     }
     &.video {
+        overflow: visible;
         max-width: 1284px;
         border-radius: 0;
         @include mobile {
@@ -345,13 +345,14 @@
             }
         }
         .btn-close {
-            width:42px;
-            height:42px;
-            &::before, &::after {
-                width: 3px;
-                height: 32px;
-                margin-top: -16px;
-                background-color: #fff;
+            top: -87px;
+            right: 0;
+            width:48px;
+            height:48px;
+            &:before {
+                width:48px;
+                height:48px;
+                background-image: url('/lg5-common/images/icons/btn-close-48-white.svg');
             }
             @include mobile {
                 top:24px;
@@ -431,24 +432,95 @@
             }
         }
     }
+    .text-area {
+        padding: 46px 8px 0;
+        .tit {
+            margin-bottom: 8px;
+            font-size: 18px;
+            line-height: 26px;
+            text-align: center;
+        }
+        .text {
+            font-size: 14px;
+            line-height: 22px;
+            text-align: center;
+        }
+
+    }
 }
 
 
 // 공통 팝업
 .popup-wrap {
     .common-pop {
-        .form-wrap.pop-wide {
+        // 팝업 기본
+        .form-wrap {
+            max-width:630px;
             .forms {
                 .tit {
-                    width:263px;
+                    width:29.2%;
+                    @include mobile {
+                        width:100%;
+                    }
                 }
                 .conts {
-                    width:calc(100% - 263px);
-                }
-                @include mobile {
-                    .tit, 
-                    .conts {
+                    width:70.8%;
+                    @include mobile {
                         width:100%;
+                    }
+                }
+            }
+            // 1149 팝업 내부 인풋일 때 half + full사이즈 혼합
+            &.mix-type {
+                max-width:100%;
+                .forms {
+                    .tit {
+                        width:17.52%;
+                        @include mobile {
+                            width:100%;
+                        }
+                    }
+                    .conts {
+                        width:82.48%;
+                        @include mobile {
+                            width:100%;
+                        }
+                    }
+                }
+                .select-wrap,
+                .input-wrap {
+                    &.half {
+                        width:calc((100% - 8px) / 2);
+                        @include mobile {
+                            width:100%;
+                        }
+                    }
+                }
+            }
+            // 팝업 내 forms dt 영역이 넓은 케이스
+            &.pop-wide {
+                max-width:100%;
+                .forms {
+                    .tit {
+                        width:263px;
+                    }
+                    .conts {
+                        width:calc(100% - 263px);
+                    }
+                    @include mobile {
+                        .tit, 
+                        .conts {
+                            width:100%;
+                        }
+                    }
+                }
+            }
+
+            &:first-child {
+                .form-infos:first-child {
+                    margin-top:-36px;
+                    @include mobile {
+                        margin-top:-20px;
                     }
                 }
             }
@@ -456,21 +528,30 @@
         .sect-wrap {
             margin-top:48px;
             @include mobile {
-                margin-top:32px;
+                margin-top:40px;
             }
             &:first-child {
                 margin-top:0;
             }
             .tit-wrap {
-                margin-bottom:16px;
-                @include mobile {
-                    margin-bottom:18px;
-                }
+                margin-bottom:12px;
                 .h2-tit {
                     color:#222;
-                    font-size:16px;
-                    line-height:24px;
+                    @include font-small;
                     font-weight:700;
+                }
+                &.type2 {
+                    margin-bottom:24px;
+                    @include mobile {
+                        margin-bottom:8px;
+                    }
+                    .h2-tit {
+                        @include font-large;
+                        @include mobile {
+                            font-size:18px;
+                            line-height:26px;
+                        }
+                    }
                 }
             }
         }
@@ -603,12 +684,11 @@
             background:#f4f4f4;
             @include mobile {
                 padding:24px 20px;
-                border-radius:4px;
             }
             dl {
                 display:table;
                 width:100%;
-                margin-top:16px;
+                margin-top:12px;
                 @include mobile {
                     margin-top:8px;
                 }
@@ -617,15 +697,19 @@
                 }
                 dt, dd {
                     display:table-cell;
-                    @include font-small;
+                    @include font-medium;
                     vertical-align:middle;
                 }
                 dt {
+                    padding-right:24px;
                     color:#767676;
                     text-align:left;
+                    word-break:keep-all;
                 }
                 dd {
+                    min-width:97px;
                     text-align:right;
+                    font-weight:500;
                     &.minus {
                         color:#F04E3E;
                     }
@@ -634,6 +718,9 @@
                     margin-top:16px;
                     padding-top:16px;
                     border-top:1px solid #ddd;
+                    dt, dd {
+                        vertical-align:bottom;
+                    }
                     @include mobile {
                         padding-top:12px;
                     }
@@ -644,12 +731,38 @@
                     dd {
                         @include font-large-2;
                         font-weight:700;
+                        @include mobile {
+                            font-size:24px;
+                            line-height:32px;
+                        }
                     }
                 }
             }
         }
-        .btm_info .btn {
-            margin-top:16px;
+        .fee-txt {
+            dt {
+                color:#222;
+                @include font-medium;
+                font-weight:700;
+            }
+            dd {
+                margin-top:8px;
+                color:#222;
+                @include font-medium;
+                em {
+                    color:#EC455A;
+                }
+                small {
+                    display:block;
+                    margin-top:4px;
+                    color:#767676;
+                    @include font-small;
+                    font-weight:500;
+                }
+                .btn {
+                    margin-top:24px;
+                }
+            }
         }
         .form-wrap.mt-type {
             margin-top:40px;
@@ -887,7 +1000,25 @@
             }
         }
     }
+
+    // popup list
+    .com-pop-tit {
+        margin-bottom: 12px;
+        @include font-large;
+        font-weight: 700;
+    }
+    .com-pop-list {
+        li {
+            margin-bottom: 4px;
+            @include font-medium;
+            a {
+                text-decoration: underline;
+            }
+        }  
+    }
 }
+
+
 
 // window popup
 .win-popup-wrap {

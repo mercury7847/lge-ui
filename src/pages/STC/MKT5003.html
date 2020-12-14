@@ -10,134 +10,138 @@
     <div class="container">
 
         <div class="contents lgpay-wrap">
-            <!-- Top visual -->
-            <div class="top-visual-area">
-                <!--
-                <div class="visual-img">
-                    <img data-pc-src="/lg5-common/images/STC/img-lgpay-banner.jpg" data-m-src="/lg5-common/images/STC/img-lgpay-banner-m.jpg"alt="">
-                </div> -->
-                <div class="visual-text">
-                    <div class="inner">
-                        <h2 class="tit">LG 페이</h2>
-                        <p class="desc">LG 페이로 더 손쉽게 결제하세요</p>
-                        <p class="desc2">LG 페이 앱이 탑재되어있는 모델만 LG 페이 사용이 가능합니다.</p>
+            <div class="cont-wrap">
+                <div class="visual-wrap">
+                    <img data-pc-src="/lg5-common/images/STC/img-visual-pay01.jpg" data-m-src="/lg5-common/images/STC/img-visual-pay01-m.jpg" aria-hidden="hidden" class="lazyload" alt="" src="/lg5-common/images/STC/img-visual-pay01.jpg">
+                    <div class="tit-wrap">
+                        <p class="tit">LG 페이</p>
+                        <span class="txt">LG 페이로 더 손쉽게 결제하세요</span>
                         <div class="btn-area">
-                            <button class="btn bd-white"><span>설치 및 등록 영상 보기</span></button>
+                            <button class="btn border"><span>설치 및 등록 영상 보기</span></button>
                         </div>
                     </div>
-                </div>    
-            </div>
-            <div class="page-header">
-                <h2 class="title">LG 페이 소개</h2>
-                <div class="tabs-wrap btn-type">
-                    <ul class="tabs">                          
-                        <li class="on"><a href="#tab-cont1">카메라로 간편 등록</a></li>
-                        <li class=""><a href="#tab-cont2">퀵페이로 빠른 결제</a></li>
-                        <li class=""><a href="#tab-cont3">전국 어디에서나 편리한 사용</a></li>
-                    </ul>
                 </div>
-            </div>
-            <div class="cont-wrap">
-                
+
+                <div class="page-header wide border">
+                    <div class="tabs-wrap btn-type ui_tab">
+                        <ul class="tabs">
+                            <li class="on"><a href="#tab1">카메라로 간편 등록<em class="blind">선택됨</em></a></li>
+                            <li><a href="#tab2">퀵페이로 빠른 결제</a></li>
+                            <li><a href="#tab3">전국 어디에서나 편리한 사용</a></li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="lgpay-content">
                     <div id="tab-cont1" class="lgpay-introdution center">
                         <div class="lgpay-text">
                             <div class="inner">
-                                <h3 class="tit">
-                                    카메라로 간편하게 <br>
-                                    등록하세요 
-                                </h3>
-                                <p class="desc">카메라를 비추면 자동으로 카드정보가 인식되어 간편하게 등록 가능합니다.카메라를 비추면 자동으로 카드정보가 인식되어 간편하게 등록 가능합니다.
-                                    <span class="txt">* 카드 번호 직접 입력으로도 등록 가능합니다.</span>
-                                </p>
+                                <span class="num">01</span>
+                                <h3 class="tit">카메라로 간편하게 등록하세요 </h3>
+                                <p class="desc">카메라를 비추면 자동으로 카드정보가 인식되어 간편하게 등록 가능합니다.</p>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "bulletTxt" : [
+                                        "카드 번호 직접 입력으로도 등록 가능합니다."
+                                    ]
+                                })
                                 <div class="btn-area">
-                                    <a href="#n" class="btn bd-black">제휴카드 안내</a>
+                                    <a href="#n" class="btn border">제휴카드 안내</a>
                                 </div>
                             </div>
                         </div>
                         <div class="lgpay-visual">
-                            <img data-pc-src="/lg5-common/images/STC/img-pay0.jpg" data-m-src="/lg5-common/images/STC/m-img-pay0.jpg" alt="">
+                            <img data-src="/lg5-common/images/STC/img-pay01.jpg" alt="">
                         </div>
                     </div>
-                    <div id="tab-cont2" class="lgpay-introdution center right">
+                    <div class="lgpay-introdution center">
                         <div class="lgpay-text">
                             <div class="inner">
-                                <h3 class="tit">
-                                    퀵페이로 빠르게 <br>결제하세요
-                                </h3>
-                                <p class="desc">보고 있는 어느 화면에서도 화면 하단을 위로 밀어올리면 퀵페이가 실행되어 빠르게 결제할 수 있습니다.
-                                    <span class="txt">* 지문 및 핀번호 입력으로 결제가 가능합니다.</span>
-                                </p>
+                                <span class="num">02</span>
+                                <h3 class="tit">퀵페이로 빠르게 결제하세요</h3>
+                                <p class="desc">보고 있는 어느 화면에서도 화면 하단을 위로 밀어올리면 퀵페이가 실행되어 빠르게 결제할 수 있습니다.</p>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "bulletTxt" : [
+                                        "지문 및 핀번호 입력으로 결제가 가능합니다."
+                                    ]
+                                })
                                 <div class="btn-area">
-                                    <a href="#n" class="btn bd-black">퀵페이 활용 영상 보기</a>
+                                    <a href="#n" class="btn border">퀵페이 활용 영상 보기</a>
                                 </div>
                             </div>
                         </div>
                         <div class="lgpay-visual">
-                            <img data-pc-src="/lg5-common/images/STC/img-pay1.jpg" data-m-src="/lg5-common/images/STC/m-img-pay1.jpg" alt="">
+                            <img data-src="/lg5-common/images/STC/img-pay02.jpg" alt="">
                         </div>
                     </div>
-                    <div id="tab-cont3" class="lgpay-introdution">
+                    <div class="lgpay-introdution center right">
                         <div class="lgpay-text">
                             <div class="inner">
-                                <h3 class="tit">
-                                    어느 매장에서든 <br>손쉽게 사용하세요
-                                </h3>
-                                <p class="desc">신용/체크.멤버십 카드 사용이 가능한 전국 어느 매장에서든 사용이 가능합니다.
-                                    <span class="txt">* LG 페이로 결제 가능 가맹점은 지속적인 확대 예정입니다.</span>
-                                </p>
+                                <span class="num">03</span>
+                                <h3 class="tit">어느 매장에서든 손쉽게 사용하세요</h3>
+                                <p class="desc">신용/체크.멤버십 카드 사용이 가능한 전국 어느 매장에서든 사용이 가능합니다.</p>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "bulletTxt" : [
+                                        "LG 페이로 결제 가능한 가맹점은 지속적으로 확대할 예정입니다."
+                                    ]
+                                })
                             </div>    
                         </div>
                         <div class="lgpay-visual">
-                            <img data-pc-src="/lg5-common/images/STC/img-pay2.jpg" data-m-src="/lg5-common/images/STC/m-img-pay2.jpg" alt="">
+                            <img data-src="/lg5-common/images/STC/img-pay03.jpg" alt="">
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTxt" : [
+                                    "일부 주유소, AK플라자, 그 외 일부 택시의 미터 결제기, 키오스크, 자동판매기, 티켓 발매기 등 일부 가맹점의 정책 및 단말 상황에 따라 사용이 제한될 수 있습니다."
+                                ]
+                            })
                         </div>
                     </div>
-                    <div class="lgpay-introdution right">
+                    <div class="lgpay-introdution center">
                         <div class="lgpay-text">
                             <div class="inner">
-                                <h3 class="tit">
-                                    ATM 입출금 서비스
-                                </h3>
-                                <p class="desc">LG페이에 은행 계좌를 등록하여 ATM에서 현금 입출금 및 이체를 할 수 있습니다.
-                                    <span class="txt">* 신한은행, IBK 기업은행만 가능합니다.</span>
-                                </p>
+                                <span class="num">04</span>
+                                <h3 class="tit">ATM 입출금 서비스</h3>
+                                <p class="desc">LG페이에 은행 계좌를 등록하여 ATM에서 현금 입출금 및 이체를 할 수 있습니다.</p>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "bulletTxt" : [
+                                        "신한은행, IBK 기업은행만 가능합니다."
+                                    ]
+                                })
                             </div>    
                         </div>
                         <div class="lgpay-visual">
-                            <img data-pc-src="/lg5-common/images/STC/img-pay3.jpg" data-m-src="/lg5-common/images/STC/m-img-pay3.jpg" alt="">
+                            <img data-src="/lg5-common/images/STC/img-pay04.jpg" alt="">
                         </div>
                     </div>
                     <div class="lgpay-service">
                         <ul class="inner">
                             <li>
+                                <div class="img-area">
+                                    <img data-src="/lg5-common/images/STC/img-pay05.jpg" alt="">
+                                </div>
                                 <p class="tit">온라인 결제 서비스</p>
-                                <p class="desc">LG 페이에 등록된 카드로 온라인 결제도 OK! 온·오프라인 어디서나 빠르게 결제하세요.</p>
-                                <div class="img-area">
-                                    <img data-pc-src="/lg5-common/images/STC/@s-img.png" data-m-src="/lg5-common/images/STC/@s-img.png" alt="">
-                                </div>
+                                <p class="desc">LG 페이에 등록된 카드로 온라인 결제도 OK! <br>온·오프라인 어디서나 빠르게 결제하세요.</p>
                             </li>
                             <li>
+                                <div class="img-area">
+                                    <img data-src="/lg5-common/images/STC/img-pay06.jpg" alt="">
+                                </div>
                                 <p class="tit">지출관리 서비스</p>
-                                <p class="desc">예산 설정부터 지출 내역 검색까지!
-                                    똑똑하게 분석하여 소비 유형을 계획 관리할 수 있습니다.</p>
-                                <div class="img-area">
-                                    <img data-pc-src="/lg5-common/images/STC/@s-img.png" data-m-src="/lg5-common/images/STC/@s-img.png" alt="">
-                                </div>    
+                                <p class="desc">예산 설정부터 지출 내역 검색까지! <br>똑똑하게 분석하여 소비 유형을 계획 관리할 수 있습니다.</p>
                             </li>
                             <li>
-                                <p class="tit">교통카드 등록 서비스</p>
-                                <p class="desc">LG 페이로 교통카드도
-                                    편리하게 이용하세요.</p>
                                 <div class="img-area">
-                                    <img data-pc-src="/lg5-common/images/STC/@s-img.png" data-m-src="/lg5-common/images/STC/@s-img.png" alt="">
-                                </div>    
-                            </li>
-                            <li>
-                                <p class="tit">멤버십카드 통합관리 서비스</p>
-                                <p class="desc">LG 페이로 교통카드도 편리하게 이용하세요.</p>
-                                <div class="img-area">
-                                    <img data-pc-src="/lg5-common/images/STC/@s-img.png" data-m-src="/lg5-common/images/STC/@s-img.png" alt="">
+                                    <img data-src="/lg5-common/images/STC/img-pay07.jpg" alt="">
                                 </div>
+                                <p class="tit">교통카드 등록 서비스</p>
+                                <p class="desc">LG 페이로 교통카드도 편리하게 이용하세요.</p>
+                            </li>
+                            <li>
+                                <div class="img-area">
+                                    <img data-src="/lg5-common/images/STC/img-pay08.jpg" alt="">
+                                </div>
+                                <p class="tit">멤버십카드 통합관리 서비스</p>
+
+                                <p class="desc">발급된 멤버십 카드를 모두 LG 페이에 <br class="pc-only">등록하여 <br class="mo-only">편하게 통합관리하세요</p>
                             </li>
                         </ul>
                     </div>
@@ -154,37 +158,41 @@
                                 "step" : "STEP 01",
                                 "tit" : "LG 페이 앱 실행",
                                 "desc" : "홈화면에서 LG 페이 앱을 실행해주세요<small>* 단말기에 따라 업데이트 및 앱 다운로드가 가능합니다.</small>",
-                                "btn" : "<div class='btn-area'><a href='#n' class='btn bd-black'>LG 페이 사용 가능 단말기 보기</a></div>"
+                                "btn" : "<div class='btn-area'><a href='#n' class='btn border'>LG 페이 사용 가능 단말기 보기</a></div>",
+                                "visual" : "/lg5-common/images/STC/img-slide-pay01.jpg"
                             },{
                                 "step" : "STEP 02",
                                 "tit" : "본인인증",
-                                "desc" : "안전한 LG 페이 서비스 이용을 위해 <br class='pc'>본인인증을 진행해주세요<small>* 별도의 회원가입 절차 없이, 본인인증 후 바로 이용 가능합니다.</small>",
-                                "btn" : ""
+                                "desc" : "안전한 LG 페이 서비스 이용을 위해 <br class='pc-only'>본인인증을 진행해주세요<small>* 별도의 회원가입 절차 없이, 본인인증 후 바로 이용 가능합니다.</small>",
+                                "btn" : "",
+                                "visual" : "/lg5-common/images/STC/img-slide-pay02.jpg"
                             },{
                                 "step" : "STEP 03",
                                 "tit" : "카드 정보 자동 등록",
-                                "desc" : "등록하실 카드 앞면에 카메라를 비추면 자동으로 <br class='pc'>카드정보가 인식되어 간편하게 등록 가능합니다.<small>* 카드 번호 직접 입력으로도 등록 가능합니다.</small>",
-                                "btn" : ""
+                                "desc" : "등록하실 카드 앞면에 카메라를 비추면 자동으로 <br class='pc-only'>카드정보가 인식되어 간편하게 등록 가능합니다.<small>* 카드 번호 직접 입력으로도 등록 가능합니다.</small>",
+                                "btn" : "",
+                                "visual" : "/lg5-common/images/STC/img-slide-pay03.jpg"
                             },{
                                 "step" : "STEP 04",
                                 "tit" : "지문 및 결제 비밀번호 등록",
-                                "desc" : "결제 시 활용될 지문과 <br class='pc'>결제 비밀번호 6자리를 입력해주세요.",
-                                "btn" : ""
+                                "desc" : "결제 시 활용될 지문과 <br class='pc-only'>결제 비밀번호 6자리를 입력해주세요.",
+                                "btn" : "",
+                                "visual" : "/lg5-common/images/STC/img-slide-pay04.jpg"
                             },{
                                 "step" : "STEP 05",
                                 "tit" : "등록 완료",
                                 "desc" : "카드 등록이 완료되었습니다.<br>LG 페이와 더 쉬워진 스마트 라이프를 즐기세요!",
-                                "btn" : ""
+                                "btn" : "",
+                                "visual" : "/lg5-common/images/STC/img-slide-pay05.jpg"
                             }
                         ]
                     })
                 </div>
 
                 <div class="btm-link">
-                    <p class="tit">LG 페이에 궁금하신 점이 있다면 <br>
-                        자주 묻는 질문에서 확인해보세요</p>
+                    <p class="tit">LG 페이에 궁금하신 점이 있다면 <br>자주 묻는 질문에서 확인해보세요</p>
                     <div class="btn-area">
-                        <a href="#n" class="btn bd-black btn-small"><span>자주 묻는 질문 보기</span></a>
+                        <a href="#n" class="btn border size"><span>자주 묻는 질문 보기</span></a>
                     </div>    
                 </div>
             </div>

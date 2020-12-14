@@ -69,133 +69,44 @@
                 padding:0 16px;
             }
             .filters {
-                margin:64px 0 48px;
+                margin:24px 0 48px;
                 @include mobile {
-                    margin:0 -16px 32px;
-                    padding:24px 16px 40px;
-                    border-bottom:12px solid #f4f4f4;
+                    margin:24px 0 40px;
+                }
+                &.type2 {
+                    margin-top:0;
+                }
+            }
+            > .btn-group {
+                margin-top:80px;
+                @include mobile {
+                    margin-top:32px;
                 }
             }
         }
     }
     .section-wrap {
         .sects {
-            margin-top:80px;
             @include mobile {
-                margin-top:60px;
-                padding:0;
-                border-top:none;
-            }
-            &:first-child {
-                margin-top:0;
-            }
-            // title
-            > .tit-wrap {
-                position:relative;
-                @include clearfix;
-                height:50px;
-                margin-bottom:0;
-                border-bottom:2px solid #222;
-                @include mobile {
-                    height:auto;
-                    padding-bottom:12px;
-                }
-                .tit {
-                    float:left;
-                    color:#222;
-                    @include font-large-1;
-                    font-weight:700;
-                    em {
-                        color:#EC455A;
-                    }
-                    @include mobile {
-                        padding:4px 0;
-                        font-size:18px;
-                        line-height:26px;
-                        &:only-child {
-                            padding-top:0;
-                        }
-                    }
-                }
-                .flt-cont {
-                    float:right;
-                    font-size:0;
-                    &.left {
-                        float:left;
-                        padding:4px 0;
-                        .tit {
-                            float:none;
-                            display:inline-block;
-                            padding:0;
-                            vertical-align:top;
-                        }
-                        .tooltip-wrap {
-                            margin-top:3px;
-                            margin-left:4px;
-                        }
-                    }
-                    @include mobile {
-                        .tooltip-wrap {
-                            .tooltip-box {
-                                left:0;
-                                right:0;
-                            }
-                        }
-                    }
-                }
-                &.type2 {
-                    height:auto;
-                    margin-bottom:12px;
-                    border-bottom:none;
-                    @include mobile {
-                        padding-bottom:0;
-                    }
-                    .tit {
-                        @include font-large;
-                        @include mobile {
-                            padding:0;
-                            font-size:18px;
-                            line-height:26px;
-                        }
-                    }
-                }
+                margin:0 -16px;
             }
             // contents
             .section-inner {
-                padding-top:48px;
-                @include mobile {
-                    padding-top:20px;
-                }
-                &.type2 {
-                    padding-top:16px;
-                }
-                .inner-box {
-                    margin-top:64px;
-                    @include mobile {
-                        margin-top:40px;
-                    }
-                    &:first-child {
-                        margin-top:0;
-                    }
-                    .inner-tit {
-                        margin-bottom:24px;
-                        color:#222;
-                        @include font-large;
-                        font-weight:700;
-                        @include mobile {
-                            margin-bottom:12px;
-                        }
-                    }
-                }
                 .dl-infolist-wrap {
                     .lists {
                         li {
                             dl {
                                 dt {
                                     width:20.4%;
+                                    @include mobile {
+                                        width:31%;
+                                    }
                                 }
                                 dd {
                                     width:79.6%;
+                                    @include mobile {
+                                        width:69%;
+                                    }
                                 }
                             }
                         }
@@ -234,6 +145,7 @@
                         }
                     }
                     &.col-type {
+                        max-width:100%;
                         @include clearfix;
                         .forms {
                             float:left;
@@ -255,27 +167,12 @@
                         }
                     }
                 }
-                > .bullet-list {
-                    margin-left:20.4%;
-                    @include mobile {
-                        margin-left:0;
-                    }
-                }
                 .chk-wrap.margin {
                     margin-top:16px;
                     margin-left:20.4%;
                     @include mobile {
                         margin-top:24px;
                         margin-left:0;
-                    }
-                }
-                .btn-group {
-                    margin-top:32px;
-                }
-                .btn-moreview {
-                    margin-top:32px;
-                    @include mobile {
-                        margin-top:24px;
                     }
                 }
             }
@@ -294,11 +191,17 @@
     // 보유제품 리스트
     @import "ACCF7033";
 
+    // 배송지 주소 관리
+    @import "ACCF7009";
+
     // 쿠폰
     @import "ACCF7018";
 
     // 최근 본 상품/찜한 목록
     @import "ACCF7011";
+
+    // 문의/예약 결과 조회
+    @import "ACCF7020";
 
     // 케어솔루션
     @import "ACCF7024";
@@ -308,6 +211,15 @@
 
     // 방문 알리미
     @import "ACCF7030";
+
+    // 영수증 등록
+    @import "ACCF7037";
+
+    // 나의 글 보기
+    @import "ACCF7070";
+
+    // 참여 이벤트
+    @import "ACCF7071";
 
     // popup
     @import "ACCF-popup";

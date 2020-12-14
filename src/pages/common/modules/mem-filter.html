@@ -11,7 +11,7 @@
             <div class="cell rdo-cell">
                 @@for ( var i = 0; i < rdoArr.length; i++ ) {
                 <span class="rdo-wrap btn-type">
-                    <input type="radio" id="`+rdoArr[i].id+`" name="periodSelect" `+rdoArr[i].checked+`>
+                    <input type="radio" id="`+rdoArr[i].id+`" name="periodSelect" value="`+rdoArr[i].value+`" `+rdoArr[i].checked+`>
                     <label for="`+rdoArr[i].id+`">`+rdoArr[i].label+`</label>
                 </span>
                 }
@@ -21,27 +21,44 @@
             <div class="cell">
                 <div class="datepic-tbl forms">
                     <div class="dp-cell">
-                        <div class="input-wrap datepicker">
+                        <div class="input-wrap datepicker left">
                             <div class="box">
-                                <input type="text" id="date-input1" placeholder="날짜 선택">
+                                <input type="text" id="date-input1" name="startDate" placeholder="날짜 선택" data-required="true">
                                 <div class="cell">
-                                    <button type="button" class="ui_calendar" data-input-target="#date-input1" data-min-date=new Date()><span class="blind">달력보기</span></button>
+                                    <button type="button" class="ui_calendar startDate" data-input-target="#date-input1"><span class="blind">달력보기</span></button>
                                 </div>
                             </div>
                         </div>
                         <span class="bar">~</span>
-                        <div class="input-wrap datepicker">
+                        <div class="input-wrap datepicker right">
                             <div class="box">
-                                <input type="text" id="date-input2" placeholder="날짜 선택">
+                                <input type="text" id="date-input2" name="endDate" placeholder="날짜 선택" data-required="true">
                                 <div class="cell">
-                                    <button type="button" class="ui_calendar" data-input-target="#date-input2" data-min-date=new Date()><span class="blind">달력보기</span></button>
+                                    <button type="button" class="ui_calendar endDate" data-input-target="#date-input2"><span class="blind">달력보기</span></button>
                                 </div>
                             </div>
                         </div>
+                        <div class="err-block"><p class="err-msg"></p></div>
                     </div>
                     <div class="btn-cell">
-                        <button type="button" class="btn"><span>조회</span></button>
+                        <button type="button" class="btn calendarInquiry-btn"><span>조회</span></button>
                     </div>
+                </div>
+            </div>
+            }
+            @@if ( context.rdoCheck ) {
+            <div class="rdo-check">
+                <div class="select-list-wrap w-auto">
+                    <ul>
+                        @@for ( var i=0; i < list.length; i++ ) {
+                        <li>
+                            <span class="rdo-wrap">
+                                <input type="radio" id="`+list[i].id+`" name="`+list[i].name+`" value="`+list[i].value+`" `+list[i].checked+`>
+                                <label for="`+list[i].id+`">`+list[i].label+`</label>
+                            </span>
+                        </li>
+                        }
+                    </ul>
                 </div>
             </div>
             }

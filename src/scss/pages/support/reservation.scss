@@ -530,6 +530,7 @@
         justify-content: space-between;
         align-items: center;
         background-image:none;
+        margin-bottom: 32px; //64px;
         .btn-txt{
             color:#767676;
             @include font-small;
@@ -603,6 +604,10 @@
 
                     .txt-block{
                         display:block;
+                    }
+
+                    .btn-link{
+                        margin-left:24px;
                     }
                 }
             }
@@ -680,6 +685,7 @@
             justify-content: unset;
             flex-flow:column;
             align-items:baseline;
+            //margin-bottom: 40px;
 
             .solve-btn-txt-area{
                 margin-top:25px;
@@ -768,6 +774,7 @@
                 .reservation-info-desc{
                     margin-top:16px;
                     text-align:center;
+                    
                     strong{font-weight:normal;}
                 }
 

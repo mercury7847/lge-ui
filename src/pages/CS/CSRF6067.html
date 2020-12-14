@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/etc"
+    ]
+})
+<body>
+    <div class="wrap">
+        <div class="container">
+            <div class="contents support profile-upload">
+                <div class="cont-wrap">
+
+                    <form class="profile-upload-form" data-ajax="/lg5-common/data-ajax/support/profileUpload.json">
+                        <div class="tit-wrap">
+                            <h1 class="tit">엔지니어 사진 등록</h1>
+                        </div>
+
+                        <div class="form-wrap">
+                            <div class="forms">
+                                <div class="tit">
+                                    <label for="businessNumber">사번</label>
+                                </div>
+                                <div class="conts">
+                                    <div class="input-wrap">
+                                        <input type="text" name="businessNumber" id="businessNumber" value="AKQ037" data-error-msg="사번을 입력해주세요." data-required="true" readonly required>
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="forms">
+                                <div class="tit">
+                                    <label for="businessGroup">소속</label>
+                                </div>
+                                <div class="conts">
+                                    <div class="input-wrap">
+                                        <input type="text" name="businessGroup" id="businessGroup" value="소속" data-error-msg="소속을 입력해주세요." data-required="true" readonly required> 
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="forms">
+                                <div class="tit">
+                                    <label for="name">이름</label>
+                                </div>
+                                <div class="conts">
+                                    <div class="input-wrap">
+                                        <input type="text" name="name" id="name" value="홍길동" data-error-msg="이름을 입력해주세요." data-required="true" readonly required>
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="forms">
+                                <div class="tit">
+                                    <label for="imageFile">첨부파일</label>
+                                </div>
+                                <div class="conts">
+                                    <div class="image-file-wrap ui_imageinput">
+                                        <div class="file-item">
+                                            <div class="file-image">
+                                                <div class="file-preview"></div>
+                                                <div class="file-btns">
+                                                    <label for="imageFile" class="btn-upload"><span class="blind">업로드</span></label>
+                                                    <input type="file" name="imageFile" id="imageFile" data-error-msg="첨부파일을 업로드해주세요." data-required="true" accept="image/*" required>
+                                                    <button type="button" class="btn-del"><span class="blind">삭제</span></button>
+                                                </div>
+                                            </div>
+                                            <div class="file-name">
+                                                <input type="text" class="name" placeholder="파일선택" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btm-more img-err-block">
+                                        <p class="err-msg"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @@include('./common/modules/bullet-list.html', {
+                            "topBorder" : true,
+                            "bulletTxt" : [
+                                "파일명은 필히 대문자 사번, 확장자는 소문자 jpg으로 변경하시기 바랍니다. (파일명 예시: AKQ037.jpg)",
+                                "사진 사이즈 : 180px X 180px ( 가로 세로 동일 사이즈로 등록 : 정사각형 비율), 크기 : 50KB 이하",
+                                "보조프로그램 > 그림판 에서 '크기 조정' 기능을 통해 이미지 용량을 축소할 수 있습니다.",
+                                "해당 페이지는 Internet Explorer 11에 최적화되어 있습니다. 이보다 낮은 버전은 업데이트 후 사용을 권장합니다.",
+                                "Internet Explore 11 임에도 불구하고, 사용에 문제가 있다면 '호환성 보기 설정 해제'가이드를 참고해 주시기 바랍니다."
+                            ]
+                        })
+                        <div>
+                            <a href="#" class="btn-download"><span>가이드 다운로드</span></a>
+                        
+                        </div>
+                        <div class="btn-group center">
+                            <button type="button" class="btn btn-confirm" data-id="#confirmPop" data-control="modal">등록</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>    
+    
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/profileUpload.min.js"></script>
+</body>
+</html> 

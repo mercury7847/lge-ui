@@ -1,0 +1,228 @@
+.membership-table {
+    width:100%;
+    overflow-x:auto;
+    @include mobile {
+        display:none;
+    }
+    table {
+        width:1145px;
+        white-space:nowrap;
+        border-collapse:collapse;
+        tbody {
+            th {
+                padding:0 24px;
+                border-bottom:1px solid #ddd;
+                background:#f4f4f4;
+                color:#222;
+                @include font-medium;
+                font-weight:500;
+                text-align:center;
+                vertical-align:middle;
+            }
+            td {
+                padding:24px 12px;
+                border-left:1px solid #ddd;
+                border-bottom:1px solid #ddd;
+                text-align:center;
+                vertical-align:middle;
+            }
+        }
+    }
+    .grade-box {
+        .tit {
+            color:#222;
+            @include font-small;
+            font-weight:700;
+            &::before {
+                content:' ';
+                display:block;
+                width:84px;
+                height:84px;
+                margin:0 auto 20px;
+            }
+        }
+        @for $i from 1 through 4 {
+            &.grade#{$i} {
+                .tit::before {
+                    background:url("/lg5-common/images/BMC/img-mem0#{$i}.png") center no-repeat;
+                    background-size:100%;
+                }
+            }
+        }
+        .desc {
+            margin-top:16px;
+            color:#767676;
+            @include font-small;
+            font-weight:500;
+            em {
+                display:block;
+                color:#222;
+                font-weight:700;
+            }
+        }
+    }
+    .grade-info {
+        @include font-small;
+        font-weight:500;
+        dt {
+            color:#222;
+        }
+        dd {
+            margin-top:4px;
+            color:#767676;
+            em {
+                color:#EC455A;
+            }
+            ul {
+                li {
+                    word-break:keep-all;
+                    &::before {
+                        content:'-';
+                        display:inline-block;
+                        margin-right:4px;
+                        vertical-align:top;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.membership-tabs-cont {
+    @include pc {
+        display:none;
+    }
+    margin-top:12px;
+    .mem-tabs-wrap {
+        .tabs {
+            margin:-12px -4px 0;
+            font-size:0;
+            li {
+                position:relative;
+                display:inline-block;
+                width:50%;
+                margin-top:12px;
+                padding:2px 6px;
+                vertical-align:top;
+                &::before {
+                    content:' ';
+                    position:absolute;
+                    top:0;
+                    left:4px;
+                    right:4px;
+                    bottom:0;
+                    border-radius:8px;
+                    border:1px solid #ddd;
+                }
+                &.on::before {
+                    border:2px solid #EC455A;
+                }
+                a {
+                    display:block;
+                    position:relative;
+                    height:140px;
+                    padding:82px 12px 20px;
+                    border-radius:8px;
+                    color:#222;
+                    font-size:13px;
+                    line-height:21px;
+                    font-weight:700;
+                    text-align:center;
+                    &::before {
+                        content:' ';
+                        position:absolute;
+                        top:20px;
+                        left:50%;
+                        width:50px;
+                        height:50px;
+                        margin-left:-25px;
+                    }
+                    @for $i from 1 through 4 {
+                        &.grade#{$i}::before {
+                            background:url("/lg5-common/images/BMC/img-mem0#{$i}.png") center no-repeat;
+                            background-size:100%;
+                        }
+                    }
+                    &::after {
+                        content:' ';
+                        position:absolute;
+                        top:6px;
+                        right:6px;
+                        width:24px;
+                        height:24px;
+                        background:url("/lg5-common/images/BMC/check-m.svg") 0 0 no-repeat;
+                        background-size:100%;
+                    }
+                }
+                &.on {
+                    a::after {
+                        background-position-y:bottom;
+                    }
+                }
+            }
+        }
+    }
+
+    .tab-content {
+        padding-top:12px;
+        .guide {
+            padding:24px 16px;
+            border:1px solid #ddd;
+            border-radius:8px;
+            background:#f4f4f4;
+            p {
+                @include clearfix;
+                color:#767676;
+                font-size:13px;
+                line-height:22px;
+                font-weight:500;
+                em {
+                    float:right;
+                    color:#222;
+                    font-size:14px;
+                    font-weight:700;
+                }
+                &.type2 {
+                    color:#222;
+                    text-align:center;
+                    font-weight:700;
+                }
+            }
+        }
+        .benefits {
+            .list {
+                margin-top:12px;
+                padding:16px;
+                border:1px solid #ddd;
+                border-radius:8px;
+                dl {
+                    text-align:center;
+                    dt {
+                        color:#222;
+                        font-size:14px;
+                        line-height:22px;
+                        font-weight:700;
+                    }
+                    dd {
+                        margin-top:8px;
+                        color:#767676;
+                        font-size:13px;
+                        line-height:21px;
+                        font-weight:500;
+                        em {
+                            color:#EC455A;
+                        }
+                        ul {
+                            li::before {
+                                content:'-';
+                                display:inline-block;
+                                margin-right:4px;
+                                vertical-align:top;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

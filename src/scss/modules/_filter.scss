@@ -365,6 +365,7 @@
                font-weight: 700;
                span {
                    padding-right: 12px;
+                   text-align: left;
                }
                img {
                    width: 40px;
@@ -537,6 +538,10 @@
     position: absolute;
     top: 0;
     left: 20px;
+    z-index: 100;
+    @include mobile {
+        top: 12px;
+    }
     .ico-filter {
         display: inline-block;
         width: 32px;
@@ -553,18 +558,25 @@
         }
     }
     &.applied {
+        .ico-filter {
         position: relative;
-        &:after {
-            position: absolute;
-            top: -7px;
-            right: 0;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background-color: #ec455a;
-            content: '';
-        }
+            &:after {
+                position: absolute;
+                top: -7px;
+                right: 0;
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background-color: #ec455a;
+                content: '';
+            }
+        } 
     }
+}
+
+.cate-m {
+    min-height: 70px;
+    border-bottom: 12px solid #f4f4f4;
 }
 
 .lay-filter .plp-filter-wrap .filter-top {
@@ -698,6 +710,7 @@
                 display:table-cell;
                 font-size:0;
                 vertical-align:top;
+                white-space:nowrap;
                 @include mobile {
                     display:block;
                 }
@@ -721,13 +734,24 @@
                             background:#fff !important;
                         }
                     }
+                    .ui-calendar-container {
+                        min-width:296px;
+                    }
+                    &.right {
+                        .ui-calendar-container {
+                            left:auto;
+                            right:0;
+                        }
+                    }
                 }
             }
             .btn-cell {
                 display:table-cell;
+                width:1%;
                 padding-left:8px;
                 @include mobile {
                     display:block;
+                    width:100%;
                     margin-top:24px;
                     padding-left:0;
                     .btn {

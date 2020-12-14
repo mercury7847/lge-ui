@@ -21,10 +21,9 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             stickyClass: 'fixed',
             stickyContainer: 'body',
             usedAnchor: false,
-            isHidden: true
-        },
-        selectors:{
-            anchor : 'a'
+            isHidden: true,
+            actClass: "active",
+            anchorClass: "a"
         },
         initialize: function initialize(el, options) {
             var self = this;
@@ -33,6 +32,8 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             }   
 
             self.$container = self.$el.closest(self.options.stickyContainer);
+
+            self.$anchor = self.$el.find(self.options.anchorClass);
             
             self.scrollCourse = "down";
             self.prevScrollTop = $win.scrollTop();
@@ -101,10 +102,12 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             var self = this;            
             var $target = self.$anchor.parent();
             if(idx<0) {
-                $target.removeClass('on');
+                $target.removeClass(self.options.actClass);
             }else{
-                $target.eq(idx).addClass('on').siblings().removeClass('on');
+                $target.eq(idx).addClass(self.options.actClass).siblings().removeClass(self.options.actClass);
             }            
+
+            self.$el.trigger("changeanchor", {selectIdx:idx})
         },
 
 
@@ -118,6 +121,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             self.containerRect = self._getRectangle(self.$container);
             self.marginTop = opt.marginTop;
             self.marginBottom = opt.marginBottom;
+            self.firstMarginTop = opt.firstMarginTop;
 
             if(self.options.usedAnchor){
                 self.anchorArr = [];
@@ -127,7 +131,6 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             }
 
             if(opt.wrap){
-                var outerheight = self.$el.outerHeight(true);
                 self.$el.wrap(opt.wrapWith).parent().css({ 
                     height: self.$el.outerHeight(true)
                 });
@@ -283,12 +286,15 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
                     try{
                         $target = self.$container.find(anchorName);
         
-                        if(index==0){
+                        if(index==-1){
                             self.posArr.push(self.containerRect.top - self.marginTop);
                         }else{
                             //2020.10.16 $target이 없을 시...
                             if ($target.length){
-                                top = $target.offset().top - (self.stickyRect.height + self.marginTop);                  
+                                top = $target.offset().top - (self.stickyRect.height + self.marginTop);
+                                
+                                if(index == 0) top -= self.firstMarginTop;
+
                                 self.posArr.push(top>lasty? lasty-10 : top);
                                 if(index == self.$anchor.length-1){
                                     top = $target.outerHeight() + $target.offset().top;
@@ -304,13 +310,15 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
 
         _getSelectIdx:function _getSelectIdx(y){
             var self = this;
-            var idx = -1;            
-            for(var i=0; i<self.posArr.length-1; i++){
+            var idx = -1, lastconty, anchorname;
+            var leng = self.posArr.length; 
+            for(var i=0; i<leng-1; i++){
                 if(self.posArr[i] <= y && self.posArr[i+1] > y){
                     idx = i;
                     break;
                 }
             }
+
             return idx;
         },
 
@@ -330,10 +338,10 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             var self = this;
             var y = self.posArr[idx];
             if(speed){
-                $('html, body').stop().animate({scrollTop:y+1}, speed);
+                $('html, body').stop().animate({scrollTop:y}, speed);
             }else{ 
                 setTimeout(function(){   
-                    $('html, body').stop().scrollTop(y+1);
+                    $('html, body').stop().scrollTop(y);
                 }, 100);
             }
         },

@@ -58,7 +58,8 @@
                             "ui/formatter",
                             "ui/scrollNavi",
                             "ui/smoothScroll",
-                            "ui/smoothScrollTab"
+                            "ui/smoothScrollTab",
+                            "ui/checkboxAllChecker"
         ], function () {    
             console.log("buildCommonUI!!!!");
             
@@ -78,7 +79,7 @@
             this.find('.ui_input_clearbutton').vcInputClearButton();
             this.find('.ui_star_rating').vcStarRating();
             this.find('.ui_tooltip-target').vcTooltipTarget();
-            this.find('.ui_card_number').vcFormatter({format: "card", maxlength:12});
+            this.find('.ui_card_number').vcFormatter({format: "card", maxlength:16});
 
             this.find('.ui_smooth_scroll').vcSmoothScroll();
             this.find('.ui_scroll_navi').vcScrollNavi();
@@ -88,6 +89,8 @@
             this.find('.toast-message').vcToast();
 
             this.find('.ui_sticky').vcSticky();
+
+            this.find('.ui_all_checkbox').vcCheckboxAllChecker();
 
             this.find('.ui_selectbox').vcSelectbox({
                 events:{
@@ -116,6 +119,16 @@
                 swipeToSlide: true,
                 buildDots:false,
                 dotsSelector:'.ui_wideslider_dots',
+                slidesToShow: 1,
+                slidesToScroll: 1
+            });
+            this.find('.ui_wide_dot_slider').vcCarousel({
+                autoplay:true,
+                autoplaySpped:5000,
+                infinite: true,
+                pauseOnHover:false,
+                pauseOnFocus:false,
+                swipeToSlide: true,
                 slidesToShow: 1,
                 slidesToScroll: 1
             });
@@ -224,7 +237,7 @@
         COMPARE_LIMIT: 3,
         CAREPLANER_KEY: "care_planer",
         CAREPLANER_ID: "putitem_list",
-        CAREPLANER_LIMIT: 7,
+        STICKY_MODULES:[],
         init: function(){
             this._preloadComponents();
             this._addTopButtonCtrl();
@@ -458,11 +471,13 @@
         showLoading:function(msg){
             var str = msg? msg : '데이터를 불러오는 중입니다.';
             $('html').addClass('dim');
+            $('body').append("<div class='loading_dim' style='position:fixed;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.3);z-index:199999999'></div>")
             $('body').vcSpinner({msg:str});
             $('body').vcSpinner('spin', str);    
         },
     
         hideLoading:function(){
+            $('.loading_dim').remove();
             $('html').removeClass('dim');
             $('body').vcSpinner('stop');
         },
@@ -718,7 +733,7 @@
                     alert(result.message ? result.message : '오류발생');
                     return;
                 }
-                if(callback) callback(result);
+                if(callback && typeof callback === 'function') callback(result);
             }).fail(function(err){
                 alert(err.message);
             });
@@ -727,7 +742,81 @@
         requestAjaxDataPost: function(url, data, callback) {
             var self = this;
             self.requestAjaxData(url, data, callback, "POST");
-        }    
+        },
+
+        getHiddenInputData: function(iptname, wrapname){
+            var hiddenWrapName = wrapname || "hidden-input-group";
+            var hiddenWrap = $('.' + hiddenWrapName).eq(0);
+            var data, str, name;
+
+            if(iptname){
+                if(vcui.isArray(iptname)){
+                    data = {};
+                    for(str in iptname){
+                        name = iptname[str];
+                        data[name] = hiddenWrap.find('input[name=' + name + ']').val();
+                    }
+
+                    return data;
+                } else{
+                    return hiddenWrap.find('input[name=' + iptname + ']').val();
+                }
+            } else{
+                data = {};
+                hiddenWrap.find('input[type=hidden]').each(function(idx, item){
+                    name = $(item).attr('name');
+                    data[name] = $(item).val();
+                });
+
+                return data;
+            }
+        },
+
+        setHiddenInputData: function(iptname, value, wrapname){
+            if(!iptname) return false;
+
+            var hiddenWrapName = wrapname || "hidden-input-group";
+            var hiddenWrap = $('.' + hiddenWrapName).eq(0);
+            var str, name, val;
+
+            if(typeof iptname === "object"){
+                for(str in iptname){
+                    hiddenWrap.find('input[name=' + str + ']').val(iptname[str]);
+                }
+            } else{
+                val = vcui.isArray(value) ? value.join() : value;
+                hiddenWrap.find('input[name=' + iptname + ']').val(val);
+            }
+        },
+
+        addStickyModule: function(hei){
+            var self = this;
+
+            var moduleIDs = vcui.array.map(self.STICKY_MODULES, function(item){
+                return item.uniqueID;
+            });
+            console.log("moduleIDs :", moduleIDs);
+
+            var uniqueID = self.setUniqueID();
+            while(vcui.array.has(moduleIDs, uniqueID)) uniqueID = setUniqueID();
+
+            self.STICKY_MODULES.push({
+                uniqueID: uniqueID,
+                moduleHeight: hei
+            });
+
+            return uniqueID;
+        },
+
+        setUniqueID: function(){
+            var id = "";
+            for(var i=0;i<10;i++){
+                var ran = parseInt(Math.random()*10);
+                id += ran.toString();
+            }
+
+            return id;
+        }
     }
 
     document.addEventListener('DOMContentLoaded', function () {

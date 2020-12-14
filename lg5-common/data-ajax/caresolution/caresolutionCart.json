@@ -30,13 +30,14 @@
                 }
             ]
         },
-        "selectedItem":[
-            "item00001",
-            "item00002"
+        "selectedSeq":[
+            "seq00001",
+            "seq00002"
         ],
         "itemList":[
             {
                 "itemID": "item00001",
+                "itemSeq": "seq00001",
                 "available": true,
                 "availableMessage": null,
                 "type": "렌탈(케어솔루션)",
@@ -61,6 +62,7 @@
             },
             {
                 "itemID": "item00002",
+                "itemSeq": "seq00002",
                 "available": false,
                 "availableMessage": "설치 불가능 제품입니다.",
                 "type": "케어십",

@@ -1,0 +1,270 @@
+// common
+br.m {
+    display:none;
+    @include mobile {
+        display:block;
+    }
+}
+
+.hero-banner{
+    height:640px;
+}
+.visual-tit-wrap {
+    position:relative;
+    height:640px;
+    background:url('/lg5-common/images/SLC/bg-visual-tit01.jpg') center no-repeat;
+    line-height:640px;
+    text-align:center;
+    .txt-wrap {
+        display:inline-block;
+        width:100%;
+        max-width:1380px + 80px;
+        padding:0 40px;
+        vertical-align:middle;
+        line-height:1;
+        text-align:left;
+        .tit {
+            color:#222;
+            @include font-large-6;
+            font-weight:700;
+        }
+        .tit-desc {
+            margin-top:20px;
+            color:#222;
+            @include font-medium;
+        }
+    }
+    @include mobile {
+        height:270px;
+        background:url('/lg5-common/images/SLC/bg-visual-tit01-m.jpg') center bottom no-repeat;
+        background-size:cover;
+        .txt-wrap {
+            display:block;
+            max-width:70%;
+            padding:32px 16px;
+            .tit {
+                font-size:24px;
+                line-height:32px;
+            }
+            .tit-desc {
+                margin-top:12px;
+                word-break:keep-all;
+                br {
+                    display:none;
+                }
+            }
+        }
+    }
+}
+
+.info-list {
+    margin-bottom:56px;
+    padding-bottom:56px;
+    border-bottom:1px solid #ddd;
+    @include mobile {
+        margin-bottom:40px;
+        padding-bottom:40px;
+    }
+    .h3-tit {
+        position:relative;
+        font-size:16px;
+        line-height:24px;
+        font-weight:700;
+        .btn-text {
+            float:right;
+            color:#EC455A;
+            text-decoration:underline;
+        }
+        &+ dl {
+            padding-top:24px;
+            @include mobile {
+                padding-top:20px;
+            }
+        }
+    }
+    dl {
+        padding-top:32px;
+        @include mobile {
+            padding-top:40px;
+        }
+        dt {
+            color:#616161;
+            font-size:14px;
+            line-height:20px;
+            @include mobile {
+                line-height:18px;
+            }
+        }
+        dd {
+            padding-top:16px;
+            @include mobile {
+                padding-top:12px;
+            }
+            .item {
+                @include clearfix;
+                li {
+                    float:left;
+                    margin-left:16px;
+                    color:#111;
+                    font-size:16px;
+                    line-height:24px;
+                    @include mobile {
+                        float:none;
+                        margin:6px 0 0 0;
+                        line-height:20px;
+                    }
+                    
+                    &:first-child {
+                        margin:0;
+                    }
+                    .key {
+                        @include mobile {
+                            display:inline-flex;
+                            width:45px;
+                            justify-content:space-between;
+                            vertical-align:baseline;
+                            span {display:inline-block;}
+                        }
+                    }
+                    .value {
+                        padding-left:8px;
+                        @include mobile {
+                            padding-left:12px;
+                        }
+                    }
+                }
+            }
+            .bullet-list {
+                margin:0;
+                @include mobile {
+                    margin-top:4px;
+                }
+            }
+            .addr-info {
+                margin-top:4px;
+                font-size:16px;
+                line-height:24px;
+                &:first-child {
+                    margin-top:0;
+                }
+                @include mobile {
+                    display:table;
+                }
+                .key {
+                    display:inline-block;
+                    vertical-align:middle;
+                    @include mobile {
+                        width:60px;
+                        display:inline-flex;
+                        justify-content:space-between;
+                        vertical-align:baseline;
+                        span {display:inline-block;}
+                    }
+                }
+                .addr {
+                    display:inline-block;
+                    vertical-align:middle;
+                    @include mobile {
+                        display:table-cell;
+                        vertical-align:top;
+                        padding-left:12px;
+                    }
+                }
+            }
+        }
+    }
+    .map {
+        width:100%;
+        height:320px;
+        margin-top:16px;
+        overflow:hidden;
+        @include mobile {
+            height:190px;
+        }
+    }
+    .tabs-wrap {
+        margin-top:16px;
+        text-align:left;
+        @include mobile {
+            margin-top:20px;
+            .tabs {
+                padding:0;
+            }
+            .bullet-list {
+                color:#222;
+                font-size:16px;
+                line-height:23px;
+                .b-txt:before {
+                    color:#616161;
+                    width:4px;
+                    height:4px;
+                }
+            }
+        }
+    }
+}
+
+.slide-wrap {
+    margin-top:16px;
+    padding-bottom:34px;
+    @include mobile {
+        padding:0;
+    }
+    .indi-wrap {
+        bottom:0;
+    }
+    .slide-content {
+        margin:0 -8px;
+        @include mobile {
+            margin:0 -8px;
+        }
+        .slide-track {
+            @include mobile {
+                overflow:auto;
+            }
+        }
+        .slide-conts {
+            height:auto;
+            .cont-wrap {
+                @include mobile {
+                    width:61.1111vw;
+                }
+            }
+            .img {
+                position:relative;
+                border-radius:4px;
+                height:190px;
+                margin:0 8px;
+                overflow:hidden;
+                img {
+                    display:block;
+                    position:absolute;
+                    top:50%;
+                    left:50%;
+                    -webkit-transform:translate(-50%, -50%);
+                    transform:translate(-50%, -50%);
+                }
+                @include mobile {
+                    height:131px;
+                }
+            }
+            .desc {
+                margin:8px 8px 0;
+                .subject {
+                    font-size:16px;
+                    line-height:24px;
+                    font-weight:500;
+                }
+                .date {
+                    color:#515151;
+                    font-size:14px;
+                    line-height:20px;
+                }
+            }
+        }
+    }
+}
+
+
+
+

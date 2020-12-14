@@ -68,7 +68,7 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
             self._build();
             self._resize();
             self._syncInput();
-            self._bindEvents();            
+            self._bindEvents();
         },
 
 
@@ -89,7 +89,6 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
             } catch (e) {
                 self.valuesArr = [];
             }
-
 
             var separator = opts.separator;
             var rangeArr = opts.range.toString().split(separator);
@@ -127,7 +126,7 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
                 self.minValue = self.minValue - wd;
                 self.maxValue = self.maxValue + wd;
                 
-            }   
+            }
 
             var inputArr = opts.input? opts.input.toString().split(separator) : ['',''];
 
@@ -194,15 +193,15 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
             }
 
             self.nowValue = {minValue:self.startValue, maxValue:self.endValue};
-
-            var initValue = {
-                minValue:self.nowValue.minValue < self.originMinValue? 'Min': self.nowValue.minValue >= self.originMaxValue? self.originMaxValue : self.nowValue.minValue, 
-                maxValue:self.nowValue.maxValue > self.originMaxValue? 'Max': self.nowValue.maxValue <= self.originMinValue? self.originMinValue : self.nowValue.maxValue
-            };
-
-
-            self.triggerHandler('rangesliderinit', [initValue]);
-            
+            if(self.mode){
+                var initValue = {
+                    minValue:self.nowValue.minValue < self.originMinValue? 'Min': self.nowValue.minValue >= self.originMaxValue? self.originMaxValue : self.nowValue.minValue, 
+                    maxValue:self.nowValue.maxValue > self.originMaxValue? 'Max': self.nowValue.maxValue <= self.originMinValue? self.originMinValue : self.nowValue.maxValue
+                };
+                self.triggerHandler('rangesliderinit', [initValue]);
+            } else {
+                self.triggerHandler('rangesliderinit',[self._checkOriginValue(self.nowValue)]);
+            }
         },
 
         setValue: function setValue(start, end, isTrigger) {
@@ -266,6 +265,18 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
             if(nObj.minValue === -0) nObj.minValue = 0;
             if(!self.mode){
                 self.nowValue = nObj;
+                var optionValues = self.options.values;
+                if(optionValues) {
+                    var findMin = optionValues.filter(function(item){
+                        return parseInt(item.value) == nObj.minValue;
+                    });
+                    var findMax = optionValues.filter(function(item){
+                        return parseInt(item.value) == nObj.maxValue;
+                    });
+                    if(findMin.length > 0 && findMax.length > 0) {
+                        return {minValue:findMin[0],maxValue:findMax[0]}
+                    }
+                }
             }else{
                 self.nowValue = {
                     minValue:nObj.minValue < self.originMinValue? 'Min': nObj.minValue >= self.originMaxValue? self.originMaxValue : nObj.minValue, 
@@ -483,8 +494,9 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
             var sMin;
             var sMax;
 
-
             if(self.valuesArr.length > 0){
+                if(!minX) minX = 0;
+                if(!maxX) maxX = self.valuesArr.length - 1;
                 sMin = self._getSnapDistance(minX);
                 sMax = self._getSnapDistance(maxX);
 
@@ -672,13 +684,11 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
             var roundUnit = parseInt(self.options.roundUnit);
             var sMin = Math.round(minVal/roundUnit)*roundUnit;
             var sMax = Math.round(maxVal/roundUnit)*roundUnit;
-            
-                            
-            if(!self.mode){
-                if(Math.abs(self.maxValue - sMax) < roundUnit/2) sMax = self.maxValue;
-                if(Math.abs(self.minValue - sMin) < roundUnit/2) sMin = self.minValue;  
-                if(sMax < sMin) sMin = sMax;
 
+            if(!self.mode){
+                if(Math.abs(self.maxValue - sMax) < roundUnit/2) sMax = parseInt(self.maxValue);
+                if(Math.abs(self.minValue - sMin) < roundUnit/2) sMin = parseInt(self.minValue);
+                if(sMax < sMin) sMin = sMax;
             }else{
                 var btnWidth = (self.maxValue - self.minValue) / self.rangeWidth * self.btnSize/2;
                 if(self.originMaxValue+btnWidth <= sMax) sMax = self.maxValue;
@@ -694,6 +704,24 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
         getValue: function getValue() {          
             return this.nowValue;
         },
+
+        getObjectValue: function getObjectValue() {
+            var self = this;
+            var optionValues = self.options.values;
+            if(optionValues) {
+                var findMin = optionValues.filter(function(item){
+                    return parseInt(item.value) == self.nowValue.minValue;
+                });
+                var findMax = optionValues.filter(function(item){
+                    return parseInt(item.value) == self.nowValue.maxValue;
+                });
+                if(findMin.length > 0 && findMax.length > 0) {
+                    return {minValue:findMin[0],maxValue:findMax[0]}
+                }
+            }
+            return self.nowValue;
+        },
+
         reset: function reset(obj){
             var self = this;
             var nObj;

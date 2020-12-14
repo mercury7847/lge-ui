@@ -1,0 +1,14 @@
+{
+    "status":"success",
+    "message":null,
+    "param":{
+        "searchedValue":"클린"
+    },
+    "data": [
+        "클린 에어컨",
+        "에어컨 클린 설치",
+        "클린 에어컨 고장 수리",
+        "에어 클린케어",
+        "클린 에어컨 가격"
+    ]
+}

@@ -3,38 +3,60 @@
     <header class="pop-header">
         <h1 class="tit"><span>휴대 전화 인증</span></h1>
     </header>
-    <section class="pop-conts support mt8">
-        <div class="form-desc">
-            <span class="req">필수 입력 사항</span>
-        </div>
-        <div class="input-info" data-ajax="">
-            <div class="form-wrap">
-                <div class="forms">
-                    <div class="tit">
-                        <label for="authName" class="req">이름 <span class="blind">필수입력</span></label>
+    <section class="pop-conts common-pop">
+        
+        <!-- 
+            1. 인증이 성공된 경우
+            /lg5-common/data-ajax/support/authSuccess.json
+
+            2. 인증 번호가 틀릴 경우
+            /lg5-common/data-ajax/support/authFail.json
+        -->
+        <div class="form-wrap" data-ajax="/lg5-common/data-ajax/support/authSuccess.json">
+            <div class="form-infos">
+                <p class="req" aria-disabled="true">필수 입력 사항</p>
+            </div>
+            <div class="forms">
+                <div class="tit">
+                    <label for="authName" class="req">이름 <span class="blind">필수입력</span></label>
+                </div>
+                <div class="conts">
+                    <div class="input-wrap">
+                        <input type="text" name="authName" id="authName" placeholder="이름을 입력해주세요"  data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" required>
                     </div>
-                    <div class="conts">
-                        <div class="input-wrap">
-                            <input type="text" name="authName" id="authName" placeholder="이름을 입력해주세요." data-required="true" data-msg-target=".err-msg" required>
-                        </div>
+                    <div class="btm-more err-block">
+                        <p class="err-msg"></p>
                     </div>
                 </div>
-                <div class="forms">
-                    <div class="tit">
-                        <label for="input-phoneNumber" class="req">휴대 전화 <span class="blind">필수입력</span></label>
-                    </div>
-                    <div class="conts">
-                        <div class="box">
-                            <div class="input-wrap">
-                                <input type="tel" name="authPhoneNo" id="authPhoneNo" placeholder="휴대전화 번호를 입력해주세요." data-required="true" data-msg-target=".err-msg" required>
-                            </div>
-                            <div class="cell">
-                                <button type="button" class="btn">인증번호 발송</button>
-                            </div>
-                        </div>
+            </div>
+            <div class="forms">
+                <div class="tit">
+                    <label for="authPhoneNo" class="req">휴대 전화 <span class="blind">필수입력</span></label>
+                </div>
+                <div class="conts">
+                    <div class="box">
                         <div class="input-wrap">
-                            <input type="number" name="authNo" id="authNo" placeholder="인증번호를 입력해주세요." data-required="true" data-msg-target=".err-msg" disabled required>
+                            <input type="tel" name="authPhoneNo" id="authPhoneNo" placeholder="휴대전화를 정확히 입력해주세요"  data-error-msg="휴대전화를 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" required>
                         </div>
+                        <div class="cell">
+                            <!-- 
+                                1. 이름, 휴대전화 유효성 체크 통과 후
+                                /lg5-common/data-ajax/support/authSendSuccess.json
+
+                                2. 1분 내 인증 번호 발송/재발송 버튼을 2회 째 클릭 시
+                                /lg5-common/data-ajax/support/authSendRetry.json
+
+                                3. 1분 내 인증 번호/재발송 버튼을 3회 째 선택 시
+                                /lg5-common/data-ajax/support/authSendFail.json
+                            -->
+                            <button type="button" class="btn btn-send" data-ajax="/lg5-common/data-ajax/support/authSendSuccess.json">인증번호 발송</button>
+                        </div>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="number" name="authNo" id="authNo" placeholder="인증번호를 입력해주세요" data-error-msg="인증번호를 입력해주세요" data-required="true" disabled required>
+                    </div>
+                    <div class="btm-more err-block">
+                        <p class="err-msg"></p>
                     </div>
                 </div>
             </div>
@@ -51,7 +73,7 @@
     <footer class="pop-footer">
         <div class="btn-group center">
             <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
-            <button type="button" class="btn pink btn-auth"><span>확인</span></button>
+            <button type="button" class="btn btn-auth"><span>확인</span></button>
         </div>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>

@@ -77,7 +77,6 @@
         }
     }
 
-    // 삭제예정
     &.btn-type {
         .tabs {
             display:inline-block;
@@ -91,17 +90,15 @@
                 }
                 > a {
                     display:block;
-                    padding:6px 12px;
-                    border-radius:18px;
+                    padding:4px 12px;
+                    border-radius:19px;
                     background-color:transparent;
-                    font-size:16px;
-                    font-weight:500;
-                    line-height:24px;
+                    font-size:22px;
+                    font-weight:700;
+                    line-height:30px;
                 }
                 &.on > a {
                     color:#222;
-                    line-height:23px;
-                    font-weight:700;
                     background-color:#f4f4f4;
                 }
             }
@@ -109,8 +106,10 @@
                 >li {
                     margin-left:0;
                     > a {
-                        padding:8px 18px;
+                        padding:5px 14px;
                         border-radius:20px;
+                        font-size:18px;
+                        line-height:26px;
                     }
                 }
             }
@@ -187,6 +186,7 @@
                 }
             }
         }
+        
     }
 
 
@@ -240,6 +240,55 @@
         }
     }
 }
+
+
+.page-header .tabs-bg {
+    max-width: 100%;
+    background-color: $color-bg;
+    @include mobile {
+        background: #fff;
+    }
+    .tabs-wrap.bar-type {
+        position: relative; 
+        max-width: calc(1146px + 80px);
+        padding: 0 40px;
+        background: #f4f4f4;
+        &.w-btn {
+            padding: 0 190px 0 40px;
+        }
+        @include mobile {
+            padding: 0;
+        }
+        .tabs {
+            padding: 16px 16px 8px 16px;
+            @include mobile {
+                padding: 16px;
+            }
+        }
+    }
+    
+    .btn-area {
+        position: absolute;
+        top: 50%;
+        right: 40px;
+        transform: translateY(-50%);
+        margin-top: 4px;
+        @include mobile {
+            position: static;
+            transform: translateY(0);
+            margin-top: 0;
+            padding: 25px 16px 0;
+            background-color: #fff;
+        }
+        .btn {
+            background-color: transparent;
+            @include mobile {
+                background-color: #fff;
+            }
+        }
+    }
+}
+
 
 .contents {
     > .tabs-wrap {

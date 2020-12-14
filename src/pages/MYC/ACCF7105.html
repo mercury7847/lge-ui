@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <article id="popup" class="win-popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit"><span>거래 영수증</span></h1>
+        </header>
+        <section class="pop-conts mypage">
+            <h2 class="h2-tbl-tit">거래 영수증 내역</h2>
+            <div class="tb-col th-center">
+                <table>
+                    <caption>거래 영수증 내역을 주문번호, 거래일시, 상품명, 총 거래금액, 결제수단, 서명 순으로 안내</caption>
+                    <colgroup>
+                        <col style="width:30%">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th scope="row">주문번호</th>
+                            <td>20200912497207</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">거래일시</th>
+                            <td>2020.08.20</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">상품명</th>
+                            <td>LG 디오스 상냉장하냉동 외 1건</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">총 거래금액</th>
+                            <td>2, 450, 654원</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">결제수단</th>
+                            <td>신용카드</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">서명</th>
+                            <td>이*어</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "거래 영수증은 세금계산서 등 세무상 증빙서류로 활동할 수 없으며, 거래내역 및 거래금액을 확인하는 용도로만 사용 가능합니다."
+                ]
+            })
+
+            <div class="lg-comp-infos">
+                <div class="logos"><img src="/lg5-common/images/foot-logo.svg" alt="LG전자 로고"></div>
+                <ul>
+                    <li>주소 : 서울특별시 영등포구 여의대로 128 LG트윈타워</li>
+                    <li>대표이사 : 권봉석, 배두용</li>
+                    <li>개인정보보호책임자 : LG전자 정보보호담당</li>
+                    <li>사업자등록번호 : 107-86-14075</li>
+                    <li>통신판매업신고번호 : 제1997-00084호</li>
+                    <li>쇼핑몰 이용 문의 : 1661-2471</li>
+                    <li>제품 및 AS 문의 : 1544-7777, 1588-7777</li>
+                    <li>자급제폰 상담전용 : 1661-7945</li>
+                </ul>
+            </div>
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn pink"><span>인쇄</span></button>
+            </div>
+        </footer>
+        <button type="button" class="win-btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+</body>
+</html>
