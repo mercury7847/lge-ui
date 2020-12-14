@@ -220,6 +220,15 @@
                         margin-left:auto;
                         margin-right:auto;
                     }
+                    .tit-text {
+                        width:194px;
+                        max-height: 68px;
+                        margin: 24px auto 16px;
+                        @include font-large-2;
+                        text-align: center;
+                        font-weight: 700;
+                        @include textEllipsisClamp(2);
+                    }
                 }
             }
         }
@@ -241,6 +250,15 @@
                 margin:0 12px;
                 padding-bottom:60px; 
                 vertical-align:top;
+                .tit-text {
+                    width:194px;
+                    max-height: 68px;
+                    margin: 24px auto 16px;
+                    @include font-large-2;
+                    text-align: center;
+                    font-weight: 700;
+                    @include textEllipsisClamp(2);
+                }
             }
             @include mobile {
                 .item {
