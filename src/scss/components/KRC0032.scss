@@ -244,16 +244,15 @@
 				position:relative;
 				width:100%;
 				height:1080px;
-				background-color:#111;
+				background-color:#222;
 				@include mobile {
 					position:relative;
-					height:500px;
-					margin-top:40px;
+					height:360px;
 				}
 				.controller-wrap {
 					right:auto;
 					left:50%;
-					bottom:109px;
+					bottom:104px;
 					transform:translateX(-50%);
 					@include mobile {
 						bottom:76px;
