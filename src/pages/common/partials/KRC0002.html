@@ -26,161 +26,240 @@
 			<!-- 1. headline -->
 			<div class="title">@@headline</div>
 			<!-- // 1. headline -->
-			<div class="non-carousel-box @@item">
-				<div class="list-box">
-					<ul class="items">
+			
+			<div class="@@if ( context.carousel) {carousel-box} @@if ( !context.carousel) {non-carousel-box} @@item">
+				<div class="list-box @@if ( context.carousel) {ui_carousel_slider} @@sliderClass">
+					@@if ( context.carousel) {
+					<div class="indi-wrap">
+						<ul class="indi-conts ui_carousel_dots">
+							<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+						</ul>
+					</div>
+					<div class="slide-content ui_carousel_list">
+					}
+						<div class="items @@if ( context.carousel) {ui_carousel_track}">
+							@@if ( context.carousel) {
+							<div class="item-box ui_carousel_slide">
+							}	
+								<div class="item ">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img1.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
+									</div>
+									<!-- // 3. cta -->
+								</div>
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img1.jpg" alt="" />
-								</a>
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img2.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
+									</div>
+									<!-- // 3. cta -->
+								</div>
+							@@if ( context.carousel) {	
 							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							}	
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img2.jpg" alt="" />
-								</a>
+							@@if ( context.carousel) {
+							<div class="item-box ui_carousel_slide">
+							}	
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img3.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
+									</div>
+									<!-- // 3. cta -->
+								</div>
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img3.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
+									</div>
+									<!-- // 3. cta -->
+								</div>
+							@@if ( context.carousel) {	
 							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							}	
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img3.jpg" alt="" />
-								</a>
-							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							@@if ( context.carousel) {
+							<div class="item-box ui_carousel_slide">
+							}	
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img4.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
+									</div>
+									<!-- // 3. cta -->
+								</div>
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img4.jpg" alt="" />
-								</a>
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img5.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
+									</div>
+									<!-- // 3. cta -->
+								</div>
+							@@if ( context.carousel) {	
 							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							}	
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img5.jpg" alt="" />
-								</a>
-							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							@@if ( context.carousel) {
+							<div class="item-box ui_carousel_slide">
+							}	
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img6.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
+									</div>
+									<!-- // 3. cta -->
+								</div>
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img6.jpg" alt="" />
-								</a>
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img7.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
+									</div>
+									<!-- // 3. cta -->
+								</div>
+							@@if ( context.carousel) {	
 							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							}	
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img7.jpg" alt="" />
-								</a>
+							@@if ( context.carousel) {
+							<div class="item-box ui_carousel_slide">
+							}	
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img8.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
+									</div>
+									<!-- // 3. cta -->
+								</div>
+								
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img9.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
+									</div>
+									<!-- // 3. cta -->
+								</div>
+							@@if ( context.carousel) {	
 							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							}	
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img8.jpg" alt="" />
-								</a>
+							@@if ( context.carousel) {
+							<div class="item-box ui_carousel_slide">
+							}	
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img10.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
+									</div>
+									<!-- // 3. cta -->
+								</div>
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img10.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
+									</div>
+									<!-- // 3. cta -->
+								</div>
+							@@if ( context.carousel) {
 							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
-						
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img9.jpg" alt="" />
-								</a>
-							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
-						
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img10.jpg" alt="" />
-								</a>
-							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							}
 
-					</ul>
+						</div>
+					</div>
+					@@if ( context.carousel) {
+					<div class="slide-controls">
+						<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+						<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+					</div>
+					}
 				</div>
 			</div>
 		</div>
