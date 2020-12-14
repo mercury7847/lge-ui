@@ -19,6 +19,10 @@
         기본 : 텍스트 영역이 상단
         .type-bottom : 이미지 영역이 상단인 경우 (type-bottom 클래스도 추가 하고 마크업 순서로 바뀝니다)
 
+        3. Stage size
+        .stage-wide : visual width 1600px;
+        .stage-medium : visual width 1380px;
+
         [.text-area 옵션]
         1. 텍스트 가로 정렬
         .align-left : 왼쪽 정렬 (기본 - 클래스 생략 가능)
@@ -52,7 +56,7 @@
         .align-right : 오른쪽 정렬
         .align-center : 중앙 정렬
     -->
-    <section class="component KRC0010 @@component.type-class @@component.bg-color">
+    <section class="component KRC0010 @@component.type-class @@component.bg-color @@component.stageSize">
         <div class="text-area @@text-area.align-class">
             <div class="inner">
                 <!-- 1. headline -->
@@ -64,16 +68,16 @@
                 </div>
                 <!-- // 2. body copy -->
                 <!-- 3. cta -->
+                <!-- [KR수정_201214] cta 관련 DOM 전체 수정 -->
                 <div class="cta">
-                    <div class="btn-type-box">
-                        <span><a href="#none" class="btn btn-outline-primary btn-lg" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01">문의하기</a></span>
-                        <span><a href="#none" class="btn btn-primary btn-lg" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01">문의하기</a></span>
-                    </div>
-                    <div class="btn-type-text">
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01">텍스트 링크 버튼</a></span>
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01">텍스트 링크 버튼</a></span>
-                    </div>
+                    <a href="#none" class="btn border size-m" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>문의하기</span></a>
+                    <a href="#none" class="btn border size-m" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>문의하기</span></a>
                 </div>
+                <div class="cta">
+                    <a href="#none" class="text-link" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>텍스트 링크 버튼</span></a>
+                    <a href="#none" class="text-link" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>텍스트 링크 버튼</span></a>
+                </div>
+                <!-- // [KR수정_201214] cta 관련 DOM 전체 수정 -->
                 <!-- // 3. cta -->
             </div>
         </div>
@@ -110,7 +114,9 @@
             <!-- // 5. image 2 -->
         </div>
         <!-- 7. disclaimer -->
-        <div class="disclaimer @@disclaimer.font-class @@disclaimer.font-style @@disclaimer.align-class">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+        <ul class="bullet-list">
+            <li class="b-txt">이해를 돕기 위하여 연출된 이미지입니다.</li>
+        </ul>
         <!-- // 7. disclaimer -->
     </section>
 </div>
