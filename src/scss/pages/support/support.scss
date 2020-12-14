@@ -40,7 +40,7 @@
         background-position:center;
         margin-bottom: 40px;
         .txt {
-            max-width:590px;
+            // max-width:590px;
             margin:0 auto 16px;
             color:#fff;
             font-weight:$font-weight-bold;
@@ -665,6 +665,9 @@
 }
 
 // color
+.color-1 {
+    color: #222 !important;
+}
 .color-2 {
     color: #f04e3e !important;
 }

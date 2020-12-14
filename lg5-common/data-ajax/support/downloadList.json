@@ -14,11 +14,11 @@
                     "file": [
                         {
                             "type": "ZIP",
-                            "src": ""   
+                            "src": "/lg5-common/data-ajax/support/fileDownloadTest.html?filePath=/lg5-common/data-ajax/support&fileName=testPDF.pdf&fileRealName=testPDF.pdf"   
                         },
                         {
-                            "type": "HTML",
-                            "src": ""   
+                            "type": "PDF",
+                            "src": "/lg5-common/data-ajax/support/fileDownloadTest.html?filePath=/lg5-common/data-ajax/support&fileName=testPDF.pdf&fileRealName=testPDF.pdf"   
                         }
                     ]
                 },
@@ -32,18 +32,18 @@
                     "file": [
                         {
                             "type": "ZIP",
-                            "src": ""   
+                            "src": "/lg5-common/data-ajax/support/fileDownloadTest.html?filePath=/lg5-common/data-ajax/support&fileName=testPDF.pdf&fileRealName=testPDF.pdf"   
                         },
                         {
-                            "type": "HTML",
-                            "src": ""   
+                            "type": "PDF",
+                            "src": "/lg5-common/data-ajax/support/fileDownloadTest.html?filePath=/lg5-common/data-ajax/support&fileName=testPDF.pdf&fileRealName=testPDF.pdf"   
                         }
                     ]
                 }
             ],
             "listPage": {
                 "view": "Y",
-                "page": 1
+                "page": 2
             }
         },
         "driver": {
