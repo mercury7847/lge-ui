@@ -15,6 +15,10 @@
 		vertical-align:bottom !important;
 	}
 
+	.text-inner + .text-inner {
+		margin-top: 45px;
+	}
+
 	$color: (lightgray, dark, black, white);
 	@each $bg in $color {
 		&.bg-#{$bg} {
@@ -107,17 +111,17 @@
 
 	.btn {
 		display: inline-block;
-		min-width:194px;
-		padding:15px 0;
-		border: 1px solid transparent;
-		border-radius: 4px;
-		background-color: #fff;
-		line-height: 24px;
-		font-weight: 700;
-		font-size: 16px;
-		color: #111;
-		text-align: center;
-		vertical-align: top;
+		//min-width:194px;
+		//padding:15px 0;
+		//border: 1px solid transparent;
+		//border-radius: 4px;
+		//background-color: #fff;
+		//line-height: 24px;
+		//font-weight: 700;
+		//font-size: 16px;
+		//color: #111;
+		//text-align: center;
+		//vertical-align: top;
 
 		&.btn-outline-primary {
 			border-color: #212121;
@@ -160,21 +164,25 @@
 		.visual-wrap {
 			&.image-align-left {
 				@include grid-col(left,6,12);
+				padding: 0 24px;
 			}
 			&.image-align-right {
 				@include grid-col(right,6,12);
+				padding: 0 24px;
 			}
 		}
 		.text-wrap {
 			&.side-left-text {
 				@include grid-col(left,6,12);
+				padding: 0 24px;
 			}
 			&.side-right-text {
 				@include grid-col(right,6,12);
+				padding: 0 24px;
 			}
 			.title {
-				max-height: 104px;
-				@include textEllipsisClamp(2);
+				//max-height: 104px;
+				//@include textEllipsisClamp(2);
 			}
 		}
 	}
@@ -195,8 +203,8 @@
 				@include grid-col(right,4,12);
 			}
 			.title {
-				max-height: 102px;
-				@include textEllipsisClamp(3);
+				//max-height: 102px;
+				//@include textEllipsisClamp(3);
 			}
 		}
 	}
@@ -204,7 +212,8 @@
 	.inner {
 		display:table;
 		@include clearfix;
-		margin:0 -12px;
+		//margin:0 -12px;
+		margin:0 -24px;
 		@include mobile {
 			display:inherit;
 			margin:0 -6px;
@@ -276,19 +285,18 @@
 			display:inherit;
 		}
 		.title {
-			margin-bottom: 28px;
+			margin-bottom: 24px;
 			@include mobile {
 				margin-bottom:18px;
 			}
 			h1, h2, h3, h4, h5, h6 {
 				@include font-family($font-weight-bold);
-				font-size: 40px;
-				line-height: 52px;
+				@include font-large-6;
+				line-height: 64px;
 				@include mobile {
-					font-size:28px;
-					line-height:36px;
+					font-size: 24px;
+					line-height: 33px;
 				}
-
 			}
 		}
 		.small-title {
