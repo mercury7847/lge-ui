@@ -1961,43 +1961,39 @@ $input: (chk, rdo);
     }
 }
 .star-rating-wrap {
-    .ui-rating-wrap {
+    .rating-box {
         font-size:0;
-        > a {
+        .ui-rating-wrap {
             display:inline-block;
-            width:20px;
-            height:20px;
-            font-size:0;
             vertical-align:middle;
-            background:url('/lg5-common/images/icons/icon-star2-off.svg') no-repeat;
-            background-size:100%;
-            & + a {
-                margin-left:4px;
+            > a {
+                display:inline-block;
+                width:20px;
+                height:20px;
+                font-size:0;
+                vertical-align:middle;
+                background:url('/lg5-common/images/icons/icon-star2-off.svg') no-repeat;
+                background-size:100%;
+                & + a {
+                    margin-left:4px;
+                }
+                &.on {
+                    background-image:url('/lg5-common/images/icons/icon-star2-on.svg')
+                }
             }
-            &.on {
-                background-image:url('/lg5-common/images/icons/icon-star2-on.svg')
-            }
+            // .ui-select-label {
+            //     display:inline-block;
+            //     margin-left:8px;
+            //     font-size:16px;
+            //     line-height:25px;
+            //     vertical-align:middle;
+            // }
         }
-        .ui-select-label {
+        .rating-info {
             display:inline-block;
-            margin-left:8px;
-            font-size:16px;
-            line-height:25px;
+            margin-left:16px;
+            @include font-medium;
             vertical-align:middle;
-        }
-    }
-    .star {
-        display:inline-block;
-        width:24px;
-        height:24px;
-        font-size:0;
-        vertical-align:top;
-        background:url('/lg5-common/images/icons/icon-star2-off.svg') no-repeat 100%;
-        & + .star {
-            margin-left:4px;
-        }
-        &.on {
-            background-image:url('/lg5-common/images/icons/icon-star2-on.svg')
         }
     }
 }
