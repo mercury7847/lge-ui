@@ -55,14 +55,14 @@
                 </div>
     
                 @@include('./common/support/login-guide.html', {
-                    'text': '로그인을 하시면 LG전자에서 제공하는 다양한 서비스를 이용할 수 있습니다.'
+                    'text': '로그인을 하시면 LG전자에서 제공하는<br>다양한 서비스를 이용할 수 있습니다.'
                 })
     
                 <div class="anchors-tabs-wrap">
                     <div class="anchors-tabs ui_anchor_sticky">
                         <ul>
                             <!-- 건수 0일 경우 탭 비노출 -->
-                            <li class="on">
+                            <li class="active">
                                 <a href="#manualSec">제품사용설명서 (6)</a>
                             </li>
                             <li>
@@ -80,14 +80,14 @@
                         </ul>
                     </div>
                 </div>
-                <div class="cont-wrap">
-
+                <div class="cont-wrap narrow">
+                    <form id="submitForm">
+                        <input type="hidden" name="category" id="category" value="P1011">
+                        <input type="hidden" name="subCategory" id="subCategory" value="1012">
+                        <input type="hidden" name="modelCode" id="modelCode" value="A50PH">
+                    </form>
                     <div class="section manual-section" id="manualSec" data-ajax="/lg5-common/data-ajax/support/downloadList.json">
-                        <form action="/lg5-common/data-ajax/support/downloadList.json" novalidate>
-                            <input type="hidden" name="page" value="1">
-                            <input type="hidden" name="pagePosition">
-                        </form>
-
+                        <input type="hidden" name="page" id="page" value="1">
                         <div class="tit-wrap">
                             <h2 class="tit">제품사용 설명서 <em id="manualCount" class="point">3</em>건</h2>
                             @@include('./common/modules/bullet-list.html', {
@@ -113,7 +113,6 @@
                                             <!-- // 모바일 기기 선택 노출 -->
                                         </ul>
                                         <div class="btns-area">
-                                            <!-- file 여부 체크 json 형태 예시 : /lg5-common/data-ajax/support/fileCheck.json -->
                                             <a href="/lg5-common/data-ajax/support/fileDownloadTest.html?filePath=/lg5-common/data-ajax/support&fileName=testPDF.pdf&fileRealName=testPDF.pdf" class="btn border size btn-download"><span>PDF</span></a>
                                         </div>
                                     </div>
@@ -127,9 +126,8 @@
                                             <li>English</li>
                                         </ul>
                                         <div class="btns-area">
-                                            <!-- file 여부 체크 json 형태 예시 : /lg5-common/data-ajax/support/fileCheck.json -->
                                             <a href="/lg5-common/data-ajax/support/fileDownloadTest.html?filePath=/lg5-common/data-ajax/support&fileName=testZIP.zip&fileRealName=testZIP.zip" class="btn border size btn-download"><span>ZIP</span></a>
-                                            <a href="http://kr.eguide.lgappstv.com/manual/w16_mr/userguide_w16_mr_k03.html" class="btn border size"><span>HTML</span></a>
+                                            <a href="http://kr.eguide.lgappstv.com/manual/w16_mr/userguide_w16_mr_k03.html" class="btn border size" target="_blank"><span>HTML</span></a>
                                         </div>
                                     </div>
                                 </li>
@@ -200,13 +198,13 @@
                         </div>
                         <div class="tabs-wrap border-type ui_tab left">
                             <ul class="tabs">
-                                <li class="on"><a href="#">전체(200) <em class="blind">선택됨</em></a></li>
-                                <li><a href="#">통합 드라이버 설치프로그램(110)</a></li>
-                                <li><a href="#">칩셋/패치(6)</a></li>
-                                <li><a href="#">비디오(6)</a></li>
-                                <li><a href="#">사운드(3)</a></li>
-                                <li><a href="#">랜(4)</a></li>
-                                <li><a href="#">기타(0)</a></li>
+                                <li class="on"><a href="#" data-value="">전체(200) <em class="blind">선택됨</em></a></li>
+                                <li><a href="#" data-value="통합 드라이버 설치프로그램">통합 드라이버 설치프로그램(110)</a></li>
+                                <li><a href="#" data-value="칩셋/패치">칩셋/패치(6)</a></li>
+                                <li><a href="#" data-value="비디오">비디오(6)</a></li>
+                                <li><a href="#" data-value="사운드">사운드(3)</a></li>
+                                <li><a href="#" data-value="랜">랜(4)</a></li>
+                                <li><a href="#" data-value="기타">기타(0)</a></li>
                             </ul>
                         </div>
                         <div class="driver-list-wrap ui_list_accordion">
@@ -287,7 +285,7 @@
                         @@include('./common/support/pagination.html', {
                             count: 5
                         })
-                        <div class="no-data">
+                        <div class="no-data" style="display:none;">
                             <p>다운로드/소프트웨어 자료가 없습니다.</p>
                         </div>
                     </div>
@@ -295,9 +293,9 @@
                     <div class="section" id="solutionsSec">
                         <form action="" id="solutionsForm">
                             <input type="hidden" name="keyword" id="keyword" value="">
-                            <input type="hidden" name="topic" id="topic" value="LCL10005001">
-                            <input type="hidden" name="subTopic" id="subTopic" value="">
-                            <input type="hidden" name="orderBy" id="orderBy" value="most">
+                            <input type="hidden" name="topic" id="topic" value="topic">
+                            <input type="hidden" name="subTopic" id="subTopic" value="subTopic">
+                            <input type="hidden" name="orderBy" id="orderBy" value="orderBy">
                         </form>
                         
                         <div class="solutions-wrap">
@@ -458,6 +456,11 @@
     <!-- 설치 전 주의사항 및 사용법 팝업 -->
     <article id="fileDetailPopup" class="popup-wrap full">
     </article>
+
+    <!-- 컨텐츠 만족도 평가 팝업 -->
+    @@include('./CS/CSRF6065.html', {
+        'service': true
+    })
     
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>

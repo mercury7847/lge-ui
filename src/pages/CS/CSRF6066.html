@@ -40,7 +40,7 @@
                                 @@include('./common/modules/bullet-list.html', {
                                     "topBorder" : true,
                                     "bulletTxt" : [
-                                        '공기청정 필터를 신청하신 후 신청 결과를 조회하시려면, “공기청정 필터 신청 결과 조회” 화면을 이용하시기 바랍니다. <br class="mo-only"><a href="CSRF6068.html" class="btn-link">공기청정 필터 신청 결과 조회하기</a>'
+                                        '공기청정 필터를 신청하신 후 신청 결과를 조회하시려면, “공기청정 필터 신청 결과 조회” 화면을 이용하시기 바랍니다. <br class="mo-only"><a href="CSRF6066_search.html" class="btn-link">공기청정 필터 신청 결과 조회하기</a>'
                                     ]
                                 })
                             </div>
@@ -284,6 +284,9 @@
              
         @@include('./common/footer.html')
     </div>
+
+    <!-- 환경부, "공기청정기 OIT 항균필터 평가결과” 팝업 -->
+    @@include('./support/modal/air-care-popup.html')
 
     <!-- 공기 청정 필터 신청 미적용 모델 안내 팝업 -->
     @@include('./support/modal/air-care-model-popup.html')

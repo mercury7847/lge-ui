@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/air-care"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '공기청정 필터 신청 결과 조회',
+                'pageDesc': '신청하신 공기청정 필터 접수 내역을 확인해 보세요.',
+                'pageBtn' : [
+                    { 'btn' : '에어컨 3M필터 교체방법 안내' },
+                    { 'btn' : '공기청정기 3M필터 교체방법안내' }
+                ]
+            })
+            <div class="contents support air-care">
+                @@include('./common/support/login-guide.html', {
+                    'text': '로그인을 하시면 더욱 편리하게 이용하실 수 있습니다.<br>개인 정보 자동 입력, 저장해 놓은 제품 선택 등'
+                })
+                <div class="cont-wrap">
+
+                    <div class="section">
+                        <div class="search-info type-A">
+                            <div class="text">
+                                <strong>공기청정 필터 신청을 하시려면 신청화면을 이용하세요!</strong><br>
+                                신청대상 : 공기청정기, 스텐드형 에어컨 중 해당 필터적용 모델
+                            </div>
+                            <a href="CSRF6066.html" class="btn-link">공기청정 필터 신청하기</a>
+                        </div>
+
+                        <div class="form-infos">
+                            <p class="text">무상필터 신청 조회를 위해 접수번호나 휴대전화 인증이 필요합니다.</p>
+                            <p class="req" aria-disabled="true">필수 입력 항목</p>
+                        </div>
+
+                        <div class="double-section">
+                            <div class="sections">
+                                <div class="item">
+                                    <div class="tit-wrap">
+                                        <h2 class="tit">접수번호로 빠르게 조회</h2>        
+                                    </div>
+                                    <!-- 
+                                        1. 접수 내역이 있는 경우
+                                        /lg5-common/data-ajax/support/receptionDetailsSuccess.json
+
+                                        2. 접수 내역이 없는 경우
+                                        /lg5-common/data-ajax/support/receptionDetailsFail.json
+                                     -->
+                                    <form action="/html/CS/CSRF6066_result.html" method="POST" data-ajax="/lg5-common/data-ajax/support/receptionDetailsSuccess.json" id="numberForm" novalidate>
+                                        <div class="form-wrap">
+                                            <div class="forms block-type">
+                                                <div class="tit">
+                                                    <label for="userName1" class="req">이름<span class="blind">필수입력</span></label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="input-wrap">
+                                                        <input type="text" name="userName1" id="userName1" placeholder="이름 입력" data-error-msg="이름을 입력해 주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
+                                                    </div>
+                                                    <div class="btm-more err-block">
+                                                        <p class="err-msg"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="forms block-type">
+                                                <div class="tit">
+                                                    <label for="number" class="req">접수 번호<span class="blind">필수입력</span></label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="input-wrap">
+                                                        <input type="number" name="number" id="number" placeholder="접수 번호 입력" data-error-msg="접수번호를 입력해 주세요." data-required="true" required>
+                                                    </div>
+                                                    <div class="btm-more err-block">
+                                                        <p class="err-msg"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="btn-group center">
+                                            <button type="button" class="btn btn-confirm"><span>확인</span></button>
+                                        </div>
+                                    </form>
+                                </div>
+    
+                                <div class="item">
+                                    <div class="tit-wrap">
+                                        <h2 class="tit">휴대폰 인증으로 한번에 조회</h2>        
+                                    </div>
+                                    <!-- 
+                                        1. 접수 내역이 있는 경우
+                                        /lg5-common/data-ajax/support/receptionDetailsSuccess.json
+
+                                        2. 접수 내역이 없는 경우
+                                        /lg5-common/data-ajax/support/receptionDetailsFail.json
+                                    -->
+                                    <form action="/html/CS/CSRF6066_result.html" method="POST" data-ajax="/lg5-common/data-ajax/support/receptionDetailsSuccess.json" id="phoneForm" novalidate>
+                                        <div class="form-wrap">
+                                            <div class="forms block-type">
+                                                <div class="tit">
+                                                    <label for="userName2" class="req">이름<span class="blind">필수입력</span></label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="input-wrap">
+                                                        <input type="text" name="userName2" id="userName2" placeholder="이름 입력" data-error-msg="이름을 입력해 주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
+                                                    </div>
+                                                    <div class="btm-more err-block">
+                                                        <p class="err-msg"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="forms block-type">
+                                                <div class="tit">
+                                                    <label for="phoneNo" class="req">휴대전화<span class="blind">필수입력</span></label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="box">
+                                                        <div class="input-wrap">
+                                                            <input type="tel" name="phoneNo" id="phoneNo" placeholder="휴대전화 번호 입력" maxlength="11" data-error-msg="휴대전화를 입력해 주세요." data-required="true" required>
+                                                        </div>
+                                                        <div class="cell">
+                                                            <!-- 
+                                                                1. 이름, 휴대전화 유효성 체크 통과 후
+                                                                /lg5-common/data-ajax/support/authSendSuccess.json
+
+                                                                2. 1분 내 인증 번호 발송/재발송 버튼을 2회 째 클릭 시
+                                                                /lg5-common/data-ajax/support/authSendRetry.json
+
+                                                                3. 1분 내 인증 번호/재발송 버튼을 3회 째 선택 시
+                                                                /lg5-common/data-ajax/support/authSendFail.json
+                                                            -->
+                                                            <button type="button" class="btn btn-send" data-ajax="/lg5-common/data-ajax/support/authSendSuccess.json"><span>인증 번호 발송</span></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-wrap">
+                                                        <input type="number" name="authNo" id="authNo" placeholder="인증번호 입력"  data-error-msg="인증번호를 입력해 주세요." data-required="true" disabled required>
+                                                    </div>
+                                                    <div class="btm-more err-block">
+                                                        <p class="err-msg"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="btn-group center">
+                                            <button type="button" class="btn btn-confirm"><span>확인</span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true,
+                                "bulletTxt" : [
+                                    '인증번호가 수신되지 않은 경우 <span class="point">1544-7777이 스팸 처리 되지 않았는지 확인</span>해주시기 바랍니다.'
+                                ]
+                            })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        @@include('./common/support/quick-menu.html')
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- 접수 내역이 없을 경우 -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop1",
+        "msgOnly" : true,
+        "msg" : "입력하신 정보와 일치하는 접수 내역이 없습니다.<br>확인 후 이용 바랍니다."
+    })
+
+    <!-- 인증 번호 발송 버튼을 클릭하지 않고 확인 버튼 눌렀을 경우 -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop2",
+        "msgOnly" : true,
+        "msg" : "인증 번호 발송 버튼을 선택해 주세요."
+    })
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/customVoice/myStatus.min.js"></script>
+</body>
+</html> 
