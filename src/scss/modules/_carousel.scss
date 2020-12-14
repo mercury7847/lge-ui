@@ -3,21 +3,24 @@
 .btn-arrow {
     position:relative;
     display:block;
-    width:56px;
-    height:56px;
-    border-radius:50%;
-    box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+    width:48px;
+    height:48px;
+    padding:4px;
     font-size:0;
-    overflow:hidden;
     &::before {
         content:' ';
         display:block;
-        width:56px;
-        height:56px;
-        background:url('/lg5-common/images/icons/btn-arr-56x56.svg') no-repeat;
+        width:40px;
+        height:40px;
+        border-radius:50%;
+        background:url('/lg5-common/images/icons/btn-arr-40x40.svg') no-repeat;
+        background-size:100%;
+        box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
     }
     &.disabled, &.ui_carousel_hidden {
-        opacity:0.7;
+        &::before {
+            background:url('/lg5-common/images/icons/btn-arr-40x40-2.svg') no-repeat;
+        }
     }
     &.prev {
         &::before {
@@ -47,7 +50,7 @@
         padding:0 6px;
         vertical-align:top;
         @include mobile {
-            padding:0 8px;
+            padding:0 4px;
         }
         .btn-indi {
             display:inline-block;

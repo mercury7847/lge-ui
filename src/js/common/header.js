@@ -69,7 +69,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             $('.mobile-category-container .category').vcSmoothScroll();
 
-            $('.mobile-nav-category.is-depth > a').on('click', function(e){
+            $('.mobile-nav-wrap.is-depth > a').on('click', function(e){
                 e.preventDefault();
 
                 $(this).parent().find('.nav-category-container').toggle();
@@ -329,6 +329,14 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$dimmed.hide();
         }
     });
+
+    // 2020-12-14 추가
+    // $('.marketing-link .ui_carousel_slider').vcCarousel({
+    //     infinite: true,
+    //     swipeToSlide: true,
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1
+    // });
 
     return Header;
 });

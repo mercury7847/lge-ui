@@ -51,13 +51,6 @@
                         <a href="#"><em class="blind">장바구니</em></a>
                         <span class="count">
                             <span class="blind">장바구니 제품 수</span>
-                            99+
-                        </span>
-                    </li>
-                    <li class="notice">
-                        <a href="#"><em class="blind">알림</em></a>
-                        <span class="count">
-                            <span class="blind">읽지 않은 알림 개수</span>
                             9
                         </span>
                     </li>
@@ -86,7 +79,6 @@
 
             @@if (context.mobileCase === "all" || context.mobileCase === "isDepth") {
             <!-- Mobile Depth (동일메뉴 존재) -->
-            <!-- [D] .header-top 에 .mobile-category-depth 추가 -->
             <div class="mobile-nav-wrap is-depth">
                 <a href="#" class="btn-back"><span class="blind">뒤로가기</span></a>
                 <a href="#n" class="nav-item">청소기</a>
@@ -104,7 +96,6 @@
 
             @@if (context.mobileCase === "all" || context.mobileCase === "noneDepth") {
             <!-- Mobile Depth (동일메뉴, 하위메뉴 미존재) -->
-            <!-- [D] .header-top 에 .mobile-category-depth 추가 -->
             <div class="mobile-nav-wrap">
                 <a href="#" class="btn-back"><span class="blind">뒤로가기</span></a>
                 <span class="nav-item">코드제로 A9</span>
@@ -121,58 +112,19 @@
             <span class="line-2"></span>
             <span class="line-3"></span>
             <span class="blind">메뉴 열기</span>
-            <span class="mobile-nav-close">닫기</span>
+            <span class="mobile-nav-close"><span class="blind">닫기</span></span>
         </button>
         <div class="header-bottom" role="navigation">
-            <!-- Mobile 로그인 정보 영역 -->
+            <!-- Mobile 로그인 영역 -->
             <div class="login-mobile">
-                <!-- 로그인 전
-                <div class="logout">
-                    <div class="login-info"><a href="#" class="text">로그인해주세요.</a></div>
-                    <ul class="login-membership-info">
-                        <li>
-                            <a href="#"><span>케어솔루션/케어십<br>가입하기</span></a>
-                        </li>
-                        <li>
-                            <a href="#"><span>제품<br>알아보기</span></a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="title">최근 본 상품</span>
-                                <strong class="text"><em class="number">2</em>개</strong>
-                            </a>
-                        </li>
-                    </ul>
-                </div> -->
-                
+                <!-- 로그인 전 -->
+                <div class="login-info"><a href="#" class="text">로그인해주세요.</a></div>
                 <!-- 로그인 후 -->
-                <div class="login">
-                    <a href="#" class="login-info"><span class="text">이엘지</span>님 안녕하세요</a>
-                    <ul class="login-membership-info">
-                        <li>
-                            <a href="#">
-                                <span class="title">주문/배송</span>
-                                <strong class="text"><em class="number">7</em>개</strong>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="title">케어솔루션/케어십</span>
-                                <strong class="text"><em class="number">2</em>개</strong>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="title">최근 본 제품</span>
-                                <strong class="text"><em class="number">15</em>개</strong>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <div class="login-info"><a href="#" class="text"><span>이엘지</span>님 안녕하세요</a></div>
             </div>
             <div class="nav-wrap">
                 <div class="nav-brand-gate">
-                    <span class="blind">브랜드관</span>
+                    <span class="title">브랜드관</span>
                     <!-- 브랜드 로고 이미지 사용의 경우 -->
                     <ul class="brand-link">
                         <li><a href="#"><img src="/lg5-common/images/header/logo-signature.svg" alt="LG SIGNATURE"></a></li>
@@ -187,14 +139,36 @@
                     </ul>
                     -->
                 </div>
-                <div class="nav-brand-gate-mobile">
-                    <span class="title">브랜드관</span>
-                    <!-- 브랜드 텍스트 -->
-                    <ul class="brand-link">
-                        <li><a href="#"><span>LG SIGNATURE</span></a></li>
-                        <li><a href="#"><span>LG ThinQ</span></a></li>
-                        <li><a href="#"><span>LG Object Collection</span></a></li>
-                    </ul>
+                <!-- Mobile 마케팅 퀵링크 -->
+                <div class="marketing-link">
+                    <div class="ui_carousel_slider">
+                        <div class="items ui_carousel_track">
+                            <div class="ui_carousel_slide">
+                                <a href="#n" class="banner-box">
+                                    <img data-src="/lg5-common/images/header/@slide-banner01-m.jpg" alt="" class="lazyload">
+                                    <div class="banner-text">
+                                        <p class="text">냉온정수기</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="ui_carousel_slide">
+                                <a href="#n" class="banner-box">
+                                    <img data-src="/lg5-common/images/header/@slide-banner01-m.jpg" alt="" class="lazyload">
+                                    <div class="banner-text">
+                                        <p class="text">맥주제조기</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="ui_carousel_slide">
+                                <a href="#n" class="banner-box">
+                                    <img data-src="/lg5-common/images/header/@slide-banner01-m.jpg" alt="" class="lazyload">
+                                    <div class="banner-text">
+                                        <p class="text">LG WATCH W7</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <ul class="nav">
                     <!-- [D] Click, Hover - .active 추가 -->
@@ -274,7 +248,7 @@
                                                         </div>
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">차원이 다른 LG 올레드 AI ThinQ LG 올레드 AI ThinQ LG 올레드 AI ThinQ 올레드 AI ThinQ</p>
@@ -282,7 +256,7 @@
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">차원이 다른<br>LG 올레드 AI ThinQ</p>
@@ -290,7 +264,7 @@
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner03.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">LG 올레드 AI ThinQ</p>
@@ -372,7 +346,7 @@
                                                         </div>
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">썸머 gram 혜택 이벤트</p>
@@ -380,7 +354,7 @@
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">썸머 gram 혜택 이벤트</p>
@@ -486,7 +460,7 @@
                                                         </div>
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">LG DIOS 얼음정수기냉장고<br>구매고객 대상 특별 혜택 이벤트</p>
@@ -494,7 +468,7 @@
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">LG DIOS 얼음정수기냉장고<br>구매고객 대상 특별 혜택 이벤트</p>
@@ -589,7 +563,7 @@
                                                         </div>
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">국내 최초<br>원바디 세탁 건조기</p>
@@ -597,7 +571,7 @@
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">국내 최초<br>원바디 세탁 건조기</p>
@@ -680,7 +654,7 @@
                                                         </div>
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">국내 최초<br>원바디 세탁 건조기</p>
@@ -688,7 +662,7 @@
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">국내 최초<br>원바디 세탁 건조기</p>
@@ -770,7 +744,7 @@
                                                         </div>
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">국내 최초<br>원바디 세탁 건조기</p>
@@ -778,7 +752,7 @@
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">국내 최초<br>원바디 세탁 건조기</p>
@@ -840,7 +814,7 @@
                                                         </div>
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">LG VELVET<br>특별 구매 혜택</p>
@@ -848,7 +822,7 @@
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">LG VELVET<br>특별 구매 혜택</p>
@@ -1021,7 +995,7 @@
                                                         </div>
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">TV 케이블</p>
@@ -1029,7 +1003,7 @@
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">TV 케이블</p>
@@ -1098,7 +1072,7 @@
                                                         </div>
                                                         <div class="items ui_carousel_track">
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">LG Objet Collection<br>브랜드 스토리</p>
@@ -1106,7 +1080,7 @@
                                                                 </a>
                                                             </div>
                                                             <div class="ui_carousel_slide">
-                                                                <a href="none" class="banner-box">
+                                                                <a href="#n" class="banner-box">
                                                                     <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                                     <div class="banner-text">
                                                                         <p class="text">LG Objet Collection<br>브랜드 스토리</p>
@@ -1246,7 +1220,7 @@
                                             </div>
                                             <div class="items ui_carousel_track">
                                                 <div class="ui_carousel_slide">
-                                                    <a href="none" class="banner-box">
+                                                    <a href="#n" class="banner-box">
                                                         <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                         <div class="banner-text">
                                                             <p class="text">차원 다른 전문가의 가전관리<br>LG전자 케어솔루션</p>
@@ -1254,7 +1228,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="ui_carousel_slide">
-                                                    <a href="none" class="banner-box">
+                                                    <a href="#n" class="banner-box">
                                                         <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                         <div class="banner-text">
                                                             <p class="text">차원 다른 전문가의 가전관리<br>LG전자 케어솔루션</p>
@@ -1317,7 +1291,7 @@
                                             </div>
                                             <div class="items ui_carousel_track">
                                                 <div class="ui_carousel_slide">
-                                                    <a href="none" class="banner-box">
+                                                    <a href="#n" class="banner-box">
                                                         <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                         <div class="banner-text">
                                                             <p class="text">LG스타일러<br>제품 활용 팁</p>
@@ -1325,7 +1299,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="ui_carousel_slide">
-                                                    <a href="none" class="banner-box">
+                                                    <a href="#n" class="banner-box">
                                                         <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                         <div class="banner-text">
                                                             <p class="text">LG스타일러<br>제품 활용 팁</p>
@@ -1380,7 +1354,7 @@
                                             </div>
                                             <div class="ui_carousel_track">
                                                 <div class="ui_carousel_slide">
-                                                    <a href="none" class="banner-box">
+                                                    <a href="#n" class="banner-box">
                                                         <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                         <div class="banner-text">
                                                             <p class="text">LG 베스트샵<br>이달의 카드 혜택</p>
@@ -1388,7 +1362,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="ui_carousel_slide">
-                                                    <a href="none" class="banner-box">
+                                                    <a href="#n" class="banner-box">
                                                         <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                         <div class="banner-text">
                                                             <p class="text">LG 베스트샵<br>이달의 카드 혜택</p>
@@ -1545,7 +1519,7 @@
                                             </div>
                                             <div class="ui_carousel_track">
                                                 <div class="ui_carousel_slide">
-                                                    <a href="none" class="banner-box">
+                                                    <a href="#n" class="banner-box">
                                                         <img data-src="/lg5-common/images/header/@slide-banner01.jpg" alt="" class="lazyload">
                                                         <div class="banner-text">
                                                             <p class="text">TV 일부 모델, 파워보드<br>자발적 무상 교체 서비스</p>
@@ -1553,7 +1527,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="ui_carousel_slide">
-                                                    <a href="none" class="banner-box">
+                                                    <a href="#n" class="banner-box">
                                                         <img data-src="/lg5-common/images/header/@slide-banner02.jpg" alt="" class="lazyload">
                                                         <div class="banner-text">
                                                             <p class="text">TV 일부 모델, 파워보드<br>자발적 무상 교체 서비스</p>
@@ -1566,7 +1540,6 @@
                                                 <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                                             </div>
                                         </div>
-                                        jpg
                                     </div>
                                 </div>
                             </div>
@@ -1582,10 +1555,10 @@
                 <!-- // 메뉴 슬라이드 버튼 -->
                 <div class="dimmed"></div>
             </div>
-            <div class="nav-service">
-                <span class="title">기타 서비스</span>
-                <ul class="link-item">
-                    <li><a href="#">내게맞는 제품 찾기</a></li>
+            <div class="shortcut-service-link">
+                <span class="title">바로가기</span>
+                <ul class="links">
+                    <li><a href="#">제품 큐레이션</a></li>
                     <li><a href="#">케어플래너</a></li>
                     <li><a href="#">보유제품 등록</a></li>
                     <li><a href="#">영수증 등록</a></li>
@@ -1594,15 +1567,15 @@
                     <li><a href="#">공지사항</a></li>
                 </ul>
             </div>
-            <div class="nav-site">
-                <ul class="out-link">
+            <div class="nav-outer-link">
+                <ul class="links">
                     <li><a href="#" class="bestshop" target="_blank" title="새창열림">베스트샵</a></li>
                     <li><a href="#" class="business" target="_blank" title="새창열림">B2B</a></li>
                 </ul>
             </div>
             <div class="mobile-nav-banner">
                 <div class="banner-inner">
-                    <img data-src="/lg5-common/images/dummy/@mobile-nav-banner.jpg" alt="" class="lazyload">
+                    <img data-src="/lg5-common/images/header/@banner-m.jpg" alt="" class="lazyload">
                     <div class="banner-text">
                         <span class="title">프리미엄 Zone</span>
                         <span class="copy">LG전자의 차원이 다른<br>프리미엄 라인 가전</span>

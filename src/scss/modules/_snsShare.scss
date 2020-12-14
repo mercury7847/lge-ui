@@ -15,22 +15,25 @@
             }
             .ico-btn {
                 display:block;
-                width:32px;
-                height:32px;
+                min-width:56px;
+                padding-top:34px;
+                color:#767676;
+                @include font-small;
+                text-align:center;
                 &.url {
-                    background:url('/lg5-common/images/icons/icon-url.svg') no-repeat;
+                    background:url('/lg5-common/images/icons/icon-url.svg') center 0 no-repeat;
                     background-size:32px 32px;
                 }
                 &.kk {
-                    background:url('/lg5-common/images/icons/icon-kakao.svg') no-repeat;
+                    background:url('/lg5-common/images/icons/icon-kakao.svg') center 0 no-repeat;
                     background-size:32px 32px;
                 }
                 &.fb {
-                    background:url('/lg5-common/images/icons/icon-facebook.svg') no-repeat;
+                    background:url('/lg5-common/images/icons/icon-facebook.svg') center 0 no-repeat;
                     background-size:32px 32px;
                 }
                 &.tw {
-                    background:url('/lg5-common/images/icons/icon-twitter.svg') no-repeat;
+                    background:url('/lg5-common/images/icons/icon-twitter.svg') center 0 no-repeat;
                     background-size:32px 32px;
                 }
                 // @include mobile {
