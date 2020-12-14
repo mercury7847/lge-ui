@@ -29,10 +29,10 @@
                         msgTarget: '.err-block'
                     },
                     title: {
-                        msgTarget: '.err-msg'
+                        msgTarget: '.err-block'
                     },
                     content: {
-                        msgTarget: '.err-msg'
+                        msgTarget: '.err-block'
                     }
                 }
 
