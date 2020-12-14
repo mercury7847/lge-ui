@@ -1,5 +1,6 @@
 .bullet-list {
     margin-top:16px;
+    padding-left:11px;
     color:#767676;
     @include font-small;
     @include mobile {
@@ -23,11 +24,14 @@
         }
         &::before {
             content:' ';
-            position:absolute;
-            top:11px;
-            left:0;
+            display:inline-block;
+            // position:absolute;
+            // top:11px;
+            // left:0;
             width:3px;
             height:3px;
+            margin-top:11px;
+            margin-left:-11px;
             border-radius:50%;
             background:#767676;
         }
