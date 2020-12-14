@@ -95,28 +95,25 @@
         }
         .tooltip-box {
             top: 34px;
-            min-width: 224px;
-            padding: 15px 16px;
-            border: solid 1px #111111;
-            border-radius: 14px;
-            box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.16);
+            min-width: 332px;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.16);
             line-height: 0;
         }
 
         .title {
             display: block;
-            padding-bottom: 16px;
-            border-bottom: 1px solid $color-default;
             font-weight: 700;
-            @include font-small;
+            @include font-medium;
         }
         .sns-wrap {
-            padding-top: 24px;
+            padding-top: 16px;
             .sns-list {
                 > li {
                     display: inline-block;
                     &:not(:first-child) {
-                        margin-left: 16px;
+                        margin-left: 20px;
                     }
                 }
             }
