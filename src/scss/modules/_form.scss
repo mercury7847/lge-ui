@@ -1961,33 +1961,35 @@ $input: (chk, rdo);
     }
 }
 .star-rating-wrap {
+    .ui-rating-wrap {
+        > a {
+            display:inline-block;
+            width:20px;
+            height:20px;
+            font-size:0;
+            vertical-align:middle;
+            background:url('/lg5-common/images/icons/icon-star2-off.svg') no-repeat;
+            background-size:100%;
+            & + a {
+                margin-left:4px;
+            }
+            &.on {
+                background-image:url('/lg5-common/images/icons/icon-star2-on.svg')
+            }
+        }
+        // .ui-select-label {
+        //     display:inline-block;
+        //     margin-left:8px;
+        //     font-size:16px;
+        //     line-height:25px;
+        //     vertical-align:middle;
+        // }
+    }
     .rating-box {
         font-size:0;
         .ui-rating-wrap {
             display:inline-block;
             vertical-align:middle;
-            > a {
-                display:inline-block;
-                width:20px;
-                height:20px;
-                font-size:0;
-                vertical-align:middle;
-                background:url('/lg5-common/images/icons/icon-star2-off.svg') no-repeat;
-                background-size:100%;
-                & + a {
-                    margin-left:4px;
-                }
-                &.on {
-                    background-image:url('/lg5-common/images/icons/icon-star2-on.svg')
-                }
-            }
-            // .ui-select-label {
-            //     display:inline-block;
-            //     margin-left:8px;
-            //     font-size:16px;
-            //     line-height:25px;
-            //     vertical-align:middle;
-            // }
         }
         .rating-info {
             display:inline-block;
