@@ -85,6 +85,13 @@
                     display:none;
                 }
             }
+            .animation-box {
+                position:absolute;
+                top:0;
+                left:0;
+                right:0;
+                bottom:0;
+            }
         }
         @include mobile {
             .background-area {
@@ -101,11 +108,20 @@
                     }
                 }
             }
+            .animation-box {
+                position:relative;
+                .animation-area {
+                    position:relative;
+                    top:auto;
+                    left:auto;
+                }
+            }
         }
 
         // title area
         .title-wrap {
             position:relative;
+            z-index:10;
             &.align-left, 
             &.align-right {
                 max-width:678px;
@@ -138,6 +154,7 @@
         .text-wrap {
             position:relative;
             margin-top:80px;
+            z-index:10;
             @include mobile {
                 margin-top:0;
                 padding:40px 16px;
