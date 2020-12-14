@@ -19,7 +19,17 @@
         .bg-white : #FFFFFF 색상 배경
         .bg-lightgray : #F4F4F4 색상 배경
         .bg-dark : #333333 색상 배경
-        .bg-black : #000000 색상 배경
+		.bg-black : #000000 색상 배경
+		
+		[carousel 설정]
+		item 10개 이상 일 때 
+		.carousel-box : carousel 활성화
+		.non-carousel-box : carousel 비 활성화
+
+		[.list-box (carousel .item-box 갯수 설정)영역 옵션]
+		.ui_carousel_5_slider : 5개,
+		.ui_carousel_4_slider : 4개,
+		.ui_carousel_3_slider : 3개
 	-->
 	<section class="component KRC0002 @@bg-color">
 		<div class="component-inner">
@@ -27,7 +37,7 @@
 			<div class="title">@@headline</div>
 			<!-- // 1. headline -->
 			
-			<div class="@@if ( context.carousel) {carousel-box} @@if ( !context.carousel) {non-carousel-box} @@item">
+			<div class="vertical-box @@if ( context.carousel) {carousel-box} @@if ( !context.carousel) {non-carousel-box} @@item">
 				<div class="list-box @@if ( context.carousel) {ui_carousel_slider} @@sliderClass">
 					@@if ( context.carousel) {
 					<div class="indi-wrap">

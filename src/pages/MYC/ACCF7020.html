@@ -24,7 +24,7 @@
                                 { "on": "", "page": "방문 알리미" }
                             ]
                         })
-                        <div class="lnb-contents" data-list-url="/lg5-common/data-ajax/mypage/customer/myInquiry.json" data-service-url="/lg5-common/data-ajax/mypage/customer/myInquiryDetail.json" data-detail-url="/lg5-common/data-ajax/mypage/customer/myInquiryDesc.json">
+                        <div class="lnb-contents" data-list-url="/lg5-common/data-ajax/mypage/customer/myInquiry.json" data-service-url="/lg5-common/data-ajax/mypage/customer/myInquiryDetail.json" data-cancel-url="/lg5-common/data-ajax/mypage/customer/myInquiryCancel.json" data-detail-url="/lg5-common/data-ajax/mypage/customer/myInquiryDesc.json">
 							<!-- 상세 -->
 							<div class="filters type2">
 								<!-- filter -->
@@ -272,7 +272,7 @@
 										<p>접수번호 : HA230948WW</p>
 									</div>
 								</div>
-								<div class="section-wrap">
+								<div class="section-wrap detail">
 									<div class="sects">
 										<div class="section-inner">
 											<!-- 예약/결과 정보 -->
@@ -357,52 +357,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
-						</section>
-						<footer class="pop-footer center" ui-modules="Footer">
-							<div class="btn-group">
-								<button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
-								<button type="button" class="btn pink"><span>원문보기</span></button>
-							</div>
-						</footer>
-						<button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-					</article>
-
-					<article id="popupServiceCancel" class="popup-wrap full">
-						<header class="pop-header" ui-modules="Header">
-							<h1 class="tit" id="modal_24_title"><span>출장 서비스 예약</span></h1>
-						</header>
-						<section class="pop-conts common-pop mypage" id="modal_24_content">
-							<div class="custom-step-area">
-								<p class="tit">2020.08.17 11:20에 전문 엔지니어가 방문하여 고장 증상을 해결해드릴 예정입니다.</p>
-								<div class="step-box step4">
-									<div class="step-inner">
-										<div class="bar bar1"></div>
-										<!--
-											현재 단계에 따라 클래스 변경
-											접수 : bar
-											방문예정 : bar bar1
-											처리중 : bar bar2
-											완료 : bar3
-										-->
-									</div>
-									<ul class="step-txt">
-										<li class="comp"><span class="blind"></span>접수</li> <!-- 해당 영역 위치 시 comp 클래스 추가 -->
-										<li class="comp"><span class="blind">현재 단계</span>방문예정</li>
-										<li><span class="blind"></span>처리중</li>
-										<li><span class="blind"></span>처리완료</li>
-									</ul>
-								</div>
-								<div class="info-box engineer">
-									<span class="ico">
-										<img src="/lg5-common/images/MYC/@img-cs-engineer.jpg" alt="">
-									</span>
-									<div class="cont">
-										<p>엔지니어 : 홍길동 / 동대문 서비스센터</p>
-										<p>접수번호 : HA230948WW</p>
-									</div>
-								</div>
-								<div class="section-wrap">
+								<div class="section-wrap cancel">
 									<div class="sects">
 										<div class="section-inner">
 											<!-- 서비스 예약 취소 -->
@@ -424,11 +379,12 @@
 															<dt><label for="cancel01" class="req">예약 취소 사유<span class="blind">필수입력</span></label></dt>
 															<dd>
 																<div class="select-wrap">
-																	<select class="ui_selectbox" id="cancel01" title="예약 취소 사유 선택">
+																	<select class="ui_selectbox" id="cancel01" name="selectReason" title="예약 취소 사유 선택" data-required="true">
 																		<option value="" class="placeholder">예약 취소 사유를 선택해 주세요.</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
-																		<option value="">예약 취소 사유를 선택해 주세요.</option>
-																		<option value="">예약 취소 사유를 선택해 주세요.</option>
+																		<option value="select1">예약 취소 사유를 선택해 주세요.</option>
+																		<option value="select2">예약 취소 사유를 선택해 주세요.</option>
 																	</select>
+																	<p class="err-msg"></p>
 																</div>
 																<div class="input-wrap count">
 																	<textarea class="ui_textcontrol" placeholder="예약 취소 사유를 입력해 주세요." maxlength="100" data-limit="100" data-count-target="#txt-count1"></textarea>
@@ -443,17 +399,280 @@
 										</div>
 									</div>
 								</div>
+								<div class="section-wrap change">
+									<div class="sects">
+										<div class="section-inner">
+											<!-- 서비스 예약 취소 -->
+											<div class="inner-box">
+												<div class="tit-wrap">
+													<p class="inner-tit">서비스 예약 일시</p>
+													<div class="flt-cont">
+														<button type="button" class="btn border size disabled" disabled=""><span>예약일시변경</span></button>
+														<button type="button" class="btn border size"><span>예약취소</span></button>
+													</div>
+												</div>
+												<!-- TBD -->
+												<div class="tbd-box">
+													TBD<br>날짜선택 기획 대기중
+												</div>
+												<!-- //TBD -->
+											</div>
+											<!-- //서비스 예약 취소 -->
+										</div>
+									</div>
+								</div>
 							</div>
 						</section>
 						<footer class="pop-footer center" ui-modules="Footer">
 							<div class="btn-group">
 								<button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
-								<button type="button" class="btn pink"><span>확인</span></button>
+								<button type="button" class="btn pink"><span>원문보기</span></button>
 							</div>
 						</footer>
 						<button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
 					</article>
 
+					<article id="popupServiceProductDetail" class="popup-wrap full">
+						<header class="pop-header">
+							<h1 class="tit"><span>출장 서비스 예약</span></h1>
+						</header>
+						<section class="pop-conts common-pop mypage">
+							<div class="custom-step-area">
+								<p class="tit">조금만 기다려주세요.<br>회수된 의류 건조기는 공장으로 보내져 수리 후 댁에 안전히 설치될 예정입니다.</p>
+								<!-- PC 전용 -->
+								<div class="pc-only">
+									<div class="step-box step8">
+										<div class="step-inner">
+											<div class="bar bar2"></div>
+											<!--
+												현재 단계에 따라 클래스 변경
+												접수 : bar
+												방문예정 : bar bar1
+												회수예정 : bar bar2
+												회수중 : bar3
+												공장입고 : bar4
+												수리중 : bar5
+												배송중 : bar6
+												완료 : bar7
+											-->
+										</div>
+										<ul class="step-txt">
+											<li class="comp"><span class="blind"></span>접수</li> <!-- 해당 영역 위치 시 comp 클래스 추가 -->
+											<li class="comp"><span class="blind"></span>방문예정</li>
+											<li class="comp"><span class="blind">현재 단계</span>회수예정</li>
+											<li><span class="blind"></span>회수중</li>
+											<li><span class="blind"></span>공장입고</li>
+											<li><span class="blind"></span>수리중</li>
+											<li><span class="blind"></span>배송중</li>
+											<li><span class="blind"></span>완료</li>
+										</ul>
+									</div>
+								</div>
+								<!-- //PC 전용 -->
+					
+								<!-- 모바일 전용 -->
+								<div class="mob-only">
+									<div class="step-box step4">
+										<div class="step-inner">
+											<div class="bar bar2"></div>
+											<!--
+												현재 단계에 따라 클래스 변경
+												접수 : bar
+												방문예정 : bar bar1
+												회수예정 : bar bar2
+												회수중 : bar3
+											-->
+										</div>
+										<ul class="step-txt">
+											<li class="comp"><span class="blind"></span>접수</li> <!-- 해당 영역 위치 시 comp 클래스 추가 -->
+											<li class="comp"><span class="blind"></span>방문예정</li>
+											<li class="comp"><span class="blind">현재 단계</span>회수예정</li>
+											<li><span class="blind"></span>회수중</li>
+										</ul>
+									</div>
+									<div class="step-box step4">
+										<div class="step-inner">
+											<div class="bar bar2"></div>
+											<!--
+												현재 단계에 따라 클래스 변경
+												공장입고 : bar
+												수리중 : bar1
+												배송중 : bar2
+												완료 : bar3
+											-->
+										</div>
+										<ul class="step-txt">
+											<li class="comp"><span class="blind"></span>공장입고</li> <!-- 해당 영역 위치 시 comp 클래스 추가 -->
+											<li class="comp"><span class="blind"></span>수리중</li>
+											<li class="comp"><span class="blind"></span>배송중</li>
+											<li><span class="blind"></span>완료</li>
+										</ul>
+									</div>
+								</div>
+								<!-- //모바일 전용 -->
+								<div class="info-box engineer">
+									<span class="ico">
+										<img src="/lg5-common/images/MYC/@img-cs-engineer.jpg" alt="">
+									</span>
+									<div class="cont">
+										<p>엔지니어 : 홍길동 / 동대문 서비스센터</p>
+										<p>접수번호 :  HA230948WW</p>
+									</div>
+								</div>
+								<div class="section-wrap detail">
+									<div class="sects">
+										<div class="section-inner">
+											<!-- 예약/결과 정보 -->
+											<div class="inner-box">
+												<div class="tit-wrap">
+													<p class="inner-tit">예약/결과 정보</p>
+													<div class="flt-cont">
+														<button type="button" class="btn border size"><span>예약일시변경</span></button>
+														<button type="button" class="btn border size"><span>예약취소</span></button>
+													</div>
+												</div>
+												<div class="dl-infolist-wrap">
+													<ul class="lists">
+														<li>
+															<dl>
+																<dt>접수 일시</dt>
+																<dd>2020년 10월 01일 10시 01분</dd>
+															</dl>
+														</li>
+														
+														<li>
+															<dl>
+																<dt>진행상태</dt>
+																<dd><em>답변완료</em></dd>
+															</dl>
+														</li>
+														
+														<li>
+															<dl>
+																<dt>취소 일시</dt>
+																<dd>2020년 10월 01일 10시 01분</dd>
+															</dl>
+														</li>
+														
+														<li>
+															<dl>
+																<dt>서비스 예정 일시</dt>
+																<dd>2020년 10월 01일 10시 01분</dd>
+															</dl>
+														</li>
+														
+														<li>
+															<dl>
+																<dt>제품</dt>
+																<dd>세탁기/스타일러 &gt; 데스크톱/일체형 (모델명 : ABCD-123456)</dd>
+															</dl>
+														</li>
+														
+														<li>
+															<dl>
+																<dt>증상</dt>
+																<dd>버튼/리모컨 &gt; 버튼 잠금 설정</dd>
+															</dl>
+														</li>
+														
+														<li>
+															<dl>
+																<dt>전달 사항</dt>
+																<dd>전달사항 표기</dd>
+															</dl>
+														</li>
+													</ul>
+												</div>
+												<ul class="bullet-list top-border">
+														<li class="b-txt">온라인 접수 취소는 예약 시간 1시간 전까지 가능하며, 접수 내용을 수정하실 경우에는 기접수건을 취소 후 신규로 다시 접수해 주시기 바랍니다.</li>
+														<li class="b-txt">[예약 일시 변경]버튼을 클릭하면 서비스 받으실 날짜, 시간 변경이 가능합니다. 예약 일시 변경은 예약 시간 1시간 전까지 가능하며, 기존 접수건 취소 후 신규로 접수됩니다.</li>
+												</ul>
+											</div>
+											<!-- //예약/결과 정보 -->
+										</div>
+										<div class="gray-box solv">
+											<p class="txt">제품 문제해결 방법을 확인해보세요!<span>선택하신 증상은 제품 문제해결 방법을 통해서 해결이 가능합니다.</span></p>
+											<a href="#">제품 문제해결 방법 확인하기</a>
+										</div>
+									</div>
+								</div>
+
+								<div class="section-wrap cancel">
+									<div class="sects">
+										<div class="section-inner">
+											<!-- 서비스 예약 취소 -->
+											<div class="inner-box">
+												<div class="tit-wrap">
+													<p class="inner-tit">서비스 예약 취소</p>
+													<div class="flt-cont">
+														<button type="button" class="btn border size"><span>예약일시변경</span></button>
+														<button type="button" class="btn border size disabled" disabled><span>예약취소</span></button>
+													</div>
+												</div>
+												<div class="cancel-box">
+													<p>
+														<em>접수하신 <strong>출장 서비스 예약</strong>을 취소하시겠습니까?</em>
+														예약 일시, 엔지니어 변경은 ‘예약 일시 변경’ 에서 가능합니다. 취소 내역은 예약 결과조회/변경에서 조회하실 수 있습니다.
+													</p>
+													<div class="gray-box">
+														<dl>
+															<dt><label for="cancel02" class="req">예약 취소 사유<span class="blind">필수입력</span></label></dt>
+															<dd>
+																<div class="select-wrap">
+																	<select class="ui_selectbox" id="cancel02" name="selectReason" title="예약 취소 사유 선택" data-required="true">
+																		<option value="" class="placeholder">예약 취소 사유를 선택해 주세요.</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
+																		<option value="select1">예약 취소 사유를 선택해 주세요.</option>
+																		<option value="select2">예약 취소 사유를 선택해 주세요.</option>
+																	</select>
+																	<p class="err-msg"></p>
+																</div>
+																<div class="input-wrap count">
+																	<textarea class="ui_textcontrol" placeholder="예약 취소 사유를 입력해 주세요." maxlength="100" data-limit="100" data-count-target="#txt-count2"></textarea>
+																	<span id="txt-count2" class="total"><em>0</em> / 100</span>
+																</div>
+															</dd>
+														</dl>
+													</div>
+												</div>
+											</div>
+											<!-- //서비스 예약 취소 -->
+										</div>
+									</div>
+								</div>
+
+								<div class="section-wrap change">
+									<div class="sects">
+										<div class="section-inner">
+											<!-- 서비스 예약 취소 -->
+											<div class="inner-box">
+												<div class="tit-wrap">
+													<p class="inner-tit">서비스 예약 일시</p>
+													<div class="flt-cont">
+														<button type="button" class="btn border size disabled" disabled><span>예약일시변경</span></button>
+														<button type="button" class="btn border size"><span>예약취소</span></button>
+													</div>
+												</div>
+												<!-- TBD -->
+												<div class="tbd-box">
+													TBD<br>날짜선택 기획 대기중
+												</div>
+												<!-- //TBD -->
+											</div>
+											<!-- //서비스 예약 취소 -->
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</section>
+						<footer class="pop-footer center">
+							<div class="btn-group">
+								<button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
+								<button type="button" class="btn pink"><span>원문보기</span></button>
+							</div>
+						</footer>
+						<button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+					</article>
 
 					<article id="popupDetail" class="popup-wrap full">
 						<header class="pop-header" ui-modules="Header">
