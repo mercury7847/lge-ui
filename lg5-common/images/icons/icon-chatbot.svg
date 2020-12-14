@@ -1,18 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="71px" height="72px" viewBox="0 0 71 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Group</title>
-    <g id="(z)@KRP0005_Sticky-chat_Static" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="KRP0005_Sticky-chat_Static_PC" transform="translate(-1749.000000, -112.000000)">
-            <g id="Chatbot" transform="translate(1749.000000, 112.000000)">
-                <g id="Group">
-                    <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="71" height="72" rx="25"></rect>
-                    <g id="chat_icon" transform="translate(20.000000, 12.000000)">
-                        <rect id="Rectangle" x="0" y="0" width="32" height="32"></rect>
-                        <path d="M3,28 L4.87630456,22.4011352 C1.5222188,17.46697 2.81796423,11.0996217 7.90692258,7.50854886 C12.9958809,3.91747607 20.3056303,4.21227361 25.0036899,8.1980506 C29.7017495,12.1838276 30.33648,18.6290308 26.4882606,23.2727316 C22.6400413,27.9164324 15.4979218,29.3237876 9.78356264,26.5643936 L3,28" id="Path" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="88" height="88" viewBox="0 0 88 88">
+    <defs>
+        <filter id="qch5dm0cwa" width="162.5%" height="162.5%" x="-31.2%" y="-25%" filterUnits="objectBoundingBox">
+            <feOffset dy="4" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="6"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+        </filter>
+        <circle id="abwacfko3b" cx="32" cy="32" r="32"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <g transform="translate(-1808 -896) translate(1820 828) translate(0 76)">
+                                    <use fill="#000" filter="url(#qch5dm0cwa)" xlink:href="#abwacfko3b"/>
+                                    <use fill="#FFF" xlink:href="#abwacfko3b"/>
+                                </g>
+                            </g>
+                        </g>
                     </g>
-                    <text id="챗봇" font-family="AppleSDGothicNeo-Regular, Apple SD Gothic Neo" font-size="12" font-weight="normal" line-spacing="16" fill="#000000">
-                        <tspan x="25.62" y="55">챗봇</tspan>
-                    </text>
+                    <g>
+                        <g>
+                            <path d="M0 0H32V32H0z" transform="translate(-1808 -896) translate(1820 828) translate(0 76) translate(16 16)"/>
+                            <g>
+                                <g>
+                                    <path fill-rule="nonzero" stroke="#222" stroke-width="1.684" d="M14.5 0C22.508 0 29 5.596 29 12.5S22.508 25 14.5 25c-2.379 0-4.623-.494-6.604-1.369l-5.719 1.306.313-5.431C.918 17.508 0 15.096 0 12.5 0 5.596 6.492 0 14.5 0z" transform="translate(-1808 -896) translate(1820 828) translate(0 76) translate(16 16) translate(1.5 3.5)"/>
+                                    <g fill="#EC455A" transform="translate(-1808 -896) translate(1820 828) translate(0 76) translate(16 16) translate(1.5 3.5) translate(5.5 10.5)">
+                                        <rect width="4" height="4" rx="2"/>
+                                        <rect width="4" height="4" x="7" rx="2"/>
+                                        <rect width="4" height="4" x="14" rx="2"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
                 </g>
             </g>
         </g>
