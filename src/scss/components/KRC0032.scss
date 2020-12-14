@@ -18,19 +18,16 @@
 	.usp-banner-wrap {
 		position:relative;
 		@include mobile {
-			padding-top:60px;
+			padding-bottom:50px;
 		}
 
 		// Indicator Area
 		.indi-wrap {
 			position:absolute;
 			left:0;
-			bottom:24px;
-			z-index:2;
+			bottom:20px;
+			z-index:10;
 			width:100%;
-			@include mobile {
-				bottom:30px;
-			}
 			.ui_carousel_dots,
 			.ui_carousel_play {
 				display: inline-block;
@@ -91,7 +88,7 @@
 			.text-area {
 				position:absolute;
 				top:80px;
-				left:50%;
+                left:50%;
 				transform:translateX(-50%);
 				z-index:1;
 				width:100%;
@@ -100,28 +97,16 @@
                 padding:0 80px;
 
 				&.align-top {
-					position: absolute;
 					top: 80px;
-					right: 0;
-					left: 0;
-					transform:translateY(0);
 				}
 				&.align-middle {
-					position: absolute;
 					top: 50%;
-					right: 0;
-					left: 0;
-					transform:translateY(-50%);
+					transform:translateX(-50%) translateY(-50%);
 				}
 				&.align-bottom {
-					position: absolute;
 					top:auto;
-					bottom: -69px;
-					right: 0;
-					left: 0;
-					transform:translateX(0);
+					bottom:80px;
 				}
-
 				@include mobile {
 					position:relative;
 					top:0;
@@ -137,8 +122,45 @@
 						left:auto;
 						transform:none;
 						max-width:none;
-						padding:0 20px;
+						padding:28px 16px 0;
 					}
+                }
+                
+                &.type-wide {
+                    .inner {
+                        width:100%;
+                    }
+                }
+                &.type-narrow {
+                    .inner {
+                        max-width:678px;
+                    }
+                }
+
+                &.box-align-left {
+                    .inner {
+                        margin-right:auto;
+                    }
+                }
+                &.box-align-center {
+                    .inner {
+                        margin-left:auto;
+                        margin-right:auto;
+                    }
+                }
+                &.box-align-right {
+                    .inner {
+                        margin-left:auto;
+                    }
+                }
+                &.text-align-left {
+                    text-align:left;
+                }
+                &.text-align-center {
+                    text-align:center;
+                }
+                &.text-align-right {
+                    text-align:right;
                 }
                 
 				.banner-tit-sup {
@@ -157,7 +179,13 @@
                     @include font-large-1;
 				}
 				.banner-btn {
-					margin-top:24px;
+                    margin-top:24px;
+                    @include mobile {
+                        .btn.border {
+                            display:block;
+                            width:100%;
+                        }
+                    }
                 }
                 .overlay-image {
                     margin-top:24px;
@@ -219,8 +247,7 @@
 				height:1080px;
 				@include mobile {
 					position:relative;
-					height:500px;
-					margin-top:40px;
+					height:360px;
 				}
 				.bg {
 					display:block;
@@ -242,10 +269,16 @@
             left:0;
             right:0;
             z-index:10;
+            @include mobile {
+                top:180px;
+            }
             .inner {
                 padding:0 16px;
                 max-width:1380px + 144px + 32px;
                 margin:0 auto;
+                @include mobile {
+                    padding:0 4px;
+                }
                 .row {
                     position:relative;
                     .btn-arrow {
@@ -263,17 +296,4 @@
             }
         }
 	}
-	&.type-wide {
-		.usp-banner-wrap .carousel-box .text-area {
-			max-width:100%;
-		}
-    }
-    &.type-narrow {
-		.usp-banner-wrap .carousel-box .text-area {
-			max-width:60%;
-			@include mobile {
-				max-width:100%;
-			}
-		}
-    }
 }
