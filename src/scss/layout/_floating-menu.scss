@@ -1,3 +1,24 @@
+.btn-type2 {
+    .btn-inner {
+        display:none;
+        &.open {
+            display:block;
+        }
+    }
+    .floating-menu.chat {
+        bottom:284px;
+        @include mobile {
+            bottom:231px;
+        }
+    }
+    .floating-menu.cs-call {
+        bottom:372px;
+        @include mobile {
+            bottom:319px;
+        }
+    }
+}
+
 .floating-menu {
 	position:fixed;
 	opacity:1;
@@ -22,19 +43,13 @@
         }
     }
 	.back-to-top {
-        width:71px;
-        height:72px;
+        width:88px;
+        height:88px;
 		background:url('/lg5-common/images/icons/icon-top.svg') no-repeat;
-		background-size:71px 72px;
+		background-size:88px 88px;
 		border-radius:50%;
-		margin-top:12px;
+		// margin-top:12px;
         line-height:0;
-
-        @include mobile {
-            width:53.5px;
-            height:54px;
-            background-size:53.5px 54px;
-        }
 
 		button{
 			width:100%;
@@ -51,25 +66,48 @@
 
         @include mobile {
             right:24px;
-            bottom:(56px+54px+9px);
+            bottom:144px;
+        }
+    }
+    &.cs-call {
+        right:100px;
+        bottom:(112px+172px);
+        @include mobile {
+            right:24px;
+            bottom:232px;
+        }
+    }
+    &.more-plus {
+        right:112px;
+        bottom:(112px+72px+28px);
+        @include mobile {
+            right:36px;
+            bottom:155px;
+        }
+    }
+    &.btn3 {
+        right:100px;
+        bottom:460px;
+        @include mobile {
+            right:24px;
+            bottom:407px;
+        }
+    }
+    &.btn4 {
+        right:100px;
+        bottom:548px;
+        @include mobile {
+            right:24px;
+            bottom:495px;
         }
     }
 	.chatbot-linker {
-		width:71px;
-        height:72px;
+		width:88px;
+        height:88px;
 		background:url('/lg5-common/images/icons/icon-chatbot.svg') no-repeat;
-		background-size:71px 72px;
-		border-radius:25px;
-        box-shadow: 7px 7px 18px 0 rgba(0, 0, 0, 0.12);
-
-        @include mobile {
-            width:53.5px;
-            height:54px;
-            background-size:53.5px 54px;
-            border-radius:18.75px;
-            box-shadow: 11px 11px 27px 0 rgba(0, 0, 0, 0.12);
-        }
-
+		background-size:88px 88px;
+		// border-radius:25px;
+        // box-shadow: 7px 7px 18px 0 rgba(0, 0, 0, 0.12);
 		a {
 			display:block;
 			width:100%;
@@ -77,5 +115,46 @@
 			color:#fff;
         }
 	}
-
+    .cs-call-linker {
+        width:88px;
+        height:88px;
+		background:url('/lg5-common/images/icons/icon-cs-call.svg') no-repeat;
+        background-size:88px 88px;
+        a {
+			display:block;
+			width:100%;
+			height:100%;
+			color:#fff;
+        }
+    }
+    .more-plus-linker {
+        position:relative;
+        width:64px;
+        height:64px;
+        border-radius:50%;
+        background-color:#EC455A;
+        box-shadow:0 4px 12px 0 rgba(0, 0, 0, 0.15);
+        transition:opacity 0.8s ease-out, transform 0.5s ease-out;
+        &:before {
+            content:' ';
+            display:block;
+            position:absolute;
+            top:50%;
+            left:50%;
+            width:23px;
+            height:23px;
+            background:url('/lg5-common/images/icons/icon-more-plus-x.svg') no-repeat;
+            background-size:23px 23px;
+            transform:translate(-50%, -50%);
+        }
+        a {
+			display:block;
+			width:100%;
+			height:100%;
+            color:#fff;
+        }
+        &.open {
+            transform:rotate(45deg);
+        }
+    }
 }

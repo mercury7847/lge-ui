@@ -45,15 +45,15 @@
 .engineer-info {
     .engineer-info-box {
         overflow:hidden;
-        padding:20px 20px 32px;
+        padding:12px 12px 24px;
         text-align:center;
-        border-radius:16px;
+        border-radius:8px;
         box-shadow:0px 4px 16px 0 rgba(0, 0, 0, 0.14);
         .image {
             position:relative;
-            width:184px;
-            height:184px;
-            margin:0 auto 24px;
+            width:150px;
+            height:150px;
+            margin:0 auto 16px;
             &:before {
                 content:'';
                 position:absolute;
@@ -70,202 +70,223 @@
             }
         }
         .name {
-            @include font-large-1;
+            @include font-medium;
+            font-weight:$font-weight-bold;
         }
         .center {
-            margin-top:2px;
-            color:#767676;
-            @include font-medium;
+            margin-top:4px;
+            @include font-small;
         }
     }
 }
 
-.appgate-figure {
-    text-align: center;
-    &-img {
-        margin-bottom: 12px;
-        padding: 26px 28px 0 28px;
-    }
-    figcaption {
-        color: #222222;
-        font-size: 16px;
-        line-height: 1.44;
-        strong {
-            font-weight: bold;
-        }
-    }
-
-    &.type-A {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 12px 0;
-        .appgate-figure-img {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 0;
-            padding: 0;
-            img {
-                max-width: 100%;
-                max-height: 100%;
+// App Gate
+.appgate {
+    .cont-wrap {
+        padding-bottom:0;
+        .section {       
+            .form-wrap .forms .conts {
+                .keyword-search {
+                    margin-top:6px;
+                }
+                .err-msg {
+                    margin-top:4px;
+                }
+            }
+            & + .section {
+                margin-top:0;
             }
         }
-        .appgate-figure-title {
-            font-size: 12px;
-            margin-bottom: 8px;
-        }
-        figcaption {
-            text-align: left;
-            padding-right: 40px;
-            flex: 1;
-        }
-    }
-    &-box {
-        background-color: #fff;
-        box-shadow: 0px 6px 30px 0 rgba(0, 0, 0, 0.12);
-        .btn-group {
-            padding: 0 20px 40px;
-            margin-top: 20px;
-        }
-    }
-}
-
-.figure-list {
-    @include clearfix;
-    figure {
-        width: calc((100% - 22px) / 3 );
-        float: left;
-        margin-left: 11px;
-        img {
-            border-radius: 1.1111vw;
-            width:100%;
-        }
-        &:first-child {
-            margin-left: 0;
-        }
-        figcaption {
-            font-size: 12px;
-            text-align: center;
-            margin-top: 6px;
+        @include pc {
+            padding-top:80px;
+            .section {
+                .tit-wrap {
+                    margin-bottom:12px;
+                }
+                .form-wrap .forms .conts {
+                    width:100%;
+                    .keyword-search {
+                        margin-top:8px;
+                    }
+                }
+                & + .section {
+                    margin-top:80px;
+                }
+            }
         }
     }
     &-title {
-        font-size: 12px;
-        margin-bottom: 6px;
-    }
-}
-
-.swipe {
-    &-content {
-        font-size: 12px;
-        display: flex;
-        overflow-x: auto;
-        margin-top: 12px;
-    }
-    &-item {
-        margin-left: 4px;
-        &:first-child {
-            margin-left: 0;
-        }
-    }
-    &-link {
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        background-color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 76px;
-        height: 76px;
-        text-align: center;
-        line-height: 1.62;
-    }
-}
-
-.qr-code {
-    .inquiry-title {
+        margin-bottom:12px;
         .tit {
-            font-size: 16px;
+            @include font-large-2;
+            font-weight:$font-weight-bold;
         }
     }
-    .app-accodian {
-        border-radius: 4px;
-        border: solid 2px #dddddd;
-        background-color: #fff;
-        font-size: 16px;
-        color: #222;
-        .head {
-            padding: 17px 12px;
-            background-color: #f4f4f4;
-            position: relative;
-        }
-        .ui_accord_text {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            right: 16px;
-            display: block;
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            font-size: 0;
-        }
-        .btn_open {
-            .ui_accord_text {
-                border-top: 8px solid #111;
+    &-box {
+        padding:20px 0 32px;
+        border-radius:8px;
+        box-shadow:0.1px 4px 16px 0 rgba(0, 0, 0, 0.14);
+        .product {
+            padding-right:20px;
+            font-size:0;
+            &-img {
+                display:inline-block;
+                width:120px;
+                height:120px;
+                text-align:center;
+                vertical-align:middle;
+                img {
+                    max-width:100%;
+                }
+            }
+            &-info {
+                display:inline-block;
+                width:calc(100% - 120px);
+                vertical-align:middle;
+                .img {
+                    margin-bottom:16px;
+                    img {
+                        max-width:100%;    
+                    }
+                }
+                .category {
+                    margin-bottom:4px;
+                    font-size:12px;
+                    line-height:20px;
+                }
+                .name {
+                    @include font-large-1;
+                    em {
+                        color:#ec455a;
+                        font-weight:$font-weight-bold;
+                    }
+                }
             }
         }
-        .btn_close {
-            .ui_accord_text {
-                border-bottom: 8px solid #111;
+        .appgate-img {
+            img {
+                width:100%;
             }
         }
-        .txt_list {
-            font-weight: 500;
-            padding: 20px 0;
+        .btn-wrap {
+            margin-top:20px;
+            padding:0 20px;
+            .btn {
+                width:100%;
+            }
+        }
+    }
+    .service-list {
+        display:flex;
+        overflow-x: auto;
+        margin-top:16px;
+        margin-right:-16px;
+        ul {
+            display:flex;
             li {
-                > a {
-                    padding: 12px 16px;
-                    display: flex;
-                    align-items: center;
-
-                    &::after {
-                        content: '';
-                        display: inline-block;
-                        width: 14px;
-                        height: 24px;
-                        background: url(/lg5-common/images/icons/icon-btn-arrow-right2.svg) no-repeat center;
-                        background-size: 150%;
-                        margin-left: 8px;
+                width:77px;
+                height:77px;
+                border:1px solid #ddd;
+                border-radius: 4px;
+                a {
+                    display:block;
+                    height:100%;
+                    padding:0 10px;
+                    font-size:0;
+                    line-height:77px;
+                    text-align:center;
+                    span {
+                        display:inline-block;
+                        @include font-small;
+                        vertical-align:middle;
+                        word-break:break-all;
                     }
                 }
-                &:first-child {
-                    > a {
-                        padding-top: 0;
-                    }
-                }
-                &:last-child {
-                    > a {
-                        padding-bottom: 0;
-                    }
+                & + li {
+                    margin-left:4px;
                 }
             }
         }
-        @include mobile {
+    }
+    &-banner {
+        border-top:12px solid #f4f4f4;
+        @include pc {
+            margin-top:80px;
+            border-top:0;
+        }
+        img {
+            width:100%;
         }
     }
-    .swipe-content {
-        padding-bottom: 40px;
+}
+
+// 접수 제품 및 설치 환경 사진 등록
+.issue-register {
+    .cont-wrap {
+        @include mobile {
+            padding-bottom:0;
+            .btn-group {
+                padding:0;
+                .btn {
+                    border-radius:0;
+                }
+            }
+        }
     }
 }
-
-.banner-figure {
-    margin-top: 40px;
+.logo span {
+    display:block;
+    width:90px;
+    height:24px;
+    background-image:url(/lg5-common/images/header/logo.svg);
+    background-size:100% 100%;
+    @include mobile {
+        span {
+            width:84px;
+            height:22px;
+        }
+    }
 }
-
-@include mobile {
-    img {
-        max-width: 100%;
+.example-desc {
+    margin-bottom:6px;
+    @include font-small;
+    font-weight:$font-weight-bold;
+}
+.example-box {
+    @include clearfix;
+    .item {
+        float:left;
+        width:calc((100% - 16px) / 3);
+        & + .item {
+            margin-left:8px;
+        }
+        .img {
+            overflow:hidden;
+            border-radius:8px;
+            img {
+                width:100%;
+            }
+        }
+        .tit {
+            margin-top:6px;
+            @include font-small;
+            font-weight:$font-weight-medium;
+            text-align:center;
+        }
+    }
+}
+.upload-box {
+    @include clearfix;
+    .item {
+        width:calc(50% - 4px);
+        float:left;
+        & + .item {
+            margin-left:8px;
+        }
+    }
+    .upload-tit {
+        margin-bottom:8px;
+        @include font-small;
+        font-weight:$font-weight-bold;
     }
 }

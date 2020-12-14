@@ -6,17 +6,49 @@
         "regNumber": "S2009354211",
         "progress": "답변중",
         "progressLevel": "2",
-        "category": "칭찬합니다",
-        "title": "타이틀 아티을",
-        "date": "20200911 14:30",
-        "desc": "내용 내용 내용",
-        "product": "1prod>2prod",
-        "productName": "OLED48CXKNA",
-        "reply": {
-            "title": "답변 타이틀 아티을",
-            "date": "20200911 14:30",
-            "desc": "답변 내용 내용 내용"
-        }
-
+        "listData": [
+            {
+                "title": "구분",
+                "desc": "칭찬합니다."
+            },
+            {
+                "title": "접수일시",
+                "desc": "2020년 10월 2일 11시 01분"
+            },
+            {
+                "title": "진행 상태",
+                "desc": "<em>답변중</em>"
+            },
+            {
+                "title": "제품",
+                "desc": "1depth > 2depth"
+            },
+            {
+                "title": "모델명",
+                "desc": "OLED48CXKNA111"
+            },
+            {
+                "title": "제목",
+                "desc": "타이틀 아티을"
+            },
+            {
+                "title": "내용",
+                "desc": "내용 내용 내용"
+            }
+        ],
+        "reply":[
+            {
+                "title": "제목",
+                "desc": "답변 타이틀 아티을"
+            },
+            {
+                "title": "내용",
+                "desc": "답변 내용 내용 내용"
+            },
+            {
+                "title": "답변일시",
+                "desc": "2020년 10월 3일"
+            }
+        ]
     }
 }

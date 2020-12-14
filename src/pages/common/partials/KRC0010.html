@@ -19,6 +19,10 @@
         기본 : 텍스트 영역이 상단
         .type-bottom : 이미지 영역이 상단인 경우 (type-bottom 클래스도 추가 하고 마크업 순서로 바뀝니다)
 
+        3. Stage size
+        .stage-wide : visual width 1600px;
+        .stage-medium : visual width 1380px;
+
         [.text-area 옵션]
         1. 텍스트 가로 정렬
         .align-left : 왼쪽 정렬 (기본 - 클래스 생략 가능)
@@ -52,7 +56,8 @@
         .align-right : 오른쪽 정렬
         .align-center : 중앙 정렬
     -->
-    <section class="component KRC0010 @@component.type-class @@component.bg-color">
+    <section class="component KRC0010 @@component.type-class @@component.bg-color @@component.stageSize">
+        @@if ( context.textPosition == "top" ) {
         <div class="text-area @@text-area.align-class">
             <div class="inner">
                 <!-- 1. headline -->
@@ -64,19 +69,20 @@
                 </div>
                 <!-- // 2. body copy -->
                 <!-- 3. cta -->
+                <!-- [KR수정_201214] cta 관련 DOM 전체 수정 -->
                 <div class="cta">
-                    <div class="btn-type-box">
-                        <span><a href="#none" class="btn btn-outline-primary btn-lg" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01">문의하기</a></span>
-                        <span><a href="#none" class="btn btn-primary btn-lg" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01">문의하기</a></span>
-                    </div>
-                    <div class="btn-type-text">
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01">텍스트 링크 버튼</a></span>
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01">텍스트 링크 버튼</a></span>
-                    </div>
+                    <a href="#none" class="btn border size-m" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>문의하기</span></a>
+                    <a href="#none" class="btn border size-m" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>문의하기</span></a>
                 </div>
+                <div class="cta">
+                    <a href="#none" class="text-link" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>텍스트 링크 버튼</span></a>
+                    <a href="#none" class="text-link" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>텍스트 링크 버튼</span></a>
+                </div>
+                <!-- // [KR수정_201214] cta 관련 DOM 전체 수정 -->
                 <!-- // 3. cta -->
             </div>
         </div>
+        }
         <div class="drag-area desktop @@title-style" data-handle-title="Move the slider to see more!">
             <!-- 4. image 1 (데스크탑용) -->
             <img src="@@visual.img" alt="" />
@@ -110,7 +116,37 @@
             <!-- // 5. image 2 -->
         </div>
         <!-- 7. disclaimer -->
-        <div class="disclaimer @@disclaimer.font-class @@disclaimer.font-style @@disclaimer.align-class">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+        <!-- [KR수정_201214] disclaimer DOM 수정 -->
+        <ul class="bullet-list">
+            <li class="b-txt">이해를 돕기 위하여 연출된 이미지입니다.</li>
+        </ul>
+        <!-- // [KR수정_201214] disclaimer DOM 수정 -->
         <!-- // 7. disclaimer -->
+        @@if ( context.textPosition == "bottom" ) {
+        <div class="text-area @@text-area.align-class">
+            <div class="inner">
+                <!-- 1. headline -->
+                <div class="title" id="title01">@@headline</div>
+                <!-- // 1. headline -->
+                <!-- 2. body copy -->
+                <div class="body-copy @@body-copy.font-class @@body-copy.font-style">
+                    어두운 밤하늘 위로 촘촘하게 빛나는 별 하나까지 또렷하게 표현하는 올레드만의 섬세한 빛 조절.<br>빛번짐 없이 픽셀 하나하나를 컨트롤 할 수 있는 올레드는 8K를 위한 최적의 디스플레이입니다.
+                </div>
+                <!-- // 2. body copy -->
+                <!-- 3. cta -->
+                <!-- [KR수정_201214] cta 관련 DOM 전체 수정 -->
+                <div class="cta">
+                    <a href="#none" class="btn border size-m" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>문의하기</span></a>
+                    <a href="#none" class="btn border size-m" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>문의하기</span></a>
+                </div>
+                <div class="cta">
+                    <a href="#none" class="text-link" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>텍스트 링크 버튼</span></a>
+                    <a href="#none" class="text-link" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>텍스트 링크 버튼</span></a>
+                </div>
+                <!-- // [KR수정_201214] cta 관련 DOM 전체 수정 -->
+                <!-- // 3. cta -->
+            </div>
+        </div>
+        }
     </section>
 </div>

@@ -41,11 +41,18 @@
         lgkorUI.showLoading();
         lgkorUI.requestAjaxDataPost(url, param, function(result) {
             var data = result.data;
-            var obj = {title:'평가해 주셔서 감사합니다.'};
+            var obj = {
+                title:'평가해 주셔서 감사합니다.',
+                ok: function() {    
+                    CS.UI.$surveyWrap.find('#rating').vcStarRating('selectedIndex', 0);
+                    CS.UI.$surveyWrap.find('#ratingContent').val('');
+                }
+            };
             var desc = '더 나은 콘텐츠를 제공해 드리기 위한 자료로 활용합니다.';
 
             if (data.resultFlag == 'Y') {
-
+                $('#score').html(data.score);
+                $('#count').html(data.count);
             } else {
                 obj = $.extend(obj, {
                     title: data.resultMessage
