@@ -20,7 +20,7 @@
             </div>
             <div class="header-wrap">
                 <div class="header-top">
-                    <div class="logo"><a href="#"><em class="blind">LG전자</em></a></div>   
+                    <div class="logo"><span><em class="blind">LG전자</em></span></div>   
                 </div>
             </div>
         </header>
@@ -29,7 +29,7 @@
                 'pageTitle': '접수 제품 및 설치 환경 사진 등록',
                 'pageDesc': '고장증상이나 설치 환경을 촬영하여 등록해주세요.<br>서비스 엔지니어가 더욱 빠르고 안전한 서비스를 제공합니다.'
             })
-            <div class="contents support">
+            <div class="contents support issue-register"> 
                 <div class="cont-wrap">
                     <!-- 
                         성공 시
@@ -73,9 +73,10 @@
                                 "resultFlag": "N",
                                 "resultMessage": "잘못된 접수 번호 입니다.",
                                 "successCount": 0
-                            } 
+                            }
+                        성공 시 support main으로 이동 
                     -->
-                    <form id="submitForm" data-ajax="/lg5-common/data-ajax/support/issueRegister.json">
+                    <form action="/html/CS/CSRF6001.html" id="submitForm" data-ajax="/lg5-common/data-ajax/support/issueRegister.json" novalidate>
                         <input type="hidden" name="registerNo" id="registerNo" value="102011">
 
                         <div class="section">

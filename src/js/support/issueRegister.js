@@ -71,6 +71,7 @@
                             obj = {title: '2개 사진이 등록 되었습니다.'};
                         }
                     }
+                    location.href = $('#submitForm').attr('action');
                 } else if (data.resultFlag == 'N') {
                     obj = {title: '사진 업로드에 실패했습니다.'};
                     desc = data.resultMessage
