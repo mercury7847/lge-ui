@@ -66,9 +66,6 @@
                 });
 
                 this.bindEvent();
-                // this.filterList(); //삭제 예정
-                // this.solutionsList(); //삭제 예정
-                // $('.pagination').pagination();
             },
             filterSelect: function(code) {
                 var self = this;
@@ -108,34 +105,20 @@
                 var self = this,
                     param = self.$form.serialize();
 
-                $.ajax({
-                    url: '/lg5-common/data-ajax/support/solutionsList.json',
-                    method: 'POST',
-                    dataType: 'json',
-                    data: param,
-                    beforeSend: function(xhr) {
-                        lgkorUI.showLoading();
-                    },
-                    success: function(d) {
-                        if (d.status) {
-                            var data = d.data,
-                                html = "";
+                lgkorUI.showLoading();
+                lgkorUI.requestAjaxDataPost('/lg5-common/data-ajax/support/solutionsList.json', param, function(result){
+                    var data = result.data,
+                        html = '';
                             
-                            data.solutionsList.forEach(function(item) {
-                                html += vcui.template(solutionsTemplate, item);
-                            });
+                    data.listData.forEach(function(item) {
+                        html += vcui.template(solutionsTemplate, item);
+                    });
 
-                            $('#count').html(data.pageInfo.totalCount);
-                            $('#solutionsContent').html(html);
-                            $('.pagination').pagination('update', data.pageInfo);
-                        }
-                    },
-                    error: function(err){
-                        console.log(err);
-                    },
-                    complete: function() {
-                        lgkorUI.hideLoading();
-                    }
+                    $('#count').html(data.pageInfo.totalCount);
+                    $('#solutionsContent').html(html);
+                    $('.pagination').pagination('update', data.listPage);
+
+                    lgkorUI.hideLoading();
                 });
             },
             filterList: function() {

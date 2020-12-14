@@ -2,7 +2,7 @@
     "status": true,
     "message":null,
     "data": {
-        "solutionsList":[
+        "listData":[
             {
                 "title": "노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀",
                 "topic": "증상 > 세부 증상",
@@ -65,13 +65,9 @@
                 "view": "5,692"
             }
         ],
-        "pageInfo":{
-            "page":2,
-            "startPage":1,
-            "endPage":5,
-            "totalCount":59,
-            "prevBtn":false,
-            "nextBtn":true
+        "listPage": {
+            "page": 1,
+            "totalCount": 12
         }
     }
 }

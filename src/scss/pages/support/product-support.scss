@@ -1421,7 +1421,7 @@
                 min-height:86px;
                 background:#fff;
                 ul {
-                    max-width:1146px + 40px;
+                    max-width:1146px + 80px;
                     min-height:86px;
                     margin:0 auto;
                     padding:24px 40px;
@@ -1444,7 +1444,7 @@
                             line-height:30px;
                             border-radius:19px;
                         }
-                        &.on {
+                        &.active {
                             a {
                                 color:#222;
                                 background:#f4f4f4;
@@ -1479,7 +1479,6 @@
             }
         }
         .cont-wrap {
-            max-width:1146px + 40px;
             padding:48px 40px 80px;
         }
         
