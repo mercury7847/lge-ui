@@ -108,7 +108,10 @@
             position:relative;
             &.align-left, 
             &.align-right {
-                max-width:50%;
+                max-width:678px;
+                @include mobile {
+                    max-width:100%;
+                }
             }
             &.align-right {
                 margin-left:auto;
@@ -166,6 +169,14 @@
                 }
                 &:first-child {
                     margin-top:0;
+                }
+                .visual-area.video {
+                    margin-bottom:16px;
+                    img {
+                        width:100%;
+                        height:auto;
+                        vertical-align:top;
+                    }
                 }
                 .thumb-area {
                     margin-bottom:16px;
