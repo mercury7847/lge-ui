@@ -38,6 +38,7 @@
         text-align:center;
         background:url(/lg5-common/images/CS/bg-login-guide.jpg) no-repeat;
         background-position:center;
+        margin-bottom: 40px;
         .txt {
             max-width:590px;
             margin:0 auto 16px;
@@ -50,6 +51,7 @@
             padding:16px;
             background-image:url(/lg5-common/images/CS/bg-login-guide-m.jpg);
             background-size:cover;
+            margin-bottom: 0;
             .txt {
                 max-width:none;
                 margin-bottom:12px;
@@ -571,7 +573,63 @@
             }
         }
     }
-}
+    .search-info {
+        background-color: #f4f4f4;
+        text-align: center;
+        padding: 32px 0;
+        border-radius: 8px;
+        margin-bottom: 80px;
+        .tit {
+            margin-bottom:16px;
+            font-size:20px;
+            font-weight:700;
+            line-height:24px;
+        }
+        .desc {
+            font-size:16px;
+            line-height:24px;
+            .point {
+                color:#ec455a;
+            }
+        }
+        &.type-A {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 48px;
+            margin-bottom: 40px;
+            text-align: left;
+            .text {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+        }
+        @include mobile {
+            padding: 20px 16px;
+            margin-bottom: 40px;
+            .tit {
+                margin-bottom:12px;
+                font-size:16px;
+                line-height:24px;
+            }
+            .desc {
+                font-size:14px;
+                line-height:18px;
+            }
+            &.type-A {
+                display: block;
+                padding: 20px 24px;
+                margin-bottom: 32px;
+                .text {
+                    font-size: 14px;
+                }
+                .btn-link {
+                    margin-top: 12px;
+                }
+            }
+        }
+    }
+} //support
 
 
 /* 정리 중 추가 금지 (꼭 필요할 경우에만 사용) */
