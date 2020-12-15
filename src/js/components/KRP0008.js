@@ -46,7 +46,7 @@
                 //PDP모달
                 self.$popPdpVisual = $('#pop-pdp-visual');
                 //PDP모달 360
-                self.$popPdpVisual360 = self.$popPdpVisual.find('#modal_detail_target div.item.active');
+                self.$popPdpVisual360 = self.$popPdpVisual.find('#modal_detail_target div.item.r360');
                 //PDP모달 이미지타입
                 self.$popPdpVisualImage = self.$popPdpVisual.find('#modal_detail_target div.item.image');
                 //PDP모달 비디오타입
@@ -155,9 +155,10 @@
                 });
 
                 //모바일용 갤러리 클릭
-                self.$pdpMobileSlider.on('click', function(e){ 
+                self.$pdpMobileSlider.on('click', 'a', function(e){ 
+                    console.log('click');
                     e.preventDefault();
-                    var index = $(this).find(".ui_carousel_current").attr("data-ui_carousel_index");
+                    var index = $(this).parents(".ui_carousel_current").attr("data-ui_carousel_index");
                     self.openVisualModal(index); 
                 });
 
