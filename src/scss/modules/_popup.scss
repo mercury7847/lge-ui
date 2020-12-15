@@ -936,19 +936,17 @@
                         }
                     }
                 }
-                &.type-A {
-                    padding-top: 64px;
-                    @include mobile {
-                        padding-top:60px;
-                    }
-                    p {
-                        @include font-medium;
-                    }
-                    ul {
-                        margin-top: 16px;
-                    }
+            }
+
+            .example-result {
+                padding-top: 64px;
+                @include mobile {
+                    padding-top:60px;
                 }
-                .example-img {
+                .txt {
+                    @include font-medium;
+                }
+                .img {
                     margin-top:16px;
                     img {
                         width:100%;
@@ -960,13 +958,6 @@
             
             .category-select {
                 margin-top: 24px;
-            }
-            
-            .nodata {
-                margin-top: 16px;
-                img {
-                    max-width: 100%;
-                }
             }
         }
     }

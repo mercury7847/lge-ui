@@ -2,49 +2,49 @@ $(window).ready(function(){
     if(!document.querySelector('.KRP0031')) return false;
 
     $('.KRP0031').buildCommonUI();
+    var register = {
+        searchKeyword: {
+            msgTarget: '.err-block',
+            minLength: 2
+        }
+    };
+    var validation;
 
     var KRP0031 = {
         init: function() {
+            var self = this;
 
-            this.$el = $('.KRP0031');
-            this.$form = this.$el.find('#searchForm');
-            this.$keyword = this.$form.find('input[type="text"]');
-            this.$button = this.$form.find('.btn-search');
-            this.$error = this.$form.find('.err-msg');
+            self.$el = $('.KRP0031');
+            self.$form = self.$el.find('#searchForm');
+            self.$keyword = self.$form.find('input[type="text"]');
+            self.$button = self.$form.find('.btn-search');
 
-            this.bindEvent();
+            vcui.require(['ui/validation'], function () {
+                validation = new vcui.ui.Validation('#searchForm',{register:register});
+                lgkorUI.searchModelName();
+                self.bindEvent();
+            });
         },
-        searchModel: function(param) {
-            var _self = this,
-                length = (param || '').length;
+        searchModel: function() {
+            var self = this
 
-            if (length > 1) {
-                _self.$keyword.closest('.input-wrap').removeClass('error');
-                _self.$error.hide();
-                
-                _self.$form.submit();
-            } else {
-                _self.$keyword.closest('.input-wrap').addClass('error');
-                _self.$error.text('두 글자 이상 검색 키워드를 입력하시기 바랍니다.');
-                _self.$error.show();
-            }
+            var result = validation.validate();
+            if (result.success) {
+                self.$form.submit();
+            } 
         },
         bindEvent: function() {
-            var _self = this;
+            var self = this;
 
-            _self.$keyword.on('keydown', function(e) {
-                var param = $(this).val();
-                
+            self.$keyword.on('keydown', function(e) {
                 if (e.keyCode == 13) {
                     e.preventDefault();
-                    _self.searchModel(param);
+                    self.searchModel();
                 }
             });
 
-            _self.$button.on('click', function() {
-                var param = _self.$keyword.val();
-
-                _self.searchModel(param);
+            self.$button.on('click', function() {
+                self.searchModel();
             });
         }
     }

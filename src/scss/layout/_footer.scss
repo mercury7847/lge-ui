@@ -114,12 +114,13 @@ footer {
                                     content:' ';
                                     position:absolute;
                                     top:50%;
-                                    right:0;
-                                    width:8px;
-                                    height:8px;
-                                    margin-top:-4px;
+                                    right:2px;
+                                    width:16px;
+                                    height:16px;
+                                    margin-top:-8px;
                                     background:url('/lg5-common/images/icons/icon-plus-16.svg') center no-repeat;
                                     background-size:100%;
+                                    transition:all 0.3s;
                                 }
                                 &:only-child {
                                     &::after {
@@ -152,11 +153,8 @@ footer {
                             }
                             &.on {
                                 .dep2 {
-                                    &::before {
-                                        transform:rotate(135deg);
-                                    }
                                     &::after {
-                                        transform:rotate(45deg);
+                                        transform:rotate(135deg);
                                     }
                                     a {
                                         text-decoration:underline;
@@ -440,6 +438,12 @@ footer {
                             border-radius:4px;
                             background:#fff;
                             box-shadow:2px 4px 12px 0 rgba(#000, .16);
+                            @include mobile {
+                                top:46px;
+                                left:0;
+                                right:0;
+                                transform:translateX(0);
+                            }
                             li {
                                 a {
                                     display:block;
@@ -565,7 +569,7 @@ footer {
                 .foot-last {
                     position:absolute;
                     right:0;
-                    bottom:7px;
+                    bottom:0;
                     @media screen and (max-width:1200px) {
                         position:relative;
                         right:auto;
@@ -578,20 +582,28 @@ footer {
                     .ismsp {
                         position:relative;
                         display:inline-block;
-                        padding-left:67px;
+                        padding:8px 0 8px 72px;
                         color:#222;
                         @include font-small;
                         font-weight:700;
+                        @include mobile {
+                            padding:0 0 0 40px;
+                        }
                         &::before {
                             content:' ';
                             position:absolute;
                             top:50%;
                             left:0;
-                            width:55px;
-                            height:40px;
-                            margin-top:-20px;
+                            width:64px;
+                            height:64px;
+                            margin-top:-32px;
                             background:url('/lg5-common/images/img-ismsp.png') center no-repeat;
                             background-size:100%;
+                            @include mobile {
+                                width:32px;
+                                height:32px;
+                                margin-top:-16px;
+                            }
                         }
                     }
                 }

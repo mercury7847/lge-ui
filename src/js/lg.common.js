@@ -816,6 +816,40 @@
             }
 
             return id;
+        },
+
+        searchModelName: function(){
+            vcui.require([
+                'ui/selectTarget'
+            ], function () {
+                $('.ul_select_target').vcSelectTarget({
+                    callback: function(data, target) {
+                        var $this = this.$el;
+                        var $target = $(target);
+
+                        $target.off('change.modeName').on('change.modeName', function() {
+                            var url = $('.category-select').data('ajax'),
+                                categoryVal = $this.val(),
+                                subcategoryVal = $(this).val(),
+                                param;
+
+                            if (subcategoryVal) {
+                                param = {
+                                    category: categoryVal,
+                                    subCategory: subcategoryVal
+                                };
+
+                                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                                    var data = result.data;
+
+                                    $('.example-result .txt').html(data.text);
+                                    $('.example-result .img img').attr('src', data.imgPath);
+                                });
+                            }
+                        });
+                    }
+                });
+            });
         }
     }
 
