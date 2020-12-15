@@ -438,9 +438,29 @@
             color:#222;
             border-color:#222;
         }
+        &.bc-black-to-white {
+            @include pc {
+                color:#222;
+                border-color:#222;
+            }
+            @include mobile {
+                color:#fff;
+                border-color:#fff;
+            }
+        }
         &.bc-white {
             color:#fff;
             border-color:#fff;
+        }
+        &.bc-white-to-black {
+            @include pc {
+                color:#fff;
+                border-color:#fff;
+            }
+            @include mobile {
+                color:#222;
+                border-color:#222;
+            }
         }
     }
 
