@@ -1,0 +1,26 @@
+
+<li class="items @@itemAlign @@textAlign @@imgAlign ui_carousel_slide">
+	<div class="item-inner">
+		@@if (context.imgTop) {
+			<div class="img-area">
+				<img src="/lg5-common/images/KRC0041/@img-444x250.png" alt="">
+				<p class="hidden pc">graphic description : </p>
+			</div>
+		}
+		<h2 class="title">@@title</h2>
+		@@if (context.subTitle) {
+		<p class="sub-title">@@subTitle</p>
+		}
+		@@if (context.bodyCopy) {
+		<p class="body-copy">@@bodyCopy</p>
+		}
+		@@if (context.imgBtm) {
+			<div class="img-area">
+				<img src="/lg5-common/images/KRC0041/@img-444x250.png" alt="">
+			</div>
+		}
+		@@if (context.disclaimer) {
+		<p class="disclaimer">@@disclaimer</p>
+		}
+	</div>
+</li>
