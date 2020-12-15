@@ -28,7 +28,7 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
             if(self.$mobileLinks == null){
                 var toggleList = [];
                 var itemList = {};
-                self.$el.find('.link-wrap .link-section h5').each(function(idx, item){
+                self.$el.find('.link-wrap .link-section div.dep1').each(function(idx, item){
                     if(!$(item).hasClass('hidden')){
                         toggleList.push($(item).clone());
 
