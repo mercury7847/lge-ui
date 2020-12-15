@@ -1,0 +1,30 @@
+// 제품리스트(gray-box list, script)
+.breadcrumb {
+	border-top: 1px solid $color-border;
+	ul {
+		max-width: 1760px;
+		margin: 0 auto;
+		padding: 8px 40px 0;
+		font-size:0;
+		> li {
+			display:inline-block;
+			a {
+				@include font-x-small;
+				font-weight:500;
+			}
+		}
+		> li + li:before {
+			content:' ';
+			display:inline-block;
+			width:16px;
+			height:16px;
+			margin:0 4px;
+			background:url('/lg5-common/images/icons/btn_arrow_right_16.svg') no-repeat 0 0;
+			vertical-align:-4px;
+		}
+	}
+	@include mobile {
+		display:none;
+	}
+	
+}
