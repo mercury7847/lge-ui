@@ -66,9 +66,9 @@ footer {
                             &::after {
                                 content:' ';
                                 display:inline-block;
-                                width:14px;
-                                height:18px;
-                                margin-left:2px;
+                                width:16px;
+                                height:16px;
+                                margin-left:4px;
                                 background:url('/lg5-common/images/icons/icon-blank-arr.svg') center no-repeat;
                                 background-size:100%;
                                 vertical-align:top;
@@ -76,6 +76,11 @@ footer {
                         }
                         &.hidden {
                             display:none !important;
+                        }
+                        &.dep1-only {
+                            &::after {
+                                display:none;
+                            }
                         }
                     }
                     &.on {
@@ -135,9 +140,9 @@ footer {
                                         &::after {
                                             content:' ';
                                             display:inline-block;
-                                            width:14px;
-                                            height:18px;
-                                            margin-left:2px;
+                                            width:16px;
+                                            height:16px;
+                                            margin-left:4px;
                                             background:url('/lg5-common/images/icons/icon-blank-arr2.svg') center no-repeat;
                                             background-size:100%;
                                             vertical-align:top;
@@ -186,9 +191,9 @@ footer {
                                 &::after {
                                     content:' ';
                                     display:inline-block;
-                                    width:14px;
-                                    height:18px;
-                                    margin-left:2px;
+                                    width:16px;
+                                    height:16px;
+                                    margin-left:4px;
                                     background:url('/lg5-common/images/icons/icon-blank-arr3.svg') center no-repeat;
                                     background-size:100%;
                                     vertical-align:top;
@@ -242,20 +247,20 @@ footer {
                 }
             }
             .link-wrap {
-                margin:0 -6px;
+                margin:-12px -6px 0;
                 padding-bottom:24px;
                 font-size:0;
                 .link-section {
                     display:inline-block;
                     width:12.5%;
-                    margin-top:48px;
+                    margin-top:44px;
                     padding:0 6px;
                     vertical-align:top;
                     @media screen and (max-width:1200px) {
                         width:25%;
                     }
                     h5.dep1 {
-                        height:40px;
+                        height:36px;
                         margin-top:28px;
                         padding-bottom:20px;
                         a, span {
@@ -263,7 +268,7 @@ footer {
                             color:#222;
                             font-size:14px;
                             line-height:16px;
-                            font-weight:500;
+                            font-weight:700;
                             vertical-align:top;
                         }
                         a[target="_blank"] {
@@ -271,9 +276,9 @@ footer {
                             &::after {
                                 content:' ';
                                 display:inline-block;
-                                width:14px;
+                                width:16px;
                                 height:16px;
-                                margin-left:2px;
+                                margin-left:4px;
                                 background:url('/lg5-common/images/icons/icon-blank-arr.svg') center no-repeat;
                                 background-size:100%;
                                 vertical-align:top;
@@ -300,9 +305,10 @@ footer {
                             .dep2 {
                                 a, span {
                                     display:inline-block;
-                                    color:#111;
+                                    color:#222;
                                     font-size:12px;
                                     line-height:16px;
+                                    font-weight:500;
                                     vertical-align:top;
                                 }
                                 a {
@@ -311,9 +317,9 @@ footer {
                                         &::after {
                                             content:' ';
                                             display:inline-block;
-                                            width:12px;
+                                            width:16px;
                                             height:16px;
-                                            margin-left:2px;
+                                            margin-left:4px;
                                             background:url('/lg5-common/images/icons/icon-blank-arr2.svg') center no-repeat;
                                             background-size:100%;
                                             vertical-align:top;
@@ -336,15 +342,16 @@ footer {
                             color:#616161;
                             font-size:12px;
                             line-height:16px;
+                            font-weight:500;
                             vertical-align:top;
                             &[target="_blank"] {
                                 white-space:nowrap;
                                 &::after {
                                     content:' ';
                                     display:inline-block;
-                                    width:12px;
+                                    width:16px;
                                     height:16px;
-                                    margin-left:2px;
+                                    margin-left:4px;
                                     background:url('/lg5-common/images/icons/icon-blank-arr3.svg') center no-repeat;
                                     background-size:100%;
                                     vertical-align:top;
