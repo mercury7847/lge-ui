@@ -117,6 +117,25 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
             
             items.removeClass(self.options.selectclass);
             items.eq(self.tabIndex).addClass(self.options.selectclass);
+
+            self._setTabContents();
+        },
+
+        _setTabContents: function(){
+            var self = this;
+            
+            var contID;
+            var tabwrap = self.$el.find('.' + self.options.tabname);
+            var items = tabwrap.find(self.options.tabItem);
+            items.each(function(idx, item){
+                contID = $(item).find('a').attr('href');
+                if($(contID).length){
+                    $(contID).stop().hide().css({opacity:0});
+                }
+            });
+
+            contID = items.eq(self.tabIndex).find('a').attr('href');
+            $(contID).stop().show().animate({opacity:1}, 220);
         },
 
         setTabIndex: function(idx){

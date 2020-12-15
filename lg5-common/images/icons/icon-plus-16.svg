@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-plus-16</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="09_Icon-/-16-/-더하기-/-Black-/-icon-16-plus-black" stroke="#000000">
+            <g id="09_Icon-/-16-/-더하기-/-Black-/-Ico-Plus-16-Black">
+                <line x1="3.75735931" y1="3.75735931" x2="12.2426407" y2="12.2426407" id="Path-2" stroke-width="1.5" transform="translate(8.000000, 8.000000) rotate(-45.000000) translate(-8.000000, -8.000000) "></line>
+                <line x1="3.75735931" y1="3.75735931" x2="12.2426407" y2="12.2426407" id="Path-2" stroke-width="1.5" transform="translate(8.000000, 8.000000) rotate(45.000000) translate(-8.000000, -8.000000) "></line>
+            </g>
+        </g>
+    </g>
+</svg>
