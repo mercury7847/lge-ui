@@ -58,10 +58,6 @@
             }
         }
     }
-
-
-
-
     .service-menu-wrap {
         .inner {
             max-width:1380px + 40px;
@@ -133,12 +129,6 @@
             }
         }
     }
-
-    .scroll-y {
-        height: 100%;
-        overflow-y: auto;
-    }
-
     .service-history {
         margin-bottom:80px;
         mark {
@@ -235,7 +225,6 @@
             }
         }
     }
-
     .held-product {
         padding-left: 22px;
         font-size: 14px;
@@ -243,7 +232,6 @@
         color: #767676;
         background: url(/lg5-common/images/icons/icon-more-pk-20.svg) no-repeat left center;
     }
-
     .reception-progress {
         margin: 0 auto;
         display: flex;
@@ -717,16 +705,7 @@
     padding-top:0;
     margin-top:8px;
 }
-.form-desc{
-    .req{
-        @include font-small;
-        color:#767676;
-    }
-    .req::before{
-        content:'*';
-        color: #ec455a;
-    }
-}
+
 
 //section title
 .section-title{
@@ -736,27 +715,8 @@
         margin-bottom:16px;
     }
 }
-.app-gate,
-.qr-code {
-    .section-title{
-        .tit{
-            font-size: 18px;
-        }
-    }   
-}
-.contents-inner-title{
-    border-bottom:2px solid #222;
-    padding-bottom:16px;
-    .tit{
-        @include font-large-1;
-    }
-}
 
 @include mobile{
-    .page-visual .heading-title{
-        word-break:keep-all;
-    }
-
     .contents-inner.type2{
         padding:0 5%;
     }
@@ -765,12 +725,6 @@
         .tit{
             margin-top:20px;
         }
-    }
-}
-
-.inquiry-list{
-    .file-list a{
-        text-decoration: none;
     }
 }
 
