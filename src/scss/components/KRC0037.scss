@@ -36,6 +36,9 @@
     }
 
     // inner
+    &.stage-full .inner {
+        max-width:100%;
+    }
     &.stage-wide .inner {
         max-width:1600px;
     }
