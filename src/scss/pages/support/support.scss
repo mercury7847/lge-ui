@@ -741,6 +741,8 @@
                 text-align:center;
                 border:1px solid #ddd;
                 border-radius:8px;
+                background:url(/lg5-common/images/icons/icon-no-image.svg) no-repeat;
+                background-size:100%;
                 &:before {
                     content:'';
                     display:inline-block;
@@ -790,6 +792,9 @@
             }
         }
         &.on{
+            .file-preview {
+                background:none;
+            }
             .file-btns {
                 .btn-upload {
                     display:none;
