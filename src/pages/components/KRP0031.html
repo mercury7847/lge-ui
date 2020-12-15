@@ -17,23 +17,33 @@
 				-->
 				<section class="component KRP0031">
 					<div class="search-wrap">
-						<div class="search-box">
-							<form id="searchForm" action="/html/UTS/SERF9007.html" method="post" target="_blank">
+						<form action="/html/UTS/SERF9007.html" method="GET" id="searchForm" target="_blank" novalidate>
+							<!-- 통합검색 페이지 중 케어용품/소모품 탭 타입값 -->
+							<input type="hidden" name="type" id="type" value="5">
+							<div class="search-box">
 								<div class="input-wrap">
 									<div class="box">
-										<input type="text" name="keyword" id="keyword" placeholder="두 글자 이상 입력해주세요." autocomplete="off">
+										<input type="text" name="searchKeyword" id="searchKeyword" placeholder="모델명 또는 상품명을 입력하세요." minlength="2" autocomplete="off" data-required="true" data-error-msg="두 글자 이상 검색 키워드를 입력하시기 바랍니다.">
 										<div class="cell">
 											<button type="button" class="btn-search"><span class="blind">검색</span></button>
 										</div>
 									</div>
-									<p class="err-msg"></p>
+									<div class="err-block">
+										<p class="err-msg"></p>
+									</div>
 								</div>
-							</form>
-						</div>	
-						<div class="info-box">
-							<button type="button" class="btn-text pink small" data-id="" data-control="modal"><span>모델명 확인방법</span></button>
-						</div>
+							</div>	
+							<div class="info-box">
+								<button type="button" class="btn-text pink small" data-href="#modelNamePopup" data-control="modal"><span>모델명 확인방법</span></button>
+							</div>
+						</form>
 					</div>
+
+					<!-- 모델명 확인방법 -->
+					@@include('./common/popup/CSRF6005_pop.html', {
+						popupID: 'modelNamePopup'
+					})
+					<!-- // 모델명 확인방법 -->
 				</section>
 			</div> <!-- //.component-wrap-->
 

@@ -27,7 +27,7 @@
 				.cell {
 					width:1%;
 				}
-				.err-msg {
+				.err-block {
 					display:none;
 					position:absolute;
 					left:0;
@@ -37,7 +37,7 @@
 			}
 			@include mobile {
 				padding-top:30px;
-				.input-wrap .err-msg {
+				.input-wrap .err-block {
 					position:static;
 				}
 			}
