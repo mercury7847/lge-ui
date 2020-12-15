@@ -24,7 +24,6 @@
         .description {
             font-size: 16px;
             line-height: 1.38;
-            white-space:pre-wrap;
             > [class^="btn"] {
                 margin-left: 16px;
                 vertical-align: middle;
@@ -41,11 +40,6 @@
                     margin-top: 8px;
                     display: block;
                 }
-            }
-        }
-        .file-list {
-            a {
-                text-decoration:underline;
             }
         }
     }
