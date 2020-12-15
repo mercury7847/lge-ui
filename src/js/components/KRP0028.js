@@ -21,7 +21,7 @@
                 '<button type="button" class="btn-more"><span class="hidden">수상내역 더보기</span></button>' +
             '</div>' +
         '</div>' + 
-    '</div><article>{{popupData}}</article></li>';
+    '</div><article style="display:none;">{{popupData}}</article></li>';
     var awardsPopupListItemTemplage = '{{#each item in list}}<li><a href="{{item.url}}">{{item.title}}</a></li>{{/each}}';
 
     $(window).ready(function() {
