@@ -15,7 +15,8 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
             };
 
             self.$mobileLinks = null;
-            self.$pcLinkes = self.$el.find('.cont-area .link-wrap');
+            // self.$pcLinkes = self.$el.find('.cont-area .link-wrap');
+            self.$pcLinkes = self.$el.find('.cont-area .pc-dropdown-wrap');
             
             self._resize();
             $(window).trigger('addResizeCallback', self._resize.bind(self));
@@ -27,7 +28,7 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
             if(self.$mobileLinks == null){
                 var toggleList = [];
                 var itemList = {};
-                self.$el.find('.link-wrap .link-section h5').each(function(idx, item){
+                self.$el.find('.link-wrap .link-section div.dep1').each(function(idx, item){
                     if(!$(item).hasClass('hidden')){
                         toggleList.push($(item).clone());
 

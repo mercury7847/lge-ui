@@ -2,10 +2,17 @@
 <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>icon-sns4</title>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic_f_instaLG_24">
-            <rect id="Rectangle-9-Copy-2" fill-opacity="0" fill="#F5F5F5" x="0" y="0" width="24" height="24"></rect>
-            <g id="Group-17" transform="translate(5.000000, 5.000000)" fill="#787878">
-                <path d="M12,0 C13.6568542,-3.04359188e-16 15,1.34314575 15,3 L15,12 C15,13.6568542 13.6568542,15 12,15 L3,15 C1.34314575,15 2.02906125e-16,13.6568542 0,12 L0,3 C-2.02906125e-16,1.34314575 1.34314575,3.04359188e-16 3,0 L12,0 Z M7.5,3 C5.01471863,3 3,5.01471863 3,7.5 C3,9.98528137 5.01471863,12 7.5,12 C9.98528137,12 12,9.98528137 12,7.5 C12,5.01471863 9.98528137,3 7.5,3 Z M7.5,4 C9.43299662,4 11,5.56700338 11,7.5 C11,9.43299662 9.43299662,11 7.5,11 C5.56700338,11 4,9.43299662 4,7.5 C4,5.56700338 5.56700338,4 7.5,4 Z M12.09375,2.09375 C11.4724297,2.09375 10.96875,2.59742966 10.96875,3.21875 C10.96875,3.84007034 11.4724297,4.34375 12.09375,4.34375 C12.7150703,4.34375 13.21875,3.84007034 13.21875,3.21875 C13.21875,2.59742966 12.7150703,2.09375 12.09375,2.09375 Z" id="Combined-Shape"></path>
+        <g id="Group-13" transform="translate(-96.000000, 0.000000)">
+            <g id="ic_f_instaM_24" transform="translate(96.000000, 0.000000)">
+                <rect id="Rectangle-9-Copy-2" opacity="0.688151042" x="0" y="0" width="24" height="24"></rect>
+                <g id="Group-15" transform="translate(3.000000, 3.000000)">
+                    <rect id="Rectangle" fill="#787878" x="0" y="0" width="10.5" height="14.25"></rect>
+                    <rect id="Rectangle" fill="#FFFFFF" x="1.5" y="1.5" width="7.5" height="11.25" rx="0.75"></rect>
+                    <path d="M3,1.5 L7.5,1.5 C7.5,1.91421356 7.16421356,2.25 6.75,2.25 L3.75,2.25 C3.33578644,2.25 3,1.91421356 3,1.5 L3,1.5 L3,1.5 Z" id="Rectangle" fill="#787878"></path>
+                    <rect id="Rectangle-10" stroke="#FFFFFF" stroke-width="0.75" fill="#787878" x="4.5" y="4.5" width="13.5" height="13.5" rx="3"></rect>
+                    <circle id="Oval-3" fill="#FFFFFF" cx="15.375" cy="7.125" r="1.125"></circle>
+                    <circle id="Oval-3" stroke="#FFFFFF" stroke-width="0.75" fill="#787878" cx="11.25" cy="11.25" r="3.375"></circle>
+                </g>
             </g>
         </g>
     </g>

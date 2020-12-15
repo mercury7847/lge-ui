@@ -3,8 +3,8 @@ $(window).ready(function(){
 
     $('.KRC0039').buildCommonUI();
 
-    vcui.require(['ui/KRC0039'], function () {
-        $('.KRC0064').find('.ui_carousel_slider').vcCarousel({
+    vcui.require(['ui/carousel'], function () {
+        $('.KRC0039').find('.ui_carousel_slider').vcCarousel({
             infinite: true,
             autoplay: true,
             autoplaySpeed:3000,

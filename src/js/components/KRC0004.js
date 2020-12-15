@@ -4,7 +4,7 @@ $(window).ready(function(){
 
     $('.KRC0004').buildCommonUI();
 
-	var KRP0012 = {
+	var KRC0004 = {
         scrolling: function (pos, scrolls) {
             var msec = Math.abs(scrolls) / 20;
             if(msec < 250) {
@@ -52,5 +52,5 @@ $(window).ready(function(){
             });
         }
     }
-    KRP0012.init();
+    KRC0004.init();
 });

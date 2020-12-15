@@ -1,0 +1,167 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "page": 1,
+        "totalpage": 3,
+        "superCategory": [
+            {
+                "categoryValue": "ALL",
+                "categoryName": "전체"
+            },
+            {
+                "categoryValue": "AAA",
+                "categoryName": "TV"
+            },
+            {
+                "categoryValue": "BBB",
+                "categoryName": "모니터"
+            },
+            {
+                "categoryValue": "CCC",
+                "categoryName": "노트북"
+            },
+            {
+                "categoryValue": "DDD",
+                "categoryName": "핸드폰"
+            }
+        ],
+        "listCategory": [
+            {
+                "categoryValue": "ALL",
+                "categoryName": "전체"
+            },
+            {
+                "categoryValue": "2020",
+                "categoryName": "2020"
+            },
+            {
+                "categoryValue": "2019",
+                "categoryName": "2019"
+            },
+            {
+                "categoryValue": "2018",
+                "categoryName": "2018"
+            },
+            {
+                "categoryValue": "2017",
+                "categoryName": "2017"
+            },
+            {
+                "categoryValue": "2016",
+                "categoryName": "2016"
+            }
+        ],
+        "listData":[
+            {
+                "videoID": "ADC12345354",
+                "videoTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "pcImage": "/lg5-common/images/dummy/@img-119x68.png",
+                "mobileImage": "/lg5-common/images/dummy/@img-656x370.png"
+            },
+            {
+                "videoID": "ADC12345354",
+                "videoTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "pcImage": "/lg5-common/images/dummy/@img-119x68.png",
+                "mobileImage": "/lg5-common/images/dummy/@img-656x370.png"
+            },
+            {
+                "videoID": "ADC12345354",
+                "videoTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "pcImage": "/lg5-common/images/dummy/@img-119x68.png",
+                "mobileImage": "/lg5-common/images/dummy/@img-656x370.png"
+            },
+            {
+                "videoID": "ADC12345354",
+                "videoTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "pcImage": "/lg5-common/images/dummy/@img-119x68.png",
+                "mobileImage": "/lg5-common/images/dummy/@img-656x370.png"
+            },
+            {
+                "videoID": "ADC12345354",
+                "videoTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "pcImage": "/lg5-common/images/dummy/@img-119x68.png",
+                "mobileImage": "/lg5-common/images/dummy/@img-656x370.png"
+            },
+            {
+                "videoID": "ADC12345354",
+                "videoTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "pcImage": "/lg5-common/images/dummy/@img-119x68.png",
+                "mobileImage": "/lg5-common/images/dummy/@img-656x370.png"
+            },
+            {
+                "videoID": "ADC12345354",
+                "videoTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "pcImage": "/lg5-common/images/dummy/@img-119x68.png",
+                "mobileImage": "/lg5-common/images/dummy/@img-656x370.png"
+            },
+            {
+                "videoID": "ADC12345354",
+                "videoTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "pcImage": "/lg5-common/images/dummy/@img-119x68.png",
+                "mobileImage": "/lg5-common/images/dummy/@img-656x370.png"
+            },
+            {
+                "videoID": "ADC12345354",
+                "videoTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "pcImage": "/lg5-common/images/dummy/@img-119x68.png",
+                "mobileImage": "/lg5-common/images/dummy/@img-656x370.png"
+            },
+            {
+                "videoID": "ADC12345354",
+                "videoTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "pcImage": "/lg5-common/images/dummy/@img-119x68.png",
+                "mobileImage": "/lg5-common/images/dummy/@img-656x370.png"
+            }
+        ],
+        "viewerData":{
+            "videoType": "video",
+            "videoUrl": "/lg5-common/videos/signature_rain_view.mp4",
+            "videoTitle": "LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)",
+            "videoDescription": "영상이나 이미지에 대한 간략한 타이틀이 들어갑니다",
+            "pcImage": "/lg5-common/images/dummy/@img-1029x578.png",
+            "mobileImage": "/lg5-common/images/dummy/@img-656x369.png",
+            "matchModelList": [
+
+            ],
+            "lunchDate": "2020.09.07",
+            "caption": "인공지능 스스로 에어컨 LG 휘센 씽큐 <br>[자막]<br>때때로 인간의 욕심은 끝이 없다 <br>에어컨은 거실에 두면서 먼 주방까지 시원했으면 좋겠고<br>그럼, 어떻게?<br>때때로 인간의 욕심은 끝이 없다 <br>에어컨은 거실에 두면서 먼 주방까지 시원했으면 좋겠고<br>그럼, 어떻게?<br>때때로 인간의 욕심은 끝이 없다 <br>에어컨은 거실에 두면서 먼 주방까지 시원했으면 좋겠고<br>그럼, 어떻게?<br>때때로 인간의 욕심은 끝이 없다 <br>에어컨은 거실에 두면서 먼 주방까지 시원했으면 좋겠고<br>그럼, 어떻게?<br>",
+            "hashtagList": [
+                {
+                    "link": "#",
+                    "tagname": "AI"
+                },
+                {
+                    "link": "#",
+                    "tagname": "AIX"
+                },
+                {
+                    "link": "#",
+                    "tagname": "LGSTORY"
+                },
+                {
+                    "link": "#",
+                    "tagname": "LGYhinQ"
+                },
+                {
+                    "link": "#",
+                    "tagname": "LG스토리"
+                },
+                {
+                    "link": "#",
+                    "tagname": "인공지능"
+                },
+                {
+                    "link": "#",
+                    "tagname": "인공지는발전단계"
+                },
+                {
+                    "link": "#",
+                    "tagname": "LG씽큐"
+                }
+            ]
+        }
+    }
+}

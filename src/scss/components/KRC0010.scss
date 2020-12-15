@@ -50,16 +50,6 @@
                         }
                     }
                 }
-                .btn.border {
-                    border-color:#fff;
-                    color:#fff;
-                }
-                .text-link {
-                    color:#fff;
-                    &::after {
-                        background-image:url('/lg5-common/images/icons/icon-arr-16-wt.svg');
-                    }
-                }
 			} @else if $bg == black {
 				background-color: #000;
 				.title {
@@ -77,16 +67,6 @@
                         &::before {
                             background:#fff;
                         }
-                    }
-                }
-                .btn.border {
-                    border-color:#fff;
-                    color:#fff;
-                }
-                .text-link {
-                    color:#fff;
-                    &::after {
-                        background-image:url('/lg5-common/images/icons/icon-arr-16-wt.svg');
                     }
                 }
 			} @else if $bg == white {
