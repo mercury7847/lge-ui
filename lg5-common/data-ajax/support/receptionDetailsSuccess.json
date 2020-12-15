@@ -2,6 +2,7 @@
     "status": "success",
     "message": null,
     "data": {
-        "resultFlag": "Y"
+        "resultFlag": "Y",
+        "url": "/html/CS/CSRF6061.html?test=test"
     }
 }

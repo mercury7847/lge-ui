@@ -5,7 +5,7 @@
     $(window).ready(function() {
         vcui.require([
             'ui/validation'
-        ], function() {   
+        ], function() {
             var numberValidation = new vcui.ui.CsValidation('#numberForm', {
                 register: {
                     userName1: {
@@ -15,7 +15,7 @@
                     },
                     number: {
                         msgTarget: '.err-block',
-                        pattern: /^[0-9]+$/,
+                        pattern: /^[a-z|A-Z|0-9]+$/,
                         maxLength: 20
                     }
                 }
@@ -49,7 +49,7 @@
                         var data = result.data;
 
                         if (result.data.resultFlag == 'Y') {
-                            $('#numberForm').submit();
+                            $('#numberForm').attr('action', result.data.url).submit();
                         } else if (data.resultFlag == 'N') {
                             $('#laypop1').vcModal();
                         }
