@@ -11,13 +11,13 @@
             <div class="tabs-wrap btn-type ui_tab ui_smooth_scroll">
                 <ul class="tabs">
                     <li class="on"><a href="#n">전체<em class="blind">선택됨</em></a></li>
-                    <li><a href="#n">TV/AV</a></li>
-                    <li><a href="#n">IT</a></li>
-                    <li><a href="#n">주방가전</a></li>
-                    <li><a href="#n">생활가전</a></li>
-                    <li><a href="#n">에어컨/에어케어</a></li>
-                    <li><a href="#n">모바일</a></li>
-                    <li><a href="#n">케어솔루션</a></li>
+                    <li><a href="#tab1">TV/AV</a></li>
+                    <li><a href="#tab2">IT</a></li>
+                    <li><a href="#tab3">주방가전</a></li>
+                    <li><a href="#tab4">생활가전</a></li>
+                    <li><a href="#tab5">에어컨/에어케어</a></li>
+                    <li><a href="#tab6">모바일</a></li>
+                    <li><a href="#tab7">케어솔루션</a></li>
                 </ul>
             </div>
             @@if (context.tabBarType) {
@@ -26,15 +26,16 @@
                     <ul class="tabs">
                         <li class="on"><a href="#tab1">전체<em class="blind">선택됨</em></a></li>
                         <li><a href="#tab2">스마트폰</a></li>
-                        <li><a href="#tab2">피처폰</a></li>
-                        <li><a href="#tab2">스마트 디바이스</a></li>
-                        <li><a href="#tab2">스마트</a></li>
+                        <li><a href="#tab3">피처폰</a></li>
+                        <li><a href="#tab4">스마트 디바이스</a></li>
+                        <li><a href="#tab5">스마트</a></li>
                     </ul>
                 </div>
             </div>
         }
         </div>	
         <div class="cont-wrap award-breakdown-wrap">
+            
             @@include('./common/modules/list-sorting.html', {
                 "select" : [
                     {"option" : "인기순"},
@@ -42,6 +43,7 @@
                     {"option" : "2019"}
                 ]
             })
+            
             <div class="award-breakdown">
                 <ul class="award-list">
 
