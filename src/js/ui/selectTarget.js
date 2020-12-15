@@ -64,6 +64,7 @@ vcui.define('ui/selectTarget', ['jquery', 'vcui'], function ($, core) {
                 html += vcui.template(self.templates.option, item);
             });
 
+            $target.find('option:not(.'+self.options.placeholderClass+')').remove();
             $target.append(html);
             $target.prop('disabled', false);
             $target.vcSelectbox('update');

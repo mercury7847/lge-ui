@@ -1,0 +1,304 @@
+
+<!-- components/partials/KRC0041.hbs -->
+<div class="component-wrap @@zero">	
+	<!--
+		[.component-wrap 옵션]
+		1. 여백
+		.zero-top : 상단여백 없음
+		.zero-btm : 하단여백 없음
+
+		[component 영역 옵션]
+		1. size 
+		.full-size : 1920px,
+		.wide-size : 1600px,
+		.medium-size : 1380px
+
+		[text-area 옵션]
+		1. li 위치
+		.top-left
+		.top-center
+		.top-right
+		.bottom-left
+		.bottom-center
+		.bottom-right
+
+		2. li text 정렬
+		.align-left
+		.align-center
+		.align-right
+
+		3. img 정렬
+		.img-top
+		.img-bottom
+		
+	-->
+	<section class="component KRC0041 wide-size">
+		<div class="component-inner">
+			<div class="image-text-wrap">
+				<div class="visual-area">
+					<img data-pc-src="/lg5-common/images/KRC0041/@img-bg-1600.png" data-m-src="/lg5-common/images/KRC0041/@img-720x405.png" alt="">
+				</div>
+
+				<div class="text-area carousel-box">
+					<div class="ui_carousel_slider2">
+						<div class="indi-wrap">
+							<ul class="indi-conts ui_carousel_dots">
+								<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+							</ul>
+						</div>
+						<div class="ui_carousel_list">
+							<ul class="text-inner slide-track ui_carousel_track">
+								@@loop('./common/partials/KRC0041-list.html', [
+									{
+										"itemAlign" : "top-left",
+										"textAlign" : "align-left",
+										"imgAlign" : "img-top",
+										"imgTop" : true,
+										"title" : "타이틀 공백포함 최대 40자까지 입력가능합니다.",
+										"subTitle" : "서브타이틀 공백포함 최대 20자까지 입력가능",
+										"bodyCopy" : "바디카피 공백포함하여 최대 90자까지 입력 가능합니다.",
+ 										"disclaimer" : "디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다."
+
+									},
+									{
+										"itemAlign" : "top-center",
+										"textAlign" : "align-center",
+										"imgAlign" : "img-top",
+										"imgTop" : true,
+										"title" : "타이틀 공백포함 최대 40자까지 입력가능합니다.",
+										"subTitle" : "서브타이틀 공백포함 최대 20자까지 입력가능",
+										"bodyCopy" : "바디카피 공백포함하여 최대 90자까지 입력 가능합니다.",
+										"disclaimer" : "디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다."
+									},
+									{
+										"itemAlign" : "top-right",
+										"textAlign" : "align-right",
+										"imgAlign" : "img-top",
+										"imgTop" : true,
+										"title" : "타이틀 공백포함 최대 40자까지 입력가능합니다.",
+										"subTitle" : "서브타이틀 공백포함 최대 20자까지 입력가능",
+										"bodyCopy" : "바디카피 공백포함하여 최대 90자까지 입력 가능합니다.",
+										"disclaimer" : "디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다."
+									}, {
+										"itemAlign" : "bottom-left",
+										"textAlign" : "align-left",
+										"imgAlign" : "img-bottom",
+										"imgBtm" : true,
+										"title" : "타이틀 공백포함 최대 40자까지 입력가능합니다.",
+										"subTitle" : "서브타이틀 공백포함 최대 20자까지 입력가능",
+										"bodyCopy" : "바디카피 공백포함하여 최대 90자까지 입력 가능합니다.",
+ 										"disclaimer" : "디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다."
+
+									},
+									{
+										"itemAlign" : "bottom-center",
+										"textAlign" : "align-center",
+										"imgAlign" : "img-bottom",
+										"imgBtm" : true,
+										"title" : "타이틀 공백포함 최대 40자까지 입력가능합니다.",
+										"subTitle" : "서브타이틀 공백포함 최대 20자까지 입력가능",
+										"bodyCopy" : "바디카피 공백포함하여 최대 90자까지 입력 가능합니다.",
+										"disclaimer" : "디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다."
+									},
+									{
+										"itemAlign" : "bottom-right",
+										"textAlign" : "align-right",
+										"imgAlign" : "img-bottom",
+										"imgBtm" : true,
+										"title" : "타이틀 공백포함 최대 40자까지 입력가능합니다.",
+										"subTitle" : "서브타이틀 공백포함 최대 20자까지 입력가능",
+										"bodyCopy" : "바디카피 공백포함하여 최대 90자까지 입력 가능합니다.",
+										"disclaimer" : "디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다."
+									},
+								])
+							</ul>
+						</div>
+						<div class="slide-controls">
+							<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+							<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</div>
+
+<div class="component-wrap @@zero">		
+	<section class="component KRC0041 medium-size">
+		<div class="component-inner">
+			<div class="image-text-wrap">
+				<div class="visual-area">
+					<img data-pc-src="/lg5-common/images/KRC0041/@img-bg-1380x684.png" data-m-src="/lg5-common/images/KRC0041/@img-720x405.png" alt="">
+				</div>
+
+				<div class="text-area carousel-box">
+					<div class="ui_carousel_slider2">
+						<div class="indi-wrap">
+							<ul class="indi-conts ui_carousel_dots">
+								<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+							</ul>
+						</div>
+						<div class="ui_carousel_list">
+							<ul class="text-inner slide-track ui_carousel_track">
+								@@loop('./common/partials/KRC0041-list.html', [
+									{
+										"itemAlign" : "top-left",
+										"textAlign" : "align-left",
+										"title" : "타이틀 공백포함 최대 40자까지 입력가능합니다.",
+										"subTitle" : "서브타이틀 공백포함 최대 20자까지 입력가능",
+										"bodyCopy" : "바디카피 공백포함하여 최대 90자까지 입력 가능합니다.",
+ 										"disclaimer" : "디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다."
+
+									},
+									{
+										"itemAlign" : "top-center",
+										"textAlign" : "align-center",
+										"title" : "타이틀 공백포함 최대 40자까지 입력가능합니다.",
+										"subTitle" : "서브타이틀 공백포함 최대 20자까지 입력가능",
+										"bodyCopy" : "바디카피 공백포함하여 최대 90자까지 입력 가능합니다.",
+										"disclaimer" : "디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다."
+									},
+									{
+										"itemAlign" : "top-right",
+										"textAlign" : "align-right",
+										"title" : "타이틀 공백포함 최대 40자까지 입력가능합니다.",
+										"subTitle" : "서브타이틀 공백포함 최대 20자까지 입력가능",
+										"bodyCopy" : "바디카피 공백포함하여 최대 90자까지 입력 가능합니다.",
+										"disclaimer" : "디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다."
+									}, {
+										"itemAlign" : "bottom-left",
+										"textAlign" : "align-left",
+										"title" : "타이틀 공백포함 최대 40자까지 입력가능합니다.",
+										"subTitle" : "서브타이틀 공백포함 최대 20자까지 입력가능",
+										"bodyCopy" : "바디카피 공백포함하여 최대 90자까지 입력 가능합니다.",
+ 										"disclaimer" : "디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다."
+
+									},
+									{
+										"itemAlign" : "bottom-center",
+										"textAlign" : "align-center",
+										"title" : "타이틀 공백포함 최대 40자까지 입력가능합니다.",
+										"subTitle" : "서브타이틀 공백포함 최대 20자까지 입력가능",
+										"bodyCopy" : "바디카피 공백포함하여 최대 90자까지 입력 가능합니다.",
+										"disclaimer" : "디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다."
+									},
+									{
+										"itemAlign" : "bottom-right",
+										"textAlign" : "align-right",
+										"title" : "타이틀 공백포함 최대 40자까지 입력가능합니다.",
+										"subTitle" : "서브타이틀 공백포함 최대 20자까지 입력가능",
+										"bodyCopy" : "바디카피 공백포함하여 최대 90자까지 입력 가능합니다.",
+										"disclaimer" : "디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다."
+									},
+								])
+								
+							</ul>
+						</div>
+						<div class="slide-controls">
+							<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+							<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</div>
+<div class="component-wrap @@zero">	
+	<section class="component KRC0041 full-size">
+		<div class="component-inner">
+			<div class="image-text-wrap">
+				<div class="visual-area">
+					<img data-pc-src="/lg5-common/images/KRC0041/img-bg-1.png" data-m-src="/lg5-common/images/KRC0041/img-bg-1.png" alt="">
+				</div>
+
+				<div class="text-area carousel-box">
+					<div class="ui_carousel_slider2">
+						<div class="indi-wrap">
+							<ul class="indi-conts ui_carousel_dots">
+								<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+							</ul>
+						</div>
+						<div class="ui_carousel_list">
+							<ul class="text-inner slide-track ui_carousel_track">
+								<li class="items top-right align-right img-top ui_carousel_slide">
+									<div class="item-inner">
+										<div class="img-area">
+											<img src="/lg5-common/images/KRC0041/img-3.png" alt="">
+										</div>
+										<h2 class="title">직수형 정수 방식으로 <br class="pc">
+											더 넓게 사용하는 냉장실</h2>
+										<p class="body-copy">내부 저수조가 필요 없는 직수형 방식이라 <br class="pc">
+											냉장실(야채실)을 더욱 넓게 사용할 수 있습니다.</p>
+									</div>
+								</li>
+								<li class="items bottom-left align-left img-top ui_carousel_slide">
+									<div class="item-inner">
+										<div class="img-area">
+											<img src="/lg5-common/images/KRC0041/img-4.png" alt="">
+										</div>
+										<h2 class="title">도어 속 아이스메이커</h2>
+										<p class="body-copy">아이스메이커가 도어 속에 숨어 있어 <br class="pc">
+											그만큼 냉동실을 더욱 넓게 사용할 수 있습니다</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="slide-controls">
+							<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+							<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</div>
+<div class="component-wrap @@zero">	
+	<section class="component KRC0041 full-size">
+		<div class="component-inner">
+			<div class="image-text-wrap">
+				<div class="visual-area">
+					<img data-pc-src="/lg5-common/images/KRC0041/img-bg-2.jpg" data-m-src="/lg5-common/images/KRC0041/img-bg-2.jpg" alt="">
+				</div>
+
+				<div class="text-area carousel-box">
+					<div class="ui_carousel_slider2">
+						<div class="indi-wrap">
+							<ul class="indi-conts ui_carousel_dots">
+								<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+							</ul>
+						</div>
+						<div class="ui_carousel_list">
+							<ul class="text-inner slide-track ui_carousel_track">
+								<li class="items bottom-left align-center ui_carousel_slide">
+									<div class="item-inner">
+										<h2 class="title">24시간 자동정온 미적용</h2>
+										<p class="body-copy">큰 온도 편차로<br class="pc">
+											일정한 온도 유지가 어렵습니다.</p>
+									</div>
+								</li>
+								<li class="items bottom-right align-center ui_carousel_slide">
+									<div class="item-inner">
+										<h2 class="title">24시간 자동정온</h2>
+										<p class="body-copy">±0.5˚C 온도편차로 온도 변화를 줄여<br class="pc">
+											신선함을 오래 유지합니다.</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="slide-controls">
+							<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+							<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</div> 

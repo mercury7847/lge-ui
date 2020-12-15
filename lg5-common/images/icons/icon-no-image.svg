@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="420" height="420" viewBox="0 0 420 420">
+    <defs>
+        <path id="zoe0kbd0za" d="M0 0L420 0 420 420 0 420z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g transform="translate(-2464 -419) translate(2464 419)">
+                    <mask id="890b3w00ub" fill="#fff">
+                        <use xlink:href="#zoe0kbd0za"/>
+                    </mask>
+                    <use fill="#FFF" xlink:href="#zoe0kbd0za"/>
+                    <g mask="url(#890b3w00ub)">
+                        <g>
+                            <text font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="48" font-weight="bold" transform="translate(92 105)">
+                                <tspan x="0" y="218" fill="#AAA">NO IMAGE</tspan>
+                            </text>
+                            <g>
+                                <path d="M0 0H146V146H0z" opacity=".134" transform="translate(92 105) translate(45)"/>
+                                <g transform="translate(92 105) translate(45) translate(5 23)">
+                                    <rect width="126.905" height="90.905" x="4.547" y="4.547" stroke="#AAA" stroke-width="9.095" rx="18.189"/>
+                                    <rect width="23" height="23" x="23" y="18" fill="#AAA" rx="11.368"/>
+                                    <path fill="#AAA" d="M23 72.132L23 81 114 81 114 62.97 86.734 36 59.453 62.97 45.75 49.497z"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
