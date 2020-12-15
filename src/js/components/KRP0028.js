@@ -25,6 +25,7 @@
     var awardsPopupListItemTemplage = '{{#each item in list}}<li><a href="{{item.url}}">{{item.title}}</a></li>{{/each}}';
 
     $(window).ready(function() {
+        $('.KRP0028').buildCommonUI();
         var KRP0028 = {         
             init: function() {
                 var self = this;

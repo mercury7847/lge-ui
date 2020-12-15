@@ -33,7 +33,7 @@
                 //PDP 더보기
                 //self.$pdpMoreInfo = self.$pdpVisual.find('div.pdp-more-info');
                 //선택된 데스크탑 썸네일
-                self.$selectItemTarget = self.$pdpThumbnail.find('li.thumbnail.active');
+                self.$selectItemTarget = self.$pdpThumbnail.find('li.active');
 
                 //모바일용 갤러리
                 self.$pdpMobileVisual = $('#mobile_summary_gallery');
@@ -45,16 +45,18 @@
 
                 //PDP모달
                 self.$popPdpVisual = $('#pop-pdp-visual');
+                //PDP모달 360
+                self.$popPdpVisual360 = self.$popPdpVisual.find('#modal_detail_target div.item.active');
                 //PDP모달 이미지타입
-                self.$popPdpVisualImage = self.$popPdpVisual.find('#modal_detail_target div.image');
+                self.$popPdpVisualImage = self.$popPdpVisual.find('#modal_detail_target div.item.image');
                 //PDP모달 비디오타입
-                self.$popPdpVisualVideo = self.$popPdpVisual.find('#modal_detail_target div.video');
+                self.$popPdpVisualVideo = self.$popPdpVisual.find('#modal_detail_target div.item.video');
                 //PDP모달 애니메이션타입
-                self.$popPdpVisualAnimation = self.$popPdpVisual.find('#modal_detail_target div.animation');
+                self.$popPdpVisualAnimation = self.$popPdpVisual.find('#modal_detail_target div.item.animation');
                 //PDP모달 썸네일 리스트
                 self.$popPdpThumbnail = self.$popPdpVisual.find('div.pop-pdp-thumbnail-nav ul.pop-thumbnail-list');
                 //선택된 PDP모달 썸네일
-                self.$selectModalItemTarget = self.$popPdpThumbnail.find('li.pop-thumbnail.active');
+                self.$selectModalItemTarget = self.$popPdpThumbnail.find('li.active');
                 //PDP모달 확대축소 버튼영역
                 self.$popPdpZoomArea = self.$popPdpVisual.find('div.zoom-btn-area');
 
@@ -142,7 +144,7 @@
                 self.$pdpThumbnail.on('click','li a',function(e) {
                     e.preventDefault();
                     var $li = $(this).parent();
-                    var index = $(this).attr('href').replace("#","");
+                    var index = $(this).parents('li').index();
                     if($li.hasClass('more')) {
                         //더보기 버튼은 바로 pdp모달 뛰움
                         self.openVisualModal(index);
@@ -160,9 +162,9 @@
                 });
 
                 //pdp모달 썸네일 리스트 클릭
-                self.$popPdpThumbnail.on('click','li.pop-thumbnail a',function(e) {
+                self.$popPdpThumbnail.on('click','li a',function(e) {
                     e.preventDefault();
-                    var index = $(this).attr('href').replace("#","");
+                    var index = $(this).parents('li').index();
                     self.clickModalThumbnail(index);
                 });
 
@@ -195,7 +197,7 @@
             //페이지에 저장된 pdp 데이타 가져오기
             findPdpData: function(index) {
                 var self = this;
-                var inputs = self.$pdpData.find('div:nth-child(' + (parseInt(index)+1) + ') input');
+                var inputs = self.$pdpData.find('div:eq(' + index +') input');
                 var item = {};
                 inputs.each(function (i, o) {
                     item[$(o).attr('name')] = $(o).val();
@@ -207,10 +209,12 @@
             clickThumbnailSlide: function(index) {
                 var self = this;
                 var item = self.findPdpData(index);
+                console.log(item, index);
                 switch(item.type) {
                     case "image":
                         //이전에 선택되었던 썸네일 활성화 제거 및 새로운 썸네일 활성화
-                        var thumbItem = self.$pdpThumbnail.find('li.thumbnail:nth-child('+(parseInt(index)+1)+')');
+                        var thumbItem = self.$pdpThumbnail.find('li:eq('+index+')');
+                        console.log(thumbItem);
                         if(self.$selectItemTarget) {
                             self.$selectItemTarget.removeClass('active');
                         }
@@ -239,9 +243,9 @@
             clickModalThumbnail: function(index) {
                 var self = this;
                 var item = self.findPdpData(index);
-
                 //이전에 선택되었던 썸네일 활성화 제거 및 새로운 썸네일 활성화
-                var thumbItem = self.$popPdpThumbnail.find('li.pop-thumbnail:nth-child('+(parseInt(index)+1)+')');
+                var thumbItem = self.$popPdpThumbnail.find('li:eq('+index+')');
+                console.log(index, thumbItem);
                 if(self.$selectModalItemTarget) {
                     self.$selectModalItemTarget.removeClass('active');
                 }
@@ -252,6 +256,7 @@
                 self.$popPdpVisualVideo.html('');
                 self.$popPdpVisualAnimation.find('div.animation-box').vcVideoBox('reset');
     
+                console.log(item);
                 switch(item.type) {
                     case "image":
                         self.$popPdpVisualImage.find('div.zoom-area img').attr({'data-pc-src':item.imagePC,'data-m-src':item.imageMobile});
@@ -260,6 +265,7 @@
                             self.$popPdpVisualImage.show();
                             self.$popPdpVisualVideo.hide();
                             self.$popPdpVisualAnimation.hide();
+                            self.$popPdpVisual360.hide();
                             self.$popPdpZoomArea.show();
                             self.pinchZoom.update(true);
                         //});
@@ -281,6 +287,7 @@
                             self.$popPdpVisualImage.hide();
                             self.$popPdpVisualVideo.show();
                             self.$popPdpVisualAnimation.hide();
+                            self.$popPdpVisual360.hide();
                             self.$popPdpZoomArea.hide();
                         //});
                         break;
@@ -293,6 +300,7 @@
                         self.$popPdpVisualImage.hide();
                         self.$popPdpVisualVideo.hide();
                         self.$popPdpVisualAnimation.show();
+                        self.$popPdpVisual360.hide();
                         self.$popPdpZoomArea.hide();
                         break;
                     default:
