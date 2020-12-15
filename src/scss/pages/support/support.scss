@@ -345,7 +345,7 @@
                     bottom: 0;
                     left: 50%;
                     transform: translateX(-50%);
-                    width: 100px;
+                    max-width: 90px;
                 }
                 &:first-child {
                     margin-left: 0;
@@ -628,6 +628,10 @@
                 }
             }
         }
+    }
+    .inner {
+        text-align: right;
+        width: 100%;
     }
 } //support
 
