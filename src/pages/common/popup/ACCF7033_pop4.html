@@ -15,25 +15,23 @@
             </dl>
         </div>
 
-        <div class="form-wrap category-select">
+        <div class="form-wrap category-select" data-ajax="/lg5-common/data-ajax/support/searchModelName.json">
             <dl class="forms">
                 <dt class="tit"><label for="select1" class="req">카테고리 선택</label></dt>
                 <dd class="conts">
                     <div class="box">
                         <div class="select-wrap">
-                            <select class="ui_selectbox" id="select1" title="전체 카테고리 선택">
+                            <select class="ui_selectbox ul_select_target" id="select1" title="전체 카테고리 선택" data-ajax="/lg5-common/data-ajax/support/subCategoryOption.json" data-target="#select2">
                                 <option value="" class="placeholder">카테고리 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
-                                <option value="">카테고리 1</option>
-                                <option value="">카테고리 2</option>
+                                <option value="세탁기/스타일러">세탁기/스타일러</option>
+                                <option value="모바일">모바일</option>
                             </select>
                         </div>
                     </div>
                     <div class="box">
                         <div class="select-wrap">
-                            <select class="ui_selectbox" id="select2" title="전체 카테고리 선택">
+                            <select class="ui_selectbox" id="select2" title="전체 카테고리 선택" disabled>
                                 <option value="" class="placeholder">세부 카테고리 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
-                                <option value="">세부 카테고리 1</option>
-                                <option value="">세부 카테고리 2</option>
                             </select>
                         </div>
                     </div>
@@ -41,18 +39,25 @@
             </dl>
         </div>
 
-        <div class="example-list type-A">
-            <p>제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.</p>
-            <ul>
-                <li><img src="/lg5-common/images/BMC/img_model01.jpg" alt="예시이미지"></li>
-                <li><img src="/lg5-common/images/BMC/img_model02.jpg" alt="예시이미지"></li>
-            </ul>
+        <div class="example-result">
+            <p class="txt">제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.</p>
+            <!-- 
+                카테고리 선택 후 안내 메시지 
+                <p class="txt">제품 오른쪽 뒷면에 스티커가 부착되어 있습니다.</p>
+            -->
+            <!-- 
+                제품 이미지 없을 경우
+                <p class="txt">제품 이미지 준비중입니다.</p>
+             -->
+            <!-- [11.27 수정] 샘플 이미지 DOM 수정 -->
+            <div class="img" aria-hidden="true">
+                <!-- 
+                    제품 이미지 없을 경우
+                    <img src="/lg5-common/images/img-nodata.svg" alt=""> 
+                -->
+                <img src="/lg5-common/images/dummy/@img-example.jpg" alt="">
+            </div>
+            <!-- // [11.27 수정] 샘플 이미지 DOM 수정 -->
         </div>
-
-        <div class="example-list type-A">
-            <p>제품 이미지 준비중입니다.</p>
-            <figure class="nodata"><img src="/lg5-common/images/img-nodata.svg" alt=""></figure>
-        </div>
-    </section>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
 </article>

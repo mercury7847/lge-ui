@@ -3,7 +3,7 @@
 
     $(window).ready(function() {
         vcui.require([
-            'ui/validation'
+            'ui/validation', 'ui/selectTarget'
         ], function() {
             var $submitForm = $('#submitForm'),
                 url = $submitForm.attr('action');
@@ -22,8 +22,8 @@
                 }
             });
 
-            $topic.drawOption();
-            
+            $('#topic').vcSelectTarget();
+           
             $subTopic.on('change', function() {
                 var topicVal = $topic.val();
                     subTopicVal = $subTopic.val(),

@@ -5,13 +5,11 @@
 @import "../../layout/grid";
 
 @import "../../support/layout";
-@import "../../support/page-visual";
 @import "../../support/board-list";
 @import "../../support/board-view";
 @import "../../support/form-field";
 @import "../../support/form-result";
 @import "../../support/modal";
-@import "../../support/table";
 @import "../../support/process";
 @import "../../support/banner";
 @import "../../support/quick-menu";
@@ -58,10 +56,6 @@
             }
         }
     }
-
-
-
-
     .service-menu-wrap {
         .inner {
             max-width:1380px + 40px;
@@ -133,12 +127,6 @@
             }
         }
     }
-
-    .scroll-y {
-        height: 100%;
-        overflow-y: auto;
-    }
-
     .service-history {
         margin-bottom:80px;
         mark {
@@ -235,7 +223,6 @@
             }
         }
     }
-
     .held-product {
         padding-left: 22px;
         font-size: 14px;
@@ -243,7 +230,6 @@
         color: #767676;
         background: url(/lg5-common/images/icons/icon-more-pk-20.svg) no-repeat left center;
     }
-
     .reception-progress {
         margin: 0 auto;
         display: flex;
@@ -345,7 +331,7 @@
                     bottom: 0;
                     left: 50%;
                     transform: translateX(-50%);
-                    width: 100px;
+                    max-width: 90px;
                 }
                 &:first-child {
                     margin-left: 0;
@@ -629,10 +615,6 @@
             }
         }
     }
-    .inner {
-        text-align: right;
-        width: 100%;
-    }
 } //support
 
 
@@ -721,16 +703,7 @@
     padding-top:0;
     margin-top:8px;
 }
-.form-desc{
-    .req{
-        @include font-small;
-        color:#767676;
-    }
-    .req::before{
-        content:'*';
-        color: #ec455a;
-    }
-}
+
 
 //section title
 .section-title{
@@ -740,27 +713,8 @@
         margin-bottom:16px;
     }
 }
-.app-gate,
-.qr-code {
-    .section-title{
-        .tit{
-            font-size: 18px;
-        }
-    }   
-}
-.contents-inner-title{
-    border-bottom:2px solid #222;
-    padding-bottom:16px;
-    .tit{
-        @include font-large-1;
-    }
-}
 
 @include mobile{
-    .page-visual .heading-title{
-        word-break:keep-all;
-    }
-
     .contents-inner.type2{
         padding:0 5%;
     }
@@ -769,12 +723,6 @@
         .tit{
             margin-top:20px;
         }
-    }
-}
-
-.inquiry-list{
-    .file-list a{
-        text-decoration: none;
     }
 }
 
@@ -793,6 +741,8 @@
                 text-align:center;
                 border:1px solid #ddd;
                 border-radius:8px;
+                background:url(/lg5-common/images/icons/icon-no-image.svg) no-repeat;
+                background-size:100%;
                 &:before {
                     content:'';
                     display:inline-block;
@@ -842,6 +792,9 @@
             }
         }
         &.on{
+            .file-preview {
+                background:none;
+            }
             .file-btns {
                 .btn-upload {
                     display:none;

@@ -101,6 +101,10 @@
             bottom:495px;
         }
     }
+    &.lately {
+        right:100px;
+        bottom:372px;
+    }
 	.chatbot-linker {
 		width:88px;
         height:88px;
@@ -156,5 +160,37 @@
         &.open {
             transform:rotate(45deg);
         }
+    }
+    .lately-linker {
+        width:88px;
+        height:88px;
+		background:url('/lg5-common/images/icons/icon-lately.png') no-repeat;
+        background-size:88px 88px;
+        a {
+            display:block;
+			width:100%;
+			height:100%;
+        }
+    }
+}
+.lately-popup {
+    display:block !important;
+    right:36px !important;
+    width:368px;
+    min-height:720px;
+    box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+    .pop-header {
+        margin:0 24px;
+        padding:24px 0 12px;
+        .tit {
+            span {
+                font-size:22px;
+                line-height:32px;
+            }
+        }
+    }
+    > .btn-close {
+        top:24px;
+        right:14px;
     }
 }
