@@ -74,6 +74,9 @@
 		&.item3 .list-box{
 			max-width: calc(896px + 52px);
 		}
+		&.item2 .list-box{
+			max-width: calc(598px + 52px);
+		}
 		.slide-controls {
 			.btn-arrow {
 				position: absolute;
@@ -129,19 +132,6 @@
 				padding-left: 4px;
 			}
 		}
-		/*
-		@include mobile {
-			width:150px;
-            margin: 0;
-            &:nth-child(2n) {
-                margin-left: 12px; 
-            }
-        }
-        @media screen and  (max-width: 359px){
-            max-width:130px;
-            width: auto;
-        }
-        */
 		.visual-area {
 			position:relative; 
 			max-width:256px;
@@ -193,12 +183,6 @@
 		}
 	}
 	.carousel-box {
-		.list-box {
-			.item-box {
-
-			}
-
-		}
 		.indi-wrap {
 			position: absolute;
 			left: 0;
