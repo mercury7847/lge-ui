@@ -106,5 +106,27 @@ $(window).ready(function(){
             }]
                 
         });
+        $('.KRC0002').find('.ui_carousel_2_slider').vcCarousel({
+            infinite: false,
+            prevArrow:'.btn-arrow.prev',
+            nextArrow:'.btn-arrow.next',
+            slidesToShow: 2,
+            slidesToScroll: 2,
+
+            responsive: [{
+                breakpoint: 100000,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                }
+            },{
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            }]
+                
+        });
 	});
 })
