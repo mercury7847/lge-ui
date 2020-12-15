@@ -207,7 +207,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
         getAllValues : function getAllValues(){
             var self = this;  
             var result = {};
-            var $findInput = self.$el.find('input');
+            var $findInput = self.$el.find('input, textarea');
             $findInput.each(function(i, obj) {
                 var item = $(obj)
                 var name = item.attr('name');
