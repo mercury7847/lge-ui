@@ -4,67 +4,16 @@ footer {
     @include mobile {
         padding-top:12px;
     }
-    .call-list {
-        padding:8px 30px 40px;
-        background:#fff;
+    .call-to {
         text-align:center;
-        font-size:0;
-        li {
-            display:inline-block;
-            position:relative;
-            margin-top:32px;
-            margin-left:96px;
-            vertical-align:top;
-            dl {
-                display:inline-block;
-                position:relative;
-                margin:0 auto;
-                dt {
-                    color:#616161;
-                    font-size:14px;
-                    line-height:20px;
-                    font-weight:500;
-                }
-                dd {
-                    margin-top:2px;
-                    color:#222;
-                    font-size:18px;
-                    line-height:26px;
-                    font-weight:700;
-                    a {
-                        display:none;
-                        position:absolute;
-                        top:0;
-                        right:0;
-                        bottom:0;
-                        left:0;
-                        font-size:0;
-                        @include mobile {
-                            display:block;
-                        }
-                    }
-                }
-            }
-            &:first-child {
-                margin-left:0;
-            }
+        color:#222;
+        dt {
+            @include font-x-small;
+            font-weight:500;
         }
-        @media screen and (max-width:957px) {
-            padding:8px 24px 40px;
-            li {
-                width:50%;
-                margin-left:0;
-            }
-        }
-        @include mobile {
-            padding:32px 30.5% 40px;
-            white-space:nowrap;
-            overflow-x:auto;
-            li {
-                width:auto;
-                margin-top:0;
-                margin-left:60px;
-            }
+        dd {
+            @include font-large-1;
+            font-weight:700;
         }
     }
     .foot-cont {
