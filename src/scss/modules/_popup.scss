@@ -338,8 +338,8 @@
             .video-asset {
                 position: absolute;
                 top: 50%;
-                left: 0;
-                right: 0;
+                left: 16px;
+                right: 16px;
                 transform: translateY(-50%);
                 overflow: hidden;
             }
@@ -356,11 +356,13 @@
             }
             @include mobile {
                 top:24px;
-                right:24px;
-                &::before, &::after {
-                    width: 2px;
-                    height: 18px;
-                    margin-top: -9px;
+                right:16px;
+                width: 24px;
+                height: 24px;
+                &:before {
+                    width: 24px;
+                    height: 24px;
+                    background-size: 24px 24px;
                 }
             }
         }
