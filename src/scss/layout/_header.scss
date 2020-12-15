@@ -21,7 +21,7 @@
         }
     }
 }
-
+// 자바스크립트 동작 안됨 안내
 .non-javascript {
     display: none;
     position: absolute;
@@ -153,24 +153,24 @@
     }
 }
 
-@include mobile {
-    .mobile-sticky-on {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1;
-        background-color: #fff;
-        .logo {
-            display: none;
-        }
-        .utility,
-        & + .mobile-nav-button {
-            position: fixed;
-            z-index: 2;
-        }
-    }
-}
+//@include mobile { //스크롤시 스티키 확인 후 삭제
+//    .mobile-sticky-on {
+//        position: fixed;
+//        top: 0;
+//        right: 0;
+//        left: 0;
+//        z-index: 1;
+//        background-color: #fff;
+//        .logo {
+//            display: none;
+//        }
+//        .utility,
+//        & + .mobile-nav-button {
+//            position: fixed;
+//            z-index: 2;
+//        }
+//    }
+//}
 
 .logo {
     float: left;
@@ -371,10 +371,6 @@
     }
 }
 
-.header-bottom {
-    //border-bottom: 1px solid #ddd;
-}
-
 .nav-wrap {
     overflow: hidden;
     font-size: 0;
@@ -450,7 +446,6 @@
                 flex: auto;
                 margin-left: 2px;
                 text-align: center;
-                vertical-align: top;
                 a {
                     padding: 12px 0;
                     border-radius: 20px;
@@ -460,9 +455,12 @@
                 }
             }
             &.text {
-                padding: 5px 16px;
-                font-weight: 700;
-                @include font-small;
+                padding: 0;
+                li {
+                    a {
+                        padding: 9px 0 10px;
+                    }
+                }
             }
         }
     }
@@ -501,7 +499,6 @@
 
     @include pc {
         display: inline-block;
-        //margin-left: 24px;
 
         > li {
             display: inline-block;
@@ -519,11 +516,6 @@
                 border-radius: 18px;
                 background-color: $color-bg;
             }
-            //.nav-item {
-            //    &:after {
-            //        display: none;
-            //    }
-            //}
         }
     }
 
@@ -707,8 +699,12 @@
                         right: 0;
                     }
                 }
-                @media screen and (max-width: 960px) {
+                @media screen and (max-width: 1240px) {
                     min-width: 33.33%;
+                    &.additional-category {
+                        right: 0;
+                        width: inherit;
+                    }
                     &.category-banner {
                         display: none;
                     }
