@@ -15,7 +15,8 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
             };
 
             self.$mobileLinks = null;
-            self.$pcLinkes = self.$el.find('.cont-area .link-wrap');
+            // self.$pcLinkes = self.$el.find('.cont-area .link-wrap');
+            self.$pcLinkes = self.$el.find('.cont-area .pc-dropdown-wrap');
             
             self._resize();
             $(window).trigger('addResizeCallback', self._resize.bind(self));
