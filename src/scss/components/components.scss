@@ -365,12 +365,13 @@
         // }
     }
 
+    // button 공통
     .text-link {
         display:inline-block;
         position:relative;
         padding-right:20px;
-        @include font-small;
         color:#222;
+        @include font-small;
         font-weight:500;
         &::after {
             content:' ';
@@ -381,6 +382,85 @@
             height:16px;
             margin-top:-8px;
             background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+        }
+        span {
+            color:inherit;
+        }
+        &.bc-black {
+            color:#222;
+            &::after {
+                background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+            }
+        }
+        &.bc-black-to-white {
+            @include pc {
+                color:#222;
+                &::after {
+                    background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+                }
+            }
+            @include mobile {
+                color:#fff;
+                &::after {
+                    background:url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+                }
+            }
+        }
+        &.bc-white {
+            color:#fff;
+            &::after {
+                background:url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+            }
+        }
+        &.bc-white-to-black {
+            @include pc {
+                color:#fff;
+                &::after {
+                    background:url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+                }
+            }
+            @include mobile {
+                color:#222;
+                &::after {
+                    background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+                }
+            }
+        }
+    }
+
+    .btn.border {
+        color:#222;
+        border-color:#222;
+        span {
+            color:inherit;
+        }
+        &.bc-black {
+            color:#222;
+            border-color:#222;
+        }
+        &.bc-black-to-white {
+            @include pc {
+                color:#222;
+                border-color:#222;
+            }
+            @include mobile {
+                color:#fff;
+                border-color:#fff;
+            }
+        }
+        &.bc-white {
+            color:#fff;
+            border-color:#fff;
+        }
+        &.bc-white-to-black {
+            @include pc {
+                color:#fff;
+                border-color:#fff;
+            }
+            @include mobile {
+                color:#222;
+                border-color:#222;
+            }
         }
     }
 
