@@ -36,14 +36,19 @@
 			height:auto;
 			vertical-align:top;
 		}
-		&.animation-box {
-			.animation-area {
-				position: relative;
-				top: auto;
-				left: auto;
-			}
+	}
+	.animation-box {
+		.animation-area {
+			position: relative;
+			top: auto;
+			left: auto;
+		}
+		.play-animaion-btn,
+		.controller-wrap {
+			z-index: 11;
 		}
 	}
+
 
 	// text
 	.text-position {
