@@ -9,11 +9,10 @@
     // margin: 0 auto;
     // padding-right: 30px;
     // padding-left: 30px;
-
     @include mobile {
-        max-width: 100%;
-        padding-right: 24px;
-        padding-left: 24px;
+        .component-inner {
+            padding: 0;
+        }
     }
 
     $color: (lightgray, dark, black, white);
@@ -35,14 +34,6 @@
                         color: #fff;
                     }
                 }
-                .btn-box .btn.btn-primary {
-                    border-color:#fff;
-                    background-color:#fff;
-                    color:#111 !important;
-                }
-                .link-text.ico-right {
-                    color:#fff;
-				}
 			} @else if $bg == black {
 				background-color: #000;
 				.unit-box {
@@ -52,14 +43,6 @@
                         color: #fff;
                     }
                 }
-                .btn-box .btn.btn-primary {
-                    border-color:#fff;
-                    background-color:#fff;
-                    color:#111 !important;
-                }
-                .link-text.ico-right {
-                    color:#fff;
-				}
 			} @else if $bg == white {
 				background-color: #fff;
 				.title {
@@ -71,47 +54,30 @@
 		}
 	}
 
-    .btn {
-        display: inline-block;
-        min-width:194px;
-        padding:15px 0;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        background-color: #fff;
-        line-height: 24px;
-        @include font-family($font-weight-bold);
-        font-size: 16px;
-        color: #111;
-        text-align: center;
-        vertical-align: top;
-
-        &.btn-outline-primary {
-            border-color: #212121;
-            background-color: #fff;
-            color: #111;
-        }
-        &.btn-primary {
-            border-color: #111;
-            background-color: #111;
-            color: #fff;
-        }
-    }
-
     .unit-list {
-        @include grid-row;
-        .unit-box {
-            @include grid-col(left,4,12);
-            padding: 0 24px;
-            @include mobile {
-                margin-bottom: 60px;
-                padding: 0 6px;
+        margin: 0 -12px;
+        .ui_carousel_slide {
+            float: left;
+            width: 33.333333%;
+            padding: 0 12px;
+        }
+        &.half-type {
+            .ui_carousel_slide {
+                width: 50%;
             }
         }
 
-        &.half-type {
-            .unit-box {
-                @include grid-col(left,6,12);
-                padding: 0 24px;
+        @include mobile {
+            position: relative;
+            margin: 0;
+            .ui_carousel_slide {
+                width: 100%;
+                padding: 0;
+            }
+            &.half-type {
+                .ui_carousel_slide {
+                    width: 100%;
+                }
             }
         }
     }
@@ -121,56 +87,63 @@
             width: 100%;
         }
     }
+    .animation-box {
+        .controller-wrap {
+            bottom: 68px;
+            @include calc(right,50%,20px);
+            text-align: center;
+        }
+    }
 
     .unit-box {
         .visual-area {
-            margin: 0 -12px 16px;
-            @include mobile {
-                margin: 0 0 16px;
-            }
+            margin: 0 0 24px;
         }
         .head-copy {
-            margin-bottom: 16px;
-            font-size: 16px;
-            line-height: 24px;
-            color: #616161;
+            margin-bottom: 8px;
+            font-weight: 700;
+            @include font-medium;
         }
         .title {
             margin-bottom: 16px;
-            @include font-family($font-weight-bold);
-            font-size: 24px;
-            line-height: 34px;
-            color: #111;
-            @include textClipClamp(2);
+            h1,h2,h3,h4,h5,h6 {
+                font-weight: 700;
+                @include font-large-2;
+            }
         }
         .body-copy {
-            margin-bottom: 40px;
-            font-size: 16px;
-            line-height: 24px;
-            color: #616161;
+            margin-bottom: 24px;
+            @include font-medium;
+        }
+
+        @include mobile {
+            padding: 0 16px 32px;
+            .visual-area {
+                margin: 0 -16px 24px;
+            }
+            .head-copy {
+                margin-bottom: 6px;
+            }
+            .title {
+                margin-bottom: 14px;
+            }
         }
     }
 
     .btn-box {
-        margin-top: 64px - 12px;
+        margin-top: 48px;
         text-align: center;
-        .btn {
-            width: 630px;
-        }
         @include mobile {
-            margin-top: 4px;
-            .btn {
-                width: 100%;
-            }
+            margin-top: 24px;
         }
     }
 
     // 텍스트 가로정렬 및 버튼 사이 간격
     .align-left {
         .bottom-btn {
-            span {
+            .text-link {
                 display: inline-block;
-                margin: 0 24px 12px 0;
+                margin-right: 16px;
                 &:last-child {
                     margin-right: 0;
                 }
@@ -179,9 +152,9 @@
     }
     .align-right {
         .bottom-btn {
-            span {
+            .text-link {
                 display: inline-block;
-                margin: 0 0 12px 24px;
+                margin-left: 16px;
                 &:first-child {
                     margin-left: 0;
                 }
@@ -190,23 +163,52 @@
     }
     .align-center {
         .bottom-btn {
-            margin: 0 -12px;
-            span {
+            margin: 0 -8px;
+            .text-link {
                 display: inline-block;
-                margin: 0 12px 12px;
+                margin: 0 8px;
             }
         }
     }
-    @include mobile {
-        .align-left,
-        .align-right,
-        .align-center {
-            .bottom-btn {
-                span {
-                    display: block;
+    .align-left,
+    .align-right,
+    .align-center {
+        .bullet-list {
+            text-align: left;
+        }
+        //@include mobile {
+        //    .bottom-btn {
+        //        .text-link {
+        //            display: block;
+        //        }
+        //    }
+        //
+        //}
+    }
+
+    .indi-wrap {
+        @include mobile {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+    .slide-controls {
+        @include pc {
+            display: none;
+        }
+        @include mobile {
+            .btn-arrow {
+                position: absolute;
+                @include calc(top,50%,18px);
+                &.prev {
+                    left: 16px;
+                }
+                &.next {
+                    right: 16px;
                 }
             }
-
         }
     }
 }

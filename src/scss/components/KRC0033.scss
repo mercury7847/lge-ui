@@ -10,38 +10,6 @@
 		max-width:1600px;
 		margin:0 auto;
 	}
-
-	// font color option
-    $fontColor : (type-black, type-white);
-    @each $colorClass in $fontColor {
-        .#{$colorClass} {
-            @if $colorClass == type-black {
-				color:#222;
-				.body-copy {
-					color:#222;
-				}
-				.btn.border {
-					border-color:#222;
-					color:#222;
-				}
-            }
-            @else if $colorClass == type-white {
-				@include pc {
-					color:#fff;
-					.bullet-list {
-						color:#fff;
-						li::before {
-							background:#fff;
-						}
-					}
-					.btn.border {
-						border-color:#fff;
-						color:#fff;
-					}
-				}
-            }
-        }
-	}
 	// align option 
     $align : (align-left, align-center, align-right);
     @each $alignClass in $align {
@@ -84,7 +52,7 @@
 			left:auto;
 			right:auto;
 			bottom:auto;
-			padding:24px 16px 40px;
+			padding:28px 16px 0;
 		}
 		.text-set-wrap {
 			position:absolute;
@@ -148,24 +116,34 @@
 					}
 					.sub-tit {
 						margin-top:8px;
-						@include font-large;
+						@include font-medium;
 						font-weight:700;
+						@include mobile {
+							margin-top:6px;
+						}
 					}
 					.body-copy {
-						margin-top:8px;
+						margin-top:16px;
 						@include font-medium;
+						@include mobile {
+							margin-top:14px;
+						}
 					}
 					.cta-box {
-						margin-top:16px;
-						.btn {
-							background:transparent;
+						margin-top:24px;
+						.btn.border,
+						.text-link {
+							margin-left:16px;
+							&:first-child {
+								margin-left:0;
+							}
 						}
 					}
 					.thumbnail-box {
-						margin-top:16px;
+						margin-top:24px;
 						img {
-							width:100%;
-							max-width:240px;
+							width:auto;
+							max-width:100%;
 							height:auto;
 							vertical-align:top;
 						}

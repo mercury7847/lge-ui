@@ -110,7 +110,7 @@ var res = {
 				"KRP0029_Recommend story for category home[KRP0051]" : ["/html/components/KRP0029.html","","검수완료"],
 				"KRP0030_Social Review(스토리)[KRP0041]" : ["/html/components/KRP0030.html","",""],
 				"KRP0031_Consumables Search[KRP0042]" : ["/html/components/KRP0031.html","",""],
-				"KRP0032_Recently View[KRP0049]" : ["/html/components/KRP0032.html","","검수완료"],
+				"KRP0032_Recently View[KRP0049]" : ["/html/components/floating.html","","검수완료"],
 				"KRP0033_PDP Shipping Information[KRP0044]" : ["/html/components/KRP0033.html","",""],
 				"KRP0034_PDP Return Replacement[KRP0045]" : ["/html/components/KRP0034.html","",""],
 				"KRP0035_PDP Inquiry[KRP0046]" : ["/html/components/KRP0035.html","","검수완료"],
@@ -235,10 +235,10 @@ var res = {
 					"LG 듀얼스크린" : ["/html/STC/MKT5001.html","","검수완료"]
 				},
 				"LG 페이" : {
-					"LG 페이" : ["/html/STC/MKT5003.html","","검수요청"],
-					"LG 페이_영상 보기 팝업" : ["/html/STC/MKT5003_popup.html","","검수요청"],
-					"LG 페이제휴카드 안내" : ["/html/STC/MKT5004.html","","검수요청"],
-					"LG 페이사용가능 단말기" : ["/html/STC/MKT5005.html","","검수요청"]
+					"LG 페이" : ["/html/STC/MKT5003.html","","검수완료"],
+					"LG 페이_영상 보기 팝업" : ["/html/STC/MKT5003_popup.html","","검수완료"],
+					"LG 페이제휴카드 안내" : ["/html/STC/MKT5004.html","","검수완료"],
+					"LG 페이사용가능 단말기" : ["/html/STC/MKT5005.html","","검수완료"]
 				},
 				"LG 모바일 스위치" : {
 					 "모바일스위치란?" : ["/html/STC/MKT5006.html","","검수완료"],

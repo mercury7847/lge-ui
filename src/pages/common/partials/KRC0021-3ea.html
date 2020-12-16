@@ -36,109 +36,141 @@
     -->
     <div class="component KRC0021 @@bg-color">
         <div class="component-inner">
-            <div class="unit-list @@align-class1">
-                <div class="unit-box">
-                    <!-- 1. image -->
-                    <div class="visual-area image">
-                        <a href="#none" data-link-area="block_image_2to3_cta-image" data-link-name="{alt text}">
-                            <img class="lazyload" data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt=""/>
-                        </a>
-                        <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-                        <!-- caption -->
-                        <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-                        <!-- // caption -->
-                    </div>
-                    <!-- // 1. image -->
-                    <!-- 2. head copy -->
-                    <p class="head-copy">LG SIGNATURE OLED 8K</p>
-                    <!-- // 2. head copy -->
-                    <!-- 3. headline -->
-                    <div class="title" id="title01">@@heading2</div>
-                    <!-- // 3. headline -->
-                    <!-- 4. body copy -->
-                    <p class="body-copy @@font-class2">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다.</p>
-                    <!-- // 4. body copy -->
-                    <!-- 5. cta -->
-                    <div class="bottom-btn btn-type-text">
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="block_image_2to3_cta-cta" data-link-name="{link text}" aria-describedby="title01">텍스트 링크 버튼</a></span>
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="block_image_2to3_cta-cta" data-link-name="{link text}" aria-describedby="title01">텍스트 링크 버튼</a></span>
-                    </div>
-                    <!-- // 5. cta -->
+            <div class="unit-list @@align-class1 ui_carousel_slider">
+                <div class="indi-wrap">
+                    <ul class="ui_carousel_dots">
+                        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                    </ul>
                 </div>
-                <div class="unit-box animation-box">
-                    <!-- 1. image 애니메이션 타입인 경우 -->
-                    <div class="visual-area image">
-                        <a href="#none" role="button" data-src="/lg5-common/videos/signature_rain_view.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title02">Plays audio Description Video</a>
-                        <img class="lazyload" data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt=""/>
-                        <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-                        <div class="animation-area">
-                            <video autoplay muted loop>
-                                <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
-                                <!-- WEBM 동영상을 제공하는 경우
-                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
-                                -->
-                            </video>
-                            <div class="controller-wrap wa-btn">
-                                <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title-id">Pause Video</button>
+                <div class="ui_carousel_track">
+                    <div class="ui_carousel_slide">
+                        <div class="unit-box">
+                            <!-- 1. image -->
+                            <div class="visual-area image">
+                                <a href="#none" data-link-area="block_image_2to3_cta-image" data-link-name="{alt text}">
+                                    <img class="lazyload" data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt=""/>
+                                </a>
+                                <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                                <!-- caption -->
+                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                                <!-- // caption -->
                             </div>
+                            <!-- // 1. image -->
+                            <!-- 2. head copy -->
+                            <p class="head-copy">최대 10자 이내 사용</p>
+                            <!-- // 2. head copy -->
+                            <!-- 3. headline -->
+                            <div class="title" id="title01">@@headline</div>
+                            <!-- // 3. headline -->
+                            <!-- 4. body copy -->
+                            <p class="body-copy @@font-class2">바디카피 공백포함 최대 120자 이내에서 사용가능합니다. 바디카피 공백포함 최대 120자 이내에서 사용가능합니다. 바디카피 공백포함 최대 120자 이내에서 사용가능합니다.</p>
+                            <!-- // 4. body copy -->
+                            <!-- 5. cta -->
+                            <div class="bottom-btn btn-type-text">
+                                <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
+                                <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
+                            </div>
+                            <!-- // 5. cta -->
+                            <!-- 6. disclaimer -->
+                            <ul class="bullet-list">
+                                <li class="b-txt">디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다, 단 모바일 영역을 고려하여 너무 긴 텍스트는 지양합니다.</li>
+                            </ul>
+                            <!-- // 6. disclaimer -->
                         </div>
-                        <!-- caption -->
-                        <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-                        <!-- // caption -->
                     </div>
-                    <!-- // 1. image -->
-                    <!-- 2. head copy -->
-                    <p class="head-copy">LG SIGNATURE OLED 8K</p>
-                    <!-- // 2. head copy -->
-                    <!-- 3. headline -->
-                    <div class="title" id="title02">@@heading2</div>
-                    <!-- // 3. headline -->
-                    <!-- 4. body copy -->
-                    <p class="body-copy @@font-class2">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다.</p>
-                    <!-- // 4. body copy -->
-                    <!-- 5. cta -->
-                    <div class="bottom-btn btn-type-text">
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="block_image_2to3_cta-cta" data-link-name="{link text}" aria-describedby="title02">텍스트 링크 버튼</a></span>
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="block_image_2to3_cta-cta" data-link-name="{link text}" aria-describedby="title02">텍스트 링크 버튼</a></span>
+                    <div class="ui_carousel_slide">
+                        <div class="unit-box animation-box">
+                            <!-- 1. image 애니메이션 타입인 경우 -->
+                            <div class="visual-area image">
+                                <a href="#none" role="button" data-src="/lg5-common/videos/signature_rain_view.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title02">Plays audio Description Video</a>
+                                <img class="lazyload" data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt=""/>
+                                <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                                <div class="animation-area">
+                                    <video autoplay muted loop>
+                                        <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                        <!-- WEBM 동영상을 제공하는 경우
+                                        <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                        -->
+                                    </video>
+                                    <div class="controller-wrap wa-btn">
+                                        <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title-id">Pause Video</button>
+                                    </div>
+                                </div>
+                                <!-- caption -->
+                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                                <!-- // caption -->
+                            </div>
+                            <!-- // 1. image -->
+                            <!-- 2. head copy -->
+                            <p class="head-copy">최대 10자 이내 사용</p>
+                            <!-- // 2. head copy -->
+                            <!-- 3. headline -->
+                            <div class="title" id="title02">@@headline</div>
+                            <!-- // 3. headline -->
+                            <!-- 4. body copy -->
+                            <p class="body-copy @@font-class2">바디카피 공백포함 최대 120자 이내에서 사용가능합니다. 바디카피 공백포함 최대 120자 이내에서 사용가능합니다. 바디카피 공백포함 최대 120자 이내에서 사용가능합니다.</p>
+                            <!-- // 4. body copy -->
+                            <!-- 5. cta -->
+                            <div class="bottom-btn btn-type-text">
+                                <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
+                                <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
+                            </div>
+                            <!-- // 5. cta -->
+                            <!-- 6. disclaimer -->
+                            <ul class="bullet-list">
+                                <li class="b-txt">디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다, 단 모바일 영역을 고려하여 너무 긴 텍스트는 지양합니다.</li>
+                            </ul>
+                            <!-- // 6. disclaimer -->
+                        </div>
                     </div>
-                    <!-- // 5. cta -->
+                    <div class="ui_carousel_slide">
+                        <div class="unit-box @@visualType-class">
+                            <!-- 1. image 비디오 타입인 경우 -->
+                            <div class="visual-area video youtube-box">
+                                <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="video" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title03">plays audio description video</a>
+                                <!-- * youtube video modal은 아래의 방식으로 입력 -->
+                                <!-- 11-2. video play button -->
+                                <a href="#none" data-src="/lg5-common/videos/signature_rain_view.mp4" class="see-video" data-type="video" data-target="modal" data-link-area="block_image_2to3_cta-video_play" data-link-name="{video title / video id}" aria-describedby="title03">
+                                    <img class="lazyload" data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt=""/>
+                                </a>
+                                <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                                <!-- // 11-2. video play button -->
+                                <!-- 11-3. video title copy -->
+                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                                <!-- // 11-3. video title copy -->
+                            </div>
+                            <!-- // 1. image -->
+                            <!-- 2. head copy -->
+                            <p class="head-copy">최대 10자 이내 사용</p>
+                            <!-- // 2. head copy -->
+                            <!-- 3. headline -->
+                            <div class="title" id="title03">@@headline</div>
+                            <!-- // 3. headline -->
+                            <!-- 4. body copy -->
+                            <p class="body-copy @@font-class2">바디카피 공백포함 최대 120자 이내에서 사용가능합니다. 바디카피 공백포함 최대 120자 이내에서 사용가능합니다. 바디카피 공백포함 최대 120자 이내에서 사용가능합니다.</p>
+                            <!-- // 4. body copy -->
+                            <!-- 5. cta -->
+                            <div class="bottom-btn btn-type-text">
+                                <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
+                                <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
+                            </div>
+                            <!-- // 5. cta -->
+                            <!-- 6. disclaimer -->
+                            <ul class="bullet-list">
+                                <li class="b-txt">디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다, 단 모바일 영역을 고려하여 너무 긴 텍스트는 지양합니다.</li>
+                            </ul>
+                            <!-- // 6. disclaimer -->
+                        </div>
+                    </div>
                 </div>
-                <div class="unit-box @@visualType-class">
-                    <!-- 1. image 비디오 타입인 경우 -->
-                    <div class="visual-area video youtube-box">
-                        <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="video" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title03">plays audio description video</a>
-                        <!-- * youtube video modal은 아래의 방식으로 입력 -->
-                        <!-- 11-2. video play button -->
-                        <a href="#none" data-src="/lg5-common/videos/signature_rain_view.mp4" class="see-video" data-type="video" data-target="modal" data-link-area="block_image_2to3_cta-video_play" data-link-name="{video title / video id}" aria-describedby="title03">
-                            <img class="lazyload" data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt=""/>
-                        </a>
-                        <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-                        <!-- // 11-2. video play button -->
-                        <!-- 11-3. video title copy -->
-                        <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-                        <!-- // 11-3. video title copy -->
-                    </div>
-                    <!-- // 1. image -->
-                    <!-- 2. head copy -->
-                    <p class="head-copy">LG SIGNATURE OLED 8K</p>
-                    <!-- // 2. head copy -->
-                    <!-- 3. headline -->
-                    <div class="title" id="title03">@@heading2</div>
-                    <!-- // 3. headline -->
-                    <!-- 4. body copy -->
-                    <p class="body-copy @@font-class2">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다.</p>
-                    <!-- // 4. body copy -->
-                    <!-- 5. cta -->
-                    <div class="bottom-btn btn-type-text">
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="block_image_2to3_cta-cta" data-link-name="{link text}" aria-describedby="title03">텍스트 링크 버튼</a></span>
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="block_image_2to3_cta-cta" data-link-name="{link text}" aria-describedby="title03">텍스트 링크 버튼</a></span>
-                    </div>
-                    <!-- // 5. cta -->
+                <div class="slide-controls">
+                    <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                    <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                 </div>
             </div>
             <!-- 16. cta -->
             <div class="btn-box">
-                <span><a href="#none" class="btn btn-primary btn-lg" data-link-area="block_image_2to3_cta-cta" data-link-name="{link text}">버튼은 최대 6칼럼을 넘지 않도록 조정합니다</a></span>
+                <span><a href="#none" class="btn border size-m" data-link-area="block_image_2to3_cta-cta" data-link-name="{link text}">H2 button</a></span>
             </div>
             <!-- // 16. cta -->
         </div>
