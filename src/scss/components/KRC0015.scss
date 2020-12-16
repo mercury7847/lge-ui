@@ -33,15 +33,32 @@
     .btn-arrow {
         position: absolute;
         top: 50%;
-        margin-top: -28px;
+        margin-top: -24px;
         &.prev {
-            left: 120px;
+            left: 50%;
+            margin-left: -754px;
         }
         &.next {
-            right: 120px;
+            right: 50%;
+            margin-right: -754px;
+        }
+        @media screen and (max-width: 1508px) {
+            &.prev {
+                left: 16px;
+                margin-left: 0;
+            }
+            &.next {
+                right: 16px;
+                margin-right: 0;
+            }
         }
         @include mobile {
-            display: none !important;
+            &.prev {
+                left: 4px;
+            }
+            &.next {
+                right: 4px;
+            }
         }
     }
 
@@ -55,22 +72,6 @@
         text-align: center;
         font-size: 0;
         z-index: 2;
-
-        //li {
-        //    padding:0 4px;
-        //    .btn-indi {
-        //        display: inline-block;
-        //        width: 10px;
-        //        height: 10px;
-        //        border-radius: 5px;
-        //        background-color: #ddd;
-        //        font-size: 0;
-        //    }
-        //    &.on .btn-indi {
-        //        width: 20px;
-        //        background-color: #111;
-        //    }
-        //}
 
         .ui_carousel_dots,
         .ui_carousel_play {
@@ -145,30 +146,24 @@
     .contents-area {
         position: absolute;
         top: 0;
-        right: 60px;
+        right: 0;
         bottom: 0;
-        left: 60px;
+        left: 0;
         z-index: 2;
-        padding: 125px 0;
-        @include mobile {
-            right:0;
-            left:0;
-        }
-        //padding: 56px 0;
         .text-area {
             position: relative;
             z-index: 1;
             .text-wrap {
                 width: 100%;
-                max-width: 1284px + 60px;
+                max-width: (1380px + 80px);
                 margin: 0 auto;
-                padding-right: 30px;
-                padding-left: 30px;
+                padding-right: 40px;
+                padding-left: 40px;
 
                 @include mobile {
                     max-width: 100%;
-                    padding-right: 20px;
-                    padding-left: 20px;
+                    padding-right: 16px;
+                    padding-left: 16px;
                 }
             }
         }
@@ -183,7 +178,7 @@
         .eyebrow {
             margin-bottom: 8px;
             font-weight: 700;
-            @include font-large-2;
+            @include font-eyebrow;
         }
         .title {
             margin-bottom: 32px;
@@ -192,9 +187,20 @@
                 font-size: 56px;
                 line-height: 74px;
             }
+            @include mobile {
+                margin-bottom: 16px;
+                h1, h2, h3, h4, h5, h6 {
+                    font-size: 32px;
+                    line-height: 42px;
+                }
+            }
         }
         .copy {
             @include font-large-1;
+        }
+
+        @include mobile {
+            margin-bottom: 24px;
         }
     }
 
@@ -226,65 +232,11 @@
     }
 
     @include mobile {
-        .mobile-text-block-left,
-        .mobile-text-block-right,
-        .mobile-text-block-center {
-            .contents-area {
-                position: static;
-                padding: 0;
-                .align-top,
-                .align-middle,
-                .align-bottom {
-                    &.text-area {
-                        &.text-white {
-                            background-color: #000;
-                        }
-                        &.text-black {
-                            background-color: #fff;
-                        }
-                        .text-wrap {
-                            position: static;
-                            padding: 24px 20px 60px;
-                            transform: translateY(0);
-                        }
-                    }
-                }
-            }
-            &.carousel-box {
-                &:last-child {
-                    .contents-area {
-                        .align-top,
-                        .align-middle,
-                        .align-bottom {
-                            &.text-area {
-                                .text-wrap {
-                                    padding-bottom: 24px;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .mobile-text-block-left {
-            .text-area {
-                .inner {
-                    text-align: left;
-                }
-            }
-        }
-        .mobile-text-block-right {
-            .text-area {
-                .inner {
-                    text-align: right !important;
-                }
-            }
-        }
-        .mobile-text-block-center {
-            .text-area {
-                .inner {
-                    text-align: center !important;
-                }
+        .cta-link {
+            & + .video-link {
+                display: block;
+                margin-top: 12px;
+                margin-left: 0;
             }
         }
     }
@@ -302,7 +254,7 @@
         .text-wrap {
             .inner {
                 .text-block {
-                    max-width:60%;
+                    max-width:795px;
                     @include mobile {
                         max-width:100%;
                     }
@@ -312,7 +264,7 @@
     }
 
     // 텍스트 가로정렬 및 버튼 사이 간격
-    $align: (left, right, center, top, middle, bottom);
+    $align: (left, right, center, top, middle);
     @each $key in $align {
         .align-#{$key} {
             @if $key == left {
@@ -382,11 +334,12 @@
                     height: 100%;
                     .text-wrap {
                         position: absolute;
-                        top: -69px;
+                        top: 0;
                         right: 0;
                         left: 0;
+                        padding-top: 80px;
                         @include mobile {
-                            top: -65px;
+                            padding-top: 32px;
                         }
                     }
                 }
@@ -400,21 +353,6 @@
                         right: 0;
                         left: 0;
                         transform:translateY(-50%);
-                    }
-                }
-            }
-            @if $key == bottom {
-                &.text-area {
-                    height: 100%;
-                    .text-wrap {
-                        position: absolute;
-                        bottom: -69px;
-                        right: 0;
-                        left: 0;
-                        @include mobile {
-                            top: -65px;
-                            bottom: 0;
-                        }
                     }
                 }
             }
@@ -507,28 +445,6 @@
                         }
                     }
                 }
-                //.text-block {
-                //    .eyebrow {
-                //        color: #111;
-                //    }
-                //    .title {
-                //        h1, h2, h3, h4, h5, h6 {
-                //            color: #111;
-                //        }
-                //    }
-                //    .copy {
-                //        color: #111;
-                //    }
-                //}
-                //.link-text {
-                //    border-bottom-color: #111;
-                //    color: #111;
-                //    &.ico-right {
-                //        &:after {
-                //            border-color: #111;
-                //        }
-                //    }
-                //}
             }
         }
     }
@@ -537,14 +453,18 @@
 .animation-box {
     &.animation-box-full {
         &.ui_carousel_slide {
-            .play-animaion-btn {
-                @include calc(top,50%,-20px);
-            }
             .animation-area {
                 top: 50%;
                 transform: translateY(-100%);
                 video {
                     height: auto;
+                }
+                @include mobile {
+                    top: 0;
+                    transform: translateY(0);
+                    video {
+                        height: 100%;
+                    }
                 }
                 .controller-wrap {
                     @include calc(bottom,-50%,-85px);
