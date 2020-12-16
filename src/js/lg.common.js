@@ -363,6 +363,9 @@
                             if(this.$('.ui_carousel').length>0){
                                 this.$('.ui_carousel').vcCarousel('update');
                             }
+                            if(this.$('.ui_smooth_scrolltab').length>0){
+                                this.$('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
+                            }
                         }
                     }
                 });
