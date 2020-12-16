@@ -4,6 +4,43 @@
 
 
 .KRC0027 {
+    .component-inner {
+        @include mobile {
+            padding: 0;
+        }
+    }
+    .carousel-box {
+        .indi-wrap,
+        .slide-controls,
+        .slide-controls .btn-arrow {
+            @include pc {
+                display: none;
+            }
+        }
+
+        @include mobile {
+            position: relative;
+            padding-bottom: 32px;
+            .indi-wrap {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+            .slide-controls {
+                .btn-arrow {
+                    position: absolute;
+                    top: 50%;
+                    &.prev {
+                        left: 4px;
+                    }
+                    &.next {
+                        right: 4px;
+                    }
+                }
+            }
+        }
+    }
     $color: (lightgray, dark, black, white);
 	@each $bg in $color {
 		&.bg-#{$bg} {
@@ -83,11 +120,11 @@ $block: (block1, block2, block3);
                         padding:0;
                     } @else if ( $i == block2 ) {
                         width:100%;
-                        margin-top:60px;
+                        //margin-top:60px;
                         padding:0;
                     } @else if ( $i == block3 ) {
                         width:100%;
-                        margin-top:60px;
+                        //margin-top:60px;
                         padding:0;
                     }
                     &:first-child {
@@ -107,7 +144,7 @@ $block: (block1, block2, block3);
                 @include font-large-1;
             }
             .cta-box {
-                margin:12px -12px 0;
+                margin:12px 0 0;
                 font-size:0;
                 span {
                     display:inline-block;
@@ -130,10 +167,18 @@ $block: (block1, block2, block3);
             .disclaimer {
                 margin-top: 12px;
             }
+            @include mobile {
+                .title,
+                .text,
+                .cta-box,
+                .disclaimer {
+                    padding: 0 16px;
+                } 
+            }
             .visual-box {
                 position:relative;
                 @include mobile {
-                    margin: 0 -20px;
+                    //margin: 0 -20px;
                 }
                 .cta-box {
                     position:absolute;

@@ -22,7 +22,9 @@
                 }
             });
 
-            $('#topic').vcSelectTarget();
+            $('#topic').vcSelectTarget({
+                addParam: '#productCode'
+            });
            
             $subTopic.on('change', function() {
                 var topicVal = $topic.val();

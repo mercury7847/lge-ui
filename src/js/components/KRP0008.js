@@ -4,8 +4,6 @@
 
         $('.KRP0008').buildCommonUI();
         
-        var maxThumbnailCount = 6;
-        
         var KRP0008 = {
             init: function() {
                 var self = this;
@@ -124,6 +122,7 @@
                 */
                                 
                 //팝업 모달뷰 버튼
+                /*
                 self.$component.find('a.view-more').on('click', function(e) {
                     e.preventDefault();
                     self.requestModal(this);
@@ -132,6 +131,7 @@
                     e.preventDefault();
                     self.requestModal(this);
                 });
+                */
 
                 //데스크탑용 갤러리 이미지 클릭
                 self.$pdpImage.find('a').first().on('click',function(e){
@@ -180,6 +180,7 @@
                     if($(this).hasClass('cart')) {
                         console.log('카트');
                     } else {
+                        //구매,예약,렌탈
                         console.log('goto buy');
                     }
                 });
@@ -212,10 +213,11 @@
                 var item = self.findPdpData(index);
                 console.log(item, index);
                 switch(item.type) {
+                    case "360":
+                        break;
                     case "image":
                         //이전에 선택되었던 썸네일 활성화 제거 및 새로운 썸네일 활성화
                         var thumbItem = self.$pdpThumbnail.find('li:eq('+index+')');
-                        console.log(thumbItem);
                         if(self.$selectItemTarget) {
                             self.$selectItemTarget.removeClass('active');
                         }
@@ -254,11 +256,16 @@
                 self.$selectModalItemTarget.addClass('active');
     
                 self.pinchZoom.runZoom(1, false);
-                self.$popPdpVisualVideo.html('');
+                //self.$popPdpVisualVideo.html('');
                 self.$popPdpVisualAnimation.find('div.animation-box').vcVideoBox('reset');
     
-                console.log(item);
                 switch(item.type) {
+                    case "360":
+                        self.$popPdpVisualImage.hide();
+                            self.$popPdpVisualVideo.hide();
+                            self.$popPdpVisualAnimation.hide();
+                            self.$popPdpVisual360.show();
+                        break;
                     case "image":
                         self.$popPdpVisualImage.find('div.zoom-area img').attr({'data-pc-src':item.imagePC,'data-m-src':item.imageMobile});
                         //vcui.require(['ui/imageSwitch'], function () {
@@ -272,7 +279,9 @@
                         //});
                         break;
                     case "video":
-                        var template = '<div class="item-box visual-box"><div class="video-container video-box youtube-box">' +
+                        /*
+                        var template = '<div class="item-box visual-box">' +
+                            '<div class="video-container video-box youtube-box">' +
                                 '<div class="thumnail">' +
                                     '<img data-pc-src="{{imagePC}}" data-m-src="{{imageMobile}}" alt="{{alt}}">' +
                                     '<a href="#" data-src="{{adUrl}}" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-link-area="" data-link-name="{{linkName}}" aria-describedby="{{alt}}">plays audio description video</a>' +
@@ -280,11 +289,24 @@
                                 '<div class="video-asset video-box-closeset">' +
                                     '<iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="{{videoUrl}}"></iframe>' + 
                                 '</div>' +
-                            '</div></div>'
+                            '</div>' +
+                        '</div>'
                         self.$popPdpVisualVideo.html(vcui.template(template,item));
+                        */
+                        self.$popPdpVisualVideo.find('div.thumnail img').attr({
+                            'data-pc-src':item.imagePC,
+                            'data-,-src':item.Mobile,
+                            'alt':item.alt
+                        });
+                        self.$popPdpVisualVideo.find('div.thumnail a').attr({
+                            'data-src':item.adUrl,
+                            'data-link-name':item.linkName,
+                            'aria-describedby':item.alt
+                        });
+                        self.$popPdpVisualVideo.find('iframe').attr('src',item.videoUrl);
                         self.$popPdpVisualVideo.vcImageSwitch('reload');
                         //vcui.require(['ui/imageSwitch','ui/youtubeBox'], function () {
-                            self.$popPdpVisualVideo.find('.youtube-box').vcYoutubeBox();
+                            //self.$popPdpVisualVideo.find('.youtube-box').vcYoutubeBox();
                             self.$popPdpVisualImage.hide();
                             self.$popPdpVisualVideo.show();
                             self.$popPdpVisualAnimation.hide();
@@ -310,6 +332,7 @@
             },
 
             //ajax 팝업뷰 뛰우기
+            /*
             requestModal: function(dm) {
                 var self = this;
                 var ajaxUrl = $(dm).attr('href');
@@ -321,6 +344,7 @@
             openModalFromHtml: function(html) {
                 $('#pdp-modal').html(html).vcModal();
             },
+            */
 
             //아이템 찜하기
             requestWishItem: function(itemID, wish) {

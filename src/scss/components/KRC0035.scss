@@ -96,36 +96,86 @@
 	&.standard {
 		.visual-wrap {
 			&.image-align-left {
-				@include grid-col(left,6,12);
+				width:50%;
+				padding-right:24px;
 			}
 			&.image-align-right {
-				@include grid-col(right,6,12);
+				width:50%;
+				padding-left:24px;
+			}
+			@include mobile {
+				&.image-align-left,
+				&.image-align-right {
+					width:auto;
+					margin:0 -16px;
+					padding:0;
+				}
+				&.image-align-right {
+					margin-top:28px;
+				}
 			}
 		}
 		.text-wrap {
 			&.side-left-text {
-				@include grid-col(left,6,12);
+				width:50%;
+				padding-right:24px;
 			}
 			&.side-right-text {
-				@include grid-col(right,6,12);
+				width:50%;
+				padding-left:24px;
+			}
+			@include mobile {
+				&.side-left-text,
+				&.side-right-text {
+					width:100%;
+					padding:0;
+				}
+				&.side-right-text {
+					margin-top:28px;
+				}
 			}
 		}
 	}
 	&.large {
 		.visual-wrap {
 			&.image-align-left {
-				@include grid-col(left,8,12);
+				width:calc((100% / 3) * 2);
+				padding-right:24px;
 			}
 			&.image-align-right {
-				@include grid-col(right,8,12);
+				width:calc((100% / 3) * 2);
+				padding-left:24px;
+			}
+			@include mobile {
+				&.image-align-left,
+				&.image-align-right {
+					width:auto;
+					margin:0 -16px;
+					padding:0;
+				}
+				&.image-align-right {
+					margin-top:28px;
+				}
 			}
 		}
 		.text-wrap {
 			&.side-left-text {
-				@include grid-col(left,4,12);
+				width:calc((100% / 3) * 1);
+				padding-right:24px;
 			}
 			&.side-right-text {
-				@include grid-col(right,4,12);
+				width:calc((100% / 3) * 1);
+				padding-left:24px;
+			}
+			@include mobile {
+				&.side-left-text,
+				&.side-right-text {
+					width:100%;
+					padding:0;
+				}
+				&.side-right-text {
+					margin-top:28px;
+				}
 			}
 		}
 	}
@@ -133,12 +183,9 @@
 	.inner {
         display:table;
         table-layout:fixed;
-        width:calc(100% + 24px);
-		margin:0 -12px;
+        width:100%;
 		@include mobile {
-			display:inherit;
-			width:auto;
-			margin:0 -6px;
+			display:block;
 		}
 	}
 
@@ -147,14 +194,19 @@
 		float:none !important;
 		vertical-align:middle;
 		@include mobile {
-			display:inherit;
+			display:block;
 		}
 		.visual-area {
 			position: relative;
 			max-width: 100%;
 
-			video {
-				height:auto;
+			&.animation-box {
+				.animation-area {
+					position:relative;
+					top:auto;
+					left:auto;
+					height:auto;
+				}
 			}
 
 			&.image {
@@ -207,18 +259,31 @@
 			}
 			
 			.slide-controls {
-				top:calc((100% - 34px) / 2);
+				top:calc((100% - 36px) / 2);
+				@include mobile {
+					top:calc((100% - 32px) / 2);
+				}
+				.btn-arrow.prev {
+					left:-24px;
+					@include mobile {
+						left:4px;
+					}
+				}
+				.btn-arrow.next {
+					right:-24px;
+					@include mobile {
+						right:4px;
+					}
+				}
 			}
         }
 	}
 	
 	.text-wrap {
 		display:table-cell;
-		float:none !important;
-		padding-top: 25px;
 		vertical-align:middle;
 		@include mobile {
-			display:inherit;
+			display:block;
 		}
 		.title {
 			* {
@@ -230,13 +295,22 @@
 			margin-bottom: 8px;
 			font-weight: 700;
 			@include font-eyebrow;
+			@include mobile {
+				margin-bottom:6px;
+			}
 		}
 		.text {
 			margin-top:24px;
 			@include font-large-1;
+			@include mobile {
+				margin-top:12px;
+			}
 		}
 		.thumbs {
 			margin-top:56px;
+			@include mobile {
+				margin-top:28px;
+			}
 			img {
 				width:auto;
 				max-width:100%;
