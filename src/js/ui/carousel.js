@@ -1902,8 +1902,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             var self = this,
                 opt = self.options;
 
-            if (!self.unbuilded) {
-
+            if (!self.unbuilded) 
+            {
                 self.triggerHandler(_N + 'afterchange', [self, index]);
                 self.startTransition(index);
 
