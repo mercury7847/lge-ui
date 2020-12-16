@@ -27,10 +27,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _setting: function(){
             var self = this;
 
-            self.outStatus = {
-                timer: null,
-                item: null
-            };
+            self.outTimer = null;
 
             self.$mypage = self.$el.find('.header-top .shortcut .mypage');
 
@@ -39,14 +36,16 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self.$dimmed = self.$el.find('.nav-wrap .dimmed');
 
-            self.$leftArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .prev');
-            self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next');
-
             self.$mobileNaviWrapper = $(self.$pcNaviWrapper.clone()).width('100%');
             self.$mobileNaviItems = self.$mobileNaviWrapper.find('> li');
             self.$pcNaviWrapper.parent().append(self.$mobileNaviWrapper);
             
             self.$hamburger = self.$el.find('.mobile-nav-button');
+
+            
+
+            self.$leftArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .prev');
+            self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next');
         },
 
         _bindEvents: function(){
@@ -123,29 +122,16 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self.$leftArrow.show();
                 self.$rightArrow.show();
             } else{
-                self.$leftArrow.hide();
-                self.$rightArrow.hide();
+                self.$leftArrow.show();
+                self.$rightArrow.show();
             }
         },
 
         _setNavPosition: function(course){
             var self = this;
-
-            // var brandgate = self.$el.find('.nav-wrap .nav-brand-gate');
-
-            // var navwrapwidth = self.$el.find('.nav-wrap').width();
-            // var brandwidth = brandgate.outerWidth(true);
-            // var navwidth = self.$pcNaviWrapper.outerWidth(true);
-            // var minx = navwrapwidth - (brandwidth + navwidth);
-            // var movalue = navwrapwidth * .5;
-
-            // var newposition = parseInt(brandgate.css('x')) + course*movalue;
-            // if(newposition > 0) newposition = 0;
-            // else if(newposition < minx) newposition = minx; 
             
-            // brandgate.stop().transition({left: newposition}, 200);
-            // self.$pcNaviWrapper.stop().transition({left: newposition}, 200);
-            // self.$pcNaviWrapper.find('.nav-category-layer').css({x:-newposition})
+            var navx = $('.nav-wrap').offset().left + 80*course;
+            $('.nav-wrap').css({x:navx});
         },
 
         _pcSetting: function(){
@@ -162,31 +148,39 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 $(item).find('> .nav-category-container > ul').css({
                     width: '100%'
                 });
-                // $(item).find('> a').css('vertical-align', 'top');
 
-                // $(item).css({'vertical-align':  'top'});
+                var categoryLayer = $(item).find('> .nav-category-layer');
+                if(categoryLayer.length){
+                    categoryLayer.find('.ui_carousel_slider').vcCarousel({
+                        infinite: false,
+                        swipeToSlide: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        playSelector: '.btn-play.play'
+                    });
+                    categoryLayer.find('.ui_carousel_list').css('overflow', 'hidden');
+                }
 
                 $(item).data('subwidth', categorywidth);
-                $(item).on('mouseover', function(e){
-                    console.log(this)
-                    self._setOver($(this));
-                }).on('mouseout', function(e){    
-                    self._setOut($(this));
+                $(item).on('mouseover', '> a, > .nav-category-layer .nav-category-wrap', function(e){
+                    self._setOver(idx, -1);
+                }).on('mouseout', '> a, > .nav-category-layer .nav-category-wrap', function(e){    
+                    self._setOut();
                 });
 
                 $(item).find('> .nav-category-container > ul >li').each(function(cdx, child){
-                    $(child).on('mouseover', function(e){
-                        self._setOver($(this));
-                    }).on('mouseout', function(){
-                        self._setOut($(this));
+                    $(child).on('mouseover', '> a, .nav-category-wrap', function(e){
+                        self._setOver(idx, cdx);
+                    }).on('mouseout', '> a, .nav-category-wrap', function(){
+                        self._setOut();
                     })
                 });
             });
 
-            self.$el.on('mouseover', '.nav-wrap, .nav-category-wrap', function(e){
-                var parent = $(this).closest('li');
-            }).on('mouseout', '.nav-wrap, .nav-category-wrap', function(e){
-                var parent = $(this).closest('li');
+            $('.nav-wrap').on('mouseover', function(e){
+                self._removeOutTimeout();
+            }).on('mouseout', function(e){
+                self._setOut();
             });
 
             self.$leftArrow.on('click', function(e){
@@ -201,46 +195,82 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             })
         },
 
-        _setOver: function(item){
+        _setActiveAbled: function(item, abled){
+            item.removeClass('active');
+            item.find('> a').removeClass('active');
+
+            if(abled){
+                item.addClass('active');
+                item.find('> a').addClass('active');
+            }
+        },
+
+        _showSubContents: function(item){
             var self = this;
 
-            if(self.outStatus.timer != null){
-                if(self.outStatus.item != item) self._setOutAction($(self.outStatus.item));
-
-                clearTimeout(self.outStatus.timer);
-                self.outStatus.timer = null;
-                self.outStatus.item = null;
-            }
-            self.outStatus.item = item;
-
-            item.addClass('active');
-            item.find('> a').addClass('active'); 
-
-            var catecontainer = item.find('> .nav-category-container');
-            if(catecontainer.length){
-                var subwidth = item.data('subwidth');           
-                item.find('> .nav-category-container').stop().css('display', 'inline-block').animate({width:subwidth}, 200);
-            }
-
-            var categoryLayer = item.find('> .nav-category-layer');
+            var categoryLayer = $(item).find('> .nav-category-layer');
             if(categoryLayer.length){
-                categoryLayer.find('.ui_carousel_slider').vcCarousel({
-                    infinite: false,
-                    swipeToSlide: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    playSelector: '.btn-play.play'
-                });
-                categoryLayer.find('.ui_carousel_list').css('overflow', 'hidden');
+                categoryLayer.find('.ui_carousel_slider').vcCarousel('update');
 
                 self.$dimmed.show();
             }
         },
 
+        _setOver: function(one, two){
+            var self = this;
+
+            self._removeOutTimeout();
+
+            self.$pcNavItems.each(function(idx, item){
+                var catecontainer = $(item).find('> .nav-category-container');
+
+                if(idx == one){
+                    self._setActiveAbled($(item), true);
+                    self._showSubContents(item);
+                    
+                    if(catecontainer.length){
+                        var subwidth = $(item).data('subwidth');           
+                        catecontainer.stop().css('display', 'inline-block').animate({width:subwidth}, 200, function(){
+                            self._arrowState();
+                        });
+
+                        catecontainer.find('> ul >li').each(function(cdx, child){
+                            if(cdx == two){
+                                self._setActiveAbled($(child), true);
+                                self._showSubContents(child);
+                            } else{
+                                self._setActiveAbled($(child), false);
+                            }
+                        });
+                    }
+                } else{
+                    if(catecontainer.length){
+                        catecontainer.find('> ul >li').each(function(cdx, child){
+                            self._setActiveAbled($(child), false);
+                        });
+                    } else{
+                        self._setActiveAbled($(item), false);
+                    }
+                }
+            });
+        },
+
+        _removeOutTimeout: function(){
+            var self = this;
+            
+            console.log("removeOutimeout")
+            clearTimeout(self.outTimer);
+            self.outTimer = null;
+        },
+
         _setOut: function(item){
             var self = this;
 
-            self.outStatus.timer = setTimeout(function(){
+            self._removeOutTimeout();
+
+            console.log("addOutimeout");            
+            self.outTimer = setTimeout(function(){
+                console.log("callOutimeout")
                 self._setOutAction(item);
             }, 180);
         },
@@ -248,18 +278,20 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _setOutAction: function(item){
             var self = this;
 
-            var catecontainer = item.find('> .nav-category-container');
-            if(catecontainer.length){
-                catecontainer.stop().animate({width:0}, 150, function(){
-                    item.removeClass('active');
-                    item.find('> a').removeClass('active');
-                    item.find('> .nav-category-container').css('display', 'none');
-                });
-            } else{
-                item.removeClass('active');
-                item.find('> a').removeClass('active');
-            }
+            self.$pcNavItems.each(function(idx, item){
+                var catecontainer = $(item).find('> .nav-category-container');
+                if(catecontainer.length){
+                    catecontainer.stop().animate({width:0}, 150, function(){
+                        self._setActiveAbled($(item), false);
+                        catecontainer.css('display', 'none');
 
+                        self._arrowState();
+                    });
+                } else{
+                    self._setActiveAbled($(item), false);
+                }
+            });
+            
             self.$dimmed.hide();
         },
 

@@ -10,7 +10,7 @@
                 param = $submitForm.serialize();
 
             var $topic = $('#topic'),
-                $subTopic = $('#subPic'),
+                $subTopic = $('#subTopic'),
                 $keyword = $('#keyword'),
                 $btnSearch = $('.btn-search');
 

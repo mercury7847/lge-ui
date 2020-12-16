@@ -32,11 +32,12 @@
 				bottom: 24px;
 				left: 50%;
 				z-index: 1;
-				width: 80px;
-				height: 80px;
-				margin-left:-40px;
+				width: 48px;
+				height: 48px;
+				margin-left:-24px;
 				border-radius: 50% 50%;
-				background: url('/lg5-common/images/btn-video-play.svg') 50% 50% no-repeat;
+				background: url('/lg5-common/images/btn-video-play.svg') no-repeat;
+				background-size:100%;
 			}
 		}
 
@@ -273,8 +274,8 @@
 			position:absolute;
 			top:20px;
 			right:20px;
-			width:32px;
-			height:32px;
+			width:24px;
+			height:24px;
 			overflow:hidden;
 			z-index:9;
 			text-indent:-9999px;
@@ -285,8 +286,8 @@
 				top:0;
 				right:0;
 				left:inherit;
-				width:32px;
-				height:32px;
+				width:24px;
+				height:24px;
 				margin:0;
 				background:url('/lg5-common/images/btn-AD-on.svg');
 				background-size:100% 100%;

@@ -144,6 +144,21 @@
             }
         }
     }
+    &.type-B {
+        .input-wrap {
+            input {
+                box-shadow: none;
+            }
+        }
+        @include mobile {
+            .input-wrap {
+                input[type=text] {
+                    border-radius: 8px;
+                    border: solid 1px #ddd;
+                }
+            }
+        }
+    }
     @include mobile {
         .input-wrap {
             input[type=text] {
