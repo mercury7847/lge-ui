@@ -10,7 +10,7 @@
                 param = $submitForm.serialize();
 
             var $topic = $('#topic'),
-                $subTopic = $('#subPic'),
+                $subTopic = $('#subTopic'),
                 $keyword = $('#keyword'),
                 $btnSearch = $('.btn-search');
 
@@ -22,7 +22,9 @@
                 }
             });
 
-            $('#topic').vcSelectTarget();
+            $('#topic').vcSelectTarget({
+                addParam: '#productCode'
+            });
            
             $subTopic.on('change', function() {
                 var topicVal = $topic.val();
