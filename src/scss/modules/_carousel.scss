@@ -17,7 +17,8 @@
         width:40px;
         height:40px;
         border-radius:50%;
-        background:url('/lg5-common/images/icons/btn-arr-40x40.svg') no-repeat;
+        background-image:url('/lg5-common/images/icons/btn-arr-40x40.svg');
+        background-repeat:no-repeat;
         background-size:100%;
         box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
         @include mobile {
@@ -27,7 +28,7 @@
     }
     &.disabled, &.ui_carousel_hidden {
         &::before {
-            background:url('/lg5-common/images/icons/btn-arr-40x40-2.svg') no-repeat;
+            background-image:url('/lg5-common/images/icons/btn-arr-40x40-2.svg');
         }
     }
     &.prev {
