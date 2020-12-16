@@ -1582,13 +1582,7 @@
 <!-- // PC / Mobile Default Header -->
 
 <!-- Breadcrumb -->
-<div role="navigation" aria-label="Breadcrumb" class="breadcrumb">
-    <ul>
-        <li><a href="#">홈</a></li>
-        <li><a href="#">1Depth</a></li>
-        <li><a href="#">2Depth</a></li>
-        <li><a href="#">3Depth</a></li>
-        <li><strong>현재 페이지</strong></li>
-    </ul>
-</div>
+@@include('./common/modules/breadcrumb.html', {
+    "breadcrumb": ["1Depth", "2Depth", "3Depth"]
+})
 <!-- // Breadcrumb -->
