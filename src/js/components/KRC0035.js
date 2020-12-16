@@ -12,6 +12,7 @@ $(window).ready(function(){
 				// nextArrow:'.btn-arrow.next',
 				slidesToShow: 1,
 				slidesToScroll: 1,
+				adaptiveHeight: true
 			});
 		});
 	});
