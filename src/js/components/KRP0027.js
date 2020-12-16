@@ -90,7 +90,7 @@ $(window).ready(function(){
                     var scrolldist = listheight - wrapheight - 10;
                     if(scrolltop >= scrolldist){
                         console.log("setSubCateListScrolled();");
-                        //scrollAbled = false;
+                        scrollAbled = false;
 
                         setNextList(page+1);
                     }
@@ -100,7 +100,12 @@ $(window).ready(function(){
 
         function setNextList(page){
             var idxs = getTabCateIDs();
-            console.log(idxs)   
+            var sendata = {
+                page: page,
+                mainCateID: idxs.mainCateID,
+                superCateID: idxs.superCateID,
+                subCateID: idxs.subCateID
+            }
         }
 
         function getTabCateIDs(){
