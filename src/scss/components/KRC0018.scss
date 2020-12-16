@@ -12,6 +12,7 @@
 		vertical-align: top;
 		@include mobile {
 			width: 100%;
+			border-radius:0;
 		}
 
 		.common-area {
@@ -64,6 +65,9 @@
 				margin-bottom: 8px;
 				@include font-medium;
 				font-weight:700;
+				@include mobile {
+					margin-bottom:6px;
+				}
 			}
 
 			.head * {
@@ -74,6 +78,9 @@
 			.desc {
 				margin-top:16px;
 				@include font-medium;
+				@include mobile {
+					margin-top:14px;
+				}
 			}
 		}
 	}
@@ -189,6 +196,9 @@
 						right:4px;
 					}
 				}
+			}
+			.square {
+				margin-top:0 !important;
 			}
 		}
 	}
