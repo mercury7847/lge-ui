@@ -36,6 +36,13 @@
 			height:auto;
 			vertical-align:top;
 		}
+		&.animation-box {
+			.animation-area {
+				position: relative;
+				top: auto;
+				left: auto;
+			}
+		}
 	}
 
 	// text
