@@ -3,43 +3,6 @@
 @import "../components-app";
 
 .KRC0032 {
-    $fontColor : (type-black, type-white);
-    @each $colorClass in $fontColor {
-        .#{$colorClass} {
-            @if $colorClass == type-black {
-				color:#222;
-            }
-            @else if $colorClass == type-white {
-                @include pc {
-                    color:#fff;
-                    .bullet-list {
-                        .b-txt {
-                            color:#fff;
-                            &::before {
-                                background:#fff;
-                            }
-                        }
-                    }
-                    .banner-btn {
-                        .btn.border {
-                            border-color:#fff;
-                            color:#fff;
-                        }
-                        .text-link {
-                            color:#fff;
-                            &::after {
-                                background-image:url("/lg5-common/images/icons/icon-arr-16-wt.svg");
-                            }
-                        }
-                    }
-                    @include mobile {
-                        color:#222;
-                    }
-                }
-            }
-        }
-	}
-
 	&.stage-full {
 		max-width:100%;
     }
@@ -48,72 +11,26 @@
         margin:0 auto;
     }
     &.stage-medium {
-        max-width:1380px;
+        max-width:1380px + 80px;
         margin:0 auto;
     }
 
 	.usp-banner-wrap {
 		position:relative;
 		@include mobile {
-			padding-bottom:50px;
+			padding-bottom:40px;
 		}
 
 		// Indicator Area
 		.indi-wrap {
 			position:absolute;
-			left:0;
-			bottom:20px;
-			z-index:10;
-			width:100%;
-			.ui_carousel_dots,
-			.ui_carousel_play {
-				display: inline-block;
-				vertical-align: middle;
-			}
-			.ui_carousel_play {
-				.btn-play {
-					position:relative;
-					display:inline-block;
-					width:16px;
-					height:16px;
-					margin-left:12px;
-					border-radius: 50%;
-					background-color:#fff;
-					font-size:0;
-				}
-				&.play {
-					.btn-play {
-						&:after {
-							position:absolute;
-							@include calc(top,50%,4px);
-							@include calc(left,50%,3px);
-							border-left:7px solid#222;
-							border-top:4px solid transparent;
-							border-bottom:4px solid transparent;
-							content: '';
-						}
-					}
-				}
-				&.stop {
-					.btn-play {
-						&:before,
-						&:after {
-							position:absolute;
-							@include calc(top,50%,4px);
-							width:2px;
-							height:8px;
-							background-color:#111;
-							content:'';
-						}
-						&:before {
-							@include calc(left,50%,3px);
-						}
-						&:after {
-							@include calc(left,50%,-1px);
-						}
-					}
-				}
-			}
+            left:0;
+            right:0;
+			bottom:28px;
+            z-index:10;
+            @include mobile {
+                bottom:0;
+            }
 		}
 
 		// Swipe Area
@@ -170,7 +87,7 @@
                 }
                 &.type-narrow {
                     .inner {
-                        max-width:678px;
+                        max-width:1146px;
                     }
                 }
 
@@ -202,9 +119,9 @@
                 
 				.banner-tit-sup {
                     display:block;
-                    margin-bottom:4px;
-					font-weight:500;
-					@include font-medium;
+                    margin-bottom:8px;
+					font-weight:700;
+					@include font-eyebrow;
 				}
 				.banner-tit * {
                     display:block;
@@ -217,6 +134,7 @@
 				}
 				.banner-btn {
                     margin-top:24px;
+                    .btn.border,
                     .text-link {
                         margin-left:16px;
                         &:first-child {
@@ -227,6 +145,11 @@
                         .btn.border {
                             display:block;
                             width:100%;
+                            margin-left:0;
+                            margin-top:8px;
+                            &:first-child {
+                                margin-top:0;
+                            }
                         }
                     }
                 }
@@ -234,7 +157,7 @@
                     margin-top:24px;
                     img {
                         width:auto;
-                        max-width:100%;
+                        max-width:50%;
                         height:auto;
                         vertical-align:top;
                     }
@@ -243,31 +166,24 @@
 			.animation-area {
 				position:relative;
 				width:100%;
-				height:1080px;
-				background-color:#222;
-				@include mobile {
-					position:relative;
-					height:360px;
-				}
 				.controller-wrap {
 					right:auto;
 					left:50%;
-					bottom:104px;
+					bottom:68px;
 					transform:translateX(-50%);
 					@include mobile {
-						bottom:76px;
+						bottom:24px;
 					}
 				}
             }
             .video-link {
                 position:absolute;
                 left:50%;
-                bottom:104px;
+                bottom:68px;
                 transform:translateX(-50%);
                 z-index:10;
                 @include mobile {
-                    top:253px;
-                    bottom:auto;
+                    bottom:24px;
                 }
                 a.see-video {
                     display:inline-block;
@@ -287,24 +203,17 @@
                     }
                 }
             }
+            .video-asset {
+                z-index:20;
+            }
 			.visual-area {
 				position:relative;
-				width:100%;
-				height:1080px;
-				@include mobile {
-					position:relative;
-					height:360px;
-				}
-				.bg {
-					display:block;
-					width:100%;
-					height:100%;
-					background: {
-						position:center center;
-						repeat:no-repeat;
-						size:cover;
-					};
-				}
+                width:100%;
+                img {
+                    width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
 			}
 		}
 
@@ -315,9 +224,6 @@
             left:0;
             right:0;
             z-index:10;
-            @include mobile {
-                top:180px;
-            }
             .inner {
                 padding:0 16px;
                 max-width:1380px + 144px + 32px;
@@ -336,6 +242,16 @@
                         }
                         &.next {
                             right:0;
+                        }
+                    }
+                }
+            }
+            @at-root .KRC0032 {
+                &.stage-medium {
+                    .usp-banner-wrap {
+                        .ui_carousel_list {
+                            max-width:1380px;
+                            margin:0 auto;
                         }
                     }
                 }

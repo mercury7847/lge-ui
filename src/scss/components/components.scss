@@ -392,6 +392,29 @@
     }
 
     // button 공통
+    .bc-black {
+        color:#222;
+    }
+    .bc-black-to-white {
+        @include pc {
+            color:#222;
+        }
+        @include mobile {
+            color:#fff;
+        }
+    }
+    .bc-white {
+        color:#fff;
+    }
+    .bc-white-to-black {
+        @include pc {
+            color:#fff;
+        }
+        @include mobile {
+            color:#222;
+        }
+    }
+
     .text-link {
         display:inline-block;
         position:relative;
