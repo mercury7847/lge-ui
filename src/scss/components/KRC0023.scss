@@ -2,6 +2,45 @@
 
 @import "../components-app";
 
+.KRC0023 {
+    .component-inner {
+        @include mobile {
+            padding: 0;
+        }
+    }
+    .carousel-box {
+        .indi-wrap,
+        .slide-controls,
+        .slide-controls .btn-arrow {
+            @include pc {
+                display: none;
+            }
+        }
+
+        @include mobile {
+            position: relative;
+            padding-bottom: 32px;
+            .indi-wrap {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+            .slide-controls {
+                .btn-arrow {
+                    position: absolute;
+                    top: 50%;
+                    &.prev {
+                        left: 4px;
+                    }
+                    &.next {
+                        right: 4px;
+                    }
+                }
+            }
+        }
+    }
+}  
 
 $size: (img2, img3, img4);
 @each $col in $size {
@@ -16,7 +55,7 @@ $size: (img2, img3, img4);
         // padding:0 18px;
         font-size:0;
         @include mobile {
-            padding:0 24px;
+            //padding:0 24px;
         }
         .unit-box {
             display:inline-block;
@@ -31,30 +70,33 @@ $size: (img2, img3, img4);
                 width:25%;
             }
             .title p {
-                max-height:68px;
+                //max-height:68px;
                 margin-top:24px;
                 color:#111;
-                font-size:24px;
-                line-height:34px;
+                @include font-large-2;
                 font-weight:700;
-                @include textEllipsisClamp(2);
+                //@include textEllipsisClamp(2);
             }
             .body-copy {
                 margin-top:16px;
-                color:#616161;
-                font-size:16px;
-                line-height:24px;
+                @include font-medium;
             }
             .bottom-btn {
                 margin:0 -12px;
                 font-size:0;
+                @include mobile {
+                    margin:0 -8px;
+                }
                 span {
                     display:inline-block;
                     margin:0 12px;
                     vertical-align:top;
+                    @include mobile {
+                        margin:0 8px;
+                    }
                 }
                 &.btn-type-box {
-                    margin-top:28px;
+                    margin-top:24px;
                     span {
                         margin-top:12px;
                     }
@@ -64,6 +106,15 @@ $size: (img2, img3, img4);
                     span {
                         margin-top:16px;
                     }
+                }
+                
+            }
+            @include mobile {
+                .title,
+                .body-copy,
+                .bottom-btn,
+                .bullet-list {
+                    padding: 0 16px;
                 }
             }
 
@@ -75,7 +126,7 @@ $size: (img2, img3, img4);
 
             @include mobile {
                 width:100%;
-                margin-top:60px;
+                //margin-top:60px;
                 padding:0;
                 &:first-child {
                     margin-top:0;
@@ -106,15 +157,6 @@ $size: (img2, img3, img4);
                         &:active {
                             border-color:#333;
                             color:#333;
-                        }
-                    }
-                    .btn.btn-outline-primary {
-                        color:#111;
-                    }
-                    .link-text {
-                        color:#fff;
-                        &.ico-right:after {
-                            border-color:#fff;
                         }
                     }
                 } @else if $bg == black {
@@ -176,6 +218,7 @@ $size: (img2, img3, img4);
         //         color: #fff;
         //     }
         // }
+        /*
         .link-text {
             position: relative;
             display: inline-block;
@@ -204,6 +247,6 @@ $size: (img2, img3, img4);
             &.bold {
                 @include font-family($font-weight-bold);
             }
-        }
+        } */
     }
 }
