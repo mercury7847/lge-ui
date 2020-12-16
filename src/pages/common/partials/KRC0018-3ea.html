@@ -37,75 +37,90 @@
 
     <section class="component KRC0018 type-triple @@flow-type @@bg-color">
         <div class="component-inner">
-            <div class="inner">
-                <div class="square-partition tall">
-                    <!-- 1. image - 이미지 타입 샘플 -->
-                    <div class="square main text-white">
-                        <a class="common-area" href="#" data-link-area="block_image_3to5_text_overlay-image" data-link-name="{alt text}">
-                            <div class="visual-area">
-                                <img data-pc-src="/lg5-common/images/KRC0018/@square-case-tall.jpg" data-m-src="/lg5-common/images/KRC0018/@square-case-tall-m.jpg" alt="">
-                                <p class="hidden pc">graphic description : </p>
-                                <p class="hidden mobile">graphic description : </p>
-                            </div>
-                            <div class="copy-boxing-area">
-                                <!-- 2. eyebrow -->
-                                <div class="category">TELEVISION</div>
-                                <!-- // 2. eyebrow -->
-                                <!-- 3. headline -->
-                                <div class="head">@@head</div>
-                                <!-- // 3. headline -->
-                                <!-- 4. body copy -->
-                                <div class="desc font-regular font-underline">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. </div>
-                                <!-- // 4. body copy -->
-                            </div>
-                        </a>
-                    </div>
-                    <!-- // 1. image -->
+            <!-- [KR수정] 모바일 carousel 적용을 위한 DOM 수정 -->
+            <div class="component-sliders ui_carousel_slider_0018">
+                <div class="indi-wrap">
+                    <ul class="indi-conts ui_carousel_dots">
+                        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                    </ul>
                 </div>
-                <div class="square-partition top">
-                    <!-- 5. image -->
-                    <div class="square sub length-lg text-black">
-                        <!-- URL입력 안한 경우 : a 태그를 div로 변경합니다. -->
-                        <div class="common-area">
-                            <div class="visual-area">
-                                <img data-pc-src="/lg5-common/images/KRC0018/@square-case-lg.jpg" data-m-src="/lg5-common/images/KRC0018/@square-case-lg-m.jpg" alt="">
-                                <p class="hidden pc">graphic description : </p>
-                                <p class="hidden mobile">graphic description : </p>
+                <div class="ui_carousel_list">
+                    <ul class="inner ui_carousel_track">
+                        <li class="square-partition tall">
+                            <!-- 1. image - 이미지 타입 샘플 -->
+                            <div class="square main text-white">
+                                <a class="common-area" href="#" data-link-area="block_image_3to5_text_overlay-image" data-link-name="{alt text}">
+                                    <div class="visual-area">
+                                        <img data-pc-src="/lg5-common/images/KRC0018/@square-case-tall.jpg" data-m-src="/lg5-common/images/KRC0018/@square-case-tall-m.jpg" alt="">
+                                        <p class="hidden pc">graphic description : </p>
+                                        <p class="hidden mobile">graphic description : </p>
+                                    </div>
+                                    <div class="copy-boxing-area">
+                                        <!-- 2. eyebrow -->
+                                        <div class="category">TELEVISION</div>
+                                        <!-- // 2. eyebrow -->
+                                        <!-- 3. headline -->
+                                        <div class="head">@@head</div>
+                                        <!-- // 3. headline -->
+                                        <!-- 4. body copy -->
+                                        <div class="desc font-regular font-underline">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. </div>
+                                        <!-- // 4. body copy -->
+                                    </div>
+                                </a>
                             </div>
-                            <div class="copy-boxing-area">
-                                <!-- 6. eyebrow #2 -->
-                                <div class="category">TELEVISION</div>
-                                <!-- // 6. eyebrow #2 -->
-                                <!-- 7. headline #2 -->
-                                <div class="head">@@head</div>
-                                <!-- // 7. headline #2 -->
+                            <!-- // 1. image -->
+                        </li>
+                        <li class="square-partition top">
+                            <!-- 5. image -->
+                            <div class="square sub length-lg text-black">
+                                <!-- URL입력 안한 경우 : a 태그를 div로 변경합니다. -->
+                                <div class="common-area">
+                                    <div class="visual-area">
+                                        <img data-pc-src="/lg5-common/images/KRC0018/@square-case-lg.jpg" data-m-src="/lg5-common/images/KRC0018/@square-case-lg-m.jpg" alt="">
+                                        <p class="hidden pc">graphic description : </p>
+                                        <p class="hidden mobile">graphic description : </p>
+                                    </div>
+                                    <div class="copy-boxing-area">
+                                        <!-- 6. eyebrow #2 -->
+                                        <div class="category">TELEVISION</div>
+                                        <!-- // 6. eyebrow #2 -->
+                                        <!-- 7. headline #2 -->
+                                        <div class="head">@@head</div>
+                                        <!-- // 7. headline #2 -->
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- // 5. image -->
+                            <!-- // 5. image -->
+                        </li>
+                        <li class="square-partition bottom">
+                            <!-- 8. image -->
+                            <div class="square sub length-lg text-white">
+                                <a class="common-area" href="#" data-link-area="block_image_3to5_text_overlay-image" data-link-name="{alt text}">
+                                    <div class="visual-area">
+                                        <img data-pc-src="/lg5-common/images/KRC0018/@square-case-lg.jpg" data-m-src="/lg5-common/images/KRC0018/@square-case-lg-m.jpg" alt="">
+                                        <p class="hidden pc">graphic description : </p>
+                                        <p class="hidden mobile">graphic description : </p>
+                                    </div>
+                                    <div class="copy-boxing-area">
+                                        <!-- 9. eyebrow #3 -->
+                                        <div class="category">TELEVISION</div>
+                                        <!-- // 9. eyebrow #3 -->
+                                        <!-- 10. headline #3 -->
+                                        <div class="head">@@head</div>
+                                        <!-- // 10. headline #3 -->
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- // 8. image -->
+                        </li>
+                    </ul>
                 </div>
-                <div class="square-partition bottom">
-                    <!-- 8. image -->
-                    <div class="square sub length-lg text-white">
-                        <a class="common-area" href="#" data-link-area="block_image_3to5_text_overlay-image" data-link-name="{alt text}">
-                            <div class="visual-area">
-                                <img data-pc-src="/lg5-common/images/KRC0018/@square-case-lg.jpg" data-m-src="/lg5-common/images/KRC0018/@square-case-lg-m.jpg" alt="">
-                                <p class="hidden pc">graphic description : </p>
-                                <p class="hidden mobile">graphic description : </p>
-                            </div>
-                            <div class="copy-boxing-area">
-                                <!-- 9. eyebrow #3 -->
-                                <div class="category">TELEVISION</div>
-                                <!-- // 9. eyebrow #3 -->
-                                <!-- 10. headline #3 -->
-                                <div class="head">@@head</div>
-                                <!-- // 10. headline #3 -->
-                            </div>
-                        </a>
-                    </div>
-                    <!-- // 8. image -->
+                <div class="slide-controls">
+                    <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                    <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                 </div>
             </div>
+            <!-- // [KR수정] 모바일 carousel 적용을 위한 DOM 수정 -->
         </div>
     </section>
 </div>

@@ -25,7 +25,7 @@
         '<li>' +
             '<div class="head">' +
                 '<div class="file-box">' +
-                    '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}">{{os}} {{title}}</button></p>' +
+                    '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{os}} {{title}}</button></p>' +
                     '<ul class="options">' +
                         '<li>{{version}}  {{category}}</li>' +
                         '<li>{{driver}}</li>' +
@@ -49,7 +49,7 @@
                     '{{# for (var i = 0; i < prevVersion.length; i++) { #}}' +
                     '<li>' +
                         '<div class="file-box">' +
-                            '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}">{{os}} {{title}}</button></p>' +
+                            '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{os}} {{title}}</button></p>' +
                             '<ul class="options">' +
                                 '<li>{{version}}  {{category}}</li>' +
                                 '<li>{{driver}}</li>' +
@@ -71,7 +71,7 @@
     var defaultParam;
 
     function getObject(parameter) {
-        var valueObject = {}, hash, value;
+        var valueObject = {}, hash;
         var hashes = parameter.split('&');
         for(var i = 0; i < hashes.length; i++) {
             hash = hashes[i].split('=');
@@ -109,7 +109,6 @@
                     listArr.forEach(function(item) {
                         html += vcui.template(manualListTemplate, item);
                     });
-                    
                     self.manualSec.find('.manual-list').append(html).show();
                     self.manualSec.find('.no-data').hide();
                 } else {
@@ -290,10 +289,23 @@
                     self.searchDriverList(param);
                 });
 
-                self.driverSec.find('.driver-list-wrap').on('click', '.btn-info', function() {
-                    var ajaxUrl = $(this).data('href');
+                self.driverSec.find('.pagination').on('pageClick', function(e) {
+                    var param = $.extend({}, defaultParam, {
+                        os: $('#os').val(),
+                        driver: $('#driver').val(),
+                        page: e.page
+                    });
 
-                    lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
+                    self.searchDriverList(param);
+                });
+
+                self.driverSec.find('.driver-list-wrap').on('click', '.btn-info', function() {
+                    var ajaxUrl = $(this).data('href'),
+                        param = $.extend({}, defaultParam, {
+                            cSeq: $(this).data('cseq')
+                        });
+
+                    lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
                         $('#fileDetailPopup').html(result).vcModal();
                         $('#fileDetailPopup').on('click', '.btn-more', function() {
                             var $list = $(this).parent();
@@ -305,16 +317,6 @@
                             }
                         });
                     }, null, "html");
-                });
-
-                self.driverSec.find('.pagination').on('pageClick', function(e) {
-                    var param = $.extend({}, defaultParam, {
-                        os: $('#os').val(),
-                        driver: $('#driver').val(),
-                        page: e.page
-                    });
-
-                    self.searchDriverList(param);
                 });
             }
         }
