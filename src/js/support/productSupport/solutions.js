@@ -62,7 +62,8 @@
                 this.$form = $(this.form);
 
                 $('.ui_anchor_sticky').vcSticky({
-                    usedAnchor: "true"
+                    usedAnchor: "true",
+                    actClass: "on"
                 });
 
                 this.bindEvent();

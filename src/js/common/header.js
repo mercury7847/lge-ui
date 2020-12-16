@@ -27,6 +27,11 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _setting: function(){
             var self = this;
 
+            self.outStatus = {
+                timer: null,
+                item: null
+            };
+
             self.$mypage = self.$el.find('.header-top .shortcut .mypage');
 
             self.$pcNaviWrapper = self.$el.find(".nav-wrap .nav");
@@ -163,18 +168,25 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                 $(item).data('subwidth', categorywidth);
                 $(item).on('mouseover', function(e){
-                    self._setOver(this);
+                    console.log(this)
+                    self._setOver($(this));
                 }).on('mouseout', function(e){    
-                    self._setOut(this);
+                    self._setOut($(this));
                 });
 
                 $(item).find('> .nav-category-container > ul >li').each(function(cdx, child){
                     $(child).on('mouseover', function(e){
-                        self._setOver(this);
+                        self._setOver($(this));
                     }).on('mouseout', function(){
-                        self._setOut(this);
+                        self._setOut($(this));
                     })
                 });
+            });
+
+            self.$el.on('mouseover', '.nav-wrap, .nav-category-wrap', function(e){
+                var parent = $(this).closest('li');
+            }).on('mouseout', '.nav-wrap, .nav-category-wrap', function(e){
+                var parent = $(this).closest('li');
             });
 
             self.$leftArrow.on('click', function(e){
@@ -187,6 +199,68 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                 self._setNavPosition(-1);
             })
+        },
+
+        _setOver: function(item){
+            var self = this;
+
+            if(self.outStatus.timer != null){
+                if(self.outStatus.item != item) self._setOutAction($(self.outStatus.item));
+
+                clearTimeout(self.outStatus.timer);
+                self.outStatus.timer = null;
+                self.outStatus.item = null;
+            }
+            self.outStatus.item = item;
+
+            item.addClass('active');
+            item.find('> a').addClass('active'); 
+
+            var catecontainer = item.find('> .nav-category-container');
+            if(catecontainer.length){
+                var subwidth = item.data('subwidth');           
+                item.find('> .nav-category-container').stop().css('display', 'inline-block').animate({width:subwidth}, 200);
+            }
+
+            var categoryLayer = item.find('> .nav-category-layer');
+            if(categoryLayer.length){
+                categoryLayer.find('.ui_carousel_slider').vcCarousel({
+                    infinite: false,
+                    swipeToSlide: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    playSelector: '.btn-play.play'
+                });
+                categoryLayer.find('.ui_carousel_list').css('overflow', 'hidden');
+
+                self.$dimmed.show();
+            }
+        },
+
+        _setOut: function(item){
+            var self = this;
+
+            self.outStatus.timer = setTimeout(function(){
+                self._setOutAction(item);
+            }, 180);
+        },
+
+        _setOutAction: function(item){
+            var self = this;
+
+            var catecontainer = item.find('> .nav-category-container');
+            if(catecontainer.length){
+                catecontainer.stop().animate({width:0}, 150, function(){
+                    item.removeClass('active');
+                    item.find('> a').removeClass('active');
+                    item.find('> .nav-category-container').css('display', 'none');
+                });
+            } else{
+                item.removeClass('active');
+                item.find('> a').removeClass('active');
+            }
+
+            self.$dimmed.hide();
         },
 
         _mobileSetting: function(){
@@ -282,51 +356,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$hamburger.removeClass('active');
 
             if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
-        },
-
-        _setOver: function(item){
-            var self = this;
-
-            $(item).addClass('active');
-            $(item).find('> a').addClass('active'); 
-
-            var catecontainer = $(item).find('> .nav-category-container');
-            if(catecontainer.length){
-                var subwidth = $(item).data('subwidth');           
-                $(item).find('> .nav-category-container').stop().css('display', 'inline-block').animate({width:subwidth}, 200);
-            }
-
-            var categoryLayer = $(item).find('> .nav-category-layer');
-            if(categoryLayer.length){
-                categoryLayer.find('.ui_carousel_slider').vcCarousel({
-                    infinite: false,
-                    swipeToSlide: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    playSelector: '.btn-play.play'
-                });
-                categoryLayer.find('.ui_carousel_list').css('overflow', 'hidden');
-
-                self.$dimmed.show();
-            }
-        },
-
-        _setOut: function(item){
-            var self = this;
-
-            var catecontainer = $(item).find('> .nav-category-container');
-            if(catecontainer.length){
-                catecontainer.stop().animate({width:0}, 150, function(){
-                    $(item).removeClass('active');
-                    $(item).find('> a').removeClass('active');
-                    $(item).find('> .nav-category-container').css('display', 'none');
-                });
-            } else{
-                $(item).removeClass('active');
-                $(item).find('> a').removeClass('active');
-            }
-
-            self.$dimmed.hide();
         }
     });
 
