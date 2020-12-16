@@ -102,8 +102,12 @@
         }
     }
     &.lately {
-        right:100px;
-        bottom:372px;
+        right:112px;
+        bottom:385px;
+        @include mobile {
+            right:36px;
+            bottom:333px;
+        }
     }
 	.chatbot-linker {
 		width:88px;
@@ -162,23 +166,40 @@
         }
     }
     .lately-linker {
-        width:88px;
-        height:88px;
-		background:url('/lg5-common/images/icons/icon-lately.png') no-repeat;
-        background-size:88px 88px;
+        width:64px;
+        height:64px;
+        border-radius:50%;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+        overflow:hidden;
         a {
             display:block;
 			width:100%;
-			height:100%;
+            height:100%;
+            img {
+                width:100%;
+            }
         }
     }
 }
 .lately-popup {
-    display:block !important;
-    right:36px !important;
+    right:36px;
+    z-index:101;
     width:368px;
     min-height:720px;
     box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+    &.open {
+        display:block;
+    }
+    @include mobile {
+        position:fixed;
+        right:-80%;
+        left:auto !important;
+        z-index:101;
+        width:80%;
+        &.open {
+            right:0;
+        }
+    }
     .pop-header {
         margin:0 24px;
         padding:24px 0 12px;
@@ -188,9 +209,109 @@
                 line-height:32px;
             }
         }
+        @include mobile {
+            margin:0 16px;
+            padding:27px 0 17px;
+            .tit {
+                span {
+                    height:100%;
+                    font-size:18px;
+                    line-height:26px;
+                }
+            }
+        }
+    }
+    .pop-conts {
+        max-height:648px;
+        padding:0 24px;
+        @include mobile {
+            max-height:100%;
+            height:calc(100% - 72px);
+        }
+        .lately-list {
+            ul {
+                li {
+                    display:table;
+                    position:relative;
+                    width:100%;
+                    height:144px;
+                    padding:24px 0;
+                    border-bottom:1px solid #ddd;
+                    &:last-child {
+                        border-bottom:none;
+                    }
+                    .img {
+                        position:absolute;
+                        top:50%;
+                        left:0;
+                        width:96px;
+                        height:96px;
+                        transform:translateY(-50%);
+                        img {
+                            width:100%;
+                        }
+                    }
+                    dl {
+                        display:table-cell;
+                        padding-left:120px;
+                        vertical-align:middle;
+                        dt {
+                            display: -webkit-box;
+                            -webkit-line-clamp:2;
+                            -webkit-box-orient: vertical;
+                            max-height:52px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            font-size:16px;
+                            font-weight:700;
+                            line-height:26px;
+                        }
+                        dd {
+                            margin-top:8px;
+                            font-size:18px;
+                            font-weight:700;
+                            line-height:30px;
+                        }
+                    }
+                }
+                @include mobile {
+                    li {
+                        height:130px;
+                        dl {
+                            dt {
+                                font-size:14px;
+                                line-height:22px;
+                            }
+                            dd {
+                                font-size:15px;
+                                line-height:23px;
+                            }
+                        }
+                    }
+                    .img {
+                        width:80px;
+                        height:80px;
+                    }
+                }
+            }
+        }
     }
     > .btn-close {
         top:24px;
         right:14px;
+    }
+}
+.lately-dim {
+    display:none;
+    position:fixed;
+    top:0;
+    width:100%;
+    height:100%;
+    background:#000;
+    opacity:.7;
+    @include mobile {
+        &.open {
+            display:block;
+        }
     }
 }

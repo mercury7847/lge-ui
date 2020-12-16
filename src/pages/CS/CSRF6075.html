@@ -62,13 +62,13 @@
                         <ul class="tabs">
                             <!-- 건수 0일 경우 탭 비노출 -->
                             <li class="active">
-                                <a href="#manualSec">제품사용설명서 (6)<em class="blind">선택됨</em></a>
+                                <a href="#manualSection">제품사용설명서 (6)<em class="blind">선택됨</em></a>
                             </li>
                             <li>
-                                <a href="#driverSec">드라이버/SW (91)</a>
+                                <a href="#driverSection">드라이버/SW (91)</a>
                             </li>
                             <li>
-                                <a href="#solutionsSec">제품 문제 해결 (5)</a>
+                                <a href="#solutionsSection">제품 문제 해결 (5)</a>
                             </li>
                             <li>
                                 <a href="#serviceMenu">소모품 (6)</a>
@@ -85,17 +85,17 @@
                         <input type="hidden" name="subCategory" id="subCategory" value="1012">
                         <input type="hidden" name="modelCode" id="modelCode" value="A50PH">
                     </form>
-                    <div class="section manual-section" id="manualSec" data-ajax="/lg5-common/data-ajax/support/downloadList.json">
+                    <div class="section manual-section" id="manualSection" data-ajax="/lg5-common/data-ajax/support/downloadList.json">
                         <input type="hidden" name="page" id="page" value="1">
-                        <div class="tit-wrap">
+                        <div class="tit-wrap margin-sm">
                             <h2 class="tit">제품사용 설명서 <em id="manualCount" class="point">3</em>건</h2>
-                            @@include('./common/modules/bullet-list.html', {
-                                "bulletTxt" : [
-                                    "zip 파일 또는 chm 파일을 [열기] 눌러 사용할 경우 Internet Explorer 보안 기능으로 인해 사용설명서가 정상적으로 표시되지 않을 수 있습니다.",
-                                    "스마트폰, 테블릿 OS 버전은 '환경설정 &gt; 휴대전화 정보' 또는 '환경설정 &gt; 휴대전화 정보 &gt; 소프트웨어 정보' 에서 확인 가능합니다. "
-                                ]
-                            })
                         </div>
+                        @@include('./common/modules/bullet-list.html', {
+                            "bulletTxt" : [
+                                "zip 파일 또는 chm 파일을 [열기] 눌러 사용할 경우 Internet Explorer 보안 기능으로 인해 사용설명서가 정상적으로 표시되지 않을 수 있습니다.",
+                                "스마트폰, 테블릿 OS 버전은 '환경설정 &gt; 휴대전화 정보' 또는 '환경설정 &gt; 휴대전화 정보 &gt; 소프트웨어 정보' 에서 확인 가능합니다. "
+                            ]
+                        })
 
                         <div class="manual-list-wrap">
                             <ul class="manual-list">
@@ -142,8 +142,8 @@
                         <!-- // data 없을 때 -->
                     </div>
 
-                    <div class="section driver-section" id="driverSec" data-ajax="/lg5-common/data-ajax/support/downloadList.json">
-                        <div class="tit-wrap">
+                    <div class="section driver-section" id="driverSection" data-ajax="/lg5-common/data-ajax/support/downloadList.json">
+                        <div class="tit-wrap margin-sm">
                             <h2 class="tit">드라이버/SW <em id="driverCount" class="point">130</em>건</h2>
                         </div>
 
@@ -156,7 +156,7 @@
                         </div>
                         <!-- // 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
 
-                        <div class="form-wrap ">
+                        <div class="form-wrap">
                             <div class="forms">
                                 <div class="tit">
                                     <label for="os">운영체제(OS) 선택</label>
@@ -211,7 +211,7 @@
                                 <li>
                                     <div class="head">
                                         <div class="file-box">
-                                            <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                            <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html" data-cseq="1002">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
                                             <ul class="options">
                                                 <li>ver 7.7PHV1  데스크톱/일체형  </li>
                                                 <li>통합 드라이버 설치 프로그램</li>
@@ -231,7 +231,7 @@
                                         <ul class="driver-list">
                                             <li>
                                                 <div class="file-box">
-                                                    <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                                    <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html" data-cseq="1002">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
                                                     <ul class="options">
                                                         <li>ver 7.7PHV1  데스크톱/일체형  </li>
                                                         <li>통합 드라이버 설치 프로그램</li>
@@ -246,7 +246,7 @@
                                             </li>
                                             <li>
                                                 <div class="file-box">
-                                                    <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                                    <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html" data-cseq="1002">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
                                                     <ul class="options">
                                                         <li>ver 7.7PHV1  데스크톱/일체형  </li>
                                                         <li>통합 드라이버 설치 프로그램</li>
@@ -265,7 +265,7 @@
                                 <li>
                                     <div class="head">
                                         <div class="file-box">
-                                            <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                            <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html" data-cseq="1002">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
                                             <ul class="options">
                                                 <li>ver 7.7PHV1  데스크톱/일체형  </li>
                                                 <li>통합 드라이버 설치 프로그램</li>

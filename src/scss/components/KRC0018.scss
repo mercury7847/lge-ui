@@ -12,6 +12,7 @@
 		vertical-align: top;
 		@include mobile {
 			width: 100%;
+			border-radius:0;
 		}
 
 		.common-area {
@@ -53,12 +54,20 @@
 			left: 32px;
 			right:32px;
 			background-color: transparent;
+			@include mobile {
+				top:32px;
+				left:16px;
+				right:16px;
+			}
 
 			.category {
 				max-width: 220px;
 				margin-bottom: 8px;
 				@include font-medium;
 				font-weight:700;
+				@include mobile {
+					margin-bottom:6px;
+				}
 			}
 
 			.head * {
@@ -69,6 +78,9 @@
 			.desc {
 				margin-top:16px;
 				@include font-medium;
+				@include mobile {
+					margin-top:14px;
+				}
 			}
 		}
 	}
@@ -149,9 +161,52 @@
 		}
 	}
 
+	.component-sliders {
+		@include pc {
+			.indi-wrap {
+				display:none !important;
+			}
+			.slide-controls {
+				display:none !important;
+			}
+		}
+		@include mobile {
+			position:relative;
+			padding-bottom:32px;
+			.indi-wrap {
+				position:absolute;
+				left:0;
+				right:0;
+				bottom:0;
+				text-align:center;
+			}
+			.slide-controls {
+				position:absolute;
+				top:calc((100% - 32px) / 2);
+				left:0;
+				right:0;
+				.btn-arrow {
+					position:absolute;
+					top:0;
+					transform:translateY(-50%);
+					&.prev {
+						left:4px;
+					}
+					&.next {
+						right:4px;
+					}
+				}
+			}
+			.square {
+				margin-top:0 !important;
+			}
+		}
+	}
+
 	.inner {
 		position: relative;
 		font-size: 0;
+		@include clearfix;
 	}
 	@include mobile {
 		.component-inner {
@@ -162,6 +217,9 @@
 		display:inline-block;
 		vertical-align:top;
 		text-align: left;
+		@include pc {
+			float:none !important;
+		}
 		&.tall {
 			@include square(w, 521px, 1284px);
 			@include mobile {

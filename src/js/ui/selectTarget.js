@@ -19,7 +19,8 @@ vcui.define('ui/selectTarget', ['jquery', 'vcui'], function ($, core) {
     var SelectTarget = core.ui('selectTarget', /** @lends vcui.ui.ElShowHide# */{
         bindjQuery: 'selectTarget',
         defaults: {
-            placeholderClass: 'placeholder'
+            placeholderClass: 'placeholder',
+            addParam: null
         },
         templates: {
             option: '<option value={{value}}>{{name}}</option>'
@@ -74,8 +75,8 @@ vcui.define('ui/selectTarget', ['jquery', 'vcui'], function ($, core) {
 
             self.$el.on('change', function(e) {
                 var resetFlag = $(this.options[this.selectedIndex]).hasClass(self.options.placeholderClass);
-                var params = $(this).serialize();
-
+                var params = $(this).serialize() + '&' + $(self.options.addParam).serialize();
+                
                 if (resetFlag) {
                     self.reset();
                 } else {
