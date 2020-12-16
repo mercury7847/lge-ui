@@ -7,24 +7,22 @@
 
 	.play-animaion-btn {
 		position:absolute;
-		top:20px;
-		right:20px;
+		top:16px;
+		right:16px;
+		background-size:100%;
+		background-repeat:no-repeat;
 		z-index:9;
 		text-indent:-9999px;
-		width:36px;
-		height:36px;
+		width:24px;
+		height:24px;
 		font-size: 0;
 		white-space:nowrap;
 		overflow:hidden;
 		&.acc-btn {
 			background:url('/lg5-common/images/btn-AD-on.svg');
-			background-size:36px 36px;
-			background-repeat:no-repeat;
 		}
 		&.ani-btn {
 			background:url('/lg5-common/images/btn-AD-off.svg');
-			background-size:36px 36px;
-			background-repeat:no-repeat;
 		}
 	}
 
@@ -75,17 +73,16 @@
 .controller-wrap {
 	display: block;
 	position: absolute;
-	right: 24px;
-	bottom: 64px;
+	right: 16px;
+	bottom: 60px;
 	button {
 		display: none;
 		text-indent: -9999em;
 		width: 40px;
 		height: 40px;
 		border: none;
-		background-color: rgba(0,0,0,0.75);
-		background-position: 50% 50%;
-		background-repeat: no-repeat;
+		background-repeat:no-repeat;
+		background-size:100%;
 		border-radius: 50%;
 		cursor: pointer;
 		padding:0;
@@ -94,11 +91,9 @@
 		}
 		&.play {
 			background-image: url('/lg5-common/images/btn-animation-play.svg');
-			background-size:40px 40px;
 		}
 		&.pause {
 			background-image: url('/lg5-common/images/btn-animation-pause.svg');
-			background-size:40px 40px;
 		}
 	}
 
