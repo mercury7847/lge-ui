@@ -110,7 +110,7 @@ var res = {
 				"KRP0029_Recommend story for category home[KRP0051]" : ["/html/components/KRP0029.html","","검수완료"],
 				"KRP0030_Social Review(스토리)[KRP0041]" : ["/html/components/KRP0030.html","",""],
 				"KRP0031_Consumables Search[KRP0042]" : ["/html/components/KRP0031.html","",""],
-				"KRP0032_Recently View[KRP0049]" : ["/html/components/KRP0032.html","","검수완료"],
+				"KRP0032_Recently View[KRP0049]" : ["/html/components/floating.html","","검수완료"],
 				"KRP0033_PDP Shipping Information[KRP0044]" : ["/html/components/KRP0033.html","",""],
 				"KRP0034_PDP Return Replacement[KRP0045]" : ["/html/components/KRP0034.html","",""],
 				"KRP0035_PDP Inquiry[KRP0046]" : ["/html/components/KRP0035.html","","검수완료"],
