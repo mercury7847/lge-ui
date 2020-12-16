@@ -195,14 +195,14 @@
             .tit-wrap {
                 position:relative;
                 margin-bottom:48px;
-                &.agree{
-                    margin-bottom:17px;
+                &.margin-sm {
+                    margin-bottom:16px;
                 }
                 .tit {
+                    padding-bottom:16px;
                     color:#222;
                     font-size:20px;
                     font-weight:700;
-                    padding-bottom:16px;
                     border-bottom:2px solid #222;
                     .point {
                         color:#ec455a;
@@ -215,27 +215,8 @@
                     }
                 }
             }
-            // .agree-cont-wrap{
-            //     .tit-wrap{
-            //         margin-bottom:0;
-            //         .tit{
-            //             @include font-medium;
-            //             border-bottom:0;
-            //             padding-bottom:0;
-            //         }
-            //     }
-            // }
-            &.bg-gray {
-                background-color: #f4f4f4;
-            }
             @include mobile {
                 padding:40px 16px 0;
-                &:first-child {
-                    border-top:none;
-                    &:before {
-                        display:none;
-                    }
-                }
                 .sec-tit {
                     margin-bottom:32px;
                 }

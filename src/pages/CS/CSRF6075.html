@@ -87,15 +87,15 @@
                     </form>
                     <div class="section manual-section" id="manualSec" data-ajax="/lg5-common/data-ajax/support/downloadList.json">
                         <input type="hidden" name="page" id="page" value="1">
-                        <div class="tit-wrap">
+                        <div class="tit-wrap margin-sm">
                             <h2 class="tit">제품사용 설명서 <em id="manualCount" class="point">3</em>건</h2>
-                            @@include('./common/modules/bullet-list.html', {
-                                "bulletTxt" : [
-                                    "zip 파일 또는 chm 파일을 [열기] 눌러 사용할 경우 Internet Explorer 보안 기능으로 인해 사용설명서가 정상적으로 표시되지 않을 수 있습니다.",
-                                    "스마트폰, 테블릿 OS 버전은 '환경설정 &gt; 휴대전화 정보' 또는 '환경설정 &gt; 휴대전화 정보 &gt; 소프트웨어 정보' 에서 확인 가능합니다. "
-                                ]
-                            })
                         </div>
+                        @@include('./common/modules/bullet-list.html', {
+                            "bulletTxt" : [
+                                "zip 파일 또는 chm 파일을 [열기] 눌러 사용할 경우 Internet Explorer 보안 기능으로 인해 사용설명서가 정상적으로 표시되지 않을 수 있습니다.",
+                                "스마트폰, 테블릿 OS 버전은 '환경설정 &gt; 휴대전화 정보' 또는 '환경설정 &gt; 휴대전화 정보 &gt; 소프트웨어 정보' 에서 확인 가능합니다. "
+                            ]
+                        })
 
                         <div class="manual-list-wrap">
                             <ul class="manual-list">
@@ -143,7 +143,7 @@
                     </div>
 
                     <div class="section driver-section" id="driverSec" data-ajax="/lg5-common/data-ajax/support/downloadList.json">
-                        <div class="tit-wrap">
+                        <div class="tit-wrap margin-sm">
                             <h2 class="tit">드라이버/SW <em id="driverCount" class="point">130</em>건</h2>
                         </div>
 
@@ -156,7 +156,7 @@
                         </div>
                         <!-- // 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
 
-                        <div class="form-wrap ">
+                        <div class="form-wrap">
                             <div class="forms">
                                 <div class="tit">
                                     <label for="os">운영체제(OS) 선택</label>
