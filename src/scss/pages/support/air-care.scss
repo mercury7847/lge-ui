@@ -62,7 +62,9 @@
             }
         }
     }
-
+    .tb_row {
+        overflow-x:auto;
+    }
     .accordion-wrap {
         &.border-type {
             > ul {
