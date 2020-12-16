@@ -235,10 +235,10 @@ var res = {
 					"LG 듀얼스크린" : ["/html/STC/MKT5001.html","","검수완료"]
 				},
 				"LG 페이" : {
-					"LG 페이" : ["/html/STC/MKT5003.html","","검수요청"],
-					"LG 페이_영상 보기 팝업" : ["/html/STC/MKT5003_popup.html","","검수요청"],
-					"LG 페이제휴카드 안내" : ["/html/STC/MKT5004.html","","검수요청"],
-					"LG 페이사용가능 단말기" : ["/html/STC/MKT5005.html","","검수요청"]
+					"LG 페이" : ["/html/STC/MKT5003.html","","검수완료"],
+					"LG 페이_영상 보기 팝업" : ["/html/STC/MKT5003_popup.html","","검수완료"],
+					"LG 페이제휴카드 안내" : ["/html/STC/MKT5004.html","","검수완료"],
+					"LG 페이사용가능 단말기" : ["/html/STC/MKT5005.html","","검수완료"]
 				},
 				"LG 모바일 스위치" : {
 					 "모바일스위치란?" : ["/html/STC/MKT5006.html","","검수완료"],
