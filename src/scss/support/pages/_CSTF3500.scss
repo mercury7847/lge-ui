@@ -2,9 +2,16 @@
 
 .CSTF3500 {
     .tab-wrap {
-        max-width: 1066px;
+        max-width: 1178px;
         margin: 0 auto;
         position: relative;
+        padding: 40px 0 60px;
+        @include mobile {
+            padding: 34px 0 ;
+        }
+    }
+    .tabs-contents {
+        border-top: 8px solid #f4f4f4;
     }
     .tbl {
         &-list {
@@ -17,28 +24,26 @@
             margin-bottom: 0;
         }
     }
-    .sns-box {
-        position: absolute;
-        top: 56px;
-        right: 56px;
-        @include mobile {
-            top: auto;
-            bottom: 40px;
-            right: 24px;
+    .tooltip-wrap {
+        &.share {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            @include mobile {
+                top: 32px;
+                right: 16px;
+            }
         }
     }
     .section-area {
         position: relative;
         .section {
-            padding:56px;
-            border-radius:4px;
-            background:#fff;
+            padding:0 16px;
             @include mobile {
-                padding:40px 24px;
                 border-radius:0;
             }
             & + .section {
-                margin-top:48px;
+                margin-top:80px;
                 @include mobile {
                     margin-top:12px;
                 }
@@ -89,8 +94,9 @@
         }
     }
     .note-box {
-        padding: 24px;
-        border: solid 1px #dddddd;
+        padding: 40px;
+        background-color: #f4f4f4;
+        border-radius: 8px;
         margin-bottom: 24px;
         &-title {
             font-size: 16px;
@@ -107,7 +113,6 @@
         }
     }
     .ui_tab-notice {
-        max-width: 1066px;
         position: relative;
         margin: 0 auto;
         margin-bottom: 24px;
@@ -129,10 +134,10 @@
     [class^="h-tit"] {
         word-break: keep-all;
         &[class*="-3"] {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             line-height: 1.42;
-            margin-bottom: 32px;
+            margin-bottom: 25px;
             @include mobile {
                 margin-bottom: 24px;
             }
@@ -154,7 +159,7 @@
         }
         dd {
             font-size: 16px;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             &:last-child {
                 margin-bottom: 0;
             }
@@ -165,7 +170,7 @@
     }
     
     .img_box {
-        margin-top: 14px;
+        margin-top: 24px;
         img {
             max-width: 100%;
         }
@@ -255,37 +260,12 @@
         }
     }
 
-    .dot-list02 {
-        li {
-            position:relative;
-            margin-top:6px;
-            padding-left:12px;
-            font-size:16px;
-            color:#222;
-            line-height:1.5;
-            &:first-child {
-                margin-top:0;
-            }
-            &:before {
-                content:'';
-                position:absolute;
-                left:0;
-                top:11px;
-                width:4px;
-                height:4px;
-                border-radius:50%;
-                background-color:#616161;
-            }
-            @include mobile {
-                padding-left:10px;
-                font-size:12px;
-                line-height:18px;
-                margin-top: 10px;
-                &:before {
-                    top:8px;
-                }
-    
-            }
+    .flex-p {
+        display: flex;
+        align-items: center;
+        .btn-link {
+            margin-left: 24px;
         }
     }
+
 }
