@@ -159,7 +159,13 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
             self.smoothScroll.update();
             
             self._setArrowCtrlStatus();
-        }
+        },
+
+        refresh: function refresh() {
+            var self = this;
+            self.smoothScroll.refresh();
+        },
+
     });
     ///////////////////////////////////////////////////////////////////////////////////////
 

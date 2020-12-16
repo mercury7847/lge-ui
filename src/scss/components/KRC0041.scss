@@ -182,6 +182,7 @@
 	}
 
 	.text-area.carousel-box {
+		position: relative;
 		.slide-controls,
 		.slide-controls .btn-arrow,
 		.indi-wrap {
@@ -227,7 +228,7 @@
 				.btn-arrow {
 					position: absolute;
 					//bottom:20%;
-					bottom: 105px;
+					top:  50%;
 					&.prev {
 						left: 4px;
 					}
