@@ -2,9 +2,6 @@
 <div class="component-wrap @@common.marginTop @@common.marginBtm @@common.bg-color">
     <section class="component KRC0015 @@common.bg-color"><!-- [KR수정] bg-color 추가 -->
         <!--
-        Hero로 사용될 경우에는, eyebrow, title, desc, cta, video link만 사용합니다.
-        (date, tech spec, bg animation 없음)
-
         [component-wrap 옵션]
         1. 여백
         .zero-top : 상단여백 없음
@@ -24,7 +21,6 @@
         2. 세로 정렬
         .align-top: 텍스트 영역이 상단
         .align-middle: 텍스트 영역이 중간
-        .align-bottom: 텍스트 영역이 하단
 
         3. 텍스트 영역 넓이
         .type-wide : 넓음
@@ -46,18 +42,6 @@
         .font-underline : 언더라인
 
         ** video-box 클래스는 제품 영상보기 링크와 같이, video가 배경 이미지 영역에 출력되는경우에만 추가 해 주세요.
-
-
-        *** 컴포넌트 추가 위치조정 ***
-        .textblock-top-compo-top,
-        .textblock-top-compo-middle,
-        .textblock-top-compo-bottom,
-        .textblock-bottom-compo-top,
-        .textblock-bottom-compo-middle,
-        .textblock-bottom-compo-bottom,
-        .textblock-middle-compo-top,
-        .textblock-middle-compo-bottom
-
         -->
         <div class="component-box"><!-- [KR수정] .component-box DOM 추가 -->
             <!-- <div class="slick-indicator">
@@ -77,7 +61,7 @@
                 <!-- // [KR수정] indicator DOM 추가 -->
                 <div class="ui_carousel_track"><!-- [KR수정] .ui_carousel_track DOM 추가 -->
                     <!-- animation 타입인 경우 animation-box 클래스 추가 -->
-                    <div class="carousel-box animation-box @@carousel.item1.componentType ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+                    <div class="carousel-box animation-box ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
                         <div class="visual-area">
                             <picture>
                                 <source media="(min-width: 768px)" srcset="@@carousel.item2.visual1" />
@@ -87,44 +71,27 @@
 
                             <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
                         </div>
-                        <!-- 3-2. animation play/pause -->
+                        <!-- animation Audio description -->
+                        <a href="#none" role="button" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">changes a audio description video</a>
+                        <!-- // animation Audio description -->
+                        <!-- animation -->
                         <div class="animation-area">
-                            <a href="#none" role="button" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">changes a audio description video</a>
                             <!-- loop 되는 영상이 아닌 경우
                                 <video autoplay muted>
                             -->
                             <!-- loop 되는 영상인 경우 -->
                             <video autoplay muted loop class="pc">
                                 <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
-                                <!-- WEBM 동영상을 제공하는 경우
-                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
-                                -->
                             </video>
                             <!-- 아래 모바일용 동영상은 모바일 동영상이 업로드 되어 있고 Mobile Use Flag가 Y인 경우에만 출력합니다. -->
                             <video autoplay muted loop class="mobile">
                                 <source src="/lg5-common/videos/Highlight_backround.mp4" type="video/mp4">
-                                <!-- WEBM 동영상을 제공하는 경우
-                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
-                                -->
                             </video>
                         </div>
-                        <!--
-                            *** 컴포넌트 추가 위치조정 ***
-                            top-align-start : 컴포넌트 텍스트블럭 상단, 컴포넌트 내부 상단
-                            top-align-center: 컴포넌트 텍스트블럭 상단, 컴포넌트 내부 중단
-                            top-align-end: 컴포넌트 텍스트블럭 상단, 컴포넌트 내부 하단
-                            bottom-align-start : 컴포넌트 텍스트블럭 하단, 컴포넌트 내부 상단
-                            bottom-align-center: 컴포넌트 텍스트블럭 하단, 컴포넌트 내부 중단
-                            bottom-align-end: 컴포넌트 텍스트블럭 하단, 컴포넌트 내부 하단
-
-                            text-area-middle-top:  텍스트블럭 세로 풀사이즈, 컴포넌트 상단
-                            text-area-middle-bottom: 텍스트블럭 세로 풀사이즈, 컴포넌트 하단
-                        -->
-                        <!-- // 3-2. animation play/pause -->
+                        <!-- // animation -->
 
                         <!-- contents-area -->
                         <div class="contents-area">
-
                             <div class="text-area @@carousel.item1.font-color @@carousel.item1.align-class1 @@carousel.item1.align-class2 @@carousel.item1.width-class">
                                 <div class="text-wrap">
                                     <div class="inner">
@@ -148,10 +115,9 @@
                             </div>
                         </div>
                         <!-- // contents-area -->
-
                     </div>
                     <!-- animation 타입인 경우 animation-box 클래스 추가 - animation 가득차게 들어가는 경우 -->
-                    <div class="carousel-box animation-box animation-box-full @@carousel.item2.font-color @@carousel.item2.componentType ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide, animation-box-full(새로운 유형) 추가 -->
+                    <div class="carousel-box animation-box animation-box-full @@carousel.item2.font-color ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide, animation-box-full(새로운 유형) 추가 -->
                         <div class="visual-area">
                             <picture>
                                 <source media="(min-width: 768px)" srcset="@@carousel.item2.visual1" />
@@ -160,44 +126,28 @@
                             </picture>
                             <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
                         </div>
-                        <!-- 3-2. animation play/pause -->
+
+                        <!-- animation Audio description -->
+                        <a href="#none" role="button" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">changes a audio description video</a>
+                        <!-- // animation Audio description -->
+                        <!-- animation -->
                         <div class="animation-area">
-                            <a href="#none" role="button" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">changes a audio description video</a>
                             <!-- loop 되는 영상이 아닌 경우
                                 <video autoplay muted>
                             -->
                             <!-- loop 되는 영상인 경우 -->
                             <video autoplay muted loop class="pc">
                                 <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
-                                <!-- WEBM 동영상을 제공하는 경우
-                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
-                                -->
                             </video>
                             <!-- 아래 모바일용 동영상은 모바일 동영상이 업로드 되어 있고 Mobile Use Flag가 Y인 경우에만 출력합니다. -->
                             <video autoplay muted loop class="mobile">
                                 <source src="/lg5-common/videos/Highlight_backround.mp4" type="video/mp4">
-                                <!-- WEBM 동영상을 제공하는 경우
-                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
-                                -->
                             </video>
                         </div>
-                        <!--
-                            *** 컴포넌트 추가 위치조정 ***
-                            top-align-start : 컴포넌트 텍스트블럭 상단, 컴포넌트 내부 상단
-                            top-align-center: 컴포넌트 텍스트블럭 상단, 컴포넌트 내부 중단
-                            top-align-end: 컴포넌트 텍스트블럭 상단, 컴포넌트 내부 하단
-                            bottom-align-start : 컴포넌트 텍스트블럭 하단, 컴포넌트 내부 상단
-                            bottom-align-center: 컴포넌트 텍스트블럭 하단, 컴포넌트 내부 중단
-                            bottom-align-end: 컴포넌트 텍스트블럭 하단, 컴포넌트 내부 하단
-
-                            text-area-middle-top:  텍스트블럭 세로 풀사이즈, 컴포넌트 상단
-                            text-area-middle-bottom: 텍스트블럭 세로 풀사이즈, 컴포넌트 하단
-                        -->
-                        <!-- // 3-2. animation play/pause -->
+                        <!-- // animation -->
 
                         <!-- contents-area -->
                         <div class="contents-area">
-
                             <div class="text-area @@carousel.item2.font-color @@carousel.item2.align-class1 @@carousel.item2.align-class2 @@carousel.item2.width-class">
                                 <div class="text-wrap">
                                     <div class="inner">
@@ -224,7 +174,7 @@
 
                     </div>
                     <!-- video인 경우 video-box 추가 -->
-                    <div class="carousel-box video-box youtube-box @@carousel.item3.font-color @@carousel.item3.componentType ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+                    <div class="carousel-box video-box youtube-box @@carousel.item3.font-color ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
                         <!-- 3. image -->
                         <div class="visual-area">
                             <img data-pc-src="@@carousel.item3.visual1" data-m-src="@@carousel.item3.visual2" class="lazyload" alt=""><!-- [KR수정] img 수정 -->
@@ -260,7 +210,7 @@
                         <!-- //contents-area -->
 
                     </div>
-                    <div class="carousel-box video-box youtube-box @@carousel.item4.font-color @@carousel.item4.componentType ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+                    <div class="carousel-box video-box youtube-box @@carousel.item4.font-color ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
                         <div class="visual-area">
                             <img data-pc-src="@@carousel.item4.visual1" data-m-src="@@carousel.item4.visual2" class="lazyload" alt=""><!-- [KR수정] img 수정 -->
                             <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
@@ -296,7 +246,7 @@
                         <!--// contents-area -->
 
                     </div>
-                    <div class="carousel-box @@carousel.item5.font-color @@carousel.item5.componentType ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+                    <div class="carousel-box @@carousel.item5.font-color ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
                         <div class="visual-area">
                             <img data-pc-src="@@carousel.item5.visual1" data-m-src="@@carousel.item5.visual2" class="lazyload" alt=""><!-- [KR수정] img 수정 -->
                             <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
@@ -322,7 +272,7 @@
                         </div>
                         <!-- // contents-area -->
                     </div>
-                    <div class="carousel-box @@carousel.item6.font-color @@carousel.item6.componentType ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+                    <div class="carousel-box @@carousel.item6.font-color ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
                         <div class="visual-area">
                             <img data-pc-src="@@carousel.item6.visual1" data-m-src="@@carousel.item6.visual2" class="lazyload" alt=""><!-- [KR수정] img 수정 -->
                             <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
@@ -349,7 +299,7 @@
                         </div>
                         <!--// contents-area -->
                     </div>
-                    <div class="carousel-box @@carousel.item7.font-color @@carousel.item7.componentType ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+                    <div class="carousel-box @@carousel.item7.font-color ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
                         <div class="visual-area">
                             <img data-pc-src="@@carousel.item7.visual1" data-m-src="@@carousel.item7.visual2" class="lazyload" alt=""><!-- [KR수정] img 수정 -->
                             <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->

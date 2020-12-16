@@ -615,6 +615,13 @@
             }
         }
     }
+    .scroll-x {
+        overflow-x: auto;
+        table {
+            min-width: 720px;
+            width: calc(100% - 1px);
+        }
+    }
 } //support
 
 

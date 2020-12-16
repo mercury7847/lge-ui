@@ -37,115 +37,130 @@
     <!-- [KR수정] DOM div -> ul>li 로 수정 -->
     <div class="component KRC0023 @@col-class @@align-class1 @@bg-color">
         <div class="component-inner">
-            <ul>
-                <li class="unit-box">
-                    <!-- 1. image -->
-                    <!-- 비디오 타입 예제 -->
-                    @@if (context.imgType === "youtube") {
-                    <div class="visual-area video">
-                        <!-- 1-1. video play button -->
-                        <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-area="block_image_2to4-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>
-                        <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="block_image_2to4-video_play" data-link-name="{video title / video id}">
-                            <img class="lazyload" data-src="/lg5-common/images/KRC0023/@thumb01.jpg" alt=""/>
-                        </a>
-                        <!-- // 1-1. video play button -->
-                        <!-- Start : 2019-02-15 markup added-->
-                        <!--  1-2. video title copy -->
-                        <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다.</div>
-                        <!-- // 1-2. video title copy -->
-                        <!-- End : 2019-02-15 markup added-->
+            <div class="carousel-box">
+                <div class="ui_carousel_slider2">
+                    <div class="indi-wrap">
+                        <ul class="indi-conts ui_carousel_dots">
+                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                        </ul>
                     </div>
-                    <!-- // 1. image --> 
-                    }
-                    @@if (context.imgType === "animation") {
-                    <!-- 2020.09.21 animation type 추가 -->
-                    <!-- 1.2 animation 타입인 경우 animation-box 클래스 추가 -->
-                    <div class="visual-area animation-box">
-                        <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
-                        <img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload" />
-                        <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-                        <div class="animation-area">
-                            <video autoplay muted loop>
-                                <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
-                                <!-- WEBM 동영상을 제공하는 경우
-                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                    <div class="ui_carousel_list">
+                        <ul class="slide-track ui_carousel_track">
+                            <li class="unit-box ui_carousel_slide">
+                                <!-- 1. image -->
+                                <!-- 비디오 타입 예제 -->
+                                @@if (context.imgType === "youtube") {
+                                <div class="visual-area video youtube-box">
+                                    <!-- 1-1. video play button -->
+                                    <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-area="block_image_2to4-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>
+                                    <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="block_image_2to4-video_play" data-link-name="{video title / video id}">
+                                        <img class="lazyload" data-src="/lg5-common/images/KRC0023/@thumb01.jpg" alt=""/>
+                                    </a>
+                                    <!-- // 1-1. video play button -->
+                                    <!-- Start : 2019-02-15 markup added-->
+                                    <!--  1-2. video title copy -->
+                                    <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다.</div>
+                                    <!-- // 1-2. video title copy -->
+                                    <!-- End : 2019-02-15 markup added-->
+                                </div>
+                                <!-- // 1. image --> 
+                                }
+                                @@if (context.imgType === "animation") {
+                                <!-- 2020.09.21 animation type 추가 -->
+                                <!-- 1.2 animation 타입인 경우 animation-box 클래스 추가 -->
+                                <div class="visual-area animation-box">
+                                    <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
+                                    <img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload" />
+                                    <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                                    <div class="animation-area">
+                                        <video autoplay muted loop>
+                                            <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                            <!-- WEBM 동영상을 제공하는 경우
+                                            <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                            -->
+                                        </video>
+                                        <div class="controller-wrap wa-btn">
+                                            <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                                        </div>
+                                    </div>
+                                    <!-- caption -->
+                                    <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                                    <!-- // caption -->
+                                </div>
+                                <!-- // 1.2 image #1 -->
+                                }
+                                <!-- 2. headline -->
+                                <div id="title01" class="title">@@headline</div>
+                                <!-- // 2. headline -->
+                                <!-- 3. body copy -->
+                                <p class="body-copy @@font-class2">바디카피 공백포함 최대 150자 이내에서 사용가능합니다. 바디카피 공백포함 최대 150자 이내에서 사용가능합니다. 바디카피 공백포함 최대 150자 이내에서 사용가능합니다.바디카피 공백포함 최대 150자 이내에서 사용가능합니다.바디카피 공백포함 최대 150자 이내에서 사용가능합니다.</p>
+                                <!-- // 3. body copy -->
+
+                                <!-- Start : 2019-02-08 remove markup
+                                <span class="place">New York - National Event</span>
                                 -->
-                            </video>
-                            <div class="controller-wrap wa-btn">
-                                <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
-                            </div>
-                        </div>
-                        <!-- caption -->
-                        <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-                        <!-- // caption -->
-                    </div>
-                    <!-- // 1.2 image #1 -->
-                    }
-                    <!-- 2. headline -->
-                    <div id="title01" class="title">@@headline</div>
-                    <!-- // 2. headline -->
-                    <!-- 3. body copy -->
-                    <p class="body-copy @@font-class2">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다.</p>
-                    <!-- // 3. body copy -->
 
-                    <!-- Start : 2019-02-08 remove markup
-                    <span class="place">New York - National Event</span>
-                    -->
+                                <!-- 5. cta -->
+                                <div class="bottom-btn btn-type-box">
+                                    <span><a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01">문의하기</a></span><!-- [KR수정] class 수정 -->
+                                    <span><a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01">문의하기</a></span><!-- [KR수정] class 수정 -->
+                                </div>
+                                <div class="bottom-btn btn-type-text">
+                                    <span><a href="#none" class="text-link" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01">자세히 보기</a></span><!-- [KR수정] class 수정 -->
+                                    <span><a href="#none" class="text-link" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01">자세히 보기</a></span><!-- [KR수정] class 수정 -->
+                                </div>
+                                <!-- // 5. cta -->
+                                
+                                <ul class="bullet-list">
+                                    <li class="b-txt">디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다, 단 모바일 영역을 고려하여 너무 긴 텍스트는 지양합니다.</li>
+                                </ul>
+                            </li>
+                            @@for ( var i=0; i < context.liArr.length; i++ ) {
+                            <li class="unit-box ui_carousel_slide">
+                                <!-- 6. image -->
+                                <!-- 이미지 타입 예제 -->
+                                <div class="visual-area image">
+                                    <a href="#" data-link-area="block_image_2to4-image" data-link-name="{alt text}">
+                                        <img class="lazyload" data-src="/lg5-common/images/KRC0023/@thumb01.jpg" alt=""/>
+                                        <p class="hidden">graphic description : </p>
+                                    </a>
+                                </div>
+                                <!-- // 6. image -->
+                                <!-- 7. headline -->
+                                <div id="`+liArr[i].tit+`" class="title">@@headline</div>
+                                <!-- // 7. headline -->
+                                <!-- 8. body copy -->
+                                <p class="body-copy @@font-class2">바디카피 공백포함 최대 150자 이내에서 사용가능합니다. 바디카피 공백포함 최대 150자 이내에서 사용가능합니다. 바디카피 공백포함 최대 150자 이내에서 사용가능합니다.바디카피 공백포함 최대 150자 이내에서 사용가능합니다.바디카피 공백포함 최대 150자 이내에서 사용가능합니다.</p>
+                                <!-- // 8. body copy -->
 
-                    <!-- 5. cta -->
-                    <div class="bottom-btn btn-type-box">
-                        <span><a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01">문의하기</a></span><!-- [KR수정] class 수정 -->
-                        <span><a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01">문의하기</a></span><!-- [KR수정] class 수정 -->
-                    </div>
-                    <div class="bottom-btn btn-type-text">
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01">자세히 보기</a></span><!-- [KR수정] class 수정 -->
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01">자세히 보기</a></span><!-- [KR수정] class 수정 -->
-                    </div>
-                    <!-- // 5. cta -->
-                    
-                    <ul class="bullet-list">
-                        <li class="b-txt">디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다, 단 모바일 영역을 고려하여 너무 긴 텍스트는 지양합니다.</li>
-                    </ul>
-                </li>
-                @@for ( var i=0; i < context.liArr.length; i++ ) {
-                <li class="unit-box">
-                    <!-- 6. image -->
-                    <!-- 이미지 타입 예제 -->
-                    <div class="visual-area image">
-                        <a href="#" data-link-area="block_image_2to4-image" data-link-name="{alt text}">
-                            <img class="lazyload" data-src="/lg5-common/images/KRC0023/@thumb01.jpg" alt=""/>
-                            <p class="hidden">graphic description : </p>
-                        </a>
-                    </div>
-                    <!-- // 6. image -->
-                    <!-- 7. headline -->
-                    <div id="`+liArr[i].tit+`" class="title">@@headline</div>
-                    <!-- // 7. headline -->
-                    <!-- 8. body copy -->
-                    <p class="body-copy @@font-class2">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다.</p>
-                    <!-- // 8. body copy -->
+                                <!-- Start : 2019-02-08 remove markup
+                                <span class="place">New York - National Event</span>
+                                -->
 
-                    <!-- Start : 2019-02-08 remove markup
-                    <span class="place">New York - National Event</span>
-                    -->
+                                <!-- 10. cta -->
+                                <div class="bottom-btn btn-type-box">
+                                    <span><a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`">문의하기</a></span><!-- [KR수정] class 수정 -->
+                                    <span><a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`">문의하기</a></span><!-- [KR수정] class 수정 -->
+                                </div>
+                                <div class="bottom-btn btn-type-text">
+                                    <span><a href="#none" class="text-link" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`">자세히 보기</a></span><!-- [KR수정] class 수정 -->
+                                    <span><a href="#none" class="text-link" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`">자세히 보기</a></span><!-- [KR수정] class 수정 -->
+                                </div>
+                                <!-- // 10. cta -->
 
-                    <!-- 10. cta -->
-                    <div class="bottom-btn btn-type-box">
-                        <span><a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`">문의하기</a></span><!-- [KR수정] class 수정 -->
-                        <span><a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`">문의하기</a></span><!-- [KR수정] class 수정 -->
+                                <ul class="bullet-list">
+                                    <li class="b-txt">디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다, 단 모바일 영역을 고려하여 너무 긴 텍스트는 지양합니다.</li>
+                                </ul>
+                            </li>
+                            }
+                        </ul>
                     </div>
-                    <div class="bottom-btn btn-type-text">
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`">자세히 보기</a></span><!-- [KR수정] class 수정 -->
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`">자세히 보기</a></span><!-- [KR수정] class 수정 -->
+                    <div class="slide-controls">
+                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                     </div>
-                    <!-- // 10. cta -->
-
-                    <ul class="bullet-list">
-                        <li class="b-txt">디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다, 단 모바일 영역을 고려하여 너무 긴 텍스트는 지양합니다.</li>
-                    </ul>
-                </li>
-                }
-            </ul>
+                </div>
+            </div>        
         </div>
     </div>
     <!-- // [KR수정] DOM div -> ul>li 로 수정 -->
