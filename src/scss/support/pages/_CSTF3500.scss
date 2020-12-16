@@ -93,25 +93,7 @@
             margin-bottom: 16px;
         }
     }
-    .note-box {
-        padding: 40px;
-        background-color: #f4f4f4;
-        border-radius: 8px;
-        margin-bottom: 24px;
-        &-title {
-            font-size: 16px;
-            font-weight: bold;
-            line-height: 1.5;
-            margin-bottom: 16px;
-        }
-        .in-note-box {
-            margin-top: 16px;
-            margin-bottom: 16px;
-        }
-        @include mobile {
-            padding: 16px;
-        }
-    }
+
     .ui_tab-notice {
         position: relative;
         margin: 0 auto;
