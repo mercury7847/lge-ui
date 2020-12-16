@@ -117,14 +117,13 @@
 	
     .item {
 		vertical-align:top;
-		width:252px;
+		//width:252px;
+		width:266px;
 		display:inline-block;
-		padding-bottom: 31px;
-		margin: 0 12px;
+		padding: 0 12px 31px;
 		@include mobile {
 			width: 50%;
-			margin: 0;
-			padding-bottom: 24px;
+			padding: 0 0 24px 0;
 			&:nth-child(odd) {
 				padding-right: 4px;
 			}
@@ -174,12 +173,6 @@
 				}
 
             }
-            /*
-			.ico-right{
-				&:after {
-					background: url('/lg5-common/images/common/icons/link-right-nightrider.svg') no-repeat 0 1px;
-				}
-			}*/
 		}
 	}
 	.carousel-box {
@@ -196,21 +189,24 @@
 		&.item5{
 			.items{
 				@media screen and (min-width: 768px) {
-					max-width:1220px;
+					//max-width:1220px;
+					max-width:1330px;
 				}
 			}
 		}
 		&.item4 {
 			.items{ 
 				@media screen and (min-width: 768px) {
-					max-width: 976px;
+					//max-width: 976px;
+					max-width: 1064px;
 				}
 			}
 		}
 		&.item3 {
 			.items{ 
 				@media screen and (min-width: 768px) {
-					max-width: 739px;
+					//max-width: 739px;
+					max-width: 798px;
 				}
 			}
 		}
@@ -218,7 +214,8 @@
 		&.item2 {
 			.items{ 
 				@media screen and (min-width: 768px) {
-					max-width: 488px;
+					//max-width: 488px;
+					max-width: 532px;
 				}
 			}
 		}
