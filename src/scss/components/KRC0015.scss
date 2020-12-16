@@ -218,7 +218,7 @@
                 width: 32px;
                 height: 32px;
                 margin-right: 8px;
-                background: url('/lg5-common/images/icons/btn-play-32-white.svg') no-repeat 0 0;
+                background: no-repeat 0 0;
                 vertical-align: -9px;
                 content: '';
             }
@@ -484,7 +484,12 @@
                     color: #fff;
                 }
                 .video-link {
-                    color: #fff;
+                    .btn-video {
+                        color: #fff;
+                        &:before {
+                            background-image: url('/lg5-common/images/icons/btn-play-32-white.svg');
+                        }
+                    }
                 }
                 .text-link {
                     color: #fff;
@@ -494,6 +499,14 @@
                 }
             }
             @if $text == black {
+                .video-link {
+                    .btn-video {
+                        color: $color-default;
+                        &:before {
+                            background-image: url('/lg5-common/images/icons/btn-play-32-black.svg');
+                        }
+                    }
+                }
                 //.text-block {
                 //    .eyebrow {
                 //        color: #111;
