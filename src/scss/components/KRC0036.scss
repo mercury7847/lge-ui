@@ -74,14 +74,12 @@
                 right:0;
                 bottom:0;
                 .only-pc {
-                    position:absolute;
-                    top:0;
-                    left:0;
-                    right:0;
-                    bottom:0;
-                    background-size:cover !important;
-                    font-size:0;
-                    color:transparent;
+                    display:block;
+                    img {
+                        width:100%;
+                        height:auto;
+                        vertical-align:top;
+                    }
                 }
                 .only-m {
                     display:none;
