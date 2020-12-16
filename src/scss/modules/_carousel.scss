@@ -54,6 +54,39 @@
 .indi-wrap {
     font-size:0;
     text-align:center;
+    .indi-conts {
+        display:inline-block;
+        vertical-align:middle;
+    }
+    .ui_carousel_play {
+        display:inline-block;
+        vertical-align:middle;
+        margin-left:10px;
+        @include mobile {
+            margin-left:4px;
+        }
+        .btn-play {
+            display:inline-block;
+            width:20px;
+            height:20px;
+            background-size:100%;
+            background-repeat:no-repeat;
+            @include mobile {
+                width:16px;
+                height:16px;
+            }
+        }
+        &.play {
+            .btn-play {
+                background-image:url('/lg5-common/images/icons/btn-carousel-play.svg');
+            }
+        }
+        &.stop {
+            .btn-play {
+                background-image:url('/lg5-common/images/icons/btn-carousel-pause.svg');
+            }
+        }
+    }
     li {
         display:inline-block;
         padding:0 6px;
