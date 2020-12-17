@@ -394,12 +394,76 @@ $.fn.serializeObject = function() {
 };
 
 (function($){
-    function survey(){
-
-    }
-
     function commonInit(){
-        $('#quickMenu').quickMenu();
+        vcui.require(['ui/selectbox', 'ui/carousel'], function () {    
+            // 관련 소모품이 필요하신가요?
+            $('.product-slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                slidesToScroll: 4,
+                slidesToShow: 4,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            slidesToScroll: 1,
+                            slidesToShow: 1,
+                            variableWidth: true
+                        }
+                    },
+                    {
+                        breakpoint: 20000,
+                        settings: {
+                            slidesToScroll: 4,
+                            slidesToShow: 4
+                        }
+                    }
+                ]
+            });
+
+            // LG제품에 관련된 정보를 확인하세요!
+            $('.info-slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                slidesToScroll: 3,
+                slidesToShow: 3,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            slidesToScroll: 1,
+                            slidesToShow: 1,
+                            variableWidth: true
+                        }
+                    },
+                    {
+                        breakpoint: 20000,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    }
+                ]
+            });
+
+            $('#quickMenu').quickMenu();
+        });
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);
