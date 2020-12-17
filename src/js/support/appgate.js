@@ -32,7 +32,7 @@
                     parameter = param;
 
                 parameter += '&topic=' + topicVal + '&subTopic=' + subTopicVal;
-                location.href = url + '?' + param;
+                location.href = url + '?' + parameter;
             });
             $btnSearch.on('click', function() {
                 var keywordVal = $keyword.val(),
@@ -42,7 +42,7 @@
 
                 if (result.success == true) {
                     parameter += '&keyword=' + keywordVal;
-                    window.open(url + '?' + param);
+                    window.open(url + '?' + parameter);
                 }
             });
         });
