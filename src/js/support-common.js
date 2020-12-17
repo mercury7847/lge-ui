@@ -462,6 +462,7 @@ $.fn.serializeObject = function() {
                 ]
             });
 
+            // 퀵 메뉴 (미정)
             $('#quickMenu').quickMenu();
         });
     }
