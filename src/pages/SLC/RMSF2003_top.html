@@ -18,7 +18,7 @@
 <!-- 로그인/계약 제품 보유 케이스 -->
 <div class="prd-contract-wrap ui_active_toggle_wrap">
     <!-- 계약제품 총 보유량. 개발시 <span class="num">필드값과 <div class="contract-slide">아래 슬라이드 이미지 개수를 맞춰줘야 합니다. -->
-    <div class="inner ui_total_prod" data-prod-total="3">
+    <div class="inner ui_total_prod"> <!-- 2020-12-17 data-prod-total="3" 삭제-->
         <div class="tit-wrap">
             <p class="tit">계약 제품</p>
             <span class="num">총 <strong>3</strong>개</span>
@@ -29,18 +29,6 @@
             <div class="slide-wrap ui_carousel_slider">
                 <div class="slide-content ui_carousel_list">
                     <ul class="slide-track ui_carousel_track ui_flexible_height">
-                        <!-- 무상케어십 계약 -->
-                        <li class="slide-conts ui_carousel_slide">
-                            <div class="conts-wrap">
-                                <div class="prd-care-horizon ui_flexible_box free-care comb-type"><!-- 결합된 상품이면 comb-type 클래스 추가 -->
-                                    <div class="ui_flexible_cont">
-                                        <p>케어십 일시납 확인으로 <br>기존 결합 할인 적용되었습니다.</p>
-                                        <span>기존계약 문의 1577-4090</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- //무상케어십 계약 -->
                         <!-- slide -->
                         @@include('./common/modules/prd-care-horizon.html', {
                             "flagName" : "렌탈(케어솔루션)",

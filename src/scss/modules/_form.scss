@@ -384,6 +384,13 @@
             .tit {
                 padding:0 24px 0 0;
             }
+            @include pc {
+                .select-list-wrap {
+                    li:first-child {
+                        padding-left:0;
+                    }
+                }
+            }
         }
         &.type3 {
             .tit {
@@ -394,6 +401,13 @@
             .conts {
                 display:block;
                 width:100%;
+            }
+            @include pc {
+                .select-list-wrap {
+                    li:first-child {
+                        padding-left:0;
+                    }
+                }
             }
         }
         // input + other

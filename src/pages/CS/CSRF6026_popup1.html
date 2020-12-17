@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/reservation"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <div class="contents support air-care">
+                <div class="cont-wrap">
+                    
+                    <div class="section">
+                        <div class="section-content">
+                            <button type="button" data-href="#cancelServicePopup" data-control="modal" class="btn pink"><span>서비스 예약 취소</span></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- 예약결과 조회변경_예약취소 팝업 -->
+    @@include('./support/modal/cancel-service-popup.html')
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
+</body>
+</html> 
