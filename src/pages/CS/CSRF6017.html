@@ -12,14 +12,16 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '전화 상담 예약이 접수되었습니다.',
-                'pageBtn' : [
-                    { 'btn' : '요금 및 보증 기간 안내 ' },
-                    { 'btn' : '유상 서비스 적용 안내' }
-                ]
+                'pageTitle': '전화 상담 예약이 접수되었습니다.'
             })
             
             <div class="contents support reservation subscribe">
+                <ol class="reception-progress type-1">
+                    <li><span class="text">제품 선택</span></li>
+                    <li><span class="text">예약 내용 입력</span></li>
+                    <li><span class="text">예약 완료</span></li>
+                </ol>
+
                 <div class="reservation-info-box type-email">
                     <figure class="reservation-area">
                         <div class="reservation-info">
@@ -34,92 +36,88 @@
                     </figure>
                 </div>
                 <div class="cont-wrap">
+                    <ol class="reception-progress type-2 step-3" data-step="3">
+                        <li><span class="text">접수</span></li>
+                        <li><span class="text">상담예정</span></li>
+                        <li><span class="text">완료</span></li>
+                    </ol>
+
                     <div class="section">
                         <div class="tit-wrap">
-                            <h2 class="tit">전화 상담 예약 접수 내용</h2>
+                            <h2 class="tit">예약 정보</h2>
                         </div>
-                        <div class="">
-                            <div class="">
-                                <div class="section-title">
-                                    <h3 class="tit">예약 정보</h3>
+                        <ul class="inquiry-list">
+                            <li>
+                                <div class="title"><strong>접수번호</strong></div>
+                                <div class="description">K729401293RL</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>접수일시</strong></div>
+                                <div class="description">2020년 07월 29일 14시 21분</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>접수 경로</strong></div>
+                                <div class="description">온라인</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>진행상태</strong></div>
+                                <div class="description">접수</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>예약일시</strong></div>
+                                <div class="description"><span class="color-3">2020.07.30 14:00</span></div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>선택 제품</strong></div>
+                                <div class="description">
+                                    <p>에어컨 > 가정용 스탠드형 (모델명 : FQ20PADRQN)</p>
+                                    <button type="button" class="btn border size"><span>보유제품 추가</span></button>
                                 </div>
-                                <div class="">
-                                    <ul class="inquiry-list">
-                                        <li>
-                                            <div class="title"><strong>접수번호</strong></div>
-                                            <div class="description">K729401293RL<button type="button" class="btn dark-gray size"><span>복사하기</span></button></div>
-                                        </li>
-                                        <li>
-                                            <div class="title"><strong>접수일시</strong></div>
-                                            <div class="description">2020년 07월 29일 14시 21분</div>
-                                        </li>
-                                        <li>
-                                            <div class="title"><strong>진행상태</strong></div>
-                                            <div class="description">접수</div>
-                                        </li>
-                                        <li>
-                                            <div class="title"><strong>서비스 예정 일자</strong></div>
-                                            <div class="description">2020년 07월 30일 14시 00분</div>
-                                        </li>
-                                        <li>
-                                            <div class="title"><strong>선택 제품</strong></div>
-                                            <div class="description">가정용 스탠드형</div>
-                                        </li>
-                                        <li>
-                                            <div class="title"><strong>구입 시기</strong></div>
-                                            <div class="description">1개월 이내</div>
-                                        </li>
-                                        <li>
-                                            <div class="title"><strong>증상</strong></div>
-                                            <div class="description">스마트기능/스마트진단 &gt; LG ThinQ 등록 실패 </div>
-                                        </li>
-                                        <li>
-                                            <div class="title"><strong>전달사항</strong></div>
-                                            <div class="description">안녕하세요.<br />ThinQ 등록 방법을 확인하고 메뉴얼 대로 시도해도 연결이 안됩니다.</div>
-                                        </li>
-                                    </ul>
-                                    <button type="button" data-href="#solutionsPopup" data-control="modal" class="btn type-solution block problem-solve type2">
-                                        <div class="solve-txt-area">
-                                            <strong class="text">제품 문제해결 방법을 확인해보세요!</strong>
-                                            <p class="side-item">선택하신 증상은 제품 문제해결 방법을 통해서 해결이 가능합니다.</p>
-                                        </div>
-                                        <div class="solve-btn-txt-area">
-                                            <p class="btn-txt">제품 문제해결 방법 확인하기</p>
-                                        </div>
-                                    </button>
+                            </li>
+                            <li>
+                                <div class="title"><strong>구입 시기</strong></div>
+                                <div class="description">1개월 이내</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>증상</strong></div>
+                                <div class="description">
+                                    <p>스마트기능/스마트진단<br>LG ThinQ 등록 실패</p>
+                                    <button type="button" class="btn border size"><span>제품 문제해결 방법</span></button>
                                 </div>
-                            </div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>전달사항</strong></div>
+                                <div class="description">안녕하세요.<br />ThinQ 등록 방법을 확인하고 메뉴얼 대로 시도해도 연결이 안됩니다.</div>
+                            </li>
+                        </ul>
+                    </div>
 
-                            <div class="">
-                                <div class="section-title">
-                                    <h3 class="tit">고객 정보</h3>
-                                </div>
-                                <div class="">
-                                    <ul class="inquiry-list">
-                                        <li>
-                                            <div class="title"><strong>이름</strong></div>
-                                            <div class="description">홍*동</div>
-                                        </li>
-                                        <li>
-                                            <div class="title"><strong>휴대전화</strong></div>
-                                            <div class="description">010****1234</div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                @@include('./common/modules/bullet-list.html', {
-                                    "topBorder" : true,
-                                    "bulletTxt" : [
-                                        "접수번호는 “예약 확인 및 취소” 또는 “서비스 결과” 이용 시 꼭 필요한 번호입니다. 이메일과 휴대전화번호로 전송된 접수번호를 반드시 보관하시기 바랍니다.",
-                                        "입력한 정보가 정확하지 않을 경우 예약하신 서비스가 취소 또는 지연될 수 있으니 확인 바랍니다.",
-                                        "접수하신 사항에 대한 취소 및 확인은 예약 및 결과 조회에서 가능합니다."
-                                    ]
-                                })
-                            </div>
-
-                            <div class="btn-group center">
-                                <a href="" class="btn pink">고객지원 메인</a>
-                            </div>
+                    <div class="section">
+                        <div class="tit-wrap">
+                            <h2 class="tit">신청자 정보</h2>
                         </div>
+                        <ul class="inquiry-list">
+                            <li>
+                                <div class="title"><strong>이름</strong></div>
+                                <div class="description">홍길동</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>휴대폰번호</strong></div>
+                                <div class="description">010-****-5678</div>
+                            </li>
+                        </ul>
+                        @@include('./common/modules/bullet-list.html', {
+                            "topBorder" : true,
+                            "bulletTxt" : [
+                                "접수번호는 “예약 확인 및 취소” 또는 “서비스 결과” 이용 시 꼭 필요한 번호입니다. 이메일과 휴대전화번호로 전송된 접수번호를 반드시 보관하시기 바랍니다.",
+                                "예약정보는 ‘예약 및 결과 조회’ 메뉴에서 조회 가능합니다.",
+                                "입력한 정보가 정확하지 않을 경우 예약하신 서비스가 취소 또는 지연될 수 있으니 확인 바랍니다."
+                            ]
+                        })
+                    </div>
+
+                    <div class="btn-group center">
+                        <a href="" class="btn pink">고객지원 메인</a>
                     </div>
                 </div>
             </div>
