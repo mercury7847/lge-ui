@@ -21,6 +21,13 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self._bindEvents();
                 self._resize();
                 self._arrowState();
+
+                $('.marketing-link .ui_carousel_slider').vcCarousel({
+                    infinite: true,
+                    swipeToSlide: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                });
             });
         },
 
@@ -38,7 +45,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self.$mobileNaviWrapper = $(self.$pcNaviWrapper.clone()).width('100%');
             self.$mobileNaviItems = self.$mobileNaviWrapper.find('> li');
-            self.$pcNaviWrapper.parent().append(self.$mobileNaviWrapper);
+            self.$el.find(".nav-wrap").append(self.$mobileNaviWrapper);
             
             self.$hamburger = self.$el.find('.mobile-nav-button');
 
@@ -122,16 +129,43 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self.$leftArrow.show();
                 self.$rightArrow.show();
             } else{
-                self.$leftArrow.show();
-                self.$rightArrow.show();
+                self.$leftArrow.hide();
+                self.$rightArrow.hide();
             }
         },
 
         _setNavPosition: function(course){
             var self = this;
+
+            var navwrapwidth = self.$el.find('.nav-wrap').width();
+            var brandwidth = self.$el.find('.nav-wrap .nav-brand-gate').outerWidth(true);
+            var navwidth = self.$pcNaviWrapper.outerWidth(true);
+
+            var dist = navwrapwidth - (brandwidth + navwidth + 70);
+            var navx = dist * -course;
+            if(navx > 0) navx = 0;
             
-            var navx = $('.nav-wrap').offset().left + 80*course;
-            $('.nav-wrap').css({x:navx});
+            $('.nav-inner').stop().animate({'margin-left': navx}, 220);
+        },
+
+        _setNavReturnPosition: function(){
+            var self = this;
+
+            var navwrapwidth = self.$el.find('.nav-wrap').width();
+            var brandwidth = self.$el.find('.nav-wrap .nav-brand-gate').outerWidth(true);
+            var navwidth = self.$pcNaviWrapper.data('initWidth');
+            var marginleft = parseInt($('.nav-inner').css('margin-left'));
+
+            if(navwrapwidth < brandwidth + navwidth){
+                var dist = marginleft + brandwidth + navwidth + 70;
+                if(dist < $(window).width() - 54){
+                    var navx = $(window).width() - 40 - (brandwidth + navwidth + 70);
+                    $('.nav-inner').stop().animate({'margin-left': navx}, 150);
+                }
+                var dist = navwrapwidth - (brandwidth + navwidth + 70);
+            } else{
+                $('.nav-inner').stop().animate({'margin-left': 0}, 150);
+            }
         },
 
         _pcSetting: function(){
@@ -151,33 +185,31 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                 var categoryLayer = $(item).find('> .nav-category-layer');
                 if(categoryLayer.length){
-                    categoryLayer.find('.ui_carousel_slider').vcCarousel({
-                        infinite: false,
-                        swipeToSlide: true,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        playSelector: '.btn-play.play'
-                    });
-                    categoryLayer.find('.ui_carousel_list').css('overflow', 'hidden');
+                    self._addCarousel(categoryLayer.find('.ui_carousel_slider'));
+                    //categoryLayer.find('.ui_carousel_list').css('overflow', 'hidden');
                 }
 
                 $(item).data('subwidth', categorywidth);
-                $(item).on('mouseover', '> a, > .nav-category-layer .nav-category-wrap', function(e){
+                $(item).on('mouseover', '> a', function(e){
                     self._setOver(idx, -1);
-                }).on('mouseout', '> a, > .nav-category-layer .nav-category-wrap', function(e){    
+                }).on('mouseout', '> a', function(e){    
                     self._setOut();
                 });
 
                 $(item).find('> .nav-category-container > ul >li').each(function(cdx, child){
-                    $(child).on('mouseover', '> a, .nav-category-wrap', function(e){
+                    $(child).on('mouseover', '> a', function(e){
                         self._setOver(idx, cdx);
-                    }).on('mouseout', '> a, .nav-category-wrap', function(){
+                    }).on('mouseout', '> a', function(){
                         self._setOut();
-                    })
+                    });
+
+                    self._addCarousel($(child).find('.ui_carousel_slider'));
                 });
             });
 
-            $('.nav-wrap').on('mouseover', function(e){
+            self.$pcNaviWrapper.data('initWidth', self.$pcNaviWrapper.outerWidth(true));
+
+            $('.nav-wrap .nav-inner').on('mouseover', function(e){
                 self._removeOutTimeout();
             }).on('mouseout', function(e){
                 self._setOut();
@@ -192,7 +224,23 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 e.preventDefault();
 
                 self._setNavPosition(-1);
+            });
+
+            self.$el.on('mouseover', '.slide-controls', function(e){
+                e.preventDefault();
             })
+        },
+
+        _addCarousel: function(item){
+            item.vcCarousel({
+                infinite: true,
+                swipeToSlide: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay:true,
+                autoplaySpeed: 3000,
+                playSelector: '.btn-play.play'
+            });
         },
 
         _setActiveAbled: function(item, abled){
@@ -211,8 +259,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var categoryLayer = $(item).find('> .nav-category-layer');
             if(categoryLayer.length){
                 categoryLayer.find('.ui_carousel_slider').vcCarousel('update');
-
-                self.$dimmed.show();
             }
         },
 
@@ -253,6 +299,13 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     }
                 }
             });
+
+            if(one > 0){
+                self.$dimmed.show();
+            } else{
+                if(two < 0) self.$dimmed.hide();
+                else self.$dimmed.show();
+            }
         },
 
         _removeOutTimeout: function(){
@@ -291,6 +344,9 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     self._setActiveAbled($(item), false);
                 }
             });
+
+
+            self._setNavReturnPosition();
             
             self.$dimmed.hide();
         },
@@ -376,6 +432,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 replaceText.text("메뉴 닫기");
 
                 if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
+
+                $('.marketing-link .ui_carousel_slider').vcCarousel('update');
             }
         },
 
@@ -390,14 +448,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
         }
     });
-
-    // 2020-12-14 추가
-    // $('.marketing-link .ui_carousel_slider').vcCarousel({
-    //     infinite: true,
-    //     swipeToSlide: true,
-    //     slidesToShow: 1,
-    //     slidesToScroll: 1
-    // });
 
     return Header;
 });
