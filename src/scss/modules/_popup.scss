@@ -204,27 +204,21 @@
         }
     }
     .pop-guide {
-        margin:0 -56px;
-        padding:16px 56px;
-        background:#f4f4f4;
-        @include clearfix;
-        .text {
-            float:left;
-            color:#616161;
-            font-size:16px;
-            line-height:24px;
-        }
-        .btn-box {
-            float:right;
-            .btn-link {
-                line-height:24px;
-            }
-        }
-    }
-    .pop-guide.type2{
-        margin:0;
-        border-radius:10px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        width:100%;
         padding:30px 40px;
+        border-radius:10px;
+        background:#f4f4f4;
+        .text {
+            color:#222;
+            font-size:16px;
+            line-height:26px;
+        }
+        @include mobile{
+            padding:24px 16px;
+        }
     }
     .pop-conts {
         height:auto;
@@ -811,6 +805,9 @@
                 }
                 @include mobile {
                 }
+            }
+            &.align-center {
+                text-align: center;
             }
         }
 

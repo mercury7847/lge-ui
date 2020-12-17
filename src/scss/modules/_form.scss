@@ -384,6 +384,13 @@
             .tit {
                 padding:0 24px 0 0;
             }
+            @include pc {
+                .select-list-wrap {
+                    li:first-child {
+                        padding-left:0;
+                    }
+                }
+            }
         }
         &.type3 {
             .tit {
@@ -394,6 +401,13 @@
             .conts {
                 display:block;
                 width:100%;
+            }
+            @include pc {
+                .select-list-wrap {
+                    li:first-child {
+                        padding-left:0;
+                    }
+                }
             }
         }
         // input + other
@@ -1661,14 +1675,14 @@ $input: (chk, rdo);
                 height: 24px;
                 border: 0;
                 border-radius: 0;
-                background: url("/lg5-common/images/icons/icon-heart-off.svg") no-repeat 0 0;
+                background: url("/lg5-common/images/icons/btn-like-off-32.svg") no-repeat 0 0;
                 background-size: 24px 24px;
                 content: '';
             }
         }
         &:checked + label {
             &:before {
-                background-image: url("/lg5-common/images/icons/icon-heart-on.svg");
+                background-image: url("/lg5-common/images/icons/btn-like-on-32.svg");
             }
         }
     }
@@ -1884,7 +1898,7 @@ $input: (chk, rdo);
         .ui-select-button {
             display:block;
             position:relative;
-            padding:0 28px 0 0;
+            padding:0 20px 0 0;
             @include mobile {
                 padding-right:28px;
             }
@@ -1907,10 +1921,10 @@ $input: (chk, rdo);
                 position:absolute;
                 top:50%;
                 right:0;
-                width:24px;
-                height:24px;
-                margin-top:-12px;
-                background:url('/lg5-common/images/icons/icon-triangle-24.svg') no-repeat;
+                width:16px;
+                height:16px;
+                margin-top:-8px;
+                background:url('/lg5-common/images/icons/btn-down-16-black.svg') no-repeat;
                 transition:all 0.1s;
             }
         }

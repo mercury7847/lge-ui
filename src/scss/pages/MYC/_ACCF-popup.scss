@@ -1,8 +1,49 @@
 // 다운로드/SW
+.link-box {
+    position:relative;
+    margin-top:16px;
+    padding:24px 48px;
+    border-radius:8px;
+    background-color:#f4f4f4;
+    > p {
+        padding-right:200px;
+        font-size:16px;
+        font-weight:700;
+        line-height:26px;
+    }
+    .btn-link {
+        position:absolute;
+        top:50%;
+        right:48px;
+        transform:translateY(-50%);
+    }
+    @include mobile {
+        margin-top:20px;
+        border-radius:4px;
+        text-align:center;
+        > p {
+            padding:0;
+            font-size:14px;
+            line-height:22px;
+        }
+        .btn-link {
+            position:static;
+            margin-top:8px;
+            transform:translateY(0);
+        }
+    }
+}
+
 .sw-contents-wrap {
     margin-top:48px;
     @include mobile {
         margin-top:40px;
+    }
+    .sw-desc {
+        margin-top:12px;
+        font-size:14px;
+        font-weight:500;
+        line-height:24px;
     }
     .sw-download-lists {
         margin-top:24px;
@@ -22,6 +63,9 @@
                 width:100%;
                 table-layout:fixed;
                 @include mobile {
+                    display:block;
+                }
+                > a {
                     display:block;
                 }
                 .info-cell,
