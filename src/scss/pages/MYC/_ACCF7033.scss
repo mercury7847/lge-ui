@@ -1,4 +1,45 @@
+.mymem-benefit {
+    display:table;
+    table-layout:fixed;
+    width:calc(100% + 48px);
+    margin:-8px -24px 0;
+    border-collapse:separate;
+    border-spacing:24px 0;
+    li {
+        display:table-cell;
+        height:202px;
+        padding:32px;
+        border-radius:8px;
+        background-color:#f4f4f4;
+        text-align:center;
+        .ico {
+            display:block;
+            width:48px;
+            height:48px;
+            margin:0 auto;
+            &.ico01 {
+                background-image:url('/lg5-common/images/icons/icon-main-register-96.svg');
+            }
+            &.ico02 {
+                background-image:url('/lg5-common/images/icons/icon-main-careship-96.svg');
+            }
+            &.ico03 {
+                background-image:url('/lg5-common/images/icons/icon-main-register-96.svg');
+            }
+            &.ico04 {
+                background-image:url('/lg5-common/images/icons/icon-main-register-96.svg');
+            }
+        }
+        p {
+            margin-top:12px;
+            font-size:16px;
+            line-height:26px;
+        }
+    }
+}
+
 .my-product-lists {
+    margin-top:40px;
     ul {
         li.lists {
             margin-top:24px;
@@ -63,7 +104,7 @@
                         font-weight:500;
                     }
                     .btns {
-                        margin-top:8px;
+                        margin-top:20px;
                         font-size:0;
                         @include mobile {
                             margin-top:12px;
@@ -78,6 +119,7 @@
                             }
                         }
                         &.link-type {
+                            margin-top:12px;
                             @include mobile {
                                 margin-top:5px;
                             }
@@ -102,7 +144,7 @@
                     .info-lists {
                         max-width:450px;
                         font-size:0;
-                        margin-top:20px;
+                        margin-top:4px;
                         @include mobile {
                             max-width:initial;
                             margin-top:10px;
@@ -252,6 +294,41 @@
                     @include mobile {
                         top:16px;
                         right:16px;
+                    }
+                }
+            }
+        }
+    }
+    &.enroll {
+        ul {
+            margin:-24px 0 0 -24px;
+            font-size:0;
+            li.lists {
+                display:inline-block;
+                width:calc((100% - 48px) / 2);
+                margin-left:24px;
+                }
+                .inner {
+                    padding:24px 32px;
+                    .thumb {
+                        width:140px;
+                    }
+                    .info-wrap {
+                        padding-top:14px;
+                        .name {
+                            font-size:16px;
+                            line-height:26px;
+                        }
+                        .info-lists {
+                            max-width:100%;
+                            margin-top:16px;
+                            li {
+                                display:block;
+                                &:after {
+                                    display:none;
+                                }
+                            }
+                        }
                     }
                 }
             }
