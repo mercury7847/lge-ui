@@ -12,7 +12,7 @@
                 self.$submitForm = $(self.submitForm);
                 self.$solutionsForm = $(self.solutionsForm);
 
-                $('.pagination').pagination();
+                CS.MD.survey($('#submitForm').serializeObject());
             },
             setEventListener: function() {
                     

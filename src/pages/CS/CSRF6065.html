@@ -29,7 +29,7 @@
                 </div>
                 <div class="agree-input">
                     <span class="chk-wrap">
-                        <input type="checkbox" id="privcyCheck" name="privcyCheck" data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다." data-required="true" required>
+                        <input type="checkbox" id="privcyCheck" name="privcyCheck" value="Y" data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다." data-required="true" required>
                         <label for="privcyCheck">동의합니다. (동의해야만 신청이 가능합니다.)</label>
                     </span>
                 </div>
@@ -97,14 +97,14 @@
                             <ul>
                                 <li>
                                     <span class="rdo-wrap">
-                                        <input type="radio" name="gender" id="genderM" data-error-msg="성별을 선택해주세요" data-required="true" required>
-                                        <label for="gender1">남자</label>
+                                        <input type="radio" name="gender" id="genderM" value="M" data-error-msg="성별을 선택해주세요" data-required="true" required>
+                                        <label for="genderM">남자</label>
                                     </span>
                                 </li>
                                 <li>
                                     <span class="rdo-wrap">
-                                        <input type="radio" name="gender" id="genderW">
-                                        <label for="gender2">여자</label>
+                                        <input type="radio" name="gender" id="genderW" value="W">
+                                        <label for="genderW">여자</label>
                                     </span>
                                 </li>
                             </ul>
@@ -121,7 +121,8 @@
                     <div class="conts">
                         <div class="select-wrap">
                             <select class="ui_selectbox" name="age" id="age" data-error-msg="연령대를 선택해주세요" data-required="true" required>
-                                <option value="10" selected>10대</option>
+                                <option value="" class="placeholder">선택</option>
+                                <option value="10">10대</option>
                                 <option value="20">20대</option>
                                 <option value="30">30대</option>
                                 <option value="40">40대</option>
@@ -186,13 +187,13 @@
                                 <li>
                                     <span class="rdo-wrap">
                                         <input type="radio" name="csaFlag" id="csaFlagY" value="Y" data-error-msg="만족 여부를 선택해주세요" data-required="true" required>
-                                        <label for="rdo12-1">네</label>
+                                        <label for="csaFlagY">네</label>
                                     </span>
                                 </li>
                                 <li>
                                     <span class="rdo-wrap">
                                         <input type="radio" name="csaFlag" id="csaFlagN" value="N">
-                                        <label for="rdo12-2">아니오</label>
+                                        <label for="csaFlagN">아니오</label>
                                     </span>
                                 </li>
                             </ul>
