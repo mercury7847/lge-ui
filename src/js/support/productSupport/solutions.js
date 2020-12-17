@@ -75,6 +75,13 @@
                 var self = this;
 
                 self.$filter.find('.filter-link[data-code="'+ code +'"]').parent('li').addClass('on').siblings('li').removeClass('on');
+                
+                self.$filter.find('.filter-link[data-code="'+ code +'"]').parent('li').addClass('on').siblings('li').each(function() {
+                    if ($(this).find('.sub-depth').length) {
+                        $(this).find('.sub-depth').remove();
+                    }
+                });
+
                 self.$mFilter.find('#symptom').val(code);
 
                 if (code !== 'All') {
@@ -93,8 +100,6 @@
             },
             selectSubFilter: function(code) {
                 var self = this;
-
-                self.$wrap.find('#subTopic').val(code);
             
                 self.$filter.find('.filter-link[data-code="'+ code +'"]').parent('li').addClass('on').siblings('li').removeClass('on');
                 self.$mFilter.find('#subSymptom').val(code);
@@ -161,6 +166,15 @@
                     lgkorUI.hideLoading();
                 });
             },
+            reset: function() {
+                var self = this;
+
+                self.$filter.find('.open, .on').removeClass('open on');
+                self.$filter.find('.sub-depth').remove();
+
+                self.$wrap.find('#topic').val('All');
+                self.$wrap.find('#subTopic').val('');
+            },
             bindEvent: function() {
                 var self = this;
 
@@ -171,8 +185,7 @@
                         param = {};
                         
                     if (!resultFlag) {
-                        self.$wrap.find('#topic').val('All');
-                        self.$wrap.find('#subTopic').val('');
+                        self.reset();
                     }
 
                     self.$wrap.find('#keyword').val(value);
@@ -210,24 +223,47 @@
                 });
 
                 // filter
-                self.$filter.on('click', '.filter-link', function() {
+                self.$filter.on('click', '.filter-list > li > .filter-link', function() {
                     var code = $(this).data('code'),
                         param = {};
                     
                     self.$wrap.find('#topic').val(code);
-                    self.$wrap.find('#subTopic').val('');
+                    if (!$(this).siblings('.sub-depth').length) {
+                        self.$wrap.find('#subTopic').val('');
+                    }
                     param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
                     self.param = $.extend(param, {
                         page: 1
                     });
 
                     self.selectFilter(code, this);
-                    self.setSubFilter(code, this);
+                    if ($(this).siblings('.sub-depth').length < 1) {
+                        self.setSubFilter(code, this);
+                        self.requestData();
+                    } else {
+                        $(this).siblings('.sub-depth').show();
+                    }
+                });
+
+                // sub filter
+                self.$filter.on('click', '.sub-depth .filter-link', function() {
+                    var code = $(this).data('code'),
+                        param = {};
+                    
+                    self.$wrap.find('#subTopic').val(code);
+                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                    self.param = $.extend(param, {
+                        page: 1
+                    });
+
+                    self.selectSubFilter(code);
                     self.requestData();
                 });
+
+                // 증상선택 돌아가기
                 self.$filter.on('click', '.btn-back', function() {
                     $(this).closest('.filter-list').removeClass('open');
-                    $(this).closest('.sub-depth').remove();
+                    $(this).closest('.sub-depth').hide();
                 });
 
                 // mobile filter

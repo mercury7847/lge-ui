@@ -190,6 +190,20 @@
         '   {{/each}}'+
         '   </li>'
         '</ul>';
+    
+    //무상케어십 계약
+    var freeCareshipTemplate =
+        '<li class="slide-conts ui_carousel_slide">'+
+            '<div class="conts-wrap">'+
+                '<div class="prd-care-horizon ui_flexible_box free-care comb-type">'+//<!-- 결합된 상품이면 comb-type 클래스 추가 -->
+                    '<div class="ui_flexible_cont">'+
+                        '<p>케어십 일시납 확인으로 <br>기존 결합 할인 적용되었습니다.</p>'+
+                        '<span>기존계약 문의 1577-4090</span>'+
+                    '</div>'+
+                '</div>'+
+            '</div>'+
+        '</li>';
+        
 
     var _showItemLength = 8;
 

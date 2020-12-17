@@ -6,11 +6,6 @@
         .input-info .tit-wrap {
             margin-bottom:24px;
         }
-
-
-
-
-
         .info-desc {
             margin-bottom:48px;
             color:#616161;
@@ -49,9 +44,6 @@
                     margin-top: 56px;
                 }
             }
-        }
-        .tbl {
-            margin-top: 16px;
         }
         .modal-gray-box {
             border-radius: 4px;
@@ -105,6 +97,44 @@
                     .tit {
                         font-size: inherit;
                     }
+                }
+            }
+        }
+    }
+
+
+
+
+
+    .pop-conts {
+
+
+        @include pc {
+            .form-wrap { 
+                &.w-type01 {
+                    padding-right:186px;
+                }
+            }
+        }
+        
+        // 콘텐츠 만족도 평가
+        &.survey-pop {
+            .agree-wrap {
+                margin-top:64px;
+            }
+            .form-wrap {
+                .forms.type2 {
+                    .tit {
+                        label, .label {
+                            padding-left:17px;
+                            text-indent:-17px;
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                .agree-wrap {
+                    margin-top:32px;
                 }
             }
         }

@@ -2,17 +2,17 @@
     <header class="pop-header">
         <h1 class="tit"><span>콘텐츠 만족도 평가</span></h1>
     </header>
-    <section class="pop-conts support">
-        <div class="pop-guide type2">
+    <section class="pop-conts survey-pop" data-ajax="/lg5-common/data-ajax/support/survey2.json">
+        <div class="pop-guide">
             <p class="text">콘텐츠 만족도 조사를 위해 로그인을 하시면 <strong>고객님의 정보가 자동</strong>으로 입력됩니다. <br />(별도의 로그인 없이 콘텐츠 만족도 조사는 진행하실 수 있습니다.)</p>
             <div class="btn-box">
                 <a href="#" class="btn dark-gray size">로그인</a>
             </div>
         </div>
         
-        <div class="input-info">
-            <div class="tit-wrap">
-                <h2 class="h2-tit">개인정보 수집 및 이용에 대한 안내</h2>
+        <div class="agree-wrap">
+            <div class="agree-tit">
+                <h2 class="tit">개인정보 수집 및 이용에 대한 안내</h2>
             </div>
             <div class="agree-cont-wrap">
                 <div class="agree-cont-box">
@@ -29,18 +29,21 @@
                 </div>
                 <div class="agree-input">
                     <span class="chk-wrap">
-                        <input type="checkbox" id="chk1-1" name="agreechker-privacy">
-                        <label for="chk1-1">동의합니다. (동의해야만 신청이 가능합니다.)</label>
+                        <input type="checkbox" id="privcyCheck" name="privcyCheck" data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다." data-required="true" required>
+                        <label for="privcyCheck">동의합니다. (동의해야만 신청이 가능합니다.)</label>
                     </span>
+                </div>
+                <div class="btm-more err-block">
+                    <p class="err-msg"></p>
                 </div>
             </div>
         </div>
 
         <div class="input-info">
             <div class="tit-wrap">
-                <h2 class="tit">02. 참여자 정보 입력 (필수)
+                <h2 class="tit">참여자 정보 입력 (필수)
                     <div class="tooltip-wrap">
-                        <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget">자세히 보기</span>
+                        <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
                         <div class="tooltip-box" aria-hidden="true">
                             <p>입력하신 정보를 기준으로 경품이 진행되오니 정확히 입력해 주시기 바랍니다.</p>
                             <button type="button" class="btn-close"><span class="blind">닫기</span></button>
@@ -48,55 +51,76 @@
                     </div>
                 </h2>
             </div>
-            <div class="form-wrap">
+            <div class="form-wrap w-type01">
                 <div class="forms">
                     <div class="tit">
-                        <label for="input-name" class="req">성명 <span class="blind">필수입력</span></label>
+                        <label for="userName" class="req">성명 <span class="blind">필수입력</span></label>
                     </div>
                     <div class="conts">
-                        <div class="input-wrap"><input type="text" name="name" id="input-name" value="이엘지" required></div>
+                        <div class="input-wrap">
+                            <!-- 
+                                회원일 경우 회원정보 이름 제공 
+                                value="홍길동"
+                                readonly
+                            -->
+                            <input type="text" name="userName" id="userName" value="" placeholder="이름 입력" data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" required>
+                        </div>
+                        <div class="btm-more err-block">
+                            <p class="err-msg"></p>
+                        </div>
                     </div>
                 </div>
                 <div class="forms">
                     <div class="tit">
-                        <label for="input-phoneNumber" class="req">휴대폰 <span class="blind">필수입력</span></label>
+                        <label for="phoneNo" class="req">휴대폰 <span class="blind">필수입력</span></label>
                     </div>
                     <div class="conts">
                         <div class="input-wrap">
-                            <input type="tel" name="phoneNumber" id="input-phoneNumber" placeholder="‘-’ 없이 휴대전화 번호를 입력해주세요." value="01012341234" required>
+                            <!-- 
+                                회원일 경우 회원정보 휴대 전화 제공 
+                                value="01011112222"
+                                readonly
+                            -->
+                            <input type="tel" name="phoneNo" id="phoneNo" value="" placeholder="전화번호 입력"  data-error-msg="휴대전화를 정확히 입력해주세요"  data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" required>
+                        </div>
+                        <div class="btm-more err-block">
+                            <p class="err-msg"></p>
                         </div>
                     </div>
                 </div>
                 <div class="forms type2">
                     <div class="tit">
-                        <label for="input-gender" class="req">성별<span class="blind">필수입력</span></label>
+                        <p class="label req">성별<span class="blind">필수입력</span></p>
                     </div>
                     <div class="conts">
                         <div class="select-list-wrap w-auto">
                             <ul>
                                 <li>
                                     <span class="rdo-wrap">
-                                        <input type="radio" id="gender1" name="gender" checked="">
+                                        <input type="radio" name="gender" id="genderM" data-error-msg="성별을 선택해주세요" data-required="true" required>
                                         <label for="gender1">남자</label>
                                     </span>
                                 </li>
                                 <li>
                                     <span class="rdo-wrap">
-                                        <input type="radio" id="gender2" name="gender">
+                                        <input type="radio" name="gender" id="genderW">
                                         <label for="gender2">여자</label>
                                     </span>
                                 </li>
                             </ul>
                         </div>
+                        <div class="btm-more err-block gender-err-block">
+                            <p class="err-msg"></p>
+                        </div>
                     </div>
                 </div>
                 <div class="forms">
                     <div class="tit">
-                        <label for="select-age" class="req">연령대<span class="blind">필수입력</span></label>
+                        <label for="age" class="req">연령대<span class="blind">필수입력</span></label>
                     </div>
                     <div class="conts">
                         <div class="select-wrap">
-                            <select class="ui_selectbox" name="age" id="select-age" required>
+                            <select class="ui_selectbox" name="age" id="age" data-error-msg="연령대를 선택해주세요" data-required="true" required>
                                 <option value="10" selected>10대</option>
                                 <option value="20">20대</option>
                                 <option value="30">30대</option>
@@ -105,6 +129,9 @@
                                 <option value="60">60대 이상</option>
                             </select>
                         </div>
+                        <div class="btm-more err-block">
+                            <p class="err-msg"></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -112,70 +139,76 @@
 
         <div class="input-info">
             <div class="tit-wrap">
-                <h2 class="tit">03. 콘텐츠 만족도 평가</h2>
+                <h2 class="tit">콘텐츠 만족도 평가</h2>
             </div>
             <ul class="form-wrap">
                 @@if (context.service) {
                 <li class="forms type3">
                     <div class="tit">
-                        <span class="label">고객님의 제품 ”[OLED55B7K]”으로 어떤 서비스를 이용하셨나요 ?</span>
+                        <p class="label">고객님의 제품 ”[OLED55B7K]”으로 어떤 서비스를 이용하셨나요 ?</p>
                     </div>
                     <div class="conts">
                         <div class="select-list-wrap w-auto">
                             <ul>
                                 <li>
                                     <span class="rdo-wrap">
-                                        <input type="radio" id="rdo11-1" name="rdo11" checked="">
-                                        <label for="rdo11-1">제품사용설명서</label>
+                                        <input type="radio" name="serviceName" id="serviceManual" value="manual" data-error-msg="서비스를 선택해주세요" data-required="true" required>
+                                        <label for="serviceManual">제품사용설명서</label>
                                     </span>
                                 </li>
                                 <li>
                                     <span class="rdo-wrap">
-                                        <input type="radio" id="rdo11-2" name="rdo11">
-                                        <label for="rdo11-2">드라이버/소프트웨어</label>
+                                        <input type="radio" name="serviceName" id="serviceDriver" value="driver">
+                                        <label for="serviceDriver">드라이버/소프트웨어</label>
                                     </span>
                                 </li>
                                 <li>
                                     <span class="rdo-wrap">
-                                        <input type="radio" id="rdo11-3" name="rdo11">
-                                        <label for="rdo11-3">제품사용설명서 + 드라이버/소프트웨어</label>
+                                        <input type="radio" name="serviceName" id="serviceAll" value="all">
+                                        <label for="serviceAll">제품사용설명서 + 드라이버/소프트웨어</label>
                                     </span>
                                 </li>
                             </ul>
+                        </div>
+                        <div class="btm-more err-block service-err-block">
+                            <p class="err-msg"></p>
                         </div>
                     </div>
                 </li>
                 }
                 <li class="forms type2">
                     <div class="tit">
-                        <span class="label">1. 이 콘텐츠를 통해 궁금증이 해결되었습니까?</span>
+                        <p class="label">1. 이 콘텐츠를 통해 궁금증이 해결되었습니까?</p>
                     </div>
                     <div class="conts">
                         <div class="select-list-wrap w-auto">
                             <ul>
                                 <li>
                                     <span class="rdo-wrap">
-                                        <input type="radio" id="rdo12-1" name="rdo12" checked="">
+                                        <input type="radio" name="csaFlag" id="csaFlagY" value="Y" data-error-msg="만족 여부를 선택해주세요" data-required="true" required>
                                         <label for="rdo12-1">네</label>
                                     </span>
                                 </li>
                                 <li>
                                     <span class="rdo-wrap">
-                                        <input type="radio" id="rdo12-2" name="rdo12">
+                                        <input type="radio" name="csaFlag" id="csaFlagN" value="N">
                                         <label for="rdo12-2">아니오</label>
                                     </span>
                                 </li>
                             </ul>
                         </div>
+                        <div class="btm-more err-block csa-err-block">
+                            <p class="err-msg"></p>
+                        </div>
                     </div>
                 </li>
                 <li class="forms type2">
                     <div class="tit">
-                        <span class="label">2. 이 콘텐츠가 고객님께 도움이 되셨습니까?</span>
+                        <label for="rating">2. 이 콘텐츠가 고객님께 도움이 되셨습니까?</label>
                     </div>
                     <div class="conts">
                         <div class="star-rating-wrap">
-                            <select class="ui_star_rating" name="rating" id="select-rating" title="콘텐츠 별점 선택" required>
+                            <select class="ui_star_rating" name="rating" id="rating" data-error-msg="평가 점수를 선택해주세요" data-required="true" title="콘텐츠 별점 선택" required>
                                 <option value="">0점</option> 
                                 <option value="1">1점 (매우 불만족)</option>
                                 <option value="2">2점 (불만족)</option>
@@ -184,17 +217,20 @@
                                 <option value="5">5점 (매우 만족)</option>
                             </select>
                         </div>
+                        <div class="btm-more err-block">
+                            <p class="err-msg"></p>
+                        </div>
                     </div>
                 </li>
                 <li class="forms type3">
                     <div class="tit">
-                        <span class="label">3. 이 콘텐츠를 통해서 해결 못하신 이유 또는 홈페이지에 개선/보완 사항이 있으시면 적어주세요.</span>
+                        <label for="content">3. 이 콘텐츠를 통해서 해결 못하신 이유 또는 홈페이지에 개선/보완 사항이 있으시면 적어주세요.</label>
                     </div>
                     <div class="conts">
                         <div class="input-wrap count">
-                            <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="제품 불만, 서비스 불편사항은 이메일 문의나 고객의 소리를 이용하시고, 서비스 신청 및 상담은 엔지니어 출장예약 또는 전화상담예약 등의 메뉴를 이용하시기 바랍니다." maxlength="120" data-limit="120" data-count-target="#txt-count1" ui-modules="TextControl" required></textarea>
-                            <span id="txt-count2" class="total"><em>0</em> / 120</span>
-                            <div class="form-infos"><p class="err-msg type2">20자 이상 입력해주세요.</p></div>
+                            <textarea class="ui_textcontrol" name="content" id="content" placeholder="제품 불만, 서비스 불편사항은 이메일 문의나 고객의 소리를 이용하시고, 서비스 신청 및 상담은 엔지니어 출장예약 또는 전화상담예약 등의 메뉴를 이용하시기 바랍니다." minlength="20" maxlength="120" data-limit="120" data-count-target="#txt-count" data-error-msg="20자 이상 입력해주세요." data-required="true" required></textarea>
+                            <span id="txt-count" class="total"><em>0</em> / 120</span>
+                            <p class="err-msg"></p>
                         </div>
                     </div>
                 </li>
@@ -204,7 +240,7 @@
     <footer class="pop-footer">
         <div class="btn-group center">
             <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
-            <button type="button" class="btn pink"><span>제출</span></button>
+            <button type="button" class="btn btn-confirm"><span>제출</span></button>
         </div>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>

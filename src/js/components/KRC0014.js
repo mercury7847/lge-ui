@@ -26,14 +26,16 @@ $(window).ready(function(){
             var html = "";
             if($(this).data('type') == 'youtube'){
                 var videoID = $(this).data('video-id');
+                var videoAccID = $(this).data('videoAccId');
                 var videoTitle = $(this).data('video-title');
                 var videoTitleColor = $(this).data('title-color') || "";
+                var videoTarget = $(this).data('target') || "modal";
                 
                 html += '<div class="visual-area video youtube-box">';
-                html += '   <a href="#none" role="button" data-src="https://www.youtube.com/embed/';
-                html += videoID + '" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" aria-describedby="' + ariaDesc + '">plays audio description video</a>'
-                html += '   <a href="#none" data-src="https://www.youtube.com/embed/';
-                html += videoID + '" class="see-video" data-type="youtube" data-target="modal" aria-describedby="' + ariaDesc + '">';
+                html += '   <a href="#none" role="button" data-src="';
+                html += videoAccID + '" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="' + videoTarget + '" aria-describedby="' + ariaDesc + '">plays audio description video</a>'
+                html += '   <a href="#none" data-src="';
+                html += videoID + '" class="see-video" data-type="youtube" data-target="' + videoTarget + '" aria-describedby="' + ariaDesc + '">';
                 html += '       <img src="' + largeImgURL + '" alt="' + alt + '">';
                 html += '   </a>';
                 html += '   <p class="hidden">' + accDesc + '</p>';

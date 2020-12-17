@@ -1,0 +1,10 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "rtModelSeq": 382,
+        "monthPrice": 54000
+    }
+}

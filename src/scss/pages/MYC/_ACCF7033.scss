@@ -1,4 +1,76 @@
+.pc-only {
+    display:block;
+    @include mobile {
+        display:none;
+    }
+}
+.mob-only {
+    display:none;
+    @include mobile {
+        display:block;
+    }
+}
+
+.mymem-benefit {
+    display:table;
+    table-layout:fixed;
+    width:calc(100% + 48px);
+    margin:-8px -24px 0;
+    border-collapse:separate;
+    border-spacing:24px 0;
+    @include mobile {
+        display:block;
+        width:100%;
+        margin:-8px 0 0;
+        border-spacing:0;
+    }
+    li {
+        display:table-cell;
+        height:202px;
+        padding:32px;
+        border-radius:8px;
+        background-color:#f4f4f4;
+        text-align:center;
+        @include mobile {
+            display:inline-block;
+            width:calc((100% - 8px) / 2 );
+            height:166px;
+            margin-top:8px;
+            padding:20px 16px;
+            vertical-align:top;
+        }
+        .ico {
+            display:block;
+            width:48px;
+            height:48px;
+            margin:0 auto;
+            &.ico01 {
+                background-image:url('/lg5-common/images/icons/icon-main-register-96.svg');
+            }
+            &.ico02 {
+                background-image:url('/lg5-common/images/icons/icon-main-careship-96.svg');
+            }
+            &.ico03 {
+                background-image:url('/lg5-common/images/icons/icon-main-register-96.svg');
+            }
+            &.ico04 {
+                background-image:url('/lg5-common/images/icons/icon-main-register-96.svg');
+            }
+        }
+        p {
+            margin-top:12px;
+            font-size:16px;
+            line-height:26px;
+            @include mobile {
+                font-size:14px;
+                line-height:22px;
+            }
+        }
+    }
+}
+
 .my-product-lists {
+    margin-top:40px;
     ul {
         li.lists {
             margin-top:24px;
@@ -16,7 +88,7 @@
                 box-shadow:2px 4px 16px 0 rgba(#000, .14);
                 @include clearfix;
                 @include mobile {
-                    padding:12px 24px 32px;
+                    padding:46px 16px 24px;
                 }
                 // thumbnail
                 .thumb {
@@ -32,8 +104,11 @@
                     }
                     @include mobile {
                         float:none;
+                        position:absolute;
+                        top:46px;
+                        left:16px;
                         width:100%;
-                        max-width:180px;
+                        max-width:110px;
                         margin:0 auto;
                     }
                 }
@@ -45,8 +120,9 @@
                     @include mobile {
                         float:none;
                         width:100%;
-                        margin-top:16px;
-                        margin-left:0;
+                        margin:16px 0 0;
+                        padding:0 0 0 122px;
+                        padding-left:122px;
                     }
                     .name {
                         color:#222;
@@ -63,10 +139,10 @@
                         font-weight:500;
                     }
                     .btns {
-                        margin-top:8px;
+                        margin-top:20px;
                         font-size:0;
                         @include mobile {
-                            margin-top:12px;
+                            margin:20px 0 0 -122px;
                         }
                         .btn {
                             margin-right:8px;
@@ -78,8 +154,9 @@
                             }
                         }
                         &.link-type {
+                            margin-top:12px;
                             @include mobile {
-                                margin-top:5px;
+                                margin-top:16px;
                             }
                             &:last-child {
                                 padding-bottom:13px;
@@ -102,7 +179,7 @@
                     .info-lists {
                         max-width:450px;
                         font-size:0;
-                        margin-top:20px;
+                        margin-top:4px;
                         @include mobile {
                             max-width:initial;
                             margin-top:10px;
@@ -163,7 +240,7 @@
                             vertical-align:top;
                         }
                         @include mobile {
-                            margin-top:24px;
+                            margin:24px 0 0 -122px;
                             font-size:14px;
                             line-height:22px;
                             &::before {
@@ -191,6 +268,7 @@
                         position:absolute;
                         top:-44px;
                         right:0;
+                        z-index:1;
                         width:auto;
                         padding:3px 10px;
                         border-radius:8px;
@@ -254,6 +332,96 @@
                         right:16px;
                     }
                 }
+            }
+        }
+    }
+    &.enroll {
+        > ul {
+            margin:-24px 0 0 -24px;
+            font-size:0;
+            @include mobile {
+                margin:0;
+            }
+            li.lists {
+                display:inline-block;
+                width:calc((100% - 48px) / 2);
+                margin-left:24px;
+                &:first-child {
+                    margin-left:24px;
+                }
+                @include mobile {
+                    width:100%;
+                    margin:12px 0 0;
+                    &:first-child {
+                        margin:0;
+                    }
+                }
+                .inner {
+                    padding:24px 32px;
+                    .thumb {
+                        width:140px;
+                    }
+                    .info-wrap {
+                        padding-top:14px;
+                        .name {
+                            font-size:16px;
+                            line-height:26px;
+                        }
+                        .info-lists {
+                            max-width:100%;
+                            margin-top:16px;
+                            li {
+                                display:block;
+                                &:after {
+                                    display:none;
+                                }
+                            }
+                        }
+                    }
+                    .btn-group {
+                        @include mobile {
+                            display:inline-block;
+                            left:122px;
+                            .btn {
+                                min-width:91px;
+                                width:auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .btm-box {
+        position:relative;
+        margin-top:48px;
+        padding:27px 48px;
+        border-radius:8px;
+        background-color:#f4f4f4;
+        > p {
+            font-size:16px;
+            line-height:26px;
+            font-weight:700;
+        }
+        .btn {
+            position:absolute;
+            top:50%;
+            right:40px;
+            transform:translateY(-50%);
+        }
+        @include mobile {
+            margin-top:40px;
+            padding:16px 24px;
+            border-radius:4px;
+            text-align:center;
+            > p {
+                font-size:14px;
+                line-height:22px;
+            }
+            .btn {
+                position:static;
+                margin-top:16px;
+                transform:translateY(0);
             }
         }
     }

@@ -312,7 +312,70 @@ CS.MD.quickMenu = function() {
     CS.MD.plugin(pluginName, Plugin);
 }();
 
+/*
+* survey
+*/
+CS.MD.survey = function() {
+    // if (!$('#surveyPopup').length) return false;
+
+    // vcui.require(['ui/validation'], function () {
+        // var $cont = $('.survey-pop');
+        // var register = {
+        //     privcyCheck: {
+        //         msgTarget: '.err-block'
+        //     },
+        //     userName: {
+        //         msgTarget: '.err-block'
+        //     },
+        //     phoneNo: {
+        //         msgTarget: '.err-block'
+        //     },
+        //     gender: {
+        //         msgTarget: '.gender-err-block'
+        //     },
+        //     age: {
+        //         msgTarget: '.err-block'
+        //     },
+        //     serviceName: {
+        //         msgTarget: '.service-err-block'
+        //     },
+        //     csaFlag: {
+        //         msgTarget: '.csa-err-block'
+        //     },
+        //     rating: {
+        //         msgTarget: '.err-block'
+        //     },
+        //     content: {
+        //         msgTarget: '.err-msg'
+        //     }
+        // }
+        // var validation = new vcui.ui.CsValidation('.survey-pop', {register:register});
+
+        // $cont.find('.btn-confirm').on('click', function() {
+        //     var result = validation.validate();
+
+        //     if (result.success) {
+        //         lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
+        //             $('#surveyPopup').vcModal('hide');
+                    
+        //             lgkorUI.alert('', {
+        //                 title: result.data.resultMessage
+        //             });
+        //         })
+        //     }
+        // });
+
+        // $('#surveyPopup').on('modalhide', function(e) {
+        //     $cont.find('input,textarea').not(':readonly').val('');
+        // });
+    // });
+};
+
 (function($){
+    function survey(){
+
+    }
+
     function commonInit(){
         $('#quickMenu').quickMenu();
     }

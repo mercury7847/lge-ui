@@ -254,7 +254,7 @@
         }
         &.type-1 {
             max-width: 678px;
-            margin: 0 auto;
+            margin: 0 auto 32px;
             justify-content: space-between;
             font-size: 14px;
             font-weight: bold;
@@ -305,7 +305,7 @@
                 }
             }
             @include mobile {
-                margin: 0 42px;
+                margin: 0 42px 24px;
             }
         }
         &.type-2 {
@@ -639,6 +639,12 @@
                 line-height: 1.5;
             }
         }
+        &.type-B {
+            font-size: 24px;
+            line-height: 1.42;
+            padding: 24px;
+            margin-bottom: 12px;
+        }
         @include mobile {
             padding: 20px 16px;
             margin-bottom: 40px;
@@ -662,6 +668,10 @@
                     margin-top: 12px;
                 }
             }
+            &.type-B {
+                font-size: 18px;
+                padding: 20px 16px;
+            }
         }
     }
     .scroll-x {
@@ -672,8 +682,77 @@
         }
     }
 
-	.search-wrap {
-	}
+    .accordion-wrap {
+        &.border-type {
+            > ul {
+                > .lists {
+                    border-radius: 8px;
+                    border: solid 1px #dddddd;
+                    margin-top: 12px;
+                    box-shadow: none;
+                    .head {
+                        .accord-btn {
+                            padding: 24px 32px;
+                            &::after {
+                                content: '상세 보기';
+                                border: none;
+                                width: auto;
+                                height: auto;
+                                font-size: 14px;
+                                color: #767676;
+                                line-height: 1;
+                                transform: translateY(-50%);
+                                margin-top: 0;
+                                padding-right: 22px;
+                                background: url(/lg5-common/images/icons/btn-more-20-gray.svg) no-repeat right center;
+                                background-size: 20px;
+                            }
+                        }
+                    }
+                    &.on {
+                        .head {
+                            .accord-btn {
+                                &::after {
+                                    content: '상세 닫기';
+                                    color: #ec455a;
+                                    background: url(/lg5-common/images/icons/btn-minus-20.svg) no-repeat right center;
+                                }
+                            }
+                        }
+                    }
+                    .accord-cont {
+                        margin: 0 24px 24px 24px;
+                        padding: 20px 24px;
+                        border-radius: 8px;
+                        background-color: #f4f4f4;
+                    }
+                }
+            }
+        }
+        @include mobile {
+            &.border-type {
+                > ul {
+                    > .lists {
+                        .head {
+                            .accord-btn {
+                                padding: 20px;
+                            }
+                        }
+                        &.on {
+                            .head {
+                                .accord-btn {
+                                }
+                            }
+                        }
+                        .accord-cont {
+                            margin: 0 20px 20px 20px;
+                            padding: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 } //support
 
 

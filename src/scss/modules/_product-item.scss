@@ -152,8 +152,8 @@
         }
         .product-option {
             position: relative;
-            width: 100%;
-            margin: 8px 0 16px;
+            //width: 100%;
+            margin: 8px -48px 16px;
             font-size: 0;
             text-align: center;
             .option-list {
@@ -164,6 +164,12 @@
                 li {
                     display: inline-block;
                     padding: 0 1px;
+                    &:first-child {
+                        padding-left: 56px;
+                    }
+                    &:last-child {
+                        padding-right: 56px;
+                    }
                 }
             }
             .scroll-controls {
@@ -173,32 +179,31 @@
                 //z-index: 10;
                 transform: translateX(-50%);
                 width: 100%;
-                margin-top: -25px;
+                margin-top: -16px;
                 .btn-arrow {
                     position: absolute;
-                    width: 56px;
-                    height: 50px;
+                    width: 32px;
+                    height: 32px;
+                    padding: 0;
                     border-radius: 0;
                     background:none;
                     box-shadow:initial;
                     &.prev {
-                        left: -48px;
-                        background-image: linear-gradient(to right, #FFFFFF 80%, rgba(255, 255, 255, 0) 100%);
+                        left: 16px;
                     }
                     &.next {
-                        right: -48px;
-                        background-image: linear-gradient(to left, #FFFFFF 80%, rgba(255, 255, 255, 0) 100%);
+                        right: 16px;
                     }
                     &:before {
                         display: inline-block;
-                        width: 100%;
-                        height: 24px;
-                        background: url('/lg5-common/images/icons/btn-arrow_right_24.svg') no-repeat 16px 0;
+                        width: 32px;
+                        height: 32px;
+                        background: url('/lg5-common/images/icons/btn-carousel-32.svg') no-repeat 0 0;
                     }
 
-                    @include mobile {
-                        display: none;
-                    }
+                }
+                @include mobile {
+                    display: none !important;
                 }
             }
 
@@ -294,7 +299,7 @@
                 }
             }
             .spec-info {
-                margin: 10px 0 24px;
+                margin: 12px 0 24px;
                 font-size: $font-small;
                 line-height: 14px;
                 color: $color-gray-1;
@@ -440,7 +445,7 @@
             top: 16px;
             right: 24px;
             a {
-                font-weight: 700;
+                font-weight: 500;
                 @include font-small;
                 &.on {
                     color: $color-primary;
@@ -458,7 +463,7 @@
         .btn-area-wrap {
             display: table;
             width: 100%;
-            margin-top: 14px;
+            margin-top: 16px;
             .wishlist,
             .cart,
             .btn-area {
@@ -476,21 +481,20 @@
                     display: inline-block;
                     width: 32px;
                     height: 32px;
-                    background: url('/lg5-common/images/icons/icon-cart-20.svg') no-repeat 0 0;
+                    background: url('/lg5-common/images/icons/btn-cart-on-32.svg') no-repeat 0 0;
                     background-size: 32px 32px;
                     &.disabled {
-                        background-image: url('/lg5-common/images/icons/icon-cart-disabled-20.svg');
+                        background-image: url('/lg5-common/images/icons/btn-cart-off-32.svg');
                     }
                 }
             }
             .btn-area {
                 .btn {
                     display: block;
-                    padding: 11px 0;
                     &:hover,
                     &:focus {
                         border-color: $color-primary;
-                        background-color: $color-primary;
+                        background-image: linear-gradient(283deg, #fb5a72, #fa263e);
                         color: $color-white;
                     }
                 }
@@ -526,9 +530,11 @@
                 right: 16px;
                 z-index: 1;
                 .flag {
+                    height: auto;
                     padding: 5px 10px;
-                    border-radius: 11px;
-                    background-color: $color-bg-wt;
+                    border: 1px solid rgba(34, 34, 34, .4);
+                    border-radius: 4px;
+                    font-weight: 500;
                     font-size: $font-x-small;
                     line-height: 1;
                     color: $color-default;

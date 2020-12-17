@@ -17,12 +17,6 @@
         <div class="info-wrap">
             <p class="name"><span class="blind">모델명</span>@@name</p>
             <p class="e-name"><span class="blind">영문모델명</span>@@eName</p>
-            <div class="btns">
-                <button type="button" class="btn size dark-gray manual-btn"><span>사용설명서</span></button>
-                @@if ( context.twoBtn ) {
-                <button type="button" class="btn size dark-gray download-btn"><span>다운로드/SW</span></button>
-                }
-            </div>
             <ul class="info-lists period">
                 <li>
                     <dl>
@@ -62,6 +56,12 @@
                 </li>
                 }
             </ul>
+            <div class="btns">
+                <button type="button" class="btn size dark-gray manual-btn"><span>사용설명서</span></button>
+                @@if ( context.twoBtn ) {
+                <button type="button" class="btn size dark-gray download-btn"><span>다운로드/SW</span></button>
+                }
+            </div>
             <div class="btns link-type">
                 @@for ( var i=0; i < btns.length; i++ ) {
                 <a href="#n" class="btn-link">`+btns[i]+`</a>
@@ -79,7 +79,7 @@
                 <button type="button" class="btn-off" aria-hidden="true"><span class="blind">닫기</span></button>
             </div>
             }
-            <a href="#n" class="btn border @@rightBtnClass"><span>@@rightBtn</span></a>
+            <a href="#n" class="btn border size-m @@rightBtnClass"><span>@@rightBtn</span></a>
         </div>
         }
         <button type="button" class="btn-delete"><span class="blind">보유제품 삭제</span></button>
