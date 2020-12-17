@@ -362,7 +362,6 @@
                         width:140px;
                     }
                     .info-wrap {
-                        padding-top:14px;
                         .name {
                             font-size:16px;
                             line-height:26px;
@@ -379,6 +378,11 @@
                         }
                     }
                     .btn-group {
+                        display:inline-block;
+                        position:relative;
+                        right:auto;
+                        bottom:auto;
+                        margin-top:12px;
                         @include mobile {
                             display:inline-block;
                             left:122px;
@@ -387,6 +391,18 @@
                                 width:auto;
                             }
                         }
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:1000px) {
+            > ul {
+                margin:0;
+                li.lists {
+                    width:100%;
+                    margin:12px 0 0;
+                    &:first-child {
+                        margin:0;
                     }
                 }
             }
