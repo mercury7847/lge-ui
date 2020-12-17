@@ -5,10 +5,10 @@ $(document).ready(function() {
 
     var youtubeTemplate =     
         '<div class="visual-area video youtube-box">'+
-        '   <a href="#none" role="button" data-src="https://www.youtube.com/embed/{{videoID}}"'+
-        ' class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" aria-describedby="{{ariaDesc}}">plays audio description video</a>'+
-        '   <a href="#none" data-src="https://www.youtube.com/embed/{{videoID}}"'+
-        ' class="see-video" data-type="youtube" data-target="modal" aria-describedby="{{ariaDesc}}">'+
+        '   <a href="#none" role="button" data-src="{{videoAccID}}"'+
+        ' class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="{{videoTarget}}" aria-describedby="{{ariaDesc}}">plays audio description video</a>'+
+        '   <a href="#none" data-src="{{videoID}}"'+
+        ' class="see-video" data-type="youtube" data-target="{{videoTarget}}" aria-describedby="{{ariaDesc}}">'+
         '       <img src="{{largeImgURL}}" alt="{{alt}}">'+
         '   </a>'+
         '   <p class="hidden">{{accDesc}}</p>'+
@@ -59,11 +59,15 @@ $(document).ready(function() {
                 var videoID = $(this).data('video-id');
                 var videoTitle = $(this).data('video-title');
                 var videoTitleColor = $(this).data('title-color');
+                var videoAccID = $(this).data('videoAccId');
+                var videoTarget = $(this).data('target') || "modal";
 
                 html = vcui.template(youtubeTemplate, {
                     videoID: videoID,
+                    videoAccID: videoAccID,
                     videoTitle: videoTitle,
                     videoTitleColor: videoTitleColor,
+                    videoTarget: videoTarget,
                     largeImgURL: largeImgURL,
                     ariaDesc: ariaDesc,
                     alt: alt,
