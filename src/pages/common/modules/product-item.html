@@ -1,15 +1,12 @@
 @@if (!context.banner) {
 <li>
-    @@if (context.search) {
-    <div class="item result-item">
-    }
-    @@if (!context.search) {
     <div class="item @@itemClass">
-    }
-        @@if (context.badge) {
+        @@if (context.imageFlags) {
         <div class="badge">
             <div class="flag-wrap image-type left">
-                @@badge
+                @@for ( var i=0; i < imageFlags.length; i++ ) {
+                <span class="big-flag"><img data-pc-src="/lg5-common/images/dummy/flag-60x66-`+imageFlags[i].num+`.png" data-m-src="/lg5-common/images/dummy/m-flag-60x66-`+imageFlags[i].num+`.png" src="/lg5-common/images/dummy/flag-60x66-`+imageFlags[i].num+`.png" alt="`+imageFlags[i].alt+`"></span>
+                }
             </div>
         </div>
         }
@@ -77,16 +74,9 @@
             </div>
             }
             <div class="product-info">
-                @@if (context.search) {
-                <div class="product-name">
-                    <a href="#">LG DIOS <span class="search-word">노크온 매직스페이스</span></a>
-                </div>
-                }
-                @@if (!context.search) {
                 <div class="product-name">
                     <a href="#">LG DIOS 노크온 매직스페이스</a>
                 </div>
-                }
                 <div class="sku">S833MC85Q</div>
                 @@if (context.review) {
                 <div class="review-info">
@@ -210,7 +200,7 @@
                     <a href="#n" class="btn-cart"><span class="blind">장바구니 담기</span></a>
                 </div>
                 <div class="btn-area">
-                    <a href="#n" class="btn border">@@bottom.button</a>
+                    <a href="#n" class="btn border size-m">@@bottom.button</a>
                 </div>
             </div>
         </div>
@@ -264,12 +254,7 @@
 }
 @@if (context.banner) {
 <li class="item-banner @@banner.moduleType">
-    @@if (context.search) {
-    <div class="item result-item">
-    }
-    @@if (!context.search) {
     <div class="item">
-    }
         @@include('./common/modules/flags.html', {
             borderType: true,
             flags: [

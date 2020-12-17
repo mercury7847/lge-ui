@@ -1,0 +1,8 @@
+{   
+    "status": "success",
+    "message":null,
+    "data": {
+        "resultFlag": "Y",
+        "resultMessage": "콘텐츠 평가가 완료되었습니다."
+    }
+}

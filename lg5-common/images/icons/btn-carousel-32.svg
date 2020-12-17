@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <defs>
+        <filter id="yrb3h36pra" width="253.6%" height="253.6%" x="-76.8%" y="-76.8%" filterUnits="objectBoundingBox">
+            <feOffset dx="1" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="4"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <path d="M0 0H32V32H0z" transform="translate(-1522 -1556) translate(52 1204) translate(378) translate(768) translate(56 350) matrix(-1 0 0 1 300 2)"/>
+                                <g filter="url(#yrb3h36pra)" transform="translate(-1522 -1556) translate(52 1204) translate(378) translate(768) translate(56 350) matrix(-1 0 0 1 300 2) translate(1.667 1.667)">
+                                    <circle cx="14" cy="14" r="14" fill="#FFF" opacity=".9"/>
+                                    <path stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12L13.5 16 18 12" transform="rotate(90 13.5 14)"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

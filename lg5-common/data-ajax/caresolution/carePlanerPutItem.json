@@ -1,0 +1,42 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "isLogin" : true,
+        "contract" : {
+            "freeCareShip" : "N", 
+            "transModelCheck" : "WD501AW1.AKOR"
+        },
+        "total" : {
+            "totalCnt" : 2,
+            "totalPrice" : 81000,
+            "totalTrans" : 20000,
+            "affiliateCard" : 26000
+        },
+        "itemList" : [
+            {
+                "rtModelSeq" : 123,
+                "modelId" : "MD389238283",
+                "modelImg" : "",
+                "contractTypeNm" : "렌탈(케어솔루션)",
+                "displayName" : "슬림 업다운 정수기",
+                "modelCd" : "WD501AW1.AKOR",
+                "monthPrice" : 55900,
+                "transPrice" : 5000,
+                "transFlag" : "Y"
+            },
+            {
+                "rtModelSeq" : 123,
+                "modelId" : "MD389238283",
+                "modelImg" : "",
+                "contractTypeNm" : "렌탈(케어솔루션)",
+                "displayName" : "슬림 업다운 정수기",
+                "modelCd" : "WD501AW1.AKOR",
+                "monthPrice" : 55900,
+                "transPrice" : 5000,
+                "transFlag" : "Y"
+            }
+         ]
+    }
+}

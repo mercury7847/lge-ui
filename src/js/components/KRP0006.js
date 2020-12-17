@@ -5,5 +5,8 @@ $(window).ready(function(){
         e.preventDefault();
 
         $(this).closest('.inner').slideUp(200);
-    })
+    });
+
+    var responseData = $('.KRP0006').data('responseData');
+    console.log("responseData :", responseData);
 })
