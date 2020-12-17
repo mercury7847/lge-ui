@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        componentID: "KRP0007",
-        isJScompile: true
+        componentID: "KRP0007"
     })
     <script src="/lg5-common/js/components/KRP0015.min.js"></script>
     <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0015.min.css">
@@ -13,7 +12,7 @@
     <input type="hidden" name="categoryId" value="CT30005620"> <!-- categoryId 을 가져오기 위한 테스트 용 -->
     
     <div class="wrap">
-<!--        @@include('./common/header.html')-->
+        @@include('./common/header.html')
         <div class="container">
 
             <div class="component-wrap full">
@@ -80,7 +79,10 @@
                                                     "checked": ""
                                                 }
                                             ],
-                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-1.svg' alt='으뜸효율 10%'></span><span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-2.svg' alt='코리아세일 페스타'></span>",
+                                            "imageFlags": [
+                                                {"num":"1","alt":"으뜸효율 10%"},
+                                                {"num":"2","alt":"코리아세일 페스타"}
+                                            ],
                                             "flags" : ["NEW","BEST"],
                                             "review" : true,
                                             "isReview" : true,
@@ -133,7 +135,10 @@
                                                     "checked": ""
                                                 }
                                             ],
-                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-1.svg' alt='으뜸효율 10%'></span><span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-3.svg' alt='아카데미 페스티벌'></span>",
+                                            "imageFlags": [
+                                                {"num":"1","alt":"으뜸효율 10%"},
+                                                {"num":"3","alt":"아카데미 페스티벌"}
+                                            ],
                                             "flags" : ["NEW","BEST"],
                                             "review" : true,
                                             "spec" : true,
@@ -205,7 +210,9 @@
                                                     "checked": ""
                                                 }
                                             ],
-                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-1.svg' alt='으뜸효율 10%'></span>",
+                                            "imageFlags": [
+                                                {"num":"1","alt":"으뜸효율 10%"}
+                                            ],
                                             "flags" : ["NEW","BEST"],
                                             "review" : true,
                                             "spec" : true,
@@ -338,7 +345,9 @@
                                                     "checked": ""
                                                 }
                                             ],
-                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-5.svg' alt='에어컨 예약판매'></span>",
+                                            "imageFlags": [
+                                                {"num":"5","alt":"에어컨 예약판매"}
+                                            ],
                                             "flags" : ["NEW","BEST"],
                                             "review" : true,
                                             "spec" : true,
@@ -425,7 +434,9 @@
                                                     "checked": ""
                                                 }
                                             ],
-                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-4.svg' alt='미리미리 페스티벌'></span>",
+                                            "imageFlags": [
+                                                {"num":"4","alt":"미리미리 페스티벌"}
+                                            ],
                                             "flags" : ["NEW","BEST"],
                                             "review" : true,
                                             "spec" : true,
@@ -465,7 +476,9 @@
                                                     "checked": ""
                                                 }
                                             ],
-                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-4.svg' alt='미리미리 페스티벌'></span>",
+                                            "imageFlags": [
+                                                {"num":"4","alt":"미리미리 페스티벌"}
+                                            ],
                                             "flags" : ["NEW","BEST"],
                                             "review" : true,
                                             "spec" : true,
@@ -505,7 +518,9 @@
                                                     "checked": ""
                                                 }
                                             ],
-                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-4.svg' alt='미리미리 페스티벌'></span>",
+                                            "imageFlags": [
+                                                {"num":"4","alt":"미리미리 페스티벌"}
+                                            ],
                                             "flags" : ["NEW","BEST"],
                                             "review" : true,
                                             "spec" : true,
@@ -545,7 +560,7 @@
                  ]
              }) 
         </div>
-<!--        @@include('./common/footer.html')-->
+        @@include('./common/footer.html')
     </div>
 </body>
 </html>
