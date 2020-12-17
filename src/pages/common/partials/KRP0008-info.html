@@ -1,6 +1,6 @@
 <!-- components/partials/KRP0008-info.html -->
 
-<div class="pdp-info-area" data-id="productID0001" data-wish-url="#">
+<div class="pdp-info-area" data-id="productID0001" data-pid="pid00001" data-price="1853090" data-select-url="/lg5-common/data-ajax/pdp/pdp_select.json" data-wish-url="/lg5-common/data-ajax/pdp/pdp_wish.json" data-cart-url="/lg5-common/data-ajax/pdp/pdp_cart.json">
     <div class="product-detail-info">
         @@include('./common/modules/flags.html', {
             barType: true,
@@ -37,11 +37,11 @@
                     <div class="select-option radio color">
                         <div class="option-list" role="radiogroup">
                             <div role="radio" class="chk-wrap-colorchip gray" title="그레이">
-                                <input type="radio" id="rdo1-1" name="rdo1" checked>
+                                <input type="radio" id="rdo1-1" name="color" checked>
                                 <label for="rdo1-1"><span class="blind">그레이</span></label>
                             </div>
                             <div role="radio" class="chk-wrap-colorchip black" title="블랙">
-                                <input type="radio" id="rdo1-2" name="rdo1">
+                                <input type="radio" id="rdo1-2" name="color">
                                 <label for="rdo1-2"><span class="blind">블랙</span></label>
                             </div>
                         </div>
@@ -55,27 +55,27 @@
                     <div class="select-option radio select">
                         <div class="option-list" role="radiogroup">
                             <div role="radio" class="rdo-wrap btn-type2" title="207cm">
-                                <input type="radio" id="rdo2-1" name="rdo2" checked>
+                                <input type="radio" id="rdo2-1" name="screenSize" checked>
                                 <label for="rdo2-1">207cm</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="194cm">
-                                <input type="radio" id="rdo2-2" name="rdo2">
+                                <input type="radio" id="rdo2-2" name="screenSize">
                                 <label for="rdo2-2">194cm</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="163cm">
-                                <input type="radio" id="rdo2-3" name="rdo2">
+                                <input type="radio" id="rdo2-3" name="screenSize">
                                 <label for="rdo2-3">163cm</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="138cm">
-                                <input type="radio" id="rdo2-4" name="rdo2">
+                                <input type="radio" id="rdo2-4" name="screenSize">
                                 <label for="rdo2-4">138cm</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="100cm">
-                                <input type="radio" id="rdo2-5" name="rdo2">
+                                <input type="radio" id="rdo2-5" name="screenSize">
                                 <label for="rdo2-5">100cm</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="100cm">
-                                <input type="radio" id="rdo2-6" name="rdo2">
+                                <input type="radio" id="rdo2-6" name="screenSize">
                                 <label for="rdo2-6">100cm</label>
                             </div>
                         </div>
@@ -86,19 +86,19 @@
                     <div class="select-option radio select">
                         <div class="option-list" role="radiogroup">
                             <div role="radio" class="rdo-wrap btn-type2" title="SKT">
-                                <input type="radio" id="rdo3-1" name="rdo3">
+                                <input type="radio" id="rdo3-1" name="provider">
                                 <label for="rdo3-1">SKT</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="KT">
-                                <input type="radio" id="rdo3-2" name="rdo3" checked>
+                                <input type="radio" id="rdo3-2" name="provider" checked>
                                 <label for="rdo3-2">KT</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="LG">
-                                <input type="radio" id="rdo3-3" name="rdo3">
+                                <input type="radio" id="rdo3-3" name="provider">
                                 <label for="rdo3-3">LG</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="자급제">
-                                <input type="radio" id="rdo3-4" name="rdo3">
+                                <input type="radio" id="rdo3-4" name="provider">
                                 <label for="rdo3-4">자급제</label>
                             </div>
                         </div>
@@ -109,15 +109,15 @@
                     <div class="select-option radio select">
                         <div class="option-list" role="radiogroup">
                             <div role="radio" class="rdo-wrap btn-type2" title="32GB">
-                                <input type="radio" id="rdo4-1" name="rdo4" checked>
+                                <input type="radio" id="rdo4-1" name="memory" checked>
                                 <label for="rdo4-1">32GB</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="64GB">
-                                <input type="radio" id="rdo4-2" name="rdo4">
+                                <input type="radio" id="rdo4-2" name="memory">
                                 <label for="rdo4-2">64GB</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="128GB">
-                                <input type="radio" id="rdo4-3" name="rdo4">
+                                <input type="radio" id="rdo4-3" name="memory">
                                 <label for="rdo4-3">128GB</label>
                             </div>
                         </div>
@@ -321,7 +321,7 @@
                                         <div class="select-quantity">
                                             <div class="inner">
                                                 <button type="button" class="minus" disabled><span class="blind">빼기</span></button>
-                                                <input type="number" class="quantity" title="수량 입력" value="1">
+                                                <input type="number" class="quantity" title="수량 입력" value="1" readonly>
                                                 <button type="button" class="plus"><span class="blind">더하기</span></button>
                                             </div>
                                         </div>
@@ -339,7 +339,7 @@
                                         <div class="select-quantity">
                                             <div class="inner">
                                                 <button type="button" class="minus" disabled><span class="blind">빼기</span></button>
-                                                <input type="number" class="quantity" title="수량 입력" value="1">
+                                                <input type="number" class="quantity" title="수량 입력" value="1" readonly>
                                                 <button type="button" class="plus"><span class="blind">더하기</span></button>
                                             </div>
                                         </div>
@@ -420,7 +420,7 @@
                                     <div class="select-quantity">
                                         <div class="inner">
                                             <button type="button" class="minus" disabled><span class="blind">빼기</span></button>
-                                            <input type="number" class="quantity" title="수량 입력" value="1">
+                                            <input type="number" class="quantity" title="수량 입력" value="1" readonly>
                                             <button type="button" class="plus"><span class="blind">더하기</span></button>
                                         </div>
                                     </div>
@@ -501,11 +501,11 @@
                     <div class="select-option radio color">
                         <div class="option-list" role="radiogroup">
                             <div role="radio" class="chk-wrap-colorchip gray" title="그레이">
-                                <input type="radio" id="rdo8-1" name="rdo8" checked>
+                                <input type="radio" id="rdo8-1" name="color2" checked>
                                 <label for="rdo8-1"><span class="blind">그레이</span></label>
                             </div>
                             <div role="radio" class="chk-wrap-colorchip black" title="블랙">
-                                <input type="radio" id="rdo8-2" name="rdo8">
+                                <input type="radio" id="rdo8-2" name="color2">
                                 <label for="rdo8-2"><span class="blind">블랙</span></label>
                             </div>
                         </div>
@@ -519,19 +519,19 @@
                     <div class="select-option radio select">
                         <div class="option-list" role="radiogroup">
                             <div role="radio" class="rdo-wrap btn-type2" title="207cm">
-                                <input type="radio" id="rdo6-1" name="rdo6" checked>
+                                <input type="radio" id="rdo6-1" name="screenSize2" checked>
                                 <label for="rdo6-1">207cm</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="194cm">
-                                <input type="radio" id="rdo6-2" name="rdo6">
+                                <input type="radio" id="rdo6-2" name="screenSize2">
                                 <label for="rdo6-2">194cm</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="163cm">
-                                <input type="radio" id="rdo6-3" name="rdo6">
+                                <input type="radio" id="rdo6-3" name="screenSize2">
                                 <label for="rdo6-3">163cm</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="138cm">
-                                <input type="radio" id="rdo6-4" name="rdo6">
+                                <input type="radio" id="rdo6-4" name="screenSize">
                                 <label for="rdo6-4">138cm</label>
                             </div>
                         </div>
@@ -715,7 +715,7 @@
                                         <div class="select-quantity">
                                             <div class="inner">
                                                 <button type="button" class="minus"><span class="blind">빼기</span></button>
-                                                <input type="number" class="quantity" title="수량 입력" value="2">
+                                                <input type="number" class="quantity" title="수량 입력" value="2" readonly>
                                                 <button type="button" class="plus"><span class="blind">더하기</span></button>
                                             </div>
                                         </div>
@@ -901,7 +901,7 @@
                                         <div class="select-quantity">
                                             <div class="inner">
                                                 <button type="button" class="minus"><span class="blind">빼기</span></button>
-                                                <input type="number" class="quantity" title="수량 입력" value="2">
+                                                <input type="number" class="quantity" title="수량 입력" value="2" readonly>
                                                 <button type="button" class="plus"><span class="blind">더하기</span></button>
                                             </div>
                                         </div>

@@ -1,31 +1,31 @@
 {
-    "status": true,
+    "status": "success",
     "message":null,
     "data": {
         "title": "기능",
         "filterList": [
             {
-                "topic": "All",
+                "name": "All",
                 "code": "All"
             },
             {
-                "topic": "퀵 헬프 방법",
+                "name": "퀵 헬프 방법",
                 "code": "10000002"
             },
             {
-                "topic": "앱 설치",
+                "name": "앱 설치",
                 "code": "10000003"
             },
             {
-                "topic": "타임머신",
+                "name": "타임머신",
                 "code": "10000004"
             },
             {
-                "topic": "신호없음",
+                "name": "신호없음",
                 "code": "10000005"
             },
             {
-                "topic": "인터넷 연결",
+                "name": "인터넷 연결",
                 "code": "10000006"
             }
         ]

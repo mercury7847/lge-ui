@@ -21,12 +21,6 @@
         2. 세로 정렬
         .align-top: 텍스트 영역이 상단
         .align-middle: 텍스트 영역이 중간
-        .align-bottom: 텍스트 영역이 하단
-
-        3. 모바일 이미지 텍스트 정렬 (PDP)  [KR수정] 새로운 이미지 텍스트 정렬 케이스
-        .mobile-text-block-left: 텍스트 영역이 모바일에서만 왼쪽
-        .mobile-text-block-right: 텍스트 영역이 모바일에서만 오른쪽
-        .mobile-text-block-center: 텍스트 영역이 모바일에서만 가운데
 
         4. 텍스트 영역 넓이
         .type-wide : 넓음
@@ -50,35 +44,32 @@
         <div class="component-box"><!-- [KR수정] .component-box DOM 추가 -->
             <div class="carousel-wrap @@carousel.type">
                 <!-- animation 타입인 경우 animation-box 클래스 추가 -->
-                <div class="carousel-box animation-box @@carousel.item.font-color @@carousel.item.componentType">
+                <div class="carousel-box animation-box @@carousel.item.font-color">
                     <!-- 3. image -->
                     <div class="visual-area">
                         <img data-pc-src="@@carousel.item.visual1" data-m-src="@@carousel.item.visual2" class="lazyload" alt="" /><!-- [KR수정] img 수정 -->
                         <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-                        <!-- 3-2. animation play/pause -->
+                        <!-- animation Audio description -->
+                        <a href="#none" role="button" data-src="/lg5-common/videos/signature_rain_view.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
+                        <!-- // animation Audio description -->
+                        <!-- animation -->
                         <div class="animation-area">
-                            <a href="#none" role="button" data-src="/lg5-common/videos/signature_rain_view.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
                             <!-- loop 되는 영상이 아닌 경우
                                 <video autoplay muted>
                             -->
                             <!-- loop 되는 영상인 경우 -->
                             <video autoplay muted loop class="pc">
                                 <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
-                                <!-- WEBM 동영상을 제공하는 경우
-                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
-                                -->
                             </video>
                             <!-- 아래 모바일용 동영상은 모바일 동영상이 업로드 되어 있고 Mobile Use Flag가 Y인 경우에만 출력합니다. -->
                             <video autoplay muted loop class="mobile">
                                 <source src="/lg5-common/videos/Highlight_backround.mp4" type="video/mp4">
-                                <!-- WEBM 동영상을 제공하는 경우
-                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
-                                -->
                             </video>
                         </div>
-                        <!-- // 3-2. animation play/pause -->
+                        <!-- // animation -->
                     </div>
                     <!-- // 3. image -->
+
                     <!-- contents-area -->
                     <div class="contents-area">
                         <div class="text-area @@carousel.item.font-color @@carousel.item.align-class1 @@carousel.item.align-class2 @@carousel.item.width-class">

@@ -79,14 +79,17 @@
                         </ul>
                     </div>
                 </div>
-                <div class="cont-wrap narrow">
+                <div class="cont-wrap narrow">  
                     <form id="submitForm">
                         <input type="hidden" name="category" id="category" value="P1011">
                         <input type="hidden" name="subCategory" id="subCategory" value="1012">
                         <input type="hidden" name="modelCode" id="modelCode" value="A50PH">
+                        <input type="hidden" name="productCode" id="productCode" value="product code">
                     </form>
+
                     <div class="section manual-section" id="manualSection" data-ajax="/lg5-common/data-ajax/support/downloadList.json">
                         <input type="hidden" name="page" id="page" value="1">
+                        
                         <div class="tit-wrap margin-sm">
                             <h2 class="tit">제품사용 설명서 <em id="manualCount" class="point">3</em>건</h2>
                         </div>
@@ -289,25 +292,24 @@
                         </div>
                     </div>
 
-                    <div class="section" id="solutionsSec">
-                        <form action="" id="solutionsForm">
+                    <div class="section solutions-section" id="solutionsSection">
+                        <div class="solutions-wrap" data-ajax="/lg5-common/data-ajax/support/solutionsList.json" data-filter-ajax="/lg5-common/data-ajax/support/filterList.json" data-sub-filter-ajax="/lg5-common/data-ajax/support/subFilterList.json">
                             <input type="hidden" name="keyword" id="keyword" value="">
-                            <input type="hidden" name="topic" id="topic" value="topic">
-                            <input type="hidden" name="subTopic" id="subTopic" value="subTopic">
+                            <input type="hidden" name="topic" id="topic" value="All">
+                            <input type="hidden" name="subTopic" id="subTopic" value="">
                             <input type="hidden" name="orderBy" id="orderBy" value="orderBy">
-                        </form>
-                        
-                        <div class="solutions-wrap">
+                            
+                            <h2 class="blind">제품 문제해결</h2>
                             <div class="filter-box">
                                 <div class="tit-wrap">
                                     <h3 class="tit">증상 선택</h4>
                                 </div>
-                                <ul class="filter-list" id="filterContent">
+                                <ul class="filter-list">
                                     <li class="on">
-                                        <button type="button" class="filter-link">All <span class="blind">선택됨</span></button>
+                                        <button type="button" class="filter-link" data-code="All" data-name="All">All <span class="blind">선택됨</span></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="filter-link">기능</button>
+                                        <button type="button" class="filter-link" data-code="10000002" data-name="기능">기능</button>
                                         <!-- <div class="sub-depth">
                                             <div class="tit-wrap">
                                                 <button type="button" class="btn-back"><span class="blind">이전 보기</span></button>
@@ -336,13 +338,13 @@
                                         </div> -->
                                     </li>
                                     <li>
-                                        <button type="button" class="filter-link ui_filter_link">설치/연결</button>
+                                        <button type="button" class="filter-link" data-code="10000003" data-name="설치/연결">설치/연결</button>
                                     </li>
                                     <li>
-                                        <button type="button" class="filter-link ui_filter_link">소음/냄새/열방생</button>
+                                        <button type="button" class="filter-link" data-code="10000004" data-name="소음/냄새/열방생">소음/냄새/열방생</button>
                                     </li>
                                     <li>
-                                        <button type="button" class="filter-link ui_filter_link">스마트 앱</button>
+                                        <button type="button" class="filter-link" data-code="10000005" data-name="스마트 앱">스마트 앱</button>
                                     </li>
                                 </ul>
                             </div>
@@ -351,13 +353,13 @@
                                 <div class="search-wrap">
                                     <div class="keyword-search">
                                         <div class="input-wrap">
-                                            <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="검색어 입력" title="검색어 입력" data-clear-button="button.btn-delete">
+                                            <input type="text" name="inputKeyword" id="inputKeyword" class="ui_input_clearbutton" placeholder="검색어 입력" title="검색어 입력" data-clear-button="button.btn-delete">
                                             <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
                                             <button type="button" class="btn-search"><span class="blind">검색</span></button>
                                         </div>
                                         <span class="chk-wrap">
-                                            <input type="checkbox" name="chk1" id="chk1-1" checked>
-                                            <label for="chk1-1">결과 내 검색</label>
+                                            <input type="checkbox" name="research" id="research">
+                                            <label for="research">결과 내 검색</label>
                                         </span>
                                     </div> 
                                 </div>
@@ -366,17 +368,17 @@
                                     <div class="form-wrap">
                                         <div class="forms">
                                             <div class="tit">
-                                                <label for="select-symptom">증상</label>
+                                                <label for="symptom">증상</label>
                                             </div>
                                             <div class="conts">
                                                 <div class="select-wrap">
-                                                    <select class="ui_selectbox" name="symptom" id="select-symptom">
+                                                    <select class="ui_selectbox" name="symptom" id="symptom" title="증상 선택">
                                                         <option value="">증상</option>
                                                         <option value="">증상</option>
                                                         <option value="">증상</option>
                                                     </select>
                                                     <div class="select-wrap">
-                                                        <select class="ui_selectbox" name="symptom2" id="select-symptom2" title="세부증상 선택" disabled>
+                                                        <select class="ui_selectbox" name="subSymptom" id="subSymptom" title="세부증상 선택" disabled>
                                                             <option class="placeholder">세부증상 선택</option>
                                                         </select>
                                                     </div>
@@ -387,21 +389,22 @@
                                 </div>
 
                                 <div class="tit-wrap">
-                                    <h4 class="tit">“<span class="point">All</span>” 검색 결과</h4>
+                                    <h3 class="tit">“<span class="point">All</span>” 검색 결과</h3>
                                 </div>
                                 <div class="sorting-wrap">
-                                    <div class="total">전체 <em class="count">122</em>건</div>
+                                    <div class="total">전체 <em id="solutionsCount" class="count">122</em>건</div>
                                     <div class="sort-box">
                                         <div class="sort-select-wrap">
-                                            <select class="ui_selectbox" name="" id="selectOrder" title="정렬 기준 선택">
+                                            <select class="ui_selectbox" name="selectOrder" id="selectOrder" title="정렬 기준 선택">
                                                 <option value="조회순" selected>조회순</option>
-                                                <option value="등록순">등록순</option>
+                                                <option value="인기순">인기순</option>
+                                                <option value="최근순">최근순</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="list-wrap">
-                                    <ul class="list" id="solutionsContent">
+                                    <ul class="list">
                                         <li class="video-type">
                                             <a href="#" class="item">
                                                 <p class="tit">노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀</p>

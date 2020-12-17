@@ -1,0 +1,9 @@
+{
+    "status":"success",
+    "message":null,
+    "data": {
+        "productId": "pid00002",
+        "sku" : "OLED55BXPUA",
+        "price": "18000"
+    }
+}

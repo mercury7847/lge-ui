@@ -162,6 +162,7 @@
             // margin:0 -12px;
             .slide-box {
                 // height:374px;
+                height:100%;
                 padding:12px 32px 32px;
                 .product-image {
                     .img {
@@ -180,9 +181,10 @@
                     margin:0;
                     padding:0;
                     .product-name {
+                        min-height:76px;
                         margin:0;
                         strong {
-                            min-height:52px;
+                            // min-height:52px;
                             color: #222;
                             font-size:16px;
                             line-height:26px;

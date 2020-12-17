@@ -40,6 +40,9 @@
                 self.$pdpMobileSlider = self.$pdpMobileVisual.find('div.ui_carousel_slider');
                 //모바일용 갤러리 썸네일 슬라이더
                 self.$pdpMobileSliderTrack = self.$pdpMobileSlider.find('div.slide-content ul.slide-track');
+                //모바일용 갤러리 인덱스
+                self.$slideNumber = self.$pdpMobileVisual.find('div.slide-number .current');
+
 
                 //PDP모달
                 self.$popPdpVisual = $('#pop-pdp-visual');
@@ -57,9 +60,15 @@
                 self.$selectModalItemTarget = self.$popPdpThumbnail.find('li.active');
                 //PDP모달 확대축소 버튼영역
                 self.$popPdpZoomArea = self.$popPdpVisual.find('div.zoom-btn-area');
+                //PDP모달 item-number
+                self.$itemNumber = self.$popPdpVisual.find('div.item-number .current');
 
                 //PDP 인포
-                self.$pdpInfo = $('div.pdp-info-area')
+                self.$pdpInfo = $('div.pdp-info-area');
+                self.$pdpInfoProductDetailInfo = self.$pdpInfo.find('.product-detail-info');
+                self.$pdpInfoSiblingOption = self.$pdpInfo.find('.sibling-option');
+                self.$pdpInfoPaymentAmount = self.$pdpInfo.find('.payment-amount');
+
 
                 //vcui.require(['ui/carousel'], function () {
                     self.$pdpMobileSlider.vcCarousel({
@@ -155,8 +164,7 @@
                 });
 
                 //모바일용 갤러리 클릭
-                self.$pdpMobileSlider.on('click', 'a', function(e){ 
-                    console.log('click');
+                self.$pdpMobileSlider.on('click', 'a', function(e){
                     e.preventDefault();
                     var index = $(this).parents(".ui_carousel_current").attr("data-ui_carousel_index");
                     self.openVisualModal(index); 
@@ -169,11 +177,61 @@
                     self.clickModalThumbnail(index);
                 });
 
+                //모바일 갤러리 슬라이드시 인덱스 넘버 표시
+                self.$pdpMobileSlider.on('carouselafterchange', function(e,target,index){
+                    self.$slideNumber.text(index + 1);
+                });
+
+
                 //즐겨찾기
                 self.$pdpInfo.find('#wish-chk').on('click', function(e) {
                     var itemID = self.$pdpInfo.attr('data-id');
                     var checked = $(this).is(':checked');
                     self.requestWishItem(itemID, checked);
+                });
+
+                //인포 옵션 변경
+                self.$pdpInfoSiblingOption.on('click','input', function(e){
+                    var $optionList = $(this).parents('.option-list').siblings('div').find('span');
+                    if($optionList.length > 0) {
+                        $optionList.first().text($(this).siblings('label').find('span').text());
+                    }
+                    var $siblingOption = $(this).parents('.sibling-option');
+                    var $findData = $siblingOption.find('input:checked');
+                    var param = {};
+                    $findData.each(function (i, o) {
+                        var $o = $(o);
+                        param[$o.attr('name')] = $o.attr('id');
+                    });
+                    self.requestSelectOption(param);
+                });
+
+                self.$pdpInfoPaymentAmount.on('click', 'button.minus,button.plus',function (e) {
+                    var $input = $(this).siblings('input');
+                    var quantity = $input.val();
+                    if($(this).hasClass('minus')) {
+                        --quantity;
+                        if(quantity < 1) {
+                            quantity = 1;
+                        }
+                        
+                        if(quantity == 1) {
+                            $(this).attr('disabled',true);
+                        } else {
+                            $(this).removeAttr('disabled');
+                        }
+                    } else if($(this).hasClass('plus')) {
+                        ++quantity;
+
+                        if(quantity > 1) {
+                            $(this).siblings('button.minus').removeAttr('disabled');
+                        }
+                    }
+                    $input.val(quantity);
+                    var $paymentAmount = $input.parents('.payment-amount');
+                    var $total = $paymentAmount.find('dl.total-payment span.price');
+                    var price = self.$pdpInfo.attr('data-price');
+                    $total.text(vcui.number.addComma(price*quantity) + '원');
                 });
 
                 self.$pdpInfo.find('div.purchase-button a').on('click', function(e) {
@@ -211,7 +269,6 @@
             clickThumbnailSlide: function(index) {
                 var self = this;
                 var item = self.findPdpData(index);
-                console.log(item, index);
                 switch(item.type) {
                     case "360":
                         break;
@@ -245,10 +302,13 @@
 
             clickModalThumbnail: function(index) {
                 var self = this;
+                index = parseInt(index);
                 var item = self.findPdpData(index);
+
+                self.$itemNumber.text(index + 1);
+
                 //이전에 선택되었던 썸네일 활성화 제거 및 새로운 썸네일 활성화
                 var thumbItem = self.$popPdpThumbnail.find('li:eq('+index+')');
-                console.log(index, thumbItem);
                 if(self.$selectModalItemTarget) {
                     self.$selectModalItemTarget.removeClass('active');
                 }
@@ -353,6 +413,19 @@
                 var postData = {"itemID":itemID, "wish":wish};
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, null);
             },
+
+            //선택된 옵션으로 모델 데이타 가져오기
+            requestSelectOption: function(param) {
+                var self = this;
+                var ajaxUrl = self.$pdpInfo.attr('data-select-url');
+                param.id = self.$pdpInfo.attr('data-id');
+                lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
+                    var data = result.data;
+                    self.$pdpInfo.attr('data-pid',data.productId);
+                    self.$pdpInfo.attr('data-price',data.price);
+                    self.$pdpInfoProductDetailInfo.find('.sku').text(data.sku);
+                });
+            }
         };
 
         KRP0008.init();
