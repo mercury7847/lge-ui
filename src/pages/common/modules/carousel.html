@@ -26,7 +26,7 @@
         </button>
     </div>
 }
-    <div class="slide-content ui_carousel_list">
+    <div class="slide-content ui_carousel_list ui_flexible_height">
         <div class="slide-track ui_carousel_track">
             @@if ( context.mainSlideType ) {
             @@for ( var i=0; i < context.slideArr.length; i++ ) {
@@ -112,8 +112,8 @@
             @@if ( context.memberSlideType === true ) {
                 @@for ( var i=0; i < context.slideArr.length; i++ ) {
                 <!--  slide -->
-                <div class="slide-conts ui_carousel_slide">
-                    <div class="slide-box">
+                <div class="slide-conts ui_carousel_slide ui_flexible_box">
+                    <div class="slide-box ui_flexible_cont">
                         <div class="product-image" aria-hidden="true">
                             <span class="img"><img src="`+slideArr[i].img+`" alt=""></span>
                         </div>
