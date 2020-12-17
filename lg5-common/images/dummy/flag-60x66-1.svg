@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="66" viewBox="0 0 60 66">
+    <defs>
+        <linearGradient id="y7aio1oyga" x1="50%" x2="50%" y1="2.431%" y2="100%">
+            <stop offset="0%" stop-color="#FB5A72"/>
+            <stop offset="100%" stop-color="#FA263E"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <path fill="url(#y7aio1oyga)" d="M0 0L60 0 60 57.032 28.846 66 0 57.032z" transform="translate(-430 -977) translate(52 976) translate(378 1)"/>
+                        <g fill="#FFF" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-weight="bold">
+                            <g>
+                                <g>
+                                    <g>
+                                        <text font-size="20" transform="translate(-430 -977) translate(52 976) translate(378 1) translate(5 16) translate(6 12)">
+                                            <tspan x="0" y="23">10</tspan>
+                                        </text>
+                                        <text font-size="14" transform="translate(-430 -977) translate(52 976) translate(378 1) translate(5 16) translate(6 12)">
+                                            <tspan x="24" y="22">%</tspan>
+                                        </text>
+                                    </g>
+                                    <text font-size="12" letter-spacing="1.4" transform="translate(-430 -977) translate(52 976) translate(378 1) translate(5 16)">
+                                        <tspan x="0" y="14">으뜸효율</tspan>
+                                    </text>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
