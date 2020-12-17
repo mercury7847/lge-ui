@@ -59,7 +59,7 @@
 					width: 1px;
 					height: 10px;
 					margin: 0 4px;
-					background-color: #adadad;
+					background-color: $color-border;
 					vertical-align: -1px;
 					content: '';
 				}
@@ -162,12 +162,15 @@
 		img {
 			max-width: 100%;
 		}
-		@include mobile {
+	}
+	@include mobile {
+		width: 42px;
+		.big-flag {
 			&:not(:first-child) {
-				margin-top: -4px;
+				margin-top: -6px;
 			}
-			width:48px;
-			height:48px;
+			width:42px;
+			height:46px;
 		}
 	}
 	&.left {

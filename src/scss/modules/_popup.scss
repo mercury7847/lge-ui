@@ -806,6 +806,9 @@
                 @include mobile {
                 }
             }
+            &.align-center {
+                text-align: center;
+            }
         }
 
         //케어십안내
