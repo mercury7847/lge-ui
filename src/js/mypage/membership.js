@@ -112,8 +112,7 @@
             checkNoData: function() {
                 var self = this;
                 var $list = self.$productSlide.find('div.slide-track');
-                console.log($list.find('div.slide-conts').length);
-                if( $list.find('div.slide-conts').length > 0) {
+                if($list.find('div.slide-conts').length > 0) {
                     self.$productSlide.show();
                     self.$noData.hide();
                 } else {

@@ -91,7 +91,7 @@
 
             checkNoData: function() {
                 var self = this;
-                if( self.$pointList.find('li').length > 0) {
+                if(self.$pointList.find('li').length > 0) {
                     self.$pointList.parent().show();
                     self.$noData.hide();
                 } else {
