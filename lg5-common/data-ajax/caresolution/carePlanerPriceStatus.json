@@ -4,7 +4,8 @@
     "message": null,
     "data": {
         "success": "Y",
+        "blockID": 1,
         "rtModelSeq": 382,
-        "monthPrice": 54000
+        "monthPrice": "34,000"
     }
 }

@@ -16,7 +16,8 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
 
     var ModalManager = {
         templates: {
-            wrap: '<div class="ui_modal_wrap" style="position:fixed;top:0;left:0;right:0;bottom:0;overflow:auto;"></div>',
+            //wrap: '<div class="ui_modal_wrap" style="position:fixed;top:0;left:0;right:0;bottom:0;overflow:auto;"></div>',
+            wrap: '<div class="ui_modal_wrap" style="position:fixed;top:0;left:0;right:0;bottom:0;"></div>',
             dim: '<div class="ui_modal_dim" style="position:fixed;top:0;left:0;bottom:0;right:0;background:#000;"></div>',
             modal: '<div class="ui_modal ui_modal_ajax" style="display:none"></div>'
         },

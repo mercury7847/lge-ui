@@ -1,0 +1,38 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data" : {
+        "isLogin" : true,
+        "contract" : {
+            "freeCareShip" : "N",
+            "transModelCheck" : "WD501AW1.AKOR"
+        },
+        "total" : {
+            "totalCnt" : 2,
+            "totalPrice" : 81000,
+            "totalTrans" : 20000,
+            "requestUrl" : "http://www.lge.com"
+        },
+        "itemList":[
+            {
+                "modelId": "item00001",
+                "rtModelSeq": "00001",
+                "contractTypeNm": "렌탈(케어솔루션)",
+                "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
+                "imageAlt": "S5MBR",
+                "displayName": "슬림 업다운 정수기",
+                "modelCd": "WD501AW1.AKOR",
+                "colorOption": "LeatherYellow",
+                "option": [
+                    "총 요금 3,710,000원",
+                    "할인 등록비 5만원",
+                    "의무 사용기간 2020.05.29로 부터 36개월(무상할인 2개월)",
+                    "방문 주기 6개월/1회"
+                ],
+                "monthPrice": "56500",
+                "originalPrice": "61400"
+            }
+        ]
+    }
+}

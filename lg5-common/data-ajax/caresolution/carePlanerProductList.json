@@ -8,6 +8,7 @@
             {
                 "moduleType": "module-type1",
                 "modelId": "MD075123452345",
+                "rtModelSeq": "00001",
                 "userFriendlyName": "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS",
                 "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
@@ -73,6 +74,7 @@
             {
                 "moduleType": "module-type1",
                 "modelId": "MD0756345339",
+                "rtModelSeq": "00001",
                 "userFriendlyName": "스팀 건조기ThinQ2 (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS2",
                 "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
@@ -138,6 +140,7 @@
             {
                 "moduleType": "module-type1",
                 "modelId": "MD034643788",
+                "rtModelSeq": "00001",
                 "userFriendlyName": "스팀 건조기ThinQ3 (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS3",
                 "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
@@ -199,6 +202,7 @@
             {
                 "moduleType": "module-type1",
                 "modelId": "MD04685790547",
+                "rtModelSeq": "00001",
                 "userFriendlyName": "스팀 건조기ThinQ4 (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS4",
                 "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
@@ -264,6 +268,7 @@
             {
                 "moduleType": "module-type1",
                 "modelId": "MD046835566660547",
+                "rtModelSeq": "00001",
                 "userFriendlyName": "스팀 건조기ThinQ4 (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS4",
                 "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
@@ -329,6 +334,7 @@
             {
                 "moduleType": "module-type1",
                 "modelId": "MD046857934234517",
+                "rtModelSeq": "00001",
                 "userFriendlyName": "스팀 건조기ThinQ4 (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS4",
                 "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
@@ -394,6 +400,7 @@
             {
                 "moduleType": "module-type1",
                 "modelId": "MD0460000920547",
+                "rtModelSeq": "00001",
                 "userFriendlyName": "스팀 건조기ThinQ4 (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS4",
                 "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
@@ -459,6 +466,7 @@
             {
                 "moduleType": "module-type1",
                 "modelId": "MD04681232149999547",
+                "rtModelSeq": "00001",
                 "userFriendlyName": "스팀 건조기ThinQ4 (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS4",
                 "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
@@ -524,6 +532,7 @@
             {
                 "moduleType": "module-type1",
                 "modelId": "MD0462202938490547",
+                "rtModelSeq": "00001",
                 "userFriendlyName": "스팀 건조기ThinQ4 (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS4",
                 "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
@@ -589,6 +598,7 @@
             {
                 "moduleType": "module-type1",
                 "modelId": "MD046220rr2938490547",
+                "rtModelSeq": "00001",
                 "userFriendlyName": "스팀 건조기ThinQ4 (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS4",
                 "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
@@ -654,6 +664,7 @@
             {
                 "moduleType": "module-type1",
                 "modelId": "MD0462sdf938490547",
+                "rtModelSeq": "00001",
                 "userFriendlyName": "스팀 건조기ThinQ4 (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS4",
                 "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
@@ -719,6 +730,7 @@
             {
                 "moduleType": "module-type1",
                 "modelId": "MD046220009938490547",
+                "rtModelSeq": "00001",
                 "userFriendlyName": "스팀 건조기ThinQ4 (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS4",
                 "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
@@ -784,6 +796,7 @@
             {
                 "moduleType": "module-type1",
                 "modelId": "MD04622021238490547",
+                "rtModelSeq": "00001",
                 "userFriendlyName": "스팀 건조기ThinQ4 (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS4",
                 "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
