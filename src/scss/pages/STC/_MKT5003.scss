@@ -80,6 +80,13 @@
     }
 }
 
+.page-header {
+    &.fixed {
+        margin-bottom: 0;
+        padding-top: 0;
+        background-color: $color-bg-wt;
+    }
+}
 @include mobile {
     .page-header {
         padding:0;
