@@ -37,13 +37,13 @@
         &:first-child {
             margin-left:0;
         }
-        dl {
+        > dl {
             position:relative;
             text-align:center;
             @include mobile {
                 text-align:left;
             }
-            dt {
+            > dt {
                 color:$color-default;
                 @include mobile {
                     display:inline-block;
@@ -62,12 +62,58 @@
                 }
                 .tooltip-wrap {
                     margin-left:5px;
+                    .achiev-conditon {
+                        p {
+                            font-size:14px;
+                            font-weight:700;
+                            line-height:24px;
+                            & + dl {
+                                margin-top:12px;
+                            }
+                            @include mobile {
+                                font-size:13px;
+                                line-height:21px;
+                            }
+                        }
+                        dl {
+                            margin-top:8px;
+                            &:after {
+                                content:' ';
+                                display:block;
+                                clear:both;
+                            }
+                            dt,dd {
+                                float:left;
+                                font-size:14px;
+                                line-height:24px;
+                                @include mobile {
+                                    font-size:13px;
+                                    line-height:21px;
+                                }
+                            }
+                            dt {
+                                width:25%;
+                                @include mobile {
+                                    width:40%;
+                                }
+                            }
+                            dd {
+                                width:75%;
+                                padding-left:24px;
+                                color:#767676;
+                                @include mobile {
+                                    width:60%;
+                                    padding-left:16px;
+                                }
+                            }
+                        }
+                    }
                     @include mobile {
                         margin-top:2px;
                     }
                 }
             }
-            dd {
+            > dd {
                 margin-top:8px;
                 color:#EC455A;
                 font-size:20px;
