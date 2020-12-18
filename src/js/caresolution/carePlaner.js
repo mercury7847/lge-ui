@@ -193,9 +193,9 @@
     
     //무상케어십 계약
     var freeCareshipTemplate =
-        '<li class="slide-conts ui_carousel_slide">'+
+        '<li class="slide-conts ui_carousel_slide freeCareshipBox">'+
             '<div class="conts-wrap">'+
-                '<div class="prd-care-horizon ui_flexible_box free-care comb-type">'+//<!-- 결합된 상품이면 comb-type 클래스 추가 -->
+                '<div class="prd-care-horizon ui_flexible_box free-care comb-type">'+
                     '<div class="ui_flexible_cont">'+
                         '<p>케어십 일시납 확인으로 <br>기존 결합 할인 적용되었습니다.</p>'+
                         '<span>기존계약 문의 1577-4090</span>'+
@@ -209,14 +209,17 @@
 
     var _isStorageChk = false;
     var _isStickyApply = false;
-    
-    var _totalContract;
 
     var _page, _pageTotal;
     var _currentItemList;
 
     var _prodListUrl;
     var _categoryListUrl;
+
+    var _changeColorUrl;
+    var _priceStatusUrl;
+    var _putItemUrl;
+    var _estimateConfirmUrl;
 
     var $caresolutionContainer;
     var $fixedTab;
@@ -247,11 +250,14 @@
         $prodListContainer = $('.prd-list-wrap');
         $putItemContainer = $('.prd-select-wrap');
 
-        _totalContract = $('.ui_total_prod').data('prodTotal');
-
         _putMaxCount = $caresolutionContainer.data("maxCount");
         _categoryListUrl = $caresolutionContainer.data("cateList");
         _prodListUrl = $caresolutionContainer.data("prodList");
+
+        _changeColorUrl = $caresolutionContainer.data("colorModel");
+        _priceStatusUrl = $caresolutionContainer.data("priceStatus");
+        _putItemUrl = $caresolutionContainer.data("putItem");
+        _estimateConfirmUrl = $caresolutionContainer.data("estimateConfirm");
 
         $fixedTab.find('.service_tab').vcTab()
         .on('tabchange', function(e, data){
@@ -338,7 +344,7 @@
             togglewrap.toggleClass('active');
 
             if(togglewrap.hasClass('active')){
-                lgkorUI._resetFlexibleBox();
+                lgkorUI.resetFlexibleBox();
             };
         });
 
@@ -358,12 +364,19 @@
         });
     }
 
+    //카테고리 로드...
     function loadCategoryList(){
         lgkorUI.showLoading();
 
         var tabID = getTabID();
         console.log("tabID :", tabID)
         lgkorUI.requestAjaxData(_categoryListUrl, {tabID: tabID}, function(result){
+            if(result.data.success == "N"){
+                lgkorUI.hideLoading();
+                lgkorUI.commonAlertHandler(result.data.alert);
+                return;
+            }
+
             $categoryTab.find('.tabs').empty();
 
             for(var id in result.data){
@@ -384,6 +397,7 @@
         });
     }
 
+    //상품 리스트 로드...
     function loadCareProdList(isLoading){
         if(isLoading) lgkorUI.showLoading();
         
@@ -394,7 +408,13 @@
             sortID: getSortID()
         }
         lgkorUI.requestAjaxData(_prodListUrl, requestData, function(result){
-
+            lgkorUI.hideLoading();
+            
+            if(result.data.success == "N"){
+                lgkorUI.commonAlertHandler(result.data.alert);
+                return;
+            }
+            
             _currentItemList = vcui.array.map(result.data.productList, function(item, idx){
                 item['index'] = idx+1;
                 item["serviceName"] = serviceName;
@@ -410,8 +430,6 @@
             $prodListContainer.find('> ul.inner').empty();
 
             addProdItemList();
-            
-            lgkorUI.hideLoading();
         });
 
         if(!_isStorageChk){
@@ -422,6 +440,7 @@
         }
     }
 
+    //서비스 변경...
     function changeService(sid){
         if(_serviceID != sid){
             _serviceID = sid;
@@ -440,12 +459,92 @@
         }
     }
 
+    //옵션 변경 시...
     function changeItemOptions(item){
         var idx = $(item).closest('.prd-care-vertical').data('index')-1;
-        console.log("changeItemOptions :", idx)
         var optionData = getOptionData(item);
+
+        var siblingType = $(item).data('siblingType');
+        if(siblingType == "siblingColors"){
+            setChangeColorChip(idx, optionData.optdata["siblingColors"].value);
+        } else{
+            setChangeOptionChip(idx, optionData.optdata)
+        }
     }
 
+    //색상 외 옵션 변경...
+    function setChangeOptionChip(idx, optdata){
+        lgkorUI.showLoading();
+
+        var sendata = {
+            modelID: _currentItemList[idx]['modelId'],
+            rtModelSeq: _currentItemList[idx]['rtModelSeq'],
+            feeCd: optdata['siblingFee'].value,
+            usePeriodCd: optdata['siblingUsePeriod'].value,
+            visitCycleCd: optdata['siblingVisitCycle'].value,
+            blockID: idx
+        }
+
+        lgkorUI.requestAjaxData(_priceStatusUrl, sendata, function(result){
+            lgkorUI.hideLoading();
+            
+            if(result.data.success == "N"){
+                lgkorUI.commonAlertHandler(result.data.alert);
+                return;
+            }
+            
+            var blockID = result.data.blockID;
+            
+            _currentItemList[blockID]["rtModelSeq"] = result.data["rtModelSeq"];
+            _currentItemList[blockID]["monthlyPrice"] = result.data["monthPrice"];
+
+            $prodListContainer.find('> ul.inner > li.item').eq(blockID).find('.price-wrap .price').text("월 " + result.data["monthPrice"] + "원");
+        });
+    }
+
+    //색상 옵션 변경...
+    function setChangeColorChip(idx, colorCd){
+        lgkorUI.showLoading();
+
+        var sendata = {
+            modelID: _currentItemList[idx]['modelId'],
+            rtModelSeq: _currentItemList[idx]['rtModelSeq'],
+            colorCd: colorCd,
+            blockID: idx
+        }
+
+        lgkorUI.requestAjaxData(_changeColorUrl, sendata, function(result){
+            lgkorUI.hideLoading();
+            
+            if(result.data.success == "N"){
+                lgkorUI.commonAlertHandler(result.data.alert);
+                return;
+            }
+
+            var blockID = result.data.blockID;
+            
+            for(var key in result.data){
+                _currentItemList[blockID][key] = result.data[key];
+            }
+
+            var deleteItem = $prodListContainer.find('> ul.inner > li.item').eq(blockID);
+
+            var prodlist = vcui.template(_listItemTemplate, _currentItemList[blockID]);
+            var addItem = $(prodlist).get(0);
+            deleteItem.before(addItem);
+            deleteItem.remove();
+
+            $(addItem).find('.ui_selectbox').vcSelectbox().on('selectboxopen', function(e, sbox){
+                var dl = $(sbox).closest('dl');
+                if(!dl.hasClass('open')) dl.addClass('open');
+            }).on('selectboxclose', function(e, sbox){
+                var dl = $(sbox).closest('dl');
+                if(dl.hasClass('open')) dl.removeClass('open');
+            });
+        });
+    }
+
+    //상품 리스트 더보기...
     function setNextProdList(){
         var page = _page + 1;
         if(page < _pageTotal){
@@ -455,6 +554,8 @@
         }
     }
 
+
+    //더보기 리스트 추가...
     function addProdItemList(anim){
         var first = _page * 8;
         var last = first + _showItemLength;
@@ -478,35 +579,68 @@
         })
     }
 
+    //담기...
     function addPutItem(item){ 
-        //lgkorUI.showLoading();
+        lgkorUI.showLoading();
 
-        var sendata = {
-
-        }
         var idx = $(item).parents('.prd-care-vertical').data('index')-1;
-        var optdata = getOptionData(item);
-        var data = {
-            itemData: _currentItemList[idx],
-            putID : _currentItemList[idx]['modelId'] + "-" + parseInt(Math.random()*999) + "-" + parseInt(Math.random()*99) + "-" + parseInt(Math.random()*9999),
-            selectOptions: optdata
+        var sendata = {
+            modelIds: [_currentItemList[idx]['modelId']],
+            rtModelSeqs: [_currentItemList[idx]['rtModelSeq']]
         }
-        
-        var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-        if(putItemStorage[lgkorUI.CAREPLANER_ID] == undefined){
-            putItemStorage[lgkorUI.CAREPLANER_ID] = [data];
-        } else{
-            var leng = putItemStorage[lgkorUI.CAREPLANER_ID].length;
-            if(leng + _totalContract < _putMaxCount){
-                putItemStorage[lgkorUI.CAREPLANER_ID].unshift(data);
 
-                $(window).trigger("toastshow", "제품 담기가 완료되었습니다.");
-            } else{
-                $('#alert-overclick').vcModal();
-                return false;
+        var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
+        if(putItemStorage[lgkorUI.CAREPLANER_ID]){
+            for(var key in putItemStorage[lgkorUI.CAREPLANER_ID]){
+                var storageData = putItemStorage[lgkorUI.CAREPLANER_ID][key];
+                sendata.modelIds.push(storageData.itemData.modelId);
+                sendata.rtModelSeqs.push(storageData.itemData.rtModelSeq);
             }
         }
-        lgkorUI.setStorage(lgkorUI.CAREPLANER_KEY, putItemStorage);
+        
+        lgkorUI.requestAjaxData(_putItemUrl, sendata, function(result){
+            lgkorUI.hideLoading();
+            
+            if(result.data.success == "N"){
+                lgkorUI.commonAlertHandler(result.data.alert);
+                return;
+            }
+
+            if(result.data.isLogin){
+                if(result.data.contract.freeCareShip == "Y"){
+                    var addlist = vcui.template(freeCareshipTemplate);
+                    $('.ui_total_prod .ui_carousel_slider .slide-track').prepend(addlist);
+                } else{
+                    $('.freeCareshipBox').remove();
+                }
+                $('.ui_total_prod .ui_carousel_slider').vcCarousel('reinit');
+                lgkorUI.resetFlexibleBox();
+
+                if(result.data.contract.transModelCheck){
+                    $('.ui_total_prod .ui_carousel_slider').find('.ui_flexible_box[data-contract-flag='+result.data.contract.transModelCheck+']')
+                    .eq(0).removeClass('comb-type').addClass('comb-type');
+                }
+            }
+            
+            var data = {
+                itemData: _currentItemList[idx],
+                putID : _currentItemList[idx]['modelId'] + "-" + parseInt(Math.random()*999) + "-" + parseInt(Math.random()*99) + "-" + parseInt(Math.random()*9999)
+            }
+            
+            var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
+            if(putItemStorage[lgkorUI.CAREPLANER_ID] == undefined){
+                putItemStorage[lgkorUI.CAREPLANER_ID] = [data];
+            } else{     
+                putItemStorage[lgkorUI.CAREPLANER_ID].unshift(data);
+                $(window).trigger("toastshow", "제품 담기가 완료되었습니다.");
+            }
+            putItemStorage[lgkorUI.CAREPLANER_PRICE] = {
+                totalPrice: result.data.total.totalPrice,
+                totalTrans: result.data.total.totalTrans,
+                affiliateCard: result.data.total.affiliateCard
+            }
+            lgkorUI.setStorage(lgkorUI.CAREPLANER_KEY, putItemStorage);
+        });
     }
 
     function removePutItem(id){

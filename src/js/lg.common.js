@@ -192,7 +192,7 @@
                 // ]
             });
 
-            lgkorUI._resetFlexibleBox();
+            lgkorUI.resetFlexibleBox();
         }.bind(this));
 
         return this;
@@ -237,6 +237,7 @@
         COMPARE_LIMIT: 3,
         CAREPLANER_KEY: "care_planer",
         CAREPLANER_ID: "putitem_list",
+        CAREPLANER_PRICE: "putitem_price",
         STICKY_MODULES:[],
         init: function(){
             this._addImgOnloadEvent();
@@ -364,9 +365,9 @@
                         self.resizeCallbacks[idx].call();
                     }
 
-                    self._resetFlexibleBox();
+                    self.resetFlexibleBox();
                 });  
-                self._resetFlexibleBox();              
+                self.resetFlexibleBox();              
     
                 // 모달 기초작업 //////////////////////////////////////////////////////
                 // 모달 기본옵션 설정: 모달이 들때 아무런 모션도 없도록 한다.(기본은 fade)
@@ -386,6 +387,9 @@
                             }
                             if(this.$('.ui_smooth_scrolltab').length>0){
                                 this.$('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
+                            }
+                            if(this.$('.ui_smooth_scroll').length>0){
+                                this.$('.ui_smooth_scroll').vcSmoothScroll('refresh');
                             }
                         }
                     }
@@ -429,7 +433,7 @@
                 }).on('modalshown', function (e) {
                     // 모달이 뜰때 모달내부에 있는 공통 컴포넌트 빌드
                     $(e.target).buildCommonUI();
-                    self._resetFlexibleBox();
+                    self.resetFlexibleBox();
                 });
                 //////////////////////////////////////////////////////////////////////
     
@@ -479,7 +483,7 @@
             });
         },
 
-        _resetFlexibleBox: function(){
+        resetFlexibleBox: function(){
             //리스트 height 재설정
             $('body').find('.ui_flexible_height').each(function(idx, item){
                 var maxheight = 0;
@@ -757,7 +761,8 @@
                     alert(result.message ? result.message : '오류발생');
                     return;
                 }
-                if(callback && typeof callback === 'function') callback(result);
+                
+                if(callback && typeof callback === 'function') callback(result);                
             }).fail(function(err){
                 alert(err.message);
             });
@@ -766,6 +771,42 @@
         requestAjaxDataPost: function(url, data, callback) {
             var self = this;
             self.requestAjaxData(url, data, callback, "POST");
+        },
+
+        commonAlertHandler: function(alert){
+            if(alert.isConfirm) {
+                //컨펌
+                var obj ={title: alert.title,
+                    typeClass: '',
+                    cancelBtnName: alert.cancelBtnName,
+                    okBtnName: alert.okBtnName,
+                    ok: alert.okUrl ? function (){
+                        location.href = alert.okUrl;
+                    } : function (){},
+                    cancel: alert.cancelUrl ? function (){
+                        location.href = alert.cancelUrl;
+                    } : function (){}
+                };
+    
+                var desc = alert.desc ? alert.desc : null;
+                if(alert.title && alert.desc) {
+                    obj.typeClass = 'type2'
+                }
+                lgkorUI.confirm(desc, obj);
+            } else {
+                //알림
+                var obj ={title: alert.title,
+                    typeClass: '',
+                    okBtnName: alert.okBtnName,
+                    ok: function (){}
+                };
+    
+                var desc = alert.desc;
+                if(desc) {
+                    obj.typeClass = 'type2'
+                }
+                lgkorUI.alert(desc, obj);
+            }
         },
 
         getHiddenInputData: function(iptname, wrapname){
@@ -879,6 +920,10 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         lgkorUI.init();
+    });
+
+    global.addEventListener('load', function(){
+        $('.ui_sticky').vcSticky('update');
     });
 
 })(window);

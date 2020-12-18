@@ -43,12 +43,6 @@
                                                 </dd>
                                             </dl>
                                             <dl class="forms">
-                                                <dt class="tit"><label for="inp02" class="req">해지 희망일시<span class="blind">필수입력</span></label></dt>
-                                                <dd class="conts">
-                                                    날짜선택 기획 대기중
-                                                </dd>
-                                            </dl>
-                                            <dl class="forms">
                                                 <dt class="tit"><label for="text01" class="req">해지 신청사유<span class="blind">필수입력</span></label></dt>
                                                 <dd class="conts">
                                                     <span class="input-wrap block">
@@ -57,11 +51,53 @@
                                                 </dd>
                                             </dl>
                                         </div>
-                                        <div class="btn-group center">
-                                            <button class="btn gray"><span>취소</span></button>
-                                            <button class="btn"><span>신청</span></button>
-                                        </div>
                                     </div>
+                                </div>
+                                <div class="sects">
+                                    <div class="tit-wrap">
+                                        <h5 class="tit">해지 희망일시 선택</h5>
+                                    </div>
+                                    <div class="section-inner">
+
+                                        <div class="calender-wrap">
+                                            <div class="calender-info">
+                                                <p class="text">
+                                                    희망하시는 해지일시를 <br class="pc">선택해주세요.
+                                                </p>
+                                                <ul class="info">
+                                                    <li class="possible"><span>검정색 표기</span>예약 가능</li>
+                                                    <li class="choice"><span>분홍색 표기</span>선택</li>
+                                                </ul>
+                                            </div>
+                                            <div class="calender-area">
+                                                <div class="box bx-date">
+                                                    <p class="tit">
+                                                        <span class="req">날짜 선택 <span class="blind">필수입력</span> </span>
+                                                        <span class="date">2020.09.22</span>
+                                                    </p>
+                                                </div>
+                                                <div class="box bx-time">
+                                                    <p class="tit">
+                                                        <span class="req">날짜 선택<span class="blind">필수입력</span></span>  
+                                                        <span class="desc">시간을 선택해주세요.</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "topBorder" : true,
+                                    "bulletTit" : "해지 상담신청 안내사항",
+                                    "bulletTxt" : [
+                                        "상담신청 가능 시간 : 평일 09:00~18:00 / 토요일 09:00~13:00",
+                                        "5년 만기 케어십 가입/해지 신청 시, 담당 케어솔루션 매니저를 통해 문의 부탁드립니다."
+                                    ]
+                                })
+                                <div class="btn-group center">
+                                    <button class="btn gray"><span>취소</span></button>
+                                    <button class="btn"><span>신청</span></button>
                                 </div>
                             </div>
                         </div>
