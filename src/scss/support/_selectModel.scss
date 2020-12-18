@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.category-search {
+    & > ul {
+        & > li {
+            border-radius:8px;
+            box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+        }
+    }
+
+    .category-box {
+        padding:40px 34px;
+        p {
+            margin-bottom:16px;
+            font-size:22px;
+            font-weight:700;
+            line-height:32px;
+            text-align:center;
+        }
+        .category-thumb {
+            width:100%;
+            max-width:200px;
+            img {
+                width:100%;
+            }
+        }
+    }
+}

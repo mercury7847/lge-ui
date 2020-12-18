@@ -19,7 +19,7 @@
                 @@include('./common/support/login-guide.html', {
                     'text': '로그인을 하시면 더욱 편리하게 이용하실 수 있습니다.<br>개인 정보 자동 입력, 저장해 놓은 제품 선택 등'
                 })
-                <div class="cont-wrap">
+                <div class="cont-wrap narrow">
 
                     <div class="section">
                         <div class="search-info">
@@ -157,16 +157,9 @@
         @@include('./common/footer.html')
     </div>
 
-    <!-- 접수 내역이 없을 경우 -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop1",
-        "msgOnly" : true,
-        "msg" : "입력하신 정보와 일치하는 접수 내역이 없습니다.<br>확인 후 이용 바랍니다."
-    })
-
     <!-- 인증 번호 발송 버튼을 클릭하지 않고 확인 버튼 눌렀을 경우 -->
     @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop2",
+        "popId" : "laypop1",
         "msgOnly" : true,
         "msg" : "인증 번호 발송 버튼을 선택해 주세요."
     })

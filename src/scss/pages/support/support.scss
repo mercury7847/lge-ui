@@ -13,7 +13,7 @@
 @import "../../support/process";
 @import "../../support/banner";
 @import "../../support/quick-menu";
-
+@import "../../support/select-category";
 
 /* 삭제 예정 */
 .dummy {
@@ -863,6 +863,16 @@
         }
     }
 }
+
+.cont-title{
+    .tit{
+        @include font-large-2;
+        max-width: 1146px;
+        margin:0 auto 16px;
+    }
+    @include mobile {}
+}
+
 
 //add file new
 .image-file-wrap {

@@ -42,10 +42,33 @@
                                                 <dl>
                                                     <dt>
                                                         <p>멤버십 등급</p>
-                                                        @@include('./common/modules/tooltip.html', {
-                                                            "type" : "text",
-                                                            "text" : "1년간 500만원 이상 구매 시 '우수' 고객으로 상향됩니다."
-                                                        })
+                                                        <!-- 툴팁 수정 -->
+                                                        <div class="tooltip-wrap">
+                                                            <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
+                                                            <div class="tooltip-box">
+                                                                <div class="achiev-conditon">
+                                                                    <p>등급 달성 조건을 확인해보세요.</p>
+                                                                    <dl>
+                                                                        <dt>스탠다드</dt>
+                                                                        <dd>연간 구매금액 500만원 미만</dd>
+                                                                    </dl>
+                                                                    <dl>
+                                                                        <dt>골드</dt>
+                                                                        <dd>연간 구매금액 500만원 ~ 1000만원 미만</dd>
+                                                                    </dl>
+                                                                    <dl>
+                                                                        <dt>로얄골드</dt>
+                                                                        <dd>연간 구매금액 1000만원 이상</dd>
+                                                                    </dl>
+                                                                    <dl>
+                                                                        <dt>LG SIGNATURE</dt>
+                                                                        <dd>LG시그니쳐 제품구매 고객</dd>
+                                                                    </dl>
+                                                                </div>
+                                                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- //툴팁 수정 -->
                                                     </dt>
                                                     <dd id="membership_level">스탠다드</dd>
                                                 </dl>

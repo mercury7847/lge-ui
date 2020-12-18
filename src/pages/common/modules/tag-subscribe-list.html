@@ -5,7 +5,7 @@
             @@for ( var i=0; i < tags.length; i++ ) {
             <li class="tags">
                 <span class="chk-btn">
-                    <input type="checkbox" id="`+tags[i].id+`-`+[i]+`" name="tags" `+tags[i].checked+`>
+                    <input type="checkbox" id="`+tags[i].id+`-`+[i]+`" name="tags" data-default="`+tags[i].checked+`" `+tags[i].checked+`>
                     <label for="`+tags[i].id+`-`+[i]+`">#`+tags[i].label+`</label>
                 </span>
             </li>
