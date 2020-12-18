@@ -98,6 +98,7 @@
                     font-weight:700;
                     line-height:30px;
                 }
+                &.active > a,
                 &.on > a {
                     color:#222;
                     background-color:#f4f4f4;

@@ -161,8 +161,8 @@
     }
     > .btn-close {
         position:absolute;
-        top:40px;
-        right:48px;
+        top:28px;
+        right:40px;
         width:32px;
         height:32px;
         @include mobile {
@@ -181,8 +181,8 @@
         }
     }
     .pop-header {
-        padding:40px 0 20px;
-        margin:0 48px;
+        padding:28px 0 14px;
+        margin:0 40px;
         border-bottom:2px solid #222;
         .tit span {
             display:block;
@@ -224,7 +224,7 @@
         height:auto;
         // max-height:492px;
         max-height:580px;
-        padding:48px 48px 0;
+        padding:48px 40px 0;
         overflow-y:auto;
         &.no-footer {
             max-height:576px + 130px;
