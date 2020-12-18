@@ -315,69 +315,156 @@ CS.MD.quickMenu = function() {
 /*
 * survey
 */
-CS.MD.survey = function() {
-    // if (!$('#surveyPopup').length) return false;
+CS.MD.survey = function(addData) {
+    if ($('#surveyPopup').length < 1) return false;
 
-    // vcui.require(['ui/validation'], function () {
-        // var $cont = $('.survey-pop');
-        // var register = {
-        //     privcyCheck: {
-        //         msgTarget: '.err-block'
-        //     },
-        //     userName: {
-        //         msgTarget: '.err-block'
-        //     },
-        //     phoneNo: {
-        //         msgTarget: '.err-block'
-        //     },
-        //     gender: {
-        //         msgTarget: '.gender-err-block'
-        //     },
-        //     age: {
-        //         msgTarget: '.err-block'
-        //     },
-        //     serviceName: {
-        //         msgTarget: '.service-err-block'
-        //     },
-        //     csaFlag: {
-        //         msgTarget: '.csa-err-block'
-        //     },
-        //     rating: {
-        //         msgTarget: '.err-block'
-        //     },
-        //     content: {
-        //         msgTarget: '.err-msg'
-        //     }
-        // }
-        // var validation = new vcui.ui.CsValidation('.survey-pop', {register:register});
+    vcui.require(['ui/validation'], function () {
+        var $cont = $('.survey-pop');
+        var register = {
+            privcyCheck: {
+                msgTarget: '.err-block'
+            },
+            userName: {
+                msgTarget: '.err-block'
+            },
+            phoneNo: {
+                msgTarget: '.err-block'
+            },
+            gender: {
+                msgTarget: '.gender-err-block'
+            },
+            age: {
+                msgTarget: '.err-block'
+            },
+            serviceName: {
+                msgTarget: '.service-err-block'
+            },
+            csaFlag: {
+                msgTarget: '.csa-err-block'
+            },
+            rating: {
+                msgTarget: '.err-block'
+            },
+            content: {
+                msgTarget: '.err-msg'
+            }
+        };
+        var validation = new vcui.ui.CsValidation('.survey-pop', {register:register});
 
-        // $cont.find('.btn-confirm').on('click', function() {
-        //     var result = validation.validate();
+        $('#surveyPopup').find('.btn-confirm').on('click', function() {
+            var result = validation.validate(),
+                data = $.extend({}, addData, validation.getAllValues());
 
-        //     if (result.success) {
-        //         lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
-        //             $('#surveyPopup').vcModal('hide');
-                    
-        //             lgkorUI.alert('', {
-        //                 title: result.data.resultMessage
-        //             });
-        //         })
-        //     }
-        // });
+            if (result.success) {
+                lgkorUI.requestAjaxDataPost($cont.data('ajax'), data, function(result) {
+                    if (result.data.resultFlag == 'Y') {
+                        $('#surveyPopup').vcModal('hide');
+                    }
 
-        // $('#surveyPopup').on('modalhide', function(e) {
-        //     $cont.find('input,textarea').not(':readonly').val('');
-        // });
-    // });
+                    lgkorUI.alert('', {
+                        title: result.data.resultMessage
+                    });
+                })
+            }
+        });
+
+        $('#surveyPopup').on('modalhide', function(e) {
+            $cont.find('input,textarea').not(':readonly').val('');
+        });
+    });
+};
+
+$.fn.serializeObject = function() {
+    var result = {}
+    var extend = function(i, element) {
+        var node = result[element.name]
+        if ("undefined" !== typeof node && node !== null) {
+            if ($.isArray(node)) {
+                node.push(element.value)
+            } else {
+                result[element.name] = [node, element.value]
+            }
+        } else {
+            result[element.name] = element.value
+        }
+    }
+  
+    $.each($(this).serializeArray(), extend)
+    return result;
 };
 
 (function($){
-    function survey(){
-
-    }
-
     function commonInit(){
-        $('#quickMenu').quickMenu();
+        vcui.require(['ui/selectbox', 'ui/carousel'], function () {    
+            // 관련 소모품이 필요하신가요?
+            $('.product-slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                slidesToScroll: 4,
+                slidesToShow: 4,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            slidesToScroll: 1,
+                            slidesToShow: 1,
+                            variableWidth: true
+                        }
+                    },
+                    {
+                        breakpoint: 20000,
+                        settings: {
+                            slidesToScroll: 4,
+                            slidesToShow: 4
+                        }
+                    }
+                ]
+            });
+
+            // LG제품에 관련된 정보를 확인하세요!
+            $('.info-slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                slidesToScroll: 3,
+                slidesToShow: 3,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            slidesToScroll: 1,
+                            slidesToShow: 1,
+                            variableWidth: true
+                        }
+                    },
+                    {
+                        breakpoint: 20000,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    }
+                ]
+            });
+
+            // 퀵 메뉴 (미정)
+            $('#quickMenu').quickMenu();
+        });
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);

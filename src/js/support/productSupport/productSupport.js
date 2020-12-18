@@ -4,18 +4,15 @@
     
     $(window).ready(function() {
         var psp = {
-            submitForm: document.getElementById('submitForm'),
-            solutionsForm: document.getElementById('solutionsForm'),
             init: function() {
                 var self = this;
 
-                self.$submitForm = $(self.submitForm);
-                self.$solutionsForm = $(self.solutionsForm);
+                $('.ui_anchor_sticky').vcSticky({
+                    usedAnchor: "true",
+                    actClass: "on"
+                });
 
-                $('.pagination').pagination();
-            },
-            setEventListener: function() {
-                    
+                CS.MD.survey($('#submitForm').serializeObject());
             }
         }
         

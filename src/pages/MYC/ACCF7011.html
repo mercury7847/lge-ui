@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["MYC/MYC"]
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/myRecentList"]
     })
 <body>
     <div class="wrap">
@@ -25,7 +26,7 @@
                                 { "on": "", "page": "재입고 알림" },
                             ]
                         })
-                        <div class="lnb-contents">
+                        <div class="lnb-contents"  data-list-url="/lg5-common/data-ajax/mypage/wish/myRecentList.json" data-cart-url="/lg5-common/data-ajax/mypage/wish/myRecentCart.json" data-remove-url="/lg5-common/data-ajax/mypage/wish/myRecentCart.json" data-wish-url="/lg5-common/data-ajax/mypage/wish/myRecentCart.json">
                             <div class="info-tbl-wrap type2">
                                 <ul>
                                     @@loop('./common/modules/bdcard-list.html', [

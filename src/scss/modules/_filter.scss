@@ -189,13 +189,12 @@
                                 content:'';
                                 display:block;
                                 position:absolute;
-                                top:24px;
+                                top:28px;
                                 right:0;
-                                width:24px;
-                                height:24px;
-                                background:url('/lg5-common/images/icons/btn-arr-24x24-black.svg') no-repeat;
+                                width:16px;
+                                height:16px;
+                                background:url('/lg5-common/images/icons/btn-down-16-black.svg') no-repeat;
                                 background-size: cover;
-                                transform: rotate(90deg);
                                 transition: all .3s;
                                 @media screen and (max-width: 1024px) {
                                     top:30px;
@@ -206,7 +205,7 @@
                         
                         .tit {
                             display:block;
-                            padding:24px 0 22px;
+                            padding:24px 0;
                             color:#222;
                             @include font-small;
                             font-weight:$font-weight-bold;
@@ -220,7 +219,7 @@
                         }
                     }
                     &.on .head a:before {
-                        transform: rotate(270deg);
+                        transform: rotate(180deg);
                     }
                     .desc {
                         display:none;
@@ -291,41 +290,14 @@
                                 @include font-small;
                             }
                         }
-                        /*
-                        .rdo-wrap {
-                            & input + label {
-                                &:before {
-                                    border-color:#979797;
-                                }
-                                &:after {
-                                    display:none;
-                                }
+                        .rdo-wrap input:checked + label {
+                            &:before {
+                                background-image: url("/lg5-common/images/bg-input-checked-gray.svg");
                             }
-                            & input:checked + label {
-                                &:before {
-                                    border-color:#EC455A;
-                                    background:#fff;
-                                }
-                                &:after {
-                                    display:block;
-                                    top:4px;
-                                    left:4px;
-                                    width:16px;
-                                    height:16px;
-                                    background:#EC455A;
-                                    border-radius:50%;
-                                    transform:inherit;
-                                    border:0;
-                                }
+                            &:after {
+                                background: $color-gray-1;
                             }
-                            & input:disabled + label {
-                                color:#adadad;
-                                &:before {
-                                    border-color:#ccc;
-                                    background:#f4f4f4;
-                                }
-                            }
-                        }*/
+                        }
 
                         .chk-wrap-colorchip {
                             & input:disabled + label {

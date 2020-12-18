@@ -43,7 +43,7 @@
         '<li>조회 {{view}}</li>' +
         '</ul>' +
         '{{# if (typeof video != "undefined" && video === true) { #}}' +
-        '<span class="icon-movie"><span class="blind">동영상 가이드 컨텐츠</span></span>' +
+        '<span class="icon-movie"><span class="blind">동영상 컨텐츠</span></span>' +
         '{{# } #}}' +
         '</a>' +
         '</li>';
@@ -51,7 +51,7 @@
     var optionTemplate =
         '{{#each (item, index) in filterList}}' +
         '<option value="{{item.code}}">' +
-        '{{item.topic}}' +
+        '{{item.name}}' +
         '</option>' +
         '{{/each}}';
 
@@ -61,13 +61,16 @@
                 this.param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
                 this.$wrap = $('.solutions-wrap');
                 this.$filter = this.$wrap.find('.filter-box');
-                this.$mFilter = this.$wrap.find('.mobile-filter-box');
+                this.$filterM = this.$wrap.find('.mobile-filter-box');
                 this.$result = this.$wrap.find('.result-box');
 
-                $('.ui_anchor_sticky').vcSticky({
-                    usedAnchor: "true",
-                    actClass: "on"
-                });
+                this.$symptom = this.$wrap.find('#symptom');
+                this.$subSymptom = this.$wrap.find('#subSymptom');
+
+                this.$topic = this.$wrap.find('#topic');
+                this.$subTopic = this.$wrap.find('#subTopic');
+                this.$keyword = this.$wrap.find('#keyword');
+                this.$orderBy = this.$wrap.find('#orderBy');
 
                 this.bindEvent();
             },
@@ -75,35 +78,32 @@
                 var self = this;
 
                 self.$filter.find('.filter-link[data-code="'+ code +'"]').parent('li').addClass('on').siblings('li').removeClass('on');
-                
                 self.$filter.find('.filter-link[data-code="'+ code +'"]').parent('li').addClass('on').siblings('li').each(function() {
                     if ($(this).find('.sub-depth').length) {
                         $(this).find('.sub-depth').remove();
                     }
                 });
 
-                self.$mFilter.find('#symptom').val(code);
-
                 if (code !== 'All') {
                     self.$filter.find('.filter-link[data-code="'+ code +'"]').closest('.filter-list').addClass('open');
-                    self.$mFilter.find('#subSymptom').prop('disabled', false);
+                    self.$subSymptom.prop('disabled', false);
                 } else {
                     self.$filter.find('.filter-link[data-code="'+ code +'"]').closest('.filter-list').removeClass('open');
                     self.$filter.find('.sub-depth').remove();
 
-                    self.$mFilter.find('#subSymptom').prop('disabled', true);
-                    self.$mFilter.find('#subSymptom').html('<option class="placeholder">증상을 선택해주세요.</option>');
+                    self.$subSymptom.prop('disabled', true);
+                    self.$subSymptom.html('<option class="placeholder">증상을 선택해주세요.</option>');
                 }
 
-                self.$mFilter.find('#symptom').vcSelectbox('update');
-                self.$mFilter.find('#subSymptom').vcSelectbox('update');
+                self.$symptom.vcSelectbox('update');
+                self.$subSymptom.vcSelectbox('update');
             },
             selectSubFilter: function(code) {
                 var self = this;
             
                 self.$filter.find('.filter-link[data-code="'+ code +'"]').parent('li').addClass('on').siblings('li').removeClass('on');
-                self.$mFilter.find('#subSymptom').val(code);
-                self.$mFilter.find('#subSymptom').vcSelectbox('update');
+                self.$subSymptom.val(code);
+                self.$subSymptom.vcSelectbox('update');
             },
             setFilter: function(data) {
                 var self = this,
@@ -117,13 +117,13 @@
 
                     self.$filter.find('.filter-list').eq(0).html(pcHtml);
 
-                    self.$mFilter.find('#symptom').html(mHtml);
-                    self.$mFilter.find('#symptom').vcSelectbox('update');
+                    self.$symptom.html(mHtml);
+                    self.$symptom.vcSelectbox('update');
                 }
             },
             setSubFilter: function(code, target) {
                 var self = this,
-                    $target = $(target),
+                    $target = target ? $(target) : null,
                     url = self.$wrap.data('subFilterAjax'),
                     param = {
                         topic: code,
@@ -139,10 +139,10 @@
                         pcHtml = vcui.template(subFilterTemplate, result.data);
                         mHtml = vcui.template(optionTemplate, result.data);
     
-                        $target.after(pcHtml);
+                        $target && $target.after(pcHtml);
     
-                        self.$mFilter.find('#subSymptom').html(mHtml);
-                        self.$mFilter.find('#subSymptom').vcSelectbox('update');
+                        self.$subSymptom.html(mHtml);
+                        self.$subSymptom.vcSelectbox('update');
                     }
                 });
             },
@@ -172,65 +172,25 @@
                 self.$filter.find('.open, .on').removeClass('open on');
                 self.$filter.find('.sub-depth').remove();
 
-                self.$wrap.find('#topic').val('All');
-                self.$wrap.find('#subTopic').val('');
+                self.$symptom.vcSelectbox('selectedIndex', 0);
+
+                self.$topic.val('All');
+                self.$subTopic.val('');
             },
             bindEvent: function() {
                 var self = this;
 
-                // keyword search
-                self.$result.find('.btn-search').on('click', function() {
-                    var value = self.$result.find('#inputKeyword').val(),
-                        resultFlag = self.$result.find('#research').is(':checked'),
-                        param = {};
-                        
-                    if (!resultFlag) {
-                        self.reset();
-                    }
-
-                    self.$wrap.find('#keyword').val(value);
-
-                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-                    self.param = $.extend(param, {
-                        page: 1
-                    });
-                    self.requestData();
-                });
-
-                // list order by
-                self.$result.find('#selectOrder').on('change', function() {
-                    var value = $(this).val(),
-                        param = {};
-                        
-                    self.$wrap.find('#orderBy').val(value);
-                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-                    self.param = $.extend(param, {
-                        page: 1
-                    });
-                    
-                    self.requestData();
-                });
-
-                // pagination
-                self.$result.find('.pagination').on('pageClick', function(e) {
-                    var param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-
-                    self.param = $.extend(param, {
-                        page: e.page
-                    })
-
-                    self.requestData();
-                });
-
                 // filter
                 self.$filter.on('click', '.filter-list > li > .filter-link', function() {
-                    var code = $(this).data('code'),
+                    var $this = $(this),
+                        code = $this.data('code'),
                         param = {};
                     
-                    self.$wrap.find('#topic').val(code);
+                    self.$topic.val(code);
                     if (!$(this).siblings('.sub-depth').length) {
-                        self.$wrap.find('#subTopic').val('');
+                        self.$subTopic.val('All');
                     }
+                    
                     param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
                     self.param = $.extend(param, {
                         page: 1
@@ -250,7 +210,7 @@
                     var code = $(this).data('code'),
                         param = {};
                     
-                    self.$wrap.find('#subTopic').val(code);
+                    self.$subTopic.val(code);
                     param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
                     self.param = $.extend(param, {
                         page: 1
@@ -267,31 +227,78 @@
                 });
 
                 // mobile filter
-                self.$result.find('#symptom').on('change', function() {
+                self.$symptom.on('change', function() {
                     var value = $(this).val(),
                         param = {};
 
-                    self.$wrap.find('#topic').val(value);
-                    self.$wrap.find('#subTopic').val('');
+                    self.$topic.val(value);
+                    self.$subTopic.val('');
                     param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
                     self.param = $.extend(param, {
                         page: 1
                     });
 
                     self.selectFilter(value);
+                    self.setSubFilter(value, this)
                     self.requestData();
                 });
-                self.$result.find('#subSymptom').on('change', function() {
+
+                // mobile sub filter
+                self.$subSymptom.on('change', function() {
                     var value = $(this).val(),
                         param = {};
 
-                    self.$wrap.find('#subTopic').val(value);
+                    self.$subTopic.val(value);
                     param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
                     self.param = $.extend(param, {
                         page: 1
                     });
                     
                     self.selectSubFilter(value);
+                    self.requestData();
+                });
+
+                // keyword search
+                self.$result.find('.btn-search').on('click', function() {
+                    var value = self.$result.find('#inputKeyword').val(),
+                        resultFlag = self.$result.find('#research').is(':checked'),
+                        param = {};
+                        
+                    if (!resultFlag) {
+                        self.reset();
+                    }
+
+                    self.$keyword.val(value);
+
+                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                    self.param = $.extend(param, {
+                        page: 1
+                    });
+                    self.requestData();
+                });
+
+                // list order by
+                self.$result.find('#selectOrder').on('change', function() {
+                    var value = $(this).val(),
+                        param = {};
+                        
+                    self.$orderBy.val(value);
+                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                    self.param = $.extend(param, {
+                        page: 1
+                    });
+                    
+                    self.requestData();
+                });
+
+                // pagination
+                self.$result.find('.pagination').on('pageClick', function(e) {
+                    var param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+
+                    self.param = $.extend(param, {
+                        page: e.page
+                    })
+
                     self.requestData();
                 });
             }

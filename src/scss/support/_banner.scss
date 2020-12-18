@@ -90,3 +90,319 @@
         }
     }
 }
+
+.banner {
+    padding:80px 0 120px;
+    &-inner {
+        max-width: 1380px + 80px;
+        margin:0 auto;
+        padding:0 40px;
+        .banner-tit {
+            margin-bottom:48px;
+            font-size:32px;
+            line-height:48px;
+            text-align:center;
+            word-break:keep-all;
+        }
+        .btn-wrap {
+            text-align:center;
+        }
+    }
+    &.gray {
+        background:#f4f4f4;
+    }
+    @include mobile {
+        padding:32px 0 60px;
+        border-top:12px solid #f4f4f4;
+        &-inner { 
+            padding:0 16px;
+            .banner-tit {
+                margin-bottom:24px;
+                font-size:24px;
+                line-height:33px;
+            }
+            .btn-wrap {
+                .btn {
+                    width:100%;
+                }
+            }
+        }
+        &.gray {
+            background:#fff;
+        }
+    }
+
+    // 다른 서비스 리스트
+    .service-list-wrap {
+        .service-list {
+            margin:0 -12px;
+            @include clearfix;
+            & > li {
+                float:left;
+                width:calc(100% / 6);
+                padding:0 12px;
+                a {
+                    display:block;
+                }
+                .icon {
+                    width:80px;
+                    height:80px;
+                    margin:0 auto 8px;
+                    img {
+                        width:100%;
+                    }
+                }
+                .tit {
+                    @include font-large-1;
+                    font-weight:$font-weight-bold;
+                    text-align:center;
+                }
+            }
+        }
+        @include tablet {
+            .service-list {
+                margin-top:-24px;
+                & > li {
+                    padding-top:24px;
+                    width:calc(100% / 3);
+                }
+            }
+        }
+        @include mobile {
+            .service-list {
+                margin:-40px -8px 0;
+                & > li {
+                    width:50%;
+                    padding:40px 8px 0;
+                }
+            }
+        }
+    }
+
+    // 관련 소모품 리스트
+    .product-slider {
+        position:relative;
+        .slide-controls {
+            .prev {
+                position:absolute;
+                top:50%;
+                left:-24px;
+                transform:translateY(-50%);
+            }
+            .next {
+                position:absolute;
+                top:50%;
+                right:-24px;
+                transform:translateY(-50%);
+            }
+        }
+        .indi-wrap {
+            position:absolute;
+            bottom:0;
+            width:100%;
+        }
+        .slide {
+            &-content {
+                margin:0 -12px;
+            }
+            &-track {
+                padding:2px 0 60px;
+                @include clearfix;
+            }
+            &-conts {
+                float:left;
+                width:25%;
+            }
+        }
+        .item {
+            padding:0 12px;
+            &-inner {
+                padding:12px 40px 32px;
+                border-radius:8px;
+                box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+            }
+            .product {
+                &-image {
+                    margin:0 auto 16px;
+                    text-align:center;
+                    img {
+                        width:100%;
+                        max-width:240px;
+                    }
+                }
+                &-name {
+                    margin-bottom:20px;
+                    .name {
+                        margin-bottom:2px;
+                        font-weight:$font-weight-bold;
+                        @include font-large;
+                        @include textEllipsisClamp(2);
+                    }
+                    .model {
+                        color:#767676;
+                        @include font-small;
+                        font-weight:$font-weight-medium;
+                    }
+                }
+                &-price {
+                    font-size:0;
+                    .discount {
+                        display:inline-block;
+                        vertical-align:bottom;
+                        .price {
+                            @include font-large-1;
+                            font-weight:$font-weight-bold;
+                        }
+                    }
+                    .original {
+                        display:inline-block;
+                        margin-left:4px;
+                        vertical-align:bottom;
+                        .price {
+                            color:#767676;
+                            @include font-medium;
+                            text-decoration-line:line-through;
+                        }
+                    }
+                }
+                &-button {
+                    margin-top:16px;
+                    .btn {
+                        width:100%;
+                    }
+                }
+            }
+
+        }
+        @include mobile {
+            .slide-controls {
+                .prev, .next {
+                    display:none;
+                } 
+            }
+            .slide {
+                &-track {
+                    padding:1px 0 32px;
+                }
+                &-conts {
+                    width:calc((100vw - 16px) / 3 * 2);
+                }
+            }
+            .item {
+                &-inner {
+                    padding:12px 24px 24px;
+                    box-shadow:1px 3px 8px 0 rgba(0, 0, 0, 0.07);
+                }
+                .product {
+                    &-image {
+                        margin:0 auto 4px;
+                        img {
+                            max-width:302px;
+                        }
+                    }
+                    &-name {
+                        margin-bottom:8px;
+                        .name {
+                            margin-bottom:1px;
+                        }
+                        .model {
+                            color:#767676;
+                        }
+                    }
+                    &-price {
+                        .original {
+                            margin-left:6px;
+                        }
+                    }
+                    &-button {
+                        margin-top:12px;
+                    }
+                }
+    
+            }
+        }
+    }
+
+    // 관련된 정보 리스트
+    .info-slider {
+        position:relative;
+        .slide-controls {
+            .prev {
+                position:absolute;
+                top:50%;
+                left:-24px;
+                transform:translateY(-50%);
+            }
+            .next {
+                position:absolute;
+                top:50%;
+                right:-24px;
+                transform:translateY(-50%);
+            }
+        }
+        .indi-wrap {
+            position:absolute;
+            bottom:0;
+            width:100%;
+        }
+        .slide {
+            &-content {
+                margin:0 -12px;
+            }
+            &-track {
+                padding-bottom:60px;
+                @include clearfix;
+            }
+            &-conts {
+                float:left;
+                width:calc(100% / 3);
+            }
+        }
+        .item {
+            padding:0 12px;
+            &-inner {
+                display:block;
+                .img {
+                    margin-bottom:16px;
+                    border-radius:8px;
+                    img {
+                        width:100%;
+                    }
+                }
+                .txt {
+                    @include font-large-1;
+                    font-weight:$font-weight-bold;
+                }
+            }
+        }
+        @include mobile {
+            .slide-controls {
+                .prev, .next {
+                    display:none;
+                }
+            }
+            .slide {
+                &-track {
+                    padding-bottom:32px;
+                }
+                &-conts {
+                    width:calc((100vw - 16px) / 3 * 2);
+                }
+            }
+            .item {
+                &-inner {
+                    border-radius:8px;
+                    box-shadow:1px 2px 8px 0 rgba(0, 0, 0, 0.07);
+                    .img {
+                        border-radius:0;
+                    }
+                    .txt {
+                        padding:0 16px 24px;
+                    }
+                }
+            }
+        }
+    }   
+    
+    // A/S
+}

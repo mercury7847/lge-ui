@@ -198,7 +198,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tabs-wrap border-type ui_tab left">
+                        <div class="tabs-wrap border-type left ui_tab ui_smooth_scroll">
                             <ul class="tabs">
                                 <li class="on"><a href="#" data-value="">전체(200) <em class="blind">선택됨</em></a></li>
                                 <li><a href="#" data-value="통합 드라이버 설치프로그램">통합 드라이버 설치프로그램(110)</a></li>
@@ -341,7 +341,7 @@
                                         <button type="button" class="filter-link" data-code="10000003" data-name="설치/연결">설치/연결</button>
                                     </li>
                                     <li>
-                                        <button type="button" class="filter-link" data-code="10000004" data-name="소음/냄새/열방생">소음/냄새/열방생</button>
+                                        <button type="button" class="filter-link" data-code="10000004" data-name="소음/냄새/열발생">소음/냄새/열발생</button>
                                     </li>
                                     <li>
                                         <button type="button" class="filter-link" data-code="10000005" data-name="스마트 앱">스마트 앱</button>
@@ -373,13 +373,16 @@
                                             <div class="conts">
                                                 <div class="select-wrap">
                                                     <select class="ui_selectbox" name="symptom" id="symptom" title="증상 선택">
-                                                        <option value="">증상</option>
-                                                        <option value="">증상</option>
-                                                        <option value="">증상</option>
+                                                        <option value="" class="placeholder">증상 선택</option>
+                                                        <option value="All">All</option>
+                                                        <option value="10000002">기능</option>
+                                                        <option value="10000003">설치/연결</option>
+                                                        <option value="10000004">소음/냄새/열발생</option>
+                                                        <option value="10000005">스마트 앱</option>
                                                     </select>
                                                     <div class="select-wrap">
                                                         <select class="ui_selectbox" name="subSymptom" id="subSymptom" title="세부증상 선택" disabled>
-                                                            <option class="placeholder">세부증상 선택</option>
+                                                            <option  value="" class="placeholder">세부증상 선택</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -413,7 +416,7 @@
                                                     <li>2020.07.20</li>
                                                     <li>조회 5,692</li>
                                                 </ul>
-                                                <span class="icon-movie"><span class="blind">동영상 가이드 컨텐츠</span></span>
+                                                <span class="icon-movie"><span class="blind">동영상 컨텐츠</span></span>
                                             </a>
                                         </li>
                                         @@for (var i = 0; i < 9; i++) {
@@ -445,12 +448,15 @@
                     </div>
 
                 </div>
+
                 <!-- 관련 소모품이 필요하신가요? -->
+                @@include('./common/support/recommand-product.html')
                 <!-- 직접 방문해서 A/S를 받으시겠습니까? -->
                 @@include('./common/support/center-find.html')
                 <!-- 원하는 결과를 찾지 못하셨다면 다른 서비스를 이용해보세요. -->
                 @@include('./common/support/service-menu.html')
                 <!-- LG제품에 관련된 정보를 확인하세요! -->
+                @@include('./common/support/related-info.html')
             </div>
         </div>
              
