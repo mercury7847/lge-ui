@@ -44,6 +44,14 @@
             }
         }
     }
+    .btn-area {
+        margin-top: -27px;
+        text-align: right;
+        @include mobile {
+            margin-top: 8px;
+            text-align: center;
+        }
+    }
 }
 
 .payinfo-wrap {

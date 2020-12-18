@@ -324,7 +324,7 @@ var res = {
 					"찜한 제품" : ["/html/MYC/ACCF7013.html","","검수완료"],
 					"최근 본 제품" : ["/html/MYC/ACCF7011.html","","검수완료"],
 					"구독" : ["/html/MYC/ACCF7017.html","","검수완료"],
-					// "단골매장" : ["/html/MYC/ACCF7011.html","","진행중"],
+					"단골매장" : ["/html/MYC/ACCF7019.html","","진행중"],
 					"재입고 알림" : ["/html/MYC/ACCF7072.html","","검수완료"],
 				},
 				"제품 관리" : {
