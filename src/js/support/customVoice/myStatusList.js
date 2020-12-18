@@ -15,6 +15,8 @@
                 } else {
                     $('.my-status-list').find(type).show();
                     $('.my-status-list').find('tbody tr:not('+type+')').hide();
+                    
+                    $('.my-status-list-m').find('>ul').show();
                     $('.my-status-list-m').find(type).show();
                     $('.my-status-list-m').find('>ul>li:not('+type+')').hide();
                 }
