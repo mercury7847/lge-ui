@@ -270,9 +270,6 @@
 										font-size:16px;
 										line-height:24px;
 									}
-									& + .desc {
-										margin-top:12px;
-									}
 								}
 								.desc {
 									font-size:16px;
@@ -281,6 +278,9 @@
 										font-size:14px;
 										line-height:22px;
 									}
+								}
+								p + p {
+									margin-top:12px;
 								}
 							}
 							// .bullet-list {
