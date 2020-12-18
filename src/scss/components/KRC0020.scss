@@ -187,6 +187,11 @@
 		.icon-area {
 			top: 0;
 		}
+		&.no-img {
+			.component-inner {
+				padding-top:114px;
+			}
+		}
 	}
     
     .slider-for {
