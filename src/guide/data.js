@@ -318,7 +318,7 @@ var res = {
 					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","검수완료"],
 					"납부내역" : ["/html/MYC/ACCF7027.html","","검수완료"],
 					"방문 알리미" : ["/html/MYC/ACCF7030.html","","검수완료"],
-					// "방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","진행중"]
+					"방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","진행중"]
 				},
 				"관심목록" : {
 					"찜한 제품" : ["/html/MYC/ACCF7013.html","","검수완료"],
