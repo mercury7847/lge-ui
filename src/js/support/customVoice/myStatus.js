@@ -51,7 +51,9 @@
                         if (result.data.resultFlag == 'Y') {
                             $('#numberForm').attr('action', result.data.url).submit();
                         } else if (data.resultFlag == 'N') {
-                            $('#laypop1').vcModal();
+                            lgkorUI.alert('', {
+                                title: result.data.resultMessage
+                            });
                         }
 
                         lgkorUI.hideLoading();
@@ -65,7 +67,7 @@
 
                 if (result.success) {
                     if ($('#authNo').prop('disabled')) {
-                        $('#laypop2').vcModal(); 
+                        $('#laypop1').vcModal(); 
                         return false;
                     }
 
@@ -75,7 +77,9 @@
                         if (result.data.resultFlag == 'Y') {
                             $('#phoneForm').submit();
                         } else if (data.resultFlag == 'N') {
-                            $('#laypop1').vcModal();
+                            lgkorUI.alert('', {
+                                title: result.data.resultMessage
+                            });
                         }
 
                         lgkorUI.hideLoading();
