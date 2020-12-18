@@ -50,7 +50,7 @@
 
                         if (result.data.resultFlag == 'Y') {
                             $('#numberForm').attr('action', result.data.url).submit();
-                        } else if (data.resultFlag == 'N') {
+                        } else if (result.data.resultFlag == 'N') {
                             lgkorUI.alert('', {
                                 title: result.data.resultMessage
                             });
@@ -76,7 +76,7 @@
 
                         if (result.data.resultFlag == 'Y') {
                             $('#phoneForm').submit();
-                        } else if (data.resultFlag == 'N') {
+                        } else if (result.data.resultFlag == 'N') {
                             lgkorUI.alert('', {
                                 title: result.data.resultMessage
                             });
