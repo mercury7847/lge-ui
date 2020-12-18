@@ -3,16 +3,18 @@
     "status": "success",
     "message": null,
     "data": {
+        "blockID": 1,
         "moduleType": "module-type1",
-        "modelId": "MD075123452345",
+        "modelId": "XXX07512345XXX",
+        "rtModelSeq": "00001",
         "userFriendlyName": "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
-        "modelName": "WU900AS",
+        "modelName": "GGG07512345GGG",
         "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
         "combineProduct": "Y",
         "combineText": "결합 -15,000원",
         "modelDescription": "",
         "purchaseInfo": "",
-        "selectColorID": "LeatherYellow_code",
+        "selectColorID": "Opal_Blue_code",
         "siblingColors": [
             {
                 "siblingCode": "LeatherYellow_code",

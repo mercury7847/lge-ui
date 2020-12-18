@@ -307,7 +307,7 @@
 
                     lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
                         $('#fileDetailPopup').html(result).vcModal();
-                        $('#fileDetailPopup').on('click', '.btn-more', function() {
+                        $('#fileDetailPopup').off('click').on('click', '.btn-more', function() {
                             var $list = $(this).parent();
         
                             if ($list.hasClass('on')) {

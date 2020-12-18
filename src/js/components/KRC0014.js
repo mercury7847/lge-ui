@@ -32,8 +32,8 @@ $(window).ready(function(){
                 var videoTarget = $(this).data('target') || "modal";
                 
                 html += '<div class="visual-area video youtube-box">';
-                html += '   <a href="#none" role="button" data-src="';
-                html += videoAccID + '" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="' + videoTarget + '" aria-describedby="' + ariaDesc + '">plays audio description video</a>'
+                //html += '   <a href="#none" role="button" data-src="';
+                //html += videoAccID + '" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="' + videoTarget + '" aria-describedby="' + ariaDesc + '">plays audio description video</a>'
                 html += '   <a href="#none" data-src="';
                 html += videoID + '" class="see-video" data-type="youtube" data-target="' + videoTarget + '" aria-describedby="' + ariaDesc + '">';
                 html += '       <img src="' + largeImgURL + '" alt="' + alt + '">';
@@ -50,7 +50,7 @@ $(window).ready(function(){
                 var videoTitleColor = $(this).data('title-color') || "";
 
                 html += '<div class="visual-area animation-box">';
-                html += '   <a href="#none" role="button" data-src="' + aniAccSrc + '" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>';
+                //html += '   <a href="#none" role="button" data-src="' + aniAccSrc + '" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>';
                 html += '   <img src="' + largeImgURL + '" alt="">';
                 html += '   <p class="hidden">' + accDesc + '</p>';
                 html += '   <div class="animation-area">';
