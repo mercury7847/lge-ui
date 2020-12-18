@@ -5,8 +5,8 @@ $(document).ready(function() {
 
     var youtubeTemplate =     
         '<div class="visual-area video youtube-box">'+
-        '   <a href="#none" role="button" data-src="{{videoAccID}}"'+
-        ' class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="{{videoTarget}}" aria-describedby="{{ariaDesc}}">plays audio description video</a>'+
+        //'   <a href="#none" role="button" data-src="{{videoAccID}}"'+
+        //' class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="{{videoTarget}}" aria-describedby="{{ariaDesc}}">plays audio description video</a>'+
         '   <a href="#none" data-src="{{videoID}}"'+
         ' class="see-video" data-type="youtube" data-target="{{videoTarget}}" aria-describedby="{{ariaDesc}}">'+
         '       <img src="{{largeImgURL}}" alt="{{alt}}">'+
@@ -17,7 +17,7 @@ $(document).ready(function() {
 
     var aniboxTemplate = 
          '<div class="visual-area animation-box">'+
-         '   <a href="#none" role="button" data-src="{{aniAccSrc}}" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="{{ariaDesc}}">Plays audio Description Video</a>'+
+         //'   <a href="#none" role="button" data-src="{{aniAccSrc}}" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="{{ariaDesc}}">Plays audio Description Video</a>'+
          '   <img src="{{largeImgURL}}" alt="{{alt}}">'+
          '   <p class="hidden">{{accDesc}}</p>'+
          '   <div class="animation-area">'+
