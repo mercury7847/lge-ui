@@ -2,26 +2,29 @@
     margin-bottom:48px;
     padding:32px;
     border-radius:8px;
-    background:#f4f4f4;
+    //background:#f4f4f4;
+    background-image: linear-gradient(98deg, #8d71ec, #ff537c 99%);
     @include mobile {
         margin-bottom:40px;
         padding:32px 12px;
     }
-    > p.tit {
-        color:#222;
+    > .tit {
+        color: #fff;
+        //color:#222;
         @include font-large-1;
         font-weight:700;
         text-align:center;
         em {
-            color:#EC455A;
+            //color:#EC455A;
         }
     }
     > .desc {
-        color:#222;
+        color: #fff;
+        //color:#222;
         @include font-large-1;
         text-align:center;
         em {
-            color:#EC455A;
+            //color:#EC455A;
         }
     }
     .form-wrap {
@@ -30,6 +33,9 @@
         .forms {
             .tit {
                 width:117px;
+                label {
+                    color: #fff;
+                }
             }
             .conts {
                 width:calc(100% - 117px);
