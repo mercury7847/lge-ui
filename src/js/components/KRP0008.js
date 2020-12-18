@@ -544,7 +544,8 @@
                     var success = data.success.toLowerCase();
                     if (success != 'y' && data.success != 'yes') {
                         if(compare) {
-                            $dm.removeProp('checked');
+                            //$dm.removeProp('checked');
+                            $dm.prop('checked',false);
                         } else {
                             $dm.prop('checked',true);
                         }
