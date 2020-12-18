@@ -65,12 +65,17 @@
                         ok: function() {
                             var ajaxUrl = self.$form.data('ajax');
                             var data = validation.getAllValues();
+                            var formData = new FormData();
+   
+                            for (var key in data) {
+                                formData.append(key, data[key]);
+                            }
 
                             $.ajax({
                                 type : 'POST',
                                 url : ajaxUrl,
                                 dataType : 'json',
-                                data : data,
+                                data : formData,
                                 enctype: 'multipart/form-data',
                                 processData: false,
                                 contentType: false
