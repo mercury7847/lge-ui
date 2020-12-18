@@ -67,7 +67,7 @@
 
                 if (result.success) {
                     if ($('#authNo').prop('disabled')) {
-                        $('#laypop2').vcModal(); 
+                        $('#laypop1').vcModal(); 
                         return false;
                     }
 
