@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "단골매장",
+                "pageDesc" : "자주가는 매장을 단골매장으로 등록해 보세요."
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect3" : [
+                                { "on": "", "page": "찜한 제품" },
+                                { "on": "", "page": "최근 본 제품" },
+                                { "on": "", "page": "구독" },
+                                { "on": "on", "page": "단골매장" },
+                                { "on": "", "page": "재입고 알림" },
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <div class="my-contract-info">
+                                <p class="tit">이케어 고객님의 단골매장은 총 00개 입니다.</p>
+                                <div class="btn-area">
+                                    <a href="#" class="btn-link"><span>매장 추가 등록하러 가기</span></a>
+                                </div>
+                            </div>
+                            <div class="list-wrap">
+                                @@include('./common/modules/bookmark-store-list.html', {
+                                    "item" : [
+                                        {
+                                            head : "강남본점 BESTSHOP",
+                                            title : "서울특별시 강남구 청담동 86-1 LG 청담빌딩 LG BEST SHOP",
+                                            number : "02-3448-5191"
+                                        },{
+                                            head : "개봉점 BESTSHOP",
+                                            title : "서울특별시 구로구 개봉동 144-5 미서빌딩 LG BEST SHOP",
+                                            number : "02-3448-5191"
+                                        },{
+                                            head : "매장명 매장분류",
+                                            title : "[칭찬합니다] 타이틀 최대 1줄, 초과 시 말줄임 처리 타이틀 최대 1줄, 초과 시 말줄임 처리 타이틀 최대 1줄, 초과 시 말줄임 처리 타이틀 최대 1줄, 초과 시 말줄임 처리",
+                                            number : "(N)NN-NNNN-NNNN"
+                                        }
+                                    ]
+                                })
+                            </div>
+                            @@include('./common/modules/pagination.html', {
+                                count: 5
+                            })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>
