@@ -240,6 +240,49 @@
 									word-break:keep-all;
 								}
 							}
+							.inner {
+								position:relative;
+								max-width:472px;
+								padding-left:112px;
+								@include mobile {
+									padding-left:80px;
+								}
+								> i {
+									display:block;
+									position:absolute;
+									top:0;
+									left:10px;
+									width:60px;
+									height:60px;
+									img {
+										width:100%;
+									}
+									@include mobile {
+										width:40px;
+										height:40px;
+									}
+								}
+								.tit {
+									font-size:20px;
+									font-weight:700;
+									line-height:30px;
+									@include mobile {
+										font-size:16px;
+										line-height:24px;
+									}
+								}
+								.desc {
+									font-size:16px;
+									line-height:26px;
+									@include mobile {
+										font-size:14px;
+										line-height:22px;
+									}
+								}
+								p + p {
+									margin-top:12px;
+								}
+							}
 							// .bullet-list {
 							// 	max-width:472px;
 							// 	margin-top:8px;
