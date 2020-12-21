@@ -784,17 +784,17 @@
         .box-visit {
             display: inline-block;
             vertical-align: top;
-            &.visit-calendar {
-                max-width: 360px;
-            }
+            &.visit-calendar,
             &.visit-timetable {
-                max-width: 412px;
+                width: 100%;
             }
-            @include mobile {
-                &.visit-calendar,
+            @include pc {
+                &.visit-calendar {
+                    max-width: 360px;
+                }
                 &.visit-timetable {
-                    width: 100%;
-                }    
+                    max-width: 412px;
+                }
             }
             .tit-wrap {
                 margin-bottom: 12px;
@@ -826,7 +826,8 @@
                 }
             }
         }
-        @include mobile {
+        // @include mobile,
+        @include tablet {
             display: block;
             .box-visit {
                 margin-top: 40px;
@@ -939,6 +940,7 @@
         text-align: left;
         font-size: 16px;
         line-height: 1.63;
+        min-width: 260px;
         ul {
             display: inline-block;
             font-size: 0;
