@@ -1,0 +1,121 @@
+.tabs-wrap {
+    @include calc(width,100%,448px);
+    @media screen and (max-width: $tablet-l-width) {
+        width: auto;
+    }
+    @include mobile {
+        margin: 0 16px;
+    }
+}
+
+//장바구니
+.check-option {
+    @include clearfix;
+    padding: 24px 0 16px;
+    .chk-wrap {
+        float: left;
+        input + label {
+            @include font-small;
+        }
+    }
+    .btn-area {
+        float: right;
+    }
+}
+
+.bullet-list {
+    clear: both;
+    @include mobile {
+        margin-top: 40px;
+    }
+    .b-tit {
+        color: $color-gray-1;
+    }
+}
+
+// 이 제품 어때요?
+.product-recommend-wrap {
+    margin: 0 -12px;
+    padding: 64px 0 52px;
+    @include mobile {
+        padding: 40px 16px 44px;
+    }
+    .title {
+        max-width: 1296px;
+        margin: 0 auto 10px;
+        padding: 0 12px;
+        font-weight: 700;
+        @include font-medium;
+        @include mobile {
+            padding: 0 6px;
+        }
+    }
+}
+
+.no-data-wrap {
+    margin-top: 24px;
+}
+.membership-benefit {
+    display: flex;
+    margin-top: 64px;
+    font-size: 0;
+    .box {
+        display: inline-block;
+        @include calc(width,50%,6px);
+        padding: 64px 32px 72px;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
+        vertical-align: top;
+        &:before {
+            display: inline-block;
+            width: 64px;
+            height: 64px;
+            margin-bottom: 24px;
+            background: no-repeat center;
+            background-size: 64px 64px;
+            content: '';
+        }
+        &.membership {
+            &:before {
+                background-image: url('/lg5-common/images/icons/icon-img01-64.svg');
+            }
+        }
+        &.card-benefit {
+            margin-left: 12px;
+            &:before {
+                background-image: url('/lg5-common/images/icons/icon-img03-64.svg');
+            }
+        }
+        dt {
+            margin-bottom: 20px;
+            font-weight: 700;
+            @include font-large-3;
+            word-break: keep-all;
+        }
+        dd {
+            @include font-medium;
+            color: $color-gray-1;
+        }
+    }
+
+    @include mobile {
+        display: block;
+        margin-top: 12px;
+        .box {
+            width: 100%;
+            padding: 32px 20px 36px;
+            &.card-benefit {
+                margin: 12px 0 0;
+            }
+            dt {
+                font-size: $font-large-3;
+                line-height: 40px;
+            }
+            dd {
+                font-size: $font-small;
+                line-height: 22px;
+            }
+        }
+    }
+}

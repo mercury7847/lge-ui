@@ -101,7 +101,7 @@
                 &.active > a,
                 &.on > a {
                     color:#222;
-                    background-color:#f4f4f4;
+                    background-color:#e4e4e4;
                 }
             }
             @include mobile {
@@ -123,20 +123,39 @@
 
     // H2
     &.border-type {
+        position:relative;
+        &::before {
+            content:' ';
+            position:absolute;
+            left:0;
+            right:0;
+            bottom:0;
+            height:1px;
+            background:#ddd;
+        }
+        @include pc {
+            &:not(.left) {
+                &::before {
+                    display:none;
+                }
+            }
+        }
         .tabs {
             > li {
-                margin-left:24px;
+                margin-left:32px;
                 &:first-child {
                     margin-left:0;
                 }
                 > a {
-                    padding-bottom:2px;
-                    border-bottom:2px solid transparent;
+                    padding-bottom:4px;
+                    border-bottom:4px solid transparent;
                     @include font-medium;
                     font-weight:700;
                     @include mobile {
-                        padding-bottom:9px;
+                        padding-bottom:8px;
                         border-width:3px;
+                        font-size:15px;
+                        line-height:23px;
                     }
                 }
                 &.on > a {
