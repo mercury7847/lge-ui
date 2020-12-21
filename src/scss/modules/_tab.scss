@@ -85,18 +85,18 @@
             vertical-align:top;
             > li {
                 display:inline-block;
-                margin-left:8px;
+                margin-left:16px;
                 &:first-child {
                     margin-left:0;
                 }
                 > a {
                     display:block;
-                    padding:4px 12px;
-                    border-radius:19px;
+                    padding:9px 16px;
+                    border-radius:25px;
                     background-color:transparent;
                     font-size:22px;
+                    line-height:32px;
                     font-weight:700;
-                    line-height:30px;
                 }
                 &.active > a,
                 &.on > a {
@@ -106,10 +106,13 @@
             }
             @include mobile {
                 >li {
-                    margin-left:0;
+                    margin-left:8px;
+                    &:first-child {
+                        margin-left:0;
+                    }
                     > a {
-                        padding:5px 14px;
-                        border-radius:20px;
+                        padding:8px 12px;
+                        border-radius:22px;
                         font-size:18px;
                         line-height:26px;
                     }

@@ -39,9 +39,9 @@
             <div class="inner">
                 <div class="square-partition tall">
                     <!-- 2020.10.6 animation type 추가 -->
-                    <div class="square main text-white">
+                    <div class="square main">
                         <div class="visual-area animation-box">
-                            <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
+                            <!-- <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a> -->
                             <img data-pc-src="/lg5-common/images/KRC0018/@square-case-tall.jpg" data-m-src="/lg5-common/images/KRC0018/@square-case-tall-m.jpg" alt="">
                             <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
                             <div class="animation-area">
@@ -51,12 +51,24 @@
                                     <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
                                     -->
                                 </video>
-                                <div class="controller-wrap wa-btn">
-                                    <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
-                                </div>
                             </div>
+                            <!-- [KR수정_201221] 애니메이션 버튼 DOM 위치 변경 -->
+                            <div class="controller-wrap wa-btn">
+                                <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                            </div>
+                            <!-- // [KR수정_201221] 애니메이션 버튼 DOM 위치 변경 -->
+                            <!-- [KR수정_201221] 애니메이션일 때 text-area 추가 -->
+                            <div class="copy-boxing-area">
+                                <!-- 6. eyebrow #2 -->
+                                <div class="category">TELEVISION</div>
+                                <!-- // 6. eyebrow #2 -->
+                                <!-- 7. headline #2 -->
+                                <div class="head" id="title02">@@head</div>
+                                <!-- // 7. headline #2 -->
+                            </div>
+                            <!-- // [KR수정_201221] 애니메이션일 때 text-area 추가 -->
                             <!-- caption -->
-                            <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                            <!-- <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div> -->
                             <!-- // caption -->
                         </div>
                     </div>
@@ -64,8 +76,8 @@
                 </div>
                 <div class="square-partition top">
                     <!-- 5. image -->
-                    <div class="square sub length-sm text-black youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
-                        <a href="#none" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play_ad" data-link-name="{video id}" aria-describedby="title02">plays audio description video</a>
+                    <div class="square sub length-sm youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
+                        <!-- <a href="#none" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play_ad" data-link-name="{video id}" aria-describedby="title02">plays audio description video</a> -->
                         <!-- * youtube video modal은 아래의 방식으로 입력 -->
                         <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="common-area case-of-video see-video" data-type="youtube" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play" data-link-name="{video id}" aria-describedby="title02">
                             <div class="visual-area">
@@ -84,8 +96,8 @@
                     </div>
                     <!-- // 5. image -->
                     <!-- 8. image -->
-                    <div class="square sub length-md text-black youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
-                        <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play_ad" data-link-name="{video id}" aria-describedby="title03">plays audio description video</a>
+                    <div class="square sub length-md youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
+                        <!-- <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play_ad" data-link-name="{video id}" aria-describedby="title03">plays audio description video</a> -->
                         <!-- * youtube video modal은 아래의 방식으로 입력 -->
                         <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="common-area case-of-video see-video" data-type="youtube" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play" data-link-name="{video id}" aria-describedby="title03">
                             <div class="visual-area">
@@ -106,8 +118,8 @@
                 </div>
                 <div class="square-partition bottom">
                     <!-- 11. image -->
-                    <div class="square sub length-md text-white youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
-                        <a href="#none" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play_ad" data-link-name="{video id}" aria-describedby="title04">plays audio description video</a>
+                    <div class="square sub length-md youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
+                        <!-- <a href="#none" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play_ad" data-link-name="{video id}" aria-describedby="title04">plays audio description video</a> -->
                         <!-- * youtube video modal은 아래의 방식으로 입력 -->
                         <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="common-area case-of-video see-video" data-type="youtube" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play" data-link-name="{video id}" aria-describedby="title04">
                             <div class="visual-area">
@@ -126,8 +138,8 @@
                     </div>
                     <!-- // 11. image -->
                     <!-- 14. image -->
-                    <div class="square sub length-sm text-white youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
-                        <a href="#none" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play_ad" data-link-name="{video id}" aria-describedby="title05">plays audio description video</a>
+                    <div class="square sub length-sm youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
+                        <!-- <a href="#none" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play_ad" data-link-name="{video id}" aria-describedby="title05">plays audio description video</a> -->
                         <!-- * youtube video modal은 아래의 방식으로 입력 -->
                         <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="common-area case-of-video see-video" data-type="youtube" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play" data-link-name="{video id}" aria-describedby="title05">
                             <div class="visual-area">
