@@ -1,9 +1,9 @@
 .tooltip-wrap {
     display:inline-block;
     position:relative;
-    height:20px;
-    padding-top:2px;
-    line-height:20px;
+    height:16px;
+    margin-top:4px;
+    line-height:16px;
     vertical-align:top;
     @include mobile {
         position:static;
@@ -12,12 +12,12 @@
     .tooltip-icon {
         display:block;
         position:relative;
-        width:20px;
-        height:20px;
+        width:16px;
+        height:16px;
         background:url('/lg5-common/images/icons/icon-tooltip.svg') center no-repeat;
         background-size:100%;
         font-size:0;
-        line-height:20px;
+        line-height:16px;
         cursor:pointer;
     }
     &.active {
