@@ -162,7 +162,7 @@
         }
         .lgpay-visual {
             max-width: 678px;
-            flex: 1;
+            //flex: 1;
             img {
                 max-width: 100%;
                 height: auto;
@@ -285,6 +285,9 @@
                 }
             }
             .slide-controls {
+                right: 0;
+                left: 0;
+                transform: translateX(0px);
                 .btn-arrow {
                     &.prev,
                     &.next {
