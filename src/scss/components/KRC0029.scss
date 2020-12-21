@@ -120,10 +120,10 @@
         }
         @include mobile {
             &.prev {
-                left: 4px;
+                left: 8px;
             }
             &.next {
-                right: 4px;
+                right: 8px;
             }
         }
     }
