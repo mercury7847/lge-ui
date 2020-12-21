@@ -615,6 +615,7 @@
             width:14%;
             color:#222;
             @include font-medium;
+            font-weight:700;
             line-height:48px;
             @include mobile {
                 float:none;
