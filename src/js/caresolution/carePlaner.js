@@ -158,38 +158,6 @@
         '       <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>'+
         '   </div>'+
         '</div>';
-
-    var _estimateProdTemplate =
-        '<ul>'+
-        '   {{#each item in putitem_list}}'+
-        '   <li class="item">'+
-        '       <div class="img-wrap">'+
-        '           <img src="{{item.itemData.modelImg}}" alt="{{item.itemData.userFriendlyName}}">'+
-        '       </div>'+
-        '       <div class="txt-wrap">'+
-        '           <div class="flag-wrap">'+
-        '               <span class="flag"><span class="blind">서비스명</span>{{item.itemData.serviceName}}</span>'+
-        '           </div>'+
-        '           <div class="tit-info">'+
-        '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.itemData.userFriendlyName}}</p>'+
-        '               <div class="etc-info">'+
-        '                   <span class="txt"><span class="blind">제품 코드</span>{{item.itemData.modelName}}</span>'+
-        '                   <span class="txt"><span class="blind">색상</span>{{item.selectOptions.optdata["siblingColors"].name}}</span>'+
-        '               </div>'+
-        '           </div>'+
-        '           <div class="etc-info">'+
-        '               {{#each info in item.selectOptions.optstring}}'+
-        '               <span class="txt">{{info}}</span>'+
-        '               {{/each}}'+
-        '           </div>'+
-        '           <div class="price-info">'+
-        '               <p class="price sale"><span class="blind">기본 이용 요금</span>월 {{item.itemData.basicMonthlyPrice}}원</p>'+
-        '               <p class="price"><span class="blind">최종 이용 요금</span>월 {{item.itemData.monthlyPrice}}원</p>'+
-        '           </div>'+
-        '       </div>'+
-        '   {{/each}}'+
-        '   </li>'
-        '</ul>';
     
     //무상케어십 계약
     var freeCareshipTemplate =
@@ -203,7 +171,77 @@
                 '</div>'+
             '</div>'+
         '</li>';
+
+    var putItemPriceTemplate = 
+        '<div class="total-info">'+
+            '<dl>'+
+                '<dt>이용 요금</dt>'+
+                '<dd>{{totalPrice}}</dd>'+
+            '</dl>'+
+            '<dl>'+
+                '<dt>결합 할인</dt>'+
+                '<dd class="sale">{{totalTrans}}</dd>'+
+            '</dl>'+
+            '<dl class="last">'+
+                '<dt>제휴카드 할인시</dt>'+
+                '<dd class="sale sm">{{affiliateCard}}</dd>'+
+            '</dl>'+
+            '<a href="#n" class="btn"><span>견적 확인하기</span></a>'+
+        '</div>';
+
+        var _estimateProdTemplate =
+            '<div class="estimate-list">'+
+            '<ul>'+
+            '   {{#each item in itemList}}'+
+            '   <li class="item">'+
+            '       <div class="img-wrap">'+
+            '           <img src="{{item.imageUrl}}" alt="{{item.displayName}}">'+
+            '       </div>'+
+            '       <div class="txt-wrap">'+
+            '           <div class="flag-wrap">'+
+            '               <span class="flag"><span class="blind">서비스명</span>{{item.contractTypeNm}}</span>'+
+            '           </div>'+
+            '           <div class="tit-info">'+
+            '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.displayName}}</p>'+
+            '               <div class="etc-info">'+
+            '                   <span class="txt"><span class="blind">제품 코드</span>{{item.modelCd}}</span>'+
+            '                   <span class="txt"><span class="blind">색상</span>{{item.colorOption}}</span>'+
+            '               </div>'+
+            '           </div>'+
+            '           <div class="etc-info">'+
+            '               {{#each info in item.option}}'+
+            '               <span class="txt">{{info}}</span>'+
+            '               {{/each}}'+
+            '           </div>'+
+            '           <div class="price-info">'+
+            '               <p class="price sale"><span class="blind">기본 이용 요금</span>{{item.originalPrice}}</p>'+
+            '               <p class="price"><span class="blind">최종 이용 요금</span>{{item.monthPrice}}</p>'+
+            '           </div>'+
+            '       </div>'+
+            '   {{/each}}'+
+            '   </li>'+
+            '</ul>'+
+            '</div>';
         
+        var _estimatePriceTemplate = 
+            '<div class="estimate-price">'+
+                '<dl>'+
+                    '<dt>기본 이용 요금</dt>'+
+                    '<dd>{{totalPrice}}</dd>'+
+                '</dl>'+
+                '<dl>'+
+                    '<dt>결합 할인</dt>'+
+                    '<dd class="sale">{{totalTrans}}</dd>'+
+                '</dl>'+
+                '<dl class="total">'+
+                    '<dt>최종 이용 요금</dt>'+
+                    '<dd>{{usedPrice}}</dd>'+
+                '</dl>'+
+                '<button type="button" class="btn block" onClick="location.href={{requestUrl}}">'+
+                    '<span>청약 신청하기</span>'+
+                '</button>'+
+            '</div>';
+            
 
     var _showItemLength = 8;
 
@@ -231,6 +269,8 @@
     var $putItemContainer;
 
     var _serviceID = 0;
+
+    var tempPutItemIdx, tempPutID;
 
     function init(){
         vcui.require(['ui/carousel', 'ui/tab', 'ui/sticky', 'ui/modal', 'ui/selectbox', 'ui/smoothScrollTab'], function () {
@@ -579,10 +619,61 @@
         })
     }
 
-    //담기...
-    function addPutItem(item){ 
+    function requestPutItem(sendata){
         lgkorUI.showLoading();
 
+        lgkorUI.requestAjaxData(_putItemUrl, sendata, function(result){
+            lgkorUI.hideLoading();
+            
+            if(result.data.success == "N"){
+                lgkorUI.commonAlertHandler(result.data.alert);
+                return;
+            }
+
+            if(result.data.isLogin){
+                $('.freeCareshipBox').remove();
+                if(result.data.contract.freeCareShip == "Y"){
+                    var addlist = vcui.template(freeCareshipTemplate);
+                    $('.ui_total_prod .ui_carousel_slider .slide-track').prepend(addlist);
+                } 
+                $('.ui_total_prod .ui_carousel_slider').vcCarousel('reinit');
+                lgkorUI.resetFlexibleBox();
+
+                if(result.data.contract.transModelCheck){
+                    $('.ui_total_prod .ui_carousel_slider').find('.ui_flexible_box[data-contract-flag='+result.data.contract.transModelCheck+']')
+                    .eq(0).removeClass('comb-type').addClass('comb-type');
+                }
+            }
+            
+            var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
+            if(tempPutItemIdx > -1){
+                var data = {
+                    itemData: _currentItemList[tempPutItemIdx],
+                    putID : _currentItemList[tempPutItemIdx]['modelId'] + "-" + parseInt(Math.random()*999) + "-" + parseInt(Math.random()*99) + "-" + parseInt(Math.random()*9999)
+                }                
+                
+                if(putItemStorage[lgkorUI.CAREPLANER_ID] == undefined){
+                    putItemStorage[lgkorUI.CAREPLANER_ID] = [data];
+                } else{     
+                    putItemStorage[lgkorUI.CAREPLANER_ID].unshift(data);
+                    $(window).trigger("toastshow", "제품 담기가 완료되었습니다.");
+                }
+                putItemStorage[lgkorUI.CAREPLANER_PRICE] = {
+                    totalPrice: result.data.total.totalPrice,
+                    totalTrans: result.data.total.totalTrans,
+                    affiliateCard: result.data.total.affiliateCard
+                }
+            } else{
+                putItemStorage[lgkorUI.CAREPLANER_ID] = vcui.array.filter(putItemStorage[lgkorUI.CAREPLANER_ID], function(item){
+                    return item['putID'] != tempPutID;
+                });
+            }
+            lgkorUI.setStorage(lgkorUI.CAREPLANER_KEY, putItemStorage);
+        });
+    }
+
+    //담기...
+    function addPutItem(item){ 
         var idx = $(item).parents('.prd-care-vertical').data('index')-1;
         var sendata = {
             modelIds: [_currentItemList[idx]['modelId']],
@@ -597,59 +688,29 @@
                 sendata.rtModelSeqs.push(storageData.itemData.rtModelSeq);
             }
         }
+
+        tempPutItemIdx = idx;
+        tempPutID = "";
         
-        lgkorUI.requestAjaxData(_putItemUrl, sendata, function(result){
-            lgkorUI.hideLoading();
-            
-            if(result.data.success == "N"){
-                lgkorUI.commonAlertHandler(result.data.alert);
-                return;
-            }
-
-            if(result.data.isLogin){
-                if(result.data.contract.freeCareShip == "Y"){
-                    var addlist = vcui.template(freeCareshipTemplate);
-                    $('.ui_total_prod .ui_carousel_slider .slide-track').prepend(addlist);
-                } else{
-                    $('.freeCareshipBox').remove();
-                }
-                $('.ui_total_prod .ui_carousel_slider').vcCarousel('reinit');
-                lgkorUI.resetFlexibleBox();
-
-                if(result.data.contract.transModelCheck){
-                    $('.ui_total_prod .ui_carousel_slider').find('.ui_flexible_box[data-contract-flag='+result.data.contract.transModelCheck+']')
-                    .eq(0).removeClass('comb-type').addClass('comb-type');
-                }
-            }
-            
-            var data = {
-                itemData: _currentItemList[idx],
-                putID : _currentItemList[idx]['modelId'] + "-" + parseInt(Math.random()*999) + "-" + parseInt(Math.random()*99) + "-" + parseInt(Math.random()*9999)
-            }
-            
-            var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-            if(putItemStorage[lgkorUI.CAREPLANER_ID] == undefined){
-                putItemStorage[lgkorUI.CAREPLANER_ID] = [data];
-            } else{     
-                putItemStorage[lgkorUI.CAREPLANER_ID].unshift(data);
-                $(window).trigger("toastshow", "제품 담기가 완료되었습니다.");
-            }
-            putItemStorage[lgkorUI.CAREPLANER_PRICE] = {
-                totalPrice: result.data.total.totalPrice,
-                totalTrans: result.data.total.totalTrans,
-                affiliateCard: result.data.total.affiliateCard
-            }
-            lgkorUI.setStorage(lgkorUI.CAREPLANER_KEY, putItemStorage);
-        });
+        requestPutItem(sendata);
     }
 
+    //담기 삭제...
     function removePutItem(id){
+        var sendata = {modelIds:[], rtModelSeqs:[]};
         var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-        putItemStorage[lgkorUI.CAREPLANER_ID] = vcui.array.filter(putItemStorage[lgkorUI.CAREPLANER_ID], function(item){
-            return item['putID'] != id;
-        });
+        for(var key in putItemStorage[lgkorUI.CAREPLANER_ID]){
+            var storageData = putItemStorage[lgkorUI.CAREPLANER_ID][key];
+            if(storageData.putID != id){
+                sendata.modelIds.push(storageData.itemData.modelId);
+                sendata.rtModelSeqs.push(storageData.itemData.rtModelSeq);
+            }
+        }
 
-        lgkorUI.setStorage(lgkorUI.CAREPLANER_KEY, putItemStorage);
+        tempPutItemIdx = -1;
+        tempPutID = id;
+        
+        requestPutItem(sendata);
     }
 
     function setPutItems(){
@@ -665,7 +726,7 @@
             $putItemContainer.css({display:'block'});
             
             $('.ui_carousel_slider3').vcCarousel({
-                settings: "unslick",
+                settings: "unbuild",
                 responsive: [
                     {
                         breakpoint: 10000,
@@ -690,12 +751,23 @@
                     },
                     {
                         breakpoint: 768,
-                        settings: "unslick"
+                        settings: "unbuild"
                     }
                 ]
             });
+            if(leng < 3){
+                $('.ui_carousel_slider3').find('.slide-controls').hide();
+            } else{
+                $('.ui_carousel_slider3').find('.slide-controls').show();
+            }
             $putItemContainer.css({display:display});
         }
+
+        var totalinfo = $putItemContainer.find('.total-info');
+        var newinfo = vcui.template(putItemPriceTemplate, putItemCompare[lgkorUI.CAREPLANER_PRICE]);
+        totalinfo.after(newinfo);
+
+        totalinfo.remove();
         
         $putItemContainer.find('.tit-wrap .num strong').text(leng);
     }
@@ -760,38 +832,102 @@
     }
 
     function openEstimatePopUp(){
-        $('#pop-estimate').find('.estimate-list').empty();
-        //estimate_prod_slide
-        var putItemCompare = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-        var putItemList = putItemCompare[lgkorUI.CAREPLANER_ID];
-        var leng = putItemList.length;
-        var estimateList = vcui.template(_estimateProdTemplate, putItemCompare);
-        $('#pop-estimate').find('.estimate-list').append($(estimateList).get(0));
+        lgkorUI.showLoading();
+        
+        var sendata = {modelIds:[], rtModelSeqs:[]};
+        var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
+        for(var key in putItemStorage[lgkorUI.CAREPLANER_ID]){
+            var storageData = putItemStorage[lgkorUI.CAREPLANER_ID][key];
+            sendata.modelIds.push(storageData.itemData.modelId);
+            sendata.rtModelSeqs.push(storageData.itemData.rtModelSeq);
+        }
 
-        $('#pop-estimate').find('.tit-wrap .leng').text('총 '+leng+'개');
+        lgkorUI.requestAjaxData(_estimateConfirmUrl, sendata, function(result){
+            lgkorUI.hideLoading();
+            
+            if(result.data.success == "N"){
+                lgkorUI.commonAlertHandler(result.data.alert);
+                return;
+            }
+
+            var estimatePrice = $('#pop-estimate').find('.estimate-price');
+            var newelement = vcui.template(_estimatePriceTemplate, result.data.priceInfo);
+            estimatePrice.after(newelement);
+            estimatePrice.remove();
+
+            var cardSelector = $('#pop-estimate').find('.alliance-card .ui_selectbox');
+            cardSelector.find('option').remove();
+            for(var key in result.data.cardList){
+                console.log(result.data.cardList[key].cardValue)
+                cardSelector.append("<option value='" + result.data.cardList[key].cardValue + "'>" + result.data.cardList[key].cardName + "</option>");
+            }
+            cardSelector.vcSelectbox('update');
+
+            if(result.data.cardDescription) $('#pop-estimate').find('.alliance-card .price').text(result.data.cardDescription).show();
+            else $('#pop-estimate').find('.alliance-card .price').hide();
+            
+            $('#pop-estimate').find('.tit-wrap span.leng').empty().html("총 "+"<strong>"+result.data.totalCnt+"</strong>개");
+
+            var listwrap = $('#pop-estimate').find('.estimate-list');
+            var estimateProdList = vcui.template(_estimateProdTemplate, result.data);
+            listwrap.after($(estimateProdList).get(0));
+            listwrap.remove();
+
+            $('#pop-estimate').vcModal();
+                
+            $('#pop-estimate').find('.estimate-list').vcCarousel({
+                settings: "unslick",
+                responsive: [
+                    {
+                        breakpoint: 10000,
+                        settings: "unslick"
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            infinite: false,
+                            variableWidth : true,
+                            dots: false,
+                            slidesToShow: 1, 
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+        });
+
+        // 
+        // //estimate_prod_slide
+        // var putItemCompare = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
+        // var putItemList = putItemCompare[lgkorUI.CAREPLANER_ID];
+        // var leng = putItemList.length;
+        // var estimateList = vcui.template(_estimateProdTemplate, putItemCompare);
+        // $('#pop-estimate').find('.estimate-list').append($(estimateList).get(0));
+
+        // $('#pop-estimate').find('.tit-wrap .leng').text('총 '+leng+'개');
         
 
-        $('#pop-estimate').vcModal();
+        
 
-        $('.estimate_prod_slide').vcCarousel({
-            settings: "unslick",
-            responsive: [
-                {
-                    breakpoint: 10000,
-                    settings: "unslick"
-                },
-                {
-                    breakpoint: 767,
-                    settings: {
-                        infinite: false,
-                        variableWidth : true,
-                        dots: false,
-                        slidesToShow: 1, 
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
+        // $('.estimate_prod_slide').vcCarousel({
+        //     settings: "unslick",
+        //     responsive: [
+        //         {
+        //             breakpoint: 10000,
+        //             settings: "unslick"
+        //         },
+        //         {
+        //             breakpoint: 767,
+        //             settings: {
+        //                 infinite: false,
+        //                 variableWidth : true,
+        //                 dots: false,
+        //                 slidesToShow: 1, 
+        //                 slidesToScroll: 1
+        //             }
+        //         }
+        //     ]
+        // });
     }
 
     function getTabID(){

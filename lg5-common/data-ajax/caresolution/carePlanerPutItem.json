@@ -10,9 +10,9 @@
         },
         "total" : {
             "totalCnt" : 2,
-            "totalPrice" : 81000,
-            "totalTrans" : 20000,
-            "affiliateCard" : 26000
+            "totalPrice" : "월 81,400원",
+            "totalTrans" : "월 -5,000원",
+            "affiliateCard" : "월 최대 -16,000원"
         }
     }
 }
