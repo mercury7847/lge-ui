@@ -335,11 +335,14 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
 
             if (self.$input && dateUtil.isValid(self.$input.val()) && dateUtil.compare(self.minDate, self.$input.val()) === -1) {
 
+                /*
                 if (detect.isMobile && self.options.mobileMode) {
                     self.$input.val(dateUtil.format(self.minDate, self.format));
                 } else {
                     self.$input.val(dateUtil.format(self.minDate));
                 }
+                */
+               self.$input.val(dateUtil.format(self.minDate, self.options.format));
             }
         },
 

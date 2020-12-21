@@ -10,7 +10,6 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
             type : 'click', //click, over
             closeButtonClass : 'btn-close',
             offsetParentClass : 'tooltip-wrap',
-            singleton : false,
             fixed : null
         },
 

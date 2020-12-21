@@ -1,0 +1,38 @@
+<div class="">
+    @@if ( context.keyword) {
+    <div class="keyword-search">
+        <div class="input-wrap">
+            <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="제품명, 모델명 직접 검색" title="제품명, 모델명 직접 검색" data-clear-button="button.btn-delete">
+            <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+            <button type="button" class="btn-search"><span class="blind">검색</span></button>
+        </div>
+    </div>
+    }
+
+    @@if ( context.category ) {
+    <div class="category-search">
+        <ul>
+            @@for (var i = 0, k = 0; i < context.category.length; i++, k = 0) {
+            <li>
+                <div class="category-box">
+                    <p class="category-tit">`+category[i].name+`</p>
+                    <div class="category-thum">
+                        <img src="`+category[i].imgSrc+`" alt="`+category[i].imgAlt+`">
+                    </div>
+                </div>
+                <div class="sub-category-box">
+                    <ul>
+                        @@for (var j = 0; j < context.category[`+i+`].subCategory.length; j++) {
+                        <li>
+                            
+                        </li>
+                        }
+                    </ul>
+                </div>
+                <button type="button" class=""><span class="blind">카테고리 선택</span></button>
+            </li>
+           }
+        </ul>
+    </div>
+    }
+</div>
