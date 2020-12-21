@@ -30,6 +30,9 @@ br.m {
             color:#222;
             @include font-medium;
         }
+        .btn.border {
+            margin-top:24px;
+        }
     }
     @include mobile {
         height:270px;
@@ -55,7 +58,7 @@ br.m {
 }
 
 .csn-tabs {
-    padding-top:64px;
+    padding-top:40px;
     @include mobile {
         padding:24px 0;
         text-align:center;
