@@ -3,14 +3,14 @@
 .btn-arrow {
     position:relative;
     display:block;
-    width:48px;
-    height:48px;
-    padding:4px;
+    width:40px;
+    height:40px;
     border-radius:50%;
+    box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
     font-size:0;
     @include mobile {
-        width:36px;
-        height:36px;
+        width:28px;
+        height:28px;
     }
     &::before {
         content:' ';
@@ -21,7 +21,6 @@
         background-image:url('/lg5-common/images/icons/btn-arr-40x40.svg');
         background-repeat:no-repeat;
         background-size:100%;
-        box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
         @include mobile {
             width:28px;
             height:28px;
