@@ -945,10 +945,12 @@
             height:24px;
             border:none;
             background:url("/lg5-common/images/icons/icon-cal.svg") center no-repeat;
+            background-size:24px;
             vertical-align:middle;
         }
         input.selected + .cell button.ui_calendar {
             background:url("/lg5-common/images/icons/icon-cal-selected.svg") center no-repeat;
+            background-size:24px;
         }
     }
 
