@@ -27,102 +27,339 @@
                     <form action="/html/CS/CSRF6057.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/save.json" novalidate>
                         <div class="section">
                             <div class="tit-wrap">
+                                <h2 class="tit">제품 추가정보</h2>
+                            </div>
+                            <div class="form-wrap">
+                                <div class="rdo-wrap-info">
+                                    <h3 class="tit">구매정보 선택</h3>
+                                </div>
+                                <div class="forms type2">
+                                    <div class="tit"><label for="inp01-1">구입 시기</label></div>
+                                    <div class="conts">
+                                        <div class="select-list-wrap w-auto">
+                                            <ul>
+                                                <li>
+                                                    <span class="rdo-wrap">
+                                                        <input type="radio" id="buyingdate-1" name="buyingdate" checked="">
+                                                        <label for="buyingdate-1">1개월 이내</label>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span class="rdo-wrap">
+                                                        <input type="radio" id="buyingdate-2" name="buyingdate">
+                                                        <label for="buyingdate-2">1년 이내</label>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span class="rdo-wrap">
+                                                        <input type="radio" id="buyingdate-3" name="buyingdate">
+                                                        <label for="buyingdate-3">1년~2년 이내</label>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span class="rdo-wrap">
+                                                        <input type="radio" id="buyingdate-4" name="buyingdate">
+                                                        <label for="buyingdate-4">2년 이상</label>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span class="rdo-wrap">
+                                                        <input type="radio" id="buyingdate-5" name="buyingdate">
+                                                        <label for="buyingdate-5">기억 안남</label>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="forms type2">
+                                    <div class="tit"><label for="inp01-1">렌탈 여부</label></div>
+                                    <div class="conts">
+                                        <div class="select-list-wrap w-auto">
+                                            <ul>
+                                                <li>
+                                                    <span class="rdo-wrap">
+                                                        <input type="radio" id="chkrental-1" name="chkrental" checked="">
+                                                        <label for="chkrental-1">렌탈 이용중</label>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span class="rdo-wrap">
+                                                        <input type="radio" id="chkrental-2" name="chkrental">
+                                                        <label for="chkrental-2">렌탈 이용 안함</label>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section submitForm">
+                            <div class="form-wrap">
+                                <div class="rdo-wrap-info">
+                                    <h3 class="tit req">고장증상 선택<span class="blind">필수입력</span></h3>
+                                </div>
+                                <div class="choice-input rdo-wrap-list">
+                                    <span class="rdo-wrap btn-type2">
+                                        <input type="radio" id="errsign-1" name="errsign" data-error-name="errsign" data-error-msg="정확한 제품증상을 선택해주세요.">
+                                        <label for="errsign-1">부품/소모품</label>
+                                    </span>
+                                    <span class="rdo-wrap btn-type2">
+                                        <input type="radio" id="errsign-2" name="errsign">
+                                        <label for="errsign-2">건조</label>
+                                    </span>
+                                    <span class="rdo-wrap btn-type2">
+                                        <input type="radio" id="errsign-3" name="errsign">
+                                        <label for="errsign-3">구입 사양</label>
+                                    </span>
+                                    <span class="rdo-wrap btn-type2">
+                                        <input type="radio" id="errsign-4" name="errsign">
+                                        <label for="errsign-4">구조/외관</label>
+                                    </span>
+                                    <span class="rdo-wrap btn-type2">
+                                        <input type="radio" id="errsign-5" name="errsign">
+                                        <label for="errsign-5">급수 관련</label>
+                                    </span>
+                                    <span class="rdo-wrap btn-type2">
+                                        <input type="radio" id="errsign-6" name="errsign">
+                                        <label for="errsign-6">누수 관련</label>
+                                    </span>
+                                    <span class="rdo-wrap btn-type2">
+                                        <input type="radio" id="errsign-7" name="errsign">
+                                        <label for="errsign-7">배수 관련</label>
+                                    </span>
+                                    <span class="rdo-wrap btn-type2">
+                                        <input type="radio" id="errsign-8" name="errsign">
+                                        <label for="errsign-8">서비스 관련</label>
+                                    </span>
+                                    <span class="rdo-wrap btn-type2">
+                                        <input type="radio" id="errsign-9" name="errsign">
+                                        <label for="errsign-9">세탁/삶음/스팀</label>
+                                    </span>
+                                    <span class="rdo-wrap btn-type2">
+                                        <input type="radio" id="errsign-10" name="errsign">
+                                        <label for="errsign-10">소음/진동</label>
+                                    </span>
+                                    <span class="rdo-wrap btn-type2">
+                                        <input type="radio" id="errsign-11" name="errsign" checked>
+                                        <label for="errsign-11">기능 관련</label>
+                                    </span>
+                                    <span class="rdo-wrap btn-type2">
+                                        <input type="radio" id="errsign-12" name="errsign">
+                                        <label for="errsign-12">전원관련</label>
+                                    </span>
+                                    <span class="rdo-wrap btn-type2">
+                                        <input type="radio" id="errsign-13" name="errsign">
+                                        <label for="errsign-13">헹굼/탈수</label>
+                                    </span>
+                                    <span class="rdo-wrap btn-type2">
+                                        <input type="radio" id="errsign-14" name="errsign">
+                                        <label for="errsign-14">기능관련</label>
+                                    </span>
+                                    <span class="rdo-wrap btn-type2">
+                                        <input type="radio" id="errsign-15" name="errsign">
+                                        <label for="errsign-15">동결관련</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-wrap">
+                                <div class="rdo-wrap-info">
+                                    <h3 class="tit req">세부증상 선택<span class="blind">필수입력</span></h3>
+                                </div>
+                                <div class="select-list-wrap w-auto type2">
+                                    <ul>
+                                        <li>
+                                            <span class="rdo-wrap">
+                                                <input type="radio" id="dtsign-1" name="dtsign" checked="" data-error-name="dtsign" data-error-msg="정확한 세부증상을 선택해주세요.">
+                                                <label for="dtsign-1">전기요금 문의</label>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="rdo-wrap">
+                                                <input type="radio" id="dtsign-2" name="dtsign">
+                                                <label for="dtsign-2">제품 구입/행사 문의</label>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="rdo-wrap">
+                                                <input type="radio" id="dtsign-3" name="dtsign">
+                                                <label for="dtsign-3">제품사양 문의</label>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="rdo-wrap">
+                                                <input type="radio" id="dtsign-4" name="dtsign">
+                                                <label for="dtsign-4">두대의 공유기에 1차공유기를 통한 NAS(넷하드)와 PC를 연결한 경우 DDNS Setting</label>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="rdo-wrap">
+                                                <input type="radio" id="dtsign-5" name="dtsign">
+                                                <label for="dtsign-5">전기요금 문의</label>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="rdo-wrap">
+                                                <input type="radio" id="dtsign-6" name="dtsign">
+                                                <label for="dtsign-6">세부증상 없는 고장증상은 GSCS 가습관련, 외관관련</label>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="rdo-wrap">
+                                                <input type="radio" id="dtsign-7" name="dtsign">
+                                                <label for="dtsign-7">기타</label>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button type="button" data-href="#solutionsPopup" data-control="modal" class="btn type-solution block problem-solve type2">
+                                    <div class="solve-txt-area">
+                                        <strong class="text">제품 문제해결 방법을 확인해보세요!</strong>
+                                        <p class="side-item">선택하신 증상은 제품 문제해결 방법을 통해서 해결이 가능합니다.</p>
+                                    </div>
+                                    <div class="solve-btn-txt-area">
+                                        <p class="btn-txt">제품 문제해결 방법 확인하기</p>
+                                    </div>
+                                </button>
+                            </div>
+                            <div class="form-wrap">
+                                <div class="forms">
+                                    <div class="tit">
+                                        <label for="input-desc" class="tit">전달사항</label>
+                                    </div>
+                                    <div class="conts">
+                                        <div class="input-wrap count">
+                                            <textarea class="ui_textcontrol" name="desc" id="input-desc" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="100" data-limit="100" data-count-target="#txt-count1" data-msg-target=".err-msg" data-error-msg="전달사항을 입력해주세요." data-required="true"></textarea>
+                                            <span id="txt-count1" class="cell total"><em>0</em> / 100자</span>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="tit-wrap">
                                 <h2 class="tit">고객님의 정보를 입력해주세요.</h2>
                             </div>
                             <div class="form-wrap">
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-name" class="req">이름<span class="blind">필수항목</span></label>
+                                        <label for="userName" class="req">이름<span class="blind">필수항목</span></label>
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap">
-                                            <input type="text" name="name" id="input-name" placeholder="이름 입력" data-required="true" data-msg-target=".err-msg" required>
+                                            <!-- 
+                                                회원일 경우 회원정보 이름 제공 
+                                                value="홍길동"
+                                            -->
+                                            <input type="text" name="userName" id="userName"  value="" placeholder="휴대전화 인증 진행"  data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" readonly required>
+                                        </div>
+                                        <div class="btm-more err-block">
                                             <p class="err-msg"></p>
                                         </div>
                                     </div>
                                 </div>
-
+                                
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-phoneNo" class="req">휴대 전화<span class="blind">필수항목</span></label>
+                                        <label for="phoneNo" class="req">휴대 전화<span class="blind">필수항목</span></label>
                                     </div>
                                     <div class="conts">
-                                        <div class="input-wrap">
-                                            <input type="text" name="phoneNo" id="input-phoneNo" placeholder="휴대 전화 입력" maxlength="11" data-required="true" data-msg-target=".err-msg" required>
+                                        <div class="box">
+                                            <div class="input-wrap">
+                                                <!-- 
+                                                    회원일 경우 회원정보 휴대 전화 제공 
+                                                    value="01011112222"
+                                                -->
+                                                <input type="text" name="phoneNo" id="phoneNo" value="" placeholder="휴대전화 인증 진행"  data-error-msg="휴대전화를 정확히 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" readonly required>
+                                            </div>
+                                            <div class="cell">
+                                                <!-- 
+                                                    비회원일 경우 disabled 추가
+                                                    회원일 경우 disabled 삭제
+                                                 -->
+                                                <button type="button" class="btn btn-open" data-href="#certificationPopup" data-control="modal" disabled><span>휴대전화 인증</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="btm-more err-block">
                                             <p class="err-msg"></p>
                                         </div>
                                     </div>
                                 </div>
-
+                                
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-email" class="req">이메일 주소<span class="blind">필수항목</span></label>
-                                        <div class="tooltip-wrap">
-                                            <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget">자세히 보기</span>
-                                            <div class="tooltip-box">
-                                                <p>일부 이메일(gmail.com, hotmail.com, live.co.kr, outlook.com, nate.com, dreamwiz.com, empal.com등)은 답변 메일 수신이 원활하지 않을 수 있습니다.</p>
-                                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
-                                            </div>
-                                        </div>
+                                        <label for="email" class="req">이메일 주소<span class="blind">필수항목</span></label>
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap">
-                                            <input type="text" name="email" id="input-email" placeholder="이메일 주소 입력" data-required="true" data-msg-target=".err-msg" required>
+                                            <input type="text" name="email" id="email" placeholder="이메일 주소를 입력해주세요." data-error-msg="이메일 주소를 입력해주세요." data-pattern-msg="올바른 이메일 형식이 아닙니다." data-required="true" required>
+                                        </div>
+                                        <div class="btm-more err-block">
                                             <p class="err-msg"></p>
                                         </div>
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "일부 이메일(gmail.com, hotmail.com, live.co.kr, outlook.com, nate.com, dreamwiz.com, empal.com등)은 답변 메일  수신이 원활하지 않을 수 있습니다."
+                                            ]
+                                        })
                                     </div>
                                 </div>
-
+                                
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-contact01">연락가능 전화번호</label>
-                                        <div class="tooltip-wrap">
-                                            <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget">자세히 보기</span>
-                                            <div class="tooltip-box">
-                                                <p>서비스 접수할 때 입력 또는 알려주신 고객님 전화번호를 입력해 주세요.</p>
-                                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
-                                            </div>
-                                        </div>
+                                        <label for="contactPhoneNo1">연락가능 전화번호</label>
                                     </div>
                                     <div class="conts">
-                                        <div class="input-wrap">
-                                            <div class="contact-box">
-                                                <div class="input-wrap">
-                                                    <input type="text" name="contact01" id="input-contact01">
-                                                </div>
-                                                <span class="at">-</span>
-                                                <div class="input-wrap">
-                                                    <input type="text" name="contact02" id="input-contact02">
-                                                </div>
-                                                <span class="at">-</span>
-                                                <div class="input-wrap">
-                                                    <input type="text" name="contact03" id="input-contact03">
-                                                </div>
+                                        <div class="contact-box">
+                                            <div class="input-wrap">
+                                                <input type="text" name="contactPhoneNo1" id="contactPhoneNo1">
+                                            </div>
+                                            <span class="at">-</span>
+                                            <div class="input-wrap">
+                                                <input type="text" name="contactPhoneNo2" id="contactPhoneNo2">
+                                            </div>
+                                            <span class="at">-</span>
+                                            <div class="input-wrap">
+                                                <input type="text" name="contactPhoneNo3" id="contactPhoneNo3">
                                             </div>
                                         </div>
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "서비스 접수할 때 입력 또는 알려주신 고객님 전화번호를 입력해 주세요."
+                                            ]
+                                        })
                                     </div>
                                 </div>
 
                                 <div class="forms type2">
                                     <div class="tit">
-                                        <label for="replay01" class="req">회신 여부 선택<span class="blind">필수항목</span></label>
+                                        <p class="label req">회신 여부 선택<span class="blind">필수항목</span></p>
                                     </div>
                                     <div class="conts">
                                         <div class="select-list-wrap w-auto">
-                                            <ul class="ui_radio_visible" ui-modules="RadioShowHide">
+                                            <ul>
                                                 <li>
                                                     <span class="rdo-wrap">
-                                                        <input type="radio" name="replay" id="replay01" value="Y" data-required="true" data-msg-target=".replay-err-msg" required checked>
-                                                        <label for="replay01">회신 필요</label>
+                                                        <input type="radio" name="replyCheck" id="replyCheck1" value="Y" title="회신 여부 선택" data-required="true" data-error-msg="회신 여부를 체크해주세요" required>
+                                                        <label for="replyCheck1">회신 필요</label>
                                                     </span>
                                                 </li>
                                                 <li>
                                                     <span class="rdo-wrap">
-                                                        <input type="radio" name="replay" id="replay02" value="N" data-required="true" data-msg-target=".replay-err-msg">
-                                                        <label for="replay02">회신 불필요</label>
+                                                        <input type="radio" name="replyCheck" id="replyCheck2" value="N"  title="회신 여부 선택">
+                                                        <label for="replyCheck2">회신 불필요</label>
                                                     </span>
                                                 </li>
                                             </ul>
+                                            <div class="btm-more err-block reply-err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -136,13 +373,15 @@
                             <div class="form-wrap">
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-title" class="req">제목<span class="blind">필수항목</span></label>
+                                        <label for="title" class="req">제목<span class="blind">필수항목</span></label>
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap count">
-                                            <input type="text" class="ui_textcontrol" name="title" id="input-title" placeholder="제목 입력" maxlength="100" data-limit="100" data-count-target="#txt-count" data-required="true" data-msg-target=".err-msg" required="" ui-modules="TextControl">
+                                            <input type="text" class="ui_textcontrol" name="title" id="title" placeholder="제목 입력" maxlength="100" data-limit="100" data-count-target="#txt-count" data-required="true" data-error-msg="제목을 입력해주세요" required>
                                             <span id="txt-count" class="cell total"><em>0</em> / 100</span>
-                                            <p class="err-msg"></p>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -153,9 +392,11 @@
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap count">
-                                            <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-required="true" data-msg-target=".err-msg" required></textarea>
+                                            <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-required="true" data-error-msg="내용을 입력해주세요" required></textarea>
                                             <span id="txt-count2" class="cell total"><em>0</em> / 1000</span>
-                                            <p class="err-msg"></p>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -163,56 +404,56 @@
                                 <div class="forms">
                                     <div class="tit">
                                         <label for="inp02-2">파일첨부(선택)</label>
-                                        <div class="tooltip-wrap"><!-- 활성화시 active -->
-                                            <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget">자세히 보기</span>
+                                        <div class="tooltip-wrap">
+                                            <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
                                             <div class="tooltip-box">
                                                 <ul class="bullet-list">
                                                     <li class="b-txt">첨부파일은 최대 3개까지 가능하며, 전체 용량은 10MB 이하까지 업로드 가능합니다.</li>
-                                                    <li class="b-txt">첨부파일 이름은 특수기호(? ! , . & ^ ~ )를 사용할 수 없으며 첨부 가능 확장자는 JPG, GIF입니다.</li>
+                                                    <li class="b-txt">첨부파일 이름은 특수기호(? ! , . & ^ ~ )를 제외해주세요.(첨부 가능 확장자 jpg,jpeg png,gif)</li>
                                                 </ul>
                                                 <button type="button" class="btn-close"><span class="blind">닫기</span></button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="conts">
-                                        <div class="add-file-wrap">
-                                            <div class="upload-wrap">
-                                                <div class="upload-img-area">
-                                                    <div class="uploadpreview img01"></div>
-                                                    <div class="upload-btn-area">
-                                                        <label for="img01" class="btn-ipt-file"></label>
-                                                        <input id="img01" type="file" accept="image/*" name="uploadBtn" class="ipt-file uploadBtn">
-                                                        <div class="btn-ipt-del"></div>
+                                        <div class="image-file-wrap ui_imageinput">
+                                            <div class="file-item">
+                                                <div class="file-image">
+                                                    <div class="file-preview"></div>
+                                                    <div class="file-btns">
+                                                        <label for="imageFile1" class="btn-upload"><span class="blind">업로드</span></label>
+                                                        <input type="file" name="imageFile1" id="imageFile1" accept="image/*">
+                                                        <button type="button" class="btn-del"><span class="blind">삭제</span></button>
                                                     </div>
                                                 </div>
-                                                <div class="upload-file-name">
-                                                    <input type="text" class="ipt-file-name fileName" id="fileName01" placeholder="파일선택" disabled="disabled">
+                                                <div class="file-name">
+                                                    <input type="text" class="name" placeholder="파일선택" disabled>
                                                 </div>
                                             </div>
-                                            <div class="upload-wrap">
-                                                <div class="upload-img-area">
-                                                    <div class="uploadpreview img02"></div>
-                                                    <div class="upload-btn-area">
-                                                        <label for="img02" class="btn-ipt-file"></label>
-                                                        <input id="img02" type="file" accept="image/*" name="uploadBtn" class="ipt-file uploadBtn">
-                                                        <div class="btn-ipt-del"></div>
+                                            <div class="file-item">
+                                                <div class="file-image">
+                                                    <div class="file-preview"></div>
+                                                    <div class="file-btns">
+                                                        <label for="imageFile2" class="btn-upload"><span class="blind">업로드</span></label>
+                                                        <input type="file" name="imageFile2" id="imageFile2" accept="image/*">
+                                                        <button type="button" class="btn-del"><span class="blind">삭제</span></button>
                                                     </div>
                                                 </div>
-                                                <div class="upload-file-name">
-                                                    <input type="text" class="ipt-file-name fileName" id="fileName02" placeholder="파일선택" disabled="disabled">
+                                                <div class="file-name">
+                                                    <input type="text" class="name" placeholder="파일선택" disabled>
                                                 </div>
                                             </div>
-                                            <div class="upload-wrap">
-                                                <div class="upload-img-area">
-                                                    <div class="uploadpreview img03"></div>
-                                                    <div class="upload-btn-area">
-                                                        <label for="img03" class="btn-ipt-file"></label>
-                                                        <input id="img03" type="file" accept="image/*" name="uploadBtn" class="ipt-file uploadBtn">
-                                                        <div class="btn-ipt-del"></div>
+                                            <div class="file-item">
+                                                <div class="file-image">
+                                                    <div class="file-preview"></div>
+                                                    <div class="file-btns">
+                                                        <label for="imageFile3" class="btn-upload"><span class="blind">업로드</span></label>
+                                                        <input type="file" name="imageFile3" id="imageFile3" accept="image/*">
+                                                        <button type="button" class="btn-del"><span class="blind">삭제</span></button>
                                                     </div>
                                                 </div>
-                                                <div class="upload-file-name">
-                                                    <input type="text" class="ipt-file-name fileName" id="fileName03" placeholder="파일선택" disabled="disabled">
+                                                <div class="file-name">
+                                                    <input type="text" class="name" placeholder="파일선택" disabled>
                                                 </div>
                                             </div>
                                         </div>
@@ -228,8 +469,8 @@
                         </div>
 
                         <div class="btn-group center">
-                            <a href="#" class="btn gray"><span>취소</span></a>
-                            <button type="button" class="btn pink btn-confirm"><span>확인</span></button>
+                            <button type="button" class="btn gray btn-cancel" data-url="/html/CS/CSRF6056_terms"><span>취소</span></button>
+                            <button type="button" class="btn btn-confirm"><span>확인</span></button>
                         </div>
                     </form>
                     
