@@ -41,5 +41,14 @@
         </ul>
     </div>
     }
+    @@if ( context.stepArr ) {
+    <div class="step-wrap">
+        <ul class="steps">
+            @@for (var i=0; i < context.stepArr.length; i++) {
+                <li class="`+stepArr[i].class+`">`+stepArr[i].text+``+stepArr[i].step+`</li>
+            }
+        </ul>
+    </div>
+    }
 </div>
 <!-- // page header -->
