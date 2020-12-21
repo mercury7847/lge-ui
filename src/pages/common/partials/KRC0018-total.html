@@ -47,29 +47,77 @@
                     <ul class="inner ui_carousel_track">
                         <li class="square main">
                             <div class="square-inner">
-                                <img src="/lg5-common/images/KRC0018/@square-case-tall.jpg" alt="">
-                                <p class="hidden">graphic description : </p>
-                                <div class="text-wrap">
-                                    <p class="eyebrow">아이브로우 영역입니다.</p>
-                                    <div class="title">
-                                        <h2>헤드라인 타이틀 영역입니다.</h2>
+                                <a href="#n" class="visual-area">
+                                    <img src="/lg5-common/images/KRC0018/@square-case-tall.jpg" alt="">
+                                    <p class="hidden">graphic description : </p>
+                                    <div class="text-wrap">
+                                        <p class="eyebrow">아이브로우 영역입니다.</p>
+                                        <div class="title">
+                                            <h2>헤드라인 타이틀 영역입니다.</h2>
+                                        </div>
+                                        <p class="body-copy">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
                                     </div>
-                                    <p class="body-copy">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
-                                </div>
+                                </a>
                             </div>
                         </li>
                         @@for ( var i=0; i < square.length; i++ ) {
                         <li class="square sub length-`+square[i].size+` `+square[i].position+`">
                             <div class="square-inner">
-                                <img src="/lg5-common/images/KRC0018/@square-case-`+square[i].size+`.jpg" alt="">
-                                <p class="hidden">graphic description : </p>
-                                <div class="text-wrap">
-                                    <p class="eyebrow">아이브로우 영역입니다.</p>
-                                    <div class="title">
-                                        <h2>헤드라인 타이틀 영역입니다.</h2>
-                                    </div>
-                                    <p class="body-copy">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
+                                @@if ( context.videoType ) {
+                                <!-- visual : youtube type -->
+                                <div class="visual-area video youtube-box">
+                                    <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="large_image_large_or_2_small_image-video_play" data-link-name="{video title / video id}" title="opens in a new layer popup, plays video">
+                                        <img src="/lg5-common/images/KRC0018/@square-case-`+square[i].size+`.jpg" aria-hidden="true" alt="">
+                                        <div class="text-wrap">
+                                            <p class="eyebrow">아이브로우 영역입니다.</p>
+                                            <div class="title">
+                                                <h2>헤드라인 타이틀 영역입니다.</h2>
+                                            </div>
+                                            <p class="body-copy">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
+                                        </div>
+                                    </a>
                                 </div>
+                                <!-- // visual : youtube type -->
+                                }
+                                @@if ( context.animationType ) {
+                                <div class="visual-area animation-box">
+                                    <img src="/lg5-common/images/KRC0018/@square-case-`+square[i].size+`.jpg" alt="">
+                                    <p class="hidden">graphic description : </p>
+                                    <div class="animation-area">
+                                        <video autoplay muted loop>
+                                            <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                            <!-- WEBM 동영상을 제공하는 경우
+                                            <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                            -->
+                                        </video>
+                                    </div>
+                                    <div class="text-wrap">
+                                        <p class="eyebrow">아이브로우 영역입니다.</p>
+                                        <div class="title">
+                                            <h2>헤드라인 타이틀 영역입니다.</h2>
+                                        </div>
+                                        <p class="body-copy">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
+                                    </div>
+                                    <div class="controller-wrap wa-btn">
+                                        <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                                    </div>
+                                </div>
+                                }
+                                @@if ( !context.videoType && !context.animationType ) {
+                                <!-- visual : image -->
+                                <a href="#n" class="visual-area">
+                                    <img src="/lg5-common/images/KRC0018/@square-case-`+square[i].size+`.jpg" alt="">
+                                    <p class="hidden">graphic description : </p>
+                                    <div class="text-wrap">
+                                        <p class="eyebrow">아이브로우 영역입니다.</p>
+                                        <div class="title">
+                                            <h2>헤드라인 타이틀 영역입니다.</h2>
+                                        </div>
+                                        <p class="body-copy">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
+                                    </div>
+                                </a>
+                                <!-- // visual : image -->
+                                }
                             </div>
                         </li>
                         }
