@@ -1,0 +1,134 @@
+<!-- components/partials/KRC0018-5ea.html -->
+<div class="component-wrap @@bg-color">
+    <!--
+        [.component-wrap 옵션]
+        1. 여백
+        .zero-top : 상단여백 없음
+        .zero-btm : 하단여백 없음
+
+        [component 영역 옵션]
+        1. 배경 색상 :
+        .bg-white : #FFFFFF 색상 배경
+        .bg-lightgray : #F4F4F4 색상 배경
+        .bg-dark : #333333 색상 배경
+        .bg-black : #000000 색상 배경
+
+        [.component 옵션]
+        1. 옵션 1/2
+        .flow-left : 큰 이미지 영역이 왼쪽
+        .flow-right : 큰 이미지 영역이 오른쪽
+
+        [각 박스의 텍스트 영역(square) 옵션]
+        1. 폰트 컬러
+        .text-white : 화이트
+        .text-black : 블랙
+
+        [가장 큰 이미지 영역의 body-copy 옵션]
+        1. 폰트 종류 :
+        .font-regular : 레귤러
+        .font-bold : 볼드
+        .font-regular-italic : 레귤러 이탤릭
+        .font-bold-italic : 볼드 이탤릭
+
+        2. 폰트 스타일:
+        기본은 언더라인 없음
+        .font-underline : 언더라인
+    -->
+    <section class="component KRC0018 @@flow-type @@bg-color">
+        <div class="component-inner">
+            <!-- [KR수정] 모바일 carousel 적용을 위한 DOM 수정 -->
+            <div class="component-sliders ui_carousel_slider_0018">
+                <div class="indi-wrap">
+                    <ul class="indi-conts ui_carousel_dots">
+                        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                    </ul>
+                </div>
+                <div class="ui_carousel_list">
+                    <ul class="inner ui_carousel_track">
+                        <li class="square main">
+                            <div class="square-inner">
+                                <a href="#n" class="visual-area">
+                                    <img src="/lg5-common/images/KRC0018/@square-case-tall.jpg" alt="">
+                                    <p class="hidden">graphic description : </p>
+                                    <div class="text-wrap">
+                                        <p class="eyebrow">아이브로우 영역입니다.</p>
+                                        <div class="title">
+                                            <h2>헤드라인 타이틀 영역입니다.</h2>
+                                        </div>
+                                        <p class="body-copy">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        @@for ( var i=0; i < square.length; i++ ) {
+                        <li class="square sub length-`+square[i].size+` `+square[i].position+`">
+                            <div class="square-inner">
+                                @@if ( context.videoType ) {
+                                <!-- visual : youtube type -->
+                                <div class="visual-area video youtube-box">
+                                    <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="large_image_large_or_2_small_image-video_play" data-link-name="{video title / video id}" title="opens in a new layer popup, plays video">
+                                        <img src="/lg5-common/images/KRC0018/@square-case-`+square[i].size+`.jpg" aria-hidden="true" alt="">
+                                        <div class="text-wrap">
+                                            <p class="eyebrow">아이브로우 영역입니다.</p>
+                                            <div class="title">
+                                                <h2>헤드라인 타이틀 영역입니다.</h2>
+                                            </div>
+                                            <p class="body-copy">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- // visual : youtube type -->
+                                }
+                                @@if ( context.animationType ) {
+                                <div class="visual-area animation-box">
+                                    <img src="/lg5-common/images/KRC0018/@square-case-`+square[i].size+`.jpg" alt="">
+                                    <p class="hidden">graphic description : </p>
+                                    <div class="animation-area">
+                                        <video autoplay muted loop>
+                                            <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                            <!-- WEBM 동영상을 제공하는 경우
+                                            <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                            -->
+                                        </video>
+                                    </div>
+                                    <div class="text-wrap">
+                                        <p class="eyebrow">아이브로우 영역입니다.</p>
+                                        <div class="title">
+                                            <h2>헤드라인 타이틀 영역입니다.</h2>
+                                        </div>
+                                        <p class="body-copy">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
+                                    </div>
+                                    <div class="controller-wrap wa-btn">
+                                        <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                                    </div>
+                                </div>
+                                }
+                                @@if ( !context.videoType && !context.animationType ) {
+                                <!-- visual : image -->
+                                <a href="#n" class="visual-area">
+                                    <img src="/lg5-common/images/KRC0018/@square-case-`+square[i].size+`.jpg" alt="">
+                                    <p class="hidden">graphic description : </p>
+                                    <div class="text-wrap">
+                                        <p class="eyebrow">아이브로우 영역입니다.</p>
+                                        <div class="title">
+                                            <h2>헤드라인 타이틀 영역입니다.</h2>
+                                        </div>
+                                        <p class="body-copy">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
+                                    </div>
+                                </a>
+                                <!-- // visual : image -->
+                                }
+                            </div>
+                        </li>
+                        }
+                    </ul>
+                </div>
+                <div class="slide-controls">
+                    <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                    <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                </div>
+            </div>
+            <!-- // [KR수정] 모바일 carousel 적용을 위한 DOM 수정 -->
+        </div>
+    </section>
+</div>
