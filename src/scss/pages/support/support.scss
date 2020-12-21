@@ -715,7 +715,7 @@
                         .accord-btn {
                             padding: 24px 32px;
                             &::after {
-                                content: '상세 보기';
+                                content: '보기';
                                 border: none;
                                 width: auto;
                                 height: auto;
@@ -734,7 +734,7 @@
                         .head {
                             .accord-btn {
                                 &::after {
-                                    content: '상세 닫기';
+                                    content: '닫기';
                                     color: #ec455a;
                                     background: url(/lg5-common/images/icons/btn-minus-20.svg) no-repeat right center;
                                 }
