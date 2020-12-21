@@ -1,99 +1,35 @@
 <!DOCTYPE html>
 <html lang="ko">
-@@include('./common/head.html', {
-    "pageCSS": [
-        "support/support",
-        "support/reservation",
-        "support/custom-voice"
-    ]
-})
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/custom-voice"
+        ]
+    })
 <body>
     <div class="wrap">
         @@include('./common/header.html')
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '전화 상담 예약',
-                'pageDesc': '고객님께서 원하시는 시간에 전문 상담사가 직접 전화드려 상담을 해드립니다.',
-                'pageBtn' : [
-                    { 'btn' : '요금 및 보증 기간 안내 ' },
-                ]
+                'pageTitle': '개선해 주세요',
+                'pageDesc': '미흡한 내용을 개선할 수 있도록 의견을 전달 할 수 있습니다.'
             })
             <div class="contents support reservation">
-                <ol class="reception-progress type-1">
+                <ol class="reception-progress type-1 wrap-type">
                     <li><span class="text">제품 선택</span></li>
                     <li><span class="text">예약 내용 입력</span></li>
+                    <li><span class="text">예약 완료</span></li>
                     <li><span class="text">예약 완료</span></li>
                 </ol>
                 
                 @@include('./common/support/login-guide.html', {
-                    'text': '로그인을 하시면 더욱 편리하게 이용하실 수 있습니다.<br>개인 정보 자동 입력, 저장해 놓은 제품 선택 등'
+                    'text': '개선해주세요 메뉴를 LG전자 통합 사이트의 회원으로 이용하시면<br>보다 편리하게 이용할 수 있습니다.'
                 })
 
                 <div class="cont-wrap narrow">
 
                     <form action="/html/support/CSRF6016.html" id="submitForm" autocomplete="off">
-
-                        <div class="section">
-                            <div class="accordion-wrap ui_accordion border-type" data-single-open="true">
-                                <ul>
-                                    <li class="lists">
-                                        <div class="head">
-                                            <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                                <span class="subtitle"><strong>바로 전화하고 싶으신가요?</strong></span>
-                                                <span class="blind ui_accord_text">내용 더 보기</span>
-                                            </a>
-                                        </div>
-                                        <div class="accord-cont ui_accord_content" style="display:none;">
-                                            <dl class="inquiry-dl">
-                                                <dt>서비스별 전화번호 안내</dt>
-                                                <dd>
-                                                    <ul class="inquiry-list type-bullet">
-                                                        <li>
-                                                            <div class="title"><strong>제품 및 서비스 문의</strong></div>
-                                                            <div class="description">1544-7777</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="title"><strong>구입제품 배송확인-㈜판토스</strong></div>
-                                                            <div class="description">1577-1185</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="title"><strong>케어솔루션 가입</strong></div>
-                                                            <div class="description">080-755-2222</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="title"><strong>B2B 서비스 상담</strong></div>
-                                                            <div class="description">1544-8777</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="title"><strong>LG전자 베스트샵몰</strong></div>
-                                                            <div class="description">1661-2471</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="title"><strong>케어솔루션 수납센터</strong></div>
-                                                            <div class="description">1644-7717</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="title"><strong>케어솔루션 서비스 상담</strong></div>
-                                                            <div class="description">케어솔루션 서비스 상담</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="title"><strong>LG페이</strong></div>
-                                                            <div class="description">1544-8552</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="title"><strong>공기청정 케어십 상담</strong></div>
-                                                            <div class="description">1677-0887</div>
-                                                        </li>
-                                                    </ul>
-                                                </dd>
-                                            </dl>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
                         <div class="section">
                             <div class="form-infos">
                                 <p class="req" aria-disabled="true">필수 입력 항목</p>

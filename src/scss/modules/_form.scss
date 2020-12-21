@@ -250,6 +250,7 @@
                 display:inline-block;
                 color:#222;
                 font-size:16px;
+                font-weight:700;
                 line-height:26px;
                 vertical-align:top;
                 word-break: keep-all;
@@ -944,10 +945,12 @@
             height:24px;
             border:none;
             background:url("/lg5-common/images/icons/icon-cal.svg") center no-repeat;
+            background-size:24px;
             vertical-align:middle;
         }
         input.selected + .cell button.ui_calendar {
             background:url("/lg5-common/images/icons/icon-cal-selected.svg") center no-repeat;
+            background-size:24px;
         }
     }
 
@@ -1550,7 +1553,7 @@ $input: (chk, rdo);
             display:inline-block;
             width:25%;
             margin-top:32px;
-            padding-left:32px;
+            padding-left:24px;
             // margin-top:28px;
             // padding-left:26px;
             vertical-align:top;
@@ -1560,7 +1563,7 @@ $input: (chk, rdo);
             @include mobile {
                 width:50%;
                 margin-top:16px;
-                padding-left:12px;
+                padding-left:16px;
             }
         }
     }

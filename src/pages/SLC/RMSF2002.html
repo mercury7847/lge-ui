@@ -16,12 +16,13 @@
                     <div class="txt-wrap">
                         <h3 class="tit">Why 케어솔루션</h3>
                         <p class="tit-desc">라이프스타일에 안전과 편리, 위생을 더하는 <br>차원이 다른 가전 관리 서비스 혜택을 확인하세요.</p>
+                        <a href="#n" class="btn border size-m"><span>혜택 대상 제품 보기</span></a>
                     </div>
                 </div>
                 <!-- // visual title -->
 
                 <!-- contents -->
-                <div class="tabs-wrap ui_tab csn-tabs">
+                <div class="tabs-wrap btn-type ui_tab csn-tabs"><!-- 201221 수정 [.btn-type class 추가] -->
                     <ul class="tabs">
                         <li class="on"><a href="#caresolution1">Why 케어솔루션<em class="blind">선택됨</em></a></li>
                         <li><a href="#caresolution2">케어솔루션 매니저</a></li>
@@ -29,14 +30,14 @@
                 </div>
                 <!-- why 케어솔루션 -->
                 <div id="caresolution1" class="csn-tab-contents">
-                    <div class="cont-wrap">
+                    <div class="cont-wrap narrow"><!-- 201221 수정 [.narrow class 추가] -->
                         <div class="csn-section">
                             <div class="csn-intro">
+                                <span class="img" aria-hidden="true"><img src="/lg5-common/images/SLC/bg-visual01.jpg" data-pc-src="/lg5-common/images/SLC/bg-visual01.jpg" data-m-src="/lg5-common/images/SLC/bg-visual01-m.jpg" alt=""></span>
                                 <dl>
                                     <dt>케어솔루션이란?</dt>
                                     <dd>LG전자 케어솔루션은 관리가 필요한 가전 제품을 가전 전문가들이 마음을 담아 케어 해주어 고객의 삶에 안전과 편리, 위생을 더하는 LG전자만의 차원이 다른 가전 관리 서비스입니다.</dd>
                                 </dl>
-                                <span class="img" aria-hidden="true"><img src="/lg5-common/images/SLC/bg-visual01.jpg" data-pc-src="/lg5-common/images/SLC/bg-visual01.jpg" data-m-src="/lg5-common/images/SLC/bg-visual01-m.jpg" alt=""></span>
                             </div>
                         </div>
 
@@ -44,7 +45,7 @@
                             <div class="tit-wrap">
                                 <h3 class="tit">제품별 케어솔루션 혜택</h3>
                             </div>
-                            <div class="tabs-wrap bar-type ui_tab">
+                            <div class="tabs-wrap border-type ui_tab"><!-- 201221 수정 [.bar-type -> .border-type 으로 class 수정] -->
                                 <ul class="tabs">
                                     <li class="on"><a href="#prod1">정수기<em class="blind">선택됨</em></a></li>
                                     <li><a href="#prod2">얼음정수기 냉장고</a></li>
@@ -64,9 +65,9 @@
                                         <img src="/lg5-common/images/SLC/img-video01.jpg" alt="" aria-hidden="true">
                                     </a>
                                     <div class="csn-prod-intro">
-                                        <p class="video-tit">LG전자케어솔루션디지털광고<em>정수기케어편</em></p>
-                                        <p class="tit">이정은씨가 알려주는 정수기 케어 방법</p>
+                                        <p class="video-tit">LG전자 케어솔루션 디지털 광고<em>- 정수기 케어 편</em></p>
                                         <p class="desc">
+                                            이정은씨가 알려주는 정수기 케어 방법<br><br>
                                             정수기, 케어는 어떡하죠<br>
                                             어떡해요 할 땐 케어솔루션하세요.<br><br>
                                             차원이 다른 전문가의 가전관리 서비스<br><br>
@@ -77,64 +78,49 @@
                                 <div class="csn-itr-body">
                                     <div class="csn-icon-list">
                                         <ul>
-                                            <li>
-                                                <dl class="svc1-1">
-                                                    <dt>
-                                                        <p>직수관 무상 교체</p>
-                                                        @@include('./common/modules/tooltip.html', {
-                                                            "type" : "includeType",
-                                                            "page" : "tooltip-RMSF2002",
-                                                            "pageType" : "type1"
-                                                        })
-                                                    </dt>
-                                                    <dd>국내 최초 매년 새 것처럼 '1년마다 직수관 무상 교체' 서비스를 진행합니다.</dd>
-                                                </dl>
-                                            </li>
-                                            <li>
-                                                <dl class="svc1-2">
-                                                    <dt><p>필터 무상교체</p></dt>
-                                                    <dd>정수기의 핵심부품인 필터를 교체주기에 따라 무상으로 교체하여 위생적으로 사용할 수 있습니다.</dd>
-                                                </dl>
-                                            </li>
-                                            <li>
-                                                <dl class="svc1-3">
-                                                    <dt>
-                                                        <p>살균 서비스</p>
-                                                        @@include('./common/modules/tooltip.html', {
-                                                            "type" : "includeType",
-                                                            "page" : "tooltip-RMSF2002",
-                                                            "pageType" : "type2"
-                                                        })
-                                                    </dt>
-                                                    <dd>국내최초로 3개월마다 방문 살균케어로 99.9% 살균하여 안전하게 사용할 수 있습니다.</dd>
-                                                </dl>
-                                            </li>
-                                            <li>
-                                                <dl class="svc1-4">
-                                                    <dt>
-                                                        <p>인사이드 클리닝</p>
-                                                    </dt>
-                                                    <dd>상단커버를 열어 정수기 내부 점검 및 케어, 단열제까지 세척하여 더욱 위생적으로 사용하실 수 있습니다.</dd>
-                                                </dl>
-                                            </li>
-                                            <li>
-                                                <dl class="svc1-5">
-                                                    <dt>
-                                                        <p>무상 A/S 서비스</p>
-                                                    </dt>
-                                                    <dd>계약기간 5년동안 제품 고장 시 A/S 서비스를 무상으로 제공해드립니다.</dd>
-                                                </dl>
-                                            </li>
+                                            @@loop('./common/modules/csn-icon-list-loop.html', [
+                                                {
+                                                    iconName : "csn1-1",
+                                                    title : "직수관 무상 교체",
+                                                    desc : "국내 최초 매년 새 것처럼 '1년마다 직수관 무상 교체' 서비스를 진행합니다.",
+                                                    bullet: [
+                                                        "온수 입수관, 원수 입수관 제외 (온수 입수관은 자체살균 가능)",
+                                                        "직수관 무상교체 도입기준(2017.4~)이후 출시된 모델에 적용"
+                                                    ]
+                                                },
+                                                {
+                                                    iconName : "csn1-2",
+                                                    title : "필터 무상 교체",
+                                                    desc : "정수기의 핵심부품인 필터를 교체주기에 따라 무상으로 교체하여 위생적으로 사용할 수 있습니다."
+                                                },
+                                                {
+                                                    iconName : "csn1-3",
+                                                    title : "살균 서비스",
+                                                    desc : "국내최초로 3개월마다 방문 살균케어로 99.9% 살균하여 안전하게 사용할 수 있습니다.",
+                                                    bullet: [
+                                                        "직수형 정수기 업계 동급 모델 기준",
+                                                        "살균력 99.9%는 한국건설생활환경 연구원 부착세균 제거율 실험결과에 따르며, 환경에 따라 달라질 수 있음"
+                                                    ]
+                                                },
+                                                {
+                                                    iconName : "csn1-4",
+                                                    title : "인사이드 클리닝",
+                                                    desc : "상단커버를 열어 정수기 내부 점검 및 케어, 단열제까지 세척하여 더욱 위생적으로 사용하실 수 있습니다.",
+                                                    bullet: [
+                                                        "연 1회 직수관 교체시 진행"
+                                                    ]
+                                                },
+                                                {
+                                                    iconName : "csn1-5",
+                                                    title : "무상 A/S 서비스",
+                                                    desc : "계약기간 5년동안 제품 고장으로 발생한 A/S 서비스를 무상으로 제공해드립니다.",
+                                                    bullet: [
+                                                        "고객 과실로 인한 제품 고장은 제외"
+                                                    ]
+                                                },
+                                            ])
                                         </ul>
                                     </div>
-                                    @@include('./common/modules/bullet-list.html', {
-                                        "topBorder" : true,
-                                        "bulletTit" : "케어솔루션 안내",
-                                        "bulletTxt" : [
-                                            "인사이드 클리닝 : 고객 과실로 인한 제품 고장은 제외",
-                                            "무상 A/S 서비스 : 연 1회 직수관 교체시 진행"
-                                        ]
-                                    })
                                 </div>
                             </div>
                             <!-- // 정수기 -->

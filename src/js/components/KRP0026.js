@@ -4,20 +4,12 @@ $(window).ready(function(){
     $('.KRP0026').buildCommonUI();
 
     vcui.require(['ui/carousel'], function () {
-        $('.KRP0v036').find('.ui_carousel_slider').vcCarousel({
-            infinite: false,
-            slidesToShow: 3,
-            slidesToScroll: 3,
+        $('.KRP0026').find('.ui_carousel_slider').vcCarousel({
+            settings: "unslick",
             responsive: [
                 {
                     breakpoint: 10000,
-                    settings: {
-                        infinite: false,
-                        dots: false,
-                        slidesToShow: 3,
-                        slidesToScroll: 3
-                        
-                    }
+                    settings: "unslick"
                 },
                 {
                     breakpoint: 768,

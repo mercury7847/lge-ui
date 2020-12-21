@@ -416,6 +416,12 @@
                             if(data && data.content.find('.ui_carousel').length > 0) {
                                 data.content.find('.ui_carousel').vcCarousel('update');
                             }
+                            if(data && data.content.find('.ui_smooth_scrolltab').length>0){
+                                data.content.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
+                            }
+                            if(data && data.content.find('.ui_smooth_scroll').length>0){
+                                data.content.find('.ui_smooth_scroll').vcSmoothScroll('refresh');
+                            }
                         }
                     }
                 });

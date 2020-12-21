@@ -1,9 +1,9 @@
 .tooltip-wrap {
     display:inline-block;
     position:relative;
-    height:20px;
-    padding-top:2px;
-    line-height:20px;
+    height:16px;
+    margin-top:4px;
+    line-height:16px;
     vertical-align:top;
     @include mobile {
         position:static;
@@ -12,12 +12,12 @@
     .tooltip-icon {
         display:block;
         position:relative;
-        width:20px;
-        height:20px;
+        width:16px;
+        height:16px;
         background:url('/lg5-common/images/icons/icon-tooltip.svg') center no-repeat;
         background-size:100%;
         font-size:0;
-        line-height:20px;
+        line-height:16px;
         cursor:pointer;
     }
     &.active {
@@ -119,34 +119,6 @@
                 }
             }
         }
-        //.share-list {
-        //    padding-top: 24px;
-        //    > li {
-        //        display: inline-block;
-        //        &:not(:first-child) {
-        //            margin-left: 16px;
-        //        }
-        //    }
-        //    [class*="share-"] {
-        //        display: block;
-        //        width: 32px;
-        //        height: 32px;
-        //        background: no-repeat 0 0;
-        //        background-size: 32px 32px;
-        //        &[class*="facebook"] {
-        //            background-image: url('/lg5-common/images/icons/icon-facebook.svg');
-        //        }
-        //        &[class*="twitter"] {
-        //            background-image: url('/lg5-common/images/icons/icon-twitter.svg');
-        //        }
-        //        &[class*="kakaotalk"] {
-        //            background-image: url('/lg5-common/images/icons/icon-kakao.svg');
-        //        }
-        //        &[class*="url"] {
-        //            background-image: url('/lg5-common/images/icons/icon-url.svg');
-        //        }
-        //    }
-        //}
     }
 
     [data-fixed="fixed-right"] {

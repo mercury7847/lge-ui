@@ -5,11 +5,12 @@
 
 .KRC0018 {
 
+
 	.square {
 		display: inline-block;
-		overflow:hidden;
 		border-radius:8px;
 		vertical-align: top;
+		overflow:hidden;
 		@include mobile {
 			width: 100%;
 			border-radius:0;
@@ -36,7 +37,7 @@
 				height: 48px;
 				margin-left:-24px;
 				border-radius: 50% 50%;
-				background: url('/lg5-common/images/btn-video-play.svg') no-repeat;
+				background: url('/lg5-common/images/btn-video-play.svg') 50% 50% no-repeat;
 				background-size:100%;
 			}
 		}
@@ -46,29 +47,73 @@
 				//display: none;
 				width: 100%;
 			}
+			&.animation-box {
+				.animation-area {
+					video {
+						position:absolute;
+						width:auto;
+						height:100%;
+						top:0;
+						left:50%;
+						transform:translateX(-50%);
+					}
+				}
+				.copy-boxing-area {
+					z-index:10;
+				}
+				.controller-wrap {
+					z-index:15;
+				}
+			}
+		}
+		&.length-lg {
+			.visual-area {
+				&.animation-box {
+					.animation-area {
+						video {
+							position:absolute;
+							width:100%;
+							height:auto;
+							top:50%;
+							left:0;
+							transform:translateY(-50%);
+							@include mobile {
+								width:auto;
+								height:100%;
+								top:0;
+								left:50%;
+								transform:translateX(-50%);
+							}
+						}
+					}
+				}
+			}
 		}
 
 		.copy-boxing-area {
 			position: absolute;
 			z-index: 1;
-			top: 64px;
-			left: 32px;
-			right:32px;
+			top:0;
+			left:0;
+			right:0;
+			bottom:0;
+			margin: auto;
+			padding:64px 32px;
 			background-color: transparent;
+			@media screen and (max-width: 1200px) {
+				padding:32px 16px;
+			}
+			@media screen and (max-width: 990px) {
+				padding:16px;
+			}
 			@include mobile {
-				top:32px;
-				left:16px;
-				right:16px;
+				padding:32px 16px;
 			}
 
 			.category {
-				max-width: 220px;
 				margin-bottom: 8px;
 				@include font-medium;
 				font-weight:700;
-				@include mobile {
-					margin-bottom:6px;
-				}
 			}
 
 			.head * {
@@ -79,9 +124,6 @@
 			.desc {
 				margin-top:16px;
 				@include font-medium;
-				@include mobile {
-					margin-top:14px;
-				}
 			}
 		}
 	}
@@ -162,52 +204,9 @@
 		}
 	}
 
-	.component-sliders {
-		@include pc {
-			.indi-wrap {
-				display:none !important;
-			}
-			.slide-controls {
-				display:none !important;
-			}
-		}
-		@include mobile {
-			position:relative;
-			padding-bottom:32px;
-			.indi-wrap {
-				position:absolute;
-				left:0;
-				right:0;
-				bottom:0;
-				text-align:center;
-			}
-			.slide-controls {
-				position:absolute;
-				top:calc((100% - 32px) / 2);
-				left:0;
-				right:0;
-				.btn-arrow {
-					position:absolute;
-					top:0;
-					transform:translateY(-50%);
-					&.prev {
-						left:4px;
-					}
-					&.next {
-						right:4px;
-					}
-				}
-			}
-			.square {
-				margin-top:0 !important;
-			}
-		}
-	}
-
 	.inner {
 		position: relative;
 		font-size: 0;
-		@include clearfix;
 	}
 	@include mobile {
 		.component-inner {
@@ -218,18 +217,15 @@
 		display:inline-block;
 		vertical-align:top;
 		text-align: left;
-		@include pc {
-			float:none !important;
-		}
 		&.tall {
-			@include square(w, 521px, 1284px);
+			@include square(w, 561px, 1380px);
 			@include mobile {
 				width:100%;
 			}
 		}
 		&.top, &.bottom {
 			width:100%;
-			@include square(w, (1284px - 521px - 24px), 1284px);
+			@include square(w, 795px, 1380px);
 			@include pc {
 				position: absolute;
 			}
@@ -246,13 +242,9 @@
 	}
 	&:not(.type-triple) .square-partition{
 		&.top, &.bottom {
-			@include square(h, 363px, 750px);
 			.square:first-child{
-				@include square(mr, 24px, (1284px - 521px - 24px));
+				@include square(mr, 24px, 795px);
 			}
-		}
-		&.bottom {
-			$margin : (24px * 100%) / 992px;
 		}
 	}
 	// square level
@@ -261,38 +253,14 @@
 		width:100%;
 		@include pc {
 			&.length-md {
-				@include square(w, 412px, (1284px - 521px - 24px));
+				@include square(w, 444px, 795px);
 			}
 			&.length-sm {
-				@include square(w, 303px, (1284px - 521px - 24px));
+				@include square(w, 327px, 795px);
 			}
 		}
 		@include mobile {
 			margin-top: 24px;
-		}
-		.acc-video-content {
-			position:absolute;
-			top:20px;
-			right:20px;
-			width:24px;
-			height:24px;
-			overflow:hidden;
-			z-index:9;
-			text-indent:-9999px;
-			&:before {
-				content:'';
-				display:inline-block;
-				position:absolute;
-				top:0;
-				right:0;
-				left:inherit;
-				width:24px;
-				height:24px;
-				margin:0;
-				background:url('/lg5-common/images/btn-AD-on.svg');
-				background-size:100% 100%;
-				border-radius:inherit;
-			}
 		}
 	}
 }

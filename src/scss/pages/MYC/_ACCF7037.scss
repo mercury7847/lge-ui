@@ -12,27 +12,39 @@
 	.tooltip-wrap {
 		.barcode-wrap {
 			p {
+				position:relative;
 				margin-top:8px;
 				font-size:14px;
 				line-height:24px;
+				&:before {
+					content:' ';
+					display:inline-block;
+					width:3px;
+					height:3px;
+					margin-right:8px;
+					background-color:#222;
+					vertical-align:4px;
+					@include mobile {
+						width:2px;
+						height:2px;
+					}
+				}
 			}
 			.img-barcode {
-				padding:12px 0;
 				text-align:center;
 				img {
-					height:56px;
+					height:80px;
 				}
 			}
 			@include mobile {
 				p {
-					margin-top:20px;
+					margin-top:12px;
 					font-size:13px;
 					line-height:21px;
 				}
 				.img-barcode {
-					padding:8px 0;
 					img {
-						height:40px;
+						height:57px;
 					}
 				}
 			}
