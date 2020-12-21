@@ -43,7 +43,7 @@
                 self.$termFilter = self.$contents.find('.filters');
                 self.$termFilter.vcDatePeriodFilter();
                 self.$list = self.$contents.find('div.tbl-layout div.tbody');
-                self.$moreView = self.$contents.find('button.btn-moreview');
+                self.$btnMore = self.$contents.find('button.btn-moreview');
                 self.$noData = self.$contents.find('div.no-data');
 
                 self.checkNoData();
@@ -58,7 +58,7 @@
                     self.requestData(data, false);
                 });
 
-                self.$moreView.on('click', function(e) {
+                self.$btnMore.on('click', function(e) {
                     var param = self.$termFilter.vcDatePeriodFilter('getSelectOption');
                     if(param) {
                         var hiddenData = lgkorUI.getHiddenInputData();
@@ -96,10 +96,10 @@
                 var page = parseInt(param.page);
                 var totalCount = parseInt(param.totalCount);
                 if (page < totalCount) {
-                    self.$moreView.show();
+                    self.$btnMore.show();
                 } else {
                     //더이상 없다
-                    self.$moreView.hide();
+                    self.$btnMore.hide();
                 }
 
                 lgkorUI.setHiddenInputData({
@@ -116,14 +116,14 @@
                     var page = parseInt(param.page);
                     var totalCount = parseInt(param.totalCount);
                     if (page < totalCount) {
-                        self.$moreView.show();
+                        self.$btnMore.show();
                     } else {
                         //더이상 없다
-                        self.$moreView.hide();
+                        self.$btnMore.hide();
                     }
                     self.$noData.hide();
                 } else {
-                    self.$moreView.hide();
+                    self.$btnMore.hide();
                     self.$noData.show();
                 }
             }

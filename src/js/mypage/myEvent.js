@@ -32,39 +32,71 @@
             bindEvents: function() {
                 var self = this;
 
-                self.$btnMore.on('click', function(e) {
-                    var _id =self.$list.find('li:last-child').attr('data-event-id');
-                    self.requestMoreData(_id);
-                });
-
                 self.$list.on('click', 'div.list-inner a.btn-link', function(e) {
                     e.preventDefault();
                     self.requestModal(this);
+                });
+
+                self.$btnMore.on('click', function(e) {
+                    var hiddenData = lgkorUI.getHiddenInputData();
+                    var page = parseInt(hiddenData.page) + 1;
+                    self.requestMoreData(page);
                 });
             },
 
             checkNoData: function() {
                 var self = this;
-                if(self.$list.find('li').length > 0) {
+                var $list = self.$list.find('li');
+                if($list.length > 0) {
+                    var param = lgkorUI.getHiddenInputData();
+                    var page = parseInt(param.page);
+                    var totalCount = parseInt(param.totalCount);
+                    if (page < totalCount) {
+                        self.$btnMore.show();
+                    } else {
+                        //더이상 없다
+                        self.$btnMore.hide();
+                    }
                     self.$noData.hide();
                     self.$list.show();
                 } else {
+                    self.$btnMore.hide();
                     self.$noData.show();
                     self.$list.hide();
                 }
             },
 
-            requestMoreData: function(_id) {
+            requestMoreData: function(page) {
                 var self = this;
                 var ajaxUrl = self.$lnbContents.attr('data-more-url');
-                lgkorUI.requestAjaxData(ajaxUrl, {'id':_id}, function(result){
+                lgkorUI.requestAjaxData(ajaxUrl, {'page':page}, function(result){
                     var data = result.data;
+                    var param = result.param;
+                    self.setPageData(param.pagination);
+
                     var arr = data instanceof Array ? data : [];
                     var $ul = self.$list.find('ul');
                     arr.forEach(function(item, index) {
                         $ul.append(vcui.template(eventItemList, item));
                     });
                     self.checkNoData();
+                });
+            },
+
+            setPageData: function(param) {
+                var self = this;
+                var page = parseInt(param.page);
+                var totalCount = parseInt(param.totalCount);
+                if (page < totalCount) {
+                    self.$btnMore.show();
+                } else {
+                    //더이상 없다
+                    self.$btnMore.hide();
+                }
+
+                lgkorUI.setHiddenInputData({
+                    totalCount: totalCount,
+                    page: page
                 });
             },
 
