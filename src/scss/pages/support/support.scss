@@ -261,20 +261,21 @@
             color: #222;
             line-height: 1;
             counter-reset: process-counter;
-            &::before {
-                content: '';
-                display: block;
-                width: 100%;
-                height: 2px;
-                background-color: #ededed;
-                position: absolute;
-                left: 0;
-                top: 15px;
-            }
+            // &::before {
+            //     content: '';
+            //     display: block;
+            //     width: 100%;
+            //     height: 2px;
+            //     background-color: #ededed;
+            //     position: absolute;
+            //     left: 0;
+            //     top: 15px;
+            // }
             li {
                 counter-increment: process-counter;
                 $progress-line-width: 290px;
                 padding-bottom: 20px;
+                width: 33.3333%;
                 .text {
                     position: absolute;
                     bottom: 0;
@@ -299,13 +300,33 @@
                 &::after {
                     content: '';
                     height: 2px;
+                    width: 100%;
                     background-color: #ededed;
                     position: absolute;
                     top: 16px;
+                    left: -50%;
+                }
+            }
+            &.wrap-type {
+                li {
+                    width: 50%;
                 }
             }
             @include mobile {
                 margin: 0 42px 24px;
+                &.wrap-type {
+                    flex-wrap: wrap;
+                    li {
+                        &:nth-child(2n + 1) {
+                            &::after {
+                                display: none;
+                            }
+                        }
+                        &:nth-child(n+3) {
+                            margin-top: 32px;
+                        }
+                    }
+                }
             }
         }
         &.type-2 {
