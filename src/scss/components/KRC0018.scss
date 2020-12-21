@@ -4,129 +4,6 @@
 
 
 .KRC0018 {
-
-	.square {
-		display: inline-block;
-		overflow:hidden;
-		border-radius:8px;
-		vertical-align: top;
-		@include mobile {
-			width: 100%;
-			border-radius:0;
-		}
-
-		.common-area {
-			position: relative;
-			display: block;
-			width: 100%;
-			height: 100%;
-
-			&:hover {
-				color:inherit !important;
-			}
-
-			&.case-of-video:before {
-				content: "";
-				display: block;
-				position: absolute;
-				bottom: 24px;
-				left: 50%;
-				z-index: 1;
-				width: 48px;
-				height: 48px;
-				margin-left:-24px;
-				border-radius: 50% 50%;
-				background: url('/lg5-common/images/btn-video-play.svg') no-repeat;
-				background-size:100%;
-			}
-		}
-
-		.visual-area {
-			img {
-				//display: none;
-				width: 100%;
-			}
-		}
-
-		.copy-boxing-area {
-			position: absolute;
-			z-index: 1;
-			top: 64px;
-			left: 32px;
-			right:32px;
-			background-color: transparent;
-			@include mobile {
-				top:32px;
-				left:16px;
-				right:16px;
-			}
-
-			.category {
-				max-width: 220px;
-				margin-bottom: 8px;
-				@include font-medium;
-				font-weight:700;
-				@include mobile {
-					margin-bottom:6px;
-				}
-			}
-
-			.head * {
-				@include font-large-2;
-				font-weight:700;
-			}
-
-			.desc {
-				margin-top:16px;
-				@include font-medium;
-				@include mobile {
-					margin-top:14px;
-				}
-			}
-		}
-	}
-
-	// mixin
-	@mixin square($calc-type, $part-size, $container-size){
-		@if($calc-type == "w"){
-			width:($part-size * 100%) / $container-size;
-		};
-		@if($calc-type == "h"){
-			height:($part-size * 100%) / $container-size;
-		};
-		@if($calc-type == "mr"){
-			margin-right:($part-size * 100%) / $container-size;
-		};
-		@if($calc-type == "ml"){
-			margin-left:($part-size * 100%) / $container-size;
-		};
-	}
-	&.flow-right {
-		text-align: right;
-		.square-partition {
-			&.top, &.bottom {
-				left: 0;
-			}
-		}
-	}
-
-	&.flow-left {
-		.square-partition {
-			&.top, &.bottom {
-				right: 0;
-			}
-		}
-	}
-
-	&.flow-mix {
-		text-align: right;
-		.square-partition {
-			&.top, &.bottom {
-				left:0;
-			}
-		}
-	}
-
 	$color: (lightgray, dark, black, white);
 	@each $bg in $color {
 		&.bg-#{$bg} {
@@ -158,6 +35,78 @@
 						color: #111;
 					}
 				}
+			}
+		}
+	}
+
+	.square {
+		.square-inner {
+			position:relative;
+			border-radius:8px;
+			overflow:hidden;
+			img {
+				width:100%;
+				height:auto;
+				vertical-align:top;
+			}
+			@include mobile {
+				height:0;
+				padding-top:100%;
+				border-radius:0;
+				img {
+					position:absolute;
+					top:0;
+					left:0;
+				}
+			}
+		}
+		@include mobile {
+			&.main,
+			&.sub.length-sm {
+				.square-inner img {
+					width:100%;
+					height:auto;
+				}
+			}
+			&.sub.length-md,
+			&.sub.length-lg {
+				.square-inner img {
+					width:auto;
+					height:100%;
+					left:50%;
+					transform:translateX(-50%);
+				}
+			}
+		}
+
+		.text-wrap {
+			position:absolute;
+			top:0;
+			right:0;
+			left:0;
+			bottom:0;
+			padding:64px 32px;
+			.eyebrow {
+				margin-bottom:8px;
+				@include font-medium;
+				font-weight:700;
+			}
+			.title * {
+				@include font-large-2;
+				font-weight:700;
+			}
+			.body-copy {
+				margin-top:16px;
+				@include font-medium;
+			}
+			@media screen and (max-width: 1110px) {
+				padding:32px 16px;
+			}
+			@media screen and (max-width: 990px) {
+				padding:16px;
+			}
+			@include mobile {
+				padding:32px 16px;
 			}
 		}
 	}
@@ -204,94 +153,79 @@
 		}
 	}
 
-	.inner {
-		position: relative;
-		font-size: 0;
-		@include clearfix;
-	}
 	@include mobile {
 		.component-inner {
 			padding:0;
 		}
 	}
-	.square-partition {
-		display:inline-block;
-		vertical-align:top;
-		text-align: left;
-		@include pc {
-			float:none !important;
-		}
-		&.tall {
-			@include square(w, 521px, 1284px);
-			@include mobile {
-				width:100%;
-			}
-		}
-		&.top, &.bottom {
-			width:100%;
-			@include square(w, (1284px - 521px - 24px), 1284px);
-			@include pc {
-				position: absolute;
-			}
-			@include mobile {
-				width:100%;
-			}
-		}
-		&.top {
-			top: 0;
-		}
-		&.bottom {
-			bottom:0;
-		}
+
+	@mixin square($calc-type, $part-size, $container-size){
+		@if($calc-type == "w"){
+			width:($part-size * 100%) / $container-size;
+		};
+		@if($calc-type == "left"){
+			left:($part-size * 100%) / $container-size;
+		};
+		@if($calc-type == "right"){
+			right:($part-size * 100%) / $container-size;
+		};
 	}
-	&:not(.type-triple) .square-partition{
-		&.top, &.bottom {
-			@include square(h, 363px, 750px);
-			.square:first-child{
-				@include square(mr, 24px, (1284px - 521px - 24px));
-			}
+
+	// partition NEW
+	@include pc {
+		.inner {
+			position:relative;
+			@include clearfix;
 		}
-		&.bottom {
-			$margin : (24px * 100%) / 992px;
-		}
-	}
-	// square level
-	.square {
-		position:relative;
-		width:100%;
-		@include pc {
-			&.length-md {
-				@include square(w, 412px, (1284px - 521px - 24px));
-			}
-			&.length-sm {
-				@include square(w, 303px, (1284px - 521px - 24px));
-			}
-		}
-		@include mobile {
-			margin-top: 24px;
-		}
-		.acc-video-content {
+		.square {
 			position:absolute;
-			top:20px;
-			right:20px;
-			width:24px;
-			height:24px;
-			overflow:hidden;
-			z-index:9;
-			text-indent:-9999px;
-			&:before {
-				content:'';
-				display:inline-block;
-				position:absolute;
-				top:0;
-				right:0;
-				left:inherit;
-				width:24px;
-				height:24px;
-				margin:0;
-				background:url('/lg5-common/images/btn-AD-on.svg');
-				background-size:100% 100%;
-				border-radius:inherit;
+			float:none !important;
+			&.main {
+				position:relative;
+				@include square(w, 561px, 1380px);
+			}
+			&.sub {
+				@include square(w, 795px, 1380px);
+				&.length-sm {
+					@include square(w, 327px, 1380px);
+				}
+				&.length-md {
+					@include square(w, 444px, 1380px);
+				}
+				&.top {
+					top:0;
+				}
+				&.bottom {
+					bottom:0;
+				}
+			}
+		}
+		@each $flowtype in flow-left, flow-right {
+			&.#{$flowtype} {
+				.square {
+					@if $flowtype == flow-left {
+						&.sub {
+							&.left {
+								@include square(left, 585px, 1380px);
+							}
+							&.right {
+								right:0;
+							}
+						}
+					} @else if $flowtype == flow-right {
+						&.main {
+							float:right !important;
+						}
+						&.sub {
+							&.right {
+								@include square(right, 585px, 1380px);
+							}
+							&.left {
+								left:0;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
