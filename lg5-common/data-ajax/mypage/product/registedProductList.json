@@ -1,0 +1,47 @@
+{
+    "status":"success",
+    "message":null,
+    "param":{
+        "pagination":{
+            "page":"5",
+            "totalCount":"23"
+        }
+    },
+    "data": {
+        "listData":[
+            {
+                "id":"pid00001",
+                "disabled":false,
+                "disabledReason":null,
+                "imageUrl":"/lg5-common/images/dummy/@img-product2.jpg",
+                "imageAlt":"S833TS35E",
+                "sku":"S833TS35E1",
+                "date":"20201010",
+                "category":"냉장",
+                "store":"베스트샵"
+            },
+            {
+                "id":"pid00002",
+                "disabled":false,
+                "disabledReason":null,
+                "imageUrl":"/lg5-common/images/dummy/@img-product2.jpg",
+                "imageAlt":"S833TS35E",
+                "sku":"S833TS35E2",
+                "date":"20201010",
+                "category":"냉장",
+                "store":"베스트샵"
+            },
+            {
+                "id":"pid00003",
+                "disabled":false,
+                "disabledReason":null,
+                "imageUrl":"/lg5-common/images/dummy/@img-product2.jpg",
+                "imageAlt":"S833TS35E",
+                "sku":"S833TS35E3",
+                "date":"20201010",
+                "category":"냉장",
+                "store":"베스트샵"
+            }
+        ]
+    }
+}

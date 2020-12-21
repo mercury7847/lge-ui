@@ -809,6 +809,11 @@
             }
         },
 
+        stringToBool: function(str) {
+            var s = str.trim().toLowerCase();
+            return (s == 'y' || s == 'yes' || s == 'true');
+        },
+
         getHiddenInputData: function(iptname, wrapname){
             var hiddenWrapName = wrapname || "hidden-input-group";
             var hiddenWrap = $('.' + hiddenWrapName).eq(0);
