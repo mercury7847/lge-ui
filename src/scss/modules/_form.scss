@@ -747,6 +747,12 @@
     @include mobile {
         margin-top:60px;
     }
+    &.type2 {
+        margin-top: 48px;
+        @include mobile {
+            margin-top:40px;
+        }
+    }
     &:first-child {
         margin-top:0;
     }

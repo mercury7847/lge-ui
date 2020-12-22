@@ -3,7 +3,8 @@
     position:relative;
     width:auto;
     padding-right:24px;
-    color:#767676;
+    //color:#767676;
+    color:#EC455A;
     @include font-small;
     cursor:pointer;
     vertical-align:top;
@@ -16,16 +17,18 @@
         position:absolute;
         top:50%;
         right:0;
-        width:20px;
-        height:20px;
-        margin-top:-10px;
-        background:url('/lg5-common/images/icons/btn-more-20-gray.svg') no-repeat;
+        width:16px;
+        height:16px;
+        margin-top:-8px;
+        //background:url('/lg5-common/images/icons/btn-more-20-gray.svg') no-repeat;
+        background:url('/lg5-common/images/icons/btn-more-16-pink.svg') no-repeat center center;
         vertical-align:top;
     }
     &.open {
         color:#EC455A;
         &::after {
-            background:url('/lg5-common/images/icons/btn-minus-20-pink.svg') no-repeat;
+            //background:url('/lg5-common/images/icons/btn-minus-20-pink.svg') no-repeat;
+            background:url('/lg5-common/images/icons/btn-more-x-16-pink.svg') no-repeat center center;
         }
     }
 }
@@ -336,7 +339,7 @@
                                     position:relative;
                                     top:auto;
                                     right:auto;
-                                    float:right;
+                                    //float:right;
                                     margin-top:20px;
                                     @if $state == on {
                                         padding-top:6px;
@@ -351,7 +354,7 @@
                                     position:relative;
                                     top:auto;
                                     right:auto;
-                                    float:left;
+                                    float:right;
                                     margin-top:20px;
                                 }
                             }
