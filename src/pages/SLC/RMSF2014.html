@@ -21,31 +21,34 @@
                 <!-- // visual title -->
 
                 <!-- contents -->
-                <div class="csn-tab-contents">
+                <div class="csn-tab-contents type2"><!-- 201221 수정 [type2 class 추가] -->
                     <div class="cont-wrap">
                         <div class="csn-section">
+                            <!-- 201221 수정 [DOM 순서, 이미지 태그 변경] -->
                             <div class="csn-intro">
+                                <span class="img" aria-hidden="true"><img src="/lg5-common/images/SLC/bg-visual01.jpg" alt=""></span>
                                 <dl>
                                     <dt>케어십이란?</dt>
-                                    <dd>케어십 해당 제품을 일시불로 구입했거나 케어솔루션 계약기간이 끝난 고객이 신청할 수 있는 서비스입니다. 케어솔루션 매니저의 전문적인 점검 서비스와 무상 필터 교환 등<br>다양한 혜택도 받으실 수 있습니다.</dd>
+                                    <dd>케어십 해당 제품을 일시불로 구입했거나 케어솔루션 계약기간이 끝난 고객이 신청할 수 있는 서비스입니다. 케어솔루션 매니저의 전문적인 점검 서비스와 무상 필터 교환 등 다양한 혜택도 받으실 수 있습니다.</dd>
+                                    <dd>
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTit" : "케어십 유의사항",
+                                            "bulletTxt" : [
+                                                "케어십 가입기간은 12개월이며 계약해지 의사가 없을 시 자동 연장됩니다.",
+                                                "보유하고 있지 않은 제품의 케어십은 청약 단계 이후 제품 주문이 진행됩니다. (최대 혜택가 기준)"
+                                            ]
+                                        })
+                                    </dd>
                                 </dl>
-                                <span class="img" aria-hidden="true"><img src="/lg5-common/images/SLC/bg-visual01.jpg" data-pc-src="/lg5-common/images/SLC/bg-visual01.jpg" data-m-src="/lg5-common/images/SLC/bg-visual01-m.jpg" alt=""></span>
                             </div>
-                            @@include('./common/modules/bullet-list.html', {
-                                "topBorder" : true,
-                                "bulletTit" : "케어십 유의사항",
-                                "bulletTxt" : [
-                                    "케어십 가입기간은 12개월이며 계약해지 의사가 없을 시 자동 연장됩니다.",
-                                    "보유하고 있지 않은 제품의 케어십은 청약 단계 이후 제품 주문이 진행됩니다. (최대 혜택가 기준)"
-                                ]
-                            })
+                            <!-- // 201221 수정 [DOM 순서, 이미지 태그 변경] -->
                         </div>
 
                         <div class="csn-section">
                             <div class="tit-wrap">
                                 <h3 class="tit">제품별 케어십 혜택</h3>
                             </div>
-                            <div class="tabs-wrap bar-type ui_tab ui_smooth_scroll">
+                            <div class="tabs-wrap border-type ui_tab ui_smooth_scroll"><!-- 201221 수정 [.bar-type -> .border-type 으로 class 수정, .ui_smooth_scroll class 추가] -->
                                 <ul class="tabs">
                                     <li class="on"><a href="#prod1">얼음정수기냉장고<em class="blind">선택됨</em></a></li>
                                     <li><a href="#prod2">정수기</a></li>
@@ -93,7 +96,7 @@
                                 </div>
 
                                 <!-- 대상 제품 리스트 -->
-                                <p class="prd-list-count">대상 제품 총 6개</p>
+                                <p class="prd-list-count">계약 제품 <span>총 <em>6</em>개</span></p><!-- 201221 수정 [span, em태그 추가] -->
                                 <div class="prd-list-wrap">
                                     <ul class="inner">
                                         <!-- loop -->
@@ -287,7 +290,7 @@
                                 </div>
 
                                 <!-- 대상 제품 리스트 -->
-                                <p class="prd-list-count">대상 제품 총 4개</p>
+                                <p class="prd-list-count">계약 제품 <span>총 <em>4</em>개</span></p><!-- 201221 수정 [span, em태그 추가] -->
                                 <div class="prd-list-wrap">
                                     <ul class="inner">
                                         <!-- loop -->
@@ -415,7 +418,7 @@
                                 </div>
 
                                 <!-- 대상 제품 리스트 -->
-                                <p class="prd-list-count">대상 제품 총 6개</p>
+                                <p class="prd-list-count">계약 제품 <span>총 <em>6</em>개</span></p><!-- 201221 수정 [span, em태그 추가] -->
                                 <div class="prd-list-wrap">
                                     <ul class="inner">
                                         <!-- loop -->
@@ -593,7 +596,7 @@
                                 </div>
 
                                 <!-- 대상 제품 리스트 -->
-                                <p class="prd-list-count">대상 제품 총 4개</p>
+                                <p class="prd-list-count">계약 제품 <span>총 <em>4</em>개</span></p><!-- 201221 수정 [span, em태그 추가] -->
                                 <div class="prd-list-wrap">
                                     <ul class="inner">
                                         <!-- loop -->
@@ -720,7 +723,7 @@
                                 </div>
 
                                 <!-- 대상 제품 리스트 -->
-                                <p class="prd-list-count">대상 제품 총 6개</p>
+                                <p class="prd-list-count">계약 제품 <span>총 <em>6</em>개</span></p><!-- 201221 수정 [span, em태그 추가] -->
                                 <div class="prd-list-wrap">
                                     <ul class="inner">
                                         <!-- loop -->
@@ -900,7 +903,7 @@
                                 </div>
 
                                 <!-- 대상 제품 리스트 -->
-                                <p class="prd-list-count">대상 제품 총 4개</p>
+                                <p class="prd-list-count">계약 제품 <span>총 <em>4</em>개</span></p><!-- 201221 수정 [span, em태그 추가] -->
                                 <div class="prd-list-wrap">
                                     <ul class="inner">
                                         <!-- loop -->
@@ -1022,7 +1025,7 @@
                                 </div>
 
                                 <!-- 대상 제품 리스트 -->
-                                <p class="prd-list-count">대상 제품 총 6개</p>
+                                <p class="prd-list-count">계약 제품 <span>총 <em>6</em>개</span></p><!-- 201221 수정 [span, em태그 추가] -->
                                 <div class="prd-list-wrap">
                                     <ul class="inner">
                                         <!-- loop -->
@@ -1203,7 +1206,7 @@
                                 </div>
 
                                 <!-- 대상 제품 리스트 -->
-                                <p class="prd-list-count">대상 제품 총 4개</p>
+                                <p class="prd-list-count">계약 제품 <span>총 <em>4</em>개</span></p><!-- 201221 수정 [span, em태그 추가] -->
                                 <div class="prd-list-wrap">
                                     <ul class="inner">
                                         <!-- loop -->
@@ -1296,28 +1299,20 @@
                             </div>
                             <!-- // 청소기 -->
                         </div>
-
-                        <div class="csn-section">
-                            <div class="tit-wrap">
-                                <h3 class="tit">케어십 가입 및 상담 문의하기</h3>
-                            </div>
-                            <div class="gray-block-wrap">
-                                <div class="blocks">
-                                    <dl>
-                                        <dt>
-                                            <p class="tit">케어십 가입 및 해지 문의</p>
-                                            @@include('./common/modules/tooltip.html', {
-                                                "type" : "text", 
-                                                "text" : "5년 만기 케어십 가입/해지 신청 시 담당 케어솔루션 매니저에게 문의 부탁드립니다."
-                                            })
-                                        </dt>
-                                        <dd>평일 09:00~18:00<br>토요일 09:00~13:00</dd>
-                                        <dd class="num">1577-4090</dd>
-                                    </dl>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+
+                    <!-- 201221 수정 [케어십 가입 및 해지 문의 관련 DOM 위치 변경 및 DOM 전체 수정] -->
+                    <div class="csn-ars-bottom">
+                        <h3 class="tit">케어십 가입 및 해지 문의</h3>
+                        <p class="call">1577-4090</p>
+                        <p class="desc">평일 09:00~18:00<br>토요일 09:00~13:00</p>
+                        @@include('./common/modules/bullet-list.html', {
+                            "bulletTxt" : [
+                                "5년 만기 케어십 가입/해지 신청 시 담당 케어솔루션 매니저에게 문의 부탁드립니다."
+                            ]
+                        })
+                    </div>
+                    <!-- // 201221 수정 [케어십 가입 및 해지 문의 관련 DOM 위치 변경 및 DOM 전체 수정] -->
                 </div>
                 <!-- // contents -->
             </div>
@@ -1325,91 +1320,5 @@
         
         @@include('./common/footer.html')
     </div> 
-
-    <!-- youtube popup -->
-    <!-- 정수기 케어 -->
-    <article id="youtube1" class="popup-wrap video">
-        <section class="pop-conts no-footer">
-            <div class="video-asset youtube-box">
-                <div class="video-box">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/jVWS-4S822g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </section>
-        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-    </article>
-    <!-- // 정수기 케어 -->
-    <!-- 얼음정수기 냉장고 케어 -->
-    <article id="youtube2" class="popup-wrap video">
-        <section class="pop-conts no-footer">
-            <div class="video-asset youtube-box">
-                <div class="video-box">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/18PFeUJbfy0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </section>
-        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-    </article>
-    <!-- // 얼음정수기 냉장고 케어 -->
-    <!-- 공기청정기 케어 -->
-    <article id="youtube3" class="popup-wrap video">
-        <section class="pop-conts no-footer">
-            <div class="video-asset youtube-box">
-                <div class="video-box">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/J5IH7ugvcxo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </section>
-        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-    </article>
-    <!-- // 공기청정기 케어 -->
-    <!-- 건조기 케어 -->
-    <article id="youtube4" class="popup-wrap video">
-        <section class="pop-conts no-footer">
-            <div class="video-asset youtube-box">
-                <div class="video-box">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/QfCC9grMrxk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </section>
-        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-    </article>
-    <!-- // 건조기 케어 -->
-    <!-- 스타일러 케어 -->
-    <article id="youtube5" class="popup-wrap video">
-        <section class="pop-conts no-footer">
-            <div class="video-asset youtube-box">
-                <div class="video-box">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/fGd5XT-jIfA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </section>
-        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-    </article>
-    <!-- // 스타일러 케어 -->
-    <!-- 전기레인지 케어 -->
-    <article id="youtube6" class="popup-wrap video">
-        <section class="pop-conts no-footer">
-            <div class="video-asset youtube-box">
-                <div class="video-box">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/m4ZjJlZghbI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </section>
-        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-    </article>
-    <!-- // 전기레인지 케어 -->
-    <!-- 식기세척기 케어 -->
-    <article id="youtube7" class="popup-wrap video">
-        <section class="pop-conts no-footer">
-            <div class="video-asset youtube-box">
-                <div class="video-box">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Qph4ry7dnNM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </section>
-        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-    </article>
-    <!-- // 식기세척기 케어 -->
 </body>
 </html>
