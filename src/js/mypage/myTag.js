@@ -40,8 +40,8 @@
                 var ajaxUrl = self.$contents.attr('data-submit-url');
                 lgkorUI.requestAjaxDataPost(ajaxUrl, {"tag":self.checkdTagList}, function(result) {
                     var data = result.data;
-                    var success = data.success.toLowerCase();
-                    if (success == 'y' || data.success == 'yes') {
+                    var success = lgkorUI.stringToBool(data.success);
+                    if (success) {
                         self.resetNewDefaultChecked();
                     } else {
                         self.resetSelectTag();

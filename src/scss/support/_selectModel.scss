@@ -1,15 +1,94 @@
 @charset "UTF-8";
 
+.prod-select-wrap {
+    background-image:linear-gradient(92deg, #9c86e7, #de64a0);
+    .box {
+        position:relative;
+        max-width:1380 + 80px;
+        padding:16px 40px;
+        .prod-info {
+            .tit {
+                margin-bottom:8px;
+                color:#fff;
+                @include font-large-1;
+                font-weight:700;
+            }
+            .prod-list {
+                margin-bottom:8px;
+                font-size:0;
+                li {
+                    display:inline-block;
+                    color:#fff;
+                    @include font-large-1;
+                    vertical-align:middle;
+                    & + li {
+                        position:relative;
+                        margin-left:24px;
+                        padding-left:48px;
+                        &:before {
+                            content:'';
+                            position:absolute;
+                            left:0;
+                            top:3px;
+                            width:24px;
+                            height:24px;
+                            background:url(/lg5-common/images/icons/icon-arr-24-wt.svg) no-repeat;
+                            background-size:100%;
+                        }
+                    }
+                }
+            }
+            .prod-txt {
+                color:#fff;
+                @include font-small;
+                font-weight:500;
+            }
+        }
+        .btn-reset {
+            position:absolute;
+            right:40px;
+            top:50%;
+            transform:translateY(-50%);
+            &.reset {
+                padding-left:40px;
+                color:#fff;
+                border-color:#fff;
+                &:before {
+                    content:'';
+                    position:absolute;
+                    left:16px;
+                    top:50%;
+                    width:20px;
+                    height:20px;
+                    background:url(/lg5-common/images/icons/icon-reset-20-white.svg) no-repeat;
+                    background-size:100%;
+                    transform:translateY(-50%);
+                }
+            }
+        }
+    }
+}
+
 .category-search {
     & > ul {
+        margin:-24px -12px 0;
+        @include clearfix;
         & > li {
-            border-radius:8px;
-            box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+            float:left;
+            width:25%;
+            padding:24px 12px 0; 
+            .box {
+                position:relative;
+                overflow:hidden;
+                border-radius:8px;
+                box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+            }
         }
     }
 
-    .category-box {
-        padding:40px 34px;
+    .category {
+        position:relative;
+        padding:40px 34px 64px;
         p {
             margin-bottom:16px;
             font-size:22px;
@@ -20,8 +99,84 @@
         .category-thumb {
             width:100%;
             max-width:200px;
+            margin:0 auto;
             img {
                 width:100%;
+            }
+        }
+        button {
+            position:absolute;
+            right:16px;
+            bottom:16px;
+            width:24px;
+            height:24px;
+            background:url(/lg5-common/images/icons/icon-plus-40.svg) no-repeat;
+            background-size:100%;
+        }
+    }
+
+    .sub-category {
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        &:before {
+            content:'';
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            opacity:0.8;
+            background:#000;
+        }
+        ul {
+            position:relative;
+            text-align:center;
+            li {
+                button {
+                    color:#fff;
+                    font-weight:700;
+                    @include font-large;
+                    &:hover {
+                        color:#ff6276;
+                        text-decoration:underline;
+                    }
+                }
+                & + li {
+                    margin-top:12px;
+                }
+            }
+        }
+        & > button {
+            position:absolute;
+            right:16px;
+            bottom:16px;
+            width:24px;
+            height:24px;
+            background:url(/lg5-common/images/icons/icon-plus-40.svg) no-repeat;
+            background-size:100%;
+        }
+    }
+
+    .box.on {
+        .sub-category {
+            position:absolute;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            opacity:0.8;
+            background:#000;
+            button {
+                position:absolute;
+                right:16px;
+                bottom:16px;
+                width:24px;
+                height:24px;
+                background:url(/lg5-common/images/icons/btn-close-24-bg-white.svg) no-repeat;
+                background-size:100%;
             }
         }
     }

@@ -13,29 +13,76 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '원격 상담 예약',
+                'pageTitle': '원격상담 예약',
                 'pageDesc': '고객님의 제품에 직접 접속하여 고장 증상에 대해 빠르게 해결해 드립니다.',
                 'pageBtn' : [
-                    { 'btn' : '요금 및 보증 기간 안내 ' },
-                    { 'btn' : '유상 서비스 적용 안내' }
+                    { 'btn' : '요금 및 보증 기간 안내' }
                 ]
             })
             <div class="contents support reservation">
-               <!-- @@include('./common/support/login-guide.html', {
-                    'text': '출장 서비스를 신청하기 위해 계정이 필요하지 않지만, 로그인을 하시면 고객님의 세부 정보가 자동으로 입력됩니다.'
-                })
-            -->
+                <ol class="reception-progress type-1">
+                    <li><span class="text">제품 선택</span></li>
+                    <li><span class="text">예약 내용 입력</span></li>
+                    <li><span class="text">예약 완료</span></li>
+                </ol>
+
                 <div class="cont-wrap narrow">
 
                     <form action="/html/support/CSTF4010.html" id="submitForm" autocomplete="off">
-
-                        <div class="section submitForm">
+                        <div class="section">
                             <div class="tit-wrap">
-                                <h2 class="tit">고장증상 선택</h2>
+                                <h2 class="tit">제품 추가정보</h2>
                             </div>
                             <div class="form-wrap">
                                 <div class="rdo-wrap-info">
-                                    <h3 class="tit req">고장증상<span class="blind">필수입력</span></h3>
+                                    <h3 class="tit">구매정보 선택</h3>
+                                </div>
+                                <div class="forms type2">
+                                    <div class="tit"><label for="inp01-1">구입 시기</label></div>
+                                    <div class="conts">
+                                        <div class="select-list-wrap w-auto">
+                                            <ul>
+                                                <li>
+                                                    <span class="rdo-wrap">
+                                                        <input type="radio" id="buyingdate-1" name="buyingdate" checked="">
+                                                        <label for="buyingdate-1">1개월 이내</label>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span class="rdo-wrap">
+                                                        <input type="radio" id="buyingdate-2" name="buyingdate">
+                                                        <label for="buyingdate-2">1년 이내</label>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span class="rdo-wrap">
+                                                        <input type="radio" id="buyingdate-3" name="buyingdate">
+                                                        <label for="buyingdate-3">1년~2년 이내</label>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span class="rdo-wrap">
+                                                        <input type="radio" id="buyingdate-4" name="buyingdate">
+                                                        <label for="buyingdate-4">2년 이상</label>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span class="rdo-wrap">
+                                                        <input type="radio" id="buyingdate-5" name="buyingdate">
+                                                        <label for="buyingdate-5">기억 안남</label>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section submitForm">
+                            <div class="form-wrap">
+                                <div class="rdo-wrap-info">
+                                    <h3 class="tit req">고장증상 선택<span class="blind">필수입력</span></h3>
                                 </div>
                                 <div class="choice-input rdo-wrap-list">
                                     <span class="rdo-wrap btn-type2">
@@ -169,7 +216,9 @@
                                         <div class="input-wrap count">
                                             <textarea class="ui_textcontrol" name="desc" id="input-desc" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="100" data-limit="100" data-count-target="#txt-count1" data-msg-target=".err-msg" data-error-msg="전달사항을 입력해주세요." data-required="true"></textarea>
                                             <span id="txt-count1" class="cell total"><em>0</em> / 100자</span>
-                                            <p class="err-msg"></p>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -191,7 +240,7 @@
                                     </div>
                                 </div>
                                 <div class="forms">
-                                    <div class="tit"><label for="input-phoneNo" class="req">휴대 전화<span class="blind">필수입력</span></label></div>
+                                    <div class="tit"><label for="input-phoneNo" class="req">휴대폰번호<span class="blind">필수입력</span></label></div>
                                     <div class="conts">
                                         <div class="input-wrap">
                                             <input type="text" name="phoneNo" id="input-phoneNo" placeholder="휴대 전화 입력" maxlength="11" data-required="true" data-msg-target=".err-msg" required>
@@ -199,9 +248,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <ul class="bullet-list top-border">
-                                    <li class="b-txt">입력한 정보가 정확하지 않을 경우 예약하신 서비스가 취소 또는 지연될 수 있으니 확인 바랍니다.</li>
-                                </ul>
                             </div>
                         </div>
                         <div class="section">

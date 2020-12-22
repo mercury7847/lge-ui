@@ -2,7 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["MYC/MYC"],
-        pageJS: ["mypage/myProdRegisted"]
+        pageJS: ["mypage/myProdRegist"]
     })
 <body>
     <div class="wrap">
@@ -14,15 +14,21 @@
                 "pageDesc" : "보유 제품 등록을 통해 제품을 좀더 체계적으로 관리하실 수 있습니다."
             })
             <!-- mypage -->
-            <div class="contents mypage"
-                data-delete-prod="/lg5-common/data-ajax/mypage/deleteRegistedProdList.json"
-            >
+            <div class="contents mypage">
+                <div class="hidden-input-group">
+                    <input type="hidden" name="totalCount" value="5"/>
+                    <input type="hidden" name="page" value="1"/>
+                </div>
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
                             "sect4" : true
                         })
-                        <div class="lnb-contents">
+                        <div class="lnb-contents"
+                            data-list-url="/lg5-common/data-ajax/mypage/product/registedProductList.json"
+                            data-insert-url="/lg5-common/data-ajax/mypage/product/productRegist.json";
+                            data-remove-url="/lg5-common/data-ajax/mypage/product/deleteProductRegist.json"
+                        >
                             <div class="section-wrap">
                                 <div class="sects">
                                     <div class="tit-wrap">
@@ -62,7 +68,7 @@
                                     <!-- 등록 가능 제품 -->
                                     <div class="my-product-lists enroll">
                                         <ul>
-                                            <li class="lists">
+                                            <li class="lists" data-model-id="pid00001">
                                                 <div class="inner">
                                                     <div class="thumb" aria-hidden="true">        
                                                         <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
@@ -96,7 +102,7 @@
                                                     
                                                 </div>
                                             </li>
-                                            <li class="lists">
+                                            <li class="lists" data-model-id="pid00002">
                                                 <div class="inner">
                                                     <div class="thumb" aria-hidden="true">        
                                                         <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
@@ -129,7 +135,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="lists">
+                                            <li class="lists" data-model-id="pid00003">
                                                 <div class="inner">
                                                     <div class="thumb" aria-hidden="true">        
                                                         <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
@@ -162,7 +168,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="lists">
+                                            <li class="lists" data-model-id="pid00004">
                                                 <div class="inner">
                                                     <div class="thumb" aria-hidden="true">        
                                                         <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
@@ -195,7 +201,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="lists">
+                                            <li class="lists" data-model-id="pid00005">
                                                 <div class="inner">
                                                     <div class="thumb" aria-hidden="true">        
                                                         <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
@@ -228,7 +234,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="lists">
+                                            <li class="lists" data-model-id="pid00006">
                                                 <div class="inner">
                                                     <div class="thumb" aria-hidden="true">        
                                                         <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
@@ -367,14 +373,13 @@
                                                 }
                                             ])
                                         </ul>
+                                        <!-- 보유제품목록 no data -->
+                                        <div class="no-data">
+                                            <p>보유하신 제품이 없습니다.<br>구매하신 제품을 등록하여 다양한 혜택을 받아보세요.</p>
+                                        </div>
+                                        <!-- // 보유제품목록 no data -->
                                     </div>
                                     <!-- // 보유제품목록 -->
-
-                                    <!-- 보유제품목록 no data -->
-                                    <div class="no-data">
-                                        <p>보유하신 제품이 없습니다.<br>구매하신 제품을 등록하여 다양한 혜택을 받아보세요.</p>
-                                    </div>
-                                    <!-- // 보유제품목록 no data -->
                                 </div>
                             </div>
                         </div>
