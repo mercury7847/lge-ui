@@ -19,13 +19,12 @@
 		}
 	}
 
-    .title, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6  {
-		margin:0 auto 48px auto;
-		font-size:24px;
-		line-height:34px;
-		text-align: center;
-        color: #111;
-    }
+	.title,
+	.title * {
+		margin-bottom:56px;
+		@include font-title-2;
+		text-align:center;
+	}
     /*
     .list-box {
 		@include mobile {

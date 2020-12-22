@@ -69,6 +69,15 @@ br.m {
     @include mobile {
         padding-top:0;
     }
+    &.type2 {
+        padding-top:80px;
+        @include mobile {
+            padding-top:0;
+            .cont-wrap .csn-section:first-child {
+                border-top:none;
+            }
+        }
+    }
     .border-type {
         margin:32px -40px 0;
         .tabs {
@@ -94,10 +103,22 @@ br.m {
         }
     }
     .prd-list-count {
-        margin:48px 0 16px;
+        margin:80px 0 10px;
         color:#222;
-        @include font-medium;
+        @include font-large;
         font-weight:700;
+        em {
+            color:#EC455A;
+        }
+        @include mobile {
+            margin:60px -16px 16px;
+            padding:32px 16px 0;
+            border-top:12px solid #f4f4f4;
+            @include clearfix;
+            span {
+                float:right;
+            }
+        }
     }
 
     .cont-wrap {
@@ -177,8 +198,7 @@ br.m {
         position:relative;
         .img {
             display:block;
-            width:60%;
-            max-width:678px;
+            width:calc(60% - 48px);
             border-radius:8px;
             overflow:hidden;
             img {
@@ -192,24 +212,29 @@ br.m {
                 border-radius:4px;
             }
         }
-        dl {
+        > dl {
             position:absolute;
             right:0;
             top:50%;
-            width:calc(40% - 24px);
-            max-width:420px;
+            width:40%;
             transform:translateY(-50%);
-            dt {
+            > dt {
                 color:#222;
                 @include font-large-2;
                 font-weight:700;
             }
-            dd {
+            > dd {
                 width:100%;
                 margin-top:12px;
                 color:#222;
                 @include font-medium;
                 word-break:keep-all;
+                .bullet-list {
+                    margin-top:32px;
+                    .b-txt {
+                        word-break:keep-all;
+                    }
+                }
             }
             @include mobile {
                 position:relative;
@@ -682,6 +707,15 @@ br.m {
         .desc {
             margin-top:12px;
             @include font-medium;
+        }
+        .call {
+            margin:8px 0 24px;
+            color:#EC455A;
+            @include font-large-2;
+            font-weight:700;
+            @include mobile {
+                margin-bottom:20px;
+            }
         }
         .btn.border {
             margin-top:32px;
