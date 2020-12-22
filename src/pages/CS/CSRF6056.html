@@ -23,6 +23,9 @@
                     <li><span class="text">원인 조사 및 조치</span></li>
                 </ol>
                 <div class="cont-wrap narrow">
+                    <div class="form-infos">
+                        <p class="req" aria-disabled="true">필수 입력 항목</p>
+                    </div>
 
                     <form action="/html/CS/CSRF6057.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/save.json" novalidate>
                         <div class="section">
@@ -257,7 +260,7 @@
                                                 회원일 경우 회원정보 이름 제공 
                                                 value="홍길동"
                                             -->
-                                            <input type="text" name="userName" id="userName"  value="" placeholder="휴대전화 인증 진행"  data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" readonly required>
+                                            <input type="text" name="userName" id="userName"  value="" placeholder="이름 입력"  data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" required>
                                         </div>
                                         <div class="btm-more err-block">
                                             <p class="err-msg"></p>
@@ -276,7 +279,7 @@
                                                     회원일 경우 회원정보 휴대 전화 제공 
                                                     value="01011112222"
                                                 -->
-                                                <input type="text" name="phoneNo" id="phoneNo" value="" placeholder="휴대전화 인증 진행"  data-error-msg="휴대전화를 정확히 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" readonly required>
+                                                <input type="text" name="phoneNo" id="phoneNo" value="" placeholder="휴대 전화 입력"  data-error-msg="휴대전화를 정확히 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" required>
                                             </div>
                                             <div class="cell">
                                                 <!-- 
@@ -404,16 +407,6 @@
                                 <div class="forms">
                                     <div class="tit">
                                         <label for="inp02-2">파일첨부(선택)</label>
-                                        <div class="tooltip-wrap">
-                                            <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
-                                            <div class="tooltip-box">
-                                                <ul class="bullet-list">
-                                                    <li class="b-txt">첨부파일은 최대 3개까지 가능하며, 전체 용량은 10MB 이하까지 업로드 가능합니다.</li>
-                                                    <li class="b-txt">첨부파일 이름은 특수기호(? ! , . & ^ ~ )를 제외해주세요.(첨부 가능 확장자 jpg,jpeg png,gif)</li>
-                                                </ul>
-                                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="conts">
                                         <div class="image-file-wrap ui_imageinput">
@@ -457,6 +450,11 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "참조첨부파일은 최대 3개까지 가능하며, 전체 용량은 10MB 이하까지 업로드 가능합니다. 첨부파일 이름은 특수기호(? ! , . & ^ ~ )를 제외해주세요.(첨부 가능 확장자 jpg,jpeg png,gif)"
+                                            ]
+                                        })
                                     </div>
                                 </div>
                                 @@include('./common/modules/bullet-list.html', {
