@@ -70,6 +70,13 @@
         &.next {
             right:0;
         }
+        @include mobile {
+            top:-8px;
+            width:57px;
+            height:57px;
+            background:url('/lg5-common/images/icons/btn-arr-72x72.svg') center no-repeat;
+            background-size:57px;
+        }
     }
     @include mobile {
         text-align:left;
