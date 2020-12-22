@@ -466,7 +466,7 @@
     margin-top: 12px;
     text-align: right;
     @include mobile {
-        padding: 0 16px;
+        //padding: 0 16px 0 0;
     }
     ul {
         display: inline-block;
@@ -477,6 +477,12 @@
             font-size: 14px;
             line-height: 20px;
             color: #808080;
+            @media screen and (max-width: 320px){
+                margin-left: 12px;
+            }
+            &:first-child {
+                margin-left: 0;
+            }
             &:before {
                 display: inline-block;
                 content: '';
@@ -501,6 +507,9 @@
     }
     &.calendar-info {
         width: 360px;
+        @include mobile {
+            width: 100%;
+        }
     }
 }
 .box-visit-date {
