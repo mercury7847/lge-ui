@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["UTC/UTC"],
-        pageJS: ["caresolution/requestRental", "caresolution/addressManagement", "caresolution/caresolutionInfo"]
+        pageCSS: ["UTC/UTC"]
     })
 <body>
     <div class="wrap">
         @@include('./common/header.html')
 
         <div class="container">
+            <!-- 20201221 수정 (타이틀 텍스트 수정, 스텝 영역 추가) -->
             @@include('./common/modules/page-header.html', {
-                "pageTitle": "청약 신청"
+                "pageTitle": "렌탈 케어솔루션",
+                "stepArr" : [
+                    { "step" : "01 장바구니", "class" : "", "text" : "" },
+                    { "step" : "02 청약신청", "class": "current", "text" : "<span class='blind'>현재 페이지</span>" },
+                    { "step" : "03 청약완료", "class": "", "text" : "" }
+                ]
             })
             <!-- 청약 신청 -->
+            <!-- 20201221 수정 (전체적으로 확인해야함, 텍스트 및 자잘한 수정) -->
             <div class="contents subscribe">
                 <div class="cont-wrap">
                     <div class="row-wrap">
                         <div class="col-left">
                             <div class="section">
-                                <h3 class="sec-tit">주문제품</h3>
+                                <h3 class="sec-tit">신청 제품</h3>
                                 <div class="list-wrap">
                                     <ul class="order-list">
                                         @@loop('./common/modules/order-list.html', [
                                             {
-                                                "flags" : "<span class='flag'><span class='blind'>제품타입</span>렌탈(케어솔루션)</span>",
+                                                "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
                                                 "disabled" : "",
                                                 "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
                                                 "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
@@ -107,7 +113,7 @@
                                     <li class="lists">
                                         <div class="head">
                                             <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                                <h3 class="title">계약자 정보 입력</h3>
+                                                <h3 class="title">계약자 정보</h3>
                                                 <span class="blind ui_accord_text">내용 더 보기</span>
                                             </a>
                                         </div>
@@ -117,10 +123,10 @@
                                                     <p class="req" aria-disabled="true">필수 입력 사항</p>
                                                 </div>
                                                 <dl class="forms">
-                                                    <dt class="tit"><label for="inp01-1" class="req">성명<span class="blind">필수입력</span></label></dt>
+                                                    <dt class="tit"><label for="inp01-1" class="req">이름<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inp01-1" name="userName" data-required="true" placeholder="성명을 입력해주세요" value="이엘지" readonly>
+                                                            <input type="text" id="inp01-1" name="userName" data-required="true" placeholder="이름을 입력해주세요" value="이엘지" readonly>
                                                             <!-- <p class="comp">본인 인증 완료</p> -->
                                                         </div>
                                                     </dd>
@@ -168,7 +174,7 @@
                                                     </dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inp01-4" placeholder="이메일을 입력해주세요" value="" name="userEmail" data-required="true">
+                                                            <input type="text" id="inp01-4" placeholder="이메일 주소를 입력해주세요." value="" name="userEmail" data-required="true">
                                                             <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
                                                         </div>
                                                     </dd>
@@ -189,11 +195,11 @@
                                                         </div>
                                                         <div class="input-wrap">
                                                             <!-- 2020-11-13 name 수정-->
-                                                            <input type="text" value="" name="userAddress" placeholder="주소찾기 또는 배송지 목록을 선택해주세요." data-required="true" disabled>
+                                                            <input type="text" value="" name="userAddress" placeholder="주소" data-required="true" disabled>
                                                         </div>
                                                         <div class="input-wrap">
                                                             <!-- 2020-11-13 name 수정-->
-                                                            <input type="text" value="" name="detailAddress" placeholder="상세주소를 입력해주세요." data-required="true">
+                                                            <input type="text" value="" name="detailAddress" placeholder="상세주소를 입력해주세요." data-required="true" disabled>
                                                         </div>
                                                         <div class="btm-more err-address"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
                                                     </dd>
@@ -210,11 +216,11 @@
                                                                     <label for="chk-pri1">개인정보 및 신용정보 제공 동의</label>
                                                                 </span>
                                                                 <div class="cell">
-                                                                    <a href="#n" class="btn-link">이용약관 보기</a>
+                                                                    <a href="#n" class="btn-link">동의약관 보기</a>
                                                                 </div>
                                                             </div>
                                                             <div class="mix-cont">
-                                                                <p class="desc">신용정보 조회시 개인의 신용등급에 영향을 미치지 않습니다.</p>
+                                                                <p class="desc">신용정보 조회시 개인의 신용등급에 영향을 미치지 않습니다. </p>
                                                                 <div class="btn-wrap">
                                                                     <button class="btn bg-type creditInquire" disabled><span>신용정보 조회</span></button>
                                                                 </div>
@@ -228,40 +234,30 @@
                                     <li class="lists">
                                         <div class="head">
                                             <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                                <h3 class="title">설치 정보 입력</h3>
+                                                <h3 class="title">설치 정보</h3>
                                                 <span class="blind ui_accord_text">내용 더 보기</span>
                                             </a>
                                         </div>
                                         <div class="accord-cont ui_accord_content">
                                             <div class="form-wrap">
-                                                <div class="select-list-wrap w-auto">
-                                                    <ul>
-                                                        <li>
-                                                            <span class="rdo-wrap">
-                                                                <input type="radio" id="rdo02-1" name="installInpuType" value="self" checked>
-                                                                <label for="rdo02-1">직접 입력</label>
-                                                            </span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="rdo-wrap">
-                                                                <input type="radio" id="rdo02-2" name="installInpuType" value="equal">
-                                                                <label for="rdo02-2">계약자 정보와 동일</label>
-                                                            </span>
-                                                        </li>
-                                                    </ul>
+                                                <div class="form-infos">
+                                                    <span class="chk-wrap">
+                                                        <input type="checkbox" id="chk-equal" name="installInpuType" value="equal">
+                                                        <label for="chk-equal">계약자 정보와 동일</label>
+                                                    </span>
                                                 </div>
                                                 <dl class="forms">
-                                                    <dt class="tit"><label for="inp02-1" class="req">인수자 성명<span class="blind">필수입력</span></label></dt>
+                                                    <dt class="tit"><label for="inp02-1" class="req">인수자<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inp02-1" placeholder="성명을 입력해주세요" value="" name="userName" data-required="true">
+                                                            <input type="text" id="inp02-1" placeholder="이름을 입력해주세요." value="" name="userName" data-required="true">
                                                             <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
                                                         </div>
                                                     </dd>
                                                 </dl>
                                                 <dl class="forms">
                                                     <dt class="tit">
-                                                        <label for="inp02-2" class="req">인수자 휴대폰<span class="blind">필수입력</span></label>
+                                                        <label for="inp02-2" class="req">휴대폰<span class="blind">필수입력</span></label>
                                                         <div class="tooltip-wrap">
                                                             <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
                                                             <span class="tooltip-box">
@@ -272,16 +268,16 @@
                                                     </dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="number" id="inp02-2" placeholder="휴대폰을 입력해주세요" name="userPhone" maxlength="11" data-min-length="10" data-max-length="11" data-required="true">
+                                                            <input type="number" id="inp02-2" placeholder="(-)없이 입력해주세요" name="userPhone" maxlength="11" data-min-length="10" data-max-length="11" data-required="true">
                                                             <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
                                                         </div>
                                                     </dd>
                                                 </dl>
                                                 <dl class="forms">
-                                                    <dt class="tit"><label for="inp02-3" class="req">일반 전화번호<span class="blind">필수입력</span></label></dt>
+                                                    <dt class="tit"><label for="inp02-3" class="req">연락처<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="number" id="inp02-3" placeholder="일반 전화번호를 입력해주세요" name="userTelephone" maxlength="12" data-equal-number="0212345678" data-required="true">
+                                                            <input type="number" id="inp02-3" placeholder="(-)없이 입력해주세요" name="userTelephone" maxlength="12" data-equal-number="0212345678" data-required="true">
                                                             <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
                                                         </div>
                                                     </dd>
@@ -302,15 +298,15 @@
                                                         </div>
                                                         <div class="input-wrap">
                                                             <!-- 2020-11-13 name 수정-->
-                                                            <input type="text" value="" name="userAddress" placeholder="주소찾기 또는 배송지 목록을 선택해주세요." data-required="true" disabled>
+                                                            <input type="text" value="" name="userAddress" placeholder="주소" data-required="true" disabled>
                                                         </div>
                                                         <div class="box type2">
                                                             <div class="input-wrap">
                                                                 <!-- 2020-11-13 name 수정-->
-                                                                <input type="text" value="" name="detailAddress" placeholder="상세주소를 입력해주세요." data-required="true"> <!-- 2020-11-25 -->
+                                                                <input type="text" value="" name="detailAddress" placeholder="상세주소를 입력해주세요." data-required="true" disabled> <!-- 2020-11-25 -->
                                                             </div>
                                                             <div class="cell">
-                                                                <button type="button" class="btn installAbledConfirm"><span>설치 가능여부 확인</span></button>
+                                                                <button type="button" class="btn installAbledConfirm" disabled><span>설치 가능여부 확인</span></button>
                                                             </div>
                                                         </div>
                                                         <div class="btm-more err-address-install"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
@@ -321,7 +317,7 @@
                                                     <dd class="conts">
                                                         <!-- 2020-11-20 -->
                                                         <div class="input-wrap">
-                                                            <input type="text" value="" name="installRequriement" placeholder="배송 요청사항을 입력해주세요.">
+                                                            <input type="text" id="slt02-1" value="" name="installRequriement" placeholder="기사님에게 요청하실 메시지입니다.">
                                                         </div>
                                                         <!-- //2020-11-20 -->
                                                     </dd>
@@ -331,9 +327,9 @@
                                                     <dd class="conts">
                                                         <div class="select-wrap">
                                                             <select class="ui_selectbox" id="slt02-2" title="설치 장소 선택" name="inatallPlace" data-required="true">
-                                                                <option value="" class="placeholder">전체 카테고리를 선택해주세요.</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
-                                                                <option value="aaa">전체 카테고리를 선택해주세요.a</option>
-                                                                <option value="bbb">전체 카테고리를 선택해주세요.b</option>
+                                                                <option value="" class="placeholder">선택</option>
+                                                                <option value="aaa">설치 장소 a</option>
+                                                                <option value="bbb">설치 장소 b</option>
                                                             </select>
                                                             <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
                                                         </div>
@@ -341,7 +337,7 @@
                                                 </dl>
                                                 <dl class="forms">
                                                     <dt class="tit">
-                                                        <p class="label req">설치희망 일시<span class="blind">필수입력</span></p>
+                                                        <p class="label req">설치 희망일<span class="blind">필수입력</span></p>
                                                         <div class="tooltip-wrap"><!-- 활성화시 active -->
                                                             <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
                                                             <span class="tooltip-box">
@@ -353,7 +349,7 @@
                                                     <dd class="conts">
                                                         <div class="input-wrap datepicker">
                                                             <div class="box">
-                                                                <input type="text" id="date-input" name="inatallDate" placeholder="날짜 선택" data-required="true">
+                                                                <input type="text" id="date-input" name="inatallDate" placeholder="희망일 선택" data-required="true">
                                                                 <div class="cell">
                                                                     <button type="button" class="ui_calendar" data-input-target="#date-input" data-min-date=new Date()><span class="blind">달력보기</span></button>
                                                                 </div>
@@ -380,15 +376,27 @@
                                                             </div>
                                                         </dt>
                                                         <dd class="conts">
-                                                            <span class="chk-wrap">
-                                                                <input type="checkbox" id="chk02-1" name="chk02-1">
-                                                                <label for="chk02-1">수거신청</label>
-                                                            </span>
+                                                            <div class="select-list-wrap w-auto">
+                                                                <ul class="ui_radio_visible">
+                                                                    <li>
+                                                                        <span class="rdo-wrap">
+                                                                            <input type="radio" id="rdo02-1" name="preVisitRequest" value="Y" data-visible-target=".visible-target1" checked>
+                                                                            <label for="rdo02-1">신청</label>
+                                                                        </span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="rdo-wrap">
+                                                                            <input type="radio" id="rdo02-2" name="preVisitRequest" value="N" data-visible-target="">
+                                                                            <label for="rdo02-2">미신청</label>
+                                                                        </span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </dd>
                                                     </dl>
                                                     <dl class="forms type2">
                                                         <dt class="tit">
-                                                            <p class="label">사전 방문 신청</p>
+                                                            <p class="label req">사전 방문 신청<span class="blind">필수입력</span></p>
                                                         </dt>
                                                         <dd class="conts">
                                                             <div class="select-list-wrap w-auto">
@@ -411,14 +419,11 @@
                                                                 <div class="mix-input">
                                                                     <span class="chk-wrap">
                                                                         <input type="checkbox" id="chk02-2" name="preVisitAgree" checked>
-                                                                        <label for="chk02-2">휴대폰 본인인증</label>
+                                                                        <label for="chk02-2">서비스 제공을 위한 개인정보 수집/이용 동의</label>
                                                                     </span>
                                                                     <div class="cell">
-                                                                        <a href="#n" class="btn-link ">이용약관 보기</a>
+                                                                        <a href="#n" class="btn-link ">동의약관 보기</a>
                                                                     </div>
-                                                                </div>
-                                                                <div class="mix-cont">
-                                                                    <p class="desc">LG전자 사전 방문 서비스 제공을 위한 개인정보 수집/미용에 관한 내용을 확인 후 동의하기</p>
                                                                 </div>
                                                             </div>
                                                         </dd>
@@ -430,7 +435,7 @@
                                     <li class="lists">
                                         <div class="head">
                                             <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                                <h3 class="title">납부 정보 입력</h3>
+                                                <h3 class="title">납부 정보</h3>
                                                 <span class="blind ui_accord_text">내용 더 보기</span>
                                             </a>
                                         </div>
@@ -701,7 +706,7 @@
                                 <div class="gray-box item-info">
                                     <ul class="item-list">
                                         <li class="" data-item-id="A23134124"> <!-- 2020-11-25 -->
-                                            <span class="item-subtit">렌탈(케어솔루션)</span>
+                                            <span class="item-subtit">케어솔루션</span>
                                             <strong class="item-tit">LG TROMM 스타일러 블랙에디션</strong>
                                             <div class="item-spec">
                                                 <span>S5MBR</span>
@@ -709,7 +714,7 @@
                                             </div>
                                         </li>
                                         <li class="" data-item-id="B23134124"> <!-- 2020-11-25 -->
-                                            <span class="item-subtit">렌탈(케어솔루션)</span>
+                                            <span class="item-subtit">케어솔루션</span>
                                             <strong class="item-tit">LG TROMM 스타일러 블랙에디션</strong>
                                             <div class="item-spec">
                                                 <span>S5MBR</span>
@@ -717,17 +722,18 @@
                                             </div>
                                         </li>
                                         <li class="item-disabled" data-item-id="C23134124"> <!-- 2020-11-25 불가능 제품 시 item-disabled 클래스 추가-->
-                                            <span class="item-subtit">렌탈(케어솔루션)</span>
+                                            <span class="item-subtit">케어솔루션</span>
                                             <strong class="item-tit">LG TROMM 스타일러 블랙에디션</strong>
                                             <div class="item-spec">
                                                 <span>S5MBR</span>
                                                 <span>월 61,900원</span>
                                             </div>
-                                            <p class="text-disabled"><span>설치 불가능 제품</span></p> 
+                                            <p class="text-disabled"><span>설치 불가능 제품입니다.</span></p>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="gray-box payment-amount-info">
+                                    <span class="box-title">장바구니 전체 합계</span>
                                     <ul class="payment-list">
                                         <li>
                                             <dl>
@@ -737,48 +743,48 @@
                                         </li>
                                         <li>
                                             <dl>
-                                                <dt class="text">이용요금</dt>
+                                                <dt class="text">이용 요금</dt>
                                                 <dd class="price">월 98,800원</dd>
                                             </dl>
                                         </li>
                                         <li>
                                             <dl>
-                                                <dt class="text">결합할인 금액</dt>
+                                                <dt class="text">결합 할인</dt>
                                                 <dd class="price sale">월 -5,000원</dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl>
+                                                <dt class="text">제휴카드 할인</dt>
+                                                <dd class="price sale">최대 월 -23,000원</dd>
                                             </dl>
                                         </li>
                                     </ul>
                                     <div class="total-payment-amount">
                                         <dl>
-                                            <dt class="text">총 2건</dt>
-                                            <dd class="price">월 93,800원</dd>
+                                            <dt class="text">최종 이용 요금</dt>
+                                            <dd class="price">
+                                                <span class="total">월 38,900원</span>
+                                            </dd>
                                         </dl>
                                         <!-- <p class="desc">* 신규 결합할인 적용</p>  -->
                                     </div>
                                 </div>
                                 <div class="gray-box agree-box">
-                                    <h4 class="sub-title">계약 신청서 확인</h4>
+                                    <h4 class="box-title">계약 신청서 확인</h4>
                                     <p class="desc">
                                         본인 신용 인증이 불가능할 경우, 결제/청약 신청이 취소됩니다. 청약 완료 후 고객님의 휴대폰 번호로 청약 완료 문자가 발송되며 청약 내용은 이메일로 발송되니 확인하세요.
                                     </p>
                                     <div class="agree">
-                                        <ul class="text-list">
-                                            <li><span class="chk-wrap chk-sm">
-                                            <input type="checkbox" id="chk-agree-1" name="chk-agree-1"><label for="chk-agree-1">위에서 입력한 납부 방법(카드/은행 계좌)에서 월 렌탈료를 자동이체 하는 것에 동의합니다.</label>
-                                        </span></li>
-                                            <li><span class="chk-wrap chk-sm">
-                                            <input type="checkbox" id="chk-agree-2" name="chk-agree-2"><label for="chk-agree-2">주문할 제품의 제품명, 제품 가격, 배송 정보를 확인하였으며, 주문상품 및 결제 대행 서비스 약관에 모두 동의합니다.(전자상거래법 제8조 2항)</label>
-                                        </span></li>
-                                        </ul>
                                         <div class="chk-btm">
                                         <span class="chk-wrap">
                                             <input type="checkbox" id="chk-agree-3" name="chk-agree8" class="ui_all_checker">
-                                            <label for="chk-agree-3">모든 계약신청서 확인/동의</label>
+                                            <label for="chk-agree-3">케어솔루션 청약신청 고객 동의</label>
                                         </span>
                                         </div>
                                     </div>
                                     <div class="btn-area">
-                                        <button type="button" class="btn pink">청약 신청하기</button>
+                                        <button type="button" class="btn">청약 신청하기</button>
                                     </div>
                                 </div>
                             </div>
