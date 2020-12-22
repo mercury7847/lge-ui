@@ -3,7 +3,8 @@
     @@include('./common/head.html', {
         "pageCSS": [
             "support/support",
-            "support/air-care"
+            "support/air-care",
+            "support/custom-voice"
         ]
     })
 <body>
@@ -56,11 +57,11 @@
                                         <div class="form-wrap">
                                             <div class="forms block-type">
                                                 <div class="tit">
-                                                    <label for="userName1" class="req">이름<span class="blind">필수입력</span></label>
+                                                    <label for="authName" class="req">이름 <span class="blind">필수입력</span></label>
                                                 </div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="userName1" id="userName1" placeholder="이름 입력" data-error-msg="이름을 입력해 주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
+                                                        <input type="text" name="authName" id="authName" placeholder="이름을 입력해주세요"  data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
@@ -185,6 +186,7 @@
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/customVoice/customVoice.min.js"></script>
     <script src="/lg5-common/js/support/customVoice/myStatus.min.js"></script>
 </body>
 </html> 
