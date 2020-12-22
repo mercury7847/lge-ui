@@ -999,16 +999,6 @@
                 margin-top: 24px;
             }
         }
-        // 로그인 유도
-        .login-guide {
-            @include font-medium;
-            .top-txt {
-                margin-bottom: 20px;
-            }
-            p strong {
-                font-weight: 700;
-            }
-        }
         //케어십 절차 안내
         .process-list {
             display: flex;
