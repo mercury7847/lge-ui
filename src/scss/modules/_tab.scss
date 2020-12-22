@@ -146,6 +146,9 @@
         .tabs {
             > li {
                 margin-left:32px;
+                @include mobile {
+                    margin-left:24px;
+                }
                 &:first-child {
                     margin-left:0;
                 }
