@@ -521,24 +521,6 @@
         }
     }
 
-    .problem-solve {
-        margin-top: 32px;
-    }
-    .problem-solve.type2 {
-        border-radius:8px;
-        display:flex;
-        justify-content: space-between;
-        align-items: center;
-        background-image:none;
-        margin-bottom: 32px; //64px;
-        .btn-txt{
-            color:#767676;
-            @include font-small;
-            padding-right:24px;
-            background:url(/lg5-common/images/icons/btn_arrow_right_16.svg) right center no-repeat;
-            background-size:16px;
-        }
-    }
     .modal-line-box {
         border: 1px solid #ddd;
         border-radius: 8px;
