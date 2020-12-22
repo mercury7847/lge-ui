@@ -87,7 +87,7 @@
 
     &.share {
         height: 32px;
-        padding-top: 0;
+        margin-top: 0;
         .tooltip-icon {
             width: 32px;
             height: 32px;
@@ -123,8 +123,10 @@
 
     [data-fixed="fixed-right"] {
         & + .tooltip-box {
-            left: auto;
-            right: 0;
+            @include pc {
+                left: auto;
+                right: 0;
+            }
         }
     }
 }

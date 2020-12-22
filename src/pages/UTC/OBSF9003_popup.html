@@ -8,6 +8,11 @@
         <button type="button" data-href="#popup1" data-control="modal" class="btn"><span>케어솔루션 월 요금 혜택 팝업 열기</span></button><br><br>
         <button type="button" data-href="#popup2" data-control="modal" class="btn"><span>케어십 할인 혜택 팝업 열기</span></button><br><br>
         <button type="button" data-href="#popup3" data-control="modal" class="btn"><span>케어십 안내 팝업 열기</span></button><br><br>
+        <button type="button" data-href="#popup4" data-control="modal" class="btn"><span>품절 안내 팝업 열기</span></button><br><br>
+        <button type="button" data-href="#popup5" data-control="modal" class="btn"><span>주문 안내 팝업 열기</span></button><br><br>
+        <button type="button" data-href="#popup6" data-control="modal" class="btn"><span>신청하기 팝업 열기</span></button> <span>비로그인</span><br><br>
+        <button type="button" data-href="#popup7" data-control="modal" class="btn"><span>신청하기 팝업 열기</span></button> <span>선택상품 포함 총 7개 초과인 상태</span><br><br>
+        <button type="button" data-href="#popup8" data-control="modal" class="btn"><span>신청하기 팝업 열기</span></button> <span>동일 카테고리 내 제품 선택이 정수기 3대, 정수기 외 2대를 초과한 경우</span><br><br>
     </div>
 
     <!-- 케어솔루션 월 요금 혜택 popup -->
@@ -22,10 +27,40 @@
     })
     <!-- // 케어십 할인 혜택 popup -->
 
-    <!-- 케어십안내 popup -->
+    <!-- 케어십 안내 popup -->
     @@include('./common/popup/OBSF9003_popup3.html', {
         "popupID":"popup3"
     })
-    <!-- // 케어십안내 popup -->
+    <!-- // 케어십 안내 popup -->
+
+    <!-- 품절 안내 popup -->
+    @@include('./common/popup/OBSF9003_popup4.html', {
+        "popupID":"popup4"
+    })
+    <!-- // 품절 안내 popup -->
+
+    <!-- 주문 안내 popup -->
+    @@include('./common/popup/OBSF9003_popup5.html', {
+        "popupID":"popup5"
+    })
+    <!-- // 주문 안내 popup -->
+
+    <!-- 신청하기 - 비로그인 popup -->
+    @@include('./common/popup/OBSF9003_popup6.html', {
+        "popupID":"popup7"
+    })
+    <!-- // 신청하기 popup -->
+
+    <!-- 신청하기 popup -->
+    @@include('./common/popup/OBSF9003_popup7.html', {
+        "popupID":"popup8"
+    })
+    <!-- // 신청하기 - 선택상품 포함 총 7개 초과인 상태 popup -->
+
+    <!-- 신청하기 - 동일 카테고리 내 제품 선택이 정수기 3대, 정수기 외 2대를 초과한 경우 popup -->
+    @@include('./common/popup/OBSF9003_popup8.html', {
+        "popupID":"popup9"
+    })
+    <!-- // 신청하기 popup -->
 </body>
 </html>

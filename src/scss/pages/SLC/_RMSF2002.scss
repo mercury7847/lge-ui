@@ -82,9 +82,15 @@ br.m {
         }
     }
     .csn-itr-cont {
-        margin-top:28px;
+        margin-top:40px;
         @include mobile {
-            margin:0 -16px;
+            margin:32px -16px 0;
+        }
+        &.tab-content {
+            margin-top:28px;
+            @include mobile {
+                margin:0 -16px;
+            }
         }
     }
     .prd-list-count {
@@ -107,15 +113,24 @@ br.m {
                 margin-top:0;
                 padding:32px 16px 60px;
                 border-top:12px solid #f4f4f4;
+                &.type2 {
+                    border-top:none;
+                }
             }
             &:first-child {
                 margin-top:0;
             }
+            .section-inner {
+                margin-top:80px;
+                @include mobile {
+                    margin-top:40px;
+                }
+                &:first-child {
+                    margin-top:0;
+                }
+            }
             .tit-wrap {
                 text-align:center;
-                @include mobile {
-                    text-align:left;
-                }
                 .tit {
                     font-size:24px;
                     line-height:30px;
@@ -126,8 +141,8 @@ br.m {
                     }
                 }
                 .desc {
-                    margin-top:16px;
-                    @include font-large;
+                    margin-top:12px;
+                    @include font-medium;
                     small {
                         display:block;
                         margin-top:8px;
@@ -217,8 +232,11 @@ br.m {
             border-radius:8px;
             width:100%;
             background:#f4f4f4;
+            @media screen and (max-width:1024px) {
+                display:block;
+            }
             @include mobile {
-                padding:32px 16px;
+                padding:32px 16px 40px;
                 border-radius:0;
             }
             .csn-video {
@@ -226,11 +244,14 @@ br.m {
                 position:relative;
                 width:60.5%;
                 vertical-align:middle;
-                @include mobile {
-                    float:none;
+                @media screen and (max-width:1024px) {
+                    display:block;
                     width:100%;
-                    border-radius:4px;
-                    overflow:hidden;
+                    max-width:614px;
+                    margin:0 auto;
+                }
+                @include mobile {
+                    max-width:100%;
                 }
                 img {
                     width:100%;
@@ -255,10 +276,15 @@ br.m {
                 width:39.5%;
                 padding-left:64px;
                 vertical-align:middle;
-                @include mobile {
-                    float:none;
+                @media screen and (max-width:1024px) {
+                    display:block;
                     width:100%;
-                    margin-top:16px;
+                    max-width:614px;
+                    margin:24px auto 0;
+                    padding-left:0;
+                }
+                @include mobile {
+                    max-width:100%;
                 }
                 .video-tit {
                     position:relative;
@@ -268,19 +294,31 @@ br.m {
                     em {
                         display:block;
                     }
+                    @include mobile {
+                        font-size:18px;
+                        line-height:26px;
+                    }
                 }
                 .desc {
                     margin-top:16px;
                     @include font-medium;
+                    @include mobile {
+                        margin-top:14px;
+                    }
                 }
             }
         }
         .csn-itr-body {
             margin-top:48px;
+            @include mobile {
+                margin-top:32px;
+                padding:0 16px;
+            }
             &:first-child {
-                margin-top:0;
+                margin-top:0px;
             }
             .csn-icon-list {
+                overflow:hidden;
                 > ul {
                     margin-top:-48px;
                     margin-left:-24px;
@@ -291,7 +329,7 @@ br.m {
                     }
                     > li {
                         display:inline-block;
-                        width:calc(100% / 3);
+                        width:50%;
                         margin-top:48px;
                         padding-left:24px;
                         vertical-align:top;
@@ -310,8 +348,8 @@ br.m {
                             padding-left:112px;
                             @include mobile {
                                 max-width:100%;
-                                min-height:60px;
-                                padding-left:80px;
+                                min-height:80px;
+                                padding-left:96px;
                             }
                             &::before {
                                 content:' ';
@@ -325,9 +363,8 @@ br.m {
                                 background-position:center;
                                 background-image:url('/lg5-common/images/icons/icon-01-120.svg');
                                 @include mobile {
-                                    width:60px;
-                                    height:60px;
-                                    background-size:40px;
+                                    width:80px;
+                                    height:80px;
                                 }
                             }
                             dt {
@@ -343,14 +380,39 @@ br.m {
                             dd {
                                 margin-top:16px;
                                 @include font-medium;
+                                @include mobile {
+                                    margin-top:12px;
+                                }
+                                p {
+                                    position:relative;
+                                    padding-left:10px;
+                                    &::before {
+                                        content:'-';
+                                        position:absolute;
+                                        top:0;
+                                        left:0;
+
+                                    }
+                                }
                             }
                         }
                         .bullet-list {
                             margin-top:12px;
                             padding-left:112px;
                             @include mobile {
-                                padding-left:80px;
+                                padding-left:96px;
                             }
+                        }
+                    }
+                }
+                &.size3 {
+                    > ul > li {
+                        width:calc(100% / 3);
+                        @media screen and (max-width:1024px) {
+                            width:50%;
+                        }
+                        @include mobile {
+                            width:100%;
                         }
                     }
                 }
@@ -359,6 +421,15 @@ br.m {
                 margin-top:64px;
                 @include mobile {
                     margin-top:40px;
+                }
+            }
+        }
+        @include mobile {
+            &.tab-content {
+                .csn-itr-body {
+                    &:first-child {
+                        margin-top:16px;
+                    }
                 }
             }
         }
@@ -398,57 +469,110 @@ br.m {
             }
         }
     }
+
+    // B2B 케어솔루션 전문 상담
+    .csn-section.csn-b2bs {
+        padding:48px 32px;
+        background-image:url('/lg5-common/images/SLC/bg-visual03.jpg');
+        background-size:cover;
+        background-repeat:no-repeat;
+        background-position:center;
+        text-align:center;
+        @include mobile {
+            padding:32px 16px;
+            background-image:url('/lg5-common/images/SLC/bg-visual03-m.jpg');
+            border-top:none;
+        }
+        .tit-wrap {
+            color:#fff;
+            .call {
+                margin-top:4px;
+                font-weight:500;
+                @include mobile {
+                    margin-top:8px;
+                }
+            }
+        }
+        .btn.border {
+            margin-top:24px;
+            border-color:#fff;
+            color:#fff;
+            @include mobile {
+                display:block;
+            }
+        }
+    }
     
     // gray block modules
     .gray-block-wrap {
         display:table;
         width:auto;
-        margin:48px auto 0;
+        margin:32px auto 0;
         table-layout:fixed;
         border-collapse:separate;
         border-spacing:24px 0;
-        &.type2 {
-            margin:48px -24px 0;
-        }
+        table-layout:fixed;
         @include mobile {
             display:block;
             width:100%;
-            margin-top:32px;
-            &.type2 {
-                margin:32px 0 0;
+            margin-top:20px;
+        }
+        &.type2 {
+            margin-top:8px;
+            margin-bottom:-24px;
+            border-spacing:24px;
+            .row {
+                display:table-row;
+                dl dd {
+                    margin-top:12px;
+                }
+                .tit {
+                    @include font-large-1;
+                }
+            }
+            @include mobile {
+                margin-top:32px;
+                margin-bottom:0;
+                .row {
+                    display:block;
+                }
             }
         }
         .blocks {
             display:table-cell;
             width:444px;
-            padding:36px;
+            padding:32px;
+            border:1px solid #ddd;
             border-radius:8px;
-            background:#f4f4f4;
-            vertical-align:middle;
+            vertical-align:top;
             @include mobile {
                 display:block;
                 position:relative;
                 width:100%;
-                margin-top:12px;
-                padding:20px;
+                margin-top:16px;
+                padding:24px;
                 border-radius:4px;
             }
             dl {
                 text-align:center;
-                @include mobile {
-                    text-align:left;
-                }
                 dt {
                     font-size:0;
                     .tit {
                         display:inline-block;
                         @include font-medium;
                         font-weight:700;
-                        vertical-align:top;
+                        vertical-align:middle;
                     }
                     .tooltip-wrap {
-                        margin:2px 0 0 4px;
-                        vertical-align:top;
+                        margin-top:0;
+                        margin-left:4px;
+                        vertical-align:middle;
+                        .tooltip-box {
+                            @include mobile {
+                                left:0;
+                                right:0;
+                            }
+                        }
                     }
                 }
                 dd {
@@ -456,25 +580,20 @@ br.m {
                     @include font-medium;
                     word-break:keep-all;
                     &.num {
-                        margin-top:16px;
+                        margin-top:8px;
                         color:#EC455A;
                         @include font-large-1;
                         font-weight:700;
-                        @include mobile {
-                            margin-top:4px;
-                            text-align:right;
-                        }
                     }
-                }
-            }
-        }
-        &.type2 {
-            .blocks {
-                height:327px;
-                @include mobile {
-                    height:auto;
-                    dl {
-                        text-align:center;
+                    small {
+                        display:block;
+                        margin-top:2px;
+                        color:#767676;
+                        @include font-small;
+                        font-weight:500;
+                        @include mobile {
+                            margin-top:12px;
+                        }
                     }
                 }
             }
@@ -482,27 +601,24 @@ br.m {
     }
     
     .csn-ars-svc {
-        margin-top:64px;
+        margin:48px -12px 0;
         font-size:0;
         text-align:center;
         @include mobile {
-            margin-top:32px;
-            text-align:left;
+            margin:40px 0 0;
         }
         > li {
             position:relative;
             display:inline-block;
-            width:30%;
-            max-width:327px;
+            width:calc(100% / 3);
             padding:100px 12px 0;
             vertical-align:top;
             @include mobile {
                 display:block;
                 width:100%;
-                max-width:initial;
-                min-height:80px;
-                margin:32px 0 0;
-                padding:4px 92px 4px 0;
+                max-width:100%;
+                margin:40px 0 0;
+                padding:92px 0 0;
             }
             &::before {
                 content:' ';
@@ -513,35 +629,37 @@ br.m {
                 height:80px;
                 margin-left:-40px;
                 background:url("/lg5-common/images/icons/icon-09-80.svg") center no-repeat;
-                @include mobile {
-                    top:50%;
-                    left:auto;
-                    right:0;
-                    margin-top:-40px;
-                    margin-left:0;
-                }
             }
             .tit {
                 display:inline-block;
                 @include font-large-1;
                 font-weight:700;
+                vertical-align:middle;
             }
             dl {
                 dt {
                     font-size:0;
                     text-align:center;
-                    @include mobile {
-                        text-align:left;
-                    }
                     .tooltip-wrap {
-                        margin:2px 0 0 4px;
-                        vertical-align:top;
+                        margin:0 0 0 4px;
+                        vertical-align:middle;
+                        .tooltip-box {
+                            @include mobile {
+                                right:0;
+                                left:0;
+                            }
+                        }
                     }
                 }
                 dd {
                     margin-top:12px;
+                    padding:0 24px;
                     @include font-medium;
                     word-break:keep-all;
+                    @include mobile {
+                        margin-top:8px;
+                        padding:0;
+                    }
                 }
             }
         }
@@ -549,70 +667,26 @@ br.m {
 
     // 앱 qr
     .csn-ars-bottom {
-        padding:64px 40px;
+        margin-top:-40px;
+        padding:48px 32px;
         background:#f4f4f4;
+        text-align:center;
         @include mobile {
+            margin-top:0;
             padding:32px 16px;
         }
-        .inner {
-            display:table;
-            width:912px;
-            margin:0 auto;
+        .tit {
+            @include font-large-2;
+            font-weight:700;
+        }
+        .desc {
+            margin-top:12px;
+            @include font-medium;
+        }
+        .btn.border {
+            margin-top:32px;
             @include mobile {
                 display:block;
-                width:auto;
-            }
-            .txt-cell {
-                display:table-cell;
-                vertical-align:middle;
-                @include mobile {
-                    display:block;
-                }
-                .tit {
-                    @include font-large-1;
-                    font-weight:700;
-                }
-                .desc {
-                    margin-top:16px;
-                    @include font-medium;
-                    small {
-                        display:block;
-                        margin-top:8px;
-                        color:#767676;
-                        @include font-small;
-                    }
-                }
-            }
-            .img-cell {
-                display:table-cell;
-                vertical-align:middle;
-                text-align:right;
-                @include mobile {
-                    display:none;
-                }
-                img {
-                    width:100%;
-                    max-width:162px;
-                    height:auto;
-                    vertical-align:middle;
-                }
-            }
-            .appstore-btn {
-                display:inline-block;
-                font-size:0;
-            }
-            @include mobile {
-                .appstore-btn {
-                    display:inline-block;
-                    margin-top:32px;
-                    padding:17px 23px;
-                    border:1px solid #222;
-                    border-radius:30px;
-                    color:#222;
-                    font-size:16px;
-                    line-height:24px;
-                    font-weight:500;
-                }
             }
         }
     }
@@ -625,13 +699,7 @@ br.m {
                     margin-top:0;
                 }
                 .bullet-list {
-                    font-size:0;
                     > li {
-                        display:inline-block;
-                        width:50%;
-                        margin-top:8px;
-                        vertical-align:top;
-                        @include font-small;
                         &::before {
                             background:#222;
                         }
@@ -639,8 +707,9 @@ br.m {
                 }
             }
             p {
-                margin-bottom:8px;
+                margin-bottom:12px;
                 @include font-small;
+                font-weight:700;
             }
         }
     }
@@ -650,7 +719,7 @@ br.m {
         margin-top:48px;
         overflow:hidden;
         @include mobile {
-            margin-top:24px;
+            margin-top:32px;
         }
         > ul {
             margin:0 -12px;
@@ -663,13 +732,14 @@ br.m {
                 vertical-align:top;
                 width:calc(100% / 3);
                 padding:0 12px;
+                text-align:center;
                 > img {
-                    display:block;
                     width:100%;
+                    max-width:268px;
                     height:auto;
                 }
                 dl {
-                    margin-top:32px;
+                    margin-top:20px;
                     text-align:center;
                     dt {
                         @include font-large-1;
@@ -691,24 +761,16 @@ br.m {
                     display:block;
                     position:relative;
                     width:100%;
-                    min-height:78px;
-                    margin-top:12px;
-                    padding:12px 0;
-                    padding-left:124px;
+                    margin-top:32px;
+                    padding:0;
                     &:first-child {
                         margin-top:0;
                     }
                     > img {
-                        position:absolute;
-                        top:50%;
-                        left:0;
-                        width:104px;
-                        margin-top:-39px;
-                        border-radius:4px;
+                        max-width:210px;
                     }
                     dl {
-                        margin-top:0;
-                        text-align:left;
+                        margin-top:18px;
                     }
                 }
             }

@@ -1126,54 +1126,6 @@
             top: 0;
             //top: 0;
             right: 0;
-            //.btn-share {
-            //    display: block;
-            //    width: 32px;
-            //    height: 32px;
-            //    background: url('/lg5-common/images/icons/icon-share-32.svg') no-repeat 0 0;
-            //}
-            //.tooltip-wrap {
-            //    height: 32px;
-            //    .tooltip-box {
-            //        top: 34px;
-            //        min-width: 224px;
-            //        padding: 15px 16px;
-            //        border: solid 1px #111111;
-            //        border-radius: 14px;
-            //        box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.16);
-            //        line-height: 0;
-            //    }
-            //    .btn-close {
-            //        top: 20px;
-            //    }
-            //}
-            //.share-list {
-            //    > li {
-            //        display: inline-block;
-            //        &:not(:first-child) {
-            //            margin-left: 8px;
-            //        }
-            //    }
-            //    [class*="share-"] {
-            //        display: block;
-            //        width: 32px;
-            //        height: 32px;
-            //        background: no-repeat 0 0;
-            //        background-size: 32px 32px;
-            //        &[class*="facebook"] {
-            //            background-image: url('/lg5-common/images/icons/icon-facebook.svg');
-            //        }
-            //        &[class*="twitter"] {
-            //            background-image: url('/lg5-common/images/icons/icon-twitter.svg');
-            //        }
-            //        &[class*="kakaotalk"] {
-            //            background-image: url('/lg5-common/images/icons/icon-kakao.svg');
-            //        }
-            //        &[class*="url"] {
-            //            background-image: url('/lg5-common/images/icons/icon-url.svg');
-            //        }
-            //    }
-            //}
         }
         .info-bottom {
             @include clearfix;
