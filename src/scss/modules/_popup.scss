@@ -1109,6 +1109,9 @@
     }
 
     // popup list
+    .pop-list-wrap + .pop-list-wrap {
+        margin-top: 24px;
+    }
     .com-pop-tit {
         margin-bottom: 12px;
         @include font-large;
