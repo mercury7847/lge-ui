@@ -1,10 +1,7 @@
 .bullet-list {
-    margin-top:16px;
+    margin-top:12px;
     color:#767676;
     @include font-small;
-    @include mobile {
-        margin-top:12px;
-    }
     .b-tit {
         margin-bottom:2px;
         color:#767676;

@@ -123,8 +123,10 @@
 
     [data-fixed="fixed-right"] {
         & + .tooltip-box {
-            left: auto;
-            right: 0;
+            @include pc {
+                left: auto;
+                right: 0;
+            }
         }
     }
 }
