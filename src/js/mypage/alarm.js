@@ -95,7 +95,7 @@
             requestDeleteData: function(array) {
                 var self = this;
                 var deleteItems = array;
-                var ajaxUrl = self.$tabContents.attr('data-delete-url');
+                var ajaxUrl = self.$tabContents.attr('data-remove-url');
                 lgkorUI.requestAjaxDataPost(ajaxUrl, {'id':deleteItems}, function(result){
                     deleteItems.forEach(function(item){
                         self.$noticeList.find('li[data-alarm-id="' + item + '"]').remove();

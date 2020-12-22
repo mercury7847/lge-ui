@@ -79,7 +79,6 @@
                     arr.forEach(function(item, index) {
                         $ul.append(vcui.template(eventItemList, item));
                     });
-                    self.checkNoData();
                 });
             },
 

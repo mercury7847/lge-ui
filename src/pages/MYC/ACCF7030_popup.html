@@ -3,19 +3,19 @@
     @@include('./common/head.html', {
         pageCSS: ["MYC/MYC"]
     })
-<body style="background:#ccc">
+<body>
     <div class="wrap">
         <button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>방문일정 변경요청 팝업 열기</span></button>
     </div>
     <!-- 방문일정 변경요청 popup -->
-    <article id="popup1" class="popup-wrap full" style="display: block;background: #fff">
+    <article id="popup1" class="popup-wrap full">
         <header class="pop-header">
             <h1 class="tit"><span>방문일정 변경요청</span></h1>
         </header>
         <section class="pop-conts mypage mycalendar">
-            <div class="my-visit">
-                <div class="box-visit visit-calendar">
-                    <div class="tit-wrap">
+            <div class="my-visit calendar-box">
+                <div class="box-inner visit-calendar">
+                    <div class="tit-area">
                         <h2 class="h2-tit">01. 변경할 방문일을 선택해주세요. <span>(필수)</span></h2>
                     </div>
                     <div class="box-wrap calendar-wrap">
@@ -112,8 +112,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="box-visit visit-timetable">
-                    <div class="tit-wrap">
+                <div class="box-inner visit-timetable">
+                    <div class="tit-area">
                         <h2 class="h2-tit">02. 방문시간을 선택해주세요. <span>(필수)</span></h2>
                     </div>
                     <div class="box-wrap timetable-wrap">
@@ -126,7 +126,7 @@
                             <caption>방문일정 변경 타임테이블</caption>
                             <tbody>
                                 <tr>
-                                    <th>09시</th>
+                                    <th scope="row">09시</th>
                                     <td class="disabled"><button type="button" title="" disabled><span>00분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>10분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>20분</span></button></td>
@@ -135,7 +135,7 @@
                                     <td class=""><button type="button" title=""><span>50분</span><span class="blind">선택불가</span></button></td>
                                 </tr>
                                 <tr>
-                                    <th>10시</th>
+                                    <th scope="row">10시</th>
                                     <td class="disabled"><button type="button" title="" disabled><span>00분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>10분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>20분</span></button></td>
@@ -144,7 +144,7 @@
                                     <td class=""><button type="button" title=""><span>50분</span><span class="blind">선택불가</span></button></td>
                                 </tr>
                                 <tr>
-                                    <th class="choice">11시</th>
+                                    <th scope="row" class="choice">11시</th>
                                     <td class="disabled"><button type="button" title="" disabled><span>00분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>10분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>20분</span></button></td>
@@ -153,7 +153,7 @@
                                     <td class=""><button type="button" title=""><span>50분</span><span class="blind">선택불가</span></button></td>
                                 </tr>
                                 <tr>
-                                    <th>12시</th>
+                                    <th scope="row">12시</th>
                                     <td class="disabled"><button type="button" title="" disabled><span>00분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>10분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>20분</span></button></td>
@@ -162,7 +162,7 @@
                                     <td class=""><button type="button" title=""><span>50분</span><span class="blind">선택불가</span></button></td>
                                 </tr>
                                 <tr>
-                                    <th>13시</th>
+                                    <th scope="row">13시</th>
                                     <td class="disabled"><button type="button" title="" disabled><span>00분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>10분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>20분</span></button></td>
@@ -171,7 +171,7 @@
                                     <td class=""><button type="button" title=""><span>50분</span><span class="blind">선택불가</span></button></td>
                                 </tr>
                                 <tr>
-                                    <th>14시</th>
+                                    <th scope="row">14시</th>
                                     <td class="disabled"><button type="button" title="" disabled><span>00분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>10분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>20분</span></button></td>
@@ -180,7 +180,7 @@
                                     <td class=""><button type="button" title=""><span>50분</span><span class="blind">선택불가</span></button></td>
                                 </tr>
                                 <tr>
-                                    <th>15시</th>
+                                    <th scope="row">15시</th>
                                     <td class="disabled"><button type="button" title="" disabled><span>00분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>10분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>20분</span></button></td>
@@ -189,7 +189,7 @@
                                     <td class=""><button type="button" title=""><span>50분</span><span class="blind">선택불가</span></button></td>
                                 </tr>
                                 <tr>
-                                    <th>16시</th>
+                                    <th scope="row">16시</th>
                                     <td class="disabled"><button type="button" title="" disabled><span>00분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>10분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>20분</span></button></td>
@@ -198,7 +198,7 @@
                                     <td class=""><button type="button" title=""><span>50분</span><span class="blind">선택불가</span></button></td>
                                 </tr>
                                 <tr>
-                                    <th>17시</th>
+                                    <th scope="row">17시</th>
                                     <td class="disabled"><button type="button" title="" disabled><span>00분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>10분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>20분</span></button></td>
@@ -207,7 +207,7 @@
                                     <td class=""><button type="button" title=""><span>50분</span><span class="blind">선택불가</span></button></td>
                                 </tr>
                                 <tr>
-                                    <th>18시</th>
+                                    <th scope="row">18시</th>
                                     <td class="disabled"><button type="button" title="" disabled><span>00분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>10분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>20분</span></button></td>
@@ -216,7 +216,7 @@
                                     <td class=""><button type="button" title=""><span>50분</span><span class="blind">선택불가</span></button></td>
                                 </tr>
                                 <tr>
-                                    <th>19시</th>
+                                    <th scope="row">19시</th>
                                     <td class="disabled"><button type="button" title="" disabled><span>00분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>10분</span></button></td>
                                     <td class="disabled"><button type="button" title="" disabled><span>20분</span></button></td>

@@ -212,112 +212,7 @@
                 margin-top: 60px;
             }
         }
-        .calender-wrap {
-            font-size: 0;
-            .calender-area {
-                display: inline-block;
-                width: 79.6%;
-                max-width: 795px;
-                vertical-align: top;
-                font-size:0;
-                @include mobile {
-                    width: 100%;
-                }
-                .box {
-                    display: inline-block;
-                    width: 50%;
-                    @include mobile {
-                        width: 100%;
-                    }
-                    &.bx-date {
-                        padding-right: 12px;
-                        @include mobile {
-                            margin-top: 32px;
-                            padding: 0;
-                        }
-                    }
-                    &.bx-time {
-                        padding-left: 12px;
-                        @include mobile {
-                            margin-top: 40px;
-                            padding: 0;
-                        }
-                    }
-                    .tit {
-                        @include font-small;
-                        .date {
-                            margin-left: 8px;
-                            color: $color-primary;
-                        }
-                        .desc {
-                            margin-left: 8px;
-                            color: $color-gray-4;
-                        }
-                        .req {
-                            &:after{
-                                content: '*';
-                                display: inline-block;
-                                margin-left: 1px;
-                                color: #EC455A;
-                                font-size: inherit;
-                                line-height: inherit;
-                                vertical-align: top;
-                            }
-                        }
-                    }
-                }
-            }
-            .calender-info {
-                display: inline-block;
-                width: 20.4%;
-                padding: 0 24px 0 0;
-                vertical-align: top;   
-                @include mobile {
-                    width: 100%;
-                }
-                .text {
-                    margin-bottom: 24px;
-                    @include font-medium;
-                    .pc {
-                        @include mobile {
-                            display: none;
-                        }
-                    }
-                }
-                .info {
-                    font-size: 0;
-                    li {
-                        display: inline-block;
-                        @include font-small;
-                        span {
-                            display: inline-block;
-                            width: 12px;
-                            height: 12px;
-                            margin-right: 4px;
-                            border-radius: 8px;
-                            text-indent: -9999em; 
-                            vertical-align: middle; 
-                        }
-                        &.possible {
-                            span {
-                                background: #222;
-                            }
-                        }
-                        &.choice {
-                            span {
-                                background: #ec455a;
-                            }
-                        }
-                    }
-                    li + li {
-                        margin-left: 40px;
-                        @include mobile {
-                            margin-left: 20px;
-                        }
-                    }
-                }
-            }
-        }
+
     }
 
     //멤버십 포인트 조회
@@ -367,6 +262,9 @@
 
     // popup
     @import "ACCF-popup";
+
+    // 해지 상담 신청
+    @import "ACCF7055";
 }
 
 
@@ -508,3 +406,18 @@
         }
     }
 }
+
+.input-info .txt-cont {
+    .dl-txt-cont {
+        dd {
+            color: #222;
+            font-weight: 400;
+        }
+    }
+}
+.form-sections {
+    .agree-all-chk {
+        margin-top: 0;
+    }
+}
+

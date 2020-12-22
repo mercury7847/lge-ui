@@ -4,14 +4,16 @@
         <h1 class="tit"><span>@@tit</span></h1>
     </header>
     <section class="pop-conts no-footer">
-        <p class="com-pop-tit">@@subtit</p>
-        <ul class="com-pop-list">
-            @@for ( var i=0; i < list.length; i++ ) {
-            <li>
-                <a href="#n">`+list[i]+`</a>
-            </li>
-            }
-        </ul>
+        <div class="pop-list-wrap">
+            <p class="com-pop-tit">@@subtit</p>
+            <ul class="com-pop-list">
+                @@for ( var i=0; i < list.length; i++ ) {
+                <li>
+                    <a href="#n">`+list[i]+`</a>
+                </li>
+                }
+            </ul>
+        </div>
     </section>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
 </article>

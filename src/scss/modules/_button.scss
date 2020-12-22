@@ -145,8 +145,7 @@
     line-height:24px;
     vertical-align:top;
     &.small {
-        font-size:14px;
-        line-height:20px;
+        @include font-small;
     }
     &.pink {
         color:#ec455a;

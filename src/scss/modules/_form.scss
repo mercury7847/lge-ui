@@ -747,6 +747,12 @@
     @include mobile {
         margin-top:60px;
     }
+    &.type2 {
+        margin-top: 48px;
+        @include mobile {
+            margin-top:40px;
+        }
+    }
     &:first-child {
         margin-top:0;
     }
@@ -945,10 +951,12 @@
             height:24px;
             border:none;
             background:url("/lg5-common/images/icons/icon-cal.svg") center no-repeat;
+            background-size:24px;
             vertical-align:middle;
         }
         input.selected + .cell button.ui_calendar {
             background:url("/lg5-common/images/icons/icon-cal-selected.svg") center no-repeat;
+            background-size:24px;
         }
     }
 
@@ -995,6 +1003,40 @@
         }
     }
 }
+
+.text-form {
+	position: relative;
+	textarea {
+		height: 70px;
+		border-bottom: 0;
+		border-radius: 8px 8px 0 0;
+		&:focus + .inner-text {
+			outline:none;
+            border-color:#EC455A;
+		}
+		&:disabled + .inner-text, 
+		&:read-only + .inner-text {
+            background:#ededed;
+            border-color:#ededed;
+            &::placeholder {
+                color:#aaa;
+            }
+        }
+	}
+	.inner-text {
+		display: inline-block;
+		width: 100%;
+		padding: 0 16px 16px;
+		border: 1px solid #ddd;
+		border-top: 0;
+		border-radius: 0 0 8px 8px;
+		vertical-align: top;
+		@include font-small;
+		color: $color-gray-1;
+		text-align: right;
+	}
+}
+
 // input error text
 .err-msg {
     color:#f00;

@@ -83,8 +83,8 @@
                 var ajaxUrl = self.$contents.attr('data-remove-url');
                 lgkorUI.requestAjaxDataPost(ajaxUrl, {"id":_id}, function(result){
                     var data = result.data;
-                    var success = data.success.toLowerCase();
-                    if (success == 'y' || data.success == 'yes') {
+                    var success = lgkorUI.stringToBool(data.success);
+                    if (success) {
                         self.requestData({"page": self.$pagination.attr('data-page')});
                     }
                 });

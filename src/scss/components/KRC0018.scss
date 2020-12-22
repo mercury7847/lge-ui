@@ -4,6 +4,171 @@
 
 
 .KRC0018 {
+
+
+	.square {
+		display: inline-block;
+		border-radius:8px;
+		vertical-align: top;
+		overflow:hidden;
+		@include mobile {
+			width: 100%;
+			border-radius:0;
+		}
+
+		.common-area {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: 100%;
+
+			&:hover {
+				color:inherit !important;
+			}
+
+			&.case-of-video:before {
+				content: "";
+				display: block;
+				position: absolute;
+				bottom: 24px;
+				left: 50%;
+				z-index: 1;
+				width: 48px;
+				height: 48px;
+				margin-left:-24px;
+				border-radius: 50% 50%;
+				background: url('/lg5-common/images/btn-video-play.svg') 50% 50% no-repeat;
+				background-size:100%;
+			}
+		}
+
+		.visual-area {
+			img {
+				//display: none;
+				width: 100%;
+			}
+			&.animation-box {
+				.animation-area {
+					video {
+						position:absolute;
+						width:auto;
+						height:100%;
+						top:0;
+						left:50%;
+						transform:translateX(-50%);
+					}
+				}
+				.copy-boxing-area {
+					z-index:10;
+				}
+				.controller-wrap {
+					z-index:15;
+				}
+			}
+		}
+		&.length-lg {
+			.visual-area {
+				&.animation-box {
+					.animation-area {
+						video {
+							position:absolute;
+							width:100%;
+							height:auto;
+							top:50%;
+							left:0;
+							transform:translateY(-50%);
+							@include mobile {
+								width:auto;
+								height:100%;
+								top:0;
+								left:50%;
+								transform:translateX(-50%);
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.copy-boxing-area {
+			position: absolute;
+			z-index: 1;
+			top:0;
+			left:0;
+			right:0;
+			bottom:0;
+			margin: auto;
+			padding:64px 32px;
+			background-color: transparent;
+			@media screen and (max-width: 1200px) {
+				padding:32px 16px;
+			}
+			@media screen and (max-width: 990px) {
+				padding:16px;
+			}
+			@include mobile {
+				padding:32px 16px;
+			}
+
+			.category {
+				margin-bottom: 8px;
+				@include font-medium;
+				font-weight:700;
+			}
+
+			.head * {
+				@include font-large-2;
+				font-weight:700;
+			}
+
+			.desc {
+				margin-top:16px;
+				@include font-medium;
+			}
+		}
+	}
+
+	// mixin
+	@mixin square($calc-type, $part-size, $container-size){
+		@if($calc-type == "w"){
+			width:($part-size * 100%) / $container-size;
+		};
+		@if($calc-type == "h"){
+			height:($part-size * 100%) / $container-size;
+		};
+		@if($calc-type == "mr"){
+			margin-right:($part-size * 100%) / $container-size;
+		};
+		@if($calc-type == "ml"){
+			margin-left:($part-size * 100%) / $container-size;
+		};
+	}
+	&.flow-right {
+		text-align: right;
+		.square-partition {
+			&.top, &.bottom {
+				left: 0;
+			}
+		}
+	}
+
+	&.flow-left {
+		.square-partition {
+			&.top, &.bottom {
+				right: 0;
+			}
+		}
+	}
+
+	&.flow-mix {
+		text-align: right;
+		.square-partition {
+			&.top, &.bottom {
+				left:0;
+			}
+		}
+	}
+
 	$color: (lightgray, dark, black, white);
 	@each $bg in $color {
 		&.bg-#{$bg} {
@@ -39,255 +204,63 @@
 		}
 	}
 
-	.square {
-		.square-inner {
-			display:block;
-			position:relative;
-			border-radius:8px;
-			overflow:hidden;
-			img {
-				width:100%;
-				height:auto;
-				vertical-align:top;
-			}
-			@include mobile {
-				height:0;
-				padding-top:100%;
-				border-radius:0;
-				.visual-area {
-					position:absolute;
-					top:0;
-					right:0;
-					bottom:0;
-					left:0;
-				}
-				img {
-					position:absolute;
-					top:0;
-					left:0;
-				}
-			}
-			.visual-area {
-				display:block;
-			}
-		}
-		@include mobile {
-			&.main,
-			&.sub.length-sm {
-				.square-inner img {
-					width:100%;
-					height:auto;
-				}
-			}
-			&.sub.length-md,
-			&.sub.length-lg {
-				.square-inner img {
-					width:auto;
-					height:100%;
-					left:50%;
-					transform:translateX(-50%);
-				}
-			}
-		}
-
-		.visual-area.video .see-video:before {
-			top:auto;
-			bottom:24px;
-			margin-top:0;
-			z-index:20;
-		}
-		.visual-area.animation-box {
-			position:relative;
-			@include mobile {
-				position:absolute;
-				top:0;
-				right:0;
-				bottom:0;
-				left:0;
-			}
-			.animation-area {
-				video {
-					position:absolute;
-					left:50%;
-					width:auto;
-					height:100%;
-					transform:translateX(-50%);
-				}
-			}
-			.controller-wrap {
-				z-index:15;
-			}
-		}
-		&.sub.length-lg {
-			.visual-area.animation-box {
-				.animation-area {
-					video {
-						top:50%;
-						left:auto;
-						width:100%;
-						height:auto;
-						transform:translateY(-50%);
-						@include mobile {
-							top:auto;
-							left:50%;
-							width:auto;
-							height:100%;
-							transform:translateX(-50%);
-						}
-					}
-				}
-			}
-		}
-
-		.text-wrap {
-			position:absolute;
-			top:0;
-			right:0;
-			left:0;
-			bottom:0;
-			padding:64px 32px;
-			z-index:10;
-			.eyebrow {
-				margin-bottom:8px;
-				@include font-medium;
-				font-weight:700;
-			}
-			.title * {
-				@include font-large-2;
-				font-weight:700;
-			}
-			.body-copy {
-				margin-top:16px;
-				@include font-medium;
-			}
-			@media screen and (max-width: 1110px) {
-				padding:32px 16px;
-			}
-			@media screen and (max-width: 990px) {
-				padding:16px;
-			}
-			@include mobile {
-				padding:32px 16px;
-			}
-		}
+	.inner {
+		position: relative;
+		font-size: 0;
 	}
-
-	.component-sliders {
-		@include pc {
-			.indi-wrap {
-				display:none !important;
-			}
-			.slide-controls {
-				display:none !important;
-			}
-		}
-		@include mobile {
-			position:relative;
-			padding-bottom:32px;
-			.indi-wrap {
-				position:absolute;
-				left:0;
-				right:0;
-				bottom:0;
-				text-align:center;
-			}
-			.slide-controls {
-				position:absolute;
-				top:calc((100% - 32px) / 2);
-				left:0;
-				right:0;
-				.btn-arrow {
-					position:absolute;
-					top:0;
-					transform:translateY(-50%);
-					&.prev {
-						left:8px;
-					}
-					&.next {
-						right:8px;
-					}
-				}
-			}
-			.square {
-				margin-top:0 !important;
-			}
-		}
-	}
-
 	@include mobile {
 		.component-inner {
 			padding:0;
 		}
 	}
-
-	@mixin square($calc-type, $part-size, $container-size){
-		@if($calc-type == "w"){
-			width:($part-size * 100%) / $container-size;
-		};
-		@if($calc-type == "left"){
-			left:($part-size * 100%) / $container-size;
-		};
-		@if($calc-type == "right"){
-			right:($part-size * 100%) / $container-size;
-		};
+	.square-partition {
+		display:inline-block;
+		vertical-align:top;
+		text-align: left;
+		&.tall {
+			@include square(w, 561px, 1380px);
+			@include mobile {
+				width:100%;
+			}
+		}
+		&.top, &.bottom {
+			width:100%;
+			@include square(w, 795px, 1380px);
+			@include pc {
+				position: absolute;
+			}
+			@include mobile {
+				width:100%;
+			}
+		}
+		&.top {
+			top: 0;
+		}
+		&.bottom {
+			bottom:0;
+		}
 	}
-
-	// partition NEW
-	@include pc {
-		.inner {
-			position:relative;
-			@include clearfix;
-		}
-		.square {
-			position:absolute;
-			float:none !important;
-			&.main {
-				position:relative;
-				@include square(w, 561px, 1380px);
-			}
-			&.sub {
-				@include square(w, 795px, 1380px);
-				&.length-sm {
-					@include square(w, 327px, 1380px);
-				}
-				&.length-md {
-					@include square(w, 444px, 1380px);
-				}
-				&.top {
-					top:0;
-				}
-				&.bottom {
-					bottom:0;
-				}
+	&:not(.type-triple) .square-partition{
+		&.top, &.bottom {
+			.square:first-child{
+				@include square(mr, 24px, 795px);
 			}
 		}
-		@each $flowtype in flow-left, flow-right {
-			&.#{$flowtype} {
-				.square {
-					@if $flowtype == flow-left {
-						&.sub {
-							&.left {
-								@include square(left, 585px, 1380px);
-							}
-							&.right {
-								right:0;
-							}
-						}
-					} @else if $flowtype == flow-right {
-						&.main {
-							float:right !important;
-						}
-						&.sub {
-							&.right {
-								@include square(right, 585px, 1380px);
-							}
-							&.left {
-								left:0;
-							}
-						}
-					}
-				}
+	}
+	// square level
+	.square {
+		position:relative;
+		width:100%;
+		@include pc {
+			&.length-md {
+				@include square(w, 444px, 795px);
 			}
+			&.length-sm {
+				@include square(w, 327px, 795px);
+			}
+		}
+		@include mobile {
+			margin-top: 24px;
 		}
 	}
 }

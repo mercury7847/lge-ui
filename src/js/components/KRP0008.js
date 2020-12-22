@@ -541,10 +541,9 @@
                 var postData = {"itemID":itemID, "compare":compare};
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     var data = result.data;
-                    var success = data.success.toLowerCase();
-                    if (success != 'y' && data.success != 'yes') {
+                    var success = lgkorUI.stringToBool(data.success);
+                    if (!success) {
                         if(compare) {
-                            //$dm.removeProp('checked');
                             $dm.prop('checked',false);
                         } else {
                             $dm.prop('checked',true);

@@ -2,8 +2,14 @@
     margin-bottom:48px;
     padding:32px;
     border-radius:8px;
-    //background:#f4f4f4;
     background-image: linear-gradient(98deg, #8d71ec, #ff537c 99%);
+    &.gray-box {
+        background: $color-bg;
+        > .tit,
+        > .desc {
+            color: $color-default;
+        }
+    }
     @include mobile {
         margin-bottom:40px;
         padding:32px 12px;
@@ -25,6 +31,7 @@
         text-align:center;
         em {
             //color:#EC455A;
+            font-weight: 700;
         }
     }
     .form-wrap {

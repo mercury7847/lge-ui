@@ -16,23 +16,15 @@
                 'pageDesc': '미흡한 내용을 개선할 수 있도록 의견을 전달 할 수 있습니다.'
             })
             <div class="contents support suggestions">
-                <div class="cont-wrap narrow">
+                <!-- 2020.12.21 진행 단계 추가 -->
+                <ol class="reception-progress type-2 step-3" data-step="3">
+                    <li><span class="text">접수</span></li>
+                    <li><span class="text">답변 중</span></li>
+                    <li><span class="text">답변 완료</span></li>
+                </ol>
+                <!-- 2020.12.21 진행 단계 추가 -->
 
-                    <div class="section">
-                        <div class="process-bar-wrap">
-                            <div class="bar-track">
-                                <div class="bar" style="width:50%">
-                                    <span class="txt">답변 중</span>
-                                </div>
-                            </div>
-                            @@include('./common/modules/bullet-list.html', {
-                                "bulletTxt" : [
-                                    "접수 > 답변 중 > 답변 완료 순으로 진행됩니다."
-                                ]
-                            })
-                        </div>
-                    </div>
-
+                <div class="cont-wrap">
                     <div class="section">
                         <div class="tit-wrap">
                             <h2 class="tit">작성자 정보</h2>
@@ -80,7 +72,7 @@
                             </li>
                             <li>
                                 <div class="title"><strong>접수 일시</strong></div>
-                                <div class="description">2020년 07월 29일 14시 21분</div>
+                                <div class="description">2020.07.01 17:30</div>
                             </li>
                             <li>
                                 <div class="title"><strong>진행 상태</strong></div>
@@ -128,7 +120,7 @@
                     </div>
 
                     <div class="btn-group center">
-                        <a href="/html/support/CSTF1000.html" class="btn pink"><span>확인</span></a>
+                        <a href="" class="btn pink"><span>고객지원 메인</span></a>
                     </div>
 
                 </div>
