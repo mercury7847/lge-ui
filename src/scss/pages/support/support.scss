@@ -36,9 +36,7 @@
         text-align:center;
         background:url(/lg5-common/images/CS/bg-login-guide.jpg) no-repeat;
         background-position:center;
-        margin-bottom: 40px;
         .txt {
-            // max-width:590px;
             margin:0 auto 16px;
             color:#fff;
             font-weight:$font-weight-bold;
@@ -49,9 +47,7 @@
             padding:16px;
             background-image:url(/lg5-common/images/CS/bg-login-guide-m.jpg);
             background-size:cover;
-            margin-bottom: 0;
             .txt {
-                max-width:none;
                 margin-bottom:12px;
             }
         }

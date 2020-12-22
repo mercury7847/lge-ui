@@ -634,7 +634,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 slidesPerSection;
 
             newSlides = document.createDocumentFragment();
-            originalSlides = self.$slider.children();
+            originalSlides = self.$slider.find(opt.slide + ':not(' + _V.CLONED + ')');
 
             if (opt.rows > 1) {
 
@@ -656,8 +656,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     newSlides.appendChild(slide);
                 }
 
-                self.$slider.empty().append(newSlides);
-                self.$slider.children().children().children().css({
+                self.$slider.find('.' + _V.TRACK).empty().append(newSlides);
+                self.$slider.find('.' + _V.TRACK).children().children().children().css({
                     'width': 100 / opt.slidesPerRow + '%',
                     'display': 'inline-block'
                 });

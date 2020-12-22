@@ -1,4 +1,4 @@
-<div class="">
+<div class="prod-search-wrap">
     @@if ( context.keyword) {
     <div class="keyword-search">
         <div class="input-wrap">
@@ -20,7 +20,7 @@
                         <div class="category-thumb">
                             <img src="`+category[i].imgSrc+`" alt="`+category[i].imgAlt+`">
                         </div>
-                        <button type="button" class=""><span class="blind">카테고리 선택</span></button>
+                        <button type="button" class="btn-open"><span class="blind">카테고리 선택</span></button>
                     </div>
                     <div class="sub-category">
                         <ul>
@@ -40,7 +40,7 @@
                                 <button type="button" class="">프렌즈</button>
                             </li>
                         </ul>
-                        <button type="button" class=""><span class="blind">닫기</span></button>
+                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
                     </div>
                 </div>
             </li>
@@ -48,6 +48,62 @@
         </ul>
     </div>
     }
+
+    <div class="model-search">
+        <div class="form-wrap">
+            <div class="forms">
+                <div class="tit">
+                    <label for="">카테고리 선택</label>
+                </div>
+                <div class="conts">
+                    <div class="select-wrap">
+                        <select name="" id="" class="ui_selectbox">
+                            <option value="">전체</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="forms">
+                <div class="tit">
+                    <label for="">세부카테고리 선택</label>
+                </div>
+                <div class="conts">
+                    <div class="select-wrap">
+                        <select name="" id="" class="ui_selectbox">
+                            <option value="">전체</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-wrap model-slider">
+            <div class="indi-wrap">
+                <ul class="indi-conts ui_carousel_dots">
+                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                </ul>
+            </div>
+            <div class="slide-content ui_carousel_list">
+                <div class="slide-track ui_carousel_track">
+                    @@for (var i = 0; i < 48; i++) {
+                    <div class="slide-conts">
+                        <a href="#" class="slide-box">
+                            <p class="name"><em class="word">LGP8</em>10SPEAKERSTATION</p>
+                            <p class="category">모바일 &gt; 일반폰</p>
+                        </a>
+                    </div>
+                    }
+                </div>
+            </div>
+            <div class="slide-controls">
+                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="no-data">
+        <p>‘<em class="word">LED</em>’에 대한 검색 결과가 없습니다.<br>사용하시는 제품의 모델명과 제조번호를 확인해주세요.</p>
+    </div>
 
     @@include('./common/modules/bullet-list.html', {
         "topBorder" : true,
