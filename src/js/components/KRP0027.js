@@ -98,14 +98,16 @@ $(window).ready(function(){
             '</div>';
             
         var matchModelPopTemplate = 
-            '<p class="com-pop-tit">{{categoryName}}</p>'+
-            '<ul class="com-pop-list">'+
-                '{{#each model in models}}'+         
-                '<li>'+
-                    '<a href="{{model.modelUrlPath}}">{{model.modelDisplayName}}</a>'+
-                '</li>'+
-                '{{/each}}'+             
-            '</ul>';
+            '<div class="pop-list-wrap">'+
+                '<p class="com-pop-tit">{{categoryName}}</p>'+
+                '<ul class="com-pop-list">'+
+                    '{{#each model in models}}'+         
+                    '<li>'+
+                        '<a href="{{model.modelUrlPath}}">{{model.modelDisplayName}}</a>'+
+                    '</li>'+
+                    '{{/each}}'+             
+                '</ul>'+
+            '</div>';
 
         var contListTemplate =
             '<li>'+
@@ -183,26 +185,30 @@ $(window).ready(function(){
                 storyId: sid
             }
             lgkorUI.requestAjaxData(VIEWER_DATA_URL, sendata, function(result){    
-                $('.video-wrap').empty();
-
-                var isMoreModel = false;
-                var modelist = result.data.modelList;
-                if(modelist.length > 1 || modelist[0].models.length > 1){
-                    isMoreModel = true;
-                }
-                result.data.isMoreModel = isMoreModel;
-
-                var templateList = vcui.template(viewerTemplate, result.data);
-                $('.video-wrap').append(templateList);
-
-                $('#match-models .pop-conts').empty();
-                for(var key in result.data.modelList){
-                    var poptemplate = vcui.template(matchModelPopTemplate, result.data.modelList[key]);
-                    $('#match-models .pop-conts').append(poptemplate);
-                }
+                changeViewContents(result.data);
 
                 lgkorUI.hideLoading();
             });
+        }
+
+        function changeViewContents(data){
+            $('.video-wrap').empty();
+
+            var isMoreModel = false;
+            var modelist = data.modelList;
+            if(modelist.length > 1 || modelist[0].models.length > 1){
+                isMoreModel = true;
+            }
+            data.isMoreModel = isMoreModel;
+
+            var templateList = vcui.template(viewerTemplate, data);
+            $('.video-wrap').append(templateList);
+
+            $('#match-models .pop-conts').empty();
+            for(var key in data.modelList){
+                var poptemplate = vcui.template(matchModelPopTemplate, data.modelList[key]);
+                $('#match-models .pop-conts').append(poptemplate);
+            }
         }
 
         function setContListScrolled(){
@@ -248,7 +254,7 @@ $(window).ready(function(){
                     contList.find('.video-list').append(contlistemplate);
                 }
 
-                var tabTemplate, yeardata, totalcnt;
+                var tabTemplate;
                 var tabIdxs = getTabCateIDs();
                 switch(contLoadMode){
                     case REQUEST_MODE_SUPERCATEGORY:
@@ -261,26 +267,34 @@ $(window).ready(function(){
                         } else{
                             categoryTab.hide();
                         }
+
+                        changeYearTab(result.data.storyListByYear);
                     break;
 
                     case REQUEST_MODE_CATEGORY:
-                        yeardata = vcui.array.filter(result.data.storyListByYear, function(item, index){
-                            return item.yearBaseDate != "TOTAL";
-                        });
-                        totalcnt = vcui.array.filter(result.data.storyListByYear, function(item, index){
-                            return item.yearBaseDate == "TOTAL";
-                        });
-                        tabTemplate = vcui.template(yearTabTemplate, {totalCnt: totalcnt[0].yearCnt, yearList: yeardata})
-                        yearTab.find('.tabs').empty().append(tabTemplate);
-                        yearTab.vcTab('update').vcSmoothScroll('refresh');
+                        changeYearTab(result.data.storyListByYear);
                     break;
                 }
 
+                console.log("contLoadMode:",contLoadMode, REQUEST_MODE_SCROLL)
+                if(contLoadMode != REQUEST_MODE_SCROLL) changeViewContents(result.data.storyinfo);
 
                 scrollAbled = true;
 
                 lgkorUI.hideLoading();
             });
+        }
+
+        function changeYearTab(data){
+            var yeardata = vcui.array.filter(data, function(item, index){
+                return item.yearBaseDate != "TOTAL";
+            });
+            var totalcnt = vcui.array.filter(data, function(item, index){
+                return item.yearBaseDate == "TOTAL";
+            });
+            var tabTemplate = vcui.template(yearTabTemplate, {totalCnt: totalcnt[0].yearCnt, yearList: yeardata})
+            yearTab.find('.tabs').empty().append(tabTemplate);
+            yearTab.vcTab('update').vcSmoothScroll('refresh');
         }
 
         function getTabCateIDs(){
