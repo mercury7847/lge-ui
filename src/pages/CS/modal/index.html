@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/reservation"
+        ]
+    })
+<body class="support">
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'title': '팝업 모음'
+            })
+
+            <div class="contents">
+                <div class="contents-inner">
+                    
+                    <div class="section">
+                        <div class="section-content">
+
+                            <button type="button" data-href="#ratesWarrantyGuidePopup" data-control="modal" class="btn pink"><span>요금 및 보증기간 안내</span></button>
+
+                            <button type="button" data-href="#certificationPopup" data-control="modal" class="btn pink"><span>휴대폰 인증</span></button>
+
+                            <button type="button" data-href="#solutionsPopup" data-control="modal" class="btn pink"><span>제품 문제 해결</span></button>
+
+                            <button type="button" data-href="#choiceEngineerPopup" data-control="modal" class="btn pink"><span>엔지니어 선택</span></button>
+
+                            <button type="button" data-href="#airCarePopup" data-control="modal" class="btn pink"><span>공기 청정 필터 신청</span></button>
+
+                            <button type="button" data-href="#airCareModelPopup" data-control="modal" class="btn pink"><span>공기 청정 필터 미적용 모델</span></button>
+
+                            <button type="button" data-href="#surveyPopup" data-control="modal" class="btn pink"><span>컨텐츠 만족도 평가</span></button>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+
+    <!-- 유상 및 보증기간 팝업 -->
+    @@include('./CS/modal/rates-warranty-guide-popup.html')
+    
+    <!-- 휴대폰인증 팝업 -->
+    @@include('./CS/modal/phone-certification-popup.html')
+
+    <!-- 문제 해결 팝업 -->
+    @@include('./CS/modal/solutions-popup.html')
+
+    <!-- 엔지니어 선택 팝업 -->
+    @@include('./CS/modal/choice-engineer-popup.html')
+
+    <!-- 공기 청정 필터 신청 안내 팝업 -->
+    @@include('./CS/modal/air-care-popup.html')
+
+    <!-- 공기 청정 필터 신청 미적용 모델 안내 팝업 -->
+    @@include('./CS/modal/air-care-model-popup.html')
+
+    <!-- 컨텐츠 만족도 평가 팝업 -->
+    @@include('./CS/CSRF6065.html', {
+        'service': true
+    })
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script>
+        $(function(){
+            vcui.require(['ui/carousel'], function () {
+                $('.slide-wrap').vcCarousel({
+                    infinite: false,
+                    autoplay: false,
+                    slidesToScroll: 4,
+                    slidesToShow: 4,
+                    responsive: [
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToScroll: 1,
+                                slidesToShow: 1
+                            }
+                        },
+                        {
+                            breakpoint: 20000,
+                            settings: {
+                                slidesToScroll: 4,
+                                slidesToShow: 4
+                            }
+                        }
+                    ]
+                });
+
+                $('#choiceEngineerPopup').on('modalshow', function() {
+                    $('.slide-wrap').vcCarousel('resize');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
