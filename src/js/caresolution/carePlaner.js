@@ -50,7 +50,7 @@
         '                       <div class="sort-select-wrap">'+
         '                           <select class="ui_selectbox" id="colorSet-{{modelId}}" title="색상 선택" data-sibling-type="siblingColors" {{#if siblingColors.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingColors}}'+
-        '                               <option value="{{item.siblingCode}}"{{#if selectColorID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
+        '                               <option data-model-id="{{item.modelId}}" value="{{item.siblingCode}}"{{#if selectColorID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
         '                           </select>'+
         '                       </div>'+
@@ -506,7 +506,7 @@
 
         var siblingType = $(item).data('siblingType');
         if(siblingType == "siblingColors"){
-            setChangeColorChip(idx, optionData.optdata["siblingColors"].value);
+            setChangeColorChip(idx, optionData.optdata["siblingColors"].value, optionData.optdata["siblingColors"].modelId);
         } else{
             setChangeOptionChip(idx, optionData.optdata)
         }
@@ -543,12 +543,11 @@
     }
 
     //색상 옵션 변경...
-    function setChangeColorChip(idx, colorCd){
+    function setChangeColorChip(idx, colorCd, colorModelId){
         lgkorUI.showLoading();
-
+        
         var sendata = {
-            modelID: _currentItemList[idx]['modelId'],
-            rtModelSeq: _currentItemList[idx]['rtModelSeq'],
+            modelID: colorModelId,
             colorCd: colorCd,
             blockID: idx
         }
@@ -895,39 +894,6 @@
                 ]
             });
         });
-
-        // 
-        // //estimate_prod_slide
-        // var putItemCompare = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-        // var putItemList = putItemCompare[lgkorUI.CAREPLANER_ID];
-        // var leng = putItemList.length;
-        // var estimateList = vcui.template(_estimateProdTemplate, putItemCompare);
-        // $('#pop-estimate').find('.estimate-list').append($(estimateList).get(0));
-
-        // $('#pop-estimate').find('.tit-wrap .leng').text('총 '+leng+'개');
-        
-
-        
-
-        // $('.estimate_prod_slide').vcCarousel({
-        //     settings: "unslick",
-        //     responsive: [
-        //         {
-        //             breakpoint: 10000,
-        //             settings: "unslick"
-        //         },
-        //         {
-        //             breakpoint: 767,
-        //             settings: {
-        //                 infinite: false,
-        //                 variableWidth : true,
-        //                 dots: false,
-        //                 slidesToShow: 1, 
-        //                 slidesToScroll: 1
-        //             }
-        //         }
-        //     ]
-        // });
     }
 
     function getTabID(){
@@ -961,12 +927,15 @@
             var selectValue = selectItem.value();
             var selectName = selectItem.text();
             var siblingType = selectItem.$el.data('siblingType');
+
+            var optblock = $(opt).find('.ui_selectbox').find('option').filter("[value="+selectValue+"]");
+            var selectModelId = optblock.data("modelId");
             
             optdata[siblingType] = {
                 name: selectName,
-                value: selectValue
+                value: selectValue,
+                modelId: selectModelId
             }
-            console.log()
         });
 
         if(_serviceID == 0){

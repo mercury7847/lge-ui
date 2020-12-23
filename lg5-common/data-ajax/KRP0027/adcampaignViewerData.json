@@ -3,50 +3,106 @@
     "status": "success",
     "message": null,
     "data": {
-        "success": "Y",
-        "videoType": "youtube",
-        "videoUrl": "https://www.youtube.com/embed/PetoQo1eUww",
-        "videoTitle": "LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)",
-        "videoDescription": "영상이나 이미지에 대한 간략한 타이틀이 들어갑니다",
-        "pcImage": "/lg5-common/images/dummy/@img-1029x578.png",
-        "mobileImage": "/lg5-common/images/dummy/@img-656x369.png",
-        "matchModelList": [
-
+        "storyId": "ST00003001",
+        "storyType": "cf",
+        "videoType": "mp4",
+        "storyTypeNm": "광고/캠페인 영상",
+        "storyNewsGubun": null,
+        "storyTitle": "LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)",
+        "storyUrl":"",
+        "storyMainThumbnailPath": "/lg5-common/images/dummy/",
+        "storyMainThumbnailServerName": "@img-1029x578.png",
+        "storyMainThumbnailAltText":"LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)",
+        "storyMovieUrl": "/lg5-common/videos/signature_rain_view.mp4",
+        "stroyDesc": "인공지능 스스로 에어컨 LG 휘센 씽큐 <br>[자막]<br>때때로 인간의 욕심은 끝이 없다 <br>에어컨은 거실에 두면서 먼 주방까지 시원했으면 좋겠고<br>그럼, 어떻게?<br>때때로 인간의 욕심은 끝이 없다 <br>에어컨은 거실에 두면서 먼 주방까지 시원했으면 좋겠고<br>그럼, 어떻게?<br>때때로 인간의 욕심은 끝이 없다 <br>에어컨은 거실에 두면서 먼 주방까지 시원했으면 좋겠고<br>그럼, 어떻게?<br>때때로 인간의 욕심은 끝이 없다 <br>에어컨은 거실에 두면서 먼 주방까지 시원했으면 좋겠고<br>그럼, 어떻게?",
+        "baseDate": "2020-12-31",
+        "tagUrlPath": "/story/",
+        "tagList":[
+            {
+                "orderNo": "",
+                "tagId": "TD00000005",
+                "tagName": "LGSTORY"
+            },
+            {
+                "orderNo": "",
+                "tagId": "TD00000005",
+                "tagName": "LGYhinQ"
+            },
+            {
+                "orderNo": "",
+                "tagId": "TD00000005",
+                "tagName": "AI"
+            },
+            {
+                "orderNo": "",
+                "tagId": "TD00000005",
+                "tagName": "인공지능"
+            },
+            {
+                "orderNo": "",
+                "tagId": "TD00000005",
+                "tagName": "LG씽큐"
+            },
+            {
+                "orderNo": "",
+                "tagId": "TD00000005",
+                "tagName": "LGSTORY"
+            },
+            {
+                "orderNo": "",
+                "tagId": "TD00000005",
+                "tagName": "LGYhinQ"
+            },
+            {
+                "orderNo": "",
+                "tagId": "TD00000005",
+                "tagName": "AIX"
+            }
         ],
-        "lunchDate": "2020.09.07",
-        "caption": "인공지능 스스로 에어컨 LG 휘센 씽큐 <br>[자막]<br>때때로 인간의 욕심은 끝이 없다 <br>에어컨은 거실에 두면서 먼 주방까지 시원했으면 좋겠고<br>그럼, 어떻게?<br>때때로 인간의 욕심은 끝이 없다 <br>에어컨은 거실에 두면서 먼 주방까지 시원했으면 좋겠고<br>그럼, 어떻게?<br>때때로 인간의 욕심은 끝이 없다 <br>에어컨은 거실에 두면서 먼 주방까지 시원했으면 좋겠고<br>그럼, 어떻게?<br>때때로 인간의 욕심은 끝이 없다 <br>에어컨은 거실에 두면서 먼 주방까지 시원했으면 좋겠고<br>그럼, 어떻게?<br>",
-        "hashtagList": [
+        "modelList": [
             {
-                "link": "#",
-                "tagname": "AI"
+                "categoryId": "CT5000023",
+                "categoryUrlPath": "",
+                "categoryName": "정수기",
+                "models" :[
+                    {
+                        "modelName": "WS501SW",
+                        "modelId": "MD0803924",
+                        "modelUrlPath":"",
+                        "modelDisplayName": "LG 퓨리케어 정수기(인버터 냉온)"
+                    },
+                    {
+                        "modelName": "WS501SW",
+                        "modelId": "MD0803924",
+                        "modelUrlPath":"",
+                        "modelDisplayName": "슬림 업다운 정수기"
+                    },
+                    {
+                        "modelName": "WS501SW",
+                        "modelId": "MD0803924",
+                        "modelUrlPath":"",
+                        "modelDisplayName": "듀얼 정수기"
+                    }
+                ]
             },
             {
-                "link": "#",
-                "tagname": "AIX"
-            },
-            {
-                "link": "#",
-                "tagname": "LGSTORY"
-            },
-            {
-                "link": "#",
-                "tagname": "LGYhinQ"
-            },
-            {
-                "link": "#",
-                "tagname": "LG스토리"
-            },
-            {
-                "link": "#",
-                "tagname": "인공지능"
-            },
-            {
-                "link": "#",
-                "tagname": "인공지는발전단계"
-            },
-            {
-                "link": "#",
-                "tagname": "LG씽큐"
+                "categoryId": "CT5000023",
+                "categoryUrlPath": "",
+                "categoryName": "냉장고",
+                "models" :[
+                    {
+                        "modelName": "WS501SW",
+                        "modelId": "MD0803924",
+                        "modelUrlPath":"",
+                        "modelDisplayName": "LG 퓨리케어 정수기(인버터 냉온)"
+                    },
+                    {
+                        "modelName": "WS501SW",
+                        "modelId": "MD0803924",
+                        "modelUrlPath":"",
+                        "modelDisplayName": "슬림 업다운 정수기"
+                    }
+                ]
             }
         ]
     }

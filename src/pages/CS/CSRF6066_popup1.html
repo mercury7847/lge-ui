@@ -11,8 +11,8 @@
         @@include('./common/header.html')
 
         <div class="container">
-            @@include('./common/support/page-visual.html', {
-                'title': '공기청정 필터 신청'
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '공기청정 필터 신청'
             })
 
             <div class="contents support air-care">
@@ -32,7 +32,7 @@
     </div>
 
     <!-- 공기 청정 필터 신청 안내 팝업 -->
-    @@include('./support/modal/air-care-popup.html')
+    @@include('./CS/modal/air-care-popup.html')
 
     <!-- support script -->
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
