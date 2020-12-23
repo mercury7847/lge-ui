@@ -222,7 +222,7 @@
                                                             <div class="mix-cont">
                                                                 <p class="desc">신용정보 조회시 개인의 신용등급에 영향을 미치지 않습니다. </p>
                                                                 <div class="btn-wrap">
-                                                                    <button class="btn bg-type creditInquire" disabled><span>신용정보 조회</span></button>
+                                                                    <button class="btn bg-type size creditInquire" disabled><span>신용정보 조회</span></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -326,7 +326,7 @@
                                                     <dt class="tit"><label for="slt02-2" class="req">설치 장소<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="select-wrap">
-                                                            <select class="ui_selectbox" id="slt02-2" title="설치 장소 선택" name="inatallPlace" data-required="true">
+                                                            <select class="ui_selectbox" id="slt02-2" title="설치 장소 선택" name="inatallPlace" data-required="true" disabled>
                                                                 <option value="" class="placeholder">선택</option>
                                                                 <option value="aaa">설치 장소 a</option>
                                                                 <option value="bbb">설치 장소 b</option>
@@ -364,7 +364,7 @@
                                                     <h3 class="tit">배송시 추가 확인 정보</h3>
                                                 </div>
                                                 <div class="form-wrap">
-                                                    <dl class="forms type2">
+                                                    <dl class="forms type4">
                                                         <dt class="tit">
                                                             <p class="label">폐가전 수거</p>
                                                             <div class="tooltip-wrap">
@@ -380,13 +380,13 @@
                                                                 <ul class="ui_radio_visible">
                                                                     <li>
                                                                         <span class="rdo-wrap">
-                                                                            <input type="radio" id="rdo02-1" name="preVisitRequest" value="Y" data-visible-target=".visible-target1" checked>
+                                                                            <input type="radio" id="rdo02-1" name="collectRequest" value="Y" data-visible-target="">
                                                                             <label for="rdo02-1">신청</label>
                                                                         </span>
                                                                     </li>
                                                                     <li>
                                                                         <span class="rdo-wrap">
-                                                                            <input type="radio" id="rdo02-2" name="preVisitRequest" value="N" data-visible-target="">
+                                                                            <input type="radio" id="rdo02-2" name="collectRequest" value="N" data-visible-target="" checked>
                                                                             <label for="rdo02-2">미신청</label>
                                                                         </span>
                                                                     </li>
@@ -394,7 +394,7 @@
                                                             </div>
                                                         </dd>
                                                     </dl>
-                                                    <dl class="forms type2">
+                                                    <dl class="forms type4">
                                                         <dt class="tit">
                                                             <p class="label req">사전 방문 신청<span class="blind">필수입력</span></p>
                                                         </dt>
@@ -409,8 +409,8 @@
                                                                     </li>
                                                                     <li>
                                                                         <span class="rdo-wrap">
-                                                                            <input type="radio" id="rdo11-4" name="preVisitRequest" value="N" data-visible-target="" checked>
-                                                                            <label for="rdo11-4">미신청</label>
+                                                                            <input type="radio" id="rdo02-4" name="preVisitRequest" value="N" data-visible-target="" checked>
+                                                                            <label for="rdo02-4">미신청</label>
                                                                         </span>
                                                                     </li>
                                                                 </ul>
@@ -442,7 +442,7 @@
                                         <div class="accord-cont ui_accord_content">
                                             <div class="card-benefit-box">
                                                 <span class="text">제휴카드 신청시<br><em>최대 23,000원</em> 청구할인</span>
-                                                <a href="#n" target="_blank" class="btn-link"><span>카드혜택 자세히보기</span></a>
+                                                <a href="#n" target="_blank" class="btn-link"><span>카드혜택 자세히 보기</span></a>
                                             </div>
                                             <div class="form-wrap">
                                                 <dl class="forms type2">
@@ -470,35 +470,30 @@
                                                             <div class="mix-input">
                                                                 <span class="chk-wrap">
                                                                     <input type="checkbox" id="chk-pay1" name="cardApplyaAgree" data-required="true">
-                                                                    <label for="chk-pay1">제휴카드 발급/변경 정보제공 동의</label>
+                                                                    <label for="chk-pay1">제휴카드 발급/변경 제 3자 정보제공 동의</label>
                                                                 </span>
                                                                 <div class="cell">
                                                                     <a href="#n" class="btn-link cardApplyaAgree">동의약관 보기</a>
                                                                 </div>
                                                             </div>
                                                             <div class="mix-cont">
-                                                                <p class="desc">제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의</p>
+                                                                <p class="desc">청약신청시 카드 발급 절차가 진행되며, 발급 후 자동으로 납부카드로 설정됩니다.</p>
                                                                 <div class="gray-box">
                                                                     <div class="form-wrap">
                                                                         <dl class="forms inner-type">
                                                                             <dt class="tit">
-                                                                                <p clss="label">제휴카드 선택</p>
+                                                                                <p class="label">제휴카드 선택</p>
                                                                             </dt>
                                                                             <dd class="conts">
-                                                                                <div class="box">
-                                                                                    <div class="select-wrap">
-                                                                                        <select class="ui_selectbox" title="카드사 선택" name="associatedCard" data-required="true">
-                                                                                            <option value="" class="placeholder">카드 선택</option>
-                                                                                            <option value="11" class="placeholder">카드 선택1</option>
-                                                                                            <option value="22" class="placeholder">카드 선택2</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                    <div class="cell">
-                                                                                        <button type="button" class="btn sendMessage" disabled><span>동의 문자 발송</span></button>
-                                                                                    </div>
+                                                                                <div class="select-wrap">
+                                                                                    <select class="ui_selectbox" title="카드사 선택" name="associatedCard" data-required="true">
+                                                                                        <option value="" class="placeholder">카드 선택</option>
+                                                                                        <option value="11" class="placeholder">카드 선택1</option>
+                                                                                        <option value="22" class="placeholder">카드 선택2</option>
+                                                                                    </select>
                                                                                 </div>
-                                                                                <div class="btm-more">
-                                                                                    <p class="discount-txt">최대 23,000원 청구할인</p>
+                                                                                <div class="btm-more right">
+                                                                                    <p class="discount-txt">최대 23,000원 청구 할인</p>
                                                                                 </div>
                                                                             </dd>
                                                                         </dl>
@@ -516,7 +511,7 @@
                                                         <div class="tabs-wrap new-type ui_tab">
                                                             <ul role="tablist" class="tabs">
                                                                 <li class="on"><a href="#card">신용카드<em class="blind">선택됨</em></a></li>
-                                                                <li><a href="#bank">실시간 계좌이체</a></li>
+                                                                <li><a href="#bank">계좌이체</a></li>
                                                             </ul>
                                                         </div>
                                                         <!-- 신용카드 -->
@@ -527,7 +522,7 @@
                                                                     <dd class="conts">
                                                                         <div class="select-wrap">
                                                                             <select class="ui_selectbox" id="slt-card1" title="카드사 선택" name="paymentCard" data-required="true">
-                                                                                <option value="" class="placeholder">카드사 선택</option>
+                                                                                <option value="" class="placeholder">카드사를 선택해주세요.</option>
                                                                                 <option value="11">카드사1</option>
                                                                                 <option value="22">카드사2</option>
                                                                                 <option value="33">카드사3</option>
@@ -537,10 +532,21 @@
                                                                     </dd>
                                                                 </dl>
                                                                 <dl class="forms inner-type">
-                                                                    <dt class="tit"><label for="ipt-card1">카드번호</label></dt>
+                                                                    <dt class="tit"><label for="cardnum01">카드번호</label></dt>
                                                                     <dd class="conts">
-                                                                        <div class="input-wrap">
-                                                                            <input type="text" id="ipt-card1" placeholder="(-)없이 입력하세요." value="" class="ui_card_number" name="paymentCardNumber" data-required="true">
+                                                                        <div class="card-num-box">
+                                                                            <div class="input-wrap">
+                                                                                <input type="number" id="cardnum01" placeholder="0000" min="0000" max="9999" value="1234" title="카드번호 첫 4자리">
+                                                                            </div>
+                                                                            <div class="input-wrap">
+                                                                                <input type="number" placeholder="0000" min="0000" max="9999" value="" title="카드번호 두번째 4자리">
+                                                                            </div>
+                                                                            <div class="input-wrap">
+                                                                                <input type="number" placeholder="0000" min="0000" max="9999" value="" title="카드번호 세번째 4자리">
+                                                                            </div>
+                                                                            <div class="input-wrap">
+                                                                                <input type="number" placeholder="0000" min="0000" max="9999" value="" title="카드번호 네번째 4자리">
+                                                                            </div>
                                                                         </div>
                                                                         <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
                                                                     </dd>
@@ -550,7 +556,7 @@
                                                                     <dd class="conts">
                                                                         <div class="box">
                                                                             <div class="input-wrap">
-                                                                                <input type="text" id="ipt-card2" value="" placeholder="유효기간을 입력해주세요" name="paymentCardPeriod" data-required="true">
+                                                                                <input type="text" id="ipt-card2" value="" placeholder="MMYY" name="paymentCardPeriod" data-required="true">
                                                                             </div>
                                                                             <div class="cell">
                                                                                 <button type="button" class="btn paymentCardConfirm" disabled><span>납부 카드 확인</span></button>
@@ -577,8 +583,8 @@
                                                                     <dt class="tit"><label for="slt-bank1">은행명</label></dt>
                                                                     <dd class="conts">
                                                                         <div class="select-wrap">
-                                                                            <select class="ui_selectbox" id="slt-bank1" title="은행 선택" name="paymentBank" data-required="true"> <!-- 2020-11-20 -->
-                                                                                <option value="" class="placeholder">선택해주세요.</option>
+                                                                            <select class="ui_selectbox" id="slt-bank1" title="은행명 선택" name="paymentBank" data-required="true"> <!-- 2020-11-20 -->
+                                                                                <option value="" class="placeholder">은행명을 선택해주세요.</option>
                                                                                 <option value="111">은행1</option>
                                                                                 <option value="222">은행2</option>
                                                                                 <option value="333">은행3</option>
@@ -588,11 +594,11 @@
                                                                     </dd>
                                                                 </dl>
                                                                 <dl class="forms inner-type">
-                                                                    <dt class="tit"><label for="ipt-bank2" class="req">계좌번호<span class="blind">필수입력</span></label></dt>
+                                                                    <dt class="tit"><label for="ipt-bank2">계좌번호</label></dt>
                                                                     <dd class="conts">
                                                                         <div class="box">
                                                                             <div class="input-wrap">
-                                                                                <input type="text" id="ipt-bank2" value="" placeholder="계좌번호를 “-”없이 숫자만 입력해주세요." name="paymentBankNumber" data-required="true"> <!-- 2020-11-20 -->
+                                                                                <input type="text" id="ipt-bank2" value="" placeholder="숫자만 입력해주세요." name="paymentBankNumber" data-required="true"> <!-- 2020-11-20 -->
                                                                             </div>
                                                                             <div class="cell">
                                                                                 <button type="button" class="btn paymentBankConfirm" disabled><span>납부 계좌 확인</span></button>
@@ -605,7 +611,7 @@
                                                         </div>
                                                         <!-- // 실시간 계좌이체 -->
                                                         @@include('./common/modules/bullet-list.html', {
-                                                            "bgGray" : true,
+                                                            "topBorder" : true,
                                                             "bulletTxt" : [
                                                                 "결제정보는 계약자와 동일한 명의의 카드나 은행계좌만 이체 가능합니다.",
                                                                 "제휴카드를 신청한 경우, 발급시 자동으로 납부방법이 변경됩니다.",
@@ -614,26 +620,20 @@
                                                         })
                                                     </dd>
                                                 </dl>
-                                                <dl class="forms wide">
+                                                <dl class="forms type2 wide">
                                                     <dt class="tit">
                                                         <p class="label req">ARS 출금 동의<span class="blind">필수</span></p>
-                                                        <div class="tooltip-wrap">
-                                                            <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
-                                                            <span class="tooltip-box">
-                                                                <p>ARS 출금 동의 관련 수신료는 업체가 부담합니다.</p>
-                                                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
-                                                            </span>
-                                                        </div>
                                                     </dt>
                                                     <dd class="conts">
-                                                        <div class="input-mix-wrap">
-                                                            <div class="mix-cont">
-                                                                <p class="desc">입력한 결제 수단의 휴력이 발생하기 위해서 ARS 출금동의가 필요합니다.<br>ARS 출금동의 시 내용증명을 위해 음성 녹취가 진행됩니다.</p>
-                                                                <div class="btn-wrap">
-                                                                    <button class="btn bg-type icon-ars arsAgreeRequest" disabled><span>ARS 출금 동의 신청</span></button>
-                                                                </div>
-                                                            </div>
+                                                        <div class="btn-wrap">
+                                                            <button class="btn bg-type size icon-ars arsAgreeRequest" disabled><span>ARS 출금 동의 신청</span></button>
                                                         </div>
+                                                        @@include('./common/modules/bullet-list.html', {
+                                                            "bulletTxt" : [
+                                                                "입력한 결제 수단의 효력이 발생하기 위해서 ARS 출금동의가 필요합니다.",
+                                                                "ARS 출금동의 시 내용증명을 위해 음성 녹취가 진행됩니다."
+                                                            ]
+                                                        })
                                                     </dd>
                                                 </dl>
                                                 <dl class="forms wide">
@@ -645,52 +645,57 @@
                                                             <div class="mix-input">
                                                                 <span class="chk-wrap">
                                                                     <input type="checkbox" id="chk03-1" name="selfClearingAgree">
-                                                                    <label for="chk03-1">자동결제 신청 동의</label>
+                                                                    <label for="chk03-1">위 결제 수단으로 정기결제신청을 동의합니다.</label>
                                                                 </span>
                                                                 <div class="cell">
-                                                                    <a href="#n" class="btn-link selfClearingAgree">이용약관 보기</a>
+                                                                    <a href="#n" class="btn-link selfClearingAgree">동의약관 보기</a>
                                                                 </div>
                                                             </div>
-                                                            <div class="mix-cont">
-                                                                <p class="desc">입력하신 위의 결제수단으로 정기결제 신청을 동의합니다.</p>
-                                                            </div>
                                                         </div>
                                                     </dd>
                                                 </dl>
-                                                <dl class="forms wide">
+                                                <dl class="forms type2 wide">
                                                     <dt class="tit">
-                                                        <p class="label">1년 요금 선납 신청</p>
+                                                        <p class="label">1년 요금 선납할인 신청</p>
                                                     </dt>
                                                     <dd class="conts">
-                                                        <div class="input-mix-wrap">
-                                                            <div class="mix-input">
-                                                                <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk03-2" name="chk03-2">
-                                                                    <label for="chk03-2">선납 신청</label>
-                                                                </span>
-                                                            </div>
-                                                            <div class="mix-cont">
-                                                                <p class="desc">선납금액, 납부기한 등의 자세한 내용은 계약자의 휴대폰 번호로 전달 예정입니다.</p>
-                                                            </div>
+                                                        <div class="select-list-wrap w-auto">
+                                                            <ul class="ui_radio_visible">
+                                                                <li>
+                                                                    <span class="rdo-wrap">
+                                                                        <input type="radio" id="rdo04-1" name="rdo04" value="Y" data-visible-target="" checked>
+                                                                        <label for="rdo04-1">신청</label>
+                                                                    </span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="rdo-wrap">
+                                                                        <input type="radio" id="rdo04-2" name="rdo04" value="N" data-visible-target="">
+                                                                        <label for="rdo04-2">미신청</label>
+                                                                    </span>
+                                                                </li>
+                                                            </ul>
                                                         </div>
+                                                        @@include('./common/modules/bullet-list.html', {
+                                                            "bulletTxt" : [
+                                                                "선납할인금액, 납부기한 등의 자세한 내용은 계약자의 휴대폰 번호로 전달 예정입니다."
+                                                            ]
+                                                        })
                                                     </dd>
                                                 </dl>
-                                                <dl class="forms wide">
+                                                <dl class="forms type2 wide">
                                                     <dt class="tit">
                                                         <p class="label">보유 멤버십 포인트 사용</p>
                                                     </dt>
                                                     <dd class="conts">
-                                                        <div class="input-mix-wrap">
-                                                            <div class="mix-input">
-                                                                <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk03-3" name="chk03-3">
-                                                                    <label for="chk03-3">포인트 사용 동의</label>
-                                                                </span>
-                                                            </div>
-                                                            <div class="mix-cont">
-                                                                <p class="desc">멤버십 포인트는 보유 액수와 관계없이 매월 <em>최대 5,000P</em>까지 차감됩니다.</p>
-                                                            </div>
-                                                        </div>
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk03-3" name="chk03-3">
+                                                            <label for="chk03-3">포인트 사용 동의</label>
+                                                        </span>
+                                                        @@include('./common/modules/bullet-list.html', {
+                                                            "bulletTxt" : [
+                                                                "멤버십 포인트는 보유 액수와 관계없이 매월 최대 5,000P까지 차감됩니다."
+                                                            ]
+                                                        })
                                                     </dd>
                                                 </dl>
                                             </div>

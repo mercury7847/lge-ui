@@ -241,24 +241,14 @@
 
 .card-benefit-box {
     position: relative;
-    margin: 32px -137px 48px 0;
-    padding: 10px 48px;
+    margin: 28px -137px 40px 0;
+    padding: 24px 40px 24px 133px;
     border-radius: 8px;
-    background-color: $color-bg;
-    &:before {
-        display: inline-block;
-        width: 74px;
-        height: 74px;
-        margin-right: 36px;
-        background: url('/lg5-common/images/icons/icon-card-74.svg') no-repeat 0 0;
-        vertical-align: middle;
-        content: '';
-    }
+    background: $color-bg url('/lg5-common/images/icons/icon-card-74.svg') no-repeat 40px center;
     .text {
         display: inline-block;
         font-weight: 700;
-        font-size: $font-large-1;
-        line-height: 30px;
+        @include font-medium;
         vertical-align: middle;
         em {
             color: $color-primary;
