@@ -23,25 +23,8 @@
                     'text': 'LG전자에서 제공하는 회원전용 서비스로 <br>더 편리하게 이용할 수 있어요.'
                 })
 
-                <!-- 회원 - 제품 없을 시 -->
-                <div class="login-guide">
-                    <p class="txt">등록하신 제품이 없습니다. 제품을 등록해보시겠어요 ?</p>
-                    <button type="button" class="btn mix size"><span>제품 등록</span></button>
-                </div>
-
-                <div class="test">
-                    <div class="box">
-                        @@include('./common/modules/bullet-list.html', {
-                            "bulletTxt" : [
-                                "3건 이상의 제품에 대해 서비스 접수하실 경우,  1544-7777 로 문의하시면 1명의 서비스 기사로 접수를 할 수 있습니다. ",
-                                "무상 보증 기간 경과 된 제품 또는 사용자 과실 등으로 인한 제품 고장의 서비스 신청 건은 유상으로 서비스 비용이 청구됩니다."
-                            ]
-                        })
-                    </div>
-                </div>
-
-                <!-- 회원 - 보유제품 펼침 -->
-                @@include('./common/support/select-my-model.html')
+                <!-- 서비스 안내 -->
+                @@include('./common/support/service-guide.html')
                 
                 <div class="cont-wrap">
                     <form action="/html/support/CSTF4010.html" id="submitForm" autocomplete="off" novalidate>
@@ -81,7 +64,7 @@
                                             </div>
                                             <div class="agree-input">
                                                 <span class="chk-wrap">
-                                                    <input type="checkbox" name="privcyCheck" id="privcyCheck" value="Y" data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다." data-required="true">
+                                                    <input type="checkbox" name="privcyCheck" id="privcyCheck" value="Y" data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다." data-required="true" required>
                                                     <label for="privcyCheck">동의합니다.</label>
                                                 </span>
                                             </div>
@@ -201,6 +184,9 @@
                         </div>
                         
                         <div class="step-box" id="stepInput">
+                            <div class="form-infos">
+                                <p class="req" aria-disabled="true">필수 입력 항목</p>
+                            </div>
                             <div class="section">
                                 <div class="tit-wrap">
                                     <h2 class="tit">제품 추가정보</h2>
