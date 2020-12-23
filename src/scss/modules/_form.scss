@@ -9,7 +9,7 @@
     }
     .tit-wrap {
         position:relative;
-        padding-bottom:16px;
+        padding-bottom:24px;
         .tit {
             display:inline-block;
             @include font-large-1;
@@ -84,7 +84,7 @@
     p.req {
         @include font-small;
         @include mobile {
-            text-align:center;
+            //text-align:center;
             font-weight:500;
         }
         &::before {
@@ -118,17 +118,23 @@
             }
         }
         &.type2 + .forms.type2 {
-            margin-top:32px;
+            margin-top:48px;
             @include mobile {
-                margin-top:32px;
+                margin-top:24px;
             }
         }
-        &.type2 + .forms.type2.wide {
-            margin-top:32px;
+        &.type4 + .forms.type4 {
+            margin-top:20px;
             @include mobile {
-                margin-top:32px;
+                margin-top:40px;
             }
         }
+        //&.type2 + .forms.type2.wide {
+        //    margin-top:32px;
+        //    @include mobile {
+        //        margin-top:32px;
+        //    }
+        //}
         &.inner-type {
             margin-top:24px;
             @include mobile {
@@ -221,16 +227,30 @@
                 border-color:#ddd;
                 color:#aaa;
             }
+            &.size {
+                height: 32px;
+                padding: 3px 11px;
+                border-radius: 16px;
+            }
             &.icon-ars {
                 &::before {
                     content:' ';
                     display:inline-block;
-                    width:20px;
-                    height:20px;
-                    margin-top:2px;
-                    margin-right:8px;
-                    background:url("/lg5-common/images/icons/icon-ars-call.svg") center no-repeat;
+                    width:16px;
+                    height:16px;
+                    margin-top:4px;
+                    margin-right:4px;
+                    background:url("/lg5-common/images/icons/icon-phone-32-white.svg") center no-repeat;
+                    background-size: 16px 16px;
                     vertical-align:top;
+                }
+            }
+            &:disabled,
+            &.disabled {
+                &.icon-ars {
+                    &::before {
+                        background-image:url("/lg5-common/images/icons/icon-phone-32-gray.svg");
+                    }
                 }
             }
         }
@@ -362,6 +382,11 @@
                     margin-top:12px;
                 }
             }
+            .tabs-wrap {
+                & ~ .bullet-list {
+                    margin: 8px 24px 0;
+                }
+            }
         }
         &.inner-type {
             .tit {
@@ -370,13 +395,8 @@
                 margin-bottom:8px;
                 label,
                 .label {
-                    font-size:14px;
-                    line-height:24px;
-                    font-weight:500;
-                    @include mobile {
-                        font-size:13px;
-                        line-height:21px;
-                    }
+                    font-weight: 700;
+                    @include font-medium;
                 }
             }
             .conts {
@@ -384,7 +404,8 @@
                 width:100%;
             }
         }
-        &.type2 {
+        &.type2,
+        &.type4 {
             .tit {
                 padding:0 24px 0 0;
             }
@@ -455,7 +476,7 @@
                     }
                     & + .btm-more {
                         position:absolute;
-                        top:52px;
+                        bottom:13px;
                         left:0;
                         max-width:calc(100% - 120px);
                         margin-top:0;
@@ -644,24 +665,24 @@
         }
         .btm-more {
             display:block;
-            margin-top:4px;
+            margin-top:8px;
             .btn-text {
                 font-size:14px;
                 line-height:20px;
             }
             .discount-txt {
                 color:#EC455A;
-                @include font-small;
                 font-weight:500;
-                &::before {
-                    content:' ';
-                    display:inline-block;
-                    width:20px;
-                    height:20px;
-                    margin:2px 4px 0 0;
-                    background:url("/lg5-common/images/icons/icon-sale.svg") center no-repeat;
-                    vertical-align:top;
-                }
+                @include font-small;
+                //&::before {
+                //    content:' ';
+                //    display:inline-block;
+                //    width:20px;
+                //    height:20px;
+                //    margin:2px 4px 0 0;
+                //    background:url("/lg5-common/images/icons/icon-sale.svg") center no-repeat;
+                //    vertical-align:top;
+                //}
             }
             &.right {
                 text-align:right;
@@ -1073,14 +1094,13 @@
 // input + btn mix type
 .input-mix-wrap {
     display:block;
-    border:1px solid #ddd;
+    border:1px solid $color-border;
     border-radius:8px;
-    background:#fff;
+    background:$color-bg-wt;
     .mix-input {
         display:table;
         width:100%;
         padding:15px 23px;
-        border-bottom:1px solid #ddd;
         .chk-wrap,
         .cell {
             display:table-cell;
@@ -1104,13 +1124,14 @@
         }
     }
     .mix-cont {
+        border-top:1px solid $color-border;
         padding:11px 23px 15px;
         .desc {
-            color:#767676;
+            color:$color-gray-1;
             @include font-small;
             font-weight:500;
             em {
-                color:#EC455A;
+                color:$color-primary;
             }
         }
         .btn-wrap {
@@ -1122,11 +1143,11 @@
             }
         }
         .gray-box {
-            margin-top:24px;
+            margin-top:16px;
             margin-bottom:7px;
-            padding:16px 24px;
+            padding:24px;
             border-radius:8px;
-            background:#f4f4f4;
+            background:$color-bg;
             &:first-child {
                 margin-top:0;
             }
@@ -1852,10 +1873,10 @@ $input: (chk, rdo);
                 position:absolute;
                 top:50%;
                 right:16px;
-                width:24px;
-                height:24px;
-                margin-top:-12px;
-                background: url('/lg5-common/images/icons/icon-triangle-24.svg') no-repeat 0 0;
+                width:16px;
+                height:16px;
+                margin-top:-8px;
+                background: url('/lg5-common/images/icons/btn-down-16-black.svg') no-repeat 0 0;
                 transition:all 0.3s;
                 @include mobile {
                     right:19px;
@@ -1923,11 +1944,12 @@ $input: (chk, rdo);
             .ui-select-button {
                 border-color:#ededed;
                 background:#ededed;
+                cursor: default;
                 .ui-select-text {
                     color:#aaa;
                 }
                 .ico {
-                    border-top-color:#9c9c9c;
+                    background-image: url('/lg5-common/images/icons/btn-down-16-gray.svg');
                 }
             }
             .ui-selectbox-list {

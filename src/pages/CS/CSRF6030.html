@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/reservation",
+        "support/custom-voice"
+    ]
+})
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '센터방문 예약',
+                'pageDesc': '온라인으로 예약 후 방문하시면 기다림 없이 서비스를 받으실 수 있습니다.',
+                'pageBtn' : [
+                    { 'btn' : '요금 및 보증 기간 안내 ' }
+                ]
+            })
+            <div class="contents support reservation">
+                <ol class="reception-progress type-1">
+                    <li><span class="text">제품 선택</span></li>
+                    <li><span class="text">예약 내용 입력</span></li>
+                    <li><span class="text">예약 완료</span></li>
+                </ol>
+
+                <div class="dummy" style="height: 64px;background-image: linear-gradient(to top, #9c86e7, #de64a0);"></div>
+                <div class="dummy" style="height: 56px;background-color: #e4e4e4;"></div>
+
+                <div class="cont-wrap">
+                    <div class="form-infos">
+                        <p class="req" aria-disabled="true">필수 입력 항목</p>
+                    </div>
+
+                    <div class="section">
+                        <div class="tit-wrap">
+                            <h2 class="tit">방문 센터 검색</h2>
+                        </div>
+                        <div class="center-info-box">
+                            <strong>서비스 센터 표준 운영 시간</strong>
+                            <div>
+                                <dl>
+                                    <dt>월요일 ~ 금요일 :</dt>
+                                    <dd>9시 ~ 18시</dd>
+                                </dl>
+                                <dl>
+                                    <dt>토요일 :</dt>
+                                    <dd>9시 ~13시</dd>
+                                </dl>
+                                <dl>
+                                    <dt>일요일/공휴일 :</dt>
+                                    <dd>휴무</dd>
+                                </dl>
+                            </div>
+                            @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true,
+                                "bulletTxt" : [
+                                    "",
+                                    ""
+                                ]
+                            })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- 유상 및 보증기간 팝업 -->
+    @@include('./CS/modal/rates-warranty-guide-popup.html')
+    
+    <!-- 휴대폰인증 팝업 -->
+    @@include('./CS/modal/phone-certification-popup.html')
+
+    <!-- 제품 해결 팝업 -->
+    @@include('./CS/modal/solutions-popup.html')
+
+    <!-- 엔지니어 선택 팝업 -->
+    @@include('./CS/modal/choice-engineer-popup.html')
+
+    <!-- 예약 완료 팝업 -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "completePop",
+        "msgOnly" : true,
+        "msg" : "출장 서비스를<br>예약하겠습니까?",
+        "twobtn" : true
+    })
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/reservation.min.js"></script>
+    <script src="/lg5-common/js/support/customVoice/customVoice.min.js"></script>
+</body>
+</html> 

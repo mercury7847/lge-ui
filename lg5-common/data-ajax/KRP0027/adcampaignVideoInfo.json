@@ -5,7 +5,7 @@
     "data": {
         "success": "Y",
         "pagination":{
-            "page": 2,
+            "page": 1,
             "totalCount": 3
         },
         "categoryList": [
@@ -127,6 +127,7 @@
         "storyinfo":{
             "storyId": "ST00003001",
             "storyType": "cf",
+            "videoType": "mp4",
             "storyTypeNm": "광고/캠페인 영상",
             "storyNewsGubun": null,
             "storyTitle": "LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)",
@@ -137,6 +138,7 @@
             "storyMovieUrl": "/lg5-common/videos/signature_rain_view.mp4",
             "stroyDesc": "영상이나 이미지에 대한 간략한 타이틀이 들어갑니다",
             "baseDate": "2020-12-31",
+            "tagUrlPath": "/story/",
             "tagList":[
                 {
                     "orderNo": "",
