@@ -10,10 +10,6 @@
         },
         "categoryList": [
             {
-                "categoryId": "ALL",
-                "categoryName": "전체"
-            },
-            {
                 "categoryId": "AAA",
                 "categoryName": "TV"
             },

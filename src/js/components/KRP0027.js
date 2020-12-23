@@ -4,13 +4,19 @@ $(window).ready(function(){
     $('.KRP0027').buildCommonUI();
 
     ;(function(){
+        var REQUEST_MODE_SUPERCATEGORY = "superCategory";
+        var REQUEST_MODE_CATEGORY = "category";
+        var REQUEST_MODE_YEAR = "year";
+        var REQUEST_MODE_SCROLL = "scroll"
+
         var VIDEO_LIST_URL;
         var VIEWER_DATA_URL;
 
-        //var mainTab, superCateTab, subCateTab, subCateList;
         var superCategoryTab, categoryTab, yearTab, contList;
 
         var scrollAbled = true;
+
+        var contLoadMode;
 
         var viewerTemplate = 
             '<div class="video-inner">'+
@@ -109,7 +115,19 @@ $(window).ready(function(){
 					'</span>'+
 					'<span class="tit"><span>{{storyTitle}}</span></span>'+
 				'</a>'+
-			'</li>';
+            '</li>';
+            
+        var categoryTabTemplate = 
+            '<li class="on" data-cate-id=""><a href="#n">전체<em class="blind">선택됨</em></a></li>'+
+            '{{#each list in categoryList}}'+
+            '<li data-cate-id="{{list.categoryId}}"><a href="#n">{{list.categoryName}}</a></li>'+
+            '{{/each}}';
+
+        var yearTabTemplate =
+            '<li class="on" data-cate-id=""><a href="#n">전체({{totalCnt}})<em class="blind">선택됨</em></a></li>'+
+            '{{#each year in yearList}}'+
+            '<li data-cate-id="{{year.yearBaseDate}}"><a href="#">{{year.yearBaseDate}}({{year.yearCnt}})</a></li>'+
+            '{{/each}}';
 
         function init(){
             vcui.require(['ui/tab'], function () {
@@ -123,22 +141,22 @@ $(window).ready(function(){
             VIEWER_DATA_URL = $('.KRP0027').data("viewerDataUrl");
 
             superCategoryTab = $('.ui_supercategory_tab');
-            categoryTab = $('.ui_category_tab');
+            categoryTab = $('.ui_category_tab').hide();
             yearTab = $('.ui_year_tab');
             contList = $('.cont_list');
         }
 
         function bindEvents(){
             superCategoryTab.on('tabchange', function(e, data){
-                var cateID = $(data.relatedTarget).data("cateId");
-
-                console.log("cateID :", cateID);
+                setContentsList(REQUEST_MODE_SUPERCATEGORY, 1);
             });
 
             categoryTab.find('.ui_tab').on('tabchange', function(e, data){
-                var cateID = $(data.relatedTarget).data("cateId");
+                setContentsList(REQUEST_MODE_CATEGORY, 1);
+            });
 
-                console.log("cateID :", cateID);
+            yearTab.on('tabchange', function(e, data){
+                setContentsList(REQUEST_MODE_YEAR, 1);
             });
 
             contList.scroll(function(e){
@@ -197,24 +215,25 @@ $(window).ready(function(){
                     var listheight = contList.find('.video-list').outerHeight(true);
                     var scrolldist = listheight - wrapheight - 10;
                     if(scrolltop >= scrolldist){
-                        console.log("setContListScrolled();");
-                        setContentsList(page+1);
+                        setContentsList(REQUEST_MODE_SCROLL, page+1);
                     }
                 }
             }
         }
 
-        function setContentsList(page){
+        function setContentsList(mode, page){
             lgkorUI.showLoading();
+
+            contLoadMode = mode;
 
             scrollAbled = false;
 
             var idxs = getTabCateIDs();
             var sendata = {
                 page: page,
-                superCategoryId: idxs.mainCateID,
-                categoryId: idxs.superCateID,
-                year: idxs.subCateID
+                superCategoryId: idxs.superCategoryId,
+                categoryId: idxs.categoryId,
+                year: idxs.year
             }
             
             lgkorUI.requestAjaxData(VIDEO_LIST_URL, sendata, function(result){
@@ -229,6 +248,34 @@ $(window).ready(function(){
                     contList.find('.video-list').append(contlistemplate);
                 }
 
+                var tabTemplate, yeardata, totalcnt;
+                var tabIdxs = getTabCateIDs();
+                switch(contLoadMode){
+                    case REQUEST_MODE_SUPERCATEGORY:
+                        categoryTab.find('.tabs').empty();
+
+                        if(tabIdxs.superCategoryId != ""){
+                            tabTemplate = vcui.template(categoryTabTemplate, {categoryList: result.data.categoryList});
+                            categoryTab.find('.tabs').append(tabTemplate);
+                            categoryTab.show().find('.ui_tab').vcTab('update').vcSmoothScroll('refresh');
+                        } else{
+                            categoryTab.hide();
+                        }
+                    break;
+
+                    case REQUEST_MODE_CATEGORY:
+                        yeardata = vcui.array.filter(result.data.storyListByYear, function(item, index){
+                            return item.yearBaseDate != "TOTAL";
+                        });
+                        totalcnt = vcui.array.filter(result.data.storyListByYear, function(item, index){
+                            return item.yearBaseDate == "TOTAL";
+                        });
+                        tabTemplate = vcui.template(yearTabTemplate, {totalCnt: totalcnt[0].yearCnt, yearList: yeardata})
+                        yearTab.find('.tabs').empty().append(tabTemplate);
+                        yearTab.vcTab('update').vcSmoothScroll('refresh');
+                    break;
+                }
+
 
                 scrollAbled = true;
 
@@ -238,17 +285,17 @@ $(window).ready(function(){
 
         function getTabCateIDs(){
             var superCategoryTabIndex = superCategoryTab.vcTab('getSelectIdx');
-            var superTabIndex = categoryTab.find('.ui_tab').vcTab("getSelectIdx");
-            var subTabIndex = yearTab.vcTab("getSelectIdx");
+            var categoryTabIndex = categoryTab.find('.ui_tab').vcTab("getSelectIdx");
+            var yearTabIndex = yearTab.vcTab("getSelectIdx");
 
-            var mainCateID = superCategoryTab.find('li[data-cate-id]').eq(superCategoryTabIndex).data('cateId');
-            var superCateID = categoryTab.find('li[data-cate-id]').eq(superTabIndex).data('cateId');
-            var subCateID = yearTab.find('li[data-cate-id]').eq(subTabIndex).data('cateId');
+            var superCategoryID = superCategoryTab.find('li[data-cate-id]').eq(superCategoryTabIndex).data('cateId');
+            var categoryID = categoryTab.find('li[data-cate-id]').eq(categoryTabIndex).data('cateId');
+            var yearID = yearTab.find('li[data-cate-id]').eq(yearTabIndex).data('cateId');
 
             return{
-                mainCateID: mainCateID,
-                superCateID: superCateID,
-                subCateID: subCateID
+                superCategoryId: superCategoryID,
+                categoryId: categoryID,
+                year: yearID
             }
         }
 
