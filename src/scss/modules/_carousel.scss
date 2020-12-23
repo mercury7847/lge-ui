@@ -432,13 +432,13 @@
     }
     .slide-controls {
         .btn-arrow.prev {
-            left:-24px;
+            left:-12px;
             @include mobile {
                 left:4px;
             }
         }
         .btn-arrow.next {
-            right:-24px;
+            right:-12px;
             @include mobile {
                 right:4px;
             }
