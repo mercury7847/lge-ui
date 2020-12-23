@@ -3,14 +3,14 @@
 .btn-arrow {
     position:relative;
     display:block;
-    width:40px;
-    height:40px;
+    width:48px;
+    height:48px;
+    padding:4px;
     border-radius:50%;
-    box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
     font-size:0;
     @include mobile {
-        width:28px;
-        height:28px;
+        width:36px;
+        height:36px;
     }
     &::before {
         content:' ';
@@ -18,34 +18,46 @@
         width:40px;
         height:40px;
         border-radius:50%;
-        background-image:url('/lg5-common/images/icons/btn-arr-40x40.svg');
         background-repeat:no-repeat;
         background-size:100%;
+        box-shadow:2px 4px 16px 0 rgba(#000, .14);
         @include mobile {
             width:28px;
             height:28px;
         }
     }
-    &.disabled, &.ui_carousel_hidden {
-        &::before {
-            background-image:url('/lg5-common/images/icons/btn-arr-40x40-2.svg');
-        }
-    }
     &.prev {
         &::before {
-            transform:rotate(180deg);
+            background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt.svg');
+            @include mobile {
+                background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt-m.svg');
+            }
+        }
+        &.disabled,
+        &.ui_carousel_hidden {
+            &::before {
+                background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt2.svg');
+                @include mobile {
+                    background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt-m2.svg');
+                }
+            }
         }
     }
-}
-
-.slide-wrap.carousel-type {
-    .btn-arrow {
-        width:40px;
-        height:40px;
+    &.next {
         &::before {
-            width:40px;
-            height:40px;
-            background-size:40px;
+            background-image:url('/lg5-common/images/icons/btn-arr-40x40-rt.svg');
+            @include mobile {
+                background-image:url('/lg5-common/images/icons/btn-arr-40x40-rt-m.svg');
+            }
+        }
+        &.disabled,
+        &.ui_carousel_hidden {
+            &::before {
+                background-image:url('/lg5-common/images/icons/btn-arr-40x40-rt2.svg');
+                @include mobile {
+                    background-image:url('/lg5-common/images/icons/btn-arr-40x40-rt-m2.svg');
+                }
+            }
         }
     }
 }
@@ -150,16 +162,23 @@
         left:50%;
         width:100%;
         max-width:1600px;
-        margin-top:-28px;
         transform:translateX(-50%);
         z-index:10;
         button {
             position:absolute;
             &.prev {
                 left:40px;
+                transform:translateY(-50%);
+                @include mobile {
+                    left:4px;
+                }
             }
             &.next {
                 right:40px;
+                transform:translateY(-50%);
+                @include mobile {
+                    right:4px;
+                }
             }
         }
     }
@@ -204,9 +223,9 @@
                 }
                 .inner {
                     width:auto;
-                    max-width:1550px;
+                    max-width:1380px + 48px + 96px + 32px; // contents width + 텍스트-버튼 사이 간격 24px X 2 + 버튼width X 2 + 화면-버튼 사이 간격 16px X 2
                     margin:0 auto;
-                    padding:0 88px;
+                    padding:0 (24px + 48px + 16px);
                     @include mobile {
                         padding:0 16px;
                     }
@@ -371,21 +390,25 @@
         .outer {
             width:100%;
             padding:0 16px;
+            @include mobile {
+                padding:0 4px;
+            }
         }
         .inner {
             position:relative;
             width:100%;
-            max-width:1380px + 72px + 72px;
+            max-width:1380px + 48px + 96px; // contents width + 텍스트-버튼 사이 간격 24px X 2 + 버튼width X 2
             margin:0 auto;
             .btn-arrow {
                 position:absolute;
                 top:0;
-                margin-top:-28px;
                 &.prev {
                     left:0;
+                    transform:translateY(-50%);
                 }
                 &.next {
                     right:0;
+                    transform:translateY(-50%);
                 }
             }
         }
@@ -409,10 +432,16 @@
     }
     .slide-controls {
         .btn-arrow.prev {
-            left:-16px;
+            left:-24px;
+            @include mobile {
+                left:4px;
+            }
         }
         .btn-arrow.next {
-            right:-16px;
+            right:-24px;
+            @include mobile {
+                right:4px;
+            }
         }
     }
 
@@ -450,10 +479,16 @@
         }
         .slide-controls .btn-arrow {
             &.prev {
-                left: -8px;
+                left: -12px;
+                @include mobile {
+                    left:4px;
+                }
             }
             &.next {
-                right: -8px;
+                right: -12px;
+                @include mobile {
+                    right:4px;
+                }
             }
         }
         .slide-conts {

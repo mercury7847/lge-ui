@@ -583,10 +583,16 @@ br.pc-only {
         .slide-controls {
             .btn-arrow {
                 &.prev {
-                    left:-28px;
+                    left:-24px;
+                    @include mobile {
+                        left:4px;
+                    }
                 }
                 &.next {
-                    right:-28px;
+                    right:-24px;
+                    @include mobile {
+                        right:4px;
+                    }
                 }
             }
         }

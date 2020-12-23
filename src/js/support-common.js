@@ -462,6 +462,72 @@ $.fn.serializeObject = function() {
                 ]
             });
 
+
+            $('.my-product-slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                slidesToScroll: 3,
+                slidesToShow: 3,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            slidesToScroll: 1,
+                            slidesToShow: 1,
+                            variableWidth: true
+                        }
+                    },
+                    {
+                        breakpoint: 20000,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    }
+                ]
+            });
+
+            $('.btn-toggle').on('click', function() {
+                if ($(this).closest('.box').hasClass('open')) {
+                    $('.my-product-slider').stop().slideUp(function() {
+                        $(this).closest('.box').removeClass('open');
+                    });
+                    $(this).html('보유제품 펼치기');
+                } else {
+                    $('.my-product-slider').stop().slideDown(function() {
+                        $(this).closest('.box').addClass('open');
+                    });
+                    $(this).html('보유제품 접기');
+                }
+            });
+
+            $('.my-product-slider').find('.slide-box').on('click', function(e) {
+                e.preventDefault();
+
+                if ($(this).hasClass('disabled')) {
+                    $(window).trigger("toastshow", "예약가능한 제품이 아닙니다.");
+                } else {
+                    
+                }
+            });
+
+            $('.category-search .btn-open').on('click', function() {
+                $(this).closest('.box').addClass('on');
+            });
+            $('.category-search .btn-close').on('click', function() {
+                $(this).closest('.box').removeClass('on');
+            });
+
+            $('.model-slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                rows:4,
+                slidesPerRow: 4,
+                slidesToShow: 1,
+		        slidesToScroll: 1
+            });
+
             // 퀵 메뉴 (미정)
             $('#quickMenu').quickMenu();
         });

@@ -1,15 +1,12 @@
 .subscribe {
     .cont-wrap .section .sec-tit {
-        @include pc {
-            display: none;
-        }
-        @include mobile {
-            margin-bottom: 16px;
-        }
+        margin-bottom: 12px;
+        font-size: 22px;
+        line-height: 32px;
     }
     @media screen and (min-width: 1284px) {
         .accord-cont {
-            padding-right: 137px;
+            padding-right: 157px;
         }
     }
     @include mobile {
