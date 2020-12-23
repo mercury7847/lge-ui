@@ -689,6 +689,17 @@
         .tit {
             @include font-medium;
             font-weight:$font-weight-bold;
+            &.req {
+                &::after {
+                    content:'*';
+                    display:inline-block;
+                    margin-left:1px;
+                    color:#EC455A;
+                    font-size:inherit;
+                    line-height:inherit;
+                    vertical-align:top;
+                }
+            }
         }
     }    
     @include mobile {
