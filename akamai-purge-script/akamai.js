@@ -36,7 +36,7 @@ lines.forEach(function (line, index) {
     });
 
     if (!avoid && line != '' && line != '\n') {
-        list.push(PURGE_ROOT_URL + '/lg5-common-gp/' + line);
+        list.push(PURGE_ROOT_URL + '/lg5-common/' + line);
     }
 });
 
