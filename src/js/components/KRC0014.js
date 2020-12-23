@@ -54,7 +54,7 @@ $(window).ready(function(){
                 html += '   <img src="' + largeImgURL + '" alt="">';
                 html += '   <p class="hidden">' + accDesc + '</p>';
                 html += '   <div class="animation-area">';
-                html += '       <video loop muted' +  ($(this).attr('data-autoplay')=="true"?' autoplay':'')  /*+ ($(this).attr(' data-muted')=="true"?'muted':'')*/ + '>';
+                html += '       <video loop' +  ($(this).attr('data-autoplay')=="true"?' muted autoplay':'')  /*+ ($(this).attr(' data-muted')=="true"?'muted':'')*/ + '>';
                 html += '           <source src="' + aniSrc + '" type="video/mp4">';
                 html += '       </video>';
                 html += '       <div class="controller-wrap wa-btn">';

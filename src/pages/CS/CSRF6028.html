@@ -16,22 +16,7 @@
             })
             <div class="contents support reservation">
                 <!-- 선택 제품 플로팅바 -->
-                <div class="prod-selected-wrap">
-                    <div class="box">
-                        <div class="prod-info">
-                            <p class="tit">제품을 선택해 주세요</p>
-                            <ul class="prod-list">
-                                <li>IT/모니터</li>
-                                <li>노트북/탭북</li>
-                                <li>OPT0MD2N800</li>
-                            </ul>
-                            <p class="prod-txt">예약내용 입력을 위해 제품 모델명을 선택해 주세요</p>
-                            <p class="prod-txt">예약내용 입력을 위해 제품 모델명을 선택해 주세요. 모델명을 모르시면 ‘건너뛰기'를 눌러주세요.</p>
-                            <p class="prod-txt">모델명을 추가하사면 더 정확한 서비스를 받을 수 있어요.</p>
-                        </div>
-                        <button type="button" class="btn border size reset btn-reset">제품 재선택</button>
-                    </div>
-                </div>
+                @@include('./common/support/selected-model-bar.html')
 
                 <!-- 비회원 -->
                 @@include('./common/support/login-guide.html', {
@@ -56,61 +41,16 @@
                 </div>
 
                 <!-- 회원 - 보유제품 펼침 -->
-                <div class="my-product">
-                    <div class="box open">
-                        <div class="my-product-title">
-                            <p class="tit">이엘지님이 보유하고 있는 제품 (8)</p>
-                            <!-- 
-                                .box.open : 보유제품 접기
-                                .box      : 보유제품 펼치기
-                             -->
-                            <button type="button" class="btn-toggle">보유제품 접기</button>
-                        </div>
-                        <div class="slide-wrap my-product-slider">
-                            <div class="indi-wrap">
-                                <ul class="indi-conts ui_carousel_dots">
-                                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                </ul>
-                            </div>
-                            <div class="slide-content ui_carousel_list">
-                                <div class="slide-track ui_carousel_track">
-                                    <div class="slide-conts ui_carousel_slide">
-                                        <a href="#" class="slide-box phone">
-                                            <p class="category">일반폰</p>
-                                            <p class="name">LGP810SPEAKERSTATION</p>
-                                        </a>
-                                    </div>
-                                    <div class="slide-conts ui_carousel_slide">
-                                        <a href="#" class="slide-box tv disabled">
-                                            <p class="category">올레드 TV</p>
-                                            <p class="name">OLED48CXKNB</p>
-                                        </a>
-                                    </div>
-                                    <div class="slide-conts ui_carousel_slide">
-                                        <a href="#" class="slide-box memories">
-                                            <p class="category">외장하드/메모리</p>
-                                            <p class="name">MC51PKSFS1I</p>
-                                        </a>
-                                    </div>
-                                    <div class="slide-conts ui_carousel_slide">
-                                        <a href="#" class="slide-box memories">
-                                            <p class="category">외장하드/메모리</p>
-                                            <p class="name">MC51PKSFS1I</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide-controls">
-                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @@include('./common/support/select-my-model.html')
                 
                 <div class="cont-wrap">
-                    <form action="/html/support/CSTF4010.html" id="submitForm" autocomplete="off">
-                        <div class="">
+                    <form action="/html/support/CSTF4010.html" id="submitForm" autocomplete="off" novalidate>
+                        <input type="hidden" name="category" id="category" value="">
+                        <input type="hidden" name="subCategory" id="subCategory" value="">
+                        <input type="hidden" name="modelCode" id="modelCode" value="">
+                        <input type="hidden" name="productCode" id="productCode" value="">
+
+                        <div class="step-box active" id="stepTerms">
                             <div class="form-infos">
                                 <p class="req" aria-disabled="true">필수 입력 항목</p>
                             </div>
@@ -124,7 +64,7 @@
                                     </div>
                                     <div class="input-info">
                                         <div class="agree-tit">
-                                            <p class="tit">개인정보 수집 및 이용에 대한 동의</p>
+                                            <p class="tit req">개인정보 수집 및 이용에 대한 동의</p>
                                         </div>
                                         <div class="agree-cont-wrap">
                                             <div class="agree-cont-box">
@@ -177,7 +117,7 @@
                                     </div>
                                 </div>
                                 <div class="btn-wrap">
-                                    <button type="button" class="btn border size"><span>다음</span></button>
+                                    <button type="button" class="btn border size btn-next"><span>다음</span></button>
                                 </div> 
 
                                 @@include('./common/modules/bullet-list.html', {
@@ -191,144 +131,157 @@
                             </div>
                         </div>
 
-                        <!-- 제품 카테고리 선택 -->
-                        @@include('./common/support/select-model.html', {
-                            "keyword": "Y",
-                            "category": [
-                                {
-                                    "name": "모바일",
-                                    "imgSrc": "/lg5-common/images/CS/img-category01.jpg",
-                                    "imgAlt": "모바일 카테고리 썸네일"
-                                },
-                                {
-                                    "name": "TV/프로젝터",
-                                    "imgSrc": "/lg5-common/images/CS/img-category02.jpg",
-                                    "imgAlt": "TV/프로젝터 카테고리 썸네일"
-                                },
-                                {
-                                    "name": "IT/모니터",
-                                    "imgSrc": "/lg5-common/images/CS/img-category03.jpg",
-                                    "imgAlt": "IT/모니터 카테고리 썸네일"
-                                },
-                                {
-                                    "name": "에어컨",
-                                    "imgSrc": "/lg5-common/images/CS/img-category04.jpg",
-                                    "imgAlt": "에어컨 카테고리 썸네일"
-                                },
-                                {
-                                    "name": "냉장/냉동고",
-                                    "imgSrc": "/lg5-common/images/CS/img-category05.jpg",
-                                    "imgAlt": "냉장/냉동고 카테고리 썸네일"
-                                },
-                                {
-                                    "name": "세탁기/스타일러",
-                                    "imgSrc": "/lg5-common/images/CS/img-category06.jpg",
-                                    "imgAlt": "세탁기/스타일러 카테고리 썸네일"
-                                },
-                                {
-                                    "name": "청소기",
-                                    "imgSrc": "/lg5-common/images/CS/img-category07.jpg",
-                                    "imgAlt": "청소기 카테고리 썸네일"
-                                },
-                                {
-                                    "name": "조리/세척기기",
-                                    "imgSrc": "/lg5-common/images/CS/img-category08.jpg",
-                                    "imgAlt": "조리/세척기기 카테고리 썸네일"
-                                },
-                                {
-                                    "name": "건강/소형기기",
-                                    "imgSrc": "/lg5-common/images/CS/img-category09.jpg",
-                                    "imgAlt": "건강/소형기기 카테고리 썸네일"
-                                },
-                                {
-                                    "name": "AV/음향기기",
-                                    "imgSrc": "/lg5-common/images/CS/img-category10.jpg",
-                                    "imgAlt": "AV/음향기기 카테고리 썸네일"
-                                },
-                                {
-                                    "name": "기타",
-                                    "imgSrc": "/lg5-common/images/CS/img-category11.jpg",
-                                    "imgAlt": "기타 카테고리 썸네일"
-                                },
-                                {
-                                    "name": "B2B",
-                                    "imgSrc": "/lg5-common/images/CS/img-category12.jpg",
-                                    "imgAlt": "B2B 카테고리 썸네일"
-                                }
-                            ]
-                        })
+                        <div class="step-box" id="stepModel">
+                            <!-- 제품 카테고리 선택 -->
+                            @@include('./common/support/select-model.html', {
+                                "keyword": "Y",
+                                "category": [
+                                    {
+                                        "name": "모바일",
+                                        "imgSrc": "/lg5-common/images/CS/img-category01.jpg",
+                                        "imgAlt": "모바일 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "TV/프로젝터",
+                                        "imgSrc": "/lg5-common/images/CS/img-category02.jpg",
+                                        "imgAlt": "TV/프로젝터 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "IT/모니터",
+                                        "imgSrc": "/lg5-common/images/CS/img-category03.jpg",
+                                        "imgAlt": "IT/모니터 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "에어컨",
+                                        "imgSrc": "/lg5-common/images/CS/img-category04.jpg",
+                                        "imgAlt": "에어컨 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "냉장/냉동고",
+                                        "imgSrc": "/lg5-common/images/CS/img-category05.jpg",
+                                        "imgAlt": "냉장/냉동고 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "세탁기/스타일러",
+                                        "imgSrc": "/lg5-common/images/CS/img-category06.jpg",
+                                        "imgAlt": "세탁기/스타일러 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "청소기",
+                                        "imgSrc": "/lg5-common/images/CS/img-category07.jpg",
+                                        "imgAlt": "청소기 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "조리/세척기기",
+                                        "imgSrc": "/lg5-common/images/CS/img-category08.jpg",
+                                        "imgAlt": "조리/세척기기 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "건강/소형기기",
+                                        "imgSrc": "/lg5-common/images/CS/img-category09.jpg",
+                                        "imgAlt": "건강/소형기기 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "AV/음향기기",
+                                        "imgSrc": "/lg5-common/images/CS/img-category10.jpg",
+                                        "imgAlt": "AV/음향기기 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "기타",
+                                        "imgSrc": "/lg5-common/images/CS/img-category11.jpg",
+                                        "imgAlt": "기타 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "B2B",
+                                        "imgSrc": "/lg5-common/images/CS/img-category12.jpg",
+                                        "imgAlt": "B2B 카테고리 썸네일"
+                                    }
+                                ]
+                            })
+                        </div>
                         
-                        <div class="">
+                        <div class="step-box" id="stepInput">
                             <div class="section">
                                 <div class="tit-wrap">
-                                    <h2 class="tit">구매정보 선택</h2>
+                                    <h2 class="tit">제품 추가정보</h2>
                                 </div>
-                                <div class="form-wrap">
-                                    <div class="forms type2">
-                                        <div class="tit"><label for="inp01-1">구입 시기</label></div>
-                                        <div class="conts">
-                                            <div class="select-list-wrap w-auto">
-                                                <ul>
-                                                    <li>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="buyingdate-1" name="buyingdate" checked="">
-                                                            <label for="buyingdate-1">1개월 이내</label>
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="buyingdate-2" name="buyingdate">
-                                                            <label for="buyingdate-2">1년 이내</label>
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="buyingdate-3" name="buyingdate">
-                                                            <label for="buyingdate-3">1년~2년 이내</label>
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="buyingdate-4" name="buyingdate">
-                                                            <label for="buyingdate-4">2년 이상</label>
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="buyingdate-5" name="buyingdate">
-                                                            <label for="buyingdate-5">기억 안남</label>
-                                                        </span>
-                                                    </li>
-                                                </ul>
+                                <div class="section-box">
+                                    <h3 class="sub-tit"></h3>
+                                    <div class="form-wrap">
+                                        <div class="forms type2">
+                                            <div class="tit">
+                                                <p class="label">구입 시기</p>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="select-list-wrap w-auto">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="buyingdate" id="buyingdate01"  checked="">
+                                                                <label for="buyingdate01">1개월 이내</label>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="buyingdate" id="buyingdate02" >
+                                                                <label for="buyingdate02">1년 이내</label>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="buyingdate" id="buyingdate03" >
+                                                                <label for="buyingdate03">1년~2년 이내</label>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="buyingdate" id="buyingdate04" >
+                                                                <label for="buyingdate04">2년 이상</label>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="buyingdate" id="buyingdate05" >
+                                                                <label for="buyingdate05">기억 안남</label>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="forms type2">
+                                            <div class="tit">
+                                                <p class="label">렌탈 여부</p>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="select-list-wrap w-auto">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="rental" id="rentalY"  checked="">
+                                                                <label for="rentalY">렌탈 이용중</label>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="rental" id="rentalN" >
+                                                                <label for="rentalN">렌탈 이용 안함</label>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="forms type2">
-                                        <div class="tit"><label for="inp01-1">렌탈 여부</label></div>
-                                        <div class="conts">
-                                            <div class="select-list-wrap w-auto">
-                                                <ul>
-                                                    <li>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="chkrental-1" name="chkrental" checked="">
-                                                            <label for="chkrental-1">렌탈 이용중</label>
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="chkrental-2" name="chkrental">
-                                                            <label for="chkrental-2">렌탈 이용 안함</label>
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                </div>
+
+                                <div class="section-box">
+                                    <h3 class="sub-tit">고장증상 선택</h3>
                                 </div>
                             </div>
                             <div class="section">
                                 <div class="tit-wrap">
-                                    <h2 class="tit">고장증상 선택</h2>
+                                    <h2 class="tit"></h2>
                                 </div>
                                 <div class="rdo-wrap">
                                     <div class="rdo-wrap-info">

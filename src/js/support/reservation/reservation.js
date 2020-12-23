@@ -29,6 +29,8 @@
                             }
                         }]
                     });
+
+                    $('.contents').commonModel();
                 });
 
                 self._setEventListener();
