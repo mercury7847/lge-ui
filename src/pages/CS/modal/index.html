@@ -11,8 +11,8 @@
         @@include('./common/header.html')
 
         <div class="container">
-            @@include('./common/support/page-visual.html', {
-                'title': '팝업 모음'
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '팝업 모음'
             })
 
             <div class="contents">
@@ -46,22 +46,22 @@
     </div>      
 
     <!-- 유상 및 보증기간 팝업 -->
-    @@include('./support/modal/rates-warranty-guide-popup.html')
+    @@include('./CS/modal/rates-warranty-guide-popup.html')
     
     <!-- 휴대폰인증 팝업 -->
-    @@include('./support/modal/phone-certification-popup.html')
+    @@include('./CS/modal/phone-certification-popup.html')
 
     <!-- 문제 해결 팝업 -->
-    @@include('./support/modal/solutions-popup.html')
+    @@include('./CS/modal/solutions-popup.html')
 
     <!-- 엔지니어 선택 팝업 -->
-    @@include('./support/modal/choice-engineer-popup.html')
+    @@include('./CS/modal/choice-engineer-popup.html')
 
     <!-- 공기 청정 필터 신청 안내 팝업 -->
-    @@include('./support/modal/air-care-popup.html')
+    @@include('./CS/modal/air-care-popup.html')
 
     <!-- 공기 청정 필터 신청 미적용 모델 안내 팝업 -->
-    @@include('./support/modal/air-care-model-popup.html')
+    @@include('./CS/modal/air-care-model-popup.html')
 
     <!-- 컨텐츠 만족도 평가 팝업 -->
     @@include('./CS/CSRF6065.html', {
