@@ -4,110 +4,83 @@
 
 
 .KRC0002 {
-    width: 100%;
-    // max-width: (1284px + 60px);
-    // margin: 0 auto;
-    // padding: 0 30px;
-
-    @include mobile {
-        max-width: 100%;
-        //padding: 0 16px;
-	}
-	.component-inner {
-		@include mobile {
-			padding: 0 16px;
-		}
-	}
-
-	.title,
-	.title * {
+	.title {
 		margin-bottom:56px;
-		@include font-title-2;
 		text-align:center;
-	}
-    /*
-    .list-box {
 		@include mobile {
-			margin:0 -2px;
+			margin-bottom:28px;
 		}
-	}*/
-
-	.indi-wrap {
-
+		* {
+			@include font-title-2;
+		}
 	}
+
+	.vertical-box {
+		margin:0 auto;
+		&.item2 {
+			max-width:560px - 24px;
+		}
+		&.item3 {
+			max-width:840px - 24px;
+		}
+		&.item4 {
+			max-width:1120px - 24px;
+		}
+		&.item5 {
+			max-width:1400px - 24px;
+		}
+		.list-box {
+			margin:0 -12px;
+			@include mobile {
+				margin:0 -4px;
+			}
+		}
+	}
+
+
 	.non-carousel-box {
+		.list-box {
+			overflow:hidden;
+		}
 		.items{
 			text-align:center;
-			margin:0 auto;
+			margin:-48px auto 0;
 			font-size: 0;
-			overflow: hidden;
 			@include mobile {
-				display: flex;
-				flex-wrap: wrap;
-				//max-width: 326px;
-				//max-width: 100%;
+				margin-top:-24px;
 			}
 		}
 		
 	}
 	.carousel-box {
+		.list-box {
+			position: relative;
+			padding-bottom:36px;
+			@include mobile {
+				padding-bottom:32px;
+			}
+		}
+		.item-box {
+			margin-top:-48px;
+			@include mobile {
+				margin-top:-24px;
+			}
+		}
 		.item {
 			width: 100%;
 		}
-		@include mobile {
-			.item-box {
-				//display: flex;
-			}
-		}
-		.list-box{
-			position: relative;
-			margin: 0 auto;
-			padding: 0 26px;
-		}
-		&.item5 .list-box{
-			max-width: calc(1452px + 52px);	
-		}
-		&.item4 .list-box{
-			max-width: calc(1176px + 52px);
-		}
-		&.item3 .list-box{
-			max-width: calc(896px + 52px);
-		}
-		&.item2 .list-box{
-			max-width: calc(598px + 52px);
-		}
 		.slide-controls {
 			.btn-arrow {
-				position: absolute;
-				top: 50%;
-				width: 48px;
-				height: 48px;
-				&:before {
-					width: 48px;
-					height: 48px;
-					background-size: 48px 48px;
-					background-position: 50% 50%;
-				}
 				&.prev {
-					left: -26px;
+					left: -12px;
+					@include mobile {
+						left:-8px;
+					}
 				}
 				&.next {
-					right: -26px;
-				}
-				@include mobile {
-					width: 36px;
-					height: 36px;
-					&:before {
-						width: 36px;
-						height: 36px;
-						background-size: 36px 36px;
-						background-position: 50% 50%;
-					}
-					&.prev {
-						left: -8px;
-					}
-					&.next {
-						right: -8px;
+					right: -12px;
+					@include mobile {
+						right:-8px;
 					}
 				}
 			}
@@ -116,109 +89,42 @@
 	
     .item {
 		vertical-align:top;
-		//width:252px;
-		width:266px;
+		width:256px + 24px;
 		display:inline-block;
-		padding: 0 12px 31px;
+		margin-top:48px;
+		padding: 0 12px;
 		@include mobile {
-			width: 50%;
-			padding: 0 0 24px 0;
-			&:nth-child(odd) {
-				padding-right: 4px;
-			}
-			&:nth-child(even) {
-				padding-left: 4px;
-			}
+			width:50%;
+			margin-top:24px;
+			padding:0 4px;
 		}
 		.visual-area {
-			position:relative; 
+			position:relative;
 			max-width:256px;
-			margin:0 auto 16px auto;
+			margin:0 auto;
 			a {
 				display:block;
 			}
 			img {
-				//max-width:100%;
 				width:100%;
 			}
-			@include mobile {
-				//max-width:150px;
-				margin:0 auto 8px auto;
-            }
-            @media screen and  (max-width: 359px){
-                //max-width:130px;
-                width: auto;
-            }
 		}
 		.bottom-btn {
 			max-width:256px;
-			margin:0 auto;
-			min-height: 45px;
+			margin:16px auto 0;
 			text-align:center;
-			@include mobile {
-				
-			}
-			.link-text {
-				font-size: 14px;
-                line-height: 20px;
-                color: #111;
-                font-weight: 700;
-				text-decoration: none;
-				word-break:break-all;
-                //border-bottom: 0;
-				@include mobile {
-					font-size: 16px;
-					line-height: 24px;
-				}
-
-            }
-		}
-	}
-	.carousel-box {
-		.indi-wrap {
-			position: absolute;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			z-index: 10;
-		}
-	}
-
-	.non-carousel-box {
-		&.item5{
-			.items{
-				@media screen and (min-width: 768px) {
-					//max-width:1220px;
-					max-width:1330px;
+			.text-link {
+				max-width:100%;
+				padding-right:0;
+				@include font-large-1;
+				overflow:hidden;
+				text-overflow:ellipsis;
+				white-space:nowrap;
+				&::after {
+					display:none;
 				}
 			}
 		}
-		&.item4 {
-			.items{ 
-				@media screen and (min-width: 768px) {
-					//max-width: 976px;
-					max-width: 1064px;
-				}
-			}
-		}
-		&.item3 {
-			.items{ 
-				@media screen and (min-width: 768px) {
-					//max-width: 739px;
-					max-width: 798px;
-				}
-			}
-		}
-	
-		&.item2 {
-			.items{ 
-				@media screen and (min-width: 768px) {
-					//max-width: 488px;
-					max-width: 532px;
-				}
-			}
-		}
-	
 	}
     
 	$color: (lightgray, dark, black, white);
@@ -228,7 +134,7 @@
 				background-color: #f4f4f4;
 				.title {
 					&, * {
-						color: #111;
+						color: #222;
 					}
 				}
 			} @else if $bg == dark {
@@ -255,7 +161,7 @@
 				background-color: #fff;
 				.title {
 					&, * {
-						color: #111;
+						color: #222;
 					}
 				}
 			}
