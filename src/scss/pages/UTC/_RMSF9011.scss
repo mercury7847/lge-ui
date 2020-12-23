@@ -7,25 +7,35 @@
             }
         }
     }
+    .order-complete {
+        padding-bottom: 0;
+    }
 }
 .complete-wrap {
     position: relative;
     text-align: center;
-    margin-top: 84px;
-    padding: 88px 0 64px;
+    padding-bottom: 40px;
     .text {
         font-weight: 700;
         font-size: $font-large-5;
         line-height: 56px;
+        &:before {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            margin-right: 16px;
+            background: url('/lg5-common/images/icons/icon-complete-40-black.svg') no-repeat 0 0;
+            vertical-align: -6px;
+            content: '';
+        }
     }
     .small-text {
-        margin-top: 24px;
+        margin-top: 8px;
         @include font-medium;
         word-break: keep-all;
     }
     .btn-link {
         margin-top: 12px;
-        color: $color-gray-1;
     }
 
     @include mobile {
@@ -47,14 +57,13 @@
 }
 
 .order-complete {
+    border-top: 0;
     .order-item {
         justify-content: space-between;
-        padding-top: 88px;
-        &:first-child {
-            border-top: 2px solid #222;
-        }
-        &:last-child {
-            border-bottom: 1px solid $color-border;
+        padding-top: 74px;
+        border-top: 2px solid $color-default;
+        &:not(:first-child) {
+            margin-top: 24px;
         }
         .product-info {
             //max-width: 514px;
@@ -66,7 +75,7 @@
             //margin-left: auto;
         }
         @include mobile {
-            padding-top: 85px;
+            padding-top: 66px;
             &:last-child {
                 padding-bottom: 32px;
             }
@@ -82,7 +91,7 @@
         }
     }
     & + .total-payment-amount {
-        margin-top: 16px;
+        margin-top: 24px;
         text-align: right;
         .text,
         .price {
@@ -90,64 +99,63 @@
             vertical-align: bottom;
         }
         .text {
-            margin-right: 12px;
+            margin-right: 48px;
             font-weight: 500;
             @include font-small;
         }
         .price {
             font-weight: 700;
-            @include font-large-2;
+            @include font-large-1;
         }
         .desc {
+            margin-top: 8px;
             font-weight: 500;
             @include font-small;
             color: $color-primary;
+        }
+        @include mobile {
+            margin-top: 16px;
+            .text {
+                margin-right: 20px;
+            }
+            .desc {
+                margin-top: 6px;
+            }
         }
     }
 }
 
 .care-solution-call-box {
-    margin-top: 65px;
-    padding: 20px 12px;
+    margin-top: 48px;
+    padding: 24px;
+    border-radius: 8px;
     background-color: $color-bg;
     text-align: center;
     .call-info {
         font-size: 0;
         .title {
             display: inline-block;
-            font-size: 16px;
-            line-height: 24px;
+            font-weight: 500;
+            @include font-small;
         }
         .number {
             display: inline-block;
-            margin-left: 32px;
-            padding: 6px 16px;
-            border-radius: 24px;
-            background-color: $color-gray-1;
+            margin-left: 12px;
             font-weight: 700;
-            color: $color-white;
-            @include font-small;
-            &:before {
-                display: inline-block;
-                width: 20px;
-                height: 20px;
-                margin-right: 8px;
-                background: url('/lg5-common/images/icons/icon-ars-call.svg') no-repeat 0 0;
-                vertical-align: -5px;
-                content: '';
-            }
+            @include font-large;
         }
     }
 
     @include mobile {
-        margin-top: 56px;
+        margin-top: 60px;
+        padding: 16px 20px;
+        text-align: left;
         .call-info {
-            .title {
-                font-size: 14px;
-                line-height: 18px;
-            }
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             .number {
-                margin-left: 8px;
+                margin-left: 0;
             }
         }
     }
