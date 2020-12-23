@@ -1,6 +1,6 @@
 
 (function(){
-    var productListItemTemplate = '<li class="lists" data-model-id="{{id}}">' +
+    var productListItemTemplate = '<li class="lists" data-model-id="{{id}}" data-sku={{sku}}>' +
         '<div class="inner">' +
             '<div class="thumb" aria-hidden="true"><img src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
             '<div class="info-wrap">' +
@@ -15,14 +15,35 @@
         '</div>' +
     '</li>'
 
+    var manualListItemTemplate = '<li class="lists"><div class="ui_flexible_box"><div class="inner ui_flexible_cont">' +
+        '<p class="guide-tit">제품 사용설명서</p>' +
+        '<p class="guide-desc">{{title}}</p>' +
+        '<div class="bottom-tbl">' +
+            '<div class="cell">' +
+                '<ul class="info-list">' +
+                    '<li><span class="blind">등록일</span>{{date}}</li>' +
+                    '<li><span class="blind">언어</span>{{language}}</li>' +
+                '</ul>' +
+            '</div>' +
+            '<div class="cell">' +
+                '{{#each item in files}}' +
+                    '<button type="button" class="btn size border" data-file-url="{{item.url}}"><span>{{item.ext}}</span><span class="blind">파일 다운로드</span></button>' +
+                '{{/each}}' +
+            '</div>' +
+        '</div>' +
+    '</div></div></li>'
+
     $(window).ready(function() {
+
+        var checkModelSuccess = false;
 
         var myProductRegistration = {         
             init: function() {
                 var self = this;
-                vcui.require(['ui/modal'], function () {             
+                vcui.require(['ui/modal', 'ui/validation'], function () {             
                     self.setting();
                     self.bindEvents();
+                    self.bindPopupEvents();
                 });
             },
 
@@ -39,6 +60,39 @@
                 self.$myProductList = self.$contents.find('div.my-product-lists:eq(1)');
                 self.$myProductNoData = self.$myProductList.find('div.no-data');
 
+                //보유제품 등록 팝업
+                self.$registMyProductPopup = $('#registMyProductPopup');
+                var $inputs = self.$registMyProductPopup.find('dl.forms div.box div.input-wrap input');
+                var $buttons = self.$registMyProductPopup.find('dl.forms div.box div.cell button');
+                //모델번호
+                self.$modelInput = $inputs.eq(0);
+                self.$modelCheckOk = self.$modelInput.siblings('p.comp');
+                self.$modelCheckButton = $buttons.eq(0);
+                self.$modelCheckOk.hide();
+
+                //시리얼넘버
+                self.$snInput = $inputs.eq(1);
+                self.$snCheckButton = $buttons.eq(1);
+
+                var register = {
+                    year:{
+                        required: true,
+                        errorMsg: "날짜를 선책해주세요.",
+                        msgTarget: '.err-block'
+                    },
+                    month:{
+                        required: true,
+                        errorMsg: "날짜를 선책해주세요.",
+                        msgTarget: '.err-block'
+                    },
+                };
+
+                self.registMyProductValidation = new vcui.ui.Validation('article[id="registMyProductPopup"]',{register:register});
+
+                //사용설명서 팝업
+                self.$manualPopup = $('#manualPopup');
+                self.$manualMoreButton = self.$manualPopup.find('button.btn-moreview');
+
                 self.checkNoData();
             },
 
@@ -48,13 +102,14 @@
                 //등록가능제품 등록하기
                 self.$registProductList.on('click','>ul li div.btn-group a', function(e) {
                     e.preventDefault();
-                    var ajaxUrl = self.$contents.attr('data-insert-url');
-                    var _id = $(this).parents('li').attr('data-model-id');
-                    if(_id) {
-                        lgkorUI.requestAjaxDataPost(ajaxUrl, {"id":_id}, function(result) {
-                            location.reload();
-                        });
-                    }
+                    self.registMyProductPopupClear();
+
+                    var sku = $(this).parents('li').attr('data-sku');
+                    self.$modelInput.val(sku);
+                    checkModelSuccess = true;
+                    self.$modelCheckOk.show();
+
+                    self.$registMyProductPopup.vcModal();
                 });
 
                 //등록가능제품 더보기
@@ -65,6 +120,10 @@
                 });
                 
                 //보유제품 직접 등록
+                self.$registProductList.on('click','div.btm-box button' ,function(e) {
+                    self.registMyProductPopupClear();                    
+                    self.$registMyProductPopup.vcModal();
+                });
 
                 //보유제품 삭제
                 self.$myProductList.on('click','>ul li button.btn-delete', function(e) {
@@ -89,9 +148,89 @@
                 });
 
                 //사용설명서
+                self.$myProductList.on('click','>ul li div.btns button.manual-btn', function(e) {
+                    var _id = $(this).parents('li').attr('data-model-id');
+                    self.requestManualData(_id,1,false);
+                });
 
                 //다운로드/sw
+                self.$myProductList.on('click','>ul li div.btns button.download-btn', function(e) {
+                    $(this).parents('.notice').hide();
+                });
 
+            },
+
+            bindPopupEvents: function() {
+                var self = this;
+
+                //모델명 확인
+                self.$modelInput.on('input', function(e){
+                    checkModelSuccess = false;
+                    self.$modelCheckOk.hide();
+                })
+
+                self.$modelCheckButton.on('click', function(e){
+                    var ajaxUrl = self.$registMyProductPopup.attr('data-sku-url');
+                    lgkorUI.requestAjaxData(ajaxUrl, {"sku":self.$modelInput.val()}, function(result) {
+                        var data = result.data;
+                        if(lgkorUI.stringToBool(data.success)) {
+                            checkModelSuccess = true;
+                            self.$modelCheckOk.show();
+                        } else {
+                            checkModelSuccess = false;
+                            self.$modelCheckOk.hide();
+                            lgkorUI.alert('', {title: "해당 제품 모델명이 존재하지 않습니다."});
+                        }
+                    });
+                });
+
+                //제조번호 확인
+                self.$snCheckButton.on('click', function(e){
+                    var ajaxUrl = self.$registMyProductPopup.attr('data-sn-url');
+                    lgkorUI.requestAjaxData(ajaxUrl, {"sn":self.$snInput.val()}, function(result) {
+                        var data = result.data;
+                        if(!lgkorUI.stringToBool(data.success)) {
+                            lgkorUI.alert('', {title: "해당 제조번호가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
+                        }
+                    });
+                });
+
+                //보유제품 등록
+                self.$registMyProductPopup.on('click','footer div.btn-group button' ,function(e){
+                    var $button = $(this);
+                    if($button.index() == 0) {
+                        //취소
+                        self.$registMyProductPopup.vcModal('close');
+                    } else {
+                        //등록
+                        if(checkModelSuccess) {
+                            var result = self.registMyProductValidation.validate().success;
+                            if(result) {
+                                var param = self.registMyProductValidation.getAllValues();
+                                var ajaxUrl = self.$registMyProductPopup.attr('data-insert-url');
+                                lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
+                                    location.reload();
+                                });
+                            }
+                        } else {
+                            lgkorUI.alert('', {title: "제품 모델명을 확인해 주세요."});
+                        }
+                    }
+                });
+
+                //메뉴얼 더보기
+                self.$manualMoreButton.on('click', function(e){
+                    var _id = self.$manualPopup.attr('data-model-id');
+                    var page = parseInt(self.$manualPopup.attr('data-count')) + 1;
+                    self.requestManualData(_id,page,true);
+                });
+
+                //메뉴얼 다운로드
+                self.$manualPopup.on('click','li button' ,function(e){
+                    var url = $(this).attr('data-file-url');
+                    console.log(url);
+                    window.location = url;
+                });
             },
 
             requestMoreData: function(page) {
@@ -152,7 +291,52 @@
                 } else {
                     self.$myProductNoData.show();
                 }
-            }
+            },
+
+            registMyProductPopupClear: function() {
+                var self = this;
+
+                checkModelSuccess = false;
+                self.$modelCheckOk.hide();
+                
+                self.$registMyProductPopup.find('input').val("");
+                self.$registMyProductPopup.find('.ui_selectbox').vcSelectbox('selectedIndex',0);
+                self.$registMyProductPopup.find('.err-block').hide();
+            },
+
+            requestManualData: function(_id, page, isMore) {
+                var self = this;
+                var ajaxUrl = self.$manualPopup.attr('data-list-url');
+                lgkorUI.requestAjaxData(ajaxUrl, {"id":_id, "page":page}, function(result) {
+                    var data = result.data;
+                    var param = result.param;
+                    var pagination = param.pagination;
+
+                    self.$manualPopup.attr({"id":param.id, "data-page": pagination.page,"data-totalCount": pagination.totalCount});
+                    self.$manualPopup.find('div.tit-wrap .tit em').text(vcui.number.addComma(data.totalCount));
+
+                    if(parseInt(pagination.page) <  parseInt(pagination.totalCount)) {
+                        self.$manualMoreButton.show();
+                    } else {
+                        self.$manualMoreButton.hide();
+                    }
+                    var arr = data.listData instanceof Array ? data.listData : [];
+                    var $list = self.$manualPopup.find('div.user-guide-lists ul');
+                    if(!isMore) {
+                        $list.empty();
+                    }
+                    arr.forEach(function(item, index) {
+                        item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                        $list.append(vcui.template(manualListItemTemplate, item));
+                    });
+
+                    if(!isMore) {
+                        self.$manualPopup.vcModal();
+                    } else {
+                        //lgkorUI.resetFlexibleBox();
+                    }
+                });
+            },
         }
         
         myProductRegistration.init();
