@@ -28,6 +28,194 @@ CS.MD.plugin = function(pluginName, Plugin) {
     }
 }
 
+CS.MD.commonModel = function() {
+    var pluginName = 'commonModel';
+
+    var termsRegister = {
+        privcyCheck: {
+            msgTarget: '.err-block'
+        }
+    };
+    var termsValidation;
+    vcui.require(['ui/validation'], function () {
+        termsValidation = new vcui.ui.CsValidation('#stepTerms', {register:termsRegister});
+    });
+
+    function Plugin(el, opt) {
+        var self = this;
+        self.$el = $(el),
+        self.el = el;
+
+        var defaults = {};
+
+        self.options = $.extend({}, defaults, self.$el.data(), opt);
+    
+        self._initialize();
+        self._bindEvent();
+    }
+
+    
+    Plugin.prototype = {
+        _initialize: function() {
+            var self = this;
+
+            // 공통
+            self.$selectedModelBar = self.$el.find('.prod-selected-wrap');
+            self.$searchModelArea = self.$el.find('.prod-search-wrap');
+            self.$searchKeywordBox = self.$searchModelArea.find('.keyword-search');
+            self.$searchCategoryBox = self.$searchModelArea.find('.category-search');
+            self.$searchModelBox = self.$searchModelArea.find('.model-search');
+
+            self.$submitForm = self.$el.find('#submitForm');
+            self.$stepTerms = self.$el.find('#stepTerms');
+            self.$stepModel = self.$el.find('#stepModel');
+            self.$stepInput = self.$el.find('#stepInput');
+
+            // 비회원 일 경우
+
+            
+            // 회원일 경우
+            self.$myModelArea = self.$el.find('.my-product');
+
+            
+
+
+            self.$myModelArea.find('.my-product-slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                slidesToScroll: 3,
+                slidesToShow: 3,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            slidesToScroll: 1,
+                            slidesToShow: 1,
+                            variableWidth: true
+                        }
+                    },
+                    {
+                        breakpoint: 20000,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    }
+                ]
+            });
+
+            self.$searchModelBox.find('.model-slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                rows:4,
+                slidesPerRow: 4,
+                slidesToShow: 1,
+		        slidesToScroll: 1
+            });
+        },
+        _selectMyModel: function() {
+
+        },
+        _selectKeyword: function() {
+            
+        },
+        _selectCategory: function() {
+
+        },
+        _bindEvent: function() {
+            var self = this;  
+
+            self.$selectedModelBar.find('.btn-reset', function() {
+
+            });
+
+            self.$stepTerms.find('.btn-next').on('click', function() {
+                var result = termsValidation.validate();
+                
+                if (result.success) {
+                    lgkorUI.showLoading();
+                    self.$stepTerms.removeClass('active');
+                    self.$stepModel.addClass('active');
+                    lgkorUI.hideLoading();
+                }
+            });
+
+            self.$searchKeywordBox.find('.btn-search').on('click', function() {
+                self.$stepTerms.addClass('active');
+                self.$stepTerms.siblings('.step-box').removeClass('active');
+                
+                self.$searchCategoryBox.show();
+                self.$searchModelBox.hide();
+
+                self.$submitForm.find('input[type="hidden"]').val('');
+            });
+
+            self.$searchCategoryBox.find('.sub-category ul button').on('click', function() {
+                var $this = $(this),
+                    data = $this.data();
+
+                self.$submitForm.find('#category').val(data.category);
+                self.$submitForm.find('#subCategory').val(data.subCategory);
+
+                self.$searchCategoryBox.hide();
+                self.$searchModelBox.show();
+
+                self.$selectedModelBar.find('.tit').hide();
+                self.$selectedModelBar.find('.prod-list').show();
+                self.$selectedModelBar.find('.prod-list').html('<li>'+data.name+'</li><li>'+data.subName+'</li>');
+                self.$selectedModelBar.find('.prod-txt').html("예약내용 입력을 위해 제품 모델명을 선택해 주세요. 모델명을 모르시면 ‘건너뛰기'를 눌러주세요.");
+                self.$selectedModelBar.find('.btn-reset').show();
+            });
+
+            self.$searchModelBox.on('click', '.model-slider a', function(e) {
+                e.preventDefault();
+
+                var $this,
+                    data = $this.data();
+
+                self.$selectedModelBar.find('.prod-list').append('<li>'+data.code+'</li>');
+                self.$selectedModelBar.find('.prod-txt').html("").hide();
+            });
+
+
+            $('.btn-toggle').on('click', function() {
+                if ($(this).closest('.box').hasClass('open')) {
+                    $('.my-product-slider').stop().slideUp(function() {
+                        $(this).closest('.box').removeClass('open');
+                    });
+                    $(this).html('보유제품 펼치기');
+                } else {
+                    $('.my-product-slider').stop().slideDown(function() {
+                        $(this).closest('.box').addClass('open');
+                    });
+                    $(this).html('보유제품 접기');
+                }
+            });
+
+            $('.my-product-slider').find('.slide-box').on('click', function(e) {
+                e.preventDefault();
+
+                if ($(this).hasClass('disabled')) {
+                    $(window).trigger("toastshow", "예약가능한 제품이 아닙니다.");
+                } else {
+                    
+                }
+            });
+
+            $('.category-search .btn-open').on('click', function() {
+                $(this).closest('.box').addClass('on');
+            });
+            $('.category-search .btn-close').on('click', function() {
+                $(this).closest('.box').removeClass('on').addClass('off');
+            });
+        }
+    };
+
+    CS.MD.plugin(pluginName, Plugin);
+}();
+
+
 /*
 * 셀렉트박스 타겟
 * @option data-url
@@ -460,72 +648,6 @@ $.fn.serializeObject = function() {
                         }
                     }
                 ]
-            });
-
-
-            $('.my-product-slider').vcCarousel({
-                infinite: false,
-                autoplay: false,
-                slidesToScroll: 3,
-                slidesToShow: 3,
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            arrows: false,
-                            slidesToScroll: 1,
-                            slidesToShow: 1,
-                            variableWidth: true
-                        }
-                    },
-                    {
-                        breakpoint: 20000,
-                        settings: {
-                            slidesToScroll: 3,
-                            slidesToShow: 3
-                        }
-                    }
-                ]
-            });
-
-            $('.btn-toggle').on('click', function() {
-                if ($(this).closest('.box').hasClass('open')) {
-                    $('.my-product-slider').stop().slideUp(function() {
-                        $(this).closest('.box').removeClass('open');
-                    });
-                    $(this).html('보유제품 펼치기');
-                } else {
-                    $('.my-product-slider').stop().slideDown(function() {
-                        $(this).closest('.box').addClass('open');
-                    });
-                    $(this).html('보유제품 접기');
-                }
-            });
-
-            $('.my-product-slider').find('.slide-box').on('click', function(e) {
-                e.preventDefault();
-
-                if ($(this).hasClass('disabled')) {
-                    $(window).trigger("toastshow", "예약가능한 제품이 아닙니다.");
-                } else {
-                    
-                }
-            });
-
-            $('.category-search .btn-open').on('click', function() {
-                $(this).closest('.box').addClass('on');
-            });
-            $('.category-search .btn-close').on('click', function() {
-                $(this).closest('.box').removeClass('on');
-            });
-
-            $('.model-slider').vcCarousel({
-                infinite: false,
-                autoplay: false,
-                rows:4,
-                slidesPerRow: 4,
-                slidesToShow: 1,
-		        slidesToScroll: 1
             });
 
             // 퀵 메뉴 (미정)

@@ -21,7 +21,7 @@ $(document).ready(function() {
          '   <img src="{{largeImgURL}}" alt="{{alt}}">'+
          '   <p class="hidden">{{accDesc}}</p>'+
          '   <div class="animation-area">'+
-         '       <video loop muted{{#if videoAutoplay}} autoplay{{/if}}>'+
+         '       <video loop{{#if videoAutoplay}} muted autoplay{{/if}}>'+
          '           <source src="{{aniSrc}}" type="video/mp4">'+
          '       </video>'+
          '       <div class="controller-wrap wa-btn">'+

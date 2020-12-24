@@ -1,0 +1,218 @@
+<!-- partials/components/KRC0004.html -->
+<div class="component-wrap @@fixarea.bgcolor">
+	<!--
+		[component-wrap 옵션]
+		1. 여백
+		.zero-top : 상단여백 없음
+		.zero-btm : 하단여백 없음
+
+		[.component 영역 사이즈 옵션]
+		1. 이미지 사이즈
+		.full-size : 데스크탑 일 경우 최대 1920(100%) 픽셀 / 모바일 일 경우 최대 768 픽셀
+		.wide-size : 데스크탑 일 경우 최대 1600 픽셀 / 모바일 일 경우 최대 768 픽셀
+		.standard-size : 데스크탑 일 경우 최대 1380 픽셀 / 모바일 일 경우 최대 768 픽셀
+
+		2. 텍스트와 이미지 영역의 배치 
+		.img-txt : 이미지가 위로 텍스트가 아래로 출력되는 경우
+		.txt-img : 텍스트가 위로 이미지가 아래로 출력되는 경우
+
+		3. 배경색상 지정
+		.bg-white : default (클래스 생략 가능)
+		.bg-dark : #333333 색상 배경
+		.bg-lightgray : #F8F8F8 색상 배경
+		.bg-black : #000000 색상 배경
+
+		[상단 텍스트 영역 옵션]
+		1. 가로 정렬 : 
+		.align-left : 왼쪽 정렬
+		.align-right : 오른쪽 정렬
+		.align-center : 중앙 정렬
+
+		[상단 텍스트 영역의 .interviewee-name, .interviewee-info, .text(body copy) 각각 옵션]
+		1. 폰트 종류 : 
+		.font-regular : 레귤러
+		.font-bold : 볼드
+		.font-regular-italic : 레귤러 이탤릭
+		.font-bold-italic : 볼드 이탤릭
+
+		2. 폰트 스타일: 
+		기본은 언더라인 없음 
+		.font-underline : 언더라인
+	-->
+	<section class="component KRC0004 wide-size txt-img @@fixarea.bgcolor">
+		<div class="component-inner">
+			<div class="cpt-wrap"><!-- [KR수정] 클래스명 수청 -->
+				<div class="cont-head @@fixarea.head-align">
+					<div class="text-area">
+						<!-- 1. eyebrow -->
+						<div class="eyebrow">LG SIGNITURE OLED TV</div>
+						<!-- // 1. eyebrow -->
+						<!-- 2. headline -->
+						<div class="title" id="title01"><h2>거실의 인테리어와 조화를<br>이루는 나노 슬림 디자인</h2></div>
+						<!-- // 2. headline -->
+						<!-- 3. interviewee name -->
+						<div class="interviewee-name">“패널이 스스로 빛나는 올레드 TV는 픽셀 하나하나가 섬세하게<br>빛을 조절하여 자연색 그대로의 색감을 표현합니다.”</div>
+						<!-- // 3. interviewee name -->
+						<!-- 4. interviewee info -->
+						<div class="interviewee-info">서브타이틀에 관련 된 1줄 정도의 설명 텍스트가 필요합니다.</div>
+						<!-- // 4. interviewee info -->
+						<!-- 5. body copy -->
+						<div class="text">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다.</div>
+						<!-- // 5. body copy -->
+                        <!-- 6. cta : cta는 아래 2가지 중 한가지 버튼을 최대 2개까지 사용합니다. -->
+                        <!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
+						<div class="btn-area-wrap">
+                            <a href="#none" class="btn border size-m" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title01"><span>자세히보기</span></a>
+                            <a href="#none" class="btn border size-m" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title01"><span>자세히보기</span></a>
+                        </div>
+                        <div class="btn-area-wrap">
+                            <a href="#none" class="text-link" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title01"><span>자세히보기</span></a>
+                            <a href="#none" class="text-link" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title01"><span>자세히보기</span></a>
+                        </div>
+                        <!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
+						<!-- 6. cta -->
+					</div>
+				</div>
+				<!-- 7. Image  : 이미지만 있는 예제가 없었어서 예제 변경 했습니다. -->
+				<div class="visual-area">
+					<!-- 링크없을 경우 <a> 태그 삭제 해주세요. -->
+					<a href="#none" data-link-area="image_text_folding_feature-image" data-link-name="{Alt Text}">
+						<img data-pc-src="/lg5-common/images/KRC0004/@thumb01.jpg" data-m-src="/lg5-common/images/KRC0004/@thumb01_m.jpg" alt="" />
+						<p class="hidden">graphic description : </p>
+                    </a>
+                    <!-- [KR수정_201222] 하단 disclaimer DOM 위치 변경 및 태그 변경(하단에 있던 DOM 삭제) -->
+                    <!-- 8. disclaimer -->
+                    <ul class="bullet-list">
+                        <li class="b-txt">디스클레이머 텍스트 영역입니다.</li>
+                    </ul>
+                    <!-- // 8. disclaimer -->
+                    <!-- // [KR수정_201222] 하단 disclaimer DOM 위치 변경 및 태그 변경(하단에 있던 DOM 삭제) -->
+				</div>
+				<!-- // 7. Image -->
+				<!-- 9. open button -->
+				<div class="list-btn-area">
+					<a href="#none" class="btn border size-m more" role="button" aria-expended="false"><!-- [KR수정_201222] 버튼 class 수정 -->
+						<span class="tooltip-text" role="tooltip">더보기</span>
+                    </a>
+				</div>
+				<!-- // 9. open button -->
+				<!-- 
+					아래 more-content 영역이 folding area입니다. 
+				-->
+				<!--
+				[more-content > list 옵션]
+				1. 가로 정렬 : 
+				.align-left : 왼쪽 정렬
+				.align-right : 오른쪽 정렬
+				.align-center : 중앙 정렬
+				-->
+				<div class="more-content">
+					<!-- 10. close button -->
+					<div class="list-btn-area top"><!-- [KR수정_201222] class명(in-list-btn-area -> list-btn-area) 수정 -->
+						<a href="#none" class="btn border size-m more in-close" role="button" aria-expanded="true">닫기</a>
+					</div>
+					<!-- // 10. close button -->
+					<div class="list-container">
+						<div class="list">
+							<div class="text-area">
+								<!-- 11. headline -->
+								<div class="title" id="title02">“패널이 스스로 빛나는 올레드 TV는 픽셀 하나하나가 섬세하게<br>빛을 조절하여 자연색 그대로의 색감을 표현합니다.”</div>
+								<!-- // 11. headline -->
+								<!-- 12. body copy -->
+								<div class="text">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.</div>
+								<!-- // 12. body copy -->
+							</div>
+							<!-- 13. cta -->
+							<div class="btn-area">
+                                <!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
+                                <a href="#" class="btn border size-m" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title02"><span>선택하기</span></a>
+                                <!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
+                            </div>
+							<!-- // 13. cta -->
+							<!-- 14. image -->
+							<div class="visual-area">
+								<img src="/lg5-common/images/KRC0004/@thumb01.jpg" class="lazyload" alt="" />
+								<p class="hidden">graphic description : </p>
+							</div>
+							<!-- // 14. image -->
+						</div>
+						<div class="list">
+							<div class="text-area">
+								<!-- 15. headline -->
+								<div class="title" id="title03">“패널이 스스로 빛나는 올레드 TV는 픽셀 하나하나가 섬세하게<br>빛을 조절하여 자연색 그대로의 색감을 표현합니다.”</div>
+								<!-- // 15. headline -->
+								<!-- 16. body copy -->
+								<div class="text">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.</div>
+								<!-- // 16. body copy -->
+							</div>
+							<!-- 17. cta -->
+							<div class="btn-area">
+                                <!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
+                                <a href="#" class="btn border size-m" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title03"><span>선택하기</span></a>
+                                <!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
+                            </div>
+							<!-- // 17. cta -->
+							<!-- 18. image -->
+							<div class="visual-area video youtube-box">
+								<!-- <a href="#none" role="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a> -->
+
+								<img src="/lg5-common/images/KRC0004/@thumb01.jpg" class="lazyload" alt="" />
+								<p class="hidden">graphic description : </p>
+								<div class="video-link">
+									<!-- * youtube video는 아래의 방식으로 입력 -->
+									<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="image_text_folding_feature-video_play" data-link-name="{video id}">Watch the Full Movie</a>
+								</div>
+							</div>
+							<!-- // 18. image -->
+						</div>
+						<div class="list">
+							<div class="text-area">
+								<!-- 19. headline -->
+								<div class="title" id="title04">“패널이 스스로 빛나는 올레드 TV는 픽셀 하나하나가 섬세하게<br>빛을 조절하여 자연색 그대로의 색감을 표현합니다.”</div>
+								<!-- // 19. headline -->
+								<!-- 20. body copy -->
+								<div class="text">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.</div>
+								<!-- // 20. body copy -->
+							</div>
+							<!-- 21. cta -->
+							<div class="btn-area">
+                                <!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
+                                <a href="#" class="btn border size-m" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title04"><span>선택하기</span></a>
+                                <!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
+                            </div>
+							<!-- // 21. cta -->
+							<!-- 22. image -->
+							<div class="visual-area animation-box">
+                                <!-- [KR수정] 애니메이션 케이스 이미지 삭제 -->
+								<!-- <img data-pc-src="/lg5-common/images/KRC0004/@thumb01.jpg" data-m-src="/lg5-common/images/KRC0004/@thumb01_m.jpg" class="lazyload" alt="" aria-hidden="true" />
+                                <p class="hidden">graphic description : </p> -->
+                                <!-- // [KR수정] 애니메이션 케이스 이미지 삭제 -->
+								<!-- 7-2. animation play/pause -->
+								<div class="animation-area">
+									<!-- <a href="#none" role="button" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video">changes a audio description video</a> -->
+									<video autoplay muted loop>
+										<source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+										<!-- WEBM 동영상을 제공하는 경우
+                                        <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                        -->
+									</video>
+									<div class="controller-wrap wa-btn">
+										<button class="pause active" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="">Pause Video</button>
+										<button class="play" name="play" data-link-area="image_text_folding_feature-animation_play" data-link-name="">Play Video</button>
+									</div>
+								</div>
+								<!-- // 7-2. animation play/pause -->
+							</div>
+							<!-- // 22. image -->
+						</div>
+					</div>
+					<!-- 10. close button -->
+					<div class="list-btn-area"><!-- [KR수정_201222] class명(in-list-btn-area -> list-btn-area) 수정 -->
+						<a href="#none" class="btn border size-m more in-close" role="button" aria-expanded="true">닫기</a>
+					</div>
+					<!-- // 10. close button -->
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

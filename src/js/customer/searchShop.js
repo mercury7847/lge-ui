@@ -10,6 +10,44 @@
 
     var localOptTemplate = '<option value={{value}}>{{title}}</option>';
 
+    var searchListTemplate = 
+        '<li data-id="{{shopID}}">'+
+            '<div class="store-info-list ui_marker_selector" role="button" tabindex="0">'+
+                '<div class="point-wrap">'+
+                    '<div class="point {{selected}}">'+
+                        '<span class="num">{{num}}</span>'+
+                        '<span class="blind">선택안됨</span>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="info-wrap">'+
+                    '<div class="tit-wrap">'+
+                        '<p class="name">'+
+                            '<span class="blind">매장명</span>'+
+                            '{{shopName}}'+
+                        '</p>'+
+                        '{{#if flagInfo.length > 0}}'+
+                        '<div class="flag-wrap bar-type">'+
+                            '{{#each flag in flagInfo}}'+
+                            '<span class="flag {{flag.flagClass}}">{{flag.flagName}}</span>'+
+                            '{{/each}}'+
+                        '</div>'+
+                        '{{/if}}'+
+                    '</div>'+
+                    '<p class="addr">'+
+                        '<span class="blind">주소</span>'+
+                        '{{shopAdress}}'+
+                    '</p>'+
+                    '<div class="etc-info">'+
+                        '<span class="tel">'+
+                            '<span class="blind">전화번호</span>'+
+                            '{{shopTelphone}}'+
+                        '</span>'+
+                        '<a href="#{{shopID}}" class="btn-detail">상세보기</a>'+
+                    '</div>'+
+                '</div>'+
+            '</div>'+
+        '</li>';
+
     var searchShop = {
         init: function(){
             var self = this;
@@ -66,7 +104,7 @@
 
             self._resize();
             
-            vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox', 'libs/jquery-tmpl-1.0.0.min'], function () {
+            vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox'], function () {
                 lgkorUI.requestAjaxData(self.configUrl, {}, function(result){
                     self.bestShopUrl = result.data.bestShopUrl;
                     self.localUrl = result.data.localListUrl;
@@ -531,7 +569,7 @@
                      shopID: data[i].info.shopID,
                      selected: data[i].info.selected ? " on" : ""
                  }
-                 var list = $.tmpl( $('#tmpl-searchShop-list').html(), listData);
+                 var list = vcui.template(searchListTemplate, listData);
                  self.$defaultListLayer.append(list);
              }
         },

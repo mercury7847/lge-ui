@@ -118,6 +118,13 @@
                         vertical-align: top;
                         opacity: .385;
                         content: '';
+                        @include mobile {
+                            width: 16px;
+                            height: 16px;
+                            margin: 0 6px;
+                            background-size: 100%;
+                            vertical-align: -3px;
+                        }
                     }
                     &.current {
                         color: $color-default;

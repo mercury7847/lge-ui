@@ -20,15 +20,18 @@
                 "siblingColors": [
                     {
                         "siblingCode": "LeatherYellow_code",
-                        "siblingValue": "LeatherYellow"
+                        "siblingValue": "LeatherYellow",
+                        "modelId": "XCS23089484"
                     }, 
                     {
                         "siblingCode": "PlatinumSilver_code",
-                        "siblingValue": "PlatinumSilver"
+                        "siblingValue": "PlatinumSilver",
+                        "modelId": "XCS23089484"
                     }, 
                     {
                         "siblingCode": "Opal_Blue_code",
-                        "siblingValue": "Opal_Blue"
+                        "siblingValue": "Opal_Blue",
+                        "modelId": "XCS23089484"
                     }
                 ],
                 "selectFeeID": "납부_code",

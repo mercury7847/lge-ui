@@ -1,10 +1,83 @@
 (function() {
     var ORDER_INQUIRY_LIST_URL;
 
+    var inquiryListTemplate =
+        '<div class="box">'+
+            '<div class="info-wrap">'+
+                '<ul class="infos">'+
+                    '<li>주문일<em>{{orderDate}}</em></li>'+
+                    '<li>주문번호<em>{{orderNumber}}</em></li>'+
+                '</ul>'+
+                '<p class="totals">총 {{orderTotal}}건</p>'+
+            '</div>'+
+            '<div class="tbl-layout ">'+
+                '<div class="thead" aria-hidden="true">'+
+                    '<span class="th col1">제품정보(주문/배송 상세보기)</span>'+
+                    '<span class="th col2">진행상태</span>'+
+                '</div>'+
+                '<div class="tbody">'+
+                    '{{#each item in productList}}'+
+                    '<div class="row {{item.orderStatus.disabled}}">'+
+                        '<div class="col-table" data-model-id="{{item.modelID}}">'+
+                            '<div class="col col1">'+
+                                '<span class="blind">제품정보</span>'+
+                                '<div class="product-info">'+
+                                    '<div class="thumb">'+
+                                        '<a href="{{item.productPDPurl}}"><img src="{{item.productImage}}" alt="{{item.productNameKR}}"></a>'+
+                                    '</div>'+
+                                    '<div class="infos">'+
+                                        '<p class="name"><a href="{{item.productDetailUrl}}"><span class="blind">제품명</span>{{item.productNameKR}}</a></p>'+
+                                        '<p class="e-name"><span class="blind">영문제품번호</span>{{item.productNameEN}}</p>'+
+                                        '{{#if item.specList && item.specList.length > 0}}'+
+                                        '<div class="more">'+
+                                            '<span class="blind">제품스펙</span>'+
+                                            '<ul>'+
+                                                '{{#each spec in item.specList}}'+
+                                                '<li>{{spec}}</li>'+
+                                                '{{/each}}'+                     
+                                            '</ul>'+
+                                        '</div>'+
+                                        '{{/if}}'+
+                                        '<p class="count">수량 : {{item.productTotal}}</p>'+
+                                    '</div>'+
+                                    '<p class="price">'+
+                                        '<span class="blind">구매가격</span>{{item.productPrice}}원'+
+                                    '</p>'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="col col2">'+
+                                '<div class="state-box">'+
+                                    '<p class="tit {{item.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{item.orderStatus.statusText}}</p>'+
+                                    '{{#if item.orderStatus.deliveryDate !=""}}<p class="desc">배송희망일 {{item.orderStatus.deliveryDate}}</p>{{/if}}'+
+                                    '{{#if item.statusButtonList && item.statusButtonList.length > 0}}'+
+                                    '<div class="state-btns">'+
+                                        '{{#each status in item.statusButtonList}}'+
+                                        '<a href="#n" class="btn size border {{status.className}}-btn"><span>{{status.buttonName}}</span></a>'+
+                                        '{{/each}}'+
+                                    '</div>'+
+                                    '{{/if}}'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                    '{{/each}}'+
+                '</div>'+
+            '</div>'+
+            '{{#if cancelAbled == "Y"}}'+
+            '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
+            '{{/if}}'+
+            '{{#if takebackAbled == "Y"}}'+
+            '<a href="#n" class="btn-link takeBack-btn">반품신청</a>'+
+            '{{/if}}'+
+            '<div class="btns">'+
+                '<a href="#n" class="btn-link">주문/배송 상세보기</a>'+
+            '</div>'+
+        '</div>';
+
     function init(){
         console.log("Order Inquiry Start!!!");
     
-        vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'libs/jquery-tmpl-1.0.0.min'], function () {             
+        vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar'], function () {             
             setting();
             bindEvents();
         });
@@ -179,7 +252,7 @@
 
                     var list = result.data.orderList;
                     for(var idx in list){
-                        var templateList = $.tmpl( $('#tmpl-orderProduct').html(), list[idx]);
+                        var templateList = vcui.template(inquiryListTemplate, list[idx]);
                         $('.inquiry-list-wrap').append(templateList);
                     }
                 } else{

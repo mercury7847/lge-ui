@@ -749,7 +749,8 @@
             });
         },
 
-        requestAjaxData: function(url, data, callback, type, dataType) {
+        requestAjaxData: function(url, data, callback, type, dataType, autoFailAlert) {
+            var self = this;
             var dtype = dataType? dataType : "json";
             $.ajax({
                 type : type? type : "GET",
@@ -767,16 +768,26 @@
                     alert(result.message ? result.message : '오류발생');
                     return;
                 }
-                
-                if(callback && typeof callback === 'function') callback(result);                
+
+                if(autoFailAlert) {
+                    var data = result.data;
+                    if(data && (!self.stringToBool(data.success) && data.alert)) {
+                        //에러
+                        self.commonAlertHandler(data.alert);
+                    } else {
+                        if(callback && typeof callback === 'function') callback(result);
+                    }
+                } else {
+                    if(callback && typeof callback === 'function') callback(result);   
+                }                
             }).fail(function(err){
                 alert(err.message);
             });
         },
 
-        requestAjaxDataPost: function(url, data, callback) {
+        requestAjaxDataPost: function(url, data, callback, autoFailAlert) {
             var self = this;
-            self.requestAjaxData(url, data, callback, "POST");
+            self.requestAjaxData(url, data, callback, "POST", null, autoFailAlert);
         },
 
         commonAlertHandler: function(alert){
@@ -815,9 +826,19 @@
             }
         },
 
+        isString: function(value) {
+            return typeof value === 'string' || value instanceof String;
+        },
+
         stringToBool: function(str) {
-            var s = str.trim().toLowerCase();
-            return (s == 'y' || s == 'yes' || s == 'true');
+            if(typeof str === 'boolean') {
+                return str;
+            }
+            if(str && (typeof str === 'string' || str instanceof String)) {
+                var s = str.trim().toLowerCase();
+                return (s == 'y' || s == 'yes' || s == 'true');
+            }
+            return str;
         },
 
         getHiddenInputData: function(iptname, wrapname){

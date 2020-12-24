@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/reservation"
+    ]
+})
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '출장 서비스 예약',
+                'pageDesc': '전문 엔지니어가 고객님께 찾아가서 필요로 하시는 서비스를 제공해드립니다.'
+            })
+            <div class="contents support reservation">
+                <!-- 선택 제품 플로팅바 -->
+                @@include('./common/support/selected-model-bar.html')
+
+                <!-- 비회원 -->
+                @@include('./common/support/login-guide.html', {
+                    'text': 'LG전자에서 제공하는 회원전용 서비스로 <br>더 편리하게 이용할 수 있어요.'
+                })
+
+                <!-- 서비스 안내 -->
+                @@include('./common/support/service-guide.html')
+                
+                <div class="cont-wrap">
+                    <form action="/html/support/CSTF4010.html" id="submitForm" autocomplete="off" novalidate>
+                        <input type="hidden" name="category" id="category" value="">
+                        <input type="hidden" name="subCategory" id="subCategory" value="">
+                        <input type="hidden" name="modelCode" id="modelCode" value="">
+                        <input type="hidden" name="productCode" id="productCode" value="">
+
+                        <div class="step-box active" id="stepTerms">
+                            <div class="form-infos">
+                                <p class="req" aria-disabled="true">필수 입력 항목</p>
+                            </div>
+                            <div class="section">
+                                <div class="agree-wrap ui_all_checkbox"> 
+                                    <div class="agree-all-chk">
+                                        <span class="chk-wrap">
+                                            <input type="checkbox" name="allCheck" id="allCheck" class="ui_all_checker">
+                                            <label for="allCheck">전체 동의 <span class="desc">개인정보 수집 및 이용동의(필수), 마케팅 수신동의(선택)에 모두 동의합니다.</span></label>
+                                        </span>
+                                    </div>
+                                    <div class="input-info">
+                                        <div class="agree-tit">
+                                            <p class="tit req">개인정보 수집 및 이용에 대한 동의</p>
+                                        </div>
+                                        <div class="agree-cont-wrap">
+                                            <div class="agree-cont-box">
+                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
+                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
+                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
+                                            </div>
+                                            <div class="agree-input">
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" name="privcyCheck" id="privcyCheck" value="Y" data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다." data-required="true" required>
+                                                    <label for="privcyCheck">동의합니다.</label>
+                                                </span>
+                                            </div>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-info">
+                                        <div class="agree-tit">
+                                            <p class="tit">마케팅 수신 동의 (선택)</p>
+                                        </div>
+                                        <div class="agree-cont-wrap">
+                                            <div class="agree-cont-box">
+                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
+                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
+                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
+                                            </div>
+                                            <div class="agree-input">
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" name="marketingCheck" id="marketingCheck" value="Y">
+                                                    <label for="marketingCheck">동의합니다.</label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn-wrap">
+                                    <button type="button" class="btn border size btn-next"><span>다음</span></button>
+                                </div> 
+
+                                @@include('./common/modules/bullet-list.html', {
+                                    "topBorder" : true,
+                                    "bulletTxt" : [
+                                        "평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용 됩니다.",
+                                        "비로그인으로 예약을 접수하실 경우, 휴대전화 인증 후에 예약이 완료됩니다.",
+                                        "입력하신 정보가 정확하지 않을 경우 서비스가 취소 또는 지연될 수 있습니다."
+                                    ]
+                                })
+                            </div>
+                        </div>
+
+                        <div class="step-box" id="stepModel">
+                            <!-- 제품 카테고리 선택 -->
+                            @@include('./common/support/select-model.html', {
+                                "keyword": "Y",
+                                "category": [
+                                    {
+                                        "name": "모바일",
+                                        "imgSrc": "/lg5-common/images/CS/img-category01.jpg",
+                                        "imgAlt": "모바일 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "TV/프로젝터",
+                                        "imgSrc": "/lg5-common/images/CS/img-category02.jpg",
+                                        "imgAlt": "TV/프로젝터 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "IT/모니터",
+                                        "imgSrc": "/lg5-common/images/CS/img-category03.jpg",
+                                        "imgAlt": "IT/모니터 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "에어컨",
+                                        "imgSrc": "/lg5-common/images/CS/img-category04.jpg",
+                                        "imgAlt": "에어컨 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "냉장/냉동고",
+                                        "imgSrc": "/lg5-common/images/CS/img-category05.jpg",
+                                        "imgAlt": "냉장/냉동고 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "세탁기/스타일러",
+                                        "imgSrc": "/lg5-common/images/CS/img-category06.jpg",
+                                        "imgAlt": "세탁기/스타일러 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "청소기",
+                                        "imgSrc": "/lg5-common/images/CS/img-category07.jpg",
+                                        "imgAlt": "청소기 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "조리/세척기기",
+                                        "imgSrc": "/lg5-common/images/CS/img-category08.jpg",
+                                        "imgAlt": "조리/세척기기 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "건강/소형기기",
+                                        "imgSrc": "/lg5-common/images/CS/img-category09.jpg",
+                                        "imgAlt": "건강/소형기기 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "AV/음향기기",
+                                        "imgSrc": "/lg5-common/images/CS/img-category10.jpg",
+                                        "imgAlt": "AV/음향기기 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "기타",
+                                        "imgSrc": "/lg5-common/images/CS/img-category11.jpg",
+                                        "imgAlt": "기타 카테고리 썸네일"
+                                    },
+                                    {
+                                        "name": "B2B",
+                                        "imgSrc": "/lg5-common/images/CS/img-category12.jpg",
+                                        "imgAlt": "B2B 카테고리 썸네일"
+                                    }
+                                ]
+                            })
+                        </div>
+                        
+                        <div class="step-box" id="stepInput">
+                            <div class="form-infos">
+                                <p class="req" aria-disabled="true">필수 입력 항목</p>
+                            </div>
+                            <div class="section">
+                                <div class="tit-wrap">
+                                    <h2 class="tit">제품 추가정보</h2>
+                                </div>
+                                <div class="section-box">
+                                    <h3 class="sub-tit"></h3>
+                                    <div class="form-wrap">
+                                        <div class="forms type2">
+                                            <div class="tit">
+                                                <p class="label">구입 시기</p>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="select-list-wrap w-auto">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="buyingdate" id="buyingdate01"  checked="">
+                                                                <label for="buyingdate01">1개월 이내</label>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="buyingdate" id="buyingdate02" >
+                                                                <label for="buyingdate02">1년 이내</label>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="buyingdate" id="buyingdate03" >
+                                                                <label for="buyingdate03">1년~2년 이내</label>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="buyingdate" id="buyingdate04" >
+                                                                <label for="buyingdate04">2년 이상</label>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="buyingdate" id="buyingdate05" >
+                                                                <label for="buyingdate05">기억 안남</label>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="forms type2">
+                                            <div class="tit">
+                                                <p class="label">렌탈 여부</p>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="select-list-wrap w-auto">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="rental" id="rentalY"  checked="">
+                                                                <label for="rentalY">렌탈 이용중</label>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="rental" id="rentalN" >
+                                                                <label for="rentalN">렌탈 이용 안함</label>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="section-box">
+                                    <h3 class="sub-tit">고장증상 선택</h3>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <div class="tit-wrap">
+                                    <h2 class="tit"></h2>
+                                </div>
+                                <div class="rdo-wrap">
+                                    <div class="rdo-wrap-info">
+                                        <h3 class="tit req">고장증상<span class="blind">필수입력</span></h3>
+                                    </div>
+                                    <div class="rdo-wrap-list">
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-1" name="errsign" data-error-name="errsign" data-error-msg="정확한 제품증상을 선택해주세요.">
+                                            <label for="errsign-1">부품/소모품</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-2" name="errsign">
+                                            <label for="errsign-2">건조</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-3" name="errsign">
+                                            <label for="errsign-3">구입 사양</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-4" name="errsign">
+                                            <label for="errsign-4">구조/외관</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-5" name="errsign">
+                                            <label for="errsign-5">급수 관련</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-6" name="errsign">
+                                            <label for="errsign-6">누수 관련</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-7" name="errsign">
+                                            <label for="errsign-7">배수 관련</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-8" name="errsign">
+                                            <label for="errsign-8">서비스 관련</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-9" name="errsign">
+                                            <label for="errsign-9">세탁/삶음/스팀</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-10" name="errsign">
+                                            <label for="errsign-10">소음/진동</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-11" name="errsign" checked>
+                                            <label for="errsign-11">스마트기능/스마트진단</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-12" name="errsign">
+                                            <label for="errsign-12">에러/표시창</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-13" name="errsign">
+                                            <label for="errsign-13">이물/냄새</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-14" name="errsign">
+                                            <label for="errsign-14">전원관련</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-15" name="errsign">
+                                            <label for="errsign-15">헹굼/탈수</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-16" name="errsign">
+                                            <label for="errsign-16">기능 관련</label>
+                                        </span>
+                                        <span class="rdo-wrap btn-type2">
+                                            <input type="radio" id="errsign-17" name="errsign">
+                                            <label for="errsign-17">동결관련</label>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="rdo-wrap">
+                                    <div class="rdo-wrap-info">
+                                        <h3 class="tit req">세부증상 선택<span class="blind">필수입력</span></h3>
+                                    </div>
+                                    <div class="select-list-wrap w-auto type2">
+                                        <ul>
+                                            <li>
+                                                <span class="rdo-wrap">
+                                                    <input type="radio" id="dtsign-1" name="dtsign" checked="" data-error-name="dtsign" data-error-msg="정확한 세부증상을 선택해주세요.">
+                                                    <label for="dtsign-1">전기요금 문의</label>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span class="rdo-wrap">
+                                                    <input type="radio" id="dtsign-2" name="dtsign">
+                                                    <label for="dtsign-2">제품 구입/행사 문의</label>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span class="rdo-wrap">
+                                                    <input type="radio" id="dtsign-3" name="dtsign">
+                                                    <label for="dtsign-3">제품사양 문의</label>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span class="rdo-wrap">
+                                                    <input type="radio" id="dtsign-4" name="dtsign">
+                                                    <label for="dtsign-4">두대의 공유기에 1차공유기를 통한 NAS(넷하드)와 PC를 연결한 경우 DDNS Setting</label>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span class="rdo-wrap">
+                                                    <input type="radio" id="dtsign-5" name="dtsign">
+                                                    <label for="dtsign-5">최대 52글자</label>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span class="rdo-wrap">
+                                                    <input type="radio" id="dtsign-6" name="dtsign">
+                                                    <label for="dtsign-6">세부증상 없는 고장증상은 GSCS 가습관련, 외관관련</label>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span class="rdo-wrap">
+                                                    <input type="radio" id="dtsign-7" name="dtsign">
+                                                    <label for="dtsign-7">기타</label>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button type="button" data-href="#solutionsPopup" data-control="modal" class="btn type-solution block problem-solve type2">
+                                        <div class="solve-txt-area">
+                                            <strong class="text">제품 문제해결 방법을 확인해보세요!</strong>
+                                            <p class="side-item">선택하신 증상은 제품 문제해결 방법을 통해서 해결이 가능합니다.</p>
+                                        </div>
+                                        <div class="solve-btn-txt-area">
+                                            <p class="btn-txt">제품 문제해결 방법 확인하기</p>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="form-wrap">
+                                    <div class="forms">
+                                        <div class="tit">
+                                            <label for="input-desc" class="tit">전달사항</label>
+                                        </div>
+                                        <div class="conts">
+                                            <div class="input-wrap count">
+                                                <textarea class="ui_textcontrol" name="desc" id="input-desc" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="100" data-limit="100" data-count-target="#txt-count1" data-msg-target=".err-msg" data-error-msg="전달사항을 입력해주세요." data-required="true"></textarea>
+                                                <span id="txt-count1" class="cell total"><em>0</em> / 100자</span>
+                                                <p class="err-msg"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <div class="tit-wrap">
+                                    <h2 class="tit">추가정보 선택</h2>
+                                </div>
+                                <div class="rdo-wrap-info">
+                                    <h3 class="tit req">실외기 위치<span class="blind">필수입력</span></h3>
+                                </div>
+                                <div class="field-wrap">
+                                    <div class="row">
+                                        <div class="field-item block">
+                                            <div class="thumnail-check type2">
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <span class="rdo-image"><img src="/lg5-common/images/dummy/@install-location.jpg" alt=""></span>    
+                                                        <input type="radio" id="position-1" name="position" checked="" data-error-name="position" data-error-msg="정확한 실외기 위치를 선택해주세요.">
+                                                        <label for="position-1">
+                                                            <span class="rdo-text">베란다 난간</span>    
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <span class="rdo-image"><img src="/lg5-common/images/dummy/@install-location.jpg" alt=""></span>    
+                                                        <input type="radio" id="position-2" name="position">
+                                                        <label for="position-2">
+                                                            <span class="rdo-text">건물 외벽 앵글</span>    
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <span class="rdo-image"><img src="/lg5-common/images/dummy/@install-location.jpg" alt=""></span>    
+                                                        <input type="radio" id="position-3" name="position">
+                                                        <label for="position-3">
+                                                            <span class="rdo-text">건물 밖 실외기실</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <span class="rdo-image"><img src="/lg5-common/images/dummy/@install-location.jpg" alt=""></span>    
+                                                        <input type="radio" id="position-4" name="position">
+                                                        <label for="position-4">
+                                                            <span class="rdo-text">옥상</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <span class="rdo-image"><img src="/lg5-common/images/dummy/@install-location.jpg" alt=""></span>    
+                                                        <input type="radio" id="position-5" name="position">
+                                                        <label for="position-5">
+                                                            <span class="rdo-text">베란다 내부</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <span class="rdo-image"><img src="/lg5-common/images/dummy/@install-location.jpg" alt=""></span>    
+                                                        <input type="radio" id="position-6" name="position">
+                                                        <label for="position-6">
+                                                            <span class="rdo-text">실내 실외기실</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <span class="rdo-image"><img src="/lg5-common/images/dummy/@install-location.jpg" alt=""></span>    
+                                                        <input type="radio" id="position-7" name="position">
+                                                        <label for="position-7">
+                                                            <span class="rdo-text">1층 또는 지면</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <span class="rdo-image"><img src="/lg5-common/images/dummy/@install-location.jpg" alt=""></span>    
+                                                        <input type="radio" id="position-8" name="position">
+                                                        <label for="position-8">
+                                                            <span class="rdo-text">2단 설치</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item block">
+                                                    <div class="rdo-wrap">
+                                                        <input type="radio" id="position-9" name="position">
+                                                        <label for="position-9"><span class="rdo-text">기타/모름</span></label>
+                                                    </div>
+                                                    <div class="input-wrap">
+                                                        <input type="text" maxlength="10" placeholder="최대 10자 입력 가능">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <div class="tit-wrap">
+                                    <h2 class="tit">예약자 정보 입력</h2>
+                                </div>
+                                <div class="form-wrap">
+                                    <div class="forms">
+                                        <div class="tit"><label for="input-name" class="req">이름<span class="blind">필수입력</span></label></div>
+                                        <div class="conts">
+                                            <div class="input-wrap">
+                                                <input type="text" name="name" id="input-name" placeholder="이름 입력" data-required="true" data-msg-target=".err-msg" required>
+                                                <p class="err-msg"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="forms">
+                                        <div class="tit"><label for="input-phoneNo" class="req">휴대폰번호<span class="blind">필수입력</span></label></div>
+                                        <div class="conts">
+                                            <div class="input-wrap">
+                                                <input type="text" name="phoneNo" id="input-phoneNo" placeholder="휴대 전화 입력" maxlength="11" data-required="true" data-msg-target=".err-msg" required>
+                                                <p class="err-msg"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="forms">
+                                        <div class="tit"><label for="inp02-3" class="req">주소<span class="blind">필수입력</span></label></div>
+                                        <div class="conts">
+                                            <div class="box">
+                                                <div class="input-wrap">
+                                                    <input type="text" id="inp03" value="" placeholder="우편번호" disabled="">
+                                                </div>
+                                                <div class="cell">
+                                                    <button type="button" class="btn"><span>주소 찾기</span></button>
+                                                </div>
+                                            </div>
+                                            <div class="input-wrap">
+                                                <input type="text" value="" placeholder="주소찾기 또는 배송지 목록을 선택해주세요." disabled="" data-error-msg="정확한 주소를 입력해주세요.">
+                                                <div class="btm-more err-block" style="display: none;"><div class="btn-more"><p class="err-msg"></p></div></div>
+                                            </div>
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" name="chk-add-default" checked="">
+                                                <label for="chk1-1">기본 주소로 설정</label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <div class="tit-wrap">
+                                    <h2 class="tit">희망일시 선택</h2>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <div class="tit-wrap">
+                                    <h2 class="tit">방문할 엔지니어 확인</h2>
+                                </div>
+                                <div class="section-content engineer-to-visit type2">
+                                    <figure class="engineer-profile type-A part2">
+                                        <div class="engineer-img">
+                                            <img src="/lg5-common/images/support/default-engineer.jpg" alt="엔지니어 프로필 이미지">
+                                        </div>
+                                        <figcaption class="engineer-desc">
+                                            <strong>박두신</strong>
+                                            <p class="test">모란역지원센터</p>
+                                        </figcaption>
+                                    </figure>
+                                    <div class="engineer-desc">
+                                        <p class="result-text"><strong>2020.08.17 11:20</strong>에 <strong>홍길동</strong> 전문 엔지니어가 입력하신 주소로 방문하여<br /><strong>구입사양 &gt; 전기요금 문의</strong>에 대한 증상을 해결해드릴 예정입니다.</p>
+                                        <div class="btn-group select-engineer">
+                                            <button type="button" data-href="#choiceEngineerPopup" data-control="modal" class="btn border size"><span>다른 엔지니어 선택</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="bullet-list nomargin-top">
+                                    <li class="b-txt">평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용 됩니다.</li>
+                                    <li class="b-txt">비로그인 시, 휴대전화 인증이 진행되며, 그 후에 예약이 완료됩니다.</li>
+                                    <li class="b-txt">입력하신 정보가 정확하지 않을 경우 서비스가 취소 또는 지연될 수 있습니다.</li>
+                                </ul>
+                            </div>
+                            <div class="btn-group center">
+                                <button type="button" class="btn gray"><span>취소</span></a>
+                                <button type="button" class="btn">예약</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- 유금 및 보증기간 팝업 -->
+    @@include('./CS/modal/rates-warranty-guide-popup.html')
+    
+    <!-- 휴대폰인증 팝업 -->
+    @@include('./CS/modal/phone-certification-popup.html')
+
+    <!-- 제품 해결 팝업 -->
+    @@include('./CS/modal/solutions-popup.html')
+
+    <!-- 엔지니어 선택 팝업 -->
+    @@include('./CS/modal/choice-engineer-popup.html')
+
+    <!-- 예약 완료 팝업 -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "completePop",
+        "msgOnly" : true,
+        "msg" : "출장 서비스를<br>예약하겠습니까?",
+        "twobtn" : true
+    })
+
+    <!-- toast-meassage -->
+    @@include('./common/modules/toast-message.html', {
+        "messageArr": [
+            {"message" : "예약가능한 제품이 아닙니다."}
+        ]
+    })
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/reservation.min.js"></script>
+</body>
+</html> 

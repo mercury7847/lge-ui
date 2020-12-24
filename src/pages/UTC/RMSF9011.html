@@ -5,16 +5,25 @@
     })
 <body>
     <div class="wrap">
-<!--        include('./common/header.html')-->
+        @@include('./common/header.html')
 
         <div class="container">
+            <!-- 20201221 수정 (타이틀 텍스트 수정, 스텝 영역 추가) -->
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "렌탈 케어솔루션",
+                "stepArr" : [
+                    { "step" : "01 장바구니", "class" : "", "text" : "" },
+                    { "step" : "02 청약신청", "class" : "", "text" : "" },
+                    { "step" : "03 청약완료", "class" : "current", "text" : "<span class='blind'>현재 페이지</span>" }
+                ]
+            })
             <!-- 청약 신청 완료 -->
             <div class="contents subscribe">
                 <div class="cont-wrap">
                     <div class="section">
                         <div class="complete-wrap">
                             <span class="text">청약이 완료되었습니다.</span>
-                            <p class="small-text">자세한 청약내역은 마이페이지에서 확인하실수 있습니다.</p>
+                            <p class="small-text">자세한 청약내역은 마이페이지에서 확인하실 수 있습니다.</p>
                             <a href="#n" class="btn-link"><span>MY케어솔루션으로 이동</span></a>
                         </div>
                         <div class="list-wrap">
@@ -27,7 +36,7 @@
                                         "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
                                         "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
                                         "options" : "<p>의무 사용기간 36개월</p><p>계약기간 60개월</p><p>방문주기 1회 / 6개월</p>",
-                                        "orderMessage" : "제품 주문은 자동으로 진행됩니다."
+                                        "orderMessage" : "<span class='complete'>청약완료<em>제품 주문은 자동으로 진행됩니다.</em></span>"
                                     },{
                                         "number" : true,
                                         "number" : true,
@@ -36,7 +45,7 @@
                                         "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
                                         "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
                                         "options" : "<p>의무 사용기간 36개월</p><p>계약기간 60개월</p><p>방문주기 1회 / 6개월</p>",
-                                        "orderMessage" : "청약이 완료되었으나, 제품 주문이 정상적으로 처리되지 않았습니다.<br>1577-4090으로 문의해주세요."
+                                        "orderMessage" : "<span class='error'>청약이 완료되었으나,<br>제품 주문이 정상적으로 처리되지 않았습니다.<br>1577-4090 으로 문의해주세요.</span>"
                                     },{
                                         "number" : true,
                                         "number" : true,
@@ -45,7 +54,7 @@
                                         "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
                                         "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
                                         "options" : "<p>의무 사용기간 36개월</p><p>계약기간 60개월</p><p>방문주기 1회 / 6개월</p>",
-                                        "orderMessage" : "청약이 완료되었습니다."
+                                        "orderMessage" : "<span class='complete'>청약완료</span>"
                                     }
                                 ])
                             </ul>
@@ -54,7 +63,7 @@
                                     <dt class="text">최종 월 요금</dt>
                                     <dd class="price">월 63,800원</dd>
                                 </dl>
-                                <p class="desc">*제휴카드 할인 미적용</p>
+                                <p class="desc">제휴카드 할인 미적용</p>
                             </div>
                         </div>
                         <div class="care-solution-call-box">
