@@ -699,7 +699,7 @@
 
     //담기 삭제...
     function removePutItem(id){
-        var modeiIds = [];
+        var modelIds = [];
         var rtModelSeqs = [];
         var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
         for(var key in putItemStorage[lgkorUI.CAREPLANER_ID]){
