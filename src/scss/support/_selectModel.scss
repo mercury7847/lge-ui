@@ -1,6 +1,20 @@
 @charset "UTF-8";
 
-.test {
+.step-box {
+    display:none;
+    &.active {
+        display:block;
+    }
+
+    .agree-wrap {
+        & + .btn-wrap {
+            margin-top:24px;
+            text-align:center;
+        }
+    }
+}
+
+.service-guide-wrap {
     background:#e4e4e4;
     .box {
         max-width:1380 + 80px;
@@ -17,6 +31,7 @@
     .box {
         position:relative;
         max-width:1380 + 80px;
+        margin:0 auto;
         padding:16px 40px;
         .prod-info {
             .tit {
@@ -384,7 +399,6 @@
             background-size:100%;
             animation-duration: 2s;
             animation-fill-mode: forwards;
-            animation-name:btnReduce;
         }
     }
 
@@ -430,7 +444,13 @@
             background-size:100%;
         }
     }
-
+    .box.off {
+        .category {
+            .btn-open {
+                animation-name:btnReduce;
+            }
+        }
+    }
     .box.on {
         .category {
             .btn-open {
@@ -493,9 +513,6 @@
 
 @keyframes delayedFadeOut {
     from {
-        opacity: 1
-    }
-    35% {
         opacity: 1
     }
     55% {

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["MYC/MYC"]
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/orderAndDelivery"]
     })
 <body>
     <div class="wrap">
@@ -34,7 +35,7 @@
                             
                             <!-- '케어솔루션 청약' contents -->
                             <div class="section-wrap">
-                                <div class="filters">
+                                <div class="filters inquiryPeriodFilter">
                                     <!-- filter -->
                                     @@include('./common/modules/mem-filter.html', {
                                         "tabType" : true,
@@ -42,10 +43,10 @@
                                         "btntypeRadio" : true,
                                         "datepicker" : true,
                                         "rdoArr" : [
-                                            { "id" : "period1", "label" : "1주일", "checked" : " " },
-                                            { "id" : "period2", "label" : "1개월", "checked" : " " },
-                                            { "id" : "period3", "label" : "3개월", "checked" : "checked" },
-                                            { "id" : "period4", "label" : "6개월", "checked" : " " },
+                                            { "id" : "period1", "label" : "1주일", value:"7", "checked" : " " },
+                                            { "id" : "period2", "label" : "1개월", value:"30", "checked" : " " },
+                                            { "id" : "period3", "label" : "3개월", value:"90", "checked" : "checked" },
+                                            { "id" : "period4", "label" : "6개월", value:"180", "checked" : " " },
                                         ]
                                     })
                                     <!-- // filter -->
@@ -68,6 +69,7 @@
                                     @@loop('./common/modules/info-tbl-wrap-loop.html', [
                                         {
                                             "col1" : {
+                                                "modelID": "AMK345234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "flag" : "케어십",
@@ -108,6 +110,7 @@
                                     @@loop('./common/modules/info-tbl-wrap-loop.html', [
                                         {
                                             "col1" : {
+                                                "modelID": "AMK345234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "flag" : "케어십",
@@ -124,12 +127,14 @@
                                                 "stateType" : {
                                                     "tit" : "배송준비중",
                                                     "desc" : "설치희망일 2020.09.18",
-                                                    "btn" : "배송문의"
+                                                    "btn" : "배송문의",
+                                                    "btnType": "deliveryInquiry"
                                                 }
                                             }
                                         },
                                         {
                                             "col1" : {
+                                                "modelID": "AMK345234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
@@ -147,12 +152,15 @@
                                                     "tit" : "배송완료",
                                                     "desc" : "설치희망일 2020.09.18",
                                                     "btn" : "사용후기",
-                                                    "btn2" : "계약현황"
+                                                    "btn2" : "계약현황",
+                                                    "btnType": "useReview",
+                                                    "btn2Type" : "contractStatus"
                                                 }
                                             }
                                         },
                                         {
                                             "col1" : {
+                                                "modelID": "AMK345234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
@@ -169,7 +177,8 @@
                                                 "stateType" : {
                                                     "tit" : "배송중",
                                                     "desc" : "설치희망일 2020.09.18",
-                                                    "btn" : "배송문의"
+                                                    "btn" : "배송문의",
+                                                    "btnType": "deliveryInquiry"
                                                 }
                                             }
                                         }
@@ -194,6 +203,7 @@
                                     @@loop('./common/modules/info-tbl-wrap-loop.html', [
                                         {
                                             "col1" : {
+                                                "modelID": "AMK345234534",
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "flag" : "케어십",
@@ -211,7 +221,9 @@
                                                     "tit" : "계약생성 완료",
                                                     "desc" : "설치희망일 2020.09.18",
                                                     "btn" : "사용후기",
-                                                    "btn2" : "계약현황"
+                                                    "btn2" : "계약현황",
+                                                    "btnType": "useReview",
+                                                    "btn2Type" : "contractStatus"
                                                 }
                                             }
                                         }
@@ -276,5 +288,17 @@
         
         @@include('./common/footer.html')
     </div>
+    
+    <!-- 취소신청-->
+    @@include('./common/popup/ACCF7002_pop1.html', {
+        popupID: 'popup-cancel'
+    })
+    <!-- // 취소신청 -->
+
+    <!-- 반품신청-->
+    @@include('./common/popup/ACCF7002_pop2.html', {
+        popupID: 'popup-takeback'
+    })
+    <!-- // 반품신청 -->
 </body>
 </html>

@@ -26,7 +26,6 @@
                         })
                         <div class="lnb-contents"
                             data-list-url="/lg5-common/data-ajax/mypage/product/registedProductList.json"
-                            data-insert-url="/lg5-common/data-ajax/mypage/product/productRegist.json";
                             data-remove-url="/lg5-common/data-ajax/mypage/product/deleteProductRegist.json"
                         >
                             <div class="section-wrap">
@@ -68,7 +67,7 @@
                                     <!-- 등록 가능 제품 -->
                                     <div class="my-product-lists enroll">
                                         <ul>
-                                            <li class="lists" data-model-id="pid00001">
+                                            <li class="lists" data-model-id="pid00001" data-sku="sku00001">
                                                 <div class="inner">
                                                     <div class="thumb" aria-hidden="true">        
                                                         <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
@@ -102,7 +101,7 @@
                                                     
                                                 </div>
                                             </li>
-                                            <li class="lists" data-model-id="pid00002">
+                                            <li class="lists" data-model-id="pid00002" data-sku="sku00002">
                                                 <div class="inner">
                                                     <div class="thumb" aria-hidden="true">        
                                                         <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
@@ -135,7 +134,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="lists" data-model-id="pid00003">
+                                            <li class="lists" data-model-id="pid00003" data-sku="sku00003">
                                                 <div class="inner">
                                                     <div class="thumb" aria-hidden="true">        
                                                         <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
@@ -168,7 +167,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="lists" data-model-id="pid00004">
+                                            <li class="lists" data-model-id="pid00004" data-sku="sku00004">
                                                 <div class="inner">
                                                     <div class="thumb" aria-hidden="true">        
                                                         <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
@@ -201,7 +200,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="lists" data-model-id="pid00005">
+                                            <li class="lists" data-model-id="pid00005" data-sku="sku00005">
                                                 <div class="inner">
                                                     <div class="thumb" aria-hidden="true">        
                                                         <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
@@ -234,7 +233,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="lists" data-model-id="pid00006">
+                                            <li class="lists" data-model-id="pid00006" data-sku="sku00006">
                                                 <div class="inner">
                                                     <div class="thumb" aria-hidden="true">        
                                                         <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
@@ -391,11 +390,165 @@
         
         @@include('./common/footer.html')
     </div>  
-    
+
+    <!-- 보유제품 등록 -->
+    <article id="registMyProductPopup" class="popup-wrap full"
+        data-sku-url="/lg5-common/data-ajax/mypage/product/checkSku.json",
+        data-sn-url="/lg5-common/data-ajax/mypage/product/checkSn.json"
+        data-insert-url="/lg5-common/data-ajax/mypage/product/productRegist.json"
+    >
+        <header class="pop-header" ui-modules="Header">
+            <h1 class="tit" id="modal_30_title"><span>내 보유 제품 등록</span></h1>
+        </header>
+        <section class="pop-conts common-pop mypage" id="modal_30_content"><!-- [12.01 수정] .common-pop class 추가 -->
+            <div class="form-wrap">
+                <dl class="forms">
+                    <dt class="tit"><label for="inp01" class="req">제품 모델명<span class="blind">필수입력</span></label></dt>
+                    <dd class="conts">
+                        <div class="box">
+                            <div class="input-wrap">
+                                <input type="text" id="inp01" value="" placeholder="제품 모델명(코드) 입력" name='sku'>
+                                <p class="link"><a href="#n" class="btn-link">제품 모델명 찾기</a></p>
+                                <p class="comp">제품 모델명 확인완료!</p><!-- 확인 버튼 클릭, 확인 후 출력 -->
+                            </div>
+                            <div class="cell">
+                                <button type="button" class="btn"><span>확인</span></button>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="forms">
+                    <dt class="tit"><label for="slt01" class="req">구매 년 월<span class="blind">필수입력</span></label></dt>
+                    <dd class="conts">
+                        <div class="box date-select-box col-2">
+                            <div class="cell">
+                                <div class="box">
+                                    <div class="select-wrap">
+                                        <select class="ui_selectbox" id="slt01" title="년 선택" name="year" data-required="true" required>
+                                            <option value="" class="placeholder">선택</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2019">2019</option>
+                                        </select>
+                                    </div>
+                                    <div class="text"><span>년</span></div>
+                                </div>
+                            </div>
+                            <div class="cell">
+                                <div class="box">
+                                    <div class="select-wrap">
+                                        <select class="ui_selectbox" id="slt01-1" title="월 선택" name="month" data-required="true" required>
+                                            <option value="" class="placeholder">선택</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                        </select>
+                                    </div>
+                                    <div class="text"><span>월</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="err-block"><p class="err-msg"></p></div>
+                    </dd>
+                </dl>
+                <dl class="forms">
+                    <dt class="tit"><label for="inp02">제조번호(S/N)</label></dt>
+                    <dd class="conts">
+                        <div class="box">
+                            <div class="input-wrap">
+                                <input type="text" id="inp02" value="" placeholder="제조번호(Serial Number) 입력" name='sn'>
+                            </div>
+                            <div class="cell">
+                                <button type="button" class="btn"><span>제조번호 확인</span></button>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="forms">
+                    <dt class="tit"><label for="slt02">구매장소</label></dt>
+                    <dd class="conts">
+                        <div class="select-wrap">
+                            <select class="ui_selectbox" id="slt02" title="구매 장소 유형 선택" name='store1'>
+                                <option value="" class="placeholder">구매 장소 유형 선택</option>
+                                <option value="bestshop">BESTSHOP</option>
+                            </select>
+                        </div>
+                        <div class="input-wrap">
+                            <input type="text" id="inp03" value="" placeholder="상세 구매처 명 입력" name='store2'>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <dl class="bullet-list top-border">
+                <dt class="b-tit">확인하세요</dt>
+                <dd class="b-txt">제품 등록은 구매일 다음날부터 등록 가능하며 제품 등록 시 리워드가 포인트로 적립됩니다.</dd>
+            </dl>
+        </section>
+        <footer class="pop-footer center" ui-modules="Footer">
+            <div class="btn-group">
+                <button type="button" class="btn gray"><span>취소</span></button>
+                <button type="button" class="btn"><span>등록</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 보유제품 등록-->
+
     <!-- 사용설명서 -->
-    @@include('./common/popup/ACCF7033_pop2.html', {
-        popupID: 'popup-manual'
-    })
+    <article id="manualPopup" class="popup-wrap wide"
+        data-model-id="pid00001"
+        data-count=1
+        data-totalCount=3
+        data-list-url="/lg5-common/data-ajax/mypage/product/manualList.json"
+    >
+        <header class="pop-header" ui-modules="Header">
+            <h1 class="tit" id="modal_27_title"><span>사용설명서</span></h1>
+        </header>
+        <section class="pop-conts no-footer mypage" id="modal_27_content">
+            <div class="section-wrap">
+                <div class="sects">
+                    <div class="tit-wrap">
+                        <h2 class="tit">제품사용 설명서 <em>3</em>건</h2>
+                        <div class="flt-cont"> 
+                            <div class="tooltip-wrap"><!-- 활성화시 active -->
+                                <span class="tooltip-icon ui_tooltip-target" data-fixed="fixed-right" ui-modules="TooltipTarget">자세히 보기</span>
+                                <div class="tooltip-box fixed-right" aria-hidden="true" style="display: none;">
+                                    <p>zip 파일 또는 chm 파일을 [열기] 눌러 사용할 경우 Internet Explorer 보안 기능으로 인해 사용설명서가 정상적으로 표시되지 않을 수 있습니다.</p>
+                                    <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-inner type2">
+                        <div class="user-guide-lists">
+                            <ul class="ui_flexible_height">
+                                <li class="lists">
+                                    <div class="ui_flexible_box" style="height: 178px;">
+                                        <div class="inner ui_flexible_cont">
+                                            <p class="guide-tit">제품 사용설명서</p>
+                                            <p class="guide-desc">Owner's Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>
+                                            <div class="bottom-tbl">
+                                                <div class="cell">
+                                                    <ul class="info-list">
+                                                        <li><span class="blind">등록일</span>2020.11.03</li>
+                                                        <li><span class="blind">언어</span>한국어</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="cell">
+                                                    <button type="button" class="btn size border"><span>PDF</span><span class="blind">파일 다운로드</span></button>
+                                                    <button type="button" class="btn size border"><span>ZIP</span><span class="blind">파일 다운로드</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn-moreview block"><span>설명서 더보기</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
     <!-- // 사용설명서-->
     
     <!-- 다운로드/SW -->

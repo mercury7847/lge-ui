@@ -84,7 +84,7 @@
     p.req {
         @include font-small;
         @include mobile {
-            text-align:center;
+            //text-align:center;
             font-weight:500;
         }
         &::before {
@@ -476,7 +476,7 @@
                     }
                     & + .btm-more {
                         position:absolute;
-                        top:52px;
+                        bottom:13px;
                         left:0;
                         max-width:calc(100% - 120px);
                         margin-top:0;
@@ -710,6 +710,17 @@
         .tit {
             @include font-medium;
             font-weight:$font-weight-bold;
+            &.req {
+                &::after {
+                    content:'*';
+                    display:inline-block;
+                    margin-left:1px;
+                    color:#EC455A;
+                    font-size:inherit;
+                    line-height:inherit;
+                    vertical-align:top;
+                }
+            }
         }
     }    
     @include mobile {

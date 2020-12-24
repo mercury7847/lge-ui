@@ -77,7 +77,7 @@
     function init(){
         console.log("Order Inquiry Start!!!");
     
-        vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar'], function () {             
+        vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter'], function () {             
             setting();
             bindEvents();
         });
@@ -86,27 +86,13 @@
     function setting(){
         ORDER_INQUIRY_LIST_URL = $('.contents.mypage').data('orderInquiryList');
         
-        var hiddenData = lgkorUI.getHiddenInputData();
-        var startdate = new Date(vcui.date.format(hiddenData.startDate,'yyyy-MM-dd'));     
-        $('.startDate').vcCalendar('setDate', startdate);
-
-        var endate = new Date(vcui.date.format(hiddenData.endDate,'yyyy-MM-dd'));     
-        $('.endDate').vcCalendar('setDate', endate);
+        $('.inquiryPeriodFilter').vcDatePeriodFilter();
     }
 
     function bindEvents(){
-        $('.inquiryPeriodFilter').on('change', 'input[type=radio]', function(e){
-            var period = parseInt($('.inquiryPeriodFilter input[type=radio]:checked').val());
-            setBeforePeriod(period)
-        }).on('click', '.calendarInquiry-btn', function(e){
-            e.preventDefault();
-
-            setOrderListInquiry();
-        });
-
-        $('.startDate, .endDate').on('calendarselected', function(e){
-            $('.inquiryPeriodFilter input[type=radio]').prop('checked', false);
-        });
+        $('.inquiryPeriodFilter').on('dateFilter_submit', function(e, data){
+            setOrderListInquiry(data.startDate, data.endDate);
+        })
 
         $('.contents.mypage').on('click', '.orderCancel-btn, .takeBack-btn', function(e){
             e.preventDefault();
@@ -124,49 +110,42 @@
                 openTakebackPop(this);
                 return;
             }
-        }).on('click', '.deliveryInquiry-btn, .deliveryRequest-btn, .takeBackInner-btn, .productReview-btn', function(e){
+        }).on('click', '.stateInner-btn', function(e){
             e.preventDefault();
 
-            var matchIdx;
             var modelID = $(this).closest('.col-table').data('modelId');
+            var btntype = $(this).data('type');
 
-            matchIdx = $(this).attr('class').indexOf('deliveryInquiry');
-            if(matchIdx > -1){
-                setDeliveryInquiry(modelID);
-                return;
-            }
+            switch(btntype){
+                case "deliveryInquiry":
+                    setDeliveryInquiry(modelID);
+                    break;
 
-            matchIdx = $(this).attr('class').indexOf('deliveryRequest');
-            if(matchIdx > -1){
-                setDeliveryRequest(modelID);
-                return;
-            }
+                case "deliveryRequest":
+                    setDeliveryRequest(modelID);
+                    break;
 
-            matchIdx = $(this).attr('class').indexOf('takeBackInner');
-            if(matchIdx > -1){
-                setTakeBack(modelID);
-                return;
-            }
+                case "takeBackInner":
+                    setTakeBack(modelID);
+                    break;
 
-            matchIdx = $(this).attr('class').indexOf('productReview');
-            if(matchIdx > -1){
-                setProductReview(modelID);
-                return;
+                case "productReview":
+                    setProductReview(modelID);
+                    break;
+
+                case "useReview":
+                    setUseReview(modelID);
+                    break;
+
+                case "contractStatus":
+                    setContractStatus(modelID);
+                    break;
             }
         }).on('click', '.btn-moreview', function(e){
             e.preventDefault();
 
             setMoreOrderList();
         });
-    }
-
-    function setBeforePeriod(period){
-        console.log(period)
-        var endate = $('.endDate').vcCalendar('getCurrentDate');
-        var startdate = new Date(vcui.date.format(endate,'yyyy-MM-dd'));
-        startdate.setDate(startdate.getDate() - period);
-        
-        $('.startDate').vcCalendar('setDate', startdate);
     }
 
     function openCancelPop(item){
@@ -198,6 +177,14 @@
         console.log("[setProductReview]", modelID);
     }
 
+    function setUseReview(modelID){
+        console.log("[setUseReview]", modelID);
+    }
+
+    function setContractStatus(modelID){
+        console.log("[setContractStatus]", modelID);
+    }
+
     function setNoData(){
         $('.inquiry-list-wrap').empty().append('<div class="no-data"><p>주문 내역이 없습니다.</p></div>');
         $('.inquiry-list-notify').hide();
@@ -209,10 +196,7 @@
         requestOrderInquiry(hiddenData.startDate, hiddenData.endDate, hiddenData.page+1);
     }
 
-    function setOrderListInquiry(){
-        var startDate = $('.contents.mypage .startDate').vcCalendar('getyyyyMMdd');
-        var endDate = $('.contents.mypage .endDate').vcCalendar('getyyyyMMdd');
-        
+    function setOrderListInquiry(startDate, endDate){        
         var datevalidate = getDateValidation(startDate, endDate);
         if(!datevalidate.result){
             lgkorUI.alert("", {

@@ -26,7 +26,8 @@ $(window).ready(function(){
             $('.tooltip-text').on('click', function (e) {
                 e.preventDefault();
                 $(this).closest(".component").children(".desc").addClass("bg-gray");
-                $(this).closest(".list-btn-area").next(".more-content").addClass("open").slideDown(400);
+                $(this).closest(".list-btn-area").addClass("open");
+                $(this).closest(".list-btn-area").next(".more-content").slideDown(400);
 
                 var tg = $(this).closest(".component");
 				var adjustOption = ($(".KRC0004").length>0) ? Math.round($(".KRC0004").outerHeight()) : 0;
@@ -38,8 +39,8 @@ $(window).ready(function(){
 
             $('.in-close').on('click', function (e) {
                 e.preventDefault();
-                $(this).closest(".component").children(".desc").removeClass("bg-gray");
-                $(this).closest(".more-content").removeClass("open").slideUp(400);
+                $(this).closest(".component").children(".cpt-wrap > .list-btn-area").removeClass("open");
+                $(this).closest(".more-content").slideUp(400);
                 
                 $(this).closest(".more-content").prev('.list-btn-area').children('.more').focus();
 

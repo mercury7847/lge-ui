@@ -311,7 +311,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _removeOutTimeout: function(){
             var self = this;
             
-            console.log("removeOutimeout")
             clearTimeout(self.outTimer);
             self.outTimer = null;
         },
@@ -320,10 +319,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var self = this;
 
             self._removeOutTimeout();
-
-            console.log("addOutimeout");            
+       
             self.outTimer = setTimeout(function(){
-                console.log("callOutimeout")
                 self._setOutAction(item);
             }, 180);
         },
