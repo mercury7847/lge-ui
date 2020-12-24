@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["PRS/PRS"]
+    })
+<body>
+	<div class="wrap">
+		@@include('./common/header.html')
+
+		<div class="container">
+			<div class="contents">
+				<div class="sub-main">
+					<div class="hero-banner slide-wrap ui_wide_slider">
+						<div class="custom-indi-wrap">
+							<div class="custom-indis">
+								<ul class="indis ui_wideslider_dots">
+									<li>
+										<button type="button" class="btn-indi">
+											<!-- <p>No.1의 혁신1</p> -->
+											<div class="bar"></div>
+										</button>
+									</li>
+									<li>
+										<button type="button" class="btn-indi">
+											<!-- <p>No.1의 혁신2</p> -->
+											<div class="bar"></div>
+										</button>
+									</li>
+									<li>
+										<button type="button" class="btn-indi">
+											<!-- <p>No.1의 혁신3</p> -->
+											<div class="bar"></div>
+										</button>
+									</li>
+								</ul>
+							</div>
+							<button type="button" class="indi-control ui_carousel_play play">
+								<span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
+							</button>
+						</div>
+						<div class="slide-content ui_carousel_list">
+							<ul class="slide-track ui_carousel_track">
+								<!-- slide -->
+								<li class="slide-conts ui_carousel_slide">
+									<span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
+									<div class="slide-info-area">
+										<div class="boxs">
+											<p class="txt">
+												혼수가전<br>얼마나 합이<br>잘 맞을까?
+												<small>새출발을 위한 혼수 지원<br>최대 250만원 상당 혜택!</small>
+											</p>
+										</div>
+									</div>
+									<a href="#" class="link"><span>2020<br>올 뉴 웨딩 페스타</span></a>
+								</li>
+								<!-- // slide -->
+								<!-- slide -->
+								<li class="slide-conts ui_carousel_slide">
+									<span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
+									<div class="slide-info-area">
+										<div class="boxs">
+											<p class="txt">
+												혼수가전<br>얼마나 합이<br>잘 맞을까?
+												<small>새출발을 위한 혼수 지원<br>최대 250만원 상당 혜택!</small>
+											</p>
+										</div>
+									</div>
+									<a href="#" class="link"><span>2020<br>올 뉴 웨딩 페스타</span></a>
+								</li>
+								<!-- // slide -->
+							</ul>
+						</div>
+						<div class="slide-control-wrap">
+							<button type="button" class="btn-arrow prev">이전</button>
+							<button type="button" class="btn-arrow next">다음</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		@@include('./common/footer.html')
+	</div>
+</body>
+</html>
