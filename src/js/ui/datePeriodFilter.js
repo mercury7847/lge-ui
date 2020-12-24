@@ -1,4 +1,4 @@
-vcui.define('ui/datePeriodFilter', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validation'], function ($, core) {
     "use strict";
 
     var DatePeriodFilter = core.ui('DatePeriodFilter', /** @lends vcui.ui.DatePeriodFilter# */{
@@ -6,8 +6,8 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui'], function ($, core) {
         bindjQuery: 'datePeriodFilter',
         defaults: {
             validation:'div.filters',
-            startDate:'#date-input1',
-            endDate:'#date-input2',
+            startDate:'.startDate',
+            endDate:'.endDate',
             inquiryButton:'button.calendarInquiry-btn',
             errorCheck:true,
             errorMsg:'조회기간을 설정해주세요.',
@@ -21,10 +21,8 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui'], function ($, core) {
                 return;
             }
 
-            vcui.require(['ui/validation', 'ui/calendar'], function () {
-                self._setting();
-                self._bindEvents();
-            });
+            self._setting();
+            self._bindEvents();
         },
 
         _setting: function() {
@@ -33,6 +31,9 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui'], function ($, core) {
             self.$dateFilterStartDate =  self.$el.find(self.options.startDate);
             self.$dateFilterEndDate =  self.$el.find(self.options.endDate);
             self.$inquiryButton = self.$el.find(self.options.inquiryButton);
+
+            self.$dateFilterStartDate.vcCalendar();
+            self.$dateFilterEndDate.vcCalendar();
 
             if(self.options.errorCheck) {
                 var register = {
@@ -65,6 +66,14 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui'], function ($, core) {
             self.$dateFilterStartDate.on('calendarinsertdate', function (e, data) {
                 //시작일을 선택시 종료일의 시작날짜를 변경한다.
                 self.$dateFilterEndDate.vcCalendar('setMinDate', data.date);
+            });
+
+            self.$dateFilterStartDate.on('calendarselected', function(e){
+                self.$el.find('input[type="radio"]').prop('checked', false);
+            });
+
+            self.$dateFilterEndDate.on('calendarselected', function(e){
+                self.$el.find('input[type="radio"]').prop('checked', false);
             });
 
             self.$el.find('input[type="radio"]').on('click',function (e) {

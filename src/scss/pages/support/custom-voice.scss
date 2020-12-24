@@ -38,7 +38,7 @@
     // 칭찬합니다.
     &.feedback {
         .cont-wrap {
-            max-width:1146px + 80px;
+            // max-width:1146px + 80px;
         }
         .bullet-list {
             .btn-link {
@@ -57,6 +57,9 @@
             &.search-layer {
                 max-width:444px;
                 padding-bottom: 48px;
+            }
+            .keyword-search {
+                width: 100%;
             }
             @include mobile {
                 padding:0 20px 32px;
@@ -117,7 +120,7 @@
             }
         }
         .cont-wrap {
-            max-width:1146px + 80px;
+            // max-width:1146px + 80px;
         }
         .my-status-info {
             margin:-32px -6px 64px;
@@ -129,8 +132,7 @@
                     padding:0 6px;
                     a {
                         display:block;
-                        height:58px;
-                        padding:15px 12px;
+                        padding:27px 12px;
                         @include font-medium;
                         font-weight:$font-weight-medium;
                         text-align:center;
@@ -140,7 +142,7 @@
 
                     &.on {
                         a {
-                            padding:13px 12px;
+                            padding:25px 12px;
                             color:#ec455a;
                             border: solid 2px #ec455a;
                         }
