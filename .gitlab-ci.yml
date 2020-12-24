@@ -32,14 +32,14 @@ dev:
     - cp -rf ./dist/${CI_COMMIT_SHA}/html/ ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/html/
     - cp -rf ./dist/${CI_COMMIT_SHA}/guide/ ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/guide/
 
-    - cd akamai-purge-script
+    #- cd akamai-purge-script
     - rsync -v -r -c ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/ ${DEV_WEB_NAS}/htdocs/ > ${DEV_WEB_NAS}/htdocs/rsync-result.txt
     - export AKAMAI_PROPERTY=wwwdev50.lge.co.kr
     - export PURGE_ROOT_URL=https://wwwdev50.lge.co.kr
 
-    - npm install
-    - node akamai.js
-    - rm -rf ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}
+    #- npm install
+    #- node akamai.js
+    #- rm -rf ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}
     # Need to delete build files in dist directory
     - rm -rf ../dist/${CI_COMMIT_SHA}
 
