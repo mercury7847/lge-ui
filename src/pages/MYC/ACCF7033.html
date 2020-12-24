@@ -552,9 +552,222 @@
     <!-- // 사용설명서-->
     
     <!-- 다운로드/SW -->
-    @@include('./common/popup/ACCF7033_pop1.html', {
-        popupID: 'popup-download'
-    })
+    <article id="downloadPopup" class="popup-wrap wide"
+        data-model-id="pid00003"
+        data-list-url="/lg5-common/data-ajax/mypage/product/downloadList.json"
+    >
+        <header class="pop-header">
+            <h1 class="tit"><span>다운로드/SW</span></h1>
+        </header>
+        <section class="pop-conts no-footer mypage">
+            <div class="section-wrap">
+                <!-- 드라이버/SW 영역 -->
+                <div class="sects">
+                    <div class="tit-wrap">
+                        <h2 class="tit">드라이버/SW <em>130</em>건</h2>
+                    </div>
+                    <div class="link-box">
+                        <p>드라이버/소프트웨어는 LG Update Center [통합 드라이버 설치 프로그램]을 통해 편리하게 설치해 보세요.</p>
+                        <a href="#" target="_blank" title="새 창" class="btn-link">LG Update Center 가기</a>
+                    </div>
+                    <div class="section-inner">
+                        <!-- filter -->
+                        <div class="form-wrap col-type">
+                            <dl class="forms type2 inner-type">
+                                <dt class="tit"><label for="slt01">운영체제(OS) 선택</label></dt>
+                                <dd class="conts">
+                                    <div class="select-wrap">
+                                        <select class="ui_selectbox" id="slt01">
+                                            <option value="">전체</option>
+                                            <option value="win10">win10</option>
+                                        </select>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="forms type2 inner-type">
+                                <dt class="tit"><label for="slt02">드라이버 분류</label></dt>
+                                <dd class="conts">
+                                    <div class="select-wrap">
+                                        <select class="ui_selectbox" id="slt02">
+                                            <option value="">전체</option>
+                                            <option value="">전체</option>
+                                        </select>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <!-- // filter -->
+    
+                        <!-- tab+list -->
+                        <div class="sw-contents-wrap">
+                            <div class="tabs-wrap border-type left ui_smooth_scroll ui_tab">
+                                <ul class="tabs">
+                                    <li class="on"><a href="#tab1">통합 드라이버 설치 프로그램(110)<em class="blind">선택됨</em></a></li>
+                                    <li><a href="#tab2">칩셋/패치(6)</a></li>
+                                    <li><a href="#tab3">비디오(6)</a></li>
+                                    <li><a href="#tab4">사운드(3)</a></li>
+                                    <li><a href="#tab5">랜(4)</a></li>
+                                    <li><a href="#tab6">기타(0)</a></li>
+                                </ul>
+                            </div>
+                            <p class="sw-desc">제목을 선택하면 상세내용을 확인할 수 있습니다.</p>
+                            <div class="sw-download-lists">
+                                <ul>
+                                    <!-- 이전버전이 있는 케이스 -->
+                                    <li class="lists ui_dropdown">
+                                        <div class="inner titles">
+                                            <a href="#">
+                                                <div class="info-cell">
+                                                    <p class="file-name">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</p>
+                                                    <ul class="info-list">
+                                                        <li><span class="blind">버전</span>ver 7.7PHV1 데스크톱/일체형</li>
+                                                        <li><span class="blind">카테고리</span>통합 드라이버 설치 프로그램</li>
+                                                        <li><span class="blind">등록일</span>2020.11.03</li>
+                                                    </ul>
+                                                </div>
+                                            </a>
+                                            <div class="btn-cell">
+                                                <span class="col">
+                                                    <button type="button" class="btn size border"><span>다운로드 1118.4MB</span></button>
+                                                </span>
+                                                <span class="col">
+                                                    <button type="button" class="more-view-btn ui_dropdown_toggle">이전 버전 <span>보기</span></button><!-- 이전버전 열렸을 때 '보기' -> '닫기' -->
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <ul class="prev-ver-list ui_dropdown_list">
+                                            <li class="inner">
+                                                <a href="#">
+                                                    <div class="info-cell">
+                                                        <p class="file-name">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</p>
+                                                        <ul class="info-list">
+                                                            <li><span class="blind">버전</span>ver 7.7PHV1 데스크톱/일체형</li>
+                                                            <li><span class="blind">카테고리</span>통합 드라이버 설치 프로그램</li>
+                                                            <li><span class="blind">등록일</span>2020.11.03</li>
+                                                        </ul>
+                                                    </div>
+                                                </a>
+                                                <div class="btn-cell">
+                                                    <span class="col">
+                                                        <button type="button" class="btn size border"><span>다운로드 1118.4MB</span></button>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="inner">
+                                                <a href="#">
+                                                    <div class="info-cell">
+                                                        <p class="file-name">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</p>
+                                                        <ul class="info-list">
+                                                            <li><span class="blind">버전</span>ver 7.7PHV1 데스크톱/일체형</li>
+                                                            <li><span class="blind">카테고리</span>통합 드라이버 설치 프로그램</li>
+                                                            <li><span class="blind">등록일</span>2020.11.03</li>
+                                                        </ul>
+                                                    </div>
+                                                </a>
+                                                <div class="btn-cell">
+                                                    <span class="col">
+                                                        <button type="button" class="btn size border"><span>다운로드 1118.4MB</span></button>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <!-- // 이전버전이 있는 케이스 -->
+                                    <!-- 이전버전이 없는 케이스 -->
+                                    <li class="lists">
+                                        <div class="inner titles">
+                                            <a href="#">
+                                                <div class="info-cell">
+                                                    <p class="file-name">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</p>
+                                                    <ul class="info-list">
+                                                        <li><span class="blind">버전</span>ver 7.7PHV1 데스크톱/일체형</li>
+                                                        <li><span class="blind">카테고리</span>통합 드라이버 설치 프로그램</li>
+                                                        <li><span class="blind">등록일</span>2020.11.03</li>
+                                                    </ul>
+                                                </div>
+                                            </a>
+                                            <div class="btn-cell">
+                                                <span class="col">
+                                                    <button type="button" class="btn size border"><span>다운로드 1118.4MB</span></button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- // 이전버전이 없는 케이스 -->
+                                </ul>
+                            </div>
+                            <!-- @@include('./common/modules/pagination.html', {
+                                count: 5
+                            }) -->
+                            <div class="pagination" data-page="1" data-visible-count="7" data-total-count="10"></div>
+                        </div>
+                        <!-- // tab+list -->
+                    </div>
+                </div>
+                <!-- //드라이버/SW 영역 -->
+                <!-- 설치 전 주의사항 및 사용법 영역 -->
+                <div class="sects" style="display:none">
+                    <div class="tit-wrap">
+                        <h2 class="tit">설치 전 주의사항 및 사용법</h2>
+                    </div>
+                    <div class="section-inner">
+                        <div class="form-wrap">
+                            <dl class="forms type2 inner-type">
+                                <dt class="tit">다운로드 정보</dt>
+                                <dd class="conts">
+                                    <div class="tb-col">
+                                        <table>
+                                            <caption>파일명, 제품, 등록일, 버전, 적용모델, 운영체제(OS), 드라이버 분류, 다운로드 안내</caption>
+                                            <colgroup>
+                                                <col style="width:25%">
+                                                <col>
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">파일명</th>
+                                                    <td>[프로그램/Win10_64bit] LG Update Center</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">제품</th>
+                                                    <td>TV/프로젝터 &gt; 올레드</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">등록일</th>
+                                                    <td>2020.02.27</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">버전</th>
+                                                    <td>1.0.1902.1901</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">적용모델</th>
+                                                    <td>[프로그램/Win10_64bit] LG Update Center</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">운영체제(OS)</th>
+                                                    <td>Windows XP, Windows Vista, Windows 7 - 32bit, Windows 7 - 64bit, Windows 8 - 32bit, Windows 8 - 64bit, Windows 8.1 - 32bit, Windows 8.1 - 64bit, Windows 10 - 32bit, Windows 10 - 64bit</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">드라이버 분류</th>
+                                                    <td>통합 드라이버 설치 프로그램</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">다운로드</th>
+                                                    <td>LG Update Center</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <!-- //설치 전 주의사항 및 사용법 영역 -->
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
     <!-- // 다운로드/SW-->
 </body>
 </html>

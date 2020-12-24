@@ -33,6 +33,38 @@
         '</div>' +
     '</div></div></li>'
 
+    var downloadListItemTemplate = '<li class="lists ui_dropdown">' +
+        '<div class="inner titles">' +
+            '<a href="#"><div class="info-cell">' +
+                '<p class="file-name">{{title}}</p>' +
+                '<ul class="info-list">' +
+                    '<li><span class="blind">버전</span>{{version}}</li>' +
+                    '<li><span class="blind">카테고리</span>{{category}}</li>' +
+                    '<li><span class="blind">등록일</span>{{date}}</li>' +
+                '</ul>' +
+            '</div></a>' +
+            '<div class="btn-cell">' +
+                '<span class="col"><button type="button" class="btn size border" data-file-url="{{url}}"><span>다운로드 {{fileSize}}</span></button></span>' +
+                '{{#if list}}<span class="col"><button type="button" class="more-view-btn ui_dropdown_toggle">이전 버전 <span>보기</span></button></span>{{/if}}' +
+            '</div>' +
+        '</div>' +
+        '{{#if list}}<ul class="prev-ver-list ui_dropdown_list">' +
+            '{{#each item in list}}<li class="inner">' +
+                '<a href="#"><div class="info-cell">' +
+                    '<p class="file-name">{{item.title}}</p>' +
+                    '<ul class="info-list">' +
+                        '<li><span class="blind">버전</span>{{item.version}}</li>' +
+                        '<li><span class="blind">카테고리</span>{{item.category}}</li>' +
+                        '<li><span class="blind">등록일</span>{{item.date}}</li>' +
+                    '</ul>' +
+                '</div></a>' +
+                '<div class="btn-cell">' +
+                    '<span class="col"><button type="button" class="btn size border" data-file-url="{{item.url}}"><span>다운로드 {{item.fileSize}}</span></button></span>' +
+                '</div>' +
+            '</li>{{/each}}' +
+        '</ul>{{/if}}' +
+    '</li>'
+
     $(window).ready(function() {
 
         var checkModelSuccess = false;
@@ -40,7 +72,7 @@
         var myProductRegistration = {         
             init: function() {
                 var self = this;
-                vcui.require(['ui/modal', 'ui/validation'], function () {             
+                vcui.require(['ui/modal', 'ui/validation', 'ui/pagination'], function () {             
                     self.setting();
                     self.bindEvents();
                     self.bindPopupEvents();
@@ -92,6 +124,13 @@
                 //사용설명서 팝업
                 self.$manualPopup = $('#manualPopup');
                 self.$manualMoreButton = self.$manualPopup.find('button.btn-moreview');
+
+                //다운로드 팝업
+                self.$downloadPopup = $('#downloadPopup');
+                var $selectbox = self.$downloadPopup.find('.ui_selectbox');
+                self.$selectOS = $selectbox.eq(0);
+                self.$selectCategory = $selectbox.eq(1);
+                self.$downloadPopupPagination = self.$downloadPopup.find('.pagination');
 
                 self.checkNoData();
             },
@@ -155,7 +194,9 @@
 
                 //다운로드/sw
                 self.$myProductList.on('click','>ul li div.btns button.download-btn', function(e) {
-                    $(this).parents('.notice').hide();
+                    var _id = $(this).parents('li').attr('data-model-id');
+                    self.$downloadPopup.attr('data-model-id', _id);
+                    self.requestDownloadData(_id,null,null,1,true);
                 });
 
             },
@@ -228,8 +269,19 @@
                 //메뉴얼 다운로드
                 self.$manualPopup.on('click','li button' ,function(e){
                     var url = $(this).attr('data-file-url');
-                    console.log(url);
                     window.location = url;
+                });
+
+                //다운로드팝업 셀렉트OS
+                
+                //다운로드팝업 셀렉트 카테고리
+
+                //다운로드팝업 페이지
+                self.$downloadPopupPagination.vcPagination().on('page_click', function(e, data) {
+                    var _id = self.$downloadPopup.attr('data-model-id');
+                    var os = self.$selectOS.vcSelectbox('selectedOption').value;
+                    var category = self.$selectCategory.vcSelectbox('selectedOption').value;
+                    self.requestDownloadData(_id,os,category,data,false);
                 });
             },
 
@@ -312,7 +364,7 @@
                     var param = result.param;
                     var pagination = param.pagination;
 
-                    self.$manualPopup.attr({"id":param.id, "data-page": pagination.page,"data-totalCount": pagination.totalCount});
+                    self.$manualPopup.attr({"data-model-id":param.id, "data-page": pagination.page,"data-totalCount": pagination.totalCount});
                     self.$manualPopup.find('div.tit-wrap .tit em').text(vcui.number.addComma(data.totalCount));
 
                     if(parseInt(pagination.page) <  parseInt(pagination.totalCount)) {
@@ -321,7 +373,7 @@
                         self.$manualMoreButton.hide();
                     }
                     var arr = data.listData instanceof Array ? data.listData : [];
-                    var $list = self.$manualPopup.find('div.user-guide-lists ul');
+                    var $list = self.$manualPopup.find('div.user-guide-lists>ul');
                     if(!isMore) {
                         $list.empty();
                     }
@@ -332,8 +384,45 @@
 
                     if(!isMore) {
                         self.$manualPopup.vcModal();
-                    } else {
-                        //lgkorUI.resetFlexibleBox();
+                    }
+                });
+            },
+
+            requestDownloadData: function(_id, os, category, page, openPopup) {
+                var self = this;
+                var ajaxUrl = self.$downloadPopup.attr('data-list-url');
+
+                if(!os) {
+                    self.$selectOS.vcSelectbox('selectedIndex', 0, false);
+                    os = self.$selectOS.vcSelectbox('selectedOption').value;
+                }
+                if(!category) {
+                    self.$selectCategory.vcSelectbox('selectedIndex', 0, false);
+                    category = self.$selectCategory.vcSelectbox('selectedOption').value;
+                }
+
+                lgkorUI.requestAjaxData(ajaxUrl, {"id":_id, "page":page, "os":os, "category":category}, function(result) {
+                    var data = result.data;
+                    var param = result.param;
+
+                    self.$downloadPopupPagination.vcPagination('setPageInfo',param.pagination);
+                    self.$downloadPopup.find('div.tit-wrap .tit em').text(vcui.number.addComma(data.totalCount));
+
+                    var arr = data.listData instanceof Array ? data.listData : [];
+                    var $list = self.$downloadPopup.find('div.sw-download-lists>ul');
+                    $list.empty();
+                    arr.forEach(function(item, index) {
+                        item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                        var list = item.list;
+                        list.forEach(function(item, index) {
+                            this[index].date = vcui.date.format(item.date,'yyyy.MM.dd');
+                        });
+                        item.list = list;
+                        $list.append(vcui.template(downloadListItemTemplate, item));
+                    });
+
+                    if(openPopup) {
+                        self.$downloadPopup.vcModal();
                     }
                 });
             },
