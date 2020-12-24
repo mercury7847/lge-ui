@@ -5,9 +5,229 @@ br.m {
         display:block;
     }
 }
+br.pc {
+    display:block;
+    @include mobile {
+        display:none;
+    }
+}
 
+.cont-wrap {
+    max-width: calc(1920px + 80px);
+}
+
+.care-home-section {
+    padding-top: 120px;
+    .tit-wrap {
+        margin-bottom: 48px;
+        text-align: center;
+        .tit {
+            @include font-large-4;
+        }
+    }
+}
+
+// 케어솔루션 링크
+.care-home-link {
+    max-width: 1380px;
+    margin: 0 auto;
+    .link-list {
+        padding: 0 82px 0 93px;
+        font-size: 0;
+        li {
+            display: inline-block;
+            width: 33.33%;
+            vertical-align: top;
+            > span, 
+            > a {
+                display: inline-block;
+                position: relative;
+                padding: 88px 24px 0;
+                @include font-large-6;
+                color: $color-gray-4;
+                font-weight: 700;
+                text-align: left;
+                
+                &:before {
+                    display: inline-block;
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 24px;
+                    width: 64px;
+                    height: 64px;
+                }
+            }
+            &.on {
+                > span, 
+                > a {
+                    color: $color-default;
+                }
+            }
+            &:nth-child(2) {
+                text-align: center;
+            }
+            &:nth-child(3) {
+                text-align: right;
+            }
+            &.link-benefit {
+                a:before {
+                    background: url(/lg5-common/images/icons/ic-main-care-link-1-off.svg) 0 50% no-repeat;
+					background-size: 100% 100%;
+                }
+                &.on a:before {
+                    background: url(/lg5-common/images/icons/ic-main-care-link-1-on.svg) 0 50% no-repeat;
+					background-size: 100% 100%;
+                }
+            }
+            &.link-planner {
+                a:before {
+                    background: url(/lg5-common/images/icons/ic-main-care-link-2-off.svg) 0 50% no-repeat;
+					background-size: 100% 100%;
+                }
+                &.on a:before {
+                    background: url(/lg5-common/images/icons/ic-main-care-link-2-on.svg) 0 50% no-repeat;
+					background-size: 100% 100%;
+                }
+            }
+            &.link-my {
+                a:before {
+                    background: url(/lg5-common/images/icons/ic-main-care-link-3-off.svg) 0 50% no-repeat;
+					background-size: 100% 100%;
+                }
+                &.on a:before {
+                    background: url(/lg5-common/images/icons/ic-main-care-link-3-on.svg) 0 50% no-repeat;
+					background-size: 100% 100%;
+                }
+
+            }
+            &.next-schedule {
+                span:before {
+                    background: url(/lg5-common/images/icons/ic-main-careship-cal-off.svg) 0 50% no-repeat;
+					background-size: 100% 100%;
+                }
+                &.on span:before {
+                    background: url(/lg5-common/images/icons/ic-main-careship-cal-on.svg) 0 50% no-repeat;
+					background-size: 100% 100%;
+                }
+                .day {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+// 케어솔루션 추천 제품
+.care-recommended {
+    .prd-care-vertical {
+        height: auto;
+        .price-wrap {
+            position: static;
+        }
+    }
+    .prd-list-wrap {
+        max-width:1380px + 80px;
+        margin:0 auto;
+        padding:0 40px;
+        @include mobile {
+            margin-top:20px;
+            padding:0 20px;
+        }
+        .inner {
+            @include clearfix;
+            margin:-12px -12px 0;
+            @include mobile {
+                margin:0;
+            }
+            .item {
+                float:left;
+                width:calc((100% - 96px) / 4);
+                margin:12px 12px;
+                @media screen and (max-width:1200px) {
+                    width:calc((100% - 72px) / 3);
+                }
+                @media screen and (max-width:900px) {
+                    width:calc((100% - 48px) / 2);
+                }
+                @include mobile {
+                    width:100%;
+                    margin:12px 0 0 0;
+                    &:first-child {
+                        margin-top:0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// WHY 케어솔루션
+
+// 케어솔루션 가이드
+.care-guide-visual {
+    //height: 833px;
+    padding: 160px 0;
+    background: #999;
+    .slide-wrap {
+        max-width: 1920px;
+    }
+    .slide-content {
+        .slide-track {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .slide-conts {
+            float: none !important;
+            height: 100%;
+            padding: 0;
+            .thumb {
+                display: inline-block;
+                width: 100%;
+                text-align: center;
+                img {
+                    width: 80%;
+                    max-width: 768px;
+                    max-height: 411px;
+                    transition:width 2s, 0.5s;
+                }
+            }
+            &.ui_carousel_center {
+                .thumb {
+                    img {
+                        width: 100%;
+                        max-width: 912px;
+                        max-height: 513px;
+                        //transform: scale( 1.16, 1.2 );
+                    }
+                }
+            }
+        } 
+    }
+    .slide-controls {
+        .btn-arrow {
+            box-shadow: none;
+            opacity: 1;
+            &:before {
+                background-image: url(/lg5-common/images/icons/btn-arrow-right-white-20.svg); 
+            }
+            &.disabled {
+                opacity: 0.5;
+            }
+            &.prev {
+                left: 17.5%;
+            }
+            &.next {
+                right: 17.5%;
+            }
+        }
+    }
+}
+
+// top visual
 .hero-banner{
-    height:640px;
+    //height:640px;
 }
 .visual-tit-wrap {
     position:relative;
@@ -57,6 +277,9 @@ br.m {
     }
 }
 
+
+
+/*
 .info-list {
     margin-bottom:56px;
     padding-bottom:56px;
@@ -264,7 +487,7 @@ br.m {
         }
     }
 }
-
+*/
 
 
 
