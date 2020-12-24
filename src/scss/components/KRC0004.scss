@@ -115,6 +115,7 @@
 	.cpt-wrap {
 		position: relative;
 		.cont-head {
+			margin-top:56px;
 			.text-area {
 				.eyebrow {
 					@include eyebrow;
@@ -141,18 +142,25 @@
 				}
 			}
 		}
-	}
-	.visual-area {
-		position:relative;
-		text-align: center;
-		margin-top:56px;
-		a {
-			display: block;
+		.visual-area {
+			margin-top:56px;
+			position:relative;
+			text-align: center;
+			a {
+				display: block;
+			}
+			img {
+				width:100%;
+				height:auto;
+				vertical-align:top;
+			}
 		}
-		img {
-			width:100%;
-			height:auto;
-			vertical-align:top;
+
+		> .visual-area, 
+		> .cont-head {
+			&:first-child {
+				margin-top:0;
+			}
 		}
 	}
 
@@ -192,6 +200,9 @@
 				}
 			}
 		}
+		&.open {
+			padding-bottom:80px;
+		}
     }
 
 	// more content
@@ -199,7 +210,6 @@
 		position: relative;
 		overflow: hidden;
 		display:none;
-		margin-top:80px;
 		padding:80px 40px;
 		background:#f4f4f4;
 		.list-container{
