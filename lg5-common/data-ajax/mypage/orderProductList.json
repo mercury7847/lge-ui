@@ -18,19 +18,20 @@
                 "productList": [
                     {
                         "modelID": "ADC495769328",
+                        "productFlag": "케어십",
                         "productNameKR": "LG 디오스 상냉장하냉동",
                         "productNameEN": "OLED55BXPUA",
                         "productImage": "/lg5-common/images/dummy/@img-product.jpg",
                         "productPDPurl": "http://www.lge.com",
                         "productDetailUrl": "http://www.lge.com",
-                        "specList": ["주요스펙1", "주요스펙2"],
-                        "productTotal": "1",
+                        "specList": ["Silver"],
+                        "productTotal": "",
                         "productPrice": "1,760,000",
                         "orderStatus": {
                             "disabled": "",
                             "statusText": "결제완료",
                             "statusClass": "",
-                            "deliveryDate": "2020.09.18"
+                            "statusDate": "배송희망일 2020.09.18"
                         },
                         "statusButtonList": [],
                         "cancelAbled": "Y",
@@ -50,7 +51,7 @@
                             "disabled": "",
                             "statusText": "결제완료",
                             "statusClass": "",
-                            "deliveryDate": "2020.09.18"
+                            "statusDate": "배송희망일 2020.09.18"
                         },
                         "statusButtonList": [
                             {
@@ -81,7 +82,7 @@
                             "disabled": "",
                             "statusText": "결제완료",
                             "statusClass": "",
-                            "deliveryDate": "2020.09.18"
+                            "statusDate": "배송희망일 2020.09.18"
                         },
                         "statusButtonList": [
                             {
@@ -121,7 +122,7 @@
                             "disabled": "disabled",
                             "statusText": "취소완료",
                             "statusClass": "cancel",
-                            "deliveryDate": ""
+                            "statusDate": ""
                         },
                         "statusButtonList": [],
                         "cancelAbled": "Y",
@@ -141,7 +142,7 @@
                             "disabled": "",
                             "statusText": "결제완료",
                             "statusClass": "",
-                            "deliveryDate": "2020.09.18"
+                            "statusDate": "설치희망일 2020.09.18"
                         },
                         "statusButtonList": [
                             {
