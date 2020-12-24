@@ -29,7 +29,7 @@
         }
     }
     .lay-conts {
-        padding:0 24px 32px;
+        padding:0 40px 32px;
         @include font-medium;
         text-align:center;
         &:first-child {
@@ -40,6 +40,9 @@
         }
         p {
             margin-top:8px;
+            .point {
+                color: $color-primary;
+            }
         }
         h6 {
             @include font-large-2;
@@ -63,6 +66,7 @@
                 @include mobile {
                     width:50%;
                     margin-left:0;
+                    border-radius: 0;
                     &:only-child {
                         width:100%;
                     }
@@ -224,7 +228,7 @@
         height:auto;
         // max-height:492px;
         max-height:580px;
-        padding:48px 40px 0;
+        padding:40px 40px 0;
         overflow-y:auto;
         &.no-footer {
             max-height:576px + 130px;
@@ -450,6 +454,35 @@
             }
         }
 
+    }
+
+    .dl-txt-cont {
+        & + .bullet-list {
+            margin-top: 32px;
+        }
+    }
+    .btn-wrap {
+        &.top {
+            margin-bottom: 24px;
+        }
+        @include mobile {
+            &.top {
+                margin-bottom: 16px;
+            }
+        }
+    }
+    .btn {
+        &.icon-msg {
+            &:before {
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                margin-right: 4px;
+                background: url('/lg5-common/images/icons/icon-sms-16.svg') no-repeat 0 0;
+                vertical-align: -2px;
+                content: '';
+            }
+        }
     }
 }
 
