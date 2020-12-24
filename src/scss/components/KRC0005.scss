@@ -180,24 +180,15 @@
 		}
 		.title {
 			* {
-				@include font-title-2;
+				@include title-h2;
 			}
 		}
 		.small-title {
 			display: block;
-			margin-bottom: 8px;
-			font-weight: 700;
-			@include font-eyebrow;
-			@include mobile {
-				margin-bottom:6px;
-			}
+			@include eyebrow;
 		}
 		.text {
-			margin-top:24px;
-			@include font-large-1;
-			@include mobile {
-				margin-top:12px;
-			}
+			@include bodycopy(h2, h2);
 		}
 		.thumbs {
 			margin-top:56px;
@@ -215,13 +206,6 @@
 
 	.btn-type-box,
 	.btn-type-text {
-		margin-top:24px;
-		.btn.border, 
-		.text-link {
-			margin-left:16px;
-			&:first-child {
-				margin-left:0;
-			}
-		}
+		@include cta-btn;
 	}
 }
