@@ -15,30 +15,30 @@
                 'pageDesc': '전문 엔지니어가 고객님께 찾아가서 필요로 하시는 서비스를 제공해드립니다.'
             })
             <div class="contents support reservation">
+                <!-- 서비스 안내 -->
+                @@include('./common/support/service-guide.html')
+                
                 <!-- 선택 제품 플로팅바 -->
                 @@include('./common/support/selected-model-bar.html')
 
                 <!-- 회원 - 제품 없을 시 -->
-                <div class="login-guide">
+                <!-- <div class="login-guide">
                     <p class="txt">등록하신 제품이 없습니다. 제품을 등록해보시겠어요 ?</p>
                     <button type="button" class="btn mix size"><span>제품 등록</span></button>
-                </div>
-
-                <!-- 서비스 안내 -->
-                @@include('./common/support/service-guide.html')
+                </div> -->
 
                 <!-- 회원 - 보유제품 펼침 -->
                 @@include('./common/support/select-my-model.html')
                 
                 <div class="cont-wrap">
-                    <form action="/html/support/CSTF4010.html" id="submitForm" autocomplete="off" novalidate>
+                    <form action="/html/CS/CSRF6029.html" id="submitForm" autocomplete="off" novalidate>
                         <input type="hidden" name="category" id="category" value="">
                         <input type="hidden" name="subCategory" id="subCategory" value="">
                         <input type="hidden" name="modelCode" id="modelCode" value="">
                         <input type="hidden" name="productCode" id="productCode" value="">
 
                         <div class="step-box active" id="stepTerms">
-                            <div class="form-inf os">
+                            <div class="form-infos">
                                 <p class="req" aria-disabled="true">필수 입력 항목</p>
                             </div>
                             <div class="section">

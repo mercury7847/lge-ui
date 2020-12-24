@@ -31,27 +31,69 @@ CS.MD.plugin = function(pluginName, Plugin) {
 CS.MD.commonModel = function() {
     var pluginName = 'commonModel';
 
-    var termsRegister = {
-        privcyCheck: {
-            msgTarget: '.err-block'
-        }
-    };
-    var termsValidation;
-    vcui.require(['ui/validation'], function () {
-        termsValidation = new vcui.ui.CsValidation('#stepTerms', {register:termsRegister});
-    });
+    var selectedBarTmpl = 
+        '<div class="box">' +
+            '<div class="prod-info">' +
+                '{{# if (typeof tit != "undefined") { #}}' +
+                '<p class="tit">제품을 선택해 주세요</p>' +
+                '{{# } #}}' +
+                '{{# if (typeof product != "undefined") { #}}' +
+                '<ul class="product">' +
+                    '{{# for (var i = 0; i < product.length; i++) { #}}' +
+                    '<li>{{product[i]}}</li>' +
+                    '{{# } #}}' +
+                '</ul>' +
+                '{{# } #}}' +
+                '{{# if (typeof desc != "undefined") { #}}' +
+                '<p class="desc">{{desc}}</p>' +
+                '{{# } #}}' +
+            '</div>' +
+            '{{# if (typeof reset != "undefined") { #}}' +
+            '<div class="prod-btn">' +
+                '<button type="button" class="btn border size reset btn-reset">제품 재선택</button>' +
+            '</div>' +
+            '{{# } #}}' +
+        '</div>';
+
+    var modelListTmpl = 
+        '<li>' +
+            '<a href="#" class="" data-code="{{code}}">' +
+                '<p class="name">{{name}}</p>' +
+                '<p class="category">{{category}} &gt; {{subCategory}}</p>' +
+            '</a>' +
+        '</li>';
+    
+    var validation;
 
     function Plugin(el, opt) {
         var self = this;
         self.$el = $(el),
         self.el = el;
 
-        var defaults = {};
+        var defaults = {
+            stepClass: 'step-box',
+            stepActiveClass: 'active',
+            selectedModel: [],
+            register: {
+                privcyCheck: {
+                    msgTarget: '.err-block'
+                },
+                keyword: {
+                    msgTarget: '.err-msg',
+                    minLength: 2
+                }   
+            },
+            callback: function() {}
+        };
 
         self.options = $.extend({}, defaults, self.$el.data(), opt);
-    
-        self._initialize();
-        self._bindEvent();
+        
+        vcui.require(['ui/validation'], function () {
+            validation = new vcui.ui.CsValidation('#submitForm', {register:self.options.register});
+        
+            self._initialize();
+            self._bindEvent();  
+        });
     }
 
     
@@ -59,28 +101,34 @@ CS.MD.commonModel = function() {
         _initialize: function() {
             var self = this;
 
-            // 공통
-            self.$selectedModelBar = self.$el.find('.prod-selected-wrap');
-            self.$searchModelArea = self.$el.find('.prod-search-wrap');
-            self.$searchKeywordBox = self.$searchModelArea.find('.keyword-search');
-            self.$searchCategoryBox = self.$searchModelArea.find('.category-search');
-            self.$searchModelBox = self.$searchModelArea.find('.model-search');
-
+            // 스텝 영역
             self.$submitForm = self.$el.find('#submitForm');
             self.$stepTerms = self.$el.find('#stepTerms');
             self.$stepModel = self.$el.find('#stepModel');
             self.$stepInput = self.$el.find('#stepInput');
 
-            // 비회원 일 경우
-
+            // 선택 제품 플로팅바
+            self.$selectedModelBar = self.$el.find('.prod-selected-wrap');
             
-            // 회원일 경우
+            // 보유제품
             self.$myModelArea = self.$el.find('.my-product');
+            self.$myModelSlider = self.$myModelArea.find('.my-product-slider');
 
-            
+            // 검색 영역
+            self.$searchModelArea = self.$el.find('.prod-search-wrap');
+            // 검색 영역 : 키워드
+            self.$searchKeywordBox = self.$searchModelArea.find('.keyword-search');
+            self.$inputKeyword = self.$searchKeywordBox.find('#keyword');
+            self.$buttonKeyword = self.$searchKeywordBox.find('.btn-search');
+            // 검색 영역 : 카테고리 > 서브카테고리
+            self.$searchCategoryBox = self.$searchModelArea.find('.category-search');
+            // 검색 영역 : 모델
+            self.$searchModelBox = self.$searchModelArea.find('.model-search');
+            self.$modelList = self.$searchModelBox.find('.model-list-wrap');
+            self.$modelPagination = self.$searchModelBox.find('.pagination');
+            self.$modelNoData = self.$searchModelBox.find('.no-data');
 
-
-            self.$myModelArea.find('.my-product-slider').vcCarousel({
+            self.$myModelSlider.vcCarousel({
                 infinite: false,
                 autoplay: false,
                 slidesToScroll: 3,
@@ -105,109 +153,220 @@ CS.MD.commonModel = function() {
                 ]
             });
 
-            self.$searchModelBox.find('.model-slider').vcCarousel({
-                infinite: false,
-                autoplay: false,
-                rows:4,
-                slidesPerRow: 4,
-                slidesToShow: 1,
-		        slidesToScroll: 1
+            self.$modelPagination.pagination();
+        },
+        update: function(obj) {
+            var self = this,
+                html = '';
+
+            if (obj) {
+                html = vcui.template(selectedBarTmpl, obj);
+                self.$selectedModelBar.html(html);
+            }
+        },
+        reset: function() {
+            var self = this;
+                opt = self.options;
+
+            self.$stepModel.addClass(opt.stepActiveClass);
+            self.$stepModel.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
+            self.$submitForm.find('input[type="hidden"]').val('');
+
+            opt.selectedModel = [];
+        },
+        _requestData: function(param) {
+            var self = this,
+                url = self.$searchModelArea.data('ajax');
+
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                var data = result.data,
+                    html = '';
+
+                if (data.listData) {
+                    data.listData.forEach(function(item) {
+                        html += vcui.template(modelListTmpl, item);
+                    });
+
+                    self.$modelList.find('.model-list').html(html);
+                    self.$modelNoData.hide();
+                    self.$modelPagination.pagination('update', data.listPage);
+                } else {
+                    self.$modelList.find('.model-list').empty();
+                    self.$modelList.hide();
+                    self.$modelNoData.show();
+                }
+
+                lgkorUI.hideLoading();
             });
-        },
-        _selectMyModel: function() {
-
-        },
-        _selectKeyword: function() {
-            
-        },
-        _selectCategory: function() {
-
         },
         _bindEvent: function() {
             var self = this;  
 
-            self.$selectedModelBar.find('.btn-reset', function() {
-
+            // 제품 재선택
+            self.$selectedModelBar.on('click', '.btn-reset', function() {
+                self.reset();
             });
 
+            // 약관 동의 다음 버튼
             self.$stepTerms.find('.btn-next').on('click', function() {
-                var result = termsValidation.validate();
+                var result = validation.validate(['privcyCheck']),
+                    opt = self.options;
                 
                 if (result.success) {
-                    lgkorUI.showLoading();
-                    self.$stepTerms.removeClass('active');
-                    self.$stepModel.addClass('active');
-                    lgkorUI.hideLoading();
+                    self.$stepModel.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
+                    self.$stepModel.addClass(opt.stepActiveClass);
                 }
             });
 
+            // 검색어 검색
             self.$searchKeywordBox.find('.btn-search').on('click', function() {
-                self.$stepTerms.addClass('active');
-                self.$stepTerms.siblings('.step-box').removeClass('active');
+                var result = validation.validate(['keyword']);
                 
-                self.$searchCategoryBox.show();
-                self.$searchModelBox.hide();
+                if (result.success) {
+                    self.$searchModelBox.removeClass(opt.stepActiveClass);
+                    self.$searchCategoryBox.addClass(opt.stepActiveClass);
 
-                self.$submitForm.find('input[type="hidden"]').val('');
+                    var updateObj = {
+                        desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요",
+                        reset: true
+                    }
+                    var param = {
+                        keyword: self.$inputKeyword.val()
+                    };
+
+                    self.update(updateObj);
+                    self._requestData(param);
+                }
             });
 
+            // 카테고리 선택
+            self.$searchCategoryBox.find('.btn-open').on('click', function() {
+                $(this).closest('.box').addClass('on');
+            });
+            self.$searchCategoryBox.find('.btn-close').on('click', function() {
+                $(this).closest('.box').removeClass('on').addClass('off');
+            });
+
+            // 서브 카테고리 선택
             self.$searchCategoryBox.find('.sub-category ul button').on('click', function() {
                 var $this = $(this),
+                    opt = self.options,
                     data = $this.data();
 
                 self.$submitForm.find('#category').val(data.category);
                 self.$submitForm.find('#subCategory').val(data.subCategory);
 
-                self.$searchCategoryBox.hide();
-                self.$searchModelBox.show();
+                self.$searchCategoryBox.removeClass(opt.stepActiveClass);
+                self.$searchModelBox.addClass(opt.stepActiveClass);
 
-                self.$selectedModelBar.find('.tit').hide();
-                self.$selectedModelBar.find('.prod-list').show();
-                self.$selectedModelBar.find('.prod-list').html('<li>'+data.name+'</li><li>'+data.subName+'</li>');
-                self.$selectedModelBar.find('.prod-txt').html("예약내용 입력을 위해 제품 모델명을 선택해 주세요. 모델명을 모르시면 ‘건너뛰기'를 눌러주세요.");
-                self.$selectedModelBar.find('.btn-reset').show();
+                opt.selectedModel = [data.name, data.subName];
+
+                var updateObj = {
+                    product: opt.selectedModel,
+                    desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요. 모델명을 모르시면 ‘건너뛰기'를 눌러주세요.",
+                    reset: true
+                }
+
+                var param = {
+                    category: data.category,
+                    subCategory: data.subCategory
+                };
+
+                self.update(updateObj);
+                self._requestData(param);
             });
 
-            self.$searchModelBox.on('click', '.model-slider a', function(e) {
+            // 모델명 선택
+            self.$searchModelBox.on('click', '.model-list-wrap a', function(e) {
                 e.preventDefault();
 
-                var $this,
+                var $this = $(this),
+                    opt = self.options,
+                    data = $this.data(),
+                    updateObj;
+
+                if (!$this.hasClass('no-model')) {
+                    self.$submitForm.find('#modeCode').val(data.code);
+
+                    opt.selectedModel[2] = data.code;
+
+                    updateObj = {
+                        product: opt.selectedModel,
+                        reset: true
+                    }
+                } else {
+                    updateObj = {
+                        product: opt.selectedModel,
+                        reset: true
+                    }
+                }   
+
+                self.update(updateObj);
+
+                self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
+                self.$stepInput.addClass(opt.stepActiveClass);
+
+                opt.callback();
+            });
+
+            // 모델 리스트 페이지네이션
+            self.$modelPagination.on('pageClick', function() {
+                var param = {
+                    category: self.$submitForm.find('#category').val(),
+                    subCategory: self.$submitForm.find('#subCategory').val()
+                };
+
+                self._requestData(param);
+            });
+
+            // 보유제품 선택
+            self.$myModelArea.find('.slide-box').on('click', function(e) {
+                e.preventDefault();
+
+                var $this = $(this),
+                    opt = self.options,
                     data = $this.data();
 
-                self.$selectedModelBar.find('.prod-list').append('<li>'+data.code+'</li>');
-                self.$selectedModelBar.find('.prod-txt').html("").hide();
-            });
-
-
-            $('.btn-toggle').on('click', function() {
-                if ($(this).closest('.box').hasClass('open')) {
-                    $('.my-product-slider').stop().slideUp(function() {
-                        $(this).closest('.box').removeClass('open');
-                    });
-                    $(this).html('보유제품 펼치기');
-                } else {
-                    $('.my-product-slider').stop().slideDown(function() {
-                        $(this).closest('.box').addClass('open');
-                    });
-                    $(this).html('보유제품 접기');
-                }
-            });
-
-            $('.my-product-slider').find('.slide-box').on('click', function(e) {
-                e.preventDefault();
-
-                if ($(this).hasClass('disabled')) {
+                if ($this.hasClass('disabled')) {
                     $(window).trigger("toastshow", "예약가능한 제품이 아닙니다.");
                 } else {
+                    opt.selectedModel = [data.name, data.subName, data.code];
                     
+                    self.$submitForm.find('#category').val(data.category);
+                    self.$submitForm.find('#subCategory').val(data.subCategory);
+                    self.$submitForm.find('#modelCode').val(data.code);
+
+                    var updateObj = {
+                        product: opt.selectedModel,
+                        reset: true
+                    }
+    
+                    self.update(updateObj);
+
+                    self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
+                    self.$stepInput.addClass(opt.stepActiveClass);
+
+                    opt.callback();
                 }
             });
 
-            $('.category-search .btn-open').on('click', function() {
-                $(this).closest('.box').addClass('on');
-            });
-            $('.category-search .btn-close').on('click', function() {
-                $(this).closest('.box').removeClass('on').addClass('off');
+            // 보유제품 펼침/닫힘
+            self.$myModelArea.find('.btn-toggle').on('click', function() {
+                var $this = $(this),
+                    $toggleBox = $this.closest('.box');
+
+                if ($toggleBox.hasClass('open')) {
+                    self.$myModelSlider.stop().slideUp(function() {
+                        $toggleBox.removeClass('open');
+                    });
+                    $this.html('보유제품 펼치기');
+                } else {
+                    self.$myModelSlider.stop().slideDown(function() {
+                        $toggleBox.addClass('open');
+                    });
+                    $this.html('보유제품 접기');
+                }
             });
         }
     };

@@ -15,6 +15,9 @@
                 'pageDesc': '전문 엔지니어가 고객님께 찾아가서 필요로 하시는 서비스를 제공해드립니다.'
             })
             <div class="contents support reservation">
+                <!-- 서비스 안내 -->
+                @@include('./common/support/service-guide.html')
+
                 <!-- 선택 제품 플로팅바 -->
                 @@include('./common/support/selected-model-bar.html')
 
@@ -27,17 +30,6 @@
                 <div class="login-guide">
                     <p class="txt">등록하신 제품이 없습니다. 제품을 등록해보시겠어요 ?</p>
                     <button type="button" class="btn mix size"><span>제품 등록</span></button>
-                </div>
-
-                <div class="test">
-                    <div class="box">
-                        @@include('./common/modules/bullet-list.html', {
-                            "bulletTxt" : [
-                                "3건 이상의 제품에 대해 서비스 접수하실 경우,  1544-7777 로 문의하시면 1명의 서비스 기사로 접수를 할 수 있습니다. ",
-                                "무상 보증 기간 경과 된 제품 또는 사용자 과실 등으로 인한 제품 고장의 서비스 신청 건은 유상으로 서비스 비용이 청구됩니다."
-                            ]
-                        })
-                    </div>
                 </div>
 
                 <!-- 회원 - 보유제품 펼침 -->
