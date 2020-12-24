@@ -7,9 +7,10 @@
     @include font-medium;
     text-align: center;
     vertical-align: top;
-    border: 1px solid #EC455A;
+    border: 1px solid #fa263e;
     border-radius: 26px;
-    background-color:#EC455A;
+    background-color:#fa263e;
+    background-image: linear-gradient(280deg, #fb5a72, #fa263e);
     color:#fff;
     font-weight:500;
     @include mobile {
@@ -22,12 +23,13 @@
     &:hover,
     &:focus,
     &:active {
-        background-color:#EC455A;
+        background-color:#fa263e;
+        background-image: none;
     }
     &.gray {
         border-color: #ededed;
         background: #ededed;
-        color: #ec455a;
+        color: $color-gray-1;
         &:hover {
             background: #ededed;
         }
@@ -50,15 +52,24 @@
         border-color:#222;
         background:transparent;
         color:#222;
+        &:hover,
+        &:focus,
+        &:active {
+            border-color:#fa263e;
+            background-image: linear-gradient(280deg, #fb5a72, #fa263e);
+            color:#fff;
+        }
     }
 
     &:disabled,
     &.disabled {
         color:#aaa;
         border-color:#ddd;
-        background-color:#ededed;
+        background:#ededed;
         cursor:default;
-        &:hover {
+        &:hover,
+        &:focus,
+        &:active {
             background:#ededed;
             border-color:#ddd;
             color:#aaa;
