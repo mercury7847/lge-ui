@@ -191,7 +191,7 @@
                                             <p class="inner-tit">결제 정보</p>
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
-                                                    { "dt" : "결제 수단", "dd" : "<span>신용카드 할부 05개월</span><a href='#n' class='btn-link'>영수증 발급 내역</a>" },
+                                                    { "dt" : "결제 수단", "dd" : "<span>신용카드 할부 05개월</span><a href='#n' class='btn-link receiptList-btn'>영수증 발급 내역</a>" },
                                                     { "dt" : "주문 금액", "dd" : "2,834,060원" },
                                                     { "dt" : "할인 금액", "dd" : "-283,405원" },
                                                     { "dt" : "멤버십포인트", "dd" : "0원" },
@@ -221,7 +221,7 @@
                                             <p class="inner-tit">결제 정보</p>
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
-                                                    { "dt" : "결제 수단", "dd" : "<span>가상계좌</span><a href='#n' class='btn-link'>영수증 발급 내역</a>" },
+                                                    { "dt" : "결제 수단", "dd" : "<span>가상계좌</span><a href='#n' class='btn-link receiptList-btn'>영수증 발급 내역</a>" },
                                                     { "dt" : "주문 금액", "dd" : "2,834,060원" },
                                                     { "dt" : "할인 금액", "dd" : "-283,405원" },
                                                     { "dt" : "멤버십포인트", "dd" : "0원" },
@@ -236,7 +236,7 @@
                                             <p class="inner-tit">결제 정보</p>
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
-                                                    { "dt" : "결제 수단", "dd" : "<span>신용카드(분할결제) 1번 카드: 할부 06개월 / 2번 카드: 할부 05개월</span><a href='#n' class='btn-link'>영수증 발급 내역</a>" },
+                                                    { "dt" : "결제 수단", "dd" : "<span>신용카드(분할결제) 1번 카드: 할부 06개월 / 2번 카드: 할부 05개월</span><a href='#n' class='btn-link receiptList-btn'>영수증 발급 내역</a>" },
                                                     { "dt" : "주문 금액", "dd" : "2,834,060원" },
                                                     { "dt" : "할인 금액", "dd" : "-283,405원" },
                                                     { "dt" : "멤버십포인트", "dd" : "0원" },
@@ -251,7 +251,7 @@
                                             <p class="inner-tit">결제 정보</p>
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
-                                                    { "dt" : "결제 수단", "dd" : "<span>LG 페이 / 하나카드 일시불</span><a href='#n' class='btn-link'>영수증 발급 내역</a>" },
+                                                    { "dt" : "결제 수단", "dd" : "<span>LG 페이 / 하나카드 일시불</span><a href='#n' class='btn-link receiptList-btn'>영수증 발급 내역</a>" },
                                                     { "dt" : "주문 금액", "dd" : "2,834,060원" },
                                                     { "dt" : "할인 금액", "dd" : "-283,405원" },
                                                     { "dt" : "멤버십포인트", "dd" : "0원" },
@@ -298,5 +298,11 @@
         popupID: 'popup-takeback'
     })
     <!-- // 반품신청 -->
+
+    <!-- 영수증 발급 내역 -->
+    @@include('./common/popup/ACCF7002_pop3.html', {
+        popupID: 'popup-receipt-list'
+    })
+    <!-- // 영수증 발급 내역 -->
 </body>
 </html>

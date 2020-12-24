@@ -4,49 +4,6 @@
 
 
 .KRC0007 {
-	$color: (lightgray, dark, black, white);
-	@each $bg in $color {
-		&.bg-#{$bg} {
-			@if $bg == lightgray {
-				background-color: #f4f4f4;
-				.title {
-					&, * {
-						color: #111;
-					}
-				}
-			} @else if $bg == dark {
-				background-color: #333;
-				.title {
-					&, * {
-						color: #fff;
-					}
-				}
-				.body-copy,
-				.place {
-					color:#fff;
-				}
-			} @else if $bg == black {
-				background-color: #000;
-				.title {
-					&, * {
-						color: #fff;
-					}
-				}
-				.body-copy,
-				.place {
-					color:#fff;
-				}
-			} @else if $bg == white {
-				background-color: #fff;
-				.title {
-					&, * {
-						color: #111;
-					}
-				}
-			}
-		}
-	}
-
 	&.icn-img2s-txt2 {
 		ul {
 			@include grid-row;
@@ -55,7 +12,7 @@
 			}
 		}
 		.icon-text-box {
-			max-width: 412px;
+			max-width: 444px;
 			margin: 0 auto;
 			@include mobile {
 				max-width: 100%;
@@ -87,40 +44,30 @@
 
 	.visual-area {
 		width: 100%;
-		margin-bottom: 8px;
+		margin-bottom: 24px;
 		img {
 			max-width: 64px;
 		}
 	}
 
-	.title {
-		margin-bottom: 8px;
-		@include textClipClamp(2);
-		* {
-			font-weight: 700;
-			font-size: 18px;
-			line-height: 26px;
-			color: #111;
-		}
+	.title * {
+		@include title-h3;
 	}
 
 	.body-copy {
-		margin-bottom: 12px;
-		font-size: 16px;
-		line-height: 24px;
-		color: #616161;
+		@include bodycopy(h3, h3);
 	}
 
 	.place {
-		font-weight: 700;
-		font-size: 14px;
-		line-height: 26px;
-		color: #111;
+		display:block;
+		@include bodycopy(h3, h2);
+		font-weight:500;
+		text-align:center;
 	}
 
 	@include mobile {
 		.unit-box {
-			margin-bottom: 36px;
+			margin-bottom: 24px;
 			&:last-child {
 				margin-bottom: 0;
 			}

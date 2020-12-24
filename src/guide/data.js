@@ -257,9 +257,6 @@ var res = {
 					"제품관리팁" : ["/html/STR/OBS5010.html","","검수완료"]
 				},
 			},
-			"케어솔루션 홈(SLS)" : {
-				"케어솔루션 홈" : ["/html/SLS/MKTF2001.html","",""]
-			},
 			"케어솔루션(SLC)" : {
 				"케어솔루션 제품안내" : {
 					"맥주제조기_음주연령확인" : ["/html/SLC/MKTF2004.html","","검수완료"]
@@ -380,7 +377,7 @@ var res = {
 					"신청자정보 입력" : ["/html/UTC/RMSF9001.html","","검수완료"],
 					"신청 완료" : ["/html/UTC/RMSF9011.html","","검수완료"],
 					"주문결제 팝업" : ["/html/UTC/RMSF9001_popup.html","","검수완료"],
-					//"케어솔루션 주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
+					"주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
 				},
 				"비회원" : {
 					"비회원 주문번호 로그인" : ["/html/UTC/OBSF9038.html","","검수완료"],
