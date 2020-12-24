@@ -26,6 +26,7 @@
                                         '<a href="{{item.productPDPurl}}"><img src="{{item.productImage}}" alt="{{item.productNameKR}}"></a>'+
                                     '</div>'+
                                     '<div class="infos">'+
+                                        '{{#if item.productFlag}}<div class="flag-wrap"><span class="flag">{{item.productFlag}}</span></div>{{/if}}'+
                                         '<p class="name"><a href="{{item.productDetailUrl}}"><span class="blind">제품명</span>{{item.productNameKR}}</a></p>'+
                                         '<p class="e-name"><span class="blind">영문제품번호</span>{{item.productNameEN}}</p>'+
                                         '{{#if item.specList && item.specList.length > 0}}'+
@@ -38,7 +39,7 @@
                                             '</ul>'+
                                         '</div>'+
                                         '{{/if}}'+
-                                        '<p class="count">수량 : {{item.productTotal}}</p>'+
+                                        '{{#if item.productTotal}}<p class="count">수량 : {{item.productTotal}}</p>{{/if}}'+
                                     '</div>'+
                                     '<p class="price">'+
                                         '<span class="blind">구매가격</span>{{item.productPrice}}원'+
@@ -48,11 +49,11 @@
                             '<div class="col col2">'+
                                 '<div class="state-box">'+
                                     '<p class="tit {{item.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{item.orderStatus.statusText}}</p>'+
-                                    '{{#if item.orderStatus.deliveryDate !=""}}<p class="desc">배송희망일 {{item.orderStatus.deliveryDate}}</p>{{/if}}'+
+                                    '{{#if item.orderStatus.statusDate !=""}}<p class="desc">{{item.orderStatus.statusDate}}</p>{{/if}}'+
                                     '{{#if item.statusButtonList && item.statusButtonList.length > 0}}'+
                                     '<div class="state-btns">'+
                                         '{{#each status in item.statusButtonList}}'+
-                                        '<a href="#n" class="btn size border {{status.className}}-btn"><span>{{status.buttonName}}</span></a>'+
+                                        '<a href="#n" class="btn size border stateInner-btn" data-type="{{status.className}}"><span>{{status.buttonName}}</span></a>'+
                                         '{{/each}}'+
                                     '</div>'+
                                     '{{/if}}'+
@@ -145,6 +146,14 @@
             e.preventDefault();
 
             setMoreOrderList();
+        }).on('click', '.receiptList-btn', function(e){
+            e.preventDefault();
+
+            setReceiptListPop();
+        }).on('click', '.monthlyPrice-btn', function(e){
+            e.preventDefault();
+
+            setMonthlyPricePop();
         });
     }
 
@@ -183,6 +192,14 @@
 
     function setContractStatus(modelID){
         console.log("[setContractStatus]", modelID);
+    }
+
+    function setReceiptListPop(){
+        $('#popup-receipt-list').vcModal();
+    }
+
+    function setMonthlyPricePop(){
+        $('#popup-monthly-price').vcModal();
     }
 
     function setNoData(){

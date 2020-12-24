@@ -92,7 +92,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
         _resize: function(){
             var self = this;
-            var winwidth = $(window).outerWidth(true);
+            var winwidth = $(window).width();
             if(winwidth > 767){
                 if(self.displayMode != "pc"){
                     self._hamburgerDisabled();

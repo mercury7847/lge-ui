@@ -148,14 +148,8 @@
                                 
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="email" class="req">이메일 주소<span class="blind">필수항목</span></label>
-                                        <div class="tooltip-wrap">
-                                            <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
-                                            <div class="tooltip-box">
-                                                <p>일부 이메일(gmail.com, hotmail.com, live.co.kr, outlook.com, nate.com, dreamwiz.com, empal.com등)은 답변 메일 수신이 원활하지 않을 수 있습니다.</p>
-                                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
-                                            </div>
-                                        </div>
+                                        <label for="email" class="req">이메일<span class="blind">필수항목</span></label>
+                                        <!-- 2020.12.24 tooltip-wrap 삭제 -->
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap">
@@ -164,19 +158,20 @@
                                         <div class="btm-more err-block">
                                             <p class="err-msg"></p>
                                         </div>
+                                        <!-- 2020.12.24 불릿 리스트 추가 -->
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                '일부 이메일(gmail.com, hotmail.com, live.co.kr, outlook.com, nate.com, dreamwiz.com, empal.com등)은 답변 메일 수신이 원활하지 않을 수 있습니다.'
+                                            ]
+                                        })
+                                        <!-- 2020.12.24 불릿 리스트 추가 -->
                                     </div>
                                 </div>
                                 
                                 <div class="forms">
                                     <div class="tit">
                                         <label for="contactPhoneNo1">연락가능 전화번호</label>
-                                        <div class="tooltip-wrap">
-                                            <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget">자세히 보기</span>
-                                            <div class="tooltip-box">
-                                                <p>서비스 접수할 때 입력 또는 알려주신 고객님 전화번호를 입력해 주세요.</p>
-                                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
-                                            </div>
-                                        </div>
+                                        <!-- 2020.12.24 tooltip-wrap 삭제 -->
                                     </div>
                                     <div class="conts">
                                         <div class="contact-box">
@@ -192,6 +187,13 @@
                                                 <input type="text" name="contactPhoneNo3" id="contactPhoneNo3">
                                             </div>
                                         </div>
+                                        <!-- 2020.12.24 불릿 리스트 추가 -->
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                '서비스 접수할 때 입력 또는 알려주신 고객님 전화번호를 입력해 주세요.'
+                                            ]
+                                        })
+                                        <!-- 2020.12.24 불릿 리스트 추가 -->
                                     </div>
                                 </div>
                                 <!-- // 회원 -->

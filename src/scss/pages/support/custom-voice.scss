@@ -58,6 +58,9 @@
                 max-width:444px;
                 padding-bottom: 48px;
             }
+            .keyword-search {
+                width: 100%;
+            }
             @include mobile {
                 padding:0 20px 32px;
                 background:#fff;
@@ -117,7 +120,7 @@
             }
         }
         .cont-wrap {
-            max-width:1146px + 80px;
+            // max-width:1146px + 80px;
         }
         .my-status-info {
             margin:-32px -6px 64px;
