@@ -132,8 +132,7 @@
                     padding:0 6px;
                     a {
                         display:block;
-                        height:58px;
-                        padding:15px 12px;
+                        padding:27px 12px;
                         @include font-medium;
                         font-weight:$font-weight-medium;
                         text-align:center;
@@ -143,7 +142,7 @@
 
                     &.on {
                         a {
-                            padding:13px 12px;
+                            padding:25px 12px;
                             color:#ec455a;
                             border: solid 2px #ec455a;
                         }
