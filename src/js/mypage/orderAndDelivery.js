@@ -149,7 +149,11 @@
         }).on('click', '.receiptList-btn', function(e){
             e.preventDefault();
 
-            setReceiptListpop();
+            setReceiptListPop();
+        }).on('click', '.monthlyPrice-btn', function(e){
+            e.preventDefault();
+
+            setMonthlyPricePop();
         });
     }
 
@@ -190,8 +194,12 @@
         console.log("[setContractStatus]", modelID);
     }
 
-    function setReceiptListpop(){
+    function setReceiptListPop(){
         $('#popup-receipt-list').vcModal();
+    }
+
+    function setMonthlyPricePop(){
+        $('#popup-monthly-price').vcModal();
     }
 
     function setNoData(){
