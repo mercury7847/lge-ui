@@ -942,6 +942,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             //var rf = this.$wrapper[0].offsetHeight;           // Force reflow
             var self = this;
             self.update();
+            self.scrollTo(self.options.startX, self.options.startY);
             self.triggerHandler('smoothscrollrefresh', self);
         },
 

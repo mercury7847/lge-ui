@@ -72,14 +72,13 @@
     .item-name {
         max-height: 52px;
         font-weight: 700;
-        @include font-medium;
+        font-size: $font-medium;
+        line-height: 26px;
         @include textClipClamp(2);
         @include mobile {
-            max-height:54px;
-            margin-bottom:14px;
-            font-size:14px;
-            line-height:18px;
-            @include textClipClamp(3);
+            max-height: 46px;
+            font-size: $font-medium - 1;
+            line-height: 23px;
         }
     }
     .sku {
@@ -97,7 +96,7 @@
         font-size:0;
         margin-top:4px;
         @include mobile {
-            margin-top:24px;
+            margin-top:6px;
         }
         p {
             display:inline-block;
@@ -105,10 +104,6 @@
             @include font-small;
             color: $color-gray-1;
             word-break:keep-all;
-            @include mobile {
-                font-size:12px;
-                line-height:16px;
-            }
             &::after {
                 content:' ';
                 display:inline-block;
@@ -194,14 +189,23 @@
         //margin-left: auto;
         //width: 270px;
         padding: 0 24px;
-        font-weight: 500;
-        @include font-small;
+        @include font-medium;
         .text-box {
-            text-align: right;
+            text-align: center;
             span {
                 display: inline-block;
-                text-align: left;
-
+                font-weight: 700;
+                &.complete {
+                    color: #3b9792;
+                    em {
+                        display: block;
+                        font-weight: 500;
+                        color: $color-gray-1;
+                    }
+                }
+                &.error {
+                    color: #f04e3e;
+                }
             }
         }
         @include mobile {
@@ -297,17 +301,15 @@
         top: 0;
         right: 0;
         left: 0;
-        padding: 14px 17px;
+        padding: 12px 17px;
         background-color: $color-bg;
         font-weight: 700;
-        @include font-large;
+        @include font-medium;
         .text {
             color: $color-gray-1;
         }
         @include mobile {
-            padding: 15px 12px;
-            font-size: 15px;
-            line-height: 23px;
+            padding: 10px 12px;
         }
     }
 }

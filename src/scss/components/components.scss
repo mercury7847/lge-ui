@@ -43,7 +43,6 @@
         line-height:42px;
     }
 }
-
 @mixin font-title-2 {
     font-size:48px;
     line-height:64px;
@@ -53,14 +52,110 @@
         line-height:33px;
     }
 }
-
 @mixin font-eyebrow {
     font-size:24px;
     line-height:34px;
+    font-weight:700;
 
     @media screen and (max-width: #{$tablet-s-width}) {
        font-size : 16px;
        line-height: 24px;
+    }
+}
+
+// Title Font Mixin
+@mixin eyebrow {
+    margin-bottom:8px;
+    font-size:24px;
+    line-height:34px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        margin-bottom:6px;
+        font-size:16px;
+        line-height:24px;
+    }
+}
+@mixin eyebrow-h3 {
+    margin-bottom:8px;
+    font-size:16px;
+    line-height:26px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        margin-bottom:6px;
+        font-size:14px;
+        line-height:22px;
+    }
+}
+@mixin title-h1 {
+    font-size:56px;
+    line-height:74px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size:32px;
+        line-height:42px;
+    }
+}
+@mixin title-h2 {
+    font-size:48px;
+    line-height:64px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size:24px;
+        line-height:33px;
+    }
+}
+@mixin title-h3 {
+    font-size:24px;
+    line-height:34px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size:18px;
+        line-height:26px;
+    }
+}
+@mixin bodycopy ($own, $prev) {
+    @if $own == h1 or $own == h2 {
+        font-size:20px;
+        line-height:30px;
+        @include mobile {
+            font-size:16px;
+            line-height:24px;
+        }
+    } @else if $own == h3 {
+        font-size:16px;
+        line-height:26px;
+        @include mobile {
+            font-size:14px;
+            line-height:22px;
+        }
+    }
+    
+    @if $prev == h1 {
+        margin-top:32px;
+        @include mobile {
+            margin-top:16px;
+        }
+    } @else if $prev == h2 {
+        margin-top:24px;
+        @include mobile {
+            margin-top:12px;
+        }
+    } @else if $prev == h3 {
+        margin-top:16px;
+        @include mobile {
+            margin-top:14px;
+        }
+    }
+}
+@mixin cta-btn {
+    margin-top:24px;
+    font-size:0;
+    .btn.border, 
+    .text-link {
+        margin-left:16px;
+        &:first-child {
+            margin-left:0;
+        }
     }
 }
 
@@ -174,15 +269,15 @@
                     }
                     .btn.btn-primary {
                         &:active {
-                            border-color:#111 !important;
-                            background-color:#111 !important;
+                            border-color:#222 !important;
+                            background-color:#222 !important;
                         }
                     }
                     .link-text {
-                        border-color:#111;
+                        border-color:#222;
                         font-size:16px;
                         &:after {
-                            border-color:#111;
+                            border-color:#222;
                         }
                     }
                 }
@@ -196,7 +291,7 @@
                 }
                 .component {
                     .btn.btn-outline-primary {
-                        color:#111;
+                        color:#222;
                         &:active {
                             border-color:#212121 !important;
                             background-color:#fff !important;
@@ -204,8 +299,8 @@
                     }
                     .btn.btn-primary {
                         &:active {
-                            border-color:#111 !important;
-                            background-color:#111 !important;
+                            border-color:#222 !important;
+                            background-color:#222 !important;
                         }
                     }
                     // .text-wrap .btn-type-box .btn-outline-primary {
@@ -213,7 +308,7 @@
                     // }
                     .text-black .btn.btn-outline-secondary,
                     .text-white .btn.btn-outline-secondary {
-                        color:#111 !important;
+                        color:#222 !important;
                     }
                     .link-text {
                         border-color:#fff;
@@ -236,10 +331,10 @@
                     //     color:#fff;
                     // }
                     // .text-wrap .btn-type-box .btn-primary {
-                    //     color:#111;
+                    //     color:#222;
                     // }
                     .btn.btn-outline-primary {
-                        color:#111;
+                        color:#222;
                         &:active {
                             border-color:#212121 !important;
                             background-color:#fff !important;
@@ -247,13 +342,13 @@
                     }
                     .btn.btn-primary {
                         &:active {
-                            border-color:#111 !important;
-                            background-color:#111 !important;
+                            border-color:#222 !important;
+                            background-color:#222 !important;
                         }
                     }
                     .text-black .btn.btn-outline-secondary,
                     .text-white .btn.btn-outline-secondary {
-                        color:#111 !important;
+                        color:#222 !important;
                     }
                     .link-text {
                         border-color:#fff;
@@ -277,15 +372,15 @@
                     }
                     .btn.btn-primary {
                         &:active {
-                            border-color:#111 !important;
-                            background-color:#111 !important;
+                            border-color:#222 !important;
+                            background-color:#222 !important;
                         }
                     }
                     .link-text {
-                        border-color:#111;
+                        border-color:#222;
                         font-size:16px;
                         &:after {
-                            border-color:#111;
+                            border-color:#222;
                         }
                     }
                 }
@@ -389,6 +484,30 @@
         // &[class*=bg-] {
         //     padding:60px 0;
         // }
+    }
+
+    // carousel 공통
+    .slide-controls {
+        position:absolute;
+        top:50%;
+        left:0;
+        right:0;
+        .btn-arrow {
+            position:absolute;
+            transform:translateY(-50%);
+            &.prev {
+                left:-24px;
+            }
+            &.right {
+                right:-24px;
+            }
+        }
+    }
+    .indi-wrap {
+        position:absolute;
+        left:0;
+        right:0;
+        bottom:0;
     }
 
     // button 공통
@@ -600,18 +719,18 @@
     //    line-height: 24px;
     //    @include font-family($font-weight-bold);
     //    font-size: 16px;
-    //    color: #111;
+    //    color: #222;
     //    text-align: center;
     //    vertical-align: top;
     //
     //    &.btn-outline-primary {
     //        border-color: #212121;
     //        background-color: #fff;
-    //        color: #111;
+    //        color: #222;
     //    }
     //    &.btn-primary {
-    //        border-color: #111;
-    //        background-color: #111;
+    //        border-color: #222;
+    //        background-color: #222;
     //        color: #fff;
     //    }
     //}
@@ -623,7 +742,7 @@
     //    border-bottom: 1px solid #212121;
     //    font-size: 14px;
     //    line-height: 20px;
-    //    color: #111;
+    //    color: #222;
     //    vertical-align: top;
     //
     //    &.ico-right {
@@ -634,7 +753,7 @@
     //            right: -12px;
     //            width: 8px;
     //            height: 8px;
-    //            border: solid #111;
+    //            border: solid #222;
     //            border-width: 2px 2px 0 0;
     //            transform: rotate(45deg);
     //            content: '';
@@ -886,7 +1005,7 @@ html.modal-open {
                 @include calc(left, 50%, 1px);
                 width: 2px;
                 height: 16px;
-                background-color: #111;
+                background-color: #222;
                 content: '';
             }
             &:before {
