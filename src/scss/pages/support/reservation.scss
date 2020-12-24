@@ -444,7 +444,7 @@
 
     .reservation-info-box{
         margin:48px 0;
-        background-color:#222;
+        background-image:linear-gradient(94deg, #9c86e7, #de64a0);
         color:#fff;
 
         .reservation-area{
@@ -453,7 +453,7 @@
             justify-content: space-between;
             margin:0 auto;
             padding:24px 40px;
-            max-width:1460px;
+            max-width:1226px;
 
             .reservation-info{
                 display:flex;
@@ -467,6 +467,8 @@
 
                     .txt-block{
                         display:block;
+                        @include font-large;
+                        margin-bottom:5px;
                     }
 
                     .btn-link{
@@ -475,16 +477,21 @@
                 }
             }
         }
-        .reservation-num{
-            @include font-large; 
+        .reservation-sub-desc{
+            margin-top:12px;
+            @include font-medium;
+            .txt-bold{
+                color:#fffd7c;
+                @include $font-weight-bold;
+            } 
         }
 
         .email-img{
-            width:60px;
-            height:60px;
+            width:80px;
+            height:80px;
             background:url(/lg5-common/images/icons/ic-usp-mailcounsel-80.svg) no-repeat center;
-            background-size:60px;
-            margin-right:57px;
+            background-size:80px;
+            margin-right:96px;
         }
 
         .engineer-img{
@@ -629,25 +636,23 @@
         }
         .reservation-info-box.type-email{
             .reservation-area{
-                flex-flow:column-reverse;
                 .email-img{
-                    display:none;
+                    margin-right:18px;
                 }
-
                 .reservation-info-desc{
                     margin-top:16px;
-                    text-align:center;
-                    
-                    strong{font-weight:normal;}
-                }
-
-                .reservation-num{
-                    .num-tit{
-                        background:url(/lg5-common/images/icons/ic-usp-mailcounsel-80.svg) no-repeat left center;
-                        background-size:40px;
-                        padding:8px 0 8px 56px;
+                    strong{
+                        font-weight:normal;
                     }
                 }
+
+                //.reservation-num{
+                //    .num-tit{
+                //        background:url(/lg5-common/images/icons/ic-usp-mailcounsel-80.svg) no-repeat left center;
+                //        background-size:40px;
+                //        padding:8px 0 8px 56px;
+                //    }
+                //}
             }
         }
     }

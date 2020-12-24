@@ -12,11 +12,11 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '전화 상담 예약이 접수되었습니다.'
+                'pageTitle': '전화 상담 예약이 완료되었습니다.'
             })
             
             <div class="contents support reservation subscribe">
-                <ol class="reception-progress type-1">
+                <ol class="reception-progress type-1" data-step="2">
                     <li><span class="text">제품 선택</span></li>
                     <li><span class="text">예약 내용 입력</span></li>
                     <li><span class="text">예약 완료</span></li>
@@ -26,12 +26,14 @@
                     <figure class="reservation-area">
                         <div class="reservation-info">
                             <div class="email-img"></div>
-                            <figcaption class="reservation-info-desc">
-                                <span>신청하신 희망 일시에 상담원이 전화를 드려 원격 상담 방법 안내 및 상담을 진행합니다.</span>
-                            </figcaption>
-                        </div>
-                        <div class="reservation-num">
-                            <span class="num-tit">접수번호 K729401293RL</span>
+                            <div class="email-desc">
+                                <figcaption class="reservation-info-desc">
+                                    <span class="txt-block">접수번호 HA230948WW</span>
+                                </figcaption>
+                                <div class="reservation-sub-desc">
+                                    <span class="txt-bold">2020.07.01 13:30</span>에 상담원이 전화를 드려 상담해드릴 예정입니다.
+                                </div>
+                            </div>
                         </div>
                     </figure>
                 </div>
