@@ -37,11 +37,11 @@ dev:
     - export AKAMAI_PROPERTY=wwwdev50.lge.co.kr
     - export PURGE_ROOT_URL=https://wwwdev50.lge.co.kr
 
-     #- npm install
-     #- node akamai.js
-     #- rm -rf ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}
+    #- npm install
+    #- node akamai.js
+    #- rm -rf ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}
     # Need to delete build files in dist directory
-     - rm -rf ../dist/${CI_COMMIT_SHA}
+    - rm -rf ../dist/${CI_COMMIT_SHA}
 
 stg:
   image: node:10.15.0
