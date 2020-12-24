@@ -34,7 +34,7 @@ dev:
 
     - cd akamai-purge-script
     - rsync -v -r -c ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/ ${DEV_WEB_NAS}/htdocs/ > rsync-result.txt
-    - export AKAMAI_PROPERTY=wwwdev50.lge.co.kr
+    - export AKAMAI_PROPERTY=wdev50.lg.com
     - export PURGE_ROOT_URL=https://wwwdev50.lge.co.kr
 
     - npm install
