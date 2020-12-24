@@ -47,6 +47,10 @@
         h6 {
             @include font-large-2;
             font-weight:700;
+            span {
+                display: block;
+                margin-top: 20px;
+            }
         }
     }
     .laypop {

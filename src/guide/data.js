@@ -377,7 +377,7 @@ var res = {
 					"신청자정보 입력" : ["/html/UTC/RMSF9001.html","","검수완료"],
 					"신청 완료" : ["/html/UTC/RMSF9011.html","","검수완료"],
 					"주문결제 팝업" : ["/html/UTC/RMSF9001_popup.html","","검수완료"],
-					//"케어솔루션 주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
+					"주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
 				},
 				"비회원" : {
 					"비회원 주문번호 로그인" : ["/html/UTC/OBSF9038.html","","검수완료"],
