@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["MYC/MYC"]
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/orderAndDelivery"]
     })
 <body>
     <div class="wrap">
@@ -146,5 +147,17 @@
         
         @@include('./common/footer.html')
     </div>
+    
+    <!-- 취소신청-->
+    @@include('./common/popup/ACCF7002_pop1.html', {
+        popupID: 'popup-cancel'
+    })
+    <!-- // 취소신청 -->
+
+    <!-- 반품신청-->
+    @@include('./common/popup/ACCF7002_pop2.html', {
+        popupID: 'popup-takeback'
+    })
+    <!-- // 반품신청 -->
 </body>
 </html>

@@ -674,18 +674,21 @@
     //담기...
     function addPutItem(item){ 
         var idx = $(item).parents('.prd-care-vertical').data('index')-1;
-        var sendata = {
-            modelIds: [_currentItemList[idx]['modelId']],
-            rtModelSeqs: [_currentItemList[idx]['rtModelSeq']]
-        }
+        var modelIds = [_currentItemList[idx]['modelId']];
+        var rtModelSeqs = [_currentItemList[idx]['rtModelSeq']];
 
         var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
         if(putItemStorage[lgkorUI.CAREPLANER_ID]){
             for(var key in putItemStorage[lgkorUI.CAREPLANER_ID]){
                 var storageData = putItemStorage[lgkorUI.CAREPLANER_ID][key];
-                sendata.modelIds.push(storageData.itemData.modelId);
-                sendata.rtModelSeqs.push(storageData.itemData.rtModelSeq);
+                modelIds.push(storageData.itemData.modelId);
+                rtModelSeqs.push(storageData.itemData.rtModelSeq);
             }
+        }
+
+        var sendata = {
+            modelIds: modelIds.join(","),
+            rtModelSeqs: rtModelSeqs.join(",")
         }
 
         tempPutItemIdx = idx;
@@ -696,14 +699,20 @@
 
     //담기 삭제...
     function removePutItem(id){
-        var sendata = {modelIds:[], rtModelSeqs:[]};
+        var modeiIds = [];
+        var rtModelSeqs = [];
         var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
         for(var key in putItemStorage[lgkorUI.CAREPLANER_ID]){
             var storageData = putItemStorage[lgkorUI.CAREPLANER_ID][key];
             if(storageData.putID != id){
-                sendata.modelIds.push(storageData.itemData.modelId);
-                sendata.rtModelSeqs.push(storageData.itemData.rtModelSeq);
+                modelIds.push(storageData.itemData.modelId);
+                rtModelSeqs.push(storageData.itemData.rtModelSeq);
             }
+        }
+
+        var sendata = {
+            modelIds: modelIds.join(","),
+            rtModelSeqs: rtModelSeqs.join(",")
         }
 
         tempPutItemIdx = -1;
@@ -833,12 +842,18 @@
     function openEstimatePopUp(){
         lgkorUI.showLoading();
         
-        var sendata = {modelIds:[], rtModelSeqs:[]};
+        var modelIds = [];
+        var rtModelSeqs = [];
         var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
         for(var key in putItemStorage[lgkorUI.CAREPLANER_ID]){
             var storageData = putItemStorage[lgkorUI.CAREPLANER_ID][key];
-            sendata.modelIds.push(storageData.itemData.modelId);
-            sendata.rtModelSeqs.push(storageData.itemData.rtModelSeq);
+            modelIds.push(storageData.itemData.modelId);
+            rtModelSeqs.push(storageData.itemData.rtModelSeq);
+        }
+
+        var sendata = {
+            modelIds: modelIds.join(","),
+            rtModelSeqs: rtModelSeqs.join(",")
         }
 
         lgkorUI.requestAjaxData(_estimateConfirmUrl, sendata, function(result){

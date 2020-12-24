@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["MYC/MYC"]
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/orderAndDelivery"]
     })
 <body>
     <div class="wrap">
@@ -41,6 +42,7 @@
                                         @@loop('./common/modules/info-tbl-wrap-loop.html', [
                                             {
                                                 "col1" : {
+                                                    "modelID": "AMK345234534",
                                                     "blind" : "제품정보",
                                                     "productType" : {
                                                         "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
@@ -64,6 +66,7 @@
                                             },
                                             {
                                                 "col1" : {
+                                                    "modelID": "AMK345234534",
                                                     "blind" : "제품정보",
                                                     "productType" : {
                                                         "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
@@ -79,7 +82,9 @@
                                                         "tit" : "배송중",
                                                         "desc" : "배송희망일 2020.09.18",
                                                         "btn" : "배송조회",
-                                                        "btn2" : "배송문의"
+                                                        "btn2" : "배송문의",
+                                                        "btnType": "deliveryInquiry",
+                                                        "btn2Type" : "deliveryRequest"
                                                     }
                                                 }
                                             }
@@ -107,6 +112,7 @@
                                         @@loop('./common/modules/info-tbl-wrap-loop.html', [
                                             {
                                                 "col1" : {
+                                                    "modelID": "AMK345234534",
                                                     "blind" : "제품정보",
                                                     "productType" : {
                                                         "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
@@ -130,6 +136,7 @@
                                             },
                                             {
                                                 "col1" : {
+                                                    "modelID": "AMK345234534",
                                                     "blind" : "제품정보",
                                                     "productType" : {
                                                         "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
@@ -146,7 +153,10 @@
                                                         "desc" : "배송희망일 2020.09.18",
                                                         "btn" : "배송조회",
                                                         "btn2" : "제품리뷰",
-                                                        "btn3" : "반품신청"
+                                                        "btn3" : "반품신청",
+                                                        "btnType": "deliveryInquiry",
+                                                        "btn2Type" : "productReview",
+                                                        "btn3Type" : "takeBackInner"
                                                     }
                                                 }
                                             }
@@ -276,5 +286,17 @@
         
         @@include('./common/footer.html')
     </div>
+    
+    <!-- 취소신청-->
+    @@include('./common/popup/ACCF7002_pop1.html', {
+        popupID: 'popup-cancel'
+    })
+    <!-- // 취소신청 -->
+
+    <!-- 반품신청-->
+    @@include('./common/popup/ACCF7002_pop2.html', {
+        popupID: 'popup-takeback'
+    })
+    <!-- // 반품신청 -->
 </body>
 </html>
