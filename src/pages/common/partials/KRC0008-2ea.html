@@ -40,26 +40,25 @@
                     <!-- 1. image -->
                     @@if (context.imgType === "youtube") {
                     <!-- 1.1 video type youtube 인 경우 -->
+                    <!-- [KR수정_201222] 비디오 영역 DOM 공통화 수정(AD버튼 삭제, caption삭제) -->
                     <div class="visual-area video youtube-box">
                         <!-- 1-1. video play button -->
-                        <a href="#none" role="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>
                         <!-- * youtube video modal은 아래의 방식으로 입력 -->
                         <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="large_image_large_or_2_small_image-video_play" data-link-name="{video title / video id}" title="opens in a new layer popup, plays video">
-                            <img data-src="/lg5-common/images/dummy/@sample-3-2.gif" alt="" class="lazyload" />
-                            <!-- 2. bideo title copy -->
-                            <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-                            <!-- // 2. bideo title copy -->
+                            <img src="/lg5-common/images/KRC0008/@thumb.jpg" alt="">
+                            <p class="hidden">graphic description : </p>
                         </a>
                         <!-- // 1-1. video play button -->
                     </div>
+                    <!-- // [KR수정_201222] 비디오 영역 DOM 공통화 수정(AD버튼 삭제, caption삭제) -->
                     }
 
                     @@if (context.imgType === "animation") {
                     <!-- 2020.09.21 animation type 추가 -->
                     <!-- 1.2 animation 타입인 경우 animation-box 클래스 추가 -->
-                    <div class="visual-area animation-box">
-                        <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
-                        <img data-src="/lg5-common/images/dummy/@sample-3-2.gif" alt="" class="lazyload" />
+                    <!-- [KR수정_201222] 애니메이션 영역 DOM 공통화 수정(AD버튼 삭제, caption삭제) -->
+                    <div class="visual-area animation-box size-type">
+                        <img data-src="/lg5-common/images/KRC0008/@thumb.jpg" alt="">
                         <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
                         <div class="animation-area">
                             <video autoplay muted loop>
@@ -72,34 +71,34 @@
                                 <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
                             </div>
                         </div>
-                        <!-- caption -->
-                        <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-                        <!-- // caption -->
                     </div>
+                    <!-- // [KR수정_201222] 애니메이션 영역 DOM 공통화 수정(AD버튼 삭제, caption삭제) -->
                     <!-- // 1.2 image #1 -->
                     }
                     <!-- // 1. image -->
 
 
                     <!-- 3. body copy -->
-                    <p class="body-copy @@font-class2 @@font-style2">111최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합…다.</p>
+                    <p class="body-copy @@font-class2 @@font-style2">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
                     <!-- // 3. body copy -->
                     <!-- 4. cta -->
+                    <!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
                     <div class="bottom-btn">
-                        <span><a href="#none" class="btn btn-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
-                        <span><a href="#none" class="btn btn-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        <a href="#none" class="btn border size-m" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}"><span>문의하기</span></a>
+                        <a href="#none" class="btn border size-m" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}"><span>문의하기</span></a>
                     </div>
                     <div class="bottom-btn">
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        <a href="#none" class="text-link" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}"><span>텍스트 링크 버튼</span></a>
+                        <a href="#none" class="text-link" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}"><span>텍스트 링크 버튼</span></a>
                     </div>
+                    <!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
                     <!-- // 4. cta -->
                 </div>
                 <div class="unit-box">
                     <!-- 5. image -->
                     <div class="visual-area image">
                         <a href="#none" data-link-area="large_image_large_or_2_small_image-image" data-link-name="{Alt Text}">
-                            <img data-src="/lg5-common/images/dummy/@sample-3-2.gif" alt="" class=" lazyload" />
+                            <img data-src="/lg5-common/images/KRC0008/@thumb.jpg" alt="">
                         </a>
                         <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
                     </div>
@@ -108,14 +107,16 @@
                     <p class="body-copy @@font-class3 @@font-style3">Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지 않도록 합니다.Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지... 않도록 합니다.</p>
                     <!-- // 7. body copy -->
                     <!-- 8. cta -->
+                    <!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
                     <div class="bottom-btn">
-                        <span><a href="#none" class="btn btn-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
-                        <span><a href="#none" class="btn btn-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        <a href="#none" class="btn border size-m" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}"><span>문의하기</span></a>
+                        <a href="#none" class="btn border size-m" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}"><span>문의하기</span></a>
                     </div>
                     <div class="bottom-btn">
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        <a href="#none" class="text-link" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}"><span>텍스트 링크 버튼</span></a>
+                        <a href="#none" class="text-link" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}"><span>텍스트 링크 버튼</span></a>
                     </div>
+                    <!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
                     <!-- // 8. cta -->
                 </div>
             </div>

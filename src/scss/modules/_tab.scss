@@ -344,3 +344,31 @@
         padding:24px 12px;
     }
 }
+
+.scroll-wrap {
+    position: relative;
+    .tabs-wrap {
+        .tabs {
+            max-width:initial;
+            overflow:unset; 
+        }
+    }
+    .scroll-controls {
+        .btn-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            &.prev {
+                left: 4px;
+            }
+            &.next {
+                right: 4px;
+            }
+        }
+    }
+    .tabs-wrap.btn-type + .scroll-controls {
+        .btn-arrow {
+            margin-top: 4px;
+        }
+    }
+}
