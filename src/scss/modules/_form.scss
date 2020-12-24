@@ -48,7 +48,8 @@
         @include font-small;
         font-weight:500;
         .dl-txt-cont {
-            margin-top:48px;
+            margin-top:20px;
+            color: $color-default;
             @include mobile {
                 margin-top:40px;
             }
@@ -56,18 +57,12 @@
                 margin-top:0;
             }
             dt {
-                color:#222;
                 margin-bottom:8px;
                 @include font-medium;
                 font-weight:700;
-                @include mobile {
-                    font-size:18px;
-                    line-height:26px;
-                }
             }
             dd {
-                color:#767676;
-                @include font-small;
+                @include font-medium;
             }
         }
         .sub-txt {

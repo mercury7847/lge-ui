@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["PRS/PRS"]
+    })
+<body>
+	<div class="wrap">
+		@@include('./common/header.html')
+
+		<div class="container">
+			<div class="contents">
+				<div class="sub-main">
+					<!-- banner -->
+					<div class="hero-banner slide-wrap ui_wide_slider">
+						<div class="custom-indi-wrap">
+							<div class="custom-indis">
+								<ul class="indis ui_wideslider_dots">
+									<li>
+										<button type="button" class="btn-indi">
+											<!-- <p>No.1의 혁신1</p> -->
+											<div class="bar"></div>
+										</button>
+									</li>
+									<li>
+										<button type="button" class="btn-indi">
+											<!-- <p>No.1의 혁신2</p> -->
+											<div class="bar"></div>
+										</button>
+									</li>
+									<li>
+										<button type="button" class="btn-indi">
+											<!-- <p>No.1의 혁신3</p> -->
+											<div class="bar"></div>
+										</button>
+									</li>
+								</ul>
+							</div>
+							<button type="button" class="indi-control ui_carousel_play play">
+								<span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
+							</button>
+						</div>
+						<div class="slide-content ui_carousel_list">
+							<ul class="slide-track ui_carousel_track">
+								<!-- slide -->
+								<li class="slide-conts ui_carousel_slide">
+									<span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
+									<div class="slide-info-area">
+										<div class="boxs">
+											<p class="txt">
+												혼수가전<br>얼마나 합이<br>잘 맞을까?
+												<small>새출발을 위한 혼수 지원<br>최대 250만원 상당 혜택!</small>
+											</p>
+										</div>
+									</div>
+									<a href="#" class="link"><span>2020<br>올 뉴 웨딩 페스타</span></a>
+								</li>
+								<!-- // slide -->
+								<!-- slide -->
+								<li class="slide-conts ui_carousel_slide">
+									<span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
+									<div class="slide-info-area">
+										<div class="boxs">
+											<p class="txt">
+												혼수가전<br>얼마나 합이<br>잘 맞을까?
+												<small>새출발을 위한 혼수 지원<br>최대 250만원 상당 혜택!</small>
+											</p>
+										</div>
+									</div>
+									<a href="#" class="link"><span>2020<br>올 뉴 웨딩 페스타</span></a>
+								</li>
+								<!-- // slide -->
+							</ul>
+						</div>
+						<div class="slide-control-wrap">
+							<button type="button" class="btn-arrow prev">이전</button>
+							<button type="button" class="btn-arrow next">다음</button>
+						</div>
+					</div>
+					<!-- //banner -->
+					<!-- category -->
+					<div class="module-box cnt80">
+						<div class="tabs-wrap border-type ui_tab ui_smooth_scroll left">
+							<ul class="tabs">
+								<li class="on"><a href="#category1">TV/AV<em class="blind">선택됨</em></a></li>
+								<li><a href="#category2">IT</a></li>
+								<li><a href="#category3">주방가전</a></li>
+								<li><a href="#category4">생활가전</a></li>
+								<li><a href="#category5">에어컨/에어케어</a></li>
+								<li><a href="#category6">모바일</a></li>
+								<li><a href="#category7">뷰티</a></li>
+								<li><a href="#category8">브랜드관</a></li>
+							</ul>
+						</div>
+						<div class="tabs-contents" id="category1">
+							<div class="category-list">
+								<ul>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="냉장고"></i>
+											<span class="txt">냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="김치냉장고"></i>
+											<span class="txt">김치냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전자레인지/오븐"></i>
+											<span class="txt">전자레인지/오븐</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전기레인지"></i>
+											<span class="txt">전기레인지</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="식기세척기"></i>
+											<span class="txt">식기세척기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="정수기"></i>
+											<span class="txt">정수기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="맥주제조기"></i>
+											<span class="txt">맥주제조기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="빌트인가전"></i>
+											<span class="txt">빌트인가전</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="tabs-contents" id="category2">
+							<div class="category-list">
+								<ul>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="냉장고"></i>
+											<span class="txt">냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="김치냉장고"></i>
+											<span class="txt">김치냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전자레인지/오븐"></i>
+											<span class="txt">전자레인지/오븐</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전기레인지"></i>
+											<span class="txt">전기레인지</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="식기세척기"></i>
+											<span class="txt">식기세척기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="정수기"></i>
+											<span class="txt">정수기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="맥주제조기"></i>
+											<span class="txt">맥주제조기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="빌트인가전"></i>
+											<span class="txt">빌트인가전</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="tabs-contents" id="category3">
+							<div class="category-list">
+								<ul>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="냉장고"></i>
+											<span class="txt">냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="김치냉장고"></i>
+											<span class="txt">김치냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전자레인지/오븐"></i>
+											<span class="txt">전자레인지/오븐</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전기레인지"></i>
+											<span class="txt">전기레인지</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="식기세척기"></i>
+											<span class="txt">식기세척기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="정수기"></i>
+											<span class="txt">정수기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="맥주제조기"></i>
+											<span class="txt">맥주제조기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="빌트인가전"></i>
+											<span class="txt">빌트인가전</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="tabs-contents" id="category4">
+							<div class="category-list">
+								<ul>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="냉장고"></i>
+											<span class="txt">냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="김치냉장고"></i>
+											<span class="txt">김치냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전자레인지/오븐"></i>
+											<span class="txt">전자레인지/오븐</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전기레인지"></i>
+											<span class="txt">전기레인지</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="식기세척기"></i>
+											<span class="txt">식기세척기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="정수기"></i>
+											<span class="txt">정수기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="맥주제조기"></i>
+											<span class="txt">맥주제조기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="빌트인가전"></i>
+											<span class="txt">빌트인가전</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="tabs-contents" id="category5">
+							<div class="category-list">
+								<ul>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="냉장고"></i>
+											<span class="txt">냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="김치냉장고"></i>
+											<span class="txt">김치냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전자레인지/오븐"></i>
+											<span class="txt">전자레인지/오븐</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전기레인지"></i>
+											<span class="txt">전기레인지</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="식기세척기"></i>
+											<span class="txt">식기세척기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="정수기"></i>
+											<span class="txt">정수기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="맥주제조기"></i>
+											<span class="txt">맥주제조기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="빌트인가전"></i>
+											<span class="txt">빌트인가전</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="tabs-contents" id="category6">
+							<div class="category-list">
+								<ul>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="냉장고"></i>
+											<span class="txt">냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="김치냉장고"></i>
+											<span class="txt">김치냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전자레인지/오븐"></i>
+											<span class="txt">전자레인지/오븐</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전기레인지"></i>
+											<span class="txt">전기레인지</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="식기세척기"></i>
+											<span class="txt">식기세척기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="정수기"></i>
+											<span class="txt">정수기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="맥주제조기"></i>
+											<span class="txt">맥주제조기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="빌트인가전"></i>
+											<span class="txt">빌트인가전</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="tabs-contents" id="category7">
+							<div class="category-list">
+								<ul>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="냉장고"></i>
+											<span class="txt">냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="김치냉장고"></i>
+											<span class="txt">김치냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전자레인지/오븐"></i>
+											<span class="txt">전자레인지/오븐</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전기레인지"></i>
+											<span class="txt">전기레인지</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="식기세척기"></i>
+											<span class="txt">식기세척기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="정수기"></i>
+											<span class="txt">정수기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="맥주제조기"></i>
+											<span class="txt">맥주제조기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="빌트인가전"></i>
+											<span class="txt">빌트인가전</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="tabs-contents" id="category8">
+							<div class="category-list">
+								<ul>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="냉장고"></i>
+											<span class="txt">냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="김치냉장고"></i>
+											<span class="txt">김치냉장고</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전자레인지/오븐"></i>
+											<span class="txt">전자레인지/오븐</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="전기레인지"></i>
+											<span class="txt">전기레인지</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="식기세척기"></i>
+											<span class="txt">식기세척기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="정수기"></i>
+											<span class="txt">정수기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="맥주제조기"></i>
+											<span class="txt">맥주제조기</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i><img src="/lg5-common/images/PRS/icon-category-80x80.svg" alt="빌트인가전"></i>
+											<span class="txt">빌트인가전</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- //category -->
+					<!-- tag -->
+					<div class="module-box wide">
+						<div class="tit-wrap">
+							<p class="tit">LG와 함께하는 #웰빙_라이프</p>
+							<p class="desc">웰빙 라이프 스타일을 시작해보세요.</p>
+						</div>
+						<div class="slide-wrap carousel-type carousel-4 ui_carousel_4_slider">
+							<div class="indi-wrap">
+								<ul class="indi-conts ui_carousel_dots">
+									<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+								</ul>
+							</div>
+							<div class="slide-content ui_carousel_list">
+								<ul class="slide-track ui_carousel_track">
+									<!-- slide -->
+									<li class="slide-conts ui_carousel_slide">
+										<a href="#n" class="slide-box">
+											<img src="/lg5-common/images/PRS/img-recom-product-01.jpg" alt="">
+											<div class="inner">
+												<p>건강까지<br>지켜주는<br>진짜 스타일러</p>
+												<button type="button" class="btn border">LG TROMM 스타일러</button>
+											</div>
+										</a>
+									</li> 
+									<!-- // slide -->
+									<!-- slide -->
+									<li class="slide-conts ui_carousel_slide">
+										<a href="#n" class="slide-box">
+											<img src="/lg5-common/images/PRS/img-recom-product-02.jpg" alt="">
+											<div class="inner">
+												<p>내게<br>필요한 것은<br>초고화력!</p>
+												<button type="button" class="btn border">LG DIOS 인덕션</button>
+											</div>
+										</a>
+									</li> 
+									<!-- // slide -->
+									<!-- slide -->
+									<li class="slide-conts ui_carousel_slide">
+										<a href="#n" class="slide-box">
+											<img src="/lg5-common/images/PRS/img-recom-product-03.jpg" alt="">
+											<div class="inner">
+												<p>위생이 중요한<br>아이 옷<br>스팀 건조로<br>건강하게</p>
+												<button type="button" class="btn border">LG TROMM 건조기</button>
+											</div>
+										</a>
+									</li> 
+									<!-- // slide -->
+									<!-- slide -->
+									<li class="slide-conts ui_carousel_slide">
+										<a href="#n" class="slide-box">
+											<img src="/lg5-common/images/PRS/img-recom-product-04.jpg" alt="">
+											<div class="inner">
+												<p>당신만의<br>버킷리스트를<br>완성해보세요</p>
+												<button type="button" class="btn border">LG WING</button>
+											</div>
+										</a>
+									</li> 
+									<!-- // slide -->
+									<!-- slide -->
+									<li class="slide-conts ui_carousel_slide">
+										<a href="#n" class="slide-box">
+											<img src="/lg5-common/images/PRS/img-recom-product-01.jpg" alt="">
+											<div class="inner">
+												<p>건강까지<br>지켜주는<br>진짜 스타일러</p>
+												<button type="button" class="btn border">LG TROMM 스타일러</button>
+											</div>
+										</a>
+									</li> 
+									<!-- // slide -->
+								</ul>
+							</div>
+							<div class="slide-controls">
+								<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+								<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+							</div>
+						</div>
+					</div>
+					<!-- //tag -->
+				</div>
+			</div>
+		</div>
+		
+		@@include('./common/footer.html')
+	</div>
+</body>
+</html>

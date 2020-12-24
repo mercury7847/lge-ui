@@ -51,27 +51,25 @@
                     <!-- 1.1 image #1 -->
                     @@if (context.imgType === "youtube") {
                     <!-- 1.1 visual-area - video 예제 -->
+                    <!-- [KR수정_201222] 유투브 DOM 내 AD버튼 삭제, caption 삭제 -->
                     <div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box 추가(youtube modal call) -->
                         <!-- 1-3 video play button -->                
-                        <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-area="side_image2_text-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>
                         <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image2_text-video_play" data-link-name="{video title / video id}">
-                            <img data-src="@@img" alt="" class="lazyload">
+                            <img data-src="@@img" alt="">
                             <p class="hidden">graphic description : </p>
-                            <!-- 2 video title copy -->
-                            <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다.</div>
-                            <!-- // 2 video title copy -->
                         </a>
                         <!-- // 1-3 video play button -->
                     </div>
+                    <!-- // [KR수정_201222] 유투브 DOM 내 AD버튼 삭제, caption 삭제 -->
                     <!-- // 1.1 image #1 -->
                     }
                     @@if (context.imgType === "animation") {
                     <!-- 2020.09.21 animation type 추가 -->
                     <!-- 1.2 animation 타입인 경우 animation-box 클래스 추가 -->
-                    <div class="visual-area animation-box">
-                        <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
-                        <img data-src="@@img" alt="" class="lazyload">
-                        <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                    <!-- [KR수정_201222] AD버튼 삭제 -->
+                    <div class="visual-area animation-box size-type">
+                        <img src="@@img" alt="">
+                        <p class="hidden">graphic description : </p>
                         <div class="animation-area">
                             <video autoplay muted loop>
                                 <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
@@ -83,41 +81,41 @@
                                 <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
                             </div>
                         </div>
-                        <!-- caption -->
-                        <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-                        <!-- // caption -->
                     </div>
+                    <!-- // [KR수정_201222] 애니메이션 태그 내 이미지+hidden 태그 삭제, AD버튼 삭제 -->
                     <!-- // 1.2 image #1 -->
                     }
                     <!-- 1.3 image #1 -->
                     <!-- visual-area - image 예제 -->
                     <div class="visual-area image">
                         <a href="#none" data-link-area="side_image2_text-image" data-link-name="{Alt Text}">
-                            <img data-src="@@img" alt="" class="lazyload">
+                            <img src="@@img" alt="">
+                            <!-- [KR수정_201222] p 태그 위치 변경 -->
+                            <p class="hidden">graphic description : </p>
+                            <!-- // [KR수정_201222] p 태그 위치 변경 -->
                         </a>
-                        <p class="hidden">graphic description : </p>
-                        <!-- 20160813 caption -->
-                        <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다.</div>
-                        <!-- // 20160813 caption -->
+                        <!-- [KR수정_201222] caption삭제 -->
                     </div>
                     <!-- // 1.3 image #1 -->
                 </div>
                 <div class="side-right-text">
                     <!-- 3. headline -->
-                    <div class="title" id="title"><h2>타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다 1 타이틀 텍스트는 PC기준.</h2></div>
+                    <div class="title" id="title"><h2>타이틀 영역입니다.</h2></div>
                     <!-- // 3. headline -->
                     <!-- 4. body copy -->
-                    <div class="text @@font-class2">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다.</div>
+                    <div class="text @@font-class2">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다.</div>
                     <!-- // 4. body copy -->
                     <!-- 5. cta -->
+                    <!-- [KR수정_201222] 버튼 태그 DOM 동일화 수정 -->
                     <div class="btn-type-box">
-                        <span><a href="#none" class="btn btn-outline-primary" data-link-area="side_image2_text-cta" data-link-name="{Link Text}" aria-describedby="title">문의하기</a></span><!-- [KR수정] .btn-primary -> .btn-outline-primary로 수정 -->
-                        <span><a href="#none" class="btn btn-primary" data-link-area="side_image2_text-cta" data-link-name="{Link Text}" aria-describedby="title">문의하기</a></span>
+                        <a href="#none" class="btn border size-m" data-link-area="side_image2_text-cta" data-link-name="{Link Text}" aria-describedby="title"><span>문의하기</span></a>
+                        <a href="#none" class="btn border size-m" data-link-area="side_image2_text-cta" data-link-name="{Link Text}" aria-describedby="title"><span>문의하기</span></a>
                     </div>
                     <div class="btn-type-text">
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image2_text-cta" data-link-name="{Link Text}" aria-describedby="title">자세히 보기</a></span>
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image2_text-cta" data-link-name="{Link Text}" aria-describedby="title">자세히 보기</a></span>
+                        <a href="#none" class="text-link" data-link-area="side_image2_text-cta" data-link-name="{Link Text}" aria-describedby="title"><span>자세히 보기</span></a>
+                        <a href="#none" class="text-link" data-link-area="side_image2_text-cta" data-link-name="{Link Text}" aria-describedby="title"><span>자세히 보기</span></a>
                     </div>
+                    <!-- // [KR수정_201222] 버튼 태그 DOM 동일화 수정 -->
                     <!-- // 5. cta -->
                 </div>
             </div>
