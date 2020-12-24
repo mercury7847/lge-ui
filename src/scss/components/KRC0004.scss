@@ -12,6 +12,9 @@
 		max-width:1380px + 80px;
 		margin:0 auto;
 		padding:0 40px;
+		@include mobile {
+			padding:0 16px;
+		}
 	}
 	.cpt-wrap {
 		> .visual-area,
@@ -77,32 +80,6 @@
 	}
 
 	// video, animation assets custom 
-	.video a {
-		position: absolute;
-		left:0; top:0;
-		width:100%; height:100%;
-		color:transparent;
-		text-indent:-9999px;
-		&.acc-video-content {
-			left:inherit;
-		}
-		&:before {
-			width:62px;
-			height:62px;
-			margin:-31px 0 0 -31px;
-			background-image:url('/lg5-common/images/components/btn-play-lg.svg');
-						
-		}
-		&.acc-video-content {
-			&:before {
-				width:36px;
-				height:36px;
-				margin:0;
-				background-image:url('/lg5-common/images/components/ico_AD-on.svg');
-						
-			}
-		}
-	}
 	.animation-box {
 		.animation-area {
 			position:relative;
@@ -115,6 +92,10 @@
 	.cpt-wrap {
 		position: relative;
 		.cont-head {
+			margin-top:56px;
+			@include mobile {
+				margin-top:28px;
+			}
 			.text-area {
 				.eyebrow {
 					@include eyebrow;
@@ -141,18 +122,36 @@
 				}
 			}
 		}
-	}
-	.visual-area {
-		position:relative;
-		text-align: center;
-		margin-top:56px;
-		a {
-			display: block;
+		.visual-area {
+			margin-top:56px;
+			position:relative;
+			@include mobile {
+				margin-top:28px;
+			}
+			a {
+				display: block;
+			}
+			img {
+				width:100%;
+				height:auto;
+				vertical-align:top;
+			}
+			.bullet-list {
+				max-width:1380px;
+				margin-left:auto;
+				margin-right:auto;
+				padding:0 40px;
+				@include mobile {
+					padding:0 16px;
+				}
+			}
 		}
-		img {
-			width:100%;
-			height:auto;
-			vertical-align:top;
+
+		> .visual-area, 
+		> .cont-head {
+			&:first-child {
+				margin-top:0;
+			}
 		}
 	}
 
@@ -192,6 +191,12 @@
 				}
 			}
 		}
+		&.open {
+			padding-bottom:80px;
+			@include mobile {
+				padding-bottom:40px;
+			}
+		}
     }
 
 	// more content
@@ -199,13 +204,18 @@
 		position: relative;
 		overflow: hidden;
 		display:none;
-		margin-top:80px;
 		padding:80px 40px;
 		background:#f4f4f4;
+		@include mobile {
+			padding:40px 16px;
+		}
 		.list-container{
 			margin:0 auto;
 			.list {
 				margin-top:160px;
+				@include mobile {
+					margin-top:80px;
+				}
 				&:first-child {
 					margin-top:0;
 				}
@@ -239,14 +249,6 @@
 				margin-bottom:24px;
 			}
 		}
-	}
-	// disclaimer 
-	.desc {
-        padding: 12px 49px;
-        color:#fff;
-		font-size: 14px;
-        line-height:20px;
-        background:rgba(0, 0, 0, .5);
 	}
 }
 

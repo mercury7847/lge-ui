@@ -2,7 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["MYC/MYC"],
-        pageJS: ["mypage/orderInquiry"]
+        pageJS: ["mypage/orderAndDelivery"]
     })
 <body>
     <div class="wrap">
@@ -19,8 +19,6 @@
             <div class="hidden-input-group">
                 <input type="hidden" name="total" value="5"/>
                 <input type="hidden" name="page" value="1"/>
-                <input type="hidden" name="startDate" value="20200919"/>
-                <input type="hidden" name="endDate" value="20201218"/>
             </div>
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
@@ -118,8 +116,8 @@
                                                     "desc" : "배송희망일 2020.09.18",
                                                     "btn" : "배송조회",
                                                     "btn2" : "배송문의",
-                                                    "btnClass": "deliveryInquiry-btn",
-                                                    "btn2Class" : "deliveryRequest-btn"
+                                                    "btnType": "deliveryInquiry",
+                                                    "btn2Type" : "deliveryRequest"
                                                 }
                                             }
                                         }
@@ -164,7 +162,7 @@
                                                     "tit" : "배송중",
                                                     "desc" : "배송희망일 2020.09.18",
                                                     "btn" : "배송문의",
-                                                    "btnClass": "deliveryRequest-btn"
+                                                    "btnType": "deliveryRequest"
                                                 }
                                             }
                                         },
@@ -188,9 +186,9 @@
                                                     "btn" : "배송조회",
                                                     "btn2" : "제품리뷰", 
                                                     "btn3" : "반품신청",
-                                                    "btnClass": "deliveryInquiry-btn",
-                                                    "btn2Class" : "productReview-btn",
-                                                    "btn3Class" : "takeBackInner-btn"
+                                                    "btnType": "deliveryInquiry",
+                                                    "btn2Type" : "productReview",
+                                                    "btn3Type" : "takeBackInner"
                                                 }
                                             }
                                         }
@@ -254,7 +252,7 @@
                                                     "tit" : "배송중",
                                                     "desc" : "배송희망일 2020.09.18",
                                                     "btn" : "배송문의",
-                                                    "btnClass": "deliveryRequest-btn"
+                                                    "btnType": "deliveryRequest"
                                                 }
                                             }
                                         }
@@ -299,7 +297,7 @@
                                                     "tit" : "배송중",
                                                     "desc" : "배송희망일 2020.09.18",
                                                     "btn" : "배송문의",
-                                                    "btnClass": "deliveryRequest-btn"
+                                                    "btnType": "deliveryRequest"
                                                 }
                                             }
                                         },
@@ -322,8 +320,8 @@
                                                     "desc" : "배송희망일 2020.09.18",
                                                     "btn" : "배송조회",
                                                     "btn2" : "배송문의",
-                                                    "btnClass": "deliveryInquiry-btn",
-                                                    "btn2Class" : "deliveryRequest-btn"
+                                                    "btnType": "deliveryInquiry",
+                                                    "btn2Type" : "deliveryRequest"
                                                 }
                                             }
                                         }
@@ -367,7 +365,7 @@
                                                     "tit" : "배송준비중",
                                                     "desc" : "배송희망일 2020.09.18",
                                                     "btn" : "배송문의",
-                                                    "btnClass": "deliveryRequest-btn"
+                                                    "btnType": "deliveryRequest"
                                                 }
                                             }
                                         },

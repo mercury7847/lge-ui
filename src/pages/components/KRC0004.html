@@ -9,10 +9,65 @@
         <div class="container">
 
             <!-- component KRC0004 -->
-            <!-- component Full 이미지 텍스트 상단형 L -->
+            <!-- component stage Full / 이미지-텍스트 / 더보기 있음 -->
             @@include('./common/partials/KRC0004-all.html',{
+                "stageSize" : "full-size",
+                "visualImg" : true,
+                "txtTop" : true,
+                "headAlign" : "align-left",
+                "moreCont" : true,
+                "discAlign" : "align-left"
             })
-            <!-- // component Full 이미지 텍스트 상단형 L -->
+            <!-- // component stage Full / 이미지-텍스트 / 더보기 있음 -->
+
+            <!-- component stage Full / 텍스트-이미지 / 더보기 없음 -->
+            @@include('./common/partials/KRC0004-all.html',{
+                "stageSize" : "full-size",
+                "visualAni" : true,
+                "headAlign" : "align-right",
+                "discAlign" : "align-right"
+            })
+            <!-- // component stage Full / 텍스트-이미지 / 더보기 없음 -->
+
+            <!-- component stage Wide / 이미지-텍스트 / 더보기 있음 -->
+            @@include('./common/partials/KRC0004-all.html',{
+                "stageSize" : "wide-size",
+                "visualYoutube" : true,
+                "txtTop" : true,
+                "headAlign" : "align-right",
+                "moreCont" : true,
+                "discAlign" : "align-right"
+            })
+            <!-- // component stage Wide / 이미지-텍스트 / 더보기 있음 -->
+
+            <!-- component stage Wide / 텍스트-이미지 / 더보기 없음 -->
+            @@include('./common/partials/KRC0004-all.html',{
+                "stageSize" : "wide-size",
+                "visualImg" : true,
+                "headAlign" : "align-left",
+                "discAlign" : "align-left"
+            })
+            <!-- // component stage Wide / 텍스트-이미지 / 더보기 없음 -->
+
+            <!-- component stage Standard / 이미지-텍스트 / 더보기 있음 -->
+            @@include('./common/partials/KRC0004-all.html',{
+                "stageSize" : "standard-size",
+                "visualAni" : true,
+                "txtTop" : true,
+                "headAlign" : "align-left",
+                "moreCont" : true,
+                "discAlign" : "align-left"
+            })
+            <!-- // component stage Standard / 이미지-텍스트 / 더보기 있음 -->
+
+            <!-- component stage Standard / 텍스트-이미지 / 더보기 없음 -->
+            @@include('./common/partials/KRC0004-all.html',{
+                "stageSize" : "standard-size",
+                "visualYoutube" : true,
+                "headAlign" : "align-center",
+                "discAlign" : "align-center"
+            })
+            <!-- // component stage Standard / 텍스트-이미지 / 더보기 없음 -->
             <!-- //component KRC0004 -->
 		</div>
     </div>      
