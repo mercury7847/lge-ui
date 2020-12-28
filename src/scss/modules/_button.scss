@@ -147,6 +147,19 @@
             }
         }
     }
+
+    &.question {
+        padding-left:36px;
+        &:before {
+            content:'';
+            position:absolute;
+            left:14px;
+            top:50%;
+            width:16px;
+            height:16px;
+            transform: translateY(-50%);
+        }
+    }
 }
 
 .btn-text {
