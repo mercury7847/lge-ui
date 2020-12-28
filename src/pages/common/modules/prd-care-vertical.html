@@ -32,67 +32,68 @@
             @@if(context.codeTxt) {
             <p class="code-txt">@@codeTxt</p>
             }
-            @@if(context.moduleType != "module-type3") {
-            <div class="opt-info">
-                @@if(context.colorSet) {
-                <dl class="@@colorDisabled"><!-- 단일 항목 인 경우 disabled 클래스 추가 -->
-                    <dt>색상</dt>
-                    <dd>
-                        <div class="sort-select-wrap">
-                            <select class="ui_selectbox" id="@@colorId" title="색상 선택" @@colorDisabled><!-- 단일 항목인 경우 disabled -->
-                                @@for (var i = 0; i < context.colorSet.length; i++) {
-                                <option value="">`+colorSet[i].title+`</option>
-                                }
-                            </select>
-                        </div>
-                    </dd>
-                </dl>
+            @@if (!context.optionNon) {
+                @@if(context.moduleType != "module-type3") {
+                <div class="opt-info">
+                    @@if(context.colorSet) {
+                    <dl class="@@colorDisabled"><!-- 단일 항목 인 경우 disabled 클래스 추가 -->
+                        <dt>색상</dt>
+                        <dd>
+                            <div class="sort-select-wrap">
+                                <select class="ui_selectbox" id="@@colorId" title="색상 선택" @@colorDisabled><!-- 단일 항목인 경우 disabled -->
+                                    @@for (var i = 0; i < context.colorSet.length; i++) {
+                                    <option value="">`+colorSet[i].title+`</option>
+                                    }
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+                    }
+                    @@if(context.appFee) {
+                    <dl><!-- 단일 항목 인 경우 disabled 클래스 추가 -->
+                        <dt>가입비</dt>
+                        <dd>
+                            <div class="sort-select-wrap">
+                                <select class="ui_selectbox" id="@@appFeeId" title="가입비 선택"><!-- 단일 항목인 경우 disabled -->
+                                    @@for (var i = 0; i < context.appFee.length; i++) {
+                                    <option value="">`+appFee[i].title+`</option>
+                                    }
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+                    }
+                    @@if(context.useDay) {
+                    <dl><!-- 단일 항목 인 경우 disabled 클래스 추가 -->
+                        <dt>의무사용</dt>
+                        <dd>
+                            <div class="sort-select-wrap">
+                                <select class="ui_selectbox" id="@@useDayId" title="의무사용 선택"><!-- 단일 항목인 경우 disabled -->
+                                    @@for (var i = 0; i < context.useDay.length; i++) {
+                                    <option value="">`+useDay[i].title+`</option>
+                                    }
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+                    }
+                    @@if(context.visitDay) {
+                    <dl><!-- 단일 항목 인 경우 disabled 클래스 추가 -->
+                        <dt>방문주기</dt>
+                        <dd>
+                            <div class="sort-select-wrap">
+                                <select class="ui_selectbox" id="@@visitDayId" title="방문주기 선택"><!-- 단일 항목인 경우 disabled -->
+                                    @@for (var i = 0; i < context.visitDay.length; i++) {
+                                    <option value="">`+visitDay[i].title+`</option>
+                                    }
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+                    }
+                </div>
                 }
-                @@if(context.appFee) {
-                <dl><!-- 단일 항목 인 경우 disabled 클래스 추가 -->
-                    <dt>가입비</dt>
-                    <dd>
-                        <div class="sort-select-wrap">
-                            <select class="ui_selectbox" id="@@appFeeId" title="가입비 선택"><!-- 단일 항목인 경우 disabled -->
-                                @@for (var i = 0; i < context.appFee.length; i++) {
-                                <option value="">`+appFee[i].title+`</option>
-                                }
-                            </select>
-                        </div>
-                    </dd>
-                </dl>
-                }
-                @@if(context.useDay) {
-                <dl><!-- 단일 항목 인 경우 disabled 클래스 추가 -->
-                    <dt>의무사용</dt>
-                    <dd>
-                        <div class="sort-select-wrap">
-                            <select class="ui_selectbox" id="@@useDayId" title="의무사용 선택"><!-- 단일 항목인 경우 disabled -->
-                                @@for (var i = 0; i < context.useDay.length; i++) {
-                                <option value="">`+useDay[i].title+`</option>
-                                }
-                            </select>
-                        </div>
-                    </dd>
-                </dl>
-                }
-                @@if(context.visitDay) {
-                <dl><!-- 단일 항목 인 경우 disabled 클래스 추가 -->
-                    <dt>방문주기</dt>
-                    <dd>
-                        <div class="sort-select-wrap">
-                            <select class="ui_selectbox" id="@@visitDayId" title="방문주기 선택"><!-- 단일 항목인 경우 disabled -->
-                                @@for (var i = 0; i < context.visitDay.length; i++) {
-                                <option value="">`+visitDay[i].title+`</option>
-                                }
-                            </select>
-                        </div>
-                    </dd>
-                </dl>
-                }
-            </div>
             }
-            
             @@if(context.sellPrice || context.benefitPrice || context.infoDate ) {
             <div class="txt-info">
                 @@if (context.sellPrice) {

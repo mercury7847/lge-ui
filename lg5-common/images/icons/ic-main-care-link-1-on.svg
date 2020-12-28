@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <path d="M0 0H64V64H0z" opacity=".3" transform="translate(-386 -1100) translate(270 878) translate(116 222)"/>
+                        <g>
+                            <path stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M38.612 43.828l11.728-4.464c1.425-.543 3.02.173 3.563 1.598l.006.015c.558 1.492-.067 3.168-1.465 3.93L32.275 55.902c-1.002.547-2.19.639-3.265.254l-14.174-5.082h0-4.605V37.162L18.197 36l8.47 3.76h9.208c1.512 0 2.737 1.224 2.737 2.736 0 1.511-1.225 2.737-2.737 2.737H25.546h0c-1.701.19-2.552 1.106-2.552 2.746" transform="translate(-386 -1100) translate(270 878) translate(116 222) translate(4 4)"/>
+                            <g>
+                                <path fill="#FFF" fill-rule="nonzero" stroke="#222" stroke-width="3" d="M26.438 0c-1.954 0-3.745.597-5.324 1.775-1.513 1.13-2.52 2.568-3.114 3.614-.593-1.046-1.6-2.484-3.114-3.614C13.307.597 11.516 0 9.563 0 4.11 0 0 4.303 0 10.008c0 6.164 5.129 10.382 12.893 16.766 1.319 1.085 2.813 2.314 4.366 3.624.205.173.468.269.741.269.273 0 .536-.096.74-.269 1.554-1.31 3.048-2.54 4.368-3.624C30.87 20.39 36 16.172 36 10.008 36 4.303 31.889 0 26.437 0z" transform="translate(-386 -1100) translate(270 878) translate(116 222) translate(4 4) translate(14.667)"/>
+                                <path fill="#EC455A" d="M12 14.667H24V17.667H12z" transform="translate(-386 -1100) translate(270 878) translate(116 222) translate(4 4) translate(14.667)"/>
+                                <path fill="#EC455A" d="M12 14.667H24V17.667H12z" transform="translate(-386 -1100) translate(270 878) translate(116 222) translate(4 4) translate(14.667) rotate(90 18 16.167)"/>
+                            </g>
+                            <path fill="#FFF" stroke="#222" stroke-width="3" d="M9.333 34.833H2.667c-.322 0-.614.13-.825.342-.211.211-.342.503-.342.825v18.667c0 .322.13.613.342.825.21.21.503.341.825.341h6.666c.322 0 .614-.13.825-.341.211-.212.342-.503.342-.825V36c0-.322-.13-.614-.342-.825-.21-.211-.503-.342-.825-.342z" transform="translate(-386 -1100) translate(270 878) translate(116 222) translate(4 4)"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
