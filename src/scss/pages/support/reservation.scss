@@ -482,7 +482,7 @@
             @include font-medium;
             .txt-bold{
                 color:#fffd7c;
-                @include $font-weight-bold;
+                font-weight: $font-weight-bold;
             } 
         }
 

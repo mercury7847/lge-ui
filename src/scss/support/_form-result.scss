@@ -72,6 +72,34 @@
                 }
             }
         }
+        &.type-A {
+            display: flex;
+            > li {
+                &:nth-child(n+2) {
+                    margin-top: 0;
+                    margin-left: 23px;
+                    padding-left: 24px;
+                    position: relative;
+                    ::before {
+                        content: '';
+                        display: block;
+                        width: 1px;
+                        height: 16px;
+                        background-color: #ddd;
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                }
+            }
+            .title {
+                width: auto;
+            }
+            .description {
+                margin-left: 0;
+            }
+        }
     }
     &-dl {
         border-top: 1px solid #ddd;
