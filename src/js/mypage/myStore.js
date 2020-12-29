@@ -86,7 +86,6 @@
                     self.$storeList.empty();
                     arr.forEach(function(item, index) {
                         item.index = index;
-                        //item.price = item.price ? vcui.number.addComma(item.price) : null;
                         self.$storeList.append(vcui.template(listItemTemplate, item));
                     });
                     self.checkNoData();
