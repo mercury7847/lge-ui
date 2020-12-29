@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["MYC/MYC"]
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/myStore"]
     })
 <body>
     <div class="wrap">
@@ -25,9 +26,12 @@
                                 { "on": "", "page": "재입고 알림" },
                             ]
                         })
-                        <div class="lnb-contents">
+                        <div class="lnb-contents"
+                            data-list-url="/lg5-common/data-ajax/mypage/store/myStoreList.json"
+                            data-bookmark-url="/lg5-common/data-ajax/mypage/store/bookmarkStore.json"
+                        >
                             <div class="my-contract-info gray-box">
-                                <p class="tit">이케어 고객님의 단골매장은 총 00개 입니다.</p>
+                                <p class="tit">이케어 고객님의 단골매장은 총 <em>00</em>개 입니다.</p>
                                 <div class="btn-area">
                                     <a href="#" class="btn-link"><span>매장 추가 등록하러 가기</span></a>
                                 </div>
@@ -36,24 +40,31 @@
                                 @@include('./common/modules/bookmark-store-list.html', {
                                     "item" : [
                                         {
+                                            id : "sid00001",
                                             head : "강남본점 BESTSHOP",
                                             title : "서울특별시 강남구 청담동 86-1 LG 청담빌딩 LG BEST SHOP",
                                             number : "02-3448-5191"
                                         },{
+                                            id : "sid00002",
                                             head : "개봉점 BESTSHOP",
                                             title : "서울특별시 구로구 개봉동 144-5 미서빌딩 LG BEST SHOP",
                                             number : "02-3448-5191"
                                         },{
+                                            id : "sid00003",
                                             head : "매장명 매장분류",
                                             title : "[칭찬합니다] 타이틀 최대 1줄, 초과 시 말줄임 처리 타이틀 최대 1줄, 초과 시 말줄임 처리 타이틀 최대 1줄, 초과 시 말줄임 처리 타이틀 최대 1줄, 초과 시 말줄임 처리",
                                             number : "(N)NN-NNNN-NNNN"
                                         }
                                     ]
                                 })
+                                <div class="no-data">
+                                    <p>검색결과가 없습니다.</p>
+                                </div>
                             </div>
-                            @@include('./common/modules/pagination.html', {
+                            <!-- @@include('./common/modules/pagination.html', {
                                 count: 5
-                            })
+                            }) -->
+                            <div class="pagination" data-page="16" data-visible-count="7" data-total-count="33"></div>
                         </div>
                     </div>
                 </div>

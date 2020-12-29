@@ -1,0 +1,38 @@
+{
+    "status":"success",
+    "message":null,
+    "param":{
+        "pagination":{
+            "page":"3",
+            "visibleCount":"7",
+            "totalCount":"23"
+        }
+    },
+    "data": {
+        "totalCount":"16",
+        "listData":[
+            {
+                "id":"sid00005",
+                "title":"서대문구 BESTSHOP",
+                "address":"서울특별시 서대문구 홍제동 158-33",
+                "tel":"02-379-9400",
+                "bookmark":true,
+                "facebook":"https://www.lg.com/html/components/blog-share.html",
+                "twitter":"https://www.lg.com/html/components/blog-share.html",
+                "kakao":"https://www.lg.com/html/components/blog-share.html",
+                "urlCopy":"https://www.lg.com/html/components/blog-share.html"
+            },
+            {
+                "id":"sid00006",
+                "title":"LG전자 베스트샵 서울역빌딩점",
+                "address":"서울특별시 중구 회현동 후암로 98",
+                "tel":"02-6929-1015",
+                "bookmark":false,
+                "facebook":"https://www.lg.com/html/components/blog-share.html",
+                "twitter":"https://www.lg.com/html/components/blog-share.html",
+                "kakao":"https://www.lg.com/html/components/blog-share.html",
+                "urlCopy":"https://www.lg.com/html/components/blog-share.html"
+            }
+        ]
+    }
+}

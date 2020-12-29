@@ -1,6 +1,6 @@
 <ul class="bookmark-store-list">
     @@for ( var i=0; i < item.length; i++ ) {
-    <li>
+    <li data-id="`+item[i].id+`">
         <div class="item">
             <span class="branch">`+item[i].head+`</span>
             <a href="#" class="title"><strong>`+item[i].title+`</strong></a>

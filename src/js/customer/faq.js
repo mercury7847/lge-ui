@@ -14,19 +14,23 @@
         var faq = {
             init: function() {
                 var self = this;
+                vcui.require(['ui/pagination'], function () {
+                    self.setting();
+                    self.bindEvents();
+                });
+
+                //self.searchNewData();
+            },
+
+            setting: function() {
+                var self = this;  
                 self.$searchWrap = $('div.contents.faq div.cont-wrap div.search-wrap');
                 //self.$selectbox = self.$searchWrap.find('select.ui_selectbox');
                 var result_wrap = $('div.contents.faq div.cont-wrap div.result-wrap');
                 self.$tab = result_wrap.find('div.ui_tab');
                 self.$faqList = result_wrap.find('div.ui_accordion');
-                self.$pagination = result_wrap.find('div.pagination');
+                self.$pagination = result_wrap.find('div.pagination').vcPagination();
                 self.$nodata = result_wrap.find('div.no-data');
-
-                vcui.require(['ui/pagination'], function () {
-                    self.bindEvents();
-                });
-
-                //self.searchNewData();
             },
 
             bindEvents: function() {
@@ -45,7 +49,7 @@
                 });
 
                 //페이지
-                self.$pagination.vcPagination().on('page_click', function(e, data) {
+                self.$pagination.on('page_click', function(e, data) {
                     //기존에 입력된 데이타와 변경된 페이지로 검색
                     var param = {'input':params.input, 'category':params.category, 'page':data}
                     self.requestData(param);

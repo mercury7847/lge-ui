@@ -39,7 +39,7 @@
 
                 self.$sectionInner = self.$lnbContents.find('div.section-inner');
                 self.$myLists = self.$sectionInner.find('div.my-lists ul');
-                self.$pagination = self.$sectionInner.find('div.pagination');
+                self.$pagination = self.$sectionInner.find('div.pagination').vcPagination();
                 self.$noData = self.$lnbContents.find('div.no-data');
 
                 var register = {
@@ -67,7 +67,7 @@
                     self.openServiceDetailPopup(_id);
                 });
 
-                self.$pagination.vcPagination().on('page_click', function(e, data) {
+                self.$pagination.on('page_click', function(e, data) {
                     var $input = self.$termFilter.find('input:checked');
                     var term = $input.val();
                     self.requestData({

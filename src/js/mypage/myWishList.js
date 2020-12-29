@@ -38,7 +38,7 @@
                 var self = this;
                 self.$contents = $('div.lnb-contents');
                 self.$list = self.$contents.find('div.info-tbl-wrap ul');
-                self.$pagination = self.$contents.find('.pagination');
+                self.$pagination = self.$contents.find('.pagination').vcPagination();
                 self.$noData = self.$contents.find('.no-data');
             },
 
@@ -56,7 +56,7 @@
                     }
                 });
 
-                self.$pagination.vcPagination().on('page_click', function(e, data) {
+                self.$pagination.on('page_click', function(e, data) {
                     self.requestData({"page": data});
                 });
             },
