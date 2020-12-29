@@ -74,6 +74,9 @@
         font-size:16px;
         line-height:24px;
     }
+    &:only-child {
+        margin-bottom:0;
+    }
 }
 @mixin eyebrow-h3 {
     margin-bottom:8px;
@@ -84,6 +87,9 @@
         margin-bottom:6px;
         font-size:14px;
         line-height:22px;
+    }
+    &:only-child {
+        margin-bottom:0;
     }
 }
 @mixin title-h1 {
@@ -146,10 +152,17 @@
             margin-top:14px;
         }
     }
+
+    &:first-child {
+        margin-top:0;
+    }
 }
 @mixin cta-btn {
     margin-top:24px;
     font-size:0;
+    &:first-child {
+        margin-top:0;
+    }
     .btn.border, 
     .text-link {
         margin-right:16px;
