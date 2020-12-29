@@ -44,8 +44,9 @@
 
 		.visual-area {
 			img {
-				//display: none;
-				width: 100%;
+				width:100%;
+				height:auto;
+				vertical-align:top;
 			}
 			&.animation-box {
 				.copy-boxing-area {
@@ -53,14 +54,6 @@
 				}
 				.controller-wrap {
 					z-index:15;
-				}
-			}
-		}
-		&.length-lg {
-			.visual-area {
-				&.animation-box {
-					.animation-area {
-					}
 				}
 			}
 		}
@@ -86,19 +79,15 @@
 			}
 
 			.category {
-				margin-bottom: 8px;
-				@include font-medium;
-				font-weight:700;
+				@include eyebrow-h3;
 			}
 
 			.head * {
-				@include font-large-2;
-				font-weight:700;
+				@include title-h3;
 			}
 
 			.desc {
-				margin-top:16px;
-				@include font-medium;
+				@include bodycopy(h3, h3);
 			}
 		}
 	}
@@ -140,41 +129,6 @@
 		.square-partition {
 			&.top, &.bottom {
 				left:0;
-			}
-		}
-	}
-
-	$color: (lightgray, dark, black, white);
-	@each $bg in $color {
-		&.bg-#{$bg} {
-			@if $bg == lightgray {
-				background-color: #f4f4f4;
-				.title {
-					&, * {
-						color: #111;
-					}
-				}
-			} @else if $bg == dark {
-				background-color: #333;
-				.title {
-					&, * {
-						color: #fff;
-					}
-                }
-			} @else if $bg == black {
-				background-color: #000;
-				.title {
-					&, * {
-						color: #fff;
-					}
-                }
-			} @else if $bg == white {
-				background-color: #fff;
-				.title {
-					&, * {
-						color: #111;
-					}
-				}
 			}
 		}
 	}
@@ -236,6 +190,14 @@
 		}
 		@include mobile {
 			margin-top: 24px;
+		}
+
+		.animation-box.size-type2 .animation-area video {
+			top:0;
+			left:50%;
+			width:auto;
+			height:100%;
+			transform:translateX(-50%);
 		}
 	}
 }

@@ -47,11 +47,7 @@
                 <div class="carousel-box animation-box @@carousel.item.font-color">
                     <!-- 3. image -->
                     <div class="visual-area">
-                        <img data-pc-src="@@carousel.item.visual1" data-m-src="@@carousel.item.visual2" class="lazyload" alt="" /><!-- [KR수정] img 수정 -->
-                        <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-                        <!-- animation Audio description -->
-                        <a href="#none" role="button" data-src="/lg5-common/videos/signature_rain_view.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
-                        <!-- // animation Audio description -->
+                        <img data-pc-src="@@carousel.item.visual1" data-m-src="@@carousel.item.visual2" alt="" aria-hidden="true">
                         <!-- animation -->
                         <div class="animation-area">
                             <!-- loop 되는 영상이 아닌 경우
@@ -68,6 +64,7 @@
                         </div>
                         <!-- // animation -->
                     </div>
+                    <!-- // [KR수정_201222] 애니메이션 DOM 공통화 수정(이미지, hidden태그 삭제) -->
                     <!-- // 3. image -->
 
                     <!-- contents-area -->
@@ -82,7 +79,7 @@
                                     </div>
                                     <div class="cta">
                                         <div class="cta-button">
-                                            <a href="#none" class="btn border" data-link-area="hero_image-cta" data-link-name="{link text}"><span>H1 button</span></a>
+                                            <a href="#none" class="btn border size-m" data-link-area="hero_image-cta" data-link-name="{link text}"><span>H1 button</span></a><!-- [KR수정_201222] .size-m class 추가 -->
                                         </div>
                                         <!-- 애니메이션 재생/정지 버튼 -->
                                         <!-- 모바일 동영상이 업로드 되어 있고 Mobile Use Flag가 N인 경우에는 아래 controller-wrap에 hidden-xs 클래스를 넣어 주세요 -->

@@ -4,117 +4,11 @@
 
 
 .KRC0014 {
-    $color: (lightgray, dark, black, white);
-	@each $bg in $color {
-		&.bg-#{$bg} {
-			@if $bg == lightgray {
-				background-color: #f4f4f4;
-				.title {
-					&, * {
-						color: #111;
-					}
-				}
-			} @else if $bg == dark {
-				background-color: #333;
-				.text-area .title {
-					&, * {
-						color: #fff;
-					}
-                }
-                .text-area .desc-text {
-                    color:#fff;
-                }
-                .link-text.ico-right {
-                    border-color:#fff;
-                    color:#fff;
-                    &:after {
-                        border-color:#fff;
-                    }
-				}
-			} @else if $bg == black {
-				background-color: #000;
-				.text-area .title {
-					&, * {
-						color: #fff;
-					}
-                }
-                .text-area .desc-text {
-                    color:#fff;
-                }
-                .link-text.ico-right {
-                    border-color:#fff;
-                    color:#fff;
-                    &:after {
-                        border-color:#fff;
-                    }
-				}
-			} @else if $bg == white {
-				background-color: #fff;
-				.title {
-					&, * {
-						color: #111;
-					}
-				}
-			}
-		}
-	}
-
-    .btn {
-        display: inline-block;
-        min-width:194px;
-        padding:15px 0;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        background-color: #fff;
-        line-height: 24px;
-        @include font-family($font-weight-bold);
-        font-size: 16px;
-        color: #111;
-        text-align: center;
-        vertical-align: top;
-
-        &.btn-outline-primary {
-            border-color: #212121;
-            background-color: #fff;
-            color: #111;
-        }
-        &.btn-primary {
-            border-color: #111;
-            background-color: #111;
-            color: #fff;
+    .component-inner {
+        @include mobile {
+            padding:0;
         }
     }
-
-    .link-text {
-        position: relative;
-        display: inline-block;
-        padding-bottom: 4px;
-        border-bottom: 1px solid #212121;
-        font-size: 14px;
-        line-height: 20px;
-        color: #111;
-        vertical-align: top;
-
-        &.ico-right {
-            margin-right: 14px;
-            &:after {
-                position: absolute;
-                @include calc(top, 50%, 6px);
-                right: -12px;
-                width: 8px;
-                height: 8px;
-                border: solid #111;
-                border-width: 2px 2px 0 0;
-                transform: rotate(45deg);
-                content: '';
-            }
-        }
-
-        &.bold {
-            @include font-family($font-weight-bold);
-        }
-    }
-
     img {
         width:100%;
         height:auto;
@@ -138,48 +32,24 @@
 
     // common
     .text-area, .text-m-area {
-        .title h2 {
-            color:#111;
-            font-size:18px;
-            line-height:26px;
-            font-weight:700;
+        .title * {
+            @include title-h3;
         }
         .desc-text {
-            margin-top:24px;
-            color:#616161;
-            font-size:16px;
-            line-height:24px;
+            @include bodycopy(h3, h3);
         }
     }
-
-    [class^="btn-type-"], [class^="btn-mtype-"] {
-        margin:0 -12px;
-        font-size:0;
-        span {
-            display:inline-block;
-            margin:0 12px;
-            vertical-align:top;
-        }
-    }
-    .btn-type-box, .btn-mtype-box {
-        margin-top:28px;
-        span {
-            margin-top:12px;
-        }
-    }
-    .btn-type-text, .btn-mtype-text {
-        margin-top:16px;
-        span {
-            margin-top:24px;
-        }
+    .button-box-default,
+    .button-text-default,
+    .btn-type-box,
+    .btn-type-text,
+    .btn-mtype-box,
+    .btn-mtype-text {
+        @include cta-btn;
     }
 
     // PC
     .visual-set {
-        margin:0 -12px;
-        @include mobile {
-            margin:0;
-        }
         &.large-align-left {
             .hidden-xs {
                 .visual-area {
@@ -200,31 +70,15 @@
                 }
             }
         }
-        .animation-box {
-            img {
-                width: 100%;
-                height:auto;
-                vertical-align:top;
-            }
-            .animation-area {
-                padding: 0 12px;
-            }
-        }
     }
     .hidden-xs {
         @include clearfix;
         .visual-area {
-            width:50%;
-            padding:0 12px;
-            .caption {
-                width:auto;
-                left:12px;
-                right:12px;
-            }
+            width:calc(50% - 12px);
         }
         .text-thumb-area {
-            width:50%;
-            padding:0 12px;
+            width:calc(50% + 12px);
+            padding:0 48px;
         }
 
         .thumbnail-area-box {
@@ -234,15 +88,15 @@
                 display:none !important;
             }
 
-            margin-top:32px;
+            margin-top:4px;
             .thumbnail-area {
-                margin:0 -8px;
+                margin:0 -10px;
                 font-size:0;
                 .obj-thumb {
                     display:inline-block;
-                    width:64px;
-                    height:64px;
-                    margin:0 8px;
+                    width:80px;
+                    height:80px;
+                    margin:20px 10px 0;
                     a {
                         display:block;
                         position:relative;
@@ -256,6 +110,15 @@
                         }
                     }
                     &.on {
+                        a::before {
+                            content:' ';
+                            position:absolute;
+                            top:0;
+                            left:0;
+                            right:0;
+                            bottom:0;
+                            background:rgba(#000, .5);
+                        }
                         a::after {
                             content:' ';
                             position:absolute;
@@ -263,7 +126,7 @@
                             left:0;
                             right:0;
                             bottom:0;
-                            border:4px solid #EC455A;
+                            border:2px solid #EC455A;
                         }
                     }
                 }
@@ -278,12 +141,24 @@
         .indi-wrap {
             position:absolute;
             top:0;
+            bottom:auto;
             left:0;
             right:0;
             z-index:10;
         }
         .ui_carousel_list {
             overflow:hidden;
+        }
+        .btn-arrow {
+            position:absolute;
+            top:50%;
+            transform:translateY(-50%);
+            &.prev {
+                left:4px;
+            }
+            &.next {
+                right:4px;
+            }
         }
         .items {
             @include clearfix;
@@ -298,7 +173,8 @@
             }
         }
         .text-m-area {
-            margin-top:62px;
+            margin-top:56px;
+            padding:0 16px;
         }
     }
 }
