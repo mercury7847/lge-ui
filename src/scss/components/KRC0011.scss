@@ -60,150 +60,62 @@
 			}
 		}
     }
-    
-    .btn {
-        display: inline-block;
-        min-width:194px;
-        padding:15px 0;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        background-color: #fff;
-        line-height: 24px;
-        font-weight: 700;
-        font-size: 16px;
-        color: #111;
-        text-align: center;
-        vertical-align: top;
 
-        &.btn-outline-primary {
-            border-color: #212121;
-            background-color: #fff;
-            color: #111;
-        }
-        &.btn-primary {
-            border-color: #111;
-            background-color: #111;
-            color: #fff;
-        }
-    }
-
-    .link-text {
-        position: relative;
-        display: inline-block;
-        padding-bottom: 4px;
-        border-bottom: 1px solid #212121;
-        font-size: 14px;
-        line-height: 20px;
-        color: #111;
-        vertical-align: top;
-
-        &.ico-right {
-            margin-right: 14px;
-            &:after {
-                position: absolute;
-                @include calc(top, 50%, 6px);
-                right: -12px;
-                width: 8px;
-                height: 8px;
-                border: solid #111;
-                border-width: 2px 2px 0 0;
-                transform: rotate(45deg);
-                content: '';
-            }
-        }
-
-        &.bold {
-            @include font-family($font-weight-bold);
-        }
+    .component-inner {
+        padding:0;
     }
 
     .inner {
-        @include grid-row;
-    }
-    .visual-area {
-        @include grid-col(left,8,12);
-    }
-    .text-area {
-        @include grid-col(right,4,12);
-    }
-    &.type-visual-right {
+        display:flex;
+        align-items:center;
+        margin:0 -12px;
         .visual-area {
-            @include grid-col(right,8,12);
+            width:calc((100% / 3) * 2);
+            padding:0 12px;
         }
         .text-area {
-            @include grid-col(left,4,12);
+            width:calc(100% / 3);
+            padding:0 24px;
         }
-    }
-
-    .text-area {
-
-        // 텍스트 가로정렬 및 버튼 사이 간격
-        &.align-left {
-            .btn-type-box,
-            .btn-type-text {
-                span {
-                    margin: 0 24px 12px 0;
-                    &:last-child {
-                        margin-right: 0;
-                    }
+        @media screen and (max-width:1200px) {
+            display:block;
+            margin:0;
+            .visual-area {
+                width:100%;
+                margin-top:56px;
+                padding:0;
+                @include mobile {
+                    margin-top:28px;
+                }
+                &:first-child {
+                    margin-top:0;
                 }
             }
-        }
-        &.align-right {
-            .btn-type-box,
-            .btn-type-text {
-                span {
-                    margin: 0 0 12px 24px;
-                    &:first-child {
-                        margin-left: 0;
-                    }
+            .text-area {
+                width:100%;
+                margin-top:56px;
+                padding:0;
+                @include mobile {
+                    margin-top:28px;
+                    padding:0 16px;
                 }
-            }
-        }
-        &.align-center {
-            .btn-type-box,
-            .btn-type-text {
-                margin: 0 -12px;
-                span {
-                    margin: 0 12px 12px;
+                &:first-child {
+                    margin-top:0;
                 }
             }
         }
     }
-    .title {
-        margin-bottom: 24px;
-        h1, h2, h3, h4, h5, h6 {
-            max-height: 68px;
-            @include font-family($font-weight-bold);
-            font-size: 24px;
-            line-height: 34px;
-            @include textClipClamp(2);
 
-        }
+    .title * {
+        @include title-h2;
     }
     .body-copy {
-        margin-bottom: 40px;
-        font-size: 16px;
-        line-height: 24px;
+        @include bodycopy(h2, h2);
     }
     .cta {
         .btn-type-box,
         .btn-type-text {
-            font-size: 0;
-            span {
-                display: inline-block;
-            }
-            @include mobile {
-                span {
-                    display: block;
-                }
-                .btn {
-                    min-width: 194px;
-                    padding: 16px 0;
-                    line-height: 24px;
-                    font-size: 16px;
-                }
-            }
+            @include cta-btn;
         }
     }
 
@@ -367,16 +279,6 @@
             &.mobile {
                 display: none;
             }
-        }
-    }
-
-    .disclaimer {
-        padding: 16px 24px;
-        font-size: 14px;
-        line-height: 20px;
-        @include mobile {
-            padding-left: 20px;
-            padding-right: 20px;
         }
     }
 }
