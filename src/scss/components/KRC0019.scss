@@ -4,42 +4,6 @@
 
 
 .KRC0019 {
-/*
-    &.flow-left,
-    &.flow-right {
-        .component-inner {
-            display: table;
-            .square.main {
-                display: table-cell;
-                vertical-align:top;
-            }
-            .square.sub {
-            }
-
-            @include mobile {
-                .square.main {
-                    display: block;
-                }
-            }
-        }
-
-    }
-*/  
-
-    $color: (lightgray, dark, black, white);
-    @each $bg in $color {
-        &.bg-#{$bg} {
-            @if $bg == lightgray {
-                background-color: #f4f4f4;
-            } @else if $bg == dark {
-                background-color: #333;
-            } @else if $bg == black {
-                background-color: #000;
-            } @else if $bg == white {
-                background-color: #fff;
-            }
-        }
-    }
 
     &.flow-left,
     &.flow-right {
@@ -57,56 +21,21 @@
     .square {
         position: relative;
 
-        .see-video {
-            display:block;
-            &:before {
-                content: '';
-                position: absolute;
-                top:auto;
-                left: 50%;
-                bottom: 24px;
-                z-index: 1;
-                width: 48px;
-                height: 48px;
-                margin-left:-24px;
-                background: url('/lg5-common/images/btn-video-play.svg') no-repeat 0 0;
-                background-size: 100% 100%;
-                border-radius: 50% 50%;
-            }
-            &.acc-video-content {
-                position:absolute;
-                top:20px;
-                right:20px;
-                width:24px;
-                height:24px;
-                overflow:hidden;
-                z-index:9;
-                text-indent:2000%;
-                white-space:nowrap;
-                &:before {
-                    content:'';
-                    display:inline-block;
-                    position:absolute;
-                    top:0;
-                    right:0;
-                    left:inherit;
-                    width:24px;
-                    height:24px;
-                    margin:0;
-                    background:url('/lg5-common/images/btn-AD-on.svg');
-                    background-size:100%;
-                    border-radius:inherit;
-                }
-            }
+        .visual-area.video .see-video:before {
+            top:auto;
+            bottom:24px;
+        }
+        .controller-wrap {
+            z-index:30;
         }
 
         .copy-boxing-area {
             position: absolute;
             top: 0;
-            //right: 0;
-            //bottom: 0;
+            right: 0;
+            bottom: 0;
             left: 0;
-            z-index: 1;
+            z-index: 20;
             padding: 64px 32px;
             @include mobile {
                 padding:32px 16px;
@@ -131,13 +60,11 @@
 
     .copy-boxing-area {
         .category {
-            margin-bottom:8px;
-            @include font-eyebrow;
-            font-weight:700;
+            @include eyebrow;
         }
         .head {
             * {
-                @include font-title-2;
+                @include title-h2;
             }
         }
     }

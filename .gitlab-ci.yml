@@ -37,7 +37,7 @@ dev:
 
     # - npm install
     # - node akamai.js
-    # - rm -rf ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}
+    - rm -rf ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}
     # Need to delete build files in dist directory
     - rm -rf ../dist/${CI_COMMIT_SHA}
 

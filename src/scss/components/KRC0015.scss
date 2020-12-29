@@ -54,75 +54,16 @@
         }
         @include mobile {
             &.prev {
-                left: 8px;
+                left: 4px;
             }
             &.next {
-                right: 8px;
+                right: 4px;
             }
         }
     }
 
     .indi-wrap {
-        position: absolute;
-        bottom: 0;
-        padding: 0 0 30px;
-        left: 0;
-        width: 100%;
-        height: 42px;
-        text-align: center;
-        font-size: 0;
-        z-index: 2;
-
-        .ui_carousel_dots,
-        .ui_carousel_play {
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .ui_carousel_play {
-            .btn-play {
-                position: relative;
-                display: inline-block;
-                width: 16px;
-                height: 16px;
-                margin-left: 12px;
-                border-radius: 50%;
-                background-color: #fff;
-                font-size: 0;
-            }
-            &.play {
-                .btn-play {
-                    &:after {
-                        position: absolute;
-                        @include calc(top,50%,4px);
-                        @include calc(left,50%,3px);
-                        border-left: 7px solid #111;
-                        border-top: 4px solid transparent;
-                        border-bottom: 4px solid transparent;
-                        content: '';
-                    }
-                }
-            }
-            &.stop {
-                .btn-play {
-                    &:before,
-                    &:after {
-                        position: absolute;
-                        @include calc(top,50%,4px);
-                        width: 2px;
-                        height: 8px;
-                        background-color: #111;
-                        content: '';
-                    }
-                    &:before {
-                        @include calc(left,50%,3px);
-                    }
-                    &:after {
-                        @include calc(left,50%,-1px);
-                    }
-                }
-            }
-        }
+        bottom:20px;
     }
 
     .carousel-box {
@@ -174,41 +115,33 @@
     }
 
     .text-block {
-        margin-bottom: 40px;
         .eyebrow {
-            margin-bottom: 8px;
-            font-weight: 700;
-            @include font-eyebrow;
+            @include eyebrow;
         }
-        .title {
-            margin-bottom: 32px;
-            h1, h2, h3, h4, h5, h6 {
-                font-weight: 700;
-                font-size: 56px;
-                line-height: 74px;
-            }
-            @include mobile {
-                margin-bottom: 16px;
-                h1, h2, h3, h4, h5, h6 {
-                    font-size: 32px;
-                    line-height: 42px;
-                }
-            }
+        .title * {
+            @include title-h1;
         }
         .copy {
-            @include font-large-1;
-        }
-
-        @include mobile {
-            margin-bottom: 24px;
+            @include bodycopy(h1, h1);
         }
     }
 
+    .cta {
+        margin-top:24px;
+    }
     .cta-button,
     .cta-link {
-        display: inline-block;
-        font-size: 0;
-        vertical-align: middle;
+        display:inline-block;
+        margin-top:0;
+        font-size:0;
+        vertical-align:middle;
+        .btn.border,
+        .text-link {
+            margin-left:16px;
+            &:first-child {
+                margin-left:0;
+            }
+        }
     }
 
     .video-link {
@@ -227,6 +160,17 @@
                 background: no-repeat 0 0;
                 vertical-align: -9px;
                 content: '';
+                background:url('/lg5-common/images/icons/btn-play-32-black.svg') center no-repeat;
+            }
+            &.bc-black {
+                &:before {
+                    background:url('/lg5-common/images/icons/btn-play-32-black.svg') center no-repeat;
+                }
+            }
+            &.bc-white {
+                &:before {
+                    background:url('/lg5-common/images/icons/btn-play-32-white.svg') center no-repeat;
+                }
             }
         }
     }
@@ -244,20 +188,16 @@
     .type-wide {
         .text-wrap {
             .inner {
-                .text-block {
-                    max-width:100%;
-                }
+                max-width:100%;
             }
         }
     }
     .type-narrow {
         .text-wrap {
             .inner {
-                .text-block {
-                    max-width:795px;
-                    @include mobile {
-                        max-width:100%;
-                    }
+                max-width:795px;
+                @include mobile {
+                    max-width:100%;
                 }
             }
         }
@@ -271,60 +211,23 @@
                 .text-wrap {
                     .inner {
                         text-align: left;
-                        .text-block {
-                            margin-right:auto;
-                        }
-                    }
-                }
-                .cta-link {
-                    .text-link {
-                        margin-right: 16px;
-                        &:last-child {
-                            margin-right: 0;
-                        }
+                        margin-right:auto;
                     }
                 }
             }
             @if $key == right {
                 .text-wrap {
                     .inner {
-                        text-align: right;
-                        .text-block {
-                            margin-left:auto;
-                        }
-                    }
-                }
-                .cta-link {
-                    .text-link {
-                        margin-left: 16px;
-                        &:first-child {
-                            margin-left: 0;
-                        }
+                        text-align: left;
+                        margin-left:auto;
                     }
                 }
             }
             @if $key == center {
                 .text-wrap {
                     .inner {
-                        .text-block {
-                            margin-left:auto;
-                            margin-right:auto;
-                        }
-                    }
-                }
-                .cta-link {
-                    margin: 0 -8px;
-                    .text-link {
-                        margin: 0 8px;
-                    }
-                }
-            }
-            @include mobile {
-                .cta-link {
-                    span {
-                        display: block;
-                        margin-right: 0;
-                        margin-left: 0;
+                        margin-left:auto;
+                        margin-right:auto;
                     }
                 }
             }
@@ -362,113 +265,27 @@
     .disclaimer-wrap {
         display: none;
     }
-
-    // 컬러값 설정
-    $color: (lightgray, dark, black, white);
-    @each $bg in $color {
-        &.bg-#{$bg} {
-            @if $bg == lightgray {
-                background: #f4f4f4;
-            } @else if $bg == dark {
-                background: #333;
-            } @else if $bg == black {
-                background: #000;
-                .indi-wrap {
-                    li {
-                        .btn-indi {
-                            background-color: rgba(255, 255, 255, 0.5);
-                        }
-                        &.on .btn-indi {
-                            background-color: #fff;
-
-                        }
-                    }
-                }
-            } @else if $bg == white {
-                background: #fff;
-                .indi-wrap {
-                    li {
-                        .btn-indi {
-                            background-color: #ddd;
-                        }
-                        &.on .btn-indi {
-                            background-color: #111;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    @each $text in $color {
-        .text-#{$text} {
-            @if $text == white {
-                .text-block {
-                    .eyebrow {
-                        color: #fff;
-                    }
-                    .title {
-                        h1, h2, h3, h4, h5, h6 {
-                            color: #fff;
-                        }
-                    }
-                    .copy {
-                        color: #fff;
-                    }
-                }
-                .btn {
-                    border-color: #fff;
-                    background-color: transparent;
-                    color: #fff;
-                }
-                .video-link {
-                    .btn-video {
-                        color: #fff;
-                        &:before {
-                            background-image: url('/lg5-common/images/icons/btn-play-32-white.svg');
-                        }
-                    }
-                }
-                .text-link {
-                    color: #fff;
-                    &:after {
-                        background-image: url("/lg5-common/images/icons/icon-arr-16-wt.svg");
-                    }
-                }
-            }
-            @if $text == black {
-                .video-link {
-                    .btn-video {
-                        color: $color-default;
-                        &:before {
-                            background-image: url('/lg5-common/images/icons/btn-play-32-black.svg');
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
 
-.animation-box {
-    &.animation-box-full {
-        &.ui_carousel_slide {
-            .animation-area {
-                top: 50%;
-                transform: translateY(-100%);
-                video {
-                    height: auto;
-                }
-                @include mobile {
-                    top: 0;
-                    transform: translateY(0);
-                    video {
-                        height: 100%;
-                    }
-                }
-                .controller-wrap {
-                    @include calc(bottom,-50%,-85px);
-                }
+.carousel-box.animation-box {
+    .visual-area {
+        position:relative;
+        img {
+            display:block;
+            width:100%;
+            height:auto;
+        }
+        .animation-area {
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            overflow:hidden;
+            video {
+                position:absolute;
+                width:100%;
+                height:100%;
             }
         }
     }

@@ -43,29 +43,29 @@
 				@@if (firsts === "image") {
 					<!-- 등록한 첫번째 항목의 이미지 출력 -->
 					<div class="visual-area" aria-describedby="title01-01">
-						<img data-src="/lg5-common/images/KRC0014/@thumb01.jpg" alt="" class="lazyload" />
+						<img data-src="/lg5-common/images/KRC0014/@thumb01.jpg" alt="">
 						<!-- [KR수정] 접근성 추가 -->
 						<p class="hidden pc">graphic description : </p>
 						<!-- // [KR수정] 접근성 추가 -->
 					</div>
 				} @@if (firsts === "video") {
 					<!-- 등록한 첫번째 항목의 이미지 및 동영상 출력 -->
+					<!-- [KR수정_201222] 비디오 DOM 공통화 수정(AD버튼, 캡션 삭제, 이미지 태그 내 aria-hidden="true"삭제 및 hidden태그 추가) -->
 					<div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box 추가 -->
 						<!-- video play button -->
-						<a href="#none" data-src="https://www.youtube.com/embed/pz5CxHVBp4A" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-area="large_image_horizontal_pickers-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>
 						<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="large_image_horizontal_pickers-video_play" data-link-name="{video title / video id}" title="opens in a new layer popup, plays video">
-							<img data-src="/lg5-common/images/KRC0014/@thumb01.jpg" alt="" class="lazyload" aria-hidden="true">
-							<div class="caption">[video title 1]</div>
+							<img src="/lg5-common/images/KRC0014/@thumb01.jpg" alt="">
+							<p class="hidden">graphic description : </p>
 						</a>
 						<!-- // video play button -->
 					</div>
+					<!-- // [KR수정_201222] 비디오 DOM 공통화 수정(AD버튼, 캡션 삭제, 이미지 태그 내 aria-hidden="true"삭제 및 hidden태그 추가) -->
 				} @@if (firsts === "animation") {
 					<!-- 2020.09.21 animation type 추가 -->
 					<!-- 1. animation 타입인 경우 animation-box 클래스 추가 -->
-					<div class="visual-area animation-box">
-						<a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
-						<img data-src="/lg5-common/images/dummy/@sample-3-2.gif" alt="" class="lazyload" />
-						<p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+					<!-- [KR수정_201222] 애니메이션 DOM 공통화 수정(AD버튼, 캡션 삭제, 이미지 태그 내 aria-hidden="true"추가 및 hidden태그 삭제, .size-type class추가) -->
+					<div class="visual-area animation-box size-type">
+						<img src="/lg5-common/images/dummy/@sample-3-2.gif" alt="" aria-hidden="true">
 						<div class="animation-area">
 							<video loop>
 								<source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
@@ -77,10 +77,8 @@
 								<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
 							</div>
 						</div>
-						<!-- caption -->
-						<div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-						<!-- // caption -->
 					</div>
+					<!-- // [KR수정_201222] 애니메이션 DOM 공통화 수정(AD버튼, 캡션 삭제, 이미지 태그 내 aria-hidden="true"추가 및 hidden태그 삭제, .size-type class추가) -->
 					<!-- // 1. animation 타입인 경우 -->
 				}
 					<div class="text-thumb-area">
@@ -97,7 +95,7 @@
 								<li class="obj-thumb">
 									<!-- 1-1. image -->
 									<a href="#none" aria-describedby="title01-01">
-										<img data-src="/lg5-common/images/KRC0014/@thumb01-sm.jpg" alt="image alternative text sample 1" class="lazyload" data-large="/lg5-common/images/KRC0014/@thumb01.jpg" />
+										<img data-src="/lg5-common/images/KRC0014/@thumb01-sm.jpg" alt="image alternative text sample 1" data-large="/lg5-common/images/KRC0014/@thumb01.jpg" />
 									</a>
 									<!-- // 1-1. image -->
 									<div class="text-area-default">
@@ -109,14 +107,16 @@
 										<!-- // 1.5. body copy -->
 									</div>
 									<!-- 1.6 cta -->
+									<!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
 									<div class="button-box-default">
-										<span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">문의하기1</a></span><!-- [KR수정] .btn-primary -> .btn-ourline-primay 로 수정 -->
-										<span><a href="#none" class="btn btn-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">문의하기2</a></span>
+										<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>문의하기1</span></a>
+										<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>문의하기2</span></a>
 									</div>
 									<div class="button-text-default">
-										<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">자세히 보기</a></span>
-										<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">자세히 보기</a></span>
+										<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>자세히 보기</span></a>
+										<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>자세히 보기</span></a>
 									</div>
+									<!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
 									<!-- // 1.6 cta -->
 								</li>
 								}
@@ -125,101 +125,110 @@
 									<!-- Edit : 2019-03-11 add data-video-title and data-adobe-video attrbute -->
 									<a href="#none" data-type="youtube" 
 										data-video-id="https://www.youtube.com/embed/PetoQo1eUww" data-video-title="[video title 4]" data-adobe-video="{video title / video id}" aria-describedby="title01-01"
-										data-video-acc-id="https://www.youtube.com/embed/pz5CxHVBp4A"
-									>
-										<img data-src="/lg5-common/images/KRC0014/@thumb01-sm.jpg" alt="Lorem ipsum dolor sit amet, consectetuer 4" class="lazyload" data-large="/lg5-common/images/KRC0014/@thumb01.jpg" />
+										data-video-acc-id="https://www.youtube.com/embed/pz5CxHVBp4A">
+										<img data-src="/lg5-common/images/KRC0014/@thumb01-sm.jpg" alt="Lorem ipsum dolor sit amet, consectetuer 4" data-large="/lg5-common/images/KRC0014/@thumb01.jpg" />
 									</a>
 									<div class="text-area-default">
 										<div class="title" id="title01-01">@@headline1-1</div>
 										<div class="desc-text @@font-style1">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet</div>
 									</div>
+									<!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
 									<div class="button-box-default">
-										<span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">문의하기1</a></span><!-- [KR수정] .btn-primary -> .btn-ourline-primay 로 수정 -->
-										<span><a href="#none" class="btn btn-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">문의하기2</a></span>
+										<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>문의하기1</span></a>
+										<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>문의하기2</span></a>
 									</div>
 									<div class="button-text-default">
-										<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">자세히 보기</a></span>
-										<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">자세히 보기</a></span>
+										<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>자세히 보기</span></a>
+										<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>자세히 보기</span></a>
 									</div>
+									<!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
 								</li>
 								}
 								@@if (firsts === "animation") {
 									<li class="obj-thumb">
 										<a href="#none" data-type="ani-box" aria-describedby="title01" data-src="/lg5-common/videos/signature_rain_view.mp4" data-acc-src="/lg5-common/videos/Highlight_backround.mp4" data-title="[animation title 1]">
-											<img data-src="/lg5-common/images/KRC0014/@thumb01-sm.jpg" alt="Lorem ipsum dolor sit amet, consectetuer 4" class="lazyload" data-large="/lg5-common/images/dummy/@sample-3-2.gif" />
+											<img data-src="/lg5-common/images/KRC0014/@thumb01-sm.jpg" alt="Lorem ipsum dolor sit amet, consectetuer 4" data-large="/lg5-common/images/dummy/@sample-3-2.gif" />
 										</a>
 										<div class="text-area-default">
 											<div class="title" id="title01-01">@@headline1-1</div>
 											<div class="desc-text @@font-style1">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet</div>
 										</div>
+										<!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
 										<div class="button-box-default">
-											<span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">문의하1</a></span><!-- [KR수정] .btn-primary -> .btn-ourline-primay 로 수정 -->
-											<span><a href="#none" class="btn btn-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">문의하기2</a></span>
+											<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>문의하기1</span></a>
+											<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>문의하기2</span></a>
 										</div>
 										<div class="button-text-default">
-											<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">자세히 보기</a></span>
-											<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">자세히 보기</a></span>
+											<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>자세히 보기</span></a>
+											<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>자세히 보기</span></a>
 										</div>
+										<!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
 									</li>
 									}
 								<!-- // 1. Thumbnail 1 -->
 								<!-- 2. Thumbnail 2 -->
 								<li class="obj-thumb">
 									<a href="#none" aria-describedby="title01-02">
-										<img data-src="/lg5-common/images/KRC0014/@thumb02-sm.jpg" alt="image alternative text sample 2" class="lazyload" data-large="/lg5-common/images/KRC0014/@thumb02.jpg" />
+										<img data-src="/lg5-common/images/KRC0014/@thumb02-sm.jpg" alt="image alternative text sample 2" data-large="/lg5-common/images/KRC0014/@thumb02.jpg" />
 									</a>
 									<div class="text-area-default">
 										<div class="title" id="title01-02">@@headline1-2</div>
 										<div class="desc-text @@font-class2">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet</div>
 									</div>
+									<!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
 									<div class="button-box-default">
-										<span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02">문의하기3</a></span><!-- [KR수정] .btn-primary -> .btn-ourline-primay 로 수정 -->
-										<span><a href="#none" class="btn btn-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02">문의하기</a></span>
+										<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02"><span>문의하기3</span></a>
+										<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02"><span>문의하기4</span></a>
 									</div>
 									<div class="button-text-default">
-										<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02">자세히 보기</a></span>
-										<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02">자세히 보기</a></span>
+										<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02"><span>자세히 보기</span></a>
+										<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02"><span>자세히 보기</span></a>
 									</div>
+									<!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
 								</li>
 								<!-- // 2. Thumbnail 2 -->
 								<!-- 3. Thumbnail 3 -->
 								<li class="obj-thumb">
 									<!-- Edit : 2019-03-11 add data-video-title and data-adobe-video attrbute -->
 									<a href="#none" data-type="youtube" data-video-id="/lg5-common/videos/signature_rain_view.mp4" data-video-acc-id="/lg5-common/videos/Highlight_backround.mp4" data-video-title="[video title 4]" data-adobe-video="{video title / video id}" aria-describedby="title01-04">
-										<img data-src="/lg5-common/images/KRC0014/@thumb01-sm.jpg" alt="Lorem ipsum dolor sit amet, consectetuer 4" class="lazyload" data-large="/lg5-common/images/KRC0014/@thumb01.jpg" />
+										<img data-src="/lg5-common/images/KRC0014/@thumb01-sm.jpg" alt="Lorem ipsum dolor sit amet, consectetuer 4" data-large="/lg5-common/images/KRC0014/@thumb01.jpg" />
 									</a>
 									<div class="text-area-default">
 										<div class="title" id="title01-03">@@headline1-3</div>
 										<div class="desc-text">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet</div>
 									</div>
+									<!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
 									<div class="button-box-default">
-										<span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03">문의하기5</a></span><!-- [KR수정] .btn-primary -> .btn-ourline-primay 로 수정 -->
-										<span><a href="#none" class="btn btn-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03">문의하기6</a></span>
+										<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03"><span>문의하기5</span></a>
+										<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03"><span>문의하기6</span></a>
 									</div>
 									<div class="button-text-default">
-										<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03">자세히 보기</a></span>
-										<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03">자세히 보기</a></span>
+										<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03"><span>자세히 보기</span></a>
+										<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03"><span>자세히 보기</span></a>
 									</div>
+									<!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
 								</li>
 								<!-- // 3. Thumbnail 3 -->
 								<!-- 4. Thumbnail 4 -->
 								<li class="obj-thumb">
 									<!-- Edit : 2019-03-11 add data-video-title and data-adobe-video attrbute -->
 									<a href="#none" data-type="ani-box" aria-describedby="title01" data-src="/lg5-common/videos/signature_rain_view.mp4" data-acc-src="/lg5-common/videos/Highlight_backround.mp4" data-title="[animation title 1]" data-autoplay="false" data-title-color="fc-pink" data-acc-desc="acc acc acc">
-										<img data-src="/lg5-common/images/KRC0014/@thumb02-sm.jpg" alt="Lorem ipsum dolor sit amet, consectetuer 4" class="lazyload" data-large="/lg5-common/images/dummy/@sample-3-2.gif" />
+										<img data-src="/lg5-common/images/KRC0014/@thumb02-sm.jpg" alt="Lorem ipsum dolor sit amet, consectetuer 4" data-large="/lg5-common/images/dummy/@sample-3-2.gif" />
 									</a>
 									<div class="text-area-default">
 										<div class="title" id="title01-04">@@headline1-4</div>
 										<div class="desc-text @@font-style1">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet</div>
 									</div>
+									<!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
 									<div class="button-box-default">
-										<span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04">문의하기7</a></span><!-- [KR수정] .btn-primary -> .btn-ourline-primay 로 수정 -->
-										<span><a href="#none" class="btn btn-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04">문의하기8</a></span>
+										<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04"><span>문의하기7</span></a>
+										<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04"><span>문의하기8</span></a>
 									</div>
 									<div class="button-text-default">
-										<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04">자세히 보기</a></span>
-										<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04">자세히 보기</a></span>
+										<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04"><span>자세히 보기</span></a>
+										<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04"><span>자세히 보기</span></a>
 									</div>
+									<!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
 								</li>
 								<!-- // 4. Thumbnail 4 -->
 							</ul>
@@ -227,14 +236,16 @@
 						</div>
 						
 						<!-- cta -->
+						<!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
 						<div class="btn-type-box">
-							<span><a href="#none" class="btn btn-outline-primary" aria-describedby="title01-01">문의하기</a></span><!-- [KR수정] .btn-primary -> .btn-outline-primary 로 수정 -->
-							<span><a href="#none" class="btn btn-primary" aria-describedby="title01-01">문의하기</a></span>
+							<a href="#none" class="btn border size" aria-describedby="title01-01"><span>문의하기1</span></a>
+							<a href="#none" class="btn border size" aria-describedby="title01-01"><span>문의하기2</span></a>
 						</div>
 						<div class="btn-type-text">
-							<span><a href="#none" class="link-text bold ico-right" aria-describedby="title01-01">자세히 보기</a></span>
-							<span><a href="#none" class="link-text bold ico-right" aria-describedby="title01-01">자세히 보기</a></span>
+							<a href="#none" class="text-link" aria-describedby="title01-01"><span>자세히 보기</span></a>
+							<a href="#none" class="text-link" aria-describedby="title01-01"><span>자세히 보기</span></a>
 						</div>
+						<!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
 						<!-- // cta -->
 					</div>
 				</div>
@@ -252,7 +263,7 @@
 						@@if (firsts === "image") {
 						<div class="item ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
 							<div class="visual-m-box" aria-describedby="title01-01">
-								<img data-src="/lg5-common/images/KRC0014/@thumb01.jpg" alt="" class="lazyload" />
+								<img data-src="/lg5-common/images/KRC0014/@thumb01.jpg" alt="">
 								<p class="hidden mobile">graphic description : </p>
 							</div>
 							<div class="text-m-area">
@@ -260,41 +271,47 @@
 									<div class="title" id="title01-01">@@headline1-1</div>
 									<div class="desc-text">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet</div>
 								</div>
+								<!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
 								<div class="btn-mtype-box">
-									<span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">문의하기</a></span><!-- [KR수정] .btn-outline-primary class수정 -->
-									<span><a href="#none" class="btn btn-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">문의하기</a></span>
+									<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>문의하기</span></a>
+									<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>문의하기</span></a>
 								</div>
 								<div class="btn-mtype-text">
-									<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">자세히 보기</a></span>
-									<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">자세히 보기</a></span>
+									<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>자세히 보기</span></a>
+									<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>자세히 보기</span></a>
 								</div>
+								<!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
 							</div>
 						</div>
 						}
 						@@if (firsts === "video") {
 						<div class="item ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+							<!-- [KR수정_201222] 비디오 DOM 공통화 수정(AD버튼, caption삭제, 이미지 태그 내 aria-hidden삭제, hidden태그 추가) -->
 							<div class="visual-m-box visual-area video youtube-box" aria-describedby="title01-01"><!-- [KR수정] .youtube-box, .visual-area class 추가 -->
 								<!-- video play button -->
-								<a href="#none" data-src="https://www.youtube.com/embed/pz5CxHVBp4A" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-area="large_image_horizontal_pickers-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>                                      
 								<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="large_image_horizontal_pickers-video_play" data-link-name="{video title / video id}" title="opens in a new layer popup, plays video">
-									<img data-src="/lg5-common/images/KRC0014/@thumb01.jpg" alt="" class="lazyload" aria-hidden="true">
-									<div class="caption">[video title 1]</div>
+									<img data-src="/lg5-common/images/KRC0014/@thumb01.jpg" alt="">
+									<p class="hidden">graphic description : </p>
+									<!-- <div class="caption">[video title 1]</div> -->
 								</a>
 								<!-- // video play button -->
 							</div>
+							<!-- // [KR수정_201222] 비디오 DOM 공통화 수정(AD버튼, caption삭제, 이미지 태그 내 aria-hidden삭제, hidden태그 추가) -->
 							<div class="text-m-area">
 								<div class="text-box">
 									<div class="title" id="title01-01">@@headline1-1</div>
 									<div class="desc-text @@font-style1">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet</div>
 								</div>
+								<!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
 								<div class="btn-mtype-box">
-									<span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">문의하기</a></span><!-- [KR수정] .btn-outline-primary class수정 -->
-									<span><a href="#none" class="btn btn-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">문의하기</a></span>
+									<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>문의하기</span></a>
+									<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>문의하기</span></a>
 								</div>
 								<div class="btn-mtype-text">
-									<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">자세히 보기</a></span>
-									<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01">자세히 보기</a></span>
+									<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>자세히 보기</span></a>
+									<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-01"><span>자세히 보기</span></a>
 								</div>
+								<!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
 							</div>
 						</div>
 						}
@@ -302,80 +319,93 @@
 						<!-- 2. thumbnail 2 -->
 						<div class="item ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
 							<div class="visual-m-box" aria-describedby="title01-02">
-								<img data-src="/lg5-common/images/KRC0014/@thumb02.jpg" alt="" class="lazyload" />
-								<p class="hidden mobile">graphic description : </p>
+								<img data-src="/lg5-common/images/KRC0014/@thumb02.jpg" alt="">
+								<p class="hidden">graphic description : </p>
 							</div>
 							<div class="text-m-area">
 								<div class="text-box">
 									<div class="title" id="title01-02">@@headline1-2</div>
 									<div class="desc-text @@font-class2">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet</div>
 								</div>
+								<!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
 								<div class="btn-mtype-box">
-									<span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02">문의하기</a></span><!-- [KR수정] .btn-outline-primary class수정 -->
-									<span><a href="#none" class="btn btn-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02">문의하기</a></span>
+									<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02"><span>문의하기</span></a>
+									<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02"><span>문의하기</span></a>
 								</div>
 								<div class="btn-mtype-text">
-									<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02">자세히 보기</a></span>
-									<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02">자세히 보기</a></span>
+									<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02"><span>자세히 보기</span></a>
+									<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-02"><span>자세히 보기</span></a>
 								</div>
+								<!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
 							</div>
 						</div>
 						<!-- // 2. thumbnail 2 -->
 						<!-- 3. thumbnail 3 -->
 						<div class="item ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+							<!-- [KR수정_201222] 비디오 DOM 공통화 수정(AD버튼, caption삭제, 이미지 태그 내 aria-hidden삭제, hidden태그 추가) -->
 							<div class="visual-m-box visual-area video youtube-box" aria-describedby="title01-03"><!-- [KR수정] .youtube-box, .visual-area class 추가 -->
 								<!-- video play button -->
-								<a href="#none" data-src="https://www.youtube.com/embed/pz5CxHVBp4A" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-area="large_image_horizontal_pickers-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>                                      
 								<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="large_image_horizontal_pickers-video_play" data-link-name="{video title / video id}" title="opens in a new layer popup, plays video">
-									<img data-src="/lg5-common/images/KRC0014/@thumb01.jpg" alt="" class="lazyload" aria-hidden="true">
-									<div class="caption">[video title 1]</div>
+									<img data-src="/lg5-common/images/KRC0014/@thumb01.jpg" alt="">
+									<!-- <div class="caption">[video title 1]</div> -->
 								</a>
 								<!-- // video play button -->
 							</div>
+							<!-- // [KR수정_201222] 비디오 DOM 공통화 수정(AD버튼, caption삭제, 이미지 태그 내 aria-hidden삭제, hidden태그 추가) -->
 							<div class="text-m-area">
 								<div class="text-box">
 									<div class="title" id="title01-03">@@headline1-3</div>
 									<div class="desc-text">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet</div>
 								</div>
+								<!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
 								<div class="btn-mtype-box">
-									<span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03">문의하기</a></span><!-- [KR수정] .btn-outline-primary class수정 -->
-									<span><a href="#none" class="btn btn-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03">문의하기</a></span>
+									<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03"><span>문의하기</span></a>
+									<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03"><span>문의하기</span></a>
 								</div>
 								<div class="btn-mtype-text">
-									<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03">자세히 보기</a></span>
-									<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03">자세히 보기</a></span>
+									<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03"><span>자세히 보기</span></a>
+									<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-03"><span>자세히 보기</span></a>
 								</div>
+								<!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
 							</div>
 						</div>
 						<!-- // 3. thumbnail 3 -->
 						<!-- 4. thumbnail 4 -->
 						<div class="item ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+							<!-- [KR수정_201222] 비디오 DOM 공통화 수정(AD버튼, caption삭제, 이미지 태그 내 aria-hidden삭제, hidden태그 추가) -->
 							<div class="visual-m-box visual-area video youtube-box" aria-describedby="title01-04"><!-- [KR수정] .youtube-box, .visual-area class 추가 -->
 								<!-- video play button -->
-								<a href="#none" data-src="https://www.youtube.com/embed/pz5CxHVBp4A" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-area="large_image_horizontal_pickers-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>                                      
 								<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="large_image_horizontal_pickers-video_play" data-link-name="{video title / video id}" title="opens in a new layer popup, plays video">
-									<img data-src="/lg5-common/images/KRC0014/@thumb02.jpg" alt="" class="lazyload" aria-hidden="true">
-									<div class="caption">[video title 1]</div>
+									<img data-src="/lg5-common/images/KRC0014/@thumb02.jpg" alt="" aria-hidden="true">
+									<!-- <div class="caption">[video title 1]</div> -->
 								</a>
 								<!-- // video play button -->
 							</div>
+							<!-- // [KR수정_201222] 비디오 DOM 공통화 수정(AD버튼, caption삭제, 이미지 태그 내 aria-hidden삭제, hidden태그 추가) -->
 							<div class="text-m-area">
 								<div class="text-box">
 									<div class="title" id="title01-04">@@headline1-4</div>
 									<div class="desc-text @@font-style1">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet</div>
 								</div>
+								<!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
 								<div class="btn-mtype-box">
-									<span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04">문의하기</a></span><!-- [KR수정] .btn-outline-primary class수정 -->
-									<span><a href="#none" class="btn btn-primary" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04">문의하기</a></span>
+									<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04"><span>문의하기</span></a>
+									<a href="#none" class="btn border size" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04"><span>문의하기</span></a>
 								</div>
 								<div class="btn-mtype-text">
-									<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04">자세히 보기</a></span>
-									<span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04">자세히 보기</a></span>
+									<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04"><span>자세히 보기</span></a>
+									<a href="#none" class="text-link" data-link-area="large_image_horizontal_pickers-cta" data-link-name="{link text}" aria-describedby="title01-04"><span>자세히 보기</span></a>
 								</div>
+								<!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
 							</div>
 						</div>
 						<!-- // 4. thumbnail 4 -->
 					</div>
+
+					<!-- [KR수정_201222] prev/next button DOM 추가 -->
+					<button type="button" class="btn-arrow prev">이전</button>
+					<button type="button" class="btn-arrow next">다음</button>
+					<!-- // [KR수정_201222] prev/next button DOM 추가 -->
 				</div>
 				<!-- // mabile -->
 			</div>

@@ -200,11 +200,132 @@
 							&.border {
 								border-color:#fff;
 								color:#fff;
+								&:hover, &:focus, &:active {
+									background-image:inherit;
+								}
 							}
 						}
 					}
 				}
 			}
+			.slide-controls {
+				max-width:100%;
+				.prev {
+					left:14px;
+				}
+				.next {
+					right:14px;
+				}
+			}
+		}
+		.buy-product {
+			margin-top:48px;
+			font-size:0;
+			&:after {
+				content:' ';
+				display:block;
+				clear:both;
+			}
+			.inner {
+				display:flex;
+				margin:0 -12px;
+			}
+			.best {
+				padding:12px;
+				a {
+					display:block;
+					position:relative;
+					border-radius:8px;
+					overflow:hidden;
+					.flag {
+						position:absolute;
+						top:0;
+						left:0;
+					}
+					.img {
+						img {
+							max-width:678px;
+						}
+					}
+					.product-info {
+						position:absolute;
+						top:123px;
+						left:40px;
+						color:#fff;
+						.tit {
+							font-size:48px;
+							font-weight:700;
+							line-height:64px;
+						}
+						.price {
+							margin-top:24px;
+							font-size:32px;
+							font-weight:700;
+							line-height:46px;
+						}
+					}
+				}
+			}
+			.list {
+				display:flex;
+				flex-flow:row wrap;
+				&:after {
+					content:' ';
+					display:block;
+					clear:both;
+				}
+				li {
+					width:50%;
+					padding:12px;
+					a {
+						display:block;
+						position:relative;
+						padding:12px 32px 40px;
+						border-radius:8px;
+						box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+						.flag {
+							position:absolute;
+							top:16px;
+							left:32px;
+							.num {
+								color:#ec455a;
+								font-size:24px;
+								font-weight:700;
+								line-height:34px;
+							}
+						}
+						.img {
+							img {
+								max-width:240px;
+							}
+						}
+						.product-info {
+							.tit {
+								display: -webkit-box;
+								-webkit-line-clamp:2;
+								-webkit-box-orient: vertical;
+								height:56px;
+								max-height:56px;
+								margin-top:16px;
+								font-size:18px;
+								font-weight:700;
+								line-height:28px;
+								overflow: hidden;
+                    			text-overflow: ellipsis;
+							}
+							.price {
+								margin-top:20px;
+								font-size:20px;
+								font-weight:700;
+								line-height:30px;
+							}
+						}
+					}
+				}
+			}
+		}
+		.plan-exhib-slide {
+			
 		}
 	}
 }

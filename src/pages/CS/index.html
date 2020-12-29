@@ -27,7 +27,7 @@
 	.box a {color:#000;display:inline-block;padding:0 10px;margin-top:5px;border:2px solid #ddd;text-decoration:none;}
 	
 	td.links {font-size:0;color:#fff;text-align:center;overflow:hidden;}
-	td.links a {font-size:10px;line-height:150%;color:#000;display:inline-block;width:58px;padding:0;margin:2px;border:0;background:#eee;text-decoration:none;text-align:center;overflow:hidden;}
+	td.links a {font-size:10px;line-height:150%;color:#000;display:inline-block;width:auto;padding:0;margin:2px;border:0;background:#eee;text-decoration:none;text-align:center;overflow:hidden;}
 
 	tr td > .edit {display:block;color:#767676;}
 	tr td > .edit:after {content: '작업 중'}
@@ -52,7 +52,7 @@
 				<col width="130px" />
 				<col width="" />
 				<col width="" />
-				<col width="100px" />
+				<col width="200px" />
 				<col width="100px" />
 				<col width="" />
 			</colgroup>
@@ -203,8 +203,18 @@
 					<td></td>
 					<td>서비스 상담</td>
 					<td>이메일 문의</td>
-					<td>신청</td>
+					<td>신청 (전체)</td>
 					<td class="links">/html/CS/CSRF6014.html</td>
+					<td><span class=edit></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6091</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>신청 (비회원)</td>
+					<td class="links">/html/CS/.html</td>
 					<td><span class=""></span></td>
 					<td></td>
 				</tr>
@@ -213,8 +223,8 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td>문의내용(기본)</td>
-					<td class="links">/html/CS/CSRF6091.html</td>
+					<td>신청 (회원)</td>
+					<td class="links">/html/CS/.html</td>
 					<td><span class=""></span></td>
 					<td></td>
 				</tr>
@@ -355,19 +365,29 @@
 					<td></td>
 					<td>서비스 예약</td>
 					<td>출장 서비스 예약</td>
-					<td>신청</td>
+					<td>신청 (전체)</td>
 					<td class="links">/html/CS/CSRF6028.html</td>
 					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
-					<td>CSRF6095</td>
+					<td>CSRF6028</td>
 					<td></td>
 					<td></td>
 					<td></td>
-					<td>예약내용입력</td>
-					<td class="links">/html/CS/CSRF6095.html</td>
-					<td><span class=""></span></td>
+					<td>신청 (비회원)</td>
+					<td class="links">/html/CS/CSRF6028_non-member.html</td>
+					<td><span class="edit"></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6028</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>신청 (회원)</td>
+					<td class="links">/html/CS/CSRF6028_member.html</td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
