@@ -1,0 +1,84 @@
+{   
+    "status": "success",
+    "message":null,
+    "data": {
+        "listData": [
+            {
+                "code": "LGP810SPEAKERSTATION",
+                "name": "<em class=\"word\">LGP8</em>10SPEAKERSTATION",
+                "category": "모바일",
+                "subCategory": "일반폰"
+            },
+            {
+                "code": "LGP810SPEAKERSTATION",
+                "name": "<em class=\"word\">LGP8</em>10SPEAKERSTATION",
+                "category": "모바일",
+                "subCategory": "일반폰"
+            },
+            {
+                "code": "LGP810SPEAKERSTATION",
+                "name": "<em class=\"word\">LGP8</em>10SPEAKERSTATION",
+                "category": "모바일",
+                "subCategory": "일반폰"
+            },
+            {
+                "code": "LGP810SPEAKERSTATION",
+                "name": "<em class=\"word\">LGP8</em>10SPEAKERSTATION",
+                "category": "모바일",
+                "subCategory": "일반폰"
+            },
+            {
+                "code": "LGP810SPEAKERSTATION",
+                "name": "<em class=\"word\">LGP8</em>10SPEAKERSTATION",
+                "category": "모바일",
+                "subCategory": "일반폰"
+            },
+            {
+                "code": "LGP810SPEAKERSTATION",
+                "name": "<em class=\"word\">LGP8</em>10SPEAKERSTATION",
+                "category": "모바일",
+                "subCategory": "일반폰"
+            },
+            {
+                "code": "LGP810SPEAKERSTATION",
+                "name": "<em class=\"word\">LGP8</em>10SPEAKERSTATION",
+                "category": "모바일",
+                "subCategory": "일반폰"
+            },
+            {
+                "code": "LGP810SPEAKERSTATION",
+                "name": "<em class=\"word\">LGP8</em>10SPEAKERSTATION",
+                "category": "모바일",
+                "subCategory": "일반폰"
+            },
+            {
+                "code": "LGP810SPEAKERSTATION",
+                "name": "<em class=\"word\">LGP8</em>10SPEAKERSTATION",
+                "category": "모바일",
+                "subCategory": "일반폰"
+            },
+            {
+                "code": "LGP810SPEAKERSTATION",
+                "name": "<em class=\"word\">LGP8</em>10SPEAKERSTATION",
+                "category": "모바일",
+                "subCategory": "일반폰"
+            },
+            {
+                "code": "LGP810SPEAKERSTATION",
+                "name": "<em class=\"word\">LGP8</em>10SPEAKERSTATION",
+                "category": "모바일",
+                "subCategory": "일반폰"
+            },
+            {
+                "code": "LGP810SPEAKERSTATION",
+                "name": "<em class=\"word\">LGP8</em>10SPEAKERSTATION",
+                "category": "모바일",
+                "subCategory": "일반폰"
+            }
+        ],
+        "listPage": {
+            "page": 1,
+            "totalCount": 6
+        }
+    }
+}

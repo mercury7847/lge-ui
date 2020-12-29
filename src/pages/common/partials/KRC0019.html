@@ -34,7 +34,7 @@
                 -->
                 <a class="common-area" href="#" data-link-area="block_image_2_text_overlay-image" data-link-name="{alt text}">
                     <div class="visual-area">
-                        <img class="lazyload" data-pc-src="@@fisrt-square.img-src.@@fisrt-square.img-type" data-m-src="@@fisrt-square.img-src-m.@@fisrt-square.img-type" alt="">
+                        <img data-pc-src="@@fisrt-square.img-src.@@fisrt-square.img-type" data-m-src="@@fisrt-square.img-src-m.@@fisrt-square.img-type" alt="">
                         <p class="hidden pc">graphic description : </p>
                         <p class="hidden mobile">graphic description : </p>
                     </div>
@@ -53,11 +53,10 @@
                 <!-- 4. image -->
                 @@if (context.secondSquare.videoType === "youtube") {
                 <div class="visual-area video youtube-box"><!-- [KR수정] youtube modal call DOM 추가 -->
-                    <a href="#none" role="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title01">plays audio description video</a>
                     <!-- * youtube video modal은 아래의 방식으로 입력 -->
                     <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="common-area case-of-video see-video" data-type="youtube" data-target="modal" data-link-area="block_image_2_text_overlay-video_play" data-link-name="{video id}" aria-describedby="title01">
                         <div class="visual-area">
-                            <img class="lazyload" data-pc-src="@@secondSquare.img-src.@@secondSquare.img-type" data-m-src="@@secondSquare.img-src-m.@@secondSquare.img-type" alt="">
+                            <img data-pc-src="@@secondSquare.img-src.@@secondSquare.img-type" data-m-src="@@secondSquare.img-src-m.@@secondSquare.img-type" alt="">
                             <p class="hidden">graphic description : </p>
                         </div>
                         <div class="copy-boxing-area">
@@ -74,10 +73,9 @@
                 @@if (context.secondSquare.videoType === "animation") {
                 <!-- 2020.09.21 animation type 추가 -->
                 <!-- 1.2 animation 타입인 경우 animation-box 클래스 추가 -->
-                <div class="visual-area animation-box">
-                    <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
-                    <img class="lazyload" data-pc-src="@@secondSquare.img-src.@@secondSquare.img-type" data-m-src="@@secondSquare.img-src-m.@@secondSquare.img-type" alt="">
-                    <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                <!-- [KR수정_201222] 비디오 DOM 수정(AD버튼 삭제, 캡션 삭제, img태그 내 aria-hidden 추가, hidden태그 삭제, .size-type class 추가) -->
+                <div class="visual-area animation-box size-type">
+                    <img data-pc-src="@@secondSquare.img-src.@@secondSquare.img-type" data-m-src="@@secondSquare.img-src-m.@@secondSquare.img-type" alt="" aria-hidden="true">
                     <div class="animation-area">
                         <video autoplay muted loop>
                             <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
@@ -85,14 +83,20 @@
                             <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
                             -->
                         </video>
-                        <div class="controller-wrap wa-btn">
-                            <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
-                        </div>
                     </div>
-                    <!-- caption -->
-                    <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-                    <!-- // caption -->
+                    <div class="copy-boxing-area">
+                        <!-- 5. eyebrow -->
+                        <div class="category">Product Category Text</div>
+                        <!-- // 5. eyebrow -->
+                        <!-- 6. headline -->
+                        <div class="head" id="title01">@@secondSquare.head</div>
+                        <!-- // 6. headline -->
+                    </div>
+                    <div class="controller-wrap wa-btn">
+                        <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                    </div>
                 </div>
+                <!-- // [KR수정_201222] 비디오 DOM 수정(AD버튼 삭제, 캡션 삭제, img태그 내 aria-hidden 추가, hidden태그 삭제, .size-type class 추가) -->
                 }
                 <!-- // 4. image -->
             </div>

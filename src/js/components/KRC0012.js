@@ -10,21 +10,8 @@ $(window).ready(function(){
             slidesToShow: 1,
             slidesToScroll: 1,
             prevArrow:'.btn-arrow.prev',
-            nextArrow:'.btn-arrow.next'
+            nextArrow:'.btn-arrow.next',
+            adaptiveHeight:true
         });
     });
-
-    function indiTop() {
-        var indi = $('.KRC0012').find(".indi-wrap");
-        indi.each(function(){
-            var visualArea = $(this).parent(".items-group").find('.visual-wrap');
-            var iH = visualArea.outerHeight();
-
-            $(this).css('top', iH+24);
-        });
-    }
-    $(window).resize(function(){
-        indiTop();
-    });
-    indiTop();
 })

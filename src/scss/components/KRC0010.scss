@@ -106,22 +106,13 @@
         }
     }
     .title * {
-        @include font-title;
+        @include title-h2;
     }
     .body-copy {
-        margin-top:32px;
-        @include font-large-1;
+        @include bodycopy(h2, h2);
     }
     .cta {
-        margin-top:24px;
-        font-size:0;
-        .btn, 
-        .text-link {
-            margin-left:16px;
-            &:first-child {
-                margin-left:0;
-            }
-        }
+        @include cta-btn;
     }
 
     .drag-area {

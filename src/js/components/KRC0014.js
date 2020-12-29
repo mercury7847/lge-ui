@@ -37,9 +37,9 @@ $(window).ready(function(){
                 html += '   <a href="#none" data-src="';
                 html += videoID + '" class="see-video" data-type="youtube" data-target="' + videoTarget + '" aria-describedby="' + ariaDesc + '">';
                 html += '       <img src="' + largeImgURL + '" alt="' + alt + '">';
+                html += '       <p class="hidden">' + accDesc + '</p>';
                 html += '   </a>';
-                html += '   <p class="hidden">' + accDesc + '</p>';
-                html += '   <div class="caption ' + videoTitleColor +'">' + videoTitle + '</div>';
+                // html += '   <div class="caption ' + videoTitleColor +'">' + videoTitle + '</div>';
                 html += '</div>';
                 appendElement.prepend(html);
                 appendElement.find('.visual-area').vcYoutubeBox();
@@ -49,10 +49,10 @@ $(window).ready(function(){
                 var aniTitle = $(this).data('title');
                 var videoTitleColor = $(this).data('title-color') || "";
 
-                html += '<div class="visual-area animation-box">';
+                html += '<div class="visual-area animation-box size-type">';
                 //html += '   <a href="#none" role="button" data-src="' + aniAccSrc + '" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>';
-                html += '   <img src="' + largeImgURL + '" alt="">';
-                html += '   <p class="hidden">' + accDesc + '</p>';
+                html += '   <img src="' + largeImgURL + '" alt="" aria-hidden="true">';
+                // html += '   <p class="hidden">' + accDesc + '</p>';
                 html += '   <div class="animation-area">';
                 html += '       <video loop' +  ($(this).attr('data-autoplay')=="true"?' muted autoplay':'')  /*+ ($(this).attr(' data-muted')=="true"?'muted':'')*/ + '>';
                 html += '           <source src="' + aniSrc + '" type="video/mp4">';
@@ -61,7 +61,7 @@ $(window).ready(function(){
                 html += '           <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" aria-describedby="title01">Pause Video</button>';
                 html += '       </div>';
                 html += '   </div>';
-                html += '   <div class="caption ' + videoTitleColor +'">' + aniTitle + '</div>';
+                // html += '   <div class="caption ' + videoTitleColor +'">' + aniTitle + '</div>';
                 html += '</div>';
 
                 appendElement.prepend(html);
@@ -90,17 +90,26 @@ $(window).ready(function(){
             infinite: false,
             swipeToSlide: true,
             slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToScroll: 1,
+            prevArrow:'.btn-arrow.prev',
+            nextArrow:'.btn-arrow.next',
         });
     });   
 
     function indiTop() {
         var indi = $('.KRC0014').find(".indi-wrap");
+        var btns = $('.KRC0014').find(".btn-arrow");
         indi.each(function(){
             var visualArea = $(this).parent(".visual-m-area").find('.visual-m-box');
             var iH = visualArea.outerHeight();
 
-            $(this).css('top', iH+16);
+            $(this).css('top', iH+24);
+        });
+        btns.each(function(){
+            var visualArea = $(this).parent(".visual-m-area").find('.visual-m-box');
+            var iH = visualArea.outerHeight() / 2;
+
+            $(this).css('top', iH);
         });
     }
 

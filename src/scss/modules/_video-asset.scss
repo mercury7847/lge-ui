@@ -36,7 +36,6 @@
 			display:block;
 			&:before {
 				content: '';
-				display: inline-block;
 				position: absolute;
 				left: 50%;
 				top: 50%;
@@ -46,6 +45,7 @@
 				background: url('/lg5-common/images/btn-video-play.svg') no-repeat 0 0;
 				background-size: 100% 100%;
 				border-radius: 50% 50%;
+				z-index:10;
 			}
 			&.acc-video-content {
 				position:absolute;
