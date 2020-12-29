@@ -999,6 +999,13 @@
         padding: 20px 24px;
         border-radius: 8px;
         background-color: #f4f4f4;
+        .center-info-title {
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+    }
+    .bullet-list.top-border {
+        margin-top: 24px;
     }
 } //support
 
