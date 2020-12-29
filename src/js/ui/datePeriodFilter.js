@@ -98,6 +98,9 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
                     var result = true;
                 }
                 if(result){
+                    var startDate = self.$dateFilterStartDate.vcCalendar('getCurrentDate');
+                    var endDate = self.$dateFilterEndDate.vcCalendar('getCurrentDate');
+                    console.log(startDate,endDate);
                     var param = self.getSelectOption();
                     if(param) {
                         self.triggerHandler("dateFilter_submit", param);
