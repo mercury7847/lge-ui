@@ -31,7 +31,7 @@
                 <dd class="conts">
                     <div class="box">
                         <div class="select-wrap">
-                            <select class="ui_selectbox ul_select_target" id="select1" title="전체 카테고리 선택" data-ajax="/lg5-common/data-ajax/support/subCategoryOption.json" data-target="#select2">
+                            <select class="ui_selectbox ul_select_target" name="cateSelect" id="select1" title="전체 카테고리 선택" data-ajax="/lg5-common/data-ajax/support/subCategoryOption.json" data-target="#select2">
                                 <option value="" class="placeholder">카테고리 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
                                 <option value="세탁기/스타일러">세탁기/스타일러</option>
                                 <option value="모바일">모바일</option>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="box">
                         <div class="select-wrap">
-                            <select class="ui_selectbox" id="select2" title="전체 카테고리 선택" disabled>
+                            <select class="ui_selectbox" name="subCateSelect" id="select2" title="전체 카테고리 선택" disabled>
                                 <option value="" class="placeholder">세부 카테고리 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
                             </select>
                         </div>

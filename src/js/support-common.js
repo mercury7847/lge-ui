@@ -55,15 +55,25 @@ CS.MD.commonModel = function() {
             '{{# } #}}' +
         '</div>';
 
+    // var modelListTmpl = 
+    //     '<li>' +
+    //         '<a href="#" class="item" data-category="{{category}}" data-sub-category="{{subCategory}}" data-code="{{code}}">' +
+    //             '<div class="info">' +
+    //                 '<p class="name">{{#raw name}}</p>' +
+    //                 '<p class="category"><span>{{categoryNm}} &gt; </span>{{subCategoryNm}}</p>' +
+    //             '</div>' +
+    //         '</a>' +
+    //     '</li>';
+
     var modelListTmpl = 
-        '<li>' +
-            '<a href="#" class="item ui_flexible_box" data-category="{{category}}" data-sub-category="{{subCategory}}" data-code="{{code}}">' +
-                '<div class="info ui_flexible_cont">' +
+        '<div class="slide-conts">' +
+            '<a href="#" class="item" data-category="{{category}}" data-sub-category="{{subCategory}}" data-code="{{code}}">' +
+                '<div class="info">' +
                     '<p class="name">{{#raw name}}</p>' +
-                    '<p class="category">{{categoryNm}} &gt; {{subCategoryNm}}</p>' +
+                    '<p class="category"><span>{{categoryNm}} &gt; </span>{{subCategoryNm}}</p>' +
                 '</div>' +
             '</a>' +
-        '</li>';
+        '</div>';
     
     var validation;
 
@@ -127,9 +137,9 @@ CS.MD.commonModel = function() {
             // 검색 영역 : 모델
             self.$searchModelBox = self.$searchModelArea.find('.model-search');
             self.$modelFilter = self.$searchModelBox.find('.form-wrap');
-            self.$modelListWrap = self.$searchModelBox.find('.model-list-wrap');
-            self.$modelList = self.$modelListWrap.find('.model-list');
-            self.$modelPagination = self.$searchModelBox.find('.pagination');
+            self.$modelSlider = self.$searchModelBox.find('.model-slider');
+            // self.$modelListWrap = self.$searchModelBox.find('.model-list-wrap');
+            // self.$modelList = self.$modelListWrap.find('.model-list');
             self.$modelNoData = self.$searchModelBox.find('.no-data');
 
             if (self.$myModelArea.length) self.$myModelSlider.vcCarousel({
@@ -158,9 +168,9 @@ CS.MD.commonModel = function() {
             });
 
             if (self.$searchModelBox.length) {
-                self.$modelPagination.pagination();
                 $('.ui_select_target').vcSelectTarget();
             }
+            
             if (self.$searchKeywordBox.length) lgkorUI.searchModelName();
         },
         update: function(obj) {
@@ -179,7 +189,7 @@ CS.MD.commonModel = function() {
             self.$searchCategoryBox.find('.box').removeClass('on off');
             self.$searchCategoryBox.addClass(opt.stepActiveClass);
             self.$searchModelBox.removeClass(opt.stepActiveClass);
-            self.$modelList.empty();
+            self.$modelSlider.find('.slide-track').empty();
 
             self.$stepModel.addClass(opt.stepActiveClass);
             self.$stepModel.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
@@ -205,18 +215,57 @@ CS.MD.commonModel = function() {
                     arr = data.listData instanceof Array ? data.listData : [];
                     html = '';
 
-                self.$modelList.empty();
-                    
+                self.$modelSlider.find('.slide-track').empty();
+
                 if (arr.length) {
                     arr.forEach(function(item) {
                         item.name = item.code.replaceAll(param.keyword, '<em class="word">'+param.keyword+'</em>');
-                        self.$modelList.append(vcui.template(modelListTmpl, item))
+                        self.$modelSlider.find('.slide-track').append(vcui.template(modelListTmpl, item))
                     });
-                    self.$modelListWrap.show();
+                    self.$modelSlider.show();
                     self.$modelNoData.hide();
-                    self.$modelPagination.pagination('update', data.listPage);
+
+                    if (!self.$modelSlider.hasClass('ui_carousel_initialized')) {
+                        self.$modelSlider.vcCarousel({
+                            rows:3,
+                            slidesPerRow: 4,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            responsive: [
+                                {
+                                    breakpoint: 10000,
+                                    settings: {
+                                        rows:3,
+                                        slidesPerRow: 4,
+                                        slidesToShow: 1,
+                                        slidesToScroll: 1
+                                    }
+                                },
+                                {
+                                    breakpoint: 1024,
+                                    settings: {
+                                        rows: 4,
+                                        slidesPerRow: 3,
+                                        slidesToShow: 1,
+                                        slidesToScroll: 1
+                                    }
+                                },
+                                {
+                                    breakpoint: 768,
+                                    settings: {
+                                        rows: 6,
+                                        slidesPerRow: 2,
+                                        slidesToShow: 1,
+                                        slidesToScroll: 1
+                                    }
+                                }
+                            ]
+                        });
+                    } else {
+                        self.$modelSlider.vcCarousel('refresh');
+                    }
                 } else {
-                    self.$modelListWrap.hide();
+                    self.$modelSlider.hide();
                     self.$modelNoData.show();
                 }
 
@@ -256,6 +305,8 @@ CS.MD.commonModel = function() {
                     result;
                 
                 if (e.keyCode == 13) {
+                    e.preventDefault();
+
                     result = validation.validate(['keyword']);
 
                     if (result.success) {
@@ -263,8 +314,7 @@ CS.MD.commonModel = function() {
                         self.$searchModelBox.addClass(opt.stepActiveClass);
     
                         var updateObj = {
-                            desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요",
-                            reset: true
+                            desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
                         }
                         var param = {
                             keyword: self.$inputKeyword.val().toUpperCase()
@@ -284,8 +334,7 @@ CS.MD.commonModel = function() {
                     self.$searchModelBox.addClass(opt.stepActiveClass);
 
                     var updateObj = {
-                        desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요",
-                        reset: true
+                        desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
                     }
                     var param = {
                         keyword: self.$inputKeyword.val().toUpperCase()
@@ -320,8 +369,7 @@ CS.MD.commonModel = function() {
 
                 var updateObj = {
                     product: opt.selectedModel,
-                    desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요. 모델명을 모르시면 ‘건너뛰기'를 눌러주세요.",
-                    reset: true
+                    desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요. 모델명을 모르시면 ‘건너뛰기'를 눌러주세요."
                 }
 
                 var param = {
@@ -334,7 +382,7 @@ CS.MD.commonModel = function() {
             });
 
             // 모델명 선택
-            self.$searchModelBox.on('click', '.model-list-wrap a', function(e) {
+            self.$searchModelBox.on('click', '.model-slider a', function(e) {
                 e.preventDefault();
 
                 var $this = $(this),
@@ -371,14 +419,8 @@ CS.MD.commonModel = function() {
 
                 opt.callback();
             });
-            self.$searchModelBox.find('#categorySelect').on('change', function() {
-                var param = {
-                    keyword: self.$inputKeyword.val(),
-                    category: $(this).val()
-                };
-
-                self._requestData(param);
-            });
+            
+            // 모델명 선택 - 서브 카테고리 선택
             self.$searchModelBox.find('#subCategorySelect').on('change', function() {
                 var param = {
                     keyword: self.$inputKeyword.val(),
@@ -390,14 +432,7 @@ CS.MD.commonModel = function() {
             });
 
             // 모델 리스트 페이지네이션
-            self.$modelPagination.on('pageClick', function() {
-                var param = {
-                    category: self.$submitForm.find('#category').val(),
-                    subCategory: self.$submitForm.find('#subCategory').val()
-                };
-
-                self._requestData(param);
-            });
+            
 
             // 보유제품 선택
             self.$myModelArea.find('.slide-box').on('click', function(e) {
