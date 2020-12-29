@@ -83,7 +83,6 @@
 // App Gate
 .appgate {
     .cont-wrap {
-        padding-bottom:0;
         .section {       
             .form-wrap .forms .conts {
                 .keyword-search {
@@ -93,12 +92,8 @@
                     margin-top:4px;
                 }
             }
-            & + .section {
-                margin-top:0;
-            }
         }
         @include pc {
-            padding-top:80px;
             .section {
                 .tit-wrap {
                     margin-bottom:12px;
@@ -108,9 +103,6 @@
                     .keyword-search {
                         margin-top:8px;
                     }
-                }
-                & + .section {
-                    margin-top:80px;
                 }
             }
         }

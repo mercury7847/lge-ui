@@ -1,90 +1,35 @@
 @charset "UTF-8";
 
 .banner-wrap {
-    border-radius:4px;
-    background:#fff;
+    margin:64px 0;
     .banner {
         display:flex;
-        padding:46px 56px;
         align-items:center;
-        justify-content: space-between;
+        justify-content:space-between;
+        padding:24px 48px;
+        border-radius:8px;
+        background:#f4f4f4;
         .cont {
-            position:relative;
-            padding-left:112px;
-            &:before {
-                content:'';
-                position:absolute;
-                left:0;
-                top:50%;
-                width:80px;
-                height:80px;
-                background-repeat:no-repeat;
-                background-size:100%;
-                transform:translateY(-50%);
-            }
-            .tit {
-                font-size:18px;
+            p {
+                padding:0 20px 0 0;
+                @include font-medium;
                 font-weight:700;
-                line-height:26px;
-            }
-            .desc {
-                margin-top:12px;
-                font-size:16px;
-                line-height:24px;
             }
         }
-        .btn {
-            margin-left:32px;
+        .btn-link {
             white-space:nowrap;
         }
     }
-    &.no-icon {
-        .banner {
-            .cont {
-                padding:0;
-                &:before {
-                    content:none;
-                }
-            }
-        }
-    }
     @include mobile {
-        border-radius:0;
+        margin-bottom:40px;
         .banner {
             display:block;
-            padding:40px 20px;
+            padding:16px 24px;
+            text-align:center;
             .cont {
-                padding-left:56px;
-                &:before {
-                    top:0;
-                    width:40px;
-                    height:40px;
-                    transform:translateY(0);
-                }
-                .tit {
-                    font-size:14px;
-                    line-height:18px;
-                }
-                .desc {
-                    margin-top:8px;
-                    font-size:12px;
-                    line-height:16px;
-                }
-            }
-            .btn {
-                width:100%;
-                margin:20px 0 0;
-            }
-        }
-        &.no-icon {
-            .banner {
-                padding:0;
-                .cont {
-                    padding:40px 20px;
-                }
-                .btn {
-                    margin:0;
-                    border-radius:0;
+                p {
+                    padding:0 0 8px;
+                    
                 }
             }
         }

@@ -12,7 +12,15 @@
         <div class="container">
             @@include('./common/modules/page-header.html', {
                 'pageTitle': '출장 서비스 예약',
-                'pageDesc': '전문 엔지니어가 고객님께 찾아가서 필요로 하시는 서비스를 제공해드립니다.'
+                'pageDesc': '전문 엔지니어가 고객님께 찾아가서 필요로 하시는 서비스를 제공해드립니다.',
+                'pageBtn': [
+                    { 'btn': '요금 및 보증기간 안내', 'attr': 'data-href="#ratesWarrantyGuidePopup" data-control="modal"' }
+                ],
+                'progressArr': [
+                    { 'progress' : '제품 선택'},
+                    { 'progress' : '예약 내용 입력'},
+                    { 'progress' : '예약 완료'}
+                ]
             })
             <div class="contents support reservation">
                 <!-- 서비스 안내 -->
@@ -23,7 +31,7 @@
 
                 <!-- 비회원 -->
                 @@include('./common/support/login-guide.html', {
-                    'text': 'LG전자에서 제공하는 회원전용 서비스로 <br>더 편리하게 이용할 수 있어요.'
+                    'text': '출장서비스 예약을 LG전자 통합 사이트의 회원으로<br class="pc-only">이용하시면 보다 편리하게 이용할 수 있습니다.'
                 })
 
                 <!-- 회원 - 제품 없을 시 -->
