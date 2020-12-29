@@ -5,10 +5,10 @@
                 '<span class="blind">제품정보</span>' +
                 '<div class="product-info">' +
                     '<div class="thumb">' +
-                        '<a href="#n"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a>' +
+                        '<a href="{{url}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a>' +
                     '</div>' +
                     '<div class="infos">' +
-                        '<p class="name"><a href="#n"><span class="blind">제품명</span>{{title}}</a></p>' +
+                        '<p class="name"><a href="{{url}}"><span class="blind">제품명</span>{{title}}</a></p>' +
                         '<p class="e-name"><span class="blind">영문제품번호</span>{{sku}}</p>' +
                         '<p class="count">구매 희망 수량 : {{quantity}}</p>' +
                     '</div>' +
@@ -46,7 +46,15 @@
                 self.$btnMore = self.$contents.find('button.btn-moreview');
                 self.$noData = self.$contents.find('div.no-data');
 
-                self.checkNoData();
+                var param = self.$termFilter.vcDatePeriodFilter('getSelectOption');
+                if(param) {
+                    //var hiddenData = lgkorUI.getHiddenInputData();
+                    //param.page = parseInt(hiddenData.page) + 1;
+                    param.page = 1;
+                    self.requestData(param, false);
+                } else {
+                    self.checkNoData();
+                }
             },
 
             bindEvents: function() {
