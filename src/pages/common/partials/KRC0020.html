@@ -19,6 +19,7 @@
 
 		3. 상하정렬
 		.align-top : 상단 정렬
+		.align-middle : 중앙 정렬
 		.align-bottom : 하단 정렬
 
 		4. Stage option
@@ -40,165 +41,15 @@
 		3. 아이콘 네비게이션 정렬 (Icon Area Align)
 		.align-top : 아이콘 아래 정렬
 		.align-bottom : 아이콘 위 정렬
+		// <- 해당 아이콘 align 사용하지 않음. DOM순서 변경되도록 수정
 	-->
-	<section class="component KRC0020 @@bg-color @@icon-align @@img-none @@stageType">
+	<section class="component KRC0020 @@bg-color @@img-none @@stageType">
 		<div class="component-inner">
-			<div class="slider-for">
-				<div class="group active" role="tabpanel" id="group01">
-					<div class="text-area">
-						<!-- 1-1. headline -->
-						<div class="title">@@heading</div>
-						<!-- // 1-1. headline -->
-						<!-- 1-2. body copy -->
-						<p class="body-copy @@font-class @@font-style">공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
-							공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
-							공백포함 150자까지 글자수를 제한합니다.</p>
-						<!-- // 1-2. body copy -->
-					</div>
-					<!-- 1-3. Inset Image -->
-					<!-- animation 타입인 경우 animation-box 클래스 추가 -->
-					<div class="animation-box">
-						<div class="visual-area">
-							<!-- 데스크탑으로 접속시에는 아래 코드를 사용해 주세요, -->
-							<img data-pc-src="/lg5-common/images/dummy/@sample-1380x850.png" data-m-src="/lg5-common/images/dummy/@sample-1380x850.png" alt="" class="lazyload" aria-hidden="true"><!-- [KR수정] img 수정-->
-							<p class="hidden pc">graphic description : </p>
-						</div>
-						<a href="#none" role="button" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video">Plays audio Description Video</a>
-
-						<div class="animation-area">
-							<!-- loop 되는 영상이 아닌 경우
-								<video autoplay muted>
-							-->
-							<!-- loop 되는 영상인 경우 -->
-							<video autoplay muted loop>
-								<source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
-								<!-- WEBM 동영상을 제공하는 경우
-								<source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
-								-->
-							</video>
-							<div class="controller-wrap wa-btn">                                          													
-								<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="">Pause Video</button>
-							</div>
-						</div>
-						
-					</div>
-					<!-- // 1-3. Inset Image -->
-				</div>
-				<div class="group" role="tabpanel" id="group02">
-					<div class="title">@@heading</div>
-					<p class="body-copy @@font-class @@font-style">2. Body text can bte up to 250 characters. </p>
-					
-					<!-- 1-1/1-2. image : video 타입인 경우 -->
-					<div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
-						<!-- 1-3 video play button -->
-						<a href="#none" role="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
-						<!-- * youtube video modal은 아래의 방식으로 입력 -->
-						<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
-							<img data-pc-src="/lg5-common/images/@sample-16-9-wide.jpg" data-m-src="/lg5-common/images/dummy/@sample-1380x850.png" alt="" class="lazyload"><!-- [KR수정] img 수정 -->
-							<p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-							<!-- 2. video title copy -->
-							<div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-							<!-- // 2. video title copy -->
-						</a>
-						<!-- // 1-3 video play button -->
-					</div>
-					<!-- // 1-1/1-2. image : video 타입인 경우 -->
-					
-				</div>
-				<div class="group" role="tabpanel" id="group03"> 
-					<div class="text-area">
-						<div class="title">@@heading</div>
-						<p class="body-copy @@font-class @@font-style">3. Body text can bte up to 250 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-						Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient.
-						Body text can be up to 250 characters. Body textt</p>
-					</div>
-					<div class="visual-area">
-						<!-- 데스크탑으로 접속시에는 아래 코드를 사용해 주세요, -->
-						<img data-pc-src="/lg5-common/images/dummy/@sample-1380x850.png" data-m-src="/lg5-common/images/dummy/@sample-1380x850.png" alt="" class="lazyload"><!-- [KR수정] img 수정 -->
-						<p class="hidden pc">graphic description : </p>
-					</div>
-				</div>
-
-				<div class="group" role="tabpanel" id="group04">
-					<div class="text-area">
-						<!-- 1-1. headline -->
-						<div class="title">@@heading</div>
-						<!-- // 1-1. headline -->
-						<!-- 1-2. body copy -->
-						<p class="body-copy @@font-class @@font-style">공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
-							공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
-							공백포함 150자까지 글자수를 제한합니다.</p>
-						<!-- // 1-2. body copy -->
-					</div>
-					<!-- 1-3. Inset Image -->
-					<!-- animation 타입인 경우 animation-box 클래스 추가 -->
-					<div class="animation-box">
-						<div class="visual-area">
-							<!-- 데스크탑으로 접속시에는 아래 코드를 사용해 주세요, -->
-							<img data-pc-src="/lg5-common/images/dummy/@sample-1380x850.png" data-m-src="/lg5-common/images/dummy/@sample-1380x850.png" alt="" class="lazyload" aria-hidden="true"><!-- [KR수정] img 수정-->
-							<p class="hidden pc">graphic description : </p>
-						</div>
-						<a href="#none" role="button" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video">Plays audio Description Video</a>
-
-						<div class="animation-area">
-							<!-- loop 되는 영상이 아닌 경우
-								<video autoplay muted>
-							-->
-							<!-- loop 되는 영상인 경우 -->
-							<video autoplay muted loop>
-								<source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
-								<!-- WEBM 동영상을 제공하는 경우
-								<source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
-								-->
-							</video>
-							<div class="controller-wrap wa-btn">                                          													
-								<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="">Pause Video</button>
-							</div>
-						</div>
-						
-					</div>
-					<!-- // 1-3. Inset Image -->
-				</div>
-				<div class="group" role="tabpanel" id="group05">  
-					<div class="text-area">
-						<div class="title">@@heading</div>
-						<p class="body-copy @@font-class @@font-style">2. Body text can bte up to 250 characters. </p>
-					</div>
-					
-					<!-- 1-1/1-2. image : video 타입인 경우 -->
-					<div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
-						<!-- 1-3 video play button -->
-						<a href="#none" role="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
-						<!-- * youtube video modal은 아래의 방식으로 입력 -->
-						<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
-							<img data-pc-src="/lg5-common/images/@sample-16-9-wide.jpg" data-m-src="/lg5-common/images/dummy/@sample-1380x850.png" alt="" class="lazyload"><!-- [KR수정] img 수정 -->
-							<p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-							<!-- 2. video title copy -->
-							<div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-							<!-- // 2. video title copy -->
-						</a>
-						<!-- // 1-3 video play button -->
-					</div>
-					<!-- // 1-1/1-2. image : video 타입인 경우 -->
-					
-				</div>
-				<div class="group" role="tabpanel" id="group06"> 
-					<div class="title">@@heading</div>
-					<p class="body-copy @@font-class @@font-style">3. Body text can bte up to 250 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-					Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient.
-					Body text can be up to 250 characters. Body textt</p>
-					<div class="visual-area">
-						<!-- 데스크탑으로 접속시에는 아래 코드를 사용해 주세요, -->
-						<img data-pc-src="/lg5-common/images/dummy/@sample-1380x850.png" data-m-src="/lg5-common/images/dummy/@sample-1380x850.png" alt="" class="lazyload"><!-- [KR수정] img 수정 -->
-						<p class="hidden pc">graphic description : </p>
-					</div>
-				</div>
-			</div>
-
+			@@if ( context.iconType && context.top ) {
 			<div class="icon-area ui_carousel_slider">
 				<ul class="slider-nav ui_carousel_track" role="tablist">
 					@@for (var i = 0; i < icons.length; i++) {
-					<li class="ui_carousel_slide icon `+icons[i].active+`" role="tab" aria-selected="true" aria-controls="group01">
+					<li class="ui_carousel_slide icon `+icons[i].active+`" role="tab" aria-selected="true" aria-controls="group01"><!-- 아이콘 타입일 때 .icon / 텍스트 타입일 때 .text -->
 						<!-- Edit : 2019-03-26 icon-wrap 추가 -->
 						<div class="icon-wrap">
 							<a href="#none" data-link-area="feature_icon_tab-icon" data-link-name="{link text}">
@@ -217,7 +68,225 @@
 				<ul class="indi-wrap ui_carousel_dots">
 					<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
 				</ul>
+				<!-- [KR수정_201222] slider control button DOM 추가 -->
+				<button type="button" class="btn-arrow prev">이전</button>
+				<button type="button" class="btn-arrow next">다음</button>
+				<!-- // [KR수정_201222] slider control button DOM 추가 -->
 			</div>
+			}
+			@@if ( context.textType && context.top ) {
+			<!-- [KR수정_201222] 이미지 아이콘 없는 타입 추가 -->
+			<div class="icon-area ui_carousel_slider">
+				<ul class="slider-nav ui_carousel_track" role="tablist">
+					@@for (var i = 0; i < icons.length; i++) {
+					<li class="ui_carousel_slide text `+icons[i].active+`" role="tab" aria-selected="true" aria-controls="group01"><!-- 아이콘 타입일 때 .icon / 텍스트 타입일 때 .text -->
+						<!-- Edit : 2019-03-26 icon-wrap 추가 -->
+						<div class="icon-wrap">
+							<a href="#none" data-link-area="feature_icon_tab-icon" data-link-name="{link text}">
+								<span class="icon-text">서브 타이틀 최대<br>20자까지 작성</span>
+							</a>
+						</div>
+					</li>
+					}
+				</ul>
+				<ul class="indi-wrap ui_carousel_dots">
+					<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+				</ul>
+				<!-- [KR수정_201222] slider control button DOM 추가 -->
+				<button type="button" class="btn-arrow prev">이전</button>
+				<button type="button" class="btn-arrow next">다음</button>
+				<!-- // [KR수정_201222] slider control button DOM 추가 -->
+			</div>
+			<!-- // [KR수정_201222] 이미지 아이콘 없는 타입 추가 -->
+			}
+			<div class="slider-for">
+				<div class="group active" role="tabpanel" id="group01">
+					<div class="text-area align-top">
+						<!-- 1-1. headline -->
+						<div class="title">@@heading</div>
+						<!-- // 1-1. headline -->
+						<!-- 1-2. body copy -->
+						<p class="body-copy @@font-class @@font-style">공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
+							공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
+							공백포함 150자까지 글자수를 제한합니다.</p>
+						<!-- // 1-2. body copy -->
+					</div>
+					<!-- 1-3. Inset Image -->
+					<!-- animation 타입인 경우 animation-box 클래스 추가 -->
+					<!-- [KR수정_201222] 애니메이션 DOM 공통화 수정 -->
+					<div class="visual-area animation-box">
+						<div class="animation-area">
+							<video autoplay muted loop>
+								<source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+								<!-- WEBM 동영상을 제공하는 경우
+								<source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+								-->
+							</video>
+							<div class="controller-wrap wa-btn">
+								<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+							</div>
+						</div>
+					</div>
+					<!-- // [KR수정_201222] 애니메이션 DOM 공통화 수정 -->
+					<!-- // 1-3. Inset Image -->
+				</div>
+				<div class="group" role="tabpanel" id="group02">
+					<!-- [KR수정_201222] text-area로 감싸기(DOM공통화 수정) -->
+					<div class="text-area align-middle">
+						<div class="title">@@heading</div>
+						<p class="body-copy @@font-class @@font-style">2. Body text can bte up to 250 characters. </p>
+					</div>
+					<!-- // [KR수정_201222] text-area로 감싸기(DOM공통화 수정) -->
+					
+					<!-- 1-1/1-2. image : video 타입인 경우 -->
+					<!-- [KR수정_201222] 비디오 DOM 공통화 수정(AD버튼, 캡션 삭제) -->
+					<div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
+						<!-- 1-3 video play button -->
+						<!-- * youtube video modal은 아래의 방식으로 입력 -->
+						<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
+							<img data-pc-src="/lg5-common/images/dummy/@sample-1380x850.png" data-m-src="/lg5-common/images/dummy/@sample-1380x850.png" alt="">
+							<p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+						</a>
+						<!-- // 1-3 video play button -->
+					</div>
+					<!-- // [KR수정_201222] 비디오 DOM 공통화 수정(AD버튼, 캡션 삭제) -->
+					<!-- // 1-1/1-2. image : video 타입인 경우 -->
+					
+				</div>
+				<div class="group" role="tabpanel" id="group03"> 
+					<div class="text-area align-middle">
+						<div class="title">@@heading</div>
+						<p class="body-copy @@font-class @@font-style">3. Body text can bte up to 250 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+						Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient.
+						Body text can be up to 250 characters. Body textt</p>
+					</div>
+					<div class="visual-area">
+						<!-- 데스크탑으로 접속시에는 아래 코드를 사용해 주세요, -->
+						<img data-pc-src="/lg5-common/images/dummy/@sample-1380x850.png" data-m-src="/lg5-common/images/dummy/@sample-1380x850.png" alt="">
+						<p class="hidden">graphic description : </p>
+					</div>
+				</div>
+				<div class="group" role="tabpanel" id="group04">
+					<div class="text-area align-bottom">
+						<!-- 1-1. headline -->
+						<div class="title">@@heading</div>
+						<!-- // 1-1. headline -->
+						<!-- 1-2. body copy -->
+						<p class="body-copy @@font-class @@font-style">공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
+							공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
+							공백포함 150자까지 글자수를 제한합니다.</p>
+						<!-- // 1-2. body copy -->
+					</div>
+					<!-- 1-3. Inset Image -->
+					<!-- animation 타입인 경우 animation-box 클래스 추가 -->
+					<!-- [KR수정_201222] 애니메이션 DOM 공통화 수정 -->
+					<div class="visual-area animation-box">
+						<div class="animation-area">
+							<video autoplay muted loop>
+								<source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+								<!-- WEBM 동영상을 제공하는 경우
+								<source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+								-->
+							</video>
+							<div class="controller-wrap wa-btn">
+								<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+							</div>
+						</div>
+					</div>
+					<!-- // [KR수정_201222] 애니메이션 DOM 공통화 수정 -->
+					<!-- // 1-3. Inset Image -->
+				</div>
+				<div class="group" role="tabpanel" id="group05">  
+					<!-- [KR수정_201222] text-area로 감싸기(DOM공통화 수정) -->
+					<div class="text-area align-top">
+						<div class="title">@@heading</div>
+						<p class="body-copy @@font-class @@font-style">2. Body text can bte up to 250 characters. </p>
+					</div>
+					<!-- // [KR수정_201222] text-area로 감싸기(DOM공통화 수정) -->
+					
+					<!-- 1-1/1-2. image : video 타입인 경우 -->
+					<!-- [KR수정_201222] 비디오 DOM 공통화 수정(AD버튼, 캡션 삭제) -->
+					<div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
+						<!-- 1-3 video play button -->
+						<!-- * youtube video modal은 아래의 방식으로 입력 -->
+						<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
+							<img data-pc-src="/lg5-common/images/dummy/@sample-1380x850.png" data-m-src="/lg5-common/images/dummy/@sample-1380x850.png" alt="">
+							<p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+						</a>
+						<!-- // 1-3 video play button -->
+					</div>
+					<!-- // [KR수정_201222] 비디오 DOM 공통화 수정(AD버튼, 캡션 삭제) -->
+					<!-- // 1-1/1-2. image : video 타입인 경우 -->
+					
+				</div>
+				<div class="group" role="tabpanel" id="group06"> 
+					<div class="text-area align-middle">
+						<div class="title">@@heading</div>
+						<p class="body-copy @@font-class @@font-style">3. Body text can bte up to 250 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+						Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient.
+						Body text can be up to 250 characters. Body textt</p>
+					</div>
+					<div class="visual-area">
+						<!-- 데스크탑으로 접속시에는 아래 코드를 사용해 주세요, -->
+						<img data-pc-src="/lg5-common/images/dummy/@sample-1380x850.png" data-m-src="/lg5-common/images/dummy/@sample-1380x850.png" alt=""><!-- [KR수정] img 수정 -->
+						<p class="hidden pc">graphic description : </p>
+					</div>
+				</div>
+			</div>
+			@@if ( context.iconType && context.bottom ) {
+			<div class="icon-area ui_carousel_slider">
+				<ul class="slider-nav ui_carousel_track" role="tablist">
+					@@for (var i = 0; i < icons.length; i++) {
+					<li class="ui_carousel_slide icon `+icons[i].active+`" role="tab" aria-selected="true" aria-controls="group01"><!-- 아이콘 타입일 때 .icon / 텍스트 타입일 때 .text -->
+						<!-- Edit : 2019-03-26 icon-wrap 추가 -->
+						<div class="icon-wrap">
+							<a href="#none" data-link-area="feature_icon_tab-icon" data-link-name="{link text}">
+								<!-- 1. icon1 -->
+								<img src="/lg5-common/images/KRC0020/icon-on.png" class="on" alt="" aria-hidden="true">
+								<img src="/lg5-common/images/KRC0020/icon-off.png" class="off" alt="" aria-hidden="true">
+								<!-- // 1. icon1 -->
+								<!-- 2. image text -->
+								<span class="icon-text">서브 타이틀 최대<br>20자까지 작성</span>
+								<!-- // 2. image text -->
+							</a>
+						</div>
+					</li>
+					}
+				</ul>
+				<ul class="indi-wrap ui_carousel_dots">
+					<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+				</ul>
+				<!-- [KR수정_201222] slider control button DOM 추가 -->
+				<button type="button" class="btn-arrow prev">이전</button>
+				<button type="button" class="btn-arrow next">다음</button>
+				<!-- // [KR수정_201222] slider control button DOM 추가 -->
+			</div>
+			}
+			@@if ( context.textType && context.bottom ) {
+			<!-- [KR수정_201222] 이미지 아이콘 없는 타입 추가 -->
+			<div class="icon-area ui_carousel_slider">
+				<ul class="slider-nav ui_carousel_track" role="tablist">
+					@@for (var i = 0; i < icons.length; i++) {
+					<li class="ui_carousel_slide text `+icons[i].active+`" role="tab" aria-selected="true" aria-controls="group01"><!-- 아이콘 타입일 때 .icon / 텍스트 타입일 때 .text -->
+						<!-- Edit : 2019-03-26 icon-wrap 추가 -->
+						<div class="icon-wrap">
+							<a href="#none" data-link-area="feature_icon_tab-icon" data-link-name="{link text}">
+								<span class="icon-text">서브 타이틀 최대<br>20자까지 작성</span>
+							</a>
+						</div>
+					</li>
+					}
+				</ul>
+				<ul class="indi-wrap ui_carousel_dots">
+					<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+				</ul>
+				<!-- [KR수정_201222] slider control button DOM 추가 -->
+				<button type="button" class="btn-arrow prev">이전</button>
+				<button type="button" class="btn-arrow next">다음</button>
+				<!-- // [KR수정_201222] slider control button DOM 추가 -->
+			</div>
+			<!-- // [KR수정_201222] 이미지 아이콘 없는 타입 추가 -->
+			}
 		</div>
 	</section>
 </div>
