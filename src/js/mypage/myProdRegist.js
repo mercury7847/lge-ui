@@ -130,7 +130,7 @@
                 var $selectbox = self.$downloadPopup.find('.ui_selectbox');
                 self.$selectOS = $selectbox.eq(0);
                 self.$selectCategory = $selectbox.eq(1);
-                self.$downloadPopupPagination = self.$downloadPopup.find('.pagination');
+                self.$downloadPopupPagination = self.$downloadPopup.find('.pagination').vcPagination();
 
                 self.checkNoData();
             },
@@ -196,7 +196,7 @@
                 self.$myProductList.on('click','>ul li div.btns button.download-btn', function(e) {
                     var _id = $(this).parents('li').attr('data-model-id');
                     self.$downloadPopup.attr('data-model-id', _id);
-                    self.requestDownloadData(_id,null,null,1,true);
+                    self.requestDownloadData(1, true);
                 });
 
             },
@@ -273,15 +273,24 @@
                 });
 
                 //다운로드팝업 셀렉트OS
+                self.$selectOS.on('change', function(e){
+                    self.requestDownloadData(1,false);
+                });
                 
                 //다운로드팝업 셀렉트 카테고리
+                self.$selectCategory.on('change', function(e){
+                    self.requestDownloadData(1,false);
+                });
 
                 //다운로드팝업 페이지
-                self.$downloadPopupPagination.vcPagination().on('page_click', function(e, data) {
-                    var _id = self.$downloadPopup.attr('data-model-id');
-                    var os = self.$selectOS.vcSelectbox('selectedOption').value;
-                    var category = self.$selectCategory.vcSelectbox('selectedOption').value;
-                    self.requestDownloadData(_id,os,category,data,false);
+                self.$downloadPopupPagination.on('page_click', function(e, data) {
+                    self.requestDownloadData(data,false);
+                });
+
+                //다운로드 파일
+                self.$downloadPopup.on('click','li button.btn' ,function(e){
+                    var url = $(this).attr('data-file-url');
+                    window.location = url;
                 });
             },
 
@@ -385,18 +394,24 @@
                     if(!isMore) {
                         self.$manualPopup.vcModal();
                     }
+
+                    lgkorUI.resetFlexibleBox();
                 });
             },
 
-            requestDownloadData: function(_id, os, category, page, openPopup) {
+            requestDownloadData: function(page, openPopup) {
                 var self = this;
+
+                var _id = self.$downloadPopup.attr('data-model-id');
+                var os = self.$selectOS.vcSelectbox('selectedOption').value;
+                var category = self.$selectCategory.vcSelectbox('selectedOption').value;
+
                 var ajaxUrl = self.$downloadPopup.attr('data-list-url');
 
-                if(!os) {
+                if(openPopup) {
                     self.$selectOS.vcSelectbox('selectedIndex', 0, false);
                     os = self.$selectOS.vcSelectbox('selectedOption').value;
-                }
-                if(!category) {
+
                     self.$selectCategory.vcSelectbox('selectedIndex', 0, false);
                     category = self.$selectCategory.vcSelectbox('selectedOption').value;
                 }
@@ -414,12 +429,16 @@
                     arr.forEach(function(item, index) {
                         item.date = vcui.date.format(item.date,'yyyy.MM.dd');
                         var list = item.list;
-                        list.forEach(function(item, index) {
-                            this[index].date = vcui.date.format(item.date,'yyyy.MM.dd');
-                        });
-                        item.list = list;
+                        if(list) {
+                            list.forEach(function(item, index) {
+                                list[index].date = vcui.date.format(item.date,'yyyy.MM.dd');
+                            });
+                        }
+                        //item.list = list;
                         $list.append(vcui.template(downloadListItemTemplate, item));
                     });
+
+                    $list.find('.ui_dropdown').vcDropdown();
 
                     if(openPopup) {
                         self.$downloadPopup.vcModal();
@@ -430,82 +449,4 @@
         
         myProductRegistration.init();
     });
-    /*
-    function bindEvents(){
-        $('.mypage').on('click', '.manual-btn, .download-btn, .btn-delete, .requestCareship-btn, .newProdCheck-btn', function(e){
-            e.preventDefault();
-
-            var matchIdx;
-            var modelID = $(this).closest('.lists').data('modelId');
-
-            matchIdx = $(this).attr('class').indexOf('manual');
-            if(matchIdx > -1) openManualPop(modelID);
-
-            matchIdx = $(this).attr('class').indexOf('download');
-            if(matchIdx > -1) openDownLoadPop(modelID);
-
-            matchIdx = $(this).attr('class').indexOf('delete');
-            if(matchIdx > -1) deleteProdList(modelID);
-
-            matchIdx = $(this).attr('class').indexOf('requestCareship');
-            if(matchIdx > -1) requestCareship(modelID);
-
-            matchIdx = $(this).attr('class').indexOf('newProdCheck');
-            if(matchIdx > -1) newProdCheck(modelID);
-
-        }).on('click', '.notice button', function(e){
-            e.preventDefault();
-
-            $(this).parent().hide();
-        })
-    }
-
-    function openManualPop(mid){
-        
-        $('#popup-manual').vcModal();
-    }
-
-    function openDownLoadPop(mid){
-        
-        $('#popup-download').vcModal();
-    }
-
-    function deleteProdList(mid){                
-        lgkorUI.confirm("", {
-            title: "보유제품을 삭제하시겠습니까 ?",
-            okBtnName: "삭제",
-            ok: function(){
-                lgkorUI.showLoading();
-        
-                var sendata = {
-                    modelID: mid
-                }
-                lgkorUI.requestAjaxData(DELETE_REGISTED_PRODUCT, sendata, function(result){
-                    
-                    if(result.data.success == "Y"){
-                        $('.contents.mypage .my-product-lists ul li.lists[data-model-id='+mid+']').remove();
-                    } else{
-                        lgkorUI.alert(result.data.alert.desc, {
-                            title: result.data.alert.title
-                        });
-                    }
-        
-                    lgkorUI.hideLoading();
-                });
-            }
-        });
-    }
-
-    function requestCareship(mid){
-
-    }
-
-    function newProdCheck(mid){
-
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-        init();
-    });
-    */
 })();

@@ -4,61 +4,17 @@
 
 
 .KRC0021 {
-    width: 100%;
-    // max-width: (1284px + 60px);
-    // margin: 0 auto;
-    // padding-right: 30px;
-    // padding-left: 30px;
     @include mobile {
         .component-inner {
             padding: 0;
         }
     }
 
-    $color: (lightgray, dark, black, white);
-	@each $bg in $color {
-		&.bg-#{$bg} {
-			@if $bg == lightgray {
-				background-color: #f4f4f4;
-				.title {
-					&, * {
-						color: #111;
-					}
-				}
-			} @else if $bg == dark {
-                background-color: #333;
-                .unit-box {
-                    & .head-copy,
-                    & .title,
-                    & .body-copy {
-                        color: #fff;
-                    }
-                }
-			} @else if $bg == black {
-				background-color: #000;
-				.unit-box {
-                    & .head-copy,
-                    & .title,
-                    & .body-copy {
-                        color: #fff;
-                    }
-                }
-			} @else if $bg == white {
-				background-color: #fff;
-				.title {
-					&, * {
-						color: #111;
-					}
-				}
-			}
-		}
-	}
-
     .unit-list {
         margin: 0 -12px;
         .ui_carousel_slide {
             float: left;
-            width: 33.333333%;
+            width:calc(100% / 3);
             padding: 0 12px;
         }
         &.half-type {
@@ -70,6 +26,7 @@
         @include mobile {
             position: relative;
             margin: 0;
+            padding-bottom:32px;
             .ui_carousel_slide {
                 width: 100%;
                 padding: 0;
@@ -83,51 +40,57 @@
     }
 
     .visual-area {
-        img {
-            width: 100%;
+        &.image {
+            a {
+                display:block;
+                text-align:center;
+                overflow:hidden;
+                img {
+                    width:100%;
+                    max-width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
+            }
         }
-    }
-    .animation-box {
-        .controller-wrap {
-            bottom: 68px;
-            @include calc(right,50%,20px);
-            text-align: center;
+        &.youtube-box {
+            a {
+                display:block;
+                text-align:center;
+                overflow:hidden;
+                img {
+                    width:100%;
+                    max-width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
+            }
         }
     }
 
     .unit-box {
+        @include mobile {
+            padding:0 16px;
+        }
         .visual-area {
             margin: 0 0 24px;
+            @include mobile {
+                margin:0 -16px 24px;
+            }
         }
         .head-copy {
-            margin-bottom: 8px;
-            font-weight: 700;
-            @include font-medium;
+            @include eyebrow-h3;
         }
-        .title {
-            margin-bottom: 16px;
-            h1,h2,h3,h4,h5,h6 {
-                font-weight: 700;
-                @include font-large-2;
-            }
+        .title * {
+            @include title-h3;
         }
         .body-copy {
-            margin-bottom: 24px;
-            @include font-medium;
+            @include bodycopy(h3, h3);
         }
+    }
 
-        @include mobile {
-            padding: 0 16px 32px;
-            .visual-area {
-                margin: 0 -16px 24px;
-            }
-            .head-copy {
-                margin-bottom: 6px;
-            }
-            .title {
-                margin-bottom: 14px;
-            }
-        }
+    .bottom-btn {
+        @include cta-btn;
     }
 
     .btn-box {
@@ -137,63 +100,6 @@
             margin-top: 24px;
         }
     }
-
-    // 텍스트 가로정렬 및 버튼 사이 간격
-    .align-left {
-        .bottom-btn {
-            .text-link {
-                display: inline-block;
-                margin-right: 16px;
-                &:last-child {
-                    margin-right: 0;
-                }
-            }
-        }
-    }
-    .align-right {
-        .bottom-btn {
-            .text-link {
-                display: inline-block;
-                margin-left: 16px;
-                &:first-child {
-                    margin-left: 0;
-                }
-            }
-        }
-    }
-    .align-center {
-        .bottom-btn {
-            margin: 0 -8px;
-            .text-link {
-                display: inline-block;
-                margin: 0 8px;
-            }
-        }
-    }
-    .align-left,
-    .align-right,
-    .align-center {
-        .bullet-list {
-            text-align: left;
-        }
-        //@include mobile {
-        //    .bottom-btn {
-        //        .text-link {
-        //            display: block;
-        //        }
-        //    }
-        //
-        //}
-    }
-
-    .indi-wrap {
-        @include mobile {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
-    }
     .slide-controls {
         @include pc {
             display: none;
@@ -201,12 +107,13 @@
         @include mobile {
             .btn-arrow {
                 position: absolute;
-                @include calc(top,50%,18px);
+                top:calc((100% - 32px) / 2);
+                transform:translateY(-50%);
                 &.prev {
-                    left: 16px;
+                    left: 4px;
                 }
                 &.next {
-                    right: 16px;
+                    right: 4px;
                 }
             }
         }

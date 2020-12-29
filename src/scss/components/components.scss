@@ -152,9 +152,9 @@
     font-size:0;
     .btn.border, 
     .text-link {
-        margin-left:16px;
-        &:first-child {
-            margin-left:0;
+        margin-right:16px;
+        &:last-child {
+            margin-right:0;
         }
     }
 }

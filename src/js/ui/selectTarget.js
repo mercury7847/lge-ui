@@ -33,7 +33,7 @@ vcui.define('ui/selectTarget', ['jquery', 'vcui'], function ($, core) {
 
             self._bindEvent();
         },
-        _ajax: function(params) {
+        _requestData: function(params) {
             var self = this;
             var url = self.$el.data('ajax'),
                 opt = self.options;
@@ -75,12 +75,14 @@ vcui.define('ui/selectTarget', ['jquery', 'vcui'], function ($, core) {
 
             self.$el.on('change', function(e) {
                 var resetFlag = $(this.options[this.selectedIndex]).hasClass(self.options.placeholderClass);
-                var params = $(this).serialize() + '&' + $(self.options.addParam).serialize();
+                var params = $(this).serialize();
+
+                if (self.options.addParam) parma += '&' + $(self.options.addParam).serialize();
                 
                 if (resetFlag) {
                     self.reset();
                 } else {
-                    self._ajax(params);
+                    self._requestData(params);
                 }
             });
         }

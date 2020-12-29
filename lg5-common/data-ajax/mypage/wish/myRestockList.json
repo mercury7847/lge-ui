@@ -4,7 +4,7 @@
     "param":{
         "pagination":{
             "page":"2",
-            "totalCount":"23"
+            "totalCount":"5"
         }
     },
     "data": {
@@ -17,7 +17,8 @@
                 "quantity":"7",
                 "applyDay":"20201210",
                 "notifyDay":"20201215",
-                "tel":"010****5678"
+                "tel":"010****5678",
+                "url":"https://www.lg.com/html/components/blog-share.html"
             },
             {
                 "imageUrl":"/lg5-common/images/dummy/@img-product.jpg",
@@ -27,7 +28,8 @@
                 "quantity":"7",
                 "applyDay":"20201210",
                 "notifyDay":"20201215",
-                "tel":"010****5678"
+                "tel":"010****5678",
+                "url":"https://www.lg.com/html/components/blog-share.html"
             },
             {
                 "imageUrl":"/lg5-common/images/dummy/@img-product.jpg",
@@ -37,7 +39,8 @@
                 "quantity":"7",
                 "applyDay":"20201210",
                 "notifyDay":"20201215",
-                "tel":"010****5678"
+                "tel":"010****5678",
+                "url":"https://www.lg.com/html/components/blog-share.html"
             }
         ]
     }

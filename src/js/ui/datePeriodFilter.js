@@ -55,8 +55,8 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
             //기간 선택 옵션버튼이 달려 있는 필터일 경우 선택되어 있는것이 있으면 오늘날짜를 기준으로 날짜를 세팅한다.
             var checkedInput = self.$el.find('input[name="' + self.options.periodSelectInputName + '"]:checked');
             if(checkedInput.length > 0) {
-                var date = new Date(); 
-                self.$dateFilterEndDate.vcCalendar('setDate', date);    
+                var date = new Date();
+                self.$dateFilterEndDate.vcCalendar('setDate', date);
                 self.setBeforePeriod(checkedInput.val());
             }
         },
@@ -69,11 +69,15 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
             });
 
             self.$dateFilterStartDate.on('calendarselected', function(e){
-                self.$el.find('input[type="radio"]').prop('checked', false);
+                var checkedInput = self.$el.find('input[name="' + self.options.periodSelectInputName + '"]');
+                checkedInput.prop('checked', false);
+                //self.$el.find('input[type="radio"]').prop('checked', false);
             });
 
             self.$dateFilterEndDate.on('calendarselected', function(e){
-                self.$el.find('input[type="radio"]').prop('checked', false);
+                var checkedInput = self.$el.find('input[name="' + self.options.periodSelectInputName + '"]');
+                checkedInput.prop('checked', false);
+                //self.$el.find('input[type="radio"]').prop('checked', false);
             });
 
             self.$el.find('input[type="radio"]').on('click',function (e) {
@@ -94,6 +98,9 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
                     var result = true;
                 }
                 if(result){
+                    var startDate = self.$dateFilterStartDate.vcCalendar('getCurrentDate');
+                    var endDate = self.$dateFilterEndDate.vcCalendar('getCurrentDate');
+                    console.log(startDate,endDate);
                     var param = self.getSelectOption();
                     if(param) {
                         self.triggerHandler("dateFilter_submit", param);
