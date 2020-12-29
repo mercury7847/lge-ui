@@ -29,6 +29,8 @@
 								slidesToShow: 3,
 								slidesToScroll: 3,
 								swipeToSlide: false,
+								prevArrow:'.btn-arrow.prev',
+            					nextArrow:'.btn-arrow.next',
 							}
 						},
 						{
