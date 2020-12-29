@@ -48,12 +48,10 @@
                             <!-- 1. image -->
                             <div class="visual-area image">
                                 <a href="#none" data-link-area="block_image_2to3_cta-image" data-link-name="{alt text}">
-                                    <img class="lazyload" data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt=""/>
+                                    <img src="/lg5-common/images/KRC0021/@thumb.jpg" alt="">
+                                    <p class="hidden">graphic description : </p><!-- [KR수정_201229] hidden 태그 위치 이동 -->
                                 </a>
-                                <p class="hidden">graphic description : </p>
-                                <!-- caption -->
-                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-                                <!-- // caption -->
+                                <!-- [KR수정_201229] 캡션 삭제 -->
                             </div>
                             <!-- // 1. image -->
                             <!-- 2. head copy -->
@@ -83,12 +81,10 @@
                             <!-- 1. image -->
                             <div class="visual-area image">
                                 <a href="#none" data-link-area="block_image_2to3_cta-image" data-link-name="{alt text}">
-                                    <img class="lazyload" data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt=""/>
+                                    <img src="/lg5-common/images/KRC0021/@thumb.jpg" alt="">
+                                    <p class="hidden">graphic description : </p><!-- [KR수정_201229] hidden 태그 위치 이동 -->
                                 </a>
-                                <p class="hidden">graphic description : </p>
-                                <!-- caption -->
-                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-                                <!-- // caption -->
+                                <!-- [KR수정_201229] 캡션 삭제 -->
                             </div>
                             <!-- // 1. image -->
                             <!-- 2. head copy -->
@@ -121,7 +117,9 @@
             </div>
             <!-- 16. cta -->
             <div class="btn-box">
-                <span><a href="#none" class="btn border size-m" data-link-area="block_image_2to3_cta-cta" data-link-name="{link text}">H2 button</a></span>
+                <!-- [KR수정_201229] 버튼 DOM 통일화 수정( a > span 으로 ) -->
+                <a href="#none" class="btn border size-m" data-link-area="block_image_2to3_cta-cta" data-link-name="{link text}"><span>button</span></a>
+                <!-- // [KR수정_201229] 버튼 DOM 통일화 수정( a > span 으로 ) -->
             </div>
             <!-- // 16. cta -->
         </div>

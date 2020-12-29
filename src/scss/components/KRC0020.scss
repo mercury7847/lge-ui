@@ -114,14 +114,19 @@
 			}
 		}
 		.btn-arrow {
-            position:absolute;
-            top:calc((100% - 32px) / 2);
-            transform:translateY(-50%);
-            &.prev {
-                left:4px;
+            @include pc {
+                display:none !important;
             }
-            &.next {
-                right:4px;
+            @include mobile {
+                position:absolute;
+                top:calc((100% - 32px) / 2);
+                transform:translateY(-50%);
+                &.prev {
+                    left:4px;
+                }
+                &.next {
+                    right:4px;
+                }
             }
         }
     }

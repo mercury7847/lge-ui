@@ -50,28 +50,23 @@
                                 <!-- 1. image -->
                                 <!-- 비디오 타입 예제 -->
                                 @@if (context.imgType === "youtube") {
+                                <!-- [KR수정_201229] 비디오 DOM 공통화 수정(AD버튼, 캡션 삭제, hidden 태그 추가) -->
                                 <div class="visual-area video youtube-box">
                                     <!-- 1-1. video play button -->
-                                    <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-area="block_image_2to4-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>
                                     <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="block_image_2to4-video_play" data-link-name="{video title / video id}">
-                                        <img class="lazyload" data-src="/lg5-common/images/KRC0023/@thumb01.jpg" alt=""/>
+                                        <img src="/lg5-common/images/KRC0023/@thumb01.jpg" alt=""/>
+                                        <p class="hidden">graphic description : </p>
                                     </a>
                                     <!-- // 1-1. video play button -->
-                                    <!-- Start : 2019-02-15 markup added-->
-                                    <!--  1-2. video title copy -->
-                                    <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다.</div>
-                                    <!-- // 1-2. video title copy -->
-                                    <!-- End : 2019-02-15 markup added-->
                                 </div>
+                                <!-- // [KR수정_201229] 비디오 DOM 공통화 수정(AD버튼, 캡션 삭제, hidden 태그 추가) -->
                                 <!-- // 1. image --> 
                                 }
                                 @@if (context.imgType === "animation") {
                                 <!-- 2020.09.21 animation type 추가 -->
                                 <!-- 1.2 animation 타입인 경우 animation-box 클래스 추가 -->
+                                <!-- [KR수정_201229] 애니메이션 DOM 공통화 수정(이미지, hidden 태그, AD버튼, 캡션 삭제) -->
                                 <div class="visual-area animation-box">
-                                    <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
-                                    <img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload" />
-                                    <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
                                     <div class="animation-area">
                                         <video autoplay muted loop>
                                             <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
@@ -83,10 +78,8 @@
                                             <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
                                         </div>
                                     </div>
-                                    <!-- caption -->
-                                    <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-                                    <!-- // caption -->
                                 </div>
+                                <!-- // [KR수정_201229] 애니메이션 DOM 공통화 수정(이미지, hidden 태그, AD버튼, 캡션 삭제) -->
                                 <!-- // 1.2 image #1 -->
                                 }
                                 <!-- 2. headline -->
@@ -101,14 +94,16 @@
                                 -->
 
                                 <!-- 5. cta -->
+                                <!-- [KR수정_201229] 버튼 DOM 공통화 수정(span > a -> a > span) -->
                                 <div class="bottom-btn btn-type-box">
-                                    <span><a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01">문의하기</a></span><!-- [KR수정] class 수정 -->
-                                    <span><a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01">문의하기</a></span><!-- [KR수정] class 수정 -->
+                                    <a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01"><span>문의하기</span></a>
+                                    <a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01"><span>문의하기</span></a>
                                 </div>
                                 <div class="bottom-btn btn-type-text">
-                                    <span><a href="#none" class="text-link" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01">자세히 보기</a></span><!-- [KR수정] class 수정 -->
-                                    <span><a href="#none" class="text-link" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01">자세히 보기</a></span><!-- [KR수정] class 수정 -->
+                                    <a href="#none" class="text-link" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01"><span>자세히 보기</span></a>
+                                    <a href="#none" class="text-link" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="title01"><span>자세히 보기</span></a>
                                 </div>
+                                <!-- // [KR수정_201229] 버튼 DOM 공통화 수정(span > a -> a > span) -->
                                 <!-- // 5. cta -->
                                 
                                 <ul class="bullet-list">
@@ -121,7 +116,7 @@
                                 <!-- 이미지 타입 예제 -->
                                 <div class="visual-area image">
                                     <a href="#" data-link-area="block_image_2to4-image" data-link-name="{alt text}">
-                                        <img class="lazyload" data-src="/lg5-common/images/KRC0023/@thumb01.jpg" alt=""/>
+                                        <img src="/lg5-common/images/KRC0023/@thumb01.jpg" alt="">
                                         <p class="hidden">graphic description : </p>
                                     </a>
                                 </div>
@@ -138,14 +133,16 @@
                                 -->
 
                                 <!-- 10. cta -->
+                                <!-- [KR수정_201229] 버튼 DOM 공통화 수정(span > a -> a > span) -->
                                 <div class="bottom-btn btn-type-box">
-                                    <span><a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`">문의하기</a></span><!-- [KR수정] class 수정 -->
-                                    <span><a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`">문의하기</a></span><!-- [KR수정] class 수정 -->
+                                    <a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`"><span>문의하기</span></a>
+                                    <a href="#none" class="btn border size-m" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`"><span>문의하기</span></a>
                                 </div>
                                 <div class="bottom-btn btn-type-text">
-                                    <span><a href="#none" class="text-link" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`">자세히 보기</a></span><!-- [KR수정] class 수정 -->
-                                    <span><a href="#none" class="text-link" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`">자세히 보기</a></span><!-- [KR수정] class 수정 -->
+                                    <a href="#none" class="text-link" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`"><span>자세히 보기</span></a>
+                                    <a href="#none" class="text-link" data-link-area="block_image_2to4-cta" data-link-name="{link text}" aria-describedby="`+liArr[i].tit+`"><span>자세히 보기</span></a>
                                 </div>
+                                <!-- // [KR수정_201229] 버튼 DOM 공통화 수정(span > a -> a > span) -->
                                 <!-- // 10. cta -->
 
                                 <ul class="bullet-list">

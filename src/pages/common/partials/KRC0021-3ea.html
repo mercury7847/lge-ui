@@ -48,12 +48,10 @@
                             <!-- 1. image -->
                             <div class="visual-area image">
                                 <a href="#none" data-link-area="block_image_2to3_cta-image" data-link-name="{alt text}">
-                                    <img class="lazyload" data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt=""/>
+                                    <img src="/lg5-common/images/KRC0021/@thumb.jpg" alt="">
+                                    <p class="hidden">graphic description : </p><!-- [KR수정_201229] hidden 태그 위치 이동 -->
                                 </a>
-                                <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-                                <!-- caption -->
-                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-                                <!-- // caption -->
+                                <!-- [KR수정_201229] 캡션 삭제 -->
                             </div>
                             <!-- // 1. image -->
                             <!-- 2. head copy -->
@@ -79,12 +77,10 @@
                         </div>
                     </div>
                     <div class="ui_carousel_slide">
-                        <div class="unit-box animation-box">
+                        <div class="unit-box"><!-- [KR수정_201229] .animation-box class 삭제, 해당 class .visual-area로 이동 -->
                             <!-- 1. image 애니메이션 타입인 경우 -->
-                            <div class="visual-area image">
-                                <a href="#none" role="button" data-src="/lg5-common/videos/signature_rain_view.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title02">Plays audio Description Video</a>
-                                <img class="lazyload" data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt=""/>
-                                <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                            <!-- [KR수정_201229] 이미지, hidden태그, AD버튼, 캡션 삭제 -->
+                            <div class="visual-area animation-box">
                                 <div class="animation-area">
                                     <video autoplay muted loop>
                                         <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
@@ -96,9 +92,6 @@
                                         <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title-id">Pause Video</button>
                                     </div>
                                 </div>
-                                <!-- caption -->
-                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-                                <!-- // caption -->
                             </div>
                             <!-- // 1. image -->
                             <!-- 2. head copy -->
@@ -124,20 +117,17 @@
                         </div>
                     </div>
                     <div class="ui_carousel_slide">
-                        <div class="unit-box @@visualType-class">
+                        <div class="unit-box">
                             <!-- 1. image 비디오 타입인 경우 -->
                             <div class="visual-area video youtube-box">
-                                <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="video" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title03">plays audio description video</a>
                                 <!-- * youtube video modal은 아래의 방식으로 입력 -->
                                 <!-- 11-2. video play button -->
                                 <a href="#none" data-src="/lg5-common/videos/signature_rain_view.mp4" class="see-video" data-type="video" data-target="modal" data-link-area="block_image_2to3_cta-video_play" data-link-name="{video title / video id}" aria-describedby="title03">
-                                    <img class="lazyload" data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt=""/>
+                                    <img src="/lg5-common/images/KRC0021/@thumb.jpg" alt="">
+                                    <p class="hidden">graphic description : </p><!-- [KR수정_201229] hidden 태그 위치 이동 -->
                                 </a>
-                                <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
                                 <!-- // 11-2. video play button -->
-                                <!-- 11-3. video title copy -->
-                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-                                <!-- // 11-3. video title copy -->
+                                <!-- [KR수정_201229] 캡션 삭제 -->
                             </div>
                             <!-- // 1. image -->
                             <!-- 2. head copy -->
@@ -170,7 +160,9 @@
             </div>
             <!-- 16. cta -->
             <div class="btn-box">
-                <span><a href="#none" class="btn border size-m" data-link-area="block_image_2to3_cta-cta" data-link-name="{link text}">H2 button</a></span>
+                <!-- [KR수정_201229] 버튼 DOM 통일화 수정( a > span 으로 ) -->
+                <a href="#none" class="btn border size-m" data-link-area="block_image_2to3_cta-cta" data-link-name="{link text}"><span>button</span></a>
+                <!-- // [KR수정_201229] 버튼 DOM 통일화 수정( a > span 으로 ) -->
             </div>
             <!-- // 16. cta -->
         </div>
