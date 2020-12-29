@@ -33,12 +33,14 @@
                 var self = this;
                 self.setting();
                 self.bindEvents();
+                self.requestData();
             },
 
             setting: function() {
                 var self = this;
                 self.$contents = $('div.lnb-contents');
                 self.$list = self.$contents.find('div.info-tbl-wrap ul');
+                self.$noData = self.$contents.find('.no-data');
             },
 
             bindEvents: function() {
@@ -76,6 +78,7 @@
                         item.price = item.price ? vcui.number.addComma(item.price) : null;
                         self.$list.append(vcui.template(listItemTemplate, item));
                     });
+                    self.checkNoData();
                 });
             },
 
@@ -94,15 +97,38 @@
             requestCart: function(_id) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-cart-url');
-                lgkorUI.requestAjaxDataPost(ajaxUrl, {"id":_id}, null);
+                lgkorUI.requestAjaxDataPost(ajaxUrl, {"id":_id}, function(result){
+                    var data = result.data;
+                    if(lgkorUI.stringToBool(data.success)) {
+                        $(window).trigger("toastshow","장바구니에 추가 되었습니다.");
+                    }
+                });
             },
 
             requestWish: function(_id, wish) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-wish-url');
                 var postData = {"itemID":_id, "wish":wish};
-                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, null);
-            }
+                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
+                    var data = result.data;
+                    if(lgkorUI.stringToBool(data.success)) {
+                        if(wish) {
+                            $(window).trigger("toastshow","찜하기 되었습니다.");
+                        }
+                    } else {
+                        self.$list.find('li.box[data-id="'+_id+'"] span.chk-wish-wrap input').prop("checked",!wish);
+                    }
+                });
+            },
+            //$(window).trigger("toastshow", msg);
+            checkNoData: function() {
+                var self = this;
+                if(self.$list.find('li').length > 0) {
+                    self.$noData.hide();
+                } else {
+                    self.$noData.show();
+                }
+            },
         }
         
         recentList.init();

@@ -385,6 +385,8 @@
                     if(!isMore) {
                         self.$manualPopup.vcModal();
                     }
+
+                    lgkorUI.resetFlexibleBox();
                 });
             },
 
@@ -414,10 +416,12 @@
                     arr.forEach(function(item, index) {
                         item.date = vcui.date.format(item.date,'yyyy.MM.dd');
                         var list = item.list;
-                        list.forEach(function(item, index) {
-                            this[index].date = vcui.date.format(item.date,'yyyy.MM.dd');
-                        });
-                        item.list = list;
+                        if(list) {
+                            list.forEach(function(item, index) {
+                                list[index].date = vcui.date.format(item.date,'yyyy.MM.dd');
+                            });
+                        }
+                        //item.list = list;
                         $list.append(vcui.template(downloadListItemTemplate, item));
                     });
 
