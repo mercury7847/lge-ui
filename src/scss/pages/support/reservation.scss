@@ -4,175 +4,6 @@
 @import "../../utilities/mixins";
 
 .support {
-    .engineer {
-        &-profile {
-            @include clearfix;
-            display: flex;
-            align-items: center;
-        }
-        &-img {
-            width: 140px;
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: url(/lg5-common/images/support/default-engineer.jpg) no-repeat center;
-            background-size: 100%;
-            float: left;
-            img {
-                max-width: 100%;
-            }
-        }
-        &-desc {
-            float: left;
-            flex: 1;
-            font-size: 20px;
-            line-height: 1.5;
-            text-align: center;
-            max-width: 710px;
-            margin-left: 80px;
-            height: 100%;
-        }
-        &-btn-group {
-            margin-top: 28px;
-        }
-        &-profile {
-            &.type-A {
-                border-radius: 8px;
-                box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
-                padding: 32px;
-                .engineer-img {
-                    width: 180px;
-                    height: 180px;
-                }
-                .engineer-desc {
-                    text-align: left;
-                    margin-left: 32px;
-                    .test {
-                        font-size: 16px;
-                    }
-                }
-            }
-        }
-        &-to-visit {
-            @include clearfix;
-            .part1 {
-                float: left;
-                max-width: calc(100% - 396px);
-            }
-            .part2 {
-                float: right;
-                max-width: 396px;
-                width: 100%;
-            }
-            .select-engineer {
-                padding: 0;
-            }
-        }
-        &-to-visit.type2{
-            display: flex;
-            align-items:center;
-            padding:48px 0;
-            border-bottom:1px solid #ddd;
-            margin-bottom:15px;
-
-            .engineer-profile{
-                flex-flow:column;
-                padding:24px 44px;
-                float:none;
-                width:327px;
-                height:394px;
-
-                .engineer-img{
-                    width:100%;
-                    height:auto;
-                    margin-bottom:32px;
-                    
-                    img{
-                        border-radius:10px;
-                    }
-                }
-
-                .engineer-desc{
-                    float:none; 
-                    margin-left:0;
-                    text-align:center;
-
-                    .test{
-                        color:#767676;
-                    }
-                }
-            }
-
-            .engineer-desc{
-                float:none;
-                max-width:unset;
-                width:100%;
-                .result-text strong{
-                    color:#ec455a;
-                }
-            }
-
-            .btn-group{margin-top:24px;}
-        }
-        @include pc {
-            &-to-visit {
-                .part1 {
-                    padding-right: 50px;
-                }
-            }
-        }
-        @include mobile {
-            &-img {
-                width: 90px;
-                height: 90px;
-            }
-            &-desc {
-                margin-left: 20px;
-                font-size: 14px;
-                text-align: left;
-                flex: 1;
-            }
-            &-btn-group {
-                margin-top: 16px;
-            }
-            &-profile {
-                &.type-A {
-                    border-radius: 4px;
-                    box-shadow: 4px 8px 24px 0 rgba(0, 0, 0, 0.15);
-                    padding: 20px 28px;
-                    .engineer-img {
-                        width: 120px;
-                        height: 120px;
-                    }
-                    .engineer-desc {
-                        text-align: left;
-                        margin-left: 28px;
-                        strong {
-                            font-size: 16px;
-                        }
-                        .test {
-                            font-size: 14px;
-                        }
-                    }
-                }
-            }
-            &-to-visit {
-                .part1,
-                .part2 {
-                    float: none;
-                    max-width: 100%;
-                }
-                .part2 {
-                    margin-top: 40px;
-                    width: 100%;
-                }
-                .select-engineer {
-                    margin-top: 40px;
-                }
-            }
-        }
-    }
     .solution-btn-box {
         margin-top: 32px;
     }
@@ -238,15 +69,6 @@
             .result-text {
                 padding: 40px 20px;
             }
-        }
-    }
-
-    .result-text {
-        color:#222;
-        font-size:16px;
-        line-height:24px;
-        strong {
-            font-weight:700;
         }
     }
     .engineer-carousel {
@@ -339,68 +161,6 @@
             }
         }
     }
-    .thumnail-check {
-        margin:-32px -7px 0;
-        @include clearfix;
-        .item {
-            float:left;
-            width:25%;
-            padding:32px 7px 0;
-            &.block {
-                width:100%;
-                .input-wrap {
-                    margin-top:12px;
-                } 
-            }
-        }
-        .rdo-wrap {
-            .rdo-image {
-                display:block;
-                overflow:hidden;
-                width:100%;
-                margin-bottom:12px;
-                border-radius:4px;
-                img {
-                    width:100%;
-                    height:auto;
-                }
-            }
-        }
-        @include mobile {
-            margin:-16px -6px 0;
-            .item {
-                width: 50%;
-            }
-            .rdo-wrap {
-                width:100%;
-                padding:0;
-                font-size: 18px;
-            }
-        }
-    }
-    /* thumbnail list */
-    .thumnail-check.type2{
-        display:flex;
-        flex-flow:wrap;
-        .item{
-            width:20%;
-        }
-        .item.block{
-            display:flex;
-            align-items:center;
-            width:100%;
-
-            .rdo-wrap{
-                width:20%;
-                display: inline-block;
-            }
-            .input-wrap{
-                width:calc(100% - 22%);
-                display: inline-block;
-                margin-top:0;
-            }
-        }
-    }
 
     .modal-line-box {
         border: 1px solid #ddd;
@@ -416,29 +176,6 @@
         }
         @include mobile {
             padding: 16px 16px 20px 16px;
-        }
-    }
-
-    /* page */
-    &.email-inquiry {
-        .info-list {
-            color:#616161;
-            font-size:14px;
-            line-height:20px;
-            dt {
-                margin-bottom:8px;
-                font-weight:700;
-            }
-            dd {
-                margin-top:4px;    
-            }
-        }
-        .tabs-wrap {
-            max-width:1066px;
-            margin:0 auto 24px;
-        }
-        .process-wrap {
-            margin-top:48px;
         }
     }
 
@@ -505,7 +242,69 @@
             margin-bottom:5px;
         }
     }
-    
+
+    /* page */
+    .engineer-to-visit {
+        @include clearfix;
+        .engineer-profile {
+            float:left;
+            width:160px;
+            .engineer-img {
+                width:160px;
+                height:160px;
+                img {
+                    width:100%;
+                }
+            }
+            .engineer-info {
+                margin-top:8px;
+                .name {
+                    @include font-small;
+                    font-weight:700;
+                }
+                .center {
+                    @include font-small;
+                }
+            }
+        }
+        .engineer-desc {
+            float:left;
+            width:calc(100% - 160px);
+            padding-left:32px;
+            .txt {
+                @include font-medium;
+                .point {
+                    color:#ff2e55;
+                    font-weight:400;
+                }
+            }
+            .btn-wrap {
+                margin-top:24px;
+            }
+        }
+        @include mobile {
+            .engineer-profile {
+                width:104px;
+                .engineer-img {
+                    width:104px;
+                    height:104px;
+                }
+            }
+            .engineer-desc {
+                float:left;
+                width:calc(100% - 104px);
+                padding-left:24px;
+                .txt {
+                    br {
+                        display:none
+                    }
+                }
+                .btn-wrap {
+                    margin-top:16px;
+                }
+            }
+        }
+    }
 
     /* support tablet */
     @media (max-width: 1024px){
@@ -529,27 +328,6 @@
 
     /* support mobile */
     @include mobile{
-        .rdo-wrap{
-            .select-list-wrap.type2{
-                padding-top:15px;
-            }
-        }
-        .rdo-wrap-info{
-            margin-top:0;
-        }
-        .rdo-wrap-list{
-            justify-content: space-between;
-            margin-bottom:32px;
-        }
-        .rdo-wrap-list .rdo-wrap.btn-type2,
-        .thumnail-check.type2 .item{
-            width:48%;
-        }
-        .rdo-wrap-list .rdo-wrap.btn-type2 input + label,
-        .rdo-wrap-list .rdo-wrap-list button{
-            min-width:unset;width:100%;
-        }
-
         .problem-solve.type2{
             justify-content: unset;
             flex-flow:column;
@@ -560,76 +338,6 @@
                 margin-top:25px;
             }
         }
-
-        .field-wrap .field-item.type2{
-            flex-flow:column;
-            padding-right:0;
-
-            .input-wrap{
-                width:100%;
-            }
-        }
-
-        .thumnail-check.type2 {
-            justify-content: space-between;
-
-            .item{
-                padding:0 0 5% 0;
-            }
-            .item.block{
-                flex-flow:column;
-                align-items: baseline;
-
-                .rdo-wrap{
-                    width:auto;
-                }
-
-                .input-wrap{
-                    width:100%;
-                }
-            }
-            .rdo-wrap{
-                width:auto;
-                margin-bottom:12px;
-
-                .rdo-image img{
-                    border-radius:10px;
-                }
-            }
-            .input-wrap{
-                width:100%;
-            }
-        }
-
-        .engineer-to-visit.type2{
-            flex-flow:column;
-            padding-top:0;
-            
-            .engineer-profile{
-                width:100%;
-                flex-flow:initial;
-                margin-top:0;
-                height:auto;
-                padding:0 0 0 6%;
-                margin-bottom:40px;
-
-                .engineer-img{
-                    width:42%;
-                    margin-bottom:0;
-                    padding:5% 0;
-                }
-            }
-
-            .engineer-desc{
-                margin:0;
-                text-align:center;
-
-                .select-engineer .btn{
-                    width:auto;
-                }
-            }
-        }
-
         .reservation-info-box{
             margin-bottom:0;
         }
@@ -644,40 +352,6 @@
                         font-weight:normal;
                     }
                 }
-
-                //.reservation-num{
-                //    .num-tit{
-                //        background:url(/lg5-common/images/icons/ic-usp-mailcounsel-80.svg) no-repeat left center;
-                //        background-size:40px;
-                //        padding:8px 0 8px 56px;
-                //    }
-                //}
-            }
-        }
-    }
-}
-
-.field-wrap{
-    .field-item.type2{
-        display:flex;
-        justify-content: space-between;
-        margin-top:59px;
-        padding-right:117px;
-    
-        .field-title .tit{
-            margin-right:175px;
-            @include font-medium;
-            margin-top:11px;
-        }
-        .input-wrap{
-            width:calc(100% - 235px);
-
-            textarea{
-                height:120px;
-            }
-
-            .total{
-                color:#aaa;
             }
         }
     }

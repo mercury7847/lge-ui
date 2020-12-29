@@ -119,38 +119,6 @@
 
 .support {
     /* common */
-    .banner-wrap {
-        margin-bottom:64px;
-        .banner {
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            padding:24px 48px;
-            border-radius:8px;
-            background:#f4f4f4;
-            p {
-                position:relative;
-                padding:0 20px 0 0;
-                @include font-medium;
-                font-weight:700;
-            }
-            .btn-link {
-                white-space:nowrap;
-            }
-        }
-        @include mobile {
-            margin-bottom:40px;
-            .banner {
-                display:block;
-                padding:16px 24px;
-                text-align:center;
-                p {
-                    padding:0 0 8px;
-                    
-                }
-            }
-        }
-    }
     .survey-banner-wrap {
         margin-top:80px;
         .banner {
