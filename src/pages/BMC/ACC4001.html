@@ -1,8 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko">
-    @@include('./common/head.html', {
-        pageCSS: ["BMC/BMC"]
-    })
+    <!-- 템플릿으로 진행되는 화면. 제대로 display되도록 임시 삽입 -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <title>lge</title>
+        <link rel="stylesheet" href="/lg5-common/css/reset.min.css" />
+        <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRC0015.min.css" />
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/BMC/BMC.min.css" />
+        <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
+        <script src="/lg5-common/js/libs/jquery.transit.min.js"></script>
+        <script src="/lg5-common/js/libs/jquery.event.move.min.js"></script>
+        <script src="/lg5-common/js/libs/jquery.twentytwenty.min.js"></script>
+        <script src="/lg5-common/js/vcui.min.js"></script>
+        <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
+        <script src="/lg5-common/js/lg.common.min.js"></script>
+        <script src="/lg5-common/js/components/KRC0015.min.js"></script>
+    </head>
+    <!-- // 템플릿으로 진행되는 화면. 제대로 display되도록 임시 삽입 -->
 <body>
     <div class="wrap">
         @@include('./common/header.html')
@@ -10,35 +26,98 @@
         <div class="container">
             <!-- membership -->
             <div class="contents membership">
+                <!-- 컴포넌트로 변경 -->
                 <!-- visual slider -->
-                <div class="visual-wrap">
-                    @@include('./common/modules/main_carousel.html', {
-                        "slides" : [
-                            {
-                                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
-                                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
-                                "eyebrow" : "LG전자 멤버십 앱",
-                                "title" : "신규 설치 고객<br>경품 추천 이벤트",
-                                "btn" : "자세히 보기"
-                            },
-                            {
-                                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
-                                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
-                                "eyebrow" : "LG전자 멤버십 앱",
-                                "title" : "신규 설치 고객<br>경품 추천 이벤트2",
-                                "btn" : "자세히 보기"
-                            },
-                            {
-                                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
-                                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
-                                "eyebrow" : "LG전자 멤버십 앱",
-                                "title" : "신규 설치 고객<br>경품 추천 이벤트3",
-                                "btn" : "자세히 보기"
-                            }
-                        ]
-                    })
-                </div>
+                <!-- component -->
+                @@include('./common/partials/KRC0015-hero.html', {
+                    "common": {
+                        "marginTop": "zero-top",
+                        "marginBtm": "",
+                        "bg-color": "bg-black"
+                    },
+                    "title": {
+                        "font-class1": "font-regular",
+                        "font-class2": "font-underline",
+                        "eyebrow": "공백포함 20자 이내로 작성 권장합니다.",
+                        "headline": "<h2>공백포함 35자 이내로 헤드라인 타이틀 작성 권장합니다.</h2>",
+                        "copy":"바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다."
+                    },
+                    "carousel": {
+                        "type": "type-hero",
+                        "item1": {
+                            "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
+                            "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
+                            "align-class1":"align-left",
+                            "align-class2":"align-top",
+                            "width-class":"type-wide",
+                            "font-color":"text-white",
+                            "font-class1":"font-regular",
+                            "font-class2":""
+                        },
+                        "item2": {
+                            "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
+                            "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
+                            "align-class1":"align-left",
+                            "align-class2":"align-top",
+                            "width-class":"type-wide",
+                            "font-color":"text-white",
+                            "font-class1":"font-regular",
+                            "font-class2":""
+                        },
+                        "item3": {
+                            "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
+                            "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
+                            "align-class1":"align-right",
+                            "align-class2":"align-middle",
+                            "width-class":"type-narrow",
+                            "font-color":"text-white",
+                            "font-class1":"font-bold",
+                            "font-class2":""
+                        },
+                        "item4": {
+                            "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
+                            "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
+                            "align-class1":"align-right",
+                            "align-class2":"align-top",
+                            "width-class":"type-narrow",
+                            "font-color":"text-white",
+                            "font-class1":"font-bold"
+                        },
+                        "item5": {
+                            "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
+                            "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
+                            "align-class1":"align-center",
+                            "align-class2":"align-top",
+                            "width-class":"type-narrow",
+                            "font-color":"text-white",
+                            "font-class1":"font-bold",
+                            "font-class2":""
+                        },
+                        "item6": {
+                            "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
+                            "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
+                            "align-class1":"align-center",
+                            "align-class2":"align-top",
+                            "width-class":"type-narrow",
+                            "font-color":"text-white",
+                            "font-class1":"font-bold",
+                            "font-class2":""
+                        },
+                        "item7": {
+                            "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
+                            "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
+                            "align-class1":"align-center",
+                            "align-class2":"align-middle",
+                            "width-class":"type-narrow",
+                            "font-color":"text-white",
+                            "font-class1":"font-bold",
+                            "font-class2":""
+                        }
+                    }
+                })
+                <!-- // component -->
                 <!-- // visual slider -->
+                <!-- //컴포넌트로 변경 -->
 
                 <div class="page-tabs type2">
                     <div class="tabs-wrap btn-type">
