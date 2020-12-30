@@ -3,6 +3,9 @@ image: docker:latest
 variables:
   DEV_WEB_NAS: "/data001/dev-web-nas"
   STG_WEB_NAS: "/data001/stg-web-nas"
+  PROD_WEB_NAS: "/data001/prod-web-nas"
+  AKAMAI_API_HOST: "http://akamai.lgekr.lge.co.kr"
+  RSYNC_RESULT_FILE: "rsync-result.txt"
 
 stages:
   - build-n-deploy
@@ -30,14 +33,13 @@ dev:
     - cp -rf ./dist/${CI_COMMIT_SHA}/html/ ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/html/
     - cp -rf ./dist/${CI_COMMIT_SHA}/guide/ ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/guide/
 
-    #- cd akamai-purge-script
-    - rsync -v -r -c ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/ ${DEV_WEB_NAS}/htdocs/ > ${DEV_WEB_NAS}/htdocs/rsync-result.txt
-    - export AKAMAI_PROPERTY=wwwdev50.lge.co.kr
+    - cd akamai-purge-script
+    - rsync -v -r -c ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/ ${DEV_WEB_NAS}/htdocs/ > rsync-result.txt
     - export PURGE_ROOT_URL=https://wwwdev50.lge.co.kr
 
-    # - npm install
-    # - node akamai.js
-    # - rm -rf ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}
+    - npm install
+    - node akamai.js
+    - rm -rf ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}
     # Need to delete build files in dist directory
     - rm -rf ../dist/${CI_COMMIT_SHA}
 
@@ -65,13 +67,46 @@ stg:
     - cp -rf ./dist/${CI_COMMIT_SHA}/html/ ${STG_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/html/
     - cp -rf ./dist/${CI_COMMIT_SHA}/guide/ ${STG_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/guide/
 
-    #- cd akamai-purge-script
+    - cd akamai-purge-script
     - rsync -v -r -c ${STG_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/ ${STG_WEB_NAS}/htdocs/ > rsync-result.txt
-    - export AKAMAI_PROPERTY=wwwstg.lge.co.kr
     - export PURGE_ROOT_URL=https://wwwstg.lge.co.kr
 
-    # - npm install
-    # - node akamai.js
+    - npm install
+    - node akamai.js
     - rm -rf ${STG_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}
+    # Need to delete build files in dist directory
+    - rm -rf ../dist/${CI_COMMIT_SHA}
+
+prod:
+  image: node:10.15.0
+  stage: build-n-deploy
+  only:
+    - master
+  when: manual
+  script:
+    ## build
+    - rm -rf ./dist/*
+    - npm install gulp@3.9.1 -g
+    - npm install
+    - gulp server-build
+
+    ## deploy
+    - apt-get update
+    - apt-get install rsync -y
+    - mkdir -p ${PROD_WEB_NAS}/htdocs
+    - rm -rf ${PROD_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}
+    - mkdir -p ${PROD_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}
+
+    - cp -rf ./dist/${CI_COMMIT_SHA}/lg5-common/ ${PROD_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/lg5-common/
+    - cp -rf ./dist/${CI_COMMIT_SHA}/html/ ${PROD_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/html/
+    - cp -rf ./dist/${CI_COMMIT_SHA}/guide/ ${PROD_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/guide/
+
+    - cd akamai-purge-script
+    - rsync -v -r -c ${PROD_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/ ${PROD_WEB_NAS}/htdocs/ > rsync-result.txt
+    - export PURGE_ROOT_URL=https://www.lge.co.kr
+
+    - npm install
+    - node akamai.js
+    - rm -rf ${PROD_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}
     # Need to delete build files in dist directory
     - rm -rf ../dist/${CI_COMMIT_SHA}
