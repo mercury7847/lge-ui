@@ -10,21 +10,6 @@
 		max-width:1600px;
 		margin:0 auto;
 	}
-	// align option 
-    $align : (align-left, align-center, align-right);
-    @each $alignClass in $align {
-        .#{$alignClass} {
-            @if $alignClass == align-left {
-                text-align:left;
-            }
-            @else if $alignClass == align-center {
-                text-align:center;
-            }
-            @else if $alignClass == align-right {
-                text-align:right;
-            }
-        }
-    }
 	
 	position:relative;
 	// common
@@ -38,11 +23,6 @@
 		}
 	}
 	.animation-box {
-		.animation-area {
-			position: relative;
-			top: auto;
-			left: auto;
-		}
 		.play-animaion-btn,
 		.controller-wrap {
 			z-index: 11;
@@ -123,38 +103,29 @@
 						width:100%;
 					}
 					.title * {
-						@include font-large-2;
-						font-weight:700;
+						@include title-h3;
 					}
 					.sub-tit {
+						@include bodycopy(h3, h3);
 						margin-top:8px;
-						@include font-medium;
 						font-weight:700;
 						@include mobile {
 							margin-top:6px;
 						}
+						&:first-child {
+							margin-top:0;
+						}
 					}
 					.body-copy {
-						margin-top:16px;
-						@include font-medium;
-						@include mobile {
-							margin-top:14px;
-						}
+						@include bodycopy(h3, h3);
 					}
 					.cta-box {
-						margin-top:24px;
-						.btn.border,
-						.text-link {
-							margin-left:16px;
-							&:first-child {
-								margin-left:0;
-							}
-						}
+						@include cta-btn;
 					}
 					.thumbnail-box {
 						margin-top:24px;
 						img {
-							width:auto;
+							width:100%;
 							max-width:100%;
 							height:auto;
 							vertical-align:top;

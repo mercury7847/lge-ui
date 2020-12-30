@@ -12,7 +12,9 @@ $(window).ready(function(){
             slidesToScroll: 1,
             prevArrow:'.btn-arrow.prev',
             nextArrow:'.btn-arrow.next',
-            playSelector: '.btn-play.play'
+            playSelector: '.btn-play.play',
+            adaptiveHeight: true,
+            lazyLoad: 'progressive',
         });
     });
 });

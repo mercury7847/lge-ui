@@ -51,7 +51,7 @@
         기본은 언더라인 없음
         .font-underline : 언더라인
     -->
-    <section class="component KRC0035 @@align-class1 @@img-size-type @@bg-color">
+    <section class="component KRC0035 @@align-class1 @@imgSizeType @@bg-color">
         <div class="component-inner">
             <div class="inner">
                 @@if ( context.type2 ) {
@@ -60,7 +60,14 @@
                     <div class="title" id="title02">@@headline</div>
                     <div class="text @@font-class3">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다. </div>
                     <div class="thumbs">
-                        <img src="/lg5-common/images/dummy/@img-372x210.png" alt="">
+                        <!-- [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
+                        @@if ( context.imgSizeType == "standard" ) {
+                        <img src="/lg5-common/images/KRC0035/@layered01.jpg" data-pc-src="/lg5-common/images/KRC0035/@layered01.jpg" data-m-src="/lg5-common/images/KRC0035/@layered01.jpg" alt="">
+                        }
+                        @@if ( context.imgSizeType == "large" ) {
+                        <img src="/lg5-common/images/KRC0035/@layered02.jpg" data-pc-src="/lg5-common/images/KRC0035/@layered02.jpg" data-m-src="/lg5-common/images/KRC0035/@layered02.jpg" alt="">
+                        }
+                        <!-- // [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
                         <p class="hidden">graphic description : </p>
                     </div>
                     <div class="btn-type-box">
@@ -97,30 +104,32 @@
                                 <!-- slide item : 링크가 있는 이미지 타입 -->
                                 <li class="slide-conts ui_carousel_slide">
                                     <div class="visual-area image">
-                                        <a href="#" target="_blank" data-link-area="side_image_text-image" data-link-name="{Alt Text}"><img src="@@img" alt=""></a>
+                                        <a href="#" target="_blank" data-link-area="side_image_text-image" data-link-name="{Alt Text}">
+                                            <!-- [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
+                                            <img src="/lg5-common/images/KRC0035/@thumb.jpg" data-pc-src="/lg5-common/images/KRC0035/@thumb.jpg" data-m-src="/lg5-common/images/KRC0035/@thumb-m.jpg" alt="">
+                                            <!-- // [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
+                                        </a>
                                         <p class="hidden">graphic description : </p>
-                                        <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                                        <!-- [KR수정_201229] 캡션 삭제 -->
                                     </div>
                                 </li> 
                                 <!-- // slide item : 링크가 있는 이미지 타입 -->
                                 <!-- slide item : youtube 타입 -->
                                 <li class="slide-conts ui_carousel_slide">
                                     <div class="visual-area video youtube-box">
-                                        <a href="#none" role="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
                                         <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
-                                            <img data-src="@@img" alt="" class="lazyload">
+                                            <!-- [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
+                                            <img src="/lg5-common/images/KRC0035/@thumb.jpg" data-pc-src="/lg5-common/images/KRC0035/@thumb.jpg" data-m-src="/lg5-common/images/KRC0035/@thumb-m.jpg" alt="">
+                                            <!-- // [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
                                             <p class="hidden">graphic description : </p>
-                                            <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                                         </a>
                                     </div>
                                 </li> 
                                 <!-- // slide item : youtube 타입 -->
                                 <!-- slide item : animation 타입 -->
                                 <li class="slide-conts ui_carousel_slide">
+                                    <!-- [KR수정_201229] 애니메이션 DOM 공통화 수정(AD버튼, 캡션, 이미지, hidden태그 삭제) -->
                                     <div class="visual-area animation-box">
-                                        <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
-                                        <!-- <img data-src="@@img" alt="" class="lazyload">
-                                        <p class="hidden">graphic description : </p> -->
                                         <div class="animation-area">
                                             <video autoplay muted loop>
                                                 <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
@@ -132,8 +141,8 @@
                                                 <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
                                             </div>
                                         </div>
-                                        <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                                     </div>
+                                    <!-- // [KR수정_201229] 애니메이션 DOM 공통화 수정(AD버튼, 캡션, 이미지, hidden태그 삭제) -->
                                 </li>
                                 <!-- // slide item : animation 타입 -->
                             </ul>
@@ -151,7 +160,14 @@
                     <div class="title" id="title02">@@headline</div>
                     <div class="text @@font-class3">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다. </div>
                     <div class="thumbs">
-                        <img src="/lg5-common/images/dummy/@img-372x210.png" alt="">
+                        <!-- [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
+                        @@if ( context.imgSizeType == "standard" ) {
+                        <img src="/lg5-common/images/KRC0035/@layered01.jpg" data-pc-src="/lg5-common/images/KRC0035/@layered01.jpg" data-m-src="/lg5-common/images/KRC0035/@layered01.jpg" alt="">
+                        }
+                        @@if ( context.imgSizeType == "large" ) {
+                        <img src="/lg5-common/images/KRC0035/@layered02.jpg" data-pc-src="/lg5-common/images/KRC0035/@layered02.jpg" data-m-src="/lg5-common/images/KRC0035/@layered02.jpg" alt="">
+                        }
+                        <!-- // [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
                         <p class="hidden">graphic description : </p>
                     </div>
                     <div class="btn-type-box">
