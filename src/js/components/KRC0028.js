@@ -21,7 +21,9 @@ $(window).ready(function(){
                         fade:false,
                         swipeToSlide:false,
                         slidesToShow: 1,
-                        slidesToScroll: 1
+                        slidesToScroll: 1,
+                        adaptiveHeight:true,
+                        lazyLoad: 'progressive',
                     }
                 }
             ],
