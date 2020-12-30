@@ -12,7 +12,9 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
             errorCheck:true,
             errorMsg:'조회기간을 설정해주세요.',
             msgTarget:'.err-block',
-            periodSelectInputName:'periodSelect'
+            periodSelectInputName:'periodSelect',
+            dateBetweenCheckEnable : true,
+            dateBetweenCheckYear : 2,
         },
 
         initialize: function initialize(el, options) {
@@ -55,8 +57,8 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
             //기간 선택 옵션버튼이 달려 있는 필터일 경우 선택되어 있는것이 있으면 오늘날짜를 기준으로 날짜를 세팅한다.
             var checkedInput = self.$el.find('input[name="' + self.options.periodSelectInputName + '"]:checked');
             if(checkedInput.length > 0) {
-                var date = new Date(); 
-                self.$dateFilterEndDate.vcCalendar('setDate', date);    
+                var date = new Date();
+                self.$dateFilterEndDate.vcCalendar('setDate', date);
                 self.setBeforePeriod(checkedInput.val());
             }
         },
@@ -69,11 +71,15 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
             });
 
             self.$dateFilterStartDate.on('calendarselected', function(e){
-                self.$el.find('input[type="radio"]').prop('checked', false);
+                var checkedInput = self.$el.find('input[name="' + self.options.periodSelectInputName + '"]');
+                checkedInput.prop('checked', false);
+                //self.$el.find('input[type="radio"]').prop('checked', false);
             });
 
             self.$dateFilterEndDate.on('calendarselected', function(e){
-                self.$el.find('input[type="radio"]').prop('checked', false);
+                var checkedInput = self.$el.find('input[name="' + self.options.periodSelectInputName + '"]');
+                checkedInput.prop('checked', false);
+                //self.$el.find('input[type="radio"]').prop('checked', false);
             });
 
             self.$el.find('input[type="radio"]').on('click',function (e) {
@@ -94,9 +100,11 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
                     var result = true;
                 }
                 if(result){
-                    var param = self.getSelectOption();
-                    if(param) {
-                        self.triggerHandler("dateFilter_submit", param);
+                    if(self.dateBetweenValidation()) {
+                        var param = self.getSelectOption();
+                        if(param) {
+                            self.triggerHandler("dateFilter_submit", param);
+                        }
                     }
                 }
             });
@@ -122,7 +130,7 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
             var self = this;
             var date = self.$el.find(self.options.endDate).vcCalendar('getyyyyMMdd');
             if(date) {
-                var d = new Date(vcui.date.format(date,'yyyy-MM-dd')); 
+                var d = self.yyyyMMddTodate(date); 
                 period = period.toLowerCase();
                 var n = period.includes("m");
                 if(n) {
@@ -162,6 +170,43 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
                 param[checkedInput.attr('name')] = checkedInput.val();
             }
             return param;
+        },
+
+        dateBetweenValidation: function(){
+            var self = this;
+            if(self.options.dateBetweenCheckEnable) {
+                var startDate = self.$dateFilterStartDate.vcCalendar('getyyyyMMdd');
+                var endDate = self.$dateFilterEndDate.vcCalendar('getyyyyMMdd');
+
+                if(startDate == null || endDate == null) {
+                    lgkorUI.alert('', {title: "조회기간을 확인해 주세요."});
+                    return false;
+                }
+
+                var starttime = self.yyyyMMddTodate(startDate);
+                var endtime = self.yyyyMMddTodate(endDate);
+                var period = endtime.getTime() - starttime.getTime();
+                if(period < 0) {
+                    lgkorUI.alert('', {title: "조회기간을 확인해 주세요."});
+                    return false;
+                }
+        
+                var limitperiod = self.options.dateBetweenCheckYear * 1000 * 60 * 60 * 24 * 365;
+                if(period > limitperiod) {
+                    lgkorUI.alert('', {title: "최대 조회 기간은<br>2년을 넘을 수 없습니다."});
+                    return false;
+                }
+            }
+            
+            return true;
+        },
+
+        yyyyMMddTodate: function(date_str) {
+            var yyyyMMdd = String(date_str);
+            var sYear = yyyyMMdd.substring(0,4);
+            var sMonth = yyyyMMdd.substring(4,6);
+            var sDate = yyyyMMdd.substring(6,8);
+            return new Date(Number(sYear), Number(sMonth)-1, Number(sDate));
         }
 
     });

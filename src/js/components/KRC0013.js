@@ -12,14 +12,11 @@ $(document).ready(function() {
         '       <img src="{{largeImgURL}}" alt="{{alt}}">'+
         '   </a>'+
         '   <p class="hidden">{{accDesc}}</p>'+
-        '   <div class="caption {{#if videoTitleColor}}{{videoTitleColor}}{{/if}}">{{videoTitle}}</div>'+
         '</div>';
 
     var aniboxTemplate = 
-         '<div class="visual-area animation-box">'+
-         //'   <a href="#none" role="button" data-src="{{aniAccSrc}}" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="{{ariaDesc}}">Plays audio Description Video</a>'+
-         '   <img src="{{largeImgURL}}" alt="{{alt}}">'+
-         '   <p class="hidden">{{accDesc}}</p>'+
+         '<div class="visual-area animation-box size-type">'+
+         '   <img src="{{largeImgURL}}" alt="{{alt}}" aria-hidden="true">'+
          '   <div class="animation-area">'+
          '       <video loop{{#if videoAutoplay}} muted autoplay{{/if}}>'+
          '           <source src="{{aniSrc}}" type="video/mp4">'+
@@ -28,7 +25,6 @@ $(document).ready(function() {
          '           <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" aria-describedby="{{ariaDesc}}">Pause Video</button>'+
          '       </div>'+
          '   </div>'+
-         '   <div class="caption {{#if videoTitleColor}}{{videoTitleColor}}{{/if}}">{{aniTitle}}</div>'+
          '</div>';
 
     var defaultTemplate =

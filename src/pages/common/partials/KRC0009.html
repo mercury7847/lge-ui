@@ -64,10 +64,9 @@
                             <!-- 2020.09.21 animation type 추가 -->
                             <!-- 1. image -->
                             <!-- animation 타입인 경우 animation-box 클래스 추가 -->
-                            <!-- [KR수정] 애니메이션 AD버튼 삭제, caption삭제, .size-type class추가 -->
+                            <!-- [KR수정] 애니메이션 AD버튼 삭제, caption삭제, .size-type class, img에 aria-hidden="true" 추가, hidden 태그 삭제 -->
                             <div class="visual-area animation-box size-type">
-                                <img data-src="/lg5-common/images/dummy/@sample-1-1.gif" alt="">
-                                <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                                <img data-src="/lg5-common/images/dummy/@sample-1-1.gif" alt="" aria-hidden="true">
                                 <div class="animation-area">
                                     <video autoplay muted loop>
                                         <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">

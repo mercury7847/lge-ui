@@ -23,7 +23,7 @@
     @@if ( context.pageBtn ) {
         <div class="btn-desc">
         @@for (var i=0; i < context.pageBtn.length; i++) {
-            <button class="btn border size"><span>`+pageBtn[i].btn+`</span></button>
+            <button class="btn border size" `+pageBtn[i].attr+`><span>`+pageBtn[i].btn+`</span></button> 
         }
         </div>
     }
@@ -48,6 +48,15 @@
                 <li class="`+stepArr[i].class+`">`+stepArr[i].text+``+stepArr[i].step+`</li>
             }
         </ul>
+    </div>
+    }
+    @@if ( context.progressArr ) {
+    <div class="progress-wrap">
+        <ol>
+            @@for (var i=0; i < context.progressArr.length; i++) {
+                <li><span class="txt">`+progressArr[i].progress+`</span></li>
+            }
+        </ol>
     </div>
     }
 </div>

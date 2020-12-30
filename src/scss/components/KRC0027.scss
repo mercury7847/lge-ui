@@ -21,16 +21,11 @@
         @include mobile {
             position: relative;
             padding-bottom: 32px;
-            .indi-wrap {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-            }
             .slide-controls {
                 .btn-arrow {
                     position: absolute;
-                    top: 50%;
+                    top:calc((100% - 32px) / 2);
+                    transform:translateY(-50%);
                     &.prev {
                         left: 4px;
                     }
@@ -41,71 +36,28 @@
             }
         }
     }
-    $color: (lightgray, dark, black, white);
-	@each $bg in $color {
-		&.bg-#{$bg} {
-			@if $bg == lightgray {
-				background-color: #f4f4f4;
-			} @else if $bg == dark {
-				background-color: #333;
-                &.block1 .unit-list .title *,
-                &.block2 .unit-list .title *,
-                &.block3 .unit-list .title *,
-                &.block1 .unit-list .text,
-                &.block2 .unit-list .text,
-                &.block3 .unit-list .text {
-                    color:#fff;
-                }
-                .link-text.ico-right {
-                    border-color:#fff;
-                    color:#fff;
-                    &:after {
-                        border-color:#fff;
-                    }
-				}
-			} @else if $bg == black {
-                background-color: #000;
-                &.block1 .unit-list .title *,
-                &.block2 .unit-list .title *,
-                &.block3 .unit-list .title *,
-                &.block1 .unit-list .text,
-                &.block2 .unit-list .text,
-                &.block3 .unit-list .text {
-                    color:#fff;
-                }
-                .link-text.ico-right {
-                    border-color:#fff;
-                    color:#fff;
-                    &:after {
-                        border-color:#fff;
-                    }
-				}
-			} @else if $bg == white {
-				background-color: #fff;
-			}
-		}
-	}
+    .visual-box {
+        overflow:hidden;
+    }
 }
 
 $block: (block1, block2, block3);
 @each $i in $block {
     img {
         width:100%;
+        max-width:100%;
         height:auto;
         vertical-align:top;
     }
     .KRC0027.#{$i} {
-        // max-width:(1284px + 60px);
-        // margin:-60px auto 0;
-        // padding:0 18px;
-        @include mobile {
-            //padding:0 24px;
-        }
         .unit-list {
+            margin:0 -12px;
             font-size:0;
+            @include mobile {
+                margin:0;
+            }
             .unit-box {
                 display:inline-block;
-                // margin-top:60px;
                 padding:0 12px;
                 vertical-align:top;
                 @if ( $i == block1 ) {
@@ -116,69 +68,29 @@ $block: (block1, block2, block3);
                     width:calc(100% / 3);
                 }
                 @include mobile {
-                    @if ( $i == block1 ) {
-                        padding:0;
-                    } @else if ( $i == block2 ) {
+                    padding:0 16px;
+                    @if ( $i == block2 ) {
                         width:100%;
-                        //margin-top:60px;
-                        padding:0;
                     } @else if ( $i == block3 ) {
                         width:100%;
-                        //margin-top:60px;
-                        padding:0;
-                    }
-                    &:first-child {
-                        margin-top:0;
                     }
                 }
             }
 
             .title * {
-                color: $color-default;
-                @include font-large-6;
-                font-weight: 700;
+                @include title-h3;
             }
             .text {
-                margin-top:24px;
-                color: $color-default;
-                @include font-large-1;
+                @include bodycopy(h3, h3);
             }
             .cta-box {
-                margin:12px 0 0;
-                font-size:0;
-                span {
-                    display:inline-block;
-                    vertical-align:bottom;
-                    margin:12px 12px 0;
-                }
-                &.visible-xs {
-                    display:none;
-                    @include mobile {
-                        display:block;
-                    }
-                }
-                &.hidden-xs {
-                    display:block;
-                    @include mobile {
-                        display:none;
-                    }
-                }
-            }
-            .disclaimer {
-                margin-top: 12px;
-            }
-            @include mobile {
-                .title,
-                .text,
-                .cta-box,
-                .disclaimer {
-                    padding: 0 16px;
-                } 
+                @include cta-btn;
             }
             .visual-box {
                 position:relative;
                 @include mobile {
-                    //margin: 0 -20px;
+                    margin-left:-16px;
+                    margin-right:-16px;
                 }
                 .cta-box {
                     position:absolute;
@@ -187,59 +99,17 @@ $block: (block1, block2, block3);
                     bottom:24px;
                     z-index:10;
                 }
-                /*
-                &.text-white {
-                    .cta-box {
-                        .link-text {
-                            color:#fff;
-                            border-color:#fff;
-                            &::after {
-                                border-color:#fff;
-                            }
-                        }
-                        .btn.btn-primary {
-                            border-color:#fff;
-                            background:#fff;
-                            color:#111;
-                        }
-                    }
-                }
-                &.text-black {
-                    .cta-box {
-                        .link-text {
-                            color:#111;
-                            border-color:#111;
-                            &::after {
-                                border-color:#111;
-                            }
-                        }
-                        .btn.btn-primary {
-                            border-color:#111;
-                            background:#111;
-                            color:#fff;
-                        }
-                    }
-                }*/
-            }
-            .animation-box {
-                .animation-area {
-                    .controller-wrap {
-                        right:50%;
-                        bottom:24px;
-                        margin-right:-20px;
-                    }
-                }
             }
         }
 
         &.align-top {
             .visual-box {
-                margin-top:40px;
+                margin-top:28px;
             }
         }
         &.align-bottom {
             .visual-box {
-                margin-bottom:40px;
+                margin-bottom:28px;
             }
         }
         &.align-left,

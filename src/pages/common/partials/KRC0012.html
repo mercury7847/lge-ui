@@ -52,44 +52,80 @@
                 <div class="items ui_carousel_track"><!-- [KR수정] .ui_carousel_track 추가 -->
                     <!-- item -->
                     <div class="item item-box ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+                        <!-- [KR수정_201222] 텍스트 > 이미지 순서로 DOM 순서 변경 -->
+                        <div class="text-wrap">
+                            <!-- headline -->
+                            <div class="title" id="title01"><h2>타이틀 영역입니다.</h2></div>
+                            <!-- // headline -->
+                            <!-- body copy -->
+                            <div class="text @@font-class1 @@font-style1">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</div>
+                            <!-- // body copy -->
+                            <!-- cta -->
+                            <!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
+                            <div class="btn-type-box">
+                                <a href="#none" class="btn border size-m" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>문의하기</span></a>
+                                <a href="#none" class="btn border size-m" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>문의하기</span></a>
+                            </div>
+                            <div class="btn-type-text">
+                                <a href="#none" class="text-link" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>자세히 보기</span></a>
+                                <a href="#none" class="text-link" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title01"><span>자세히 보기</span></a>
+                            </div>
+                            <!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
+                            <!-- // cta -->
+                        </div>
                         <div class="visual-wrap">
                             <!-- image -->
                             <div class="visual-area image">
-                                <a href="#" data-link-area="carousel_block_image_text-image" data-link-name="{Alt Text}"><img data-src="/lg5-common/images/KRC0012/@thumb01.jpg" alt="" class="lazyload"></a>
+                                <a href="#" data-link-area="carousel_block_image_text-image" data-link-name="{Alt Text}">
+                                    <img src="/lg5-common/images/KRC0012/@thumb01.jpg" alt="">
+                                    <!-- [KR수정_201222] hidden 태그 추가 -->
+                                    <p class="hidden">graphic description : </p>
+                                    <!--//  [KR수정_201222] hidden 태그 추가 -->
+                                </a>
                             </div>
                             <!-- // image -->
+                            <!-- [KR수정] disclaimer DOM, 위치 수정 -->
+                            <!-- 5. disclaimer -->
+                            <ul class="bullet-list">
+                                <li class="b-txt">이해를 돕기 위하여 연출된 이미지입니다.</li>
+                            </ul>
+                            <!-- // 5. disclaimer -->
+                            <!-- // [KR수정] disclaimer DOM, 위치 수정 -->
                         </div>
-                        <div class="text-wrap">
-                            <!-- headline -->
-                            <div class="title" id="title01"><h2>타이틀 텍스트는 PC기준 최대 3줄까지 표시됩니다 1 타이틀 텍스트는 PC기준 최대 3줄까지 표시됩니다. 타이틀 텍스트는 PC기준 최대 3줄까지 표시됩니다 1 타이틀 텍스트는 PC기준 최대 3줄까지 표시됩니다.</h2></div>
-                            <!-- // headline -->
-                            <!-- body copy -->
-                            <div class="text @@font-class1 @@font-style1">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 초대형 화면으로 최대 5줄까지 표시됩니다 최대 5줄까지 표시됩니다 최대 5줄까지 표시됩니다.</div>
-                            <!-- // body copy -->
-                            <!-- cta -->
-                            <div class="btn-type-box">
-                                <span><a href="#none" class="btn btn-outline-primary" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title01">문의하기</a></span><!-- [KR수정] .btn-primary -> .btn-outline-primary 수정 -->
-                                <span><a href="#none" class="btn btn-primary" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title01">문의하기</a></span>
-                            </div>
-                            <div class="btn-type-text">
-                                <span><a href="#none" class="link-text bold ico-right" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title01">자세히 보기</a></span>
-                                <span><a href="#none" class="link-text bold ico-right" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title01">자세히 보기</a></span>
-                            </div>
-                            <!-- // cta -->
-                        </div>
+                        <!-- // [KR수정_201222] 텍스트 > 이미지 순서로 DOM 순서 변경 -->
                     </div>
                     <!-- // item -->
 
                     <!-- item -->
                     <div class="item item-box ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+                        <!-- [KR수정_201222] 텍스트 > 이미지 순서로 DOM 순서 변경 -->
+                        <div class="text-wrap">
+                            
+                            <!-- 2. headline -->
+                            <div class="title" id="title02"><h2>타이틀 영역입니다.</h2></div>
+                            <!-- // 2. headline -->
+                            <!-- 3. body copy -->
+                            <div class="text @@font-class2 @@font-style2">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</div>
+                            <!-- // 3. body copy -->
+                            <!-- 4. cta -->
+                            <!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
+                            <div class="btn-type-box">
+                                <a href="#none" class="btn border size-m" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02"><span>문의하기</span></a>
+                                <a href="#none" class="btn border size-m" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02"><span>문의하기</span></a>
+                            </div>
+                            <div class="btn-type-text">
+                                <a href="#none" class="text-link" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02"><span>자세히 보기</span></a>
+                                <a href="#none" class="text-link" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02"><span>자세히 보기</span></a>
+                            </div>
+                            <!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
+                            <!-- // 4. cta -->
+                        </div>
                         <div class="visual-wrap">
                             <!-- image -->
                             <!-- 2020.09.21 animation type 추가 -->
                             <!-- 1. animation 타입인 경우 animation-box 클래스 추가 -->
+                            <!-- [KR수정_201222] 애니메이션 DOM 공통화 수정(이미지, AD버튼, 캡션 삭제) -->
                             <div class="visual-area animation-box">
-                                <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
-                                <img data-src="/lg5-common/images/dummy/@sample-3-2.gif" alt="" class="lazyload" />
-                                <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
                                 <div class="animation-area">
                                     <video autoplay muted loop>
                                         <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
@@ -101,38 +137,44 @@
                                         <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
                                     </div>
                                 </div>
-                                <!-- caption -->
-                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-                                <!-- // caption -->
                             </div>
+                            <!-- // [KR수정_201222] 애니메이션 DOM 공통화 수정(이미지, AD버튼, 캡션 삭제) -->
                             <!-- // image -->
-                            
+                            <!-- [KR수정] disclaimer DOM, 위치 수정 -->
+                            <!-- 5. disclaimer -->
+                            <ul class="bullet-list">
+                                <li class="b-txt">이해를 돕기 위하여 연출된 이미지입니다.</li>
+                            </ul>
+                            <!-- // 5. disclaimer -->
+                            <!-- // [KR수정] disclaimer DOM, 위치 수정 -->
                         </div>
-                        <div class="text-wrap">
-                            
-                            <!-- 2. headline -->
-                            <div class="title" id="title02"><h2>타이틀 텍스트는 PC기준 최대 3줄까지 표시됩니다 1 타이틀 텍스트는 PC기준 최대 3줄까지 표시됩니다. 타이틀 텍스트는 PC기준 최대 3줄까지 표시됩니다 1 타이틀 텍스트는 PC기준 최대 3줄까지 표시됩니다.</h2></div>
-                            <!-- // 2. headline -->
-                            <!-- 3. body copy -->
-                            <div class="text @@font-class2 @@font-style2">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 초대형 화면으로 최대 5줄까지 표시됩니다 최대 5줄까지 표시됩니다 최대 5줄까지 표시됩니다.</div>
-                            <!-- // 3. body copy -->
-                            <!-- 4. cta -->
-                            <div class="btn-type-box">
-                                <span><a href="#none" class="btn btn-outline-primary" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02">문의하기</a></span><!-- [KR수정] .btn-primary -> .btn-outline-primary 수정 -->
-                                <span><a href="#none" class="btn btn-primary" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02">문의하기</a></span>
-                            </div>
-                            <!-- // 4. cta -->
-                            <div class="btn-type-text">
-                                <span><a href="#none" class="link-text bold ico-right" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02">자세히 보기</a></span>
-                                <span><a href="#none" class="link-text bold ico-right" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02">자세히 보기</a></span>
-                            </div>
-                            <!-- // 4. cta -->
-                        </div>
+                        <!-- // [KR수정_201222] 텍스트 > 이미지 순서로 DOM 순서 변경 -->
                     </div>
                     <!-- // item -->
                     
                     <!-- item -->
                     <div class="item item-box ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+                        <!-- [KR수정_201222] 텍스트 > 이미지 순서로 DOM 순서 변경 -->
+                        <div class="text-wrap">
+                            <!-- headline -->
+                            <div class="title" id="title03"><h2>타이틀 영역입니다.</h2></div>
+                            <!-- // headline -->
+                            <!-- body copy -->
+                            <div class="text @@font-class3 @@font-style3">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</div>
+                            <!-- // body copy -->
+                            <!-- cta -->
+                            <!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
+                            <div class="btn-type-box">
+                                <a href="#none" class="btn border size-m" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title03"><span>문의하기</span></a>
+                                <a href="#none" class="btn border size-m" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title03"><span>문의하기</span></a>
+                            </div>
+                            <div class="btn-type-text">
+                                <a href="#none" class="text-link" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title03"><span>자세히 보기</span></a>
+                                <a href="#none" class="text-link" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title03"><span>자세히 보기</span></a>
+                            </div>
+                            <!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
+                            <!-- // cta -->
+                        </div>
                         <div class="visual-wrap">
                             <!-- image : video 타입인 경우 -->
                             <div class="visual-area video">
@@ -141,31 +183,23 @@
                                 <a href="#" class="see-video" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="carousel_block_image_text-video_play" data-link-name="{video id}"> -->
                                 <!-- * youtube video modal은 아래의 방식으로 입력 -->
                                 <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="carousel_block_image_text-video_play" data-link-name="{video id}">
-                                    <img data-src="/lg5-common/images/KRC0012/@thumb01.jpg" alt="" class="lazyload">
+                                    <img src="/lg5-common/images/KRC0012/@thumb01.jpg" alt="">
+                                    <!-- [KR수정_201222] hidden 태그 추가 -->
+                                    <p class="hidden">graphic description : </p>
+                                    <!--//  [KR수정_201222] hidden 태그 추가 -->
                                 </a>
                                 <!-- // video play button -->
                             </div>
                             <!-- // image : video 타입인 경우 -->
-                            
+                            <!-- [KR수정] disclaimer DOM, 위치 수정 -->
+                            <!-- 5. disclaimer -->
+                            <ul class="bullet-list">
+                                <li class="b-txt">이해를 돕기 위하여 연출된 이미지입니다.</li>
+                            </ul>
+                            <!-- // 5. disclaimer -->
+                            <!-- // [KR수정] disclaimer DOM, 위치 수정 -->
                         </div>
-                        <div class="text-wrap">
-                            <!-- headline -->
-                            <div class="title" id="title03"><h2>타이틀 텍스트는 PC기준 최대 3줄까지 표시됩니다 1 타이틀 텍스트는 PC기준 최대 3줄까지 표시됩니다. 타이틀 텍스트는 PC기준 최대 3줄까지 표시됩니다 1 타이틀 텍스트는 PC기준 최대 3줄까지 표시됩니다.</h2></div>
-                            <!-- // headline -->
-                            <!-- body copy -->
-                            <div class="text @@font-class3 @@font-style3">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 초대형 화면으로 최대 5줄까지 표시됩니다 최대 5줄까지 표시됩니다 최대 5줄까지 표시됩니다.</div>
-                            <!-- // body copy -->
-                            <!-- cta -->
-                            <div class="btn-type-box">
-                                <span><a href="#none" class="btn btn-outline-primary" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title03">문의하기</a></span><!-- [KR수정] .btn-primary -> .btn-outline-primary 수정 -->
-                                <span><a href="#none" class="btn btn-primary" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title03">문의하기</a></span>
-                            </div>
-                            <div class="btn-type-text">
-                                <span><a href="#none" class="link-text bold ico-right" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title03">자세히 보기</a></span>
-                                <span><a href="#none" class="link-text bold ico-right" data-link-area="carousel_block_image_text-cta" data-link-name="{Link Text}" aria-describedby="title03">자세히 보기</a></span>
-                            </div>
-                            <!-- // cta -->
-                        </div>
+                        <!-- // [KR수정_201222] 텍스트 > 이미지 순서로 DOM 순서 변경 -->
                     </div>
                     <!-- // item -->
                 </div>
@@ -174,11 +208,6 @@
                 <button type="button" class="btn-arrow next">다음</button>
                 <!-- // [KR수정] prev/next button DOM 추가 -->
             </div>
-            <!-- [KR수정] DOM 위치 변경 -->
-            <!-- 5. disclaimer -->
-            <div class="desc @@font-class4 @@font-style4 @@align-class2">간략 설명은 약 50자 이내로 표현 가능합니다.</div>
-            <!-- // 5. disclaimer -->
-            <!-- // [KR수정] DOM 위치 변경 -->
         </div>
         
     </div>

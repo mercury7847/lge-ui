@@ -574,7 +574,11 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             var self = this,
                 opt = self.options;
 
-            self.$slides = self.$slider.find(opt.slide + ':not(' + _V.CLONED + ')').addClass(_V.SLIDE);
+            if (opt.rows > 1) {
+                self.$slides = self.$slider.find('.' + _V.TRACK).children().addClass(_V.SLIDE);
+            } else {
+                self.$slides = self.$slider.find(opt.slide + ':not(' + _V.CLONED + ')').addClass(_V.SLIDE);
+            }
             // comahead
             self.$slides.css('float', 'left');
 
@@ -634,7 +638,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 slidesPerSection;
 
             newSlides = document.createDocumentFragment();
-            originalSlides = self.$slider.find(opt.slide + ':not(' + _V.CLONED + ')');
+            originalSlides = self.$slider.find('.' + _V.TRACK).children();
 
             if (opt.rows > 1) {
 
@@ -904,7 +908,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             if (opt.rows > 1) {
                 originalSlides = self.$slides.children().children();
                 originalSlides.removeAttr('style');
-                self.$slider.empty().append(originalSlides);
+                self.$slider.find('.' + _V.TRACK).empty().append(originalSlides);
             }
         },
         clickHandler: function clickHandler(event) {
@@ -973,11 +977,15 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 } else {
                     self.$slideTrack.children(this.options.slide).detach();
                     self.$slideTrack.detach();
-                    self.$list.detach();
-                    self.$slider.append(self.$slides);
+                    if (opt.rows > 1) {
+                        self.$list.append(self.$slides);
+                    } else {
+                        self.$list.detach();
+                        self.$slider.append(self.$slides);
+                    }
                 }
             }
-
+                        
             self.cleanUpRows();
 
             self.$slider.removeClass(_V.SLIDER);
@@ -2102,7 +2110,12 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             var self = this,
                 opt = self.options;
 
-            self.$slides = self.$slideTrack.children(opt.slide).addClass(_V.SLIDE);
+            if (opt.rows > 1) {
+                self.buildRows();
+                self.buildOut();
+            } else {
+                self.$slides = self.$slideTrack.children(opt.slide).addClass(_V.SLIDE);
+            }
 
             self.slideCount = self.$slides.length;
 

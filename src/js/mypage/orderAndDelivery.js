@@ -213,7 +213,8 @@
         requestOrderInquiry(hiddenData.startDate, hiddenData.endDate, hiddenData.page+1);
     }
 
-    function setOrderListInquiry(startDate, endDate){        
+    function setOrderListInquiry(startDate, endDate){       
+        /* 
         var datevalidate = getDateValidation(startDate, endDate);
         if(!datevalidate.result){
             lgkorUI.alert("", {
@@ -222,7 +223,7 @@
 
             return;
         }
-
+        */
         requestOrderInquiry(startDate, endDate);
     }
 
@@ -265,6 +266,7 @@
         });
     }
 
+    /*
     function getDateValidation(startdate, endate){
         if(startdate == null || endate == null) return {result: false, alert: "조회기간을 확인해 주세요."};
 
@@ -278,6 +280,7 @@
 
         return {result: true};
     }
+    */
 
     document.addEventListener('DOMContentLoaded', function () {
         init();

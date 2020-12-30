@@ -15,8 +15,8 @@
         var myWrite = {
             init: function() {
                 var self = this;
-                self.setting();
                 vcui.require(['ui/pagination'], function () {
+                    self.setting();
                     self.bindEvents();
                 });
                 self.checkNoData();
@@ -30,7 +30,7 @@
                 self.$sectionInner = self.$lnbContents.find('div.section-inner');
                 self.$listCount = self.$sectionInner.find('p.list-count em');
                 self.$myLists = self.$sectionInner.find('div.my-lists ul');
-                self.$pagination = self.$sectionInner.find('div.pagination');
+                self.$pagination = self.$sectionInner.find('div.pagination').vcPagination();
                 self.$noData = self.$lnbContents.find('div.no-data');
                 self.$detailPopup = self.$contWrap.find('#popupDetail');
             },
@@ -53,7 +53,7 @@
                     self.openDetailPopup(_id);
                 });
 
-                self.$pagination.vcPagination().on('page_click', function(e) {
+                self.$pagination.on('page_click', function(e) {
                     var $a = self.$mySort.find('li.on a');
                     var category = $a.attr('href').replace("#","");
                     self.requestData({

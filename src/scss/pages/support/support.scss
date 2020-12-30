@@ -809,13 +809,13 @@
                 box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
                 font-size: 0;
                 &.calendar-wrap {
-                    padding: 20px 32px 24px;
+                    padding: 20px 30px 24px;
                         @include mobile {
                             padding: 16px 34px 20px;
                         }
                 } 
                 &.timetable-wrap {
-                    padding: 32px;
+                    padding: 21px;
                     @include mobile {
                         padding: 24px 16px;
                     }
@@ -876,12 +876,14 @@
     }
     table.box-table {
         &.tb-calendar {
-            th,
-            td {
-                padding: 4px 6px;
+            th {
+                padding: 8px 6px;
                 @include mobile {
                     padding: 0 2px;
                 }
+            }
+            td {
+                padding: 3px 0;
                 button {
                     width: 32px;
                     height: 32px;
@@ -892,22 +894,22 @@
          &.tb-timetable {
             th,
             td {
-                padding: 10px 6px 6px;
+                // padding: 10px 6px 6px;
                 @include mobile {
                     padding: 0 2px;
                 }
                 button {
                     width: 44px;
-                    height: 28px;
                     border-radius: 18px;
+                    height: 28px;
                     line-height: 28px;
                 }
             }
+            th {
+                font-size: 14px;
+            }
             th.choice {
                 //color: $color-primary;
-            }
-            tr:not(:first-child) td {
-                border-top: 1px solid #ddd;
             }
          }
     }
@@ -916,7 +918,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 24px;
+            margin-bottom: 22px;
             .month {
                 @include font-large-1;
             }
@@ -999,6 +1001,13 @@
         padding: 20px 24px;
         border-radius: 8px;
         background-color: #f4f4f4;
+        .center-info-title {
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+    }
+    .bullet-list.top-border {
+        margin-top: 24px;
     }
 } //support
 

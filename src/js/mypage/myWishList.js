@@ -30,6 +30,7 @@
                 vcui.require(['ui/pagination'], function () {
                     self.setting();
                     self.bindEvents();
+                    self.requestData({"page": 1});
                 });
             },
 
@@ -37,7 +38,8 @@
                 var self = this;
                 self.$contents = $('div.lnb-contents');
                 self.$list = self.$contents.find('div.info-tbl-wrap ul');
-                self.$pagination = self.$contents.find('.pagination');
+                self.$pagination = self.$contents.find('.pagination').vcPagination();
+                self.$noData = self.$contents.find('.no-data');
             },
 
             bindEvents: function() {
@@ -54,7 +56,7 @@
                     }
                 });
 
-                self.$pagination.vcPagination().on('page_click', function(e, data) {
+                self.$pagination.on('page_click', function(e, data) {
                     self.requestData({"page": data});
                 });
             },
@@ -75,6 +77,7 @@
                         item.price = item.price ? vcui.number.addComma(item.price) : null;
                         self.$list.append(vcui.template(listItemTemplate, item));
                     });
+                    self.checkNoData();
                 });
             },
 
@@ -95,7 +98,18 @@
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-cart-url');
                 lgkorUI.requestAjaxDataPost(ajaxUrl, {"id":_id}, null);
-            }
+            },
+
+            checkNoData: function() {
+                var self = this;
+                if(self.$list.find('li').length > 0) {
+                    self.$noData.hide();
+                    self.$pagination.show();
+                } else {
+                    self.$noData.show();
+                    self.$pagination.hide();
+                }
+            },
         }
         
         wishList.init();

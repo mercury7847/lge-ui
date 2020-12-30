@@ -12,7 +12,15 @@
         <div class="container">
             @@include('./common/modules/page-header.html', {
                 'pageTitle': '출장 서비스 예약',
-                'pageDesc': '전문 엔지니어가 고객님께 찾아가서 필요로 하시는 서비스를 제공해드립니다.'
+                'pageDesc': '전문 엔지니어가 고객님께 찾아가서 필요로 하시는 서비스를 제공해드립니다.',
+                'pageBtn': [
+                    { 'btn': '요금 및 보증기간 안내', 'attr': 'data-href="#ratesWarrantyGuidePopup" data-control="modal"' }
+                ],
+                'progressArr': [
+                    { 'progress' : '제품 선택'},
+                    { 'progress' : '예약 내용 입력'},
+                    { 'progress' : '예약 완료'}
+                ]
             })
             <div class="contents support reservation">
                 <!-- 서비스 안내 -->

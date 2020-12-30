@@ -46,7 +46,7 @@
                 self.$selectOrder = $sortList.find('.ui_selectbox');
                 self.$totalCounter = self.$section.find('#totalCount');
                 self.$list = self.$section.find('ul.award-list');
-                self.$pagination = self.$section.find('.pagination');
+                self.$pagination = self.$section.find('.pagination').vcPagination();
             },
 
             bindEvents: function() {
@@ -80,7 +80,7 @@
                     self.openAwardsPopup(popupData);
                 });
 
-                self.$pagination.vcPagination().on('page_click', function(e, data) {
+                self.$pagination.on('page_click', function(e, data) {
                     var category1 = self.selectedTabHref(self.$mainTab);
                     var category2 = self.selectedTabHref(self.$subTab);
                     self.requestData({"category1":category1,"category2":category2,"order":self.$selectOrder.vcSelectbox('value'),"page": data}, false);
