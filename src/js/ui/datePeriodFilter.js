@@ -23,6 +23,20 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
                 return;
             }
 
+            if (!String.prototype.includes) {
+                String.prototype.includes = function(search, start) {
+                    'use strict';
+                    if (typeof start !== 'number') {
+                        start = 0;
+                    }
+                    if (start + search.length > this.length) {
+                        return false;
+                    } else {
+                        return this.indexOf(search, start) !== -1;
+                    }
+                };
+            }
+
             self._setting();
             self._bindEvents();
         },
@@ -130,12 +144,12 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
             var self = this;
             var date = self.$el.find(self.options.endDate).vcCalendar('getyyyyMMdd');
             if(date) {
-                var d = self.yyyyMMddTodate(date); 
+                var d = self.yyyyMMddTodate(date);
                 period = period.toLowerCase();
                 var n = period.includes("m");
                 if(n) {
                     //월
-                    var month = period.toLowerCase().replaceAll('m','');
+                    var month = period.toLowerCase().replace(/m/g, '');//replaceAll('m','');
                     var m = d.getMonth();
                     d.setMonth(d.getMonth() - month);
 
