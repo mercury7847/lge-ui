@@ -941,6 +941,7 @@
 
                                     $('.example-result .txt').html(data.text);
                                     $('.example-result .img img').attr('src', data.imgPath);
+                                    $('.example-result .img img').attr('alt', data.imgAlt);
                                 });
                             }
                         });

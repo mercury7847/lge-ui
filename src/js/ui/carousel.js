@@ -2110,7 +2110,12 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             var self = this,
                 opt = self.options;
 
-            self.$slides = self.$slideTrack.children(opt.slide).addClass(_V.SLIDE);
+            if (opt.rows > 1) {
+                self.buildRows();
+                self.buildOut();
+            } else {
+                self.$slides = self.$slideTrack.children(opt.slide).addClass(_V.SLIDE);
+            }
 
             self.slideCount = self.$slides.length;
 

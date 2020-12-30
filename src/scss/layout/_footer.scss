@@ -226,6 +226,13 @@ footer {
                             vertical-align:top;
                             transition:all 0.3s;
                         }
+                        &:hover,
+                        &:focus,
+                        &:active {
+                            border-color:#222;
+                            background-image: none;
+                            color:#222;
+                        }
                     }
                 }
                 &.open {
