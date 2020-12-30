@@ -39,13 +39,37 @@
 			right:0;
 			bottom:0;
 			overflow:hidden;
-			video { // height:100% 기준 좌우 짤림 // 이미지 가로 > 세로
+			video { // height:100% 기준 좌우 짤림 // 이미지 가로 < 세로
 				position:absolute;
 				top:0;
 				left:50%;
 				width:auto;
 				height:100%;
 				transform:translateX(-50%);
+			}
+		}
+	}
+
+	&.size-type2 {
+		img {
+			display:block;
+			width:100%;
+			height:auto;
+		}
+		.animation-area {
+			position:absolute;
+			top:0;
+			left:0;
+			right:0;
+			bottom:0;
+			overflow:hidden;
+			video { 
+				position:absolute;
+				top:50%;
+				left:0;
+				width:100%;
+				height:auto;
+				transform:translateY(-50%);
 			}
 		}
 	}
