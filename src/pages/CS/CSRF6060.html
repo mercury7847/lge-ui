@@ -61,7 +61,7 @@
                                                 </div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="number" name="number" id="number" placeholder="접수 번호 입력" data-error-msg="접수번호를 입력해 주세요." data-required="true" required>
+                                                        <input type="text" name="number" id="number" placeholder="접수 번호 입력" data-error-msg="접수번호를 입력해 주세요." data-required="true" required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
@@ -157,16 +157,9 @@
         @@include('./common/footer.html')
     </div>
 
-    <!-- 접수 내역이 없을 경우 -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop1",
-        "msgOnly" : true,
-        "msg" : "입력하신 정보와 일치하는 접수 내역이 없습니다.<br>확인 후 이용 바랍니다."
-    })
-
     <!-- 인증 번호 발송 버튼을 클릭하지 않고 확인 버튼 눌렀을 경우 -->
     @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop2",
+        "popId" : "laypop1",
         "msgOnly" : true,
         "msg" : "인증 번호 발송 버튼을 선택해 주세요."
     })

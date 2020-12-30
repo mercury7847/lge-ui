@@ -1,0 +1,136 @@
+<!-- components/partials/KRC0036.html -->
+<div class="component-wrap">
+    <!--
+        [component-wrap option]
+        1. 여백
+        .zero-top : 상단여백 없음
+        .zero-btm : 하단여백 없음
+
+        [component option]
+		.stage-full : visual width 1920px(100%);
+        .stage-wide : visual width 1600px;
+        
+        [title-wrap option]
+        1. text align
+        .align-left : text align Left
+        .align-center : text align Center
+        .align-right : text align Right
+
+        2. text color
+        .type-black : text color Black
+        .type-white : text color White
+
+        [text-wrap option]
+        1. box align
+        .box-align-left : wrap align Left
+        .box-align-center : wrap align Center
+        .box-align-right : wrap align Right
+
+        2. text color
+        .type-black : text color Black
+        .type-white : text color White
+    -->
+	<section class="component KRC0036 @@stageSize">
+        <div class="inner">
+            <!-- visual background -->
+            @@if ( context.bgType == "image" ) {
+            <div class="background-area">
+                <!-- pc images -->
+                <span class="only-pc">
+                    <img src="/lg5-common/images/KRC0036/@@bg-pc.jpg" alt="">
+                </span>
+                <!-- // pc images -->
+                <!-- mobile images -->
+                <span class="only-m">
+                    <img src="/lg5-common/images/KRC0036/@@bg-m.jpg" alt="">
+                </span>
+                <!-- // mobile images -->
+                <p class="hidden">graphic description : </p>
+            </div>
+            }
+            @@if ( context.bgType == "animation" ) {
+            <div class="visual-area animation-box">
+                <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
+                <p class="hidden">graphic description : </p>
+                <div class="animation-area">
+                    <video autoplay muted loop>
+                        <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                        <!-- WEBM 동영상을 제공하는 경우
+                        <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                        -->
+                    </video>
+                    <div class="controller-wrap wa-btn">
+                        <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                    </div>
+                </div>
+            </div>
+            }
+            <!-- // visual background -->
+
+            <!-- title -->
+            <div class="title-wrap @@textAlign @@textColor1">
+                <div class="title">
+                    <h2>공간&middot;에너지 절약과 위생관리까지 한번에 잡은 얼음정수기 냉장고</h2>
+                </div>
+                <p class="desc">주방공간은 더 넓게, 전기료는 더 적게, 전문가의 케어서비스와 자동 코크 살균으로 위생 관리까지 차원이 다른 냉장고를 만나보세요.</p>
+            </div>
+            <!-- // title -->
+
+            <div class="text-wrap @@boxAlign @@textColor2">
+                <!-- overlay box -->
+                <div class="text-inner @@textAlign2">
+                    <!-- overlay thumbnail : video type -->
+                    <div class="visual-area video youtube-box">
+                        <a href="#none" role="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
+                        <!-- * youtube video modal은 아래의 방식으로 입력 -->
+                        <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
+                            <img src="/lg5-common/images/KRC0036/@@thumb.jpg" alt="">
+                            <p class="hidden">graphic description : </p>
+                        </a>
+                    </div>
+                    <!-- // overlay thumbnail : video type -->
+                    <p id="title01" class="title">타이틀 영역입니다.</p>
+                    <p class="sub-title">서브타이틀 영역입니다.</p>
+                    <p class="body-copy">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
+                    <!-- cta : button type -->
+                    <div class="cta-box">
+                        <a href="#n" class="btn border size" aria-describedby="title01"><span>자세히 보기</span></a>
+                    </div>
+                    <!-- // cta : button type  -->
+                    <!-- cta : text link type -->
+                    <div class="cta-box">
+                        <a href="#n" class="text-link" aria-describedby="title01"><span>자세히 보기</span></a>
+                        <a href="#n" class="text-link" aria-describedby="title01"><span>자세히 보기</span></a>
+                    </div>
+                    <!-- // cta : text link type  -->
+                </div>
+                <!-- // overlay box -->
+
+                <!-- overlay box -->
+                <div class="text-inner @@textAlign2">
+                    <!-- overlay thumbnail : image type -->
+                    <div class="thumb-area">
+                        <img src="/lg5-common/images/KRC0036/@@thumb.jpg" alt="">
+                        <p class="hidden">graphic description : </p>
+                    </div>
+                    <!-- // overlay thumbnail : image type -->
+                    <p id="title01" class="title">타이틀 영역입니다.</p>
+                    <p class="sub-title">서브타이틀 영역입니다.</p>
+                    <p class="body-copy">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
+                    <!-- cta : button type -->
+                    <div class="cta-box">
+                        <a href="#n" class="btn border size" aria-describedby="title01"><span>자세히 보기</span></a>
+                    </div>
+                    <!-- // cta : button type  -->
+                    <!-- cta : text link type -->
+                    <div class="cta-box">
+                        <a href="#n" class="text-link" aria-describedby="title01"><span>자세히 보기</span></a>
+                        <a href="#n" class="text-link" aria-describedby="title01"><span>자세히 보기</span></a>
+                    </div>
+                    <!-- // cta : text link type  -->
+                </div>
+                <!-- // overlay box -->
+            </div>
+        </section>
+	</section>
+</div>

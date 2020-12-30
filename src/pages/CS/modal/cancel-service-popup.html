@@ -1,0 +1,63 @@
+<article id="cancelServicePopup" class="popup-wrap">
+    <header class="pop-header">
+        <h1 class="tit"><span>서비스 예약 취소</span></h1>
+    </header>
+    <section class="pop-conts support">
+        <p class="search-info type-B">
+            접수하신 <span class="color-3">출장 서비스 예약</span>을<br><strong>취소하시겠습니까?</strong>
+        </p>
+        <div class="form-wrap">
+            <div class="form-infos">
+                <p class="req" aria-disabled="true">필수 입력 항목</p>
+            </div>
+            <div class="forms">
+                <div class="tit"><label for="" class="req">예약 취소 사유*<span class="blind">필수입력</span></label></div>
+                <div class="conts">
+                    <div class="select-wrap">
+                        <select class="ui_selectbox" id="select1" title="전체 카테고리 선택">
+                            <option value="" class="placeholder">선택해 주세요.</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
+                            <!-- 출장 서비스, 서비스 센터 방문일 경우 -->
+                            <option value="">예약 후 제품 정상 작동</option>
+                            <option value="">직접 해결하여서</option>
+                            <option value="">시간이 맞지 않거나 다음에 다시 신청</option>
+                            <option value="">신체품 구매하기 위해서</option>
+                            <option value="">접수 후 홈페이지 컨텐츠를 통해 문제 해결</option>
+                            <option value="">기타(직접 입력)</option>
+                            <!-- 설치/철거일 경우 -->
+                            <!-- <option value="">비용 부담이 되어서</option>
+                            <option value="">시간이 맞지 않거나 다음에 다시 신청</option>
+                            <option value="">직접 설치/철거 하려고</option>
+                            <option value="">다른 사설 업체를 통해 신청하기 위해서</option>
+                            <option value="">기타(직접 입력)</option> -->
+                            <!-- 전화 상담, 전화_영상 상담, 원격 상담, 소모품 구입 방문일 경우 -->
+                            <!-- <option value="">예약 후 제품 정상 작동</option>
+                            <option value="">직접 해결하여서</option>
+                            <option value="">시간이 맞지 않거나 다음에 다시 신청</option>
+                            <option value="">신체품 구매하기 위해서</option>
+                            <option value="">접수 후 홈페이지 컨텐츠를 통해 문제 해결</option>
+                            <option value="">기타(직접 입력)</option> -->
+                        </select>
+                    </div>
+                    <div class="input-wrap count">
+                        <textarea class="ui_textcontrol" placeholder="예약 취소 사유를 입력해 주세요." maxlength="100" data-limit="100" data-count-target="#txt-count3"></textarea>
+                        <span id="txt-count3" class="total"><em>0</em> / 100</span>
+                    </div>
+                </div>
+            </div>
+            @@include('./common/modules/bullet-list.html', {
+                "topBorder" : true,
+                "bulletTxt" : [
+                    "예약 일시, 엔지니어 변경은 ‘예약 일시 변경＇에서 가능합니다.",
+                    "취소 내역은 예약 결과 조회/변경에서 조회하실 수 있습니다."
+                ]
+            })
+        </div>
+    </section>
+    <footer class="pop-footer">
+        <div class="btn-group center">
+            <button type="button" class="btn gray"><span>취소</span></button>
+            <button type="button" class="btn pink"><span>확인</span></button>
+        </div>
+    </footer>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>

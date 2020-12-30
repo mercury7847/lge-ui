@@ -7,27 +7,29 @@
     @include font-medium;
     text-align: center;
     vertical-align: top;
-    border: 1px solid #EC455A;
+    border: 1px solid #fa263e;
     border-radius: 26px;
-    background-color:#EC455A;
+    background-color:#fa263e;
+    background-image: linear-gradient(280deg, #fb5a72, #fa263e);
     color:#fff;
     font-weight:500;
     @include mobile {
         min-width:124px;
-        font-size:17px;
-        line-height:25px;
-        padding:14.5px 30px;
-        border-radius:30px;
+        font-size:16px;
+        line-height:24px;
+        padding:15px 30px;
+        border-radius:28px;
     }
     &:hover,
     &:focus,
     &:active {
-        background-color:#EC455A;
+        background-color:#fa263e;
+        background-image: none;
     }
     &.gray {
         border-color: #ededed;
         background: #ededed;
-        color: #ec455a;
+        color: $color-gray-1;
         &:hover {
             background: #ededed;
         }
@@ -48,12 +50,14 @@
     }
     &.border {
         border-color:#222;
-        background:#fff;
+        background:transparent;
         color:#222;
-        &:hover {
-            background:#fff;
-            border-color:#EC455A;
-            color:#EC455A;
+        &:hover,
+        &:focus,
+        &:active {
+            border-color:#fa263e;
+            background-image: linear-gradient(280deg, #fb5a72, #fa263e);
+            color:#fff;
         }
     }
 
@@ -61,9 +65,11 @@
     &.disabled {
         color:#aaa;
         border-color:#ddd;
-        background-color:#ededed;
+        background:#ededed;
         cursor:default;
-        &:hover {
+        &:hover,
+        &:focus,
+        &:active {
             background:#ededed;
             border-color:#ddd;
             color:#aaa;
@@ -77,7 +83,6 @@
         @include font-small;
         @include mobile {
             padding:5px 15px;
-            font-size:14px;
             line-height:22px;
         }
         &.mix {
@@ -86,15 +91,14 @@
     }
     // 중간사이즈 버튼
     &.size-m {
-        min-width:64px;
-        padding: 7px 16px;
+        min-width:80px;
+        padding: 7px 15px;
         border-radius:20px;
         @include font-small;
         @include mobile {
-            font-size:14px;
-            line-height:22px;
-        }
-        
+            padding:10px 19px;
+            border-radius:22px;
+        }        
     }
     &.block {
         display: block;
@@ -143,6 +147,19 @@
             }
         }
     }
+
+    &.question {
+        padding-left:36px;
+        &:before {
+            content:'';
+            position:absolute;
+            left:14px;
+            top:50%;
+            width:16px;
+            height:16px;
+            transform: translateY(-50%);
+        }
+    }
 }
 
 .btn-text {
@@ -152,8 +169,7 @@
     line-height:24px;
     vertical-align:top;
     &.small {
-        font-size:14px;
-        line-height:20px;
+        @include font-small;
     }
     &.pink {
         color:#ec455a;
@@ -187,7 +203,7 @@
     padding-right: 22px;
     font-weight: 500;
     @include font-small;
-    color: #767676;
+    color: #222;
     vertical-align: top;
     &:after {
         content: '';
@@ -196,7 +212,7 @@
         top:3px;
         width:20px;
         height:20px;
-        background:url("/lg5-common/images/icons/btn-arr-20x20-gray.svg") center no-repeat;
+        background:url("/lg5-common/images/icons/btn-arr-20x20-black.svg") center no-repeat;
         @include mobile {
             top:1px;
         }

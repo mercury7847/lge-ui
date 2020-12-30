@@ -25,7 +25,7 @@
             font-size: 16px;
             line-height: 1.38;
             > [class^="btn"] {
-                margin-left: 16px;
+                margin-top: 8px;
                 vertical-align: middle;
             }
             .held-product {
@@ -42,9 +42,71 @@
                 }
             }
         }
-        .file-list {
-            a {
-                text-decoration:underline;
+        &.type-bullet {
+            display: flex;
+            flex-wrap: wrap;
+            li {
+                display: block;
+                position: relative;
+                &::before {
+                    display: block;
+                    content: '';
+                    width: 3px;
+                    height: 3px;
+                    background-color: #222;
+                    position: absolute;
+                    top: 10px;
+                    left: 0;
+                }
+            }
+            .title,
+            .description {
+                margin-left: 12px;
+            }
+            @include pc {
+                li {
+                    width: 33.3333%;
+                    &:nth-child(n+1):nth-child(-n+3) {
+                        margin-top: 0;
+                    }
+                }
+            }
+            @include mobile {
+                display: block;
+                li {
+                    margin-top: 20px;
+                }
+                .title {
+                    width: 100%;
+                }
+            }
+        }
+        &.type-A {
+            display: flex;
+            > li {
+                &:nth-child(n+2) {
+                    margin-top: 0;
+                    margin-left: 23px;
+                    padding-left: 24px;
+                    position: relative;
+                    ::before {
+                        content: '';
+                        display: block;
+                        width: 1px;
+                        height: 16px;
+                        background-color: #ddd;
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                }
+            }
+            .title {
+                width: auto;
+            }
+            .description {
+                margin-left: 0;
             }
         }
     }

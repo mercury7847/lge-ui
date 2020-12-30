@@ -1,6 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
-    <g fill="none" fill-rule="evenodd">
-        <rect width="96" height="96" fill="#000" opacity=".5" rx="48"/>
-        <path fill="#FFF" d="M39 64.5L39 31.5 63 48.331z"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>btn-video-play</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="btn_videoplay_80">
+            <circle id="Oval" fill="#000000" opacity="0.5" cx="40" cy="40" r="40"></circle>
+            <path d="M45.8261246,28.8927336 L57.9045559,51.5397924 C58.5160823,52.6864043 58.0823097,54.111657 56.9356978,54.7231834 C56.594921,54.904931 56.2146451,55 55.8284314,55 L31.6715686,55 C30.3720751,55 29.3186275,53.9465524 29.3186275,52.6470588 C29.3186275,52.2608451 29.4136964,51.8805692 29.5954441,51.5397924 L41.6738754,28.8927336 C42.2854018,27.7461216 43.7106545,27.3123491 44.8572664,27.9238754 C45.2691816,28.1435635 45.6064365,28.4808184 45.8261246,28.8927336 Z" id="Triangle" fill="#FFFFFF" transform="translate(43.750000, 40.000000) rotate(-270.000000) translate(-43.750000, -40.000000) "></path>
+        </g>
     </g>
 </svg>

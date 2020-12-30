@@ -192,7 +192,7 @@
                 // ]
             });
 
-            lgkorUI._resetFlexibleBox();
+            lgkorUI.resetFlexibleBox();
         }.bind(this));
 
         return this;
@@ -237,11 +237,33 @@
         COMPARE_LIMIT: 3,
         CAREPLANER_KEY: "care_planer",
         CAREPLANER_ID: "putitem_list",
+        CAREPLANER_PRICE: "putitem_price",
         STICKY_MODULES:[],
         init: function(){
+            this._addImgOnloadEvent();
             this._preloadComponents();
             this._addTopButtonCtrl();
             this._createMainWrapper();
+        },
+
+        _addImgOnloadEvent: function(){
+            $('img').not('[data-pc-src]').on('error', function(e){
+                $(this).off('error');
+                $(this).attr('src', '/lg5-common/images/icons/icon-nodata.svg');
+                var parentwid = $(this).parent().width();
+                var parenthei = $(this).parent().height();
+                var wid = parentwid*.3;
+                var hei = parenthei*.3;
+                var margintop = parenthei/2 - hei/2;
+                var marginleft = parentwid/2 - wid/2;
+                $(this).css({
+                    opacity: .5,
+                    width: wid,
+                    height: hei,
+                    'margin-top': margintop,
+                    'margin-left': marginleft
+                });
+            })
         },
 
         _createMainWrapper: function(){
@@ -343,9 +365,9 @@
                         self.resizeCallbacks[idx].call();
                     }
 
-                    self._resetFlexibleBox();
+                    self.resetFlexibleBox();
                 });  
-                self._resetFlexibleBox();              
+                self.resetFlexibleBox();              
     
                 // 모달 기초작업 //////////////////////////////////////////////////////
                 // 모달 기본옵션 설정: 모달이 들때 아무런 모션도 없도록 한다.(기본은 fade)
@@ -362,6 +384,12 @@
     
                             if(this.$('.ui_carousel').length>0){
                                 this.$('.ui_carousel').vcCarousel('update');
+                            }
+                            if(this.$('.ui_smooth_scrolltab').length>0){
+                                this.$('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
+                            }
+                            if(this.$('.ui_smooth_scroll').length>0){
+                                this.$('.ui_smooth_scroll').vcSmoothScroll('refresh');
                             }
                         }
                     }
@@ -388,11 +416,17 @@
                             if(data && data.content.find('.ui_carousel').length > 0) {
                                 data.content.find('.ui_carousel').vcCarousel('update');
                             }
+                            if(data && data.content.find('.ui_smooth_scrolltab').length>0){
+                                data.content.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
+                            }
+                            if(data && data.content.find('.ui_smooth_scroll').length>0){
+                                data.content.find('.ui_smooth_scroll').vcSmoothScroll('refresh');
+                            }
                         }
                     }
                 });
     
-                $('header').vcHeader(); //헤더 모듈 적용...
+                $('header.header').vcHeader(); //헤더 모듈 적용...
                 $('footer').vcFooter(); //푸터모듈 적용...
 
                 $('body').buildCommonUI();
@@ -405,7 +439,7 @@
                 }).on('modalshown', function (e) {
                     // 모달이 뜰때 모달내부에 있는 공통 컴포넌트 빌드
                     $(e.target).buildCommonUI();
-                    self._resetFlexibleBox();
+                    self.resetFlexibleBox();
                 });
                 //////////////////////////////////////////////////////////////////////
     
@@ -455,7 +489,7 @@
             });
         },
 
-        _resetFlexibleBox: function(){
+        resetFlexibleBox: function(){
             //리스트 height 재설정
             $('body').find('.ui_flexible_height').each(function(idx, item){
                 var maxheight = 0;
@@ -715,7 +749,8 @@
             });
         },
 
-        requestAjaxData: function(url, data, callback, type, dataType) {
+        requestAjaxData: function(url, data, callback, type, dataType, autoFailAlert) {
+            var self = this;
             var dtype = dataType? dataType : "json";
             $.ajax({
                 type : type? type : "GET",
@@ -733,15 +768,77 @@
                     alert(result.message ? result.message : '오류발생');
                     return;
                 }
-                if(callback && typeof callback === 'function') callback(result);
+
+                if(autoFailAlert) {
+                    var data = result.data;
+                    if(data && (!self.stringToBool(data.success) && data.alert)) {
+                        //에러
+                        self.commonAlertHandler(data.alert);
+                    } else {
+                        if(callback && typeof callback === 'function') callback(result);
+                    }
+                } else {
+                    if(callback && typeof callback === 'function') callback(result);   
+                }                
             }).fail(function(err){
                 alert(err.message);
             });
         },
 
-        requestAjaxDataPost: function(url, data, callback) {
+        requestAjaxDataPost: function(url, data, callback, autoFailAlert) {
             var self = this;
-            self.requestAjaxData(url, data, callback, "POST");
+            self.requestAjaxData(url, data, callback, "POST", null, autoFailAlert);
+        },
+
+        commonAlertHandler: function(alert){
+            if(alert.isConfirm) {
+                //컨펌
+                var obj ={title: alert.title,
+                    typeClass: '',
+                    cancelBtnName: alert.cancelBtnName,
+                    okBtnName: alert.okBtnName,
+                    ok: alert.okUrl ? function (){
+                        location.href = alert.okUrl;
+                    } : function (){},
+                    cancel: alert.cancelUrl ? function (){
+                        location.href = alert.cancelUrl;
+                    } : function (){}
+                };
+    
+                var desc = alert.desc ? alert.desc : null;
+                if(alert.title && alert.desc) {
+                    obj.typeClass = 'type2'
+                }
+                lgkorUI.confirm(desc, obj);
+            } else {
+                //알림
+                var obj ={title: alert.title,
+                    typeClass: '',
+                    okBtnName: alert.okBtnName,
+                    ok: function (){}
+                };
+    
+                var desc = alert.desc;
+                if(desc) {
+                    obj.typeClass = 'type2'
+                }
+                lgkorUI.alert(desc, obj);
+            }
+        },
+
+        isString: function(value) {
+            return typeof value === 'string' || value instanceof String;
+        },
+
+        stringToBool: function(str) {
+            if(typeof str === 'boolean') {
+                return str;
+            }
+            if(str && (typeof str === 'string' || str instanceof String)) {
+                var s = str.trim().toLowerCase();
+                return (s == 'y' || s == 'yes' || s == 'true');
+            }
+            return str;
         },
 
         getHiddenInputData: function(iptname, wrapname){
@@ -816,11 +913,50 @@
             }
 
             return id;
+        },
+
+        searchModelName: function(){
+            vcui.require([
+                'ui/selectTarget'
+            ], function () {
+                $('.ul_select_target').vcSelectTarget({
+                    callback: function(data, target) {
+                        var $this = this.$el;
+                        var $target = $(target);
+
+                        $target.off('change.modeName').on('change.modeName', function() {
+                            var url = $('.category-select').data('ajax'),
+                                categoryVal = $this.val(),
+                                subcategoryVal = $(this).val(),
+                                param;
+
+                            if (subcategoryVal) {
+                                param = {
+                                    category: categoryVal,
+                                    subCategory: subcategoryVal
+                                };
+
+                                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                                    var data = result.data;
+
+                                    $('.example-result .txt').html(data.text);
+                                    $('.example-result .img img').attr('src', data.imgPath);
+                                    $('.example-result .img img').attr('alt', data.imgAlt);
+                                });
+                            }
+                        });
+                    }
+                });
+            });
         }
     }
 
     document.addEventListener('DOMContentLoaded', function () {
         lgkorUI.init();
+    });
+
+    global.addEventListener('load', function(){
+        $('.ui_sticky').vcSticky('update');
     });
 
 })(window);

@@ -16,12 +16,12 @@
                 'pageDesc': 'LG전자 가전 제품 관련한 유용한 생활의 TIP을 알려드립니다.'
             })
             <div class="contents support product-tips">
-                <div class="cont-wrap">
+                <div class="cont-wrap narrow">
 
                     <div class="board-view-wrap">
                         <!-- 201211 : 게시물 아이디 값 추가 -->
                         <input type="hidden" name="seq" id="seq" value="58">
-                        <!-- // 201211 : 게시물 아이디 값 추가 -->
+                        <!-- //201211 : 게시물 아이디 값 추가 -->
                         <div class="board-view">
                             <div class="board-view-head">
                                 <h2 class="head-title">드럼 / 일반형 세탁기의 올바른 세탁 방법</h2>
@@ -30,6 +30,35 @@
                                     <li>조회 4,129</li>
                                 </ul>
                             </div>
+                            <!-- 201214 : SNS 추가 -->
+                            <div class="board-view-sub">
+                                <!-- 2020.12.15 SNS 공유 마크업 변경 -->
+                                <div class="tooltip-wrap share"><!-- 활성화시 active -->
+                                    <a href="#n" class="tooltip-icon ui_tooltip-target"><span class="blind">제품 공유하기</span></a>
+                                    <div class="tooltip-box fixed-right">
+                                        <span class="title">공유하기</span>
+                                        <div class="sns-wrap">
+                                            <!-- 
+                                                data-url : 공유될 url 주소 , 미 사용시 메타태그 url 사용.
+                                                data-title : 공유될 타이틀 명 , 미사용시 페이지 타이틀이 사용됨
+                                                data-image : 공유이미지로 사용될 이미지, 미사용시 메타태그에 지정된 이미지가 사용됨
+                                                data-desc : 공유 디스크립션. 미 사용시 메타태그 description 사용.
+                                        
+                                                각 sns 버튼에 적용.
+                                            -->
+                                            <ul class="sns-list">
+                                                <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook">페이스북<span class="blind">으로 페이지 공유하기</span></a></li>
+                                                <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter">트위터<span class="blind">로 페이지 공유하기</span></a></li>
+                                                <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk">카카오톡<span class="blind">으로 페이지 공유하기</span></a></li>
+                                                <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn url" data-link-name="copy_url">URL복사<span class="blind">하기</span></a></li>
+                                            </ul>
+                                        </div>
+                                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                    </div>
+                                </div>
+                                <!-- 2020.12.15 SNS 공유 마크업 변경 -->
+                            </div>
+                            <!-- //201214 : SNS 추가 -->
                             <div class="board-view-body">
                                 <div class="view-content">
                                     <div class="product-tips-view">
@@ -57,14 +86,19 @@
                                         <p class="desc">평가해주신 내용은 더 나은 컨텐츠를 제공해 드리기 위한 자료로 활용합니다.</p>
                                     </div>
                                     <div class="star-rating-wrap">
-                                        <select class="ui_star_rating" name="rating" id="rating" title="콘텐츠 별점 선택" data-error-msg="평가 점수를 선택해주세요." data-required="true" required>
-                                            <option value="">0점</option> 
-                                            <option value="1">1점 (매우 불만족)</option>
-                                            <option value="2">2점 (불만족)</option>
-                                            <option value="3">3점 (보통)</option>
-                                            <option value="4">4점 (만족)</option>
-                                            <option value="5">5점 (매우 만족)</option>
-                                        </select>
+                                        <!-- 201214 : 평점/참여자 수 추가 -->
+                                        <div class="rating-box">
+                                            <select class="ui_star_rating" name="rating" id="rating" title="콘텐츠 별점 선택" data-error-msg="평가 점수를 선택해주세요." data-required="true" required>
+                                                <option value="">0점</option> 
+                                                <option value="1">1점 (매우 불만족)</option>
+                                                <option value="2">2점 (불만족)</option>
+                                                <option value="3">3점 (보통)</option>
+                                                <option value="4">4점 (만족)</option>
+                                                <option value="5">5점 (매우 만족)</option>
+                                            </select>
+                                            <p class="rating-info">평점 <em id="score">4</em>점 / <em id="count">107</em>명 참여</p>
+                                        </div>
+                                        <!-- //201214 : 평점/참여자 수 추가 -->
                                         <p class="err-msg"></p>
                                     </div>
                                     <div class="input-wrap count block">

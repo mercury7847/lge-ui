@@ -21,8 +21,8 @@
                 &-title {
                     color:#222;
                     font-weight:700;
-                    @include font-large-3;
-                    @include textEllipsisClamp(2);
+                    @include font-large-2;
+                    // @include textEllipsisClamp(2);
                 }
                 &-infos {
                     margin-top:8px;
@@ -76,7 +76,7 @@
             justify-content:space-between;
             padding:16px 0;
             border-bottom: 1px solid #ddd;
-            .sns-wrap:only-child {
+            .tooltip-wrap:only-child {
                 margin-left:auto;
             }
         }

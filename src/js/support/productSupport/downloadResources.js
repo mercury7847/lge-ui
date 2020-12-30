@@ -16,7 +16,7 @@
                 ' </ul>' +
                 '<div class="btns-area">' +
                     '{{# for (var i = 0; i < file.length; i++) { #}}' +
-                    '<a href="{{file[i].src}}" class="btn border size"><span>{{file[i].type}}</span></a>' +
+                    '<a href="{{file[i].src}}" class="btn border size btn-download"><span>{{file[i].type}}</span></a>' +
                     '{{# } #}}' +
                 '</div>' +
             '</div>' +
@@ -25,7 +25,7 @@
         '<li>' +
             '<div class="head">' +
                 '<div class="file-box">' +
-                    '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}">{{os}} {{title}}</button></p>' +
+                    '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{os}} {{title}}</button></p>' +
                     '<ul class="options">' +
                         '<li>{{version}}  {{category}}</li>' +
                         '<li>{{driver}}</li>' +
@@ -49,7 +49,7 @@
                     '{{# for (var i = 0; i < prevVersion.length; i++) { #}}' +
                     '<li>' +
                         '<div class="file-box">' +
-                            '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}">{{os}} {{title}}</button></p>' +
+                            '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{os}} {{title}}</button></p>' +
                             '<ul class="options">' +
                                 '<li>{{version}}  {{category}}</li>' +
                                 '<li>{{driver}}</li>' +
@@ -68,6 +68,18 @@
             '{{# } #}}' +
         '</li>';
 
+    var defaultParam;
+
+    function getObject(parameter) {
+        var valueObject = {}, hash;
+        var hashes = parameter.split('&');
+        for(var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            valueObject[hash[0]] = hash[1];
+        }
+            
+        return valueObject;
+    }
 
     $(window).ready(function() {
         var download = {
@@ -82,6 +94,8 @@
                 });
                 self.driverSec.find('.pagination').pagination();
 
+                defaultParam = getObject($('#submitForm').serialize());
+
                 self.bindEvent();
             },
             setManualList: function(list) {
@@ -89,27 +103,29 @@
                 var listArr = list.listData instanceof Array ? list.listData : [];
                 var html = "";
 
+                $('#page').val(list.listPage.page);
+
                 if (listArr.length) {
                     listArr.forEach(function(item) {
                         html += vcui.template(manualListTemplate, item);
                     });
-                    
                     self.manualSec.find('.manual-list').append(html).show();
                     self.manualSec.find('.no-data').hide();
-
-                    if (list.listPage.view == 'Y') {
-                        self.manualSec.find('.btn-moreview').show();
-                    } else {
-                        self.manualSec.find('.btn-moreview').hide();
-                    }
                 } else {
                     self.manualSec.find('.manual-list').html('').hide();
                     self.manualSec.find('.no-data').show();
+                }
+
+                if (list.listPage.view == 'Y') {
+                    self.manualSec.find('.btn-moreview').show();
+                } else {
+                    self.manualSec.find('.btn-moreview').hide();
                 }
             },
             setDriverList: function(list) {
                 var self = this;
                 var listArr = list.listData instanceof Array ? list.listData : [];
+                var pageInfo = list.listPage;
                 var html = "";
             
                 if (listArr.length) {
@@ -213,36 +229,46 @@
             bindEvent: function() {
                 var self = this;
 
-                self.manualSec.find('.btn-moreview').on('click', function() {
-                    var param = {};
-
-                    self.searchManualList(param);
-                });
-                self.manualSec.find('.btn-download').on('click', function(e) {
+                $(document).on('click', '.btn-download', function(e) {
                     e.preventDefault();
 
                     var fileUrl = $(this).attr('href'),
                         infoArr = fileUrl.split('?'),
                         url = infoArr[0],
-                        param = infoArr[1];
+                        param = infoArr[1] + '&check="R"';
 
                     lgkorUI.requestAjaxData(url, param, function(result) {
                         var data = result.data;
 
-                        if (data.resultFlag) {
+                        if (data.resultFlag == 'Y') {
                             location.href = fileUrl + '&check=true';
                         }
                     });  
                 });
 
-                self.driverSec.find('#os').on('change', function() {
-                    var param = {};
+                self.manualSec.find('.btn-moreview').on('click', function() {
+                    var param = $.extend({}, defaultParam, {
+                        page: parseInt($('#page').val()) + 1
+                    });
 
+                    self.searchManualList(param);
+                });
+
+                self.driverSec.find('#os').on('change', function() {
+                    var param = $.extend({}, defaultParam, {
+                        os: $('#os').val(),
+                        driver: $('#driver').val(),
+                        page: 1
+                    });
+                    
                     self.searchDriverList(param);
                 });
                 self.driverSec.find('#driver').on('change', function() {
-                    var param = {};
-                    var val = $(this).val();
+                    var param = $.extend({}, defaultParam, {
+                        os: $('#os').val(),
+                        driver: $('#driver').val(),
+                        page: 1
+                    });
 
                     self.searchDriverList(param);
 
@@ -253,18 +279,35 @@
                         self.driverSec.find('.tabs-wrap').vcTab('select', 0);
                     }
                 });
-                self.driverSec.find('.tabs-wrap').on('tabchange', function() {
-                    var param = {};
+                self.driverSec.find('.tabs-wrap').on('tabchange', function(e, data) {
+                    var param = $.extend({}, defaultParam, {
+                        os: $('#os').val(),
+                        driver: $(data.button).data('value'),
+                        page: 1
+                    });
+
+                    self.searchDriverList(param);
+                });
+
+                self.driverSec.find('.pagination').on('pageClick', function(e) {
+                    var param = $.extend({}, defaultParam, {
+                        os: $('#os').val(),
+                        driver: $('#driver').val(),
+                        page: e.page
+                    });
 
                     self.searchDriverList(param);
                 });
 
                 self.driverSec.find('.driver-list-wrap').on('click', '.btn-info', function() {
-                    var ajaxUrl = $(this).data('href');
+                    var ajaxUrl = $(this).data('href'),
+                        param = $.extend({}, defaultParam, {
+                            cSeq: $(this).data('cseq')
+                        });
 
-                    lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
+                    lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
                         $('#fileDetailPopup').html(result).vcModal();
-                        $('#fileDetailPopup').on('click', '.btn-more', function() {
+                        $('#fileDetailPopup').off('click').on('click', '.btn-more', function() {
                             var $list = $(this).parent();
         
                             if ($list.hasClass('on')) {
@@ -274,12 +317,6 @@
                             }
                         });
                     }, null, "html");
-                });
-
-                self.driverSec.find('.pagination').on('pageClick', function(e) {
-                    var param = {};
-
-                    self.searchDriverList(param);
                 });
             }
         }

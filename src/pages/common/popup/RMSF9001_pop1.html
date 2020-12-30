@@ -1,6 +1,6 @@
 <article id="@@popupID" class="popup-wrap" data-insert-url="/lg5-common/data-ajax/address/addressPost.json" data-update-url="/lg5-common/data-ajax/address/addressPost.json">
     <header class="pop-header">
-        <h1 class="tit"><span>@@title</span></h1>
+        <h1 class="tit pop-title"><span>@@title</span></h1>
     </header>
     <section class="pop-conts common-pop">
         <div class="form-wrap" id="address-regist-form">
@@ -13,7 +13,7 @@
                 <dt class="tit"><label for="ipt1" class="req">주소 별칭<span class="blind">필수입력</span></label></dt><!-- [12.01 수정] 필수입력으로 변경, DOM, class 수정 -->
                 <dd class="conts">
                     <span class="input-wrap block">
-                        <input type="text" id="ipt1" name="addressName" placeholder="주소별칭을 입력해주세요." data-required="true">
+                        <input type="text" id="ipt1" name="adressNickName" placeholder="주소별칭을 입력해주세요." data-required="true">
                     </span>
                 </dd>
             </dl>
@@ -21,7 +21,7 @@
                 <dt class="tit"><label for="ipt2" class="req">받으시는 분<span class="blind">필수입력</span></label></dt>
                 <dd class="conts">
                     <span class="input-wrap block">
-                        <input type="text" id="ipt2" name="name" placeholder="이름을 입력해주세요." data-required="true">
+                        <input type="text" id="ipt2" name="receiverUser" placeholder="이름을 입력해주세요." data-required="true">
                     </span>
                 </dd>
             </dl>
@@ -49,7 +49,7 @@
                 <dt class="tit"><label for="ipt4" class="req">휴대폰 번호<span class="blind">필수입력</span></label></dt>
                 <dd class="conts">
                     <span class="input-wrap block">
-                        <input type="text" id="ipt4" name="mobilePhone" placeholder="(-)없이 입력해주세요." data-required="true">
+                        <input type="number" id="ipt4" name="phoneNumber" min="0" max="99999999999" placeholder="(-)없이 입력해주세요." data-required="true">
                     </span>
                 </dd>
             </dl>
@@ -57,7 +57,7 @@
                 <dt class="tit"><label for="ipt5">연락처</label></dt><!-- [12.01 수정] 텍스트 변경 -->
                 <dd class="conts">
                     <span class="input-wrap block">
-                        <input type="text" id="ipt5" name="phone" placeholder="(-)없이 입력해주세요." data-required="true">
+                        <input type="text" id="ipt5" name="telephoneNumber" placeholder="(-)없이 입력해주세요." data-required="true">
                     </span>
                     <!-- [12.01 수정] '기본배송지로 설정' DOM 위치 변경 -->
                     <span class="chk-wrap bottom">
@@ -71,7 +71,7 @@
     </section>
     <footer class="pop-footer center">
         <div class="btn-group">
-            <button type="button" class="btn pink"><span>@@btn</span></button>
+            <button type="button" class="btn pink send-btn"><span>@@btn</span></button>
         </div>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>

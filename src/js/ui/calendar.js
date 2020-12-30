@@ -99,6 +99,7 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
 
             self.isInline = !self.$el.is('button, input, a');
 
+            console.log("## self.options.inputTarget:",self.options.inputTarget)
             if (self.options.inputTarget) {
                 self.$input = $(self.options.inputTarget);
                 self.$input.data('ui_calendar', self);
@@ -335,11 +336,14 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
 
             if (self.$input && dateUtil.isValid(self.$input.val()) && dateUtil.compare(self.minDate, self.$input.val()) === -1) {
 
+                /*
                 if (detect.isMobile && self.options.mobileMode) {
                     self.$input.val(dateUtil.format(self.minDate, self.format));
                 } else {
                     self.$input.val(dateUtil.format(self.minDate));
                 }
+                */
+               self.$input.val(dateUtil.format(self.minDate, self.options.format));
             }
         },
 
@@ -1105,7 +1109,7 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
                     self.setCurrentDate(core.clone(self.currDate));
                 }
 
-                //console.log(self.options.inputTarget)
+                console.log("self.options.inputTarget:",self.options.inputTarget)
                 if (self.options.inputTarget) {
                     self.$input.val(dateUtil.format(date, self.options.format));
                     var e = $.Event('calendarinsertdate');

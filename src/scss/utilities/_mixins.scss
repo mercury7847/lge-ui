@@ -2,11 +2,11 @@
 @mixin font-x-small {
     // font-size: 12px;
 	font-size: $font-x-small;
-	line-height: 16px;
+	line-height: 22px;
 
-	//@media screen and (max-width: #{$tablet-s-width}) {
-    //    line-height: 20px;
-	//}
+	@media screen and (max-width: #{$tablet-s-width}) {
+       line-height: 20px;
+	}
 }
 
 @mixin font-small {

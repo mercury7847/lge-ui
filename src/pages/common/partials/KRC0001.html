@@ -24,23 +24,23 @@
 				<div class="scroll-wrap ui_smooth_scrolltab">
 					<div class="ui_smooth_tab">
 						<ul class="tabs">
-							<li class="on"><a href="#n" data-id="전체">전체<em class="blind">선택됨</em></a></li>
-							<li><a href="#n" data-id="TV/AV">TV/AV</a></li>
-							<li><a href="#n" data-id="IT">IT</a></li>
-							<li><a href="#n" data-id="주방가전">주방가전</a></li>
-							<li><a href="#n" data-id="생활가전">생활가전</a></li>
-							<li><a href="#n" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
-							<li><a href="#n" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
-							<li><a href="#n" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
-							<li><a href="#n" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
-							<li><a href="#n" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
-							<li><a href="#n" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
-							<li><a href="#n" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
-							<li><a href="#n" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
-							<li><a href="#n" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
-							<li><a href="#n" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
-							<li><a href="#n" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
-							<li><a href="#n" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
+							<li class="on"><a href="#productsList1" data-id="전체">전체<em class="blind">선택됨</em></a></li>
+							<li><a href="#productsList2" data-id="TV/AV">TV/AV</a></li>
+							<li><a href="#productsList3" data-id="IT">IT</a></li>
+							<li><a href="#productsList4" data-id="주방가전">주방가전</a></li>
+							<li><a href="#productsList5" data-id="생활가전">생활가전</a></li>
+							<li><a href="#productsList6" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
+							<li><a href="#productsList1" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
+							<li><a href="#productsList1" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
+							<li><a href="#productsList1" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
+							<li><a href="#productsList1" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
+							<li><a href="#productsList1" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
+							<li><a href="#productsList1" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
+							<li><a href="#productsList1" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
+							<li><a href="#productsList1" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
+							<li><a href="#productsList1" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
+							<li><a href="#productsList1" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
+							<li><a href="#productsList1" data-id="에어컨/에어케어">에어컨/에어케어</a></li>
 						</ul>
 					</div>
 					<div class="scroll-controls ui_smooth_controls">
@@ -55,7 +55,171 @@
 		<!-- 2. products list -->
 		<div class="products-list-wrap">
 			<!-- productsList 1 -->
-			<div id="productsList1_1" aria-discribedeby="newest" class="products-list-group tabs-cont component-inner-box">
+			<div id="productsList1" aria-discribedeby="newest" class="products-list-group tabs-cont component-inner-box">
+				<div class="list-contents-wrap ui_carousel_slider"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slider -->
+					<ul class="items unit-list ui_carousel_track"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_track -->
+						@@for (var i = 3; i < items.length; i++) {
+						<li class="js-model ui_carousel_slide"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slide -->
+							<div class="item">
+								<div class="product-image">
+									<a href="#n"><img data-pc-src="`+items[i].imgPC+`" data-m-src="`+items[i].imgMo+`" class="lazyload" alt="" aria-hidden="true"></a>
+								</div>
+								<div class="product-contents">
+									<strong class="product-name">
+										<a href="#n"><span class="blind">모델명</span>`+items[i].productName+`</a>
+									</strong>
+									<p class="product-sku"><span class="blind">모델넘버</span>`+items[i].modelNumber+`</p>
+									<div class="review-info">
+										<div class="star `+items[i].review.class+`"><span class="blind">`+items[i].review.text+`</span></div>
+										<div class="average-rating"><span class="blind">평점</span>`+items[i].review.average+`</div>
+										<div class="review-count"><span class="blind">리뷰 수</span>(<span>`+items[i].review.count+`</span>개)</div>
+									</div>
+									<div class="product-price">
+										<div class="original">
+											<span class="blind">판매가</span><em>3,490,000</em>원
+										</div>
+										<div class="total">
+											<span class="blind">총 판매가</span><em>3,490,000</em>원
+										</div>
+									</div>
+								</div>
+								<div class="product-button">
+									<a href="#n" class="btn border">장바구니에 담기</a>
+								</div>
+							</div>
+						</li>
+						}
+						@@for (var i = 0; i < 3; i++) {
+						<li class="js-model ui_carousel_slide"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slide -->
+							<div class="item">
+								<div class="product-image">
+									<a href="#n"><img data-pc-src="`+items[i].imgPC+`" data-m-src="`+items[i].imgMo+`" class="lazyload" alt="" aria-hidden="true"></a>
+								</div>
+								<div class="product-contents">
+									<strong class="product-name">
+										<a href="#n"><span class="blind">모델명</span>`+items[i].productName+`</a>
+									</strong>
+									<p class="product-sku"><span class="blind">모델넘버</span>`+items[i].modelNumber+`</p>
+									<div class="review-info">
+										<div class="star `+items[i].review.class+`"><span class="blind">`+items[i].review.text+`</span></div>
+										<div class="average-rating"><span class="blind">평점</span>`+items[i].review.average+`</div>
+										<div class="review-count"><span class="blind">리뷰 수</span>(<span>`+items[i].review.count+`</span>개)</div>
+									</div>
+									<div class="product-price">
+										<div class="original">
+											<span class="blind">판매가</span><em>3,490,000</em>원
+										</div>
+										<div class="total">
+											<span class="blind">총 판매가</span><em>3,490,000</em>원
+										</div>
+									</div>
+								</div>
+								<div class="product-button">
+									<a href="#n" class="btn border">장바구니에 담기</a>
+								</div>
+							</div>
+						</li>
+						}
+					</ul>
+
+					<!-- [KR수정] carousel DOM 추가 : 인디케이터 -->
+					<ul class="indi-wrap ui_carousel_dots">
+						<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+					</ul>
+					<!-- //[KR수정] carousel DOM 추가 : 인디케이터 -->
+
+					<!-- [KR수정] carousel DOM 추가 : 네비게이션 -->
+					<div class="slide-controls">
+						<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+						<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+					</div>
+					<!-- //[KR수정] carousel DOM 추가 : 네비게이션 -->
+				</div>
+			</div>
+
+			<div id="productsList2" aria-discribedeby="newest" class="products-list-group tabs-cont component-inner-box">
+				<div class="list-contents-wrap ui_carousel_slider"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slider -->
+					<ul class="items unit-list ui_carousel_track"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_track -->
+						@@for (var i = 3; i < items.length; i++) {
+						<li class="js-model ui_carousel_slide"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slide -->
+							<div class="item">
+								<div class="product-image">
+									<a href="#n"><img data-pc-src="`+items[i].imgPC+`" data-m-src="`+items[i].imgMo+`" class="lazyload" alt="" aria-hidden="true"></a>
+								</div>
+								<div class="product-contents">
+									<strong class="product-name">
+										<a href="#n"><span class="blind">모델명</span>`+items[i].productName+`</a>
+									</strong>
+									<p class="product-sku"><span class="blind">모델넘버</span>`+items[i].modelNumber+`</p>
+									<div class="review-info">
+										<div class="star `+items[i].review.class+`"><span class="blind">`+items[i].review.text+`</span></div>
+										<div class="average-rating"><span class="blind">평점</span>`+items[i].review.average+`</div>
+										<div class="review-count"><span class="blind">리뷰 수</span>(<span>`+items[i].review.count+`</span>개)</div>
+									</div>
+									<div class="product-price">
+										<div class="original">
+											<span class="blind">판매가</span><em>3,490,000</em>원
+										</div>
+										<div class="total">
+											<span class="blind">총 판매가</span><em>3,490,000</em>원
+										</div>
+									</div>
+								</div>
+								<div class="product-button">
+									<a href="#n" class="btn border">장바구니에 담기</a>
+								</div>
+							</div>
+						</li>
+						}
+						@@for (var i = 0; i < 3; i++) {
+						<li class="js-model ui_carousel_slide"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slide -->
+							<div class="item">
+								<div class="product-image">
+									<a href="#n"><img data-pc-src="`+items[i].imgPC+`" data-m-src="`+items[i].imgMo+`" class="lazyload" alt="" aria-hidden="true"></a>
+								</div>
+								<div class="product-contents">
+									<strong class="product-name">
+										<a href="#n"><span class="blind">모델명</span>`+items[i].productName+`</a>
+									</strong>
+									<p class="product-sku"><span class="blind">모델넘버</span>`+items[i].modelNumber+`</p>
+									<div class="review-info">
+										<div class="star `+items[i].review.class+`"><span class="blind">`+items[i].review.text+`</span></div>
+										<div class="average-rating"><span class="blind">평점</span>`+items[i].review.average+`</div>
+										<div class="review-count"><span class="blind">리뷰 수</span>(<span>`+items[i].review.count+`</span>개)</div>
+									</div>
+									<div class="product-price">
+										<div class="original">
+											<span class="blind">판매가</span><em>3,490,000</em>원
+										</div>
+										<div class="total">
+											<span class="blind">총 판매가</span><em>3,490,000</em>원
+										</div>
+									</div>
+								</div>
+								<div class="product-button">
+									<a href="#n" class="btn border">장바구니에 담기</a>
+								</div>
+							</div>
+						</li>
+						}
+					</ul>
+
+					<!-- [KR수정] carousel DOM 추가 : 인디케이터 -->
+					<ul class="indi-wrap ui_carousel_dots">
+						<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+					</ul>
+					<!-- //[KR수정] carousel DOM 추가 : 인디케이터 -->
+
+					<!-- [KR수정] carousel DOM 추가 : 네비게이션 -->
+					<div class="slide-controls">
+						<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+						<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+					</div>
+					<!-- //[KR수정] carousel DOM 추가 : 네비게이션 -->
+				</div>
+			</div>
+
+			<div id="productsList3" aria-discribedeby="newest" class="products-list-group tabs-cont component-inner-box">
 				<div class="list-contents-wrap ui_carousel_slider"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slider -->
 					<ul class="items unit-list ui_carousel_track"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_track -->
 						@@for (var i = 0; i < items.length; i++) {
@@ -106,15 +270,158 @@
 				</div>
 			</div>
 
-			<!-- [KR수정] 탭메뉴 컨텐츠 & 노데이터 수정 대기중 -->
-			<!-- productsList 2 -->
-			<div id="productsList1_2"></div>
-			
-			<!-- productsList 3 -->
-			<div id="productsList1_3"></div>
-			
-			<!-- productsList 4 -->
-			<div id="productsList1_4"></div>
+			<div id="productsList4" aria-discribedeby="newest" class="products-list-group tabs-cont component-inner-box">
+				<div class="list-contents-wrap ui_carousel_slider"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slider -->
+					<ul class="items unit-list ui_carousel_track"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_track -->
+						@@for (var i = 0; i < items.length; i++) {
+						<li class="js-model ui_carousel_slide"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slide -->
+							<div class="item">
+								<div class="product-image">
+									<a href="#n"><img data-pc-src="`+items[i].imgPC+`" data-m-src="`+items[i].imgMo+`" class="lazyload" alt="" aria-hidden="true"></a>
+								</div>
+								<div class="product-contents">
+									<strong class="product-name">
+										<a href="#n"><span class="blind">모델명</span>`+items[i].productName+`</a>
+									</strong>
+									<p class="product-sku"><span class="blind">모델넘버</span>`+items[i].modelNumber+`</p>
+									<div class="review-info">
+										<div class="star `+items[i].review.class+`"><span class="blind">`+items[i].review.text+`</span></div>
+										<div class="average-rating"><span class="blind">평점</span>`+items[i].review.average+`</div>
+										<div class="review-count"><span class="blind">리뷰 수</span>(<span>`+items[i].review.count+`</span>개)</div>
+									</div>
+									<div class="product-price">
+										<div class="original">
+											<span class="blind">판매가</span><em>3,490,000</em>원
+										</div>
+										<div class="total">
+											<span class="blind">총 판매가</span><em>3,490,000</em>원
+										</div>
+									</div>
+								</div>
+								<div class="product-button">
+									<a href="#n" class="btn border">장바구니에 담기</a>
+								</div>
+							</div>
+						</li>
+						}
+					</ul>
+
+					<!-- [KR수정] carousel DOM 추가 : 인디케이터 -->
+					<ul class="indi-wrap ui_carousel_dots">
+						<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+					</ul>
+					<!-- //[KR수정] carousel DOM 추가 : 인디케이터 -->
+
+					<!-- [KR수정] carousel DOM 추가 : 네비게이션 -->
+					<div class="slide-controls">
+						<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+						<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+					</div>
+					<!-- //[KR수정] carousel DOM 추가 : 네비게이션 -->
+				</div>
+			</div>
+
+			<div id="productsList5" aria-discribedeby="newest" class="products-list-group tabs-cont component-inner-box">
+				<div class="list-contents-wrap ui_carousel_slider"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slider -->
+					<ul class="items unit-list ui_carousel_track"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_track -->
+						@@for (var i = 0; i < items.length; i++) {
+						<li class="js-model ui_carousel_slide"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slide -->
+							<div class="item">
+								<div class="product-image">
+									<a href="#n"><img data-pc-src="`+items[i].imgPC+`" data-m-src="`+items[i].imgMo+`" class="lazyload" alt="" aria-hidden="true"></a>
+								</div>
+								<div class="product-contents">
+									<strong class="product-name">
+										<a href="#n"><span class="blind">모델명</span>`+items[i].productName+`</a>
+									</strong>
+									<p class="product-sku"><span class="blind">모델넘버</span>`+items[i].modelNumber+`</p>
+									<div class="review-info">
+										<div class="star `+items[i].review.class+`"><span class="blind">`+items[i].review.text+`</span></div>
+										<div class="average-rating"><span class="blind">평점</span>`+items[i].review.average+`</div>
+										<div class="review-count"><span class="blind">리뷰 수</span>(<span>`+items[i].review.count+`</span>개)</div>
+									</div>
+									<div class="product-price">
+										<div class="original">
+											<span class="blind">판매가</span><em>3,490,000</em>원
+										</div>
+										<div class="total">
+											<span class="blind">총 판매가</span><em>3,490,000</em>원
+										</div>
+									</div>
+								</div>
+								<div class="product-button">
+									<a href="#n" class="btn border">장바구니에 담기</a>
+								</div>
+							</div>
+						</li>
+						}
+					</ul>
+
+					<!-- [KR수정] carousel DOM 추가 : 인디케이터 -->
+					<ul class="indi-wrap ui_carousel_dots">
+						<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+					</ul>
+					<!-- //[KR수정] carousel DOM 추가 : 인디케이터 -->
+
+					<!-- [KR수정] carousel DOM 추가 : 네비게이션 -->
+					<div class="slide-controls">
+						<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+						<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+					</div>
+					<!-- //[KR수정] carousel DOM 추가 : 네비게이션 -->
+				</div>
+			</div>
+
+			<div id="productsList6" aria-discribedeby="newest" class="products-list-group tabs-cont component-inner-box">
+				<div class="list-contents-wrap ui_carousel_slider"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slider -->
+					<ul class="items unit-list ui_carousel_track"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_track -->
+						@@for (var i = 0; i < items.length; i++) {
+						<li class="js-model ui_carousel_slide"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slide -->
+							<div class="item">
+								<div class="product-image">
+									<a href="#n"><img data-pc-src="`+items[i].imgPC+`" data-m-src="`+items[i].imgMo+`" class="lazyload" alt="" aria-hidden="true"></a>
+								</div>
+								<div class="product-contents">
+									<strong class="product-name">
+										<a href="#n"><span class="blind">모델명</span>`+items[i].productName+`</a>
+									</strong>
+									<p class="product-sku"><span class="blind">모델넘버</span>`+items[i].modelNumber+`</p>
+									<div class="review-info">
+										<div class="star `+items[i].review.class+`"><span class="blind">`+items[i].review.text+`</span></div>
+										<div class="average-rating"><span class="blind">평점</span>`+items[i].review.average+`</div>
+										<div class="review-count"><span class="blind">리뷰 수</span>(<span>`+items[i].review.count+`</span>개)</div>
+									</div>
+									<div class="product-price">
+										<div class="original">
+											<span class="blind">판매가</span><em>3,490,000</em>원
+										</div>
+										<div class="total">
+											<span class="blind">총 판매가</span><em>3,490,000</em>원
+										</div>
+									</div>
+								</div>
+								<div class="product-button">
+									<a href="#n" class="btn border">장바구니에 담기</a>
+								</div>
+							</div>
+						</li>
+						}
+					</ul>
+
+					<!-- [KR수정] carousel DOM 추가 : 인디케이터 -->
+					<ul class="indi-wrap ui_carousel_dots">
+						<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+					</ul>
+					<!-- //[KR수정] carousel DOM 추가 : 인디케이터 -->
+
+					<!-- [KR수정] carousel DOM 추가 : 네비게이션 -->
+					<div class="slide-controls">
+						<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+						<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+					</div>
+					<!-- //[KR수정] carousel DOM 추가 : 네비게이션 -->
+				</div>
+			</div>
 
 			<div class="no-content-wrap"></div>
 			<!-- //[KR수정] 탭메뉴 컨텐츠 & 노데이터 수정 대기중 -->

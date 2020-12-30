@@ -1,0 +1,24 @@
+{
+    "status": "success",
+    "message":null,
+    "data": {
+        "optionData": [
+            {
+                "name": "All",
+                "value": "All" 
+            },
+            {
+                "name": "퀵 헬프 방법",
+                "value": "10000002" 
+            },
+            {
+                "name": "앱 설치",
+                "value": "10000003" 
+            },
+            {
+                "name": "타임머신",
+                "value": "10000004" 
+            }   
+        ]
+    }
+}

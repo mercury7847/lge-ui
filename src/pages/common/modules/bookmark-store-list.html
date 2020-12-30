@@ -1,0 +1,28 @@
+<ul class="bookmark-store-list">
+    @@for ( var i=0; i < item.length; i++ ) {
+    <li data-id="`+item[i].id+`">
+        <div class="item">
+            <span class="branch">`+item[i].head+`</span>
+            <a href="#" class="title"><strong>`+item[i].title+`</strong></a>
+            <span class="phone">`+item[i].number+`</span>
+            <div class="bookmark">
+                <span class="chk-bookmark-wrap">
+                    <input type="checkbox" id="mark-shop`+item[i]+`" name="mark-shop" checked>
+                    <label for="mark-shop`+item[i]+`"><span class="blind">단골매장 설정됨</span></label>
+                </span>
+            </div>
+            <div class="share-area">
+                @@include('./common/modules/tooltip.html', {
+                    "share" : true,
+                    "fixed" : "fixed-right",
+                    "type" : "include",
+                    "page" : "tooltip-share"
+                })
+            </div>
+            <div class="btn-area">
+                <a href="#" class="btn border size"><span>매장 상담 신청</span></a>
+            </div>
+        </div>
+    </li>
+    }
+</ul>

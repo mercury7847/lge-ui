@@ -1,0 +1,18 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "isLogin" : true,
+        "contract" : {
+            "freeCareShip" : "Y", 
+            "transModelCheck" : "WD501AW1AKOR"
+        },
+        "total" : {
+            "totalCnt" : 2,
+            "totalPrice" : "월 81,400원",
+            "totalTrans" : "월 -5,000원",
+            "affiliateCard" : "월 최대 -16,000원"
+        }
+    }
+}

@@ -1,0 +1,213 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "pagination":{
+            "page": 1,
+            "totalCount": 3
+        },
+        "categoryList": [
+            {
+                "categoryId": "AAA",
+                "categoryName": "TV"
+            },
+            {
+                "categoryId": "BBB",
+                "categoryName": "모니터"
+            },
+            {
+                "categoryId": "CCC",
+                "categoryName": "노트북"
+            },
+            {
+                "categoryId": "DDD",
+                "categoryName": "핸드폰"
+            }
+        ],
+        "storyListByYear": [
+            {
+                "yearBaseDate": "TOTAL",
+                "yearCnt": 12
+            },
+            {
+                "yearBaseDate": "2020",
+                "yearCnt": 2
+            },
+            {
+                "yearBaseDate": "2019",
+                "yearCnt": 1
+            },
+            {
+                "yearBaseDate": "2018",
+                "yearCnt": 5
+            },
+            {
+                "yearBaseDate": "2017",
+                "yearCnt": 3
+            },
+            {
+                "yearBaseDate": "2016",
+                "yearCnt": 1
+            }
+        ],
+        "storyList":[
+            {
+                "storyId": "ADC12345354",
+                "storyTitle": "LG 휘센 씽큐 에어컨 TV CF(아이스쿨파워/공기청정기 편)",
+                "storyMainThumbnailPath": "/lg5-common/images/dummy/",
+                "storyMainThumbnailServerName": "@img-119x68.png",
+                "storyMainThumbnailAltText":"LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)"
+            },
+            {
+                "storyId": "ADC12345354",
+                "storyTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "storyMainThumbnailPath": "/lg5-common/images/dummy/",
+                "storyMainThumbnailServerName": "@img-119x68.png",
+                "storyMainThumbnailAltText":"LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)"
+            },
+            {
+                "storyId": "ADC12345354",
+                "storyTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "storyMainThumbnailPath": "/lg5-common/images/dummy/",
+                "storyMainThumbnailServerName": "@img-119x68.png",
+                "storyMainThumbnailAltText":"LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)"
+            },
+            {
+                "storyId": "ADC12345354",
+                "storyTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "storyMainThumbnailPath": "/lg5-common/images/dummy/",
+                "storyMainThumbnailServerName": "@img-119x68.png",
+                "storyMainThumbnailAltText":"LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)"
+            },
+            {
+                "storyId": "ADC12345354",
+                "storyTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "storyMainThumbnailPath": "/lg5-common/images/dummy/",
+                "storyMainThumbnailServerName": "@img-119x68.png",
+                "storyMainThumbnailAltText":"LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)"
+            },
+            {
+                "storyId": "ADC12345354",
+                "storyTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "storyMainThumbnailPath": "/lg5-common/images/dummy/",
+                "storyMainThumbnailServerName": "@img-119x68.png",
+                "storyMainThumbnailAltText":"LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)"
+            },
+            {
+                "storyId": "ADC12345354",
+                "storyTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "storyMainThumbnailPath": "/lg5-common/images/dummy/",
+                "storyMainThumbnailServerName": "@img-119x68.png",
+                "storyMainThumbnailAltText":"LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)"
+            },
+            {
+                "storyId": "ADC12345354",
+                "storyTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "storyMainThumbnailPath": "/lg5-common/images/dummy/",
+                "storyMainThumbnailServerName": "@img-119x68.png",
+                "storyMainThumbnailAltText":"LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)"
+            },
+            {
+                "storyId": "ADC12345354",
+                "storyTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "storyMainThumbnailPath": "/lg5-common/images/dummy/",
+                "storyMainThumbnailServerName": "@img-119x68.png",
+                "storyMainThumbnailAltText":"LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)"
+            },
+            {
+                "storyId": "ADC12345354",
+                "storyTitle": "LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 TV CF LG 휘센 씽큐 에어컨 ",
+                "storyMainThumbnailPath": "/lg5-common/images/dummy/",
+                "storyMainThumbnailServerName": "@img-119x68.png",
+                "storyMainThumbnailAltText":"LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)"
+            }
+        ],
+        "storyinfo":{
+            "storyId": "ST00003001",
+            "storyType": "cf",
+            "videoType": "mp4",
+            "storyTypeNm": "광고/캠페인 영상",
+            "storyNewsGubun": null,
+            "storyTitle": "LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)",
+            "storyUrl":"",
+            "storyMainThumbnailPath": "/lg5-common/images/dummy/",
+            "storyMainThumbnailServerName": "@img-1029x578.png",
+            "storyMainThumbnailAltText":"LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)",
+            "storyMovieUrl": "/lg5-common/videos/signature_rain_view.mp4",
+            "stroyDesc": "영상이나 이미지에 대한 간략한 타이틀이 들어갑니다",
+            "baseDate": "2020-12-31",
+            "tagUrlPath": "/story/",
+            "tagList":[
+                {
+                    "orderNo": "",
+                    "tagId": "TD00000005",
+                    "tagName": "LGSTORY"
+                },
+                {
+                    "orderNo": "",
+                    "tagId": "TD00000005",
+                    "tagName": "LGYhinQ"
+                },
+                {
+                    "orderNo": "",
+                    "tagId": "TD00000005",
+                    "tagName": "AI"
+                },
+                {
+                    "orderNo": "",
+                    "tagId": "TD00000005",
+                    "tagName": "인공지능"
+                },
+                {
+                    "orderNo": "",
+                    "tagId": "TD00000005",
+                    "tagName": "LG씽큐"
+                },
+                {
+                    "orderNo": "",
+                    "tagId": "TD00000005",
+                    "tagName": "LGSTORY"
+                },
+                {
+                    "orderNo": "",
+                    "tagId": "TD00000005",
+                    "tagName": "LGYhinQ"
+                },
+                {
+                    "orderNo": "",
+                    "tagId": "TD00000005",
+                    "tagName": "AIX"
+                }
+            ],
+            "modelList": [
+                {
+                    "categoryId": "CT5000023",
+                    "categoryUrlPath": "",
+                    "categoryName": "정수기",
+                    "models" :[
+                        {
+                            "modelName": "WS501SW",
+                            "modelId": "MD0803924",
+                            "modelUrlPath":"",
+                            "modelDisplayName": "LG 퓨리케어 정수기(인버터 냉온)"
+                        },
+                        {
+                            "modelName": "WS501SW",
+                            "modelId": "MD0803924",
+                            "modelUrlPath":"",
+                            "modelDisplayName": "슬림 업다운 정수기"
+                        },
+                        {
+                            "modelName": "WS501SW",
+                            "modelId": "MD0803924",
+                            "modelUrlPath":"",
+                            "modelDisplayName": "듀얼 정수기"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

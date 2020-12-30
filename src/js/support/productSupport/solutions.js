@@ -6,7 +6,7 @@
         '{{# } else { #}}' +
         '<li>' +
         '{{# } #}}' +
-        '<button type="button" class="filter-link" data-code="{{item.code}}" data-name="{{item.topic}}">{{item.topic}}</button>' +
+        '<button type="button" class="filter-link" data-code="{{item.code}}" data-name="{{item.name}}">{{item.name}}</button>' +
         '</li>' +
         '{{/each}}';
 
@@ -23,7 +23,7 @@
         '{{# } else { #}}' +
         '<li>' +
         '{{# } #}}' +
-        '<button type="button" class="filter-link" data-code="{{item.code}}" data-name="{{item.topic}}">{{item.topic}}</button>' +
+        '<button type="button" class="filter-link" data-code="{{item.code}}" data-name="{{item.name}}">{{item.name}}</button>' +
         '</li>' +
         '{{/each}}' +
         '</ul>' +
@@ -43,7 +43,7 @@
         '<li>조회 {{view}}</li>' +
         '</ul>' +
         '{{# if (typeof video != "undefined" && video === true) { #}}' +
-        '<span class="icon-movie"><span class="blind">동영상 가이드 컨텐츠</span></span>' +
+        '<span class="icon-movie"><span class="blind">동영상 컨텐츠</span></span>' +
         '{{# } #}}' +
         '</a>' +
         '</li>';
@@ -51,216 +51,255 @@
     var optionTemplate =
         '{{#each (item, index) in filterList}}' +
         '<option value="{{item.code}}">' +
-        '{{item.topic}}' +
+        '{{item.name}}' +
         '</option>' +
         '{{/each}}';
 
     $(window).ready(function() {
         var solutions = {
-            form: document.getElementById('submitForm'),
             initialize: function() {
-                this.$form = $(this.form);
+                this.param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                this.$wrap = $('.solutions-wrap');
+                this.$filter = this.$wrap.find('.filter-box');
+                this.$filterM = this.$wrap.find('.mobile-filter-box');
+                this.$result = this.$wrap.find('.result-box');
 
-                $('.ui_anchor_sticky').vcSticky({
-                    usedAnchor: "true"
-                });
+                this.$symptom = this.$wrap.find('#symptom');
+                this.$subSymptom = this.$wrap.find('#subSymptom');
+
+                this.$topic = this.$wrap.find('#topic');
+                this.$subTopic = this.$wrap.find('#subTopic');
+                this.$keyword = this.$wrap.find('#keyword');
+                this.$orderBy = this.$wrap.find('#orderBy');
 
                 this.bindEvent();
-                // this.filterList(); //삭제 예정
-                // this.solutionsList(); //삭제 예정
-                // $('.pagination').pagination();
             },
-            filterSelect: function(code) {
+            selectFilter: function(code) {
                 var self = this;
 
-                self.$form.find('#topic').val(code);
-                self.$form.find('#subTopic').val('');
+                self.$filter.find('.filter-link[data-code="'+ code +'"]').parent('li').addClass('on').siblings('li').removeClass('on');
+                self.$filter.find('.filter-link[data-code="'+ code +'"]').parent('li').addClass('on').siblings('li').each(function() {
+                    if ($(this).find('.sub-depth').length) {
+                        $(this).find('.sub-depth').remove();
+                    }
+                });
 
-                $('.filter-link[data-code="'+ code +'"]').parent('li').addClass('on').siblings('li').removeClass('on');
-
-                $('#select-symptom').val(code);
-
-                if (code !== 'ALL') {
-                    $('#select-symptom2').prop('disabled', false);
-
-                    self.subFilterList(code);
+                if (code !== 'All') {
+                    self.$filter.find('.filter-link[data-code="'+ code +'"]').closest('.filter-list').addClass('open');
+                    self.$subSymptom.prop('disabled', false);
                 } else {
-                    $('.filter-link[data-code="'+ code +'"]').closest('.filter-list').removeClass('open');
-                    $('.sub-depth').remove();
+                    self.$filter.find('.filter-link[data-code="'+ code +'"]').closest('.filter-list').removeClass('open');
+                    self.$filter.find('.sub-depth').remove();
 
-                    $('#select-symptom2').prop('disabled', true);
-                    $('#select-symptom2').html('<option class="placeholder">증상을 선택해주세요.</option>');
+                    self.$subSymptom.prop('disabled', true);
+                    self.$subSymptom.html('<option class="placeholder">증상을 선택해주세요.</option>');
                 }
 
-                $('#select-symptom').vcSelectbox('update');
-                $('#select-symptom2').vcSelectbox('update');
+                self.$symptom.vcSelectbox('update');
+                self.$subSymptom.vcSelectbox('update');
             },
-            subFilterSelect: function(code) {
+            selectSubFilter: function(code) {
+                var self = this;
+            
+                self.$filter.find('.filter-link[data-code="'+ code +'"]').parent('li').addClass('on').siblings('li').removeClass('on');
+                self.$subSymptom.val(code);
+                self.$subSymptom.vcSelectbox('update');
+            },
+            setFilter: function(data) {
+                var self = this,
+                    listArr = data instanceof Array ? data : [],
+                    pcHtml = '',
+                    mHtml = '';
+
+                if (listArr.length) {
+                    pcHtml = vcui.template(filterTemplate, data);
+                    mHtml = vcui.template(optionTemplate, data);
+
+                    self.$filter.find('.filter-list').eq(0).html(pcHtml);
+
+                    self.$symptom.html(mHtml);
+                    self.$symptom.vcSelectbox('update');
+                }
+            },
+            setSubFilter: function(code, target) {
+                var self = this,
+                    $target = target ? $(target) : null,
+                    url = self.$wrap.data('subFilterAjax'),
+                    param = {
+                        topic: code,
+                        productCode: $('#submitForm').find('#productCode').val()
+                    };
+
+                lgkorUI.requestAjaxDataPost(url, param, function(result){
+                    var listArr = result.data.filterList instanceof Array ? result.data.filterList : [],
+                        pcHtml = '',
+                        mHtml = '';
+                
+                    if (listArr.length) {
+                        pcHtml = vcui.template(subFilterTemplate, result.data);
+                        mHtml = vcui.template(optionTemplate, result.data);
+    
+                        $target && $target.after(pcHtml);
+    
+                        self.$subSymptom.html(mHtml);
+                        self.$subSymptom.vcSelectbox('update');
+                    }
+                });
+            },
+            requestData: function() {
+                var self = this,
+                    url = self.$wrap.data('ajax');
+
+                lgkorUI.showLoading();
+                lgkorUI.requestAjaxDataPost(url, self.param, function(result){
+                    var data = result.data,
+                        html = '';
+                            
+                    data.listData.forEach(function(item) {
+                        html += vcui.template(solutionsTemplate, item);
+                    });
+
+                    self.$result.find('#solutionsCount').html(data.listPage.totalCount);
+                    self.$result.find('.list-wrap .list').html(html);
+                    self.$result.find('.pagination').pagination('update', data.listPage);
+
+                    lgkorUI.hideLoading();
+                });
+            },
+            reset: function() {
                 var self = this;
 
-                self.$form.find('#subTopic').val(code);
-            
-                $('.filter-link[data-code="'+ code +'"]').parent('li').addClass('on').siblings('li').removeClass('on');
-                $('#select-symptom2').val(code);
-                $('#select-symptom2').vcSelectbox('update');
+                self.$filter.find('.open, .on').removeClass('open on');
+                self.$filter.find('.sub-depth').remove();
+
+                self.$symptom.vcSelectbox('selectedIndex', 0);
+
+                self.$topic.val('All');
+                self.$subTopic.val('');
             },
-            solutionsList: function() {
-                var self = this,
-                    param = self.$form.serialize();
-
-                $.ajax({
-                    url: '/lg5-common/data-ajax/support/solutionsList.json',
-                    method: 'POST',
-                    dataType: 'json',
-                    data: param,
-                    beforeSend: function(xhr) {
-                        lgkorUI.showLoading();
-                    },
-                    success: function(d) {
-                        if (d.status) {
-                            var data = d.data,
-                                html = "";
-                            
-                            data.solutionsList.forEach(function(item) {
-                                html += vcui.template(solutionsTemplate, item);
-                            });
-
-                            $('#count').html(data.pageInfo.totalCount);
-                            $('#solutionsContent').html(html);
-                            $('.pagination').pagination('update', data.pageInfo);
-                        }
-                    },
-                    error: function(err){
-                        console.log(err);
-                    },
-                    complete: function() {
-                        lgkorUI.hideLoading();
-                    }
-                });
-            },
-            filterList: function() {
-                var self = this,
-                    param = self.$form.serialize();
-
-                $.ajax({
-                    url: '/lg5-common/data-ajax/support/filterList.json',
-                    method: 'POST',
-                    dataType: 'json',
-                    data: param,
-                    beforeSend: function(xhr) {
-                        // loading bar start
-                    },
-                    success: function(d) {
-                        if (d.status) {
-                            var data = d.data,
-                                html = "";
-                            
-                            html += vcui.template(filterTemplate, data);
-
-                            $('#filterContent').html(html);
-                            $('#filterContent').find('.filter-link').on('click', function() {
-                                var _this = this,
-                                    $this = $(_this);
-                                
-                                self.filterSelect($this.data('code'));
-                                self.solutionsList();
-                            });
-
-                            $('#select-symptom').html(vcui.template(optionTemplate, data));
-                            $('#select-symptom').vcSelectbox('update');
-                        }
-                    },
-                    error: function(err){
-                        console.log(err);
-                    },
-                    complete: function() {
-                        // loading bar end
-                    }
-                });
-            },
-            subFilterList: function(code) {
-                var self = this,
-                    $el = $('.filter-link[data-code="'+ code +'"]');
-                    param = self.$form.serialize();
-
-                $.ajax({
-                    url: '/lg5-common/data-ajax/support/subFilterList.json',
-                    method: 'POST',
-                    dataType: 'json',
-                    data: param,
-                    beforeSend: function(xhr) {
-                        // loading bar start
-                    },
-                    success: function(d) {
-                        if (d.status) {
-                            var data = d.data,
-                                html = "";
-                            
-                            html += vcui.template(subFilterTemplate, data);
-
-                            $el.parent().append(html);
-                            $el.closest('.filter-list').addClass('open');
-                            $el.parent().find('.sub-depth .filter-link').on('click', function() {
-                                var _this = this,
-                                    $this = $(_this);
-                                
-                                self.subFilterSelect($this.data('code'));
-                                self.solutionsList();
-                            });
-
-                            $('#select-symptom2').html(vcui.template(optionTemplate, data));
-                            $('#select-symptom2').vcSelectbox('update');
-                        }
-                    },
-                    error: function(err){
-                        console.log(err);
-                    },
-                    complete: function() {
-                        // loading bar end
-                    }
-                });
-            },
-
             bindEvent: function() {
                 var self = this;
 
-                $('#selectCount').on('change', function() {
-                    var value = $(this).val();
-
-                    self.$form.find('#viewCount').val(value);
-                    self.solutionsList();
-                });
-                $('#selectOrder').on('change', function() {
-                    var value = $(this).val();
-                    
-                    self.$form.find('#orderBy').val(value);
-                    self.solutionsList();
-                });
-
-                $('#select-symptom').on('change', function() {
+                // filter
+                self.$filter.on('click', '.filter-list > li > .filter-link', function() {
                     var $this = $(this),
-                        value = $this.val();
-
-                    self.filterSelect(value);
-                    self.solutionsList();
-                });
-                $('#select-symptom2').on('change', function() {
-                    var $this = $(this),
-                        value = $this.val();
+                        code = $this.data('code'),
+                        param = {};
                     
-                    self.subFilterSelect(value);
-                    self.solutionsList();
+                    self.$topic.val(code);
+                    if (!$(this).siblings('.sub-depth').length) {
+                        self.$subTopic.val('All');
+                    }
+                    
+                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                    self.param = $.extend(param, {
+                        page: 1
+                    });
+
+                    self.selectFilter(code, this);
+                    if ($(this).siblings('.sub-depth').length < 1) {
+                        self.setSubFilter(code, this);
+                        self.requestData();
+                    } else {
+                        $(this).siblings('.sub-depth').show();
+                    }
                 });
 
-                $('.filter-list').on('click', '.btn-back', function() {
+                // sub filter
+                self.$filter.on('click', '.sub-depth .filter-link', function() {
+                    var code = $(this).data('code'),
+                        param = {};
+                    
+                    self.$subTopic.val(code);
+                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                    self.param = $.extend(param, {
+                        page: 1
+                    });
+
+                    self.selectSubFilter(code);
+                    self.requestData();
+                });
+
+                // 증상선택 돌아가기
+                self.$filter.on('click', '.btn-back', function() {
                     $(this).closest('.filter-list').removeClass('open');
-                    $(this).closest('.sub-depth').remove();
+                    $(this).closest('.sub-depth').hide();
                 });
 
-                $('.pagination').on('page_click', 'button', function(e, page) {
-                    self.$form.find('#page').val(page);
+                // mobile filter
+                self.$symptom.on('change', function() {
+                    var value = $(this).val(),
+                        param = {};
 
-                    self.solutionsList();
+                    self.$topic.val(value);
+                    self.$subTopic.val('');
+                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                    self.param = $.extend(param, {
+                        page: 1
+                    });
+
+                    self.selectFilter(value);
+                    self.setSubFilter(value, this)
+                    self.requestData();
+                });
+
+                // mobile sub filter
+                self.$subSymptom.on('change', function() {
+                    var value = $(this).val(),
+                        param = {};
+
+                    self.$subTopic.val(value);
+                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                    self.param = $.extend(param, {
+                        page: 1
+                    });
+                    
+                    self.selectSubFilter(value);
+                    self.requestData();
+                });
+
+                // keyword search
+                self.$result.find('.btn-search').on('click', function() {
+                    var value = self.$result.find('#inputKeyword').val(),
+                        resultFlag = self.$result.find('#research').is(':checked'),
+                        param = {};
+                        
+                    if (!resultFlag) {
+                        self.reset();
+                    }
+
+                    self.$keyword.val(value);
+
+                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                    self.param = $.extend(param, {
+                        page: 1
+                    });
+                    self.requestData();
+                });
+
+                // list order by
+                self.$result.find('#selectOrder').on('change', function() {
+                    var value = $(this).val(),
+                        param = {};
+                        
+                    self.$orderBy.val(value);
+                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                    self.param = $.extend(param, {
+                        page: 1
+                    });
+                    
+                    self.requestData();
+                });
+
+                // pagination
+                self.$result.find('.pagination').on('pageClick', function(e) {
+                    var param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+
+                    self.param = $.extend(param, {
+                        page: e.page
+                    })
+
+                    self.requestData();
                 });
             }
         }

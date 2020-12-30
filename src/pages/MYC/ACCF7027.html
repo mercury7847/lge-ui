@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["MYC/MYC"]
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/paymentList"]
     })
 <body>
     <div class="wrap">
@@ -13,7 +14,9 @@
                 "pageDesc" : "계약정보를 선택하여 상세한 내용을 확인 하실 수 있습니다."
             })
             <!-- mypage -->
-            <div class="contents mypage">
+            <div class="contents mypage"
+                data-payment-list-url="/lg5-common/data-ajax/mypage/paymentListData.json"
+            >
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
@@ -29,11 +32,13 @@
                                 <p class="tit">이케어 고객님의 계약정보는 <br class="mob">총 <em>3건</em>입니다.</p>
                                 <div class="form-wrap">
                                     <dl class="forms">
-                                        <dt class="tit"><label for="slt1">계약정보 선택</label></dt>
+                                        <dt class="tit"><label for="contractInfo">계약정보 선택</label></dt>
                                         <dd class="conts">
                                             <div class="select-wrap">
-                                                <select class="ui_selectbox" id="slt1">
-                                                    <option value="">건조기 (RH9WGANR) 계약번호 (12345678)</option>
+                                                <select class="ui_selectbox" id="contractInfo">
+                                                    <option value="RH9WGANR1|12345671">건조기 (RH9WGANR1) 계약번호 (12345671)</option>
+                                                    <option value="RH9WGANR2|12345672">건조기 (RH9WGANR2) 계약번호 (12345672)</option>
+                                                    <option value="RH9WGANR3|12345673">건조기 (RH9WGANR3) 계약번호 (12345673)</option>
                                                 </select>
                                             </div>
                                         </dd>
@@ -53,9 +58,10 @@
                                         <div class="sort-area">
                                             <div class="sort-list">
                                                 <div class="sort-select-wrap">
-                                                    <select class="ui_selectbox" id="select1" title="조회할 연차 선택">
+                                                    <select class="ui_selectbox" id="usePeriod" title="조회할 연차 선택">
                                                         <option value="">전체</option>
-                                                        <option value="">1년차</option>
+                                                        <option value="1년차">1년차</option>
+                                                        <option value="2년차">2년차</option>
                                                     </select>
                                                 </div>
                                             </div>

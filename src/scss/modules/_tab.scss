@@ -15,6 +15,7 @@
         vertical-align:top;
         white-space:nowrap;
         overflow-x:auto;
+        overflow-y:hidden;
         -webkit-overflow-scrolling: touch;
         > li {
             display:inline-block;
@@ -69,6 +70,13 @@
         &.next {
             right:0;
         }
+        @include mobile {
+            top:-8px;
+            width:57px;
+            height:57px;
+            background:url('/lg5-common/images/icons/btn-arr-72x72.svg') center no-repeat;
+            background-size:57px;
+        }
     }
     @include mobile {
         text-align:left;
@@ -84,30 +92,34 @@
             vertical-align:top;
             > li {
                 display:inline-block;
-                margin-left:8px;
+                margin-left:16px;
                 &:first-child {
                     margin-left:0;
                 }
                 > a {
                     display:block;
-                    padding:4px 12px;
-                    border-radius:19px;
+                    padding:9px 16px;
+                    border-radius:25px;
                     background-color:transparent;
                     font-size:22px;
+                    line-height:32px;
                     font-weight:700;
-                    line-height:30px;
                 }
+                &.active > a,
                 &.on > a {
                     color:#222;
-                    background-color:#f4f4f4;
+                    background-color:#e4e4e4;
                 }
             }
             @include mobile {
                 >li {
-                    margin-left:0;
+                    margin-left:8px;
+                    &:first-child {
+                        margin-left:0;
+                    }
                     > a {
-                        padding:5px 14px;
-                        border-radius:20px;
+                        padding:8px 12px;
+                        border-radius:22px;
                         font-size:18px;
                         line-height:26px;
                     }
@@ -118,20 +130,45 @@
 
     // H2
     &.border-type {
+        position:relative;
+        &::before {
+            content:' ';
+            position:absolute;
+            left:0;
+            right:0;
+            bottom:0;
+            height:1px;
+            background:#ddd;
+        }
+        @include pc {
+            &:not(.left) {
+                &::before {
+                    display:none;
+                }
+            }
+        }
+        @include mobile {
+            padding-top:9px;
+        }
         .tabs {
             > li {
-                margin-left:24px;
+                margin-left:32px;
+                @include mobile {
+                    margin-left:24px;
+                }
                 &:first-child {
                     margin-left:0;
                 }
                 > a {
-                    padding-bottom:2px;
-                    border-bottom:2px solid transparent;
+                    padding-bottom:4px;
+                    border-bottom:4px solid transparent;
                     @include font-medium;
                     font-weight:700;
                     @include mobile {
-                        padding-bottom:9px;
+                        padding-bottom:8px;
                         border-width:3px;
+                        font-size:15px;
+                        line-height:23px;
                     }
                 }
                 &.on > a {
@@ -305,5 +342,33 @@
     padding: 24px;
     @include mobile {
         padding:24px 12px;
+    }
+}
+
+.scroll-wrap {
+    position: relative;
+    .tabs-wrap {
+        .tabs {
+            max-width:initial;
+            overflow:unset; 
+        }
+    }
+    .scroll-controls {
+        .btn-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            &.prev {
+                left: 4px;
+            }
+            &.next {
+                right: 4px;
+            }
+        }
+    }
+    .tabs-wrap.btn-type + .scroll-controls {
+        .btn-arrow {
+            margin-top: 4px;
+        }
     }
 }

@@ -9,57 +9,56 @@
 <body>
     <div class="wrap">
         @@include('./common/header.html')
-
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageDesc': 'LG전자 제품을 이용해 주셔서 고맙습니다.<br><span class="color-3">상담 및 서비스가 필요하신 제품</span>을 선택해주세요.'
+                'pageTitle': '고객지원',
+                'pageDesc': 'LG전자 제품을 이용해 주셔서 감사합니다.<br>상담 및 서비스가 필요하신 제품을 선택해주세요.'
             })
-            
-            <div class="contents support app-gate">
-                <div class="cont-wrap">
-                    <section class="section nobg">
-                        <div class="section-title">
-                            <h3 class="tit">고객님 사용 제품에 문제가 있나요?</h3>        
+            <div class="contents support appgate">
+                <div class="cont-wrap narrow">
+
+                    <div class="section">
+                        <div class="appgate-title">
+                            <h2 class="tit">고객님 사용 제품에 문제가 있나요?</h2>        
                         </div>
-                        <div class="section-content">
-                            <div class="appgate-figure-box">
-                                <figure class="appgate-figure type-A">
-                                    <div class="appgate-figure-img"><img src="/lg5-common/images/dummy/@img-product8.png" alt="제품 이미지"></div>
-                                    <figcaption>
-                                        <div class="appgate-figure-title"><img src="/lg5-common/images/dummy/@img-product8-title.png" alt="LG G7 ThinQ / G7+ ThinQ"></div>
-                                        모델명 <strong class="color-3">LM-G710N</strong>
-                                    </figcaption>
-                                </figure>
-                                <div class="btn-group">
-                                    <button class="btn"><span>문제 해결 바로 가기</span></button>
+                        <div class="appgate-box">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="/lg5-common/images/dummy/@img-product8.png" alt="제품 이미지">
+                                </div>
+                                <div class="product-info">
+                                    <div class="img">
+                                        <img src="/lg5-common/images/dummy/@img-product8-title.png" alt="LG G7 ThinQ / G7+ ThinQ">
+                                    </div>
+                                    <p class="name">모델명 <em>LM-G710N</em></p>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-
-                    <section class="section nobg">
-                        
-                        <div class="section-title">
-                            <h3 class="tit">다른 LG전자 제품에 문제가 있나요?</h3>        
-                        </div>
-                        <div class="section-content">
-                            <div class="appgate-figure-box">
-                                <figure class="appgate-figure">
-                                    <div class="appgate-figure-img"><img src="/lg5-common/images/dummy/@img-product9.jpg" alt="제품 이미지"></div>
-                                </figure>
-                                <div class="btn-group">
-                                    <button class="btn"><span>문제 해결 바로 가기</span></button>
-                                </div>
+                            <div class="btn-wrap">
+                                <a href="/html/CS/CSRF6070-main.html" class="btn"><span>문제 해결 바로 가기</span></a>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                    <div class="section">
+                        <div class="appgate-title">
+                            <h2 class="tit">다른 LG전자 제품에 문제가 있나요?</h2>        
+                        </div>
+                        <div class="appgate-box">
+                            <div class="appgate-img">
+                                <img src="/lg5-common/images/CS/img-appgate-product.jpg" alt="제품 이미지">
+                            </div>
+                            <div class="btn-wrap">
+                                <a href="/html/CS/CSRFCSRF6002.html" class="btn"><span>문제 해결 바로 가기</span></a>
+                            </div> 
+                        </div>  
+                    </div>
+                    <div class="appgate-banner">
+                        <a href="https://www.lgservice.co.kr/mobile/notice/selectNoticeView.do?cSeq=18762" target="_blank" title="새 창에서 열림">
+                            <img src="/lg5-common/images/CS/img-appgate-banner.jpg" alt="스마트폰 잠금 해제 서비스 정책변경 안내">
+                        </a>
+                    </div>
 
-                    <figure class="banner-figure">
-                        <a href="https://www.lgservice.co.kr/mobile/notice/selectNoticeView.do?cSeq=18762" target="_blank" title="새 창에서 열림"><img src="/lg5-common/images/dummy/@img-product-banner-lg2.jpg" alt="스마트폰 잠금 해제 서비스 정책변경 안내"></a>
-                    </figure>
                 </div>
             </div>
-
         </div>
              
         @@include('./common/footer.html')

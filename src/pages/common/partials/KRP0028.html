@@ -5,19 +5,19 @@
         .zero-top : 상단여백 없음
         .zero-btm : 하단여백 없음
     -->
-    <section class="component KRP0028 ">
+    <section class="component KRP0028" data-list-url="/lg5-common/data-ajax/awards/awardsList.json">
         <div class="page-header wide border">
             <h2 class="title">수상내역</h2>
             <div class="tabs-wrap btn-type ui_tab ui_smooth_scroll">
                 <ul class="tabs">
-                    <li class="on"><a href="#n">전체<em class="blind">선택됨</em></a></li>
-                    <li><a href="#n">TV/AV</a></li>
-                    <li><a href="#n">IT</a></li>
-                    <li><a href="#n">주방가전</a></li>
-                    <li><a href="#n">생활가전</a></li>
-                    <li><a href="#n">에어컨/에어케어</a></li>
-                    <li><a href="#n">모바일</a></li>
-                    <li><a href="#n">케어솔루션</a></li>
+                    <li class="on"><a href="#all">전체<em class="blind">선택됨</em></a></li>
+                    <li><a href="#tab1">TV/AV</a></li>
+                    <li><a href="#tab2">IT</a></li>
+                    <li><a href="#tab3">주방가전</a></li>
+                    <li><a href="#tab4">생활가전</a></li>
+                    <li><a href="#tab5">에어컨/에어케어</a></li>
+                    <li><a href="#tab6">모바일</a></li>
+                    <li><a href="#tab7">케어솔루션</a></li>
                 </ul>
             </div>
             @@if (context.tabBarType) {
@@ -26,22 +26,24 @@
                     <ul class="tabs">
                         <li class="on"><a href="#tab1">전체<em class="blind">선택됨</em></a></li>
                         <li><a href="#tab2">스마트폰</a></li>
-                        <li><a href="#tab2">피처폰</a></li>
-                        <li><a href="#tab2">스마트 디바이스</a></li>
-                        <li><a href="#tab2">스마트</a></li>
+                        <li><a href="#tab3">피처폰</a></li>
+                        <li><a href="#tab4">스마트 디바이스</a></li>
+                        <li><a href="#tab5">스마트</a></li>
                     </ul>
                 </div>
             </div>
         }
         </div>	
         <div class="cont-wrap award-breakdown-wrap">
+            
             @@include('./common/modules/list-sorting.html', {
                 "select" : [
-                    {"option" : "인기순"},
-                    {"option" : "2020"},
-                    {"option" : "2019"}
+                    {"option" : "인기순", "default":'value="popular"'},
+                    {"option" : "2020", "default":'value="2020"'},
+                    {"option" : "2019", "default":'value="2019"'}
                 ]
             })
+            
             <div class="award-breakdown">
                 <ul class="award-list">
 
@@ -109,14 +111,15 @@
                 ])
 
                 </ul>
-                @@include('./common/support/pagination.html', {
+                <!-- @@include('./common/support/pagination.html', {
                     count: 5
-                })
+                }) -->
+                <div class="pagination" data-page="16" data-visible-count="7" data-total-count="33"></div>
             </div>
         </div>
 
         @@include('./common/partials/modal/story-pop.html', {
-            "popupID" : "",
+            "popupID" : "awardsPopup",
             "tit" : "수상 제품 카테고리 및 모델명",
             "subtit" : "나노셀 TV",
             "list" : ["LG 나노셀 8K AI ThinQ", "LG 나노셀 AI ThinQ"]

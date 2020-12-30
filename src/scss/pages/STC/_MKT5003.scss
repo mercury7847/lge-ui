@@ -80,6 +80,13 @@
     }
 }
 
+.page-header {
+    &.fixed {
+        margin-bottom: 0;
+        padding-top: 0;
+        background-color: $color-bg-wt;
+    }
+}
 @include mobile {
     .page-header {
         padding:0;
@@ -155,7 +162,7 @@
         }
         .lgpay-visual {
             max-width: 678px;
-            flex: 1;
+            //flex: 1;
             img {
                 max-width: 100%;
                 height: auto;
@@ -278,6 +285,9 @@
                 }
             }
             .slide-controls {
+                right: 0;
+                left: 0;
+                transform: translateX(0px);
                 .btn-arrow {
                     &.prev,
                     &.next {
@@ -315,7 +325,7 @@
                         width: 100%;
                         max-width: (1146px + 80px);
                         margin: 0 auto;
-                        padding: 0 40px;
+                        padding: 0 70px;
                         font-size: 0;
                     }
                     .slide-info-area {

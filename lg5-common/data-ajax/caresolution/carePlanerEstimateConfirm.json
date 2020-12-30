@@ -1,0 +1,143 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "totalCnt": 5,
+        "priceInfo" : {
+            "totalPrice" : "월 61,400원",
+            "totalTrans" : "월 -15,000원",
+            "usedPrice" : "월 36,000원",
+            "requestUrl": "lge.com"
+        },
+        "cardList":[
+            {
+                "cardValue": "",
+                "cardName": "제휴카드 할인"
+            },
+            {
+                "cardValue": "하나카드",
+                "cardName": "[하나]하나전자 렌탈플러스"
+            },
+            {
+                "cardValue": "국민카드",
+                "cardName": "[국민]국민전자 렌탈플러스"
+            },
+            {
+                "cardValue": "신한카드",
+                "cardName": "[신한]신한전자 렌탈플러스"
+            }
+        ],
+        "cardDescription": "월 최대 3,000원 청구할인",
+        "itemList":[
+            {
+                "modelId": "item00001",
+                "rtModelSeq": "00001",
+                "contractTypeNm": "렌탈(케어솔루션)",
+                "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
+                "imageAlt": "S5MBR",
+                "displayName": "슬림 업다운 정수기",
+                "modelCd": "WD501AW1.AKOR",
+                "colorOption": "LeatherYellow",
+                "option": [
+                    "총 요금 3,710,000원",
+                    "할인 등록비 5만원",
+                    "의무 사용기간 2020.05.29로 부터 36개월(무상할인 2개월)",
+                    "방문 주기 6개월/1회"
+                ],
+                "monthPrice": "월 19,500원",
+                "originalPrice": "월 61,900원"
+            },
+            {
+                "modelId": "item00001",
+                "rtModelSeq": "00001",
+                "contractTypeNm": "렌탈(케어솔루션)",
+                "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
+                "imageAlt": "S5MBR",
+                "displayName": "슬림 업다운 정수기",
+                "modelCd": "WD501AW1.AKOR",
+                "colorOption": "LeatherYellow",
+                "option": [
+                    "총 요금 3,710,000원",
+                    "할인 등록비 5만원",
+                    "의무 사용기간 2020.05.29로 부터 36개월(무상할인 2개월)",
+                    "방문 주기 6개월/1회"
+                ],
+                "monthPrice": "월 19,500원",
+                "originalPrice": "월 61,900원"
+            },
+            {
+                "modelId": "item00001",
+                "rtModelSeq": "00001",
+                "contractTypeNm": "렌탈(케어솔루션)",
+                "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
+                "imageAlt": "S5MBR",
+                "displayName": "슬림 업다운 정수기",
+                "modelCd": "WD501AW1.AKOR",
+                "colorOption": "LeatherYellow",
+                "option": [
+                    "총 요금 3,710,000원",
+                    "할인 등록비 5만원",
+                    "의무 사용기간 2020.05.29로 부터 36개월(무상할인 2개월)",
+                    "방문 주기 6개월/1회"
+                ],
+                "monthPrice": "월 19,500원",
+                "originalPrice": "월 61,900원"
+            },
+            {
+                "modelId": "item00001",
+                "rtModelSeq": "00001",
+                "contractTypeNm": "렌탈(케어솔루션)",
+                "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
+                "imageAlt": "S5MBR",
+                "displayName": "슬림 업다운 정수기",
+                "modelCd": "WD501AW1.AKOR",
+                "colorOption": "LeatherYellow",
+                "option": [
+                    "총 요금 3,710,000원",
+                    "할인 등록비 5만원",
+                    "의무 사용기간 2020.05.29로 부터 36개월(무상할인 2개월)",
+                    "방문 주기 6개월/1회"
+                ],
+                "monthPrice": "월 19,500원",
+                "originalPrice": "월 61,900원"
+            },
+            {
+                "modelId": "item00001",
+                "rtModelSeq": "00001",
+                "contractTypeNm": "렌탈(케어솔루션)",
+                "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
+                "imageAlt": "S5MBR",
+                "displayName": "슬림 업다운 정수기",
+                "modelCd": "WD501AW1.AKOR",
+                "colorOption": "LeatherYellow",
+                "option": [
+                    "총 요금 3,710,000원",
+                    "할인 등록비 5만원",
+                    "의무 사용기간 2020.05.29로 부터 36개월(무상할인 2개월)",
+                    "방문 주기 6개월/1회"
+                ],
+                "monthPrice": "월 19,500원",
+                "originalPrice": "월 61,900원"
+            },
+            {
+                "modelId": "item00001",
+                "rtModelSeq": "00001",
+                "contractTypeNm": "렌탈(케어솔루션)",
+                "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
+                "imageAlt": "S5MBR",
+                "displayName": "슬림 업다운 정수기",
+                "modelCd": "WD501AW1.AKOR",
+                "colorOption": "LeatherYellow",
+                "option": [
+                    "총 요금 3,710,000원",
+                    "할인 등록비 5만원",
+                    "의무 사용기간 2020.05.29로 부터 36개월(무상할인 2개월)",
+                    "방문 주기 6개월/1회"
+                ],
+                "monthPrice": "월 19,500원",
+                "originalPrice": "월 61,900원"
+            }
+        ]
+    }
+}

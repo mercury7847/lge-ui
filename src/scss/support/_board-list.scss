@@ -166,6 +166,7 @@
         @include font-small;
     }
     .options {
+        margin-top:8px;
         color:#767676;
         @include font-small;
         @include clearfix;
@@ -190,6 +191,9 @@
         }
     }
     @include mobile {
+        .desc {
+            margin-top:2px;
+        }
         .options {
             & > li {
                 &:after {
@@ -206,32 +210,33 @@
             border-bottom:1px solid #ddd;
             &.video-type {
                 .item {
-                    padding-right:91px;
+                    padding-right:84px;
                 }
                 .icon-movie {
-                    right:20px;
-                    width:56px;
-                    height:56px;
+                    position:absolute;
+                    top:50%;
+                    right:0px;
+                    width:46px;
+                    height:46px;
+                    transform:translateY(-50%);
+                    background:url(/lg5-common/images/icons/icon-play-120.svg) no-repeat;
+                    background-size:100%;
                 }
             }
             .item {
                 display:block;
                 padding:24px 0;
                 .tit {
-                    @include textEllipsisClamp(2);
+                    @include textEllipsis;
                 }
             }
         }
         @include mobile {
             & > li {   
                 &.video-type {
-                    .item {
-                        padding-right:91px;
-                    }
                     .icon-movie {
-                        right:20px;
-                        width:56px;
-                        height:56px;
+                        width:60px;
+                        height:60px;
                     }
                 }
                 .item {

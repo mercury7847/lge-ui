@@ -2,7 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["MYC/MYC"],
-        pageJS: ["mypage/myProdRegisted"]
+        pageJS: ["mypage/myProdRegist"]
     })
 <body>
     <div class="wrap">
@@ -14,24 +14,276 @@
                 "pageDesc" : "보유 제품 등록을 통해 제품을 좀더 체계적으로 관리하실 수 있습니다."
             })
             <!-- mypage -->
-            <div class="contents mypage"
-                data-delete-prod="/lg5-common/data-ajax/mypage/deleteRegistedProdList.json"
-            >
+            <div class="contents mypage">
+                <div class="hidden-input-group">
+                    <input type="hidden" name="totalCount" value="5"/>
+                    <input type="hidden" name="page" value="1"/>
+                </div>
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
                             "sect4" : true
                         })
-                        <div class="lnb-contents">
+                        <div class="lnb-contents"
+                            data-list-url="/lg5-common/data-ajax/mypage/product/registedProductList.json"
+                            data-remove-url="/lg5-common/data-ajax/mypage/product/deleteProductRegist.json"
+                        >
                             <div class="section-wrap">
-                                <!-- TBD -->
-                                <div class="tbd-box">
-                                    보유 제품 등록 TBD
+                                <div class="sects">
+                                    <div class="tit-wrap">
+                                        <h4 class="tit">제품 등록 회원 혜택</h4>
+                                    </div>
+                                    <div class="section-inner">
+                                        <!-- 201217 수정 -->
+                                        <!-- 제품 등록 회원 혜택 -->
+                                        <ul class="mymem-benefit">
+                                            <li>
+                                                <i class="ico ico01"></i>
+                                                <p>1년 무상 A/S 를 제공합니다. <br>(제품별 상이)</p>
+                                            </li>
+                                            <li>
+                                                <i class="ico ico02"></i>
+                                                <p>보유제품 등록 시 멤버십 <br class="pc-only">포인트를 지급해 드립니다.</p>
+                                            </li>
+                                            <li>
+                                                <i class="ico ico03"></i>
+                                                <p>각종 자료 다운로드 및 사용 <br class="pc-only">설명서를 쉽게 받아 보실 수 <br class="pc-only">있습니다.</p>
+                                            </li>
+                                            <li>
+                                                <i class="ico ico04"></i>
+                                                <p>제품 사용 시 문의사항에 대해 <br class="pc-only">기술지원 서비스를 받을 수 <br class="pc-only">있습니다.</p>
+                                            </li>
+                                        </ul>
+                                        <!-- //제품 등록 회원 혜택 -->
+                                        <!-- //201217 수정 -->
+                                    </div>
                                 </div>
-                                <!-- // TBD -->
 
                                 <div class="sects">
-                                    <div class="tit-wrap type2">
+                                    <div class="tit-wrap">
+                                        <h4 class="tit">등록 가능 제품</h4>
+                                    </div>
+                                    <!-- 201217 수정 -->
+                                    <!-- 등록 가능 제품 -->
+                                    <div class="my-product-lists enroll">
+                                        <ul>
+                                            <li class="lists" data-model-id="pid00001" data-sku="sku00001">
+                                                <div class="inner">
+                                                    <div class="thumb" aria-hidden="true">        
+                                                        <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
+                                                    </div>
+                                                    <div class="info-wrap">
+                                                        <p class="name"><span class="blind">모델명</span>S833TS35E</p>
+                                                        <ul class="info-lists">
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>구매일자</dt>
+                                                                    <dd>2019.01</dd>
+                                                                </dl>
+                                                            </li>
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>카테고리</dt>
+                                                                    <dd>냉장고</dd>
+                                                                </dl>
+                                                            </li>
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>구매처</dt>
+                                                                    <dd>베스트샵</dd>
+                                                                </dl>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="btn-group">
+                                                            <a href="#n" class="btn border size-m"><span>제품 등록</span></a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </li>
+                                            <li class="lists" data-model-id="pid00002" data-sku="sku00002">
+                                                <div class="inner">
+                                                    <div class="thumb" aria-hidden="true">        
+                                                        <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
+                                                    </div>
+                                                    <div class="info-wrap">
+                                                        <p class="name"><span class="blind">모델명</span>S833TS35E</p>
+                                                        <ul class="info-lists">
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>구매일자</dt>
+                                                                    <dd>2019.01</dd>
+                                                                </dl>
+                                                            </li>
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>카테고리</dt>
+                                                                    <dd>냉장고</dd>
+                                                                </dl>
+                                                            </li>
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>구매처</dt>
+                                                                    <dd>베스트샵</dd>
+                                                                </dl>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="btn-group">
+                                                            <a href="#n" class="btn border size-m"><span>제품 등록</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="lists" data-model-id="pid00003" data-sku="sku00003">
+                                                <div class="inner">
+                                                    <div class="thumb" aria-hidden="true">        
+                                                        <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
+                                                    </div>
+                                                    <div class="info-wrap">
+                                                        <p class="name"><span class="blind">모델명</span>S833TS35E</p>
+                                                        <ul class="info-lists">
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>구매일자</dt>
+                                                                    <dd>2019.01</dd>
+                                                                </dl>
+                                                            </li>
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>카테고리</dt>
+                                                                    <dd>냉장고</dd>
+                                                                </dl>
+                                                            </li>
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>구매처</dt>
+                                                                    <dd>베스트샵</dd>
+                                                                </dl>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="btn-group">
+                                                            <a href="#n" class="btn border size-m"><span>제품 등록</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="lists" data-model-id="pid00004" data-sku="sku00004">
+                                                <div class="inner">
+                                                    <div class="thumb" aria-hidden="true">        
+                                                        <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
+                                                    </div>
+                                                    <div class="info-wrap">
+                                                        <p class="name"><span class="blind">모델명</span>S833TS35E</p>
+                                                        <ul class="info-lists">
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>구매일자</dt>
+                                                                    <dd>2019.01</dd>
+                                                                </dl>
+                                                            </li>
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>카테고리</dt>
+                                                                    <dd>냉장고</dd>
+                                                                </dl>
+                                                            </li>
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>구매처</dt>
+                                                                    <dd>베스트샵</dd>
+                                                                </dl>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="btn-group">
+                                                            <a href="#n" class="btn border size-m"><span>제품 등록</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="lists" data-model-id="pid00005" data-sku="sku00005">
+                                                <div class="inner">
+                                                    <div class="thumb" aria-hidden="true">        
+                                                        <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
+                                                    </div>
+                                                    <div class="info-wrap">
+                                                        <p class="name"><span class="blind">모델명</span>S833TS35E</p>
+                                                        <ul class="info-lists">
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>구매일자</dt>
+                                                                    <dd>2019.01</dd>
+                                                                </dl>
+                                                            </li>
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>카테고리</dt>
+                                                                    <dd>냉장고</dd>
+                                                                </dl>
+                                                            </li>
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>구매처</dt>
+                                                                    <dd>베스트샵</dd>
+                                                                </dl>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="btn-group">
+                                                            <a href="#n" class="btn border size-m"><span>제품 등록</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="lists" data-model-id="pid00006" data-sku="sku00006">
+                                                <div class="inner">
+                                                    <div class="thumb" aria-hidden="true">        
+                                                        <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="S833TS35E">
+                                                    </div>
+                                                    <div class="info-wrap">
+                                                        <p class="name"><span class="blind">모델명</span>S833TS35E</p>
+                                                        <ul class="info-lists">
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>구매일자</dt>
+                                                                    <dd>2019.01</dd>
+                                                                </dl>
+                                                            </li>
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>카테고리</dt>
+                                                                    <dd>냉장고</dd>
+                                                                </dl>
+                                                            </li>
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>구매처</dt>
+                                                                    <dd>베스트샵</dd>
+                                                                </dl>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="btn-group">
+                                                            <a href="#n" class="btn border size-m"><span>제품 등록</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <button type="button" class="btn-moreview block"><span>더보기</span></button>
+                                        <!-- 등록 가능 제품 no data -->
+                                        <div class="no-data">
+                                            <p>등록 가능한 제품이 없습니다.<br>구매하신 제품을 등록하여 다양한 혜택을 받아보세요.</p>
+                                        </div>
+                                        <!-- // 등록 가능 제품 no data -->
+                                        <div class="btm-box">
+                                            <p>등록하려는 제품이 없으시다면 직접 보유제품을 등록해 보세요.</p>
+                                            <button type="button" class="btn dark-gray size"><span>보유 제품 등록</span></button>
+                                        </div>
+                                    </div>
+                                    <!-- //등록 가능 제품 -->
+                                    <!-- //201217 수정 -->
+                                </div>
+
+                                <div class="sects">
+                                    <div class="tit-wrap">
                                         <h4 class="tit">보유 제품 목록</h4>
                                     </div>
                                     <!-- 보유제품목록 -->
@@ -120,21 +372,14 @@
                                                 }
                                             ])
                                         </ul>
+                                        <!-- 보유제품목록 no data -->
+                                        <div class="no-data">
+                                            <p>보유하신 제품이 없습니다.<br>구매하신 제품을 등록하여 다양한 혜택을 받아보세요.</p>
+                                        </div>
+                                        <!-- // 보유제품목록 no data -->
                                     </div>
                                     <!-- // 보유제품목록 -->
-
-                                    <!-- 보유제품목록 no data -->
-                                    <div class="no-data">
-                                        <p>보유하신 제품이 없습니다.<br>구매하신 제품을 등록하여 다양한 혜택을 받아보세요.</p>
-                                    </div>
-                                    <!-- // 보유제품목록 no data -->
                                 </div>
-
-                                <!-- TBD -->
-                                <div class="tbd-box">
-                                    제품 등록 회원 혜택 TBD
-                                </div>
-                                <!-- // TBD -->
                             </div>
                         </div>
                     </div>
@@ -145,17 +390,384 @@
         
         @@include('./common/footer.html')
     </div>  
-    
+
+    <!-- 보유제품 등록 -->
+    <article id="registMyProductPopup" class="popup-wrap full"
+        data-sku-url="/lg5-common/data-ajax/mypage/product/checkSku.json",
+        data-sn-url="/lg5-common/data-ajax/mypage/product/checkSn.json"
+        data-insert-url="/lg5-common/data-ajax/mypage/product/productRegist.json"
+    >
+        <header class="pop-header" ui-modules="Header">
+            <h1 class="tit" id="modal_30_title"><span>내 보유 제품 등록</span></h1>
+        </header>
+        <section class="pop-conts common-pop mypage" id="modal_30_content"><!-- [12.01 수정] .common-pop class 추가 -->
+            <div class="form-wrap">
+                <dl class="forms">
+                    <dt class="tit"><label for="inp01" class="req">제품 모델명<span class="blind">필수입력</span></label></dt>
+                    <dd class="conts">
+                        <div class="box">
+                            <div class="input-wrap">
+                                <input type="text" id="inp01" value="" placeholder="제품 모델명(코드) 입력" name='sku'>
+                                <p class="link"><a href="#n" class="btn-link">제품 모델명 찾기</a></p>
+                                <p class="comp">제품 모델명 확인완료!</p><!-- 확인 버튼 클릭, 확인 후 출력 -->
+                            </div>
+                            <div class="cell">
+                                <button type="button" class="btn"><span>확인</span></button>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="forms">
+                    <dt class="tit"><label for="slt01" class="req">구매 년 월<span class="blind">필수입력</span></label></dt>
+                    <dd class="conts">
+                        <div class="box date-select-box col-2">
+                            <div class="cell">
+                                <div class="box">
+                                    <div class="select-wrap">
+                                        <select class="ui_selectbox" id="slt01" title="년 선택" name="year" data-required="true" required>
+                                            <option value="" class="placeholder">선택</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2019">2019</option>
+                                        </select>
+                                    </div>
+                                    <div class="text"><span>년</span></div>
+                                </div>
+                            </div>
+                            <div class="cell">
+                                <div class="box">
+                                    <div class="select-wrap">
+                                        <select class="ui_selectbox" id="slt01-1" title="월 선택" name="month" data-required="true" required>
+                                            <option value="" class="placeholder">선택</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                        </select>
+                                    </div>
+                                    <div class="text"><span>월</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="err-block"><p class="err-msg"></p></div>
+                    </dd>
+                </dl>
+                <dl class="forms">
+                    <dt class="tit"><label for="inp02">제조번호(S/N)</label></dt>
+                    <dd class="conts">
+                        <div class="box">
+                            <div class="input-wrap">
+                                <input type="text" id="inp02" value="" placeholder="제조번호(Serial Number) 입력" name='sn'>
+                            </div>
+                            <div class="cell">
+                                <button type="button" class="btn"><span>제조번호 확인</span></button>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="forms">
+                    <dt class="tit"><label for="slt02">구매장소</label></dt>
+                    <dd class="conts">
+                        <div class="select-wrap">
+                            <select class="ui_selectbox" id="slt02" title="구매 장소 유형 선택" name='store1'>
+                                <option value="" class="placeholder">구매 장소 유형 선택</option>
+                                <option value="bestshop">BESTSHOP</option>
+                            </select>
+                        </div>
+                        <div class="input-wrap">
+                            <input type="text" id="inp03" value="" placeholder="상세 구매처 명 입력" name='store2'>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <dl class="bullet-list top-border">
+                <dt class="b-tit">확인하세요</dt>
+                <dd class="b-txt">제품 등록은 구매일 다음날부터 등록 가능하며 제품 등록 시 리워드가 포인트로 적립됩니다.</dd>
+            </dl>
+        </section>
+        <footer class="pop-footer center" ui-modules="Footer">
+            <div class="btn-group">
+                <button type="button" class="btn gray"><span>취소</span></button>
+                <button type="button" class="btn"><span>등록</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 보유제품 등록-->
+
     <!-- 사용설명서 -->
-    @@include('./common/popup/ACCF7033_pop2.html', {
-        popupID: 'popup-manual'
-    })
+    <article id="manualPopup" class="popup-wrap wide"
+        data-model-id="pid00001"
+        data-count=1
+        data-totalCount=3
+        data-list-url="/lg5-common/data-ajax/mypage/product/manualList.json"
+    >
+        <header class="pop-header" ui-modules="Header">
+            <h1 class="tit" id="modal_27_title"><span>사용설명서</span></h1>
+        </header>
+        <section class="pop-conts no-footer mypage" id="modal_27_content">
+            <div class="section-wrap">
+                <div class="sects">
+                    <div class="tit-wrap">
+                        <h2 class="tit">제품사용 설명서 <em>3</em>건</h2>
+                        <div class="flt-cont"> 
+                            <div class="tooltip-wrap"><!-- 활성화시 active -->
+                                <span class="tooltip-icon ui_tooltip-target" data-fixed="fixed-right" ui-modules="TooltipTarget">자세히 보기</span>
+                                <div class="tooltip-box fixed-right" aria-hidden="true" style="display: none;">
+                                    <p>zip 파일 또는 chm 파일을 [열기] 눌러 사용할 경우 Internet Explorer 보안 기능으로 인해 사용설명서가 정상적으로 표시되지 않을 수 있습니다.</p>
+                                    <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-inner type2">
+                        <div class="user-guide-lists">
+                            <ul class="ui_flexible_height">
+                                <li class="lists">
+                                    <div class="ui_flexible_box" style="height: 178px;">
+                                        <div class="inner ui_flexible_cont">
+                                            <p class="guide-tit">제품 사용설명서</p>
+                                            <p class="guide-desc">Owner's Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>
+                                            <div class="bottom-tbl">
+                                                <div class="cell">
+                                                    <ul class="info-list">
+                                                        <li><span class="blind">등록일</span>2020.11.03</li>
+                                                        <li><span class="blind">언어</span>한국어</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="cell">
+                                                    <button type="button" class="btn size border"><span>PDF</span><span class="blind">파일 다운로드</span></button>
+                                                    <button type="button" class="btn size border"><span>ZIP</span><span class="blind">파일 다운로드</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn-moreview block"><span>설명서 더보기</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
     <!-- // 사용설명서-->
     
     <!-- 다운로드/SW -->
-    @@include('./common/popup/ACCF7033_pop1.html', {
-        popupID: 'popup-download'
-    })
+    <article id="downloadPopup" class="popup-wrap wide"
+        data-model-id="pid00003"
+        data-list-url="/lg5-common/data-ajax/mypage/product/downloadList.json"
+    >
+        <header class="pop-header">
+            <h1 class="tit"><span>다운로드/SW</span></h1>
+        </header>
+        <section class="pop-conts no-footer mypage">
+            <div class="section-wrap">
+                <!-- 드라이버/SW 영역 -->
+                <div class="sects">
+                    <div class="tit-wrap">
+                        <h2 class="tit">드라이버/SW <em>130</em>건</h2>
+                    </div>
+                    <div class="link-box">
+                        <p>드라이버/소프트웨어는 LG Update Center [통합 드라이버 설치 프로그램]을 통해 편리하게 설치해 보세요.</p>
+                        <a href="#" target="_blank" title="새 창" class="btn-link">LG Update Center 가기</a>
+                    </div>
+                    <div class="section-inner">
+                        <!-- filter -->
+                        <div class="form-wrap col-type">
+                            <dl class="forms type2 inner-type">
+                                <dt class="tit"><label for="slt01">운영체제(OS) 선택</label></dt>
+                                <dd class="conts">
+                                    <div class="select-wrap">
+                                        <select class="ui_selectbox" id="slt01">
+                                            <option value="">전체</option>
+                                            <option value="win10">win10</option>
+                                        </select>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="forms type2 inner-type">
+                                <dt class="tit"><label for="slt02">드라이버 분류</label></dt>
+                                <dd class="conts">
+                                    <div class="select-wrap">
+                                        <select class="ui_selectbox" id="slt02">
+                                            <option value="">전체</option>
+                                            <option value="">전체</option>
+                                        </select>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <!-- // filter -->
+    
+                        <!-- tab+list -->
+                        <div class="sw-contents-wrap">
+                            <div class="tabs-wrap border-type left ui_smooth_scroll ui_tab">
+                                <ul class="tabs">
+                                    <li class="on"><a href="#tab1">통합 드라이버 설치 프로그램(110)<em class="blind">선택됨</em></a></li>
+                                    <li><a href="#tab2">칩셋/패치(6)</a></li>
+                                    <li><a href="#tab3">비디오(6)</a></li>
+                                    <li><a href="#tab4">사운드(3)</a></li>
+                                    <li><a href="#tab5">랜(4)</a></li>
+                                    <li><a href="#tab6">기타(0)</a></li>
+                                </ul>
+                            </div>
+                            <p class="sw-desc">제목을 선택하면 상세내용을 확인할 수 있습니다.</p>
+                            <div class="sw-download-lists">
+                                <ul>
+                                    <!-- 이전버전이 있는 케이스 -->
+                                    <li class="lists ui_dropdown">
+                                        <div class="inner titles">
+                                            <a href="#">
+                                                <div class="info-cell">
+                                                    <p class="file-name">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</p>
+                                                    <ul class="info-list">
+                                                        <li><span class="blind">버전</span>ver 7.7PHV1 데스크톱/일체형</li>
+                                                        <li><span class="blind">카테고리</span>통합 드라이버 설치 프로그램</li>
+                                                        <li><span class="blind">등록일</span>2020.11.03</li>
+                                                    </ul>
+                                                </div>
+                                            </a>
+                                            <div class="btn-cell">
+                                                <span class="col">
+                                                    <button type="button" class="btn size border"><span>다운로드 1118.4MB</span></button>
+                                                </span>
+                                                <span class="col">
+                                                    <button type="button" class="more-view-btn ui_dropdown_toggle">이전 버전 <span>보기</span></button><!-- 이전버전 열렸을 때 '보기' -> '닫기' -->
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <ul class="prev-ver-list ui_dropdown_list">
+                                            <li class="inner">
+                                                <a href="#">
+                                                    <div class="info-cell">
+                                                        <p class="file-name">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</p>
+                                                        <ul class="info-list">
+                                                            <li><span class="blind">버전</span>ver 7.7PHV1 데스크톱/일체형</li>
+                                                            <li><span class="blind">카테고리</span>통합 드라이버 설치 프로그램</li>
+                                                            <li><span class="blind">등록일</span>2020.11.03</li>
+                                                        </ul>
+                                                    </div>
+                                                </a>
+                                                <div class="btn-cell">
+                                                    <span class="col">
+                                                        <button type="button" class="btn size border"><span>다운로드 1118.4MB</span></button>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="inner">
+                                                <a href="#">
+                                                    <div class="info-cell">
+                                                        <p class="file-name">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</p>
+                                                        <ul class="info-list">
+                                                            <li><span class="blind">버전</span>ver 7.7PHV1 데스크톱/일체형</li>
+                                                            <li><span class="blind">카테고리</span>통합 드라이버 설치 프로그램</li>
+                                                            <li><span class="blind">등록일</span>2020.11.03</li>
+                                                        </ul>
+                                                    </div>
+                                                </a>
+                                                <div class="btn-cell">
+                                                    <span class="col">
+                                                        <button type="button" class="btn size border"><span>다운로드 1118.4MB</span></button>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <!-- // 이전버전이 있는 케이스 -->
+                                    <!-- 이전버전이 없는 케이스 -->
+                                    <li class="lists">
+                                        <div class="inner titles">
+                                            <a href="#">
+                                                <div class="info-cell">
+                                                    <p class="file-name">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</p>
+                                                    <ul class="info-list">
+                                                        <li><span class="blind">버전</span>ver 7.7PHV1 데스크톱/일체형</li>
+                                                        <li><span class="blind">카테고리</span>통합 드라이버 설치 프로그램</li>
+                                                        <li><span class="blind">등록일</span>2020.11.03</li>
+                                                    </ul>
+                                                </div>
+                                            </a>
+                                            <div class="btn-cell">
+                                                <span class="col">
+                                                    <button type="button" class="btn size border"><span>다운로드 1118.4MB</span></button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- // 이전버전이 없는 케이스 -->
+                                </ul>
+                            </div>
+                            <!-- @@include('./common/modules/pagination.html', {
+                                count: 5
+                            }) -->
+                            <div class="pagination" data-page="1" data-visible-count="7" data-total-count="10"></div>
+                        </div>
+                        <!-- // tab+list -->
+                    </div>
+                </div>
+                <!-- //드라이버/SW 영역 -->
+                <!-- 설치 전 주의사항 및 사용법 영역 -->
+                <div class="sects" style="display:none">
+                    <div class="tit-wrap">
+                        <h2 class="tit">설치 전 주의사항 및 사용법</h2>
+                    </div>
+                    <div class="section-inner">
+                        <div class="form-wrap">
+                            <dl class="forms type2 inner-type">
+                                <dt class="tit">다운로드 정보</dt>
+                                <dd class="conts">
+                                    <div class="tb-col">
+                                        <table>
+                                            <caption>파일명, 제품, 등록일, 버전, 적용모델, 운영체제(OS), 드라이버 분류, 다운로드 안내</caption>
+                                            <colgroup>
+                                                <col style="width:25%">
+                                                <col>
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">파일명</th>
+                                                    <td>[프로그램/Win10_64bit] LG Update Center</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">제품</th>
+                                                    <td>TV/프로젝터 &gt; 올레드</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">등록일</th>
+                                                    <td>2020.02.27</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">버전</th>
+                                                    <td>1.0.1902.1901</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">적용모델</th>
+                                                    <td>[프로그램/Win10_64bit] LG Update Center</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">운영체제(OS)</th>
+                                                    <td>Windows XP, Windows Vista, Windows 7 - 32bit, Windows 7 - 64bit, Windows 8 - 32bit, Windows 8 - 64bit, Windows 8.1 - 32bit, Windows 8.1 - 64bit, Windows 10 - 32bit, Windows 10 - 64bit</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">드라이버 분류</th>
+                                                    <td>통합 드라이버 설치 프로그램</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">다운로드</th>
+                                                    <td>LG Update Center</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <!-- //설치 전 주의사항 및 사용법 영역 -->
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
     <!-- // 다운로드/SW-->
 </body>
 </html>

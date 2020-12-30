@@ -5,30 +5,26 @@ $(document).ready(function() {
 
     var youtubeTemplate =     
         '<div class="visual-area video youtube-box">'+
-        '   <a href="#none" role="button" data-src="https://www.youtube.com/embed/{{videoID}}"'+
-        ' class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" aria-describedby="{{ariaDesc}}">plays audio description video</a>'+
-        '   <a href="#none" data-src="https://www.youtube.com/embed/{{videoID}}"'+
-        ' class="see-video" data-type="youtube" data-target="modal" aria-describedby="{{ariaDesc}}">'+
+        //'   <a href="#none" role="button" data-src="{{videoAccID}}"'+
+        //' class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="{{videoTarget}}" aria-describedby="{{ariaDesc}}">plays audio description video</a>'+
+        '   <a href="#none" data-src="{{videoID}}"'+
+        ' class="see-video" data-type="youtube" data-target="{{videoTarget}}" aria-describedby="{{ariaDesc}}">'+
         '       <img src="{{largeImgURL}}" alt="{{alt}}">'+
         '   </a>'+
         '   <p class="hidden">{{accDesc}}</p>'+
-        '   <div class="caption {{#if videoTitleColor}}{{videoTitleColor}}{{/if}}">{{videoTitle}}</div>'+
         '</div>';
 
     var aniboxTemplate = 
-         '<div class="visual-area animation-box">'+
-         '   <a href="#none" role="button" data-src="{{aniAccSrc}}" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="{{ariaDesc}}">Plays audio Description Video</a>'+
-         '   <img src="{{largeImgURL}}" alt="{{alt}}">'+
-         '   <p class="hidden">{{accDesc}}</p>'+
+         '<div class="visual-area animation-box size-type">'+
+         '   <img src="{{largeImgURL}}" alt="{{alt}}" aria-hidden="true">'+
          '   <div class="animation-area">'+
-         '       <video loop muted{{#if videoAutoplay}} autoplay{{/if}}>'+
+         '       <video loop{{#if videoAutoplay}} muted autoplay{{/if}}>'+
          '           <source src="{{aniSrc}}" type="video/mp4">'+
          '       </video>'+
          '       <div class="controller-wrap wa-btn">'+
          '           <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" aria-describedby="{{ariaDesc}}">Pause Video</button>'+
          '       </div>'+
          '   </div>'+
-         '   <div class="caption {{#if videoTitleColor}}{{videoTitleColor}}{{/if}}">{{aniTitle}}</div>'+
          '</div>';
 
     var defaultTemplate =
@@ -59,11 +55,15 @@ $(document).ready(function() {
                 var videoID = $(this).data('video-id');
                 var videoTitle = $(this).data('video-title');
                 var videoTitleColor = $(this).data('title-color');
+                var videoAccID = $(this).data('videoAccId');
+                var videoTarget = $(this).data('target') || "modal";
 
                 html = vcui.template(youtubeTemplate, {
                     videoID: videoID,
+                    videoAccID: videoAccID,
                     videoTitle: videoTitle,
                     videoTitleColor: videoTitleColor,
+                    videoTarget: videoTarget,
                     largeImgURL: largeImgURL,
                     ariaDesc: ariaDesc,
                     alt: alt,

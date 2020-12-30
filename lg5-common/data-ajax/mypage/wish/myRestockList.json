@@ -1,0 +1,47 @@
+{
+    "status":"success",
+    "message":null,
+    "param":{
+        "pagination":{
+            "page":"2",
+            "totalCount":"5"
+        }
+    },
+    "data": {
+        "listData":[
+            {
+                "imageUrl":"/lg5-common/images/dummy/@img-product.jpg",
+                "imageAlt":"LG 디오스 냉장고",
+                "title":"LG 디오스 냉장고",
+                "sku":"OLED88BXPUB",
+                "quantity":"7",
+                "applyDay":"20201210",
+                "notifyDay":"20201215",
+                "tel":"010****5678",
+                "url":"https://www.lg.com/html/components/blog-share.html"
+            },
+            {
+                "imageUrl":"/lg5-common/images/dummy/@img-product.jpg",
+                "imageAlt":"LG 디오스 냉장고",
+                "title":"LG 디오스 냉장고",
+                "sku":"OLED88BXPUB",
+                "quantity":"7",
+                "applyDay":"20201210",
+                "notifyDay":"20201215",
+                "tel":"010****5678",
+                "url":"https://www.lg.com/html/components/blog-share.html"
+            },
+            {
+                "imageUrl":"/lg5-common/images/dummy/@img-product.jpg",
+                "imageAlt":"LG 디오스 냉장고",
+                "title":"LG 디오스 냉장고",
+                "sku":"OLED88BXPUB",
+                "quantity":"7",
+                "applyDay":"20201210",
+                "notifyDay":"20201215",
+                "tel":"010****5678",
+                "url":"https://www.lg.com/html/components/blog-share.html"
+            }
+        ]
+    }
+}

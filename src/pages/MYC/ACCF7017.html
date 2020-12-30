@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["MYC/MYC"]
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/myTag"]
     })
 <body>
     <div class="wrap">
@@ -24,7 +25,7 @@
                                 { "on": "", "page": "재입고 알림" },
                             ]
                         })
-                        <div class="lnb-contents">  
+                        <div class="lnb-contents" data-submit-url="/lg5-common/data-ajax/mypage/wish/myTagSubmit.json">  
                             <div class="tag-subscribe-wrap">
                                 <!-- 스토리 홈 가기 버튼 -->
                                 <div class="top">
@@ -111,13 +112,13 @@
                                 </ul>
                                 <!-- // 태그 리스트 시작 -->
                             </div>
-                            <div class="btn-group center">
-                                <button type="button" class="btn gray"><span>초기화</span></button><!-- 비활성화시 .disabled -->
-                                <button type="button" class="btn"><span>완료 <em class="count">(8)</em></span></button><!-- 진입 후 변경 없을 시 .disabled -->
-                            </div>
+                            <!-- <div class="btn-group center">
+                                <button type="button" class="btn gray"><span>초기화</span></button>
+                                <button type="button" class="btn"><span>완료 <em class="count">(7)</em></span></button>
+                            </div> -->
                             <div class="btn-group center">
                                 <button type="button" class="btn gray" disabled><span>초기화</span></button><!-- 비활성화시 .disabled -->
-                                <button type="button" class="btn" disabled><span>완료 <em class="count">(8)</em></span></button><!-- 진입 후 변경 없을 시 .disabled -->
+                                <button type="button" class="btn" disabled><span>완료 <em class="count">(7)</em></span></button><!-- 진입 후 변경 없을 시 .disabled -->
                             </div>
                         </div>
                     </div>

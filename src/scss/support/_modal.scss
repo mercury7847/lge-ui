@@ -6,11 +6,6 @@
         .input-info .tit-wrap {
             margin-bottom:24px;
         }
-
-
-
-
-
         .info-desc {
             margin-bottom:48px;
             color:#616161;
@@ -49,9 +44,6 @@
                     margin-top: 56px;
                 }
             }
-        }
-        .tbl {
-            margin-top: 16px;
         }
         .modal-gray-box {
             border-radius: 4px;
@@ -105,6 +97,125 @@
                     .tit {
                         font-size: inherit;
                     }
+                }
+            }
+        }
+    }
+
+
+
+
+
+    .pop-conts {
+        @include pc {
+            .form-wrap { 
+                &.w-type01 {
+                    padding-right:186px;
+                }
+            }
+        }
+        
+        // 설치 전 주의사항 및 사용법 팝업
+        &.file-popup {
+            .tb-col {
+                th {
+                    text-align:center;
+                }
+                .model-list {
+                    position:relative;
+                    overflow:hidden;
+                    max-height:24px;
+                    padding-right:22px;
+                    transition: max-height .8s cubic-bezier(0, 1, 0, 1) -.1s;
+                    &.on {
+                        max-height:9999px;
+                        transition-timing-function: cubic-bezier(0.5, 0, 1, 0);
+                        transition-delay: 0s;
+                    }
+                    .list {
+                        margin:0 -8px;
+                        @include clearfix;
+                    }
+                    li {
+                        float:left;
+                        width:20%;
+                        padding:0 8px;
+                        &.on {
+                            color:$color-default;
+                            font-weight:$font-weight-bold;
+                        }
+                    }
+                    .btn-more {
+                        position:absolute;
+                        top:2px;
+                        right:2px;
+                        width:20px;
+                        height:20px;
+                        background:url(/lg5-common/images/icons/btn-more-20.svg) no-repeat;
+                    }
+                }
+                .file-wrap {
+                    @include clearfix;
+                    p {
+                        float:left;
+                        margin:4px 0 0;
+                    }
+                    button {
+                        float:right;
+                    }
+                }
+            }
+            #driverDatilContent {
+                p {
+                    @include font-small;       
+                }
+                img {
+                    max-width:100%;
+                }
+            }
+            @include tablet {
+                .tb-col {
+                    .model-list li {
+                        width:calc(100% / 3);
+                    }
+                }
+            }
+            @include mobile {
+                .tb-col {
+                    .model-list li {
+                        width:50%;
+                    }
+                    .file-wrap { 
+                        p {
+                            float:none;
+                            margin:0 0 8px;
+                        }
+                        button {
+                            float:none;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 콘텐츠 만족도 평가
+        &.survey-pop {
+            .agree-wrap {
+                margin-top:64px;
+            }
+            .form-wrap {
+                .forms.type2 {
+                    .tit {
+                        label, .label {
+                            padding-left:17px;
+                            text-indent:-17px;
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                .agree-wrap {
+                    margin-top:32px;
                 }
             }
         }

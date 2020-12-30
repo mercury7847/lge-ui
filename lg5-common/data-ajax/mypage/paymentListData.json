@@ -1,0 +1,49 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "paymentList": [
+            {
+                "turnNumber": "5",
+                "paymentDate": "2020.09.10",
+                "chargePrice": "88,800원",
+                "discountPrice": "0원",
+                "paymentPrice": "88,800원"
+            },
+            {
+                "turnNumber": "4",
+                "paymentDate": "2020.09.10",
+                "chargePrice": "88,800원",
+                "discountPrice": "0원",
+                "paymentPrice": "88,800원"
+            },
+            {
+                "turnNumber": "3",
+                "paymentDate": "2020.09.10",
+                "chargePrice": "88,800원",
+                "discountPrice": "0원",
+                "paymentPrice": "88,800원"
+            },
+            {
+                "turnNumber": "2",
+                "paymentDate": "2020.09.10",
+                "chargePrice": "88,800원",
+                "discountPrice": "10,000원",
+                "paymentPrice": "78,800원"
+            },
+            {
+                "turnNumber": "1",
+                "paymentDate": "2020.09.10",
+                "chargePrice": "88,800원",
+                "discountPrice": "0원",
+                "paymentPrice": "88,800원"
+            }
+        ],
+        "description":[
+            "렌탈 비용 혜택을 받으신 회차는 납부내역에서 제외됩니다.",
+            "고객님의 무상할인 회차는 3, 5, 6회차 입니다."
+        ]
+    }
+}

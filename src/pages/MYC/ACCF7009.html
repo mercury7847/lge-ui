@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["MYC/MYC"]
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/deliveryAdress"]
     })
 <body>
     <div class="wrap">
@@ -12,7 +13,9 @@
                 "pageTitle": "배송지 주소 관리"
             })
             <!-- mypage -->
-            <div class="contents mypage">
+            <div class="contents mypage"
+                data-adress-list="/lg5-common/data-ajax/mypage/deliveryAdressList.json"
+            >
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
@@ -26,13 +29,13 @@
                             <div class="my-address-lists">
                                 <!-- 추가 버튼 -->
                                 <div class="top">
-                                    <button type="button" class="btn size dark-gray"><span>배송지 추가</span></button>
+                                    <button type="button" class="btn size dark-gray addAdress-btn"><span>배송지 추가</span></button>
                                 </div>
                                 <!-- // 추가 버튼 -->
 
                                 <!-- 리스트 -->
-                                <ul>
-                                    <li class="lists">
+                                <ul class="adressListWrap">
+                                    <!-- <li class="lists">
                                         <div class="inner">
                                             <div class="infos">
                                                 <div class="title">
@@ -75,15 +78,15 @@
                                                 <button type="button" class="btn size border"><span>삭제</span></button>
                                             </div>
                                         </div>
-                                    </li>
+                                    </li> -->
                                 </ul>
                                 <!-- // 리스트 -->
 
-                                <!-- nodata -->
+                                <!-- nodata --
                                 <div class="no-data">
                                     <p>기본배송지를 등록해주세요.</p>
                                 </div>
-                                <!-- // nodata -->
+                                !-- // nodata -->
                             </div>
                         </div>
                     </div>
@@ -94,5 +97,13 @@
         
         @@include('./common/footer.html')
     </div>
+
+    <!-- 주소입력 popup -->
+    @@include('./common/popup/RMSF9001_pop1.html', {
+        popupID: 'popup-editAdress',
+        title : '주소지 수정',
+        btn : '주소 저장'
+    })
+    <!-- // 주소입력 popup -->
 </body>
 </html>

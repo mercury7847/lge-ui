@@ -1,0 +1,9 @@
+<div role="navigation" aria-label="Breadcrumb" class="breadcrumb">
+    <ul>
+        <li><a href="#">홈</a></li>
+        @@for (var i=0; i < breadcrumb.length; i++) {
+        <li><a href="#">`+breadcrumb[i]+`</a></li>
+        }
+        <li><strong>현재 페이지</strong></li>
+    </ul>
+</div>

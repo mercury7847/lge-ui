@@ -1,6 +1,6 @@
 <!-- components/partials/KRP0008-info.html -->
 
-<div class="pdp-info-area" data-id="productID0001" data-wish-url="#">
+<div class="pdp-info-area" data-id="productID0001" data-pid="pid00001" data-price="1853090" data-select-url="/lg5-common/data-ajax/pdp/pdp_select.json" data-care-select-url="/lg5-common/data-ajax/pdp/pdp_select_care.json" data-wish-url="/lg5-common/data-ajax/pdp/pdp_wish.json" data-cart-url="/lg5-common/data-ajax/pdp/pdp_cart.json" data-compare-url="/lg5-common/data-ajax/pdp/pdp_cart.json">
     <div class="product-detail-info">
         @@include('./common/modules/flags.html', {
             barType: true,
@@ -37,11 +37,11 @@
                     <div class="select-option radio color">
                         <div class="option-list" role="radiogroup">
                             <div role="radio" class="chk-wrap-colorchip gray" title="그레이">
-                                <input type="radio" id="rdo1-1" name="rdo1" checked>
+                                <input type="radio" id="rdo1-1" name="color" value="color1" checked>
                                 <label for="rdo1-1"><span class="blind">그레이</span></label>
                             </div>
                             <div role="radio" class="chk-wrap-colorchip black" title="블랙">
-                                <input type="radio" id="rdo1-2" name="rdo1">
+                                <input type="radio" id="rdo1-2" name="color" value="color2">
                                 <label for="rdo1-2"><span class="blind">블랙</span></label>
                             </div>
                         </div>
@@ -55,27 +55,27 @@
                     <div class="select-option radio select">
                         <div class="option-list" role="radiogroup">
                             <div role="radio" class="rdo-wrap btn-type2" title="207cm">
-                                <input type="radio" id="rdo2-1" name="rdo2" checked>
+                                <input type="radio" id="rdo2-1" name="screenSize" value="207" checked>
                                 <label for="rdo2-1">207cm</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="194cm">
-                                <input type="radio" id="rdo2-2" name="rdo2">
+                                <input type="radio" id="rdo2-2" name="screenSize" value="194">
                                 <label for="rdo2-2">194cm</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="163cm">
-                                <input type="radio" id="rdo2-3" name="rdo2">
+                                <input type="radio" id="rdo2-3" name="screenSize" value="163">
                                 <label for="rdo2-3">163cm</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="138cm">
-                                <input type="radio" id="rdo2-4" name="rdo2">
+                                <input type="radio" id="rdo2-4" name="screenSize" value="138">
                                 <label for="rdo2-4">138cm</label>
                             </div>
-                            <div role="radio" class="rdo-wrap btn-type2" title="100cm">
-                                <input type="radio" id="rdo2-5" name="rdo2">
-                                <label for="rdo2-5">100cm</label>
+                            <div role="radio" class="rdo-wrap btn-type2" title="105cm">
+                                <input type="radio" id="rdo2-5" name="screenSize" value="105">
+                                <label for="rdo2-5">105cm</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="100cm">
-                                <input type="radio" id="rdo2-6" name="rdo2">
+                                <input type="radio" id="rdo2-6" name="screenSize" value="100">
                                 <label for="rdo2-6">100cm</label>
                             </div>
                         </div>
@@ -86,19 +86,19 @@
                     <div class="select-option radio select">
                         <div class="option-list" role="radiogroup">
                             <div role="radio" class="rdo-wrap btn-type2" title="SKT">
-                                <input type="radio" id="rdo3-1" name="rdo3">
+                                <input type="radio" id="rdo3-1" name="provider" value="SKT">
                                 <label for="rdo3-1">SKT</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="KT">
-                                <input type="radio" id="rdo3-2" name="rdo3" checked>
+                                <input type="radio" id="rdo3-2" name="provider" value="KT" checked>
                                 <label for="rdo3-2">KT</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="LG">
-                                <input type="radio" id="rdo3-3" name="rdo3">
+                                <input type="radio" id="rdo3-3" name="provider" value="LG">
                                 <label for="rdo3-3">LG</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="자급제">
-                                <input type="radio" id="rdo3-4" name="rdo3">
+                                <input type="radio" id="rdo3-4" name="provider" value="FREE">
                                 <label for="rdo3-4">자급제</label>
                             </div>
                         </div>
@@ -109,15 +109,15 @@
                     <div class="select-option radio select">
                         <div class="option-list" role="radiogroup">
                             <div role="radio" class="rdo-wrap btn-type2" title="32GB">
-                                <input type="radio" id="rdo4-1" name="rdo4" checked>
+                                <input type="radio" id="rdo4-1" name="memory" value="32" checked>
                                 <label for="rdo4-1">32GB</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="64GB">
-                                <input type="radio" id="rdo4-2" name="rdo4">
+                                <input type="radio" id="rdo4-2" name="memory" value="64">
                                 <label for="rdo4-2">64GB</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="128GB">
-                                <input type="radio" id="rdo4-3" name="rdo4">
+                                <input type="radio" id="rdo4-3" name="memory" value="128">
                                 <label for="rdo4-3">128GB</label>
                             </div>
                         </div>
@@ -198,7 +198,7 @@
                                 </li>
                             </ul>
                             <div class="btn-area">
-                                <a href="#n" class="btn-link"><span>자세히보기</span></a>
+                                <a href="/lg5-common/data-ajax/pdp/benefitInfo.html" class="btn-link popup"><span>자세히보기</span></a>
                             </div>
                         </div>
                     </li>
@@ -223,7 +223,7 @@
                                 </li>
                             </ul>
                             <div class="btn-area">
-                                <a href="#n" class="btn-link"><span>자세히보기</span></a>
+                                <a href="/lg5-common/data-ajax/pdp/benefitInfo.html" class="btn-link popup"><span>자세히보기</span></a>
                             </div>
                         </div>
                     </li>
@@ -239,7 +239,7 @@
                     <div class="selectbox-list ui_dropdown_list">
                         <ul class="select-list">
                             <li>
-                                <a href="#">
+                                <a href="#AD00001" data-price="80000">
                                     <span class="item-image"><img src="/lg5-common/images/KRP0008/@thumb1.jpg" alt="" ></span>
                                     <div class="item-info">
                                         <dl>
@@ -253,7 +253,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="#AD00002" data-price="80000">
                                     <span class="item-image"><img src="/lg5-common/images/KRP0008/@thumb1.jpg" alt="" ></span>
                                     <div class="item-info">
                                         <dl>
@@ -267,25 +267,25 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="#AD00003" data-price="100000">
                                     <span class="item-image"><img src="/lg5-common/images/KRP0008/@thumb1.jpg" alt="" ></span>
                                     <div class="item-info">
                                         <dl>
                                             <dt>사운드바</dt>
                                             <dd>
-                                                <span class="original"><em class="blind">판매가</em>100,000원</span>
-                                                <span class="price"><em class="blind">할인적용가</em>290,000원</span>
+                                                <span class="original"><em class="blind">판매가</em>290,000원</span>
+                                                <span class="price"><em class="blind">할인적용가</em>100,000원</span>
                                             </dd>
                                         </dl>
                                     </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="#AD00004" data-price="70000">
                                     <span class="item-image"><img src="/lg5-common/images/KRP0008/@thumb1.jpg" alt="" ></span>
                                     <div class="item-info">
                                         <dl>
-                                            <dt>블루투스 스피커</dt>
+                                            <dt>블루투스 스피커5.1</dt>
                                             <dd>
                                                 <span class="original"><em class="blind">판매가</em>100,000원</span>
                                                 <span class="price"><em class="blind">할인적용가</em>70,000원</span>
@@ -295,11 +295,11 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="#AD00005" data-price="90000">
                                     <span class="item-image"><img src="/lg5-common/images/KRP0008/@thumb1.jpg" alt="" ></span>
                                     <div class="item-info">
                                         <dl>
-                                            <dt>블루투스 스피커</dt>
+                                            <dt>블루투스 스피커7.1</dt>
                                             <dd>
 <!--                                                <span class="original"><em class="blind">판매가</em>100,000원</span>-->
                                                 <span class="price"><em class="blind">할인적용가</em>90,000원</span>
@@ -313,7 +313,7 @@
                 </div>
                 <div class="additional-payment">
                     <ul class="additional-list">
-                        <li>
+                        <li data-id="AD00002" data-price="80000">
                             <dl class="price-info">
                                 <dt class="text">스탠드</dt>
                                 <dd class="content">
@@ -321,7 +321,7 @@
                                         <div class="select-quantity">
                                             <div class="inner">
                                                 <button type="button" class="minus" disabled><span class="blind">빼기</span></button>
-                                                <input type="number" class="quantity" title="수량 입력" value="1">
+                                                <input type="number" class="quantity" title="수량 입력" value="1" readonly>
                                                 <button type="button" class="plus"><span class="blind">더하기</span></button>
                                             </div>
                                         </div>
@@ -331,7 +331,7 @@
                             </dl>
                             <button type="button" class="btn-delete"><span class="blind">삭제</span></button>
                         </li>
-                        <li>
+                        <li data-id="AD00001" data-price="80000">
                             <dl class="price-info">
                                 <dt class="text">인공지능 리모컨</dt>
                                 <dd class="content">
@@ -339,7 +339,7 @@
                                         <div class="select-quantity">
                                             <div class="inner">
                                                 <button type="button" class="minus" disabled><span class="blind">빼기</span></button>
-                                                <input type="number" class="quantity" title="수량 입력" value="1">
+                                                <input type="number" class="quantity" title="수량 입력" value="1" readonly>
                                                 <button type="button" class="plus"><span class="blind">더하기</span></button>
                                             </div>
                                         </div>
@@ -394,13 +394,13 @@
                         <ul role="radiogroup">
                             <li>
                                 <div role="radio" class="rdo-wrap">
-                                    <input type="radio" id="rdo5-1" name="rdo5" checked>
+                                    <input type="radio" id="rdo5-1" name="rdo5" value="yes" checked>
                                     <label for="rdo5-1">신청</label>
                                 </div>
                             </li>
                             <li>
                                 <div role="radio" class="rdo-wrap">
-                                    <input type="radio" id="rdo5-2" name="rdo5">
+                                    <input type="radio" id="rdo5-2" name="rdo5" value="no">
                                     <label for="rdo5-2">미신청</label>
                                 </div>
                             </li>
@@ -420,7 +420,7 @@
                                     <div class="select-quantity">
                                         <div class="inner">
                                             <button type="button" class="minus" disabled><span class="blind">빼기</span></button>
-                                            <input type="number" class="quantity" title="수량 입력" value="1">
+                                            <input type="number" class="quantity" title="수량 입력" value="1" readonly>
                                             <button type="button" class="plus"><span class="blind">더하기</span></button>
                                         </div>
                                     </div>
@@ -501,11 +501,11 @@
                     <div class="select-option radio color">
                         <div class="option-list" role="radiogroup">
                             <div role="radio" class="chk-wrap-colorchip gray" title="그레이">
-                                <input type="radio" id="rdo8-1" name="rdo8" checked>
+                                <input type="radio" id="rdo8-1" name="color2" value="gray" checked>
                                 <label for="rdo8-1"><span class="blind">그레이</span></label>
                             </div>
                             <div role="radio" class="chk-wrap-colorchip black" title="블랙">
-                                <input type="radio" id="rdo8-2" name="rdo8">
+                                <input type="radio" id="rdo8-2" name="color2" value="black">
                                 <label for="rdo8-2"><span class="blind">블랙</span></label>
                             </div>
                         </div>
@@ -519,19 +519,19 @@
                     <div class="select-option radio select">
                         <div class="option-list" role="radiogroup">
                             <div role="radio" class="rdo-wrap btn-type2" title="207cm">
-                                <input type="radio" id="rdo6-1" name="rdo6" checked>
+                                <input type="radio" id="rdo6-1" name="screenSize2" value="207" checked>
                                 <label for="rdo6-1">207cm</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="194cm">
-                                <input type="radio" id="rdo6-2" name="rdo6">
+                                <input type="radio" id="rdo6-2" name="screenSize2" value="194">
                                 <label for="rdo6-2">194cm</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="163cm">
-                                <input type="radio" id="rdo6-3" name="rdo6">
+                                <input type="radio" id="rdo6-3" name="screenSize2" value="163">
                                 <label for="rdo6-3">163cm</label>
                             </div>
                             <div role="radio" class="rdo-wrap btn-type2" title="138cm">
-                                <input type="radio" id="rdo6-4" name="rdo6">
+                                <input type="radio" id="rdo6-4" name="screenSize" value="138">
                                 <label for="rdo6-4">138cm</label>
                             </div>
                         </div>
@@ -635,13 +635,13 @@
                                         <ul role="radiogroup">
                                             <li>
                                                 <div role="radio" class="rdo-wrap">
-                                                    <input type="radio" id="rdo7-1" name="rdo7" checked>
+                                                    <input type="radio" id="rdo7-1" name="careSelect" value="yes" checked>
                                                     <label for="rdo7-1">신청</label>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div role="radio" class="rdo-wrap">
-                                                    <input type="radio" id="rdo7-2" name="rdo7">
+                                                    <input type="radio" id="rdo7-2" name="careSelect" value="no">
                                                     <label for="rdo7-2">미신청</label>
                                                 </div>
                                             </li>
@@ -654,17 +654,19 @@
                             <dt class="select-text">방문주기</dt>
                             <dd>
                                 <div class="select-wrap">
+                                    <input type="hidden" name="mmType" value=""/>
                                     <select class="ui_selectbox" id="select1" title="방문주기 선택">
-                                        <option value="">1회 / 1개월</option>
-                                        <option value="">1회 / 2개월</option>
-                                        <option value="">1회 / 3개월</option>
-                                        <option value="">1회 / 6개월</option>
+                                        <option value="1">1회 / 1개월</option>
+                                        <option value="2">1회 / 2개월</option>
+                                        <option value="3">1회 / 3개월</option>
+                                        <option value="6">1회 / 6개월</option>
                                     </select>
                                 </div>
                             </dd>
                         </dl>
                         <div class="select-info select-box dropdown-box">
                             <div class="select-wrap ui_dropdown">
+                                <input type="hidden" name="cardType" value=""/>
                                 <div class="select-button">
                                     <div class="select-text">
                                         <span>제휴카드</span>
@@ -678,16 +680,16 @@
                                 <div class="selectbox-list ui_dropdown_list">
                                     <ul class="select-list">
                                         <li class="divide"><span class="inner"><em>----------------------------------- 간편 신청 가능 카드</em></span></li>
-                                        <li><a href="#n">[신한] LG전자 렌탈애(愛)</a></li>
-                                        <li><a href="#n">[롯데] LG전자 베스트렌탈</a></li>
-                                        <li><a href="#n">[하나] LG전자 렌탈플러스</a></li>
+                                        <li><a href="#card1">[신한] LG전자 렌탈애(愛)</a></li>
+                                        <li><a href="#card2">[롯데] LG전자 베스트렌탈</a></li>
+                                        <li><a href="#card3">[하나] LG전자 렌탈플러스</a></li>
                                         <li class="divide"><span class="inner"><em>----------------------------------- 개별 신청 필요 카드</em></span></li>
-                                        <li><a href="#n">[우리] LG전자 베스트렌탈</a></li>
-                                        <li><a href="#n">[광주] 베스트케어</a></li>
-                                        <li><a href="#n">[현대] 현대카드 M Edition3</a></li>
-                                        <li><a href="#n">[하나] LG전자 렌탈플러스</a></li>
-                                        <li><a href="#n">[NH] 올원 LG전자 BEST</a></li>
-                                        <li><a href="#n">[KB국민] LG전자 KB국민</a></li>
+                                        <li><a href="#card4">[우리] LG전자 베스트렌탈</a></li>
+                                        <li><a href="#card5">[광주] 베스트케어</a></li>
+                                        <li><a href="#card6">[현대] 현대카드 M Edition3</a></li>
+                                        <li><a href="#card7">[하나] LG전자 렌탈플러스</a></li>
+                                        <li><a href="#card8">[NH] 올원 LG전자 BEST</a></li>
+                                        <li><a href="#card9">[KB국민] LG전자 KB국민</a></li>
 
                                     </ul>
                                 </div>
@@ -715,7 +717,7 @@
                                         <div class="select-quantity">
                                             <div class="inner">
                                                 <button type="button" class="minus"><span class="blind">빼기</span></button>
-                                                <input type="number" class="quantity" title="수량 입력" value="2">
+                                                <input type="number" class="quantity" title="수량 입력" value="2" readonly>
                                                 <button type="button" class="plus"><span class="blind">더하기</span></button>
                                             </div>
                                         </div>
@@ -779,9 +781,10 @@
                                         <dt class="select-text">가입비(선납할인)</dt>
                                         <dd class="content">
                                             <div class="select-wrap">
+                                                <input type="hidden" name="subscriptionPay" value=""/>
                                                 <select class="ui_selectbox" id="select2" title="가입비 선택">
-                                                    <option value="">0원</option>
-                                                    <option value="">100,000원</option>
+                                                    <option value="0">0원</option>
+                                                    <option value="100000">100,000원</option>
                                                 </select>
                                             </div>
                                         </dd>
@@ -790,9 +793,10 @@
                                         <dt class="select-text">의무사용기간</dt>
                                         <dd class="content">
                                             <div class="select-wrap">
+                                                <input type="hidden" name="year" value=""/>
                                                 <select class="ui_selectbox" id="select3" title="의무사용기간 선택">
-                                                    <option value="">3년</option>
-                                                    <option value="">5년</option>
+                                                    <option value="3">3년</option>
+                                                    <option value="5">5년</option>
                                                 </select>
                                             </div>
                                         </dd>
@@ -801,11 +805,12 @@
                                         <dt class="select-text">방문주기</dt>
                                         <dd class="content">
                                             <div class="select-wrap">
+                                                <input type="hidden" name="mmType" value=""/>
                                                 <select class="ui_selectbox" id="select4" title="방문주기 선택">
-                                                    <option value="">1회 / 1개월</option>
-                                                    <option value="">1회 / 2개월</option>
-                                                    <option value="">1회 / 3개월</option>
-                                                    <option value="">1회 / 6개월</option>
+                                                    <option value="1">1회 / 1개월</option>
+                                                    <option value="2">1회 / 2개월</option>
+                                                    <option value="3">1회 / 3개월</option>
+                                                    <option value="6">1회 / 6개월</option>
                                                 </select>
                                             </div>
                                         </dd>
@@ -824,6 +829,7 @@
                     </div>
                     <div class="select-info select-box dropdown-box">
                         <div class="select-wrap ui_dropdown">
+                            <input type="hidden" name="cardType" value=""/>
                             <div class="select-button">
                                 <div class="select-text">
                                     <span>제휴카드</span>
@@ -837,16 +843,16 @@
                             <div class="selectbox-list ui_dropdown_list">
                                 <ul class="select-list">
                                     <li class="divide"><span class="inner"><em>----------------------------------- 간편 신청 가능 카드</em></span></li>
-                                    <li><a href="#n">[신한] LG전자 렌탈애(愛)</a></li>
-                                    <li><a href="#n">[롯데] LG전자 베스트렌탈</a></li>
-                                    <li><a href="#n">[하나] LG전자 렌탈플러스</a></li>
+                                    <li><a href="#card1">[신한] LG전자 렌탈애(愛)</a></li>
+                                    <li><a href="#card2">[롯데] LG전자 베스트렌탈</a></li>
+                                    <li><a href="#card3">[하나] LG전자 렌탈플러스</a></li>
                                     <li class="divide"><span class="inner"><em>----------------------------------- 개별 신청 필요 카드</em></span></li>
-                                    <li><a href="#n">[우리] LG전자 베스트렌탈</a></li>
-                                    <li><a href="#n">[광주] 베스트케어</a></li>
-                                    <li><a href="#n">[현대] 현대카드 M Edition3</a></li>
-                                    <li><a href="#n">[하나] LG전자 렌탈플러스</a></li>
-                                    <li><a href="#n">[NH] 올원 LG전자 BEST</a></li>
-                                    <li><a href="#n">[KB국민] LG전자 KB국민</a></li>
+                                    <li><a href="#card4">[우리] LG전자 베스트렌탈</a></li>
+                                    <li><a href="#card5">[광주] 베스트케어</a></li>
+                                    <li><a href="#card6">[현대] 현대카드 M Edition3</a></li>
+                                    <li><a href="#card7">[하나] LG전자 렌탈플러스</a></li>
+                                    <li><a href="#card8">[NH] 올원 LG전자 BEST</a></li>
+                                    <li><a href="#card9">[KB국민] LG전자 KB국민</a></li>
 
                                 </ul>
                             </div>
@@ -901,7 +907,7 @@
                                         <div class="select-quantity">
                                             <div class="inner">
                                                 <button type="button" class="minus"><span class="blind">빼기</span></button>
-                                                <input type="number" class="quantity" title="수량 입력" value="2">
+                                                <input type="number" class="quantity" title="수량 입력" value="2" readonly>
                                                 <button type="button" class="plus"><span class="blind">더하기</span></button>
                                             </div>
                                         </div>

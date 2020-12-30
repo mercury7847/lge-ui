@@ -1,13 +1,10 @@
 .bullet-list {
-    margin-top:16px;
+    margin-top:12px;
     color:#767676;
     @include font-small;
-    @include mobile {
-        margin-top:12px;
-    }
     .b-tit {
         margin-bottom:2px;
-        color:#222;
+        color:#767676;
         font-weight:700;
         @include mobile {
             margin-bottom:4px;
@@ -23,13 +20,18 @@
         }
         &::before {
             content:' ';
-            position:absolute;
-            top:11px;
-            left:0;
+            display:inline-block;
             width:3px;
             height:3px;
+            margin-top:11px;
+            margin-left:-11px;
+            margin-right:8px;
             border-radius:50%;
             background:#767676;
+            vertical-align:top;
+            @include mobile {
+                margin-top:9px;
+            }
         }
         &:first-child {
             margin-top:0;
@@ -66,5 +68,30 @@
     }
     @include mobile {
         padding: 12px 20px;
+    }
+}
+
+p.bullet-text {
+    position:relative;
+    padding-left:11px;
+    @include font-small;
+    color:#767676;
+    font-weight:500;
+    @include mobile {
+        margin-top:0;
+    }
+    &::before {
+        content:' ';
+        display:inline-block;
+        width:3px;
+        height:3px;
+        margin-top: 9px;
+        margin-right:8px;
+        border-radius:50%;
+        background:#767676;
+        vertical-align:top;
+        @include mobile {
+            margin-top:9px;
+        }
     }
 }

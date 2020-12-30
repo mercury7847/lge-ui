@@ -30,6 +30,9 @@ br.m {
             color:#222;
             @include font-medium;
         }
+        .btn.border {
+            margin-top:24px;
+        }
     }
     @include mobile {
         height:270px;
@@ -55,40 +58,67 @@ br.m {
 }
 
 .csn-tabs {
-    padding-top:64px;
+    padding-top:40px;
     @include mobile {
-        padding:24px 0;
+        padding:12px 0;
         text-align:center;
     }
 }
 .csn-tab-contents {
-    padding-top:80px;
+    padding-top:48px;
     @include mobile {
         padding-top:0;
     }
-    .bar-type {
+    &.type2 {
+        padding-top:80px;
+        @include mobile {
+            padding-top:0;
+            .cont-wrap .csn-section:first-child {
+                border-top:none;
+            }
+        }
+    }
+    .border-type {
         margin:32px -40px 0;
         .tabs {
             padding:0 40px;
         }
         @include mobile {
-            margin:24px -16px 0;
+            margin:16px -16px 0;
             .tabs {
                 padding:0 16px;
             }
         }
     }
     .csn-itr-cont {
-        margin-top:64px;
+        margin-top:40px;
         @include mobile {
-            margin-top:16px;
+            margin:32px -16px 0;
+        }
+        &.tab-content {
+            margin-top:28px;
+            @include mobile {
+                margin:0 -16px;
+            }
         }
     }
     .prd-list-count {
-        margin:48px 0 16px;
+        margin:80px 0 10px;
         color:#222;
-        @include font-medium;
+        @include font-large;
         font-weight:700;
+        em {
+            color:#EC455A;
+        }
+        @include mobile {
+            margin:60px -16px 16px;
+            padding:32px 16px 0;
+            border-top:12px solid #f4f4f4;
+            @include clearfix;
+            span {
+                float:right;
+            }
+        }
     }
 
     .cont-wrap {
@@ -99,32 +129,41 @@ br.m {
         .csn-section {
             width:100%;
             max-width:initial;
-            margin-top:120px;
+            margin-top:80px;
             @include mobile {
                 margin-top:0;
                 padding:32px 16px 60px;
                 border-top:12px solid #f4f4f4;
+                &.type2 {
+                    border-top:none;
+                }
             }
             &:first-child {
                 margin-top:0;
             }
+            .section-inner {
+                margin-top:80px;
+                @include mobile {
+                    margin-top:40px;
+                }
+                &:first-child {
+                    margin-top:0;
+                }
+            }
             .tit-wrap {
                 text-align:center;
-                @include mobile {
-                    text-align:left;
-                }
                 .tit {
-                    font-size:36px;
-                    line-height:52px;
+                    font-size:24px;
+                    line-height:30px;
                     font-weight:700;
                     @include mobile {
-                        font-size:24px;
-                        line-height:32px;
+                        font-size:20px;
+                        line-height:28px;
                     }
                 }
                 .desc {
-                    margin-top:16px;
-                    @include font-large;
+                    margin-top:12px;
+                    @include font-medium;
                     small {
                         display:block;
                         margin-top:8px;
@@ -157,173 +196,157 @@ br.m {
     // 케어솔루션이란?
     .csn-intro {
         position:relative;
-        dl {
-            position:absolute;
-            left:calc(49% + 64px);
-            top:50%;
-            transform:translateY(-50%);
-            dt {
-                color:#222;
-                font-size:32px;
-                line-height:52px;
-                font-weight:700;
-            }
-            dd {
-                width:100%;
-                max-width:430px;
-                margin-top:20px;
-                color:#222;
-                @include font-medium;
-                word-break:keep-all;
-            }
-        }
         .img {
             display:block;
-            width:49%;
-            border-radius:4px 0 0 4px;
+            width:calc(60% - 48px);
+            border-radius:8px;
+            overflow:hidden;
             img {
                 width:100%;
                 height:auto;
                 vertical-align:top;
             }
+            @include mobile {
+                width:100%;
+                max-width:100%;
+                border-radius:4px;
+            }
         }
-        @include mobile {
-            dl {
+        > dl {
+            position:absolute;
+            right:0;
+            top:50%;
+            width:40%;
+            transform:translateY(-50%);
+            > dt {
+                color:#222;
+                @include font-large-2;
+                font-weight:700;
+            }
+            > dd {
+                width:100%;
+                margin-top:12px;
+                color:#222;
+                @include font-medium;
+                word-break:keep-all;
+                .bullet-list {
+                    margin-top:32px;
+                    .b-txt {
+                        word-break:keep-all;
+                    }
+                }
+            }
+            @include mobile {
                 position:relative;
-                left:initial;
-                top:initial;
-                transform:translateY(0);
-                dt {
-                    font-size:24px;
-                    line-height:32px;
-                }
-                dd {
-                    margin-top:12px;
-                }
-            }
-            .img {
-                width:auto;
-                margin:32px -16px 0;
-            }
-            &:last-child {
-                .img {
-                    margin-bottom:-60px;
-                }
+                right:auto;
+                top:auto;
+                width:100%;
+                max-width:100%;
+                margin-top:16px;
+                transform:translate(0);
+                text-align:center;
             }
         }
     }
     
     // 제품별 케어솔루션 혜택 탭 컨텐츠
     .csn-itr-cont {
-        padding:64px 48px;
-        border-radius:8px;
-        background:#f4f4f4;
-        @include mobile {
-            padding:24px 12px;
-            border-radius:4px;
-        }
         .csn-itr-head {
-            @include clearfix;
-            .csn-video {
+            display:table;
+            padding:48px 64px;
+            border-radius:8px;
+            width:100%;
+            background:#f4f4f4;
+            @media screen and (max-width:1024px) {
                 display:block;
+            }
+            @include mobile {
+                padding:32px 16px 40px;
+                border-radius:0;
+            }
+            .csn-video {
+                display:table-cell;
                 position:relative;
-                float:left;
-                width:56.7%;
-                @include mobile {
-                    float:none;
+                width:60.5%;
+                vertical-align:middle;
+                @media screen and (max-width:1024px) {
+                    display:block;
                     width:100%;
-                    border-radius:4px;
-                    overflow:hidden;
+                    max-width:614px;
+                    margin:0 auto;
+                }
+                @include mobile {
+                    max-width:100%;
                 }
                 img {
                     width:100%;
                     height:auto;
                     vertical-align:top;
                 }
-                &::before {
-                    content:' ';
-                    position:absolute;
-                    top:0;
-                    right:0;
-                    bottom:0;
-                    left:0;
-                    background:rgba(#000, 0.4);
-                }
                 &::after {
                     content:' ';
                     position:absolute;
                     top:50%;
                     left:50%;
-                    width:68px;
-                    height:68px;
-                    margin-top:-34px;
-                    margin-left:-34px;
-                    background-image:url('/lg5-common/images/icons/icon-playbtn-68.png');
+                    width:80px;
+                    height:80px;
+                    margin-top:-40px;
+                    margin-left:-40px;
+                    background-image:url('/lg5-common/images/btn-video-play.svg');
                     background-size:100%;
                 }
             }
             .csn-prod-intro {
-                float:right;
-                width:calc(100% - 56.7% - 64px);
-                @include mobile {
-                    float:none;
+                display:table-cell;
+                width:39.5%;
+                padding-left:64px;
+                vertical-align:middle;
+                @media screen and (max-width:1024px) {
+                    display:block;
                     width:100%;
-                    margin-top:16px;
+                    max-width:614px;
+                    margin:24px auto 0;
+                    padding-left:0;
+                }
+                @include mobile {
+                    max-width:100%;
                 }
                 .video-tit {
                     position:relative;
-                    margin-bottom:24px;
-                    padding-bottom:28px;
-                    @include font-large-2;
+                    font-size:24px;
+                    line-height:36px;
                     font-weight:700;
-                    @include mobile {
-                        margin-bottom:12px;
-                        padding-bottom:20px;
-                    }
                     em {
                         display:block;
-                        color:#767676;
                     }
-                    &::after {
-                        content:' ';
-                        position:absolute;
-                        left:0;
-                        bottom:0;
-                        width:40px;
-                        height:4px;
-                        background:#222;
+                    @include mobile {
+                        font-size:18px;
+                        line-height:26px;
                     }
-                }
-                .tit {
-                    @include font-medium;
-                    font-weight:700;
                 }
                 .desc {
-                    margin-top:24px;
+                    margin-top:16px;
                     @include font-medium;
                     @include mobile {
-                        margin-top:8px;
+                        margin-top:14px;
                     }
                 }
             }
         }
         .csn-itr-body {
-            margin-top:64px;
-            padding-top:64px;
-            border-top:1px solid #ddd;
+            margin-top:48px;
             @include mobile {
-                margin-top:40px;
-                padding-top:32px;
+                margin-top:32px;
+                padding:0 16px;
             }
             &:first-child {
-                margin-top:0;
-                padding-top:0;
-                border-top:none;
+                margin-top:0px;
             }
             .csn-icon-list {
+                overflow:hidden;
                 > ul {
-                    margin-top:-44px;
-                    margin-left:-50px;
+                    margin-top:-48px;
+                    margin-left:-24px;
                     font-size:0;
                     @include mobile {
                         margin-top:0;
@@ -332,8 +355,8 @@ br.m {
                     > li {
                         display:inline-block;
                         width:50%;
-                        margin-top:44px;
-                        padding-left:50px;
+                        margin-top:48px;
+                        padding-left:24px;
                         vertical-align:top;
                         @include mobile {
                             display:block;
@@ -346,31 +369,27 @@ br.m {
                         }
                         dl {
                             position:relative;
-                            max-width:472px;
-                            min-height:80px;
+                            min-height:96px;
                             padding-left:112px;
                             @include mobile {
                                 max-width:100%;
-                                min-height:60px;
-                                padding-left:80px;
+                                min-height:80px;
+                                padding-left:96px;
                             }
                             &::before {
                                 content:' ';
                                 position:absolute;
                                 top:0;
                                 left:0;
-                                width:80px;
-                                height:80px;
-                                border-radius:50%;
-                                background-color:#fff;
-                                background-size:60px;
+                                width:96px;
+                                height:96px;
+                                background-size:100%;
                                 background-repeat:no-repeat;
                                 background-position:center;
                                 background-image:url('/lg5-common/images/icons/icon-01-120.svg');
                                 @include mobile {
-                                    width:60px;
-                                    height:60px;
-                                    background-size:40px;
+                                    width:80px;
+                                    height:80px;
                                 }
                             }
                             dt {
@@ -379,32 +398,46 @@ br.m {
                                 p {
                                     display:inline-block;
                                     @include font-large-1;
-                                    font-weight:700;
+                                    font-weight:500;
                                     vertical-align:top;
-                                }
-                                .tooltip-wrap {
-                                    margin-top:3px;
-                                    margin-left:4px;
-                                    vertical-align:top;
-                                    .tooltip-box {
-                                        right:-12px;
-                                        left:-92px;
-                                    }
                                 }
                             }
                             dd {
-                                margin-top:12px;
+                                margin-top:16px;
                                 @include font-medium;
-                                word-break:keep-all;
+                                @include mobile {
+                                    margin-top:12px;
+                                }
+                                p {
+                                    position:relative;
+                                    padding-left:10px;
+                                    &::before {
+                                        content:'-';
+                                        position:absolute;
+                                        top:0;
+                                        left:0;
+
+                                    }
+                                }
                             }
                         }
                         .bullet-list {
-                            max-width:472px;
-                            margin-top:8px;
+                            margin-top:12px;
                             padding-left:112px;
                             @include mobile {
-                                padding-left:80px;
+                                padding-left:96px;
                             }
+                        }
+                    }
+                }
+                &.size3 {
+                    > ul > li {
+                        width:calc(100% / 3);
+                        @media screen and (max-width:1024px) {
+                            width:50%;
+                        }
+                        @include mobile {
+                            width:100%;
                         }
                     }
                 }
@@ -413,6 +446,15 @@ br.m {
                 margin-top:64px;
                 @include mobile {
                     margin-top:40px;
+                }
+            }
+        }
+        @include mobile {
+            &.tab-content {
+                .csn-itr-body {
+                    &:first-child {
+                        margin-top:16px;
+                    }
                 }
             }
         }
@@ -452,57 +494,110 @@ br.m {
             }
         }
     }
+
+    // B2B 케어솔루션 전문 상담
+    .csn-section.csn-b2bs {
+        padding:48px 32px;
+        background-image:url('/lg5-common/images/SLC/bg-visual03.jpg');
+        background-size:cover;
+        background-repeat:no-repeat;
+        background-position:center;
+        text-align:center;
+        @include mobile {
+            padding:32px 16px;
+            background-image:url('/lg5-common/images/SLC/bg-visual03-m.jpg');
+            border-top:none;
+        }
+        .tit-wrap {
+            color:#fff;
+            .call {
+                margin-top:4px;
+                font-weight:500;
+                @include mobile {
+                    margin-top:8px;
+                }
+            }
+        }
+        .btn.border {
+            margin-top:24px;
+            border-color:#fff;
+            color:#fff;
+            @include mobile {
+                display:block;
+            }
+        }
+    }
     
     // gray block modules
     .gray-block-wrap {
         display:table;
         width:auto;
-        margin:48px auto 0;
+        margin:32px auto 0;
         table-layout:fixed;
         border-collapse:separate;
         border-spacing:24px 0;
-        &.type2 {
-            margin:48px -24px 0;
-        }
+        table-layout:fixed;
         @include mobile {
             display:block;
             width:100%;
-            margin-top:32px;
-            &.type2 {
-                margin:32px 0 0;
+            margin-top:20px;
+        }
+        &.type2 {
+            margin-top:8px;
+            margin-bottom:-24px;
+            border-spacing:24px;
+            .row {
+                display:table-row;
+                dl dd {
+                    margin-top:12px;
+                }
+                .tit {
+                    @include font-large-1;
+                }
+            }
+            @include mobile {
+                margin-top:32px;
+                margin-bottom:0;
+                .row {
+                    display:block;
+                }
             }
         }
         .blocks {
             display:table-cell;
             width:444px;
-            padding:36px;
+            padding:32px;
+            border:1px solid #ddd;
             border-radius:8px;
-            background:#f4f4f4;
-            vertical-align:middle;
+            vertical-align:top;
             @include mobile {
                 display:block;
                 position:relative;
                 width:100%;
-                margin-top:12px;
-                padding:20px;
+                margin-top:16px;
+                padding:24px;
                 border-radius:4px;
             }
             dl {
                 text-align:center;
-                @include mobile {
-                    text-align:left;
-                }
                 dt {
                     font-size:0;
                     .tit {
                         display:inline-block;
                         @include font-medium;
                         font-weight:700;
-                        vertical-align:top;
+                        vertical-align:middle;
                     }
                     .tooltip-wrap {
-                        margin:2px 0 0 4px;
-                        vertical-align:top;
+                        margin-top:0;
+                        margin-left:4px;
+                        vertical-align:middle;
+                        .tooltip-box {
+                            @include mobile {
+                                left:0;
+                                right:0;
+                            }
+                        }
                     }
                 }
                 dd {
@@ -510,25 +605,20 @@ br.m {
                     @include font-medium;
                     word-break:keep-all;
                     &.num {
-                        margin-top:16px;
+                        margin-top:8px;
                         color:#EC455A;
                         @include font-large-1;
                         font-weight:700;
-                        @include mobile {
-                            margin-top:4px;
-                            text-align:right;
-                        }
                     }
-                }
-            }
-        }
-        &.type2 {
-            .blocks {
-                height:327px;
-                @include mobile {
-                    height:auto;
-                    dl {
-                        text-align:center;
+                    small {
+                        display:block;
+                        margin-top:2px;
+                        color:#767676;
+                        @include font-small;
+                        font-weight:500;
+                        @include mobile {
+                            margin-top:12px;
+                        }
                     }
                 }
             }
@@ -536,27 +626,24 @@ br.m {
     }
     
     .csn-ars-svc {
-        margin-top:64px;
+        margin:48px -12px 0;
         font-size:0;
         text-align:center;
         @include mobile {
-            margin-top:32px;
-            text-align:left;
+            margin:40px 0 0;
         }
         > li {
             position:relative;
             display:inline-block;
-            width:30%;
-            max-width:327px;
+            width:calc(100% / 3);
             padding:100px 12px 0;
             vertical-align:top;
             @include mobile {
                 display:block;
                 width:100%;
-                max-width:initial;
-                min-height:80px;
-                margin:32px 0 0;
-                padding:4px 92px 4px 0;
+                max-width:100%;
+                margin:40px 0 0;
+                padding:92px 0 0;
             }
             &::before {
                 content:' ';
@@ -567,35 +654,37 @@ br.m {
                 height:80px;
                 margin-left:-40px;
                 background:url("/lg5-common/images/icons/icon-09-80.svg") center no-repeat;
-                @include mobile {
-                    top:50%;
-                    left:auto;
-                    right:0;
-                    margin-top:-40px;
-                    margin-left:0;
-                }
             }
             .tit {
                 display:inline-block;
                 @include font-large-1;
                 font-weight:700;
+                vertical-align:middle;
             }
             dl {
                 dt {
                     font-size:0;
                     text-align:center;
-                    @include mobile {
-                        text-align:left;
-                    }
                     .tooltip-wrap {
-                        margin:2px 0 0 4px;
-                        vertical-align:top;
+                        margin:0 0 0 4px;
+                        vertical-align:middle;
+                        .tooltip-box {
+                            @include mobile {
+                                right:0;
+                                left:0;
+                            }
+                        }
                     }
                 }
                 dd {
                     margin-top:12px;
+                    padding:0 24px;
                     @include font-medium;
                     word-break:keep-all;
+                    @include mobile {
+                        margin-top:8px;
+                        padding:0;
+                    }
                 }
             }
         }
@@ -603,70 +692,35 @@ br.m {
 
     // 앱 qr
     .csn-ars-bottom {
-        padding:64px 40px;
+        margin-top:-40px;
+        padding:48px 32px;
         background:#f4f4f4;
+        text-align:center;
         @include mobile {
+            margin-top:0;
             padding:32px 16px;
         }
-        .inner {
-            display:table;
-            width:912px;
-            margin:0 auto;
+        .tit {
+            @include font-large-2;
+            font-weight:700;
+        }
+        .desc {
+            margin-top:12px;
+            @include font-medium;
+        }
+        .call {
+            margin:8px 0 24px;
+            color:#EC455A;
+            @include font-large-2;
+            font-weight:700;
+            @include mobile {
+                margin-bottom:20px;
+            }
+        }
+        .btn.border {
+            margin-top:32px;
             @include mobile {
                 display:block;
-                width:auto;
-            }
-            .txt-cell {
-                display:table-cell;
-                vertical-align:middle;
-                @include mobile {
-                    display:block;
-                }
-                .tit {
-                    @include font-large-1;
-                    font-weight:700;
-                }
-                .desc {
-                    margin-top:16px;
-                    @include font-medium;
-                    small {
-                        display:block;
-                        margin-top:8px;
-                        color:#767676;
-                        @include font-small;
-                    }
-                }
-            }
-            .img-cell {
-                display:table-cell;
-                vertical-align:middle;
-                text-align:right;
-                @include mobile {
-                    display:none;
-                }
-                img {
-                    width:100%;
-                    max-width:162px;
-                    height:auto;
-                    vertical-align:middle;
-                }
-            }
-            .appstore-btn {
-                display:inline-block;
-                font-size:0;
-            }
-            @include mobile {
-                .appstore-btn {
-                    display:inline-block;
-                    margin-top:32px;
-                    padding:17px 23px;
-                    border:1px solid #222;
-                    border-radius:30px;
-                    color:#222;
-                    font-size:16px;
-                    line-height:24px;
-                    font-weight:500;
-                }
             }
         }
     }
@@ -679,13 +733,7 @@ br.m {
                     margin-top:0;
                 }
                 .bullet-list {
-                    font-size:0;
                     > li {
-                        display:inline-block;
-                        width:50%;
-                        margin-top:8px;
-                        vertical-align:top;
-                        @include font-small;
                         &::before {
                             background:#222;
                         }
@@ -693,8 +741,9 @@ br.m {
                 }
             }
             p {
-                margin-bottom:8px;
+                margin-bottom:12px;
                 @include font-small;
+                font-weight:700;
             }
         }
     }
@@ -704,7 +753,7 @@ br.m {
         margin-top:48px;
         overflow:hidden;
         @include mobile {
-            margin-top:24px;
+            margin-top:32px;
         }
         > ul {
             margin:0 -12px;
@@ -717,13 +766,14 @@ br.m {
                 vertical-align:top;
                 width:calc(100% / 3);
                 padding:0 12px;
+                text-align:center;
                 > img {
-                    display:block;
                     width:100%;
+                    max-width:268px;
                     height:auto;
                 }
                 dl {
-                    margin-top:32px;
+                    margin-top:20px;
                     text-align:center;
                     dt {
                         @include font-large-1;
@@ -745,24 +795,16 @@ br.m {
                     display:block;
                     position:relative;
                     width:100%;
-                    min-height:78px;
-                    margin-top:12px;
-                    padding:12px 0;
-                    padding-left:124px;
+                    margin-top:32px;
+                    padding:0;
                     &:first-child {
                         margin-top:0;
                     }
                     > img {
-                        position:absolute;
-                        top:50%;
-                        left:0;
-                        width:104px;
-                        margin-top:-39px;
-                        border-radius:4px;
+                        max-width:210px;
                     }
                     dl {
-                        margin-top:0;
-                        text-align:left;
+                        margin-top:18px;
                     }
                 }
             }

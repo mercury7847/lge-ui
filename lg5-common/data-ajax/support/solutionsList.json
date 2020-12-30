@@ -1,8 +1,8 @@
 {
-    "status": true,
+    "status": "success",
     "message":null,
     "data": {
-        "solutionsList":[
+        "listData":[
             {
                 "title": "노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀",
                 "topic": "증상 > 세부 증상",
@@ -65,13 +65,67 @@
                 "view": "5,692"
             }
         ],
-        "pageInfo":{
-            "page":2,
-            "startPage":1,
-            "endPage":5,
-            "totalCount":59,
-            "prevBtn":false,
-            "nextBtn":true
-        }
+        "listPage": {
+            "page": 1,
+            "totalCount": 12
+        },
+        "filterList":[
+            {
+                "name": "All",
+                "code": "All"
+            },
+            {
+                "name": "기능",
+                "code": "LCL10005002"
+            },
+            {
+                "name": "설치/연결",
+                "code": "LCL10005003"   
+            },
+            {
+                "name": "소음/냄새/열방생",
+                "code": "LCL10005004"   
+            },
+            {
+                "name": "스마트 앱",
+                "code": "LCL10005005"   
+            },
+            {
+                "name": "스마트/네트워크",
+                "code": "LCL10005006"   
+            },
+            {
+                "name": "스마트 기능",
+                "code": "LCL10005007"   
+            },
+            {
+                "name": "어플리케이션",
+                "code": "LCL10005008"   
+            },
+            {
+                "name": "음성",
+                "code": "LCL10005009"   
+            },
+            {
+                "name": "전원",
+                "code": "LCL10005010"   
+            },
+            {
+                "name": "채널",
+                "code": "LCL10005011"   
+            },
+            {
+                "name": "청소법",
+                "code": "LCL10005012"   
+            },
+            {
+                "name": "해외 제품",
+                "code": "LCL10005013"   
+            },
+            {
+                "name": "화면",
+                "code": "LCL10005014"   
+            }
+        ]
     }
 }

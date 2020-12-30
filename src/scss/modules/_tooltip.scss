@@ -1,9 +1,9 @@
 .tooltip-wrap {
     display:inline-block;
     position:relative;
-    height:20px;
-    padding-top:2px;
-    line-height:20px;
+    height:16px;
+    margin-top:4px;
+    line-height:16px;
     vertical-align:top;
     @include mobile {
         position:static;
@@ -12,12 +12,12 @@
     .tooltip-icon {
         display:block;
         position:relative;
-        width:20px;
-        height:20px;
+        width:16px;
+        height:16px;
         background:url('/lg5-common/images/icons/icon-tooltip.svg') center no-repeat;
         background-size:100%;
         font-size:0;
-        line-height:20px;
+        line-height:16px;
         cursor:pointer;
     }
     &.active {
@@ -31,7 +31,7 @@
         left:-8px;
         top:28px;
         min-width:460px;
-        padding:40px 32px;
+        padding:32px;
         border-radius:8px;
         background:#fff;
         text-align:left;
@@ -56,7 +56,7 @@
             bottom:initial;
             min-width:initial;
             margin-top:8px;
-            padding:32px 40px 32px 24px;
+            padding:24px;
             box-shadow:2px 4px 20px 0 rgba(0, 0, 0, 0.22);
         }
         &.fixed-right {
@@ -87,6 +87,7 @@
 
     &.share {
         height: 32px;
+        margin-top: 0;
         .tooltip-icon {
             width: 32px;
             height: 32px;
@@ -95,66 +96,37 @@
         }
         .tooltip-box {
             top: 34px;
-            min-width: 224px;
-            padding: 15px 16px;
-            border: solid 1px #111111;
-            border-radius: 14px;
-            box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.16);
+            min-width: 332px;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.16);
             line-height: 0;
         }
 
         .title {
             display: block;
-            padding-bottom: 16px;
-            border-bottom: 1px solid $color-default;
             font-weight: 700;
-            @include font-small;
+            @include font-medium;
         }
         .sns-wrap {
-            padding-top: 24px;
+            padding-top: 16px;
             .sns-list {
                 > li {
                     display: inline-block;
                     &:not(:first-child) {
-                        margin-left: 16px;
+                        margin-left: 20px;
                     }
                 }
             }
         }
-        //.share-list {
-        //    padding-top: 24px;
-        //    > li {
-        //        display: inline-block;
-        //        &:not(:first-child) {
-        //            margin-left: 16px;
-        //        }
-        //    }
-        //    [class*="share-"] {
-        //        display: block;
-        //        width: 32px;
-        //        height: 32px;
-        //        background: no-repeat 0 0;
-        //        background-size: 32px 32px;
-        //        &[class*="facebook"] {
-        //            background-image: url('/lg5-common/images/icons/icon-facebook.svg');
-        //        }
-        //        &[class*="twitter"] {
-        //            background-image: url('/lg5-common/images/icons/icon-twitter.svg');
-        //        }
-        //        &[class*="kakaotalk"] {
-        //            background-image: url('/lg5-common/images/icons/icon-kakao.svg');
-        //        }
-        //        &[class*="url"] {
-        //            background-image: url('/lg5-common/images/icons/icon-url.svg');
-        //        }
-        //    }
-        //}
     }
 
     [data-fixed="fixed-right"] {
         & + .tooltip-box {
-            left: auto;
-            right: 0;
+            @include pc {
+                left: auto;
+                right: 0;
+            }
         }
     }
 }

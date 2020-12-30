@@ -35,6 +35,10 @@
         2. 폰트 스타일:
         기본은 언더라인 없음
         .font-underline : 언더라인
+
+        --
+        [KR 201222 Notice!] 4개 타입일 때, length-lg box 안에 애니메이션 들어갈 경우 .size-type2, 나머지 경우 .size-type 분기처리 필요
+        --
     -->
 
     <section class="component KRC0018 @@flow-type @@bg-color">
@@ -43,7 +47,7 @@
                 <div class="square-partition tall">
                     <!-- 1. image - 비디오 타입 샘플 -->
                     <div class="square main text-black youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
-                        <a href="#none" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play_ad" data-link-name="{video id}" aria-describedby="title06">plays audio description video</a>
+                        <!-- <a href="#none" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play_ad" data-link-name="{video id}" aria-describedby="title06">plays audio description video</a> -->
                         <!-- 1.1 video paly button -->
                         <!-- * youtube video modal은 아래의 방식으로 입력 -->
                         <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="common-area case-of-video see-video" data-type="youtube" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play" data-link-name="{video id}" aria-describedby="title06">

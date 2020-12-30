@@ -16,10 +16,13 @@
             @@flags
         </div>
         <div class="item-name"><a href="#n">@@modelName</a></div>
-        <div class="item-options">
-            <div class="sku"><span class="blind">제품번호</span>S5MBR</div>
-            <div class="sibling-option"><span class="blind">제품옵션</span>Silver</div>
+        <!-- 20201221 수정 (주요스펙 옵션 추가됨) -->
+        <div class="sku"><span class="blind">제품번호</span>S5MBR</div>
+        <div class="sibling-option">
+            <p>주요스펙1</p>
+            <p>주요스펙2</p>
         </div>
+        <!-- // 20201221 수정 -->
         @@if(context.amountInfo) {
         <div class="item-amount-info">청약 후 결제예정금액 1,222,000원</div>
         }
@@ -42,7 +45,7 @@
         </div>
         @@if(context.btn) {
         <div class="btn-area">
-            <button type="button" class="btn pink border size" data-url="#n" @@disabled><span>@@btnValue</span></button>
+            <button type="button" class="btn border size-m" data-url="#n" @@disabled><span>@@btnValue</span></button><!-- 20201221 수정 (버튼 클래스 수정) -->
         </div>
         }
     </div>
@@ -50,7 +53,7 @@
     @@if(context.orderMessage) {
     <div class="state-message">
         <div class="text-box">
-            <span>@@orderMessage</span>
+            @@orderMessage
         </div>
     </div>
     }

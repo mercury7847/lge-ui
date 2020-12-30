@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRP0038 {
+	&.bg-black {
+		background-color: #000;
+		.btn.border {
+			border-color:#fff;
+			color:#fff;
+		}
+		.link-text:after {
+			background-image:url('/lg5-common/images/icons/icon-arr-16-wt.svg') !important;
+		}
+	}
+	&.bg-dark {
+		background-color: #333;
+		.btn.border {
+			border-color:#fff;
+			color:#fff;
+		}
+		.link-text:after {
+			background-image:url('/lg5-common/images/icons/icon-arr-16-wt.svg') !important;
+		}
+	}
+	&.bg-lightgray {
+		background-color: #f4f4f4;
+	}
+	&.bg-white {
+		background-color: #fff;
+	}
+	.component-inner {
+		.align-left {
+			text-align:left;
+		}
+		.align-center {
+			text-align:center;
+		}
+		.align-right {
+			text-align:right;
+		}
+		.heading-box {
+			.head-copy {
+				font-size:24px;
+				font-weight:700;
+				line-height:34px;
+				@include mobile {
+					font-size:16px;
+					line-height:24px;
+				}
+			}
+			.title {
+				margin-top:8px;
+				font-size:56px;
+				font-weight:700;
+				line-height:74px;
+				@include mobile {
+					margin-top:6px;
+					font-size:32px;
+					line-height:42px;
+				}
+			}
+			.body-copy {
+				margin-top:24px;
+				font-size:20px;
+				line-height:30px;
+				@include mobile {
+					margin-top:12px;
+					font-size:16px;
+					line-height:24px;
+				}
+			}
+			.btn-box {
+				margin-top:16px;
+				@include mobile {
+					margin-top:20px;
+				}
+				> span {
+					@include mobile {
+						& + span {
+							margin-left:12px;
+						}
+					}
+					margin:0 8px;
+					&:first-child {
+						margin-left:0;
+					}
+					@include mobile {
+						margin:0;
+						.btn {
+							width:100%;
+						}
+					}
+				}
+				.link-text {
+					position:relative;
+					padding-right:20px;
+					font-size:14px;
+					font-weight:500;
+					line-height:24px;
+					&:after {
+						content: ' ';
+						position: absolute;
+						top:3px;
+						right: 0;
+						width: 16px;
+						height: 16px;
+						background: url('/lg5-common/images/icons/icon-arr-16-bk.svg') center no-repeat;
+					}
+				}
+			}
+		}
+	}
+}

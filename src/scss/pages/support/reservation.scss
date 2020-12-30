@@ -4,278 +4,6 @@
 @import "../../utilities/mixins";
 
 .support {
-    .status-bar {
-        background:#212121;
-        height:80px;
-        &-inner {
-            max-width:1364px;
-            margin:0 auto;
-            padding:32px 40px;
-            @include clearfix;
-        }
-        @include mobile {
-            height:52px;
-            &-inner {
-                position:relative;
-                padding:16px 24px;   
-            }
-        }
-        .status {
-            float:left;
-            &-title {
-                float:left;
-                color:#ddd;
-            }
-            &-list {
-                float:left;
-                margin-left:14px;
-                li {
-                    position:relative;
-                    float:left;
-                    color:#ddd;
-                    & + li {
-                        margin-left:7px;
-                        padding-left:13px;
-                        &:before {
-                            content:'';
-                            position:absolute;
-                            left:-4px;
-                            top:50%;
-                            width:8px;
-                            height:8px;
-                            border-top:1px solid #ddd;
-                            border-right:1px solid #ddd;
-                            transform:translateY(-50%) rotate(45deg);
-                        }
-                    }
-                }
-            }
-            @include mobile {
-                float:none;
-                @include clearfix;
-                &-title {
-                    float:left;
-                    color:#fff;
-                    font-size:12px;
-                    line-height:20px;
-                }
-                &-list {
-                    float:right;
-                    li {
-                        color:#fff;
-                        font-size:12px;
-                        font-weight:700;
-                        line-height:20px;
-                    }
-                }
-            }
-        }
-        .guide {
-            float:right;
-            &-link {
-                float:left;
-                & + .guide-link {
-                    margin-left:24px;
-                }
-            }
-            a {
-                font-size:18px;
-                color:#fff;
-            }
-            @include mobile {
-                position:absolute;
-                left:0;
-                top:100%;
-                float:none;
-                width:100%;
-                background:#ddd;
-                @include clearfix;
-                &-link {
-                    width:50%;
-                    padding:11px 0;
-                    text-align:center;
-                    & + .guide-link {
-                        margin:0;
-                    }
-                    a {
-                        color:#616161;
-                        font-size:12px;
-                        font-weight:700;
-                        line-height:18px;
-                    }
-                }
-            }
-        }
-    }
-    .engineer {
-        &-profile {
-            @include clearfix;
-            display: flex;
-            align-items: center;
-        }
-        &-img {
-            width: 140px;
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: url(/lg5-common/images/support/default-engineer.jpg) no-repeat center;
-            background-size: 100%;
-            float: left;
-            img {
-                max-width: 100%;
-            }
-        }
-        &-desc {
-            float: left;
-            flex: 1;
-            font-size: 20px;
-            line-height: 1.5;
-            text-align: center;
-            max-width: 710px;
-            margin-left: 80px;
-            height: 100%;
-        }
-        &-btn-group {
-            margin-top: 28px;
-        }
-        &-profile {
-            &.type-A {
-                border-radius: 8px;
-                box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
-                padding: 32px;
-                .engineer-img {
-                    width: 180px;
-                    height: 180px;
-                }
-                .engineer-desc {
-                    text-align: left;
-                    margin-left: 32px;
-                    .test {
-                        font-size: 16px;
-                    }
-                }
-            }
-        }
-        &-to-visit {
-            @include clearfix;
-            .part1 {
-                float: left;
-                max-width: calc(100% - 396px);
-            }
-            .part2 {
-                float: right;
-                max-width: 396px;
-                width: 100%;
-            }
-            .select-engineer {
-                padding: 0;
-            }
-        }
-        &-to-visit.type2{
-            display: flex;
-            align-items:center;
-            padding:48px 0;
-            border-bottom:1px solid #ddd;
-            margin-bottom:15px;
-
-            .engineer-profile{
-                flex-flow:column;
-                padding:24px 44px;
-                float:none;
-                width:327px;
-                height:394px;
-
-                .engineer-img{
-                    width:100%;
-                    height:auto;
-                    margin-bottom:32px;
-                    
-                    img{
-                        border-radius:10px;
-                    }
-                }
-
-                .engineer-desc{
-                    float:none; 
-                    margin-left:0;
-                    text-align:center;
-
-                    .test{
-                        color:#767676;
-                    }
-                }
-            }
-
-            .engineer-desc{
-                float:none;
-                max-width:unset;
-                width:100%;
-                .result-text strong{
-                    color:#ec455a;
-                }
-            }
-
-            .btn-group{margin-top:24px;}
-        }
-        @include pc {
-            &-to-visit {
-                .part1 {
-                    padding-right: 50px;
-                }
-            }
-        }
-        @include mobile {
-            &-img {
-                width: 90px;
-                height: 90px;
-            }
-            &-desc {
-                margin-left: 20px;
-                font-size: 14px;
-                text-align: left;
-                flex: 1;
-            }
-            &-btn-group {
-                margin-top: 16px;
-            }
-            &-profile {
-                &.type-A {
-                    border-radius: 4px;
-                    box-shadow: 4px 8px 24px 0 rgba(0, 0, 0, 0.15);
-                    padding: 20px 28px;
-                    .engineer-img {
-                        width: 120px;
-                        height: 120px;
-                    }
-                    .engineer-desc {
-                        text-align: left;
-                        margin-left: 28px;
-                        strong {
-                            font-size: 16px;
-                        }
-                        .test {
-                            font-size: 14px;
-                        }
-                    }
-                }
-            }
-            &-to-visit {
-                .part1,
-                .part2 {
-                    float: none;
-                    max-width: 100%;
-                }
-                .part2 {
-                    margin-top: 40px;
-                    width: 100%;
-                }
-                .select-engineer {
-                    margin-top: 40px;
-                }
-            }
-        }
-    }
     .solution-btn-box {
         margin-top: 32px;
     }
@@ -343,28 +71,6 @@
             }
         }
     }
-    .field-title {
-        @include clearfix;
-
-        .tit {
-            float: left;
-        }
-        .chk-wrap {
-            float: right;
-            &.float-left {
-                float: left;
-            }
-        }
-    }
-
-    .result-text {
-        color:#222;
-        font-size:16px;
-        line-height:24px;
-        strong {
-            font-weight:700;
-        }
-    }
     .engineer-carousel {
         &-list {
             padding-bottom:24px;
@@ -430,9 +136,6 @@
         }
     }
     .slide-wrap{
-        .slide-controls{
-            margin-top:-56px;
-        }
         .slide-content.engineer-carousel{
             .slide-track{
                 padding:10px 0 20px;
@@ -458,87 +161,7 @@
             }
         }
     }
-    .thumnail-check {
-        margin:-32px -7px 0;
-        @include clearfix;
-        .item {
-            float:left;
-            width:25%;
-            padding:32px 7px 0;
-            &.block {
-                width:100%;
-                .input-wrap {
-                    margin-top:12px;
-                } 
-            }
-        }
-        .rdo-wrap {
-            .rdo-image {
-                display:block;
-                overflow:hidden;
-                width:100%;
-                margin-bottom:12px;
-                border-radius:4px;
-                img {
-                    width:100%;
-                    height:auto;
-                }
-            }
-        }
-        @include mobile {
-            margin:-16px -6px 0;
-            .item {
-                width: 50%;
-            }
-            .rdo-wrap {
-                width:100%;
-                padding:0;
-                font-size: 18px;
-            }
-        }
-    }
-    /* thumbnail list */
-    .thumnail-check.type2{
-        display:flex;
-        flex-flow:wrap;
-        .item{
-            width:20%;
-        }
-        .item.block{
-            display:flex;
-            align-items:center;
-            width:100%;
 
-            .rdo-wrap{
-                width:20%;
-                display: inline-block;
-            }
-            .input-wrap{
-                width:calc(100% - 22%);
-                display: inline-block;
-                margin-top:0;
-            }
-        }
-    }
-
-    .problem-solve {
-        margin-top: 32px;
-    }
-    .problem-solve.type2 {
-        border-radius:8px;
-        display:flex;
-        justify-content: space-between;
-        align-items: center;
-        background-image:none;
-        margin-bottom: 32px; //64px;
-        .btn-txt{
-            color:#767676;
-            @include font-small;
-            padding-right:24px;
-            background:url(/lg5-common/images/icons/btn_arrow_right_16.svg) right center no-repeat;
-            background-size:16px;
-        }
-    }
     .modal-line-box {
         border: 1px solid #ddd;
         border-radius: 8px;
@@ -556,32 +179,9 @@
         }
     }
 
-    /* page */
-    &.email-inquiry {
-        .info-list {
-            color:#616161;
-            font-size:14px;
-            line-height:20px;
-            dt {
-                margin-bottom:8px;
-                font-weight:700;
-            }
-            dd {
-                margin-top:4px;    
-            }
-        }
-        .tabs-wrap {
-            max-width:1066px;
-            margin:0 auto 24px;
-        }
-        .process-wrap {
-            margin-top:48px;
-        }
-    }
-
     .reservation-info-box{
         margin:48px 0;
-        background-color:#222;
+        background-image:linear-gradient(94deg, #9c86e7, #de64a0);
         color:#fff;
 
         .reservation-area{
@@ -590,7 +190,7 @@
             justify-content: space-between;
             margin:0 auto;
             padding:24px 40px;
-            max-width:1460px;
+            max-width:1226px;
 
             .reservation-info{
                 display:flex;
@@ -604,6 +204,8 @@
 
                     .txt-block{
                         display:block;
+                        @include font-large;
+                        margin-bottom:5px;
                     }
 
                     .btn-link{
@@ -612,16 +214,20 @@
                 }
             }
         }
-        .reservation-num{
-            @include font-large; 
+        .reservation-sub-desc{
+            margin-top:12px;
+            @include font-medium;
+            .txt-bold{
+                color:#fffd7c;
+            } 
         }
 
         .email-img{
-            width:60px;
-            height:60px;
+            width:80px;
+            height:80px;
             background:url(/lg5-common/images/icons/ic-usp-mailcounsel-80.svg) no-repeat center;
-            background-size:60px;
-            margin-right:57px;
+            background-size:80px;
+            margin-right:96px;
         }
 
         .engineer-img{
@@ -636,7 +242,69 @@
             margin-bottom:5px;
         }
     }
-    
+
+    /* page */
+    .engineer-to-visit {
+        @include clearfix;
+        .engineer-profile {
+            float:left;
+            width:160px;
+            .engineer-img {
+                width:160px;
+                height:160px;
+                img {
+                    width:100%;
+                }
+            }
+            .engineer-info {
+                margin-top:8px;
+                .name {
+                    @include font-small;
+                    font-weight:700;
+                }
+                .center {
+                    @include font-small;
+                }
+            }
+        }
+        .engineer-desc {
+            float:left;
+            width:calc(100% - 160px);
+            padding-left:32px;
+            .txt {
+                @include font-medium;
+                .point {
+                    color:#ff2e55;
+                    font-weight:400;
+                }
+            }
+            .btn-wrap {
+                margin-top:24px;
+            }
+        }
+        @include mobile {
+            .engineer-profile {
+                width:104px;
+                .engineer-img {
+                    width:104px;
+                    height:104px;
+                }
+            }
+            .engineer-desc {
+                float:left;
+                width:calc(100% - 104px);
+                padding-left:24px;
+                .txt {
+                    br {
+                        display:none
+                    }
+                }
+                .btn-wrap {
+                    margin-top:16px;
+                }
+            }
+        }
+    }
 
     /* support tablet */
     @media (max-width: 1024px){
@@ -660,27 +328,6 @@
 
     /* support mobile */
     @include mobile{
-        .rdo-wrap{
-            .select-list-wrap.type2{
-                padding-top:15px;
-            }
-        }
-        .rdo-wrap-info{
-            margin-top:0;
-        }
-        .rdo-wrap-list{
-            justify-content: space-between;
-            margin-bottom:32px;
-        }
-        .rdo-wrap-list .rdo-wrap.btn-type2,
-        .thumnail-check.type2 .item{
-            width:48%;
-        }
-        .rdo-wrap-list .rdo-wrap.btn-type2 input + label,
-        .rdo-wrap-list .rdo-wrap-list button{
-            min-width:unset;width:100%;
-        }
-
         .problem-solve.type2{
             justify-content: unset;
             flex-flow:column;
@@ -691,126 +338,20 @@
                 margin-top:25px;
             }
         }
-
-        .field-wrap .field-item.type2{
-            flex-flow:column;
-            padding-right:0;
-
-            .input-wrap{
-                width:100%;
-            }
-        }
-
-        .thumnail-check.type2 {
-            justify-content: space-between;
-
-            .item{
-                padding:0 0 5% 0;
-            }
-            .item.block{
-                flex-flow:column;
-                align-items: baseline;
-
-                .rdo-wrap{
-                    width:auto;
-                }
-
-                .input-wrap{
-                    width:100%;
-                }
-            }
-            .rdo-wrap{
-                width:auto;
-                margin-bottom:12px;
-
-                .rdo-image img{
-                    border-radius:10px;
-                }
-            }
-            .input-wrap{
-                width:100%;
-            }
-        }
-
-        .engineer-to-visit.type2{
-            flex-flow:column;
-            padding-top:0;
-            
-            .engineer-profile{
-                width:100%;
-                flex-flow:initial;
-                margin-top:0;
-                height:auto;
-                padding:0 0 0 6%;
-                margin-bottom:40px;
-
-                .engineer-img{
-                    width:42%;
-                    margin-bottom:0;
-                    padding:5% 0;
-                }
-            }
-
-            .engineer-desc{
-                margin:0;
-                text-align:center;
-
-                .select-engineer .btn{
-                    width:auto;
-                }
-            }
-        }
-
         .reservation-info-box{
             margin-bottom:0;
         }
         .reservation-info-box.type-email{
             .reservation-area{
-                flex-flow:column-reverse;
                 .email-img{
-                    display:none;
+                    margin-right:18px;
                 }
-
                 .reservation-info-desc{
                     margin-top:16px;
-                    text-align:center;
-                    
-                    strong{font-weight:normal;}
-                }
-
-                .reservation-num{
-                    .num-tit{
-                        background:url(/lg5-common/images/icons/ic-usp-mailcounsel-80.svg) no-repeat left center;
-                        background-size:40px;
-                        padding:8px 0 8px 56px;
+                    strong{
+                        font-weight:normal;
                     }
                 }
-            }
-        }
-    }
-}
-
-.field-wrap{
-    .field-item.type2{
-        display:flex;
-        justify-content: space-between;
-        margin-top:59px;
-        padding-right:117px;
-    
-        .field-title .tit{
-            margin-right:175px;
-            @include font-medium;
-            margin-top:11px;
-        }
-        .input-wrap{
-            width:calc(100% - 235px);
-
-            textarea{
-                height:120px;
-            }
-
-            .total{
-                color:#aaa;
             }
         }
     }

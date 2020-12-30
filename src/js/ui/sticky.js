@@ -336,7 +336,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
 
         scollToIndex : function scollToIndex(idx, speed){
             var self = this;
-            var y = self.posArr[idx];
+            var y = self.posArr[idx]+1;
             if(speed){
                 $('html, body').stop().animate({scrollTop:y}, speed);
             }else{ 

@@ -1,22 +1,21 @@
 .subscribe {
     .cont-wrap .section .sec-tit {
-        @include pc {
-            display: none;
-        }
-        @include mobile {
-            margin-bottom: 16px;
-        }
+        margin-bottom: 12px;
+        font-size: 22px;
+        line-height: 32px;
     }
     @media screen and (min-width: 1284px) {
         .accord-cont {
-            padding-right: 137px;
+            padding-right: 157px;
         }
     }
     @include mobile {
-        .order-item {
-            &:last-child {
-                padding-bottom: 0;
-            }
+        .cont-wrap .section .sec-tit {
+            font-size: 18px;
+            line-height: 26px;
+        }
+        .order-list {
+            padding-bottom: 60px;
         }
     }
 }
@@ -244,24 +243,15 @@
 
 .card-benefit-box {
     position: relative;
-    margin: 32px -137px 48px 0;
-    padding: 10px 48px;
+    margin: 28px -137px 40px 0;
+    padding: 24px 40px 24px 133px;
     border-radius: 8px;
-    background-color: $color-bg;
-    &:before {
-        display: inline-block;
-        width: 74px;
-        height: 74px;
-        margin-right: 36px;
-        background: url('/lg5-common/images/icons/icon-card-74.svg') no-repeat 0 0;
-        vertical-align: middle;
-        content: '';
-    }
+    background: $color-bg url('/lg5-common/images/UTC/icon-card.svg') no-repeat 40px center;
+    background-size: 77px 50px;
     .text {
         display: inline-block;
         font-weight: 700;
-        font-size: $font-large-1;
-        line-height: 30px;
+        @include font-medium;
         vertical-align: middle;
         em {
             color: $color-primary;
@@ -280,16 +270,8 @@
     @include mobile {
         position: relative;
         margin: 0 0 24px;
-        padding: 14px 48px 16px 110px;
-        border-radius: 4px;
-        &:before {
-            position: absolute;
-            top: 6px;
-            left: 24px;
-            width: 59px;
-            height: 59px;
-            background-size: 59px 59px;
-        }
+        padding: 16px 16px 16px 105px;
+        background-position: 16px 16px;
         .text {
             display: block;
             font-size: $font-medium;
@@ -298,7 +280,7 @@
         .btn-link {
             position: static;
             transform: translateY(0);
-            margin-top: 7px;
+            margin-top: 12px;
         }
     }
 }

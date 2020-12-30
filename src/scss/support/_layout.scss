@@ -1,20 +1,19 @@
 @charset "UTF-8";
 
 .container {
-    .page-header {
-        .desc {
-            margin-top:8px;
-            .txt {
-                @include font-small;
-            }
-        }
-    }
     .cont-wrap {
+        &:not(:first-child), &:not(:only-child) {
+            padding-top:40px;
+        }
         .section {
             & + .section {
                 margin-top:80px;
             }
+            .form-infos {
+                margin-top:-28px;
+            }
             &-box {
+                padding-right:16.9%;
                 & + .section-box {
                     margin-top:64px;
                 }
@@ -26,20 +25,30 @@
             }
         }
         @include mobile {
+            &:not(:first-child), &:not(:only-child) {
+                padding-top:0;
+            }
             .section {
                 margin-top:0;
                 padding:32px 16px 60px;
                 & + .section {
-                    margin-top:80px;
+                    margin-top:0;
                     border-top:12px solid #f4f4f4;
                 }
+                &:last-child {
+                    padding-bottom:0;
+                }
                 &-box {
+                    padding-right:0;
                     & + .section-box {
                         margin-top:40px;
                     }
                     .sub-tit {
                         margin-bottom:12px;
                     }
+                }
+                .tabs-wrap .tabs {
+                    padding:0;
                 }
             }
         }

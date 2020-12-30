@@ -55,24 +55,23 @@
                 </div>
     
                 @@include('./common/support/login-guide.html', {
-                    'text': '로그인을 하시면 LG전자에서 제공하는 다양한 서비스를 이용할 수 있습니다.'
+                    'text': '로그인을 하시면 LG전자에서 제공하는<br>다양한 서비스를 이용할 수 있습니다.'
                 })
-    
-                <div class="anchors-tabs-wrap">
-                    <div class="anchors-tabs ui_anchor_sticky">
-                        <ul>
+                <div class="anchors-tabs-wrap ui_anchor_sticky">   
+                    <div class="tabs-wrap btn-type left ui_smooth_scroll">
+                        <ul class="tabs">
                             <!-- 건수 0일 경우 탭 비노출 -->
-                            <li class="on">
-                                <a href="#manualSec">제품사용설명서 (6)</a>
+                            <li class="active">
+                                <a href="#manualSection">제품사용설명서 (6)<em class="blind">선택됨</em></a>
                             </li>
                             <li>
-                                <a href="#driverSec">드라이버/SW (91)</a>
+                                <a href="#driverSection">드라이버/SW (91)</a>
                             </li>
                             <li>
-                                <a href="#solutionsSec">제품 문제 해결 (5)</a>
+                                <a href="#solutionsSection">제품 문제 해결 (5)</a>
                             </li>
                             <li>
-                                <a href="#serviceMenu">소모품 (6)</a>
+                                <a href="#recommProduct">소모품 (6)</a>
                             </li>
                             <li>
                                 <a href="#serviceMenu">제품 서비스 (1)</a>
@@ -80,23 +79,26 @@
                         </ul>
                     </div>
                 </div>
-                <div class="cont-wrap">
+                <div class="cont-wrap narrow">  
+                    <form id="submitForm">
+                        <input type="hidden" name="category" id="category" value="P1011">
+                        <input type="hidden" name="subCategory" id="subCategory" value="1012">
+                        <input type="hidden" name="modelCode" id="modelCode" value="A50PH">
+                        <input type="hidden" name="productCode" id="productCode" value="product code">
+                    </form>
 
-                    <div class="section manual-section" id="manualSec" data-ajax="/lg5-common/data-ajax/support/downloadList.json">
-                        <form action="/lg5-common/data-ajax/support/downloadList.json" novalidate>
-                            <input type="hidden" name="page" value="1">
-                            <input type="hidden" name="pagePosition">
-                        </form>
-
-                        <div class="tit-wrap">
+                    <div class="section manual-section" id="manualSection" data-ajax="/lg5-common/data-ajax/support/downloadList.json">
+                        <input type="hidden" name="page" id="page" value="1">
+                        
+                        <div class="tit-wrap margin-sm">
                             <h2 class="tit">제품사용 설명서 <em id="manualCount" class="point">3</em>건</h2>
-                            @@include('./common/modules/bullet-list.html', {
-                                "bulletTxt" : [
-                                    "zip 파일 또는 chm 파일을 [열기] 눌러 사용할 경우 Internet Explorer 보안 기능으로 인해 사용설명서가 정상적으로 표시되지 않을 수 있습니다.",
-                                    "스마트폰, 테블릿 OS 버전은 '환경설정 &gt; 휴대전화 정보' 또는 '환경설정 &gt; 휴대전화 정보 &gt; 소프트웨어 정보' 에서 확인 가능합니다. "
-                                ]
-                            })
                         </div>
+                        @@include('./common/modules/bullet-list.html', {
+                            "bulletTxt" : [
+                                "zip 파일 또는 chm 파일을 [열기] 눌러 사용할 경우 Internet Explorer 보안 기능으로 인해 사용설명서가 정상적으로 표시되지 않을 수 있습니다.",
+                                "스마트폰, 테블릿 OS 버전은 '환경설정 &gt; 휴대전화 정보' 또는 '환경설정 &gt; 휴대전화 정보 &gt; 소프트웨어 정보' 에서 확인 가능합니다. "
+                            ]
+                        })
 
                         <div class="manual-list-wrap">
                             <ul class="manual-list">
@@ -113,7 +115,6 @@
                                             <!-- // 모바일 기기 선택 노출 -->
                                         </ul>
                                         <div class="btns-area">
-                                            <!-- file 여부 체크 json 형태 예시 : /lg5-common/data-ajax/support/fileCheck.json -->
                                             <a href="/lg5-common/data-ajax/support/fileDownloadTest.html?filePath=/lg5-common/data-ajax/support&fileName=testPDF.pdf&fileRealName=testPDF.pdf" class="btn border size btn-download"><span>PDF</span></a>
                                         </div>
                                     </div>
@@ -127,9 +128,8 @@
                                             <li>English</li>
                                         </ul>
                                         <div class="btns-area">
-                                            <!-- file 여부 체크 json 형태 예시 : /lg5-common/data-ajax/support/fileCheck.json -->
                                             <a href="/lg5-common/data-ajax/support/fileDownloadTest.html?filePath=/lg5-common/data-ajax/support&fileName=testZIP.zip&fileRealName=testZIP.zip" class="btn border size btn-download"><span>ZIP</span></a>
-                                            <a href="http://kr.eguide.lgappstv.com/manual/w16_mr/userguide_w16_mr_k03.html" class="btn border size"><span>HTML</span></a>
+                                            <a href="http://kr.eguide.lgappstv.com/manual/w16_mr/userguide_w16_mr_k03.html" class="btn border size" target="_blank"><span>HTML</span></a>
                                         </div>
                                     </div>
                                 </li>
@@ -145,8 +145,8 @@
                         <!-- // data 없을 때 -->
                     </div>
 
-                    <div class="section driver-section" id="driverSec" data-ajax="/lg5-common/data-ajax/support/downloadList.json">
-                        <div class="tit-wrap">
+                    <div class="section driver-section" id="driverSection" data-ajax="/lg5-common/data-ajax/support/downloadList.json">
+                        <div class="tit-wrap margin-sm">
                             <h2 class="tit">드라이버/SW <em id="driverCount" class="point">130</em>건</h2>
                         </div>
 
@@ -159,7 +159,7 @@
                         </div>
                         <!-- // 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
 
-                        <div class="form-wrap ">
+                        <div class="form-wrap">
                             <div class="forms">
                                 <div class="tit">
                                     <label for="os">운영체제(OS) 선택</label>
@@ -198,15 +198,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tabs-wrap border-type ui_tab left">
+                        <div class="tabs-wrap border-type left ui_tab ui_smooth_scroll">
                             <ul class="tabs">
-                                <li class="on"><a href="#">전체(200) <em class="blind">선택됨</em></a></li>
-                                <li><a href="#">통합 드라이버 설치프로그램(110)</a></li>
-                                <li><a href="#">칩셋/패치(6)</a></li>
-                                <li><a href="#">비디오(6)</a></li>
-                                <li><a href="#">사운드(3)</a></li>
-                                <li><a href="#">랜(4)</a></li>
-                                <li><a href="#">기타(0)</a></li>
+                                <li class="on"><a href="#" data-value="">전체(200) <em class="blind">선택됨</em></a></li>
+                                <li><a href="#" data-value="통합 드라이버 설치프로그램">통합 드라이버 설치프로그램(110)</a></li>
+                                <li><a href="#" data-value="칩셋/패치">칩셋/패치(6)</a></li>
+                                <li><a href="#" data-value="비디오">비디오(6)</a></li>
+                                <li><a href="#" data-value="사운드">사운드(3)</a></li>
+                                <li><a href="#" data-value="랜">랜(4)</a></li>
+                                <li><a href="#" data-value="기타">기타(0)</a></li>
                             </ul>
                         </div>
                         <div class="driver-list-wrap ui_list_accordion">
@@ -214,7 +214,7 @@
                                 <li>
                                     <div class="head">
                                         <div class="file-box">
-                                            <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                            <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html" data-cseq="1002">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
                                             <ul class="options">
                                                 <li>ver 7.7PHV1  데스크톱/일체형  </li>
                                                 <li>통합 드라이버 설치 프로그램</li>
@@ -234,7 +234,7 @@
                                         <ul class="driver-list">
                                             <li>
                                                 <div class="file-box">
-                                                    <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                                    <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html" data-cseq="1002">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
                                                     <ul class="options">
                                                         <li>ver 7.7PHV1  데스크톱/일체형  </li>
                                                         <li>통합 드라이버 설치 프로그램</li>
@@ -249,7 +249,7 @@
                                             </li>
                                             <li>
                                                 <div class="file-box">
-                                                    <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                                    <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html" data-cseq="1002">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
                                                     <ul class="options">
                                                         <li>ver 7.7PHV1  데스크톱/일체형  </li>
                                                         <li>통합 드라이버 설치 프로그램</li>
@@ -268,7 +268,7 @@
                                 <li>
                                     <div class="head">
                                         <div class="file-box">
-                                            <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                            <p class="tit"><button type="button" class="btn-info" data-href="/lg5-common/data-ajax/support/file-detail-popup.html" data-cseq="1002">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
                                             <ul class="options">
                                                 <li>ver 7.7PHV1  데스크톱/일체형  </li>
                                                 <li>통합 드라이버 설치 프로그램</li>
@@ -287,30 +287,29 @@
                         @@include('./common/support/pagination.html', {
                             count: 5
                         })
-                        <div class="no-data">
+                        <div class="no-data" style="display:none;">
                             <p>다운로드/소프트웨어 자료가 없습니다.</p>
                         </div>
                     </div>
 
-                    <div class="section" id="solutionsSec">
-                        <form action="" id="solutionsForm">
+                    <div class="section solutions-section" id="solutionsSection">
+                        <div class="solutions-wrap" data-ajax="/lg5-common/data-ajax/support/solutionsList.json" data-filter-ajax="/lg5-common/data-ajax/support/filterList.json" data-sub-filter-ajax="/lg5-common/data-ajax/support/subFilterList.json">
                             <input type="hidden" name="keyword" id="keyword" value="">
-                            <input type="hidden" name="topic" id="topic" value="LCL10005001">
+                            <input type="hidden" name="topic" id="topic" value="All">
                             <input type="hidden" name="subTopic" id="subTopic" value="">
-                            <input type="hidden" name="orderBy" id="orderBy" value="most">
-                        </form>
-                        
-                        <div class="solutions-wrap">
+                            <input type="hidden" name="orderBy" id="orderBy" value="orderBy">
+                            
+                            <h2 class="blind">제품 문제해결</h2>
                             <div class="filter-box">
                                 <div class="tit-wrap">
                                     <h3 class="tit">증상 선택</h4>
                                 </div>
-                                <ul class="filter-list" id="filterContent">
+                                <ul class="filter-list">
                                     <li class="on">
-                                        <button type="button" class="filter-link">All <span class="blind">선택됨</span></button>
+                                        <button type="button" class="filter-link" data-code="All" data-name="All">All <span class="blind">선택됨</span></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="filter-link">기능</button>
+                                        <button type="button" class="filter-link" data-code="10000002" data-name="기능">기능</button>
                                         <!-- <div class="sub-depth">
                                             <div class="tit-wrap">
                                                 <button type="button" class="btn-back"><span class="blind">이전 보기</span></button>
@@ -339,13 +338,13 @@
                                         </div> -->
                                     </li>
                                     <li>
-                                        <button type="button" class="filter-link ui_filter_link">설치/연결</button>
+                                        <button type="button" class="filter-link" data-code="10000003" data-name="설치/연결">설치/연결</button>
                                     </li>
                                     <li>
-                                        <button type="button" class="filter-link ui_filter_link">소음/냄새/열방생</button>
+                                        <button type="button" class="filter-link" data-code="10000004" data-name="소음/냄새/열발생">소음/냄새/열발생</button>
                                     </li>
                                     <li>
-                                        <button type="button" class="filter-link ui_filter_link">스마트 앱</button>
+                                        <button type="button" class="filter-link" data-code="10000005" data-name="스마트 앱">스마트 앱</button>
                                     </li>
                                 </ul>
                             </div>
@@ -354,13 +353,13 @@
                                 <div class="search-wrap">
                                     <div class="keyword-search">
                                         <div class="input-wrap">
-                                            <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="검색어 입력" title="검색어 입력" data-clear-button="button.btn-delete">
+                                            <input type="text" name="inputKeyword" id="inputKeyword" class="ui_input_clearbutton" placeholder="검색어 입력" title="검색어 입력" data-clear-button="button.btn-delete">
                                             <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
                                             <button type="button" class="btn-search"><span class="blind">검색</span></button>
                                         </div>
                                         <span class="chk-wrap">
-                                            <input type="checkbox" name="chk1" id="chk1-1" checked>
-                                            <label for="chk1-1">결과 내 검색</label>
+                                            <input type="checkbox" name="research" id="research">
+                                            <label for="research">결과 내 검색</label>
                                         </span>
                                     </div> 
                                 </div>
@@ -369,18 +368,21 @@
                                     <div class="form-wrap">
                                         <div class="forms">
                                             <div class="tit">
-                                                <label for="select-symptom">증상</label>
+                                                <label for="symptom">증상</label>
                                             </div>
                                             <div class="conts">
                                                 <div class="select-wrap">
-                                                    <select class="ui_selectbox" name="symptom" id="select-symptom">
-                                                        <option value="">증상</option>
-                                                        <option value="">증상</option>
-                                                        <option value="">증상</option>
+                                                    <select class="ui_selectbox" name="symptom" id="symptom" title="증상 선택">
+                                                        <option value="" class="placeholder">증상 선택</option>
+                                                        <option value="All">All</option>
+                                                        <option value="10000002">기능</option>
+                                                        <option value="10000003">설치/연결</option>
+                                                        <option value="10000004">소음/냄새/열발생</option>
+                                                        <option value="10000005">스마트 앱</option>
                                                     </select>
                                                     <div class="select-wrap">
-                                                        <select class="ui_selectbox" name="symptom2" id="select-symptom2" title="세부증상 선택" disabled>
-                                                            <option class="placeholder">세부증상 선택</option>
+                                                        <select class="ui_selectbox" name="subSymptom" id="subSymptom" title="세부증상 선택" disabled>
+                                                            <option  value="" class="placeholder">세부증상 선택</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -390,21 +392,22 @@
                                 </div>
 
                                 <div class="tit-wrap">
-                                    <h4 class="tit">“<span class="point">All</span>” 검색 결과</h4>
+                                    <h3 class="tit">“<span class="point">All</span>” 검색 결과</h3>
                                 </div>
                                 <div class="sorting-wrap">
-                                    <div class="total">전체 <em class="count">122</em>건</div>
+                                    <div class="total">전체 <em id="solutionsCount" class="count">122</em>건</div>
                                     <div class="sort-box">
                                         <div class="sort-select-wrap">
-                                            <select class="ui_selectbox" name="" id="selectOrder" title="정렬 기준 선택">
+                                            <select class="ui_selectbox" name="selectOrder" id="selectOrder" title="정렬 기준 선택">
                                                 <option value="조회순" selected>조회순</option>
-                                                <option value="등록순">등록순</option>
+                                                <option value="인기순">인기순</option>
+                                                <option value="최근순">최근순</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="list-wrap">
-                                    <ul class="list" id="solutionsContent">
+                                    <ul class="list">
                                         <li class="video-type">
                                             <a href="#" class="item">
                                                 <p class="tit">노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀</p>
@@ -413,7 +416,7 @@
                                                     <li>2020.07.20</li>
                                                     <li>조회 5,692</li>
                                                 </ul>
-                                                <span class="icon-movie"><span class="blind">동영상 가이드 컨텐츠</span></span>
+                                                <span class="icon-movie"><span class="blind">동영상 컨텐츠</span></span>
                                             </a>
                                         </li>
                                         @@for (var i = 0; i < 9; i++) {
@@ -439,16 +442,21 @@
 
                     <div class="survey-banner-wrap">
                         <div class="banner">    
-                            <p class="tit">고객님이 선택하신 [<strong class="point">OLED48CXKNB</strong>] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
+                            <p class="tit">고객님이 선택하신 [<strong class="model">OLED48CXKNB</strong>] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
                             <button type="button" class="btn dark-gray size" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- (@@)include('./common/support/recommand-product.html') -->
-                @@include('./common/support/service-menu.html')
+                <!-- 관련 소모품이 필요하신가요? -->
+                @@include('./common/support/recommand-product.html')
+                <!-- 직접 방문해서 A/S를 받으시겠습니까? -->
                 @@include('./common/support/center-find.html')
+                <!-- 원하는 결과를 찾지 못하셨다면 다른 서비스를 이용해보세요. -->
+                @@include('./common/support/service-menu.html')
+                <!-- LG제품에 관련된 정보를 확인하세요! -->
+                @@include('./common/support/related-info.html')
             </div>
         </div>
              
@@ -458,6 +466,11 @@
     <!-- 설치 전 주의사항 및 사용법 팝업 -->
     <article id="fileDetailPopup" class="popup-wrap full">
     </article>
+
+    <!-- 컨텐츠 만족도 평가 팝업 -->
+    @@include('./CS/CSRF6065.html', {
+        'service': true
+    })
     
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>

@@ -10,52 +10,6 @@
 		max-width:1600px;
 		margin:0 auto;
 	}
-
-	// font color option
-    $fontColor : (type-black, type-white);
-    @each $colorClass in $fontColor {
-        .#{$colorClass} {
-            @if $colorClass == type-black {
-				color:#222;
-				.body-copy {
-					color:#767676;
-				}
-				.bullet-list {
-					color:#767676;
-				}
-				.btn.border {
-					border-color:#222;
-					color:#222;
-				}
-            }
-            @else if $colorClass == type-white {
-				color:#fff;
-				.bullet-list {
-					color:#fff;
-					li::before {
-						background:#fff;
-					}
-				}
-				.btn.border {
-					border-color:#fff;
-					color:#fff;
-				}
-                @include mobile {
-					color:#222;
-					.bullet-list {
-						color:#767676;
-						li::before {
-							background:#767676;
-						}
-					}
-					.btn.border {
-						border-color:#222;
-						color:#222;
-					}
-                }
-            }
-        }
-	}
 	// align option 
     $align : (align-left, align-center, align-right);
     @each $alignClass in $align {
@@ -77,31 +31,24 @@
 	// visual area
 	.visual-area {
 		z-index:1;
-		.visual {
-			display:block;
-			&.pc {
-				width:100%;
-				height:2500px;
-				background-size:cover !important;
-			}
-			&.mob {
-				display:none;
-				img {
-					width:100%;
-					height:auto;
-					vertical-align:top;
-				}
-			}
-			@include mobile {
-				&.pc {
-					display:none;
-				}
-				&.mob {
-					display:block;
-				}
-			}
+		img {
+			width:100%;
+			height:auto;
+			vertical-align:top;
 		}
 	}
+	.animation-box {
+		.animation-area {
+			position: relative;
+			top: auto;
+			left: auto;
+		}
+		.play-animaion-btn,
+		.controller-wrap {
+			z-index: 11;
+		}
+	}
+
 
 	// text
 	.text-position {
@@ -117,7 +64,7 @@
 			left:auto;
 			right:auto;
 			bottom:auto;
-			padding:24px 16px 40px;
+			padding:28px 16px 0;
 		}
 		.text-set-wrap {
 			position:absolute;
@@ -174,7 +121,6 @@
 					width:444px;
 					@include mobile {
 						width:100%;
-						text-align:left;
 					}
 					.title * {
 						@include font-large-2;
@@ -182,45 +128,36 @@
 					}
 					.sub-tit {
 						margin-top:8px;
-						@include font-large;
+						@include font-medium;
 						font-weight:700;
+						@include mobile {
+							margin-top:6px;
+						}
 					}
 					.body-copy {
-						margin-top:8px;
+						margin-top:16px;
 						@include font-medium;
+						@include mobile {
+							margin-top:14px;
+						}
 					}
 					.cta-box {
-						margin-top:16px;
-						.btn {
-							background:transparent;
+						margin-top:24px;
+						.btn.border,
+						.text-link {
+							margin-left:16px;
+							&:first-child {
+								margin-left:0;
+							}
 						}
 					}
 					.thumbnail-box {
-						margin-top:16px;
+						margin-top:24px;
 						img {
-							width:100%;
-							max-width:240px;
+							width:auto;
+							max-width:100%;
 							height:auto;
 							vertical-align:top;
-						}
-					}
-					.bullet-list {
-						margin-top:8px;
-						li {
-							padding-left:0;
-							&::before {
-								content:' ';
-								position:relative;
-								top:auto;
-								left:auto;
-								display:inline-block;
-								margin-top:11px;
-								margin-right:8px;
-								vertical-align:top;
-								@include mobile {
-									margin-top:9px;
-								}
-							}
 						}
 					}
 				}

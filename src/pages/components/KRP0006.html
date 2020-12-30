@@ -15,7 +15,7 @@
                     .zero-top : 상단여백 없음
                     .zero-btm : 하단여백 없음
 				-->
-				<section class="component KRP0006">
+				<section class="component KRP0006" data-response-data="/lg5-common/data-ajax/KRP0006/responseData.json">
 					<div class="inner">
                         <p class="txt">케어솔루션 계약 만료가 다가와요. 새로운 결합상품으로 구성해보세요!</p>
                         <button type="button" class="btn-close"><span class="blind">닫기</span></button>
@@ -23,6 +23,26 @@
 				</section>
 			</div>
 
+			<!-- 하단 노출 케이스 --
+			<div class="component-wrap zero-top zero-btm">
+				!--
+                    [component-wrap 옵션]
+                    1. 여백
+                    .zero-top : 상단여백 없음
+					.zero-btm : 하단여백 없음
+					
+					[component 옵션]
+					1. 노출
+					.btm-exp : 하단 노출
+				--
+				<section class="component KRP0006 btm-exp">
+					<div class="inner">
+                        <p class="txt">케어솔루션 계약 만료가 다가와요. 새로운 결합상품으로 구성해보세요!</p>
+                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                    </div>
+				</section>
+			</div>
+			!-- // 하단 노출 케이스 -->
 		</div>
 	</div>
 </body>

@@ -15,7 +15,15 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
             };
 
             self.$mobileLinks = null;
-            self.$pcLinkes = self.$el.find('.cont-area .link-wrap');
+            // self.$pcLinkes = self.$el.find('.cont-area .link-wrap');
+            self.$pcLinkes = self.$el.find('.cont-area .pc-dropdown-wrap');
+
+            self.$el.find('.menu-opener').on('click', function(e){
+                self.$pcLinkes.toggleClass('open');
+
+                var openerName = self.$pcLinkes.hasClass('open') ? "메뉴 닫기" : "메뉴 전체보기";
+                $(this).find('span').text(openerName);
+            });
             
             self._resize();
             $(window).trigger('addResizeCallback', self._resize.bind(self));
@@ -27,7 +35,7 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
             if(self.$mobileLinks == null){
                 var toggleList = [];
                 var itemList = {};
-                self.$el.find('.link-wrap .link-section h5').each(function(idx, item){
+                self.$el.find('.link-wrap .link-section div.dep1').each(function(idx, item){
                     if(!$(item).hasClass('hidden')){
                         toggleList.push($(item).clone());
 
@@ -76,6 +84,11 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
 
                         $(item).find('> ul').append($(itemList[id][cdx]));
                     }
+
+                    if(!itemList[id].length){
+                        $(item).find('> ul').remove();
+                        $(toggleList[idx]).removeClass('ui_accord_toggle');
+                    }
                 });
 
                 self.$mobileLinks = self.$el.find('.link-wrap.ui_footer_accordion');
@@ -84,12 +97,13 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
                     singleOpen: true,
                     itemSelector: "> li",
                     toggleSelector: "> .ui_accord_toggle"
-
                 });
 
                 $('.ui_footer_accordion .ui_accord_toggle').each(function(idx, item){
                     $(item).find('> a').on('click', function(e){
+                        console.log($(e.currentTarget).closest('.btn_open').length)
                         if(!$(e.currentTarget).closest('.btn_open').length){
+                            console.log(this)
                             var href = $(e.currentTarget).attr('href');
                             location.href =href;
                         }

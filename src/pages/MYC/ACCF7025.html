@@ -15,6 +15,7 @@
             })
             <!-- mypage -->
             <div class="contents mypage"
+                data-contract-info-url="/lg5-common/data-ajax/mypage/contractInfo.json"
                 data-modify-confirm-url="/lg5-common/data-ajax/mypage/infoModifyConfirm.json"
                 data-modify-save-url="/lg5-common/data-ajax/mypage/infoModifySave.json"
                 data-payment-method-url="/lg5-common/data-ajax/mypage/paymentMethodAbled.json"
@@ -90,6 +91,7 @@
                                                 ]
                                             })
                                         </div>
+                                        <!-- 201222 문구 수정 -->
                                         @@include('./common/modules/bullet-list.html', {
                                             "size2" : true,
                                             "topBorder" : true,
@@ -97,7 +99,7 @@
                                             "bulletTxt" : [
                                                 "계약자 정보는 계약 건당 변경되며, 원하실 경우 일괄변경도 가능합니다. 변경하신 정보는 회원정보와 연동되지 않습니다.",
                                                 "현금영수증은 계약자 휴대폰 번호 기준으로 발급됩니다.",
-                                                "주소는 변경이 불가하며, 변경을 원하실 경우 고객센터(1577-4090)으로 문의해주세요."
+                                                "계약자 이름, 휴대폰, 주소 등 일부 정보는 변경이 불가하며, 변경을 원하실 경우 고객센터(1544-7777)으로 문의해주세요."
                                             ]
                                         })
                                     </div>
@@ -207,6 +209,7 @@
                                                 </dl>
                                             </div>
                                         </div>
+                                        <!-- 201222 class 수정, 문구 수정 -->
                                         @@include('./common/modules/bullet-list.html', {
                                             "size2" : true,
                                             "topBorder" : true,
@@ -214,7 +217,7 @@
                                             "bulletTxt" : [
                                                 "계약자 정보는 계약 건당 변경되며, 원하실 경우 일괄변경도 가능합니다. 변경하신 정보는 회원정보와 연동되지 않습니다.",
                                                 "현금영수증은 계약자 휴대폰 번호 기준으로 발급됩니다.",
-                                                "주소는 변경이 불가하며, 변경을 원하실 경우 고객센터(1577-4090)으로 문의해주세요."
+                                                "계약자 이름, 휴대폰, 주소 등 일부 정보는 변경이 불가하며, 변경을 원하실 경우 고객센터(1544-7777)으로 문의해주세요."
                                             ]
                                         })
                                         <span class="chk-wrap margin">
@@ -399,7 +402,7 @@
                                                     </div>
                                                     <!-- // 실시간 계좌이체 -->
                                                     @@include('./common/modules/bullet-list.html', {
-                                                        "bgGray" : true,
+                                                        "topBorder" : true,
                                                         "bulletTxt" : [
                                                             "결제정보는 계약자와 동일한 명의의 카드나 은행계좌만 이체 가능합니다.",
                                                             "제휴카드를 신청한 경우, 발급시 자동으로 납부방법이 변경됩니다.",
@@ -413,14 +416,15 @@
                                                     <p class="label req">ARS 출금 동의<span class="blind">필수</span></p>
                                                 </dt>
                                                 <dd class="conts">
-                                                    <div class="input-mix-wrap">
-                                                        <div class="mix-cont">
-                                                            <p class="desc">입력한 결제 수단의 효력이 발생하기 위해서 ARS 출금동의가 필요합니다.<br>ARS 출금동의 시 내용증명을 위해 음성 녹취가 진행됩니다.</p>
-                                                            <div class="btn-wrap">
-                                                                <button class="btn bg-type icon-ars arsAgreeRequest"><span>ARS 출금 동의 신청</span></button>
-                                                            </div>
-                                                        </div>
+                                                    <div class="btn-wrap">
+                                                        <button class="btn bg-type icon-ars arsAgreeRequest"><span>ARS 출금 동의 신청</span></button>
                                                     </div>
+                                                    @@include('./common/modules/bullet-list.html', {
+                                                        "bulletTxt" : [
+                                                            "입력한 결제 수단의 효력이 발생하기 위해서 ARS 출금동의가 필요합니다.",
+                                                            "ARS 출금동의 시 내용증명을 위해 음성 녹취가 진행됩니다."
+                                                        ]
+                                                    })
                                                 </dd>
                                             </dl>
                                             <dl class="forms wide">
@@ -432,14 +436,11 @@
                                                         <div class="mix-input">
                                                             <span class="chk-wrap">
                                                                 <input type="checkbox" id="chk03-1" name="selfClearingAgree">
-                                                                <label for="chk03-1">자동결제 신청 동의</label>
+                                                                <label for="chk03-1">위 결제 수단으로 정기결제신청을 동의합니다.</label>
                                                             </span>
                                                             <div class="cell">
-                                                                <a href="#n" class="btn-link selfClearingAgree">이용약관 보기</a>
+                                                                <a href="#n" class="btn-link selfClearingAgree">동의약관 보기</a>
                                                             </div>
-                                                        </div>
-                                                        <div class="mix-cont">
-                                                            <p class="desc">입력하신 위의 결제수단으로 정기결제 신청을 동의합니다.</p>
                                                         </div>
                                                     </div>
                                                 </dd>
@@ -449,16 +450,18 @@
                                                     <p class="label">보유 멤버십 포인트 사용</p>
                                                 </dt>
                                                 <dd class="conts">
-                                                    <div class="input-mix-wrap">
+                                                    <div class="agree-wrap">
                                                         <div class="mix-input">
                                                             <span class="chk-wrap">
                                                                 <input type="checkbox" id="chk03-2" name="pointUseAgree">
                                                                 <label for="chk03-2">포인트 사용 동의</label>
                                                             </span>
                                                         </div>
-                                                        <div class="mix-cont">
-                                                            <p class="desc">멤버십 포인트는 보유 액수와 관계없이 매월 <em>최대 5,000P</em>까지 차감됩니다.</p>
-                                                        </div>
+                                                        @@include('./common/modules/bullet-list.html', {
+                                                            "bulletTxt" : [
+                                                                "멤버십 포인트는 보유 액수와 관계없이 매월 최대 5,000P까지 차감됩니다."
+                                                            ]
+                                                        })
                                                     </div>
                                                 </dd>
                                             </dl>

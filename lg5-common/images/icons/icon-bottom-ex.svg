@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="88" height="88" viewBox="0 0 88 88">
+    <defs>
+        <filter id="o74prbgy9a" width="162.5%" height="162.5%" x="-31.2%" y="-25%" filterUnits="objectBoundingBox">
+            <feOffset dy="4" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="6"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+        </filter>
+        <circle id="uljgb0qv7b" cx="32" cy="32" r="32"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <path d="M0 0H64V64H0z" transform="translate(-1808 -668) translate(1820 600) translate(0 76)"/>
+                    <g>
+                        <g transform="translate(-1808 -668) translate(1820 600) translate(0 76)">
+                            <use fill="#000" filter="url(#o74prbgy9a)" xlink:href="#uljgb0qv7b"/>
+                            <use fill="#FFF" xlink:href="#uljgb0qv7b"/>
+                        </g>
+                        <g opacity=".3">
+                            <path d="M0 0H32V32H0z" transform="translate(-1808 -668) translate(1820 600) translate(0 76) translate(16 16)"/>
+                            <g>
+                                <g>
+                                    <path fill-rule="nonzero" stroke="#222" stroke-width="1.684" d="M14.5 0C22.508 0 29 5.596 29 12.5S22.508 25 14.5 25c-2.379 0-4.623-.494-6.604-1.369l-5.719 1.306.313-5.431C.918 17.508 0 15.096 0 12.5 0 5.596 6.492 0 14.5 0z" transform="translate(-1808 -668) translate(1820 600) translate(0 76) translate(16 16) translate(1.5 3.5)"/>
+                                    <g fill="#EC455A" transform="translate(-1808 -668) translate(1820 600) translate(0 76) translate(16 16) translate(1.5 3.5) translate(5.5 10.5)">
+                                        <rect width="4" height="4" rx="2"/>
+                                        <rect width="4" height="4" x="7" rx="2"/>
+                                        <rect width="4" height="4" x="14" rx="2"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

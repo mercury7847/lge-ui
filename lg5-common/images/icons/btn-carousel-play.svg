@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>btn-carousel-play</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="btn_Animation_Pause">
+            <circle id="Oval-Copy-4" fill="#FFFFFF" cx="10" cy="10" r="10"></circle>
+            <path d="M7,14.0239984 L7,6.02411411 C7,5.47182936 7.44771525,5.02411411 8,5.02411411 C8.21963982,5.02411411 8.43317037,5.09642608 8.60761524,5.22988258 L13.9408714,9.31001239 C14.3795134,9.64558902 14.4630643,10.2732172 14.1274877,10.7118592 C14.0698836,10.7871552 14.0018649,10.8538772 13.9254743,10.9100216 L8.59221809,14.8297761 C8.14719935,15.1568491 7.5212953,15.0612352 7.19422228,14.6162165 C7.06804686,14.4445409 7,14.237054 7,14.0239984 Z" id="Path-3" fill="#222222"></path>
+        </g>
+    </g>
+</svg>

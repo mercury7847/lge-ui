@@ -61,8 +61,8 @@
             requestData: function() {
                 var _self = this;
                 var ajaxUrl = self.$KRP0022.attr('data-list-url');
-                var selectIdx = self.$tab.vcTab('getSelectIdx') + 1;
-                var selectedCategory = self.$tab.find('ul.tabs li:nth-child(' + selectIdx +') a').attr('href').replace("#", "");                
+                var selectIdx = self.$tab.vcTab('getSelectIdx');
+                var selectedCategory = self.$tab.find('ul.tabs li:eq(' + selectIdx +') a').attr('href').replace("#", "");                
                 var postData = {"categoryId":selectedCategory};
                 self.$KRP0022.find('.ui_selectbox').each(function (index, item) {
                     var $item = $(item);

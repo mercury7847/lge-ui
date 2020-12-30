@@ -29,10 +29,10 @@
                         msgTarget: '.err-block'
                     },
                     title: {
-                        msgTarget: '.err-msg'
+                        msgTarget: '.err-block'
                     },
                     content: {
-                        msgTarget: '.err-msg'
+                        msgTarget: '.err-block'
                     }
                 }
 
@@ -126,7 +126,7 @@
                 $this.find('.btn-auth').off('click').on('click', function() {
                     var result = authValidation.validate(),
                         ajaxUrl = $this.find('.form-wrap').data('ajax'),
-                        data = authValidation.getValues(['authName','authPhoneNo']);
+                        data = authValidation.getValues(['authName','authPhoneNo','authNo']);
 
                     if (result.success == true) {
                         if ($('#authNo').prop('disabled')) {

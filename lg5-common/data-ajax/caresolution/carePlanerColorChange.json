@@ -1,0 +1,72 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "blockID": 1,
+        "moduleType": "module-type1",
+        "modelId": "XXX07512345XXX",
+        "rtModelSeq": "00001",
+        "userFriendlyName": "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
+        "modelName": "GGG07512345GGG",
+        "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
+        "combineProduct": "Y",
+        "combineText": "결합 -15,000원",
+        "modelDescription": "",
+        "purchaseInfo": "",
+        "selectColorID": "Opal_Blue_code",
+        "siblingColors": [
+            {
+                "siblingCode": "LeatherYellow_code",
+                "siblingValue": "LeatherYellow"
+            }, 
+            {
+                "siblingCode": "PlatinumSilver_code",
+                "siblingValue": "PlatinumSilver"
+            }, 
+            {
+                "siblingCode": "Opal_Blue_code",
+                "siblingValue": "Opal_Blue"
+            }
+        ],
+        "selectFeeID": "납부_code",
+        "siblingFee": [
+            {
+                "siblingCode": "납부_code",
+                "siblingValue": "납부"
+            },
+            {
+                "siblingCode": "미납부_code",
+                "siblingValue": "미납부"
+            }
+        ],
+        "selectUserPeriodID": "5년_code",
+        "siblingUsePeriod": [
+            {
+                "siblingCode": "3년_code",
+                "siblingValue": "3년"
+            },
+            {
+                "siblingCode": "4년_code",
+                "siblingValue": "4년"
+            },
+            {
+                "siblingCode": "5년_code",
+                "siblingValue": "5년"
+            }
+        ],
+        "selectVisitCycleID": "3개월_code",
+        "siblingVisitCycle":[
+            {
+                "siblingCode": "1개월_code",
+                "siblingValue": "1개월"
+            },
+            {
+                "siblingCode": "3개월_code",
+                "siblingValue": "3개월"
+            }
+        ],
+        "priceInfo": "",
+        "monthlyPrice": "55,900"
+    }
+}

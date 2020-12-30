@@ -1,16 +1,28 @@
 <!-- components/partials/KRC0031-list.html -->
-
-<div class="lay-cont-wrap @@vAlign">
+<div class="lay-cont-wrap @@if(!context.hasBG){txt-type} "><!-- [KR수정_201229] BG이미지 없을 때 .txt-type addclass -->
 	@@if (context.hasBG) {
-		<span class="bg ui_bg_switch" data-pc-src="@@bgPC" data-m-src="@@bgMo" aria-hidden="true"></span>
+	<!-- [KR수정_201229] bg 이미지 img태그로 수정 -->
+	<span class="bg">
+		<img src="@@bgPC" data-pc-src="@@bgPC" data-m-src="@@bgMo">
+		<p class="hidden">graphic description : </p>
+	</span>
+	<!-- // [KR수정_201229] bg 이미지 img태그로 수정 -->
 	}
-	<div class="cont-box @@textColor">
-		<strong class="lay-tit">@@title</strong>
-		<p class="lay-txt">@@text</p>
-		<ul class="bullet-list">
-			@@for (var i = 0; i < bullets.length; i++) {
-				<li class="b-txt">`+bullets[i]+`</li>
-			}
-		</ul>
+	<div class="cont-box @@vAlign">
+		<!-- [KR수정_201229] .inner로 감싸기 DOM 수정 -->
+		<div class="inner">
+			<!-- [KR수정_201229] title 폰트사이즈 대응 위한 DOM 변경 -->
+			<div class="title">
+				<h2>타이틀 영역입니다.</h2>
+			</div>
+			<!-- // [KR수정_201229] title 폰트사이즈 대응 위한 DOM 변경 -->
+			<p class="lay-txt">@@text</p>
+			<ul class="bullet-list">
+				@@for (var i = 0; i < bullets.length; i++) {
+					<li class="b-txt">`+bullets[i]+`</li>
+				}
+			</ul>
+		</div>
+		<!-- // [KR수정_201229] .inner로 감싸기 DOM 수정 -->
 	</div>
 </div>

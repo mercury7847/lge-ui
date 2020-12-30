@@ -3,38 +3,63 @@
 .btn-arrow {
     position:relative;
     display:block;
-    width:56px;
-    height:56px;
+    width:48px;
+    height:48px;
+    padding:4px;
     border-radius:50%;
-    box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
     font-size:0;
-    overflow:hidden;
+    @include mobile {
+        width:36px;
+        height:36px;
+    }
     &::before {
         content:' ';
         display:block;
-        width:56px;
-        height:56px;
-        background:url('/lg5-common/images/icons/btn-arr-56x56.svg') no-repeat;
-    }
-    &.disabled, &.ui_carousel_hidden {
-        opacity:0.7;
+        width:40px;
+        height:40px;
+        border-radius:50%;
+        background-repeat:no-repeat;
+        background-size:100%;
+        box-shadow:2px 4px 16px 0 rgba(#000, .14);
+        @include mobile {
+            width:28px;
+            height:28px;
+        }
     }
     &.prev {
         &::before {
-            transform:rotate(180deg);
+            background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt.svg');
+            @include mobile {
+                background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt-m.svg');
+            }
+        }
+        &.disabled {
+            &::before {
+                background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt2.svg');
+                @include mobile {
+                    background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt-m2.svg');
+                }
+            }
         }
     }
-}
-
-.slide-wrap.carousel-type {
-    .btn-arrow {
-        width:40px;
-        height:40px;
+    &.next {
         &::before {
-            width:40px;
-            height:40px;
-            background-size:40px;
+            background-image:url('/lg5-common/images/icons/btn-arr-40x40-rt.svg');
+            @include mobile {
+                background-image:url('/lg5-common/images/icons/btn-arr-40x40-rt-m.svg');
+            }
         }
+        &.disabled {
+            &::before {
+                background-image:url('/lg5-common/images/icons/btn-arr-40x40-rt2.svg');
+                @include mobile {
+                    background-image:url('/lg5-common/images/icons/btn-arr-40x40-rt-m2.svg');
+                }
+            }
+        }
+    }
+    &.ui_carousel_hidden {
+        display:none !important;
     }
 }
 
@@ -42,12 +67,45 @@
 .indi-wrap {
     font-size:0;
     text-align:center;
+    .indi-conts {
+        display:inline-block;
+        vertical-align:middle;
+    }
+    .ui_carousel_play {
+        display:inline-block;
+        vertical-align:middle;
+        margin-left:10px;
+        @include mobile {
+            margin-left:4px;
+        }
+        .btn-play {
+            display:inline-block;
+            width:20px;
+            height:20px;
+            background-size:100%;
+            background-repeat:no-repeat;
+            @include mobile {
+                width:16px;
+                height:16px;
+            }
+        }
+        &.play {
+            .btn-play {
+                background-image:url('/lg5-common/images/icons/btn-carousel-play.svg');
+            }
+        }
+        &.stop {
+            .btn-play {
+                background-image:url('/lg5-common/images/icons/btn-carousel-pause.svg');
+            }
+        }
+    }
     li {
         display:inline-block;
         padding:0 6px;
         vertical-align:top;
         @include mobile {
-            padding:0 8px;
+            padding:0 4px;
         }
         .btn-indi {
             display:inline-block;
@@ -105,20 +163,24 @@
         left:50%;
         width:100%;
         max-width:1600px;
-        margin-top:-28px;
         transform:translateX(-50%);
         z-index:10;
         button {
             position:absolute;
             &.prev {
                 left:40px;
+                transform:translateY(-50%);
+                @include mobile {
+                    left:4px;
+                }
             }
             &.next {
                 right:40px;
+                transform:translateY(-50%);
+                @include mobile {
+                    right:4px;
+                }
             }
-        }
-        @include mobile {
-            display:none;
         }
     }
 }
@@ -162,9 +224,9 @@
                 }
                 .inner {
                     width:auto;
-                    max-width:1550px;
+                    max-width:1380px + 48px + 96px + 32px; // contents width + 텍스트-버튼 사이 간격 24px X 2 + 버튼width X 2 + 화면-버튼 사이 간격 16px X 2
                     margin:0 auto;
-                    padding:0 88px;
+                    padding:0 (24px + 48px + 16px);
                     @include mobile {
                         padding:0 16px;
                     }
@@ -329,21 +391,25 @@
         .outer {
             width:100%;
             padding:0 16px;
+            @include mobile {
+                padding:0 4px;
+            }
         }
         .inner {
             position:relative;
             width:100%;
-            max-width:1380px + 72px + 72px;
+            max-width:1380px + 48px + 96px; // contents width + 텍스트-버튼 사이 간격 24px X 2 + 버튼width X 2
             margin:0 auto;
             .btn-arrow {
                 position:absolute;
                 top:0;
-                margin-top:-28px;
                 &.prev {
                     left:0;
+                    transform:translateY(-50%);
                 }
                 &.next {
                     right:0;
+                    transform:translateY(-50%);
                 }
             }
         }
@@ -367,10 +433,16 @@
     }
     .slide-controls {
         .btn-arrow.prev {
-            left:-16px;
+            left:-12px;
+            @include mobile {
+                left:4px;
+            }
         }
         .btn-arrow.next {
-            right:-16px;
+            right:-12px;
+            @include mobile {
+                right:4px;
+            }
         }
     }
 
@@ -404,10 +476,24 @@
     &.carousel-3 {
         max-width: (1284px + 12px);
         .indi-wrap {
-            display: none;
+            bottom: -24px;
+        }
+        .slide-controls .btn-arrow {
+            &.prev {
+                left: -12px;
+                @include mobile {
+                    left:4px;
+                }
+            }
+            &.next {
+                right: -12px;
+                @include mobile {
+                    right:4px;
+                }
+            }
         }
         .slide-conts {
-            width: 25%;
+            //width: 25%;
             padding: 6px 12px 12px;
             @include mobile {
                 padding: 6px 6px 12px;
@@ -415,44 +501,13 @@
         }
         .slide-box {
             position: relative;
-            padding: 0 32px 50px;
+            padding: 0 40px 32px;
             border-radius: 8px;
             background-color: #fff;
             box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
             @include mobile {
                 padding: 0 28px 32px;
             }
-            /*
-            .badge-wrap {
-                position: absolute;
-                top: 0;
-                left: 0;
-                .badge {
-                    display: block;
-                    padding: 4px 8px;
-                    border-radius: 4px;
-                    background-color: #65c467;
-                    font-weight: 500;
-                    font-size: 12px;
-                    line-height: 1;
-                    color: #fff;
-                    text-align: center;
-                }
-                &.thin-type {
-                    top: 24px;
-                    left: 24px;
-                }
-                @include mobile {
-                    .badge {
-                        padding: 5px 8px;
-                        font-size: 10px;
-                    }
-                    &.thin-type {
-                        top: 18px;
-                        left: 18px;
-                    }
-                }
-            } */
             .product-image {
                 a {
                     display: block;
@@ -466,57 +521,30 @@
             .flag-wrap {
                 height: 20px;
                 margin-bottom: 8px;
-                //.flag {
-                //    display: inline-block;
-                //    margin-right: 4px;
-                //    padding: 3px 8px;
-                //    border: 1px solid #ec455a;
-                //    border-radius: 4px;
-                //    font-weight: 500;
-                //    font-size: 12px;
-                //    line-height: 1;
-                //    color: #ec455a;
-                //}
                 & + .product-name {
                     margin-top: 0;
                 }
             }
             .product-name {
-                //height: 56px;
-                margin: 8px 0 22px;
+                height: 52px;
+                margin: 8px 0;
                 @include mobile {
                     margin: 8px 0 16px;
                 }
                 a {
-                    font-weight: $font-weight-bold;
-                    @include font-large;
-                    color: $color-default;
+                    font-weight: 700;
+                    @include font-medium;
                     @include textClipClamp(2);
                 }
             }
-            .product-info {
-                min-height: 110px;
-                margin-bottom: 24px;
-                padding: 0 14px;
-                @include mobile {
-                    padding: 0;
-                }
-            }
             .price-area {
-                margin-top: 16px;
-                font-size: 0;
-                * {
-                    display: inline-block;
+                .total {
+                    display: block;
+                    font-weight: 700;
+                    @include font-large;
                 }
-                .reduced-price {
-                    font-size: 22px;
-                    font-weight: $font-weight-bold;
-                    line-height: 32px;
-                    color: #222222;
-                }
-                .discount-price {
-                    position: relative;
-                    margin: 0 4px 0 8px;
+                .discount {
+                    font-weight: 500;
                     @include font-small;
                     color: $color-gray-1;
                 }
@@ -525,12 +553,6 @@
                     font-weight: bold;
                     line-height: 1.5;
                     color: #ec455a;
-                }
-                @include mobile {
-                    .reduced-price {
-                        font-size: 20px;
-                        line-height: 23px;
-                    }
                 }
             }
             .btn {

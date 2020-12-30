@@ -33,6 +33,10 @@
         2. 폰트 스타일:
         기본은 언더라인 없음
         .font-underline : 언더라인
+
+        --
+        [KR 201222 Notice!] 3개 타입일 때 애니메이션이 tall box에 들어갈 경우 .size-type, top/bottom box안에 들어갈 경우 .size-type2 분기처리 필요
+        --
     -->
 
     <section class="component KRC0018 type-triple @@flow-type @@bg-color">
@@ -69,8 +73,10 @@
                         <div class="common-area">
                             <div class="visual-area">
                                 <img data-pc-src="/lg5-common/images/KRC0018/@square-case-lg.jpg" data-m-src="/lg5-common/images/KRC0018/@square-case-lg-m.jpg" alt="">
-                                <p class="hidden pc">graphic description : </p>
-                                <p class="hidden mobile">graphic description : </p>
+                                <!-- [KR수정_201222] mobile hidden 삭제, pc hidden 'pc' class 삭제 -->
+                                <p class="hidden">graphic description : </p>
+                                <!-- <p class="hidden mobile">graphic description : </p> -->
+                                <!-- // [KR수정_201222] mobile hidden 삭제, pc hidden 'pc' class 삭제 -->
                             </div>
                             <div class="copy-boxing-area">
                                 <!-- 6. eyebrow #2 -->
@@ -87,21 +93,36 @@
                 <div class="square-partition bottom">
                     <!-- 8. image -->
                     <div class="square sub length-lg text-white">
-                        <a class="common-area" href="#" data-link-area="block_image_3to5_text_overlay-image" data-link-name="{alt text}">
-                            <div class="visual-area">
-                                <img data-pc-src="/lg5-common/images/KRC0018/@square-case-lg.jpg" data-m-src="/lg5-common/images/KRC0018/@square-case-lg-m.jpg" alt="">
-                                <p class="hidden pc">graphic description : </p>
-                                <p class="hidden mobile">graphic description : </p>
+                        <div class="visual-area animation-box size-type2"><!-- [KR수정_201222] size-type2 class 추가 -->
+                            <img data-pc-src="/lg5-common/images/KRC0018/@square-case-lg.jpg" data-m-src="/lg5-common/images/KRC0018/@square-case-tall-m.jpg" alt="">
+                            <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                            <div class="animation-area">
+                                <video autoplay muted loop>
+                                    <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                    <!-- WEBM 동영상을 제공하는 경우
+                                    <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                    -->
+                                </video>
                             </div>
+                            <!-- [KR수정_201221] 애니메이션 버튼 DOM 위치 변경 -->
+                            <div class="controller-wrap wa-btn">
+                                <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                            </div>
+                            <!-- // [KR수정_201221] 애니메이션 버튼 DOM 위치 변경 -->
+                            <!-- [KR수정_201221] 애니메이션일 때 text-area 추가 -->
                             <div class="copy-boxing-area">
-                                <!-- 9. eyebrow #3 -->
+                                <!-- 6. eyebrow #2 -->
                                 <div class="category">TELEVISION</div>
-                                <!-- // 9. eyebrow #3 -->
-                                <!-- 10. headline #3 -->
-                                <div class="head">@@head</div>
-                                <!-- // 10. headline #3 -->
+                                <!-- // 6. eyebrow #2 -->
+                                <!-- 7. headline #2 -->
+                                <div class="head" id="title02">@@head</div>
+                                <!-- // 7. headline #2 -->
                             </div>
-                        </a>
+                            <!-- // [KR수정_201221] 애니메이션일 때 text-area 추가 -->
+                            <!-- caption -->
+                            <!-- <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div> -->
+                            <!-- // caption -->
+                        </div>
                     </div>
                     <!-- // 8. image -->
                 </div>

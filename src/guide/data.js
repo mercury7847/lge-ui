@@ -28,7 +28,7 @@ var res = {
 			"Flag" : ["./wsg/guide_flag.html","","검수완료"],
 			"SNS Share" : ["./wsg/guide_sns_share.html","","검수완료"],
 			"Filter" : ["./wsg/guide_filter.html","","검수완료"],
-			"Location" : ["./wsg/guide_location.html","","검수완료"]
+			"breadcrumb" : ["./wsg/guide_breadcrumb.html","","검수완료"]
 		}
 	},
 	"Front" : {
@@ -49,38 +49,38 @@ var res = {
 				"KRC0013_Large Image - Vertical Pickers[KRC0022]" : ["/html/components/KRC0013.html","","검수완료"],
 				"KRC0014_Large Image - Horizontal Pickers[KRC0023]" : ["/html/components/KRC0014.html","","검수완료"],
 				"KRC0015_Hero Image[KRC0024]" : ["/html/components/KRC0015.html","","검수완료"],
-				"KRC0016_Scroll Image[KRC0025]" : ["/html/components/KRC0016.html","","검수완료"],
-				"KRC0017_Interactive Gallery Image[KRC0026]" : ["/html/components/KRC0017.html","","검수완료"],
+				// "KRC0016_Scroll Image[KRC0025]" : ["/html/components/KRC0016.html","","검수완료"],
+				// "KRC0017_Interactive Gallery Image[KRC0026]" : ["/html/components/KRC0017.html","","검수완료"],
 				"KRC0018_Block Image(3 to 5 - Text Overlay)[KRC0028]" : ["/html/components/KRC0018.html","","검수완료"],
 				"KRC0019_Block Image(2 - Text Overlay)[KRC0029]" : ["/html/components/KRC0019.html","","검수완료"],
 				"KRC0020_Feature Icon Tab[KRC0030]" : ["/html/components/KRC0020.html","","검수완료"],
 				"KRC0021_Block Image(2 to 3)[KRC0031]" : ["/html/components/KRC0021.html","","검수완료"],
-				"KRC0022_Contents Section Text[KRC0032]" : ["/html/components/KRC0022.html","","검수완료"],
+				// "KRC0022_Contents Section Text[KRC0032]" : ["/html/components/KRC0022.html","","검수완료"],
 				"KRC0023_Block Image (2 to 4)[KRC0036]" : ["/html/components/KRC0023.html","","검수완료"],
-				"KRC0024_Carousel BG Image[KRC0037]" : ["/html/components/KRC0024.html","","검수완료"],
+				// "KRC0024_Carousel BG Image[KRC0037]" : ["/html/components/KRC0024.html","","검수완료"],
 				"KRC0025_Text[KRC0038]" : ["/html/components/KRC0025.html","","검수완료"],
 				"KRC0026_Side Text - CTA[KRC0039]" : ["/html/components/KRC0026.html","","검수완료"],
 				"KRC0027_Image (1 to 3 - CTA Overlay)[KRC0040]" : ["/html/components/KRC0027.html","","검수완료"],
 				"KRC0028_Gallery - 10Pickers[KRC0043]" : ["/html/components/KRC0028.html","","검수완료"],
 				"KRC0029_Hero Image (Thin)[KRC0044]" : ["/html/components/KRC0029.html","","검수완료"],
-				"KRC0030_Article List[KRC0045]" : ["/html/components/KRC0030.html","","검수완료"],
+				// "KRC0030_Article List[KRC0045]" : ["/html/components/KRC0030.html","","검수완료"],
 				"KRC0031_Layered component - Multi type[KRC0049]" : ["/html/components/KRC0031.html","","검수완료"],
 				"KRC0032_USP BANNER[KRC0055]" : ["/html/components/KRC0032.html","","검수완료"],
-				"KRC0033_BG 4TEXT[KRC0056]" : ["/html/components/KRC0033.html","","검수요청"],
+				"KRC0033_BG 4TEXT[KRC0056]" : ["/html/components/KRC0033.html","","검수완료"],
 				"KRC0034_BG-3 Image-Textoverlay[KRC0057]" : ["/html/components/KRC0034.html","","검수완료"],
 				"KRC0035_Side Slide Image - Text[KRC0058]" : ["/html/components/KRC0035.html","","검수완료"],
 				"KRC0036_BG-Video-Textoverlay[KRC0061]" : ["/html/components/KRC0036.html","","검수완료"],
 				"KRC0037_Feature Icon(no action)[KRC0062]" : ["/html/components/KRC0037.html","","검수완료"],
 				"KRC0038_Switching Hero Image[KRC0063]" : ["/html/components/KRC0038.html","","검수완료"],
 				"KRC0039_Widthways Switching Images[KRC0064]" : ["/html/components/KRC0039.html","","검수완료"],
-				"KRC0040_Tab Anchor_USP[KRC0065]" : ["/html/components/KRC0040.html","","검수요청"],
-				"KRC0041_BG Image 6 Text[KRC0066]" : ["/html/components/KRC0041.html","",""],
-				"KRC0042_Image-Layered Text[KRC0018]" : ["/html/components/KRC0042.html","","검수완료"],
+				"KRC0040_Tab Anchor_USP[KRC0065]" : ["/html/components/KRC0040.html","","검수완료"],
+				"KRC0041_BG Image 6 Text[KRC0066]" : ["/html/components/KRC0041.html","","검수완료"],
+				// "KRC0042_Image-Layered Text[KRC0018]" : ["/html/components/KRC0042.html","","검수완료"],
 				"KRC9999_HTML Component" : ["/html/components/KRC9999.html","",""],
 			},
 			"KRP" : {
 				"KRP0001_GNB" : ["/html/components/KRP0001.html","","검수완료"],
-				"KRP0002_SEO" : ["/html/components/KRP0002.html","","검수완료"],
+				// "KRP0002_SEO" : ["/html/components/KRP0002.html","","검수완료"],
 				"KRP0003_Footer" : ["/html/components/KRP0003.html","","검수완료"],
 				"KRP0004_Scroll to the top" : ["/html/components/floating.html","","검수완료"],
 				"KRP0005_Sticky chat" : ["/html/components/floating.html","","검수완료"],
@@ -90,14 +90,14 @@ var res = {
 				"KRP0009_PDP Tab Anchor[KRP0012]" : ["/html/components/KRP0009.html","","검수완료"],
 				"KRP0010_PDP Specs[KRP0014]" : ["/html/components/KRP0010.html","","검수완료"],
 				"KRP0011_PDP_Spec compare[KRC0041]" : ["/html/components/KRP0011.html","","검수완료"],
-				"KRP0012_PDP Reviews[KRP0015]" : ["/html/components/KRP0012.html","","검수완료"],
+				// "KRP0012_PDP Reviews[KRP0015]" : ["/html/components/KRP0012.html","","검수완료"],
 				"KRP0013_PDP Support[KRP0016]" : ["/html/components/KRP0013.html","","검수완료"],
 				"KRP0014_PDP_FAQ[KRC0011]" : ["/html/components/KRP0014.html","","검수완료"],
 				"KRP0015_Sticky Compare[KRP0018]" : ["/html/components/KRP0015.html","","검수완료"],
 				"KRP0016_Social Share[KRP0019]" : ["/html/components/KRP0016.html","","검수완료"],
-				"KRP0017_Sitemap[KRP0020]" : ["/html/components/KRP0017.html","","검수요청"],
-				"KRP0018_Story tag[KRP0023]" : ["/html/components/KRP0018.html","","검수완료"],
-				"KRP0019_Best review[KRP0024]" : ["/html/components/KRP0019.html","","검수완료"],
+				"KRP0017_Sitemap[KRP0020]" : ["/html/components/KRP0017.html","","검수완료"],
+				// "KRP0018_Story tag[KRP0023]" : ["/html/components/KRP0018.html","","검수완료"],
+				// "KRP0019_Best review[KRP0024]" : ["/html/components/KRP0019.html","","검수완료"],
 				"KRP0020_Event list for category[KRP0025]" : ["/html/components/KRP0020.html","","검수완료"],
 				"KRP0021_PDP_Please note[KRP0027]" : ["/html/components/KRP0021.html","","검수완료"],
 				"KRP0022_Event list[KRP0028]" : ["/html/components/KRP0022.html","","검수완료"],
@@ -108,12 +108,12 @@ var res = {
 				"KRP0027_Story Video/Campaign List[KRP0037]" : ["/html/components/KRP0027.html","","검수완료"],
 				"KRP0028_Awards Breakdown[KRP0038]" : ["/html/components/KRP0028.html","","검수완료"],
 				"KRP0029_Recommend story for category home[KRP0051]" : ["/html/components/KRP0029.html","","검수완료"],
-				"KRP0030_Social Review(스토리)[KRP0041]" : ["/html/components/KRP0030.html","",""],
-				"KRP0031_Consumables Search[KRP0042]" : ["/html/components/KRP0031.html","",""],
-				"KRP0032_Recently View[KRP0049]" : ["/html/components/KRP0032.html","","검수완료"],
-				"KRP0033_PDP Shipping Information[KRP0044]" : ["/html/components/KRP0033.html","",""],
-				"KRP0034_PDP Return Replacement[KRP0045]" : ["/html/components/KRP0034.html","",""],
-				"KRP0035_PDP Inquiry[KRP0046]" : ["/html/components/KRP0035.html","","검수완료"],
+				// "KRP0030_Social Review(스토리)[KRP0041]" : ["/html/components/KRP0030.html","","검수완료"],
+				// "KRP0031_Consumables Search[KRP0042]" : ["/html/components/KRP0031.html","",""],
+				"KRP0032_Recently View[KRP0049]" : ["/html/components/floating.html","","검수완료"],
+				// "KRP0033_PDP Shipping Information[KRP0044]" : ["/html/components/KRP0033.html","",""],
+				// "KRP0034_PDP Return Replacement[KRP0045]" : ["/html/components/KRP0034.html","",""],
+				// "KRP0035_PDP Inquiry[KRP0046]" : ["/html/components/KRP0035.html","","검수완료"],
 				"KRP0036_PDP Caresolution Contents[KRP0047]" : ["/html/components/KRP0036.html","","검수완료"],
 				"KRP0037_Exhibition List[KRP0048]" : ["/html/components/KRP0037.html","","검수완료"],
 				"KRP0038_Section Title[KRP0050]" : ["/html/components/KRP0038.html","","검수완료"],
@@ -213,8 +213,8 @@ var res = {
 						"이벤트/기획전" : ["/html/UTS/SERF9005.html","","검수완료"],
 						"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
 						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
-						"고객지원" : ["/html/UTS/SERF9008.html","","검수요청"],
-						"센터/매장" : ["/html/UTS/SERF9015.html","","검수요청"],
+						"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
+						"센터/매장" : ["/html/UTS/SERF9015.html","","검수완료"],
 					},
 					"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
 				},
@@ -224,21 +224,24 @@ var res = {
 					// "이벤트 개인정보처리방침(상세)" : ["/html/UTS/COMF2001_view.html","","진행중"],
 					// "이용약관" : ["/html/UTS/COMF2003.html","","진행중"],
 					// "이메일 무단수집 거부" : ["/html/UTS/COMF2005.html","","진행중"],
-					"소식지 신청" : ["/html/UTS/COMF2004.html","","검수요청"]
+					"소식지 신청" : ["/html/UTS/COMF2004.html","","검수완료"]
 				}
 			},
+			"스토어(PRS)" : {
+				"홈(서브메인)" : ["/html/PRS/MKTF1001.html","",""]
+			},
 			"스토어(CPR)" : {
-				"비교하기 결과" : ["/html/CPR/MKTF1010.html","","검수요청"]
+				"비교하기 결과" : ["/html/CPR/MKTF1010.html","","검수완료"]
 			},
 			"스토리(STC)" : {
 				"모바일 서비스" : {
-					"LG 듀얼스크린" : ["/html/STC/MKT5001.html","","검수요청"]
+					"LG 듀얼스크린" : ["/html/STC/MKT5001.html","","검수완료"]
 				},
 				"LG 페이" : {
-					"LG 페이" : ["/html/STC/MKT5003.html","","진행중"],
-					"LG 페이_영상 보기 팝업" : ["/html/STC/MKT5003_popup.html","","진행중"],
-					"LG 페이제휴카드 안내" : ["/html/STC/MKT5004.html","","진행중"],
-					"LG 페이사용가능 단말기" : ["/html/STC/MKT5005.html","","진행중"]
+					"LG 페이" : ["/html/STC/MKT5003.html","","검수완료"],
+					"LG 페이_영상 보기 팝업" : ["/html/STC/MKT5003_popup.html","","검수완료"],
+					"LG 페이제휴카드 안내" : ["/html/STC/MKT5004.html","","검수완료"],
+					"LG 페이사용가능 단말기" : ["/html/STC/MKT5005.html","","검수완료"]
 				},
 				"LG 모바일 스위치" : {
 					 "모바일스위치란?" : ["/html/STC/MKT5006.html","","검수완료"],
@@ -254,19 +257,22 @@ var res = {
 					"제품관리팁" : ["/html/STR/OBS5010.html","","검수완료"]
 				},
 			},
+			"케어솔루션(SLS)" : {
+				"홈(서브메인)" : ["/html/SLS/MKTF2001.html","",""]
+			},
 			"케어솔루션(SLC)" : {
 				"케어솔루션 제품안내" : {
 					"맥주제조기_음주연령확인" : ["/html/SLC/MKTF2004.html","","검수완료"]
 				},
 				"케어솔루션안내" : {
 					"WHY케어솔루션" : ["/html/SLC/RMSF2002.html","","검수완료"],
-					"WHY케어십_케어십가능제품(탭)" : ["/html/SLC/RMSF2014.html","","검수요청"],
+					"WHY케어십_케어십가능제품(탭)" : ["/html/SLC/RMSF2014.html","","검수완료"],
 					"케어플래너_렌탈케어솔루션" : ["/html/SLC/RMSF2003.html","","검수완료"],
 					"케어플래너_케어십" : ["/html/SLC/RMSF2003_01.html","","검수완료"],
 					"케어플래너_상세견적확인" : ["/html/SLC/RMSF2020.html","","검수완료"],
-					"고객혜택" : ["/html/SLC/RMSF2015.html","","검수요청"]
+					"고객혜택" : ["/html/SLC/RMSF2015.html","","검수완료"]
 				},
-				"홈" : ["/html/SLC/RMSF2001.html","",""]
+				//"홈" : ["/html/SLC/RMSF2001.html","",""]
 			},
 			"이벤트/멤버십(BMC)" : {
 				"이벤트" : {
@@ -290,11 +296,11 @@ var res = {
 					"상세_기본타입" : ["/html/BMC/OBS4002.html","","검수완료"],
 				},
 				"멤버십" : {
-					"멤버십 메인" : ["/html/BMC/ACC4001.html","","검수요청"],
-					"멤버십 소개" : ["/html/BMC/ACC4002.html","","검수요청"],
-					"멤버십 혜택" : ["/html/BMC/ACC4003.html","","검수요청"],
-					"멤버십 가입안내" : ["/html/BMC/ACC4004.html","","검수요청"],
-					"카드혜택" : ["/html/BMC/ACC4005.html","","검수요청"],
+					"멤버십 메인" : ["/html/BMC/ACC4001.html","","검수완료"],
+					"멤버십 소개" : ["/html/BMC/ACC4002.html","","검수완료"],
+					"멤버십 혜택" : ["/html/BMC/ACC4003.html","","검수완료"],
+					"멤버십 가입안내" : ["/html/BMC/ACC4004.html","","검수완료"],
+					"카드혜택" : ["/html/BMC/ACC4005.html","","검수완료"],
 				}
 			},
 			"마이페이지(MYC)" : {
@@ -318,13 +324,13 @@ var res = {
 					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","검수완료"],
 					"납부내역" : ["/html/MYC/ACCF7027.html","","검수완료"],
 					"방문 알리미" : ["/html/MYC/ACCF7030.html","","검수완료"],
-					// "방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","진행중"]
+					"방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","진행중"]
 				},
 				"관심목록" : {
 					"찜한 제품" : ["/html/MYC/ACCF7013.html","","검수완료"],
 					"최근 본 제품" : ["/html/MYC/ACCF7011.html","","검수완료"],
 					"구독" : ["/html/MYC/ACCF7017.html","","검수완료"],
-					// "단골매장" : ["/html/MYC/ACCF7011.html","","진행중"],
+					"단골매장" : ["/html/MYC/ACCF7019.html","","검수완료"],
 					"재입고 알림" : ["/html/MYC/ACCF7072.html","","검수완료"],
 				},
 				"제품 관리" : {
@@ -353,10 +359,10 @@ var res = {
 			},
 			"고객지원(CS)" : {
 				"매장찾기" : {
-					"매장칮기 검색/결과 " : ["/html/CS/CSRF6040.html","","검수요청"],
-					"매장 상세" : ["/html/CS/CSRF6041.html","","검수요청"],
-					"위치정보제공동의 팝업" : ["/html/CS/CSRF6098.html","","검수요청"],
-					"현재위치정보 팝업" : ["/html/CS/CSRF6099.html","","검수요청"],
+					"매장칮기 검색/결과 " : ["/html/CS/CSRF6040.html","","검수완료"],
+					"매장 상세" : ["/html/CS/CSRF6041.html","","검수완료"],
+					"위치정보제공동의 팝업" : ["/html/CS/CSRF6098.html","","검수완료"],
+					"현재위치정보 팝업" : ["/html/CS/CSRF6099.html","","검수완료"],
 					//"매장상담 신청" : ["/html/CS/CSRF6042.html","","진행중"]
 				},
 				"공지사항" : {
@@ -374,13 +380,13 @@ var res = {
 					"신청자정보 입력" : ["/html/UTC/RMSF9001.html","","검수완료"],
 					"신청 완료" : ["/html/UTC/RMSF9011.html","","검수완료"],
 					"주문결제 팝업" : ["/html/UTC/RMSF9001_popup.html","","검수완료"],
-					//"케어솔루션 주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
+					"주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
 				},
 				"비회원" : {
-					"비회원 주문번호 로그인" : ["/html/UTC/OBSF9038.html","","검수요청"],
-					"비회원 주문배송조회 상세" : ["/html/UTC/OBSF9039.html","","검수요청"],
-					"비회원 주문/결제 팝업" : ["/html/UTC/OBSF9039_popup.html","","검수요청"],
-					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=no","검수요청"],
+					"비회원 주문번호 로그인" : ["/html/UTC/OBSF9038.html","","검수완료"],
+					"비회원 주문배송조회 상세" : ["/html/UTC/OBSF9039.html","","검수완료"],
+					"비회원 주문/결제 팝업" : ["/html/UTC/OBSF9039_popup.html","","검수완료"],
+					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=no","검수완료"],
 				}
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],

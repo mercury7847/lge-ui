@@ -21,12 +21,6 @@
         2. 세로 정렬
         .align-top: 텍스트 영역이 상단
         .align-middle: 텍스트 영역이 중간
-        .align-bottom: 텍스트 영역이 하단
-
-        3. 모바일 이미지 텍스트 정렬 (PDP)  [KR수정] 새로운 이미지 텍스트 정렬 케이스
-        .mobile-text-block-left: 텍스트 영역이 모바일에서만 왼쪽
-        .mobile-text-block-right: 텍스트 영역이 모바일에서만 오른쪽
-        .mobile-text-block-center: 텍스트 영역이 모바일에서만 가운데
 
         4. 텍스트 영역 넓이
         .type-wide : 넓음
@@ -50,10 +44,10 @@
         <div class="component-box"><!-- [KR수정] .component-box DOM 추가 -->
             <div class="carousel-wrap @@carousel.type">
                 <!-- 11. video인 경우 video-box 추가, 동시에 3-1 비디오 버튼도 존재 해야 합니다. -->
-                <div class="carousel-box video-box youtube-box @@carousel.item.font-color @@carousel.item.componentType">
+                <div class="carousel-box video-box youtube-box @@carousel.item.font-color">
                     <!-- 3. image -->
                     <div class="visual-area">
-                        <img data-pc-src="@@carousel.item.visual1" data-m-src="@@carousel.item.visual2" class="lazyload" alt="" /><!-- [KR수정] img 수정 -->
+                        <img data-pc-src="@@carousel.item.visual1" data-m-src="@@carousel.item.visual2" alt=""><!-- [KR수정] img 수정 -->
                         <p class="hidden pc">graphic description : </p>
                         <p class="hidden mobile">graphic description : </p>
                     </div>
@@ -65,34 +59,24 @@
                             <div class="text-wrap">
                                 <div class="inner">
                                     <div class="text-block">
-                                        <!-- 4. eyebrow -->
-                                        <div class="eyebrow">8K에서 더욱 빛나는 올레드 픽셀디밍</div>
-                                        <!-- // 4. eyebrow -->
-                                        <!-- 5. headline -->
+                                        <div class="eyebrow">@@title.eyebrow</div>
                                         <div class="title">@@title.headline</div>
-                                        <!-- // 5. headline -->
-                                        <!-- 6. body copy -->
                                         <div class="copy font-regular">@@title.copy</div>
-                                        <!-- // 6. body copy -->
                                     </div>
-                                    <!-- 7. cta -->
                                     <div class="cta">
-<!--                                        <div class="cta-button">-->
-<!--                                            <span><a href="#none" class="btn btn-primary btn-lg" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>-->
-<!--                                            <span><a href="#none" class="btn btn-outline-secondary btn-lg" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>-->
-<!--                                        </div>-->
+                                        <!-- <div class="cta-button">
+                                            <a href="#none" class="btn border size-m" data-link-area="hero_image-cta" data-link-name="{link text}"><span>H1 button</span></a>
+                                        </div> -->
                                         <div class="cta-link">
-                                            <span><a href="#none" class="link-text bold ico-right" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>
-                                            <span><a href="#none" class="link-text bold ico-right" data-link-area="hero_image-cta" data-link-name="{link text}">자세히 보기</a></span>
+                                            <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
+                                            <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
+                                        </div>
+                                        <!-- video play button -->
+                                        <div class="video-link">
+                                            <!-- * youtube video는 아래의 방식으로 입력 -->
+                                            <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="btn-video see-video" data-type="youtube" data-link-area="hero_image-video_play" data-link-name="{video id}">제품 영상보기</a>
                                         </div>
                                     </div>
-                                    <!-- // 7. cta -->
-                                    <!-- 3-1 video play button -->
-                                    <div class="video-link">
-                                        <!-- * youtube video는 아래의 방식으로 입력 -->
-                                        <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="link-text ico-left see-video" data-type="youtube" data-link-area="hero_image-video_play" data-link-name="{video id}">소개 영상 보기</a>
-                                    </div>
-                                    <!-- // 3-1 video play button -->
                                 </div>
                             </div>
                         </div>

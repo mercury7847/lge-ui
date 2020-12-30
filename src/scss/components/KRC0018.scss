@@ -5,11 +5,15 @@
 
 .KRC0018 {
 
+
 	.square {
 		display: inline-block;
+		border-radius:8px;
 		vertical-align: top;
+		overflow:hidden;
 		@include mobile {
 			width: 100%;
+			border-radius:0;
 		}
 
 		.common-area {
@@ -26,72 +30,64 @@
 				content: "";
 				display: block;
 				position: absolute;
-				bottom: 16px;
-				left: 16px;
+				bottom: 24px;
+				left: 50%;
 				z-index: 1;
-				width: 64px;
-				height: 64px;
+				width: 48px;
+				height: 48px;
+				margin-left:-24px;
 				border-radius: 50% 50%;
 				background: url('/lg5-common/images/btn-video-play.svg') 50% 50% no-repeat;
+				background-size:100%;
 			}
 		}
 
 		.visual-area {
 			img {
-				//display: none;
-				width: 100%;
+				width:100%;
+				height:auto;
+				vertical-align:top;
+			}
+			&.animation-box {
+				.copy-boxing-area {
+					z-index:10;
+				}
+				.controller-wrap {
+					z-index:15;
+				}
 			}
 		}
 
 		.copy-boxing-area {
 			position: absolute;
 			z-index: 1;
-			top: 25px;
-			left: 20px;
+			top:0;
+			left:0;
+			right:0;
+			bottom:0;
 			margin: auto;
+			padding:64px 32px;
 			background-color: transparent;
-			font-size: 16px;
-			line-height: 24px;
-
-			.category,
-			.head {
+			@media screen and (max-width: 1200px) {
+				padding:32px 16px;
+			}
+			@media screen and (max-width: 990px) {
+				padding:16px;
+			}
+			@include mobile {
+				padding:32px 16px;
 			}
 
 			.category {
-				margin-bottom: 8px;
-				max-width: 220px;
+				@include eyebrow-h3;
 			}
 
-			.head {
-				margin-bottom: 16px;
-				h2, h3, h4, h5, h6 {
-					font-size: inherit;
-					line-height: inherit;
-				}
+			.head * {
+				@include title-h3;
 			}
 
 			.desc {
-				max-width: 320px;
-			}
-		}
-
-		&.text-white {
-			.copy-boxing-area {
-				* {
-					color: #fff;
-				}
-			}
-		}
-
-		&.text-black {
-			.copy-boxing-area {
-				.category,
-				.head {
-					color: #111;
-				}
-				.desc {
-					color: #616161;
-				}
+				@include bodycopy(h3, h3);
 			}
 		}
 	}
@@ -137,41 +133,6 @@
 		}
 	}
 
-	$color: (lightgray, dark, black, white);
-	@each $bg in $color {
-		&.bg-#{$bg} {
-			@if $bg == lightgray {
-				background-color: #f4f4f4;
-				.title {
-					&, * {
-						color: #111;
-					}
-				}
-			} @else if $bg == dark {
-				background-color: #333;
-				.title {
-					&, * {
-						color: #fff;
-					}
-                }
-			} @else if $bg == black {
-				background-color: #000;
-				.title {
-					&, * {
-						color: #fff;
-					}
-                }
-			} @else if $bg == white {
-				background-color: #fff;
-				.title {
-					&, * {
-						color: #111;
-					}
-				}
-			}
-		}
-	}
-
 	.inner {
 		position: relative;
 		font-size: 0;
@@ -186,14 +147,14 @@
 		vertical-align:top;
 		text-align: left;
 		&.tall {
-			@include square(w, 521px, 1284px);
+			@include square(w, 561px, 1380px);
 			@include mobile {
 				width:100%;
 			}
 		}
 		&.top, &.bottom {
 			width:100%;
-			@include square(w, (1284px - 521px - 24px), 1284px);
+			@include square(w, 795px, 1380px);
 			@include pc {
 				position: absolute;
 			}
@@ -210,13 +171,9 @@
 	}
 	&:not(.type-triple) .square-partition{
 		&.top, &.bottom {
-			@include square(h, 363px, 750px);
 			.square:first-child{
-				@include square(mr, 24px, (1284px - 521px - 24px));
+				@include square(mr, 24px, 795px);
 			}
-		}
-		&.bottom {
-			$margin : (24px * 100%) / 992px;
 		}
 	}
 	// square level
@@ -225,71 +182,22 @@
 		width:100%;
 		@include pc {
 			&.length-md {
-				@include square(w, 412px, (1284px - 521px - 24px));
+				@include square(w, 444px, 795px);
 			}
 			&.length-sm {
-				@include square(w, 303px, (1284px - 521px - 24px));
+				@include square(w, 327px, 795px);
 			}
 		}
 		@include mobile {
 			margin-top: 24px;
 		}
-		.acc-video-content {
-			position:absolute;
-			top:20px;
-			right:20px;
-			width:32px;
-			height:32px;
-			overflow:hidden;
-			z-index:9;
-			text-indent:-9999px;
-			&:before {
-				content:'';
-				display:inline-block;
-				position:absolute;
-				top:0;
-				right:0;
-				left:inherit;
-				width:32px;
-				height:32px;
-				margin:0;
-				background:url('/lg5-common/images/btn-AD-on.svg');
-				background-size:100% 100%;
-				border-radius:inherit;
-			}
+
+		.animation-box.size-type2 .animation-area video {
+			top:0;
+			left:50%;
+			width:auto;
+			height:100%;
+			transform:translateX(-50%);
 		}
-		//&.sub {
-		//	.acc-video-content {
-		//		position:absolute;
-		//		bottom:60px;
-		//		left:20px;
-		//		top:inherit;
-		//		right:inherit;
-		//		&:before {
-		//			left:0;
-		//		}
-		//	}
-		//}
-		//&.main .head{
-		//	max-width: 300px;
-		//	font-size:32px;
-		//	line-height:36px;
-		//	margin-top:2px;
-		//}
-		//&.sub .head{
-		//	max-width:250px;
-		//	font-size:28px;
-		//	line-height:32px;
-		//	margin-top:1px;
-		//}
-		//&.main {
-		//	.category,
-		//	.head,
-		//	.desc {
-		//	}
-		//	&.text-white {
-		//		background:#000;
-		//	}
-		//}
 	}
 }

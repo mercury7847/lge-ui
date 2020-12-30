@@ -19,168 +19,282 @@
         .bg-white : #FFFFFF 색상 배경
         .bg-lightgray : #F4F4F4 색상 배경
         .bg-dark : #333333 색상 배경
-        .bg-black : #000000 색상 배경
+		.bg-black : #000000 색상 배경
+		
+		[carousel 설정]
+		item 10개 이상 일 때 
+		.carousel-box : carousel 활성화
+		.non-carousel-box : carousel 비 활성화
+
+		[.list-box (carousel .item-box 갯수 설정)영역 옵션]
+		.ui_carousel_5_slider : 5개,
+		.ui_carousel_4_slider : 4개,
+		.ui_carousel_3_slider : 3개,
+		.ui_carousel_2_slider : 2개
 	-->
 	<section class="component KRC0002 @@bg-color">
 		<div class="component-inner">
 			<!-- 1. headline -->
 			<div class="title">@@headline</div>
 			<!-- // 1. headline -->
-			<div class="non-carousel-box @@item">
-				<div class="list-box">
-					<ul class="items">
+			
+			<div class="vertical-box @@if ( context.carousel) {carousel-box} @@if ( !context.carousel) {non-carousel-box} @@item">
+				<div class="list-box @@if ( context.carousel) {ui_carousel_slider} @@sliderClass">
+					@@if ( context.carousel) {
+					<div class="indi-wrap">
+						<ul class="indi-conts ui_carousel_dots">
+							<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+						</ul>
+					</div>
+					<div class="slide-content ui_carousel_list">
+					}
+						<div class="items @@if ( context.carousel) {ui_carousel_track}">
+							@@if ( context.carousel) {
+							<div class="item-box ui_carousel_slide">
+							}	
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img1.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<!-- [KR수정_201222] 버튼 DOM 통일 수정 -->
+										<a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="text-link" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}"><span>@@view-page-link.text</span></a>
+										<!-- // [KR수정_201222] 버튼 DOM 통일 수정 -->
+									</div>
+									<!-- // 3. cta -->
+								</div>
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img1.jpg" alt="" />
-								</a>
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img2.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<!-- [KR수정_201222] 버튼 DOM 통일 수정 -->
+										<a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="text-link" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}"><span>@@view-page-link.text</span></a>
+										<!-- // [KR수정_201222] 버튼 DOM 통일 수정 -->
+									</div>
+									<!-- // 3. cta -->
+								</div>
+							@@if ( context.carousel) {	
 							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							}	
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img2.jpg" alt="" />
-								</a>
+							@@if ( context.carousel) {
+							<div class="item-box ui_carousel_slide">
+							}	
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img3.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<!-- [KR수정_201222] 버튼 DOM 통일 수정 -->
+										<a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="text-link" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}"><span>@@view-page-link.text</span></a>
+										<!-- // [KR수정_201222] 버튼 DOM 통일 수정 -->
+									</div>
+									<!-- // 3. cta -->
+								</div>
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img3.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<!-- [KR수정_201222] 버튼 DOM 통일 수정 -->
+										<a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="text-link" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}"><span>@@view-page-link.text</span></a>
+										<!-- // [KR수정_201222] 버튼 DOM 통일 수정 -->
+									</div>
+									<!-- // 3. cta -->
+								</div>
+							@@if ( context.carousel) {	
 							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							}	
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img3.jpg" alt="" />
-								</a>
-							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							@@if ( context.carousel) {
+							<div class="item-box ui_carousel_slide">
+							}	
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img4.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<!-- [KR수정_201222] 버튼 DOM 통일 수정 -->
+										<a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="text-link" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}"><span>@@view-page-link.text</span></a>
+										<!-- // [KR수정_201222] 버튼 DOM 통일 수정 -->
+									</div>
+									<!-- // 3. cta -->
+								</div>
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img4.jpg" alt="" />
-								</a>
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img5.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<!-- [KR수정_201222] 버튼 DOM 통일 수정 -->
+										<a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="text-link" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}"><span>@@view-page-link.text</span></a>
+										<!-- // [KR수정_201222] 버튼 DOM 통일 수정 -->
+									</div>
+									<!-- // 3. cta -->
+								</div>
+							@@if ( context.carousel) {	
 							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							}	
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img5.jpg" alt="" />
-								</a>
-							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							@@if ( context.carousel) {
+							<div class="item-box ui_carousel_slide">
+							}	
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img6.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<!-- [KR수정_201222] 버튼 DOM 통일 수정 -->
+										<a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="text-link" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}"><span>@@view-page-link.text</span></a>
+										<!-- // [KR수정_201222] 버튼 DOM 통일 수정 -->
+									</div>
+									<!-- // 3. cta -->
+								</div>
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img6.jpg" alt="" />
-								</a>
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img7.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<!-- [KR수정_201222] 버튼 DOM 통일 수정 -->
+										<a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="text-link" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}"><span>@@view-page-link.text</span></a>
+										<!-- // [KR수정_201222] 버튼 DOM 통일 수정 -->
+									</div>
+									<!-- // 3. cta -->
+								</div>
+							@@if ( context.carousel) {	
 							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							}	
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img7.jpg" alt="" />
-								</a>
+							@@if ( context.carousel) {
+							<div class="item-box ui_carousel_slide">
+							}	
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img8.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<!-- [KR수정_201222] 버튼 DOM 통일 수정 -->
+										<a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="text-link" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}"><span>@@view-page-link.text</span></a>
+										<!-- // [KR수정_201222] 버튼 DOM 통일 수정 -->
+									</div>
+									<!-- // 3. cta -->
+								</div>
+								
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img9.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<!-- [KR수정_201222] 버튼 DOM 통일 수정 -->
+										<a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="text-link" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}"><span>@@view-page-link.text</span></a>
+										<!-- // [KR수정_201222] 버튼 DOM 통일 수정 -->
+									</div>
+									<!-- // 3. cta -->
+								</div>
+							@@if ( context.carousel) {	
 							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							}	
 
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img8.jpg" alt="" />
-								</a>
+							@@if ( context.carousel) {
+							<div class="item-box ui_carousel_slide">
+							}	
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img10.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<!-- [KR수정_201222] 버튼 DOM 통일 수정 -->
+										<a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="text-link" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}"><span>@@view-page-link.text</span></a>
+										<!-- // [KR수정_201222] 버튼 DOM 통일 수정 -->
+									</div>
+									<!-- // 3. cta -->
+								</div>
+								<div class="item">
+									<!-- 2. image -->
+									<div class="visual-area">
+										<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
+											<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img10.jpg" alt="" />
+										</a>
+									</div>
+									<!-- // 2. image -->
+									<!-- 3. cta -->
+									<div class="bottom-btn">
+										<!-- [KR수정_201222] 버튼 DOM 통일 수정 -->
+										<a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="text-link" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}"><span>@@view-page-link.text</span></a>
+										<!-- // [KR수정_201222] 버튼 DOM 통일 수정 -->
+									</div>
+									<!-- // 3. cta -->
+								</div>
+							@@if ( context.carousel) {
 							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
-						
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img9.jpg" alt="" />
-								</a>
-							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
-						
-						<li class="item">
-							<!-- 2. image -->
-							<div class="visual-area">
-								<a  href="@@image-area.link-url1" target="@@image-area.link-target1" data-link-area="vertical_selector_b2b-image" data-link-name="{image alt}">
-									<img class=" lazyload" data-src="/lg5-common/images/KRC0002/@img10.jpg" alt="" />
-								</a>
-							</div>
-							<!-- // 2. image -->
-							<!-- 3. cta -->
-							<div class="bottom-btn">
-								<span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text ico-right view-page" data-link-area="vertical_selector_b2b-cta" data-link-name="{link text}">@@view-page-link.text</a></span>
-							</div>
-							<!-- // 3. cta -->
-						</li>
+							}
 
-					</ul>
+						</div>
+					</div>
+					@@if ( context.carousel) {
+					<div class="slide-controls">
+						<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+						<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+					</div>
+					}
 				</div>
 			</div>
 		</div>

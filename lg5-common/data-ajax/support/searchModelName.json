@@ -1,0 +1,9 @@
+{
+    "status": "success",
+    "message":null,
+    "data": {
+        "text": "제품 오른쪽 뒷면에 스티커가 부착되어 있습니다.",
+        "imgPath": "/lg5-common/images/dummy/@img-example.jpg",
+        "imgAlt": "{{서브카테고리명}}의 모델명 및 제조번호 확인 이미지"
+    }
+}
