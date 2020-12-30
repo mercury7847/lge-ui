@@ -4,9 +4,6 @@
 
 .animation-box {
 	position:relative;
-	img { // 추후 삭제
-		display:none;
-	}
 	& .visual-area + .animation-area {
 		z-index:2;
 	}
