@@ -35,7 +35,7 @@ lines.forEach(function (line, index) {
     });
 
     if (!avoid && line != '' && line != '\n') {
-        list.push(PURGE_ROOT_URL + line);
+        list.push(PURGE_ROOT_URL + '/' + line);
     }
 });
 
