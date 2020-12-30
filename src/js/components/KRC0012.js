@@ -11,7 +11,8 @@ $(window).ready(function(){
             slidesToScroll: 1,
             prevArrow:'.btn-arrow.prev',
             nextArrow:'.btn-arrow.next',
-            adaptiveHeight:true
+            adaptiveHeight:true,
+            lazyLoad:'progressive'
         });
     });
 })
