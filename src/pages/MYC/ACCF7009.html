@@ -35,7 +35,7 @@
 
                                 <!-- 리스트 -->
                                 <ul class="adressListWrap">
-                                    <li class="lists">
+                                    <!-- <li class="lists">
                                         <div class="inner">
                                             <div class="infos">
                                                 <div class="title">
@@ -78,7 +78,7 @@
                                                 <button type="button" class="btn size border"><span>삭제</span></button>
                                             </div>
                                         </div>
-                                    </li>
+                                    </li> -->
                                 </ul>
                                 <!-- // 리스트 -->
 
@@ -97,5 +97,13 @@
         
         @@include('./common/footer.html')
     </div>
+
+    <!-- 주소입력 popup -->
+    @@include('./common/popup/RMSF9001_pop1.html', {
+        popupID: 'popup-editAdress',
+        title : '주소지 수정',
+        btn : '주소 저장'
+    })
+    <!-- // 주소입력 popup -->
 </body>
 </html>
