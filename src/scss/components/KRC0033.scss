@@ -23,11 +23,6 @@
 		}
 	}
 	.animation-box {
-		.animation-area {
-			position: relative;
-			top: auto;
-			left: auto;
-		}
 		.play-animaion-btn,
 		.controller-wrap {
 			z-index: 11;
@@ -108,33 +103,24 @@
 						width:100%;
 					}
 					.title * {
-						@include font-large-2;
-						font-weight:700;
+						@include title-h3;
 					}
 					.sub-tit {
+						@include bodycopy(h3, h3);
 						margin-top:8px;
-						@include font-medium;
 						font-weight:700;
 						@include mobile {
 							margin-top:6px;
 						}
+						&:first-child {
+							margin-top:0;
+						}
 					}
 					.body-copy {
-						margin-top:16px;
-						@include font-medium;
-						@include mobile {
-							margin-top:14px;
-						}
+						@include bodycopy(h3, h3);
 					}
 					.cta-box {
-						margin-top:24px;
-						.btn.border,
-						.text-link {
-							margin-left:16px;
-							&:first-child {
-								margin-left:0;
-							}
-						}
+						@include cta-btn;
 					}
 					.thumbnail-box {
 						margin-top:24px;
