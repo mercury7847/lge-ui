@@ -4,6 +4,7 @@
     <div class="skip-content">
         <a href="#content" id="skipToContent">본문 바로가기</a>
     </div>
+    <!-- 20201230 자바스크립트 안내 추가 -->
     <!-- 자바스크립트 동작 안됨 안내 -->
     <div class="non-javascript">
         <p>현재 브라우저에서 자바스크립트 적용이 불가합니다. LG전자 웹사이트, 상품, 서비스의 이용을 위해 자바스크립트를 확인해주세요.</p>
@@ -14,6 +15,7 @@
             <div class="utility">
                 <ul class="shortcut">
                     <li class="search"><a href="#"><em class="blind">검색</em></a></li>
+                    <!-- 20201230 수정 -->
                     <!-- 로그인 전 -->
                     <li class="mypage before-login">
                         <!-- [D] Hover, Focus - .on 추가 -->
@@ -55,10 +57,12 @@
                             9
                         </span>
                     </li>
+                    <!-- // 20201230 수정 -->
                 </ul>
             </div>
 
             @@if (context.mobileCase === undefined || context.mobileCase === "all" || context.mobileCase === "main") {
+            <!-- 20201230 모바일 메뉴 삭제 및 수정 -->
             <!-- Mobile 메인 메뉴 -->
             <div class="mobile-nav-wrap">
                 <ul class="nav">
@@ -78,7 +82,7 @@
                 <a href="#n" class="nav-item">청소기</a>
                 <div class="nav-category-container">
                     <ul>
-                        <li><a href="#" class="on">워시타워</a></li>
+                        <li><a href="#" class="on">워시타워</a></li><!-- 20201230 클래스 수정 (기존 .active) -->
                         <li><a href="#">세탁기</a></li>
                         <li><a href="#">건조기</a></li>
                         <li><a href="#">스타일러</a></li>
@@ -120,6 +124,7 @@
                 <div class="nav-inner">
                     <div class="nav-brand-gate">
                         <span class="title">브랜드관</span>
+                        <!-- 20201230 브랜드 추가 -->
                         <!-- 브랜드 로고 이미지 사용의 경우 -->
                         <ul class="brand-link">
                             <li><a href="#"><img src="/lg5-common/images/header/logo-signature.svg" alt="LG SIGNATURE"></a></li>
@@ -134,10 +139,12 @@
                         </ul>
                         -->
                     </div>
+                    <!-- 20201230 레이어 내 메뉴 위치/텍스트 수정되었으니 전체적으로 확인 -->
                     <ul class="nav">
                         <!-- [D] Click, Hover - .active 추가 -->
                         <li class="nav-category">
                             <!-- [D] [1Depth] Click, Hover - .active 추가 -->
+                            <!-- 20201230 텍스트 수정 -->
                             <a href="#" class="nav-item">
                                 스토어
                                 <i class="icon-nav"><em class="blind">스토어 메뉴 열기</em></i>
@@ -186,6 +193,7 @@
                                                                 </li>
                                                             </ul>
                                                         </div>
+                                                        <!-- 20201230 클래스/텍스트 추가 및 수정 -->
                                                         <div class="column additional-category">
                                                             <div class="category-related">
                                                                 <ul>
@@ -200,7 +208,9 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
+                                                        <!-- // 20201230 클래스/텍스트 추가 및 수정 -->
                                                         <!-- 슬라이드 이미지 배너 -->
+                                                        <!-- 20201230 .banner-text 돔 수정 / 컨트롤러 추가 -->
                                                         <div class="column category-banner ui_carousel_slider">
                                                             <div class="indi-wrap">
                                                                 <ul class="ui_carousel_dots">
@@ -236,10 +246,12 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
+                                                            <!-- 20201230 컨트롤러 추가 -->
                                                             <div class="slide-controls">
                                                                 <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
                                                                 <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                                                             </div>
+                                                            <!-- // 20201230 컨트롤러 추가 -->
                                                         </div>
                                                         <!-- // 슬라이드 이미지 배너 -->
                                                     </div>
@@ -284,6 +296,7 @@
                                                                 </li>
                                                             </ul>
                                                         </div>
+                                                        <!-- 20201230 클래스/텍스트 추가 및 수정 -->
                                                         <div class="column additional-category">
                                                             <div class="category-related">
                                                                 <ul>
@@ -298,7 +311,9 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
+                                                        <!-- // 20201230 클래스/텍스트 추가 및 수정 -->
                                                         <!-- 슬라이드 이미지 배너 -->
+                                                        <!-- 20201230 .banner-text 돔 수정 / 컨트롤러 추가 -->
                                                         <div class="column category-banner ui_carousel_slider">
                                                             <div class="indi-wrap">
                                                                 <ul class="ui_carousel_dots">
@@ -398,6 +413,7 @@
                                                                 <li><a href="#" class="category-item">빌트인가전</a></li>
                                                             </ul>
                                                         </div>
+                                                        <!-- 20201230 클래스/텍스트 추가 및 수정 -->
                                                         <div class="column additional-category">
                                                             <div class="category-related">
                                                                 <ul>
@@ -412,7 +428,9 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
+                                                        <!-- // 20201230 클래스/텍스트 추가 및 수정 -->
                                                         <!-- 슬라이드 이미지 배너 -->
+                                                        <!-- 20201230 .banner-text 돔 수정 / 컨트롤러 추가 -->
                                                         <div class="column category-banner ui_carousel_slider">
                                                             <div class="indi-wrap">
                                                                 <ul class="ui_carousel_dots">
@@ -501,6 +519,7 @@
                                                                 </li>
                                                             </ul>
                                                         </div>
+                                                        <!-- 20201230 클래스/텍스트 추가 및 수정 -->
                                                         <div class="column additional-category">
                                                             <div class="category-related">
                                                                 <ul>
@@ -515,7 +534,9 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
+                                                        <!-- // 20201230 클래스/텍스트 추가 및 수정 -->
                                                         <!-- 슬라이드 이미지 배너 -->
+                                                        <!-- 20201230 .banner-text 돔 수정 / 컨트롤러 추가 -->
                                                         <div class="column category-banner ui_carousel_slider">
                                                             <div class="indi-wrap">
                                                                 <ul class="ui_carousel_dots">
@@ -592,6 +613,7 @@
                                                                 <li><a href="#" class="category-item">가습기</a></li>
                                                             </ul>
                                                         </div>
+                                                        <!-- 20201230 클래스/텍스트 추가 및 수정 -->
                                                         <div class="column additional-category">
                                                             <div class="category-related">
                                                                 <ul>
@@ -606,7 +628,9 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
+                                                        <!-- // 20201230 클래스/텍스트 추가 및 수정 -->
                                                         <!-- 슬라이드 이미지 배너 -->
+                                                        <!-- 20201230 .banner-text 돔 수정 / 컨트롤러 추가 -->
                                                         <div class="column category-banner ui_carousel_slider">
                                                             <div class="indi-wrap">
                                                                 <ul class="ui_carousel_dots">
@@ -679,6 +703,7 @@
                                                                 </li>
                                                             </ul>
                                                         </div>
+                                                        <!-- 20201230 클래스/텍스트 추가 및 수정 -->
                                                         <div class="column additional-category">
                                                             <div class="category-related">
                                                                 <ul>
@@ -696,7 +721,9 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
+                                                        <!-- // 20201230 클래스/텍스트 추가 및 수정 -->
                                                         <!-- 슬라이드 이미지 배너 -->
+                                                        <!-- 20201230 .banner-text 돔 수정 / 컨트롤러 추가 -->
                                                         <div class="column category-banner ui_carousel_slider">
                                                             <div class="indi-wrap">
                                                                 <ul class="ui_carousel_dots">
@@ -752,6 +779,7 @@
                                                                 <li><a href="#" class="category-item">클렌징 기기</a></li>
                                                             </ul>
                                                         </div>
+                                                        <!-- 20201230 클래스/텍스트 추가 및 수정 -->
                                                         <div class="column additional-category">
                                                             <div class="category-related">
                                                                 <ul>
@@ -766,7 +794,9 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
+                                                        <!-- // 20201230 클래스/텍스트 추가 및 수정 -->
                                                         <!-- 슬라이드 이미지 배너 -->
+                                                        <!-- 20201230 .banner-text 돔 수정 / 컨트롤러 추가 -->
                                                         <div class="column category-banner ui_carousel_slider">
                                                             <div class="indi-wrap">
                                                                 <ul class="ui_carousel_dots">
@@ -948,6 +978,7 @@
                                                             </ul>
                                                         </div>
                                                         <!-- 슬라이드 이미지 배너 -->
+                                                        <!-- 20201230 .banner-text 돔 수정 / 컨트롤러 추가 -->
                                                         <div class="column category-banner ui_carousel_slider">
                                                             <div class="indi-wrap">
                                                                 <ul class="ui_carousel_dots">
@@ -1025,6 +1056,7 @@
                                                             </a>
                                                         </div>
                                                         <!-- 슬라이드 이미지 배너 -->
+                                                        <!-- 20201230 .banner-text 돔 수정 / 컨트롤러 추가 -->
                                                         <div class="column category-banner ui_carousel_slider">
                                                             <div class="indi-wrap">
                                                                 <ul class="ui_carousel_dots">
@@ -1159,6 +1191,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
+                                            <!-- 20201230 클래스/텍스트 추가 및 수정 -->
                                             <div class="column additional-category">
                                                 <div class="category-related">
                                                     <ul>
@@ -1172,7 +1205,9 @@
                                                     </ul>
                                                 </div>
                                             </div>
+                                            <!-- // 20201230 클래스/텍스트 추가 및 수정 -->
                                             <!-- 슬라이드 이미지 배너 -->
+                                            <!-- 20201230 .banner-text 돔 수정 / 컨트롤러 추가 -->
                                             <div class="column category-banner ui_carousel_slider">
                                                 <div class="indi-wrap">
                                                     <ul class="ui_carousel_dots">
@@ -1244,6 +1279,7 @@
                                                 </a>
                                             </div>
                                             <!-- 슬라이드 이미지 배너 -->
+                                            <!-- 20201230 .banner-text 돔 수정 / 컨트롤러 추가 -->
                                             <div class="column category-banner ui_carousel_slider">
                                                 <div class="indi-wrap">
                                                     <ul class="ui_carousel_dots">
@@ -1307,6 +1343,7 @@
                                                 </a>
                                             </div>
                                             <!-- 슬라이드 이미지 배너 -->
+                                            <!-- 20201230 .banner-text 돔 수정 / 컨트롤러 추가 -->
                                             <div class="column category-banner ui_carousel_slider">
                                                 <div class="indi-wrap">
                                                     <ul class="ui_carousel_dots">
@@ -1472,6 +1509,7 @@
                                                 </ul>
                                             </div>
                                             <!-- 슬라이드 이미지 배너 -->
+                                            <!-- 20201230 .banner-text 돔 수정 / 컨트롤러 추가 -->
                                             <div class="column category-banner ui_carousel_slider">
                                                 <div class="indi-wrap">
                                                     <ul class="ui_carousel_dots">
@@ -1512,6 +1550,7 @@
                         </li>
                     </ul>
                 </div>
+                <!-- 20201230 마케팅 퀵링크 추가 -->
                 <!-- Mobile 마케팅 퀵링크 -->
                 <div class="marketing-link">
                     <div class="ui_carousel_slider">
@@ -1551,6 +1590,7 @@
                 <!-- // 메뉴 슬라이드 버튼 -->
                 <div class="dimmed"></div>
             </div>
+            <!-- 20201230 수정 -->
             <div class="shortcut-service-link">
                 <span class="title">바로가기</span>
                 <ul class="links">
@@ -1569,6 +1609,7 @@
                     <li><a href="#" class="business" target="_blank" title="새창열림">B2B</a></li>
                 </ul>
             </div>
+            <!-- // 20201230 수정 -->
             <div class="mobile-nav-banner">
                 <div class="banner-inner">
                     <img data-src="/lg5-common/images/header/@banner-m.jpg" alt="" class="lazyload">

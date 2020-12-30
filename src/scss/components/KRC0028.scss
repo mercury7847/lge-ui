@@ -4,25 +4,24 @@
 
 .KRC0028 {
     @include mobile {
-        padding: 0;
         .component-inner {
             padding: 0;
         }
     }
     .inner {
-        .title * {
-            @include title-h2;
+        @include mobile {
+            padding-bottom:32px;
         }
-
-        .ui_carousel_list {
-            overflow:hidden;
-            .ui_carousel_track {
-                @include clearfix;
+        .title * {
+            margin-bottom:56px;
+            @include title-h2;
+            @include mobile {
+                margin-bottom:28px;
+                padding:0 16px;
             }
         }
 
         .visual-box {
-            margin-top:56px;
             .item {
                 .img-box {
                     overflow:hidden;
@@ -36,6 +35,9 @@
                 .txt-box {
                     padding:0 8.5%;
                     @include bodycopy(h2, h2);
+                    @include mobile {
+                        padding:0 16px;
+                    }
                 }
             }
         }
@@ -44,7 +46,6 @@
             display:none !important;
             @include mobile {
                 display:block !important;
-                margin-top:48px;
             }
         }
 
