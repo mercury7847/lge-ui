@@ -45,8 +45,6 @@
                 self.$pdpImage = self.$pdpVisual.find('div.pdp-visual-image');
                 //데스크탑용 갤러리 썸네일리스트
                 self.$pdpThumbnail = self.$pdpVisual.find('div.pdp-thumbnail-nav div.inner div.pdp-thumbnail-list ul.thumbnail-list');
-                //PDP 더보기
-                //self.$pdpMoreInfo = self.$pdpVisual.find('div.pdp-more-info');
                 //선택된 데스크탑 썸네일
                 self.$selectItemTarget = self.$pdpThumbnail.find('li.active');
 
@@ -60,7 +58,9 @@
                 //모바일용 갤러리 인덱스
                 self.$slideNumber = self.$pdpMobileVisual.find('div.slide-number .current');
 
-
+                //PDP 더보기
+                self.$pdpMoreInfo = self.$component.find('div.pdp-visual-wrap div.pdp-more-info');
+                
                 //PDP모달
                 self.$popPdpVisual = $('#pop-pdp-visual');
                 //PDP모달 360
@@ -137,14 +137,6 @@
                     
                     //pinchZoom.update(true);
                 });
-
-                /*
-                //PDP 갤러리 더보기
-                self.$pdpMoreInfo.on('click','a',function(e) {
-                    e.preventDefault();
-                    self.requestModal(this);
-                });
-                */
                                 
                 //팝업 모달뷰 버튼
                 /*
@@ -197,6 +189,13 @@
                 self.$pdpMobileSlider.on('carouselafterchange', function(e,target,index){
                     self.$slideNumber.text(index + 1);
                 });
+
+                //PDP 갤러리 더보기
+                self.$pdpMoreInfo.on('click','a.btn-link.popup', function(e) {
+                    e.preventDefault();
+                    self.requestModal(this);
+                });
+
 
                 //비교하기
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').on('click', function(e) {
@@ -374,6 +373,11 @@
                     $dropDown.vcDropdown("close");
                     self.requestSelectCareSiblingOption($this.parents('.care-sibling-option'));
                 });
+
+                self.$pdpInfo.on('click','a.btn-link.popup', function(e) {
+                    e.preventDefault();
+                    self.requestModal(this);
+                });
             },
 
             //팝업 버튼 이벤트
@@ -469,18 +473,20 @@
                         self.pinchZoom.update(true);
                         break;
                     case "video":
+                        /*
                         self.$popPdpVisualVideo.find('div.thumnail img').attr({
                             'data-pc-src':item.imagePC,
-                            'data-,-src':item.Mobile,
+                            'data-m-src':item.imageMobile,
                             'alt':item.alt
                         });
+                        */
                         self.$popPdpVisualVideo.find('div.thumnail a').attr({
                             'data-src':item.adUrl,
                             'data-link-name':item.linkName,
                             'aria-describedby':item.alt
                         });
                         self.$popPdpVisualVideo.find('iframe').attr('src',item.videoUrl);
-                        self.$popPdpVisualVideo.vcImageSwitch('reload');
+                        //self.$popPdpVisualVideo.vcImageSwitch('reload');
                         self.$popPdpVisualImage.hide();
                         self.$popPdpVisualVideo.show();
                         self.$popPdpVisualAnimation.hide();
@@ -504,7 +510,6 @@
             },
 
             //ajax 팝업뷰 뛰우기
-            /*
             requestModal: function(dm) {
                 var self = this;
                 var ajaxUrl = $(dm).attr('href');
@@ -516,7 +521,6 @@
             openModalFromHtml: function(html) {
                 $('#pdp-modal').html(html).vcModal();
             },
-            */
 
             //아이템 찜하기
             requestWishItem: function(itemID, wish) {
