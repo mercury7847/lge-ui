@@ -300,30 +300,39 @@ CS.MD.commonModel = function() {
             });
 
             // 검색어 검색
-            self.$searchKeywordBox.find('#keyword').on('keydown', function(e) {
-                var opt = self.options,
+            self.$searchKeywordBox.find('#keyword').on('input', function(e) {
+                var $this = $(this),
+                    opt = self.options,
                     result;
-                
-                // if (e.keyCode == 13) {
-                //     e.preventDefault();
+                    
+                result = validation.validate(['keyword']);
 
-                    result = validation.validate(['keyword']);
+                if (result.success) {
+                    self.$searchCategoryBox.removeClass(opt.stepActiveClass);
+                    self.$searchModelBox.addClass(opt.stepActiveClass);
 
-                    if (result.success) {
-                        self.$searchCategoryBox.removeClass(opt.stepActiveClass);
-                        self.$searchModelBox.addClass(opt.stepActiveClass);
-    
-                        var updateObj = {
-                            desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
-                        }
-                        var param = {
-                            keyword: self.$inputKeyword.val().toUpperCase()
-                        };
-    
-                        self.update(updateObj);
-                        self._requestData(param);
+                    var updateObj = {
+                        desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
                     }
-                // }
+                    var param = {
+                        keyword: self.$inputKeyword.val().toUpperCase()
+                    };
+
+                    self.update(updateObj);
+                    self._requestData(param);
+                } else {
+                    if ($this.val() == '') {
+                        // var updateObj = {
+                        //     desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
+                        // }
+                        // var param = {
+                        //     keyword: self.$inputKeyword.val().toUpperCase()
+                        // };
+    
+                        // self.update(updateObj);
+                        // self._requestData(param);
+                    }
+                }
             });
             self.$searchKeywordBox.find('.btn-search').on('click', function() {
                 var opt = self.options,
