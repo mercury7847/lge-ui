@@ -121,7 +121,7 @@
             }
             @include mobile {
                 position:absolute;
-                top:calc((100% - 32px) / 2);
+                top:50%;
                 transform:translateY(-50%);
                 z-index:50;
                 &.prev {
