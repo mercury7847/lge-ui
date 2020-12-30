@@ -11,19 +11,20 @@
 		bottom:0;
 		left:0;
 		z-index:1;
-		@include pc {
-			.visual.pc {
-				position:absolute;
-				top:0;
-				right:0;
-				bottom:0;
-				left:0;
-				background-size:cover !important;
-				font-size:0;
-				color:transparent;
-			}
-			.visual.mob {
-				display:none;
+		text-align:center;
+		overflow:hidden;
+		img {
+			width:100%;
+			max-width:100%;
+			height:auto;
+			vertical-align:top;
+		}
+		.animation-area {
+			top:0;
+			@include mobile {
+				position:relative;
+				top:auto;
+				transform:translateY(0);
 			}
 		}
 		@include mobile {
@@ -32,27 +33,6 @@
 			right:auto;
 			bottom:auto;
 			left:auto;
-			.visual.pc {
-				display:none;
-			}
-			.visual.mob {
-				display:block;
-				img {
-					width:100%;
-					height:auto;
-					vertical-align:top;
-				}
-			}
-		}
-		.animation-area {
-			top:50%;
-			height:auto;
-			transform:translateY(-50%);
-			@include mobile {
-				position:relative;
-				top:auto;
-				transform:translateY(0);
-			}
 		}
 	}
 	.text-overlay {
@@ -76,7 +56,7 @@
 			}
 			.inner {
 				position:relative;
-				width:80%;
+				width:calc(50% - 12px);
 				max-width:678px;
 				&.col-left {
 					margin-right:auto;
@@ -122,21 +102,21 @@
 						margin-top:8px;
 					}
 					.title * {
-						color:#222;
-						@include font-large-2;
-						font-weight:700;
+						@include title-h3;
 					}
 					.sub-title {
-						color:#222;
-						@include font-large;
+						@include bodycopy(h3, h3);
+						margin-top:8px;
 						font-weight:700;
+						@include mobile {
+							margin-top:6px;
+						}
 					}
 					.body-copy {
-						color:#767676;
-						@include font-medium;
+						@include bodycopy(h3, h3);
 					}
 					.cta-box {
-						margin-top:16px;
+						@include cta-btn;
 					}
 				}
 			}
