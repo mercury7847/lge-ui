@@ -1,5 +1,5 @@
 (function() {
-    var listItemTemplate = '<li class="box {{#if disabled}}disabled{{/if}}" data-id={{id}}>' +
+    var listItemTemplate = '<li class="box {{#if disabled}}disabled{{/if}}" data-id={{id}} data-sku={{sku}} data-wishListId={{wishListId}} data-wishItemId={{wishItemId}}>' +
         '<div class="col-table">' +
             '<div class="col"><div class="product-info">' +
                 '<div class="thumb"><a href="{{pdpUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
@@ -48,19 +48,20 @@
 
                 self.$list.on('click','li input[type=checkbox]', function(e) {
                     //찜하기
-                    var _id = $(this).parents('li').attr('data-id');
+                    var $li = $(this).parents('li');
                     var checked = $(this).is(':checked');
-                    self.requestWish(_id, checked);
+                    self.requestWish($li, checked);
                 });
 
                 self.$list.on('click','li button', function(e) {
-                    var _id = $(this).parents('li').attr('data-id');
+                    var $li = $(this).parents('li');
                     if($(this).hasClass('btn-delete')) {
                         //삭제
+                        var _id = $li.attr('data-id');
                         self.requestRemove(_id);
                     } else {
                         //장바구니
-                        self.requestCart(_id);
+                        self.requestCart($li);
                     }
                 });
             },
@@ -94,10 +95,15 @@
                 });
             },
 
-            requestCart: function(_id) {
+            requestCart: function($dm) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-cart-url');
-                lgkorUI.requestAjaxDataPost(ajaxUrl, {"id":_id}, function(result){
+                var postData = {
+                    "sku":$dm.attr('data-sku'),
+                    "wishListId":$dm.attr('data-wishListId'),
+                    "wishItemId":$dm.attr('data-wishItemId'),
+                }
+                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     var data = result.data;
                     if(lgkorUI.stringToBool(data.success)) {
                         $(window).trigger("toastshow","장바구니에 추가 되었습니다.");
@@ -105,10 +111,15 @@
                 });
             },
 
-            requestWish: function(_id, wish) {
+            requestWish: function($dm, wish) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-wish-url');
-                var postData = {"itemID":_id, "wish":wish};
+                var postData = {
+                    "sku":$dm.attr('data-sku'),
+                    "wishListId":$dm.attr('data-wishListId'),
+                    "wishItemId":$dm.attr('data-wishItemId'),
+                    "wish":wish
+                }
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     var data = result.data;
                     if(lgkorUI.stringToBool(data.success)) {
@@ -116,7 +127,7 @@
                             $(window).trigger("toastshow","찜하기 되었습니다.");
                         }
                     } else {
-                        self.$list.find('li.box[data-id="'+_id+'"] span.chk-wish-wrap input').prop("checked",!wish);
+                        $dm.find('span.chk-wish-wrap input').prop("checked",!wish);
                     }
                 });
             },
