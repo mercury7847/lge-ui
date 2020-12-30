@@ -138,9 +138,9 @@
             .text-wrap {
                 .inner {
                     .text-block {
-                        max-width:60%;
+                        width:60%;
                         @include mobile {
-                            max-width:100%;
+                            width:100%;
                         }
                     }
                 }
@@ -219,6 +219,7 @@
                     .inner {
                         .text-block {
                             margin-left:auto;
+                            text-align:left;
                         }
                     }
                 }

@@ -10,21 +10,6 @@
 		max-width:1600px;
 		margin:0 auto;
 	}
-	// align option 
-    $align : (align-left, align-center, align-right);
-    @each $alignClass in $align {
-        .#{$alignClass} {
-            @if $alignClass == align-left {
-                text-align:left;
-            }
-            @else if $alignClass == align-center {
-                text-align:center;
-            }
-            @else if $alignClass == align-right {
-                text-align:right;
-            }
-        }
-    }
 	
 	position:relative;
 	// common
