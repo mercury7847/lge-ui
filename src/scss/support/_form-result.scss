@@ -48,7 +48,6 @@
             li {
                 display: block;
                 position: relative;
-                width: 33.3333%;
                 &::before {
                     display: block;
                     content: '';
@@ -66,9 +65,19 @@
             }
             @include pc {
                 li {
+                    width: 33.3333%;
                     &:nth-child(n+1):nth-child(-n+3) {
                         margin-top: 0;
                     }
+                }
+            }
+            @include mobile {
+                display: block;
+                li {
+                    margin-top: 20px;
+                }
+                .title {
+                    width: 100%;
                 }
             }
         }
