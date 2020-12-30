@@ -215,6 +215,7 @@
                 background: url("/lg5-common/images/icons/icon-search.svg") no-repeat center center;
             }
             &.mypage {
+                display: none;
                 background: url("/lg5-common/images/icons/icon-person.svg") no-repeat center center;
                 &.after-login {
                     position: relative;

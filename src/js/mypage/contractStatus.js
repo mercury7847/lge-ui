@@ -32,7 +32,7 @@
     function init(){
         console.log("contractStatus start!!");
 
-        //CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
+        CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
         INFO_MODIFY_CONFIRM = $('.contents.mypage').data('modifyConfirmUrl');
         INFO_MODIFY_SAVE = $('.contents.mypage').data('modifySaveUrl');
         PAYMENT_METHOD_CONFIRM = $('.contents.mypage').data('paymentMethodUrl');
@@ -201,10 +201,9 @@
             if(chk) $('#popup-selfClearing').vcModal('close');
         });
 
-        // $('select[name=contractInfo]').on('change', function(e, data){
-        //     var info = $(this).find('option').eq(data.selectedIndex).val().split("|");
-        //     changeContractInfo(info);
-        // });
+        $('select[name=contractInfo]').on('change', function(e, data){
+            changeContractInfo();
+        });
     }
 
     //접보변경 확인...
@@ -261,7 +260,7 @@
         console.log("saveUserInfo : [sendata] ", sendata);
         lgkorUI.requestAjaxData(INFO_MODIFY_SAVE, sendata, function(result){
             if(result.data.success == "Y"){
-                
+                changeContractInfo();
             } else{
                 lgkorUI.alert("", {
                     title: result.data.alert.title
@@ -336,7 +335,7 @@
             console.log("savePaymentInfo : [sendata] ", paymentInfo);
             lgkorUI.requestAjaxData(INFO_MODIFY_SAVE, paymentInfo, function(result){
                 if(result.data.success == "Y"){
-                    
+                    changeContractInfo();
                 } else{
                     lgkorUI.alert("", {
                         title: result.data.alert.title
@@ -486,8 +485,10 @@
         return newdata;
     }
 
-    function changeContractInfo(info){
+    function changeContractInfo(){
         lgkorUI.showLoading();
+
+        var info = $('select[name=contractInfo]').find('option:selected').val().split("|");
 
         saveUserInfoCancel();
         savePaymentInfoCancel();
@@ -500,6 +501,8 @@
             setContractInfo(result.data);
 
             lgkorUI.hideLoading();
+
+            $('html, body').animate({scrollTop:0}, 220);
         });
     }
 

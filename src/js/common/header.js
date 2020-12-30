@@ -16,6 +16,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self.displayMode = "";
 
+            self._getLoginInfo();
+
             vcui.require(['ui/carousel', 'ui/smoothScroll'], function () {            
                 self._setting();
                 self._bindEvents();
@@ -28,6 +30,19 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     slidesToShow: 1,
                     slidesToScroll: 1
                 });
+            });
+        },
+
+        _getLoginInfo: function(){
+            var self = this;
+
+            var loginInfoUrl = self.$el.data('loginInfo');
+            lgkorUI.requestAjaxData(loginInfoUrl, {}, function(result){
+                if(result.data.isLogin){
+                    self.$el.find('.mypage.after-login').css('display', 'inline-block');
+                } else{
+                    self.$el.find('.mypage.before-login').css('display', 'inline-block');
+                }
             });
         },
 

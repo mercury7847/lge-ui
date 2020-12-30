@@ -27,9 +27,78 @@
                     'text': '출장 서비스를 신청하기 위해 계정이 필요하지 않지만, 로그인을 하시면 고객님의 세부 정보가 자동으로 입력됩니다.'
                 })
             -->
-                <div class="cont-wrap narrow">
+                <div class="cont-wrap">
 
                     <form action="/html/support/CSTF4010.html" id="submitForm" autocomplete="off">
+                        <div class="form-infos">
+                            <p class="req" aria-disabled="true">필수 입력 항목</p>
+                        </div>
+                        <div class="section">
+                            <div class="agree-wrap ui_all_checkbox"> 
+                                <div class="agree-all-chk">
+                                    <span class="chk-wrap">
+                                        <input type="checkbox" name="allCheck" id="allCheck" class="ui_all_checker">
+                                        <label for="allCheck">전체 동의 <span class="desc">개인정보 수집 및 이용동의(필수), 마케팅 수신동의(선택)에 모두 동의합니다.</span></label>
+                                    </span>
+                                </div>
+                                <div class="input-info">
+                                    <div class="agree-tit">
+                                        <p class="tit">개인정보 수집 및 이용에 대한 동의</p>
+                                    </div>
+                                    <div class="agree-cont-wrap">
+                                        <div class="agree-cont-box">
+                                            LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                                            1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                            ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                            - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                            - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
+                                            LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
+                                            1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                            ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                            - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                            - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
+                                        </div>
+                                        <div class="agree-input">
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" name="privcyCheck" id="privcyCheck" value="Y" data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다." data-required="true">
+                                                <label for="privcyCheck">동의합니다.</label>
+                                            </span>
+                                        </div>
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-info">
+                                    <div class="agree-tit">
+                                        <p class="tit">마케팅 수신 동의 (선택)</p>
+                                    </div>
+                                    <div class="agree-cont-wrap">
+                                        <div class="agree-cont-box">
+                                            LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                                            1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                            ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                            - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                            - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
+                                            LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
+                                            1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                            ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                            - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                            - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
+                                        </div>
+                                        <div class="agree-input">
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" name="marketingCheck" id="marketingCheck" value="Y">
+                                                <label for="marketingCheck">동의합니다.</label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-group center">
+                                <button type="button" class="btn border size-m"><span>다음</span></button>
+                            </div>
+                        </div>
 
                         <div class="section submitForm">
                             <div class="tit-wrap">
