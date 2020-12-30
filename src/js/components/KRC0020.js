@@ -17,6 +17,7 @@
 				self.isDragging = false;
 				self.$obj = $('.KRC0020');
 				self.$carousel = self.$obj.find('.ui_carousel_slider');
+				self.$dots = $('#dots');
 
 				vcui.require(['ui/carousel'], function () {
 					self.$carousel.vcCarousel({

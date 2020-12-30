@@ -30,7 +30,6 @@
             margin:0 auto 56px;
         }
         @include mobile {
-            position:static;
             padding:0 12px;
             margin:28px auto 0;
             &:first-child {
@@ -112,7 +111,6 @@
             }
 		}
 		.indi-wrap {
-			margin-top: 20px;
 			@include pc {
 				display: none;
 			}
