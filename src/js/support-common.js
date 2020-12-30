@@ -92,7 +92,7 @@ CS.MD.commonModel = function() {
                 },
                 keyword: {
                     msgTarget: '.err-msg',
-                    minLength: 2
+                    minLength: 4
                 }   
             },
             callback: function() {}
@@ -262,7 +262,7 @@ CS.MD.commonModel = function() {
                             ]
                         });
                     } else {
-                        self.$modelSlider.vcCarousel('refresh');
+                        self.$modelSlider.vcCarousel('reinit');
                     }
                 } else {
                     self.$modelSlider.hide();
@@ -304,8 +304,8 @@ CS.MD.commonModel = function() {
                 var opt = self.options,
                     result;
                 
-                if (e.keyCode == 13) {
-                    e.preventDefault();
+                // if (e.keyCode == 13) {
+                //     e.preventDefault();
 
                     result = validation.validate(['keyword']);
 
@@ -323,7 +323,7 @@ CS.MD.commonModel = function() {
                         self.update(updateObj);
                         self._requestData(param);
                     }
-                }
+                // }
             });
             self.$searchKeywordBox.find('.btn-search').on('click', function() {
                 var opt = self.options,
