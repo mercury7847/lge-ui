@@ -2,210 +2,218 @@
 <html lang="ko">
 	@@include('./common/head.html', {
 		componentID: "KRC0031",
-		isJScompile: false,
+		isJScompile: true,
 	})
 <body>
 	<div class="wrap">
 		<div class="container">
+			<!--
+				[component-wrap 옵션]
+				1. 여백
+				.zero-top : 상단여백 없음
+				.zero-btm : 하단여백 없음
 
+				[layered-wrap 옵션]
+				1. column 갯수
+				.type-2column : column 2개
+				.type-3column : column 3개
+
+				[cont-box 옵션]
+				.valign-top : vertical align top
+				.valign-middle : vertical align middle
+				.valign-bottom : vertical align bottom
+			-->
 			<div class="component-wrap">
-				<!--
-					[component-wrap 옵션]
-					1. 여백
-					.zero-top : 상단여백 없음
-					.zero-btm : 하단여백 없음
-				-->
-
-				<!-- 1단 수정중 -->
-				<section class="component KRC0031" style="display:none;">
-					<div class="component-inner">
-						<div class="layered-wrap"> <!-- 다단 클래스 : 2단 .type-2column / 3단 .type-3column-->
-							<ul class="layered-inner">
-								<li class="layered-item">
-									@@include('./common/partials/KRC0031.html', {
-										"hasBG": true,
-										"bgPC": "/lg5-common/images/KRC0031/@KRC0031-img-visual-pc.jpg",
-										"bgMo": "/lg5-common/images/KRC0031/@KRC0031-img-visual-mo.jpg",
-										"textColor": "colorWhite",
-										"vAlign": "valign-top",
-										"title": "헤드라인 텍스트는 공백포함 최대 40자까지 입력가능합니다. 최대 40자",
-										"text": "공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 최대 80자",
-										"bullets": [
-											"디스클레이머는 최대 50자까지 입력 가능합니다, 디스클레이머는 최대 50자까지 입력 가능",
-										],
-									})
-								</li>
-								<li class="layered-item">
-									@@include('./common/partials/KRC0031.html', {
-										"hasBG": false,
-										"textColor": "",
-										"vAlign": "valign-top",
-										"title": "헤드라인 텍스트는 공백포함 최대 40자까지 입력가능합니다. 최대 40자",
-										"text": "공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 최대 80자",
-										"bullets": [
-											"디스클레이머는 최대 50자까지 입력 가능합니다, 디스클레이머는 최대 50자까지 입력 가능",
-										],
-									})
-								</li>
-							</ul>
-						</div>
-					</div>
-				</section>
-				<!-- //1단 수정중 -->
-
-				<br><br><br>
-
 				<!-- 2단 레이아웃 -->
 				<section class="component KRC0031">
 					<div class="component-inner">
-						<div class="layered-wrap type-2column"> <!-- 다단 클래스 : 2단 .type-2column / 3단 .type-3column-->
-							<ul class="layered-inner">
-								<li class="layered-item">
+						<div class="layered-wrap type-2column ui_carousel_slider"><!-- [KR수정_201229] .ui_carousel_slider class 추가 -->
+							<!-- [KR수정_201229] 인디케이터 DOM 추가 -->
+							<div class="indi-wrap">
+								<ul class="ui_carousel_dots">
+									<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+								</ul>
+							</div>
+							<!-- // [KR수정_201229] 인디케이터 DOM 추가 -->
+							<ul class="layered-inner ui_carousel_track"><!-- [KR수정_201229] .ui_carousel_track class 추가 -->
+								<li class="layered-item ui_carousel_slide"><!-- [KR수정_201229] .ui_carousel_slide class 추가 -->
 									@@include('./common/partials/KRC0031.html', {
 										"hasBG": true,
 										"bgPC": "/lg5-common/images/KRC0031/@KRC0031-img-visual-pc.jpg",
 										"bgMo": "/lg5-common/images/KRC0031/@KRC0031-img-visual-mo.jpg",
-										"textColor": "colorWhite",
 										"vAlign": "valign-top",
-										"title": "헤드라인 텍스트는 공백포함 최대 40자까지 입력가능합니다. 최대 40자",
-										"text": "공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 최대 80자",
+										"text": "바디카피 영역입니다.",
 										"bullets": [
-											"디스클레이머는 최대 50자까지 입력 가능합니다, 디스클레이머는 최대 50자까지 입력 가능",
+											"디스클레이머는 최대 50자까지 입력 가능합니다.",
 										],
 									})
 								</li>
-								<li class="layered-item">
+								<li class="layered-item ui_carousel_slide"><!-- [KR수정_201229] .ui_carousel_slide class 추가 -->
 									@@include('./common/partials/KRC0031.html', {
 										"hasBG": true,
 										"bgPC": "/lg5-common/images/KRC0031/@KRC0031-img-visual-pc.jpg",
 										"bgMo": "/lg5-common/images/KRC0031/@KRC0031-img-visual-mo.jpg",
-										"textColor": "colorWhite",
 										"vAlign": "valign-middle",
-										"title": "헤드라인 텍스트는 공백포함 최대 40자까지 입력가능합니다. 최대 40자",
-										"text": "공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 최대 80자",
+										"text": "바디카피 영역입니다.",
 										"bullets": [
-											"디스클레이머는 최대 50자까지 입력 가능합니다, 디스클레이머는 최대 50자까지 입력 가능",
+											"디스클레이머는 최대 50자까지 입력 가능합니다.",
 										],
 									})
 								</li>
-								<li class="layered-item">
+								<li class="layered-item ui_carousel_slide"><!-- [KR수정_201229] .ui_carousel_slide class 추가 -->
 									@@include('./common/partials/KRC0031.html', {
 										"hasBG": true,
 										"bgPC": "/lg5-common/images/KRC0031/@KRC0031-img-visual-pc.jpg",
 										"bgMo": "/lg5-common/images/KRC0031/@KRC0031-img-visual-mo.jpg",
-										"textColor": "colorWhite",
 										"vAlign": "valign-bottom",
 										"title": "헤드라인 텍스트는 공백포함 최대 40자까지 입력가능합니다. 최대 40자",
-										"text": "공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 최대 80자",
+										"text": "바디카피 영역입니다.",
 										"bullets": [
-											"디스클레이머는 최대 50자까지 입력 가능합니다, 디스클레이머는 최대 50자까지 입력 가능",
+											"디스클레이머는 최대 50자까지 입력 가능합니다.",
 										],
 									})
 								</li>
-								<li class="layered-item">
+								<li class="layered-item ui_carousel_slide"><!-- [KR수정_201229] .ui_carousel_slide class 추가 -->
 									@@include('./common/partials/KRC0031.html', {
 										"hasBG": false,
-										"textColor": "",
 										"vAlign": "valign-middle",
-										"title": "헤드라인 텍스트는 공백포함 최대 40자까지 입력가능합니다. 최대 40자",
-										"text": "공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 최대 80자",
+										"text": "바디카피 영역입니다.",
 										"bullets": [
-											"디스클레이머는 최대 50자까지 입력 가능합니다, 디스클레이머는 최대 50자까지 입력 가능",
+											"디스클레이머는 최대 50자까지 입력 가능합니다.",
 										],
 									})
 								</li>
 							</ul>
+							<!-- [KR수정_201229] 버튼 DOM 추가 -->
+							<button type="button" class="btn-arrow prev ui_carousel_prev">이전</button>
+							<button type="button" class="btn-arrow next ui_carousel_next">다음</button>
+							<!-- // [KR수정_201229] 버튼 DOM 추가 -->
 						</div>
 					</div>
 				</section>
 				<!-- //2단 레이아웃 -->
+			</div>
 
-				<br><br><br>
-
+			<div class="component-wrap">
 				<!-- 3단 레이아웃 -->
 				<section class="component KRC0031">
 					<div class="component-inner">
-						<div class="layered-wrap type-3column"> <!-- 다단 클래스 : 2단 .type-2column / 3단 .type-3column-->
-							<ul class="layered-inner">
-								<li class="layered-item">
+						<div class="layered-wrap type-3column ui_carousel_slider"><!-- [KR수정_201229] .ui_carousel_slider class 추가 -->
+							<!-- [KR수정_201229] 인디케이터 DOM 추가 -->
+							<div class="indi-wrap">
+								<ul class="ui_carousel_dots">
+									<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+								</ul>
+							</div>
+							<!-- // [KR수정_201229] 인디케이터 DOM 추가 -->
+							<ul class="layered-inner ui_carousel_track"><!-- [KR수정_201229] .ui_carousel_track class 추가 -->
+								<li class="layered-item ui_carousel_slide"><!-- [KR수정_201229] .ui_carousel_slide class 추가 -->
 									@@include('./common/partials/KRC0031.html', {
-										"hasBG": true,
-										"bgPC": "/lg5-common/images/KRC0031/@KRC0031-img-visual-pc.jpg",
-										"bgMo": "/lg5-common/images/KRC0031/@KRC0031-img-visual-mo.jpg",
-										"textColor": "colorWhite",
+										"hasBG": false,
 										"vAlign": "valign-top",
-										"title": "헤드라인 텍스트는 공백포함 최대 30자까지 입력가능",
-										"text": "공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대",
+										"text": "바디카피 영역입니다.",
 										"bullets": [
 											"디스클레이머는 최대 30자까지 입력 가능합니다.",
 										],
 									})
 								</li>
-								<li class="layered-item">
+								<li class="layered-item ui_carousel_slide"><!-- [KR수정_201229] .ui_carousel_slide class 추가 -->
 									@@include('./common/partials/KRC0031.html', {
 										"hasBG": true,
 										"bgPC": "/lg5-common/images/KRC0031/@KRC0031-img-visual-pc.jpg",
 										"bgMo": "/lg5-common/images/KRC0031/@KRC0031-img-visual-mo.jpg",
-										"textColor": "colorWhite",
-										"vAlign": "valign-middle",
-										"title": "헤드라인 텍스트는 공백포함 최대 30자까지 입력가능",
-										"text": "공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대",
-										"bullets": [
-											"디스클레이머는 최대 30자까지 입력 가능합니다.",
-										],
-									})
-								</li>
-								<li class="layered-item">
-									@@include('./common/partials/KRC0031.html', {
-										"hasBG": true,
-										"bgPC": "/lg5-common/images/KRC0031/@KRC0031-img-visual-pc.jpg",
-										"bgMo": "/lg5-common/images/KRC0031/@KRC0031-img-visual-mo.jpg",
-										"textColor": "colorWhite",
-										"vAlign": "valign-bottom",
-										"title": "헤드라인 텍스트는 공백포함 최대 30자까지 입력가능",
-										"text": "공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대",
-										"bullets": [
-											"디스클레이머는 최대 30자까지 입력 가능합니다.",
-										],
-									})
-								</li>
-								<li class="layered-item">
-									@@include('./common/partials/KRC0031.html', {
-										"hasBG": false,
-										"textColor": "",
 										"vAlign": "valign-top",
-										"title": "헤드라인 텍스트는 공백포함 최대 30자까지 입력가능",
-										"text": "공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대",
+										"text": "바디카피 영역입니다.",
 										"bullets": [
 											"디스클레이머는 최대 30자까지 입력 가능합니다.",
 										],
 									})
 								</li>
-								<li class="layered-item">
+								<li class="layered-item ui_carousel_slide"><!-- [KR수정_201229] .ui_carousel_slide class 추가 -->
 									@@include('./common/partials/KRC0031.html', {
-										"hasBG": false,
-										"textColor": "",
+										"hasBG": true,
+										"bgPC": "/lg5-common/images/KRC0031/@KRC0031-img-visual-pc.jpg",
+										"bgMo": "/lg5-common/images/KRC0031/@KRC0031-img-visual-mo.jpg",
 										"vAlign": "valign-middle",
-										"title": "헤드라인 텍스트는 공백포함 최대 30자까지 입력가능",
-										"text": "공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대",
+										"text": "바디카피 영역입니다.",
 										"bullets": [
 											"디스클레이머는 최대 30자까지 입력 가능합니다.",
 										],
 									})
 								</li>
-								<li class="layered-item">
+								<li class="layered-item ui_carousel_slide"><!-- [KR수정_201229] .ui_carousel_slide class 추가 -->
+									@@include('./common/partials/KRC0031.html', {
+										"hasBG": true,
+										"bgPC": "/lg5-common/images/KRC0031/@KRC0031-img-visual-pc.jpg",
+										"bgMo": "/lg5-common/images/KRC0031/@KRC0031-img-visual-mo.jpg",
+										"vAlign": "valign-bottom",
+										"text": "바디카피 영역입니다.",
+										"bullets": [
+											"디스클레이머는 최대 30자까지 입력 가능합니다.",
+										],
+									})
+								</li>
+								<li class="layered-item ui_carousel_slide"><!-- [KR수정_201229] .ui_carousel_slide class 추가 -->
 									@@include('./common/partials/KRC0031.html', {
 										"hasBG": false,
-										"textColor": "",
 										"vAlign": "valign-bottom",
-										"title": "헤드라인 텍스트는 공백포함 최대 30자까지 입력가능",
-										"text": "공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대 80자까지 작성 가능합니다. 공백포함 최대",
+										"text": "바디카피 영역입니다.",
+										"bullets": [
+											"디스클레이머는 최대 30자까지 입력 가능합니다.",
+										],
+									})
+								</li>
+								<li class="layered-item ui_carousel_slide"><!-- [KR수정_201229] .ui_carousel_slide class 추가 -->
+									@@include('./common/partials/KRC0031.html', {
+										"hasBG": true,
+										"bgPC": "/lg5-common/images/KRC0031/@KRC0031-img-visual-pc.jpg",
+										"bgMo": "/lg5-common/images/KRC0031/@KRC0031-img-visual-mo.jpg",
+										"vAlign": "valign-bottom",
+										"text": "바디카피 영역입니다.",
+										"bullets": [
+											"디스클레이머는 최대 30자까지 입력 가능합니다.",
+										],
+									})
+								</li>
+								<li class="layered-item ui_carousel_slide"><!-- [KR수정_201229] .ui_carousel_slide class 추가 -->
+									@@include('./common/partials/KRC0031.html', {
+										"hasBG": true,
+										"bgPC": "/lg5-common/images/KRC0031/@KRC0031-img-visual-pc.jpg",
+										"bgMo": "/lg5-common/images/KRC0031/@KRC0031-img-visual-mo.jpg",
+										"vAlign": "valign-bottom",
+										"text": "바디카피 영역입니다.",
+										"bullets": [
+											"디스클레이머는 최대 30자까지 입력 가능합니다.",
+										],
+									})
+								</li>
+								<li class="layered-item ui_carousel_slide"><!-- [KR수정_201229] .ui_carousel_slide class 추가 -->
+									@@include('./common/partials/KRC0031.html', {
+										"hasBG": true,
+										"bgPC": "/lg5-common/images/KRC0031/@KRC0031-img-visual-pc.jpg",
+										"bgMo": "/lg5-common/images/KRC0031/@KRC0031-img-visual-mo.jpg",
+										"vAlign": "valign-bottom",
+										"text": "바디카피 영역입니다.",
+										"bullets": [
+											"디스클레이머는 최대 30자까지 입력 가능합니다.",
+										],
+									})
+								</li>
+								<li class="layered-item ui_carousel_slide"><!-- [KR수정_201229] .ui_carousel_slide class 추가 -->
+									@@include('./common/partials/KRC0031.html', {
+										"hasBG": false,
+										"vAlign": "valign-middle",
+										"text": "바디카피 영역입니다.",
 										"bullets": [
 											"디스클레이머는 최대 30자까지 입력 가능합니다.",
 										],
 									})
 								</li>
 							</ul>
+							<!-- [KR수정_201229] 버튼 DOM 추가 -->
+							<button type="button" class="btn-arrow prev ui_carousel_prev">이전</button>
+							<button type="button" class="btn-arrow next ui_carousel_next">다음</button>
+							<!-- // [KR수정_201229] 버튼 DOM 추가 -->
 						</div>
 					</div>
 				</section>
