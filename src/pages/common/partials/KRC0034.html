@@ -5,18 +5,17 @@
 		@@if ( context.type == "bg-image" ) {
 		<!-- image visual -->
 		<div class="visual-area">
-			<span class="visual pc" style="background:url('@@bgPC') center no-repeat">이미지 alt값이 들어갑니다.</span>
-			<span class="visual mob">
-				<img src="@@bgMob" alt="">
-			</span>
+			<!-- [KR수정_201229] 백그라운드 피씨/모바일 이미지로 변경 -->
+			<img src="@@bgPC" data-pc-src="@@bgPC" data-m-src="@@bgMob" alt="">
+			<!-- // [KR수정_201229] 백그라운드 피씨/모바일 이미지로 변경 -->
 			<p class="hidden">graphic description : </p>
 		</div>
 		<!-- // image visual -->
 		}
 		@@if ( context.type == "animation" ) {
 		<!-- animation visual -->
+		<!-- [KR수정_201229] 애니메이션 DOM 공통화 수정(AD버튼 삭제) -->
 		<div class="visual-area animation-box">
-			<a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
 			<div class="animation-area">
 				<video autoplay muted loop>
 					<source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
@@ -29,6 +28,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- // [KR수정_201229] 애니메이션 DOM 공통화 수정(AD버튼 삭제) -->
 		<!-- // animation visual -->
 		}
 		<!-- // background visual -->
@@ -49,6 +49,10 @@
 						<p class="body-copy">바디카피 공백포함하여 최대 100자까지 입력 가능합니다. 바디카피 공백포함하여 최대 100자까지 입력 가능합니다. 바디카피 공백포함하여 최대 100자까지 입력 가능합니다. 여기까지</p>
 						<div class="cta-box">
 							<a href="#n" class="btn size border" target="" data-link-area="" data-link-name="{Link Text}" aria-describedby="title`+i+`"><span>자세히 보기</span></a>
+							<!-- 텍스트 링크 버튼 사용할 경우
+							<a href="#n" class="text-link" target="" data-link-area="" data-link-name="{Link Text}" aria-describedby="title`+i+`"><span>텍스트 링크 버튼</span></a>
+							<a href="#n" class="text-link" target="" data-link-area="" data-link-name="{Link Text}" aria-describedby="title`+i+`"><span>텍스트 링크 버튼</span></a>
+							-->
 						</div>
 					</div>
 				</div>
