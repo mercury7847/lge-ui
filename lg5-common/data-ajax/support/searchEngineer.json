@@ -1,0 +1,33 @@
+{   
+    "status": "success",
+    "message": null,
+    "data": {
+        "resultFlag": "Y",
+        "enginnerList": [
+            {
+                "name": "홍길동",
+                "center": "모란역지원센터",
+                "img": "/lg5-common/images/dummy/@img_manager2.jpg"
+            },
+            {
+                "name": "김홍진",
+                "center": "강남역지원센터",
+                "img": "/lg5-common/images/dummy/@img_manager2.jpg"
+            },
+            {
+                "name": "허성민",
+                "center": "홍대입구역지원센터",
+                "img": "/lg5-common/images/dummy/@img_manager2.jpg"
+            },{
+                "name": "전호근",
+                "center": "합정역지원센터",
+                "img": "/lg5-common/images/dummy/@img_manager2.jpg"
+            },
+            {
+                "name": "힘들어어",
+                "center": "나를지원하라",
+                "img": "/lg5-common/images/dummy/@img_manager2.jpg"
+            }
+        ]
+    }
+}

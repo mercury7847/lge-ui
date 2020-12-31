@@ -244,6 +244,12 @@
     }
 
     /* page */
+    /* 출장 예약 */
+    &.service-engineer {
+        
+    }
+
+
     .engineer-to-visit {
         @include clearfix;
         .engineer-profile {
@@ -273,7 +279,7 @@
             padding-left:32px;
             .txt {
                 @include font-medium;
-                .point {
+                .topic {
                     color:#ff2e55;
                     font-weight:400;
                 }

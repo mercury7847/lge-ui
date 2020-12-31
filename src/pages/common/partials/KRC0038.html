@@ -10,7 +10,7 @@
         1. Stage option
         .stage-full : FULL size 옵션(1920px)
         .stage-wide : WIDE size 옵션(1600px)
-        .stage-medium : MEDIUM size 옵션(1380px)
+        .stage-standard : STANDARD size 옵션(1380px) // [KR수정_201231] 스테이지 사이즈명 반영
 
         [.text-inner, .text-area 각각 옵션]
 		1. 정렬
@@ -59,8 +59,9 @@
                         @@for ( var j=0; j < images; j++ ) {
                         <li class="slide-conts ui_carousel_slide">
                             <div class="images">
-                                <span class="pc-img" style="background:url('/lg5-common/images/KRC0038/@bg`+[j+1]+`.jpg') center no-repeat">이미지 alt값이 들어갑니다.</span>
-                                <img src="/lg5-common/images/KRC0038/@bg-m`+[j+1]+`.jpg" alt="" class="m-img">
+                                <!-- [KR수정_201231] 이미지 호출 방식 '이미지' 태그로 변경 -->
+                                <img src="/lg5-common/images/KRC0038/@bg`+[j+1]+`.jpg" data-pc-src="/lg5-common/images/KRC0038/@bg`+[j+1]+`.jpg" data-m-src="/lg5-common/images/KRC0038/@bg-m`+[j+1]+`.jpg" alt="">
+                                <!-- // [KR수정_201231] 이미지 호출 방식 '이미지' 태그로 변경 -->
                                 <p class="hidden">graphic description : </p>
                             </div>
                         </li> 

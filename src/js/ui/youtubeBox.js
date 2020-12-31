@@ -22,7 +22,13 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
                 '</div>',
             layerTemplate:
                 '<div class="video-asset video-box-closeset">'+
+                '   {{#if videoType == "youtube"}}'+
                 '   <iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="{{video_url}}"></iframe>'+
+                '   {{#else}}'+
+                '   <video controls {{params}} style="width:100%">'+
+                '       <source src="{{video_url}}" type="video/mp4">'+
+                '   </video>'+
+                '   {{/if}}'+
                 '   <button class="close-video">Close Video</button>'+
                 '</div>'
         },
@@ -54,7 +60,7 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
             isModal = item.data('target') == "modal" ? true : false;
 
             video_url = item.attr('data-src');
-
+console.log(video_url)
             var params = "";
             var urlsplit = video_url.split("?");
             var isMp4 = urlsplit[0].indexOf(".mp4");
@@ -63,7 +69,7 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
                 videoType = "youtube";
             } else{
                 videoType = "mp4";
-                params = urlsplit[1].split("&").join(" ");
+                params = urlsplit.length > 1 ? urlsplit[1].split("&").join(" ") : "";
             }
             console.log("videoType:",videoType);
             console.log("video_url:",urlsplit[0]);                

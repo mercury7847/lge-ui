@@ -6,8 +6,6 @@
         "success": "Y",
         "total": 2,
         "page": 1,
-        "startDate": "20200919",
-        "endDate": "20201218",
         "orderList": [
             {
                 "orderDate": "2020.09.05",
@@ -22,7 +20,7 @@
                         "productNameKR": "LG 디오스 상냉장하냉동",
                         "productNameEN": "OLED55BXPUA",
                         "productImage": "/lg5-common/images/dummy/@img-product.jpg",
-                        "productPDPurl": "http://www.lge.com",
+                        "productPDPurl": "#none",
                         "productDetailUrl": "http://www.lge.com",
                         "specList": ["Silver"],
                         "productTotal": "",
@@ -99,14 +97,57 @@
                             }
                         ]
                     }
-                ]
+                ],
+                "cancelInfo": [
+                    {
+                        "infoName": "제품 금액",
+                        "infoValue": "5,300,00원"
+                    },
+                    {
+                        "infoName": "할인 금액 합계",
+                        "infoValue": "-159,000원"
+                    },
+                    {
+                        "infoName": "취소 신청 멤버십 포인트",
+                        "infoValue": "56,000원"
+                    },
+                    {
+                        "infoName": "취소 신청 금액",
+                        "infoValue": "5,141,000원"
+                    }
+                ],
+                "repaymentInfo": {
+                    "bankUserName": "이엘지",
+                    "bankList": [
+                        {
+                            "bankValue": "국민은행_코드",
+                            "bankName": "국민은행"
+                        },
+                        {
+                            "bankValue": "하나은행_코드",
+                            "bankName": "하나은행"
+                        },
+                        {
+                            "bankValue": "기업은행_코드",
+                            "bankName": "기업은행"
+                        },
+                        {
+                            "bankValue": "우리은행_코드",
+                            "bankName": "우리은행"
+                        },
+                        {
+                            "bankValue": "신한은행_코드",
+                            "bankName": "신한은행"
+                        }
+                    ]
+                }
             },
             {
                 "orderDate": "2020.09.05",
                 "orderNumber": "20203987102999",
                 "orderTotal": "3",
-                "cancelAbled": "Y",
-                "takebackAbled": "N",
+                "cancelAbled": "N",
+                "takebackAbled": "Y",
                 "productList": [
                     {
                         "modelID": "ADC495769328",

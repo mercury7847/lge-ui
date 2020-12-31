@@ -3,38 +3,6 @@
 @import "../components-app";
 
 .KRC0037 {
-    // font color option
-    $fontColor : (type-black, type-white);
-    @each $colorClass in $fontColor {
-        .#{$colorClass} {
-            @if $colorClass == type-black {
-                color:#222;
-            }
-            @else if $colorClass == type-white {
-                color:#fff;
-                @include mobile {
-                    color:#222;
-                }
-            }
-        }
-    }
-
-    // align option 
-    $align : (align-left, align-center, align-right);
-    @each $alignClass in $align {
-        .#{$alignClass} {
-            @if $alignClass == align-left {
-                text-align:left;
-            }
-            @else if $alignClass == align-center {
-                text-align:center;
-            }
-            @else if $alignClass == align-right {
-                text-align:right;
-            }
-        }
-    }
-
     // inner
     &.stage-full .inner {
         max-width:100%;
@@ -42,7 +10,7 @@
     &.stage-wide .inner {
         max-width:1600px;
     }
-    &.stage-medium .inner {
+    &.stage-standard .inner {
         max-width:1380px;
     }
     .inner {
@@ -53,28 +21,12 @@
     // visual-area
     .visual-area {
         position:relative;
-        @include pc {
-            .m-img {
-                display:none;
-            }
-            .pc-img {
-                display:block;
-                width:100%;
-                height:970px;
-                background-size:cover !important;
-                font-size:0;
-                color:transparent;
-            }
-        }
-        @include mobile {
-            .m-img {
-                display:block;
-                width:100%;
-                height:auto;
-            }
-            .pc-img {
-                display:none;
-            }
+        text-align:center;
+        img {
+            width:100%;
+            max-width:100%;
+            height:auto;
+            vertical-align:top;
         }
         &.animation-box {
             .animation-area {
@@ -129,17 +81,10 @@
             padding:0 40px;
             vertical-align:top;
             .title * {
-                display:inline-block;
-                max-width:80%;
-                @include font-title-2;
-                word-break:keep-all;
+                @include title-h2;
             }
             .body-copy {
-                display:inline-block;
-                max-width:80%;
-                margin-top:24px;
-                @include font-large-1;
-                word-break:keep-all;
+                @include bodycopy(h2, h2);
             }
         }
         @include mobile {
@@ -148,17 +93,10 @@
             bottom:auto;
             left:auto;
             right:auto;
-            margin-bottom:24px;
+            margin-bottom:28px;
             transform:translateY(0);
             .text-inner {
                 padding:0 16px;
-                .title * {
-                    max-width:100%;
-                }
-                .body-copy {
-                    max-width:100%;
-                    margin-top:12px;
-                }
             }
         }
     }
@@ -203,7 +141,7 @@
             padding:0 40px;
             font-size:0;
             @include mobile {
-                margin-top:8px;
+                margin-top:12px;
                 padding:0 8px;
                 text-align:left;
             }
@@ -220,41 +158,22 @@
                 .icon {
                     display:block;
                     position:relative;
-                    width:80%;
-                    height:auto;
-                    max-height:120px;
+                    width:100%;
+                    max-width:120px;
                     margin:0 auto;
                     overflow:hidden;
                     @include mobile {
-                        width:100%;
                         max-width:90px;
-                        max-height:100%;
-                    }
-                    &::before {
-                        content:' ';
-                        position:relative;
-                        display:block;
-                        width:100%;
-                        height:0;
-                        padding-bottom:100%;
                     }
                     img {
-                        position:absolute;
-                        top:0;
-                        left:50%;
                         width:100%;
-                        max-width:120px;
+                        max-width:100%;
                         height:auto;
-                        transform:translateX(-50%);
-                        @include mobile {
-                            max-width:100%;
-                        }
                     }
                 }
             }
             .text {
                 margin-top:16px;
-                color:inherit;
                 @include font-medium;
                 font-weight:700;
                 text-align:center;

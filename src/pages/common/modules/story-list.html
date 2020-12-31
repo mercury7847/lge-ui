@@ -1,0 +1,67 @@
+@@if (!context.tagList) {
+@@if (context.carousel) {
+<div class="flexbox slide-conts ui_carousel_slide">
+}
+@@if (!context.carousel) {
+<!--<div class="flexbox" style="top:0;left:0">-->
+<div class="flexbox">
+}
+    <div class="box @@boxType">
+        <div class="visual-area">
+            <span class="image"><img @@image alt=""></span>
+            @@if(boxType === "video") {
+            <a href="#n" class="btn-video"><span class="blind">동영상 재생</span></a>
+            }
+        </div>
+        <div class="text-area">
+            @@include('./common/modules/flags.html', {
+                boxType: true,
+                flags: [
+                    "@@flag"
+                ]
+            })
+            <a href="#" class="card-title"><span>@@title</span></a>
+            @@if(context.tags) {
+            <div class="tag-wrap">
+                <ul class="tags">
+                    @@for ( var i=0; i < tags.length; i++ ) {
+                    <li class="tag">
+                        <a href="#">#`+tags[i]+`</a>
+                    </li>
+                    }
+                </ul>
+            </div>
+            }
+            @@if(context.link) {
+            <a href="#n" class="btn-link"><span>@@link</span></a>
+            }
+        </div>
+        @@if(context.date) {
+        <div class="date">@@date</div>
+        }
+        @@if(context.sns) {
+        <div class="sns-wrap">
+            @@for ( var i=0; i < sns.length; i++ ) {
+            <a href="#n" class="sns `+sns[i].class+`"><span class="blind">`+sns[i].text+` 확인하기</span></a>
+            }
+        </div>
+        }
+    </div>
+</div>
+}
+
+@@if (context.tagList) {
+<div class="flexbox tag-area">
+    <span class="title">이런 태그는 어떠세요?</span>
+    <ul class="tag-lists">
+        @@for ( var i=0; i < tags.length; i++ ) {
+        <li>
+            <div class="tag">
+                <span class="text">#`+tags[i]+`</span>
+                <button type="button" class="btn gray size"><span>구독</span></button>
+            </div>
+        </li>
+        }
+    </ul>
+</div>
+}
