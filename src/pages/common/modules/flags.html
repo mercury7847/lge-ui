@@ -7,6 +7,9 @@
 @@if ( context.barType ) {
 <div class="flag-wrap bar-type">
 }
+@@if ( context.boxType ) {
+<div class="flag-wrap box-type">
+}
     @@for ( var i=0; i < flags.length; i++ ) {
     <span class="flag">`+flags[i]+`</span>
     }
