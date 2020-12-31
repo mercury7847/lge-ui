@@ -28,15 +28,16 @@
 
     // text area
     .text-area {
-        position:absolute;
-        top:80px;
-        left:0;
-        right:0;
-        z-index:20;
+        @include pc {
+            display:none;
+        }
+        @include mobile {
+            display:block;
+            position:relative;
+            margin-bottom:28px;
+            padding:0 16px;
+        }
         .text-inner {
-            max-width:1380px + 80px;
-            margin:0 auto;
-            padding:0 40px;
             .title * {
                 @include title-h2;
             }
@@ -63,58 +64,75 @@
 
     // thumbnail text area
     .thumbnail-text-area {
-        &.vertical-top {
+        position:absolute;
+        top:80px;
+        left:0;
+        right:0;
+        bottom:80px;
+        @include mobile {
             position:relative;
-            margin-top:80px;
-            @include mobile {
-                margin-top:32px;
-            }
+            top:auto;
+            left:auto;
+            right:auto;
+            bottom:auto;
+            margin-top:28px;
         }
-        &.vertical-middle {
-            position:absolute;
-            top:50%;
-            left:0;
-            right:0;
-            transform:translateY(-50%);
-            @include mobile {
-                position:relative;
-                top:auto;
-                left:auto;
-                right:auto;
-                transform:translateY(0);
-                margin-top:32px;
-            }
-        }
-        &.vertical-bottom {
-            position:absolute;
-            left:0;
-            right:0;
-            bottom:0;
-            @include mobile {
-                position:relative;
-                left:auto;
-                right:auto;
-                bottom:auto;
-                margin-top:32px;
-            }
-        }
-        .text-inner {
+        .title-inner {
+            position:relative;
             max-width:1380px + 80px;
             margin:0 auto;
             padding:0 40px;
+            .title * {
+                @include title-h2;
+            }
+            .body-copy {
+                max-width:561px;
+                @include bodycopy(h2, h2);
+            }
             @include mobile {
+                display:none;
+            }
+        }
+        .text-inner {
+            padding:0 40px;
+            &.vertical-top {
+                position:relative;
+                margin-top:80px;
+            }
+            &.vertical-middle {
+                position:absolute;
+                left:0;
+                right:0;
+                top:50%;
+                transform:translateY(-50%);
+            }
+            &.vertical-bottom {
+                position:absolute;
+                left:0;
+                right:0;
+                bottom:0;
+            }
+            @include mobile {
+                &.vertical-top,
+                &.vertical-middle,
+                &.vertical-bottom {
+                    position:relative;
+                    top:auto;
+                    left:auto;
+                    right:auto;
+                    bottom:auto;
+                    transform:initial;
+                    margin-top:0;
+                }
                 padding:0 16px;
             }
             .text-list {
-                display:inline-block;
-                width:100%;
-                max-width:561px;
-                vertical-align:top;
-                @include mobile {
-                    max-width:100%;
-                }
+                display:block;
+                max-width:1380px;
+                margin:0 auto;
                 .list {
                     position:relative;
+                    max-width:561px;
                     min-height:120px;
                     margin-top:56px;
                     padding-left:136px;
@@ -153,7 +171,28 @@
                     }
                 }
             }
+            &.box-align-left {
+                .text-list {
+                    .list {
+                        margin-right:auto;
+                    }
+                }
+            }
+            &.box-align-center {
+                .text-list {
+                    .list {
+                        margin-left:auto;
+                        margin-right:auto;
+                    }
+                }
+            }
+            &.box-align-right {
+                .text-list {
+                    .list {
+                        margin-left:auto;
+                    }
+                }
+            }
         }
-
     }
 }
