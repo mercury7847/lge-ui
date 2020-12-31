@@ -173,15 +173,20 @@
             <div class="form-wrap mix-type">
                 <!-- 취소사유 입력 -->
                 <dl class="forms">
-                    <dt class="tit"><label for="slt01" class="req">취소 사유<span class="blind">필수입력</span></label></dt>
+                    <dt class="tit"><label for="cancelReason" class="req">취소 사유<span class="blind">필수입력</span></label></dt>
                     <dd class="conts">
                         <div class="select-wrap half">
-                            <select class="ui_selectbox" id="slt01">
+                            <select class="ui_selectbox" id="cancelReason">
                                 <option value="" class="placeholder">취소 사유 선택</option>
+                                <option value="주문 정보 변경">주문 정보 변경</option>
+                                <option value="다른 상품 잘못 주문">다른 상품 잘못 주문</option>
+                                <option value="배송 지연으로 취소">배송 지연으로 취소</option>
+                                <option value="구매의사 없어짐">구매의사 없어짐</option>
+                                <option value="">기타</option>
                             </select>
                         </div>
                         <span class="input-wrap count">
-                            <textarea class="ui_textcontrol" placeholder="취소 사유를 입력해 주세요." maxlength="200" data-limit="200" data-count-target="#txt-count1"></textarea>
+                            <textarea class="ui_textcontrol cancelReasonField" placeholder="취소 사유를 입력해 주세요." maxlength="200" data-limit="200" data-count-target="#txt-count1"></textarea>
                             <span id="txt-count1" class="total"><em>0</em> / 200</span>
                         </span>
                     </dd>

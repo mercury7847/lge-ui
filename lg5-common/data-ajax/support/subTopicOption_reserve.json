@@ -1,0 +1,28 @@
+{
+    "status": "success",
+    "message":null,
+    "data": {
+        "subTopicList": [
+            {
+                "name": "윈도우 백업 및 복구",
+                "value": "SS000001"
+            },
+            {
+                "name": "윈도우 백업 및 복구",
+                "value": "SS000002"
+            },
+            {
+                "name": "윈도우 다운그레이드",
+                "value": "SS000003" 
+            },
+            {
+                "name": "윈도우 업데이트",
+                "value": "SS000004"
+            },
+            {
+                "name": "특정 프로그램 [파일] 오류/제거",
+                "value": "SS000005"
+            }   
+        ]
+    }
+}

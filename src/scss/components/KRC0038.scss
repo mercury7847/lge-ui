@@ -3,57 +3,19 @@
 @import "../components-app";
 
 .KRC0038 {
-    // font color option
-    $fontColor : (type-black, type-white);
-    @each $colorClass in $fontColor {
-        .#{$colorClass} {
-            @if $colorClass == type-black {
-                color:#222;
-            }
-            @else if $colorClass == type-white {
-                color:#fff;
-                @include mobile {
-                    color:#222;
-                }
-            }
-        }
-    }
-
-    // align option 
-    $align : (align-left, align-center, align-right);
-    @each $alignClass in $align {
-        .#{$alignClass} {
-            @if $alignClass == align-left {
-                text-align:left;
-            }
-            @else if $alignClass == align-center {
-                text-align:center;
-            }
-            @else if $alignClass == align-right {
-                text-align:right;
-            }
-        }
-    }
-
     // stage option
-    $stage : (stage-full, stage-wide, stage-medium);
+    $stage : (stage-full, stage-wide, stage-standard);
     @each $stageClass in $stage {
         &.#{$stageClass} {
             .inner {
                 @if $stageClass == stage-full {
                     max-width:1920px;
-                    height:1310px;
                 }
                 @else if $stageClass == stage-wide {
                     max-width:1600px;
-                    height:1090px;
                 }
-                @else if $stageClass == stage-medium {
+                @else if $stageClass == stage-standard {
                     max-width:1380px;
-                    height:942px;
-                }
-                @include mobile {
-                    height:auto;
                 }
             }
         }
@@ -66,93 +28,35 @@
 
     // text area
     .text-area {
-        position:relative;
-        max-width:1380px + 80px;
-        padding:0 40px;
-        margin:0 auto;
+        position:absolute;
+        top:80px;
+        left:0;
+        right:0;
         z-index:20;
-        @include mobile {
-            margin-bottom:24px;
-            padding:0 16px;
-        }
         .text-inner {
-            display:inline-block;
-            max-width:561px;
-            text-align:left;
+            max-width:1380px + 80px;
+            margin:0 auto;
+            padding:0 40px;
             .title * {
-                font-size:48px;
-                line-height:64px;
-                font-weight:700;
-                @include mobile {
-                    font-size:24px;
-                    line-height:33px;
-                }
+                @include title-h2;
             }
             .body-copy {
                 max-width:561px;
-                margin-top:24px;
-                font-size:20px;
-                line-height:34px;
-                @include mobile {
-                    margin-top:12px;
-                    font-size:16px;
-                    line-height:24px;
-                }
+                @include bodycopy(h2, h2);
             }
         }
     }
 
     // visual area
-    @each $stageClass in $stage {
-        &.#{$stageClass} {
-            .visual-area {
-                position:absolute;
-                top:0;
-                left:0;
-                right:0;
-                bottom:0;
-                @include mobile {
-                    position:relative;
-                    top:auto;
-                    left:auto;
-                    right:auto;
-                    bottom:auto;
-                }
-                .images {
-                    @include pc {
-                        .m-img {
-                            display:none;
-                        }
-                        .pc-img {
-                            display:block;
-                            margin:0 auto;
-                            width:100%;
-                            font-size:0;
-                            color:transparent;
-                            @if $stageClass == stage-full {
-                                max-width:100%;
-                                height:1310px;
-                            }
-                            @else if $stageClass == stage-wide {
-                                height:1090px;
-                            }
-                            @else if $stageClass == stage-medium {
-                                height:942px;
-                            }
-                            background-size:cover !important;
-                        }
-                    }
-                    @include mobile {
-                        .m-img {
-                            display:block;
-                            width:100%;
-                            height:auto;
-                        }
-                        .pc-img {
-                            display:none;
-                        }
-                    }
-                }
+    .visual-area {
+        position:relative;
+        .images {
+            overflow:hidden;
+            img {
+                width:100%;
+                max-width:100%;
+                height:auto;
+                vertical-align:top;
             }
         }
     }
@@ -228,40 +132,23 @@
                         top:0;
                         left:0;
                         width:120px;
-                        height:120px;
                         overflow:hidden;
                         @include mobile {
                             width:75px;
-                            height:75px;
                         }
                         img {
                             width:100%;
+                            max-width:100%;
                             height:auto;
                             vertical-align:top;
                         }
                     }
                     .text-box {
                         .title {
-                            max-height:60px;
-                            font-size:24px;
-                            line-height:30px;
-                            font-weight:700;
-                            @include textEllipsisClamp(2);
-                            @include mobile {
-                                max-height:52px;
-                                font-size:18px;
-                                line-height:26px;
-                            }
+                            @include title-h3;
                         }
                         .body-copy {
-                            margin-top:12px;
-                            font-size:20px;
-                            line-height:30px;
-                            @include mobile {
-                                margin-top:8px;
-                                font-size:14px;
-                                line-height:22px;
-                            }
+                            @include bodycopy(h3, h3);
                         }
                     }
                 }

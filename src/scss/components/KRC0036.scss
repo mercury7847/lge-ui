@@ -11,58 +11,6 @@
 		margin:0 auto;
 	}
 
-	// font color option
-    $fontColor : (type-black, type-white);
-    @each $colorClass in $fontColor {
-        .#{$colorClass} {
-            @if $colorClass == type-black {
-				color:#222;
-            }
-            @else if $colorClass == type-white {
-                color:#fff;
-                @include mobile {
-                    color:#222;
-                }
-                .btn.border {
-                    border-color:#fff;
-                    color:#fff;
-                    @include mobile {
-                        border-color:#222;
-                        color:#222;
-                    }
-                }
-                .text-link {
-                    color:#fff;
-                    &::after {
-                        background-image:url('/lg5-common/images/icons/icon-arr-16-wt.svg');
-                    }
-                    @include mobile {
-                        color:#222;
-                        &::after {
-                            background-image:url('/lg5-common/images/icons/icon-arr-16-bk.svg');
-                        }
-                    }
-                }
-            }
-        }
-	}
-	// align option 
-    $align : (align-left, align-center, align-right);
-    @each $alignClass in $align {
-        .#{$alignClass} {
-            @if $alignClass == align-left {
-                text-align:left;
-            }
-            @else if $alignClass == align-center {
-                text-align:center;
-            }
-            @else if $alignClass == align-right {
-                text-align:right;
-            }
-        }
-    }
-
-
     .inner {
         position:relative;
         @include pc {
@@ -140,13 +88,10 @@
                 padding:0 16px;
             }
             .title * {
-                @include font-title;
-                word-break:keep-all;
+                @include title-h1;
             }
             .desc {
-                margin-top:32px;
-                @include font-large-1;
-                word-break:keep-all;
+                @include bodycopy(h1, h1);
             }
         }
 
@@ -196,9 +141,9 @@
                     }
                 }
                 .thumb-area {
-                    margin-bottom:16px;
+                    margin-bottom:24px;
                     img {
-                        width:auto;
+                        width:100%;
                         max-width:100%;
                         height:auto;
                         vertical-align:top;
@@ -209,30 +154,21 @@
                     }
                 }
                 .title {
-                    @include font-large-2;
-                    font-weight:700;
+                    @include title-h3;
                 }
                 .sub-title {
+                    @include bodycopy(h3, h3);
                     margin-top:8px;
-                    @include font-large;
                     font-weight:700;
+                    @include mobile {
+                        margin-top:6px;
+                    }
                 }
                 .body-copy {
-                    margin-top:8px;
-                    @include font-medium;
+                    @include bodycopy(h3, h3);
                 }
                 .cta-box {
-                    margin-top:16px;
-                    font-size:0;
-                    .btn {
-                        background:transparent;
-                    }
-                    .text-link {
-                        margin-left:16px;
-                        &:first-child {
-                            margin-left:0;
-                        }
-                    }
+                    @include cta-btn;
                 }
             }
         }
