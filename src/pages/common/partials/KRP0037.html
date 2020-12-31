@@ -1,0 +1,73 @@
+<div class="component-wrap @@zero">
+    <!--
+        1. 여백
+        .zero-top : 상단여백 없음
+        .zero-btm : 하단여백 없음
+    -->
+    <section class="component KRP0037" data-list-url="/lg5-common/data-ajax/event/event.json">
+
+        <div class="tab-contents">
+            <div class="box-list event-type">
+                <ul class="box-list-inner">
+                    @@loop('./common/modules/list-box.html', [
+                        {
+                            "img" : "dummy/@img-event01.jpg",
+
+                            "title-hd" : "기획전 제목",
+                            "title" : "이사 가전 대축제",
+                            "date-hd" : "기획전 기간",
+                            "date" : "2020.08.01~2020.09.30"
+                        },
+                        {
+                            "img" : "dummy/@img-event02.jpg",
+
+                            "title-hd" : "기획전 제목",
+                            "title" : "건강관리가전 페스티벌", 
+                            "date-hd" : "기획전 기간",
+                            "date" : "2020.08.01~2020.09.30"
+                        },
+                        {
+                            "img" : "dummy/@img-event03.jpg",
+
+                            "title-hd" : "기획전 제목",
+                            "title" : "LG 이동식 에어컨 창문 잠금장치 신청 기획전 두줄까지 노출 동일", 
+                            "date-hd" : "기획전 기간",
+                            "date" : "2020.08.01~2020.09.30"
+                        },
+                        {
+                            "img" : "dummy/@img-event01.jpg",
+
+                            "title-hd" : "기획전 제목",
+                            "title" : "이사 가전 대축제",
+                            "date-hd" : "기획전 기간",
+                            "date" : "2020.08.01~2020.09.30"
+                        },
+                        {
+                            "img" : "dummy/@img-event02.jpg",
+
+                            "title-hd" : "기획전 제목",
+                            "title" : "건강관리가전 페스티벌", 
+                            "date-hd" : "기획전 기간",
+                            "date" : "2020.08.01~2020.09.30"
+                        },
+                        {
+                            "img" : "dummy/@img-event03.jpg",
+
+                            "title-hd" : "기획전 제목",
+                            "title" : "LG 이동식 에어컨 창문 잠금장치 신청 기획전 두줄까지 노출 동일", 
+                            "date-hd" : "기획전 기간",
+                            "date" : "2020.08.01~2020.09.30"
+                        }
+                    ])
+                </ul>
+            </div> 
+
+            <!-- nodata -->
+            <div class="no-data">
+                <p>기획전이 없습니다.</p>
+            </div>
+            <!-- // nodata -->
+        </div>
+        <article id="@@eventModalID" class="popup-wrap"></article>
+    </section>
+</div> 

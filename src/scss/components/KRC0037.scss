@@ -3,38 +3,6 @@
 @import "../components-app";
 
 .KRC0037 {
-    // font color option
-    $fontColor : (type-black, type-white);
-    @each $colorClass in $fontColor {
-        .#{$colorClass} {
-            @if $colorClass == type-black {
-                color:#222;
-            }
-            @else if $colorClass == type-white {
-                color:#fff;
-                @include mobile {
-                    color:#222;
-                }
-            }
-        }
-    }
-
-    // align option 
-    $align : (align-left, align-center, align-right);
-    @each $alignClass in $align {
-        .#{$alignClass} {
-            @if $alignClass == align-left {
-                text-align:left;
-            }
-            @else if $alignClass == align-center {
-                text-align:center;
-            }
-            @else if $alignClass == align-right {
-                text-align:right;
-            }
-        }
-    }
-
     // inner
     &.stage-full .inner {
         max-width:100%;
