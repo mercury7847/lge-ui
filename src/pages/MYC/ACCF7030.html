@@ -14,9 +14,7 @@
                 "pageDesc" : "계약정보를 선택하여 상세한 내용을 확인 하실 수 있습니다."
             })
             <!-- mypage -->
-            <div class="contents mypage"
-                data-request-url=""
-            >
+            <div class="contents mypage">
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
@@ -26,7 +24,10 @@
                                 { "on": "on", "page": "방문 알리미" }
                             ]
                         })
-                        <div class="lnb-contents">
+                        <div class="lnb-contents"
+                            data-list-url="/lg5-common/data-ajax/mypage/care/visitAlarmList.json"
+                            data-change-url="/lg5-common/data-ajax/mypage/care/changeVisitDay.json"
+                        >
                             <!-- 계약정보가 있을 때 -->
                             <!-- 계약정보 -->
                             <div class="my-contract-info">
@@ -38,7 +39,9 @@
                                         <dd class="conts">
                                             <div class="select-wrap">
                                                 <select class="ui_selectbox" id="slt1">
-                                                    <option value="">모아보기</option>
+                                                    <option value="all">모아보기</option>
+                                                    <option value="p1">정수기1</option>
+                                                    <option value="p2">세탁기2</option>
                                                 </select>
                                             </div>
                                         </dd>
@@ -212,7 +215,7 @@
                                         <dt class="tit"><label for="slt2">계약정보 선택</label></dt>
                                         <dd class="conts">
                                             <div class="select-wrap">
-                                                <select class="ui_selectbox" id="slt2">
+                                                <select class="ui_selectbox" id="slt2" disabled>
                                                     <option value="" class="placeholder">선택</option>
                                                 </select>
                                             </div>
