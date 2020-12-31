@@ -73,19 +73,20 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
                     
                     var id = $(toggleList[idx]).attr("id");
 
-                    var itemlistleng = $(itemList[id][0]).find('ul').length;
+                    var itemListId = itemList[id] ? itemList[id] : {}; 
+                    var itemlistleng = $(itemListId[0]).find('ul').length;
                     if(itemlistleng) $(item).find('> ul').addClass('ui_footer_accordion');
 
                     for(var cdx in itemList[id]){
                         if(itemlistleng){
-                            $(itemList[id][cdx]).find('> .dep2').addClass('ui_accord_toggle');
-                            $(itemList[id][cdx]).find('> ul').addClass('ui_accord_content');
+                            $(itemListId[cdx]).find('> .dep2').addClass('ui_accord_toggle');
+                            $(itemListId[cdx]).find('> ul').addClass('ui_accord_content');
                         }
 
-                        $(item).find('> ul').append($(itemList[id][cdx]));
+                        $(item).find('> ul').append($(itemListId[cdx]));
                     }
 
-                    if(!itemList[id].length){
+                    if(!itemListId.length){
                         $(item).find('> ul').remove();
                         $(toggleList[idx]).removeClass('ui_accord_toggle');
                     }
