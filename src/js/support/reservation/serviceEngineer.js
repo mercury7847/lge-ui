@@ -141,6 +141,15 @@
                     param = dateValidation.getAllValues(),
                     result;
 
+                param = $.extend(param, {
+                    topic: $('input[name=topic]').val(),
+                    subTopic: $('input[name=subTopic]').val(),
+                    serviceType: $('#serviceType').val(),
+                    productCode: $('#productCode').val(),
+                    category: $('#category').val(),
+                    subCategory: $('#subCategory').val()
+                });
+
                 result = dateValidation.validate();
 
                 if (result.success) {
@@ -154,9 +163,29 @@
                 }
             });
 
+            $("#solutionBanner .btn-link").click(function(){
+                var url = $(this).data('href');
+                var param = {
+                    topic : '',
+                    subToic : '',
+                    productCode : ''
+                };
+                
+                lgkorUI.requestAjaxData(url, param, function(result){
+                    $('#solutionsPopup').html(result).vcModal();
+                }, null, "html");
+            });
+
             $('.tb-timetable').on('click', 'button', function() {
                 var url = $('#dateSection').data('ajax'),
                     param = {
+                        serviceType: '',
+                        category: '',
+                        subCategory: '',
+                        lockUserId: '',
+                        zipCode: '',
+                        userAddress: '',
+                        detailAddress: '',
                         date: '',
                         time: ''
                     }

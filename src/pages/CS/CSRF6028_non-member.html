@@ -41,11 +41,14 @@
                 
                 <div class="cont-wrap">
                     <form action="/html/CS/CSRF6029.html" data-ajax="/lg5-common/data-ajax/support/serviceEngineer.json" id="submitForm" autocomplete="off" novalidate>
+                        <input type="hidden" name="" id="" value="">
+                        <input type="hidden" name="" id="" value="">
                         <input type="hidden" name="category" id="category" value="">
                         <input type="hidden" name="subCategory" id="subCategory" value="">
                         <input type="hidden" name="modelCode" id="modelCode" value="">
                         <input type="hidden" name="productCode" id="productCode" value="">
                         <input type="hidden" name="serviceType" id="serviceType" value="A">
+                        <input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
 
                         <div class="step-box active" id="stepTerms">
                             <div class="section">
@@ -273,7 +276,7 @@
                                                 <p class="tit">제품 문제해결 방법을 확인해보세요!</p>
                                                 <p class="desc">선택하신 증상은 제품 문제해결 방법을 통해서 해결이 가능합니다.</p>
                                             </div>  
-                                            <button type="button" class="btn-link" data-href="#solutionsPopup" data-control="modal">제품 문제해결 방법 확인하기</a>
+                                            <button type="button" class="btn-link" data-href="/lg5-common/data-ajax/support/solutions-list-popup.html">제품 문제해결 방법 확인하기</a>
                                         </div>
                                     </div>
                                 </div>
@@ -895,23 +898,15 @@
 
     <!-- 유금 및 보증기간 팝업 -->
     @@include('./CS/modal/rates-warranty-guide-popup.html')
-    
-    <!-- 휴대폰인증 팝업 -->
-    @@include('./CS/modal/phone-certification-popup.html')
 
     <!-- 제품 해결 팝업 -->
-    @@include('./CS/modal/solutions-popup.html')
+    <article id="solutionsPopup" class="popup-wrap full"></article>
 
     <!-- 엔지니어 선택 팝업 -->
     @@include('./CS/modal/choice-engineer-popup.html')
 
-    <!-- 예약 완료 팝업 -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "completePop",
-        "msgOnly" : true,
-        "msg" : "출장 서비스를<br>예약하겠습니까?",
-        "twobtn" : true
-    })
+    <!-- 휴대폰인증 팝업 -->
+    @@include('./CS/modal/phone-certification-popup.html')
 
     <!-- toast-meassage -->
     @@include('./common/modules/toast-message.html', {
