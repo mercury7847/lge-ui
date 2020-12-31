@@ -105,18 +105,20 @@
                     </div>
                     <div class="story-section">
                         <div class="inner">
-                            <div class="subscribe-tag">
-                                <!-- 구독 전 -->
-                                <div class="tag-box">
-                                    <strong class="tag-name">#가을</strong>
-                                    <button type="button" class="btn gray size"><span>구독하기</span></button>
-                                    <button type="button" class="btn-close"><span class="blind">닫기</span></button>
-                                </div>
-                                <!-- 구독 후 -->
-                                <div class="tag-box subscribed">
-                                    <strong class="tag-name">#가을</strong>
-                                    <button type="button" class="btn gray size"><span>구독중</span></button>
-                                    <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                            <div class="subscribe-wrap ui_sticky">
+                                <div class="subscribe-tag">
+                                    <!-- 구독 전 -->
+                                    <div class="tag-box">
+                                        <strong class="tag-name">#가을</strong>
+                                        <button type="button" class="btn gray size"><span>구독하기</span></button>
+                                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                    </div>
+                                    <!-- 구독 후 -->
+                                    <div class="tag-box subscribed">
+                                        <strong class="tag-name">#가을</strong>
+                                        <button type="button" class="btn gray size"><span>구독중</span></button>
+                                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="story-count">총 12개</div>
@@ -210,6 +212,7 @@
                     </div>
                     <div class="story-section">
                         <div class="inner">
+                            <h2 class="title">스토리와 함께 삶을 채워보세요.</h2>
                             <div class="flexbox-wrap">
                                 @@loop('./common/modules/story-list.html', [
                                     {
@@ -304,7 +307,7 @@
                     </div>
                     <div class="story-section">
                         <div class="inner">
-                            <h3 class="title">새로운 스토리를 확인해보세요.</h3>
+                            <h2 class="title">새로운 스토리를 확인해보세요.</h2>
                             <div class="flexbox-wrap">
                                 @@loop('./common/modules/story-list.html', [
                                     {
@@ -399,7 +402,7 @@
                     </div>
                     <div class="story-section">
                         <div class="inner">
-                            <h3 class="title">실제 사용 리뷰를 확인해보세요.</h3>
+                            <h2 class="title">실제 사용 리뷰를 확인해보세요.</h2>
                             <div class="story-review slide-wrap ui_carousel_slider">
                                 <div class="indi-wrap">
                                     <ul class="indi-conts ui_carousel_dots">

@@ -79,15 +79,24 @@
             margin-bottom: 10px;
         }
     }
+    .subscribe-wrap {
+        width: 100%;
+        &.fixed {
+            background-color: $color-bg-wt;
+            box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+            @include mobile {
+                padding: 32px 20px 24px;
+            }
+        }
+    }
     .subscribe-tag {
         max-width: 1460px;
-        margin: 48px auto 32px;
-        padding: 0 40px;
+        margin: 0 auto;
+        padding: 48px 40px 32px;
         text-align: center;
         @include mobile {
             max-width: 100%;
-            margin: 32px 0 24px;
-            padding: 0 4px;
+            padding: 32px 4px 24px;
             text-align: left;
         }
         .tag-box {
