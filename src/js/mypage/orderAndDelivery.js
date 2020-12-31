@@ -2,7 +2,7 @@
     var ORDER_INQUIRY_LIST_URL;
 
     var inquiryListTemplate =
-        '<div class="box">'+
+        '<div class="box" data-id="{{dataID}}">'+
             '<div class="info-wrap">'+
                 '<ul class="infos">'+
                     '<li>주문일<em>{{orderDate}}</em></li>'+
@@ -18,7 +18,7 @@
                 '<div class="tbody">'+
                     '{{#each item in productList}}'+
                     '<div class="row {{item.orderStatus.disabled}}">'+
-                        '<div class="col-table" data-model-id="{{item.modelID}}">'+
+                        '<div class="col-table" data-prod-id="{{item.prodID}}">'+
                             '<div class="col col1">'+
                                 '<span class="blind">제품정보</span>'+
                                 '<div class="product-info">'+
@@ -75,12 +75,19 @@
             '</div>'+
         '</div>';
 
+    var CURRENT_PAGE, TOTAL_PAGE;
+
+    var ORDER_LIST;
+
     function init(){
         console.log("Order Inquiry Start!!!");
     
         vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter'], function () {             
             setting();
             bindEvents();
+
+            var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
+            requestOrderInquiry(dateData.startDate, dateData.endDate);
         });
     }
 
@@ -92,7 +99,7 @@
 
     function bindEvents(){
         $('.inquiryPeriodFilter').on('dateFilter_submit', function(e, data){
-            setOrderListInquiry(data.startDate, data.endDate);
+            requestOrderInquiry(data.startDate, data.endDate);
         })
 
         $('.contents.mypage').on('click', '.orderCancel-btn, .takeBack-btn', function(e){
@@ -114,32 +121,33 @@
         }).on('click', '.stateInner-btn', function(e){
             e.preventDefault();
 
-            var modelID = $(this).closest('.col-table').data('modelId');
+            var dataID = $(this).closest('.box').data("id");
+            var prodID = $(this).closest('.col-table').data('prodId');
             var btntype = $(this).data('type');
 
             switch(btntype){
                 case "deliveryInquiry":
-                    setDeliveryInquiry(modelID);
+                    setDeliveryInquiry(dataID, prodID);
                     break;
 
                 case "deliveryRequest":
-                    setDeliveryRequest(modelID);
+                    setDeliveryRequest(dataID, prodID);
                     break;
 
                 case "takeBackInner":
-                    setTakeBack(modelID);
+                    setTakeBack(dataID, prodID);
                     break;
 
                 case "productReview":
-                    setProductReview(modelID);
+                    setProductReview(dataID, prodID);
                     break;
 
                 case "useReview":
-                    setUseReview(modelID);
+                    setUseReview(dataID, prodID);
                     break;
 
                 case "contractStatus":
-                    setContractStatus(modelID);
+                    setContractStatus(dataID, prodID);
                     break;
             }
         }).on('click', '.btn-moreview', function(e){
@@ -154,6 +162,15 @@
             e.preventDefault();
 
             setMonthlyPricePop();
+        }).on('click', '.thumb a', function(e){
+            var href = $(this).attr('href');
+            if(href == "#none" || href == ""){
+                e.preventDefault();
+
+                lgkorUI.alert("제품이 현재 품절/판매 중지<br>상태로 상세 정보를 확인 하실 수 없습니다", {
+                    title:""
+                });
+            }
         });
     }
 
@@ -170,28 +187,28 @@
         $('#popup-takeback').vcModal();
     }
 
-    function setDeliveryInquiry(modelID){
-        console.log("[setDeliveryInquiry]", modelID);
+    function setDeliveryInquiry(dataID, prodID){
+        console.log("[setDeliveryInquiry]", dataID, prodID);
     }
 
-    function setDeliveryRequest(modelID){
-        console.log("[setDeliveryRequest]", modelID);
+    function setDeliveryRequest(dataID, prodID){
+        console.log("[setDeliveryRequest]", dataID, prodID);
     }
 
-    function setTakeBack(modelID){
-        console.log("[setTakeBack]", modelID);
+    function setTakeBack(dataID, prodID){
+        console.log("[setTakeBack]", dataID, prodID);
     }
 
-    function setProductReview(modelID){
-        console.log("[setProductReview]", modelID);
+    function setProductReview(dataID, prodID){
+        console.log("[setProductReview]", dataID, prodID);
     }
 
-    function setUseReview(modelID){
-        console.log("[setUseReview]", modelID);
+    function setUseReview(dataID, prodID){
+        console.log("[setUseReview]", dataID, prodID);
     }
 
-    function setContractStatus(modelID){
-        console.log("[setContractStatus]", modelID);
+    function setContractStatus(dataID, prodID){
+        console.log("[setContractStatus]", dataID, prodID);
     }
 
     function setReceiptListPop(){
@@ -209,22 +226,8 @@
     }
 
     function setMoreOrderList(){
-        var hiddenData = lgkorUI.getHiddenInputData();
-        requestOrderInquiry(hiddenData.startDate, hiddenData.endDate, hiddenData.page+1);
-    }
-
-    function setOrderListInquiry(startDate, endDate){       
-        /* 
-        var datevalidate = getDateValidation(startDate, endDate);
-        if(!datevalidate.result){
-            lgkorUI.alert("", {
-                title: datevalidate.alert
-            });
-
-            return;
-        }
-        */
-        requestOrderInquiry(startDate, endDate);
+        var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
+        requestOrderInquiry(dateData.startDate, dateData.endDate, CURRENT_PAGE+1);
     }
 
     function requestOrderInquiry(startDate, endDate, page){
@@ -238,24 +241,32 @@
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
             if(result.data.success == "Y"){
                 if(result.data.orderList && result.data.orderList.length){
-                    lgkorUI.setHiddenInputData({
-                        total: result.data.total,
-                        page: result.data.page,
-                        startDate: result.data.startDate,
-                        endDate: result.data.endDate
-                    });
+                    CURRENT_PAGE = result.data.page;
+                    TOTAL_PAGE = result.data.total;
 
                     $('.inquiry-list-notify').show();
 
-                    if(result.data.page >= result.data.total) $('.btn-moreview').hide();
+                    if(CURRENT_PAGE >= TOTAL_PAGE) $('.btn-moreview').hide();
                     else $('.btn-moreview').show();
 
-                    if(result.data.page == 1) $('.inquiry-list-wrap').empty();
+                    if(CURRENT_PAGE == 1){
+                        ORDER_LIST = [];
+                        $('.inquiry-list-wrap').empty();
+                    }
 
+                    var leng, cdx, idx, templateList;
                     var list = result.data.orderList;
-                    for(var idx in list){
-                        var templateList = vcui.template(inquiryListTemplate, list[idx]);
+                    for(idx in list){
+                        leng = ORDER_LIST.length;
+                        list[idx]['dataID'] = leng.toString();
+                        for(cdx in list[idx].productList){
+                            list[idx].productList[cdx]["prodID"] = cdx;
+                        }
+
+                        templateList = vcui.template(inquiryListTemplate, list[idx]);
                         $('.inquiry-list-wrap').append(templateList);
+
+                        ORDER_LIST.push(list[idx]);
                     }
                 } else{
                     setNoData();
@@ -265,22 +276,6 @@
             lgkorUI.hideLoading();
         });
     }
-
-    /*
-    function getDateValidation(startdate, endate){
-        if(startdate == null || endate == null) return {result: false, alert: "조회기간을 확인해 주세요."};
-
-        var startime = new Date(vcui.date.format(startdate,'yyyy-MM-dd'));
-        var endtime = new Date(vcui.date.format(endate,'yyyy-MM-dd'));
-        var period = endtime.getTime() - startime.getTime();
-        if(period < 0) return {result: false, alert: "조회기간을 확인해 주세요."};
-
-        var limitperiod = 2 * 1000 * 60 * 60 * 24 * 365;
-        if(period > limitperiod) return {result: false, alert: "최대 조회 기간은<br>2년을 넘을 수 없습니다."};
-
-        return {result: true};
-    }
-    */
 
     document.addEventListener('DOMContentLoaded', function () {
         init();
