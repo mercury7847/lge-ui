@@ -22,7 +22,7 @@
                 })
 
                 <div class="cont-wrap">
-                    <form action="/html/support/CSTF4010.html" id="submitForm" autocomplete="off">
+                    <form action="/html/CS/CSTF6015.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/save.json" novalidate>
                         <div class="section">
                             <div class="form-infos">
                                 <p class="req" aria-disabled="true">필수 입력 항목</p>
@@ -90,39 +90,39 @@
                             </div>
                             <div class="rdo-wrap-list choice-input">
                                 <span class="rdo-wrap btn-type2">
-                                    <input type="radio" id="inquiry-1" name="inquiry" checked>
+                                    <input type="radio" id="inquiry-1" name="inquiry" checked value="inquiry-1">
                                     <label for="inquiry-1">제품정보</label>
                                 </span>
                                 <span class="rdo-wrap btn-type2">
-                                    <input type="radio" id="inquiry-2" name="inquiry">
+                                    <input type="radio" id="inquiry-2" name="inquiry" value="inquiry-2">
                                     <label for="inquiry-2">제품사용법</label>
                                 </span>
                                 <span class="rdo-wrap btn-type2">
-                                    <input type="radio" id="inquiry-3" name="inquiry">
+                                    <input type="radio" id="inquiry-3" name="inquiry" value="inquiry-3">
                                     <label for="inquiry-3">제품구입</label>
                                 </span>
                                 <span class="rdo-wrap btn-type2">
-                                    <input type="radio" id="inquiry-4" name="inquiry">
+                                    <input type="radio" id="inquiry-4" name="inquiry" value="inquiry-4">
                                     <label for="inquiry-4">A/S</label>
                                 </span>
                                 <span class="rdo-wrap btn-type2">
-                                    <input type="radio" id="inquiry-5" name="inquiry">
+                                    <input type="radio" id="inquiry-5" name="inquiry" value="inquiry-5">
                                     <label for="inquiry-5">제품등록</label>
                                 </span>
                                 <span class="rdo-wrap btn-type2">
-                                    <input type="radio" id="inquiry-6" name="inquiry">
+                                    <input type="radio" id="inquiry-6" name="inquiry" value="inquiry-6">
                                     <label for="inquiry-6">제품구입</label>
                                 </span>
                                 <span class="rdo-wrap btn-type2">
-                                    <input type="radio" id="inquiry-7" name="inquiry">
+                                    <input type="radio" id="inquiry-7" name="inquiry" value="inquiry-7">
                                     <label for="inquiry-7">소모품구입</label>
                                 </span>
                                 <span class="rdo-wrap btn-type2">
-                                    <input type="radio" id="inquiry-8" name="inquiry">
+                                    <input type="radio" id="inquiry-8" name="inquiry" value="inquiry-8">
                                     <label for="inquiry-8">이벤트</label>
                                 </span>
                                 <span class="rdo-wrap btn-type2">
-                                    <input type="radio" id="inquiry-9" name="inquiry">
+                                    <input type="radio" id="inquiry-9" name="inquiry" value="inquiry-9">
                                     <label for="inquiry-9">기타</label>
                                 </span>
                             </div>
@@ -138,7 +138,7 @@
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap count">
-                                            <input type="text" name="title" id="input-title" placeholder="제목 입력" data-required="true" data-msg-target=".err-msg" required>
+                                            <input type="text" name="title" id="input-title" placeholder="제목 입력" data-error-msg="제목을 입력해주세요." data-required="true" required>
                                             <div class="btm-more err-block">
                                                 <p class="err-msg"></p>
                                             </div>
@@ -152,7 +152,7 @@
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap count">
-                                            <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-msg-target=".err-msg" data-required="true"></textarea>
+                                            <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-error-msg="내용을 입력해주세요." data-required="true" required></textarea>
                                             <div class="btm-more err-block">
                                                 <p class="err-msg"></p>
                                             </div>
@@ -231,7 +231,7 @@
                                     <div class="tit"><label for="input-name" class="req">이름<span class="blind">필수입력</span></label></div>
                                     <div class="conts">
                                         <div class="input-wrap">
-                                            <input type="text" name="name" id="input-name" placeholder="이름 입력" data-required="true" data-msg-target=".err-msg" required>
+                                            <input type="text" name="userName" id="input-name" placeholder="이름 입력" data-error-msg="이름을 입력해주세요." data-required="true" required>
                                         </div>
                                         <div class="btm-more err-block">
                                             <p class="err-msg"></p>
@@ -242,7 +242,7 @@
                                     <div class="tit"><label for="input-email" class="req">이메일<span class="blind">필수입력</span></label></div>
                                     <div class="conts">
                                         <div class="input-wrap">
-                                            <input type="text" name="email" id="input-email" placeholder="이메일 입력" value="" data-required="true" data-msg-target=".err-msg" required>
+                                            <input type="text" name="email" id="input-email" placeholder="이메일 입력" value="" data-error-msg="이메일 주소를 입력해주세요." data-required="true" required>
                                         </div>
                                         <div class="btm-more err-block">
                                             <p class="err-msg"></p>
@@ -259,8 +259,8 @@
                             </div>
                         </div>
                         <div class="btn-group center">
-                            <a href="#" class="btn gray"><span>취소</span></a>
-                            <button type="button" class="btn">문의</button>
+                            <button type="button" class="btn gray btn-cancel" data-url="/html/CS/CSRF6001"><span>취소</span></button>
+                            <button type="button" class="btn btn-confirm"><span>문의</span></button>
                         </div>
                     </form>
                 </div>
@@ -292,6 +292,6 @@
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
-    <script src="/lg5-common/js/support/reservation/reservation.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/emailInquiry.min.js"></script>
 </body>
 </html> 

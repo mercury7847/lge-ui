@@ -3,44 +3,12 @@
 @import "../components-app";
 
 .KRC0039 {
-    // font color option
-    $fontColor : (type-black, type-white);
-    @each $colorClass in $fontColor {
-        .#{$colorClass} {
-            @if $colorClass == type-black {
-                color:#222;
-            }
-            @else if $colorClass == type-white {
-                color:#fff;
-                @include mobile {
-                    color:#222;
-                }
-            }
-        }
-    }
-
-    // align option 
-    $align : (align-left, align-center, align-right);
-    @each $alignClass in $align {
-        .#{$alignClass} {
-            @if $alignClass == align-left {
-                text-align:left;
-            }
-            @else if $alignClass == align-center {
-                text-align:center;
-            }
-            @else if $alignClass == align-right {
-                text-align:right;
-            }
-        }
-    }
-
     .inner {
         max-width:1380px + 80px;
         margin:0 auto;
         padding:0 40px;
         @include mobile {
-            padding:0 16px;
+            padding:0;
         }
         .tbl-layout {
             display:table;
@@ -48,7 +16,6 @@
             table-layout:fixed;
             @include mobile {
                 display:block;
-                padding:0 16px;
             }
             &.vertical-top {
                 .visual-cell,
@@ -72,43 +39,43 @@
                 .text-area {
                     padding-left:24px;
                     @include mobile {
-                        margin-top:24px;
-                        padding-left:0;
+                        margin-top:28px;
                     }
                 }
             }
             &.visual-right {
-                .visual-cell {
-                    margin-top:24px;
-                }
                 .text-area {
                     padding-right:24px;
                     @include mobile {
-                        padding-right:0;
+                        margin-bottom:24px;
                     }
                 }
             }
         }
         .visual-cell {
             display:table-cell;
-            width:66%;
+            width:((912px * 100%) / 1380px);
             @include mobile {
                 display:block;
                 width:100%;
             }
-            img {
-                width:100%;
-                height:auto;
-                vertical-align:top;
+            .slide-conts {
+                text-align:center;
+                overflow:hidden;
+                img {
+                    width:100%;
+                    max-width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
             }
         }
         .text-area {
             display:table-cell;
-            width:34%;
             @include mobile {
                 display:block;
                 width:100%;
-                padding:0;
+                padding:0 16px;
             }
             .text-inner {
                 margin-top:56px;
@@ -119,33 +86,16 @@
                     margin-top:0;
                 }
                 .title * {
-                    max-height:128px;
-                    font-size:48px;
-                    line-height:64px;
-                    font-weight:700;
-                    @include textEllipsisClamp(2);
-                    @include mobile {
-                        max-height:66px;
-                        font-size:24px;
-                        line-height:33px;
-                    }
+                    @include title-h2;
                 }
                 .body-copy {
-                    margin-top:24px;
-                    font-size:20px;
-                    line-height:30px;
-                    @include mobile {
-                        margin-top:16px;
-                        font-size:16px;
-                        line-height:24px;
-                    }
+                    @include bodycopy(h2, h2);
                 }
                 .images {
-                    margin-top:16px;
-                    @include mobile {
-                        margin-top:20px;
-                    }
+                    margin-top:24px;
+                    overflow:hidden;
                     img {
+                        width:auto;
                         max-width:100%;
                         height:auto;
                         vertical-align:top;

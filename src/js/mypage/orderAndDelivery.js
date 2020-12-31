@@ -67,9 +67,6 @@
             '{{#if cancelAbled == "Y"}}'+
             '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
             '{{/if}}'+
-            '{{#if takebackAbled == "Y"}}'+
-            '<a href="#n" class="btn-link takeBack-btn">반품신청</a>'+
-            '{{/if}}'+
             '<div class="btns">'+
                 '<a href="#n" class="btn-link">주문/배송 상세보기</a>'+
             '</div>'+
