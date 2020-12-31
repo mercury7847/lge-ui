@@ -960,6 +960,11 @@
                         }
                     }
                 }
+                .example-img {
+                    img {
+                        width:100%;
+                    }
+                }
                 ul {
                     @include clearfix;
                     margin-top:48px;
