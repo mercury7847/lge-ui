@@ -781,7 +781,7 @@
                     if(callback && typeof callback === 'function') callback(result);   
                 }                
             }).fail(function(err){
-                alert(err.message);
+                alert(url, err.message);
             });
         },
 

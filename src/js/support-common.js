@@ -57,7 +57,7 @@ CS.MD.commonModel = function() {
 
     // var modelListTmpl = 
     //     '<li>' +
-    //         '<a href="#" class="item" data-category="{{category}}" data-sub-category="{{subCategory}}" data-code="{{code}}">' +
+    //         '<a href="#" class="item" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{code}}">' +
     //             '<div class="info">' +
     //                 '<p class="name">{{#raw name}}</p>' +
     //                 '<p class="category"><span>{{categoryNm}} &gt; </span>{{subCategoryNm}}</p>' +
@@ -67,7 +67,7 @@ CS.MD.commonModel = function() {
 
     var modelListTmpl = 
         '<div class="slide-conts">' +
-            '<a href="#" class="item" data-category="{{category}}" data-sub-category="{{subCategory}}" data-code="{{code}}">' +
+            '<a href="#" class="item" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{modelCode}}" data-product-code="{{productCode}}" data-category-name="{{categoryNm}}" data-sub-category-name="{{subCategoryNm}}">' +
                 '<div class="info">' +
                     '<p class="name">{{#raw name}}</p>' +
                     '<p class="category"><span>{{categoryNm}} &gt; </span>{{subCategoryNm}}</p>' +
@@ -75,7 +75,10 @@ CS.MD.commonModel = function() {
             '</a>' +
         '</div>';
     
-    var validation;
+    var termsValidation;
+    var modelValidation;  
+    var inputValidation;
+    
 
     function Plugin(el, opt) {
         var self = this;
@@ -87,13 +90,7 @@ CS.MD.commonModel = function() {
             stepActiveClass: 'active',
             selectedModel: [],
             register: {
-                privcyCheck: {
-                    msgTarget: '.err-block'
-                },
-                keyword: {
-                    msgTarget: '.err-msg',
-                    minLength: 4
-                }   
+                 
             },
             callback: function() {}
         };
@@ -101,7 +98,20 @@ CS.MD.commonModel = function() {
         self.options = $.extend({}, defaults, self.$el.data(), opt);
         
         vcui.require(['ui/validation', 'ui/selectTarget'], function () {
-            validation = new vcui.ui.CsValidation('#submitForm', {register:self.options.register});
+            termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
+                privcyCheck: {
+                    msgTarget: '.err-block'
+                }
+            }});
+            modelValidation = new vcui.ui.CsValidation('#stepModel', {register: {
+                keyword: {
+                    msgTarget: '.err-msg',
+                    minLength: 4
+                }
+            }})
+            inputValidation = new vcui.ui.CsValidation('#stepInput', {register: {
+
+            }});
         
             self._initialize();
             self._bindEvent();  
@@ -194,7 +204,7 @@ CS.MD.commonModel = function() {
             self.$stepModel.addClass(opt.stepActiveClass);
             self.$stepModel.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
 
-            self.$submitForm.find('input').val('');
+            // self.$submitForm.find('input').val('');
 
             opt.selectedModel = [];
 
@@ -219,7 +229,7 @@ CS.MD.commonModel = function() {
 
                 if (arr.length) {
                     arr.forEach(function(item) {
-                        item.name = item.code.replaceAll(param.keyword, '<em class="word">'+param.keyword+'</em>');
+                        item.name = item.modelCode.replaceAll(param.keyword, '<em class="word">'+param.keyword+'</em>');
                         self.$modelSlider.find('.slide-track').append(vcui.template(modelListTmpl, item))
                     });
                     self.$modelSlider.show();
@@ -266,6 +276,8 @@ CS.MD.commonModel = function() {
                     }
                 } else {
                     self.$modelSlider.hide();
+                    
+                    self.$modelNoData.find('.word').html(param.keyword);
                     self.$modelNoData.show();
                 }
 
@@ -286,7 +298,7 @@ CS.MD.commonModel = function() {
 
             // 약관 동의 다음 버튼
             self.$stepTerms.find('.btn-next').on('click', function() {
-                var result = validation.validate(['privcyCheck']),
+                var result = termsValidation.validate(),
                     opt = self.options;
                 
                 if (result.success) {
@@ -402,31 +414,39 @@ CS.MD.commonModel = function() {
                 if (!$this.hasClass('no-model')) {
                     self.$submitForm.find('#category').val(data.category);
                     self.$submitForm.find('#subCategory').val(data.subCategory);
-                    self.$submitForm.find('#modeCode').val(data.code);
+                    self.$submitForm.find('#modeCode').val(data.modelCode);
+                    self.$submitForm.find('#productCode').val(data.productCode)
                     
-                    opt.selectedModel[2] = data.code;
-
-                    updateObj = {
-                        product: opt.selectedModel,
-                        reset: true
-                    }
+                    opt.selectedModel = [data.categoryName, data.subCategoryName, data.modelCode];
                 } else {
-                    updateObj = {
-                        product: opt.selectedModel,
-                        reset: true
-                    }
+                    opt.selectedModel = [data.categoryName, data.subCategoryName];
                 }   
+
+                updateObj = {
+                    product: opt.selectedModel,
+                    reset: true
+                }
 
                 self.update(updateObj);
 
                 self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
                 self.$stepInput.addClass(opt.stepActiveClass);
 
+                lgkorUI.requestAjaxDataPost(self.$searchModelBox.data('ajax'), {modelCode: data.code, serviceType: $('#serviceType').val()}, function(result) {
+                    var ajaxData = result.data,
+                        info = {
+                            category: data.category,
+                            subCategory: data.subCategory,
+                            modelCode: data.modelCode
+                        };
+
+                    opt.callback(info, ajaxData);
+                });
+
+
                 $('html, body').stop().animate({
                     scrollTop: self.$selectedModelBar.offset().top
                 });
-
-                opt.callback();
             });
             
             // 모델명 선택 - 서브 카테고리 선택
