@@ -12,7 +12,6 @@
                 "orderNumber": "20203987102999",
                 "orderTotal": "3",
                 "cancelAbled": "Y",
-                "takebackAbled": "N",
                 "productList": [
                     {
                         "modelID": "ADC495769328",
@@ -24,16 +23,16 @@
                         "productDetailUrl": "http://www.lge.com",
                         "specList": ["Silver"],
                         "productTotal": "",
-                        "productPrice": "1,760,000",
+                        "productPrice": "1760000",
+                        "discountPrice": "50000",
+                        "memberShipPoint":"0",
                         "orderStatus": {
                             "disabled": "",
                             "statusText": "결제완료",
                             "statusClass": "",
                             "statusDate": "배송희망일 2020.09.18"
                         },
-                        "statusButtonList": [],
-                        "cancelAbled": "Y",
-                        "takebackAbled": "N"
+                        "statusButtonList": []
                     },
                     {
                         "modelID": "ADC4957639428",
@@ -96,24 +95,6 @@
                                 "buttonName": "제품리뷰"
                             }
                         ]
-                    }
-                ],
-                "cancelInfo": [
-                    {
-                        "infoName": "제품 금액",
-                        "infoValue": "5,300,00원"
-                    },
-                    {
-                        "infoName": "할인 금액 합계",
-                        "infoValue": "-159,000원"
-                    },
-                    {
-                        "infoName": "취소 신청 멤버십 포인트",
-                        "infoValue": "56,000원"
-                    },
-                    {
-                        "infoName": "취소 신청 금액",
-                        "infoValue": "5,141,000원"
                     }
                 ],
                 "repaymentInfo": {
