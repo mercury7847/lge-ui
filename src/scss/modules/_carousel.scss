@@ -33,8 +33,7 @@
                 background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt-m.svg');
             }
         }
-        &.disabled,
-        &.ui_carousel_hidden {
+        &.disabled {
             &::before {
                 background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt2.svg');
                 @include mobile {
@@ -50,8 +49,7 @@
                 background-image:url('/lg5-common/images/icons/btn-arr-40x40-rt-m.svg');
             }
         }
-        &.disabled,
-        &.ui_carousel_hidden {
+        &.disabled {
             &::before {
                 background-image:url('/lg5-common/images/icons/btn-arr-40x40-rt2.svg');
                 @include mobile {
@@ -59,6 +57,9 @@
                 }
             }
         }
+    }
+    &.ui_carousel_hidden {
+        display:none !important;
     }
 }
 

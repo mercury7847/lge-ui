@@ -18,17 +18,44 @@
 	}
 }
 
+.video-link {
+	.see-video {
+		display:inline-block;
+		font-size:16px;
+		line-height:32px;
+		font-weight:500;
+		vertical-align:top;
+		@include mobile {
+			font-size:14px;
+		}
+		&:before {
+			display: inline-block;
+			width: 32px;
+			height: 32px;
+			margin-right: 8px;
+			vertical-align:top;
+			background: no-repeat 0 0;
+			content: '';
+			background:url('/lg5-common/images/icons/btn-play-32-black.svg') center no-repeat;
+		}
+		&.bc-black {
+			&:before {
+				background:url('/lg5-common/images/icons/btn-play-32-black.svg') center no-repeat;
+			}
+		}
+		&.bc-white {
+			&:before {
+				background:url('/lg5-common/images/icons/btn-play-32-white.svg') center no-repeat;
+			}
+		}
+	}
+}
+
 .visual-area {
 	position: relative;
 
 	&.video-box {
 		position: relative;
-		.see-video {
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform: translate(-50%,-50%);
-		}
 	}
 
 	&.video {
