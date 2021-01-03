@@ -41,8 +41,10 @@
                 
                 <div class="cont-wrap">
                     <form action="/html/CS/CSRF6029.html" data-ajax="/lg5-common/data-ajax/support/serviceEngineer.json" id="submitForm" autocomplete="off" novalidate>
-                        <input type="hidden" name="" id="" value="">
-                        <input type="hidden" name="" id="" value="">
+                        <input type="hidden" name="date" id="date" value="">
+                        <input type="hidden" name="time" id="time" value="">
+                        <input type="hidden" name="categoryNm" id="categoryNm" value="">
+                        <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="">
                         <input type="hidden" name="category" id="category" value="">
                         <input type="hidden" name="subCategory" id="subCategory" value="">
                         <input type="hidden" name="modelCode" id="modelCode" value="">
@@ -50,87 +52,23 @@
                         <input type="hidden" name="serviceType" id="serviceType" value="A">
                         <input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
 
+                        <!-- 약관 동의 -->
                         <div class="step-box active" id="stepTerms">
                             <div class="section">
                                 <div class="form-infos">
                                     <p class="req" aria-disabled="true">필수 입력 항목</p>
                                 </div>
-                                <div class="agree-wrap ui_all_checkbox"> 
-                                    <div class="agree-all-chk">
-                                        <span class="chk-wrap">
-                                            <input type="checkbox" name="allCheck" id="allCheck" class="ui_all_checker">
-                                            <label for="allCheck">전체 동의 <span class="desc">개인정보 수집 및 이용동의(필수), 마케팅 수신동의(선택)에 모두 동의합니다.</span></label>
-                                        </span>
-                                    </div>
-                                    <div class="input-info">
-                                        <div class="agree-tit">
-                                            <p class="tit req">개인정보 수집 및 이용에 대한 동의</p>
-                                        </div>
-                                        <div class="agree-cont-wrap">
-                                            <div class="agree-cont-box">
-                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
-                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
-                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
-                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
-                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
-                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
-                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
-                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
-                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
-                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
-                                            </div>
-                                            <div class="agree-input">
-                                                <span class="chk-wrap">
-                                                    <input type="checkbox" name="privcyCheck" id="privcyCheck" value="Y" data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다." data-required="true" required>
-                                                    <label for="privcyCheck">동의합니다.</label>
-                                                </span>
-                                            </div>
-                                            <div class="btm-more err-block">
-                                                <p class="err-msg"></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="input-info">
-                                        <div class="agree-tit">
-                                            <p class="tit">마케팅 수신 동의 (선택)</p>
-                                        </div>
-                                        <div class="agree-cont-wrap">
-                                            <div class="agree-cont-box">
-                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
-                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
-                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
-                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
-                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
-                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
-                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
-                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
-                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
-                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
-                                            </div>
-                                            <div class="agree-input">
-                                                <span class="chk-wrap">
-                                                    <input type="checkbox" name="marketingCheck" id="marketingCheck" value="Y">
-                                                    <label for="marketingCheck">동의합니다.</label>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="btn-wrap">
-                                    <button type="button" class="btn border size btn-next"><span>다음</span></button>
-                                </div> 
-
-                                @@include('./common/modules/bullet-list.html', {
-                                    "topBorder" : true,
-                                    "bulletTxt" : [
-                                        "평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용 됩니다.",
-                                        "비로그인으로 예약을 접수하실 경우, 휴대전화 인증 후에 예약이 완료됩니다.",
-                                        "입력하신 정보가 정확하지 않을 경우 서비스가 취소 또는 지연될 수 있습니다."
-                                    ]
+                                @@include('./common/support/accept-terms.html', {
+                                    member: true
                                 })
+                                <div class="step-btn-wrap">
+                                    <button type="button" class="btn border size-m btn-next"><span>다음</span></button>
+                                </div> 
                             </div>
                         </div>
-                        
+                        <!-- // 약관 동의 -->
+
+                        <!-- 제품 선택 -->
                         <div class="step-box" id="stepModel">
                             <!-- 제품 카테고리 선택 -->
                             @@include('./common/support/select-model.html', {
@@ -152,8 +90,10 @@
                                 ]
                             })
                         </div>
+                        <!-- // 제품 선택 -->
     
-                        <div class="step-box" id="stepInput">
+                        <!-- 예약 내용 입력 -->
+                        <div class="step-box" id="stepInput" data-ajax="/lg5-common/data-ajax/support/possibleDate.json">
                             <div class="section">
                                 <div class="form-infos">
                                     <p class="req" aria-disabled="true">필수 입력 항목</p>
@@ -248,6 +188,7 @@
                                                 </span>
                                             </li> -->
                                         </ul>
+                                        <p class="err-msg topic-msg"></p>
                                     </div>
                                 </div>
 
@@ -268,6 +209,7 @@
                                                 </span>
                                             </li> -->
                                         </ul>
+                                        <p class="err-msg sub-topic-msg"></p>
                                     </div>
 
                                     <div class="banner-wrap" id="solutionBanner" style="display:none;">
@@ -290,12 +232,9 @@
                                             <div class="conts">
                                                 <div class="text-form">   
                                                     <div class="input-wrap">
-                                                        <textarea class="ui_textcontrol" name="content" id="content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="100" data-limit="100" data-count-target="#txt-count1" data-error-msg="전달사항을 입력해주세요." data-required="true"></textarea>
+                                                        <textarea class="ui_textcontrol" name="content" id="content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="100" data-limit="100" data-count-target="#txt-count1"></textarea>
                                                         <span id="txt-count1" class="inner-text"><em>0</em> / 100자</span>
                                                     </div>
-                                                </div>
-                                                <div class="btm-more err-block">
-                                                    <p class="err-msg"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -309,7 +248,7 @@
                                         <ul class="rdo-list">
                                             <li>
                                                 <span class="rdo-wrap">
-                                                    <input type="radio" name="bdType" id="bdType01" value="0">
+                                                    <input type="radio" name="bdType" id="bdType01" value="0" data-error-msg="건물유형을 선택해주세요." data-required="true" required>
                                                     <label for="bdType01">상가, 사무실</label>
                                                 </span>
                                             </li>
@@ -344,6 +283,7 @@
                                                 </span>
                                             </li>
                                         </ul>
+                                        <p class="err-msg bd-type-msg"></p>
                                     </div>
                                 </div>
 
@@ -354,7 +294,7 @@
                                             <li>
                                                 <div class="thumb-rdo-wrap">
                                                     <label for="fan01">
-                                                        <input type="radio" name="fan" id="fan01" value="0">
+                                                        <input type="radio" name="fan" id="fan01" value="0" data-error-msg="실외기 위치를 선택해주세요." data-required="true" required>
                                                         <span class="img">
                                                             <img src="/lg5-common/images/CS/img-fan-location-1.jpg" alt="베란다 난간 실외기 위치 예시 이미지">
                                                         </span>
@@ -448,7 +388,8 @@
                                                     <input type="text" maxlength="10" placeholder="최대 10자 입력 가능">
                                                 </div>
                                             </li>
-                                        </ul>   
+                                        </ul>  
+                                        <p class="err-msg fan-msg"></p> 
                                     </div>
                                 </div>
 
@@ -458,7 +399,7 @@
                                         <ul class="rdo-list">
                                             <li>
                                                 <span class="rdo-wrap">
-                                                    <input type="radio" name="addFan" id="addFan01" value="0">
+                                                    <input type="radio" name="addFan" id="addFan01" value="0"  data-error-msg="실외기 위치를 선택해주세요." data-required="true" required>
                                                     <label for="addFan01">베란다 또는 외벽 1층</label>
                                                 </span>
                                             </li>
@@ -475,6 +416,7 @@
                                                 </span>
                                             </li>
                                         </ul>   
+                                        <p class="err-msg add-fan-msg"></p>
                                     </div>
                                 </div>
                                 <!-- // 에어컨 > 시스템 에어컨 or 창문형/이동식 선택 시 -->
@@ -487,7 +429,7 @@
                                             <li>
                                                 <div class="thumb-rdo-wrap">
                                                     <label for="installType01">
-                                                        <input type="radio" name="installType" id="installType01" value="단독설치" data-required="true" required>
+                                                        <input type="radio" name="installType" id="installType01" value="단독설치" data-error-msg="설치형태를 선택해주세요." data-required="true" required>
                                                         <span class="img">
                                                             <img src="/lg5-common/images/CS/img-fan-location-1.jpg" alt="">
                                                         </span>
@@ -518,6 +460,7 @@
                                                 </div>
                                             </li>
                                         </ul>   
+                                        <p class="err-msg install-type-msg"></p>
                                     </div>
                                 </div>
                                 <!-- // 드럼 세탁기 선택 시 -->
@@ -529,7 +472,7 @@
                                         <ul class="rdo-list">
                                             <li>
                                                 <span class="rdo-wrap">
-                                                    <input type="radio" name="tvPosition" id="tvPosition01" value="벽결이 설치">
+                                                    <input type="radio" name="tvPosition" id="tvPosition01" value="벽결이 설치" data-error-msg="설치 위치를 선택해주세요." data-required="true" required>
                                                     <label for="tvPosition01">벽결이 설치</label>
                                                 </span>
                                             </li>
@@ -555,11 +498,12 @@
                                                 </div>
                                             </li>
                                         </ul>   
+                                        <p class="err-msg tv-position-msg"></p>
                                     </div>
                                 </div>
                                 <!-- // TV/프로젝터 > 올레드, 울트라HD, LED/LCD, PDP 선택 시  -->
                             </div>
-                            <div class="section" id="userSection" data-ajax="/lg5-common/data-ajax/support/possibleDate.json">
+                            <div class="section">
                                 <div class="tit-wrap">
                                     <h2 class="tit">예약자 정보 입력</h2>
                                 </div>
@@ -625,11 +569,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="btn-wrap">
-                                    <button type="button" class="btn border size btn-next"><span>다음</span></button>
+                                <div class="step-btn-wrap">
+                                    <button type="button" class="btn border size-m btn-next"><span>희망 일자 선택</span></button>
                                 </div> 
                             </div>
-                            <div class="section" id="dateSection" style="display:none;" data-ajax="/lg5-common/data-ajax/support/searchEngineer.json">
+                        </div>
+                        <!-- // 예약 내용 입력 -->
+
+                        <!-- 예약/상담 날짜 선택 -->
+                        <div class="step-box" id="stepDate" data-ajax="/lg5-common/data-ajax/support/searchEngineer.json">
+                            <div class="section">
                                 <div class="tit-wrap">
                                     <h2 class="tit">희망일시 선택</h2>
                                 </div>
@@ -852,7 +801,12 @@
                                     </div> 
                                 </div>
                             </div>
-                            <div class="section" id="engineerSection" style="display:none;">
+                        </div>
+                        <!-- // 예약/상담 날짜 선택 -->
+
+                        <!-- 예약/상담 엔지니어 선택 -->
+                        <div class="step-box" id="stepEnginner">
+                            <div class="section">
                                 <div class="tit-wrap">
                                     <h2 class="tit">방문할 엔지니어 확인</h2>
                                 </div>
@@ -882,11 +836,23 @@
                                     ]
                                 })
                             </div>
-                            <div class="btn-group center">
-                                <button type="button" class="btn gray btn-cancel"><span>취소</span></a>
-                                <button type="button" class="btn btn-confirm">예약</button>
-                            </div>
                         </div>
+                        <!-- // 예약/상담 엔지니어 선택 -->
+
+                        @@include('./common/modules/bullet-list.html', {
+                            "topBorder" : true,
+                            "bulletTxt" : [
+                                "평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용 됩니다.",
+                                "비로그인으로 예약을 접수하실 경우, 휴대전화 인증 후에 예약이 완료됩니다.",
+                                "입력하신 정보가 정확하지 않을 경우 서비스가 취소 또는 지연될 수 있습니다."
+                            ]
+                        })
+
+                        <div class="btn-group center">
+                            <button type="button" class="btn gray btn-cancel"><span>취소</span></a>
+                            <button type="button" class="btn btn-confirm">예약</button>
+                        </div>
+
                     </form>
 
                 </div>

@@ -1,34 +1,69 @@
 (function() {
+    var topicTmpl = 
+    '{{#each (item, index) in topicList}}' +
+    '<li>' +
+        '<span class="rdo-wrap btn-type3">' +
+            '{{# if (index == 0) { #}}' +
+            '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}" data-topic-name="{{item.name}}" data-error-msg="정확한 제품증상을 선택해주세요." data-required="true" required>' +
+            '{{# } else { #}}' +
+            '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}">' +
+            '{{# } #}}' +
+            '<label for="topic{{index}}"><span>{{item.name}}</span></label>' +
+        '</span>' +
+    '</li>' + 
+    '{{/each}}';
+    var subTopicTmpl = 
+    '{{#each (item, index) in subTopicList}}' +
+    '<li>' +
+        '<span class="rdo-wrap">' +
+            '{{# if (index == 0) { #}}' +
+            '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}" data-sub-topic-name="{{item.name}}" data-error-msg="정확한 세부증상을 선택해주세요." data-required="true" required>' +
+            '{{# } else { #}}' +
+            '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}">' +
+            '{{# } #}}' +
+            '<label for="subTopic{{index}}">{{item.name}}</label>' +
+        '</span>' +
+    '</li>' +
+    '{{/each}}';
     var validation;
-
-    var custom = {
+    
+    var reservation = {
         init: function() {
             var self = this;
             
             self.$form = $('#submitForm');
 
-            vcui.require(['ui/validation', 'ui/formatter', 'ui/imageFileInput'], function () {
+            vcui.require(['ui/validation', 'ui/formatter'], function () {
 
                 var register = {
-                    privcyCheck: {
-                        msgTarget: '.err-block'
+                    topic: {
+                        required: true,
+                        msgTarget: '.topic-msg'
                     },
-                    userName: {
-                        msgTarget: '.err-block'
+                    subTopic: {
+                        required: true,
+                        msgTarget: '.sub-topic-msg'
+                    },
+                    userNm: {
+                        msgTarget: '.err-block' 
                     },
                     phoneNo: {
-                        pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
                         msgTarget: '.err-block'
-                    },
-                    errsign: {
-                        msgTarget: '.err-block'
-                    },
-                    dtsign: {
-                        msgTarget: '.dtsign-err-block'
-                    },
+                    }
                 }
 
                 validation = new vcui.ui.CsValidation('#submitForm', {register:register});
+
+                $('.contents').commonModel({
+                    register: register,
+                    callback: function(data, info) {
+                        var html = '';
+                        
+                        html = vcui.template(topicTmpl, info);
+
+                        $('#topicList ul').html(html);
+                    }
+                });
 
                 self.bindEvent();
             });
@@ -98,6 +133,6 @@
     }
 
     $(window).ready(function() {
-        custom.init();
+        reservation.init();
     });
 })();
