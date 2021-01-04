@@ -866,23 +866,15 @@
 
     <!-- 유금 및 보증기간 팝업 -->
     @@include('./CS/modal/rates-warranty-guide-popup.html')
-    
-    <!-- 휴대폰인증 팝업 -->
-    @@include('./CS/modal/phone-certification-popup.html')
 
     <!-- 제품 해결 팝업 -->
-    @@include('./CS/modal/solutions-popup.html')
+    <article id="solutionsPopup" class="popup-wrap full"></article>
 
     <!-- 엔지니어 선택 팝업 -->
     @@include('./CS/modal/choice-engineer-popup.html')
 
-    <!-- 예약 완료 팝업 -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "completePop",
-        "msgOnly" : true,
-        "msg" : "출장 서비스를<br>예약하겠습니까?",
-        "twobtn" : true
-    })
+    <!-- 휴대폰인증 팝업 -->
+    @@include('./CS/modal/phone-certification-popup.html')
 
     <!-- toast-meassage -->
     @@include('./common/modules/toast-message.html', {
@@ -893,6 +885,7 @@
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
-    <script src="/lg5-common/js/support/reservation/reservation.min.js"></script>
+    <script src="/lg5-common/js/caresolution/addressManagement.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/serviceEngineer.min.js"></script>
 </body>
 </html> 
