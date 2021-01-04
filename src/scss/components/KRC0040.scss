@@ -39,14 +39,15 @@
                 table-layout:fixed;
                 .info-tab {
                     display:table-cell;
+                    width:1%;
                     a {
                         display:block;
                         position:relative;
                         overflow:hidden;
-                        padding:20px 16px 18px;
+                        padding:20px 10px;
                         color:#222;
                         font-size:14px;
-                        line-height:26px;
+                        line-height:24px;
                         font-weight:700;
                         text-align:center;
                         text-overflow:ellipsis;

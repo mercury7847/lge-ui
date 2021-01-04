@@ -17,7 +17,9 @@ $(window).ready(function(){
                         infinite: false,
                         dots: true,
                         slidesToShow: 1, 
-                        slidesToScroll: 1
+                        slidesToScroll: 1,
+                        adaptiveHeight:true,
+                        lazyLoad: 'progressive',
                     }
                 }
             ]

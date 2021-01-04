@@ -190,6 +190,14 @@
 					transform:rotate(45deg);
 				}
 			}
+			&:hover,
+			&:active,
+			&:focus {
+				&::before,
+				&::after {
+					background:#fff;
+				}
+			}
 		}
 		&.open {
 			padding-bottom:80px;

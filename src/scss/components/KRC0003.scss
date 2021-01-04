@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRC0003 {
+    .indi-wrap {
+        bottom:24px;
+    }
+    .slide-wrap {
+        .slide-info-area {
+            .text-wrap {
+                .eyebrow {
+                    @include eyebrow;
+                }
+                .title * {
+                    @include title-h2;
+                }
+                .date {
+                    @include bodycopy(h2, h2);
+                }
+            }
+            .cta {
+                @include cta-btn;
+            }
+        }
+    }
+}

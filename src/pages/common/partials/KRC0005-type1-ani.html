@@ -56,7 +56,7 @@
         기본은 언더라인 없음
         .font-underline : 언더라인
     -->
-    <section class="component KRC0005 @@align-class1 @@img-size-type @@bg-color">
+    <section class="component KRC0005 @@align-class1 @@imgSizeType @@bg-color">
         <div class="component-inner">
             <div class="inner">
                 <div class="visual-wrap image-align-left">
@@ -100,7 +100,14 @@
                         <!-- // 6. body copy -->
                         <!-- [KR수정_201216] DOM 추가 -->
                         <div class="thumbs">
-                            <img src="/lg5-common/images/dummy/@img-372x210.png" alt="">
+                            <!-- [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
+                            @@if ( context.imgSizeType == "standard" ) {
+                            <img src="/lg5-common/images/KRC0005/@thumb_420.jpg" data-pc-src="/lg5-common/images/KRC0005/@thumb_420.jpg" data-m-src="/lg5-common/images/KRC0005/@thumb_1312.jpg" alt="">
+                            }
+                            @@if ( context.imgSizeType == "large" ) {
+                            <img src="/lg5-common/images/KRC0005/@thumb_372.png" data-pc-src="/lg5-common/images/KRC0005/@thumb_372.png" data-m-src="/lg5-common/images/KRC0005/@thumb_1312.jpg" alt="">
+                            }
+                            <!-- // [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
                             <p class="hidden">graphic description : </p>
                         </div>
                         <!-- // [KR수정_201216] DOM 추가 -->
@@ -131,7 +138,14 @@
                         <!-- // 6. body copy -->
                         <!-- [KR수정_201216] DOM 추가 -->
                         <div class="thumbs">
-                            <img src="/lg5-common/images/dummy/@img-372x210.png" alt="">
+                            <!-- [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
+                            @@if ( context.imgSizeType == "standard" ) {
+                            <img src="/lg5-common/images/KRC0005/@thumb_420.jpg" data-pc-src="/lg5-common/images/KRC0005/@thumb_420.jpg" data-m-src="/lg5-common/images/KRC0005/@thumb_1312.jpg" alt="">
+                            }
+                            @@if ( context.imgSizeType == "large" ) {
+                            <img src="/lg5-common/images/KRC0005/@thumb_372.png" data-pc-src="/lg5-common/images/KRC0005/@thumb_372.png" data-m-src="/lg5-common/images/KRC0005/@thumb_1312.jpg" alt="">
+                            }
+                            <!-- // [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
                             <p class="hidden">graphic description : </p>
                         </div>
                         <!-- // [KR수정_201216] DOM 추가 -->

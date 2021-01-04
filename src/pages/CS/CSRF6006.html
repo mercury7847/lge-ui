@@ -16,10 +16,52 @@
             })
 
             <div class="contents support video-guide">
-                <div class="dummy">
-                    <p>키워드/카테고리 검색 영역</p>
-                </div>
                 <div class="cont-wrap narrow">
+                    <div class="form-wrap search-sort">
+                        <div class="sort-desc">
+                            <p>정보분류와 검색 키워드를 이용하여 보다 정확한 해결책을 찾을 수 있습니다.</p>
+                        </div>
+                        <div class="sort-box">
+                            <div class="forms">
+                                <div class="conts">
+                                    <div class="select-wrap">
+                                        <select name="sort" id="sort" class="ui_selectbox">
+                                            <option value="">전체 분류</option>
+                                            <option value="">전체 분류</option>
+                                            <option value="">전체 분류</option>
+                                        </select>
+                                        <!-- 선택 가능한 운영체제가 없을 경우 노출 -->
+                                        <!-- <select name="sort" id="sort" class="ui_selectbox" disabled>
+                                            <option value="">없음</option>
+                                        </select> -->
+                                        <!-- // 선택 가능한 운영체제가 없을 경우 노출 -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="forms">
+                                <div class="conts">
+                                    <div class="select-wrap">
+                                        <select name="sub-sort" id="sub-sort" class="ui_selectbox" disabled>
+                                            <option value="">하위 세부 분류 선택</option>
+                                            <option value="">하위 세부 분류 선택</option>
+                                            <option value="">하위 세부 분류 선택</option>
+                                            <option value="">하위 세부 분류 선택</option>
+                                            <option value="">하위 세부 분류 선택</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search-wrap">
+                            <div class="keyword-search">
+                                <div class="input-wrap">
+                                    <input type="text" name="inputKeyword" id="inputKeyword" class="ui_input_clearbutton" placeholder="검색 키워드" title="검색 키워드" data-clear-button="button.btn-delete">
+                                    <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+                                    <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
 
                     <div class="search-wrap">
                         <form action="/html/support/CSTF2100.html" id="submitForm" data-ajax="/lg5-common/data-ajax/support/videoList.json" autocomplete="off">

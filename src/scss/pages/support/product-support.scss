@@ -120,12 +120,13 @@
 .support {
     /* common */
     .survey-banner-wrap {
+        margin:0 auto;
         margin-top:80px;
         .banner {
             display:flex;
             align-items:center;
             justify-content:space-between;
-            padding:24px 48px;
+            padding:28px 48px;
             border-radius:8px;
             background:#f4f4f4;
             p {
@@ -737,6 +738,60 @@
                 margin-top:56px;
             }
         }
+        .search-sort{
+            max-width:912px;
+            margin:0 auto;
+            .sort-desc{
+                @include font-large-1;
+                font-weight: bold;
+                margin-bottom:22px;
+                text-align:center;
+                @include mobile{
+                    padding:0 45px;
+                    p{
+                        word-break:keep-all;
+                    }
+                }
+            }
+            .sort-box{
+                display:flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom:8px;
+                @include mobile{
+                    flex-wrap:wrap;
+                    padding:0 16px;
+                }
+                .forms{
+                    width:calc(50% - 4.5px);
+                    margin-top:0;
+                    @include mobile{
+                        width:100%;
+                    }
+                    .conts{
+                        width:100%;
+                    }
+                }
+            }
+            .search-wrap{
+                width: auto;
+                margin-bottom:0;
+                .keyword-search
+                {
+                    .input-wrap{
+                        input[type=text]{
+                            border-radius:8px;
+                            border:1px solid #ddd; 
+                            box-shadow:none;
+                            padding-left:15px;
+                        }
+                        .btn-search{
+                            opacity:0.7;
+                        }
+                    }
+                }
+            }
+        }
         /* // video detail */
     }
     /* 카드뉴스 */
@@ -1036,6 +1091,7 @@
             }
             &.fixed {
                 border-bottom:1px solid #ddd;
+                height:70px;
             }
             @include mobile {
                 height:56px;
@@ -1049,7 +1105,7 @@
         }
         .cont-wrap {
             padding:48px 40px 80px;
-            border-top:8px solid #f4f4f4;
+            //border-top:8px solid #f4f4f4;
         }
         
         @include mobile {

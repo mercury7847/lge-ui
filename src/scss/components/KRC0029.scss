@@ -27,22 +27,6 @@
         &:first-child {
             margin-left:0;
         }
-        .btn-video {
-            position: relative;
-            padding-bottom: 0;
-            border-bottom: 0;
-            @include font-medium;
-            &:before {
-                display: inline-block;
-                width: 32px;
-                height: 32px;
-                margin-right: 8px;
-                background: no-repeat 0 0;
-                vertical-align: -9px;
-                content: '';
-                background-image: url('/lg5-common/images/icons/btn-play-32-black.svg');
-            }
-        }
     }
 
     .btn-arrow {

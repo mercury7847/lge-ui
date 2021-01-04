@@ -16,7 +16,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self.displayMode = "";
 
-            self.isLogin = false;
+            self.isLogin = null;
 
             self._getLoginInfo();
 
@@ -41,11 +41,18 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var loginInfoUrl = self.$el.data('loginInfo');
             lgkorUI.requestAjaxDataPost(loginInfoUrl, {}, function(result){
                 self.isLogin = result.data.isLogin;
+                console.log("self.isLogin:", self.isLogin);
+                console.log("result.data.isLogin:", result.data.isLogin)
                 self.$el.find('.login-info').css('display', 'none');
                 if(result.data.isLogin){
                     self.$el.find('.login-info.after-login').css('display', 'block');
+                    self.$el.find('.login-info.after-login a').html('<span>' + result.data.loginToken.name + '</span>님 안녕하세요');
+                    
+                    if(self.displayMode == "pc") self.$el.find('.mypage.after-login').css('display', 'inline-block');
                 } else{
                     self.$el.find('.login-info.before-login').css('display', 'block');
+
+                    if(self.displayMode == "pc") self.$el.find('.mypage.before-login').css('display', 'inline-block');
                 }
             });
         },
@@ -122,7 +129,9 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     self.$mobileNaviWrapper.hide();
 
                     self.displayMode = "pc";
+                }
 
+                if(self.isLogin != null){
                     if(self.isLogin){
                         self.$el.find('.mypage.after-login').css('display', 'inline-block');
                     } else{
@@ -137,11 +146,11 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     self.$mobileNaviWrapper.show();
 
                     self.displayMode = "m";
-                    
-                    self.$el.find('.mypage').css('display', 'none');
                 }
                 self.$leftArrow.hide();
                 self.$rightArrow.hide();
+
+                self.$el.find('.mypage').css('display', 'none');
             }
         },
 
