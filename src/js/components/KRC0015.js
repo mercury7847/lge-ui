@@ -12,7 +12,9 @@ $(window).ready(function(){
             slidesToScroll: 1,
             prevArrow:'.btn-arrow.prev',
             nextArrow:'.btn-arrow.next',
-            playSelector: '.btn-play.play'
+            playSelector: '.btn-play.play',
+            adaptiveHeight: true,
+            lazyLoad: 'progressive',
         }).on('carouselbeforechange', function(e, slide, prev, next){
             if($(slide.$slides.get(prev)).attr("ui-modules") == "VideoBox"){
                 $(slide.$slides.get(prev)).find("video").get(0).pause();

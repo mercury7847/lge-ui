@@ -15,8 +15,7 @@ $(document).ready(function() {
         '</div>';
 
     var aniboxTemplate = 
-         '<div class="visual-area animation-box size-type">'+
-         '   <img src="{{largeImgURL}}" alt="{{alt}}" aria-hidden="true">'+
+         '<div class="visual-area animation-box">'+
          '   <div class="animation-area">'+
          '       <video loop{{#if videoAutoplay}} muted autoplay{{/if}}>'+
          '           <source src="{{aniSrc}}" type="video/mp4">'+

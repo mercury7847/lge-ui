@@ -70,7 +70,9 @@
 				<div class="visual-area">
 					<!-- 링크없을 경우 <a> 태그 삭제 해주세요. -->
 					<a href="#none" data-link-area="image_text_folding_feature-image" data-link-name="{Alt Text}">
-						<img data-pc-src="/lg5-common/images/KRC0004/@thumb01.jpg" data-m-src="/lg5-common/images/KRC0004/@thumb01_m.jpg" alt="" />
+						<!-- [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
+						<img src="/lg5-common/images/KRC0004/@thumb01.jpg" data-pc-src="/lg5-common/images/KRC0004/@thumb01.jpg" data-m-src="/lg5-common/images/KRC0004/@thumb01_m.jpg" alt="">
+						<!-- // [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
 						<p class="hidden">graphic description : </p>
                     </a>
                     <!-- [KR수정_201222] 하단 disclaimer DOM 위치 변경 및 태그 변경(하단에 있던 DOM 삭제) -->
@@ -112,7 +114,9 @@
 				<!-- [KR수정_201222] youtube video CASE DOM 공통화 수정 -->
 				<div class="visual-area video youtube-box">
 					<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="block_image_2to4-video_play" data-link-name="{video title / video id}">
-						<img data-src="/lg5-common/images/KRC0004/@thumb01.jpg" alt=""/>
+						<!-- [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
+						<img data-pc-src="/lg5-common/images/KRC0004/@thumb01.jpg" data-m-src="/lg5-common/images/KRC0004/@thumb01_m.jpg" alt="">
+						<!-- // [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
 						<p class="hidden">graphic description : </p>
 					</a>
 
@@ -192,17 +196,21 @@
 								<!-- 12. body copy -->
 								<div class="text">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.</div>
 								<!-- // 12. body copy -->
+								<!-- [KR수정_210104] 버튼 DOM 위치 변경(.text-area 내부로 이동) -->
+								<!-- 13. cta -->
+								<div class="btn-area">
+									<!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
+									<a href="#" class="btn border size-m" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title02"><span>선택하기</span></a>
+									<!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
+								</div>
+								<!-- // 13. cta -->
+								<!-- // [KR수정_210104] 버튼 DOM 위치 변경(.text-area 내부로 이동) -->
 							</div>
-							<!-- 13. cta -->
-							<div class="btn-area">
-                                <!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
-                                <a href="#" class="btn border size-m" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title02"><span>선택하기</span></a>
-                                <!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
-                            </div>
-							<!-- // 13. cta -->
 							<!-- 14. image -->
 							<div class="visual-area">
-								<img src="/lg5-common/images/KRC0004/@thumb01.jpg" class="lazyload" alt="" />
+								<!-- [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
+								<img src="/lg5-common/images/KRC0004/@thumb01.jpg" data-pc-src="/lg5-common/images/KRC0004/@thumb01.jpg" data-m-src="/lg5-common/images/KRC0004/@thumb01_m.jpg" alt="">
+								<!-- // [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
 								<p class="hidden">graphic description : </p>
 							</div>
 							<!-- // 14. image -->
@@ -215,19 +223,23 @@
 								<!-- 16. body copy -->
 								<div class="text">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.</div>
 								<!-- // 16. body copy -->
+								<!-- [KR수정_210104] 버튼 DOM 위치 변경(.text-area 내부로 이동) -->
+								<!-- 17. cta -->
+								<div class="btn-area">
+									<!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
+									<a href="#" class="btn border size-m" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title03"><span>선택하기</span></a>
+									<!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
+								</div>
+								<!-- // 17. cta -->
+								<!-- // [KR수정_210104] 버튼 DOM 위치 변경(.text-area 내부로 이동) -->
 							</div>
-							<!-- 17. cta -->
-							<div class="btn-area">
-                                <!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
-                                <a href="#" class="btn border size-m" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title03"><span>선택하기</span></a>
-                                <!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
-                            </div>
-							<!-- // 17. cta -->
 							<!-- 18. image -->
 							<!-- [KR수정_201222] youtube video CASE DOM 공통화 수정 -->
 							<div class="visual-area video youtube-box">
 								<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="block_image_2to4-video_play" data-link-name="{video title / video id}">
-									<img data-src="/lg5-common/images/KRC0004/@thumb01.jpg" alt=""/>
+									<!-- [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
+									<img src="/lg5-common/images/KRC0004/@thumb01.jpg" data-pc-src="/lg5-common/images/KRC0004/@thumb01.jpg" data-m-src="/lg5-common/images/KRC0004/@thumb01_m.jpg" alt="">
+									<!-- // [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
 									<p class="hidden">graphic description : </p>
 								</a>
 							</div>
@@ -242,14 +254,16 @@
 								<!-- 20. body copy -->
 								<div class="text">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.</div>
 								<!-- // 20. body copy -->
+								<!-- [KR수정_210104] 버튼 DOM 위치 변경(.text-area 내부로 이동) -->
+								<!-- 21. cta -->
+								<div class="btn-area">
+									<!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
+									<a href="#" class="btn border size-m" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title04"><span>선택하기</span></a>
+									<!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
+								</div>
+								<!-- // 21. cta -->
+								<!-- // [KR수정_210104] 버튼 DOM 위치 변경(.text-area 내부로 이동) -->
 							</div>
-							<!-- 21. cta -->
-							<div class="btn-area">
-                                <!-- [KR수정_201222] 버튼 DOM 공통화 수정 -->
-                                <a href="#" class="btn border size-m" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title04"><span>선택하기</span></a>
-                                <!-- // [KR수정_201222] 버튼 DOM 공통화 수정 -->
-                            </div>
-							<!-- // 21. cta -->
 							<!-- 22. image -->
 							<!-- [KR수정_201222] 애니메이션 영역 태그 공통화 수정 -->
 							<div class="visual-area animation-box">
