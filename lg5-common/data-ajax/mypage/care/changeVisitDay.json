@@ -2,6 +2,8 @@
     "status":"success",
     "message":null,
     "data": {
-        "success": "Y"
+        "success": "Y",
+        "toast": "변경이 완료되었습니다.",
+        "reply": "요청하신 날짜로 변경이 완료되었습니다."
     }
 }

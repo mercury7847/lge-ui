@@ -69,7 +69,7 @@
                                     <div class="section-inner">
                                         <div class="my-visit-schedule">
                                             <ul class="schedule-list">
-                                                <li class="off">
+                                                <li class="off" data-id="vid00005">
                                                     <div class="inner">
                                                         <div class="svc-info">
                                                             <p class="date">
@@ -105,7 +105,7 @@
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li class="on after">
+                                                <li class="on after" data-id="vid00006">
                                                     <div class="inner">
                                                         <div class="svc-info">
                                                             <p class="date">
@@ -147,7 +147,7 @@
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li class="off after">
+                                                <li class="off after" data-id="vid00007">
                                                     <div class="inner">
                                                         <div class="svc-info">
                                                             <p class="date">
@@ -239,6 +239,13 @@
         @@include('./common/footer.html')
     </div>
 
+    <!-- toast-meassage -->
+    @@include('./common/modules/toast-message.html', {
+        "messageArr": [
+            {"message" : "변경이 완료되었습니다."}
+        ]
+    })
+    
     <!-- 방문일정 변경요청 popup -->
     <article id="popupChangeVisitDate" class="popup-wrap full">
         <header class="pop-header">

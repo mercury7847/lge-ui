@@ -76,14 +76,17 @@
                             <div class="no-data">
                                 <p>검색결과가 없습니다.</p>
                             </div>
-                            
-                            <!-- @@include('./common/modules/pagination.html', {
-                                count: 5
-                            }) -->
-                            <div class="pagination" data-page="16" data-visible-count="7" data-total-count="33"></div>
+
+                            <!-- <div class="pagination" data-page="16" data-visible-count="7" data-total-count="33"></div> -->
                         </div>
                     </div>
                 </div>
+                <!-- toast-meassage -->
+                @@include('./common/modules/toast-message.html', {
+                    "messageArr": [
+                        {"message" : "선택하신 제품을 장바구니에 담았습니다."}
+                    ]
+                })
             </div>
             <!-- // mypage -->
         </div>
