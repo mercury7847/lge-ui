@@ -47,10 +47,12 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 if(result.data.isLogin){
                     self.$el.find('.login-info.after-login').css('display', 'block');
                     self.$el.find('.login-info.after-login a').html('<span>' + result.data.loginToken.name + '</span>님 안녕하세요');
-                    self.$el.find('.mypage.after-login').css('display', 'inline-block');
+                    
+                    if(self.displayMode == "pc") self.$el.find('.mypage.after-login').css('display', 'inline-block');
                 } else{
                     self.$el.find('.login-info.before-login').css('display', 'block');
-                    self.$el.find('.mypage.before-login').css('display', 'inline-block');
+                    
+                    if(self.displayMode == "pc") self.$el.find('.mypage.before-login').css('display', 'inline-block');
                 }
             });
         },
