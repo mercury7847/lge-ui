@@ -43,7 +43,8 @@
                         "productDetailUrl": "http://www.lge.com",
                         "specList": [],
                         "productTotal": "1",
-                        "productPrice": "50,000",
+                        "productPrice": "50000",
+                        "discountPrice": "5000",
                         "orderStatus": {
                             "disabled": "",
                             "statusText": "결제완료",
@@ -74,7 +75,8 @@
                         "productDetailUrl": "http://www.lge.com",
                         "specList": [],
                         "productTotal": "1",
-                        "productPrice": "50,000",
+                        "productPrice": "50000",
+                        "discountPrice": "5000",
                         "orderStatus": {
                             "disabled": "",
                             "statusText": "결제완료",
@@ -139,7 +141,8 @@
                         "productDetailUrl": "http://www.lge.com",
                         "specList": ["주요스펙1", "주요스펙2"],
                         "productTotal": "1",
-                        "productPrice": "1,760,000",
+                        "productPrice": "1990000",
+                        "discountPrice": "80000",
                         "orderStatus": {
                             "disabled": "disabled",
                             "statusText": "취소완료",
@@ -159,7 +162,8 @@
                         "productDetailUrl": "http://www.lge.com",
                         "specList": [],
                         "productTotal": "1",
-                        "productPrice": "50,000",
+                        "productPrice": "57000",
+                        "discountPrice": "5000",
                         "orderStatus": {
                             "disabled": "",
                             "statusText": "결제완료",
