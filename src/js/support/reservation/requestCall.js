@@ -26,7 +26,7 @@
     '</li>' +
     '{{/each}}';
     var validation;
-    
+
     var reservation = {
         init: function() {
             var self = this;
@@ -71,6 +71,61 @@
         
         bindEvent: function() {
             var self = this;
+
+            self.$form.on('change', 'input[name=topic]', function() {
+                var $this = $(this),
+                    url = $('#topicList').data('ajax'),
+                    param = {
+                        topic : $this.val(),
+                        serviceType: $('#serviceType').val(),
+                        productCode: $('#productCode').val()
+                    };
+
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data;
+                    var html = '';
+                        
+                    html = vcui.template(subTopicTmpl, data);
+
+                    $('#subTopicBox').show();
+                    $('#subTopicBox').find('ul').html(html);
+                });
+            });
+
+            self.$form.on('change', 'input[name=subTopic]', function() {
+                var $this = $(this),
+                    url = $('#subTopicList').data('ajax'),
+                    param = {
+                        topic : $('input[name=topic]').val(),
+                        subTopic: $this.val(),
+                        productCode: $('#productCode').val()
+                    };
+
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data;
+                    
+                    if (data.resultFlag == 'Y') {
+                        if (data.solutionFlag) {
+                            $('#solutionBanner').show();
+                        } else {
+                            $('#solutionBanner').hide();
+                        }
+                    }
+                });
+            });
+
+            $("#solutionBanner .btn-link").click(function(){
+                var url = $(this).data('href');
+                var param = {
+                    topic : '',
+                    subToic : '',
+                    productCode : ''
+                };
+                
+                lgkorUI.requestAjaxData(url, param, function(result){
+                    $('#solutionsPopup').html(result).vcModal();
+                }, null, "html");
+            });
 
             self.$form.find('.btn-confirm').on('click', function() {
                 var result = validation.validate();

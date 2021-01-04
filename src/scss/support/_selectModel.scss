@@ -175,6 +175,24 @@
             }
         }
     }
+    &.no-item {
+        .box {
+            text-align:center;
+            .txt {
+                margin-bottom:16px;
+                color:#fff;
+                font-weight:700;
+                @include font-large-1;
+            }
+        }
+        @include mobile {
+            .box {
+                .txt {
+                    margin-bottom:12px;
+                }
+            }
+        }
+    }
 }
 
 .prod-selected-wrap {

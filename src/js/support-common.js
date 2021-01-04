@@ -194,7 +194,7 @@ CS.MD.commonModel = function() {
             self.$stepModel.addClass(opt.stepActiveClass);
             self.$stepModel.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
 
-            // self.$submitForm.find('input').val('');
+            if (self.$myModelArea.length) self.$myModelArea.show();
 
             opt.selectedModel = [];
 
@@ -503,6 +503,8 @@ CS.MD.commonModel = function() {
 
                     self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
                     self.$stepInput.addClass(opt.stepActiveClass);
+
+                    self.$myModelArea.hide();
 
                     opt.callback();
                 }
