@@ -20,25 +20,28 @@
                             '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
                         '</a>' +
                     '</div>' +
-                    '<div class="hashtag-wrap">' +
-                        '{{#each item in hash}}<span class="hashtag">#{{item}}</span>{{/each}}' +
-                    '</div>' + 
-                    '{{#if hasCare}}<div class="careflag"><span>케어십 가능</span></div>{{/if}}' +
+                    '<div class="info-btm">' +
+                        '<div class="text hashtag-wrap">' +
+                            '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
+                        '</div>' + 
+                        '{{#if hasCare}}<div class="text careflag"><span>케어십 가능</span></div>{{/if}}' +
+                    '</div>' +
                 '</div>' +
             '</div>' +
             '<div class="info-price">' +
-                '<div class="price-info sales">' +
-                    '<p class="tit">구매</p>' +
-                    '{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
-                    '<div class="original">' +
-                        '<em class="blind">원가</em>' +
-                        '{{#if originalPrice}}<span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                '<a href="#">' +
+                    '<div class="price-info rental">' +
+                        '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
                     '</div>' +
-                '</div>' +
-                '<div class="price-info rental">' +
-                    '<p class="tit">케어솔루션</p>' +
-                    '{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
-                '</div>' +
+                    '<div class="price-info sales">' +
+                        '<div class="original">' +
+                            '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                        '</div>' +
+                        '<div class="price-in">' +
+                            '{{#if (carePrice && price)}}<p class="tit">구매</p>{{/if}}{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                        '</div>' +
+                    '</div>' +
+                '</a>' +
             '</div>' +
         '</div>' +
     '</div></li>';
@@ -54,25 +57,27 @@
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
                 '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
                 '<div class="result-detail">' +
-                    '<div class="date">' +
-                        '<span>{{startDate}} ~ {{endDate}}</span>' +
+                    '<div class="info-btm">' +
+                        '<span class="text date">{{startDate}} ~ {{endDate}}</span>' +
                     '</div>' +
                 '</div>' +
             '</div>' +
         '</div>' +
     '</a></li>';
-    var storyItemTemplate = '<li><a href="{{url}}" class="item item-story">' +
-        '<div class="result-thumb"><div><img src="{{imageUrl}}" alt="{{imageAlt}}"></div></div>' +
+    var storyItemTemplate = '<li><a href="{{url}}" class="item item-type2">' +
+        '<div class="result-thumb"><div><img src="{{imageUrl}}" alt="{{imageAlt}}">{{#if isVideo}}<span class="video-play-btn"><span class="hidden">동영상</span></span>{{/if}}</div></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
                 '<div class="result-tit"><strong>{{title}}</strong></div>' +
                 '<div class="result-detail">' +
                     '<div class="desc"><span>{{desc}}</span></div>' +
-                    '<div class="hashtag-wrap">' +
-                        '{{#each item in hash}}<span class="hashtag">#{{item}}</span>{{/each}}' +
-                    '</div>' + 
-                    '<div class="date"><span>{{date}}</span></div>' +
+                    '<div class="info-btm">' +
+                        '<span class="text date"><span>{{date}}</span>' +
+                        '<div class="text hashtag-wrap">' +
+                            '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
+                        '</div>' +
+                    '</div>' +
                 '</div>' +
             '</div>' +
         '</div>' +
@@ -84,11 +89,23 @@
                 '<div class="result-tit"><strong>{{title}}</strong></div>' +
                 '<div class="result-detail">' +
                     '<div class="sku">{{sku}}</div>' +
-                   '<div class="model"><span>{{desc}}</span></div>' +
+                    '<div class="info-btm">' +
+                        '<div class="text model">{{desc}}</div>' +
+                    '</div>' +
                 '</div>' +
             '</div>' +
-            '<div class="info-price type2">' +
-                '<div class="price-info">{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}</div>' +
+            '<div class="info-price">' +
+                '<div class="price-info rental">' +
+                    '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
+                '</div>' +
+                '<div class="price-info sales">' +
+                    '<div class="original">' +
+                        '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                    '</div>' +
+                    '<div class="price-in">' +
+                        '{{#if (carePrice && price)}}<p class="tit">구매</p>{{/if}}{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                    '</div>' +
+                '</div>' +
             '</div>' +
         '</div>' +
     '</a></li>';
@@ -776,6 +793,8 @@
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
+                            item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
+                            item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
                             $list_ul.append(vcui.template(additionalItemTemplate, item));
                         });
                         $resultListWrap.show();
