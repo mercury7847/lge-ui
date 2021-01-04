@@ -35,7 +35,7 @@
         '{{# } else { #}}' +
         '<li>' +
         '{{# } #}}' +
-        '<a href="#" class="item">' +
+        '<a href="{{url}}" class="item">' +
         '<p class="tit">{{title}}</p>' +
         '<p class="desc">{{topic}}</p>' +
         '<ul class="options">' +
@@ -58,7 +58,7 @@
     $(window).ready(function() {
         var solutions = {
             initialize: function() {
-                this.param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                // this.param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
                 this.$wrap = $('.solutions-wrap');
                 this.$filter = this.$wrap.find('.filter-box');
                 this.$filterM = this.$wrap.find('.mobile-filter-box');
@@ -71,6 +71,9 @@
                 this.$subTopic = this.$wrap.find('#subTopic');
                 this.$keyword = this.$wrap.find('#keyword');
                 this.$orderBy = this.$wrap.find('#orderBy');
+
+                this.param = $('#submitForm').serializeObject();
+                this.param.orderBy = $('#selectOrder').val();
 
                 this.bindEvent();
             },
@@ -130,6 +133,10 @@
                         productCode: $('#submitForm').find('#productCode').val()
                     };
 
+                if ($target) {
+                    param.topicNm = $target.data('name');
+                }
+
                 lgkorUI.requestAjaxDataPost(url, param, function(result){
                     var listArr = result.data.filterList instanceof Array ? result.data.filterList : [],
                         pcHtml = '',
@@ -184,17 +191,23 @@
                 self.$filter.on('click', '.filter-list > li > .filter-link', function() {
                     var $this = $(this),
                         code = $this.data('code'),
-                        param = {};
+                        param = {
+                            page: 1,
+                            topic: code,
+                            subTopic: 'All'
+                        };
                     
                     self.$topic.val(code);
                     if (!$(this).siblings('.sub-depth').length) {
                         self.$subTopic.val('All');
                     }
                     
-                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-                    self.param = $.extend(param, {
-                        page: 1
-                    });
+                    // param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                    // self.param = $.extend(param, {
+                    //     page: 1
+                    // });
+
+                    self.param = $.extend(self.param, param);
 
                     self.selectFilter(code, this);
                     if ($(this).siblings('.sub-depth').length < 1) {
@@ -208,13 +221,19 @@
                 // sub filter
                 self.$filter.on('click', '.sub-depth .filter-link', function() {
                     var code = $(this).data('code'),
-                        param = {};
+                        param = {
+                            page:1,
+                            subTopic: code,
+                            subTopicNm: $(this).data('name')
+                        };
                     
                     self.$subTopic.val(code);
-                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-                    self.param = $.extend(param, {
-                        page: 1
-                    });
+                    // param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                    // self.param = $.extend(param, {
+                    //     page: 1
+                    // });
+
+                    self.param = $.extend(self.param, param);
 
                     self.selectSubFilter(code);
                     self.requestData();
@@ -229,14 +248,20 @@
                 // mobile filter
                 self.$symptom.on('change', function() {
                     var value = $(this).val(),
-                        param = {};
+                        param = {
+                            page: 1,
+                            topic: value,
+                            subTopic: 'All'
+                        };
 
                     self.$topic.val(value);
-                    self.$subTopic.val('');
-                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-                    self.param = $.extend(param, {
-                        page: 1
-                    });
+                    self.$subTopic.val('All');
+                    // param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                    // self.param = $.extend(param, {
+                    //     page: 1
+                    // });
+
+                    self.param = $.extend(self.param, param);
 
                     self.selectFilter(value);
                     self.setSubFilter(value, this)
@@ -246,13 +271,19 @@
                 // mobile sub filter
                 self.$subSymptom.on('change', function() {
                     var value = $(this).val(),
-                        param = {};
+                        param = {
+                            page: 1,
+                            subTopic: value
+                        };
 
                     self.$subTopic.val(value);
-                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-                    self.param = $.extend(param, {
-                        page: 1
-                    });
+                    // param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                    // self.param = $.extend(param, {
+                    //     page: 1
+                    // });
+
+                    self.param = $.extend(self.param, param);
+
                     
                     self.selectSubFilter(value);
                     self.requestData();
@@ -262,42 +293,59 @@
                 self.$result.find('.btn-search').on('click', function() {
                     var value = self.$result.find('#inputKeyword').val(),
                         resultFlag = self.$result.find('#research').is(':checked'),
-                        param = {};
+                        param = {
+                            page:1,
+                        };
                         
                     if (!resultFlag) {
                         self.reset();
+                        param['topic'] = 'All';
+                        param['subTopic'] = '';
                     }
 
                     self.$keyword.val(value);
+                    param['keyword'] = value;
+                    // param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                    // self.param = $.extend(param, {
+                    //     page: 1
+                    // });
 
-                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-                    self.param = $.extend(param, {
-                        page: 1
-                    });
+                    self.param = $.extend(self.param, param);
+
                     self.requestData();
                 });
 
                 // list order by
                 self.$result.find('#selectOrder').on('change', function() {
                     var value = $(this).val(),
-                        param = {};
+                        param = {
+                            page: 1,
+                            orderBy: value
+                        };
                         
                     self.$orderBy.val(value);
-                    param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-                    self.param = $.extend(param, {
-                        page: 1
-                    });
+                    // param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+                    // self.param = $.extend(param, {
+                    //     page: 1
+                    // });
+
+                    self.param = $.extend(self.param, param);
                     
                     self.requestData();
                 });
 
                 // pagination
                 self.$result.find('.pagination').on('pageClick', function(e) {
-                    var param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-
-                    self.param = $.extend(param, {
+                    var param = {
                         page: e.page
-                    })
+                    }
+                    // var param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
+
+                    // self.param = $.extend(param, {
+                    //     page: e.page
+                    // })
+
+                    self.param = $.extend(self.param, param);
 
                     self.requestData();
                 });

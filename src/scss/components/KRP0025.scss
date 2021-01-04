@@ -4,36 +4,48 @@
 
 .KRP0025 {
 	.component-inner {
-		padding: 0;
-		@include mobile {
-			padding: 0 20px;
-		}
+		padding:0;
 	}
 	.slide-wrap {
-		//max-width: 1170px;
-		max-width: calc(1170px + 160px);
-		margin: 0 auto;
-		padding: 0 80px;
-		//padding-bottom: 34px;
-
+		position:relative;
+		max-width:1290px + 32px + 28px + 28px;
+		padding:0 28px;
 		@include mobile {
-			margin: 0 -20px;
-			padding: 0 15px 38px;
+			padding: 0 12px 24px;
+		}
+		.slide-content {
+			max-width:1146px + 24px;
+			margin:0 auto;
 		}
 		.slide-conts {
-			max-width: 585px;
+			float:left;
+			width:50%;
 			padding: 8px 12px 16px;
 			@include mobile {
-				padding: 4px 6px 8px;
+				padding: 4px 6px 16px;
 			}
 		}
 
 		.slide-controls {
+			position:absolute;
+			left:0;
+			right:0;
+			top:50%;
+			transform:translateY(-50%);
+			.btn-arrow {
+				position:absolute;
+			}
 			.btn-arrow.prev {
-				left: 10px;
+				left: 16px;
+				@include mobile {
+					left:4px;
+				}
 			}
 			.btn-arrow.next {
-				right: 10px;
+				right: 16px;
+				@include mobile {
+					right:4px;
+				}
 			}
 		}
 		
@@ -49,13 +61,13 @@
 	
 	
 	.recommend-story-tag-wrap {
-		border-radius: 12px;
+		border-radius: 8px;
 		box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+		@include mobile {
+			box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.14);			
+		}
 		.inner {
 			position: relative;
-			//display: flex;
-			//align-items: flex-end;
-
 		}
 		.recommend-visual {
 			max-width: 100%;

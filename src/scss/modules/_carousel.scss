@@ -34,12 +34,13 @@
             }
         }
         &.disabled {
-            &::before {
-                background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt2.svg');
-                @include mobile {
-                    background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt-m2.svg');
-                }
-            }
+            // &::before {
+            //     background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt2.svg');
+            //     @include mobile {
+            //         background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt-m2.svg');
+            //     }
+            // }
+            display:none !important;
         }
     }
     &.next {
@@ -50,12 +51,13 @@
             }
         }
         &.disabled {
-            &::before {
-                background-image:url('/lg5-common/images/icons/btn-arr-40x40-rt2.svg');
-                @include mobile {
-                    background-image:url('/lg5-common/images/icons/btn-arr-40x40-rt-m2.svg');
-                }
-            }
+            // &::before {
+            //     background-image:url('/lg5-common/images/icons/btn-arr-40x40-rt2.svg');
+            //     @include mobile {
+            //         background-image:url('/lg5-common/images/icons/btn-arr-40x40-rt-m2.svg');
+            //     }
+            // }
+            display:none !important;
         }
     }
     &.ui_carousel_hidden {
