@@ -7,11 +7,15 @@
         padding-top:32px;
     }
     .ev-detail-top {
+        position:relative;
         @include mobile {
-            padding:0 16px;
+            // padding:0 16px;
         }
         .tit-wrap {
-            padding-bottom:16px;
+            padding:48px 48px 32px;
+            @include mobile {
+                padding:32px 16px 20px;
+            }
             .flag-wrap {
                 padding-bottom:2px;
                 @include mobile {
@@ -37,14 +41,35 @@
                 }
             }
         }
+        .component-wrap {
+            position:absolute;
+            top:51px;
+            right:48px;
+            @include mobile {
+                top:30px;
+                right:16px;
+            }
+        }
+        .sns-wrap {
+            position:absolute;
+            top:24px;
+            right:0;
+            display:inline-block;
+            @include mobile {
+                position:static;
+                width:100%;
+                margin:12px 0;
+                text-align:center;
+            }
+        }
         .info-wrap {
             position:relative;
             .info-list {
-                padding:24px 0;
-                border-top:2px solid #222;
+                padding:0 48px 32px;
+                // border-top:2px solid #222;
                 border-bottom:1px solid #ddd;
                 @include mobile {
-                    padding:16px 0;
+                    padding:0 16px 20px;
                 }
                 .group {
                     font-size:0;
@@ -97,26 +122,13 @@
                         display:table-cell;
                         vertical-align:middle;
                         @include font-small;
-                        font-weight:500;
+                        // font-weight:500;
                     }
                     dt {
                         width:60px;
                         color:#767676;
                         vertical-align:top;
                     }
-                }
-            }
-
-            .sns-wrap {
-                position:absolute;
-                top:24px;
-                right:0;
-                display:inline-block;
-                @include mobile {
-                    position:static;
-                    width:100%;
-                    margin:12px 0;
-                    text-align:center;
                 }
             }
         }
