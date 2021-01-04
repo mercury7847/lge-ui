@@ -320,12 +320,22 @@
 				a {
 					display:block;
 					position:relative;
+					width:100%;
+					height:100%;
 					border-radius:8px;
 					overflow:hidden;
 					.flag {
 						position:absolute;
 						top:0;
 						left:0;
+					}
+					.bg {
+						display:block;
+						width:100%;
+						height:100%;
+						background-position:center center;
+						background-repeat:no-repeat;
+						background-size:cover;
 					}
 					.img {
 						img {
