@@ -60,45 +60,6 @@
                     <!-- // 20201230 수정 -->
                 </ul>
             </div>
-
-            @@if (context.mobileCase === undefined || context.mobileCase === "all" || context.mobileCase === "main") {
-            <!-- 20201230 모바일 메뉴 삭제 및 수정 -->
-            <!-- Mobile 메인 메뉴 -->
-            <div class="mobile-nav-wrap">
-                <ul class="nav">
-                    <li><a href="#n" class="nav-item">홈</a></li>
-                    <li><a href="#n" class="nav-item">스토어</a></li>
-                    <li><a href="#n" class="nav-item">케어솔루션</a></li>
-                    <li><a href="#n" class="nav-item">스토리</a></li>
-                    <li><a href="#n" class="nav-item">고객지원</a></li>
-                </ul>
-            </div>
-            }
-
-            @@if (context.mobileCase === "all" || context.mobileCase === "isDepth") {
-            <!-- Mobile Depth (동일메뉴 존재) -->
-            <div class="mobile-nav-wrap is-depth">
-                <a href="#" class="btn-back"><span class="blind">뒤로가기</span></a>
-                <a href="#n" class="nav-item">청소기</a>
-                <div class="nav-category-container">
-                    <ul>
-                        <li><a href="#" class="on">워시타워</a></li><!-- 20201230 클래스 수정 (기존 .active) -->
-                        <li><a href="#">세탁기</a></li>
-                        <li><a href="#">건조기</a></li>
-                        <li><a href="#">스타일러</a></li>
-                        <li><a href="#">안마의자</a></li>
-                    </ul>
-                </div>
-            </div>
-            }
-
-            @@if (context.mobileCase === "all" || context.mobileCase === "noneDepth") {
-            <!-- Mobile Depth (동일메뉴, 하위메뉴 미존재) -->
-            <div class="mobile-nav-wrap">
-                <a href="#" class="btn-back"><span class="blind">뒤로가기</span></a>
-                <span class="nav-item">코드제로 A9</span>
-            </div>
-            }
         </div>
 
         <!--
@@ -1623,6 +1584,45 @@
     </div>
 </header>
 <!-- // PC / Mobile Default Header -->
+
+<!-- 20210104 모바일 메뉴 돔 이동 -->
+<!-- Mobile 메인 메뉴 -->
+<div class="mobile-nav-wrap">
+    <ul class="nav">
+        <li><a href="#n" class="nav-item">홈</a></li>
+        <li><a href="#n" class="nav-item">스토어</a></li>
+        <li><a href="#n" class="nav-item">케어솔루션</a></li>
+        <li><a href="#n" class="nav-item">스토리</a></li>
+        <li><a href="#n" class="nav-item">고객지원</a></li>
+    </ul>
+</div>
+
+<!-- Mobile Sub Menu Header -->
+@@if (context.mobileCase === "all" || context.mobileCase === "isDepth") {
+<!-- Mobile Depth (동일메뉴 존재) -->
+<div class="mobile-nav-wrap is-depth">
+    <a href="#" class="btn-back"><span class="blind">뒤로가기</span></a>
+    <a href="#n" class="nav-item">청소기</a>
+    <div class="nav-category-container">
+        <ul>
+            <li><a href="#" class="on">워시타워</a></li><!-- 20201230 클래스 수정 (기존 .active) -->
+            <li><a href="#">세탁기</a></li>
+            <li><a href="#">건조기</a></li>
+            <li><a href="#">스타일러</a></li>
+            <li><a href="#">안마의자</a></li>
+        </ul>
+    </div>
+</div>
+}
+
+@@if (context.mobileCase === "all" || context.mobileCase === "noneDepth") {
+<!-- Mobile Depth (동일메뉴, 하위메뉴 미존재) -->
+<div class="mobile-nav-wrap">
+    <a href="#" class="btn-back"><span class="blind">뒤로가기</span></a>
+    <span class="nav-item">코드제로 A9</span>
+</div>
+}
+<!-- // 20210104 모바일 메뉴 돔 이동 -->
 
 <!-- Breadcrumb -->
 @@include('./common/modules/breadcrumb.html', {
