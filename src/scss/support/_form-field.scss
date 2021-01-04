@@ -53,6 +53,7 @@
         .input-wrap {
             input {
                 box-shadow: none;
+                border-radius: 8px;
             }
         }
         @include mobile {

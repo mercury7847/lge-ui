@@ -42,6 +42,11 @@
         '{{/each}}'+
         '</ul>';
 
+    var periodOptionTemplate = 
+        '{{#each option in periodSortList}}'+
+            '<option value="{{option.value}}"{{#if option.value == periodSortSelect}} selected{{/if}}>{{option.name}}</option>'+
+        '{{/each}}';
+
     function init(){
         setting();
         bindEvents();
@@ -53,7 +58,7 @@
 
     function bindEvents(){
         $('#contractInfo').on('change', function(e){
-            loadPaymentList(0);
+            loadPaymentList();
         });
 
         $('#usePeriod').on('change', function(e){
@@ -66,7 +71,7 @@
         lgkorUI.showLoading();
 
         var paymentID = $('#contractInfo').find('option:selected').val();
-        var period = $('#usePeriod').find('option').eq(idx).val();
+        var period = idx ? $('#usePeriod').find('option').eq(idx).val() : "";
 
         var sendata = {
             paymentID: paymentID,
@@ -78,8 +83,12 @@
                 $('.section-wrap .sects').find('.bullet-list').remove();
 
                 var list = vcui.template(listTableTemplate, result.data);
-                console.log(result.data)
                 $('.section-wrap .sects').append(list);
+
+                $('.sort-select-wrap select').empty();
+
+                var options = vcui.template(periodOptionTemplate, result.data);
+                $('.sort-select-wrap select').append(options).vcSelectbox('update');
             }
 
             lgkorUI.hideLoading();

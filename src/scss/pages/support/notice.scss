@@ -58,42 +58,6 @@
             padding: 16px;
         }
     }
-
-    .search-wrap {
-        @include pc {
-            max-width:912px;
-            width: 100%;
-            margin: 0 auto 48px;
-            .search-box {
-                .forms {
-                    display: flex;
-                    border: 1px solid #ddd;
-                    border-radius: 8px;
-                    .box {
-                        margin-top: 0;
-                    }
-                    .select-wrap {
-                        width: 152px;
-                        .ui-selectbox-wrap {
-                            margin: -1px 0 -1px -1px;
-                            .ui-select-button {
-                                border-right-color: transparent;
-                                border-bottom: none;
-                                border-bottom-right-radius: 0;
-                                border-top-right-radius: 0;
-                            }
-                            &.on {
-                                .ui-select-button {
-                                    border-top-right-radius: 8px;
-                                    border-right-color: #222;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
 
 @import "../../support/pages/payNwarranty";

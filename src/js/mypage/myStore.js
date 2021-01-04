@@ -29,7 +29,7 @@
                 '</div>' +
             '</div>' +
             '<div class="btn-area">' +
-                '<a href="#" class="btn border size"><span>매장 상담 신청</span></a>' +
+                '<a href="{{requestUrl}}" class="btn border size"><span>매장 상담 신청</span></a>' +
             '</div>' +
         '</div>' +
     '</li>'

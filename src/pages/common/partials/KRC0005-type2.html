@@ -56,7 +56,7 @@
         기본은 언더라인 없음
         .font-underline : 언더라인
     -->
-    <section class="component KRC0005 @@align-class1 @@img-size-type @@bg-color">
+    <section class="component KRC0005 @@align-class1 @@imgSizeType @@bg-color">
         <div class="component-inner">
             <div class="inner">
                 <div class="text-wrap side-left-text">
@@ -71,7 +71,14 @@
                     <!-- // 6. body copy -->
                     <!-- [KR수정_201216] DOM 추가 -->
                     <div class="thumbs">
-                        <img src="/lg5-common/images/dummy/@img-372x210.png" alt="">
+                        <!-- [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
+                        @@if ( context.imgSizeType == "standard" ) {
+                        <img src="/lg5-common/images/KRC0005/@thumb_420.jpg" data-pc-src="/lg5-common/images/KRC0005/@thumb_420.jpg" data-m-src="/lg5-common/images/KRC0005/@thumb_1312.jpg" alt="">
+                        }
+                        @@if ( context.imgSizeType == "large" ) {
+                        <img src="/lg5-common/images/KRC0005/@thumb_372.png" data-pc-src="/lg5-common/images/KRC0005/@thumb_372.png" data-m-src="/lg5-common/images/KRC0005/@thumb_1312.jpg" alt="">
+                        }
+                        <!-- // [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
                         <p class="hidden">graphic description : </p>
                     </div>
                     <!-- // [KR수정_201216] DOM 추가 -->
@@ -94,7 +101,16 @@
                     <!-- 1-1/1-2. image : image 타입인 경우 -->
                     <div class="visual-area image">
                         <!-- 링크가 있는 경우 예제 -->
-                        <a href="#" target="_blank" data-link-area="side_image_text-image" data-link-name="{Alt Text}"><img data-src="@@img" alt="" class="lazyload"></a>
+                        <a href="#" target="_blank" data-link-area="side_image_text-image" data-link-name="{Alt Text}">
+                            <!-- [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
+                            @@if ( context.imgSizeType == "standard" ) {
+                            <img src="/lg5-common/images/KRC0005/@img_678.jpg" data-pc-src="/lg5-common/images/KRC0005/@img_678.jpg" data-m-src="/lg5-common/images/KRC0005/@img_1440.jpg" alt="">
+                            }
+                            @@if ( context.imgSizeType == "large" ) {
+                            <img src="/lg5-common/images/KRC0005/@img_912.jpg" data-pc-src="/lg5-common/images/KRC0005/@img_912.jpg" data-m-src="/lg5-common/images/KRC0005/@img_1440.jpg" alt="">
+                            }
+                            <!-- // [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
+                        </a>
                         <p class="hidden">graphic description : </p>
                     </div>
                     <!-- // 1-1/1-2. image : image 타입인 경우 -->
