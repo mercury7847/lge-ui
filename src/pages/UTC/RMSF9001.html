@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["UTC/UTC"]
+        pageCSS: ["UTC/UTC"],
+        pageJS: ["caresolution/requestRental", "caresolution/caresolutionInfo", "caresolution/addressManagement"]
     })
 <body>
     <div class="wrap">
@@ -199,7 +200,7 @@
                                                         </div>
                                                         <div class="input-wrap">
                                                             <!-- 2020-11-13 name 수정-->
-                                                            <input type="text" value="" name="detailAddress" placeholder="상세주소를 입력해주세요." data-required="true" disabled>
+                                                            <input type="text" value="" name="detailAddress" placeholder="상세주소를 입력해주세요." data-required="true">
                                                         </div>
                                                         <div class="btm-more err-address"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
                                                     </dd>
