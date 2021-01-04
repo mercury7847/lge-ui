@@ -2,7 +2,7 @@
     @@if ( context.keyword) {
     <div class="keyword-search">
         <div class="input-wrap">
-            <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="제품명, 모델명 직접 검색" title="제품명, 모델명 직접 검색" data-clear-button="button.btn-delete" data-error-msg="모델명을 두 글자 이상 입력해 주세요." data-required="true">
+            <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="제품명, 모델명 직접 검색" title="제품명, 모델명 직접 검색" data-clear-button="button.btn-delete" data-error-msg="모델명을 네 글자 이상 입력해 주세요." data-required="true">
             <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
             <button type="button" class="btn-search"><span class="blind">검색</span></button>
         </div>
@@ -305,7 +305,6 @@
                 </div>
             </div>
         </div>
-
         <div class="slide-wrap model-slider">
             <div class="indi-wrap">
                 <ul class="indi-conts ui_carousel_dots">
@@ -316,9 +315,9 @@
                 <div class="slide-track ui_carousel_track">
                     <!-- 
                     <div class="slide-conts">
-                        <a href="#" class="item" data-model-code="LGP810SPEAK" data-product-code="NTB">
+                        <a href="#" class="item" ata-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{modelCode}}" data-product-code="{{productCode}}" data-category-name="{{categoryNm}}" data-sub-category-name="{{subCategoryNm}}">
                             <p class="name"><em class="word">LGP8</em>LGP810SPEAK</p>
-                            <p class="category">모바일 &gt; 일반폰</p>
+                            <p class="category">{{categoryNm}} &gt; {{subCategoryNm}}</p>
                         </a>                         
                     </div>
                     -->
@@ -329,19 +328,9 @@
                 <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
             </div>
         </div>
-
         <div class="no-data" style="display:none">
             <p>‘<em class="word">{{검색어}}</em>’에 대한 검색 결과가 없습니다.<br>사용하시는 제품의 모델명과 제조번호를 확인해주세요.</p>
         </div>
     </div>
     }
-
-    @@include('./common/modules/bullet-list.html', {
-        "topBorder" : true,
-        "bulletTxt" : [
-            "평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용 됩니다.",
-            "비로그인으로 예약을 접수하실 경우, 휴대전화 인증 후에 예약이 완료됩니다.",
-            "입력하신 정보가 정확하지 않을 경우 서비스가 취소 또는 지연될 수 있습니다."
-        ]
-    })
 </div>

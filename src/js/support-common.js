@@ -55,16 +55,6 @@ CS.MD.commonModel = function() {
             '{{# } #}}' +
         '</div>';
 
-    // var modelListTmpl = 
-    //     '<li>' +
-    //         '<a href="#" class="item" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{code}}">' +
-    //             '<div class="info">' +
-    //                 '<p class="name">{{#raw name}}</p>' +
-    //                 '<p class="category"><span>{{categoryNm}} &gt; </span>{{subCategoryNm}}</p>' +
-    //             '</div>' +
-    //         '</a>' +
-    //     '</li>';
-
     var modelListTmpl = 
         '<div class="slide-conts">' +
             '<a href="#" class="item" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{modelCode}}" data-product-code="{{productCode}}" data-category-name="{{categoryNm}}" data-sub-category-name="{{subCategoryNm}}">' +
@@ -109,9 +99,9 @@ CS.MD.commonModel = function() {
                     minLength: 4
                 }
             }})
-            inputValidation = new vcui.ui.CsValidation('#stepInput', {register: {
+            // inputValidation = new vcui.ui.CsValidation('#stepInput', {register: {
 
-            }});
+            // }});
         
             self._initialize();
             self._bindEvent();  
@@ -204,7 +194,7 @@ CS.MD.commonModel = function() {
             self.$stepModel.addClass(opt.stepActiveClass);
             self.$stepModel.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
 
-            // self.$submitForm.find('input').val('');
+            if (self.$myModelArea.length) self.$myModelArea.show();
 
             opt.selectedModel = [];
 
@@ -214,6 +204,19 @@ CS.MD.commonModel = function() {
             }
 
             self.update(updateObj);
+        },
+        _resetFlexibleBox: function() {
+            var self = this;
+
+            self.$el.find('.ui_carousel_track .ui_carousel_current').each(function(idx, item){
+                var maxheight = 0;
+                $(item).find('.slide-conts').each(function(cdx, child){
+                    var flexiblebox = $(child).find('.info');
+                    maxheight = Math.max(maxheight, flexiblebox.outerHeight(true));
+                });
+
+                $(item).find('.slide-conts').height(maxheight);
+            });
         },
         _requestData: function(param) {
             var self = this,
@@ -291,6 +294,10 @@ CS.MD.commonModel = function() {
         _bindEvent: function() {
             var self = this;
 
+            self.$el.find('.model-slider').on('carouselinit carouselreInit carouselafterchange carouselresize', function() {
+                self._resetFlexibleBox();
+            });
+
             // 제품 재선택
             self.$selectedModelBar.on('click', '.btn-reset', function() {
                 self.reset();
@@ -317,7 +324,7 @@ CS.MD.commonModel = function() {
                     opt = self.options,
                     result;
                     
-                result = validation.validate(['keyword']);
+                result = modelValidation.validate(['keyword']);
 
                 if (result.success) {
                     self.$searchCategoryBox.removeClass(opt.stepActiveClass);
@@ -327,28 +334,31 @@ CS.MD.commonModel = function() {
                         desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
                     }
                     var param = {
-                        keyword: self.$inputKeyword.val().toUpperCase()
+                        keyword: self.$inputKeyword.val().toUpperCase(),
+                        category: self.$submitForm.find('#category').val(),
+                        subCategory: self.$submitForm.find('#subCategory').val()
                     };
 
                     self.update(updateObj);
                     self._requestData(param);
                 } else {
                     if ($this.val() == '') {
-                        // var updateObj = {
-                        //     desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
-                        // }
-                        // var param = {
-                        //     keyword: self.$inputKeyword.val().toUpperCase()
-                        // };
+                        var param = {
+                            keyword: self.$inputKeyword.val().toUpperCase(),
+                            category: self.$submitForm.find('#category').val(),
+                            subCategory: self.$submitForm.find('#subCategory').val()
+                        };
     
-                        // self.update(updateObj);
-                        // self._requestData(param);
+                        self.update(updateObj);
+                        self._requestData(param);
+                    } else {
+
                     }
                 }
             });
             self.$searchKeywordBox.find('.btn-search').on('click', function() {
                 var opt = self.options,
-                    result = validation.validate(['keyword']);
+                    result = modelValidation.validate(['keyword']);
                 
                 if (result.success) {
                     self.$searchCategoryBox.removeClass(opt.stepActiveClass);
@@ -358,7 +368,9 @@ CS.MD.commonModel = function() {
                         desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
                     }
                     var param = {
-                        keyword: self.$inputKeyword.val().toUpperCase()
+                        keyword: self.$inputKeyword.val().toUpperCase(),
+                        category: self.$submitForm.find('#category').val(),
+                        subCategory: self.$submitForm.find('#subCategory').val()
                     };
 
                     self.update(updateObj);
@@ -380,6 +392,8 @@ CS.MD.commonModel = function() {
                     opt = self.options,
                     data = $this.data();
 
+                self.$submitForm.find('#categoryNm').val(data.categoryName);
+                self.$submitForm.find('#subCategoryNm').val(data.subCategoryName);
                 self.$submitForm.find('#category').val(data.category);
                 self.$submitForm.find('#subCategory').val(data.subCategory);
 
@@ -489,6 +503,8 @@ CS.MD.commonModel = function() {
 
                     self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
                     self.$stepInput.addClass(opt.stepActiveClass);
+
+                    self.$myModelArea.hide();
 
                     opt.callback();
                 }

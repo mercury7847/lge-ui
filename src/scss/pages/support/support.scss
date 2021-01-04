@@ -355,7 +355,7 @@
                     &::after {
                         display: none;
                     }
-                    &:first-child, {
+                    &:first-child {
                         // @include progress-on;
                     }
                 }
@@ -1005,9 +1005,6 @@
             display: inline-block;
             margin-bottom: 16px;
         }
-    }
-    .bullet-list.top-border {
-        margin-top: 24px;
     }
 } //support
 

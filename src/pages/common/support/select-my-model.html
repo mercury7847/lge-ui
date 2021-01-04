@@ -1,11 +1,8 @@
+@@if (!context.noItem) {
 <div class="my-product">
     <div class="box open">
         <div class="my-product-title">
             <p class="tit">이엘지님이 보유하고 있는 제품 (8)</p>
-            <!-- 
-                .box.open : 보유제품 접기
-                .box      : 보유제품 펼치기
-             -->
             <button type="button" class="btn-toggle">보유제품 접기</button>
         </div>
         <div class="slide-wrap my-product-slider">
@@ -49,3 +46,13 @@
         </div>
     </div>
 </div>
+}
+
+@@if (context.noItem) {
+<div class="my-product no-item">
+    <div class="box">
+        <p class="txt">등록하신 제품이 없습니다. 제품을 등록해보시겠어요 ?</p>
+        <button type="button" class="btn mix size-m"><span>제품 등록</span></button>
+    </div>
+</div>
+}

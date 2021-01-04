@@ -5,7 +5,7 @@
     '<li>' +
         '<span class="rdo-wrap btn-type3">' +
             '{{# if (index == 0) { #}}' +
-            '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}" data-error-msg="정확한 제품증상을 선택해주세요." data-required="true" required>' +
+            '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}" data-topic-name="{{item.name}}" data-error-msg="정확한 제품증상을 선택해주세요." data-required="true" required>' +
             '{{# } else { #}}' +
             '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}">' +
             '{{# } #}}' +
@@ -18,7 +18,7 @@
     '<li>' +
         '<span class="rdo-wrap">' +
             '{{# if (index == 0) { #}}' +
-            '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}" data-error-msg="정확한 세부증상을 선택해주세요." data-required="true" required>' +
+            '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}" data-sub-topic-name="{{item.name}}" data-error-msg="정확한 세부증상을 선택해주세요." data-required="true" required>' +
             '{{# } else { #}}' +
             '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}">' +
             '{{# } #}}' +
@@ -27,10 +27,9 @@
     '</li>' +
     '{{/each}}';
     var validation;
-    var dateValidation;
     var addressFinder;
 
-    var custom = {
+    var reservation = {
         init: function() {
             var self = this;
             
@@ -40,10 +39,32 @@
 
                 var register = {
                     topic: {
-                        msgTarget: '.err-block' 
+                        required: true,
+                        msgTarget: '.topic-msg'
                     },
                     subTopic: {
-                        msgTarget: '.err-block' 
+                        required: true,
+                        msgTarget: '.sub-topic-msg'
+                    },
+                    bdType: {
+                        required: true,
+                        msgTarget: '.bd-type-msg'
+                    },
+                    fan: {
+                        required: true,
+                        msgTarget: '.fan-msg'
+                    },
+                    addFan: {
+                        required: true,
+                        msgTarget: '.add-fan-msg'
+                    },
+                    installType: {
+                        required: true,
+                        msgTarget: '.install-type-msg'
+                    },
+                    tvPosition: {
+                        required: true,
+                        msgTarget: '.tv-position-msg'
                     },
                     userNm: {
                         msgTarget: '.err-block' 
@@ -63,23 +84,6 @@
                 }
 
                 validation = new vcui.ui.CsValidation('#stepInput', {register:register});
-                dateValidation = new vcui.ui.CsValidation('#userSection', {register:{
-                    userNm: {
-                        msgTarget: '.err-block' 
-                    },
-                    phoneNo: {
-                        msgTarget: '.err-block'
-                    },
-                    zipCode: {
-                        msgTarget: '.err-block'
-                    },
-                    userAddress: {
-                        msgTarget: '.err-block'
-                    },
-                    detailAddress: {
-                        msgTarget: '.err-block'
-                    }
-                }});
 
                 $('.contents').commonModel({
                     register: register,
@@ -109,8 +113,6 @@
                                 $("#addFanBox").hide();
                             }
                         }); 
-
-                        console.log(data);
                         
                         if (data.subCategory == "1086" || data.subCategory == "1021") {
                             $("#installTypeBox").show();
@@ -137,8 +139,8 @@
 
             $('#stepInput').find('.btn-next').on('click', function() {
                 var $this = $(this),
-                    url = $this.closest('.section').data('ajax'),
-                    param = dateValidation.getAllValues(),
+                    url = $('#stepInput').data('ajax'),
+                    param = validation.getAllValues(),
                     result;
 
                 param = $.extend(param, {
@@ -150,14 +152,14 @@
                     subCategory: $('#subCategory').val()
                 });
 
-                result = dateValidation.validate();
+                result = validation.validate();
 
                 if (result.success) {
                     lgkorUI.requestAjaxDataPost(url, param, function(result) {
                         var data = result.data;
 
                         if (data.resultFlag == 'Y') {
-                            $this.closest('.section').next('.section').show();
+                            $('#stepDate').addClass('active');
                         }
                     });
                 }
@@ -175,9 +177,11 @@
                     $('#solutionsPopup').html(result).vcModal();
                 }, null, "html");
             });
-
+            $('.tb-calendar').on('click', 'button', function() {
+                $('#date').val('');
+            });
             $('.tb-timetable').on('click', 'button', function() {
-                var url = $('#dateSection').data('ajax'),
+                var url = $('#stepDate').data('ajax'),
                     param = {
                         serviceType: '',
                         category: '',
@@ -190,28 +194,30 @@
                         time: ''
                     }
 
+                $('#time').val('');
+
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var data = result.data;
 
                     if (data.resultFlag == 'Y') {
 
-                        $('#engineerSection').find('.engineer-img img').attr({
+                        $('#stepEnginner').find('.engineer-img img').attr({
                             'src': data.enginnerList[0].img,
                             'alt': data.enginnerList[0].name
                         });
-                        $('#engineerSection').find('.engineer-info .name').html(data.enginnerList[0].name);
-                        $('#engineerSection').find('.engineer-info .center').html(data.enginnerList[0].center);
-                        $('#engineerSection').find('.engineer-desc .date').html('2020.08.17 11:20');
-                        $('#engineerSection').find('.engineer-desc .name').html(data.enginnerList[0].name);
-                        $('#engineerSection').find('.engineer-desc .name').html($('[name=topic]').val() + '&gt;' + $('[name=subTopic]').val());
+                        $('#stepEnginner').find('.engineer-info .name').html(data.enginnerList[0].name);
+                        $('#stepEnginner').find('.engineer-info .center').html(data.enginnerList[0].center);
+                        $('#stepEnginner').find('.engineer-desc .date').html('2020.08.17 11:20');
+                        $('#stepEnginner').find('.engineer-desc .name').html($('[name=topic]').data('topicName') + '&gt;' + $('[name=subTopic]').data('subTopicName'));
 
                         if (data.enginnerList.length && data.enginnerList.length > 1) {
-                            $('#engineerSection').find('button').show();
+                            $('#stepEnginner').find('button').show();
                         } else {
-                            $('#engineerSection').find('button').hide();
+                            $('#stepEnginner').find('button').hide();
                         }
 
-                        $('#engineerSection').show();
+                        $('#stepEnginner').show();
+                        $('.btn-group').show();
                     }
                 });
             });
@@ -304,6 +310,6 @@
     }
 
     $(window).ready(function() {
-        custom.init();
+        reservation.init();
     });
 })();

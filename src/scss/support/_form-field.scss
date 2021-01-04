@@ -147,6 +147,7 @@
 .thumb-rdo-wrap {
     label {
         display:block;
+        cursor:pointer;
         .img {
             display:block;
             overflow:hidden;
@@ -210,12 +211,12 @@
 
 .rdo-list-wrap {
     .rdo-list {
-        margin:0 0 -20px -24px;
+        margin:-20px 0 0 -24px;
         font-size:0;
         li {
             display:inline-block;
             min-width:152px;
-            padding:0 0 20px 24px;
+            padding:20px 0 0 24px;
             vertical-align:top;
             &.block {
                 width:100%;
@@ -231,29 +232,37 @@
             }
         }
     }
+    .err-msg {
+        display:none;
+        margin-top:8px;
+    }
     &.w-auto {
         .rdo-list {
             li {
-                min-width:0;
+                min-width:auto;
             }
         }
     }
     &.thumb-type {
-        margin-bottom:-32px;
-        li {
-            width:20%;
-            padding-bottom:32px;
+        .rdo-list {
+            margin-top:-32px;
+            li {
+                width:20%;
+                padding-top:32px;
+            }
         }
     }
     &.btn-type {
-        margin-bottom:-16px;
-        li {
-            width:20%;
-            padding-bottom:16px;
-            .rdo-wrap { 
-                display:block;
-                label {
-                    width:100%;
+        .rdo-list {
+            margin-top:-16px;
+            li {
+                width:20%;
+                padding-top:16px;
+                .rdo-wrap { 
+                    display:block;
+                    label {
+                        width:100%;
+                    }
                 }
             }
         }
@@ -272,11 +281,11 @@
     }
     @include mobile {
         .rdo-list {
-            margin:0 -12px -18px;
+            margin:-18px -6px 0;
             li {
                 width:50%;
                 min-width:0;
-                padding:0 12px 18px;
+                padding:18px 6px 0;
                 &.block {
                     .rdo-wrap {
                         & ~ .input-wrap {
@@ -292,21 +301,29 @@
                 li {
                     width:auto;
                     min-width:50%;
+                    &.block {
+                        width:100%;
+                        min-width:auto;
+                    }
                 }
             }
         }
         &.thumb-type {
-            margin-bottom:-12px;
-            li {
-                width:50%;
-                padding-bottom:12px;
+            .rdo-list {
+                margin-top:-24px;
+                li {
+                    width:50%;
+                    padding-top:24px;
+                }
             }
         }
         &.btn-type {
-            margin-bottom:-8px;
-            li {
-                width:50%;
-                padding-bottom:8px;
+            .rdo-list {
+                margin-top:-8px;
+                li {
+                    width:50%;
+                    padding-top:8px;
+                }
             }
         }
     }

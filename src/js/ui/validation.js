@@ -422,19 +422,20 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             }else{
                 event = 'blur';
             }
-
-            $target.on(event, function(e){  
-
+ 
+            // $target.on(event, function(e){  
+            self.$el.on(event, '[name='+ key +']', function(e) {
+                var $this = $(this);
                 var val; 
 
-                if($target.is(':radio') || $target.is(':checkbox')){
+                if($this.is(':radio') || $this.is(':checkbox')){
                     var nArr = [];
-                    $target.filter(':checked').each(function(idx, item){
+                    $this.filter(':checked').each(function(idx, item){
                         nArr.push($(item).val())
                     });
-                    val = $target.is(':radio')? nArr[0] : nArr;
-                    if(val=='on') val = '';
-
+                    val = $this.is(':radio')? nArr[0] : nArr;
+                    // if(val=='on') val = '';
+                    if(val=='on' || val == undefined) val = '';
                 }else{
                     val = e.currentTarget.value;
                 }
@@ -462,6 +463,76 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
     var CsValidation = core.ui('CsValidation', Validation, /** @lends vcui.ui.CsValidation# */{
         bindjQuery: 'csValidation',
+        initialize: function initialize(el, options) {
+            var self = this;
+            if (self.supr(el, options) === false) {
+                return;
+            }
+            self.validItemObj = {};
+            self.nameArr = [];
+
+            var register = self.options.register || {};
+            var newObj = {};
+
+            self.$el.find('[name]').each(function(index,item){
+
+                var required = $(item).data('required');
+                var msgTarget = $(item).data('msgTarget'); 
+                var errorMsg = $(item).data('errorMsg') || self.options.defaultErrorMsg;
+                var patternMsg = $(item).data('patternMsg') || '';
+                
+                if(required && /true/i.test(required)){
+                    
+                    var value = $(item).data('value');
+                    var pattern = $(item).data('pattern');
+                    var minLength = $(item).data('minLength');
+                    var maxLength = $(item).data('maxLength');
+                    var validate = $(item).data('validate');
+
+                    if(validate && core.isFunction(window[validate])){
+                        validate = window[validate];
+                    }else{
+                        validate = null;
+                    }
+
+                    newObj[item.name] = {
+                        required : true,
+                        errorMsg : errorMsg
+                    }
+
+                    if(value) newObj[item.name]['value'] = value;
+                    if(pattern) newObj[item.name]['pattern'] = new RegExp(pattern);
+                    if(minLength) newObj[item.name]['minLength'] = minLength;
+                    if(maxLength) newObj[item.name]['maxLength'] = maxLength;
+                    if(validate) newObj[item.name]['validate'] = validate;
+                    if(msgTarget) newObj[item.name]['msgTarget'] = msgTarget;
+                    if(patternMsg) newObj[item.name]['patternMsg'] = patternMsg;
+                }else{
+                    if(msgTarget) {
+                        if(newObj[item.name]){                   
+                            newObj[item.name]['msgTarget'] = msgTarget;
+                        }else{
+                            newObj[item.name] = {
+                                msgTarget : msgTarget
+                            };
+                        }
+                    }
+                }
+                // self.nameArr.push(item.name);
+            });
+
+            for (var key in register) {
+                newObj[key] = $.extend(newObj[key] || {}, register[key]);
+                self.nameArr.push(key);
+            }
+
+            self.register = newObj;
+
+            self.nameArr = vcui.array.unique(self.nameArr);
+            self._build();
+            self._bindEvent();
+            
+        },
         _build: function _build() {
             var self = this;
             var nObj = {};
@@ -514,7 +585,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                         errblock.show();
 
                         var errfield = self._getMsgField(errblock);
-                        errfield.text(nobj.errorMsg);
+                        errfield.text(obj[prop]);
                         $target.attr('aria-describedby', prop + 'Error');
                     }
                 }
@@ -531,7 +602,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 obj = self.register[key];
                 if(obj && obj.required){
                     $target = self.$el.find('[name='+ key +']');
-                    if (!$target.prop('disabled')) {
+                    if ($target.not('[type=hidden]').is(':visible') && !$target.prop('disabled')) {
                         if($target.is(':checkbox') || $target.is(':radio')){
                             var nArr = [];
                             $target.filter(':checked').each(function(idx, item){
@@ -558,21 +629,21 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             if (self._defaultCheckFunc(val) != isFalse) {
                 if(obj.validate){
                     if(obj.validate(val) == isFalse){
-                        rObj[key] = isFalse? val : obj['patternMsg'];
+                        rObj[key] = isFalse? val : (obj['patternMsg'] || self.$el.find('[name='+key+']').data('patternMsg'));
                     }else{
                         delete rObj[key];
                     }            
                 }else{       
                     if (obj.pattern) {
                         if (self._regexCheckFunc(obj.pattern, val) == isFalse) {  
-                            rObj[key] = isFalse? val : obj['patternMsg'];
+                            rObj[key] = isFalse? val : (obj['patternMsg'] || self.$el.find('[name='+key+']').data('patternMsg'));
                         }else{
                             delete rObj[key];
                         }
                     }else{
                         if (obj.minLength || obj.maxLength) {
                             if(self._lenCheckFunc(val, obj.minLength? obj.minLength : 0 , obj.maxLength? obj.maxLength : self.options.maxLength) == isFalse) {
-                                rObj[key] = isFalse? val : obj['patternMsg'];
+                                rObj[key] = isFalse? val : (obj['patternMsg'] || self.$el.find('[name='+key+']').data('patternMsg'));
                             }else{
                                 delete rObj[key];
                             }
@@ -582,9 +653,8 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     }
                 } 
             } else {
-                rObj[key] = isFalse? val : obj.errorMsg;
+                rObj[key] = isFalse? val : (obj['errorMsg'] || self.$el.find('[name='+key+']').data('errorMsg'));
             }
-
             return rObj;
         },
         validate : function validate(targetArr){
