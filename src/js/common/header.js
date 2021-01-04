@@ -41,11 +41,13 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var loginInfoUrl = self.$el.data('loginInfo');
             lgkorUI.requestAjaxDataPost(loginInfoUrl, {}, function(result){
                 self.isLogin = result.data.isLogin;
+                console.log("self.isLogin:", self.isLogin);
+                console.log("result.data.isLogin:", result.data.isLogin)
                 self.$el.find('.login-info').css('display', 'none');
                 if(result.data.isLogin){
-                    self.$el.find('.login-info.after-login').css('display', 'block');
+                    self.$el.find('.login-info.after-login').css('display', 'inline-block');
                 } else{
-                    self.$el.find('.login-info.before-login').css('display', 'block');
+                    self.$el.find('.login-info.before-login').css('display', 'inline-block');
                 }
             });
         },
@@ -123,6 +125,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                     self.displayMode = "pc";
 
+                    console.log("[_resize] self.isLogin:", self.isLogin)
                     if(self.isLogin){
                         self.$el.find('.mypage.after-login').css('display', 'inline-block');
                     } else{
