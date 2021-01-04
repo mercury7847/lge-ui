@@ -120,12 +120,13 @@
 .support {
     /* common */
     .survey-banner-wrap {
+        margin:0 auto;
         margin-top:80px;
         .banner {
             display:flex;
             align-items:center;
             justify-content:space-between;
-            padding:24px 48px;
+            padding:28px 48px;
             border-radius:8px;
             background:#f4f4f4;
             p {
@@ -1036,6 +1037,7 @@
             }
             &.fixed {
                 border-bottom:1px solid #ddd;
+                height:70px;
             }
             @include mobile {
                 height:56px;
@@ -1049,7 +1051,7 @@
         }
         .cont-wrap {
             padding:48px 40px 80px;
-            border-top:8px solid #f4f4f4;
+            //border-top:8px solid #f4f4f4;
         }
         
         @include mobile {
