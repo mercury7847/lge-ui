@@ -36,7 +36,7 @@ var res = {
 			"KRC" : {
 				"KRC0001_Selective offering" : ["/html/components/KRC0001.html","","검수완료"],
 				"KRC0002_Vertical Selector[KRC0003]" : ["/html/components/KRC0002.html","","검수완료"],
-				"KRC0003_Event - Hero[KRC0006]" : ["/html/components/KRC0003.html","",""],
+				"KRC0003_Event - Hero[KRC0006]" : ["/html/components/KRC0003.html","","검수완료"],
 				"KRC0004_Image - Text(folding feature)[KRC0012]" : ["/html/components/KRC0004.html","","검수완료"],
 				"KRC0005_Side Image - Text[KRC0013]" : ["/html/components/KRC0005.html","","검수완료"],
 				"KRC0006_Side Image(2 - Text)[KRC0014]" : ["/html/components/KRC0006.html","","검수완료"],
