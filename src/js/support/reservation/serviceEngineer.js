@@ -217,6 +217,7 @@
                         }
 
                         $('#stepEnginner').show();
+                        $('.btn-group').show();
                     }
                 });
             });
