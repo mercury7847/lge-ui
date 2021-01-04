@@ -46,6 +46,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self.$el.find('.login-info').css('display', 'none');
                 if(result.data.isLogin){
                     self.$el.find('.login-info.after-login').css('display', 'block');
+                    self.$el.find('.login-info.after-login a').html('<span>' + result.data.loginToken.name + '</span>님 안녕하세요');
                     self.$el.find('.mypage.after-login').css('display', 'inline-block');
                 } else{
                     self.$el.find('.login-info.before-login').css('display', 'block');
