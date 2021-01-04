@@ -51,7 +51,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     if(self.displayMode == "pc") self.$el.find('.mypage.after-login').css('display', 'inline-block');
                 } else{
                     self.$el.find('.login-info.before-login').css('display', 'block');
-                    
+
                     if(self.displayMode == "pc") self.$el.find('.mypage.before-login').css('display', 'inline-block');
                 }
             });
@@ -129,14 +129,13 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     self.$mobileNaviWrapper.hide();
 
                     self.displayMode = "pc";
+                }
 
-                    console.log("[_resize] self.isLogin:", self.isLogin)
-                    if(self.isLogin != null){
-                        if(self.isLogin){
-                            self.$el.find('.mypage.after-login').css('display', 'inline-block');
-                        } else{
-                            self.$el.find('.mypage.before-login').css('display', 'inline-block');
-                        }
+                if(self.isLogin != null){
+                    if(self.isLogin){
+                        self.$el.find('.mypage.after-login').css('display', 'inline-block');
+                    } else{
+                        self.$el.find('.mypage.before-login').css('display', 'inline-block');
                     }
                 }
 
@@ -147,11 +146,11 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     self.$mobileNaviWrapper.show();
 
                     self.displayMode = "m";
-                    
-                    self.$el.find('.mypage').css('display', 'none');
                 }
                 self.$leftArrow.hide();
                 self.$rightArrow.hide();
+
+                self.$el.find('.mypage').css('display', 'none');
             }
         },
 
