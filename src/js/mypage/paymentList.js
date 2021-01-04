@@ -58,7 +58,7 @@
 
     function bindEvents(){
         $('#contractInfo').on('change', function(e){
-            loadPaymentList(0);
+            loadPaymentList();
         });
 
         $('#usePeriod').on('change', function(e){
@@ -71,7 +71,7 @@
         lgkorUI.showLoading();
 
         var paymentID = $('#contractInfo').find('option:selected').val();
-        var period = $('#usePeriod').find('option').eq(idx).val();
+        var period = idx ? $('#usePeriod').find('option').eq(idx).val() : "";
 
         var sendata = {
             paymentID: paymentID,
