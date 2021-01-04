@@ -86,9 +86,6 @@
             > li {
                 &:nth-child(n+2) {
                     margin-top: 0;
-                    margin-left: 23px;
-                    padding-left: 24px;
-                    position: relative;
                     ::before {
                         content: '';
                         display: block;
@@ -107,6 +104,29 @@
             }
             .description {
                 margin-left: 0;
+            }
+            @include pc {
+                > li {
+                    &:nth-child(n+2) {
+                        margin-left: 23px;
+                        padding-left: 24px;
+                        position: relative;
+                        ::before {
+                            content: '';
+                            display: block;
+                            width: 1px;
+                            height: 16px;
+                            background-color: #ddd;
+                            position: absolute;
+                            left: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                display: block;
             }
         }
     }
