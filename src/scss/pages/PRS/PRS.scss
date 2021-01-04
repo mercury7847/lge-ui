@@ -315,6 +315,7 @@
 				margin:0 -12px;
 			}
 			.best {
+				width:50%;
 				padding:12px;
 				a {
 					display:block;
@@ -329,6 +330,7 @@
 					.img {
 						img {
 							max-width:678px;
+							width:100%;
 						}
 					}
 					.product-info {
@@ -353,6 +355,7 @@
 			.list {
 				display:flex;
 				flex-flow:row wrap;
+				width:50%;
 				&:after {
 					content:' ';
 					display:block;
@@ -381,6 +384,7 @@
 						.img {
 							img {
 								max-width:240px;
+								width:100%;
 							}
 						}
 						.product-info {
@@ -911,6 +915,7 @@
 					margin:0 -6px;
 				}
 				.best {
+					width:100%;
 					padding:6px;
 					a {
 						.flag {
@@ -925,6 +930,7 @@
 							}
 						}
 						.product-info {
+							top:auto;
 							bottom:20px;
 							left:16px;
 							.tit {
@@ -940,6 +946,7 @@
 					}
 				}
 				.list {
+					width:100%;
 					li {
 						padding:6px;
 						a {
