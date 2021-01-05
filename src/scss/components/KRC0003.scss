@@ -12,7 +12,12 @@
         .slide-content {
             .slide-conts {
                 .text-box {
-                    max-width:((678px * 100%) / 1380px);
+                    &.type-wide {
+                        max-width:100%;
+                    }
+                    &.type-narrow {
+                        max-width:((678px * 100%) / 1380px);
+                    }
                     &.box-align-left {
                         margin-right:auto;
                     }
