@@ -167,8 +167,9 @@
 		}
 	}
 	.module-box {
-		max-width:1380px;
+		max-width:1460px;
 		margin:120px auto 0;
+		padding:0 40px;
 		&.cnt01 {
 			margin-top:80px;
 		}
@@ -190,6 +191,9 @@
 						display:inline-block;
 						width:25%;
 						margin-top:20px;
+						@media screen and (min-width:768px) and (max-width:1200px) {
+							width:50%;
+						}
 						a {
 							font-size:0;
 							i {
@@ -825,7 +829,7 @@
 				}
 			}
 			.slide-controls {
-				max-width:1380px;
+				max-width:1460px;
 				margin-top:-30px;
 				.prev {
 					left:-12px;
@@ -836,6 +840,7 @@
 			}
 		}
 		@include mobile {
+			padding:0;
 			.btn {
 				padding:7px 14px !important;
 				font-size:14px;
