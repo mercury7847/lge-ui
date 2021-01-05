@@ -353,6 +353,42 @@
             }
         }
     }
+
+    /* email 문의 */
+    .emailInquiry-tab-box{
+        display:flex;
+        justify-content:space-between;
+        .tab{
+            width:calc(33.33% - 12px);
+            .tit-wrap{
+                margin-bottom:16px;
+            }
+            .desc-wrap{
+                .desc-txt{
+                    margin-bottom:8px;
+                }
+                .desc-btn{
+                    margin-bottom:20px;
+                    &.step-btn-wrap{
+                        text-align:left;
+                    }
+                    .btn{
+                        margin:0 8px 12px 0;
+                        min-width:auto;
+                        padding:8px 14px;
+                        &.white{
+                            background:#fff;
+                            border:1px solid #ddd;
+                            border-radius:16px;
+                            padding: 8px 16px;
+                            color:#222;
+                            font-weight:normal;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 @import "../../support/pages/payNwarranty";
