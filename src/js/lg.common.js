@@ -249,7 +249,7 @@
         _addImgOnloadEvent: function(){
             $('img').not('[data-pc-src]').on('error', function(e){
                 $(this).off('error');
-                $(this).attr('src', '/lg5-common/images/icons/icon-nodata.svg');
+                $(this).attr('src', '/lg5-common/images/icons/noimage.svg');
                 var parentwid = $(this).parent().width();
                 var parenthei = $(this).parent().height();
                 var wid = parentwid*.3;
@@ -263,8 +263,8 @@
         },
 
         _addImgErrorEvent: function(img){
-            $(img).off('error');
-            $(img).attr('src', '/lg5-common/images/icons/icon-nodata.svg');
+            img.onerror = null;
+            $(img).attr('src', '/lg5-common/images/icons/noimage.svg');
             var parentwid = $(this).parent().width();
             var parenthei = $(this).parent().height();
             var wid = parentwid*.3;
