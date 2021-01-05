@@ -83,7 +83,7 @@
                     <a href="#">
                         @@if (context.isReview) {
                         <div class="star is-review"><span class="blind">리뷰있음</span></div>
-                        <div class="average-rating"><span class="blind">평점</span>42</div>
+                        <div class="average-rating"><span class="blind">평점</span>4.2</div>
                         <div class="review-count"><span class="blind">리뷰 수</span>(36)</div>
                         }
                         @@if (!context.isReview) {
@@ -228,8 +228,10 @@
                     <span class="price">4,420,000<em>원</em></span>
                 </div>
                 @@if (context.eventItem.discount) {
+                <div class="discount">
                     <em class="blind">할인율</em>
-                    <span class="discount">10%</span>
+                    <span class="percentage">10%</span>
+                </div>
                 }
             </div>
             }
@@ -239,7 +241,7 @@
                     <a href="#n" class="btn-cart"><span class="blind">장바구니 담기</span></a>
                 </div>
                 <div class="btn-area">
-                    <a href="#n" class="btn border">@@eventItem.button</a>
+                    <a href="#n" class="btn border size-m">@@eventItem.button</a>
                 </div>
             </div>
         </div>
