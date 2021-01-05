@@ -25,7 +25,7 @@
             })
             <div class="contents support request-call">
 
-                <div class="accordion-wrap ui_accordion border-type" data-single-open="true">
+                <div class="accordion-wrap ui_accordion border-type directCall-wrap" data-single-open="true">
                     <ul>
                         <li class="lists">
                             <div class="head">
@@ -86,10 +86,13 @@
                 <!-- 선택 제품 플로팅바 -->
                 @@include('./common/support/selected-model-bar.html')
 
-                <!-- 비회원 -->
-                @@include('./common/support/login-guide.html', {
-                    'text': '출전화상담 예약을 LG전자 통합 사이트의 회원으로 이용하시면 <br>보다 편리하게 이용할 수 있습니다.'
+                <!-- 회원 - 제품 없을 시 -->
+                @@include('./common/support/select-my-model.html', {
+                    "noItem": true
                 })
+
+                <!-- 회원 - 보유제품 펼침 -->
+                @@include('./common/support/select-my-model.html')
 
                 <div class="cont-wrap">
                     <form action="/html/CS/CSTF6017.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/save.json" novalidate>
@@ -597,6 +600,6 @@
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
-    <script src="/lg5-common/js/support/reservation/requestCall.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/remoteCall.min.js"></script>
 </body>
 </html> 
