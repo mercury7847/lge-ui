@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/reservation"
+    ]
+})
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '전화상담 예약',
+                'pageDesc': '고객님께서 원하시는 시간에 전문 상담사가 직접 전화드려 상담을 해드립니다.',
+                'pageBtn' : [
+                    { 'btn' : '요금 및 보증 기간 안내 ', 'attr': 'data-href="#ratesWarrantyGuidePopup" data-control="modal"' }
+                ],
+                'progressArr': [
+                    { 'progress' : '제품 선택'},
+                    { 'progress' : '예약 내용 입력'},
+                    { 'progress' : '예약 완료'}
+                ]
+            })
+            <div class="contents support request-call">
+
+                <div class="accordion-wrap ui_accordion border-type" data-single-open="true">
+                    <ul>
+                        <li class="lists">
+                            <div class="head">
+                                <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                    <span class="subtitle"><strong>바로 전화하고 싶으신가요?</strong></span>
+                                    <span class="blind ui_accord_text">내용 더 보기</span>
+                                </a>
+                            </div>
+                            <div class="accord-cont ui_accord_content" style="display:none;">
+                                <dl class="inquiry-dl">
+                                    <dt>서비스별 전화번호 안내</dt>
+                                    <dd>
+                                        <ul class="inquiry-list type-bullet">
+                                            <li>
+                                                <div class="title"><strong>제품 및 서비스 문의</strong></div>
+                                                <div class="description">1544-7777</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>구입제품 배송확인-㈜판토스</strong></div>
+                                                <div class="description">1577-1185</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>케어솔루션 가입</strong></div>
+                                                <div class="description">080-755-2222</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>B2B 서비스 상담</strong></div>
+                                                <div class="description">1544-8777</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>LG전자 베스트샵몰</strong></div>
+                                                <div class="description">1661-2471</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>케어솔루션 수납센터</strong></div>
+                                                <div class="description">1644-7717</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>케어솔루션 서비스 상담</strong></div>
+                                                <div class="description">케어솔루션 서비스 상담</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>LG페이</strong></div>
+                                                <div class="description">1544-8552</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>공기청정 케어십 상담</strong></div>
+                                                <div class="description">1677-0887</div>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 선택 제품 플로팅바 -->
+                @@include('./common/support/selected-model-bar.html')
+
+                <!-- 비회원 -->
+                @@include('./common/support/login-guide.html', {
+                    'text': '출전화상담 예약을 LG전자 통합 사이트의 회원으로 이용하시면 <br>보다 편리하게 이용할 수 있습니다.'
+                })
+
+                <div class="cont-wrap">
+                    <form action="/html/CS/CSTF6017.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/save.json" novalidate>
+                        <input type="hidden" name="categoryNm" id="categoryNm" value="">
+                        <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="">
+                        <input type="hidden" name="category" id="category" value="">
+                        <input type="hidden" name="subCategory" id="subCategory" value="">
+                        <input type="hidden" name="modelCode" id="modelCode" value="">
+                        <input type="hidden" name="productCode" id="productCode" value="">
+                        <input type="hidden" name="serviceType" id="serviceType" value="C">
+                        <input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
+
+                        <!-- 약관 동의 -->
+                        <div class="step-box active" id="stepTerms">
+                            <div class="section">
+                                <div class="form-infos">
+                                    <p class="req" aria-disabled="true">필수 입력 항목</p>
+                                </div>
+                                @@include('./common/support/accept-terms.html', {
+                                    member: true
+                                })
+                                <div class="step-btn-wrap">
+                                    <button type="button" class="btn border size-m btn-next"><span>다음</span></button>
+                                </div> 
+                            </div>
+                        </div>
+                        <!-- // 약관 동의 -->
+
+                        <!-- 제품 선택 -->
+                        <div class="step-box" id="stepModel">
+                            <!-- 제품 카테고리 선택 -->
+                            @@include('./common/support/select-model.html', {
+                                "keyword": "Y",
+                                "model": "Y",
+                                "category": [
+                                    { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
+                                    { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
+                                    { "name": "IT/모니터", "code": "P1011", "imgSrc": "/lg5-common/images/CS/img-category03.jpg", "imgAlt": "IT/모니터 카테고리 썸네일" },
+                                    { "name": "에어컨", "code": "1019", "imgSrc": "/lg5-common/images/CS/img-category04.jpg", "imgAlt": "에어컨 카테고리 썸네일" },
+                                    { "name": "냉장/냉동고", "code": "1025", "imgSrc": "/lg5-common/images/CS/img-category05.jpg", "imgAlt": "냉장/냉동고 카테고리 썸네일" },
+                                    { "name": "세탁기/스타일러", "code": "1020", "imgSrc": "/lg5-common/images/CS/img-category06.jpg", "imgAlt": "세탁기/스타일러 카테고리 썸네일" },
+                                    { "name": "청소기", "code": "1023", "imgSrc": "/lg5-common/images/CS/img-category07.jpg", "imgAlt": "청소기 카테고리 썸네일" },
+                                    { "name": "조리/세척기기", "code": "P1030", "imgSrc": "/lg5-common/images/CS/img-category08.jpg", "imgAlt": "조리/세척기기 카테고리 썸네일" },
+                                    { "name": "건강/소형기기", "code": "P1024", "imgSrc": "/lg5-common/images/CS/img-category09.jpg", "imgAlt": "건강/소형기기 카테고리 썸네일" },
+                                    { "name": "AV/음향기기", "code": "P1009", "imgSrc": "/lg5-common/images/CS/img-category10.jpg", "imgAlt": "AV/음향기기 카테고리 썸네일" },
+                                    { "name": "기타", "code": "P9999", "imgSrc": "/lg5-common/images/CS/img-category11.jpg", "imgAlt": "기타 카테고리 썸네일" },
+                                    { "name": "B2B", "code": "P1134", "imgSrc": "/lg5-common/images/CS/img-category12.jpg", "imgAlt": "B2B 카테고리 썸네일" }
+                                ]
+                            })
+                        </div>
+                        <!-- // 제품 선택 -->
+
+                        <!-- 예약 내용 입력 -->
+                        <div class="step-box" id="stepInput" data-ajax="/lg5-common/data-ajax/support/possibleDate.json">
+                            <div class="section">
+                                <div class="form-infos">
+                                    <p class="req" aria-disabled="true">필수 입력 항목</p>
+                                </div>
+                                <div class="tit-wrap">
+                                    <h2 class="tit">제품 추가정보</h2>
+                                </div>
+                                <div class="section-box">
+                                    <h3 class="sub-tit">구매정보 선택</h3>
+                                    <div class="form-wrap">
+                                        <div class="forms type4">
+                                            <div class="tit">
+                                                <p class="label">구입 시기</p>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="rdo-list-wrap">
+                                                    <ul class="rdo-list">
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="buyingdate" id="buyingdate01" value="0">
+                                                                <label for="buyingdate01">1개월 이내</label>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="buyingdate" id="buyingdate02" value="1">
+                                                                <label for="buyingdate02">1년 이내</label>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="buyingdate" id="buyingdate03" value="2">
+                                                                <label for="buyingdate03">1년~2년 이내</label>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="buyingdate" id="buyingdate04" value="3">
+                                                                <label for="buyingdate04">2년 이상</label>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="buyingdate" id="buyingdate05" value="4">
+                                                                <label for="buyingdate05">기억 안남</label>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="forms type4">
+                                            <div class="tit">
+                                                <p class="label">렌탈 여부</p>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="rdo-list-wrap">
+                                                    <ul class="rdo-list">
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="rental" id="rentalY" value="Y">
+                                                                <label for="rentalY">렌탈 이용중</label>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rdo-wrap">
+                                                                <input type="radio" name="rental" id="rentalN" value="N">
+                                                                <label for="rentalN">렌탈 이용 안함</label>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="section-box" id="topicBox">
+                                    <h3 class="sub-tit req">고장증상 선택</h3>
+                                    <div class="rdo-list-wrap btn-type" id="topicList" data-ajax="/lg5-common/data-ajax/support/subTopicOption_reserve.json">
+                                        <ul class="rdo-list">
+                                            <!-- <li>
+                                                <span class="rdo-wrap btn-type3">
+                                                    <input type="radio" name="topic" id="topic01" value="NTB10005000" data-error-msg="정확한 제품증상을 선택해주세요." data-required="true" required>
+                                                    <label for="topic01"><span>부품/소모품</span></label>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span class="rdo-wrap btn-type3">
+                                                    <input type="radio" name="topic" id="topic02" value="NTB10005001">
+                                                    <label for="topic02"><span>건조</span></label>
+                                                </span>
+                                            </li> -->
+                                        </ul>
+                                        <p class="err-msg topic-msg"></p>
+                                    </div>
+                                </div>
+
+                                <div class="section-box" id="subTopicBox" style="display:none;">
+                                    <h3 class="sub-tit req">세부증상 선택</h3>
+                                    <div class="rdo-list-wrap w-auto" id="subTopicList" data-ajax="/lg5-common/data-ajax/support/solutionCheck.json">
+                                        <ul class="rdo-list">
+                                            <!-- <li>
+                                                <span class="rdo-wrap">
+                                                    <input type="radio" name="subTopic" id="subTopic01" value="SS000001" data-error-msg="정확한 세부증상을 선택해주세요." data-required="true" required>
+                                                    <label for="subTopic01">전기요금 문의</label>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span class="rdo-wrap">
+                                                    <input type="radio" name="subTopic" id="subTopic02" value="SS000002">
+                                                    <label for="subTopic02">제품 구입/행사 문의</label>
+                                                </span>
+                                            </li> -->
+                                        </ul>
+                                        <p class="err-msg sub-topic-msg"></p>
+                                    </div>
+
+                                    <div class="banner-wrap" id="solutionBanner" style="display:none;">
+                                        <div class="banner">  
+                                            <div class="cont">
+                                                <p class="tit">제품 문제해결 방법을 확인해보세요!</p>
+                                                <p class="desc">선택하신 증상은 제품 문제해결 방법을 통해서 해결이 가능합니다.</p>
+                                            </div>  
+                                            <button type="button" class="btn-link" data-href="/lg5-common/data-ajax/support/solutions-list-popup.html">제품 문제해결 방법 확인하기</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="section-box">
+                                    <div class="form-wrap">
+                                        <div class="forms">
+                                            <div class="tit">
+                                                <label for="content">전달사항</label>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="text-form">   
+                                                    <div class="input-wrap">
+                                                        <textarea class="ui_textcontrol" name="content" id="content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="100" data-limit="100" data-count-target="#txt-count1"></textarea>
+                                                        <span id="txt-count1" class="inner-text"><em>0</em> / 100자</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <div class="tit-wrap">
+                                    <h2 class="tit">예약자 정보 입력</h2>
+                                </div>
+                                <div class="section-box">
+                                    <div class="form-wrap">
+                                        <div class="forms">
+                                            <div class="tit">
+                                                <label for="userNm" class="req">이름<span class="blind">필수입력</span></label>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="input-wrap">
+                                                    <input type="text" name="userNm" id="userNm" placeholder="이름 입력" data-error-msg="이름을 입력해주세요" data-pattern-msg="한글 또는 영문만 입력 가능합니다." data-required="true" required>
+                                                </div>
+                                                <div class="btm-more err-block">
+                                                    <p class="err-msg"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="forms">
+                                            <div class="tit">
+                                                <label for="phoneNo" class="req">휴대폰번호<span class="blind">필수입력</span></label>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="input-wrap">
+                                                    <input type="text" name="phoneNo" id="phoneNo" placeholder="휴대폰 번호 입력" maxlength="11" data-error-msg="정확한 휴대전화 번호를 입력해주세요"  data-pattern-msg="정확한 휴대전화 번호를 입력해주세요" data-required="true" required>
+                                                </div>
+                                                <div class="btm-more err-block">
+                                                    <p class="err-msg"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-btn-wrap">
+                                    <button type="button" class="btn border size-m btn-next"><span>희망 일자 선택</span></button>
+                                </div> 
+                            </div>
+                        </div>
+                        <!-- // 예약 내용 입력 -->
+
+                        <!-- 예약/상담 날짜 선택 -->
+                        <div class="step-box" id="stepDate" data-ajax="/lg5-common/data-ajax/support/searchEngineer.json">
+                            <div class="section">
+                                <div class="tit-wrap">
+                                    <h2 class="tit">희망일시 선택</h2>
+                                </div>
+                                <div class="section-box">
+                                    <div class="my-visit">
+                                        <div class="box-info timetable-info">
+                                            <p>현재 가장 빠른 예약일인<br class="pc-only"><span class="color-3">2020.08.17  11:20</span> 로 선택 가능합니다.<br class="pc-only">희망하시는 예약일시를 선택해주세요.</p>
+                                            <ul>
+                                                <li class="black"><span class="blind">검정색 표기</span> 예약가능</li>
+                                                <li class="red"><span class="blind">빨간색 표기</span> 선택</li>
+                                            </ul>
+                                        </div>
+                                        <div class="box-visit visit-calendar">
+                                            <p class="tit-area">
+                                                <span class="req">날짜 선택 <span class="blind">필수입력</span> </span>
+                                                <span class="date">2020.09.22</span>
+                                            </p>
+                                            <div class="box-wrap calendar-wrap">
+                                                <div class="month-wrap">
+                                                    <button type="button" class="arrow pre"><span class="blind">이전</span></button>
+                                                    <span class="month">2020.01</span>
+                                                    <button type="button" class="arrow next"><span class="blind">다음</span></button>
+                                                </div>
+                                                <!--
+                                                    날짜 선택 불가 = td class : disabled, button disabled
+                                                    방문 예정일 = td class : expected,
+                                                    변경 요청일 = td class : choice
+                                                -->
+                                                <table class="box-table tb-calendar">
+                                                    <caption>방문일정 변경요청 달력</caption>
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col" class="sun"><span>일</span></th>
+                                                            <th scope="col"><span>월</span></th>
+                                                            <th scope="col"><span>화</span></th>
+                                                            <th scope="col"><span>수</span></th>
+                                                            <th scope="col"><span>목</span></th>
+                                                            <th scope="col"><span>금</span></th>
+                                                            <th scope="col"><span>토</span></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td class="disabled"><button type="button" title="2020년 9월 1일" disabled><span>1</span><span class="blind">선택불가</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="disabled"><button type="button" title="2020년 9월 2일" disabled><span>2</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="2020년 9월 3일" disabled><span>3</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="2020년 9월 4일" disabled><span>4</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="2020년 9월 5일" disabled><span>5</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="2020년 9월 6일" disabled><span>6</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="2020년 9월 7일" disabled><span>7</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="2020년 9월 8일" disabled><span>8</span><span class="blind">선택불가</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="disabled"><button type="button" title="2020년 9월 9일" disabled><span>9</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="2020년 9월 10일" disabled><span>10</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="2020년 9월 11일" disabled><span>11</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="2020년 9월 12일" disabled><span>12</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="2020년 9월 13일" disabled><span>13</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="2020년 9월 14일" disabled><span>14</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="2020년 9월 15일" disabled><span>15</span><span class="blind">선택불가</span></button></td>    
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" title="2020년 9월 16일"><span>16</span></button></td>
+                                                            <td><button type="button" title="2020년 9월 17일"><span>17</span></button></td>
+                                                            <td><button type="button" title="2020년 9월 18일"><span>18</span></button></td>
+                                                            <td><button type="button" title="2020년 9월 19일"><span>19</span></button></td>
+                                                            <td><button type="button" title="2020년 9월 20일"><span>20</span></button></td>
+                                                            <td><button type="button" title="2020년 9월 21일"><span>21</span></button></td>
+                                                            <td class="choice">
+                                                                <span class="blind">변경 요청일</span><button type="button" title="2020년 9월 22일"><span>22</span></button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" title="2020년 9월 23일"><span>23</span></button></td>
+                                                            <td><button type="button" title="2020년 9월 24일"><span>24</span></button></td>
+                                                            <td><button type="button" title="2020년 9월 25일"><span>25</span></button></td>
+                                                            <td><button type="button" title="2020년 9월 26일"><span>26</span></button></td>
+                                                            <td><button type="button" title="2020년 9월 27일"><span>27</span></button></td>
+                                                            <td><button type="button" title="2020년 9월 28일"><span>28</span></button></td>
+                                                            <td><button type="button" title="2020년 9월 29일"><span>29</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" title="2020년 9월 30일"><span>30</span></button></td>
+                                                            <td><button type="button" title="2020년 9월 31일"><span>31</span></button></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="box-visit visit-timetable">
+                                            <p class="tit-area">
+                                                <span class="req">시간 선택<span class="blind">필수입력</span></span>  
+                                                <span class="desc">시간을 선택해주세요.</span>
+                                            </p>
+                                            <div class="box-wrap timetable-wrap">
+                                                <!-- 
+                                                    시간 선택 시:
+                                                        해당라인 th = class : choice,
+                                                        해당버튼 tr = class : choice
+                                                -->
+                                                <table class="box-table tb-timetable">
+                                                    <caption>방문일정 변경 타임테이블</caption>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">09시</th>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">10시</th>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row" class="choice">11시</th>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="choice"><button type="button" title=""><span>30분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">12시</th>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">13시</th>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">14시</th>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">15시</th>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">16시</th>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">17시</th>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">18시</th>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">19시</th>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                                            <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>    
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // 예약/상담 날짜 선택 -->
+
+                        @@include('./common/modules/bullet-list.html', {
+                            "topBorder" : true,
+                            "bulletTxt" : [
+                                "비로그인으로 예약을 접수하실 경우, 휴대전화 인증 후에 예약이 완료됩니다.",
+                                "입력하신 정보가 정확하지 않을 경우 서비스가 취소 또는 지연될 수 있습니다.",
+                                "담당 전문 상담사가 먼저 상담 중인 고객의 응대가 끝나지 않을 경우 선택하신 예약시간보다  전화가 다소 늦어질 수 있습니다."
+                            ]
+                        })
+
+                        <div class="btn-group center">
+                            <button type="button" class="btn gray btn-cancel"><span>취소</span></a>
+                            <button type="button" class="btn btn-confirm">예약</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- 유금 및 보증기간 팝업 -->
+    @@include('./CS/modal/rates-warranty-guide-popup.html')
+
+    <!-- 제품 해결 팝업 -->
+    <article id="solutionsPopup" class="popup-wrap full"></article>
+
+    <!-- toast-meassage -->
+    @@include('./common/modules/toast-message.html', {
+        "messageArr": [
+            {"message" : "예약가능한 제품이 아닙니다."}
+        ]
+    })
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/requestCall.min.js"></script>
+</body>
+</html> 
