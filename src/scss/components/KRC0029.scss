@@ -214,21 +214,12 @@
 
     $align: (left, right, center);
     @each $key in $align {
-        .align-#{$key} {
+        .box-align-#{$key} {
             @if $key == left {
                 .text-wrap {
                     .inner {
                         .text-block {
                             margin-right:auto;
-                        }
-                    }
-                }
-                .cta-button,
-                .cta-link {
-                    span {
-                        //margin: 0 24px 12px 0;
-                        &:last-child {
-                            margin-right: 0;
                         }
                     }
                 }
@@ -242,15 +233,6 @@
                         }
                     }
                 }
-                .cta-button,
-                .cta-link {
-                    span {
-                        //margin: 0 0 12px 24px;
-                        &:first-child {
-                            margin-left: 0;
-                        }
-                    }
-                }
             }
             @if $key == center {
                 .text-wrap {
@@ -259,13 +241,6 @@
                             margin-left:auto;
                             margin-right:auto;
                         }
-                    }
-                }
-                .cta-button,
-                .cta-link {
-                    //margin: 0 -12px;
-                    span {
-                        //margin: 0 12px 12px;
                     }
                 }
             }
