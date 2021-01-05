@@ -67,8 +67,6 @@ CS.MD.commonModel = function() {
     
     var termsValidation;
     var modelValidation;  
-    var inputValidation;
-    
 
     function Plugin(el, opt) {
         var self = this;
@@ -93,14 +91,15 @@ CS.MD.commonModel = function() {
                 }
             }});
             modelValidation = new vcui.ui.CsValidation('#stepModel', {register: {
-                keyword: {
+                keyword01: {
                     msgTarget: '.err-msg',
-                    minLength: 4
+                    minLength: 2
+                },
+                keyword02: {
+                    msgTarget: '.err-msg',
+                    minLength: 2
                 }
-            }})
-            // inputValidation = new vcui.ui.CsValidation('#stepInput', {register: {
-
-            // }});
+            }});
         
             self._initialize();
             self._bindEvent();  
@@ -131,16 +130,15 @@ CS.MD.commonModel = function() {
             self.$searchModelArea = self.$el.find('.prod-search-wrap');
             // 검색 영역 : 키워드
             self.$searchKeywordBox = self.$searchModelArea.find('.keyword-search');
-            self.$inputKeyword = self.$searchKeywordBox.find('#keyword');
+            self.$inputKeyword = self.$searchKeywordBox.find('input[type=text]');
             self.$buttonKeyword = self.$searchKeywordBox.find('.btn-search');
             // 검색 영역 : 카테고리 > 서브카테고리
             self.$searchCategoryBox = self.$searchModelArea.find('.category-search');
             // 검색 영역 : 모델
             self.$searchModelBox = self.$searchModelArea.find('.model-search');
             self.$modelFilter = self.$searchModelBox.find('.form-wrap');
+            self.$modelInput = self.$searchModelBox.find('input[type=text]');
             self.$modelSlider = self.$searchModelBox.find('.model-slider');
-            // self.$modelListWrap = self.$searchModelBox.find('.model-list-wrap');
-            // self.$modelList = self.$modelListWrap.find('.model-list');
             self.$modelNoData = self.$searchModelBox.find('.no-data');
 
             if (self.$myModelArea.length) self.$myModelSlider.vcCarousel({
@@ -171,6 +169,12 @@ CS.MD.commonModel = function() {
             if (self.$searchModelBox.length) {
                 $('.ui_select_target').vcSelectTarget();
             }
+
+            self.$searchModelBox.find('#categorySelect').vcSelectTarget({
+                callback: function(data, target) {
+
+                }
+            });
             
             if (self.$searchKeywordBox.length) lgkorUI.searchModelName();
         },
@@ -191,6 +195,9 @@ CS.MD.commonModel = function() {
             self.$searchCategoryBox.addClass(opt.stepActiveClass);
             self.$searchModelBox.removeClass(opt.stepActiveClass);
             self.$modelSlider.find('.slide-track').empty();
+
+            self.$searchKeywordBox.show();
+            self.$searchModelBox.find('.keyword-search').hide();
 
             self.$stepModel.addClass(opt.stepActiveClass);
             self.$stepModel.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
@@ -320,12 +327,12 @@ CS.MD.commonModel = function() {
             });
 
             // 검색어 검색
-            self.$searchKeywordBox.find('#keyword').on('input', function(e) {
+            self.$inputKeyword.on('input', function(e) {
                 var $this = $(this),
                     opt = self.options,
                     result;
                     
-                result = modelValidation.validate(['keyword']);
+                result = modelValidation.validate(['keyword01']);
 
                 if (result.success) {
                     self.$searchCategoryBox.removeClass(opt.stepActiveClass);
@@ -357,6 +364,34 @@ CS.MD.commonModel = function() {
                     }
                 }
             });
+
+            self.$modelInput.on('input', function() {
+                var $this = $(this)
+                    result;
+                    
+                result = modelValidation.validate(['keyword02']);
+
+                if (result.success) {
+                    var param = {
+                        keyword: $this.val().toUpperCase(),
+                        category: self.$el.find('#category').val(),
+                        subCategory: self.$el.find('#subCategory').val()
+                    };
+
+                    self._requestData(param);
+                } else {
+                    if ($this.val() == '') {
+                        var param = {
+                            keyword: $this.val().toUpperCase(),
+                            category: self.$el.find('#category').val(),
+                            subCategory: self.$el.find('#subCategory').val()
+                        };
+    
+                        self._requestData(param);
+                    }
+                }
+            });
+
             self.$searchKeywordBox.find('.btn-search').on('click', function() {
                 var opt = self.options,
                     result = modelValidation.validate(['keyword']);
@@ -382,6 +417,13 @@ CS.MD.commonModel = function() {
             // 카테고리 선택
             self.$searchCategoryBox.find('.btn-open').on('click', function() {
                 $(this).closest('.box').addClass('on');
+                $(this).closest('li').siblings().each(function(index, item) {
+                    var $item = $(item);
+
+                    if ($item.find('.box').hasClass('on')) {
+                        $item.find('.box').removeClass('on').addClass('off');
+                    }
+                });
             });
             self.$searchCategoryBox.find('.btn-close').on('click', function() {
                 $(this).closest('.box').removeClass('on').addClass('off');
@@ -415,6 +457,12 @@ CS.MD.commonModel = function() {
 
                 self.update(updateObj);
                 self._requestData(param);
+
+                self.$searchKeywordBox.hide();
+                self.$searchModelBox.find('.keyword-search').show();
+                
+                self.$searchModelBox.find('#categorySelect').val(data.category);
+                self.$searchModelBox.find('#categorySelect').vcSelectbox('update').trigger('change', [data.subCategory]);
             });
 
             // 모델명 선택
@@ -473,10 +521,7 @@ CS.MD.commonModel = function() {
                 };
 
                 self._requestData(param);
-            });
-
-            // 모델 리스트 페이지네이션
-            
+            });            
 
             // 보유제품 선택
             self.$myModelArea.find('.slide-box').on('click', function(e) {

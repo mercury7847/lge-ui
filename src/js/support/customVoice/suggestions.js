@@ -27,30 +27,29 @@
     '{{/each}}';
     var validation;
 
-    var custom = {
+    var reservation = {
         init: function() {
             var self = this;
             
             self.$form = $('#submitForm');
 
-            vcui.require(['ui/validation', 'ui/formatter', 'ui/imageFileInput'], function () {
+            vcui.require(['ui/validation', 'ui/formatter'], function () {
 
                 var register = {
-                    privcyCheck: {
-                        msgTarget: '.err-block'
+                    topic: {
+                        required: true,
+                        msgTarget: '.topic-msg'
                     },
-                    userName: {
-                        msgTarget: '.err-block'
+                    subTopic: {
+                        required: true,
+                        msgTarget: '.sub-topic-msg'
                     },
-                    email: {
-                        msgTarget: '.err-block'
+                    userNm: {
+                        msgTarget: '.err-block' 
                     },
-                    title: {
+                    phoneNo: {
                         msgTarget: '.err-block'
-                    },
-                    content: {
-                        msgTarget: '.err-block'
-                    },
+                    }
                 }
 
                 validation = new vcui.ui.CsValidation('#submitForm', {register:register});
@@ -189,6 +188,6 @@
     }
 
     $(window).ready(function() {
-        custom.init();
+        reservation.init();
     });
 })();
