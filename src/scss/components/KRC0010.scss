@@ -4,84 +4,23 @@
 
 
 .KRC0010 {
+    padding:0;
+    &.stage-full {
+    }
     &.stage-wide {
-        max-width:1600px + 80px;
+        max-width:1600px;
         margin:0 auto;
-        padding:0 40px;
-        @include mobile {
-            padding:0;
-        }
     }
     &.stage-medium {
-        max-width:1380px + 80px;
+        max-width:1380px;
         margin:0 auto;
-        padding:0 40px;
-        @include mobile {
-            padding:0;
-        }
     }
 
-    $color: (lightgray, dark, black, white);
-	@each $bg in $color {
-		&.bg-#{$bg} {
-			@if $bg == lightgray {
-				background-color: #f4f4f4;
-				.title {
-					&, * {
-						color: #222;
-					}
-				}
-			} @else if $bg == dark {
-				background-color: #333;
-				.title {
-					&, * {
-						color: #fff;
-					}
-				}
-                .body-copy,
-                .disclaimer {
-					color:#fff;
-                }
-                .bullet-list {
-                    .b-txt {
-                        color:#fff;
-                        &::before {
-                            background:#fff;
-                        }
-                    }
-                }
-			} @else if $bg == black {
-				background-color: #000;
-				.title {
-					&, * {
-						color: #fff;
-					}
-                }
-                .body-copy,
-                .disclaimer {
-					color:#fff;
-                }
-                .bullet-list {
-                    .b-txt {
-                        color:#fff;
-                        &::before {
-                            background:#fff;
-                        }
-                    }
-                }
-			} @else if $bg == white {
-				background-color: #fff;
-				.title {
-					&, * {
-						color: #222;
-					}
-				}
-			}
-		}
-	}
-
     .text-area {
+        max-width:1380px + 80px;
+        margin:0 auto;
         margin-bottom:56px;
+        padding:0 40px;
         @at-root .KRC0010 {
             &.type-bottom {
                 .text-area {
@@ -113,6 +52,15 @@
     }
     .cta {
         @include cta-btn;
+    }
+    .bullet-list {
+        max-width:1380px + 80px;
+        margin-left:auto;
+        margin-right:auto;
+        padding:0 40px;
+        @include mobile {
+            padding:0 16px;
+        }
     }
 
     .drag-area {
