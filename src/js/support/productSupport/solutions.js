@@ -130,7 +130,9 @@
                     url = self.$wrap.data('subFilterAjax'),
                     param = {
                         topic: code,
-                        productCode: $('#submitForm').find('#productCode').val()
+                        productCode: $('#submitForm').find('#productCode').val(),
+                        category: $('#submitForm').find('#category').val(),
+                        subCategory: $('#submitForm').find('#subCategory').val()
                     };
 
                 if ($target) {
@@ -194,7 +196,9 @@
                         param = {
                             page: 1,
                             topic: code,
-                            subTopic: 'All'
+                            topicNm: $this.data('name'),
+                            subTopic: 'All',
+                            subTopicNm: 'All'
                         };
                     
                     self.$topic.val(code);
@@ -251,7 +255,9 @@
                         param = {
                             page: 1,
                             topic: value,
-                            subTopic: 'All'
+                            topicNm: $(this).data('name'),
+                            subTopic: 'All',
+                            subTopicNm: 'All'
                         };
 
                     self.$topic.val(value);

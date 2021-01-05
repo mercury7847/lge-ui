@@ -109,6 +109,29 @@
             '</div>' +
         '</div>' +
     '</a></li>';
+    var shopItemTemplate = '<li><div class="item">' +
+        '<div class="result-info">' +
+            '<div class="info-text">' +
+                '<div class="flag-wrap bar-type">' +
+                    '{{#each item in flag}}<span class="flag {{item.class}}">{{item.title}}</span>{{/each}}' +
+                '</div>' +
+                '<div class="result-tit">' +
+                    '<a href="{{shopUrl}}">{{#raw title}}</a>' +
+                '</div>' +
+                '<div class="result-detail">' +
+                    '<div href="{{shopUrl}}" class="shop-info">' +
+                        '<a href="{{shopUrl}}" class="desc add">{{address}}</a>' +
+                        '<a href="{{shopUrl}}" class="desc time">{{time}}</a>' +
+                    '</div>' +
+                    '<div class="shop-state"><span class="{{shopStateColor}}">{{shopState}}</span></div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="btn-area">' +
+                '<a href="{{findWayUrl}}" class="btn border size"><span>길찾기</span></a>' +
+                '<a href="{{reserveUrl}}" class="btn border size"><span>방문 예약 신청</span></a>' +
+            '</div>' +
+        '</div>' +
+    '</div></li>';
 
     //필터 템플릿
     var filterSliderTemplate = '<li data-filterId="{{filterId}}">' +
