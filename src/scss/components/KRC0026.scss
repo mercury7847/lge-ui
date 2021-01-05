@@ -31,8 +31,12 @@
 		}
 	}
 
-	.title {
-		@include title-h1;
+	.eyebrow {
+		@include eyebrow;
+	}
+
+	.title * {
+		@include title-h2;
 	}
 
 	.headline {
