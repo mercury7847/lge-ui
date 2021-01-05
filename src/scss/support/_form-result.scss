@@ -6,32 +6,34 @@
         > li {
             @include clearfix;
             margin-top: 20px;
-            display: flex;
+            display:flex;
             &:first-child {
                 margin-top: 0;
             }
         }
         .title {
-            font-size: 16px;
-            line-height: 1.38;
+            @include font-medium;
             color: #767676;
-            max-width: 210px;
-            width: 100%;
+            width:210px;
             strong {
                 font-weight: normal;
             }
         }
         .description {
-            font-size: 16px;
-            line-height: 1.38;
-            > [class^="btn"] {
-                margin-top: 8px;
-                vertical-align: middle;
+            width:calc(100% - 210px);
+            padding-left:24px;
+            @include font-medium;
+            .point {
+                color:#ec455a;
+            }
+            .line {
+                display:block;
+                white-space:pre-wrap;
+            }
+            .btn {
+                margin-top:8px;
             }
             .held-product {
-                margin-left: 24px;
-            }
-            @include pc {
                 margin-left: 24px;
             }
             @include mobile {
@@ -86,6 +88,9 @@
             > li {
                 &:nth-child(n+2) {
                     margin-top: 0;
+                    margin-left: 23px;
+                    padding-left: 24px;
+                    position: relative;
                     ::before {
                         content: '';
                         display: block;
@@ -128,6 +133,7 @@
             @include mobile {
                 display: block;
             }
+
         }
     }
     &-dl {
@@ -148,15 +154,17 @@
     @include mobile {
         &-list {
             .title {
-                width: 104px;
-                font-size: 14px;
+                width:96px;
             }
             .description {
-                width: calc(100% - 104px);
-                font-size: 14px;
+                width:calc(100% - 96px);
+                padding-left:12px;
+                .btn {
+                    margin-top:12px;
+                }
             }
             & > li {
-                margin-top: 14px;
+                margin-top:20px;
             }
         }
         &-dl {

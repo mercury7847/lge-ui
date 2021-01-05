@@ -76,12 +76,11 @@ CS.MD.commonModel = function() {
         self.el = el;
 
         var defaults = {
+            stepIndex: 0,
             stepClass: 'step-box',
             stepActiveClass: 'active',
             selectedModel: [],
-            register: {
-                 
-            },
+            register: {},
             callback: function() {}
         };
 
@@ -114,10 +113,12 @@ CS.MD.commonModel = function() {
             var self = this;
 
             // 스텝 영역
-            self.$submitForm = self.$el.find('#submitForm');
             self.$stepTerms = self.$el.find('#stepTerms');
             self.$stepModel = self.$el.find('#stepModel');
             self.$stepInput = self.$el.find('#stepInput');
+
+            self.$stepBox = self.$el.find('.step-box');
+            self.stepLength = self.$stepBox.length;
 
             // 선택 제품 플로팅바
             self.$selectedModelBar = self.$el.find('.prod-selected-wrap');
@@ -304,7 +305,7 @@ CS.MD.commonModel = function() {
             });
 
             // 약관 동의 다음 버튼
-            self.$stepTerms.find('.btn-next').on('click', function() {
+            self.$stepTerms.find('.step-btn-wrap .btn').on('click', function() {
                 var result = termsValidation.validate(),
                     opt = self.options;
                 
@@ -335,8 +336,8 @@ CS.MD.commonModel = function() {
                     }
                     var param = {
                         keyword: self.$inputKeyword.val().toUpperCase(),
-                        category: self.$submitForm.find('#category').val(),
-                        subCategory: self.$submitForm.find('#subCategory').val()
+                        category: self.$el.find('#category').val(),
+                        subCategory: self.$el.find('#subCategory').val()
                     };
 
                     self.update(updateObj);
@@ -345,8 +346,8 @@ CS.MD.commonModel = function() {
                     if ($this.val() == '') {
                         var param = {
                             keyword: self.$inputKeyword.val().toUpperCase(),
-                            category: self.$submitForm.find('#category').val(),
-                            subCategory: self.$submitForm.find('#subCategory').val()
+                            category: self.$el.find('#category').val(),
+                            subCategory: self.$el.find('#subCategory').val()
                         };
     
                         self.update(updateObj);
@@ -369,8 +370,8 @@ CS.MD.commonModel = function() {
                     }
                     var param = {
                         keyword: self.$inputKeyword.val().toUpperCase(),
-                        category: self.$submitForm.find('#category').val(),
-                        subCategory: self.$submitForm.find('#subCategory').val()
+                        category: self.$el.find('#category').val(),
+                        subCategory: self.$el.find('#subCategory').val()
                     };
 
                     self.update(updateObj);
@@ -392,10 +393,10 @@ CS.MD.commonModel = function() {
                     opt = self.options,
                     data = $this.data();
 
-                self.$submitForm.find('#categoryNm').val(data.categoryName);
-                self.$submitForm.find('#subCategoryNm').val(data.subCategoryName);
-                self.$submitForm.find('#category').val(data.category);
-                self.$submitForm.find('#subCategory').val(data.subCategory);
+                self.$el.find('#categoryNm').val(data.categoryName);
+                self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                self.$el.find('#category').val(data.category);
+                self.$el.find('#subCategory').val(data.subCategory);
 
                 self.$searchCategoryBox.removeClass(opt.stepActiveClass);
                 self.$searchModelBox.addClass(opt.stepActiveClass);
@@ -426,10 +427,10 @@ CS.MD.commonModel = function() {
                     updateObj;
 
                 if (!$this.hasClass('no-model')) {
-                    self.$submitForm.find('#category').val(data.category);
-                    self.$submitForm.find('#subCategory').val(data.subCategory);
-                    self.$submitForm.find('#modeCode').val(data.modelCode);
-                    self.$submitForm.find('#productCode').val(data.productCode)
+                    self.$el.find('#category').val(data.category);
+                    self.$el.find('#subCategory').val(data.subCategory);
+                    self.$el.find('#modeCode').val(data.modelCode);
+                    self.$el.find('#productCode').val(data.productCode);
                     
                     opt.selectedModel = [data.categoryName, data.subCategoryName, data.modelCode];
                 } else {
@@ -488,13 +489,15 @@ CS.MD.commonModel = function() {
                 if ($this.hasClass('disabled')) {
                     $(window).trigger("toastshow", "예약가능한 제품이 아닙니다.");
                 } else {
-                    opt.selectedModel = [data.name, data.subName, data.code];
                     
-                    self.$submitForm.find('#category').val(data.category);
-                    self.$submitForm.find('#subCategory').val(data.subCategory);
-                    self.$submitForm.find('#modelCode').val(data.code);
-
-                    var updateObj = {
+                    self.$el.find('#category').val(data.category);
+                    self.$el.find('#subCategory').val(data.subCategory);
+                    self.$el.find('#modelCode').val(data.modelCode);
+                    self.$el.find('#productCode').val(data.productCode);
+                    
+                    opt.selectedModel = [data.categoryName, data.subCategoryName, data.modelCode];
+                    
+                    updateObj = {
                         product: opt.selectedModel,
                         reset: true
                     }
@@ -504,9 +507,18 @@ CS.MD.commonModel = function() {
                     self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
                     self.$stepInput.addClass(opt.stepActiveClass);
 
-                    self.$myModelArea.hide();
+                    lgkorUI.requestAjaxDataPost(self.$searchModelBox.data('ajax'), {modelCode: data.code, serviceType: $('#serviceType').val()}, function(result) {
+                        var ajaxData = result.data,
+                            info = {
+                                category: data.category,
+                                subCategory: data.subCategory,
+                                modelCode: data.modelCode
+                            };
+    
+                        opt.callback(info, ajaxData);
 
-                    opt.callback();
+                        self.$myModelArea.hide();
+                    });
                 }
             });
 
