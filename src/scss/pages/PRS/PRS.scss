@@ -125,6 +125,9 @@
 						height:460px;
 						.slide-conts {
 							height:460px;
+							.bg {
+								padding-top:127.8%;
+							}
 							.slide-info-area {
 								top:42px;
 								right:8px;
@@ -161,7 +164,16 @@
 					display:none;
 				}
 				.custom-indi-wrap {
-					bottom:4px;
+					bottom:16px;
+					.custom-indis {
+						max-width:100%;
+					}
+					.indi-control {
+						position:absolute;
+						bottom:34px;
+						left:0;
+						margin:0;
+					}
 				}
 			}
 		}
@@ -941,6 +953,9 @@
 							img {
 								width:100%;
 							}
+						}
+						.bg {
+							padding-top:62.2%;
 						}
 						.img {
 							img {
