@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["CPR/CPR"]
+        pageCSS: ["CPR/CPR"],
+        pageJS: ["store/compareResult"]
     })
 <body>
     <div class="wrap">
@@ -27,7 +28,7 @@
                                     @@loop('./common/modules/product-item.html', [
                                         {
                                             "itemClass": "compare-item",
-                                            "singleImage": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                                            "singleImage": "/lg5-common/images/dummy/@sample-180x180sss.jpg",
                                             "singleButton": {
                                                 "price": true,
                                                 "originalPrice": true,
@@ -55,13 +56,13 @@
                                 </ul>
                             </div>
                             <div class="result-tabs">
-                                <div class="tabs-wrap border-type ui_tab ui_smooth_scroll">
+                                <div class="tabs-wrap border-type ui_tabs ui_smooth_scroll">
                                         <ul class="tabs">
-                                            <li class="on"><a href="#n">주요스펙<em class="blind">선택됨</em></a></li>
-                                            <li><a href="#n">용량</a></li>
-                                            <li><a href="#n">크기</a></li>
-                                            <li><a href="#n">디자인</a></li>
-                                            <li><a href="#n">상세기능</a></li>
+                                            <li class="on"><a href="#spec">주요스펙<em class="blind">선택됨</em></a></li>
+                                            <li><a href="#capacity">용량</a></li>
+                                            <li><a href="#size">크기</a></li>
+                                            <li><a href="#design">디자인</a></li>
+                                            <li><a href="#skill">상세기능</a></li>
                                         </ul>
                                     <div class="scroll-controls ui_smooth_controls">
                                         <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
@@ -70,15 +71,15 @@
                                 </div>
                                 <div class="check-different">
                                     <span class="chk-wrap">
-                                        <input type="checkbox" id="chk1-1" name="chk1" checked>
-                                        <label for="chk1-1">차이점 보기</label>
+                                        <input type="checkbox" id="differentCompare" name="differentCompare">
+                                        <label for="differentCompare">차이점 보기</label>
                                     </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="result-contents">
-                        <div class="section">
+                        <div id="spec" class="section">
                             <h3 class="title"><span>주요 스펙</span></h3>
                             <div class="lists main">
                                 <ul class="list">
@@ -179,7 +180,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="section">
+                        <div id="capacity" class="section">
                             <h3 class="title"><span>용량</span></h3>
                             <div class="lists">
                                 <ul class="list">
@@ -244,7 +245,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="section">
+                        <div id="size" class="section">
                             <h3 class="title"><span>크기</span></h3>
                             <div class="lists">
                                 <ul class="list">
@@ -291,7 +292,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="section">
+                        <div id="design" class="section">
                             <h3 class="title"><span>디자인</span></h3>
                             <div class="lists">
                                 <ul class="list">
@@ -356,7 +357,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="section">
+                        <div id="skill" class="section">
                             <h3 class="title"><span>상세기능</span></h3>
                             <div class="lists">
                                 <ul class="list">

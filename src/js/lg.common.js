@@ -247,7 +247,11 @@
         },
 
         _addImgOnloadEvent: function(){
-            $('img').not('[data-pc-src]').on('error', function(e){
+            this._addImgErrorEvent('img')
+        },
+
+        _addImgErrorEvent: function(img){
+            $(img).not('[data-pc-src]').on('error', function(e){
                 $(this).off('error');
                 $(this).attr('src', '/lg5-common/images/icons/icon-nodata.svg');
                 var parentwid = $(this).parent().width();
@@ -263,7 +267,7 @@
                     'margin-top': margintop,
                     'margin-left': marginleft
                 });
-            })
+            });
         },
 
         _createMainWrapper: function(){
