@@ -8,11 +8,12 @@ $(window).ready(function(){
 			$(slide).vcCarousel({
 				infinite: false,
 				autoplay: true,
-				// prevArrow:'.btn-arrow.prev',
-				// nextArrow:'.btn-arrow.next',
+				prevArrow:'.btn-arrow.prev',
+				nextArrow:'.btn-arrow.next',
 				slidesToShow: 1,
 				slidesToScroll: 1,
-				adaptiveHeight: true
+				adaptiveHeight: true,
+				lazyLoad: 'progressive',
 			});
 		});
 	});

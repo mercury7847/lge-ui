@@ -10,7 +10,7 @@
         1. Stage option
         .stage-full : FULL size 옵션(100% 1920px)
         .stage-wide : WIDE size 옵션(1600px)
-        .stage-medium : MEDIUM size 옵션(1380px)
+        .stage-standard : STANDARD size 옵션(1380px) // [KR수정_201231] 스테이지 사이즈명 반영
 
         [.text-area, icon-text-area 각각 옵션 - 옵션 설정에 따라 겹쳐보일 수 있음.]
         1. vertical 정렬
@@ -57,12 +57,14 @@
             <!-- visual : image -->
             <div class="visual-area">
                 @@if ( context.darkImg ) {
-                <span class="pc-img" style="background:url('/lg5-common/images/KRC0037/@@bg-dark.jpg') center no-repeat;">이미지 alt값이 들어갑니다.</span>
-                <img src="/lg5-common/images/KRC0037/@@bg-dark-m.jpg" alt="" class="m-img">
+                <!-- [KR수정_201231] 백그라운드 이미지 '이미지'태그로 호출 변경 -->
+                <img src="/lg5-common/images/KRC0037/@@bg-dark.jpg" data-pc-src="/lg5-common/images/KRC0037/@@bg-dark.jpg" data-m-src="/lg5-common/images/KRC0037/@@bg-dark-m.jpg" alt="">
+                <!-- // [KR수정_201231] 백그라운드 이미지 '이미지'태그로 호출 변경 -->
                 }
                 @@if ( !context.darkImg ) {
-                <span class="pc-img" style="background:url('/lg5-common/images/KRC0037/@@bg.jpg') center no-repeat;">이미지 alt값이 들어갑니다.</span>
-                <img src="/lg5-common/images/KRC0037/@@bg-m.jpg" alt="" class="m-img">
+                <!-- [KR수정_201231] 백그라운드 이미지 '이미지'태그로 호출 변경 -->
+                <img src="/lg5-common/images/KRC0037/@@bg.jpg" data-pc-src="/lg5-common/images/KRC0037/@@bg.jpg" data-m-src="/lg5-common/images/KRC0037/@@bg-m.jpg" alt="">
+                <!-- // [KR수정_201231] 백그라운드 이미지 '이미지'태그로 호출 변경 -->
                 }
                 <p class="hidden">graphic description : </p>
             </div>

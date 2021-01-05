@@ -50,7 +50,10 @@
     }
 
     &.col4 {
-        margin:-12px 0;
+        margin:-12px;
+        @include mobile {
+            margin:0;
+        }
         > li {
             padding:12px 12px;
             @media screen and (min-width: $desktop-s-width + 1) {
@@ -501,9 +504,9 @@
             }
         }
         &.evt-item {
-            padding:16px 40px 148px;
+            padding:20px 40px 158px;
             @include mobile {
-                padding:12px 36px 32px;
+                padding:24px 36px 32px;
             }
             .product-image {
                 a img {
@@ -511,9 +514,13 @@
                 }
             }
             .product-bottom {
-                bottom:32px;
+                bottom:48px;
                 right:40px;
                 left:40px;
+                .discount {
+                    order:-1;
+                    line-height:32px;
+                }
             }
             .product-button {
                 margin:16px 0 0;

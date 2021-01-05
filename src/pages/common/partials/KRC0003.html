@@ -1,0 +1,52 @@
+<!-- components/partials/KRC0003.html -->
+
+<div class="component-wrap">
+	<!--
+		[.component-wrap 옵션]
+		1. 여백
+		.zero-top : 상단여백 없음
+		.zero-btm : 하단여백 없음
+	-->
+	<section class="component KRC0003">
+        <div class="slide-wrap hero-banner ui_carousel_slider">
+            <div class="indi-wrap">
+                <ul class="indi-conts ui_carousel_dots">
+                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                </ul>
+            </div>
+            <div class="slide-content ui_carousel_list">
+                <ul class="slide-track ui_carousel_track">
+                    @@for ( var i=0; i < slides.length; i++ ) {
+                    <!-- slide -->
+                    <li class="slide-conts ui_carousel_slide">
+                        <span class="bg ui_bg_switch" data-pc-src="`+slides[i].pcImg+`" data-m-src="`+slides[i].mImg+`" aria-hidden="hidden"></span>
+                        <div class="slide-info-area">
+                            <div class="inner">
+                                <div id="title0`+[i+1]+`" class="text-wrap">
+                                    <p class="eyebrow">`+slides[i].eyebrow+`</p>
+                                    <div class="title">
+                                        <h2>`+slides[i].title+`</h2>
+                                    </div>
+                                    <p class="date">2020.08.06 ~ 2020.09.11</p>
+                                </div>
+                                <div class="cta">
+                                    <a href="#n" class="btn border size-m" aria-labelledby="title0`+[i+1]+`"><span>`+slides[i].btn+`</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- // slide -->
+                    }
+                </ul>
+            </div>
+            <div class="slide-control-wrap">
+                <div class="outer">
+                    <div class="inner">
+                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</section>
+</div>

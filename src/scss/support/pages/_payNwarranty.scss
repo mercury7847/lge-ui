@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.CSTF3500 {
+.payNwarranty {
     .tab-wrap {
         max-width: 1178px;
         margin: 0 auto;
@@ -20,8 +20,13 @@
     }
     .scroll-x {
         margin-bottom: 24px;
+        overflow-x: auto;
         &:last-child {
             margin-bottom: 0;
+        }
+        table {
+            min-width: 720px;
+            width: calc(100% - 1px);
         }
     }
     .tooltip-wrap {

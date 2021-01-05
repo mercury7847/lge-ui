@@ -30,7 +30,7 @@
                 vcui.require(['ui/pagination'], function () {
                     self.setting();
                     self.bindEvents();
-                    self.requestData({"page": 1});
+                    self.requestData(/*{"page": 1}*/);
                 });
             },
 
@@ -38,7 +38,7 @@
                 var self = this;
                 self.$contents = $('div.lnb-contents');
                 self.$list = self.$contents.find('div.info-tbl-wrap ul');
-                self.$pagination = self.$contents.find('.pagination').vcPagination();
+                //self.$pagination = self.$contents.find('.pagination').vcPagination();
                 self.$noData = self.$contents.find('.no-data');
             },
 
@@ -49,27 +49,27 @@
                     var $li = $(this).parents('li');
                     if($(this).hasClass('btn-delete')) {
                         //삭제
-                        var _id = $li.attr('data-id');
-                        self.requestRemove(_id);
+                        self.requestRemove($li);
                     } else {
                         //장바구니
                         self.requestCart($li);
                     }
                 });
 
+                /*
                 self.$pagination.on('page_click', function(e, data) {
                     self.requestData({"page": data});
                 });
+                */
             },
 
-            requestData: function(param) {
+            requestData: function() {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-list-url');
-                lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
+                lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
                     var data = result.data;
-                    var param = result.param;
-                    
-                    self.$pagination.vcPagination('setPageInfo',param.pagination);
+                    //var param = result.param;
+                    //self.$pagination.vcPagination('setPageInfo',param.pagination);
 
                     var arr = data.listData instanceof Array ? data.listData : [];
                     self.$list.empty();
@@ -82,38 +82,54 @@
                 });
             },
 
-            requestRemove: function(_id) {
+            requestRemove: function($dm) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-remove-url');
-                lgkorUI.requestAjaxDataPost(ajaxUrl, {"id":_id}, function(result){
-                    var data = result.data;
-                    var success = lgkorUI.stringToBool(data.success);
-                    if (success) {
-                        self.requestData({"page": self.$pagination.attr('data-page')});
-                    }
-                });
+                var postData = {
+                    "id":$dm.attr('data-id'),
+                    "sku":$dm.attr('data-sku'),
+                    "wishListId":$dm.attr('data-wishListId'),
+                    "wishItemId":$dm.attr('data-wishItemId'),
+                }
 
+                var obj = {title:'', cancelBtnName:'취소', okBtnName:'삭제', ok: function (){
+                    lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
+                        var data = result.data;
+                        var success = lgkorUI.stringToBool(data.success);
+                        if (success) {
+                            self.requestData(/*{"page": self.$pagination.attr('data-page')}*/);
+                        }
+                    });
+                }};
+                var desc = '삭제시 찜한 제품 목록에서 제외<br>됩니다. 선택하신 제품을<br>찜한 제품에서 삭제하시겠어요?';
+                lgkorUI.confirm(desc, obj);
             },
 
             requestCart: function($dm) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-cart-url');
                 var postData = {
+                    "id":$dm.attr('data-id'),
                     "sku":$dm.attr('data-sku'),
                     "wishListId":$dm.attr('data-wishListId'),
                     "wishItemId":$dm.attr('data-wishItemId'),
                 }
-                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, null);
+                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
+                    var data = result.data;
+                    if(lgkorUI.stringToBool(data.success)) {
+                        $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
+                    }
+                });
             },
 
             checkNoData: function() {
                 var self = this;
                 if(self.$list.find('li').length > 0) {
                     self.$noData.hide();
-                    self.$pagination.show();
+                    //self.$pagination.show();
                 } else {
                     self.$noData.show();
-                    self.$pagination.hide();
+                    //self.$pagination.hide();
                 }
             },
         }

@@ -7,7 +7,11 @@
 				<p class="hidden pc">graphic description : </p>
 			</div>
 		}
-		<h2 class="title">@@title</h2>
+		<!-- [KR수정_201231] title DOM 공통화 수정 -->
+		<div class="title">
+			<h2>@@title</h2>
+		</div>
+		<!-- // [KR수정_201231] title DOM 공통화 수정 -->
 		@@if (context.subTitle) {
 		<p class="sub-title">@@subTitle</p>
 		}
@@ -20,7 +24,11 @@
 			</div>
 		}
 		@@if (context.disclaimer) {
-		<p class="disclaimer">@@disclaimer</p>
+		<!-- [KR수정_201231] disclaimer DOM 공통화 수정 -->
+		<ul class="bullet-list">
+			<li class="b-txt">@@disclaimer</li>
+		</ul>
+		<!-- // [KR수정_201231] disclaimer DOM 공통화 수정 -->
 		}
 	</div>
 </li>

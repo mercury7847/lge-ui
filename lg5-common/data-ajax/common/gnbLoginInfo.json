@@ -4,6 +4,9 @@
     "message": null,
     "data": {
         "success": "Y",
-        "isLogin": true
+        "isLogin": false,
+        "loginToken": {
+            "name": "LG전자"
+        }
     }
 }

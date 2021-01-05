@@ -4,1092 +4,1247 @@
     "data": {
         "listData": [
             {
-                "code": "LGP810SPEAK",
-                "categoryNm": "모바일",
-                "subCategoryNm": "일반폰",
-                "category": "1111",
-                "subCategory": "2222"
+                "modelCode": "BNW1100M9S",
+                "categoryNm": "에어컨",
+                "subCategoryNm": "시스템 에어컨",
+                "category": "1019",
+                "subCategory": "1129",
+                "productCode": "CRA"
             },
             {
-                "code": "LGP810SPEAK",
-                "categoryNm": "모바일",
-                "subCategoryNm": "일반폰",
-                "category": "1111",
-                "subCategory": "2222"
+                "modelCode": "LGP810SPEAK",
+                "categoryNm": "에어컨",
+                "subCategoryNm": "창문형/이동식",
+                "category": "1019",
+                "subCategory": "1083",
+                "productCode": "WRA"
             },
             {
-                "code": "LGP810SPEAK",
-                "categoryNm": "모바일",
-                "subCategoryNm": "일반폰",
-                "category": "1111",
-                "subCategory": "2222"
+                "modelCode": "WD-K110RD",
+                "categoryNm": "세탁기/스타일러",
+                "subCategoryNm": "드럼 세탁기",
+                "category": "1020",
+                "subCategory": "1086",
+                "productCode": "DRW"
             },
             {
-                "code": "LGP810SPEAK",
-                "categoryNm": "모바일",
-                "subCategoryNm": "일반폰",
-                "category": "1111",
-                "subCategory": "2222"
+                "modelCode": "OLED48CXKNB",
+                "categoryNm": "TV/프로젝터",
+                "subCategoryNm": "올레드",
+                "category": "1005",
+                "subCategory": "1040",
+                "productCode": "LCL"
             },
             {
-                "code": "LGP810SPEAK",
-                "categoryNm": "모바일",
-                "subCategoryNm": "일반폰",
-                "category": "1111",
-                "subCategory": "2222"
+                "modelCode": "OLED55B6K-N",
+                "categoryNm": "TV/프로젝터",
+                "subCategoryNm": "울트라 HD",
+                "category": "1050",
+                "subCategory": "D002795",
+                "productCode": "LCL"
             },
             {
-                "code": "LGP810SPEAK",
-                "categoryNm": "모바일",
-                "subCategoryNm": "일반폰",
-                "category": "1111",
-                "subCategory": "2222"
+                "modelCode": "OLED55B7F-N",
+                "categoryNm": "TV/프로젝터",
+                "subCategoryNm": "LED/LCD",
+                "category": "1050",
+                "subCategory": "1041",
+                "productCode": "LCL"
             },
             {
-                "code": "LGP810SPEAK",
-                "categoryNm": "모바일",
-                "subCategoryNm": "일반폰",
-                "category": "1111",
-                "subCategory": "2222"
+                "modelCode": "42PA4300-NM",
+                "categoryNm": "TV/프로젝터",
+                "subCategoryNm": "PDP",
+                "category": "1050",
+                "subCategory": "1043",
+                "productCode": "PDP"
             },
             {
-                "code": "LGP810SPEAK",
-                "categoryNm": "모바일",
-                "subCategoryNm": "일반폰",
-                "category": "1111",
-                "subCategory": "2222"
+                "modelCode": "X110-L",
+                "categoryNm": "IT/모니터",
+                "subCategoryNm": "노트북/탭북",
+                "category": "P1011",
+                "subCategory": "1011",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",
-                "subCategory": "2222"
+                "subCategory": "2222",
+                "productCode": "NTB"
             },
             {
-                "code": "LGP810SPEAK",
+                "modelCode": "LGP810SPEAK",
                 "categoryNm": "모바일",
                 "subCategoryNm": "일반폰",
                 "category": "1111",

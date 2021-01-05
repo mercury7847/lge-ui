@@ -6,15 +6,12 @@
         "success": "Y",
         "total": 2,
         "page": 1,
-        "startDate": "20200919",
-        "endDate": "20201218",
         "orderList": [
             {
                 "orderDate": "2020.09.05",
                 "orderNumber": "20203987102999",
                 "orderTotal": "3",
                 "cancelAbled": "Y",
-                "takebackAbled": "N",
                 "productList": [
                     {
                         "modelID": "ADC495769328",
@@ -22,20 +19,20 @@
                         "productNameKR": "LG 디오스 상냉장하냉동",
                         "productNameEN": "OLED55BXPUA",
                         "productImage": "/lg5-common/images/dummy/@img-product.jpg",
-                        "productPDPurl": "http://www.lge.com",
+                        "productPDPurl": "#none",
                         "productDetailUrl": "http://www.lge.com",
                         "specList": ["Silver"],
                         "productTotal": "",
-                        "productPrice": "1,760,000",
+                        "productPrice": "1760000",
+                        "discountPrice": "50000",
+                        "memberShipPoint":"0",
                         "orderStatus": {
                             "disabled": "",
                             "statusText": "결제완료",
                             "statusClass": "",
                             "statusDate": "배송희망일 2020.09.18"
                         },
-                        "statusButtonList": [],
-                        "cancelAbled": "Y",
-                        "takebackAbled": "N"
+                        "statusButtonList": []
                     },
                     {
                         "modelID": "ADC4957639428",
@@ -46,7 +43,8 @@
                         "productDetailUrl": "http://www.lge.com",
                         "specList": [],
                         "productTotal": "1",
-                        "productPrice": "50,000",
+                        "productPrice": "50000",
+                        "discountPrice": "5000",
                         "orderStatus": {
                             "disabled": "",
                             "statusText": "결제완료",
@@ -77,7 +75,8 @@
                         "productDetailUrl": "http://www.lge.com",
                         "specList": [],
                         "productTotal": "1",
-                        "productPrice": "50,000",
+                        "productPrice": "50000",
+                        "discountPrice": "5000",
                         "orderStatus": {
                             "disabled": "",
                             "statusText": "결제완료",
@@ -99,14 +98,39 @@
                             }
                         ]
                     }
-                ]
+                ],
+                "repaymentInfo": {
+                    "bankUserName": "이엘지",
+                    "bankList": [
+                        {
+                            "bankValue": "국민은행_코드",
+                            "bankName": "국민은행"
+                        },
+                        {
+                            "bankValue": "하나은행_코드",
+                            "bankName": "하나은행"
+                        },
+                        {
+                            "bankValue": "기업은행_코드",
+                            "bankName": "기업은행"
+                        },
+                        {
+                            "bankValue": "우리은행_코드",
+                            "bankName": "우리은행"
+                        },
+                        {
+                            "bankValue": "신한은행_코드",
+                            "bankName": "신한은행"
+                        }
+                    ]
+                }
             },
             {
                 "orderDate": "2020.09.05",
                 "orderNumber": "20203987102999",
                 "orderTotal": "3",
-                "cancelAbled": "Y",
-                "takebackAbled": "N",
+                "cancelAbled": "N",
+                "takebackAbled": "Y",
                 "productList": [
                     {
                         "modelID": "ADC495769328",
@@ -117,7 +141,8 @@
                         "productDetailUrl": "http://www.lge.com",
                         "specList": ["주요스펙1", "주요스펙2"],
                         "productTotal": "1",
-                        "productPrice": "1,760,000",
+                        "productPrice": "1990000",
+                        "discountPrice": "80000",
                         "orderStatus": {
                             "disabled": "disabled",
                             "statusText": "취소완료",
@@ -137,7 +162,8 @@
                         "productDetailUrl": "http://www.lge.com",
                         "specList": [],
                         "productTotal": "1",
-                        "productPrice": "50,000",
+                        "productPrice": "57000",
+                        "discountPrice": "5000",
                         "orderStatus": {
                             "disabled": "",
                             "statusText": "결제완료",

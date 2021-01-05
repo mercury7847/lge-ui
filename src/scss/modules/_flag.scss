@@ -66,6 +66,20 @@
 			}
 		}
 	}
+	&.box-type {
+		.flag {
+			min-width: auto;
+			height: 24px;
+			margin: 0;
+			padding: 5px 12px;
+			border: 1px solid #a7a7a7;
+			border-radius: 4px;
+			font-weight: 500;
+			font-size: $font-x-small;
+			line-height: 1;
+			color: $color-default;
+		}
+	}
 }
 
 // design flag

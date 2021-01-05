@@ -237,7 +237,11 @@ var CareCartInfo = (function() {
                         if(scrolltop > formy){
                             if(isHidden){
                                 self.$cartContent.data('infoHidden', false);
-                                self.$itemInfo.slideDown();
+                                self.$itemInfo.slideDown({
+                                    complete: function(){
+                                        self._setScrollMoved();
+                                    }
+                                });
                             }
                         } else{
                             if(!isHidden){

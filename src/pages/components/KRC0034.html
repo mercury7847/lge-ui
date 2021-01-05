@@ -13,6 +13,11 @@
 				1. 여백
 				.zero-top : 상단여백 없음
 				.zero-btm : 하단여백 없음
+
+				[component option]
+				1. stage size
+				.stage-full : 1920px
+				.stage-wide : 1600px
 			-->
 
 			<!-- [JSON setting]
@@ -36,6 +41,7 @@
 
 			<!-- 이미지 bg / 3 Rows / col left -->
 			@@include('./common/partials/KRC0034.html', {
+				"stageSize" : "stage-full",
 				"type": "bg-image",
 				"bgPC": "/lg5-common/images/KRC0034/@KRC0034-BG-pc.jpg",
 				"bgMob": "/lg5-common/images/KRC0034/@KRC0034-BG-mo.jpg",
@@ -49,6 +55,7 @@
 
 			<!-- 애니메이션 bg / 3 Rows / col right -->
 			@@include('./common/partials/KRC0034.html', {
+				"stageSize" : "stage-full",
 				"type": "animation",
 				"bgPC": "/lg5-common/images/KRC0034/@KRC0034-BG-pc.jpg",
 				"bgMob": "/lg5-common/images/KRC0034/@KRC0034-BG-mo.jpg",
@@ -62,6 +69,7 @@
 
 			<!-- 이미지 bg / 2 Rows / col left -->
 			@@include('./common/partials/KRC0034.html', {
+				"stageSize" : "stage-wide",
 				"type": "bg-image",
 				"bgPC": "/lg5-common/images/KRC0034/@KRC0034-BG-pc.jpg",
 				"bgMob": "/lg5-common/images/KRC0034/@KRC0034-BG-mo.jpg",
@@ -74,6 +82,7 @@
 
 			<!-- 애니메이션 bg / 2 Rows / col right -->
 			@@include('./common/partials/KRC0034.html', {
+				"stageSize" : "stage-wide",
 				"type": "animation",
 				"bgPC": "/lg5-common/images/KRC0034/@KRC0034-BG-pc.jpg",
 				"bgMob": "/lg5-common/images/KRC0034/@KRC0034-BG-mo.jpg",

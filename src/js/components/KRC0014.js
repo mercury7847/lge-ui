@@ -49,9 +49,9 @@ $(window).ready(function(){
                 var aniTitle = $(this).data('title');
                 var videoTitleColor = $(this).data('title-color') || "";
 
-                html += '<div class="visual-area animation-box size-type">';
+                html += '<div class="visual-area animation-box">';
                 //html += '   <a href="#none" role="button" data-src="' + aniAccSrc + '" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>';
-                html += '   <img src="' + largeImgURL + '" alt="" aria-hidden="true">';
+                // html += '   <img src="' + largeImgURL + '" alt="" aria-hidden="true">';
                 // html += '   <p class="hidden">' + accDesc + '</p>';
                 html += '   <div class="animation-area">';
                 html += '       <video loop' +  ($(this).attr('data-autoplay')=="true"?' muted autoplay':'')  /*+ ($(this).attr(' data-muted')=="true"?'muted':'')*/ + '>';

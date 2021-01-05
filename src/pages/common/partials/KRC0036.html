@@ -35,23 +35,15 @@
             <!-- visual background -->
             @@if ( context.bgType == "image" ) {
             <div class="background-area">
-                <!-- pc images -->
-                <span class="only-pc">
-                    <img src="/lg5-common/images/KRC0036/@@bg-pc.jpg" alt="">
-                </span>
-                <!-- // pc images -->
-                <!-- mobile images -->
-                <span class="only-m">
-                    <img src="/lg5-common/images/KRC0036/@@bg-m.jpg" alt="">
-                </span>
-                <!-- // mobile images -->
+                <!-- [KR수정_201229] 이미지 호출 방식 수정 -->
+                <img src="/lg5-common/images/KRC0036/@@bg-pc.jpg" data-pc-src="/lg5-common/images/KRC0036/@@bg-pc.jpg" data-m-src="/lg5-common/images/KRC0036/@@bg-m.jpg" alt="">
+                <!-- // [KR수정_201229] 이미지 호출 방식 수정 -->
                 <p class="hidden">graphic description : </p>
             </div>
             }
             @@if ( context.bgType == "animation" ) {
+            <!-- [KR수정_201229] 애니메이션 DOM 공통화 수정(AD버튼 삭제, hidden 태그 삭제) -->
             <div class="visual-area animation-box">
-                <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
-                <p class="hidden">graphic description : </p>
                 <div class="animation-area">
                     <video autoplay muted loop>
                         <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
@@ -64,6 +56,7 @@
                     </div>
                 </div>
             </div>
+            <!-- // [KR수정_201229] 애니메이션 DOM 공통화 수정(AD버튼 삭제, hidden 태그 삭제) -->
             }
             <!-- // visual background -->
 
@@ -80,14 +73,17 @@
                 <!-- overlay box -->
                 <div class="text-inner @@textAlign2">
                     <!-- overlay thumbnail : video type -->
+                    <!-- [KR수정_201229] 비디오 DOM 공통화 수정(AD버튼 삭제) -->
                     <div class="visual-area video youtube-box">
-                        <a href="#none" role="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
                         <!-- * youtube video modal은 아래의 방식으로 입력 -->
                         <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
-                            <img src="/lg5-common/images/KRC0036/@@thumb.jpg" alt="">
+                            <!-- [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
+                            <img src="/lg5-common/images/KRC0036/@@thumb.jpg" data-pc-src="/lg5-common/images/KRC0036/@@thumb.jpg" data-m-src="/lg5-common/images/KRC0036/@@thumb.jpg" alt="">
+                            <!-- // [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
                             <p class="hidden">graphic description : </p>
                         </a>
                     </div>
+                    <!-- // [KR수정_201229] 비디오 DOM 공통화 수정(AD버튼 삭제) -->
                     <!-- // overlay thumbnail : video type -->
                     <p id="title01" class="title">타이틀 영역입니다.</p>
                     <p class="sub-title">서브타이틀 영역입니다.</p>
@@ -110,7 +106,9 @@
                 <div class="text-inner @@textAlign2">
                     <!-- overlay thumbnail : image type -->
                     <div class="thumb-area">
-                        <img src="/lg5-common/images/KRC0036/@@thumb.jpg" alt="">
+                        <!-- [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
+                        <img src="/lg5-common/images/KRC0036/@@thumb.jpg" data-pc-src="/lg5-common/images/KRC0036/@@thumb.jpg" data-m-src="/lg5-common/images/KRC0036/@@thumb.jpg" alt="">
+                        <!-- // [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
                         <p class="hidden">graphic description : </p>
                     </div>
                     <!-- // overlay thumbnail : image type -->

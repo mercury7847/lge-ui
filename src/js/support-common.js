@@ -55,19 +55,9 @@ CS.MD.commonModel = function() {
             '{{# } #}}' +
         '</div>';
 
-    // var modelListTmpl = 
-    //     '<li>' +
-    //         '<a href="#" class="item" data-category="{{category}}" data-sub-category="{{subCategory}}" data-code="{{code}}">' +
-    //             '<div class="info">' +
-    //                 '<p class="name">{{#raw name}}</p>' +
-    //                 '<p class="category"><span>{{categoryNm}} &gt; </span>{{subCategoryNm}}</p>' +
-    //             '</div>' +
-    //         '</a>' +
-    //     '</li>';
-
     var modelListTmpl = 
         '<div class="slide-conts">' +
-            '<a href="#" class="item" data-category="{{category}}" data-sub-category="{{subCategory}}" data-code="{{code}}">' +
+            '<a href="#" class="item" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{modelCode}}" data-product-code="{{productCode}}" data-category-name="{{categoryNm}}" data-sub-category-name="{{subCategoryNm}}">' +
                 '<div class="info">' +
                     '<p class="name">{{#raw name}}</p>' +
                     '<p class="category"><span>{{categoryNm}} &gt; </span>{{subCategoryNm}}</p>' +
@@ -75,7 +65,10 @@ CS.MD.commonModel = function() {
             '</a>' +
         '</div>';
     
-    var validation;
+    var termsValidation;
+    var modelValidation;  
+    var inputValidation;
+    
 
     function Plugin(el, opt) {
         var self = this;
@@ -83,25 +76,31 @@ CS.MD.commonModel = function() {
         self.el = el;
 
         var defaults = {
+            stepIndex: 0,
             stepClass: 'step-box',
             stepActiveClass: 'active',
             selectedModel: [],
-            register: {
-                privcyCheck: {
-                    msgTarget: '.err-block'
-                },
-                keyword: {
-                    msgTarget: '.err-msg',
-                    minLength: 4
-                }   
-            },
+            register: {},
             callback: function() {}
         };
 
         self.options = $.extend({}, defaults, self.$el.data(), opt);
         
         vcui.require(['ui/validation', 'ui/selectTarget'], function () {
-            validation = new vcui.ui.CsValidation('#submitForm', {register:self.options.register});
+            termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
+                privcyCheck: {
+                    msgTarget: '.err-block'
+                }
+            }});
+            modelValidation = new vcui.ui.CsValidation('#stepModel', {register: {
+                keyword: {
+                    msgTarget: '.err-msg',
+                    minLength: 4
+                }
+            }})
+            // inputValidation = new vcui.ui.CsValidation('#stepInput', {register: {
+
+            // }});
         
             self._initialize();
             self._bindEvent();  
@@ -114,10 +113,12 @@ CS.MD.commonModel = function() {
             var self = this;
 
             // 스텝 영역
-            self.$submitForm = self.$el.find('#submitForm');
             self.$stepTerms = self.$el.find('#stepTerms');
             self.$stepModel = self.$el.find('#stepModel');
             self.$stepInput = self.$el.find('#stepInput');
+
+            self.$stepBox = self.$el.find('.step-box');
+            self.stepLength = self.$stepBox.length;
 
             // 선택 제품 플로팅바
             self.$selectedModelBar = self.$el.find('.prod-selected-wrap');
@@ -194,7 +195,7 @@ CS.MD.commonModel = function() {
             self.$stepModel.addClass(opt.stepActiveClass);
             self.$stepModel.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
 
-            self.$submitForm.find('input').val('');
+            if (self.$myModelArea.length) self.$myModelArea.show();
 
             opt.selectedModel = [];
 
@@ -204,6 +205,19 @@ CS.MD.commonModel = function() {
             }
 
             self.update(updateObj);
+        },
+        _resetFlexibleBox: function() {
+            var self = this;
+
+            self.$el.find('.ui_carousel_track .ui_carousel_current').each(function(idx, item){
+                var maxheight = 0;
+                $(item).find('.slide-conts').each(function(cdx, child){
+                    var flexiblebox = $(child).find('.info');
+                    maxheight = Math.max(maxheight, flexiblebox.outerHeight(true));
+                });
+
+                $(item).find('.slide-conts').height(maxheight);
+            });
         },
         _requestData: function(param) {
             var self = this,
@@ -219,7 +233,7 @@ CS.MD.commonModel = function() {
 
                 if (arr.length) {
                     arr.forEach(function(item) {
-                        item.name = item.code.replaceAll(param.keyword, '<em class="word">'+param.keyword+'</em>');
+                        item.name = item.modelCode.replaceAll(param.keyword, '<em class="word">'+param.keyword+'</em>');
                         self.$modelSlider.find('.slide-track').append(vcui.template(modelListTmpl, item))
                     });
                     self.$modelSlider.show();
@@ -266,6 +280,8 @@ CS.MD.commonModel = function() {
                     }
                 } else {
                     self.$modelSlider.hide();
+                    
+                    self.$modelNoData.find('.word').html(param.keyword);
                     self.$modelNoData.show();
                 }
 
@@ -279,14 +295,18 @@ CS.MD.commonModel = function() {
         _bindEvent: function() {
             var self = this;
 
+            self.$el.find('.model-slider').on('carouselinit carouselreInit carouselafterchange carouselresize', function() {
+                self._resetFlexibleBox();
+            });
+
             // 제품 재선택
             self.$selectedModelBar.on('click', '.btn-reset', function() {
                 self.reset();
             });
 
             // 약관 동의 다음 버튼
-            self.$stepTerms.find('.btn-next').on('click', function() {
-                var result = validation.validate(['privcyCheck']),
+            self.$stepTerms.find('.step-btn-wrap .btn').on('click', function() {
+                var result = termsValidation.validate(),
                     opt = self.options;
                 
                 if (result.success) {
@@ -305,7 +325,7 @@ CS.MD.commonModel = function() {
                     opt = self.options,
                     result;
                     
-                result = validation.validate(['keyword']);
+                result = modelValidation.validate(['keyword']);
 
                 if (result.success) {
                     self.$searchCategoryBox.removeClass(opt.stepActiveClass);
@@ -315,28 +335,31 @@ CS.MD.commonModel = function() {
                         desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
                     }
                     var param = {
-                        keyword: self.$inputKeyword.val().toUpperCase()
+                        keyword: self.$inputKeyword.val().toUpperCase(),
+                        category: self.$el.find('#category').val(),
+                        subCategory: self.$el.find('#subCategory').val()
                     };
 
                     self.update(updateObj);
                     self._requestData(param);
                 } else {
                     if ($this.val() == '') {
-                        // var updateObj = {
-                        //     desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
-                        // }
-                        // var param = {
-                        //     keyword: self.$inputKeyword.val().toUpperCase()
-                        // };
+                        var param = {
+                            keyword: self.$inputKeyword.val().toUpperCase(),
+                            category: self.$el.find('#category').val(),
+                            subCategory: self.$el.find('#subCategory').val()
+                        };
     
-                        // self.update(updateObj);
-                        // self._requestData(param);
+                        self.update(updateObj);
+                        self._requestData(param);
+                    } else {
+
                     }
                 }
             });
             self.$searchKeywordBox.find('.btn-search').on('click', function() {
                 var opt = self.options,
-                    result = validation.validate(['keyword']);
+                    result = modelValidation.validate(['keyword']);
                 
                 if (result.success) {
                     self.$searchCategoryBox.removeClass(opt.stepActiveClass);
@@ -346,7 +369,9 @@ CS.MD.commonModel = function() {
                         desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
                     }
                     var param = {
-                        keyword: self.$inputKeyword.val().toUpperCase()
+                        keyword: self.$inputKeyword.val().toUpperCase(),
+                        category: self.$el.find('#category').val(),
+                        subCategory: self.$el.find('#subCategory').val()
                     };
 
                     self.update(updateObj);
@@ -368,8 +393,10 @@ CS.MD.commonModel = function() {
                     opt = self.options,
                     data = $this.data();
 
-                self.$submitForm.find('#category').val(data.category);
-                self.$submitForm.find('#subCategory').val(data.subCategory);
+                self.$el.find('#categoryNm').val(data.categoryName);
+                self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                self.$el.find('#category').val(data.category);
+                self.$el.find('#subCategory').val(data.subCategory);
 
                 self.$searchCategoryBox.removeClass(opt.stepActiveClass);
                 self.$searchModelBox.addClass(opt.stepActiveClass);
@@ -400,33 +427,41 @@ CS.MD.commonModel = function() {
                     updateObj;
 
                 if (!$this.hasClass('no-model')) {
-                    self.$submitForm.find('#category').val(data.category);
-                    self.$submitForm.find('#subCategory').val(data.subCategory);
-                    self.$submitForm.find('#modeCode').val(data.code);
+                    self.$el.find('#category').val(data.category);
+                    self.$el.find('#subCategory').val(data.subCategory);
+                    self.$el.find('#modeCode').val(data.modelCode);
+                    self.$el.find('#productCode').val(data.productCode);
                     
-                    opt.selectedModel[2] = data.code;
-
-                    updateObj = {
-                        product: opt.selectedModel,
-                        reset: true
-                    }
+                    opt.selectedModel = [data.categoryName, data.subCategoryName, data.modelCode];
                 } else {
-                    updateObj = {
-                        product: opt.selectedModel,
-                        reset: true
-                    }
+                    opt.selectedModel = [data.categoryName, data.subCategoryName];
                 }   
+
+                updateObj = {
+                    product: opt.selectedModel,
+                    reset: true
+                }
 
                 self.update(updateObj);
 
                 self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
                 self.$stepInput.addClass(opt.stepActiveClass);
 
+                lgkorUI.requestAjaxDataPost(self.$searchModelBox.data('ajax'), {modelCode: data.code, serviceType: $('#serviceType').val()}, function(result) {
+                    var ajaxData = result.data,
+                        info = {
+                            category: data.category,
+                            subCategory: data.subCategory,
+                            modelCode: data.modelCode
+                        };
+
+                    opt.callback(info, ajaxData);
+                });
+
+
                 $('html, body').stop().animate({
                     scrollTop: self.$selectedModelBar.offset().top
                 });
-
-                opt.callback();
             });
             
             // 모델명 선택 - 서브 카테고리 선택
@@ -454,13 +489,15 @@ CS.MD.commonModel = function() {
                 if ($this.hasClass('disabled')) {
                     $(window).trigger("toastshow", "예약가능한 제품이 아닙니다.");
                 } else {
-                    opt.selectedModel = [data.name, data.subName, data.code];
                     
-                    self.$submitForm.find('#category').val(data.category);
-                    self.$submitForm.find('#subCategory').val(data.subCategory);
-                    self.$submitForm.find('#modelCode').val(data.code);
-
-                    var updateObj = {
+                    self.$el.find('#category').val(data.category);
+                    self.$el.find('#subCategory').val(data.subCategory);
+                    self.$el.find('#modelCode').val(data.modelCode);
+                    self.$el.find('#productCode').val(data.productCode);
+                    
+                    opt.selectedModel = [data.categoryName, data.subCategoryName, data.modelCode];
+                    
+                    updateObj = {
                         product: opt.selectedModel,
                         reset: true
                     }
@@ -470,7 +507,18 @@ CS.MD.commonModel = function() {
                     self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
                     self.$stepInput.addClass(opt.stepActiveClass);
 
-                    opt.callback();
+                    lgkorUI.requestAjaxDataPost(self.$searchModelBox.data('ajax'), {modelCode: data.code, serviceType: $('#serviceType').val()}, function(result) {
+                        var ajaxData = result.data,
+                            info = {
+                                category: data.category,
+                                subCategory: data.subCategory,
+                                modelCode: data.modelCode
+                            };
+    
+                        opt.callback(info, ajaxData);
+
+                        self.$myModelArea.hide();
+                    });
                 }
             });
 

@@ -7,7 +7,7 @@ var RSYNC_RESULT_FILE = process.env.RSYNC_RESULT_FILE;
 
 
 var rsyncResult = fs.readFileSync(RSYNC_RESULT_FILE, 'UTF-8');
-console.log('===== RSYNC RESULT =====');
+console.log('---------------------------------[ RSYNC RESULT ]----------------------------------');
 console.log(rsyncResult);
 console.log('');
 console.log('');
@@ -35,11 +35,11 @@ lines.forEach(function (line, index) {
     });
 
     if (!avoid && line != '' && line != '\n') {
-        list.push(PURGE_ROOT_URL + '/lg5-common/' + line);
+        list.push(PURGE_ROOT_URL + '/' + line);
     }
 });
 
-console.log('===== PURGE URLS =====');
+console.log('----------------------------------[ PURGE URLS ]-----------------------------------');
 console.log(list);
 console.log('');
 console.log('');
@@ -55,7 +55,7 @@ if (list.length > 0) {
     });
 
     var resBody = res.getBody('utf8');
-    console.log('===== PURGE RESPONSE =====');
+    console.log('--------------------------------[ PURGE RESPONSE ]---------------------------------');
     console.log(JSON.stringify(JSON.parse(resBody), null, 4));
 } else {
     console.log('===== NO PURGE URLS, SKIPP PURGING =====');

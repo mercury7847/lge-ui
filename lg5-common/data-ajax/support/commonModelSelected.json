@@ -1,0 +1,49 @@
+{   
+    "status": "success",
+    "message": null,
+    "data": {
+        "resultFlag": "Y",
+        "registerFlag" : "N",
+        "topicList": [
+            {
+                "name": "부품/소모품",
+                "value": "WRA10005000"
+            },{
+                "name": "구입/사양",
+                "value": "WRAST000732"
+            },
+            {
+                "name": "구조/외관",
+                "value": "WRAST000733"
+            },
+            {
+                "name": "기능관련",
+                "value": "WRAST000734"
+            },
+            {
+                "name": "냄새관련",
+                "value": "WRAST000735"
+            },
+            {
+                "name": "냉방관련",
+                "value": "WRAST000736"
+            },
+            {
+                "name": "누수관련",
+                "value": "WRAST000737"
+            },
+            {
+                "name": "리모컨/버튼",
+                "value": "WRAST000738"
+            },
+            {
+                "name": "서비스관련",
+                "value": "WRAST000741"
+            },
+            {
+                "name": "소음/진동",
+                "value": "WRAST000743"
+            }
+        ]
+    }
+}

@@ -78,7 +78,7 @@
 
 @include mobile {
     .mobile-nav-wrap {
-        margin: 0 -8px;
+        padding: 0 8px;
         font-size: 0;
         .nav {
             margin-top: 13px;
@@ -1185,7 +1185,7 @@
             @include mobile {
                 display: block;
                 position: fixed;
-                top: 0;
+                top: 72px;
                 right: 0;
                 bottom: 0;
                 left: 0;
@@ -1198,7 +1198,7 @@
 }
 
 .login-mobile {
-    padding: 72px 16px 0;
+    padding: 0 16px;
     border-bottom: 12px solid $color-bg;
     &:before {
         position: fixed;

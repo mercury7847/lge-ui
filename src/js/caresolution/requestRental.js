@@ -507,9 +507,14 @@
     //설치 가능여부 확인...
     function setInstallAbledConfirm(){
         var values = step2Validation.getValues();
-        if(values.zipCode == "" || values.userAddress == "" || values.detailAddress == ""){
+
+        var errmsg = "";
+        if(values.zipCode == "" || values.userAddress == "") errmsg = "주소를 확인해주세요.";
+        else if(values.detailAddress == "") errmsg = "상세주소를 입력해주세요."
+
+        if(errmsg != ""){
             lgkorUI.alert('', {
-                title:'상세주소를 입력해주세요.'
+                title: errmsg
             });
 
             return;

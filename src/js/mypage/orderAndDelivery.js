@@ -2,7 +2,7 @@
     var ORDER_INQUIRY_LIST_URL;
 
     var inquiryListTemplate =
-        '<div class="box">'+
+        '<div class="box" data-id="{{dataID}}">'+
             '<div class="info-wrap">'+
                 '<ul class="infos">'+
                     '<li>주문일<em>{{orderDate}}</em></li>'+
@@ -16,64 +16,65 @@
                     '<span class="th col2">진행상태</span>'+
                 '</div>'+
                 '<div class="tbody">'+
-                    '{{#each item in productList}}'+
-                    '<div class="row {{item.orderStatus.disabled}}">'+
-                        '<div class="col-table" data-model-id="{{item.modelID}}">'+
-                            '<div class="col col1">'+
-                                '<span class="blind">제품정보</span>'+
-                                '<div class="product-info">'+
-                                    '<div class="thumb">'+
-                                        '<a href="{{item.productPDPurl}}"><img src="{{item.productImage}}" alt="{{item.productNameKR}}"></a>'+
-                                    '</div>'+
-                                    '<div class="infos">'+
-                                        '{{#if item.productFlag}}<div class="flag-wrap"><span class="flag">{{item.productFlag}}</span></div>{{/if}}'+
-                                        '<p class="name"><a href="{{item.productDetailUrl}}"><span class="blind">제품명</span>{{item.productNameKR}}</a></p>'+
-                                        '<p class="e-name"><span class="blind">영문제품번호</span>{{item.productNameEN}}</p>'+
-                                        '{{#if item.specList && item.specList.length > 0}}'+
-                                        '<div class="more">'+
-                                            '<span class="blind">제품스펙</span>'+
-                                            '<ul>'+
-                                                '{{#each spec in item.specList}}'+
-                                                '<li>{{spec}}</li>'+
-                                                '{{/each}}'+                     
-                                            '</ul>'+
-                                        '</div>'+
-                                        '{{/if}}'+
-                                        '{{#if item.productTotal}}<p class="count">수량 : {{item.productTotal}}</p>{{/if}}'+
-                                    '</div>'+
-                                    '<p class="price">'+
-                                        '<span class="blind">구매가격</span>{{item.productPrice}}원'+
-                                    '</p>'+
-                                '</div>'+
-                            '</div>'+
-                            '<div class="col col2">'+
-                                '<div class="state-box">'+
-                                    '<p class="tit {{item.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{item.orderStatus.statusText}}</p>'+
-                                    '{{#if item.orderStatus.statusDate !=""}}<p class="desc">{{item.orderStatus.statusDate}}</p>{{/if}}'+
-                                    '{{#if item.statusButtonList && item.statusButtonList.length > 0}}'+
-                                    '<div class="state-btns">'+
-                                        '{{#each status in item.statusButtonList}}'+
-                                        '<a href="#n" class="btn size border stateInner-btn" data-type="{{status.className}}"><span>{{status.buttonName}}</span></a>'+
-                                        '{{/each}}'+
-                                    '</div>'+
-                                    '{{/if}}'+
-                                '</div>'+
-                            '</div>'+
-                        '</div>'+
-                    '</div>'+
-                    '{{/each}}'+
                 '</div>'+
             '</div>'+
             '{{#if cancelAbled == "Y"}}'+
             '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
             '{{/if}}'+
-            '{{#if takebackAbled == "Y"}}'+
-            '<a href="#n" class="btn-link takeBack-btn">반품신청</a>'+
-            '{{/if}}'+
             '<div class="btns">'+
                 '<a href="#n" class="btn-link">주문/배송 상세보기</a>'+
             '</div>'+
         '</div>';
+
+    var prodListTemplate = 
+        '<div class="row {{listData.orderStatus.disabled}}">'+
+            '<div class="col-table" data-prod-id="{{listData.prodID}}">'+
+                '<div class="col col1">'+
+                    '<span class="blind">제품정보</span>'+
+                    '<div class="product-info">'+
+                        '<div class="thumb">'+
+                            '<a href="{{listData.productPDPurl}}"><img src="{{listData.productImage}}" alt="{{listData.productNameKR}}"></a>'+
+                        '</div>'+
+                        '<div class="infos">'+
+                            '{{#if listData.productFlag}}<div class="flag-wrap"><span class="flag">{{listData.productFlag}}</span></div>{{/if}}'+
+                            '<p class="name"><a href="{{listData.productDetailUrl}}"><span class="blind">제품명</span>{{listData.productNameKR}}</a></p>'+
+                            '<p class="e-name"><span class="blind">영문제품번호</span>{{listData.productNameEN}}</p>'+
+                            '{{#if listData.specList && listData.specList.length > 0}}'+
+                            '<div class="more">'+
+                                '<span class="blind">제품스펙</span>'+
+                                '<ul>'+
+                                    '{{#each spec in listData.specList}}'+
+                                    '<li>{{spec}}</li>'+
+                                    '{{/each}}'+                     
+                                '</ul>'+
+                            '</div>'+
+                            '{{/if}}'+
+                            '{{#if listData.productTotal}}<p class="count">수량 : {{listData.productTotal}}</p>{{/if}}'+
+                        '</div>'+
+                        '<p class="price">'+
+                            '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원'+
+                        '</p>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="col col2">'+
+                    '<div class="state-box">'+
+                        '<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>'+
+                        '{{#if listData.orderStatus.statusDate !=""}}<p class="desc">{{listData.orderStatus.statusDate}}</p>{{/if}}'+
+                        '{{#if listData.statusButtonList && listData.statusButtonList.length > 0}}'+
+                        '<div class="state-btns">'+
+                            '{{#each status in listData.statusButtonList}}'+
+                            '<a href="#n" class="btn size border stateInner-btn" data-type="{{status.className}}"><span>{{status.buttonName}}</span></a>'+
+                            '{{/each}}'+
+                        '</div>'+
+                        '{{/if}}'+
+                    '</div>'+
+                '</div>'+
+            '</div>'+
+        '</div>';
+
+    var CURRENT_PAGE, TOTAL_PAGE;
+
+    var ORDER_LIST;
 
     function init(){
         console.log("Order Inquiry Start!!!");
@@ -81,6 +82,9 @@
         vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter'], function () {             
             setting();
             bindEvents();
+
+            var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
+            requestOrderInquiry(dateData.startDate, dateData.endDate);
         });
     }
 
@@ -92,54 +96,56 @@
 
     function bindEvents(){
         $('.inquiryPeriodFilter').on('dateFilter_submit', function(e, data){
-            setOrderListInquiry(data.startDate, data.endDate);
+            requestOrderInquiry(data.startDate, data.endDate);
         })
 
         $('.contents.mypage').on('click', '.orderCancel-btn, .takeBack-btn', function(e){
             e.preventDefault();
 
             var matchIdx;
+            var dataID = $(this).closest('.box').data("id");
 
             matchIdx = $(this).attr('class').indexOf('orderCancel');
             if(matchIdx > -1){
-                openCancelPop(this);
+                openCancelPop(dataID);
                 return;
             }
 
             matchIdx = $(this).attr('class').indexOf('takeBack');
             if(matchIdx > -1){
-                openTakebackPop(this);
+                openTakebackPop(dataID);
                 return;
             }
         }).on('click', '.stateInner-btn', function(e){
             e.preventDefault();
 
-            var modelID = $(this).closest('.col-table').data('modelId');
+            var dataID = $(this).closest('.box').data("id");
+            var prodID = $(this).closest('.col-table').data('prodId');
             var btntype = $(this).data('type');
 
             switch(btntype){
                 case "deliveryInquiry":
-                    setDeliveryInquiry(modelID);
+                    setDeliveryInquiry(dataID, prodID);
                     break;
 
                 case "deliveryRequest":
-                    setDeliveryRequest(modelID);
+                    setDeliveryRequest(dataID, prodID);
                     break;
 
                 case "takeBackInner":
-                    setTakeBack(modelID);
+                    setTakeBack(dataID, prodID);
                     break;
 
                 case "productReview":
-                    setProductReview(modelID);
+                    setProductReview(dataID, prodID);
                     break;
 
                 case "useReview":
-                    setUseReview(modelID);
+                    setUseReview(dataID, prodID);
                     break;
 
                 case "contractStatus":
-                    setContractStatus(modelID);
+                    setContractStatus(dataID, prodID);
                     break;
             }
         }).on('click', '.btn-moreview', function(e){
@@ -154,44 +160,64 @@
             e.preventDefault();
 
             setMonthlyPricePop();
+        }).on('click', '.thumb a', function(e){
+            var href = $(this).attr('href');
+            if(href == "#none" || href == ""){
+                e.preventDefault();
+
+                lgkorUI.alert("제품이 현재 품절/판매 중지<br>상태로 상세 정보를 확인 하실 수 없습니다", {
+                    title:""
+                });
+            }
         });
     }
 
-    function openCancelPop(item){
-        //var tbody = $(item).siblings('.tbl-layout').find('.tbody').clone();
-
-        //$('#popup-cancel').find('.tbl-layout .tbody').remove()
-        //$('#popup-cancel').find('.tbl-layout').append(tbody);
+    function openCancelPop(dataId){
+        var listInfo = ORDER_LIST[dataId];
+        var prodListWrap = $('#popup-cancel').find('.info-tbl-wrap .tbl-layout .tbody').empty();
+        var totalPrice = 0;
+        var totalDiscount = 0;
+        var totalMemPoint = 0;
+        var totalRequestPrice = 0;
+        for(var idx in listInfo.productList){
+            var listdata = listInfo.productList[idx];
+            
+            totalPrice += parseInt(listdata.productPrice);
+            totalPrice += parseInt(listdata.productPrice);
+            totalPrice += parseInt(listdata.productPrice);
+            totalPrice += parseInt(listdata.productPrice);
+        }
 
         $('#popup-cancel').vcModal();
     }
 
-    function openTakebackPop(item){
+
+    function openTakebackPop(dataId){
         $('#popup-takeback').vcModal();
     }
 
-    function setDeliveryInquiry(modelID){
-        console.log("[setDeliveryInquiry]", modelID);
+    function setDeliveryInquiry(dataID, prodID){
+        console.log("[setDeliveryInquiry]", dataID, prodID);
     }
 
-    function setDeliveryRequest(modelID){
-        console.log("[setDeliveryRequest]", modelID);
+    function setDeliveryRequest(dataID, prodID){
+        console.log("[setDeliveryRequest]", dataID, prodID);
     }
 
-    function setTakeBack(modelID){
-        console.log("[setTakeBack]", modelID);
+    function setTakeBack(dataID, prodID){
+        console.log("[setTakeBack]", dataID, prodID);
     }
 
-    function setProductReview(modelID){
-        console.log("[setProductReview]", modelID);
+    function setProductReview(dataID, prodID){
+        console.log("[setProductReview]", dataID, prodID);
     }
 
-    function setUseReview(modelID){
-        console.log("[setUseReview]", modelID);
+    function setUseReview(dataID, prodID){
+        console.log("[setUseReview]", dataID, prodID);
     }
 
-    function setContractStatus(modelID){
-        console.log("[setContractStatus]", modelID);
+    function setContractStatus(dataID, prodID){
+        console.log("[setContractStatus]", dataID, prodID);
     }
 
     function setReceiptListPop(){
@@ -209,22 +235,8 @@
     }
 
     function setMoreOrderList(){
-        var hiddenData = lgkorUI.getHiddenInputData();
-        requestOrderInquiry(hiddenData.startDate, hiddenData.endDate, hiddenData.page+1);
-    }
-
-    function setOrderListInquiry(startDate, endDate){       
-        /* 
-        var datevalidate = getDateValidation(startDate, endDate);
-        if(!datevalidate.result){
-            lgkorUI.alert("", {
-                title: datevalidate.alert
-            });
-
-            return;
-        }
-        */
-        requestOrderInquiry(startDate, endDate);
+        var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
+        requestOrderInquiry(dateData.startDate, dateData.endDate, CURRENT_PAGE+1);
     }
 
     function requestOrderInquiry(startDate, endDate, page){
@@ -238,24 +250,37 @@
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
             if(result.data.success == "Y"){
                 if(result.data.orderList && result.data.orderList.length){
-                    lgkorUI.setHiddenInputData({
-                        total: result.data.total,
-                        page: result.data.page,
-                        startDate: result.data.startDate,
-                        endDate: result.data.endDate
-                    });
+                    CURRENT_PAGE = result.data.page;
+                    TOTAL_PAGE = result.data.total;
 
                     $('.inquiry-list-notify').show();
 
-                    if(result.data.page >= result.data.total) $('.btn-moreview').hide();
+                    if(CURRENT_PAGE >= TOTAL_PAGE) $('.btn-moreview').hide();
                     else $('.btn-moreview').show();
 
-                    if(result.data.page == 1) $('.inquiry-list-wrap').empty();
+                    if(CURRENT_PAGE == 1){
+                        ORDER_LIST = [];
+                        $('.inquiry-list-wrap').empty();
+                    }
 
+                    var leng, cdx, idx, templateList;
                     var list = result.data.orderList;
-                    for(var idx in list){
-                        var templateList = vcui.template(inquiryListTemplate, list[idx]);
+                    for(idx in list){
+                        leng = ORDER_LIST.length;
+                        list[idx]['dataID'] = leng.toString();
+
+                        templateList = $(vcui.template(inquiryListTemplate, list[idx])).get(0);
                         $('.inquiry-list-wrap').append(templateList);
+
+                        for(cdx in list[idx].productList){
+                            list[idx].productList[cdx]["prodID"] = cdx;
+                            list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productPrice"]);
+
+                            var prodlist = list[idx].productList[cdx];
+                            $(templateList).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist}));
+                        }
+
+                        ORDER_LIST.push(list[idx]);
                     }
                 } else{
                     setNoData();
@@ -265,22 +290,6 @@
             lgkorUI.hideLoading();
         });
     }
-
-    /*
-    function getDateValidation(startdate, endate){
-        if(startdate == null || endate == null) return {result: false, alert: "조회기간을 확인해 주세요."};
-
-        var startime = new Date(vcui.date.format(startdate,'yyyy-MM-dd'));
-        var endtime = new Date(vcui.date.format(endate,'yyyy-MM-dd'));
-        var period = endtime.getTime() - startime.getTime();
-        if(period < 0) return {result: false, alert: "조회기간을 확인해 주세요."};
-
-        var limitperiod = 2 * 1000 * 60 * 60 * 24 * 365;
-        if(period > limitperiod) return {result: false, alert: "최대 조회 기간은<br>2년을 넘을 수 없습니다."};
-
-        return {result: true};
-    }
-    */
 
     document.addEventListener('DOMContentLoaded', function () {
         init();

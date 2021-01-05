@@ -112,6 +112,52 @@
                     "hasReview":false,
                     "rating":"39",
                     "review":"33"
+                },
+                {
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
+                    "sku":"S833MC85Q1",
+                    "price":"4422000",
+                    "originalPrice":"4433000",
+                    "carePrice":null,
+                    "flag":[
+                        "미리 페스타",
+                        "베스트",
+                        "신제품"
+                    ],
+                    "hash":[
+                        "가전",
+                        "가을가전"
+                    ],
+                    "hasCare":false,
+                    "hasReview":false,
+                    "rating":"39",
+                    "review":"33"
+                },
+                {
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
+                    "sku":"S833MC85Q1",
+                    "price":null,
+                    "originalPrice":null,
+                    "carePrice":"78000",
+                    "flag":[
+                        "미리 페스타",
+                        "베스트",
+                        "신제품"
+                    ],
+                    "hash":[
+                        "가전",
+                        "가을가전"
+                    ],
+                    "hasCare":false,
+                    "hasReview":false,
+                    "rating":"39",
+                    "review":"33"
                 }
             ]
         },
@@ -154,6 +200,7 @@
                     "url":"#",
                     "imageUrl":"/lg5-common/images/dummy/@img-search.jpg",
                     "imageAlt":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG ThinQ",
+                    "isVideo":false,
                     "title":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG ThinQ",
                     "desc":"코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다.",
                     "flag":[
@@ -169,6 +216,7 @@
                     "url":"#",
                     "imageUrl":"/lg5-common/images/dummy/@img-search.jpg",
                     "imageAlt":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG",
+                    "isVideo":true,
                     "title":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG",
                     "desc":"코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다.",
                     "flag":[
@@ -190,16 +238,20 @@
                     "imageAlt":"브러쉬 Brush Assembly",
                     "title":"브러쉬 Brush Filter",
                     "sku":"S833MC85Q1",
-                    "price":"5500",
-                    "desc":"적용모델 : H-62HSGAKOR1 외"
+                    "desc":"적용모델 : H-62HSGAKOR1 외",
+                    "price":"138000",
+                    "originalPrice":"150000",
+                    "carePrice":null
                 },
                 {   "url":"#",
                     "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
                     "imageAlt":"브러쉬 Brush Assembly",
                     "title":"브러쉬 Brush Assembly",
                     "sku":"S833MC85Q2",
-                    "price":"5000",
-                    "desc":"적용모델 : H-62HSGAKOR2 외"
+                    "desc":"적용모델 : H-62HSGAKOR2 외",
+                    "price":null,
+                    "originalPrice":null,
+                    "carePrice":"69800"
                 }
             ]
         },

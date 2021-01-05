@@ -41,6 +41,25 @@
                 "paymentPrice": "88,800원"
             }
         ],
+        "periodSortSelect": "AA",
+        "periodSortList":[
+            {
+                "value": "ALL",
+                "name": "전체"
+            },
+            {
+                "value": "AA",
+                "name": "1년차"
+            },
+            {
+                "value": "BB",
+                "name": "2년차"
+            },
+            {
+                "value": "CC",
+                "name": "3년차"
+            }
+        ],
         "description":[
             "렌탈 비용 혜택을 받으신 회차는 납부내역에서 제외됩니다.",
             "고객님의 무상할인 회차는 3, 5, 6회차 입니다."

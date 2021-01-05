@@ -1,13 +1,6 @@
 {
     "status":"success",
     "message":null,
-    "param":{
-        "pagination":{
-            "page":"5",
-            "visibleCount":"7",
-            "totalCount":"23"
-        }
-    },
     "data": {
         "listData":[
             {

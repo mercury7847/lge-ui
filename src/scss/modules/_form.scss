@@ -645,6 +645,50 @@
                 }
             }
         }
+        // 주소 선택
+        .adress-input-box {
+            display: flex;
+            margin-bottom: 48px;
+            .cell {
+                margin-left: 8px;
+                margin-top: 0;
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+            .display-flex {
+                display: flex;
+                .ui-selectbox-wrap {
+                    flex: 1;
+                }
+                .btn {
+                    margin-left: 8px;
+                }
+            }
+            @include mobile {
+                display: block;
+                .cell {
+                    margin-left: 0;
+                    margin-top: 6px;
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                }
+                .btn-cell {
+                    display: flex;
+                    .btn {
+                        flex: 1;
+                        margin-left: 8px;
+                        &:first-child {
+                            margin-left: 0;
+                        }
+                    }
+                }
+                .search-wrap {
+                    padding: 0;
+                }
+            }
+        }
         // 날짜 선택(datepicker)
         .datepicker {
             width:calc((100% - 8px) / 2);

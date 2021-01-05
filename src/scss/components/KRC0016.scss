@@ -81,8 +81,10 @@
 			width:100%;
 			overflow:hidden;
 			img {
-				width:100%;
+				width:auto;
 				max-width:100%;
+				height:auto;
+				vertical-align:top;
 			}
 			@include mobile {
 				width:100%;
@@ -101,6 +103,8 @@
 				img {
 					width:auto;
 					max-width:100%;
+					height:auto;
+					vertical-align:top;
 					&.mobile {
 						display:none;
 					}

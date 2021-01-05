@@ -128,6 +128,9 @@
 					float:right;
 					width:calc(100% - 56.7% - 64px);
 					padding-top:20px;
+					> p {
+						line-height:21px;
+					}
 					@include mobile {
 						float:none;
 						width:100%;
@@ -163,6 +166,26 @@
 					border-top:none;
 				}
 				.csn-icon-list {
+					&.col2 {
+						> ul {
+							> li {
+								width:50%;
+								@include mobile {
+									width:100%;
+								}
+							}
+						}
+					}
+					&.col3 {
+						> ul {
+							> li {
+								width:33.33%;
+								@include mobile {
+									width:100%;
+								}
+							}
+						}
+					}
 					> ul {
 						margin-top:-44px;
 						margin-left:-50px;
@@ -173,7 +196,6 @@
 						}
 						> li {
 							display:inline-block;
-							width:50%;
 							margin-top:44px;
 							padding-left:50px;
 							vertical-align:top;

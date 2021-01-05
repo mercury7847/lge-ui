@@ -10,9 +10,6 @@
             vcui.require(['ui/validation', 'ui/formatter', 'ui/imageFileInput'], function () {
 
                 var register = {
-                    privcyCheck: {
-                        msgTarget: '.err-block'
-                    },
                     userName: {
                         msgTarget: '.err-block'
                     },
@@ -25,6 +22,9 @@
                     },
                     dtsign: {
                         msgTarget: '.dtsign-err-block'
+                    },
+                    centerAdress: {
+                        msgTarget: '.err-block'
                     },
                 }
 

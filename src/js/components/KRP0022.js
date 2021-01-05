@@ -87,18 +87,22 @@
             },
 
             requestModal: function(dm) {
-                console.log("2");
                 var _self = this;
                 var ajaxUrl = $(dm).attr('href');
+                window.open(ajaxUrl,'','width=912,height=760,scrollbars=no');
+                /*
                 lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
-                    console.log(result);
                     _self.openModalFromHtml(result);
                 }, null, "html");
+                */
             },
 
+            /*
             openModalFromHtml: function(html) {
+                console.log(html);
                 $('#event-modal').html(html).vcModal();
             },
+            */
         };
 
         KRP0022.init();
