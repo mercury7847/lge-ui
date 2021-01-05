@@ -4,6 +4,88 @@
 @import "../../utilities/mixins";
 
 .support {
+    .complete-summary {
+        background-image:linear-gradient(to top, #9c86e7, #de64a0);
+        .box {
+            max-width:1380px + 80px;
+            margin:0 auto;
+            padding:24px 40px;
+            font-size:0;
+            @include clearfix;
+        }
+        .summary-img {
+            display:inline-block;
+            width:120px;
+            vertical-align:middle;
+            img {
+                max-width:100%;
+            }
+        }
+        .summary-info {
+            display:inline-block;
+            width:calc(100% - 120px);
+            padding-left:48px;
+            vertical-align:middle;
+            .info {
+                color:#fff;
+                font-weight:700;
+                @include font-large;
+                span + span {
+                    position:relative;
+                    margin-left:12px;
+                    padding-left:13px;
+                    &:before {
+                        content:'';
+                        position:absolute;
+                        left:0;
+                        top:7px;
+                        width:1px;
+                        height:14px;
+                        background:#fff;    
+                    }
+                }
+            }
+            .status {
+                margin-top:24px;
+                color:#fff;
+                @include font-medium;
+                span {
+                    color:#fffd7c;
+                }
+            }
+        }
+        @include mobile {
+            .box {
+                padding:20px 16px;
+            }
+            .summary-img {
+                width:130px;
+                img {
+                    width:100%;
+                }
+            }
+            .summary-info {
+                width:calc(100% - 130px);
+                padding-left:16px;
+                .info {
+                    span {
+                        display:block;
+                        & + span {
+                            margin:2px 0 0 0;
+                            padding:0;
+                            &:before {
+                                content:none;
+                            }
+                        }
+                    }
+                }
+                .status {
+                    margin-top:8px;
+                }
+            }
+        }
+    }
+
     .solution-btn-box {
         margin-top: 32px;
     }
@@ -68,96 +150,6 @@
             }
             .result-text {
                 padding: 40px 20px;
-            }
-        }
-    }
-    .engineer-carousel {
-        &-list {
-            padding-bottom:24px;
-            overflow:hidden;
-        }
-        &-track {
-            margin:0 -7px;
-        }
-        &-slide {
-            float:left;
-            padding:0 7px;
-        }
-        .slide-box{
-            box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
-            border-radius:8px;
-        }
-        .engineer-box {
-            input {
-                position:absolute;
-                overflow:hidden;
-                width:1px;
-                height:1px;
-                margin:-1px;
-                padding:0;
-                border:none;
-                clip:rect(0,0,0,0);
-                & + label {
-                    display:block;
-                    padding:24px 24px 35px;
-                    text-align:center;
-                    border-radius:8px;
-                    cursor:pointer;
-                    -webkit-user-select:none;
-                    -moz-user-select:none;
-                    -ms-user-select:none;
-                    .engineer-image {
-                        position:relative;
-                        height:0;
-                        margin-bottom:20px;
-                        padding-bottom:100%;
-                        img {
-                            position:absolute;
-                            left:50%;
-                            top:50%;
-                            max-width:100%;
-                            transform:translate(-50%, -50%);
-                        }
-                    }
-                    .tit {
-                        margin-bottom:7px;
-                        color:#222;
-                        font-size:16px;
-                    }
-                    .desc {
-                        color:#616161;
-                        font-size:14px;
-                    }
-                }
-                &:checked + label {
-                    box-shadow: 2px 3.5px 8px 0 rgba(0, 0, 0, 0.12);
-                }
-            }
-        }
-    }
-    .slide-wrap{
-        .slide-content.engineer-carousel{
-            .slide-track{
-                padding:10px 0 20px;
-    
-                .slide-box{
-                    border-radius:8px;
-                }
-            }
-
-            .engineer-box{
-                input{
-                    & + label{
-                        .tit{
-                            @include font-large-1;
-                            font-weight:600;
-                        }
-                        .desc{
-                            @include font-medium;
-                            color:#767676;
-                        }
-                    }
-                }
             }
         }
     }
@@ -248,7 +240,7 @@
     &.service-engineer {
         
     }
-
+    
 
     .engineer-to-visit {
         @include clearfix;

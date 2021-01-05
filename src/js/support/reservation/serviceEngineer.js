@@ -26,6 +26,25 @@
         '</span>' +
     '</li>' +
     '{{/each}}';
+    var engineerTmpl =
+        '{{#each (item, index) in engineerList}}' +
+        '<div class="slide-conts ui_carousel_slide">' +
+            '<div class="engineer-box">' +
+                '{{# if (index == 0) { #}}' +
+                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerNm}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerNm}}" data-center-code={{item.centerCode}} data-image="{{item.img}}" value="{{index}}" checked>' +
+                '{{# } else { #}}' +
+                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerNm}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerNm}}" data-center-code={{item.centerCode}} data-image="{{item.img}}" value="{{index}}">' +
+                '{{# } #}}' +
+                '<label for="engineer{{index}}">' +
+                    '<div class="img">' +
+                        '<img src="{{item.img}}" alt="" aria-hidden="true">' +
+                    '</div>' +
+                    '<p class="tit">{{item.engineerNm}}</p>' +
+                    '<p class="desc">{{item.centerNm}}</p>' +
+                '</label>' +
+            '</div>' +  
+        '</div>' +
+        '{{/each}}';
     var validation;
     var addressFinder;
 
@@ -33,7 +52,8 @@
         init: function() {
             var self = this;
             
-            self.$form = $('#submitForm');
+            self.$cont = $('.contents');
+            self.autoFlag = false;
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
 
@@ -83,7 +103,7 @@
                     }
                 }
 
-                validation = new vcui.ui.CsValidation('#stepInput', {register:register});
+                validation = new vcui.ui.CsValidation('.step-area', {register:register});
 
                 $('.contents').commonModel({
                     register: register,
@@ -125,6 +145,34 @@
                         } else {
                             $("#tvPositionBox").hide();
                         }
+
+                        $('.engineer-slider').length && $('.engineer-slider').vcCarousel({
+                            slidesToShow: 4,
+                            slidesToScroll: 4,
+                            responsive: [
+                                {
+                                    breakpoint: 10000,
+                                    settings: {
+                                        slidesToShow: 4,
+                                        slidesToScroll: 4,
+                                    }
+                                },
+                                {
+                                    breakpoint: 1024,
+                                    settings: {
+                                        slidesToShow: 3,
+                                        slidesToScroll: 3,
+                                    }
+                                },
+                                {
+                                    breakpoint:767,
+                                    settings: {
+                                        slidesToShow: 2,
+                                        slidesToScroll: 2
+                                    }
+                                }
+                            ]
+                        });
                     }
                 });
 
@@ -133,13 +181,9 @@
                 self.bindEvent();
             });
         },
-        
-        bindEvent: function() {
+        requestTimeData: function() {
             var self = this;
-
-            $('#stepInput').find('.btn-next').on('click', function() {
-                var $this = $(this),
-                    url = $('#stepInput').data('ajax'),
+            var url = $('#stepInput').data('ajax'),
                     param = validation.getAllValues(),
                     result;
 
@@ -159,10 +203,41 @@
                         var data = result.data;
 
                         if (data.resultFlag == 'Y') {
+                            $('#stepInput').find('.step-btn-wrap').hide();
                             $('#stepDate').addClass('active');
+                            $('#stepEngineer').removeClass('active');
+                            $('.btn-group').hide();
                         }
                     });
                 }
+        },
+        bindEvent: function() {
+            var self = this;
+
+            $('#choiceEngineerPopup').on('modalshown', function() {
+                $('.engineer-slider').vcCarousel('resize');
+            });
+
+            $('#choiceEngineerPopup').find('.btn-group .btn').on('click', function() {
+                var $this = $('[name=engineer]').filter(':checked'),
+                    data = $this.data();
+
+                $('#stepEngineer').find('.engineer-img img').attr({
+                    'src': data.image,
+                    'alt': data.engineerName
+                });
+                $('#stepEngineer').find('.engineer-info .name').html(data.engineerName);
+                $('#stepEngineer').find('.engineer-info .center').html(data.centerName);
+
+                $('#engineerNm').val(data.engineerName);
+                $('#engineerCode').val(data.engineerCode);
+                $('#centerNm').val(data.centerName);
+                $('#centerCode').val(data.centerCode);
+            });
+
+            $('#stepInput').find('.step-btn-wrap .btn').on('click', function() {
+                self.autoFlag = true;
+                self.requestTimeData();
             });
 
             $("#solutionBanner .btn-link").click(function(){
@@ -183,15 +258,15 @@
             $('.tb-timetable').on('click', 'button', function() {
                 var url = $('#stepDate').data('ajax'),
                     param = {
-                        serviceType: '',
-                        category: '',
-                        subCategory: '',
-                        lockUserId: '',
-                        zipCode: '',
-                        userAddress: '',
-                        detailAddress: '',
-                        date: '',
-                        time: ''
+                        serviceType: $('#serviceType').val(),
+                        category: $('#category').val(),
+                        subCategory: $('#subCategory').val(),
+                        lockUserId: $('#lockUserId').val(),
+                        zipCode: $('#zipCode').val(),
+                        userAddress: $('#userAddress').val(),
+                        detailAddress: $('#detailAddress').val(),
+                        date: $('#date').val(),
+                        time: $('#time').val()
                     }
 
                 $('#time').val('');
@@ -201,36 +276,51 @@
 
                     if (data.resultFlag == 'Y') {
 
-                        $('#stepEnginner').find('.engineer-img img').attr({
-                            'src': data.enginnerList[0].img,
-                            'alt': data.enginnerList[0].name
+                        $('#stepEngineer').find('.engineer-img img').attr({
+                            'src': data.engineerList[0].img,
+                            'alt': data.engineerList[0].engineerNm
                         });
-                        $('#stepEnginner').find('.engineer-info .name').html(data.enginnerList[0].name);
-                        $('#stepEnginner').find('.engineer-info .center').html(data.enginnerList[0].center);
-                        $('#stepEnginner').find('.engineer-desc .date').html('2020.08.17 11:20');
-                        $('#stepEnginner').find('.engineer-desc .name').html($('[name=topic]').data('topicName') + '&gt;' + $('[name=subTopic]').data('subTopicName'));
+                        $('#stepEngineer').find('.engineer-info .name').html(data.engineerList[0].engineerNm);
+                        $('#stepEngineer').find('.engineer-info .center').html(data.engineerList[0].centerNm);
+                        $('#stepEngineer').find('.engineer-desc .date').html('2020.08.17 11:20');
+                        $('#stepEngineer').find('.engineer-desc .name').html($('[name=topic]').data('topicName') + '&gt;' + $('[name=subTopic]').data('subTopicName'));
+                        $('#engineerNm').val(data.engineerList[0].engineerNm);
+                        $('#engineerCode').val(data.engineerList[0].engineerCode);
+                        $('#centerNm').val(data.engineerList[0].centerNm);
+                        $('#centerCode').val(data.engineerList[0].centerCode);
+                        if (data.engineerList.length && data.engineerList.length > 1) {
+                            $('#stepEngineer').find('button').show();
 
-                        if (data.enginnerList.length && data.enginnerList.length > 1) {
-                            $('#stepEnginner').find('button').show();
+                            var html = '';
+
+                            html = vcui.template(engineerTmpl, data);
+
+                            $('#choiceEngineerPopup .slide-track').html(html);
+                            $('#choiceEngineerPopup .slide-wrap').vcCarousel('reinit');
+
                         } else {
-                            $('#stepEnginner').find('button').hide();
+                            $('#stepEngineer').find('button').hide();
                         }
 
-                        $('#stepEnginner').show();
+                        $('#stepEngineer').addClass('active');
                         $('.btn-group').show();
                     }
                 });
             });
 
-            self.$form.find('.btn-address').on('click', function() { 
+            self.$cont.find('.btn-address').on('click', function() { 
                 addressFinder.open(function(data) {
-                     self.$form.find('input[name=zipCode]').val(data.zonecode);
-                     self.$form.find('input[name=userAddress]').val(data.roadAddress);
-                     self.$form.find('input[name=detailAddress]').val('');
+                    self.$cont.find('input[name=zipCode]').val(data.zonecode);
+                    self.$cont.find('input[name=userAddress]').val(data.roadAddress);
+                    self.$cont.find('input[name=detailAddress]').val('');
+
+                    if (self.autoFlag) {
+                        self.requestTimeData();
+                    }
                 }); 
             });
 
-            self.$form.on('change', 'input[name=topic]', function() {
+            self.$cont.on('change', 'input[name=topic]', function() {
                 var $this = $(this),
                     url = $('#topicList').data('ajax'),
                     param = {
@@ -250,7 +340,7 @@
                 });
             });
 
-            self.$form.on('change', 'input[name=subTopic]', function() {
+            self.$cont.on('change', 'input[name=subTopic]', function() {
                 var $this = $(this),
                     url = $('#subTopicList').data('ajax'),
                     param = {
@@ -270,9 +360,13 @@
                         }
                     }
                 });
+
+                if (self.autoFlag) {
+                    self.requestTimeData();
+                }
             });
 
-            self.$form.find('.btn-confirm').on('click', function() {
+            self.$cont.find('.btn-confirm').on('click', function() {
                 var result = validation.validate();
 
                 if (result.success == true) {                        
@@ -281,30 +375,22 @@
                         okBtnName: '확인',
                         cancelBtnName: '취소',
                         ok: function() {
-                            var url = self.$form.data('ajax');
+                            var url = $('#submitForm').data('ajax');
                             var param = validation.getAllValues();
+
+                            param = $.extend(param, lgkorUI.getHiddenInputData('', 'step-area'));
 
                             lgkorUI.requestAjaxDataPost(url, param, function(result) {
                                 var data = result.data;
             
                                 if (data.resultFlag == 'Y') {
-                                    self.$form.submit();
+                                    $('#submitForm')[0].data.value = JSON.stringify(param);
+                                    $('#submitForm').submit();
                                 }
                             });
                         }
                     });
                 }
-            });
-            self.$form.find('.btn-cancel').on('click', function() {
-                var url = $(this).data('url');
-                lgkorUI.confirm('', {
-                    title:'취소 하시겠습니까?',
-                    okBtnName: '확인',
-                    cancelBtnName: '취소',
-                    ok: function() {
-                        location.href = url;
-                    }
-                });
             });
         }
     }

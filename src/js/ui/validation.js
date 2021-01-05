@@ -554,6 +554,40 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
             self.setValues(nObj);
         },
+        getAllValues : function getAllValues(){
+            var self = this;  
+            var result = {};
+            var $findInput = self.$el.find('input, textarea').filter(':visible');
+            $findInput.each(function(i, obj) {
+                var item = $(obj)
+                var name = item.attr('name');
+                if(name) {
+                    if(item.is(':checkbox')) {
+                        result[name] = item.is(":checked");
+                    } else if (item.is(':file')) {
+                        result[name] = item[0].files[0];
+                    } else if (item.is(':radio')) {
+                        if (item.is(':checked')) {
+                            result[name] = item.val();
+                        } else {
+                            if (!result[name]) {
+                                result[name] = '';
+                            }
+                        }
+                    } else {
+                        result[name] = item.val();
+                    }
+                }
+            });
+
+            self.$el.find('select').filter(':visible').each(function(idx, item){
+                var name = $(item).attr('name');
+                if(name){
+                    result[name] = $(item).find('option:selected').val();
+                }
+            });
+            return result;
+        },
         _swicthErrorMsg : function _swicthErrorMsg(obj, targetArr){
             var self = this;
             var $target, msg, nobj;
