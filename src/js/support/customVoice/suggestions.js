@@ -44,10 +44,24 @@
                         required: true,
                         msgTarget: '.sub-topic-msg'
                     },
-                    userNm: {
-                        msgTarget: '.err-block' 
+                    privcyCheck: {
+                        msgTarget: '.err-block'
+                    },
+                    userName: {
+                        msgTarget: '.err-block'
                     },
                     phoneNo: {
+                        pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
+                        msgTarget: '.err-block'
+                    },
+                    email:{
+                        pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        msgTarget: '.err-block'
+                    },
+                    title: {
+                        msgTarget: '.err-block'
+                    },
+                    content: {
                         msgTarget: '.err-block'
                     }
                 }
