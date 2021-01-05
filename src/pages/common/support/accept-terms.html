@@ -1,4 +1,4 @@
-@@if (context.member) {
+@@if (!context.member) {
 <div class="agree-wrap ui_all_checkbox"> 
     <div class="agree-all-chk">
         <span class="chk-wrap">
@@ -62,7 +62,7 @@
 </div>
 }
 
-@@if (!context.member) {
+@@if (context.member) {
 <div class="agree-wrap">
     <div class="input-info">
         <div class="agree-tit">

@@ -5,9 +5,27 @@
         &:not(:first-child), &:not(:only-child) {
             padding-top:40px;
         }
+
+        .step-box {
+            display:none;
+            &.active {
+                display:block;
+                & + .step-box.active {
+                    margin:80px 0 0;
+                }
+            }
+            & ~ .btn-group {
+                display:none;
+            }
+            .step-btn-wrap {
+                margin-top:24px;
+                text-align:center;
+            }
+        }
+        
         .section {
             & + .section {
-                margin-top:80px;
+                margin:80px 0 0;
             }
             .form-infos {
                 margin-top:-28px;
@@ -28,15 +46,23 @@
             &:not(:first-child), &:not(:only-child) {
                 padding-top:0;
             }
-            .section {
-                margin-top:0;
-                padding:32px 16px 60px;
-                & + .section {
-                    margin-top:0;
-                    border-top:12px solid #f4f4f4;
+            .step-box {
+                &.active {
+                    & + .step-box.active {
+                        margin:60px 0 0;
+                        border-top:12px solid #f4f4f4;
+                    }
                 }
-                &:last-child {
-                    padding-bottom:0;
+                & ~ .bullet-list {
+                    margin-left:16px;
+                    margin-right:16px;
+                }
+            }
+            .section {
+                padding:32px 16px 0;
+                & + .section {
+                    margin:60px 0 0;
+                    border-top:12px solid #f4f4f4;
                 }
                 &-box {
                     padding-right:0;

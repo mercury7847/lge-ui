@@ -40,15 +40,23 @@
                 })
                 
                 <div class="cont-wrap">
-                    <form action="/html/CS/CSRF6029.html" data-ajax="/lg5-common/data-ajax/support/serviceEngineer.json" id="submitForm" autocomplete="off" novalidate>
-                        <input type="hidden" name="date" id="date" value="">
-                        <input type="hidden" name="time" id="time" value="">
+
+                    <form action="/html/CS/CSRF6029.html" method="POST" data-ajax="/lg5-common/data-ajax/support/serviceEngineer.json" id="submitForm" autocomplete="off" novalidate>
+                        <input type="hidden" name="data" id="data" value="">
+                    </form>
+                    <div class="step-area">
                         <input type="hidden" name="categoryNm" id="categoryNm" value="">
                         <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="">
                         <input type="hidden" name="category" id="category" value="">
                         <input type="hidden" name="subCategory" id="subCategory" value="">
                         <input type="hidden" name="modelCode" id="modelCode" value="">
                         <input type="hidden" name="productCode" id="productCode" value="">
+                        <input type="hidden" name="date" id="date" value="">
+                        <input type="hidden" name="time" id="time" value="">
+                        <input type="hidden" name="engineerNm" id="engineerNm" value="">
+                        <input type="hidden" name="engineerCode" id="engineerCode" value="">
+                        <input type="hidden" name="centerNm" id="" value="centerNm">
+                        <input type="hidden" name="centerCode" id="" value="centerCode">
                         <input type="hidden" name="serviceType" id="serviceType" value="A">
                         <input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
 
@@ -59,18 +67,17 @@
                                     <p class="req" aria-disabled="true">필수 입력 항목</p>
                                 </div>
                                 @@include('./common/support/accept-terms.html', {
-                                    member: true
+                                    member: false
                                 })
-                                <div class="step-btn-wrap">
-                                    <button type="button" class="btn border size-m btn-next"><span>다음</span></button>
-                                </div> 
                             </div>
+                            <div class="step-btn-wrap">
+                                <button type="button" class="btn border size-m"><span>다음</span></button>
+                            </div> 
                         </div>
                         <!-- // 약관 동의 -->
 
                         <!-- 제품 선택 -->
                         <div class="step-box" id="stepModel">
-                            <!-- 제품 카테고리 선택 -->
                             @@include('./common/support/select-model.html', {
                                 "keyword": "Y",
                                 "model": "Y",
@@ -91,7 +98,7 @@
                             })
                         </div>
                         <!-- // 제품 선택 -->
-    
+
                         <!-- 예약 내용 입력 -->
                         <div class="step-box" id="stepInput" data-ajax="/lg5-common/data-ajax/support/possibleDate.json">
                             <div class="section">
@@ -569,10 +576,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="step-btn-wrap">
-                                    <button type="button" class="btn border size-m btn-next"><span>희망 일자 선택</span></button>
-                                </div> 
                             </div>
+                            <div class="step-btn-wrap">
+                                <button type="button" class="btn border size-m"><span>희망 일자 선택</span></button>
+                            </div> 
                         </div>
                         <!-- // 예약 내용 입력 -->
 
@@ -805,7 +812,7 @@
                         <!-- // 예약/상담 날짜 선택 -->
 
                         <!-- 예약/상담 엔지니어 선택 -->
-                        <div class="step-box" id="stepEnginner">
+                        <div class="step-box" id="stepEngineer">
                             <div class="section">
                                 <div class="tit-wrap">
                                     <h2 class="tit">방문할 엔지니어 확인</h2>
@@ -827,14 +834,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                @@include('./common/modules/bullet-list.html', {
-                                    "topBorder" : true,
-                                    "bulletTxt" : [
-                                        "평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용 됩니다.",
-                                        "비로그인으로 예약을 접수하실 경우, 휴대전화 인증 후에 예약이 완료됩니다.",
-                                        "입력하신 정보가 정확하지 않을 경우 서비스가 취소 또는 지연될 수 있습니다."
-                                    ]
-                                })
                             </div>
                         </div>
                         <!-- // 예약/상담 엔지니어 선택 -->
@@ -849,11 +848,10 @@
                         })
 
                         <div class="btn-group center">
-                            <button type="button" class="btn gray btn-cancel"><span>취소</span></a>
+                            <button type="button" class="btn gray" data-href="#canclePopup" data-control="modal"><span>취소</span></button>
                             <button type="button" class="btn btn-confirm">예약</button>
                         </div>
-
-                    </form>
+                    </div>
 
                 </div>
             </div>
@@ -873,6 +871,17 @@
 
     <!-- 휴대폰인증 팝업 -->
     @@include('./CS/modal/phone-certification-popup.html')
+
+    <!-- 취소 팝업 -->
+    <article id="canclePopup" class="lay-wrap">
+        <section class="lay-conts">
+            <h6>취소 하시겠습니까?</h6>
+        </section>
+        <div class="btn-wrap laypop">
+            <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+            <a href="#" class="btn"><span>확인</span></a>
+        </div>
+    </article>
 
     <!-- toast-meassage -->
     @@include('./common/modules/toast-message.html', {
