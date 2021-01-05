@@ -6,88 +6,15 @@
 
 // 비교하기 결과
 .contents.compare {
-    .compare-result-wrap {
-        max-width: (1146px + 80px);
-        margin: 0 auto;
-        padding: 0 40px;
 
-        @include mobile {
-            max-width: 100%;
-            padding: 0 16px;
-        }
-
-        &.fixed {
-            .compare-result {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                z-index: 1;
-                background-color: $color-bg-wt;
-                box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14);
-                .inner {
-                    max-width: (1146px + 80px);
-                    margin: 0 auto;
-                    padding: 0 40px;
-                }
-                @include mobile {
-                    .inner {
-                        max-width: 100%;
-                        padding: 0 16px;
-                    }
-                }
-            }
-            .product-items {
-                padding-top: 12px;
-                .item {
-                    padding: 16px 48px;
-                    &.compare-item {
-                        padding-bottom: 16px;
-                    }
-                    .product-image,
-                    .product-info .sku,
-                    .product-info .spec-info3,
-                    .product-button {
-                        display: none;
-                    }
-                    .product-info {
-                        margin-bottom: 0;
-                        padding-top: 0;
-                        .product-name {
-                            margin-top: 0;
-                            a {
-                                -webkit-line-clamp: 1;
-                            }
-                        }
-                    }
-                    .price-area {
-                        .original {
-                            @include font-small;
-                        }
-                        .total {
-                            @include font-medium;
-                        }
-                    }
-                    .product-bottom {
-                        position: static;
-                    }
-                }
-                @include mobile {
-                    padding: 10px 0;
-                    .item {
-                        .product-info {
-                            .product-name {
-                                margin-bottom: 6px;
-                            }
-                        }
-                    }
-                }
-            }
-            .result-tabs {
-                margin-top: 0;
-                @include mobile {
-                    margin-top: 10px;
-                }
+    .compare-result {
+        .inner {
+            max-width: (1146px + 80px);
+            margin: 0 auto;
+            padding: 0 40px;
+            @include mobile {
+                max-width: 100%;
+                padding: 0 16px;
             }
         }
 
@@ -202,13 +129,44 @@
         .result-tabs {
             position: relative;
             margin-top: 64px;
-            .tabs-wrap {
+            .tabs-scroll-wrap {
+                position: relative;
+                .tabs {
+                    font-size: 0;
+                    white-space:nowrap;
+                    vertical-align: top;
+                    > li {
+                        display: inline-block;
+                        white-space: nowrap;
+                        vertical-align: top;
+                        > a {
+                            display: block;
+                            position: relative;
+                            border-bottom: 4px solid transparent;
+                            font-weight: 700;
+                            @include font-large;
+                            color: #aaa;
+                        }
+                        &.on > a {
+                            border-color: #222;
+                            color: #222;
+                        }
+
+                        @include mobile {
+                            margin-left: 24px;
+                            &:first-child {
+                                margin-left: 0;
+                            }
+                            > a {
+                                padding-bottom: 8px;
+                                border-width: 3px;
+                            }
+                        }
+                    }
+                }
                 @include pc {
                     margin-right: 120px;
                     text-align: left;
-                    .tabs {
-                        width: 100%;
-                    }
                     .tabs > li {
                         margin-left: 0;
                         > a {
@@ -226,16 +184,10 @@
                     .btn-arrow {
                         position: absolute;
                         top: 0;
-                        width: 24px;
-                        height: 70px;
+                        height: 72px;
                         border-radius: 0;
                         background-color: $color-bg-wt;
                         box-shadow: none;
-                        &:before {
-                            width: 24px;
-                            height: 24px;
-                            background-image: url('/lg5-common/images/icons/btn-arr-24x24-black.svg');
-                        }
                         &.prev {
                             left: 0;
                         }
@@ -252,7 +204,7 @@
                 position: absolute;
                 bottom: 0;
                 right: 0;
-                padding: 26px 0;
+                padding: 24px 0 28px;
                 .chk-wrap input + label {
                     @include font-small;
                     &:before {
@@ -283,68 +235,134 @@
             }
         }
 
-        .result-contents {
-            .section {
-                padding: 48px 0;
-                border-top: 1px solid $color-border;
-                .title {
-                    margin-bottom: 24px;
-                    @include font-large-1;
+        &.fixed {
+            background-color: $color-bg-wt;
+            box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14);
+            .product-items {
+                padding-top: 12px;
+                .item {
+                    padding: 16px 48px;
+                    &.compare-item {
+                        padding-bottom: 16px;
+                    }
+                    .product-image,
+                    .product-info .sku,
+                    .product-info .spec-info3,
+                    .product-button {
+                        display: none;
+                    }
+                    .product-info {
+                        margin-bottom: 0;
+                        padding-top: 0;
+                        .product-name {
+                            margin-top: 0;
+                            a {
+                                -webkit-line-clamp: 1;
+                            }
+                        }
+                    }
+                    .price-area {
+                        .original {
+                            @include font-small;
+                        }
+                        .total {
+                            @include font-medium;
+                        }
+                    }
+                    .product-bottom {
+                        position: static;
+                    }
                 }
                 @include mobile {
-                    margin: 0 -16px;
-                    padding: 40px 16px;
-                    .title {
-                        margin-bottom: 20px;
+                    padding: 10px 0;
+                    .item {
+                        .product-info {
+                            .product-name {
+                                margin-bottom: 6px;
+                            }
+                        }
                     }
                 }
             }
-            .lists {
-                @include clearfix;
-                margin: 0 -24px;
-                .list {
-                    float: left;
-                    width: 33%;
-                    padding: 0 24px;
-                    > li {
-                        &:not(:last-child) {
-                            margin-bottom: 36px;
-                        }
-                    }
-                }
+            .result-tabs {
+                margin-top: 0;
                 @include mobile {
-                    margin: 0 -10px;
-                    .list {
-                        width: 50%;
-                        padding: 0 10px;
-                        &:nth-child(3) {
-                            display: none;
-                        }
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+
+    .compare-result-contents {
+        max-width: (1146px + 80px);
+        margin: 0 auto;
+        padding: 0 40px;
+
+        @include mobile {
+            max-width: 100%;
+            padding: 0 16px;
+        }
+
+        .section {
+            padding: 48px 0;
+            border-top: 1px solid $color-border;
+            .title {
+                margin-bottom: 24px;
+                @include font-large-1;
+            }
+            @include mobile {
+                margin: 0 -16px;
+                padding: 40px 16px;
+                .title {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+        .lists {
+            @include clearfix;
+            margin: 0 -24px;
+            .list {
+                float: left;
+                width: 33%;
+                padding: 0 24px;
+                > li {
+                    &:not(:last-child) {
+                        margin-bottom: 36px;
                     }
                 }
-                dl {
-                    dt {
-                        margin-bottom: 2px;
-                        font-weight: 500;
-                        @include font-small;
-                        color: $color-gray-1;
+            }
+            @include mobile {
+                margin: 0 -10px;
+                .list {
+                    width: 50%;
+                    padding: 0 10px;
+                    &:nth-child(3) {
+                        display: none;
                     }
+                }
+            }
+            dl {
+                dt {
+                    margin-bottom: 2px;
+                    font-weight: 500;
+                    @include font-small;
+                    color: $color-gray-1;
+                }
+                dd {
+                    font-weight: 700;
+                    @include font-medium;
+                }
+            }
+            &.main {
+                dl {
                     dd {
                         font-weight: 700;
-                        @include font-medium;
-                    }
-                }
-                &.main {
-                    dl {
-                        dd {
-                            font-weight: 700;
-                            font-size: $font-large-1;
-                            line-height: 30px;
-                            color: #111;
-                            @include mobile {
-                                font-size: $font-large;
-                                line-height: 26px;
-                            }
+                        font-size: $font-large-1;
+                        line-height: 30px;
+                        color: #111;
+                        @include mobile {
+                            font-size: $font-large;
+                            line-height: 26px;
                         }
                     }
                 }

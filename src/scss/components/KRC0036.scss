@@ -4,7 +4,8 @@
 
 .KRC0036 {
     &.stage-full {
-		width:100%;
+        max-width:1920px;
+        margin:0 auto;
 	}
 	&.stage-wide {
 		max-width:1600px;
@@ -24,7 +25,8 @@
                 .only-pc {
                     display:block;
                     img {
-                        width:100%;
+                        width:auto;
+                        max-width:100%;
                         height:auto;
                         vertical-align:top;
                     }
@@ -50,7 +52,8 @@
                 .only-m {
                     display:block;
                     img {
-                        width:100%;
+                        width:auto;
+                        max-width:100%;
                         height:auto;
                         vertical-align:top;
                     }
@@ -135,7 +138,8 @@
                 .visual-area.video {
                     margin-bottom:16px;
                     img {
-                        width:100%;
+                        width:auto;
+                        max-width:100%;
                         height:auto;
                         vertical-align:top;
                     }
@@ -143,7 +147,7 @@
                 .thumb-area {
                     margin-bottom:24px;
                     img {
-                        width:100%;
+                        width:auto;
                         max-width:100%;
                         height:auto;
                         vertical-align:top;

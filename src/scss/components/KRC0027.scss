@@ -44,7 +44,7 @@
 $block: (block1, block2, block3);
 @each $i in $block {
     img {
-        width:100%;
+        width:auto;
         max-width:100%;
         height:auto;
         vertical-align:top;
