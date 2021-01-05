@@ -3,10 +3,6 @@
 @import "../components-app";
 
 .KRC0001 {
-	@media screen and (max-width:1380px) {
-		max-width: 100%;
-	}
-
 	.products-tab-area {
 		position:relative;
 		max-width: 1380px + 80px;
@@ -135,6 +131,7 @@
 							text-align: center;
 							img {
 								width: 100%;
+								height:auto;
 								max-width: 200px;
 								@include mobile {
 									max-width:150px;

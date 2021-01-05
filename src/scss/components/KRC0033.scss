@@ -4,7 +4,8 @@
 
 .KRC0033 {
 	&.stage-full {
-		width:100%;
+		max-width:1920px;
+		margin:0 auto;
 	}
 	&.stage-wide {
 		max-width:1600px;
@@ -17,7 +18,8 @@
 	.visual-area {
 		z-index:1;
 		img {
-			width:100%;
+			width:auto;
+			max-width:100%;
 			height:auto;
 			vertical-align:top;
 		}
@@ -125,7 +127,7 @@
 					.thumbnail-box {
 						margin-top:24px;
 						img {
-							width:100%;
+							width:auto;
 							max-width:100%;
 							height:auto;
 							vertical-align:top;

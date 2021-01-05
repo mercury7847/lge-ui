@@ -12,137 +12,173 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '동영상 가이드'
+                'pageTitle': '동영상 가이드',
+                'pageDesc': '제품 사용에 유용한 동영상을 찾아보세요.'
             })
 
             <div class="contents support video-guide">
-                <div class="cont-wrap narrow">
-                    <div class="form-wrap search-sort">
-                        <div class="sort-desc">
-                            <p>정보분류와 검색 키워드를 이용하여 보다 정확한 해결책을 찾을 수 있습니다.</p>
-                        </div>
-                        <div class="sort-box">
-                            <div class="forms">
-                                <div class="conts">
-                                    <div class="select-wrap">
-                                        <select name="sort" id="sort" class="ui_selectbox">
-                                            <option value="">전체 분류</option>
-                                            <option value="">전체 분류</option>
-                                            <option value="">전체 분류</option>
-                                        </select>
-                                        <!-- 선택 가능한 운영체제가 없을 경우 노출 -->
-                                        <!-- <select name="sort" id="sort" class="ui_selectbox" disabled>
-                                            <option value="">없음</option>
-                                        </select> -->
-                                        <!-- // 선택 가능한 운영체제가 없을 경우 노출 -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="forms">
-                                <div class="conts">
-                                    <div class="select-wrap">
-                                        <select name="sub-sort" id="sub-sort" class="ui_selectbox" disabled>
-                                            <option value="">하위 세부 분류 선택</option>
-                                            <option value="">하위 세부 분류 선택</option>
-                                            <option value="">하위 세부 분류 선택</option>
-                                            <option value="">하위 세부 분류 선택</option>
-                                            <option value="">하위 세부 분류 선택</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="search-wrap">
-                            <div class="keyword-search">
-                                <div class="input-wrap">
-                                    <input type="text" name="inputKeyword" id="inputKeyword" class="ui_input_clearbutton" placeholder="검색 키워드" title="검색 키워드" data-clear-button="button.btn-delete">
-                                    <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
-                                    <button type="button" class="btn-search"><span class="blind">검색</span></button>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
 
-                    <div class="search-wrap">
-                        <form action="/html/support/CSTF2100.html" id="submitForm" data-ajax="/lg5-common/data-ajax/support/videoList.json" autocomplete="off">
-                        
-                        </form>
+                <!-- 비회원 -->
+                @@include('./common/support/login-guide.html', {
+                    'text': '로그인을 하시면 더욱 편리하게 이용하실 수 있습니다. <br class="pc-only"> 개인 정보 자동 입력, 저장해 놓은 제품 선택 등'
+                })
+
+                <!-- 선택 제품 플로팅바 -->
+                @@include('./common/support/selected-model-bar.html')
+
+                <div class="cont-wrap narrow">
+
+                    <!-- 제품 선택 -->
+                    <div class="step-box active" id="stepModel">
+                        @@include('./common/support/select-model.html', {
+                            "keyword": "Y",
+                            "model": "Y",
+                            "category": [
+                                { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
+                                { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
+                                { "name": "IT/모니터", "code": "P1011", "imgSrc": "/lg5-common/images/CS/img-category03.jpg", "imgAlt": "IT/모니터 카테고리 썸네일" },
+                                { "name": "에어컨", "code": "1019", "imgSrc": "/lg5-common/images/CS/img-category04.jpg", "imgAlt": "에어컨 카테고리 썸네일" },
+                                { "name": "냉장/냉동고", "code": "1025", "imgSrc": "/lg5-common/images/CS/img-category05.jpg", "imgAlt": "냉장/냉동고 카테고리 썸네일" },
+                                { "name": "세탁기/스타일러", "code": "1020", "imgSrc": "/lg5-common/images/CS/img-category06.jpg", "imgAlt": "세탁기/스타일러 카테고리 썸네일" },
+                                { "name": "청소기", "code": "1023", "imgSrc": "/lg5-common/images/CS/img-category07.jpg", "imgAlt": "청소기 카테고리 썸네일" },
+                                { "name": "조리/세척기기", "code": "P1030", "imgSrc": "/lg5-common/images/CS/img-category08.jpg", "imgAlt": "조리/세척기기 카테고리 썸네일" },
+                                { "name": "건강/소형기기", "code": "P1024", "imgSrc": "/lg5-common/images/CS/img-category09.jpg", "imgAlt": "건강/소형기기 카테고리 썸네일" },
+                                { "name": "AV/음향기기", "code": "P1009", "imgSrc": "/lg5-common/images/CS/img-category10.jpg", "imgAlt": "AV/음향기기 카테고리 썸네일" },
+                                { "name": "기타", "code": "P9999", "imgSrc": "/lg5-common/images/CS/img-category11.jpg", "imgAlt": "기타 카테고리 썸네일" },
+                                { "name": "B2B", "code": "P1134", "imgSrc": "/lg5-common/images/CS/img-category12.jpg", "imgAlt": "B2B 카테고리 썸네일" }
+                            ]
+                        })
                     </div>
-                    <div class="result-wrap">
-                        <div class="search-summary">
-                            <p class="summary"><em class="summary-keyword" id="keyword">냉장고</em> 검색결과 입니다.<button type="button" class="icon-queryReset summary-delete" id="btnReset"><span class="blind">검색어 초기화</span></button></p>
+                    <!-- // 제품 선택 -->
+
+                    <div class="step-box" id="step">
+                        <div class="form-wrap search-sort">
+                            <div class="sort-desc">
+                                <p>정보분류와 검색 키워드를 이용하여 보다 정확한 해결책을 찾을 수 있습니다.</p>
+                            </div>
+                            <div class="sort-box">
+                                <div class="forms">
+                                    <div class="conts">
+                                        <div class="select-wrap">
+                                            <select name="sort" id="sort" class="ui_selectbox">
+                                                <option value="">전체 분류</option>
+                                                <option value="">전체 분류</option>
+                                                <option value="">전체 분류</option>
+                                            </select>
+                                            <!-- 선택 가능한 운영체제가 없을 경우 노출 -->
+                                            <!-- <select name="sort" id="sort" class="ui_selectbox" disabled>
+                                                <option value="">없음</option>
+                                            </select> -->
+                                            <!-- // 선택 가능한 운영체제가 없을 경우 노출 -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="forms">
+                                    <div class="conts">
+                                        <div class="select-wrap">
+                                            <select name="sub-sort" id="sub-sort" class="ui_selectbox" disabled>
+                                                <option value="">하위 세부 분류 선택</option>
+                                                <option value="">하위 세부 분류 선택</option>
+                                                <option value="">하위 세부 분류 선택</option>
+                                                <option value="">하위 세부 분류 선택</option>
+                                                <option value="">하위 세부 분류 선택</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="search-wrap">
+                                <div class="keyword-search">
+                                    <div class="input-wrap">
+                                        <input type="text" name="inputKeyword" id="inputKeyword" class="ui_input_clearbutton" placeholder="검색 키워드" title="검색 키워드" data-clear-button="button.btn-delete">
+                                        <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+                                        <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                    </div>
+                                </div> 
+                            </div>
                         </div>
-                        <div class="tabs-wrap new-type ui_tab">
-                            <ul class="tabs">
-                                <li class="on"><a href="#tab1">인기 동영상 가이드<em class="blind">선택됨</em></a></li>
-                                <li><a href="#tab2">최신 동영상 가이드</a></li>
-                            </ul>
+
+                        <div class="search-wrap">
+                            <form action="/html/support/CSTF2100.html" id="submitForm" data-ajax="/lg5-common/data-ajax/support/videoList.json" autocomplete="off">
+                            
+                            </form>
                         </div>
-                        <div class="search-result">
-                            <div id="tab1" class="tabs-contents">
-                                <div class="result-box" id="popular">
-                                    <h3 class="result-tit">인기 동영상 가이드</h3>
-                                    <div class="video-list-wrap">
-                                        <ul class="video-list">
-                                            @@for (var i = 0; i < 5; i++) {
-                                            <li>
-                                                <a href="#">
-                                                    <div class="video-thumb">
-                                                        <!-- http://img.youtube.com/vi/[video-id]/[thumbnail-number].jpg -->
-                                                        <img src="//img.youtube.com/vi/hmYVuY7VDZc/default.jpg" alt="">
-                                                    </div>
-                                                    <div class="video-cont">
-                                                        <div class="flag-wrap bar-type">
-                                                            <span class="flag">TV/프로젝터>올레드</span>
-                                                            <span class="flag gray">기능관련 > 제품 사용 방법</span>
+                        <div class="result-wrap">
+                            <div class="search-summary">
+                                <p class="summary"><em class="summary-keyword" id="keyword">냉장고</em> 검색결과 입니다.<button type="button" class="icon-queryReset summary-delete" id="btnReset"><span class="blind">검색어 초기화</span></button></p>
+                            </div>
+                            <div class="tabs-wrap new-type ui_tab">
+                                <ul class="tabs">
+                                    <li class="on"><a href="#tab1">인기 동영상 가이드<em class="blind">선택됨</em></a></li>
+                                    <li><a href="#tab2">최신 동영상 가이드</a></li>
+                                </ul>
+                            </div>
+                            <div class="search-result">
+                                <div id="tab1" class="tabs-contents">
+                                    <div class="result-box" id="popular">
+                                        <h3 class="result-tit">인기 동영상 가이드</h3>
+                                        <div class="video-list-wrap">
+                                            <ul class="video-list">
+                                                @@for (var i = 0; i < 5; i++) {
+                                                <li>
+                                                    <a href="#">
+                                                        <div class="video-thumb">
+                                                            <!-- http://img.youtube.com/vi/[video-id]/[thumbnail-number].jpg -->
+                                                            <img src="//img.youtube.com/vi/hmYVuY7VDZc/default.jpg" alt="">
                                                         </div>
-                                                        <h4 class="tit">냉장고에 손이 닿을 때 전기가 느껴져요.</h4>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            }
-                                        </ul>
+                                                        <div class="video-cont">
+                                                            <div class="flag-wrap bar-type">
+                                                                <span class="flag">TV/프로젝터>올레드</span>
+                                                                <span class="flag gray">기능관련 > 제품 사용 방법</span>
+                                                            </div>
+                                                            <h4 class="tit">냉장고에 손이 닿을 때 전기가 느껴져요.</h4>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                        <p class="result-total">검색결과 <em class="count">240</em>건</p>
+                                        @@include('./common/support/pagination.html', {
+                                            'count': 5,
+                                            'last': 'true'
+                                        })
                                     </div>
-                                    <p class="result-total">검색결과 <em class="count">240</em>건</p>
-                                    @@include('./common/support/pagination.html', {
-                                        'count': 5,
-                                        'last': 'true'
-                                    })
+                                </div>
+                                <div id="tab2" class="tabs-contents">
+                                    <div class="result-box" id="newest">
+                                        <h3 class="result-tit">최신 동영상 가이드</h3>
+                                        <div class="video-list-wrap">
+                                            <ul class="video-list">
+                                                @@for (var i = 0; i < 5; i++) {
+                                                <li>
+                                                    <a href="#">
+                                                        <div class="video-thumb">
+                                                            <!-- http://img.youtube.com/vi/[video-id]/[thumbnail-number].jpg -->
+                                                            <img src="//img.youtube.com/vi/hmYVuY7VDZc/default.jpg" alt="">
+                                                        </div>
+                                                        <div class="video-cont">
+                                                            <p class="category">TV/프로젝터>올레드</p>
+                                                            <p class="topic">기능관련 > 제품 사용 방법</p>
+                                                            <h4 class="tit">냉장고에 손이 닿을 때 전기가 느껴져요.</h4>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                        <p class="result-total">검색결과 <em class="count">240</em>건</p>
+                                        @@include('./common/support/pagination.html', {
+                                            'count': 5,
+                                            'last': 'true'
+                                        })
+                                    </div>
                                 </div>
                             </div>
-                            <div id="tab2" class="tabs-contents">
-                                <div class="result-box" id="newest">
-                                    <h3 class="result-tit">최신 동영상 가이드</h3>
-                                    <div class="video-list-wrap">
-                                        <ul class="video-list">
-                                            @@for (var i = 0; i < 5; i++) {
-                                            <li>
-                                                <a href="#">
-                                                    <div class="video-thumb">
-                                                        <!-- http://img.youtube.com/vi/[video-id]/[thumbnail-number].jpg -->
-                                                        <img src="//img.youtube.com/vi/hmYVuY7VDZc/default.jpg" alt="">
-                                                    </div>
-                                                    <div class="video-cont">
-                                                        <p class="category">TV/프로젝터>올레드</p>
-                                                        <p class="topic">기능관련 > 제품 사용 방법</p>
-                                                        <h4 class="tit">냉장고에 손이 닿을 때 전기가 느껴져요.</h4>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            }
-                                        </ul>
-                                    </div>
-                                    <p class="result-total">검색결과 <em class="count">240</em>건</p>
-                                    @@include('./common/support/pagination.html', {
-                                        'count': 5,
-                                        'last': 'true'
-                                    })
+                            <div class="search-no-result">
+                                <div class="no-data">
+                                    <p>검색결과가 없습니다.</p>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="search-no-result">
-                            <div class="no-data">
-                                <p>검색결과가 없습니다.</p>
                             </div>
                         </div>
                     </div>
@@ -155,7 +191,6 @@
     </div>      
 
     <!-- support script -->
-    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
     <script src="/lg5-common/js/support/productSupport/videoGuide.min.js"></script>
 </body>

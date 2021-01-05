@@ -164,9 +164,11 @@
 				@@if ( context.moreCont ) {
 				<!-- 9. open button -->
 				<div class="list-btn-area">
-					<a href="#none" class="btn border size-m more" role="button" aria-expended="false"><!-- [KR수정_201222] 버튼 class 수정 -->
-						<span class="tooltip-text" role="tooltip">더보기</span>
-                    </a>
+					<!-- [KR수정_210105] 버튼 class 추가(openBtn), 내부 span class 삭제 -->
+					<a href="#none" class="btn border size-m more openBtn" role="button" aria-expended="false"><!-- [KR수정_201222] 버튼 class 수정 -->
+						<span role="tooltip">더보기</span>
+					</a>
+					<!-- // [KR수정_210105] 버튼 class 추가(openBtn), 내부 span class 삭제 -->
 				</div>
 				<!-- // 9. open button -->
 				<!-- 
@@ -181,11 +183,11 @@
 				-->
 				<div class="more-content">
 					<!-- 10. close button -->
-					<!-- [KR수정_201222] class명(in-list-btn-area -> list-btn-area) 수정, 내부 버튼 class 수정 -->
-					<div class="list-btn-area top">
+					<!-- [KR수정_210105] 더보기 컨텐츠 내 상단 '닫기'버튼 삭제 -->
+					<!-- <div class="list-btn-area top">
 						<a href="#none" class="btn border size-m more in-close" role="button" aria-expanded="true">닫기</a>
-					</div>
-					<!-- // [KR수정_201222] class명(in-list-btn-area -> list-btn-area) 수정, 내부 버튼 class 수정 -->
+					</div> -->
+					<!-- // [KR수정_210105] 더보기 컨텐츠 내 상단 '닫기'버튼 삭제 -->
 					<!-- // 10. close button -->
 					<div class="list-container">
 						<div class="list align-left">
@@ -288,7 +290,7 @@
 					<!-- 10. close button -->
 					<!-- [KR수정_201222] class명(in-list-btn-area -> list-btn-area) 수정, 내부 버튼 class 수정 -->
 					<div class="list-btn-area">
-						<a href="#none" class="btn border size-m more in-close" role="button" aria-expanded="true">닫기</a>
+						<a href="#none" class="btn border size-m more in-close" role="button" aria-expanded="true"><span>닫기</span></a>
 					</div>
 					<!-- // [KR수정_201222] class명(in-list-btn-area -> list-btn-area) 수정, 내부 버튼 class 수정 -->
 					<!-- // 10. close button -->

@@ -9,12 +9,13 @@
 <body>
     <div class="wrap">
         @@include('./common/header.html')
+
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '출장 서비스 예약',
-                'pageDesc': '전문 엔지니어가 고객님께 찾아가서 필요로 하시는 서비스를 제공해드립니다.',
-                'pageBtn': [
-                    { 'btn': '요금 및 보증기간 안내', 'attr': 'data-href="#ratesWarrantyGuidePopup" data-control="modal"' }
+                'pageTitle': '전화상담 예약',
+                'pageDesc': '고객님께서 원하시는 시간에 전문 상담사가 직접 전화드려 상담을 해드립니다.',
+                'pageBtn' : [
+                    { 'btn' : '요금 및 보증 기간 안내 ', 'attr': 'data-href="#ratesWarrantyGuidePopup" data-control="modal"' }
                 ],
                 'progressArr': [
                     { 'progress' : '제품 선택'},
@@ -22,42 +23,86 @@
                     { 'progress' : '예약 완료'}
                 ]
             })
-            <div class="contents support service-engineer">
-                <!-- 서비스 안내 -->
-                @@include('./common/support/service-guide.html', {
-                    "txt": [
-                        "3건 이상의 제품에 대해 서비스 접수하실 경우,  1544-7777 로 문의하시면 1명의 서비스 기사로 접수를 할 수 있습니다. ",
-                        "무상 보증 기간 경과 된 제품 또는 사용자 과실 등으로 인한 제품 고장의 서비스 신청 건은 유상으로 서비스 비용이 청구됩니다."
-                    ]
-                })
+            <div class="contents support request-call">
+
+                <div class="accordion-wrap ui_accordion border-type directCall-wrap" data-single-open="true">
+                    <ul>
+                        <li class="lists">
+                            <div class="head">
+                                <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                    <span class="subtitle"><strong>바로 전화하고 싶으신가요?</strong></span>
+                                    <span class="blind ui_accord_text">내용 더 보기</span>
+                                </a>
+                            </div>
+                            <div class="accord-cont ui_accord_content" style="display:none;">
+                                <dl class="inquiry-dl">
+                                    <dt>서비스별 전화번호 안내</dt>
+                                    <dd>
+                                        <ul class="inquiry-list type-bullet">
+                                            <li>
+                                                <div class="title"><strong>제품 및 서비스 문의</strong></div>
+                                                <div class="description">1544-7777</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>구입제품 배송확인-㈜판토스</strong></div>
+                                                <div class="description">1577-1185</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>케어솔루션 가입</strong></div>
+                                                <div class="description">080-755-2222</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>B2B 서비스 상담</strong></div>
+                                                <div class="description">1544-8777</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>LG전자 베스트샵몰</strong></div>
+                                                <div class="description">1661-2471</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>케어솔루션 수납센터</strong></div>
+                                                <div class="description">1644-7717</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>케어솔루션 서비스 상담</strong></div>
+                                                <div class="description">케어솔루션 서비스 상담</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>LG페이</strong></div>
+                                                <div class="description">1544-8552</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>공기청정 케어십 상담</strong></div>
+                                                <div class="description">1677-0887</div>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 
                 <!-- 선택 제품 플로팅바 -->
                 @@include('./common/support/selected-model-bar.html')
 
-                <!-- 비회원 -->
-                @@include('./common/support/login-guide.html', {
-                    'text': '출장서비스 예약을 LG전자 통합 사이트의 회원으로 <br class="pc-only">이용하시면 보다 편리하게 이용할 수 있습니다.'
+                <!-- 회원 - 제품 없을 시 -->
+                @@include('./common/support/select-my-model.html', {
+                    "noItem": true
                 })
-                
-                <div class="cont-wrap">
 
-                    <form action="/html/CS/CSRF6029.html" method="POST" data-ajax="/lg5-common/data-ajax/support/serviceEngineer.json" id="submitForm" autocomplete="off" novalidate>
-                        <input type="hidden" name="data" id="data" value="">
-                    </form>
-                    <div class="step-area">
+                <!-- 회원 - 보유제품 펼침 -->
+                @@include('./common/support/select-my-model.html')
+
+                <div class="cont-wrap">
+                    <form action="/html/CS/CSTF6017.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/save.json" novalidate>
                         <input type="hidden" name="categoryNm" id="categoryNm" value="">
                         <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="">
                         <input type="hidden" name="category" id="category" value="">
                         <input type="hidden" name="subCategory" id="subCategory" value="">
                         <input type="hidden" name="modelCode" id="modelCode" value="">
                         <input type="hidden" name="productCode" id="productCode" value="">
-                        <input type="hidden" name="date" id="date" value="">
-                        <input type="hidden" name="time" id="time" value="">
-                        <input type="hidden" name="engineerNm" id="engineerNm" value="">
-                        <input type="hidden" name="engineerCode" id="engineerCode" value="">
-                        <input type="hidden" name="centerNm" id="" value="centerNm">
-                        <input type="hidden" name="centerCode" id="" value="centerCode">
-                        <input type="hidden" name="serviceType" id="serviceType" value="A">
+                        <input type="hidden" name="serviceType" id="serviceType" value="C">
                         <input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
 
                         <!-- 약관 동의 -->
@@ -67,17 +112,18 @@
                                     <p class="req" aria-disabled="true">필수 입력 항목</p>
                                 </div>
                                 @@include('./common/support/accept-terms.html', {
-                                    member: false
+                                    member: true
                                 })
+                                <div class="step-btn-wrap">
+                                    <button type="button" class="btn border size-m btn-next"><span>다음</span></button>
+                                </div> 
                             </div>
-                            <div class="step-btn-wrap">
-                                <button type="button" class="btn border size-m"><span>다음</span></button>
-                            </div> 
                         </div>
                         <!-- // 약관 동의 -->
 
                         <!-- 제품 선택 -->
                         <div class="step-box" id="stepModel">
+                            <!-- 제품 카테고리 선택 -->
                             @@include('./common/support/select-model.html', {
                                 "keyword": "Y",
                                 "model": "Y",
@@ -247,268 +293,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- 에어컨 > 시스템 에어컨 or 창문형/이동식 선택 시 -->
-                                <div class="section-box" id="bdTypeBox" style="display:none">
-                                    <h3 class="sub-tit req">추가정보 - 건물유형</h3>
-                                    <div class="rdo-list-wrap w-auto">
-                                        <ul class="rdo-list">
-                                            <li>
-                                                <span class="rdo-wrap">
-                                                    <input type="radio" name="bdType" id="bdType01" value="0" data-error-msg="건물유형을 선택해주세요." data-required="true" required>
-                                                    <label for="bdType01">상가, 사무실</label>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <span class="rdo-wrap">
-                                                    <input type="radio" name="bdType" id="bdType02" value="1">
-                                                    <label for="bdType02">호텔, 모텔, 콘도, 펜션</label>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <span class="rdo-wrap">
-                                                    <input type="radio" name="bdType" id="bdType03" value="2">
-                                                    <label for="bdType03">학교, 관공서</label>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <span class="rdo-wrap">
-                                                    <input type="radio" name="bdType" id="bdType04" value="3">
-                                                    <label for="bdType04">오피스텔</label>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <span class="rdo-wrap">
-                                                    <input type="radio" name="bdType" id="bdType05" value="4">
-                                                    <label for="bdType05">아파트, 빌라, 주택, 원룸</label>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <span class="rdo-wrap">
-                                                    <input type="radio" name="bdType" id="bdType06" value="5">
-                                                    <label for="bdType06">기타</label>
-                                                </span>
-                                            </li>
-                                        </ul>
-                                        <p class="err-msg bd-type-msg"></p>
-                                    </div>
-                                </div>
-
-                                <div class="section-box" id="fanBox" style="display:none">
-                                    <h3 class="sub-tit req">추가정보 - 실외기 위치</h3>
-                                    <div class="rdo-list-wrap thumb-type">
-                                        <ul class="rdo-list">
-                                            <li>
-                                                <div class="thumb-rdo-wrap">
-                                                    <label for="fan01">
-                                                        <input type="radio" name="fan" id="fan01" value="0" data-error-msg="실외기 위치를 선택해주세요." data-required="true" required>
-                                                        <span class="img">
-                                                            <img src="/lg5-common/images/CS/img-fan-location-1.jpg" alt="베란다 난간 실외기 위치 예시 이미지">
-                                                        </span>
-                                                        <span class="txt">베란다 난간</span>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="thumb-rdo-wrap">
-                                                    <label for="fan02">
-                                                        <input type="radio" name="fan" id="fan02" value="1">
-                                                        <span class="img">
-                                                            <img src="/lg5-common/images/CS/img-fan-location-2.jpg" alt="건물 외벽 앵글 실외기 위치 예시 이미지">
-                                                        </span>
-                                                        <span class="txt">건물 외벽 앵글</span>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="thumb-rdo-wrap">
-                                                    <label for="fan03">
-                                                        <input type="radio" name="fan" id="fan03" value="2">
-                                                        <span class="img">
-                                                            <img src="/lg5-common/images/CS/img-fan-location-3.jpg" alt="건물 밖 실외기실 실외기 위치 예시 이미지">
-                                                        </span>
-                                                        <span class="txt">건물 밖 실외기실</span>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="thumb-rdo-wrap">
-                                                    <label for="fan04">
-                                                        <input type="radio" name="fan" id="fan04" value="3">
-                                                        <span class="img">
-                                                            <img src="/lg5-common/images/CS/img-fan-location-4.jpg" alt="옥상 실외기 위치 예시 이미지">
-                                                        </span>
-                                                        <span class="txt">옥상</span>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="thumb-rdo-wrap">
-                                                    <label for="fan05">
-                                                        <input type="radio" name="fan" id="fan05" value="4">
-                                                        <span class="img">
-                                                            <img src="/lg5-common/images/CS/img-fan-location-5.jpg" alt="베란다 내부 실외기 위치 예시 이미지">
-                                                        </span>
-                                                        <span class="txt">베란다 내부</span>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="thumb-rdo-wrap">
-                                                    <label for="fan06">
-                                                        <input type="radio" name="fan" id="fan06" value="5">
-                                                        <span class="img">
-                                                            <img src="/lg5-common/images/CS/img-fan-location-6.jpg" alt="실내 실외기 위치 예시 이미지">
-                                                        </span>
-                                                        <span class="txt">실내 실외기</span>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="thumb-rdo-wrap">
-                                                    <label for="fan07">
-                                                        <input type="radio" name="fan" id="fan07" value="6">
-                                                        <span class="img">
-                                                            <img src="/lg5-common/images/CS/img-fan-location-7.jpg" alt="1층 또는 지면 실외기 위치 예시 이미지">
-                                                        </span>
-                                                        <span class="txt">1층 또는 지면</span>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="thumb-rdo-wrap">
-                                                    <label for="fan08">
-                                                        <input type="radio" name="fan" id="fan08" value="7">
-                                                        <span class="img">
-                                                            <img src="/lg5-common/images/CS/img-fan-location-8.jpg" alt="2단설치 실외기 위치 예시 이미지">
-                                                        </span>
-                                                        <span class="txt">2단설치</span>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <li class="block">
-                                                <span class="rdo-wrap">
-                                                    <input type="radio" name="fan" id="fan09" value="8">
-                                                    <label for="fan09">기타</label>
-                                                </span>
-                                                <div class="input-wrap">
-                                                    <input type="text" maxlength="10" placeholder="최대 10자 입력 가능">
-                                                </div>
-                                            </li>
-                                        </ul>  
-                                        <p class="err-msg fan-msg"></p> 
-                                    </div>
-                                </div>
-
-                                <div class="section-box" id="addFanBox" style="display:none">
-                                    <h3 class="sub-tit req">추가정보 - 실외기 위치</h3>
-                                    <div class="rdo-list-wrap w-auto">
-                                        <ul class="rdo-list">
-                                            <li>
-                                                <span class="rdo-wrap">
-                                                    <input type="radio" name="addFan" id="addFan01" value="0"  data-error-msg="실외기 위치를 선택해주세요." data-required="true" required>
-                                                    <label for="addFan01">베란다 또는 외벽 1층</label>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <span class="rdo-wrap">
-                                                    <input type="radio" name="addFan" id="addFan02" value="1">
-                                                    <label for="addFan02">베란다 또는 외벽 2층</label>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <span class="rdo-wrap">
-                                                    <input type="radio" name="addFan" id="addFan03" value="2">
-                                                    <label for="addFan03">베란다 또는 외벽 3층 이상</label>
-                                                </span>
-                                            </li>
-                                        </ul>   
-                                        <p class="err-msg add-fan-msg"></p>
-                                    </div>
-                                </div>
-                                <!-- // 에어컨 > 시스템 에어컨 or 창문형/이동식 선택 시 -->
-
-                                <!-- 드럼 세탁기 선택 시 -->
-                                <div class="section-box" id="installTypeBox" style="display:none">
-                                    <h3 class="sub-tit req">추가정보 - 설치형태</h3>
-                                    <div class="rdo-list-wrap thumb-type">
-                                        <ul class="rdo-list">
-                                            <li>
-                                                <div class="thumb-rdo-wrap">
-                                                    <label for="installType01">
-                                                        <input type="radio" name="installType" id="installType01" value="단독설치" data-error-msg="설치형태를 선택해주세요." data-required="true" required>
-                                                        <span class="img">
-                                                            <img src="/lg5-common/images/CS/img-fan-location-1.jpg" alt="">
-                                                        </span>
-                                                        <span class="txt">단독설치</span>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="thumb-rdo-wrap">
-                                                    <label for="installType02">
-                                                        <input type="radio" name="installType" id="installType02" value="병렬설치">
-                                                        <span class="img">
-                                                            <img src="/lg5-common/images/CS/img-fan-location-1.jpg" alt="">
-                                                        </span>
-                                                        <span class="txt">병렬설치(1단)</span>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="thumb-rdo-wrap">
-                                                    <label for="installType03">
-                                                        <input type="radio" name="installType" id="installType03" value="직렬설치">
-                                                        <span class="img">
-                                                            <img src="/lg5-common/images/CS/img-fan-location-1.jpg" alt="">
-                                                        </span>
-                                                        <span class="txt">직렬설치(2단)</span>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                        </ul>   
-                                        <p class="err-msg install-type-msg"></p>
-                                    </div>
-                                </div>
-                                <!-- // 드럼 세탁기 선택 시 -->
-
-                                <!-- TV/프로젝터 > 올레드, 울트라HD, LED/LCD, PDP 선택 시  -->
-                                <div class="section-box" id="tvPositionBox" style="display:none">
-                                    <h3 class="sub-tit req">추가정보 - 설치 위치</h3>
-                                    <div class="rdo-list-wrap w-auto">
-                                        <ul class="rdo-list">
-                                            <li>
-                                                <span class="rdo-wrap">
-                                                    <input type="radio" name="tvPosition" id="tvPosition01" value="벽결이 설치" data-error-msg="설치 위치를 선택해주세요." data-required="true" required>
-                                                    <label for="tvPosition01">벽결이 설치</label>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <span class="rdo-wrap">
-                                                    <input type="radio" name="tvPosition" id="tvPosition02" value="스탠드 설치">
-                                                    <label for="tvPosition02">스탠드 설치</label>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <span class="rdo-wrap">
-                                                    <input type="radio" name="tvPosition" id="tvPosition03" value="천장">
-                                                    <label for="tvPosition03">천장</label>
-                                                </span>
-                                            </li>
-                                            <li class="block">
-                                                <span class="rdo-wrap">
-                                                    <input type="radio" name="tvPosition" id="tvPosition04" value="기타">
-                                                    <label for="tvPosition04">기타</label>
-                                                </span>
-                                                <div class="input-wrap">
-                                                    <input type="text" name="tvPositionEtc" id="tvPositionEtc" maxlength="10" placeholder="최대 10자 입력 가능">
-                                                </div>
-                                            </li>
-                                        </ul>   
-                                        <p class="err-msg tv-position-msg"></p>
-                                    </div>
-                                </div>
-                                <!-- // TV/프로젝터 > 올레드, 울트라HD, LED/LCD, PDP 선택 시  -->
                             </div>
                             <div class="section">
                                 <div class="tit-wrap">
@@ -542,44 +326,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="forms">
-                                            <div class="tit">
-                                                <label for="zipCode" class="req">주소<span class="blind">필수입력</span></label>
-                                            </div>
-                                            <div class="conts">
-                                                <div class="box">
-                                                    <div class="input-wrap">
-                                                        <input type="text" name="zipCode" id="zipCode" placeholder="우편번호" data-error-msg="정확한 주소를 입력해주세요." data-required="true" required readonly>
-                                                    </div>
-                                                    <div class="cell">
-                                                        <button type="button" class="btn btn-address"><span>주소 찾기</span></button>
-                                                    </div>
-                                                </div>
-                                                <div class="input-wrap">
-                                                    <input type="text" name="userAddress" id="userAddress" placeholder="주소" data-error-msg="정확한 주소를 입력해주세요." data-required="true" required readonly>
-                                                </div>
-                                                <div class="input-wrap">
-                                                    <input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소를 입력해주세요." data-error-msg="정확한 주소를 입력해주세요." data-required="true" required>
-                                                </div>
-                                                <!-- 비회원일 경우 비노출 -->
-                                                <!-- <div class="btm-more">
-                                                    <span class="chk-wrap">
-                                                        <input type="checkbox" name="defaultAddress" id="defaultAddress" value="Y">
-                                                        <label for="defaultAddress">기본 주소로 설정</label>
-                                                    </span>
-                                                </div> -->
-                                                <!-- // 비회원일 경우 비노출 -->
-                                                <div class="btm-more err-block">
-                                                    <p class="err-msg"></p>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
+                                <div class="step-btn-wrap">
+                                    <button type="button" class="btn border size-m btn-next"><span>희망 일자 선택</span></button>
+                                </div> 
                             </div>
-                            <div class="step-btn-wrap">
-                                <button type="button" class="btn border size-m"><span>희망 일자 선택</span></button>
-                            </div> 
                         </div>
                         <!-- // 예약 내용 입력 -->
 
@@ -811,47 +563,20 @@
                         </div>
                         <!-- // 예약/상담 날짜 선택 -->
 
-                        <!-- 예약/상담 엔지니어 선택 -->
-                        <div class="step-box" id="stepEngineer">
-                            <div class="section">
-                                <div class="tit-wrap">
-                                    <h2 class="tit">방문할 엔지니어 확인</h2>
-                                </div>
-                                <div class="engineer-to-visit">
-                                    <div class="engineer-profile">
-                                        <div class="engineer-img">
-                                            <img src="/lg5-common/images/CS/default-engineer.jpg" alt="엔지니어 프로필 이미지">
-                                        </div>
-                                        <div class="engineer-info">
-                                            <strong class="name">박두신</strong>
-                                            <p class="center">모란역지원센터</p>
-                                        </div>
-                                    </div>
-                                    <div class="engineer-desc">
-                                        <p class="txt"><span class="date">2020.08.17 11:20</span>에 <span class="name">홍길동</span> 전문 엔지니어가 입력하신 주소로 방문하여<br> <span class="topic">구입사양 &gt; 전기요금 문의</span>에 대한 증상을<br> 해결해드릴 예정입니다.</p>
-                                        <div class="btn-wrap">
-                                            <button type="button" data-href="#choiceEngineerPopup" data-control="modal" class="btn border size"><span>다른 엔지니어 선택</span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- // 예약/상담 엔지니어 선택 -->
-
                         @@include('./common/modules/bullet-list.html', {
                             "topBorder" : true,
                             "bulletTxt" : [
-                                "평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용 됩니다.",
                                 "비로그인으로 예약을 접수하실 경우, 휴대전화 인증 후에 예약이 완료됩니다.",
-                                "입력하신 정보가 정확하지 않을 경우 서비스가 취소 또는 지연될 수 있습니다."
+                                "입력하신 정보가 정확하지 않을 경우 서비스가 취소 또는 지연될 수 있습니다.",
+                                "담당 전문 상담사가 먼저 상담 중인 고객의 응대가 끝나지 않을 경우 선택하신 예약시간보다  전화가 다소 늦어질 수 있습니다."
                             ]
                         })
 
                         <div class="btn-group center">
-                            <button type="button" class="btn gray" data-href="#canclePopup" data-control="modal"><span>취소</span></button>
+                            <button type="button" class="btn gray btn-cancel"><span>취소</span></a>
                             <button type="button" class="btn btn-confirm">예약</button>
                         </div>
-                    </div>
+                    </form>
 
                 </div>
             </div>
@@ -866,23 +591,6 @@
     <!-- 제품 해결 팝업 -->
     <article id="solutionsPopup" class="popup-wrap full"></article>
 
-    <!-- 엔지니어 선택 팝업 -->
-    @@include('./CS/modal/choice-engineer-popup.html')
-
-    <!-- 휴대폰인증 팝업 -->
-    @@include('./CS/modal/phone-certification-popup.html')
-
-    <!-- 취소 팝업 -->
-    <article id="canclePopup" class="lay-wrap">
-        <section class="lay-conts">
-            <h6>취소 하시겠습니까?</h6>
-        </section>
-        <div class="btn-wrap laypop">
-            <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
-            <a href="#" class="btn"><span>확인</span></a>
-        </div>
-    </article>
-
     <!-- toast-meassage -->
     @@include('./common/modules/toast-message.html', {
         "messageArr": [
@@ -892,7 +600,6 @@
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
-    <script src="/lg5-common/js/caresolution/addressManagement.min.js"></script>
-    <script src="/lg5-common/js/support/reservation/serviceEngineer.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/remoteCall.min.js"></script>
 </body>
 </html> 

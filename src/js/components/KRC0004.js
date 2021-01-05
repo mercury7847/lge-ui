@@ -23,18 +23,35 @@ $(window).ready(function(){
         init: function(){
             var _t = this;
 
-            $('.tooltip-text').on('click', function (e) {
+            $('.openBtn').on('click', function(e) {
                 e.preventDefault();
-                $(this).closest(".component").children(".desc").addClass("bg-gray");
-                $(this).closest(".list-btn-area").addClass("open");
-                $(this).closest(".list-btn-area").next(".more-content").slideDown(400);
+                var btn = $(this);
+                var btnBox = btn.parent('.list-btn-area');
+                var openCont = btnBox.next('.more-content');
 
                 var tg = $(this).closest(".component");
-				var adjustOption = ($(".KRC0004").length>0) ? Math.round($(".KRC0004").outerHeight()) : 0;
-				var contTop = tg.find(".more-content").offset().top;
+                var adjustOption = ($(".KRC0004").length>0) ? Math.round($(".KRC0004").outerHeight()) : 0;
+                var contTop = tg.find(".more-content").offset().top;
                 var contAdjustTop = Math.round(contTop - adjustOption);
-                    
-                _t.scrolling($(this).closest(".list-btn-area").next(".more-content").offset().top, contAdjustTop);
+
+                var tgTop = tg.offset().top;
+                var tgAdjustTop = Math.round(tgTop - adjustOption);
+
+                if ( btn.hasClass('onOpen') ) {
+                    openCont.slideUp(400);
+                    btnBox.removeClass('open');
+                    btn.removeClass('onOpen');
+                    btn.find('span').text('더보기');
+
+                    _t.scrolling($(this).closest(".component").offset().top, tgAdjustTop);
+                } else {
+                    openCont.slideDown(400);
+                    btnBox.addClass('open');
+                    btn.addClass('onOpen');
+                    btn.find('span').text('닫기');
+
+                    _t.scrolling($(this).closest(".list-btn-area").next(".more-content").offset().top, contAdjustTop);
+                }
             });
 
             $('.in-close').on('click', function (e) {
@@ -50,6 +67,11 @@ $(window).ready(function(){
                 var tgAdjustTop = Math.round(tgTop - adjustOption);
 
                 _t.scrolling($(this).closest(".component").offset().top, tgAdjustTop);
+
+                var offBtn = $('.openBtn');
+                offBtn.removeClass('onOpen');
+                offBtn.find('span').text('더보기');
+                offBtn.parent('.list-btn-area').removeClass('open');
             });
         }
     }

@@ -39,6 +39,7 @@
 		.visual-area {
 			width: 100%;
 			img {
+				width:auto;
 				max-width: 100%;
 				height: auto;
 			}
@@ -146,7 +147,7 @@
 						margin-top:0;
 					}
 					img {
-						width:100%;
+						width:auto;
 						max-width:100%;
 						height:auto;
 						vertical-align:top;

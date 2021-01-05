@@ -10,9 +10,11 @@
         border-radius:8px;
         background:#f4f4f4;
         .cont {
+            padding-right:89px;
             p {
-                padding:0 20px 0 0;
                 @include font-medium;
+            }
+            .tit {
                 font-weight:700;
             }
         }
@@ -25,12 +27,11 @@
         .banner {
             display:block;
             padding:16px 24px;
-            text-align:center;
             .cont {
-                p {
-                    padding:0 0 8px;
-                    
-                }
+                padding-right:0;
+            }
+            .btn-link {
+                margin-top:12px;
             }
         }
     }

@@ -733,6 +733,12 @@
 
     .bullet-list {
         margin-top:12px;
+        .b-txt {
+            padding-left:0;
+            &::before {
+                display:none !important;
+            }
+        }
     }
     
 

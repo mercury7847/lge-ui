@@ -34,7 +34,8 @@
             a {
                 position:relative;
                 img {
-                    width:100%;
+                    width:auto;
+                    max-width:100%;
                     height:auto;
                     vertical-align:top;
                 }
