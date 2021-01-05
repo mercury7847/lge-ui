@@ -17,14 +17,7 @@
 	
 	&.standard {
 		.visual-wrap {
-			&.image-align-left {
-				width:50%;
-				padding-right:12px;
-			}
-			&.image-align-right {
-				width:50%;
-				padding-left:12px;
-			}
+			width:((678px * 100%) / 1380px);
 			@include mobile {
 				&.image-align-left,
 				&.image-align-right {
@@ -38,16 +31,7 @@
 			}
 		}
 		.text-wrap {
-			&.side-left-text {
-				width:50%;
-				padding-left:48px;
-				padding-right:36px;
-			}
-			&.side-right-text {
-				width:50%;
-				padding-left:36px;
-				padding-right:48px;
-			}
+			padding:0 48px;
 			@include mobile {
 				&.side-left-text,
 				&.side-right-text {
@@ -62,14 +46,7 @@
 	}
 	&.large {
 		.visual-wrap {
-			&.image-align-left {
-				width:calc((100% / 3) * 2);
-				padding-right:24px;
-			}
-			&.image-align-right {
-				width:calc((100% / 3) * 2);
-				padding-left:24px;
-			}
+			width:((912px * 100%) / 1380px);
 			@include mobile {
 				&.image-align-left,
 				&.image-align-right {
@@ -83,14 +60,7 @@
 			}
 		}
 		.text-wrap {
-			&.side-left-text {
-				width:calc((100% / 3) * 1);
-				padding-right:24px;
-			}
-			&.side-right-text {
-				width:calc((100% / 3) * 1);
-				padding-left:24px;
-			}
+			padding:0 48px;
 			@include mobile {
 				&.side-left-text,
 				&.side-right-text {

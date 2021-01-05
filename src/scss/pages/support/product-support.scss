@@ -1092,6 +1092,20 @@
             &.fixed {
                 border-bottom:1px solid #ddd;
                 height:70px;
+                .tabs-wrap{
+                    &.btn-type{
+                        .tabs{
+                            .active > a{
+                                border-bottom:0;
+                                color:#aaa;
+                            }
+                            .on > a{
+                                border-bottom:4px solid #222;
+                                color:#222;
+                            }
+                        }
+                    }
+                }
             }
             @include mobile {
                 height:56px;
