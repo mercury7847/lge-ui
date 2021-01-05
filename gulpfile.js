@@ -133,7 +133,8 @@ gulp.task("scripts", () => {
                     "jsCompile:cart",
                     "jsCompile:customer",
                     "jsCompile:search",
-                    "jsCompile:caresolution"
+                    "jsCompile:caresolution",
+                    "jsCompile:store"
     ]);
 });
 gulp.task("jsCompile", () => gulp
@@ -233,6 +234,14 @@ gulp.task("jsCompile:caresolution", () => gulp
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/caresolution/"))
 );
+gulp.task("jsCompile:store", () => gulp
+    .src(src + "/js/store/**/*")
+    .pipe(sourcemaps.init())
+    .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/store/"))
+);
 
 // fonts, images
 gulp.task("static", () => {
@@ -299,6 +308,7 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/js/customer/**", ["jsCompile:customer"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/search/**", ["jsCompile:search"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/caresolution/**", ["jsCompile:caresolution"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/store/**", ["jsCompile:store"]).on('change', browserSync.reload);
     
     //static
     gulp.watch("./lg5-common/data-ajax/**", ["static:data-ajax"]).on('change', browserSync.reload);
