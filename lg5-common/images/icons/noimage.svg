@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" viewBox="0 0 120 120">
+    <defs>
+        <path id="lrumw3yx0a" d="M0 0L120 0 120 120 0 120z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g transform="translate(-419 -3675) translate(387 158) translate(0 761) translate(0 2678) translate(0 54) translate(32 24)">
+                                <mask id="5tr1hbmqzb" fill="#fff">
+                                    <use xlink:href="#lrumw3yx0a"/>
+                                </mask>
+                                <use fill="#F4F4F4" xlink:href="#lrumw3yx0a"/>
+                                <text fill="#AAA" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="12" font-weight="bold" mask="url(#5tr1hbmqzb)">
+                                    <tspan x="31" y="86">NO IMAGE</tspan>
+                                </text>
+                                <g mask="url(#5tr1hbmqzb)">
+                                    <g>
+                                        <path d="M0 0H32V32H0z" opacity=".134" transform="translate(44 36)"/>
+                                        <g transform="translate(44 36) translate(1 5)">
+                                            <rect width="28" height="20" x="1" y="1" stroke="#AAA" stroke-width="2" rx="4"/>
+                                            <rect width="5" height="5" x="5" y="4" fill="#AAA" rx="2.5"/>
+                                            <path fill="#AAA" d="M5 16.029L5 18 25 18 25 13.994 19.007 8.001 13.012 13.994 10 11z"/>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

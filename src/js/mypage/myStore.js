@@ -42,6 +42,7 @@
                 vcui.require(['ui/pagination'], function () {             
                     self.setting();
                     self.bindEvents();
+                    self.requestData(1);
                 });
             },
 
@@ -62,6 +63,7 @@
 
                 //스토어 즐겨찾기
                 self.$storeList.on('click','li div.bookmark input', function(e) {
+                    e.preventDefault();
                     var _id = $(this).parents('li').attr('data-id');
                     var checked = $(this).is(':checked');
                     self.requestBookmark(_id, checked);
@@ -96,13 +98,38 @@
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-bookmark-url');
                 var postData = {"id":_id, "bookmark":bookmark};
-                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
-                    var data = result.data;
-                    if(lgkorUI.stringToBool(data.success)) {
-                    } else {
-                        self.$storeList.find('li[data-id="'+_id+'"] span.chk-bookmark-wrap input').prop("checked",!bookmark);
-                    }
-                });
+                
+                if(bookmark) {
+                    lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
+                        var data = result.data;
+                        if(lgkorUI.stringToBool(data.success)) {
+                            $(window).trigger("toastshow","단골매장이 등록되었습니다.");
+                            self.$storeList.find('li[data-id="'+_id+'"] span.chk-bookmark-wrap input').prop("checked",bookmark);
+                        } else {
+                            self.$storeList.find('li[data-id="'+_id+'"] span.chk-bookmark-wrap input').prop("checked",!bookmark);
+                        }
+                    });
+                } else {
+                    var obj = {title:'', cancelBtnName:'취소', okBtnName:'확인',
+                        ok: function (){
+                            lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
+                                var data = result.data;
+                            if(lgkorUI.stringToBool(data.success)) {
+                                $(window).trigger("toastshow","단골매장이 해제되었습니다.");
+                                self.$storeList.find('li[data-id="'+_id+'"] span.chk-bookmark-wrap input').prop("checked",bookmark);
+                            } else {
+                                self.$storeList.find('li[data-id="'+_id+'"] span.chk-bookmark-wrap input').prop("checked",!bookmark);
+                            }
+                            });
+                        },
+                        cancel: function () {
+                            console.log('캔슬!');
+                            //self.$storeList.find('li[data-id="'+_id+'"] span.chk-bookmark-wrap input').prop("checked",!bookmark);
+                        }    
+                    };
+                    var desc = '단골매장을 해제하시겠습니까?';
+                    lgkorUI.confirm(desc, obj);
+                }
             },
 
             checkNoData: function() {

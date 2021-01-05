@@ -247,26 +247,32 @@
         },
 
         _addImgOnloadEvent: function(){
-            this._addImgErrorEvent('img')
-        },
-
-        _addImgErrorEvent: function(img){
-            $(img).not('[data-pc-src]').on('error', function(e){
+            $('img').not('[data-pc-src]').on('error', function(e){
                 $(this).off('error');
-                $(this).attr('src', '/lg5-common/images/icons/icon-nodata.svg');
+                $(this).attr('src', '/lg5-common/images/icons/noimage.svg');
                 var parentwid = $(this).parent().width();
                 var parenthei = $(this).parent().height();
                 var wid = parentwid*.3;
                 var hei = parenthei*.3;
-                var margintop = parenthei/2 - hei/2;
-                var marginleft = parentwid/2 - wid/2;
                 $(this).css({
                     opacity: .5,
                     width: wid,
-                    height: hei,
-                    'margin-top': margintop,
-                    'margin-left': marginleft
+                    height: hei
                 });
+            });
+        },
+
+        _addImgErrorEvent: function(img){
+            img.onerror = null;
+            $(img).attr('src', '/lg5-common/images/icons/noimage.svg');
+            var parentwid = $(this).parent().width();
+            var parenthei = $(this).parent().height();
+            var wid = parentwid*.3;
+            var hei = parenthei*.3;
+            $(this).css({
+                opacity: .5,
+                width: wid,
+                height: hei
             });
         },
 

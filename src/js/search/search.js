@@ -6,7 +6,7 @@
     //var similarTextTemplate = '<a href="#{{text}}" class="similar-text"><span class="search-word">“{{text}}”</span> 찾으시나요?</a>'
 
     var productItemTemplate = '<li><div class="item">' +
-        '<div class="result-thumb"><a href="{{url}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
+        '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI._addImgErrorEvent(this)" src="{{imageUrl}}aass" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
@@ -24,7 +24,7 @@
                         '<div class="text hashtag-wrap">' +
                             '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
                         '</div>' + 
-                        '{{#if hasCare}}<div class="text careflag"><span>케어십 가능</span></div>{{/if}}' +
+                        '{{#if hasCare}}<span class="text careflag">케어십 가능</span>{{/if}}' +
                     '</div>' +
                 '</div>' +
             '</div>' +
@@ -116,12 +116,12 @@
                     '{{#each item in flag}}<span class="flag {{item.class}}">{{item.title}}</span>{{/each}}' +
                 '</div>' +
                 '<div class="result-tit">' +
-                    '<a href="{{shopUrl}}">{{#raw title}}</a>' +
+                    '<a href="{{url}}">{{#raw title}}</a>' +
                 '</div>' +
                 '<div class="result-detail">' +
-                    '<div href="{{shopUrl}}" class="shop-info">' +
-                        '<a href="{{shopUrl}}" class="desc add">{{address}}</a>' +
-                        '<a href="{{shopUrl}}" class="desc time">{{time}}</a>' +
+                    '<div href="{{url}}" class="shop-info">' +
+                        '<a href="{{url}}" class="desc add">{{address}}</a>' +
+                        '<a href="{{url}}" class="desc time">{{time}}</a>' +
                     '</div>' +
                     '<div class="shop-state"><span class="{{shopStateColor}}">{{shopState}}</span></div>' +
                 '</div>' +
@@ -132,6 +132,22 @@
             '</div>' +
         '</div>' +
     '</div></li>';
+    var customerProductItemTemplate = '<li><a href="{{url}}" class="item">' +
+        '<div class="result-thumb">'
+            '<div><img onError="lgkorUI._addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
+        '</div>' +
+        '<div class="result-info">' +
+            '<div class="info-text">' +
+                '<div class="result-tit"><strong>{{title}}</strong></div>' +
+                '<div class="result-detail">' +
+                    '<div class="sku">{{sku}}</div>' +
+                    '<div class="info-btm">' +
+                        '{{#each item in category}}<span class="text">{{item}}</span>{{/each}}' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</a></li>'
 
     //필터 템플릿
     var filterSliderTemplate = '<li data-filterId="{{filterId}}">' +

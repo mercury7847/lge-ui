@@ -42,7 +42,6 @@
                 @include title-h2;
             }
             .body-copy {
-                max-width:561px;
                 @include bodycopy(h2, h2);
             }
         }
@@ -86,7 +85,6 @@
                 @include title-h2;
             }
             .body-copy {
-                max-width:561px;
                 @include bodycopy(h2, h2);
             }
             @include mobile {
