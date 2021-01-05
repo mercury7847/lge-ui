@@ -171,7 +171,7 @@
     .type-narrow {
         .text-wrap {
             .inner {
-                max-width:795px;
+                max-width:((795px * 100%) / 1380px);
                 @include mobile {
                     max-width:100%;
                 }
@@ -182,11 +182,10 @@
     // 텍스트 가로정렬 및 버튼 사이 간격
     $align: (left, right, center, top, middle);
     @each $key in $align {
-        .align-#{$key} {
+        .box-align-#{$key} {
             @if $key == left {
                 .text-wrap {
                     .inner {
-                        text-align: left;
                         margin-right:auto;
                     }
                 }
@@ -207,7 +206,8 @@
                     }
                 }
             }
-
+        }
+        .align-#{$key} {
             @if $key == top {
                 &.text-area {
                     height: 100%;

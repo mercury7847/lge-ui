@@ -3,7 +3,7 @@
     var listItemTemplate = '<li data-id="{{id}}">' +
         '<div class="item">' +
             '<span class="branch">{{title}}</span>' +
-            '<a href="#" class="title"><strong>{{address}}</strong></a>' +
+            '<a href="{{url}}" class="title"><strong>{{address}}</strong></a>' +
             '<span class="phone">{{tel}}</span>' +
             '<div class="bookmark">' +
                 '<span class="chk-bookmark-wrap">' +
