@@ -18,7 +18,8 @@
 	.visual-area {
 		z-index:1;
 		img {
-			width:100%;
+			width:auto;
+			max-width:100%;
 			height:auto;
 			vertical-align:top;
 		}
@@ -126,7 +127,7 @@
 					.thumbnail-box {
 						margin-top:24px;
 						img {
-							width:100%;
+							width:auto;
 							max-width:100%;
 							height:auto;
 							vertical-align:top;

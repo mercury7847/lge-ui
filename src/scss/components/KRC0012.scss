@@ -25,11 +25,12 @@
                     @include clearfix;
                     .visual-wrap {
                         float:left;
-                        width:33.3%;
+                        width:((444px*100%) / 1380px);
                         .visual-area a {
                             display:block;
                             img {
-                                width:100%;
+                                width:auto;
+                                max-width:100%;
                                 height:auto;
                                 vertical-align:top;
                             }
@@ -42,7 +43,7 @@
                     }
                     .text-wrap {
                         float:right;
-                        width:66.7%;
+                        width:((936px*100%) / 1380px);
                         padding-left:24px;
                         .title * {
                             @include title-h2;

@@ -16,7 +16,10 @@
 			position:relative;
 			width:((1040px*100%)/1380px);
 			img {
-				width:100%;
+				width:auto;
+				max-width:100%;
+				height:auto;
+				vertical-align:top;
 			}
 			@include mobile {
 				width:100%;
@@ -76,7 +79,12 @@
 						-webkit-box-shadow:0 0 0 0.1rem #7fbdff !important;
 					}
 					//LGEGMO-5525 add
-					img {width:100%;max-width:100%;}
+					img {
+						width:auto;
+						max-width:100%;
+						height:auto;
+						vertical-align:top;
+					}
 				}
 			}
 			

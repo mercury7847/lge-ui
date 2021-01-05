@@ -131,6 +131,7 @@
 							text-align: center;
 							img {
 								width: 100%;
+								height:auto;
 								max-width: 200px;
 								@include mobile {
 									max-width:150px;

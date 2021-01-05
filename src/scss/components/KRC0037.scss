@@ -23,7 +23,7 @@
         position:relative;
         text-align:center;
         img {
-            width:100%;
+            width:auto;
             max-width:100%;
             height:auto;
             vertical-align:top;
@@ -42,7 +42,7 @@
         }
         &.youtube-box {
             img {
-                width:100%;
+                width:auto;
                 height:auto;
                 vertical-align:top;
             }
@@ -166,7 +166,7 @@
                         max-width:90px;
                     }
                     img {
-                        width:100%;
+                        width:auto;
                         max-width:100%;
                         height:auto;
                     }

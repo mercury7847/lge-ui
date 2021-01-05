@@ -25,7 +25,8 @@
                 .only-pc {
                     display:block;
                     img {
-                        width:100%;
+                        width:auto;
+                        max-width:100%;
                         height:auto;
                         vertical-align:top;
                     }
@@ -51,7 +52,8 @@
                 .only-m {
                     display:block;
                     img {
-                        width:100%;
+                        width:auto;
+                        max-width:100%;
                         height:auto;
                         vertical-align:top;
                     }
@@ -136,7 +138,8 @@
                 .visual-area.video {
                     margin-bottom:16px;
                     img {
-                        width:100%;
+                        width:auto;
+                        max-width:100%;
                         height:auto;
                         vertical-align:top;
                     }
@@ -144,7 +147,7 @@
                 .thumb-area {
                     margin-bottom:24px;
                     img {
-                        width:100%;
+                        width:auto;
                         max-width:100%;
                         height:auto;
                         vertical-align:top;

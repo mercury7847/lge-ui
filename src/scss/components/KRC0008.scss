@@ -42,7 +42,10 @@
 
     .visual-area {
         img {
-            width: 100%;
+            width:auto;
+            max-width:100%;
+            height:auto;
+            vertical-align:top;
         }
         @include mobile {
             margin:0 -16px;
