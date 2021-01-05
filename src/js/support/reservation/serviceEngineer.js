@@ -56,7 +56,6 @@
             self.autoFlag = false;
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
-
                 var register = {
                     topic: {
                         required: true,
