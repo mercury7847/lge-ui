@@ -1099,6 +1099,14 @@
         line-height: 1.71;
         color: #767676;
     }
+
+    .directCall-wrap {
+        max-width: 1380px;
+        margin: 0 auto 32px;
+        @include mobile {
+            margin: 0 16px 24px;
+        }
+    }
 } //support
 
 
