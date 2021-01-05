@@ -680,6 +680,9 @@
 							display: inline-block;
 							font-size: 0;
 							vertical-align: top;
+							> a {
+								display:block;
+							}
 							.star,
 							.average-rating,
 							.review-count {
