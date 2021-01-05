@@ -304,10 +304,10 @@
                                                         <div class="box type2">
                                                             <div class="input-wrap">
                                                                 <!-- 2020-11-13 name 수정-->
-                                                                <input type="text" value="" name="detailAddress" placeholder="상세주소를 입력해주세요." data-required="true" disabled> <!-- 2020-11-25 -->
+                                                                <input type="text" value="" name="detailAddress" placeholder="상세주소를 입력해주세요." data-required="true"> <!-- 2020-11-25 -->
                                                             </div>
                                                             <div class="cell">
-                                                                <button type="button" class="btn installAbledConfirm" disabled><span>설치 가능여부 확인</span></button>
+                                                                <button type="button" class="btn installAbledConfirm"><span>설치 가능여부 확인</span></button>
                                                             </div>
                                                         </div>
                                                         <div class="btm-more err-address-install"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
@@ -327,7 +327,7 @@
                                                     <dt class="tit"><label for="slt02-2" class="req">설치 장소<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="select-wrap">
-                                                            <select class="ui_selectbox" id="slt02-2" title="설치 장소 선택" name="inatallPlace" data-required="true" disabled>
+                                                            <select class="ui_selectbox" id="slt02-2" title="설치 장소 선택" name="inatallPlace" data-required="true">
                                                                 <option value="" class="placeholder">선택</option>
                                                                 <option value="aaa">설치 장소 a</option>
                                                                 <option value="bbb">설치 장소 b</option>
@@ -533,21 +533,10 @@
                                                                     </dd>
                                                                 </dl>
                                                                 <dl class="forms inner-type">
-                                                                    <dt class="tit"><label for="cardnum01">카드번호</label></dt>
+                                                                    <dt class="tit"><label for="ipt-card1">카드번호</label></dt>
                                                                     <dd class="conts">
-                                                                        <div class="card-num-box">
-                                                                            <div class="input-wrap">
-                                                                                <input type="number" id="cardnum01" placeholder="0000" min="0000" max="9999" value="1234" title="카드번호 첫 4자리">
-                                                                            </div>
-                                                                            <div class="input-wrap">
-                                                                                <input type="number" placeholder="0000" min="0000" max="9999" value="" title="카드번호 두번째 4자리">
-                                                                            </div>
-                                                                            <div class="input-wrap">
-                                                                                <input type="number" placeholder="0000" min="0000" max="9999" value="" title="카드번호 세번째 4자리">
-                                                                            </div>
-                                                                            <div class="input-wrap">
-                                                                                <input type="number" placeholder="0000" min="0000" max="9999" value="" title="카드번호 네번째 4자리">
-                                                                            </div>
+                                                                        <div class="input-wrap">
+                                                                            <input type="text" id="ipt-card1" placeholder="(-)없이 입력하세요." value="" class="ui_card_number" name="paymentCardNumber" data-required="true" title="카드번호 입력">
                                                                         </div>
                                                                         <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
                                                                     </dd>
@@ -557,7 +546,7 @@
                                                                     <dd class="conts">
                                                                         <div class="box">
                                                                             <div class="input-wrap">
-                                                                                <input type="text" id="ipt-card2" value="" placeholder="MMYY" name="paymentCardPeriod" data-required="true">
+                                                                                <input type="number" id="ipt-card2" value="" placeholder="MMYY" maxlength="4" name="paymentCardPeriod" data-required="true">
                                                                             </div>
                                                                             <div class="cell">
                                                                                 <button type="button" class="btn paymentCardConfirm" disabled><span>납부 카드 확인</span></button>

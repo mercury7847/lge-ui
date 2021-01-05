@@ -354,6 +354,7 @@ br.pc {
                         top: 0;
                         left: 0;
                         width: 100%;
+                        height: 100%;
                         padding: 28px;
                         @include mobile {
                             padding: 14px;
@@ -368,12 +369,15 @@ br.pc {
                             }
                         }
                         .btn-area {
+                            display: none;
                             margin-top: 12px;
                             .btn {
                                 color: #fff;
                                 border-color: #fff;
                             }
                         }
+                        
+                        /*
                         &.type2 {
                             top: 50%;
                             transform: translateY(-50%);
@@ -381,8 +385,38 @@ br.pc {
                             .tit {
                                 @include font-large-5;
                             }
-                        }
+                        }*/
                    }
+                   &.slide_on {
+                        &::after {
+                            display: block;
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 12px;
+                            width: calc(100% - 24px);
+                            height: 100%;
+                            background-color: #000;
+                            border-radius: 8px;
+                            opacity: 0.3;
+                        }
+                        .text-area {
+                            z-index: 2;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            .tit {
+                                width: 100%;
+                                @include font-large-5;
+                            }
+                            .btn-area {
+                                display: block;
+                                width: 100%;
+                            }
+                        }
+                        
+
+                    }  
                }
            }
        }
