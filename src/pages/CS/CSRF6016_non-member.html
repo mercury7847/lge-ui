@@ -88,11 +88,14 @@
 
                 <!-- 비회원 -->
                 @@include('./common/support/login-guide.html', {
-                    'text': '출전화상담 예약을 LG전자 통합 사이트의 회원으로 이용하시면 <br>보다 편리하게 이용할 수 있습니다.'
+                    'text': '전화상담 예약을 LG전자 통합 사이트의 회원으로 이용하시면 <br>보다 편리하게 이용할 수 있습니다.'
                 })
 
                 <div class="cont-wrap">
                     <form action="/html/CS/CSTF6017.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/save.json" novalidate>
+                        <input type="hidden" name="data" id="data" value="">
+                    </form>
+                    <div class="step-area">
                         <input type="hidden" name="categoryNm" id="categoryNm" value="">
                         <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="">
                         <input type="hidden" name="category" id="category" value="">
@@ -101,7 +104,7 @@
                         <input type="hidden" name="productCode" id="productCode" value="">
                         <input type="hidden" name="serviceType" id="serviceType" value="C">
                         <input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
-
+                        
                         <!-- 약관 동의 -->
                         <div class="step-box active" id="stepTerms">
                             <div class="section">
@@ -111,10 +114,10 @@
                                 @@include('./common/support/accept-terms.html', {
                                     member: false
                                 })
-                                <div class="step-btn-wrap">
-                                    <button type="button" class="btn border size-m btn-next"><span>다음</span></button>
-                                </div> 
                             </div>
+                            <div class="step-btn-wrap">
+                                <button type="button" class="btn border size-m"><span>다음</span></button>
+                            </div> 
                         </div>
                         <!-- // 약관 동의 -->
 
@@ -324,10 +327,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="step-btn-wrap">
-                                    <button type="button" class="btn border size-m btn-next"><span>희망 일자 선택</span></button>
                                 </div> 
+                            </div>
+                            <div class="step-btn-wrap">
+                                <button type="button" class="btn border size-m"><span>희망 일자 선택</span></button>
                             </div>
                         </div>
                         <!-- // 예약 내용 입력 -->
@@ -570,10 +573,10 @@
                         })
 
                         <div class="btn-group center">
-                            <button type="button" class="btn gray btn-cancel"><span>취소</span></a>
+                            <button type="button" class="btn gray" data-href="#canclePopup" data-control="modal"><span>취소</span></button>
                             <button type="button" class="btn btn-confirm">예약</button>
                         </div>
-                    </form>
+                    </div>
 
                 </div>
             </div>
@@ -587,6 +590,20 @@
 
     <!-- 제품 해결 팝업 -->
     <article id="solutionsPopup" class="popup-wrap full"></article>
+
+    <!-- 휴대폰인증 팝업 -->
+    @@include('./CS/modal/phone-certification-popup.html')
+
+    <!-- 취소 팝업 -->
+    <article id="canclePopup" class="lay-wrap">
+        <section class="lay-conts">
+            <h6>취소 하시겠습니까?</h6>
+        </section>
+        <div class="btn-wrap laypop">
+            <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+            <a href="#" class="btn"><span>확인</span></a>
+        </div>
+    </article>
 
     <!-- toast-meassage -->
     @@include('./common/modules/toast-message.html', {

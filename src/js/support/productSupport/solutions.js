@@ -75,6 +75,8 @@
                 this.param = $('#submitForm').serializeObject();
                 this.param.orderBy = $('#selectOrder').val();
 
+                this.$wrap.find('.pagination').pagination();
+
                 this.bindEvent();
             },
             selectFilter: function(code) {

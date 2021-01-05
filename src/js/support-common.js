@@ -701,7 +701,7 @@ CS.MD.pagination = function() {
             self.$prev = $el.find('.' + self.options.prevClass);
             self.$next = $el.find('.' + self.options.nextClass);
 
-            self.pageTotal = (self.options.totalCount - 1)  / self.options.pageCount + 1;
+            self.pageTotal = Math.floor((self.options.totalCount - 1)  / self.options.pageCount + 1);
 
             self._setEvent();
             self._update();
@@ -762,6 +762,8 @@ CS.MD.pagination = function() {
             }
             
             self.$el.data('pageTotal', pageTotal);
+            self.$el.data('totalCount', self.options.totalCount);
+            self.$el.data('page', page);
 
             self.$pageList.html(html);
         },
@@ -770,7 +772,7 @@ CS.MD.pagination = function() {
 
             self.options.page = data.page;
             self.options.totalCount = data.totalCount;
-            self.pageTotal = self.options.totalCount == 0 ? 1 : (self.options.totalCount - 1)  / self.options.pageCount + 1;
+            self.pageTotal = Math.floor(self.options.totalCount == 0 ? 1 : (self.options.totalCount - 1)  / self.options.pageCount + 1);
 
             self._update();
         },
