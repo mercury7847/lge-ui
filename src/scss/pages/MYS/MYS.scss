@@ -1,0 +1,351 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+// mypage lnb
+@import "../MYC/MYC";
+
+
+.my-dashboard {
+    padding: 35px 48px 48px 50px;
+    border-radius: 8px;
+    .membership-level {
+        background: no-repeat left -8px top -1px;
+        padding: 5px 0 10px 40px;
+        @include font-large-1;
+        color: $color-white;
+        .btn-link {
+            font-weight: 700;
+            @include font-large-1;
+            color: $color-white;
+            text-decoration: underline;
+            &:after {
+                width: 24px;
+                height: 24px;
+                background-image: url('/lg5-common/images/icons/btn-arr-24x24-white2.svg');
+            }
+        }
+    }
+    .my-membership {
+        @include clearfix;
+        .membership-level {
+            float: left;
+        }
+        .btn-area {
+            float: right;
+            margin-top: 8px;
+            .btn-link {
+                color: $color-white;
+                &:after {
+                    background-image: url('/lg5-common/images/icons/btn-arr-20x20-white.svg');
+                }
+            }
+        }
+    }
+
+    &.standard {
+        background-image: linear-gradient(107deg, #8d71ec, #ff537c 99%);
+        .membership-level {
+            background-image: url('/lg5-common/images/MYS/icon-standard.png');
+            background-size: 48px 48px;
+        }
+        .bookmark {
+            .btn.mix {
+                background-image: linear-gradient(111deg, #8d71ec 17%, #ff537c 115%);
+            }
+        }
+    }
+    &.gold {
+        background-image: linear-gradient(105deg, #ee9d30 14%, #f3df54 111%);
+        .membership-level {
+            background-image: url('/lg5-common/images/MYS/icon-gold.png');
+            background-size: 47px 48px;
+        }
+        .bookmark {
+            .btn.mix {
+                background-image: linear-gradient(108deg, #ee9d30 24%, #f3df54 137%);
+            }
+        }
+    }
+    &.royal-gold {
+        background-image: linear-gradient(107deg, #f47a48 10%, #f1c246 100%);
+        .membership-level {
+            background-image: url('/lg5-common/images/MYS/icon-royal-gold.png');
+            background-size: 46px 48px;
+        }
+        .bookmark {
+            .btn.mix {
+                background-image: linear-gradient(107deg, #f47a48 20%, #f1c246 121%);
+            }
+        }
+    }
+    &.signature {
+        background-image: linear-gradient(107deg, #ff537c, #f2c177 100%);
+        .membership-level {
+            background-image: url('/lg5-common/images/MYS/icon-signature.png');
+            background-size: 46px 48px;
+        }
+        .bookmark {
+            .btn.mix {
+                background-image: linear-gradient(107deg, #ff537c 20%, #f2c177 119%);
+            }
+        }
+    }
+
+    .my-info {
+        padding: 30px 0 40px;
+        font-size: 0;
+        > li {
+            position: relative;
+            display: inline-block;
+            width: 25%;
+            text-align: center;
+            vertical-align: top;
+            &:not(:first-child):before {
+                position: absolute;
+                @include calc(top,50%,18px);
+                left: 0;
+                width: 1px;
+                height: 36px;
+                background-color: $color-white;
+                opacity: .3;
+                content: '';
+            }
+        }
+        .title {
+            display: inline-block;
+            padding-left: 21px;
+            background: url('/lg5-common/images/MYS/icon-01.png') no-repeat 0 center;
+            font-weight: 500;
+            @include font-small;
+            color: $color-white;
+        }
+        .number {
+            font-weight: 700;
+            font-size: $font-large-5;
+            line-height: 52px;
+            color: $color-white;
+        }
+        .coupon {
+            .title {
+                background-image: url('/lg5-common/images/MYS/icon-02.png');
+            }
+        }
+        .product {
+            .title {
+                background-image: url('/lg5-common/images/MYS/icon-03.png');
+            }
+        }
+    }
+
+    .my-shortcut {
+        @include clearfix;
+        .bookmark {
+            float: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 314px;
+            padding: 16px 16px 16px 24px;
+            border-radius: 32px;
+            background-color: $color-bg-wt;
+            box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+            font-size: 0;
+            .text {
+                display: inline-block;
+                font-weight: 700;
+                @include font-small;
+            }
+            .shop-area {
+                margin: -8px 0;
+                .title {
+                    font-weight: 500;
+                    @include font-small;
+                }
+                .shop {
+                    font-weight: 700;
+                    @include font-small;
+                    .text {
+                        max-width: 126px;
+                        @include textEllipsis;
+                        vertical-align: top;
+                    }
+                }
+
+            }
+            .btn {
+                margin-left: 20px;
+                vertical-align: middle;
+            }
+        }
+        .subscriptions {
+            float: right;
+            margin-top: 30px;
+            ul {
+                padding: 4px 0;
+                border: 1px solid rgba(255,255,255,.5);
+                border-radius: 8px;
+                font-size: 0;
+                li {
+                    position: relative;
+                    display: inline-block;
+                    padding: 0 12px;
+                    &:not(:first-child):before {
+                        position: absolute;
+                        @include calc(top,50%,6px);
+                        left: 0;
+                        width: 1px;
+                        height: 13px;
+                        background-color: $color-white;
+                        opacity: .3;
+                        content: '';
+                    }
+                }
+            }
+            .btn-text {
+                color: $color-white;
+            }
+        }
+    }
+}
+
+.mypage-section {
+    padding-top: 80px;
+    .section-title {
+        margin-bottom: 32px;
+        font-weight: 700;
+        @include font-large-2;
+        color: #000;
+        text-align: center;
+    }
+    .my-management {
+        > ul {
+            @include clearfix;
+            margin: -12px;
+            > li {
+                float: left;
+                width: 50%;
+                padding: 12px;
+            }
+        }
+    }
+    .shadow-box {
+        padding: 32px 48px;
+        border-radius: 8px;
+        background-color: $color-bg-wt;
+        box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+        .box-title {
+            margin-bottom: 12px;
+            font-weight: 700;
+            @include font-large-1;
+            color: #000;
+            a {
+                &:after {
+                    display: inline-block;
+                    width: 24px;
+                    height: 24px;
+                    margin-left: 2px;
+                    background: url('/lg5-common/images/icons/btn-arr-24x24-black2.svg') no-repeat 0 0;
+                    vertical-align: -4px;
+                    content: '';
+                }
+            }
+        }
+    }
+    .board-list {
+        border-top: 1px solid $color-border;
+        > li {
+            position: relative;
+        }
+        .content {
+            padding-right: 92px;
+            .title {
+                font-weight: 700;
+                @include font-medium;
+                @include textEllipsis;
+            }
+            .text {
+                font-weight: 500;
+                @include font-small;
+                color: $color-gray-1;
+            }
+        }
+        .progress {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding-left: 26px;
+            background: url('/lg5-common/images/icons/icon-proc.svg') no-repeat 0 center;
+            font-weight: 700;
+            @include font-medium;
+            color: #ff5000;
+            &.complete {
+                background-image: url('/lg5-common/images/icons/icon-comp.svg');
+                color: #18847e;
+            }
+        }
+        .btn {
+            position: absolute;
+            @include calc(top,50%,16px);
+            right: 0;
+            &.gray {
+                color: $color-default;
+            }
+        }
+        &.check {
+            > li {
+                margin-top: 24px;
+                &:first-child {
+                    margin-top: 32px;
+                }
+            }
+            .content {
+                .title {
+                    margin-bottom: 4px;
+                }
+            }
+        }
+        &.product {
+            > li {
+                margin-top: 15px;
+                &:first-child {
+                    margin-top: 32px;
+                }
+            }
+        }
+    }
+    .rental-date {
+        margin-top: 32px;
+        padding: 19px 0;
+        border-top: 1px solid $color-border;
+        background-color: $color-bg;
+        font-weight: 700;
+        @include font-large;
+        text-align: center;
+        em {
+            color: $color-gray-1;
+        }
+    }
+    .rental-info {
+        margin-top: 24px;
+        li {
+            display: flex;
+            align-items: baseline;
+            margin-top: 12px;
+            .name {
+                flex: 1;
+                font-weight: 700;
+                @include font-medium;
+                .number {
+                    margin-left: 8px;
+                    font-weight: 500;
+                    @include font-small;
+                }
+            }
+            .text {
+                flex: 1;
+            }
+        }
+    }
+}

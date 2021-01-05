@@ -1136,13 +1136,25 @@
 // input + btn mix type
 .input-mix-wrap {
     display:block;
+    margin-top:8px;
     border:1px solid $color-border;
     border-radius:8px;
     background:$color-bg-wt;
+    @include mobile {
+        margin-top:6px;
+    }
+    &:first-child {
+        margin-top:0;
+    }
     .mix-input {
         display:table;
         width:100%;
         padding:15px 23px;
+        .chk-wrap.bold {
+            label {
+                font-weight:700;
+            }
+        }
         .chk-wrap,
         .cell {
             display:table-cell;
