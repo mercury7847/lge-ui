@@ -19,6 +19,8 @@
 
 .my-product {
     background:url(/lg5-common/images/CS/img-banner01.jpg) no-repeat;
+    background-position:center 15%;
+    background-size:cover;
     .box {
         max-width:1380 + 80px;
         margin:0 auto;
@@ -378,25 +380,35 @@
     }
 
     // 키워드 검색
-    .keyword-search {
-        position:relative;
-        width:443px + 166px;
-        padding-right:166px;
-        margin:0 auto 32px;
-        transform:translateX(83px);
-        .err-msg {
-            display:none;
-            margin-top:4px;
+    .keyword-search {    
+        margin-bottom:32px;    
+        .search-box {
+            max-width:443px + 166px;
+            margin:0 auto;
+            transform:translateX(83px);
+            .search-input {
+                position:relative;
+                padding-right:166px;
+                input[type=text] {
+                    text-transform:uppercase;
+                }
+                .btn {
+                    position:absolute;
+                    right:0;
+                    top:8px;
+                }
+            }
+            .desc {
+                margin-top:4px;
+                @include font-small;
+            }
+
+            .err-msg {
+                display:none;
+                margin-top:4px;
+            }
         }
-        input[type=text] {
-            text-transform:uppercase;
-        }
-        .btn {
-            position:absolute;
-            right:0;
-            top:50%;
-            transform:translateY(-50%);
-        }
+        
         @include mobile {
             width:100%;
             margin:0 0 32px;
@@ -583,29 +595,30 @@
             display:block;
         }
         .form-wrap {
-            @include clearfix;
+            margin-bottom:24px;
             .forms {
-                float:left;
-                width:calc(50% - 12px);
-                & + .forms {
-                    float:right;
-                    margin:0;
-                }
                 .tit {
-                    display:block;
-                    width:100%;
-                    margin-bottom:8px;
-                    padding:0;
+                    padding-bottom:8px;
                     label {
                         @include font-small;
                         font-weight:500;
                     }
                 }
                 .conts {
-                    display:block;
-                    width:100%;
+                    @include clearfix;
+                    .select-wrap {
+                        float:left;
+                        width:calc(50% - 12px);
+                        & + .select-wrap {
+                            float:right;
+                            margin:0;
+                        }
+                    }
                 }
             }
+        }
+        .keyword-search {
+            display:none;
         }
         .no-data {
             .word {
@@ -614,6 +627,7 @@
             }
         }
         .model-slider {
+            margin-top:-24px;
             .slide-controls {
                 button {
                     &.prev {
@@ -686,23 +700,17 @@
                 }
             } 
         }
-
-        @include tablet {
-            .model-list-wrap {
-                .model-list {
-                    li {
-                        width:calc(100% / 3);
-                    }    
-                }
-            }
-        }
         @include mobile {
             .form-wrap {
                 margin-bottom:32px;
                 .forms {
-                    width:calc(50% - 6px);
                     .tit {
-                        margin-bottom:6px;
+                        padding-bottom:6px;
+                    }
+                    .cont {
+                        .select-wrap {
+                            width:calc(50% - 6px);
+                        }
                     }
                 }
             }
