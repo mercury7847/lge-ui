@@ -6,6 +6,8 @@
 .KRC0010 {
     padding:0;
     &.stage-full {
+        max-width:1920px;
+        margin:0 auto;
     }
     &.stage-wide {
         max-width:1600px;

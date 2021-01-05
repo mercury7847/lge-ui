@@ -4,6 +4,15 @@
 
 .KRC0034 {
 	position:relative;
+	&.stage-full {
+		max-width:1920px;
+		margin:0 auto;
+	}
+	&.stage-wide {
+		max-width:1600px;
+		margin:0 auto;
+	}
+
 	.visual-area {
 		position:absolute;
 		top:0;

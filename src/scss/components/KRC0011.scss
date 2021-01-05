@@ -60,9 +60,10 @@
 			}
 		}
     }
-
     .component-inner {
-        padding:0;
+        @include mobile {
+            padding:0;
+        }
     }
 
     .inner {
@@ -77,7 +78,7 @@
             width:calc(100% / 3);
             padding:0 24px;
         }
-        @media screen and (max-width:1200px) {
+        @include mobile {
             display:block;
             margin:0;
             .visual-area {
@@ -103,6 +104,9 @@
                     margin-top:0;
                 }
             }
+            .bullet-list {
+                padding:0 16px;
+            }
         }
     }
 
@@ -113,6 +117,7 @@
         @include bodycopy(h2, h2);
     }
     .cta {
+        margin-top:24px;
         .btn-type-box,
         .btn-type-text {
             @include cta-btn;
