@@ -184,7 +184,8 @@
 				border-radius:2px;
 				background:#222;
 			}
-			&.in-close {
+            &.in-close,
+            &.onOpen {
 				&::before,
 				&::after {
 					transform:rotate(45deg);
@@ -211,7 +212,7 @@
 	.more-content {
 		position: relative;
 		overflow: hidden;
-		display:none;
+        display:none;
 		padding:80px 40px;
 		background:#f4f4f4;
 		@include mobile {
