@@ -136,6 +136,7 @@
                     var data = result.data;
                     if(lgkorUI.stringToBool(data.success)) {
                         if(wish) {
+                            $dm.attr("data-wishItemId",data.wishItemId);
                             $(window).trigger("toastshow","선택하신 제품이 찜한 제품에 추가되었습니다.");
                         } else{
                             $(window).trigger("toastshow","찜한 제품 설정이 해제되었습니다.");
