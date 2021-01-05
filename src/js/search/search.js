@@ -148,6 +148,30 @@
             '</div>' +
         '</div>' +
     '</a></li>'
+    var customerDownloadItemTemplate = '<li><div class="item">' +
+        '<div class="result-info">' +
+            '<div class="info-text">' +
+                '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
+                '<div class="result-tit">' +
+                    '<a href="{{url}}">{{title}}</a>' +
+                    '<a href="{{url}}" class="cs">' +
+                        '<span class="cs-inner">' +
+                            '{{#each (item, index) in category}}{{#if index != 0}}>{{/if}}<span>{{item}}</span>{{/each}}' +
+                        '</span>' +
+                        '{{#if desc}}<span class="cs-inner">{{desc}}</span>{{/if}}' +
+                    '</a>' +
+                '</div>' +
+                '<div class="result-detail"><div class="info-btm">' +
+                    '<span class="text">{{date}}</span>' +
+                    '{{#each item in hash}}<span class="text">{{item}}</span>{{/each}}' +
+                '</div></div>' +
+            '</div>' +
+            '{{#if download}}<div class="btn-area">' +
+                '{{#each item in download}}<button type="button" class="btn border size" data-download-url="{{item.url}}"><span>{{item.title}}</span></button>{{/each}}' +
+            '</div>{{/if}}' +
+            '{{#if isVideo}}<div class="video-info"><span class="hidden">동영상 포함</span></div>{{/if}}' +
+        '</div>' +
+    '</div></li>'
 
     //필터 템플릿
     var filterSliderTemplate = '<li data-filterId="{{filterId}}">' +
