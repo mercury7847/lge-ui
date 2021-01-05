@@ -417,6 +417,13 @@ CS.MD.commonModel = function() {
             // 카테고리 선택
             self.$searchCategoryBox.find('.btn-open').on('click', function() {
                 $(this).closest('.box').addClass('on');
+                $(this).closest('li').siblings().each(function(index, item) {
+                    var $item = $(item);
+
+                    if ($item.find('.box').hasClass('on')) {
+                        $item.find('.box').removeClass('on').addClass('off');
+                    }
+                });
             });
             self.$searchCategoryBox.find('.btn-close').on('click', function() {
                 $(this).closest('.box').removeClass('on').addClass('off');
