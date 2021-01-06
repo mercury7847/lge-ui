@@ -13,10 +13,10 @@
             .slide-conts {
                 .text-box {
                     &.type-wide {
-                        max-width:100%;
+                        @include boxs(w);
                     }
                     &.type-narrow {
-                        max-width:((678px * 100%) / 1380px);
+                        @include boxs(n);
                     }
                     &.box-align-left {
                         margin-right:auto;
