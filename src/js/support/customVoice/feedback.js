@@ -36,7 +36,22 @@
                     }
                 }
 
+                var authRegister = {
+                    authName: {
+                        pattern: /^[가-힣a-zA-Z]+$/,
+                        msgTarget: '.err-block'
+                    },
+                    authPhoneNo: {
+                        pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
+                        msgTarget: '.err-block'
+                    },
+                    authNo:{
+                        msgTarget: '.err-block'
+                    }
+                };
+
                 validation = new vcui.ui.CsValidation('#submitForm', {register:register});
+                authValidation = new vcui.ui.CsValidation('#certificationPopup .form-wrap', {register:authRegister});
 
                 self.bindEvent();
             });
@@ -86,21 +101,6 @@
 
             self.$authPopup.on('modalshown', function() {
                 var $this = $(this);
-                var register = {
-                    authName: {
-                        pattern: /^[가-힣a-zA-Z]+$/,
-                        msgTarget: '.err-block'
-                    },
-                    authPhoneNo: {
-                        pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                        msgTarget: '.err-block'
-                    },
-                    authNo:{
-                        msgTarget: '.err-block'
-                    }
-                };
-
-                authValidation = new vcui.ui.CsValidation('#certificationPopup .form-wrap', {register:register});
 
                 $this.find('.btn-send').off('click').on('click', function() {
                     var $btnSend = $(this),
@@ -156,6 +156,8 @@
                 self.$authPopup.find('.btn-send').text('인증번호 발송');
                 $this.find('#authNo').prop('disabled', true);
                 $this.find('input').val('');
+
+                authValidation.reset();
             });
         }
     }
