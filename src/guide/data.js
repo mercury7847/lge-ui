@@ -304,7 +304,7 @@ var res = {
 					"멤버십 혜택" : ["/html/BMC/ACC4003.html","","검수완료"],
 					"멤버십 가입안내" : ["/html/BMC/ACC4004.html","","검수완료"],
 					"카드혜택" : ["/html/BMC/ACC4005.html","","검수완료"],
-					"카드혜택 팝업" : ["/html/MYC/BMC/ACC4005_popup.html","","검수완료"]
+					"카드혜택 팝업" : ["/html/BMC/ACC4005_popup.html","","검수완료"]
 				}
 			},
 			"마이페이지(MYS)" : {
