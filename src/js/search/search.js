@@ -615,7 +615,8 @@
                         var $list_ul = self.$autoComplete.find('div.keyword-list ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(autoCompleteItemTemplate, {"input":item, "text":item.replaceAll(searchedValue,replaceText)}));
+                            //item.replaceAll(searchedValue,replaceText)
+                            $list_ul.append(vcui.template(autoCompleteItemTemplate, {"input":item, "text":vcui.string.replaceAll(item, searchedValue, replaceText)}));
                         });
                         showAutoComplete = true;
                     }
@@ -651,7 +652,7 @@
                     var data = result.data;
                     var param = result.param;
                     
-                    var searchedValue = data.search;
+                    var searchedValue = param.search;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     self.$inputSearch.val(searchedValue);
@@ -679,13 +680,17 @@
                                 item.price = item.price ? vcui.number.addComma(item.price) : null;
                                 item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                                 item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
-                                item.title = item.title.replaceAll(searchedValue,replaceText);
+                                //item.title = item.title.replaceAll(searchedValue,replaceText);
+                                console.log(item.title,searchedValue,replaceText);
+                                console.log(vcui.string.replaceAll(item.title, searchedValue, replaceText));
+                                item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                                 $list_ul.append(vcui.template(productItemTemplate, item));
                             });
                             break;
                         case tabIndexEvent:
                             arr.forEach(function(item, index) {
-                                item.title = item.title.replaceAll(searchedValue,replaceText);
+                                //item.title = item.title.replaceAll(searchedValue,replaceText);
+                                item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                                 item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
                                 item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
                                 $list_ul.append(vcui.template(eventItemTemplate, item));
@@ -720,15 +725,16 @@
                     self.openSearchInputLayer(false);
 
                     var data = result.data;
+                    var param = result.param;
 
-                    var searchedValue = data.search;
+                    var searchedValue = param.search;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     //검색한 검색어
                     self.$searchResultText.html(replaceText + ' 검색 결과');
 
                     //원래입력된 기존 검색어 이동
-                    var inputValue = data.inputValue;
+                    var inputValue = param.inputValue;
                     if(inputValue && inputValue != searchedValue) {
                         self.$similarText.text('“' + inputValue + '” 검색 결과로 이동').attr('href','#'+inputValue);
                         self.$similarText.show();
@@ -799,7 +805,8 @@
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                             item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
-                            item.title = item.title.replaceAll(searchedValue,replaceText);
+                            //item.title = item.title.replaceAll(searchedValue,replaceText);
+                            item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             $list_ul.append(vcui.template(productItemTemplate, item));
                         });
                         $resultListWrap.show();
@@ -817,7 +824,8 @@
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
-                            item.title = item.title.replaceAll(searchedValue,replaceText);
+                            //item.title = item.title.replaceAll(searchedValue,replaceText);
+                            item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
                             item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
                             $list_ul.append(vcui.template(eventItemTemplate, item));
