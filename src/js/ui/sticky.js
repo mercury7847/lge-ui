@@ -31,6 +31,8 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
                 return;
             }   
 
+            self.isFirstRender = false;
+
             self.$container = self.$el.closest(self.options.stickyContainer);
 
             self.$anchor = self.$el.find(self.options.anchorClass);
@@ -130,10 +132,12 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
                 });
             }
 
-            if(opt.wrap){
-                self.$el.wrap(opt.wrapWith).parent().css({ 
+            if(!self.isFirstRender && opt.wrap){
+                self.isFirstRender = true;
+                self.wrapper = self.$el.wrap(opt.wrapWith).parent().css({ 
                     height: self.$el.outerHeight(true)
                 });
+                console.log("self.wrapper:", self.wrapper)
             }
 
             if (self.stickyRect.bottom < self.containerRect.bottom && opt.stickyFor < self.vpWidth && !self.active) {
@@ -214,6 +218,8 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
                         top: self.marginTop
                     });
                 }
+
+                console.log(self.$el.outerHeight(true));
             } else {
                 $el.removeClass(opt.stickyClass);
                 self._clearCss();
