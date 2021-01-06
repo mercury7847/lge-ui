@@ -304,6 +304,7 @@ var res = {
 					"멤버십 혜택" : ["/html/BMC/ACC4003.html","","검수완료"],
 					"멤버십 가입안내" : ["/html/BMC/ACC4004.html","","검수완료"],
 					"카드혜택" : ["/html/BMC/ACC4005.html","","검수완료"],
+					"카드혜택 팝업" : ["/html/MYC/BMC/ACC4005_popup.html","","검수완료"]
 				}
 			},
 			"마이페이지(MYS)" : {
@@ -330,14 +331,14 @@ var res = {
 					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","검수완료"],
 					"납부내역" : ["/html/MYC/ACCF7027.html","","검수완료"],
 					"방문 알리미" : ["/html/MYC/ACCF7030.html","","검수완료"],
-					"방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","진행중"]
+					"방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","검수완료"]
 				},
 				"관심목록" : {
 					"찜한 제품" : ["/html/MYC/ACCF7013.html","","검수완료"],
 					"최근 본 제품" : ["/html/MYC/ACCF7011.html","","검수완료"],
 					"구독" : ["/html/MYC/ACCF7017.html","","검수완료"],
 					"단골매장" : ["/html/MYC/ACCF7019.html","","검수완료"],
-					"재입고 알림" : ["/html/MYC/ACCF7072.html","","검수완료"],
+					"재입고 알림" : ["/html/MYC/ACCF7072.html","","검수완료"]
 				},
 				"제품 관리" : {
 					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","검수완료"],
