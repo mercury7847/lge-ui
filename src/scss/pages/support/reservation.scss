@@ -238,7 +238,6 @@
     /* page */
     /* 출장 예약 */
     &.service-engineer {
-        
     }
     
 
@@ -369,6 +368,8 @@
                 }
                 .desc-btn{
                     margin-bottom:20px;
+                    display:flex;
+                    flex-flow:wrap;
                     &.step-btn-wrap{
                         text-align:left;
                     }
@@ -376,6 +377,8 @@
                         margin:0 8px 12px 0;
                         min-width:auto;
                         padding:8px 14px;
+                        display:flex;
+                        align-items:center;
                         &.white{
                             background:#fff;
                             border:1px solid #ddd;
@@ -383,6 +386,16 @@
                             padding: 8px 16px;
                             color:#222;
                             font-weight:normal;
+                        }
+                        &.out-link{
+                            &::after{
+                                content:'';
+                                display:inline-block;
+                                margin-left:3px;
+                                width:20px;
+                                height:20px;
+                                background:url("/lg5-common/images/icons/ic-outlink-20.svg") center no-repeat;
+                            }
                         }
                     }
                 }

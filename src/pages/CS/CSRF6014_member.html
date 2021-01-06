@@ -91,13 +91,13 @@
                                         </div>
                                         <div class="desc-wrap">
                                             <div class="desc-btn">
-                                                <button type="button" class="btn gray white"><span>기업정보</span></button>
-                                                <button type="button" class="btn gray white"><span>뉴스관련</span></button>
-                                                <button type="button" class="btn gray white"><span>주식관련</span></button>
-                                                <button type="button" class="btn gray white"><span>재무관련</span></button>
-                                                <button type="button" class="btn gray white"><span>지속가능경영</span></button>
-                                                <button type="button" class="btn gray white"><span>채용관련</span></button>
-                                                <button type="button" class="btn gray white"><span>인사제도관련</span></button>
+                                                <button type="button" class="btn white"><span>기업정보</span></button>
+                                                <button type="button" class="btn white"><span>뉴스관련</span></button>
+                                                <button type="button" class="btn white"><span>주식관련</span></button>
+                                                <button type="button" class="btn white"><span>재무관련</span></button>
+                                                <button type="button" data-href="#managePop" data-control="modal" class="btn white out-link"><span>지속가능경영</span></button>
+                                                <button type="button" data-href="#recruitPop" data-control="modal" class="btn white out-link"><span>채용관련</span></button>
+                                                <button type="button" data-href="#recruitPop" data-control="modal" class="btn white out-link"><span>인사제도관련</span></button>
                                             </div>
                                         </div>
                                     </div>
@@ -349,6 +349,12 @@
             {"message" : "예약가능한 제품이 아닙니다."}
         ]
     })
+
+    <!-- 지속가능경영 팝업 -->
+    @@include('./CS/modal/manage-popup.html')
+
+    <!-- 채용관련/인사제도관련 팝업 -->
+    @@include('./CS/modal/recruit-popup.html')
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>

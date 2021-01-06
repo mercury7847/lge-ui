@@ -172,6 +172,17 @@
     }
 }
 
+@mixin boxs ($size) {
+    @if $size == w { // wide
+        max-width:((1146px * 100%) / 1380px);
+    } @else if $size == n { // narrow
+        max-width:((678px * 100%) / 1380px);
+    }
+    @include mobile {
+        max-width:100%;
+    }
+}
+
 // component container
 .iw_placeholder .iw_component {
     // don't remove

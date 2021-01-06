@@ -16,6 +16,15 @@
         .align-center : text align Center
         .align-right : text align Right
 
+        2. box size 옵션
+		.type-wide : 넓음
+		.type-narrow : 좁음
+
+		3. box align 옵션
+		.box-align-left : box left
+		.box-align-center : box center
+		.box-align-right : box right
+
         2. text color
         .type-black : text color Black
         .type-white : text color White
@@ -61,11 +70,15 @@
             <!-- // visual background -->
 
             <!-- title -->
-            <div class="title-wrap @@textAlign @@textColor1">
-                <div class="title">
-                    <h2>공간&middot;에너지 절약과 위생관리까지 한번에 잡은 얼음정수기 냉장고</h2>
+            <div class="title-wrap @@textAlign @@textColor1 @@boxSize @@boxAlign">
+                <!-- [KR수정_210106] .inner로 감싸기 -->
+                <div class="inner">
+                    <div class="title">
+                        <h2>공간&middot;에너지 절약과 위생관리까지 한번에 잡은 얼음정수기 냉장고</h2>
+                    </div>
+                    <p class="desc">주방공간은 더 넓게, 전기료는 더 적게, 전문가의 케어서비스와 자동 코크 살균으로 위생 관리까지 차원이 다른 냉장고를 만나보세요.</p>
                 </div>
-                <p class="desc">주방공간은 더 넓게, 전기료는 더 적게, 전문가의 케어서비스와 자동 코크 살균으로 위생 관리까지 차원이 다른 냉장고를 만나보세요.</p>
+                <!-- // [KR수정_210106] .inner로 감싸기 -->
             </div>
             <!-- // title -->
 
