@@ -71,14 +71,14 @@
                                         </div>
                                         <div class="desc-wrap">
                                             <div class="desc-btn">
-                                                <button type="button" class="btn gray white"><span>사이트 이용</span></button>
-                                                <button type="button" class="btn gray white"><span>LG전자 회원</span></button>
-                                                <button type="button" class="btn gray white"><span>멤버십</span></button>
+                                                <button type="button" class="btn white"><span>사이트 이용</span></button>
+                                                <button type="button" class="btn white"><span>LG전자 회원</span></button>
+                                                <button type="button" class="btn white"><span>멤버십</span></button>
                                             </div>
                                             <p class="desc-txt">온라인제품 구매(주문/결제, 배송, 교환, 취소 등)와 관련된 문의인가요?</p>
                                             <div class="desc-btn">
-                                                <button type="button" class="btn gray white"><span>구매문의</span></button>
-                                                <button type="button" class="btn gray white"><span>케어용품/소모품</span></button>
+                                                <button type="button" class="btn white"><span>구매문의</span></button>
+                                                <button type="button" class="btn white"><span>케어용품/소모품</span></button>
                                             </div>
                                         </div>
                                     </div>
@@ -88,13 +88,13 @@
                                         </div>
                                         <div class="desc-wrap">
                                             <div class="desc-btn">
-                                                <button type="button" class="btn gray white"><span>기업정보</span></button>
-                                                <button type="button" class="btn gray white"><span>뉴스관련</span></button>
-                                                <button type="button" class="btn gray white"><span>주식관련</span></button>
-                                                <button type="button" class="btn gray white"><span>재무관련</span></button>
-                                                <button type="button" class="btn gray white"><span>지속가능경영</span></button>
-                                                <button type="button" class="btn gray white"><span>채용관련</span></button>
-                                                <button type="button" class="btn gray white"><span>인사제도관련</span></button>
+                                                <button type="button" class="btn white"><span>기업정보</span></button>
+                                                <button type="button" class="btn white"><span>뉴스관련</span></button>
+                                                <button type="button" class="btn white"><span>주식관련</span></button>
+                                                <button type="button" class="btn white"><span>재무관련</span></button>
+                                                <button type="button" data-href="#managePop" data-control="modal"  class="btn white out-link"><span>지속가능경영</span></button>
+                                                <button type="button" data-href="#recruitPop" data-control="modal" class="btn white out-link"><span>채용관련</span></button>
+                                                <button type="button" data-href="#recruitPop" data-control="modal" class="btn white out-link"><span>인사제도관련</span></button>
                                             </div>
                                         </div>
                                     </div>
@@ -339,6 +339,19 @@
         "msg" : "출장 서비스를<br>예약하겠습니까?",
         "twobtn" : true
     })
+
+    <!-- toast-meassage -->
+    @@include('./common/modules/toast-message.html', {
+        "messageArr": [
+            {"message" : "예약가능한 제품이 아닙니다."}
+        ]
+    })
+
+    <!-- 지속가능경영 팝업 -->
+    @@include('./CS/modal/manage-popup.html')
+
+    <!-- 채용관련/인사제도관련 팝업 -->
+    @@include('./CS/modal/recruit-popup.html')
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>

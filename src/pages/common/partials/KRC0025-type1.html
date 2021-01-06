@@ -7,17 +7,18 @@
 		.zero-top : 상단여백 없음
 		.zero-btm : 하단여백 없음
 
-		[.component 영역 사이즈 옵션]
-		1. 이미지 사이즈
-		.full-size : 데스크탑 일 경우 최대 1920 픽셀 / 모바일 일 경우 최대 768 픽셀
-		.wide-size : 데스크탑 일 경우 최대 1600 픽셀 / 모바일 일 경우 최대 768 픽셀
-		.standard-size : 데스크탑 일 경우 최대 1284 픽셀 / 모바일 일 경우 최대 768 픽셀 // [KR수정_201229] medium -> standard로 명칭 통일 변경 
-
 		[.unit-list 옵션]
 		1. 블록 갯수 지정
 		.block1 : 1단
 		.block2 : 2단
 		.block3 : 3단
+
+		2. block1 일 때 텍스트 영역 옵션
+		.type-wide : 넓음
+		.type-narrow : 좁음
+		.box-align-left : box left
+		.box-align-center : box center
+		.box-align-right : box right
 
 		2. 정렬
 		.align-left : 왼쪽 정렬
@@ -35,7 +36,7 @@
 		.font-underline : 언더라인
 	-->
 	<section class="component KRC0025 @@bg @@size">
-		<div class="unit-list block1 @@align-class1">
+		<div class="unit-list block1 @@align-class1 @@boxAlign @@boxSize">
 			<div class="unit-box">
 				<!-- 1. headline -->
 				<p class="eyebrow">H2 아이브로우 영역입니다.</p>

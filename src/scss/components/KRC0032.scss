@@ -79,15 +79,12 @@
                 
                 &.type-wide {
                     .inner {
-                        width:100%;
+                        @include boxs(w);
                     }
                 }
                 &.type-narrow {
                     .inner {
-                        width:50%;
-                        @include mobile {
-                            width:100%;
-                        }
+                        @include boxs(n);
                     }
                 }
 
