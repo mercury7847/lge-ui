@@ -143,7 +143,7 @@
                                                             <div class="more-view-wrap" aria-hidden="true">
                                                                 <span class="more-view-btn">더보기</span>
                                                             </div>
-                                                            <button type="button" class="btn size border"><span>방문일정 변경요청</span></button>
+                                                            <button type="button" class="btn size border" data-date="20200511" data-time="15:40"><span>방문일정 변경요청</span></button>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -247,7 +247,9 @@
     })
     
     <!-- 방문일정 변경요청 popup -->
-    <article id="popupChangeVisitDate" class="popup-wrap full">
+    <article id="popupChangeVisitDate" class="popup-wrap full"
+        data-time-url="/lg5-common/data-ajax/mypage/care/impossibleVisitTimeList.json"
+    >
         <header class="pop-header">
             <h1 class="tit"><span>방문일정 변경요청</span></h1>
         </header>
@@ -259,7 +261,7 @@
                     </div>
                     <div class="box-wrap calendar-wrap">
                         <div class="month-wrap">
-                            <span class="month">2020.01</span>
+                            <span class="month">2021.01</span>
                         </div>
                         <!--
                             날짜 선택 불가 = td class : disabled, button disabled
@@ -287,51 +289,52 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td class="disabled" data-value="20200901"><button type="button" title="2020년 9월 1일" disabled><span>1</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210101"><button type="button" title="2021년 1월 1일" disabled><span>1</span><span class="blind">선택불가</span></button></td>
                                 </tr>
                                 <tr>
-                                    <td class="disabled" data-value="20200902"><button type="button" title="2020년 9월 2일" disabled><span>2</span><span class="blind">선택불가</span></button></td>
-                                    <td class="disabled" data-value="20200903"><button type="button" title="2020년 9월 3일" disabled><span>3</span><span class="blind">선택불가</span></button></td>
-                                    <td class="disabled" data-value="20200904"><button type="button" title="2020년 9월 4일" disabled><span>4</span><span class="blind">선택불가</span></button></td>
-                                    <td class="disabled" data-value="20200905"><button type="button" title="2020년 9월 5일" disabled><span>5</span><span class="blind">선택불가</span></button></td>
-                                    <td class="disabled" data-value="20200906"><button type="button" title="2020년 9월 6일" disabled><span>6</span><span class="blind">선택불가</span></button></td>
-                                    <td class="disabled" data-value="20200907"><button type="button" title="2020년 9월 7일" disabled><span>7</span><span class="blind">선택불가</span></button></td>
-                                    <td class="disabled" data-value="20200908"><button type="button" title="2020년 9월 8일" disabled><span>8</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210102"><button type="button" title="2021년 1월 2일" disabled><span>2</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210103"><button type="button" title="2021년 1월 3일" disabled><span>3</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210104"><button type="button" title="2021년 1월 4일" disabled><span>4</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210105"><button type="button" title="2021년 1월 5일" disabled><span>5</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210106"><button type="button" title="2021년 1월 6일" disabled><span>6</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210107"><button type="button" title="2021년 1월 7일" disabled><span>7</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210108"><button type="button" title="2021년 1월 8일" disabled><span>8</span><span class="blind">선택불가</span></button></td>
                                 </tr>
                                 <tr>
-                                    <td class="disabled" data-value="20200909"><button type="button" title="2020년 9월 9일" disabled><span>9</span><span class="blind">선택불가</span></button></td>
-                                    <td class="disabled" data-value="20200910"><button type="button" title="2020년 9월 10일" disabled><span>10</span><span class="blind">선택불가</span></button></td>
-                                    <td class="disabled" data-value="20200911"><button type="button" title="2020년 9월 11일" disabled><span>11</span><span class="blind">선택불가</span></button></td>
-                                    <td class="disabled" data-value="20200912"><button type="button" title="2020년 9월 12일" disabled><span>12</span><span class="blind">선택불가</span></button></td>
-                                    <td class="disabled" data-value="20200913"><button type="button" title="2020년 9월 13일" disabled><span>13</span><span class="blind">선택불가</span></button></td>
-                                    <td class="disabled" data-value="20200914"><button type="button" title="2020년 9월 14일" disabled><span>14</span><span class="blind">선택불가</span></button></td>
-                                    <td class="expected" data-value="20200915">
-                                        <button type="button" title="2020년 9월 15일" disabled><span>16</span><span class="blind">방문 예정일</span></button>
+                                    <td class="disabled" data-value="20210109"><button type="button" title="2021년 1월 9일" disabled><span>9</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210110"><button type="button" title="2021년 1월 10일" disabled><span>10</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210111"><button type="button" title="2021년 1월 11일" disabled><span>11</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210112"><button type="button" title="2021년 1월 12일" disabled><span>12</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210113"><button type="button" title="2021년 1월 13일" disabled><span>13</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210114"><button type="button" title="2021년 1월 14일" disabled><span>14</span><span class="blind">선택불가</span></button></td>
+                                    <td class="expected" data-value="20210115">
+                                        <button type="button" title="2021년 1월 15일" disabled><span>15</span><span class="blind">방문 예정일</span></button>
                                     </td>    
                                 </tr>
                                 <tr>
-                                    <td data-value="20200916"><button type="button" title="2020년 9월 16일"><span>16</span></button></td>
-                                    <td data-value="20200917"><button type="button" title="2020년 9월 17일"><span>17</span></button></td>
-                                    <td data-value="20200918"><button type="button" title="2020년 9월 18일"><span>18</span></button></td>
-                                    <td data-value="20200919"><button type="button" title="2020년 9월 19일"><span>19</span></button></td>
-                                    <td data-value="20200920"><button type="button" title="2020년 9월 20일"><span>20</span></button></td>
-                                    <td data-value="20200921"><button type="button" title="2020년 9월 21일"><span>21</span></button></td>
-                                    <td class="choice" data-value="20200922">
-                                        <span class="blind">변경 요청일</span><button type="button" title="2020년 9월 22일"><span>22</span></button>
-                                    </td>
+                                    <td data-value="20210116"><button type="button" title="2021년 1월 16일"><span>16</span></button></td>
+                                    <td data-value="20210117"><button type="button" title="2021년 1월 17일"><span>17</span></button></td>
+                                    <td data-value="20210118"><button type="button" title="2021년 1월 18일"><span>18</span></button></td>
+                                    <td data-value="20210119"><button type="button" title="2021년 1월 19일"><span>19</span></button></td>
+                                    <td data-value="20210120"><button type="button" title="2021년 1월 20일"><span>20</span></button></td>
+                                    <td data-value="20210121"><button type="button" title="2021년 1월 21일"><span>21</span></button></td>
+                                    <td data-value="20210122"><button type="button" title="2021년 1월 22일"><span>22</span></button></td>
+                                    <!-- <td class="choice" data-value="20210122">
+                                        <span class="blind">변경 요청일</span><button type="button" title="2021년 1월 22일"><span>22</span></button>
+                                    </td> -->
                                 </tr>
                                 <tr>
-                                    <td data-value="20200923"><button type="button" title="2020년 9월 23일"><span>23</span></button></td>
-                                    <td data-value="20200924"><button type="button" title="2020년 9월 24일"><span>24</span></button></td>
-                                    <td data-value="20200925"><button type="button" title="2020년 9월 25일"><span>25</span></button></td>
-                                    <td data-value="20200926"><button type="button" title="2020년 9월 26일"><span>26</span></button></td>
-                                    <td data-value="20200927"><button type="button" title="2020년 9월 27일"><span>27</span></button></td>
-                                    <td data-value="20200928"><button type="button" title="2020년 9월 28일"><span>28</span></button></td>
-                                    <td data-value="20200929"><button type="button" title="2020년 9월 29일"><span>29</span></button></td>
+                                    <td data-value="20210123"><button type="button" title="2021년 1월 23일"><span>23</span></button></td>
+                                    <td data-value="20210124"><button type="button" title="2021년 1월 24일"><span>24</span></button></td>
+                                    <td data-value="20210125"><button type="button" title="2021년 1월 25일"><span>25</span></button></td>
+                                    <td data-value="20210126"><button type="button" title="2021년 1월 26일"><span>26</span></button></td>
+                                    <td data-value="20210127"><button type="button" title="2021년 1월 27일"><span>27</span></button></td>
+                                    <td data-value="20210128"><button type="button" title="2021년 1월 28일"><span>28</span></button></td>
+                                    <td data-value="20210129"><button type="button" title="2021년 1월 29일"><span>29</span></button></td>
                                 </tr>
                                 <tr>
-                                    <td data-value="20200930"><button type="button" title="2020년 9월 30일"><span>30</span></button></td>
-                                    <td data-value="20200931"><button type="button" title="2020년 9월 31일"><span>31</span></button></td>
+                                    <td data-value="20210130"><button type="button" title="2021년 1월 30일"><span>30</span></button></td>
+                                    <td data-value="20210131"><button type="button" title="2021년 1월 31일"><span>31</span></button></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
