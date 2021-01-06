@@ -48,7 +48,6 @@ stg:
   stage: build-n-deploy
   only:
     - stage
-  when: manual
   script:
     ## build
     - rm -rf ./dist/*

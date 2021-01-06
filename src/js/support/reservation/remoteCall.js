@@ -31,7 +31,8 @@
         init: function() {
             var self = this;
             
-            self.$form = $('#submitForm');
+            self.$cont = $('.contents');
+            self.autoFlag = false;
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
 
@@ -52,7 +53,7 @@
                     }
                 }
 
-                validation = new vcui.ui.CsValidation('#submitForm', {register:register});
+                validation = new vcui.ui.CsValidation('.step-area', {register:register});
 
                 $('.contents').commonModel({
                     register: register,
@@ -68,11 +69,44 @@
                 self.bindEvent();
             });
         },
-        
+        requestTimeData: function() {
+            var self = this;
+            var url = $('#stepInput').data('ajax'),
+                param = validation.getAllValues(),
+                result;
+
+            param = $.extend(param, {
+                topic: $('input[name=topic]').val(),
+                subTopic: $('input[name=subTopic]').val(),
+                serviceType: $('#serviceType').val(),
+                productCode: $('#productCode').val(),
+                category: $('#category').val(),
+                subCategory: $('#subCategory').val()
+            });
+
+            result = validation.validate();
+
+            if (result.success) {
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data;
+
+                    if (data.resultFlag == 'Y') {
+                        $('#stepInput').find('.step-btn-wrap').hide();
+                        $('#stepDate').addClass('active');
+                        $('.btn-group').hide();
+                    }
+                });
+            }
+        },
         bindEvent: function() {
             var self = this;
 
-            self.$form.on('change', 'input[name=topic]', function() {
+            $('#stepInput').find('.step-btn-wrap .btn').on('click', function() {
+                self.autoFlag = true;
+                self.requestTimeData();
+            });
+
+            self.$cont.on('change', 'input[name=topic]', function() {
                 var $this = $(this),
                     url = $('#topicList').data('ajax'),
                     param = {
@@ -92,7 +126,7 @@
                 });
             });
 
-            self.$form.on('change', 'input[name=subTopic]', function() {
+            self.$cont.on('change', 'input[name=subTopic]', function() {
                 var $this = $(this),
                     url = $('#subTopicList').data('ajax'),
                     param = {
@@ -112,6 +146,10 @@
                         }
                     }
                 });
+
+                if (self.autoFlag) {
+                    self.requestTimeData();
+                }
             });
 
             $("#solutionBanner .btn-link").click(function(){
@@ -127,7 +165,7 @@
                 }, null, "html");
             });
 
-            self.$form.find('.btn-confirm').on('click', function() {
+            self.$cont.find('.btn-confirm').on('click', function() {
                 var result = validation.validate();
 
                 if (result.success == true) {                        
@@ -136,7 +174,7 @@
                         okBtnName: '확인',
                         cancelBtnName: '취소',
                         ok: function() {
-                            var ajaxUrl = self.$form.data('ajax');
+                            var ajaxUrl = $('#submitForm').data('ajax');
                             var data = validation.getAllValues();
                             var formData = new FormData();
    
@@ -164,7 +202,7 @@
                                 }
 
                                 if (result.data.resultFlag == 'Y') {
-                                    self.$form.submit();
+                                    $('#submitForm').submit();
                                 }
                             }).fail(function(err){
                                 alert(err.message);
@@ -172,17 +210,6 @@
                         }
                     });
                 }
-            });
-            self.$form.find('.btn-cancel').on('click', function() {
-                var url = $(this).data('url');
-                lgkorUI.confirm('', {
-                    title:'취소 하시겠습니까?',
-                    okBtnName: '확인',
-                    cancelBtnName: '취소',
-                    ok: function() {
-                        location.href = url;
-                    }
-                });
             });
         }
     }

@@ -63,6 +63,12 @@
         }
     }
 
+    .bullet-list {
+        &:first-child {
+            margin-top:0;
+        }
+    }
+
     .btn-box {
         @include cta-btn;
         &:first-child {
