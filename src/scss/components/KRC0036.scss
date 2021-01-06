@@ -22,17 +22,11 @@
                 left:0;
                 right:0;
                 bottom:0;
-                .only-pc {
-                    display:block;
-                    img {
-                        width:auto;
-                        max-width:100%;
-                        height:auto;
-                        vertical-align:top;
-                    }
-                }
-                .only-m {
-                    display:none;
+                img {
+                    width:auto;
+                    max-width:100%;
+                    height:auto;
+                    vertical-align:top;
                 }
             }
             .animation-box {
