@@ -157,14 +157,22 @@
                 }
             }
         }
+        &.type-wide {
+            .text-wrap {
+                .inner {
+                    .text-block,
+                    .cta {
+                        @include boxs(w);
+                    }
+                }
+            }
+        }
         &.type-narrow {
             .text-wrap {
                 .inner {
-                    .text-block {
-                        max-width:((795px * 100%) / 1380px);
-                        @include mobile {
-                            max-width:100%;
-                        }
+                    .text-block,
+                    .cta {
+                        @include boxs(n);
                     }
                 }
             }
@@ -222,7 +230,8 @@
             @if $key == left {
                 .text-wrap {
                     .inner {
-                        .text-block {
+                        .text-block,
+                        .cta {
                             margin-right:auto;
                         }
                     }
@@ -231,7 +240,8 @@
             @if $key == right {
                 .text-wrap {
                     .inner {
-                        .text-block {
+                        .text-block,
+                        .cta {
                             margin-left:auto;
                             text-align:left;
                         }
@@ -241,7 +251,8 @@
             @if $key == center {
                 .text-wrap {
                     .inner {
-                        .text-block {
+                        .text-block,
+                        .cta {
                             margin-left:auto;
                             margin-right:auto;
                         }

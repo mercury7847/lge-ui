@@ -79,7 +79,32 @@
             max-width:1380px + 80px;
             margin:0 auto;
             padding:0 40px;
-            vertical-align:top;
+            &.type-wide {
+                .box {
+                    @include boxs(w);
+                }
+            }
+            &.type-narrow {
+                .box {
+                    @include boxs(n);
+                }
+            }
+            &.box-align-left {
+                .box {
+                    margin-right:auto;
+                }
+            }
+            &.box-align-center {
+                .box {
+                    margin-left:auto;
+                    margin-right:auto;
+                }
+            }
+            &.box-align-right {
+                .box {
+                    margin-left:auto;
+                }
+            }
             .title * {
                 @include title-h2;
             }

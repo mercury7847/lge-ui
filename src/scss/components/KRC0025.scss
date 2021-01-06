@@ -7,13 +7,27 @@
     max-width:1380px + 80px;
     margin:0 auto;
     padding:0 40px;
+    @include mobile {
+        padding:0 16px;
+    }
     
     .unit-list {
         margin:0 -12px;
+        @include mobile {
+            margin:0;
+        }
         @include clearfix;
         .unit-box {
             float:left;
             padding:0 12px;
+            @include mobile {
+                float:none;
+                margin-top:40px;
+                padding:0;
+                &:first-child {
+                    margin-top:0;
+                }
+            }
         }
         &.block1 {
             .unit-box {
@@ -22,11 +36,17 @@
             &.type-wide {
                 .unit-box {
                     max-width:((1170px * 100%) / 1404px);
+                    @include mobile {
+                        max-width:100%;
+                    }
                 }
             }
             &.type-narrow {
                 .unit-box {
                     max-width:((702px * 100%) / 1404px);
+                    @include mobile {
+                        max-width:100%;
+                    }
                 }
             }
             &.box-align-left {
@@ -49,11 +69,17 @@
         &.block2 {
             .unit-box {
                 width:50%;
+                @include mobile {
+                    width:100%;
+                }
             }
         }
         &.block3 {
             .unit-box {
                 width:33.3%;
+                @include mobile {
+                    width:100%;
+                }
             }
         }
     }
