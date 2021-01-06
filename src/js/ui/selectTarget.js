@@ -78,7 +78,7 @@ vcui.define('ui/selectTarget', ['jquery', 'vcui'], function ($, core) {
                 var resetFlag = $(this.options[this.selectedIndex]).hasClass(self.options.placeholderClass, '.default');
                 var params = $(this).serialize();
 
-                if (self.options.addParam) parma += '&' + $(self.options.addParam).serialize();
+                if (self.options.addParam) params += '&' + $(self.options.addParam).serialize();
                 
                 if (resetFlag) {
                     self.reset();
