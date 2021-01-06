@@ -291,5 +291,15 @@
                 }
             }
         }
+
+        &.txt-only{
+            max-height:none;
+            overflow-y:inherit;
+            .txt-box{
+                text-align:center;
+                line-height:1.62;
+                word-break:keep-all;
+            }
+        }
     }
 }
