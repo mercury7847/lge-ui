@@ -6,13 +6,48 @@
 				height:100%;
 				font-size:22px;
 				line-height:32px;
+				@include mobile {
+					max-height:52px;
+					font-size:18px;
+					line-height:26px;
+				}
 			}
 		}
 	}
 	.pop-conts {
-		.txt {
+		.process-list {
+			flex-wrap:wrap;
+			margin-top:-8px;
+			li {
+				margin-top:8px;
+				&:after {
+					margin:0 12px 0 8px;
+				}
+				&:nth-child(1) {
+					width:28%;
+				}
+				&:nth-child(2) {
+					width:38%;
+				}
+				&:nth-child(3) {
+					width:34%;
+					&:after {
+						margin-right:0;
+					}
+				}
+			}
+		}
+		.btm-txt {
+			margin-top:24px;
 			font-size:16px;
+			font-weight:700;
 			line-height:26px;
+			text-align:center;
+			@include mobile {
+				margin-top:32px;
+				font-size:14px;
+				line-height:22px;
+			}
 		}
 	}
 }

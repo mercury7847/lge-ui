@@ -25,7 +25,22 @@
 		4. Stage option
         .stage-full : FULL size 옵션(100% 1920px)
         .stage-wide : WIDE size 옵션(1600px)
-        .stage-standard : standard size 옵션(1380px)
+		.stage-standard : standard size 옵션(1380px)
+		
+		[.text-area 옵션]
+		1. box size 옵션
+		.type-wide : 넓음
+		.type-narrow : 좁음
+
+		2. box align 옵션
+		.box-align-left : box left
+		.box-align-center : box center
+		.box-align-right : box right
+
+		3. text align 옵션
+		.align-left
+		.align-center
+		.align-right
 
 		[.body-copy 각각 옵션]
 		1. 폰트 종류 : 
@@ -105,15 +120,19 @@
 			}
 			<div class="slider-for">
 				<div class="group active" role="tabpanel" id="group01">
-					<div class="text-area align-top">
-						<!-- 1-1. headline -->
-						<div class="title">@@heading</div>
-						<!-- // 1-1. headline -->
-						<!-- 1-2. body copy -->
-						<p class="body-copy @@font-class @@font-style">공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
-							공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
-							공백포함 150자까지 글자수를 제한합니다.</p>
-						<!-- // 1-2. body copy -->
+					<div class="text-area align-top type-wide box-align-left">
+						<!-- [KR수정_210106] .inner로 감싸기 -->
+						<div class="inner">
+							<!-- 1-1. headline -->
+							<div class="title">@@heading</div>
+							<!-- // 1-1. headline -->
+							<!-- 1-2. body copy -->
+							<p class="body-copy @@font-class @@font-style">공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
+								공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
+								공백포함 150자까지 글자수를 제한합니다.</p>
+							<!-- // 1-2. body copy -->
+						</div>
+						<!-- // [KR수정_210106] .inner로 감싸기 -->
 					</div>
 					<!-- 1-3. Inset Image -->
 					<!-- animation 타입인 경우 animation-box 클래스 추가 -->
@@ -136,9 +155,13 @@
 				</div>
 				<div class="group" role="tabpanel" id="group02">
 					<!-- [KR수정_201222] text-area로 감싸기(DOM공통화 수정) -->
-					<div class="text-area align-middle">
-						<div class="title">@@heading</div>
-						<p class="body-copy @@font-class @@font-style">2. Body text can bte up to 250 characters. </p>
+					<div class="text-area align-middle type-narrow box-align-center">
+						<!-- [KR수정_210106] .inner로 감싸기 -->
+						<div class="inner">
+							<div class="title">@@heading</div>
+							<p class="body-copy @@font-class @@font-style">2. Body text can bte up to 250 characters. </p>
+						</div>
+						<!-- // [KR수정_210106] .inner로 감싸기 -->
 					</div>
 					<!-- // [KR수정_201222] text-area로 감싸기(DOM공통화 수정) -->
 					
@@ -148,7 +171,7 @@
 						<!-- 1-3 video play button -->
 						<!-- * youtube video modal은 아래의 방식으로 입력 -->
 						<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
-							<img data-pc-src="/lg5-common/images/dummy/@sample-1380x850.png" data-m-src="/lg5-common/images/dummy/@sample-1380x850.png" alt="">
+							<img data-pc-src="/lg5-common/images/dummy/@sample-1920x848.jpg" data-m-src="/lg5-common/images/dummy/@sample-1920x848.jpg" alt="">
 							<p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
 						</a>
 						<!-- // 1-3 video play button -->
@@ -158,28 +181,36 @@
 					
 				</div>
 				<div class="group" role="tabpanel" id="group03"> 
-					<div class="text-area align-middle">
-						<div class="title">@@heading</div>
-						<p class="body-copy @@font-class @@font-style">3. Body text can bte up to 250 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-						Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient.
-						Body text can be up to 250 characters. Body textt</p>
+					<div class="text-area align-middle type-narrow box-align-right box-align-center">
+						<!-- [KR수정_210106] .inner로 감싸기 -->
+						<div class="inner">
+							<div class="title">@@heading</div>
+							<p class="body-copy @@font-class @@font-style">3. Body text can bte up to 250 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+							Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient.
+							Body text can be up to 250 characters. Body textt</p>
+						</div>
+						<!-- // [KR수정_210106] .inner로 감싸기 -->
 					</div>
 					<div class="visual-area">
 						<!-- 데스크탑으로 접속시에는 아래 코드를 사용해 주세요, -->
-						<img data-pc-src="/lg5-common/images/dummy/@sample-1380x850.png" data-m-src="/lg5-common/images/dummy/@sample-1380x850.png" alt="">
+						<img data-pc-src="/lg5-common/images/dummy/@sample-1920x848.jpg" data-m-src="/lg5-common/images/dummy/@sample-1920x848.jpg" alt="">
 						<p class="hidden">graphic description : </p>
 					</div>
 				</div>
 				<div class="group" role="tabpanel" id="group04">
-					<div class="text-area align-bottom">
-						<!-- 1-1. headline -->
-						<div class="title">@@heading</div>
-						<!-- // 1-1. headline -->
-						<!-- 1-2. body copy -->
-						<p class="body-copy @@font-class @@font-style">공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
-							공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
-							공백포함 150자까지 글자수를 제한합니다.</p>
-						<!-- // 1-2. body copy -->
+					<div class="text-area align-bottom type-wide box-align-left">
+						<!-- [KR수정_210106] .inner로 감싸기 -->
+						<div class="inner">
+							<!-- 1-1. headline -->
+							<div class="title">@@heading</div>
+							<!-- // 1-1. headline -->
+							<!-- 1-2. body copy -->
+							<p class="body-copy @@font-class @@font-style">공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
+								공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다. 공백포함 150자까지 글자수를 제한합니다.<br>
+								공백포함 150자까지 글자수를 제한합니다.</p>
+							<!-- // 1-2. body copy -->
+						</div>
+						<!-- // [KR수정_210106] .inner로 감싸기 -->
 					</div>
 					<!-- 1-3. Inset Image -->
 					<!-- animation 타입인 경우 animation-box 클래스 추가 -->
@@ -202,9 +233,13 @@
 				</div>
 				<div class="group" role="tabpanel" id="group05">  
 					<!-- [KR수정_201222] text-area로 감싸기(DOM공통화 수정) -->
-					<div class="text-area align-top">
-						<div class="title">@@heading</div>
-						<p class="body-copy @@font-class @@font-style">2. Body text can bte up to 250 characters. </p>
+					<div class="text-area align-top type-narrow box-align-right">
+						<!-- [KR수정_210106] .inner로 감싸기 -->
+						<div class="inner">
+							<div class="title">@@heading</div>
+							<p class="body-copy @@font-class @@font-style">2. Body text can bte up to 250 characters. </p>
+						</div>
+						<!-- // [KR수정_210106] .inner로 감싸기 -->
 					</div>
 					<!-- // [KR수정_201222] text-area로 감싸기(DOM공통화 수정) -->
 					
@@ -214,7 +249,7 @@
 						<!-- 1-3 video play button -->
 						<!-- * youtube video modal은 아래의 방식으로 입력 -->
 						<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
-							<img data-pc-src="/lg5-common/images/dummy/@sample-1380x850.png" data-m-src="/lg5-common/images/dummy/@sample-1380x850.png" alt="">
+							<img data-pc-src="/lg5-common/images/dummy/@sample-1920x848.jpg" data-m-src="/lg5-common/images/dummy/@sample-1920x848.jpg" alt="">
 							<p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
 						</a>
 						<!-- // 1-3 video play button -->
@@ -224,15 +259,19 @@
 					
 				</div>
 				<div class="group" role="tabpanel" id="group06"> 
-					<div class="text-area align-middle">
-						<div class="title">@@heading</div>
-						<p class="body-copy @@font-class @@font-style">3. Body text can bte up to 250 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-						Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient.
-						Body text can be up to 250 characters. Body textt</p>
+					<div class="text-area align-middle type-wide box-align-center">
+						<!-- [KR수정_210106] .inner로 감싸기 -->
+						<div class="inner">
+							<div class="title">@@heading</div>
+							<p class="body-copy @@font-class @@font-style">3. Body text can bte up to 250 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+							Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient.
+							Body text can be up to 250 characters. Body textt</p>
+						</div>
+						<!-- // [KR수정_210106] .inner로 감싸기 -->
 					</div>
 					<div class="visual-area">
 						<!-- 데스크탑으로 접속시에는 아래 코드를 사용해 주세요, -->
-						<img data-pc-src="/lg5-common/images/dummy/@sample-1380x850.png" data-m-src="/lg5-common/images/dummy/@sample-1380x850.png" alt=""><!-- [KR수정] img 수정 -->
+						<img data-pc-src="/lg5-common/images/dummy/@sample-1920x848.jpg" data-m-src="/lg5-common/images/dummy/@sample-1920x848.jpg" alt=""><!-- [KR수정] img 수정 -->
 						<p class="hidden pc">graphic description : </p>
 					</div>
 				</div>
