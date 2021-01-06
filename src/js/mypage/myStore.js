@@ -51,7 +51,8 @@
                 self.$contents = $('div.lnb-contents');
                 //매장리스트
                 self.$storeList = self.$contents.find('ul.bookmark-store-list');
-                self.$totalCount = self.$contents.find('div.my-contract-info p em');
+                self.$customerInfo = self.$contents.find('div.my-contract-info p');
+                //self.$totalCount = self.$contents.find('div.my-contract-info p em');
                 self.$pagination = self.$contents.find('.pagination').vcPagination();                
                 self.$noData = self.$contents.find('div.no-data');
 
@@ -84,6 +85,10 @@
                     var param = result.param;
                     
                     self.$pagination.vcPagination('setPageInfo',param.pagination);
+
+                    var name = data.customerName;
+                    var count = vcui.number.addComma(data.totalCount);
+                    self.$customerInfo.html(name + ' 고객님의 단골매장은 총 <em>'+ count + '</em>개 입니다.');
 
                     var arr = data.listData instanceof Array ? data.listData : [];
                     self.$storeList.empty();
