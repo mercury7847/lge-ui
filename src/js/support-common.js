@@ -64,8 +64,13 @@ CS.MD.commonModel = function() {
         '<div class="slide-conts">' +
             '<a href="#" class="item" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{modelCode}}" data-product-code="{{productCode}}" data-category-name="{{categoryNm}}" data-sub-category-name="{{subCategoryNm}}">' +
                 '<div class="info">' +
-                    '<p class="name">{{#raw name}}</p>' +
-                    '<p class="category"><span>{{categoryNm}} &gt; </span>{{subCategoryNm}}</p>' +
+                    '{{# if (modelCode != "") { #}}' +
+                        '<p class="name">{{#raw name}}</p>' +
+                        '<p class="category"><span>{{categoryNm}} &gt; </span>{{subCategoryNm}}</p>' +
+                    '{{# } else { #}}' +
+                        '<p class="name">모델명을 모르겠어요.</p>' +
+                        '<p class="category"><span>건너뛰기<span></p>' +
+                    '{{# } #}}' +
                 '</div>' +
             '</a>' +
         '</div>';
@@ -83,8 +88,7 @@ CS.MD.commonModel = function() {
             stepClass: 'step-box',
             stepActiveClass: 'active',
             selectedModel: [],
-            register: {},
-            callback: function() {}
+            register: {}
         };
 
         self.options = $.extend({}, defaults, self.$el.data(), opt);
@@ -134,7 +138,7 @@ CS.MD.commonModel = function() {
             // 검색 영역
             self.$searchModelArea = self.$el.find('.prod-search-wrap');
             // 검색 영역 : 키워드
-            self.$searchKeywordBox = self.$searchModelArea.find('.keyword-search');
+            self.$searchKeywordBox = self.$searchModelArea.find('>.keyword-search');
             self.$inputKeyword = self.$searchKeywordBox.find('input[type=text]');
             self.$buttonKeyword = self.$searchKeywordBox.find('.btn-search');
             // 검색 영역 : 카테고리 > 서브카테고리
@@ -337,42 +341,59 @@ CS.MD.commonModel = function() {
                 }
             });
 
-            // 문의유형 선택
-            $('#stepInquiryType').find('.btn-type').on('click', function() {
-                var $this = $(this),
-                    opt = self.options,
-                    data = $this.data(),
-                    updateObj;
-
-                self.$el.find('#categoryNm').val(data.categoryName);
-                self.$el.find('#subCategoryNm').val(data.subCategoryName);
-                self.$el.find('#category').val(data.category);
-                self.$el.find('#subCategory').val(data.subCategory);
-
-                opt.selectedModel = [data.categoryName, data.subCategoryName];
-
-                updateObj = {
-                    product: opt.selectedModel,
-                    inquiryReset: true
-                }
-
-                self.caseType = 'company';
-
-                var info = {
-                    category: data.category,
-                    subCategory: data.subCategory
-                }
-
-                self.$el.trigger('complete', [self, info, '', function() {
-                    self.update(updateObj);
-
-                    self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
-                    self.$stepInput.addClass(opt.stepActiveClass);
+            $('#stepInquiryType').find('.btn-next').on('click', function() {
+                var result = termsValidation.validate(),
+                    opt = self.options;
+                
+                if (result.success) {
+                    self.$stepModel.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
+                    self.$stepModel.addClass(opt.stepActiveClass);
 
                     $('html, body').stop().animate({
                         scrollTop: self.$selectedModelBar.offset().top
                     });
-                }]);
+                }
+            });
+
+            // 문의유형 선택
+            $('#stepInquiryType').find('.btn-type').on('click', function() {
+                var $this = $(this),
+                    result = termsValidation.validate(),    
+                    opt = self.options,
+                    data = $this.data(),
+                    updateObj;
+
+                if (result.success) {
+                    self.$el.find('#categoryNm').val(data.categoryName);
+                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                    self.$el.find('#category').val(data.category);
+                    self.$el.find('#subCategory').val(data.subCategory);
+
+                    opt.selectedModel = [data.categoryName, data.subCategoryName];
+
+                    updateObj = {
+                        product: opt.selectedModel,
+                        inquiryReset: true
+                    }
+
+                    self.caseType = 'company';
+
+                    var info = {
+                        category: data.category,
+                        subCategory: data.subCategory
+                    }
+
+                    self.$el.trigger('complete', [self, info, '', function() {
+                        self.update(updateObj);
+
+                        self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
+                        self.$stepInput.addClass(opt.stepActiveClass);
+
+                        $('html, body').stop().animate({
+                            scrollTop: self.$selectedModelBar.offset().top
+                        });
+                    }]);
+                }
             });
 
             // 검색어 검색
@@ -441,9 +462,9 @@ CS.MD.commonModel = function() {
                 }
             });
 
-            self.$searchKeywordBox.find('.btn-search').on('click', function() {
+            self.$buttonKeyword.on('click', function() {
                 var opt = self.options,
-                    result = modelValidation.validate(['keyword']);
+                    result = modelValidation.validate(['keyword01']);
                 
                 if (result.success) {
                     self.$searchCategoryBox.removeClass(opt.stepActiveClass);
@@ -523,13 +544,14 @@ CS.MD.commonModel = function() {
                     data = $this.data(),
                     updateObj;
 
-                if (!$this.hasClass('no-model')) {
-                    self.$el.find('#categoryNm').val(data.categoryName);
-                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
-                    self.$el.find('#category').val(data.category);
-                    self.$el.find('#subCategory').val(data.subCategory);
+                self.$el.find('#categoryNm').val(data.categoryName);
+                self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                self.$el.find('#category').val(data.category);
+                self.$el.find('#subCategory').val(data.subCategory);
+                self.$el.find('#productCode').val(data.productCode);
+
+                if (data.modelCode) {
                     self.$el.find('#modeCode').val(data.modelCode);
-                    self.$el.find('#productCode').val(data.productCode);
                     
                     opt.selectedModel = [data.categoryName, data.subCategoryName, data.modelCode];
                 } else {

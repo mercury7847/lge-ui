@@ -26,11 +26,14 @@
         padding-top: 64px;
     }
 
-    @include mobile {
+    @include tablet {
         position: relative;
         margin-bottom: 115px;
         padding: 40px 16px 30px;
-        border-radius: 0;
+        border-radius: 8px 8px 0 0;
+        @include mobile {
+            border-radius: 0;
+        }
         &:after {
             position: absolute;
             bottom: -115px;
@@ -84,7 +87,7 @@
                 }
             }
         }
-        @include mobile {
+        @include tablet {
             .membership-level {
                 float: none;
             }
@@ -189,7 +192,7 @@
             }
 
         }
-        @include mobile {
+        @include tablet {
             padding: 40px 0;
             > li {
                 width: 50%;
@@ -212,7 +215,7 @@
             font-size: $font-small;
             line-height: 24px;
             color: $color-white;
-            @include mobile {
+            @include tablet {
                 margin-bottom: 8px;
                 line-height: 19px;
             }
@@ -222,7 +225,7 @@
             font-size: $font-large-5;
             line-height: 52px;
             color: $color-white;
-            @include mobile {
+            @include tablet {
                 font-size: $font-large-3;
                 line-height: 37px;
             }
@@ -307,7 +310,7 @@
                 color: $color-white;
             }
         }
-        @include mobile {
+        @include tablet {
             position: absolute;
             bottom: -71px;
             right: 0;
@@ -368,7 +371,7 @@
                 width: 50%;
                 padding: 12px;
             }
-            @include mobile {
+            @include tablet {
                 margin: 0;
                 > li {
                     float: none;
@@ -601,7 +604,7 @@
                     padding-right: 32px;
                     &:after {
                         position: absolute;
-                        @include calc(top,50%,10px);
+                        @include calc(top,50%,4px);
                         right: 6px;
                         width: 20px;
                         height: 20px;
@@ -613,7 +616,7 @@
                     &:not(:last-child) {
                         padding-right: 24px;
                         &:after {
-                            @include calc(top,50%,8px);
+                            @include calc(top,50%,2px);
                             right: 4px;
                             width: 16px;
                             height: 16px;
@@ -642,7 +645,12 @@
                 }
                 dd {
                     font-weight: 700;
-                    @include font-large-3;
+                    font-size: $font-large-3;
+                    line-height: 38px;
+                    @include mobile {
+                        font-size: $font-large-1;
+                        line-height: 28px;
+                    }
                 }
             }
         }
@@ -795,12 +803,12 @@
             }
             .sku {
                 display: inline-block;
+                margin-right: 6px;
                 @include font-small;
                 vertical-align: top;
             }
             .review-info {
                 display: inline-block;
-                margin-left: 6px;
                 font-size: 0;
                 vertical-align: top;
                 .star,
