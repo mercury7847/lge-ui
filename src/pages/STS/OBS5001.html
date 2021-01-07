@@ -481,21 +481,23 @@
 
     <script>
         $(function() {
-            $('.ui_carousel_slider').vcCarousel({
-                responsive: [
-                    {
-                        breakpoint: 10000,
-                        settings: "unslick"
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            infinite: true,
-                            slidesToShow: 1,
-                            slidesToScroll: 1
+            vcui.require(['ui/carousel'], function () {
+                $('.ui_carousel_slider').vcCarousel({
+                    responsive: [
+                        {
+                            breakpoint: 10000,
+                            settings: "unslick"
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                infinite: true,
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
                         }
-                    }
-                ]
+                    ]
+                });
             });
         });
     </script>
