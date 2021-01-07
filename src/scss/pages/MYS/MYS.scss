@@ -723,12 +723,18 @@
         .slide-controls .btn-arrow {
             &.prev {
                 left: -58px;
+                @media screen and (max-width: 1536px) {
+                    left: -15px;
+                }
                 @include mobile {
                     left:4px;
                 }
             }
             &.next {
                 right: -58px;
+                @media screen and (max-width: 1536px) {
+                    right: -15px;
+                }
                 @include mobile {
                     right:4px;
                 }
