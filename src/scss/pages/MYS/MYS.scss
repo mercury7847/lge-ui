@@ -645,7 +645,12 @@
                 }
                 dd {
                     font-weight: 700;
-                    @include font-large-3;
+                    font-size: $font-large-3;
+                    line-height: 38px;
+                    @include mobile {
+                        font-size: $font-large-1;
+                        line-height: 28px;
+                    }
                 }
             }
         }
