@@ -109,43 +109,6 @@
             }
             }
 
-            @@if ( context.recommendSlideType2 === true ) {
-            @@for ( var i=0; i < context.slideArr.length; i++ ) {
-            <!--  slide -->
-            <div class="slide-conts ui_carousel_slide">
-                <div class="slide-box">
-                    <div class="product-image" aria-hidden="true">
-                        <a href="#"><img src="`+slideArr[i].img+`" alt=""></a>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">
-                            <a href="#">`+slideArr[i].name+`</a>
-                        </div>
-                        <div class="sku">S833MC85Q</div>
-                        <div class="review-info">
-                            <a href="#">
-                                <div class="star `+slideArr[i].review.class+`"><span class="blind">`+slideArr[i].review.text+`</span></div>
-                                <div class="average-rating"><span class="blind">평점</span>`+slideArr[i].review.average+`</div>
-                                <div class="review-count"><span class="blind">리뷰 수</span>(`+slideArr[i].review.count+`)</div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="price-area">
-                        <div class="original">
-                            <em class="blind">판매가격</em>
-                            <span class="price">5,200,000<em>원</em></span>
-                        </div>
-                        <div class="total">
-                            <em class="blind">총 판매가격</em>
-                            <span class="price">5,800,000<em>원</em></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- // slide -->
-            }
-            }
-
             @@if ( context.memberSlideType === true ) {
                 @@for ( var i=0; i < context.slideArr.length; i++ ) {
                 <!--  slide -->
