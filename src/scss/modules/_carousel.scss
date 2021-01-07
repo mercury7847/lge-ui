@@ -494,6 +494,17 @@
                 }
             }
         }
+        .slide-box {
+            padding: 0 40px 32px;
+            .product-name {
+                margin: 8px 0;
+                @include mobile {
+                    margin: 8px 0 16px;
+                }
+            }
+        }
+    }
+    &.carousel-3 {
         .slide-conts {
             //width: 25%;
             padding: 6px 12px 12px;
@@ -503,7 +514,6 @@
         }
         .slide-box {
             position: relative;
-            padding: 0 40px 32px;
             border-radius: 8px;
             background-color: #fff;
             box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
@@ -529,10 +539,6 @@
             }
             .product-name {
                 height: 52px;
-                margin: 8px 0;
-                @include mobile {
-                    margin: 8px 0 16px;
-                }
                 a {
                     font-weight: 700;
                     @include font-medium;

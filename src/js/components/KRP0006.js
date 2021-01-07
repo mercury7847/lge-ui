@@ -7,6 +7,16 @@ $(window).ready(function(){
         $(this).closest('.inner').slideUp(200);
     });
 
-    var responseData = $('.KRP0006').data('responseData');
-    console.log("responseData :", responseData);
+    $('.KRP0006').each(function(idx, item){
+        var responseData = $(item).data('responseData');
+        var modelID = $(item).data('modelId');
+        var type = $(item).data('type');
+        var sendata = {
+            type: type,
+            modeiID: modelID
+        }
+        lgkorUI.requestAjaxData(responseData, sendata, function(result){
+            $(item).find('.inner p.txt').empty().text(result.data.responseMessage);
+        });
+    });
 })
