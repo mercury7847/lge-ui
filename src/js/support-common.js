@@ -53,6 +53,11 @@ CS.MD.commonModel = function() {
                 '<button type="button" class="btn border size reset btn-reset">제품 재선택</button>' +
             '</div>' +
             '{{# } #}}' +
+            '{{# if (typeof inquiryReset != "undefined") { #}}' +
+            '<div class="prod-btn">' +
+                '<button type="button" class="btn border size reset btn-reset">문의유형 재선택</button>' +
+            '</div>' +
+            '{{# } #}}' +
         '</div>';
 
     var modelListTmpl = 
@@ -83,6 +88,7 @@ CS.MD.commonModel = function() {
         };
 
         self.options = $.extend({}, defaults, self.$el.data(), opt);
+        self.caseType = 'product';
         
         vcui.require(['ui/validation', 'ui/selectTarget'], function () {
             termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
@@ -198,8 +204,14 @@ CS.MD.commonModel = function() {
             self.$searchKeywordBox.show();
             self.$searchModelBox.find('.keyword-search').hide();
 
-            self.$stepModel.addClass(opt.stepActiveClass);
-            self.$stepModel.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
+            if (self.caseType == 'product') {
+                self.$stepModel.addClass(opt.stepActiveClass);
+                self.$stepModel.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
+            } else {
+                $('#stepInquiryType').addClass(opt.stepActiveClass);
+                $('#stepInquiryType').siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
+            }
+
 
             if (self.$myModelArea.length) self.$myModelArea.show();
 
@@ -323,6 +335,44 @@ CS.MD.commonModel = function() {
                         scrollTop: self.$selectedModelBar.offset().top
                     });
                 }
+            });
+
+            // 문의유형 선택
+            $('#stepInquiryType').find('.btn-type').on('click', function() {
+                var $this = $(this),
+                    opt = self.options,
+                    data = $this.data(),
+                    updateObj;
+
+                self.$el.find('#categoryNm').val(data.categoryName);
+                self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                self.$el.find('#category').val(data.category);
+                self.$el.find('#subCategory').val(data.subCategory);
+
+                opt.selectedModel = [data.categoryName, data.subCategoryName];
+
+                updateObj = {
+                    product: opt.selectedModel,
+                    inquiryReset: true
+                }
+
+                self.caseType = 'company';
+
+                var info = {
+                    category: data.category,
+                    subCategory: data.subCategory
+                }
+
+                self.$el.trigger('complete', [self, info, '', function() {
+                    self.update(updateObj);
+
+                    self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
+                    self.$stepInput.addClass(opt.stepActiveClass);
+
+                    $('html, body').stop().animate({
+                        scrollTop: self.$selectedModelBar.offset().top
+                    });
+                }]);
             });
 
             // 검색어 검색

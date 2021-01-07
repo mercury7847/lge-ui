@@ -1,6 +1,6 @@
 (function() {
     var inquiryTmpl = 
-    '{{#each (item, index) in topicList}}' +
+    '{{#each (item, index) in inquiryList}}' +
     '<li>' +
         '<span class="rdo-wrap btn-type3">' +
             '{{# if (index == 0) { #}}' +
@@ -135,8 +135,11 @@
             self.$cont.on('complete', function(e, module, info, data, callback) {
                 self.$completeBtns.show();
 
-                self.setInquIryType(data);
-
+                if (module.caseType == 'product') {
+                    self.setInquIryType(data);
+                } else {
+                    self.$inquiryBox.hide();
+                }
                 callback();
             });
 
