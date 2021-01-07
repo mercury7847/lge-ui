@@ -3,24 +3,15 @@
         <g>
             <g>
                 <g>
-                    <g transform="translate(-825 -1099) translate(-346 118) translate(616 760) translate(555 221)">
-                        <g>
-                            <path d="M0 0H64V64H0z"/>
-                        </g>
-                        <rect width="37" height="45" x="9.5" y="10.5" fill="#FFF" stroke="#AAA" stroke-width="3" rx="3"/>
-                        <g stroke="#AAA" stroke-linecap="round" stroke-width="3">
-                            <g>
-                                <path stroke-linejoin="round" d="M0 2.182L2.045 4.364 6.35 0" transform="translate(14 20)"/>
-                                <path d="M11.56 2.182L27.56 2.182" transform="translate(14 20)"/>
-                            </g>
-                            <g>
-                                <path stroke-linejoin="round" d="M0 2.182L2.045 4.364 6.35 0" transform="translate(14 20) translate(0 11)"/>
-                                <path d="M11.56 2.182L27.56 2.182" transform="translate(14 20) translate(0 11)"/>
-                            </g>
-                        </g>
-                        <g stroke="#AAA" stroke-linejoin="round" stroke-width="3">
-                            <path fill="#FFF" d="M17.324-3.676c1.933 0 3.5 1.567 3.5 3.5v30.093h0L18.9 34.535c-.363.872-1.363 1.284-2.234.92-.417-.173-.748-.504-.92-.92l-1.922-4.618h0V-.176c0-1.933 1.567-3.5 3.5-3.5z" transform="translate(27 22) rotate(45 17.324 17.324)"/>
-                            <path stroke-linecap="round" d="M25.824 5.324L29.692 8.747" transform="translate(27 22)"/>
+                    <g>
+                        <g transform="translate(-2288 -246) translate(1872 130) translate(0 116) translate(416)">
+                            <path d="M0 0H64V64H0z" opacity=".3"/>
+                            <path fill="#FFF" stroke="#AAA" stroke-width="2" d="M7 12h34c.276 0 .526.112.707.293.181.18.293.43.293.707v43H13c-1.933 0-3.683-.784-4.95-2.05C6.784 52.683 6 50.933 6 49V13c0-.276.112-.526.293-.707.18-.181.43-.293.707-.293z"/>
+                            <path fill="#FFF" stroke="#AAA" stroke-width="2" d="M15 43.002l30.92.074c1.43.238 2.69 1.025 3.596 2.145C50.443 46.368 51 47.865 51 49.5c0 1.633-.556 3.128-1.48 4.283-.908 1.135-2.173 1.943-3.61 2.217H15v-.567c1.12-1.513 1.829-3.608 1.829-5.933 0-2.325-.71-4.42-1.829-5.933v-.565z"/>
+                            <circle cx="47" cy="18" r="14" fill="#FFF" stroke="#AAA" stroke-width="2"/>
+                            <rect width="15" height="2" x="40" y="17" fill="#AAA" rx="1"/>
+                            <rect width="15" height="2" x="40" y="17" fill="#AAA" rx="1" transform="rotate(90 47.5 18)"/>
+                            <path fill="#AAA" d="M14 21h19c.552 0 1 .448 1 1s-.448 1-1 1H14c-.552 0-1-.448-1-1s.448-1 1-1zM14 28h23c.552 0 1 .448 1 1s-.448 1-1 1H14c-.552 0-1-.448-1-1s.448-1 1-1z"/>
                         </g>
                     </g>
                 </g>
