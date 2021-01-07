@@ -15,7 +15,10 @@
 		- data-name: 제품 모델 id parameter명을 변경할 경우 수정해주세요.
 	-->
 	<!-- b2b 페이지에선 .component에 in-b2b class를 추가해주세요. -->
-	<section class="component KRC0001 in-b2b js-model-switcher" data-list-url="/lg5-common/data-ajax/KRC0001/productData.json">
+	<section class="component KRC0001 in-b2b js-model-switcher"
+		data-list-url="/lg5-common/data-ajax/KRC0001/productData.json"
+		data-cart-url="/lg5-common/data-ajax/mypage/wish/myRecentCart.json"
+	>
 		<div class="title">@@headline</div>
 
 		<!-- 1. Tab -->
@@ -140,5 +143,11 @@
 			<!-- //[KR수정] 탭메뉴 컨텐츠 & 노데이터 수정 대기중 -->
 		</div>
 		<!-- // 2. products list -->
+		 <!-- toast-meassage -->
+		 @@include('./common/modules/toast-message.html', {
+			"messageArr": [
+				{"message" : "선택하신 제품을 장바구니에 담았습니다."}
+			]
+		})
 	</section>
 </div>

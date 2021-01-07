@@ -3,7 +3,7 @@ $(window).ready(function(){
 
 	$('.KRC0001').buildCommonUI();
 
-	var listItemTemplate = '<li class="js-model ui_carousel_slide">' +
+	var listItemTemplate = '<li class="js-model ui_carousel_slide" data-id={{id}} data-sku={{sku}} data-wishListId={{wishListId}} data-wishItemId={{wishItemId}}>' +
 		'<div class="item">' +
 			'<div class="product-image">' +
 				'<a href="{{url}}"><img data-pc-src="{{imagePC}}" data-m-src="{{imageMobile}}" class="lazyload" alt="{{imageAlt}}" aria-hidden="true"></a>' +
@@ -27,7 +27,7 @@ $(window).ready(function(){
 					'{{#if price}}<div class="total"><span class="blind">총 판매가</span><em>{{price}}</em>원</div>{{/if}}' +
 				'</div>' +
 			'</div>' +
-			'<div class="product-button"><a href="{{id}}" class="btn border" tabindex="">장바구니에 담기</a></div>' +
+			'<div class="product-button"><a href="#" class="btn border">장바구니에 담기</a></div>' +
 		'</div>' +
 	'</li>'
 
@@ -90,6 +90,12 @@ $(window).ready(function(){
 				e.preventDefault();
 				var _id = $(this).attr('href');
 				self.requestData(_id);
+			});
+
+			self.$slider.on('click', 'li div.product-button a', function(e){
+				e.preventDefault();
+				var $li = $(this).parents('li');
+				self.requestCart($li);
 			})
 		},
 
@@ -98,7 +104,6 @@ $(window).ready(function(){
 			var ajaxUrl = self.$section.attr('data-list-url');
 			lgkorUI.requestAjaxData(ajaxUrl, {"id":_id}, function(result) {
 				var data = result.data;
-				console.log(data);
 				var arr = data instanceof Array ? data : [];
 				var $list_ul = self.$slider.find('ul');
 				$list_ul.empty();
@@ -110,7 +115,24 @@ $(window).ready(function(){
 				$list_ul.vcImageSwitch('reload');
 				self.$slider.vcCarousel('reinit');
 			});
-		}
+		},
+
+		requestCart: function($dm) {
+			var self = this;
+			var ajaxUrl = self.$section.attr('data-cart-url');
+			var postData = {
+				"id":$dm.attr('data-id'),
+				"sku":$dm.attr('data-sku'),
+				"wishListId":$dm.attr('data-wishListId'),
+				"wishItemId":$dm.attr('data-wishItemId'),
+			}
+			lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
+				var data = result.data;
+				if(lgkorUI.stringToBool(data.success)) {
+					$(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
+				}
+			});
+		},
 	};
 	KRC0001.init();
 })
