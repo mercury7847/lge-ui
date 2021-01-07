@@ -800,6 +800,45 @@
             self.requestAjaxData(url, data, callback, "POST", null, autoFailAlert);
         },
 
+        requestAjaxFileData: function(url, data, callback, type, dataType, autoFailAlert) {
+            var self = this;
+            var dtype = dataType? dataType : "json";
+            $.ajax({
+                type : type? type : "GET",
+                url : url,
+                dataType : dtype,
+                data : data,
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false
+            }).done(function (result) {
+                
+                if(result.ssoCheckUrl != undefined && result.ssoCheckUrl != null && result.ssoCheckUrl != ""){
+                    location.reload();                
+                    return;
+                }
+                
+                if(dtype == 'json' && result.status != 'success'){
+                    alert(result.message ? result.message : '오류발생');
+                    return;
+                }
+
+                if(autoFailAlert) {
+                    var data = result.data;
+                    if(data && (!self.stringToBool(data.success) && data.alert)) {
+                        //에러
+                        self.commonAlertHandler(data.alert);
+                    } else {
+                        if(callback && typeof callback === 'function') callback(result);
+                    }
+                } else {
+                    if(callback && typeof callback === 'function') callback(result);   
+                }                
+            }).fail(function(err){
+                alert(url, err.message);
+            });
+        },
+
         commonAlertHandler: function(alert){
             if(alert.isConfirm) {
                 //컨펌

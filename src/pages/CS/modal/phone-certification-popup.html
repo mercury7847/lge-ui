@@ -1,18 +1,28 @@
 
-<article id="certificationPopup" class="popup-wrap full">
+<!-- 
+    1. 인증이 성공된 경우
+    /lg5-common/data-ajax/support/authSuccess.json
+
+    2. 인증 번호가 틀릴 경우
+    /lg5-common/data-ajax/support/authFail.json
+-->
+
+<!-- 
+    1. 이름, 휴대전화 유효성 체크 통과 후
+    /lg5-common/data-ajax/support/authSendSuccess.json
+
+    2. 1분 내 인증 번호 발송/재발송 버튼을 2회 째 클릭 시
+    /lg5-common/data-ajax/support/authSendRetry.json
+
+    3. 1분 내 인증 번호/재발송 버튼을 3회 째 선택 시
+    /lg5-common/data-ajax/support/authSendFail.json
+-->
+<article id="certificationPopup" class="popup-wrap full" data-auth-url="/lg5-common/data-ajax/support/authSuccess.json" data-sms-url="/lg5-common/data-ajax/support/authSendSuccess.json">
     <header class="pop-header">
         <h1 class="tit"><span>휴대 전화 인증</span></h1>
     </header>
     <section class="pop-conts common-pop">
-        
-        <!-- 
-            1. 인증이 성공된 경우
-            /lg5-common/data-ajax/support/authSuccess.json
-
-            2. 인증 번호가 틀릴 경우
-            /lg5-common/data-ajax/support/authFail.json
-        -->
-        <div class="form-wrap" data-ajax="/lg5-common/data-ajax/support/authSuccess.json">
+        <div class="form-wrap">
             <div class="form-infos">
                 <p class="req" aria-disabled="true">필수 입력 사항</p>
             </div>
@@ -39,17 +49,7 @@
                             <input type="tel" name="authPhoneNo" id="authPhoneNo" placeholder="휴대전화를 정확히 입력해주세요"  data-error-msg="휴대전화를 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" required>
                         </div>
                         <div class="cell">
-                            <!-- 
-                                1. 이름, 휴대전화 유효성 체크 통과 후
-                                /lg5-common/data-ajax/support/authSendSuccess.json
-
-                                2. 1분 내 인증 번호 발송/재발송 버튼을 2회 째 클릭 시
-                                /lg5-common/data-ajax/support/authSendRetry.json
-
-                                3. 1분 내 인증 번호/재발송 버튼을 3회 째 선택 시
-                                /lg5-common/data-ajax/support/authSendFail.json
-                            -->
-                            <button type="button" class="btn btn-send" data-ajax="/lg5-common/data-ajax/support/authSendSuccess.json">인증번호 발송</button>
+                            <button type="button" class="btn btn-send">인증번호 발송</button>
                         </div>
                     </div>
                     <div class="input-wrap">
