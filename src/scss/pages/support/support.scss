@@ -981,6 +981,12 @@
                 &.black:before {
                     background-color: #222;
                 }
+                &.skyblue:before {
+                    background-color: #21a9aa;
+                }
+                &.olive:before {
+                    background-color: #76892d;
+                }
                 &:first-child {
                     margin-left: 0;
                 }
@@ -1105,6 +1111,53 @@
         margin: 0 auto 32px;
         @include mobile {
             margin: 0 16px 24px;
+        }
+    }
+
+    .waiting-state {
+        padding: 16px 40px;
+        background-color: #f4f4f4;
+        display: flex;
+        &-title {
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1.63;
+        }
+        .box-info {
+            margin-top: 16px;
+            .status {
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 1.71;
+                color: #222;
+            }
+            .text  {
+                font-size: 14px;
+                line-height: 1.71;
+                color: #767676;
+                margin-left: 13px;
+            }
+        }
+        .bullet-list {
+            margin-top: 0;
+        }
+        .cell {
+            position: relative;
+            &:nth-child(n+2) {
+                margin-left: 48px;
+                padding-left: 49px;
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 1px;
+                    height: 52px;
+                    background-color: #ddd;
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
         }
     }
 } //support
