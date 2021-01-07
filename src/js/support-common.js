@@ -150,6 +150,9 @@ CS.MD.commonModel = function() {
             self.$modelSlider = self.$searchModelBox.find('.model-slider');
             self.$modelNoData = self.$searchModelBox.find('.no-data');
 
+            self.page = 1;
+            self.total = 0;
+
             if (self.$myModelArea.length) self.$myModelSlider.vcCarousel({
                 infinite: false,
                 autoplay: false,
@@ -249,7 +252,11 @@ CS.MD.commonModel = function() {
             lgkorUI.requestAjaxDataPost(url, param, function(result) {
                 var data = result.data,
                     arr = data.listData instanceof Array ? data.listData : [];
-                    html = '';
+
+                self.page = data.listPage.page;
+                self.totalCount = data.listPage.totalCount;
+
+                self.totalPage = Math.floor(self.totalCount == 0 ? 1 : (self.totalCount - 1)  / self.pageCount + 1);
 
                 self.$modelSlider.find('.slide-track').empty();
 
@@ -542,7 +549,7 @@ CS.MD.commonModel = function() {
                 var $this = $(this),
                     opt = self.options,
                     data = $this.data(),
-                    updateObj;
+                    updateObj, param, url;
 
                 self.$el.find('#categoryNm').val(data.categoryName);
                 self.$el.find('#subCategoryNm').val(data.subCategoryName);
@@ -563,7 +570,13 @@ CS.MD.commonModel = function() {
                     reset: true
                 }
 
-                lgkorUI.requestAjaxDataPost(self.$searchModelArea.data('resultUrl'), {modelCode: data.code, serviceType: $('#serviceType').val()}, function(result) {
+                url = self.$searchModelArea.data('resultUrl');
+                param = {
+                    subCategory: data.subCategory,
+                    serviceType: $('#serviceType').val()
+                }   
+
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var ajaxData = result.data,
                         info = {
                             category: data.category,
@@ -593,8 +606,16 @@ CS.MD.commonModel = function() {
                 };
 
                 self._requestData(param);
-            });            
-
+            });
+            
+            // 모델 리스트 슬라이더
+            self.$modelSlider.on('carouselbeforechange', function(e, module, before, after) {
+                self.page = after;
+            });
+            self.$modelSlider.on('carouselafterchange', function(e, module, current) {
+                
+            });
+            
             // 보유제품 선택
             self.$myModelArea.find('.slide-box').on('click', function(e) {
                 e.preventDefault();

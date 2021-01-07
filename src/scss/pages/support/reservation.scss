@@ -234,7 +234,6 @@
             }
         }
     }
-    
 
     .engineer-to-visit {
         @include clearfix;
@@ -293,6 +292,53 @@
                 }
                 .btn-wrap {
                     margin-top:16px;
+                }
+            }
+        }
+    }
+
+    &.reservation-result{
+        .result-header-tit{
+            max-width:1460px;
+            margin:0 auto;
+            padding:0 40px;
+            .tit{
+                margin-bottom:21px;
+            }
+        }
+        .result-header-btn{
+            border-bottom:1px solid #ddd;
+            .btn-group{
+                margin-top:0;
+                max-width:1460px;
+                margin:0 auto;
+                padding:24px 40px;
+            }
+        }
+        .reception-progress{
+            margin-top:48px;
+        }
+        .inquiry-list{
+            .description{
+                .line{
+                    white-space:pre-line;
+                }
+            }
+        }
+        @include mobile{
+            .result-header-tit{
+                padding:0 16px;
+            }
+            .result-header-btn{
+                .btn-group{
+                    display:flex;
+                    justify-content: space-between;
+                    flex-flow:wrap;
+                    padding:24px 16px;
+                    .btn{
+                        width:calc(50% - 8px);
+                        margin:0 0 12px 0;
+                    }
                 }
             }
         }
