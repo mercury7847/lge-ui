@@ -304,25 +304,22 @@
         @@include('./common/footer.html')
     </div>
 
-    <!-- 유상 및 보증기간 팝업 -->
-    @@include('./CS/modal/rates-warranty-guide-popup.html')
-    
-    <!-- 휴대폰인증 팝업 -->
-    @@include('./CS/modal/phone-certification-popup.html')
+    <!-- 지속가능경영 팝업 -->
+    @@include('./CS/modal/manage-popup.html')
 
-    <!-- 제품 해결 팝업 -->
-    @@include('./CS/modal/solutions-popup.html')
+    <!-- 채용관련/인사제도관련 팝업 -->
+    @@include('./CS/modal/recruit-popup.html')
 
-    <!-- 엔지니어 선택 팝업 -->
-    @@include('./CS/modal/choice-engineer-popup.html')
-
-    <!-- 예약 완료 팝업 -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "completePop",
-        "msgOnly" : true,
-        "msg" : "출장 서비스를<br>예약하겠습니까?",
-        "twobtn" : true
-    })
+    <!-- 취소 팝업 -->
+    <article id="canclePopup" class="lay-wrap">
+        <section class="lay-conts">
+            <h6>취소 하시겠습니까?</h6>
+        </section>
+        <div class="btn-wrap laypop">
+            <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+            <a href="#" class="btn"><span>확인</span></a>
+        </div>
+    </article>
 
     <!-- toast-meassage -->
     @@include('./common/modules/toast-message.html', {
@@ -330,12 +327,6 @@
             {"message" : "예약가능한 제품이 아닙니다."}
         ]
     })
-
-    <!-- 지속가능경영 팝업 -->
-    @@include('./CS/modal/manage-popup.html')
-
-    <!-- 채용관련/인사제도관련 팝업 -->
-    @@include('./CS/modal/recruit-popup.html')
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
