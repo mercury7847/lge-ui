@@ -4,6 +4,8 @@
     "data":[
         {
             "id":"pid00001",
+            "wishListId" : "11",
+            "wishItemId" : "12",
             "url":"#",
             "imagePC":"/lg5-common/images/KRC0001/@img-product01-pc.jpg",
             "imageMobile":"/lg5-common/images/KRC0001/@img-product01-mo.jpg",
@@ -18,6 +20,8 @@
         },
         {
             "id":"pid00002",
+            "wishListId" : "21",
+            "wishItemId" : "22",
             "url":"#",
             "imagePC":"/lg5-common/images/KRC0001/@img-product02-pc.jpg",
             "imageMobile":"/lg5-common/images/KRC0001/@img-product02-mo.jpg",
@@ -32,6 +36,8 @@
         },
         {
             "id":"pid00003",
+            "wishListId" : "31",
+            "wishItemId" : "32",
             "url":"#",
             "imagePC":"/lg5-common/images/KRC0001/@img-product02-pc.jpg",
             "imageMobile":"/lg5-common/images/KRC0001/@img-product02-mo.jpg",
@@ -46,6 +52,8 @@
         },
         {
             "id":"pid00004",
+            "wishListId" : "41",
+            "wishItemId" : "42",
             "url":"#",
             "imagePC":"/lg5-common/images/KRC0001/@img-product01-pc.jpg",
             "imageMobile":"/lg5-common/images/KRC0001/@img-product01-mo.jpg",
@@ -60,6 +68,8 @@
         },
         {
             "id":"pid00005",
+            "wishListId" : "51",
+            "wishItemId" : "52",
             "url":"#",
             "imagePC":"/lg5-common/images/KRC0001/@img-product02-pc.jpg",
             "imageMobile":"/lg5-common/images/KRC0001/@img-product02-mo.jpg",
@@ -74,6 +84,8 @@
         },
         {
             "id":"pid00006",
+            "wishListId" : "61",
+            "wishItemId" : "62",
             "url":"#",
             "imagePC":"/lg5-common/images/KRC0001/@img-product01-pc.jpg",
             "imageMobile":"/lg5-common/images/KRC0001/@img-product01-mo.jpg",
@@ -88,6 +100,8 @@
         },
         {
             "id":"pid00007",
+            "wishListId" : "71",
+            "wishItemId" : "72",
             "url":"#",
             "imagePC":"/lg5-common/images/KRC0001/@img-product02-pc.jpg",
             "imageMobile":"/lg5-common/images/KRC0001/@img-product02-mo.jpg",
@@ -102,6 +116,8 @@
         },
         {
             "id":"pid00008",
+            "wishListId" : "81",
+            "wishItemId" : "82",
             "url":"#",
             "imagePC":"/lg5-common/images/KRC0001/@img-product01-pc.jpg",
             "imageMobile":"/lg5-common/images/KRC0001/@img-product01-mo.jpg",
@@ -116,6 +132,8 @@
         },
         {
             "id":"pid00009",
+            "wishListId" : "91",
+            "wishItemId" : "92",
             "url":"#",
             "imagePC":"/lg5-common/images/KRC0001/@img-product02-pc.jpg",
             "imageMobile":"/lg5-common/images/KRC0001/@img-product02-mo.jpg",
@@ -130,6 +148,8 @@
         },
         {
             "id":"pid00010",
+            "wishListId" : "101",
+            "wishItemId" : "102",
             "url":"#",
             "imagePC":"/lg5-common/images/KRC0001/@img-product01-pc.jpg",
             "imageMobile":"/lg5-common/images/KRC0001/@img-product01-mo.jpg",

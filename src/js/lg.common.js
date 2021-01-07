@@ -724,6 +724,78 @@
             return returnValue;
         },
 
+        setCookie: function(cookieName, cookieValue) {
+            var days = 60;
+            var cookieExpire = new Date();
+            cookieExpire.setDate(cookieExpire.getDate() + days);
+
+            var cookiePath = null;
+            var cookieDomain = null;
+            var cookieSecure = false;
+
+            var cookieText = escape(cookieName) + '=' + escape(cookieValue);
+            cookieText += (cookieExpire ? ('; EXPIRES='+cookieExpire.toUTCString()) : '');
+            cookieText += (cookiePath ? ('; PATH='+cookiePath) : '');
+            cookieText += (cookieDomain ? ('; DOMAIN='+cookieDomain) : '');
+            cookieText += (cookieSecure ? '; SECURE' : '');
+
+            document.cookie = cookieText;
+        },
+
+        getCookie: function(cookieName){
+            var cookieValue = null;
+            if(document.cookie){
+                var array = document.cookie.split((escape(cookieName)+'='));
+                if(array.length >= 2){
+                    var arraySub = array[1].split(';');
+                    cookieValue = unescape(arraySub[0]);
+                }
+            }
+            return cookieValue;
+        },
+
+        deleteCookie: function(cookieName){
+            var self = this;
+            var temp = self.getCookie(cookieName);
+            if(temp){
+                self.setCookie(cookieName,temp,(new Date(1)));
+            }
+        },
+
+        addCookieValue: function(cookieName, addData) {
+            var self = this;
+            var items = self.getCookie(cookieName); // 이미 저장된 값을 쿠키에서 가져오기
+            if(items) {
+                var itemArray = items.split(',');
+                if (itemArray.indexOf(addData) != -1) {
+                    // 이미 존재하는 경우 종료
+                    //console.log('Already add.');
+                } else {
+                    // 새로운 값 저장 및 최대 개수 유지하기
+                    itemArray.unshift(addData);
+                    items = itemArray.join(',');
+                    self.setCookie(cookieName, items);
+                }
+            } else {
+                // 신규 id값 저장하기
+                self.setCookie(cookieName, addData);
+            }
+        },
+
+        removeCookieValue: function(cookieName, removeData) {
+            var self = this;
+            var items = self.getCookie(cookieName); // 이미 저장된 값을 쿠키에서 가져오기
+            if(items) {
+                var itemArray = items.split(',');
+                var index = itemArray.indexOf(removeData);
+                if (index != -1) {
+                    itemArray.splice(index, 1);
+                    items = itemArray.join(',');
+                    self.setCookie(cookieName, items);
+                }
+            }
+        },
+
         loadKakaoSdkForShare: function(callback){
             var self = this;
 
