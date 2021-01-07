@@ -403,6 +403,10 @@ br.pc {
                             background-color: #000;
                             border-radius: 8px;
                             opacity: 0.3;
+                            @include mobile {
+                                left: 2px;
+                                width: calc(100% - 4px);
+                            }
                         }
                         .text-area {
                             z-index: 2;
