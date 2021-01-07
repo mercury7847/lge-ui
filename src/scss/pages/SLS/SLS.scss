@@ -214,7 +214,8 @@ br.pc {
     .link-list {
         padding: 0 82px 0 93px;
         font-size: 0;
-        @include mobile {
+        @media screen and (max-width: 1024px){
+        //@include mobile {
             margin-top: 50px;
             padding: 0 40px;
             text-align: center;
@@ -223,7 +224,8 @@ br.pc {
             display: inline-block;
             width: 33.33%;
             vertical-align: top;
-            @include mobile {
+            @media screen and (max-width: 1024px){
+            //@include mobile {
                 width: 100%;
                 & + li {
                     margin-top: 40px;
@@ -238,7 +240,8 @@ br.pc {
                 color: $color-gray-4;
                 font-weight: 700;
                 text-align: left;
-                @include mobile {
+                @media screen and (max-width: 1024px){
+                //@include mobile {
                     padding: 44px 14px 0;
                     font-size: 24px;
                     line-height: 33px;
@@ -252,7 +255,8 @@ br.pc {
                     left: 24px;
                     width: 64px;
                     height: 64px;
-                    @include mobile {
+                    @media screen and (max-width: 1024px){
+                    //@include mobile {
                         width: 32px;
                         height: 32px;
                         left: 50%;
@@ -271,7 +275,8 @@ br.pc {
             }
             &:nth-child(3) {
                 text-align: right;
-                @include mobile {
+                @media screen and (max-width: 1024px){
+                //@include mobile {
                     text-align: center;
                 }
             }
@@ -356,10 +361,16 @@ br.pc {
                         width: 100%;
                         height: 100%;
                         padding: 28px;
+                        .inner {
+                            display: block;
+                            width: 100%;
+                            //height: 100%;
+                        }
                         @include mobile {
                             padding: 14px;
                         }
                         .tit {
+                            display: block;
                             @include font-large-2;
                             color: #fff;
                             font-weight: 700;
@@ -371,23 +382,10 @@ br.pc {
                         .btn-area {
                             display: none;
                             margin-top: 12px;
-                            .btn {
-                                color: #fff;
-                                border-color: #fff;
-                            }
                         }
-                        
-                        /*
-                        &.type2 {
-                            top: 50%;
-                            transform: translateY(-50%);
-                            text-align: center;
-                            .tit {
-                                @include font-large-5;
-                            }
-                        }*/
                    }
-                   &.slide_on {
+                    &:hover,
+                    &.slide_on {
                         &::after {
                             display: block;
                             content: '';
@@ -403,20 +401,33 @@ br.pc {
                         .text-area {
                             z-index: 2;
                             display: flex;
-                            flex-direction: column;
+                            flex-wrap: wrap;
                             align-items: center;
                             .tit {
                                 width: 100%;
                                 @include font-large-5;
+                                text-align: center;
                             }
                             .btn-area {
                                 display: block;
                                 width: 100%;
+                                text-align: center;
+                                .btn-border {
+                                    display: inline-block;
+                                    min-width: 112px;
+                                    padding: 11px 31px;
+                                    font-size: 16px;
+                                    line-height: 26px;
+                                    text-align: center;
+                                    vertical-align: top;
+                                    border: 1px solid #fff;
+                                    border-radius: 26px;
+                                    color: #fff;
+                                    font-weight: 500;
+                                }
                             }
                         }
-                        
-
-                    }  
+                    } 
                }
            }
        }

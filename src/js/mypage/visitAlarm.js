@@ -5,7 +5,7 @@
             '<div class="svc-info">' +
                 '<p class="date">' +
                     '<small>{{#if type=="prev"}}이전{{#elsif type=="next"}}다음{{#else}}이후{{/if}} 방문 서비스</small>' +
-                    '{{date}}' +
+                    '{{dateString}}' +
                 '</p>' +
                 '{{#if type!="prev"}}<div class="visit-icons"><p>{{when}}</p></div>{{/if}}' +
                 '<div class="infos"><p class="blind">방문 서비스 해당 제품</p>' +
@@ -19,7 +19,7 @@
                 '{{#if serviceList.length > 5}}<div class="more-view-wrap" aria-hidden="true">' +
                     '<span class="more-view-btn">더보기</span>' +
                 '</div>{{/if}}' +
-                '{{#if type=="next"}}<button type="button" class="btn size border"><span>방문일정 변경요청</span></button>{{/if}}' +
+                '{{#if type=="next"}}<button type="button" class="btn size border" data-date="{{date}}" data-time="{{time}}"><span>방문일정 변경요청</span></button>{{/if}}' +
             '</div>' +
         '</div>' +
     '</li>'
@@ -30,6 +30,7 @@
                 var self = this;
                 self.setting();
                 self.bindEvents();
+                self.bindPopupEvents();
 
                 /*
                 var selectValue = self.$selectContract.vcSelectbox('selectedOption').value;
@@ -44,7 +45,13 @@
                 self.$contents = $('div.lnb-contents');
                 self.$list = self.$contents.find('div.my-visit-schedule ul.schedule-list');
                 self.$selectContract = self.$contents.find('div.form-wrap select.ui_selectbox').eq(0);
-                self.$myVisitQna = self.$contents.find('div.my-visit-qna li div.cont').eq(0);
+                self.$myVisitQna = self.$contents.find('div.my-visit-qna li').eq(0);
+                self.$irregularCheckout = self.$contents.find('div.my-visit-qna li').eq(1);
+                //
+                self.$popupChangeVisitDate = $('#popupChangeVisitDate');
+                self.$calendarTable = self.$popupChangeVisitDate.find('table.box-table.tb-calendar');
+                self.$timeTable = self.$popupChangeVisitDate.find('table.box-table.tb-timetable');
+                self.$visitDate = self.$popupChangeVisitDate.find('div.box-visit-date span.date');
             },
 
             bindEvents: function() {
@@ -81,40 +88,88 @@
                     self.requestData(selectValue);
                 });
 
-                var $popupChangeVisitDate = $('#popupChangeVisitDate');
-
                 //방문일정 변경 팝업
                 self.$list.on('click', 'div.svc-lists button', function(e){
                     e.preventDefault();
                     var _id = $(this).parents('li').attr('data-id');
-                    $popupChangeVisitDate.attr('data-id',_id);
-                    $popupChangeVisitDate.vcModal();
+                    self.$popupChangeVisitDate.attr('data-id',_id);
+
+                    //선택되었던 날짜 초기화
+                    var $td = self.$calendarTable.find('tr td.choice');
+                    $td.find('span.blind').remove();
+                    $td.removeClass('choice');
+
+                    //선택되었던 시간 초기화
+                    $td = self.$timeTable.find('tr td.choice');
+                    $td.removeClass('choice');
+                    self.$timeTable.find('tr th.choice').removeClass('choice');
+
+                    var time = $(this).attr('data-time');
+                    $td = self.$timeTable.find('tr td[data-value="'+ time +'"]');
+                    $td.addClass('choice');
+                    $td.siblings('th').addClass('choice');
+                    
+                    //선택 시간 정보 텍스트 수정
+                    var selectedData = self.getSelectedVisitDayData();
+                    self.setVisitDateText(selectedData);
+
+                    self.$popupChangeVisitDate.vcModal();
                 });
+            },
+
+            bindPopupEvents: function() {
+                var self = this;
 
                 //방문일정 변경 팝업 날짜 선택
-                $popupChangeVisitDate.on('click', 'table.box-table tr td button', function(e){
+                self.$popupChangeVisitDate.on('click', 'table.box-table tr td button', function(e){
                     e.preventDefault();
                     var $table = $(this).parents('table.box-table');
-                    $table.find('tr td.choice').removeClass('choice');
-                    var $td = $(this).parents('td');
+                    var $td = $table.find('tr td.choice');
+                    //var $span = $td.find('span.blind');
+                    $td.find('span.blind').remove();
+                    $td.removeClass('choice');
+
+                    $td = $(this).parents('td');
                     $td.addClass('choice');
+                    $td.prepend('<span class="blind">변경 요청일</span>');
+
                     $table.find('tr th.choice').removeClass('choice');
                     $td.siblings('th').addClass('choice');
+
+                    var selectedData = self.getSelectedVisitDayData();
+
+                    if($table.hasClass('tb-calendar')) {
+                        //방문 가능 시간 데이타 가져오기
+                        self.requestEnableVisitTime(selectedData.date);
+                    } else {
+                        self.setVisitDateText(selectedData);
+                    }
                 });
 
                 //방문일정 변경 팝업 확인
-                $popupChangeVisitDate.on('click', 'footer.pop-footer button:not(.ui_modal_close)', function(e){
+                self.$popupChangeVisitDate.on('click', 'footer.pop-footer button:not(.ui_modal_close)', function(e){
                     e.preventDefault();
-                    var $table = $popupChangeVisitDate.find('table.box-table.tb-calendar');
-                    var $td = $table.find('tr td.choice');
-                    var date = $td.attr('data-value');
-
-                    $table = $popupChangeVisitDate.find('table.box-table.tb-timetable');
-                    $td = $table.find('tr td.choice');
-                    var time = $td.attr('data-value');
-
-                    self.requestChangeVisitDay($popupChangeVisitDate.attr('data-id'), date, time);
+                    var param = self.getSelectedVisitDayData();
+                    if(param.date && param.time) {
+                        self.requestChangeVisitDay(param);
+                    }
                 });
+            },
+
+            getSelectedVisitDayData: function() {
+                var self = this;
+                var $td = self.$calendarTable.find('tr td.choice');
+                if($td.length < 1) {
+                    $td = self.$calendarTable.find('tr td.expected');
+                }
+                var date = $td.attr('data-value');
+
+                $td = self.$timeTable.find('tr td.choice');
+                var time = $td.attr('data-value');
+
+                var _id = self.$popupChangeVisitDate.attr('data-id');
+
+                return {"id":_id, "date":date, "time":time}
             },
 
             requestData: function(contract) {
@@ -122,20 +177,23 @@
                 var ajaxUrl = self.$contents.attr('data-list-url');
                 lgkorUI.requestAjaxData(ajaxUrl, {"contract":contract}, function(result) {
                     var data = result.data;
+
+                    var reply = data.reply;
+                    self.setVisitQna(reply);
+
                     var arr = data.listData instanceof Array ? data.listData : [];
                     self.$list.empty();
                     arr.forEach(function(item, index) {
-                        item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                        item.dateString = vcui.date.format(item.date,'yyyy.MM.dd');
                         self.$list.append(vcui.template(visitAlarmItemTemplate, item));
                     });
                 });
             },
 
-            requestChangeVisitDay: function(visitId, date, time) {
+            requestChangeVisitDay: function(param) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-change-url');
-                var postData = {"id":visitId, "date":date, "time":time};
-                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
+                lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                     var data = result.data;
                     if(lgkorUI.stringToBool(data.success)) {
                         var toast = data.toast;
@@ -143,13 +201,56 @@
                             $(window).trigger("toastshow", toast);
                         }
                         var reply = data.reply;
-                        if(reply) {
-                            self.$myVisitQna.text(reply);
-                        }
+                        self.setVisitQna(reply);
                     }
                 }); 
                 $('#popupChangeVisitDate').vcModal('close');
             },
+
+            setVisitQna: function(reply) {
+                var self = this;
+                if(reply) {
+                    self.$myVisitQna.find('div.cont').text(reply);
+                    self.$myVisitQna.show();
+                } else {
+                    self.$myVisitQna.hide();
+                }
+            },
+
+            setVisitDateText: function(selectedData) {
+                var self = this;
+                self.$visitDate.text(vcui.date.format(selectedData.date,'yyyy.MM.dd') + " " + (!selectedData.time?"":selectedData.time));
+            },
+
+            requestEnableVisitTime:function(date) {
+                var self = this;
+                var ajaxUrl = self.$popupChangeVisitDate.attr('data-time-url');
+                lgkorUI.requestAjaxDataPost(ajaxUrl, {'date':date}, function(result){
+                    var data = result.data;
+                    var arr = data instanceof Array ? data : [];
+
+                    self.$timeTable.find('tr td.choice').removeClass('choice');
+                    self.$timeTable.find('tr th.choice').removeClass('choice');
+                    var $td = self.$timeTable.find('tr td');
+                    $td.each(function(idx, item){
+                        var $item = $(item);
+                        var fArr = vcui.array.filter(arr, function(target){
+                            return target == $item.attr('data-value');
+                        });
+
+                        if(fArr.length > 0) {
+                            $item.addClass('disabled');
+                            $item.find('button').attr('disabled',true);
+                        } else {
+                            $item.removeClass('disabled');
+                            $item.find('button').attr('disabled',null);
+                        }
+                    });
+
+                    var selectedData = self.getSelectedVisitDayData();
+                    self.setVisitDateText(selectedData);
+                }); 
+            }
         }
 
         visitAlarm.init();

@@ -54,7 +54,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             var idx;
 
             if(self.options.usedAnchor){
-                self.$anchor.on('click', function(e){
+                self.$el.on('click', self.options.anchorClass, function(e){
                     e.preventDefault();
                     var idx = vcui.array.indexOf(self.anchorArr, $(this).attr('href'));                
                     self.scollToIndex(idx, 300);
@@ -118,6 +118,8 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             var opt = self.options;
 
             self.active = false;
+
+            self.$anchor = self.$el.find(self.options.anchorClass);
             
             self.stickyRect = self._getRectangle(self.$el);
             self.containerRect = self._getRectangle(self.$container);
@@ -137,7 +139,6 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
                 self.wrapper = self.$el.wrap(opt.wrapWith).parent().css({ 
                     height: self.$el.outerHeight(true)
                 });
-                console.log("self.wrapper:", self.wrapper)
             }
 
             if (self.stickyRect.bottom < self.containerRect.bottom && opt.stickyFor < self.vpWidth && !self.active) {
@@ -218,12 +219,12 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
                         top: self.marginTop
                     });
                 }
-
-                console.log(self.$el.outerHeight(true));
             } else {
                 $el.removeClass(opt.stickyClass);
                 self._clearCss();
             }
+
+            self.wrapper.height(self.$el.outerHeight(true));
 
             self.scrollDistance = self.scrollTop - (self.stickyRect.top + self.marginTop);
             self._setStickyMobileStatus();
@@ -352,7 +353,10 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             }
         },
        
-
+        reposition: function(){
+            this._calcPos();
+            this._setPosition();
+        }
     });
 
     return Sticky;
