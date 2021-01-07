@@ -64,8 +64,13 @@ CS.MD.commonModel = function() {
         '<div class="slide-conts">' +
             '<a href="#" class="item" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{modelCode}}" data-product-code="{{productCode}}" data-category-name="{{categoryNm}}" data-sub-category-name="{{subCategoryNm}}">' +
                 '<div class="info">' +
-                    '<p class="name">{{#raw name}}</p>' +
-                    '<p class="category"><span>{{categoryNm}} &gt; </span>{{subCategoryNm}}</p>' +
+                    '{{# if (modelCode != "") { #}}' +
+                        '<p class="name">{{#raw name}}</p>' +
+                        '<p class="category"><span>{{categoryNm}} &gt; </span>{{subCategoryNm}}</p>' +
+                    '{{# } else { #}}' +
+                        '<p class="name">모델명을 모르겠어요.</p>' +
+                        '<p class="category"><span>건너뛰기<span></p>' +
+                    '{{# } #}}' +
                 '</div>' +
             '</a>' +
         '</div>';
@@ -539,13 +544,14 @@ CS.MD.commonModel = function() {
                     data = $this.data(),
                     updateObj;
 
-                if (!$this.hasClass('no-model')) {
-                    self.$el.find('#categoryNm').val(data.categoryName);
-                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
-                    self.$el.find('#category').val(data.category);
-                    self.$el.find('#subCategory').val(data.subCategory);
+                self.$el.find('#categoryNm').val(data.categoryName);
+                self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                self.$el.find('#category').val(data.category);
+                self.$el.find('#subCategory').val(data.subCategory);
+                self.$el.find('#productCode').val(data.productCode);
+
+                if (data.modelCode) {
                     self.$el.find('#modeCode').val(data.modelCode);
-                    self.$el.find('#productCode').val(data.productCode);
                     
                     opt.selectedModel = [data.categoryName, data.subCategoryName, data.modelCode];
                 } else {
