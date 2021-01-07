@@ -1,4 +1,4 @@
-<div class="prod-search-wrap" data-ajax="/lg5-common/data-ajax/support/commonModelList.json">
+<div class="prod-search-wrap" data-model-url="/lg5-common/data-ajax/support/commonModelList.json" data-result-url="/lg5-common/data-ajax/support/commonModelSelected.json">
     <!-- 키워드 검색 -->
     <div class="keyword-search">
         <div class="search-box">
@@ -29,7 +29,7 @@
                         <button type="button" class="btn-open"><span class="blind">카테고리 선택</span></button>
                     </div>
                     <div class="sub-category">
-                        <ul>
+                        <ul class="sub-category-list">
                             <!-- 모바일 -->
                             <li>
                                 <button type="button" data-category="`+category[i].code+`" data-sub-category="C000136" data-name="`+category[i].name+`" data-sub-name="스마트폰">스마트폰</button>
@@ -262,7 +262,7 @@
     <!-- // 카테고리 선택 -->
 
     <!-- 모델명 선택 -->
-    <div class="model-search" data-ajax="/lg5-common/data-ajax/support/commonModelSelected.json">
+    <div class="model-search">
         <div class="form-wrap">
             <div class="forms block-type">
                 <div class="tit">

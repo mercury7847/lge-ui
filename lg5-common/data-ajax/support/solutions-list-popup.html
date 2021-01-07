@@ -1,9 +1,8 @@
-<!-- <article id="solutionsPopup" class="popup-wrap full"> -->
+<!-- <article id="solutionsPopup" class="popup-wrap full">
     <header class="pop-header">
         <h1 class="tit"><span>제품 문제 해결</span></h1>
     </header>
-    <section class="pop-conts support no-footer">
-        <!-- <p class="info-desc">선택하신 고장 증상에 대한 제품 문제해결 방법을 확인하세요.</p> -->
+    <section class="pop-conts support no-footer"> -->
         
         <div class="sorting-wrap">
             <div class="total">전체 <em id="count" class="count">154</em>건</div>
@@ -172,10 +171,18 @@
             </ul>
         </div>
         
-        @@include('./common/support/pagination.html', {
-            'count': 5,
-            'last': 'false'
-        })
+        <div class="pagination" data-total-count="154" data-page="1">
+            <a href="#" class="prev disabled" data-page="" aria-disabled="false"><span class="blind">이전 페이지 보기</span></a>
+            <span class="page_num">
+                <strong><span class="blind">현재 페이지</span>1</strong>
+                <a href="#" data-page="2"  title="2페이지 보기">2</a>
+                <a href="#" data-page="2"  title="2페이지 보기">3</a>
+                <a href="#" data-page="2"  title="2페이지 보기">4</a>
+                <a href="#" data-page="2"  title="2페이지 보기">5</a>
+            </span>
+            <a href="#" class="next" data-page="6" aria-disabled="false"><span class="blind">다음 페이지 보기</span></a>
+        </div>
+<!-- 
     </section>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-<!-- </article> -->
+</article> -->

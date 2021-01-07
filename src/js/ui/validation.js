@@ -602,7 +602,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 obj = self.register[key];
                 if(obj && obj.required){
                     $target = self.$el.find('[name='+ key +']');
-                    if ($target.not('[type=hidden]').is(':visible') && !$target.prop('disabled')) {
+                    if (($target.is('[type=hidden]') || $target.is(':visible')) && !$target.prop('disabled')) {
                         if($target.is(':checkbox') || $target.is(':radio')){
                             var nArr = [];
                             $target.filter(':checked').each(function(idx, item){
@@ -660,25 +660,27 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
         getAllValues : function getAllValues(){
             var self = this;  
             var result = {};
-            var $findInput = self.$el.find('input, textarea').filter(':visible');
+            var $findInput = self.$el.find('input, textarea');
             $findInput.each(function(i, obj) {
                 var item = $(obj)
                 var name = item.attr('name');
-                if(name) {
-                    if(item.is(':checkbox')) {
-                        result[name] = item.is(":checked");
-                    } else if (item.is(':file')) {
-                        result[name] = item[0].files[0];
-                    } else if (item.is(':radio')) {
-                        if (item.is(':checked')) {
-                            result[name] = item.val();
-                        } else {
-                            if (!result[name]) {
-                                result[name] = '';
+                if (item.is('[type=hidden]') || item.is(':visible')) {
+                    if(name) {
+                        if(item.is(':checkbox')) {
+                            result[name] = item.is(":checked");
+                        } else if (item.is(':file')) {
+                            result[name] = item[0].files[0];
+                        } else if (item.is(':radio')) {
+                            if (item.is(':checked')) {
+                                result[name] = item.val();
+                            } else {
+                                if (!result[name]) {
+                                    result[name] = '';
+                                }
                             }
+                        } else {
+                            result[name] = item.val();
                         }
-                    } else {
-                        result[name] = item.val();
                     }
                 }
             });
