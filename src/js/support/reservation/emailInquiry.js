@@ -30,6 +30,7 @@
             self.$inquiryList = self.$inquiryListWrap.find('.rdo-list');
 
             self.$authPopup = $('#certificationPopup');
+            self.isLogin = $('.header').data('ui_header').isLogin;
 
             vcui.require(['ui/validation', 'ui/formatter', 'ui/imageFileInput'], function () {
                 var register = {
@@ -68,15 +69,18 @@
                 };
 
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
-                authManager = new AuthManager({
-                    elem: {
-                        popup: '#certificationPopup',
-                        name: '#authName',
-                        phone: '#authPhoneNo',
-                        number: '#authNo'
-                    },
-                    register: authRegister
-                });
+
+                if(!self.isLogin) {
+                    authManager = new AuthManager({
+                        elem: {
+                            popup: '#certificationPopup',
+                            name: '#authName',
+                            phone: '#authPhoneNo',
+                            number: '#authNo'
+                        },
+                        register: authRegister
+                    });
+                }
 
                 self.$cont.commonModel({
                     register: register
@@ -147,10 +151,8 @@
             self.$completeBtns.find('.btn-confirm').on('click', function() {
                 var result = validation.validate();
 
-                var isLogin = $('.header').data('ui_header').isLogin;
-
                 if (result.success == true) {    
-                    if (isLogin) {
+                    if (self.isLogin) {
                         lgkorUI.confirm('', {
                             title:'예약 하시겠습니까?',
                             okBtnName: '확인',

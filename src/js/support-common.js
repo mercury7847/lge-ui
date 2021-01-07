@@ -83,8 +83,7 @@ CS.MD.commonModel = function() {
             stepClass: 'step-box',
             stepActiveClass: 'active',
             selectedModel: [],
-            register: {},
-            callback: function() {}
+            register: {}
         };
 
         self.options = $.extend({}, defaults, self.$el.data(), opt);
@@ -337,42 +336,59 @@ CS.MD.commonModel = function() {
                 }
             });
 
-            // 문의유형 선택
-            $('#stepInquiryType').find('.btn-type').on('click', function() {
-                var $this = $(this),
-                    opt = self.options,
-                    data = $this.data(),
-                    updateObj;
-
-                self.$el.find('#categoryNm').val(data.categoryName);
-                self.$el.find('#subCategoryNm').val(data.subCategoryName);
-                self.$el.find('#category').val(data.category);
-                self.$el.find('#subCategory').val(data.subCategory);
-
-                opt.selectedModel = [data.categoryName, data.subCategoryName];
-
-                updateObj = {
-                    product: opt.selectedModel,
-                    inquiryReset: true
-                }
-
-                self.caseType = 'company';
-
-                var info = {
-                    category: data.category,
-                    subCategory: data.subCategory
-                }
-
-                self.$el.trigger('complete', [self, info, '', function() {
-                    self.update(updateObj);
-
-                    self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
-                    self.$stepInput.addClass(opt.stepActiveClass);
+            $('#stepInquiryType').find('.btn-next').on('click', function() {
+                var result = termsValidation.validate(),
+                    opt = self.options;
+                
+                if (result.success) {
+                    self.$stepModel.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
+                    self.$stepModel.addClass(opt.stepActiveClass);
 
                     $('html, body').stop().animate({
                         scrollTop: self.$selectedModelBar.offset().top
                     });
-                }]);
+                }
+            });
+
+            // 문의유형 선택
+            $('#stepInquiryType').find('.btn-type').on('click', function() {
+                var $this = $(this),
+                    result = termsValidation.validate(),    
+                    opt = self.options,
+                    data = $this.data(),
+                    updateObj;
+
+                if (result.success) {
+                    self.$el.find('#categoryNm').val(data.categoryName);
+                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                    self.$el.find('#category').val(data.category);
+                    self.$el.find('#subCategory').val(data.subCategory);
+
+                    opt.selectedModel = [data.categoryName, data.subCategoryName];
+
+                    updateObj = {
+                        product: opt.selectedModel,
+                        inquiryReset: true
+                    }
+
+                    self.caseType = 'company';
+
+                    var info = {
+                        category: data.category,
+                        subCategory: data.subCategory
+                    }
+
+                    self.$el.trigger('complete', [self, info, '', function() {
+                        self.update(updateObj);
+
+                        self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
+                        self.$stepInput.addClass(opt.stepActiveClass);
+
+                        $('html, body').stop().animate({
+                            scrollTop: self.$selectedModelBar.offset().top
+                        });
+                    }]);
+                }
             });
 
             // 검색어 검색
