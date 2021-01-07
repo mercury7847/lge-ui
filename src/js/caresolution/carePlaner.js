@@ -517,6 +517,7 @@
         lgkorUI.showLoading();
 
         var sendata = {
+            tabID: getTabID(),
             modelID: _currentItemList[idx]['modelId'],
             rtModelSeq: _currentItemList[idx]['rtModelSeq'],
             feeCd: optdata['siblingFee'].value,
@@ -547,6 +548,7 @@
         lgkorUI.showLoading();
         
         var sendata = {
+            tabID: getTabID(),
             modelID: colorModelId,
             colorCd: colorCd,
             blockID: idx
@@ -687,6 +689,7 @@
         }
 
         var sendata = {
+            tabID: getTabID(),
             modelIds: modelIds.join(","),
             rtModelSeqs: rtModelSeqs.join(",")
         }
@@ -711,6 +714,7 @@
         }
 
         var sendata = {
+            tabID: getTabID(),
             modelIds: modelIds.join(","),
             rtModelSeqs: rtModelSeqs.join(",")
         }
@@ -852,6 +856,7 @@
         }
 
         var sendata = {
+            tabID: getTabID(),
             modelIds: modelIds.join(","),
             rtModelSeqs: rtModelSeqs.join(",")
         }
