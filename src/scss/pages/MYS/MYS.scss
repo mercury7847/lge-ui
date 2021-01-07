@@ -604,7 +604,7 @@
                     padding-right: 32px;
                     &:after {
                         position: absolute;
-                        @include calc(top,50%,10px);
+                        @include calc(top,50%,4px);
                         right: 6px;
                         width: 20px;
                         height: 20px;
@@ -616,7 +616,7 @@
                     &:not(:last-child) {
                         padding-right: 24px;
                         &:after {
-                            @include calc(top,50%,8px);
+                            @include calc(top,50%,2px);
                             right: 4px;
                             width: 16px;
                             height: 16px;
