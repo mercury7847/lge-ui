@@ -138,7 +138,7 @@ CS.MD.commonModel = function() {
             // 검색 영역
             self.$searchModelArea = self.$el.find('.prod-search-wrap');
             // 검색 영역 : 키워드
-            self.$searchKeywordBox = self.$searchModelArea.find('.keyword-search');
+            self.$searchKeywordBox = self.$searchModelArea.find('>.keyword-search');
             self.$inputKeyword = self.$searchKeywordBox.find('input[type=text]');
             self.$buttonKeyword = self.$searchKeywordBox.find('.btn-search');
             // 검색 영역 : 카테고리 > 서브카테고리
@@ -462,9 +462,9 @@ CS.MD.commonModel = function() {
                 }
             });
 
-            self.$searchKeywordBox.find('.btn-search').on('click', function() {
+            self.$buttonKeyword.on('click', function() {
                 var opt = self.options,
-                    result = modelValidation.validate(['keyword']);
+                    result = modelValidation.validate(['keyword01']);
                 
                 if (result.success) {
                     self.$searchCategoryBox.removeClass(opt.stepActiveClass);
