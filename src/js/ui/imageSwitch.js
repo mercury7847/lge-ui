@@ -36,7 +36,7 @@ vcui.define('ui/imageSwitch', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             
             self.mode = mode;
-
+            
             self.$el.find('.ui_bg_switch').each(function(idx, item){
                 var imgsrc = $(item).attr("data-" + self.mode + "-src");
                 $(item).css({
@@ -45,11 +45,19 @@ vcui.define('ui/imageSwitch', ['jquery', 'vcui'], function ($, core) {
             });
 
             self.$el.find('img').each(function(idx, item){
+                var imgsrc = $(item).attr("data-" + self.mode + "-src");
+                if(!imgsrc) {
+                    imgsrc = $(item).attr('data-pc-src');
+                }
+                $(item).attr('src', imgsrc);
+
+                /*
                 var pcsrc = $(item).attr('data-pc-src');
                 if(pcsrc !== undefined){
                     var imgsrc = $(item).attr("data-" + self.mode + "-src");
                     $(item).attr('src', imgsrc);
                 }
+                */
             })
         },
 
