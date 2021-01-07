@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <circle id="vtcwyw55ba" cx="28" cy="28" r="28"/>
+        <circle id="ogryjij2bc" cx="28" cy="28" r="28"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <path d="M0 0H64V64H0z" transform="translate(-2735 -246) translate(1872 130) translate(0 116) translate(863)"/>
+                            <g transform="translate(-2735 -246) translate(1872 130) translate(0 116) translate(863) translate(4 4)">
+                                <g>
+                                    <mask id="4slxnwadyb" fill="#fff">
+                                        <use xlink:href="#vtcwyw55ba"/>
+                                    </mask>
+                                    <path stroke="#AAA" stroke-linecap="round" stroke-width="2" d="M23.333 36.667h9.334c7.732 0 14 6.268 14 14v6.666h0H9.333v-6.666c0-7.732 6.268-14 14-14z" mask="url(#4slxnwadyb)"/>
+                                </g>
+                                <rect width="18.667" height="18.667" x="18.667" y="14" stroke="#AAA" stroke-linecap="round" stroke-width="2" rx="9.333"/>
+                                <use stroke="#AAA" stroke-width="2" xlink:href="#ogryjij2bc"/>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
