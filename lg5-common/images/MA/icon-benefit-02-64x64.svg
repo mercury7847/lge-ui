@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g transform="translate(-1008 -9112) translate(270 8972) translate(702 100) translate(36 40)">
+                        <path d="M0 0H64V64H0z" opacity=".3"/>
+                        <path fill="#FFF" stroke="#222" stroke-width="2" d="M7 12h34c.276 0 .526.112.707.293.181.18.293.43.293.707v43H13c-1.933 0-3.683-.784-4.95-2.05C6.784 52.683 6 50.933 6 49V13c0-.276.112-.526.293-.707.18-.181.43-.293.707-.293z"/>
+                        <path fill="#FFF" stroke="#222" stroke-width="2" d="M15 43.002l30.92.074c1.43.238 2.69 1.025 3.596 2.145C50.443 46.368 51 47.865 51 49.5c0 1.633-.556 3.128-1.48 4.283-.908 1.135-2.173 1.943-3.61 2.217H15v-.567c1.12-1.513 1.829-3.608 1.829-5.933 0-2.325-.71-4.42-1.829-5.933v-.565z"/>
+                        <circle cx="47" cy="18" r="14" fill="#F4F4F4" stroke="#222" stroke-width="2"/>
+                        <rect width="15" height="2" x="40" y="17" fill="#EC455A" rx="1"/>
+                        <rect width="15" height="2" x="40" y="17" fill="#EC455A" rx="1" transform="rotate(90 47.5 18)"/>
+                        <path fill="#222" d="M14 21h19c.552 0 1 .448 1 1s-.448 1-1 1H14c-.552 0-1-.448-1-1s.448-1 1-1zM14 28h23c.552 0 1 .448 1 1s-.448 1-1 1H14c-.552 0-1-.448-1-1s.448-1 1-1z"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
