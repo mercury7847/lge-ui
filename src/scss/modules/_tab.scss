@@ -374,6 +374,47 @@
             margin-top: 4px;
         }
     }
+    &.border-type {
+        .tabs {
+            margin: 0 auto;
+            padding: 0 16px;
+            font-size: 0;
+            white-space:nowrap;
+            vertical-align: top;
+            > li {
+                display: inline-block;
+                margin-left: 32px;
+                white-space: nowrap;
+                vertical-align: top;
+                &:first-child {
+                    margin-left: 0;
+                }
+                > a {
+                    display: block;
+                    position: relative;
+                    padding-bottom: 2px;
+                    border-bottom: 2px solid transparent;
+                    font-weight: 700;
+                    @include font-large;
+                    color: #aaa;
+                }
+                &.on > a {
+                    border-color: #222;
+                    color: #222;
+                }
+
+                @include mobile {
+                    margin-left: 24px;
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                    > a {
+                        border-width: 3px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 /*2021-01-04*/
