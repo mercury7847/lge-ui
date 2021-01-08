@@ -18,8 +18,8 @@
                 vcui.require(['ui/pagination'], function () {
                     self.setting();
                     self.bindEvents();
+                    self.checkNoData();
                 });
-                self.checkNoData();
             },
 
             setting: function() {
