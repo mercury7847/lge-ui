@@ -1,5 +1,6 @@
 (function(){
     var CREDIT_INQUIRE_URL;
+    var NICE_CREDIT_CHK_URL;
     var INSTALL_ABLED_URL;
     var CARD_ABLED_URL;
     var ARS_AGREE_URL;
@@ -234,7 +235,7 @@
             e.preventDefault();
 
             setCreditInquire();
-        })
+        });
 
         $('.popup-wrap').on('click', '.btn-group .agree-confirm', function(e){
             e.preventDefault();
@@ -262,6 +263,10 @@
 
             openDeliveryPop($(this).closest('.conts'))
         });
+
+        $('input[name=nicePopChker]').on('change', function(e){
+            setCreditInquire();
+        })
 
         step2Block.on('change', 'input[name=installInpuType]', function(e){
             changeInstallInputType($(this).val());
@@ -591,16 +596,30 @@
             rentalCareType: getInputData('rentalCareType')
         }
         lgkorUI.requestAjaxData(CREDIT_INQUIRE_URL, sendata, function(result){
-            lgkorUI.alert(result.data.alert.desc, {
-                title: result.data.alert.title
-            });
+            if(result.data.success == "P"){
+                window.open('', 'nicePopUp', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                document.form_chk.action = result.data.niceAntionUrl;
+                document.form_chk.EncodeData.value = result.data.sEncData;
+                document.form_chk.target = "nicePopUp";
+                document.form_chk.m.value = "safekeyService";
+                document.form_chk.param_r1.value = "I";
+                document.form_chk.param_r2.value = "";
+                document.form_chk.param_r3.value = "";
+                document.form_chk.submit();
 
-            if(result.data.success == "Y"){
-                setInputData('safekey', result.data.safekey);
-                setInputData('nicePersonLogSeq', result.data.nicePersonLogSeq);
-                setInputData('creditInquire', 'Y');
+                $('.niceChker').show();
             } else{
-                setInputData('creditInquire', 'N');
+                lgkorUI.alert(result.data.alert.desc, {
+                    title: result.data.alert.title
+                });
+    
+                if(result.data.success == "Y"){
+                    setInputData('safekey', result.data.safekey);
+                    setInputData('nicePersonLogSeq', result.data.nicePersonLogSeq);
+                    setInputData('creditInquire', 'Y');
+                } else{
+                    setInputData('creditInquire', 'N');
+                }
             }
         });
     }
