@@ -277,8 +277,8 @@
                 result;
 
             param = $.extend(param, {
-                topic: $('input[name=topic]').val(),
-                subTopic: $('input[name=subTopic]').val(),
+                topic: $('input[name=topic]:checked').val(),
+                subTopic: $('input[name=subTopic]:checked').val(),
                 serviceType: $('#serviceType').val(),
                 productCode: $('#productCode').val(),
                 category: $('#category').val(),
@@ -437,7 +437,7 @@
                 var $this = $(this),
                     url = self.$subTopicListWrap.data('ajax'),
                     param = {
-                        topic : $('input[name=topic]').val(),
+                        topic : $('input[name=topic]:checked').val(),
                         subTopic: $this.val(),
                         productCode: $('#productCode').val()
                     };
