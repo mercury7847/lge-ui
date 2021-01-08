@@ -470,17 +470,18 @@
     @include pc {
         display: none;
     }
-    padding: 20px 0 20px 16px;
+    padding: 20px 0;
     border-bottom: 12px solid $color-bg;
     .ui_carousel_list {
-        padding-right: 128px;
+        padding: 0 16px;
     }
     .ui_carousel_slide {
         padding-right: 6px;
     }
     .banner-box {
         position: relative;
-        display: block;
+        display: inline-block;
+        width: 60vw;
         border-radius: 4px;
         img {
             width: 100%;
