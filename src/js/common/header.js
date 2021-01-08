@@ -27,8 +27,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self._arrowState();
 
                 $('.marketing-link .ui_carousel_slider').vcCarousel({
-                    infinite: true,
-                    swipeToSlide: true,
+                    infinite: false,
+                    variableWidth: true,
                     slidesToShow: 1,
                     slidesToScroll: 1
                 });
