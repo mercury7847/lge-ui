@@ -43,14 +43,55 @@
 			overflow:hidden;
 		}
 		.items{
-			text-align:center;
+			text-align:left;
 			margin:-48px auto 0;
 			font-size: 0;
 			@include mobile {
 				margin-top:-24px;
-			}
+            }
 		}
-		
+		&.item5 {
+            .items {
+                .item {
+                    width:20%;
+                }
+            }
+        }
+        &.item4 {
+            .items {
+                .item {
+                    width:25%;
+                }
+            }
+        }
+        &.item3 {
+            .items {
+                .item {
+                    width:33.3%;
+                }
+            }
+        }
+        &.item2 {
+            .items {
+                .item {
+                    width:50%;
+                }
+            }
+        }
+        &.item5,
+        &.item4,
+        &.item3 {
+            .items {
+                .item {
+                    @media screen and (max-width:1270px) {
+                        width:33.3%;
+                    }
+                    @media screen and (max-width:1100px) {
+                        width:50%;
+                    }
+                }
+            }
+        }
 	}
 	.carousel-box {
 		.list-box {
@@ -88,8 +129,8 @@
 	}
 	
     .item {
-		vertical-align:top;
-		width:256px + 24px;
+        vertical-align:top;
+        width:auto;
 		display:inline-block;
 		margin-top:48px;
 		padding: 0 12px;

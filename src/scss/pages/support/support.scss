@@ -961,6 +961,9 @@
                 font-size: 14px;
                 line-height: 20px;
                 color: #222;
+                .status {
+                    margin-left: 4px;
+                }
                 &:before {
                     display: inline-block;
                     content: '';
