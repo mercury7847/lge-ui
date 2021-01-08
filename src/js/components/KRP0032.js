@@ -8,6 +8,7 @@ $(window).ready(function(){
         '<dl><a href="{{url}}"><dt>{{title}}</dt><dd>{{#if price}}{{price}}원{{/if}}</dd></a></dl>' +
     '</li>'
 
+    var myRecentProductCookieName = 'myRecentProductTemp';
 	var KRP0032 = {
 		init: function(){
 			var self = this;
@@ -34,7 +35,15 @@ $(window).ready(function(){
 			var self = this;
 			var ajaxUrl = self.$popup.attr('data-list-url');
             var cookieValue = lgkorUI.getCookie('myRecentProduct');
-            console.log(cookieValue);
+
+            //test code
+            //lgkorUI.deleteCookie('myRecentProduct');
+            //console.log('first',cookieValue);
+            //lgkorUI.removeCookieArrayValue('myRecentProduct','000052');
+            //lgkorUI.addCookieArrayValue('myRecentProduct','000003');
+            //cookieValue = lgkorUI.getCookie('myRecentProduct');
+            //console.log('res',cookieValue);
+            
             lgkorUI.requestAjaxData(ajaxUrl, {"id":cookieValue}, function(result) {
 				var data = result.data;
 				var arr = data instanceof Array ? data : [];
