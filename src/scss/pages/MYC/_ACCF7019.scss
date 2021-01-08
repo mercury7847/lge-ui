@@ -49,6 +49,12 @@
             .bookmark,
             .share-area {
                 top: 16px;
+                .tooltip-wrap.share {
+                    .tooltip-box {
+                        right:0;
+                        left:auto;
+                    }
+                }
             }
             .bookmark {
                 right: 46px;

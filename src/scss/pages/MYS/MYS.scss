@@ -668,7 +668,7 @@
                 .item {
                     display: table;
                     width: 100%;
-                    padding: 16px 48px 16px 24px;
+                    padding: 16px 24px;
                     border: 1px solid $color-border;
                     box-shadow: none;
                     .product-image {
@@ -792,8 +792,11 @@
             }
         }
         .product-info {
+            min-height: 76px;
+            @include mobile {
+                min-height: 65px;
+            }
             .product-name {
-                height: 52px;
                 margin-top: 8px;
                 a {
                     font-weight: 700;

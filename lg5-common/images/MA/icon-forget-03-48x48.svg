@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <path d="M0 0H48V48H0z" opacity=".3" transform="translate(-1237 -9490) translate(270 9344) translate(936 100) translate(31 46)"/>
+                        <g>
+                            <path stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M28.96 30l8.795-3.348c1.07-.407 2.266.13 2.672 1.198l.005.011c.418 1.12-.05 2.376-1.1 2.948l-15.126 8.247c-.751.41-1.642.478-2.448.19l-10.63-3.812h0-3.455V25l5.975-.871L20 26.949h6.907c1.133 0 2.052.918 2.052 2.052 0 1.133-.919 2.052-2.052 2.052H19.16h0c-1.276.143-1.915.83-1.915 2.06" transform="translate(-1237 -9490) translate(270 9344) translate(936 100) translate(31 46) translate(3 4)"/>
+                            <path fill="#EDEDED" stroke="#222" stroke-width="1.5" d="M28 .75c-1.992 0-3.767.932-4.91 2.384-.222.281-.419.58-.589.895-.17-.314-.368-.614-.59-.895C20.767 1.682 18.992.75 17 .75c-1.726 0-3.288.7-4.42 1.83-1.13 1.132-1.83 2.694-1.83 4.42 0 .633.094 1.245.295 1.933.316 2.209 2.489 5.646 4.992 8.44 2.208 2.463 4.695 4.528 6.463 4.528 1.722 0 4.12-1.966 6.275-4.34 2.476-2.728 4.651-6.122 5.126-8.495.226-.647.349-1.342.349-2.066 0-1.726-.7-3.288-1.83-4.42C31.287 1.45 29.725.75 28 .75z" transform="translate(-1237 -9490) translate(270 9344) translate(936 100) translate(31 46) translate(3 4)"/>
+                            <path fill="#222" d="M18 11H27V13H18z" transform="translate(-1237 -9490) translate(270 9344) translate(936 100) translate(31 46) translate(3 4)"/>
+                            <path fill="#222" d="M18 11H27V13H18z" transform="translate(-1237 -9490) translate(270 9344) translate(936 100) translate(31 46) translate(3 4) rotate(90 22.5 12)"/>
+                            <path fill="#FFF" stroke="#222" stroke-width="1.5" d="M7 22.75H2c-.345 0-.658.14-.884.366-.226.226-.366.539-.366.884v14c0 .345.14.658.366.884.226.226.539.366.884.366h5c.345 0 .658-.14.884-.366.226-.226.366-.539.366-.884V24c0-.345-.14-.658-.366-.884-.226-.226-.539-.366-.884-.366z" transform="translate(-1237 -9490) translate(270 9344) translate(936 100) translate(31 46) translate(3 4)"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
