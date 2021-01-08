@@ -84,15 +84,13 @@ CS.MD.commonModel = function() {
         self.el = el;
 
         var defaults = {
-            stepIndex: 0,
             stepClass: 'step-box',
             stepActiveClass: 'active',
             selectedModel: [],
             register: {}
         };
 
-        self.options = $.extend({}, defaults, self.$el.data(), opt);
-        self.caseType = 'product';
+        self.options = $.extend({}, defaults, opt);
         
         vcui.require(['ui/validation', 'ui/selectTarget'], function () {
             termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
@@ -121,13 +119,11 @@ CS.MD.commonModel = function() {
             var self = this;
 
             // 스텝 영역
+            self.$stepBox = self.$el.find('.step-box');
             self.$stepTerms = self.$el.find('#stepTerms');
             self.$stepModel = self.$el.find('#stepModel');
             self.$stepInput = self.$el.find('#stepInput');
-
-            self.$stepBox = self.$el.find('.step-box');
-            self.stepLength = self.$stepBox.length;
-
+            
             // 선택 제품 플로팅바
             self.$selectedModelBar = self.$el.find('.prod-selected-wrap');
             
@@ -152,52 +148,40 @@ CS.MD.commonModel = function() {
 
             self.page = 1;
             self.total = 0;
+            self.caseType = 'product';
 
-            if (self.$myModelArea.length) self.$myModelSlider.vcCarousel({
-                infinite: false,
-                autoplay: false,
+            self.$modelFilter.find('.ui_select_target').vcSelectTarget();
+            self.$myModelSlider.vcCarousel({
                 slidesToScroll: 3,
                 slidesToShow: 3,
                 responsive: [
                     {
-                        breakpoint: 768,
-                        settings: {
-                            arrows: false,
-                            slidesToScroll: 1,
-                            slidesToShow: 1,
-                            variableWidth: true
-                        }
-                    },
-                    {
-                        breakpoint: 20000,
+                        breakpoint: 10000,
                         settings: {
                             slidesToScroll: 3,
                             slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            variableWidth: true,
+                            slidesToScroll: 1,
+                            slidesToShow: 1,
                         }
                     }
                 ]
             });
 
-            if (self.$searchModelBox.length) {
-                $('.ui_select_target').vcSelectTarget();
-            }
-
-            self.$searchModelBox.find('#categorySelect').vcSelectTarget({
-                callback: function(data, target) {
-
-                }
-            });
-            
-            if (self.$searchKeywordBox.length) lgkorUI.searchModelName();
+            lgkorUI.searchModelName();
         },
-        update: function(obj) {
+        updateSummary: function(obj) {
             var self = this,
-                html = '';
+                html;
 
-            if (obj) {
-                html = vcui.template(selectedBarTmpl, obj);
-                self.$selectedModelBar.html(html);
-            }
+            html = vcui.template(selectedBarTmpl, obj);
+            self.$selectedModelBar.html(html);
         },
         reset: function() {
             var self = this;
@@ -229,7 +213,7 @@ CS.MD.commonModel = function() {
                 desc: "예약내용 입력을 위해 제품을 선택해 주세요"
             }
 
-            self.update(updateObj);
+            self.updateSummary(updateObj);
         },
         _resetFlexibleBox: function() {
             var self = this;
@@ -253,10 +237,11 @@ CS.MD.commonModel = function() {
                 var data = result.data,
                     arr = data.listData instanceof Array ? data.listData : [];
 
-                self.page = data.listPage.page;
+                // self.page = data.listPage.page;
                 self.totalCount = data.listPage.totalCount;
 
                 self.totalPage = Math.floor(self.totalCount == 0 ? 1 : (self.totalCount - 1)  / self.pageCount + 1);
+                
 
                 self.$modelSlider.find('.slide-track').empty();
 
@@ -269,6 +254,7 @@ CS.MD.commonModel = function() {
                     self.$modelNoData.hide();
 
                     if (!self.$modelSlider.hasClass('ui_carousel_initialized')) {
+                        self.page = 1;
                         self.$modelSlider.vcCarousel({
                             rows:3,
                             slidesPerRow: 4,
@@ -305,6 +291,9 @@ CS.MD.commonModel = function() {
                             ]
                         });
                     } else {
+                        self.page = data.listPage.page;
+                        var initValue = (self.page % 10 == 0) ? 9 : 0;
+                        self.$modelSlider.vcCarousel('setOption', 'initialSlide', initValue, false);
                         self.$modelSlider.vcCarousel('reinit');
                     }
                 } else {
@@ -320,6 +309,11 @@ CS.MD.commonModel = function() {
 
                 lgkorUI.hideLoading();
             });
+        },
+        _toggleArrow: function($arrow, flag) {
+            $arrow[flag ? 'removeClass' : 'addClass']('disabled')
+                        .prop('disabled', !flag)
+                        .attr('aria-disabled', (!flag).toString());
         },
         _bindEvent: function() {
             var self = this;
@@ -391,7 +385,7 @@ CS.MD.commonModel = function() {
                     }
 
                     self.$el.trigger('complete', [self, info, '', function() {
-                        self.update(updateObj);
+                        self.updateSummary(updateObj);
 
                         self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
                         self.$stepInput.addClass(opt.stepActiveClass);
@@ -424,7 +418,7 @@ CS.MD.commonModel = function() {
                         subCategory: self.$el.find('#subCategory').val()
                     };
 
-                    self.update(updateObj);
+                    self.updateSummary(updateObj);
                     self._requestData(param);
                 } else {
                     if ($this.val() == '') {
@@ -434,7 +428,7 @@ CS.MD.commonModel = function() {
                             subCategory: self.$el.find('#subCategory').val()
                         };
     
-                        self.update(updateObj);
+                        self.updateSummary(updateObj);
                         self._requestData(param);
                     } else {
 
@@ -486,7 +480,7 @@ CS.MD.commonModel = function() {
                         subCategory: self.$el.find('#subCategory').val()
                     };
 
-                    self.update(updateObj);
+                    self.updateSummary(updateObj);
                     self._requestData(param);
                 }
             });
@@ -532,7 +526,7 @@ CS.MD.commonModel = function() {
                     subCategory: data.subCategory
                 };
 
-                self.update(updateObj);
+                self.updateSummary(updateObj);
                 self._requestData(param);
 
                 self.$searchKeywordBox.hide();
@@ -585,7 +579,7 @@ CS.MD.commonModel = function() {
                         };
 
                     self.$el.trigger('complete', [self, info, ajaxData, function() {
-                        self.update(updateObj);
+                        self.updateSummary(updateObj);
 
                         self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
                         self.$stepInput.addClass(opt.stepActiveClass);
@@ -609,11 +603,57 @@ CS.MD.commonModel = function() {
             });
             
             // 모델 리스트 슬라이더
-            self.$modelSlider.on('carouselbeforechange', function(e, module, before, after) {
-                self.page = after;
-            });
-            self.$modelSlider.on('carouselafterchange', function(e, module, current) {
+            self.$modelSlider.on('carouselreinit', function(e, module) {
+                var startPage = parseInt((self.page - 1) / 10) * 10 + 1;
                 
+                if (startPage != 1 && (self.page % 10 == 1)) {
+                    self._toggleArrow(module.$prevArrow, true);
+                    module.$prevArrow.addClass('btn-prev');
+                }
+            });
+            self.$modelSlider.on('carouselbeforechange', function(e, module, before, after) {
+                var page = after - before;
+            
+                self.page += page;
+            });
+            self.$modelSlider.on('carouselafterchange', function(e, module, after) {
+                var startPage = parseInt((self.page - 1) / 10) * 10 + 1; 
+                var endPage = startPage + 10 - 1;
+
+                if (startPage != 1 && (self.page % 10 == 1)) {
+                    self._toggleArrow(module.$prevArrow, true);
+                    module.$prevArrow.addClass('btn-prev');
+                } else {
+                    module.$prevArrow.removeClass('btn-prev');
+                }
+
+                if (after == 9 && (endPage != self.totalCount)) {
+                    self._toggleArrow(module.$nextArrow, true);
+                    module.$nextArrow.addClass('btn-next');
+                } else {
+                    module.$nextArrow.removeClass('btn-next');
+                }
+            });
+
+            self.$modelSlider.on('click', '.btn-prev', function() {
+                var param = {
+                    keyword: self.$inputKeyword.val().toUpperCase(),
+                    category: self.$el.find('#category').val(),
+                    subCategory: self.$el.find('#subCategory').val(),
+                    page: self.page - 1
+                };
+                
+                self._requestData(param);
+            });
+            self.$modelSlider.on('click', '.btn-next', function() {
+                var param = {
+                    keyword: self.$inputKeyword.val().toUpperCase(),
+                    category: self.$el.find('#category').val(),
+                    subCategory: self.$el.find('#subCategory').val(),
+                    page: self.page + 1
+                };
+                
+                self._requestData(param);
             });
             
             // 보유제품 선택
@@ -642,7 +682,7 @@ CS.MD.commonModel = function() {
                         reset: true
                     }
     
-                    self.update(updateObj);
+                    self.updateSummary(updateObj);
 
                     lgkorUI.requestAjaxDataPost(self.$searchModelArea.data('resultUrl'), {modelCode: data.code, serviceType: $('#serviceType').val()}, function(result) {
                         var ajaxData = result.data,
@@ -653,7 +693,7 @@ CS.MD.commonModel = function() {
                             };
     
                         self.$el.trigger('complete', [self, info, ajaxData, function() {
-                            self.update(updateObj);
+                            self.updateSummary(updateObj);
 
                             self.$myModelArea.hide();
                             self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
