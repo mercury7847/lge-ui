@@ -2,10 +2,10 @@
 
 
     var searchResultText = {
-        search: '<strong>"{{keyword}}"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
-        localSearch: '<strong>"{{keyword}}"</strong>와 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
-        roadSearch: '입력한 주소와 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
-        subwaySearch: '<strong>"{{keyword}}역"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
+        search: '검색결과 <strong>{{total}}개</strong>의 센터가 있습니다.',
+        localSearch: '검색결과 <strong>{{total}}개</strong>의 센터가 있습니다.',
+        roadSearch: '검색결과 <strong>{{total}}개</strong>의 센터가 있습니다.',
+        subwaySearch: '검색결과 <strong>{{total}}개</strong>의 센터가 있습니다.'
     };
 
     var localOptTemplate = '<option value={{value}}>{{title}}</option>';
