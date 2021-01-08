@@ -34,14 +34,14 @@ $(window).ready(function(){
 		requestData: function(openPopup) {
 			var self = this;
 			var ajaxUrl = self.$popup.attr('data-list-url');
-            var cookieValue = lgkorUI.getCookie('myRecentProduct');
+            var cookieValue = lgkorUI.getCookie(myRecentProductCookieName);
 
             //test code
-            //lgkorUI.deleteCookie('myRecentProduct');
+            //lgkorUI.deleteCookie(myRecentProductCookieName);
             //console.log('first',cookieValue);
-            //lgkorUI.removeCookieArrayValue('myRecentProduct','000052');
-            //lgkorUI.addCookieArrayValue('myRecentProduct','000003');
-            //cookieValue = lgkorUI.getCookie('myRecentProduct');
+            //lgkorUI.removeCookieArrayValue(myRecentProductCookieName,'000052');
+            //lgkorUI.addCookieArrayValue(myRecentProductCookieName,'000003');
+            //cookieValue = lgkorUI.getCookie(myRecentProductCookieName);
             //console.log('res',cookieValue);
             
             lgkorUI.requestAjaxData(ajaxUrl, {"id":cookieValue}, function(result) {
