@@ -26,14 +26,16 @@
                             '{{shopName}}'+
                         '</p>'+
 
+                        '{{#if bizStatus}}'+
                         '<div class="box-info">'+
                             '<ul>'+
                                 '<li class="{{bizStatus.bizStatusClass}}">'+
                                     '<span class="blind">{{bizStatus.bizStatusColor}} 표기</span>'+
-                                    '<strong class="status">{{bizStatus.bizStatusText}}원활</strong>'+
+                                    '<strong class="status">{{bizStatus.bizStatusText}}</strong>'+
                                 '</li>'+
                             '</ul>'+
                         '</div>'+
+                        '{{/if}}'+
 
                     '</div>'+
 
@@ -592,6 +594,7 @@
                      num: i+1,
                      shopName: data[i].info.shopName,
                      bizHours: data[i].info.bizHours,
+                     bizStatus: data[i].info.bizStatus,
                      flagInfo: data[i].info.flagInfo,
                      shopAdress: data[i].info.shopAdress,
                      shopTelphone: data[i].info.shopTelphone,
