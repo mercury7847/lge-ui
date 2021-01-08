@@ -725,7 +725,7 @@
         },
 
         setCookie: function(cookieName, cookieValue) {
-            var days = 60;
+            var days = 30*6;
             var cookieExpire = new Date();
             cookieExpire.setDate(cookieExpire.getDate() + days);
 
