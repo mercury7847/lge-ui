@@ -33,7 +33,7 @@ $(window).ready(function(){
 		requestData: function(openPopup) {
 			var self = this;
 			var ajaxUrl = self.$popup.attr('data-list-url');
-            var cookieValue = lgkorUI.getCookie('KRP0032_recentproduct');
+            var cookieValue = lgkorUI.getCookie('myRecentProduct');
             console.log(cookieValue);
             lgkorUI.requestAjaxData(ajaxUrl, {"id":cookieValue}, function(result) {
 				var data = result.data;
