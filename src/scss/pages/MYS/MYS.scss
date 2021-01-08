@@ -748,24 +748,17 @@
                 }
             }
         }
-        .slide-track {
-            overflow: visible;
-        }
         .slide-conts {
             padding: 12px;
-            @include mobile {
+        }
+        @include mobile {
+            .slide-content {
+                padding: 0 16px 0 4px;
+            }
+            .slide-conts {
                 padding-left: 0;
                 &:first-child {
-                    padding-left: 16px;
-                }
-                &:last-child {
-                    &:after {
-                        display: inline-block;
-                        width: 16px;
-                        height: 100%;
-                        background-color: #1a8b6a;
-                        content: '';
-                    }
+                    padding-left: 12px;
                 }
             }
         }
