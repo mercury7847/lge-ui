@@ -4,43 +4,82 @@
 
 
 .KRC0025 {
-    &.full-size {
-		.unit-list {
-			max-width:1920px + 80px;
-		}
+    max-width:1380px + 80px;
+    margin:0 auto;
+    padding:0 40px;
+    @include mobile {
+        padding:0 16px;
     }
-    &.wide-size {
-		.unit-list {
-			max-width:1600px + 80px;
-		}
-    }
-    &.standard-size {
-		.unit-list {
-			max-width:1380px + 80px;
-		}
-	}
     
     .unit-list {
-        margin:0 auto;
-        padding:0 28px;
+        margin:0 -12px;
+        @include mobile {
+            margin:0;
+        }
         @include clearfix;
         .unit-box {
             float:left;
             padding:0 12px;
+            @include mobile {
+                float:none;
+                margin-top:40px;
+                padding:0;
+                &:first-child {
+                    margin-top:0;
+                }
+            }
         }
         &.block1 {
             .unit-box {
-                width:100%;
+                float:none;
+            }
+            &.type-wide {
+                .unit-box {
+                    max-width:((1170px * 100%) / 1404px);
+                    @include mobile {
+                        max-width:100%;
+                    }
+                }
+            }
+            &.type-narrow {
+                .unit-box {
+                    max-width:((702px * 100%) / 1404px);
+                    @include mobile {
+                        max-width:100%;
+                    }
+                }
+            }
+            &.box-align-left {
+                .unit-box {
+                    margin-right:auto;
+                }
+            }
+            &.box-align-center {
+                .unit-box {
+                    margin-left:auto;
+                    margin-right:auto;
+                }
+            }
+            &.box-align-right {
+                .unit-box {
+                    margin-left:auto;
+                }
             }
         }
         &.block2 {
             .unit-box {
                 width:50%;
+                @include mobile {
+                    width:100%;
+                }
             }
         }
         &.block3 {
             .unit-box {
-                width:calc(100% / 3);
+                width:33.3%;
+                @include mobile {
+                    width:100%;
+                }
             }
         }
     }
@@ -58,6 +97,12 @@
 
     .text {
         @include bodycopy(h2, h2);
+        &:first-child {
+            margin-top:0;
+        }
+    }
+
+    .bullet-list {
         &:first-child {
             margin-top:0;
         }

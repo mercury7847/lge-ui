@@ -33,36 +33,6 @@
     }
 }
 
-// title font size mixin (56px/74px);
-@mixin font-title {
-    font-size:56px;
-    line-height:74px;
-    font-weight:700;
-    @media screen and (max-width: #{$tablet-s-width}) {
-        font-size:32px;
-        line-height:42px;
-    }
-}
-@mixin font-title-2 {
-    font-size:48px;
-    line-height:64px;
-    font-weight:700;
-    @media screen and (max-width: #{$tablet-s-width}) {
-        font-size:24px;
-        line-height:33px;
-    }
-}
-@mixin font-eyebrow {
-    font-size:24px;
-    line-height:34px;
-    font-weight:700;
-
-    @media screen and (max-width: #{$tablet-s-width}) {
-       font-size : 16px;
-       line-height: 24px;
-    }
-}
-
 // Title Font Mixin
 @mixin eyebrow {
     margin-bottom:8px;
@@ -169,6 +139,17 @@
         &:last-child {
             margin-right:0;
         }
+    }
+}
+
+@mixin boxs ($size) {
+    @if $size == w { // wide
+        max-width:((1146px * 100%) / 1380px);
+    } @else if $size == n { // narrow
+        max-width:((678px * 100%) / 1380px);
+    }
+    @include mobile {
+        max-width:100%;
     }
 }
 

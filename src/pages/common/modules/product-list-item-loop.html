@@ -77,7 +77,9 @@
                 <div class="product-name">
                     <a href="#">LG DIOS 노크온 매직스페이스</a>
                 </div>
+                @@if (!context.nonSku) {
                 <div class="sku">S833MC85Q</div>
+                }
                 @@if (context.review) {
                 <div class="review-info">
                     <a href="#">
@@ -133,6 +135,20 @@
                 <input type="checkbox" id="@@wish.id" name="@@wish.name" @@wish.checked>
                 <label for="@@wish.id"><span class="blind">찜하기</span></label>
             </span>
+        </div>
+        }
+        @@if (context.price) {
+        <div class="price-area">
+            @@if (context.originalPrice) {
+            <div class="original">
+                <em class="blind">판매가격</em>
+                <span class="price">5,200,000<em>원</em></span>
+            </div>
+            }
+            <div class="total">
+                <em class="blind">총 판매가격</em>
+                <span class="price">4,420,000<em>원</em></span>
+            </div>
         </div>
         }
         @@if (context.singleButton) {
@@ -205,8 +221,8 @@
             </div>
         </div>
         }
-        <!-- 기획전 상품리스트 -->
         @@if (context.eventItem) {
+        <!-- 기획전 상품리스트 -->
         <div class="product-bottom">
             @@if (context.eventItem.benefit) {
             <div class="flag-wrap bar-type">

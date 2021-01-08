@@ -10,6 +10,7 @@
     },
     "data": {
         "totalCount":"16",
+        "customerName":"LG베스트",
         "listData":[
             {
                 "id":"sid00005",
@@ -17,6 +18,7 @@
                 "address":"서울특별시 서대문구 홍제동 158-33",
                 "tel":"02-379-9400",
                 "bookmark":true,
+                "url":"#1",
                 "requestUrl":"#1",
                 "facebook":"https://www.lg.com/html/components/blog-share.html",
                 "twitter":"https://www.lg.com/html/components/blog-share.html",
@@ -29,6 +31,7 @@
                 "address":"서울특별시 중구 회현동 후암로 98",
                 "tel":"02-6929-1015",
                 "bookmark":false,
+                "url":"#2",
                 "requestUrl":"#2",
                 "facebook":"https://www.lg.com/html/components/blog-share.html",
                 "twitter":"https://www.lg.com/html/components/blog-share.html",

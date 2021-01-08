@@ -135,32 +135,44 @@
         right: 0;
         bottom: 0;
         left: 0;
+        padding:0 40px;
         z-index: 2;
+        @include mobile {
+            padding:0 16px;
+        }
         .text-wrap {
             display:table;
             width:100%;
-            max-width:1284px + 60px;
+            max-width:1380px;
             height:100%;
             margin:0 auto;
             .inner {
                 display:table-cell;
                 margin: 0 auto;
-                padding:56px 30px;
+                padding:56px 0;
 
                 @include mobile {
                     max-width: 100%;
-                    padding:32px 16px;
+                    padding:32px 0;
+                }
+            }
+        }
+        &.type-wide {
+            .text-wrap {
+                .inner {
+                    .text-block,
+                    .cta {
+                        @include boxs(w);
+                    }
                 }
             }
         }
         &.type-narrow {
             .text-wrap {
                 .inner {
-                    .text-block {
-                        width:60%;
-                        @include mobile {
-                            width:100%;
-                        }
+                    .text-block,
+                    .cta {
+                        @include boxs(n);
                     }
                 }
             }
@@ -214,21 +226,13 @@
 
     $align: (left, right, center);
     @each $key in $align {
-        .align-#{$key} {
+        .box-align-#{$key} {
             @if $key == left {
                 .text-wrap {
                     .inner {
-                        .text-block {
+                        .text-block,
+                        .cta {
                             margin-right:auto;
-                        }
-                    }
-                }
-                .cta-button,
-                .cta-link {
-                    span {
-                        //margin: 0 24px 12px 0;
-                        &:last-child {
-                            margin-right: 0;
                         }
                     }
                 }
@@ -236,18 +240,10 @@
             @if $key == right {
                 .text-wrap {
                     .inner {
-                        .text-block {
+                        .text-block,
+                        .cta {
                             margin-left:auto;
                             text-align:left;
-                        }
-                    }
-                }
-                .cta-button,
-                .cta-link {
-                    span {
-                        //margin: 0 0 12px 24px;
-                        &:first-child {
-                            margin-left: 0;
                         }
                     }
                 }
@@ -255,17 +251,11 @@
             @if $key == center {
                 .text-wrap {
                     .inner {
-                        .text-block {
+                        .text-block,
+                        .cta {
                             margin-left:auto;
                             margin-right:auto;
                         }
-                    }
-                }
-                .cta-button,
-                .cta-link {
-                    //margin: 0 -12px;
-                    span {
-                        //margin: 0 12px 12px;
                     }
                 }
             }

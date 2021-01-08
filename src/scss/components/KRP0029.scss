@@ -8,64 +8,74 @@
 			padding:0;
 		}
 		.title {
-			margin-bottom:36px;
+			text-align:center;
 			@include mobile {
-				margin-bottom:18px;
-				padding:0 20px;
+				padding:0 16px;
 			}
-			h2 {
+			* {
 				display:block;
-				font-size:24px;
-				line-height:32px;
-				color:#111;
+				font-size:32px;
+				line-height:42px;
+				color:#222;
 				@include mobile {
-					font-size:16px;
-					line-height:24px;
+					font-size:24px;
+					line-height:33px;
 				}
 			}
 		}
+		.category {
+			margin-top:12px;
+			font-size:18px;
+			line-height:28px;
+			text-align:center;
+			@include mobile {
+				margin-top:6px;
+				font-size:15px;
+				line-height:23px;
+			}
+			&:first-child {
+				margin-top:0;
+			}
+		}
 		.recommend-story-list-wrap {
+			margin-top:24px;
+			&:first-child {
+				margin-top:0;
+			}
 			.recommend-story-list-inner {
-				margin:0 -6px;
-				@include mobile {
-					margin:0;
-					.ui_carousel_list { padding:0 15px; } // carousel 조정 (다음 슬라이드 살짝 보이게)
+				position:relative;
+				.ui_carousel_list {
+					margin:0 -12px;
+					@include mobile {
+						margin:0;
+						padding:0 10px;
+					}
 				}
 				.items {
-					overflow:hidden;
-					height:400px;
-					@include clearfix();
-					@include mobile {
-						height:440px;
-					}
 					.item {
 						float:left;
 						position:relative;
 						width:33.33%;
-						padding:0 6px;
+						padding:0 12px;
 						height:inherit;
+						border-radius:8px;
+						overflow:hidden;
 						@include mobile {
-							width:100%;
-							padding:0 5px;
+							padding:0 6px;
 						}
-						.bg {
-							display:block;
-							overflow:hidden;
+						> img {
 							width:100%;
-							height:100%;
-							border-radius:2px;
-							background-repeat:no-repeat;
-							background-position:center center;
-							background-size:cover;
+							height:auto;
+							vertical-align:top;
 						}
 						.info-area {
 							$typeDefault: #111;
 							$typeWhite: #fff;
 							position:absolute;
-							top:0;
-							left:6px;
-							right:6px;
-							padding:24px 25px;
+							left:24px;
+							right:24px;
+							bottom:40px;
+							padding:0 12px;
 							@include mobile {
 								padding: {
 									left:24px;
@@ -123,7 +133,28 @@
 					}
 				}
 				.indi-wrap {
-					margin-top:36px;
+					position:relative;
+					margin-top:24px;
+				}
+				.btn-arrow {
+					position:absolute;
+					top:calc((100% - 36px) / 2);
+					transform:translateY(-50%);
+					@include mobile {
+						top:calc((100% - 32px) / 2);
+					}
+					&.prev {
+						left:-24px;
+						@include mobile {
+							left:4px;
+						}
+					}
+					&.next {
+						right:-24px;
+						@include mobile {
+							right:4px;
+						}
+					}
 				}
 			}
 		}

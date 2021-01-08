@@ -1,0 +1,22 @@
+{
+    "status":"success",
+    "message":null,
+    "data": {
+        "title":"수상 제품 카테고리",
+        "subTitle":"나노셀 OLED TV",
+        "list":[
+            {
+                "title":"LG 나노셀1",
+                "url":"#"
+            },
+            {
+                "title":"LG 나노셀2",
+                "url":"#"
+            },
+            {
+                "title":"LG 나노셀3",
+                "url":"#"
+            }
+        ]
+    }
+}

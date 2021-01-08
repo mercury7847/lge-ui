@@ -32,7 +32,8 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
             scrollOption:{
                 autoCenterScroll: false,
                 center: true
-            }
+            },
+            usedTabLink: true
         },
 
         initialize: function initialize(el, options) {
@@ -61,7 +62,7 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
                 self._setArrowCtrlStatus();
             }
 
-            self._setTabIndex();
+            if(self.options.usedTabLink) self._setTabIndex();
         },
 
         _bindEvent  : function() {
@@ -77,16 +78,18 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
                 self.smoothScroll.prevPage();
             });
 
-            self.$el.on('click', self.options.tabItem, function(e){
-                var idx = $(this).index();
-                
-                if(idx != self.tabIndex){
-                    self.tabIndex = idx;
-                    self._setTabIndex();
-
-                    self.trigger("smoothscrolltabselecttab", [self.tabIndex])
-                }
-            });
+            //console.log("self.options.usedTabLink:", self.options.usedTabLink)
+            if(self.options.usedTabLink){
+                self.$el.on('click', self.options.tabItem, function(e){
+                    var idx = $(this).index();
+                    if(idx != self.tabIndex){
+                        self.tabIndex = idx;
+                        self._setTabIndex();
+    
+                        self.trigger("smoothscrolltabselecttab", [self.tabIndex])
+                    }
+                });
+            }
 
             self.smoothScroll.on('smoothscrollrefresh smoothscrollend', function(e){
                 self._setArrowCtrlStatus();

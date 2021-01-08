@@ -89,87 +89,6 @@
     .solution-btn-box {
         margin-top: 32px;
     }
-    .reservation-title {
-        text-align: center;
-        &::before {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 24px;
-            background-color: #000;
-        }
-        h3 {
-            font-size: 24px;
-            font-weight: normal;
-            line-height: 1.42;
-        }
-        p {
-            font-size: 16px;
-            line-height: 1.38;
-            margin-top: 16px;
-        }
-        [class^="btn"] {
-            margin-top: 30px;
-        }
-        @include mobile {
-            &::before {
-                width: 60px;
-                height: 60px;
-            }
-            h3 {
-                font-size: 18px;
-            }
-            p {
-                font-size: 14px;
-            }
-        }
-    }
-    .reservation-confirm {
-        @include clearfix;
-        max-width: 1066px;
-        padding: 34px 56px;
-        margin: 40px auto 0;
-        background-color: #fff;
-        .result-text {
-            float: left;
-            max-width: 650px;
-        }
-        .btn-group {
-            float: right;
-            margin: 0;
-            padding: 0;
-        }
-
-        @include mobile {
-            padding: 0;
-            margin-top: 12px;
-            .result-text,
-            .btn-group {
-                float: none;
-            }
-            .result-text {
-                padding: 40px 20px;
-            }
-        }
-    }
-
-    .modal-line-box {
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 16px 11px 24px 16px;
-        &-privacy {
-            height: 100px;
-            font-size: 14px;
-            color: #616161;
-            margin-top: 12px;
-            margin-left: 22px;
-            line-height: 1.43;
-        }
-        @include mobile {
-            padding: 16px 16px 20px 16px;
-        }
-    }
 
     .reservation-info-box{
         margin:48px 0;
@@ -238,9 +157,83 @@
     /* page */
     /* 출장 예약 */
     &.service-engineer {
-        
     }
-    
+
+    /* 이메일 문의 */
+    &.email-inquiry {
+        .inquiry-sections{
+            display:flex;
+            justify-content:space-between;
+            .section{
+                width:calc((100% - 48px) / 3);
+                @include pc {
+                    margin:0;
+                }
+                .tit-wrap{
+                    margin-bottom:16px;
+                }
+                .desc-wrap{
+                    .desc-txt{
+                        margin-bottom:8px;
+                    }
+                    .desc-btn{
+                        display:flex;
+                        flex-flow:wrap;
+                        & + .desc-text {
+                            margin-top:32px;
+                        }
+                        .btn{
+                            margin:0 8px 12px 0;
+                            min-width:auto;
+                            padding:8px 14px;
+                            display:flex;
+                            align-items:center;
+                            &.white{
+                                background:#fff;
+                                border:1px solid #ddd;
+                                border-radius:16px;
+                                padding: 8px 16px;
+                                color:#222;
+                                font-weight:normal;
+                            }
+                            &.out-link{
+                                &::after{
+                                    content:'';
+                                    display:inline-block;
+                                    margin-left:3px;
+                                    width:20px;
+                                    height:20px;
+                                    background:url("/lg5-common/images/icons/ic-outlink-20.svg") center no-repeat;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include mobile {
+            .inquiry-sections{
+                display:block;
+                margin:0;
+                .section{
+                    width:100%;
+                    .tit-wrap{
+                        margin-bottom:24px;
+                    }
+                    .desc-wrap{
+                        .desc-btn{
+                            & + .desc-text {
+                                margin-top:40px;
+                            }
+                            .btn{
+                                margin:0 8px 8px 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     .engineer-to-visit {
         @include clearfix;
@@ -299,6 +292,53 @@
                 }
                 .btn-wrap {
                     margin-top:16px;
+                }
+            }
+        }
+    }
+
+    &.reservation-result{
+        .result-header-tit{
+            max-width:1460px;
+            margin:0 auto;
+            padding:0 40px;
+            .tit{
+                margin-bottom:21px;
+            }
+        }
+        .result-header-btn{
+            border-bottom:1px solid #ddd;
+            .btn-group{
+                margin-top:0;
+                max-width:1460px;
+                margin:0 auto;
+                padding:24px 40px;
+            }
+        }
+        .reception-progress{
+            margin-top:48px;
+        }
+        .inquiry-list{
+            .description{
+                .line{
+                    white-space:pre-line;
+                }
+            }
+        }
+        @include mobile{
+            .result-header-tit{
+                padding:0 16px;
+            }
+            .result-header-btn{
+                .btn-group{
+                    display:flex;
+                    justify-content: space-between;
+                    flex-flow:wrap;
+                    padding:24px 16px;
+                    .btn{
+                        width:calc(50% - 8px);
+                        margin:0 0 12px 0;
+                    }
                 }
             }
         }

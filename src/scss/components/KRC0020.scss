@@ -163,37 +163,63 @@
 
 	.text-area {
 		position: absolute;
-        top:56px;
         left:0;
         right:0;
 		z-index: 2;
         padding:0 80px;
-        @include pc {
-            &.align-top {
-                top:56px;
-            }
-            &.align-middle {
-                top:50%;
-                transform:translateY(-50%);
-            }
-            &.align-bottom {
-                top:auto;
-                bottom:112px;
+        &.align-top {
+            top:56px;
+        }
+        &.align-middle {
+            top:50%;
+            transform:translateY(-50%);
+        }
+        &.align-bottom {
+            bottom:112px;
+        }
+        .inner {
+            max-width:1380px;
+            margin:0 auto;
+        }
+        &.type-wide {
+            .inner > * {
+                @include boxs(w);
             }
         }
-		&.align-left * {
-			text-align:left !important;
-		}
-		&.align-right * {
-			text-align:right !important;
-		}
+        &.type-narrow {
+            .inner > * {
+                @include boxs(n);
+            }
+        }
+        &.box-align-left {
+            .inner > * {
+                margin-right:auto;
+            }
+        }
+        &.box-align-center {
+            .inner > * {
+                margin-left:auto;
+                margin-right:auto;
+            }
+        }
+        &.box-align-right {
+            .inner > * {
+                margin-left:auto;
+            }
+        }
 		@include mobile {
-            position: relative;
-            top:auto;
-            left:auto;
-            right:auto;
-            margin-bottom:28px;
-			padding: 0 16px;
+            &.align-top,
+            &.align-middle,
+            &.align-bottom {
+                position: relative;
+                top:auto;
+                left:auto;
+                right:auto;
+                bottom:auto;
+                transform:translate(0);
+                margin-bottom:28px;
+                padding: 0 16px;
+            }
 		}
 	}
 }

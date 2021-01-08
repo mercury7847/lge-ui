@@ -6,7 +6,7 @@
     //var similarTextTemplate = '<a href="#{{text}}" class="similar-text"><span class="search-word">“{{text}}”</span> 찾으시나요?</a>'
 
     var productItemTemplate = '<li><div class="item">' +
-        '<div class="result-thumb"><a href="{{url}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
+        '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI._addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
@@ -24,7 +24,7 @@
                         '<div class="text hashtag-wrap">' +
                             '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
                         '</div>' + 
-                        '{{#if hasCare}}<div class="text careflag"><span>케어십 가능</span></div>{{/if}}' +
+                        '{{#if hasCare}}<span class="text careflag">케어십 가능</span>{{/if}}' +
                     '</div>' +
                 '</div>' +
             '</div>' +
@@ -48,7 +48,7 @@
     var eventItemTemplate = '<li><a href="{{url}}" class="item item-type2">' +
         '<div class="result-thumb">' +
             '<div>' +
-                '<img src="{{imageUrl}}" alt="{{imageAlt}}">' +
+                '<img onError="lgkorUI._addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}">' +
                 '{{#if isEnd}}<span class="flag-end-wrap"><span class="flag">종료</span></span>{{/if}}' +
             '</div>' +
         '</div>' +
@@ -65,7 +65,7 @@
         '</div>' +
     '</a></li>';
     var storyItemTemplate = '<li><a href="{{url}}" class="item item-type2">' +
-        '<div class="result-thumb"><div><img src="{{imageUrl}}" alt="{{imageAlt}}">{{#if isVideo}}<span class="video-play-btn"><span class="hidden">동영상</span></span>{{/if}}</div></div>' +
+        '<div class="result-thumb"><div><img onError="lgkorUI._addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}">{{#if isVideo}}<span class="video-play-btn"><span class="hidden">동영상</span></span>{{/if}}</div></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
@@ -83,7 +83,7 @@
         '</div>' +
     '</a></li>';
     var additionalItemTemplate = '<li><a href="{{url}}" class="item">' +
-        '<div class="result-thumb"><div><img src="{{imageUrl}}" alt="{{imageAlt}}"></div></div>' +
+        '<div class="result-thumb"><div><img onError="lgkorUI._addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></div></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="result-tit"><strong>{{title}}</strong></div>' +
@@ -116,12 +116,12 @@
                     '{{#each item in flag}}<span class="flag {{item.class}}">{{item.title}}</span>{{/each}}' +
                 '</div>' +
                 '<div class="result-tit">' +
-                    '<a href="{{shopUrl}}">{{#raw title}}</a>' +
+                    '<a href="{{url}}">{{#raw title}}</a>' +
                 '</div>' +
                 '<div class="result-detail">' +
-                    '<div href="{{shopUrl}}" class="shop-info">' +
-                        '<a href="{{shopUrl}}" class="desc add">{{address}}</a>' +
-                        '<a href="{{shopUrl}}" class="desc time">{{time}}</a>' +
+                    '<div href="{{url}}" class="shop-info">' +
+                        '<a href="{{url}}" class="desc add">{{address}}</a>' +
+                        '<a href="{{url}}" class="desc time">{{time}}</a>' +
                     '</div>' +
                     '<div class="shop-state"><span class="{{shopStateColor}}">{{shopState}}</span></div>' +
                 '</div>' +
@@ -132,6 +132,46 @@
             '</div>' +
         '</div>' +
     '</div></li>';
+    var customerProductItemTemplate = '<li><a href="{{url}}" class="item">' +
+        '<div class="result-thumb">'
+            '<div><img onError="lgkorUI._addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
+        '</div>' +
+        '<div class="result-info">' +
+            '<div class="info-text">' +
+                '<div class="result-tit"><strong>{{title}}</strong></div>' +
+                '<div class="result-detail">' +
+                    '<div class="sku">{{sku}}</div>' +
+                    '<div class="info-btm">' +
+                        '{{#each item in category}}<span class="text">{{item}}</span>{{/each}}' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</a></li>'
+    var customerDownloadItemTemplate = '<li><div class="item">' +
+        '<div class="result-info">' +
+            '<div class="info-text">' +
+                '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
+                '<div class="result-tit">' +
+                    '<a href="{{url}}">{{title}}</a>' +
+                    '<a href="{{url}}" class="cs">' +
+                        '<span class="cs-inner">' +
+                            '{{#each (item, index) in category}}{{#if index != 0}}>{{/if}}<span>{{item}}</span>{{/each}}' +
+                        '</span>' +
+                        '{{#if desc}}<span class="cs-inner">{{desc}}</span>{{/if}}' +
+                    '</a>' +
+                '</div>' +
+                '<div class="result-detail"><div class="info-btm">' +
+                    '<span class="text">{{date}}</span>' +
+                    '{{#each item in hash}}<span class="text">{{item}}</span>{{/each}}' +
+                '</div></div>' +
+            '</div>' +
+            '{{#if download}}<div class="btn-area">' +
+                '{{#each item in download}}<button type="button" class="btn border size" data-download-url="{{item.url}}"><span>{{item.title}}</span></button>{{/each}}' +
+            '</div>{{/if}}' +
+            '{{#if isVideo}}<div class="video-info"><span class="hidden">동영상 포함</span></div>{{/if}}' +
+        '</div>' +
+    '</div></li>'
 
     //필터 템플릿
     var filterSliderTemplate = '<li data-filterId="{{filterId}}">' +
@@ -575,7 +615,8 @@
                         var $list_ul = self.$autoComplete.find('div.keyword-list ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(autoCompleteItemTemplate, {"input":item, "text":item.replaceAll(searchedValue,replaceText)}));
+                            //item.replaceAll(searchedValue,replaceText)
+                            $list_ul.append(vcui.template(autoCompleteItemTemplate, {"input":item, "text":vcui.string.replaceAll(item, searchedValue, replaceText)}));
                         });
                         showAutoComplete = true;
                     }
@@ -611,7 +652,7 @@
                     var data = result.data;
                     var param = result.param;
                     
-                    var searchedValue = data.search;
+                    var searchedValue = param.search;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     self.$inputSearch.val(searchedValue);
@@ -639,13 +680,17 @@
                                 item.price = item.price ? vcui.number.addComma(item.price) : null;
                                 item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                                 item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
-                                item.title = item.title.replaceAll(searchedValue,replaceText);
+                                //item.title = item.title.replaceAll(searchedValue,replaceText);
+                                console.log(item.title,searchedValue,replaceText);
+                                console.log(vcui.string.replaceAll(item.title, searchedValue, replaceText));
+                                item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                                 $list_ul.append(vcui.template(productItemTemplate, item));
                             });
                             break;
                         case tabIndexEvent:
                             arr.forEach(function(item, index) {
-                                item.title = item.title.replaceAll(searchedValue,replaceText);
+                                //item.title = item.title.replaceAll(searchedValue,replaceText);
+                                item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                                 item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
                                 item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
                                 $list_ul.append(vcui.template(eventItemTemplate, item));
@@ -680,15 +725,16 @@
                     self.openSearchInputLayer(false);
 
                     var data = result.data;
+                    var param = result.param;
 
-                    var searchedValue = data.search;
+                    var searchedValue = param.search;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     //검색한 검색어
                     self.$searchResultText.html(replaceText + ' 검색 결과');
 
                     //원래입력된 기존 검색어 이동
-                    var inputValue = data.inputValue;
+                    var inputValue = param.inputValue;
                     if(inputValue && inputValue != searchedValue) {
                         self.$similarText.text('“' + inputValue + '” 검색 결과로 이동').attr('href','#'+inputValue);
                         self.$similarText.show();
@@ -759,7 +805,8 @@
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                             item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
-                            item.title = item.title.replaceAll(searchedValue,replaceText);
+                            //item.title = item.title.replaceAll(searchedValue,replaceText);
+                            item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             $list_ul.append(vcui.template(productItemTemplate, item));
                         });
                         $resultListWrap.show();
@@ -777,7 +824,8 @@
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
-                            item.title = item.title.replaceAll(searchedValue,replaceText);
+                            //item.title = item.title.replaceAll(searchedValue,replaceText);
+                            item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
                             item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
                             $list_ul.append(vcui.template(eventItemTemplate, item));

@@ -70,9 +70,18 @@ $(window).ready(function(){
                 var percent = 0, display;
                 var contID = $(item).find('a').attr('href');
                 var bar = $(item).find('a .bar');
-                var cont = $(contID);
-                var contheight = cont.outerHeight(true);
-                var contop = -scrolltop + $(contID).offset().top;
+				var cont = $(contID);
+				var conty = cont.offset().top;
+				var contheight = cont.outerHeight(true);
+				
+				var endanchor = $(item).find('a').data('endTarget');
+				if(endanchor && $(endanchor).length){
+					var endy = $(endanchor).offset().top;
+					var endheight = $(endanchor).outerHeight(true);
+					contheight = endy - conty + endheight;
+				}
+
+                var contop = -scrolltop + conty;
                 if(contop < marginTop){
                     var scrolldist = marginTop - contop;
                     percent = scrolldist / contheight * 100;

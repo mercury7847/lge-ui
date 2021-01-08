@@ -42,7 +42,6 @@
                 @include title-h2;
             }
             .body-copy {
-                max-width:561px;
                 @include bodycopy(h2, h2);
             }
         }
@@ -78,15 +77,54 @@
             margin-top:28px;
         }
         .title-inner {
-            position:relative;
-            max-width:1380px + 80px;
-            margin:0 auto;
+            position:absolute;
+            left:0;
+            right:0;
             padding:0 40px;
+            .box {
+                max-width:1380px;
+                margin:0 auto;
+            }
+            &.vertical-top {
+                top:0;
+            }
+            &.vertical-middle {
+                top:50%;
+                transform:translateY(-50%);
+            }
+            &.vertical-bottom {
+                bottom:0;
+            }
+            &.type-wide {
+                .box-inner {
+                    @include boxs(w);
+                }
+            }
+            &.type-narrow {
+                .box-inner {
+                    @include boxs(n);
+                }
+            }
+            &.box-align-left {
+                .box-inner {
+                    margin-right:auto;
+                }
+            }
+            &.box-align-center {
+                .box-inner {
+                    margin-left:auto;
+                    margin-right:auto;
+                }
+            }
+            &.box-align-right {
+                .box-inner {
+                    margin-left:auto;
+                }
+            }
             .title * {
                 @include title-h2;
             }
             .body-copy {
-                max-width:561px;
                 @include bodycopy(h2, h2);
             }
             @include mobile {
@@ -96,8 +134,10 @@
         .text-inner {
             padding:0 40px;
             &.vertical-top {
-                position:relative;
-                margin-top:80px;
+                position:absolute;
+                top:0;
+                left:0;
+                right:0;
             }
             &.vertical-middle {
                 position:absolute;

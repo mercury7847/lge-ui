@@ -2,12 +2,11 @@
     "status":"success",
     "message":null,
     "param":{
-        "search":"aowlrtmvpdl스"
+        "inputValue": "aowlrtmvpdl스",
+        "search": "매직스페이스"
     },
     "data":{
         "count": "243",
-        "inputValue": "aowlrtmvpdl스",
-        "search": "매직스페이스",
         "related":[
             "OLED TV",
             "4K OLED TV",
@@ -256,10 +255,176 @@
             ]
         },
         "shop":{
-            "count":"2"
+            "count":"2",
+            "data":[
+                {
+                    "flag":[
+                        {
+                            "clase":"green",
+                            "title":"센터"
+                        },
+                        {
+                            "clase":null,
+                            "title":"이벤트"
+                        }
+                    ],
+                    "title":"홍대입구역 서비스 센터",
+                    "url":"#",
+                    "address":"서울특별시1 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
+                    "time":"월~화 09:00~18:00 토요일 09:00~13:00",
+                    "shopState":"혼잡",
+                    "shopStateColor":"red",
+                    "findWayUrl":"#f",
+                    "reserveUrl":"#r"
+                },
+                {
+                    "flag":[
+                        {
+                            "clase":"green",
+                            "title":"센터"
+                        },
+                        {
+                            "clase":null,
+                            "title":"NEW"
+                        }
+                    ],
+                    "title":"서울역 서비스 센터",
+                    "url":"#",
+                    "address":"서울특별시2 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
+                    "time":"월~금 09:00~18:00 토요일 09:00~13:00",
+                    "shopState":"원할",
+                    "shopStateColor":"green",
+                    "findWayUrl":"#f",
+                    "reserveUrl":"#r"
+                },
+                {
+                    "flag":[
+                        {
+                            "clase":"green",
+                            "title":"센터"
+                        },
+                        {
+                            "clase":null,
+                            "title":"NEW"
+                        }
+                    ],
+                    "title":"서울역 서비스 센터",
+                    "url":"#",
+                    "address":"서울특별시2 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
+                    "time":"월~금 09:00~18:00 토요일 09:00~13:00",
+                    "shopState":"보통",
+                    "shopStateColor":"orange",
+                    "findWayUrl":"#f",
+                    "reserveUrl":"#r"
+                },
+                {
+                    "flag":[
+                        {
+                            "clase":"green",
+                            "title":"센터"
+                        },
+                        {
+                            "clase":null,
+                            "title":"NEW"
+                        }
+                    ],
+                    "title":"서울역 서비스 센터",
+                    "url":"#",
+                    "address":"서울특별시2 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
+                    "time":"월~금 09:00~18:00 토요일 09:00~13:00",
+                    "shopState":"보통",
+                    "shopStateColor":"orange",
+                    "findWayUrl":"#f",
+                    "reserveUrl":"#r"
+                }
+            ]
         },
         "customer":{
             "count":"32",
+            "data":[
+                {   
+                    "type":"product",
+                    "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-cs.jpg",
+                    "image_alt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q1",
+                    "category":[
+                        "제품설명서",
+                        "드라이버/소프트웨어"
+                    ]
+                },
+                {   
+                    "type":"product",
+                    "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-cs.jpg",
+                    "image_alt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q1",
+                    "category":[
+                        "제품설명서",
+                        "제품문제해결"
+                    ]
+                },
+                {
+                    "type":"download",
+                    "isVideo":false,
+                    "url":"#",
+                    "title":"사용설명서 HTML",
+                    "flag":[
+                        "제품사용설명서"
+                    ],
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "데스크톱/일체형"
+                        ]
+                    ],
+                    "desc":"통합 설치 프로그램",
+                    "hash":[
+                        "한글",
+                        "Ver 7.8"
+                    ],
+                    "date":"20201101",
+                    "download":[
+                        {
+                            "title":"ZIP",
+                            "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true"
+                        },
+                        {
+                            "title":"PDF",
+                            "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true"
+                        }
+                    ]
+                },
+                {
+                    "type":"download",
+                    "isVideo":false,
+                    "url":"#",
+                    "title":"[프로그램/Win10_64bit] XPION용 LG intelligent Update 프로그램",
+                    "flag":[
+                        "제품사용설명서"
+                    ],
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "데스크톱/일체형"
+                        ]
+                    ],
+                    "desc":"통합 드라이버 프로그램",
+                    "hash":[
+                        "Ver 7.9",
+                        "통합 설치 프로그램"
+                    ],
+                    "date":"20201102",
+                    "download":[
+                        {
+                            "title":"다운로드 112.4MB",
+                            "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true"
+                        }
+                    ]
+                }
+            ],
             "support":[
                 {   "url":"#",
                     "image_url":"/lg5-common/images/dummy/@img-product.jpg",

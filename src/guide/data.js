@@ -109,11 +109,11 @@ var res = {
 				"KRP0028_Awards Breakdown[KRP0038]" : ["/html/components/KRP0028.html","","검수완료"],
 				"KRP0029_Recommend story for category home[KRP0051]" : ["/html/components/KRP0029.html","","검수완료"],
 				// "KRP0030_Social Review(스토리)[KRP0041]" : ["/html/components/KRP0030.html","","검수완료"],
-				// "KRP0031_Consumables Search[KRP0042]" : ["/html/components/KRP0031.html","",""],
+				"KRP0031_Consumables Search[KRP0042]" : ["/html/components/KRP0031.html","",""],
 				"KRP0032_Recently View[KRP0049]" : ["/html/components/floating.html","","검수완료"],
-				// "KRP0033_PDP Shipping Information[KRP0044]" : ["/html/components/KRP0033.html","",""],
-				// "KRP0034_PDP Return Replacement[KRP0045]" : ["/html/components/KRP0034.html","",""],
-				// "KRP0035_PDP Inquiry[KRP0046]" : ["/html/components/KRP0035.html","","검수완료"],
+				"KRP0033_PDP Shipping Information[KRP0044]" : ["/html/components/KRP0033.html","",""],
+				"KRP0034_PDP Return Replacement[KRP0045]" : ["/html/components/KRP0034.html","",""],
+				"KRP0035_PDP Inquiry[KRP0046]" : ["/html/components/KRP0035.html","","검수완료"],
 				"KRP0036_PDP Caresolution Contents[KRP0047]" : ["/html/components/KRP0036.html","","검수완료"],
 				"KRP0037_Exhibition List[KRP0048]" : ["/html/components/KRP0037.html","","검수완료"],
 				"KRP0038_Section Title[KRP0050]" : ["/html/components/KRP0038.html","","검수완료"],
@@ -304,7 +304,11 @@ var res = {
 					"멤버십 혜택" : ["/html/BMC/ACC4003.html","","검수완료"],
 					"멤버십 가입안내" : ["/html/BMC/ACC4004.html","","검수완료"],
 					"카드혜택" : ["/html/BMC/ACC4005.html","","검수완료"],
+					"카드혜택 팝업" : ["/html/BMC/ACC4005_popup.html","","검수완료"]
 				}
+			},
+			"마이페이지(MYS)" : {
+				"홈(서브메인)" : ["/html/MYS/ACCF7001.html","",""]
 			},
 			"마이페이지(MYC)" : {
 				"쇼핑 관리" : {
@@ -327,14 +331,14 @@ var res = {
 					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","검수완료"],
 					"납부내역" : ["/html/MYC/ACCF7027.html","","검수완료"],
 					"방문 알리미" : ["/html/MYC/ACCF7030.html","","검수완료"],
-					"방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","진행중"]
+					"방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","검수완료"]
 				},
 				"관심목록" : {
 					"찜한 제품" : ["/html/MYC/ACCF7013.html","","검수완료"],
 					"최근 본 제품" : ["/html/MYC/ACCF7011.html","","검수완료"],
 					"구독" : ["/html/MYC/ACCF7017.html","","검수완료"],
 					"단골매장" : ["/html/MYC/ACCF7019.html","","검수완료"],
-					"재입고 알림" : ["/html/MYC/ACCF7072.html","","검수완료"],
+					"재입고 알림" : ["/html/MYC/ACCF7072.html","","검수완료"]
 				},
 				"제품 관리" : {
 					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","검수완료"],

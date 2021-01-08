@@ -1,102 +1,141 @@
 (function() {
+    var inquiryTmpl = 
+    '{{#each (item, index) in inquiryList}}' +
+    '<li>' +
+        '<span class="rdo-wrap btn-type3">' +
+            '{{# if (index == 0) { #}}' +
+            '<input type="radio" name="inquiry" id="inquiry{{index}}" value="{{item.value}}" data-inquiry-name="{{item.name}}" data-error-msg="정확한 제품증상을 선택해주세요." data-required="true" required>' +
+            '{{# } else { #}}' +
+            '<input type="radio" name="inquiry" id="inquiry{{index}}" value="{{item.value}}">' +
+            '{{# } #}}' +
+            '<label for="inquiry{{index}}"><span>{{item.name}}</span></label>' +
+        '</span>' +
+    '</li>' + 
+    '{{/each}}';
+
     var validation;
 
-    var custom = {
+    var reservation = {
         init: function() {
             var self = this;
             
-            self.$form = $('#submitForm');
+            self.$cont = $('.contents');
+            self.$submitForm = self.$cont.find('#submitForm');
+            self.$stepArea = self.$cont.find('.step-area');
+            self.$completeBtns = self.$cont.find('.btn-group');
+
+            self.$inquiryBox = self.$cont.find('#inquiryBox');
+            self.$inquiryListWrap = self.$cont.find('#inquiryList');
+            self.$inquiryList = self.$inquiryListWrap.find('.rdo-list');
 
             vcui.require(['ui/validation', 'ui/formatter', 'ui/imageFileInput'], function () {
-
                 var register = {
                     privcyCheck: {
+                        msgTarget: '.err-block'
+                    },
+                    inquiryType: {
+                        msgTarget: '.type-msg'
+                    },
+                    inquiryTitle: {
+                        msgTarget: '.err-block'
+                    },
+                    inquiryContent: {
                         msgTarget: '.err-block'
                     },
                     userName: {
                         msgTarget: '.err-block'
                     },
-                    email: {
-                        msgTarget: '.err-block'
-                    },
-                    title: {
-                        msgTarget: '.err-block'
-                    },
-                    content: {
+                    userEmail: {
                         msgTarget: '.err-block'
                     },
                 }
 
-                validation = new vcui.ui.CsValidation('#submitForm', {register:register});
+                validation = new vcui.ui.CsValidation('.step-area', {register:register});
+
+                self.$cont.commonModel({
+                    register: register
+                });
+
+                $('.ui_imageinput').vcImageFileInput({
+                    totalSize: '10485760',
+                    format: 'jpg|jpeg|png|gif',
+                    message: {
+                        format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
+                        size: '첨부파일 전체 용량은 10MB 이내로 등록 가능합니다.'
+                    }
+                });
 
                 self.bindEvent();
             });
         },
-        
+        setInquIryType: function(data) {
+            var self = this;
+
+            var html;
+
+            html = vcui.template(inquiryTmpl, data);
+            self.$inquiryList.html(html);
+            self.$inquiryBox.show();
+        },
+        requestComplete: function() {
+            var self = this;
+
+            var url = self.$submitForm.data('ajax');
+            var param = validation.getAllValues();
+            var formData = new FormData;
+
+            for (var key in param) {
+                formData.append(key, param[key]);
+            }
+
+            lgkorUI.requestAjaxFileData(url, formData, function(result) {
+                var data = result.data;
+
+                if (data.resultFlag == 'Y') {
+                    self.$submitForm.submit();
+                } else {
+                    if (data.resultMessage) {
+                        lgkorUI.alert('', {
+                            title: data.resultMessage
+                        });
+                    }
+                }
+            }, 'POST');
+        },
         bindEvent: function() {
             var self = this;
 
-            self.$form.find('.btn-confirm').on('click', function() {
+            // 모델 선택 후 이벤트
+            self.$cont.on('complete', function(e, module, info, data, callback) {
+                self.$completeBtns.show();
+
+                if (module.caseType == 'product') {
+                    self.setInquIryType(data);
+                } else {
+                    self.$inquiryBox.hide();
+                }
+                callback();
+            });
+
+            // 신청 완료
+            self.$completeBtns.find('.btn-confirm').on('click', function() {
                 var result = validation.validate();
 
-                if (result.success == true) {                        
+                if (result.success == true) {    
                     lgkorUI.confirm('', {
-                        title:'저장 하시겠습니까?',
+                        title:'예약 하시겠습니까?',
                         okBtnName: '확인',
                         cancelBtnName: '취소',
                         ok: function() {
-                            var ajaxUrl = self.$form.data('ajax');
-                            var data = validation.getAllValues();
-                            var formData = new FormData();
-   
-                            for (var key in data) {
-                                formData.append(key, data[key]);
-                            }
-
-                            $.ajax({
-                                type : 'POST',
-                                url : ajaxUrl,
-                                dataType : 'json',
-                                data : formData,
-                                enctype: 'multipart/form-data',
-                                processData: false,
-                                contentType: false
-                            }).done(function (result) {
-                                if(result.ssoCheckUrl != undefined && result.ssoCheckUrl != null && result.ssoCheckUrl != ""){
-                                    location.reload();                
-                                    return;
-                                }
-                                
-                                if(result.status != 'success'){
-                                    alert(result.message ? result.message : '오류발생');
-                                    return;
-                                }
-
-                                if (result.data.resultFlag == 'Y') {
-                                    self.$form.submit();
-                                }
-                            }).fail(function(err){
-                                alert(err.message);
-                            });
+                            self.requestComplete();
                         }
-                    });
+                    });       
                 }
-            });
-            self.$form.find('.btn-cancel').on('click', function() {
-                var url = $(this).data('url');
-                lgkorUI.confirm('', {
-                    title:'취소 하시겠습니까?',
-                    okBtnName: '확인',
-                    cancelBtnName: '취소',
-                    ok: function() {
-                        location.href = url;
-                    }
-                });
             });
         }
     }
 
     $(window).ready(function() {
-        custom.init();
+        reservation.init();
     });
 })();

@@ -3,7 +3,7 @@
     var listItemTemplate = '<li data-id="{{id}}">' +
         '<div class="item">' +
             '<span class="branch">{{title}}</span>' +
-            '<a href="#" class="title"><strong>{{address}}</strong></a>' +
+            '<a href="{{url}}" class="title"><strong>{{address}}</strong></a>' +
             '<span class="phone">{{tel}}</span>' +
             '<div class="bookmark">' +
                 '<span class="chk-bookmark-wrap">' +
@@ -42,6 +42,7 @@
                 vcui.require(['ui/pagination'], function () {             
                     self.setting();
                     self.bindEvents();
+                    self.requestData(1);
                 });
             },
 
@@ -50,7 +51,8 @@
                 self.$contents = $('div.lnb-contents');
                 //매장리스트
                 self.$storeList = self.$contents.find('ul.bookmark-store-list');
-                self.$totalCount = self.$contents.find('div.my-contract-info p em');
+                self.$customerInfo = self.$contents.find('div.my-contract-info p');
+                //self.$totalCount = self.$contents.find('div.my-contract-info p em');
                 self.$pagination = self.$contents.find('.pagination').vcPagination();                
                 self.$noData = self.$contents.find('div.no-data');
 
@@ -62,9 +64,11 @@
 
                 //스토어 즐겨찾기
                 self.$storeList.on('click','li div.bookmark input', function(e) {
+                    e.preventDefault();
                     var _id = $(this).parents('li').attr('data-id');
-                    var checked = $(this).is(':checked');
-                    self.requestBookmark(_id, checked);
+                    //var checked = $(this).is(':checked');
+                    //self.requestBookmark(_id, checked);
+                    self.requestBookmark(_id, false);
                 });
 
                 //페이지 클릭
@@ -82,6 +86,10 @@
                     
                     self.$pagination.vcPagination('setPageInfo',param.pagination);
 
+                    var name = data.customerName;
+                    var count = vcui.number.addComma(data.totalCount);
+                    self.$customerInfo.html(name + ' 고객님의 단골매장은 총 <em>'+ count + '</em>개 입니다.');
+
                     var arr = data.listData instanceof Array ? data.listData : [];
                     self.$storeList.empty();
                     arr.forEach(function(item, index) {
@@ -96,13 +104,39 @@
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-bookmark-url');
                 var postData = {"id":_id, "bookmark":bookmark};
-                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
-                    var data = result.data;
-                    if(lgkorUI.stringToBool(data.success)) {
-                    } else {
-                        self.$storeList.find('li[data-id="'+_id+'"] span.chk-bookmark-wrap input').prop("checked",!bookmark);
-                    }
-                });
+                
+                if(bookmark) {
+                    /*
+                    lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
+                        var data = result.data;
+                        if(lgkorUI.stringToBool(data.success)) {
+                            $(window).trigger("toastshow","단골매장이 등록되었습니다.");
+                            self.$storeList.find('li[data-id="'+_id+'"] span.chk-bookmark-wrap input').prop("checked",bookmark);
+                        } else {
+                            self.$storeList.find('li[data-id="'+_id+'"] span.chk-bookmark-wrap input').prop("checked",!bookmark);
+                        }
+                    });
+                    */
+                } else {
+                    var obj = {title:'', cancelBtnName:'취소', okBtnName:'확인',
+                        ok: function (){
+                            lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
+                                var data = result.data;
+                                if(lgkorUI.stringToBool(data.success)) {
+                                    $(window).trigger("toastshow","단골매장이 해제되었습니다.");
+                                    self.$storeList.find('li[data-id="'+_id+'"] span.chk-bookmark-wrap input').prop("checked",bookmark);
+                                    //reloadPage
+                                    var page = self.$pagination.attr('data-page');
+                                    self.requestData(page);
+                                } else {
+                                    self.$storeList.find('li[data-id="'+_id+'"] span.chk-bookmark-wrap input').prop("checked",!bookmark);
+                                }
+                            });
+                        }
+                    };
+                    var desc = '단골매장을 해제하시겠습니까?';
+                    lgkorUI.confirm(desc, obj);
+                }
             },
 
             checkNoData: function() {

@@ -1,25 +1,21 @@
-<div class="prod-search-wrap" data-ajax="/lg5-common/data-ajax/support/commonModelList.json">
-    @@if ( context.keyword) {
+<div class="prod-search-wrap" data-model-url="/lg5-common/data-ajax/support/commonModelList.json" data-result-url="/lg5-common/data-ajax/support/commonModelSelected.json">
+    <!-- 키워드 검색 -->
     <div class="keyword-search">
-        <div class="input-wrap">
-            <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="제품명, 모델명 직접 검색" title="제품명, 모델명 직접 검색" data-clear-button="button.btn-delete" data-error-msg="모델명을 네 글자 이상 입력해 주세요." data-required="true">
-            <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
-            <button type="button" class="btn-search"><span class="blind">검색</span></button>
+        <div class="search-box">
+            <div class="search-input">
+                <div class="input-wrap">
+                    <input type="text" name="keyword01" id="keyword01" class="ui_input_clearbutton" placeholder="제품명, 모델명 직접 검색" title="제품명, 모델명 직접 검색" data-clear-button="button.btn-delete" data-error-msg="모델명을 두 글자 이상 입력해 주세요." data-required="true">
+                    <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+                    <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                </div>
+                <button type="button" class="btn dark-gray size question" data-href="#modelNamePopup" data-control="modal"><span>모델명 확인방법</span></button>
+            </div>
+            <p class="err-msg"></p>
         </div>
-        <p class="err-msg"></p>
-        <div class="">
-            <button type="button" class="btn dark-gray size question" data-href="#modelNamePopup" data-control="modal"><span>모델명 확인방법</span></button>
-        </div>
-
-        <!-- 모델명 확인방법 -->
-        @@include('./common/popup/CSRF6005_pop.html', {
-            popupID: 'modelNamePopup'
-        })
-        <!-- // 모델명 확인방법 -->
     </div>
-    }
+    <!-- // 키워드 검색 -->
 
-    @@if ( context.category ) {
+    <!-- 카테고리 선택 -->
     <div class="category-search active">
         <ul>
             @@for (var i = 0; i < category.length; i++) {
@@ -33,7 +29,7 @@
                         <button type="button" class="btn-open"><span class="blind">카테고리 선택</span></button>
                     </div>
                     <div class="sub-category">
-                        <ul>
+                        <ul class="sub-category-list">
                             <!-- 모바일 -->
                             <li>
                                 <button type="button" data-category="`+category[i].code+`" data-sub-category="C000136" data-name="`+category[i].name+`" data-sub-name="스마트폰">스마트폰</button>
@@ -263,46 +259,53 @@
            }
         </ul>
     </div>
-    }
+    <!-- // 카테고리 선택 -->
 
-    @@if ( context.model ) {
-    <div class="model-search" data-ajax="/lg5-common/data-ajax/support/commonModelSelected.json">
+    <!-- 모델명 선택 -->
+    <div class="model-search">
         <div class="form-wrap">
-            <div class="forms">
+            <div class="forms block-type">
                 <div class="tit">
-                    <label for="">카테고리 선택</label>
+                    <label for="categorySelect">검색하실 모델의 카테고리를 선택하세요.</label>
                 </div>
                 <div class="conts">
                     <div class="select-wrap">
-                        <select name="categorySelect" id="categorySelect" class="ui_selectbox ui_select_target" data-ajax="/lg5-common/data-ajax/support/subCategoryOption.json" data-target="#subCategorySelect">
-                            <option value="">전체</option>
-                            <option value="1">모바일</option>
-                            <option value="2">TV/프로젝터</option>
-                            <option value="3">IT/모니터</option>
-                            <option value="4">에어컨</option>
-                            <option value="5">냉장/냉동고</option>
-                            <option value="6">세탁기/스타일러</option>
-                            <option value="7">청소기</option>
-                            <option value="8">조리/세척기기</option>
-                            <option value="9">건강/소형기기</option>
-                            <option value="10">AV/음향기기</option>
-                            <option value="11">기타</option>
-                            <option value="12">B2B</option>
+                        <select name="categorySelect" id="categorySelect" class="ui_selectbox ui_select_target" data-target="#subCategorySelect" data-ajax="/lg5-common/data-ajax/support/subCategoryOption.json">
+                            <option value="" class="default">전체</option>
+                            <option value="1018">모바일</option>
+                            <option value="1005">TV/프로젝터</option>
+                            <option value="P1011">IT/모니터</option>
+                            <option value="1019">에어컨</option>
+                            <option value="1025">냉장/냉동고</option>
+                            <option value="1020">세탁기/스타일러</option>
+                            <option value="1023">청소기</option>
+                            <option value="P1030">조리/세척기기</option>
+                            <option value="P1024">건강/소형기기</option>
+                            <option value="P1009">AV/음향기기</option>
+                            <option value="P9999">기타</option>
+                            <option value="P1134">B2B</option>
+                        </select>
+                    </div>
+                    <div class="select-wrap">
+                        <select name="subCategorySelect" id="subCategorySelect" class="ui_selectbox">
+                            <option value="" class="default">전체</option>
                         </select>
                     </div>
                 </div>
             </div>
-            <div class="forms">
-                <div class="tit">
-                    <label for="">세부카테고리 선택</label>
-                </div>
-                <div class="conts">
-                    <div class="select-wrap">
-                        <select name="subCategorySelect" id="subCategorySelect" class="ui_selectbox">
-                            <option value="">전체</option>
-                        </select>
+        </div>
+        <div class="keyword-search">
+            <div class="search-box">
+                <div class="search-input">
+                    <div class="input-wrap">
+                        <input type="text" name="keyword02" id="keyword02" class="ui_input_clearbutton" placeholder="제품명, 모델명 직접 검색" title="제품명, 모델명 직접 검색" data-clear-button="button.btn-delete" data-error-msg="모델명을 두 글자 이상 입력해 주세요." data-required="true">
+                        <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+                        <button type="button" class="btn-search"><span class="blind">검색</span></button>
                     </div>
+                    <button type="button" class="btn dark-gray size question" data-href="#modelNamePopup" data-control="modal"><span>모델명 확인방법</span></button>
                 </div>
+                <p class="desc">모델명을 입력해보세요. 입력하신 모델명과 일치하는 모델을 쉽게 찾으실 수 있습니다.</p>  
+                <p class="err-msg"></p>
             </div>
         </div>
         <div class="slide-wrap model-slider">
@@ -332,5 +335,11 @@
             <p>‘<em class="word">{{검색어}}</em>’에 대한 검색 결과가 없습니다.<br>사용하시는 제품의 모델명과 제조번호를 확인해주세요.</p>
         </div>
     </div>
-    }
+    <!-- // 모델명 선택 -->
+
+    <!-- 모델명 확인방법 -->
+    @@include('./common/popup/CSRF6005_pop.html', {
+        popupID: 'modelNamePopup'
+    })
+    <!-- // 모델명 확인방법 -->
 </div>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYS/MYS"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "마이페이지"
+            })
+            <!-- mypage -->
+            <div class="contents mypage mypage-main">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html')
+
+                        <div class="lnb-contents">
+                            <!-- 등급별 클래스 / 텍스트
+                                .standard / 스탠다드
+                                .gold / 골드
+                                .royal-gold / 로얄골드
+                                .signature / LG SIGNATURE
+                            -->
+                            <div class="my-dashboard standard">
+                                <div class="my-membership">
+                                    <div class="membership-level">이엘지 님의 멤버십 등급은 <br class="mo-only"><a href="#" class="btn-link"><span>LG SIGNATURE</span></a> 입니다.</div>
+
+                                    <div class="btn-area">
+                                        <a href="#" class="btn-link"><span>회원정보 수정</span></a>
+                                        <a href="#" class="btn-link"><span>배송지 주소 관리</span></a>
+                                    </div>
+                                </div>
+                                <ul class="my-info">
+                                    <li>
+                                        <dl class="point">
+                                            <dt class="title">맴버십포인트(P)</dt>
+                                            <dd class="number">8,000,000</dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl class="coupon">
+                                            <dt class="title">쿠폰</dt>
+                                            <dd class="number">8</dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl class="product">
+                                            <dt class="title">보유 제품</dt>
+                                            <dd class="number">18</dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl class="care-solution">
+                                            <dt class="title">케어솔루션</dt>
+                                            <dd class="number">12</dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                                <div class="my-shortcut">
+                                    <!-- 단골매장 미등록
+                                    <div class="bookmark">
+                                        <p class="text">단골매장을 추가해보시겠어요?</p>
+                                        <a href="#" class="btn mix size"><span>등록하기</span></a>
+                                    </div> -->
+                                    <!-- 단골매장 등록
+                                    <div class="bookmark">
+                                        <div class="shop-area">
+                                            <span class="title">단골매장</span>
+                                            <p class="shop"><span class="text">갤러리아 명품관 W 갤러리아 명품관</span></p>
+                                        </div>
+                                        <a href="#" class="btn mix size"><span>추가등록</span></a>
+                                    </div> -->
+                                    <!-- 단골매장 등록(여러개) -->
+                                    <div class="bookmark">
+                                        <div class="shop-area">
+                                            <span class="title">단골매장</span>
+                                            <p class="shop"><span class="text">갤러리아 명품관 W 갤러리아 명품관</span>외 3건</p>
+                                        </div>
+                                        <a href="#" class="btn mix size"><span>추가등록</span></a>
+                                    </div>
+                                    <div class="subscriptions">
+                                        <ul>
+                                            <li><a href="#" class="btn-text small">MY 스토리</a></li>
+                                            <li><a href="#" class="btn-text small">MY e-카탈로그</a></li>
+                                            <li><a href="#" class="btn-text small">MY 이벤트</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mypage-section">
+                                <h3 class="section-title">나의 활동 및 제품 관리</h3>
+                                <div class="my-management">
+                                    <ul>
+                                        <li>
+                                            <div class="shadow-box">
+                                                <h4 class="box-title"><a href="#">최근 문의/예약 조회</a></h4>
+                                                <ul class="board-list my-board">
+                                                    <li>
+                                                        <dl class="content">
+                                                            <dt class="title">[이메일 문의] LG 벨벳 컬러 및 컬러 문의 드립니다.</dt>
+                                                            <dd class="text">접수일 : 2020.12.01</dd>
+                                                            <dd class="text">접수번호 : HA230948WW</dd>
+                                                        </dl>
+                                                        <span class="progress complete">답변완료</span>
+                                                    </li>
+                                                    <li>
+                                                        <dl class="content">
+                                                            <dt class="title">[출장서비스] 부품/소모품 &gt; 소모품 구성품 문의</dt>
+                                                            <dd class="text">접수일 : 2020.12.01</dd>
+                                                            <dd class="text">접수번호 : HA230948WW</dd>
+                                                        </dl>
+                                                        <span class="progress">처리중</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="shadow-box">
+                                                <h4 class="box-title"><a href="#">나의 글 보기</a></h4>
+                                                <ul class="board-list my-board">
+                                                    <li>
+                                                        <dl class="content">
+                                                            <dt class="title">[칭찬합니다] 타이틀 최대 1줄, 초과시 말줄임 처리</dt>
+                                                            <dd class="text">접수번호 : S2009354211</dd>
+                                                            <dd class="text">등록일 : 2020.10.27</dd>
+                                                        </dl>
+                                                        <span class="progress complete">답변완료</span>
+                                                    </li>
+                                                    <li>
+                                                        <dl class="content">
+                                                            <dt class="title">[개선해주세요] 타이틀 최대 1줄, 초과시 말줄임 처리</dt>
+                                                            <dd class="text">접수번호 : S2009354211</dd>
+                                                            <dd class="text">등록일 : 2020.10.27</dd>
+                                                        </dl>
+                                                        <span class="progress">답변중</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="shadow-box">
+                                                <h4 class="box-title"><a href="#">보유제품(8)</a></h4>
+                                                <ul class="board-list product">
+                                                    <li>
+                                                        <dl class="content">
+                                                            <dt class="title">LG TROMM 미니워시+전기식 건조기</dt>
+                                                            <dd class="text">75NANO99KNB</dd>
+                                                        </dl>
+                                                        <a href="#" class="btn gray size"><span>리뷰작성</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <dl class="content">
+                                                            <dt class="title">LG TROMM 미니워시+전기식 건조기</dt>
+                                                            <dd class="text">75NANO99KNB</dd>
+                                                        </dl>
+                                                    </li>
+                                                    <li>
+                                                        <dl class="content">
+                                                            <dt class="title">LG TROMM 미니워시+전기식 건조기</dt>
+                                                            <dd class="text">75NANO99KNB</dd>
+                                                        </dl>
+                                                        <a href="#" class="btn gray size"><span>리뷰작성</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="shadow-box care-info">
+                                                <h4 class="box-title"><a href="#">[케어솔루션]케어십/렌탈(10)</a></h4>
+                                                <div class="service-date">
+                                                    <span><em>다음 방문 서비스</em> 2021.02.14</span>
+                                                </div>
+                                                <ul class="service-info">
+                                                    <li>
+                                                        <span class="name">공기청정기<em class="number">(23424232)</em></span>
+
+                                                        <p class="text">필터교체, 소프트웨어 업데이트</p>
+                                                    </li>
+                                                    <li>
+                                                        <span class="name">정수기<em class="number">(23424232)</em></span>
+
+                                                        <p class="text">정기점검</p>
+                                                    </li>
+                                                    <li>
+                                                        <span class="name">얼음정수기 냉장고<em class="number">(23424232)</em></span>
+
+                                                        <p class="text">살균 서비스, 필터 무상 교체</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mypage-section">
+                                <h3 class="section-title">나의 쇼핑관리</h3>
+                                <div class="my-management shopping">
+                                    <ul>
+                                        <li>
+                                            <div class="shadow-box order-process">
+                                                <h4 class="box-title">
+                                                    <a href="#">주문 조회(22)</a>
+                                                    <span class="sub-text">최근 3개월 기준</span>
+                                                </h4>
+                                                <div class="process-wrap">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="title">일반제품</span>
+                                                            <ul class="process-list">
+                                                                <li>
+                                                                    <dl class="box">
+                                                                        <dt>주문접수</dt>
+                                                                        <dd>8</dd>
+                                                                    </dl>
+                                                                </li>
+                                                                <li>
+                                                                    <dl class="box">
+                                                                        <dt>결제완료</dt>
+                                                                        <dd>1</dd>
+                                                                    </dl>
+                                                                </li>
+                                                                <li>
+                                                                    <dl class="box">
+                                                                        <dt>배송준비중</dt>
+                                                                        <dd>2</dd>
+                                                                    </dl>
+                                                                </li>
+                                                                <li>
+                                                                    <dl class="box">
+                                                                        <dt>배송중</dt>
+                                                                        <dd>2</dd>
+                                                                    </dl>
+                                                                </li>
+                                                                <li>
+                                                                    <dl class="box">
+                                                                        <dt>배송완료</dt>
+                                                                        <dd>1</dd>
+                                                                    </dl>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <span class="title">케어솔루션</span>
+                                                            <ul class="process-list">
+                                                                <li>
+                                                                    <dl class="box">
+                                                                        <dt>청약완료</dt>
+                                                                        <dd>8</dd>
+                                                                    </dl>
+                                                                </li>
+                                                                <li>
+                                                                    <dl class="box">
+                                                                        <dt>주문접수</dt>
+                                                                        <dd>1</dd>
+                                                                    </dl>
+                                                                </li>
+                                                                <li>
+                                                                    <dl class="box">
+                                                                        <dt>결제완료</dt>
+                                                                        <dd>2</dd>
+                                                                    </dl>
+                                                                </li>
+                                                                <li>
+                                                                    <dl class="box">
+                                                                        <dt>배송준비중</dt>
+                                                                        <dd>2</dd>
+                                                                    </dl>
+                                                                </li>
+                                                                <li>
+                                                                    <dl class="box">
+                                                                        <dt>배송중</dt>
+                                                                        <dd>2</dd>
+                                                                    </dl>
+                                                                </li>
+                                                                <li>
+                                                                    <dl class="box">
+                                                                        <dt>배송완료</dt>
+                                                                        <dd>1</dd>
+                                                                    </dl>
+                                                                </li>
+                                                                <li>
+                                                                    <dl class="box">
+                                                                        <dt>계약완료</dt>
+                                                                        <dd>1</dd>
+                                                                    </dl>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="shadow-box like-info">
+                                                <h4 class="box-title"><a href="#">찜한 제품(8)</a></h4>
+                                                <div class="list-wrap">
+                                                    <ul class="product-items">
+                                                        @@loop('./common/modules/product-list-item-loop.html', [
+                                                            {
+                                                                "itemClass": "",
+                                                                "nonSku": true,
+                                                                "singleImage": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                                                                "price": true,
+                                                                "originalPrice": true
+                                                            },{
+                                                                "itemClass": "",
+                                                                "nonSku": true,
+                                                                "singleImage": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                                                                "price": true,
+                                                                "originalPrice": true
+                                                            }
+                                                        ])
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="shadow-box recent-info">
+                                                <h4 class="box-title"><a href="#">최근 본 제품(12)</a></h4>
+                                                <div class="list-wrap">
+                                                    <ul class="product-items">
+                                                        @@loop('./common/modules/product-list-item-loop.html', [
+                                                            {
+                                                                "itemClass": "",
+                                                                "nonSku": true,
+                                                                "singleImage": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                                                                "price": true,
+                                                                "originalPrice": true
+                                                            },{
+                                                                "itemClass": "",
+                                                                "nonSku": true,
+                                                                "singleImage": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                                                                "price": true,
+                                                                "originalPrice": true
+                                                            }
+                                                        ])
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mypage-section">
+                                <h3 class="section-title">이 제품 어때요?</h3>
+                                <div class="recommend-product slide-wrap ui_carousel_slider">
+                                    <div class="indi-wrap">
+                                        <ul class="indi-conts ui_carousel_dots">
+                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                        </ul>
+                                    </div>
+                                    <div class="slide-content ui_carousel_list">
+                                        <div class="slide-track ui_carousel_track">
+                                            @@loop('./common/modules/product-item-loop.html', [
+                                                {
+                                                    "carousel": true,
+                                                    "image": "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "name": "LG TROMM ThinQ",
+                                                    "review" : {
+                                                        "class" : "is-review",
+                                                        "text" : "리뷰있음",
+                                                        "average" : "4.0",
+                                                        "count" : "48"
+                                                    }
+                                                },{
+                                                    "carousel": true,
+                                                    "image": "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "name": "LG DIOS 노크온 매직스페이스",
+                                                    "review" : {
+                                                        "class" : "",
+                                                        "text" : "리뷰없음",
+                                                        "average" : "0",
+                                                        "count" : "0"
+                                                    }
+                                                },{
+                                                    "carousel": true,
+                                                    "image": "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "name": "제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄",
+                                                    "review" : {
+                                                        "class" : "is-review",
+                                                        "text" : "리뷰있음",
+                                                        "average" : "4.0",
+                                                        "count" : "48"
+                                                    }
+                                                },{
+                                                    "carousel": true,
+                                                    "image": "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "name": "제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄",
+                                                    "review" : {
+                                                        "class" : "is-review",
+                                                        "text" : "리뷰있음",
+                                                        "average" : "4.0",
+                                                        "count" : "48"
+                                                    }
+                                                },{
+                                                    "carousel": true,
+                                                    "image": "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "name": "LG DIOS 노크온 매직스페이스",
+                                                    "review" : {
+                                                        "class" : "",
+                                                        "text" : "리뷰없음",
+                                                        "average" : "0",
+                                                        "count" : "0"
+                                                    }
+                                                }
+                                            ])
+                                        </div>
+                                    </div>
+                                    <div class="slide-controls">
+                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+    <script>
+        $(function() {
+            vcui.require(['ui/carousel'], function () {
+                $('.recommend-product.ui_carousel_slider').vcCarousel({
+                    infinite: false,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 2
+
+                            }
+                        },{
+                            breakpoint: 768,
+                            settings: {
+                                variableWidth: true,
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+
+                            }
+                        }
+                    ]
+                });
+            });
+        });
+    </script>
+</body>
+</html>

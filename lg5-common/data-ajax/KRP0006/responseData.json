@@ -2,5 +2,7 @@
     "ssoCheckUrl": null,
     "status": "success",
     "message": null,
-    "data": {}
+    "data": {
+        "responseMessage": "지금 보시는 이 제품이 장바구니에 담겨 있어요."
+    }
 }

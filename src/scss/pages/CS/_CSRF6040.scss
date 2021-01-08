@@ -10,7 +10,7 @@
 // 매장찾기
 .find-store-wrap {
     .cont-wrap {
-        max-width: 1920px;
+        max-width: 1920px !important;
         padding:0;
         @include csmobile {
             border:none;
@@ -44,7 +44,7 @@
                 box-shadow:none;
             }
             h2.tit {
-                padding:40px 40px 32px;
+                padding:40px 40px 16px;
                 @include font-large-3;
                 @include csmobile {
                     padding:12px 24px 16px;
@@ -133,7 +133,12 @@
 
             .store-list-box {
                 // position:relative;
-                overflow:hidden;
+                // overflow:hidden;
+                &:after {
+                    content:' ';
+                    display:block;
+                    clear:both;
+                }
             }
 
             .sch-box {
@@ -144,12 +149,17 @@
                     margin:0 20px;
                 }
                 .tabs-wrap {
+                    position:absolute;
+                    top:-54px;
+                    right:0;
                     text-align:left;
                     padding-bottom: 24px;
 
                     @include csmobile {
-                        padding-top: 12px;
-                        padding-bottom: 16px;
+                        position:relative;
+                        top:0;
+                        margin:0 -20px 16px;
+                        padding:12px 20px 0;
                         .tabs {
                             padding:0;
                             & > li > a {
@@ -181,8 +191,12 @@
                     .btn-area {
                         @include csmobile {
                             position: absolute;
-                            top: 4px;
+                            top: -56px;
                             right: 16px;
+                            @include mobile {
+                                top:-63px;
+                                right:-4px;
+                            }
                         }
                     }
                     .btn-area + .forms {

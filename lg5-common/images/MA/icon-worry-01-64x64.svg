@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g transform="translate(-310 -6748) translate(270 6600) translate(0 100) translate(40 48)">
+                            <path fill="#FFF" d="M0 0H64V64H0z"/>
+                            <rect width="54" height="38" x="4" y="4" fill="#FFF" stroke="#222" stroke-linejoin="round" stroke-width="2" rx="3"/>
+                            <rect width="46" height="30" x="8" y="8" stroke="#222" stroke-linejoin="round" stroke-width="2" rx="2"/>
+                            <g stroke-width="2">
+                                <path fill="#FFF" stroke="#222" stroke-linejoin="round" d="M9.586 29.203V11.867C9.586 10.284 10.87 9 12.454 9c1.583 0 2.867 1.284 2.867 2.867V27h0l.009-7.466c.002-1.587 1.29-2.873 2.877-2.873 1.587 0 2.873 1.286 2.873 2.873V27h0v-4.898c0-1.587 1.287-2.873 2.874-2.873 1.587 0 2.874 1.286 2.874 2.873v4.71h0v-2.07c0-1.428 1.157-2.586 2.586-2.586 1.428 0 2.586 1.158 2.586 2.586v3.625h0v7.342L28.972 45H10.353l-2.43-8.245L1 25.854c2.002-1.661 4.972-1.384 6.632.618.076.091.148.185.216.282l1.738 2.449h0z" transform="translate(29 11)"/>
+                                <path fill="#FFF" stroke="#222" d="M8.084 44.573l.734 5c.036.245.246.427.495.427h20.06c.237 0 .442-.167.49-.4l1.015-5c.055-.271-.12-.535-.39-.59-.033-.007-.066-.01-.1-.01H8.578c-.275 0-.5.224-.5.5 0 .024.003.049.006.073z" transform="translate(29 11)"/>
+                                <path stroke="#EC455A" stroke-linecap="round" d="M18.093 4.146L17.982 6.143" transform="translate(29 11) rotate(30 18.038 5.145)"/>
+                                <path stroke="#EC455A" stroke-linecap="round" d="M6.936 4.213L6.825 6.21" transform="translate(29 11) scale(-1 1) rotate(30 0 -20.467)"/>
+                                <path stroke="#EC455A" stroke-linecap="round" d="M21.962 6.457L21.753 10.452" transform="translate(29 11) rotate(60 21.858 8.454)"/>
+                                <path stroke="#EC455A" stroke-linecap="round" d="M2.79 7.272L2.581 11.267" transform="translate(29 11) scale(-1 1) rotate(60 0 4.618)"/>
+                                <path stroke="#EC455A" stroke-linecap="round" d="M12.5 0L12.5 4" transform="translate(29 11)"/>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

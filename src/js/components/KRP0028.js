@@ -1,6 +1,6 @@
 (function() {
     var subTabItemTemplate = '<li><a href="#{{value}}">{{title}}</a></li>';
-    var awardsListItemTemplate = '<li class="items"><div class="inner">' +
+    var awardsListItemTemplate = '<li class="items" data-id="{{id}}"><div class="inner">' +
         '<div class="thumb">' +
             '<img src="{{imageUrl}}" alt="{{imageAlt}}">' +
             '<p class="hidden pc">{{imageAlt}}</p>' +
@@ -17,11 +17,11 @@
         '</div>' +
         '<div class="btn-area">' +
             '<div class="btn-wrap">' +
-                '<a href="#n" class="btn-text">{{name}}</a>' +
+                '<a href="{{url}}" class="btn-text">{{name}}</a>' +
                 '<button type="button" class="btn-more"><span class="hidden">수상내역 더보기</span></button>' +
             '</div>' +
         '</div>' + 
-    '</div><article style="display:none;">{{popupData}}</article></li>';
+    '</div></li>';
     var awardsPopupListItemTemplage = '{{#each item in list}}<li><a href="{{item.url}}">{{item.title}}</a></li>{{/each}}';
 
     $(window).ready(function() {
@@ -69,15 +69,17 @@
                     self.requestData({"category1":category1,"category2":category2,"order":self.$selectOrder.vcSelectbox('value')}, false);
                 });
 
+                /*
                 self.$list.on('click', 'li div.btn-area a', function(e){
                     e.preventDefault();
                     var popupData = JSON.parse($(this).parents('li').find('article').text());
                     self.openAwardsPopup(popupData);
                 });
+                */
 
                 self.$list.on('click', 'li div.btn-area button', function(e){
-                    var popupData = JSON.parse($(this).parents('li').find('article').text());
-                    self.openAwardsPopup(popupData);
+                    var _id = $(this).parents('li').attr('data-id');
+                    self.requestAwardPopupData(_id);
                 });
 
                 self.$pagination.on('page_click', function(e, data) {
@@ -120,12 +122,22 @@
                     var arr = data.listData instanceof Array ? data.listData : [];
                     self.$list.empty();
                     arr.forEach(function(item, index) {
-                        item.popupData = JSON.stringify(item.popupData);
                         self.$list.append(vcui.template(awardsListItemTemplate, item));
                     });
                 });
             },
             
+            requestAwardPopupData: function(_id) {
+                var self = this;
+                var ajaxUrl = self.$section.attr('data-popup-url');
+                lgkorUI.requestAjaxData(ajaxUrl, {"id":_id}, function(result) {
+                    var popupData = result.data;
+                    if(popupData) {
+                        self.openAwardsPopup(popupData);
+                    }
+                });
+            },
+
             openAwardsPopup: function(data) {
                 if(data) {
                     var $popup = $('#awardsPopup');

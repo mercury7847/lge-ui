@@ -31,6 +31,8 @@
         ],
         "listData":[
             {
+                "id":"aw00001",
+                "url":"#1",
                 "imageUrl":"/lg5-common/images/KRP0028/award01.jpg",
                 "imageAlt":"2021 ENERGY WINNER 수상",
                 "title":"2021 ENERGY WINNER 수상",
@@ -39,27 +41,11 @@
                     "주방"
                 ],
                 "desc":"2019 우리아이를 위한 베스트브랜드(BBKI 2019)",
-                "name":"제품 네임",
-                "popupData":{
-                    "title":"수상 제품 카테고리",
-                    "subTitle":"나노셀 OLED TV",
-                    "list":[
-                        {
-                            "title":"LG 나노셀1",
-                            "url":"#"
-                        },
-                        {
-                            "title":"LG 나노셀2",
-                            "url":"#"
-                        },
-                        {
-                            "title":"LG 나노셀3",
-                            "url":"#"
-                        }
-                    ]
-                }
+                "name":"제품 네임"
             },
             {
+                "id":"aw00002",
+                "url":"#2",
                 "imageUrl":"/lg5-common/images/KRP0028/award01.jpg",
                 "imageAlt":"2021 ENERGY WINNER 수상",
                 "title":"2021 ENERGY WINNER 수상",
@@ -68,27 +54,11 @@
                     "주방"
                 ],
                 "desc":"2019 우리아이를 위한 베스트브랜드(BBKI 2019)",
-                "name":"제품 네임",
-                "popupData":{
-                    "title":"수상 제품 카테고리 및 모델명",
-                    "subTitle":"나노셀 OLED TV",
-                    "list":[
-                        {
-                            "title":"LG 나노셀1",
-                            "url":"#"
-                        },
-                        {
-                            "title":"LG 나노셀2",
-                            "url":"#"
-                        },
-                        {
-                            "title":"LG 나노셀3",
-                            "url":"#"
-                        }
-                    ]
-                }
+                "name":"제품 네임"
             },
             {
+                "id":"aw00003",
+                "url":"#3",
                 "imageUrl":"/lg5-common/images/KRP0028/award01.jpg",
                 "imageAlt":"2021 ENERGY WINNER 수상",
                 "title":"2021 ENERGY WINNER 수상",
@@ -97,27 +67,11 @@
                     "주방"
                 ],
                 "desc":"2019 우리아이를 위한 베스트브랜드(BBKI 2019)",
-                "name":"제품 네임",
-                "popupData":{
-                    "title":"수상 제품 카테고리",
-                    "subTitle":"나노셀 OLED TV",
-                    "list":[
-                        {
-                            "title":"LG 나노셀1",
-                            "url":"#"
-                        },
-                        {
-                            "title":"LG 나노셀2",
-                            "url":"#"
-                        },
-                        {
-                            "title":"LG 나노셀3",
-                            "url":"#"
-                        }
-                    ]
-                }
+                "name":"제품 네임"
             },
             {
+                "id":"aw00004",
+                "url":"#4",
                 "imageUrl":"/lg5-common/images/KRP0028/award01.jpg",
                 "imageAlt":"2021 ENERGY WINNER 수상",
                 "title":"2021 ENERGY WINNER 수상",
@@ -126,27 +80,11 @@
                     "주방"
                 ],
                 "desc":"2019 우리아이를 위한 베스트브랜드(BBKI 2019)",
-                "name":"제품 네임",
-                "popupData":{
-                    "title":"수상 제품 카테고리",
-                    "subTitle":"나노셀 OLED TV",
-                    "list":[
-                        {
-                            "title":"LG 나노셀1",
-                            "url":"#"
-                        },
-                        {
-                            "title":"LG 나노셀2",
-                            "url":"#"
-                        },
-                        {
-                            "title":"LG 나노셀3",
-                            "url":"#"
-                        }
-                    ]
-                }
+                "name":"제품 네임"
             },
             {
+                "id":"aw00005",
+                "url":"#5",
                 "imageUrl":"/lg5-common/images/KRP0028/award01.jpg",
                 "imageAlt":"2021 ENERGY WINNER 수상",
                 "title":"2021 ENERGY WINNER 수상",
@@ -155,25 +93,7 @@
                     "주방"
                 ],
                 "desc":"2019 우리아이를 위한 베스트브랜드(BBKI 2019)",
-                "name":"제품 네임",
-                "popupData":{
-                    "title":"수상 제품 카테고리",
-                    "subTitle":"나노셀 OLED TV",
-                    "list":[
-                        {
-                            "title":"LG 나노셀1",
-                            "url":"#"
-                        },
-                        {
-                            "title":"LG 나노셀2",
-                            "url":"#"
-                        },
-                        {
-                            "title":"LG 나노셀3",
-                            "url":"#"
-                        }
-                    ]
-                }
+                "name":"제품 네임"
             }
         ]
     }

@@ -20,7 +20,7 @@
                 ]
             })
             
-            <div class="contents support service-engineert">
+            <div class="contents support service-engineer">
                 <div class="complete-summary">
                     <div class="box">
                         <div class="summary-img">
@@ -137,7 +137,9 @@
     </div>      
 
     <!-- 제품 해결 팝업 -->
-    <article id="solutionsPopup" class="popup-wrap full"></article>
+    @@include('./CS/modal/solutions-popup.html', {
+        'static': true
+    })
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>

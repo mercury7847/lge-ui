@@ -1,103 +1,297 @@
 (function() {
+    var topicTmpl = 
+    '{{#each (item, index) in topicList}}' +
+    '<li>' +
+        '<span class="rdo-wrap btn-type3">' +
+            '{{# if (index == 0) { #}}' +
+            '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}" data-topic-name="{{item.name}}" data-error-msg="정확한 제품증상을 선택해주세요." data-required="true" required>' +
+            '{{# } else { #}}' +
+            '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}">' +
+            '{{# } #}}' +
+            '<label for="topic{{index}}"><span>{{item.name}}</span></label>' +
+        '</span>' +
+    '</li>' + 
+    '{{/each}}';
+    var subTopicTmpl = 
+    '{{#each (item, index) in subTopicList}}' +
+    '<li>' +
+        '<span class="rdo-wrap">' +
+            '{{# if (index == 0) { #}}' +
+            '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}" data-sub-topic-name="{{item.name}}" data-error-msg="정확한 세부증상을 선택해주세요." data-required="true" required>' +
+            '{{# } else { #}}' +
+            '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}">' +
+            '{{# } #}}' +
+            '<label for="subTopic{{index}}">{{item.name}}</label>' +
+        '</span>' +
+    '</li>' +
+    '{{/each}}';
     var validation;
+    var authManager;
 
-    var custom = {
+    var reservation = {
         init: function() {
             var self = this;
             
-            self.$form = $('#submitForm');
+            self.$cont = $('.contents');
+            self.$submitForm = self.$cont.find('#submitForm');
+            self.$stepArea = self.$cont.find('.step-area');
+            self.$completeBtns = self.$cont.find('.btn-group');
 
-            vcui.require(['ui/validation', 'ui/formatter', 'ui/imageFileInput'], function () {
+            self.$topicBox = self.$cont.find('#topicBox');
+            self.$topicListWrap = self.$cont.find('#topicList');
+            self.$topicList = self.$topicListWrap.find('.rdo-list');
 
+            self.$subTopicBox = self.$cont.find('#subTopicBox');
+            self.$subTopicListWrap = self.$cont.find('#subTopicList');
+            self.$subTopicList = self.$subTopicListWrap.find('.rdo-list');
+
+            self.$solutionsBanner = self.$cont.find('#solutionBanner');
+            self.$solutionsPopup = $('#solutionsPopup');
+
+            self.$authPopup = $('#certificationPopup');
+            self.isLogin = $('.header').data('ui_header').isLogin;
+
+            vcui.require(['ui/validation', 'ui/formatter'], function () {
                 var register = {
-                    privcyCheck: {
-                        msgTarget: '.err-block'
+                    topic: {
+                        required: true,
+                        msgTarget: '.topic-msg'
                     },
-                    userName: {
-                        msgTarget: '.err-block'
+                    subTopic: {
+                        required: true,
+                        msgTarget: '.sub-topic-msg'
+                    },
+                    userNm: {
+                        msgTarget: '.err-block' 
                     },
                     phoneNo: {
+                        msgTarget: '.err-block'
+                    },
+                    date: {
+                        msgTarget: '.err-msg',
+                    },
+                    time: {
+                        msgTarget: '.err-msg',
+                    }
+                }
+
+                var authRegister = {
+                    authName: {
+                        pattern: /^[가-힣a-zA-Z]+$/,
+                        msgTarget: '.err-block'
+                    },
+                    authPhoneNo: {
                         pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
                         msgTarget: '.err-block'
                     },
-                    errsign: {
+                    authNo:{
                         msgTarget: '.err-block'
-                    },
-                    dtsign: {
-                        msgTarget: '.dtsign-err-block'
-                    },
+                    }
+                };
+
+                validation = new vcui.ui.CsValidation('.step-area', {register:register});
+                
+                if (!self.isLogin) {
+                    authManager = new AuthManager({
+                        elem: {
+                            popup: '#certificationPopup',
+                            name: '#authName',
+                            phone: '#authPhoneNo',
+                            number: '#authNo'
+                        },
+                        register: authRegister
+                    });
                 }
 
-                validation = new vcui.ui.CsValidation('#submitForm', {register:register});
+                self.$cont.commonModel({
+                    register: register
+                });
 
                 self.bindEvent();
             });
         },
-        
-        bindEvent: function() {
+        setTopicList: function(data) {
             var self = this;
 
-            self.$form.find('.btn-confirm').on('click', function() {
-                var result = validation.validate();
+            var html;
 
-                if (result.success == true) {                        
-                    lgkorUI.confirm('', {
-                        title:'저장 하시겠습니까?',
-                        okBtnName: '확인',
-                        cancelBtnName: '취소',
-                        ok: function() {
-                            var ajaxUrl = self.$form.data('ajax');
-                            var data = validation.getAllValues();
-                            var formData = new FormData();
-   
-                            for (var key in data) {
-                                formData.append(key, data[key]);
-                            }
+            html = vcui.template(topicTmpl, data);
+            self.$topicList.html(html);
+        },
+        setReserveDate: function(data) {
+            var html;
+        },
+        requestSubTopic: function(url, param) {
+            var self = this;
 
-                            $.ajax({
-                                type : 'POST',
-                                url : ajaxUrl,
-                                dataType : 'json',
-                                data : formData,
-                                enctype: 'multipart/form-data',
-                                processData: false,
-                                contentType: false
-                            }).done(function (result) {
-                                if(result.ssoCheckUrl != undefined && result.ssoCheckUrl != null && result.ssoCheckUrl != ""){
-                                    location.reload();                
-                                    return;
-                                }
-                                
-                                if(result.status != 'success'){
-                                    alert(result.message ? result.message : '오류발생');
-                                    return;
-                                }
+            lgkorUI.requestAjaxData(url, param, function(result) {
+                var data = result.data,
+                    html;
+                    
+                html = vcui.template(subTopicTmpl, data);
 
-                                if (result.data.resultFlag == 'Y') {
-                                    self.$form.submit();
-                                }
-                            }).fail(function(err){
-                                alert(err.message);
-                            });
-                        }
-                    });
+                self.$subTopicList.html(html);
+                self.$subTopicBox.show();
+            });
+        },
+        reqeustSolutions: function(url, param) {
+            var self = this;
+
+            lgkorUI.requestAjaxData(url, param, function(result) {
+                var data = result.data;
+                
+                if (data.resultFlag == 'Y') {
+                    if (data.solutionFlag) {
+                        self.$solutionsBanner.show();
+                    } else {
+                        self.$solutionsBanner.hide();
+                    }
                 }
             });
-            self.$form.find('.btn-cancel').on('click', function() {
-                var url = $(this).data('url');
-                lgkorUI.confirm('', {
-                    title:'취소 하시겠습니까?',
-                    okBtnName: '확인',
-                    cancelBtnName: '취소',
-                    ok: function() {
-                        location.href = url;
+        },
+        setSolutions: function(url, param, isShown) {
+            var self = this;
+
+            lgkorUI.requestAjaxData(url, param, function(result){
+                self.$solutionsPopup.find('.pop-conts').html(result);
+                self.$solutionsPopup.find('.pagination').pagination();
+                if (isShown) {
+                    self.$solutionsPopup.find('.ui_accordion').vcAccordion();
+                } else {
+                    self.$solutionsPopup.vcModal();
+                }
+
+                self.$solutionsPopup.find('.pagination').on('pageClick', function(e) {
+                    var url = self.$solutionsPopup.data('listUrl'),
+                        param = {
+                            topic : $('#topic').val(),
+                            subToic : $('#subTopic').val(),
+                            productCode : $('#productCode').val(),
+                            page: e.page
+                        };
+
+                    self.setSolutions(url, param, true);
+                });
+            }, null, "html");
+        },
+        requestComplete: function() {
+            var self = this;
+
+            var url = self.$submitForm.data('ajax');
+            var param = validation.getAllValues();
+
+            lgkorUI.requestAjaxData(url, param, function(result) {
+                var data = result.data;
+
+                if (data.resultFlag == 'Y') {
+                    // self.$submitForm[0].data.value = JSON.stringify(param);
+                    self.$submitForm.submit();
+                } else {
+                    if (data.resultMessage) {
+                        lgkorUI.alert('', {
+                            title: data.resultMessage
+                        });
                     }
+                }
+            }, 'POST');
+        },
+        bindEvent: function() {
+            var self = this;
+            
+            // 모델 선택 후 이벤트
+            self.$cont.on('complete', function(e, module, info, data, callback) {
+                // var topicArr = data.topicList instanceof Array ? data.topicList : [], 
+                //     dateArr = data.dateList instanceof Array ? data.dateList : [];
+
+                self.$completeBtns.show();
+
+                self.setReserveDate(data);
+                self.setTopicList(data)
+
+                callback();
+            });
+
+            // 증상 선택
+            self.$topicList.on('change', '[name=topic]', function() {
+                var url = self.$topicListWrap.data('ajax'),
+                    param = {
+                        topic : $(this).val(),
+                        serviceType: $('#serviceType').val(),
+                        productCode: $('#productCode').val()
+                    };
+                    
+                self.requestSubTopic(url, param);
+            });
+
+            // 세부 증상 선택
+            self.$subTopicList.on('change', '[name=subTopic]', function() {
+                var $this = $(this),
+                    url = self.$subTopicListWrap.data('ajax'),
+                    param = {
+                        topic : $('input[name=topic]').val(),
+                        subTopic: $this.val(),
+                        productCode: $('#productCode').val()
+                    };
+                    
+                self.reqeustSolutions(url, param);
+            });
+
+            // 솔루션 배너
+            self.$solutionsBanner.find('.btn-link').on('click', function(){
+                var url = $(this).data('href');
+                var param = {
+                    topic : $('#topic').val(),
+                    subToic : $('#subTopic').val(),
+                    productCode : $('#productCode').val(),
+                    page: 1
+                };   
+
+                self.setSolutions(url, param, false);
+            });
+
+            // 날짜 선택
+            $('.tb-calendar').on('click', 'button', function() {
+                $('#date').val('20210125');
+            });
+
+            // 시간 선택
+            $('.tb-timetable').on('click', 'button', function() {
+                $('#time').val('1530');
+            });
+
+            // 신청 완료
+            self.$completeBtns.find('.btn-confirm').on('click', function() {
+                var result = validation.validate();
+
+                if (result.success == true) {    
+                    if (self.isLogin) {
+                        lgkorUI.confirm('', {
+                            title:'예약 하시겠습니까?',
+                            okBtnName: '확인',
+                            cancelBtnName: '취소',
+                            ok: function() {
+                                self.requestComplete();
+                            }
+                        });       
+                    } else {
+                        authManager.open();
+                    }
+                }
+            });
+
+            self.$authPopup.find('.btn-send').on('click', function() {
+                authManager.send();
+            });
+
+            self.$authPopup.find('.btn-auth').on('click', function() {
+                authManager.confirm(this, function() {
+                    self.requestComplete();
                 });
             });
         }
     }
 
     $(window).ready(function() {
-        custom.init();
+        reservation.init();
     });
 })();
