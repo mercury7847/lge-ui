@@ -1168,6 +1168,32 @@
         .map-container {
             .store-list-wrap {
                 width: 520px;
+                .sch-box {
+                    .keyword-search {
+                        &.type-B {
+                            .input-wrap {
+                                input {
+                                    padding-left: 15px;
+                                }
+                            }
+                        }
+                    }
+                    .sch-input-wrap.select.type2 {
+                        .forms {
+                            .select-wrap {
+                                &:nth-of-type(odd) {
+                                    margin-left: 0;
+                                }
+                            }
+                        }
+                    }
+                    .search-wrap {
+                        margin-bottom: 8px;
+                    }
+                    .tabs-contents {
+                        padding-top: 0;
+                    }
+                }
                 .box-info {
                     margin-top: 0;
                     min-width: auto;
@@ -1224,6 +1250,49 @@
                                 padding-bottom: 25px;
                                 margin-bottom: 24px;
                                 border-bottom: 1px solid #ddd;
+                            }
+                        }
+                    }
+                }
+                .opt-cont {
+                    width: 100%;
+                    .opt-layer {
+                        dl {
+                            padding-top: 0;
+                            dt {
+                                font-size: 18px;
+                            }
+                            dd {
+                                margin-top: 30px;
+                            }
+                            &.all-chk {
+                                margin-top: 24px;
+                                padding-top: 0;
+                                border-top: 0;
+                            }
+                        }
+                        .item {
+                            dd {
+                                display: flex;
+                                flex-wrap: wrap;
+                                .chk-wrap {
+                                    width: 50%;
+                                }
+                            }
+                        }
+                        .bullet-list {
+                            &.top-border {
+                                margin-top: 0;
+                            }
+                        }
+                    }
+                    &.open {
+                        top: 50%;
+                        .opt-btn-wrap {
+                            text-align: center;
+                            .btn-group {
+                                padding-top: 32px;
+                                margin-top: 0;
                             }
                         }
                     }
