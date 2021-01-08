@@ -110,6 +110,18 @@
                                 <input type="hidden" name="nicePersonLogSeq" value="" />
                             </div>
                             <!-- // 2020-11-20 -->
+                            <!-- 2021-01-07 -->
+                            <!-- 안심키 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->
+                            <form name="form_chk" method="post">
+                                <input type="hidden" name="m" value="">				            <!-- 필수 데이타로, 누락하시면 안됩니다.(인터넷방식) -->
+                                <input type="hidden" name="EncodeData" value="">	            	<!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
+                            
+                                <!-- 업체에서 응답받기 원하는 데이타를 설정하기 위해 사용할 수 있으며, 인증결과 응답시 해당 값을 그대로 송신합니다. 해당 파라미터는 추가하실 수 없습니다. -->
+                                <input type="hidden" name="param_r1" value="">
+                                <input type="hidden" name="param_r2" value="">
+                                <input type="hidden" name="param_r3" value="">
+                            </form>
+                            <!-- //2021-01-07 -->
                                 <ul>
                                     <li class="lists">
                                         <div class="head">
@@ -227,42 +239,16 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </dd>
-                                                </dl>
-                                                <!-- [210105_수정] weblink case 추가 -->
-                                                <dl class="forms">
-                                                    <dt class="tit">
-                                                        <p class="label req">계약자 등록/조회<span class="blind">필수입력</span></p>
-                                                    </dt>
-                                                    <dd class="conts">
-                                                        <div class="input-mix-wrap">
-                                                            <div class="mix-input">
-                                                                <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk-pri2" name="chkPrivacy" value="" data-required="true">
-                                                                    <label for="chk-pri2">개인정보 및 신용정보 제공 동의</label>
-                                                                </span>
-                                                                <div class="cell">
-                                                                    <a href="#n" class="btn-link">동의약관 보기</a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mix-cont">
-                                                                <p class="desc">신용정보 조회시 개인의 신용등급에 영향을 미치지 않습니다. </p>
-                                                                <div class="btn-wrap">
-                                                                    <button class="btn bg-type size creditInquire" disabled><span>신용정보 조회</span></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="input-mix-wrap">
+                                                        <div class="input-mix-wrap niceChker" style="display:none;">
                                                             <div class="mix-input">
                                                                 <span class="chk-wrap bold">
-                                                                    <input type="checkbox" id="chk-pri2-2" name="" value="" data-required="true">
+                                                                    <input type="checkbox" id="chk-pri2-2" name="nicePopChker" value="" data-required="true">
                                                                     <label for="chk-pri2-2">신용정보 조회를 정상적으로 확인하였습니다.</label>
                                                                 </span>
                                                             </div>
                                                         </div>
                                                     </dd>
                                                 </dl>
-                                                <!-- // [210105_수정] weblink case 추가 -->
                                             </div>
                                         </div>
                                     </li>
