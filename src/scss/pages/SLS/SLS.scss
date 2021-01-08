@@ -51,8 +51,27 @@ br.pc {
             }
         }
     }
-    .tabs-wrap {
+    .tabs-wrap,
+    .scroll-wrap {
         margin-bottom: 32px;
+        @include mobile {
+            margin-bottom: 20px;
+        }
+    }
+    &.care-recommended {
+        .tabs-wrap,
+        .scroll-wrap {
+            margin-bottom: 20px;
+            @include mobile {
+                margin-bottom: 8px;
+            }
+        }
+    }
+    &.care-benefit {
+        .tabs-wrap,
+        .scroll-wrap {
+            margin-bottom: 20px;
+        }
     }
 }
 
@@ -166,10 +185,11 @@ br.pc {
                     .slide-conts {
                         height:460px;
                         .slide-info-area {
-                            top:42px;
+                            top:50px;
                             right:8px;
                             bottom:50px;
                             left:16px;
+                            padding: 0;
                             .boxs {
                                 .txt {
                                     font-size:32px;
@@ -334,31 +354,31 @@ br.pc {
     margin: 0 auto;
     overflow: hidden;
     .slide-wrap {
-       .indi-wrap {
+        .indi-wrap {
            display: none;
-       }
-       .slide-content {
-           //@at-root: hidden;
-           margin-left: -12px;
-           margin-right: -12px;
-           @include mobile {
-            margin-left: -2px;
-            margin-right: -2px;
         }
-           .slide-track {
-               .slide-conts {
-                   position: relative;
-                   padding: 0 12px;
-                   @include mobile {
-                       padding: 0 2px;
-                   }
-                   .thumb {
+        .slide-content {
+            //@at-root: hidden;
+            margin-left: -12px;
+            margin-right: -12px;
+            @include mobile {
+                margin-left: -2px;
+                margin-right: -2px;
+            }
+            .slide-track {
+                .slide-conts {
+                    position: relative;
+                    padding: 0 12px;
+                    @include mobile {
+                        padding: 0 2px;
+                    }
+                    .thumb {
                         img {
                             width: 100%;
                             border-radius: 8px;
                         }
-                   }
-                   .text-area {
+                    }
+                    .text-area {
                         position: absolute;
                         top: 0;
                         left: 0;
@@ -389,7 +409,7 @@ br.pc {
                             display: none;
                             margin-top: 12px;
                         }
-                   }
+                    }
                     &:hover,
                     &.slide_on {
                         &::after {
@@ -451,10 +471,10 @@ br.pc {
                                 }
                             }
                         }
-                    } 
-               }
-           }
-       }
+                    }
+                }
+            }
+        }
     }
     .slide-wrap + .slide-wrap {
         margin-top: 24px;
@@ -625,7 +645,8 @@ br.pc {
                 .text-cont {
                     max-width: 1380px;
                     padding: 0 100px;
-                    @include font-large-6;
+                    font-size: $font-large-6;
+                    line-height: 64px;
                     color: $color-gray-4;
                     text-align: center;
                     font-weight: 700;
@@ -1087,6 +1108,7 @@ br.pc {
                     padding-top: 90px;
                     @include font-large-3;
                     font-weight: 700;
+                    word-break: keep-all;
                     &:before {
                         display: inline-block;
                         content: '';

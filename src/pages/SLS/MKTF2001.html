@@ -5,9 +5,7 @@
 })
 <body>
 <div class="wrap">
-    @@include('./common/header.html', {
-        "mobileCase": "isDepth"
-    })
+    @@include('./common/header.html')
 
     <main class="container">
         <div class="contents caresolution home">
@@ -51,7 +49,7 @@
                                             LG전자만의<br> 차원이 다른<br> 렌탈 서비스는?
                                         </p>
                                     </div>
-                                    <a href="#" class="link"><span>케어솔루션<br>더 알아보기</span></a>
+                                    <a href="#" class="link"><span>케어솔루션 <br class="pc">더 알아보기</span></a>
                                 </div>
                             </li>
                             <!-- // slide -->
@@ -64,7 +62,7 @@
                                             LG전자만의<br> 차원이 다른<br> 렌탈 서비스는?
                                         </p>
                                     </div>
-                                    <a href="#" class="link"><span>케어솔루션<br>더 알아보기</span></a>
+                                    <a href="#" class="link"><span>케어솔루션 <br class="pc">더 알아보기</span></a>
                                 </div>
                             </li>
                             <!-- // slide -->
@@ -77,7 +75,7 @@
                                             LG전자만의<br> 차원이 다른<br> 렌탈 서비스는?
                                         </p>
                                     </div>
-                                    <a href="#" class="link"><span>케어솔루션<br>더 알아보기</span></a>
+                                    <a href="#" class="link"><span>케어솔루션 <br class="pc">더 알아보기</span></a>
                                 </div>
                             </li>
                             <!-- // slide -->
@@ -375,13 +373,19 @@
                     <div class="tit-wrap">
                         <h3 class="set-tit">케어솔루션 추천 제품</h3>
                     </div>
-                    <div class="tabs-wrap border-type ui_tab">
-                        <ul class="tabs">
-                            <li class="on"><a href="#tab1">신제품<em class="blind">선택됨</em></a></li>
-                            <li><a href="#tab2">베스트</a></li>
-                            <li><a href="#tab3">신혼부부 추천</a></li>
-                            <li><a href="#tab4">반려동물</a></li>
-                        </ul>
+                    <div class="scroll-wrap border-type ui_smooth_scrolltab">
+                        <div class="ui_smooth_tab">
+                            <ul class="tabs">
+                                <li class="on"><a href="#tab1">신제품<em class="blind">선택됨</em></a></li>
+                                <li><a href="#tab2">베스트</a></li>
+                                <li><a href="#tab3">신혼부부 추천</a></li>
+                                <li><a href="#tab4">반려동물</a></li>
+                            </ul>
+                        </div>
+                        <div class="scroll-controls ui_smooth_controls">
+                            <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
+                            <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
+                        </div>
                     </div>
                     <div id="tab1" class="tab-content" aria-labelledby="tab1" role="tabpanel">
                         <div class="prd-list-wrap">
@@ -502,10 +506,6 @@
 
                 <!-- Why 케어솔루션 -->
                 <div class="care-home-section why-care">
-                    <div class="tit-wrap">
-                        <h3 class="set-tit">케어솔루션 추천 제품</h3>
-                    </div>
-
                     <div class="slide-wrap ui_carousel_slider ui_carousel_1_slider">
                         <div class="indi-wrap">
                             <ul class="indi-conts ui_carousel_dots">
@@ -516,6 +516,9 @@
                             <div class="slide-track ui_carousel_track">
                                 <!-- slide -->
                                 <div class="slide-conts ui_carousel_slide">
+                                    <div class="tit-wrap">
+                                        <h3 class="set-tit">WHY 케어솔루션</h3>
+                                    </div>
                                     <div class="text-cont">
                                         관리가 필요한 가전 제품을 <br class="pc"><span>가전 전문가들이 마음을 담아 케어</span>해주어<br class="pc"> 고객의 삶에 <span>안전과 편리, 위생</span>을 더하는 <br class="pc"><span>LG전자만의 차원이 다른 가전 관리 서비스</span>입니다.
                                         <div class="btn-area">
@@ -526,6 +529,9 @@
                                 <!-- //slide -->
                                 <!-- slide -->
                                 <div class="slide-conts ui_carousel_slide">
+                                    <div class="tit-wrap">
+                                        <h3 class="set-tit">WHY 케어십</h3>
+                                    </div>
                                     <div class="text-cont">
                                         <span>LG전자에서 전문 교육</span>을 받은<br class="pc"> 케어솔루션 매니저가 <span>정기적으로 방문</span>하여,<br class="pc"> <span>제품 점검 서비스와 무상 필터 교환</span> 등<br class="pc"> <span>다양한 혜택을 제공하는 케어서비스</span>입니다. 
                                         <div class="btn-area">
@@ -549,18 +555,24 @@
                     <div class="tit-wrap">
                         <h3 class="set-tit">케어솔루션 가이드</h3>
                     </div>
-                    <div class="tabs-wrap border-type ui_tab">
-                        <ul class="tabs">
-                            <li class="on"><a href="#tab01">정수기<em class="blind">선택됨</em></a></li>
-                            <li><a href="#tab02">얼음정수기냉장고</a></li>
-                            <li><a href="#tab03">맥주제조기</a></li>
-                            <li><a href="#tab04">공기청정기</a></li>
-                            <li><a href="#tab05">건조기</a></li>
-                            <li><a href="#tab06">스타일러</a></li>
-                            <li><a href="#tab07">전기레인지</a></li>
-                            <li><a href="#tab08">식기세척기</a></li>
-                            <li><a href="#tab09">안마의자</a></li>
-                        </ul>
+                    <div class="scroll-wrap border-type ui_smooth_scrolltab">
+                        <div class="ui_smooth_tab">
+                            <ul class="tabs">
+                                <li class="on"><a href="#tab01">정수기<em class="blind">선택됨</em></a></li>
+                                <li><a href="#tab02">얼음정수기냉장고</a></li>
+                                <li><a href="#tab03">맥주제조기</a></li>
+                                <li><a href="#tab04">공기청정기</a></li>
+                                <li><a href="#tab05">건조기</a></li>
+                                <li><a href="#tab06">스타일러</a></li>
+                                <li><a href="#tab07">전기레인지</a></li>
+                                <li><a href="#tab08">식기세척기</a></li>
+                                <li><a href="#tab09">안마의자</a></li>
+                            </ul>
+                        </div>
+                        <div class="scroll-controls ui_smooth_controls">
+                            <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
+                            <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
+                        </div>
                     </div>
                     <div id="tab01" class="tab-content" aria-labelledby="tab01" role="tabpanel">
                         <div class="care-guide-visual">
@@ -676,12 +688,18 @@
                     <div class="tit-wrap">
                         <h3 class="set-tit">케어솔루션 혜택</h3>
                     </div>
-                    <div class="tabs-wrap border-type ui_tab">
-                        <ul class="tabs">
-                            <li class="on"><a href="#tab001">고객 혜택<em class="blind">선택됨</em></a></li>
-                            <li><a href="#tab002">연차별 혜택</a></li>
-                            <li><a href="#tab003">카드 할인 혜택</a></li>
-                        </ul>
+                    <div class="scroll-wrap border-type ui_smooth_scrolltab">
+                        <div class="ui_smooth_tab">
+                            <ul class="tabs">
+                                <li class="on"><a href="#tab001">고객 혜택<em class="blind">선택됨</em></a></li>
+                                <li><a href="#tab002">연차별 혜택</a></li>
+                                <li><a href="#tab003">카드 할인 혜택</a></li>
+                            </ul>
+                        </div>
+                        <div class="scroll-controls ui_smooth_controls">
+                            <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
+                            <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
+                        </div>
                     </div>
                     <div id="tab001" class="tab-content" aria-labelledby="tab001" role="tabpanel">
                         <div class="benefit-cont benefit-cont-1">
