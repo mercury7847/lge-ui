@@ -260,8 +260,8 @@
                 self.$solutionsPopup.find('.pagination').on('pageClick', function(e) {
                     var url = self.$solutionsPopup.data('listUrl'),
                         param = {
-                            topic : $('#topic').val(),
-                            subToic : $('#subTopic').val(),
+                            topic : $('input[name=topic]:checked').val(),
+                            subToic : $('input[name=subTopic]:checked').val(),
                             productCode : $('#productCode').val(),
                             page: e.page
                         };
@@ -384,7 +384,7 @@
                     if (info.subCategory == "1129"){
                         self.$fanBox.show();
                         self.$bdTypeBox.show();
-                    } else if (cateCode != "1083") {
+                    } else if (info.subCategory != "1083") {
                         self.$fanBox.show();
                         self.$bdTypeBox.hide();
                     }
@@ -451,8 +451,8 @@
             self.$solutionsBanner.find('.btn-link').on('click', function(){
                 var url = $(this).data('href');
                 var param = {
-                    topic : $('#topic').val(),
-                    subToic : $('#subTopic').val(),
+                    topic : $('input[name=topic]:checked').val(),
+                    subToic : $('input[name=subTopic]:checked').val(),
                     productCode : $('#productCode').val(),
                     page: 1
                 };   

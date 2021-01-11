@@ -1,0 +1,296 @@
+<article id="reservationTimePopup" class="popup-wrap reservation-time full">
+    <header class="pop-header">
+        <h1 class="tit"><span>예약 일시 변경</span></h1>
+    </header>
+    <section class="pop-conts">
+        <div class="form-infos">
+            <p class="req" aria-disabled="true">필수 입력 항목</p>
+        </div>
+        <div class="my-visit">
+            <div class="box-info timetable-info">
+                <div class="tit-wrap">
+                    <h2 class="tit">희망 예약 일시 선택</h2>
+                </div>
+                <ul>
+                    <li class="black"><span class="blind">검정색 표기</span> 예약가능</li>
+                    <li class="red"><span class="blind">빨간색 표기</span> 선택</li>
+                </ul>
+            </div>
+            <div class="visit-select">
+                <div class="box-visit visit-calendar">
+                    <div class="tit-area">
+                        <input type="hidden" name="date" id="date" value="" data-error-msg="날짜를 선택해주세요." data-required="true" required>
+                        <p class="req">날짜 선택 <span class="blind">필수입력</span></p>
+                        <div class="btm-more err-block">
+                            <p class="err-msg"></p>
+                        </div>
+                    </div>
+                    <div class="box-wrap calendar-wrap">
+                        <div class="month-wrap">
+                            <button type="button" class="arrow pre"><span class="blind">이전</span></button>
+                            <span class="month">2020.01</span>
+                            <button type="button" class="arrow next"><span class="blind">다음</span></button>
+                        </div>
+                        <!--
+                            날짜 선택 불가 = td class : disabled, button disabled
+                            방문 예정일 = td class : expected,
+                            변경 요청일 = td class : choice
+                        -->
+                        <table class="box-table tb-calendar">
+                            <caption>방문일정 변경요청 달력</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="sun"><span>일</span></th>
+                                    <th scope="col"><span>월</span></th>
+                                    <th scope="col"><span>화</span></th>
+                                    <th scope="col"><span>수</span></th>
+                                    <th scope="col"><span>목</span></th>
+                                    <th scope="col"><span>금</span></th>
+                                    <th scope="col"><span>토</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="disabled"><button type="button" title="2020년 9월 1일" disabled><span>1</span><span class="blind">선택불가</span></button></td>
+                                </tr>
+                                <tr>
+                                    <td class="disabled"><button type="button" title="2020년 9월 2일" disabled><span>2</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="2020년 9월 3일" disabled><span>3</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="2020년 9월 4일" disabled><span>4</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="2020년 9월 5일" disabled><span>5</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="2020년 9월 6일" disabled><span>6</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="2020년 9월 7일" disabled><span>7</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="2020년 9월 8일" disabled><span>8</span><span class="blind">선택불가</span></button></td>
+                                </tr>
+                                <tr>
+                                    <td class="disabled"><button type="button" title="2020년 9월 9일" disabled><span>9</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="2020년 9월 10일" disabled><span>10</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="2020년 9월 11일" disabled><span>11</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="2020년 9월 12일" disabled><span>12</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="2020년 9월 13일" disabled><span>13</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="2020년 9월 14일" disabled><span>14</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="2020년 9월 15일" disabled><span>15</span><span class="blind">선택불가</span></button></td>    
+                                </tr>
+                                <tr>
+                                    <td><button type="button" title="2020년 9월 16일"><span>16</span></button></td>
+                                    <td><button type="button" title="2020년 9월 17일"><span>17</span></button></td>
+                                    <td><button type="button" title="2020년 9월 18일"><span>18</span></button></td>
+                                    <td><button type="button" title="2020년 9월 19일"><span>19</span></button></td>
+                                    <td><button type="button" title="2020년 9월 20일"><span>20</span></button></td>
+                                    <td><button type="button" title="2020년 9월 21일"><span>21</span></button></td>
+                                    <td class="choice">
+                                        <span class="blind">변경 요청일</span><button type="button" title="2020년 9월 22일"><span>22</span></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><button type="button" title="2020년 9월 23일"><span>23</span></button></td>
+                                    <td><button type="button" title="2020년 9월 24일"><span>24</span></button></td>
+                                    <td><button type="button" title="2020년 9월 25일"><span>25</span></button></td>
+                                    <td><button type="button" title="2020년 9월 26일"><span>26</span></button></td>
+                                    <td><button type="button" title="2020년 9월 27일"><span>27</span></button></td>
+                                    <td><button type="button" title="2020년 9월 28일"><span>28</span></button></td>
+                                    <td><button type="button" title="2020년 9월 29일"><span>29</span></button></td>
+                                </tr>
+                                <tr>
+                                    <td><button type="button" title="2020년 9월 30일"><span>30</span></button></td>
+                                    <td><button type="button" title="2020년 9월 31일"><span>31</span></button></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="box-visit visit-timetable">
+                    <div class="tit-area">
+                        <input type="hidden" name="time" id="time" value="" data-error-msg="시간을 선택해주세요." data-required="true" required>
+                        <p class="req">시간 선택 <span class="blind">필수입력</span></p>  
+                        <div class="btm-more err-block">
+                            <p class="err-msg"></p>
+                        </div>
+                    </div>
+                    <div class="box-wrap timetable-wrap">
+                        <!-- 
+                            시간 선택 시:
+                                해당라인 th = class : choice,
+                                해당버튼 tr = class : choice
+                        -->
+                        <table class="box-table tb-timetable">
+                            <caption>방문일정 변경 타임테이블</caption>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">09시</th>
+                                    <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">10시</th>
+                                    <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="choice">11시</th>
+                                    <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="choice"><button type="button" title=""><span>30분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">12시</th>
+                                    <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">13시</th>
+                                    <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">14시</th>
+                                    <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">15시</th>
+                                    <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">16시</th>
+                                    <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">17시</th>
+                                    <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">18시</th>
+                                    <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">19시</th>
+                                    <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class=""><button type="button" title=""><span>30분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>40분</span></button></td>
+                                    <td class=""><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                            </tbody>
+                        </table>    
+                    </div>
+                </div>
+            </div>
+            <ul class="bullet-list top-border">
+                <li class="b-txt">평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용됩니다.</li>
+                <li class="b-txt point">홈페이지 출장 서비스 예약 완료 건이라도 서비스 출장 기사 방문 전 상담사에 의한 통화 시도가 있을 수 있습니다.</li>
+                <li class="b-txt">예약 일시를 변경하실 경우, 기존 접수건은 취소되며 신규로 접수됩니다.</li>
+                <li class="b-txt">취소 문자가 발송된 이후 접수 문자는 카카오톡 또는 통신사 사정에 따라 10~20분 정도 소요될 수 있습니다.</li>
+            </ul>
+            <!--
+            @@include('./common/modules/bullet-list.html', {
+                "topBorder" : true,
+                "bulletTxt" : [
+                    "평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용됩니다.",
+                    "홈페이지 출장 서비스 예약 완료 건이라도 서비스 출장 기사 방문 전 상담사에 의한 통화 시도가 있을 수 있습니다.",
+                    "예약 일시를 변경하실 경우, 기존 접수건은 취소되며 신규로 접수됩니다.",
+                    "취소 문자가 발송된 이후 접수 문자는 카카오톡 또는 통신사 사정에 따라 10~20분 정도 소요될 수 있습니다."
+                ]
+            })
+            -->
+        </div> <!-- //희망 예약 일시 선택 -->
+        <div class="cellphone-cert">
+            <div class="item">
+                <div class="tit-wrap">
+                    <h3 class="tit">휴대 전화 인증</h3>        
+                </div>
+                <form action="">
+                    <div class="form-wrap">
+                        <div class="forms block-type">
+                            <div class="conts">
+                                <div class="box">
+                                    <div class="cell">
+                                        <button type="button" class="btn"><span>인증 번호 발송</span></button>
+                                    </div>
+                                    <div class="input-wrap">
+                                        <input type="number" name="certi-phone" id="certi-number" placeholder="인증번호 발송 버튼 선택 후, 인증 번호를 입력"  data-msg-target=".err-msg" required disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <ul class="bullet-list top-border">
+                    <li class="b-txt">예약 시 입력한 휴대전화로 인증번호가 발생합니다.</li>
+                    <li class="b-txt">인증번호가 수신되지 않은 경우 <span class="point">1544-7777이 스팸처리 되지 않았는지</span> 확인해주시기 바랍니다.</li>
+                </ul>
+                <!--
+                @@include('./common/modules/bullet-list.html', {
+                    "topBorder" : true,
+                    "bulletTxt" : [
+                        "예약 시 입력한 휴대전화로 인증번호가 발생합니다.",
+                        "인증번호가 수신되지 않은 경우 1544-7777이 스팸처리 되지 않았는지 확인해주시기 바랍니다."
+                    ]
+                })
+                -->
+            </div>
+        </div> <!-- //휴대 전화 인증 -->
+    </section>
+    <footer class="pop-footer">
+        <div class="btn-group center">
+            <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+            <button type="button" class="btn pink"><span>예약</span></button>
+        </div>
+    </footer>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
