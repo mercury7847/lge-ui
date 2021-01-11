@@ -6,7 +6,7 @@
         "isLogin" : true,
         "contract" : {
             "freeCareShip" : "Y", 
-            "transModelCheck" : "WD501AW1AKOR"
+            "transModelCheck" : ""
         },
         "total" : {
             "totalCnt" : 2,
@@ -17,7 +17,7 @@
         "itemList" : [
             {
                 "rtModelSeq" : "123",
-                "modelId" : "MD389238283",
+                "modelId" : "XCS23089484",
                 "modelImg" : "/lg5-common/images/dummy/@sample-226x226.jpg",
                 "siblingCd" : "LeatherYellow_code",
                 "siblingGroupCd" : "testGrouptcode",
@@ -30,7 +30,7 @@
             },
             {
                 "rtModelSeq" : "1253",
-                "modelId" : "MD123438283",
+                "modelId" : "MD123BB438283",
                 "modelImg" : "/lg5-common/images/dummy/@sample-226x226.jpg",
                 "siblingCd" : "test3333",
                 "siblingGroupCd" : "testGrouptcode2",
@@ -44,7 +44,7 @@
             },
             {
                 "rtModelSeq" : "1253",
-                "modelId" : "MD123438283",
+                "modelId" : "MD1234SS38283",
                 "modelImg" : "/lg5-common/images/dummy/@sample-226x226.jpg",
                 "siblingCd" : "test5555",
                 "siblingGroupCd" : "testGrouptcode5555",
