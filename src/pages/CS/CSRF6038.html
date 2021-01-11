@@ -72,43 +72,23 @@
 
                                     
 
-                                    <div id="tab1" class="tabs-contents">
-                                        <div class="form-wrap sch-input-wrap select">
-                                            <div class="forms">
-                                                <div class="select-wrap">
-                                                    <select class="ui_selectbox" id="select1" title="시/도 선택">
-                                                        <option value="">시/도 선택</option>
-                                                        <option value="서울">서울</option>
-                                                        <option value="인천">인천</option>
-                                                        <option value="부산">부산</option>
-                                                        <option value="대구">대구</option>
-                                                        <option value="대전">대전</option>
-                                                        <option value="광주">광주</option>
-                                                        <option value="울산">울산</option>
-                                                        <option value="제주">제주</option>
-                                                        <option value="경기">경기</option>
-                                                        <option value="세종">세종</option>
-                                                        <option value="경남">경남</option>
-                                                        <option value="경북">경북</option>
-                                                        <option value="충남">충남</option>
-                                                        <option value="충북">충북</option>
-                                                        <option value="전남">전남</option>
-                                                        <option value="전북">전북</option>
-                                                        <option value="강원">강원</option>
+                                    <div id="tab1" class="tabs-contents form-wrap">
+                                        <div class="forms">
+                                            <div class="adress-input-box type-wrap">
+                                                <div class="select-wrap cell">
+                                                    <select class="ui_selectbox" title="광역시/도 선택">
+                                                        <option value="" class="placeholder">광역시/도</option>
                                                     </select>
                                                 </div>
-                                                <div class="box">
-                                                    <div class="select-wrap">
-                                                        <select class="ui_selectbox" id="select2" title="구/군 선택" disabled>
-                                                            <option value="">구/군 선택</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="cell">
-                                                        <button type="button" class="btn pink search-local" disabled><span>검색</span></button>
-                                                    </div>
-                                                    <div class="cell">
-                                                        <button type="button" class="btn border"><span>내 주소로 검색</span></button>
-                                                    </div>
+                                                <div class="select-wrap cell display-flex">
+                                                    <select class="ui_selectbox" title="시/군/구 선택" disabled>
+                                                        <option value="" class="placeholder">시/군/구</option>
+                                                    </select>
+                                                    <button type="button" class="btn" disabled><span>검색</span></button>
+                                                </div>
+                                                <div class="cell btn-cell">
+                                                    <button type="button" class="btn mo-only"><span>내 위치 검색</span></button>
+                                                    <button type="button" class="btn"><span>내 주소로 검색</span></button>
                                                 </div>
                                             </div>
                                         </div>

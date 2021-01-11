@@ -688,6 +688,20 @@
                     padding: 0;
                 }
             }
+            &.type-wrap {
+                @include pc {
+                    flex-wrap: wrap;
+                    .cell {
+                        &:nth-child(2) {
+                            margin-left: 0;
+                            flex: 1;
+                        }
+                        &:nth-child(n+2) {
+                            margin-top: 8px;
+                        }
+                    }
+                }
+            }
         }
         // 날짜 선택(datepicker)
         .datepicker {
