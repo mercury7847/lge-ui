@@ -227,6 +227,9 @@ var res = {
 					"소식지 신청" : ["/html/UTS/COMF2004.html","","검수완료"]
 				}
 			},
+			"B2C메인(MA)" : {
+				"B2C메인" : ["/html/MA/MKTF1000.html","",""]
+			},
 			"스토어(PRS)" : {
 				"홈(서브메인)" : ["/html/PRS/MKTF1001.html","",""]
 			},

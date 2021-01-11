@@ -149,6 +149,43 @@
                         appKey: result.data.appKey,
                         longitude : result.data.basicPosition.longitude,
                         latitude: result.data.basicPosition.latitude,
+                        templates: {
+                            infoWindow: 
+                            '<div class="info-overlaybox">'+
+                            '   <div class="inner">'+
+                            '       <p class="name">{{shopName}}</p>'+
+                            '       <p class="adress">{{shopAdress}}</p>'+
+                            '       <div class="hour-info">'+
+                            '           <dl>'+
+                            '               <dt>평&nbsp;&nbsp;일</dt>'+
+                            '               <dd>{{bizHours.week}}</dd>'+
+                            '           </dl>'+
+                            '           <dl>'+
+                            '               <dt>토요일</dt>'+
+                            '               <dd>{{bizHours.saturday}}</dd>'+
+                            '           </dl>'+
+                            '       </div>'+
+                            '<ul class="optionIcon">'+
+                                '<li>'+
+                                    '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
+                                '</li>'+
+                                '<li>'+
+                                    '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
+                                '</li>'+
+                                '<li>'+
+                                    '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
+                                '</li>'+
+                                '<li>'+
+                                    '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
+                                '</li>'+
+                            '</ul>'+
+                            '       <div class="btn-group">'+
+                            '           <a href="#n" class="btn border size">방문 예약</a>'+
+                            '           <a href="#{{shopID}}" class="btn border size detail-view">상세 보기</a>'+
+                            '       </div>'+
+                            '   </div>'+
+                            '</div>'
+                        }
                     }).on('mapinit', function(e,data){
 
                         self.$map = self.$mapContainer.vcStoreMap('instance');

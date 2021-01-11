@@ -50,7 +50,10 @@
         '                       <div class="sort-select-wrap">'+
         '                           <select class="ui_selectbox" id="colorSet-{{modelId}}" title="색상 선택" data-sibling-type="siblingColors" {{#if siblingColors.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingColors}}'+
-        '                               <option data-model-id="{{item.modelId}}" value="{{item.siblingCode}}"{{#if selectColorID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
+        '                               <option data-model-id="{{item.modelId}}"'+
+                                                    ' data-group-id="{{item.siblingGroupCode}}"'+
+                                                    ' value="{{item.siblingCode}}"'+
+                                                    '{{#if selectColorID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
         '                           </select>'+
         '                       </div>'+
@@ -144,7 +147,7 @@
         '                               <p class="etc">월 {{item.monthPrice}}원<span class="comb-txt">{{item.combineText}}</span></p>'+
         '                           </div>'+  
         '                           <div class="del-item">'+
-        '                               <button type="button" class="btn-del" tabindex="" data-put-id="{{item.putID}}"><span class="blind">제품 삭제</span></button>'+
+        '                               <button type="button" class="btn-del" tabindex="" data-model-id="{{item.modelId}}"><span class="blind">제품 삭제</span></button>'+
         '                           </div>'+  
         '                       </div>'+
         '                   </div>'+
@@ -272,8 +275,6 @@
 
     var _serviceID = 0;
 
-    var tempPutItemIdx, tempPutID;
-
     function init(){
         vcui.require(['ui/carousel', 'ui/tab', 'ui/sticky', 'ui/modal', 'ui/selectbox', 'ui/smoothScrollTab'], function () {
             setting();
@@ -366,8 +367,8 @@
         $putItemContainer.on('click', 'button.btn-del', function(e){
             e.preventDefault();
 
-            var putId = $(this).data('putId');
-            removePutItem(putId);
+            var modelId = $(this).data('modelId');
+            removePutItem(modelId);
         }).on('click', 'button.btn-close', function(e){
             e.preventDefault();
 
@@ -497,7 +498,7 @@
 
         var siblingType = $(item).data('siblingType');
         if(siblingType == "siblingColors"){
-            setChangeColorChip(idx, optionData.optdata["siblingColors"].value, optionData.optdata["siblingColors"].modelId);
+            setChangeColorChip(idx, optionData.optdata);
         } else{
             setChangeOptionChip(idx, optionData.optdata)
         }
@@ -509,7 +510,7 @@
 
         var sendata = {
             tabID: getTabID(),
-            modelID: _currentItemList[idx]['modelId'],
+            modelID: optdata.siblingColors.modelId,
             rtModelSeq: _currentItemList[idx]['rtModelSeq'],
             feeCd: optdata['siblingFee'].value,
             usePeriodCd: optdata['siblingUsePeriod'].value,
@@ -535,13 +536,15 @@
     }
 
     //색상 옵션 변경...
-    function setChangeColorChip(idx, colorCd, colorModelId){
+    function setChangeColorChip(idx, optdata){
         lgkorUI.showLoading();
         
         var sendata = {
             tabID: getTabID(),
-            modelID: colorModelId,
-            colorCd: colorCd,
+            modelID: optdata.siblingColors.modelId,
+            colorCd: optdata.siblingColors.value,
+            siblingGroupCd: optdata.siblingColors.groupId,
+            rtModelSeq: _currentItemList[idx]['rtModelSeq'],
             blockID: idx
         }
 
@@ -611,6 +614,42 @@
         })
     }
 
+    //담기...
+    function addPutItem(item){ 
+        var idx = $(item).parents('.prd-care-vertical').data('index')-1;
+        var optionData = getOptionData(item);
+        _putItemList.unshift({
+            rtModelSeq: _currentItemList[idx]['rtModelSeq'],
+            modelId: optionData.optdata.siblingColors.modelId,
+            siblingCd: optionData.optdata.siblingColors.value,
+            siblingGroupCd: optionData.optdata.siblingColors.groupId
+        });
+
+        var sendata = {
+            tabID: getTabID(),
+            itemList: JSON.stringify(_putItemList)
+        }
+        
+        requestPutItem(sendata);
+    }
+
+    //담기 삭제...
+    function removePutItem(id){
+        console.log(id)
+        console.log(_putItemList);
+        _putItemList = vcui.array.filter(_putItemList, function(item){
+            return item.modelId != id;
+        });
+        console.log(_putItemList);
+
+        var sendata = {
+            tabID: getTabID(),
+            itemList: JSON.stringify(_putItemList)
+        }
+        
+        requestPutItem(sendata);
+    }
+
     function requestPutItem(sendata){
         lgkorUI.showLoading();
 
@@ -631,66 +670,22 @@
                 $('.ui_total_prod .ui_carousel_slider').vcCarousel('reinit');
                 lgkorUI.resetFlexibleBox();
 
-                if(result.data.contract.transModelCheck){
-                    $('.ui_total_prod .ui_carousel_slider').find('.ui_flexible_box').removeClass('comb-type');
+                $('.ui_total_prod .ui_carousel_slider').find('.ui_flexible_box').removeClass('comb-type');
+                if(result.data.contract.transModelCheck){                    
                     $('.ui_total_prod .ui_carousel_slider').find('.ui_flexible_box[data-contract-flag='+result.data.contract.transModelCheck+']').eq(0).addClass('comb-type');
                 }
             }
 
-            setPutItems(result.data.itemList);
+            setPutItems(result.data);
         });
-    }
-
-    //담기...
-    function addPutItem(item){ 
-        var idx = $(item).parents('.prd-care-vertical').data('index')-1;
-        _putItemList.unshift({
-            modelId: _currentItemList[idx]['modelId'],
-            rtModelSeq: _currentItemList[idx]['rtModelSeq']
-        });
-
-        var sendata = {
-            tabID: getTabID(),
-            itemList: JSON.stringify(_putItemList)
-        }
-
-        tempPutItemIdx = idx;
-        tempPutID = "";
-        
-        requestPutItem(sendata);
-    }
-
-    //담기 삭제...
-    function removePutItem(id){
-        var modelIds = [];
-        var rtModelSeqs = [];
-        var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-        for(var key in putItemStorage[lgkorUI.CAREPLANER_ID]){
-            var storageData = putItemStorage[lgkorUI.CAREPLANER_ID][key];
-            if(storageData.putID != id){
-                modelIds.push(storageData.itemData.modelId);
-                rtModelSeqs.push(storageData.itemData.rtModelSeq);
-            }
-        }
-
-        var sendata = {
-            tabID: getTabID(),
-            modelIds: modelIds.join(","),
-            rtModelSeqs: rtModelSeqs.join(",")
-        }
-
-        tempPutItemIdx = -1;
-        tempPutID = id;
-        
-        requestPutItem(sendata);
     }
 
     function setPutItems(listdata){
         $putItemContainer.find('.contract-slide').empty();
-
-        var leng = listdata.length;
+        
+        var leng = listdata.itemList.length;
         if(leng){
-            var listItem = vcui.template(_putItemTemplate, putItemCompare);
+            var listItem = vcui.template(_putItemTemplate, {putitem_list: listdata.itemList});
             $putItemContainer.find('.contract-slide').append(listItem);
 
             var display = $putItemContainer.css('display');
@@ -735,12 +730,14 @@
         }
 
         var totalinfo = $putItemContainer.find('.total-info');
-        var newinfo = vcui.template(putItemPriceTemplate, putItemCompare[lgkorUI.CAREPLANER_PRICE]);
+        var newinfo = vcui.template(putItemPriceTemplate, listdata.total);
         totalinfo.after(newinfo);
 
         totalinfo.remove();
         
         $putItemContainer.find('.tit-wrap .num strong').text(leng);
+
+        setPutItemStatus();
     }
 
     function setPutItemStatus(){
@@ -804,20 +801,10 @@
 
     function openEstimatePopUp(){
         lgkorUI.showLoading();
-        
-        var modelIds = [];
-        var rtModelSeqs = [];
-        var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-        for(var key in putItemStorage[lgkorUI.CAREPLANER_ID]){
-            var storageData = putItemStorage[lgkorUI.CAREPLANER_ID][key];
-            modelIds.push(storageData.itemData.modelId);
-            rtModelSeqs.push(storageData.itemData.rtModelSeq);
-        }
 
         var sendata = {
             tabID: getTabID(),
-            modelIds: modelIds.join(","),
-            rtModelSeqs: rtModelSeqs.join(",")
+            InputData: JSON.stringify(_putItemList)
         }
 
         lgkorUI.requestAjaxData(_estimateConfirmUrl, sendata, function(result){
@@ -909,11 +896,13 @@
 
             var optblock = $(opt).find('.ui_selectbox').find('option').filter("[value="+selectValue+"]");
             var selectModelId = optblock.data("modelId");
+            var groupId = optblock.data("groupId");
             
             optdata[siblingType] = {
                 name: selectName,
                 value: selectValue,
-                modelId: selectModelId
+                modelId: selectModelId,
+                groupId: groupId
             }
         });
 
