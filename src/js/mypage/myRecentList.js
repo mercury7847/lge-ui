@@ -108,6 +108,7 @@
             requestCart: function($dm) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-cart-url');
+                /*
                 var postData = {
                     "id":$dm.attr('data-id'),
                     "sku":$dm.attr('data-sku'),
@@ -120,11 +121,30 @@
                         $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
                     }
                 });
+                */
+               lgkorUI.requestCart($dm.attr('data-id'),$dm.attr('data-sku'),$dm.attr('data-wishListId'),$dm.attr('data-wishItemId'),ajaxUrl);
             },
 
             requestWish: function($dm, wish) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-wish-url');
+                var success = function(data) {
+                    $dm.attr("data-wishItemId",data.wishItemId);
+                };
+                var fail = function(data) {
+                    $dm.find('span.chk-wish-wrap input').prop("checked",!wish);
+                };
+                lgkorUI.requestWish(
+                    $dm.attr('data-id'),
+                    $dm.attr('data-sku'),
+                    $dm.attr('data-wishListId'),
+                    $dm.attr('data-wishItemId'),
+                    wish,
+                    success,
+                    fail,
+                    ajaxUrl);
+
+                /*
                 var postData = {
                     "id":$dm.attr('data-id'),
                     "sku":$dm.attr('data-sku'),
@@ -145,6 +165,7 @@
                         $dm.find('span.chk-wish-wrap input').prop("checked",!wish);
                     }
                 });
+                */
             },
             
             checkNoData: function() {
