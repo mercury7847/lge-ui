@@ -298,6 +298,26 @@
     }
 
     &.reservation-result{
+        .reception-progress{
+            &.type-2
+            {
+                &.step-3{
+                    max-width:1460px;
+                    padding:0 40px;
+                    margin:0 auto;
+                    margin-top:64px;
+                    margin-bottom:33px;
+                    li::after{
+                        width:calc(1380px / 2 - 24px);
+                        left:calc(-1380px / 2 + 24px);
+                    }
+                }
+                &.step-3[data-step="2"]::after{
+                    left:40px;
+                    width:calc(50% - 40px);
+                }
+            }
+        }
         .result-header-tit{
             max-width:1460px;
             margin:0 auto;
