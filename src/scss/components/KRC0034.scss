@@ -141,3 +141,190 @@
 		}
 	}
 }
+
+
+
+.component-wrap {
+    $color: (lightgray, dark, black, white, gray);
+    @each $bg in $color {
+        &.bg-#{$bg} {
+            .KRC0034 {
+                .inner.no-imgbg {
+                    @include mobile {
+                        @if $bg == lightgray {
+                            .fc-black,
+                            .fc-dark-gray,
+                            .fc-gray,
+                            .fc-lightgray,
+                            .fc-white {
+                                color:#222 !important;
+                                * {
+                                    color:#222 !important;
+                                }
+                            }
+                            .btn.border {
+                                &.bc-black,
+                                &.bc-white {
+                                    border-color:#222 !important;
+                                    color:#222 !important;
+                                    &:hover,
+                                    &:active,
+                                    &:focus {
+                                        border-color:#fa263e !important;
+                                        background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                        color:#fff !important;
+                                    }
+                                }
+                            }
+                            .text-link {
+                                &.bc-black,
+                                &.bc-white {
+                                    color:#222 !important;
+                                    &::after {
+                                        background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+                                    }
+                                }
+                            }
+                        } @else if $bg == dark {
+                            .fc-black,
+                            .fc-dark-gray,
+                            .fc-gray,
+                            .fc-lightgray,
+                            .fc-white {
+                                color:#fff !important;
+                                * {
+                                    color:#fff !important;
+                                }
+                            }
+                            .btn.border {
+                                &.bc-black,
+                                &.bc-white {
+                                    border-color:#fff !important;
+                                    color:#fff !important;
+                                    &:hover,
+                                    &:active,
+                                    &:focus {
+                                        border-color:#fa263e !important;
+                                        background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                        color:#fff !important;
+                                    }
+                                }
+                            }
+                            .text-link {
+                                &.bc-black,
+                                &.bc-white {
+                                    color:#fff !important;
+                                    &::after {
+                                        background:url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+                                    }
+                                }
+                            }
+                        } @else if $bg == black {
+                            .fc-black,
+                            .fc-dark-gray,
+                            .fc-gray,
+                            .fc-lightgray,
+                            .fc-white {
+                                color:#fff !important;
+                                * {
+                                    color:#fff !important;
+                                }
+                            }
+                            .btn.border {
+                                &.bc-black,
+                                &.bc-white {
+                                    border-color:#fff !important;
+                                    color:#fff !important;
+                                    &:hover,
+                                    &:active,
+                                    &:focus {
+                                        border-color:#fa263e !important;
+                                        background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                        color:#fff !important;
+                                    }
+                                }
+                            }
+                            .text-link {
+                                &.bc-black,
+                                &.bc-white {
+                                    color:#fff !important;
+                                    &::after {
+                                        background:url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+                                    }
+                                }
+                            }
+                        } @else if $bg == white {
+                            .fc-black,
+                            .fc-dark-gray,
+                            .fc-gray,
+                            .fc-lightgray,
+                            .fc-white {
+                                color:#222 !important;
+                                * {
+                                    color:#222 !important;
+                                }
+                            }
+                            .btn.border {
+                                &.bc-black,
+                                &.bc-white {
+                                    border-color:#222 !important;
+                                    color:#222 !important;
+                                    &:hover,
+                                    &:active,
+                                    &:focus {
+                                        border-color:#fa263e !important;
+                                        background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                        color:#fff !important;
+                                    }
+                                }
+                            }
+                            .text-link {
+                                &.bc-black,
+                                &.bc-white {
+                                    color:#222 !important;
+                                    &::after {
+                                        background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+                                    }
+                                }
+                            }
+                        } @else if $bg == gray {
+                            .fc-black,
+                            .fc-dark-gray,
+                            .fc-gray,
+                            .fc-lightgray,
+                            .fc-white {
+                                color:#222 !important;
+                                * {
+                                    color:#222 !important;
+                                }
+                            }
+                            .btn.border {
+                                &.bc-black,
+                                &.bc-white {
+                                    border-color:#222 !important;
+                                    color:#222 !important;
+                                    &:hover,
+                                    &:active,
+                                    &:focus {
+                                        border-color:#fa263e !important;
+                                        background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                        color:#fff !important;
+                                    }
+                                }
+                            }
+                            .text-link {
+                                &.bc-black,
+                                &.bc-white {
+                                    color:#222 !important;
+                                    &::after {
+                                        background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
