@@ -14,6 +14,10 @@
     var privacyAgreeAllChker;
     var privacyAgreeOkButton;
 
+    var rentalAgreeChker;
+    var rentalAgreeAllChker;
+    var rentalAgreeOkButton;
+
     var creditInquireButton;
 
     var requestInfoBlock;
@@ -58,12 +62,16 @@
         stepAccordion = $('.ui_accordion').vcAccordion('instance');
 
         privacyAgreeChker = $('input[name=chkPrivacy]');
-
-
         $('#popup-privacy').vcCheckboxAllChecker();
         privacyAgreeAllChker = $('#popup-privacy').vcCheckboxAllChecker('instance');
-
         privacyAgreeOkButton = $('#popup-privacy .btn-group .btn:nth-child(2)').css({cursor:'default'});
+
+
+        rentalAgreeChker = $('input[name=rentalAgree]');
+        $('#popup-rentalAgree').vcCheckboxAllChecker();
+        rentalAgreeAllChker = $('#popup-rentalAgree').vcCheckboxAllChecker('instance');
+        rentalAgreeOkButton = $('#popup-rentalAgree .btn-group .btn:nth-child(2)').css({cursor:'default'});
+        
 
         creditInquireButton = $('.creditInquire');
 
@@ -212,6 +220,7 @@
             }
         });
 
+
         step1Block.find('.input-mix-wrap .cell .btn-link').on('click', function(e){
             e.preventDefault();
 
@@ -221,7 +230,6 @@
         privacyAgreeAllChker.on('allCheckerChange', function(e, status){
             setPrivacyAgreeStatus(status);
         });
-
         $('#popup-privacy').on('click', '.btn-group .btn:nth-child(1)', function(e){
             setPrivacyAgreePop(false);
         });
@@ -230,6 +238,29 @@
                 $('#popup-privacy').vcModal('close');
             }
         });
+
+
+        rentalAgreeChker.on('change', function(e){
+            var chk = $(this).prop('checked');
+            if(chk){
+                openRentalAgreePopup();
+            } else{
+                setRentalAgreePop(false);
+            }
+        })
+        $('#popup-rentalAgree').on('click', '.btn-group .btn:nth-child(1)', function(e){
+            setRentalAgreePop(false);
+        });
+        rentalAgreeOkButton.on('click', function(e){
+            if(getRentalAgreeAllChecked()){
+                $('#popup-rentalAgree').vcModal('close');
+            }
+        });
+        $('#popup-rentalAgree').on('change', 'input[type=checkbox]', function(){
+            rentalAgreeChecked();
+        });
+
+
 
         creditInquireButton.on('click', function(e){
             e.preventDefault();
@@ -241,7 +272,12 @@
             e.preventDefault();
 
             var chkername = $(this).data('chkName');
-            privacyAgreeAllChker.setChecked(chkername, true);
+            var idx = chkername.indexOf('rentalAgree')
+            if(idx < 0) privacyAgreeAllChker.setChecked(chkername, true);
+            else{
+                rentalAgreeAllChker.setChecked(chkername, true);
+                rentalAgreeChecked();
+            }
 
             var idname = $(this).closest('.popup-wrap').attr('id');
             $("#"+idname).vcModal('close');
@@ -249,7 +285,12 @@
             e.preventDefault();
 
             var chkername = $(this).data('chkName');
-            privacyAgreeAllChker.setChecked(chkername, false);
+            var idx = chkername.indexOf('rentalAgree')
+            if(idx < 0) privacyAgreeAllChker.setChecked(chkername, false);
+            else{
+                rentalAgreeAllChker.setChecked(chkername, false);
+                rentalAgreeChecked();
+            }
         });
 
         $('.search-postcode').on('click', function(e){
@@ -344,6 +385,13 @@
         }).on('click', '.arsAgreeRequest', function(e){
             e.preventDefault();
             setArsAgreeConfirm();
+        });
+
+        $('input[name=rentalAgree]').on('change', function(){
+            var chker = $(this).prop('checked');
+            if(chker){
+                $('#popup-rentalAgree').vcModal();
+            }
         });
 
         $('#popup-cardApply').on('click', '.btn-group button.btn', function(e){
@@ -718,6 +766,14 @@
         });
     }
 
+    function openRentalAgreePopup(){
+        $('#popup-rentalAgree').vcModal()
+        .on('modalhide', function(e){
+            var chk = getRentalAgreeAllChecked();
+            rentalAgreeChker.prop('checked', chk);
+        });
+    }
+
     function openPrivacyPopup(){
         $('#popup-privacy').vcModal()
         .on('modalhide', function(e){
@@ -738,6 +794,32 @@
     function setPrivacyAgreePop(status){
         $('#popup-privacy').find('input[type=checkbox]').prop('checked', status);
         setPrivacyAgreeStatus(status)
+    }
+
+    function setRentalAgreePop(status){
+        $('#popup-rentalAgree').find('input[type=checkbox]').prop('checked', status);
+        setRentalAgreeStatus(status)
+    }
+    function setRentalAgreeStatus(status){
+        if(status){
+            rentalAgreeOkButton.css('cursor', 'pointer').removeClass('disabled');
+            if(!rentalAgreeOkButton.hasClass('pink')) rentalAgreeOkButton.addClass('pink');
+        } else{
+            rentalAgreeOkButton.css('cursor', 'default').removeClass('pink');
+            if(!rentalAgreeOkButton.hasClass('disabled')) rentalAgreeOkButton.addClass('disabled');
+        }
+    }
+    function rentalAgreeChecked(){
+        var chked = getRentalAgreeAllChecked();
+        setRentalAgreeStatus(chked);
+    }
+    function getRentalAgreeAllChecked(){
+        var chked = 0;
+        $('#popup-rentalAgree').find('input[type=checkbox]').not('[name=rentalAgree-infoUtility], [name=all-chk3]').each(function(idx, item){
+            if($(this).prop('checked')) chked++;
+        });
+        if(chked < 3) return false;
+        else return true;
     }
 
     function getInputData(iptname){

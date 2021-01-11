@@ -1,18 +1,18 @@
-<article id="popup9" class="popup-wrap full tit-line2">
+<article id="@@popupID" class="popup-wrap full tit-line2">
     <header class="pop-header">
         <h1 class="tit"><span>케어솔루션 청약신청 <br class="mob-only">고객동의</span></h1>
     </header>
     <section class="pop-conts rmsf-pop">
         <div class="agree-all-chk">
             <span class="chk-wrap">
-                <input type="checkbox" id="all-chk3" name="all-chk3">
+                <input type="checkbox" id="all-chk3" name="all-chk3" class="ui_all_checker">
                 <label for="all-chk3">전체 동의</label>
             </span>
         </div>
         <div class="input-info">
             <div class="tit-wrap type2">
                 <h2 class="h2-tit">이용약관 <span class="point">(필수)</span></h2>
-                <a href="#n" data-control="modal" class="btn-link">전문보기</a>
+                <a href="#popup-rentalAgree-terms" data-control="modal" class="btn-link">전문보기</a>
             </div>
             <div class="agree-cont-wrap">
                 <div class="agree-cont-box">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="agree-input">
                     <span class="chk-wrap">
-                        <input type="checkbox" id="chk1-5" name="chk1-5">
+                        <input type="checkbox" id="chk1-5" name="rentalAgree-terms">
                         <label for="chk1-5">동의합니다. (동의해야만 신청이 가능합니다.)</label>
                     </span>
                 </div>
@@ -38,7 +38,7 @@
         <div class="input-info">
             <div class="tit-wrap type2">
                 <h2 class="h2-tit">고객확인사항 <span class="point">(필수)</span></h2>
-                <a href="#n" data-control="modal" class="btn-link">전문보기</a>
+                <a href="#popup-rentalAgree-userCheck" data-control="modal" class="btn-link">전문보기</a>
             </div>
             <div class="agree-cont-wrap">
                 <div class="agree-cont-box">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="agree-input">
                     <span class="chk-wrap">
-                        <input type="checkbox" id="chk1-6" name="chk1-6">
+                        <input type="checkbox" id="chk1-6" name="rentalAgree-userCheck">
                         <label for="chk1-6">동의합니다. (동의해야만 신청이 가능합니다.)</label>
                     </span>
                 </div>
@@ -64,7 +64,7 @@
         <div class="input-info">
             <div class="tit-wrap type2">
                 <h2 class="h2-tit">개인정보 수집 및 이용동의 <span class="point">(필수)</span></h2>
-                <a href="#n" data-control="modal" class="btn-link">전문보기</a>
+                <a href="#popup-rentalAgree-privacy" data-control="modal" class="btn-link">전문보기</a>
             </div>
             <div class="agree-cont-wrap">
                 <div class="agree-cont-box">
@@ -81,7 +81,7 @@
                 </div>
                 <div class="agree-input">
                     <span class="chk-wrap">
-                        <input type="checkbox" id="chk1-7" name="chk1-7">
+                        <input type="checkbox" id="chk1-7" name="rentalAgree-privacy">
                         <label for="chk1-7">동의합니다. (동의해야만 신청이 가능합니다.)</label>
                     </span>
                 </div>
@@ -90,7 +90,7 @@
         <div class="input-info">
             <div class="tit-wrap type2">
                 <h2 class="h2-tit">정보활용 동의 (선택)</h2>
-                <a href="#n" data-control="modal" class="btn-link">전문보기</a>
+                <a href="#popup-rentalAgree-infoUtility" data-control="modal" class="btn-link">전문보기</a>
             </div>
             <div class="agree-cont-wrap">
                 <div class="agree-cont-box">
@@ -107,7 +107,7 @@
                 </div>
                 <div class="agree-input">
                     <span class="chk-wrap">
-                        <input type="checkbox" id="chk1-8" name="chk1-8">
+                        <input type="checkbox" id="chk1-8" name="rentalAgree-infoUtility">
                         <label for="chk1-8">동의합니다. (동의해야만 신청이 가능합니다.)</label>
                     </span>
                 </div>
@@ -117,7 +117,7 @@
     <footer class="pop-footer center">
         <div class="btn-group">
             <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
-            <button type="button" class="btn pink"><span>확인</span></button>
+            <button type="button" class="btn pink disabled"><span>확인</span></button>
         </div>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
