@@ -573,6 +573,15 @@
                     }
                 }
             }
+
+            .b-txt{
+                &.point{
+                    color:#ec455a;
+                    &::before{
+                        background:#ec455a;
+                    }
+                }
+            }
         }
     }
 }
