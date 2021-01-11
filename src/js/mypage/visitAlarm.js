@@ -24,6 +24,20 @@
         '</div>' +
     '</li>'
 
+    var popUpVisitDayItemTemplate = '<tr>' +
+        '{{#each item in listData}}' +
+            '{{#if item.type=="disabled"}}' +
+                '<td class="disabled" data-value="{{item.value}}"><button type="button" title="{{item.dateString}}" disabled><span>{{item.day}}</span><span class="blind">선택불가</span></button></td>' +
+            '{{#elsif item.type=="enabled"}}' +
+                '<td data-value="{{item.value}}"><button type="button" title="{{item.dateString}}"><span>{{item.day}}</span></button></td>' +
+            '{{#elsif item.type=="expected"}}' +
+                '<td class="expected" data-value="{{item.value}}"><button type="button" title="{{item.dateString}}" disabled><span>{{item.day}}</span><span class="blind">방문 예정일</span></button></td>' +
+            '{{#else}}' +
+                '<td></td>' +
+            '{{/if}}' +
+        '{{/each}}' +
+    '</tr>';
+
     $(window).ready(function() {
         var visitAlarm = {
             init: function(){
@@ -91,9 +105,15 @@
                 //방문일정 변경 팝업
                 self.$list.on('click', 'div.svc-lists button', function(e){
                     e.preventDefault();
-                    var _id = $(this).parents('li').attr('data-id');
+                    var $li = $(this).parents('li');
+                    var _id = $li.attr('data-id');
                     self.$popupChangeVisitDate.attr('data-id',_id);
 
+                    var date = $(this).attr('data-date');
+                    var time = $(this).attr('data-time');
+                    self.requestEnableVisitDay(date, time);
+
+                    /*
                     //선택되었던 날짜 초기화
                     var $td = self.$calendarTable.find('tr td.choice');
                     $td.find('span.blind').remove();
@@ -114,6 +134,7 @@
                     self.setVisitDateText(selectedData);
 
                     self.$popupChangeVisitDate.vcModal();
+                    */
                 });
             },
 
@@ -188,6 +209,45 @@
                         self.$list.append(vcui.template(visitAlarmItemTemplate, item));
                     });
                 });
+            },
+
+            requestEnableVisitDay: function (date, time) {
+                var self = this;
+                var ajaxUrl = self.$contents.attr('data-day-url');
+                var $list = self.$calendarTable.find('tbody');
+                lgkorUI.requestAjaxDataPost(ajaxUrl, {"date":date}, function(result){
+                    var data = result.data;
+
+                    //날짜 새로 그리기
+                    var arr = data instanceof Array ? data : [];
+                    $list.empty();
+                    arr.forEach(function(obj, index) {
+                        obj.expectedDate = date;
+                        obj.listData.forEach(function(item, index) {
+                            item.dateString = vcui.date.format(item.value,'yyyy년 M월.d일');
+                            item.day = vcui.date.format(item.value,'d');
+                            if(!(!item.value) && item.value == date) {
+                                item.type = "expected";
+                            }
+                        });
+                        $list.append(vcui.template(popUpVisitDayItemTemplate, obj));
+                    });
+
+                    //선택되었던 시간 초기화
+                    var $td = self.$timeTable.find('tr td.choice');
+                    $td.removeClass('choice');
+                    self.$timeTable.find('tr th.choice').removeClass('choice');
+
+                    $td = self.$timeTable.find('tr td[data-value="'+ time +'"]');
+                    $td.addClass('choice');
+                    $td.siblings('th').addClass('choice');
+                    
+                    //선택 시간 정보 텍스트 수정
+                    var selectedData = self.getSelectedVisitDayData();
+                    self.setVisitDateText(selectedData);
+                    
+                    self.$popupChangeVisitDate.vcModal()
+                }); 
             },
 
             requestChangeVisitDay: function(param) {

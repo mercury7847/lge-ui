@@ -87,7 +87,7 @@
                 <div class="text-inner @@textAlign2">
                     <!-- overlay thumbnail : video type -->
                     <!-- [KR수정_201229] 비디오 DOM 공통화 수정(AD버튼 삭제) -->
-                    <div class="visual-area video youtube-box">
+                    <div class="thumb-area visual-area video youtube-box"><!-- [KR수정_210111] .thumb-area Class 추가 -->
                         <!-- * youtube video modal은 아래의 방식으로 입력 -->
                         <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
                             <!-- [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
@@ -140,6 +140,42 @@
                     </div>
                     <!-- // cta : text link type  -->
                 </div>
+                <!-- // overlay box -->
+
+                <!-- overlay box -->
+                <!-- [KR수정_210111] 애니메이션 케이스 추가 -->
+                <div class="text-inner @@textAlign2">
+                    <!-- overlay thumbnail : animation type -->
+                    <div class="thumb-area visual-area animation-box">
+                        <div class="animation-area">
+                            <video autoplay muted loop>
+                                <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                <!-- WEBM 동영상을 제공하는 경우
+                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                -->
+                            </video>
+                            <div class="controller-wrap wa-btn">
+                                <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // overlay thumbnail : animation type -->
+                    <p id="title01" class="title">타이틀 영역입니다.</p>
+                    <p class="sub-title">서브타이틀 영역입니다.</p>
+                    <p class="body-copy">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
+                    <!-- cta : button type -->
+                    <div class="cta-box">
+                        <a href="#n" class="btn border size" aria-describedby="title01"><span>자세히 보기</span></a>
+                    </div>
+                    <!-- // cta : button type  -->
+                    <!-- cta : text link type -->
+                    <div class="cta-box">
+                        <a href="#n" class="text-link" aria-describedby="title01"><span>자세히 보기</span></a>
+                        <a href="#n" class="text-link" aria-describedby="title01"><span>자세히 보기</span></a>
+                    </div>
+                    <!-- // cta : text link type  -->
+                </div>
+                <!-- // [KR수정_210111] 애니메이션 케이스 추가 -->
                 <!-- // overlay box -->
             </div>
         </section>

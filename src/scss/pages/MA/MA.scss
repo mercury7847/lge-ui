@@ -21,7 +21,11 @@
 		}
 		.img {
 			img {
+				// width:100%;
 				height:100vh;
+				@include mobile {
+					width:auto;
+				}
 			}
 			// display:block;
 			// width:100%;
@@ -51,7 +55,7 @@
 		}
 		.text-link {
 			position:absolute;
-			right:178px;
+			right:120px;
 			bottom:160px;
 			> a {
 				display:block;
@@ -86,6 +90,25 @@
 						height:22px;
 						background-size:22px;
 					}
+				}
+			}
+		}
+		.counter {
+			position:absolute;
+			right:120px;
+			bottom:44px;
+			z-index:1;
+			color:rgba(#fff, .5);
+			@include mobile {
+				right:24px;
+				bottom:13px;
+			}
+			.num {
+				font-size:22px;
+				line-height:40px;
+				@include mobile {
+					font-size:16px;
+					line-height:24px;
 				}
 			}
 		}
