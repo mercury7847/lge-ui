@@ -13,6 +13,49 @@
             "totalPrice" : "월 81,400원",
             "totalTrans" : "월 -5,000원",
             "affiliateCard" : "월 최대 -16,000원"
-        }
+        },
+        "itemList" : [
+            {
+                "rtModelSeq" : "123",
+                "modelId" : "MD389238283",
+                "modelImg" : "/lg5-common/images/dummy/@sample-226x226.jpg",
+                "siblingCd" : "LeatherYellow_code",
+                "siblingGroupCd" : "testGrouptcode",
+                "contractTypeNm" : "렌탈(케어솔루션)",
+                "displayName" : "슬림 업다운 정수기,",
+                "modelCd" : "WD501AW1.AKOR",
+                "monthPrice" : 55900,
+                "combineFlag": "Y",
+                "combineText": "결합 -15,000원"
+            },
+            {
+                "rtModelSeq" : "1253",
+                "modelId" : "MD123438283",
+                "modelImg" : "/lg5-common/images/dummy/@sample-226x226.jpg",
+                "siblingCd" : "test3333",
+                "siblingGroupCd" : "testGrouptcode2",
+                "contractTypeNm" : "렌탈(케어솔루션)",
+                "displayName" : "슬림 업다운 정수기",
+                "modelCd" : "WD501AW2.AKOR",
+                "monthPrice" : 45900,
+                "transPrice" : 15000,
+                "combineFlag": "N",
+                "combineText": "결합 미적용"
+            },
+            {
+                "rtModelSeq" : "1253",
+                "modelId" : "MD123438283",
+                "modelImg" : "/lg5-common/images/dummy/@sample-226x226.jpg",
+                "siblingCd" : "test5555",
+                "siblingGroupCd" : "testGrouptcode5555",
+                "contractTypeNm" : "렌탈(케어솔루션)",
+                "displayName" : "슬림 업다운 정수기",
+                "modelCd" : "WD501AW2.AKOR",
+                "monthPrice" : 45900,
+                "transPrice" : 15000,
+                "combineFlag": "NA",
+                "combineText": ""
+            }
+        ]
     }
 }
