@@ -998,6 +998,53 @@
             });
         },
 
+        requestCart: function(id, sku, wishListId, wishItemId, postUrl) {
+            var postData = {"id":id};
+            if(!(!sku)) {
+                postData.sku = sku;
+            };
+            if(!(!wishListId)) {
+                postData.wishListId = wishListId;
+            };
+            if(!(!wishItemId)) {
+                postData.wishItemId = wishItemId;
+            };
+            lgkorUI.requestAjaxDataPost(postUrl, postData, function(result){
+                var data = result.data;
+                if(lgkorUI.stringToBool(data.success)) {
+                    $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
+                }
+            });
+        },
+
+        requestWish: function(id, sku, wishListId, wishItemId, wish, callbackSuccess, callbackFail, postUrl) {
+            var postData = {"id":id, "wish":wish};
+            if(!(!sku)) {
+                postData.sku = sku;
+            };
+            if(!(!wishListId)) {
+                postData.wishListId = wishListId;
+            };
+            if(!(!wishItemId)) {
+                postData.wishItemId = wishItemId;
+            };
+            lgkorUI.requestAjaxDataPost(postUrl, postData, function(result){
+                var data = result.data;
+                if(lgkorUI.stringToBool(data.success)) {
+                    if(wish) {
+                        //$dm.attr("data-wishItemId",data.wishItemId);
+                        $(window).trigger("toastshow","선택하신 제품이 찜한 제품에 추가되었습니다.");
+                    } else{
+                        $(window).trigger("toastshow","찜한 제품 설정이 해제되었습니다.");
+                    }
+                    callbackSuccess(data);
+                } else {
+                    //$dm.find('span.chk-wish-wrap input').prop("checked",!wish);
+                    callbackFail(data);
+                }
+            });
+        },
+
         commonAlertHandler: function(alert){
             if(alert.isConfirm) {
                 //컨펌

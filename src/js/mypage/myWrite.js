@@ -18,7 +18,15 @@
                 vcui.require(['ui/pagination'], function () {
                     self.setting();
                     self.bindEvents();
-                    self.checkNoData();
+                    
+                    var $a = self.$mySort.find('li.on a');
+                    var category = $a.attr('href').replace("#","");
+                    self.requestData({
+                        "category":category,
+                        "page": "1"
+                    });
+
+                    //self.checkNoData();
                 });
             },
 
@@ -43,7 +51,10 @@
                         var category = $(this).attr('href').replace("#","");
                         self.$mySort.find('li').removeClass('on');
                         $(this).parent().addClass('on');
-                        self.requestData({"category":category});
+                        self.requestData({
+                            "category":category,
+                            "page": "1"
+                        });
                     }
                 });
 

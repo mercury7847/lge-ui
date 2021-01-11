@@ -29,7 +29,7 @@
                     vertical-align:top;
                 }
             }
-            .animation-box {
+            > .animation-box {
                 position:absolute;
                 top:0;
                 left:0;
@@ -124,15 +124,16 @@
                     margin-top:0;
                 }
                 .visual-area.video {
-                    margin-bottom:16px;
+                    > a {
+                        position:relative;
+                        display:inline-block;
+                        width:auto;
+                    }
                     img {
                         width:auto;
                         max-width:100%;
                         height:auto;
                         vertical-align:top;
-                        @include mobile {
-                            width:100%;
-                        }
                     }
                 }
                 .thumb-area {
@@ -142,10 +143,6 @@
                         max-width:100%;
                         height:auto;
                         vertical-align:top;
-                        @include mobile {
-                            width:100%;
-                            max-width:initial;
-                        }
                     }
                 }
                 .title {
