@@ -128,20 +128,20 @@
         '       {{#each item in putitem_list}}'+
         '           <li class="slide-conts ui_carousel_slide">'+
         '               <div class="conts-wrap">'+
-        '                   <div class="prd-care-horizon ui_flexible_box{{#if item.itemData.combineProduct == "Y"}} comb-type{{/if}}">'+
+        '                   <div class="prd-care-horizon ui_flexible_box{{#if item.combineFlag == "Y"}} comb-type{{/if}}">'+
         '                       <div class="ui_flexible_cont">'+
         '                           <div class="img-wrap">'+
-        '                               <img src="{{item.itemData.modelImg}}" alt="{{item.itemData.userFriendlyName}}">'+
+        '                               <img src="{{item.modelImg}}" alt="{{item.displayName}}">'+
         '                           </div>'+
         '                           <div class="txt-wrap">'+
         '                             <div class="flag-wrap">'+
-        '                                   <span class="flag"><span class="blind">서비스명</span>{{item.itemData.serviceName}}</span>'+
+        '                                   <span class="flag"><span class="blind">서비스명</span>{{item.contractTypeNm}}</span>'+
         '                               </div>'+
         '                               <div class="tit-info">'+
-        '                                   <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.itemData.userFriendlyName}}</p>'+
-        '                                   <p class="code"><span class="blind">제품 코드</span>{{item.itemData.modelName}}</p>'+
+        '                                   <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.displayName}}</p>'+
+        '                                   <p class="code"><span class="blind">제품 코드</span>{{item.modelId}}</p>'+
         '                               </div>'+
-        '                               <p class="etc">월 {{item.itemData.monthlyPrice}}원<span class="comb-txt">{{item.itemData.combineText}}</span></p>'+
+        '                               <p class="etc">월 {{item.monthPrice}}원<span class="comb-txt">{{item.combineText}}</span></p>'+
         '                           </div>'+  
         '                           <div class="del-item">'+
         '                               <button type="button" class="btn-del" tabindex="" data-put-id="{{item.putID}}"><span class="blind">제품 삭제</span></button>'+
@@ -258,6 +258,8 @@
     var _priceStatusUrl;
     var _putItemUrl;
     var _estimateConfirmUrl;
+
+    var _putItemList = [];
 
     var $caresolutionContainer;
     var $fixedTab;
@@ -388,10 +390,7 @@
             };
         });
 
-        $(window).on("changeStorageData", function(){
-            setPutItems();
-            setPutItemStatus();
-        }).on('scroll', function(e){
+        $(window).on("scroll", function(){
             var scrolltop = $(window).scrollTop();
             var winheight = $(window).height();
             var contop = $caresolutionContainer.offset().top;
@@ -409,7 +408,6 @@
         lgkorUI.showLoading();
 
         var tabID = getTabID();
-        console.log("tabID :", tabID)
         lgkorUI.requestAjaxData(_categoryListUrl, {tabID: tabID}, function(result){
             if(result.data.success == "N"){
                 lgkorUI.hideLoading();
@@ -471,13 +469,6 @@
 
             addProdItemList();
         });
-
-        if(!_isStorageChk){
-            _isStorageChk = true;
-
-            setPutItems();
-            setPutItemStatus();
-        }
     }
 
     //서비스 변경...
@@ -641,57 +632,26 @@
                 lgkorUI.resetFlexibleBox();
 
                 if(result.data.contract.transModelCheck){
-                    $('.ui_total_prod .ui_carousel_slider').find('.ui_flexible_box[data-contract-flag='+result.data.contract.transModelCheck+']')
-                    .eq(0).removeClass('comb-type').addClass('comb-type');
+                    $('.ui_total_prod .ui_carousel_slider').find('.ui_flexible_box').removeClass('comb-type');
+                    $('.ui_total_prod .ui_carousel_slider').find('.ui_flexible_box[data-contract-flag='+result.data.contract.transModelCheck+']').eq(0).addClass('comb-type');
                 }
             }
-            
-            var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-            if(tempPutItemIdx > -1){
-                var data = {
-                    itemData: _currentItemList[tempPutItemIdx],
-                    putID : _currentItemList[tempPutItemIdx]['modelId'] + "-" + parseInt(Math.random()*999) + "-" + parseInt(Math.random()*99) + "-" + parseInt(Math.random()*9999)
-                }                
-                
-                if(putItemStorage[lgkorUI.CAREPLANER_ID] == undefined){
-                    putItemStorage[lgkorUI.CAREPLANER_ID] = [data];
-                } else{     
-                    putItemStorage[lgkorUI.CAREPLANER_ID].unshift(data);
-                    $(window).trigger("toastshow", "제품 담기가 완료되었습니다.");
-                }
-                putItemStorage[lgkorUI.CAREPLANER_PRICE] = {
-                    totalPrice: result.data.total.totalPrice,
-                    totalTrans: result.data.total.totalTrans,
-                    affiliateCard: result.data.total.affiliateCard
-                }
-            } else{
-                putItemStorage[lgkorUI.CAREPLANER_ID] = vcui.array.filter(putItemStorage[lgkorUI.CAREPLANER_ID], function(item){
-                    return item['putID'] != tempPutID;
-                });
-            }
-            lgkorUI.setStorage(lgkorUI.CAREPLANER_KEY, putItemStorage);
+
+            setPutItems(result.data.itemList);
         });
     }
 
     //담기...
     function addPutItem(item){ 
         var idx = $(item).parents('.prd-care-vertical').data('index')-1;
-        var modelIds = [_currentItemList[idx]['modelId']];
-        var rtModelSeqs = [_currentItemList[idx]['rtModelSeq']];
-
-        var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-        if(putItemStorage[lgkorUI.CAREPLANER_ID]){
-            for(var key in putItemStorage[lgkorUI.CAREPLANER_ID]){
-                var storageData = putItemStorage[lgkorUI.CAREPLANER_ID][key];
-                modelIds.push(storageData.itemData.modelId);
-                rtModelSeqs.push(storageData.itemData.rtModelSeq);
-            }
-        }
+        _putItemList.unshift({
+            modelId: _currentItemList[idx]['modelId'],
+            rtModelSeq: _currentItemList[idx]['rtModelSeq']
+        });
 
         var sendata = {
             tabID: getTabID(),
-            modelIds: modelIds.join(","),
-            rtModelSeqs: rtModelSeqs.join(",")
+            itemList: JSON.stringify(_putItemList)
         }
 
         tempPutItemIdx = idx;
@@ -725,11 +685,10 @@
         requestPutItem(sendata);
     }
 
-    function setPutItems(){
+    function setPutItems(listdata){
         $putItemContainer.find('.contract-slide').empty();
 
-        var putItemCompare = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-        var leng = putItemCompare[lgkorUI.CAREPLANER_ID] == undefined ? 0 : putItemCompare[lgkorUI.CAREPLANER_ID].length;
+        var leng = listdata.length;
         if(leng){
             var listItem = vcui.template(_putItemTemplate, putItemCompare);
             $putItemContainer.find('.contract-slide').append(listItem);

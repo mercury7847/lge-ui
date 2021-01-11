@@ -261,8 +261,12 @@
 		}
 		.slide-wrap.carousel-type.carousel-4 {
 			max-width:100%;
+			padding:0 0 24px;
 			.slide-content {
-				margin:0 -12px;
+				margin:0 -6px;
+				.slide-conts {
+					padding:0 6px;
+				}
 				.slide-box {
 					position:relative;
 					text-align:center;
@@ -633,6 +637,9 @@
 						padding:20px 37px 40px;
 						border-radius:8px;
 						box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);	
+						@include mobile {
+							box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
+						}
 					}
 					.img {
 						a {
@@ -920,7 +927,9 @@
 			}
 			.slide-wrap.carousel-type.carousel-4 {
 				margin:0;
+				overflow:visible;
 				.slide-content {
+					overflow:hidden !important;
 					.slide-box {
 						.inner {
 							> p {
@@ -936,10 +945,10 @@
 				}
 				.slide-controls {
 					.prev {
-						left:-4px;
+						left:-12px;
 					}
 					.next {
-						right:-4px;
+						right:-12px;
 					}
 				}
 			}
@@ -1146,6 +1155,7 @@
 				.slide-track {
 					.slide-conts {
 						max-width:100%;
+						padding:6px;
 						.img {
 							a {
 								text-align:center;

@@ -51,14 +51,14 @@
             bindEvents: function() {
 				var self = this;
 				
-				self.$carousel.on('mouseenter', '.slider-nav .icon', function() {
+				self.$carousel.on('mouseenter', '.slider-nav .ui_carousel_slide', function() {
 					$(this).addClass('hover');
-				}).on('mouseleave', '.slider-nav .icon', function() {
+				}).on('mouseleave', '.slider-nav .ui_carousel_slide', function() {
 					$(this).removeClass('hover');
 				});
 
-				self.$carousel.on('click', '.slider-nav .icon a', function(e){
-					var $this = $(this).closest('.icon');
+				self.$carousel.on('click', '.slider-nav .ui_carousel_slide a', function(e){
+					var $this = $(this).closest('.ui_carousel_slide');
 					var thisIndex = $this.index();
 					$this.siblings().removeClass('active').attr('aria-selected', false); //PJTWAUS-1 :  20191223 modify
 					$this.addClass('active').attr('aria-selected', true); //PJTWAUS-1 : 20191223 modify
