@@ -101,7 +101,7 @@ var CareCartInfo = (function() {
     
         updatePaymentInfo: function(data) {
             var self = this;
-            var paymentInfo = data ? data : {};
+            var paymentInfo = data ? vcui.clone(data) : {};
 
             var priceData = paymentInfo ? (paymentInfo.list instanceof Array ? paymentInfo.list : []) : [];
 

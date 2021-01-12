@@ -28,6 +28,8 @@
     var deliveryMnger;
     var addressFinder;
 
+    var productPriceInfo;
+
     var step = 0;
 
     var installAdress = {}
@@ -344,7 +346,28 @@
                 step3Block.find('.sendMessage').prop('disabled', true);
                 step3Block.find('select[name=associatedCard] option').eq(0).prop('selected', true);
                 step3Block.find('select[name=associatedCard]').vcSelectbox('update');
+                step3Block.find('.discount-txt').text('');
             }
+        }).on('change', 'select[name=associatedCard]', function(){
+            var selectopt = step3Block.find('select[name=associatedCard] option:selected');
+            var discountprice = parseInt(selectopt.data('discountPrice'));
+            if(discountprice && discountprice > 0) {
+                var discountcomma = vcui.number.addComma(discountprice);
+                step3Block.find('.discount-txt').text("최대 " + discountcomma + "원 청구 할인");
+
+                var newPriceInfo = vcui.clone(productPriceInfo);
+                console.log("newPriceInfo.total.price:",newPriceInfo.total.price)
+                newPriceInfo.total.price = parseInt(newPriceInfo.total.price) - discountprice;
+                newPriceInfo.list.push({
+                    text: "제휴카드 할인",
+                    price: "최대 월 -" + discountcomma + "원",
+                    appendClass: "sale"
+                })
+                requestInfoBlock.updatePaymentInfo(newPriceInfo);
+            } else{
+                step3Block.find('.discount-txt').text('');
+                requestInfoBlock.updatePaymentInfo(productPriceInfo);
+            }            
         }).on('change', 'input[name=cardApplyaAgree]', function(e){
             var chk = $(this).prop('checked');
             if(chk){
@@ -614,8 +637,8 @@
                             requestInfoBlock.setItemInfoDisabled(modelID, true)
                         }
                     }
-                    console.log("productPriceInfo :", result.data.productPriceInfo);
-                    requestInfoBlock.updatePaymentInfo(result.data.productPriceInfo);
+                    productPriceInfo = result.data.productPriceInfo;
+                    requestInfoBlock.updatePaymentInfo(productPriceInfo);
 
                     var total = parseInt(result.data.productPriceInfo.total.count);
                     console.log('total :', total)
