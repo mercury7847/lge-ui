@@ -487,7 +487,8 @@
                         serviceType: $('#serviceType').val(),
                         productCode: $('#productCode').val()
                     };
-                    
+                
+                self.$solutionsBanner.hide();
                 self.requestSubTopic(url, param);
             });
 

@@ -630,6 +630,8 @@ CS.MD.commonModel = function() {
                         };
 
                     self.$el.trigger('complete', [self, info, ajaxData, function() {
+                        self.$myModelArea.hide();
+                        
                         self._updateSummary({
                             product: opt.selectedModel,
                             reset: true
