@@ -56,7 +56,7 @@
                     register: register
                 });
 
-                $('.ui_imageinput').vcImageFileInput({
+                self.$cont.find('.ui_imageinput').vcImageFileInput({
                     totalSize: '10485760',
                     format: 'jpg|jpeg|png|gif',
                     message: {
@@ -92,7 +92,7 @@
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
-                    self.$submitForm.submit();
+                    // self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {
                         lgkorUI.alert('', {
@@ -109,7 +109,7 @@
             self.$cont.on('complete', function(e, module, info, data, callback) {
                 self.$completeBtns.show();
 
-                if (module.caseType == 'product') {
+                if (module.inquiryType == 'product') {
                     self.setInquIryType(data);
                 } else {
                     self.$inquiryBox.hide();
