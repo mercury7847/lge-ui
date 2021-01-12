@@ -83,14 +83,21 @@
             if(result.data.success == "Y"){
                 $('.section-wrap .sects').find('.tb-scroll').remove();
                 $('.section-wrap .sects').find('.bullet-list').remove();
+                $('.section-wrap').find('.no-data').remove();
 
-                var list = vcui.template(listTableTemplate, result.data);
-                $('.section-wrap .sects').append(list);
-
-                $('.sort-select-wrap select').empty();
-
-                var options = vcui.template(periodOptionTemplate, result.data);
-                $('.sort-select-wrap select').append(options).vcSelectbox('update');
+                if(result.data.paymentList && result.data.paymentList.length > 0){
+                    $('.section-wrap .sects').show();
+                    var list = vcui.template(listTableTemplate, result.data);
+                    $('.section-wrap .sects').append(list);
+    
+                    $('.sort-select-wrap select').empty();
+    
+                    var options = vcui.template(periodOptionTemplate, result.data);
+                    $('.sort-select-wrap select').append(options).vcSelectbox('update');
+                } else{
+                    $('.section-wrap .sects').hide();
+                    $('.section-wrap').append('<div class="no-data"><p>검색된 결과가 없습니다.</p></div>');
+                }
             }
 
             lgkorUI.hideLoading();

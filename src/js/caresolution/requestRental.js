@@ -28,6 +28,9 @@
     var deliveryMnger;
     var addressFinder;
 
+    var productPriceInfo;
+    var cardDiscountPrice = 0;
+
     var step = 0;
 
     var installAdress = {}
@@ -344,7 +347,18 @@
                 step3Block.find('.sendMessage').prop('disabled', true);
                 step3Block.find('select[name=associatedCard] option').eq(0).prop('selected', true);
                 step3Block.find('select[name=associatedCard]').vcSelectbox('update');
+                step3Block.find('.discount-txt').text('');
             }
+        }).on('change', 'select[name=associatedCard]', function(){
+            var selectopt = step3Block.find('select[name=associatedCard] option:selected');
+            cardDiscountPrice = selectopt.data('discountPrice') ? parseInt(selectopt.data('discountPrice')) : 0;
+            if(cardDiscountPrice && cardDiscountPrice > 0) {
+                var discountcomma = vcui.number.addComma(cardDiscountPrice);
+                step3Block.find('.discount-txt').text("최대 " + discountcomma + "원 청구 할인");
+            } else{
+                step3Block.find('.discount-txt').text('');
+            }
+            changeProductPriceInfo();
         }).on('change', 'input[name=cardApplyaAgree]', function(e){
             var chk = $(this).prop('checked');
             if(chk){
@@ -614,11 +628,10 @@
                             requestInfoBlock.setItemInfoDisabled(modelID, true)
                         }
                     }
-                    console.log("productPriceInfo :", result.data.productPriceInfo);
-                    requestInfoBlock.updatePaymentInfo(result.data.productPriceInfo);
+                    productPriceInfo = result.data.productPriceInfo;
+                    changeProductPriceInfo();
 
-                    var total = parseInt(result.data.productPriceInfo.total.count);
-                    console.log('total :', total)
+                    var total = parseInt(productPriceInfo.total.count);
                     if(total) abled = "Y";
                 }
                 
@@ -836,6 +849,19 @@
     function setInputData(iptname, value){
         var ipt = $('.hidden-input-group').find('input[name=' + iptname + ']');
         ipt.val(value);
+    }
+
+    function changeProductPriceInfo(){
+        var newPriceInfo = vcui.clone(productPriceInfo);
+        if(cardDiscountPrice > 0){
+            newPriceInfo.total.price = parseInt(newPriceInfo.total.price) - cardDiscountPrice;
+            newPriceInfo.list.push({
+                text: "제휴카드 할인",
+                price: "최대 월 -" + vcui.number.addComma(cardDiscountPrice) + "원",
+                appendClass: "sale"
+            })
+        }
+        requestInfoBlock.updatePaymentInfo(newPriceInfo);
     }
 
     //청약신청하기...

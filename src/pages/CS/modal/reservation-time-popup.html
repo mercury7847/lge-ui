@@ -19,11 +19,9 @@
             <div class="visit-select">
                 <div class="box-visit visit-calendar">
                     <div class="tit-area">
-                        <input type="hidden" name="date" id="date" value="" data-required="true" required>
+                        <input type="hidden" name="date" id="date" value="" data-error-msg="날짜를 선택해주세요." data-required="true" required>
                         <p class="req">날짜 선택 <span class="blind">필수입력</span></p>
-                        <div class="btm-more err-block">
-                            <p class="err-msg"></p>
-                        </div>
+                        <p class="err-msg"></p>
                     </div>
                     <div class="box-wrap calendar-wrap">
                         <div class="month-wrap">
@@ -112,11 +110,9 @@
                 </div>
                 <div class="box-visit visit-timetable">
                     <div class="tit-area">
-                        <input type="hidden" name="time" id="time" value="" data-required="true" required>
+                        <input type="hidden" name="time" id="time" value="" data-error-msg="시간을 선택해주세요." data-required="true" required>
                         <p class="req">시간 선택 <span class="blind">필수입력</span></p>  
-                        <div class="btm-more err-block">
-                            <p class="err-msg"></p>
-                        </div>
+                        <p class="err-msg"></p>
                     </div>
                     <div class="box-wrap timetable-wrap">
                         <!-- 
