@@ -307,6 +307,13 @@
                         self.$completeBtns.hide();
                     } else {
                         if (data.resultMessage) {
+                            if (data.tAlert == 'Y') {
+                                self.$stepInput.find('.step-btn-wrap').show();
+                                self.$stepDate.removeClass('active');
+                                self.$stepEngineer.removeClass('active');
+                                self.$completeBtns.hide();
+                            }
+
                             lgkorUI.alert('', {
                                 title: data.resultMessage
                             });
@@ -330,7 +337,6 @@
                 subCategory: $('#subCategory').val(),
                 date: $('#date').val()
             });
-            console.log(self.dateParam.zipId);
             param['zipId'] = self.dateParam.zipId;
 
             result = validation.validate(['topic', 'subTopic', 'bdType', 'fan', 'addFan', 'installType', 'tvPosition', 'userNm', 'phoneNo', 'zipCode', 'userAddress', 'detailAddress']);
@@ -345,6 +351,13 @@
                         $('.time-wrap').find('.box-table').show();
                     } else {
                         if (data.resultMessage) {
+                            if (data.tAlert == 'Y') {
+                                self.$stepInput.find('.step-btn-wrap').show();
+                                self.$stepDate.removeClass('active');
+                                self.$stepEngineer.removeClass('active');
+                                self.$completeBtns.hide();
+                            }
+                            
                             lgkorUI.alert('', {
                                 title: data.resultMessage
                             });
