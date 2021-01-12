@@ -633,7 +633,8 @@
     function addPutItem(item){ 
         var idx = $(item).parents('.prd-care-vertical').data('index')-1;
         var optionData = getOptionData(item);
-        _putItemList.unshift({
+        var itemList = _putItemList.concat();
+        itemList.unshift({
             rtModelSeq: _currentItemList[idx]['rtModelSeq'],
             modelId: optionData.optdata.siblingColors.modelId,
             siblingCd: optionData.optdata.siblingColors.value,
@@ -642,7 +643,7 @@
 
         var sendata = {
             tabID: getTabID(),
-            itemList: JSON.stringify(_putItemList)
+            itemList: JSON.stringify(itemList)
         }
         
         requestPutItem(sendata);
@@ -695,9 +696,20 @@
 
     function setPutItems(listdata){
         $putItemContainer.find('.contract-slide').empty();
+
+        _putItemList = [];
         
         var leng = listdata.itemList.length;
         if(leng){
+            _putItemList = vcui.array.map(listdata.itemList, function(item){
+                return {
+                    rtModelSeq: item.rtModelSeq,
+                    modelId: item.modelId,
+                    siblingCd: item.siblingCd,
+                    siblingGroupCd: item.siblingGroupCd
+                }
+            })
+
             var listItem = vcui.template(_putItemTemplate, {putitem_list: listdata.itemList});
             $putItemContainer.find('.contract-slide').append(listItem);
 
