@@ -118,9 +118,6 @@
             html = vcui.template(topicTmpl, data);
             self.$topicList.html(html);
         },
-        setReserveDate: function(data) {
-            var html;
-        },
         requestSubTopic: function(url, param) {
             var self = this;
 
@@ -174,6 +171,44 @@
                 });
             }, null, "html");
         },
+        requestTime: function() {
+            var url = $('.calendar-area').data('timeUrl'),
+                param = validation.getAllValues(),
+                result;
+
+            param = $.extend(param, {
+                topic: $('input[name=topic]:checked').val(),
+                subTopic: $('input[name=subTopic]:checked').val(),
+                serviceType: $('#serviceType').val(),
+                productCode: $('#productCode').val(),
+                category: $('#category').val(),
+                subCategory: $('#subCategory').val(),
+                date: $('#date').val()
+            });
+
+            result = validation.validate(['topic', 'subTopic', 'bdType', 'fan', 'addFan', 'installType', 'tvPosition', 'userNm', 'phoneNo', 'zipCode', 'userAddress', 'detailAddress']);
+
+            if (result.success) {
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data;
+
+                    if (data.resultFlag == 'Y') {
+                        $('.time-wrap').timeCalendar({
+                            timeArr: data.timeList,
+                            inputTarget: '#time'
+                        });
+                        $('.time-wrap').find('.box-desc').hide();
+                        $('.time-wrap').find('.box-table').show();
+                    } else {
+                        if (data.resultMessage) {
+                            lgkorUI.alert('', {
+                                title: data.resultMessage
+                            });
+                        }
+                    }
+                });
+            }
+        },
         requestComplete: function() {
             var self = this;
 
@@ -200,13 +235,19 @@
             
             // 모델 선택 후 이벤트
             self.$cont.on('complete', function(e, module, info, data, callback) {
-                // var topicArr = data.topicList instanceof Array ? data.topicList : [], 
-                //     dateArr = data.dateList instanceof Array ? data.dateList : [];
+                self.setTopicList(data);
+                
+                
+                if ($('.date-wrap').data('plugin_calendar')) {
+                    $('.date-wrap').calendar('update', data.dateList);
+                } else {
+                    $('.date-wrap').calendar({
+                        dateArr: data.dateList,
+                        inputTarget: '#date'
+                    });
+                }
 
                 self.$completeBtns.show();
-
-                self.setReserveDate(data);
-                self.setTopicList(data)
 
                 callback();
             });
@@ -250,13 +291,8 @@
             });
 
             // 날짜 선택
-            $('.tb-calendar').on('click', 'button', function() {
-                $('#date').val('20210125');
-            });
-
-            // 시간 선택
-            $('.tb-timetable').on('click', 'button', function() {
-                $('#time').val('1530');
+            $('.date-wrap').on('dateselected', function() {
+                self.requestTime();
             });
 
             // 신청 완료

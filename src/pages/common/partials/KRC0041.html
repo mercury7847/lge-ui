@@ -38,10 +38,22 @@
 	-->
 	<section class="component KRC0041 wide-size">
 		<div class="component-inner">
-			<div class="image-text-wrap">
-				<div class="visual-area">
-					<img data-pc-src="/lg5-common/images/KRC0041/@img-bg-1600.png" data-m-src="/lg5-common/images/KRC0041/@img-720x405.png" alt="">
-				</div>
+            <div class="image-text-wrap">
+                <!-- [KR수정_210112] 애니메이션 케이스 추가 -->
+                <div class="visual-area animation-box">
+                    <div class="animation-area">
+                        <video autoplay muted loop>
+                            <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                            <!-- WEBM 동영상을 제공하는 경우
+                            <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                            -->
+                        </video>
+                    </div>
+                    <div class="controller-wrap wa-btn">
+                        <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                    </div>
+                </div>
+                <!-- // [KR수정_210112] 애니메이션 케이스 추가 -->
 
 				<div class="text-area carousel-box">
 					<div class="ui_carousel_slider2">
@@ -122,9 +134,8 @@
 							<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
 						</div>
 					</div>
-				</div>
-			</div>
-
+                </div>
+            </div>
 		</div>
 	</section>
 </div>

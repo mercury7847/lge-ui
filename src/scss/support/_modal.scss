@@ -583,5 +583,17 @@
                 }
             }
         }
+
+        @include mobile{
+            .pop-conts{
+                .my-visit{
+                    .visit-select{
+                        margin-top:0;
+                        justify-content: unset;
+                        flex-flow: column;
+                    }
+                }
+            }
+        }
     }
 }

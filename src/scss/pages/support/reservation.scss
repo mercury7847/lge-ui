@@ -362,6 +362,18 @@
                     }
                 }
             }
+            .reception-progress{
+                &.type-2
+                {
+                    &.step-3{
+                        padding:0;
+                        li::after{
+                            width:100%;
+                            left:-50%;
+                        }
+                    }
+                }
+            }
         }
 
         .survey-banner-wrap {
