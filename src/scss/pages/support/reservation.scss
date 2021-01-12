@@ -311,6 +311,13 @@
                         width:calc(1380px / 2 - 24px);
                         left:calc(-1380px / 2 + 24px);
                     }
+                    @include mobile{
+                        padding:0;
+                        li::after{
+                            width:100%;
+                            left:-50%;
+                        }
+                    }
                 }
                 &.step-3[data-step="2"]::after{
                     left:40px;
