@@ -7,5 +7,17 @@
             "20210119", "20210120", "20210123",
             "20210203", "20210204"
         ]
+    },
+    "param": {
+        "refineGHighAddr": "",
+        "refineGMidAddr": "",
+        "refineGLowAddr": "",
+        "refineGDetail": "",
+        "refineRoadName": "",
+        "refineBasementFg": "",
+        "refineRoadNo": "",
+        "refineRoadDetail": "",
+        "refineRoadEtc": "",
+        "zipId": ""
     }
 }
