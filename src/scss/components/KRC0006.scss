@@ -9,10 +9,8 @@
         flex-wrap:nowrap;
         align-items:center;
         margin:0 -12px;
-        @media screen and (max-width:1200px) {
-            display:block;
-        }
         @include mobile {
+            display:block;
             margin:0;
         }
     }
@@ -20,6 +18,9 @@
     .visual-wrap {
         width:calc((100% / 3) * 2);
         @include clearfix;
+        @include mobile {
+            width:100%;
+        }
         &.image-align-left {
             order:-1;
         }
@@ -30,9 +31,12 @@
             float:left;
             width:calc((100% - 48px) / 2);
             margin:0 12px;
+            text-align:center;
  
             a {
+                display:inline-block;
                 position:relative;
+                vertical-align:top;
                 img {
                     width:auto;
                     max-width:100%;
@@ -50,14 +54,6 @@
                 }
             }
         }
-
-        @media screen and (max-width:1200px) {
-            width:auto;
-            &.image-align-left,
-            &.image-align-right {
-                order:initial;
-            }
-        }
     }
     .side-right-text {
         width:calc((100% / 3));
@@ -73,12 +69,9 @@
         .btn-type-text {
             @include cta-btn;
         }
-        @media screen and (max-width:1200px) {
-            width:100%;
-            margin-top:56px;
-        }
         @include mobile {
             margin-top:28px;
+            width:100%;
             padding:0;
         }
     }
