@@ -201,6 +201,8 @@ CS.MD.commonModel = function() {
             self.summary = options.summary;
 
             self.$el.find('[type=hidden]').not('[name=serviceType], [name=lockUserId]').val('');
+            self.$el.find('input[type=text], textarea').val('');
+            self.$el.find('input[type=radio]').prop('checked', false);
             
             self.$categoryBox.find('.box').removeClass('on off');
             self.$categoryBox.addClass(options.stepActiveClass);
@@ -215,7 +217,12 @@ CS.MD.commonModel = function() {
             self.$keywordInput.val('');
             
             self.$myModelArea.show();
+
+            $('.date-wrap').calendar('reset');
+            $('.time-wrap').timeCalendar('reset');
             
+            self.$el.trigger('reset');
+
             self._updateSummary();
             self._next(self.caseType == 'product' ? self.$stepModel : self.$stepInquiry);
         },
@@ -349,7 +356,7 @@ CS.MD.commonModel = function() {
                 } else {
                     url = self.$searchArea.data('resultUrl');
                     parma = {
-                        modelCode: data.code, 
+                        modelCode: data.modelCode, 
                         serviceType: $('#serviceType').val()
                     }
 
@@ -424,10 +431,6 @@ CS.MD.commonModel = function() {
                     self._focus(self.$selectedModelBar);
                 }
             });
-
-
-
-
 
             // 문의유형 선택
             self.$stepInquiry.find('.btn-type').on('click', function() {
@@ -675,7 +678,6 @@ CS.MD.commonModel = function() {
                 var page = after - before;
             
                 self.page += page;
-                console.log(self.page);
             });
             self.$modelSlider.on('carouselafterchange', function(e, module, after) {
                 var startPage = parseInt((self.page - 1) / 10) * 10 + 1; 
@@ -755,19 +757,23 @@ CS.MD.calendar = function() {
     Plugin.prototype = {
         _initialize: function() {
             var self = this,
-                arr = [];
+                arr = self.options.dateArr instanceof Array ? self.options.dateArr : [];
 
-            self.dateArr = self.options.dateArr;
 
-            for (var i = 0; i < self.dateArr.length; i++) {
-                arr.push(vcui.date.parse(self.dateArr[i]));
+            if (arr.length) {
+                for (var i = 0; i < arr.length; i++) {
+                    arr.push(vcui.date.parse(arr[i]));
+                }
+                self.currDate = arr[0];
+            } else {
+                self.currDate = self.options.today;
             }
-
-            self.currDate = arr[0];
 
             if (self.options.inputTarget) {
                 self.$input = $(self.options.inputTarget);
             }
+
+            self.dateArr = arr;
 
             self._render();
         },
@@ -1023,6 +1029,7 @@ CS.MD.calendar = function() {
             var self = this,
                 arr = [];
 
+            self.activeDate = null;
             self.dateArr = dateArr;
 
             for (var i = 0; i < self.dateArr.length; i++) {
@@ -1032,7 +1039,22 @@ CS.MD.calendar = function() {
             self.currDate = arr[0];
 
             if (self.options.inputTarget) {
-                self.$input = $(self.options.inputTarget);
+                self.$input.val('');
+            }
+
+            self._render();
+        },
+        reset: function reset() {
+            var self = this;
+
+            self.activeDate = null;
+            self.currDate = self.options.today;
+            self.dateArr = [];
+
+            self.$el.find('.choice').removeClass('choice');
+
+            if (self.options.inputTarget) {
+                self.$input.val('');
             }
 
             self._render();
@@ -1116,40 +1138,25 @@ CS.MD.timeCalendar = function() {
         _initialize: function() {
             var self = this;
 
-            self.timeArr = self.options.timeArr;
-            
+            self.timeArr = self.options.timeArr instanceof Array ? self.options.timeArr : [];
+
             if (self.options.inputTarget) {
                 self.$input = $(self.options.inputTarget);
             }
 
             self._render();
         },
-        _getTimeList: function _getTimeList() {
-            var self = this,
-                obj;
-
-            self.timeArr.forEach(function(item) {
-                var item = item.toString(),
-                    hour, min;
-
-                hour = item.substring(0,2);
-                min = item.substring(2,4);
-
-                obj[hour].push(min);
-            });
-
-            return obj;
-        },
         _render: function _render() {
             var self = this,
-                opts = self.options,
                 tmpl;
 
             tmpl = '<div class="box-table"></div>';
 
             self._remove();
             self.$calendar = $(tmpl);
-            self.$el.empty().append(self.$calendar);
+            
+            self.$el.find('>*:not(.box-desc)').remove()
+            self.$el.append(self.$calendar);
             
             self.$calendar.off('.timecalendar').on('click.timecalendar', 'button:not(.disabled)', function (e) {
                 // 날짜 클릭
@@ -1223,6 +1230,11 @@ CS.MD.timeCalendar = function() {
 
             self.$el.find('.box-table').html(html);
 
+            if (self.timeArr.length) {
+                self.$el.find('.box-desc').hide();
+                self.$el.find('.box-table').show();
+            }
+
             return self;
         },
         /**
@@ -1259,6 +1271,30 @@ CS.MD.timeCalendar = function() {
 
             return self;
         },
+        update: function update(timeArr) {
+            var self = this;
+            
+            self.timeArr = timeArr;
+            if (self.options.inputTarget) {
+                self.$input.val('');
+            }
+
+            self._render();
+        },
+        reset: function reset() {
+            var self = this;
+
+            self.timeArr = [];
+            self.$el.find('.box-desc').show();
+            self.$el.find('.box-table').hide();
+            self.$el.find('.choice').removeClass('choice');
+
+            if (self.options.inputTarget) {
+                self.$input.val('');
+            }
+
+            self._render();
+        }
     }
 
     CS.MD.plugin(pluginName, Plugin);
