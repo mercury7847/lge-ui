@@ -362,7 +362,6 @@
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {  
-                    console.log(data.engineerList[0]);
                     self.updateEngineer(data.engineerList[0]);
 
                     if (data.engineerList.length && data.engineerList.length > 1) {
@@ -555,6 +554,7 @@
                     zipCode: $('#zipCode').val(),
                     userAddress: $('#userAddress').val(),
                     detailAddress: $('#detailAddress').val(),
+                    productCode: $('#productCode').val(),
                     date: $('#date').val(),
                     time: $('#time').val()
                 }
