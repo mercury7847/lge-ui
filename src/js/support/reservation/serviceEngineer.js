@@ -38,8 +38,8 @@
                     '<div class="img">' +
                         '<img src="{{item.image}}" alt="" aria-hidden="true">' +
                     '</div>' +
-                    '<p class="tit">{{item.engineerNm}}</p>' +
-                    '<p class="desc">{{item.centerNm}}</p>' +
+                    '<p class="tit">{{item.engineerName}}</p>' +
+                    '<p class="desc">{{item.centerName}}</p>' +
                 '</label>' +
             '</div>' +  
         '</div>' +
@@ -214,9 +214,6 @@
             html = vcui.template(topicTmpl, data);
             self.$topicList.html(html); 
         },
-        setReserveDate: function(data) {
-            var html;
-        },
         requestSubTopic: function(url, param) {
             var self = this;
 
@@ -292,6 +289,11 @@
                     var data = result.data;
 
                     if (data.resultFlag == 'Y') {
+                        $('.date-wrap').calendar({
+                            dateArr: data.dateList,
+                            inputTarget: '#date'
+                        });
+
                         self.$stepInput.find('.step-btn-wrap').hide();
                         self.$stepDate.addClass('active');
                         self.$stepEngineer.removeClass('active');
@@ -301,7 +303,36 @@
             }
         },
         requestTime: function() {
-            var self = this;
+            var url = $('.calendar-area').data('timeUrl'),
+                param = validation.getAllValues(),
+                result;
+
+            param = $.extend(param, {
+                topic: $('input[name=topic]:checked').val(),
+                subTopic: $('input[name=subTopic]:checked').val(),
+                serviceType: $('#serviceType').val(),
+                productCode: $('#productCode').val(),
+                category: $('#category').val(),
+                subCategory: $('#subCategory').val(),
+                date: $('#date').val()
+            });
+
+            result = validation.validate(['topic', 'subTopic', 'bdType', 'fan', 'addFan', 'installType', 'tvPosition', 'userNm', 'phoneNo', 'zipCode', 'userAddress', 'detailAddress']);
+
+            if (result.success) {
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data;
+
+                    if (data.resultFlag == 'Y') {
+                        $('.time-wrap').timeCalendar({
+                            timeArr: data.timeList,
+                            inputTarget: '#time'
+                        });
+                        $('.time-wrap').find('.box-desc').hide();
+                        $('.time-wrap').find('.box-table').show();
+                    }
+                });
+            }
         },
         reqestEngineer: function(url, param) {
             var self = this;
@@ -309,7 +340,8 @@
             lgkorUI.requestAjaxDataPost(url, param, function(result) {
                 var data = result.data;
 
-                if (data.resultFlag == 'Y') {
+                if (data.resultFlag == 'Y') {  
+                    console.log(data.engineerList[0]);
                     self.updateEngineer(data.engineerList[0]);
 
                     if (data.engineerList.length && data.engineerList.length > 1) {
@@ -330,7 +362,7 @@
                 }
             });
         },
-        updateEngineer: function(data) {
+        updateEngineer: function(data) { console.log(data);
             var self = this,
                 $engineerBox = self.$stepEngineer.find('.engineer-info'),
                 $resultBox = self.$stepEngineer.find('.engineer-desc'),
@@ -338,10 +370,9 @@
                 subTopicNm = self.$stepInput.find('[name=subTopic]:checked').data('subTopicName')
 
             self.$stepEngineer.find('.engineer-img img').attr({
-                'src': data.img,
+                'src': data.image,
                 'alt': data.engineerName
-            });
-
+            });                             
             $engineerBox.find('.name').html(data.engineerName);
             $engineerBox.find('.center').html(data.centerName);
 
@@ -478,18 +509,14 @@
             });
 
             // 날짜 선택
-            $('.tb-calendar').on('click', 'button', function() {
-                $('#date').val('20210125');
-
+            $('.date-wrap').on('dateselected', function() {
                 self.requestTime();
             });
 
             // 시간 선택
-            $('.tb-timetable').on('click', 'button', function() {
+            $('.time-wrap').on('timeselected', function() {
                 var url = self.$stepDate.data('ajax'),
                     param;
-
-                $('#time').val('1530');
 
                 param = {
                     serviceType: $('#serviceType').val(),
