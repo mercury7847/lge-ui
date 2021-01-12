@@ -200,14 +200,19 @@ CS.MD.commonModel = function() {
             self.param = options.param;
             self.summary = options.summary;
 
+            self.$el.find('[type=hidden]').not('[name=serviceType], [name=lockUserId]').val('');
+            
             self.$categoryBox.find('.box').removeClass('on off');
             self.$categoryBox.addClass(options.stepActiveClass);
             self.$modelBox.removeClass(options.stepActiveClass);
             self.$modelBox.find('.keyword-search').hide();
+            self.$modelInput.val('');
             self.$modelSlider.find('.slide-track').empty();
+            self.$modelFilter.find('#categorySelect').vcSelectTarget('reset', 'default');
 
             self.$keywordBox.show();
             self.$keywordBox.find('.desc').hide();
+            self.$keywordInput.val('');
             
             self.$myModelArea.show();
             
