@@ -1,7 +1,7 @@
 (function() {
     var listItemTemplate = '<li>' +
         '<div class="flag-wrap"><span class="flag">{{progress}}</span></div>' +
-        '<p class="title"><a href="#{{id}}">[{{category}}] {{title}}</a>' +
+        '<p class="title"><a href="#{{id}}">{{title}}</a>' +
         '</p>' +
         '<div class="info"><ul>' +
             '<li>접수번호 {{regNumber}}</li>' +

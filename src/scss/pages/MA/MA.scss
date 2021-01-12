@@ -175,6 +175,7 @@
 				}
 				.slide-controls {
 					display:block;
+					margin-top:-16px;
 					.prev {
 						left:-12px;
 					}
@@ -370,14 +371,18 @@
 					ul {
 						li {
 							width:33.33%;
-							.item-box {
-								height:148px;
-								i {
-									width:48px;
-									height:48px;
-								}
-								.cont {
-									padding-left:71px;
+							a {
+								padding:0;
+								.item-box {
+									height:148px;
+									border-radius:0;
+									i {
+										width:48px;
+										height:48px;
+									}
+									.cont {
+										padding-left:71px;
+									}
 								}
 							}
 						}

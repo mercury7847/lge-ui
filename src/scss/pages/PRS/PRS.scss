@@ -402,6 +402,9 @@
 						padding:12px 32px 40px;
 						border-radius:8px;
 						box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+						@include mobile {
+							box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
+						}
 						.flag {
 							position:absolute;
 							top:16px;
@@ -495,6 +498,9 @@
 								border-radius:8px;
 								background-color:#fff;
 								box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+								@include mobile {
+									box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
+								}
 								.img {
 									position:absolute;
 									top:50%;
@@ -796,6 +802,9 @@
 						border-radius:8px;
 						background-color:#fff;
 						box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+						@include mobile {
+							box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
+						}
 						.img {
 							position:absolute;
 							top:50%;
@@ -1151,7 +1160,7 @@
 				}
 			}
 			.new-product-list {
-				padding:0 12px 24px;
+				padding:0 10px 24px;
 				.slide-track {
 					.slide-conts {
 						max-width:100%;
@@ -1180,7 +1189,7 @@
 			.product-recom-slide {
 				.slide-content {
 					.slide-conts {
-						padding:12px;
+						padding:6px 16px;
 						.slide-box {
 							height:130px;
 							padding:18px 12px;
