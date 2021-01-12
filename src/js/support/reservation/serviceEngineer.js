@@ -388,7 +388,7 @@
             $engineerBox.find('.name').html(data.engineerName);
             $engineerBox.find('.center').html(data.centerName);
 
-            $resultBox.find('.date').html('2020.08.17 11:20');
+            $resultBox.find('.date').html(vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm"));
             $resultBox.find('.name').html(topicNm + '&gt;' + subTopicNm);
 
             $('#engineerNm').val(data.engineerName);

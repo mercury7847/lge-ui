@@ -738,7 +738,8 @@ CS.MD.calendar = function() {
             },
             caption: '캘린더입니다. 글은 일요일, 월요일, 화요일, 수요일, 목요일, 금요일, 토요일 순으로 나옵니다',
             colWidth: '32px', // 셀 너비
-            format: 'yyyy.MM.dd'
+            format: 'yyyy.MM.dd',
+            paramFormat: 'yyyyMMdd'
         };
 
         self.options = $.extend({}, defaults, opt);
@@ -778,7 +779,7 @@ CS.MD.calendar = function() {
 
             self.$el.find(self.$calendar).off('.calendar').on('click.calendar', '.arrow', function (e) {
                 var $el = $(e.currentTarget),
-                    isPrev = $el.hasClass('prev');
+                    isPrev = $el.hasClass('prev')
 
                 if ($el.hasClass('disabled')) {
                     return;
@@ -795,13 +796,14 @@ CS.MD.calendar = function() {
 
                 var $this = $(this).closest('td'),
                     data = $this.data(),
-                    date = new Date(data.year, data.month - 1, data.day);
+                    date = new Date(data.year, data.month -1, data.day),
+                    format = dateUtil.format(date, opts.paramFormat || '');
 
                 self.$calendar.find('.choice').removeClass('choice');
                 self.activeDate = date;
                 $this.addClass('choice');
                 if (opts.inputTarget) {
-                    self.$input.val(data.year + '' + (data.month - 1) + '' + data.day);
+                    self.$input.val(format);
                 }
 
                 self.$el.trigger('dateselected');
