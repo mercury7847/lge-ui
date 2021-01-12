@@ -298,6 +298,12 @@
                         self.$stepDate.addClass('active');
                         self.$stepEngineer.removeClass('active');
                         self.$completeBtns.hide();
+                    } else {
+                        if (data.resultMessage) {
+                            lgkorUI.alert('', {
+                                title: data.resultMessage
+                            });
+                        }
                     }
                 });
             }
@@ -330,6 +336,12 @@
                         });
                         $('.time-wrap').find('.box-desc').hide();
                         $('.time-wrap').find('.box-table').show();
+                    } else {
+                        if (data.resultMessage) {
+                            lgkorUI.alert('', {
+                                title: data.resultMessage
+                            });
+                        }
                     }
                 });
             }
@@ -540,10 +552,36 @@
 
             // 엔지니어 선택
             self.$engineerPopup.find('.btn-group .btn').on('click', function() {
-                var $this = self.$engineerPopup.find('[name=engineer]').filter(':checked'),
-                    data = $this.data();
+                var url = self.$engineerPopup.data('lockUrl'),
+                    $this = self.$engineerPopup.find('[name=engineer]').filter(':checked'),
+                    infoData = $this.data(),
+                    param;
 
-                self.updateEngineer(data);
+                param = {
+                    serviceType: $('#serviceType').val(),
+                    date: $('#date').val(),
+                    time: $('#time').val(),
+                    lockUserId: $('#lockUserId').val(),
+                    productCode: $('#productCode').val(),
+                    engineerCode: $('#engineerCode').val(),
+                    centerCode: $('#centerCode').val() 
+                }
+
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data;
+
+                    if (data.resultFlag == 'Y') {
+                        self.updateEngineer(infoData);
+                    } else {
+                        if (data.resultMessage) {
+                            self.$engineerPopup.vcModal('hide');
+                            
+                            lgkorUI.alert('', {
+                                title: data.resultMessage
+                            });
+                        }
+                    }
+                });
             });
 
             // 신청 완료
