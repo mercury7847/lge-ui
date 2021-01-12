@@ -32,7 +32,7 @@
 	}
 
 	.image-text-wrap {
-		display: flex;
+        display: flex;
 		@include mobile {
 			display: block;
 		}
@@ -154,7 +154,10 @@
 					}
 				}
 			}
-		}
+        }
+        .controller-wrap {
+            z-index:10;
+        }
 	}
 
 	.text-area.carousel-box {
