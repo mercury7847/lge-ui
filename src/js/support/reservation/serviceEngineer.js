@@ -203,6 +203,14 @@
                     register: register
                 });
 
+                $('.date-wrap').calendar({
+                    inputTarget: '#date'
+                });
+
+                $('.time-wrap').timeCalendar({
+                    inputTarget: '#time'
+                });
+
                 self.bindEvent();
             });
         },
@@ -289,10 +297,7 @@
                     var data = result.data;
 
                     if (data.resultFlag == 'Y') {
-                        $('.date-wrap').calendar({
-                            dateArr: data.dateList,
-                            inputTarget: '#date'
-                        });
+                        $('.date-wrap').calendar('update', data.dateList);
                         
                         self.dateParam = result.param;
 
@@ -325,7 +330,7 @@
                 subCategory: $('#subCategory').val(),
                 date: $('#date').val()
             });
-
+            console.log(self.dateParam.zipId);
             param['zipId'] = self.dateParam.zipId;
 
             result = validation.validate(['topic', 'subTopic', 'bdType', 'fan', 'addFan', 'installType', 'tvPosition', 'userNm', 'phoneNo', 'zipCode', 'userAddress', 'detailAddress']);
@@ -335,10 +340,7 @@
                     var data = result.data;
 
                     if (data.resultFlag == 'Y') {
-                        $('.time-wrap').timeCalendar({
-                            timeArr: data.timeList,
-                            inputTarget: '#time'
-                        });
+                        $('.time-wrap').timeCalendar('update', data.timeList);
                         $('.time-wrap').find('.box-desc').hide();
                         $('.time-wrap').find('.box-table').show();
                     } else {
@@ -426,7 +428,14 @@
         },
         bindEvent: function() {
             var self = this;
-
+            self.$cont.on('reset', function() {
+                self.$solutionsBanner.hide();
+                self.$fanBox.hide();
+                self.$bdTypeBox.hide();
+                self.$tvPositionBox.hide();
+                self.$installTypeBox.hide();
+                self.$addFanBox.hide();
+            });
             // 모델 선택 후 이벤트
             self.$cont.on('complete', function(e, module, info, data, callback) {    
                 // 에어컨 > 시스템 에어컨 선택 시

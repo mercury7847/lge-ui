@@ -107,6 +107,14 @@
                     register: register
                 });
 
+                $('.date-wrap').calendar({
+                    inputTarget: '#date'
+                });
+
+                $('.time-wrap').timeCalendar({
+                    inputTarget: '#time'
+                });
+
                 self.bindEvent();
             });
         },
@@ -193,12 +201,7 @@
                     var data = result.data;
 
                     if (data.resultFlag == 'Y') {
-                        $('.time-wrap').timeCalendar({
-                            timeArr: data.timeList,
-                            inputTarget: '#time'
-                        });
-                        $('.time-wrap').find('.box-desc').hide();
-                        $('.time-wrap').find('.box-table').show();
+                        $('.time-wrap').timeCalendar('update', data.timeList);
                     } else {
                         if (data.resultMessage) {
                             lgkorUI.alert('', {
@@ -233,6 +236,10 @@
         bindEvent: function() {
             var self = this;
             
+            self.$cont.on('reset', function() {
+                self.$solutionsBanner.hide();
+            });
+
             // 모델 선택 후 이벤트
             self.$cont.on('complete', function(e, module, info, data, callback) {
                 self.setTopicList(data);
