@@ -55,9 +55,17 @@
     </section>
     <footer class="pop-footer">
         <div class="btn-group center">
-            <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+            <button type="button" class="btn gray btn-confirm"><span>취소</span></button>
             <button type="button" class="btn pink"><span>확인</span></button>
         </div>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
 </article>
+
+<!-- 예약 취소 클릭 팝업 -->
+@@include('./common/modules/alert-modal.html', {
+    "popId" : "completePop",
+    "msgOnly" : true,
+    "msg" : "예약 취소가 완료되지 않았습니다.<br />중단하시겠습니까?",
+    "twobtn" : true
+})
