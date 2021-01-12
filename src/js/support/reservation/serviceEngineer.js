@@ -293,6 +293,8 @@
                             dateArr: data.dateList,
                             inputTarget: '#date'
                         });
+                        
+                        self.dateParam = result.param;
 
                         self.$stepInput.find('.step-btn-wrap').hide();
                         self.$stepDate.addClass('active');
@@ -309,7 +311,8 @@
             }
         },
         requestTime: function() {
-            var url = $('.calendar-area').data('timeUrl'),
+            var self = this,
+                url = $('.calendar-area').data('timeUrl'),
                 param = validation.getAllValues(),
                 result;
 
@@ -322,6 +325,8 @@
                 subCategory: $('#subCategory').val(),
                 date: $('#date').val()
             });
+
+            param['zipId'] = self.dateParam.zipId;
 
             result = validation.validate(['topic', 'subTopic', 'bdType', 'fan', 'addFan', 'installType', 'tvPosition', 'userNm', 'phoneNo', 'zipCode', 'userAddress', 'detailAddress']);
 
@@ -348,6 +353,8 @@
         },
         reqestEngineer: function(url, param) {
             var self = this;
+
+            param = $.extend(param, self.dateParam);
 
             lgkorUI.requestAjaxDataPost(url, param, function(result) {
                 var data = result.data;

@@ -328,6 +328,7 @@
         }
         .result-header-btn{
             border-bottom:1px solid #ddd;
+            background-color:#fff;
             .btn-group{
                 margin-top:0;
                 max-width:1460px;
@@ -358,6 +359,18 @@
                     .btn{
                         width:calc(50% - 8px);
                         margin:0 0 12px 0;
+                    }
+                }
+            }
+            .reception-progress{
+                &.type-2
+                {
+                    &.step-3{
+                        padding:0;
+                        li::after{
+                            width:100%;
+                            left:-50%;
+                        }
                     }
                 }
             }

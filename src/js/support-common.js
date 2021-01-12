@@ -1014,6 +1014,24 @@ CS.MD.calendar = function() {
             week.length && data.push(week);
             return data;
         },
+        update: function update(dateArr) {
+            var self = this,
+                arr = [];
+
+            self.dateArr = dateArr;
+
+            for (var i = 0; i < self.dateArr.length; i++) {
+                arr.push(vcui.date.parse(self.dateArr[i]));
+            }
+
+            self.currDate = arr[0];
+
+            if (self.options.inputTarget) {
+                self.$input = $(self.options.inputTarget);
+            }
+
+            self._render();
+        },
         /**
          * 이전달
          * @returns {Calendar}
