@@ -454,14 +454,11 @@
                 return;
             }
             
-            _currentItemList = vcui.array.map(result.data.productList, function(item, idx){
+            _currentItemList = vcui.array.map(result.data.productList, function(item, idx){                
                 item['index'] = idx+1;
                 item["serviceName"] = serviceName;
 
-                var key;
-                for(key in item.siblingFee) item.siblingFee[key].siblingCode = item.siblingFee[key].siblingCode.toString();
-                for(key in item.siblingUsePeriod) item.siblingUsePeriod[key].siblingCode = item.siblingUsePeriod[key].siblingCode.toString();
-                for(key in item.siblingVisitCycle) item.siblingVisitCycle[key].siblingCode = item.siblingVisitCycle[key].siblingCode.toString();
+                setSiblingCodeNumbering(item);
 
                 return item;
             });
@@ -476,6 +473,13 @@
 
             addProdItemList();
         });
+    }
+
+    function setSiblingCodeNumbering(item){
+        var key;
+        for(key in item.siblingFee) item.siblingFee[key].siblingCode = item.siblingFee[key].siblingCode.toString();
+        for(key in item.siblingUsePeriod) item.siblingUsePeriod[key].siblingCode = item.siblingUsePeriod[key].siblingCode.toString();
+        for(key in item.siblingVisitCycle) item.siblingVisitCycle[key].siblingCode = item.siblingVisitCycle[key].siblingCode.toString();
     }
 
     //서비스 변경...
@@ -568,7 +572,8 @@
 
             var blockID = result.data.blockID;
             
-            for(var key in result.data){
+            setSiblingCodeNumbering(result.data);
+            for(var key in result.data){                
                 _currentItemList[blockID][key] = result.data[key];
             }
 

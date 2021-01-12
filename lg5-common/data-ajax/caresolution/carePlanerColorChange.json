@@ -29,10 +29,10 @@
                 "siblingValue": "Opal_Blue"
             }
         ],
-        "selectFeeID": "납부_code",
+        "selectFeeID": 0,
         "siblingFee": [
             {
-                "siblingCode": "납부_code",
+                "siblingCode": 0,
                 "siblingValue": "납부"
             },
             {
