@@ -3,10 +3,12 @@
     "message": null,
     "data": {
         "resultFlag": "Y",
+        "resultMessage": "",
         "dateList": [
             "20210119", "20210120", "20210123",
             "20210203", "20210204"
-        ]
+        ],
+        "tAlert": "N"
     },
     "param": {
         "refineGHighAddr": "",
