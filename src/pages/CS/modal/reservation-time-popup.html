@@ -252,7 +252,7 @@
         <div class="cellphone-cert">
             <div class="item">
                 <div class="tit-wrap">
-                    <h3 class="tit">휴대 전화 인증</h3>        
+                    <label for="certi-phone"><h3 class="tit">휴대 전화 인증</h3></label>        
                 </div>
                 <form action="">
                     <div class="form-wrap">
@@ -260,10 +260,16 @@
                             <div class="conts">
                                 <div class="box">
                                     <div class="cell">
-                                        <button type="button" class="btn"><span>인증 번호 발송</span></button>
+                                        <button type="button" name="certi-phone" id="certi-number" class="btn" data-msg-target="인증 번호 발송 버튼을 선택해 주세요." data-required="true" required><span>인증 번호 발송</span></button>
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
                                     </div>
                                     <div class="input-wrap">
-                                        <input type="number" name="certi-phone" id="certi-number" placeholder="인증번호 발송 버튼 선택 후, 인증 번호를 입력"  data-msg-target=".err-msg" required disabled>
+                                        <input type="number" name="certi-phone" id="certi-number" placeholder="인증번호 발송 버튼 선택 후, 인증 번호를 입력" data-msg-target=".err-msg" data-required="true" required disabled>
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
