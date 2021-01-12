@@ -367,8 +367,8 @@
         $putItemContainer.on('click', 'button.btn-del', function(e){
             e.preventDefault();
 
-            var modelId = $(this).data('modelId');
-            removePutItem(modelId);
+            var itenIdx = $(this).closest('li').index();
+            removePutItem(itenIdx);
         }).on('click', 'button.btn-close', function(e){
             e.preventDefault();
 
@@ -535,6 +535,8 @@
             }
             
             var blockID = result.data.blockID;
+
+            console.log("result.data :", result.data);
             
             _currentItemList[blockID]["rtModelSeq"] = result.data["rtModelSeq"];
             _currentItemList[blockID]["monthlyPrice"] = result.data["monthPrice"];
@@ -645,9 +647,7 @@
     function removePutItem(id){
         console.log(id)
         console.log(_putItemList);
-        _putItemList = vcui.array.filter(_putItemList, function(item){
-            return item.modelId != id;
-        });
+        _putItemList.splice(id, 1);
         console.log(_putItemList);
 
         var sendata = {
