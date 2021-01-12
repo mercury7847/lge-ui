@@ -444,11 +444,8 @@
         var completed = false;
         console.log("step1 validation start!!");
         var result = step1Validation.validate();
+        var data = getInputData('creditInquire');
         if(result.success){
-            console.log("step1Validation.validate(); Success!!!");
-
-            var data = getInputData('creditInquire');
-            console.log("creditInquire :", data);
             completed = data === "Y" ? true : false;
             if(!completed){
                 lgkorUI.alert("", {
@@ -456,7 +453,16 @@
                 });
             }
         } else{
-            console.log("step1Validation.validate(); Fail!!!", result.validItem);
+            var leng = Object.keys(result.validItem).length;
+            if(data == "Y"){
+                if(leng == 1) completed = true;
+            } else{
+                if(leng == 1){
+                    lgkorUI.alert("", {
+                        title: "신용정보 조회로 계약 가능 여부<br>확인이 필요합니다."
+                    });
+                }
+            }
         }
 
         return completed;
