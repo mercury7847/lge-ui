@@ -186,6 +186,8 @@ CS.MD.commonModel = function() {
                 ]
             });
 
+            self.caseType = 'product';
+
             lgkorUI.searchModelName();
         },
         reset: function() {
@@ -201,15 +203,14 @@ CS.MD.commonModel = function() {
             self.$categoryBox.find('.box').removeClass('on off');
             self.$categoryBox.addClass(options.stepActiveClass);
             self.$modelBox.removeClass(options.stepActiveClass);
+            self.$modelBox.find('.keyword-search').hide();
             self.$modelSlider.find('.slide-track').empty();
 
             self.$keywordBox.show();
             self.$keywordBox.find('.desc').hide();
-            self.$modelBox.find('.keyword-search').hide();
             
-
             self.$myModelArea.show();
-
+            
             self._updateSummary();
             self._next(self.caseType == 'product' ? self.$stepModel : self.$stepInquiry);
         },
