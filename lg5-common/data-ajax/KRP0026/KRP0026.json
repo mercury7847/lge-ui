@@ -1,0 +1,103 @@
+{
+    "status":"success",
+    "message":null,
+    "data": [
+        {
+            "categoryID":"all",
+            "categoryName":"전체",
+            "top":[
+                {
+                    "imageUrl":"/lg5-common/images/KRP0026/img-story-02.jpg",
+                    "imageAlt":"LG 페이",
+                    "title":"LG 페이",
+                    "imageDescPC":"LG 페이",
+                    "imageDescMobile":"LG 페이",
+                    "desc":"LG페이로 더 쉽게 결제하세요."
+                },
+                {
+                    "imageUrl":"/lg5-common/images/KRP0026/img-story-03.jpg",
+                    "imageAlt":"타이틀 텍스트는 최대 24자까지 작성권장합니다 작성권장합니다",
+                    "title":"타이틀 텍스트는 최대 24자까지 작성권장합니다 작성권장합니다",
+                    "imageDescPC":"타이틀 텍스트는 최대 24자까지 작성권장합니다 작성권장합니다",
+                    "imageDescMobile":"타이틀 텍스트는 최대 24자까지 작성권장합니다 작성권장합니다",
+                    "desc":"나의 소중한 데이터,<br>LG 모바일 스위치로 이어가세요. 나의 소중한 데이터"
+                },
+                {
+                    "imageUrl":"/lg5-common/images/KRP0026/img-story-01.jpg",
+                    "imageAlt":"LG 듀얼스크린",
+                    "title":"LG 듀얼스크린",
+                    "imageDescPC":"LG 듀얼스크린",
+                    "imageDescMobile":"LG 듀얼스크린",
+                    "desc":"놀라운 5G로 제대로 즐기자!"
+                }
+            ],
+            "listCount":"63",
+            "listData":[
+                {
+                    "imageUrl":"/lg5-common/images/KRP0026/@img-list.jpg",
+                    "imageAlt":"LG 디오스 식기세척기",
+                    "title":"LG 디오스 식기세척기",
+                    "imageDescPC":"LG 디오스 식기세척기",
+                    "imageDescMobile":"LG 디오스 식기세척기",
+                    "desc":"공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과 공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과",
+                    "flag":[
+                        "뉴스구분"
+                    ],
+                    "hash":[
+                        "건강",
+                        "봄"
+                    ],
+                    "date":"20210110"
+                },
+                {
+                    "imageUrl":"/lg5-common/images/KRP0026/@img-list.jpg",
+                    "imageAlt":"LG 디오스 식기세척기",
+                    "title":"LG 디오스 식기세척기",
+                    "imageDescPC":"LG 디오스 식기세척기",
+                    "imageDescMobile":"LG 디오스 식기세척기",
+                    "desc":"공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과 공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과",
+                    "flag":[
+                        "뉴스구분"
+                    ],
+                    "hash":[
+                        "건강",
+                        "여름"
+                    ],
+                    "date":"20210111"
+                },
+                {
+                    "imageUrl":"/lg5-common/images/KRP0026/@img-list.jpg",
+                    "imageAlt":"LG 디오스 식기세척기",
+                    "title":"LG 디오스 식기세척기",
+                    "imageDescPC":"LG 디오스 식기세척기",
+                    "imageDescMobile":"LG 디오스 식기세척기",
+                    "desc":"공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과 공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과",
+                    "flag":[
+                        "뉴스구분"
+                    ],
+                    "hash":[
+                        "건강",
+                        "가을"
+                    ],
+                    "date":"20210112"
+                },
+                {
+                    "imageUrl":"/lg5-common/images/KRP0026/@img-list.jpg",
+                    "imageAlt":"LG 디오스 식기세척기",
+                    "title":"LG 디오스 식기세척기",
+                    "imageDescPC":"LG 디오스 식기세척기",
+                    "imageDescMobile":"LG 디오스 식기세척기",
+                    "desc":"공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과 공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과",
+                    "flag":[
+                        "뉴스구분"
+                    ],
+                    "hash":[
+                        "건강",
+                        "겨울"
+                    ],
+                    "date":"20210113"
+                }
+            ]
+        }
+    ]
+}

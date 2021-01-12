@@ -24,6 +24,7 @@
             ],
             "date":"당첨자 발표예정일 : 매월 15일",
             "endEvent":false,
+            "showEndEventUrl":false,
             "endEventUrl":null
         },
         {
@@ -41,6 +42,7 @@
             ],
             "date":"당첨자 발표예정일 : 매월 16일",
             "endEvent":false,
+            "showEndEventUrl":true,
             "endEventUrl":null
         },
         {
@@ -58,6 +60,7 @@
             ],
             "date":"당첨자 발표예정일 : 매월 17일",
             "endEvent":true,
+            "showEndEventUrl":true,
             "endEventUrl":"/lg5-common/data-ajax/caresolution/caresolutionTip.html"
         }
     ]
