@@ -48,12 +48,16 @@ vcui.define('ui/selectTarget', ['jquery', 'vcui'], function ($, core) {
                 lgkorUI.hideLoading();
             });
         },
-        reset: function() {
+        reset: function(resetFlag) {
             var self = this;
             var $target = $(self.options.target);
 
+            self.$el.find('option:first-child').prop('selected', true);
             $target.find('option:not(.'+self.options.placeholderClass+', .default)').remove();
-            $target.prop('disabled', true);
+            if (resetFlag == 'placeholder') {
+                $target.prop('disabled', true);
+            }
+            self.$el.vcSelectbox('update');
             $target.vcSelectbox('update');
         },
         draw: function(data, value) {
@@ -75,13 +79,14 @@ vcui.define('ui/selectTarget', ['jquery', 'vcui'], function ($, core) {
             var self = this;
 
             self.$el.on('change', function(e, value) {
-                var resetFlag = $(this.options[this.selectedIndex]).hasClass(self.options.placeholderClass, '.default');
+                var $selectOpt = $(this.options[this.selectedIndex]);
+                var resetFlag = $selectOpt.hasClass(self.options.placeholderClass) ? 'placeholder' : ($selectOpt.hasClass('default') ? 'default' : '') ;
                 var params = $(this).serialize();
 
                 if (self.options.addParam) params += '&' + $(self.options.addParam).serialize();
                 
                 if (resetFlag) {
-                    self.reset();
+                    self.reset(resetFlag);
                 } else {
                     self._requestData(params, value);
                 }
