@@ -312,11 +312,16 @@
                 lgkorUI.requestAjaxData(self.subwayUrl, {codeType:'SUBWAY', pcode:e.target.value}, function(result){
                     self._setSubwayOption(result.data, self.$subwayLineSelect, {title:"호선 선택", value:""}, "code");
                 });
+                self.$subwayLineSelect.prop('disabled', false);
             });
             self.$subwayLineSelect.on('change', function(e){
                 lgkorUI.requestAjaxData(self.stationUrl, {codeType:'SUBWAY', pcode:e.target.value}, function(result){
                     self._setSubwayOption(result.data, self.$subwayStationSelect, {title:"역 선택", value:""}, "codeName");
                 });
+                self.$subwayStationSelect.prop('disabled', false);
+            });
+            self.$subwayLineSelect.on('change', function(e){
+                self.$searchSubwayButton.prop('disabled', false);
             });
             self.$searchSubwayButton.on('click', function(e){
                 self._setSubwaySearch();

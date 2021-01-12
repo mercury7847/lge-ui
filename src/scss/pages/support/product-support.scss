@@ -3,120 +3,6 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
-// 상단 가이드바
-.guide-wrap {
-    height:84px;
-    background:#222;
-    .guide-bar {
-        display:flex;
-        height:100%;
-        max-width:1146px + 40px;
-        margin:0 auto;
-        padding:0 40px;
-        justify-content:space-between;
-        align-items:center;
-        & > button, a {
-            border:0 none;
-        }
-        @include mobile {
-            padding:20px 16px;
-        }
-    }
-    .product-list {
-        @include mobile {
-            padding-right:12px;
-        }
-    }
-    .category-box {
-        position:relative;
-        float:left;
-        width:327px;
-        padding-right:24px;
-        &:after {
-            content:'';
-            position:absolute;
-            right:0;
-            top:1px;
-            width:24px;
-            height:24px;
-            background:url('/lg5-common/images/icons/btn-arrow-right-white-20.svg') no-repeat;
-            background-size:100%;
-        }
-        p, .category-list {
-            color:#fff;
-            @include font-medium;
-            font-weight:700;
-        }
-        .category-list {
-            @include clearfix;
-            & > li {
-                float:left;
-                & + li {
-                    position:relative;
-                    &:before {
-                        content:'\003E';
-                        display:inline-block;
-                        padding:0 4px;
-                    }
-                }
-            }
-        }
-        @include mobile {
-            float:none;
-            width:100%;
-            padding-right:0;
-            &:after {
-                content:none;
-            }
-        }
-    }
-    .model-box {
-        float:left;
-        margin-left:40px;
-        font-size:0;
-        p {
-            display:inline-block;
-            color:#fff;
-            @include font-medium;
-            vertical-align:middle;
-        }
-        .btn-add {
-            display:inline-block;
-            margin-left:24px;
-            padding-right:22px;
-            color:#fff;
-            @include font-small;
-            font-weight:500;
-            vertical-align:middle;
-            background:url('/lg5-common/images/icons/icon-more-pk-20.svg') no-repeat;
-            background-size:20px;
-            background-position:top 3px right;
-        }
-        @include mobile {
-            float:none;
-            margin:4px 0 0;
-            .btn-add {
-                margin-left:12px;
-                background-position:top 1px right;
-            }
-        }
-    }
-    .btn-select {
-        padding:6px 16px;
-        color:#222;
-        font-size:14px;
-        line-height:24px;
-        border-radius:19px;
-        background:#fff;
-        span {
-            padding-left:28px;
-            background:url('/lg5-common/images/icons/icon-reset-20.svg') no-repeat;
-            background-size:20px;
-            background-position:top left;
-        }
-    }
-}
-
 .support {
     /* common */
     .survey-banner-wrap {
@@ -172,8 +58,11 @@
         }
     }
     .driver-section {
+        .banner-wrap {
+            margin:0 0 40px;
+        }
         .form-wrap {
-            margin-bottom:48px;
+            margin-bottom:32px;
             @include clearfix;
             .forms {
                 float:left;
@@ -199,7 +88,7 @@
             }
         }
         .tabs-wrap {
-            margin-bottom:24px;
+            margin-bottom:12px;
         }
         @include mobile {
             .form-wrap {
@@ -256,7 +145,7 @@
                 font-size:0;
                 .btn-back {
                     position:absolute;
-                    top:0;
+                    top:4px;
                     left:0;
                     width:24px;
                     height:24px;

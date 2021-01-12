@@ -648,11 +648,11 @@
                 window.open('', 'nicePopUp', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
                 document.form_chk.action = result.data.niceAntionUrl;
                 document.form_chk.EncodeData.value = result.data.sEncData;
-                document.form_chk.target = "nicePopUp";
+                document.form_chk.param_r1.value = result.data.param_r1;
+                document.form_chk.param_r2.value = result.data.param_r2;
+                document.form_chk.param_r3.value = result.data.param_r3;
                 document.form_chk.m.value = "safekeyService";
-                document.form_chk.param_r1.value = "I";
-                document.form_chk.param_r2.value = "";
-                document.form_chk.param_r3.value = "";
+                document.form_chk.target = "nicePopUp";
                 document.form_chk.submit();
 
                 $('.niceChker').show();

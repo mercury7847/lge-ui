@@ -1,268 +1,279 @@
+<!-- 
+    data-model-url : 모델 리스트
+    data-result-url : 모델 선택 시
+ -->
 <div class="prod-search-wrap" data-model-url="/lg5-common/data-ajax/support/commonModelList.json" data-result-url="/lg5-common/data-ajax/support/commonModelSelected.json">
+    <!-- 활성화 시 active 추가 -->
+    
     <!-- 키워드 검색 -->
-    <div class="keyword-search">
-        <div class="search-box">
-            <div class="search-input">
-                <div class="input-wrap">
-                    <input type="text" name="keyword01" id="keyword01" class="ui_input_clearbutton" placeholder="제품명, 모델명 직접 검색" title="제품명, 모델명 직접 검색" data-clear-button="button.btn-delete" data-error-msg="모델명을 두 글자 이상 입력해 주세요." data-required="true">
-                    <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
-                    <button type="button" class="btn-search"><span class="blind">검색</span></button>
+    <div class="keyword-box active">
+        <div class="keyword-search">
+            <div class="search-box">
+                <div class="search-input">
+                    <div class="input-wrap">
+                        <input type="text" id="keyword01" class="ui_input_clearbutton" placeholder="제품명, 모델명 직접 검색" title="제품명, 모델명 직접 검색"  data-clear-button="button.btn-delete">
+                        <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+                        <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                    </div>
+                    <button type="button" class="btn dark-gray size question" data-href="#modelNamePopup" data-control="modal"><span>모델명 확인방법</span></button>
                 </div>
-                <button type="button" class="btn dark-gray size question" data-href="#modelNamePopup" data-control="modal"><span>모델명 확인방법</span></button>
+                <p class="err-msg">모델명을 두 글자 이상 입력해 주세요.</p>
+                <p class="desc">모델명을 입력해보세요. 입력하신 모델명과 일치하는 모델을 쉽게 찾으실 수 있습니다.</p> 
             </div>
-            <p class="err-msg"></p>
         </div>
     </div>
     <!-- // 키워드 검색 -->
 
     <!-- 카테고리 선택 -->
-    <div class="category-search active">
-        <ul>
-            @@for (var i = 0; i < category.length; i++) {
-            <li>
-                <div class="box">
-                    <div class="category">
-                        <p class="category-tit">`+category[i].name+`</p>
-                        <div class="category-thumb">
-                            <img src="`+category[i].imgSrc+`" alt="`+category[i].imgAlt+`">
+    <div class="category-box active">
+        <div class="category-list-wrap">
+            <ul class="category-list">
+                @@for (var i = 0; i < category.length; i++) {
+                <li>
+                    <div class="box">
+                        <div class="category">
+                            <p class="category-tit">`+category[i].name+`</p>
+                            <div class="category-thumb">
+                                <img src="`+category[i].imgSrc+`" alt="`+category[i].imgAlt+`">
+                            </div>
+                            <button type="button" class="btn-open"><span class="blind">카테고리 선택</span></button>
                         </div>
-                        <button type="button" class="btn-open"><span class="blind">카테고리 선택</span></button>
-                    </div>
-                    <div class="sub-category">
-                        <ul class="sub-category-list">
-                            <!-- 모바일 -->
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="C000136" data-name="`+category[i].name+`" data-sub-name="스마트폰">스마트폰</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="D002667" data-name="`+category[i].name+`" data-sub-name="태블릿">태블릿</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="C000135" data-name="`+category[i].name+`" data-sub-name="일반폰">일반폰</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="D002742" data-name="`+category[i].name+`" data-sub-name="G워치">G워치</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="S010000" data-name="`+category[i].name+`" data-sub-name="프렌즈">프렌즈</button>
-                            </li>
-                            
-                            <!-- TV/프로젝터 -->
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1040" data-name="`+category[i].name+`" data-sub-name="올레드">올레드</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="D002795" data-name="`+category[i].name+`" data-sub-name="울트라 HD">울트라 HD</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1041" data-name="`+category[i].name+`" data-sub-name="LED/LCD">LED/LCD</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1008" data-name="`+category[i].name+`" data-sub-name="빔프로젝터">빔프로젝터</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1043" data-name="`+category[i].name+`" data-sub-name="PDP">PDP</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1044" data-name="`+category[i].name+`" data-sub-name="일반/슬림">일반/슬림</button>
-                            </li>
-                            
-                            <!-- IT/모니터 -->
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1011" data-name="`+category[i].name+`" data-sub-name="노트북/탭북">노트북/탭북</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1012" data-name="`+category[i].name+`" data-sub-name="데스크톱/일체형">데스크톱/일체형</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1013" data-name="`+category[i].name+`" data-sub-name="모니터">모니터</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1068" data-name="`+category[i].name+`" data-sub-name="잉크젯프린터">잉크젯프린터</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1069" data-name="`+category[i].name+`" data-sub-name="레이저프린터">레이저프린터</button>
-                            </li>
-                            
-                            <!-- 에어컨 -->
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1076" data-name="`+category[i].name+`" data-sub-name="3in1/2in1">3in1/2in1</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1078" data-name="`+category[i].name+`" data-sub-name="가정용 스탠드형">가정용 스탠드형</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1084" data-name="`+category[i].name+`" data-sub-name="업소용 스탠드형">업소용 스탠드형</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1079" data-name="`+category[i].name+`" data-sub-name="벽걸이형">벽걸이형</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1083" data-name="`+category[i].name+`" data-sub-name="창문형/이동식">창문형/이동식</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1129" data-name="`+category[i].name+`" data-sub-name="시스템에어컨">시스템에어컨</button>
-                            </li>
-                            
-                            <!-- 냉장/냉동고 -->
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1098" data-name="`+category[i].name+`" data-sub-name="양문형">양문형</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1099" data-name="`+category[i].name+`" data-sub-name="일반형">일반형</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1100" data-name="`+category[i].name+`" data-sub-name="업소용">업소용</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1026" data-name="`+category[i].name+`" data-sub-name="김치 냉장고">김치 냉장고</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1027" data-name="`+category[i].name+`" data-sub-name="와인셀러">와인셀러</button>
-                            </li>
-                            
-                            <!-- 세탁기/스타일러 -->
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1086" data-name="`+category[i].name+`" data-sub-name="드럼 세탁기">드럼 세탁기</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1087" data-name="`+category[i].name+`" data-sub-name="일반 세탁기">일반 세탁기</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1022" data-name="`+category[i].name+`" data-sub-name="스타일러">스타일러</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1021" data-name="`+category[i].name+`" data-sub-name="의류 건조기">의류 건조기</button>
-                            </li>
-                            
-                            <!-- 청소기 -->
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1092" data-name="`+category[i].name+`" data-sub-name="로봇">로봇</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1093" data-name="`+category[i].name+`" data-sub-name="스팀">스팀</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1094" data-name="`+category[i].name+`" data-sub-name="싸이킹">싸이킹</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1095" data-name="`+category[i].name+`" data-sub-name="일반/핸디형">일반/핸디형</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1097" data-name="`+category[i].name+`" data-sub-name="업소용">업소용</button>
-                            </li>
-                            
-                            <!-- 조리/세척기기 -->
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1029" data-name="`+category[i].name+`" data-sub-name="광파오븐">광파오븐</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1030" data-name="`+category[i].name+`" data-sub-name="전자레인지">전자레인지</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1031" data-name="`+category[i].name+`" data-sub-name="가스오븐">가스오븐</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="B002722" data-name="`+category[i].name+`" data-sub-name="가스레인지">가스레인지</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="C002835" data-name="`+category[i].name+`" data-sub-name="전기레인지">전기레인지</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1032" data-name="`+category[i].name+`" data-sub-name="식기세척기">식기세척기</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="C002992" data-name="`+category[i].name+`" data-sub-name="맥주제조기">맥주제조기</button>
-                            </li>
-                            
-                            <!-- 건강/소형기기 -->
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1034" data-name="`+category[i].name+`" data-sub-name="정수기">정수기</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1035" data-name="`+category[i].name+`" data-sub-name="이온수기">이온수기</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1036" data-name="`+category[i].name+`" data-sub-name="안마의자">안마의자</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1037" data-name="`+category[i].name+`" data-sub-name="공기청정기">공기청정기</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1038" data-name="`+category[i].name+`" data-sub-name="가습기">가습기</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1024" data-name="`+category[i].name+`" data-sub-name="제습기">제습기</button>
-                            </li>
-                            
-                            <!-- AV/음향기기 -->
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1006" data-name="`+category[i].name+`" data-sub-name="사운드바/홈씨어터">사운드바/홈씨어터</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1009" data-name="`+category[i].name+`" data-sub-name="오디오">오디오</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1048" data-name="`+category[i].name+`" data-sub-name="블루레이">블루레이</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1049" data-name="`+category[i].name+`" data-sub-name="DVD">DVD</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="B000132" data-name="`+category[i].name+`" data-sub-name="비디오">비디오</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="B000134" data-name="`+category[i].name+`" data-sub-name="셋톱박스">셋톱박스</button>
-                            </li>
-                            
-                            <!-- 기타 -->
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="C002945" data-name="`+category[i].name+`" data-sub-name="뷰티/헤어 케어">뷰티/헤어 케어</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="B002910" data-name="`+category[i].name+`" data-sub-name="IoT 기기">IoT 기기</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="C002804" data-name="`+category[i].name+`" data-sub-name="블루투스헤드셋">블루투스헤드셋</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1014" data-name="`+category[i].name+`" data-sub-name="넷하드">넷하드</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="C002815" data-name="`+category[i].name+`" data-sub-name="키즈패드">키즈패드</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1074" data-name="`+category[i].name+`" data-sub-name="외장하드/메모리">외장하드/메모리</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="D002623" data-name="`+category[i].name+`" data-sub-name="포켓포토">포켓포토</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1016" data-name="`+category[i].name+`" data-sub-name="광스토리지">광스토리지</button>
-                            </li>
+                        <div class="sub-category">
+                            <ul class="sub-category-list">
+                                <!-- 모바일 -->
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="C000136" data-category-name="`+category[i].name+`" data-sub-category-name="스마트폰">스마트폰</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="D002667" data-category-name="`+category[i].name+`" data-sub-category-name="태블릿">태블릿</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="C000135" data-category-name="`+category[i].name+`" data-sub-category-name="일반폰">일반폰</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="D002742" data-category-name="`+category[i].name+`" data-sub-category-name="G워치">G워치</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="S010000" data-category-name="`+category[i].name+`" data-sub-category-name="프렌즈">프렌즈</button>
+                                </li>
+                                
+                                <!-- TV/프로젝터 -->
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1040" data-category-name="`+category[i].name+`" data-sub-category-name="올레드">올레드</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="D002795" data-category-name="`+category[i].name+`" data-sub-category-name="울트라 HD">울트라 HD</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1041" data-category-name="`+category[i].name+`" data-sub-category-name="LED/LCD">LED/LCD</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1008" data-category-name="`+category[i].name+`" data-sub-category-name="빔프로젝터">빔프로젝터</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1043" data-category-name="`+category[i].name+`" data-sub-category-name="PDP">PDP</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1044" data-category-name="`+category[i].name+`" data-sub-category-name="일반/슬림">일반/슬림</button>
+                                </li>
+                                
+                                <!-- IT/모니터 -->
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1011" data-category-name="`+category[i].name+`" data-sub-category-name="노트북/탭북">노트북/탭북</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1012" data-category-name="`+category[i].name+`" data-sub-category-name="데스크톱/일체형">데스크톱/일체형</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1013" data-category-name="`+category[i].name+`" data-sub-category-name="모니터">모니터</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1068" data-category-name="`+category[i].name+`" data-sub-category-name="잉크젯프린터">잉크젯프린터</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1069" data-category-name="`+category[i].name+`" data-sub-category-name="레이저프린터">레이저프린터</button>
+                                </li>
+                                
+                                <!-- 에어컨 -->
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1076" data-category-name="`+category[i].name+`" data-sub-category-name="3in1/2in1">3in1/2in1</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1078" data-category-name="`+category[i].name+`" data-sub-category-name="가정용 스탠드형">가정용 스탠드형</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1084" data-category-name="`+category[i].name+`" data-sub-category-name="업소용 스탠드형">업소용 스탠드형</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1079" data-category-name="`+category[i].name+`" data-sub-category-name="벽걸이형">벽걸이형</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1083" data-category-name="`+category[i].name+`" data-sub-category-name="창문형/이동식">창문형/이동식</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1129" data-category-name="`+category[i].name+`" data-sub-category-name="시스템에어컨">시스템에어컨</button>
+                                </li>
+                                
+                                <!-- 냉장/냉동고 -->
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1098" data-category-name="`+category[i].name+`" data-sub-category-name="양문형">양문형</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1099" data-category-name="`+category[i].name+`" data-sub-category-name="일반형">일반형</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1100" data-category-name="`+category[i].name+`" data-sub-category-name="업소용">업소용</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1026" data-category-name="`+category[i].name+`" data-sub-category-name="김치 냉장고">김치 냉장고</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1027" data-category-name="`+category[i].name+`" data-sub-category-name="와인셀러">와인셀러</button>
+                                </li>
+                                
+                                <!-- 세탁기/스타일러 -->
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1086" data-category-name="`+category[i].name+`" data-sub-category-name="드럼 세탁기">드럼 세탁기</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1087" data-category-name="`+category[i].name+`" data-sub-category-name="일반 세탁기">일반 세탁기</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1022" data-category-name="`+category[i].name+`" data-sub-category-name="스타일러">스타일러</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1021" data-category-name="`+category[i].name+`" data-sub-category-name="의류 건조기">의류 건조기</button>
+                                </li>
+                                
+                                <!-- 청소기 -->
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1092" data-category-name="`+category[i].name+`" data-sub-category-name="로봇">로봇</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1093" data-category-name="`+category[i].name+`" data-sub-category-name="스팀">스팀</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1094" data-category-name="`+category[i].name+`" data-sub-category-name="싸이킹">싸이킹</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1095" data-category-name="`+category[i].name+`" data-sub-category-name="일반/핸디형">일반/핸디형</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1097" data-category-name="`+category[i].name+`" data-sub-category-name="업소용">업소용</button>
+                                </li>
+                                
+                                <!-- 조리/세척기기 -->
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1029" data-category-name="`+category[i].name+`" data-sub-category-name="광파오븐">광파오븐</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1030" data-category-name="`+category[i].name+`" data-sub-category-name="전자레인지">전자레인지</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1031" data-category-name="`+category[i].name+`" data-sub-category-name="가스오븐">가스오븐</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="B002722" data-category-name="`+category[i].name+`" data-sub-category-name="가스레인지">가스레인지</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="C002835" data-category-name="`+category[i].name+`" data-sub-category-name="전기레인지">전기레인지</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1032" data-category-name="`+category[i].name+`" data-sub-category-name="식기세척기">식기세척기</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="C002992" data-category-name="`+category[i].name+`" data-sub-category-name="맥주제조기">맥주제조기</button>
+                                </li>
+                                
+                                <!-- 건강/소형기기 -->
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1034" data-category-name="`+category[i].name+`" data-sub-category-name="정수기">정수기</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1035" data-category-name="`+category[i].name+`" data-sub-category-name="이온수기">이온수기</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1036" data-category-name="`+category[i].name+`" data-sub-category-name="안마의자">안마의자</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1037" data-category-name="`+category[i].name+`" data-sub-category-name="공기청정기">공기청정기</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1038" data-category-name="`+category[i].name+`" data-sub-category-name="가습기">가습기</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1024" data-category-name="`+category[i].name+`" data-sub-category-name="제습기">제습기</button>
+                                </li>
+                                
+                                <!-- AV/음향기기 -->
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1006" data-category-name="`+category[i].name+`" data-sub-category-name="사운드바/홈씨어터">사운드바/홈씨어터</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1009" data-category-name="`+category[i].name+`" data-sub-category-name="오디오">오디오</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1048" data-category-name="`+category[i].name+`" data-sub-category-name="블루레이">블루레이</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1049" data-category-name="`+category[i].name+`" data-sub-category-name="DVD">DVD</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="B000132" data-category-name="`+category[i].name+`" data-sub-category-name="비디오">비디오</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="B000134" data-category-name="`+category[i].name+`" data-sub-category-name="셋톱박스">셋톱박스</button>
+                                </li>
+                                
+                                <!-- 기타 -->
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="C002945" data-category-name="`+category[i].name+`" data-sub-category-name="뷰티/헤어 케어">뷰티/헤어 케어</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="B002910" data-category-name="`+category[i].name+`" data-sub-category-name="IoT 기기">IoT 기기</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="C002804" data-category-name="`+category[i].name+`" data-sub-category-name="블루투스헤드셋">블루투스헤드셋</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1014" data-category-name="`+category[i].name+`" data-sub-category-name="넷하드">넷하드</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="C002815" data-category-name="`+category[i].name+`" data-sub-category-name="키즈패드">키즈패드</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1074" data-category-name="`+category[i].name+`" data-sub-category-name="외장하드/메모리">외장하드/메모리</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="D002623" data-category-name="`+category[i].name+`" data-sub-category-name="포켓포토">포켓포토</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1016" data-category-name="`+category[i].name+`" data-sub-category-name="광스토리지">광스토리지</button>
+                                </li>
 
-                            <!-- B2B -->
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1134" data-name="`+category[i].name+`" data-sub-name="홈네트워크">홈네트워크</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1132" data-name="`+category[i].name+`" data-sub-name="태양광솔루션">태양광솔루션</button>
-                            </li>
-                            <li>
-                                <button type="button" data-category="`+category[i].code+`" data-sub-category="1133" data-name="`+category[i].name+`" data-sub-name="보안솔루션">보안솔루션</button>
-                            </li>
-                        </ul>
-                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                <!-- B2B -->
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1134" data-category-name="`+category[i].name+`" data-sub-category-name="홈네트워크">홈네트워크</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1132" data-category-name="`+category[i].name+`" data-sub-category-name="태양광솔루션">태양광솔루션</button>
+                                </li>
+                                <li>
+                                    <button type="button" data-category="`+category[i].code+`" data-sub-category="1133" data-category-name="`+category[i].name+`" data-sub-category-name="보안솔루션">보안솔루션</button>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                        </div>
                     </div>
-                </div>
-            </li>
-           }
-        </ul>
+                </li>
+            }
+            </ul>
+        </div>
     </div>
     <!-- // 카테고리 선택 -->
 
     <!-- 모델명 선택 -->
-    <div class="model-search">
+    <div class="model-box">
         <div class="form-wrap">
             <div class="forms block-type">
                 <div class="tit">
@@ -270,7 +281,7 @@
                 </div>
                 <div class="conts">
                     <div class="select-wrap">
-                        <select name="categorySelect" id="categorySelect" class="ui_selectbox ui_select_target" data-target="#subCategorySelect" data-ajax="/lg5-common/data-ajax/support/subCategoryOption.json">
+                        <select id="categorySelect" class="ui_selectbox ui_select_target" data-target="#subCategorySelect" data-ajax="/lg5-common/data-ajax/support/subCategoryOption.json">
                             <option value="" class="default">전체</option>
                             <option value="1018">모바일</option>
                             <option value="1005">TV/프로젝터</option>
@@ -287,7 +298,7 @@
                         </select>
                     </div>
                     <div class="select-wrap">
-                        <select name="subCategorySelect" id="subCategorySelect" class="ui_selectbox">
+                        <select id="subCategorySelect" class="ui_selectbox">
                             <option value="" class="default">전체</option>
                         </select>
                     </div>
@@ -298,14 +309,13 @@
             <div class="search-box">
                 <div class="search-input">
                     <div class="input-wrap">
-                        <input type="text" name="keyword02" id="keyword02" class="ui_input_clearbutton" placeholder="제품명, 모델명 직접 검색" title="제품명, 모델명 직접 검색" data-clear-button="button.btn-delete" data-error-msg="모델명을 두 글자 이상 입력해 주세요." data-required="true">
+                        <input type="text" id="keyword02" class="ui_input_clearbutton" placeholder="제품명, 모델명 직접 검색" title="제품명, 모델명 직접 검색" data-clear-button="button.btn-delete">
                         <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
                         <button type="button" class="btn-search"><span class="blind">검색</span></button>
                     </div>
                     <button type="button" class="btn dark-gray size question" data-href="#modelNamePopup" data-control="modal"><span>모델명 확인방법</span></button>
                 </div>
                 <p class="desc">모델명을 입력해보세요. 입력하신 모델명과 일치하는 모델을 쉽게 찾으실 수 있습니다.</p>  
-                <p class="err-msg"></p>
             </div>
         </div>
         <div class="slide-wrap model-slider">
