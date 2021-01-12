@@ -444,11 +444,8 @@
         var completed = false;
         console.log("step1 validation start!!");
         var result = step1Validation.validate();
+        var data = getInputData('creditInquire');
         if(result.success){
-            console.log("step1Validation.validate(); Success!!!");
-
-            var data = getInputData('creditInquire');
-            console.log("creditInquire :", data);
             completed = data === "Y" ? true : false;
             if(!completed){
                 lgkorUI.alert("", {
@@ -456,7 +453,16 @@
                 });
             }
         } else{
-            console.log("step1Validation.validate(); Fail!!!", result.validItem);
+            var leng = Object.keys(result.validItem).length;
+            if(data == "Y"){
+                if(leng == 1) completed = true;
+            } else{
+                if(leng == 1){
+                    lgkorUI.alert("", {
+                        title: "신용정보 조회로 계약 가능 여부<br>확인이 필요합니다."
+                    });
+                }
+            }
         }
 
         return completed;
@@ -648,11 +654,11 @@
                 window.open('', 'nicePopUp', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
                 document.form_chk.action = result.data.niceAntionUrl;
                 document.form_chk.EncodeData.value = result.data.sEncData;
-                document.form_chk.target = "nicePopUp";
+                document.form_chk.param_r1.value = result.data.param_r1;
+                document.form_chk.param_r2.value = result.data.param_r2;
+                document.form_chk.param_r3.value = result.data.param_r3;
                 document.form_chk.m.value = "safekeyService";
-                document.form_chk.param_r1.value = "I";
-                document.form_chk.param_r2.value = "";
-                document.form_chk.param_r3.value = "";
+                document.form_chk.target = "nicePopUp";
                 document.form_chk.submit();
 
                 $('.niceChker').show();

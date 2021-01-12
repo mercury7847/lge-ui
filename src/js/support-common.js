@@ -62,7 +62,11 @@ CS.MD.commonModel = function() {
 
     var modelListTmpl = 
         '<div class="slide-conts">' +
+            '{{# if (modelCode != "") { #}}' +
             '<a href="#" class="item" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{modelCode}}" data-product-code="{{productCode}}" data-category-name="{{categoryNm}}" data-sub-category-name="{{subCategoryNm}}">' +
+            '{{# } else { #}}' +
+            '<a href="#" class="item no-model" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{modelCode}}" data-product-code="{{productCode}}" data-category-name="{{categoryNm}}" data-sub-category-name="{{subCategoryNm}}">' +
+            '{{# } #}}' +
                 '<div class="info">' +
                     '{{# if (modelCode != "") { #}}' +
                         '<p class="name">{{#raw name}}</p>' +
@@ -74,9 +78,8 @@ CS.MD.commonModel = function() {
                 '</div>' +
             '</a>' +
         '</div>';
-    
+
     var termsValidation;
-    var modelValidation;  
 
     function Plugin(el, opt) {
         var self = this;
@@ -86,8 +89,15 @@ CS.MD.commonModel = function() {
         var defaults = {
             stepClass: 'step-box',
             stepActiveClass: 'active',
-            selectedModel: [],
-            register: {}
+            register: {},
+            page: 1,
+            total: 0,
+            caseType: 'product',
+            param: {},
+            summary: {
+                tit: '제품을 선택해 주세요',
+                desc: "예약내용 입력을 위해 제품을 선택해 주세요"
+            }
         };
 
         self.options = $.extend({}, defaults, opt);
@@ -95,20 +105,10 @@ CS.MD.commonModel = function() {
         vcui.require(['ui/validation', 'ui/selectTarget'], function () {
             termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
                 privcyCheck: {
-                    msgTarget: '.err-block'
+                        msgTarget: '.err-block'
                 }
             }});
-            modelValidation = new vcui.ui.CsValidation('#stepModel', {register: {
-                keyword01: {
-                    msgTarget: '.err-msg',
-                    minLength: 2
-                },
-                keyword02: {
-                    msgTarget: '.err-msg',
-                    minLength: 2
-                }
-            }});
-        
+
             self._initialize();
             self._bindEvent();  
         });
@@ -116,11 +116,20 @@ CS.MD.commonModel = function() {
 
     Plugin.prototype = {
         _initialize: function() {
-            var self = this;
+            var self = this,
+                options = self.options;
+
+            // 옵션
+            self.page = options.page;
+            self.totalCount = options.totalCount;
+            self.inquiryType = options.inquiryType;
+            self.param = options.param;
+            self.summary = options.summary;
 
             // 스텝 영역
             self.$stepBox = self.$el.find('.step-box');
             self.$stepTerms = self.$el.find('#stepTerms');
+            self.$stepInquiry = self.$el.find('#stepInquiryType');
             self.$stepModel = self.$el.find('#stepModel');
             self.$stepInput = self.$el.find('#stepInput');
             
@@ -128,27 +137,30 @@ CS.MD.commonModel = function() {
             self.$selectedModelBar = self.$el.find('.prod-selected-wrap');
             
             // 보유제품
-            self.$myModelArea = self.$el.find('.my-product');
+            self.$myModelArea = self.$el.find('.my-product-wrap');
             self.$myModelSlider = self.$myModelArea.find('.my-product-slider');
 
             // 검색 영역
-            self.$searchModelArea = self.$el.find('.prod-search-wrap');
+            self.$searchArea = self.$el.find('.prod-search-wrap');
             // 검색 영역 : 키워드
-            self.$searchKeywordBox = self.$searchModelArea.find('>.keyword-search');
-            self.$inputKeyword = self.$searchKeywordBox.find('input[type=text]');
-            self.$buttonKeyword = self.$searchKeywordBox.find('.btn-search');
-            // 검색 영역 : 카테고리 > 서브카테고리
-            self.$searchCategoryBox = self.$searchModelArea.find('.category-search');
-            // 검색 영역 : 모델
-            self.$searchModelBox = self.$searchModelArea.find('.model-search');
-            self.$modelFilter = self.$searchModelBox.find('.form-wrap');
-            self.$modelInput = self.$searchModelBox.find('input[type=text]');
-            self.$modelSlider = self.$searchModelBox.find('.model-slider');
-            self.$modelNoData = self.$searchModelBox.find('.no-data');
+            self.$keywordBox = self.$searchArea.find('.keyword-box');
+            self.$keywordInput = self.$keywordBox.find('input[type=text]');
+            self.$keywordButton = self.$keywordBox.find('.btn-search');
 
-            self.page = 1;
-            self.total = 0;
-            self.caseType = 'product';
+            // 검색 영역 : 카테고리 > 서브카테고리
+            self.$categoryBox = self.$searchArea.find('.category-box');
+            self.$categoryDepth1 = self.$categoryBox.find('.category');
+            self.$categoryDepth2 = self.$categoryBox.find('.subCategory');
+            self.$categoryOpenBtn = self.$categoryBox.find('.btn-open');
+            self.$categoryCloseBtn = self.$categoryBox.find('.btn-close');
+
+            // 검색 영역 : 모델
+            self.$modelBox = self.$searchArea.find('.model-box');
+            self.$modelFilter = self.$modelBox.find('.form-wrap');
+            self.$modelInput = self.$modelBox.find('input[type=text]');
+            self.$modelButton = self.$modelBox.find('.btn-search');
+            self.$modelSlider = self.$modelBox.find('.model-slider');
+            self.$modelNoData = self.$modelBox.find('.no-data');
 
             self.$modelFilter.find('.ui_select_target').vcSelectTarget();
             self.$myModelSlider.vcCarousel({
@@ -174,46 +186,39 @@ CS.MD.commonModel = function() {
                 ]
             });
 
-            lgkorUI.searchModelName();
-        },
-        updateSummary: function(obj) {
-            var self = this,
-                html;
+            self.caseType = 'product';
 
-            html = vcui.template(selectedBarTmpl, obj);
-            self.$selectedModelBar.html(html);
+            lgkorUI.searchModelName();
         },
         reset: function() {
             var self = this;
-                opt = self.options;
+                options = self.options;
 
-            self.$searchCategoryBox.find('.box').removeClass('on off');
-            self.$searchCategoryBox.addClass(opt.stepActiveClass);
-            self.$searchModelBox.removeClass(opt.stepActiveClass);
+            self.page = options.page;
+            self.totalCount = options.totalCount;
+            self.inquiryType = options.inquiryType;
+            self.param = options.param;
+            self.summary = options.summary;
+
+            self.$categoryBox.find('.box').removeClass('on off');
+            self.$categoryBox.addClass(options.stepActiveClass);
+            self.$modelBox.removeClass(options.stepActiveClass);
+            self.$modelBox.find('.keyword-search').hide();
             self.$modelSlider.find('.slide-track').empty();
 
-            self.$searchKeywordBox.show();
-            self.$searchModelBox.find('.keyword-search').hide();
+            self.$keywordBox.show();
+            self.$keywordBox.find('.desc').hide();
+            
+            self.$myModelArea.show();
+            
+            self._updateSummary();
+            self._next(self.caseType == 'product' ? self.$stepModel : self.$stepInquiry);
+        },
+        _updateSummary: function(summary) {
+            var self = this;
+                summary = summary || self.summary;
 
-            if (self.caseType == 'product') {
-                self.$stepModel.addClass(opt.stepActiveClass);
-                self.$stepModel.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
-            } else {
-                $('#stepInquiryType').addClass(opt.stepActiveClass);
-                $('#stepInquiryType').siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
-            }
-
-
-            if (self.$myModelArea.length) self.$myModelArea.show();
-
-            opt.selectedModel = [];
-
-            var updateObj = {
-                tit: '제품을 선택해 주세요',
-                desc: "예약내용 입력을 위해 제품을 선택해 주세요"
-            }
-
-            self.updateSummary(updateObj);
+            if (summary) self.$selectedModelBar.html(vcui.template(selectedBarTmpl, summary));
         },
         _resetFlexibleBox: function() {
             var self = this;
@@ -228,16 +233,33 @@ CS.MD.commonModel = function() {
                 $(item).find('.slide-conts').height(maxheight);
             });
         },
-        _requestData: function(param) {
+        _toggleArrow: function($arrow, flag) {
+            $arrow[flag ? 'removeClass' : 'addClass']('disabled')
+                        .prop('disabled', !flag)
+                        .attr('aria-disabled', (!flag).toString());
+        },
+        _focus: function($target) {
+            $('html, body').stop().animate({
+                scrollTop: $target.offset().top
+            });
+        },
+        _next: function($target) {
             var self = this,
-                url = self.$searchModelArea.data('modelUrl');
+                opt = self.options;
+                
+            $target.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
+            $target.addClass(opt.stepActiveClass);
+        },
+        _requestData: function() {
+            var self = this,
+                url = self.$searchArea.data('modelUrl');
 
             lgkorUI.showLoading();
-            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+            lgkorUI.requestAjaxDataPost(url, self.param, function(result) {
                 var data = result.data,
                     arr = data.listData instanceof Array ? data.listData : [];
 
-                // self.page = data.listPage.page;
+                self.page = data.listPage.page;
                 self.totalCount = data.listPage.totalCount;
 
                 self.totalPage = Math.floor(self.totalCount == 0 ? 1 : (self.totalCount - 1)  / self.pageCount + 1);
@@ -247,14 +269,13 @@ CS.MD.commonModel = function() {
 
                 if (arr.length) {
                     arr.forEach(function(item) {
-                        item.name = item.modelCode.replaceAll(param.keyword, '<em class="word">'+param.keyword+'</em>');
+                        item.name = item.modelCode.replaceAll(self.param.keyword, '<em class="word">'+self.param.keyword+'</em>');
                         self.$modelSlider.find('.slide-track').append(vcui.template(modelListTmpl, item))
                     });
                     self.$modelSlider.show();
                     self.$modelNoData.hide();
 
                     if (!self.$modelSlider.hasClass('ui_carousel_initialized')) {
-                        self.page = 1;
                         self.$modelSlider.vcCarousel({
                             rows:3,
                             slidesPerRow: 4,
@@ -291,7 +312,6 @@ CS.MD.commonModel = function() {
                             ]
                         });
                     } else {
-                        self.page = data.listPage.page;
                         var initValue = (self.page % 10 == 0) ? 9 : 0;
                         self.$modelSlider.vcCarousel('setOption', 'initialSlide', initValue, false);
                         self.$modelSlider.vcCarousel('reinit');
@@ -299,409 +319,59 @@ CS.MD.commonModel = function() {
                 } else {
                     self.$modelSlider.hide();
                     
-                    self.$modelNoData.find('.word').html(param.keyword);
+                    self.$modelNoData.find('.word').html(self.param.keyword);
                     self.$modelNoData.show();
                 }
 
-                $('html, body').stop().animate({
-                    scrollTop: self.$selectedModelBar.offset().top
-                });
+                self._focus(self.$selectedModelBar);
 
                 lgkorUI.hideLoading();
             });
         },
-        _toggleArrow: function($arrow, flag) {
-            $arrow[flag ? 'removeClass' : 'addClass']('disabled')
-                        .prop('disabled', !flag)
-                        .attr('aria-disabled', (!flag).toString());
-        },
         _bindEvent: function() {
             var self = this;
 
-            self.$el.find('.model-slider').on('carouselinit carouselreInit carouselafterchange carouselresize', function() {
-                self._resetFlexibleBox();
-            });
-
-            // 제품 재선택
-            self.$selectedModelBar.on('click', '.btn-reset', function() {
-                self.reset();
-            });
-
-            // 약관 동의 다음 버튼
-            self.$stepTerms.find('.btn-next').on('click', function() {
-                var result = termsValidation.validate(),
-                    opt = self.options;
-                
-                if (result.success) {
-                    self.$stepModel.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
-                    self.$stepModel.addClass(opt.stepActiveClass);
-
-                    $('html, body').stop().animate({
-                        scrollTop: self.$selectedModelBar.offset().top
-                    });
-                }
-            });
-
-            $('#stepInquiryType').find('.btn-next').on('click', function() {
-                var result = termsValidation.validate(),
-                    opt = self.options;
-                
-                if (result.success) {
-                    self.$stepModel.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
-                    self.$stepModel.addClass(opt.stepActiveClass);
-
-                    $('html, body').stop().animate({
-                        scrollTop: self.$selectedModelBar.offset().top
-                    });
-                }
-            });
-
-            // 문의유형 선택
-            $('#stepInquiryType').find('.btn-type').on('click', function() {
-                var $this = $(this),
-                    result = termsValidation.validate(),    
-                    opt = self.options,
-                    data = $this.data(),
-                    updateObj;
-
-                if (result.success) {
-                    self.$el.find('#categoryNm').val(data.categoryName);
-                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
-                    self.$el.find('#category').val(data.category);
-                    self.$el.find('#subCategory').val(data.subCategory);
-
-                    opt.selectedModel = [data.categoryName, data.subCategoryName];
-
-                    updateObj = {
-                        product: opt.selectedModel,
-                        inquiryReset: true
-                    }
-
-                    self.caseType = 'company';
-
-                    var info = {
-                        category: data.category,
-                        subCategory: data.subCategory
-                    }
-
-                    self.$el.trigger('complete', [self, info, '', function() {
-                        self.updateSummary(updateObj);
-
-                        self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
-                        self.$stepInput.addClass(opt.stepActiveClass);
-
-                        $('html, body').stop().animate({
-                            scrollTop: self.$selectedModelBar.offset().top
-                        });
-                    }]);
-                }
-            });
-
-            // 검색어 검색
-            self.$inputKeyword.on('input', function(e) {
-                var $this = $(this),
-                    opt = self.options,
-                    result;
-                    
-                result = modelValidation.validate(['keyword01']);
-
-                if (result.success) {
-                    self.$searchCategoryBox.removeClass(opt.stepActiveClass);
-                    self.$searchModelBox.addClass(opt.stepActiveClass);
-
-                    var updateObj = {
-                        desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
-                    }
-                    var param = {
-                        keyword: self.$inputKeyword.val().toUpperCase(),
-                        category: self.$el.find('#category').val(),
-                        subCategory: self.$el.find('#subCategory').val()
-                    };
-
-                    self.updateSummary(updateObj);
-                    self._requestData(param);
-                } else {
-                    if ($this.val() == '') {
-                        var param = {
-                            keyword: self.$inputKeyword.val().toUpperCase(),
-                            category: self.$el.find('#category').val(),
-                            subCategory: self.$el.find('#subCategory').val()
-                        };
-    
-                        self.updateSummary(updateObj);
-                        self._requestData(param);
-                    } else {
-
-                    }
-                }
-            });
-
-            self.$modelInput.on('input', function() {
-                var $this = $(this),
-                    result;
-                    
-                result = modelValidation.validate(['keyword02']);
-
-                if (result.success) {
-                    var param = {
-                        keyword: $this.val().toUpperCase(),
-                        category: self.$el.find('#category').val(),
-                        subCategory: self.$el.find('#subCategory').val()
-                    };
-
-                    self._requestData(param);
-                } else {
-                    if ($this.val() == '') {
-                        var param = {
-                            keyword: $this.val().toUpperCase(),
-                            category: self.$el.find('#category').val(),
-                            subCategory: self.$el.find('#subCategory').val()
-                        };
-    
-                        self._requestData(param);
-                    }
-                }
-            });
-
-            self.$buttonKeyword.on('click', function() {
-                var opt = self.options,
-                    result = modelValidation.validate(['keyword01']);
-                
-                if (result.success) {
-                    self.$searchCategoryBox.removeClass(opt.stepActiveClass);
-                    self.$searchModelBox.addClass(opt.stepActiveClass);
-
-                    var updateObj = {
-                        desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
-                    }
-                    var param = {
-                        keyword: self.$inputKeyword.val().toUpperCase(),
-                        category: self.$el.find('#category').val(),
-                        subCategory: self.$el.find('#subCategory').val()
-                    };
-
-                    self.updateSummary(updateObj);
-                    self._requestData(param);
-                }
-            });
-
-            // 카테고리 선택
-            self.$searchCategoryBox.find('.btn-open').on('click', function() {
-                $(this).closest('.box').addClass('on');
-                $(this).closest('li').siblings().each(function(index, item) {
-                    var $item = $(item);
-
-                    if ($item.find('.box').hasClass('on')) {
-                        $item.find('.box').removeClass('on').addClass('off');
-                    }
-                });
-            });
-            self.$searchCategoryBox.find('.btn-close').on('click', function() {
-                $(this).closest('.box').removeClass('on').addClass('off');
-            });
-
-            // 서브 카테고리 선택
-            self.$searchCategoryBox.find('.sub-category-list button').on('click', function() {
-                var $this = $(this),
-                    opt = self.options,
-                    data = $this.data();
-
-                self.$el.find('#categoryNm').val(data.categoryName);
-                self.$el.find('#subCategoryNm').val(data.subCategoryName);
-                self.$el.find('#category').val(data.category);
-                self.$el.find('#subCategory').val(data.subCategory);
-
-                self.$searchCategoryBox.removeClass(opt.stepActiveClass);
-                self.$searchModelBox.addClass(opt.stepActiveClass);
-
-                opt.selectedModel = [data.name, data.subName];
-
-                var updateObj = {
-                    product: opt.selectedModel,
-                    desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요. 모델명을 모르시면 ‘건너뛰기'를 눌러주세요."
-                }
-
-                var param = {
-                    category: data.category,
-                    subCategory: data.subCategory
-                };
-
-                self.updateSummary(updateObj);
-                self._requestData(param);
-
-                self.$searchKeywordBox.hide();
-                self.$searchModelBox.find('.keyword-search').show();
-                
-                self.$searchModelBox.find('#categorySelect').val(data.category);
-                self.$searchModelBox.find('#categorySelect').vcSelectbox('update').trigger('change', [data.subCategory]);
-            });
-
-            // 모델명 선택
-            self.$searchModelBox.on('click', '.model-slider a', function(e) {
-                e.preventDefault();
-
-                var $this = $(this),
-                    opt = self.options,
-                    data = $this.data(),
-                    updateObj, param, url;
-
-                self.$el.find('#categoryNm').val(data.categoryName);
-                self.$el.find('#subCategoryNm').val(data.subCategoryName);
-                self.$el.find('#category').val(data.category);
-                self.$el.find('#subCategory').val(data.subCategory);
-                self.$el.find('#productCode').val(data.productCode);
-
-                if (data.modelCode) {
-                    self.$el.find('#modeCode').val(data.modelCode);
-                    
-                    opt.selectedModel = [data.categoryName, data.subCategoryName, data.modelCode];
-                } else {
-                    opt.selectedModel = [data.categoryName, data.subCategoryName];
-                }   
-
-                updateObj = {
-                    product: opt.selectedModel,
-                    reset: true
-                }
-
-                url = self.$searchModelArea.data('resultUrl');
-                param = {
-                    subCategory: data.subCategory,
-                    serviceType: $('#serviceType').val()
-                }   
-
-                lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                    var ajaxData = result.data,
-                        info = {
-                            category: data.category,
-                            subCategory: data.subCategory,
-                            modelCode: data.modelCode
-                        };
-
-                    self.$el.trigger('complete', [self, info, ajaxData, function() {
-                        self.updateSummary(updateObj);
-
-                        self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
-                        self.$stepInput.addClass(opt.stepActiveClass);
-
-                        $('html, body').stop().animate({
-                            scrollTop: self.$selectedModelBar.offset().top
-                        });
-                    }]);
-                });
-            });
-            
-            // 모델명 선택 - 서브 카테고리 선택
-            self.$searchModelBox.find('#subCategorySelect').on('change', function() {
-                var param = {
-                    keyword: self.$inputKeyword.val(),
-                    category: self.$searchModelBox.find('#categorySelect').val(),
-                    subCategory: $(this).val()
-                };
-
-                self._requestData(param);
-            });
-            
-            // 모델 리스트 슬라이더
-            self.$modelSlider.on('carouselreinit', function(e, module) {
-                var startPage = parseInt((self.page - 1) / 10) * 10 + 1;
-                
-                if (startPage != 1 && (self.page % 10 == 1)) {
-                    self._toggleArrow(module.$prevArrow, true);
-                    module.$prevArrow.addClass('btn-prev');
-                }
-            });
-            self.$modelSlider.on('carouselbeforechange', function(e, module, before, after) {
-                var page = after - before;
-            
-                self.page += page;
-            });
-            self.$modelSlider.on('carouselafterchange', function(e, module, after) {
-                var startPage = parseInt((self.page - 1) / 10) * 10 + 1; 
-                var endPage = startPage + 10 - 1;
-
-                if (startPage != 1 && (self.page % 10 == 1)) {
-                    self._toggleArrow(module.$prevArrow, true);
-                    module.$prevArrow.addClass('btn-prev');
-                } else {
-                    module.$prevArrow.removeClass('btn-prev');
-                }
-
-                if (after == 9 && (endPage != self.totalCount)) {
-                    self._toggleArrow(module.$nextArrow, true);
-                    module.$nextArrow.addClass('btn-next');
-                } else {
-                    module.$nextArrow.removeClass('btn-next');
-                }
-            });
-
-            self.$modelSlider.on('click', '.btn-prev', function() {
-                var param = {
-                    keyword: self.$inputKeyword.val().toUpperCase(),
-                    category: self.$el.find('#category').val(),
-                    subCategory: self.$el.find('#subCategory').val(),
-                    page: self.page - 1
-                };
-                
-                self._requestData(param);
-            });
-            self.$modelSlider.on('click', '.btn-next', function() {
-                var param = {
-                    keyword: self.$inputKeyword.val().toUpperCase(),
-                    category: self.$el.find('#category').val(),
-                    subCategory: self.$el.find('#subCategory').val(),
-                    page: self.page + 1
-                };
-                
-                self._requestData(param);
-            });
-            
             // 보유제품 선택
-            self.$myModelArea.find('.slide-box').on('click', function(e) {
+            self.$myModelSlider.find('a').on('click', function(e) {
                 e.preventDefault();
 
                 var $this = $(this),
-                    opt = self.options,
-                    data = $this.data();
+                    data = $this.data(),
+                    url, param;
 
                 if ($this.hasClass('disabled')) {
                     $(window).trigger("toastshow", "예약가능한 제품이 아닙니다.");
                 } else {
-                    
+                    url = self.$searchArea.data('resultUrl');
+                    parma = {
+                        modelCode: data.code, 
+                        serviceType: $('#serviceType').val()
+                    }
+
                     self.$el.find('#categoryNm').val(data.categoryName);
                     self.$el.find('#subCategoryNm').val(data.subCategoryName);
                     self.$el.find('#category').val(data.category);
                     self.$el.find('#subCategory').val(data.subCategory);
                     self.$el.find('#modelCode').val(data.modelCode);
                     self.$el.find('#productCode').val(data.productCode);
-                    
-                    opt.selectedModel = [data.categoryName, data.subCategoryName, data.modelCode];
-                    
-                    updateObj = {
-                        product: opt.selectedModel,
-                        reset: true
-                    }
-    
-                    self.updateSummary(updateObj);
-
-                    lgkorUI.requestAjaxDataPost(self.$searchModelArea.data('resultUrl'), {modelCode: data.code, serviceType: $('#serviceType').val()}, function(result) {
-                        var ajaxData = result.data,
-                            info = {
+                     
+                    lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                        var resultData = result.data,
+                            modelInfo = {
                                 category: data.category,
                                 subCategory: data.subCategory,
                                 modelCode: data.modelCode
                             };
     
-                        self.$el.trigger('complete', [self, info, ajaxData, function() {
-                            self.updateSummary(updateObj);
-
+                        self.$el.trigger('complete', [self, modelInfo, resultData, function() {
                             self.$myModelArea.hide();
-                            self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
-                            self.$stepInput.addClass(opt.stepActiveClass);
-
-                            $('html, body').stop().animate({
-                                scrollTop: self.$selectedModelBar.offset().top
+                            
+                            self._updateSummary({
+                                product: [data.categoryName, data.subCategoryName, data.modelCode],
+                                reset: true
                             });
+                            self._next(self.$stepInput);
+                            self._focus(self.$selectedModelBar);
                         }]);
                     });
                 }
@@ -724,8 +394,849 @@ CS.MD.commonModel = function() {
                     $this.html('보유제품 접기');
                 }
             });
+
+            // 제품 재선택
+            self.$selectedModelBar.on('click', '.btn-reset', function() {
+                self.reset();
+            });
+
+            // 약관 동의 다음 버튼
+            self.$stepTerms.find('.btn-next').on('click', function() {
+                var result = termsValidation.validate();
+                
+                if (result.success) {
+                    self._next(self.$stepModel);
+                    self._focus(self.$selectedModelBar);
+                }
+            });
+
+            // 문의유형 : 제품선택
+            self.$stepInquiry.find('.btn-next').on('click', function() {
+                var result = termsValidation.validate();
+                
+                if (result.success) {
+                    self._next(self.$stepModel);
+                    self._focus(self.$selectedModelBar);
+                }
+            });
+
+
+
+
+
+            // 문의유형 선택
+            self.$stepInquiry.find('.btn-type').on('click', function() {
+                var $this = $(this),
+                    result = termsValidation.validate(),
+                    data = $this.data(),
+                    param = {
+                        category: data.category,
+                        categoryNm: data.categoryName,
+                        subCategory: data.subCategory,
+                        subCategoryNm: data.subCategoryName
+                    }
+
+                if (result.success) {
+                    self.$el.find('#category').val(data.category);
+                    self.$el.find('#categoryNm').val(data.categoryName);
+                    self.$el.find('#subCategory').val(data.subCategory);
+                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                    self.caseType = 'company';
+
+                    self.$el.trigger('complete', [self, param, '', function() {
+                        self._updateSummary({
+                            product: [data.categoryName, data.subCategoryName],
+                            inquiryReset: true
+                        });
+
+                        self._next(self.$stepInput);
+                        self._focus(self.$selectedModelBar);
+                    }]);
+                }
+            });
+
+            // 검색어 검색
+            self.$keywordInput.on('input', function(e) {
+                var $this = $(this),
+                    value = $this.val().toUpperCase(),
+                    opt = self.options;
+
+                if (!self.$modelBox.hasClass(opt.stepActiveClass)) {
+                    if (value.length > 1) {
+                        self.$categoryBox.removeClass(opt.stepActiveClass);
+                        self.$modelBox.addClass(opt.stepActiveClass);
+                        self.$keywordBox.find('.desc').show();
+                        self.$keywordBox.find('.err-msg').hide();
+                        self.param = $.extend(self.param, {
+                            keyword: value,
+                            page: 1
+                        });
+
+                        self._updateSummary({
+                            desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
+                        });
+                        self._requestData();
+                    } else {
+                        self.$keywordBox.find('.err-msg').show();
+                    }
+                } else {
+                    if (value.length > 1 || !value) {
+
+                        self.param = $.extend(self.param, {
+                            keyword: value,
+                            page: 1
+                        });
+                        
+                        self._requestData();
+                    }
+                }
+            });
+
+            self.$keywordButton.on('click', function() {
+                var opt = self.options;
+                
+                if (result.success) {
+                    self.param = $.extend(self.param, {
+                        keyword: self.$keywordInput.val().toUpperCase(),
+                        page: 1
+                    });
+
+                    self._updateSummary({
+                        desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
+                    });
+                    self._requestData();
+
+                    self.$categoryBox.removeClass(opt.stepActiveClass);
+                    self.$modelBox.addClass(opt.stepActiveClass);
+                }
+            });
+
+            // 카테고리 > 검색어 검색
+            self.$modelInput.on('input', function() {
+                var $this = $(this),
+                    value = $this.val().toUpperCase();
+                    
+                if (value.length > 1 || !value) {
+                    self.param = $.extend(self.param, {
+                        keyword: value,
+                        page: 1
+                    });
+
+                    self._requestData();
+                }
+            });
+
+            self.$modelButton.on('click', function() {
+                if (result.success) {
+                    self.param = $.extend(self.param, {
+                        keyword: self.$modelInput.val().toUpperCase(),
+                        page: 1
+                    });
+
+                    self._requestData();
+                }
+            });
+
+            // 카테고리 선택
+            self.$categoryBox.find('.btn-open').on('click', function() {
+                $(this).closest('.box').addClass('on');
+                $(this).closest('li').siblings().each(function(index, item) {
+                    var $item = $(item);
+
+                    if ($item.find('.box').hasClass('on')) {
+                        $item.find('.box').removeClass('on').addClass('off');
+                    }
+                });
+            });
+
+            // 카테고리 취소
+            self.$categoryBox.find('.btn-close').on('click', function() {
+                $(this).closest('.box').removeClass('on').addClass('off');
+            });
+
+            // 서브 카테고리 선택
+            self.$categoryBox.find('.sub-category-list button').on('click', function() {
+                var $this = $(this),
+                    data = $this.data();
+                    opt = self.options;
+
+                self.param = $.extend(self.param, {
+                    category: data.categor,
+                    categoryNm: data.categoryName,
+                    subCategory: data.subCategory,
+                    subCategoryNm: data.subCategoryName,
+                    page: 1
+                });
+
+                self._updateSummary({
+                    product: [data.categoryName, data.subCategoryName],
+                    desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요. 모델명을 모르시면 ‘건너뛰기'를 눌러주세요."
+                });
+                self._requestData();
+
+                self.$keywordBox.hide();
+
+                self.$modelBox.find('.keyword-search').show();
+                self.$modelBox.find('#categorySelect').val(data.category);
+                self.$modelBox.find('#categorySelect').vcSelectbox('update').trigger('change', [data.subCategory]);
+
+                self.$categoryBox.removeClass(opt.stepActiveClass);
+                self.$modelBox.addClass(opt.stepActiveClass);
+            });
+
+            // 모델명 선택
+            self.$modelBox.on('click', '.model-slider a', function(e) {
+                e.preventDefault();
+
+                var $this = $(this),
+                    opt = self.options,
+                    data = $this.data(),
+                    param, url;
+
+                self.$el.find('#categoryNm').val(data.categoryName);
+                self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                self.$el.find('#category').val(data.category);
+                self.$el.find('#subCategory').val(data.subCategory);
+                self.$el.find('#productCode').val(data.productCode);
+
+                if (data.modelCode) {
+                    self.$el.find('#modeCode').val(data.modelCode);
+                    
+                    opt.selectedModel = [data.categoryName, data.subCategoryName, data.modelCode];
+                } else {
+                    opt.selectedModel = [data.categoryName, data.subCategoryName];
+                }   
+
+                url = self.$searchArea.data('resultUrl');
+                param = {
+                    subCategory: data.subCategory,
+                    serviceType: $('#serviceType').val()
+                }   
+
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var ajaxData = result.data,
+                        info = {
+                            category: data.category,
+                            subCategory: data.subCategory,
+                            modelCode: data.modelCode
+                        };
+
+                    self.$el.trigger('complete', [self, info, ajaxData, function() {
+                        self._updateSummary({
+                            product: opt.selectedModel,
+                            reset: true
+                        });
+
+                        self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
+                        self.$stepInput.addClass(opt.stepActiveClass);
+
+                        $('html, body').stop().animate({
+                            scrollTop: self.$selectedModelBar.offset().top
+                        });
+                    }]);
+                });
+            });
+            
+            // 모델명 선택 - 서브 카테고리 선택
+            self.$modelBox.find('#subCategorySelect').on('change', function() {
+                var $this = $(this),
+                    $category = self.$modelBox.find('#categorySelect');
+
+                self.param = $.extend(self.param, {
+                    category: $category.val(),
+                    categoryNm: $category.find('option:selected').text(),
+                    subCategory: $this.val(),
+                    subCategoryNm: $this.find('option:selected').text(),
+                    page: 1
+                });
+
+                self._requestData();
+            });
+            
+            // 모델 리스트 슬라이더
+            self.$modelSlider.on('carouselinit carouselreInit carouselafterchange carouselresize', function() {
+                self._resetFlexibleBox();
+            });
+
+            self.$modelSlider.on('carouselreinit', function(e, module) {
+                var startPage = parseInt((self.page - 1) / 10) * 10 + 1;
+                
+                if (startPage != 1 && (self.page % 10 == 1)) {
+                    self._toggleArrow(module.$prevArrow, true);
+                    module.$prevArrow.addClass('btn-prev');
+                }
+            });
+            self.$modelSlider.on('carouselbeforechange', function(e, module, before, after) {
+                var page = after - before;
+            
+                self.page += page;
+                console.log(self.page);
+            });
+            self.$modelSlider.on('carouselafterchange', function(e, module, after) {
+                var startPage = parseInt((self.page - 1) / 10) * 10 + 1; 
+                var endPage = startPage + 10 - 1;
+
+                if (startPage != 1 && (self.page % 10 == 1)) {
+                    self._toggleArrow(module.$prevArrow, true);
+                    module.$prevArrow.addClass('btn-prev');
+                } else {
+                    module.$prevArrow.removeClass('btn-prev');
+                }
+
+                if (after == 9 && (endPage != self.totalCount)) {
+                    self._toggleArrow(module.$nextArrow, true);
+                    module.$nextArrow.addClass('btn-next');
+                } else {
+                    module.$nextArrow.removeClass('btn-next');
+                }
+            });
+
+            self.$modelSlider.on('click', '.btn-prev', function() {
+                self.param = $.extend(self.param, {
+                    page: self.page - 1
+                });
+                
+                self._requestData();
+            });
+            self.$modelSlider.on('click', '.btn-next', function() {
+                self.param = $.extend(self.param, {
+                    page: self.page + 1
+                });
+                
+                self._requestData();
+            });
         }
     };
+
+    CS.MD.plugin(pluginName, Plugin);
+}();
+
+CS.MD.calendar = function() {
+    var dateUtil = vcui.date;
+    var detect = vcui.detect;
+
+    var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    var dateRegex = /[0-9]{4}.?[0-9]{2}.?[0-9]{2}/;
+
+    var pluginName = 'calendar';
+
+    function Plugin(el, opt) {
+        var self = this;
+        self.$el = $(el),
+        self.el = el;
+
+        var defaults = {
+            weekNames: ['일', '월', '화', '수', '목', '금', '토'],
+            titleFormat: 'yyyy년 MM월 dd일',
+            inputTarget: '', // 날짜를 선택했을 때, 날짜가 들어갈 인풋박스의 셀렉터
+            date: new Date(), // 처음에 표시할 기본 날짜
+            today: new Date(), // 오늘 날짜
+            template: {
+                header: '<div class="month-wrap">' + '<button type="button" class="arrow prev"><span class="blind">이전</span></button>' + '<span class="month"></span>' + '<button type="button" class="arrow next"><span class="blind">다음</span></button>' + '</div>',
+                button: '<button type="button" class="day {{disabled?" disabled":""}}" title="{{title}}" {{disabled?"disabled":""}}"><span>{{day}}</span></button>',
+                timeButton: '<button type="button" class="{{disabled?" disabled":""}}" title="{{title}}" {{disabled?"disabled":""}}"><span>{{time}}</span></button>'
+            },
+            caption: '캘린더입니다. 글은 일요일, 월요일, 화요일, 수요일, 목요일, 금요일, 토요일 순으로 나옵니다',
+            colWidth: '32px', // 셀 너비
+            format: 'yyyy.MM.dd',
+            paramFormat: 'yyyyMMdd'
+        };
+
+        self.options = $.extend({}, defaults, opt);
+        
+        self._initialize();
+    }
+
+    Plugin.prototype = {
+        _initialize: function() {
+            var self = this,
+                arr = [];
+
+            self.dateArr = self.options.dateArr;
+
+            for (var i = 0; i < self.dateArr.length; i++) {
+                arr.push(vcui.date.parse(self.dateArr[i]));
+            }
+
+            self.currDate = arr[0];
+
+            if (self.options.inputTarget) {
+                self.$input = $(self.options.inputTarget);
+            }
+
+            self._render();
+        },
+        _render: function _render() {
+            var self = this,
+                opts = self.options,
+                tmpl;
+
+            tmpl = opts.template.header + '<div class="box-table"></div>';
+
+            self._remove();
+            self.$calendar = $(tmpl);
+            self.$el.empty().append(self.$calendar);
+
+            self.$el.find(self.$calendar).off('.calendar').on('click.calendar', '.arrow', function (e) {
+                var $el = $(e.currentTarget),
+                    isPrev = $el.hasClass('prev')
+
+                if ($el.hasClass('disabled')) {
+                    return;
+                }
+
+                self[isPrev ? 'prev' : 'next']();
+                self.$calendar.find('.' + (isPrev ? 'prev' : 'next')).focus();
+            }).on('click.calendar', '.day:not(.disabled)', function (e) {
+                // 날짜 클릭
+                e.preventDefault();
+                if ($(e.currentTarget).hasClass('disabled')) {
+                    return;
+                }
+
+                var $this = $(this).closest('td'),
+                    data = $this.data(),
+                    date = new Date(data.year, data.month -1, data.day),
+                    format = dateUtil.format(date, opts.paramFormat || '');
+
+                self.$calendar.find('.choice').removeClass('choice');
+                self.activeDate = date;
+                $this.addClass('choice');
+                if (opts.inputTarget) {
+                    self.$input.val(format);
+                }
+
+                self.$el.trigger('dateselected');
+            })
+
+            self._renderHeader();
+            self._renderDate();
+
+            return self;
+        },
+        /**
+         * 달력 그리기
+         * @returns {Calendar}
+         * @private
+         */
+        _renderDate: function _renderDate() {
+            var self = this,
+                opts = self.options,
+                date = self._getDateList(self.currDate),
+                html = '',
+                tmpl = vcui.template(opts.template[opts.type] || opts.template.button),
+                isToday = false,
+                isSelectDay = false,
+                isOtherMonth = false,
+                isDisabled = false,
+                i, j, y, m, d, week, len, nowd;
+
+            html += '<table class="tb-calendar"><caption>' + opts.caption + '</caption>';
+            html += '<colgroup>';
+            for (i = 0; i < 7; i++) {
+                html += '<col width="' + opts.colWidth + '" />';
+            }
+            html += '</colgroup><thead>';
+            for (i = 0; i < 7; i++) {
+                html += '<th class="' + (i === 0 ? ' ui-calendar-sunday' : i === 6 ? ' ui-calendar-saturday' : '') + '" scope="col">';
+                html += opts.weekNames[i];
+                html += '</th>';
+            }
+            html += '</thead><tbody>';
+            for (i = 0, len = date.length; i < len; i++) {
+                week = date[i];
+
+                html += '<tr>';
+                for (j = 0; j < 7; j++) {
+                    y = week[j].year, m = week[j].month, d = week[j].day;
+                    nowd = new Date(y, m - 1, d);
+
+                    if (self.activeDate) {
+                        isSelectDay = self.activeDate.getFullYear() === y && self.activeDate.getMonth() + 1 === m && self.activeDate.getDate() === d;
+                    }
+                    isToday = opts.today.getFullYear() === y && opts.today.getMonth() + 1 === m && opts.today.getDate() === d;
+                    isOtherMonth = self.currDate.getMonth() + 1 != m;
+                    isDisabled = !self._compareDate(nowd);
+
+                    html += '<td class="' + (isDisabled ? " disabled" : "");
+                    
+                    html += (j === 0 ? ' ui-calendar-sunday' : j === 6 ? ' ui-calendar-saturday' : '') + (isToday ? ' ui-calendar-today' : '') + (!isDisabled && isSelectDay ? ' choice' : '');
+                    
+                    html += '" data-year="' + y + '" data-month="' + m + '" data-day="' + d + '">';
+
+                    if (!isOtherMonth) {
+                        html += tmpl({
+                            title: dateUtil.format(nowd, opts.titleFormat) + (isToday ? ' 오늘' : '') + (isDisabled ? " 선택할 수 없음" : isSelectDay ? ' 선택일' : ''),
+                            isToday: isToday,
+                            isOtherMonth: isOtherMonth,
+                            isSunday: j === 0,
+                            isSaturday: j === 6,
+                            day: d,
+                            date: nowd,
+                            disabled: isDisabled
+                        });
+                    } else {
+                        html += '&nbsp;';
+                    }
+
+                    html += '</td>';
+                } // for
+                html += '</tr>';
+            } // for
+            html += '</tbody></table>';
+
+            self.$el.find('.box-table').html(html);
+
+            return self;
+        },
+        /**
+         * 헤더에 현재 날짜에 대한 정보 표시
+         * @private
+         */
+        _renderHeader: function _renderHeader() {
+            var self = this;
+
+            var currDate = new Date(self.currDate.getTime()),
+                minDate = vcui.date.parse(self.dateArr[0]),
+                maxDate = vcui.date.parse(self.dateArr[self.dateArr.length - 1]),
+                html,
+                $second = self.$el.find('.month-wrap');
+                isFirst = currDate.getFullYear() === minDate.getFullYear() && currDate.getMonth() === minDate.getMonth(),
+                isLast = currDate.getFullYear() === maxDate.getFullYear() && currDate.getMonth() === maxDate.getMonth();
+            
+            html = currDate.getFullYear() + '<span class="blind">년</span>.' + (currDate.getMonth() + 1)+ '<span class="blind">월</span>';
+            $second.find('.month').html(html);
+            
+            $second.find('.prev').toggleClass('disabled', isFirst).prop('disabled', isFirst).attr('tabindex', isFirst ? '-1' : '0');
+            $second.find('.next').toggleClass('disabled', isLast).prop('disabled', isLast).attr('tabindex', isLast ? '-1' : '0');
+        },
+        _remove: function _remove() {
+            var self = this;
+
+            if (self.$calendar) {
+                self.$calendar.off();
+                self.$calendar.remove();
+                self.$calendar = null;
+            }
+
+            return self;
+        },
+        /**
+         * 주어진 날짜가 유효한 범위에 있는가 체크
+         * @param date
+         * @returns {*}
+         * @private
+         */
+        _compareDate: function _compareDate(date) {
+            var self = this,
+                flag = false;
+            if (!(date instanceof Date)) {
+                date = dateUtil.parse(date);
+            }
+            if (!date || isNaN(date)) {
+                return null;
+            }
+            date.setHours(0, 0, 0, 0);
+
+            self.dateArr.forEach(function(item) {
+                item = vcui.date.parse(item);
+
+                if (date.getTime() === item.getTime()) {
+                    flag = true;
+                    return false;
+                }
+            });
+
+            return flag;
+        },
+        /**
+         * 날짜 데이타 계산
+         * @param {Date} date 렌더링할 날짜 데이타 생성
+         * @return {Array}
+         */
+        _getDateList: function _getDateList(date) {
+            date.setDate(1);
+
+            var self = this,
+                month = date.getMonth() + 1,
+                year = date.getFullYear(),
+                startOnWeek = date.getDay() + 1,
+                last = daysInMonth[date.getMonth()],
+                // 마지막날
+            prevLast = daysInMonth[date.getMonth() === 0 ? 11 : date.getMonth() - 1],
+                // 이전달의 마지막날
+            startPrevMonth = prevLast - startOnWeek,
+                // 이전달의 시작일
+            y = year,
+                m = month;
+
+            if (month > 12) {
+                month -= 12, year += 1;
+            } else {
+                if (month == 2 && self._isLeapYear(year)) {
+                    last = 29;
+                }
+            }
+
+            var data = [],
+                week = [];
+
+            if (startOnWeek > 0) {
+                if (month == 3 && self._isLeapYear(year)) {
+                    startPrevMonth += 1;
+                }
+                if ((m = month - 1) < 1) {
+                    m = 12, y = year - 1;
+                }
+                for (var i = 1; i < startOnWeek; i++) {
+                    week.push({ year: y, month: m, day: startPrevMonth + i + 1 }); // ***** +1
+                }
+                if (week.length > 6) {
+                    data.push(week), week = [];
+                }
+            }
+
+            for (var i = 1; i <= last; i++) {
+                week.push({ year: year, month: month, day: i });
+                if (week.length > 6) {
+                    data.push(week), week = [];
+                }
+            }
+
+            if (week.length > 0 && week.length < 7) {
+                if ((m = month + 1) > 12) {
+                    m -= 12, y = year + 1;
+                }
+                for (var i = week.length, d = 1; i < 7; i++, d++) {
+                    week.push({ year: y, month: m, day: d });
+                }
+            }
+            week.length && data.push(week);
+            return data;
+        },
+        /**
+         * 이전달
+         * @returns {Calendar}
+         */
+        prev: function prev() {
+            var self = this,
+                currDate = vcui.date.add(self.currDate, 'M', -1);
+            if (self.options.header && self._compareMonth(currDate) !== 0) {
+                return this;
+            }
+            self.currDate = currDate;
+            self._renderHeader();
+            self._renderDate();
+
+            return this;
+        },
+
+        /**
+         * 다음달
+         * @returns {Calendar}
+         */
+        next: function next() {
+            var self = this,
+                currDate = vcui.date.add(self.currDate, 'M', 1);
+            if (self.options.header && self._compareMonth(currDate) !== 0) {
+                return this;
+            }
+            self.currDate = currDate;
+            self._renderHeader();
+            self._renderDate();
+
+            return this;
+        },
+        /**
+         * 윤년 여부
+         * @param {Date} date 렌더링할 날짜 데이타 생성
+         * @return {boolean} 윤년 여부
+         */
+        _isLeapYear: function _isLeapYear(year) {
+            return year % 4 === 0 && year % 100 !== 0 || year % 400 === 0;
+        }
+    }
+
+    CS.MD.plugin(pluginName, Plugin);
+}();
+
+CS.MD.timeCalendar = function() {
+    var dateUtil = vcui.date;
+    var detect = vcui.detect;
+
+    var dateRegex = /[0-9]{2}:?[0-9]{2}/;
+
+    var pluginName = 'timeCalendar';
+
+    function Plugin(el, opt) {
+        var self = this;
+        self.$el = $(el),
+        self.el = el;
+
+        var defaults = {
+            timeName: ['09', '10', '11', '12', '13', '14', '15', '16', '17'],
+            titleFormat: 'hh시 mm분',
+            template: {
+                button: '<button type="button" class="{{disabled?"disabled":""}}" title="{{title}}" {{disabled?"disabled":""}}><span>{{time}}분</span></button>'
+            },
+            caption: '시간 캘린더입니다. 글은 9시, 10시, 11시, 12시, 13시, 14시, 15시, 16시, 17시 순으로 나옵니다',
+            colWidth: '44px', // 셀 너비
+            format: 'hh:mm'
+        };
+
+        self.options = $.extend({}, defaults, opt);
+        
+        self._initialize();
+    }
+
+    Plugin.prototype = {
+        _initialize: function() {
+            var self = this;
+
+            self.timeArr = self.options.timeArr;
+            
+            if (self.options.inputTarget) {
+                self.$input = $(self.options.inputTarget);
+            }
+
+            self._render();
+        },
+        _getTimeList: function _getTimeList() {
+            var self = this,
+                obj;
+
+            self.timeArr.forEach(function(item) {
+                var item = item.toString(),
+                    hour, min;
+
+                hour = item.substring(0,2);
+                min = item.substring(2,4);
+
+                obj[hour].push(min);
+            });
+
+            return obj;
+        },
+        _render: function _render() {
+            var self = this,
+                opts = self.options,
+                tmpl;
+
+            tmpl = '<div class="box-table"></div>';
+
+            self._remove();
+            self.$calendar = $(tmpl);
+            self.$el.empty().append(self.$calendar);
+            
+            self.$calendar.off('.timecalendar').on('click.timecalendar', 'button:not(.disabled)', function (e) {
+                // 날짜 클릭
+                e.preventDefault();
+                
+                var $this = $(this).closest('td'),
+                    data = $this.data(),
+                    time = data.hour + '' + data.min;
+
+                self.$calendar.find('.choice').removeClass('choice');
+                self.activeTime = time;
+                $this.addClass('choice');
+                $this.siblings('th').addClass('choice');
+                self.$input.val(time);
+
+                self.$el.trigger('timeselected');
+            });
+            
+            self._renderTime();
+
+            return self;
+        },
+        /**
+         * 시간 그리기
+         * @returns {Calendar}
+         * @private
+         */
+        _renderTime: function _renderTime() {
+            var self = this,
+                opts = self.options,
+                html = '',
+                tmpl = vcui.template(opts.template.button),
+                isDisabled = false,
+                i, j, time, nowd, hour, min;
+
+            //time = self._getTimeList();
+
+            html += '<table class="tb-timetable"><caption>' + opts.caption + '</caption>';
+            html += '<colgroup>';
+            for (i = 0; i < 7; i++) {
+                html += '<col width="' + opts.colWidth + '" />';
+            }
+            html += '</colgroup><tbody>';
+            for (i = 0; i < opts.timeName.length; i++) {
+                html += '<tr>';
+
+                html += '<th scope="row">'+ opts.timeName[i].replace(/(^0+)/, "") +'시</th>';
+                for (j = 0; j < 6; j++) {
+                    
+                    hour = opts.timeName[i];
+                    min = j + '0';
+ 
+                    nowd = hour + min;
+
+                    isDisabled = !self._compareDate(nowd);
+                    
+                    html += '<td class="' + (isDisabled ? "disabled" : "");
+                    html += '" data-hour="' + hour + '" data-min="' + min + '">';
+                    
+                    html += tmpl({
+                        title: dateUtil.format(nowd, opts.titleFormat) + (isDisabled ? " 선택할 수 없음" : ""),
+                        time: min,
+                        disabled: isDisabled
+                    });
+
+                    html += '</td>';
+                } // for
+                html += '</tr>';
+            } // for
+            html += '</tbody></table>';
+
+            self.$el.find('.box-table').html(html);
+
+            return self;
+        },
+        /**
+         * 주어진 날짜가 유효한 범위에 있는가 체크
+         * @param date
+         * @returns {*}
+         * @private
+         */
+        _compareDate: function _compareDate(time) {
+            var self = this,
+                flag = false;
+            
+            if (!time || isNaN(time)) {
+                return null;
+            }
+
+            self.timeArr.forEach(function(item) {
+                if (time == item) {
+                    flag = true;
+                    return false;
+                }
+            });
+
+            return flag;
+        },
+        _remove: function _remove() {
+            var self = this;
+
+            if (self.$calendar) {
+                self.$calendar.off();
+                self.$calendar.remove();
+                self.$calendar = null;
+            }
+
+            return self;
+        },
+    }
 
     CS.MD.plugin(pluginName, Plugin);
 }();

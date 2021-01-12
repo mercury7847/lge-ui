@@ -17,7 +17,7 @@
     }
 }
 
-.my-product {
+.my-product-wrap {
     background:url(/lg5-common/images/CS/img-banner01.jpg) no-repeat;
     background-position:center 15%;
     background-size:cover;
@@ -36,7 +36,7 @@
             }
         }
     }
-    &-title {
+    .title {
         position:relative;
         text-align:center;
         .tit {
@@ -67,7 +67,7 @@
             }
         }
     }
-    &-slider {
+    .my-product-slider {
         display:none;
         margin-top:32px;
         .slide-controls {
@@ -128,7 +128,6 @@
                     color:#fff;
                     font-size:16px;
                     font-weight:500;
-                    line-height:48px;
                     &:before {
                         content:'';
                         position:absolute;
@@ -137,7 +136,10 @@
                         width:48px;
                         height:48px;
                         background-size:48px;
-                        background-repeat:norepeat;
+                        background-repeat:no-repeat;
+                    }
+                    span {
+
                     }
                 }   
                 .name {
@@ -378,10 +380,7 @@
     @include mobile {
         padding:40px 16px 0;
     }
-
-    // 키워드 검색
-    .keyword-search {    
-        margin-bottom:32px;    
+    .keyword-search {
         .search-box {
             max-width:443px + 166px;
             margin:0 auto;
@@ -408,7 +407,6 @@
                 margin-top:4px;
             }
         }
-        
         @include mobile {
             width:100%;
             margin:0 0 32px;
@@ -417,13 +415,25 @@
         }
     }
 
+    // 키워드 검색
+    .keyword-box {
+        display:none;
+        margin-bottom:32px;
+        &.active {
+            display:block;
+        }
+        .err-msg ,.desc {
+            display:none;
+        }
+    }
+
     // 카테고리 선택
-    .category-search {
+    .category-box {
         display:none;
         &.active {
             display:block;
         }
-        & > ul {
+        .category-list-wrap > .category-list {
             margin:-24px -12px 0;
             @include clearfix;
             & > li {
@@ -532,14 +542,14 @@
             }
         }
         @include tablet {
-            & > ul {
+            .category-list-wrap > .category-list {
                 & > li {
                     width:calc(100% / 3);
                 }
             }
         }
         @include mobile {
-            & > ul {
+            .category-list-wrap > .category-list {
                 margin:-12px -6px 0;
                 & > li {
                     width:50%;
@@ -589,7 +599,7 @@
     }
 
     // 모델 선택
-    .model-search {
+    .model-box {
         display:none;
         &.active {
             display:block;
@@ -619,6 +629,7 @@
         }
         .keyword-search {
             display:none;
+            margin-bottom:32px;
         }
         .no-data {
             .word {

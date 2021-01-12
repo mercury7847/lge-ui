@@ -142,7 +142,7 @@
         '                               </div>'+
         '                               <div class="tit-info">'+
         '                                   <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.displayName}}</p>'+
-        '                                   <p class="code"><span class="blind">제품 코드</span>{{item.modelId}}</p>'+
+        '                                   <p class="code"><span class="blind">제품 코드</span>{{item.modelName}}</p>'+
         '                               </div>'+
         '                               <p class="etc">월 {{item.monthPrice}}원<span class="comb-txt">{{item.combineText}}</span></p>'+
         '                           </div>'+  
@@ -367,8 +367,8 @@
         $putItemContainer.on('click', 'button.btn-del', function(e){
             e.preventDefault();
 
-            var modelId = $(this).data('modelId');
-            removePutItem(modelId);
+            var itenIdx = $(this).closest('li').index();
+            removePutItem(itenIdx);
         }).on('click', 'button.btn-close', function(e){
             e.preventDefault();
 
@@ -454,9 +454,12 @@
                 return;
             }
             
-            _currentItemList = vcui.array.map(result.data.productList, function(item, idx){
+            _currentItemList = vcui.array.map(result.data.productList, function(item, idx){                
                 item['index'] = idx+1;
                 item["serviceName"] = serviceName;
+
+                setSiblingCodeNumbering(item);
+
                 return item;
             });
             var leng = _currentItemList.length;
@@ -470,6 +473,13 @@
 
             addProdItemList();
         });
+    }
+
+    function setSiblingCodeNumbering(item){
+        var key;
+        for(key in item.siblingFee) item.siblingFee[key].siblingCode = item.siblingFee[key].siblingCode.toString();
+        for(key in item.siblingUsePeriod) item.siblingUsePeriod[key].siblingCode = item.siblingUsePeriod[key].siblingCode.toString();
+        for(key in item.siblingVisitCycle) item.siblingVisitCycle[key].siblingCode = item.siblingVisitCycle[key].siblingCode.toString();
     }
 
     //서비스 변경...
@@ -508,6 +518,8 @@
     function setChangeOptionChip(idx, optdata){
         lgkorUI.showLoading();
 
+        console.log("setChangeOptionChip:", idx, _currentItemList[idx]['rtModelSeq'])
+
         var sendata = {
             tabID: getTabID(),
             modelID: optdata.siblingColors.modelId,
@@ -527,6 +539,8 @@
             }
             
             var blockID = result.data.blockID;
+
+            console.log("result.data :", result.data);
             
             _currentItemList[blockID]["rtModelSeq"] = result.data["rtModelSeq"];
             _currentItemList[blockID]["monthlyPrice"] = result.data["monthPrice"];
@@ -558,7 +572,8 @@
 
             var blockID = result.data.blockID;
             
-            for(var key in result.data){
+            setSiblingCodeNumbering(result.data);
+            for(var key in result.data){                
                 _currentItemList[blockID][key] = result.data[key];
             }
 
@@ -618,7 +633,8 @@
     function addPutItem(item){ 
         var idx = $(item).parents('.prd-care-vertical').data('index')-1;
         var optionData = getOptionData(item);
-        _putItemList.unshift({
+        var itemList = _putItemList.concat();
+        itemList.unshift({
             rtModelSeq: _currentItemList[idx]['rtModelSeq'],
             modelId: optionData.optdata.siblingColors.modelId,
             siblingCd: optionData.optdata.siblingColors.value,
@@ -627,7 +643,7 @@
 
         var sendata = {
             tabID: getTabID(),
-            itemList: JSON.stringify(_putItemList)
+            itemList: JSON.stringify(itemList)
         }
         
         requestPutItem(sendata);
@@ -637,9 +653,7 @@
     function removePutItem(id){
         console.log(id)
         console.log(_putItemList);
-        _putItemList = vcui.array.filter(_putItemList, function(item){
-            return item.modelId != id;
-        });
+        _putItemList.splice(id, 1);
         console.log(_putItemList);
 
         var sendata = {
@@ -682,9 +696,20 @@
 
     function setPutItems(listdata){
         $putItemContainer.find('.contract-slide').empty();
+
+        _putItemList = [];
         
         var leng = listdata.itemList.length;
         if(leng){
+            _putItemList = vcui.array.map(listdata.itemList, function(item){
+                return {
+                    rtModelSeq: item.rtModelSeq,
+                    modelId: item.modelId,
+                    siblingCd: item.siblingCd,
+                    siblingGroupCd: item.siblingGroupCd
+                }
+            })
+
             var listItem = vcui.template(_putItemTemplate, {putitem_list: listdata.itemList});
             $putItemContainer.find('.contract-slide').append(listItem);
 

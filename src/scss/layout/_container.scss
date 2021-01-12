@@ -306,15 +306,16 @@
             }
             .tit-wrap {
                 position:relative;
-                margin-bottom:48px;
+                margin-bottom:40px;
                 &.margin-sm {
                     margin-bottom:16px;
                 }
                 .tit {
-                    padding-bottom:16px;
+                    padding-bottom:12px;
                     color:#222;
-                    font-size:20px;
+                    font-size:22px;
                     font-weight:700;
+                    line-height:32px;
                     border-bottom:2px solid #222;
                     .point {
                         color:#ec455a;
@@ -333,10 +334,10 @@
                     margin-bottom:32px;
                 }
                 .tit-wrap {
-                    margin-bottom:20px;
+                    margin-bottom:24px;
                     .tit {
                         font-size:18px;
-                        padding-bottom: 12px;
+                        line-height:26px;
                     }
                 }
             }

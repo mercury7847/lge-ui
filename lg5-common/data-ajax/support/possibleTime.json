@@ -2,6 +2,11 @@
     "status": "success",
     "message": null,
     "data": {
-        "resultFlag": "Y"
+        "resultFlag": "Y",
+        "timeList": [
+            "1120", "1130", "1150",
+            "1510", "1550",
+            "1710"
+        ]
     }
 }
