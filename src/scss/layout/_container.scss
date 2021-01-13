@@ -138,40 +138,47 @@
         
         .progress-wrap {
             display:inline-block;
-            width:678px;
             margin-top:24px;
             ol {
                 display:flex;
+                align-items: center;
                 counter-reset:counter;
                 li {
-                    position:relative;
-                    flex:1;
+                    //@at-root:relative;
+                    //flex:1;
+                    display:flex;
                     text-align:center;
+                    align-items:center;
                     counter-increment:counter;
                     &:before {
                         content:counter(counter);
                         display:inline-block;
                         width:32px;
                         height:32px;
-                        color:$color-white;
+                        color:$color-default;
                         font-size:$font-small;
                         font-weight:$font-weight-bold;
                         line-height:32px;
                         border-radius:50%;
-                        background-color:#000;
+                        background-color:#e4e4e4;
+                        margin-right:12px;
                     }
                     &:not(:last-child):after {
                         content:'';
-                        position:absolute;
-                        top:15px;
-                        left:calc(50% + 28px);
-                        right:calc(-50% + 28px);
+                        //position:absolute;
+                        //top:15px;
+                        //left:calc(50% + 28px);
+                        //right:calc(-50% + 28px);
+                        display:inline-block;
+                        width:176px;
                         height:2px;
                         background:#ededed;
+                        border-radius:2px;
+                        margin:0 12px;
                     }
                     .txt {
-                        display:block;
-                        margin-top:6px;
+                        //display:block;
+                        //margin-top:6px;
                         @include font-small;
                         font-weight:$font-weight-bold;
                         white-space:nowrap;
@@ -188,11 +195,14 @@
                             width:24px;
                             height:24px;
                             line-height:24px;
+                            margin-right:6px;
                         }
                         &:not(:last-child):after {
-                            top:11px;
-                            left:calc(50% + 18px);
-                            right:calc(-50% + 18px);
+                            //top:11px;
+                            //left:calc(50% + 18px);
+                            //right:calc(-50% + 18px);
+                            margin:0 6px;
+                            width:20%;
                         }
                         &:first-child:nth-last-child(n+4), &:first-child:nth-last-child(n+4) ~ li { 
                             width:50%;
@@ -206,7 +216,7 @@
                             margin-top:16px;
                         }
                         .txt {
-                            margin-top:4px;
+                            //margin-top:6px;
                         }
                     }
                 }

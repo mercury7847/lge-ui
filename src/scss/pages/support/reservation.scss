@@ -397,26 +397,6 @@
     }
 
     &.reservation-result{
-        .reception-progress{
-            &.type-2
-            {
-                &.step-3{
-                    max-width:1460px;
-                    padding:0 40px;
-                    margin:0 auto;
-                    margin-top:64px;
-                    margin-bottom:33px;
-                    li::after{
-                        width:calc(1380px / 2 - 24px);
-                        left:calc(-1380px / 2 + 24px);
-                    }
-                }
-                &.step-3[data-step="2"]::after{
-                    left:40px;
-                    width:calc(50% - 40px);
-                }
-            }
-        }
         .result-header-tit{
             max-width:1460px;
             margin:0 auto;
@@ -434,9 +414,6 @@
                 margin:0 auto;
                 padding:24px 40px;
             }
-        }
-        .reception-progress{
-            margin-top:48px;
         }
         .inquiry-list{
             .description{
@@ -458,18 +435,6 @@
                     .btn{
                         width:calc(50% - 8px);
                         margin:0 0 12px 0;
-                    }
-                }
-            }
-            .reception-progress{
-                &.type-2
-                {
-                    &.step-3{
-                        padding:0;
-                        li::after{
-                            width:100%;
-                            left:-50%;
-                        }
                     }
                 }
             }
@@ -530,6 +495,76 @@
         }
     }
 
+    .reception-progress{
+        &.type-new
+        {
+            display:flex;
+            align-items:center;
+            max-width:1380px;
+            margin:0 auto;
+            margin-top:64px;
+            margin-bottom:33px;
+            background:#f4f4f4;
+            border-radius:10px;
+            height:12px;
+            li{
+                &::before{
+                    content:'';
+                    border-radius:50%;
+                    width:24px;
+                    height:24px;
+                    background-color:#aaa;
+                    display:inline-block;
+                }
+                &:first-child{
+                    text-align:left;
+                }
+                &:last-child{
+                    text-align:right;
+                }
+                .text{
+                    margin-top:10px;
+                    display:none;
+                }
+                &.on{
+                    &::before{
+                        background-color:#fff;
+                        border:1px solid #ddd;
+                        box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.14);
+                        margin-top:26px;
+                    }
+                    .text{
+                        display:block;
+                    }
+                }
+            }
+            &.step-3{
+                li{
+                    width:33.33%;
+                }
+            }
+        }
+    }
+
+    .reception-progress-box{
+        padding:0 40px;
+        margin:0 auto;
+        margin-top:64px;
+        max-width:1460px;
+
+        .description{
+            font-weight:700;
+        }
+
+        .reception-progress{
+            &.type-new{
+                margin-top:24px;
+                margin-bottom:80px;
+            }
+        }
+    }
+
+
     /* support tablet */
     @media (max-width: 1024px){
         .contents-inner{
@@ -577,6 +612,10 @@
                     }
                 }
             }
+        }
+
+        .reception-progress-box{
+            padding:0 16px;
         }
     }
 }
