@@ -1508,6 +1508,7 @@ var AuthManager = function() {
         var self = this;
         var defaults = {
             elem: {
+                form: '',
                 popup: '',
                 name: '',
                 phone: '',
@@ -1524,30 +1525,34 @@ var AuthManager = function() {
         self.nameName = $(options.elem.name)[0].name;
         self.phoneName = $(options.elem.phone)[0].name;
         self.numberName = $(options.elem.number)[0].name;
+        self.popFlag = options.elem.popup ? true : false;
+
+        self.smsUrl = self.popFlag ? $(options.elem.popup).data('smsUrl') : $(options.elem.form).data('smsUrl');
+        self.authUrl = self.popFlag ? $(options.elem.popup).data('authUrl') : $(options.elem.form).data('authUrl');
 
         var register = options.register || {};
 
-        self.validation = new vcui.ui.CsValidation(options.elem.popup, {
+        self.validation = new vcui.ui.CsValidation(self.popFlag ? options.elem.popup : options.elem.form, {
             register: register
         });
     }
 
     AuthManager.prototype = {
-        send: function() {
+        send: function(el) {
             var self = this;
             var elem = self.options.elem,
                 result = self.validation.validate([self.nameName, self.phoneName]),
                 data, url;
 
             if (result.success) {
-                url = $(elem.popup).data('smsUrl');
+                url = self.smsUrl;
                 data = self.validation.getValues([self.nameName, self.phoneName]);
 
                 lgkorUI.requestAjaxDataPost(url, data, function(result) {
                     var resultData = result.data;
 
                     if (resultData.resultFlag == 'Y') {
-                        $(this).find('span').html(RESENDTEXT);
+                        $(el).find('span').html(RESENDTEXT);
                         $(elem.number).prop('disabled', false);
                     }
 
@@ -1563,7 +1568,7 @@ var AuthManager = function() {
 
             $(elem.popup).vcModal();
         },
-        confirm: function(el, callback) {
+        confirm: function(el) {
             var self = this;
             var $button = $(el),
                 elem = self.options.elem,
@@ -1577,13 +1582,12 @@ var AuthManager = function() {
                     return false;
                 }
 
-                if (callback) {
-                    callback();
-                } else {
-                    url = $(elem.popup).data('authUrl'),
-                    data = self.validation.getValues([self.nameName, self.phoneName, self.numberName]);
+                url = self.authUrl;
+                data = self.validation.getValues([self.nameName, self.phoneName, self.numberName]);
 
-                    lgkorUI.requestAjaxDataPost(url, data, function(result) {
+                lgkorUI.showLoading();
+                lgkorUI.requestAjaxDataPost(url, data, function(result) {
+                    if (self.popFlag) {
                         var nameValue = $(elem.name).val(),
                             phoneValue = $(elem.phone).val();
                         
@@ -1598,8 +1602,18 @@ var AuthManager = function() {
                         }
 
                         lgkorUI.alert('', {title: result.data.resultMessage});
-                    });
-                }
+                    } else {
+                        if (result.data.resultFlag == 'Y') {
+                            $(elem.form).submit();
+                        } else if (result.data.resultFlag == 'N') {
+                            lgkorUI.alert('', {
+                                title: result.data.resultMessage
+                            });
+
+                            lgkorUI.hideLoading();
+                        }
+                    }
+                });
             }
         }
     };
