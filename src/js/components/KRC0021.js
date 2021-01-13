@@ -5,10 +5,15 @@ $(window).ready(function(){
 
     vcui.require(['ui/carousel'], function () {
         $('.KRC0021').find('.ui_carousel_slider').vcCarousel({
+            settings: {
+                unbuilded:true
+            },
             responsive: [
                 {
                     breakpoint: 10000,
-                    settings: 'unslick'
+                    settings: {
+                        unbuilded:true
+                    }
                 },
                 {
                     breakpoint: 768,
