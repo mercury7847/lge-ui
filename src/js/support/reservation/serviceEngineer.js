@@ -440,44 +440,69 @@
         },
         bindEvent: function() {
             var self = this;
-            self.$cont.on('reset', function() {
+            self.$cont.on('reset', function(e, module) {
                 self.$solutionsBanner.hide();
                 self.$fanBox.hide();
                 self.$bdTypeBox.hide();
                 self.$tvPositionBox.hide();
                 self.$installTypeBox.hide();
                 self.$addFanBox.hide();
+
+                module._next(module.$stepModel);
             });
+
             // 모델 선택 후 이벤트
-            self.$cont.on('complete', function(e, module, info, data, callback) {    
-                // 에어컨 > 시스템 에어컨 선택 시
-                if (info.category == '1019'){
-                    if (info.subCategory == "1129"){
-                        self.$fanBox.show();
-                        self.$bdTypeBox.show();
-                    } else if (info.subCategory != "1083") {
-                        self.$fanBox.show();
-                        self.$bdTypeBox.hide();
+            self.$cont.on('complete', function(e, module, data, url) {    
+                var param = {
+                    modelCode: data.modelCode,
+                    serviceType: $('#serviceType').val(),
+                    category: data.category,
+                    subCategory: data.subCategory
+                };
+
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var resultData = result.data;
+
+                    module._updateSummary({
+                        product: [data.categoryName, data.subCategoryName, data.modelCode],
+                        reset: true
+                    });
+                
+                    
+                    // 에어컨 > 시스템 에어컨 선택 시
+                    if (data.category == '1019'){
+                        if (data.subCategory == "1129"){
+                            self.$fanBox.show();
+                            self.$bdTypeBox.show();
+                        } else if (data.subCategory != "1083") {
+                            self.$fanBox.show();
+                            self.$bdTypeBox.hide();
+                        }
                     }
-                }
-                
-                // 드럼 세탁기 선택 시
-                if (info.subCategory == "1086" || info.subCategory == "1021") {
-                    self.$installTypeBox.show();
-                } else {
-                    self.$installTypeBox.hide();
-                }
-                
-                // TV/프로젝터 > 올레드, 울트라HD, LED/LCD, PDP 선택 시
-                if (info.subCategory == "D002795" || info.subCategory == "1040" || info.subCategory == "1041" || info.subCategory == "1043") {
-                    self.$tvPositionBox.show();
-                } else {
-                    self.$tvPositionBox.hide();
-                }
+                    
+                    // 드럼 세탁기 선택 시
+                    if (data.subCategory == "1086" || data.subCategory == "1021") {
+                        self.$installTypeBox.show();
+                    } else {
+                        self.$installTypeBox.hide();
+                    }
+                    
+                    // TV/프로젝터 > 올레드, 울트라HD, LED/LCD, PDP 선택 시
+                    if (data.subCategory == "D002795" || data.subCategory == "1040" || data.subCategory == "1041" || data.subCategory == "1043") {
+                        self.$tvPositionBox.show();
+                    } else {
+                        self.$tvPositionBox.hide();
+                    }
 
-                self.setTopicList(data)
+                    self.setTopicList(resultData)
+                    
+                    module.$myModelArea.hide();
 
-                callback();
+                    module._next(module.$stepInput);
+                    module._focus(module.$selectedModelBar, function() {
+                        module.$selectedModelBar.vcSticky();
+                    });
+                });
             });
 
             // 에어컨 실외기 위치

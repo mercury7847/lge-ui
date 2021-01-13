@@ -26,6 +26,10 @@
         .visual-left : visual image Left
         .visual-right : visual image Right
 
+        3. 이미지 넓이 [KR수정_210113] 옵션 추가
+        .standard : 이미지 넓이가 678px
+        .large : 이미지가 넓이가 912px
+
 		[.body-copy 옵션]
 		1. 폰트 종류 : 
 		.font-regular : 레귤러
@@ -39,7 +43,7 @@
 	-->
 	<section class="component KRC0039">
 		<div class="inner">
-            <div class="tbl-layout @@verticalType @@if(context.visualFirst){visual-left}@@if(context.visualLast){visual-right}">
+            <div class="tbl-layout @@verticalType @@sizeType @@if(context.visualFirst){visual-left}@@if(context.visualLast){visual-right}">
                 @@if ( context.visualFirst ) {
                 <!-- visual -->
                 <div class="visual-cell">

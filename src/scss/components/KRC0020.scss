@@ -144,6 +144,12 @@
 			}
         }
         .visual-area {
+            text-align:center;
+            a {
+                position:relative;
+                display:inline-block;
+                vertical-align:top;
+            }
             img {
                 width:auto;
                 max-width:100%;

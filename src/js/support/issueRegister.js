@@ -17,7 +17,7 @@
 
         $('.btn-confirm').on('click', function(e) {
             var formData = new FormData();
-                ajaxUrl = $('#submitForm').data('ajax');
+                url = $('#submitForm').data('ajax');
 
             var files = $('.ui_imageinput').vcImageFileInput('getSelectFiles');
             
@@ -36,25 +36,7 @@
                 formData.append('registerNo', $('#registerNo').val() || '');
             }
 
-            $.ajax({
-                type : 'POST',
-                url : ajaxUrl,
-                dataType : 'json',
-                data : formData,
-                enctype: 'multipart/form-data',
-                processData: false,
-                contentType: false
-            }).done(function (result) {
-                if(result.ssoCheckUrl != undefined && result.ssoCheckUrl != null && result.ssoCheckUrl != ""){
-                    location.reload();                
-                    return;
-                }
-                
-                if(result.status != 'success'){
-                    alert(result.message ? result.message : '오류발생');
-                    return;
-                }
-                
+            lgkorUI.requestAjaxFileData(url, formData, function(result) {
                 var data = result.data,
                     obj = {},
                     desc = '';
@@ -71,16 +53,18 @@
                             obj = {title: '2개 사진이 등록 되었습니다.'};
                         }
                     }
-                    location.href = $('#submitForm').attr('action');
+                    obj = $.extend(obj, {
+                        ok: function() {
+                            location.href = $('#submitForm').attr('action');
+                        }
+                    });
                 } else if (data.resultFlag == 'N') {
                     obj = {title: '사진 업로드에 실패했습니다.'};
                     desc = data.resultMessage
                 }
 
                 lgkorUI.alert(desc, obj);
-            }).fail(function(err){
-                alert(err.message);
-            });
+            }, 'POST');
         });
     });
 })();
