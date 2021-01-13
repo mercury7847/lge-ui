@@ -80,7 +80,7 @@ function doConfirm(){
 		, cache : false
 		, async: false //동기 방식
 		, dataType: "json"
-		, url: "/common/selectAuthenticationNo.do"
+		, url: "/support/improve/selectAuthenticationNo.lgajax"
 		, data: {
 					userName : userName,
 					mobilePhoneNum  : mobilePhoneNum,
