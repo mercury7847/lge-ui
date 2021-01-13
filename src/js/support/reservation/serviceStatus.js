@@ -1,6 +1,6 @@
 (function() {
     var listTmpl = 
-        '<li class="icon-mail">' +
+        '<li class="{{typeClass}}">' +
             '<a href="{{url}}" class="item">' +
                 '<div class="flag-wrap bar-type">' +
                     '<span class="flag green">{{type}}</span>' +
