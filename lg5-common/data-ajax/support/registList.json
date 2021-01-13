@@ -1,0 +1,96 @@
+{
+    "status": "success",
+    "message":null,
+    "data": {
+        "listData":[
+            {
+                "url": "/html/CS/CSTF4210.html",
+                "type": "이메일 문의",
+                "status": "접수",
+                "topic": "사이트관련",
+                "subTopic": "구매문의",
+                "category": "모바일",
+                "subCategory": "스마트폰",
+                "registNumber": "S200604918",
+                "registDate": "2021.01.10",
+                "modelCode": "LG VELVET(SKT) LM-G900N"
+            },
+            {
+                "url": "/html/CS/CSTF4210.html",
+                "type": "전화 상담",
+                "status": "접수",
+                "topic": "사이트관련",
+                "subTopic": "구매문의",
+                "category": "모바일",
+                "subCategory": "스마트폰",
+                "registNumber": "S200604918",
+                "registDate": "2021.01.10",
+                "modelCode": "LG VELVET(SKT) LM-G900N"
+            },
+            {
+                "url": "/html/CS/CSTF4210.html",
+                "type": "원격 상담",
+                "status": "접수",
+                "topic": "사이트관련",
+                "subTopic": "구매문의",
+                "category": "모바일",
+                "subCategory": "스마트폰",
+                "registNumber": "S200604918",
+                "registDate": "2021.01.10",
+                "modelCode": "LG VELVET(SKT) LM-G900N"
+            },
+            {
+                "url": "/html/CS/CSTF4210.html",
+                "type": "영상 상담",
+                "status": "접수",
+                "topic": "사이트관련",
+                "subTopic": "구매문의",
+                "category": "모바일",
+                "subCategory": "스마트폰",
+                "registNumber": "S200604918",
+                "registDate": "2021.01.10",
+                "modelCode": "LG VELVET(SKT) LM-G900N"
+            },
+            {
+                "url": "/html/CS/CSTF4210.html",
+                "type": "출장 서비스",
+                "status": "접수",
+                "topic": "사이트관련",
+                "subTopic": "구매문의",
+                "category": "모바일",
+                "subCategory": "스마트폰",
+                "registNumber": "S200604918",
+                "registDate": "2021.01.10",
+                "modelCode": "LG VELVET(SKT) LM-G900N"
+            },
+            {
+                "url": "/html/CS/CSTF4210.html",
+                "type": "제품 설치/철거",
+                "status": "접수",
+                "topic": "사이트관련",
+                "subTopic": "구매문의",
+                "category": "모바일",
+                "subCategory": "스마트폰",
+                "registNumber": "S200604918",
+                "registDate": "2021.01.10",
+                "modelCode": "LG VELVET(SKT) LM-G900N"
+            },
+            {
+                "url": "/html/CS/CSTF4210.html",
+                "type": "센터 방문",
+                "status": "접수",
+                "topic": "사이트관련",
+                "subTopic": "구매문의",
+                "category": "모바일",
+                "subCategory": "스마트폰",
+                "registNumber": "S200604918",
+                "registDate": "2021.01.10",
+                "modelCode": "LG VELVET(SKT) LM-G900N"
+            }
+        ],
+        "listPage": {
+            "page": 1,
+            "totalCount": 12
+        }
+    }
+}
