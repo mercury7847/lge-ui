@@ -167,8 +167,8 @@ button:active { -webkit-box-shadow: none; box-shadow: none; }
 .pod-process .foll { position: relative; z-index: 1; margin: 0; }
 .pod-process .content { height: 55px; padding: 20px 0 0; overflow: hidden; }
 .pod-process .content.is-remote,
-.pod-process .content.is-email { background: url('/pcsvc/images/reservations_begin_01.png') no-repeat left top; }
-.pod-process .content.is-suggestions { background: url('/pcsvc/images/reservations_begin_02.png') no-repeat left top; }
+.pod-process .content.is-email { background: url('/lg5-common/pcsvc/images/reservations_begin_01.png') no-repeat left top; }
+.pod-process .content.is-suggestions { background: url('/lg5-common/pcsvc/images/reservations_begin_02.png') no-repeat left top; }
 .pod-process .content .val { position: relative; z-index: -1; }
 
 
@@ -252,7 +252,7 @@ button:active { -webkit-box-shadow: none; box-shadow: none; }
 .pod-lead-section.is-step1 { border-top-width: 0; }
 
 .pod-lead-section:before { position: absolute; top: 13px; left: 0; display: block; width: 70px; height: auto; color: #EE4173; font-weight: bold; font-size: 14px; letter-spacing: 0; }
-/* 20190806 삭제 
+/* 20190806 삭제
 .pod-lead-section.is-step1:before { content: 'STEP 1'; }
 .pod-lead-section.is-step2:before { content: 'STEP 2'; }
 .pod-lead-section.is-step3:before { content: 'STEP 3'; }
