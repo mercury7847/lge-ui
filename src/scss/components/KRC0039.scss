@@ -49,6 +49,16 @@
                     }
                 }
             }
+            &.large {
+                .visual-cell {
+                    width:((912px * 100%) / 1380px);
+                }
+            }
+            &.standard {
+                .visual-cell {
+                    width:((678px * 100%) / 1380px);
+                }
+            }
         }
         .visual-cell {
             display:table-cell;
