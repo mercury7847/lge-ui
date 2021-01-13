@@ -40,7 +40,9 @@ CS.MD.commonModel = function() {
                 '{{# if (typeof product != "undefined") { #}}' +
                 '<ul class="product">' +
                     '{{# for (var i = 0; i < product.length; i++) { #}}' +
+                    '{{# if (product[i]) { #}}' +
                     '<li>{{product[i]}}</li>' +
+                    '{{# } #}}' +
                     '{{# } #}}' +
                 '</ul>' +
                 '{{# } #}}' +
@@ -50,12 +52,11 @@ CS.MD.commonModel = function() {
             '</div>' +
             '{{# if (typeof reset != "undefined") { #}}' +
             '<div class="prod-btn">' +
-                '<button type="button" class="btn border size reset btn-reset">제품 재선택</button>' +
-            '</div>' +
-            '{{# } #}}' +
-            '{{# if (typeof inquiryReset != "undefined") { #}}' +
-            '<div class="prod-btn">' +
+                '{{# if (reset == "inquiry") { #}}' +
                 '<button type="button" class="btn border size reset btn-reset">문의유형 재선택</button>' +
+                '{{# } else { #}}' +
+                '<button type="button" class="btn border size reset btn-reset">제품 재선택</button>' +
+                '{{# } #}}' +
             '</div>' +
             '{{# } #}}' +
         '</div>';
@@ -124,7 +125,6 @@ CS.MD.commonModel = function() {
             self.totalCount = options.totalCount;
             self.inquiryType = options.inquiryType;
             self.param = options.param;
-            self.summary = options.summary;
 
             // 스텝 영역
             self.$stepBox = self.$el.find('.step-box');
@@ -198,7 +198,6 @@ CS.MD.commonModel = function() {
             self.totalCount = options.totalCount;
             self.inquiryType = options.inquiryType;
             self.param = options.param;
-            self.summary = options.summary;
 
             self.$el.find('[type=hidden]').not('[name=serviceType], [name=lockUserId]').val('');
             self.$el.find('input[type=text], textarea').val('');
@@ -208,27 +207,23 @@ CS.MD.commonModel = function() {
             self.$categoryBox.addClass(options.stepActiveClass);
             self.$modelBox.removeClass(options.stepActiveClass);
             self.$modelBox.find('.keyword-search').hide();
-            self.$modelInput.val('');
             self.$modelSlider.find('.slide-track').empty();
             self.$modelFilter.find('#categorySelect').vcSelectTarget('reset', 'default');
 
             self.$keywordBox.show();
             self.$keywordBox.find('.desc').hide();
-            self.$keywordInput.val('');
             
             self.$myModelArea.show();
-
-            $('.date-wrap').calendar('reset');
-            $('.time-wrap').timeCalendar('reset');
             
-            self.$el.trigger('reset');
+            self.$el.trigger('reset', [self]);
 
             self._updateSummary();
-            self._next(self.caseType == 'product' ? self.$stepModel : self.$stepInquiry);
+
+            $('.prod-selected-wrap').vcSticky('destroy');
         },
         _updateSummary: function(summary) {
             var self = this;
-                summary = summary || self.summary;
+                summary = summary || self.options.summary;
 
             if (summary) self.$selectedModelBar.html(vcui.template(selectedBarTmpl, summary));
         },
@@ -250,9 +245,11 @@ CS.MD.commonModel = function() {
                         .prop('disabled', !flag)
                         .attr('aria-disabled', (!flag).toString());
         },
-        _focus: function($target) {
+        _focus: function($target, callback) {
             $('html, body').stop().animate({
                 scrollTop: $target.offset().top
+            }, function() {
+                callback && callback();
             });
         },
         _next: function($target) {
@@ -349,43 +346,21 @@ CS.MD.commonModel = function() {
 
                 var $this = $(this),
                     data = $this.data(),
-                    url, param;
+                    url;
 
                 if ($this.hasClass('disabled')) {
                     $(window).trigger("toastshow", "예약가능한 제품이 아닙니다.");
                 } else {
                     url = self.$searchArea.data('resultUrl');
-                    parma = {
-                        modelCode: data.modelCode, 
-                        serviceType: $('#serviceType').val()
-                    }
 
-                    self.$el.find('#categoryNm').val(data.categoryName);
-                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
                     self.$el.find('#category').val(data.category);
+                    self.$el.find('#categoryNm').val(data.categoryName);
                     self.$el.find('#subCategory').val(data.subCategory);
+                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
                     self.$el.find('#modelCode').val(data.modelCode);
                     self.$el.find('#productCode').val(data.productCode);
                      
-                    lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                        var resultData = result.data,
-                            modelInfo = {
-                                category: data.category,
-                                subCategory: data.subCategory,
-                                modelCode: data.modelCode
-                            };
-    
-                        self.$el.trigger('complete', [self, modelInfo, resultData, function() {
-                            self.$myModelArea.hide();
-                            
-                            self._updateSummary({
-                                product: [data.categoryName, data.subCategoryName, data.modelCode],
-                                reset: true
-                            });
-                            self._next(self.$stepInput);
-                            self._focus(self.$selectedModelBar);
-                        }]);
-                    });
+                    self.$el.trigger('complete', [self, data, url]);
                 }
             });
 
@@ -436,30 +411,17 @@ CS.MD.commonModel = function() {
             self.$stepInquiry.find('.btn-type').on('click', function() {
                 var $this = $(this),
                     result = termsValidation.validate(),
-                    data = $this.data(),
-                    param = {
-                        category: data.category,
-                        categoryNm: data.categoryName,
-                        subCategory: data.subCategory,
-                        subCategoryNm: data.subCategoryName
-                    }
+                    data = $this.data();
 
                 if (result.success) {
                     self.$el.find('#category').val(data.category);
                     self.$el.find('#categoryNm').val(data.categoryName);
                     self.$el.find('#subCategory').val(data.subCategory);
                     self.$el.find('#subCategoryNm').val(data.subCategoryName);
-                    self.caseType = 'company';
+                    
+                    data.type = 'inquiry';
 
-                    self.$el.trigger('complete', [self, param, '', function() {
-                        self._updateSummary({
-                            product: [data.categoryName, data.subCategoryName],
-                            inquiryReset: true
-                        });
-
-                        self._next(self.$stepInput);
-                        self._focus(self.$selectedModelBar);
-                    }]);
+                    self.$el.trigger('complete', [self, data]);
                 }
             });
 
@@ -597,54 +559,19 @@ CS.MD.commonModel = function() {
                 e.preventDefault();
 
                 var $this = $(this),
-                    opt = self.options,
                     data = $this.data(),
-                    param, url;
+                    url;
 
-                self.$el.find('#categoryNm').val(data.categoryName);
-                self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                url = self.$searchArea.data('resultUrl');  
+
                 self.$el.find('#category').val(data.category);
+                self.$el.find('#categoryNm').val(data.categoryName);
                 self.$el.find('#subCategory').val(data.subCategory);
+                self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                self.$el.find('#modelCode').val(data.modelCode);
                 self.$el.find('#productCode').val(data.productCode);
 
-                if (data.modelCode) {
-                    self.$el.find('#modeCode').val(data.modelCode);
-                    
-                    opt.selectedModel = [data.categoryName, data.subCategoryName, data.modelCode];
-                } else {
-                    opt.selectedModel = [data.categoryName, data.subCategoryName];
-                }   
-
-                url = self.$searchArea.data('resultUrl');
-                param = {
-                    subCategory: data.subCategory,
-                    serviceType: $('#serviceType').val()
-                }   
-
-                lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                    var ajaxData = result.data,
-                        info = {
-                            category: data.category,
-                            subCategory: data.subCategory,
-                            modelCode: data.modelCode
-                        };
-
-                    self.$el.trigger('complete', [self, info, ajaxData, function() {
-                        self.$myModelArea.hide();
-                        
-                        self._updateSummary({
-                            product: opt.selectedModel,
-                            reset: true
-                        });
-
-                        self.$stepInput.siblings('.' + opt.stepClass).removeClass(opt.stepActiveClass);
-                        self.$stepInput.addClass(opt.stepActiveClass);
-
-                        $('html, body').stop().animate({
-                            scrollTop: self.$selectedModelBar.offset().top
-                        });
-                    }]);
-                });
+                self.$el.trigger('complete', [self, data, url]);
             });
             
             // 모델명 선택 - 서브 카테고리 선택
