@@ -147,7 +147,6 @@
                     //@at-root:relative;
                     //flex:1;
                     display:flex;
-                    text-align:center;
                     align-items:center;
                     counter-increment:counter;
                     &:before {
@@ -177,8 +176,6 @@
                         margin:0 12px;
                     }
                     .txt {
-                        //display:block;
-                        //margin-top:6px;
                         @include font-small;
                         font-weight:$font-weight-bold;
                         white-space:nowrap;

@@ -254,7 +254,7 @@ gulp.task("jsCompile:membership", () => gulp
 
 // fonts, images
 gulp.task("static", () => {
-    gulp.start(["static:data-ajax", "static:fonts", "static:images", "static:template", "static:videos"]);
+    gulp.start(["static:data-ajax", "static:fonts", "static:images", "static:template", "static:videos", "static:pcsvc"]);
 });
 gulp.task("static:data-ajax", () => gulp
     .src("./lg5-common/data-ajax/**")
@@ -275,6 +275,10 @@ gulp.task("static:template", () => gulp
 gulp.task("static:videos", () => gulp
     .src("./lg5-common/videos/**")
     .pipe(gulp.dest(dist + sourceFolder + "/videos/"))
+);
+gulp.task("static:pcsvc", () => gulp
+    .src("./lg5-common/pcsvc/**")
+    .pipe(gulp.dest(dist + sourceFolder + "/pcsvc/"))
 );
 
 

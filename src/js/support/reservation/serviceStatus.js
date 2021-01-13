@@ -68,7 +68,7 @@
         },
         bindEvent: function() {
             var self = this;
-            
+
             $('#numberForm').find('.btn-confirm').on('click', function() {
                 var result = self.numberValidation.validate(),
                     data = self.numberValidation.getAllValues();
@@ -148,8 +148,12 @@
             var self = this;
 
             self.$listPagination.on('pageClick', function(e) {
+                var userNm = self.$listPage.find('#userName').val();
+                var phoneNo = self.$listPage.find('#phoneNumber').val();
                 var param = {
-                    'page': e.page
+                    page: e.page,
+                    userName: userNm,
+                    phoneNumber: phoneNo
                 };
                 self.requestData(param);
             });
