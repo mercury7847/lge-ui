@@ -30,9 +30,9 @@
         '<div class="slide-conts ui_carousel_slide">' +
             '<div class="engineer-box">' +
                 '{{# if (index == 0) { #}}' +
-                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" value="{{index}}" checked>' +
+                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}" checked>' +
                 '{{# } else { #}}' +
-                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" value="{{index}}">' +
+                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}">' +
                 '{{# } #}}' +
                 '<label for="engineer{{index}}">' +
                     '<div class="img">' +
@@ -395,7 +395,7 @@
                 }
             });
         },
-        updateEngineer: function(data) { console.log(data);
+        updateEngineer: function(data) {
             var self = this,
                 $engineerBox = self.$stepEngineer.find('.engineer-info'),
                 $resultBox = self.$stepEngineer.find('.engineer-desc'),
@@ -619,9 +619,9 @@
                     time: $('#time').val(),
                     lockUserId: $('#lockUserId').val(),
                     productCode: $('#productCode').val(),
-                    engineerCode: $('#engineerCode').val(),
-                    centerCode: $('#centerCode').val() 
                 }
+
+                param = $.extend(param, infoData);
 
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var data = result.data;
