@@ -74,7 +74,7 @@ CS.MD.commonModel = function() {
                         '<p class="category"><span>{{categoryNm}} &gt; </span>{{subCategoryNm}}</p>' +
                     '{{# } else { #}}' +
                         '<p class="name">모델명을 모르겠어요.</p>' +
-                        '<p class="category"><span>건너뛰기<span></p>' +
+                        '<p class="category"><span>건너뛰기</span></p>' +
                     '{{# } #}}' +
                 '</div>' +
             '</a>' +

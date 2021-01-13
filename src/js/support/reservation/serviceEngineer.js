@@ -559,9 +559,11 @@
 
             // 주소 찾기
             self.$cont.find('.btn-address').on('click', function() { 
-                addressFinder.open(function(data) {
+                addressFinder.open(function(data) { 
+                    var address = data.userSelectedType == 'R' ? data.roadAddress : data.jibunAddress;
+
                     self.$cont.find('#zipCode').val(data.zonecode);
-                    self.$cont.find('#userAddress').val(data.roadAddress);
+                    self.$cont.find('#userAddress').val(address);
                     self.$cont.find('#detailAddress').val('');
 
                     if (self.autoFlag) self.requestDate();
