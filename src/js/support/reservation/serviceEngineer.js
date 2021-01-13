@@ -455,7 +455,9 @@
             self.$cont.on('complete', function(e, module, data, url) {    
                 var param = {
                     modelCode: data.modelCode,
-                    serviceType: $('#serviceType').val()
+                    serviceType: $('#serviceType').val(),
+                    category: data.category,
+                    subCategory: data.subCategory
                 };
 
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
@@ -495,7 +497,6 @@
                     self.setTopicList(resultData)
                     
                     module.$myModelArea.hide();
-                    self.$completeBtns.show();
 
                     module._next(module.$stepInput);
                     module._focus(module.$selectedModelBar, function() {

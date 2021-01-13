@@ -37,11 +37,13 @@
 			display: block;
 		}
 		.visual-area {
-			width: 100%;
+            width: 100%;
+            text-align:center;
 			img {
-				width:auto;
+                width:auto;
 				max-width: 100%;
-				height: auto;
+                height: auto;
+                vertical-align:top;
 			}
 		}
 		.text-area {

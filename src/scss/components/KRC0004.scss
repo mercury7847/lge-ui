@@ -123,12 +123,14 @@
 		}
 		.visual-area {
 			margin-top:56px;
-			position:relative;
+            position:relative;
+            text-align:center;
 			@include mobile {
 				margin-top:28px;
 			}
 			a {
-				display: block;
+                display: inline-block;
+                vertical-align:top;
 			}
 			img {
 				width:auto;
@@ -243,6 +245,11 @@
 				@include cta-btn;
 			}
 			.visual-area {
+                text-align:center;
+                > a {
+                    display:inline-block;
+                    vertical-align:top;
+                }
 				img {
 					width:auto;
 					max-width:100%;
