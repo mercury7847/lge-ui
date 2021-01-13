@@ -1086,6 +1086,9 @@
         },
 
         stringToBool: function(str) {
+            if(!str) {
+                return false;
+            }
             if(typeof str === 'boolean') {
                 return str;
             }
