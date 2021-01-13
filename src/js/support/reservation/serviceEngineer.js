@@ -427,7 +427,6 @@
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
-                    // self.$submitForm[0].data.value = JSON.stringify(formData);
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {

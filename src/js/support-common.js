@@ -1514,10 +1514,11 @@ var AuthManager = function() {
                 phone: '',
                 number: ''
             },
-            target: {
-                name: '',
-                phone: ''
-            },
+            // },
+            // target: {
+            //     name: '',
+            //     phone: ''
+            // },
             register: {}
         };
 
@@ -1568,7 +1569,7 @@ var AuthManager = function() {
 
             $(elem.popup).vcModal();
         },
-        confirm: function(el) {
+        confirm: function(el, callback) {
             var self = this;
             var $button = $(el),
                 elem = self.options.elem,
@@ -1592,16 +1593,20 @@ var AuthManager = function() {
                             phoneValue = $(elem.phone).val();
                         
                         if (result.data.resultFlag == 'Y') {
-                            $(target.name).val(nameValue);
-                            $(target.phone).val(phoneValue);
+                            if (elem.target) {
+                                $(target.name).val(nameValue);
+                                $(target.phone).val(phoneValue);
 
-                            $button.prop('disabled', true);
-                            $button.find('span').html(COMPLETETEXT);
-                        
-                            $(elem.popup).vcModal('hide');
+                                $button.prop('disabled', true);
+                                $button.find('span').html(COMPLETETEXT);
+                            
+                                $(elem.popup).vcModal('hide');
+                            } else {
+                                callback && callback();
+                            }
+                        } else {
+                            lgkorUI.alert('', {title: result.data.resultMessage});
                         }
-
-                        lgkorUI.alert('', {title: result.data.resultMessage});
                     } else {
                         if (result.data.resultFlag == 'Y') {
                             $(elem.form).submit();
