@@ -1,6 +1,5 @@
 (function(){
     var CREDIT_INQUIRE_URL;
-    var NICE_CREDIT_CHK_URL;
     var INSTALL_ABLED_URL;
     var CARD_ABLED_URL;
     var ARS_AGREE_URL;
@@ -659,8 +658,18 @@
 
     //신용정보 조회...
     function setCreditInquire(){
+        var step1Value = step1Validation.getValues();
+
+        var result = step1Validation.validate();
+        if(result.validItem.registFrontNumber || result.validItem.registBackFirst || result.validItem.userEmail){
+            return;
+        }
+
         var sendata = {
-            rentalCareType: getInputData('rentalCareType')
+            rentalCareType: getInputData('rentalCareType'),
+            registFrontNumber: step1Value.registFrontNumber,
+            registBackFirst: step1Value.registBackFirst,
+            userEmail: step1Value.userEmail
         }
         lgkorUI.requestAjaxData(CREDIT_INQUIRE_URL, sendata, function(result){
             if(result.data.success == "P"){
