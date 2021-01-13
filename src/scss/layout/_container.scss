@@ -137,6 +137,7 @@
         }
         
         .progress-wrap {
+            display:inline-block;
             margin-top:24px;
             ol {
                 display:flex;
@@ -182,6 +183,7 @@
                 }
             }
             @include mobile {
+                width:100%;
                 ol {
                     flex-wrap:wrap;
                     li {

@@ -87,7 +87,7 @@
             self.$authPopup = $('#certificationPopup');
 
             self.autoFlag = false;
-            self.isLogin = $('.header').data('ui_header').isLogin;
+            self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : false;
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
                 var register = {
