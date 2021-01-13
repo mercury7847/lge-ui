@@ -67,6 +67,8 @@
             });
         },
         bindEvent: function() {
+            var self = this;
+            
             $('#numberForm').find('.btn-confirm').on('click', function() {
                 var result = self.numberValidation.validate(),
                     data = self.numberValidation.getAllValues();

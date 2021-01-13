@@ -26,7 +26,7 @@
         margin:0 auto;
         padding:32px 40px;
         &.open {
-            .my-product-title {
+            .title {
                 .btn-toggle:after {
                     transform:rotate(0);
                 }
@@ -193,7 +193,7 @@
         .box {
             padding:24px 16px;
         }
-        &-title {
+        .title {
             position:relative;
             text-align:center;
             .btn-toggle {
@@ -219,7 +219,7 @@
                 }
             }
         }
-        &-slider {
+        .my-product-slider {
             margin-top:12px;
             .slide-controls {
                 margin-top:-18px;
