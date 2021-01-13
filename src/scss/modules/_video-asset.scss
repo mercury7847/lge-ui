@@ -59,8 +59,11 @@
 	}
 
 	&.video {
+        text-align:center;
 		.see-video {
-			display:block;
+            position:relative;
+            display:inline-block;
+            vertical-align:top;
 			&:before {
 				content: '';
 				position: absolute;
