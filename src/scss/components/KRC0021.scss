@@ -40,11 +40,12 @@
     }
 
     .visual-area {
+        text-align:center;
         &.image {
             a {
-                display:block;
-                text-align:center;
+                display:inline-block;
                 overflow:hidden;
+                vertical-align:top;
                 img {
                     width:auto;
                     max-width:100%;
@@ -55,9 +56,9 @@
         }
         &.youtube-box {
             a {
-                display:block;
-                text-align:center;
-                overflow:hidden;
+                position:relative;
+                display:inline-block;
+                vertical-align:top;
                 img {
                     width:auto;
                     max-width:100%;

@@ -55,7 +55,7 @@ var res = {
 				"KRC0019_Block Image(2 - Text Overlay)[KRC0029]" : ["/html/components/KRC0019.html","","검수완료"],
 				"KRC0020_Feature Icon Tab[KRC0030]" : ["/html/components/KRC0020.html","","검수완료"],
 				"KRC0021_Block Image(2 to 3)[KRC0031]" : ["/html/components/KRC0021.html","","검수완료"],
-				// "KRC0022_Contents Section Text[KRC0032]" : ["/html/components/KRC0022.html","","검수완료"],
+				"KRC0022_Contents Section Text[KRC0032]" : ["/html/components/KRC0022.html","","검수완료"],
 				"KRC0023_Block Image (2 to 4)[KRC0036]" : ["/html/components/KRC0023.html","","검수완료"],
 				// "KRC0024_Carousel BG Image[KRC0037]" : ["/html/components/KRC0024.html","","검수완료"],
 				"KRC0025_Text[KRC0038]" : ["/html/components/KRC0025.html","","검수완료"],
@@ -75,7 +75,7 @@ var res = {
 				"KRC0039_Widthways Switching Images[KRC0064]" : ["/html/components/KRC0039.html","","검수완료"],
 				"KRC0040_Tab Anchor_USP[KRC0065]" : ["/html/components/KRC0040.html","","검수완료"],
 				"KRC0041_BG Image 6 Text[KRC0066]" : ["/html/components/KRC0041.html","","검수완료"],
-				// "KRC0042_Image-Layered Text[KRC0018]" : ["/html/components/KRC0042.html","","검수완료"],
+				"KRC0042_Image-Layered Text[KRC0018]" : ["/html/components/KRC0042.html","","검수완료"],
 				"KRC9999_HTML Component" : ["/html/components/KRC9999.html","",""],
 			},
 			"KRP" : {

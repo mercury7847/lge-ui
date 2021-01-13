@@ -126,13 +126,13 @@
                         msgTarget: '.err-block'
                     },
                     zipCode: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.address-err-msg'
                     },
                     userAddress: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.address-err-msg'
                     },
                     detailAddress: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.address-err-msg'
                     },
                     date: {
                         msgTarget: '.err-msg'
@@ -201,6 +201,14 @@
 
                 self.$cont.commonModel({
                     register: register
+                });
+
+                $('.date-wrap').calendar({
+                    inputTarget: '#date'
+                });
+
+                $('.time-wrap').timeCalendar({
+                    inputTarget: '#time'
                 });
 
                 self.bindEvent();
@@ -289,10 +297,7 @@
                     var data = result.data;
 
                     if (data.resultFlag == 'Y') {
-                        $('.date-wrap').calendar({
-                            dateArr: data.dateList,
-                            inputTarget: '#date'
-                        });
+                        $('.date-wrap').calendar('update', data.dateList);
                         
                         self.dateParam = result.param;
 
@@ -302,6 +307,13 @@
                         self.$completeBtns.hide();
                     } else {
                         if (data.resultMessage) {
+                            if (data.tAlert == 'Y') {
+                                self.$stepInput.find('.step-btn-wrap').show();
+                                self.$stepDate.removeClass('active');
+                                self.$stepEngineer.removeClass('active');
+                                self.$completeBtns.hide();
+                            }
+
                             lgkorUI.alert('', {
                                 title: data.resultMessage
                             });
@@ -325,7 +337,6 @@
                 subCategory: $('#subCategory').val(),
                 date: $('#date').val()
             });
-
             param['zipId'] = self.dateParam.zipId;
 
             result = validation.validate(['topic', 'subTopic', 'bdType', 'fan', 'addFan', 'installType', 'tvPosition', 'userNm', 'phoneNo', 'zipCode', 'userAddress', 'detailAddress']);
@@ -335,14 +346,18 @@
                     var data = result.data;
 
                     if (data.resultFlag == 'Y') {
-                        $('.time-wrap').timeCalendar({
-                            timeArr: data.timeList,
-                            inputTarget: '#time'
-                        });
+                        $('.time-wrap').timeCalendar('update', data.timeList);
                         $('.time-wrap').find('.box-desc').hide();
                         $('.time-wrap').find('.box-table').show();
                     } else {
                         if (data.resultMessage) {
+                            if (data.tAlert == 'Y') {
+                                self.$stepInput.find('.step-btn-wrap').show();
+                                self.$stepDate.removeClass('active');
+                                self.$stepEngineer.removeClass('active');
+                                self.$completeBtns.hide();
+                            }
+                            
                             lgkorUI.alert('', {
                                 title: data.resultMessage
                             });
@@ -360,7 +375,6 @@
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {  
-                    console.log(data.engineerList[0]);
                     self.updateEngineer(data.engineerList[0]);
 
                     if (data.engineerList.length && data.engineerList.length > 1) {
@@ -413,7 +427,6 @@
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
-                    // self.$submitForm[0].data.value = JSON.stringify(formData);
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {
@@ -426,37 +439,69 @@
         },
         bindEvent: function() {
             var self = this;
+            self.$cont.on('reset', function(e, module) {
+                self.$solutionsBanner.hide();
+                self.$fanBox.hide();
+                self.$bdTypeBox.hide();
+                self.$tvPositionBox.hide();
+                self.$installTypeBox.hide();
+                self.$addFanBox.hide();
+
+                module._next(module.$stepModel);
+            });
 
             // 모델 선택 후 이벤트
-            self.$cont.on('complete', function(e, module, info, data, callback) {    
-                // 에어컨 > 시스템 에어컨 선택 시
-                if (info.category == '1019'){
-                    if (info.subCategory == "1129"){
-                        self.$fanBox.show();
-                        self.$bdTypeBox.show();
-                    } else if (info.subCategory != "1083") {
-                        self.$fanBox.show();
-                        self.$bdTypeBox.hide();
+            self.$cont.on('complete', function(e, module, data, url) {    
+                var param = {
+                    modelCode: data.modelCode,
+                    serviceType: $('#serviceType').val(),
+                    category: data.category,
+                    subCategory: data.subCategory
+                };
+
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var resultData = result.data;
+
+                    module._updateSummary({
+                        product: [data.categoryName, data.subCategoryName, data.modelCode],
+                        reset: true
+                    });
+                
+                    
+                    // 에어컨 > 시스템 에어컨 선택 시
+                    if (data.category == '1019'){
+                        if (data.subCategory == "1129"){
+                            self.$fanBox.show();
+                            self.$bdTypeBox.show();
+                        } else if (data.subCategory != "1083") {
+                            self.$fanBox.show();
+                            self.$bdTypeBox.hide();
+                        }
                     }
-                }
-                
-                // 드럼 세탁기 선택 시
-                if (info.subCategory == "1086" || info.subCategory == "1021") {
-                    self.$installTypeBox.show();
-                } else {
-                    self.$installTypeBox.hide();
-                }
-                
-                // TV/프로젝터 > 올레드, 울트라HD, LED/LCD, PDP 선택 시
-                if (info.subCategory == "D002795" || info.subCategory == "1040" || info.subCategory == "1041" || info.subCategory == "1043") {
-                    self.$tvPositionBox.show();
-                } else {
-                    self.$tvPositionBox.hide();
-                }
+                    
+                    // 드럼 세탁기 선택 시
+                    if (data.subCategory == "1086" || data.subCategory == "1021") {
+                        self.$installTypeBox.show();
+                    } else {
+                        self.$installTypeBox.hide();
+                    }
+                    
+                    // TV/프로젝터 > 올레드, 울트라HD, LED/LCD, PDP 선택 시
+                    if (data.subCategory == "D002795" || data.subCategory == "1040" || data.subCategory == "1041" || data.subCategory == "1043") {
+                        self.$tvPositionBox.show();
+                    } else {
+                        self.$tvPositionBox.hide();
+                    }
 
-                self.setTopicList(data)
+                    self.setTopicList(resultData)
+                    
+                    module.$myModelArea.hide();
 
-                callback();
+                    module._next(module.$stepInput);
+                    module._focus(module.$selectedModelBar, function() {
+                        module.$selectedModelBar.vcSticky();
+                    });
+                });
             });
 
             // 에어컨 실외기 위치
@@ -478,7 +523,8 @@
                         serviceType: $('#serviceType').val(),
                         productCode: $('#productCode').val()
                     };
-                    
+                
+                self.$solutionsBanner.hide();
                 self.requestSubTopic(url, param);
             });
 
@@ -512,9 +558,11 @@
 
             // 주소 찾기
             self.$cont.find('.btn-address').on('click', function() { 
-                addressFinder.open(function(data) {
+                addressFinder.open(function(data) { 
+                    var address = data.userSelectedType == 'R' ? data.roadAddress : data.jibunAddress;
+
                     self.$cont.find('#zipCode').val(data.zonecode);
-                    self.$cont.find('#userAddress').val(data.roadAddress);
+                    self.$cont.find('#userAddress').val(address);
                     self.$cont.find('#detailAddress').val('');
 
                     if (self.autoFlag) self.requestDate();
@@ -545,6 +593,7 @@
                     zipCode: $('#zipCode').val(),
                     userAddress: $('#userAddress').val(),
                     detailAddress: $('#detailAddress').val(),
+                    productCode: $('#productCode').val(),
                     date: $('#date').val(),
                     time: $('#time').val()
                 }

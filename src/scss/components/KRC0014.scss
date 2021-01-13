@@ -76,6 +76,12 @@
         @include clearfix;
         .visual-area {
             width:calc(50% - 12px);
+            text-align:center;
+            a {
+                position:relative;
+                display:inline-block;
+                vertical-align:top;
+            }
         }
         .text-thumb-area {
             width:calc(50% + 12px);
