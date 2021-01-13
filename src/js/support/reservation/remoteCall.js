@@ -48,6 +48,9 @@
             self.$solutionsBanner = self.$cont.find('#solutionBanner');
             self.$solutionsPopup = $('#solutionsPopup');
 
+            self.$dateWrap = self.$cont.find('.date-wrap');
+            self.$timeWrap = self.$cont.find('.time-wrap');
+
             self.$authPopup = $('#certificationPopup');
             self.isLogin = $('.header').data('ui_header').isLogin;
 
@@ -236,27 +239,42 @@
         bindEvent: function() {
             var self = this;
             
+            // 모델 재선택
             self.$cont.on('reset', function() {
                 self.$solutionsBanner.hide();
+
+                self.$dateWrap.calendar('reset');
+                self.$timeWrap.timeCalendar('reset');
+
+                self._next(self.$stepModel);
             });
 
             // 모델 선택 후 이벤트
-            self.$cont.on('complete', function(e, module, info, data, callback) {
-                self.setTopicList(data);
-                
-                
-                if ($('.date-wrap').data('plugin_calendar')) {
-                    $('.date-wrap').calendar('update', data.dateList);
-                } else {
-                    $('.date-wrap').calendar({
-                        dateArr: data.dateList,
-                        inputTarget: '#date'
+            self.$cont.on('complete', function(e, module, data, url) {
+                var param = {
+                    modelCode: data.modelCode,
+                    serviceType: $('#serviceType').val()
+                };
+
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var resultData = result.data;
+
+                    module._updateSummary({
+                        product: [data.categoryName, data.subCategoryName, data.modelCode],
+                        reset: true
                     });
-                }
+                
+                    self.$dateWrap.calendar('update', resultData.dateList);
+                    self.setTopicList(resultData);
+                    
+                    module.$myModelArea.hide();
+                    self.$completeBtns.show();
 
-                self.$completeBtns.show();
-
-                callback();
+                    module._next(module.$stepInput);
+                    module._focus(module.$selectedModelBar, function() {
+                        module.$selectedModelBar.vcSticky();
+                    });
+                });
             });
 
             // 증상 선택
