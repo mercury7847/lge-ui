@@ -1,8 +1,27 @@
 {
-    "ssoCheckUrl": null,
-    "status": "success",
-    "message": null,
-    "data": {
-        "responseMessage": "지금 보시는 이 제품이 장바구니에 담겨 있어요."
-    }
+    "status":"success",
+    "message":null,
+    "dataCount":1,
+    "data": [
+        {
+            "ResponseUITop":{
+                "uiInfo":"",
+                "uiMessage":"",
+                "success":"N"
+            },
+            "productCurationProposal":{
+                "uiInfo":"https://www.lge.co.kr/lgekor/bestshop/counsel/counselMain.do?device=w&inflow=lgekor",
+                "uiMessage":"제품 비교했는데, 고민이 되신다면 BEST SHOP 직원과 상담해보세요"
+            },
+            "storeConsultation":{
+                "uiInfo":"https://www.lge.co.kr/lgekor/bestshop/counsel/counselMain.do?device=w&inflow=lgekor",
+                "uiMessage":"제품 비교했는데, 고민이 되신다면 BEST SHOP 직원과 상담해보세요"
+            },
+            "categoryBestProduct":{
+                "uiInfo":"",
+                "uiMessage":"",
+                "success":"N"
+            }
+        }
+    ]
 }
