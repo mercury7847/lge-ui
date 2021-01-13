@@ -200,7 +200,13 @@ CS.MD.commonModel = function() {
             self.param = options.param;
 
             self.$el.find('[type=hidden]').not('[name=serviceType], [name=lockUserId]').val('');
-            self.$el.find('input[type=text], textarea').val('');
+            
+            if (self.isLogin) {
+                self.$el.find('input[type=text], textarea').not('#userNm, #phoneNo').val('');
+            } else {
+                self.$el.find('input[type=text], textarea').val('');
+            }
+
             self.$el.find('input[type=radio]').prop('checked', false);
             
             self.$categoryBox.find('.box').removeClass('on off');

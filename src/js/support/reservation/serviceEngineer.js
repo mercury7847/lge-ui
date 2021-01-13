@@ -126,13 +126,13 @@
                         msgTarget: '.err-block'
                     },
                     zipCode: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.address-err-msg'
                     },
                     userAddress: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.address-err-msg'
                     },
                     detailAddress: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.address-err-msg'
                     },
                     date: {
                         msgTarget: '.err-msg'
