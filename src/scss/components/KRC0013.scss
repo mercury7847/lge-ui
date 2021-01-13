@@ -14,7 +14,13 @@
 		.visual-area {
 			float:left;
 			position:relative;
-			width:((1040px*100%)/1380px);
+            width:((1040px*100%)/1380px);
+            text-align:center;
+            a {
+                position:relative;
+                display:inline-block;
+                vertical-align:top;
+            }
 			img {
 				width:auto;
 				max-width:100%;
@@ -44,7 +50,8 @@
 				a {
 					width:100%;
 					position:relative;
-					display:block;
+                    display:block;
+                    text-align:center;
 					&:before{
 						content:"";
 						display:block;

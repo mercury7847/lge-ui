@@ -126,13 +126,13 @@
                         msgTarget: '.err-block'
                     },
                     zipCode: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.address-err-msg'
                     },
                     userAddress: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.address-err-msg'
                     },
                     detailAddress: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.address-err-msg'
                     },
                     date: {
                         msgTarget: '.err-msg'
@@ -427,7 +427,6 @@
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
-                    // self.$submitForm[0].data.value = JSON.stringify(formData);
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {
@@ -455,7 +454,9 @@
             self.$cont.on('complete', function(e, module, data, url) {    
                 var param = {
                     modelCode: data.modelCode,
-                    serviceType: $('#serviceType').val()
+                    serviceType: $('#serviceType').val(),
+                    category: data.category,
+                    subCategory: data.subCategory
                 };
 
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
@@ -495,7 +496,6 @@
                     self.setTopicList(resultData)
                     
                     module.$myModelArea.hide();
-                    self.$completeBtns.show();
 
                     module._next(module.$stepInput);
                     module._focus(module.$selectedModelBar, function() {
@@ -558,9 +558,11 @@
 
             // 주소 찾기
             self.$cont.find('.btn-address').on('click', function() { 
-                addressFinder.open(function(data) {
+                addressFinder.open(function(data) { 
+                    var address = data.userSelectedType == 'R' ? data.roadAddress : data.jibunAddress;
+
                     self.$cont.find('#zipCode').val(data.zonecode);
-                    self.$cont.find('#userAddress').val(data.roadAddress);
+                    self.$cont.find('#userAddress').val(address);
                     self.$cont.find('#detailAddress').val('');
 
                     if (self.autoFlag) self.requestDate();

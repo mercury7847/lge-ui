@@ -38,6 +38,13 @@
     }
     .visual-box {
         overflow:hidden;
+        text-align:center;
+        img {
+            width:auto;
+            max-width:100%;
+            height:auto;
+            vertical-align:top;
+        }
     }
 }
 
@@ -85,6 +92,7 @@ $block: (block1, block2, block3);
             }
             .cta-box {
                 @include cta-btn;
+                text-align:left;
             }
             .visual-box {
                 position:relative;

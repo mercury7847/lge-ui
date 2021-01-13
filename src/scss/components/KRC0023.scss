@@ -42,10 +42,10 @@ $size: (img2, img3, img4);
     .KRC0023.#{$col} {
         .visual-area {
             margin-bottom:24px;
+            text-align:center;
             a {
-                display:block;
-                overflow:hidden;
-                text-align:center;
+                display:inline-block;
+                vertical-align:top;
             }
             @include mobile {
                 margin-left:-16px;
