@@ -8,18 +8,39 @@
     .gray-box {
         background-color: #f4f4f4;
         padding: 48px;
-        color: #767676;
+        color:#222;
+        border-radius:8px;
         font-size: 16px;
+        margin-bottom:16px;
         .bullet-list {
             margin-top: 0;
+            .b-txt{
+                font-weight:normal;
+            }
+            &.top-border{
+                .b-txt{
+                    position:relative;
+                    justify-content:space-between;
+                    .strong{
+                        color:#222;
+                    }
+                    .btn-link{
+                        float:right;
+                        color:#767676;
+                    }
+                }
+            }
         }
         @include mobile {
             padding: 44px 20px;
         }
+
     }
     .white-box {
         background-color: #fff;
         padding: 24px;
+        border-radius:8px;
+        margin-bottom:24px;
         .bullet-list {
             font-size: 16px;
             color: #222;
@@ -48,6 +69,7 @@
         }
     }
     .form-infos {
+        margin-top:0;
         .text {
             margin-bottom: 8px;
         }
@@ -93,5 +115,45 @@
     }
     .paragraph-1 {
         margin-top: 16px;
+    }
+    .search-info.type-A{
+        margin-bottom:45px;
+    }
+}
+
+.pop-conts{
+    &.air-care{
+        .section-title{
+            .tit{
+                font-size:14px;
+            }
+        }
+        .gray-box{
+            font-size:14px;
+            line-height:24px;
+            padding:32px;
+        }
+        .text-box{
+            margin-bottom:12px;
+            font-size:14px;
+            color:#767676;
+        }
+        .tbl-list{
+            th,td{
+                text-align:left;
+            }
+            thead th{
+                font-weight:normal;
+                @include mobile{
+                    min-width:120px;
+                }
+            }
+            .line{
+                width:560px;
+             }
+        }
+        .bullet-list{
+            margin-bottom:15px;
+        }
     }
 }
