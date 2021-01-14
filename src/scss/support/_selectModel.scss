@@ -24,11 +24,11 @@
     .box {
         max-width:1380 + 80px;
         margin:0 auto;
-        padding:32px 40px;
+        padding:64px 40px;
         &.open {
             .title {
                 .btn-toggle:after {
-                    transform:rotate(0);
+                    transform:rotate(-180deg);
                 }
             }
             .my-product-slider {
@@ -40,29 +40,27 @@
         position:relative;
         text-align:center;
         .tit {
-            color:#fff;
-            @include font-large-2;
+            font-size:32px;
             font-weight:700;
+            line-height:52px;
         }
         .btn-toggle {
             position:absolute; 
             right:0;
-            top:50%;
-            padding-right:28px;
-            color:#fff;
-            @include font-large;
+            bottom:0;
+            padding-right:20px;
+            @include font-small;
             font-weight:500;
-            transform:translateY(-50%);
             &:after {
                 content:'';
                 position:absolute;
                 right:0;
-                top:3px;
-                width:24px;
-                height:24px;
-                background:url(/lg5-common/images/icons/btn-arr-up-24-white.svg) no-repeat;
-                background-size:24px;
-                transform:rotate(-180deg);
+                top:4px;
+                width:16px;
+                height:16px;
+                background:url(/lg5-common/images/icons/btn-down-16-black.svg) no-repeat;
+                background-size:16px;
+                transform:rotate(0);
                 transition:transform 0.3s;
             }
         }
@@ -99,18 +97,18 @@
                 float:left;
                 width:calc(100% / 3); 
                 &:nth-child(3n+1) {
-                    .slide-box {
-                        background-image:linear-gradient(118deg, #8d71ec, #ff537c 99%);
+                    .category:before {
+                        background-image:linear-gradient(135deg, #8d71ec, #f75584 99%);
                     }
                 }
                 &:nth-child(3n+2) {
-                    .slide-box {
-                        background-image:linear-gradient(118deg, #fe3f6d, #f2c37c 100%);
+                    .category:before {
+                        background-image:linear-gradient(135deg, #fe3f6d, #f2c37c);
                     }
                 }
                 &:nth-child(3n+3) {
-                    .slide-box {
-                        background-image:linear-gradient(119deg, #f47a48 10%, #f1c246 100%);
+                    .category:before {
+                        background-image:linear-gradient(135deg, #f47a48 10%, #f1c246 100%);
                     }
                 }
             }
@@ -118,33 +116,36 @@
                 display:block;
                 position:relative;
                 margin:0 12px;
-                padding:48px 40px;
+                padding:48px 32px;
                 border-radius:8px;
+                background:#fff;
+                box-shadow:0 8px 20px 0 rgba(34, 34, 34, 0.11);
                 .category {
                     position:relative;
-                    height:48px;
-                    margin-bottom:32px;
-                    padding-left:56px;
-                    color:#fff;
-                    font-size:16px;
-                    font-weight:500;
+                    min-height:40px;
+                    margin-bottom:12px;
+                    padding-left:48px;
+                    line-height:40px;
                     &:before {
                         content:'';
                         position:absolute;
                         left:0;
-                        top:0;
-                        width:48px;
-                        height:48px;
-                        background-size:48px;
+                        top:50%;
+                        width:40px;
+                        height:40px;
+                        border-radius:50%;
+                        background-size:40px;
                         background-repeat:no-repeat;
+                        transform:translateY(-50%);
                     }
                     span {
-
+                        color:#fff;
+                        @include font-medium;
+                        font-weight:500;
                     }
                 }   
                 .name {
-                    color:#fff;
-                    @include font-large-2;
+                    @include font-large-1;
                     font-weight:700;
                 }
                 .status {
@@ -152,28 +153,27 @@
                     top:16px;
                     right:16px;
                     padding:6px 12px;
-                    color:#fff;
                     font-size:12px;
                     font-weight:500;
                     line-height:1;
-                    border:1px solid rgba(221, 221, 221, 0.4);
+                    border:1px solid rgba(0, 0, 0, 0.4);
                     border-radius:4px;
                 }
-                &.phone {
-                    .category:before {
-                        background-image:url(/lg5-common/images/icons/icon-category01-48.svg);
-                    }
-                }   
-                &.tv {
-                    .category:before {
-                        background-image:url(/lg5-common/images/icons/icon-category02-48.svg);
-                    }
-                }
-                &.memories {
-                    .category:before {
-                        background-image:url(/lg5-common/images/icons/icon-category03-48.svg);
-                    }
-                }
+                // &.phone {
+                //     .category:before {
+                //         background-image:url(/lg5-common/images/icons/icon-category01-48.svg);
+                //     }
+                // }   
+                // &.tv {
+                //     .category:before {
+                //         background-image:url(/lg5-common/images/icons/icon-category02-48.svg);
+                //     }
+                // }
+                // &.memories {
+                //     .category:before {
+                //         background-image:url(/lg5-common/images/icons/icon-category03-48.svg);
+                //     }
+                // }
             }
         }
     }
@@ -182,7 +182,6 @@
             text-align:center;
             .txt {
                 margin-bottom:16px;
-                color:#fff;
                 font-weight:700;
                 @include font-large-1;
             }
