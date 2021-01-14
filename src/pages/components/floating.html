@@ -2,9 +2,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-		componentID: "KRP0032",
-		isJScompile: true,
-	})
+        pageJS: ["components/KRP0032"]
+    })
 <body>
     <div class="wrap">
         @@include('./common/header.html')
@@ -46,4 +45,8 @@
         </div>
     </div>
 </body>
+<script>
+    //쿠키 추가
+    lgkorUI.addCookieArrayValue('myRecentProductTemp','pid000001');
+</script>
 </html>

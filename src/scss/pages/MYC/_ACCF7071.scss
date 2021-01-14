@@ -46,6 +46,7 @@
 		display:table-cell;
 		vertical-align:middle;
 		&.text {
+			width:65%;
 			font-size:16px;
 			font-weight:700;
 			line-height:26px;
@@ -62,6 +63,9 @@
 		text-align:center;
 		.cell {
 			display:block;
+			&.text {
+				width:100%;
+			}
 			&.btns {
 				margin-top:16px;
 				padding-left:0;

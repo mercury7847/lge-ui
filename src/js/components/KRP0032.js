@@ -13,7 +13,13 @@ $(window).ready(function(){
 		init: function(){
 			var self = this;
             self.setting();
-            self.requestData(false);
+            self.$section.hide();
+            var cookieValue = lgkorUI.getCookie(myRecentProductCookieName);
+            if(!cookieValue) {
+                //self.$section.hide();
+            } else {
+                self.requestData(false);
+            }
 		},
 
 		setting: function() {
@@ -23,7 +29,6 @@ $(window).ready(function(){
             self.$a = self.$section.find('div.lately-linker a.head-inner');
             self.$popup = $('#KRP0032');
             self.$list = self.$popup.find('div.lately-list ul');
-            self.$noData = self.$popup.find('.no-data');
             
             self.$a.on('click', function(e){
                 e.preventDefault();
@@ -73,9 +78,9 @@ $(window).ready(function(){
             var self = this;
 
             if(self.$list.find('li').length > 0) {
-                self.$noData.hide();
+                self.$section.show();
             } else {
-                self.$noData.show();
+                self.$section.hide();
             }
         },
 	};
