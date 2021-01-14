@@ -423,6 +423,7 @@
             $('#engineerCode').val(data.engineerCode);
             $('#centerNm').val(data.centerName);
             $('#centerCode').val(data.centerCode);
+            $('#resrvSeq').val(data.resrvSeq);
         },
         requestComplete: function() {
             var self = this;
