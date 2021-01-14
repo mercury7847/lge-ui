@@ -13,7 +13,7 @@
             "url":"/lg5-common/images/dummy/@img-event01.jpg",
             "imageUrl":"/lg5-common/images/dummy/@img-event01.jpg",
             "imageAlt":"2020 NEW 올레드와 함께하는 라이프",
-            "title":"2020 NEW 올레드와 함께하는 라이프",
+            "title":"2020 NEW 올레드와 함께하는 라이프1",
             "categoryFlag":[
                 "프로젝터",
                 "TV"
@@ -24,6 +24,7 @@
             ],
             "date":"당첨자 발표예정일 : 매월 15일",
             "endEvent":false,
+            "showEndEventUrl":false,
             "endEventUrl":null
         },
         {
@@ -31,7 +32,7 @@
             "url":"#",
             "imageUrl":"/lg5-common/images/dummy/@img-event03.jpg",
             "imageAlt":"LG 시네빔으로 즐기는 왓챠 콘텐츠!",
-            "title":"LG 시네빔으로 즐기는 왓챠 콘텐츠!",
+            "title":"LG 시네빔으로 즐기는 왓챠 콘텐츠!2",
             "categoryFlag":[
                 "프로젝터"
             ],
@@ -41,6 +42,7 @@
             ],
             "date":"당첨자 발표예정일 : 매월 16일",
             "endEvent":false,
+            "showEndEventUrl":true,
             "endEventUrl":null
         },
         {
@@ -48,7 +50,7 @@
             "url":"#",
             "imageUrl":"/lg5-common/images/dummy/@img-event02.jpg",
             "imageAlt":"LG 에어컨 창문 잠금장치 신청 이벤트",
-            "title":"LG 에어컨 창문 잠금장치 신청 이벤트",
+            "title":"LG 에어컨 창문 잠금장치 신청 이벤트3",
             "categoryFlag":[
                 "에어컨"
             ],
@@ -58,6 +60,7 @@
             ],
             "date":"당첨자 발표예정일 : 매월 17일",
             "endEvent":true,
+            "showEndEventUrl":true,
             "endEventUrl":"/lg5-common/data-ajax/caresolution/caresolutionTip.html"
         }
     ]

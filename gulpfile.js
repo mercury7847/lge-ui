@@ -134,7 +134,8 @@ gulp.task("scripts", () => {
                     "jsCompile:customer",
                     "jsCompile:search",
                     "jsCompile:caresolution",
-                    "jsCompile:store"
+                    "jsCompile:store",
+                    "jsCompile:membership"
     ]);
 });
 gulp.task("jsCompile", () => gulp
@@ -242,10 +243,18 @@ gulp.task("jsCompile:store", () => gulp
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/store/"))
 );
+gulp.task("jsCompile:membership", () => gulp
+    .src(src + "/js/membership/**/*")
+    .pipe(sourcemaps.init())
+    .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/membership/"))
+);
 
 // fonts, images
 gulp.task("static", () => {
-    gulp.start(["static:data-ajax", "static:fonts", "static:images", "static:template", "static:videos"]);
+    gulp.start(["static:data-ajax", "static:fonts", "static:images", "static:template", "static:videos", "static:pcsvc"]);
 });
 gulp.task("static:data-ajax", () => gulp
     .src("./lg5-common/data-ajax/**")
@@ -266,6 +275,10 @@ gulp.task("static:template", () => gulp
 gulp.task("static:videos", () => gulp
     .src("./lg5-common/videos/**")
     .pipe(gulp.dest(dist + sourceFolder + "/videos/"))
+);
+gulp.task("static:pcsvc", () => gulp
+    .src("./lg5-common/pcsvc/**")
+    .pipe(gulp.dest(dist + sourceFolder + "/pcsvc/"))
 );
 
 
@@ -309,7 +322,8 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/js/search/**", ["jsCompile:search"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/caresolution/**", ["jsCompile:caresolution"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/store/**", ["jsCompile:store"]).on('change', browserSync.reload);
-    
+    gulp.watch(src + "/js/membership/**", ["jsCompile:membership"]).on('change', browserSync.reload);
+
     //static
     gulp.watch("./lg5-common/data-ajax/**", ["static:data-ajax"]).on('change', browserSync.reload);
     gulp.watch("./lg5-common/fonts/**", ["static:fonts"]).on('change', browserSync.reload);

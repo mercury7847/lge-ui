@@ -2,10 +2,10 @@
 
 
     var searchResultText = {
-        search: '<strong>"{{keyword}}"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
-        localSearch: '<strong>"{{keyword}}"</strong>와 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
-        roadSearch: '입력한 주소와 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
-        subwaySearch: '<strong>"{{keyword}}역"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
+        search: '검색결과 <strong>{{total}}개</strong>의 센터가 있습니다.',
+        localSearch: '검색결과 <strong>{{total}}개</strong>의 센터가 있습니다.',
+        roadSearch: '검색결과 <strong>{{total}}개</strong>의 센터가 있습니다.',
+        subwaySearch: '검색결과 <strong>{{total}}개</strong>의 센터가 있습니다.'
     };
 
     var localOptTemplate = '<option value={{value}}>{{title}}</option>';
@@ -26,14 +26,16 @@
                             '{{shopName}}'+
                         '</p>'+
 
+                        '{{#if bizStatus}}'+
                         '<div class="box-info">'+
                             '<ul>'+
                                 '<li class="{{bizStatus.bizStatusClass}}">'+
                                     '<span class="blind">{{bizStatus.bizStatusColor}} 표기</span>'+
-                                    '<strong class="status">{{bizStatus.bizStatusText}}원활</strong>'+
+                                    '<strong class="status">{{bizStatus.bizStatusText}}</strong>'+
                                 '</li>'+
                             '</ul>'+
                         '</div>'+
+                        '{{/if}}'+
 
                     '</div>'+
 
@@ -147,6 +149,43 @@
                         appKey: result.data.appKey,
                         longitude : result.data.basicPosition.longitude,
                         latitude: result.data.basicPosition.latitude,
+                        templates: {
+                            infoWindow: 
+                            '<div class="info-overlaybox">'+
+                            '   <div class="inner">'+
+                            '       <p class="name">{{shopName}}</p>'+
+                            '       <p class="adress">{{shopAdress}}</p>'+
+                            '       <div class="hour-info">'+
+                            '           <dl>'+
+                            '               <dt>평&nbsp;&nbsp;일</dt>'+
+                            '               <dd>{{bizHours.week}}</dd>'+
+                            '           </dl>'+
+                            '           <dl>'+
+                            '               <dt>토요일</dt>'+
+                            '               <dd>{{bizHours.saturday}}</dd>'+
+                            '           </dl>'+
+                            '       </div>'+
+                            '<ul class="optionIcon">'+
+                                '<li>'+
+                                    '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
+                                '</li>'+
+                                '<li>'+
+                                    '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
+                                '</li>'+
+                                '<li>'+
+                                    '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
+                                '</li>'+
+                                '<li>'+
+                                    '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
+                                '</li>'+
+                            '</ul>'+
+                            '       <div class="btn-group">'+
+                            '           <a href="#n" class="btn border size">방문 예약</a>'+
+                            '           <a href="#{{shopID}}" class="btn border size detail-view">상세 보기</a>'+
+                            '       </div>'+
+                            '   </div>'+
+                            '</div>'
+                        }
                     }).on('mapinit', function(e,data){
 
                         self.$map = self.$mapContainer.vcStoreMap('instance');
@@ -179,15 +218,21 @@
                     self._setTabInit();
                 });
 
-                self.$citySelect = $('#select1');
-                self.$boroughSelect = $('#select2');
+                self.$citySelect = $('.select1');
+                self.$boroughSelect = $('.select2');
                 self.$localSearchButton = $('.search-local');
                 self.$searchUserAdressButton = $('.search-userAdress');
-
+                
                 self.$subwayCitySelect = $('#select3');
                 self.$subwayLineSelect = $('#select4');
                 self.$subwayStationSelect = $('#select5');
                 self.$searchSubwayButton = $('.search-subway');
+                // self.$searchAddress = $('#search_address');
+                self.$citySelect2 = $('#select6');
+                self.$areaSelect = $('#select7');
+                self.$secterSelect = $('#select8');
+                self.$searchAddressButton = $('.search-address-btn');
+                self.$searchAddressButton2 = $('.search-address-btn2');
 			});
         },
 
@@ -268,21 +313,50 @@
             self.$searchUserAdressButton.on('click', function(e){
                 self._setUserAdressSearch();
             });
+            $('#select1').on('change', function(e){
+                $('#select2').prop('disabled', false);
+            });
+            $('#select2').on('change', function(e){
+                $('.search-local').prop('disabled', false);
+            });
+            self.$searchAddressButton.on('click', function(e){
+                self._loadLocalAreaList2(e.target.value);
+                self.$citySelect2.prop('disabled', false);
+                self.$citySelect2.vcSelectbox('update');
+                self.$areaSelect.prop('disabled', false);
+                self.$areaSelect.vcSelectbox('update');
+                self.$secterSelect.prop('disabled', false);
+                self.$secterSelect.vcSelectbox('update');
+                self.$searchAddressButton2.prop('disabled', false);
+            });
+            self.$citySelect2.on('change', function(e){
+                self._loadLocalAreaList2();
+            });
+            self.$areaSelect.on('change', function(e){
+                self._loadLocalAreaList3();
+            });
+            self.$searchAddressButton2.on('click', function(e){
+                self._setUserAdressSearch();
+            });
 
             self.$subwayCitySelect.on('change', function(e){
                 lgkorUI.requestAjaxData(self.subwayUrl, {codeType:'SUBWAY', pcode:e.target.value}, function(result){
                     self._setSubwayOption(result.data, self.$subwayLineSelect, {title:"호선 선택", value:""}, "code");
                 });
+                self.$subwayLineSelect.prop('disabled', false);
             });
             self.$subwayLineSelect.on('change', function(e){
                 lgkorUI.requestAjaxData(self.stationUrl, {codeType:'SUBWAY', pcode:e.target.value}, function(result){
                     self._setSubwayOption(result.data, self.$subwayStationSelect, {title:"역 선택", value:""}, "codeName");
                 });
+                self.$subwayStationSelect.prop('disabled', false);
+            });
+            self.$subwayLineSelect.on('change', function(e){
+                self.$searchSubwayButton.prop('disabled', false);
             });
             self.$searchSubwayButton.on('click', function(e){
                 self._setSubwaySearch();
             });
-
             self._resize();
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
@@ -297,6 +371,7 @@
             self.$subwayCitySelect.val();
             self.$subwayLineSelect.val();
             self.$subwayStationSelect.val();
+            self.$citySelect2.val();
         },
 
         _loadStoreData: function(){
@@ -319,10 +394,25 @@
 
             lgkorUI.requestAjaxData(self.localUrl, {city:encodeURI(val)}, function(result){
                 self._setSelectOption(self.$boroughSelect, result.data);
-                self.$boroughSelect.prop('disabled', false);
                 self.$boroughSelect.vcSelectbox('update');
+            });
+        },
 
-                self.$localSearchButton.prop('disabled', false);
+        _loadLocalAreaList2: function(val){
+            var self = this;
+            lgkorUI.requestAjaxData(self.localUrl, {city:encodeURI(val)}, function(result){
+                self._setSelectOption(self.$areaSelect, result.data);
+                self.$areaSelect.vcSelectbox('update');
+                self._setSelectOption(self.$secterSelect, result.data);
+                self.$secterSelect.vcSelectbox('update');
+            });
+        },
+
+        _loadLocalAreaList3: function(val){
+            var self = this;
+            lgkorUI.requestAjaxData(self.localUrl, {city:encodeURI(val)}, function(result){
+                self._setSelectOption(self.$secterSelect, result.data);
+                self.$secterSelect.vcSelectbox('update');
             });
         },
 
@@ -592,6 +682,7 @@
                      num: i+1,
                      shopName: data[i].info.shopName,
                      bizHours: data[i].info.bizHours,
+                     bizStatus: data[i].info.bizStatus,
                      flagInfo: data[i].info.flagInfo,
                      shopAdress: data[i].info.shopAdress,
                      shopTelphone: data[i].info.shopTelphone,

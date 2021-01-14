@@ -17,7 +17,7 @@
     }
 }
 
-.my-product {
+.my-product-wrap {
     background:url(/lg5-common/images/CS/img-banner01.jpg) no-repeat;
     background-position:center 15%;
     background-size:cover;
@@ -26,7 +26,7 @@
         margin:0 auto;
         padding:32px 40px;
         &.open {
-            .my-product-title {
+            .title {
                 .btn-toggle:after {
                     transform:rotate(0);
                 }
@@ -36,7 +36,7 @@
             }
         }
     }
-    &-title {
+    .title {
         position:relative;
         text-align:center;
         .tit {
@@ -67,7 +67,7 @@
             }
         }
     }
-    &-slider {
+    .my-product-slider {
         display:none;
         margin-top:32px;
         .slide-controls {
@@ -128,7 +128,6 @@
                     color:#fff;
                     font-size:16px;
                     font-weight:500;
-                    line-height:48px;
                     &:before {
                         content:'';
                         position:absolute;
@@ -137,7 +136,10 @@
                         width:48px;
                         height:48px;
                         background-size:48px;
-                        background-repeat:norepeat;
+                        background-repeat:no-repeat;
+                    }
+                    span {
+
                     }
                 }   
                 .name {
@@ -191,7 +193,7 @@
         .box {
             padding:24px 16px;
         }
-        &-title {
+        .title {
             position:relative;
             text-align:center;
             .btn-toggle {
@@ -217,7 +219,7 @@
                 }
             }
         }
-        &-slider {
+        .my-product-slider {
             margin-top:12px;
             .slide-controls {
                 margin-top:-18px;
@@ -378,10 +380,7 @@
     @include mobile {
         padding:40px 16px 0;
     }
-
-    // 키워드 검색
-    .keyword-search {    
-        margin-bottom:32px;    
+    .keyword-search {
         .search-box {
             max-width:443px + 166px;
             margin:0 auto;
@@ -408,7 +407,6 @@
                 margin-top:4px;
             }
         }
-        
         @include mobile {
             width:100%;
             margin:0 0 32px;
@@ -417,13 +415,25 @@
         }
     }
 
+    // 키워드 검색
+    .keyword-box {
+        display:none;
+        margin-bottom:32px;
+        &.active {
+            display:block;
+        }
+        .err-msg ,.desc {
+            display:none;
+        }
+    }
+
     // 카테고리 선택
-    .category-search {
+    .category-box {
         display:none;
         &.active {
             display:block;
         }
-        & > ul {
+        .category-list-wrap > .category-list {
             margin:-24px -12px 0;
             @include clearfix;
             & > li {
@@ -446,11 +456,21 @@
                             text-align:center;
                         }
                         .category-thumb {
+                            position:relative;
                             width:100%;
                             max-width:200px;
                             margin:0 auto;
+                            &:before {
+                                content:'';
+                                display:block;
+                                padding-top:100%;
+                            }
                             img {
+                                position:absolute;
+                                left:0;
+                                top:0;
                                 width:100%;
+                                height:100%;
                             }
                         }
                         .btn-open {
@@ -483,6 +503,7 @@
                             position:relative;
                             overflow-y:auto;
                             max-height:228px;
+                            height:100%;
                             text-align:center;
                             li {
                                 button {
@@ -532,14 +553,14 @@
             }
         }
         @include tablet {
-            & > ul {
+            .category-list-wrap > .category-list {
                 & > li {
                     width:calc(100% / 3);
                 }
             }
         }
         @include mobile {
-            & > ul {
+            .category-list-wrap > .category-list {
                 margin:-12px -6px 0;
                 & > li {
                     width:50%;
@@ -589,7 +610,7 @@
     }
 
     // 모델 선택
-    .model-search {
+    .model-box {
         display:none;
         &.active {
             display:block;
@@ -619,6 +640,7 @@
         }
         .keyword-search {
             display:none;
+            margin-bottom:32px;
         }
         .no-data {
             .word {
@@ -664,6 +686,8 @@
             .slide-conts {
                 float:left;
                 width:25%;
+                height:1px;
+                min-height:120px;
                 padding:0 12px;
                 .item{
                     display:block;
@@ -681,6 +705,22 @@
                         height:100%;
                         border-radius:8px;
                         border:2px solid #ec455a;
+                    }
+                    &.no-model {
+                        .category span {
+                            position:relative;
+                            padding-right:20px;
+                            text-decoration:underline;
+                            &:after {
+                                content:'';
+                                position:absolute;
+                                right:0;
+                                top:5px;
+                                width:16px;
+                                height:16px;
+                                background:url(/lg5-common/images/icons/btn-arr-16-black.svg) no-repeat;
+                            }
+                        }
                     }
                     .info {
                         padding:32px;
@@ -741,6 +781,7 @@
                     }
                     .slide-conts {
                         width:50%;
+                        min-height:80px;
                         padding:0 6px;
                         .item {
                             .info {
@@ -749,6 +790,14 @@
                             .category {
                                 span {
                                     display:none;
+                                }
+                            }
+                            &.no-model {
+                                .category span {
+                                    display:inline-block;
+                                    &:after {
+                                        top:4px;
+                                    }
                                 }
                             }
                         }

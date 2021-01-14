@@ -5,39 +5,44 @@
         "resultFlag": "Y",
         "engineerList": [
             {
-                "engineerdName": "홍길동",
+                "engineerName": "홍길동",
                 "engineerCode": "292756",
-                "centerdName": "모란역지원센터",
+                "centerName": "모란역지원센터",
                 "centerCode": "PH0124",
-                "image": "/lg5-common/images/dummy/@img_manager2.jpg"
+                "image": "/lg5-common/images/dummy/@img_manager2.jpg",
+                "resrvSeq": "1212213"
 
             },
             {
-                "engineerdName": "김홍진",
+                "engineerName": "김홍진",
                 "engineerCode": "292756",
-                "centerdName": "강남역지원센터",
+                "centerName": "강남역지원센터",
                 "centerCode": "PH0124",
-                "image": "/lg5-common/images/dummy/@img_manager2.jpg"
+                "image": "/lg5-common/images/dummy/@img_manager2.jpg",
+                "resrvSeq": "1212213"
             },
             {
-                "engineerdName": "허성민",
+                "engineerName": "허성민",
                 "engineerCode": "292756",
-                "centerdName": "홍대입구역지원센터",
+                "centerName": "홍대입구역지원센터",
                 "centerCode": "PH0124",
-                "image": "/lg5-common/images/dummy/@img_manager2.jpg"
+                "image": "/lg5-common/images/dummy/@img_manager2.jpg",
+                "resrvSeq": "1212213"
             },{
-                "engineerdName": "전호근",
+                "engineerName": "전호근",
                 "engineerCode": "292756",
-                "centerdName": "합정역지원센터",
+                "centerName": "합정역지원센터",
                 "centerCode": "PH0124",
-                "image": "/lg5-common/images/dummy/@img_manager2.jpg"
+                "image": "/lg5-common/images/dummy/@img_manager2.jpg",
+                "resrvSeq": "1212213"
             },
             {
-                "engineerdName": "힘들어어",
+                "engineerName": "힘들어어",
                 "engineerCode": "292756",
-                "centerdName": "나를지원하라",
+                "centerName": "나를지원하라",
                 "centerCode": "PH0124",
-                "image": "/lg5-common/images/dummy/@img_manager2.jpg"
+                "image": "/lg5-common/images/dummy/@img_manager2.jpg",
+                "resrvSeq": "1212213"
             }
         ]
     }

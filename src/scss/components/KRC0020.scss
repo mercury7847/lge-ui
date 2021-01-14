@@ -144,6 +144,12 @@
 			}
         }
         .visual-area {
+            text-align:center;
+            a {
+                position:relative;
+                display:inline-block;
+                vertical-align:top;
+            }
             img {
                 width:auto;
                 max-width:100%;
@@ -222,4 +228,97 @@
             }
 		}
 	}
+}
+
+
+.component-wrap {
+    $color: (lightgray, dark, black, white, gray);
+    @each $bg in $color {
+        &.bg-#{$bg} {
+            .KRC0020 {
+                .icon-area {
+                    .slider-nav {
+                        li {
+                            &.active,
+                            &.hover,
+                            &.slick-active {
+                                .icon-text {
+                                    @if $bg == lightgray {
+                                        color:#222;
+                                    } @else if $bg == dark {
+                                        color:#fff;
+                                    } @else if $bg == black {
+                                        color:#fff;
+                                    } @else if $bg == white {
+                                        color:#222;
+                                    } @else if $bg == gray {
+                                        color:#222;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+    
+                @include mobile {
+                    @if $bg == lightgray {
+                        .fc-black,
+                        .fc-dark-gray,
+                        .fc-gray,
+                        .fc-lightgray,
+                        .fc-white {
+                            color:#222 !important;
+                            * {
+                                color:#222 !important;
+                            }
+                        }
+                    } @else if $bg == dark {
+                        .fc-black,
+                        .fc-dark-gray,
+                        .fc-gray,
+                        .fc-lightgray,
+                        .fc-white {
+                            color:#fff !important;
+                            * {
+                                color:#fff !important;
+                            }
+                        }
+                    } @else if $bg == black {
+                        .fc-black,
+                        .fc-dark-gray,
+                        .fc-gray,
+                        .fc-lightgray,
+                        .fc-white {
+                            color:#fff !important;
+                            * {
+                                color:#fff !important;
+                            }
+                        }
+                    } @else if $bg == white {
+                        .fc-black,
+                        .fc-dark-gray,
+                        .fc-gray,
+                        .fc-lightgray,
+                        .fc-white {
+                            color:#222 !important;
+                            * {
+                                color:#222 !important;
+                            }
+                        }
+                    } @else if $bg == gray {
+                        .fc-black,
+                        .fc-dark-gray,
+                        .fc-gray,
+                        .fc-lightgray,
+                        .fc-white {
+                            color:#222 !important;
+                            * {
+                                color:#222 !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

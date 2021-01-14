@@ -12,7 +12,7 @@
                 '<p class="date"><span class="blind">이벤트 기간</span>{{date}}</p>' +
             '</div>' +
         '</a>' +
-        '{{#if endEventUrl}}<a href="{{endEventUrl}}" class="btn-link"><span>당첨자 발표</span></a>{{/if}}' +
+        '{{#if showEndEventUrl}}<a href="{{#if endEventUrl}}{{endEventUrl}}{{#else}}#{{/if}}" class="btn-link"><span>당첨자 발표</span></a>{{/if}}' +
     '</div></li>'
 
     $(window).ready(function() {
@@ -27,6 +27,7 @@
 
                 self.bindEvents();
                 self.checkNoData();
+                self.requestMoreData(1);
             },
 
             bindEvents: function() {
@@ -79,6 +80,7 @@
                     arr.forEach(function(item, index) {
                         $ul.append(vcui.template(eventItemList, item));
                     });
+                    self.checkNoData();
                 });
             },
 

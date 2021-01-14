@@ -21,23 +21,26 @@
                     {
                         "siblingCode": "LeatherYellow_code",
                         "siblingValue": "LeatherYellow",
-                        "modelId": "XCS23089484"
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "PlatinumSilver_code",
                         "siblingValue": "PlatinumSilver",
-                        "modelId": "XCS23089484"
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "Opal_Blue_code",
                         "siblingValue": "Opal_Blue",
-                        "modelId": "XCS23089484"
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }
                 ],
                 "selectFeeID": "납부_code",
                 "siblingFee": [
                     {
-                        "siblingCode": "납부_code",
+                        "siblingCode": 0,
                         "siblingValue": "납부"
                     },
                     {
@@ -89,15 +92,21 @@
                 "siblingColors": [
                     {
                         "siblingCode": "MC_K8_MoroccanBlue_code",
-                        "siblingValue": "MC_K8_MoroccanBlue"
+                        "siblingValue": "MC_K8_MoroccanBlue",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "MC_Q7_Prime_LavenderViolet_code",
-                        "siblingValue": "MC_Q7_Prime_LavenderViolet"
+                        "siblingValue": "MC_Q7_Prime_LavenderViolet",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "MC_G7_RaspberryRose_code",
-                        "siblingValue": "MC_G7_RaspberryRose"
+                        "siblingValue": "MC_G7_RaspberryRose",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }
                 ],
                 "selectFeeID": "납부_code",
@@ -155,11 +164,15 @@
                 "siblingColors": [
                     {
                         "siblingCode": "citrus_code",
-                        "siblingValue": "citrus"
+                        "siblingValue": "citrus",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "mint_code",
-                        "siblingValue": "mint"
+                        "siblingValue": "mint",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }
                 ],
                 "selectFeeID": "납부_code",
@@ -217,15 +230,21 @@
                 "siblingColors": [
                     {
                         "siblingCode": "riviera-blue_code",
-                        "siblingValue": "riviera-blue"
+                        "siblingValue": "riviera-blue",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "PowderBlue_code",
-                        "siblingValue": "PowderBlue"
+                        "siblingValue": "PowderBlue",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "Moon-Violet_code",
-                        "siblingValue": "Moon-Violet"
+                        "siblingValue": "Moon-Violet",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }
                 ],
                 "selectFeeID": "납부_code",
@@ -283,15 +302,21 @@
                 "siblingColors": [
                     {
                         "siblingCode": "riviera-blue_code",
-                        "siblingValue": "riviera-blue"
+                        "siblingValue": "riviera-blue",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "PowderBlue_code",
-                        "siblingValue": "PowderBlue"
+                        "siblingValue": "PowderBlue",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "Moon-Violet_code",
-                        "siblingValue": "Moon-Violet"
+                        "siblingValue": "Moon-Violet",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }
                 ],
                 "selectFeeID": "납부_code",
@@ -349,15 +374,21 @@
                 "siblingColors": [
                     {
                         "siblingCode": "riviera-blue_code",
-                        "siblingValue": "riviera-blue"
+                        "siblingValue": "riviera-blue",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "PowderBlue_code",
-                        "siblingValue": "PowderBlue"
+                        "siblingValue": "PowderBlue",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "Moon-Violet_code",
-                        "siblingValue": "Moon-Violet"
+                        "siblingValue": "Moon-Violet",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }
                 ],
                 "selectFeeID": "납부_code",
@@ -415,15 +446,21 @@
                 "siblingColors": [
                     {
                         "siblingCode": "riviera-blue_code",
-                        "siblingValue": "riviera-blue"
+                        "siblingValue": "riviera-blue",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "PowderBlue_code",
-                        "siblingValue": "PowderBlue"
+                        "siblingValue": "PowderBlue",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "Moon-Violet_code",
-                        "siblingValue": "Moon-Violet"
+                        "siblingValue": "Moon-Violet",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }
                 ],
                 "selectFeeID": "납부_code",
@@ -481,15 +518,21 @@
                 "siblingColors": [
                     {
                         "siblingCode": "riviera-blue_code",
-                        "siblingValue": "riviera-blue"
+                        "siblingValue": "riviera-blue",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "PowderBlue_code",
-                        "siblingValue": "PowderBlue"
+                        "siblingValue": "PowderBlue",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "Moon-Violet_code",
-                        "siblingValue": "Moon-Violet"
+                        "siblingValue": "Moon-Violet",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }
                 ],
                 "selectFeeID": "납부_code",
@@ -547,15 +590,21 @@
                 "siblingColors": [
                     {
                         "siblingCode": "riviera-blue_code",
-                        "siblingValue": "riviera-blue"
+                        "siblingValue": "riviera-blue",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "PowderBlue_code",
-                        "siblingValue": "PowderBlue"
+                        "siblingValue": "PowderBlue",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }, 
                     {
                         "siblingCode": "Moon-Violet_code",
-                        "siblingValue": "Moon-Violet"
+                        "siblingValue": "Moon-Violet",
+                        "modelId": "XCS23089484",
+                        "siblingGroupCode": "SGC129823"
                     }
                 ],
                 "selectFeeID": "납부_code",

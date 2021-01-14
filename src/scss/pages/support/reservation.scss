@@ -297,6 +297,105 @@
         }
     }
 
+    &.service-status-list {
+        .service-history {
+            margin-bottom:80px;
+            mark {
+                background-color: transparent;
+            }
+            .item {
+                border: 1px solid #ddd;
+                border-radius: 8px;
+            }
+            &-title {
+                font-size: 18px;
+                font-weight: bold;
+                line-height: 1.56;
+                color: #222;
+                display: block;
+                margin-bottom: 24px;
+            }
+            &-list {
+                margin-top: 16px;
+                display: flex;
+                &:first-child {
+                    margin-top: 0;
+                }
+                dt {
+                    color: #767676;
+                    max-width: 112px;
+                    width: 100%;
+                }
+                dd {
+                    flex: 1;
+                    ul {
+                        text-align: right;
+                        li {
+                            display: inline-block;
+                            position: relative;
+                            margin-left: 8px;
+                            padding-left: 9px;
+                            &::before {
+                                content: '';
+                                display: block;
+                                width: 1px;
+                                height: 10px;
+                                background-color: #ddd;
+                                position: absolute;
+                                left: 0;
+                                top: 50%;
+                                transform: translateY(-50%);
+                            }
+                            &:first-child {
+                                margin-left: 0;
+                                padding-left: 0;
+                                &::before {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            @include pc {
+                font-size: 16px;
+                display: flex;
+                .item {
+                    padding: 24px;
+                    margin-left: 24px;
+                    flex: 1;
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+                &-list {
+                    dd {
+                        margin-left: 30px;
+                    }
+                }
+            }
+            @include mobile {
+                font-size: 14px;
+                display: block;
+                margin-bottom:60px;
+                .item {
+                    padding: 20px;
+                    margin-top: 12px;
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                }
+                &-title {
+                    font-size: 15px;
+                    margin-bottom: 12px;
+                }
+                &-list {
+                    margin-top: 12px;
+                }
+            }
+        }
+    }
+
     &.reservation-result{
         .result-header-tit{
             max-width:1460px;
@@ -308,15 +407,13 @@
         }
         .result-header-btn{
             border-bottom:1px solid #ddd;
+            background-color:#fff;
             .btn-group{
                 margin-top:0;
                 max-width:1460px;
                 margin:0 auto;
                 padding:24px 40px;
             }
-        }
-        .reception-progress{
-            margin-top:48px;
         }
         .inquiry-list{
             .description{
@@ -342,7 +439,131 @@
                 }
             }
         }
+
+        .survey-banner-wrap {
+            margin:0 auto 16px;
+            display:none;
+            .banner {
+                display:flex;
+                align-items:center;
+                justify-content:space-between;
+                padding:28px 48px;
+                border-radius:8px;
+                background:#f4f4f4;
+                p {
+                    position:relative;
+                    padding:0 20px 0 64px;
+                    @include font-medium;
+                    font-weight:700;
+                    &:before {
+                        content:'';   
+                        position:absolute;
+                        left:0;
+                        top:50%;
+                        width:48px;
+                        height:48px;
+                        transform:translate(0, -50%);
+                        background:url("/lg5-common/images/icons/icon-12-80.svg") no-repeat;
+                        background-size:48px 48px;
+                    }
+                    .model {
+                        color:#ec455a;
+                    }
+                }
+                button {
+                    min-width:84px;
+                }
+            }
+            @include mobile {
+                display:block;
+                padding:0 16px;
+                margin-bottom:37px;
+                .banner {
+                    display:block;
+                    padding:16px 24px;
+                    text-align:center;
+                    p {
+                        padding:56px 0 16px;
+                        &:before {
+                            top:0;
+                            left:50%;
+                            transform:translate(-50%, 0);
+                        }
+                    }
+                }
+            }
+        }
     }
+
+    .reception-progress{
+        &.type-new
+        {
+            display:flex;
+            align-items:center;
+            max-width:1380px;
+            margin:0 auto;
+            margin-top:64px;
+            margin-bottom:33px;
+            background:#f4f4f4;
+            border-radius:10px;
+            height:12px;
+            li{
+                &::before{
+                    content:'';
+                    border-radius:50%;
+                    width:24px;
+                    height:24px;
+                    background-color:#aaa;
+                    display:inline-block;
+                }
+                &:first-child{
+                    text-align:left;
+                }
+                &:last-child{
+                    text-align:right;
+                }
+                .text{
+                    margin-top:10px;
+                    display:none;
+                }
+                &.on{
+                    &::before{
+                        background-color:#fff;
+                        border:1px solid #ddd;
+                        box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.14);
+                        margin-top:26px;
+                    }
+                    .text{
+                        display:block;
+                    }
+                }
+            }
+            &.step-3{
+                li{
+                    width:33.33%;
+                }
+            }
+        }
+    }
+
+    .reception-progress-box{
+        padding:0 40px;
+        margin:0 auto;
+        margin-top:64px;
+        max-width:1460px;
+
+        .description{
+            font-weight:700;
+        }
+
+        .reception-progress{
+            &.type-new{
+                margin-top:24px;
+                margin-bottom:80px;
+            }
+        }
+    }
+
 
     /* support tablet */
     @media (max-width: 1024px){
@@ -391,6 +612,10 @@
                     }
                 }
             }
+        }
+
+        .reception-progress-box{
+            padding:0 16px;
         }
     }
 }

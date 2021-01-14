@@ -50,7 +50,10 @@
         '                       <div class="sort-select-wrap">'+
         '                           <select class="ui_selectbox" id="colorSet-{{modelId}}" title="색상 선택" data-sibling-type="siblingColors" {{#if siblingColors.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingColors}}'+
-        '                               <option data-model-id="{{item.modelId}}" value="{{item.siblingCode}}"{{#if selectColorID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
+        '                               <option data-model-id="{{item.modelId}}"'+
+                                                    ' data-group-id="{{item.siblingGroupCode}}"'+
+                                                    ' value="{{item.siblingCode}}"'+
+                                                    '{{#if selectColorID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
         '                           </select>'+
         '                       </div>'+
@@ -128,23 +131,23 @@
         '       {{#each item in putitem_list}}'+
         '           <li class="slide-conts ui_carousel_slide">'+
         '               <div class="conts-wrap">'+
-        '                   <div class="prd-care-horizon ui_flexible_box{{#if item.itemData.combineProduct == "Y"}} comb-type{{/if}}">'+
+        '                   <div class="prd-care-horizon ui_flexible_box{{#if item.combineFlag == "Y"}} comb-type{{/if}}">'+
         '                       <div class="ui_flexible_cont">'+
         '                           <div class="img-wrap">'+
-        '                               <img src="{{item.itemData.modelImg}}" alt="{{item.itemData.userFriendlyName}}">'+
+        '                               <img src="{{item.modelImg}}" alt="{{item.displayName}}">'+
         '                           </div>'+
         '                           <div class="txt-wrap">'+
         '                             <div class="flag-wrap">'+
-        '                                   <span class="flag"><span class="blind">서비스명</span>{{item.itemData.serviceName}}</span>'+
+        '                                   <span class="flag"><span class="blind">서비스명</span>{{item.contractTypeNm}}</span>'+
         '                               </div>'+
         '                               <div class="tit-info">'+
-        '                                   <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.itemData.userFriendlyName}}</p>'+
-        '                                   <p class="code"><span class="blind">제품 코드</span>{{item.itemData.modelName}}</p>'+
+        '                                   <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.displayName}}</p>'+
+        '                                   <p class="code"><span class="blind">제품 코드</span>{{item.modelName}}</p>'+
         '                               </div>'+
-        '                               <p class="etc">월 {{item.itemData.monthlyPrice}}원<span class="comb-txt">{{item.itemData.combineText}}</span></p>'+
+        '                               <p class="etc">월 {{item.monthPrice}}원<span class="comb-txt">{{item.combineText}}</span></p>'+
         '                           </div>'+  
         '                           <div class="del-item">'+
-        '                               <button type="button" class="btn-del" tabindex="" data-put-id="{{item.putID}}"><span class="blind">제품 삭제</span></button>'+
+        '                               <button type="button" class="btn-del" tabindex="" data-model-id="{{item.modelId}}"><span class="blind">제품 삭제</span></button>'+
         '                           </div>'+  
         '                       </div>'+
         '                   </div>'+
@@ -259,6 +262,8 @@
     var _putItemUrl;
     var _estimateConfirmUrl;
 
+    var _putItemList = [];
+
     var $caresolutionContainer;
     var $fixedTab;
     var $serviceTab;
@@ -269,8 +274,6 @@
     var $putItemContainer;
 
     var _serviceID = 0;
-
-    var tempPutItemIdx, tempPutID;
 
     function init(){
         vcui.require(['ui/carousel', 'ui/tab', 'ui/sticky', 'ui/modal', 'ui/selectbox', 'ui/smoothScrollTab'], function () {
@@ -364,8 +367,8 @@
         $putItemContainer.on('click', 'button.btn-del', function(e){
             e.preventDefault();
 
-            var putId = $(this).data('putId');
-            removePutItem(putId);
+            var itenIdx = $(this).closest('li').index();
+            removePutItem(itenIdx);
         }).on('click', 'button.btn-close', function(e){
             e.preventDefault();
 
@@ -388,10 +391,7 @@
             };
         });
 
-        $(window).on("changeStorageData", function(){
-            setPutItems();
-            setPutItemStatus();
-        }).on('scroll', function(e){
+        $(window).on("scroll", function(){
             var scrolltop = $(window).scrollTop();
             var winheight = $(window).height();
             var contop = $caresolutionContainer.offset().top;
@@ -409,7 +409,6 @@
         lgkorUI.showLoading();
 
         var tabID = getTabID();
-        console.log("tabID :", tabID)
         lgkorUI.requestAjaxData(_categoryListUrl, {tabID: tabID}, function(result){
             if(result.data.success == "N"){
                 lgkorUI.hideLoading();
@@ -455,9 +454,12 @@
                 return;
             }
             
-            _currentItemList = vcui.array.map(result.data.productList, function(item, idx){
+            _currentItemList = vcui.array.map(result.data.productList, function(item, idx){                
                 item['index'] = idx+1;
                 item["serviceName"] = serviceName;
+
+                setSiblingCodeNumbering(item);
+
                 return item;
             });
             var leng = _currentItemList.length;
@@ -471,13 +473,13 @@
 
             addProdItemList();
         });
+    }
 
-        if(!_isStorageChk){
-            _isStorageChk = true;
-
-            setPutItems();
-            setPutItemStatus();
-        }
+    function setSiblingCodeNumbering(item){
+        var key;
+        for(key in item.siblingFee) item.siblingFee[key].siblingCode = item.siblingFee[key].siblingCode.toString();
+        for(key in item.siblingUsePeriod) item.siblingUsePeriod[key].siblingCode = item.siblingUsePeriod[key].siblingCode.toString();
+        for(key in item.siblingVisitCycle) item.siblingVisitCycle[key].siblingCode = item.siblingVisitCycle[key].siblingCode.toString();
     }
 
     //서비스 변경...
@@ -506,7 +508,7 @@
 
         var siblingType = $(item).data('siblingType');
         if(siblingType == "siblingColors"){
-            setChangeColorChip(idx, optionData.optdata["siblingColors"].value, optionData.optdata["siblingColors"].modelId);
+            setChangeColorChip(idx, optionData.optdata);
         } else{
             setChangeOptionChip(idx, optionData.optdata)
         }
@@ -516,9 +518,11 @@
     function setChangeOptionChip(idx, optdata){
         lgkorUI.showLoading();
 
+        console.log("setChangeOptionChip:", idx, _currentItemList[idx]['rtModelSeq'])
+
         var sendata = {
             tabID: getTabID(),
-            modelID: _currentItemList[idx]['modelId'],
+            modelID: optdata.siblingColors.modelId,
             rtModelSeq: _currentItemList[idx]['rtModelSeq'],
             feeCd: optdata['siblingFee'].value,
             usePeriodCd: optdata['siblingUsePeriod'].value,
@@ -535,6 +539,8 @@
             }
             
             var blockID = result.data.blockID;
+
+            console.log("result.data :", result.data);
             
             _currentItemList[blockID]["rtModelSeq"] = result.data["rtModelSeq"];
             _currentItemList[blockID]["monthlyPrice"] = result.data["monthPrice"];
@@ -544,13 +550,15 @@
     }
 
     //색상 옵션 변경...
-    function setChangeColorChip(idx, colorCd, colorModelId){
+    function setChangeColorChip(idx, optdata){
         lgkorUI.showLoading();
         
         var sendata = {
             tabID: getTabID(),
-            modelID: colorModelId,
-            colorCd: colorCd,
+            modelID: optdata.siblingColors.modelId,
+            colorCd: optdata.siblingColors.value,
+            siblingGroupCd: optdata.siblingColors.groupId,
+            rtModelSeq: _currentItemList[idx]['rtModelSeq'],
             blockID: idx
         }
 
@@ -564,7 +572,8 @@
 
             var blockID = result.data.blockID;
             
-            for(var key in result.data){
+            setSiblingCodeNumbering(result.data);
+            for(var key in result.data){                
                 _currentItemList[blockID][key] = result.data[key];
             }
 
@@ -620,6 +629,41 @@
         })
     }
 
+    //담기...
+    function addPutItem(item){ 
+        var idx = $(item).parents('.prd-care-vertical').data('index')-1;
+        var optionData = getOptionData(item);
+        var itemList = _putItemList.concat();
+        itemList.unshift({
+            rtModelSeq: _currentItemList[idx]['rtModelSeq'],
+            modelId: optionData.optdata.siblingColors.modelId,
+            siblingCd: optionData.optdata.siblingColors.value,
+            siblingGroupCd: optionData.optdata.siblingColors.groupId
+        });
+
+        var sendata = {
+            tabID: getTabID(),
+            itemList: JSON.stringify(itemList)
+        }
+        
+        requestPutItem(sendata);
+    }
+
+    //담기 삭제...
+    function removePutItem(id){
+        console.log(id)
+        console.log(_putItemList);
+        _putItemList.splice(id, 1);
+        console.log(_putItemList);
+
+        var sendata = {
+            tabID: getTabID(),
+            itemList: JSON.stringify(_putItemList)
+        }
+        
+        requestPutItem(sendata);
+    }
+
     function requestPutItem(sendata){
         lgkorUI.showLoading();
 
@@ -640,98 +684,33 @@
                 $('.ui_total_prod .ui_carousel_slider').vcCarousel('reinit');
                 lgkorUI.resetFlexibleBox();
 
-                if(result.data.contract.transModelCheck){
-                    $('.ui_total_prod .ui_carousel_slider').find('.ui_flexible_box[data-contract-flag='+result.data.contract.transModelCheck+']')
-                    .eq(0).removeClass('comb-type').addClass('comb-type');
+                $('.ui_total_prod .ui_carousel_slider').find('.ui_flexible_box').removeClass('comb-type');
+                if(result.data.contract.transModelCheck){                    
+                    $('.ui_total_prod .ui_carousel_slider').find('.ui_flexible_box[data-contract-flag='+result.data.contract.transModelCheck+']').eq(0).addClass('comb-type');
                 }
             }
-            
-            var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-            if(tempPutItemIdx > -1){
-                var data = {
-                    itemData: _currentItemList[tempPutItemIdx],
-                    putID : _currentItemList[tempPutItemIdx]['modelId'] + "-" + parseInt(Math.random()*999) + "-" + parseInt(Math.random()*99) + "-" + parseInt(Math.random()*9999)
-                }                
-                
-                if(putItemStorage[lgkorUI.CAREPLANER_ID] == undefined){
-                    putItemStorage[lgkorUI.CAREPLANER_ID] = [data];
-                } else{     
-                    putItemStorage[lgkorUI.CAREPLANER_ID].unshift(data);
-                    $(window).trigger("toastshow", "제품 담기가 완료되었습니다.");
-                }
-                putItemStorage[lgkorUI.CAREPLANER_PRICE] = {
-                    totalPrice: result.data.total.totalPrice,
-                    totalTrans: result.data.total.totalTrans,
-                    affiliateCard: result.data.total.affiliateCard
-                }
-            } else{
-                putItemStorage[lgkorUI.CAREPLANER_ID] = vcui.array.filter(putItemStorage[lgkorUI.CAREPLANER_ID], function(item){
-                    return item['putID'] != tempPutID;
-                });
-            }
-            lgkorUI.setStorage(lgkorUI.CAREPLANER_KEY, putItemStorage);
+
+            setPutItems(result.data);
         });
     }
 
-    //담기...
-    function addPutItem(item){ 
-        var idx = $(item).parents('.prd-care-vertical').data('index')-1;
-        var modelIds = [_currentItemList[idx]['modelId']];
-        var rtModelSeqs = [_currentItemList[idx]['rtModelSeq']];
-
-        var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-        if(putItemStorage[lgkorUI.CAREPLANER_ID]){
-            for(var key in putItemStorage[lgkorUI.CAREPLANER_ID]){
-                var storageData = putItemStorage[lgkorUI.CAREPLANER_ID][key];
-                modelIds.push(storageData.itemData.modelId);
-                rtModelSeqs.push(storageData.itemData.rtModelSeq);
-            }
-        }
-
-        var sendata = {
-            tabID: getTabID(),
-            modelIds: modelIds.join(","),
-            rtModelSeqs: rtModelSeqs.join(",")
-        }
-
-        tempPutItemIdx = idx;
-        tempPutID = "";
-        
-        requestPutItem(sendata);
-    }
-
-    //담기 삭제...
-    function removePutItem(id){
-        var modelIds = [];
-        var rtModelSeqs = [];
-        var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-        for(var key in putItemStorage[lgkorUI.CAREPLANER_ID]){
-            var storageData = putItemStorage[lgkorUI.CAREPLANER_ID][key];
-            if(storageData.putID != id){
-                modelIds.push(storageData.itemData.modelId);
-                rtModelSeqs.push(storageData.itemData.rtModelSeq);
-            }
-        }
-
-        var sendata = {
-            tabID: getTabID(),
-            modelIds: modelIds.join(","),
-            rtModelSeqs: rtModelSeqs.join(",")
-        }
-
-        tempPutItemIdx = -1;
-        tempPutID = id;
-        
-        requestPutItem(sendata);
-    }
-
-    function setPutItems(){
+    function setPutItems(listdata){
         $putItemContainer.find('.contract-slide').empty();
 
-        var putItemCompare = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-        var leng = putItemCompare[lgkorUI.CAREPLANER_ID] == undefined ? 0 : putItemCompare[lgkorUI.CAREPLANER_ID].length;
+        _putItemList = [];
+        
+        var leng = listdata.itemList.length;
         if(leng){
-            var listItem = vcui.template(_putItemTemplate, putItemCompare);
+            _putItemList = vcui.array.map(listdata.itemList, function(item){
+                return {
+                    rtModelSeq: item.rtModelSeq,
+                    modelId: item.modelId,
+                    siblingCd: item.siblingCd,
+                    siblingGroupCd: item.siblingGroupCd
+                }
+            })
+
+            var listItem = vcui.template(_putItemTemplate, {putitem_list: listdata.itemList});
             $putItemContainer.find('.contract-slide').append(listItem);
 
             var display = $putItemContainer.css('display');
@@ -776,12 +755,14 @@
         }
 
         var totalinfo = $putItemContainer.find('.total-info');
-        var newinfo = vcui.template(putItemPriceTemplate, putItemCompare[lgkorUI.CAREPLANER_PRICE]);
+        var newinfo = vcui.template(putItemPriceTemplate, listdata.total);
         totalinfo.after(newinfo);
 
         totalinfo.remove();
         
         $putItemContainer.find('.tit-wrap .num strong').text(leng);
+
+        setPutItemStatus();
     }
 
     function setPutItemStatus(){
@@ -845,20 +826,10 @@
 
     function openEstimatePopUp(){
         lgkorUI.showLoading();
-        
-        var modelIds = [];
-        var rtModelSeqs = [];
-        var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-        for(var key in putItemStorage[lgkorUI.CAREPLANER_ID]){
-            var storageData = putItemStorage[lgkorUI.CAREPLANER_ID][key];
-            modelIds.push(storageData.itemData.modelId);
-            rtModelSeqs.push(storageData.itemData.rtModelSeq);
-        }
 
         var sendata = {
             tabID: getTabID(),
-            modelIds: modelIds.join(","),
-            rtModelSeqs: rtModelSeqs.join(",")
+            InputData: JSON.stringify(_putItemList)
         }
 
         lgkorUI.requestAjaxData(_estimateConfirmUrl, sendata, function(result){
@@ -950,11 +921,13 @@
 
             var optblock = $(opt).find('.ui_selectbox').find('option').filter("[value="+selectValue+"]");
             var selectModelId = optblock.data("modelId");
+            var groupId = optblock.data("groupId");
             
             optdata[siblingType] = {
                 name: selectName,
                 value: selectValue,
-                modelId: selectModelId
+                modelId: selectModelId,
+                groupId: groupId
             }
         });
 

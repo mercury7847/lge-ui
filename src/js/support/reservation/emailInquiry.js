@@ -21,7 +21,6 @@
             
             self.$cont = $('.contents');
             self.$submitForm = self.$cont.find('#submitForm');
-            self.$stepArea = self.$cont.find('.step-area');
             self.$completeBtns = self.$cont.find('.btn-group');
 
             self.$inquiryBox = self.$cont.find('#inquiryBox');
@@ -56,7 +55,7 @@
                     register: register
                 });
 
-                $('.ui_imageinput').vcImageFileInput({
+                self.$cont.find('.ui_imageinput').vcImageFileInput({
                     totalSize: '10485760',
                     format: 'jpg|jpeg|png|gif',
                     message: {
@@ -105,16 +104,50 @@
         bindEvent: function() {
             var self = this;
 
-            // 모델 선택 후 이벤트
-            self.$cont.on('complete', function(e, module, info, data, callback) {
-                self.$completeBtns.show();
+            self.$cont.on('reset', function() {
+                self._next(self.$stepInquiry);
+            });
 
-                if (module.caseType == 'product') {
-                    self.setInquIryType(data);
-                } else {
-                    self.$inquiryBox.hide();
+            // 모델 선택 후 이벤트
+            self.$cont.on('complete', function(e, module, data, url) {
+                var param = {
+                    category: data.category,
+                    categoryNm: data.categoryName,
+                    subCategory: data.subCategory,
+                    subCategoryNm: data.subCategoryName
+                };
+                var summaryOpt = {
+                    product: [data.categoryName, data.subCategoryName, data.modelCode],
+                    reset: 'inquiry'
+                };
+
+                var callback = function() {
+                    module.$myModelArea.hide();
+                    self.$completeBtns.show();
+
+                    module._next(module.$stepInput);
+                    module._focus(module.$selectedModelBar, function() {
+                        module.$selectedModelBar.vcSticky();
+                    });
                 }
-                callback();
+
+                if (data.type == 'inquiry') {
+                    module._updateSummary(summaryOpt);
+                
+                    self.$inquiryBox.hide();
+                    
+                    callback();
+                } else {
+                    lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                        var resultData = result.data;
+    
+                        module._updateSummary(summaryOpt);
+                    
+                        self.setInquIryType(resultData);
+
+                        callback();
+                    });
+                }
             });
 
             // 신청 완료

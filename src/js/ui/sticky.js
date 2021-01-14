@@ -54,13 +54,13 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             var idx;
 
             if(self.options.usedAnchor){
-                self.$el.on('click', self.options.anchorClass, function(e){
+                self.$el.on('click.sticky', self.options.anchorClass, function(e){
                     e.preventDefault();
                     var idx = vcui.array.indexOf(self.anchorArr, $(this).attr('href'));                
                     self.scollToIndex(idx, 300);
                 });
             }
-            $win.on('scroll resize load', function(e) {
+            $win.on('scroll.sticky resize.sticky load.sticky', function(e) {
                 self.scrollTop = $win.scrollTop();
 
                 if(self.options.usedAnchor){
@@ -263,7 +263,9 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
                 position: '',
                 width: '',
                 top: '',
-                left: ''
+                left: '',
+                right: '',
+                'z-index': ''
             });
         },
 
@@ -352,10 +354,24 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
                 }, 100);
             }
         },
-       
-        reposition: function(){
+        reposition: function reposition(){
             this._calcPos();
             this._setPosition();
+        },
+        destroy: function destroy() {
+            var self = this;
+
+            self._clearCss();
+            self.$anchor.removeClass(self.options.actClass);
+            self.$el.removeClass(self.options.stickyClass);
+            self.$el.off('click.sticky')
+            $win.off('scroll.sticky resize.sticky load.sticky');
+
+            if (self.options.wrap) {
+                self.$el.unwrap();
+            }
+            
+            this.supr();
         }
     });
 

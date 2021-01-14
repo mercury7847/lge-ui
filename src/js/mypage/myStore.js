@@ -18,10 +18,10 @@
                         '<span class="title">공유하기</span>' +
                         '<div class="sns-wrap">' +
                             '<ul class="sns-list">' +
-                                '{{#if facebook}}<li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook">페이스북<span class="blind">으로 페이지 공유하기</span></a></li>{{/if}}' +
-                                '{{#if twitter}}<li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter">트위터<span class="blind">로 페이지 공유하기</span></a></li>{{/if}}' +
-                                '{{#if kakao}}<li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk">카카오톡<span class="blind">으로 페이지 공유하기</span></a></li>{{/if}}' +
-                                '{{#if urlCopy}}<li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn url" data-link-name="copy_url">URL복사<span class="blind">하기</span></a></li>{{/if}}' +
+                                '{{#if facebook}}<li><a href="#none" data-url="{{facebook}}" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook">페이스북<span class="blind">으로 페이지 공유하기</span></a></li>{{/if}}' +
+                                '{{#if twitter}}<li><a href="#none" data-url="{{twitter}}" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter">트위터<span class="blind">로 페이지 공유하기</span></a></li>{{/if}}' +
+                                '{{#if kakao}}<li><a href="#none" data-url="{{kakao}}" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk">카카오톡<span class="blind">으로 페이지 공유하기</span></a></li>{{/if}}' +
+                                '{{#if urlCopy}}<li><a href="#none" data-url="{{urlCopy}}" class="ico-btn url" data-link-name="copy_url">URL복사<span class="blind">하기</span></a></li>{{/if}}' +
                             '</ul>' +
                         '</div>' +
                         '<button type="button" class="btn-close"><span class="blind">닫기</span></button>' +
@@ -97,6 +97,7 @@
                         self.$storeList.append(vcui.template(listItemTemplate, item));
                     });
                     self.checkNoData();
+                    self.$storeList.find('.ui_tooltip-target').vcTooltipTarget();
                 });
             },
 

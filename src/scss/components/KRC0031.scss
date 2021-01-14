@@ -30,7 +30,10 @@
 			right:0;
 			bottom:0;
 			padding:40px;
-			z-index:2;
+            z-index:2;
+            .inner {
+                width:100%;
+            }
 			.title * {
 				@include title-h3;
 			}

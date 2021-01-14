@@ -688,6 +688,20 @@
                     padding: 0;
                 }
             }
+            &.type-wrap {
+                @include pc {
+                    flex-wrap: wrap;
+                    .cell {
+                        &:nth-child(2) {
+                            margin-left: 0;
+                            flex: 1;
+                        }
+                        &:nth-child(n+2) {
+                            margin-top: 8px;
+                        }
+                    }
+                }
+            }
         }
         // 날짜 선택(datepicker)
         .datepicker {
@@ -728,6 +742,15 @@
             }
             &.right {
                 text-align:right;
+            }
+            &.both {
+                @include clearfix;
+                *:first-child {
+                    float:left;
+                }
+                *:last-child {
+                    float:right;
+                }
             }
             &.err-block {
                 display:none;
@@ -2331,79 +2354,6 @@ $input: (chk, rdo);
             }
         }
     }
-}
-
-//rdo-wrap-list
-.rdo-wrap-info{
-    margin:32px 0 24px;
-    //margin-bottom: 24px;
-    .tit{
-        display:block;
-        font-weight:bold;
-        color:#222;
-        @include font-large;
-    }
-    .tit.req {
-        &::after {
-            content:'*';
-            display:inline-block;
-            margin-left:1px;
-            color:#EC455A;
-            font-size:inherit;
-            line-height:inherit;
-            vertical-align:top;
-        }
-    }
-}
-.rdo-wrap-list{
-    display:flex;
-    flex-flow:wrap;
-    .rdo-wrap.btn-type2 input+label,
-    .rdo-wrap-list button{
-        min-width:181px;
-        width:16.66%;
-        padding:15px 13px;
-        //width: 100%;
-        //padding:26px 44px;
-        box-sizing:border-box;
-        box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
-        border:0;
-        margin:0 12px 12px 0;
-        font-weight:500;
-    }
-    .rdo-wrap.btn-type2 input + label:after{
-        border:0;
-    }
-    .rdo-wrap.btn-type2 input:checked + label:after{
-        border:2px solid #ec455a;
-    }
-    /*
-    @include pc {
-        .rdo-wrap {
-            width: calc(20% - 19.2px);
-            margin-left: 24px;
-            &:nth-child(5n+1) {
-                margin-left: 0;
-            }
-            &:nth-child(n+6) {
-                margin-top: 24px;
-            }
-        }  
-    }
-    @include mobile {
-        .rdo-wrap.btn-type2 input+label,
-        .rdo-wrap-list button{
-            padding: 16px 12px;
-            box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.14);
-        }
-        .rdo-wrap {
-            margin-top: 8px;
-            &:first-child,
-            &:nth-child(2) {
-                margin-top: 0;
-            }
-        }
-    } */
 }
 
 .err-block {

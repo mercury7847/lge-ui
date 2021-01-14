@@ -108,6 +108,8 @@
             requestCart: function($dm) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-cart-url');
+                lgkorUI.requestCart($dm.attr('data-id'),$dm.attr('data-sku'),$dm.attr('data-wishListId'),$dm.attr('data-wishItemId'),ajaxUrl);
+                /*                
                 var postData = {
                     "id":$dm.attr('data-id'),
                     "sku":$dm.attr('data-sku'),
@@ -120,6 +122,7 @@
                         $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
                     }
                 });
+                */
             },
 
             checkNoData: function() {

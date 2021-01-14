@@ -79,15 +79,15 @@
                                             <div class="description">안녕하세요.<br />ThinQ 등록 방법을 확인하고 메뉴얼 대로 시도해도 연결이 안됩니다.</div>
                                         </li>
                                     </ul>
-                                    <button type="button" data-href="#solutionsPopup" data-control="modal" class="btn type-solution block problem-solve type2">
-                                        <div class="solve-txt-area">
-                                            <strong class="text">제품 문제해결 방법을 확인해보세요!</strong>
-                                            <p class="side-item">선택하신 증상은 제품 문제해결 방법을 통해서 해결이 가능합니다.</p>
+                                    <div class="banner-wrap" id="solutionBanner">
+                                        <div class="banner">  
+                                            <div class="cont">
+                                                <p class="tit">제품 문제해결 방법을 확인해보세요!</p>
+                                                <p class="desc">선택하신 증상은 제품 문제해결 방법을 통해서 해결이 가능합니다.</p>
+                                            </div>  
+                                            <button type="button" class="btn-link" data-href="/lg5-common/data-ajax/support/solutions-list-popup.html">제품 문제해결 방법 확인하기</a>
                                         </div>
-                                        <div class="solve-btn-txt-area">
-                                            <p class="btn-txt">제품 문제해결 방법 확인하기</p>
-                                        </div>
-                                    </button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -126,7 +126,10 @@
         </div>
              
         @@include('./common/footer.html')
-    </div>      
+    </div>
+    
+    <!-- 제품 해결 팝업 -->
+    @@include('./CS/modal/solutions-popup.html')
 
     <!-- support script -->
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>

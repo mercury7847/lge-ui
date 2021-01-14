@@ -508,9 +508,9 @@
                                                                             <dd class="conts">
                                                                                 <div class="select-wrap">
                                                                                     <select class="ui_selectbox" title="카드사 선택" name="associatedCard" data-required="true">
-                                                                                        <option value="" class="placeholder">카드 선택</option>
-                                                                                        <option value="11" class="placeholder">카드 선택1</option>
-                                                                                        <option value="22" class="placeholder">카드 선택2</option>
+                                                                                        <option value="" class="placeholder"data-discount-price="0">카드 선택</option> <!-- 2021-01-12 -->
+                                                                                        <option value="11" class="placeholder" data-discount-price="20000">카드 선택1</option> <!-- 2021-01-12 -->
+                                                                                        <option value="22" class="placeholder" data-discount-price="15000">카드 선택2</option> <!-- 2021-01-12 -->
                                                                                     </select>
                                                                                 </div>
                                                                                 <div class="btm-more right">
@@ -793,7 +793,7 @@
                                     <div class="agree">
                                         <div class="chk-btm">
                                         <span class="chk-wrap">
-                                            <input type="checkbox" id="chk-agree-3" name="chk-agree8" class="ui_all_checker">
+                                            <input type="checkbox" id="chk-agree-3" name="rentalAgree"> <!-- 2021-01-08 -->
                                             <label for="chk-agree-3">케어솔루션 청약신청 고객 동의</label>
                                         </span>
                                         </div>
@@ -830,7 +830,7 @@
     @@include('./common/popup/RMSF9001_pop10.html', {
         popupID: "popup-privacy-terms",
         chkname: "agreechker-privacy",
-        tempName: "개인"
+        tempName: "개인정보제공에 대한 안내"
     })
     <!-- // 개인정보 수집 약관전문 보기 popup -->
 
@@ -838,7 +838,7 @@
     @@include('./common/popup/RMSF9001_pop10.html', {
         popupID: "popup-credit-terms",
         chkname: "agreechker-credit",
-        tempName: "신용"
+        tempName: "신용정보제공에 대한 안내"
     })
     <!-- // 개인정보 수집 약관전문 보기 popup -->
 
@@ -872,6 +872,46 @@
         popupID: 'popup-delivery-list'
     })
     <!-- // 배송지 관리(리스트 있음) popup -->
+
+    <!-- 2021-01-08 -->
+    <!-- 케어솔루션 청약신청 고객동의 popup -->
+    @@include('./common/popup/RMSF9001_pop9.html', {
+        popupID: 'popup-rentalAgree'
+    })
+    <!-- // 케어솔루션 청약신청 고객동의 popup -->
+
+    <!-- 케어솔루션 청약신청 고객동의 - 이용약관 popup -->
+    @@include('./common/popup/RMSF9001_pop10.html', {
+        popupID: "popup-rentalAgree-terms",
+        chkname: "rentalAgree-terms",
+        tempName: "이용약관"
+    })    
+    <!-- 케어솔루션 청약신청 고객동의 - 이용약관 popup -->
+
+    <!-- 케어솔루션 청약신청 고객동의 - 고객확인사항  popup -->
+    @@include('./common/popup/RMSF9001_pop10.html', {
+        popupID: "popup-rentalAgree-userCheck",
+        chkname: "rentalAgree-userCheck",
+        tempName: "고객확인사항"
+    })
+    <!-- 케어솔루션 청약신청 고객동의 - 고객확인사항  popup -->
+
+    <!-- 케어솔루션 청약신청 고객동의 - 개인정보 수집 및 이용동의 popup -->
+    @@include('./common/popup/RMSF9001_pop10.html', {
+        popupID: "popup-rentalAgree-privacy",
+        chkname: "rentalAgree-privacy",
+        tempName: "개인정보 수집 및 이용동의 "
+    })
+    <!-- 케어솔루션 청약신청 고객동의 - 개인정보 수집 및 이용동의 popup -->
+
+    <!-- 케어솔루션 청약신청 고객동의 - 정보활용 동의 popup -->
+    @@include('./common/popup/RMSF9001_pop10.html', {
+        popupID: "popup-rentalAgree-infoUtility",
+        chkname: "rentalAgree-infoUtility",
+        tempName: "정보활용 동의"
+    })
+    <!-- //케어솔루션 청약신청 고객동의 - 정보활용 동의 popup -->
+    <!-- //2021-01-08 -->
 
 </body>
 </html>

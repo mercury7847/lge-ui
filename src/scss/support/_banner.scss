@@ -318,6 +318,7 @@
                 .txt {
                     @include font-large-1;
                     font-weight:$font-weight-bold;
+                    @include textEllipsis;
                 }
             }
         }

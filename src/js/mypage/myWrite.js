@@ -1,7 +1,7 @@
 (function() {
     var listItemTemplate = '<li>' +
         '<div class="flag-wrap"><span class="flag">{{progress}}</span></div>' +
-        '<p class="title"><a href="#{{id}}">[{{category}}] {{title}}</a>' +
+        '<p class="title"><a href="#{{id}}">{{title}}</a>' +
         '</p>' +
         '<div class="info"><ul>' +
             '<li>접수번호 {{regNumber}}</li>' +
@@ -18,8 +18,16 @@
                 vcui.require(['ui/pagination'], function () {
                     self.setting();
                     self.bindEvents();
+                    
+                    var $a = self.$mySort.find('li.on a');
+                    var category = $a.attr('href').replace("#","");
+                    self.requestData({
+                        "category":category,
+                        "page": "1"
+                    });
+
+                    //self.checkNoData();
                 });
-                self.checkNoData();
             },
 
             setting: function() {
@@ -43,7 +51,10 @@
                         var category = $(this).attr('href').replace("#","");
                         self.$mySort.find('li').removeClass('on');
                         $(this).parent().addClass('on');
-                        self.requestData({"category":category});
+                        self.requestData({
+                            "category":category,
+                            "page": "1"
+                        });
                     }
                 });
 

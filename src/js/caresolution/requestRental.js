@@ -1,6 +1,5 @@
 (function(){
     var CREDIT_INQUIRE_URL;
-    var NICE_CREDIT_CHK_URL;
     var INSTALL_ABLED_URL;
     var CARD_ABLED_URL;
     var ARS_AGREE_URL;
@@ -14,6 +13,10 @@
     var privacyAgreeAllChker;
     var privacyAgreeOkButton;
 
+    var rentalAgreeChker;
+    var rentalAgreeAllChker;
+    var rentalAgreeOkButton;
+
     var creditInquireButton;
 
     var requestInfoBlock;
@@ -23,6 +26,9 @@
 
     var deliveryMnger;
     var addressFinder;
+
+    var productPriceInfo;
+    var cardDiscountPrice = 0;
 
     var step = 0;
 
@@ -58,12 +64,16 @@
         stepAccordion = $('.ui_accordion').vcAccordion('instance');
 
         privacyAgreeChker = $('input[name=chkPrivacy]');
-
-
         $('#popup-privacy').vcCheckboxAllChecker();
         privacyAgreeAllChker = $('#popup-privacy').vcCheckboxAllChecker('instance');
-
         privacyAgreeOkButton = $('#popup-privacy .btn-group .btn:nth-child(2)').css({cursor:'default'});
+
+
+        rentalAgreeChker = $('input[name=rentalAgree]');
+        $('#popup-rentalAgree').vcCheckboxAllChecker();
+        rentalAgreeAllChker = $('#popup-rentalAgree').vcCheckboxAllChecker('instance');
+        rentalAgreeOkButton = $('#popup-rentalAgree .btn-group .btn:nth-child(2)').css({cursor:'default'});
+        
 
         creditInquireButton = $('.creditInquire');
 
@@ -212,6 +222,7 @@
             }
         });
 
+
         step1Block.find('.input-mix-wrap .cell .btn-link').on('click', function(e){
             e.preventDefault();
 
@@ -221,7 +232,6 @@
         privacyAgreeAllChker.on('allCheckerChange', function(e, status){
             setPrivacyAgreeStatus(status);
         });
-
         $('#popup-privacy').on('click', '.btn-group .btn:nth-child(1)', function(e){
             setPrivacyAgreePop(false);
         });
@@ -230,6 +240,29 @@
                 $('#popup-privacy').vcModal('close');
             }
         });
+
+
+        rentalAgreeChker.on('change', function(e){
+            var chk = $(this).prop('checked');
+            if(chk){
+                openRentalAgreePopup();
+            } else{
+                setRentalAgreePop(false);
+            }
+        })
+        $('#popup-rentalAgree').on('click', '.btn-group .btn:nth-child(1)', function(e){
+            setRentalAgreePop(false);
+        });
+        rentalAgreeOkButton.on('click', function(e){
+            if(getRentalAgreeAllChecked()){
+                $('#popup-rentalAgree').vcModal('close');
+            }
+        });
+        $('#popup-rentalAgree').on('change', 'input[type=checkbox]', function(){
+            rentalAgreeChecked();
+        });
+
+
 
         creditInquireButton.on('click', function(e){
             e.preventDefault();
@@ -241,7 +274,12 @@
             e.preventDefault();
 
             var chkername = $(this).data('chkName');
-            privacyAgreeAllChker.setChecked(chkername, true);
+            var idx = chkername.indexOf('rentalAgree')
+            if(idx < 0) privacyAgreeAllChker.setChecked(chkername, true);
+            else{
+                rentalAgreeAllChker.setChecked(chkername, true);
+                rentalAgreeChecked();
+            }
 
             var idname = $(this).closest('.popup-wrap').attr('id');
             $("#"+idname).vcModal('close');
@@ -249,7 +287,12 @@
             e.preventDefault();
 
             var chkername = $(this).data('chkName');
-            privacyAgreeAllChker.setChecked(chkername, false);
+            var idx = chkername.indexOf('rentalAgree')
+            if(idx < 0) privacyAgreeAllChker.setChecked(chkername, false);
+            else{
+                rentalAgreeAllChker.setChecked(chkername, false);
+                rentalAgreeChecked();
+            }
         });
 
         $('.search-postcode').on('click', function(e){
@@ -303,7 +346,18 @@
                 step3Block.find('.sendMessage').prop('disabled', true);
                 step3Block.find('select[name=associatedCard] option').eq(0).prop('selected', true);
                 step3Block.find('select[name=associatedCard]').vcSelectbox('update');
+                step3Block.find('.discount-txt').text('');
             }
+        }).on('change', 'select[name=associatedCard]', function(){
+            var selectopt = step3Block.find('select[name=associatedCard] option:selected');
+            cardDiscountPrice = selectopt.data('discountPrice') ? parseInt(selectopt.data('discountPrice')) : 0;
+            if(cardDiscountPrice && cardDiscountPrice > 0) {
+                var discountcomma = vcui.number.addComma(cardDiscountPrice);
+                step3Block.find('.discount-txt').text("최대 " + discountcomma + "원 청구 할인");
+            } else{
+                step3Block.find('.discount-txt').text('');
+            }
+            changeProductPriceInfo();
         }).on('change', 'input[name=cardApplyaAgree]', function(e){
             var chk = $(this).prop('checked');
             if(chk){
@@ -344,6 +398,13 @@
         }).on('click', '.arsAgreeRequest', function(e){
             e.preventDefault();
             setArsAgreeConfirm();
+        });
+
+        $('input[name=rentalAgree]').on('change', function(){
+            var chker = $(this).prop('checked');
+            if(chker){
+                $('#popup-rentalAgree').vcModal();
+            }
         });
 
         $('#popup-cardApply').on('click', '.btn-group button.btn', function(e){
@@ -396,11 +457,8 @@
         var completed = false;
         console.log("step1 validation start!!");
         var result = step1Validation.validate();
+        var data = getInputData('creditInquire');
         if(result.success){
-            console.log("step1Validation.validate(); Success!!!");
-
-            var data = getInputData('creditInquire');
-            console.log("creditInquire :", data);
             completed = data === "Y" ? true : false;
             if(!completed){
                 lgkorUI.alert("", {
@@ -408,7 +466,16 @@
                 });
             }
         } else{
-            console.log("step1Validation.validate(); Fail!!!", result.validItem);
+            var leng = Object.keys(result.validItem).length;
+            if(data == "Y"){
+                if(leng == 1) completed = true;
+            } else{
+                if(leng == 1){
+                    lgkorUI.alert("", {
+                        title: "신용정보 조회로 계약 가능 여부<br>확인이 필요합니다."
+                    });
+                }
+            }
         }
 
         return completed;
@@ -560,11 +627,10 @@
                             requestInfoBlock.setItemInfoDisabled(modelID, true)
                         }
                     }
-                    console.log("productPriceInfo :", result.data.productPriceInfo);
-                    requestInfoBlock.updatePaymentInfo(result.data.productPriceInfo);
+                    productPriceInfo = result.data.productPriceInfo;
+                    changeProductPriceInfo();
 
-                    var total = parseInt(result.data.productPriceInfo.total.count);
-                    console.log('total :', total)
+                    var total = parseInt(productPriceInfo.total.count);
                     if(total) abled = "Y";
                 }
                 
@@ -592,19 +658,29 @@
 
     //신용정보 조회...
     function setCreditInquire(){
+        var step1Value = step1Validation.getValues();
+
+        var result = step1Validation.validate();
+        if(result.validItem.registFrontNumber || result.validItem.registBackFirst || result.validItem.userEmail){
+            return;
+        }
+
         var sendata = {
-            rentalCareType: getInputData('rentalCareType')
+            rentalCareType: getInputData('rentalCareType'),
+            registFrontNumber: step1Value.registFrontNumber,
+            registBackFirst: step1Value.registBackFirst,
+            userEmail: step1Value.userEmail
         }
         lgkorUI.requestAjaxData(CREDIT_INQUIRE_URL, sendata, function(result){
             if(result.data.success == "P"){
                 window.open('', 'nicePopUp', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
                 document.form_chk.action = result.data.niceAntionUrl;
                 document.form_chk.EncodeData.value = result.data.sEncData;
-                document.form_chk.target = "nicePopUp";
+                document.form_chk.param_r1.value = result.data.param_r1;
+                document.form_chk.param_r2.value = result.data.param_r2;
+                document.form_chk.param_r3.value = result.data.param_r3;
                 document.form_chk.m.value = "safekeyService";
-                document.form_chk.param_r1.value = "I";
-                document.form_chk.param_r2.value = "";
-                document.form_chk.param_r3.value = "";
+                document.form_chk.target = "nicePopUp";
                 document.form_chk.submit();
 
                 $('.niceChker').show();
@@ -718,6 +794,14 @@
         });
     }
 
+    function openRentalAgreePopup(){
+        $('#popup-rentalAgree').vcModal()
+        .on('modalhide', function(e){
+            var chk = getRentalAgreeAllChecked();
+            rentalAgreeChker.prop('checked', chk);
+        });
+    }
+
     function openPrivacyPopup(){
         $('#popup-privacy').vcModal()
         .on('modalhide', function(e){
@@ -740,6 +824,32 @@
         setPrivacyAgreeStatus(status)
     }
 
+    function setRentalAgreePop(status){
+        $('#popup-rentalAgree').find('input[type=checkbox]').prop('checked', status);
+        setRentalAgreeStatus(status)
+    }
+    function setRentalAgreeStatus(status){
+        if(status){
+            rentalAgreeOkButton.css('cursor', 'pointer').removeClass('disabled');
+            if(!rentalAgreeOkButton.hasClass('pink')) rentalAgreeOkButton.addClass('pink');
+        } else{
+            rentalAgreeOkButton.css('cursor', 'default').removeClass('pink');
+            if(!rentalAgreeOkButton.hasClass('disabled')) rentalAgreeOkButton.addClass('disabled');
+        }
+    }
+    function rentalAgreeChecked(){
+        var chked = getRentalAgreeAllChecked();
+        setRentalAgreeStatus(chked);
+    }
+    function getRentalAgreeAllChecked(){
+        var chked = 0;
+        $('#popup-rentalAgree').find('input[type=checkbox]').not('[name=rentalAgree-infoUtility], [name=all-chk3]').each(function(idx, item){
+            if($(this).prop('checked')) chked++;
+        });
+        if(chked < 3) return false;
+        else return true;
+    }
+
     function getInputData(iptname){
         var ipt = $('.hidden-input-group').find('input[name=' + iptname + ']');
         return ipt.val();
@@ -748,6 +858,19 @@
     function setInputData(iptname, value){
         var ipt = $('.hidden-input-group').find('input[name=' + iptname + ']');
         ipt.val(value);
+    }
+
+    function changeProductPriceInfo(){
+        var newPriceInfo = vcui.clone(productPriceInfo);
+        if(cardDiscountPrice > 0){
+            newPriceInfo.total.price = parseInt(newPriceInfo.total.price) - cardDiscountPrice;
+            newPriceInfo.list.push({
+                text: "제휴카드 할인",
+                price: "최대 월 -" + vcui.number.addComma(cardDiscountPrice) + "원",
+                appendClass: "sale"
+            })
+        }
+        requestInfoBlock.updatePaymentInfo(newPriceInfo);
     }
 
     //청약신청하기...

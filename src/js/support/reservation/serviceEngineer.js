@@ -6,7 +6,7 @@
             '{{# if (index == 0) { #}}' +
             '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}" data-topic-name="{{item.name}}" data-error-msg="정확한 제품증상을 선택해주세요." data-required="true" required>' +
             '{{# } else { #}}' +
-            '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}">' +
+            '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}" data-topic-name="{{item.name}}">' +
             '{{# } #}}' +
             '<label for="topic{{index}}"><span>{{item.name}}</span></label>' +
         '</span>' +
@@ -19,7 +19,7 @@
             '{{# if (index == 0) { #}}' +
             '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}" data-sub-topic-name="{{item.name}}" data-error-msg="정확한 세부증상을 선택해주세요." data-required="true" required>' +
             '{{# } else { #}}' +
-            '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}">' +
+            '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}" data-sub-topic-name="{{item.name}}">' +
             '{{# } #}}' +
             '<label for="subTopic{{index}}">{{item.name}}</label>' +
         '</span>' +
@@ -30,20 +30,22 @@
         '<div class="slide-conts ui_carousel_slide">' +
             '<div class="engineer-box">' +
                 '{{# if (index == 0) { #}}' +
-                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" value="{{index}}" checked>' +
+                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}" checked>' +
                 '{{# } else { #}}' +
-                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" value="{{index}}">' +
+                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}">' +
                 '{{# } #}}' +
                 '<label for="engineer{{index}}">' +
                     '<div class="img">' +
                         '<img src="{{item.image}}" alt="" aria-hidden="true">' +
                     '</div>' +
-                    '<p class="tit">{{item.engineerNm}}</p>' +
-                    '<p class="desc">{{item.centerNm}}</p>' +
+                    '<p class="tit">{{item.engineerName}}</p>' +
+                    '<p class="desc">{{item.centerName}}</p>' +
                 '</label>' +
             '</div>' +  
         '</div>' +
         '{{/each}}';
+
+    var dateUtil = vcui.date;
 
     var validation;
     var addressFinder;
@@ -87,7 +89,7 @@
             self.$authPopup = $('#certificationPopup');
 
             self.autoFlag = false;
-            self.isLogin = $('.header').data('ui_header').isLogin;
+            self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : false;
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
                 var register = {
@@ -126,13 +128,13 @@
                         msgTarget: '.err-block'
                     },
                     zipCode: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.address-err-msg'
                     },
                     userAddress: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.address-err-msg'
                     },
                     detailAddress: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.address-err-msg'
                     },
                     date: {
                         msgTarget: '.err-msg'
@@ -203,6 +205,14 @@
                     register: register
                 });
 
+                $('.date-wrap').calendar({
+                    inputTarget: '#date'
+                });
+
+                $('.time-wrap').timeCalendar({
+                    inputTarget: '#time'
+                });
+
                 self.bindEvent();
             });
         },
@@ -213,9 +223,6 @@
 
             html = vcui.template(topicTmpl, data);
             self.$topicList.html(html); 
-        },
-        setReserveDate: function(data) {
-            var html;
         },
         requestSubTopic: function(url, param) {
             var self = this;
@@ -260,8 +267,8 @@
                 self.$solutionsPopup.find('.pagination').on('pageClick', function(e) {
                     var url = self.$solutionsPopup.data('listUrl'),
                         param = {
-                            topic : $('#topic').val(),
-                            subToic : $('#subTopic').val(),
+                            topic : $('input[name=topic]:checked').val(),
+                            subToic : $('input[name=subTopic]:checked').val(),
                             productCode : $('#productCode').val(),
                             page: e.page
                         };
@@ -277,8 +284,8 @@
                 result;
 
             param = $.extend(param, {
-                topic: $('input[name=topic]').val(),
-                subTopic: $('input[name=subTopic]').val(),
+                topic: $('input[name=topic]:checked').val(),
+                subTopic: $('input[name=subTopic]:checked').val(),
                 serviceType: $('#serviceType').val(),
                 productCode: $('#productCode').val(),
                 category: $('#category').val(),
@@ -289,44 +296,109 @@
 
             if (result.success) {
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                    var data = result.data;
+                    var data = result.data,
+                        dateArr = data.dateList instanceof Array ? data.dateList : [],
+                        fastDate;
 
                     if (data.resultFlag == 'Y') {
-                        self.$stepInput.find('.step-btn-wrap').hide();
-                        self.$stepDate.addClass('active');
-                        self.$stepEngineer.removeClass('active');
-                        self.$completeBtns.hide();
+                        if (dateArr.length) {
+                            fastDate = dateUtil.format(data.fastDate + '' + data.fastTime + '00', 'yyyy.MM.dd hh:mm');
+                        
+                            self.$stepDate.find('.calendar-info .date').html(fastDate);    
+                            $('.date-wrap').calendar('update', data.dateList);
+                            self.dateParam = result.param;
+
+                            self.$stepInput.find('.step-btn-wrap').hide();
+                            self.$stepDate.addClass('active');
+                            self.$stepEngineer.removeClass('active');
+                            self.$completeBtns.hide();
+                        }
+                    } else {
+                        if (data.resultMessage) {
+                            if (data.tAlert == 'Y') {
+                                self.$stepInput.find('.step-btn-wrap').show();
+                                self.$stepDate.removeClass('active');
+                                self.$stepEngineer.removeClass('active');
+                                self.$completeBtns.hide();
+                            }
+
+                            lgkorUI.alert('', {
+                                title: data.resultMessage
+                            });
+                        }
                     }
                 });
             }
         },
         requestTime: function() {
-            var self = this;
+            var self = this,
+                url = $('.calendar-area').data('timeUrl'),
+                param = validation.getAllValues(),
+                result;
+
+            param = $.extend(param, {
+                topic: $('input[name=topic]:checked').val(),
+                subTopic: $('input[name=subTopic]:checked').val(),
+                serviceType: $('#serviceType').val(),
+                productCode: $('#productCode').val(),
+                category: $('#category').val(),
+                subCategory: $('#subCategory').val(),
+                date: $('#date').val()
+            });
+            param['zipId'] = self.dateParam.zipId;
+            param['custNo'] = self.dateParam.custNo;
+
+            result = validation.validate(['topic', 'subTopic', 'bdType', 'fan', 'addFan', 'installType', 'tvPosition', 'userNm', 'phoneNo', 'zipCode', 'userAddress', 'detailAddress']);
+
+            if (result.success) {
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data;
+
+                    if (data.resultFlag == 'Y') {
+                        $('.time-wrap').timeCalendar('update', data.timeList);
+                        $('.time-wrap').find('.box-desc').hide();
+                        $('.time-wrap').find('.box-table').show();
+                    } else {
+                        if (data.resultMessage) {
+                            if (data.tAlert == 'Y') {
+                                self.$stepInput.find('.step-btn-wrap').show();
+                                self.$stepDate.removeClass('active');
+                                self.$stepEngineer.removeClass('active');
+                                self.$completeBtns.hide();
+                            }
+                            
+                            lgkorUI.alert('', {
+                                title: data.resultMessage
+                            });
+                        }
+                    }
+                });
+            }
         },
         reqestEngineer: function(url, param) {
             var self = this;
 
+            param = $.extend(param, self.dateParam);
+
             lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                var data = result.data;
+                var data = result.data,
+                    arr = data.engineerList instanceof Array ? data.engineerList : []; 
 
-                if (data.resultFlag == 'Y') {
-                    self.updateEngineer(data.engineerList[0]);
-
-                    if (data.engineerList.length && data.engineerList.length > 1) {
-                        var html = '';
-                        
-                        html = vcui.template(engineerTmpl, data);
-                        
-                        self.$engineerSlider.find('.slide-track').html(html);
-                        self.$engineerSlider.vcCarousel('reinit');
-
-                        self.$stepEngineer.find('.btn').show();
-                    } else {
-                        self.$stepEngineer.find('.btn').hide();
+                if (data.resultFlag == 'Y') {  
+                    if (arr.length) {
+                        self.updateEngineer(arr[0]);
+                        if (arr.length > 1) {
+                            var html = vcui.template(engineerTmpl, data);
+                            
+                            self.$engineerSlider.find('.slide-track').html(html);
+                            self.$engineerSlider.vcCarousel('reinit');
+                            self.$stepEngineer.find('.btn').show();
+                        } else {
+                            self.$stepEngineer.find('.btn').hide();
+                        }
+                        self.$stepEngineer.addClass('active');
+                        self.$completeBtns.show();
                     }
-
-                    self.$stepEngineer.addClass('active');
-                    self.$completeBtns.show();
                 }
             });
         },
@@ -338,14 +410,13 @@
                 subTopicNm = self.$stepInput.find('[name=subTopic]:checked').data('subTopicName')
 
             self.$stepEngineer.find('.engineer-img img').attr({
-                'src': data.img,
+                'src': data.image,
                 'alt': data.engineerName
-            });
-
+            });                             
             $engineerBox.find('.name').html(data.engineerName);
             $engineerBox.find('.center').html(data.centerName);
 
-            $resultBox.find('.date').html('2020.08.17 11:20');
+            $resultBox.find('.date').html(vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm"));
             $resultBox.find('.name').html(topicNm + '&gt;' + subTopicNm);
 
             $('#engineerNm').val(data.engineerName);
@@ -359,11 +430,12 @@
             var url = self.$submitForm.data('ajax');
             var formData = validation.getAllValues();
 
+            formData['custNo'] = self.dateParam.custNo;
+
             lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
-                    // self.$submitForm[0].data.value = JSON.stringify(formData);
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {
@@ -376,37 +448,69 @@
         },
         bindEvent: function() {
             var self = this;
+            self.$cont.on('reset', function(e, module) {
+                self.$solutionsBanner.hide();
+                self.$fanBox.hide();
+                self.$bdTypeBox.hide();
+                self.$tvPositionBox.hide();
+                self.$installTypeBox.hide();
+                self.$addFanBox.hide();
+
+                module._next(module.$stepModel);
+            });
 
             // 모델 선택 후 이벤트
-            self.$cont.on('complete', function(e, module, info, data, callback) {    
-                // 에어컨 > 시스템 에어컨 선택 시
-                if (info.category == '1019'){
-                    if (info.subCategory == "1129"){
-                        self.$fanBox.show();
-                        self.$bdTypeBox.show();
-                    } else if (cateCode != "1083") {
-                        self.$fanBox.show();
-                        self.$bdTypeBox.hide();
+            self.$cont.on('complete', function(e, module, data, url) {    
+                var param = {
+                    modelCode: data.modelCode,
+                    serviceType: $('#serviceType').val(),
+                    category: data.category,
+                    subCategory: data.subCategory
+                };
+
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var resultData = result.data;
+
+                    module._updateSummary({
+                        product: [data.categoryName, data.subCategoryName, data.modelCode],
+                        reset: true
+                    });
+                
+                    
+                    // 에어컨 > 시스템 에어컨 선택 시
+                    if (data.category == '1019'){
+                        if (data.subCategory == "1129"){
+                            self.$fanBox.show();
+                            self.$bdTypeBox.show();
+                        } else if (data.subCategory != "1083") {
+                            self.$fanBox.show();
+                            self.$bdTypeBox.hide();
+                        }
                     }
-                }
-                
-                // 드럼 세탁기 선택 시
-                if (info.subCategory == "1086" || info.subCategory == "1021") {
-                    self.$installTypeBox.show();
-                } else {
-                    self.$installTypeBox.hide();
-                }
-                
-                // TV/프로젝터 > 올레드, 울트라HD, LED/LCD, PDP 선택 시
-                if (info.subCategory == "D002795" || info.subCategory == "1040" || info.subCategory == "1041" || info.subCategory == "1043") {
-                    self.$tvPositionBox.show();
-                } else {
-                    self.$tvPositionBox.hide();
-                }
+                    
+                    // 드럼 세탁기 선택 시
+                    if (data.subCategory == "1086" || data.subCategory == "1021") {
+                        self.$installTypeBox.show();
+                    } else {
+                        self.$installTypeBox.hide();
+                    }
+                    
+                    // TV/프로젝터 > 올레드, 울트라HD, LED/LCD, PDP 선택 시
+                    if (data.subCategory == "D002795" || data.subCategory == "1040" || data.subCategory == "1041" || data.subCategory == "1043") {
+                        self.$tvPositionBox.show();
+                    } else {
+                        self.$tvPositionBox.hide();
+                    }
 
-                self.setTopicList(data)
+                    self.setTopicList(resultData)
+                    
+                    module.$myModelArea.hide();
 
-                callback();
+                    module._next(module.$stepInput);
+                    module._focus(module.$selectedModelBar, function() {
+                        module.$selectedModelBar.vcSticky();
+                    });
+                });
             });
 
             // 에어컨 실외기 위치
@@ -428,7 +532,8 @@
                         serviceType: $('#serviceType').val(),
                         productCode: $('#productCode').val()
                     };
-                    
+                
+                self.$solutionsBanner.hide();
                 self.requestSubTopic(url, param);
             });
 
@@ -437,7 +542,7 @@
                 var $this = $(this),
                     url = self.$subTopicListWrap.data('ajax'),
                     param = {
-                        topic : $('input[name=topic]').val(),
+                        topic : $('input[name=topic]:checked').val(),
                         subTopic: $this.val(),
                         productCode: $('#productCode').val()
                     };
@@ -451,8 +556,8 @@
             self.$solutionsBanner.find('.btn-link').on('click', function(){
                 var url = $(this).data('href');
                 var param = {
-                    topic : $('#topic').val(),
-                    subToic : $('#subTopic').val(),
+                    topic : $('input[name=topic]:checked').val(),
+                    subToic : $('input[name=subTopic]:checked').val(),
                     productCode : $('#productCode').val(),
                     page: 1
                 };   
@@ -462,9 +567,11 @@
 
             // 주소 찾기
             self.$cont.find('.btn-address').on('click', function() { 
-                addressFinder.open(function(data) {
+                addressFinder.open(function(data) { 
+                    var address = data.userSelectedType == 'R' ? data.roadAddress : data.jibunAddress;
+
                     self.$cont.find('#zipCode').val(data.zonecode);
-                    self.$cont.find('#userAddress').val(data.roadAddress);
+                    self.$cont.find('#userAddress').val(address);
                     self.$cont.find('#detailAddress').val('');
 
                     if (self.autoFlag) self.requestDate();
@@ -478,18 +585,14 @@
             });
 
             // 날짜 선택
-            $('.tb-calendar').on('click', 'button', function() {
-                $('#date').val('20210125');
-
+            $('.date-wrap').on('dateselected', function() {
                 self.requestTime();
             });
 
             // 시간 선택
-            $('.tb-timetable').on('click', 'button', function() {
+            $('.time-wrap').on('timeselected', function() {
                 var url = self.$stepDate.data('ajax'),
                     param;
-
-                $('#time').val('1530');
 
                 param = {
                     serviceType: $('#serviceType').val(),
@@ -499,6 +602,7 @@
                     zipCode: $('#zipCode').val(),
                     userAddress: $('#userAddress').val(),
                     detailAddress: $('#detailAddress').val(),
+                    productCode: $('#productCode').val(),
                     date: $('#date').val(),
                     time: $('#time').val()
                 }
@@ -513,10 +617,36 @@
 
             // 엔지니어 선택
             self.$engineerPopup.find('.btn-group .btn').on('click', function() {
-                var $this = self.$engineerPopup.find('[name=engineer]').filter(':checked'),
-                    data = $this.data();
+                var url = self.$engineerPopup.data('lockUrl'),
+                    $this = self.$engineerPopup.find('[name=engineer]').filter(':checked'),
+                    infoData = $this.data(),
+                    param;
 
-                self.updateEngineer(data);
+                param = {
+                    serviceType: $('#serviceType').val(),
+                    date: $('#date').val(),
+                    time: $('#time').val(),
+                    lockUserId: $('#lockUserId').val(),
+                    productCode: $('#productCode').val(),
+                }
+
+                param = $.extend(param, infoData);
+
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data;
+
+                    if (data.resultFlag == 'Y') {
+                        self.updateEngineer(infoData);
+                    } else {
+                        if (data.resultMessage) {
+                            self.$engineerPopup.vcModal('hide');
+                            
+                            lgkorUI.alert('', {
+                                title: data.resultMessage
+                            });
+                        }
+                    }
+                });
             });
 
             // 신청 완료

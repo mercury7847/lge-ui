@@ -52,6 +52,7 @@
         position:relative;
         .images {
             overflow:hidden;
+            text-align:center;
             img {
                 width:auto;
                 max-width:100%;
@@ -230,6 +231,75 @@
                 .text-list {
                     .list {
                         margin-left:auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.component-wrap {
+    $color: (lightgray, dark, black, white, gray);
+    @each $bg in $color {
+        &.bg-#{$bg} {
+            .KRC0038 {
+                @include mobile {
+                    @if $bg == lightgray {
+                        .fc-black,
+                        .fc-dark-gray,
+                        .fc-gray,
+                        .fc-lightgray,
+                        .fc-white {
+                            color:#222 !important;
+                            * {
+                                color:#222 !important;
+                            }
+                        }
+                    } @else if $bg == dark {
+                        .fc-black,
+                        .fc-dark-gray,
+                        .fc-gray,
+                        .fc-lightgray,
+                        .fc-white {
+                            color:#fff !important;
+                            * {
+                                color:#fff !important;
+                            }
+                        }
+                    } @else if $bg == black {
+                        .fc-black,
+                        .fc-dark-gray,
+                        .fc-gray,
+                        .fc-lightgray,
+                        .fc-white {
+                            color:#fff !important;
+                            * {
+                                color:#fff !important;
+                            }
+                        }
+                    } @else if $bg == white {
+                        .fc-black,
+                        .fc-dark-gray,
+                        .fc-gray,
+                        .fc-lightgray,
+                        .fc-white {
+                            color:#222 !important;
+                            * {
+                                color:#222 !important;
+                            }
+                        }
+                    } @else if $bg == gray {
+                        .fc-black,
+                        .fc-dark-gray,
+                        .fc-gray,
+                        .fc-lightgray,
+                        .fc-white {
+                            color:#222 !important;
+                            * {
+                                color:#222 !important;
+                            }
+                        }
                     }
                 }
             }

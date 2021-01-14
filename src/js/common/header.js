@@ -27,8 +27,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self._arrowState();
 
                 $('.marketing-link .ui_carousel_slider').vcCarousel({
-                    infinite: true,
-                    swipeToSlide: true,
+                    infinite: false,
+                    variableWidth: true,
                     slidesToShow: 1,
                     slidesToScroll: 1
                 });
@@ -38,7 +38,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _getLoginInfo: function(){
             var self = this;
 
-            var loginInfoUrl = self.$el.data('loginInfo');
+            var loginInfoUrl = self.$el.attr('data-login-info');
             lgkorUI.requestAjaxDataPost(loginInfoUrl, {}, function(result){
                 self.isLogin = result.data.isLogin;
                 console.log("self.isLogin:", self.isLogin);

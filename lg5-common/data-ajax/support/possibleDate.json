@@ -2,6 +2,27 @@
     "status": "success",
     "message": null,
     "data": {
-        "resultFlag": "Y"
+        "resultFlag": "Y",
+        "resultMessage": "",
+        "dateList": [
+            "20210119", "20210120", "20210123",
+            "20210203", "20210204"
+        ],
+        "fastDate": "20210119",
+        "fastTime": "1120",
+        "tAlert": "N"
+    },
+    "param": {
+        "refineGHighAddr": "",
+        "refineGMidAddr": "",
+        "refineGLowAddr": "",
+        "refineGDetail": "",
+        "refineRoadName": "",
+        "refineBasementFg": "",
+        "refineRoadNo": "",
+        "refineRoadDetail": "",
+        "refineRoadEtc": "",
+        "zipId": "",
+        "custNo": "1232151"
     }
 }

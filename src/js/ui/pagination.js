@@ -115,6 +115,8 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
                 if($(e.currentTarget).hasClass('disabled')) return;
                 let value = $(e.currentTarget).attr('href').replace("#", "");
                 self.triggerHandler("page_click", value);
+                console.log(self.$el.parent());
+                $('html, body').animate({scrollTop: 0 }, 0);
                 /*
                 if($(e.currentTarget).hasClass("prev") || $(e.currentTarget).hasClass("next")) {
                     self.triggerHandler("page_click", {

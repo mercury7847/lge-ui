@@ -724,10 +724,14 @@
             return returnValue;
         },
 
-        setCookie: function(cookieName, cookieValue) {
-            var days = 60;
+        setCookie: function(cookieName, cookieValue, deleteCookie) {
             var cookieExpire = new Date();
-            cookieExpire.setDate(cookieExpire.getDate() + days);
+            if(deleteCookie) {
+                cookieExpire = new Date(1);
+            } else {
+                var days = 30*6;
+                cookieExpire.setDate(cookieExpire.getDate() + days);
+            }
 
             var cookiePath = null;
             var cookieDomain = null;
@@ -742,54 +746,136 @@
             document.cookie = cookieText;
         },
 
-        getCookie: function(cookieName){
+        getCookie: function(cookieName, getRealValue){
+            var self = this;
             var cookieValue = null;
             if(document.cookie){
+                var cookieKey = escape(cookieName) + "="; 
+                var cookieArr = document.cookie.split(";");
+                
+                for(var i = 0; i < cookieArr.length; i++) {
+                    if(cookieArr[i][0] === " ") {
+                        cookieArr[i] = unescape(cookieArr[i].substring(1));
+                    }
+                    if(cookieArr[i].indexOf(cookieKey) === 0) {
+                        cookieValue = unescape(cookieArr[i].slice(cookieKey.length, cookieArr[i].length));
+                    }
+                }
+    /*
                 var array = document.cookie.split((escape(cookieName)+'='));
+                console.log(array);
                 if(array.length >= 2){
                     var arraySub = array[1].split(';');
                     cookieValue = unescape(arraySub[0]);
                 }
+                */
+            }
+
+            var index = !cookieValue ? -1 : cookieValue.indexOf("&&&");
+            if(index != -1) {
+                //array
+                var checkExpire = new Date();
+                var itemArray = cookieValue.split(',');
+                var valueArray = [];
+                var resultArray = [];
+                itemArray.forEach(function (i, index) {
+                    var arr = i.split('&&&');
+                    if(arr.length > 1) {
+                        var value = arr[0];
+                        var date = arr[1];
+
+                        var year = date.substring(0, 4);
+                        var month = date.substring(4, 6);
+                        var day = date.substring(6, 8);
+                        var hour = date.substring(8, 10);
+                        var minute = date.substring(10, 12);
+                        var second = date.substring(12, 14);
+                        var expire = new Date(year, month-1, day, hour, minute, second);
+                        var res = vcui.date.compare(checkExpire,expire);
+                        if(res != 1) {
+                            //날짜 지남
+                            //console.log('날짜지남',value);
+                        } else {
+                            valueArray.push(value);
+                            resultArray.push(i);
+                        }
+                    } else {
+                        valueArray.push(value);
+                        resultArray.push(i);
+                    }
+                });
+                if(resultArray.length != itemArray.length) {
+                    self.setCookie(cookieName, resultArray.join(','));
+                }
+                cookieValue = (getRealValue) ? resultArray.join(',') : valueArray.join(',');
             }
             return cookieValue;
         },
 
         deleteCookie: function(cookieName){
             var self = this;
-            var temp = self.getCookie(cookieName);
+            var temp = self.getCookie(cookieName, true);
             if(temp){
-                self.setCookie(cookieName,temp,(new Date(1)));
+                self.setCookie(cookieName,temp,true);
             }
         },
 
-        addCookieValue: function(cookieName, addData) {
+        addCookieArrayValue: function(cookieName, addData) {
             var self = this;
-            var items = self.getCookie(cookieName); // 이미 저장된 값을 쿠키에서 가져오기
+            var items = self.getCookie(cookieName, true); // 이미 저장된 값을 쿠키에서 가져오기
+            var itemArray = [];
             if(items) {
-                var itemArray = items.split(',');
-                if (itemArray.indexOf(addData) != -1) {
-                    // 이미 존재하는 경우 종료
-                    //console.log('Already add.');
-                } else {
-                    // 새로운 값 저장 및 최대 개수 유지하기
-                    itemArray.unshift(addData);
-                    items = itemArray.join(',');
-                    self.setCookie(cookieName, items);
+                itemArray = items.split(',');
+                //겹치는 값 제거
+                var findIndex = -1;
+                for(var n=0;n<itemArray.length;n++) {
+                    var value = itemArray[n];
+                    var arr = value.split('&&&');
+                    if(arr.length > 1) {
+                        value = arr[0];
+                    }
+                    if(value == addData) {
+                        findIndex = n;
+                        break;
+                    }
+                };
+                if(findIndex != -1) {
+                    itemArray.splice(findIndex, 1);
                 }
-            } else {
-                // 신규 id값 저장하기
-                self.setCookie(cookieName, addData);
             }
+
+            //값 새로 저장
+            var days = 30*6;
+            var cookieExpire = new Date();
+            cookieExpire.setDate(cookieExpire.getDate() + days);
+            var expireDateString = vcui.date.format(cookieExpire,'yyyyMMddhhmmss');
+
+            addData += ("&&&" + expireDateString);
+            itemArray.unshift(addData);
+            items = itemArray.join(',');
+            self.setCookie(cookieName, items);
         },
 
-        removeCookieValue: function(cookieName, removeData) {
+        removeCookieArrayValue: function(cookieName, removeData) {
             var self = this;
-            var items = self.getCookie(cookieName); // 이미 저장된 값을 쿠키에서 가져오기
+            var items = self.getCookie(cookieName, true); // 이미 저장된 값을 쿠키에서 가져오기
+            var itemArray = [];
             if(items) {
-                var itemArray = items.split(',');
-                var index = itemArray.indexOf(removeData);
-                if (index != -1) {
-                    itemArray.splice(index, 1);
+                itemArray = items.split(',');
+                var findIndex = -1;
+                for(var n=0;n<itemArray.length;n++) {
+                    var value = itemArray[n];
+                    var arr = value.split('&&&');
+                    if(arr.length > 1) {
+                        value = arr[0];
+                    }
+                    if(value == removeData) {
+                        findIndex = n;
+                        break;
+                    }
+                };
+                if(findIndex != -1) {
+                    itemArray.splice(findIndex, 1);
                     items = itemArray.join(',');
                     self.setCookie(cookieName, items);
                 }
@@ -863,7 +949,8 @@
                     if(callback && typeof callback === 'function') callback(result);   
                 }                
             }).fail(function(err){
-                alert(url, err.message);
+                //alert(url, err.message);
+                console.log('ajaxError',url,err);
             });
         },
 
@@ -911,6 +998,53 @@
             });
         },
 
+        requestCart: function(id, sku, wishListId, wishItemId, postUrl) {
+            var postData = {"id":id};
+            if(!(!sku)) {
+                postData.sku = sku;
+            };
+            if(!(!wishListId)) {
+                postData.wishListId = wishListId;
+            };
+            if(!(!wishItemId)) {
+                postData.wishItemId = wishItemId;
+            };
+            lgkorUI.requestAjaxDataPost(postUrl, postData, function(result){
+                var data = result.data;
+                if(lgkorUI.stringToBool(data.success)) {
+                    $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
+                }
+            });
+        },
+
+        requestWish: function(id, sku, wishListId, wishItemId, wish, callbackSuccess, callbackFail, postUrl) {
+            var postData = {"id":id, "wish":wish};
+            if(!(!sku)) {
+                postData.sku = sku;
+            };
+            if(!(!wishListId)) {
+                postData.wishListId = wishListId;
+            };
+            if(!(!wishItemId)) {
+                postData.wishItemId = wishItemId;
+            };
+            lgkorUI.requestAjaxDataPost(postUrl, postData, function(result){
+                var data = result.data;
+                if(lgkorUI.stringToBool(data.success)) {
+                    if(wish) {
+                        //$dm.attr("data-wishItemId",data.wishItemId);
+                        $(window).trigger("toastshow","선택하신 제품이 찜한 제품에 추가되었습니다.");
+                    } else{
+                        $(window).trigger("toastshow","찜한 제품 설정이 해제되었습니다.");
+                    }
+                    callbackSuccess(data);
+                } else {
+                    //$dm.find('span.chk-wish-wrap input').prop("checked",!wish);
+                    callbackFail(data);
+                }
+            });
+        },
+
         commonAlertHandler: function(alert){
             if(alert.isConfirm) {
                 //컨펌
@@ -952,6 +1086,9 @@
         },
 
         stringToBool: function(str) {
+            if(!str) {
+                return false;
+            }
             if(typeof str === 'boolean') {
                 return str;
             }
@@ -1013,7 +1150,7 @@
             var moduleIDs = vcui.array.map(self.STICKY_MODULES, function(item){
                 return item.uniqueID;
             });
-            console.log("moduleIDs :", moduleIDs);
+            //console.log("moduleIDs :", moduleIDs);
 
             var uniqueID = self.setUniqueID();
             while(vcui.array.has(moduleIDs, uniqueID)) uniqueID = setUniqueID();

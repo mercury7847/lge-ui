@@ -2,7 +2,6 @@
 
 @import "../components-app";
 
-
 .KRC0004 {
 	.component-inner {
 		max-width:1920px !important;
@@ -124,12 +123,14 @@
 		}
 		.visual-area {
 			margin-top:56px;
-			position:relative;
+            position:relative;
+            text-align:center;
 			@include mobile {
 				margin-top:28px;
 			}
 			a {
-				display: block;
+                display: inline-block;
+                vertical-align:top;
 			}
 			img {
 				width:auto;
@@ -244,6 +245,11 @@
 				@include cta-btn;
 			}
 			.visual-area {
+                text-align:center;
+                > a {
+                    display:inline-block;
+                    vertical-align:top;
+                }
 				img {
 					width:auto;
 					max-width:100%;
@@ -261,6 +267,54 @@
 			}
 		}
 	}
+}
+
+.component-wrap {
+    $color: (lightgray, dark, black, white, gray);
+    @each $bg in $color {
+        &.bg-#{$bg} {
+            .KRC0004 {
+                .list-btn-area {
+                    .btn.border.more {
+                        &::before, &::after {
+                            @if $bg == lightgray {
+                                background:#222;
+                            } @else if $bg == dark {
+                                background:#fff;
+                            } @else if $bg == black {
+                                background:#fff;
+                            } @else if $bg == white {
+                                background:#222;
+                            } @else if $bg == gray {
+                                background:#222;
+                            }
+                        }
+                    }
+                }
+                .more-content {
+                    * {
+                        color:#222;
+                    }
+                    .btn.border {
+                        border-color:#222 !important;
+                        &.more {
+                            &::before,
+                            &::after {
+                                background:#222;
+                            }
+                            &:hover,
+                            &:active,
+                            &:focus {
+                                border-color:#fa263e !important;
+                                background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                color:#fff !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 html[hcx="3"], html[hcx="4"] {
