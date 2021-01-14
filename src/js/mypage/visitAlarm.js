@@ -303,7 +303,7 @@
                 if(!reply) {
                     self.$myVisitQna.hide();
                 } else {
-                    self.$myVisitQna.find('div.cont').text(reply);
+                    self.$myVisitQna.find('div.cont').html(reply);
                     self.$myVisitQna.show();
                 }
             },
@@ -313,7 +313,7 @@
                 if(!reply) {
                     self.$irregularCheckout.hide();
                 } else {
-                    self.$irregularCheckout.find('div.cont').text(reply);
+                    self.$irregularCheckout.find('div.cont').html(reply);
                     self.$irregularCheckout.show();
                 }
             },
