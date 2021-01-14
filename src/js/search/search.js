@@ -645,10 +645,8 @@
                 var postData = queryData ? queryData : {};
                 var searchValue = self.$inputKeyword.attr('data-searchValue');
                 postData.search = searchValue;
-                console.log(tabIndex, ajaxUrl, postData);
 
                 lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
-                    console.log(result);
                     var data = result.data;
                     var param = result.param;
                     
@@ -681,8 +679,6 @@
                                 item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                                 item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
                                 //item.title = item.title.replaceAll(searchedValue,replaceText);
-                                console.log(item.title,searchedValue,replaceText);
-                                console.log(vcui.string.replaceAll(item.title, searchedValue, replaceText));
                                 item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                                 $list_ul.append(vcui.template(productItemTemplate, item));
                             });
@@ -1156,6 +1152,7 @@
                             case "slider":
                                 hasSlider = true;
                                 item.filterValues.forEach(function(obj, idx){
+                                    obj.filterValue = obj.value;
                                     obj.value = idx;
                                     item.maxTitle = obj.title;
                                     item.maxFilterValue = ""+idx;

@@ -6,7 +6,7 @@
             '{{# if (index == 0) { #}}' +
             '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}" data-topic-name="{{item.name}}" data-error-msg="정확한 제품증상을 선택해주세요." data-required="true" required>' +
             '{{# } else { #}}' +
-            '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}">' +
+            '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}" data-topic-name="{{item.name}}">' +
             '{{# } #}}' +
             '<label for="topic{{index}}"><span>{{item.name}}</span></label>' +
         '</span>' +
@@ -19,7 +19,7 @@
             '{{# if (index == 0) { #}}' +
             '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}" data-sub-topic-name="{{item.name}}" data-error-msg="정확한 세부증상을 선택해주세요." data-required="true" required>' +
             '{{# } else { #}}' +
-            '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}">' +
+            '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}" data-sub-topic-name="{{item.name}}">' +
             '{{# } #}}' +
             '<label for="subTopic{{index}}">{{item.name}}</label>' +
         '</span>' +
@@ -44,6 +44,8 @@
             '</div>' +  
         '</div>' +
         '{{/each}}';
+
+    var dateUtil = vcui.date;
 
     var validation;
     var addressFinder;
@@ -294,17 +296,23 @@
 
             if (result.success) {
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                    var data = result.data;
+                    var data = result.data,
+                        dateArr = data.dateList instanceof Array ? data.dateList : [],
+                        fastDate;
 
                     if (data.resultFlag == 'Y') {
-                        $('.date-wrap').calendar('update', data.dateList);
+                        if (dateArr.length) {
+                            fastDate = dateUtil.format(data.fastDate + '' + data.fastTime + '00', 'yyyy.MM.dd hh:mm');
                         
-                        self.dateParam = result.param;
+                            self.$stepDate.find('.calendar-info .date').html(fastDate);    
+                            $('.date-wrap').calendar('update', data.dateList);
+                            self.dateParam = result.param;
 
-                        self.$stepInput.find('.step-btn-wrap').hide();
-                        self.$stepDate.addClass('active');
-                        self.$stepEngineer.removeClass('active');
-                        self.$completeBtns.hide();
+                            self.$stepInput.find('.step-btn-wrap').hide();
+                            self.$stepDate.addClass('active');
+                            self.$stepEngineer.removeClass('active');
+                            self.$completeBtns.hide();
+                        }
                     } else {
                         if (data.resultMessage) {
                             if (data.tAlert == 'Y') {
@@ -338,6 +346,7 @@
                 date: $('#date').val()
             });
             param['zipId'] = self.dateParam.zipId;
+            param['custNo'] = self.dateParam.custNo;
 
             result = validation.validate(['topic', 'subTopic', 'bdType', 'fan', 'addFan', 'installType', 'tvPosition', 'userNm', 'phoneNo', 'zipCode', 'userAddress', 'detailAddress']);
 
@@ -372,26 +381,24 @@
             param = $.extend(param, self.dateParam);
 
             lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                var data = result.data;
+                var data = result.data,
+                    arr = data.engineerList instanceof Array ? data.engineerList : []; 
 
                 if (data.resultFlag == 'Y') {  
-                    self.updateEngineer(data.engineerList[0]);
-
-                    if (data.engineerList.length && data.engineerList.length > 1) {
-                        var html = '';
-                        
-                        html = vcui.template(engineerTmpl, data);
-                        
-                        self.$engineerSlider.find('.slide-track').html(html);
-                        self.$engineerSlider.vcCarousel('reinit');
-
-                        self.$stepEngineer.find('.btn').show();
-                    } else {
-                        self.$stepEngineer.find('.btn').hide();
+                    if (arr.length) {
+                        self.updateEngineer(arr[0]);
+                        if (arr.length > 1) {
+                            var html = vcui.template(engineerTmpl, data);
+                            
+                            self.$engineerSlider.find('.slide-track').html(html);
+                            self.$engineerSlider.vcCarousel('reinit');
+                            self.$stepEngineer.find('.btn').show();
+                        } else {
+                            self.$stepEngineer.find('.btn').hide();
+                        }
+                        self.$stepEngineer.addClass('active');
+                        self.$completeBtns.show();
                     }
-
-                    self.$stepEngineer.addClass('active');
-                    self.$completeBtns.show();
                 }
             });
         },
@@ -422,6 +429,8 @@
 
             var url = self.$submitForm.data('ajax');
             var formData = validation.getAllValues();
+
+            formData['custNo'] = self.dateParam.custNo;
 
             lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                 var data = result.data;

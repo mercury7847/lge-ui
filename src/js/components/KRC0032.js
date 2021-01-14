@@ -22,7 +22,7 @@ $(window).ready(function(){
 				if($(slide.$slides.get(prev)).attr("ui-modules") == "VideoBox"){
 					$(slide.$slides.get(prev)).find("video").get(0).play();
 				}
-			});;
+			});
 		});
 	});
 })

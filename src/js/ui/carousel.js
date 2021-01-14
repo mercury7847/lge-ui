@@ -1675,6 +1675,14 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             function loadImages(imagesScope) {
 
+                $('img', imagesScope).each(function () {
+                    var image = $(this);
+                    image.on('load', function (e) {
+                        self.setPosition();
+                        self.triggerHandler(_N + 'lazyloaded', [self, image, image.attr('src')]);
+                    });
+                });
+
                 $('img[data-lazy]', imagesScope).each(function () {
 
                     var image = $(this),

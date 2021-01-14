@@ -39,7 +39,7 @@
                         }
             
                         lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
-                            var data = result.data.length > 0 ? result.data[0] : {};
+                            var data = result.data ? result.data : {};
                             self.reloadData(data);
                         });
                     }

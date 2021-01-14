@@ -218,15 +218,21 @@
                     self._setTabInit();
                 });
 
-                self.$citySelect = $('#select1');
-                self.$boroughSelect = $('#select2');
+                self.$citySelect = $('.select1');
+                self.$boroughSelect = $('.select2');
                 self.$localSearchButton = $('.search-local');
                 self.$searchUserAdressButton = $('.search-userAdress');
-
+                
                 self.$subwayCitySelect = $('#select3');
                 self.$subwayLineSelect = $('#select4');
                 self.$subwayStationSelect = $('#select5');
                 self.$searchSubwayButton = $('.search-subway');
+                // self.$searchAddress = $('#search_address');
+                self.$citySelect2 = $('#select6');
+                self.$areaSelect = $('#select7');
+                self.$secterSelect = $('#select8');
+                self.$searchAddressButton = $('.search-address-btn');
+                self.$searchAddressButton2 = $('.search-address-btn2');
 			});
         },
 
@@ -307,6 +313,31 @@
             self.$searchUserAdressButton.on('click', function(e){
                 self._setUserAdressSearch();
             });
+            $('#select1').on('change', function(e){
+                $('#select2').prop('disabled', false);
+            });
+            $('#select2').on('change', function(e){
+                $('.search-local').prop('disabled', false);
+            });
+            self.$searchAddressButton.on('click', function(e){
+                self._loadLocalAreaList2(e.target.value);
+                self.$citySelect2.prop('disabled', false);
+                self.$citySelect2.vcSelectbox('update');
+                self.$areaSelect.prop('disabled', false);
+                self.$areaSelect.vcSelectbox('update');
+                self.$secterSelect.prop('disabled', false);
+                self.$secterSelect.vcSelectbox('update');
+                self.$searchAddressButton2.prop('disabled', false);
+            });
+            self.$citySelect2.on('change', function(e){
+                self._loadLocalAreaList2();
+            });
+            self.$areaSelect.on('change', function(e){
+                self._loadLocalAreaList3();
+            });
+            self.$searchAddressButton2.on('click', function(e){
+                self._setUserAdressSearch();
+            });
 
             self.$subwayCitySelect.on('change', function(e){
                 lgkorUI.requestAjaxData(self.subwayUrl, {codeType:'SUBWAY', pcode:e.target.value}, function(result){
@@ -326,7 +357,6 @@
             self.$searchSubwayButton.on('click', function(e){
                 self._setSubwaySearch();
             });
-
             self._resize();
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
@@ -341,6 +371,7 @@
             self.$subwayCitySelect.val();
             self.$subwayLineSelect.val();
             self.$subwayStationSelect.val();
+            self.$citySelect2.val();
         },
 
         _loadStoreData: function(){
@@ -363,10 +394,25 @@
 
             lgkorUI.requestAjaxData(self.localUrl, {city:encodeURI(val)}, function(result){
                 self._setSelectOption(self.$boroughSelect, result.data);
-                self.$boroughSelect.prop('disabled', false);
                 self.$boroughSelect.vcSelectbox('update');
+            });
+        },
 
-                self.$localSearchButton.prop('disabled', false);
+        _loadLocalAreaList2: function(val){
+            var self = this;
+            lgkorUI.requestAjaxData(self.localUrl, {city:encodeURI(val)}, function(result){
+                self._setSelectOption(self.$areaSelect, result.data);
+                self.$areaSelect.vcSelectbox('update');
+                self._setSelectOption(self.$secterSelect, result.data);
+                self.$secterSelect.vcSelectbox('update');
+            });
+        },
+
+        _loadLocalAreaList3: function(val){
+            var self = this;
+            lgkorUI.requestAjaxData(self.localUrl, {city:encodeURI(val)}, function(result){
+                self._setSelectOption(self.$secterSelect, result.data);
+                self.$secterSelect.vcSelectbox('update');
             });
         },
 
