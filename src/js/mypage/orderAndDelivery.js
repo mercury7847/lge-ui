@@ -164,10 +164,7 @@
             var href = $(this).attr('href');
             if(href == "#none" || href == ""){
                 e.preventDefault();
-
-                lgkorUI.alert("제품이 현재 품절/판매 중지<br>상태로 상세 정보를 확인 하실 수 없습니다", {
-                    title:""
-                });
+                lgkorUI.alert("", {title: "제품이 현재 품절/판매 중지<br>상태로 상세 정보를 확인 하실 수 없습니다"});
             }
         });
     }

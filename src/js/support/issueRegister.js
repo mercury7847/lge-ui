@@ -26,7 +26,7 @@
                     title: '사진을 첨부해 주세요.'
                 }
 
-                lgkorUI.alert('', popObj);
+                lgkorUI.alert("", popObj);
                 return false;
             } else {
                 $.each(files, function(index, item) {

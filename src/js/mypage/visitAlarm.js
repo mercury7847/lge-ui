@@ -1,6 +1,6 @@
 
 (function(){
-    var visitAlarmItemTemplate = '<li class="{{#if type=="prev"}}off{{#elsif type=="next"}}on after{{#else}}off after{{/if}}" data-id="{{id}}">' +
+    var visitAlarmItemTemplate = '<li class="{{#if type=="prev"}}off{{#elsif type=="next"}}on after{{#else}}off after{{/if}}">' +
         '<div class="inner">' +
             '<div class="svc-info">' +
                 '<p class="date">' +
@@ -46,12 +46,33 @@
                 self.bindEvents();
                 self.bindPopupEvents();
 
-                /*
-                var selectValue = self.$selectContract.vcSelectbox('selectedOption').value;
-                if(selectValue) {
-                    self.requestData(selectValue);
+                //현재 설정된 계약 갯수 가져옴
+                var $option = self.$selectContract.find('option');
+                var length = !$option ? 0 : $option.length;
+                if(length > 0) {
+                    var selectValue = self.getSelectedContractID();
+                    if(!(!selectValue) && selectValue.length > 1) {
+                        self.requestData(selectValue);
+                    }
                 }
-                */
+
+                var $div = self.$contents.find('>div');
+                $div.each(function(idx,item){
+                    var $item = $(item);
+                    if(length > 0) {
+                        if($item.hasClass('nodata')) {
+                            $item.hide();
+                        } else {
+                            $item.show();
+                        }
+                    } else {
+                        if($item.hasClass('nodata')) {
+                            $item.show();
+                        } else {
+                            $item.hide();
+                        }
+                    }
+                });
             },
 
             setting: function() {
@@ -106,8 +127,6 @@
                 self.$list.on('click', 'div.svc-lists button', function(e){
                     e.preventDefault();
                     var $li = $(this).parents('li');
-                    var _id = $li.attr('data-id');
-                    self.$popupChangeVisitDate.attr('data-id',_id);
 
                     var date = $(this).attr('data-date');
                     var time = $(this).attr('data-time');
@@ -177,6 +196,12 @@
                 });
             },
 
+            getSelectedContractID: function() {
+                var self = this;
+                var selectValue = self.$selectContract.vcSelectbox('selectedOption').value;
+                return selectValue;
+            },
+
             getSelectedVisitDayData: function() {
                 var self = this;
                 var $td = self.$calendarTable.find('tr td.choice');
@@ -188,9 +213,9 @@
                 $td = self.$timeTable.find('tr td.choice');
                 var time = $td.attr('data-value');
 
-                var _id = self.$popupChangeVisitDate.attr('data-id');
+                var _id = self.getSelectedContractID();
 
-                return {"id":_id, "date":date, "time":time}
+                return {"id":_id, "date":date, "time":time};
             },
 
             requestData: function(contract) {
@@ -199,8 +224,8 @@
                 lgkorUI.requestAjaxData(ajaxUrl, {"contract":contract}, function(result) {
                     var data = result.data;
 
-                    var reply = data.reply;
-                    self.setVisitQna(reply);
+                    self.setVisitQna(data.visitQna);
+                    self.setIrregularCheckout(data.irregularCheckout);
 
                     var arr = data.listData instanceof Array ? data.listData : [];
                     self.$list.empty();
@@ -215,7 +240,13 @@
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-day-url');
                 var $list = self.$calendarTable.find('tbody');
-                lgkorUI.requestAjaxDataPost(ajaxUrl, {"date":date}, function(result){
+                var _id = self.getSelectedContractID();
+                if(!_id || _id=="all" || _id.length == 0) {
+                    //모아보기 팝업
+                    lgkorUI.alert("", {title: "계약정보 선택에서 개별 계약 정보를<br>선택 후, 방문일정 변경요청을<br>신청해주세요."});
+                    return;
+                };
+                lgkorUI.requestAjaxDataPost(ajaxUrl, {"id":_id, "date":date}, function(result){
                     var data = result.data;
 
                     //날짜 새로 그리기
@@ -246,7 +277,7 @@
                     var selectedData = self.getSelectedVisitDayData();
                     self.setVisitDateText(selectedData);
                     
-                    self.$popupChangeVisitDate.vcModal()
+                    self.$popupChangeVisitDate.vcModal();
                 }); 
             },
 
@@ -260,8 +291,8 @@
                         if(toast) {
                             $(window).trigger("toastshow", toast);
                         }
-                        var reply = data.reply;
-                        self.setVisitQna(reply);
+                        self.setVisitQna(data.visitQna);
+                        self.setIrregularCheckout(data.irregularCheckout);
                     }
                 }); 
                 $('#popupChangeVisitDate').vcModal('close');
@@ -269,11 +300,21 @@
 
             setVisitQna: function(reply) {
                 var self = this;
-                if(reply) {
+                if(!reply) {
+                    self.$myVisitQna.hide();
+                } else {
                     self.$myVisitQna.find('div.cont').text(reply);
                     self.$myVisitQna.show();
+                }
+            },
+
+            setIrregularCheckout: function(reply) {
+                var self = this;
+                if(!reply) {
+                    self.$irregularCheckout.hide();
                 } else {
-                    self.$myVisitQna.hide();
+                    self.$irregularCheckout.find('div.cont').text(reply);
+                    self.$irregularCheckout.show();
                 }
             },
 

@@ -322,7 +322,7 @@
                                 self.$completeBtns.hide();
                             }
 
-                            lgkorUI.alert('', {
+                            lgkorUI.alert("", {
                                 title: data.resultMessage
                             });
                         }
@@ -367,7 +367,7 @@
                                 self.$completeBtns.hide();
                             }
                             
-                            lgkorUI.alert('', {
+                            lgkorUI.alert("", {
                                 title: data.resultMessage
                             });
                         }
@@ -440,7 +440,7 @@
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {
-                        lgkorUI.alert('', {
+                        lgkorUI.alert("", {
                             title: data.resultMessage
                         });
                     }
@@ -642,7 +642,7 @@
                         if (data.resultMessage) {
                             self.$engineerPopup.vcModal('hide');
                             
-                            lgkorUI.alert('', {
+                            lgkorUI.alert("", {
                                 title: data.resultMessage
                             });
                         }
