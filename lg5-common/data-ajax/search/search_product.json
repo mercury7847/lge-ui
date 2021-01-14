@@ -67,11 +67,11 @@
                 "filterId":"fid00001",
                 "title":"판매가",
                 "filterValues":[
-                    {"value":"0","title":"50,000","filterValue":"pd0001"},
-                    {"value":"1","title":"150,000","filterValue":"pd0002"},
-                    {"value":"2","title":"400,000","filterValue":"pd0003"},
-                    {"value":"3","title":"1,000,000","filterValue":"pd0004"},
-                    {"value":"4","title":"2,000,000","filterValue":"pd0005"}
+                    {"value":"pd0001","title":"50,000"},
+                    {"value":"pd0002","title":"150,000"},
+                    {"value":"pd0003","title":"400,000"},
+                    {"value":"pd0004","title":"1,000,000"},
+                    {"value":"pd0005","title":"2,000,000"}
                 ]
             },
             {
@@ -79,10 +79,10 @@
                 "filterId":"fid00002",
                 "title":"화면크기",
                 "filterValues":[
-                    {"value":"0","title":"48인치","filterValue":"rd0001"},
-                    {"value":"1","title":"52인치","filterValue":"rd0002"},
-                    {"value":"2","title":"80인치","filterValue":"rd0003"},
-                    {"value":"3","title":"120인치","filterValue":"rd0004"}
+                    {"value":"rd0001","title":"48인치"},
+                    {"value":"rd0002","title":"52인치"},
+                    {"value":"rd0003","title":"80인치"},
+                    {"value":"rd0004","title":"120인치"}
                 ]
             },
             {
