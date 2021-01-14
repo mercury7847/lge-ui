@@ -125,6 +125,7 @@ CS.MD.commonModel = function() {
             self.totalCount = options.totalCount;
             self.inquiryType = options.inquiryType;
             self.param = options.param;
+            self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : false;
 
             // 스텝 영역
             self.$stepBox = self.$el.find('.step-box');
@@ -202,7 +203,7 @@ CS.MD.commonModel = function() {
             self.$el.find('[type=hidden]').not('[name=serviceType], [name=lockUserId]').val('');
             
             if (self.isLogin) {
-                self.$el.find('input[type=text], textarea').not('#userNm, #phoneNo').val('');
+                self.$el.find('input[type=text], textarea').not('#userNm, #phoneNo, ').val('');
             } else {
                 self.$el.find('input[type=text], textarea').val('');
             }
@@ -679,7 +680,7 @@ CS.MD.calendar = function() {
                 timeButton: '<button type="button" class="{{disabled?" disabled":""}}" title="{{title}}" {{disabled?"disabled":""}}"><span>{{time}}</span></button>'
             },
             caption: '캘린더입니다. 글은 일요일, 월요일, 화요일, 수요일, 목요일, 금요일, 토요일 순으로 나옵니다',
-            colWidth: '32px', // 셀 너비
+            colWidth: 'calc(100% / 7)', // 셀 너비
             format: 'yyyy.MM.dd',
             paramFormat: 'yyyyMMdd'
         };
@@ -784,7 +785,7 @@ CS.MD.calendar = function() {
             }
             html += '</colgroup><thead>';
             for (i = 0; i < 7; i++) {
-                html += '<th class="' + (i === 0 ? ' ui-calendar-sunday' : i === 6 ? ' ui-calendar-saturday' : '') + '" scope="col">';
+                html += '<th class="' + (i === 0 ? ' sun' : i === 6 ? ' ui-calendar-saturday' : '') + '" scope="col">';
                 html += opts.weekNames[i];
                 html += '</th>';
             }
@@ -1060,7 +1061,7 @@ CS.MD.timeCalendar = function() {
                 button: '<button type="button" class="{{disabled?"disabled":""}}" title="{{title}}" {{disabled?"disabled":""}}><span>{{time}}분</span></button>'
             },
             caption: '시간 캘린더입니다. 글은 9시, 10시, 11시, 12시, 13시, 14시, 15시, 16시, 17시 순으로 나옵니다',
-            colWidth: '44px', // 셀 너비
+            colWidth: 'calc(85% / 6)', // 셀 너비
             format: 'hh:mm'
         };
 
@@ -1132,13 +1133,17 @@ CS.MD.timeCalendar = function() {
             html += '<table class="tb-timetable"><caption>' + opts.caption + '</caption>';
             html += '<colgroup>';
             for (i = 0; i < 7; i++) {
-                html += '<col width="' + opts.colWidth + '" />';
+                if (i == 0) {
+                    html += '<col width="' + '15%' + '" />';
+                } else {
+                    html += '<col width="' + opts.colWidth + '" />';
+                }
             }
             html += '</colgroup><tbody>';
             for (i = 0; i < opts.timeName.length; i++) {
                 html += '<tr>';
 
-                html += '<th scope="row">'+ opts.timeName[i].replace(/(^0+)/, "") +'시</th>';
+                html += '<th scope="row">'+ opts.timeName[i] +'시</th>';
                 for (j = 0; j < 6; j++) {
                     
                     hour = opts.timeName[i];
@@ -1492,7 +1497,7 @@ CS.MD.survey = function(addData) {
                         $('#surveyPopup').vcModal('hide');
                     }
 
-                    lgkorUI.alert('', {
+                    lgkorUI.alert("", {
                         title: result.data.resultMessage
                     });
                 })
@@ -1563,7 +1568,7 @@ var AuthManager = function() {
                         $(elem.number).prop('disabled', false);
                     }
 
-                    lgkorUI.alert('', {
+                    lgkorUI.alert("", {
                         title: resultData.resultMessage
                     });
                 });
@@ -1585,7 +1590,7 @@ var AuthManager = function() {
 
             if (result.success == true) {
                 if ($(elem.number).prop('disabled')) {
-                    lgkorUI.alert('', {title: '인증번호 발송 버튼을 선택해 주세요.'});
+                    lgkorUI.alert("", {title: '인증번호 발송 버튼을 선택해 주세요.'});
                     return false;
                 }
 
@@ -1611,13 +1616,13 @@ var AuthManager = function() {
                                 callback && callback();
                             }
                         } else {
-                            lgkorUI.alert('', {title: result.data.resultMessage});
+                            lgkorUI.alert("", {title: result.data.resultMessage});
                         }
                     } else {
                         if (result.data.resultFlag == 'Y') {
                             $(elem.form).submit();
                         } else if (result.data.resultFlag == 'N') {
-                            lgkorUI.alert('', {
+                            lgkorUI.alert("", {
                                 title: result.data.resultMessage
                             });
 

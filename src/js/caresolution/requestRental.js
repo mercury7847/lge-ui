@@ -585,7 +585,7 @@
         else if(values.detailAddress == "") errmsg = "상세주소를 입력해주세요."
 
         if(errmsg != ""){
-            lgkorUI.alert('', {
+            lgkorUI.alert("", {
                 title: errmsg
             });
 
@@ -885,7 +885,7 @@
         }
 
         if(!chk){
-            lgkorUI.alert('', {
+            lgkorUI.alert("", {
                 title:'입력정보를 확인해주세요.'
             });
             return;
