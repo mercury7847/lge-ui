@@ -423,7 +423,8 @@
             $('#engineerCode').val(data.engineerCode);
             $('#centerNm').val(data.centerName);
             $('#centerCode').val(data.centerCode);
-            $('#resrvSeq').val(data.resrvSeq);
+
+            self.dateParam['resrvSeq'] = data.resrvSeq;
         },
         requestComplete: function() {
             var self = this;
@@ -431,7 +432,7 @@
             var url = self.$submitForm.data('ajax');
             var formData = validation.getAllValues();
 
-            formData['custNo'] = self.dateParam.custNo;
+            formData = $.extend(formData, self.dateParam);
 
             lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                 var data = result.data;
