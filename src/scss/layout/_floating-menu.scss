@@ -275,7 +275,8 @@
     }
 }
 .lately-popup {
-    right:36px;
+    top:-648px;
+    right:0;
     z-index:101;
     width:368px;
     min-height:720px;
@@ -285,6 +286,7 @@
     }
     @include mobile {
         position:fixed;
+        top:auto;
         right:-80%;
         left:auto !important;
         z-index:101;
