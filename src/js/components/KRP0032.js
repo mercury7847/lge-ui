@@ -28,7 +28,11 @@ $(window).ready(function(){
             self.$a.on('click', function(e){
                 e.preventDefault();
                 self.requestData(true);
-            })
+            });
+
+            self.$popup.on('click','.ui_modal_close',function(e){
+                self.$popup.hide();
+            });
         },
         
 		requestData: function(openPopup) {
@@ -59,7 +63,8 @@ $(window).ready(function(){
                 self.checkNoData();
                 
                 if(openPopup) {
-                    self.$popup.vcModal();
+                    //self.$popup.vcModal();
+                    self.$popup.show();
                 }
 			});
         },

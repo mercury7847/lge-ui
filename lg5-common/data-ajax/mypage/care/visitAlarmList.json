@@ -2,10 +2,10 @@
     "status":"success",
     "message":null,
     "data": {
-        "reply": "요청하신 일자에는 방문이 어렵습니다.",
+        "visitQna": "요청하신 일자에는 방문이 어렵습니다.",
+        "irregularCheckout": "비정기 방문일자 입력 입니다",
         "listData":[
             {
-                "id":"vid00001",
                 "type":"prev",
                 "date":"20201220",
                 "time":"11:30",
@@ -29,7 +29,6 @@
                 ]
             },
             {
-                "id":"vid00002",
                 "type":"next",
                 "date":"20210117",
                 "time":"11:40",
@@ -73,7 +72,6 @@
                 ]
             },
             {
-                "id":"vid00003",
                 "type":"after",
                 "date":"20210225",
                 "time":"11:50",
@@ -92,7 +90,7 @@
                     {
                         "name":"정수기",
                         "sku":"sku00006",
-                        "desc":"정기정검"
+                        "desc":"계약만료 예정"
                     },
                     {
                         "name":"공기청정기",

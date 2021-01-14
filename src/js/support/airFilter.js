@@ -126,7 +126,7 @@
                                 $this.find('#authNo').prop('disabled', false);
                             }
     
-                            lgkorUI.alert('', {
+                            lgkorUI.alert("", {
                                 title: result.data.resultMessage
                             });
                         })
@@ -154,7 +154,7 @@
                                 self.$authPopup.vcModal('hide');
                             }
 
-                            lgkorUI.alert('', {title: result.data.resultMessage});
+                            lgkorUI.alert("", {title: result.data.resultMessage});
                         });
                     }
                 });
