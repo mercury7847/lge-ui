@@ -16,44 +16,40 @@
                 'pageDesc': '예약하신 모든 상담/서비스 내역을 조회하실 수 있습니다.'
             })
             
-            <div class="contents support reservation-result">
+            <div class="contents support service-status-detail">
                 <div class="survey-banner-wrap">
                     <div class="banner">    
-                        <p class="tit">더 나은 서비스를 제공하기 위해 고객님의<br />소중한 의견을 받습니다.</p>
+                        <p class="tit">더 나은 서비스를 제공하기 위해 고객님의<br>소중한 의견을 받습니다.</p>
                         <button type="button" class="btn dark-gray size" data-href="#surveyPopup" data-control="modal"><span>설문 참여하기</span></button>
                     </div>
                 </div>
-                <div class="tit-wrap result-header-tit">
-                    <h2 class="tit">출장 서비스 예약</h2>
+
+                <div class="result-header">
+                    <h2 class="tit">전화 상담 예약</h2>
                 </div>
                 <div class="complete-summary">
                     <div class="box">
                         <div class="summary-img">
-                            <img src="/lg5-common/images/dummy/@img_manager2.jpg" alt="전문 엔지니어 사진">
+                            전화상담 icon
                         </div>
                         <div class="summary-info">
-                            <p class="info"><span>접수번호 HA230948WW</span><span>홍길동 엔지니어</span></p>
-                            <p class="status"><span>2020.07.01 13:30</span>에 <br>전문 엔지니어가 방문하여 고장 증상을 해결해드릴 예정입니다.</p>
+                            <p class="info"><span>접수번호 HA230948WW</span></p>
+                            <p class="status"><span>2020.07.01 13:30</span>에 상담원이 전화를 드려 상담해드릴 예정입니다.</p>
                         </div>
                     </div>
                 </div>
-                <div class="anchors-tabs-wrap ui_anchor_sticky">   
-                    <div class="result-header-btn">
-                        <div class="btn-group right">
-                            <a href="/html/CS/CSRF6072.html" target="_blank" class="btn border size-m"><span>제품/설치환경 사진등록</span></a>
-                            <button class="btn border size-m"><span>예상 비용 확인</span></button>
-                            <button type="button" data-href="#reservationTimePopup" data-control="modal" class="btn border size-m"><span>예약 일시 변경</span></button>
-                            <button type="button" data-href="#cancelServicePopup" data-control="modal" class="btn border size-m"><span>예약 취소</span></button>
-                        </div>
+                <div class="result-progress">
+                    <p class="desc">접수 &gt; 방문 예정 &gt; 완료 순으로 진행됩니다.</p>
+                    <div class="progress-box">
+                        <span class="progressing" style="width:calc(100% / 2 * 1)"></span>
+                        <ol class="progressbar">
+                            <li class="on"><span class="text">접수</span></li>
+                            <li class="on current"><span class="text">상담 예정</span><span class="blind">현재 단계</span></li>
+                            <li><span class="text">완료</span></li>
+                        </ol>
                     </div>
                 </div>
-                <div class="reception-progress-box">
-                    <ol class="reception-progress type-new step-3">
-                        <li><span class="text">접수</span></li>
-                        <li class="on"><span class="text">방문예정</span></li>
-                        <li><span class="text">완료</span></li>
-                    </ol>
-                </div>
+
                 <div class="cont-wrap">
                     <div class="section">
                         <div class="tit-wrap">
@@ -67,7 +63,7 @@
                             </li>
                             <li>
                                 <div class="title"><strong>접수 일시</strong></div>
-                                <div class="description">2020. 10. 01 10: 01</div>
+                                <div class="description">2020.10.01 10:01</div>
                             </li>
                             <li>
                                 <div class="title"><strong>접수 경로</strong></div>
@@ -79,25 +75,27 @@
                             </li>
                             <li>
                                 <div class="title"><strong>취소 일시</strong></div>
-                                <div class="description">2020. 10. 01 10: 01</div>
+                                <div class="description">2020.10.01 10:01</div>
                             </li>
                             <li>
                                 <div class="title"><strong>취소 사유</strong></div>
-                                <div class="description">직접 해결하여서</div>
+                                <div class="description">
+                                    <span class="line">직접 해결하여서</span>
+                                </div>
                             </li>
                             <li>
                                 <div class="title"><strong>서비스 예정 일시</strong></div>
-                                <div class="description">2020. 10. 01 10: 01</div>
+                                <div class="description">2020.10.01 10:01</div>
                             </li>
                             <li>
                                 <div class="title"><strong>제품</strong></div>
-                                <div class="description">세탁기/스타일러 &gt; 데스크톱.일체형 (모델명 : ABCD=123456)</div>
+                                <div class="description">세탁기/스타일러 &gt; 데스크톱/일체형 (모델명:ABCD=123456)</div>
                             </li>
                             <li>
                                 <div class="title"><strong>증상</strong></div>
                                 <div class="description">
                                     <span class="line">버튼/리모컨 &gt; 버튼 잠금 설정</span>
-                                    <button type="button" class="btn border size" data-href="#solutionsPopup" data-control="modal"><span>제품 문제해결 방법</span></button>
+                                    <button type="button" class="btn border size" data-href="#solutionsPopup"><span>제품 문제해결 방법</span></button>
                                 </div>
                             </li>
                             <li>
@@ -105,18 +103,32 @@
                                 <div class="description">1년~2년 이내</div>
                             </li>
                             <li>
-                                <div class="title"><strong>유형</strong></div>
-                                <div class="description">설치</div>
+                                <div class="title"><strong>방문 센터</strong></div>
+                                <div class="description">
+                                    <span class="line">동대문서비스센터</span>
+                                    <button type="button" class="btn border size"><span>센터 위치 및 정보</span></button>
+                                </div>
                             </li>
                             <li>
                                 <div class="title"><strong>엔지니어</strong></div>
                                 <div class="description">홍길동 / 동대문서비스센터</div>
                             </li>
                             <li>
+                                <div class="title"><strong>엔지니어</strong></div>
+                                <div class="description">
+                                    <div class="engineer-box">
+                                        <div class="image">
+                                            <img src="/lg5-common/images/dummy/@img_manager2.jpg" alt="엔지니어 사진">
+                                        </div>
+                                        <p class="txt">홍길동 / 동대문서비스센터</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
                                 <div class="title"><strong>서비스비용</strong></div>
                                 <div class="description">
-                                    <span class="line">1,252,000원
-                                        ※ 서비스 비용 외 별도 금액을 지불한 경우 엔지니어를 통해 받으신 영수증과는 상이할 수 있습니다.</span>
+                                    <span class="line">1,252,000원</span>
+                                    <span class="line">※ 서비스 비용 외 별도 금액을 지불한 경우 엔지니어를 통해 받으신 영수증과는 상이할 수 있습니다.</span>
                                 </div>
                             </li>
                             <li>
@@ -141,10 +153,6 @@
                                 <div class="title"><strong>휴대 전화</strong></div>
                                 <div class="description">010-****-1234</div>
                             </li>
-                            <li>
-                                <div class="title"><strong>주소</strong></div>
-                                <div class="description">(12345) 서울 강남구 도산대로 104*****************</div>
-                            </li>
                         </ul>
                         @@include('./common/modules/bullet-list.html', {
                             "topBorder" : true,
@@ -158,8 +166,10 @@
                     <div class="btn-group center">
                         <!-- 단건 조회 시 -->
                         <a href="#" class="btn">고객지원 메인</a>
-                        <!-- 복수건 조회 시 -->
-                        <!-- <button type="button" class="btn">목록</button> -->
+                        <!-- 다건 조회 시 -->
+                        <!-- <a href="#" class="btn">목록</a> -->
+                        <button type="button" data-href="#reservationTimePopup" class="btn border"><span>예약 일시 변경</span></button>
+                        <button type="button" data-href="#cancelServicePopup" data-control="modal" class="btn border"><span>예약 취소</span></button>
                     </div>
 
                 </div>
@@ -170,9 +180,7 @@
     </div>      
 
     <!-- 제품 해결 팝업 -->
-    @@include('./CS/modal/solutions-popup.html', {
-        'static': true
-    })
+    @@include('./CS/modal/solutions-popup.html')
 
     <!-- 예약결과 조회변경_예약취소 팝업 -->
     @@include('./CS/modal/cancel-service-popup.html')
@@ -182,6 +190,6 @@
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
-    <script src="/lg5-common/js/support/reservation/serviceInquiry.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/serviceStatus.min.js"></script>
 </body>
 </html> 

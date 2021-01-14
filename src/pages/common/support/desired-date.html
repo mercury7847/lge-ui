@@ -1,11 +1,13 @@
 <div class="calendar-area" data-time-url="/lg5-common/data-ajax/support/possibleTime.json">
+    @@if (!context.onlyCalendar) {
     <div class="calendar-info">
-        <p class="text">현재 가장 빠른 예약일인<br class="pc-only"><span class="date">2020.08.17  11:20</span> 로 선택 가능합니다.<br class="pc-only">희망하시는 예약일시를 선택해주세요.</p>
+        <p class="text">현재 가장 빠른 예약일인 <br><span class="date">2020.08.17 11:20</span> 로 선택 가능합니다. <br class="mo-only">희망하시는 예약일시를 선택해주세요.</p>
         <ul class="info">
             <li class="black"><span class="blind">검정색 표기</span> 예약가능</li>
             <li class="red"><span class="blind">빨간색 표기</span> 선택</li>
         </ul>
     </div>
+    }
     <div class="calendar-box">
         <div class="box-inner date">
             <div class="box-tit">
