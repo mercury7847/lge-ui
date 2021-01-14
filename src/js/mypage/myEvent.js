@@ -33,6 +33,7 @@
                 self.$list = self.$lnbContents.find('div.box-list');
                 self.$btnMore = self.$lnbContents.find('button.btn-moreview');
                 self.$noData = self.$lnbContents.find('div.no-data');
+                self.$evtBox = self.$lnbContents.find('div.lg-evt-box');
             },
 
             bindEvents: function() {
@@ -64,10 +65,13 @@
                         self.$btnMore.hide();
                     }
                     self.$noData.hide();
+                    self.$evtBox.hide();
                     self.$list.show();
                 } else {
                     self.$btnMore.hide();
+
                     self.$noData.show();
+                    self.$evtBox.show();
                     self.$list.hide();
                 }
             },
