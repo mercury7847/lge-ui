@@ -76,7 +76,7 @@
                                         <div class="forms">
                                             <div class="adress-input-box type-wrap">
                                                 <div class="select-wrap cell">
-                                                    <select class="ui_selectbox" id="select1" title="광역시/도 선택">
+                                                    <select class="ui_selectbox select1" id="select1" title="광역시/도 선택">
                                                         <option value="" class="placeholder">광역시/도</option>
                                                         <option value="서울">서울</option>
                                                         <option value="인천">인천</option>
@@ -98,14 +98,14 @@
                                                     </select>
                                                 </div>
                                                 <div class="select-wrap cell display-flex">
-                                                    <select class="ui_selectbox" id="select2" title="시/군/구 선택" disabled>
+                                                    <select class="ui_selectbox select2" id="select2" title="시/군/구 선택" disabled>
                                                         <option value="" class="placeholder">시/군/구</option>
                                                     </select>
                                                     <button type="button" class="btn search-local" disabled><span>검색</span></button>
                                                 </div>
                                                 <div class="cell btn-cell">
                                                     <button type="button" class="btn mo-only"><span>내 위치 검색</span></button>
-                                                    <button type="button" class="btn"><span>내 주소로 검색</span></button>
+                                                    <button type="button" class="btn search-userAdress"><span>내 주소로 검색</span></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -196,9 +196,9 @@
                                                         <div class="forms">
                                                             <div class="keyword-search type-B box">
                                                                 <div class="input-wrap">
-                                                                    <input type="text" name="keyword" id="" class="ui_input_clearbutton" placeholder="동(읍, 면)명 입력" title="동(읍, 면)명 입력" data-clear-button="button.btn-delete">
+                                                                    <input type="text" name="keyword" id="search_address" value="" class="ui_input_clearbutton" placeholder="동(읍, 면)명 입력" title="동(읍, 면)명 입력" data-clear-button="button.btn-delete">
                                                                     <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
-                                                                    <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                                                    <button type="button" class="btn-search search-address-btn"><span class="blind">검색</span></button>
                                                                 </div>
                                                                 <p class="err-msg"></p>
                                                             </div>
@@ -207,24 +207,41 @@
                                                 </div>
                                                 <div>
                                                     <div class="select-wrap">
-                                                        <select class="ui_selectbox" id="select3" title="시/도 선택" disabled>
-                                                            <option value="">시/도</option>
+                                                        <select class="ui_selectbox select1" id="select6" title="시/도 선택" disabled>
+                                                            <option value="">시/도 선택</option>
+                                                            <option value="서울">서울</option>
+                                                            <option value="인천">인천</option>
+                                                            <option value="부산">부산</option>
+                                                            <option value="대구">대구</option>
+                                                            <option value="대전">대전</option>
+                                                            <option value="광주">광주</option>
+                                                            <option value="울산">울산</option>
+                                                            <option value="제주">제주</option>
+                                                            <option value="경기">경기</option>
+                                                            <option value="세종">세종</option>
+                                                            <option value="경남">경남</option>
+                                                            <option value="경북">경북</option>
+                                                            <option value="충남">충남</option>
+                                                            <option value="충북">충북</option>
+                                                            <option value="전남">전남</option>
+                                                            <option value="전북">전북</option>
+                                                            <option value="강원">강원</option>
                                                         </select>
                                                     </div>
                                                     <div class="select-wrap">
-                                                        <select class="ui_selectbox" id="select4" title="시/군/구 선택" disabled>
+                                                        <select class="ui_selectbox select2" id="select7" title="시/군/구 선택" disabled>
                                                             <option value="">시/군/구 선택</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="box">    
                                                     <div class="select-wrap">
-                                                        <select class="ui_selectbox" id="select5" title="동(읍, 면)명 선택" disabled>
+                                                        <select class="ui_selectbox select8" id="select8" title="동(읍, 면)명 선택" disabled>
                                                             <option value="">동(읍, 면)명 선택</option>
                                                         </select>
                                                     </div>
                                                     <div class="cell">
-                                                        <button type="button" class="btn pink search-subway" disabled><span>검색</span></button>
+                                                        <button type="button" class="btn pink search-address-btn2" disabled><span>검색</span></button>
                                                     </div>
                                                 </div> 
                                             </div>       
