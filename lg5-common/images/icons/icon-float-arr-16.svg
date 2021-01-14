@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-113.000000, -69.000000)">
+            <g id="ic_Arrow_M_Right_16" transform="translate(113.000000, 69.000000)">
+                <rect id="영역" x="0" y="0" width="16" height="16"></rect>
+                <polyline id="Arrow" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" transform="translate(8.142857, 8.000000) scale(-1, -1) rotate(-180.000000) translate(-8.142857, -8.000000) " points="6 3 10.2857143 8 6 13"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

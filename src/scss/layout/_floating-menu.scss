@@ -1,3 +1,95 @@
+.floating-wrap {
+    position:fixed;
+    right:100px;
+    bottom:112px;
+    @include mobile {
+        right:20px;
+        bottom:56px;
+    }
+    .floating-menu {
+        position:static;
+        right:0;
+        bottom:0;
+        margin-top:16px;
+        @include mobile {
+            margin-top:12px;
+        }
+        > div {
+            width:56px;
+            height:56px;
+            border-radius:50%;
+            box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.15);
+            text-align:center;
+            > a {
+                display:block;
+                width:100%;
+                height:100%;
+            }
+        }
+        .cs-cst-linker {
+            background:url('/lg5-common/images/icons/icon-cs-cst-linker.svg') no-repeat center center;
+        }
+        .back-to-top {
+            background:url('/lg5-common/images/icons/icon-top-new.svg') no-repeat center center;
+        }
+        .easy-path {
+            position:relative;
+            box-shadow:none;
+            .inner {
+                position:absolute;
+                top:0;
+                right:0;
+                a {
+                    display:block;
+                    width:56px;
+                    height:56px;
+                    padding:15px 24px;
+                    background-image: linear-gradient(135deg, #9c72e7 28%, #f85784 89%);
+                    border-radius:28px;
+                    box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.15);
+                    transition:width .5s;
+                    overflow:hidden;
+                    @include mobile {
+                        padding:17px 24px;
+                    }
+                    &:hover,
+                    &:active {
+                        width:343px;
+                        @include mobile {
+                            width:309px;
+                        }
+                        p {
+                            display:block;
+                        }
+                    }
+                    p {
+                        display:none;
+                        position:relative;
+                        color:#fff;
+                        font-size:16px;
+                        line-height:26px;
+                        white-space:nowrap;
+                        @include mobile {
+                            font-size:14px;
+                            line-height:22px;
+                        }
+                        &:after {
+                            content:' ';
+                            display:inline-block;
+                            width:16px;
+                            height:16px;
+                            margin-left:6px;
+                            background:url('/lg5-common/images/icons/icon-float-arr-16.svg') no-repeat 0 0;
+                            vertical-align:-2px;
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
 .btn-type2 {
     .btn-inner {
         display:none;
@@ -177,6 +269,7 @@
             height:100%;
             img {
                 width:100%;
+                transform:scale(.8);
             }
         }
     }
