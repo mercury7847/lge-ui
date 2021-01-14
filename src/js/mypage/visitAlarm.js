@@ -190,6 +190,9 @@
                 self.$popupChangeVisitDate.on('click', 'footer.pop-footer button:not(.ui_modal_close)', function(e){
                     e.preventDefault();
                     var param = self.getSelectedVisitDayData();
+                    param.visitQna = self.$myVisitQna.is(':visible') ? self.$myVisitQna.find('div.cont').html() : null;
+                    param.irregularCheckout = self.$irregularCheckout.is(':visible') ? self.$irregularCheckout.find('div.cont').html() : null;
+                    
                     if(param.date && param.time) {
                         self.requestChangeVisitDay(param);
                     }
