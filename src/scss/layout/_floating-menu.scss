@@ -1,10 +1,10 @@
 .floating-wrap {
     position:fixed;
     right:100px;
-    bottom:112px;
+    bottom:48px;
     @include mobile {
         right:20px;
-        bottom:56px;
+        bottom:24px;
     }
     .floating-menu {
         position:static;
@@ -275,7 +275,8 @@
     }
 }
 .lately-popup {
-    right:36px;
+    top:-644px;
+    right:0;
     z-index:101;
     width:368px;
     min-height:720px;
@@ -285,6 +286,7 @@
     }
     @include mobile {
         position:fixed;
+        top:auto;
         right:-80%;
         left:auto !important;
         z-index:101;
