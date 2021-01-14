@@ -64,12 +64,12 @@
                     self.openDetailPopup(_id);
                 });
 
-                self.$pagination.on('page_click', function(e) {
+                self.$pagination.on('page_click', function(e, data) {
                     var $a = self.$mySort.find('li.on a');
                     var category = $a.attr('href').replace("#","");
                     self.requestData({
                         "category":category,
-                        "page": e.page
+                        "page": data
                     });
                 });
             },
@@ -77,7 +77,7 @@
             requestData: function(param) {
                 var self = this;
                 var ajaxUrl = self.$lnbContents.attr('data-list-url');
-                lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
+                lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                     var data = result.data;
                     var param = result.param;
                     self.$pagination.vcPagination('setPageInfo',param.pagination);
