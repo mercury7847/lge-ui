@@ -14,7 +14,7 @@
                 '</ul>' +
             '</a>' +
         '</li>';
-
+    
     var searchPage = {
         init: function() {
             var self = this;
@@ -97,7 +97,7 @@
                 self.authManager.send(this);
             });
         }
-    }
+    };
 
     var listPage = {
         init: function() {
@@ -158,10 +158,217 @@
                 self.requestData(param);
             });
         }
-    }
+    };
+
+    var detailPage = {
+        init: function() {
+            var self = this;
+
+            vcui.require(['ui/validation'], function () {
+                self.changeSetting();
+                self.cancelSetting();
+                self.authSetting();
+                self.solutionsSetting();
+                self.bindEvent();
+            });
+        },
+        solutionsSetting: function() {
+            var self = this;
+
+            self.$solutionsOpenBtn = $('[data-href="#solutionsPopup"]');
+            self.$solutionsPopup = $('#solutionsPopup');
+        },
+        authSetting: function() {
+            var self = this;
+            var authRegister = {
+                    authNo: {
+                        msgTarget: '.err-block'
+                    }
+                },
+                managerOpt = {
+                    elem: {
+                        form: '#reservationTimePopup',
+                        name: '#authName',
+                        phone: '#authPhoneNo',
+                        number: '#authNo'
+                    },
+                    register: authRegister
+                }
+            
+            
+            self.authManager = new AuthManager(managerOpt);
+            self.$sendBtn = self.$datePopup.find('.btn-send');
+        },
+        changeSetting: function() {
+            var self = this;
+            
+            self.$dateOpenBtn = $('[data-href="#reservationTimePopup"]');
+            self.$datePopup = $('#reservationTimePopup');
+            self.$date = self.$datePopup.find('.date-wrap');
+            self.$time = self.$datePopup.find('.time-wrap');
+
+            self.$date.calendar();
+            self.$time.timeCalendar();
+        },
+        cancelSetting: function() {
+            var self = this;
+            var register = {
+                    reason: {
+                        msgTarget: '.err-block'
+                    },
+                    reasonEtc: {
+                        msgTarget: '.err-msg'
+                    }
+                };
+
+            self.$cancelPopup = $('#cancelServicePopup');
+            self.cancelValidation = new vcui.ui.CsValidation('#cancelServicePopup', {register:register});
+        },
+        requestDate: function() {
+            var self = this;
+            var url = self.$datePopup.data('dateUrl'),
+                param;
+
+            param = {
+                
+            };
+            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                var data = result.data,
+                    arr;
+
+                if (data.resultFlag == 'Y') {
+                    arr = data.dateList instanceof Array ? data.dateList : [];
+                    if (arr.length) {
+                        self.$date.calendar('update', arr);
+                        self.$datePopup.vcModal();
+                    }
+                } else {
+                    if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});
+                }
+            });
+        },
+        requestTime: function() {
+            var self = this;
+            var url = self.$datePopup.data('timeUrl'),
+                param;
+
+            param = {
+                
+            };
+            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                var data = result.data;
+
+                if (data.resultFlag == 'Y') {
+                    arr = data.timeList instanceof Array ? data.timeList : [];
+                    if (arr.length) {
+                        self.$time.timeCalendar('update', arr);
+                    }
+                } else {
+                    if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});
+                }
+            });
+        },
+        completeAuth: function(success, result) {
+            var self = this;
+
+            if (success) {
+
+            } else {
+
+            }
+        },
+        requestSolutions: function(data, isShown) {
+            var self = this;
+            var url = self.$solutionsPopup.data('listUrl'),
+                param = {};
+
+            param = $.extend(param, data);
+            lgkorUI.requestAjaxData(url, param, function(result) {
+                self.$solutionsPopup.find('.pop-conts').html(result);
+                self.$solutionsPopup.find('.pagination').pagination();
+                self.$solutionsPopup.find('.ui_accordion').vcAccordion();
+                self.$solutionsPopup.find('.pagination').on('pageClick', function(e) {
+                    self.requestSolutions({page:e.page}, true);
+                });
+
+                if (!isShown) self.$solutionsPopup.vcModal();
+            }, null, "html");
+        },
+        bindEvent: function() {
+            var self = this;
+
+            // 제품 문제 해결
+            self.$solutionsOpenBtn.on('click', function() {
+                self.requestSolutions({page:1}, false);
+            });
+            
+            // 예약 변경
+            self.$dateOpenBtn.on('click', function() {
+                self.requestDate();
+            });
+            self.$date.on('dateselected', function() {
+                self.requestTime();
+            }); 
+            self.$datePopup.on('modalhide', function() {
+                self.$date.calendar('reset');
+                self.$time.timeCalendar('reset');
+            }).on('click', '.btn-group .btn:last-child', function() {
+                self.authManager.confirm(this, function(success, result) {
+                    self.completeAuth(success, result);
+                });
+            });
+            self.$sendBtn.on('click', function() {
+                self.authManager.send();
+            });
+
+            // 예약 취소
+            self.$cancelPopup.on('modalhide', function() {
+                var $reason = $('#reason'),
+                    $reasonEtc = $('#reasonEtc');
+
+                $reason.find('options.placeholder').prop('selected', true);
+                $reason.vcSelectbox('update');
+                $reasonEtc.val('');
+                self.cancelValidation.reset();
+            }).on('change', '#reason', function() {
+                var $reason = $(this),
+                    $reasonEtc = $('#reasonEtc'),
+                    reansonValue = $reason.val();
+
+                reansonValue && $reasonEtc.prop('disabled', false);
+            }).on('click', '.btn-group .btn:first-child', function() {
+                lgkorUI.confirm('예약 취소가 완료되지 않았습니다.<br />중단하시겠습니까?', {
+                    title:'', okBtnName:'확인', cancelBtnName:'취소',
+                    ok: function() {
+                        self.$cancelPopup.vcModal('hide');
+                    }
+                });
+            }).on('click', '.btn-group .btn:last-child', function() {
+                var url = self.$cancelPopup.data('cancelUrl');
+                var result = self.cancelValidation.validate(),
+                    param;
+
+                if (result.success) {
+                    param = self.cancelValidation.getAllValues();
+                    lgkorUI.showLoading();
+                    lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                        var data = result.data;
+
+                        if (data.resultFlag == 'Y') {
+                            location.href = url;
+                        } else {
+                            lgkorUI.hideLoading();
+                            if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});
+                        }
+                    });
+                }
+            });
+        }
+    };
 
     $(window).ready(function() {
-        if ($('.service-status-list').length) listPage.init();
         if ($('.service-status').length) searchPage.init();
+        if ($('.service-status-list').length) listPage.init();
+        if ($('.service-status-detail').length) detailPage.init();
     });
 })();

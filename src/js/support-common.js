@@ -1106,7 +1106,8 @@ CS.MD.timeCalendar = function() {
                 self.activeTime = time;
                 $this.addClass('choice');
                 $this.siblings('th').addClass('choice');
-                self.$input.val(time);
+
+                if (self.options.inputTarget) self.$input.val(time);
 
                 self.$el.trigger('timeselected');
             });
@@ -1586,16 +1587,16 @@ var AuthManager = function() {
                 elem = self.options.elem,
                 target = self.options.target,
                 result = self.validation.validate(),
-                url, data;
+                url, data, success = false;
 
             if (result.success == true) {
+                url = self.authUrl;
+                data = self.validation.getValues([self.nameName, self.phoneName, self.numberName]);
+
                 if ($(elem.number).prop('disabled')) {
                     lgkorUI.alert("", {title: '인증번호 발송 버튼을 선택해 주세요.'});
                     return false;
                 }
-
-                url = self.authUrl;
-                data = self.validation.getValues([self.nameName, self.phoneName, self.numberName]);
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, data, function(result) {
@@ -1612,11 +1613,13 @@ var AuthManager = function() {
                                 $button.find('span').html(COMPLETETEXT);
                             
                                 $(elem.popup).vcModal('hide');
-                            } else {
-                                callback && callback();
                             }
+
+                            success = true;
                         } else {
                             lgkorUI.alert("", {title: result.data.resultMessage});
+
+                            success = false;
                         }
                     } else {
                         if (result.data.resultFlag == 'Y') {
@@ -1625,10 +1628,12 @@ var AuthManager = function() {
                             lgkorUI.alert("", {
                                 title: result.data.resultMessage
                             });
-
-                            lgkorUI.hideLoading();
+                            
+                            success = false;
                         }
                     }
+
+                    callback && callback(success, result);
                 });
             }
         }

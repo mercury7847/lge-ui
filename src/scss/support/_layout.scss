@@ -3,7 +3,7 @@
 .container {
     .cont-wrap {
         &:not(:first-child), &:not(:only-child) {
-            padding-top:40px;
+            padding-top:80px;
         }
     }
     .step-box {
