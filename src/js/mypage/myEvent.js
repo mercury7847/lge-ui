@@ -19,15 +19,20 @@
         var myEvent = {
             init: function() {
                 var self = this;
+                
+                self.setting();
+                self.bindEvents();
+                self.checkNoData();
+                self.requestMoreData(1);
+            },
+
+            setting: function() {
+                var self = this;
                 self.$contWrap = $('div.cont-wrap');
                 self.$lnbContents = self.$contWrap.find('div.lnb-contents');
                 self.$list = self.$lnbContents.find('div.box-list');
                 self.$btnMore = self.$lnbContents.find('button.btn-moreview');
                 self.$noData = self.$lnbContents.find('div.no-data');
-
-                self.bindEvents();
-                self.checkNoData();
-                self.requestMoreData(1);
             },
 
             bindEvents: function() {
