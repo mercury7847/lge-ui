@@ -8,6 +8,8 @@
             "20210119", "20210120", "20210123",
             "20210203", "20210204"
         ],
+        "fastDate": "20210119",
+        "fastTime": "1120",
         "tAlert": "N"
     },
     "param": {
@@ -20,6 +22,7 @@
         "refineRoadNo": "",
         "refineRoadDetail": "",
         "refineRoadEtc": "",
-        "zipId": ""
+        "zipId": "",
+        "custNo": "1232151"
     }
 }
