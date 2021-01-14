@@ -438,6 +438,8 @@
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
+                    $('#acptNo').val(data.acptNo);
+
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {
