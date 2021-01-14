@@ -432,8 +432,7 @@
             var url = self.$submitForm.data('ajax');
             var formData = validation.getAllValues();
 
-            formData['custNo'] = self.dateParam.custNo;
-            formData['resrvSeq'] = self.dateParam.resrvSeq;
+            formData = $.extend(formData, self.dateParam);
 
             lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                 var data = result.data;
