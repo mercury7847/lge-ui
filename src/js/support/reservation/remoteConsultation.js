@@ -188,7 +188,7 @@
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {
-                        lgkorUI.alert('', {
+                        lgkorUI.alert("", {
                             title: data.resultMessage
                         });
                     }

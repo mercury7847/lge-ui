@@ -51,7 +51,7 @@
                         if (result.data.resultFlag == 'Y') {
                             $('#numberForm').attr('action', result.data.url).submit();
                         } else if (result.data.resultFlag == 'N') {
-                            lgkorUI.alert('', {
+                            lgkorUI.alert("", {
                                 title: result.data.resultMessage
                             });
                         }
@@ -77,7 +77,7 @@
                         if (result.data.resultFlag == 'Y') {
                             $('#phoneForm').submit();
                         } else if (result.data.resultFlag == 'N') {
-                            lgkorUI.alert('', {
+                            lgkorUI.alert("", {
                                 title: result.data.resultMessage
                             });
                         }
@@ -101,7 +101,7 @@
                             $('#authNo').prop('disabled', false);
                         }
 
-                        lgkorUI.alert('', {
+                        lgkorUI.alert("", {
                             title: result.data.resultMessage
                         });
                     });

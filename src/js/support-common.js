@@ -1492,7 +1492,7 @@ CS.MD.survey = function(addData) {
                         $('#surveyPopup').vcModal('hide');
                     }
 
-                    lgkorUI.alert('', {
+                    lgkorUI.alert("", {
                         title: result.data.resultMessage
                     });
                 })
@@ -1563,7 +1563,7 @@ var AuthManager = function() {
                         $(elem.number).prop('disabled', false);
                     }
 
-                    lgkorUI.alert('', {
+                    lgkorUI.alert("", {
                         title: resultData.resultMessage
                     });
                 });
@@ -1585,7 +1585,7 @@ var AuthManager = function() {
 
             if (result.success == true) {
                 if ($(elem.number).prop('disabled')) {
-                    lgkorUI.alert('', {title: '인증번호 발송 버튼을 선택해 주세요.'});
+                    lgkorUI.alert("", {title: '인증번호 발송 버튼을 선택해 주세요.'});
                     return false;
                 }
 
@@ -1611,13 +1611,13 @@ var AuthManager = function() {
                                 callback && callback();
                             }
                         } else {
-                            lgkorUI.alert('', {title: result.data.resultMessage});
+                            lgkorUI.alert("", {title: result.data.resultMessage});
                         }
                     } else {
                         if (result.data.resultFlag == 'Y') {
                             $(elem.form).submit();
                         } else if (result.data.resultFlag == 'N') {
-                            lgkorUI.alert('', {
+                            lgkorUI.alert("", {
                                 title: result.data.resultMessage
                             });
 
