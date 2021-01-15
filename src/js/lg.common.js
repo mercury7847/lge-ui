@@ -934,7 +934,7 @@
                 
                 if(dtype == 'json' && result.status != 'success'){
                     //alert(result.message ? result.message : '오류발생');
-                    console.log('result fail',url,result);
+                    console.log('resultStatusFail',url,result);
                     return;
                 }
 
@@ -942,8 +942,9 @@
                     if(callback && typeof callback === 'function') callback(result); 
                 } else {
                     var data = result.data;
-                    if(data && (!self.stringToBool(data.success) && data.alert)) {
+                    if(!self.stringToBool(data.success, true) && data.alert) {
                         //에러
+                        console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
@@ -951,7 +952,7 @@
                 }                
             }).fail(function(err){
                 //alert(url, err.message);
-                console.log('ajaxError',url,err);
+                console.log('ajaxFail',url,err);
             });
         },
 
@@ -984,7 +985,8 @@
                 }
                 
                 if(dtype == 'json' && result.status != 'success'){
-                    alert(result.message ? result.message : '오류발생');
+                    //alert(result.message ? result.message : '오류발생');
+                    console.log('resultStatusFail',url,result);
                     return;
                 }
 
@@ -992,15 +994,17 @@
                     if(callback && typeof callback === 'function') callback(result); 
                 } else {
                     var data = result.data;
-                    if(data && (!self.stringToBool(data.success) && data.alert)) {
+                    if(!self.stringToBool(data.success, true) && data.alert) {
                         //에러
+                        console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
                     } 
-                }  
+                }   
             }).fail(function(err){
-                alert(url, err.message);
+                //alert(url, err.message);
+                console.log('ajaxFail',url,err);
             });
         },
 
@@ -1020,7 +1024,7 @@
                 if(lgkorUI.stringToBool(data.success)) {
                     $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
                 }
-            });
+            }, true);
         },
 
         requestWish: function(id, sku, wishListId, wishItemId, wish, callbackSuccess, callbackFail, postUrl) {
@@ -1048,10 +1052,11 @@
                     //$dm.find('span.chk-wish-wrap input').prop("checked",!wish);
                     callbackFail(data);
                 }
-            });
+            }, true);
         },
 
         commonAlertHandler: function(alert){
+            console.log(alert);
             if(alert.isConfirm) {
                 //컨펌
                 var obj ={title: alert.title,
@@ -1091,9 +1096,9 @@
             return typeof value === 'string' || value instanceof String;
         },
 
-        stringToBool: function(str) {
+        stringToBool: function(str, returnNull) {
             if(!str) {
-                return false;
+                return !(!returnNull);
             }
             if(typeof str === 'boolean') {
                 return str;
