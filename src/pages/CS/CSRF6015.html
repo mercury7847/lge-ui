@@ -16,10 +16,10 @@
                 'progressArr': [
                     { 'progress' : '문의유형 선택'},
                     { 'progress' : '문의내용 입력'},
-                    { 'progress' : '문의완료'}
+                    { 'progress' : '문의 완료'}
                 ]
             })
-            <div class="contents support email-inquiry">
+            <div class="contents support service-status-detail">
                 <div class="complete-summary">
                     <div class="box">
                         <div class="summary-img">
@@ -32,27 +32,19 @@
                     </div>
                 </div>
 
-                <div class="reception-progress-box">
-                    <p class="description">접수 &gt; 답변 중 &gt; 답변 완료 순으로 진행됩니다.</p>
-                    <ol class="reception-progress type-new step-3">
-                        <li><span class="text">접수</span></li>
-                        <li class="on"><span class="text">답변 중</span></li>
-                        <li><span class="text">답변 완료</span></li>
-                    </ol>
+                <div class="result-progress">
+                    <p class="desc">접수 &gt; 답변 중 &gt; 답변 완료 순으로 진행됩니다.</p>
+                    <div class="progress-box">
+                        <span class="progressing" style="width:calc(100% / 2 * 1)"></span>
+                        <ol class="progressbar">
+                            <li class="on"><span class="text">접수</span></li>
+                            <li class="on current"><span class="text">답변 중</span><span class="blind">현재 단계</span></li>
+                            <li><span class="text">답변 완료</span></li>
+                        </ol>
+                    </div>
                 </div>
 
                 <div class="cont-wrap">
-                    <!-- 진행 단계에 따라 data-step의 값 변화 : 범위 1 ~ 8 -->
-                    <!-- <ol class="reception-progress type-2 step-8" data-step="4">
-                        <li><span class="text">접수</span></li>
-                        <li><span class="text">처리중</span></li>
-                        <li><span class="text">처리중</span></li>
-                        <li><span class="text">처리중</span></li>
-                        <li><span class="text">확인중</span></li>
-                        <li><span class="text">답변중</span></li>
-                        <li><span class="text">답변중</span></li>
-                        <li><span class="text">답변완료</span></li>
-                    </ol> -->
 
                     <div class="section">
                         <div class="tit-wrap">
@@ -61,31 +53,33 @@
                         
                         <ul class="inquiry-list">
                             <li>
-                                <div class="title"><strong>접수번호</strong></div>
+                                <div class="title"><strong>접수 번호</strong></div>
                                 <div class="description">S20006828124</div>
                             </li>
                             <li>
-                                <div class="title"><strong>접수일시</strong></div>
+                                <div class="title"><strong>접수 일시</strong></div>
                                 <div class="description">2020.07.01 17:30</div>
                             </li>
                             <li>
-                                <div class="title"><strong>진행상태</strong></div>
+                                <div class="title"><strong>진행 상태</strong></div>
                                 <div class="description"><span class="point">처리 대기</span></div>
                             </li>
                             <li>
-                                <div class="title"><strong>선택항목</strong></div>
+                                <div class="title"><strong>선택 항목</strong></div>
                                 <div class="description">
                                     <span class="line">에어컨 &gt; 가정용 스탠드형 ( 모델명 : FQ20PADRQN)</span>
                                     <a href="#" class="btn border size">보유제품 추가</a>
                                 </div>
                             </li>
                             <li>
-                                <div class="title"><strong>문의유형</strong></div>
+                                <div class="title"><strong>문의 유형</strong></div>
                                 <div class="description">제품 관련</div>
                             </li>
                             <li>
                                 <div class="title"><strong>제목</strong></div>
-                                <div class="description">벨벳 컬러 문의</div>
+                                <div class="description">
+                                    <span class="line">벨벳 컬러 문의</span>
+                                </div>
                             </li>
                             <li>
                                 <div class="title"><strong>내용</strong></div>
@@ -97,7 +91,13 @@
                             </li>
                             <li>
                                 <div class="title"><strong>첨부 파일</strong></div>
-                                <div class="description">벨벳컬러문의.jpg</div>
+                                <div class="description">
+                                    <ul class="file-list">
+                                        <li>
+                                            <a href="#">벨벳컬러문의.jpg</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                         </ul>
                     </div>
