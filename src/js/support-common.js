@@ -188,6 +188,9 @@ CS.MD.commonModel = function() {
             });
 
             self.caseType = 'product';
+            self.param = {
+                pageCode: $('#pageCode').val()
+            }
 
             lgkorUI.searchModelName();
         },
