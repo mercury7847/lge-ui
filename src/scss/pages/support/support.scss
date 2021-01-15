@@ -413,6 +413,34 @@
         }
         .box-info {
             margin-top: 16px;
+            li {
+                &:before {
+                    content:'';
+                    display:inline-block;
+                    width:12px;
+                    height:12px;
+                    border-radius:50%;
+                    vertical-align:middle;
+                }
+                &.gray:before {
+                    background-color: #ccc;
+                }
+                &.green:before {
+                    background-color: #51b1ac;
+                }
+                &.red:before {
+                    background-color: #e51346;
+                }
+                &.black:before {
+                    background-color: #222;
+                }
+                &.skyblue:before {
+                    background:#21a9aa;
+                }
+                &.olive:before {
+                    background:#76892d;
+                }
+            }
             .status {
                 font-size: 14px;
                 font-weight: 500;
@@ -646,6 +674,30 @@
 
     .err-msg {
         display: none;
+    }
+
+    .store-info-wrap {
+        .cont-wrap {
+            .detail-info-wrap {
+                .right-box {
+                    .info-list {
+                        dl {
+                            dd {
+                                .item {
+                                    li {
+                                        .key {
+                                            .sp {
+                                                margin-left: 1em;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 } //support
 
