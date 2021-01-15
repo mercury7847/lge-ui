@@ -210,6 +210,9 @@
                             @include bodycopy(h3, h3);
                         }
                     }
+                    &.no-icon {
+                        padding-left:0;
+                    }
                 }
             }
             &.box-align-left {
