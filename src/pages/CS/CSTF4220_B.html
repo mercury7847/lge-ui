@@ -40,12 +40,17 @@
                     </div>
                 </div>
                 <div class="result-progress">
-                    <p class="desc">접수 &gt; 방문 예정 &gt; 완료 순으로 진행됩니다.</p>
+                    <p class="desc">접수 &gt; 방문 예정 &gt; 회수 예정 &gt; 회수 중 &gt; 공장 입고 &gt; 수리 중 &gt; 배송 중 &gt; 완료 순으로 진행됩니다.</p>
                     <div class="progress-box">
-                        <span class="progressing" style="width:calc(100% / 2 * 1)"></span>
+                        <span class="progressing" style="width:calc(100% / 7 * 4)"></span>
                         <ol class="progressbar">
                             <li class="on"><span class="text">접수</span></li>
-                            <li class="on current"><span class="text">상담 예정</span><span class="blind">현재 단계</span></li>
+                            <li class="on"><span class="text">방문 예정</span></li>
+                            <li class="on"><span class="text">회수 예정</span></li>
+                            <li class="on"><span class="text">회수 중</span></li>
+                            <li class="on current"><span class="text">공장 입고</span><span class="blind">현재 단계</span></li>
+                            <li><span class="text">수리 중</span></li>
+                            <li><span class="text">배송 중</span></li>
                             <li><span class="text">완료</span></li>
                         </ol>
                     </div>
@@ -191,8 +196,6 @@
                         <a href="#" class="btn">고객지원 메인</a>
                         <!-- 복수건 조회 시 -->
                         <!-- <button type="button" class="btn">목록</button> -->
-                        <button type="button" data-href="#reservationTimePopup" class="btn border"><span>예약 일시 변경</span></button>
-                        <button type="button" data-href="#cancelServicePopup" data-control="modal" class="btn border"><span>예약 취소</span></button>
                     </div>
 
                 </div>
