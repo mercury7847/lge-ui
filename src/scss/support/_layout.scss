@@ -7,7 +7,7 @@
         }
     }
     .step-box {
-        // display:none;
+        display:none;
         &.active {
             display:block;
             & + .step-box.active {
