@@ -135,7 +135,8 @@ gulp.task("scripts", () => {
                     "jsCompile:search",
                     "jsCompile:caresolution",
                     "jsCompile:store",
-                    "jsCompile:membership"
+                    "jsCompile:membership",
+                    "jsCompile:home"
     ]);
 });
 gulp.task("jsCompile", () => gulp
@@ -251,6 +252,14 @@ gulp.task("jsCompile:membership", () => gulp
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/membership/"))
 );
+gulp.task("jsCompile:home", () => gulp
+    .src(src + "/js/home/**/*")
+    .pipe(sourcemaps.init())
+    .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/home/"))
+);
 
 // fonts, images
 gulp.task("static", () => {
@@ -323,6 +332,7 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/js/caresolution/**", ["jsCompile:caresolution"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/store/**", ["jsCompile:store"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/membership/**", ["jsCompile:membership"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/home/**", ["jsCompile:home"]).on('change', browserSync.reload);
 
     //static
     gulp.watch("./lg5-common/data-ajax/**", ["static:data-ajax"]).on('change', browserSync.reload);

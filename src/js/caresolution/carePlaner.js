@@ -240,9 +240,9 @@
                     '<dt>최종 이용 요금</dt>'+
                     '<dd>{{usedPrice}}</dd>'+
                 '</dl>'+
-                '<button type="button" class="btn block" onClick="location.href={{requestUrl}}">'+
+                '<a href="{{requestUrl}}" class="btn block"}}">'+
                     '<span>청약 신청하기</span>'+
-                '</button>'+
+                '</a>'+
             '</div>';
             
 
