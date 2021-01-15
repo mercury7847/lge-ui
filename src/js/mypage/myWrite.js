@@ -95,11 +95,9 @@
             checkNoData: function() {
                 var self = this;
                 if(self.$myLists.find('li').length > 0) {
-                    self.$mySort.show();
                     self.$sectionInner.show();
                     self.$noData.hide();
                 } else {
-                    self.$mySort.hide();
                     self.$sectionInner.hide();
                     self.$noData.show();
                 }

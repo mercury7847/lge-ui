@@ -23,7 +23,8 @@
                     var sku = $item.attr('data-sku');
                     var ajaxUrl = $item.attr('data-response-url');
                     //test
-                    ajaxUrl = "http://mktsvc.lgekrdev.lge.co.kr/kr/mkt" + "/api/responsible/retrieveResponseUI";
+                    //ajaxUrl = "/lg5-common/data-ajax/KRP0006/responseData.json";
+                    //ajaxUrl = "http://mktsvc.lgekrdev.lge.co.kr/kr/mkt" + "/api/responsible/retrieveResponseUI";
 
                     //모델아이디가 있으면 쿠키저장
                     if(!(!modelID)) {
@@ -69,18 +70,20 @@
                             //PDP페이지를 5번 이상 방문 시(최근 본 제품이 5개 이상일때)
                             var cookieValue = lgkorUI.getCookie(myRecentProductCookieName);
                             var array = cookieValue.split(',');
-                            if(array.length > 4) {
+                            var count = $item.attr('data-top-cookie-count');
+                            var checkCookieCount = !count ? 5 : count; 
+                            if(array.length >= checkCookieCount) {
                                 self.reloadComponent($item, data.productCurationProposal);
                             }
                         }
-                    } else if(type == "bottom") {
+                    } else if(_type == "bottom") {
                         //하단영역
                         var check = lgkorUI.stringToBool(data.categoryBestProduct.success);
                         if(data.storeConsultation) {
                             //제품 비교하기 페이지에서 제품 페이지 진입 시
                             var referrer = document.referrer;
-                            var compareUrl = "/lgekor/bestshop/counsel/counselMain.do"
-                            if(referrer && (referrer.indexOf(compareUrl) != -1)) {
+                            var compareUrl = $item.attr('data-bottom-compare-url');
+                            if(!(!compareUrl) && referrer && (referrer.indexOf(compareUrl) != -1)) {
                                 self.reloadComponent($item, data.storeConsultation);
                             } else if(check) {
                                 self.reloadComponent($item, data.categoryBestProduct);
