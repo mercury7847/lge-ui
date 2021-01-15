@@ -82,9 +82,9 @@
             <div class="visual-area ui_carousel_slider">
                 <div class="slide-content ui_carousel_list">
                     <ul class="slide-track ui_carousel_track">
-                        @@for ( var j=0; j < images; j++ ) {
+                        @@for ( var j=0; j < images.length; j++ ) {
                         <li class="slide-conts ui_carousel_slide">
-                            <div class="images">
+                            <div class="images `+images[j].color+`">
                                 <!-- [KR수정_201231] 이미지 호출 방식 '이미지' 태그로 변경 -->
                                 <img src="/lg5-common/images/KRC0038/@bg`+[j+1]+`.jpg" data-pc-src="/lg5-common/images/KRC0038/@bg`+[j+1]+`.jpg" data-m-src="/lg5-common/images/KRC0038/@bg-m`+[j+1]+`.jpg" alt="">
                                 <!-- // [KR수정_201231] 이미지 호출 방식 '이미지' 태그로 변경 -->
@@ -103,7 +103,7 @@
                 <div class="title-inner @@boxVertical @@boxSize @@boxAlign">
                     <!-- [KR수정_210106] .box, .box > .box-inner 로 감싸기 -->
                     <div class="box">
-                        <div class="box-inner">
+                        <div class="box-inner pc-titles"><!-- [KR수정_210115] .pc-titles 추가 -->
                             <div class="title">
                                 <h2>헤드라인 텍스트 글자 수 최대 40자까지 사용 가능</h2>
                             </div>
