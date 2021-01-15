@@ -125,7 +125,7 @@ CS.MD.commonModel = function() {
             self.totalCount = options.totalCount;
             self.inquiryType = options.inquiryType;
             self.param = options.param;
-            self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : false;
+            self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : 'N';
 
             // 스텝 영역
             self.$stepBox = self.$el.find('.step-box');
@@ -188,6 +188,9 @@ CS.MD.commonModel = function() {
             });
 
             self.caseType = 'product';
+            self.param = {
+                pageCode: $('#pageCode').val()
+            }
 
             lgkorUI.searchModelName();
         },
@@ -202,7 +205,7 @@ CS.MD.commonModel = function() {
 
             self.$el.find('[type=hidden]').not('[name=serviceType], [name=lockUserId]').val('');
             
-            if (self.isLogin) {
+            if (self.isLogin == 'Y') {
                 self.$el.find('input[type=text], textarea').not('#userNm, #phoneNo, ').val('');
             } else {
                 self.$el.find('input[type=text], textarea').val('');

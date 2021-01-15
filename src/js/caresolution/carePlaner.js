@@ -409,8 +409,8 @@
         lgkorUI.showLoading();
 
         var tabID = getTabID();
-        lgkorUI.requestAjaxData(_categoryListUrl, {tabID: tabID}, function(result){
-            if(result.data.success == "N"){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_categoryListUrl, {tabID: tabID}, function(result){
+            if(!lgkorUI.stringToBool(result.data.success, true)){
                 lgkorUI.hideLoading();
                 lgkorUI.commonAlertHandler(result.data.alert);
                 return;
@@ -446,10 +446,10 @@
             categoryID: getCategoryID(),
             sortID: getSortID()
         }
-        lgkorUI.requestAjaxData(_prodListUrl, requestData, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_prodListUrl, requestData, function(result){
             lgkorUI.hideLoading();
             
-            if(result.data.success == "N"){
+            if(!lgkorUI.stringToBool(result.data.success, true)){
                 lgkorUI.commonAlertHandler(result.data.alert);
                 return;
             }
@@ -530,10 +530,10 @@
             blockID: idx
         }
 
-        lgkorUI.requestAjaxData(_priceStatusUrl, sendata, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_priceStatusUrl, sendata, function(result){
             lgkorUI.hideLoading();
             
-            if(result.data.success == "N"){
+            if(!lgkorUI.stringToBool(result.data.success, true)){
                 lgkorUI.commonAlertHandler(result.data.alert);
                 return;
             }
@@ -562,10 +562,10 @@
             blockID: idx
         }
 
-        lgkorUI.requestAjaxData(_changeColorUrl, sendata, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_changeColorUrl, sendata, function(result){
             lgkorUI.hideLoading();
             
-            if(result.data.success == "N"){
+            if(!lgkorUI.stringToBool(result.data.success, true)){
                 lgkorUI.commonAlertHandler(result.data.alert);
                 return;
             }
@@ -667,10 +667,10 @@
     function requestPutItem(sendata){
         lgkorUI.showLoading();
 
-        lgkorUI.requestAjaxData(_putItemUrl, sendata, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_putItemUrl, sendata, function(result){
             lgkorUI.hideLoading();
             
-            if(result.data.success == "N"){
+            if(!lgkorUI.stringToBool(result.data.success, true)){
                 lgkorUI.commonAlertHandler(result.data.alert);
                 return;
             }
@@ -832,10 +832,10 @@
             InputData: JSON.stringify(_putItemList)
         }
 
-        lgkorUI.requestAjaxData(_estimateConfirmUrl, sendata, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_estimateConfirmUrl, sendata, function(result){
             lgkorUI.hideLoading();
             
-            if(result.data.success == "N"){
+            if(!lgkorUI.stringToBool(result.data.success, true)){
                 lgkorUI.commonAlertHandler(result.data.alert);
                 return;
             }

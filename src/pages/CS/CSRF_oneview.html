@@ -30,14 +30,17 @@
                         "무상 보증 기간 경과 된 제품 또는 사용자 과실 등으로 인한 제품 고장의 서비스 신청 건은 유상으로 서비스 비용이 청구됩니다."
                     ]
                 })
-
+                
                 <!-- 선택 제품 플로팅바 -->
                 @@include('./common/support/selected-model-bar.html')
 
-                <!-- 비회원 -->
-                @@include('./common/support/login-guide.html', {
-                    'text': '출장서비스 예약을 LG전자 통합 사이트의 회원으로 <br class="pc-only">이용하시면 보다 편리하게 이용할 수 있습니다.'
+                <!-- 회원 - 제품 없을 시 -->
+                @@include('./common/support/select-my-model.html', {
+                    "noItem": true
                 })
+
+                <!-- 회원 - 보유제품 펼침 -->
+                @@include('./common/support/select-my-model.html')
                 
                 <div class="cont-wrap">
                     <form action="/html/CS/CSRF6029.html" method="POST" data-ajax="/lg5-common/data-ajax/support/serviceEngineer.json" id="submitForm" autocomplete="off" novalidate>
@@ -55,22 +58,6 @@
                             <input type="hidden" name="serviceType" id="serviceType" value="A">
                             <input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
                             <input type="hidden" name="pageCode" id="pageCode" value="pageCode">
-
-                            <!-- 약관 동의 -->
-                            <div class="step-box active" id="stepTerms">
-                                <div class="section">
-                                    <div class="form-infos">
-                                        <p class="req" aria-disabled="true">필수 입력 항목</p>
-                                    </div>
-                                    @@include('./common/support/accept-terms.html', {
-                                        member: true
-                                    })
-                                </div>
-                                <div class="step-btn-wrap">
-                                    <button type="button" class="btn border size-m btn-next"><span>다음</span></button>
-                                </div> 
-                            </div>
-                            <!-- // 약관 동의 -->
 
                             <!-- 제품 선택 -->
                             <div class="step-box" id="stepModel">
@@ -506,9 +493,69 @@
                                     </div>
                                     <!-- // TV/프로젝터 > 올레드, 울트라HD, LED/LCD, PDP 선택 시  -->
                                 </div>
+
                                 <div class="section">
                                     <div class="tit-wrap">
-                                        <h2 class="tit">예약자 정보 입력</h2>
+                                        <h2 class="tit">대리 접수자 정보</h2>
+                                    </div>
+                                    <div class="section-box">
+                                        <div class="form-wrap">
+                                            <div class="forms">
+                                                <div class="tit">
+                                                    <label for="">시스템</label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="select-wrap">
+                                                        <!-- 
+                                                            One View에서 모든 정보 받은 경우, 
+                                                            One View에서 엔지니어 이름/ 사번을 못 받은 경우 (유실 등),
+                                                            readonly 추가 
+                                                        -->
+                                                        <select class="ui_selectbox" id="" title="시스템 선택">
+                                                            <option value="Hi Run">Hi Run</option>
+                                                            <option value="option1">option1</option>
+                                                            <option value="option2">option2</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="forms">
+                                                <div class="tit">
+                                                    <label for="" class="req">엔지니어 이름<span class="blind">필수입력</span></label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="input-wrap">
+                                                        <!-- 
+                                                            One View에서 모든 정보 받은 경우, 
+                                                            One View에서 시스템 정보를 못 받은 경우 (WWW9~12 이외의 코드, 유실 등),
+                                                            readonly 추가 
+                                                        -->
+                                                        <input type="text" name="" id="" value="홍길동" placeholder="이름 입력" data-error-msg="이름을 입력해주세요" data-pattern-msg="한글 또는 영문만 입력 가능합니다." data-required="true" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="forms">
+                                                <div class="tit">
+                                                    <label for="" class="req">사번<span class="blind">필수입력</span></label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="input-wrap">
+                                                        <!-- 
+                                                            One View에서 모든 정보 받은 경우, 
+                                                            One View에서 시스템 정보를 못 받은 경우 (WWW9~12 이외의 코드, 유실 등),
+                                                            readonly 추가 
+                                                        -->
+                                                        <input type="text" name="" id="" value="A123456" placeholder="이름 입력" data-error-msg="사번을 입력 해주세요." data-pattern-msg="" data-required="true" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="section">
+                                    <div class="tit-wrap">
+                                        <h2 class="tit">고객 정보</h2>
                                     </div>
                                     <div class="section-box">
                                         <div class="form-wrap">
@@ -518,7 +565,7 @@
                                                 </div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="userNm" id="userNm" placeholder="이름 입력" data-error-msg="이름을 입력해주세요" data-pattern-msg="한글 또는 영문만 입력 가능합니다." data-required="true" required>
+                                                        <input type="text" name="userNm" id="userNm" value="홍길동" placeholder="이름 입력" data-error-msg="이름을 입력해주세요" data-pattern-msg="한글 또는 영문만 입력 가능합니다." data-required="true" readonly required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
@@ -531,7 +578,7 @@
                                                 </div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="phoneNo" id="phoneNo" placeholder="휴대폰 번호 입력" maxlength="11" data-error-msg="정확한 휴대전화 번호를 입력해주세요"  data-pattern-msg="정확한 휴대전화 번호를 입력해주세요" data-required="true" required>
+                                                        <input type="text" name="phoneNo" id="phoneNo" value="01043324025" placeholder="휴대폰 번호 입력" maxlength="11" data-error-msg="정확한 휴대전화 번호를 입력해주세요"  data-pattern-msg="정확한 휴대전화 번호를 입력해주세요" data-required="true" readonly required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
@@ -557,16 +604,12 @@
                                                     <div class="input-wrap">
                                                         <input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소를 입력해주세요." data-error-msg="정확한 주소를 입력해주세요." data-required="true" required>
                                                     </div>
-                                                    <!-- 비회원일 경우 비노출 -->
-                                                    <!-- <div class="btm-more">
+                                                    <div class="btm-more both">
+                                                        <p class="err-msg address-err-msg"></p>
                                                         <span class="chk-wrap">
                                                             <input type="checkbox" name="defaultAddress" id="defaultAddress" value="Y">
                                                             <label for="defaultAddress">기본 주소로 설정</label>
                                                         </span>
-                                                    </div> -->
-                                                    <!-- // 비회원일 경우 비노출 -->
-                                                    <div class="btm-more err-block">
-                                                        <p class="err-msg"></p>
                                                     </div>
                                                 </div>
                                             </div>
