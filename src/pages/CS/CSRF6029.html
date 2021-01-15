@@ -32,13 +32,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="reception-progress-box">
-                    <p class="description">접수 &gt; 방문 예정 &gt; 완료 순으로 진행됩니다.</p>
-                    <ol class="reception-progress type-new step-3">
-                        <li class="on"><span class="text">접수</span></li>
-                        <li><span class="text">방문예정</span></li>
-                        <li><span class="text">완료</span></li>
-                    </ol>
+                <div class="result-progress">
+                    <p class="desc">접수 &gt; 방문 예정 &gt; 완료 순으로 진행됩니다.</p>
+                    <div class="progress-box">
+                        <span class="progressing" style="width:calc(100% / 2 * 1)"></span>
+                        <ol class="progressbar">
+                            <li class="on"><span class="text">접수</span></li>
+                            <li class="on current"><span class="text">상담 예정</span><span class="blind">현재 단계</span></li>
+                            <li><span class="text">완료</span></li>
+                        </ol>
+                    </div>
                 </div>
                 <div class="cont-wrap">
                     <div class="section">
@@ -87,7 +90,7 @@
                                 <div class="description">
                                     <span class="line">스마트기능/스마트진단</span>
                                     <span class="line">LG ThinQ 등록 실패</span>
-                                    <button type="button" class="btn border size" data-href="#solutionsPopup" data-control="modal"><span>제품 문제해결 방법</span></button>
+                                    <button type="button" class="btn border size" data-href="#solutionsPopup"><span>제품 문제해결 방법</span></button>
                                 </div>
                             </li>
                             <li>
@@ -145,11 +148,10 @@
     </div>      
 
     <!-- 제품 해결 팝업 -->
-    @@include('./CS/modal/solutions-popup.html', {
-        'static': true
-    })
+    @@include('./CS/modal/solutions-popup.html')
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/serviceStatus.min.js"></script>
 </body>
 </html> 
