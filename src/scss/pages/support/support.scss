@@ -411,49 +411,6 @@
             font-weight: bold;
             line-height: 1.63;
         }
-        .box-info {
-            margin-top: 16px;
-            li {
-                &:before {
-                    content:'';
-                    display:inline-block;
-                    width:12px;
-                    height:12px;
-                    border-radius:50%;
-                    vertical-align:middle;
-                }
-                &.gray:before {
-                    background-color: #ccc;
-                }
-                &.green:before {
-                    background-color: #51b1ac;
-                }
-                &.red:before {
-                    background-color: #e51346;
-                }
-                &.black:before {
-                    background-color: #222;
-                }
-                &.skyblue:before {
-                    background:#21a9aa;
-                }
-                &.olive:before {
-                    background:#76892d;
-                }
-            }
-            .status {
-                font-size: 14px;
-                font-weight: 500;
-                line-height: 1.71;
-                color: #222;
-            }
-            .text  {
-                font-size: 14px;
-                line-height: 1.71;
-                color: #767676;
-                margin-left: 13px;
-            }
-        }
         .bullet-list {
             margin-top: 0;
         }
@@ -519,6 +476,50 @@
             //         }
             //     }
             // }
+        }
+    }
+
+    .box-info {
+        margin-top: 16px;
+        li {
+            &:before {
+                content:'';
+                display:inline-block;
+                width:12px;
+                height:12px;
+                border-radius:50%;
+                vertical-align:middle;
+            }
+            &.gray:before {
+                background-color: #ccc;
+            }
+            &.green:before {
+                background-color: #51b1ac;
+            }
+            &.red:before {
+                background-color: #e51346;
+            }
+            &.black:before {
+                background-color: #222;
+            }
+            &.skyblue:before {
+                background:#21a9aa;
+            }
+            &.olive:before {
+                background:#76892d;
+            }
+        }
+        .status {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.71;
+            color: #222;
+        }
+        .text  {
+            font-size: 14px;
+            line-height: 1.71;
+            color: #767676;
+            margin-left: 13px;
         }
     }
 
@@ -676,7 +677,7 @@
         display: none;
     }
 
-    .store-info-wrap {
+    &.store-info-wrap {
         .cont-wrap {
             .detail-info-wrap {
                 .right-box {
@@ -690,9 +691,15 @@
                                                 margin-left: 1em;
                                             }
                                         }
+                                        .btn-link {
+                                            margin-left: 24px;
+                                        }
                                     }
                                 }
                             }
+                        }
+                        .box-info {
+                            margin-top: 0;
                         }
                     }
                 }
