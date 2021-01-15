@@ -169,16 +169,24 @@
                 self.cancelSetting();
                 self.authSetting();
                 self.solutionsSetting();
-                self.bindEvent();
             });
         },
         solutionsSetting: function() {
+            if (!$('#solutionsPopup').length) return;
+
             var self = this;
 
             self.$solutionsOpenBtn = $('[data-href="#solutionsPopup"]');
             self.$solutionsPopup = $('#solutionsPopup');
+
+            // 제품 문제 해결
+            self.$solutionsOpenBtn.on('click', function() {
+                self.requestSolutions({page:1}, false);
+            });
         },
         authSetting: function() {
+            if (!$('#reservationTimePopup').length) return;
+
             var self = this;
             var authRegister = {
                     authNo: {
@@ -195,13 +203,18 @@
                     register: authRegister
                 }
             
-            
             self.authManager = new AuthManager(managerOpt);
             self.$sendBtn = self.$datePopup.find('.btn-send');
+
+            self.$sendBtn.on('click', function() {
+                self.authManager.send();
+            });
         },
         changeSetting: function() {
+            if (!$('#reservationTimePopup').length) return;
+
             var self = this;
-            
+        
             self.$dateOpenBtn = $('[data-href="#reservationTimePopup"]');
             self.$datePopup = $('#reservationTimePopup');
             self.$date = self.$datePopup.find('.date-wrap');
@@ -209,8 +222,26 @@
 
             self.$date.calendar();
             self.$time.timeCalendar();
+
+            // 예약 변경
+            self.$dateOpenBtn.on('click', function() {
+                self.requestDate();
+            });
+            self.$date.on('dateselected', function() {
+                self.requestTime();
+            }); 
+            self.$datePopup.on('modalhide', function() {
+                self.$date.calendar('reset');
+                self.$time.timeCalendar('reset');
+            }).on('click', '.btn-group .btn:last-child', function() {
+                self.authManager.confirm(this, function(success, result) {
+                    self.completeAuth(success, result);
+                });
+            });
         },
         cancelSetting: function() {
+            if (!$('#cancelServicePopup').length) return;
+
             var self = this;
             var register = {
                     reason: {
@@ -223,6 +254,49 @@
 
             self.$cancelPopup = $('#cancelServicePopup');
             self.cancelValidation = new vcui.ui.CsValidation('#cancelServicePopup', {register:register});
+
+            // 예약 취소
+            self.$cancelPopup.on('modalhide', function() {
+                var $reason = $('#reason'),
+                    $reasonEtc = $('#reasonEtc');
+
+                $reason.find('options.placeholder').prop('selected', true);
+                $reason.vcSelectbox('update');
+                $reasonEtc.val('');
+                self.cancelValidation.reset();
+            }).on('change', '#reason', function() {
+                var $reason = $(this),
+                    $reasonEtc = $('#reasonEtc'),
+                    reansonValue = $reason.val();
+
+                reansonValue && $reasonEtc.prop('disabled', false);
+            }).on('click', '.btn-group .btn:first-child', function() {
+                lgkorUI.confirm('예약 취소가 완료되지 않았습니다.<br />중단하시겠습니까?', {
+                    title:'', okBtnName:'확인', cancelBtnName:'취소',
+                    ok: function() {
+                        self.$cancelPopup.vcModal('hide');
+                    }
+                });
+            }).on('click', '.btn-group .btn:last-child', function() {
+                var url = self.$cancelPopup.data('cancelUrl');
+                var result = self.cancelValidation.validate(),
+                    param;
+
+                if (result.success) {
+                    param = self.cancelValidation.getAllValues();
+                    lgkorUI.showLoading();
+                    lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                        var data = result.data;
+
+                        if (data.resultFlag == 'Y') {
+                            location.href = url;
+                        } else {
+                            lgkorUI.hideLoading();
+                            if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});
+                        }
+                    });
+                }
+            });
         },
         requestDate: function() {
             var self = this;
@@ -270,9 +344,10 @@
         },
         completeAuth: function(success, result) {
             var self = this;
+            var data = reulst.data;
 
             if (success) {
-
+                location.href = data.url;
             } else {
 
             }
@@ -293,76 +368,6 @@
 
                 if (!isShown) self.$solutionsPopup.vcModal();
             }, null, "html");
-        },
-        bindEvent: function() {
-            var self = this;
-
-            // 제품 문제 해결
-            self.$solutionsOpenBtn.on('click', function() {
-                self.requestSolutions({page:1}, false);
-            });
-            
-            // 예약 변경
-            self.$dateOpenBtn.on('click', function() {
-                self.requestDate();
-            });
-            self.$date.on('dateselected', function() {
-                self.requestTime();
-            }); 
-            self.$datePopup.on('modalhide', function() {
-                self.$date.calendar('reset');
-                self.$time.timeCalendar('reset');
-            }).on('click', '.btn-group .btn:last-child', function() {
-                self.authManager.confirm(this, function(success, result) {
-                    self.completeAuth(success, result);
-                });
-            });
-            self.$sendBtn.on('click', function() {
-                self.authManager.send();
-            });
-
-            // 예약 취소
-            self.$cancelPopup.on('modalhide', function() {
-                var $reason = $('#reason'),
-                    $reasonEtc = $('#reasonEtc');
-
-                $reason.find('options.placeholder').prop('selected', true);
-                $reason.vcSelectbox('update');
-                $reasonEtc.val('');
-                self.cancelValidation.reset();
-            }).on('change', '#reason', function() {
-                var $reason = $(this),
-                    $reasonEtc = $('#reasonEtc'),
-                    reansonValue = $reason.val();
-
-                reansonValue && $reasonEtc.prop('disabled', false);
-            }).on('click', '.btn-group .btn:first-child', function() {
-                lgkorUI.confirm('예약 취소가 완료되지 않았습니다.<br />중단하시겠습니까?', {
-                    title:'', okBtnName:'확인', cancelBtnName:'취소',
-                    ok: function() {
-                        self.$cancelPopup.vcModal('hide');
-                    }
-                });
-            }).on('click', '.btn-group .btn:last-child', function() {
-                var url = self.$cancelPopup.data('cancelUrl');
-                var result = self.cancelValidation.validate(),
-                    param;
-
-                if (result.success) {
-                    param = self.cancelValidation.getAllValues();
-                    lgkorUI.showLoading();
-                    lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                        var data = result.data;
-
-                        if (data.resultFlag == 'Y') {
-                            location.href = url;
-                        } else {
-                            lgkorUI.hideLoading();
-                            if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});
-                        }
-                    });
-                }
-            });
         }
     };
 

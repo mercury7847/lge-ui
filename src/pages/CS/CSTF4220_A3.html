@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="result-header">
-                    <h2 class="tit">출장 서비스 예약</h2>
+                    <h2 class="tit">전화 상담 예약</h2>
                 </div>
                 <div class="complete-summary">
                     <div class="box">
@@ -33,8 +33,8 @@
                             <img src="/lg5-common/images/dummy/@img_manager2.jpg" alt="전문 엔지니어 사진">
                         </div>
                         <div class="summary-info">
-                            <p class="info"><span>접수번호 HA230948WW</span><span>홍길동 엔지니어</span></p>
-                            <p class="status"><span>조금만 기다려주세요.</span><br>회수된 의류 건조기는 공장으로 보내져 수리 후 댁에 안전히 설치될 예정입니다.</p>
+                            <p class="info"><span>접수번호 HA230948WW</span></p>
+                            <p class="status"><span>조금만 기다려주세요.</span><br>전문 상담사가 순차적으로 연락하여 안내드리겠습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -42,12 +42,11 @@
                     <div class="group-box">
                         <a href="/html/CS/CSRF6072.html" target="_blank" class="btn border size-m"><span>제품/설치환경 사진등록</span></a>
                         <button class="btn border size-m"><span>예상 비용 확인</span></button>
-                        <button type="button" data-href="#reservationTimePopup" class="btn border size-m"><span>예약 일시 변경</span></button>
                         <button type="button" data-href="#cancelServicePopup" data-control="modal" class="btn border size-m"><span>예약 취소</span></button>
                     </div>
                 </div>
                 <div class="result-progress">
-                    <p class="desc">접수 &gt; 방문 예정 &gt; 완료 순으로 진행됩니다.</p>
+                    <p class="desc">접수 &gt; 상담 예정 &gt; 완료 순으로 진행됩니다.</p>
                     <div class="progress-box">
                         <span class="progressing" style="width:calc(100% / 2 * 1)"></span>
                         <ol class="progressbar">
@@ -185,8 +184,7 @@
                         @@include('./common/modules/bullet-list.html', {
                             "topBorder" : true,
                             "bulletTxt" : [
-                                "온라인 접수 취소는 예약 시간 1시간 전까지 가능하며, 접수 내용을 수정하실 경우에는 기접수건을 취소 후 신규로 다시 접수해 주시기 바랍니다.",
-                                "[예약 일시 변경]버튼을 클릭하면 서비스 받으실 날짜, 시간 변경이 가능합니다. 예약 일시 변경은 예약 시간 1시간 전까지 가능하며, 기존 접수건 취소 후 신규로 접수됩니다."
+                                "온라인 접수 취소는 예약 시간 1시간 전까지 가능하며, 접수 내용을 수정하실 경우에는 기접수건을 취소 후 신규로 다시 접수해 주시기 바랍니다."
                             ]
                         })
                     </div>
@@ -196,7 +194,6 @@
                         <a href="#" class="btn">고객지원 메인</a>
                         <!-- 복수건 조회 시 -->
                         <!-- <button type="button" class="btn">목록</button> -->
-                        <button type="button" data-href="#reservationTimePopup" class="btn border"><span>예약 일시 변경</span></button>
                         <button type="button" data-href="#cancelServicePopup" data-control="modal" class="btn border"><span>예약 취소</span></button>
                     </div>
 
@@ -207,14 +204,8 @@
         @@include('./common/footer.html')
     </div>      
 
-    <!-- 제품 해결 팝업 -->
-    @@include('./CS/modal/solutions-popup.html')
-
     <!-- 예약결과 조회변경_예약취소 팝업 -->
     @@include('./CS/modal/cancel-service-popup.html')
-
-    <!-- 예약일시변경 팝업 -->
-    @@include('./CS/modal/reservation-time-popup.html')
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
