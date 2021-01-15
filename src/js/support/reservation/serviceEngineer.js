@@ -89,7 +89,7 @@
             self.$authPopup = $('#certificationPopup');
 
             self.autoFlag = false;
-            self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : false;
+            self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : 'N';
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
                 var register = {
@@ -161,7 +161,7 @@
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
                 addressFinder = new AddressFind();
 
-                if (!self.isLogin) {
+                if (self.isLogin != 'Y') {
                     authManager = new AuthManager({
                         elem: {
                             popup: '#certificationPopup',
@@ -417,7 +417,8 @@
             $engineerBox.find('.center').html(data.centerName);
 
             $resultBox.find('.date').html(vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm"));
-            $resultBox.find('.name').html(topicNm + '&gt;' + subTopicNm);
+            $resultBox.find('.topic').html(topicNm + '&gt;' + subTopicNm);
+            $resultBox.find('.name').html(data.engineerName);
 
             $('#engineerNm').val(data.engineerName);
             $('#engineerCode').val(data.engineerCode);
@@ -658,7 +659,7 @@
                 var result = validation.validate();
 
                 if (result.success == true) {    
-                    if (self.isLogin) {
+                    if (self.isLogin == 'Y') {
                         lgkorUI.confirm('', {
                             title:'예약 하시겠습니까?',
                             okBtnName: '확인',
