@@ -108,11 +108,11 @@
             if(result.data.storyList && result.data.storyList.length > 0){
                 $('.user_story').show();
 
-                for(var str in result.data.storyList){
-                    console.log("result.data.storyList[str]:",result.data.storyList[str], result.data.storyList[str].regDate)
-                    var list = vcui.template(storyListTemplate, result.data.storyList[str]);
-                    $('.user_story .flexbox-wrap').append(list);
-                }
+                // for(var str in result.data.storyList){
+                //     console.log("result.data.storyList[str]:",result.data.storyList[str], result.data.storyList[str].regDate)
+                //     var list = vcui.template(storyListTemplate, result.data.storyList[str]);
+                //     $('.user_story .flexbox-wrap').append(list);
+                // }
             } else{
                 $('.user_story').hide();
             }
