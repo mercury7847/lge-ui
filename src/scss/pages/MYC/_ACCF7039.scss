@@ -290,6 +290,8 @@
     }
     .member-lists {
         > ul {
+            display:flex;
+            flex-wrap:wrap;
             margin:-12px;
             @include mobile {
                 margin:-8px;
@@ -308,6 +310,7 @@
                     padding:8px;
                 }
                 .inner {
+                    height:100%;
                     padding:12px 32px 32px;
                     border-radius:8px;
                     box-shadow:1px 4px 10px 0 rgba(0, 0, 0, 0.14);
