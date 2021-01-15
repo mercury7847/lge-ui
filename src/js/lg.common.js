@@ -917,7 +917,7 @@
             });
         },
 
-        requestAjaxData: function(url, data, callback, type, dataType, autoFailAlert) {
+        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck) {
             var self = this;
             var dtype = dataType? dataType : "json";
             $.ajax({
@@ -933,20 +933,21 @@
                 }
                 
                 if(dtype == 'json' && result.status != 'success'){
-                    alert(result.message ? result.message : '오류발생');
+                    //alert(result.message ? result.message : '오류발생');
+                    console.log('result fail',url,result);
                     return;
                 }
 
-                if(autoFailAlert) {
+                if(ignoreCommonSuccessCheck) {
+                    if(callback && typeof callback === 'function') callback(result); 
+                } else {
                     var data = result.data;
                     if(data && (!self.stringToBool(data.success) && data.alert)) {
                         //에러
                         self.commonAlertHandler(data.alert);
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
-                    }
-                } else {
-                    if(callback && typeof callback === 'function') callback(result);   
+                    } 
                 }                
             }).fail(function(err){
                 //alert(url, err.message);
@@ -954,12 +955,17 @@
             });
         },
 
-        requestAjaxDataPost: function(url, data, callback, autoFailAlert) {
+        requestAjaxDataIgnoreCommonSuccessCheck: function(url, data, callback, type, dataType) {
             var self = this;
-            self.requestAjaxData(url, data, callback, "POST", null, autoFailAlert);
+            self.requestAjaxData(url, data, callback, type, dataType, true);
         },
 
-        requestAjaxFileData: function(url, data, callback, type, dataType, autoFailAlert) {
+        requestAjaxDataPost: function(url, data, callback, ignoreCommonSuccessCheck) {
+            var self = this;
+            self.requestAjaxData(url, data, callback, "POST", null, ignoreCommonSuccessCheck);
+        },
+
+        requestAjaxFileData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck) {
             var self = this;
             var dtype = dataType? dataType : "json";
             $.ajax({
@@ -982,17 +988,17 @@
                     return;
                 }
 
-                if(autoFailAlert) {
+                if(ignoreCommonSuccessCheck) {
+                    if(callback && typeof callback === 'function') callback(result); 
+                } else {
                     var data = result.data;
                     if(data && (!self.stringToBool(data.success) && data.alert)) {
                         //에러
                         self.commonAlertHandler(data.alert);
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
-                    }
-                } else {
-                    if(callback && typeof callback === 'function') callback(result);   
-                }                
+                    } 
+                }  
             }).fail(function(err){
                 alert(url, err.message);
             });

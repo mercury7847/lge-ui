@@ -129,7 +129,7 @@
         lgkorUI.showLoading();
 
         lgkorUI.requestAjaxData(DELIVERY_ADRESS_LIST, {}, function(result){
-            if(result.data.success == "Y"){
+            if(lgkorUI.stringToBool(result.data.success)){
                 $('.adressListWrap').empty();
 
                 adressListData = result.data.adressList;

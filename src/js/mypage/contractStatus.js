@@ -226,8 +226,8 @@
             cancelBtnName: "취소",
             okBtnName: "본인인증",
             ok: function(){
-                lgkorUI.requestAjaxData(INFO_MODIFY_CONFIRM, sendata, function(result){
-                    if(result.data.success == "Y"){
+                lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INFO_MODIFY_CONFIRM, sendata, function(result){
+                    if(lgkorUI.stringToBool(result.data.success)){
                         if(sendata.confirmType == MODE_USER){
                             userInfoBlock.hide();
                             userModifyBlock.show();
@@ -259,12 +259,8 @@
         sendata.confirmType = MODE_USER;
         console.log("saveUserInfo : [sendata] ", sendata);
         lgkorUI.requestAjaxData(INFO_MODIFY_SAVE, sendata, function(result){
-            if(result.data.success == "Y"){
+            if(lgkorUI.stringToBool(result.data.success)){
                 changeContractInfo();
-            } else{
-                lgkorUI.alert("", {
-                    title: result.data.alert.title
-                });
             }
         });
     }
@@ -291,7 +287,7 @@
                 title: result.data.alert.title
             });
 
-            if(result.data.success == "Y"){
+            if(lgkorUI.stringToBool(result.data.success)){
                 paymentInfo = sendata.confirmType == METHOD_CARD ? cardValidation.getAllValues() : bankValidation.getAllValues();
                 paymentInfo.confirmType = sendata.confirmType;
             }
@@ -334,12 +330,8 @@
         if(payments.result){
             console.log("savePaymentInfo : [sendata] ", paymentInfo);
             lgkorUI.requestAjaxData(INFO_MODIFY_SAVE, paymentInfo, function(result){
-                if(result.data.success == "Y"){
+                if(lgkorUI.stringToBool(result.data.success)){
                     changeContractInfo();
-                } else{
-                    lgkorUI.alert("", {
-                        title: result.data.alert.title
-                    });
                 }
             });
         } else{
