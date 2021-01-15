@@ -344,7 +344,7 @@
         },
         completeAuth: function(success, result) {
             var self = this;
-            var data = reulst.data;
+            var data = result.data;
 
             if (success) {
                 location.href = data.url;
