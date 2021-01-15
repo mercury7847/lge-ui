@@ -47,6 +47,7 @@
                 self.bindPopupEvents();
 
                 //현재 설정된 계약 갯수 가져옴
+                /*
                 var $option = self.$selectContract.find('option');
                 var length = !$option ? 0 : $option.length;
                 if(length > 0) {
@@ -73,6 +74,7 @@
                         }
                     }
                 });
+                */
             },
 
             setting: function() {

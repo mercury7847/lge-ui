@@ -590,8 +590,8 @@
         _setUserAdressSearch: function(){
             var self = this;
 
-            lgkorUI.requestAjaxData(self.userAdressCheckedUrl, {}, function(result){
-                if(result.data.success == "Y"){
+            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(self.userAdressCheckedUrl, {}, function(result){
+                if(lgkorUI.stringToBool(result.data.success)){
                     self.userCityName = result.data.userAdress.cityValue;
                     self.userBoroughName = result.data.userAdress.boroughValue;
                     self.searchResultMode = true;
