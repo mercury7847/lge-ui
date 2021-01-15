@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-		pageCSS: ["PRS/PRS"]
+		pageCSS: ["PRS/PRS"],
+		pageJS: ["home/storeHome"]
     })
 <body>
 	<div class="wrap">
@@ -86,7 +87,7 @@
 							</ul>
 						</div>
 						<div class="tabs-contents" id="category1">
-							<div class="slide-wrap category-list-slide ui_carousel">
+							<div class="slide-wrap category-list-slide">
 								<div class="indi-wrap">
 									<ul class="indi-conts ui_carousel_dots">
 										<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
@@ -169,7 +170,7 @@
 							</div>
 						</div>
 						<div class="tabs-contents" id="category2">
-							<div class="slide-wrap category-list-slide ui_carousel">
+							<div class="slide-wrap category-list-slide">
 								<div class="indi-wrap">
 									<ul class="indi-conts ui_carousel_dots">
 										<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
@@ -556,7 +557,7 @@
 							<p class="tit">새로운 제품, 놓치지 마세요</p>
 							<p class="desc">최근 출시된 제품을 만나보세요.</p>
 						</div>
-						<div class="new-product-list slide-wrap ui_carousel">
+						<div class="new-product-list slide-wrap">
 							<div class="indi-wrap">
 								<ul class="indi-conts ui_carousel_dots">
 									<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
@@ -846,7 +847,7 @@
 							<p class="tit">김엘지님을 위한 제품 추천</p>
 							<p class="desc">고객님이 좋아할 만한 제품을 추천드려요.</p>
 						</div>
-						<div class="slide-wrap product-recom-slide ui_carousel">
+						<div class="slide-wrap product-recom-slide">
 							<div class="indi-wrap">
 								<ul class="indi-conts ui_carousel_dots">
 									<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
@@ -931,83 +932,5 @@
 		
 		@@include('./common/footer.html')
 	</div>
-	<script type='text/javascript'>
-		$(function () {
-			vcui.require(['ui/scrollNavi','ui/smoothScroll'], function () {
-				$('.category-list-slide').vcCarousel({
-                    settings: "unbuild",
-                    responsive: [
-                        {
-                            breakpoint: 10000,
-                            settings: "unbuild"
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                infinite: true,
-                                variableWidth : false,
-                                dots: true,
-                                slidesToShow: 3,
-                                slidesToScroll: 3
-                                
-                            }
-                        }
-                    ]
-                });
-
-                $('.product-recom-slide').vcCarousel({
-                    settings: "unbuild",
-                    responsive: [
-                        {
-                            breakpoint: 10000,
-                            settings: {
-                                infinite: true,
-                                variableWidth : false,
-                                dots: true,
-                                slidesToShow: 2,
-                                slidesToScroll: 2
-                                
-                            }
-                        },
-                        {
-                            breakpoint: 1024,
-                            settings: {
-                                infinite: true,
-                                variableWidth : false,
-                                dots: true,
-                                slidesToShow: 2, 
-                                slidesToScroll: 2
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: "unbuild"
-                        }
-                    ]
-                });
-
-				$('.new-product-list').vcCarousel({
-                    settings: "unbuild",
-                    responsive: [
-                        {
-                            breakpoint: 10000,
-                            settings: "unbuild"
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                infinite: false,
-                                variableWidth : false,
-                                dots: true,
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                                
-                            }
-                        }
-                    ]
-                });
-			});
-		});
-	</script>
 </body>
 </html>
