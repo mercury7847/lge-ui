@@ -96,19 +96,20 @@ CS.MD.commonModel = function() {
             caseType: 'product',
             param: {},
             summary: {
-                tit: '제품을 선택해 주세요',
-                desc: "예약내용 입력을 위해 제품을 선택해 주세요"
+                tit: '서비스이용을 위해 제품을 선택해 주세요.'
             }
         };
 
         self.options = $.extend({}, defaults, opt);
         
         vcui.require(['ui/validation', 'ui/selectTarget'], function () {
-            termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
-                privcyCheck: {
-                        msgTarget: '.err-block'
-                }
-            }});
+            if (self.$el.find('#stepTerms').length) {
+                termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
+                    privcyCheck: {
+                            msgTarget: '.err-block'
+                    }
+                }});
+            }
 
             self._initialize();
             self._bindEvent();  
@@ -453,7 +454,7 @@ CS.MD.commonModel = function() {
                         });
 
                         self._updateSummary({
-                            desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
+                            tit: '서비스이용을 위해 제품을 선택해 주세요.'
                         });
                         self._requestData();
                     } else {
@@ -482,7 +483,7 @@ CS.MD.commonModel = function() {
                     });
 
                     self._updateSummary({
-                        desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
+                        tit: '서비스이용을 위해 제품을 선택해 주세요.'
                     });
                     self._requestData();
 
@@ -549,8 +550,7 @@ CS.MD.commonModel = function() {
                 });
 
                 self._updateSummary({
-                    product: [data.categoryName, data.subCategoryName],
-                    desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요. 모델명을 모르시면 ‘건너뛰기'를 눌러주세요."
+                    product: [data.categoryName, data.subCategoryName]
                 });
                 self._requestData();
 

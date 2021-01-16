@@ -379,41 +379,6 @@
     @include mobile {
         padding:40px 16px 0;
     }
-    .keyword-search {
-        .search-box {
-            max-width:443px + 166px;
-            margin:0 auto;
-            transform:translateX(83px);
-            .search-input {
-                position:relative;
-                padding-right:166px;
-                input[type=text] {
-                    text-transform:uppercase;
-                }
-                .btn {
-                    position:absolute;
-                    right:0;
-                    top:8px;
-                }
-            }
-            .desc {
-                margin-top:4px;
-                @include font-small;
-            }
-
-            .err-msg {
-                display:none;
-                margin-top:4px;
-            }
-        }
-        @include mobile {
-            width:100%;
-            margin:0 0 32px;
-            padding-right:154px;
-            transform:translateX(0);
-        }
-    }
-
     // 키워드 검색
     .keyword-box {
         display:none;

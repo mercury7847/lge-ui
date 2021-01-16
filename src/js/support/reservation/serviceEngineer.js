@@ -275,7 +275,7 @@
 
                     self.setSolutions(url, param, true);
                 });
-            }, null, "html");
+            }, null, "html", true);
         },
         requestDate: function() {
             var self = this;

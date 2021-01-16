@@ -539,156 +539,151 @@
     /* pages */
     /* 비디오 가이드 */
     &.video-guide {
-        .tabs-wrap {
-            display: block;
-            @media screen and (min-width: $tablet-l-width) {
-                display:none;
-            }
-            @media screen and (max-width: $tablet-l-width) {
-                margin: 0 16px 4px;
-            }
-        }
-        .search-summary {
-            margin-bottom:48px;
-            .summary {
-                color:#111;
-                font-size:20px;
-                font-weight:700;
-                line-height:20px;
-                display: flex;
-                align-items: center;
-                &-keyword {
-                    color:#ec455a;
-                }
-                &-delete {
-                    display:inline-block;
-                    width:20px;
-                    height:20px;
-                    margin-left:8px;
-                    background:url('/lg5-common/images/icons/icon-delete.svg') no-repeat;
-                    background-size:100%;
-                }
-            }
-            @include mobile {
-                margin-bottom:24px;
-                padding:0 16px;
-                background:#fff;
-                .summary {
-                    line-height:18px;
-                    &-delete { 
-                        width:18px;
-                        height:18px;
-                    }
-                }
-            }
-        }
-        .search-result {
-            @include clearfix;
-            .tabs-contents {
-                @media screen and (min-width: $tablet-l-width) {
-                    display:block !important;
-                    float: left;
-                    @include calc('width', 50%, 60px);
-                    margin-left:120px;
-                    &:first-child {
-                        margin-left:0;
-                    }
-                }
-            }
-            .result-box {
-                border-radius:4px;
-                background:#fff;
-                .result-tit {
-                    display:none;
-                    padding-bottom:16px;
-                    color:#222;
-                    font-size:20px;
-                    font-weight:700;
-                    line-height:24px;
-                    border-bottom:2px solid #222;
-                    @include pc {
-                        display:block;
-                    }
-                }
-                .result-total {
-                    margin-top:12px;
-                    color:#222;
-                    font-size:14px;
-                    font-weight: 500;
-                    line-height:20px;
-                    text-align:right;
-                    .count {
-                        color:#ec455a
-                    }
-                }
-            }
-            @include mobile {
-                .result-box {
-                    padding:0 16px 56px;
-                }
-            }
-        }
-        .related-content {
-            margin-top: 112px;
-            @include mobile {
-                margin-top:56px;
-            }
-        }
-        .search-sort{
-            max-width:912px;
-            margin:0 auto;
-            .sort-desc{
-                @include font-large-1;
-                font-weight: bold;
-                margin-bottom:22px;
+        .search-wrap{
+            max-width:912px + 40px;
+            margin:0 auto 48px;
+            padding:0 40px;
+            .title {
+                margin-bottom:16px;
                 text-align:center;
-                @include mobile{
-                    padding:0 45px;
-                    p{
-                        word-break:keep-all;
+                .tit {
+                    @include font-large-1;
+                    font-weight: bold;
+                    word-break:keep-all;
+                }
+            }
+            .search-inner {
+                .box {
+                    @include clearfix;
+                    .select-wrap {
+                        float:left;
+                        width:calc( 50% - 4px);
+                        & + .select-wrap {
+                            float:right;
+                        }
+                    }
+                    .input-wrap {
+                        position:relative;
+                        width:100%;
+                        .btn-delete {
+                            position:absolute;
+                            top:50%;
+                            right:54px;
+                            width:20px;
+                            height:20px;
+                            margin-top:-10px;
+                            background:url('/lg5-common/images/icons/icon-delete-20.svg') no-repeat 0 0;
+                        }
+                        .btn-search {
+                            position:absolute;
+                            top:0;
+                            right:0;
+                            width:54px;
+                            height:48px;
+                            background:center/20px 20px url(/lg5-common/images/icons/icon-search-20.svg) no-repeat;;
+                        }
+                    }
+                    & + .box {
+                        margin-top:8px;
                     }
                 }
             }
-            .sort-box{
-                display:flex;
-                align-items: center;
-                justify-content: space-between;
-                margin-bottom:8px;
-                @include mobile{
-                    flex-wrap:wrap;
+            @include mobile {
+                margin-bottom:40px;
+                .title {
+                    margin-bottom:20px;
+                }
+                .search-inner {
+                    .box {
+                        .select-wrap {
+                            float:none;
+                            width:100%;
+                            & + .select-wrap {
+                                float:none;
+                            }
+                        }
+                        & + .box {
+                            margin-top:6px;
+                        }
+                    }
+                }
+            }
+        }
+        .result-wrap {
+            .tabs-wrap {
+                display: block;
+                @media screen and (min-width: $tablet-l-width) {
+                    display:none;
+                }
+                @media screen and (max-width: $tablet-l-width) {
+                    margin:0 0 16px;
+                }
+            }
+            .search-summary {
+                display:none;
+                margin-bottom:24px;
+                .summary {
+                    @include font-medium;
+                    font-weight:$font-weight-bold;
+                    .keyword {
+                        color:#ec455a;
+                    }
+                    .btn-delete {
+                        display:inline-block;
+                        width:14px;
+                        height:14px;
+                        margin-left:8px;
+                        background:url('/lg5-common/images/icons/icon-delete-20.svg') no-repeat;
+                        background-size:100%;
+                    }
+                }
+                @include mobile {
+                    margin-bottom:12px;
                     padding:0 16px;
                 }
-                .forms{
-                    width:calc(50% - 4.5px);
-                    margin-top:0;
-                    @include mobile{
-                        width:100%;
-                    }
-                    .conts{
-                        width:100%;
+            }
+            .search-result {
+                @include clearfix;
+                .tabs-contents {
+                    @media screen and (min-width: $tablet-l-width) {
+                        display:block !important;
+                        float: left;
+                        @include calc('width', 50%, 60px);
+                        margin-left:120px;
+                        &:first-child {
+                            margin-left:0;
+                        }
                     }
                 }
-            }
-            .search-wrap{
-                width: auto;
-                margin-bottom:0;
-                .keyword-search
-                {
-                    .input-wrap{
-                        input[type=text]{
-                            border-radius:8px;
-                            border:1px solid #ddd; 
-                            box-shadow:none;
-                            padding-left:15px;
+                .result-box {
+                    .result-tit {
+                        display:none;
+                        padding-bottom:12px;
+                        font-size:22px;
+                        font-weight:700;
+                        line-height:32px;
+                        border-bottom:2px solid #222;
+                        @include pc {
+                            display:block;
                         }
-                        .btn-search{
-                            opacity:0.7;
+                    }
+                    .result-total {
+                        margin-top:12px;
+                        @include font-small;
+                        font-weight:$font-weight-medium;
+                        text-align:right;
+                        .count {
+                            color:#ec455a
                         }
+                    }
+                }
+                @include mobile {
+                    .result-box {
+                        padding:0 16px;
                     }
                 }
             }
         }
-        /* // video detail */
     }
     /* 카드뉴스 */
     &.card-news {   

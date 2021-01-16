@@ -6,104 +6,204 @@
                     '<img src="//img.youtube.com/vi/{{videoId}}/default.jpg" alt="">' +
                 '</div>' +
                 '<div class="video-cont">' +
-                    '<div class="flag-wrap bar-type">' +
-                        '<span class="flag">{{category}}</span>' +
-                        '<span class="flag gray">{{topic}}</span>' +
+                    '<div class="info-box">' +
+                        '<span class="category">{{category}}</span>' +
+                        '<span class="topic">{{topic}}</span>' +
                     '</div>' +
                     '<h4 class="tit">{{title}}</h4>' +
                 '</div>' +
             '</a>' +
         '</li>';
+    var topicTmpl = 
+        '{{#each (item, index) in topicList}}' +
+        '<option value="{{item.value}}">{{item.name}}</option>' +
+        '{{/each}}';
+
+    var videoGuide = {
+        init: function() {
+            var self = this;
+
+            self.param = {
+                category: $('#category').val(),
+                categoryNm: $('#categoryNm').val(),
+                subCategory: $('#subCategory').val(),
+                subCategoryNm: $('#subCategoryNm').val(),
+                modelCode: $('#modelCode').val(),
+                productCode: $('#productCode').val(),
+                page: 1
+            };
+            self.isDefault = self.param.subCategory ? true : false;
+
+            self.$cont = $('.contents');
+            self.$stepModel = self.$cont.find('#stepModel');
+            self.$stepInput = self.$cont.find('#stepInput');
+
+            self.$searchWarp = self.$cont.find('.search-wrap');
+            self.$searchKeyword = self.$searchWarp.find('#keyword');
+            self.$searchBtn = self.$searchWarp.find('.btn-search');
+            self.$searchTopic = self.$searchWarp.find('#topic');
+            self.$searchSubTopic = self.$searchWarp.find('#subTopic');
+
+            self.$resultWrap = self.$cont.find('.result-wrap');
+            self.$resultSummary = self.$resultWrap.find('.search-summary');
+            self.$resultCont = self.$resultWrap.find('.search-result');
+            self.$resultPopular = self.$resultCont.find('#popular');
+            self.$resultNewest = self.$resultCont.find('#newest');
+            self.$resultPagination = self.$resultWrap.find('.pagination');
+            self.$noData = self.$resultWrap.find('no-data');
+
+            self.$cont.commonModel();
+            self.$resultPagination.pagination();
+            self.$searchTopic.vcSelectTarget({
+                addParam: '.contents input[type=hidden]'
+            });
+
+            self.bindEvent();
+            self.setting();
+        },
+        setting: function() {
+            var self = this;
+
+            if (self.isDefault) {
+                self.$cont.commonModel('complete');
+            }
+        },
+        drawTopicList: function(data) {
+            var self = this;
+            var html = vcui.template(topicTmpl, data);
+
+            self.$searchTopic.find('option:not(.placeholder)').remove();
+            self.$searchTopic.append(html).prop('disabled', false);
+            self.$searchTopic.vcSelectbox('update');
+        },
+        drawList: function(data) {
+            var self = this;
+            var $result, html='';
+
+            for (var key in data) {
+                $result = data[key].type == 'popular' ? self.$resultPopular : self.$resultNewest;
+                data[key].listData.forEach(function(item) {
+                    html += vcui.template(listDataTmpl, item);
+                });
+
+                $result.find('.video-list').html(html);
+                $result.find('.pagination').pagination('update', data[key].listPage);
+                $result.find('.count').html(data[key].listPage.totalCount);   
+                html = '';
+            }
+        },
+        drawSummary: function(data) {
+            var self = this;
+
+            if (data.keyword) {
+                self.$resultSummary.find('.keyword').html(data.keyword);
+                self.$resultSummary.show();
+            } else {
+                self.$resultSummary.hide();
+            }
+        },
+        requestData: function() {
+            var self = this;
+            var url = self.$stepInput.data('listUrl');
+
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxData(url, self.param, function(result) {
+                var data = result.data,
+                    param = result.param,
+                    popular = data.popular;
+
+                if (popular.listData.length) {
+                    self.drawList(data);
+                    self.drawSummary(param);
+                    self.$noData.hide();
+                } else {
+                    self.$resultCont.hide();
+                    self.$resultCont.find('.video-list').empty();
+                    self.$resultSummary.hide();
+                    self.$noData.show();
+                }
+
+                lgkorUI.hideLoading();
+            }, 'POST', 'json', false);
+        },
+        bindEvent: function() {
+            var self = this;
+
+            self.$cont.on('complete', function(e, module, data, url) {
+                var param = {
+                    modelCode: data.modelCode,
+                    category: data.category,
+                    subCategory: data.subCategory
+                };
+                
+                lgkorUI.showLoading();
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var resultData = result.data;
+                    
+                    self.drawTopicList(resultData);
+                    
+                    if (!self.isDefault) {
+                        module.$myModelArea.hide();
+                        module._updateSummary({
+                            product: [data.categoryName, data.subCategoryName, data.modelCode],
+                            reset: true
+                        });
+                        module._next(module.$stepInput);
+                        module._focus(module.$selectedModelBar, function() {
+                            module.$selectedModelBar.vcSticky();
+                        });
+                    } else {
+                        module.$selectedModelBar.vcSticky();
+                    }
+                    lgkorUI.hideLoading();
+                });
+            });
+
+            self.$searchTopic.on('change', function() {
+                var param = { topic: self.$searchTopic.val() };
+                self.param = $.extend(self.param, param);
+            });
+
+            self.$searchSubTopic.on('change', function() {
+                var param = { page:1, subTopic: self.$searchSubTopic.val() };
+                self.param = $.extend(self.param, param);
+                self.requestData();
+            });
+
+            self.$searchKeyword.on('input', function() {
+                var param = { keyword: self.$searchKeyword.val() };
+                self.param = $.extend(self.param, param);
+            }).on('keydown', function(e) {
+                var param;
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    param = { page:1, keyword: self.$searchKeyword.val(), page: 1 };
+                    self.param = $.extend(self.param, param);
+                    self.requestData();
+                }
+            });
+
+            self.$searchBtn.on('click', function() {
+                var param = { page:1, keyword: self.$searchKeyword.val() };
+                self.param = $.extend(self.param, param);
+                self.requestData();
+            });
+
+            self.$resultPagination.on('pageClick', function(e) {
+                var param = { page: e.page};
+                self.$param = $.extend(self.param, param);
+                self.requestData();
+            });
+
+            self.$resultSummary.on('click', '.btn-delete', function() {
+                var param = { keyword: '', page: 1 };
+                self.param = $.extend(self.param, param);
+                self.requestData();
+            });
+        }
+    }
 
     $(window).ready(function() {
-        var videoGuide = {
-            form: document.querySelector('#submitForm'),
-            init: function() {
-                this.$form = $(this.form);
-                this.setEventListener();
-                this.sumbitHandler(); // 삭제 예정
-            
-                $('.pagination').pagination();
-            },
-            sumbitHandler: function(param) {
-                var self = this;
-
-                $.ajax({
-                    url: self.$form.data('ajax'),
-                    method: 'POST',
-                    dataType: 'json',
-                    data: param,
-                    beforeSend: function(xhr) {
-                        lgkorUI.showLoading();
-                    },
-                    success: function(d) {
-                        if (!d.status) return;
-                        
-                        var data = d.data,
-                            html = '';
-
-                        var popular = data.popular,
-                            newest = data.newest;
-
-                        if (popular.listData) {
-                            popular.listData.forEach(function(item) {
-                                html += vcui.template(listDataTmpl, item);
-                            });
-
-                            $('#popular .video-list').html(html);
-                            $('#popular .pagination').pagination('update', popular.listPage);
-                            $('#popular .count').html(popular.listPage.totalCount);
-                            html = '';
-                        }
-
-                        if (newest.listData) {
-                            newest.listData.forEach(function(item) {
-                                html += vcui.template(listDataTmpl, item);
-                            });
-                            $('#newest .video-list').html(html);
-                            $('#newest .pagination').pagination('update', newest.listPage);
-                            $('#newest .count').html(newest.listPage.totalCount);
-                        }
-                    },
-                    error: function(err){
-                        console.log(err);
-                    },
-                    complete: function() {
-                        lgkorUI.hideLoading();
-                    }
-                });
-            },
-            setEventListener: function() {
-                var self = this;
-                
-                self.$form.on('submit', function(e) {
-                    e.preventDefault();
-
-                    var data = {
-                        page: 1
-                    }
-                    
-                    self.sumbitHandler(data);
-                });
-
-                $('.pagination').on('pageClick', function(e) {
-                    var data = {
-                        page: e.page
-                    };
-
-                    self.sumbitHandler(data);
-                });
-
-                $('#btnReset').on('click', function() {
-                    var data = {
-                        page: 1
-                    }
-
-                    self.sumbitHandler(data);
-                });
-            }
-        }
-        
         videoGuide.init();
     });
 })();

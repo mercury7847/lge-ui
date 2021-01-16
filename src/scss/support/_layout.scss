@@ -24,11 +24,15 @@
     }
     
     .section {
-        &:not([style*="display: none"]) + .section {
-            margin:80px 0 0;
+        margin:80px 0 0;
+        &:first-child {
+            margin-top:0;
+        }
+        &[style*="display: none"] + .section {
+            margin:0;
         }
         .form-infos {
-            margin-top:-28px;
+            margin-top:-70px;
         }
         &-box {
             padding-right:16.9%;
@@ -61,10 +65,16 @@
             }
         }
         .section {
+            margin:60px 0 0;
             padding:32px 16px 0;
-            & + .section {
-                margin:60px 0 0;
-                border-top:12px solid #f4f4f4;
+            border-top:12px solid #f4f4f4;
+            &:first-child {
+                margin-top:0;
+                border:none;
+            }
+            &[style*="display: none"] + .section {
+                margin:0;
+                border:0;
             }
             &-box {
                 padding-right:0;
