@@ -3,7 +3,7 @@
     @@include('./common/head.html', {
         "pageCSS": [
             "support/support",
-            "support/custom-voice"
+            "support/reservation"
         ]
     })
 <body>
@@ -15,7 +15,7 @@
                 'pageTitle': '개선해 주세요',
                 'pageDesc': '미흡한 내용을 개선할 수 있도록 의견을 전달 할 수 있습니다.'
             })
-            <div class="contents support suggestions">
+            <div class="contents support service-status-detail">
                 <div class="result-progress">
                     <p class="desc">접수 &gt; 답변 중 &gt; 답변 완료 순으로 진행됩니다.</p>
                     <div class="progress-box">
@@ -140,5 +140,6 @@
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/serviceStatus.min.js"></script>
 </body>
 </html> 

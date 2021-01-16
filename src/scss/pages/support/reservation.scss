@@ -424,6 +424,9 @@
             max-width:1380px + 80px;
             margin:0 auto;
             padding:64px 40px 0;
+            &:first-child {
+                padding-top:0;
+            }
             .desc{
                 margin-bottom:24px;
                 @include font-medium;
