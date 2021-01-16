@@ -261,7 +261,7 @@
 		}
 		.slide-wrap.carousel-type.carousel-4 {
 			max-width:100%;
-			padding:0 0 24px;
+			padding:0 0 60px;
 			.slide-content {
 				margin:0 -6px;
 				.slide-conts {
@@ -589,17 +589,28 @@
 				left:80px;
 				color:#222;
 				.tit {
-					font-size:48px;
+					// font-size:48px;
+					font-size:2.5vw;
 					font-weight:700;
-					line-height:64px;
-					// font-size:2.5vw;
-					// line-height:3.2vw;
+					// line-height:64px;
+					line-height:3.2vw;
 				}
 				.btn {
 					margin-top:24px;
+					// font-size:0.85vw;
 					&.border {
 						border-color:#222;
 						color:#222;
+					}
+				}
+				@media screen and (min-width:768px) and (max-width:1200px) {
+					.tit {
+						display:inline-block;
+					}
+					.btn {
+						margin:0 0 0 10px;
+						padding:6px 20px;
+						font-size:14px;
 					}
 				}
 			}
@@ -630,12 +641,14 @@
 			padding-bottom:0;
 			.slide-track {
 				// margin:-24px 0 0 -24px;
+				display:flex;
+				flex-wrap:wrap;
 				font-size:0;
 				.slide-conts {
 					display:inline-block;
 					position:relative;
 					max-width:327px;
-					width:100%;
+					width:25%;
 					padding:12px;
 					vertical-align:top;
 					overflow:hidden;
@@ -757,7 +770,13 @@
 					}
 					&.img-type {
 						.slide-box {
-							padding-top:249px;
+							// padding-top:249px;
+						}
+						.product-area {
+							position:absolute;
+							right:52px;
+							bottom:52px;
+							left:52px;
 						}
 						.img {
 							position:absolute;
@@ -936,6 +955,7 @@
 			}
 			.slide-wrap.carousel-type.carousel-4 {
 				margin:0;
+				padding-bottom:24px;
 				overflow:visible;
 				.slide-content {
 					overflow:hidden !important;
@@ -1162,8 +1182,10 @@
 			.new-product-list {
 				padding:0 10px 24px;
 				.slide-track {
+					display:inherit;
 					.slide-conts {
 						max-width:100%;
+						width:100%;
 						padding:6px;
 						.img {
 							a {
@@ -1176,6 +1198,9 @@
 						&.img-type {
 							.slide-box {
 								padding-top:171px;
+								.product-area {
+									position:static;
+								}
 							}
 							.img {
 								padding:6px;

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: [
+            "CS/CS",
+            "support/support",
+        ],
+    })
+    <!-- pageJS: ["customer/searchShop"] -->
+<body>
+    <div class="wrap">
+        @@include('./common/header.html', {
+            "mobileCase": "noneDepth"
+        })
+
+        <div class="container">
+            <!-- 센터찾기 -->
+            <div class="contents support store-info-wrap">
+                <div class="cont-wrap">
+                    <div class="headline">
+                        <h1 class="h1-tit">센터 정보</h1>
+                    </div>
+                    <div class="tit-wrap">
+                        <div class="tit-info">
+                            <h2 class="name"><span class="blind">매장명</span>강남본점 휴대폰서비스센터</h2>
+                        </div>
+                        <div class="tit-info-r">
+                            @@include('./common/modules/tooltip.html', {
+                                "share" : true,
+                                "type" : "include",
+                                "fixed" : "fixed-right",
+                                "page" : "tooltip-share"
+                            })
+                            <div class="link-btn-wrap pc"><!-- pc 일 경우 보임 -->
+                                <a href="#n" class="btn dark-gray size"><span>센터위치 문자받기</span></a>
+                                <a href="#n" class="btn border size"><span>매장 상담 신청</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-info-wrap">
+                        <div class="left-box">
+                            <div class="manager-info">
+                                <div class="img-wrap">
+                                    <div class="img"><img src="/lg5-common/images/dummy/@img_manager2.jpg" alt="지점장 사진"></div>
+                                </div>
+                                <div class="txt-wrap">
+                                    <span class="name"><span class="blind">이름</span>홍길동</span>
+                                    <span class="area">강남본점 지점장</span>
+                                    <p class="txt"><span class="blind">인사말</span>“강남본점 휴대폰서비스센터를 찾아주셔서 감사합니다. 친철하고 편안하게 모시겠습니다.”</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-box">
+                            <!-- 센터 안내 -->
+                            <div class="info-list">
+                                <div class="info-tit-wrap"> 
+                                    <h3 class="h3-tit">센터 안내</h3>
+                                    <div class="link-btn-wrap mo"><!-- mobile 일 경우 보임 -->
+                                        <a href="#n" class="btn border size"><span>매장 상담 신청</span></a>
+                                    </div>
+                                </div>
+                                <dl>
+                                    <dt>운영시간</dt>
+                                    <dd>
+                                        <ul class="item">
+                                            <li>
+                                                <span class="key">평<span class="sp">일</span> :</span>
+                                                <span class="value">10:30~20:30</span>
+                                            </li>
+                                            <li>
+                                                <span class="key">토요일 :</span>
+                                                <span class="value">10:30~20:30</span>
+                                            </li>
+                                        </ul>
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "토요일은 12시30분에 접수가 마감 되오니 양해해 주시기 바랍니다.",
+                                                "일요일/공휴일 휴무"
+                                            ]
+                                        })
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>주소</dt>
+                                    <dd>
+                                        <div class="addr-info">
+                                            <span class="key">[지번]</span>
+                                            <span class="addr">서울특별시 강남구 청담동 86-1 LG 청담빌딩 LG BEST SHOP</span>
+                                        </div>
+                                        <div class="addr-info">
+                                            <span class="key">[도로명]</span>
+                                            <span class="addr">서울특별시 강남구 도산대로 403 (청담동) LG BEST SHOP</span>
+                                        </div> 
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>고객<br>대기 상태</dt>
+                                    <dd>
+                                        <div class="box-info">
+                                            <ul>
+                                                <li class="skyblue">
+                                                    <span class="blind">하늘색 표기</span>
+                                                    <strong class="status">원활</strong>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <ul class="optionIcon">
+                                            <li><div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div></li>
+                                            <li><div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div></li>
+                                            <li><div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div></li>
+                                            <li><div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <!-- //센터 안내 -->
+
+                            <!-- 센터 정보 -->
+                            <div class="info-list">
+                                <h3 class="h3-tit">센터 정보</h3>
+                                <dl>
+                                    <dt>서비스<br>가능 제품</dt>
+                                    <dd>
+                                        <ul class="item">
+                                            <li>
+                                                가전전제품.휴대폰.에어컨.PC
+                                            </li>
+                                        </ul>
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "단,ODD관련제품은 당일수리불가"
+                                            ]
+                                        })
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>센터 소식</dt>
+                                    <dd>
+                                        <ul class="item">
+                                            <li>11:00~12:00 / 15:00~16:00</li>
+                                            <li>이 시간을 피해 방문하시면 보다 빠른 서비스를 받으실 수 있습니다.</li>
+                                        </ul>
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "제품 서비스를 위해 센터를 방문하실 경우, 서비스 홈페이지의 [센터방문예약] 메뉴를 통해 사전 예약하시면 더욱 편리하고, 신속하게 서비스를 받으실수 있습니다."
+                                            ]
+                                        })
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>공동 입점 LG BEST SHOP </dt>
+                                    <dd>
+                                        <ul class="item">
+                                            <li>
+                                                LG BEST SHOP 동교점
+                                                <a href="#n" class="btn-link">강남본점 서비스센터</a>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <!-- //센터 정보 -->
+
+                            <!-- 오시는 길 -->
+                            <div class="info-list">
+                                <div class="info-tit-wrap">
+                                    <h3 class="h3-tit">오시는 길</h3>
+                                    <a href="#n" class="btn border size"><span>길찾기</span></a>
+                                </div>
+                                <div class="map">
+                                    <img src="/lg5-common/images/dummy/@img-map3.jpg" alt="">
+                                </div>
+                                <dl>
+                                    <dt>위치 안내</dt>
+                                    <dd>수원 종합 버스터미널 맞은 편 LG BEST SHOP 3층</dd>
+                                </dl>
+                                <div class="tabs-wrap border-type ui_tab">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#tab1">버스<em class="blind">선택됨</em></a></li>
+                                        <li><a href="#tab2">자가용</a></li>
+                                        <li><a href="#tab3">지하철</a></li>
+                                        <li><a href="#tab4">주차장</a></li>
+                                    </ul>
+                                    <div id="tab1" class="tabs-contents">
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "강남구청역 방향에서 4412/301 승차 일지아트홀 정류장(학동사거리) 하차",
+                                                "압구정동 방향에서 2411/143승차 영동고교앞 정류장하차 학동사거리 200미터 도보",
+                                                "신사동 방향에서 4212/145/4412 승차 호림아트홀 정류장 하차 학동사거리 150미터 도보",
+                                                "영동대교 방향에서 4212 승차 호림아트홀 하차 학동사거리 150미터 도보"
+                                            ]
+                                        })
+                                    </div>
+                                    <div id="tab2" class="tabs-contents">
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "7호선 강남구청역 4번 출구에서 학동사거리 방향 700미터 학동사거리 횡단보도 건너 위치, 분당선 압구정로데오역 4번 출구에서 학동사거리 방향 350미터 위치"
+                                            ]
+                                        })
+                                    </div>
+                                    <div id="tab3" class="tabs-contents">
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "영동대교 남단 방향에서 도산대로 방향 우회전→청담사거리 직진 →학동사거리(학동역 사거리 와는 틀림) 건너기 전 우측 코너에 위치"
+                                            ]
+                                        })
+                                    </div>
+                                    <div id="tab4" class="tabs-contents">
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "강남본점 건물 22대 주차 가능합니다"
+                                            ]
+                                        })
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //오시는 길 -->
+
+                            <!-- 매장사진 -->
+                            <div class="info-list photo">
+                                <h3 class="h3-tit">매장사진</h3>
+                                <div class="slide-wrap ui_carousel_slider">
+                                    <div class="indi-wrap">
+                                        <ul class="indi-conts ui_carousel_dots">
+                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                        </ul>
+                                    </div>
+                                    <div class="slide-content ui_carousel_list">
+                                        <div class="slide-track ui_carousel_track">
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store01.jpg" alt="매장사진">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store02.jpg" alt="매장사진">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store01.jpg" alt="매장사진">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store02.jpg" alt="매장사진">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //slide -->
+                                        </div>
+                                    </div>
+                                    <div class="slide-controls">
+                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //매장사진 -->
+
+                            <!-- 이벤트 -->
+                            <div class="info-list event">
+                                <h3 class="h3-tit">강남본점에서 진행중인 이벤트</h3>
+                                <div class="slide-wrap ui_carousel_slider">
+                                    <div class="indi-wrap">
+                                        <ul class="indi-conts ui_carousel_dots">
+                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                        </ul>
+                                    </div>
+                                    <div class="slide-content ui_carousel_list">
+                                        <div class="slide-track ui_carousel_track">
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-pop-event.jpg" alt="매장사진">
+                                                    </div>
+                                                    <div class="desc">
+                                                        <p class="subject">최대 2줄까지 노출 되는 것으로 정의 이벤트 타이틀 최대 2줄 이벤트 타이틀 최대 2줄 이벤트 타이틀 최대 2줄
+                                                            이벤트 타이틀 최대 2줄</p>
+                                                        <p class="date">2020.03.03~2020.09.21</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-pop-event.jpg" alt="매장사진">
+                                                    </div>
+                                                    <div class="desc">
+                                                        <p class="subject">결혼X이사 이벤트</p>
+                                                        <p class="date">2020.03.03~2020.09.21</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-pop-event.jpg" alt="매장사진">
+                                                    </div>
+                                                    <div class="desc">
+                                                        <p class="subject">결혼X이사 이벤트</p>
+                                                        <p class="date">2020.03.03~2020.09.21</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-pop-event.jpg" alt="매장사진">
+                                                    </div>
+                                                    <div class="desc">
+                                                        <p class="subject">결혼X이사 이벤트</p>
+                                                        <p class="date">2020.03.03~2020.09.21</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //slide -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //이벤트 -->
+
+
+
+                            <div class="notice-info">
+                                <div class="txt">“<span class="point">강남본점</span>”의 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</div>
+                                <a href="#n" class="btn dark-gray size-m"><span>평가하기</span></a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <footer class="footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn pink"><span>고객지원 메인</span></button>
+                        </div>
+                    </footer>
+                    <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                </div>
+            </div>
+            <!-- // 센터찾기 -->
+        </div>
+
+    </div>
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script>
+        $(function(){
+            vcui.require(['ui/carousel'], function () {
+                $('.photo .ui_carousel_slider').vcCarousel({
+                    infinite: false,
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    variableWidth : true,
+                    responsive: [
+                        {
+                            breakpoint: 10000,
+                            settings: {
+                                infinite: false,
+                                variableWidth : false,
+                                dots: true,
+                                slidesToShow: 2,
+                                slidesToScroll: 2
+                                
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                infinite: false,
+                                variableWidth : true,
+                                dots: true,
+                                slidesToShow: 1, 
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                });
+
+                $('.event .ui_carousel_slider').vcCarousel({
+                    infinite: false,
+                    slidesToShow: 2, 
+                    slidesToScroll: 2,
+                    responsive: [
+                        {
+                            breakpoint: 10000,
+                            settings: 'unslick'
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                infinite: false,
+                                variableWidth : true,
+                                dots: true,
+                                slidesToShow: 1, 
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                });
+            });
+        });
+    </script>
+</body>
+</html>

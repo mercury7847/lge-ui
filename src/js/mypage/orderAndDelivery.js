@@ -245,7 +245,7 @@
             page: page || 1
         }
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
-            if(result.data.success == "Y"){
+            if(lgkorUI.stringToBool(result.data.success)){
                 if(result.data.orderList && result.data.orderList.length){
                     CURRENT_PAGE = result.data.page;
                     TOTAL_PAGE = result.data.total;

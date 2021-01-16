@@ -22,10 +22,14 @@
             .items {
                 @include clearfix;
                 .item-box {
-                    @include clearfix;
+                    display:flex;
+                    align-items:center;
+                    @include mobile {
+                        display:block;
+                    }
                     .visual-wrap {
-                        float:left;
                         width:((444px*100%) / 1380px);
+                        order:-1;
                         .visual-area {
                             text-align:center;
                             a {
@@ -41,13 +45,11 @@
                             }
                         }
                         @include mobile {
-                            float:none;
                             width:100%;
                             margin-top:28px;
                         }
                     }
                     .text-wrap {
-                        float:right;
                         width:((936px*100%) / 1380px);
                         padding-left:24px;
                         .title * {

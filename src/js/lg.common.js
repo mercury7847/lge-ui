@@ -917,7 +917,7 @@
             });
         },
 
-        requestAjaxData: function(url, data, callback, type, dataType, autoFailAlert) {
+        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck) {
             var self = this;
             var dtype = dataType? dataType : "json";
             $.ajax({
@@ -933,33 +933,40 @@
                 }
                 
                 if(dtype == 'json' && result.status != 'success'){
-                    alert(result.message ? result.message : '오류발생');
+                    //alert(result.message ? result.message : '오류발생');
+                    console.log('resultStatusFail',url,result);
                     return;
                 }
 
-                if(autoFailAlert) {
+                if(ignoreCommonSuccessCheck) {
+                    if(callback && typeof callback === 'function') callback(result); 
+                } else {
                     var data = result.data;
-                    if(data && (!self.stringToBool(data.success) && data.alert)) {
+                    if(!self.stringToBool(data.success, true) && data.alert) {
                         //에러
+                        console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
-                    }
-                } else {
-                    if(callback && typeof callback === 'function') callback(result);   
+                    } 
                 }                
             }).fail(function(err){
                 //alert(url, err.message);
-                console.log('ajaxError',url,err);
+                console.log('ajaxFail',url,err);
             });
         },
 
-        requestAjaxDataPost: function(url, data, callback, autoFailAlert) {
+        requestAjaxDataIgnoreCommonSuccessCheck: function(url, data, callback, type, dataType) {
             var self = this;
-            self.requestAjaxData(url, data, callback, "POST", null, autoFailAlert);
+            self.requestAjaxData(url, data, callback, type, dataType, true);
         },
 
-        requestAjaxFileData: function(url, data, callback, type, dataType, autoFailAlert) {
+        requestAjaxDataPost: function(url, data, callback, ignoreCommonSuccessCheck) {
+            var self = this;
+            self.requestAjaxData(url, data, callback, "POST", null, ignoreCommonSuccessCheck);
+        },
+
+        requestAjaxFileData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck) {
             var self = this;
             var dtype = dataType? dataType : "json";
             $.ajax({
@@ -978,23 +985,26 @@
                 }
                 
                 if(dtype == 'json' && result.status != 'success'){
-                    alert(result.message ? result.message : '오류발생');
+                    //alert(result.message ? result.message : '오류발생');
+                    console.log('resultStatusFail',url,result);
                     return;
                 }
 
-                if(autoFailAlert) {
+                if(ignoreCommonSuccessCheck) {
+                    if(callback && typeof callback === 'function') callback(result); 
+                } else {
                     var data = result.data;
-                    if(data && (!self.stringToBool(data.success) && data.alert)) {
+                    if(!self.stringToBool(data.success, true) && data.alert) {
                         //에러
+                        console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
-                    }
-                } else {
-                    if(callback && typeof callback === 'function') callback(result);   
-                }                
+                    } 
+                }   
             }).fail(function(err){
-                alert(url, err.message);
+                //alert(url, err.message);
+                console.log('ajaxFail',url,err);
             });
         },
 
@@ -1014,7 +1024,7 @@
                 if(lgkorUI.stringToBool(data.success)) {
                     $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
                 }
-            });
+            }, true);
         },
 
         requestWish: function(id, sku, wishListId, wishItemId, wish, callbackSuccess, callbackFail, postUrl) {
@@ -1042,10 +1052,11 @@
                     //$dm.find('span.chk-wish-wrap input').prop("checked",!wish);
                     callbackFail(data);
                 }
-            });
+            }, true);
         },
 
         commonAlertHandler: function(alert){
+            console.log(alert);
             if(alert.isConfirm) {
                 //컨펌
                 var obj ={title: alert.title,
@@ -1085,9 +1096,9 @@
             return typeof value === 'string' || value instanceof String;
         },
 
-        stringToBool: function(str) {
+        stringToBool: function(str, returnNull) {
             if(!str) {
-                return false;
+                return !(!returnNull);
             }
             if(typeof str === 'boolean') {
                 return str;

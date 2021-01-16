@@ -604,10 +604,10 @@
             zipCode: step2Validation.getValues("zipCode")
         }
 
-        lgkorUI.requestAjaxData(INSTALL_ABLED_URL, sendata, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INSTALL_ABLED_URL, sendata, function(result){
             console.log("success :", result.data.success);
             var abled = "N";
-            if(result.data.success == "Y"){
+            if(lgkorUI.stringToBool(result.data.success)){
                 lgkorUI.alert(result.data.alert.desc, {
                     title: result.data.alert.title
                 });
@@ -671,7 +671,7 @@
             registBackFirst: step1Value.registBackFirst,
             userEmail: step1Value.userEmail
         }
-        lgkorUI.requestAjaxData(CREDIT_INQUIRE_URL, sendata, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CREDIT_INQUIRE_URL, sendata, function(result){
             if(result.data.success == "P"){
                 window.open('', 'nicePopUp', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
                 document.form_chk.action = result.data.niceAntionUrl;
@@ -689,7 +689,7 @@
                     title: result.data.alert.title
                 });
     
-                if(result.data.success == "Y"){
+                if(lgkorUI.stringToBool(result.data.success)){
                     setInputData('safekey', result.data.safekey);
                     setInputData('nicePersonLogSeq', result.data.nicePersonLogSeq);
                     setInputData('creditInquire', 'Y');
@@ -728,12 +728,12 @@
             cardPeriod: values.paymentCardPeriod
         }
         console.log("setCardAbledConfirm(); >", sendata)
-        lgkorUI.requestAjaxData(CARD_ABLED_URL, sendata, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CARD_ABLED_URL, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
 
-            var chk = result.data.success == "Y" ? true : false;
+            var chk = lgkorUI.stringToBool(result.data.success);
             setInputData('cardAbled', result.data.success);            
             step3Block.find('.arsAgreeRequest').prop('disabled', !chk);
         });
@@ -748,12 +748,12 @@
             bankNumber: values.paymentBankNumber
         }
         console.log("setBankAbledConfirm(); >", sendata)
-        lgkorUI.requestAjaxData(CARD_ABLED_URL, sendata, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CARD_ABLED_URL, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
 
-            var chk = result.data.success == "Y" ? true : false;
+            var chk = lgkorUI.stringToBool(result.data.success);
             setInputData('cardAbled', result.data.success);            
             step3Block.find('.arsAgreeRequest').prop('disabled', !chk);
         });
