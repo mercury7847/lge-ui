@@ -139,7 +139,7 @@
             position:relative;
             float:left;
             width:210px;
-            margin-top:96px;
+            //margin-top:96px;
             .tit-wrap {
                 position:relative;
                 font-size:0;
@@ -199,7 +199,9 @@
         }
         .search-wrap { 
             width:100%;
-            margin:0 0 48px;
+            height:150px;
+            padding:32px 0px 70px;
+            background-color: #f4f4f4;
             .keyword-search {
                 position:relative;
                 max-width:582px;
@@ -215,6 +217,11 @@
                     top:50%;
                     transform:translateY(-50%);
                 }
+            }
+            .desc {
+                margin-top: 12px;
+                text-align: center;
+                line-height: 26px;
             }   
             @include mobile {
                 margin:0 0 40px;
