@@ -326,15 +326,9 @@
             }
         }
     }
-    .tabs-contents {
-        padding-top: 40px;
-    }
 
     .search-wrap {
         @include pc {
-            max-width:912px;
-            width: 100%;
-            margin: 0 auto 48px;
             .search-box {
                 .forms {
                     display: flex;
