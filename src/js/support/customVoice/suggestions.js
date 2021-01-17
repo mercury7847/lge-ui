@@ -26,7 +26,6 @@
     '</li>' +
     '{{/each}}';
     var validation;
-    var authManager;
 
     var reservation = {
         init: function() {
@@ -48,7 +47,6 @@
             self.$solutionsBanner = self.$cont.find('#solutionBanner');
             self.$solutionsPopup = $('#solutionsPopup');
 
-            self.$authPopup = $('#certificationPopup');
             self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : 'N';
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
@@ -87,33 +85,7 @@
                     }
                 }
 
-                var authRegister = {
-                    authName: {
-                        pattern: /^[가-힣a-zA-Z]+$/,
-                        msgTarget: '.err-block'
-                    },
-                    authPhoneNo: {
-                        pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                        msgTarget: '.err-block'
-                    },
-                    authNo:{
-                        msgTarget: '.err-block'
-                    }
-                };
-
                 validation = new vcui.ui.CsValidation('#submitForm', {register:register});
-
-                if (self.isLogin != 'Y') {
-                    authManager = new AuthManager({
-                        elem: {
-                            popup: '#certificationPopup',
-                            name: '#authName',
-                            phone: '#authPhoneNo',
-                            number: '#authNo'
-                        },
-                        register: authRegister
-                    });
-                }
 
                 self.$cont.commonModel({
                     register: register
@@ -290,29 +262,15 @@
                 var result = validation.validate();
 
                 if (result.success == true) {    
-                    if (self.isLogin == 'Y') {
-                        lgkorUI.confirm('', {
-                            title:'예약 하시겠습니까?',
-                            okBtnName: '확인',
-                            cancelBtnName: '취소',
-                            ok: function() {
-                                self.requestComplete();
-                            }
-                        });       
-                    } else {
-                        authManager.open();
-                    }
+                    lgkorUI.confirm('', {
+                        title:'예약 하시겠습니까?',
+                        okBtnName: '확인',
+                        cancelBtnName: '취소',
+                        ok: function() {
+                            self.requestComplete();
+                        }
+                    });       
                 }
-            });
-
-            self.$authPopup.find('.btn-send').on('click', function() {
-                authManager.send();
-            });
-
-            self.$authPopup.find('.btn-auth').on('click', function() {
-                authManager.confirm(this, function() {
-                    self.requestComplete();
-                });
             });
         }
     }
