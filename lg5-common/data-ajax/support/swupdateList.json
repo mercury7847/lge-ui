@@ -1,0 +1,49 @@
+{   
+    "status": "success",
+    "message":null,
+    "data": {
+        "listData": [
+            {
+                "url": "/html/CS/CSRF6053.html",
+                "flag": "NEW",
+                "title": "LG전자 소형 폐전자제품 무상 처리서비스",
+                "date": "2019.06.15",
+                "view": "3,100",
+                "category" : "스마트폰"
+            },
+            {
+                "url": "/html/CS/CSRF6053.html",
+                "flag": "NEW",
+                "title": "LG전자 소형 폐전자제품 무상 처리서비스",
+                "date": "2019.06.15",
+                "view": "3,100",
+                "category" : "스마트폰"
+            },
+            {
+                "url": "/html/CS/CSRF6053.html",
+                "title": "LG전자 소형 폐전자제품 무상 처리서비스",
+                "date": "2019.06.15",
+                "view": "3,100",
+                "category" : "ThinQ"
+            },
+            {
+                "url": "/html/CS/CSRF6053.html",
+                "title": "LG전자 소형 폐전자제품 무상 처리서비스",
+                "date": "2019.06.15",
+                "view": "3,100",
+                "category" : "TV"
+            },
+            {
+                "url": "/html/CS/CSRF6053.html",
+                "title": "LG전자 소형 폐전자제품 무상 처리서비스",
+                "date": "2019.06.15",
+                "view": "3,100",
+                "category" : "스마트폰"
+            }
+        ],
+        "listPage": {
+            "page": 1,
+            "totalCount": 5
+        }
+    }
+}
