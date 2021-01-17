@@ -11,16 +11,13 @@
         @@include('./common/header.html')
 
         <div class="container">
-            @@include('./common/modules/page-header.html', {
-                'pageTitle': '동영상 가이드'
-            })
             <div class="contents support video-guide">
-                <div class="cont-wrap narrow">
+                <div class="cont-wrap">
 
                     <div class="board-view-wrap">
                         <div class="board-view">
                             <div class="board-view-head">
-                                <h3 class="head-title">LG TROMM 플러스 사용방법이 궁금하세요?</h3>
+                                <h1 class="head-title">LG TROMM 플러스 사용방법이 궁금하세요?</h1>
                                 <ul class="head-infos">
                                     <li class="point">TV/프로젝터>올레드</li>
                                     <li>기능관련 > 제품 사용 방법</li>
@@ -114,21 +111,29 @@
                         <a href="/html/support/CSTF2100.html" class="btn"><span>목록</span></a>
                     </div>
 
-                    <div class="list-wrap icon-type">
-                        <ul class="list">
-                            <li class="icon-mail">
-                                <a href="#" class="item">
-                                    <div class="flag-wrap bar-type">
-                                        <span class="flag">전원</span>
-                                        <span class="flag gray">냉장/냉동고>양문형, 냉장/냉동고>일반형</span>
-                                    </div>
-                                    <strong class="tit">냉장고에 손이 닿을 때 전기가 느껴져요.</strong>
-                                    <ul class="options">
-                                        <li>접수일 2020.07.27</li>
-                                    </ul>
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="section">
+                        <div class="list-title">
+                            <h2 class="tit">관련된 간편해결 정보를 확인하세요.</h2>
+                            <a href="#" class="btn-link">더보기</a>
+                        </div>
+                        <div class="list-wrap icon-type">
+                            <ul class="list">
+                                @@for (var i = 0; i < 10; i++) {
+                                <li class="icon-mail">
+                                    <a href="#" class="item">
+                                        <div class="flag-wrap bar-type">
+                                            <span class="flag">전원</span>
+                                            <span class="flag gray">냉장/냉동고>양문형, 냉장/냉동고>일반형</span>
+                                        </div>
+                                        <strong class="tit">냉장고에 손이 닿을 때 전기가 느껴져요.</strong>
+                                        <ul class="options">
+                                            <li>접수일 2020.07.27</li>
+                                        </ul>
+                                    </a>
+                                </li>
+                                }
+                            </ul>
+                        </div>
                     </div>
 
                 </div>

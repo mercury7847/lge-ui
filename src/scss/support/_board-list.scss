@@ -148,6 +148,20 @@
 }
 
 /* list */
+.list-title {
+    position:relative;
+    margin-bottom:12px;
+    .tit {
+        font-size:22px;
+        font-weight:$font-weight-bold;
+        line-height:32px;
+    }
+    .btn-link {
+        position:absolute;
+        right:0;
+        bottom:0;
+    }
+}
 .list-wrap {
     .tit {
         display:block;
@@ -483,22 +497,22 @@
 /* video list */
 .video-list-wrap {
     .video-list {
-        > li {
+        & > li {
             padding:24px 0;
             border-bottom:1px solid #ddd;
-            > a {
+            & > a {
                 display:block;
-                @include clearfix;
+                font-size:0;
             }
         }
         .video-thumb {
+            display:inline-block;
             position:relative;
             overflow:hidden;
-            float:left;
             width:120px;
             height:90px;
-            text-align:center;
-            border-radius:4px;
+            vertical-align:middle;
+            border-radius:8px;
             &:before {
                 content:'';
                 position:absolute;
@@ -526,40 +540,40 @@
             }
         }
         .video-cont {
-            float:left;
+            display:inline-block;
             @include calc('width', 100%, 120px);
-            padding-left:16px;
-            .topic, .category {
-                font-size:14px;
-                line-height:20px;
-            }
-            .topic {
-                color:#767676;
-                margin-bottom: 2px;
-            }
-            .category {
-                color:#ec455a;
-                margin-bottom: 2px;
-            }
-            .tit {
-                font-size:18px;
-                line-height:24px;
-                @include textEllipsisClamp(2);
-            }
-            .flag-wrap {
-                margin-bottom: 12px;
-                &.bar-type {
-                    .flag {
-                        font-size: 14px;
-                        font-weight: 500;
-                        &::before {
-                            width: 1px;
-                            height: 14px;
-                            background-color: #ddd;
-                            margin: 0 8px;
-                        }
+            padding-left:20px;
+            vertical-align:middle;
+            .info-box {
+                margin-bottom:8px;
+                font-size:0;
+                .topic, .category {
+                    display:inline-block;
+                    position:relative;
+                    @include font-small;
+                    vertical-align:middle;
+                }
+                .topic {
+                    margin-left:8px;
+                    padding-left:9px;
+                    color:#767676;
+                    &::before {
+                        position:absolute;
+                        left:0;
+                        top:4px;
+                        width:1px;
+                        height:14px;
+                        background-color:#ddd;
                     }
                 }
+                .category {
+                    color:#ec455a;
+                }
+            }
+            .tit {
+                font-weight:$font-weight-medium;
+                @include font-large;
+                @include textEllipsisClamp(2);
             }
         } 
     }
@@ -575,23 +589,16 @@
             .video-cont {
                 @include calc('width', 100%, 120px);
                 padding-left:12px;
-                .topic, .category {
-                    font-size:12px;
-                    line-height:16px;
-                }
-                .tit {
-                    font-size:14px;
-                    line-height:18px;
-                }
-                .flag-wrap {
-                    margin-bottom: 3px;
-                    &.bar-type {
-                        .flag {
-                            font-size: 12px;
-                            display: block;
-                            &::before {
-                                display: none;
-                            }
+                .info-box {
+                    .topic, .category {
+                        display:block;
+                    }   
+                    .topic {
+                        margin:4px 0 0 ;
+                        padding:0;
+                        &:before {
+                            content:none;
+
                         }
                     }
                 }

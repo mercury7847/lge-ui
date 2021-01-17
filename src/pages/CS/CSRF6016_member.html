@@ -7,6 +7,7 @@
     ]
 })
 <body>
+    <input type="hidden" name="topLoginFlag" id="topLoginFlag" value="Y">
     <div class="wrap">
         @@include('./common/header.html')
 
@@ -95,7 +96,7 @@
                 @@include('./common/support/select-my-model.html')
 
                 <div class="cont-wrap">
-                    <form action="/html/CS/CSTF6017.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/remoteCall.json" novalidate>
+                    <form action="/html/CS/CSTF6017.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/requestCall.json" novalidate>
                         <div class="step-area">
                             <input type="hidden" name="categoryNm" id="categoryNm" value="">
                             <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="">
@@ -103,8 +104,9 @@
                             <input type="hidden" name="subCategory" id="subCategory" value="">
                             <input type="hidden" name="modelCode" id="modelCode" value="">
                             <input type="hidden" name="productCode" id="productCode" value="">
-                            <input type="hidden" name="serviceType" id="serviceType" value="C">
+                            <input type="hidden" name="serviceType" id="serviceType" value="A">
                             <input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
+                            <input type="hidden" name="pageCode" id="pageCode" value="pageCode">
                             
                             <!-- 약관 동의 -->
                             <div class="step-box active" id="stepTerms">
@@ -113,7 +115,7 @@
                                         <p class="req" aria-disabled="true">필수 입력 항목</p>
                                     </div>
                                     @@include('./common/support/accept-terms.html', {
-                                        member: false
+                                        member: true
                                     })
                                 </div>
                                 <div class="step-btn-wrap">
@@ -126,8 +128,6 @@
                             <div class="step-box" id="stepModel">
                                 <!-- 제품 카테고리 선택 -->
                                 @@include('./common/support/select-model.html', {
-                                    "keyword": "Y",
-                                    "model": "Y",
                                     "category": [
                                         { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
                                         { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
@@ -346,9 +346,6 @@
     <!-- 제품 해결 팝업 -->
     @@include('./CS/modal/solutions-popup.html')
 
-    <!-- 휴대폰인증 팝업 -->
-    @@include('./CS/modal/phone-certification-popup.html')
-
     <!-- 취소 팝업 -->
     <article id="canclePopup" class="lay-wrap">
         <section class="lay-conts">
@@ -369,6 +366,6 @@
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
-    <script src="/lg5-common/js/support/reservation/remoteCall.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/requestCall.min.js"></script>
 </body>
 </html> 
