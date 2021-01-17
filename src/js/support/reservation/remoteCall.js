@@ -19,7 +19,7 @@
             '{{# if (index == 0) { #}}' +
             '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}" data-sub-topic-name="{{item.name}}" data-error-msg="정확한 세부증상을 선택해주세요." data-required="true" required>' +
             '{{# } else { #}}' +
-            '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}" data-topic-name="{{item.name}}">' +
+            '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}" data-sub-topic-name="{{item.name}}">' +
             '{{# } #}}' +
             '<label for="subTopic{{index}}">{{item.name}}</label>' +
         '</span>' +
@@ -49,51 +49,53 @@
             self.$solutionsPopup = $('#solutionsPopup');
 
             self.$dateWrap = self.$cont.find('.date-wrap');
-            self.$timeWrap = self.$cont.find('.time-wrap');
+            self.$timeWrap = self.$cont.find('.timte-wrap');
 
             self.$authPopup = $('#certificationPopup');
+
+            self.autoFlag = false;
             self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : 'N';
 
-            vcui.require(['ui/validation', 'ui/formatter'], function () {
-                var register = {
-                    topic: {
-                        required: true,
-                        msgTarget: '.topic-msg'
-                    },
-                    subTopic: {
-                        required: true,
-                        msgTarget: '.sub-topic-msg'
-                    },
-                    userNm: {
-                        msgTarget: '.err-block' 
-                    },
-                    phoneNo: {
-                        msgTarget: '.err-block'
-                    },
-                    date: {
-                        msgTarget: '.err-msg',
-                    },
-                    time: {
-                        msgTarget: '.err-msg',
-                    }
+            var register = {
+                topic: {
+                    required: true,
+                    msgTarget: '.topic-msg'
+                },
+                subTopic: {
+                    required: true,
+                    msgTarget: '.sub-topic-msg'
+                },
+                userNm: {
+                    msgTarget: '.err-block' 
+                },
+                phoneNo: {
+                    msgTarget: '.err-block'
+                },
+                date: {
+                    msgTarget: '.err-msg',
+                },
+                time: {
+                    msgTarget: '.err-msg',
                 }
+            }
 
-                var authRegister = {
-                    authName: {
-                        pattern: /^[가-힣a-zA-Z]+$/,
-                        msgTarget: '.err-block'
-                    },
-                    authPhoneNo: {
-                        pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                        msgTarget: '.err-block'
-                    },
-                    authNo:{
-                        msgTarget: '.err-block'
-                    }
-                };
+            var authRegister = {
+                authName: {
+                    pattern: /^[가-힣a-zA-Z]+$/,
+                    msgTarget: '.err-block'
+                },
+                authPhoneNo: {
+                    pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
+                    msgTarget: '.err-block'
+                },
+                authNo:{
+                    msgTarget: '.err-block'
+                }
+            };
+            vcui.require(['ui/validation', 'ui/formatter'], function () {
 
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
-
+                
                 if (self.isLogin != 'Y') {
                     authManager = new AuthManager({
                         elem: {
@@ -128,6 +130,9 @@
 
             html = vcui.template(topicTmpl, data);
             self.$topicList.html(html);
+        },
+        setReserveDate: function(data) {
+            var html;
         },
         requestSubTopic: function(url, param) {
             var self = this;
@@ -182,8 +187,54 @@
                 });
             }, null, "html", true);
         },
+        requestDate: function() {
+            var self = this;
+            var url = self.$stepInput.data('ajax'),
+                param = validation.getAllValues(),
+                result;
+
+            param = $.extend(param, {
+                topic: $('input[name=topic]:checked').val(),
+                subTopic: $('input[name=subTopic]:checked').val(),
+                serviceType: $('#serviceType').val(),
+                productCode: $('#productCode').val(),
+                category: $('#category').val(),
+                subCategory: $('#subCategory').val()
+            });
+
+            result = validation.validate(['topic', 'subTopic', 'userNm', 'phoneNo']);
+
+            if (result.success) {
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data,
+                        dateArr = data.dateList instanceof Array ? data.dateList : [],
+                        fastDate;
+
+                    if (data.resultFlag == 'Y') {
+                        if (dateArr.length) {
+                            fastDate = dateUtil.format(data.fastDate + '' + data.fastTime + '00', 'yyyy.MM.dd hh:mm');
+                        
+                            self.$stepDate.find('.calendar-info .date').html(fastDate);    
+                            $('.date-wrap').calendar('update', data.dateList);
+                            self.dateParam = result.param;
+
+                            self.$stepDate.addClass('active');
+                        }
+                    } else {
+                        if (data.resultMessage) {
+                            if (data.tAlert == 'Y') {
+                            }
+                            lgkorUI.alert("", {
+                                title: data.resultMessage
+                            });
+                        }
+                    }
+                });
+            }
+        },
         requestTime: function() {
-            var url = $('.calendar-area').data('timeUrl'),
+            var self = this,
+                url = $('.calendar-area').data('timeUrl'),
                 param = validation.getAllValues(),
                 result;
 
@@ -197,7 +248,7 @@
                 date: $('#date').val()
             });
 
-            result = validation.validate(['topic', 'subTopic', 'bdType', 'fan', 'addFan', 'installType', 'tvPosition', 'userNm', 'phoneNo', 'zipCode', 'userAddress', 'detailAddress']);
+            result = validation.validate(['topic', 'subTopic', 'userNm', 'phoneNo']);
 
             if (result.success) {
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
@@ -205,8 +256,14 @@
 
                     if (data.resultFlag == 'Y') {
                         $('.time-wrap').timeCalendar('update', data.timeList);
+                        $('.time-wrap').find('.box-desc').hide();
+                        $('.time-wrap').find('.box-table').show();
                     } else {
                         if (data.resultMessage) {
+                            if (data.tAlert == 'Y') {
+
+                            }
+                            
                             lgkorUI.alert("", {
                                 title: data.resultMessage
                             });
@@ -225,6 +282,7 @@
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
+                    $('#acptNo').val(data.acptNo);
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {
@@ -237,17 +295,12 @@
         },
         bindEvent: function() {
             var self = this;
-            
-            // 모델 재선택
-            self.$cont.on('reset', function() {
+
+            self.$cont.on('reset', function(e, module) {
                 self.$solutionsBanner.hide();
-
-                self.$dateWrap.calendar('reset');
-                self.$timeWrap.timeCalendar('reset');
-
-                self._next(self.$stepModel);
+                module._next(module.$stepModel);
             });
-
+            
             // 모델 선택 후 이벤트
             self.$cont.on('complete', function(e, module, data, url) {
                 var param = {
@@ -264,12 +317,11 @@
                         product: [data.categoryName, data.subCategoryName, data.modelCode],
                         reset: true
                     });
-                
+
                     self.$dateWrap.calendar('update', resultData.dateList);
-                    self.setTopicList(resultData);
-                    
-                    module.$myModelArea.hide();
+                    self.setTopicList(resultData)
                     self.$completeBtns.show();
+                    module.$myModelArea.hide();
 
                     module._next(module.$stepInput);
                     module._focus(module.$selectedModelBar, function() {
@@ -286,7 +338,8 @@
                         serviceType: $('#serviceType').val(),
                         productCode: $('#productCode').val()
                     };
-                    
+                
+                self.$solutionsBanner.hide();
                 self.requestSubTopic(url, param);
             });
 
@@ -301,9 +354,11 @@
                     };
                     
                 self.reqeustSolutions(url, param);
+
+                if (self.autoFlag) self.requestDate();
             });
 
-            // 솔루션 배너
+            /// 솔루션 배너
             self.$solutionsBanner.find('.btn-link').on('click', function(){
                 var url = $(this).data('href');
                 var param = {
@@ -316,7 +371,7 @@
                 self.setSolutions(url, param, false);
             });
 
-            // 날짜 선택
+            /// 날짜 선택
             $('.date-wrap').on('dateselected', function() {
                 self.requestTime();
             });
@@ -326,7 +381,7 @@
                 var result = validation.validate();
 
                 if (result.success == true) {    
-                    if (self.isLogin) {
+                    if (self.isLogin == 'Y') {
                         lgkorUI.confirm('', {
                             title:'예약 하시겠습니까?',
                             okBtnName: '확인',

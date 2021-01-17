@@ -79,8 +79,8 @@
             self.$addFanBox = self.$stepInput.find('#addFanBox');
 
             self.$stepDate = self.$cont.find('#stepDate');
-            self.$dateWrap = self.$stepDate.find('.visit-calendar');
-            self.$timeWrap = self.$stepDate.find('.visit-timetable');
+            self.$dateWrap = self.$stepDate.find('.date-wrap');
+            self.$timeWrap = self.$stepDate.find('.time-wrap');
 
             self.$stepEngineer = self.$cont.find('#stepEngineer');
             self.$engineerPopup = $('#choiceEngineerPopup');

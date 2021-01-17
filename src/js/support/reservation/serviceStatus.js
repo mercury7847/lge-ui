@@ -367,7 +367,7 @@
                 });
 
                 if (!isShown) self.$solutionsPopup.vcModal();
-            }, null, "html");
+            }, null, "html", true);
         }
     };
 

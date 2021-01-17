@@ -6,7 +6,7 @@
             '{{# if (index == 0) { #}}' +
             '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}" data-topic-name="{{item.name}}" data-error-msg="정확한 제품증상을 선택해주세요." data-required="true" required>' +
             '{{# } else { #}}' +
-            '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}">' +
+            '<input type="radio" name="topic" id="topic{{index}}" value="{{item.value}}" data-topic-name="{{item.name}}">' +
             '{{# } #}}' +
             '<label for="topic{{index}}"><span>{{item.name}}</span></label>' +
         '</span>' +
@@ -19,7 +19,7 @@
             '{{# if (index == 0) { #}}' +
             '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}" data-sub-topic-name="{{item.name}}" data-error-msg="정확한 세부증상을 선택해주세요." data-required="true" required>' +
             '{{# } else { #}}' +
-            '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}">' +
+            '<input type="radio" name="subTopic" id="subTopic{{index}}" value="{{item.value}}" data-topic-name="{{item.name}}">' +
             '{{# } #}}' +
             '<label for="subTopic{{index}}">{{item.name}}</label>' +
         '</span>' +
@@ -48,8 +48,11 @@
             self.$solutionsBanner = self.$cont.find('#solutionBanner');
             self.$solutionsPopup = $('#solutionsPopup');
 
+            self.$dateWrap = self.$cont.find('.date-wrap');
+            self.$timeWrap = self.$cont.find('.time-wrap');
+
             self.$authPopup = $('#certificationPopup');
-            self.isLogin = $('.header').data('ui_header').isLogin;
+            self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : 'N';
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
                 var register = {
@@ -90,8 +93,8 @@
                 };
 
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
-                
-                if (!self.isLogin) {
+
+                if (self.isLogin != 'Y') {
                     authManager = new AuthManager({
                         elem: {
                             popup: '#certificationPopup',
@@ -107,6 +110,14 @@
                     register: register
                 });
 
+                $('.date-wrap').calendar({
+                    inputTarget: '#date'
+                });
+
+                $('.time-wrap').timeCalendar({
+                    inputTarget: '#time'
+                });
+
                 self.bindEvent();
             });
         },
@@ -117,9 +128,6 @@
 
             html = vcui.template(topicTmpl, data);
             self.$topicList.html(html);
-        },
-        setReserveDate: function(data) {
-            var html;
         },
         requestSubTopic: function(url, param) {
             var self = this;
@@ -172,7 +180,40 @@
 
                     self.setSolutions(url, param, true);
                 });
-            }, null, "html");
+            }, null, "html", true);
+        },
+        requestTime: function() {
+            var url = $('.calendar-area').data('timeUrl'),
+                param = validation.getAllValues(),
+                result;
+
+            param = $.extend(param, {
+                topic: $('input[name=topic]:checked').val(),
+                subTopic: $('input[name=subTopic]:checked').val(),
+                serviceType: $('#serviceType').val(),
+                productCode: $('#productCode').val(),
+                category: $('#category').val(),
+                subCategory: $('#subCategory').val(),
+                date: $('#date').val()
+            });
+
+            result = validation.validate(['topic', 'subTopic', 'bdType', 'fan', 'addFan', 'installType', 'tvPosition', 'userNm', 'phoneNo', 'zipCode', 'userAddress', 'detailAddress']);
+
+            if (result.success) {
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data;
+
+                    if (data.resultFlag == 'Y') {
+                        $('.time-wrap').timeCalendar('update', data.timeList);
+                    } else {
+                        if (data.resultMessage) {
+                            lgkorUI.alert("", {
+                                title: data.resultMessage
+                            });
+                        }
+                    }
+                });
+            }
         },
         requestComplete: function() {
             var self = this;
@@ -184,7 +225,7 @@
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
-                    // self.$submitForm[0].data.value = JSON.stringify(param);
+                    $('#acptNo').val(data.acptNo);
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {
@@ -198,17 +239,44 @@
         bindEvent: function() {
             var self = this;
             
+            // 모델 재선택
+            self.$cont.on('reset', function() {
+                self.$solutionsBanner.hide();
+
+                self.$dateWrap.calendar('reset');
+                self.$timeWrap.timeCalendar('reset');
+
+                self._next(self.$stepModel);
+            });
+
             // 모델 선택 후 이벤트
-            self.$cont.on('complete', function(e, module, info, data, callback) {
-                // var topicArr = data.topicList instanceof Array ? data.topicList : [], 
-                //     dateArr = data.dateList instanceof Array ? data.dateList : [];
+            self.$cont.on('complete', function(e, module, data, url) {
+                var param = {
+                    modelCode: data.modelCode,
+                    serviceType: $('#serviceType').val(),
+                    category: data.category,
+                    subCategory: data.subCategory
+                };
 
-                self.$completeBtns.show();
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var resultData = result.data;
 
-                self.setReserveDate(data);
-                self.setTopicList(data)
+                    module._updateSummary({
+                        product: [data.categoryName, data.subCategoryName, data.modelCode],
+                        reset: true
+                    });
+                
+                    self.$dateWrap.calendar('update', resultData.dateList);
+                    self.setTopicList(resultData);
+                    
+                    module.$myModelArea.hide();
+                    self.$completeBtns.show();
 
-                callback();
+                    module._next(module.$stepInput);
+                    module._focus(module.$selectedModelBar, function() {
+                        module.$selectedModelBar.vcSticky();
+                    });
+                });
             });
 
             // 증상 선택
@@ -228,7 +296,7 @@
                 var $this = $(this),
                     url = self.$subTopicListWrap.data('ajax'),
                     param = {
-                        topic : $('input[name=topic]').val(),
+                        topic : $('input[name=topic]:checked').val(),
                         subTopic: $this.val(),
                         productCode: $('#productCode').val()
                     };
@@ -240,8 +308,8 @@
             self.$solutionsBanner.find('.btn-link').on('click', function(){
                 var url = $(this).data('href');
                 var param = {
-                    topic : $('#topic').val(),
-                    subToic : $('#subTopic').val(),
+                    topic : $('input[name=topic]:checked').val(),
+                    subToic : $('input[name=subTopic]:checked').val(),
                     productCode : $('#productCode').val(),
                     page: 1
                 };   
@@ -250,13 +318,8 @@
             });
 
             // 날짜 선택
-            $('.tb-calendar').on('click', 'button', function() {
-                $('#date').val('20210125');
-            });
-
-            // 시간 선택
-            $('.tb-timetable').on('click', 'button', function() {
-                $('#time').val('1530');
+            $('.date-wrap').on('dateselected', function() {
+                self.requestTime();
             });
 
             // 신청 완료
