@@ -60,6 +60,44 @@
         '“<span class="point">{{item}}</span>”' +
         '{{/each}}' +
         ' 검색 결과';
+    
+    
+
+    var recommProductItemTemplate =         
+        '<div class="slide-conts ui_carousel_slide">' +
+        '<div class="item">' +
+        '<div class="item-inner">' +
+            '<div class="product-image">' +
+                '<img src="{{imgUrl}}" alt="">' +
+            '</div>' +
+            '<div class="product-info">' +
+                '<div class="flag-wrap bar-type">' +
+                    '{{#each item in flags}}' +
+                    '<span class="flag">{{item}}</span>' +
+                    '{{/each}}' +
+                '</div>' +
+                '<div class="product-name">' +
+                    '<p class="name"><a href="#" class="name">{{name}}</a></p>' +
+                    '<p class="model">{{modelName}}</p>' +
+                '</div>' +
+                '<div class="product-price">' +
+                    '<div class="discount">' +
+                        '<span class="blind">할인가격</span>' +
+                        '<span class="price">{{discountPrice}}원</span>' +
+                    '</div>' +
+                    '<div class="original">' +
+                        '<span class="blind">원가</span>' +
+                        '<span class="price">{{price}}원</span>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="product-button">' +
+                '<button type="button" class="btn border"><span>장바구니에 담기</span></button>' + 
+            '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
+        
 
     $(window).ready(function() {
         var solutions = {
@@ -89,7 +127,51 @@
                     register: {}
                 });
 
-                this.bindEvent();
+                this.bindEvent();                
+            },
+            setRecommProduct: function(data){
+                $('.product-slider').find('.slide-track').empty();
+
+                var itemsHtml = '';
+                data.recommProduct.map(function(obj){
+                    itemsHtml += vcui.template(recommProductItemTemplate, obj);
+                });
+
+                $('.product-slider').find('.slide-track').append($(itemsHtml));
+
+                // 관련 소모품이 필요하신가요?
+                $('.product-slider').vcCarousel({
+                    infinite: false,
+                    autoplay: false,
+                    slidesToScroll: 4,
+                    slidesToShow: 4,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToScroll: 3,
+                                slidesToShow: 3
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                arrows: false,
+                                slidesToScroll: 1,
+                                slidesToShow: 1,
+                                variableWidth: true
+                            }
+                        },
+                        {
+                            breakpoint: 20000,
+                            settings: {
+                                slidesToScroll: 4,
+                                slidesToShow: 4
+                            }
+                        }
+                    ]
+                });
+                
             },
             selectFilter: function(code) {
                 var self = this;
@@ -220,6 +302,8 @@
                             product: [data.categoryName, data.subCategoryName, data.modelCode],
                             reset: true
                         });
+
+                        self.setRecommProduct(resultData);
                     });
 
                     module.$myModelArea.hide();
