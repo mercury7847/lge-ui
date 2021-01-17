@@ -40,9 +40,12 @@ vcui.define('ui/selectTarget', ['jquery', 'vcui'], function ($, core) {
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(url, params, function(result) {
-                if (result.data) {
-                    self.draw(result.data.optionData, value);
-                    if (opt.callback) opt.callback.call(self, result.data.optionData, self.options.target);
+                var data = result.data.optionData || result.data;
+                var arr = data instanceof Array ? data : [];
+
+                if (arr.length) {
+                    self.draw(arr, value);
+                    if (opt.callback) opt.callback.call(self, arr, self.options.target);
                 }
                  
                 lgkorUI.hideLoading();

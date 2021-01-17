@@ -1,3 +1,16 @@
+;(function(global){
+    global['csUI'] = {
+        init: function() {
+            var self = this;
+            self.isLogin = $('#topLoginFlag').val() == 'Y' ? true : false;
+        }
+    };
+
+    $(window).ready(function() {
+        csUI.init();
+    });
+})(window);
+
 var CS = CS || {};
 CS.MD = CS.MD || {};
 CS.UI = CS.UI || {};
