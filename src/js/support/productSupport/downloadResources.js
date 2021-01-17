@@ -96,6 +96,10 @@
 
                 defaultParam = getObject($('#submitForm').serialize());
 
+                $('.contents').commonModel({
+                    register:{}
+                })
+
                 self.bindEvent();
             },
             setManualList: function(list) {
@@ -228,6 +232,35 @@
             },
             bindEvent: function() {
                 var self = this;
+
+                // 모델 선택 후 이벤트
+            $('.contents').on('complete', function(e, module, data, url) {    
+                var param = {
+                    modelCode: data.modelCode,
+                    serviceType: $('#serviceType').val(),
+                    category: data.category,
+                    subCategory: data.subCategory
+                };
+
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var resultData = result.data;
+
+                    module._updateSummary({
+                        product: [data.categoryName, data.subCategoryName, data.modelCode],
+                        reset: true
+                    });
+                
+                    
+                    
+                    
+                    module.$myModelArea.hide();
+
+                    module._next(module.$stepInput);
+                    module._focus(module.$selectedModelBar, function() {
+                        module.$selectedModelBar.vcSticky();
+                    });
+                });
+            });
 
                 $(document).on('click', '.btn-download', function(e) {
                     e.preventDefault();
