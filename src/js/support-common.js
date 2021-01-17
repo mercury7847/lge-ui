@@ -1669,6 +1669,7 @@ $.fn.serializeObject = function() {
     function commonInit(){
         vcui.require(['ui/selectbox', 'ui/carousel'], function () {    
             // 관련 소모품이 필요하신가요?
+            /*
             $('.product-slider').vcCarousel({
                 infinite: false,
                 autoplay: false,
@@ -1700,6 +1701,7 @@ $.fn.serializeObject = function() {
                     }
                 ]
             });
+            */
 
             // LG제품에 관련된 정보를 확인하세요!
             $('.info-slider').vcCarousel({
