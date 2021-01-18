@@ -86,73 +86,69 @@
         }
     }
 
-    .solution-btn-box {
-        margin-top: 32px;
-    }
-
-    .reservation-info-box{
-        margin:48px 0;
-        background-image:linear-gradient(94deg, #9c86e7, #de64a0);
-        color:#fff;
-
-        .reservation-area{
-            display:flex;
-            align-items: center;
-            justify-content: space-between;
-            margin:0 auto;
-            padding:24px 40px;
-            max-width:1226px;
-
-            .reservation-info{
-                display:flex;
-                align-items:center;
-
-                .reservation-info-desc{
-                    @include font-medium;
-                    font-weight:normal;
-                    text-align:left;
-                    margin-left:0;
-
-                    .txt-block{
-                        display:block;
-                        @include font-large;
-                        margin-bottom:5px;
-                    }
-
-                    .btn-link{
-                        margin-left:24px;
-                    }
+    .engineer-to-visit {
+        @include clearfix;
+        .engineer-profile {
+            float:left;
+            width:160px;
+            .engineer-img {
+                width:160px;
+                height:160px;
+                img {
+                    width:100%;
+                }
+            }
+            .engineer-info {
+                margin-top:8px;
+                .name {
+                    @include font-small;
+                    font-weight:700;
+                }
+                .center {
+                    @include font-small;
                 }
             }
         }
-        .reservation-sub-desc{
-            margin-top:12px;
-            @include font-medium;
-            .txt-bold{
-                color:#fffd7c;
-            } 
+        .engineer-desc {
+            float:left;
+            width:calc(100% - 160px);
+            padding-left:32px;
+            .txt {
+                @include font-medium;
+                .topic {
+                    color:#ff2e55;
+                    font-weight:400;
+                }
+            }
+            .btn-wrap {
+                margin-top:24px;
+            }
         }
-
-        .email-img{
-            width:80px;
-            height:80px;
-            background:url(/lg5-common/images/icons/ic-usp-mailcounsel-80.svg) no-repeat center;
-            background-size:80px;
-            margin-right:96px;
-        }
-
-        .engineer-img{
-            width:120px;
-            height:120px;
-            border-radius:10px;
-            margin-right:88px;
-        }
-
-        .eng-name{
-            @include font-large-1;
-            margin-bottom:5px;
+        @include mobile {
+            .engineer-profile {
+                width:104px;
+                .engineer-img {
+                    width:104px;
+                    height:104px;
+                }
+            }
+            .engineer-desc {
+                float:left;
+                width:calc(100% - 104px);
+                padding-left:24px;
+                .txt {
+                    br {
+                        display:none
+                    }
+                }
+                .btn-wrap {
+                    margin-top:16px;
+                }
+            }
         }
     }
+
+    
 
     /* page */
     /* 출장 예약 */
@@ -235,68 +231,60 @@
         }
     }
 
-    .engineer-to-visit {
-        @include clearfix;
-        .engineer-profile {
-            float:left;
-            width:160px;
-            .engineer-img {
-                width:160px;
-                height:160px;
-                img {
-                    width:100%;
-                }
-            }
-            .engineer-info {
-                margin-top:8px;
-                .name {
-                    @include font-small;
-                    font-weight:700;
-                }
-                .center {
-                    @include font-small;
-                }
-            }
-        }
-        .engineer-desc {
-            float:left;
-            width:calc(100% - 160px);
-            padding-left:32px;
-            .txt {
-                @include font-medium;
-                .topic {
-                    color:#ff2e55;
-                    font-weight:400;
-                }
-            }
-            .btn-wrap {
-                margin-top:24px;
-            }
-        }
-        @include mobile {
-            .engineer-profile {
-                width:104px;
-                .engineer-img {
-                    width:104px;
-                    height:104px;
-                }
-            }
-            .engineer-desc {
-                float:left;
-                width:calc(100% - 104px);
-                padding-left:24px;
-                .txt {
-                    br {
-                        display:none
-                    }
-                }
-                .btn-wrap {
-                    margin-top:16px;
-                }
-            }
-        }
+    /* 전화상담 예약 */
+    &.request-call {
+
+    }
+    
+    /* 영상상담 예약 */ 
+    &.video-consulting {
+
     }
 
+    /* 센터방문 예약 */
+    &.visit-center {
+        .center-info-box {
+            padding: 20px 24px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            border: solid 1px #dddddd;
+            background-color: #ffffff;
+            .center-info-title {
+                display:block;
+                margin-bottom:16px;
+                @include font-medium;
+            }
+            .bullet-list {
+                &.top-border {
+                    margin-top: 16px;
+                }
+            }
+        }
+    
+        .tabs-wrap {
+            margin-bottom:40px;
+        }
+
+        .adress-box {
+            text-align: left;
+            label {
+                cursor: pointer;
+            }
+        }
+        .center-name {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.63;
+            color: #222222;
+        }
+        .detailed-address {
+            font-size: 14px;
+            line-height: 1.71;
+            color: #767676;
+        }
+    }
+    
+    /* 예약 다건 결과 */
     &.service-status-list {
         .service-history {
             margin-bottom:80px;
@@ -424,6 +412,9 @@
             max-width:1380px + 80px;
             margin:0 auto;
             padding:64px 40px 0;
+            &:first-child {
+                padding-top:0;
+            }
             .desc{
                 margin-bottom:24px;
                 @include font-medium;

@@ -55,6 +55,50 @@
         '</option>' +
         '{{/each}}';
 
+    var keywordsTemplate = 
+        '{{#each item in keywords}}' +
+        '“<span class="point">{{item}}</span>”' +
+        '{{/each}}' +
+        ' 검색 결과';
+    
+    
+
+    var recommProductItemTemplate =         
+        '<div class="slide-conts ui_carousel_slide">' +
+        '<div class="item">' +
+        '<div class="item-inner">' +
+            '<div class="product-image">' +
+                '<img src="{{imgUrl}}" alt="">' +
+            '</div>' +
+            '<div class="product-info">' +
+                '<div class="flag-wrap bar-type">' +
+                    '{{#each item in flags}}' +
+                    '<span class="flag">{{item}}</span>' +
+                    '{{/each}}' +
+                '</div>' +
+                '<div class="product-name">' +
+                    '<p class="name"><a href="#" class="name">{{name}}</a></p>' +
+                    '<p class="model">{{modelName}}</p>' +
+                '</div>' +
+                '<div class="product-price">' +
+                    '<div class="discount">' +
+                        '<span class="blind">할인가격</span>' +
+                        '<span class="price">{{discountPrice}}원</span>' +
+                    '</div>' +
+                    '<div class="original">' +
+                        '<span class="blind">원가</span>' +
+                        '<span class="price">{{price}}원</span>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="product-button">' +
+                '<button type="button" class="btn border"><span>장바구니에 담기</span></button>' + 
+            '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
+        
+
     $(window).ready(function() {
         var solutions = {
             initialize: function() {
@@ -70,6 +114,8 @@
                 this.$topic = this.$wrap.find('#topic');
                 this.$subTopic = this.$wrap.find('#subTopic');
                 this.$keyword = this.$wrap.find('#keyword');
+                this.$inputKeyword = this.$wrap.find('#inputKeyword');
+                this.$searchBtn = this.$wrap.find('.keyword-search .btn-search');
                 this.$orderBy = this.$wrap.find('#orderBy');
 
                 this.param = $('#submitForm').serializeObject();
@@ -77,7 +123,55 @@
 
                 this.$wrap.find('.pagination').pagination();
 
-                this.bindEvent();
+                $('.contents').commonModel({
+                    register: {}
+                });
+
+                this.bindEvent();                
+            },
+            setRecommProduct: function(data){
+                $('.product-slider').find('.slide-track').empty();
+
+                var itemsHtml = '';
+                data.recommProduct.map(function(obj){
+                    itemsHtml += vcui.template(recommProductItemTemplate, obj);
+                });
+
+                $('.product-slider').find('.slide-track').append($(itemsHtml));
+
+                // 관련 소모품이 필요하신가요?
+                $('.product-slider').vcCarousel({
+                    infinite: false,
+                    autoplay: false,
+                    slidesToScroll: 4,
+                    slidesToShow: 4,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToScroll: 3,
+                                slidesToShow: 3
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                arrows: false,
+                                slidesToScroll: 1,
+                                slidesToShow: 1,
+                                variableWidth: true
+                            }
+                        },
+                        {
+                            breakpoint: 20000,
+                            settings: {
+                                slidesToScroll: 4,
+                                slidesToShow: 4
+                            }
+                        }
+                    ]
+                });
+                
             },
             selectFilter: function(code) {
                 var self = this;
@@ -164,12 +258,15 @@
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, self.param, function(result){
                     var data = result.data,
-                        html = '';
+                        html = ''
+                        keywordsHtml = '';
                             
                     data.listData.forEach(function(item) {
                         html += vcui.template(solutionsTemplate, item);
                     });
+                    keywordsHtml = vcui.template(keywordsTemplate, data);
 
+                    self.$result.find('.tit-wrap h3.tit').html(keywordsHtml);
                     self.$result.find('#solutionsCount').html(data.listPage.totalCount);
                     self.$result.find('.list-wrap .list').html(html);
                     self.$result.find('.pagination').pagination('update', data.listPage);
@@ -190,6 +287,32 @@
             },
             bindEvent: function() {
                 var self = this;
+
+                $('.contents').on('complete', function(e, module, data, url) { 
+                    var param = {
+                        modelCode: data.modelCode,
+                        category: data.category,
+                        subCategory: data.subCategory
+                    };
+                    
+                    lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                        var resultData = result.data;
+    
+                        module._updateSummary({
+                            product: [data.categoryName, data.subCategoryName, data.modelCode],
+                            reset: true
+                        });
+
+                        self.setRecommProduct(resultData);
+                    });
+
+                    module.$myModelArea.hide();
+
+                    module._next(module.$stepInput);
+                    module._focus(module.$selectedModelBar, function() {
+                        module.$selectedModelBar.vcSticky();
+                    });
+                });
 
                 // filter
                 self.$filter.on('click', '.filter-list > li > .filter-link', function() {
@@ -297,9 +420,17 @@
                     self.requestData();
                 });
 
+
+                // keyword input keypress enter
+                self.$inputKeyword.on('keyup', function(e){
+                    if (e.keyCode == 13){
+                        self.$searchBtn.trigger('click');        
+                    }
+                });
+
                 // keyword search
-                self.$result.find('.btn-search').on('click', function() {
-                    var value = self.$result.find('#inputKeyword').val(),
+                self.$searchBtn.on('click', function() {
+                    var value = self.$inputKeyword.val(),
                         resultFlag = self.$result.find('#research').is(':checked'),
                         param = {
                             page:1,

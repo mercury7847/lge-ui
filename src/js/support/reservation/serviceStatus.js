@@ -6,7 +6,7 @@
                     '<span class="flag green">{{type}}</span>' +
                     '{{#if (status)}}<span class="flag">{{status}}</span>{{/if}}' +
                 '</div>' +
-                '<p class="tit">{{topic}} &gt; {{subTopic}}</p>' +
+                '<p class="tit">{{topic}}{{#if (modelCode)}} &gt; {{subTopic}}{{/if}}</p>' +
                 '<ul class="options">' +
                     '<li>{{category}} &gt; {{subCategory}}{{#if (modelCode)}} : {{modelCode}} {{/if}}</li>' +
                     '<li>접수번호 {{registNumber}}</li>' +
@@ -367,7 +367,7 @@
                 });
 
                 if (!isShown) self.$solutionsPopup.vcModal();
-            }, null, "html");
+            }, null, "html", true);
         }
     };
 

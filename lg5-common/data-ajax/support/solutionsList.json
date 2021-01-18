@@ -79,6 +79,7 @@
             "page": 1,
             "totalCount": 12
         },
+        "keywords" : ["All", "설치/연결", "검색어"],
         "filterList":[
             {
                 "name": "All",

@@ -305,10 +305,12 @@
                 margin: 12px 0 24px;
                 font-size: $font-small;
                 line-height: 14px;
-                color: $color-gray-1;
+                color: #000;
                 li {
                     margin-top: 6px;
                     @include textClipClamp(1);
+                    font-size:13px;
+                    line-height:13px;
                 }
                 @include mobile {
                     margin: 4px 0 16px;
@@ -365,14 +367,14 @@
                 margin-right: 8px;
                 font-weight: 700;
                 font-size: $font-large-1;
-                line-height: 32px;
+                line-height: 30px;
             }
             .original {
                 position: relative;
                 display: inline-block;
                 margin-right: 4px;
                 font-size: $font-small;
-                line-height: 32px;
+                line-height: 24px;
                 color: $color-gray-1;
                 &:after {
                     position: absolute;
@@ -406,7 +408,7 @@
                 }
                 .total {
                     font-size: $font-large;
-                    line-height: 26px;
+                    line-height: 23px;
                 }
             }
         }
@@ -445,8 +447,8 @@
         }
         .product-compare {
             position: absolute;
-            top: 16px;
-            right: 24px;
+            top: 12px;
+            right: 20px;
             a {
                 font-weight: 500;
                 @include font-small;
@@ -539,7 +541,7 @@
                 .flag {
                     height: auto;
                     padding: 5px 10px;
-                    border: 1px solid rgba(34, 34, 34, .4);
+                    border: 1px solid #000;
                     border-radius: 4px;
                     font-weight: 500;
                     font-size: $font-x-small;
@@ -574,19 +576,26 @@
                 right: 0;
                 left: 0;
                 width: 100%;
-                padding: 64px 48px;
+                padding: 80px 48px;
                 text-align: center;
+                @include mobile {
+                    padding:60px 40px;
+                }
 
                 .banner-info {
                     .title {
                         margin-bottom: 8px;
                         font-weight: 700;
-                        @include font-large-3;
+                        @include font-large-2;
+                        @include mobile {
+                            font-size:24px;
+                            line-height:33px;
+                        }
                     }
 
                     .sub-copy {
                         font-weight: 500;
-                        @include font-small;
+                        @include font-medium;
                     }
                 }
 

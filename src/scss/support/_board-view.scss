@@ -19,10 +19,8 @@
             }
             .head {
                 &-title {
-                    color:#222;
-                    font-weight:700;
+                    font-weight:$font-weight-bold;
                     @include font-large-2;
-                    // @include textEllipsisClamp(2);
                 }
                 &-infos {
                     margin-top:8px;

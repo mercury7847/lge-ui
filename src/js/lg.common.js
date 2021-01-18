@@ -313,7 +313,9 @@
                 "ui/formatter",
                 "ui/scrollNavi",
                 "ui/smoothScroll",
-                "ui/smoothScrollTab"
+                "ui/smoothScrollTab",
+                "ui/selectTarget",
+                'ui/imageFileInput'
             ], function (ResponsiveImage, BreakpointDispatcher) {
                 
                 new BreakpointDispatcher({
