@@ -423,7 +423,7 @@
     $color: (lightgray, dark, black, white, gray);
     @each $bg in $color {
         &.bg-#{$bg} {
-            .KRC0038 {
+            .component.KRC0038 {
                 @include mobile {
                     @if $bg == lightgray {
                         .fc-black,

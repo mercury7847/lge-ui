@@ -27,13 +27,9 @@
                         '</p>'+
 
                         '{{#if bizStatus}}'+
-                        '<div class="box-info">'+
-                            '<ul>'+
-                                '<li class="{{bizStatus.bizStatusClass}}">'+
-                                    '<span class="blind">{{bizStatus.bizStatusColor}} 표기</span>'+
-                                    '<strong class="status">{{bizStatus.bizStatusText}}</strong>'+
-                                '</li>'+
-                            '</ul>'+
+                        '<div class="status-icon {{bizStatus.bizStatusClass}}">'+
+                            '<span class="blind">{{bizStatus.bizStatusColor}} 표기</span>'+
+                            '<strong class="status">{{bizStatus.bizStatusText}}</strong>'+
                         '</div>'+
                         '{{/if}}'+
 

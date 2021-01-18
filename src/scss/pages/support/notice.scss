@@ -43,6 +43,9 @@
             }
             
         }
+        .search-wrap {
+            margin-bottom: 48px;
+        }
         @include mobile {
             tr {
                 td {
@@ -69,6 +72,9 @@
                     }
                 }
                 
+            }
+            .search-wrap {
+                margin-bottom: 33px;
             }
         }
     }
