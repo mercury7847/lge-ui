@@ -206,8 +206,8 @@
                         .tit {
                             display:block;
                             padding:24px 0;
-                            color:#222;
-                            @include font-small;
+                            color:#000;
+                            @include font-medium;
                             font-weight:$font-weight-bold;
                             word-break:break-all;
                             span {
@@ -268,9 +268,9 @@
                                 width:50%;
                                 vertical-align:middle;
                                 text-align:left;
-                                color:#222;
-                                font-size:14px;
-                                line-height:20px;
+                                color:#000;
+                                font-size:12px;
+                                line-height:22px;
                                 &.max {
                                     text-align:right;
                                 }
@@ -613,7 +613,7 @@
         .filter-tit {
             float:left;
             width:14%;
-            color:#222;
+            color:#000;
             @include font-medium;
             font-weight:700;
             line-height:48px;
@@ -690,7 +690,7 @@
                 .bar {
                     display:inline-block;
                     width:24px;
-                    color:#222;
+                    color:#000;
                     text-align:center;
                     @include font-medium;
                     line-height:48px;
