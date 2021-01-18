@@ -22,12 +22,12 @@
         transform: translate(-50%,-50%);
         .title {
             display: inline-block;
-            width: 350px;
-            height: 40px;
+            width: 480px;
+            height: 68px;
         }
         .copy {
-            margin: 24px 0 56px;
-            @include font-large-1;
+            margin: 25px 0 48px;
+            @include font-large-5;
             color: #fff;
         }
         .btn-area {
@@ -36,6 +36,7 @@
                 margin:0 4px;
                 border-color: #fff;
                 background-color: transparent;
+                background-image: none;
                 color: #fff;
                 @include mobile {
                     min-width:156px;
@@ -45,7 +46,7 @@
     }
     .cation {
         position: absolute;
-        bottom: 56px;
+        bottom: 48px;
         left: 0;
         width: 100%;
         @include font-medium;
@@ -55,16 +56,17 @@
     @include mobile {
         .confirm-contents {
             .title {
-                width: 243.5px;
-                height: 27.5px;
+                width: 262px;
+                height: 36px;
             }
             .copy {
-                margin: 20px 0 40px;
+                margin: 12px 0 40px;
+                font-size:20px;
+                line-height:28px;
             }
         }
         .cation {
-            bottom: 24px;
-            @include font-small;
+            bottom: 32px;
         }
     }
 }
