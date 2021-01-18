@@ -276,12 +276,12 @@
             }
             .sku {
                 display: inline-block;
+                margin-right:6px;
                 @include font-small;
                 vertical-align: top;
             }
             .review-info {
                 display: inline-block;
-                margin-left: 6px;
                 font-size: 0;
                 vertical-align: top;
                 .star,
