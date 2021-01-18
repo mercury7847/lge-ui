@@ -105,42 +105,40 @@
             self._resize();
             
             vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox'], function () {
-                lgkorUI.requestAjaxData(self.configUrl, {}, function(result){
-                    self.bestShopUrl = result.data.bestShopUrl;
-                    self.localUrl = result.data.localListUrl;
-                    self.subwayUrl = result.data.subwayListUrl;
-                    self.stationUrl = result.data.stationListUrl;
-                    self.detailUrl = result.data.detailPageUrl;
-                    self.userAdressCheckedUrl = result.data.userAdressCheckedUrl;
+                self.bestShopUrl = $('.map-container').data("bestShop");
+                self.localUrl = $('.map-container').data("localList");
+                self.subwayUrl = $('.map-container').data("subwayList");
+                self.stationUrl = $('.map-container').data("stationList");
+                self.detailUrl = $('.map-container').data("detail");
+                self.userAdressCheckedUrl = $('.map-container').data("adressChecked");
 
-                    self.$mapContainer.vcStoreMap({
-                        keyID: result.data.mapID,
-                        appKey: result.data.appKey,
-                        longitude : result.data.basicPosition.longitude,
-                        latitude: result.data.basicPosition.latitude,
-                    }).on('mapinit', function(e,data){
+                self.$mapContainer.vcStoreMap({
+                    keyID: $('.map-container').data("mapId"),
+                    appKey: $('.map-container').data("appKey"),
+                    longitude : $('.map-container').data("longitude"),
+                    latitude: $('.map-container').data("latitude")
+                }).on('mapinit', function(e,data){
 
-                        self.$map = self.$mapContainer.vcStoreMap('instance');
-                        self._loadStoreData();
+                    self.$map = self.$mapContainer.vcStoreMap('instance');
+                    self._loadStoreData();
 
-                        self._bindEvents();
+                    self._bindEvents();
 
-                    }).on('mapchanged', function(e, data){	
-                        
-                        //self.$defaultListContainer.find('.scroll-wrap').scrollTop(0);
-                        self._setItemList(data);
-                        self._setItemPosition();                        
+                }).on('mapchanged', function(e, data){	
+                    
+                    //self.$defaultListContainer.find('.scroll-wrap').scrollTop(0);
+                    self._setItemList(data);
+                    self._setItemPosition();                        
 
-                        if(self.searchResultMode){
-                            self._setSearchResultMode();
-                        }
+                    if(self.searchResultMode){
+                        self._setSearchResultMode();
+                    }
 
-                    }).on('mapsearchnodata', function(e){
-                        //검색 결과 없을 때...
-                        alert("검색 결과가 없습니다.");
-                    }).on('maperror', function(e, error){
-                        console.log(error);
-                    });
+                }).on('mapsearchnodata', function(e){
+                    //검색 결과 없을 때...
+                    alert("검색 결과가 없습니다.");
+                }).on('maperror', function(e, error){
+                    console.log(error);
                 });
 
                 $(".sch-box .tabs-wrap.ui_store_search_tab").vcTab()

@@ -340,6 +340,7 @@
             bindEvents: function() {
                 var self = this;
 
+/*
                 self.$tab.on("tabbeforechange", function(e, data){
                     //e.preventDefault();
                     var index = data.selectedIndex;
@@ -393,7 +394,7 @@
                             break;
                     }
                 });
-
+*/
                 self.$tab.on("tabchange", function(e, data){
                     var index = data.selectedIndex;
                     if(index != tabIndexAll) {
