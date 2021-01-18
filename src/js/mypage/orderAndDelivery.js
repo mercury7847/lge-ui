@@ -245,10 +245,12 @@
             page: page || 1
         }
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
-            if(lgkorUI.stringToBool(result.data.success)){
-                if(result.data.orderList && result.data.orderList.length){
-                    CURRENT_PAGE = result.data.page;
-                    TOTAL_PAGE = result.data.total;
+            console.log("result.data.success:", result.data.success)
+            if(lgkorUI.stringToBool(result.data.success, true)){
+                console.log("result.data.listData:", result.data.listData)
+                if(result.data.listData && result.data.listData.length){
+                    CURRENT_PAGE = result.param.pagination.page;
+                    TOTAL_PAGE = result.param.pagination.totalCount;
 
                     $('.inquiry-list-notify').show();
 
@@ -261,7 +263,7 @@
                     }
 
                     var leng, cdx, idx, templateList;
-                    var list = result.data.orderList;
+                    var list = result.data.listData;
                     for(idx in list){
                         leng = ORDER_LIST.length;
                         list[idx]['dataID'] = leng.toString();
