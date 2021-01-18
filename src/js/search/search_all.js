@@ -246,7 +246,7 @@
         var tabIndexShop = 5;
         var tabIndexCustomer = 6;
 
-        var intergratedSearch = {
+        var searchAll = {
             init: function() {
                 var self = this;
                 vcui.require(['ui/tab', 'ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
@@ -335,31 +335,13 @@
                 
                 self.$autoComplete.hide();
                 self.$notResult.hide();
-/*
-                //추천 태그 리스트
-                self.$suggestedTagsList = self.$searchKeywordArea.find('div.suggested-tags');
-
-                //검색 결과 공간
-                self.$searchResultArea = self.$contentsSearch.find('div.search-result-area');
-                
-                //검색 결과
-                self.$resultPreview = self.$searchResultArea.find('div.result-preview');
-                //검색 결과 - 카테고리
-                self.$resultCategory = self.$resultPreview.find('div.result-category');
-                //검색 결과 - 리스트
-                self.$resultPreviewList = self.$resultPreview.find('div.result-preview-list');
-
-                //연관검색어
-                self.$searchSimilar = self.$contentsSearch.find('div.search-similar');
-*/
-                //self.$searchResultArea.hide();
-                //self.$searchSimilar.hide();
             },
 
             bindEvents: function() {
                 var self = this;
 
                 self.$tab.on("tabbeforechange", function(e, data){
+                    //e.preventDefault();
                     var index = data.selectedIndex;
                     //var ajaxUrl = self.getTabItem(index).attr('data-search-url');
                     //var searchValue = self.$inputKeyword.attr('data-searchValue');
@@ -1220,6 +1202,6 @@
             },
         }
 
-        intergratedSearch.init();
+        searchAll.init();
     });
 })();
