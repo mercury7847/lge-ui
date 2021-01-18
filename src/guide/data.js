@@ -209,10 +209,13 @@ var res = {
 					"검색결과 있음" : {
 						"전체" : ["/html/UTS/SERF9002.html","","검수완료"],
 						"제품/케어솔루션" : ["/html/UTS/SERF9003.html","","검수완료"],
+						"제품/케어솔루션_결과없음" : ["/html/UTS/SERF9003_nodata.html","","진행중"],
 						// "케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
 						"이벤트/기획전" : ["/html/UTS/SERF9005.html","","검수완료"],
+						"이벤트/기획전_결과없음" : ["/html/UTS/SERF9005_nodata.html","","진행중"],
 						"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
 						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
+						"케어용품/소모품_결과없음" : ["/html/UTS/SERF9007_nodata.html","","진행중"],
 						"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
 						"센터/매장" : ["/html/UTS/SERF9015.html","","검수완료"],
 					},

@@ -9,8 +9,7 @@
         }
     },
     "data": {
-        "success": "Y",
-        "orderList": [
+        "listData": [
             {
                 "orderDate": "2020.09.05",
                 "orderNumber": "20203987102999",
