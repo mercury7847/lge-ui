@@ -4,6 +4,7 @@
         pageCSS: [
             "CS/CS",
             "support/support",
+            "support/find-service-center"
         ],
     })
     <!-- pageJS: ["customer/searchShop"] -->
@@ -20,25 +21,25 @@
                     <div class="waiting-state">
                         <div class="cell">
                             <h2 class="waiting-state-title">현재 고객 대기상태</h2>
+                            <!-- 2021.01.18 status 마크업 수정 -->
                             <div class="box-info">
-                                <ul>
-                                    <li class="skyblue">
-                                        <span class="blind">하늘색 표기</span>
-                                        <strong class="status">원활</strong>
-                                        <span class="text">10분 이내 접수/수리 시작</span>
-                                    </li>
-                                    <li class="olive">
-                                        <span class="blind">올리브색 표기</span>
-                                        <strong class="status">보통</strong>
-                                        <span class="text">10~30분 접수/수리 시작</span>
-                                    </li>
-                                    <li class="red">
-                                        <span class="blind">빨간색 표기</span>
-                                        <strong class="status">혼잡</strong>
-                                        <span class="text">30분 이후 접수/수리 시작</span>
-                                    </li>
-                                </ul>
+                                <div class="status-icon skyblue">
+                                    <span class="blind">하늘색 표기</span>
+                                    <strong class="status">원활</strong>
+                                    <span class="text">10분 이내 접수/수리 시작</span>
+                                </div>
+                                <div class="status-icon olive">
+                                    <span class="blind">올리브색 표기</span>
+                                    <strong class="status">보통</strong>
+                                    <span class="text">10~30분 접수/수리 시작</span>
+                                </div>
+                                <div class="status-icon red">
+                                    <span class="blind">빨간색 표기</span>
+                                    <strong class="status">혼잡</strong>
+                                    <span class="text">30분 이후 접수/수리 시작</span>
+                                </div>
                             </div>
+                            <!-- 2021.01.18 status 마크업 수정 -->
                         </div>
                         <div class="cell">
                             @@include('./common/modules/bullet-list.html', {
@@ -292,14 +293,12 @@
                                                                     <span class="blind">매장명</span>
                                                                     강남본점 휴대폰서비스센터
                                                                 </p>
-                                                                <div class="box-info">
-                                                                    <ul>
-                                                                        <li class="skyblue">
-                                                                            <span class="blind">하늘색 표기</span>
-                                                                            <strong class="status">원활</strong>
-                                                                        </li>
-                                                                    </ul>
+                                                                <!-- 2021.01.18 status 마크업 수정 -->
+                                                                <div class="status-icon skyblue">
+                                                                    <span class="blind">하늘색 표기</span>
+                                                                    <strong class="status">원활</strong>
                                                                 </div>
+                                                                <!-- 2021.01.18 status 마크업 수정 -->
                                                             </div>
                                                             <p class="addr">
                                                                 <span class="blind">주소</span>
