@@ -236,6 +236,9 @@ var res = {
 			"스토어(CPR)" : {
 				"비교하기 결과" : ["/html/CPR/MKTF1010.html","","검수완료"]
 			},
+			"브랜드관(PRH)" : {
+				"LG ThinQ" : ["/html/PRH/MKTF1110.html","","진행중"],
+			},
 			"스토리(STS)" : {
 				"홈(서브메인)" : ["/html/STS/OBS5001.html","",""]
 			},
