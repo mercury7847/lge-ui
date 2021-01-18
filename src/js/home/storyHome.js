@@ -34,9 +34,11 @@
                             '{{/if}}'+
                         '</div>'+
                         '<div class="text-area">'+
+                            '{{#if contentsName}}'+
                             '<div class="flag-wrap box-type">'+
                                 '<span class="flag">{{contentsName}}</span>'+
                             '</div>'+
+                            '{{/if}}'+
                             '<a href="#" class="card-title"><span>{{#raw title}}</span></a>'+            
                             '<div class="tag-wrap">'+
                                 '<ul class="tags">'+
@@ -83,36 +85,65 @@
 
         bindEvent();
 
-        loadUserStoryList();
-        loadNewStoryList();
+        loadStoryList('user_story', 1, 'UserStory');
+        loadStoryList('new_story', 1, 'NewStory');
     }
 
     function bindEvent(){
         $(window).on('resize', function(){
             resize();
-        })
+        });
+
+        $('.story-section').on('click', '.btn-moreview', function(e){
+            e.preventDefault();
+
+            var section = $(this).closest('.story-section');
+            var page = section.data("page");
+            if(section.hasClass('user_story')){
+                loadStoryList('user_story', page+1, "UserStory");
+            } else{
+                loadStoryList('new_story', page+1, 'NewStory');
+            }
+        });
     }
 
-    function loadUserStoryList(){
+    function loadStoryList(sectioname, page, type, selectTag){
         lgkorUI.showLoading();
 
         var sendata = {
-            selectTag:""
+            page: page,
+            type: type,
+            selectTag: selectTag ? selectTag : ""
         }
         lgkorUI.requestAjaxData(STORY_LIST_URL, sendata, function(result){
-            $('.user_story .flexbox-wrap').empty();
+            var sectionItem = $('.' + sectioname)
+            var page = result.param.pagination.page;
+            var totalcnt = result.param.pagination.totalCount;
+            sectionItem.data("page", page);
+
+            if(page == 1) sectionItem.find('.flexbox-wrap').empty();
+
+            if(page == totalcnt) sectionItem.find('.btn-moreview').hide();
+            else sectionItem.find('.btn-moreview').show();
 
             if(result.data.storyList && result.data.storyList.length > 0){
-                $('.user_story').show();
+                sectionItem.show();
+
+                var scrolltop = sectionItem.offset().top + sectionItem.outerHeight(true);
 
                 for(var str in result.data.storyList){
                     var template = result.data.storyList[str].contentsType == "tag" ? tagBoxTemplate : storyListTemplate;
                     var list = vcui.template(template, result.data.storyList[str]);
-                    $('.user_story .flexbox-wrap').append(list);
+                    sectionItem.find('.flexbox-wrap').append(list);
                 }
-                setRepositionTagBox($('.user_story'));
+                sectionItem.find('img').on('load.storyhome', function(e){
+                    $(this).off('load.storyhome');
+                    setRepositionTagBox(sectionItem);
+                });
+
+                $('html, body').animate({scrollTop: scrolltop}, 500);
             } else{
-                $('.user_story').hide();
+                sectionItem.hide();
             }
 
             lgkorUI.hideLoading();
@@ -135,8 +166,8 @@
                 for(i=0;i<status.rawnum;i++){
                     leng = boxmap[i].length;
                     lastbox = boxmap[i][leng-1];
-                    lasty = lastbox.position().top + lastbox.outerHeight(true) + 12;
-                    if(lasty < boxtop){
+                    lasty = lastbox.position().top + lastbox.outerHeight(true) + status.distance;
+                    if(lasty < boxtop - 40){
                         raw = i;
                         col = leng-1;
                         boxtop = lasty;
@@ -162,12 +193,15 @@
 
     function getAlignStatusValues(item){
         var rawnum = 4;
+        var distance = 24;
+        var distances = distance * (rawnum-1);
         var wrapwidth = item.find('.inner').width();
-        var boxwidth = parseInt(wrapwidth/rawnum);
+        var boxwidth = parseInt((wrapwidth-distances)/rawnum);
         
-        while(boxwidth < 330){
+        while(boxwidth < 310){
             rawnum--;
-            boxwidth = parseInt(wrapwidth/rawnum);
+            distances = distance * (rawnum-1);
+            boxwidth = parseInt((wrapwidth-distances)/rawnum);
         }
 
         if(rawnum < 1){
@@ -175,8 +209,6 @@
             boxwidth = wrapwidth;
         }
 
-        var distance = (wrapwidth - (boxwidth*rawnum))/(rawnum-1);
-console.log(distance)
         return {
             rawnum: rawnum,
             boxwidth: boxwidth,
@@ -184,12 +216,9 @@ console.log(distance)
         }
     }
 
-    function loadNewStoryList(){
-
-    }
-
     function resize(){
         setRepositionTagBox($('.user_story'));
+        setRepositionTagBox($('.new_story'));
     }
 
     $(window).load(function(){
