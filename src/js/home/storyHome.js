@@ -135,7 +135,7 @@
                 for(i=0;i<status.rawnum;i++){
                     leng = boxmap[i].length;
                     lastbox = boxmap[i][leng-1];
-                    lasty = lastbox.position().top + lastbox.outerHeight(true) + 24;
+                    lasty = lastbox.position().top + lastbox.outerHeight(true) + 12;
                     if(lasty < boxtop){
                         raw = i;
                         col = leng-1;
