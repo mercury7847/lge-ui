@@ -14,17 +14,17 @@
                     {
                         "name":"정수기",
                         "sku":"sku00001",
-                        "desc":"정기정검"
+                        "desc":null
                     },
                     {
                         "name":"공기청정기",
                         "sku":"sku00002",
-                        "desc":"정기정검"
+                        "desc":null
                     },
                     {
                         "name":"세탁기",
                         "sku":"sku00003",
-                        "desc":"설치"
+                        "desc":null
                     }
                 ]
             },
@@ -37,37 +37,37 @@
                     {
                         "name":"세탁기",
                         "sku":"sku00009",
-                        "desc":"설치"
+                        "desc":null
                     },
                     {
                         "name":"정수기",
                         "sku":"sku00004",
-                        "desc":"정기정검"
+                        "desc":"계약만료 예정"
                     },
                     {
                         "name":"정수기",
                         "sku":"sku00005",
-                        "desc":"정기정검"
+                        "desc":null
                     },
                     {
                         "name":"정수기",
                         "sku":"sku00006",
-                        "desc":"정기정검"
+                        "desc":null
                     },
                     {
                         "name":"공기청정기",
                         "sku":"sku00007",
-                        "desc":"정기정검"
+                        "desc":null
                     },
                     {
                         "name":"공기청정기",
                         "sku":"sku00008",
-                        "desc":"정기정검"
+                        "desc":null
                     },
                     {
                         "name":"세탁기",
                         "sku":"sku00009",
-                        "desc":"설치"
+                        "desc":null
                     }
                 ]
             },
@@ -80,12 +80,12 @@
                     {
                         "name":"정수기",
                         "sku":"sku00004",
-                        "desc":"정기정검"
+                        "desc":null
                     },
                     {
                         "name":"정수기",
                         "sku":"sku00005",
-                        "desc":"정기정검"
+                        "desc":null
                     },
                     {
                         "name":"정수기",
@@ -95,17 +95,17 @@
                     {
                         "name":"공기청정기",
                         "sku":"sku00007",
-                        "desc":"정기정검"
+                        "desc":null
                     },
                     {
                         "name":"공기청정기",
                         "sku":"sku00008",
-                        "desc":"정기정검"
+                        "desc":null
                     },
                     {
                         "name":"세탁기",
                         "sku":"sku00009",
-                        "desc":"설치"
+                        "desc":null
                     }
                 ]
             }

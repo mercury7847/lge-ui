@@ -14,7 +14,7 @@
             '</div>' +
             '<div class="svc-lists"><p>{{#if type=="prev"}}이전{{#elsif type=="next"}}다음{{#else}}이후{{/if}} 방문 서비스 상세 내역</p>' +
                 '<div class="svc-wrap"><ul class="svc-details">' +
-                    '{{#each item in serviceList}}<li>{{item.name}}({{item.sku}}) - {{item.desc}}</li>{{/each}}' +
+                    '{{#each item in serviceList}}<li>{{item.name}}({{item.sku}}){{#if item.desc}} - {{item.desc}}{{/if}}</li>{{/each}}' +
                 '</ul></div>' +
                 '{{#if serviceList.length > 5}}<div class="more-view-wrap" aria-hidden="true">' +
                     '<span class="more-view-btn">더보기</span>' +
