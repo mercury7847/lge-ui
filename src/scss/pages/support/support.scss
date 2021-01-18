@@ -249,6 +249,10 @@
                         padding: 20px 24px;
                         border-radius: 8px;
                         background-color: #f4f4f4;
+                        &.no-bg-type {
+                            padding: 24px 32px 32px;
+                            background-color: transparent;
+                        }
                     }
                 }
             }
@@ -271,6 +275,9 @@
                         .accord-cont {
                             margin: 0 20px 20px 20px;
                             padding: 16px;
+                            &.no-bg-type {
+                                padding: 0;
+                            }
                         }
                     }
                 }
@@ -387,6 +394,135 @@
         li {
             &:nth-child(n+2) {
                 margin-left: 32px;
+            }
+        }
+    }
+
+    .consulting-info {
+        color: #222;
+        .info-tit {
+            font-size: 28px;
+            font-weight: bold;
+            word-break: keep-all;
+            margin-bottom: 8px;
+        }
+        .info-desc {
+            font-size: 16px;
+            font-weight: normal;
+            margin-bottom: 32px;
+        }
+        .info-tit,
+        .info-desc {
+            text-align: center;
+        }
+        @include mobile {
+            .info-tit {
+                font-size: 16px;
+                line-height: 1.44;
+            }
+            .info-desc {
+                line-height: 1.62;
+            }
+        }
+    }
+
+    .consulting-keyword {
+        margin-bottom: 32px;
+        .item {
+            border-radius: 8px;
+            padding: 16px 0;
+            color: #fff;
+            text-align: center;
+            flex: 1;
+            &:nth-child(1) {
+                background-image: linear-gradient(135deg, #8d71ec, #f75584);;
+            }
+            &:nth-child(2) {
+                background-image: linear-gradient(135deg, #fe3f6d, #f2c37c);;
+            }
+            &:nth-child(3) {
+                background-image: linear-gradient(135deg, #f47a48, #f1c246);;
+            }
+            .title {
+                font-size: 20px;
+            }
+            .text {
+                font-size: 14px;
+            }
+        }
+        @include pc {
+            display: flex;
+            justify-content: center;
+            .item {
+                max-width: 293px;
+                margin-left: 16px;
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+        @include mobile {
+            .item {
+                margin-top: 12px;
+                &:first-child {
+                    margin-top: 0;
+                }
+                .title {
+                    font-size: 14px;
+                }
+                .text {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+    .step-list {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        li {
+            width: 104px;
+            height: 104px;
+            background-color: #f4f4f4;
+            border-radius: 50%;
+            padding: 0 20px;
+            margin-left: 40px;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            &:first-child {
+                margin-left: 0;
+                &::before {
+                    display: none;
+                }
+            }
+            &::before {
+                content: '';
+                display: block;
+                width: 16px;
+                height: 16px;
+                background:url(/lg5-common/images/icons/btn-arr-16-black.svg) no-repeat;
+                position: absolute;
+                left: -25px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+        @include mobile {
+            flex-wrap: wrap;
+            li {
+                font-size: 14px;
+                width: 80px;
+                height: 80px;
+                margin-left: 23px;
+                margin-bottom: 12px;
+                &::before {
+                    left: -19px;
+                }
             }
         }
     }

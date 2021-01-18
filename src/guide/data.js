@@ -209,10 +209,13 @@ var res = {
 					"검색결과 있음" : {
 						"전체" : ["/html/UTS/SERF9002.html","","검수완료"],
 						"제품/케어솔루션" : ["/html/UTS/SERF9003.html","","검수완료"],
+						"제품/케어솔루션_결과없음" : ["/html/UTS/SERF9003_nodata.html","","진행중"],
 						// "케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
 						"이벤트/기획전" : ["/html/UTS/SERF9005.html","","검수완료"],
+						"이벤트/기획전_결과없음" : ["/html/UTS/SERF9005_nodata.html","","진행중"],
 						"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
 						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
+						"케어용품/소모품_결과없음" : ["/html/UTS/SERF9007_nodata.html","","진행중"],
 						"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
 						"센터/매장" : ["/html/UTS/SERF9015.html","","검수완료"],
 					},
@@ -227,9 +230,9 @@ var res = {
 					"소식지 신청" : ["/html/UTS/COMF2004.html","","검수완료"]
                 },
                 "에러페이지" : {
-                    "시스템 점검" : ["/html/UTS/COMF0001.html","",""],
-                    "505Error/404Error" : ["/html/UTS/COMF0002.html","",""],
-                    "공통 에러페이지" : ["/html/UTS/COMF0003.html","",""]
+                    "시스템 점검" : ["/html/UTS/COMF0001.html","","검수요청"],
+                    "505Error/404Error" : ["/html/UTS/COMF0002.html","","검수요청"],
+                    "공통 에러페이지" : ["/html/UTS/COMF0003.html","","검수요청"]
                 }
 			},
 			"B2C메인(MA)" : {
