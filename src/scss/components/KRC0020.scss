@@ -235,7 +235,7 @@
     $color: (lightgray, dark, black, white, gray);
     @each $bg in $color {
         &.bg-#{$bg} {
-            .KRC0020 {
+            .component.KRC0020 {
                 .icon-area {
                     .slider-nav {
                         li {

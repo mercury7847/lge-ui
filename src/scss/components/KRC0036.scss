@@ -174,7 +174,7 @@
     $color: (lightgray, dark, black, white, gray);
     @each $bg in $color {
         &.bg-#{$bg} {
-            .KRC0036 {
+            .component.KRC0036 {
                 .inner {
                     .text-wrap {
                         .text-inner {
