@@ -1,0 +1,109 @@
+.contents.error-page {
+    padding:0 40px;
+    padding-top:((280px * 100%) / 1920px);
+    text-align:center;
+    br.m-br {
+        display:none;
+    }
+    @include mobile {
+        padding:0 16px;
+        padding-top:((260px * 100%) / 720px);
+        br.m-br {
+            display:block;
+        }
+    }
+    .error-inner {
+        display:inline-block;
+        vertical-align:top;
+        .tit {
+            font-size:40px;
+            line-height:56px;
+            font-weight:700;
+            small {
+                display:block;
+                margin-top:24px;
+                margin-bottom:40px;
+                @include font-large;
+                font-weight:700;
+            }
+            @include mobile {
+                font-size:27px;
+                line-height:38px;
+            }
+            &.icons {
+                &::before {
+                    content:' ';
+                    display:block;
+                    width:80px;
+                    height:80px;
+                    margin:0 auto 24px;
+                    background:url('/lg5-common/images/icons/icon-fixed-80.svg') no-repeat;
+                    @include mobile {
+                        margin-bottom:20px;
+                    }
+                }
+            }
+        }
+        .desc {
+            margin-top:24px;
+            @include font-large;
+            span {
+                display:inline-block;
+                vertical-align:top;
+            }
+            @include mobile {
+                margin-top:16px;
+            }
+        }
+        dl {
+            display:block;
+            margin-top:24px;
+            margin-bottom:120px;
+            font-size:0;
+            @include mobile {
+                margin-top:18px;
+            }
+            dt {
+                display:inline-block;
+                @include font-large;
+                font-weight:700;
+                vertical-align:top;
+            }
+            dd {
+                display:inline-block;
+                margin-left:12px;
+                color:#DA0F47;
+                @include font-large;
+                font-weight:700;
+                @include mobile {
+                    margin-left:8px;
+                }
+            }
+        }
+        .ci {
+            margin-top:32px;
+            text-align:center;
+            @include mobile {
+                margin-top:60px;
+            }
+            img {
+                max-width:82px;
+                height:auto;
+                vertical-align:top;
+            }
+        }
+        .btns {
+            margin-top:120px;
+            @include mobile {
+                position:fixed;
+                bottom:0;
+                left:0;
+                right:0;
+                padding:0 16px 40px;
+                .btn {
+                    display:block;
+                }
+            }
+        }
+    }
+}
