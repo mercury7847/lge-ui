@@ -3,123 +3,149 @@
 @import "../components-app";
 
 .KRP0011 {
-	.title {
-		margin-bottom:36px;
-		font-weight:700;
-		font-size:18px;
-		line-height:42px;
-		text-align:center;
-		* {
-			font-weight:inherit;
-			font-size:inherit;
-			line-height:inherit;
-		}
-	}
+    .component-inner {
+        max-width:1146px + 80px;
+        @include mobile {
+            padding:0;
+        }
+        > .title {
+            margin-bottom:48px;
+            font-weight:700;
+            font-size:28px;
+            line-height:42px;
+            text-align:center;
+            * {
+                font-weight:inherit;
+                font-size:inherit;
+                line-height:inherit;
+            }
+            @include mobile {
+                margin-bottom:32px;
+                font-size:24px;
+                line-height:33px;
+            }
+        }
+    }
+    
+    .recommend-wrap {
+        padding:64px;
+        border-radius:8px;
+        background:#f4f4f4;
+        @include mobile {
+            padding:40px 12px;
+            border-radius:0;
+        }
+        .prod-box {
+            float:left;
+            &.now {
+                width:((356px * 100%) / 1018px);
+                padding-right:88px;
+                .product-items {
+                    > li {
+                        width:100%;
+                    }
+                }
+                @include mobile {
+                    width:50%;
+                    padding:0 4px;
+                }
+            }
+            &.recommend {
+                float:right;
+                position:relative;
+                width:((660px * 100%) / 1018px);
+                padding-left:88px;
+                &::before {
+                    content:' ';
+                    position:absolute;
+                    top:54px;
+                    left:0;
+                    bottom:0;
+                    width:1px;
+                    background:#ddd;
+                }
+                @include mobile {
+                    width:50%;
+                    padding:0 4px;
+                    &::before {
+                        display:none;
+                    }
+                }
+                .product-items {
+                    margin:0 -18px;
+                    > li {
+                        width:50%;
+                        padding:0 18px;
+                    }
+                    @include mobile {
+                        margin:0;
+                        > li {
+                            width:100%;
+                            padding:0;
+                            &:nth-child(1) ~ li {
+                                display:none;
+                            }
+                        }
+                    }
+                }
+            }
+            .tit {
+                margin-bottom:24px;
+                @include font-large-1;
+                font-weight:700;
+                text-align:center;
+                @include mobile {
+                    margin-bottom:12px;
+                }
+            }
+        }
 
-	.compare-list {
-		margin:0 -4px;
-		@include clearfix();
-		@include mobile {
-			margin:0 -6px;
-		}
-		li {
-			float:left;
-			width:33.3%;
-			padding:0 4px;
-			&:nth-child(3) ~ li {
-				display:none;
-			}
-			@include mobile {
-				width:50%;
-				padding:0 6px;
-				&:nth-child(2) ~ li {
-					display:none;
-				}
-			}
-			&:first-child {
-				width:33.4%;
-				@include mobile {
-					width:50%;
-				}
-			}
-			.item {
-				border-radius:4px;
-				box-shadow:4px 12px 28px 0 rgba(0,0,0,0.12);
-				background-color:#fff;
-				@include mobile {
-					box-shadow:none;
-				}
-				.product-image {
-					& > img {
-						width:100%;
-						height:auto;
-						vertical-align:top;
-					}
-					@include mobile {
-						margin-bottom:6px;
-					}
-				}
-				.product-contents {
-					padding:0 56px 40px;
-					@include mobile {
-						padding:0 0;
-						text-align:center;
-					}
-					.product-name {
-						font-weight:700;
-						font-size:16px;
-						line-height:24px;
-						color:#222;
-						@include textClipClamp(1);
-						@include mobile {
-							@include textClipClamp(2);
-						}
-					}
-					.product-sku {
-						display:block;
-						font-size:16px;
-						line-height:24px;
-					}
-					.product-price {
-						display:block;
-						margin-top:8px;
-						font-weight:700;
-						font-size:20px;
-						line-height:30px;
-					}
-					.review-info {
-						display:block;
-						margin-top:12px;
-						font-size:0;
-						.star,
-						.average-rating,
-						.review-count {
-							display: inline-block;
-							vertical-align: middle;
-						}
-						.star {
-							width:18px;
-							height:18px;
-							margin-right:3px;
-							background:url("/lg5-common/images/icons/icon-star-off.svg") no-repeat 0 0;
-							background-size:18px 18px;
-							&.is-review {
-								background-image:url("/lg5-common/images/icons/icon-star-on.svg");
-							}
-						}
-						.average-rating,
-						.review-count {
-							font-size:16px;
-							line-height:24px;
-						}
-					}
-				}
-			}
-		}
-	}
+        .product-items {
+            > li {
+                padding-bottom:0;
+            }
+            .item.rec-items {
+                padding:12px 32px 32px;
+                box-shadow:none;
+                a img {
+                    max-width:180px;
+                }
+                @include mobile {
+                    padding:12px 12px 24px;
+                    .product-image {
+                        a {
+                            margin:0 -7px;
+                            img {
+                                max-width:100%;
+                            }
+                        }
+                    }
+                }
+                .product-info {
+                    min-height:92px;
+                    padding-top:8px;
+                    @include mobile {
+                        min-height:99px;
+                        padding-top:4px;
+                    }
+                    .product-name {
+                        margin-top:0;
+                        a {
+                            max-height:52px;
+                            @include font-medium;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 	.bottom-area {
-		margin-top:40px;
-		text-align:center;
+        clear:both;
+        padding-top:36px;
+        text-align:center;
+        @include mobile {
+            padding-top:16px;
+        }
 	}
 }
