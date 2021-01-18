@@ -225,7 +225,12 @@ var res = {
 					// "이용약관" : ["/html/UTS/COMF2003.html","","진행중"],
 					// "이메일 무단수집 거부" : ["/html/UTS/COMF2005.html","","진행중"],
 					"소식지 신청" : ["/html/UTS/COMF2004.html","","검수완료"]
-				}
+                },
+                "에러페이지" : {
+                    "시스템 점검" : ["/html/UTS/COMF0001.html","",""],
+                    "505Error/404Error" : ["/html/UTS/COMF0002.html","",""],
+                    "공통 에러페이지" : ["/html/UTS/COMF0003.html","",""]
+                }
 			},
 			"B2C메인(MA)" : {
 				"B2C메인" : ["/html/MA/MKTF1000.html","",""]
