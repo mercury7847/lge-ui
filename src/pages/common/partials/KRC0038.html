@@ -66,71 +66,59 @@
 		.font-underline : 언더라인
 	-->
 	<section class="component KRC0038 @@stageType">
-		<div class="inner"> 
-            <!-- text area -->
-            <div class="text-area @@alignType1 @@fontColor1 mobile-only"><!-- [KR수정_201231] .mobile-only class 추가 -->
-                <div class="text-inner">
-                    <div class="title">
-                        <h2>헤드라인 텍스트 글자 수 최대 40자까지 사용 가능</h2>
-                    </div>
-                    <p class="body-copy @@fontStyle1">공백 포함 400자까지 글자수를 제한합니다. 공백 포함 400자까지 글자수를 제한합니다.</p>
-                </div>
-            </div>
-            <!-- // text area -->
-            
+		<div class="inner">    
+            <!-- [KR수정_210118] .visual-area 전/후 DOM 전체 삭제(위치 이동) -->
             <!-- visual -->
             <div class="visual-area ui_carousel_slider">
                 <div class="slide-content ui_carousel_list">
                     <ul class="slide-track ui_carousel_track">
                         @@for ( var j=0; j < images.length; j++ ) {
                         <li class="slide-conts ui_carousel_slide">
+                            <!-- [KR수정_210118] title-inner DOM 위치 이동(PC/모바일 DOM 한벌로 진행) -->
+                            <div class="title-inner @@boxVertical @@boxSize @@boxAlign">
+                                <!-- [KR수정_210106] .box, .box > .box-inner 로 감싸기 -->
+                                <div class="box">
+                                    <div class="box-inner pc-titles"><!-- [KR수정_210115] .pc-titles 추가 -->
+                                        <div class="title">
+                                            <h2>헤드라인 텍스트 글자 수 최대 40자까지 사용 가능</h2>
+                                        </div>
+                                        <p class="body-copy @@fontStyle1">공백 포함 400자까지 글자수를 제한합니다. 공백 포함 400자까지 글자수를 제한합니다.</p>
+                                    </div>
+                                </div>
+                                <!-- // [KR수정_210106] .box, .box > .box-inner 로 감싸기 -->
+                            </div>
+                            <!-- // [KR수정_210118] title-inner DOM 위치 이동(PC/모바일 DOM 한벌로 진행) -->
                             <div class="images `+images[j].color+`">
                                 <!-- [KR수정_201231] 이미지 호출 방식 '이미지' 태그로 변경 -->
                                 <img src="/lg5-common/images/KRC0038/@bg`+[j+1]+`.jpg" data-pc-src="/lg5-common/images/KRC0038/@bg`+[j+1]+`.jpg" data-m-src="/lg5-common/images/KRC0038/@bg-m`+[j+1]+`.jpg" alt="">
                                 <!-- // [KR수정_201231] 이미지 호출 방식 '이미지' 태그로 변경 -->
                                 <p class="hidden">graphic description : </p>
                             </div>
+                            <!-- [KR수정_210118] text-inner DOM 위치 이동 -->
+                            <div class="text-inner @@alignType2 @@fontColor2 @@verticalType"><!-- [KR수정_201231] vertical option 추가 -->
+                                <ul class="text-list">
+                                    @@for ( var i=0; i < lists; i++ ) {
+                                    <li class="list"><!-- [KR수정_210115] 아이콘 사용하지 않을 경우 .no-icon addClass -->
+                                        <div class="icon">
+                                            <img src="/lg5-common/images/KRC0038/icon-08-120.svg" alt="">
+                                            <p class="hidden">graphic description : </p>
+                                        </div>
+                                        <div class="text-box">
+                                            <p class="title">타이틀 텍스트 공백포함 최대 40자까지 입력 권장합니다.</p>
+                                            <p class="body-copy @@fontStyle2">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
+                                        </div>
+                                    </li>
+                                    }
+                                </ul>
+                            </div>
+                            <!-- // [KR수정_210118] text-inner DOM 위치 이동 -->
                         </li> 
                         }
                     </ul>
                 </div>
             </div>
             <!-- // visual -->    
-            
-            <!-- thumbnail text area -->
-            <div class="thumbnail-text-area"><!-- [KR수정_201231] vertical option 삭제 -->
-                <!-- [KR수정_201231] pc display title영역 DOM 추가 -->
-                <div class="title-inner @@boxVertical @@boxSize @@boxAlign">
-                    <!-- [KR수정_210106] .box, .box > .box-inner 로 감싸기 -->
-                    <div class="box">
-                        <div class="box-inner pc-titles"><!-- [KR수정_210115] .pc-titles 추가 -->
-                            <div class="title">
-                                <h2>헤드라인 텍스트 글자 수 최대 40자까지 사용 가능</h2>
-                            </div>
-                            <p class="body-copy @@fontStyle1">공백 포함 400자까지 글자수를 제한합니다. 공백 포함 400자까지 글자수를 제한합니다.</p>
-                        </div>
-                    </div>
-                    <!-- // [KR수정_210106] .box, .box > .box-inner 로 감싸기 -->
-                </div>
-                <!-- // [KR수정_201231] pc display title영역 DOM 추가 -->
-                <div class="text-inner @@alignType2 @@fontColor2 @@verticalType"><!-- [KR수정_201231] vertical option 추가 -->
-                    <ul class="text-list">
-                        @@for ( var i=0; i < lists; i++ ) {
-                        <li class="list"><!-- [KR수정_210115] 아이콘 사용하지 않을 경우 .no-icon addClass -->
-                            <div class="icon">
-                                <img src="/lg5-common/images/KRC0038/icon-08-120.svg" alt="">
-                                <p class="hidden">graphic description : </p>
-                            </div>
-                            <div class="text-box">
-                                <p class="title">타이틀 텍스트 공백포함 최대 40자까지 입력 권장합니다.</p>
-                                <p class="body-copy @@fontStyle2">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
-                            </div>
-                        </li>
-                        }
-                    </ul>
-                </div>
-            </div>
-            <!-- // thumbnail text area -->
+            <!-- // [KR수정_210118] .visual-area 전/후 DOM 전체 삭제(위치 이동) -->
         </div>
 	</section>
 </div>
