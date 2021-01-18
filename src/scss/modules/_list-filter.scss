@@ -32,7 +32,7 @@
     .list-count {
         float: left;
         font-weight: 700;
-        @include font-medium;
+        @include font-small;
     }
     .sort-tit {
         @include font-small;
