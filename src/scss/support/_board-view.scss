@@ -81,6 +81,9 @@
         &-body {
             padding:48px 0 80px;
             .view-content {
+                img {
+                    max-width: 100%;
+                }
                 /* video detail */
                 .video-content {
                     padding:64px 40px;
