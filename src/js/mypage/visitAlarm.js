@@ -1,6 +1,6 @@
 
 (function(){
-    var visitAlarmItemTemplate = '<li class="{{#if type=="prev"}}off{{#elsif type=="next"}}on after{{#else}}off after{{/if}}">' +
+    var visitAlarmItemTemplate = '<li class="{{#if type=="prev"}}off{{#elsif type=="next"}}on after{{#else}}off after{{/if}}" data-visit-target-seq="{{visitTargetSeq}}" data-manager-emp-no="{{managerEmpNo}}">' +
         '<div class="inner">' +
             '<div class="svc-info">' +
                 '<p class="date">' +
@@ -132,7 +132,7 @@
 
                     var date = $(this).attr('data-date');
                     var time = $(this).attr('data-time');
-                    self.requestEnableVisitDay(date, time);
+                    self.requestEnableVisitDay($li, date, time);
 
                     /*
                     //선택되었던 날짜 초기화
@@ -182,7 +182,7 @@
 
                     if($table.hasClass('tb-calendar')) {
                         //방문 가능 시간 데이타 가져오기
-                        self.requestEnableVisitTime(selectedData.date);
+                        self.requestEnableVisitTime(selectedData);
                     } else {
                         self.setVisitDateText(selectedData);
                     }
@@ -220,7 +220,15 @@
 
                 var _id = self.getSelectedContractID();
 
-                return {"id":_id, "date":date, "time":time};
+                var visitTargetSeq = self.$popupChangeVisitDate.attr('data-visit-target-Seq');
+                var managerEmpNo = self.$popupChangeVisitDate.attr('data-manager-emp-no');
+
+                return {"id":_id,
+                    "date":date,
+                    "time":time,
+                    "visitTargetSeq":visitTargetSeq,
+                    "managerEmpNo":managerEmpNo
+                };
             },
 
             requestData: function(contract) {
@@ -241,7 +249,7 @@
                 });
             },
 
-            requestEnableVisitDay: function (date, time) {
+            requestEnableVisitDay: function ($dm, date, time) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-day-url');
                 var $list = self.$calendarTable.find('tbody');
@@ -251,7 +259,16 @@
                     lgkorUI.alert("", {title: "계약정보 선택에서 개별 계약 정보를<br>선택 후, 방문일정 변경요청을<br>신청해주세요."});
                     return;
                 };
-                lgkorUI.requestAjaxDataPost(ajaxUrl, {"id":_id, "date":date}, function(result){
+                var param = {
+                    "id":_id,
+                    "date":date,
+                    "visitTargetSeq": $dm.attr('data-visit-target-seq'),
+                    "managerEmpNo": $dm.attr('data-manager-emp-no')
+                }
+                self.$popupChangeVisitDate.attr('data-visit-target-Seq', param.visitTargetSeq);
+                self.$popupChangeVisitDate.attr('data-manager-emp-no', param.managerEmpNo);
+
+                lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                     var data = result.data;
 
                     //날짜 새로 그리기
@@ -328,10 +345,10 @@
                 self.$visitDate.text(vcui.date.format(selectedData.date,'yyyy.MM.dd') + " " + (!selectedData.time?"":selectedData.time));
             },
 
-            requestEnableVisitTime:function(date) {
+            requestEnableVisitTime:function(selectedData) {
                 var self = this;
                 var ajaxUrl = self.$popupChangeVisitDate.attr('data-time-url');
-                lgkorUI.requestAjaxDataPost(ajaxUrl, {'date':date}, function(result){
+                lgkorUI.requestAjaxDataPost(ajaxUrl, selectedData, function(result){
                     var data = result.data;
                     var arr = data instanceof Array ? data : [];
 

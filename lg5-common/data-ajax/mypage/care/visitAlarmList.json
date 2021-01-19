@@ -10,6 +10,8 @@
                 "date":"20201220",
                 "time":"11:30",
                 "when":null,
+                "visitTargetSeq":"vit00001",
+                "managerEmpNo":"emp00001",
                 "serviceList":[
                     {
                         "name":"정수기",
@@ -33,6 +35,8 @@
                 "date":"20210117",
                 "time":"11:40",
                 "when":"1개월 1주 후에 만나요!",
+                "visitTargetSeq":"vit00002",
+                "managerEmpNo":"emp00002",
                 "serviceList":[
                     {
                         "name":"세탁기",
@@ -76,6 +80,8 @@
                 "date":"20210225",
                 "time":"11:50",
                 "when":"2개월 2주 후에 만나요!",
+                "visitTargetSeq":"vit00003",
+                "managerEmpNo":"emp00003",
                 "serviceList":[
                     {
                         "name":"정수기",
