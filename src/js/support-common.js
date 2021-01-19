@@ -43,12 +43,11 @@ CS.MD.plugin = function(pluginName, Plugin) {
 
 CS.MD.commonModel = function() {
     var pluginName = 'commonModel';
-
     var selectedBarTmpl = 
         '<div class="box">' +
             '<div class="prod-info">' +
                 '{{# if (typeof tit != "undefined") { #}}' +
-                '<p class="tit">제품을 선택해 주세요</p>' +
+                '<p class="tit">서비스 이용을 위해 제품을 선택해주세요.</p>' +
                 '{{# } #}}' +
                 '{{# if (typeof product != "undefined") { #}}' +
                 '<ul class="product">' +
@@ -59,15 +58,16 @@ CS.MD.commonModel = function() {
                     '{{# } #}}' +
                 '</ul>' +
                 '{{# } #}}' +
-                '{{# if (typeof desc != "undefined") { #}}' +
-                '<p class="desc">{{desc}}</p>' +
-                '{{# } #}}' +
+                // '{{# if (typeof desc != "undefined") { #}}' +
+                // '<p class="desc">{{desc}}</p>' +
+                // '{{# } #}}' +
             '</div>' +
             '{{# if (typeof reset != "undefined") { #}}' +
             '<div class="prod-btn">' +
-                '{{# if (reset == "inquiry") { #}}' +
+                '{{# if (reset == "type") { #}}' +
                 '<button type="button" class="btn border size reset btn-reset">문의유형 재선택</button>' +
-                '{{# } else { #}}' +
+                '{{# } #}}' +
+                '{{# if (reset == "product") { #}}' +
                 '<button type="button" class="btn border size reset btn-reset">제품 재선택</button>' +
                 '{{# } #}}' +
             '</div>' +
@@ -106,7 +106,6 @@ CS.MD.commonModel = function() {
             register: {},
             page: 1,
             total: 0,
-            caseType: 'product',
             param: {},
             summary: {
                 tit: '서비스이용을 위해 제품을 선택해 주세요.'
@@ -137,7 +136,6 @@ CS.MD.commonModel = function() {
             // 옵션
             self.page = options.page;
             self.totalCount = options.totalCount;
-            self.inquiryType = options.inquiryType;
             self.param = options.param;
             self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : 'N';
 
@@ -201,7 +199,6 @@ CS.MD.commonModel = function() {
                 ]
             });
 
-            self.caseType = 'product';
             self.param = {
                 pageCode: $('#pageCode').val()
             }
@@ -214,7 +211,6 @@ CS.MD.commonModel = function() {
 
             self.page = options.page;
             self.totalCount = options.totalCount;
-            self.inquiryType = options.inquiryType;
             self.param = options.param;
 
             self.$el.find('[type=hidden]').not('[name=serviceType], [name=lockUserId]').val('');
@@ -383,7 +379,7 @@ CS.MD.commonModel = function() {
                     self.$el.find('#subCategoryNm').val(data.subCategoryName);
                     self.$el.find('#modelCode').val(data.modelCode);
                     self.$el.find('#productCode').val(data.productCode);
-                     
+                    data.isRequest = true;
                     self.$el.trigger('complete', [self, data, url]);
                 }
             });
@@ -443,7 +439,7 @@ CS.MD.commonModel = function() {
                     self.$el.find('#subCategory').val(data.subCategory);
                     self.$el.find('#subCategoryNm').val(data.subCategoryName);
                     
-                    data.type = 'inquiry';
+                    data.isRequest = false;
 
                     self.$el.trigger('complete', [self, data]);
                 }
@@ -593,7 +589,7 @@ CS.MD.commonModel = function() {
                 self.$el.find('#subCategoryNm').val(data.subCategoryName);
                 self.$el.find('#modelCode').val(data.modelCode);
                 self.$el.find('#productCode').val(data.productCode);
-
+                data.isRequest = true;
                 self.$el.trigger('complete', [self, data, url]);
             });
             
@@ -1616,40 +1612,57 @@ var AuthManager = function() {
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, data, function(result) {
-                    if (self.popFlag) {
-                        var nameValue = $(elem.name).val(),
-                            phoneValue = $(elem.phone).val();
-                        
-                        if (result.data.resultFlag == 'Y') {
-                            if (elem.target) {
-                                $(target.name).val(nameValue);
-                                $(target.phone).val(phoneValue);
+                    var resultData = result.data;
 
-                                $button.prop('disabled', true);
-                                $button.find('span').html(COMPLETETEXT);
-                            
-                                $(elem.popup).vcModal('hide');
-                            }
+                    if (resultData.resultFlag == 'Y') {
+                        success = true;
 
-                            success = true;
+                        if (elem.target) {
+                            $button.prop('disabled', true);
+                            $button.find('span').html(COMPLETETEXT);
+                            $(target.name).val(nameValue);
+                            $(target.phone).val(phoneValue);
+                            $(elem.popup).vcModal('hide');
+                        }
+
+                        if (resultData.resultMessage) {
+                            lgkorUI.alert("", {
+                                title: resultData.resultMessage,
+                                ok: function(el) {
+                                    if (resultData.url) {
+                                        $(self.options.elem.form).attr('action', resultData.url);
+                                        $(self.options.elem.form).submit();
+                                        // location.href = resultData.url;
+                                    } else {
+                                        $(el).vcModal('hide');
+                                        callback && callback(success, result);
+                                    }
+                                }
+                            });
+                        } else if (resultData.url) {
+                            $(self.options.elem.form).attr('action', resultData.url);
+                            $(self.options.elem.form).submit();
+                            // location.href = resultData.url;
                         } else {
-                            lgkorUI.alert("", {title: result.data.resultMessage});
-
-                            success = false;
+                            callback && callback(success, result);
                         }
                     } else {
-                        if (result.data.resultFlag == 'Y') {
-                            $(elem.form).submit();
-                        } else if (result.data.resultFlag == 'N') {
-                            lgkorUI.alert("", {
-                                title: result.data.resultMessage
-                            });
-                            
-                            success = false;
-                        }
+                        success = false;
+                        
+                        lgkorUI.alert("", {
+                            title: resultData.resultMessage,
+                            ok: function(el) {
+                                if (resultData.url) {
+                                    location.href = resultData.url;
+                                } else {
+                                    $(el).vcModal('hide');
+                                    callback && callback(success, result);
+                                }
+                            }
+                        });
                     }
 
-                    callback && callback(success, result);
+                    lgkorUI.hideLoading();
                 });
             }
         }
