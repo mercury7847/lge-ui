@@ -7,8 +7,16 @@
         init: function() {
             var self = this;
             
-            self.$form = $('#submitForm');
+            self.$cont = $('.contents');
+            self.$submitForm = self.$cont.find('#submitForm');
+            self.$completeBtns = self.$cont.find('.btn-group');
+
+            self.$aircareBox = self.$cont.find('#aircareBox');
+            self.$aircareListWrap = self.$cont.find('#aircareList');
+            self.$aircareList = self.$aircareListWrap.find('.rdo-list');
+            
             self.$authPopup = $('#certificationPopup');
+            self.isLogin = $('.header').data('ui_header').isLogin;
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
                 $('#phoneNo').vcFormatter({'format':'num', "maxlength":11});
@@ -46,10 +54,24 @@
                     }
                 }
 
-                validation = new vcui.ui.CsValidation('#submitForm', {register:register});
+                validation = new vcui.ui.CsValidation('.step-area', {register:register});
+
+                self.$cont.commonModel({
+                    register: register
+                });
 
                 self.bindEvent();
             });
+        },
+
+        setairfilterType: function(data) {
+            var self = this;
+
+            var html;
+
+            html = vcui.template(airfilterTmpl, data);
+            self.$airfilterList.html(html);
+            self.$airfilterBox.show();
         },
         
         bindEvent: function() {
@@ -126,7 +148,7 @@
                                 $this.find('#authNo').prop('disabled', false);
                             }
     
-                            lgkorUI.alert('', {
+                            lgkorUI.alert("", {
                                 title: result.data.resultMessage
                             });
                         })
@@ -154,7 +176,7 @@
                                 self.$authPopup.vcModal('hide');
                             }
 
-                            lgkorUI.alert('', {title: result.data.resultMessage});
+                            lgkorUI.alert("", {title: result.data.resultMessage});
                         });
                     }
                 });

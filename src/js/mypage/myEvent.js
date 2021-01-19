@@ -19,15 +19,21 @@
         var myEvent = {
             init: function() {
                 var self = this;
+                
+                self.setting();
+                self.bindEvents();
+                self.checkNoData();
+                self.requestMoreData(1);
+            },
+
+            setting: function() {
+                var self = this;
                 self.$contWrap = $('div.cont-wrap');
                 self.$lnbContents = self.$contWrap.find('div.lnb-contents');
                 self.$list = self.$lnbContents.find('div.box-list');
                 self.$btnMore = self.$lnbContents.find('button.btn-moreview');
                 self.$noData = self.$lnbContents.find('div.no-data');
-
-                self.bindEvents();
-                self.checkNoData();
-                self.requestMoreData(1);
+                self.$evtBox = self.$lnbContents.find('div.lg-evt-box');
             },
 
             bindEvents: function() {
@@ -59,10 +65,13 @@
                         self.$btnMore.hide();
                     }
                     self.$noData.hide();
+                    self.$evtBox.hide();
                     self.$list.show();
                 } else {
                     self.$btnMore.hide();
+
                     self.$noData.show();
+                    self.$evtBox.show();
                     self.$list.hide();
                 }
             },

@@ -79,8 +79,8 @@
             self.$addFanBox = self.$stepInput.find('#addFanBox');
 
             self.$stepDate = self.$cont.find('#stepDate');
-            self.$dateWrap = self.$stepDate.find('.visit-calendar');
-            self.$timeWrap = self.$stepDate.find('.visit-timetable');
+            self.$dateWrap = self.$stepDate.find('.date-wrap');
+            self.$timeWrap = self.$stepDate.find('.time-wrap');
 
             self.$stepEngineer = self.$cont.find('#stepEngineer');
             self.$engineerPopup = $('#choiceEngineerPopup');
@@ -89,7 +89,7 @@
             self.$authPopup = $('#certificationPopup');
 
             self.autoFlag = false;
-            self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : false;
+            self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : 'N';
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
                 var register = {
@@ -161,7 +161,7 @@
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
                 addressFinder = new AddressFind();
 
-                if (!self.isLogin) {
+                if (self.isLogin != 'Y') {
                     authManager = new AuthManager({
                         elem: {
                             popup: '#certificationPopup',
@@ -275,7 +275,7 @@
 
                     self.setSolutions(url, param, true);
                 });
-            }, null, "html");
+            }, null, "html", true);
         },
         requestDate: function() {
             var self = this;
@@ -322,7 +322,7 @@
                                 self.$completeBtns.hide();
                             }
 
-                            lgkorUI.alert('', {
+                            lgkorUI.alert("", {
                                 title: data.resultMessage
                             });
                         }
@@ -367,7 +367,7 @@
                                 self.$completeBtns.hide();
                             }
                             
-                            lgkorUI.alert('', {
+                            lgkorUI.alert("", {
                                 title: data.resultMessage
                             });
                         }
@@ -417,12 +417,15 @@
             $engineerBox.find('.center').html(data.centerName);
 
             $resultBox.find('.date').html(vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm"));
-            $resultBox.find('.name').html(topicNm + '&gt;' + subTopicNm);
+            $resultBox.find('.topic').html(topicNm + '&gt;' + subTopicNm);
+            $resultBox.find('.name').html(data.engineerName);
 
             $('#engineerNm').val(data.engineerName);
             $('#engineerCode').val(data.engineerCode);
             $('#centerNm').val(data.centerName);
             $('#centerCode').val(data.centerCode);
+
+            self.dateParam['resrvSeq'] = data.resrvSeq;
         },
         requestComplete: function() {
             var self = this;
@@ -430,16 +433,18 @@
             var url = self.$submitForm.data('ajax');
             var formData = validation.getAllValues();
 
-            formData['custNo'] = self.dateParam.custNo;
+            formData = $.extend(formData, self.dateParam);
 
             lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
+                    $('#acptNo').val(data.acptNo);
+
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {
-                        lgkorUI.alert('', {
+                        lgkorUI.alert("", {
                             title: data.resultMessage
                         });
                     }
@@ -641,7 +646,7 @@
                         if (data.resultMessage) {
                             self.$engineerPopup.vcModal('hide');
                             
-                            lgkorUI.alert('', {
+                            lgkorUI.alert("", {
                                 title: data.resultMessage
                             });
                         }
@@ -654,7 +659,7 @@
                 var result = validation.validate();
 
                 if (result.success == true) {    
-                    if (self.isLogin) {
+                    if (self.isLogin == 'Y') {
                         lgkorUI.confirm('', {
                             title:'예약 하시겠습니까?',
                             okBtnName: '확인',
@@ -674,8 +679,8 @@
             });
 
             self.$authPopup.find('.btn-auth').on('click', function() {
-                authManager.confirm(this, function() {
-                    self.requestComplete();
+                authManager.confirm(this, function(success, result) {
+                    success && self.requestComplete();
                 });
             });
         }

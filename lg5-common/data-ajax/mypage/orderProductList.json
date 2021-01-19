@@ -2,11 +2,14 @@
     "ssoCheckUrl": null,
     "status": "success",
     "message": null,
+    "param":{
+        "pagination": {
+            "page": 1,
+            "totalCount": 1
+        }
+    },
     "data": {
-        "success": "Y",
-        "total": 2,
-        "page": 1,
-        "orderList": [
+        "listData": [
             {
                 "orderDate": "2020.09.05",
                 "orderNumber": "20203987102999",

@@ -4,6 +4,7 @@
     "data": {
         "success": "Y",
         "toast": "변경이 완료되었습니다.",
-        "reply": "요청하신 날짜로 변경이 완료되었습니다."
+        "visitQna": "요청하신 일자에는 방문이 어렵습니다.",
+        "irregularCheckout": null
     }
 }

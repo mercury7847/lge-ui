@@ -3,6 +3,7 @@
     "message": null,
     "data": {
         "resultFlag": "Y",
-        "resultMessage": ""
+        "resultMessage": "",
+        "acptNo": "12312"
     }
 }

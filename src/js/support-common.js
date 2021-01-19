@@ -1,3 +1,9 @@
+;(function(global){
+    if(!global['lgkorUI']) global['lgkorUI'] = {};
+    
+    lgkorUI['isLogin'] = $('#topLoginFlag').val() == 'Y' ? true : false;
+})(window);
+
 var CS = CS || {};
 CS.MD = CS.MD || {};
 CS.UI = CS.UI || {};
@@ -30,12 +36,11 @@ CS.MD.plugin = function(pluginName, Plugin) {
 
 CS.MD.commonModel = function() {
     var pluginName = 'commonModel';
-
     var selectedBarTmpl = 
         '<div class="box">' +
             '<div class="prod-info">' +
                 '{{# if (typeof tit != "undefined") { #}}' +
-                '<p class="tit">제품을 선택해 주세요</p>' +
+                '<p class="tit">서비스 이용을 위해 제품을 선택해주세요.</p>' +
                 '{{# } #}}' +
                 '{{# if (typeof product != "undefined") { #}}' +
                 '<ul class="product">' +
@@ -46,15 +51,16 @@ CS.MD.commonModel = function() {
                     '{{# } #}}' +
                 '</ul>' +
                 '{{# } #}}' +
-                '{{# if (typeof desc != "undefined") { #}}' +
-                '<p class="desc">{{desc}}</p>' +
-                '{{# } #}}' +
+                // '{{# if (typeof desc != "undefined") { #}}' +
+                // '<p class="desc">{{desc}}</p>' +
+                // '{{# } #}}' +
             '</div>' +
             '{{# if (typeof reset != "undefined") { #}}' +
             '<div class="prod-btn">' +
-                '{{# if (reset == "inquiry") { #}}' +
+                '{{# if (reset == "type") { #}}' +
                 '<button type="button" class="btn border size reset btn-reset">문의유형 재선택</button>' +
-                '{{# } else { #}}' +
+                '{{# } #}}' +
+                '{{# if (reset == "product") { #}}' +
                 '<button type="button" class="btn border size reset btn-reset">제품 재선택</button>' +
                 '{{# } #}}' +
             '</div>' +
@@ -90,26 +96,18 @@ CS.MD.commonModel = function() {
         var defaults = {
             stepClass: 'step-box',
             stepActiveClass: 'active',
-            register: {},
             page: 1,
             total: 0,
-            caseType: 'product',
-            param: {},
-            summary: {
-                tit: '제품을 선택해 주세요',
-                desc: "예약내용 입력을 위해 제품을 선택해 주세요"
+            selected: [],
+            register: {},
+            defaultSummary: {
+                tit: '서비스이용을 위해 제품을 선택해 주세요.'
             }
         };
 
         self.options = $.extend({}, defaults, opt);
         
         vcui.require(['ui/validation', 'ui/selectTarget'], function () {
-            termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
-                privcyCheck: {
-                        msgTarget: '.err-block'
-                }
-            }});
-
             self._initialize();
             self._bindEvent();  
         });
@@ -119,12 +117,6 @@ CS.MD.commonModel = function() {
         _initialize: function() {
             var self = this,
                 options = self.options;
-
-            // 옵션
-            self.page = options.page;
-            self.totalCount = options.totalCount;
-            self.inquiryType = options.inquiryType;
-            self.param = options.param;
 
             // 스텝 영역
             self.$stepBox = self.$el.find('.step-box');
@@ -162,7 +154,29 @@ CS.MD.commonModel = function() {
             self.$modelSlider = self.$modelBox.find('.model-slider');
             self.$modelNoData = self.$modelBox.find('.no-data');
 
+            // 옵션
+            self.isDefault = $('#category').val() ? true : false;
+            self.page = options.page;
+            self.totalCount = options.totalCount;
+            self.selected = options.selected;
+            self.param = {
+                pageCode: $('#pageCode').val(),
+                serviceType: $('#serviceType').val()
+            }
+
             self.$modelFilter.find('.ui_select_target').vcSelectTarget();
+            
+
+            lgkorUI.searchModelName();
+
+            self._initMyProduct();
+            self._initStepTerms();
+        },
+        _initMyProduct: function() {
+            var self = this;
+
+            if (!self.$myModelSlider.length) return;
+
             self.$myModelSlider.vcCarousel({
                 slidesToScroll: 3,
                 slidesToShow: 3,
@@ -186,9 +200,86 @@ CS.MD.commonModel = function() {
                 ]
             });
 
-            self.caseType = 'product';
+            self.$myModelSlider.find('a').on('click', function(e) {
+                e.preventDefault();
 
-            lgkorUI.searchModelName();
+                var $this = $(this),
+                    data = $this.data(),
+                    url = self.$searchArea.data('resultUrl');
+
+                if ($this.hasClass('disabled')) {
+                    $(window).trigger("toastshow", "예약가능한 제품이 아닙니다.");
+                } else {
+                    data.isRequest = true;
+
+                    self.$el.find('#category').val(data.category);
+                    self.$el.find('#categoryNm').val(data.categoryName);
+                    self.$el.find('#subCategory').val(data.subCategory);
+                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                    self.$el.find('#modelCode').val(data.modelCode);
+                    self.$el.find('#productCode').val(data.productCode);
+                    self.$el.trigger('complete', [self, data, url]);
+                }
+            });
+
+            self.$myModelArea.find('.btn-toggle').on('click', function() {
+                var $this = $(this),
+                    $toggleBox = $this.closest('.box');
+
+                if ($toggleBox.hasClass('open')) {
+                    self.$myModelSlider.stop().slideUp(function() {
+                        $toggleBox.removeClass('open');
+                    });
+                    $this.html('보유제품 펼치기');
+                } else {
+                    self.$myModelSlider.stop().slideDown(function() {
+                        $toggleBox.addClass('open');
+                    });
+                    $this.html('보유제품 접기');
+                }
+            });
+        },
+        _initStepTerms: function() {
+            var self = this;
+
+            if (!self.$stepTerms.length) return;
+
+            termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
+                privcyCheck: { msgTarget: '.err-block' }
+            }});
+
+            self.$stepTerms.find('.btn-next').on('click', function() {
+                var result = termsValidation.validate();
+                
+                if (result.success) {
+                    if (self.isDefault) {
+                        self._next(self.$stepInput);
+                    } else {
+                        self._next(self.$stepModel);
+                    }
+                    
+                    self._focus(self.$selectedModelBar);
+                }
+            });
+        },
+        _updateSummary: function(summary) {
+            var self = this;
+            var summary = summary || self.options.defaultSummary;
+
+            self.$selectedModelBar.html(vcui.template(selectedBarTmpl, summary));
+        },
+        _resetFlexibleBox: function() {
+            var self = this;
+
+            self.$el.find('.ui_carousel_track .ui_carousel_current').each(function(idx, item){
+                var maxheight = 0;
+                $(item).find('.slide-conts').each(function(cdx, child){
+                    var flexiblebox = $(child).find('.info');
+                    maxheight = Math.max(maxheight, flexiblebox.outerHeight(true));
+                });
+
+                $(item).find('.slide-conts').height(maxheight);
+            });
         },
         reset: function() {
             var self = this;
@@ -196,13 +287,12 @@ CS.MD.commonModel = function() {
 
             self.page = options.page;
             self.totalCount = options.totalCount;
-            self.inquiryType = options.inquiryType;
             self.param = options.param;
 
             self.$el.find('[type=hidden]').not('[name=serviceType], [name=lockUserId]').val('');
             
-            if (self.isLogin) {
-                self.$el.find('input[type=text], textarea').not('#userNm, #phoneNo').val('');
+            if (lgkorUI.isLogin) {
+                self.$el.find('input[type=text], textarea').not('#userNm, #phoneNo, ').val('');
             } else {
                 self.$el.find('input[type=text], textarea').val('');
             }
@@ -227,25 +317,6 @@ CS.MD.commonModel = function() {
 
             $('.prod-selected-wrap').vcSticky('destroy');
         },
-        _updateSummary: function(summary) {
-            var self = this;
-                summary = summary || self.options.summary;
-
-            if (summary) self.$selectedModelBar.html(vcui.template(selectedBarTmpl, summary));
-        },
-        _resetFlexibleBox: function() {
-            var self = this;
-
-            self.$el.find('.ui_carousel_track .ui_carousel_current').each(function(idx, item){
-                var maxheight = 0;
-                $(item).find('.slide-conts').each(function(cdx, child){
-                    var flexiblebox = $(child).find('.info');
-                    maxheight = Math.max(maxheight, flexiblebox.outerHeight(true));
-                });
-
-                $(item).find('.slide-conts').height(maxheight);
-            });
-        },
         _toggleArrow: function($arrow, flag) {
             $arrow[flag ? 'removeClass' : 'addClass']('disabled')
                         .prop('disabled', !flag)
@@ -266,8 +337,8 @@ CS.MD.commonModel = function() {
             $target.addClass(opt.stepActiveClass);
         },
         _requestData: function() {
-            var self = this,
-                url = self.$searchArea.data('modelUrl');
+            var self = this;
+            var url = self.$searchArea.data('modelUrl');
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(url, self.param, function(result) {
@@ -346,61 +417,9 @@ CS.MD.commonModel = function() {
         _bindEvent: function() {
             var self = this;
 
-            // 보유제품 선택
-            self.$myModelSlider.find('a').on('click', function(e) {
-                e.preventDefault();
-
-                var $this = $(this),
-                    data = $this.data(),
-                    url;
-
-                if ($this.hasClass('disabled')) {
-                    $(window).trigger("toastshow", "예약가능한 제품이 아닙니다.");
-                } else {
-                    url = self.$searchArea.data('resultUrl');
-
-                    self.$el.find('#category').val(data.category);
-                    self.$el.find('#categoryNm').val(data.categoryName);
-                    self.$el.find('#subCategory').val(data.subCategory);
-                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
-                    self.$el.find('#modelCode').val(data.modelCode);
-                    self.$el.find('#productCode').val(data.productCode);
-                     
-                    self.$el.trigger('complete', [self, data, url]);
-                }
-            });
-
-            // 보유제품 펼침/닫힘
-            self.$myModelArea.find('.btn-toggle').on('click', function() {
-                var $this = $(this),
-                    $toggleBox = $this.closest('.box');
-
-                if ($toggleBox.hasClass('open')) {
-                    self.$myModelSlider.stop().slideUp(function() {
-                        $toggleBox.removeClass('open');
-                    });
-                    $this.html('보유제품 펼치기');
-                } else {
-                    self.$myModelSlider.stop().slideDown(function() {
-                        $toggleBox.addClass('open');
-                    });
-                    $this.html('보유제품 접기');
-                }
-            });
-
             // 제품 재선택
             self.$selectedModelBar.on('click', '.btn-reset', function() {
                 self.reset();
-            });
-
-            // 약관 동의 다음 버튼
-            self.$stepTerms.find('.btn-next').on('click', function() {
-                var result = termsValidation.validate();
-                
-                if (result.success) {
-                    self._next(self.$stepModel);
-                    self._focus(self.$selectedModelBar);
-                }
             });
 
             // 문의유형 : 제품선택
@@ -425,7 +444,7 @@ CS.MD.commonModel = function() {
                     self.$el.find('#subCategory').val(data.subCategory);
                     self.$el.find('#subCategoryNm').val(data.subCategoryName);
                     
-                    data.type = 'inquiry';
+                    data.isRequest = false;
 
                     self.$el.trigger('complete', [self, data]);
                 }
@@ -449,7 +468,7 @@ CS.MD.commonModel = function() {
                         });
 
                         self._updateSummary({
-                            desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
+                            tit: '서비스이용을 위해 제품을 선택해 주세요.'
                         });
                         self._requestData();
                     } else {
@@ -478,7 +497,7 @@ CS.MD.commonModel = function() {
                     });
 
                     self._updateSummary({
-                        desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요"
+                        tit: '서비스이용을 위해 제품을 선택해 주세요.'
                     });
                     self._requestData();
 
@@ -545,8 +564,7 @@ CS.MD.commonModel = function() {
                 });
 
                 self._updateSummary({
-                    product: [data.categoryName, data.subCategoryName],
-                    desc: "예약내용 입력을 위해 제품 모델명을 선택해 주세요. 모델명을 모르시면 ‘건너뛰기'를 눌러주세요."
+                    product: [data.categoryName, data.subCategoryName]
                 });
                 self._requestData();
 
@@ -576,7 +594,7 @@ CS.MD.commonModel = function() {
                 self.$el.find('#subCategoryNm').val(data.subCategoryName);
                 self.$el.find('#modelCode').val(data.modelCode);
                 self.$el.find('#productCode').val(data.productCode);
-
+                data.isRequest = true;
                 self.$el.trigger('complete', [self, data, url]);
             });
             
@@ -679,7 +697,7 @@ CS.MD.calendar = function() {
                 timeButton: '<button type="button" class="{{disabled?" disabled":""}}" title="{{title}}" {{disabled?"disabled":""}}"><span>{{time}}</span></button>'
             },
             caption: '캘린더입니다. 글은 일요일, 월요일, 화요일, 수요일, 목요일, 금요일, 토요일 순으로 나옵니다',
-            colWidth: '32px', // 셀 너비
+            colWidth: 'calc(100% / 7)', // 셀 너비
             format: 'yyyy.MM.dd',
             paramFormat: 'yyyyMMdd'
         };
@@ -784,7 +802,7 @@ CS.MD.calendar = function() {
             }
             html += '</colgroup><thead>';
             for (i = 0; i < 7; i++) {
-                html += '<th class="' + (i === 0 ? ' ui-calendar-sunday' : i === 6 ? ' ui-calendar-saturday' : '') + '" scope="col">';
+                html += '<th class="' + (i === 0 ? ' sun' : i === 6 ? ' ui-calendar-saturday' : '') + '" scope="col">';
                 html += opts.weekNames[i];
                 html += '</th>';
             }
@@ -1060,7 +1078,7 @@ CS.MD.timeCalendar = function() {
                 button: '<button type="button" class="{{disabled?"disabled":""}}" title="{{title}}" {{disabled?"disabled":""}}><span>{{time}}분</span></button>'
             },
             caption: '시간 캘린더입니다. 글은 9시, 10시, 11시, 12시, 13시, 14시, 15시, 16시, 17시 순으로 나옵니다',
-            colWidth: '44px', // 셀 너비
+            colWidth: 'calc(85% / 6)', // 셀 너비
             format: 'hh:mm'
         };
 
@@ -1105,7 +1123,8 @@ CS.MD.timeCalendar = function() {
                 self.activeTime = time;
                 $this.addClass('choice');
                 $this.siblings('th').addClass('choice');
-                self.$input.val(time);
+
+                if (self.options.inputTarget) self.$input.val(time);
 
                 self.$el.trigger('timeselected');
             });
@@ -1132,13 +1151,17 @@ CS.MD.timeCalendar = function() {
             html += '<table class="tb-timetable"><caption>' + opts.caption + '</caption>';
             html += '<colgroup>';
             for (i = 0; i < 7; i++) {
-                html += '<col width="' + opts.colWidth + '" />';
+                if (i == 0) {
+                    html += '<col width="' + '15%' + '" />';
+                } else {
+                    html += '<col width="' + opts.colWidth + '" />';
+                }
             }
             html += '</colgroup><tbody>';
             for (i = 0; i < opts.timeName.length; i++) {
                 html += '<tr>';
 
-                html += '<th scope="row">'+ opts.timeName[i].replace(/(^0+)/, "") +'시</th>';
+                html += '<th scope="row">'+ opts.timeName[i] +'시</th>';
                 for (j = 0; j < 6; j++) {
                     
                     hour = opts.timeName[i];
@@ -1492,7 +1515,7 @@ CS.MD.survey = function(addData) {
                         $('#surveyPopup').vcModal('hide');
                     }
 
-                    lgkorUI.alert('', {
+                    lgkorUI.alert("", {
                         title: result.data.resultMessage
                     });
                 })
@@ -1563,7 +1586,7 @@ var AuthManager = function() {
                         $(elem.number).prop('disabled', false);
                     }
 
-                    lgkorUI.alert('', {
+                    lgkorUI.alert("", {
                         title: resultData.resultMessage
                     });
                 });
@@ -1581,49 +1604,70 @@ var AuthManager = function() {
                 elem = self.options.elem,
                 target = self.options.target,
                 result = self.validation.validate(),
-                url, data;
+                url, data, success = false;
 
             if (result.success == true) {
-                if ($(elem.number).prop('disabled')) {
-                    lgkorUI.alert('', {title: '인증번호 발송 버튼을 선택해 주세요.'});
-                    return false;
-                }
-
                 url = self.authUrl;
                 data = self.validation.getValues([self.nameName, self.phoneName, self.numberName]);
 
+                if ($(elem.number).prop('disabled')) {
+                    lgkorUI.alert("", {title: '인증번호 발송 버튼을 선택해 주세요.'});
+                    return false;
+                }
+
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, data, function(result) {
-                    if (self.popFlag) {
-                        var nameValue = $(elem.name).val(),
-                            phoneValue = $(elem.phone).val();
-                        
-                        if (result.data.resultFlag == 'Y') {
-                            if (elem.target) {
-                                $(target.name).val(nameValue);
-                                $(target.phone).val(phoneValue);
+                    var resultData = result.data;
 
-                                $button.prop('disabled', true);
-                                $button.find('span').html(COMPLETETEXT);
-                            
-                                $(elem.popup).vcModal('hide');
-                            } else {
-                                callback && callback();
-                            }
+                    if (resultData.resultFlag == 'Y') {
+                        success = true;
+
+                        if (elem.target) {
+                            $button.prop('disabled', true);
+                            $button.find('span').html(COMPLETETEXT);
+                            $(target.name).val(nameValue);
+                            $(target.phone).val(phoneValue);
+                            $(elem.popup).vcModal('hide');
+                        }
+
+                        if (resultData.resultMessage) {
+                            lgkorUI.alert("", {
+                                title: resultData.resultMessage,
+                                ok: function(el) {
+                                    if (resultData.url) {
+                                        $(self.options.elem.form).attr('action', resultData.url);
+                                        $(self.options.elem.form).submit();
+                                        // location.href = resultData.url;
+                                    } else {
+                                        $(el).vcModal('hide');
+                                        callback && callback(success, result);
+                                    }
+                                }
+                            });
+                        } else if (resultData.url) {
+                            $(self.options.elem.form).attr('action', resultData.url);
+                            $(self.options.elem.form).submit();
+                            // location.href = resultData.url;
                         } else {
-                            lgkorUI.alert('', {title: result.data.resultMessage});
+                            callback && callback(success, result);
                         }
                     } else {
-                        if (result.data.resultFlag == 'Y') {
-                            $(elem.form).submit();
-                        } else if (result.data.resultFlag == 'N') {
-                            lgkorUI.alert('', {
-                                title: result.data.resultMessage
-                            });
-
-                            lgkorUI.hideLoading();
-                        }
+                        success = false;
+                        
+                        lgkorUI.alert("", {
+                            title: resultData.resultMessage,
+                            ok: function(el) {
+                                if (resultData.url) {
+                                    location.href = resultData.url;
+                                } else {
+                                    $(el).vcModal('hide');
+                                    callback && callback(success, result);
+                                }
+                            }
+                        });
                     }
+
+                    lgkorUI.hideLoading();
                 });
             }
         }
@@ -1656,6 +1700,7 @@ $.fn.serializeObject = function() {
     function commonInit(){
         vcui.require(['ui/selectbox', 'ui/carousel'], function () {    
             // 관련 소모품이 필요하신가요?
+            /*
             $('.product-slider').vcCarousel({
                 infinite: false,
                 autoplay: false,
@@ -1687,6 +1732,7 @@ $.fn.serializeObject = function() {
                     }
                 ]
             });
+            */
 
             // LG제품에 관련된 정보를 확인하세요!
             $('.info-slider').vcCarousel({

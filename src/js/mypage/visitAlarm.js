@@ -1,6 +1,6 @@
 
 (function(){
-    var visitAlarmItemTemplate = '<li class="{{#if type=="prev"}}off{{#elsif type=="next"}}on after{{#else}}off after{{/if}}" data-id="{{id}}">' +
+    var visitAlarmItemTemplate = '<li class="{{#if type=="prev"}}off{{#elsif type=="next"}}on after{{#else}}off after{{/if}}" data-visit-target-seq="{{visitTargetSeq}}" data-manager-emp-no="{{managerEmpNo}}">' +
         '<div class="inner">' +
             '<div class="svc-info">' +
                 '<p class="date">' +
@@ -14,7 +14,7 @@
             '</div>' +
             '<div class="svc-lists"><p>{{#if type=="prev"}}이전{{#elsif type=="next"}}다음{{#else}}이후{{/if}} 방문 서비스 상세 내역</p>' +
                 '<div class="svc-wrap"><ul class="svc-details">' +
-                    '{{#each item in serviceList}}<li>{{item.name}}({{item.sku}}) - {{item.desc}}</li>{{/each}}' +
+                    '{{#each item in serviceList}}<li>{{item.name}}({{item.sku}}){{#if item.desc}} - {{item.desc}}{{/if}}</li>{{/each}}' +
                 '</ul></div>' +
                 '{{#if serviceList.length > 5}}<div class="more-view-wrap" aria-hidden="true">' +
                     '<span class="more-view-btn">더보기</span>' +
@@ -46,11 +46,34 @@
                 self.bindEvents();
                 self.bindPopupEvents();
 
+                //현재 설정된 계약 갯수 가져옴
                 /*
-                var selectValue = self.$selectContract.vcSelectbox('selectedOption').value;
-                if(selectValue) {
-                    self.requestData(selectValue);
+                var $option = self.$selectContract.find('option');
+                var length = !$option ? 0 : $option.length;
+                if(length > 0) {
+                    var selectValue = self.getSelectedContractID();
+                    if(!(!selectValue) && selectValue.length > 1) {
+                        self.requestData(selectValue);
+                    }
                 }
+
+                var $div = self.$contents.find('>div');
+                $div.each(function(idx,item){
+                    var $item = $(item);
+                    if(length > 0) {
+                        if($item.hasClass('nodata')) {
+                            $item.hide();
+                        } else {
+                            $item.show();
+                        }
+                    } else {
+                        if($item.hasClass('nodata')) {
+                            $item.show();
+                        } else {
+                            $item.hide();
+                        }
+                    }
+                });
                 */
             },
 
@@ -106,12 +129,10 @@
                 self.$list.on('click', 'div.svc-lists button', function(e){
                     e.preventDefault();
                     var $li = $(this).parents('li');
-                    var _id = $li.attr('data-id');
-                    self.$popupChangeVisitDate.attr('data-id',_id);
 
                     var date = $(this).attr('data-date');
                     var time = $(this).attr('data-time');
-                    self.requestEnableVisitDay(date, time);
+                    self.requestEnableVisitDay($li, date, time);
 
                     /*
                     //선택되었던 날짜 초기화
@@ -161,7 +182,7 @@
 
                     if($table.hasClass('tb-calendar')) {
                         //방문 가능 시간 데이타 가져오기
-                        self.requestEnableVisitTime(selectedData.date);
+                        self.requestEnableVisitTime(selectedData);
                     } else {
                         self.setVisitDateText(selectedData);
                     }
@@ -171,10 +192,19 @@
                 self.$popupChangeVisitDate.on('click', 'footer.pop-footer button:not(.ui_modal_close)', function(e){
                     e.preventDefault();
                     var param = self.getSelectedVisitDayData();
+                    param.visitQna = self.$myVisitQna.is(':visible') ? self.$myVisitQna.find('div.cont').html() : null;
+                    param.irregularCheckout = self.$irregularCheckout.is(':visible') ? self.$irregularCheckout.find('div.cont').html() : null;
+                    
                     if(param.date && param.time) {
                         self.requestChangeVisitDay(param);
                     }
                 });
+            },
+
+            getSelectedContractID: function() {
+                var self = this;
+                var selectValue = self.$selectContract.vcSelectbox('selectedOption').value;
+                return selectValue;
             },
 
             getSelectedVisitDayData: function() {
@@ -188,9 +218,17 @@
                 $td = self.$timeTable.find('tr td.choice');
                 var time = $td.attr('data-value');
 
-                var _id = self.$popupChangeVisitDate.attr('data-id');
+                var _id = self.getSelectedContractID();
 
-                return {"id":_id, "date":date, "time":time}
+                var visitTargetSeq = self.$popupChangeVisitDate.attr('data-visit-target-Seq');
+                var managerEmpNo = self.$popupChangeVisitDate.attr('data-manager-emp-no');
+
+                return {"id":_id,
+                    "date":date,
+                    "time":time,
+                    "visitTargetSeq":visitTargetSeq,
+                    "managerEmpNo":managerEmpNo
+                };
             },
 
             requestData: function(contract) {
@@ -199,8 +237,8 @@
                 lgkorUI.requestAjaxData(ajaxUrl, {"contract":contract}, function(result) {
                     var data = result.data;
 
-                    var reply = data.reply;
-                    self.setVisitQna(reply);
+                    self.setVisitQna(data.visitQna);
+                    self.setIrregularCheckout(data.irregularCheckout);
 
                     var arr = data.listData instanceof Array ? data.listData : [];
                     self.$list.empty();
@@ -211,11 +249,26 @@
                 });
             },
 
-            requestEnableVisitDay: function (date, time) {
+            requestEnableVisitDay: function ($dm, date, time) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-day-url');
                 var $list = self.$calendarTable.find('tbody');
-                lgkorUI.requestAjaxDataPost(ajaxUrl, {"date":date}, function(result){
+                var _id = self.getSelectedContractID();
+                if(!_id || _id=="all" || _id.length == 0) {
+                    //모아보기 팝업
+                    lgkorUI.alert("", {title: "계약정보 선택에서 개별 계약 정보를<br>선택 후, 방문일정 변경요청을<br>신청해주세요."});
+                    return;
+                };
+                var param = {
+                    "id":_id,
+                    "date":date,
+                    "visitTargetSeq": $dm.attr('data-visit-target-seq'),
+                    "managerEmpNo": $dm.attr('data-manager-emp-no')
+                }
+                self.$popupChangeVisitDate.attr('data-visit-target-Seq', param.visitTargetSeq);
+                self.$popupChangeVisitDate.attr('data-manager-emp-no', param.managerEmpNo);
+
+                lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                     var data = result.data;
 
                     //날짜 새로 그리기
@@ -246,7 +299,7 @@
                     var selectedData = self.getSelectedVisitDayData();
                     self.setVisitDateText(selectedData);
                     
-                    self.$popupChangeVisitDate.vcModal()
+                    self.$popupChangeVisitDate.vcModal();
                 }); 
             },
 
@@ -260,8 +313,8 @@
                         if(toast) {
                             $(window).trigger("toastshow", toast);
                         }
-                        var reply = data.reply;
-                        self.setVisitQna(reply);
+                        self.setVisitQna(data.visitQna);
+                        self.setIrregularCheckout(data.irregularCheckout);
                     }
                 }); 
                 $('#popupChangeVisitDate').vcModal('close');
@@ -269,11 +322,21 @@
 
             setVisitQna: function(reply) {
                 var self = this;
-                if(reply) {
-                    self.$myVisitQna.find('div.cont').text(reply);
-                    self.$myVisitQna.show();
-                } else {
+                if(!reply) {
                     self.$myVisitQna.hide();
+                } else {
+                    self.$myVisitQna.find('div.cont').html(reply);
+                    self.$myVisitQna.show();
+                }
+            },
+
+            setIrregularCheckout: function(reply) {
+                var self = this;
+                if(!reply) {
+                    self.$irregularCheckout.hide();
+                } else {
+                    self.$irregularCheckout.find('div.cont').html(reply);
+                    self.$irregularCheckout.show();
                 }
             },
 
@@ -282,10 +345,10 @@
                 self.$visitDate.text(vcui.date.format(selectedData.date,'yyyy.MM.dd') + " " + (!selectedData.time?"":selectedData.time));
             },
 
-            requestEnableVisitTime:function(date) {
+            requestEnableVisitTime:function(selectedData) {
                 var self = this;
                 var ajaxUrl = self.$popupChangeVisitDate.attr('data-time-url');
-                lgkorUI.requestAjaxDataPost(ajaxUrl, {'date':date}, function(result){
+                lgkorUI.requestAjaxDataPost(ajaxUrl, selectedData, function(result){
                     var data = result.data;
                     var arr = data instanceof Array ? data : [];
 

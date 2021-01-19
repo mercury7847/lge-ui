@@ -80,7 +80,7 @@
             period: period
         }
         lgkorUI.requestAjaxData(PAYMENT_LIST_DATA, sendata, function(result){
-            if(result.data.success == "Y"){
+            if(lgkorUI.stringToBool(result.data.success)){
                 $('.section-wrap .sects').find('.tb-scroll').remove();
                 $('.section-wrap .sects').find('.bullet-list').remove();
                 $('.section-wrap').find('.no-data').remove();

@@ -337,6 +337,8 @@
     }
     &.enroll {
         > ul {
+            display:flex;
+            flex-wrap:wrap;
             margin:-24px 0 0 -24px;
             font-size:0;
             @include mobile {
@@ -347,7 +349,7 @@
                 width:calc((100% - 48px) / 2);
                 margin-left:24px;
                 &:first-child {
-                    margin-left:24px;
+                    margin:24px 0 0 24px;
                 }
                 @include mobile {
                     width:100%;
@@ -357,6 +359,7 @@
                     }
                 }
                 .inner {
+                    height:100%;
                     padding:24px 32px;
                     .thumb {
                         width:140px;
@@ -385,7 +388,8 @@
                         margin-top:12px;
                         @include mobile {
                             display:inline-block;
-                            left:122px;
+                            // left:122px;
+                            left:0;
                             .btn {
                                 min-width:91px;
                                 width:auto;

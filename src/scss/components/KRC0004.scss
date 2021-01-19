@@ -273,7 +273,7 @@
     $color: (lightgray, dark, black, white, gray);
     @each $bg in $color {
         &.bg-#{$bg} {
-            .KRC0004 {
+            .component.KRC0004 {
                 .list-btn-area {
                     .btn.border.more {
                         &::before, &::after {

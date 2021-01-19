@@ -74,6 +74,56 @@
                 "name": "파일 및 자료 요청",
                 "value": "D000287"
             }
+        ],
+        "recommProduct": [
+            {
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "flags" : ["신제품", "베스트"],
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA",
+                "price" : "19,000",
+                "discountPrice" : "17,000"
+            },
+            {
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "flags" : ["신제품2", "베스트2"],
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA",
+                "price" : "19,000",
+                "discountPrice" : "17,000"
+            },
+            {
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "flags" : ["신제품3", "베스트3"],
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA",
+                "price" : "19,000",
+                "discountPrice" : "17,000"
+            },
+            {
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "flags" : ["신제품4", "베스트4"],
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA",
+                "price" : "19,000",
+                "discountPrice" : "17,000"
+            },
+            {
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "flags" : ["신제품5", "베스트5"],
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA",
+                "price" : "19,000",
+                "discountPrice" : "17,000"
+            },
+            {
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "flags" : ["신제품6", "베스트6"],
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA",
+                "price" : "19,000",
+                "discountPrice" : "17,000"
+            }
         ]
     }
 }

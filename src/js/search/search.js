@@ -523,7 +523,6 @@
 
                 //페이지
                 self.$contWrap.find('.pagination').on('page_click', function(e, data) {
-                    console.log(data);
                     //기존에 입력된 데이타와 변경된 페이지로 검색
                     var postData = self.getDataFromFilter();
                     postData.page = data;

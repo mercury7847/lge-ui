@@ -86,155 +86,6 @@
         }
     }
 
-    .solution-btn-box {
-        margin-top: 32px;
-    }
-
-    .reservation-info-box{
-        margin:48px 0;
-        background-image:linear-gradient(94deg, #9c86e7, #de64a0);
-        color:#fff;
-
-        .reservation-area{
-            display:flex;
-            align-items: center;
-            justify-content: space-between;
-            margin:0 auto;
-            padding:24px 40px;
-            max-width:1226px;
-
-            .reservation-info{
-                display:flex;
-                align-items:center;
-
-                .reservation-info-desc{
-                    @include font-medium;
-                    font-weight:normal;
-                    text-align:left;
-                    margin-left:0;
-
-                    .txt-block{
-                        display:block;
-                        @include font-large;
-                        margin-bottom:5px;
-                    }
-
-                    .btn-link{
-                        margin-left:24px;
-                    }
-                }
-            }
-        }
-        .reservation-sub-desc{
-            margin-top:12px;
-            @include font-medium;
-            .txt-bold{
-                color:#fffd7c;
-            } 
-        }
-
-        .email-img{
-            width:80px;
-            height:80px;
-            background:url(/lg5-common/images/icons/ic-usp-mailcounsel-80.svg) no-repeat center;
-            background-size:80px;
-            margin-right:96px;
-        }
-
-        .engineer-img{
-            width:120px;
-            height:120px;
-            border-radius:10px;
-            margin-right:88px;
-        }
-
-        .eng-name{
-            @include font-large-1;
-            margin-bottom:5px;
-        }
-    }
-
-    /* page */
-    /* 출장 예약 */
-    &.service-engineer {
-    }
-
-    /* 이메일 문의 */
-    &.email-inquiry {
-        .inquiry-sections{
-            display:flex;
-            justify-content:space-between;
-            .section{
-                width:calc((100% - 48px) / 3);
-                @include pc {
-                    margin:0;
-                }
-                .tit-wrap{
-                    margin-bottom:16px;
-                }
-                .desc-wrap{
-                    .desc-txt{
-                        margin-bottom:8px;
-                    }
-                    .desc-btn{
-                        display:flex;
-                        flex-flow:wrap;
-                        & + .desc-text {
-                            margin-top:32px;
-                        }
-                        .btn{
-                            margin:0 8px 12px 0;
-                            min-width:auto;
-                            padding:8px 14px;
-                            display:flex;
-                            align-items:center;
-                            &.white{
-                                background:#fff;
-                                border:1px solid #ddd;
-                                border-radius:16px;
-                                padding: 8px 16px;
-                                color:#222;
-                                font-weight:normal;
-                            }
-                            &.out-link{
-                                &::after{
-                                    content:'';
-                                    display:inline-block;
-                                    margin-left:3px;
-                                    width:20px;
-                                    height:20px;
-                                    background:url("/lg5-common/images/icons/ic-outlink-20.svg") center no-repeat;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        @include mobile {
-            .inquiry-sections{
-                display:block;
-                margin:0;
-                .section{
-                    width:100%;
-                    .tit-wrap{
-                        margin-bottom:24px;
-                    }
-                    .desc-wrap{
-                        .desc-btn{
-                            & + .desc-text {
-                                margin-top:40px;
-                            }
-                            .btn{
-                                margin:0 8px 8px 0;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     .engineer-to-visit {
         @include clearfix;
         .engineer-profile {
@@ -297,6 +148,143 @@
         }
     }
 
+    
+
+    /* page */
+    /* 출장 예약 */
+    &.service-engineer {
+    }
+
+    /* 이메일 문의 */
+    &.email-inquiry {
+        .inquiry-sections{
+            display:flex;
+            justify-content:space-between;
+            .section{
+                width:calc((100% - 48px) / 3);
+                @include pc {
+                    margin:0;
+                }
+                .tit-wrap{
+                    margin-bottom:16px;
+                }
+                .desc-wrap{
+                    .desc-txt{
+                        margin-bottom:8px;
+                    }
+                    .desc-btn{
+                        display:flex;
+                        flex-flow:wrap;
+                        margin:-12px 0 0 -8px;
+                        & + .desc-txt {
+                            margin-top:32px;
+                        }
+                        .btn{
+                            margin:12px 0 0 8px;
+                            min-width:auto;
+                            padding:8px 14px;
+                            &.white{
+                                background:#fff;
+                                border:1px solid #ddd;
+                                border-radius:16px;
+                                padding: 8px 16px;
+                                color:#222;
+                                font-weight:normal;
+                            }
+                            &.out-link{
+                                &::after{
+                                    content:'';
+                                    display:inline-block;
+                                    margin-left:3px;
+                                    width:20px;
+                                    height:20px;
+                                    background:url("/lg5-common/images/icons/ic-outlink-20.svg") center no-repeat;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include mobile {
+            .inquiry-sections{
+                display:block;
+                margin:0;
+                .section{
+                    width:100%;
+                    .tit-wrap{
+                        margin-bottom:16px;
+                    }
+                    .desc-wrap{
+                        .desc-btn {
+                            margin:-8px 0 0 -8px;
+                            & + .desc-txt {
+                                margin-top:32px;
+                            }
+                            .btn {
+                                margin:8px 0 0 8px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* 전화상담 예약 */
+    &.request-call {
+
+    }
+    
+    /* 영상상담 예약 */ 
+    &.video-consulting {
+
+    }
+
+    /* 센터방문 예약 */
+    &.visit-center {
+        .center-info-box {
+            padding: 20px 24px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            border: solid 1px #dddddd;
+            background-color: #ffffff;
+            .center-info-title {
+                display:block;
+                margin-bottom:16px;
+                @include font-medium;
+            }
+            .bullet-list {
+                &.top-border {
+                    margin-top: 16px;
+                }
+            }
+        }
+    
+        .tabs-wrap {
+            margin-bottom:40px;
+        }
+
+        .adress-box {
+            text-align: left;
+            label {
+                cursor: pointer;
+            }
+        }
+        .center-name {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.63;
+            color: #222222;
+        }
+        .detailed-address {
+            font-size: 14px;
+            line-height: 1.71;
+            color: #767676;
+        }
+    }
+    
+    /* 예약 다건 결과 */
     &.service-status-list {
         .service-history {
             margin-bottom:80px;
@@ -396,53 +384,157 @@
         }
     }
 
-    &.reservation-result{
-        .result-header-tit{
+    /* 예약 완료 */
+    &.service-status-detail {
+        .result-header {
             max-width:1460px;
-            margin:0 auto;
+            margin:0 auto 16px;
             padding:0 40px;
             .tit{
-                margin-bottom:21px;
+                @include font-large-2;
             }
         }
-        .result-header-btn{
+        .result-btn-group {
             border-bottom:1px solid #ddd;
             background-color:#fff;
-            .btn-group{
-                margin-top:0;
+            .group-box {
                 max-width:1460px;
                 margin:0 auto;
                 padding:24px 40px;
+                font-size:0;
+                text-align:right;
+                .btn {
+                    margin-left:8px;
+                }
             }
         }
-        .inquiry-list{
-            .description{
-                .line{
-                    white-space:pre-line;
+        .result-progress {
+            max-width:1380px + 80px;
+            margin:0 auto;
+            padding:64px 40px 0;
+            &:first-child {
+                padding-top:0;
+            }
+            .desc{
+                margin-bottom:24px;
+                @include font-medium;
+                font-weight:700;
+            }
+            .progress-box {
+                position:relative;
+                &:after {
+                    content:'';
+                    position:absolute;
+                    left:0%;
+                    top:6px;
+                    width:100%;
+                    height:12px;
+                    background:#f4f4f4;
+                }
+                .progressing {
+                    position:absolute;
+                    z-index:1;
+                    left:0%;
+                    top:6px;
+                    width:0;
+                    height:12px;
+                    border-radius:16px;
+                    background:#ec455a;
+                }
+                .progressbar {
+                    display:flex;
+                    justify-content:space-between;
+                    padding-bottom:30px;
+                    li {
+                        position:relative;
+                        text-align:center;
+                        &:before {
+                            content: '';
+                            display:inline-block;
+                            width:24px;
+                            height:24px;
+                            background-color:#aaa;
+                            border-radius: 50%;
+                            position: relative;
+                            z-index:2;
+                        }
+                        .text {
+                            display:none;
+                            position:absolute;
+                            left:50%;
+                            bottom:-30px;
+                            white-space:nowrap;
+                            transform:translateX(-50%);
+                            @include font-medium;
+                        }
+                        &:first-child .text {
+                            left:0;
+                            transform:translateX(0);
+                        }
+                        &:last-child .text {
+                            right:0;
+                            transform:translateX(0);
+                        }
+                        &.on {
+                            &:before{
+                                background-color:#fff;
+                                border:1px solid #ddd;
+                                box-shadow:2px 4px 8px 0 rgba(0, 0, 0, 0.14);
+                            }
+                        }
+                        &.current {
+                            .text {
+                                display:block;
+                            }
+                        }
+                    }
                 }
             }
         }
         @include mobile{
-            .result-header-tit{
+            .result-header {
                 padding:0 16px;
             }
-            .result-header-btn{
-                .btn-group{
-                    display:flex;
-                    justify-content: space-between;
-                    flex-flow:wrap;
-                    padding:24px 16px;
+            .result-btn-group {
+                padding:24px 16px;
+                .group-box {
+                    padding:0;
+                    margin:-12px -8px 0;
                     .btn{
-                        width:calc(50% - 8px);
-                        margin:0 0 12px 0;
+                        width:calc(50% - 16px);
+                        margin:12px 8px 0;
+                    }
+                }
+            }
+
+            .result-progress {
+                padding:60px 16px;
+                .progress-box {
+                    &:after {
+                        height:8px;
+                    }
+                    .progressing {
+                        height:8px;
+                    }
+                    .progressbar {
+                        padding-bottom:28px;
+                        li {
+                            &:before {
+                                width:20px;
+                                height:20px;
+                            }
+                            .text {
+                                bottom:-28px;
+                            }
+                        }
                     }
                 }
             }
         }
 
         .survey-banner-wrap {
-            margin:0 auto 16px;
             display:none;
+            margin:0 auto 16px;
             .banner {
                 display:flex;
                 align-items:center;
@@ -492,130 +584,6 @@
                     }
                 }
             }
-        }
-    }
-
-    .reception-progress{
-        &.type-new
-        {
-            display:flex;
-            align-items:center;
-            max-width:1380px;
-            margin:0 auto;
-            margin-top:64px;
-            margin-bottom:33px;
-            background:#f4f4f4;
-            border-radius:10px;
-            height:12px;
-            li{
-                &::before{
-                    content:'';
-                    border-radius:50%;
-                    width:24px;
-                    height:24px;
-                    background-color:#aaa;
-                    display:inline-block;
-                }
-                &:first-child{
-                    text-align:left;
-                }
-                &:last-child{
-                    text-align:right;
-                }
-                .text{
-                    margin-top:10px;
-                    display:none;
-                }
-                &.on{
-                    &::before{
-                        background-color:#fff;
-                        border:1px solid #ddd;
-                        box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.14);
-                        margin-top:26px;
-                    }
-                    .text{
-                        display:block;
-                    }
-                }
-            }
-            &.step-3{
-                li{
-                    width:33.33%;
-                }
-            }
-        }
-    }
-
-    .reception-progress-box{
-        padding:0 40px;
-        margin:0 auto;
-        margin-top:64px;
-        max-width:1460px;
-
-        .description{
-            font-weight:700;
-        }
-
-        .reception-progress{
-            &.type-new{
-                margin-top:24px;
-                margin-bottom:80px;
-            }
-        }
-    }
-
-
-    /* support tablet */
-    @media (max-width: 1024px){
-        .contents-inner{
-            border-top:0;
-        }
-        .reservation-info-box{
-            padding:0 5%;
-            .reservation-area{
-                flex-flow: column;
-                padding:24px 0;
-                .engineer-info{
-                    margin-bottom:24px;
-                }
-                .engineer-img{
-                    margin-right:5%;
-                }
-            }
-        }
-    }
-
-    /* support mobile */
-    @include mobile{
-        .problem-solve.type2{
-            justify-content: unset;
-            flex-flow:column;
-            align-items:baseline;
-            //margin-bottom: 40px;
-
-            .solve-btn-txt-area{
-                margin-top:25px;
-            }
-        }
-        .reservation-info-box{
-            margin-bottom:0;
-        }
-        .reservation-info-box.type-email{
-            .reservation-area{
-                .email-img{
-                    margin-right:18px;
-                }
-                .reservation-info-desc{
-                    margin-top:16px;
-                    strong{
-                        font-weight:normal;
-                    }
-                }
-            }
-        }
-
-        .reception-progress-box{
-            padding:0 16px;
         }
     }
 }

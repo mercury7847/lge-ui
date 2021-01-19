@@ -30,16 +30,16 @@
             }
             .chk-cate {
                  .chk-wrap input:checked+label {
-                    background:#ededed;
-                    border-radius:28px;
+                    background:#e4e4e4;
+                    border-radius:25px;
                     white-space:nowrap;
                     overflow:hidden;
                 }
                 .chk-wrap input+label {
-                    padding:6px 12px;
-                    color:#222;
+                    padding:8px 16px;
+                    color:#000;
                     font-weight:$font-weight-bold;
-                    @include font-large-1;
+                    @include font-large;
                     line-height:34px;
                     @media screen and (max-width: 1024px) {
                         @include font-large-2;
@@ -47,8 +47,8 @@
 
                     @include mobile {
                         padding:12px 16px;
-                        font-size: 13px;
-                        line-height: 21px;
+                        font-size: 17px;
+                        line-height: 25px;
                     }
                     &:before {
                         display:none;
@@ -235,10 +235,19 @@
                         padding: 0;
                     }
                     .btn {
+                        padding:8px 30px !important;
                         border-color: $color-default !important;
+                        color:#000;
+                        font-size:14px;
+                        line-height:24px;
                         &:hover,
                         &:focus {
                             border-color: $color-primary !important;
+                        }
+                        @include mobile {
+                            padding:11px 30px;
+                            font-size:13px;
+                            line-height:21px;
                         }
                     }
                 }

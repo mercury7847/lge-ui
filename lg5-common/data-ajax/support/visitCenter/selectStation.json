@@ -1,0 +1,23 @@
+{
+    "status":"success",
+    "message":null,
+    "param":{},
+    "data": [
+        {
+            "name": "홍대입구역",
+            "value": "123"
+        },
+        {
+            "name": "신촌역",
+            "value": "123"
+        },
+        {
+            "name": "이대역",
+            "value": "123"
+        },
+        {
+            "name": "당산역",
+            "value": "123"
+        }
+    ]
+}

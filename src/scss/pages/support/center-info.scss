@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+// 매장정보
+.store-info-wrap {
+    .cont-wrap {
+        .detail-info-wrap {
+            .right-box {
+                .info-list {
+                    dl {
+                        dd {
+                            .item {
+                                li {
+                                    .key {
+                                        .sp {
+                                            margin-left: 1em;
+                                        }
+                                    }
+                                    .btn-link {
+                                        margin-left: 24px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .box-info {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
+}

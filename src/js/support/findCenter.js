@@ -27,13 +27,9 @@
                         '</p>'+
 
                         '{{#if bizStatus}}'+
-                        '<div class="box-info">'+
-                            '<ul>'+
-                                '<li class="{{bizStatus.bizStatusClass}}">'+
-                                    '<span class="blind">{{bizStatus.bizStatusColor}} 표기</span>'+
-                                    '<strong class="status">{{bizStatus.bizStatusText}}</strong>'+
-                                '</li>'+
-                            '</ul>'+
+                        '<div class="status-icon {{bizStatus.bizStatusClass}}">'+
+                            '<span class="blind">{{bizStatus.bizStatusColor}} 표기</span>'+
+                            '<strong class="status">{{bizStatus.bizStatusText}}</strong>'+
                         '</div>'+
                         '{{/if}}'+
 
@@ -357,6 +353,10 @@
             self.$searchSubwayButton.on('click', function(e){
                 self._setSubwaySearch();
             });
+            
+            $('.option-confirm-btn').on('click', function(e){
+                self._setOptApply();
+            });
             self._resize();
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
@@ -376,8 +376,9 @@
 
         _loadStoreData: function(){
             var self = this;
+            var param = $.extend(self._getKeyword(), self.optionData);
 
-            lgkorUI.requestAjaxData(self.bestShopUrl, self._getKeyword(), function(result){
+            lgkorUI.requestAjaxDataPost(self.bestShopUrl, param, function(result){
                 self.storeData = vcui.array.map(result.data, function(item, index){
                     item['id'] = item['shopID']; //info.shopID || agCode    
                     item['info'] = false;
@@ -444,23 +445,10 @@
             var self = this;
 
             self.optionData = {
-                shopType: self.$optionContainer.find('.opt-layer .list-item > dl:first-child .rdo-wrap input:checked').attr('id'),
-                serviceType: self.$optionContainer.find('.opt-layer .list-item > dl:nth-child(2) .rdo-wrap input:checked').attr('id'),
-                keywords:{
-                    shop: [],
-                    service: [],
-                    etc: []
-                }
+                serviceProduct: []
             }
-
             self.$optionContainer.find('.all-chk > dd > dl:nth-child(1) input').each(function(idx, item){
-                if($(item).prop('checked')) self.optionData.keywords.shop.push($(item).attr('id'));
-            });
-            self.$optionContainer.find('.all-chk > dd > dl:nth-child(2) input').each(function(idx, item){
-                if($(item).prop('checked')) self.optionData.keywords.service.push($(item).attr('id'));
-            });
-            self.$optionContainer.find('.all-chk > dd > dl:nth-child(3) input').each(function(idx, item){
-                if($(item).prop('checked')) self.optionData.keywords.etc.push($(item).attr('id'));
+                if($(item).prop('checked')) self.optionData.serviceProduct.push($(item).val());
             });
         },
 
@@ -598,8 +586,8 @@
         _setUserAdressSearch: function(){
             var self = this;
 
-            lgkorUI.requestAjaxData(self.userAdressCheckedUrl, {}, function(result){
-                if(result.data.success == "Y"){
+            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(self.userAdressCheckedUrl, {}, function(result){
+                if(lgkorUI.stringToBool(result.data.success)){
                     self.userCityName = result.data.userAdress.cityValue;
                     self.userBoroughName = result.data.userAdress.boroughValue;
                     self.searchResultMode = true;

@@ -16,75 +16,199 @@
             })
 
             <div class="contents support solutions">
-                <div class="">
-                    <div class="">
-                        <div class="">
+                <!-- 선택 제품 플로팅바 -->
+                @@include('./common/support/selected-model-bar.html')
 
+                <!-- 회원 - 제품 없을 시 -->
+                @@include('./common/support/select-my-model.html', {
+                    "noItem": true
+                })
+
+                <!-- 회원 - 보유제품 펼침 -->
+                @@include('./common/support/select-my-model.html')
+
+                <div class="cont-wrap">
+
+                    <div class="step-area">
+                        <div class="step-box active" id="stepModel">
+                            @@include('./common/support/select-model.html', {
+                                "category": [
+                                    { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
+                                    { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
+                                    { "name": "IT/모니터", "code": "P1011", "imgSrc": "/lg5-common/images/CS/img-category03.jpg", "imgAlt": "IT/모니터 카테고리 썸네일" },
+                                    { "name": "에어컨", "code": "1019", "imgSrc": "/lg5-common/images/CS/img-category04.jpg", "imgAlt": "에어컨 카테고리 썸네일" },
+                                    { "name": "냉장/냉동고", "code": "1025", "imgSrc": "/lg5-common/images/CS/img-category05.jpg", "imgAlt": "냉장/냉동고 카테고리 썸네일" },
+                                    { "name": "세탁기/스타일러", "code": "1020", "imgSrc": "/lg5-common/images/CS/img-category06.jpg", "imgAlt": "세탁기/스타일러 카테고리 썸네일" },
+                                    { "name": "청소기", "code": "1023", "imgSrc": "/lg5-common/images/CS/img-category07.jpg", "imgAlt": "청소기 카테고리 썸네일" },
+                                    { "name": "조리/세척기기", "code": "P1030", "imgSrc": "/lg5-common/images/CS/img-category08.jpg", "imgAlt": "조리/세척기기 카테고리 썸네일" },
+                                    { "name": "건강/소형기기", "code": "P1024", "imgSrc": "/lg5-common/images/CS/img-category09.jpg", "imgAlt": "건강/소형기기 카테고리 썸네일" },
+                                    { "name": "AV/음향기기", "code": "P1009", "imgSrc": "/lg5-common/images/CS/img-category10.jpg", "imgAlt": "AV/음향기기 카테고리 썸네일" },
+                                    { "name": "기타", "code": "P9999", "imgSrc": "/lg5-common/images/CS/img-category11.jpg", "imgAlt": "기타 카테고리 썸네일" },
+                                    { "name": "B2B", "code": "P1134", "imgSrc": "/lg5-common/images/CS/img-category12.jpg", "imgAlt": "B2B 카테고리 썸네일" }
+                                ]
+                            })
                         </div>
-                        <div class="">
 
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cont-wrap narrow">
-
-                    <div class="accordion-section ui_accordion">
-                        <ul>
-                            <li class="lists">
-                                <div class="head">
-                                    <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                        <h3 class="title">모델명 선택</h3>
-                                        <span class="blind ui_accord_text">내용 더 보기</span>
-                                    </a>
-                                </div>
-                                <div class="accord-cont ui_accord_content">
-                                    <div class="dummy">
-                                        <p>11/20 제품 선택 부분 변경 고도화 필요</p>
+                        <div class="step-box" id="stepInput">
+                            <div class="section solutions-section" id="solutionsSection">
+                                <div class="solutions-wrap" data-ajax="/lg5-common/data-ajax/support/solutionsList.json" data-filter-ajax="/lg5-common/data-ajax/support/filterList.json" data-sub-filter-ajax="/lg5-common/data-ajax/support/subFilterList.json">
+                                    <input type="hidden" name="keyword" id="keyword" value="">
+                                    <input type="hidden" name="topic" id="topic" value="All">
+                                    <input type="hidden" name="subTopic" id="subTopic" value="">
+                                    <input type="hidden" name="orderBy" id="orderBy" value="orderBy">
+                                    
+                                    <h2 class="blind">제품 문제해결</h2>
+                                    <div class="info-banner">
+                                        <a href="#" class="btn dark-gray size"><span>Window 10 S 정보</span></a>
+                                        <a href="#" class="btn dark-gray size"><span>Window 10 업데이트 정보</span></a>                                        
+                                    </div>
+                                    <div class="search-wrap">
+                                        <div class="keyword-search">
+                                            <div class="input-wrap">
+                                                <input type="text" name="inputKeyword" id="inputKeyword" class="ui_input_clearbutton" placeholder="검색어 입력" title="검색어 입력" data-clear-button="button.btn-delete">
+                                                <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+                                                <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                            </div>
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" name="research" id="research">
+                                                <label for="research">결과 내 검색</label>
+                                            </span>
+                                        </div>
+                                        <p class="desc">제품 부착된 라벨의 모델명 중 마침표 (.)가 있는 모델명을 확인해 마침표 앞까지만 입력/검색</p>
+                                    </div>
+        
+                                    <div class="filter-box">
+                                        <div class="tit-wrap">
+                                            <h3 class="tit">증상 선택</h4>
+                                        </div>
+                                        <ul class="filter-list">
+                                            <li class="on">
+                                                <button type="button" class="filter-link" data-code="All" data-name="All">All <span class="blind">선택됨</span></button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="filter-link" data-code="10000002" data-name="기능">기능</button>
+                                                <!-- <div class="sub-depth">
+                                                    <div class="tit-wrap">
+                                                        <button type="button" class="btn-back"><span class="blind">이전 보기</span></button>
+                                                        <strong class="tit">기능</strong>  
+                                                    </div>
+                                                    <ul class="filter-list">
+                                                        <li>
+                                                            <button type="button" class="filter-link">ALL</button>
+                                                        </li>
+                                                        <li>
+                                                            <button type="button" class="filter-link">퀵 헬프 방법</button>
+                                                        </li>
+                                                        <li>
+                                                            <button type="button" class="filter-link">앱 설치</button>
+                                                        </li>
+                                                        <li>
+                                                            <button type="button" class="filter-link">타임머신</button>
+                                                        </li>
+                                                        <li>
+                                                            <button type="button" class="filter-link">신호없음</button>
+                                                        </li>
+                                                        <li>
+                                                            <button type="button" class="filter-link">인터넷 연결</button>
+                                                        </li>
+                                                    </ul>
+                                                </div> -->
+                                            </li>
+                                            <li>
+                                                <button type="button" class="filter-link" data-code="10000003" data-name="설치/연결">설치/연결</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="filter-link" data-code="10000004" data-name="소음/냄새/열발생">소음/냄새/열발생</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="filter-link" data-code="10000005" data-name="스마트 앱">스마트 앱</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+        
+                                    <div class="result-box">
+                                        <div class="mobile-filter-box">
+                                            <div class="form-wrap">
+                                                <div class="forms">
+                                                    <div class="tit">
+                                                        <label for="symptom">증상</label>
+                                                    </div>
+                                                    <div class="conts">
+                                                        <div class="select-wrap">
+                                                            <select class="ui_selectbox" name="symptom" id="symptom" title="증상 선택">
+                                                                <option value="" class="placeholder">증상 선택</option>
+                                                                <option value="All">All</option>
+                                                                <option value="10000002">기능</option>
+                                                                <option value="10000003">설치/연결</option>
+                                                                <option value="10000004">소음/냄새/열발생</option>
+                                                                <option value="10000005">스마트 앱</option>
+                                                            </select>
+                                                            <div class="select-wrap">
+                                                                <select class="ui_selectbox" name="subSymptom" id="subSymptom" title="세부증상 선택" disabled>
+                                                                    <option  value="" class="placeholder">세부증상 선택</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="tit-wrap">
+                                            <h3 class="tit">“<span class="point">All</span>” 검색 결과</h3>
+                                        </div>
+                                        <div class="sorting-wrap">
+                                            <div class="total">전체 <em id="solutionsCount" class="count">122</em>건</div>
+                                            <div class="sort-box">
+                                                <div class="sort-select-wrap">
+                                                    <select class="ui_selectbox" name="selectOrder" id="selectOrder" title="정렬 기준 선택">
+                                                        <option value="조회순" selected>조회순</option>
+                                                        <option value="인기순">인기순</option>
+                                                        <option value="최근순">최근순</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-wrap">
+                                            <ul class="list">
+                                                <li class="video-type">
+                                                    <a href="#" class="item">
+                                                        <p class="tit">노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀</p>
+                                                        <p class="desc">증상 > 세부 증상</p>
+                                                        <ul class="options">
+                                                            <li>2020.07.20</li>
+                                                            <li>조회 5,692</li>
+                                                        </ul>
+                                                        <span class="icon-movie"><span class="blind">동영상 컨텐츠</span></span>
+                                                    </a>
+                                                </li>
+                                                @@for (var i = 0; i < 9; i++) {
+                                                <li>
+                                                    <a href="#" class="item">
+                                                        <p class="tit">노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀</p>
+                                                        <p class="desc">증상 > 세부 증상</p>
+                                                        <ul class="options">
+                                                            <li>2020.07.20</li>
+                                                            <li>조회 5,692</li>
+                                                        </ul>
+                                                    </a>
+                                                </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                        @@include('./common/support/pagination.html', {
+                                            count: 5
+                                        })
                                     </div>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="">
-                        <div></div>
-                    </div>
-
-                    <div class="solutions-wrap">
-                        <form action="" id="submitForm">
-                            <input type="hidden" name="keyword" id="keyword" value="">
-                            <input type="hidden" name="superCategory" id="superCategory" value="">
-                            <input type="hidden" name="category" id="category" value="">
-                            <input type="hidden" name="model" id="model" value="">
-                            <input type="hidden" name="topic" id="topic" value="LCL10005001">
-                            <input type="hidden" name="subTopic" id="subTopic" value="">
-                            <input type="hidden" name="orderBy" id="orderBy" value="most">
-                            <input type="hidden" name="page" id="page" value="1">
-                        </form>
-
-                        <div class="search-wrap">
-                            <div class="input-wrap">
-                                <span class="box">
-                                    <input type="text" name="" id="" placeholder="키워드 검색">
-                                    <span class="cell">
-                                        <button type="button" class="btn-search"><span class="blind">검색</span></button>
-                                    </span>
-                                </span>
                             </div>
                         </div>
-
-                        <div>
-
-                        </div>
                     </div>
-
                 </div>
 
                 @@include('./common/support/recommand-product.html')
                 @@include('./common/support/service-menu.html')
                 @@include('./common/support/center-find.html')
-
             </div>
         </div>
              
@@ -92,7 +216,6 @@
     </div>  
     
     <!-- support script -->
-    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
     <script src="/lg5-common/js/support/productSupport/solutions.min.js"></script>
 </body>

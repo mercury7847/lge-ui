@@ -15,7 +15,25 @@
                     .zero-top : 상단여백 없음
                     .zero-btm : 하단여백 없음
 				-->
-				<section class="component KRP0006" data-type="top" data-model-id="pd00001" data-sku="7XARQs32" data-response-url="/lg5-common/data-ajax/KRP0006/responseData.json">
+				<!--
+					data-type: top/bottom
+					data-model-id: 제품ID
+					data-sku: 제품sku
+					data-response-url: responsee ajax url
+					data-bottom-compare-url: bottom일 경우 비교할 prevUrl (기획내용:제품비교URL)
+					data-top-cookie-count: top일경우 productCurationProposal를 뛰우려면
+						쿠키에 저장된 제품이 5개 이상일 경우에 보여줘야 하는데
+						강제로 비교값을 설정하기위해 사용
+						*테스트 코드이므로 실제로 배포될때는 제거되야 됨
+				-->
+				<section class="component KRP0006"
+					data-type="top"
+					data-model-id="pd00001"
+					data-sku="7XARQs32"
+					data-response-url="http://mktsvc.lgekrdev.lge.co.kr/kr/mkt/api/responsible/retrieveResponseUI"
+					data-bottom-compare-url="/lgekor/bestshop/counsel/counselMain.do"
+					data-top-cookie-count="0"
+				>
 					<div class="inner">
 						<!-- <p class="txt"><a href="#"></a></p> -->
 						<a href="#"><p class="txt"></p></a>

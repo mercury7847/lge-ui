@@ -602,18 +602,24 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 obj = self.register[key];
                 if(obj && obj.required){
                     $target = self.$el.find('[name='+ key +']');
-                    if (($target.is('[type=hidden]') || $target.is(':visible')) && !$target.prop('disabled')) {
-                        if($target.is(':checkbox') || $target.is(':radio')){
-                            var nArr = [];
-                            $target.filter(':checked').each(function(idx, item){
-                                nArr.push($(item).val())
-                            });
-                            val = $target.is(':radio')? nArr[0] : nArr;
-                            if(val=='on' || val == undefined) val = '';
-                        }else{
-                            val = $target.val();
-                        }
+                    
+                    if ($target.siblings('.ui-selectbox-wrap').is(':visible')) {
+                        val = $target.val();
                         rObj = self._checkValidate(key, obj, val, rObj, flag);
+                    } else {
+                        if (($target.is('[type=hidden]') || $target.is(':visible')) && !$target.prop('disabled')) {
+                            if($target.is(':checkbox') || $target.is(':radio')){
+                                var nArr = [];
+                                $target.filter(':checked').each(function(idx, item){
+                                    nArr.push($(item).val())
+                                });
+                                val = $target.is(':radio')? nArr[0] : nArr;
+                                if(val=='on' || val == undefined) val = '';
+                            }else{
+                                val = $target.val();
+                            }
+                            rObj = self._checkValidate(key, obj, val, rObj, flag);
+                        }
                     }
                 }
             }

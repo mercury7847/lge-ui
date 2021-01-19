@@ -19,10 +19,8 @@
             }
             .head {
                 &-title {
-                    color:#222;
-                    font-weight:700;
+                    font-weight:$font-weight-bold;
                     @include font-large-2;
-                    // @include textEllipsisClamp(2);
                 }
                 &-infos {
                     margin-top:8px;
@@ -83,6 +81,9 @@
         &-body {
             padding:48px 0 80px;
             .view-content {
+                img {
+                    max-width: 100%;
+                }
                 /* video detail */
                 .video-content {
                     padding:64px 40px;

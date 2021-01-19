@@ -220,7 +220,7 @@
                         } else {
                             checkModelSuccess = false;
                             self.$modelCheckOk.hide();
-                            lgkorUI.alert('', {title: "해당 제품 모델명이 존재하지 않습니다."});
+                            lgkorUI.alert("", {title: "해당 제품 모델명이 존재하지 않습니다."});
                         }
                     });
                 });
@@ -231,7 +231,7 @@
                     lgkorUI.requestAjaxData(ajaxUrl, {"sn":self.$snInput.val()}, function(result) {
                         var data = result.data;
                         if(!lgkorUI.stringToBool(data.success)) {
-                            lgkorUI.alert('', {title: "해당 제조번호가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
+                            lgkorUI.alert("", {title: "해당 제조번호가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
                         }
                     });
                 });
@@ -254,7 +254,7 @@
                                 });
                             }
                         } else {
-                            lgkorUI.alert('', {title: "제품 모델명을 확인해 주세요."});
+                            lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
                         }
                     }
                 });

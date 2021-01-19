@@ -164,10 +164,7 @@
             var href = $(this).attr('href');
             if(href == "#none" || href == ""){
                 e.preventDefault();
-
-                lgkorUI.alert("제품이 현재 품절/판매 중지<br>상태로 상세 정보를 확인 하실 수 없습니다", {
-                    title:""
-                });
+                lgkorUI.alert("", {title: "제품이 현재 품절/판매 중지<br>상태로 상세 정보를 확인 하실 수 없습니다"});
             }
         });
     }
@@ -248,10 +245,12 @@
             page: page || 1
         }
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
-            if(result.data.success == "Y"){
-                if(result.data.orderList && result.data.orderList.length){
-                    CURRENT_PAGE = result.data.page;
-                    TOTAL_PAGE = result.data.total;
+            console.log("result.data.success:", result.data.success)
+            if(lgkorUI.stringToBool(result.data.success, true)){
+                console.log("result.data.listData:", result.data.listData)
+                if(result.data.listData && result.data.listData.length){
+                    CURRENT_PAGE = result.param.pagination.page;
+                    TOTAL_PAGE = result.param.pagination.totalCount;
 
                     $('.inquiry-list-notify').show();
 
@@ -264,7 +263,7 @@
                     }
 
                     var leng, cdx, idx, templateList;
-                    var list = result.data.orderList;
+                    var list = result.data.listData;
                     for(idx in list){
                         leng = ORDER_LIST.length;
                         list[idx]['dataID'] = leng.toString();
