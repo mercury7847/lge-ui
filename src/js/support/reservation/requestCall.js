@@ -265,7 +265,7 @@
 
                     module._updateSummary({
                         product: [data.categoryName, data.subCategoryName, data.modelCode],
-                        reset: true
+                        reset: 'product'
                     });
                 
                     self.$dateWrap.calendar('update', resultData.dateList);
