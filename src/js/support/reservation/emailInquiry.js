@@ -31,6 +31,8 @@
             self.$inquiryBox = self.$cont.find('#inquiryBox');
             self.$inquiryListWrap = self.$cont.find('#inquiryList');
             self.$inquiryList = self.$inquiryListWrap.find('.rdo-list');
+            self.$recordBox = self.$stepInput.find('#recordBox');
+            self.$rcptNoBox = self.$stepInput.find('#rcptNoBox');
 
             self.isDefault = self.$cont.find('#category').val() ? true : false;
 
@@ -39,8 +41,11 @@
                     privcyCheck: {
                         msgTarget: '.err-block'
                     },
-                    inquiry: {
+                    subsection: {
                         msgTarget: '.type-msg'
+                    },
+                    cRcptNo: {
+                        msgTArget: '. err-block'
                     },
                     inquiryTitle: {
                         msgTarget: '.err-block'
@@ -136,6 +141,10 @@
         reset: function() {
             var self = this;
 
+            self.$recordBox.hide();
+            self.$recordBox.find('input[type=radio]').eq(0).prop('checked', true);
+            self.$rcptNoBox.hide();
+            self.$rcptNoBox.find('input').val('');
             self.$inquiryBox.hide();
             self.$inquiryList.empty();
 
@@ -171,6 +180,18 @@
                 self.selectModel(data, url);
             }).on('reset', function() {
                 self.reset();
+            });
+
+            // 문의 유형 선택 시
+            self.$inquiryBox.on('change', '[name=subsection]', function() {
+                self.$recordBox.find('input[type=radio]').eq(0).prop('checked', true);
+                self.$recordBox[$(this).data('inquiryName') == 'A/S' ? 'show':'hide']();
+            });
+
+            // 상담/서비스 이력 선택 시
+            self.$recordBox.on('change', '[name=record]', function() {
+                self.$rcptNoBox[$(this).val() == '1' ? 'show':'hide']();
+                self.$rcptNoBox.find('input').val('');
             });
 
             // 신청 완료
