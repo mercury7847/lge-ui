@@ -150,10 +150,12 @@
             self.$listPagination.on('pageClick', function(e) {
                 var userNm = self.$listPage.find('#userName').val();
                 var phoneNo = self.$listPage.find('#phoneNumber').val();
+                var clothFlag = self.$list.Page.find('#clothFlag').val();
                 var param = {
                     page: e.page,
                     userName: userNm,
-                    phoneNumber: phoneNo
+                    phoneNumber: phoneNo,
+                    clothFlag: clothFlag
                 };
                 self.requestData(param);
             });
