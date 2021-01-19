@@ -27,6 +27,7 @@
     '{{/each}}';
     var validation;
     var authManager;
+    var dateUtil = vcui.date;
 
     var reservation = {
         init: function() {
@@ -312,13 +313,18 @@
 
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var resultData = result.data;
+                    var fastDate;
 
                     module._updateSummary({
                         product: [data.categoryName, data.subCategoryName, data.modelCode],
                         reset: true
                     });
-
+                    
                     self.$dateWrap.calendar('update', resultData.dateList);
+
+                    fastDate = dateUtil.format(resultData.fastDate + '' + resultData.fastTime + '00', 'yyyy.MM.dd hh:mm');
+                    $('.calendar-info .date').html(fastDate);
+
                     self.setTopicList(resultData)
                     self.$completeBtns.show();
                     module.$myModelArea.hide();

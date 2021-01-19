@@ -27,6 +27,7 @@
     '{{/each}}';
     var validation;
     var authManager;
+    var dateUtil = vcui.date;
 
     var reservation = {
         init: function() {
@@ -240,13 +241,13 @@
             var self = this;
             
             // 모델 재선택
-            self.$cont.on('reset', function() {
+            self.$cont.on('reset', function(e, module) {
                 self.$solutionsBanner.hide();
 
                 self.$dateWrap.calendar('reset');
                 self.$timeWrap.timeCalendar('reset');
 
-                self._next(self.$stepModel);
+                module._next(self.$stepModel);
             });
 
             // 모델 선택 후 이벤트
@@ -260,6 +261,7 @@
 
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var resultData = result.data;
+                    var fastDate;
 
                     module._updateSummary({
                         product: [data.categoryName, data.subCategoryName, data.modelCode],
@@ -267,6 +269,10 @@
                     });
                 
                     self.$dateWrap.calendar('update', resultData.dateList);
+
+                    fastDate = dateUtil.format(resultData.fastDate + '' + resultData.fastTime + '00', 'yyyy.MM.dd hh:mm');
+                    $('.calendar-info .date').html(fastDate);
+
                     self.setTopicList(resultData);
                     
                     module.$myModelArea.hide();
