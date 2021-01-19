@@ -25,7 +25,8 @@
             self.$submitForm = self.$cont.find('#submitForm');
             self.$completeBtns = self.$cont.find('.btn-group');
 
-            self.$stepInquiry = self.$cont.find('#stepInquiry');
+            self.$stepTerms = self.$cont.find('#stepTerms');
+            self.$stepInquiry = self.$cont.find('#stepInquiryType');
 
             self.$stepInput = self.$cont.find('#stepInput');
             self.$inquiryBox = self.$cont.find('#inquiryBox');
@@ -76,14 +77,8 @@
 
                 self.bindEvent();
 
-                if (self.isDefault) {
-                    var data = {
-                        category: $('#category').val(),
-                        subCategory: $('#subCategory').val(),
-                        modelCode: $('#modelCode').val()
-                    };
-
-                    self.loadInquiry(data, $('.#prod-search-wrap').data('resultUrl'));
+                if (self.isDefault && !self.$stepTerms.length) {
+                    self.$cont.commonModel('complete');
                 }
             });
         },
@@ -106,6 +101,7 @@
                 serviceType: $('#serviceType').val()
             };
 
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(url, param, function(result) {
                 var resultData = result.data;
                 var result = resultData.inquiryList instanceof Array ? resultData.inquiryList.length : false;
@@ -119,7 +115,10 @@
                     self.$inquiryBox.show();
 
                     self.nextStepInput(data);
+                } else {
+                    self.$inquiryBox.hide();
                 }
+                lgkorUI.hideLoading();
             });
         },
         nextStepInput: function(data) {
@@ -147,6 +146,7 @@
             self.$rcptNoBox.find('input').val('');
             self.$inquiryBox.hide();
             self.$inquiryList.empty();
+            self.$myModelArea.show();
 
             self.$cont.commonModel('_next', self.$stepInquiry);
         },
@@ -176,7 +176,7 @@
             var self = this;
 
             // 모델 선택 & 문의 재선택
-            self.$cont.on('complete', function(e, module, data, url) {
+            self.$cont.on('complete', function(e, module, data, url) { console.log(data);
                 self.selectModel(data, url);
             }).on('reset', function() {
                 self.reset();
@@ -190,8 +190,12 @@
 
             // 상담/서비스 이력 선택 시
             self.$recordBox.on('change', '[name=record]', function() {
-                self.$rcptNoBox[$(this).val() == '1' ? 'show':'hide']();
-                self.$rcptNoBox.find('input').val('');
+                if ($(this).val() == '0') {
+                    self.$rcptNoBox.hide();
+                    self.$rcptNoBox.find('input').val('');
+                } else {
+                    self.$rcptNoBox.show();
+                }
             });
 
             // 신청 완료
