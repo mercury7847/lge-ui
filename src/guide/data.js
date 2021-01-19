@@ -246,6 +246,7 @@ var res = {
 			},
 			"브랜드관(PRH)" : {
 				"LG ThinQ" : ["/html/PRH/MKTF1110.html","","진행중"],
+				"LG SIGNATURE" : ["/html/PRH/MKTF1111.html","","진행중"]
 			},
 			"스토리(STS)" : {
 				"홈(서브메인)" : ["/html/STS/OBS5001.html","",""]
