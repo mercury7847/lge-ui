@@ -397,10 +397,16 @@
 */
                 self.$tab.on("tabchange", function(e, data){
                     var index = data.selectedIndex;
+                    var $li = self.$tab.find('li a:eq("'+index+'")');
+                    var href = $li.attr('href');
+                    location.href = href;
+                    //location.replace(href);
+                    /*
                     if(index != tabIndexAll) {
                         self.resetFilter();
                         self.requestSearch(null,false);
                     }
+                    */
                 });
 
                 //검색버튼
