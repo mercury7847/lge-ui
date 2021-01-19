@@ -345,8 +345,8 @@
                 {   
                     "type":"product",
                     "url":"#",
-                    "image_url":"/lg5-common/images/dummy/@img-cs.jpg",
-                    "image_alt":"LG DIOS 노크온 매직스페이스",
+                    "imageUrl":"/lg5-common/images/dummy/@img-cs.jpg",
+                    "imageAlt":"LG DIOS 노크온 매직스페이스",
                     "title":"LG DIOS 노크온 매직스페이스",
                     "sku":"S833MC85Q1",
                     "category":[
@@ -357,8 +357,8 @@
                 {   
                     "type":"product",
                     "url":"#",
-                    "image_url":"/lg5-common/images/dummy/@img-cs.jpg",
-                    "image_alt":"LG DIOS 노크온 매직스페이스",
+                    "imageUrl":"/lg5-common/images/dummy/@img-cs.jpg",
+                    "imageAlt":"LG DIOS 노크온 매직스페이스",
                     "title":"LG DIOS 노크온 매직스페이스",
                     "sku":"S833MC85Q1",
                     "category":[
@@ -367,8 +367,7 @@
                     ]
                 },
                 {
-                    "type":"download",
-                    "isVideo":false,
+                    "type":"manual",
                     "url":"#",
                     "title":"사용설명서 HTML",
                     "flag":[
@@ -398,12 +397,11 @@
                     ]
                 },
                 {
-                    "type":"download",
-                    "isVideo":false,
+                    "type":"driver",
                     "url":"#",
                     "title":"[프로그램/Win10_64bit] XPION용 LG intelligent Update 프로그램",
                     "flag":[
-                        "제품사용설명서"
+                        "드라이버/소프트웨어"
                     ],
                     "category":[
                         [
@@ -423,178 +421,28 @@
                             "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true"
                         }
                     ]
-                }
-            ],
-            "support":[
-                {   "url":"#",
-                    "image_url":"/lg5-common/images/dummy/@img-product.jpg",
-                    "image_alt":"LG DIOS 노크온 매직스페이스",
-                    "title":"LG DIOS 노크온 매직스페이스",
-                    "sku":"S833MC85Q1"
-                },
-                {   "url":"#",
-                    "image_url":"/lg5-common/images/dummy/@img-product.jpg",
-                    "image_alt":"LG DIOS 노크온 매직스페이스",
-                    "title":"LG DIOS 노크온 매직스페이스",
-                    "sku":"S833MC85Q2"
-                },
-                {   "url":"#",
-                    "image_url":"/lg5-common/images/dummy/@img-product.jpg",
-                    "image_alt":"LG DIOS 노크온 매직스페이스",
-                    "title":"LG DIOS 노크온 매직스페이스",
-                    "sku":"S833MC85Q3"
-                }
-            ],
-            "driver":[
-                {
-                    "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true",
-                    "title":"[프로그램/Win10_64bit ] XPION용 LG <em>intelligent Update </em>프로그램",
-                    "flag":[
-                        "드라이버/소프트지원"
-                    ],
-                    "category":[
-                        [
-                            "IT/모니터",
-                            "<em>데스크톱</em>/일체형"
-                        ]
-                    ],
-                    "desc":null
                 },
                 {
-                    "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true",
-                    "title":"[프로그램/Win10_64bit ] XPION용 LG <em>intelligent Update </em>프로그램",
-                    "flag":[
-                        "드라이버/소프트"
-                    ],
-                    "category":[
-                        [
-                            "IT/모니터",
-                            "일체형"
-                        ],
-                        [
-                            "기능",
-                            "제품"
-                        ]
-                    ],
-                    "desc":null
-                }
-            ],
-            "trouble":[
-                {
+                    "type":"trouble",
                     "url":"#",
-                    "title":"Miracast 또는 MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
+                    "title":"MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
                     "flag":[
-                        "드라이버/소프트지원"
+                        "제품문제해결"
                     ],
                     "category":[
                         [
                             "IT/모니터",
-                            "<em>데스크톱</em>/일체형"
+                            "데스크톱/일체형"
                         ]
                     ],
-                    "desc":null
-                },
-                {
-                    "url":"#",
-                    "title":"Miracast 또는 MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
-                    "flag":[
-                        "드라이버/소프트"
+                    "desc":"통합 드라이버 프로그램",
+                    "hash":[
+                        "조회수 5,692"
                     ],
-                    "category":[
-                        [
-                            "IT/모니터",
-                            "일체형"
-                        ],
-                        [
-                            "기능",
-                            "제품"
-                        ]
-                    ],
-                    "desc":null
+                    "date":"20201102",
+                    "isVideo":true
                 }
-            ],
-            "manual":[
-                {
-                    "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true",
-                    "title":"HTML <em>사용설명서</em> (한국어)",
-                    "flag":[
-                        "사용설명"
-                    ],
-                    "category":[
-                        [
-                            "IT/모니터",
-                            "<em>데스크톱</em>/일체형"
-                        ]
-                    ],
-                    "desc":null
-                },
-                {
-                    "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true",
-                    "title":"HTML <em>사용설명서</em> (한국어)",
-                    "flag":[
-                        "사용설명서"
-                    ],
-                    "category":[
-                        [
-                            "IT/모니터",
-                            "일체형"
-                        ],
-                        [
-                            "기능",
-                            "제품"
-                        ]
-                    ],
-                    "desc":null
-                }
-            ],
-            "faq":[
-                {
-                    "url":"#",
-                    "title":"LG 비하인드 스토리를 열람하고 싶으신 고객님들에게 제공해드리는 FAQ 가이드 “행복을 찾아주는 파랑새, 인공지능 플랫폼을 이용해보세요’  지금 이용 지금 이용 지금 이용 지금 이용 지금 이용",
-                    "flag":[
-                        "이용가이드"
-                    ],
-                    "category":null,
-                    "desc":"사이트 <em>이용</em>"
-                },
-                {
-                    "url":"#",
-                    "title":"LG 비하인드 스토리를 열람하고 싶으신 고객님들에게 제공해드리는 FAQ 가이드 “행복을 찾아주는 파랑새, 인공지능 플랫폼을 이용해보세요’  지금 이용 지금 이용 지금 이용 지금 이용 지금 이용",
-                    "flag":[
-                        "faq"
-                    ],
-                    "category":null,
-                    "desc":"사이트 <em>이용</em>"
-                }
-            ],
-            "video":[
-                {
-                    "url":"https://www.youtube.com/embed/6BnPTCtzHlo",
-                    "title":"LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
-                    "category":[
-                        [
-                            "IT/모니터",
-                            "<em>데스크톱</em>/일체형"
-                        ]
-                    ],
-                    "desc":null
-                },
-                {
-                    "url":"https://www.youtube.com/embed/6BnPTCtzHlo",
-                    "title":"LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
-                    "category":[
-                        [
-                            "IT/모니터",
-                            "일체형"
-                        ],
-                        [
-                            "기능",
-                            "제품"
-                        ]
-                    ],
-                    "desc":null
-                }
-            ]
+            ]           
         }
     }
 }
