@@ -23,60 +23,70 @@
             <div class="contents support email-inquiry">
 
                 <!-- 선택 제품 플로팅바 -->
-                @@include('./common/support/selected-model-bar.html')
-
-                <!-- 비회원 -->
-                @@include('./common/support/login-guide.html', {
-                    'text': '이메일 문의를 LG전자 통합 사이트의 회원으로 이용하시면 <br class="pc-only">보다 편리하게 이용할 수 있습니다.'
+                @@include('./common/support/selected-model-bar.html', {
+                    "model": {
+                        "category": "모바일",
+                        "subCategory": "일반폰",
+                        "model": "LGP810SPEAKERSTATION"
+                    }
                 })
+
+                <!-- 회원 - 제품 없을 시 -->
+                @@include('./common/support/select-my-model.html', {
+                    "noItem": true
+                })
+
+                <!-- 회원 - 보유제품 펼침 -->
+                @@include('./common/support/select-my-model.html')
 
                 <div class="cont-wrap">
                     <form action="/html/CS/CSRF6015.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/emailinquiry/emailinquiry-complete.json" novalidate>
                         <div class="step-area">
-                            <input type="hidden" name="categoryNm" id="categoryNm" value="">
-                            <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="">
-                            <input type="hidden" name="category" id="category" value="">
-                            <input type="hidden" name="subCategory" id="subCategory" value="">
-                            <input type="hidden" name="modelCode" id="modelCode" value="">
-                            <input type="hidden" name="productCode" id="productCode" value="">
+                            <input type="hidden" name="categoryNm" id="categoryNm" value="모바일">
+                            <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="일반폰">
+                            <input type="hidden" name="category" id="category" value="1018">
+                            <input type="hidden" name="subCategory" id="subCategory" value="C000135">
+                            <input type="hidden" name="modelCode" id="modelCode" value="LGP810SPEAKERSTATION">
+                            <input type="hidden" name="productCode" id="productCode" value="CRA">
                             <input type="hidden" name="serviceType" id="serviceType" value="C">
                             <input type="hidden" name="acptNo" id="acptNo" value="">
                             <input type="hidden" name="pageCode" id="pageCode" value="pageCode">
 
                             <!-- 약관 동의 -->
-                            <div class="step-box active" id="stepTerms">
+                            <!-- <div class="step-box" id="stepTerms">
                                 <div class="section">
                                     <div class="form-infos">
                                         <p class="req" aria-disabled="true">필수 입력 항목</p>
                                     </div>
                                     @@include('./common/support/accept-terms.html', {
-                                        member: false
+                                        member: true
                                     })
                                 </div>
-                                <!-- 
+                                 
                                     1. 회원
                                       - 제품 정보 + 마케팅 수신동의 안 한 경우 
                                     2. 비회원
                                       - 제품 정보
 
                                     일 경우 노출
-                                -->
-                                <!-- <div class="step-btn-wrap">
+                                
+                                <div class="step-btn-wrap">
                                     <button type="button" class="btn border size-m btn-next"><span>다음</span></button>
-                                </div>  -->
-                            </div>
+                                </div> 
+                            </div> -->
                             <!-- // 약관 동의 -->
 
                             <!-- 문의 타입 -->
                             <!-- 
                                 1. 회원
-                                    - 제품 정보
+                                    - 제품 정보 + 마케팅 수신동의 안 한 경우
+                                    - 제품 정보 + 마케팅 수신동의 한 경우
                                 2. 비회원
                                     - 제품 정보
 
                                 일 경우 active 클래스 삭제
                             -->
-                            <div class="step-box active" id="stepInquiryType">
+                            <div class="step-box" id="stepInquiryType">
                                 <div class="inquiry-sections">
                                     <div class="section">
                                         <div class="tit-wrap">
@@ -149,7 +159,7 @@
                             <!-- // 제품 선택 -->
 
                             <!-- 예약 내용 입력 -->
-                            <div class="step-box" id="stepInput">
+                            <div class="step-box active" id="stepInput">
                                 <div class="section" id="inquiryBox">
                                     <div class="form-infos">
                                         <p class="req" aria-disabled="true">필수 입력 항목</p>
@@ -327,7 +337,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="section">
                                     <div class="tit-wrap">
                                         <h2 class="tit">고객 정보를 확인해주세요.</h2>
@@ -361,7 +370,7 @@
                                 </div>
                             </div> 
                             <!--//예약 내용 입력-->
-
+                        
                             @@include('./common/modules/bullet-list.html', {
                                 "topBorder" : true,
                                 "bulletTxt" : [
@@ -369,7 +378,7 @@
                                     "답변은 서비스 홈페이지 문의/예약 결과조회 메뉴를 통해 확인 가능합니다. (단, 답변일로부터 1개월간, 접수번호 필요)"
                                 ]
                             })
-                        
+
                             <div class="btn-group center">
                                 <button type="button" class="btn gray" data-href="#canclePopup" data-control="modal"><span>취소</span></button>
                                 <button type="button" class="btn btn-confirm"><span>문의</span></button>
@@ -388,6 +397,9 @@
 
     <!-- 채용관련/인사제도관련 팝업 -->
     @@include('./CS/modal/recruit-popup.html')
+
+    <!-- 휴대폰인증 팝업 -->
+    @@include('./CS/modal/phone-certification-popup.html')
 
     <!-- 취소 팝업 -->
     <article id="canclePopup" class="lay-wrap">

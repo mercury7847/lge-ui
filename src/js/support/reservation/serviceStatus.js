@@ -80,7 +80,14 @@
                             $('#numberForm').attr('action', result.data.url).submit();
                         } else if (result.data.resultFlag == 'N') {
                             lgkorUI.alert("", {
-                                title: result.data.resultMessage
+                                title: result.data.resultMessage,
+                                ok: function(el) {
+                                    if (result.data.url) {
+                                        location.href = result.data.url; 
+                                    } else {
+                                        $(el).vcModal('hide');
+                                    }
+                                }
                             });
                         }
 
@@ -90,7 +97,9 @@
             });
 
             $('#phoneForm').find('.btn-confirm').on('click', function() {
-                self.authManager.confirm(this);
+                self.authManager.confirm(this, function(success, result) {
+                    success && self.requestComplete();
+                });
             });
 
             $('.btn-send').on('click', function() {
@@ -150,10 +159,12 @@
             self.$listPagination.on('pageClick', function(e) {
                 var userNm = self.$listPage.find('#userName').val();
                 var phoneNo = self.$listPage.find('#phoneNumber').val();
+                var clothFlag = self.$listPage.find('#clothFlag').val();
                 var param = {
                     page: e.page,
                     userName: userNm,
-                    phoneNumber: phoneNo
+                    phoneNumber: phoneNo,
+                    clothFlag: clothFlag
                 };
                 self.requestData(param);
             });

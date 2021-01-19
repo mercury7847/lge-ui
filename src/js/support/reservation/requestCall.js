@@ -265,7 +265,7 @@
 
                     module._updateSummary({
                         product: [data.categoryName, data.subCategoryName, data.modelCode],
-                        reset: true
+                        reset: 'product'
                     });
                 
                     self.$dateWrap.calendar('update', resultData.dateList);
@@ -353,8 +353,8 @@
             });
 
             self.$authPopup.find('.btn-auth').on('click', function() {
-                authManager.confirm(this, function() {
-                    self.requestComplete();
+                authManager.confirm(this, function(success, result) {
+                    success && self.requestComplete();
                 });
             });
         }
