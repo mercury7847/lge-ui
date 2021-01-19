@@ -98,8 +98,8 @@ CS.MD.commonModel = function() {
             stepActiveClass: 'active',
             page: 1,
             total: 0,
-            selected: [],
             register: {},
+            defaultData: {},
             defaultSummary: {
                 tit: '서비스이용을 위해 제품을 선택해 주세요.'
             }
@@ -107,10 +107,10 @@ CS.MD.commonModel = function() {
 
         self.options = $.extend({}, defaults, opt);
         
-        vcui.require(['ui/validation', 'ui/selectTarget'], function () {
+        // vcui.require(['ui/validation', 'ui/selectTarget'], function () {
             self._initialize();
             self._bindEvent();  
-        });
+        // });
     }
 
     Plugin.prototype = {
@@ -156,13 +156,23 @@ CS.MD.commonModel = function() {
 
             // 옵션
             self.isDefault = $('#category').val() ? true : false;
+            self.modelUrl = self.$searchArea.data('modelUrl');
+            self.resultUrl = self.$searchArea.data('resultUrl');
             self.page = options.page;
             self.totalCount = options.totalCount;
-            self.selected = options.selected;
             self.param = {
                 pageCode: $('#pageCode').val(),
                 serviceType: $('#serviceType').val()
             }
+            self.selected = {
+                category: self.$el.find('#category').val(),
+                categoryName: self.$el.find('#categoryNm').val(),
+                subCategory: self.$el.find('#subCategory').val(),
+                subCategoryName: self.$el.find('#subCategoryNm').val(),
+                modelCode: self.$el.find('#modelCode').val(),
+                productCode: self.$el.find('#productCode').val(),
+                isRequest: true
+            };
 
             self.$modelFilter.find('.ui_select_target').vcSelectTarget();
             
@@ -252,9 +262,13 @@ CS.MD.commonModel = function() {
                 var result = termsValidation.validate();
                 
                 if (result.success) {
+                    self.$selectedModelBar.show();
+
                     if (self.isDefault) {
-                        self._next(self.$stepInput);
+                        self.$el.trigger('complete', [self, self.selected, self.resultUrl]);
                     } else {
+
+                        self.$myModelArea.show();
                         self._next(self.$stepModel);
                     }
                     
@@ -309,7 +323,7 @@ CS.MD.commonModel = function() {
             self.$keywordBox.show();
             self.$keywordBox.find('.desc').hide();
             
-            self.$myModelArea.show();
+            // self.$myModelArea.show();
             
             self.$el.trigger('reset', [self]);
 
@@ -414,6 +428,26 @@ CS.MD.commonModel = function() {
                 lgkorUI.hideLoading();
             });
         },
+        _nextStepModel: function() {
+            var self = this;
+            
+            self.$selectedModelBar.show();
+            self.$myModelArea.show();
+            self._next(self.$stepModel);
+            self._focus(self.$selectedModelBar);
+        },
+        _nextStepResult: function() {
+            var self = this;
+
+            self.$selectedModelBar.show();
+            self.$myModelArea.hide();
+            self._next(self.$stepInput);
+            self._focus(self.$selectedModelBar);
+        },
+        complete:function() {
+            var self = this;
+            self.$el.trigger('complete', [self, self.selected, self.resultUrl]);
+        },
         _bindEvent: function() {
             var self = this;
 
@@ -427,8 +461,7 @@ CS.MD.commonModel = function() {
                 var result = termsValidation.validate();
                 
                 if (result.success) {
-                    self._next(self.$stepModel);
-                    self._focus(self.$selectedModelBar);
+                    self._nextStepModel();
                 }
             });
 

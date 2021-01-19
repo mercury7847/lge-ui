@@ -223,7 +223,7 @@
             setSubFilter: function(code, target) {
                 var self = this,
                     $target = target ? $(target) : null,
-                    url = self.$wrap.data('subFilterAjax'),
+                    url = self.$wrap.data('subFilterAjax') || self.$wrap.data('ajax'),
                     param = {
                         topic: code,
                         productCode: $('#submitForm').find('#productCode').val(),
