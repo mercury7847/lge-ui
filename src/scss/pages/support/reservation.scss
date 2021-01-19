@@ -175,15 +175,14 @@
                     .desc-btn{
                         display:flex;
                         flex-flow:wrap;
-                        & + .desc-text {
+                        margin:-12px 0 0 -8px;
+                        & + .desc-txt {
                             margin-top:32px;
                         }
                         .btn{
-                            margin:0 8px 12px 0;
+                            margin:12px 0 0 8px;
                             min-width:auto;
                             padding:8px 14px;
-                            display:flex;
-                            align-items:center;
                             &.white{
                                 background:#fff;
                                 border:1px solid #ddd;
@@ -214,15 +213,16 @@
                 .section{
                     width:100%;
                     .tit-wrap{
-                        margin-bottom:24px;
+                        margin-bottom:16px;
                     }
                     .desc-wrap{
-                        .desc-btn{
-                            & + .desc-text {
-                                margin-top:40px;
+                        .desc-btn {
+                            margin:-8px 0 0 -8px;
+                            & + .desc-txt {
+                                margin-top:32px;
                             }
-                            .btn{
-                                margin:0 8px 8px 0;
+                            .btn {
+                                margin:8px 0 0 8px;
                             }
                         }
                     }
