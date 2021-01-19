@@ -53,7 +53,7 @@
                                         <p class="req" aria-disabled="true">필수 입력 항목</p>
                                     </div>
                                     @@include('./common/support/accept-terms.html', {
-                                        member: false
+                                        member: true
                                     })
                                 </div>
                                 <!-- 
@@ -64,9 +64,9 @@
 
                                     일 경우 노출
                                 -->
-                                <!-- <div class="step-btn-wrap">
+                                <div class="step-btn-wrap">
                                     <button type="button" class="btn border size-m btn-next"><span>다음</span></button>
-                                </div>  -->
+                                </div> 
                             </div>
                             <!-- // 약관 동의 -->
 
@@ -80,7 +80,7 @@
 
                                 일 경우 active 클래스 삭제
                             -->
-                            <div class="step-box active" id="stepInquiryType">
+                            <div class="step-box" id="stepInquiryType">
                                 <div class="inquiry-sections">
                                     <div class="section">
                                         <div class="tit-wrap">

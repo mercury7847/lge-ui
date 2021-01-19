@@ -31,7 +31,7 @@
                 })
 
                 <div class="cont-wrap">
-                    <form action="/html/CS/CSRF6015.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/emailinquiry.json" novalidate>
+                    <form action="/html/CS/CSRF6015.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/emailinquiry/emailinquiry-complete.json" novalidate>
                         <div class="step-area">
                             <input type="hidden" name="categoryNm" id="categoryNm" value="">
                             <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="">
@@ -40,6 +40,8 @@
                             <input type="hidden" name="modelCode" id="modelCode" value="">
                             <input type="hidden" name="productCode" id="productCode" value="">
                             <input type="hidden" name="serviceType" id="serviceType" value="C">
+                            <input type="hidden" name="acptNo" id="acptNo" value="">
+                            <input type="hidden" name="pageCode" id="pageCode" value="pageCode">
 
                             <!-- 약관 동의 -->
                             <div class="step-box active" id="stepTerms">
@@ -51,10 +53,29 @@
                                         member: false
                                     })
                                 </div>
+                                <!-- 
+                                    1. 회원
+                                      - 제품 정보 + 마케팅 수신동의 안 한 경우 
+                                    2. 비회원
+                                      - 제품 정보
+
+                                    일 경우 노출
+                                -->
+                                <!-- <div class="step-btn-wrap">
+                                    <button type="button" class="btn border size-m btn-next"><span>다음</span></button>
+                                </div>  -->
                             </div>
                             <!-- // 약관 동의 -->
 
                             <!-- 문의 타입 -->
+                            <!-- 
+                                1. 회원
+                                    - 제품 정보
+                                2. 비회원
+                                    - 제품 정보
+
+                                일 경우 active 클래스 삭제
+                            -->
                             <div class="step-box active" id="stepInquiryType">
                                 <div class="inquiry-sections">
                                     <div class="section">
@@ -109,8 +130,6 @@
                             <div class="step-box" id="stepModel">
                                 <!-- 제품 카테고리 선택 -->
                                 @@include('./common/support/select-model.html', {
-                                    "keyword": "Y",
-                                    "model": "Y",
                                     "category": [
                                         { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
                                         { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
@@ -143,8 +162,8 @@
                                             <ul class="rdo-list">
                                                 <!-- <li>
                                                     <span class="rdo-wrap btn-type3">
-                                                        <input type="radio" id="inquiryType-1" name="inquiryType" value="inquiryType-1">
-                                                        <label for="inquiryType-1">제품정보</label>
+                                                        <input type="radio" name="inquiry" id="inquiry1" value="inquiry">
+                                                        <label for="inquiry1">제품정보</label>
                                                     </span>
                                                 </li> -->
                                             </ul>
@@ -158,6 +177,63 @@
                                     </div>
                                     <div class="section-box">
                                         <div class="form-wrap">
+                                            <div class="forms" id="recordBox" style="display: none">
+                                                <div class="tit">
+                                                    <label for="">상담/서비스 이력</label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="rdo-list-wrap">
+                                                        <ul class="rdo-list">
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="record" id="record01" value="0" checked>
+                                                                    <label for="record01">해당사항 없음</label>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="record" id="record02" value="1">
+                                                                    <label for="record02">제품 전문가 상담</label>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="record" id="record03" value="2">
+                                                                    <label for="record03">서비스 신청</label>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    @@include('./common/modules/bullet-list.html', {
+                                                        "bulletTxt" : [
+                                                            "최근 받으신 상담 결과 및 서비스에 대한 문의의 경우 접수번호를 입력해 주세요."
+                                                        ]
+                                                    })
+                                                </div>
+                                            </div>
+                                            <div class="forms" id="rcptNoBox" style="display: none">
+                                                <div class="tit">
+                                                    <label for="" class="req">접수번호<span class="blind">필수입력</span></label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="box">
+                                                        <div class="input-wrap">
+                                                            <input type="text" name="cRcptNo" id="cRcptNo" placeholder="접수 번호 입력" data-error-msg="접수 번호를 입력해주세요." data-required="true" required>
+                                                        </div>
+                                                        <div class="cell">
+                                                            <a href="#" class="btn"><span>예약 및 결과확인</span></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="btm-more err-block">
+                                                        <p class="err-msg"></p>
+                                                    </div>
+                                                    @@include('./common/modules/bullet-list.html', {
+                                                        "bulletTxt" : [
+                                                            '접수번호를 모르시는 경우, \'예약 및 결과확인\' 메뉴를 통해 접수번호를 확인하실 수 있습니다.'
+                                                        ]
+                                                    })
+                                                </div>
+                                            </div>
                                             <div class="forms">
                                                 <div class="tit">
                                                     <label for="inquiryTitle" class="req">제목<span class="blind">필수입력</span></label>
