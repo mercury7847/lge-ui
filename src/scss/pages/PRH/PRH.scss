@@ -16,7 +16,7 @@
     }
 }
 
-[class*="hero"] {
+.thinq-hero {
     .image {
         display: block;
         width: 100%;
@@ -90,9 +90,7 @@
     }
 }
 
-.thinq-wrap,
-.signature-wrap {
-
+.thinq-wrap {
     .ui_sticky {
         background-color: $color-bg-wt;
     }
