@@ -6,9 +6,14 @@
             var self = this;
             
             self.$cont = $('.contents');
+            self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
+            self.$myModelArea = self.$cont.find('.my-product-wrap');
             self.$submitForm = self.$cont.find('#submitForm');
-            self.$stepArea = self.$cont.find('.step-area');
             self.$completeBtns = self.$cont.find('.btn-group');
+
+            self.$stepArea = self.$cont.find('.step-area');
+            self.$stepModel = self.$cont.find('#stepModel');
+            self.$stepInput = self.$cont.find('#stepInput');
 
             self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : 'N';
 
@@ -94,7 +99,7 @@
                     subCategory: data.subCategory
                 };
 
-                self.$cont('updateSummary', {
+                self.$cont.commonModel('updateSummary', {
                     product: [data.categoryName, data.subCategoryName, data.modelCode],
                     reset: 'product'
                 });
@@ -102,8 +107,8 @@
                 self.$myModelArea.hide();
                 self.$completeBtns.show();
 
-                self.$cont('next', self.$stepInput);
-                self.$cont('focus', self.$selectedModelBar, function() {
+                self.$cont.commonModel('next', self.$stepInput);
+                self.$cont.commonModel('focus', self.$selectedModelBar, function() {
                     self.$selectedModelBar.vcSticky();
                 });
             });
