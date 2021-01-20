@@ -1,6 +1,6 @@
-{
+{   
     "status": "success",
-    "message":null,
+    "message": null,
     "data": {
         "resultFlag": "Y",
         "resultMessage": "",
@@ -81,42 +81,127 @@
             "page": 1,
             "totalCount": 12
         },
-        "subFilterList": [
+        "filterList":[
             {
                 "name": "All",
                 "code": "All"
             },
             {
-                "name": "퀵 헬프 방법",
-                "code": "10000002"
+                "name": "기능",
+                "code": "LCL10005002"
             },
             {
-                "name": "앱 설치",
-                "code": "10000003"
+                "name": "설치/연결",
+                "code": "LCL10005003"   
             },
             {
-                "name": "타임머신",
-                "code": "10000004"
+                "name": "소음/냄새/열방생",
+                "code": "LCL10005004"   
             },
             {
-                "name": "신호없음",
-                "code": "10000005"
+                "name": "스마트 앱",
+                "code": "LCL10005005"   
             },
             {
-                "name": "인터넷 연결",
-                "code": "10000006"
+                "name": "스마트/네트워크",
+                "code": "LCL10005006"   
+            },
+            {
+                "name": "스마트 기능",
+                "code": "LCL10005007"   
+            },
+            {
+                "name": "어플리케이션",
+                "code": "LCL10005008"   
+            },
+            {
+                "name": "음성",
+                "code": "LCL10005009"   
+            },
+            {
+                "name": "전원",
+                "code": "LCL10005010"   
+            },
+            {
+                "name": "채널",
+                "code": "LCL10005011"   
+            },
+            {
+                "name": "청소법",
+                "code": "LCL10005012"   
+            },
+            {
+                "name": "해외 제품",
+                "code": "LCL10005013"   
+            },
+            {
+                "name": "화면",
+                "code": "LCL10005014"   
+            }
+        ],
+        "recommProduct": [
+            {
+                "url": "",
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA"
+            },
+            {
+                "url": "",
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA"
+            },
+            {
+                "url": "",
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA"
+            },
+            {
+                "url": "",
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA"
+            },
+            {
+                "url": "",
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA"
+            },
+            {
+                "url": "",
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA"
+            }
+        ],
+        "serviceMenu": [
+            {
+                "url": "",
+                "name": "채팅상담"
+            },
+            {
+                "url": "",
+                "name": "이메일 문의"
+            },
+            {
+                "url": "",
+                "name": "전화상담 예약"
+            },
+            {
+                "url": "",
+                "name": "출장 서비스 예약"
+            },
+            {
+                "url": "",
+                "name": "센터방문 예약"
+            },
+            {
+                "url": "",
+                "name": "매장방문 예약"
             }
         ]
-    },
-    "param": {
-        "topic": {
-            "name": "기능",
-            "code": "LCL10005002"
-        },
-        "subTopic": {
-            "name": "퀵 헬프 방법",
-            "code": "10000002"
-        },
-        "keywords" : ["All", "설치/연결", "검색어"]
     }
 }
