@@ -2,7 +2,12 @@
     data-model-url : 모델 리스트
     data-result-url : 모델 선택 시
  -->
-<div class="prod-search-wrap" data-model-url="/lg5-common/data-ajax/support/commonModelList.json" data-result-url="/lg5-common/data-ajax/support/commonModelSelected.json">
+ @@if (context.url) {
+    <div class="prod-search-wrap" data-model-url="/lg5-common/data-ajax/support/commonModelList.json" data-result-url="@@url">
+ }
+ @@if (!context.url) {
+    <div class="prod-search-wrap" data-model-url="/lg5-common/data-ajax/support/commonModelList.json" data-result-url="/lg5-common/data-ajax/support/commonModelSelected.json">   
+ }
     <!-- 활성화 시 active 추가 -->
     
     <!-- 키워드 검색 -->

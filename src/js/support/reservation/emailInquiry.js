@@ -40,26 +40,34 @@
             vcui.require(['ui/validation', 'ui/formatter', 'ui/imageFileInput'], function () {
                 var register = {
                     privcyCheck: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.err-block',
+                        errorMsg: '개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다.'
                     },
                     subsection: {
-                        msgTarget: '.type-msg'
+                        msgTarget: '.type-msg',
+                        errorMsg: '정확한 제품증상을 선택해주세요.'
                     },
                     cRcptNo: {
-                        msgTArget: '. err-block'
+                        msgTArget: '.err-block',
+                        errorMsg: '접수 번호를 입력해주세요.'
                     },
                     inquiryTitle: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.err-block',
+                        errorMsg: '제목을 입력해주세요.'
                     },
                     inquiryContent: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.err-block',
+                        errorMsg: '내용을 입력해주세요.'
                     },
                     userName: {
-                        msgTarget: '.err-block'
+                        msgTarget: '.err-block',
+                        errorMsg: '이름을 입력해주세요.'
                     },
                     userEmail: {
                         msgTarget: '.err-block',
-                        pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                        pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        errorMsg: '이메일 주소를 입력해주세요.',
+                        patternMsg: '이메일 주소를 정확히 입력해주세요.'
                     },
                 }
 
@@ -131,24 +139,11 @@
             self.$myModelArea.hide();
             self.$completeBtns.show();
 
-            self.$cont.commonModel('_updateSummary', summaryOpt);
-            self.$cont.commonModel('_next', self.$stepInput);
-            self.$cont.commonModel('_focus', self.$selectedModelBar, function() {
+            self.$cont.commonModel('updateSummary', summaryOpt);
+            self.$cont.commonModel('next', self.$stepInput);
+            self.$cont.commonModel('focus', self.$selectedModelBar, function() {
                 self.$selectedModelBar.vcSticky();
             });
-        },
-        reset: function() {
-            var self = this;
-
-            self.$recordBox.hide();
-            self.$recordBox.find('input[type=radio]').eq(0).prop('checked', true);
-            self.$rcptNoBox.hide();
-            self.$rcptNoBox.find('input').val('');
-            self.$inquiryBox.hide();
-            self.$inquiryList.empty();
-            self.$myModelArea.show();
-
-            self.$cont.commonModel('_next', self.$stepInquiry);
         },
         requestComplete: function() {
             var self = this;
@@ -172,11 +167,31 @@
                 }
             }, 'POST');
         },
+        reset: function() {
+            var self = this;
+
+            self.$recordBox.hide();
+            self.$rcptNoBox.hide();
+            self.$inquiryBox.hide();
+            self.$inquiryList.empty();
+            self.$myModelArea.show();
+
+            self.$stepInput.find('[name=subsection]').prop('checked', false);
+            self.$stepInput.find('[name=record]').eq(0).prop('checked', true);
+            self.$stepInput.find('#cRcptNo').val('');
+            self.$stepInput.find('#inquiryTitle').val('');
+            self.$stepInput.find('#inquiryContent').val('');
+            self.$stepInput.find('#userName').val('');
+            self.$stepInput.find('#userEmail').val('');
+
+            self.$cont.find('.ui_imageinput').vcImageFileInput('removeAll');
+            self.$cont.commonModel('next', self.$stepInquiry);
+        },
         bindEvent: function() {
             var self = this;
 
             // 모델 선택 & 문의 재선택
-            self.$cont.on('complete', function(e, module, data, url) { console.log(data);
+            self.$cont.on('complete', function(e, data, url) {
                 self.selectModel(data, url);
             }).on('reset', function() {
                 self.reset();
