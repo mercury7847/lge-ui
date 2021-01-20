@@ -1195,7 +1195,7 @@
                         border-radius: 4px;
                         font-size: 14px;
                         line-height: 18px;
-                        color: #222;
+                        color: #000;
                     }
                     &:after {
                         position: absolute;
@@ -1326,7 +1326,7 @@
                         border-radius: 4px;
                         font-size: 14px;
                         line-height: 18px;
-                        color: #222;
+                        color: #000;
                     }
                     .selectbox-list {
                         border-radius: 4px;
@@ -1469,7 +1469,7 @@
                     font-weight: 700;
                     font-size: 24px;
                     line-height: 32px;
-                    color: #222;
+                    color: #000;
                     text-align: right;
                 }
             }
@@ -1494,7 +1494,7 @@
                 float: left;
                 font-size: 14px;
                 line-height: 26px;
-                color: #222;
+                color: #000;
             }
             .price {
                 float: right;
@@ -1613,7 +1613,7 @@
             @include calc-mobile-size(margin-top,52px);
             font-size: 14px;
             line-height: 18px;
-            color: #222222;
+            color: #000;
             .text-info {
                 display: inline-block;
                 .img-area {
@@ -1623,7 +1623,7 @@
                 .text {
                     font-size: 14px;
                     line-height: 22px;
-                    color: #222;
+                    color: #000;
                 }
             }
         }

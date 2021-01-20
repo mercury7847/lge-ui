@@ -47,6 +47,7 @@ vcui.define('ui/toggleCarousel', ['jquery', 'vcui', 'ui/carousel'], function ($,
                self.isCarousel = true;
             } else{
                 self.$el.find('.indi-wrap').hide();
+                self.$el.find('.slide-controls').hide();
             }
         },
 

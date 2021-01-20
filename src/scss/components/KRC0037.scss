@@ -223,9 +223,9 @@
                         .fc-gray,
                         .fc-lightgray,
                         .fc-white {
-                            color:#222 !important;
+                            color:#000 !important;
                             * {
-                                color:#222 !important;
+                                color:#000 !important;
                             }
                         }
                     } @else if $bg == dark {
@@ -256,9 +256,9 @@
                         .fc-gray,
                         .fc-lightgray,
                         .fc-white {
-                            color:#222 !important;
+                            color:#000 !important;
                             * {
-                                color:#222 !important;
+                                color:#000 !important;
                             }
                         }
                     } @else if $bg == gray {
@@ -267,9 +267,9 @@
                         .fc-gray,
                         .fc-lightgray,
                         .fc-white {
-                            color:#222 !important;
+                            color:#000 !important;
                             * {
-                                color:#222 !important;
+                                color:#000 !important;
                             }
                         }
                     }

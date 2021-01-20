@@ -183,13 +183,28 @@ CS.MD.commonModel = function() {
                 '<p class="tit">서비스 이용을 위해 제품을 선택해주세요.</p>' +
                 '{{# } #}}' +
                 '{{# if (typeof product != "undefined") { #}}' +
-                '<ul class="product">' +
-                    '{{# for (var i = 0; i < product.length; i++) { #}}' +
-                    '{{# if (product[i]) { #}}' +
-                    '<li>{{product[i]}}</li>' +
+                '<div class="product-box">' +
+                    '<ul class="product">' +
+                        '{{# for (var i = 0; i < product.length; i++) { #}}' +
+                            '{{# if (product[i]) { #}}' +
+                                '{{# if (i == 2) { #}}' +
+                                    '{{# if (!lgkorUI.isLogin) { #}}' +
+                        '<li>{{product[i].name}}</li>' +
+                                    '{{# } else if (product[i].isMyProduct) { #}}' +
+                        '<li><span>보유</span>{{product[i].name}}</li>' +
+                                    '{{# } else { #}}' +    
+                        '<li>{{product[i].name}}</li>' +
+                                    '{{# } #}}' + 
+                                '{{# } else { #}}' +    
+                        '<li>{{product[i].name}}</li>' +
+                                '{{# } #}}' +    
+                            '{{# } #}}' +
+                        '{{# } #}}' +
+                    '</ul>' +
+                    '{{# if (product.length == 3 && lgkorUI.isLogin && !product[2].isMyProduct) { #}}' +
+                    '<a href="#" class="btn-add-product"><span>보유제품 추가</span></a>' +
                     '{{# } #}}' +
-                    '{{# } #}}' +
-                '</ul>' +
+                '</div>' +
                 '{{# } #}}' +
                 // '{{# if (typeof desc != "undefined") { #}}' +
                 // '<p class="desc">{{desc}}</p>' +
@@ -227,36 +242,41 @@ CS.MD.commonModel = function() {
         '</div>';
 
     var termsValidation;
+    var myModel = [];
 
     function Plugin(el, opt) {
         var self = this;
-        self.$el = $(el),
-        self.el = el;
-
         var defaults = {
             stepClass: 'step-box',
             stepActiveClass: 'active',
             page: 1,
             total: 0,
             register: {},
-            defaultData: {},
+            isRequest: true,
+            selected: {
+                category: '',
+                categoryName: '',
+                subCategory: '',
+                subCategoryName: '',
+                modelCode: '',
+                productCode: '',
+            },
             defaultSummary: {
                 tit: '서비스이용을 위해 제품을 선택해 주세요.'
             }
         };
 
+        self.$el = $(el);
         self.options = $.extend({}, defaults, opt);
         
-        // vcui.require(['ui/validation', 'ui/selectTarget'], function () {
-            self._initialize();
-            self._bindEvent();  
-        // });
+        self._initialize();
+        self._bindEvent();  
     }
 
     Plugin.prototype = {
         _initialize: function() {
-            var self = this,
-                options = self.options;
+            var self = this;
+            var opts = self.options;
 
             // 스텝 영역
             self.$stepBox = self.$el.find('.step-box');
@@ -298,11 +318,11 @@ CS.MD.commonModel = function() {
             self.isDefault = $('#category').val() ? true : false;
             self.modelUrl = self.$searchArea.data('modelUrl');
             self.resultUrl = self.$searchArea.data('resultUrl');
-            self.page = options.page;
-            self.totalCount = options.totalCount;
+            self.page = opts.page;
+            self.totalCount = opts.totalCount;
             self.param = {
-                pageCode: $('#pageCode').val(),
-                serviceType: $('#serviceType').val()
+                pageCode: self.$el.find('#pageCode').val(),
+                serviceType: self.$el.find('#serviceType').val()
             }
             self.selected = {
                 category: self.$el.find('#category').val(),
@@ -310,283 +330,15 @@ CS.MD.commonModel = function() {
                 subCategory: self.$el.find('#subCategory').val(),
                 subCategoryName: self.$el.find('#subCategoryNm').val(),
                 modelCode: self.$el.find('#modelCode').val(),
-                productCode: self.$el.find('#productCode').val(),
-                isRequest: true
+                productCode: self.$el.find('#productCode').val()
             };
 
             self.$modelFilter.find('.ui_select_target').vcSelectTarget();
             
-
             lgkorUI.searchModelName();
 
             self._initMyProduct();
             self._initStepTerms();
-        },
-        _initMyProduct: function() {
-            var self = this;
-
-            if (!self.$myModelSlider.length) return;
-
-            self.$myModelSlider.vcCarousel({
-                slidesToScroll: 3,
-                slidesToShow: 3,
-                responsive: [
-                    {
-                        breakpoint: 10000,
-                        settings: {
-                            slidesToScroll: 3,
-                            slidesToShow: 3
-                        }
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            arrows: false,
-                            variableWidth: true,
-                            slidesToScroll: 1,
-                            slidesToShow: 1,
-                        }
-                    }
-                ]
-            });
-
-            self.$myModelSlider.find('a').on('click', function(e) {
-                e.preventDefault();
-
-                var $this = $(this),
-                    data = $this.data(),
-                    url = self.$searchArea.data('resultUrl');
-
-                if ($this.hasClass('disabled')) {
-                    $(window).trigger("toastshow", "예약가능한 제품이 아닙니다.");
-                } else {
-                    data.isRequest = true;
-
-                    self.$el.find('#category').val(data.category);
-                    self.$el.find('#categoryNm').val(data.categoryName);
-                    self.$el.find('#subCategory').val(data.subCategory);
-                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
-                    self.$el.find('#modelCode').val(data.modelCode);
-                    self.$el.find('#productCode').val(data.productCode);
-                    self.$el.trigger('complete', [self, data, url]);
-                }
-            });
-
-            self.$myModelArea.find('.btn-toggle').on('click', function() {
-                var $this = $(this),
-                    $toggleBox = $this.closest('.box');
-
-                if ($toggleBox.hasClass('open')) {
-                    self.$myModelSlider.stop().slideUp(function() {
-                        $toggleBox.removeClass('open');
-                    });
-                    $this.html('보유제품 펼치기');
-                } else {
-                    self.$myModelSlider.stop().slideDown(function() {
-                        $toggleBox.addClass('open');
-                    });
-                    $this.html('보유제품 접기');
-                }
-            });
-        },
-        _initStepTerms: function() {
-            var self = this;
-
-            if (!self.$stepTerms.length) return;
-
-            termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
-                privcyCheck: { msgTarget: '.err-block' }
-            }});
-
-            self.$stepTerms.find('.btn-next').on('click', function() {
-                var result = termsValidation.validate();
-                
-                if (result.success) {
-                    self.$selectedModelBar.show();
-
-                    if (self.isDefault) {
-                        self.$el.trigger('complete', [self, self.selected, self.resultUrl]);
-                    } else {
-
-                        self.$myModelArea.show();
-                        self._next(self.$stepModel);
-                    }
-                    
-                    self._focus(self.$selectedModelBar);
-                }
-            });
-        },
-        _updateSummary: function(summary) {
-            var self = this;
-            var summary = summary || self.options.defaultSummary;
-
-            self.$selectedModelBar.html(vcui.template(selectedBarTmpl, summary));
-        },
-        _resetFlexibleBox: function() {
-            var self = this;
-
-            self.$el.find('.ui_carousel_track .ui_carousel_current').each(function(idx, item){
-                var maxheight = 0;
-                $(item).find('.slide-conts').each(function(cdx, child){
-                    var flexiblebox = $(child).find('.info');
-                    maxheight = Math.max(maxheight, flexiblebox.outerHeight(true));
-                });
-
-                $(item).find('.slide-conts').height(maxheight);
-            });
-        },
-        reset: function() {
-            var self = this;
-                options = self.options;
-
-            self.page = options.page;
-            self.totalCount = options.totalCount;
-            self.param = options.param;
-
-            self.$el.find('[type=hidden]').not('[name=serviceType], [name=lockUserId]').val('');
-            
-            if (lgkorUI.isLogin) {
-                self.$el.find('input[type=text], textarea').not('#userNm, #phoneNo, ').val('');
-            } else {
-                self.$el.find('input[type=text], textarea').val('');
-            }
-
-            self.$el.find('input[type=radio]').prop('checked', false);
-            
-            self.$categoryBox.find('.box').removeClass('on off');
-            self.$categoryBox.addClass(options.stepActiveClass);
-            self.$modelBox.removeClass(options.stepActiveClass);
-            self.$modelBox.find('.keyword-search').hide();
-            self.$modelSlider.find('.slide-track').empty();
-            self.$modelFilter.find('#categorySelect').vcSelectTarget('reset', 'default');
-
-            self.$keywordBox.show();
-            self.$keywordBox.find('.desc').hide();
-            
-            // self.$myModelArea.show();
-            
-            self.$el.trigger('reset', [self]);
-
-            self._updateSummary();
-
-            $('.prod-selected-wrap').vcSticky('destroy');
-        },
-        _toggleArrow: function($arrow, flag) {
-            $arrow[flag ? 'removeClass' : 'addClass']('disabled')
-                        .prop('disabled', !flag)
-                        .attr('aria-disabled', (!flag).toString());
-        },
-        _focus: function($target, callback) {
-            $('html, body').stop().animate({
-                scrollTop: $target.offset().top
-            }, function() {
-                callback && callback();
-            });
-        },
-        _next: function($target) {
-            var self = this,
-                opt = self.options;
-                
-            $target.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
-            $target.addClass(opt.stepActiveClass);
-        },
-        _requestData: function() {
-            var self = this;
-            var url = self.$searchArea.data('modelUrl');
-
-            lgkorUI.showLoading();
-            lgkorUI.requestAjaxDataPost(url, self.param, function(result) {
-                var data = result.data,
-                    arr = data.listData instanceof Array ? data.listData : [];
-
-                self.page = data.listPage.page;
-                self.totalCount = data.listPage.totalCount;
-
-                self.totalPage = Math.floor(self.totalCount == 0 ? 1 : (self.totalCount - 1)  / self.pageCount + 1);
-                
-
-                self.$modelSlider.find('.slide-track').empty();
-
-                if (arr.length) {
-                    arr.forEach(function(item) {
-                        item.name = item.modelCode.replaceAll(self.param.keyword, '<em class="word">'+self.param.keyword+'</em>');
-                        self.$modelSlider.find('.slide-track').append(vcui.template(modelListTmpl, item))
-                    });
-                    self.$modelSlider.show();
-                    self.$modelNoData.hide();
-
-                    if (!self.$modelSlider.hasClass('ui_carousel_initialized')) {
-                        self.$modelSlider.vcCarousel({
-                            rows:3,
-                            slidesPerRow: 4,
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            responsive: [
-                                {
-                                    breakpoint: 10000,
-                                    settings: {
-                                        rows:3,
-                                        slidesPerRow: 4,
-                                        slidesToShow: 1,
-                                        slidesToScroll: 1
-                                    }
-                                },
-                                {
-                                    breakpoint: 1024,
-                                    settings: {
-                                        rows: 4,
-                                        slidesPerRow: 3,
-                                        slidesToShow: 1,
-                                        slidesToScroll: 1
-                                    }
-                                },
-                                {
-                                    breakpoint: 768,
-                                    settings: {
-                                        rows: 6,
-                                        slidesPerRow: 2,
-                                        slidesToShow: 1,
-                                        slidesToScroll: 1
-                                    }
-                                }
-                            ]
-                        });
-                    } else {
-                        var initValue = (self.page % 10 == 0) ? 9 : 0;
-                        self.$modelSlider.vcCarousel('setOption', 'initialSlide', initValue, false);
-                        self.$modelSlider.vcCarousel('reinit');
-                    }
-                } else {
-                    self.$modelSlider.hide();
-                    
-                    self.$modelNoData.find('.word').html(self.param.keyword);
-                    self.$modelNoData.show();
-                }
-
-                self._focus(self.$selectedModelBar);
-
-                lgkorUI.hideLoading();
-            });
-        },
-        _nextStepModel: function() {
-            var self = this;
-            
-            self.$selectedModelBar.show();
-            self.$myModelArea.show();
-            self._next(self.$stepModel);
-            self._focus(self.$selectedModelBar);
-        },
-        _nextStepResult: function() {
-            var self = this;
-
-            self.$selectedModelBar.show();
-            self.$myModelArea.hide();
-            self._next(self.$stepInput);
-            self._focus(self.$selectedModelBar);
-        },
-        complete:function() {
-            var self = this;
-            self.$el.trigger('complete', [self, self.selected, self.resultUrl]);
         },
         _bindEvent: function() {
             var self = this;
@@ -619,7 +371,7 @@ CS.MD.commonModel = function() {
                     
                     data.isRequest = false;
 
-                    self.$el.trigger('complete', [self, data]);
+                    self.$el.trigger('complete', [data]);
                 }
             });
 
@@ -640,9 +392,6 @@ CS.MD.commonModel = function() {
                             page: 1
                         });
 
-                        self._updateSummary({
-                            tit: '서비스이용을 위해 제품을 선택해 주세요.'
-                        });
                         self._requestData();
                     } else {
                         self.$keywordBox.find('.err-msg').show();
@@ -669,9 +418,6 @@ CS.MD.commonModel = function() {
                         page: 1
                     });
 
-                    self._updateSummary({
-                        tit: '서비스이용을 위해 제품을 선택해 주세요.'
-                    });
                     self._requestData();
 
                     self.$categoryBox.removeClass(opt.stepActiveClass);
@@ -716,10 +462,20 @@ CS.MD.commonModel = function() {
                     }
                 });
             });
-
-            // 카테고리 취소
             self.$categoryBox.find('.btn-close').on('click', function() {
                 $(this).closest('.box').removeClass('on').addClass('off');
+            });
+
+            self.$modelBox.find('#categorySelect').on('reset', function() {
+                self.param = $.extend(self.param, {
+                    category: '',
+                    categoryNm: '전체',
+                    subCategory: '',
+                    subCategoryNm: '전체',
+                    page: 1
+                });
+
+                self._requestData();
             });
 
             // 서브 카테고리 선택
@@ -729,14 +485,14 @@ CS.MD.commonModel = function() {
                     opt = self.options;
 
                 self.param = $.extend(self.param, {
-                    category: data.categor,
+                    category: data.category,
                     categoryNm: data.categoryName,
                     subCategory: data.subCategory,
                     subCategoryNm: data.subCategoryName,
                     page: 1
                 });
 
-                self._updateSummary({
+                self.updateSummary({
                     product: [data.categoryName, data.subCategoryName]
                 });
                 self._requestData();
@@ -761,16 +517,16 @@ CS.MD.commonModel = function() {
 
                 url = self.$searchArea.data('resultUrl');  
 
+                data.isRequest = true;
                 self.$el.find('#category').val(data.category);
                 self.$el.find('#categoryNm').val(data.categoryName);
                 self.$el.find('#subCategory').val(data.subCategory);
                 self.$el.find('#subCategoryNm').val(data.subCategoryName);
                 self.$el.find('#modelCode').val(data.modelCode);
                 self.$el.find('#productCode').val(data.productCode);
-                data.isRequest = true;
-                self.$el.trigger('complete', [self, data, url]);
-                
-                lgkorUI.recentlySearch.addCookie(data.modelCode);
+                self.$el.trigger('complete', [data, url]);
+
+                if (data.modelCode) lgkorUI.recentlySearch.addCookie(data.modelCode);
             });
             
             // 모델명 선택 - 서브 카테고리 선택
@@ -793,7 +549,6 @@ CS.MD.commonModel = function() {
             self.$modelSlider.on('carouselinit carouselreInit carouselafterchange carouselresize', function() {
                 self._resetFlexibleBox();
             });
-
             self.$modelSlider.on('carouselreinit', function(e, module) {
                 var startPage = parseInt((self.page - 1) / 10) * 10 + 1;
                 
@@ -825,7 +580,6 @@ CS.MD.commonModel = function() {
                     module.$nextArrow.removeClass('btn-next');
                 }
             });
-
             self.$modelSlider.on('click', '.btn-prev', function() {
                 self.param = $.extend(self.param, {
                     page: self.page - 1
@@ -840,6 +594,307 @@ CS.MD.commonModel = function() {
                 
                 self._requestData();
             });
+        },
+        _initMyProduct: function() {
+            var self = this;
+
+            if (!self.$myModelSlider.length) return;
+
+            self.$myModelSlider.find('a').each(function() {
+                var modelCode = $(this).data('modelCode');
+                myModel.push(modelCode);
+            });
+
+            self.$myModelSlider.vcCarousel({
+                slidesToScroll: 3,
+                slidesToShow: 3,
+                responsive: [
+                    {
+                        breakpoint: 10000,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            variableWidth: true,
+                            slidesToScroll: 1,
+                            slidesToShow: 1,
+                        }
+                    }
+                ]
+            });
+
+            self.$myModelSlider.find('a').on('click', function(e) {
+                e.preventDefault();
+
+                var $this = $(this),
+                    data = $this.data(),
+                    url = self.$searchArea.data('resultUrl');
+
+                if ($this.hasClass('disabled')) {
+                    $(window).trigger("toastshow", "예약가능한 제품이 아닙니다.");
+                } else {
+                    data.isRequest = true;
+
+                    self.$el.find('#category').val(data.category);
+                    self.$el.find('#categoryNm').val(data.categoryName);
+                    self.$el.find('#subCategory').val(data.subCategory);
+                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                    self.$el.find('#modelCode').val(data.modelCode);
+                    self.$el.find('#productCode').val(data.productCode);
+                    self.$el.trigger('complete', [data, url]);
+                }
+            });
+
+            self.$myModelArea.find('.btn-toggle').on('click', function() {
+                var $this = $(this),
+                    $toggleBox = $this.closest('.box');
+
+                if ($toggleBox.hasClass('open')) {
+                    self.$myModelSlider.stop().slideUp(function() {
+                        $toggleBox.removeClass('open');
+                    });
+                    $this.html('보유제품 펼치기');
+                } else {
+                    self.$myModelSlider.stop().slideDown(function() {
+                        $toggleBox.addClass('open');
+                    });
+                    $this.html('보유제품 접기');
+                }
+            });
+        },
+        _initStepTerms: function() {
+            var self = this;
+
+            if (!self.$stepTerms.length) return;
+
+            termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
+                privcyCheck: { msgTarget: '.err-block' }
+            }});
+
+            self.$stepTerms.find('.btn-next').on('click', function() {
+                var result = termsValidation.validate();
+                
+                if (result.success) {
+                    self.$selectedModelBar.show();
+
+                    if (self.isDefault) {
+                        self.$el.trigger('complete', [self.selected, self.resultUrl]);
+                    } else {
+                        self.$myModelArea.show();
+                        self.next(self.$stepModel);
+                        self.$myModelSlider.vcCarousel('resize');
+                    }
+                    
+                    self.focus(self.$selectedModelBar);
+                }
+            });
+        },
+        _resetFlexibleBox: function() {
+            var self = this;
+
+            self.$el.find('.ui_carousel_track .ui_carousel_current').each(function(idx, item){
+                var maxheight = 0;
+                $(item).find('.slide-conts').each(function(cdx, child){
+                    var flexiblebox = $(child).find('.info');
+                    maxheight = Math.max(maxheight, flexiblebox.outerHeight(true));
+                });
+
+                $(item).find('.slide-conts').height(maxheight);
+            });
+        },
+        _toggleArrow: function($arrow, flag) {
+            $arrow[flag ? 'removeClass' : 'addClass']('disabled')
+                        .prop('disabled', !flag)
+                        .attr('aria-disabled', (!flag).toString());
+        },
+        _requestData: function() {
+            var self = this;
+            var url = self.modelUrl;
+
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxDataPost(url, self.param, function(result) {
+                var data = result.data,
+                    arr = data.listData instanceof Array ? data.listData : [];
+
+                self.page = data.listPage.page;
+                self.totalCount = data.listPage.totalCount;
+                self.$modelSlider.find('.slide-track').empty();
+
+                if (arr.length) {
+                    arr.forEach(function(item) {
+                        item.name = item.modelCode.replaceAll(self.param.keyword, '<em class="word">'+self.param.keyword+'</em>');
+                        self.$modelSlider.find('.slide-track').append(vcui.template(modelListTmpl, item))
+                    });
+
+                    if (!self.$modelSlider.hasClass('ui_carousel_initialized')) {
+                        self.$modelSlider.vcCarousel({
+                            rows:3,
+                            slidesPerRow: 4,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            responsive: [
+                                {
+                                    breakpoint: 10000,
+                                    settings: {
+                                        rows:3,
+                                        slidesPerRow: 4,
+                                        slidesToShow: 1,
+                                        slidesToScroll: 1
+                                    }
+                                },
+                                {
+                                    breakpoint: 1024,
+                                    settings: {
+                                        rows: 4,
+                                        slidesPerRow: 3,
+                                        slidesToShow: 1,
+                                        slidesToScroll: 1
+                                    }
+                                },
+                                {
+                                    breakpoint: 768,
+                                    settings: {
+                                        rows: 6,
+                                        slidesPerRow: 2,
+                                        slidesToShow: 1,
+                                        slidesToScroll: 1
+                                    }
+                                }
+                            ]
+                        });
+                    } else {
+                        var initValue = (self.page % 10 == 0) ? 9 : 0;
+                        self.$modelSlider.vcCarousel('setOption', 'initialSlide', initValue, false);
+                        self.$modelSlider.vcCarousel('reinit');
+                    }
+
+                    self.$modelSlider.show();
+                    self.$modelNoData.hide();
+                } else {
+                    self.$modelSlider.hide();
+                    self.$modelNoData.find('.word').html(self.param.keyword);
+                    self.$modelNoData.show();
+                }
+
+                lgkorUI.hideLoading();
+            });
+        },
+        _nextStepModel: function() {
+            var self = this;
+            
+            self.$selectedModelBar.show();
+            self.$myModelArea.show();
+            self.$myModelSlider.vcCarousel('resize');
+            self.next(self.$stepModel);
+            self.focus(self.$selectedModelBar);
+        },
+        _nextStepResult: function() {
+            var self = this;
+
+            self.$selectedModelBar.show();
+            self.$myModelArea.hide();
+            self.next(self.$stepInput);
+            self.focus(self.$selectedModelBar);
+        },
+        setModel: function(data) {
+            var self = this;
+            var opts = self.options,
+                model = data || opts.selected;
+
+            self.selected = $.extend(self.selected, model);
+        },
+        getModel: function() {
+            var self = this;
+            return self.selected;
+        },
+        updateSummary: function(summary) {
+            var self = this;
+            var summary = summary || self.options.defaultSummary,
+                isMyProduct = false;
+
+            if (myModel.length && summary.product && summary.product.length == 3) {
+                if (myModel.indexOf(summary.product[2]) != -1) {
+                    isMyProduct = true;
+                }
+            }
+            var test = [];
+            if (summary.product) {
+                for(var i = 0; i < summary.product.length; i++) {
+                    test[i] = {
+                        name: summary.product[i]
+                    }
+                    if (i == 2) {
+                        test[i]['isMyProduct'] = isMyProduct;
+                    }
+                }
+                summary.product = test;
+            }
+            console.log(isMyProduct);
+            self.$selectedModelBar.html(vcui.template(selectedBarTmpl, summary));
+        },
+        focus: function($target, callback) {
+            $('html, body').stop().animate({
+                scrollTop: $target.offset().top
+            }, function() {
+                callback && callback();
+            });
+        },
+        next: function($target) {
+            var self = this,
+                opt = self.options;
+                
+            $target.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
+            $target.addClass(opt.stepActiveClass);
+        },
+        reset: function() {
+            var self = this;
+            var opts = self.options;
+
+            self.page = opts.page;
+            self.totalCount = opts.totalCount;
+            self.param = opts.param;
+
+            self.isDefault = false;
+            self.isRequest = true;
+            self.page = opts.page;
+            self.totalCount = opts.totalCount;
+            self.selected = opts.selected;
+            self.param = {
+                pageCode: self.$el.find('#pageCode').val(),
+                serviceType: self.$el.find('#serviceType').val()
+            }
+
+            self.$el.find('#category').val('');
+            self.$el.find('#categoryNm').val('');
+            self.$el.find('#subCategory').val('');
+            self.$el.find('#subCategoryNm').val('');
+            self.$el.find('#modelCode').val('');
+            self.$el.find('#productCode').val('');
+
+            self.$keywordInput.val('');
+            self.$categoryBox.find('.box').removeClass('on off');
+            self.$categoryBox.addClass(opts.stepActiveClass);
+            self.$modelBox.removeClass(opts.stepActiveClass);
+            self.$modelBox.find('.keyword-search').hide();
+            self.$modelInput.val('');
+            self.$modelSlider.find('.slide-track').empty();
+            self.$modelFilter.find('#categorySelect').vcSelectTarget('reset', 'default');
+            self.$keywordBox.show();
+            self.$keywordBox.find('.desc').hide();
+            self.$selectedModelBar.vcSticky('destroy');
+
+            self.updateSummary();
+
+            self.$el.trigger('reset');
+        },
+        complete:function() {
+            var self = this;
+            self.$el.trigger('complete', [self.selected, self.resultUrl]);
         }
     };
 
@@ -1874,41 +1929,6 @@ $.fn.serializeObject = function() {
 (function($){
     function commonInit(){
         vcui.require(['ui/selectbox', 'ui/carousel'], function () {    
-            // 관련 소모품이 필요하신가요?
-            /*
-            $('.product-slider').vcCarousel({
-                infinite: false,
-                autoplay: false,
-                slidesToScroll: 4,
-                slidesToShow: 4,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToScroll: 3,
-                            slidesToShow: 3
-                        }
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            arrows: false,
-                            slidesToScroll: 1,
-                            slidesToShow: 1,
-                            variableWidth: true
-                        }
-                    },
-                    {
-                        breakpoint: 20000,
-                        settings: {
-                            slidesToScroll: 4,
-                            slidesToShow: 4
-                        }
-                    }
-                ]
-            });
-            */
-
             // LG제품에 관련된 정보를 확인하세요!
             $('.info-slider').vcCarousel({
                 infinite: false,

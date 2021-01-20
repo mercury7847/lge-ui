@@ -1,0 +1,61 @@
+{
+    "ssoCheckUrl": null,
+    "status":"success",
+    "message":null,
+    "param":{},
+    "data": [
+        {
+            "codeName": "구/군 선택", "code": ""
+        },{
+            "codeName": "강남구", "code": "강남구"
+        }, {
+            "codeName": "강동구", "code": "강동구"
+        }, {
+            "codeName": "강북구", "code": "강북구"
+        }, {
+            "codeName": "강서구", "code": "강서구"
+        }, {
+            "codeName": "관악구", "code": "관악구"
+        }, {
+            "codeName": "광진구", "code": "광진구"
+        }, {
+            "codeName": "구로구", "code": "구로구"
+        }, {
+            "codeName": "금천구", "code": "금천구"
+        }, {
+            "codeName": "노원구", "code": "노원구"
+        }, {
+            "codeName": "도봉구", "code": "도봉구"
+        }, {
+            "codeName": "동대문구", "code": "동대문구"
+        }, {
+            "codeName": "동작구", "code": "동작구"
+        }, {
+            "codeName": "마포구", "code": "마포구"
+        }, {
+            "codeName": "서대문구", "code": "서대문구"
+        }, {
+            "codeName": "서초구", "code": "서초구"
+        }, {
+            "codeName": "성동구", "code": "성동구"
+        }, {
+            "codeName": "성북구", "code": "성북구"
+        }, {
+            "codeName": "송파구", "code": "송파구"
+        }, {
+            "codeName": "양천구", "code": "양천구"
+        }, {
+            "codeName": "영등포구", "code": "영등포구"
+        }, {
+            "codeName": "용산구", "code": "용산구"
+        }, {
+            "codeName": "은평구", "code": "은평구"
+        }, {
+            "codeName": "종로구", "code": "종로구"
+        }, {
+            "codeName": "중구", "code": "중구"
+        }, {
+            "codeName": "중랑구", "code": "중랑구"
+        }
+    ]
+}

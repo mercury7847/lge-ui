@@ -56,11 +56,15 @@
             var self = this;
             
             self.$cont = $('.contents');
+            self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
+            self.$myModelArea = self.$cont.find('.my-product-wrap');
             self.$submitForm = self.$cont.find('#submitForm');
-            self.$stepArea = self.$cont.find('.step-area');
             self.$completeBtns = self.$cont.find('.btn-group');
 
+            self.$stepArea = self.$cont.find('.step-area');
+            self.$stepModel = self.$cont.find('#stepModel');
             self.$stepInput = self.$cont.find('#stepInput');
+
             self.$topicBox = self.$stepInput.find('#topicBox');
             self.$topicListWrap = self.$stepInput.find('#topicList');
             self.$topicList = self.$topicListWrap.find('.rdo-list');
@@ -453,19 +457,22 @@
         },
         bindEvent: function() {
             var self = this;
-            self.$cont.on('reset', function(e, module) {
+            self.$cont.on('reset', function(e) {
                 self.$solutionsBanner.hide();
                 self.$fanBox.hide();
                 self.$bdTypeBox.hide();
                 self.$tvPositionBox.hide();
                 self.$installTypeBox.hide();
                 self.$addFanBox.hide();
+                self.$myModelArea.show();
 
-                module._next(module.$stepModel);
+                $('[name=buyingdate]').closest('.conts').find('.form-text').remove();
+
+                self.$cont.commonModel('next', self.$stepModel);
             });
 
             // 모델 선택 후 이벤트
-            self.$cont.on('complete', function(e, module, data, url) {    
+            self.$cont.on('complete', function(e, data, url) {    
                 var param = {
                     modelCode: data.modelCode,
                     serviceType: $('#serviceType').val(),
@@ -473,10 +480,17 @@
                     subCategory: data.subCategory
                 };
 
+                if (data.memberModel) {
+                    param = $.extend(param, {
+                        salesDt: data.salesDt,
+                        memberModel: data.memberModel
+                    });
+                }
+
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var resultData = result.data;
 
-                    module._updateSummary({
+                    self.$cont.commonModel('updateSummary', {
                         product: [data.categoryName, data.subCategoryName, data.modelCode],
                         reset: 'product'
                     });
@@ -507,13 +521,26 @@
                         self.$tvPositionBox.hide();
                     }
 
-                    self.setTopicList(resultData)
-                    
-                    module.$myModelArea.hide();
+                    self.setTopicList(resultData);
 
-                    module._next(module.$stepInput);
-                    module._focus(module.$selectedModelBar, function() {
-                        module.$selectedModelBar.vcSticky();
+                    if (resultData.warrantyText && resultData.warrantValue) {
+                        $('[name=buyingdate]').closest('.conts').append('<p class="form-text">'+resultData.warrantyText+'</p>');
+                        $('[name=buyingdate]').filter('[value='+resultData.warrantValue+']').prop('checked', true);
+                        
+                        $('[name=buyingdate]').closest('.rdo-list-wrap').hide();
+                    } else {
+                        $('[name=buyingdate]').closest('.conts').find('.form-text').remove();
+                        $('[name=buyingdate]').prop('checked', false);
+
+                        $('[name=buyingdate]').closest('.rdo-list-wrap').show();
+                    }
+
+                    
+                    self.$myModelArea.hide();
+
+                    self.$cont.commonModel('next', self.$stepInput);
+                    self.$cont.commonModel('focus', self.$selectedModelBar, function() {
+                        self.$selectedModelBar.vcSticky();
                     });
                 });
             });

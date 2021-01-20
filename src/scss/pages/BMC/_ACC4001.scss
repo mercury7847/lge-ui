@@ -7,13 +7,13 @@
     }
     .welcome {
         .tit {
-            color:#222;
+            color:#000;
             @include font-large-2;
             font-weight:700;
         }
         .desc {
             margin-top:12px;
-            color:#222;
+            color:#000;
             @include font-medium;
         }
         .img {
@@ -58,7 +58,7 @@
                 margin-left:0;
             }
             dt {
-                color:#222;
+                color:#000;
                 @include font-large-1;
                 font-weight:700;
                 &::before {
@@ -140,13 +140,13 @@
         }
     }
     .tit {
-        color:#222;
+        color:#000;
         @include font-large-2;
         font-weight:700;
     }
     .desc {
         margin-top:12px;
-        color:#222;
+        color:#000;
         @include font-medium;
         word-break:keep-all;
     }

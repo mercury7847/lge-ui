@@ -4,51 +4,56 @@
         '<div class="subscribe-wrap ui_sticky">'+
             '<div class="inner">'+
                 '<div class="subscribe-tag">'+
-                    '<div class="tag-box">'+
-                        '<strong class="tag-name">#가을</strong>'+
-                        '<button type="button" class="btn gray size"><span>구독하기</span></button>'+
-                        '<button type="button" class="btn-close"><span class="blind">닫기</span></button>'+
-                    '</div>'+
+                    '{{#if isSubscription}}'+
                     '<div class="tag-box subscribed">'+
-                        '<strong class="tag-name">#가을</strong>'+
-                        '<button type="button" class="btn gray size"><span>구독중</span></button>'+
+                        '<strong class="tag-name">#{{tagName}}</strong>'+
+                        '<button type="button" class="btn gray size subscription-btn" data-mode="remove" data-code="{{tagCode}}" data-name="{{tagName}}"><span>구독중</span></button>'+
                         '<button type="button" class="btn-close"><span class="blind">닫기</span></button>'+
                     '</div>'+
+                    '{{#else}}'+
+                    '<div class="tag-box">'+
+                        '<strong class="tag-name">#{{tagName}}</strong>'+
+                        '<button type="button" class="btn gray size subscription-btn" data-mode="add" data-code="{{tagCode}}" data-name="{{tagName}}"><span>구독하기</span></button>'+
+                        '<button type="button" class="btn-close"><span class="blind">닫기</span></button>'+
+                    '</div>'+
+                    '{{/if}}'+
                 '</div>'+
             '</div>'+
         '</div>';
 
             var storyListTemplate = 
                 '<div class="flexbox">'+
-                    '<div class="box {{contentsType}}">'+
-                        '<div class="visual-area">'+
-                            '{{#if contentsType == "image"}}'+
-                            '<span class="image">'+
-                                '<img src="{{largeImage}}" alt="{{title}}">'+
-                            '</span>'+
-                            '{{#elsif contentsType == "video"}}'+
-                            '<span class="image">'+
-                                '<img src="{{smallImage}}" alt="{{title}}">'+
-                            '</span>'+
-                            '<a href="#n" class="btn-video"><span class="blind">동영상 재생</span></a>'+
-                            '{{/if}}'+
+                    '<div class="box-wrap">'+
+                        '<div class="box {{contentsType}}">'+
+                            '<div class="visual-area">'+
+                                '{{#if contentsType == "image"}}'+
+                                '<span class="image">'+
+                                    '<img src="{{largeImage}}" alt="{{title}}">'+
+                                '</span>'+
+                                '{{#elsif contentsType == "video"}}'+
+                                '<span class="image">'+
+                                    '<img src="{{smallImage}}" alt="{{title}}">'+
+                                '</span>'+
+                                '<a href="{{storyUrl}}" class="btn-video"><span class="blind">동영상 재생</span></a>'+
+                                '{{/if}}'+
+                            '</div>'+
+                            '<div class="text-area">'+
+                                '{{#if contentsName}}'+
+                                '<div class="flag-wrap box-type">'+
+                                    '<span class="flag">{{contentsName}}</span>'+
+                                '</div>'+
+                                '{{/if}}'+
+                                '<a href="{{storyUrl}}" class="card-title"><span>{{#raw title}}</span></a>'+            
+                                '<div class="tag-wrap">'+
+                                    '<ul class="tags">'+
+                                        '{{#each item in tagList}}'+           
+                                        '<li class="tag"><a href="#" class="subscription-btn" data-mode="search" data-code="{{item.tagCode}}" data-name="{{item.tagName}}">#{{item.tagName}}</a></li>'+
+                                        '{{/each}}'+
+                                    '</ul>'+
+                                '</div>'+
+                            '</div>'+        
+                            '<div class="date">{{regDate}}</div>'+
                         '</div>'+
-                        '<div class="text-area">'+
-                            '{{#if contentsName}}'+
-                            '<div class="flag-wrap box-type">'+
-                                '<span class="flag">{{contentsName}}</span>'+
-                            '</div>'+
-                            '{{/if}}'+
-                            '<a href="#" class="card-title"><span>{{#raw title}}</span></a>'+            
-                            '<div class="tag-wrap">'+
-                                '<ul class="tags">'+
-                                    '{{#each item in tagList}}'+           
-                                    '<li class="tag"><a href="#">#{{item.tagName}}</a></li>'+
-                                    '{{/each}}'+
-                                '</ul>'+
-                            '</div>'+
-                        '</div>'+        
-                        '<div class="date">{{regDate}}</div>'+
                     '</div>'+
                 '</div>';
 
@@ -60,7 +65,7 @@
                 '<li>'+
                     '<div class="tag">'+
                         '<span class="text">#{{item.tagName}}</span>'+
-                        '<button type="button" class="btn gray size"><span>구독</span></button>'+
+                        '<button type="button" class="btn gray size subscription-btn" data-mode="add" data-code="{{item.tagCode}}" data-name="{{item.tagName}}"><span>구독</span></button>'+
                     '</div>'+
                 '</li>'+        
                 '{{/each}}'+
@@ -69,24 +74,26 @@
 
     var STORY_LIST_URL;
 
-    function init(){        
-        vcui.require(['ui/toggleCarousel'], function () {
-            $('.ui_carousel_slider').vcToggleCarousel({
+    var listMaxLength = 12;
+
+    function init(){      
+        STORY_LIST_URL = $('.contents.story-main').data("storyList");
+
+        vcui.require(['ui/toggleCarousel', "ui/sticky"], function () {
+            $('.story-review').vcToggleCarousel({
                 pcOption: "unbuild",
                 mobileOption: {
-                    infinite: true,
+                    variableWidth: true,
                     slidesToShow: 1,
                     slidesToScroll: 1
                 }
             });
+
+            bindEvent();
+    
+            loadStoryList('user_story', 1, 'UserStory');
+            loadStoryList('new_story', 1, 'NewStory');
         });
-
-        STORY_LIST_URL = $('.contents.story-main').data("storyList");
-
-        bindEvent();
-
-        loadStoryList('user_story', 1, 'UserStory');
-        loadStoryList('new_story', 1, 'NewStory');
     }
 
     function bindEvent(){
@@ -104,7 +111,35 @@
             } else{
                 loadStoryList('new_story', page+1, 'NewStory');
             }
+        }).on('click', '.subscribe-wrap button.btn-close', function(e){
+            e.preventDefault();
+
+            var section = $(this).closest('.story-section');
+            if(section.hasClass('user_story')){
+                loadStoryList('user_story', 1, "UserStory");
+            } else{
+                loadStoryList('new_story', 1, 'NewStory');
+            }
+        }).on('click', '.subscription-btn', function(e){
+            e.preventDefault();
+
+            sendTagList(this);
         });
+    }
+
+    function sendTagList(item){
+        var selectTags = {
+            mode: $(item).data('mode'),
+            tagCode: $(item).data('code'),
+            tagName: $(item).data('name')
+        }
+        var section = $(item).closest('.story-section');
+        if(section.hasClass('user_story')){
+            loadStoryList('user_story', 1, "UserStory", selectTags);
+        } else{
+            loadStoryList('new_story', 1, 'NewStory', selectTags);
+        }
+        console.log(section.attr('class'), " [selectTags:", selectTags, ']');
     }
 
     function loadStoryList(sectioname, page, type, selectTag){
@@ -113,7 +148,7 @@
         var sendata = {
             page: page,
             type: type,
-            selectTag: selectTag ? selectTag : ""
+            selectTags: selectTag ? selectTag : ""
         }
         lgkorUI.requestAjaxData(STORY_LIST_URL, sendata, function(result){
             var sectionItem = $('.' + sectioname)
@@ -121,27 +156,70 @@
             var totalcnt = result.param.pagination.totalCount;
             sectionItem.data("page", page);
 
-            if(page == 1) sectionItem.find('.flexbox-wrap').empty();
+            if(page == 1){
+                sectionItem.find('.flexbox-wrap').empty();
+                sectionItem.find('.ui_sticky').parent().remove();
+            }
 
             if(page == totalcnt) sectionItem.find('.btn-moreview').hide();
             else sectionItem.find('.btn-moreview').show();
+            
+            if(result.data.selectTags){
+                sectionItem.find('.inner h2.title').hide();
+                
+                var stickyTag = vcui.template(stickyTagTemplate, result.data.selectTags);
+                sectionItem.prepend(stickyTag);
+
+                sectionItem.find('.ui_sticky').vcSticky({stickyContainer:sectionItem});
+            } else{
+                sectionItem.find('.inner h2.title').show();
+            }
 
             if(result.data.storyList && result.data.storyList.length > 0){
                 sectionItem.show();
 
-                var scrolltop = sectionItem.offset().top + sectionItem.outerHeight(true);
-
+                var imgLength = 0;
                 for(var str in result.data.storyList){
                     var template = result.data.storyList[str].contentsType == "tag" ? tagBoxTemplate : storyListTemplate;
                     var list = vcui.template(template, result.data.storyList[str]);
                     sectionItem.find('.flexbox-wrap').append(list);
-                }
-                sectionItem.find('img').on('load.storyhome', function(e){
-                    $(this).off('load.storyhome');
-                    setRepositionTagBox(sectionItem);
-                });
 
-                $('html, body').animate({scrollTop: scrolltop}, 500);
+                    if(result.data.storyList[str].contentsType != "tag") imgLength++;
+                }
+
+                var leng = result.data.storyList.length;
+                var first = (page-1)*listMaxLength;
+                var end = first + leng;
+                var loadID = 0;
+                var flexbox;
+                for(var i=first;i<end;i++){
+                    flexbox = sectionItem.find('.flexbox-wrap .flexbox').eq(i);
+                    flexbox.find('.box-wrap').css({opacity:0});
+                    flexbox.find('img').on('load.storyhome', function(){
+                        $(this).off('load.storyhome');
+
+                        loadID++;
+                        if(loadID == imgLength){
+                            setRepositionTagBox(sectionItem);
+                            
+                            var scrolltop = 999999999999999;
+                            sectionItem.find('.flexbox-wrap .flexbox').each(function(cdx, child){
+                                if(!$(child).data('appearAnim')){
+                                    scrolltop = Math.min(scrolltop, $(child).offset().top);
+
+                                    var delay = parseInt(Math.random()*10)*15;
+                                    $(child).data('appearAnim', true);
+                                    $(child).find('.box-wrap').css({opacity:0, y:100}).delay(delay).transition({opacity:1, y:0}, 500, "easeInOutCubic");
+                                }
+                            });
+
+                            if(page > 1){
+                                var status = getAlignStatusValues(sectionItem);
+                                $('html, body').animate({scrollTop: scrolltop - status.distance}, 500);
+                            }
+                        }
+                    });
+                }
             } else{
                 sectionItem.hide();
             }
@@ -188,7 +266,7 @@
             maxBottom = Math.max(maxBottom, bottom);
         });
 
-        item.find('.flexbox-wrap').height(maxBottom)
+        item.find('.flexbox-wrap').height(maxBottom);
     }
 
     function getAlignStatusValues(item){

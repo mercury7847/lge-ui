@@ -4,11 +4,7 @@
             <g>
                 <g>
                     <g>
-                        <g>
-                            <g>
-                                <path d="M3 -2L7.286 3 3 8" transform="translate(-144 -210) translate(0 118) translate(120 86) rotate(-90 23 -1) translate(2.857 5) rotate(90 5.143 3)"/>
-                            </g>
-                        </g>
+                        <path d="M0 0L6 6 0 12" transform="translate(-138 -556) translate(80 173) translate(0 383) translate(58) translate(5 2)"/>
                     </g>
                 </g>
             </g>

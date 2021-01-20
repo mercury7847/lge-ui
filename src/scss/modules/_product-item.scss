@@ -193,6 +193,9 @@
                     box-shadow:initial;
                     &.prev {
                         left: 16px;
+                        &:before {
+                            transform:rotate(180deg);
+                        }
                     }
                     &.next {
                         right: 16px;

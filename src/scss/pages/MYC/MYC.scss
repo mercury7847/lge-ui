@@ -41,7 +41,7 @@
                     @include font-small;
                     font-weight:500;
                     &.my-dep1 {
-                        color:#222;
+                        color:#000;
                         font-weight:700;
                     }
                     &.on {
@@ -203,7 +203,7 @@
                 border-bottom: 0;
             }
             .selfClearingAgree {
-                color: #222;
+                color: #000;
             }
         }
         .bullet-list + .btn-group {
@@ -410,7 +410,7 @@
 .input-info .txt-cont {
     .dl-txt-cont {
         dd {
-            color: #222;
+            color: #000;
             font-weight: 400;
         }
     }
