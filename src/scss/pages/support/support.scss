@@ -553,7 +553,7 @@
                         height:110px;
                         text-align:center;
                         vertical-align:middle;
-                        margin-right: 24px;
+                        margin-right: 12px;
                         img {
                             max-width:100%;
                         }
@@ -575,10 +575,14 @@
                         }
                         .name {
                             @include font-large-1;
+                            font-weight:$font-weight-bold;
                             em {
                                 color:#ec455a;
-                                font-weight:$font-weight-bold;
                             }
+                        }
+                        .desc{
+                            @include font-medium;
+                            font-weight:$font-weight-bold;
                         }
                     }
                 }
