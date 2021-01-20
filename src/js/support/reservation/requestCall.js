@@ -25,6 +25,7 @@
         '</span>' +
     '</li>' +
     '{{/each}}';
+    
     var validation;
     var authManager;
     var dateUtil = vcui.date;
@@ -34,26 +35,30 @@
             var self = this;
             
             self.$cont = $('.contents');
+            self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
+            self.$myModelArea = self.$cont.find('.my-product-wrap');
             self.$submitForm = self.$cont.find('#submitForm');
-            self.$stepArea = self.$cont.find('.step-area');
             self.$completeBtns = self.$cont.find('.btn-group');
 
-            self.$topicBox = self.$cont.find('#topicBox');
-            self.$topicListWrap = self.$cont.find('#topicList');
+            self.$stepArea = self.$cont.find('.step-area');
+            self.$stepModel = self.$cont.find('#stepModel');
+            self.$stepInput = self.$cont.find('#stepInput');
+
+            self.$topicBox = self.$stepInput.find('#topicBox');
+            self.$topicListWrap = self.$stepInput.find('#topicList');
             self.$topicList = self.$topicListWrap.find('.rdo-list');
 
-            self.$subTopicBox = self.$cont.find('#subTopicBox');
-            self.$subTopicListWrap = self.$cont.find('#subTopicList');
+            self.$subTopicBox = self.$stepInput.find('#subTopicBox');
+            self.$subTopicListWrap = self.$stepInput.find('#subTopicList');
             self.$subTopicList = self.$subTopicListWrap.find('.rdo-list');
 
-            self.$solutionsBanner = self.$cont.find('#solutionBanner');
+            self.$solutionsBanner = self.$stepInput.find('#solutionBanner');
             self.$solutionsPopup = $('#solutionsPopup');
 
-            self.$dateWrap = self.$cont.find('.date-wrap');
-            self.$timeWrap = self.$cont.find('.time-wrap');
+            self.$dateWrap = self.$stepInput.find('.date-wrap');
+            self.$timeWrap = self.$stepInput.find('.time-wrap');
 
             self.$authPopup = $('#certificationPopup');
-            self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : 'N';
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
                 var register = {
@@ -78,7 +83,6 @@
                         msgTarget: '.err-msg',
                     }
                 }
-
                 var authRegister = {
                     authName: {
                         pattern: /^[가-힣a-zA-Z]+$/,
@@ -95,7 +99,7 @@
 
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
 
-                if (self.isLogin != 'Y') {
+                if (!lgkorUI.isLogin) {
                     authManager = new AuthManager({
                         elem: {
                             popup: '#certificationPopup',
@@ -122,15 +126,39 @@
                 self.bindEvent();
             });
         },
-        setTopicList: function(data) {
+        selectModel: function(data, url) {
             var self = this;
 
-            var html;
-
-            html = vcui.template(topicTmpl, data);
-            self.$topicList.html(html);
+            if (data.isRequest) {
+                self.loadTopicList(data, url);
+            } else {
+                self.nextStepInput(data);
+            }
         },
-        requestSubTopic: function(url, param) {
+        loadTopicList: function(data, url) {
+            var self = this;
+            var param = {
+                category: data.category,
+                subCategory: data.subCategory,
+                modelCode: data.modelCode,
+                serviceType: $('#serviceType').val()
+            };
+
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                var resultData = result.data,
+                    fastDate = dateUtil.format(resultData.fastDate + '' + resultData.fastTime + '00', 'yyyy.MM.dd hh:mm');
+
+                self.$cont.find('.calendar-info .date').html(fastDate);
+                self.$dateWrap.calendar('update', resultData.dateList);
+                self.$topicList.html(vcui.template(topicTmpl, data));
+                
+                self.nextStepInput(data);
+
+                lgkorUI.hideLoading();
+            });
+        },
+        loadSubTopic: function(url, param) {
             var self = this;
 
             lgkorUI.requestAjaxData(url, param, function(result) {
@@ -216,6 +244,22 @@
                 });
             }
         },
+        nextStepInput: function(data) {
+            var self = this;
+            var summaryOpt = {
+                product: [data.categoryName, data.subCategoryName, data.modelCode],
+                reset: 'product'
+            };
+
+            self.$myModelArea.hide();
+            self.$completeBtns.show();
+
+            self.$cont.commonModel('updateSummary', summaryOpt);
+            self.$cont.commonModel('next', self.$stepInput);
+            self.$cont.commonModel('focus', self.$selectedModelBar, function() {
+                self.$selectedModelBar.vcSticky();
+            });
+        },
         requestComplete: function() {
             var self = this;
 
@@ -237,52 +281,31 @@
                 }
             }, 'POST');
         },
+        reset: function() {
+            var self = this;
+
+            self.$topicList.empty();
+            self.$solutionsBanner.hide();
+            self.$myModelArea.show();
+
+            self.$stepInput.find('[name=buyingdate]').prop('checked', false);
+            self.$stepInput.find('#content').val('');
+            self.$stepInput.find('#userNm').val('');
+            self.$stepInput.find('#phoneNo').val('');
+
+            self.$dateWrap.calendar('reset');
+            self.$timeWrap.timeCalendar('reset');
+
+            self.$cont.commonModel('next', self.$stepModel);
+        },
         bindEvent: function() {
             var self = this;
             
-            // 모델 재선택
-            self.$cont.on('reset', function(e, module) {
-                self.$solutionsBanner.hide();
-
-                self.$dateWrap.calendar('reset');
-                self.$timeWrap.timeCalendar('reset');
-
-                module._next(self.$stepModel);
-            });
-
-            // 모델 선택 후 이벤트
-            self.$cont.on('complete', function(e, module, data, url) {
-                var param = {
-                    modelCode: data.modelCode,
-                    serviceType: $('#serviceType').val(),
-                    category: data.category,
-                    subCategory: data.subCategory
-                };
-
-                lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                    var resultData = result.data;
-                    var fastDate;
-
-                    module._updateSummary({
-                        product: [data.categoryName, data.subCategoryName, data.modelCode],
-                        reset: 'product'
-                    });
-                
-                    self.$dateWrap.calendar('update', resultData.dateList);
-
-                    fastDate = dateUtil.format(resultData.fastDate + '' + resultData.fastTime + '00', 'yyyy.MM.dd hh:mm');
-                    $('.calendar-info .date').html(fastDate);
-
-                    self.setTopicList(resultData);
-                    
-                    module.$myModelArea.hide();
-                    self.$completeBtns.show();
-
-                    module._next(module.$stepInput);
-                    module._focus(module.$selectedModelBar, function() {
-                        module.$selectedModelBar.vcSticky();
-                    });
-                });
+            // 모델 선택 & 문의 재선택
+            self.$cont.on('complete', function(e, data, url) {
+                self.selectModel(data, url);
+            }).on('reset', function(e) {
+                self.reset();
             });
 
             // 증상 선택
@@ -294,7 +317,7 @@
                         productCode: $('#productCode').val()
                     };
                     
-                self.requestSubTopic(url, param);
+                self.loadSubTopic(url, param);
             });
 
             // 세부 증상 선택
@@ -324,7 +347,7 @@
             });
 
             // 날짜 선택
-            $('.date-wrap').on('dateselected', function() {
+            self.$dateWrap.on('dateselected', function() {
                 self.requestTime();
             });
 
@@ -333,7 +356,7 @@
                 var result = validation.validate();
 
                 if (result.success == true) {    
-                    if (self.isLogin) {
+                    if (lgkorUI.isLogin) {
                         lgkorUI.confirm('', {
                             title:'예약 하시겠습니까?',
                             okBtnName: '확인',
