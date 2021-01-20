@@ -57,121 +57,113 @@
 
     var keywordsTemplate = 
         '{{#each item in keywords}}' +
-        '“<span class="point">{{item}}</span>”' +
+        '“<span class="point">{{item}}</span>” ' +
         '{{/each}}' +
-        ' 검색 결과';
-    
-    
+        '검색 결과';
 
     var recommProductItemTemplate =         
         '<div class="slide-conts ui_carousel_slide">' +
-        '<div class="item">' +
-        '<div class="item-inner">' +
-            '<div class="product-image">' +
-                '<img src="{{imgUrl}}" alt="">' +
-            '</div>' +
-            '<div class="product-info">' +
-                '<div class="flag-wrap bar-type">' +
-                    '{{#each item in flags}}' +
-                    '<span class="flag">{{item}}</span>' +
-                    '{{/each}}' +
-                '</div>' +
-                '<div class="product-name">' +
-                    '<p class="name"><a href="#" class="name">{{name}}</a></p>' +
-                    '<p class="model">{{modelName}}</p>' +
-                '</div>' +
-                '<div class="product-price">' +
-                    '<div class="discount">' +
-                        '<span class="blind">할인가격</span>' +
-                        '<span class="price">{{discountPrice}}원</span>' +
+            '<div class="item">' +
+                '<div class="item-inner">' +
+                    '<div class="product-image">' +
+                        '<img src="{{imgUrl}}" alt="">' +
                     '</div>' +
-                    '<div class="original">' +
-                        '<span class="blind">원가</span>' +
-                        '<span class="price">{{price}}원</span>' +
+                    '<div class="product-info">' +
+                        // '<div class="flag-wrap bar-type">' +
+                        //     '{{#each item in flags}}' +
+                        //     '<span class="flag">{{item}}</span>' +
+                        //     '{{/each}}' +
+                        // '</div>' +
+                        '<div class="product-name">' +
+                            '<p class="name"><a href="#" class="name">{{name}}</a></p>' +
+                            '<p class="model">{{modelName}}</p>' +
+                        '</div>' +
+                        // '<div class="product-price">' +
+                        //     '<div class="discount">' +
+                        //         '<span class="blind">할인가격</span>' +
+                        //         '<span class="price">{{discountPrice}}원</span>' +
+                        //     '</div>' +
+                        //     '<div class="original">' +
+                        //         '<span class="blind">원가</span>' +
+                        //         '<span class="price">{{price}}원</span>' +
+                        //     '</div>' +
+                        // '</div>' +
                     '</div>' +
+                    // '<div class="product-button">' +
+                    //     '<button type="button" class="btn border"><span>장바구니에 담기</span></button>' + 
+                    // '</div>' +
                 '</div>' +
             '</div>' +
-            '<div class="product-button">' +
-                '<button type="button" class="btn border"><span>장바구니에 담기</span></button>' + 
-            '</div>' +
-        '</div>' +
-        '</div>' +
         '</div>';
+    var serviceMenuTemplate = 
+        '<li>' +
+            '<a href="{{url}}">' +
+                '<strong class="tit">{{name}}</strong>' +
+            '</a>' +
+        '</li>';
         
 
     $(window).ready(function() {
         var solutions = {
             initialize: function() {
-                // this.param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-                this.$wrap = $('.solutions-wrap');
-                this.$filter = this.$wrap.find('.filter-box');
-                this.$filterM = this.$wrap.find('.mobile-filter-box');
-                this.$result = this.$wrap.find('.result-box');
+                var self = this;
 
-                this.$symptom = this.$wrap.find('#symptom');
-                this.$subSymptom = this.$wrap.find('#subSymptom');
+                self.$cont = $('.contents');
+                self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
+                self.$myModelArea = self.$cont.find('.my-product-wrap');
 
-                this.$topic = this.$wrap.find('#topic');
-                this.$subTopic = this.$wrap.find('#subTopic');
-                this.$keyword = this.$wrap.find('#keyword');
-                this.$inputKeyword = this.$wrap.find('#inputKeyword');
-                this.$searchBtn = this.$wrap.find('.keyword-search .btn-search');
-                this.$orderBy = this.$wrap.find('#orderBy');
+                self.$stepArea = self.$cont.find('.step-area');
+                self.$stepModel = self.$cont.find('#stepModel');
+                self.$stepInput = self.$cont.find('#stepInput');
 
-                this.param = $('#submitForm').serializeObject();
-                this.param.orderBy = $('#selectOrder').val();
+                self.$wrap = $('.solutions-wrap');
+                self.$filter = self.$wrap.find('.filter-box');
+                self.$filterM = self.$wrap.find('.mobile-filter-box');
+                self.$result = self.$wrap.find('.result-box');
 
-                this.$wrap.find('.pagination').pagination();
+                self.$topic = self.$result.find('#topic');
+                self.$subTopic = self.$result.find('#subTopic');
+                self.$keyword = self.$result.find('#keyword');
+                self.$searchBtn = self.$result.find('.keyword-search .btn-search');
+                self.$pagination = self.$result.find('.pagination');
 
-                $('.contents').commonModel({
+                self.param = {};
+                self.param['keyword'] = '';
+                self.param['topic'] = 'All';
+                self.param['subTopic'] = 'All';
+                self.param['orderBy'] = $('#orderBy').val();
+                self.param['page'] = 1;
+                self.solutionsUrl = self.$wrap.data('solutionsUrl');
+
+                self.$pagination.pagination();
+                self.$cont.commonModel({
                     register: {}
                 });
 
-                this.bindEvent();                
+                self.bindEvent();                
             },
             setRecommProduct: function(data){
-                $('.product-slider').find('.slide-track').empty();
-
-                var itemsHtml = '';
-                data.recommProduct.map(function(obj){
-                    itemsHtml += vcui.template(recommProductItemTemplate, obj);
-                });
-
-                $('.product-slider').find('.slide-track').append($(itemsHtml));
-
-                // 관련 소모품이 필요하신가요?
-                $('.product-slider').vcCarousel({
-                    infinite: false,
-                    autoplay: false,
-                    slidesToScroll: 4,
-                    slidesToShow: 4,
-                    responsive: [
-                        {
-                            breakpoint: 1024,
-                            settings: {
-                                slidesToScroll: 3,
-                                slidesToShow: 3
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                arrows: false,
-                                slidesToScroll: 1,
-                                slidesToShow: 1,
-                                variableWidth: true
-                            }
-                        },
-                        {
-                            breakpoint: 20000,
-                            settings: {
-                                slidesToScroll: 4,
-                                slidesToShow: 4
-                            }
-                        }
-                    ]
-                });
+                var html = '';
                 
+                data.recommProduct.map(function(obj){
+                    html += vcui.template(recommProductItemTemplate, obj);
+                });
+
+                $('.product-slider').find('.slide-track').empty();
+                $('.product-slider').find('.slide-track').append($(html));
+
+                lgkorUI.initProductSlider();
+                $('#recommProduct').show();
+            },
+            setServiceMenu: function(data) {
+                var html = '';
+
+                data.serviceMenu.map(function(obj){
+                    html += vcui.template(serviceMenuTemplate, obj);
+                });
+
+                $('.service-list').html(html);
+                $('#serviceMenu').show();
             },
             selectFilter: function(code) {
                 var self = this;
@@ -185,24 +177,24 @@
 
                 if (code !== 'All') {
                     self.$filter.find('.filter-link[data-code="'+ code +'"]').closest('.filter-list').addClass('open');
-                    self.$subSymptom.prop('disabled', false);
+                    self.$subTopic.prop('disabled', false);
                 } else {
                     self.$filter.find('.filter-link[data-code="'+ code +'"]').closest('.filter-list').removeClass('open');
                     self.$filter.find('.sub-depth').remove();
 
-                    self.$subSymptom.prop('disabled', true);
-                    self.$subSymptom.html('<option class="placeholder">증상을 선택해주세요.</option>');
+                    self.$subTopic.prop('disabled', true);
+                    self.$subTopic.html('<option class="placeholder">증상을 선택해주세요.</option>');
                 }
 
-                self.$symptom.vcSelectbox('update');
-                self.$subSymptom.vcSelectbox('update');
+                self.$topic.vcSelectbox('update');
+                self.$subTopic.vcSelectbox('update');
             },
             selectSubFilter: function(code) {
                 var self = this;
             
                 self.$filter.find('.filter-link[data-code="'+ code +'"]').parent('li').addClass('on').siblings('li').removeClass('on');
-                self.$subSymptom.val(code);
-                self.$subSymptom.vcSelectbox('update');
+                self.$subTopic.val(code);
+                self.$subTopic.vcSelectbox('update');
             },
             setFilter: function(data) {
                 var self = this,
@@ -216,14 +208,14 @@
 
                     self.$filter.find('.filter-list').eq(0).html(pcHtml);
 
-                    self.$symptom.html(mHtml);
-                    self.$symptom.vcSelectbox('update');
+                    self.$topic.html(mHtml);
+                    self.$topic.vcSelectbox('update');
                 }
             },
             setSubFilter: function(code, target) {
                 var self = this,
                     $target = target ? $(target) : null,
-                    url = self.$wrap.data('subFilterAjax'),
+                    url = self.$wrap.data('subFilterAjax') || self.$wrap.data('ajax'),
                     param = {
                         topic: code,
                         productCode: $('#submitForm').find('#productCode').val(),
@@ -246,49 +238,69 @@
     
                         $target && $target.after(pcHtml);
     
-                        self.$subSymptom.html(mHtml);
-                        self.$subSymptom.vcSelectbox('update');
+                        self.$subTopic.html(mHtml);
+                        self.$subTopic.vcSelectbox('update');
                     }
                 });
             },
             requestData: function() {
-                var self = this,
-                    url = self.$wrap.data('ajax');
+                var self = this;
 
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxDataPost(url, self.param, function(result){
+                lgkorUI.requestAjaxDataPost(self.solutionsUrl, self.param, function(result){
                     var data = result.data,
-                        html = ''
-                        keywordsHtml = '';
-                            
-                    data.listData.forEach(function(item) {
-                        html += vcui.template(solutionsTemplate, item);
-                    });
-                    keywordsHtml = vcui.template(keywordsTemplate, data);
+                        arr = data.listData instanceof Array ? data.listData : [],
+                        keywordArr = result.param.keywords instanceof Array ? result.param.keywords : [],
+                        html = '', keywordsHtml = '';
+                    
+                    self.$result.find('.list-wrap .list').empty();
 
-                    self.$result.find('.tit-wrap h3.tit').html(keywordsHtml);
+                    if (arr.length) {
+                        arr.forEach(function(item) {
+                            html += vcui.template(solutionsTemplate, item);
+                        });
+
+                        self.$result.find('.list-wrap .list').html(html);
+                        self.$result.find('.pagination').pagination('update', data.listPage);
+                    
+                        self.$result.find('.list-wrap').show();
+                        self.$result.find('.pagination').show();
+                    } else {
+                        self.$result.find('.list-wrap').hide();
+                        self.$result.find('.pagination').hide();
+                    }
+
+                    if (keywordArr.length) {
+                        keywordsHtml = vcui.template(keywordsTemplate, result.param);
+                        self.$result.find('.tit-wrap h3.tit').html(keywordsHtml);
+                    }
+                    
                     self.$result.find('#solutionsCount').html(data.listPage.totalCount);
-                    self.$result.find('.list-wrap .list').html(html);
-                    self.$result.find('.pagination').pagination('update', data.listPage);
-
+                    
                     lgkorUI.hideLoading();
                 });
             },
             reset: function() {
                 var self = this;
 
-                self.$filter.find('.open, .on').removeClass('open on');
-                self.$filter.find('.sub-depth').remove();
-
-                self.$symptom.vcSelectbox('selectedIndex', 0);
-
-                self.$topic.val('All');
-                self.$subTopic.val('');
+                
             },
             bindEvent: function() {
                 var self = this;
 
-                $('.contents').on('complete', function(e, module, data, url) { 
+                self.$cont.on('reset', function(e) {
+                    self.$filter.find('.open, .on').removeClass('open on');
+                    self.$filter.find('.sub-depth').remove();
+
+                    self.$topic.vcSelectbox('selectedIndex', 0);
+                    $('#recommProduct').hide();
+                    $('#serviceMenu').hide();
+                    $('#centerFind').hide();
+    
+                    self.$cont.commonModel('next', self.$stepModel);
+                });
+
+                self.$cont.on('complete', function(e, data, url) { 
                     var param = {
                         modelCode: data.modelCode,
                         category: data.category,
@@ -298,20 +310,36 @@
                     lgkorUI.requestAjaxDataPost(url, param, function(result) {
                         var resultData = result.data;
     
-                        module._updateSummary({
+                        self.$cont.commonModel('updateSummary', {
                             product: [data.categoryName, data.subCategoryName, data.modelCode],
-                            reset: true
+                            reset: 'product'
                         });
 
                         self.setRecommProduct(resultData);
+                        self.setServiceMenu(resultData);
+                        $('#centerFind').show();
                     });
 
-                    module.$myModelArea.hide();
+                    if (data.subCategory == 'C000136') {
+                        $('#windowUpdate').show();
+                    } else {
+                        $('#windowUpdate').hide();
+                    }
 
-                    module._next(module.$stepInput);
-                    module._focus(module.$selectedModelBar, function() {
-                        module.$selectedModelBar.vcSticky();
+                    if (data.subCategory == '1011' || data.subCategory == '1012') {
+                        $('#mobileUpdate').show();
+                    } else {
+                        $('#mobileUpdate').hide();
+                    }
+
+                    self.$myModelArea.hide();
+
+                    self.$cont.commonModel('next', self.$stepInput);
+                    self.$cont.commonModel('focus', self.$selectedModelBar, function() {
+                        self.$selectedModelBar.vcSticky();
                     });
+                }).on('reset', function(e) {
+
                 });
 
                 // filter
@@ -325,16 +353,6 @@
                             subTopic: 'All',
                             subTopicNm: 'All'
                         };
-                    
-                    self.$topic.val(code);
-                    if (!$(this).siblings('.sub-depth').length) {
-                        self.$subTopic.val('All');
-                    }
-                    
-                    // param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-                    // self.param = $.extend(param, {
-                    //     page: 1
-                    // });
 
                     self.param = $.extend(self.param, param);
 
@@ -356,12 +374,6 @@
                             subTopicNm: $(this).data('name')
                         };
                     
-                    self.$subTopic.val(code);
-                    // param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-                    // self.param = $.extend(param, {
-                    //     page: 1
-                    // });
-
                     self.param = $.extend(self.param, param);
 
                     self.selectSubFilter(code);
@@ -375,7 +387,7 @@
                 });
 
                 // mobile filter
-                self.$symptom.on('change', function() {
+                self.$topic.on('change', function() {
                     var value = $(this).val(),
                         param = {
                             page: 1,
@@ -385,13 +397,6 @@
                             subTopicNm: 'All'
                         };
 
-                    self.$topic.val(value);
-                    self.$subTopic.val('All');
-                    // param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-                    // self.param = $.extend(param, {
-                    //     page: 1
-                    // });
-
                     self.param = $.extend(self.param, param);
 
                     self.selectFilter(value);
@@ -400,21 +405,15 @@
                 });
 
                 // mobile sub filter
-                self.$subSymptom.on('change', function() {
+                self.$subTopic.on('change', function() {
                     var value = $(this).val(),
                         param = {
                             page: 1,
-                            subTopic: value
+                            subTopic: value,
+                            subTopic: $(this).data('name')
                         };
 
-                    self.$subTopic.val(value);
-                    // param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-                    // self.param = $.extend(param, {
-                    //     page: 1
-                    // });
-
                     self.param = $.extend(self.param, param);
-
                     
                     self.selectSubFilter(value);
                     self.requestData();
@@ -422,7 +421,7 @@
 
 
                 // keyword input keypress enter
-                self.$inputKeyword.on('keyup', function(e){
+                self.$keyword.on('keyup', function(e){
                     if (e.keyCode == 13){
                         self.$searchBtn.trigger('click');        
                     }
@@ -430,7 +429,7 @@
 
                 // keyword search
                 self.$searchBtn.on('click', function() {
-                    var value = self.$inputKeyword.val(),
+                    var value = self.$keyword.val(),
                         resultFlag = self.$result.find('#research').is(':checked'),
                         param = {
                             page:1,
@@ -442,12 +441,7 @@
                         param['subTopic'] = '';
                     }
 
-                    self.$keyword.val(value);
                     param['keyword'] = value;
-                    // param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-                    // self.param = $.extend(param, {
-                    //     page: 1
-                    // });
 
                     self.param = $.extend(self.param, param);
 
@@ -463,10 +457,6 @@
                         };
                         
                     self.$orderBy.val(value);
-                    // param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-                    // self.param = $.extend(param, {
-                    //     page: 1
-                    // });
 
                     self.param = $.extend(self.param, param);
                     
@@ -478,11 +468,6 @@
                     var param = {
                         page: e.page
                     }
-                    // var param = lgkorUI.getHiddenInputData('', 'solutions-wrap');
-
-                    // self.param = $.extend(param, {
-                    //     page: e.page
-                    // })
 
                     self.param = $.extend(self.param, param);
 

@@ -1,7 +1,147 @@
 ;(function(global){
     if(!global['lgkorUI']) global['lgkorUI'] = {};
     
-    lgkorUI['isLogin'] = $('#topLoginFlag').val() == 'Y' ? true : false;
+    var csUI = {
+        isLogin: $('#topLoginFlag').val() == 'Y' ? true : false,
+        initProductSlider: function() {
+            // 관련 소모품이 필요하신가요?
+            $('.product-slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                slidesToScroll: 4,
+                slidesToShow: 4,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            slidesToScroll: 1,
+                            slidesToShow: 1,
+                            variableWidth: true
+                        }
+                    },
+                    {
+                        breakpoint: 20000,
+                        settings: {
+                            slidesToScroll: 4,
+                            slidesToShow: 4
+                        }
+                    }
+                ]
+            });
+        },
+        addPlugin: function(pluginName, Plugin) {
+            $.fn[pluginName] = function(options) {
+                var arg = arguments; 
+        
+                return this.each(function() {
+                    var _this = this,
+                        $this = $(_this),
+                        plugin = $this.data('plugin_' + pluginName);
+        
+                    if (!plugin) {
+                        $this.data('plugin_' + pluginName, new Plugin(this, options));
+                    } else {
+                        if (typeof options === 'string' && typeof plugin[options] === 'function') {
+                            plugin[options].apply(plugin, [].slice.call(arg, 1));
+                        }
+                    }
+                });
+            }
+        },
+        cookie: {
+            setCookie: function(cookieName, value, expire) {
+                var cookieText;
+                var cookieExpire = new Date();
+
+                cookieExpire.setDate(cookieExpire.getDate() + expire);
+                cookieText = cookieName + '=' + escape(value) + ((expire == null) ? '' : '; expires=' + cookieExpire.toUTCString());
+
+                document.cookie = cookieText;
+            },
+            getCookie: function(cookieName) {
+                var cookieValue = null;
+
+                if (document.cookie) {
+                    var cookieKey = escape(cookieName) + "="; 
+                    var cookieArr = document.cookie.split(";");
+
+                    for (var i = 0; i < cookieArr.length; i++) {
+                        if(cookieArr[i][0] === " ") {
+                            cookieArr[i] = unescape(cookieArr[i].substring(1));
+                        }
+                        if(cookieArr[i].indexOf(cookieKey) === 0) {
+                            cookieValue = unescape(cookieArr[i].slice(cookieKey.length, cookieArr[i].length));
+                        }
+                    }
+                }
+
+                return cookieValue;
+            },
+            deleteCookie: function(cookieName, value) {
+                var cookie = csUI.cookie;
+                var cookies = cookie.getCookie(cookieName);
+
+                if (cookies) {
+                    var cookieArr = cookies.split(',');
+
+                    if (cookieArr.indexOf(value) != -1) {
+                        var index = -1;
+                        for (var i = 0; i < cookieArr.length; i++) {
+                            if (value == cookieArr[i]) {
+                                index = i;
+                                break;
+                            }
+                        }
+                        if (index != -1) {
+                            cookieArr.splice(index, 1);
+                            cookies = cookieArr.join(',');
+                            cookie.setCookie(self.cookieName, cookies, self.expire);
+                        }
+                    }
+                }
+            },
+            deleteAllCookie: function(cookieName) {
+                this.setCookie(cookieName, '', '-1');
+            }
+        },
+        recentlySearch: {
+            cookieName: 'LG_SupportSearch',
+            maxNum: 3,
+            expire: 30,
+            addCookie: function(value) {
+                var self = this;
+                var cookie = csUI.cookie;
+                var cookies = cookie.getCookie(self.cookieName);
+
+                if (cookies) {
+                    var cookieArr = cookies.split(',');
+
+                    if (cookieArr.indexOf(value) != -1) {
+                        cookie.deleteCookie(self.cookieName, value);
+                        cookieArr.splice(cookieArr.indexOf(value), 1);
+                        cookieArr.unshift(value);
+                    } else {
+                        cookieArr.unshift(value);
+                        if (cookieArr.length > self.maxNum) cookieArr.length = self.maxNum;
+                    }
+                    cookies = cookieArr.join(',');
+                    cookie.setCookie(self.cookieName, cookies, self.expire);
+                } else {
+                    cookie.setCookie(self.cookieName, value, self.expire);
+                }
+            }
+        }
+    }
+
+    lgkorUI = $.extend({}, lgkorUI, csUI);
 })(window);
 
 var CS = CS || {};
@@ -90,33 +230,37 @@ CS.MD.commonModel = function() {
 
     function Plugin(el, opt) {
         var self = this;
-        self.$el = $(el),
-        self.el = el;
-
         var defaults = {
             stepClass: 'step-box',
             stepActiveClass: 'active',
             page: 1,
             total: 0,
-            selected: [],
             register: {},
+            isRequest: true,
+            selected: {
+                category: '',
+                categoryName: '',
+                subCategory: '',
+                subCategoryName: '',
+                modelCode: '',
+                productCode: '',
+            },
             defaultSummary: {
                 tit: '서비스이용을 위해 제품을 선택해 주세요.'
             }
         };
 
+        self.$el = $(el);
         self.options = $.extend({}, defaults, opt);
         
-        vcui.require(['ui/validation', 'ui/selectTarget'], function () {
-            self._initialize();
-            self._bindEvent();  
-        });
+        self._initialize();
+        self._bindEvent();  
     }
 
     Plugin.prototype = {
         _initialize: function() {
-            var self = this,
-                options = self.options;
+            var self = this;
+            var opts = self.options;
 
             // 스텝 영역
             self.$stepBox = self.$el.find('.step-box');
@@ -156,21 +300,272 @@ CS.MD.commonModel = function() {
 
             // 옵션
             self.isDefault = $('#category').val() ? true : false;
-            self.page = options.page;
-            self.totalCount = options.totalCount;
-            self.selected = options.selected;
+            self.modelUrl = self.$searchArea.data('modelUrl');
+            self.resultUrl = self.$searchArea.data('resultUrl');
+            self.page = opts.page;
+            self.totalCount = opts.totalCount;
             self.param = {
-                pageCode: $('#pageCode').val(),
-                serviceType: $('#serviceType').val()
+                pageCode: self.$el.find('#pageCode').val(),
+                serviceType: self.$el.find('#serviceType').val()
             }
+            self.selected = {
+                category: self.$el.find('#category').val(),
+                categoryName: self.$el.find('#categoryNm').val(),
+                subCategory: self.$el.find('#subCategory').val(),
+                subCategoryName: self.$el.find('#subCategoryNm').val(),
+                modelCode: self.$el.find('#modelCode').val(),
+                productCode: self.$el.find('#productCode').val()
+            };
 
             self.$modelFilter.find('.ui_select_target').vcSelectTarget();
             
-
             lgkorUI.searchModelName();
 
             self._initMyProduct();
             self._initStepTerms();
+        },
+        _bindEvent: function() {
+            var self = this;
+
+            // 제품 재선택
+            self.$selectedModelBar.on('click', '.btn-reset', function() {
+                self.reset();
+            });
+
+            // 문의유형 : 제품선택
+            self.$stepInquiry.find('.btn-next').on('click', function() {
+                var result = termsValidation.validate();
+                
+                if (result.success) {
+                    self._nextStepModel();
+                }
+            });
+
+            // 문의유형 선택
+            self.$stepInquiry.find('.btn-type').on('click', function() {
+                var $this = $(this),
+                    result = termsValidation.validate(),
+                    data = $this.data();
+
+                if (result.success) {
+                    self.$el.find('#category').val(data.category);
+                    self.$el.find('#categoryNm').val(data.categoryName);
+                    self.$el.find('#subCategory').val(data.subCategory);
+                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                    
+                    data.isRequest = false;
+
+                    self.$el.trigger('complete', [data]);
+                }
+            });
+
+            // 검색어 검색
+            self.$keywordInput.on('input', function(e) {
+                var $this = $(this),
+                    value = $this.val().toUpperCase(),
+                    opt = self.options;
+
+                if (!self.$modelBox.hasClass(opt.stepActiveClass)) {
+                    if (value.length > 1) {
+                        self.$categoryBox.removeClass(opt.stepActiveClass);
+                        self.$modelBox.addClass(opt.stepActiveClass);
+                        self.$keywordBox.find('.desc').show();
+                        self.$keywordBox.find('.err-msg').hide();
+                        self.param = $.extend(self.param, {
+                            keyword: value,
+                            page: 1
+                        });
+
+                        self._requestData();
+                    } else {
+                        self.$keywordBox.find('.err-msg').show();
+                    }
+                } else {
+                    if (value.length > 1 || !value) {
+
+                        self.param = $.extend(self.param, {
+                            keyword: value,
+                            page: 1
+                        });
+                        
+                        self._requestData();
+                    }
+                }
+            });
+
+            self.$keywordButton.on('click', function() {
+                var opt = self.options;
+                
+                if (result.success) {
+                    self.param = $.extend(self.param, {
+                        keyword: self.$keywordInput.val().toUpperCase(),
+                        page: 1
+                    });
+
+                    self._requestData();
+
+                    self.$categoryBox.removeClass(opt.stepActiveClass);
+                    self.$modelBox.addClass(opt.stepActiveClass);
+                }
+            });
+
+            // 카테고리 > 검색어 검색
+            self.$modelInput.on('input', function() {
+                var $this = $(this),
+                    value = $this.val().toUpperCase();
+                    
+                if (value.length > 1 || !value) {
+                    self.param = $.extend(self.param, {
+                        keyword: value,
+                        page: 1
+                    });
+
+                    self._requestData();
+                }
+            });
+
+            self.$modelButton.on('click', function() {
+                if (result.success) {
+                    self.param = $.extend(self.param, {
+                        keyword: self.$modelInput.val().toUpperCase(),
+                        page: 1
+                    });
+
+                    self._requestData();
+                }
+            });
+
+            // 카테고리 선택
+            self.$categoryBox.find('.btn-open').on('click', function() {
+                $(this).closest('.box').addClass('on');
+                $(this).closest('li').siblings().each(function(index, item) {
+                    var $item = $(item);
+
+                    if ($item.find('.box').hasClass('on')) {
+                        $item.find('.box').removeClass('on').addClass('off');
+                    }
+                });
+            });
+            self.$categoryBox.find('.btn-close').on('click', function() {
+                $(this).closest('.box').removeClass('on').addClass('off');
+            });
+
+            // 서브 카테고리 선택
+            self.$categoryBox.find('.sub-category-list button').on('click', function() {
+                var $this = $(this),
+                    data = $this.data();
+                    opt = self.options;
+
+                self.param = $.extend(self.param, {
+                    category: data.categor,
+                    categoryNm: data.categoryName,
+                    subCategory: data.subCategory,
+                    subCategoryNm: data.subCategoryName,
+                    page: 1
+                });
+
+                self.updateSummary({
+                    product: [data.categoryName, data.subCategoryName]
+                });
+                self._requestData();
+
+                self.$keywordBox.hide();
+
+                self.$modelBox.find('.keyword-search').show();
+                self.$modelBox.find('#categorySelect').val(data.category);
+                self.$modelBox.find('#categorySelect').vcSelectbox('update').trigger('change', [data.subCategory]);
+
+                self.$categoryBox.removeClass(opt.stepActiveClass);
+                self.$modelBox.addClass(opt.stepActiveClass);
+            });
+
+            // 모델명 선택
+            self.$modelBox.on('click', '.model-slider a', function(e) {
+                e.preventDefault();
+
+                var $this = $(this),
+                    data = $this.data(),
+                    url;
+
+                url = self.$searchArea.data('resultUrl');  
+
+                data.isRequest = true;
+                self.$el.find('#category').val(data.category);
+                self.$el.find('#categoryNm').val(data.categoryName);
+                self.$el.find('#subCategory').val(data.subCategory);
+                self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                self.$el.find('#modelCode').val(data.modelCode);
+                self.$el.find('#productCode').val(data.productCode);
+                self.$el.trigger('complete', [data, url]);
+
+                if (data.modelCode) lgkorUI.recentlySearch.addCookie(data.modelCode);
+            });
+            
+            // 모델명 선택 - 서브 카테고리 선택
+            self.$modelBox.find('#subCategorySelect').on('change', function() {
+                var $this = $(this),
+                    $category = self.$modelBox.find('#categorySelect');
+
+                self.param = $.extend(self.param, {
+                    category: $category.val(),
+                    categoryNm: $category.find('option:selected').text(),
+                    subCategory: $this.val(),
+                    subCategoryNm: $this.find('option:selected').text(),
+                    page: 1
+                });
+
+                self._requestData();
+            });
+            
+            // 모델 리스트 슬라이더
+            self.$modelSlider.on('carouselinit carouselreInit carouselafterchange carouselresize', function() {
+                self._resetFlexibleBox();
+            });
+            self.$modelSlider.on('carouselreinit', function(e, module) {
+                var startPage = parseInt((self.page - 1) / 10) * 10 + 1;
+                
+                if (startPage != 1 && (self.page % 10 == 1)) {
+                    self._toggleArrow(module.$prevArrow, true);
+                    module.$prevArrow.addClass('btn-prev');
+                }
+            });
+            self.$modelSlider.on('carouselbeforechange', function(e, module, before, after) {
+                var page = after - before;
+            
+                self.page += page;
+            });
+            self.$modelSlider.on('carouselafterchange', function(e, module, after) {
+                var startPage = parseInt((self.page - 1) / 10) * 10 + 1; 
+                var endPage = startPage + 10 - 1;
+
+                if (startPage != 1 && (self.page % 10 == 1)) {
+                    self._toggleArrow(module.$prevArrow, true);
+                    module.$prevArrow.addClass('btn-prev');
+                } else {
+                    module.$prevArrow.removeClass('btn-prev');
+                }
+
+                if (after == 9 && (endPage != self.totalCount)) {
+                    self._toggleArrow(module.$nextArrow, true);
+                    module.$nextArrow.addClass('btn-next');
+                } else {
+                    module.$nextArrow.removeClass('btn-next');
+                }
+            });
+            self.$modelSlider.on('click', '.btn-prev', function() {
+                self.param = $.extend(self.param, {
+                    page: self.page - 1
+                });
+                
+                self._requestData();
+            });
+            self.$modelSlider.on('click', '.btn-next', function() {
+                self.param = $.extend(self.param, {
+                    page: self.page + 1
+                });
+                
+                self._requestData();
+            });
         },
         _initMyProduct: function() {
             var self = this;
@@ -218,7 +613,7 @@ CS.MD.commonModel = function() {
                     self.$el.find('#subCategoryNm').val(data.subCategoryName);
                     self.$el.find('#modelCode').val(data.modelCode);
                     self.$el.find('#productCode').val(data.productCode);
-                    self.$el.trigger('complete', [self, data, url]);
+                    self.$el.trigger('complete', [data, url]);
                 }
             });
 
@@ -252,21 +647,18 @@ CS.MD.commonModel = function() {
                 var result = termsValidation.validate();
                 
                 if (result.success) {
+                    self.$selectedModelBar.show();
+
                     if (self.isDefault) {
-                        self._next(self.$stepInput);
+                        self.$el.trigger('complete', [self.selected, self.resultUrl]);
                     } else {
-                        self._next(self.$stepModel);
+                        self.$myModelArea.show();
+                        self.next(self.$stepModel);
                     }
                     
-                    self._focus(self.$selectedModelBar);
+                    self.focus(self.$selectedModelBar);
                 }
             });
-        },
-        _updateSummary: function(summary) {
-            var self = this;
-            var summary = summary || self.options.defaultSummary;
-
-            self.$selectedModelBar.html(vcui.template(selectedBarTmpl, summary));
         },
         _resetFlexibleBox: function() {
             var self = this;
@@ -281,64 +673,14 @@ CS.MD.commonModel = function() {
                 $(item).find('.slide-conts').height(maxheight);
             });
         },
-        reset: function() {
-            var self = this;
-                options = self.options;
-
-            self.page = options.page;
-            self.totalCount = options.totalCount;
-            self.param = options.param;
-
-            self.$el.find('[type=hidden]').not('[name=serviceType], [name=lockUserId]').val('');
-            
-            if (lgkorUI.isLogin) {
-                self.$el.find('input[type=text], textarea').not('#userNm, #phoneNo, ').val('');
-            } else {
-                self.$el.find('input[type=text], textarea').val('');
-            }
-
-            self.$el.find('input[type=radio]').prop('checked', false);
-            
-            self.$categoryBox.find('.box').removeClass('on off');
-            self.$categoryBox.addClass(options.stepActiveClass);
-            self.$modelBox.removeClass(options.stepActiveClass);
-            self.$modelBox.find('.keyword-search').hide();
-            self.$modelSlider.find('.slide-track').empty();
-            self.$modelFilter.find('#categorySelect').vcSelectTarget('reset', 'default');
-
-            self.$keywordBox.show();
-            self.$keywordBox.find('.desc').hide();
-            
-            self.$myModelArea.show();
-            
-            self.$el.trigger('reset', [self]);
-
-            self._updateSummary();
-
-            $('.prod-selected-wrap').vcSticky('destroy');
-        },
         _toggleArrow: function($arrow, flag) {
             $arrow[flag ? 'removeClass' : 'addClass']('disabled')
                         .prop('disabled', !flag)
                         .attr('aria-disabled', (!flag).toString());
         },
-        _focus: function($target, callback) {
-            $('html, body').stop().animate({
-                scrollTop: $target.offset().top
-            }, function() {
-                callback && callback();
-            });
-        },
-        _next: function($target) {
-            var self = this,
-                opt = self.options;
-                
-            $target.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
-            $target.addClass(opt.stepActiveClass);
-        },
         _requestData: function() {
             var self = this;
-            var url = self.$searchArea.data('modelUrl');
+            var url = self.modelUrl;
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(url, self.param, function(result) {
@@ -347,10 +689,6 @@ CS.MD.commonModel = function() {
 
                 self.page = data.listPage.page;
                 self.totalCount = data.listPage.totalCount;
-
-                self.totalPage = Math.floor(self.totalCount == 0 ? 1 : (self.totalCount - 1)  / self.pageCount + 1);
-                
-
                 self.$modelSlider.find('.slide-track').empty();
 
                 if (arr.length) {
@@ -358,8 +696,6 @@ CS.MD.commonModel = function() {
                         item.name = item.modelCode.replaceAll(self.param.keyword, '<em class="word">'+self.param.keyword+'</em>');
                         self.$modelSlider.find('.slide-track').append(vcui.template(modelListTmpl, item))
                     });
-                    self.$modelSlider.show();
-                    self.$modelNoData.hide();
 
                     if (!self.$modelSlider.hasClass('ui_carousel_initialized')) {
                         self.$modelSlider.vcCarousel({
@@ -402,269 +738,109 @@ CS.MD.commonModel = function() {
                         self.$modelSlider.vcCarousel('setOption', 'initialSlide', initValue, false);
                         self.$modelSlider.vcCarousel('reinit');
                     }
+
+                    self.$modelSlider.show();
+                    self.$modelNoData.hide();
                 } else {
                     self.$modelSlider.hide();
-                    
                     self.$modelNoData.find('.word').html(self.param.keyword);
                     self.$modelNoData.show();
                 }
 
-                self._focus(self.$selectedModelBar);
-
                 lgkorUI.hideLoading();
             });
         },
-        _bindEvent: function() {
+        _nextStepModel: function() {
+            var self = this;
+            
+            self.$selectedModelBar.show();
+            self.$myModelArea.show();
+            self.next(self.$stepModel);
+            self.focus(self.$selectedModelBar);
+        },
+        _nextStepResult: function() {
             var self = this;
 
-            // 제품 재선택
-            self.$selectedModelBar.on('click', '.btn-reset', function() {
-                self.reset();
-            });
+            self.$selectedModelBar.show();
+            self.$myModelArea.hide();
+            self.next(self.$stepInput);
+            self.focus(self.$selectedModelBar);
+        },
+        setModel: function(data) {
+            var self = this;
+            var opts = self.options,
+                model = data || opts.selected;
 
-            // 문의유형 : 제품선택
-            self.$stepInquiry.find('.btn-next').on('click', function() {
-                var result = termsValidation.validate();
+            self.selected = $.extend(self.selected, model);
+        },
+        getModel: function() {
+            var self = this;
+            return self.selected;
+        },
+        updateSummary: function(summary) {
+            var self = this;
+            var summary = summary || self.options.defaultSummary;
+
+            self.$selectedModelBar.html(vcui.template(selectedBarTmpl, summary));
+        },
+        focus: function($target, callback) {
+            $('html, body').stop().animate({
+                scrollTop: $target.offset().top
+            }, function() {
+                callback && callback();
+            });
+        },
+        next: function($target) {
+            var self = this,
+                opt = self.options;
                 
-                if (result.success) {
-                    self._next(self.$stepModel);
-                    self._focus(self.$selectedModelBar);
-                }
-            });
+            $target.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
+            $target.addClass(opt.stepActiveClass);
+        },
+        reset: function() {
+            var self = this;
+            var opts = self.options;
 
-            // 문의유형 선택
-            self.$stepInquiry.find('.btn-type').on('click', function() {
-                var $this = $(this),
-                    result = termsValidation.validate(),
-                    data = $this.data();
+            self.page = opts.page;
+            self.totalCount = opts.totalCount;
+            self.param = opts.param;
 
-                if (result.success) {
-                    self.$el.find('#category').val(data.category);
-                    self.$el.find('#categoryNm').val(data.categoryName);
-                    self.$el.find('#subCategory').val(data.subCategory);
-                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
-                    
-                    data.isRequest = false;
+            self.isDefault = false;
+            self.isRequest = true;
+            self.page = opts.page;
+            self.totalCount = opts.totalCount;
+            self.selected = opts.selected;
+            self.param = {
+                pageCode: self.$el.find('#pageCode').val(),
+                serviceType: self.$el.find('#serviceType').val()
+            }
 
-                    self.$el.trigger('complete', [self, data]);
-                }
-            });
+            self.$el.find('#category').val('');
+            self.$el.find('#categoryNm').val('');
+            self.$el.find('#subCategory').val('');
+            self.$el.find('#subCategoryNm').val('');
+            self.$el.find('#modelCode').val('');
+            self.$el.find('#productCode').val('');
 
-            // 검색어 검색
-            self.$keywordInput.on('input', function(e) {
-                var $this = $(this),
-                    value = $this.val().toUpperCase(),
-                    opt = self.options;
+            self.$keywordInput.val('');
+            self.$categoryBox.find('.box').removeClass('on off');
+            self.$categoryBox.addClass(opts.stepActiveClass);
+            self.$modelBox.removeClass(opts.stepActiveClass);
+            self.$modelBox.find('.keyword-search').hide();
+            self.$modelInput.val('');
+            self.$modelSlider.find('.slide-track').empty();
+            self.$modelFilter.find('#categorySelect').vcSelectTarget('reset', 'default');
+            self.$keywordBox.show();
+            self.$keywordBox.find('.desc').hide();
+            self.$selectedModelBar.vcSticky('destroy');
 
-                if (!self.$modelBox.hasClass(opt.stepActiveClass)) {
-                    if (value.length > 1) {
-                        self.$categoryBox.removeClass(opt.stepActiveClass);
-                        self.$modelBox.addClass(opt.stepActiveClass);
-                        self.$keywordBox.find('.desc').show();
-                        self.$keywordBox.find('.err-msg').hide();
-                        self.param = $.extend(self.param, {
-                            keyword: value,
-                            page: 1
-                        });
+            self.updateSummary();
 
-                        self._updateSummary({
-                            tit: '서비스이용을 위해 제품을 선택해 주세요.'
-                        });
-                        self._requestData();
-                    } else {
-                        self.$keywordBox.find('.err-msg').show();
-                    }
-                } else {
-                    if (value.length > 1 || !value) {
-
-                        self.param = $.extend(self.param, {
-                            keyword: value,
-                            page: 1
-                        });
-                        
-                        self._requestData();
-                    }
-                }
-            });
-
-            self.$keywordButton.on('click', function() {
-                var opt = self.options;
-                
-                if (result.success) {
-                    self.param = $.extend(self.param, {
-                        keyword: self.$keywordInput.val().toUpperCase(),
-                        page: 1
-                    });
-
-                    self._updateSummary({
-                        tit: '서비스이용을 위해 제품을 선택해 주세요.'
-                    });
-                    self._requestData();
-
-                    self.$categoryBox.removeClass(opt.stepActiveClass);
-                    self.$modelBox.addClass(opt.stepActiveClass);
-                }
-            });
-
-            // 카테고리 > 검색어 검색
-            self.$modelInput.on('input', function() {
-                var $this = $(this),
-                    value = $this.val().toUpperCase();
-                    
-                if (value.length > 1 || !value) {
-                    self.param = $.extend(self.param, {
-                        keyword: value,
-                        page: 1
-                    });
-
-                    self._requestData();
-                }
-            });
-
-            self.$modelButton.on('click', function() {
-                if (result.success) {
-                    self.param = $.extend(self.param, {
-                        keyword: self.$modelInput.val().toUpperCase(),
-                        page: 1
-                    });
-
-                    self._requestData();
-                }
-            });
-
-            // 카테고리 선택
-            self.$categoryBox.find('.btn-open').on('click', function() {
-                $(this).closest('.box').addClass('on');
-                $(this).closest('li').siblings().each(function(index, item) {
-                    var $item = $(item);
-
-                    if ($item.find('.box').hasClass('on')) {
-                        $item.find('.box').removeClass('on').addClass('off');
-                    }
-                });
-            });
-
-            // 카테고리 취소
-            self.$categoryBox.find('.btn-close').on('click', function() {
-                $(this).closest('.box').removeClass('on').addClass('off');
-            });
-
-            // 서브 카테고리 선택
-            self.$categoryBox.find('.sub-category-list button').on('click', function() {
-                var $this = $(this),
-                    data = $this.data();
-                    opt = self.options;
-
-                self.param = $.extend(self.param, {
-                    category: data.categor,
-                    categoryNm: data.categoryName,
-                    subCategory: data.subCategory,
-                    subCategoryNm: data.subCategoryName,
-                    page: 1
-                });
-
-                self._updateSummary({
-                    product: [data.categoryName, data.subCategoryName]
-                });
-                self._requestData();
-
-                self.$keywordBox.hide();
-
-                self.$modelBox.find('.keyword-search').show();
-                self.$modelBox.find('#categorySelect').val(data.category);
-                self.$modelBox.find('#categorySelect').vcSelectbox('update').trigger('change', [data.subCategory]);
-
-                self.$categoryBox.removeClass(opt.stepActiveClass);
-                self.$modelBox.addClass(opt.stepActiveClass);
-            });
-
-            // 모델명 선택
-            self.$modelBox.on('click', '.model-slider a', function(e) {
-                e.preventDefault();
-
-                var $this = $(this),
-                    data = $this.data(),
-                    url;
-
-                url = self.$searchArea.data('resultUrl');  
-
-                self.$el.find('#category').val(data.category);
-                self.$el.find('#categoryNm').val(data.categoryName);
-                self.$el.find('#subCategory').val(data.subCategory);
-                self.$el.find('#subCategoryNm').val(data.subCategoryName);
-                self.$el.find('#modelCode').val(data.modelCode);
-                self.$el.find('#productCode').val(data.productCode);
-                data.isRequest = true;
-                self.$el.trigger('complete', [self, data, url]);
-            });
-            
-            // 모델명 선택 - 서브 카테고리 선택
-            self.$modelBox.find('#subCategorySelect').on('change', function() {
-                var $this = $(this),
-                    $category = self.$modelBox.find('#categorySelect');
-
-                self.param = $.extend(self.param, {
-                    category: $category.val(),
-                    categoryNm: $category.find('option:selected').text(),
-                    subCategory: $this.val(),
-                    subCategoryNm: $this.find('option:selected').text(),
-                    page: 1
-                });
-
-                self._requestData();
-            });
-            
-            // 모델 리스트 슬라이더
-            self.$modelSlider.on('carouselinit carouselreInit carouselafterchange carouselresize', function() {
-                self._resetFlexibleBox();
-            });
-
-            self.$modelSlider.on('carouselreinit', function(e, module) {
-                var startPage = parseInt((self.page - 1) / 10) * 10 + 1;
-                
-                if (startPage != 1 && (self.page % 10 == 1)) {
-                    self._toggleArrow(module.$prevArrow, true);
-                    module.$prevArrow.addClass('btn-prev');
-                }
-            });
-            self.$modelSlider.on('carouselbeforechange', function(e, module, before, after) {
-                var page = after - before;
-            
-                self.page += page;
-            });
-            self.$modelSlider.on('carouselafterchange', function(e, module, after) {
-                var startPage = parseInt((self.page - 1) / 10) * 10 + 1; 
-                var endPage = startPage + 10 - 1;
-
-                if (startPage != 1 && (self.page % 10 == 1)) {
-                    self._toggleArrow(module.$prevArrow, true);
-                    module.$prevArrow.addClass('btn-prev');
-                } else {
-                    module.$prevArrow.removeClass('btn-prev');
-                }
-
-                if (after == 9 && (endPage != self.totalCount)) {
-                    self._toggleArrow(module.$nextArrow, true);
-                    module.$nextArrow.addClass('btn-next');
-                } else {
-                    module.$nextArrow.removeClass('btn-next');
-                }
-            });
-
-            self.$modelSlider.on('click', '.btn-prev', function() {
-                self.param = $.extend(self.param, {
-                    page: self.page - 1
-                });
-                
-                self._requestData();
-            });
-            self.$modelSlider.on('click', '.btn-next', function() {
-                self.param = $.extend(self.param, {
-                    page: self.page + 1
-                });
-                
-                self._requestData();
-            });
+            self.$el.trigger('reset');
+        },
+        complete:function() {
+            var self = this;
+            self.$el.trigger('complete', [self.selected, self.resultUrl]);
         }
     };
 
@@ -1699,41 +1875,6 @@ $.fn.serializeObject = function() {
 (function($){
     function commonInit(){
         vcui.require(['ui/selectbox', 'ui/carousel'], function () {    
-            // 관련 소모품이 필요하신가요?
-            /*
-            $('.product-slider').vcCarousel({
-                infinite: false,
-                autoplay: false,
-                slidesToScroll: 4,
-                slidesToShow: 4,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToScroll: 3,
-                            slidesToShow: 3
-                        }
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            arrows: false,
-                            slidesToScroll: 1,
-                            slidesToShow: 1,
-                            variableWidth: true
-                        }
-                    },
-                    {
-                        breakpoint: 20000,
-                        settings: {
-                            slidesToScroll: 4,
-                            slidesToShow: 4
-                        }
-                    }
-                ]
-            });
-            */
-
             // LG제품에 관련된 정보를 확인하세요!
             $('.info-slider').vcCarousel({
                 infinite: false,

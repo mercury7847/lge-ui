@@ -8,30 +8,38 @@
     })
 <body>
     <div class="wrap">
+        <input type="hidden" name="topLoginFlag" id="topLoginFlag" value="Y">
         @@include('./common/header.html')
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '제품 문제해결'
+                'pageTitle': '제품 문제해결',
+                'pageDesc': '제품에 대한 문제를 빠르게 진단하고 해결할 수 있도록 도와드리겠습니다.'
             })
 
             <div class="contents support solutions">
                 <!-- 선택 제품 플로팅바 -->
-                @@include('./common/support/selected-model-bar.html')
+                @@include('./common/support/selected-model-bar.html', {
+                    "show": true
+                })
 
                 <!-- 회원 - 제품 없을 시 -->
                 @@include('./common/support/select-my-model.html', {
-                    "noItem": true
+                    "noItem": true,
+                    "show": true
                 })
 
                 <!-- 회원 - 보유제품 펼침 -->
-                @@include('./common/support/select-my-model.html')
+                @@include('./common/support/select-my-model.html', {
+                    "show": true
+                })
 
                 <div class="cont-wrap">
 
                     <div class="step-area">
                         <div class="step-box active" id="stepModel">
                             @@include('./common/support/select-model.html', {
+                                "url": "/lg5-common/data-ajax/support/solutions/selectModel.json",
                                 "category": [
                                     { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
                                     { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
@@ -51,30 +59,37 @@
 
                         <div class="step-box" id="stepInput">
                             <div class="section solutions-section" id="solutionsSection">
-                                <div class="solutions-wrap" data-ajax="/lg5-common/data-ajax/support/solutionsList.json" data-filter-ajax="/lg5-common/data-ajax/support/filterList.json" data-sub-filter-ajax="/lg5-common/data-ajax/support/subFilterList.json">
-                                    <input type="hidden" name="keyword" id="keyword" value="">
-                                    <input type="hidden" name="topic" id="topic" value="All">
-                                    <input type="hidden" name="subTopic" id="subTopic" value="">
-                                    <input type="hidden" name="orderBy" id="orderBy" value="orderBy">
-                                    
-                                    <h2 class="blind">제품 문제해결</h2>
-                                    <div class="info-banner">
-                                        <a href="#" class="btn dark-gray size"><span>Window 10 S 정보</span></a>
-                                        <a href="#" class="btn dark-gray size"><span>Window 10 업데이트 정보</span></a>                                        
+                                <div class="solutions-wrap" data-solutions-url="/lg5-common/data-ajax/support/solutions/solutionsList.json">
+                                    <!-- 모바일 device에서 비노출 -->
+                                    <div class="update-info-banner" id="windowUpdate">
+                                        <a href="https://www.lgservice.co.kr/asset/front/html/win_update/UpdateInfo.html" class="btn dark-gray size"><span>Window 10 업데이트 정보</span></a>
+                                        <a href="https://www.lgservice.co.kr/asset/front/html/win_update/UpdateInfoS.html" class="btn dark-gray size"><span>Window 10 S 정보</span></a>                                        
                                     </div>
+                                    <div class="update-info-banner" id="mobileUpdate">
+                                        <a href="https://www.lge.co.kr/lgekor/contents/mobile/swUpgradeList.do?cateId=0200&type=notice" class="btn dark-gray size"><span>모바일 S/W 업데이트 공지</span></a>
+                                        <a href="https://www.lgservice.co.kr/notice/selectNoticeView.do?cSeq=18825" class="btn dark-gray size"><span>스마트폰 데이터 이동하기</span></a>
+                                    </div>
+                                    <!-- // 모바일 device에서 비노출 -->
                                     <div class="search-wrap">
                                         <div class="keyword-search">
-                                            <div class="input-wrap">
-                                                <input type="text" name="inputKeyword" id="inputKeyword" class="ui_input_clearbutton" placeholder="검색어 입력" title="검색어 입력" data-clear-button="button.btn-delete">
-                                                <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
-                                                <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                            <div class="search-box">
+                                                <div class="search-input">
+                                                    <div class="input-wrap">
+                                                        <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="검색어 입력" title="검색어 입력" autocomplete="off" data-clear-button="button.btn-delete">
+                                                        <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+                                                        <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                                    </div>
+                                                    <span class="chk-wrap">
+                                                        <input type="checkbox" name="research" id="research">
+                                                        <label for="research">결과 내 검색</label>
+                                                    </span>
+                                                </div>
+                                                <div class="search-layer">
+
+                                                </div>
+                                                <p class="desc">제품 부착된 라벨의 모델명 중 마침표 (.)가 있는 모델명을 확인해 마침표 앞까지만 입력/검색</p>
                                             </div>
-                                            <span class="chk-wrap">
-                                                <input type="checkbox" name="research" id="research">
-                                                <label for="research">결과 내 검색</label>
-                                            </span>
                                         </div>
-                                        <p class="desc">제품 부착된 라벨의 모델명 중 마침표 (.)가 있는 모델명을 확인해 마침표 앞까지만 입력/검색</p>
                                     </div>
         
                                     <div class="filter-box">
@@ -131,11 +146,11 @@
                                             <div class="form-wrap">
                                                 <div class="forms">
                                                     <div class="tit">
-                                                        <label for="symptom">증상</label>
+                                                        <label for="topic">증상</label>
                                                     </div>
                                                     <div class="conts">
                                                         <div class="select-wrap">
-                                                            <select class="ui_selectbox" name="symptom" id="symptom" title="증상 선택">
+                                                            <select class="ui_selectbox" name="topic" id="topic" title="증상 선택">
                                                                 <option value="" class="placeholder">증상 선택</option>
                                                                 <option value="All">All</option>
                                                                 <option value="10000002">기능</option>
@@ -144,7 +159,7 @@
                                                                 <option value="10000005">스마트 앱</option>
                                                             </select>
                                                             <div class="select-wrap">
-                                                                <select class="ui_selectbox" name="subSymptom" id="subSymptom" title="세부증상 선택" disabled>
+                                                                <select class="ui_selectbox" name="subTopic" id="subTopic" title="세부증상 선택" disabled>
                                                                     <option  value="" class="placeholder">세부증상 선택</option>
                                                                 </select>
                                                             </div>
@@ -161,7 +176,7 @@
                                             <div class="total">전체 <em id="solutionsCount" class="count">122</em>건</div>
                                             <div class="sort-box">
                                                 <div class="sort-select-wrap">
-                                                    <select class="ui_selectbox" name="selectOrder" id="selectOrder" title="정렬 기준 선택">
+                                                    <select class="ui_selectbox" name="orderBy" id="orderBy" title="정렬 기준 선택">
                                                         <option value="조회순" selected>조회순</option>
                                                         <option value="인기순">인기순</option>
                                                         <option value="최근순">최근순</option>
@@ -204,11 +219,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
-                @@include('./common/support/recommand-product.html')
-                @@include('./common/support/service-menu.html')
-                @@include('./common/support/center-find.html')
+                    @@include('./common/support/recommand-product.html')
+                    @@include('./common/support/service-menu.html')
+                    @@include('./common/support/center-find.html')
+                    
+                </div>
             </div>
         </div>
              

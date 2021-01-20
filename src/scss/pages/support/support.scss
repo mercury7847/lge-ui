@@ -360,7 +360,7 @@
             font-size: 14px;
             font-weight: 500;
             line-height: 1.71;
-            color: #222;
+            color: #000;
         }
         .text  {
             font-size: 14px;
@@ -380,6 +380,9 @@
         &.gray:before {
             background-color: #ccc;
         }
+        &.gray2:before {
+            background-color: #e4e4e4;
+        }
         &.green:before {
             background-color: #51b1ac;
         }
@@ -395,6 +398,9 @@
         &.olive:before {
             background:#76892d;
         }
+        &.gradient1::before {
+            background-image: linear-gradient(135deg, #8d71ec, #ff537c);
+        }
     }
 
     .optionIcon {
@@ -408,7 +414,7 @@
     }
 
     .consulting-info {
-        color: #222;
+        color: #000;
         .info-tit {
             font-size: 28px;
             font-weight: bold;
@@ -535,6 +541,119 @@
             }
         }
     }
+
+    .expected-cost {
+        @include mobile {
+            &-box {
+                padding:24px 16px;
+                border-radius:8px;
+                box-shadow:0.1px 4px 16px 0 rgba(0, 0, 0, 0.14);
+                .product {
+                    display: flex;
+                    align-items: center;
+                    &-img {
+                        display:inline-block;
+                        width:110px;
+                        height:110px;
+                        text-align:center;
+                        vertical-align:middle;
+                        margin-right: 12px;
+                        img {
+                            max-width:100%;
+                        }
+                    }
+                    &-info {
+                        display:inline-block;
+                        flex: 1;
+                        vertical-align:middle;
+                        .img {
+                            margin-bottom:16px;
+                            img {
+                                max-width:100%;    
+                            }
+                        }
+                        .category {
+                            margin-bottom:4px;
+                            font-size:12px;
+                            font-weight: bold;
+                            color: #da0f47;
+                            line-height:1.67;
+                        }
+                        .name {
+                            @include font-large-1;
+<<<<<<< HEAD
+                            font-weight:$font-weight-bold;
+                            em {
+                                color:#ec455a;
+                            }
+=======
+                            font-weight: bold;
+                            margin-bottom: 12px;
+                        }
+                        .text {
+                            font-size: 14px;
+                            font-weight: bold;
+                            line-height: 1.62;
+>>>>>>> 09e93a1d34e61a38a6abc4c9a961511a062e8a83
+                        }
+                        .desc{
+                            @include font-medium;
+                            font-weight:$font-weight-bold;
+                        }
+                    }
+                }
+
+                .tit-wrap {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    .tit {
+                        font-size: 20px;
+                    }
+                }
+
+                .infomation {
+                    padding: 12px 0;
+                    border-radius: 66px;
+                    text-align: center;
+                    background-color: #f4f4f4;
+                    .tit {
+                        font-size: 14px;
+                        font-weight: bold;
+                        line-height: 1.57;
+                    }
+                    .text {
+                        font-size: 12px;
+                        font-weight: 500;
+                        line-height: 1.67;
+                        color: #666;
+                    }
+                }
+
+                .average-cost {
+                    &-balloon {
+                        width: 163px;
+                        height: 58px;
+                        background: url(/lg5-common/images/CS/bg-speech-bubble.svg) no-repeat center top calc(-5px);
+                        background-size: calc(100% + 12px);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #fff;
+                        font-size: 13px;
+                        padding-bottom: 6px;
+                        .front {
+                            display: inline-block;
+                            margin-bottom: 6px;
+                        }
+                        .num {
+                            font-size: 34px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 } //support
 
 
@@ -581,7 +700,7 @@
 
 // color
 .color-1 {
-    color: #222 !important;
+    color: #000 !important;
 }
 .color-2 {
     color: #f04e3e !important;
@@ -616,7 +735,7 @@
                 font-weight:$font-weight-medium;
             }
             &:hover a {
-                color:#222;
+                color:#000;
             }
         }
     }
@@ -721,7 +840,7 @@
                 display:block;
                 width:100%;
                 text-align:center;
-                color:#222;
+                color:#000;
                 font-size:14px;
                 line-height:24px;
                 background:transparent;

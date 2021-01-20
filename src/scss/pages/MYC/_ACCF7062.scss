@@ -40,7 +40,7 @@
                 line-height:24px;
                 vertical-align:middle;
                 &:disabled {
-                    color:#222;
+                    color:#000;
                 }
                 @include mobile {
                     text-decoration:none;
@@ -96,7 +96,7 @@
                 &.read * {
                     color:#aaa !important;
                     .bottom-btn .btn {
-                        color:#222 !important;
+                        color:#000 !important;
                     }
                 }
                 .notice-box {

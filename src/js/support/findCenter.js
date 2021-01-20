@@ -8,7 +8,7 @@
         subwaySearch: '검색결과 <strong>{{total}}개</strong>의 센터가 있습니다.'
     };
 
-    var localOptTemplate = '<option value={{value}}>{{title}}</option>';
+    var localOptTemplate = '<option value={{code}}>{{codeName}}</option>';
 
     var searchListTemplate = 
         '<li data-id="{{shopID}}">'+
@@ -337,13 +337,13 @@
 
             self.$subwayCitySelect.on('change', function(e){
                 lgkorUI.requestAjaxData(self.subwayUrl, {codeType:'SUBWAY', pcode:e.target.value}, function(result){
-                    self._setSubwayOption(result.data, self.$subwayLineSelect, {title:"호선 선택", value:""}, "code");
+                    self._setSubwayOption(result.data, self.$subwayLineSelect, {codeName:"호선 선택", code:""}, "code");
                 });
                 self.$subwayLineSelect.prop('disabled', false);
             });
             self.$subwayLineSelect.on('change', function(e){
                 lgkorUI.requestAjaxData(self.stationUrl, {codeType:'SUBWAY', pcode:e.target.value}, function(result){
-                    self._setSubwayOption(result.data, self.$subwayStationSelect, {title:"역 선택", value:""}, "codeName");
+                    self._setSubwayOption(result.data, self.$subwayStationSelect, {codeName:"역 선택", code:""}, "codeName");
                 });
                 self.$subwayStationSelect.prop('disabled', false);
             });
@@ -393,7 +393,7 @@
         _loadLocalAreaList: function(val){
             var self = this;
 
-            lgkorUI.requestAjaxData(self.localUrl, {city:encodeURI(val)}, function(result){
+            lgkorUI.requestAjaxData(self.localUrl, {pcode:encodeURI(val),codeType:'CITY'}, function(result){
                 self._setSelectOption(self.$boroughSelect, result.data);
                 self.$boroughSelect.vcSelectbox('update');
             });
@@ -421,8 +421,8 @@
             var self = this;
             var lines = vcui.array.map(result, function(item, idx){
                 return {
-                    title: item.codeName,
-                    value: item[valuekey]
+                    codeName: item.codeName,
+                    code: item[valuekey]
                 }
             });
             lines.unshift(firstdata);

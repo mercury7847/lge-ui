@@ -38,7 +38,7 @@
                 font-weight:700;
             }
             &.black, .black {
-                color:#222;
+                color:#000;
             }
         }
         tr {
@@ -56,15 +56,15 @@
         margin-top: 24px;
         font-size: 16px;
         line-height: 24px;
-        color: #222;
+        color: #000;
         .btm-tit {
-            color:#222;
+            color:#000;
             @include font-medium;
             font-weight:700;
         }
         .btm-desc {
             margin-top:8px;
-            color:#222;
+            color:#000;
             @include font-medium;
             em {
                 color:#ec455a;
@@ -115,7 +115,7 @@
                 text-align:left;
             }
             p {
-                color:#222;
+                color:#000;
                 font-weight:500;
                 @include font-medium;
                 @include textEllipsisClamp(2);

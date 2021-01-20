@@ -1,5 +1,10 @@
 @@if (!context.noItem) {
+@@if (context.show) {
 <div class="my-product-wrap">
+}
+@@if (!context.show) {
+<div class="my-product-wrap" style="display: none">    
+}
     <div class="box open">
         <div class="title">
             <p class="tit">이엘지님이 보유하고 있는 제품 (8)</p>
@@ -15,7 +20,7 @@
                 <div class="slide-track ui_carousel_track">
                     <div class="slide-conts ui_carousel_slide">
                         <!-- 예약 불가능 시 disabled 추가 -->
-                        <a href="#" class="slide-box phone" data-category="1018" data-sub-category="C000135" data-category-name="모바일" data-sub-category-name="일반폰" data-model-code="LGP810SPEAKERSTATION" data-product-code="CRA">
+                        <a href="#" class="slide-box phone" data-category="1018" data-sub-category="C000135" data-category-name="모바일" data-sub-category-name="일반폰" data-model-code="LGP810SPEAKERSTATION" data-product-code="CRA" data-sales-dt="123" data-member-model="123">
                             <p class="category"><span>일반폰</span></p>
                             <p class="name">LGP810SPEAK</p>
                             <span class="status">예약가능</span>
@@ -23,21 +28,21 @@
                     </div>
                     <div class="slide-conts ui_carousel_slide">
                         <!-- 예약 불가능 시 disabled 추가 -->
-                        <a href="#" class="slide-box tv disabled" data-category="1005" data-sub-category="1040" data-category-name="TV/프로젝터" data-sub-category-name="올레드" data-model-code="OLED48CXKNB" data-product-code="CRA">
+                        <a href="#" class="slide-box tv disabled" data-category="1005" data-sub-category="1040" data-category-name="TV/프로젝터" data-sub-category-name="올레드" data-model-code="OLED48CXKNB" data-product-code="CRA" data-sales-dt="123" data-member-model="123">
                             <p class="category"><span>올레드 TV</span></p>
                             <p class="name">OLED48CXKNB</p>
                         </a>
                     </div>
                     <div class="slide-conts ui_carousel_slide">
                         <!-- 예약 불가능 시 disabled 추가 -->
-                        <a href="#" class="slide-box memories disabled" data-category="P9999" data-sub-category="1074" data-category-name="기타" data-sub-category-name="외장하드/메모리" data-model-code="MC51PKSFS1I" data-product-code="CRA">
+                        <a href="#" class="slide-box memories disabled" data-category="P9999" data-sub-category="1074" data-category-name="기타" data-sub-category-name="외장하드/메모리" data-model-code="MC51PKSFS1I" data-product-code="CRA" data-sales-dt="123" data-member-model="123">
                             <p class="category"><span>외장하드/메모리</span></p>
                             <p class="name">MC51PKSFS1I</p>
                         </a>
                     </div>
                     <div class="slide-conts ui_carousel_slide">
                         <!-- 예약 불가능 시 disabled 추가 -->
-                        <a href="#" class="slide-box memories disabled" data-category="P9999" data-sub-category="1074" data-category-name="기타" data-sub-category-name="외장하드/메모리" data-model-code="MC51PKSFS1I" data-product-code="CRA">
+                        <a href="#" class="slide-box memories disabled" data-category="P9999" data-sub-category="1074" data-category-name="기타" data-sub-category-name="외장하드/메모리" data-model-code="MC51PKSFS1I" data-product-code="CRA" data-sales-dt="123" data-member-model="123">
                             <p class="category"><span>외장하드/메모리</span></p>
                             <p class="name">MC51PKSFS1I</p>
                         </a>
@@ -54,7 +59,12 @@
 }
 
 @@if (context.noItem) {
+@@if (context.show) {
 <div class="my-product-wrap no-item">
+}
+@@if (!context.show) {
+<div class="my-product-wrap no-item" style="display: none">    
+}
     <div class="box">
         <p class="txt">등록하신 제품이 없습니다. 제품을 등록해보시겠어요 ?</p>
         <button type="button" class="btn mix size-m"><span>제품 등록</span></button>

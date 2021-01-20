@@ -74,7 +74,7 @@
                     
                     .tit {
                         height:60px;
-                        color:#222;
+                        color:#000;
                         @include font-large-1;
                         font-weight:700;
                         @include textClipClamp(2);
@@ -88,7 +88,7 @@
                     
                     .tit2 {
                         height:48px;
-                        color:#222;
+                        color:#000;
                         font-size:16px;
                         line-height:24px;
                         font-weight:700;
@@ -105,7 +105,7 @@
                     .date {
                         margin-top:24px;
                         height:24px;
-                        color:#222;
+                        color:#000;
                         font-size:16px;
                         line-height:24px;
                         @include textClipClamp(1);
@@ -411,7 +411,7 @@
                         line-height: 28px;
                         margin-bottom: 5px;
                         @include textClipClamp(2);
-                        color: #222;
+                        color: #000;
                         @include mobile {
                             height: auto;
                             //height: 36px;
@@ -476,7 +476,7 @@
                     }
                     .pd-num {
                         height:20px;
-                        color:#222;
+                        color:#000;
                         font-size:14px;
                         line-height:20px;
                         @include textClipClamp(1);

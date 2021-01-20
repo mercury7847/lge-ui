@@ -89,18 +89,18 @@
                 padding:0 12px;
                 a {
                     display:block;
-                }
-                .icon {
-                    width:80px;
-                    height:80px;
-                    margin:0 auto 8px;
-                    img {
-                        width:100%;
+                    &:before {
+                        content:'';
+                        display:block;
+                        width:80px;
+                        height:80px;
+                        margin:0 auto 16px;
                     }
                 }
                 .tit {
-                    @include font-large-1;
-                    font-weight:$font-weight-bold;
+                    display:block;
+                    @include font-medium;
+                    font-weight:$font-weight-medium;
                     text-align:center;
                 }
             }

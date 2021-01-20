@@ -45,7 +45,7 @@
                 }
             }
             &.on > a {
-                color:#222;
+                color:#000;
             }
         }
     }
@@ -109,7 +109,7 @@
                 }
                 &.active > a,
                 &.on > a {
-                    color:#222;
+                    color:#000;
                     border-bottom:4px solid #222; /*2021-01-04 edit*/
                     //background-color:#e4e4e4;
                 }
@@ -221,7 +221,7 @@
                 &.on {
                     a {
                         font-weight:700;
-                        color:#222;
+                        color:#000;
                     }
                 }
             }
@@ -273,7 +273,7 @@
                         border:1px solid #222;
                         border-bottom:1px solid #fff;
                         background-color:#fff;
-                        color:#222;
+                        color:#000;
                         overflow:hidden;
                     }
                 }
@@ -408,7 +408,7 @@
                 }
                 &.on > a {
                     border-color: #222;
-                    color: #222;
+                    color: #000;
                 }
 
                 @include mobile {
@@ -430,6 +430,6 @@
     margin-bottom:24px;
     p{
         @include font-medium;
-        color:#222;
+        color:#000;
     }
 }

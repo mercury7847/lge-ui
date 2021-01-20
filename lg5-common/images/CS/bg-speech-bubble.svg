@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="357" height="147">
+    <defs>
+        <linearGradient id="ra1x9jv64b" x1="0%" x2="70.711%" y1="0%" y2="70.711%">
+            <stop offset="0%" stop-color="#FE3F6D"/>
+            <stop offset="99%" stop-color="#F2C37C"/>
+        </linearGradient>
+        <filter id="vvistexfwa" width="357" height="147" x="0" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="4" in="SourceAlpha"/>
+            <feGaussianBlur result="blurOut" stdDeviation="4"/>
+            <feFlood flood-color="#000" result="floodOut"/>
+            <feComposite in="floodOut" in2="blurOut" operator="atop"/>
+            <feComponentTransfer>
+                <feFuncA slope=".14" type="linear"/>
+            </feComponentTransfer>
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <g filter="url(#vvistexfwa)">
+        <path fill-rule="evenodd" d="M287 116H186.999L178 126.999c-2.052 2.052-4 0-4 0L166 116H65c-28.719 0-52-23.281-52-52s23.281-52 52-52h222c28.719 0 52 23.281 52 52s-23.281 52-52 52z"/>
+    </g>
+    <path fill="url(#ra1x9jv64b)" d="M287 116H186.999L178 126.999c-2.052 2.052-4 0-4 0L166 116H65c-28.719 0-52-23.281-52-52s23.281-52 52-52h222c28.719 0 52 23.281 52 52s-23.281 52-52 52z"/>
+</svg>
