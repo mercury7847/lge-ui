@@ -581,12 +581,6 @@
                         }
                         .name {
                             @include font-large-1;
-<<<<<<< HEAD
-                            font-weight:$font-weight-bold;
-                            em {
-                                color:#ec455a;
-                            }
-=======
                             font-weight: bold;
                             margin-bottom: 12px;
                         }
@@ -594,7 +588,6 @@
                             font-size: 14px;
                             font-weight: bold;
                             line-height: 1.62;
->>>>>>> 09e93a1d34e61a38a6abc4c9a961511a062e8a83
                         }
                         .desc{
                             @include font-medium;
