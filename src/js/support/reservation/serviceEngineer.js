@@ -466,6 +466,8 @@
                 self.$addFanBox.hide();
                 self.$myModelArea.show();
 
+                $('[name=buyingdate]').closest('.conts').find('.form-text').remove();
+
                 self.$cont.commonModel('next', self.$stepModel);
             });
 
@@ -522,17 +524,15 @@
                     self.setTopicList(resultData);
 
                     if (resultData.warrantyText && resultData.warrantValue) {
-                        $('#buyingdateBox').find('.form-text').html(resultData.warrantyText);
-                        $('#buyingdateBox').find('.rdo-list-wrap').find('[value='+resultData.warrantValue+']').prop('checked', true);
+                        $('[name=buyingdate]').closest('.conts').append('<p class="form-text">'+resultData.warrantyText+'</p>');
+                        $('[name=buyingdate]').filter('[value='+resultData.warrantValue+']').prop('checked', true);
                         
-                        $('#buyingdateBox').find('.rdo-list-wrap').hide();
-                        $('#buyingdateBox').find('.form-text').show();
+                        $('[name=buyingdate]').closest('.rdo-list-wrap').hide();
                     } else {
-                        $('#buyingdateBox').find('.form-text').html('');
-                        $('#buyingdateBox').find('.rdo-list-wrap').prop('checked', false);
+                        $('[name=buyingdate]').closest('.conts').find('.form-text').remove();
+                        $('[name=buyingdate]').prop('checked', false);
 
-                        $('#buyingdateBox').find('.rdo-list-wrap').show();
-                        $('#buyingdateBox').find('.form-text').hide();
+                        $('[name=buyingdate]').closest('.rdo-list-wrap').show();
                     }
 
                     
