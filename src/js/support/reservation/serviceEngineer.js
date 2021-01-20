@@ -464,6 +464,9 @@
                 self.$tvPositionBox.hide();
                 self.$installTypeBox.hide();
                 self.$addFanBox.hide();
+                self.$myModelArea.show();
+
+                $('[name=buyingdate]').closest('.conts').find('.form-text').remove();
 
                 self.$cont.commonModel('next', self.$stepModel);
             });
@@ -518,7 +521,20 @@
                         self.$tvPositionBox.hide();
                     }
 
-                    self.setTopicList(resultData)
+                    self.setTopicList(resultData);
+
+                    if (resultData.warrantyText && resultData.warrantValue) {
+                        $('[name=buyingdate]').closest('.conts').append('<p class="form-text">'+resultData.warrantyText+'</p>');
+                        $('[name=buyingdate]').filter('[value='+resultData.warrantValue+']').prop('checked', true);
+                        
+                        $('[name=buyingdate]').closest('.rdo-list-wrap').hide();
+                    } else {
+                        $('[name=buyingdate]').closest('.conts').find('.form-text').remove();
+                        $('[name=buyingdate]').prop('checked', false);
+
+                        $('[name=buyingdate]').closest('.rdo-list-wrap').show();
+                    }
+
                     
                     self.$myModelArea.hide();
 
