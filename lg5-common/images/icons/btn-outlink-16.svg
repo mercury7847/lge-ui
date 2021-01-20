@@ -5,11 +5,9 @@
                 <g>
                     <g>
                         <g>
-                            <g>
-                                <path d="M0 0H16V16H0z" transform="translate(-1717 -23) translate(1508 14) translate(157 5) translate(52 4)"/>
-                                <g stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4">
-                                    <path d="M1.371.229L7.371.229 7.371 6.229M6.243 1.2L.586 6.857" transform="translate(-1717 -23) translate(1508 14) translate(157 5) translate(52 4) translate(4 5)"/>
-                                </g>
+                            <path d="M0 0H16V16H0z" transform="translate(-1784 -23) translate(1515 12) translate(208 7) translate(61 4)"/>
+                            <g stroke="#000" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 0L10 0 10 8M10 0L0 10" transform="translate(-1784 -23) translate(1515 12) translate(208 7) translate(61 4) translate(3.5 2.5)"/>
                             </g>
                         </g>
                     </g>
