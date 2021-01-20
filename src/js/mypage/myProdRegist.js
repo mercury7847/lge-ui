@@ -269,7 +269,9 @@
                 //메뉴얼 다운로드
                 self.$manualPopup.on('click','li button' ,function(e){
                     var url = $(this).attr('data-file-url');
-                    window.location = url;
+                    if(!(!url)) {
+                        window.location = url;
+                    }
                 });
 
                 //다운로드팝업 셀렉트OS

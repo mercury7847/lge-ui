@@ -2,8 +2,10 @@
     "status":"success",
     "message":null,
     "param":{
-        "search":"매직스페이스",
+        "inputValue": "aowlrtmvpdl스",
+        "search": "매직스페이스22",
         "searchIn":"결과내 검색어22",
+        "force": false,
         "pagination":{
             "page":"12",
             "visibleCount":"7",
@@ -11,56 +13,137 @@
         }
     },
     "data":{
-        "count":"23",
-        "data":[
-            {
-                "url":"#",
-                "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                "imageAlt":"LG DIOS 노크온 매직스페이스",
-                "title":"LG DIOS 노크온 매직스페이스",
-                "sku":"S833MC85Q1",
-                "price":"4421000",
-                "originalPrice":"4422000",
-                "carePrice":"42000",
-                "flag":[
-                    "미리 페스타",
-                    "으뜸 효율 15%",
-                    "신제품",
-                    "베스트"
-                ],
-                "hash":[
-                    "가전",
-                    "겨울가전"
-                ],
-                "hasCare":true,
-                "hasReview":true,
-                "rating":"40",
-                "review":"34"
-            },
-            {
-                "url":"#",
-                "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                "imageAlt":"LG DIOS 노크온 매직스페이스",
-                "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
-                "sku":"S833MC85Q1",
-                "price":"4422000",
-                "originalPrice":"4421000",
-                "carePrice":"41000",
-                "flag":[
-                    "미리 페스타",
-                    "베스트",
-                    "신제품"
-                ],
-                "hash":[
-                    "가전",
-                    "가을가전"
-                ],
-                "hasCare":false,
-                "hasReview":false,
-                "rating":"39",
-                "review":"33"
-            }
+        "count": "243",
+        "related":[
+            "OLED TV",
+            "4K OLED TV",
+            "LG DIOS",
+            "매직스페이스",
+            "AV 홈라이프",
+            "OLED TV",
+            "4K OLED TV",
+            "LG DIOS",
+            "매직스페이스",
+            "AV 홈라이프",
+            "OLED TV",
+            "4K OLED TV",
+            "LG DIOS",
+            "매직스페이스",
+            "AV 홈라이프"
         ],
+        "product":{
+            "count":"124",
+            "data":[
+                {
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt":"LG DIOS JSW 노크온 매직스페이스",
+                    "title":"LG DIOS JSW 노크온 매직스페이스",
+                    "sku":"S833MC85Q1",
+                    "price":"4421000",
+                    "originalPrice":"4422000",
+                    "carePrice":"42000",
+                    "flag":[
+                        "미리 페스타",
+                        "으뜸 효율 15%",
+                        "신제품",
+                        "베스트"
+                    ],
+                    "hash":[
+                        "가전",
+                        "겨울가전"
+                    ],
+                    "hasCare":true,
+                    "hasReview":true,
+                    "rating":"40",
+                    "review":"34"
+                },
+                {
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
+                    "sku":"S833MC85Q1",
+                    "price":"4422000",
+                    "originalPrice":"4421000",
+                    "carePrice":"41000",
+                    "flag":[
+                        "미리 페스타",
+                        "베스트",
+                        "신제품"
+                    ],
+                    "hash":[
+                        "가전",
+                        "가을가전"
+                    ],
+                    "hasCare":false,
+                    "hasReview":false,
+                    "rating":"39",
+                    "review":"33"
+                },
+                {
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
+                    "sku":"S833MC85Q1",
+                    "price":"4422000",
+                    "originalPrice":"4433000",
+                    "carePrice":null,
+                    "flag":[
+                        "미리 페스타",
+                        "베스트",
+                        "신제품"
+                    ],
+                    "hash":[
+                        "가전",
+                        "가을가전"
+                    ],
+                    "hasCare":false,
+                    "hasReview":false,
+                    "rating":"39",
+                    "review":"33"
+                },
+                {
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
+                    "sku":"S833MC85Q1",
+                    "price":null,
+                    "originalPrice":null,
+                    "carePrice":"78000",
+                    "flag":[
+                        "미리 페스타",
+                        "베스트",
+                        "신제품"
+                    ],
+                    "hash":[
+                        "가전",
+                        "가을가전"
+                    ],
+                    "hasCare":false,
+                    "hasReview":false,
+                    "rating":"39",
+                    "review":"33"
+                }
+            ]
+        },
+        "event":{
+            "count":"7"
+        },
+        "story":{
+            "count":"17"
+        },
+        "additional":{
+            "count":"32"
+        },
+        "shop":{
+            "count":"3"           
+        },
+        "customer":{
+            "count":"4"           
+        },
         "filterList": [
             {
                 "filterType":"slider",
