@@ -1,7 +1,147 @@
 ;(function(global){
     if(!global['lgkorUI']) global['lgkorUI'] = {};
     
-    lgkorUI['isLogin'] = $('#topLoginFlag').val() == 'Y' ? true : false;
+    var csUI = {
+        isLogin: $('#topLoginFlag').val() == 'Y' ? true : false,
+        initProductSlider: function() {
+            // 관련 소모품이 필요하신가요?
+            $('.product-slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                slidesToScroll: 4,
+                slidesToShow: 4,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            slidesToScroll: 1,
+                            slidesToShow: 1,
+                            variableWidth: true
+                        }
+                    },
+                    {
+                        breakpoint: 20000,
+                        settings: {
+                            slidesToScroll: 4,
+                            slidesToShow: 4
+                        }
+                    }
+                ]
+            });
+        },
+        addPlugin: function(pluginName, Plugin) {
+            $.fn[pluginName] = function(options) {
+                var arg = arguments; 
+        
+                return this.each(function() {
+                    var _this = this,
+                        $this = $(_this),
+                        plugin = $this.data('plugin_' + pluginName);
+        
+                    if (!plugin) {
+                        $this.data('plugin_' + pluginName, new Plugin(this, options));
+                    } else {
+                        if (typeof options === 'string' && typeof plugin[options] === 'function') {
+                            plugin[options].apply(plugin, [].slice.call(arg, 1));
+                        }
+                    }
+                });
+            }
+        },
+        cookie: {
+            setCookie: function(cookieName, value, expire) {
+                var cookieText;
+                var cookieExpire = new Date();
+
+                cookieExpire.setDate(cookieExpire.getDate() + expire);
+                cookieText = cookieName + '=' + escape(value) + ((expire == null) ? '' : '; expires=' + cookieExpire.toUTCString());
+
+                document.cookie = cookieText;
+            },
+            getCookie: function(cookieName) {
+                var cookieValue = null;
+
+                if (document.cookie) {
+                    var cookieKey = escape(cookieName) + "="; 
+                    var cookieArr = document.cookie.split(";");
+
+                    for (var i = 0; i < cookieArr.length; i++) {
+                        if(cookieArr[i][0] === " ") {
+                            cookieArr[i] = unescape(cookieArr[i].substring(1));
+                        }
+                        if(cookieArr[i].indexOf(cookieKey) === 0) {
+                            cookieValue = unescape(cookieArr[i].slice(cookieKey.length, cookieArr[i].length));
+                        }
+                    }
+                }
+
+                return cookieValue;
+            },
+            deleteCookie: function(cookieName, value) {
+                var cookie = csUI.cookie;
+                var cookies = cookie.getCookie(cookieName);
+
+                if (cookies) {
+                    var cookieArr = cookies.split(',');
+
+                    if (cookieArr.indexOf(value) != -1) {
+                        var index = -1;
+                        for (var i = 0; i < cookieArr.length; i++) {
+                            if (value == cookieArr[i]) {
+                                index = i;
+                                break;
+                            }
+                        }
+                        if (index != -1) {
+                            cookieArr.splice(index, 1);
+                            cookies = cookieArr.join(',');
+                            cookie.setCookie(self.cookieName, cookies, self.expire);
+                        }
+                    }
+                }
+            },
+            deleteAllCookie: function(cookieName) {
+                this.setCookie(cookieName, '', '-1');
+            }
+        },
+        recentlySearch: {
+            cookieName: 'LG_SupportSearch',
+            maxNum: 3,
+            expire: 30,
+            addCookie: function(value) {
+                var self = this;
+                var cookie = csUI.cookie;
+                var cookies = cookie.getCookie(self.cookieName);
+
+                if (cookies) {
+                    var cookieArr = cookies.split(',');
+
+                    if (cookieArr.indexOf(value) != -1) {
+                        cookie.deleteCookie(self.cookieName, value);
+                        cookieArr.splice(cookieArr.indexOf(value), 1);
+                        cookieArr.unshift(value);
+                    } else {
+                        cookieArr.unshift(value);
+                        if (cookieArr.length > self.maxNum) cookieArr.length = self.maxNum;
+                    }
+                    cookies = cookieArr.join(',');
+                    cookie.setCookie(self.cookieName, cookies, self.expire);
+                } else {
+                    cookie.setCookie(self.cookieName, value, self.expire);
+                }
+            }
+        }
+    }
+
+    lgkorUI = $.extend({}, lgkorUI, csUI);
 })(window);
 
 var CS = CS || {};
@@ -629,6 +769,8 @@ CS.MD.commonModel = function() {
                 self.$el.find('#productCode').val(data.productCode);
                 data.isRequest = true;
                 self.$el.trigger('complete', [self, data, url]);
+                
+                lgkorUI.recentlySearch.addCookie(data.modelCode);
             });
             
             // 모델명 선택 - 서브 카테고리 선택
