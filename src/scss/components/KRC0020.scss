@@ -77,7 +77,7 @@
                         opacity:1 !important;
                     }
                     .icon-text {
-                        color:#222;
+                        color:#000;
                     }
                 }
                 .icon-text {
@@ -244,15 +244,15 @@
                             &.slick-active {
                                 .icon-text {
                                     @if $bg == lightgray {
-                                        color:#222;
+                                        color:#000;
                                     } @else if $bg == dark {
                                         color:#fff;
                                     } @else if $bg == black {
                                         color:#fff;
                                     } @else if $bg == white {
-                                        color:#222;
+                                        color:#000;
                                     } @else if $bg == gray {
-                                        color:#222;
+                                        color:#000;
                                     }
                                 }
                             }
@@ -267,9 +267,9 @@
                         .fc-gray,
                         .fc-lightgray,
                         .fc-white {
-                            color:#222 !important;
+                            color:#000 !important;
                             * {
-                                color:#222 !important;
+                                color:#000 !important;
                             }
                         }
                     } @else if $bg == dark {
@@ -300,9 +300,9 @@
                         .fc-gray,
                         .fc-lightgray,
                         .fc-white {
-                            color:#222 !important;
+                            color:#000 !important;
                             * {
-                                color:#222 !important;
+                                color:#000 !important;
                             }
                         }
                     } @else if $bg == gray {
@@ -311,9 +311,9 @@
                         .fc-gray,
                         .fc-lightgray,
                         .fc-white {
-                            color:#222 !important;
+                            color:#000 !important;
                             * {
-                                color:#222 !important;
+                                color:#000 !important;
                             }
                         }
                     }

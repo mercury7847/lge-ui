@@ -113,7 +113,7 @@
                             }
                             .subtitles-tit {
                                 margin-bottom: 24px;
-                                color: #222;
+                                color: #000;
                                 font-size:24px;
                                 font-weight:$font-weight-bold;
                                 line-height:34px;
@@ -126,7 +126,7 @@
                             .subtitles-cont {
                                 overflow-y:auto;
                                 height: calc(100% - 58px);
-                                color:#222;
+                                color:#000;
                                 font-size:16px;
                                 line-height:26px;
                             }
@@ -164,7 +164,7 @@
             #viewContent {
                 padding:0 24px;
                 p, strong {
-                    color:#222;
+                    color:#000;
                     @include font-medium;
                 }
                 img {
@@ -200,7 +200,7 @@
                 color: #767676;
             }
             &-desc {
-                color:#222;
+                color:#000;
                 font-weight:normal;
                 flex: 1;
                 @include textEllipsisClamp(2);

@@ -38,7 +38,7 @@
                     margin:2px;
                     padding:114px 8px 30px;
                     text-align:center;
-                    color:#222;
+                    color:#000;
                     @include font-large-1;
                     font-weight:700;
                     @include mobile {
@@ -138,7 +138,7 @@
                     padding:0;
                 }
                 dt {
-                    color:#222;
+                    color:#000;
                     @include font-medium;
                     font-weight:700;
                     small {
@@ -150,7 +150,7 @@
                 }
                 dd {
                     margin-top:8px;
-                    color:#222;
+                    color:#000;
                     @include font-medium;
                     white-space:initial;
                     word-break:keep-all;
@@ -189,7 +189,7 @@
                 }
                 p {
                     margin-bottom:12px;
-                    color:#222;
+                    color:#000;
                     @include font-medium;
                     font-weight:500;
                     @include mobile {
@@ -219,7 +219,7 @@
             }
             p {
                 margin-bottom:12px;
-                color:#222;
+                color:#000;
                 @include font-medium;
                 font-weight:500;
                 @include mobile {
@@ -234,7 +234,7 @@
                 border:1px solid #ddd;
                 border-radius:26px;
                 background:#fff;
-                color:#222;
+                color:#000;
                 font-weight:700;
                 font-size:16px;
                 line-height:28px;

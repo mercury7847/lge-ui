@@ -233,7 +233,7 @@
                         padding:0 16px;
                     }
                     .title-box {
-                        color:#222;
+                        color:#000;
                         font-weight:700;
                         .eyebrow {
                             margin-bottom:8px;
@@ -264,7 +264,7 @@
                         padding:11px 13px;
                         @include font-medium;
                         font-weight:500;
-                        color:#222;
+                        color:#000;
                         text-align:center;
                         @include mobile {
                             min-width:auto;
@@ -675,7 +675,7 @@
                 }
                 .tit {
                     max-height:48px;
-                    color:#222;
+                    color:#000;
                     font-size:16px;
                     line-height:24px;
                     font-weight:700;
@@ -683,7 +683,7 @@
                 }
                 .desc {
                     margin-top:4px;
-                    color:#222;
+                    color:#000;
                     font-size:14px;
                     line-height:20px;
                     overflow:hidden;
