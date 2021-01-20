@@ -94,17 +94,17 @@
                     subCategory: data.subCategory
                 };
 
-                module._updateSummary({
+                self.$cont('updateSummary', {
                     product: [data.categoryName, data.subCategoryName, data.modelCode],
                     reset: 'product'
                 });
                 
-                module.$myModelArea.hide();
+                self.$myModelArea.hide();
                 self.$completeBtns.show();
 
-                module._next(module.$stepInput);
-                module._focus(module.$selectedModelBar, function() {
-                    module.$selectedModelBar.vcSticky();
+                self.$cont('next', self.$stepInput);
+                self.$cont('focus', self.$selectedModelBar, function() {
+                    self.$selectedModelBar.vcSticky();
                 });
             });
 
