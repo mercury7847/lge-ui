@@ -446,7 +446,7 @@ CS.MD.commonModel = function() {
             self.$el.find('[type=hidden]').not('[name=serviceType], [name=lockUserId]').val('');
             
             if (lgkorUI.isLogin) {
-                self.$el.find('input[type=text], textarea').not('#userNm, #phoneNo, ').val('');
+                self.$el.find('input[type=text], textarea').not('#userNm, #phoneNo').val('');
             } else {
                 self.$el.find('input[type=text], textarea').val('');
             }
