@@ -393,7 +393,7 @@
         _loadLocalAreaList: function(val){
             var self = this;
 
-            lgkorUI.requestAjaxData(self.localUrl, {city:encodeURI(val)}, function(result){
+            lgkorUI.requestAjaxData(self.localUrl, {pcode:encodeURI(val),codeType:'CITY'}, function(result){
                 self._setSelectOption(self.$boroughSelect, result.data);
                 self.$boroughSelect.vcSelectbox('update');
             });
