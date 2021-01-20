@@ -34,9 +34,14 @@
             var self = this;
             
             self.$cont = $('.contents');
+            self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
+            self.$myModelArea = self.$cont.find('.my-product-wrap');
             self.$submitForm = self.$cont.find('#submitForm');
-            self.$stepArea = self.$cont.find('.step-area');
             self.$completeBtns = self.$cont.find('.btn-group');
+
+            self.$stepArea = self.$cont.find('.step-area');
+            self.$stepModel = self.$cont.find('#stepModel');
+            self.$stepInput = self.$cont.find('#stepInput');
 
             self.$topicBox = self.$cont.find('#topicBox');
             self.$topicListWrap = self.$cont.find('#topicList');
@@ -59,11 +64,9 @@
 
             var register = {
                 topic: {
-                    required: true,
                     msgTarget: '.topic-msg'
                 },
                 subTopic: {
-                    required: true,
                     msgTarget: '.sub-topic-msg'
                 },
                 userNm: {
@@ -113,29 +116,50 @@
                     register: register
                 });
 
-                $('.date-wrap').calendar({
+                self.$dateWrap.calendar({
                     inputTarget: '#date'
                 });
 
-                $('.time-wrap').timeCalendar({
+                self.$timeWrap.timeCalendar({
                     inputTarget: '#time'
                 });
 
                 self.bindEvent();
             });
         },
-        setTopicList: function(data) {
+        selectModel: function(data, url) {
             var self = this;
 
-            var html;
+            if (data.isRequest) {
+                self.loadTopicList(data, url);
+            } else {
+                self.nextStepInput(data);
+            }
+        },
+        loadTopicList: function(data, url) {
+            var self = this;
+            var param = {
+                category: data.category,
+                subCategory: data.subCategory,
+                modelCode: data.modelCode,
+                serviceType: $('#serviceType').val()
+            };
 
-            html = vcui.template(topicTmpl, data);
-            self.$topicList.html(html);
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                var resultData = result.data,
+                    fastDate = dateUtil.format(resultData.fastDate + '' + resultData.fastTime + '00', 'yyyy.MM.dd hh:mm');
+
+                self.$cont.find('.calendar-info .date').html(fastDate);
+                self.$dateWrap.calendar('update', resultData.dateList);
+                self.$topicList.html(vcui.template(topicTmpl, data));
+                
+                self.nextStepInput(data);
+
+                lgkorUI.hideLoading();
+            });
         },
-        setReserveDate: function(data) {
-            var html;
-        },
-        requestSubTopic: function(url, param) {
+        loadSubTopic: function(url, param) {
             var self = this;
 
             lgkorUI.requestAjaxData(url, param, function(result) {
@@ -188,51 +212,6 @@
                 });
             }, null, "html", true);
         },
-        requestDate: function() {
-            var self = this;
-            var url = self.$stepInput.data('ajax'),
-                param = validation.getAllValues(),
-                result;
-
-            param = $.extend(param, {
-                topic: $('input[name=topic]:checked').val(),
-                subTopic: $('input[name=subTopic]:checked').val(),
-                serviceType: $('#serviceType').val(),
-                productCode: $('#productCode').val(),
-                category: $('#category').val(),
-                subCategory: $('#subCategory').val()
-            });
-
-            result = validation.validate(['topic', 'subTopic', 'userNm', 'phoneNo']);
-
-            if (result.success) {
-                lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                    var data = result.data,
-                        dateArr = data.dateList instanceof Array ? data.dateList : [],
-                        fastDate;
-
-                    if (data.resultFlag == 'Y') {
-                        if (dateArr.length) {
-                            fastDate = dateUtil.format(data.fastDate + '' + data.fastTime + '00', 'yyyy.MM.dd hh:mm');
-                        
-                            self.$stepDate.find('.calendar-info .date').html(fastDate);    
-                            $('.date-wrap').calendar('update', data.dateList);
-                            self.dateParam = result.param;
-
-                            self.$stepDate.addClass('active');
-                        }
-                    } else {
-                        if (data.resultMessage) {
-                            if (data.tAlert == 'Y') {
-                            }
-                            lgkorUI.alert("", {
-                                title: data.resultMessage
-                            });
-                        }
-                    }
-                });
-            }
-        },
         requestTime: function() {
             var self = this,
                 url = $('.calendar-area').data('timeUrl'),
@@ -273,6 +252,22 @@
                 });
             }
         },
+        nextStepInput: function(data) {
+            var self = this;
+            var summaryOpt = {
+                product: [data.categoryName, data.subCategoryName, data.modelCode],
+                reset: 'product'
+            };
+
+            self.$myModelArea.hide();
+            self.$completeBtns.show();
+
+            self.$cont.commonModel('updateSummary', summaryOpt);
+            self.$cont.commonModel('next', self.$stepInput);
+            self.$cont.commonModel('focus', self.$selectedModelBar, function() {
+                self.$selectedModelBar.vcSticky();
+            });
+        },
         requestComplete: function() {
             var self = this;
 
@@ -294,46 +289,31 @@
                 }
             }, 'POST');
         },
-        bindEvent: function() {
+        reset: function() {
             var self = this;
 
-            self.$cont.on('reset', function(e, module) {
-                self.$solutionsBanner.hide();
-                module._next(module.$stepModel);
-            });
+            self.$topicList.empty();
+            self.$solutionsBanner.hide();
+            self.$myModelArea.show();
+
+            self.$stepInput.find('[name=buyingdate]').prop('checked', false);
+            self.$stepInput.find('#content').val('');
+            self.$stepInput.find('#userNm').val('');
+            self.$stepInput.find('#phoneNo').val('');
+
+            self.$dateWrap.calendar('reset');
+            self.$timeWrap.timeCalendar('reset');
+
+            self.$cont.commonModel('next', self.$stepModel);
+        },
+        bindEvent: function() {
+            var self = this;
             
-            // 모델 선택 후 이벤트
-            self.$cont.on('complete', function(e, module, data, url) {
-                var param = {
-                    modelCode: data.modelCode,
-                    serviceType: $('#serviceType').val(),
-                    category: data.category,
-                    subCategory: data.subCategory
-                };
-
-                lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                    var resultData = result.data;
-                    var fastDate;
-
-                    module._updateSummary({
-                        product: [data.categoryName, data.subCategoryName, data.modelCode],
-                        reset: 'product'
-                    });
-                    
-                    self.$dateWrap.calendar('update', resultData.dateList);
-
-                    fastDate = dateUtil.format(resultData.fastDate + '' + resultData.fastTime + '00', 'yyyy.MM.dd hh:mm');
-                    $('.calendar-info .date').html(fastDate);
-
-                    self.setTopicList(resultData)
-                    self.$completeBtns.show();
-                    module.$myModelArea.hide();
-
-                    module._next(module.$stepInput);
-                    module._focus(module.$selectedModelBar, function() {
-                        module.$selectedModelBar.vcSticky();
-                    });
-                });
+            // 모델 선택 & 문의 재선택
+            self.$cont.on('complete', function(e, data, url) {
+                self.selectModel(data, url);
+            }).on('reset', function(e) {
+                self.reset();
             });
 
             // 증상 선택
@@ -360,8 +340,6 @@
                     };
                     
                 self.reqeustSolutions(url, param);
-
-                if (self.autoFlag) self.requestDate();
             });
 
             /// 솔루션 배너

@@ -26,6 +26,17 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
 
             self._bindEvents();
         },
+        removeAll:function() {
+            var self = this;
+
+            self.$el.find('input[type="file"]').val('');
+            self.$el.find('.file-item').removeClass('on');
+            self.$el.find('.file-preview').html('');
+            self.$el.find('.name').val('');
+
+            totalSize = 0;
+            selectFiles = [];
+        },
         getSelectFiles: function getSelectFiles() {
             return selectFiles;
         },
