@@ -94,7 +94,7 @@
                     subCategory: data.subCategory
                 };
 
-                self.$cont('updateSummary', {
+                self.$cont.commonModel('updateSummary', {
                     product: [data.categoryName, data.subCategoryName, data.modelCode],
                     reset: 'product'
                 });
@@ -102,8 +102,8 @@
                 self.$myModelArea.hide();
                 self.$completeBtns.show();
 
-                self.$cont('next', self.$stepInput);
-                self.$cont('focus', self.$selectedModelBar, function() {
+                self.$cont.commonModel('next', self.$stepInput);
+                self.$cont.commonModel('focus', self.$selectedModelBar, function() {
                     self.$selectedModelBar.vcSticky();
                 });
             });
