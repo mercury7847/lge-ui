@@ -176,7 +176,7 @@
 				background-color: #f4f4f4;
 				.title {
 					&, * {
-						color: #222;
+						color: #000;
 					}
 				}
 			} @else if $bg == dark {
@@ -203,7 +203,7 @@
 				background-color: #fff;
 				.title {
 					&, * {
-						color: #222;
+						color: #000;
 					}
 				}
 			}

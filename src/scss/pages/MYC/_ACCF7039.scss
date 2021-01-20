@@ -54,7 +54,7 @@
                         }
                         .achiev-conditon {
                             p {
-                                color:#222;
+                                color:#000;
                                 font-size:14px;
                                 font-weight:700;
                                 line-height:24px;
@@ -84,7 +84,7 @@
                                 }
                                 dt {
                                     width:25%;
-                                    color:#222;
+                                    color:#000;
                                     @include mobile {
                                         width:40%;
                                     }
@@ -254,7 +254,7 @@
                         margin:0;
                         strong {
                             // min-height:52px;
-                            color: #222;
+                            color: #000;
                             font-size:16px;
                             line-height:26px;
                             font-weight: 700;
@@ -265,7 +265,7 @@
                             -webkit-box-orient: vertical;
                         }
                         .model-num {
-                            color:#222;
+                            color:#000;
                             font-size:14px;
                             line-height:24px;
                         }
@@ -338,7 +338,7 @@
                         .product-name {
                             min-height:76px;
                             strong {
-                                color: #222;
+                                color: #000;
                                 font-size: 16px;
                                 line-height: 26px;
                                 font-weight: 700;
@@ -350,7 +350,7 @@
                             }
                             .model-num {
                                 display:block;
-                                color:#222;
+                                color:#000;
                                 font-size:14px;
                                 line-height:24px;
                                 @include mobile {

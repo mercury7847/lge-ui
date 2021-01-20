@@ -21,13 +21,13 @@ br.m {
         line-height:1;
         text-align:left;
         .tit {
-            color:#222;
+            color:#000;
             @include font-large-6;
             font-weight:700;
         }
         .tit-desc {
             margin-top:20px;
-            color:#222;
+            color:#000;
             @include font-medium;
         }
         .btn.border {
@@ -104,7 +104,7 @@ br.m {
     }
     .prd-list-count {
         margin:80px 0 10px;
-        color:#222;
+        color:#000;
         @include font-large;
         font-weight:700;
         em {
@@ -219,14 +219,14 @@ br.m {
             width:40%;
             transform:translateY(-50%);
             > dt {
-                color:#222;
+                color:#000;
                 @include font-large-2;
                 font-weight:700;
             }
             > dd {
                 width:100%;
                 margin-top:12px;
-                color:#222;
+                color:#000;
                 @include font-medium;
                 word-break:keep-all;
                 .bullet-list {

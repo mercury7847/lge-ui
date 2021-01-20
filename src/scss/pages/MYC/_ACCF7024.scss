@@ -28,7 +28,7 @@
                     vertical-align:top;
                     em {
                         margin-left:4px;
-                        color:#222;
+                        color:#000;
                     }
                     &::after {
                         content:' ';
@@ -47,7 +47,7 @@
             .totals {
                 display:inline-block;
                 margin-left:8px;
-                color:#222;
+                color:#000;
                 @include font-medium;
             }
             .btn-link {
@@ -85,7 +85,7 @@
                 font-size:0;
                 p {
                     display:inline-block;
-                    color:#222;
+                    color:#000;
                     @include font-small;
                     font-weight:700;
                     vertical-align:top;
@@ -176,7 +176,7 @@
                     display:table-cell;
                     padding:16px 0;
                     border-left:1px solid #ddd;
-                    color:#222;
+                    color:#000;
                     @include font-medium;
                     font-weight:500;
                     text-align:center;
@@ -488,7 +488,7 @@
                     margin-bottom:4px;
                 }
                 .name {
-                    color:#222;
+                    color:#000;
                     @include font-medium;
                     font-weight:700;
                     @include mobile {
@@ -910,7 +910,7 @@
             }
             dl {
                 dt {
-                    color:#222;
+                    color:#000;
                     @include font-medium;
                     font-weight:500;
                 }

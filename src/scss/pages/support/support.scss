@@ -360,7 +360,7 @@
             font-size: 14px;
             font-weight: 500;
             line-height: 1.71;
-            color: #222;
+            color: #000;
         }
         .text  {
             font-size: 14px;
@@ -408,7 +408,7 @@
     }
 
     .consulting-info {
-        color: #222;
+        color: #000;
         .info-tit {
             font-size: 28px;
             font-weight: bold;
@@ -535,6 +535,68 @@
             }
         }
     }
+
+    .expected-cost {
+        @include mobile {
+            &-box {
+                padding:24px 16px;
+                border-radius:8px;
+                box-shadow:0.1px 4px 16px 0 rgba(0, 0, 0, 0.14);
+                .product {
+                    padding-right:20px;
+                    font-size:0;
+                    display: flex;
+                    align-items: center;
+                    &-img {
+                        display:inline-block;
+                        width:110px;
+                        height:110px;
+                        text-align:center;
+                        vertical-align:middle;
+                        margin-right: 24px;
+                        img {
+                            max-width:100%;
+                        }
+                    }
+                    &-info {
+                        display:inline-block;
+                        flex: 1;
+                        vertical-align:middle;
+                        .img {
+                            margin-bottom:16px;
+                            img {
+                                max-width:100%;    
+                            }
+                        }
+                        .category {
+                            margin-bottom:4px;
+                            font-size:12px;
+                            line-height:20px;
+                        }
+                        .name {
+                            @include font-large-1;
+                            em {
+                                color:#ec455a;
+                                font-weight:$font-weight-bold;
+                            }
+                        }
+                    }
+                }
+                .appgate-img {
+                    img {
+                        width:100%;
+                    }
+                }
+                .btn-wrap {
+                    margin-top:20px;
+                    padding:0 20px;
+                    .btn {
+                        width:100%;
+                    }
+                }
+            }
+        }
+    }
 } //support
 
 
@@ -581,7 +643,7 @@
 
 // color
 .color-1 {
-    color: #222 !important;
+    color: #000 !important;
 }
 .color-2 {
     color: #f04e3e !important;
@@ -616,7 +678,7 @@
                 font-weight:$font-weight-medium;
             }
             &:hover a {
-                color:#222;
+                color:#000;
             }
         }
     }
@@ -721,7 +783,7 @@
                 display:block;
                 width:100%;
                 text-align:center;
-                color:#222;
+                color:#000;
                 font-size:14px;
                 line-height:24px;
                 background:transparent;

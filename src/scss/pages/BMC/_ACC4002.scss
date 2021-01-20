@@ -39,14 +39,14 @@
                     }
                 }
                 dt {
-                    color:#222;
+                    color:#000;
                     @include font-large;
                     font-weight:700;
                 }
                 dd {
                     margin-top:8px;
                     padding:0 40px;
-                    color:#222;
+                    color:#000;
                     @include font-medium;
                     word-break:keep-all;
                 }
