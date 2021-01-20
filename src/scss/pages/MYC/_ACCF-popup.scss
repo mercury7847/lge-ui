@@ -78,7 +78,7 @@
                 }
                 .info-cell {
                     .file-name {
-                        color:#222;
+                        color:#000;
                         @include font-medium;
                         font-weight:700;
                     }
@@ -218,7 +218,7 @@
             .inner {
                 padding:24px 32px;
                 .guide-tit {
-                    color:#222;
+                    color:#000;
                     @include font-medium;
                     font-weight:700;
                 }
@@ -370,7 +370,7 @@
 // 거래영수증
 .h2-tbl-tit {
     margin-bottom:12px;
-    color:#222;
+    color:#000;
     @include font-small;
 }
 .lg-comp-infos {
@@ -463,7 +463,7 @@
                     padding-top:12px;
                 }
                 dt {
-                    color:#222;
+                    color:#000;
                     font-weight:500;
                 }
                 dd {
@@ -495,12 +495,12 @@
     .title {
         padding-bottom:8px;
         border-bottom:1px solid #ddd;
-        color:#222;
+        color:#000;
         @include font-small;
     }
     .desc {
         margin-top:20px;
-        color:#222;
+        color:#000;
         @include font-medium;
         em {
             margin-right:4px;

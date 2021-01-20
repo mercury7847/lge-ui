@@ -12,7 +12,7 @@
         .title {
             padding:40px 0;
             background:#fff;
-            color:#222;
+            color:#000;
             @include font-large-3;
             font-weight:700;
             text-align:center;
@@ -104,7 +104,7 @@
                     }
                     h2 * {
                         display:inline-block;
-                        color:#222;
+                        color:#000;
                         font-size:22px;
                         line-height:32px;
                         font-weight:700;
@@ -123,7 +123,7 @@
                     }
                     h3 * {
                         display:inline-block;
-                        color:#222;
+                        color:#000;
                         @include font-medium;
                         font-weight:700;
                         vertical-align:top;
@@ -134,7 +134,7 @@
                     margin-top:8px;
                     * {
                         display:inline-block;
-                        color:#222;
+                        color:#000;
                         @include font-medium;
                         vertical-align:top;
                     }
@@ -165,7 +165,7 @@
                         margin-top:4px;
                         * {
                             padding-left:10px;
-                            color:#222;
+                            color:#000;
                             font-weight:400;
                             &::before {
                                 top:10px;
