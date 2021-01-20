@@ -397,20 +397,33 @@
 
     .story-review {
         .flexbox-wrap {
-            height: auto !important;
+            margin: 0 -12px;
+            @include mobile {
+                margin: 0;
+            }
             .flexbox {
-                position: static !important;
+                //position: static !important;
+                padding: 0 12px;
+            }
+        }
+        @media (min-width:$tablet-s-width + 1) and (max-width:1057px) {
+            .flexbox-wrap {
+                margin-bottom: -24px;
+                .flexbox {
+                    width: 50%;
+                    padding-bottom: 24px;
+                }
             }
         }
         @include mobile {
             margin: 0 -16px;
             padding-bottom: 70px;
-            padding-left: 16px;
             .slide-content {
-                padding-right: 12px;
+                padding: 0 16px;
                 .slide-conts {
-                    padding-right: 12px;
-                    padding-bottom: 16px;
+                    padding: 0 12px 16px 0;
+                    width: 88.889vw;
+
                 }
             }
             .indi-wrap {

@@ -127,6 +127,9 @@
         }
         .conts {
             width:calc(100% - (18.4% + 24px));
+            .form-text {
+                @include font-medium;
+            }
         }
     }
     @include mobile {

@@ -83,7 +83,7 @@
             $('.story-review').vcToggleCarousel({
                 pcOption: "unbuild",
                 mobileOption: {
-                    infinite: true,
+                    variableWidth: true,
                     slidesToShow: 1,
                     slidesToScroll: 1
                 }
