@@ -717,6 +717,14 @@
                 }
             }
         }
+        .txt_thx {
+            margin-top: 12px;
+        }
+        @include mobile {
+            .patch-note {
+                padding: 16px;
+            }
+        }
     }
 
     
@@ -739,9 +747,6 @@
                 font-weight: normal;
                 color: #222222;
             }
-        }
-        .txt_thx {
-            margin-top: 12px;
         }
     }
     .detail{
