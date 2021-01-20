@@ -464,6 +464,7 @@
                 self.$tvPositionBox.hide();
                 self.$installTypeBox.hide();
                 self.$addFanBox.hide();
+                self.$myModelArea.show();
 
                 self.$cont.commonModel('next', self.$stepModel);
             });
@@ -518,7 +519,22 @@
                         self.$tvPositionBox.hide();
                     }
 
-                    self.setTopicList(resultData)
+                    self.setTopicList(resultData);
+
+                    if (resultData.warrantyText && resultData.warrantValue) {
+                        $('#buyingdateBox').find('.form-text').html(resultData.warrantyText);
+                        $('#buyingdateBox').find('.rdo-list-wrap').find('[value='+resultData.warrantValue+']').prop('checked', true);
+                        
+                        $('#buyingdateBox').find('.rdo-list-wrap').hide();
+                        $('#buyingdateBox').find('.form-text').show();
+                    } else {
+                        $('#buyingdateBox').find('.form-text').html('');
+                        $('#buyingdateBox').find('.rdo-list-wrap').prop('checked', false);
+
+                        $('#buyingdateBox').find('.rdo-list-wrap').show();
+                        $('#buyingdateBox').find('.form-text').hide();
+                    }
+
                     
                     self.$myModelArea.hide();
 

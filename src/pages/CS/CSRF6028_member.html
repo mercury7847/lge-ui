@@ -80,6 +80,7 @@
                             <!-- 제품 선택 -->
                             <div class="step-box" id="stepModel">
                                 @@include('./common/support/select-model.html', {
+                                    "url": "/lg5-common/data-ajax/support/serviceEngineer/selectModel.json",
                                     "category": [
                                         { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
                                         { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
@@ -110,7 +111,7 @@
                                     <div class="section-box">
                                         <h3 class="sub-tit">구매정보 선택</h3>
                                         <div class="form-wrap">
-                                            <div class="forms type4">
+                                            <div class="forms type4" id="buyingdateBox">
                                                 <div class="tit">
                                                     <p class="label">구입 시기</p>
                                                 </div>
@@ -149,6 +150,7 @@
                                                             </li>
                                                         </ul>
                                                     </div>
+                                                    <p class="form-text">2020.09. 구매 (1년 이내)</p>
                                                 </div>
                                             </div>
                                             <div class="forms type4">
@@ -548,17 +550,17 @@
                                                 <div class="conts">
                                                     <div class="box">
                                                         <div class="input-wrap">
-                                                            <input type="text" name="zipCode" id="zipCode" placeholder="우편번호" data-error-msg="정확한 주소를 입력해주세요." data-required="true" required readonly>
+                                                            <input type="text" name="zipCode" id="zipCode" value="06252" placeholder="우편번호" data-error-msg="정확한 주소를 입력해주세요." data-required="true" required readonly>
                                                         </div>
                                                         <div class="cell">
                                                             <button type="button" class="btn btn-address"><span>주소 찾기</span></button>
                                                         </div>
                                                     </div>
                                                     <div class="input-wrap">
-                                                        <input type="text" name="userAddress" id="userAddress" placeholder="주소" data-error-msg="정확한 주소를 입력해주세요." data-required="true" required readonly>
+                                                        <input type="text" name="userAddress" id="userAddress" value="서울 강남구 강남대로 328 (역삼동)" placeholder="주소" data-error-msg="정확한 주소를 입력해주세요." data-required="true" required readonly>
                                                     </div>
                                                     <div class="input-wrap">
-                                                        <input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소를 입력해주세요." data-error-msg="정확한 주소를 입력해주세요." data-required="true" required readonly>
+                                                        <input type="text" name="detailAddress" id="detailAddress" value="1동 2층 201호" placeholder="상세주소를 입력해주세요." data-error-msg="정확한 주소를 입력해주세요." data-required="true" required readonly>
                                                     </div>
                                                     <div class="btm-more both">
                                                         <p class="err-msg address-err-msg"></p>
