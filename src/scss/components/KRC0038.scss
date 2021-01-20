@@ -74,7 +74,7 @@
                 margin:0 auto;
             }
             &.vertical-top {
-                top:0;
+                top:80px;
                 @include mobile {
                     top:auto;
                 }
@@ -88,7 +88,7 @@
                 }
             }
             &.vertical-bottom {
-                bottom:0;
+                bottom:80px;
                 @include mobile {
                     bottom:auto;
                 }
@@ -135,7 +135,7 @@
             padding:0 40px;
             &.vertical-top {
                 position:absolute;
-                top:0;
+                top:80px;
                 left:0;
                 right:0;
             }
@@ -150,7 +150,7 @@
                 position:absolute;
                 left:0;
                 right:0;
-                bottom:0;
+                bottom:80px;
             }
             @include mobile {
                 &.vertical-top,
@@ -431,9 +431,9 @@
                         .fc-gray,
                         .fc-lightgray,
                         .fc-white {
-                            color:#222 !important;
+                            color:#000 !important;
                             * {
-                                color:#222 !important;
+                                color:#000 !important;
                             }
                         }
                     } @else if $bg == dark {
@@ -464,9 +464,9 @@
                         .fc-gray,
                         .fc-lightgray,
                         .fc-white {
-                            color:#222 !important;
+                            color:#000 !important;
                             * {
-                                color:#222 !important;
+                                color:#000 !important;
                             }
                         }
                     } @else if $bg == gray {
@@ -475,9 +475,9 @@
                         .fc-gray,
                         .fc-lightgray,
                         .fc-white {
-                            color:#222 !important;
+                            color:#000 !important;
                             * {
-                                color:#222 !important;
+                                color:#000 !important;
                             }
                         }
                     }

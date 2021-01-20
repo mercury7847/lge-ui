@@ -360,7 +360,7 @@
             font-size: 14px;
             font-weight: 500;
             line-height: 1.71;
-            color: #222;
+            color: #000;
         }
         .text  {
             font-size: 14px;
@@ -414,7 +414,7 @@
     }
 
     .consulting-info {
-        color: #222;
+        color: #000;
         .info-tit {
             font-size: 28px;
             font-weight: bold;
@@ -689,7 +689,7 @@
 
 // color
 .color-1 {
-    color: #222 !important;
+    color: #000 !important;
 }
 .color-2 {
     color: #f04e3e !important;
@@ -724,7 +724,7 @@
                 font-weight:$font-weight-medium;
             }
             &:hover a {
-                color:#222;
+                color:#000;
             }
         }
     }
@@ -829,7 +829,7 @@
                 display:block;
                 width:100%;
                 text-align:center;
-                color:#222;
+                color:#000;
                 font-size:14px;
                 line-height:24px;
                 background:transparent;

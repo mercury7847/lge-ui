@@ -722,7 +722,7 @@
             }
             .view-content-title {
                 margin-bottom: 16px;
-                color: #222;
+                color: #000;
                 @include font-large;
                 font-weight: $font-weight-bold;
             }
@@ -816,7 +816,7 @@
             max-width:1146px;
             margin:0 auto;
             .view-content-title {
-                color: #222;
+                color: #000;
                 font-size:20px;
                 font-weight: $font-weight-bold;
                 line-height:28px;
@@ -1014,7 +1014,7 @@
                             }
                             .on > a{
                                 border-bottom:4px solid #222;
-                                color:#222;
+                                color:#000;
                             }
                         }
                     }

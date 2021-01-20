@@ -181,7 +181,7 @@
 /* font color */
 .fc-black,
 .fc-black * {
-    color:#222 !important;
+    color:#000 !important;
 }
 .fc-black:before,
 .fc-black *:before {
@@ -256,7 +256,7 @@
 			@if $bg == lightgray {
                 background-color: #f4f4f4;
                 * {
-                    color:#222;
+                    color:#000;
                 }
                 .bullet-list {
                     * {
@@ -266,7 +266,7 @@
                 .component {
                     .btn.border {
                         border-color:#222 !important;
-                        color:#222 !important;
+                        color:#000 !important;
                         &:hover,
                         &:active,
                         &:focus {
@@ -276,7 +276,7 @@
                         }
                     }
                     .text-link {
-                        color:#222 !important;
+                        color:#000 !important;
                     }
                 }
 			} @else if $bg == dark {
@@ -330,7 +330,7 @@
 			} @else if $bg == white {
                 background-color: #fff;
                 * {
-                    color:#222;
+                    color:#000;
                 }
                 .bullet-list {
                     * {
@@ -340,7 +340,7 @@
                 .component {
                     .btn.border {
                         border-color:#222 !important;
-                        color:#222 !important;
+                        color:#000 !important;
                         &:hover,
                         &:active,
                         &:focus {
@@ -350,13 +350,13 @@
                         }
                     }
                     .text-link {
-                        color:#222 !important;
+                        color:#000 !important;
                     }
                 }
             } @else if $bg == gray {
                 background-color:#f4f4f4;
                 * {
-                    color:#222;
+                    color:#000;
                 }
                 .bullet-list {
                     * {
@@ -366,7 +366,7 @@
                 .component {
                     .btn.border {
                         border-color:#222 !important;
-                        color:#222 !important;
+                        color:#000 !important;
                         &:hover,
                         &:active,
                         &:focus {
@@ -376,7 +376,7 @@
                         }
                     }
                     .text-link {
-                        color:#222 !important;
+                        color:#000 !important;
                     }
                 }
             }
@@ -385,7 +385,7 @@
                 .btn.border {
                     &.bc-black {
                         border-color:#222 !important;
-                        color:#222 !important;
+                        color:#000 !important;
                         &:hover,
                         &:active,
                         &:focus {
@@ -408,7 +408,7 @@
                 }
                 .text-link {
                     &.bc-black {
-                        color:#222 !important;
+                        color:#000 !important;
                         &::after {
                             background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
                         }
@@ -423,7 +423,7 @@
 
                 .fc-black,
                 .fc-black * {
-                    color:#222 !important;
+                    color:#000 !important;
                 }
                 .fc-black:before,
                 .fc-black *:before {
@@ -666,7 +666,7 @@
 
     // button 공통
     .bc-black {
-        color:#222;
+        color:#000;
     }
     .bc-white {
         color:#fff;
@@ -676,7 +676,7 @@
         display:inline-block;
         position:relative;
         padding-right:20px;
-        color:#222;
+        color:#000;
         @include font-small;
         font-weight:500;
         &::after {
@@ -693,7 +693,7 @@
             color:inherit;
         }
         &.bc-black {
-            color:#222;
+            color:#000;
             &::after {
                 background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
             }
@@ -708,7 +708,7 @@
 
     .btn.border {
         padding:11px 31px !important;
-        color:#222;
+        color:#000;
         border-color:#222 !important;
         border-radius:26px !important;
         &.size {
@@ -726,7 +726,7 @@
             color:inherit;
         }
         &.bc-black {
-            color:#222;
+            color:#000;
             border-color:#222 !important;
         }
         &.bc-white {

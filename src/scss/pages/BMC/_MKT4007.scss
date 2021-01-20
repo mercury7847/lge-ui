@@ -72,7 +72,7 @@
                 margin-top: 8px;
                 font-size: 28px;
                 line-height: 36px;
-                color: #222;
+                color: #000;
                 font-weight: 700;
                 @include mobile {
                     font-size: 24px;
@@ -82,7 +82,7 @@
             .date {
                 font-size: 16px;
                 line-height: 24px;
-                color: #222;
+                color: #000;
             }
         }
     }

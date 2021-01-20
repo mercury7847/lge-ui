@@ -11,7 +11,7 @@
     .title {
         padding-bottom: 16px;
         @include font-large-1;
-        color: #222;
+        color: #000;
         @include mobile {
             padding-bottom: 12px;
             @include font-large;
@@ -94,7 +94,7 @@
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
-                color: #222;
+                color: #000;
                 font-weight: 700;
                 @include mobile {
                     height: 48px;
@@ -106,7 +106,7 @@
                 margin-top: 16px;
                 font-size: 14px;
                 line-height: 20px;
-                color: #222;
+                color: #000;
                 @include mobile {
                     margin-top: 8px;
                     line-height: 24px;

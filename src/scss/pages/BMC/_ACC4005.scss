@@ -77,7 +77,7 @@
                     }
                     .tit {
                         margin-bottom:16px;
-                        color:#222;
+                        color:#000;
                         @include font-large-1;
                         font-weight:700;
                     }
@@ -86,7 +86,7 @@
                             position:relative;
                             margin-top:8px;
                             padding-left:11px;
-                            color:#222;
+                            color:#000;
                             @include font-medium;
                             word-break:keep-all;
                             &:first-child {
@@ -142,7 +142,7 @@
                             }
                         }
                         .title {
-                            color:#222;
+                            color:#000;
                             font-size:14px;
                             line-height:22px;
                             font-weight:500;
@@ -166,7 +166,7 @@
                     }
                     .card-name {
                         margin-bottom:12px;
-                        color:#222;
+                        color:#000;
                         @include font-small;
                         font-weight:700;
                         text-align:left;
@@ -241,7 +241,7 @@
                                 }
                                 .num {
                                     margin-top:16px;
-                                    color:#222;
+                                    color:#000;
                                     @include font-small;
                                     font-weight:500;
                                 }
@@ -255,7 +255,7 @@
                                 }
                                 .tit {
                                     margin-bottom:4px;
-                                    color:#222;
+                                    color:#000;
                                     @include font-small;
                                     font-weight:500;
                                 }
@@ -286,7 +286,7 @@
     }
     .accord-desc {
         margin:12px 0 8px;
-        color:#222;
+        color:#000;
         @include font-medium;
     }
 }

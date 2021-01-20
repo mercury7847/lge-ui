@@ -33,7 +33,7 @@
                 }
                 dt {
                     position:relative;
-                    color:#222;
+                    color:#000;
                     .img {
                         display:block;
                         margin-bottom:16px;
@@ -157,7 +157,7 @@
                         dd {
                             margin-top:14px;
                             .infos li {
-                                color:#222;
+                                color:#000;
                             }
                         }
                     }
@@ -252,7 +252,7 @@
                     display:inline-block;
                     width:100%;
                     max-width:calc(100% - 234px);
-                    color:#222;
+                    color:#000;
                     @include font-medium;
                     vertical-align:top;
                     em {
@@ -298,7 +298,7 @@
             }
             .tag-title {
                 margin-bottom:12px;
-                color:#222;
+                color:#000;
                 @include font-large;
                 font-weight:700;
             }
