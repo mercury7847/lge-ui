@@ -10,7 +10,7 @@
         "paymentInfo": {
             "total":{
                 "count": "3",
-                "price": "98600"
+                "price": "98602"
             },
             "list":[
                 {
@@ -20,7 +20,7 @@
                 },
                 {
                     "text": "이용요금",
-                    "price": "월 98,000원",
+                    "price": "월 98,001원",
                     "appendClass": ""
                 },
                 {
