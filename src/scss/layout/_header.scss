@@ -184,21 +184,23 @@
 
 .logo {
     float: left;
+    padding-top: 2px;
     padding-left: 40px;
     a {
         display: block;
-        width: 90px;
-        height: 24px;
+        width: 74px;
+        height: 20px;
         background-image: url("/lg5-common/images/header/logo.svg");
-        background-size: 100% 100%;
     }
 
     @include mobile {
         float: none;
         padding-left: 0;
         a {
-            @include calc-mobile-size('width', 168px);
-            @include calc-mobile-size('height', 44px);
+            width: 80px;
+            height: 21px;
+            background-image: url("/lg5-common/images/header/logo-m.svg");
+            background-size: 100% 100%;
         }
     }
 
@@ -232,11 +234,11 @@
                     &:after {
                         position: absolute;
                         top: 0;
-                        right: 0;
+                        right: 5px;
                         width: 4px;
                         height: 4px;
                         border-radius: 2px;
-                        background-color: #18847e;
+                        background-color: $color-positive;
                         content: '';
                     }
                     .mypage-layer {
