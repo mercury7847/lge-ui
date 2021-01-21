@@ -88,7 +88,7 @@ $(window).ready(function(){
 			var $tab = self.$section.find('.ui_smooth_tab');
 			$tab.on('click', 'li a', function(e){
 				e.preventDefault();
-				var _id = $(this).attr('href');
+				var _id = $(this).attr('href').replace("#","");
 				self.requestData(_id);
 			});
 
