@@ -591,25 +591,12 @@
 
                     self.$relatedKeywordList.removeClass('open');
 
-                    //카테고리 리스트 갱신
-                    arr = data.category instanceof Array ? data.category : [];
-                    if(arr.length > 0) {
-                        var $list_ul = self.$searchResultCategory.find('ul');
-                        $list_ul.empty();
-                        arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(categoryItemTemplate, {"url":item.url,"text":item.text}));
-                        });
-                        self.$searchResultCategory.show();
-                    } else {
-                        self.$searchResultCategory.hide();
-                    }
+                    //noData체크
 
-                    self.$searchResultCategory.removeClass('on');
-                    self.$searchResultCategoryMore.find('span').text('더보기');
-     
                     //nodata Test
                     /*
                     data.count = null;
+                    data.category = null;
                     data.product = null;
                     data.event = null;
                     data.story = null;
@@ -617,7 +604,7 @@
                     data.shop = null;
                     data.customer = null;
                     */
-
+                   
                     var noData = true;
                     var count = self.checkCountData(data);
                     self.setTabCount(0, data.count);
@@ -627,6 +614,23 @@
 
                     self.$contWrap.removeClass('w-filter');
                     var $searchResult = self.$contWrap.find('div.search-result-wrap');
+
+                    //카테고리 리스트 갱신
+                    arr = data.category instanceof Array ? data.category : [];
+                    if(arr.length > 0) {
+                        var $list_ul = self.$searchResultCategory.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(categoryItemTemplate, {"url":item.url,"text":item.text}));
+                        });
+                        self.$searchResultCategory.show();
+                        noData = false;
+                    } else {
+                        self.$searchResultCategory.hide();
+                    }
+
+                    self.$searchResultCategory.removeClass('on');
+                    self.$searchResultCategoryMore.find('span').text('더보기');
 
                     //제품/케어솔루션
                     var $resultListWrap = $searchResult.find('div.result-list-wrap:eq(0)');

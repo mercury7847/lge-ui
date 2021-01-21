@@ -146,69 +146,75 @@
         },
         "filterList": [
             {
-                "filterType":"slider",
+                "filterType":"range",
                 "filterId":"fid00001",
-                "title":"판매가",
+                "filterGroupName":"판매가",
+                "filterGroupType":"range",
                 "filterValues":[
-                    {"value":"pd0001","title":"50,000"},
-                    {"value":"pd0002","title":"150,000"},
-                    {"value":"pd0003","title":"400,000"},
-                    {"value":"pd0004","title":"1,000,000"},
-                    {"value":"pd0005","title":"2,000,000"}
+                    {"filterValueId":"pd0001","filterValueName":"50,000"},
+                    {"filterValueId":"pd0002","filterValueName":"150,000"},
+                    {"filterValueId":"pd0003","filterValueName":"400,000"},
+                    {"filterValueId":"pd0004","filterValueName":"1,000,000"},
+                    {"filterValueId":"pd0005","filterValueName":"2,000,000"}
                 ]
             },
             {
-                "filterType":"slider",
+                "filterType":"range",
                 "filterId":"fid00002",
-                "title":"화면크기",
+                "filterGroupName":"화면크기",
+                "filterGroupType":"range",
                 "filterValues":[
-                    {"value":"rd0001","title":"48인치"},
-                    {"value":"rd0002","title":"52인치"},
-                    {"value":"rd0003","title":"80인치"},
-                    {"value":"rd0004","title":"120인치"}
+                    {"filterValueId":"rd0001","filterValueName":"48인치"},
+                    {"filterValueId":"rd0002","filterValueName":"52인치"},
+                    {"filterValueId":"rd0003","filterValueName":"80인치"},
+                    {"filterValueId":"rd0004","filterValueName":"120인치"}
                 ]
             },
             {
-                "filterType":"radio",
+                "filterType":"check",
                 "filterId":"fid00003",
-                "title":"서비스",
+                "filterGroupName":"서비스",
+                "filterGroupType":"check",
                 "filterValues":[
-                    {"value":"","title":"전체"},
-                    {"value":"sd0002","title":"일반제품"},
-                    {"value":"sd0003","title":"케어십 가능 제품"},
-                    {"value":"sd0004","title":"기타"}
+                    {"filterValueId":"","filterValueName":"전체"},
+                    {"filterValueId":"sd0002","filterValueName":"일반제품"},
+                    {"filterValueId":"sd0003","filterValueName":"케어십 가능 제품"},
+                    {"filterValueId":"sd0004","filterValueName":"기타"}
                 ]
             },
             {
                 "filterType":"color",
                 "filterId":"fid00004",
-                "title":"색상",
+                "filterGroupName":"색상",
+                "filterGroupType":"color",
                 "filterValues":[
-                    {"value":"cd0001","title":"맷 블랙", "color":"HA_REF_Matte_Black_Stainless_Steel"},
-                    {"value":"cd0002","title":"블랙 스틸", "color":"Black-Stainless-Steel"},
-                    {"value":"cd0003","title":"스테인레스 스틸", "color":"stainless-steel"},
-                    {"value":"cd0004","title":"화이트", "color":"smooth-white"}
+                    {"filterValueId":"cd0001","filterValueName":"맷 블랙", "topFilterDisplayName":"HA_REF_Matte_Black_Stainless_Steel"},
+                    {"filterValueId":"cd0002","filterValueName":"블랙 스틸", "topFilterDisplayName":"Black-Stainless-Steel"},
+                    {"filterValueId":"cd0003","filterValueName":"스테인레스 스틸", "topFilterDisplayName":"stainless-steel"},
+                    {"filterValueId":"cd0004","filterValueName":"화이트", "topFilterDisplayName":"smooth-white"}
                 ]
             },
             {
                 "filterType":"checkbox",
                 "filterId":"fid00005",
-                "title":"용량",
+                "filterGroupName":"용량",
+                "filterGroupType":"size",
                 "filterValues":[
-                    {"value":"yd0001","title":"용량 11"},
-                    {"value":"yd0002","title":"용량 22"},
-                    {"value":"yd0003","title":"용량 33"},
-                    {"value":"yd0004","title":"용량 44"}
+                    {"filterValueId":"yd0001","filterValueName":"용량 11"},
+                    {"filterValueId":"yd0002","filterValueName":"용량 22"},
+                    {"filterValueId":"yd0003","filterValueName":"용량 33"},
+                    {"filterValueId":"yd0004","filterValueName":"용량 44"}
                 ]
             },
             {
                 "filterType":"checkbox",
                 "filterId":"fid00006",
-                "title":"태그",
+                "filterGroupName":"태그",
+                "filterGroupType":"check",
                 "filterValues":[
-                    {"value":"td0001","title":"태그1"},
-                    {"value":"td0002","title":"태그2"},
-                    {"value":"td0003","title":"태그3"}
+                    {"filterValueId":"td0001","filterValueName":"태그1"},
+                    {"filterValueId":"td0002","filterValueName":"태그2"},
+                    {"filterValueId":"td0003","filterValueName":"태그3"}
                 ]
             }
         ]
