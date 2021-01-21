@@ -10,6 +10,62 @@
     @include mobile {
         padding:0 16px;
     }
+
+    &.stage-full {
+        max-width:1920px + 80px;
+        // .unit-list {
+        //     &.block1 {
+        //         &.type-wide {
+        //             .unit-box {
+                        
+        //             }
+        //         }
+        //         &.type-narrow {
+        //             .unit-box {
+        //             }
+        //         }
+        //     }
+        // }
+    }
+    &.stage-wide {
+        max-width:1600px + 80px;
+        // .unit-list {
+        //     &.block1 {
+        //         &.type-wide {
+        //             .unit-box {
+                        
+        //             }
+        //         }
+        //         &.type-narrow {
+        //             .unit-box {
+        //             }
+        //         }
+        //     }
+        // }
+    }
+    &.stage-standard {
+        max-width:1380px + 80px;
+        .unit-list {
+            &.block1 {
+                &.type-wide {
+                    .unit-box {
+                        max-width:((1170px * 100%) / 1404px);
+                        @include mobile {
+                            max-width:100%;
+                        }
+                    }
+                }
+                &.type-narrow {
+                    .unit-box {
+                        max-width:((702px * 100%) / 1404px);
+                        @include mobile {
+                            max-width:100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     .unit-list {
         margin:0 -12px;
@@ -33,22 +89,22 @@
             .unit-box {
                 float:none;
             }
-            &.type-wide {
-                .unit-box {
-                    max-width:((1170px * 100%) / 1404px);
-                    @include mobile {
-                        max-width:100%;
-                    }
-                }
-            }
-            &.type-narrow {
-                .unit-box {
-                    max-width:((702px * 100%) / 1404px);
-                    @include mobile {
-                        max-width:100%;
-                    }
-                }
-            }
+            // &.type-wide {
+            //     .unit-box {
+            //         max-width:((1170px * 100%) / 1404px);
+            //         @include mobile {
+            //             max-width:100%;
+            //         }
+            //     }
+            // }
+            // &.type-narrow {
+            //     .unit-box {
+            //         max-width:((702px * 100%) / 1404px);
+            //         @include mobile {
+            //             max-width:100%;
+            //         }
+            //     }
+            // }
             &.box-align-left {
                 .unit-box {
                     margin-right:auto;

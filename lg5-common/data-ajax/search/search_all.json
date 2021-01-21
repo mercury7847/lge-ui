@@ -3,7 +3,8 @@
     "message":null,
     "param":{
         "inputValue": "aowlrtmvpdl스",
-        "search": "매직스페이스"
+        "search": "매직스페이스",
+        "force": false
     },
     "data":{
         "count": "243",
@@ -274,8 +275,16 @@
                     "time":"월~화 09:00~18:00 토요일 09:00~13:00",
                     "shopState":"혼잡",
                     "shopStateColor":"red",
-                    "findWayUrl":"#f",
-                    "reserveUrl":"#r"
+                    "linkItem":[
+                        {
+                            "title":"길찾기",
+                            "url":"#"
+                        },
+                        {
+                            "title":"방문 예약 신청",
+                            "url":"#"
+                        }
+                    ]
                 },
                 {
                     "flag":[
@@ -294,8 +303,16 @@
                     "time":"월~금 09:00~18:00 토요일 09:00~13:00",
                     "shopState":"원할",
                     "shopStateColor":"green",
-                    "findWayUrl":"#f",
-                    "reserveUrl":"#r"
+                    "linkItem":[
+                        {
+                            "title":"길찾기",
+                            "url":"#"
+                        },
+                        {
+                            "title":"매장 상담 신청",
+                            "url":"#"
+                        }
+                    ]
                 },
                 {
                     "flag":[
@@ -314,8 +331,16 @@
                     "time":"월~금 09:00~18:00 토요일 09:00~13:00",
                     "shopState":"보통",
                     "shopStateColor":"orange",
-                    "findWayUrl":"#f",
-                    "reserveUrl":"#r"
+                    "linkItem":[
+                        {
+                            "title":"길찾기",
+                            "url":"#"
+                        },
+                        {
+                            "title":"방문 예약 신청",
+                            "url":"#"
+                        }
+                    ]
                 },
                 {
                     "flag":[
@@ -334,8 +359,16 @@
                     "time":"월~금 09:00~18:00 토요일 09:00~13:00",
                     "shopState":"보통",
                     "shopStateColor":"orange",
-                    "findWayUrl":"#f",
-                    "reserveUrl":"#r"
+                    "linkItem":[
+                        {
+                            "title":"길찾기",
+                            "url":"#"
+                        },
+                        {
+                            "title":"매장 상담 신청",
+                            "url":"#"
+                        }
+                    ]
                 }
             ]
         },
@@ -385,7 +418,7 @@
                         "Ver 7.8"
                     ],
                     "date":"20201101",
-                    "download":[
+                    "linkItem":[
                         {
                             "title":"ZIP",
                             "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true"
@@ -415,7 +448,7 @@
                         "통합 설치 프로그램"
                     ],
                     "date":"20201102",
-                    "download":[
+                    "linkItem":[
                         {
                             "title":"다운로드 112.4MB",
                             "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true"
