@@ -14,10 +14,10 @@
         '<div class="sub-depth">' +
         '<div class="tit-wrap">' +
         '<button type="button" class="btn-back"><span class="blind">뒤로 가기</span></button>' +
-        '<strong class="tit">{{title}}</strong>' +
+        '<strong class="tit">{{param.topic.name}}</strong>' +
         '</div>' +
         '<ul>' +
-        '{{#each (item, index) in filterList}}' +
+        '{{#each (item, index) in data.subFilterList}}' +
         '{{# if (index == 0) { #}}' +
         '<li class="on">' +
         '{{# } else { #}}' +
@@ -48,8 +48,15 @@
         '</a>' +
         '</li>';
 
-    var optionTemplate =
+    var filterOptionTemplate =
         '{{#each (item, index) in filterList}}' +
+        '<option value="{{item.code}}">' +
+        '{{item.name}}' +
+        '</option>' +
+        '{{/each}}';
+
+    var subFilterOptionTemplate =
+        '{{#each (item, index) in subFilterList}}' +
         '<option value="{{item.code}}">' +
         '{{item.name}}' +
         '</option>' +
@@ -121,11 +128,12 @@
                 self.$filterM = self.$wrap.find('.mobile-filter-box');
                 self.$result = self.$wrap.find('.result-box');
 
-                self.$topic = self.$result.find('#topic');
-                self.$subTopic = self.$result.find('#subTopic');
-                self.$keyword = self.$result.find('#keyword');
-                self.$searchBtn = self.$result.find('.keyword-search .btn-search');
-                self.$pagination = self.$result.find('.pagination');
+                self.$topic = self.$wrap.find('#topic');
+                self.$subTopic = self.$wrap.find('#subTopic');
+                self.$keyword = self.$wrap.find('#keyword');
+                self.$searchBtn = self.$wrap.find('.keyword-search .btn-search');
+                self.$pagination = self.$wrap.find('.pagination');
+                self.$orderBy = self.$wrap.find('#orderBy');
 
                 self.param = {};
                 self.param['keyword'] = '';
@@ -136,6 +144,7 @@
                 self.solutionsUrl = self.$wrap.data('solutionsUrl');
 
                 self.$pagination.pagination();
+                $('.ui_search').search();
                 self.$cont.commonModel({
                     register: {}
                 });
@@ -143,14 +152,14 @@
                 self.bindEvent();                
             },
             setRecommProduct: function(data){
+                var $productslider = $('.product-slider');
                 var html = '';
                 
                 data.recommProduct.map(function(obj){
                     html += vcui.template(recommProductItemTemplate, obj);
                 });
 
-                $('.product-slider').find('.slide-track').empty();
-                $('.product-slider').find('.slide-track').append($(html));
+                $productslider.find('.slide-track').html($(html));
 
                 lgkorUI.initProductSlider();
                 $('#recommProduct').show();
@@ -204,7 +213,7 @@
 
                 if (listArr.length) {
                     pcHtml = vcui.template(filterTemplate, data);
-                    mHtml = vcui.template(optionTemplate, data);
+                    mHtml = vcui.template(filterOptionTemplate, data);
 
                     self.$filter.find('.filter-list').eq(0).html(pcHtml);
 
@@ -212,46 +221,17 @@
                     self.$topic.vcSelectbox('update');
                 }
             },
-            setSubFilter: function(code, target) {
-                var self = this,
-                    $target = target ? $(target) : null,
-                    url = self.$wrap.data('subFilterAjax') || self.$wrap.data('ajax'),
-                    param = {
-                        topic: code,
-                        productCode: $('#submitForm').find('#productCode').val(),
-                        category: $('#submitForm').find('#category').val(),
-                        subCategory: $('#submitForm').find('#subCategory').val()
-                    };
-
-                if ($target) {
-                    param.topicNm = $target.data('name');
-                }
-
-                lgkorUI.requestAjaxDataPost(url, param, function(result){
-                    var listArr = result.data.filterList instanceof Array ? result.data.filterList : [],
-                        pcHtml = '',
-                        mHtml = '';
-                
-                    if (listArr.length) {
-                        pcHtml = vcui.template(subFilterTemplate, result.data);
-                        mHtml = vcui.template(optionTemplate, result.data);
-    
-                        $target && $target.after(pcHtml);
-    
-                        self.$subTopic.html(mHtml);
-                        self.$subTopic.vcSelectbox('update');
-                    }
-                });
-            },
-            requestData: function() {
+            requestData: function(target) {
                 var self = this;
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(self.solutionsUrl, self.param, function(result){
                     var data = result.data,
+                        $target = target ? $(target) : null,
                         arr = data.listData instanceof Array ? data.listData : [],
                         keywordArr = result.param.keywords instanceof Array ? result.param.keywords : [],
-                        html = '', keywordsHtml = '';
+                        subfilterArr = (data.subFilterList && data.subFilterList instanceof Array) ? data.subFilterList : [],
+                        html = '', keywordsHtml = '', pcHtml = '', mHtml = '';
                     
                     self.$result.find('.list-wrap .list').empty();
 
@@ -274,30 +254,47 @@
                         keywordsHtml = vcui.template(keywordsTemplate, result.param);
                         self.$result.find('.tit-wrap h3.tit').html(keywordsHtml);
                     }
+
+                    if (subfilterArr.length) {
+                        pcHtml = vcui.template(subFilterTemplate, result);
+                        mHtml = vcui.template(subFilterOptionTemplate, result.data);
+    
+                        $target && $target.after(pcHtml);
+    
+                        self.$subTopic.html(mHtml);
+                        self.$subTopic.vcSelectbox('update');
+                    }
                     
                     self.$result.find('#solutionsCount').html(data.listPage.totalCount);
                     
                     lgkorUI.hideLoading();
                 });
             },
+            resetFilter: function() {
+                var self = this;
+
+                self.$filter.find('.open, .on').removeClass('open on');
+                self.$filter.find('.sub-depth').remove();
+                self.$filter.find('.filter-list > li:first-child').addClass('on');
+            },
             reset: function() {
                 var self = this;
 
-                
+                self.$filter.find('.open, .on').removeClass('open on');
+                self.$filter.find('.sub-depth').remove();
+
+                self.$topic.vcSelectbox('selectedIndex', 0);
+                $('#recommProduct').hide();
+                $('#serviceMenu').hide();
+                $('#centerFind').hide();
+
+                self.$cont.commonModel('next', self.$stepModel);
             },
             bindEvent: function() {
                 var self = this;
 
                 self.$cont.on('reset', function(e) {
-                    self.$filter.find('.open, .on').removeClass('open on');
-                    self.$filter.find('.sub-depth').remove();
-
-                    self.$topic.vcSelectbox('selectedIndex', 0);
-                    $('#recommProduct').hide();
-                    $('#serviceMenu').hide();
-                    $('#centerFind').hide();
-    
-                    self.$cont.commonModel('next', self.$stepModel);
+                    self.reset();
                 });
 
                 self.$cont.on('complete', function(e, data, url) { 
@@ -358,8 +355,8 @@
 
                     self.selectFilter(code, this);
                     if ($(this).siblings('.sub-depth').length < 1) {
-                        self.setSubFilter(code, this);
-                        self.requestData();
+                        //self.setSubFilter(code, this);
+                        self.requestData(this);
                     } else {
                         $(this).siblings('.sub-depth').show();
                     }
@@ -400,7 +397,7 @@
                     self.param = $.extend(self.param, param);
 
                     self.selectFilter(value);
-                    self.setSubFilter(value, this)
+                    // self.setSubFilter(value, this)
                     self.requestData();
                 });
 
@@ -430,15 +427,17 @@
                 // keyword search
                 self.$searchBtn.on('click', function() {
                     var value = self.$keyword.val(),
-                        resultFlag = self.$result.find('#research').is(':checked'),
+                        isChecked = self.$result.find('#research').is(':checked'),
                         param = {
                             page:1,
                         };
                         
-                    if (!resultFlag) {
-                        self.reset();
+                    if (!isChecked) {
+                        self.resetFilter();
                         param['topic'] = 'All';
-                        param['subTopic'] = '';
+                        param['topicNm'] = 'All';
+                        param['subTopic'] = 'All';
+                        param['subTopicNm'] = 'All';
                     }
 
                     param['keyword'] = value;
@@ -449,7 +448,7 @@
                 });
 
                 // list order by
-                self.$result.find('#selectOrder').on('change', function() {
+                self.$orderBy.on('change', function() {
                     var value = $(this).val(),
                         param = {
                             page: 1,

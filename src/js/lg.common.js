@@ -1219,6 +1219,16 @@
                     }
                 });
             });
+        },
+
+        addLimitedInputEvent: function(ipt){
+            ipt.on('input', function(){
+                var maxleng = $(this).prop('maxlength');
+                var str = $(this).val();
+                if(str.length > maxleng){
+                    $(this).val(str.slice(0, maxleng));
+                }
+            });
         }
     }
 

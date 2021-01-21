@@ -8,7 +8,7 @@
                 '<div class="infos">'+
                     '<div class="title">'+
                         '<p>{{adressNickName}}</p>'+
-                        '{{#if defaultAdess}}'+
+                        '{{#if defaultAdress}}'+
                         '<span class="flag-wrap">'+
                             '<span class="flag">기본배송지</span>'+
                         '</span>'+
@@ -25,7 +25,7 @@
                 '</div>'+
                 '<div class="buttons">'+
                     '<button type="button" class="btn size border edit-btn" data-edit-type="modify"><span>수정</span></button>'+
-                    '{{#if !defaultAdess}}<button type="button" class="btn size border edit-btn" data-edit-type="delete"><span>삭제</span></button>{{/if}}'+
+                    '{{#if !defaultAdress}}<button type="button" class="btn size border edit-btn" data-edit-type="delete"><span>삭제</span></button>{{/if}}'+
                 '</div>'+
             '</div>'+
         '</li>';
@@ -35,13 +35,14 @@
     var txtMasking;
     var adressListData;
     var adressInfoValidation;
+    var addressFinder;
 
     function init(){
-        vcui.require(['ui/modal', 'ui/validation', 'ui/formatter', 'helper/textMasking'], function () {
+        vcui.require(['ui/modal', 'ui/validation', 'ui/formatter', 'helper/textMasking', 'caresolution/addressManagement.min'], function () {
             setting();
             bindEvents();
     
-            loadAdressList();
+            loadAdressList("list");
         });
     }
 
@@ -54,30 +55,39 @@
             adressNickName:{
                 required: true,
                 errorMsg: "주소별칭을 입력해주세요.",
-                msgTarget: '.err-regist'
+                msgTarget: '.err-block'
             },
             receiverUser: {
                 required: true,
                 errorMsg: "이름을 입력해주세요.",
-                msgTarget: '.err-regist'
+                msgTarget: '.err-block'
             },
             zipCode: {
                 required: true,
-                errorMsg: "주소를 확인해주세요.",
-                msgTarget: '.err-address'
+                errorMsg: "우편번호를 확인해주세요.",
+                msgTarget: '.err-block'
             },
             userAddress: {
                 required: true,
                 errorMsg: "주소를 확인해주세요.",
-                msgTarget: '.err-address'
+                msgTarget: '.err-block'
             },
-            detailAddress: {
+            detailAdress: {
                 required: true,
                 errorMsg: "상세주소를 입력해주세요.",
-                msgTarget: '.err-address'
+                msgTarget: '.err-block'
+            },
+            phoneNumber: {
+                required: true,
+                errorMsg: "휴대폰번호를 입력해주세요.",
+                msgTarget: '.err-block'
             }
         }
         adressInfoValidation = new vcui.ui.Validation('#address-regist-form',{register:register});
+
+        addressFinder = new AddressFind();
+
+        lgkorUI.addLimitedInputEvent($('#address-regist-form input[name=telephoneNumber]'));
     }
 
     function bindEvents(){
@@ -85,9 +95,19 @@
             e.preventDefault();
 
             var pops = {
-                editMode: "ADD",
+                editMode: "add",
                 popName: "주소 등록",
-                btnName: "등록"
+                btnName: "등록",
+                adressInfo: {
+                    adressNickName: "",
+                    receiverUser: "",
+                    zipCode: "",
+                    userAddress: "",
+                    detailAdress: "",
+                    phoneNumber: "",
+                    telephoneNumber: "",
+                    defaultAdress:false
+                }
             }
             openEditAdressPop(pops)
         });
@@ -100,7 +120,7 @@
 
             if(editype == "modify"){
                 var pops = {
-                    editMode: "MODIFY",
+                    editMode: "modify",
                     popName: "주소지 수정",
                     btnName: "주소 저장",
                     adressInfo: adressListData[dataId]
@@ -109,26 +129,79 @@
             } else{
                 deleteAdressData(dataId);
             }
+        });
+
+        $('#popup-editAdress').on('click', '.find-adress', function(e){
+            e.preventDefault();
+
+            getPostCode();
+        }).on('click', '.send-btn', function(e){
+            e.preventDefault();
+
+            sendAdressInfo();
         })
+    }
+
+    function deleteAdressData(id){
+        lgkorUI.confirm("배송지를 삭제하시겠습니까?", {
+            title: "",
+            cancelBtnName: "취소",
+            okBtnName: "삭제",
+            ok: function(){
+                loadAdressList("remove", adressListData[id]);
+            }
+        });
+    }
+
+    function sendAdressInfo(){
+        var result = adressInfoValidation.validate();
+        if(result.success){
+            $('#popup-editAdress').vcModal('close');
+
+            var type = $('#popup-editAdress').data("type");
+            var formdata = adressInfoValidation.getValues();
+            formdata.defaultAdress = $('#popup-editAdress input[name=defaultAdress]').prop('checked');
+            loadAdressList(type, formdata);
+        } 
+    }
+
+    //우편번호 찾기 연동...
+    function getPostCode(){
+        addressFinder.open(function(data){
+            $('#popup-editAdress').find('input[name=zipCode]').val(data.zonecode);
+            $('#popup-editAdress').find('input[name=userAddress]').val(data.roadAddress);
+            $('#popup-editAdress').find('input[name=detailAdress]').val('');
+        });
     }
 
     function openEditAdressPop(pops){
         $('#popup-editAdress').find('.pop-title span').text(pops.popName);
         $('#popup-editAdress').find('.send-btn span').text(pops.btnName);
+        $('#popup-editAdress').find('.err-block').hide();
 
-        if(pops.adressInfo){
+        adressInfoValidation.setValues(pops.adressInfo);
 
-        } else{
-            $()
-        }
-
+        $('#popup-editAdress').data("type", pops.editMode);
         $('#popup-editAdress').vcModal();
     }
 
-    function loadAdressList(){
+    function loadAdressList(type, formdata){
         lgkorUI.showLoading();
 
-        lgkorUI.requestAjaxData(DELIVERY_ADRESS_LIST, {}, function(result){
+        var sendata = {
+            type: type,
+            adressNickName: formdata ? formdata.adressNickName : "",
+            defaultAdress: formdata ? formdata.defaultAdress : "",
+            receiverUser: formdata ? formdata.receiverUser : "",
+            zipCode: formdata ? formdata.zipCode : "",
+            userAddress: formdata ? formdata.userAddress : "",
+            detailAdress: formdata ? formdata.detailAdress : "",
+            phoneNumber: formdata ? formdata.phoneNumber : "",
+            telephoneNumber: formdata ? formdata.telephoneNumber : ""
+        }
+        console.log("send data:", sendata);
+
+        lgkorUI.requestAjaxData(DELIVERY_ADRESS_LIST, sendata, function(result){
             if(lgkorUI.stringToBool(result.data.success)){
                 $('.adressListWrap').empty();
 
@@ -149,10 +222,6 @@
 
             lgkorUI.hideLoading();
         });
-    }
-
-    function deleteAdressData(id){
-
     }
 
     $(window).load(function(){

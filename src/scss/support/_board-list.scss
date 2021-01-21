@@ -284,26 +284,26 @@
                         margin-top:12px;
                     }
                 }
-                &.icon-email a:before {
-                    background-image:url('/lg5-common/images/icons/icon-03-80.svg');
+                &.menu-email a:before {
+                    background-image:url('/lg5-common/images/icons/icon_email-inquiry.svg');
                 }
-                &.icon-call a:before {
-                    background-image:url('/lg5-common/images/icons/icon-cs-call.png');
+                &.menu-request a:before {
+                    background-image:url('/lg5-common/images/icons/icon_request-reservation.svg');
                 }   
-                &.icon-remote a:before {
-                    background-image:url('/lg5-common/images/icons/icon-cs-call.png');
+                &.menu-remote a:before {
+                    background-image:url('/lg5-common/images/icons/icon_remote-reservation.svg');
                 }
-                &.icon-video a:before {
-                    background-image:url('/lg5-common/images/icons/icon-cs-call.png');
+                &.menu-video a:before {
+                    background-image:url('/lg5-common/images/icons/icon_video-reservation.svg');
                 }
-                &.icon-visit a:before {
-                    background-image:url('/lg5-common/images/icons/icon-04-80.svg');
+                &.menu-engineer a:before {
+                    background-image:url('/lg5-common/images/icons/icon_engineer-reservation.svg');
                 }
-                &.icon-fixing a:before {
-                    background-image:url('/lg5-common/images/icons/icon-cs-call.png');
+                &.menu-installation a:before {
+                    background-image:url('/lg5-common/images/icons/icon_installation-reservation.svg');
                 }
-                &.icon-center a:before {
-                    background-image:url('/lg5-common/images/icons/icon-06-80.svg');
+                &.menu-center a:before {
+                    background-image:url('/lg5-common/images/icons/icon_center-reservation.svg');
                 }
             }
         }

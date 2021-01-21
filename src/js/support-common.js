@@ -138,6 +138,33 @@
                     cookie.setCookie(self.cookieName, value, self.expire);
                 }
             }
+        },
+        recentlyKeyword: {
+            cookieName: 'LG_SupportKeyword',
+            maxNum: 5,
+            expire: 30,
+            addCookie: function(value) {
+                var self = this;
+                var cookie = csUI.cookie;
+                var cookies = cookie.getCookie(self.cookieName);
+
+                if (cookies) {
+                    var cookieArr = cookies.split(',');
+
+                    if (cookieArr.indexOf(value) != -1) {
+                        cookie.deleteCookie(self.cookieName, value);
+                        cookieArr.splice(cookieArr.indexOf(value), 1);
+                        cookieArr.unshift(value);
+                    } else {
+                        cookieArr.unshift(value);
+                        if (cookieArr.length > self.maxNum) cookieArr.length = self.maxNum;
+                    }
+                    cookies = cookieArr.join(',');
+                    cookie.setCookie(self.cookieName, cookies, self.expire);
+                } else {
+                    cookie.setCookie(self.cookieName, value, self.expire);
+                }
+            }
         }
     }
 
@@ -173,6 +200,56 @@ CS.MD.plugin = function(pluginName, Plugin) {
         });
     }
 }
+
+CS.MD.search = function() {
+    var pluginName = 'search';
+    var cookie = lgkorUI.cookie;
+    var cookieKeyword = lgkorUI.recentlyKeyword
+
+    function Plugin(el, opt) {
+        var self = this;
+        var defaults = {
+            template: {
+                recentlyList: '<li><a href="#">{{name}}</a></li>',
+                keywordList: '<li><a href="#">{{name}}</a></li>'
+            }
+        };
+
+        self.$el = $(el);
+        self.options = $.extend({}, defaults, opt);
+        
+        self._initialize();
+        self._bindEvent();  
+    }
+
+    Plugin.prototype = {
+        _initialize: function() {
+
+        },
+        _setRecently: function() {
+            var self = this;
+            var keywordCookie = cookie.getCookie('LG_SupportKeyword');
+        },
+        _bindEvent: function() {
+            var self = this;
+
+            self.$el.find('input[type=text]').on('focus', function() {
+                self.$el.addClass('on');
+            }).on('focusout', function() {
+                self.$el.removeClass('on');
+            }).on('input', function() {
+
+            }).on('keyup', function(e) {
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    cookieKeyword
+                }
+            });
+        }
+    };
+
+    CS.MD.plugin(pluginName, Plugin);
+}();
 
 CS.MD.commonModel = function() {
     var pluginName = 'commonModel';
@@ -386,7 +463,7 @@ CS.MD.commonModel = function() {
                         self.$categoryBox.removeClass(opt.stepActiveClass);
                         self.$modelBox.addClass(opt.stepActiveClass);
                         self.$keywordBox.find('.desc').show();
-                        self.$keywordBox.find('.err-msg').hide();
+                        self.$keywordBox.find('.search-error').hide();
                         self.param = $.extend(self.param, {
                             keyword: value,
                             page: 1
@@ -394,7 +471,7 @@ CS.MD.commonModel = function() {
 
                         self._requestData();
                     } else {
-                        self.$keywordBox.find('.err-msg').show();
+                        self.$keywordBox.find('.search-error').show();
                     }
                 } else {
                     if (value.length > 1 || !value) {
