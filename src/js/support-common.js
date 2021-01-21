@@ -167,6 +167,29 @@
                     cookie.setCookie(self.cookieName, value, self.expire);
                 }
             }
+        },
+        isMobile: function() {
+            var userAgent = navigator.userAgent.toLowerCase();
+            var mobile = new Array('iphone', 'ipod', 'ipad', 'android', 'blackberry', 'windows ce', 'nokia', 'webos', 'opera mini', 'samsung', 'sonyericsson', 'opera mobi', 'iemobile', 'mot');
+            var isMobile = 0;
+
+            for(var count=0; count < mobile.length; count++) {
+                if(userAgent.indexOf(mobile[count]) != -1) {
+                    isMobile = true;
+                    break;
+                }
+            }
+
+            var platform = navigator.platform.toLowerCase();
+            var platform_filter = new Array('win16', 'win32', 'win64', 'mac', 'macintel');
+
+            for(var count=0; count < platform_filter.length; count++) {
+                if(platform.indexOf(platform_filter[count]) != -1) {
+                    isMobile = false;
+                }
+            }
+
+            return isMobile;
         }
     }
 
