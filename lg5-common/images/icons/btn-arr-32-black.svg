@@ -6,9 +6,7 @@
                     <g>
                         <g>
                             <g>
-                                <g>
-                                    <path d="M0 0L8.571 10 0 20" transform="translate(-355 -158) translate(32 148) translate(323 10) translate(11.714 6)"/>
-                                </g>
+                                <path d="M0 0L12 12 0 24" transform="translate(-32 -207) translate(0 84) translate(0 100) translate(32 23) translate(10 4) matrix(-1 0 0 1 12 0)"/>
                             </g>
                         </g>
                     </g>

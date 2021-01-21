@@ -39,17 +39,24 @@ $font-weight-bold: 700;
 // $c-medium: 53.75em; /*  52.50 / 860px */
 // $c-large: 1180px; /*  75.00 / 1024px */
 
-// MAIN COLORS
-$color-primary      :#ec455a;
-$color-default      :#000;
-
 // COLORS
-$color-white        :#fff;
+$color-primary      :#da0f47;
+$color-secondary    :#a50034;
+
+$color-negative     :#ff3723;
+$color-positive     :#76892d;
+$color-neutral      :#21a9aa;
+
+$color-default      :#000;
 $color-gray-1       :#767676;
 $color-gray-2       :#979797;
 $color-gray-3       :#ccc;
 $color-gray-4       :#aaa;
+$color-gray-5       :#666;
+$color-gray-6       :#e4e4e4;
+$color-white        :#fff;
 
+$color-disable      :#959595;
 $color-border       :#ddd;
 
 $color-bg           :#f4f4f4;
