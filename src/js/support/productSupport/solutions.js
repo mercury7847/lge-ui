@@ -314,6 +314,7 @@
 
                         self.setRecommProduct(resultData);
                         self.setServiceMenu(resultData);
+                        self.requestData();
                         $('#centerFind').show();
                     });
 

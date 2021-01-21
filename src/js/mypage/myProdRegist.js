@@ -76,6 +76,8 @@
                     self.setting();
                     self.bindEvents();
                     self.bindPopupEvents();
+
+                    self.requestMoreData(1);
                 });
             },
 
@@ -132,6 +134,9 @@
                 self.$selectCategory = $selectbox.eq(1);
                 self.$downloadPopupPagination = self.$downloadPopup.find('.pagination').vcPagination();
 
+                //모델병 확인방법 팝업
+                self.$modelCheckHelpPopup = $('#modelCheckHelpPopup');
+
                 self.checkNoData();
             },
 
@@ -184,6 +189,13 @@
                 //보유제품 툴팁 닫기
                 self.$myProductList.on('click','>ul li div.notice button', function(e) {
                     $(this).parents('.notice').hide();
+                });
+
+                //모델명 확인 방법 팝업 열기
+                self.$registMyProductPopup.on('click','p.link a', function(e) {
+                    console.log('asdasd');
+                    e.preventDefault();
+                    self.$modelCheckHelpPopup.vcModal();
                 });
 
                 //사용설명서
@@ -259,6 +271,9 @@
                     }
                 });
 
+                //모델명 확인 방법
+
+
                 //메뉴얼 더보기
                 self.$manualMoreButton.on('click', function(e){
                     var _id = self.$manualPopup.attr('data-model-id');
@@ -292,7 +307,9 @@
                 //다운로드 파일
                 self.$downloadPopup.on('click','li button.btn' ,function(e){
                     var url = $(this).attr('data-file-url');
-                    window.location = url;
+                    if(!(!url)) {
+                        window.location = url;
+                    }
                 });
             },
 
