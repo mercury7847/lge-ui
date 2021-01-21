@@ -108,6 +108,12 @@
                 '<strong class="tit">{{name}}</strong>' +
             '</a>' +
         '</li>';
+    var updateBannerTemplate = 
+    '<div class="info-banner">' +
+        '{{#each (item, index) in updateBanner}}' +
+        '<a href="{{item.url}}" class="btn dark-gray size"><span>{{item.name}}</span></a>' +
+        '{{/each}}' +
+    '</div>';
         
 
     $(window).ready(function() {
@@ -231,6 +237,7 @@
                     arr = data.listData instanceof Array ? data.listData : [],
                     keywordArr = (result.param && result.param.keywords instanceof Array) ? result.param.keywords : [],
                     subfilterArr = (data.subFilterList && data.subFilterList instanceof Array) ? data.subFilterList : [],
+                    bannerArr = (data.updateBanner && data.updateBanner instanceof Array) ? data.updateBanner : [],
                     html = '', keywordsHtml = '', pcHtml = '', mHtml = '';
                 
                 self.$result.find('.list-wrap .list').empty();
@@ -265,6 +272,11 @@
 
                     self.$subTopic.html(mHtml);
                     self.$subTopic.vcSelectbox('update');
+                }
+
+                if (bannerArr.length) {
+                    html = vcui.template(updateBannerTemplate, data);
+                    $('.solutions-wrap').prepend(html);
                 }
                 
                 self.$result.find('#solutionsCount').html(data.listPage.totalCount);
@@ -304,10 +316,20 @@
                 $('#serviceMenu').hide();
                 $('#centerFind').hide();
 
+                self.$myModelArea.show();
+
                 self.$cont.commonModel('next', self.$stepModel);
             },
             bindEvent: function() {
                 var self = this;
+
+                $('.ui_search').on('autocomplete', function(e, param, url, callback) {
+                    
+                    var param =  $.extend(self.param, param);
+                    lgkorUI.requestAjaxData(url, param, function(result) {
+                        callback(result);
+                    });
+                });
 
                 self.$cont.on('reset', function(e) {
                     self.reset();

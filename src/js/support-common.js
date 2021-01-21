@@ -211,6 +211,7 @@ CS.MD.search = function() {
     function Plugin(el, opt) {
         var self = this;
         var defaults = {
+            data: {},
             template: {
                 recentlyList: '<li><a href="#">{{keyword}}</a><button type="button" class="btn-delete"><span class="blind">삭제</span></button></li>',
                 keywordList: '<li><a href="#">{{name}}</a></li>'
@@ -227,6 +228,8 @@ CS.MD.search = function() {
     Plugin.prototype = {
         _initialize: function() {
             var self = this;
+
+            self.autoUrl = self.$el.data('autocompleteUrl');
             self._setRecently();
         },
         _setRecently: function() {
@@ -237,7 +240,7 @@ CS.MD.search = function() {
             
             $('.recently-keyword').find('ul').empty();
 
-            if (keywordCookie.length > 0) {
+            if (keywordCookie && keywordCookie.length > 0) {
                 arr = keywordCookie.split(',');
                 if (arr.length) {
                     arr.forEach(function(item) {
@@ -271,6 +274,17 @@ CS.MD.search = function() {
             self.$el.find('input[type=text]').on('focus', function() {
                 self.$el.addClass('on');
             }).on('input', function() {
+                var val = $(this).val();
+
+                if (val.length > 1) {
+                    var param = {
+                        search: val
+                    };
+
+                    self.$el.trigger('autocomplete', [param, self.autoUrl, function(result) {
+                        console.log(result);
+                    }]);
+                }
 
             }).on('keyup', function(e) {
                 if (e.keyCode == 13) {
