@@ -138,7 +138,9 @@
                 self.param = {};
                 self.param['keyword'] = '';
                 self.param['topic'] = 'All';
+                self.param['topicNm'] = 'All';
                 self.param['subTopic'] = 'All';
+                self.param['subTopicNm'] = 'All';
                 self.param['orderBy'] = $('#orderBy').val();
                 self.param['page'] = 1;
                 self.solutionsUrl = self.$wrap.data('solutionsUrl');
@@ -207,7 +209,7 @@
             },
             setFilter: function(data) {
                 var self = this,
-                    listArr = data instanceof Array ? data : [],
+                    listArr = data.filterList instanceof Array ? data.filterList : [],
                     pcHtml = '',
                     mHtml = '';
 
@@ -232,6 +234,8 @@
                     html = '', keywordsHtml = '', pcHtml = '', mHtml = '';
                 
                 self.$result.find('.list-wrap .list').empty();
+
+                self.setFilter(data);
 
                 if (arr.length) {
                     arr.forEach(function(item) {
@@ -284,6 +288,14 @@
             reset: function() {
                 var self = this;
 
+                self.param['keyword'] = '';
+                self.param['topic'] = 'All';
+                self.param['topicNm'] = 'All';
+                self.param['subTopic'] = 'All';
+                self.param['subTopicNm'] = 'All';
+                self.param['orderBy'] = $('#orderBy').val();
+                self.param['page'] = 1;
+
                 self.$filter.find('.open, .on').removeClass('open on');
                 self.$filter.find('.sub-depth').remove();
 
@@ -305,8 +317,12 @@
                     var param = {
                         modelCode: data.modelCode,
                         category: data.category,
-                        subCategory: data.subCategory
+                        categoryNm: data.categoryName,
+                        subCategory: data.subCategory,
+                        subCategoryNm: data.subCategoryName
                     };
+
+                    self.param = $.extend(self.param, param); 
 
                     lgkorUI.showLoading();
                     lgkorUI.requestAjaxDataPost(url, param, function(result) {
