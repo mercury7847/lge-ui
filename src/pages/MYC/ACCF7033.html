@@ -772,12 +772,12 @@
 
     <!-- 모델명 확인방법 -->
     <article id="modelCheckHelpPopup" class="popup-wrap"
-        data-list-url="/lg5-common/data-ajax/support/searchModelName.json"
+        data-ajax="/lg5-common/data-ajax/support/searchModelName.json"
     >
         <header class="pop-header">
             <h1 class="tit"><span>모델명 확인 방법</span></h1>
         </header>
-        <section class="pop-conts academy-pop common-pop no-footer"><!-- [11.27 수정] .common-pop class 추가 -->
+        <section class="pop-conts no-footer">
             <p class="noti-txt">사용하시는 제품의 <em>모델명과 제조번호</em>를 확인해주세요.</p>
             <div class="example-list">
                 <dl>
@@ -789,48 +789,51 @@
                     <dd>SERIAL NO(S/N) 또는 일련번호로 확인</dd>
                 </dl>
             </div>
-            <!-- 
-                1. 카테고리 선택 후 안내 메시지 {
-                    "text": "제품 오른쪽 뒷면에 스티커가 부착되어 있습니다.",
-                    "imgPath": "/lg5-common/images/dummy/@img-example.jpg"
-                }
-
-                2. 제품 이미지 없을 경우 {
-                    "text": "제품 이미지 준비중입니다.",
-                    "imgPath": "/lg5-common/images/img-nodata.svg"
-                }
-            -->
+    
             <div class="form-wrap category-select">
                 <dl class="forms">
                     <dt class="tit"><label for="select1" class="req">카테고리 선택</label></dt>
                     <dd class="conts">
                         <div class="box">
                             <div class="select-wrap">
-                                <select class="ui_selectbox ul_select_target" name="cateSelect" id="select1" title="전체 카테고리 선택">
+                                <select class="ui_selectbox ul_select_target" id="select1" title="전체 카테고리 선택" data-ajax="/lg5-common/data-ajax/support/subCategoryOption.json" data-target="#select2">
                                     <option value="" class="placeholder">카테고리 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
+                                    <option value="세탁기/스타일러">세탁기/스타일러</option>
+                                    <option value="모바일">모바일</option>
                                 </select>
                             </div>
                         </div>
                         <div class="box">
                             <div class="select-wrap">
-                                <select class="ui_selectbox" name="subCateSelect" id="select2" title="전체 카테고리 선택" disabled>
-                                    <option value="" class="placeholder" data-image-url="/lg5-common/images/dummy/@img-example.jpg" data-image-alt="모델명 및 제조번호 확인 예시 이미지" data-text="제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.">세부 카테고리 선택</option>
-                                    <!-- placeholder 개념의 option 일 경우 .placeholder -->
+                                <select class="ui_selectbox" id="select2" title="전체 카테고리 선택" disabled>
+                                    <option value="" class="placeholder">세부 카테고리 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
                                 </select>
                             </div>
                         </div>
                     </dd>
                 </dl>
             </div>
+    
             <div class="example-result">
                 <p class="txt">제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.</p>
+                <!-- 
+                    카테고리 선택 후 안내 메시지 
+                    <p class="txt">제품 오른쪽 뒷면에 스티커가 부착되어 있습니다.</p>
+                -->
+                <!-- 
+                    제품 이미지 없을 경우
+                    <p class="txt">제품 이미지 준비중입니다.</p>
+                 -->
                 <!-- [11.27 수정] 샘플 이미지 DOM 수정 -->
                 <div class="img" aria-hidden="true">
-                    <img src="/lg5-common/images/dummy/@img-example.jpg" alt="모델명 및 제조번호 확인 예시 이미지">
+                    <!-- 
+                        제품 이미지 없을 경우
+                        <img src="/lg5-common/images/img-nodata.svg" alt=""> 
+                    -->
+                    <img src="/lg5-common/images/dummy/@img-example.jpg" alt="">
                 </div>
                 <!-- // [11.27 수정] 샘플 이미지 DOM 수정 -->
             </div>
-        </section>
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
     </article>
     <!-- //모델명 확인방법 -->
