@@ -6,12 +6,15 @@
 .KRC0020 {	
 	&.stage-full .component-inner {
         max-width:1920px;
+        padding:0;
     }
     &.stage-wide .component-inner {
         max-width:1600px;
+        padding:0;
     }
     &.stage-standard .component-inner {
         max-width:1380px;
+        padding:0;
     }
 	.component-inner {
         position: relative;
