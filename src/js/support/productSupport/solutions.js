@@ -311,6 +311,14 @@
             bindEvent: function() {
                 var self = this;
 
+                $('.ui_search').on('autocomplete', function(e, param, url, callback) {
+                    
+                    var param =  $.extend(self.param, param);
+                    lgkorUI.requestAjaxData(url, param, function(result) {
+                        callback(result);
+                    });
+                });
+
                 self.$cont.on('reset', function(e) {
                     self.reset();
                 });
