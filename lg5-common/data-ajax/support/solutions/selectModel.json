@@ -202,6 +202,15 @@
                 "url": "",
                 "name": "매장방문 예약"
             }
+        ],
+        "updateBanner": [
+            {
+                "name": "Window 10 업데이트 정보",
+                "url": "https://www.lgservice.co.kr/asset/front/html/win_update/UpdateInfo.html"
+            }, {
+                "name": "Window 10 S 정보",
+                "url": "https://www.lgservice.co.kr/asset/front/html/win_update/UpdateInfoS.html"
+            }
         ]
     }
 }
