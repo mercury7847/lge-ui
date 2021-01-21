@@ -221,52 +221,56 @@
                     self.$topic.vcSelectbox('update');
                 }
             },
+            setSolutionsList: function(result, target) {
+                var self = this;
+
+                var data = result.data,
+                    $target = target ? $(target) : null,
+                    arr = data.listData instanceof Array ? data.listData : [],
+                    keywordArr = (result.param && result.param.keywords instanceof Array) ? result.param.keywords : [],
+                    subfilterArr = (data.subFilterList && data.subFilterList instanceof Array) ? data.subFilterList : [],
+                    html = '', keywordsHtml = '', pcHtml = '', mHtml = '';
+                
+                self.$result.find('.list-wrap .list').empty();
+
+                if (arr.length) {
+                    arr.forEach(function(item) {
+                        html += vcui.template(solutionsTemplate, item);
+                    });
+
+                    self.$result.find('.list-wrap .list').html(html);
+                    self.$result.find('.pagination').pagination('update', data.listPage);
+                
+                    self.$result.find('.list-wrap').show();
+                    self.$result.find('.pagination').show();
+                } else {
+                    self.$result.find('.list-wrap').hide();
+                    self.$result.find('.pagination').hide();
+                }
+
+                if (keywordArr.length) {
+                    keywordsHtml = vcui.template(keywordsTemplate, result.param);
+                    self.$result.find('.tit-wrap h3.tit').html(keywordsHtml);
+                }
+
+                if (subfilterArr.length) {
+                    pcHtml = vcui.template(subFilterTemplate, result);
+                    mHtml = vcui.template(subFilterOptionTemplate, result.data);
+
+                    $target && $target.after(pcHtml);
+
+                    self.$subTopic.html(mHtml);
+                    self.$subTopic.vcSelectbox('update');
+                }
+                
+                self.$result.find('#solutionsCount').html(data.listPage.totalCount);
+            },
             requestData: function(target) {
                 var self = this;
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(self.solutionsUrl, self.param, function(result){
-                    var data = result.data,
-                        $target = target ? $(target) : null,
-                        arr = data.listData instanceof Array ? data.listData : [],
-                        keywordArr = result.param.keywords instanceof Array ? result.param.keywords : [],
-                        subfilterArr = (data.subFilterList && data.subFilterList instanceof Array) ? data.subFilterList : [],
-                        html = '', keywordsHtml = '', pcHtml = '', mHtml = '';
-                    
-                    self.$result.find('.list-wrap .list').empty();
-
-                    if (arr.length) {
-                        arr.forEach(function(item) {
-                            html += vcui.template(solutionsTemplate, item);
-                        });
-
-                        self.$result.find('.list-wrap .list').html(html);
-                        self.$result.find('.pagination').pagination('update', data.listPage);
-                    
-                        self.$result.find('.list-wrap').show();
-                        self.$result.find('.pagination').show();
-                    } else {
-                        self.$result.find('.list-wrap').hide();
-                        self.$result.find('.pagination').hide();
-                    }
-
-                    if (keywordArr.length) {
-                        keywordsHtml = vcui.template(keywordsTemplate, result.param);
-                        self.$result.find('.tit-wrap h3.tit').html(keywordsHtml);
-                    }
-
-                    if (subfilterArr.length) {
-                        pcHtml = vcui.template(subFilterTemplate, result);
-                        mHtml = vcui.template(subFilterOptionTemplate, result.data);
-    
-                        $target && $target.after(pcHtml);
-    
-                        self.$subTopic.html(mHtml);
-                        self.$subTopic.vcSelectbox('update');
-                    }
-                    
-                    self.$result.find('#solutionsCount').html(data.listPage.totalCount);
-                    
+                    self.setSolutionsList(result, target);
                     lgkorUI.hideLoading();
                 });
             },
@@ -303,7 +307,8 @@
                         category: data.category,
                         subCategory: data.subCategory
                     };
-                    
+
+                    lgkorUI.showLoading();
                     lgkorUI.requestAjaxDataPost(url, param, function(result) {
                         var resultData = result.data;
     
@@ -314,8 +319,9 @@
 
                         self.setRecommProduct(resultData);
                         self.setServiceMenu(resultData);
-                        self.requestData();
+                        self.setSolutionsList(result);
                         $('#centerFind').show();
+                        lgkorUI.hideLoading();
                     });
 
                     if (data.subCategory == 'C000136') {
