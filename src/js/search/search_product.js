@@ -49,7 +49,7 @@
     var filterSliderTemplate = '<li data-filterId="{{filterId}}">' +
         '<div class="head">' +
             '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{title}}</div>' +
+                '<div class="tit">{{filterGroupName}}</div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
@@ -63,15 +63,15 @@
     var filterRadioTemplate = '<li data-filterId="{{filterId}}">' +
         '<div class="head">' +
             '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{title}}</div>' +
+                '<div class="tit">{{filterGroupName}}</div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
             '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="rdo-wrap">' +
-                    '<input type="radio" name="{{filterId}}" value="{{item.value}}" id="rdo-{{filterId}}-{{idx}}" {{#if idx==0}}checked{{/if}}>' +
-                    '<label for="rdo-{{filterId}}-{{idx}}">{{item.title}}</label>' +
+                    '<input type="radio" name="{{filterId}}" value="{{item.filterValueId}}" id="rdo-{{filterId}}-{{idx}}" {{#if idx==0}}checked{{/if}}>' +
+                    '<label for="rdo-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
         '</div>' +
@@ -79,15 +79,15 @@
     var filterColorTemplate = '<li data-filterId="{{filterId}}">' +
         '<div class="head">' +
             '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수 </span>(0)</span></div>' +
+                '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span>(0)</span></div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
             '<div class="cont">' +
-                '{{#each (item, idx) in filterValues}}<div class="chk-wrap-colorchip {{item.color}}">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.value}}" id="color-{{filterId}}-{{idx}}">' +
-                    '<label for="color-{{filterId}}-{{idx}}">{{item.title}}</label>' +
+                '{{#each (item, idx) in filterValues}}<div class="chk-wrap-colorchip {{item.topFilterDisplayName}}">' +
+                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="color-{{filterId}}-{{idx}}">' +
+                    '<label for="color-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
         '</div>' +
@@ -95,15 +95,15 @@
     var filterCheckboxTemplate = '<li data-filterId="{{filterId}}">' +
         '<div class="head">' +
             '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수 </span>(0)</span></div>' +
+                '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span>(0)</span></div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
         '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="chk-wrap">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.value}}" id="chk-{{filterId}}-{{idx}}">' +
-                    '<label for="chk-{{filterId}}-{{idx}}">{{item.title}}</label>' +
+                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="chk-{{filterId}}-{{idx}}">' +
+                    '<label for="chk-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
         '</div>' +
@@ -882,11 +882,12 @@
                         var length = item.filterList instanceof Array ? item.filterList.length : 0;
                         item.length = (length > 0) ? (length - 1) : 0;
                         switch(item.filterType) {
-                            case "slider":
+                            case "range":
                                 hasSlider = true;
                                 item.filterValues.forEach(function(obj, idx){
-                                    obj.filterValue = obj.value;
                                     obj.value = idx;
+                                    obj.filterValue = obj.filterValueId;
+                                    obj.title = obj.filterValueName;
                                     item.maxTitle = obj.title;
                                     item.maxFilterValue = ""+idx;
                                     if(idx == 0) {
