@@ -186,7 +186,7 @@ CS.MD.commonModel = function() {
                 '<div class="product-box">' +
                     '<ul class="product">' +
                         '{{# for (var i = 0; i < product.length; i++) { #}}' +
-                            '{{# if (product[i]) { #}}' +
+                            '{{# if (product[i].name) { #}}' +
                                 '{{# if (i == 2) { #}}' +
                                     '{{# if (!lgkorUI.isLogin) { #}}' +
                         '<li>{{product[i].name}}</li>' +
@@ -201,7 +201,7 @@ CS.MD.commonModel = function() {
                             '{{# } #}}' +
                         '{{# } #}}' +
                     '</ul>' +
-                    '{{# if (product.length == 3 && lgkorUI.isLogin && !product[2].isMyProduct) { #}}' +
+                    '{{# if (product.length == 3 && product[2].name && lgkorUI.isLogin && !product[2].isMyProduct) { #}}' +
                     '<a href="#" class="btn-add-product"><span>보유제품 추가</span></a>' +
                     '{{# } #}}' +
                 '</div>' +
@@ -524,6 +524,7 @@ CS.MD.commonModel = function() {
                 self.$el.find('#subCategoryNm').val(data.subCategoryName);
                 self.$el.find('#modelCode').val(data.modelCode);
                 self.$el.find('#productCode').val(data.productCode);
+                self.$el.find('#isMyProduct').val('N');
                 self.$el.trigger('complete', [data, url]);
 
                 if (data.modelCode) lgkorUI.recentlySearch.addCookie(data.modelCode);
@@ -646,6 +647,7 @@ CS.MD.commonModel = function() {
                     self.$el.find('#subCategoryNm').val(data.subCategoryName);
                     self.$el.find('#modelCode').val(data.modelCode);
                     self.$el.find('#productCode').val(data.productCode);
+                    self.$el.find('#isMyProduct').val('Y');
                     self.$el.trigger('complete', [data, url]);
                 }
             });
@@ -656,13 +658,14 @@ CS.MD.commonModel = function() {
 
                 if ($toggleBox.hasClass('open')) {
                     self.$myModelSlider.stop().slideUp(function() {
-                        $toggleBox.removeClass('open');
                     });
+                    $toggleBox.removeClass('open');
                     $this.html('보유제품 펼치기');
                 } else {
                     self.$myModelSlider.stop().slideDown(function() {
-                        $toggleBox.addClass('open');
+                        
                     });
+                    $toggleBox.addClass('open');
                     $this.html('보유제품 접기');
                 }
             });
@@ -875,6 +878,7 @@ CS.MD.commonModel = function() {
             self.$el.find('#subCategoryNm').val('');
             self.$el.find('#modelCode').val('');
             self.$el.find('#productCode').val('');
+            self.$el.find('#isMyProduct').val('N');
 
             self.$keywordInput.val('');
             self.$categoryBox.find('.box').removeClass('on off');

@@ -723,10 +723,12 @@
         @include mobile {
             .patch-note {
                 padding: 16px;
+                em {
+                    font-size: 14px;
+                }
             }
         }
     }
-
     
     .mobile-contents{
         margin:30px 0 0;
@@ -740,6 +742,8 @@
             > li {
                 font-size: 14px;
                 line-height: 1.63;
+                text-indent: -0.5em;
+                padding-left: 0.5em;
             }
             strong{
                 font-size: 16px;
@@ -756,6 +760,17 @@
         }
         .title:before{
             content:'';display:inline-block;position:absolute;left:0;top:5px;border-radius:10px;width:10px;height:10px;background:#ce1848;
+        }
+        @include mobile {
+            p {
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+            ul {
+                strong {
+                    font-size: 14px;
+                }
+            }
         }
     }
 } //support
