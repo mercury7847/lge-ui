@@ -37,10 +37,11 @@ vcui.define('ui/radioShowHide', ['jquery', 'vcui'], function ($, core) {
         _build: function _build() {
             var self = this;
             var opts = self.options;
-
+            console.log(self.$radios)
             var radioName = self.$radios[0].name;
             self.$target = self.$radios.filter('input[name='+ radioName +']');
-            self.change();                 
+            self.change();          
+            console.log(self.$target);       
         },
 
         _bindEvent: function _bindEvent() {
@@ -57,6 +58,7 @@ vcui.define('ui/radioShowHide', ['jquery', 'vcui'], function ($, core) {
         change: function change() {
 
             var self = this;
+            var showTarget = [];
 
             self.$target.each(function(){
                     
@@ -66,11 +68,16 @@ vcui.define('ui/radioShowHide', ['jquery', 'vcui'], function ($, core) {
 
                 core.each(arr, function(value){
                     if(isChecked){
-                        $(core.string.trim(value)).show();
+                        showTarget.push(core.string.trim(value));
+                        // $(core.string.trim(value)).show();
                     }else{
                         $(core.string.trim(value)).hide();
                     }
                 });		
+            });
+
+            core.each(showTarget, function(value) {
+                $(value).show();
             });
         }
 

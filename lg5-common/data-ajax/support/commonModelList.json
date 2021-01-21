@@ -10,12 +10,20 @@
                 "category": "1019",
                 "subCategory": "CT50019259",
                 "productCode": "CRA"
+            }, 
+            {
+                "modelCode": "LGP810SPEAK",
+                "categoryNm": "에어컨",
+                "subCategoryNm": "시스템 에어컨",
+                "category": "CT50019183",
+                "subCategory": "CT50019259",
+                "productCode": "CRA"
             },
             {
                 "modelCode": "LGP810SPEAK",
                 "categoryNm": "에어컨",
                 "subCategoryNm": "창문형/이동식",
-                "category": "1019",
+                "category": "CT50019183",
                 "subCategory": "CT50019229",
                 "productCode": "WRA"
             },
