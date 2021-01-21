@@ -237,7 +237,7 @@ CS.MD.search = function() {
             
             $('.recently-keyword').find('ul').empty();
 
-            if (keywordCookie.length > 0) {
+            if (keywordCookie && keywordCookie.length > 0) {
                 arr = keywordCookie.split(',');
                 if (arr.length) {
                     arr.forEach(function(item) {
