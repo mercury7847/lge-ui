@@ -283,9 +283,10 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             var $target;  
             for(var key in obj){
                 $target = self.$el.find('[name='+ key +']');
-                
-                if($target.is(':radio') || $target.is(':checkbox')){
+                if($target.is(':radio')){
                     $target.filter('[value='+ obj[key] +']').prop('checked', true);
+                } else if($target.is(':checkbox')){
+                    $target.filter('[name='+ key +']').prop('checked', obj[key]);
                 }else{
                     if($target.is('select')){
                         $target.find('option[value=' + obj[key] + ']').prop("selected", true);
