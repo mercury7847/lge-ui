@@ -34,11 +34,13 @@
                         msgTarget: '.err-block'
                     },
                 };
-                vcui.require(['ui/validation'], function () {
+
+                vcui.require(['ui/validation','ui/pagination'], function () {
                     self.validation = new vcui.ui.Validation('div.cont-wrap div.filters',{register:register});
+                    self.$pagination =  self.$contWrap.find('div.pagination').vcPagination();
+                    self.bindEvents();
                 });
 
-                self.bindEvents();
                 self.checkNoData();
             },
 
@@ -51,27 +53,42 @@
                 });
 
                 self.$inquiryButton.on('click',function (e) {
-                    var result = self.validation.validate();
-                    if(result.success){
-                        var startDate = self.$dateFilterStartDate.vcCalendar('getyyyyMMdd');
-                        var endDate = self.$dateFilterEndDate.vcCalendar('getyyyyMMdd');
-                        if(startDate && endDate) {
-                            var param = {
-                                "startDate":startDate,
-                                "endDate":endDate,
-                                "pointUseType":self.$dateFilter.find('input[name="pointUseType"]:checked').val()
-                            }
-                            self.requestData(param);
-                        }
-                    }
+                    self.requestData(1);
+                });
+
+                //페이지
+                self.$pagination.on('page_click', function(e, data) {
+                    self.requestData(data);
                 });
             },
 
-            requestData: function(param) {
+            requestData: function(page) {
                 var self = this;
+                var result = self.validation.validate();
+                if(!result.success){
+                    return;
+                }
+
+                var param = {};
+                var startDate = self.$dateFilterStartDate.vcCalendar('getyyyyMMdd');
+                var endDate = self.$dateFilterEndDate.vcCalendar('getyyyyMMdd');
+                if(startDate && endDate) {
+                    param = {
+                        "startDate":startDate,
+                        "endDate":endDate,
+                        "pointUseType":self.$dateFilter.find('input[name="pointUseType"]:checked').val(),
+                        "page":page
+                    }
+                } else {
+                    return;
+                }
+
                 var ajaxUrl = self.$dateFilter.attr('data-list-url');
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                     var data = result.data;
+                    //페이지
+                    self.$pagination.vcPagination('setPageInfo',result.param.pagination);
+
                     self.$pointTotal.text(vcui.number.addComma(data.totalPoint) + "P");
                     var arr = data.listData instanceof Array ? data.listData : [];
                     self.$pointList.empty();
@@ -93,9 +110,11 @@
                 var self = this;
                 if(self.$pointList.find('li').length > 0) {
                     self.$pointList.parent().show();
+                    self.$pagination.show();
                     self.$noData.hide();
                 } else {
                     self.$pointList.parent().hide();
+                    self.$pagination.hide();
                     self.$noData.show();
                 }
             },
