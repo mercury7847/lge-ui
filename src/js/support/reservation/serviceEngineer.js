@@ -177,6 +177,8 @@
                     });
                 }
 
+                $('#route').val(lgkorUI.isMobile());
+
                 self.$engineerSlider.vcCarousel({
                     slidesToShow: 4,
                     slidesToScroll: 4,
