@@ -71,7 +71,7 @@
     padding: 20px 0;
 
     @include mobile {
-        padding: 13px 0 0;
+        padding: 15px 0 0;
     }
 }
 
@@ -80,7 +80,7 @@
         padding: 0 8px;
         font-size: 0;
         .nav {
-            margin-top: 13px;
+            margin-top: 14px;
             > li {
                 display: inline-block;
                 border-top: 0;
@@ -195,6 +195,7 @@
 
     @include mobile {
         float: none;
+        padding-top: 0;
         padding-left: 0;
         a {
             width: 80px;
@@ -309,7 +310,7 @@
         padding-right: 0;
         position: absolute;
         top: 5px;
-        right: 45px;
+        right: 50px;
         z-index: 1;
         .shortcut {
             li {
@@ -1160,7 +1161,7 @@
 
 .mobile-nav-button {
     position: absolute;
-    top: 5px;
+    top: 6px;
     right: 7px;
     width: 38px;
     height: 38px;
