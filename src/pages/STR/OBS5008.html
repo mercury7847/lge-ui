@@ -15,12 +15,6 @@
         <script src="/lg5-common/js/vcui.min.js"></script>
         <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
         <script src="/lg5-common/js/lg.common.min.js"></script>
-
-        <script>
-            window.cremaAsyncInit = function () {
-                crema.init("thecrema", "크리마");
-            }
-        </script>
     </head>
     <!-- // 템플릿으로 진행되는 화면. 제대로 display되도록 임시 삽입 -->
 <body>
@@ -66,9 +60,9 @@
         m.parentNode.insertBefore(a,m)
     })(window,document,'script','crema-jssdk','//widgets.cre.ma/lge.co.kr/init.js');
     
-    // window.cremaAsyncInit = function () {
-    //     crema.init(null, null);
-    // }
+    window.cremaAsyncInit = function () {
+        crema.init("thecrema", "크리마");
+    }
 </script>
 
 </html>
