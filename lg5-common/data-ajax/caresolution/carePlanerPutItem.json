@@ -25,6 +25,7 @@
                 "displayName" : "슬림 업다운 정수기,",
                 "modelCd" : "WD501AW1.AKOR",
                 "monthPrice" : 55900,
+                "originalPrice": "54,000원",
                 "combineFlag": "Y",
                 "combineText": "결합 -15,000원"
             },
@@ -38,6 +39,7 @@
                 "displayName" : "슬림 업다운 정수기",
                 "modelCd" : "WD501AW2.AKOR",
                 "monthPrice" : 45900,
+                "originalPrice": "54,000원",
                 "transPrice" : 15000,
                 "combineFlag": "N",
                 "combineText": "결합 미적용"
@@ -52,6 +54,7 @@
                 "displayName" : "슬림 업다운 정수기",
                 "modelCd" : "WD501AW2.AKOR",
                 "monthPrice" : 45900,
+                "originalPrice": "54,000원",
                 "transPrice" : 15000,
                 "combineFlag": "NA",
                 "combineText": ""
