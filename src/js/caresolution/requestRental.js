@@ -659,9 +659,8 @@
     //신용정보 조회...
     function setCreditInquire(){
         var step1Value = step1Validation.getValues();
-
         var result = step1Validation.validate();
-        if(result.validItem.registFrontNumber || result.validItem.registBackFirst || result.validItem.userEmail){
+        if(result.validItem.registFrontNumber || result.validItem.registBackFirst || result.validItem.userEmail || result.validItem.zipCode){
             return;
         }
 
@@ -669,8 +668,10 @@
             rentalCareType: getInputData('rentalCareType'),
             registFrontNumber: step1Value.registFrontNumber,
             registBackFirst: step1Value.registBackFirst,
-            userEmail: step1Value.userEmail
+            userEmail: step1Value.userEmail,
+            zipCode: step1Value.zipCode
         }
+        console.log("sendata:",sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CREDIT_INQUIRE_URL, sendata, function(result){
             if(result.data.success == "P"){
                 window.open('', 'nicePopUp', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
