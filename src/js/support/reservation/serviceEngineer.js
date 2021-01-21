@@ -512,16 +512,18 @@
                     });
                 
                     
-                    // 에어컨 > 시스템 에어컨 선택 시
-                    if (data.subCategory == "CT50019259"){
-                        self.$fanBox.show();
-                        self.$bdTypeBox.show();
-                    } else if (data.subCategory != "CT50019229") {
-                        self.$fanBox.show();
-                        self.$bdTypeBox.hide();
+                    // 에어컨 > 시스템 에어컨 OR 창문형/이동식 선택 시
+                    if (data.category == 'CT50019183') {
+                        if (data.subCategory == "CT50019259"){
+                            self.$fanBox.show();
+                            self.$bdTypeBox.show();
+                        } else if (data.subCategory != "CT50019229") {
+                            self.$fanBox.show();
+                            self.$bdTypeBox.hide();
+                        }
                     }
                     
-                    // 드럼 세탁기 선택 시
+                    // 드럼 세탁기 OR 의류 건조기 선택 시
                     if (data.subCategory == "CT50019309" || data.subCategory == "CT50019275") {
                         self.$installTypeBox.show();
                     } else {
