@@ -61,6 +61,7 @@
                 var cookieText;
                 var cookieExpire = new Date();
 
+                
                 cookieExpire.setDate(cookieExpire.getDate() + expire);
                 cookieText = cookieName + '=' + escape(value) + ((expire == null) ? '' : '; expires=' + cookieExpire.toUTCString());
 
@@ -91,8 +92,8 @@
 
                 if (cookies) {
                     var cookieArr = cookies.split(',');
-
-                    if (cookieArr.indexOf(value) != -1) {
+                    
+                    if (cookieArr.indexOf(value.toString()) != -1) {
                         var index = -1;
                         for (var i = 0; i < cookieArr.length; i++) {
                             if (value == cookieArr[i]) {
@@ -100,10 +101,11 @@
                                 break;
                             }
                         }
+                        
                         if (index != -1) {
                             cookieArr.splice(index, 1);
                             cookies = cookieArr.join(',');
-                            cookie.setCookie(self.cookieName, cookies, self.expire);
+                            cookie.setCookie(cookieName, cookies, 365);
                         }
                     }
                 }
@@ -210,7 +212,7 @@ CS.MD.search = function() {
         var self = this;
         var defaults = {
             template: {
-                recentlyList: '<li><a href="#">{{name}}</a></li>',
+                recentlyList: '<li><a href="#">{{keyword}}</a><button type="button" class="btn-delete"><span class="blind">삭제</span></button></li>',
                 keywordList: '<li><a href="#">{{name}}</a></li>'
             }
         };
@@ -224,25 +226,66 @@ CS.MD.search = function() {
 
     Plugin.prototype = {
         _initialize: function() {
-
+            var self = this;
+            self._setRecently();
         },
         _setRecently: function() {
             var self = this;
-            var keywordCookie = cookie.getCookie('LG_SupportKeyword');
+            var tmpl = self.options.template,
+                keywordCookie = cookie.getCookie('LG_SupportKeyword'),
+                arr = [];
+            
+            $('.recently-keyword').find('ul').empty();
+
+            if (keywordCookie.length > 0) {
+                arr = keywordCookie.split(',');
+                if (arr.length) {
+                    arr.forEach(function(item) {
+                        var html = tmpl.recentlyList.replace('{{keyword}}', item);
+                        $('.recently-keyword').find('ul').append(html);
+                    });
+                    $('.recently-keyword').find('ul').show();
+                    $('.recently-keyword').find('.no-keyword').hide();
+                } else {    
+                    $('.recently-keyword').find('ul').hide();
+                    $('.recently-keyword').find('.no-keyword').show();
+                }
+            } else {
+                $('.recently-keyword').find('ul').hide();
+                $('.recently-keyword').find('.no-keyword').show();
+            }            
         },
         _bindEvent: function() {
             var self = this;
 
+            self.$el.on('click', '.search-layer .btn-delete', function() {
+                var $box = $(this).closest('li');
+                cookie.deleteCookie('LG_SupportKeyword', $box.find('a').text())
+                self._setRecently();
+            });
+
+            self.$el.on('click', '.search-layer .btn-close', function() {
+                self.$el.removeClass('on');
+            });
+
             self.$el.find('input[type=text]').on('focus', function() {
                 self.$el.addClass('on');
-            }).on('focusout', function() {
-                self.$el.removeClass('on');
             }).on('input', function() {
 
             }).on('keyup', function(e) {
                 if (e.keyCode == 13) {
                     e.preventDefault();
-                    cookieKeyword
+                    var val = $(this).val().trim();
+                    if (val.length > 0) {
+                        cookieKeyword.addCookie($(this).val());
+                        self._setRecently();
+                    }
+                }
+            });
+
+            $('body').on('click', function (e) {
+                if (!$(e.target).parents('.keyword-search')[0]) {
+                    self.$el.removeClass('on');
                 }
             });
         }
