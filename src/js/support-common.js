@@ -183,13 +183,28 @@ CS.MD.commonModel = function() {
                 '<p class="tit">서비스 이용을 위해 제품을 선택해주세요.</p>' +
                 '{{# } #}}' +
                 '{{# if (typeof product != "undefined") { #}}' +
-                '<ul class="product">' +
-                    '{{# for (var i = 0; i < product.length; i++) { #}}' +
-                    '{{# if (product[i]) { #}}' +
-                    '<li>{{product[i]}}</li>' +
+                '<div class="product-box">' +
+                    '<ul class="product">' +
+                        '{{# for (var i = 0; i < product.length; i++) { #}}' +
+                            '{{# if (product[i]) { #}}' +
+                                '{{# if (i == 2) { #}}' +
+                                    '{{# if (!lgkorUI.isLogin) { #}}' +
+                        '<li>{{product[i].name}}</li>' +
+                                    '{{# } else if (product[i].isMyProduct) { #}}' +
+                        '<li><span>보유</span>{{product[i].name}}</li>' +
+                                    '{{# } else { #}}' +    
+                        '<li>{{product[i].name}}</li>' +
+                                    '{{# } #}}' + 
+                                '{{# } else { #}}' +    
+                        '<li>{{product[i].name}}</li>' +
+                                '{{# } #}}' +    
+                            '{{# } #}}' +
+                        '{{# } #}}' +
+                    '</ul>' +
+                    '{{# if (product.length == 3 && lgkorUI.isLogin && !product[2].isMyProduct) { #}}' +
+                    '<a href="#" class="btn-add-product"><span>보유제품 추가</span></a>' +
                     '{{# } #}}' +
-                    '{{# } #}}' +
-                '</ul>' +
+                '</div>' +
                 '{{# } #}}' +
                 // '{{# if (typeof desc != "undefined") { #}}' +
                 // '<p class="desc">{{desc}}</p>' +
@@ -227,6 +242,7 @@ CS.MD.commonModel = function() {
         '</div>';
 
     var termsValidation;
+    var myModel = [];
 
     function Plugin(el, opt) {
         var self = this;
@@ -450,6 +466,18 @@ CS.MD.commonModel = function() {
                 $(this).closest('.box').removeClass('on').addClass('off');
             });
 
+            self.$modelBox.find('#categorySelect').on('reset', function() {
+                self.param = $.extend(self.param, {
+                    category: '',
+                    categoryNm: '전체',
+                    subCategory: '',
+                    subCategoryNm: '전체',
+                    page: 1
+                });
+
+                self._requestData();
+            });
+
             // 서브 카테고리 선택
             self.$categoryBox.find('.sub-category-list button').on('click', function() {
                 var $this = $(this),
@@ -457,7 +485,7 @@ CS.MD.commonModel = function() {
                     opt = self.options;
 
                 self.param = $.extend(self.param, {
-                    category: data.categor,
+                    category: data.category,
                     categoryNm: data.categoryName,
                     subCategory: data.subCategory,
                     subCategoryNm: data.subCategoryName,
@@ -572,6 +600,11 @@ CS.MD.commonModel = function() {
 
             if (!self.$myModelSlider.length) return;
 
+            self.$myModelSlider.find('a').each(function() {
+                var modelCode = $(this).data('modelCode');
+                myModel.push(modelCode);
+            });
+
             self.$myModelSlider.vcCarousel({
                 slidesToScroll: 3,
                 slidesToShow: 3,
@@ -654,6 +687,7 @@ CS.MD.commonModel = function() {
                     } else {
                         self.$myModelArea.show();
                         self.next(self.$stepModel);
+                        self.$myModelSlider.vcCarousel('resize');
                     }
                     
                     self.focus(self.$selectedModelBar);
@@ -755,6 +789,7 @@ CS.MD.commonModel = function() {
             
             self.$selectedModelBar.show();
             self.$myModelArea.show();
+            self.$myModelSlider.vcCarousel('resize');
             self.next(self.$stepModel);
             self.focus(self.$selectedModelBar);
         },
@@ -779,8 +814,27 @@ CS.MD.commonModel = function() {
         },
         updateSummary: function(summary) {
             var self = this;
-            var summary = summary || self.options.defaultSummary;
+            var summary = summary || self.options.defaultSummary,
+                isMyProduct = false;
 
+            if (myModel.length && summary.product && summary.product.length == 3) {
+                if (myModel.indexOf(summary.product[2]) != -1) {
+                    isMyProduct = true;
+                }
+            }
+            var test = [];
+            if (summary.product) {
+                for(var i = 0; i < summary.product.length; i++) {
+                    test[i] = {
+                        name: summary.product[i]
+                    }
+                    if (i == 2) {
+                        test[i]['isMyProduct'] = isMyProduct;
+                    }
+                }
+                summary.product = test;
+            }
+            console.log(isMyProduct);
             self.$selectedModelBar.html(vcui.template(selectedBarTmpl, summary));
         },
         focus: function($target, callback) {
