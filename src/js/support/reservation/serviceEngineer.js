@@ -287,11 +287,17 @@
                 param = validation.getAllValues(),
                 result;
 
+            var productCode = $('#productCode').val();
+
+            if ($('[name=bdType]').val() == 4) {
+                productCode = 'CRB';
+            }
+
             param = $.extend(param, {
                 topic: $('input[name=topic]:checked').val(),
                 subTopic: $('input[name=subTopic]:checked').val(),
                 serviceType: $('#serviceType').val(),
-                productCode: $('#productCode').val(),
+                productCode: productCode,
                 category: $('#category').val(),
                 subCategory: $('#subCategory').val()
             });
@@ -340,11 +346,17 @@
                 param = validation.getAllValues(),
                 result;
 
+            var productCode = $('#productCode').val();
+
+            if ($('[name=bdType]').val() == 4) {
+                productCode = 'CRB';
+            }
+
             param = $.extend(param, {
                 topic: $('input[name=topic]:checked').val(),
                 subTopic: $('input[name=subTopic]:checked').val(),
                 serviceType: $('#serviceType').val(),
-                productCode: $('#productCode').val(),
+                productCode: productCode,
                 category: $('#category').val(),
                 subCategory: $('#subCategory').val(),
                 date: $('#date').val()
@@ -433,6 +445,10 @@
         },
         requestComplete: function() {
             var self = this;
+
+            if ($('[name=bdType]').val() == 4) {
+                $('#productCode').val('CRB');
+            }
 
             var url = self.$submitForm.data('ajax');
             var formData = validation.getAllValues();
@@ -626,6 +642,12 @@
                 var url = self.$stepDate.data('ajax'),
                     param;
 
+                var productCode = $('#productCode').val();
+
+                if ($('[name=bdType]').val() == 4) {
+                    productCode = 'CRB';
+                }
+
                 param = {
                     serviceType: $('#serviceType').val(),
                     category: $('#category').val(),
@@ -634,7 +656,7 @@
                     zipCode: $('#zipCode').val(),
                     userAddress: $('#userAddress').val(),
                     detailAddress: $('#detailAddress').val(),
-                    productCode: $('#productCode').val(),
+                    productCode: productCode,
                     date: $('#date').val(),
                     time: $('#time').val()
                 }
