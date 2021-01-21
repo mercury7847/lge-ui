@@ -291,7 +291,7 @@
 
             var productCode = $('#productCode').val();
 
-            if ($('[name=bdType]').val() == 4) {
+            if ($('[name=bdType]:checked').val() == 4) {
                 productCode = 'CRB';
             }
 
@@ -350,7 +350,7 @@
 
             var productCode = $('#productCode').val();
 
-            if ($('[name=bdType]').val() == 4) {
+            if ($('[name=bdType]:checked').val() == 4) {
                 productCode = 'CRB';
             }
 
@@ -448,7 +448,7 @@
         requestComplete: function() {
             var self = this;
 
-            if ($('[name=bdType]').val() == 4) {
+            if ($('[name=bdType]:checked').val() == 4) {
                 $('#productCode').val('CRB');
             }
 
@@ -646,7 +646,7 @@
 
                 var productCode = $('#productCode').val();
 
-                if ($('[name=bdType]').val() == 4) {
+                if ($('[name=bdType]:checked').val() == 4) {
                     productCode = 'CRB';
                 }
 
