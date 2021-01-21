@@ -524,6 +524,7 @@ CS.MD.commonModel = function() {
                 self.$el.find('#subCategoryNm').val(data.subCategoryName);
                 self.$el.find('#modelCode').val(data.modelCode);
                 self.$el.find('#productCode').val(data.productCode);
+                self.$el.find('#isMyProduct').val('N');
                 self.$el.trigger('complete', [data, url]);
 
                 if (data.modelCode) lgkorUI.recentlySearch.addCookie(data.modelCode);
