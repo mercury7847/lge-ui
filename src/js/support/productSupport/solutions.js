@@ -304,6 +304,8 @@
                 $('#serviceMenu').hide();
                 $('#centerFind').hide();
 
+                self.$myModelArea.show();
+
                 self.$cont.commonModel('next', self.$stepModel);
             },
             bindEvent: function() {
