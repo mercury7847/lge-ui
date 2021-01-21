@@ -1,9 +1,40 @@
 {
     "status": "success",
     "message":null,
-    "data": {
-        "text": "제품 오른쪽 뒷면에 스티커가 부착되어 있습니다.",
-        "imageUrl": "/lg5-common/images/dummy/@img-example.jpg",
-        "imageAlt": "{{서브카테고리명}}의 모델명 및 제조번호 확인 이미지"
-    }
+    "data": [
+        {
+            "categoryName":"TV",
+            "modelList":[
+                {
+                    "modelName":"94oledxub1",
+                    "text": "제품 왼쪽 뒷면에 스티커가 부착되어 있습니다.",
+                    "imageUrl": "/lg5-common/images/dummy/@img-example.jpg",
+                    "imageAlt": "모델명 및 제조번호 확인 이미지"
+                },
+                {
+                    "modelName":"94oledxub2",
+                    "text": "제품 오른쪽 뒷면에 스티커가 부착되어 있습니다.",
+                    "imageUrl": "/lg5-common/images/dummy/@img-example.jpg",
+                    "imageAlt": "모델명 및 제조번호 확인 이미지"
+                }
+            ]
+        },
+        {
+            "categoryName":"세탁기",
+            "modelList":[
+                {
+                    "modelName":"95oledxub3",
+                    "text": "",
+                    "imageUrl": "",
+                    "imageAlt": "모델명 및 제조번호 확인 이미지"
+                },
+                {
+                    "modelName":"95oledxub4",
+                    "text": "제품 오른쪽 옆면에 스티커가 부착되어 있습니다.",
+                    "imageUrl": "/lg5-common/images/dummy/@img-example.jpg",
+                    "imageAlt": "모델명 및 제조번호 확인 이미지"
+                }
+            ]
+        }
+    ]
 }
