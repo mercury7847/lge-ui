@@ -513,25 +513,23 @@
                 
                     
                     // 에어컨 > 시스템 에어컨 선택 시
-                    if (data.category == '1019'){
-                        if (data.subCategory == "1129"){
-                            self.$fanBox.show();
-                            self.$bdTypeBox.show();
-                        } else if (data.subCategory != "1083") {
-                            self.$fanBox.show();
-                            self.$bdTypeBox.hide();
-                        }
+                    if (data.subCategory == "CT50019259"){
+                        self.$fanBox.show();
+                        self.$bdTypeBox.show();
+                    } else if (data.subCategory != "CT50019229") {
+                        self.$fanBox.show();
+                        self.$bdTypeBox.hide();
                     }
                     
                     // 드럼 세탁기 선택 시
-                    if (data.subCategory == "1086" || data.subCategory == "1021") {
+                    if (data.subCategory == "CT50019309" || data.subCategory == "CT50019275") {
                         self.$installTypeBox.show();
                     } else {
                         self.$installTypeBox.hide();
                     }
                     
                     // TV/프로젝터 > 올레드, 울트라HD, LED/LCD, PDP 선택 시
-                    if (data.subCategory == "D002795" || data.subCategory == "1040" || data.subCategory == "1041" || data.subCategory == "1043") {
+                    if (data.subCategory == "CT50019082" || data.subCategory == "CT50019037" || data.subCategory == "CT50019052" || data.subCategory == "CT50019067") {
                         self.$tvPositionBox.show();
                     } else {
                         self.$tvPositionBox.hide();
