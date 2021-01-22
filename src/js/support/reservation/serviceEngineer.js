@@ -177,7 +177,9 @@
                     });
                 }
 
-                $('#route').val(lgkorUI.isMobile());
+                var route = lgkorUI.isMobile() ? 'WWW2' : 'WWWW1';
+
+                $('#route').val(route);
 
                 self.$engineerSlider.vcCarousel({
                     slidesToShow: 4,
