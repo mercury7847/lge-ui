@@ -53,7 +53,6 @@
                             'ui/inputClearButton',
                             "ui/starRating",
                             "ui/tooltipTarget",
-                            "ui/toast",
                             "ui/sticky",
                             "ui/formatter",
                             "ui/scrollNavi",
@@ -85,8 +84,6 @@
             this.find('.ui_scroll_navi').vcScrollNavi();
 
             this.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
-
-            this.find('.toast-message').vcToast();
 
             this.find('.ui_sticky').vcSticky();
 
@@ -478,6 +475,10 @@
             
                     window.open(target, '_blank', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + intLeft + ',top=' + intTop + ',history=no,resizable=no,status=no,scrollbars=yes,menubar=no');
                 });
+                
+                $('.toast-message').remove();
+                $('body').append('<div class="toast-message"></div>');
+                $('.toast-message').vcToast();
             });
 
             self.loadKakaoSdkForShare();
