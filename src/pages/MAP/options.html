@@ -248,8 +248,7 @@
                 focusout: function(){
                     $(this).closest("div").find("[class*=rst-time]").removeClass("focus");
                 },
-                /*change : function(){*/
-                input : function(){
+                propertychange : function(){
                     var value = $(this).val();
                     $(this).closest("div").find("[class*=rst-time]").text(value);
 
