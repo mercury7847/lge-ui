@@ -8,7 +8,7 @@
             {
                 "adressID": "AD001",
                 "adressNickName": "회사",
-                "defaultAdess": true,
+                "defaultAdress": true,
                 "receiverUser": "이엘지",
                 "zipCode": "123456",
                 "userAddress": "서울특별시 영등포구 여의대로 128 LG 트윈타워",
@@ -19,7 +19,7 @@
             {
                 "adressID": "AD002",
                 "adressNickName": "집",
-                "defaultAdess": false,
+                "defaultAdress": false,
                 "receiverUser": "이케어",
                 "zipCode": "123456",
                 "userAddress": "서울특별시 영등포구 여의대로 128 LG 트윈타워",
@@ -30,7 +30,7 @@
             {
                 "adressID": "AD003",
                 "adressNickName": "자택",
-                "defaultAdess": false,
+                "defaultAdress": false,
                 "receiverUser": "이엘지",
                 "zipCode": "123456",
                 "userAddress": "서울특별시 영등포구 여의대로 128 LG 트윈타워",

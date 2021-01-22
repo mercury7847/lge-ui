@@ -126,8 +126,7 @@
                 '</div>' +
             '</div>' +
             '<div class="btn-area">' +
-                '<a href="{{findWayUrl}}" class="btn border size"><span>길찾기</span></a>' +
-                '<a href="{{reserveUrl}}" class="btn border size"><span>방문 예약 신청</span></a>' +
+                '{{#each item in linkItem}}<a href="{{item.url}}" class="btn border size"><span>{{item.title}}</span></a>{{/each}}' +
             '</div>' +
         '</div>' +
     '</div></li>';
@@ -165,26 +164,29 @@
                     '{{#each item in hash}}<span class="text">{{item}}</span>{{/each}}' +
                 '</div></div>' +
             '</div>' +
-            '{{#if download}}<div class="btn-area">' +
-                '{{#each item in download}}<button type="button" class="btn border size" data-download-url="{{item.url}}"><span>{{item.title}}</span></button>{{/each}}' +
+            '{{#if linkItem}}<div class="btn-area">' +
+                '{{#each item in linkItem}}<button type="button" class="btn border size" data-file-url="{{item.url}}"><span>{{item.title}}</span></button>{{/each}}' +
             '</div>{{/if}}' +
             '{{#if isVideo}}<div class="video-info"><span class="hidden">동영상 포함</span></div>{{/if}}' +
         '</div>' +
     '</div></li>'
 
     $(window).ready(function() {
-        var searchAll = {
+        var search = {
             init: function() {
                 var self = this;
-                vcui.require(['ui/tab', 'ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
+                vcui.require(['ui/tab'], function () {
                     self.setting();
                     self.updateRecentSearchList();
                     self.bindEvents();
                     //입력된 검색어가 있으면 선택된 카테고리로 값 조회
-                    var value = self.$inputSearch.val().trim();
+                    var value = self.$contentsSearch.attr('data-search-value');
+                    value = !value ? null : value.trim(); 
+                    var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
                     if(!(!value) && value.length > 1) {
                         //현재 선택된 카테고리 기준으로 검색
-                        self.requestSearchData(value, false);
+                        self.setinputSearchValue(value);
+                        self.requestSearchData(value, force);
                     }
                 });
             },
@@ -207,12 +209,17 @@
                 self.$tab = self.$contentsSearch.find('.ui_tab').vcTab();
                 self.tabInstance = self.$tab.vcTab('instance');
                 //input-keyword
-                self.$inputKeyword = self.$contentsSearch.find('div.input-keyword');
+                self.$inputKeyword = self.$contentsSearch.find('div.input-keyword:eq(0)');
                 //검색어 입력input
                 self.$inputSearch = self.$inputKeyword.find('div.input-sch input.txt');
+                //스크롤 fixed 검색어 입력창
+                var inputSearchFixed = self.$contentsSearch.find('div.input-keyword:eq(1)');
+                self.$inputSearchFixed = inputSearchFixed.find('div.input-sch input.txt');
+
                 //검색버튼
                 self.$buttonSearch = self.$inputKeyword.find('div.input-sch button.btn-search');
-                
+                self.$buttonSearchFixed = inputSearchFixed.find('div.input-sch button.btn-search');
+
                 //검색어 리스트 레이어
                 self.$searchInputLayer = self.$inputKeyword.find('div.search-input-layer');
                 //검색어 리스트 공간
@@ -239,6 +246,9 @@
                 //원래입력된 기존 검색어 이동
                 self.$similarText = self.$searchSimilar.find('a.similar-text');
 
+                self.$autoComplete.hide();
+                self.$notResult.hide();
+
                 //배너
                 self.$searchBanner = self.$contentsSearch.find('div.search-banner');
 
@@ -249,12 +259,11 @@
 
                 //cont-wrap
                 self.$contWrap = self.$contentsSearch.find('div.cont-wrap');
+                self.$listSorting = self.$contWrap.find('div.list-sorting');
+
                 //noData용
                 self.$searchNotResult = self.$contentsSearch.find('div.search-not-result');
                 self.$resultListNoData = self.$contWrap.find('div.result-list-wrap.list-no-data');
-
-                self.$autoComplete.hide();
-                self.$notResult.hide();
             },
 
             bindEvents: function() {
@@ -264,18 +273,31 @@
                     var index = data.selectedIndex;
                     var $li = self.$tab.find('li a:eq("'+index+'")');
                     var href = $li.attr('href');
-                    location.href = href;
-                    //location.replace(href);
-                    /*
-                    if(index != tabIndexAll) {
-                        self.resetFilter();
-                        self.requestSearch(null,false);
-                    }
-                    */
+
+                    var value = self.$contentsSearch.attr('data-search-value');
+                    value = !value ? null : value.trim(); 
+                    var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
+
+                    var url = href + "&search="+value+"&force="+force;
+                    location.href = url;
+                });
+
+                //검색어 창 동기화
+                self.$inputSearch.on("input change", function(e) {
+                    self.$inputSearchFixed.val($(this).val()).trigger("update");
+                });
+                self.$inputSearchFixed.on("input change", function(e) {
+                    self.$inputSearch.val($(this).val()).trigger("update");
                 });
 
                 //검색버튼
                 self.$buttonSearch.on('click', function(e){
+                    clearTimeout(self.searchTimer);
+                    var searchVal = self.$inputSearch.val();
+                    self.requestSearchInput(searchVal);
+                });
+
+                self.$buttonSearchFixed.on('click', function(e){
                     clearTimeout(self.searchTimer);
                     var searchVal = self.$inputSearch.val();
                     self.requestSearchInput(searchVal);
@@ -340,7 +362,7 @@
                     e.preventDefault();
                     clearTimeout(self.searchTimer);
                     var searchVal = $(this).attr('href').replace("#", "");
-                    self.$inputSearch.val(searchVal);
+                    self.setinputSearchValue(searchVal);
                     //현재 선택된 카테고리 기준으로 검색
                     self.requestSearchData(searchVal, true);
                 });
@@ -374,13 +396,51 @@
                     var _id = $(this).attr('href').replace("#", "");
                     self.getTabItembyCategoryID(_id).trigger('click');
                 });
+
+                //메뉴얼, 드라이버 등의 파일 다운로드
+                var $resultListWrap = $searchResult.find('div.result-list-wrap');
+                $resultListWrap.on('click','div.btn-area button',function(e){
+                    var url = $(this).attr('data-file-url');
+                    if(!(!url)) {
+                        window.location = url;
+                        /*
+                        var a = document.createElement("a");
+                        a.href = url;
+                        document.body.appendChild(a); //firefox
+                        a.click();
+                        a.remove();
+                        */
+                    }
+                });
+
+                //스크롤 이벤트
+                $(window).on('scroll', function(e){
+                    self._setScrollMoved();
+                });
+                self._setScrollMoved();
+            },
+
+            _setScrollMoved: function() {
+                var self = this;
+                var scrolltop = $(window).scrollTop();
+                if((self.$contWrap.offset().top - 110) < scrolltop) {
+                    self.$listSorting.show();
+                } else {
+                    self.$listSorting.hide();
+                }
+            },
+
+            //검색어 검색창에 입력하기 (fixed와 같이 동기화 하기 위함)
+            setinputSearchValue:function(val) {
+                var self = this;
+                self.$inputSearch.val(val).change();
             },
 
             //검색어창에 입력후 검색
             searchItem:function($item) {
                 var self = this;
                 var searchVal = $item.attr('href').replace("#", "");
-                self.$inputSearch.val(searchVal);
+                self.setinputSearchValue(searchVal);
                 self.$buttonSearch.trigger('click');
             },
 
@@ -482,7 +542,8 @@
                     self.openSearchInputLayer(false);
                     var data = result.data;
                     //검색어 저장
-                    self.$inputKeyword.attr('data-searchValue',value);
+                    self.$contentsSearch.attr('data-search-value',value);
+                    self.$contentsSearch.attr('data-search-force',false);
                     var tab = self.getTabItembyCategoryID(data.category);
                     var url = tab.attr('href') + "&search="+value;
                     location.href= url;
@@ -530,31 +591,20 @@
 
                     self.$relatedKeywordList.removeClass('open');
 
-                    //카테고리 리스트 갱신
-                    arr = data.category instanceof Array ? data.category : [];
-                    if(arr.length > 0) {
-                        var $list_ul = self.$searchResultCategory.find('ul');
-                        $list_ul.empty();
-                        arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(categoryItemTemplate, {"url":item.url,"text":item.text}));
-                        });
-                        self.$searchResultCategory.show();
-                    } else {
-                        self.$searchResultCategory.hide();
-                    }
+                    //noData체크
 
-                    self.$searchResultCategory.removeClass('on');
-                    self.$searchResultCategoryMore.find('span').text('더보기');
-     
                     //nodata Test
+                    /*
                     data.count = null;
+                    data.category = null;
                     data.product = null;
                     data.event = null;
                     data.story = null;
                     data.additional = null;
                     data.shop = null;
                     data.customer = null;
-
+                    */
+                   
                     var noData = true;
                     var count = self.checkCountData(data);
                     self.setTabCount(0, data.count);
@@ -564,6 +614,23 @@
 
                     self.$contWrap.removeClass('w-filter');
                     var $searchResult = self.$contWrap.find('div.search-result-wrap');
+
+                    //카테고리 리스트 갱신
+                    arr = data.category instanceof Array ? data.category : [];
+                    if(arr.length > 0) {
+                        var $list_ul = self.$searchResultCategory.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(categoryItemTemplate, {"url":item.url,"text":item.text}));
+                        });
+                        self.$searchResultCategory.show();
+                        noData = false;
+                    } else {
+                        self.$searchResultCategory.hide();
+                    }
+
+                    self.$searchResultCategory.removeClass('on');
+                    self.$searchResultCategoryMore.find('span').text('더보기');
 
                     //제품/케어솔루션
                     var $resultListWrap = $searchResult.find('div.result-list-wrap:eq(0)');
@@ -678,7 +745,7 @@
                                 $list_ul.append(vcui.template(customerProductItemTemplate, item));
                             } else {
                                 item.isVideo = !item.isVideo?false:true;
-                                item.download = !item.download?[]:item.download;
+                                item.linkItem = !item.linkItem ? [] : item.linkItem;
                                 $list_ul.append(vcui.template(customerDownloadItemTemplate, item));
                             }
                         });
@@ -703,7 +770,8 @@
                     }
 
                     //검색어 저장
-                    self.$inputKeyword.attr('data-searchValue',searchedValue);
+                    self.$contentsSearch.attr('data-search-value',searchedValue);
+                    self.$contentsSearch.attr('data-search-force',force);
                     //최근검색어 저장
                     if(!noData) {
                         self.addRecentSearcheText(searchedValue);
@@ -768,6 +836,6 @@
             },
         }
 
-        searchAll.init();
+        search.init();
     });
 })();

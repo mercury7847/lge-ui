@@ -1,0 +1,87 @@
+@@if (context.layer) {
+<div class="keyword-search ui_search" data-autocomplete-url="/lg5-common/data-ajax/support/solutions/searchAutoComplete.json">
+}
+@@if (!context.layer) {
+<div class="keyword-search">
+}   
+    <div class="search-box">
+        <div class="search-input">
+            <div class="input-box">
+                @@if (context.id && context.inputTitle) {
+                <input type="text" name="@@id" id="@@id" class="ui_input_clearbutton" placeholder="@@inputTitle" title="@@inputTitle" autocomplete="off" data-clear-button="button.btn-delete">
+                <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+                <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                }
+            </div>
+        </div>
+        @@if (context.layer) {
+        <div class="search-layer">
+            <div class="autocomplete-box">
+                <div class="keyword-list">
+                    <ul>
+                        <li>
+                            <a href="#"></a>
+                        </li>
+                        <li>
+                            <a href="#"></a>
+                        </li>
+                        <li>
+                            <a href="#"></a>
+                        </li>
+                        <li>
+                            <a href="#"></a>
+                        </li>
+                        <li>
+                            <a href="#"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="keyword-box">
+                <div class="recently-keyword">
+                    <strong class="tit">최근 검색어</strong>
+                    <div class="keyword-list">
+                        <ul>
+                            <!-- <li>
+                                <a href="#">최대 길이가 넘어가면 말줄임 표시가 최대 길이가 넘어가면 말줄임 표시가</a>
+                                <button type="button" class="btn-delete"><span class="blind">삭제</span></button>
+                            </li> -->
+                        </ul>
+                        <p class="no-keyword">최근 검색어가 없습니다</p>
+                    </div>
+                </div>
+                <div class="popular-keyword">
+                    <strong class="tit">인기 검색어</strong>
+                    <div class="keyword-list">
+                        <ul>
+                            <!-- <li>
+                                <a href="#">최대 길이가 넘어가면 말줄임 표시가 최대 길이가 넘어가면 말줄임 표시가</a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>    
+            </div>
+            <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+        </div>
+        }
+        @@if (context.checkbox || context.button) {
+        <div class="search-more">
+            @@if (context.checkbox) {
+            <span class="chk-wrap">
+                <input type="checkbox" name="research" id="research">
+                <label for="research">결과 내 검색</label>
+            </span>
+            }
+            @@if (context.button) {
+            <button type="button" class="btn border size question" data-href="#modelNamePopup" data-control="modal"><span>모델명 확인방법</span></button>
+            }
+        </div>
+        }
+        @@if (!context.layer) {
+        <p class="search-error">모델명을 두 글자 이상 입력해 주세요.</p>
+        }
+    </div>
+    @@if (context.desc) {
+    <p class="search-desc">@@desc</p>
+    }
+</div>

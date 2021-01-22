@@ -76,6 +76,8 @@
                     self.setting();
                     self.bindEvents();
                     self.bindPopupEvents();
+
+                    self.requestMoreData(1);
                 });
             },
 
@@ -132,6 +134,10 @@
                 self.$selectCategory = $selectbox.eq(1);
                 self.$downloadPopupPagination = self.$downloadPopup.find('.pagination').vcPagination();
 
+                //모델병 확인방법 팝업
+                self.$modelCheckHelpPopup = $('#modelCheckHelpPopup');
+                self.modelCheckHelpPopupClone = self.$modelCheckHelpPopup.html();
+
                 self.checkNoData();
             },
 
@@ -184,6 +190,31 @@
                 //보유제품 툴팁 닫기
                 self.$myProductList.on('click','>ul li div.notice button', function(e) {
                     $(this).parents('.notice').hide();
+                });
+
+                //모델명 확인 방법 팝업 열기
+                self.$registMyProductPopup.on('click','p.link a', function(e) {
+                    e.preventDefault();
+                    if(!self.modelData) {
+                        var ajaxUrl = self.$modelCheckHelpPopup.attr('data-list-url');
+                        lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
+                            var optionTemplate = '<option value="{{value}}">{{value}}</option>';
+                            var selectbox = self.$modelCheckHelpPopup.find('.ui_selectbox:eq(0)');
+                            var data = result.data;
+                            self.modelData = data;
+                            var arr = data instanceof Array ? data : [];
+                            arr.forEach(function(item, index) {
+                                item.value = item.categoryName
+                                selectbox.append(vcui.template(optionTemplate, {"value":item.categoryName}));
+                            });
+                            selectbox.vcSelectbox('update');
+                            self.$modelCheckHelpPopup.vcModal();
+                        });
+                    } else {
+                        var selectbox = self.$modelCheckHelpPopup.find('.ui_selectbox:eq(0)');
+                        selectbox.vcSelectbox('selectedIndex', 0, true);
+                        self.$modelCheckHelpPopup.vcModal();
+                    }
                 });
 
                 //사용설명서
@@ -269,7 +300,9 @@
                 //메뉴얼 다운로드
                 self.$manualPopup.on('click','li button' ,function(e){
                     var url = $(this).attr('data-file-url');
-                    window.location = url;
+                    if(!(!url)) {
+                        window.location = url;
+                    }
                 });
 
                 //다운로드팝업 셀렉트OS
@@ -290,7 +323,45 @@
                 //다운로드 파일
                 self.$downloadPopup.on('click','li button.btn' ,function(e){
                     var url = $(this).attr('data-file-url');
-                    window.location = url;
+                    if(!(!url)) {
+                        window.location = url;
+                    }
+                });
+
+                //메뉴얼 확인 방법 팝업
+                //카테고리 선택
+                self.$modelCheckHelpPopup.on('change', '.ui_selectbox:eq(0)', function(e,data){
+                    var index = data.selectedIndex;
+                    var selectbox = self.$modelCheckHelpPopup.find('.ui_selectbox:eq(1)');
+                    if(index == 0) {
+                        selectbox.prop('disabled', true);
+                    } else {
+                        selectbox.prop('disabled', false);
+                        index--;
+                        var modelData = self.modelData[index];
+                        var optionTemplate = '<option value="{{modelName}}" data-image-url="{{imageUrl}}" data-image-alt="{{imageAlt}}" data-text="{{text}}">{{modelName}}</option>';
+
+                        selectbox.find('option:not(:eq(0))').remove();
+                        var arr = modelData.modelList instanceof Array ? modelData.modelList : [];
+                        arr.forEach(function(item, index) {
+                            if(!item.imageUrl || !item.imageUrl.length) {
+                                item.text = item.imageAlt = "제품 이미지 준비중입니다.";
+                                item.imageUrl = "/lg5-common/images/img-nodata.svg";
+                            }
+                            selectbox.append(vcui.template(optionTemplate, item));
+                        });                        
+                        selectbox.vcSelectbox('update');
+                    }
+                    selectbox.vcSelectbox('selectedIndex', 0, true);
+                });
+
+                //모델 선택
+                self.$modelCheckHelpPopup.on('change', '.ui_selectbox:eq(1)', function(e,data){
+                    var index = data.selectedIndex;
+                    var selectbox = self.$modelCheckHelpPopup.find('.ui_selectbox:eq(1)');
+                    var option = selectbox.find('option').eq(index);
+                    self.$modelCheckHelpPopup.find('div.example-result p.txt').text(option.attr('data-text'));
+                    self.$modelCheckHelpPopup.find('div.example-result img').attr({'src':option.attr('data-image-url'),'alt':option.attr('data-image-alt')});
                 });
             },
 

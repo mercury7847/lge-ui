@@ -106,9 +106,10 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             $('.mobile-category-container .category').vcSmoothScroll();
 
-            $('.mobile-nav-wrap.is-depth > a').on('click', function(e){
+            $('.mobile-nav-wrap.is-depth > a.nav-item').on('click', function(e){
                 e.preventDefault();
 
+                $(this).toggleClass('on')
                 $(this).parent().find('.nav-category-container').toggle();
             });
 

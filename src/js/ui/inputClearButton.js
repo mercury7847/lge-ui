@@ -50,6 +50,10 @@ vcui.define('ui/inputClearButton', ['jquery', 'vcui'], function ($, core) {
         _bindEvents: function _bindEvents() {
             var self = this;
 
+            self.$el.on('update',function(e) {
+                self._update();
+            });
+
             self.$el.on('input focus',function(e) {
                 self._update();
             });

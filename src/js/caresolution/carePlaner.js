@@ -144,7 +144,7 @@
         '                                   <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.displayName}}</p>'+
         '                                   <p class="code"><span class="blind">제품 코드</span>{{item.modelName}}</p>'+
         '                               </div>'+
-        '                               <p class="etc">월 {{item.monthPrice}}<span class="comb-txt">{{item.combineText}}</span></p>'+
+        '                               <p class="etc">월 {{item.originalPrice}}<span class="comb-txt">{{item.combineText}}</span></p>'+
         '                           </div>'+  
         '                           <div class="del-item">'+
         '                               <button type="button" class="btn-del" tabindex="" data-model-id="{{item.modelId}}"><span class="blind">제품 삭제</span></button>'+

@@ -12,20 +12,12 @@
     
     <!-- 키워드 검색 -->
     <div class="keyword-box active">
-        <div class="keyword-search">
-            <div class="search-box">
-                <div class="search-input">
-                    <div class="input-wrap">
-                        <input type="text" id="keyword01" class="ui_input_clearbutton" placeholder="제품명, 모델명 직접 검색" title="제품명, 모델명 직접 검색"  data-clear-button="button.btn-delete">
-                        <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
-                        <button type="button" class="btn-search"><span class="blind">검색</span></button>
-                    </div>
-                    <button type="button" class="btn dark-gray size question" data-href="#modelNamePopup" data-control="modal"><span>모델명 확인방법</span></button>
-                </div>
-                <p class="err-msg">모델명을 두 글자 이상 입력해 주세요.</p>
-                <p class="desc">모델명을 입력해보세요. 입력하신 모델명과 일치하는 모델을 쉽게 찾으실 수 있습니다.</p> 
-            </div>
-        </div>
+        @@include('./common/support/search-keyword.html', {
+            'id': 'keyword01',
+            'inputTitle': '제품명, 모델명 직접 검색',
+            'button': true,
+            'desc': '모델명을 입력해보세요. 입력하신 모델명과 일치하는 모델을 쉽게 찾으실 수 있습니다.'
+        })
     </div>
     <!-- // 키워드 검색 -->
 
@@ -271,7 +263,7 @@
                         </div>
                     </div>
                 </li>
-            }
+                }
             </ul>
         </div>
     </div>
@@ -310,19 +302,12 @@
                 </div>
             </div>
         </div>
-        <div class="keyword-search">
-            <div class="search-box">
-                <div class="search-input">
-                    <div class="input-wrap">
-                        <input type="text" id="keyword02" class="ui_input_clearbutton" placeholder="제품명, 모델명 직접 검색" title="제품명, 모델명 직접 검색" data-clear-button="button.btn-delete">
-                        <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
-                        <button type="button" class="btn-search"><span class="blind">검색</span></button>
-                    </div>
-                    <button type="button" class="btn dark-gray size question" data-href="#modelNamePopup" data-control="modal"><span>모델명 확인방법</span></button>
-                </div>
-                <p class="desc">모델명을 입력해보세요. 입력하신 모델명과 일치하는 모델을 쉽게 찾으실 수 있습니다.</p>  
-            </div>
-        </div>
+        @@include('./common/support/search-keyword.html', {
+            'id': 'keyword02',
+            'inputTitle': '제품명, 모델명 직접 검색',
+            'button': true,
+            'desc': '모델명을 입력해보세요. 입력하신 모델명과 일치하는 모델을 쉽게 찾으실 수 있습니다.'
+        })
         <div class="slide-wrap model-slider">
             <div class="indi-wrap">
                 <ul class="indi-conts ui_carousel_dots">

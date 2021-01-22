@@ -2,7 +2,9 @@
     <header class="pop-header">
         <h1 class="tit"><span>취소신청</span></h1>
     </header>
-    <section class="pop-conts common-pop mypage">
+    <!-- 210121 수정 -->
+    <section class="pop-conts common-pop mypage no-footer">
+    <!-- //210121 수정 -->
         <!-- 주문정보 -->
         <div class="sect-wrap">
             <div class="info-tbl-wrap">
@@ -236,12 +238,21 @@
                 "그 외 문의는 고객센터(000-0000) 또는 챗봇을 이용해주시기 바랍니다."
             ]
         })
+        <!-- 210121 위치수정 -->
+        <div class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+                <button type="button" class="btn gray"><span>확인</span></button>
+                <!-- <button type="button" class="btn pink"><span>확인</span></button> --> <!-- 활성화 -->
+            </div>
+        </div>
+        <!-- //210121 위치수정 -->
     </section>
-    <footer class="pop-footer center">
+    <!-- <footer class="pop-footer center">
         <div class="btn-group">
             <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
             <button type="button" class="btn pink"><span>확인</span></button>
         </div>
-    </footer>
+    </footer> -->
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
 </article>

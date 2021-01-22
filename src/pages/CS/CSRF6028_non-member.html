@@ -54,6 +54,8 @@
                             <input type="hidden" name="centerNm" id="centerNm" value="">
                             <input type="hidden" name="centerCode" id="centerCode" value="">
                             <input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
+                            <input type="hidden" name="route" id="route" value="">
+                            <input type="hidden" name="acptNo" id="acptNo" value="">
                             <input type="hidden" name="serviceType" id="serviceType" value="A">
                             <input type="hidden" name="pageCode" id="pageCode" value="pageCode">
 
@@ -76,6 +78,7 @@
                             <!-- 제품 선택 -->
                             <div class="step-box" id="stepModel">
                                 @@include('./common/support/select-model.html', {
+                                    "url": "/lg5-common/data-ajax/support/serviceEngineer/selectModel.json",
                                     "category": [
                                         { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
                                         { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
@@ -162,7 +165,7 @@
                                                             </li>
                                                             <li>
                                                                 <span class="rdo-wrap">
-                                                                    <input type="radio" name="rental" id="rentalN" value="N">
+                                                                    <input type="radio" name="rental" id="rentalN" value="N" checked>
                                                                     <label for="rentalN">렌탈 이용 안함</label>
                                                                 </span>
                                                             </li>
@@ -292,11 +295,11 @@
                                     <div class="section-box" id="fanBox" style="display:none">
                                         <h3 class="sub-tit req">추가정보 - 실외기 위치</h3>
                                         <div class="rdo-list-wrap thumb-type">
-                                            <ul class="rdo-list">
+                                            <ul class="rdo-list ui_radio_visible">
                                                 <li>
                                                     <div class="thumb-rdo-wrap">
                                                         <label for="fan01">
-                                                            <input type="radio" name="fan" id="fan01" value="0" data-error-msg="실외기 위치를 선택해주세요." data-required="true" required>
+                                                            <input type="radio" name="fan" id="fan01" value="0" data-visible-target="#addFanBox" data-error-msg="실외기 위치를 선택해주세요." data-required="true" required>
                                                             <span class="img">
                                                                 <img src="/lg5-common/images/CS/img-fan-location-1.jpg" alt="베란다 난간 실외기 위치 예시 이미지">
                                                             </span>
@@ -307,7 +310,7 @@
                                                 <li>
                                                     <div class="thumb-rdo-wrap">
                                                         <label for="fan02">
-                                                            <input type="radio" name="fan" id="fan02" value="1">
+                                                            <input type="radio" name="fan" id="fan02" value="1" data-visible-target="#addFanBox">
                                                             <span class="img">
                                                                 <img src="/lg5-common/images/CS/img-fan-location-2.jpg" alt="건물 외벽 앵글 실외기 위치 예시 이미지">
                                                             </span>
@@ -318,7 +321,7 @@
                                                 <li>
                                                     <div class="thumb-rdo-wrap">
                                                         <label for="fan03">
-                                                            <input type="radio" name="fan" id="fan03" value="2">
+                                                            <input type="radio" name="fan" id="fan03" value="2" data-visible-target="">
                                                             <span class="img">
                                                                 <img src="/lg5-common/images/CS/img-fan-location-3.jpg" alt="건물 밖 실외기실 실외기 위치 예시 이미지">
                                                             </span>
@@ -329,7 +332,7 @@
                                                 <li>
                                                     <div class="thumb-rdo-wrap">
                                                         <label for="fan04">
-                                                            <input type="radio" name="fan" id="fan04" value="3">
+                                                            <input type="radio" name="fan" id="fan04" value="3" data-visible-target="">
                                                             <span class="img">
                                                                 <img src="/lg5-common/images/CS/img-fan-location-4.jpg" alt="옥상 실외기 위치 예시 이미지">
                                                             </span>
@@ -340,7 +343,7 @@
                                                 <li>
                                                     <div class="thumb-rdo-wrap">
                                                         <label for="fan05">
-                                                            <input type="radio" name="fan" id="fan05" value="4">
+                                                            <input type="radio" name="fan" id="fan05" value="4" data-visible-target="">
                                                             <span class="img">
                                                                 <img src="/lg5-common/images/CS/img-fan-location-5.jpg" alt="베란다 내부 실외기 위치 예시 이미지">
                                                             </span>
@@ -351,7 +354,7 @@
                                                 <li>
                                                     <div class="thumb-rdo-wrap">
                                                         <label for="fan06">
-                                                            <input type="radio" name="fan" id="fan06" value="5">
+                                                            <input type="radio" name="fan" id="fan06" value="5" data-visible-target="">
                                                             <span class="img">
                                                                 <img src="/lg5-common/images/CS/img-fan-location-6.jpg" alt="실내 실외기 위치 예시 이미지">
                                                             </span>
@@ -362,7 +365,7 @@
                                                 <li>
                                                     <div class="thumb-rdo-wrap">
                                                         <label for="fan07">
-                                                            <input type="radio" name="fan" id="fan07" value="6">
+                                                            <input type="radio" name="fan" id="fan07" value="6" data-visible-target="">
                                                             <span class="img">
                                                                 <img src="/lg5-common/images/CS/img-fan-location-7.jpg" alt="1층 또는 지면 실외기 위치 예시 이미지">
                                                             </span>
@@ -373,7 +376,7 @@
                                                 <li>
                                                     <div class="thumb-rdo-wrap">
                                                         <label for="fan08">
-                                                            <input type="radio" name="fan" id="fan08" value="7">
+                                                            <input type="radio" name="fan" id="fan08" value="7" data-visible-target="">
                                                             <span class="img">
                                                                 <img src="/lg5-common/images/CS/img-fan-location-8.jpg" alt="2단설치 실외기 위치 예시 이미지">
                                                             </span>
@@ -383,14 +386,14 @@
                                                 </li>
                                                 <li class="block">
                                                     <span class="rdo-wrap">
-                                                        <input type="radio" name="fan" id="fan09" value="8">
+                                                        <input type="radio" name="fan" id="fan09" value="8" data-visible-target="">
                                                         <label for="fan09">기타</label>
                                                     </span>
                                                     <div class="input-wrap">
-                                                        <input type="text" maxlength="10" placeholder="최대 10자 입력 가능">
+                                                        <input type="text" name="fanEtc" id="fanEtc" maxlength="10" placeholder="최대 10자 입력 가능" disabled>
                                                     </div>
                                                 </li>
-                                            </ul>  
+                                            </ul>
                                             <p class="err-msg fan-msg"></p> 
                                         </div>
                                     </div>
@@ -564,7 +567,7 @@
                                                         </span>
                                                     </div> -->
                                                     <!-- // 비회원일 경우 비노출 -->
-                                                    <div class="btm-more err-block">
+                                                    <div class="btm-more address-err-msg">
                                                         <p class="err-msg"></p>
                                                     </div>
                                                 </div>

@@ -1,10 +1,17 @@
 {
     "status":"success",
     "message":null,
+    "param":{
+        "pagination":{
+            "page":"12",
+            "visibleCount":"7",
+            "totalCount":"23"
+        }
+    },
     "data": [
         {
             "produncName":"LG TROMM ThinQ",
-            "squ":"A9579I",
+            "sku":"A9579I",
             "quantity":"2",
             "store":"LG BEST SHOP 서초점",
             "date":"20190729",
@@ -14,7 +21,7 @@
         },
         {
             "produncName":"LG SIGNATURE 트윈워시",
-            "squ":"F12WHTS",
+            "sku":"F12WHTS",
             "quantity":"3",
             "store":"LG BEST SHOP 서초점",
             "date":"20191229",
@@ -24,7 +31,7 @@
         },
         {
             "produncName":"LG 올레드 AI ThinQ TV",
-            "squ":"OLED65B9GNA",
+            "sku":"OLED65B9GNA",
             "quantity":"4",
             "store":"LG BEST SHOP 서초점",
             "date":"20200304",
@@ -34,7 +41,7 @@
         },
         {
             "produncName":"LG TROMM ThinQ",
-            "squ":"A9579I",
+            "sku":"A9579I",
             "quantity":"2",
             "store":"LG BEST SHOP 서초점",
             "date":"20190729",
@@ -44,7 +51,7 @@
         },
         {
             "produncName":"LG SIGNATURE 트윈워시",
-            "squ":"F12WHTS",
+            "sku":"F12WHTS",
             "quantity":"3",
             "store":"LG BEST SHOP 서초점",
             "date":"20191229",
@@ -54,7 +61,7 @@
         },
         {
             "produncName":"LG 올레드 AI ThinQ TV",
-            "squ":"OLED65B9GNA",
+            "sku":"OLED65B9GNA",
             "quantity":"4",
             "store":"LG BEST SHOP 서초점",
             "date":"20200304",
@@ -64,7 +71,7 @@
         },
         {
             "produncName":"LG TROMM ThinQ",
-            "squ":"A9579I",
+            "sku":"A9579I",
             "quantity":"2",
             "store":"LG BEST SHOP 서초점",
             "date":"20190729",
@@ -74,7 +81,7 @@
         },
         {
             "produncName":"LG SIGNATURE 트윈워시",
-            "squ":"F12WHTS",
+            "sku":"F12WHTS",
             "quantity":"3",
             "store":"LG BEST SHOP 서초점",
             "date":"20191229",
@@ -84,7 +91,7 @@
         },
         {
             "produncName":"LG 올레드 AI ThinQ TV",
-            "squ":"OLED65B9GNA",
+            "sku":"OLED65B9GNA",
             "quantity":"4",
             "store":"LG BEST SHOP 서초점",
             "date":"20200304",

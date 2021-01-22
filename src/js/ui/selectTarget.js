@@ -62,6 +62,8 @@ vcui.define('ui/selectTarget', ['jquery', 'vcui'], function ($, core) {
             }
             self.$el.vcSelectbox('update');
             $target.vcSelectbox('update');
+
+            self.$el.trigger('reset');
         },
         draw: function(data, value) {
             var self = this;

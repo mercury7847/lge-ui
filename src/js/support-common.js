@@ -61,6 +61,7 @@
                 var cookieText;
                 var cookieExpire = new Date();
 
+                
                 cookieExpire.setDate(cookieExpire.getDate() + expire);
                 cookieText = cookieName + '=' + escape(value) + ((expire == null) ? '' : '; expires=' + cookieExpire.toUTCString());
 
@@ -91,8 +92,8 @@
 
                 if (cookies) {
                     var cookieArr = cookies.split(',');
-
-                    if (cookieArr.indexOf(value) != -1) {
+                    
+                    if (cookieArr.indexOf(value.toString()) != -1) {
                         var index = -1;
                         for (var i = 0; i < cookieArr.length; i++) {
                             if (value == cookieArr[i]) {
@@ -100,10 +101,11 @@
                                 break;
                             }
                         }
+                        
                         if (index != -1) {
                             cookieArr.splice(index, 1);
                             cookies = cookieArr.join(',');
-                            cookie.setCookie(self.cookieName, cookies, self.expire);
+                            cookie.setCookie(cookieName, cookies, 365);
                         }
                     }
                 }
@@ -138,6 +140,56 @@
                     cookie.setCookie(self.cookieName, value, self.expire);
                 }
             }
+        },
+        recentlyKeyword: {
+            cookieName: 'LG_SupportKeyword',
+            maxNum: 5,
+            expire: 30,
+            addCookie: function(value) {
+                var self = this;
+                var cookie = csUI.cookie;
+                var cookies = cookie.getCookie(self.cookieName);
+
+                if (cookies) {
+                    var cookieArr = cookies.split(',');
+
+                    if (cookieArr.indexOf(value) != -1) {
+                        cookie.deleteCookie(self.cookieName, value);
+                        cookieArr.splice(cookieArr.indexOf(value), 1);
+                        cookieArr.unshift(value);
+                    } else {
+                        cookieArr.unshift(value);
+                        if (cookieArr.length > self.maxNum) cookieArr.length = self.maxNum;
+                    }
+                    cookies = cookieArr.join(',');
+                    cookie.setCookie(self.cookieName, cookies, self.expire);
+                } else {
+                    cookie.setCookie(self.cookieName, value, self.expire);
+                }
+            }
+        },
+        isMobile: function() {
+            var userAgent = navigator.userAgent.toLowerCase();
+            var mobile = new Array('iphone', 'ipod', 'ipad', 'android', 'blackberry', 'windows ce', 'nokia', 'webos', 'opera mini', 'samsung', 'sonyericsson', 'opera mobi', 'iemobile', 'mot');
+            var isMobile = 0;
+
+            for(var count=0; count < mobile.length; count++) {
+                if(userAgent.indexOf(mobile[count]) != -1) {
+                    isMobile = true;
+                    break;
+                }
+            }
+
+            var platform = navigator.platform.toLowerCase();
+            var platform_filter = new Array('win16', 'win32', 'win64', 'mac', 'macintel');
+
+            for(var count=0; count < platform_filter.length; count++) {
+                if(platform.indexOf(platform_filter[count]) != -1) {
+                    isMobile = false;
+                }
+            }
+
+            return isMobile;
         }
     }
 
@@ -174,6 +226,129 @@ CS.MD.plugin = function(pluginName, Plugin) {
     }
 }
 
+CS.MD.search = function() {
+    var pluginName = 'search';
+    var cookie = lgkorUI.cookie;
+    var cookieKeyword = lgkorUI.recentlyKeyword
+
+    function Plugin(el, opt) {
+        var self = this;
+        var defaults = {
+            data: {},
+            template: {
+                recentlyList: '<li><a href="#">{{keyword}}</a><button type="button" class="btn-delete"><span class="blind">삭제</span></button></li>',
+                keywordList: '<li><a href="#">{{keyword}}</a></li>'
+            }
+        };
+
+        self.$el = $(el);
+        self.options = $.extend({}, defaults, opt);
+        
+        self._initialize();
+        self._bindEvent();  
+    }
+
+    Plugin.prototype = {
+        _initialize: function() {
+            var self = this;
+
+            self.autoUrl = self.$el.data('autocompleteUrl');
+            self._setRecently();
+        },
+        _setRecently: function() {
+            var self = this;
+            var tmpl = self.options.template,
+                keywordCookie = cookie.getCookie('LG_SupportKeyword'),
+                arr = [];
+            
+            $('.recently-keyword').find('ul').empty();
+
+            if (keywordCookie && keywordCookie.length > 0) {
+                arr = keywordCookie.split(',');
+                if (arr.length) {
+                    arr.forEach(function(item) {
+                        var html = tmpl.recentlyList.replace('{{keyword}}', item);
+                        $('.recently-keyword').find('ul').append(html);
+                    });
+                    $('.recently-keyword').find('ul').show();
+                    $('.recently-keyword').find('.no-keyword').hide();
+                } else {    
+                    $('.recently-keyword').find('ul').hide();
+                    $('.recently-keyword').find('.no-keyword').show();
+                }
+            } else {
+                $('.recently-keyword').find('ul').hide();
+                $('.recently-keyword').find('.no-keyword').show();
+            }            
+        },
+        setPopularKeyword: function(data) {
+            var self = this;
+            var tmpl = self.options.template,
+                arr = data instanceof Array ? data : [];
+
+            if (arr.length) {
+                arr.forEach(function(item) {
+                    var html = tmpl.keywordList.replace('{{keyword}}', item);
+                    $('.popular-keyword').find('ul').append(html);
+                });
+            }
+        },
+        _bindEvent: function() {
+            var self = this;
+
+            self.$el.on('click', '.search-layer .btn-delete', function() {
+                var $box = $(this).closest('li');
+                cookie.deleteCookie('LG_SupportKeyword', $box.find('a').text())
+                self._setRecently();
+            });
+
+            self.$el.on('click', '.search-layer .btn-close', function() {
+                self.$el.removeClass('on');
+            });
+
+            self.$el.on('click', '.search-layer a', function() {
+                var val = $(this).text().trim();
+                self.$el.find('input[type=text]').val(val);
+                self.$el.removeClass('on');
+            });
+
+            self.$el.find('input[type=text]').on('focus', function() {
+                self.$el.addClass('on');
+            }).on('input', function() {
+                var val = $(this).val();
+
+                if (val.length > 1) {
+                    var param = {
+                        keyword: val
+                    };
+
+                    self.$el.trigger('autocomplete', [param, self.autoUrl, function(result) {
+                        console.log(result);
+                    }]);
+                }
+
+            }).on('keyup', function(e) {
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    var val = $(this).val().trim();
+                    if (val.length > 0) {
+                        cookieKeyword.addCookie($(this).val());
+                        self._setRecently();
+                    }
+                }
+            });
+
+            $('body').on('click', function (e) {
+                if (!$(e.target).parents('.keyword-search')[0]) {
+                    self.$el.removeClass('on');
+                }
+            });
+        }
+    };
+
+    CS.MD.plugin(pluginName, Plugin);
+}();
+
 CS.MD.commonModel = function() {
     var pluginName = 'commonModel';
     var selectedBarTmpl = 
@@ -183,13 +358,28 @@ CS.MD.commonModel = function() {
                 '<p class="tit">서비스 이용을 위해 제품을 선택해주세요.</p>' +
                 '{{# } #}}' +
                 '{{# if (typeof product != "undefined") { #}}' +
-                '<ul class="product">' +
-                    '{{# for (var i = 0; i < product.length; i++) { #}}' +
-                    '{{# if (product[i]) { #}}' +
-                    '<li>{{product[i]}}</li>' +
+                '<div class="product-box">' +
+                    '<ul class="product">' +
+                        '{{# for (var i = 0; i < product.length; i++) { #}}' +
+                            '{{# if (product[i].name) { #}}' +
+                                '{{# if (i == 2) { #}}' +
+                                    '{{# if (!lgkorUI.isLogin) { #}}' +
+                        '<li>{{product[i].name}}</li>' +
+                                    '{{# } else if (product[i].isMyProduct) { #}}' +
+                        '<li><span>보유</span>{{product[i].name}}</li>' +
+                                    '{{# } else { #}}' +    
+                        '<li>{{product[i].name}}</li>' +
+                                    '{{# } #}}' + 
+                                '{{# } else { #}}' +    
+                        '<li>{{product[i].name}}</li>' +
+                                '{{# } #}}' +    
+                            '{{# } #}}' +
+                        '{{# } #}}' +
+                    '</ul>' +
+                    '{{# if (product.length == 3 && product[2].name && lgkorUI.isLogin && !product[2].isMyProduct) { #}}' +
+                    '<a href="#" class="btn-add-product"><span>보유제품 추가</span></a>' +
                     '{{# } #}}' +
-                    '{{# } #}}' +
-                '</ul>' +
+                '</div>' +
                 '{{# } #}}' +
                 // '{{# if (typeof desc != "undefined") { #}}' +
                 // '<p class="desc">{{desc}}</p>' +
@@ -227,6 +417,7 @@ CS.MD.commonModel = function() {
         '</div>';
 
     var termsValidation;
+    var myModel = [];
 
     function Plugin(el, opt) {
         var self = this;
@@ -370,7 +561,7 @@ CS.MD.commonModel = function() {
                         self.$categoryBox.removeClass(opt.stepActiveClass);
                         self.$modelBox.addClass(opt.stepActiveClass);
                         self.$keywordBox.find('.desc').show();
-                        self.$keywordBox.find('.err-msg').hide();
+                        self.$keywordBox.find('.search-error').hide();
                         self.param = $.extend(self.param, {
                             keyword: value,
                             page: 1
@@ -378,7 +569,7 @@ CS.MD.commonModel = function() {
 
                         self._requestData();
                     } else {
-                        self.$keywordBox.find('.err-msg').show();
+                        self.$keywordBox.find('.search-error').show();
                     }
                 } else {
                     if (value.length > 1 || !value) {
@@ -450,6 +641,18 @@ CS.MD.commonModel = function() {
                 $(this).closest('.box').removeClass('on').addClass('off');
             });
 
+            self.$modelBox.find('#categorySelect').on('reset', function() {
+                self.param = $.extend(self.param, {
+                    category: '',
+                    categoryNm: '전체',
+                    subCategory: '',
+                    subCategoryNm: '전체',
+                    page: 1
+                });
+
+                self._requestData();
+            });
+
             // 서브 카테고리 선택
             self.$categoryBox.find('.sub-category-list button').on('click', function() {
                 var $this = $(this),
@@ -457,7 +660,7 @@ CS.MD.commonModel = function() {
                     opt = self.options;
 
                 self.param = $.extend(self.param, {
-                    category: data.categor,
+                    category: data.category,
                     categoryNm: data.categoryName,
                     subCategory: data.subCategory,
                     subCategoryNm: data.subCategoryName,
@@ -496,6 +699,7 @@ CS.MD.commonModel = function() {
                 self.$el.find('#subCategoryNm').val(data.subCategoryName);
                 self.$el.find('#modelCode').val(data.modelCode);
                 self.$el.find('#productCode').val(data.productCode);
+                self.$el.find('#isMyProduct').val('N');
                 self.$el.trigger('complete', [data, url]);
 
                 if (data.modelCode) lgkorUI.recentlySearch.addCookie(data.modelCode);
@@ -572,6 +776,11 @@ CS.MD.commonModel = function() {
 
             if (!self.$myModelSlider.length) return;
 
+            self.$myModelSlider.find('a').each(function() {
+                var modelCode = $(this).data('modelCode');
+                myModel.push(modelCode);
+            });
+
             self.$myModelSlider.vcCarousel({
                 slidesToScroll: 3,
                 slidesToShow: 3,
@@ -613,6 +822,7 @@ CS.MD.commonModel = function() {
                     self.$el.find('#subCategoryNm').val(data.subCategoryName);
                     self.$el.find('#modelCode').val(data.modelCode);
                     self.$el.find('#productCode').val(data.productCode);
+                    self.$el.find('#isMyProduct').val('Y');
                     self.$el.trigger('complete', [data, url]);
                 }
             });
@@ -623,13 +833,14 @@ CS.MD.commonModel = function() {
 
                 if ($toggleBox.hasClass('open')) {
                     self.$myModelSlider.stop().slideUp(function() {
-                        $toggleBox.removeClass('open');
                     });
+                    $toggleBox.removeClass('open');
                     $this.html('보유제품 펼치기');
                 } else {
                     self.$myModelSlider.stop().slideDown(function() {
-                        $toggleBox.addClass('open');
+                        
                     });
+                    $toggleBox.addClass('open');
                     $this.html('보유제품 접기');
                 }
             });
@@ -654,6 +865,7 @@ CS.MD.commonModel = function() {
                     } else {
                         self.$myModelArea.show();
                         self.next(self.$stepModel);
+                        self.$myModelSlider.vcCarousel('resize');
                     }
                     
                     self.focus(self.$selectedModelBar);
@@ -755,6 +967,7 @@ CS.MD.commonModel = function() {
             
             self.$selectedModelBar.show();
             self.$myModelArea.show();
+            self.$myModelSlider.vcCarousel('resize');
             self.next(self.$stepModel);
             self.focus(self.$selectedModelBar);
         },
@@ -779,8 +992,27 @@ CS.MD.commonModel = function() {
         },
         updateSummary: function(summary) {
             var self = this;
-            var summary = summary || self.options.defaultSummary;
+            var summary = summary || self.options.defaultSummary,
+                isMyProduct = false;
 
+            if (myModel.length && summary.product && summary.product.length == 3) {
+                if (myModel.indexOf(summary.product[2]) != -1) {
+                    isMyProduct = true;
+                }
+            }
+            var test = [];
+            if (summary.product) {
+                for(var i = 0; i < summary.product.length; i++) {
+                    test[i] = {
+                        name: summary.product[i]
+                    }
+                    if (i == 2) {
+                        test[i]['isMyProduct'] = isMyProduct;
+                    }
+                }
+                summary.product = test;
+            }
+            console.log(isMyProduct);
             self.$selectedModelBar.html(vcui.template(selectedBarTmpl, summary));
         },
         focus: function($target, callback) {
@@ -821,6 +1053,7 @@ CS.MD.commonModel = function() {
             self.$el.find('#subCategoryNm').val('');
             self.$el.find('#modelCode').val('');
             self.$el.find('#productCode').val('');
+            self.$el.find('#isMyProduct').val('N');
 
             self.$keywordInput.val('');
             self.$categoryBox.find('.box').removeClass('on off');
@@ -1768,9 +2001,11 @@ var AuthManager = function() {
                 });
             }
         },
-        open: function() {
+        open: function(completeCallback) {
             var self = this;
             var elem = self.options.elem;
+
+            completeCallback && completeCallback();
 
             $(elem.popup).vcModal();
         },

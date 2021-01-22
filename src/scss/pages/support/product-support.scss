@@ -204,71 +204,25 @@
         .info-banner {
             margin-bottom: 16px;
             text-align: right;
+            .btn {
+                margin-left:8px;
+                &:first-child {
+                    margin-left:0;
+                }
+            }
             @include mobile {
                 display:none;
             }
         }
         .search-wrap { 
             width:100%;
-            height:150px;
-            padding:32px 0px 70px;
+            margin-bottom:80px;
+            padding:32px 24px;
+            border-radius:8px;
             background-color: #f4f4f4;
-            .keyword-search {
-                position:relative;
-                max-width:582px;
-                width:100%;
-                margin:0 auto;
-                padding-right:138px;
-                .input-wrap {
-                    vertical-align:middle;
-                }
-                .chk-wrap {
-                    position:absolute;
-                    right:0;
-                    top:50%;
-                    transform:translateY(-50%);
-                }
-            }
-            .desc {
-                margin-top: 12px;
-                text-align: center;
-                line-height: 26px;
-            }   
             @include mobile {
-                margin:0 0 40px;
-                padding:16px;
-                height:auto;
-                .keyword-search {
-                    max-width:none;
-                    padding:0;
-                    .input-wrap {
-                        display:block;
-                        width:100%;
-                        padding: 0;                        
-                        input[type=text] {
-                            padding:12px 68px 12px 24px;
-                            border-radius:28px;
-                        }
-                        .btn-delete {
-                            right:68px;
-                        }
-                        .btn-search {
-                            width:34px;
-                            height:46px;
-                            margin-right: 16px;
-                        }
-                    }
-                    .chk-wrap {
-                        display: block;
-                        text-align: center;
-                        position:static;
-                        margin:16px 0 0 0;
-                        transform:translateY(0);
-                    }
-                }
-                .desc {
-                    padding:0
-                }
+                margin-bottom:40px;
+                padding:32px 16px;
             }
         }
     }
