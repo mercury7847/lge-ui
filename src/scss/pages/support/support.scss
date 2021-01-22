@@ -775,6 +775,23 @@
             }
         }
     }
+
+    .btn-group {
+        @include pc {
+            .block-box {
+                display: inline-block;
+                margin-left: 6px;
+            }
+        }
+        @include mobile {
+            .btn {
+                &.wide-type {
+                    width: 100%;
+                    margin-bottom: 12px;
+                }
+            }
+        }
+    }
 } //support
 
 

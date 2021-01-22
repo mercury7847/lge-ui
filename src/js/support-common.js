@@ -237,7 +237,7 @@ CS.MD.search = function() {
             data: {},
             template: {
                 recentlyList: '<li><a href="#">{{keyword}}</a><button type="button" class="btn-delete"><span class="blind">삭제</span></button></li>',
-                keywordList: '<li><a href="#">{{name}}</a></li>'
+                keywordList: '<li><a href="#">{{keyword}}</a></li>'
             }
         };
 
@@ -281,6 +281,18 @@ CS.MD.search = function() {
                 $('.recently-keyword').find('.no-keyword').show();
             }            
         },
+        setPopularKeyword: function(data) {
+            var self = this;
+            var tmpl = self.options.template,
+                arr = data instanceof Array ? data : [];
+
+            if (arr.length) {
+                arr.forEach(function(item) {
+                    var html = tmpl.keywordList.replace('{{keyword}}', item);
+                    $('.popular-keyword').find('ul').append(html);
+                });
+            }
+        },
         _bindEvent: function() {
             var self = this;
 
@@ -291,6 +303,12 @@ CS.MD.search = function() {
             });
 
             self.$el.on('click', '.search-layer .btn-close', function() {
+                self.$el.removeClass('on');
+            });
+
+            self.$el.on('click', '.search-layer a', function() {
+                var val = $(this).text().trim();
+                self.$el.find('input[type=text]').val(val);
                 self.$el.removeClass('on');
             });
 
