@@ -1,4 +1,3 @@
-
 (function(){
     var visitAlarmItemTemplate = '<li class="{{#if type=="prev"}}off{{#elsif type=="next"}}on after{{#else}}off after{{/if}}" data-visit-target-seq="{{visitTargetSeq}}" data-manager-emp-no="{{managerEmpNo}}">' +
         '<div class="inner">' +
