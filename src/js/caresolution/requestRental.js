@@ -347,6 +347,9 @@
                 step3Block.find('select[name=associatedCard] option').eq(0).prop('selected', true);
                 step3Block.find('select[name=associatedCard]').vcSelectbox('update');
                 step3Block.find('.discount-txt').text('');
+            } else{
+                cardDiscountPrice = 0;
+                changeProductPriceInfo();
             }
         }).on('change', 'select[name=associatedCard]', function(){
             var selectopt = step3Block.find('select[name=associatedCard] option:selected');
@@ -627,8 +630,6 @@
                             requestInfoBlock.setItemInfoDisabled(modelID, true)
                         }
                     }
-                    productPriceInfo = result.data.productPriceInfo;
-                    changeProductPriceInfo();
 
                     var total = parseInt(productPriceInfo.total.count);
                     if(total) abled = "Y";
@@ -647,6 +648,9 @@
                     } : ""
                 });
             } 
+
+            productPriceInfo = result.data.productPriceInfo;
+            changeProductPriceInfo();
 
             console.log("setInstallAbledConfirm() abled :", abled);
             
