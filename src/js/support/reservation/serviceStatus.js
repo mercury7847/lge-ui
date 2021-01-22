@@ -1,7 +1,7 @@
 (function() {
     var listTmpl = 
         '<li class="{{typeClass}}">' +
-            '<a href="{{url}}" class="item" data-number="{{number}}">' +
+            '<a href="{{url}}" class="item" data-number="{{registNumber}}">' +
                 '<div class="flag-wrap bar-type">' +
                     '<span class="flag green">{{type}}</span>' +
                     '{{#if (status)}}<span class="flag">{{status}}</span>{{/if}}' +
