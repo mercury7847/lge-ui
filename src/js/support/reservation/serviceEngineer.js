@@ -177,7 +177,9 @@
                     });
                 }
 
-                $('#route').val(lgkorUI.isMobile());
+                var route = lgkorUI.isMobile() ? 'WWW2' : 'WWWW1';
+
+                $('#route').val(route);
 
                 self.$engineerSlider.vcCarousel({
                     slidesToShow: 4,
@@ -484,7 +486,30 @@
                 self.$addFanBox.hide();
                 self.$myModelArea.show();
 
+                $('#engineerNm').val('');
+                $('#engineerCode').val('');
+                $('#centerNm').val('');
+                $('#centerCode').val('');
+                $('#date').val('');
+                $('#time').val('');
+                self.$stepInput.find('input[type=radio]').prop('checked', false);
+                
                 $('[name=buyingdate]').closest('.conts').find('.form-text').remove();
+
+                if (!$('#detailAddress').is('disabled')) {
+                    $('input[type=text], textarea').val('');
+                } else {
+                    $('input[type=text], textarea').not('#zipCode, #userAddress, #detailAddress').val('');
+                }
+                $('#fanEtc').prop('disabled', true);
+
+                $('.date-wrap').calendar('reset');
+
+                $('.time-wrap').timeCalendar('reset');
+
+                self.$completeBtns.hide();
+                self.$stepInput.find('.step-btn-wrap').show();
+                self.autoFlag = false;
 
                 self.$cont.commonModel('next', self.$stepModel);
             });
@@ -561,17 +586,6 @@
                         self.$selectedModelBar.vcSticky();
                     });
                 });
-            });
-
-            // 에어컨 실외기 위치
-            self.$fanBox.on('change', 'input[type=radio]', function() {
-                var val = $(this).val();
-
-                if (val == 0 || val == 1) {
-                    self.$addFanBox.show();
-                } else {
-                    self.$addFanBox.hide();
-                }
             });
 
             // 증상 선택
