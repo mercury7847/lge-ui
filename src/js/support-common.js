@@ -319,7 +319,7 @@ CS.MD.search = function() {
 
                 if (val.length > 1) {
                     var param = {
-                        search: val
+                        keyword: val
                     };
 
                     self.$el.trigger('autocomplete', [param, self.autoUrl, function(result) {
