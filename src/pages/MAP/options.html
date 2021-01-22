@@ -248,10 +248,36 @@
                 focusout: function(){
                     $(this).closest("div").find("[class*=rst-time]").removeClass("focus");
                 },
-                propertychange : function(){
+                change : function(){
                     var value = $(this).val();
                     $(this).closest("div").find("[class*=rst-time]").text(value);
 
+                    /*
+                    var startDate = $(".t-start");
+                    var endDate = $(".t-end");
+                    var startDateVal = startDate.val();
+                    var endDateVal = endDate.val();
+
+                    var idx = $(this).closest("div").index();
+
+                    if(Date.parse(today + startDateVal) == Date.parse(today + endDateVal)){
+                        //optModal.open("#modalTimeset");
+                        optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
+                        $("#modalTimeset .btn-modal-confirm").on({
+                            click : function(){
+                                $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
+                                $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
+                                optModal.close();
+                                $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
+                            }
+                        });
+                        return false;
+                    }else{
+                        toastMessage.init("에티켓 시간이 설정되었습니다.");
+                    }
+                    */
+                },
+                blur: function(){
                     var startDate = $(".t-start");
                     var endDate = $(".t-end");
                     var startDateVal = startDate.val();
