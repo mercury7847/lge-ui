@@ -366,6 +366,10 @@
             li {
                 width:20%;
                 padding-top:32px;
+                &.block {
+                    width:100%;
+                    max-width:none;
+                }
             }
         }
     }
@@ -375,6 +379,10 @@
             li {
                 width:20%;
                 padding-top:16px;
+                &.block {
+                    width:100%;
+                    max-width:none;
+                }
                 .rdo-wrap { 
                     display:block;
                     label {

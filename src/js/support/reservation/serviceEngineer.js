@@ -177,6 +177,10 @@
                     });
                 }
 
+                var route = lgkorUI.isMobile() ? 'WWW2' : 'WWWW1';
+
+                $('#route').val(route);
+
                 self.$engineerSlider.vcCarousel({
                     slidesToShow: 4,
                     slidesToScroll: 4,
@@ -289,7 +293,7 @@
 
             var productCode = $('#productCode').val();
 
-            if ($('[name=bdType]').val() == 4) {
+            if ($('[name=bdType]:checked').val() == 4) {
                 productCode = 'CRB';
             }
 
@@ -348,7 +352,7 @@
 
             var productCode = $('#productCode').val();
 
-            if ($('[name=bdType]').val() == 4) {
+            if ($('[name=bdType]:checked').val() == 4) {
                 productCode = 'CRB';
             }
 
@@ -446,7 +450,7 @@
         requestComplete: function() {
             var self = this;
 
-            if ($('[name=bdType]').val() == 4) {
+            if ($('[name=bdType]:checked').val() == 4) {
                 $('#productCode').val('CRB');
             }
 
@@ -482,7 +486,30 @@
                 self.$addFanBox.hide();
                 self.$myModelArea.show();
 
+                $('#engineerNm').val('');
+                $('#engineerCode').val('');
+                $('#centerNm').val('');
+                $('#centerCode').val('');
+                $('#date').val('');
+                $('#time').val('');
+                self.$stepInput.find('input[type=radio]').prop('checked', false);
+                
                 $('[name=buyingdate]').closest('.conts').find('.form-text').remove();
+
+                if (!$('#detailAddress').is('disabled')) {
+                    $('input[type=text], textarea').val('');
+                } else {
+                    $('input[type=text], textarea').not('#zipCode, #userAddress, #detailAddress').val('');
+                }
+                $('#fanEtc').prop('disabled', true);
+
+                $('.date-wrap').calendar('reset');
+
+                $('.time-wrap').timeCalendar('reset');
+
+                self.$completeBtns.hide();
+                self.$stepInput.find('.step-btn-wrap').show();
+                self.autoFlag = false;
 
                 self.$cont.commonModel('next', self.$stepModel);
             });
@@ -512,26 +539,26 @@
                     });
                 
                     
-                    // 에어컨 > 시스템 에어컨 선택 시
-                    if (data.category == '1019'){
-                        if (data.subCategory == "1129"){
+                    // 에어컨 > 시스템 에어컨 OR 창문형/이동식 선택 시
+                    if (data.category == 'CT50019183') {
+                        if (data.subCategory == "CT50019259"){
                             self.$fanBox.show();
                             self.$bdTypeBox.show();
-                        } else if (data.subCategory != "1083") {
+                        } else if (data.subCategory != "CT50019229") {
                             self.$fanBox.show();
                             self.$bdTypeBox.hide();
                         }
                     }
                     
-                    // 드럼 세탁기 선택 시
-                    if (data.subCategory == "1086" || data.subCategory == "1021") {
+                    // 드럼 세탁기 OR 의류 건조기 선택 시
+                    if (data.subCategory == "CT50019309" || data.subCategory == "CT50019275") {
                         self.$installTypeBox.show();
                     } else {
                         self.$installTypeBox.hide();
                     }
                     
                     // TV/프로젝터 > 올레드, 울트라HD, LED/LCD, PDP 선택 시
-                    if (data.subCategory == "D002795" || data.subCategory == "1040" || data.subCategory == "1041" || data.subCategory == "1043") {
+                    if (data.subCategory == "CT50019082" || data.subCategory == "CT50019037" || data.subCategory == "CT50019052" || data.subCategory == "CT50019067") {
                         self.$tvPositionBox.show();
                     } else {
                         self.$tvPositionBox.hide();
@@ -559,17 +586,6 @@
                         self.$selectedModelBar.vcSticky();
                     });
                 });
-            });
-
-            // 에어컨 실외기 위치
-            self.$fanBox.on('change', 'input[type=radio]', function() {
-                var val = $(this).val();
-
-                if (val == 0 || val == 1) {
-                    self.$addFanBox.show();
-                } else {
-                    self.$addFanBox.hide();
-                }
             });
 
             // 증상 선택
@@ -644,7 +660,7 @@
 
                 var productCode = $('#productCode').val();
 
-                if ($('[name=bdType]').val() == 4) {
+                if ($('[name=bdType]:checked').val() == 4) {
                     productCode = 'CRB';
                 }
 

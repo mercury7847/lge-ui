@@ -167,6 +167,29 @@
                     cookie.setCookie(self.cookieName, value, self.expire);
                 }
             }
+        },
+        isMobile: function() {
+            var userAgent = navigator.userAgent.toLowerCase();
+            var mobile = new Array('iphone', 'ipod', 'ipad', 'android', 'blackberry', 'windows ce', 'nokia', 'webos', 'opera mini', 'samsung', 'sonyericsson', 'opera mobi', 'iemobile', 'mot');
+            var isMobile = 0;
+
+            for(var count=0; count < mobile.length; count++) {
+                if(userAgent.indexOf(mobile[count]) != -1) {
+                    isMobile = true;
+                    break;
+                }
+            }
+
+            var platform = navigator.platform.toLowerCase();
+            var platform_filter = new Array('win16', 'win32', 'win64', 'mac', 'macintel');
+
+            for(var count=0; count < platform_filter.length; count++) {
+                if(platform.indexOf(platform_filter[count]) != -1) {
+                    isMobile = false;
+                }
+            }
+
+            return isMobile;
         }
     }
 
@@ -211,6 +234,7 @@ CS.MD.search = function() {
     function Plugin(el, opt) {
         var self = this;
         var defaults = {
+            data: {},
             template: {
                 recentlyList: '<li><a href="#">{{keyword}}</a><button type="button" class="btn-delete"><span class="blind">삭제</span></button></li>',
                 keywordList: '<li><a href="#">{{name}}</a></li>'
@@ -227,6 +251,8 @@ CS.MD.search = function() {
     Plugin.prototype = {
         _initialize: function() {
             var self = this;
+
+            self.autoUrl = self.$el.data('autocompleteUrl');
             self._setRecently();
         },
         _setRecently: function() {
@@ -271,6 +297,17 @@ CS.MD.search = function() {
             self.$el.find('input[type=text]').on('focus', function() {
                 self.$el.addClass('on');
             }).on('input', function() {
+                var val = $(this).val();
+
+                if (val.length > 1) {
+                    var param = {
+                        search: val
+                    };
+
+                    self.$el.trigger('autocomplete', [param, self.autoUrl, function(result) {
+                        console.log(result);
+                    }]);
+                }
 
             }).on('keyup', function(e) {
                 if (e.keyCode == 13) {

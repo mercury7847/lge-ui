@@ -49,7 +49,9 @@
 
                             <!-- 내역 -->
                             <div class="section-wrap">
-                                <div class="sects">
+                                <!-- [2021.01.21] 데이터 없을 경우 아래 <div class="sects">은 삭제하면 안됩니다. display:none; 처리만 해주세요-->
+                                <div class="no-data"><p>검색된 결과가 없습니다.</p></div>
+                                <div class="sects" style="display:none;">
                                     <!-- sorting -->
                                     <div class="list-sorting">
                                         <div class="sort-area left">
@@ -126,7 +128,8 @@
                                             "고객님의 무상할인 회차는 3, 5, 6회차 입니다."
                                         ]
                                     })
-                                </div>
+                                </div>                                
+                                <!-- //데이터 없을 경우 아래 <div class="sects">은 삭제하면 안됩니다. display:none; 처리만 해주세요-->
                             </div>
                             <!-- // 내역 -->
                         </div>
