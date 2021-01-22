@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <style>
+            .cls-4{stroke:none}
+        </style>
+    </defs>
+    <g id="icon_ver" transform="translate(-163 -196)">
+        <g id="사각형_483" fill="#fff" stroke="#000" stroke-width="2.5px" transform="translate(170 196)">
+            <rect width="38" height="61" class="cls-4" rx="6"/>
+            <rect width="35.5" height="58.5" x="1.25" y="1.25" fill="none" rx="4.75"/>
+        </g>
+        <rect id="사각형_484" width="14" height="2.5" rx="1.25" transform="translate(182 202)"/>
+        <g id="다각형_1" fill="#fff" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M34.901 34.75H5.1c-.636 0-1.186-.314-1.509-.863-.322-.548-.33-1.18-.021-1.737L18.47 5.328c.313-.564.885-.9 1.53-.9s1.217.336 1.53.9L36.43 32.15c.31.556.301 1.19-.021 1.737-.323.549-.873.863-1.509.863z" class="cls-4" transform="translate(187 224)"/>
+            <path fill="#000" d="M20 5.677c-.195 0-.342.087-.437.258L4.66 32.757c-.092.166-.09.333.007.497.096.163.24.246.43.246h29.803c.19 0 .335-.083.431-.246.097-.164.099-.331.007-.497L20.437 5.935c-.095-.171-.242-.258-.437-.258m0-2.5c1.025 0 2.051.515 2.622 1.543l14.902 26.823c1.11 2-.335 4.457-2.623 4.457H5.1c-2.288 0-3.734-2.457-2.623-4.457L17.378 4.72c.571-1.028 1.597-1.543 2.622-1.543z" transform="translate(187 224)"/>
+        </g>
+        <rect id="사각형_481" width="3" height="10" rx="1.5" transform="translate(206 239)"/>
+        <circle id="타원_89" cx="1.5" cy="1.5" r="1.5" transform="translate(206 251)"/>
+    </g>
+</svg>

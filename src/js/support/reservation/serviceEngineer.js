@@ -496,11 +496,17 @@
                 
                 $('[name=buyingdate]').closest('.conts').find('.form-text').remove();
 
-                if (!$('#detailAddress').is('disabled')) {
-                    $('input[type=text], textarea').val('');
-                } else {
-                    $('input[type=text], textarea').not('#zipCode, #userAddress, #detailAddress').val('');
+                $('#rentalN').prop('checked', true);
+
+                var notInput = '';
+                if (self.isLogin) {
+                    notInput += '#userNm, #phoneNo';
+                    if ($('#detailAddress').prop('readonly')) {
+                        notInput += ', #zipCode, #userAddress, #detailAddress';
+                    }
                 }
+                $('input[type=text], textarea').not(notInput).val('');
+
                 $('#fanEtc').prop('disabled', true);
 
                 $('.date-wrap').calendar('reset');
@@ -636,7 +642,9 @@
 
                     self.$cont.find('#zipCode').val(data.zonecode);
                     self.$cont.find('#userAddress').val(address);
-                    self.$cont.find('#detailAddress').val('');
+                    self.$cont.find('#detailAddress').val('').prop('readonly', false);
+
+                    self.$cont.find('.btm-more.both .chk-wrap').show();
 
                     if (self.autoFlag) self.requestDate();
                 }); 
@@ -734,7 +742,10 @@
                             }
                         });       
                     } else {
-                        authManager.open();
+                        authManager.open(function() {
+                            $('#authName').val($('#userNm').val()).prop('readonly', true);
+                            $('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);  
+                        });
                     }
                 }
             });
@@ -747,6 +758,17 @@
                 authManager.confirm(this, function(success, result) {
                     success && self.requestComplete();
                 });
+            });
+
+
+
+            $('[name=fan]').on('change', function() {
+                if ($(this).attr('id') == 'fan09') {
+                    $('#fanEtc').prop('disabled', false);
+                } else {
+                    $('#fanEtc').prop('disabled', true);
+                    $('#fanEtc').val('');
+                }
             });
         }
     }

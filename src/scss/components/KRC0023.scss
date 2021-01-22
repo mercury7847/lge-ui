@@ -45,6 +45,7 @@ $size: (img2, img3, img4);
             text-align:center;
             a {
                 display:inline-block;
+                max-width:100%;
                 vertical-align:top;
             }
             @include mobile {
