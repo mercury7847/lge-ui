@@ -8,15 +8,59 @@
             "hasCareship":true
         },
         "paymentInfo": {
+            "card": [
+                {
+                    "groupTitle":null,
+                    "listItem":[
+                        {
+                            "cardId":"cd00001",
+                            "title":"이용시 22,000원 할인",
+                            "salePrice":"22000"
+                        }
+                    ]
+                },
+                {
+                    "groupTitle":"------------------- 개별 신청 필요 카드 -------------------",
+                    "listItem":[
+                        {
+                            "cardId":"cd00002",
+                            "title":"[BC] BC글로벌 할인",
+                            "salePrice":"10000"
+                        },
+                        {
+                            "cardId":"cd00003",
+                            "title":"[VISA] VISA글로벌 할인",
+                            "salePrice":"25000"
+                        }
+                    ]
+
+                },
+                {
+                    "groupTitle":"------------------- 간편 신청 가능 카드 -------------------",
+                    "listItem":[
+                        {
+                            "cardId":"cd00004",
+                            "title":"[BC] BC 리빙 할인",
+                            "salePrice":"20000"
+                        },
+                        {
+                            "cardId":"cd00005",
+                            "title":"[VISA] VISA 리빙 할인",
+                            "salePrice":"35000"
+                        }
+                    ]
+                }
+            ],
             "total":{
-                "count": "3",
-                "price": "98602"
+                "total":"98001",
+                "sale":"5000",
+                "count": "3"
             },
             "list":[
                 {
                     "text": "제품 수",
                     "price": "3개",
-                    "appendClass": ""
+                    "appendClass": "num"
                 },
                 {
                     "text": "이용요금",
