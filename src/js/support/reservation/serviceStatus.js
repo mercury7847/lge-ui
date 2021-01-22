@@ -1,7 +1,7 @@
 (function() {
     var listTmpl = 
         '<li class="{{typeClass}}">' +
-            '<a href="{{url}}" class="item">' +
+            '<a href="{{url}}" class="item" data-number="{{registNumber}}">' +
                 '<div class="flag-wrap bar-type">' +
                     '<span class="flag green">{{type}}</span>' +
                     '{{#if (status)}}<span class="flag">{{status}}</span>{{/if}}' +
@@ -113,6 +113,7 @@
             var self = this;
 
             self.$listPage = $('.service-status-list');
+            self.$form = self.$listPage.find('form');
             self.$list = self.$listPage.find('.list-wrap');
             self.$listPagination = self.$listPage.find('.pagination');
             self.$noData = self.$listPage.find('.no-data');
@@ -158,7 +159,7 @@
 
             self.$listPagination.on('pageClick', function(e) {
                 var userNm = self.$listPage.find('#userName').val();
-                var phoneNo = self.$listPage.find('#phoneNumber').val();
+                var phoneNo = self.$listPage.find('#phoneNo').val();
                 var clothFlag = self.$listPage.find('#clothFlag').val();
                 var param = {
                     page: e.page,
@@ -167,6 +168,16 @@
                     clothFlag: clothFlag
                 };
                 self.requestData(param);
+            });
+
+            self.$list.on('click', 'a', function(e) {
+                e.preventDefault();
+
+                var $this = $(this),
+                    number = $this.data('number');
+
+                self.$form.find('#number').val(number);
+                self.$form.submit();
             });
         }
     };

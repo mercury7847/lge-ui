@@ -1402,4 +1402,125 @@
 			background: #c7d1ea; color:#000000 !important;
 		}
 	}
+
+	&.aurora-white {
+		& input + label:before {
+			background:#FFFEFA; color:#ffffff !important;
+		}
+	}
+	&.aurora-gray {
+		& input + label:before {
+			background:#292D36; color:#ffffff !important;
+		}
+	}
+	&.aurora-green {
+		& input + label:before {
+			background:#007471; color:#ffffff !important;
+		}
+	}
+	&.illusion-sunset {
+		& input + label:before {
+			background:#F2615C; color:#ffffff !important;
+		}
+	}
+	&.aurora-pink {
+		& input + label:before {
+			background:#FFB1C1; color:#ffffff !important;
+		}
+	}
+	&.aurora-blue {
+		& input + label:before {
+			background:#0022A2; color:#ffffff !important;
+		}
+	}
+	&.aurora-red {
+		& input + label:before {
+			background:#A30821; color:#ffffff !important;
+		}
+	}
+	&.ceramic-white	{
+		& input + label:before {
+			background:#F7F7F7; color:#ffffff !important;
+		}
+	}
+	&.mirror-titanium {
+		& input + label:before {
+			background:#595959; color:#ffffff !important;
+		}
+	}
+	&.mirror-red {
+		& input + label:before {
+			background:#BF103F; color:#ffffff !important;
+		}
+	}
+	&.illusion-sky {
+		& input + label:before {
+			background:#A8D5EA; color:#ffffff !important;
+		}
+	}
+	&.aurora-gray {
+		& input + label:before {
+			background:#292D36; color:#ffffff !important;
+		}
+	}
+	&.moonlight-titan {
+		& input + label:before {
+			background:#2A2E37; color:#ffffff !important;
+		}
+	}
+	&.frozen-white {
+		& input + label:before {
+			background:#FFFEFA; color:#ffffff !important;
+		}
+	}
+	&.black {
+		& input + label:before {
+			background:#262626 !important; color:#000 !important;
+		}
+	}
+	&.astro-black {
+		& input + label:before {
+			background:#000 !important; color:#000 !important;
+		}
+	}
+	&.new-aurora-black {
+		& input + label:before {
+			background:#000 !important; color:#000 !important;
+		}
+	}
+	&.new-moroccan-blue {
+		& input + label:before {
+			background:#015499 !important; color:#000 !important;
+		}
+	}
+	&.carmine-red {
+		& input + label:before {
+			background:#8F0F26 !important; color:#000 !important;
+		}
+	}
+	&.mirror-black {
+		& input + label:before {
+			background:#39445D !important; color:#000 !important;
+		}
+	}
+	&.new-platinum-gray {
+		& input + label:before {
+			background:#494D50 !important; color:#000 !important;
+		}
+	}
+	&.white {
+		& input + label:before {
+			background:#fff !important; color:#000 !important;
+		}
+	}
+	&.blue-silver {
+		& input + label:before {
+			background:#2F5275 !important; color:#000 !important;
+		}
+	}
+	&.black-gold {
+		& input + label:before {
+			background:#F2D7D4 !important; color:#000 !important;
+		}
+	}
 }

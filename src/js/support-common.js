@@ -237,7 +237,7 @@ CS.MD.search = function() {
             data: {},
             template: {
                 recentlyList: '<li><a href="#">{{keyword}}</a><button type="button" class="btn-delete"><span class="blind">삭제</span></button></li>',
-                keywordList: '<li><a href="#">{{name}}</a></li>'
+                keywordList: '<li><a href="#">{{keyword}}</a></li>'
             }
         };
 
@@ -281,6 +281,18 @@ CS.MD.search = function() {
                 $('.recently-keyword').find('.no-keyword').show();
             }            
         },
+        setPopularKeyword: function(data) {
+            var self = this;
+            var tmpl = self.options.template,
+                arr = data instanceof Array ? data : [];
+
+            if (arr.length) {
+                arr.forEach(function(item) {
+                    var html = tmpl.keywordList.replace('{{keyword}}', item);
+                    $('.popular-keyword').find('ul').append(html);
+                });
+            }
+        },
         _bindEvent: function() {
             var self = this;
 
@@ -294,6 +306,12 @@ CS.MD.search = function() {
                 self.$el.removeClass('on');
             });
 
+            self.$el.on('click', '.search-layer a', function() {
+                var val = $(this).text().trim();
+                self.$el.find('input[type=text]').val(val);
+                self.$el.removeClass('on');
+            });
+
             self.$el.find('input[type=text]').on('focus', function() {
                 self.$el.addClass('on');
             }).on('input', function() {
@@ -301,7 +319,7 @@ CS.MD.search = function() {
 
                 if (val.length > 1) {
                     var param = {
-                        search: val
+                        keyword: val
                     };
 
                     self.$el.trigger('autocomplete', [param, self.autoUrl, function(result) {
@@ -510,7 +528,16 @@ CS.MD.commonModel = function() {
                 var result = termsValidation.validate();
                 
                 if (result.success) {
-                    self._nextStepModel();
+                    self.$selectedModelBar.show();
+                    if (self.isDefault) {
+                        self.$el.trigger('complete', [self.selected, self.resultUrl]);
+                    } else {
+                        self.$myModelArea.show();
+                        self.next(self.$stepModel);
+                        self.$myModelSlider.vcCarousel('resize');
+                    }
+                    
+                    self.focus(self.$selectedModelBar);
                 }
             });
 
@@ -1983,9 +2010,11 @@ var AuthManager = function() {
                 });
             }
         },
-        open: function() {
+        open: function(completeCallback) {
             var self = this;
             var elem = self.options.elem;
+
+            completeCallback && completeCallback();
 
             $(elem.popup).vcModal();
         },

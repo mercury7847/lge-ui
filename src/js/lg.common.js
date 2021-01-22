@@ -1113,9 +1113,10 @@
             return str;
         },
 
-        getHiddenInputData: function(iptname, wrapname){
+        getHiddenInputData: function(iptname, wrapname, index){
             var hiddenWrapName = wrapname || "hidden-input-group";
-            var hiddenWrap = $('.' + hiddenWrapName).eq(0);
+            var hiddenIndex = index || "0";
+            var hiddenWrap = $('.' + hiddenWrapName).eq(hiddenIndex);
             var data, str, name;
 
             if(iptname){
@@ -1141,12 +1142,13 @@
             }
         },
 
-        setHiddenInputData: function(iptname, value, wrapname){
+        setHiddenInputData: function(iptname, value, wrapname, index){
             if(!iptname) return false;
 
             var hiddenWrapName = wrapname || "hidden-input-group";
-            var hiddenWrap = $('.' + hiddenWrapName).eq(0);
-            var str, name, val;
+            var hiddenIndex = index || "0";
+            var hiddenWrap = $('.' + hiddenWrapName).eq(hiddenIndex);
+            var str, val;
 
             if(typeof iptname === "object"){
                 for(str in iptname){

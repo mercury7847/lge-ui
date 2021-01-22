@@ -44,6 +44,7 @@
                         errorMsg: '개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다.'
                     },
                     subsection: {
+                        required: true,
                         msgTarget: '.type-msg',
                         errorMsg: '정확한 제품증상을 선택해주세요.'
                     },
@@ -93,7 +94,7 @@
         selectModel: function(data, url) {
             var self = this;
 
-            if (data.isRequest) {
+            if (data.isRequest || self.isDefault) {
                 self.loadInquiry(data, url);
             } else {
                 self.$inquiryBox.hide();
