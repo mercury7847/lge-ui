@@ -33,6 +33,9 @@
                 self.$memberlist = self.$contWrap.find('div.member-lists');
                 self.$noData = self.$contWrap.find('div.no-data');
 
+                self.searchStartDate = null;
+                self.searchEndDate = null;
+
                 var register = {
                     startDate:{
                         required: true,
@@ -49,16 +52,14 @@
                     self.validation = new vcui.ui.Validation('div.cont-wrap div.filters',{register:register});
                     self.$pagination =  self.$contWrap.find('div.pagination').vcPagination();
                     self.bindEvents();
+                    self.checkNoData();
                 });
-
-                self.checkNoData();
             },
 
             bindEvents: function() {
                 var self = this;
 
                 self.$editButton.on('click', function (e) {
-                    console.log(self.$editButton);
                     var url = $(this).attr('data-link-url');
                     location.href = url;
                 });
@@ -69,16 +70,16 @@
                 });
 
                 self.$inquiryButton.on('click',function (e) {
-                    self.requestData(1);
+                    self.requestData(1, true);
                 });
 
                 //페이지
                 self.$pagination.on('page_click', function(e, data) {
-                    self.requestData(data);
+                    self.requestData(data, false);
                 });
             },
 
-            requestData: function(page) {
+            requestData: function(page, changeDate) {
                 var self = this;
                 var result = self.validation.validate();
                 if(!result.success){
@@ -88,11 +89,28 @@
                 var param = {};
                 var startDate = self.$dateFilterStartDate.vcCalendar('getyyyyMMdd');
                 var endDate = self.$dateFilterEndDate.vcCalendar('getyyyyMMdd');
+                if(changeDate) {
+                    self.searchStartDate = startDate;
+                    self.searchEndDate = endDate;
+                } else {
+                    if(self.searchStartDate) {
+                        var date = new Date(vcui.date.format(self.searchStartDate,'yyyy-MM-dd')); 
+                        self.$dateFilterStartDate.vcCalendar('setDate', date);
+                    }
+                    if(self.searchEndDate) {
+                        var date = new Date(vcui.date.format(self.searchEndDate,'yyyy-MM-dd')); 
+                        self.$dateFilterEndDate.vcCalendar('setDate', date);
+                    }
+                    
+                    startDate = self.$dateFilterStartDate.vcCalendar('getyyyyMMdd');
+                    endDate = self.$dateFilterEndDate.vcCalendar('getyyyyMMdd');
+                }
+
                 if(startDate && endDate) {
                     param = {
                         "startDate":startDate,
                         "endDate":endDate,
-                        "pointUseType":self.$dateFilter.find('input[name="pointUseType"]:checked').val(),
+                        "purchaseType":self.$dateFilter.find('input[name="purchaseType"]:checked').val(),
                         "page":page
                     }
                 } else {
@@ -108,7 +126,6 @@
                     var arr = data instanceof Array ? data : [];
                     var $list = self.$memberlist.find('ul');
                     $list.empty();
-                    console.log($list);
                     if(arr.length > 0) {
                         arr.forEach(function(item, index) {
                             item.date = vcui.date.format(item.date,'yyyy. MM. dd');
