@@ -39,12 +39,10 @@
                     </div>
                 </div>
                 <div class="result-btn-group ui_sticky">
-                    <div class="group-box">
-                        <a href="/html/CS/CSRF6072.html" target="_blank" class="btn border size-m"><span>제품/설치환경 사진등록</span></a>
-                        <button class="btn border size-m"><span>예상 비용 확인</span></button>
-                        <button type="button" data-href="#reservationTimePopup" class="btn border size-m"><span>예약 일시 변경</span></button>
-                        <button type="button" data-href="#cancelServicePopup" data-control="modal" class="btn border size-m"><span>예약 취소</span></button>
-                    </div>
+                    <ul class="group-box">
+                        <li><a href="/html/CS/CSRF6072.html" target="_blank" class="btn-link"><span>제품/설치환경 사진등록</span></a></li>
+                        <!-- <li><button class="btn-link"><span>예상 비용 확인</span></button></li> -->
+                    </ul>
                 </div>
                 <div class="result-progress">
                     <p class="desc">접수 &gt; 방문 예정 &gt; 완료 순으로 진행됩니다.</p>
@@ -173,7 +171,11 @@
                     
                     <div class="btn-group center">
                         <!-- 단건 조회 시 -->
-                        <a href="#" class="btn">고객지원 메인</a>
+                        <a href="#" class="btn wide-type">고객지원 메인</a>
+                        <div class="block-box">
+                            <button type="button" data-href="#reservationTimePopup" class="btn border"><span>예약 일시 변경</span></button>
+                            <button type="button" data-href="#cancelServicePopup" class="btn border" data-control="modal"><span>예약 취소</span></button>
+                        </div>
                         <!-- 다건 조회 시 -->
                         <!-- <a href="#" class="btn">목록</a> -->
                     </div>
