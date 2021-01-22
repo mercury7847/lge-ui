@@ -316,6 +316,8 @@
                 $('#serviceMenu').hide();
                 $('#centerFind').hide();
 
+                $('.info-banner').remove();
+
                 self.$myModelArea.show();
 
                 self.$cont.commonModel('next', self.$stepModel);
@@ -358,6 +360,10 @@
                         self.setRecommProduct(resultData);
                         self.setServiceMenu(resultData);
                         self.setSolutionsList(result);
+
+                        if (resultData.popularKeyword) {
+                            $('.ui_search').search('setPopularKeyword', resultData.popularKeyword);
+                        }
                         $('#centerFind').show();
                         lgkorUI.hideLoading();
                     });
@@ -470,11 +476,11 @@
                 });
 
                 // keyword search
-                self.$searchBtn.on('click', function() {
-                    var value = self.$keyword.val(),
-                        isChecked = self.$result.find('#research').is(':checked'),
+                self.$searchBtn.on('click', function(e, keyword) {
+                    var value = keyword || self.$keyword.val(),
+                        isChecked = self.$wrap.find('#research').is(':checked'),
                         param = {
-                            page:1,
+                            page:1
                         };
                         
                     if (!isChecked) {
@@ -490,6 +496,11 @@
                     self.param = $.extend(self.param, param);
 
                     self.requestData();
+                });
+
+                $('.search-layer').on('click', 'a', function(e) {
+                    e.preventDefault();
+                    self.$searchBtn.trigger('click', [$(this).text().trim()]);      
                 });
 
                 // list order by
