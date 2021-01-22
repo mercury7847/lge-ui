@@ -397,6 +397,14 @@
                 }
             });
         });
+
+        $(window).on("click",function(e){
+            console.log(e);
+            var currentTarget = e.currentTarget;
+            var target = e.target;
+            var toElement = e.toElement;
+            $(".txt-rst").html(currentTarget + "/" +target + "/" +toElement);
+        });
     </script>
 </head>
 <body>
@@ -404,6 +412,10 @@
     <br>
     <br>
     <button type="button" class="btn-opt-login" id="btn-mkt"><span>마케팅 수신동의 모달 열기</span></button>
+
+    <div class="txt-rst" style="position:fixed;left:0;bottom:0;width:100%;height:auto;background-color:rgba(0, 0, 0, 0.8);color:#fff;">
+
+    </div>
 
     <div class="lyr-opt-panel">
         <div class="main-panel" aria-hidden="true" tabindex="0">
