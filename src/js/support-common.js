@@ -2001,9 +2001,11 @@ var AuthManager = function() {
                 });
             }
         },
-        open: function() {
+        open: function(completeCallback) {
             var self = this;
             var elem = self.options.elem;
+
+            completeCallback && completeCallback();
 
             $(elem.popup).vcModal();
         },

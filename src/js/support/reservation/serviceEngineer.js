@@ -496,11 +496,17 @@
                 
                 $('[name=buyingdate]').closest('.conts').find('.form-text').remove();
 
-                if ($('#detailAddress').prop('readonly')) {
-                    $('input[type=text], textarea').not('#zipCode, #userAddress, #detailAddress').val('');
-                } else {
-                    $('input[type=text], textarea').val('');
+                $('#rentalN').prop('checked', true);
+
+                var notInput = '';
+                if (self.isLogin) {
+                    notInput += '#userNm, #phoneNo';
+                    if ($('#detailAddress').prop('readonly')) {
+                        notInput += ', #zipCode, #userAddress, #detailAddress';
+                    }
                 }
+                $('input[type=text], textarea').not(notInput).val('');
+
                 $('#fanEtc').prop('disabled', true);
 
                 $('.date-wrap').calendar('reset');
@@ -736,7 +742,10 @@
                             }
                         });       
                     } else {
-                        authManager.open();
+                        authManager.open(function() {
+                            $('#authName').val($('#userNm').val()).prop('readonly', true);
+                            $('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);  
+                        });
                     }
                 }
             });
