@@ -153,6 +153,12 @@
     /* page */
     /* 출장 예약 */
     &.service-engineer {
+        .btm-more.both {
+            margin-top:0;
+            & > * {
+                margin-top:8px;
+            }
+        }
     }
 
     /* 이메일 문의 */
