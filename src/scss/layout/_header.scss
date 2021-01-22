@@ -688,7 +688,8 @@
             position: relative;
             .column {
                 float: left;
-                min-width: 25% ;
+                min-width: 25%;
+                min-height: 1px;
                 padding-right: 24px;
                 &.additional-category {
                     position: absolute;
