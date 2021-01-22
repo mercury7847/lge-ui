@@ -7,14 +7,23 @@
 	&.stage-full .component-inner {
         max-width:1920px;
         padding:0;
+        @include mobile {
+            padding-bottom:32px;
+        }
     }
     &.stage-wide .component-inner {
         max-width:1600px;
         padding:0;
+        @include mobile {
+            padding-bottom:32px;
+        }
     }
     &.stage-standard .component-inner {
         max-width:1380px;
         padding:0;
+        @include mobile {
+            padding-bottom:32px;
+        }
     }
 	.component-inner {
         position: relative;
@@ -151,6 +160,7 @@
             a {
                 position:relative;
                 display:inline-block;
+                max-width:100%;
                 vertical-align:top;
             }
             img {

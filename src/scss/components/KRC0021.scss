@@ -44,6 +44,7 @@
         &.image {
             a {
                 display:inline-block;
+                max-width:100%;
                 overflow:hidden;
                 vertical-align:top;
                 img {
@@ -58,6 +59,7 @@
             a {
                 position:relative;
                 display:inline-block;
+                max-width:100%;
                 vertical-align:top;
                 img {
                     width:auto;

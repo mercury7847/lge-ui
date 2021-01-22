@@ -9,16 +9,19 @@
 	&.full-size {
 		.component-inner {
 			max-width:100% !important;
+			padding:0;
 		}
     }
     &.wide-size {
 		.component-inner {
 			max-width:1600px !important;
+			padding:0;
 		}
     }
     &.standard-size {
 		.component-inner {
 			max-width:1380px !important;
+			padding:0;
 			.ui_carousel_slider {
 				max-width:1146px;
 				margin:0 auto;
