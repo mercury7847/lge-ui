@@ -93,7 +93,7 @@
         selectModel: function(data, url) {
             var self = this;
 
-            if (data.isRequest) {
+            if (data.isRequest || self.isDefault) {
                 self.loadInquiry(data, url);
             } else {
                 self.$inquiryBox.hide();

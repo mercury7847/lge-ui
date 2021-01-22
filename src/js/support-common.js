@@ -528,7 +528,16 @@ CS.MD.commonModel = function() {
                 var result = termsValidation.validate();
                 
                 if (result.success) {
-                    self._nextStepModel();
+                    self.$selectedModelBar.show();
+                    if (self.isDefault) {
+                        self.$el.trigger('complete', [self.selected, self.resultUrl]);
+                    } else {
+                        self.$myModelArea.show();
+                        self.next(self.$stepModel);
+                        self.$myModelSlider.vcCarousel('resize');
+                    }
+                    
+                    self.focus(self.$selectedModelBar);
                 }
             });
 
