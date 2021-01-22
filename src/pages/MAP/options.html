@@ -244,11 +244,9 @@
                 },
                 focusin : function(){
                     $(this).closest("div").find("[class*=rst-time]").addClass("focus");
-                    alert(1);
                 },
                 focusout: function(){
                     $(this).closest("div").find("[class*=rst-time]").removeClass("focus");
-                    alert(2);
                 },
                 change : function(){
                     var value = $(this).val();
@@ -280,7 +278,6 @@
                     */
                 },
                 blur: function(){
-                    alert(3);
                     var startDate = $(".t-start");
                     var endDate = $(".t-end");
                     var startDateVal = startDate.val();
