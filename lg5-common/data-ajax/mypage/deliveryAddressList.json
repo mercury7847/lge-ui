@@ -1,0 +1,46 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "addressList": [
+            {
+                "addressID": "AD001",
+                "addressNickName": "회사",
+                "defaultAddress": true,
+                "receiverUser": "이엘지",
+                "zipCode": "123456",
+                "userAddress": "경기 김포시 여의대로 128 LG 트윈타워",
+                "detailAddress": "13층 401호",
+                "phoneNumber": "01023984987",
+                "telephoneNumber": "01023450987",
+                "city": "경기 김포시"
+            },
+            {
+                "addressID": "AD002",
+                "addressNickName": "집",
+                "defaultAddress": false,
+                "receiverUser": "이케어",
+                "zipCode": "123456",
+                "userAddress": "서울 강남구여의대로 128 LG 트윈타워",
+                "detailAddress": "13층 402호",
+                "phoneNumber": "01023984987",
+                "telephoneNumber": "01023450987",
+                "city": "서울 강남구"
+            },
+            {
+                "addressID": "AD003",
+                "addressNickName": "자택",
+                "defaultAddress": false,
+                "receiverUser": "이엘지",
+                "zipCode": "123456",
+                "userAddress": "서울 강서구 여의대로 128 LG 트윈타워",
+                "detailAddress": "13층 403호",
+                "phoneNumber": "01023984987",
+                "telephoneNumber": "01023450987",
+                "city": "서울 강서구"
+            }
+        ]
+    }
+}
