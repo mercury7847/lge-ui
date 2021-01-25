@@ -40,6 +40,13 @@ $(window).ready(function(){
 				'</li>'+
 				'{{/each}}'+
 			'</ul>'+
+			'<ul class="indi-wrap ui_carousel_dots">'+
+				'<li><button type="button" class="btn-indi"><span class="blind">1번 내용 보기</span></button></li>'+
+			'</ul>'+
+			'<div class="slide-controls">'+
+				'<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>'+
+				'<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>'+
+			'</div>'+
 		'</div>';
 
 	var KRC0001 = {
@@ -59,14 +66,16 @@ $(window).ready(function(){
 				var title = $(item).find('.title');
 				var productListUrl = $(item).data('listUrl');
 				var listwrap = $(item).find('.products-list-wrap');
-				var listID;
+				var listID, listgroup;
 				if(title.length && title.data('type') == "RV"){
-
+					listID = "productList"
+					listgroup = vcui.template(listWrapTemplate, {id:listID});
+					listwrap.append(listgroup);
 				} else{
 					var tab = $(item).find('.tabs li > a[data-type="RV"]');
 					if(tab.length){
 						listID = tab.attr('href').replace("#", "");
-						var listgroup = vcui.template(listWrapTemplate, {id:listID});
+						listgroup = vcui.template(listWrapTemplate, {id:listID});
 
 						var tabIndex = tab.parent().index();
 						if(tabIndex == 0) listwrap.prepend(listgroup);
