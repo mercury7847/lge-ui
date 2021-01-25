@@ -9,6 +9,8 @@
     <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
     <!-- <script src="/lg5-common/js/common-ui.js"></script> -->
     <script>
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
         var beforeFocusEle = "";
         var optModal = {
             open: function(id, role, txt, confirm, cancel){
@@ -252,6 +254,13 @@
                     var value = $(this).val();
                     $(this).closest("div").find("[class*=rst-time]").text(value);
 
+                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        console.log("iphone");
+                    }else{
+                        $(this).trigger("blur");
+                    }
+                    $(".device").html(/iPhone|iPad|iPod/i.test(navigator.userAgent) + "<br>" + userAgent);
+
                     /*
                     var startDate = $(".t-start");
                     var endDate = $(".t-end");
@@ -413,8 +422,13 @@
     <br>
     <button type="button" class="btn-opt-login" id="btn-mkt"><span>마케팅 수신동의 모달 열기</span></button>
 
-    <div class="txt-rst" style="position:fixed;left:0;bottom:0;width:100%;height:auto;background-color:rgba(0, 0, 0, 0.8);color:#fff;">
+    <div style="position:fixed;left:0;bottom:0;width:100%;height:auto;background-color:rgba(0, 0, 0, 0.8);color:#fff;z-index:10000;">
+        <div class="txt-rst">
 
+        </div>
+        <div class="device">
+
+        </div>
     </div>
 
     <div class="lyr-opt-panel">
