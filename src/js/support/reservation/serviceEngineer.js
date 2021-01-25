@@ -153,17 +153,32 @@
                     msgTarget: '.err-msg'
                 }
             }
-            var authRegister = {
-                authName: {
-                    pattern: /^[가-힣a-zA-Z]+$/,
-                    msgTarget: '.err-block'
+            var authManager = {
+                elem: {
+                    popup: '#certificationPopup',
+                    name: '#authName',
+                    phone: '#authPhoneNo',
+                    number: '#authNo'
                 },
-                authPhoneNo: {
-                    pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                    msgTarget: '.err-block'
-                },
-                authNo:{
-                    msgTarget: '.err-block'
+                register: {
+                    authName: {
+                        required: true,
+                        msgTarget: '.err-block',
+                        pattern: /^[가-힣a-zA-Z]+$/,
+                        errorMsg: '이름을 입력해주세요.',
+                        patternMsg: '한글 또는 영문만 입력 가능합니다.'
+                    },
+                    authPhoneNo: {
+                        required: true,
+                        msgTarget: '.err-block',
+                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                        errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                    },
+                    authNo:{
+                        required: true,
+                        msgTarget: '.err-block'
+                    }
                 }
             };
             vcui.require(['ui/validation'], function () {
@@ -725,7 +740,7 @@
                 var result = validation.validate();
 
                 if (result.success == true) {    
-                    if (self.isLogin == 'Y') {
+                    if (self.isLogin) {
                         lgkorUI.confirm('', {
                             title:'예약 하시겠습니까?',
                             okBtnName: '확인',
