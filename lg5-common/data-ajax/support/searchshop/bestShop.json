@@ -23,19 +23,19 @@
          "serviceProduct": [
             {
                "name": "모바일",
-               "class": "cate-mobile"
+               "class": "opt-mobile"
             },
             {
                "name": "IT/모니터",
-               "class": "cate-it-monitor"
+               "class": "opt-it-monitor"
             },
             {
                "name": "소형가전",
-               "class": ""
+               "class": "opt-small-appliances"
             },
             {
                "name": "소모품",
-               "class": ""
+               "class": "opt-expendables"
             }
          ]
       }, 
@@ -54,7 +54,25 @@
          "bizStatus":  {
             "bizStatusClass": "olive",
             "bizStatusText": "보통"
-         }
+         },
+         "serviceProduct": [
+            {
+               "name": "모바일",
+               "class": "opt-mobile"
+            },
+            {
+               "name": "IT/모니터",
+               "class": "opt-it-monitor"
+            },
+            {
+               "name": "소형가전",
+               "class": "opt-small-appliances"
+            },
+            {
+               "name": "소모품",
+               "class": "opt-expendables"
+            }
+         ]
       }, 
       {
          "shopID": 5647,
@@ -71,7 +89,25 @@
          "bizStatus": {
             "bizStatusClass": "red",
             "bizStatusText": "혼잡"
-         }
+         },
+         "serviceProduct": [
+            {
+               "name": "모바일",
+               "class": "opt-mobile"
+            },
+            {
+               "name": "IT/모니터",
+               "class": "opt-it-monitor"
+            },
+            {
+               "name": "소형가전",
+               "class": "opt-small-appliances"
+            },
+            {
+               "name": "소모품",
+               "class": "opt-expendables"
+            }
+         ]
       }, 
       {
          "shopID": 5637,
@@ -88,7 +124,25 @@
          "bizStatus": {
             "bizStatusClass": "",
             "bizStatusText": "업무시작 전"
-         }
+         },
+         "serviceProduct": [
+            {
+               "name": "모바일",
+               "class": "opt-mobile"
+            },
+            {
+               "name": "IT/모니터",
+               "class": "opt-it-monitor"
+            },
+            {
+               "name": "소형가전",
+               "class": "opt-small-appliances"
+            },
+            {
+               "name": "소모품",
+               "class": "opt-expendables"
+            }
+         ]
       }, 
       {
          "shopID": 5622,
@@ -105,7 +159,25 @@
          "bizStatus": {
             "bizStatusClass": "close",
             "bizStatusText": "업무종료"
-         }
+         },
+         "serviceProduct": [
+            {
+               "name": "모바일",
+               "class": "opt-mobile"
+            },
+            {
+               "name": "IT/모니터",
+               "class": "opt-it-monitor"
+            },
+            {
+               "name": "소형가전",
+               "class": "opt-small-appliances"
+            },
+            {
+               "name": "소모품",
+               "class": "opt-expendables"
+            }
+         ]
       }, 
       {
          "shopID": 3065,
@@ -122,7 +194,25 @@
          "bizStatus": {
             "bizStatusClass": "",
             "bizStatusText": "휴무"
-         }
+         },
+         "serviceProduct": [
+            {
+               "name": "모바일",
+               "class": "opt-mobile"
+            },
+            {
+               "name": "IT/모니터",
+               "class": "opt-it-monitor"
+            },
+            {
+               "name": "소형가전",
+               "class": "opt-small-appliances"
+            },
+            {
+               "name": "소모품",
+               "class": "opt-expendables"
+            }
+         ]
       }, 
       {
          "shopID": 3470,
@@ -139,7 +229,25 @@
          "bizStatus": {
             "bizStatusClass": "",
             "bizStatusText": "근무 중"
-         }
+         },
+         "serviceProduct": [
+            {
+               "name": "모바일",
+               "class": "opt-mobile"
+            },
+            {
+               "name": "IT/모니터",
+               "class": "opt-it-monitor"
+            },
+            {
+               "name": "소형가전",
+               "class": "opt-small-appliances"
+            },
+            {
+               "name": "소모품",
+               "class": "opt-expendables"
+            }
+         ]
       }, 
       {
          "shopID": 3471,
@@ -156,7 +264,25 @@
          "bizStatus": {
             "bizStatusClass": "skyblue",
             "bizStatusText": "원할"
-         }
+         },
+         "serviceProduct": [
+            {
+               "name": "모바일",
+               "class": "opt-mobile"
+            },
+            {
+               "name": "IT/모니터",
+               "class": "opt-it-monitor"
+            },
+            {
+               "name": "소형가전",
+               "class": "opt-small-appliances"
+            },
+            {
+               "name": "소모품",
+               "class": "opt-expendables"
+            }
+         ]
       }
    ]
 }
