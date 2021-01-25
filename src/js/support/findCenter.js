@@ -256,11 +256,11 @@
                 
                 self.$map.selectedMarker(id);
             })
-            .on('click', 'li > .ui_marker_selector .btn-detail', function(e){
+            .on('click', 'li > .ui_marker_selector .btn-link', function(e){
                 e.preventDefault();
 
                 var id = $(this).attr("href").replace("#", "");
-                window.open(self.detailUrl+"?shopID="+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
+                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
             });
 
 
@@ -360,7 +360,7 @@
             });
             $('.ui_search').on('autocompleteClick', function(e, el) {
                 var id = $(el).attr("href").replace("#", "");
-                window.open(self.detailUrl+"?shopID="+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
+                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
             });
 
             self.searchCenterName.on('click', function() {
@@ -373,6 +373,8 @@
                     var address = data.userSelectedType == 'R' ? data.roadAddress : data.jibunAddress;
                     self.$zipCode.val(data.zonecode);
                     self.$address2.val(address);
+                    
+                    self.searchAddressToCoordinate(data.address);
                 }); 
             });
             self.$searchAddressButton.on('click', function() {
@@ -382,7 +384,22 @@
             self._resize();
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
+        searchAddressToCoordinate: function(address) { 
+            var self = this;
+            var point;
+            
+            naver.maps.Service.geocode({
+                address: address
+            }, function(status, response) {
+                if (status === naver.maps.Service.Status.ERROR) {
+                    return alert('Something Wrong!');
+                }
 
+                var point = response.result.items[0].point;
+                self.latitude = point.x;
+                self.longitude = point.y;
+            });
+        },
         _setTabInit: function(){
             var self = this;
             
@@ -592,8 +609,8 @@
                     break;
                 case 'road':
                     keywords = {
-                        searchZipCode: self.$zipCode.val(),
-                        searchAddress: self.$address2.val()
+                        latitude:self.latitude,
+                        longitude:self.longitude
                     };
                     break;
             };
@@ -713,7 +730,6 @@
                 self.searchResultMode = true;
 
                 $(window).off('keyup.searchShop');
-
                 self._loadStoreData();
             } else{
                 lgkorUI.alert("", {
