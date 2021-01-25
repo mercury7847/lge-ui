@@ -129,6 +129,8 @@
 
                 if (!self.isLogin) authManager = new AuthManager(authManager);
 
+                $('#route').val(lgkorUI.isMobile() ? 'WWW2' : 'WWWW1');
+
                 self.$cont.commonModel({
                     register: register
                 });
@@ -350,8 +352,11 @@
             self.$stepInput.find('[name=buyingdate]').closest('.conts').find('.form-text').remove();
             self.$stepInput.find('[name=buyingdate]').prop('checked', false);
             self.$stepInput.find('#content').val('');
-            self.$stepInput.find('#userNm').val('');
-            self.$stepInput.find('#phoneNo').val('');
+
+            if (!self.isLogin) {
+                self.$stepInput.find('#userNm').val('');
+                self.$stepInput.find('#phoneNo').val('');
+            }
 
             self.$calendarDate.calendar('reset');
             self.$calendarTime.timeCalendar('reset');
