@@ -1,0 +1,13 @@
+<svg id="img_mobile_MO_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="img_mobile_MO_80-2" data-name="img_mobile_MO_80">
+    <g id="ic_mobile_MO_80">
+      <g id="ic_mobile_40">
+        <rect id="Rectangle" width="80" height="80" fill="none"/>
+        <g id="Group_2" data-name="Group 2" transform="translate(18 8)">
+          <path id="Rectangle-2" data-name="Rectangle" d="M0,1.231A1.231,1.231,0,0,1,1.231,0H42.769A1.231,1.231,0,0,1,44,1.231V62.769A1.231,1.231,0,0,1,42.769,64H1.231A1.231,1.231,0,0,1,0,62.769Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+          <rect id="Rectangle-3" data-name="Rectangle" width="10.754" height="3" rx="1.5" transform="translate(16.623 56)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -56,17 +56,16 @@
                                 '<a href="#{{shopID}}" class="btn-link">상세보기</a>'+
                             '</p>'+
                         '</div>'+
-                        '{{# if (typeof serviceProduct != "undefined") { #}}' +
-                        '<ul class="optionIcon">'+
-                            '{{#each (item, index) in serviceProduct}}' +
-                            '<li>'+
-                                '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
+                        '{{# if(typeof serviceProduct != "undefined") { #}}' +
+                        '<ul class="opt-list">'+
+                            '{{#each item in serviceProduct}}' +
+                            '<li class="{{item.class}}">'+
+                                '<span class="name">{{item.name}}</span>'+
                             '</li>' +
                             '{{/each}}' +
                         '</ul>'+
                         '{{# } #}}' +
                     '</div>'+
-
                 '</div>'+
             '</div>'+
         '</li>';
@@ -126,7 +125,7 @@
 
             self._resize();
             
-            vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox'], function () {
+            vcui.require(['ui/storeMap'], function () {
                 lgkorUI.requestAjaxData(self.configUrl, {}, function(result){
                     self.bestShopUrl = result.data.bestShopUrl;
                     self.localUrl = result.data.localListUrl;
@@ -144,7 +143,21 @@
                             infoWindow: 
                             '<div class="info-overlaybox">'+
                             '   <div class="inner">'+
-                            '       <p class="name">{{shopName}}</p>'+
+                            '       <div class="tit-wrap">'+
+                            '           <p class="name">'+
+                            '               <span class="blind">매장명</span>'+
+                            '               {{shopName}}'+
+                            '           </p>'+
+                            '           {{# if(typeof bizStatus != "undefined") { #}}'+
+                            '           {{# if(typeof bizStatus.bizStatusClass != "undefined") { #}}'+
+                            '           <div class="status-icon {{bizStatus.bizStatusClass}}">'+
+                            '           {{# } else { #}}'+
+                            '           <div class="status-icon">'+
+                            '           {{# } #}}'+
+                            '               <strong class="status">{{bizStatus.bizStatusText}}</strong>'+
+                            '           </div>'+
+                            '           {{# } #}}'+
+                            '       </div>'+
                             '       <p class="adress">{{shopAdress}}</p>'+
                             '       <div class="hour-info">'+
                             '           <dl>'+
@@ -156,23 +169,18 @@
                             '               <dd>{{bizHours.saturday}}</dd>'+
                             '           </dl>'+
                             '       </div>'+
-                            '<ul class="optionIcon">'+
-                                '<li>'+
-                                    '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
-                                '</li>'+
-                                '<li>'+
-                                    '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
-                                '</li>'+
-                                '<li>'+
-                                    '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
-                                '</li>'+
-                                '<li>'+
-                                    '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
-                                '</li>'+
-                            '</ul>'+
+                            '       {{# if(typeof serviceProduct != "undefined") { #}}' +
+                            '       <ul class="opt-list">'+
+                            '           {{#each item in serviceProduct}}' +
+                            '           <li class="{{item.class}}">'+
+                            '               <span class="name">{{item.name}}</span>'+
+                            '           </li>' +
+                            '           {{/each}}' +
+                            '       </ul>'+
+                            '       {{# } #}}' +
                             '       <div class="btn-group">'+
-                            '           <a href="#n" class="btn border size">방문 예약</a>'+
-                            '           <a href="#{{shopID}}" class="btn border size detail-view">상세 보기</a>'+
+                            '           <a href="#n" class="btn dark-gray size">방문 예약</a>'+
+                            '           <a href="#{{shopID}}" class="btn dark-gray size detail-view">상세 보기</a>'+
                             '       </div>'+
                             '   </div>'+
                             '</div>'
@@ -181,7 +189,7 @@
                         self.$map = self.$mapContainer.vcStoreMap('instance');
                         self._loadStoreData();
                         self._bindEvents();
-                    }).on('mapchanged', function(e, data){	
+                    }).on('mapchanged', function(e, data){	console.log(data);
                         self._setItemList(data);
                         self._setItemPosition();                        
 
@@ -768,12 +776,12 @@
                      shopName: data[i].info.shopName,
                      bizHours: data[i].info.bizHours,
                      bizStatus: data[i].info.bizStatus,
-                     flagInfo: data[i].info.flagInfo,
+                     serviceProduct: data[i].info.serviceProduct,
                      shopAdress: data[i].info.shopAdress,
-                     shopTelphone: data[i].info.shopTelphone,
                      shopID: data[i].info.shopID,
                      selected: data[i].info.selected ? " on" : ""
                  }
+                 console.log(listData);
                  var list = vcui.template(searchListTemplate, listData);
                  self.$defaultListLayer.append(list);
              }
@@ -867,10 +875,10 @@
             var listheight;
             if(self.searchResultMode){
                 // listheight = self.windowHeight - top - resultheight - optheight - paddingtop - 5;
-                listheight = self.windowHeight - resultheight - optheight - paddingtop - 5;
+                listheight = self.windowHeight - resultheight - optheight - paddingtop;
             } else{
                 // listheight = self.windowHeight - top - titheight - scheight - optheight - paddingtop - 5;
-                listheight = self.windowHeight - titheight - scheight - optheight - paddingtop - 5;
+                listheight = self.windowHeight - titheight - scheight - optheight - paddingtop;
             }
             
             self.$defaultListContainer.find('.scroll-wrap').height(listheight);
@@ -890,7 +898,7 @@
                 mapmargin = 0;
                 mapwidth = self.windowWidth;
 
-                mapheight = self.$defaultListContainer.find('.scroll-wrap').height();
+                mapheight = self.$defaultListContainer.find('.sch-list').outerHeight();
             } else{
                 if(self.$leftContainer.hasClass('close')){
                     mapmargin = 24;
