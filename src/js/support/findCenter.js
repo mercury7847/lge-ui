@@ -25,12 +25,15 @@
                             '<span class="blind">매장명</span>'+
                             '{{shopName}}'+
                         '</p>'+
-                        '{{#if bizStatus}}'+
+                        '{{# if(typeof bizStatus != "undefined") { #}}'+
+                        '{{# if(typeof bizStatus.bizStatusClass != "undefined") { #}}'+
                         '<div class="status-icon {{bizStatus.bizStatusClass}}">'+
+                        '{{# } else { #}}'+
+                        '<div class="status-icon">'+
+                        '{{# } #}}'+
                             '<strong class="status">{{bizStatus.bizStatusText}}</strong>'+
                         '</div>'+
-                        '{{/if}}'+
-
+                        '{{# } #}}'+
                     '</div>'+
 
                     '<p class="addr">'+
@@ -414,8 +417,7 @@
             var self = this;
 
             lgkorUI.requestAjaxData(self.localUrl, {pcode:encodeURI(val),codeType:'CITY'}, function(result){
-                self._setSelectOption(self.$boroughSelect, result.data);
-                
+                self._setSubwayOption(result.data, self.$boroughSelect, {codeName:"구/군 선택", code:""}, "code");
                 self.$localSearchButton.prop('disabled', false);
                 self.$boroughSelect.prop('disabled', false);
                 self.$boroughSelect.vcSelectbox('update');

@@ -153,7 +153,7 @@
                     msgTarget: '.err-msg'
                 }
             }
-            var authManager = {
+            var authOptions = {
                 elem: {
                     popup: '#certificationPopup',
                     name: '#authName',
@@ -185,7 +185,7 @@
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
                 addressFinder = new AddressFind();
 
-                if (!self.isLogin) authManager = new AuthManager(authManager);
+                if (!self.isLogin) authManager = new AuthManager(authOptions);
 
                 $('#route').val(lgkorUI.isMobile() ? 'WWW2' : 'WWWW1');
 
