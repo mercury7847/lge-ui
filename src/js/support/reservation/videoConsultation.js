@@ -52,7 +52,7 @@
             self.$solutionsPopup = $('#solutionsPopup');
             self.$calendarWrap = self.$cont.find('.calendar-area');
             self.$calendarDate = self.$calendarWrap.find('.date-wrap');
-            self.$calendarTime = self.$calendarWrap.find('.timte-wrap');
+            self.$calendarTime = self.$calendarWrap.find('.time-wrap');
 
             self.$authPopup = $('#certificationPopup');
 
@@ -94,7 +94,7 @@
                     errorMsg: '시간을 선택해주세요.'
                 }
             }
-            var authManager = {
+            var authOptions = {
                 elem: {
                     popup: '#certificationPopup',
                     name: '#authName',
@@ -118,14 +118,17 @@
                     },
                     authNo:{
                         required: true,
-                        msgTarget: '.err-block'
+                        msgTarget: '.err-block',
+                        errorMsg: '인증번호를 입력해주세요.'
                     }
                 }
             };
             vcui.require(['ui/validation'], function () {
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
                 
-                if (!self.isLogin) authManager = new AuthManager(authManager);
+                if (!self.isLogin) authManager = new AuthManager(authOptions);
+
+                $('#route').val(lgkorUI.isMobile() ? 'WWW2' : 'WWWW1');
 
                 self.$cont.commonModel({
                     register: register
@@ -276,44 +279,33 @@
             });
         },
         requestTime: function() {
-            var self = this,
-                url = $('.calendar-area').data('timeUrl'),
-                param = validation.getAllValues(),
-                result;
-
-            param = $.extend(param, {
-                topic: $('input[name=topic]:checked').val(),
-                subTopic: $('input[name=subTopic]:checked').val(),
+            var self = this;
+            var url = $('.calendar-area').data('timeUrl');
+            var param = {
                 serviceType: $('#serviceType').val(),
                 productCode: $('#productCode').val(),
                 category: $('#category').val(),
                 subCategory: $('#subCategory').val(),
                 date: $('#date').val()
-            });
+            };
 
-            result = validation.validate(['topic', 'subTopic', 'userNm', 'phoneNo']);
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                var data = result.data;
 
-            if (result.success) {
-                lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                    var data = result.data;
-
-                    if (data.resultFlag == 'Y') {
-                        $('.time-wrap').timeCalendar('update', data.timeList);
-                        $('.time-wrap').find('.box-desc').hide();
-                        $('.time-wrap').find('.box-table').show();
-                    } else {
-                        if (data.resultMessage) {
-                            if (data.tAlert == 'Y') {
-
-                            }
-                            
-                            lgkorUI.alert("", {
-                                title: data.resultMessage
-                            });
-                        }
+                if (data.resultFlag == 'Y') {
+                    self.$calendarTime.timeCalendar('update', data.timeList);
+                    self.$calendarTime.find('.box-desc').hide();
+                    self.$calendarTime.find('.box-table').show();
+                } else {
+                    if (data.resultMessage) {                            
+                        lgkorUI.alert("", {
+                            title: data.resultMessage
+                        });
                     }
-                });
-            }
+                }
+                lgkorUI.hideLoading();
+            });
         },
         requestComplete: function() {
             var self = this;
@@ -348,8 +340,11 @@
             self.$stepInput.find('[name=buyingdate]').closest('.conts').find('.form-text').remove();
             self.$stepInput.find('[name=buyingdate]').prop('checked', false);
             self.$stepInput.find('#content').val('');
-            self.$stepInput.find('#userNm').val('');
-            self.$stepInput.find('#phoneNo').val('');
+            
+            if (!self.isLogin) {
+                self.$stepInput.find('#userNm').val('');
+                self.$stepInput.find('#phoneNo').val('');
+            }
 
             self.$calendarDate.calendar('reset');
             self.$calendarTime.timeCalendar('reset');

@@ -5,8 +5,6 @@
     "param":{},
     "data": [
         {
-            "codeName": "구/군 선택", "code": ""
-        },{
             "codeName": "강남구", "code": "강남구"
         }, {
             "codeName": "강동구", "code": "강동구"

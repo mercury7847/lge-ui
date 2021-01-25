@@ -20,6 +20,8 @@ vcui.define('ui/dropdown', ['jquery', 'vcui'], function ($, core) {
             toggleSelector: '.ui_dropdown_toggle',
             listSelector: '.ui_dropdown_list'
         },
+        isBindEvent:false,
+
         initialize: function initialize(el, options) {
             var self = this;
 
@@ -46,6 +48,7 @@ vcui.define('ui/dropdown', ['jquery', 'vcui'], function ($, core) {
                     return self.close();
                 }
 
+                self.isBindEvent = true;
                 self[self.$el.hasClass('open') ? 'close' : 'open']();
             });
         },
@@ -108,12 +111,13 @@ vcui.define('ui/dropdown', ['jquery', 'vcui'], function ($, core) {
         _unbindEventsByClose: function _unbindEventsByClose() {
             var self = this;
             var opt = self.options;
-
-            self.off('keydown', self._unhandleKeydown);
-            self.off('click', self._unhandleClick);
-            self.winOff('resize', self._unhandleResize);
-            self.docOff("focusin focusout", self._unhandleFocus);
-            self.docOff('mousedown keydown', self._unhandleDocEvents);
+            if(self.isBindEvent) {
+                self.off('keydown', self._unhandleKeydown);
+                self.off('click', self._unhandleClick);
+                self.winOff('resize', self._unhandleResize);
+                self.docOff("focusin focusout", self._unhandleFocus);
+                self.docOff('mousedown keydown', self._unhandleDocEvents);
+            }
         },
         open: function open() {
             var self = this;

@@ -86,8 +86,8 @@
             "gpsy": "127.039922"
          },
          "bizStatus": {
-            "bizStatusClass": "skyblue",
-            "bizStatusText": "원할"
+            "bizStatusClass": "",
+            "bizStatusText": "업무시작 전"
          }
       }, 
       {
@@ -103,8 +103,8 @@
             "gpsy": "127.004237"
          },
          "bizStatus": {
-            "bizStatusClass": "skyblue",
-            "bizStatusText": "원할"
+            "bizStatusClass": "close",
+            "bizStatusText": "업무종료"
          }
       }, 
       {
@@ -120,8 +120,8 @@
             "gpsy": "127.0023219"
          },
          "bizStatus": {
-            "bizStatusClass": "skyblue",
-            "bizStatusText": "원할"
+            "bizStatusClass": "",
+            "bizStatusText": "휴무"
          }
       }, 
       {
@@ -137,8 +137,8 @@
             "gpsy": "127.028056"
          },
          "bizStatus": {
-            "bizStatusClass": "skyblue",
-            "bizStatusText": "원할"
+            "bizStatusClass": "",
+            "bizStatusText": "근무 중"
          }
       }, 
       {
