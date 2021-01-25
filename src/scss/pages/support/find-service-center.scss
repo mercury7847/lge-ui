@@ -179,6 +179,13 @@
                                 .tit-wrap {
                                     display: flex;
                                     justify-content: space-between;
+                                    .status-icon  {
+                                        &.close {
+                                            .status {
+                                                color:#ec455a;
+                                            }
+                                        }
+                                    }
                                 }
                                 .etc-info {
                                     margin-top: 4px;
