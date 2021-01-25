@@ -650,6 +650,7 @@
             } 
 
             productPriceInfo = result.data.productPriceInfo;
+            cardDiscountPrice = result.data.cardDiscountPrice || 0;
             changeProductPriceInfo();
 
             console.log("setInstallAbledConfirm() abled :", abled);

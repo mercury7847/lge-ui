@@ -51,6 +51,7 @@
                     "appendClass": "sale"
                 }
             ]
-        }
+        },
+        "cardDiscountPrice": 40000
     }
 }
