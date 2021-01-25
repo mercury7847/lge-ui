@@ -13,33 +13,27 @@
         @@include('./common/header.html', {
             "mobileCase": "noneDepth"
         })
-
         <div class="container">
             <!-- 센터찾기 -->
             <div class="contents support find-store-wrap">
                 <div class="cont-wrap">
                     <div class="waiting-state">
                         <div class="cell">
-                            <h2 class="waiting-state-title">현재 고객 대기상태</h2>
-                            <!-- 2021.01.18 status 마크업 수정 -->
+                            <p class="waiting-state-title">현재 고객 대기상태</p>
                             <div class="box-info">
                                 <div class="status-icon skyblue">
-                                    <span class="blind">하늘색 표기</span>
                                     <strong class="status">원활</strong>
                                     <span class="text">10분 이내 접수/수리 시작</span>
                                 </div>
                                 <div class="status-icon olive">
-                                    <span class="blind">올리브색 표기</span>
                                     <strong class="status">보통</strong>
                                     <span class="text">10~30분 접수/수리 시작</span>
                                 </div>
                                 <div class="status-icon red">
-                                    <span class="blind">빨간색 표기</span>
                                     <strong class="status">혼잡</strong>
                                     <span class="text">30분 이후 접수/수리 시작</span>
                                 </div>
                             </div>
-                            <!-- 2021.01.18 status 마크업 수정 -->
                         </div>
                         <div class="cell">
                             @@include('./common/modules/bullet-list.html', {
@@ -51,7 +45,7 @@
                             })
                         </div>
                     </div>
-                    <div class="map-container" data-config="/lg5-common/data-ajax/searchshop/searchShopConfig.json">
+                    <div class="map-container" data-config="/lg5-common/data-ajax/support/searchshop/searchShopConfig.json">
                         <div class="store-list-wrap">
                             <h2 class="tit">센터찾기</h2>
                             <div class="btn-list-fold">
@@ -61,8 +55,7 @@
                             <div class="store-list-box">
                                 <!-- search -->
                                 <div class="sch-box">
-                                    <!--<div class="tabs-wrap ui_store_search_tab">-->
-                                        <div class="tabs-wrap border-type ui_tab">
+                                    <div class="tabs-wrap border-type ui_tab">
                                         <ul class="tabs">
                                             <li class="on"><a href="#tab1">지역<em class="blind">선택됨</em></a></li>
                                             <li><a href="#tab2">지하철역</a></li>
@@ -70,14 +63,11 @@
                                             <li><a href="#tab4">주소</a></li>
                                         </ul>
                                     </div>
-
-                                    
-
-                                    <div id="tab1" class="tabs-contents form-wrap">
-                                        <div class="forms">
-                                            <div class="adress-input-box type-wrap">
-                                                <div class="select-wrap cell">
-                                                    <select class="ui_selectbox select1" id="select1" title="광역시/도 선택">
+                                    <div id="tab1" class="tabs-contents">
+                                        <div class="form-wrap">   
+                                            <div class="forms">
+                                                <div class="select-wrap">
+                                                    <select class="ui_selectbox" id="select1" title="광역시/도 선택">
                                                         <option value="" class="placeholder">광역시/도</option>
                                                         <option value="서울">서울</option>
                                                         <option value="인천">인천</option>
@@ -98,37 +88,45 @@
                                                         <option value="강원">강원</option>
                                                     </select>
                                                 </div>
-                                                <div class="select-wrap cell display-flex">
-                                                    <select class="ui_selectbox select2" id="select2" title="시/군/구 선택" disabled>
-                                                        <option value="" class="placeholder">시/군/구</option>
-                                                    </select>
-                                                    <button type="button" class="btn search-local" disabled><span>검색</span></button>
-                                                </div>
-                                                <div class="cell btn-cell">
-                                                    <button type="button" class="btn mo-only"><span>내 위치 검색</span></button>
-                                                    <button type="button" class="btn search-userAdress"><span>내 주소로 검색</span></button>
+                                                <div class="box">
+                                                    <div class="box">
+                                                        <div class="select-wrap">
+                                                            <select class="ui_selectbox" id="select2" title="시/군/구 선택" disabled>
+                                                                <option value="" class="placeholder">시/군/구</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="cell">
+                                                            <button type="button" class="btn search-local" disabled><span>검색</span></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell btn-cell">
+                                                        <button type="button" class="btn search-current mo-only"><span>내 위치 검색</span></button>
+                                                        <button type="button" class="btn search-userAdress"><span>내 주소로 검색</span></button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <p class="desc">지역을 선택하여 센터를 찾아보세요.</p>
                                     </div>
                                     <div id="tab2" class="tabs-contents">
-                                        <div class="form-wrap sch-input-wrap select type2">
+                                        <div class="form-wrap">
                                             <div class="forms">
-                                                <div class="select-wrap">
-                                                    <select class="ui_selectbox" id="select3" title="지역 선택">
-                                                        <option value="">지역</option>
-                                                        <option value="수도권">수도권</option>
-                                                        <option value="부산">부산</option>
-                                                        <option value="대전">대전</option>
-                                                        <option value="대구">대구</option>
-                                                        <option value="광주">광주</option>
-                                                    </select>
-                                                </div>
-                                                <div class="select-wrap">
-                                                    <select class="ui_selectbox" id="select4" title="호선 선택" disabled>
-                                                        <option value="">호선</option>
-                                                    </select>
+                                                <div class="box half">
+                                                    <div class="select-wrap">
+                                                        <select class="ui_selectbox" id="select3" title="지역 선택">
+                                                            <option value="">지역</option>
+                                                            <option value="수도권">수도권</option>
+                                                            <option value="부산">부산</option>
+                                                            <option value="대전">대전</option>
+                                                            <option value="대구">대구</option>
+                                                            <option value="광주">광주</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="select-wrap">
+                                                        <select class="ui_selectbox" id="select4" title="호선 선택" disabled>
+                                                            <option value="">호선</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                                 <div class="box">    
                                                     <div class="select-wrap">
@@ -137,18 +135,18 @@
                                                         </select>
                                                     </div>
                                                     <div class="cell">
-                                                        <button type="button" class="btn pink search-subway" disabled><span>검색</span></button>
+                                                        <button type="button" class="btn search-subway" disabled><span>검색</span></button>
                                                     </div>
-                                                </div> 
+                                                </div>
                                             </div>       
                                         </div>
                                         <p class="desc">지하철을 선택하여 센터를 찾아보세요.</p>
                                     </div>
                                     <div id="tab3" class="tabs-contents">
-                                        <div class="form-wrap sch-input-wrap">
+                                        <div class="form-wrap">
                                             <div class="forms">
                                                 <div class="select-wrap">
-                                                    <select class="ui_selectbox" id="select1" title="광역시/도">
+                                                    <select class="ui_selectbox" id="select6" title="광역시/도">
                                                         <option value="">광역시/도</option>
                                                         <option value="서울">서울</option>
                                                         <option value="인천">인천</option>
@@ -169,87 +167,53 @@
                                                         <option value="강원">강원</option>
                                                     </select>
                                                 </div>
-                                                <div class="box">
-                                                    <div class="search-wrap w-block">
-                                                        <div class="search-box">
-                                                            <div class="forms">
-                                                                <div class="keyword-search type-B box">
-                                                                    <div class="input-wrap">
-                                                                        <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="센터명, 지역 또는 주소" title="센터명, 지역 또는 주소" data-clear-button="button.btn-delete" disabled>
-                                                                        <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
-                                                                        <button type="button" class="btn-search"><span class="blind">검색</span></button>
-                                                                    </div>
-                                                                    <p class="err-msg"></p>
-                                                                </div>
+                                                @@include('./common/support/search-keyword.html', {
+                                                    'url': '/lg5-common/data-ajax/support/searchShop/searchAutoComplete.json',
+                                                    'id': 'address1',
+                                                    'inputTitle': '센터 명을 입력해주세요.',
+                                                    'layer': true,
+                                                    'onlyAutocomplete': true,
+                                                    'defaultInput': true,
+                                                    'disabled': true
+                                                })
+                                                <!-- <div class="">
+                                                    <div class="input-wrap search block">
+                                                        <input type="text" id="address1" class="ui_input_clearbutton" placeholder="센터 명을 입력해주세요." title="센터 명을 입력해주세요." data-clear-button="button.btn-delete" disabled>
+                                                        <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+                                                        <button type="button" class="btn-search search-center"><span class="blind">검색</span></button>
+                                                    </div>
+                                                    <div class="search-layer">
+                                                        <div class="autocomplete-box">
+                                                            <div class="keyword-list">
+                                                                <ul>
+                                                                </ul>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                         <p class="desc">센터명을 입력하여 센터를 찾아보세요.</p>
                                     </div>
                                     <div id="tab4" class="tabs-contents">
-                                        <div class="form-wrap sch-input-wrap select type2">
+                                        <div class="form-wrap">
                                             <div class="forms">
-                                                <div class="search-wrap w-block">
-                                                    <div class="search-box">
-                                                        <div class="forms">
-                                                            <div class="keyword-search type-B box">
-                                                                <div class="input-wrap">
-                                                                    <input type="text" name="keyword" id="search_address" value="" class="ui_input_clearbutton" placeholder="동(읍, 면)명 입력" title="동(읍, 면)명 입력" data-clear-button="button.btn-delete">
-                                                                    <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
-                                                                    <button type="button" class="btn-search search-address-btn"><span class="blind">검색</span></button>
-                                                                </div>
-                                                                <p class="err-msg"></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="select-wrap">
-                                                        <select class="ui_selectbox select1" id="select6" title="시/도 선택" disabled>
-                                                            <option value="">시/도 선택</option>
-                                                            <option value="서울">서울</option>
-                                                            <option value="인천">인천</option>
-                                                            <option value="부산">부산</option>
-                                                            <option value="대구">대구</option>
-                                                            <option value="대전">대전</option>
-                                                            <option value="광주">광주</option>
-                                                            <option value="울산">울산</option>
-                                                            <option value="제주">제주</option>
-                                                            <option value="경기">경기</option>
-                                                            <option value="세종">세종</option>
-                                                            <option value="경남">경남</option>
-                                                            <option value="경북">경북</option>
-                                                            <option value="충남">충남</option>
-                                                            <option value="충북">충북</option>
-                                                            <option value="전남">전남</option>
-                                                            <option value="전북">전북</option>
-                                                            <option value="강원">강원</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="select-wrap">
-                                                        <select class="ui_selectbox select2" id="select7" title="시/군/구 선택" disabled>
-                                                            <option value="">시/군/구 선택</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="box">    
-                                                    <div class="select-wrap">
-                                                        <select class="ui_selectbox select8" id="select8" title="동(읍, 면)명 선택" disabled>
-                                                            <option value="">동(읍, 면)명 선택</option>
-                                                        </select>
+                                                <div class="box">
+                                                    <div class="input-wrap">
+                                                        <input type="text" id="zipCode" placeholder="우편번호" title="우편번호" readonly>
                                                     </div>
                                                     <div class="cell">
-                                                        <button type="button" class="btn pink search-address-btn2" disabled><span>검색</span></button>
+                                                        <button type="button" class="btn btn-address"><span>주소 찾기</span></button>
                                                     </div>
-                                                </div> 
+                                                </div>
+                                                <div class="input-wrap search block">
+                                                    <input type="text" id="address2" placeholder="주소" title="주소" readonly>
+                                                    <button type="button" class="btn-search search-address"><span class="blind">검색</span></button>
+                                                </div>
                                             </div>       
                                         </div>
-                                        <p class="desc">지하철을 선택하여 센터를 찾아보세요.</p>
+                                        <p class="desc">동(읍면)을 입력 선택하여 센터를 찾아보세요.</p>
                                     </div>
-
                                     <div class="view-info-btn">
                                         <button type="button" class="btn-view map"><span>지도보기</span></button>
                                         <!-- <button type="button" class="btn-view list"><span>리스트보기</span></button> -->
@@ -369,27 +333,25 @@
                                                             <dt class="tit">서비스 가능 제품</dt>
                                                             <dd>
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk1-1" name="chk1" checked>
-                                                                    <label for="chk1-1">휴대전화</label>
+                                                                    <input type="checkbox" id="chk1-1" name="chk1" value="모바일" checked>
+                                                                    <label for="chk1-1">모바일</label>
                                                                 </span>
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk1-2" name="chk1">
-                                                                    <label for="chk1-2">PC/모니터</label>
+                                                                    <input type="checkbox" id="chk1-2" name="chk1" value="IT/모니터" checked>
+                                                                    <label for="chk1-2">IT/모니터</label>
                                                                 </span>
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk1-3" name="chk1">
+                                                                    <input type="checkbox" id="chk1-3" name="chk1" value="소형 가전" checked>
                                                                     <label for="chk1-3">소형 가전</label>
                                                                 </span>
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk1-4" name="chk1">
+                                                                    <input type="checkbox" id="chk1-4" name="chk1" value="소모품 구매" checked>
                                                                     <label for="chk1-4">소모품 구매</label>
                                                                 </span>
                                                             </dd>
                                                         </dl>
                                                     </dd>
                                                 </dl>
-                                            </div>
-                                            <div class="list-item">
                                                 @@include('./common/modules/bullet-list.html', {
                                                     "topBorder" : true,
                                                     "bulletTxt" : [
@@ -398,11 +360,10 @@
                                                 })
                                             </div>
                                         </div>
-
                                         <div class="opt-btn-wrap">
                                             <div class="btn-group">
                                                 <button type="button" class="btn gray"><span>초기화</span></button>
-                                                <button type="button" class="btn pink option-confirm-btn"><span>적용</span></button>
+                                                <button type="button" class="btn option-confirm-btn"><span>적용</span></button>
                                             </div>
                                         </div>
                                     </div>
@@ -422,11 +383,11 @@
             </div>
             <!-- // 센터찾기 -->
         </div>
-
     </div>
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/caresolution/addressManagement.min.js"></script>
     <script src="/lg5-common/js/support/findCenter.min.js"></script>
 </body>
 </html>
