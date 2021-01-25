@@ -36,7 +36,7 @@ vcui.define('helper/naverMapApi', ['jquery', 'vcui'], function ($, core) {
             script.onerror = function(e){ 
                 defer.reject('map api를 로드할수 없습니다.');          
             }
-            script.src = '//openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=' + self.options.keyID;        
+            script.src = '//openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=' + self.options.keyID +'&submodules=geocoder';        
             document.head.appendChild(script);  
 
             return defer.promise();
