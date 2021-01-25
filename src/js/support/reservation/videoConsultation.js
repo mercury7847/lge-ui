@@ -52,7 +52,7 @@
             self.$solutionsPopup = $('#solutionsPopup');
             self.$calendarWrap = self.$cont.find('.calendar-area');
             self.$calendarDate = self.$calendarWrap.find('.date-wrap');
-            self.$calendarTime = self.$calendarWrap.find('.timte-wrap');
+            self.$calendarTime = self.$calendarWrap.find('.time-wrap');
 
             self.$authPopup = $('#certificationPopup');
 
@@ -94,7 +94,7 @@
                     errorMsg: '시간을 선택해주세요.'
                 }
             }
-            var authManager = {
+            var authOptions = {
                 elem: {
                     popup: '#certificationPopup',
                     name: '#authName',
@@ -125,7 +125,7 @@
             vcui.require(['ui/validation'], function () {
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
                 
-                if (!self.isLogin) authManager = new AuthManager(authManager);
+                if (!self.isLogin) authManager = new AuthManager(authOptions);
 
                 $('#route').val(lgkorUI.isMobile() ? 'WWW2' : 'WWWW1');
 
