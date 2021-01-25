@@ -1268,3 +1268,35 @@
         }
     }
 }
+
+#history-popup {
+    &.lately-popup {
+        .pop-conts {
+            &.support {
+                .lately-list {
+                    ul {
+                        li {
+                            display: block;
+                            dl {
+                                display: block;
+                                dd {
+                                    &.category {
+                                        font-size: 14px;
+                                        font-weight: 500;
+                                        color: #666;
+                                        line-height: 1.71;
+                                        margin-top: 8px;
+                                        @include textEllipsis;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include mobile {
+            left: 0 !important;
+        }
+    }
+}
