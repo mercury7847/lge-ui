@@ -11,8 +11,12 @@ var CareCartInfo = (function() {
         '{{#if availableMessage}}<p class="text-disabled"><span>{{availableMessage}}</span></p>{{/if}}</li>'
 
     var paymentItemTemplate = '<li><dl><dt class="text">{{text}}</dt><dd class="price {{appendClass}}">{{price}}</dd></dl></li>';
-    var totalPaymentItemTemplate = '<dt class="text">총 {{count}}건</dt><dd class="price">월 {{price}}원</dd>'
-    
+    var totalPaymentItemTemplate = '<dl><dt class="text">총 {{count}}건</dt>' +
+        '<dd class="price">' +
+            '<span class="total">월 {{price}}원</span>' +
+            '{{#if sale}}<span class="discount">월 {{sale}}원 할인</span>{{/if}}' +
+        '</dd>' +
+    '</dl>'
     /*
     function changeBlindLabelTextSiblingCheckedInput(input, trueText, falseText) {
         $(input).siblings('label').find('span').text($(input).is(':checked')?trueText:falseText);
@@ -44,8 +48,8 @@ var CareCartInfo = (function() {
             var self = this;
             var resetPaymentData = {
                 "total":{
+                    "total":"0",
                     "count": "0",
-                    "price": "0"
                 },
                 "list":[
                     {
@@ -58,7 +62,8 @@ var CareCartInfo = (function() {
                         "price": "월 0원",
                         "appendClass": ""
                     }
-                ]
+                ],
+                "card":null
             }
             self.updatePaymentInfo(resetPaymentData);
             self.updateItemInfo(null);
@@ -107,15 +112,32 @@ var CareCartInfo = (function() {
 
             //요금정보
             var $list_ul = self.$paymentInfo.find('ul.payment-list');
-            $list_ul.empty();
+
+            var $cardInfo = self.$paymentInfo.find('li.payment-card');
+
+            $list_ul.find('>li').remove(':not(".payment-card")');
             if(priceData.length > 0) {
                 priceData.forEach(function(item, index) {
                     $list_ul.append(vcui.template(paymentItemTemplate, item));
                 });
             }
-            
+
+            var cardData = paymentInfo.card;
+            if(cardData) {
+
+            } else {
+                $cardInfo.hide();
+                self.$paymentInfo.removeAttr('data-card-id');
+                self.$paymentInfo.removeAttr("data-card-sale");
+            }
+            $list_ul.append($cardInfo);
+            $list_ul.find('.ui_dropdown').vcDropdown();
+
             var totalData = paymentInfo.total;
+            self.$paymentInfo.removeAttr("data-total");
+            //아마도 따로 펑션을
             if(totalData) {
+                self.$paymentInfo.attr("data-total",JSON.stringify(totalData));
                 var count = totalData.count;
                 if(count > 0) {
                     self.$paymentButton.removeAttr('disabled');
@@ -124,7 +146,8 @@ var CareCartInfo = (function() {
                 }
 
                 totalData.count = totalData.count ? vcui.number.addComma(totalData.count) : '';
-                totalData.price = totalData.price ? vcui.number.addComma(totalData.price) : '';
+                var price = parseInt(totalData.total) - parseInt(totalData.sale);
+                totalData.price = vcui.number.addComma(price);
 
                 self.$paymentInfo.find('div.total-payment-amount dl').html(vcui.template(totalPaymentItemTemplate, totalData));
                 self.$paymentButton.text('총 '+totalData.count +'개 신청하기');
@@ -194,6 +217,19 @@ var CareCartInfo = (function() {
                 self.$agreementAllCheck.prop('checked', !$itemCheck.is(':not(:checked)'));
             });
             */
+
+            //카드 할인 드롭다운 선택
+            self.$paymentInfo.on('click','li.payment-card div.ui_dropdown_list li a', function(e){
+                console.log('asdasd');
+                e.preventDefault();
+                var $this = $(this);
+                var _id = $this.attr('href').replace("#","");
+                var $dropDown = $this.parents('.ui_dropdown');
+                $dropDown.find('a.ui_dropdown_toggle').text($this.text());
+                self.$paymentInfo.attr('data-card-id',_id);
+                self.$paymentInfo.attr("data-card-sale",$this.attr('data-sale-price'));
+                $dropDown.vcDropdown("close");
+            });
     
             //청약하기버튼 클릭
             self.$subscriptionButton.on('click', function(e) {
