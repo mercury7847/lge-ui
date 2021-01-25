@@ -25,12 +25,15 @@
                             '<span class="blind">매장명</span>'+
                             '{{shopName}}'+
                         '</p>'+
-                        '{{#if bizStatus}}'+
+                        '{{# if(typeof bizStatus != "undefined") { #}}'+
+                        '{{# if(typeof bizStatus.bizStatusClass != "undefined") { #}}'+
                         '<div class="status-icon {{bizStatus.bizStatusClass}}">'+
+                        '{{# } else { #}}'+
+                        '<div class="status-icon">'+
+                        '{{# } #}}'+
                             '<strong class="status">{{bizStatus.bizStatusText}}</strong>'+
                         '</div>'+
-                        '{{/if}}'+
-
+                        '{{# } #}}'+
                     '</div>'+
 
                     '<p class="addr">'+
