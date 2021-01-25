@@ -1067,7 +1067,29 @@
             background-size:24px;
         }
     }
-
+    &.search {
+        position:relative;
+        input[type=text] {
+            padding-right:80px;
+        }
+        .btn-delete {
+            position:absolute;
+            top:50%;
+            right:54px;
+            width:20px;
+            height:20px;
+            margin-top:-10px;
+            background:url('/lg5-common/images/icons/icon-delete-20.svg') no-repeat 0 0;
+        }
+        .btn-search {
+            position:absolute;
+            top:0;
+            right:0;
+            width:54px;
+            height:48px;
+            background:center/20px 20px url(/lg5-common/images/icons/icon-search-20.svg) no-repeat;;
+        }
+    }
     &.error {
         .total {
             border-color:#f00;

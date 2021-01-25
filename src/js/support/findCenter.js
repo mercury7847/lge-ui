@@ -25,10 +25,8 @@
                             '<span class="blind">매장명</span>'+
                             '{{shopName}}'+
                         '</p>'+
-
                         '{{#if bizStatus}}'+
                         '<div class="status-icon {{bizStatus.bizStatusClass}}">'+
-                            '<span class="blind">{{bizStatus.bizStatusColor}} 표기</span>'+
                             '<strong class="status">{{bizStatus.bizStatusText}}</strong>'+
                         '</div>'+
                         '{{/if}}'+
@@ -55,25 +53,21 @@
                                 '<a href="#{{shopID}}" class="btn-link">상세보기</a>'+
                             '</p>'+
                         '</div>'+
+                        '{{# if (typeof serviceProduct != "undefined") { #}}' +
                         '<ul class="optionIcon">'+
+                            '{{#each (item, index) in serviceProduct}}' +
                             '<li>'+
                                 '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
-                            '</li>'+
-                            '<li>'+
-                                '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
-                            '</li>'+
-                            '<li>'+
-                                '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
-                            '</li>'+
-                            '<li>'+
-                                '<div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div>'+
-                            '</li>'+
+                            '</li>' +
+                            '{{/each}}' +
                         '</ul>'+
+                        '{{# } #}}' +
                     '</div>'+
 
                 '</div>'+
             '</div>'+
         '</li>';
+    var addressFinder;
 
     var searchShop = {
         init: function(){
@@ -93,6 +87,7 @@
 
             self.isChangeMode = false;
             self.searchResultMode = false;
+            self.searchType = 'local';
 
             self.configUrl = $('.map-container').data("config"); 
 
@@ -123,9 +118,6 @@
             //검색...
             self.searchKeyword = "";
             self.schReaultTmplID = "";
-
-            self.$searchField = $('#tab3 .input-sch input');
-            self.$searchButton = $('#tab3 .btn-search');
 
             self.$searchResultContainer = $('.result-list-box');
 
@@ -183,57 +175,71 @@
                             '</div>'
                         }
                     }).on('mapinit', function(e,data){
-
                         self.$map = self.$mapContainer.vcStoreMap('instance');
                         self._loadStoreData();
-
                         self._bindEvents();
-
                     }).on('mapchanged', function(e, data){	
-                        
-                        //self.$defaultListContainer.find('.scroll-wrap').scrollTop(0);
                         self._setItemList(data);
                         self._setItemPosition();                        
 
                         if(self.searchResultMode){
                             self._setSearchResultMode();
                         }
-
                     }).on('mapsearchnodata', function(e){
-                        //검색 결과 없을 때...
                         alert("검색 결과가 없습니다.");
                     }).on('maperror', function(e, error){
                         console.log(error);
                     });
                 });
 
-                $(".sch-box .tabs-wrap.ui_store_search_tab").vcTab()
-                .on("tabchange", function(e, data){
-                    self._setListArea();
-
-                    self._setTabInit();
+                addressFinder = new AddressFind();
+                $('.ui_search').search({
+                    template: {
+                        autocompleteList: '<li><a href="#{{shopID}}" class="btn-detail" title="새창 열림">{{shopName}}</a></li>',
+                    }
                 });
 
-                self.$citySelect = $('.select1');
-                self.$boroughSelect = $('.select2');
+                self.$citySelect = $('#select1');
+                self.$boroughSelect = $('#select2');
                 self.$localSearchButton = $('.search-local');
                 self.$searchUserAdressButton = $('.search-userAdress');
+                self.$searchCurrentButton = $('.search-current');
                 
                 self.$subwayCitySelect = $('#select3');
                 self.$subwayLineSelect = $('#select4');
                 self.$subwayStationSelect = $('#select5');
                 self.$searchSubwayButton = $('.search-subway');
-                // self.$searchAddress = $('#search_address');
+
                 self.$citySelect2 = $('#select6');
-                self.$areaSelect = $('#select7');
-                self.$secterSelect = $('#select8');
-                self.$searchAddressButton = $('.search-address-btn');
-                self.$searchAddressButton2 = $('.search-address-btn2');
+                self.$address1 = $('#address1');
+                self.searchCenterName = $('#tab3').find('.btn-search');
+
+                self.$zipCode = $('#zipCode');
+                self.$address2 = $('#address2');
+                self.$openAddressButton = $('.btn-address');
+                self.$searchAddressButton = $('.search-address');
 			});
         },
 
         _bindEvents: function(){
             var self = this;
+
+            self.$searchContainer.find('.ui_tab').on('tabchange', function(e, data) {
+                switch(data.selectedIndex) {
+                    case 0:
+                        self.searchType = 'local';
+                        break;
+                    case 1:
+                        self.searchType = 'subway';
+                        break;
+                    case 2:
+                        self.searchType = 'center';
+                        break;
+                    case 3:
+                        self.searchType = 'road';
+                        break;
+                }
+            });
 
             self.$optionContainer.on('click', '.btn-sel', function(e){
                 e.preventDefault();
@@ -251,18 +257,7 @@
                 e.preventDefault();
 
                 var id = $(this).attr("href").replace("#", "");
-                window.open(self.detailUrl+"?shopID="+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no")
-            });
-
-            self.$searchField.on('focus', function(e){
-                $(window).on('keyup.searchShop', function(e){
-                    if(e.keyCode == 13) self._setSearch();
-                });
-            });
-            self.$searchButton.on('click', function(e){
-                e.preventDefault();
-
-                self._setSearch();
+                window.open(self.detailUrl+"?shopID="+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
             });
 
 
@@ -284,6 +279,7 @@
                 self._toggleLeftContainer();
             })
 
+            // 옵션 설정
             self.$optionContainer.find('.all-chk dd input[type=checkbox]').on('change', function(e){
                 self._optAllChecked();
             });
@@ -300,6 +296,7 @@
                 self._setOptApply();
             });
 
+            // 지역 검색
             self.$citySelect.on('change', function(e){
                 self._loadLocalAreaList(e.target.value);
             });
@@ -307,34 +304,15 @@
                 self._setLocalSearch();
             });
             self.$searchUserAdressButton.on('click', function(e){
+                self.searchType = 'user';
                 self._setUserAdressSearch();
             });
-            $('#select1').on('change', function(e){
-                $('#select2').prop('disabled', false);
-            });
-            $('#select2').on('change', function(e){
-                $('.search-local').prop('disabled', false);
-            });
-            self.$searchAddressButton.on('click', function(e){
-                self._loadLocalAreaList2(e.target.value);
-                self.$citySelect2.prop('disabled', false);
-                self.$citySelect2.vcSelectbox('update');
-                self.$areaSelect.prop('disabled', false);
-                self.$areaSelect.vcSelectbox('update');
-                self.$secterSelect.prop('disabled', false);
-                self.$secterSelect.vcSelectbox('update');
-                self.$searchAddressButton2.prop('disabled', false);
-            });
-            self.$citySelect2.on('change', function(e){
-                self._loadLocalAreaList2();
-            });
-            self.$areaSelect.on('change', function(e){
-                self._loadLocalAreaList3();
-            });
-            self.$searchAddressButton2.on('click', function(e){
-                self._setUserAdressSearch();
+            self.$searchCurrentButton.on('click', function(e) {
+                self.searchType = 'current';
+                self._setCurrentSearch();               
             });
 
+            // 지하철역 검색
             self.$subwayCitySelect.on('change', function(e){
                 lgkorUI.requestAjaxData(self.subwayUrl, {codeType:'SUBWAY', pcode:e.target.value}, function(result){
                     self._setSubwayOption(result.data, self.$subwayLineSelect, {codeName:"호선 선택", code:""}, "code");
@@ -353,10 +331,51 @@
             self.$searchSubwayButton.on('click', function(e){
                 self._setSubwaySearch();
             });
-            
-            $('.option-confirm-btn').on('click', function(e){
-                self._setOptApply();
+
+            // 센터명 검색
+            self.$citySelect2.on('change', function(e){
+                if ($(this).val()) {
+                    self.$address1.prop('disabled', false);
+                } else {
+                    self.$address1.val('').prop('disabled', true);
+                    
+                }
             });
+            self.$address1.on('keydown', function() {
+
+            });
+
+            $('.ui_search').on('autocomplete', function(e, param, url, callback) {
+                var data = {
+                    searchCity: self.$citySelect2.val(),
+                    searchKeyword: param.keyword
+                }
+
+                lgkorUI.requestAjaxData(url, data, function(result) {
+                    callback(result.data);
+                });
+            });
+            $('.ui_search').on('autocompleteClick', function(e, el) {
+                var id = $(el).attr("href").replace("#", "");
+                window.open(self.detailUrl+"?shopID="+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
+            });
+
+            self.searchCenterName.on('click', function() {
+                self._setSearch();
+            });
+
+            // 주소 검색
+            self.$openAddressButton.on('click', function() {
+                addressFinder.open(function(data) { 
+                    var address = data.userSelectedType == 'R' ? data.roadAddress : data.jibunAddress;
+                    self.$zipCode.val(data.zonecode);
+                    self.$address2.val(address);
+                }); 
+            });
+            self.$searchAddressButton.on('click', function() {
+                self._setKakaoSearch();
+            });
+
             self._resize();
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
@@ -364,7 +383,7 @@
         _setTabInit: function(){
             var self = this;
             
-            self.$searchField.val('');
+            self.$address1.val('');
 
             self.$citySelect.val();
             self.$boroughSelect.val();
@@ -387,6 +406,7 @@
                 self.$map.applyMapData(self.storeData);
 
                 self.userCityName = self.userBoroughName = "";
+                if (self.searchType == 'current' || self.searchType == 'user') self.searchType = 'local';
             });
         },
 
@@ -395,28 +415,12 @@
 
             lgkorUI.requestAjaxData(self.localUrl, {pcode:encodeURI(val),codeType:'CITY'}, function(result){
                 self._setSelectOption(self.$boroughSelect, result.data);
+                
+                self.$localSearchButton.prop('disabled', false);
+                self.$boroughSelect.prop('disabled', false);
                 self.$boroughSelect.vcSelectbox('update');
             });
         },
-
-        _loadLocalAreaList2: function(val){
-            var self = this;
-            lgkorUI.requestAjaxData(self.localUrl, {city:encodeURI(val)}, function(result){
-                self._setSelectOption(self.$areaSelect, result.data);
-                self.$areaSelect.vcSelectbox('update');
-                self._setSelectOption(self.$secterSelect, result.data);
-                self.$secterSelect.vcSelectbox('update');
-            });
-        },
-
-        _loadLocalAreaList3: function(val){
-            var self = this;
-            lgkorUI.requestAjaxData(self.localUrl, {city:encodeURI(val)}, function(result){
-                self._setSelectOption(self.$secterSelect, result.data);
-                self.$secterSelect.vcSelectbox('update');
-            });
-        },
-
         _setSubwayOption: function(result, select, firstdata, valuekey){
             var self = this;
             var lines = vcui.array.map(result, function(item, idx){
@@ -494,17 +498,17 @@
                 var isOpen = self.$optionContainer.hasClass('open');
                 if(isOpen){
                     optop = self.$leftContainer.height() - self.$optionContainer.find('.btn-sel').height();
-                    self.$optionContainer.stop().transition({y:optop}, 350, "easeInOutCubic", function(){
+                    self.$optionContainer.stop().transition({y:'calc(100% - 80px)'}, 350, "easeInOutCubic", function(){
                         self.isTransion = false;
-
-                        self.$optionContainer.css({y:0}).removeClass('open');
+                        self.$leftContainer.find('.dim').remove();
+                        self.$optionContainer.removeAttr('style').removeClass('open');
                     });
                 } else{
                     optop = self.$optionContainer.position().top;
 
                     self.$optionContainer.addClass('open');
-
-                    self.$optionContainer.stop().css({y:optop}).transition({y:0}, 350, "easeInOutCubic", function(){self.isTransion=false;});
+                    self.$leftContainer.prepend('<div class="dim"></div>');
+                    self.$optionContainer.stop().css({y:'calc(100% - 80px)'}).transition({y:0}, 350, "easeInOutCubic", function(){self.isTransion=false;});
                 }
             }
         },
@@ -550,39 +554,72 @@
         _getKeyword: function(){
             var self = this;
 
-            var keywords = {
-                searchKeyword: self.$searchField.val(),
-                searchCity: self.userCityName ? self.userCityName : self.$citySelect.val(),
-                searchBorough: self.userBoroughName ? self.userBoroughName : self.$boroughSelect.val(),
-                searchSubwayLocal: self.$subwayCitySelect.val(),
-                searchSubwayLine: self.$subwayLineSelect.val(),
-                searchSubwayStation: self.$subwayStationSelect.val()
-            }
+            var keywords = {};
+
+            switch(self.searchType) {
+                case 'local':
+                    keywords = {
+                        searchCity: self.$citySelect.val(),
+                        searchBorough: self.$boroughSelect.val()
+                    };    
+                    break;
+                case 'current':
+                    keywords = {
+                        latitude:self.latitude,
+                        longitude:self.longitude
+                    };
+                    break;
+                case 'user':
+                    keywords = {
+                        searchCity: self.userCityName,
+                        searchBorough: self.userBoroughName
+                    };
+                    break;
+                case 'subway':
+                    keywords = {
+                        searchSubwayLocal: self.$subwayCitySelect.val(),
+                        searchSubwayLine: self.$subwayLineSelect.val(),
+                        searchSubwayStation: self.$subwayStationSelect.val()
+                    };
+                    break;
+                case 'center':
+                    keywords = {
+                        searchCity: self.$citySelect2.val(),
+                        searchKeyword: self.$address1.val()
+                    };
+                    break;
+                case 'road':
+                    keywords = {
+                        searchZipCode: self.$zipCode.val(),
+                        searchAddress: self.$address2.val()
+                    };
+                    break;
+            };
+
             console.log("keywords :", keywords)
 
             return keywords;
         },
 
-        //검색...
-        _setSearch: function(){
+        //지역 검색...
+        _setLocalSearch: function(){
             var self = this;
-            
-            var keyword = self.$searchField.val();
+
+            var keyword = self.$boroughSelect.val();
             var trim = keyword.replace(/\s/gi, '');
             if(trim.length){
-                self.schReaultTmplID = "search";
                 self.searchResultMode = true;
-
-                $(window).off('keyup.searchShop');
-
+                self.schReaultTmplID = "localSearch";
+                
                 self._loadStoreData();
             } else{
                 lgkorUI.alert("", {
-                    title: "검색어를 입력해주세요."
+                    title: "구/군을 선택해주세요."
                 });
             }
         },
 
+        // 내 주소로 검색....
         _setUserAdressSearch: function(){
             var self = this;
 
@@ -606,24 +643,26 @@
             });
         },
 
-        //지역 검색...
-        _setLocalSearch: function(){
+        // 현재 위치 검색
+        _setCurrentSearch: function() {
             var self = this;
 
-            var keyword = self.$boroughSelect.val();
-            var trim = keyword.replace(/\s/gi, '');
-            if(trim.length){
-                self.searchResultMode = true;
-                self.schReaultTmplID = "localSearch";
-                
-                self._loadStoreData();
-            } else{
-                lgkorUI.alert("", {
-                    title: "구/군을 선택해주세요."
-                });
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(pos) {
+                    self.latitude = pos.coords.latitude;
+                    self.longitude = pos.coords.longitude;
+
+                    self.searchResultMode = true;
+                    self.schReaultTmplID = "localSearch";
+
+                    self._loadStoreData();
+                }, function(error) {
+                    
+                }); 
             }
         },
 
+        // 지하철역 검색...
         _setSubwaySearch: function(){
             var self = this;
             console.log("_setSubwaySearch")
@@ -637,6 +676,46 @@
             } else{
                 lgkorUI.alert("", {
                     title: "지하철 검색의 역명을 선택해 주세요."
+                });
+            }
+        },
+
+        // 센터명 검색...
+        _setSearch: function(){
+            var self = this;
+            
+            var keyword = self.$address1.val();
+            var trim = keyword.replace(/\s/gi, '');
+            if(trim.length){
+                self.schReaultTmplID = "search";
+                self.searchResultMode = true;
+
+                $(window).off('keyup.searchShop');
+
+                self._loadStoreData();
+            } else{
+                lgkorUI.alert("", {
+                    title: "광역 시/도 선택 후 센터 명을 입력해주세요."
+                });
+            }
+        },
+
+        // 주소 검색...
+        _setKakaoSearch: function() {
+            var self = this;
+            
+            var keyword = self.$address2.val();
+            var trim = keyword.replace(/\s/gi, '');
+            if(trim.length){
+                self.schReaultTmplID = "roadSearch";
+                self.searchResultMode = true;
+
+                $(window).off('keyup.searchShop');
+
+                self._loadStoreData();
+            } else{
+                lgkorUI.alert("", {
+                    title: "주소찾기 버튼 선택하여 주소 검색 시 확인 가능합니다."
                 });
             }
         },
@@ -769,9 +848,11 @@
 
             var listheight;
             if(self.searchResultMode){
-                listheight = self.windowHeight - top - resultheight - optheight - paddingtop - 5;
+                // listheight = self.windowHeight - top - resultheight - optheight - paddingtop - 5;
+                listheight = self.windowHeight - resultheight - optheight - paddingtop - 5;
             } else{
-                listheight = self.windowHeight - top - titheight - scheight - optheight - paddingtop - 5;
+                // listheight = self.windowHeight - top - titheight - scheight - optheight - paddingtop - 5;
+                listheight = self.windowHeight - titheight - scheight - optheight - paddingtop - 5;
             }
             
             self.$defaultListContainer.find('.scroll-wrap').height(listheight);
