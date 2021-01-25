@@ -119,7 +119,8 @@
                     },
                     authNo:{
                         required: true,
-                        msgTarget: '.err-block'
+                        msgTarget: '.err-block',
+                        errorMsg: '인증번호를 입력해주세요.'
                     }
                 }
             };
@@ -279,44 +280,33 @@
             });
         },
         requestTime: function() {
-            var self = this,
-                url = $('.calendar-area').data('timeUrl'),
-                param = validation.getAllValues(),
-                result;
-
-            param = $.extend(param, {
-                topic: $('input[name=topic]:checked').val(),
-                subTopic: $('input[name=subTopic]:checked').val(),
+            var self = this;
+            var url = $('.calendar-area').data('timeUrl');
+            var param = {
                 serviceType: $('#serviceType').val(),
                 productCode: $('#productCode').val(),
                 category: $('#category').val(),
                 subCategory: $('#subCategory').val(),
                 date: $('#date').val()
-            });
+            };
 
-            result = validation.validate(['topic', 'subTopic', 'userNm', 'phoneNo']);
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                var data = result.data;
 
-            if (result.success) {
-                lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                    var data = result.data;
-
-                    if (data.resultFlag == 'Y') {
-                        $('.time-wrap').timeCalendar('update', data.timeList);
-                        $('.time-wrap').find('.box-desc').hide();
-                        $('.time-wrap').find('.box-table').show();
-                    } else {
-                        if (data.resultMessage) {
-                            if (data.tAlert == 'Y') {
-
-                            }
-                            
-                            lgkorUI.alert("", {
-                                title: data.resultMessage
-                            });
-                        }
+                if (data.resultFlag == 'Y') {
+                    self.$calendarTime.timeCalendar('update', data.timeList);
+                    self.$calendarTime.find('.box-desc').hide();
+                    self.$calendarTime.find('.box-table').show();
+                } else {
+                    if (data.resultMessage) {                            
+                        lgkorUI.alert("", {
+                            title: data.resultMessage
+                        });
                     }
-                });
-            }
+                }
+                lgkorUI.hideLoading();
+            });
         },
         requestComplete: function() {
             var self = this;
@@ -324,6 +314,7 @@
             var url = self.$submitForm.data('ajax');
             var param = validation.getAllValues();
 
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxData(url, param, function(result) {
                 var data = result.data;
 
@@ -337,6 +328,7 @@
                         });
                     }
                 }
+                lgkorUI.hideLoading();
             }, 'POST');
         },
         reset: function() {
