@@ -2,7 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["MYC/MYC"],
-        pageJS: ["mypage/deliveryAdress"]
+        pageJS: ["mypage/deliveryAddress"]
     })
 <body>
     <div class="wrap">
@@ -14,7 +14,7 @@
             })
             <!-- mypage -->
             <div class="contents mypage"
-                data-adress-list="/lg5-common/data-ajax/mypage/deliveryAdressList.json"
+                data-address-list="/lg5-common/data-ajax/mypage/deliveryAddressList.json"
             >
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
@@ -29,12 +29,12 @@
                             <div class="my-address-lists">
                                 <!-- 추가 버튼 -->
                                 <div class="top">
-                                    <button type="button" class="btn size dark-gray addAdress-btn"><span>배송지 추가</span></button>
+                                    <button type="button" class="btn size dark-gray addAddress-btn"><span>배송지 추가</span></button>
                                 </div>
                                 <!-- // 추가 버튼 -->
 
                                 <!-- 리스트 -->
-                                <ul class="adressListWrap">
+                                <ul class="addressListWrap">
                                     <!-- <li class="lists">
                                         <div class="inner">
                                             <div class="infos">
@@ -100,7 +100,7 @@
 
     <!-- 주소입력 popup -->
     @@include('./common/popup/RMSF9001_pop1.html', {
-        popupID: 'popup-editAdress',
+        popupID: 'popup-editAddress',
         title : '주소지 수정',
         btn : '주소 저장'
     })
