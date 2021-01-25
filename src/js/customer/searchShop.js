@@ -3,9 +3,8 @@
 
     var searchResultText = {
         search: '<strong>"{{keyword}}"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
-        localSearch: '<strong>"{{keyword}}"</strong>와 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
-        roadSearch: '입력한 주소와 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
-        subwaySearch: '<strong>"{{keyword}}역"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
+        local: '<strong>"{{keyword}}"</strong>와 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
+        subway: '<strong>"{{keyword}}역"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
     };
 
     var localOptTemplate = '<option value={{value}}>{{title}}</option>';
@@ -95,7 +94,7 @@
 
             //검색...
             self.searchKeyword = "";
-            self.schReaultTmplID = "";
+            self.searchType = "";
 
             self.$searchField = $('#tab3 .input-sch input');
             self.$searchButton = $('#tab3 .btn-search');
@@ -442,6 +441,7 @@
             var self = this;
 
             var keywords = {
+                searchType: self.searchType,
                 searchKeyword: self.$searchField.val(),
                 searchCity: self.userCityName ? self.userCityName : self.$citySelect.val(),
                 searchBorough: self.userBoroughName ? self.userBoroughName : self.$boroughSelect.val(),
@@ -461,7 +461,7 @@
             var keyword = self.$searchField.val();
             var trim = keyword.replace(/\s/gi, '');
             if(trim.length){
-                self.schReaultTmplID = "search";
+                self.searchType = "search";
                 self.searchResultMode = true;
 
                 $(window).off('keyup.searchShop');
@@ -477,24 +477,26 @@
         _setUserAdressSearch: function(){
             var self = this;
 
-            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(self.userAdressCheckedUrl, {}, function(result){
-                if(lgkorUI.stringToBool(result.data.success)){
-                    self.userCityName = result.data.userAdress.cityValue;
-                    self.userBoroughName = result.data.userAdress.boroughValue;
-                    self.searchResultMode = true;
-                    self.schReaultTmplID = "localSearch";
+            self.$map.getAdressPositions("불정로 6");
 
-                    self._loadStoreData();
-                } else{
-                    if(result.data.location && result.data.location != ""){
-                        location.href = result.data.location;
-                    } else{
-                        lgkorUI.alert("", {
-                            title: result.data.alert.title
-                        });
-                    }
-                }
-            });
+            // lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(self.userAdressCheckedUrl, {}, function(result){
+            //     if(lgkorUI.stringToBool(result.data.success)){
+            //         self.userCityName = result.data.userAdress.cityValue;
+            //         self.userBoroughName = result.data.userAdress.boroughValue;
+            //         self.searchResultMode = true;
+            //         self.searchType = "local";
+
+            //         self._loadStoreData();
+            //     } else{
+            //         if(result.data.location && result.data.location != ""){
+            //             location.href = result.data.location;
+            //         } else{
+            //             lgkorUI.alert("", {
+            //                 title: result.data.alert.title
+            //             });
+            //         }
+            //     }
+            // });
         },
 
         //지역 검색...
@@ -505,7 +507,7 @@
             var trim = keyword.replace(/\s/gi, '');
             if(trim.length){
                 self.searchResultMode = true;
-                self.schReaultTmplID = "localSearch";
+                self.searchType = "local";
                 
                 self._loadStoreData();
             } else{
@@ -521,7 +523,7 @@
             var keyword = self.$subwayStationSelect.val();
             var trim = keyword.replace(/\s/gi, '');
             if(trim.length){
-                self.schReaultTmplID = "subwaySearch";
+                self.searchType = "subway";
                 self.searchResultMode = true;
 
                 self._loadStoreData();
@@ -636,7 +638,7 @@
         _setResultText: function(){
             var self = this;
 
-            var resultxt = vcui.template(searchResultText[self.schReaultTmplID], {
+            var resultxt = vcui.template(searchResultText[self.searchType], {
                 keyword: self.searchKeyword,
                 total: self.$defaultListLayer.find('> li').length
             });

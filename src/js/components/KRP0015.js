@@ -64,14 +64,25 @@ $(window).ready(function(){
         }
 
         function setCompareStatus(){
-            var leng = $('.sticy-compare .list-inner li').children().length;
+            console.log("setCompareStatus~~");
+            var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
+            var leng = storageCompare[lgkorUI.COMPARE_ID] == undefined ? "0" : storageCompare[lgkorUI.COMPARE_ID].length;
             if(leng){
+                var limit = window.breakpoint.name == "mobile" ? 2 : 3;
                 if(_$('.KRP0015').css('display') == 'none'){
                     var height = _$('.KRP0015').outerHeight(true);
                     _$('.KRP0015').css({display:'block', y:height});
-                    openCompareBox();
-                } 
+
+                    if(leng < limit) closeCompareBox();
+                    else openCompareBox();
+                } else{
+                    var isOpen = $('.right-cont .more-arrow').hasClass('open');
+                    if(!isOpen){
+                        if(leng >= limit) openCompareBox();
+                    }
+                }
             } else{
+                addToastAlert();
                 hideCompareBox();
             }
         }
