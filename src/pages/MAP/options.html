@@ -250,14 +250,6 @@
                 focusout: function(){
                     $(this).closest("div").find("[class*=rst-time]").removeClass("focus");
                 },
-                touchend : function(){
-                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                        //console.log("iphone");
-                    }else{
-                        //$(this).trigger("blur");
-                        $(this).closest("div").attr("tabindex", 0).focus();
-                    }
-                },
                 change : function(){
                     var value = $(this).val();
                     $(this).closest("div").find("[class*=rst-time]").text(value);
@@ -268,31 +260,6 @@
                         //$(this).trigger("blur");
                         $(this).closest("div").attr("tabindex", 0).focus();
                     }
-
-                    /*
-                    var startDate = $(".t-start");
-                    var endDate = $(".t-end");
-                    var startDateVal = startDate.val();
-                    var endDateVal = endDate.val();
-
-                    var idx = $(this).closest("div").index();
-
-                    if(Date.parse(today + startDateVal) == Date.parse(today + endDateVal)){
-                        //optModal.open("#modalTimeset");
-                        optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
-                        $("#modalTimeset .btn-modal-confirm").on({
-                            click : function(){
-                                $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
-                                $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
-                                optModal.close();
-                                $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
-                            }
-                        });
-                        return false;
-                    }else{
-                        toastMessage.init("에티켓 시간이 설정되었습니다.");
-                    }
-                    */
                 },
                 blur: function(){
                     var startDate = $(".t-start");
@@ -301,7 +268,7 @@
                     var endDateVal = endDate.val();
 
                     var idx = $(this).closest("div").index();
-
+                    
                     if(Date.parse(today + startDateVal) == Date.parse(today + endDateVal)){
                         //optModal.open("#modalTimeset");
                         optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
@@ -310,13 +277,43 @@
                                 $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
                                 $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
                                 optModal.close();
-                                $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
+                                //$(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
                             }
                         });
                         return false;
                     }else{
                         toastMessage.init("에티켓 시간이 설정되었습니다.");
                     }
+                }
+            });
+
+            $(".time-setting input").on({
+                click : function(){
+                    $(".device").append("click<br>");
+                },
+                keydown : function(){
+                    $(".device").append("keydown<br>");
+                },
+                keyup : function(){
+                    $(".device").append("keyup<br>");
+                },
+                focus : function(){
+                    $(".device").append("focus<br>");
+                },
+                focusin : function(){
+                    $(".device").append("focusin<br>");
+                },
+                focusout : function(){
+                    $(".device").append("focusout<br>");
+                },
+                blur : function(){
+                    $(".device").append("blur<br>");
+                },
+                input : function(){
+                    $(".device").append("input<br>");
+                },
+                change : function(){
+                    $(".device").append("change<br>");
                 }
             });
 
@@ -421,6 +418,8 @@
     <br>
     <br>
     <button type="button" class="btn-opt-login" id="btn-mkt"><span>마케팅 수신동의 모달 열기</span></button>
+
+    <div class="device" style="position:fixed;left:0;bottom:0;width:100%;height:auto;background:rgba(0, 0, 0, 0.8);color:#fff;z-index:10000"></div>
 
     <div class="lyr-opt-panel">
         <div class="main-panel" aria-hidden="true" tabindex="0">
