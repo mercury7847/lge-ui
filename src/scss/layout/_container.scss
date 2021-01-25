@@ -5,13 +5,13 @@
     .page-header {
         max-width:1380px + 80px;
         margin:0 auto;
-        padding:10px 40px 48px;
+        padding:24px 40px 80px;
         text-align:center;
         @include mobile {
             padding:32px 16px;
         }
         .title {
-            @include font-large-3;
+            @include font-large-2;
             font-weight:700;
             color: #000;
         }
@@ -437,12 +437,12 @@
             &.type2 {
                 height:auto;
                 margin-bottom:12px;
-                border-bottom:none;
+                // border-bottom:none;
                 @include mobile {
                     padding-bottom:0;
                 }
                 .tit {
-                    @include font-large;
+                    @include font-large-4;
                     @include mobile {
                         padding:0;
                         font-size:18px;
@@ -482,7 +482,7 @@
                 padding-top:16px;
             }
             &.type3 {
-                padding-top:64px;
+                // padding-top:64px;
                 @include mobile {
                     padding-top:40px;
                 }
@@ -500,7 +500,7 @@
                 @include font-medium;
             }
             .inner-box {
-                margin-top:64px;
+                margin-top:80px;
                 &.type2 {
                     margin-top:48px;
                 }
@@ -513,7 +513,7 @@
                 .inner-tit {
                     margin-bottom:24px;
                     color:#000;
-                    @include font-large;
+                    @include font-large-2;
                     font-weight:700;
                     @include mobile {
                         font-size:16px;

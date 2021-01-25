@@ -69,7 +69,7 @@
                 padding:0 16px;
             }
             .filters {
-                margin:24px 0 48px;
+                margin:24px 0;
                 @include mobile {
                     margin:24px 0 40px;
                 }
@@ -196,6 +196,8 @@
         .bullet-list {
             .b-tit {
                 color: $color-gray-1;
+                font-size:0;
+                line-height:0;
             }
         }
         .input-mix-wrap {
