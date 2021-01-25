@@ -48,7 +48,7 @@ var CareCartInfo = (function() {
             var self = this;
             var resetPaymentData = {
                 "total":{
-                    "total":"0",
+                    "price":"0",
                     "count": "0",
                 },
                 "list":[
@@ -123,21 +123,38 @@ var CareCartInfo = (function() {
             }
 
             var cardData = paymentInfo.card;
+            self.$paymentInfo.removeAttr('data-card-id');
+            self.$paymentInfo.removeAttr("data-card-sale");
             if(cardData) {
-
+                //카드데이타
+                var selectList = $cardInfo.find('ul.select-list');
+                selectList.empty();
+                var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
+                var cardItemTemplate = '<li><a href="#{{cardId}}" data-card-sale="{{salePrice}}">{{title}}</a></li>';
+                cardData.forEach(function(obj, idx) {
+                    if(obj.groupTitle) {
+                        selectList.append(vcui.template(groupItemTemplate,obj));
+                    }
+                    if(obj.listItem) {
+                        obj.listItem.forEach(function(item, index) {
+                            selectList.append(vcui.template(cardItemTemplate, item));
+                        });
+                    }
+                });
+                $cardInfo.show();
             } else {
                 $cardInfo.hide();
-                self.$paymentInfo.removeAttr('data-card-id');
-                self.$paymentInfo.removeAttr("data-card-sale");
             }
             $list_ul.append($cardInfo);
-            $list_ul.find('.ui_dropdown').vcDropdown();
+            //$list_ul.find('.ui_dropdown').vcDropdown();
 
             var totalData = paymentInfo.total;
             self.$paymentInfo.removeAttr("data-total");
             //아마도 따로 펑션을
             if(totalData) {
                 self.$paymentInfo.attr("data-total",JSON.stringify(totalData));
+                //self.calcTotalData();
+                /*
                 var count = totalData.count;
                 if(count > 0) {
                     self.$paymentButton.removeAttr('disabled');
@@ -148,6 +165,56 @@ var CareCartInfo = (function() {
                 totalData.count = totalData.count ? vcui.number.addComma(totalData.count) : '';
                 var price = parseInt(totalData.total) - parseInt(totalData.sale);
                 totalData.price = vcui.number.addComma(price);
+
+                self.$paymentInfo.find('div.total-payment-amount dl').html(vcui.template(totalPaymentItemTemplate, totalData));
+                self.$paymentButton.text('총 '+totalData.count +'개 신청하기');
+                */
+            } else {
+                self.$paymentInfo.removeAttr("data-total");
+            }
+
+            //새로 그리기
+            if(cardData) {
+                var firstRow = $cardInfo.find('div.ui_dropdown_list li a:eq(0)');
+                if(firstRow.length > 0) {
+                    firstRow.trigger('click');
+                } else {
+                    var $dropDown = firstRow.parents('.ui_dropdown');
+                    $dropDown.find('a.ui_dropdown_toggle').text('');
+                }
+            } else {
+                self.calcTotalData();
+            }
+        },
+
+        calcTotalData: function() {
+            var self = this;
+            var jsonString = self.$paymentInfo.attr("data-total");
+            if(jsonString) {
+                var totalData = JSON.parse(jsonString);
+                var count = totalData.count;
+                if(count > 0) {
+                    self.$paymentButton.removeAttr('disabled');
+                } else {
+                    self.$paymentButton.attr('disabled',true);
+                }
+
+                totalData.count = totalData.count ? vcui.number.addComma(totalData.count) : '';
+                var price = parseInt(totalData.price) - (!(totalData.sale) ? 0 : parseInt(totalData.sale));
+
+                var cardSale =  self.$paymentInfo.attr("data-card-sale");
+                if(cardSale) {
+                    price = price - parseInt(cardSale);
+                    if(totalData.sale) {
+                        totalData.sale = parseInt(totalData.sale) + parseInt(cardSale);
+                    }
+                }
+                totalData.price = vcui.number.addComma(price);
+                if(totalData.sale) {
+                    totalData.sale = vcui.number.addComma(totalData.sale);
+                } else {
+                    totalData.sale = null;
+                }
 
                 self.$paymentInfo.find('div.total-payment-amount dl').html(vcui.template(totalPaymentItemTemplate, totalData));
                 self.$paymentButton.text('총 '+totalData.count +'개 신청하기');
@@ -220,15 +287,15 @@ var CareCartInfo = (function() {
 
             //카드 할인 드롭다운 선택
             self.$paymentInfo.on('click','li.payment-card div.ui_dropdown_list li a', function(e){
-                console.log('asdasd');
                 e.preventDefault();
                 var $this = $(this);
                 var _id = $this.attr('href').replace("#","");
                 var $dropDown = $this.parents('.ui_dropdown');
                 $dropDown.find('a.ui_dropdown_toggle').text($this.text());
                 self.$paymentInfo.attr('data-card-id',_id);
-                self.$paymentInfo.attr("data-card-sale",$this.attr('data-sale-price'));
+                self.$paymentInfo.attr("data-card-sale",$this.attr('data-card-sale'));
                 $dropDown.vcDropdown("close");
+                self.calcTotalData();
             });
     
             //청약하기버튼 클릭
@@ -353,7 +420,14 @@ var CareCartInfo = (function() {
             $items.each(function(idx, item){
                 submit.push({"itemID":$(item).attr('data-item-id'),"itemSeq":$(item).attr('data-item-seq')});
             });
-            lgkorUI.requestAjaxData(ajaxUrl, {"submitData":JSON.stringify(submit)}, function(result){
+
+            var postData = {"submitData":JSON.stringify(submit)};
+            var cardId = self.$paymentInfo.attr('data-card-id');
+            if(cardId) {
+                postData["cardId"] = cardId;
+            }
+
+            lgkorUI.requestAjaxData(ajaxUrl, postData, function(result){
                 var alert = result.data.alert;
                 if(alert) {
                     self.openCartAlert(alert);
