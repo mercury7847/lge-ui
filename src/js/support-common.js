@@ -337,20 +337,23 @@ CS.MD.search = function() {
             });
 
             self.$el.find('input[type=text]').on('focus', function() {
-                self.$el.addClass('on');
+                if (self.$el.find('.keyword-box').length) {
+                    self.$el.addClass('on');
+                }
             }).on('input', function() {
                 var val = $(this).val();
 
                 if (val.length > 1) {
                     var param = {
                         keyword: val
-                    };
-
+                    };  
+                    
                     self.$el.trigger('autocomplete', [param, self.autoUrl, function(result) {
                         self._setAutoComplete(result.searchList)
                         
                         $('.autocomplete-box').show();
                         $('.keyword-box').hide();
+                        self.$el.addClass('on');
                     }]);
                 }
 
@@ -520,6 +523,7 @@ CS.MD.commonModel = function() {
             self.isDefault = $('#category').val() ? true : false;
             self.modelUrl = self.$searchArea.data('modelUrl');
             self.resultUrl = self.$searchArea.data('resultUrl');
+            self.isRequest = opts.isRequest;
             self.page = opts.page;
             self.totalCount = opts.totalCount;
             self.param = {
