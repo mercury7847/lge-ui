@@ -371,7 +371,7 @@
 .h2-tbl-tit {
     margin-bottom:12px;
     color:#000;
-    @include font-small;
+    @include font-medium;
 }
 .lg-comp-infos {
     margin-top:48px;
@@ -389,7 +389,7 @@
         margin-top:16px;
         li {
             margin-top:2px;
-            color:#767676;
+            color:#000;
             @include font-small;
             font-weight:500;
             &:first-child {

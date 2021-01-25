@@ -30,7 +30,7 @@
             > a {
                 display:block;
                 position:relative;
-                color:#aaa;
+                color:#767676;
                 font-size:28px;
                 line-height:40px;
                 font-weight:700;
@@ -258,7 +258,7 @@
                     height:56px;
                     border-radius:8px 8px 0 0;
                     background-color:#f4f4f4;
-                    color:#aaa;
+                    color:#767676;
                     font-size:16px;
                     line-height:56px;
                     text-align:center;
@@ -404,7 +404,7 @@
                     border-bottom: 2px solid transparent;
                     font-weight: 700;
                     @include font-large;
-                    color: #aaa;
+                    color: #767676;
                 }
                 &.on > a {
                     border-color: #222;
