@@ -127,6 +127,16 @@ $block: (block1, block2, block3);
                 text-align: center;
             }
         }
+        &.align-center {
+            .cta-box {
+                text-align:center;
+            }
+        }
+        &.align-right {
+            .cta-box {
+                text-align:right;
+            }
+        }
         
     }
 }

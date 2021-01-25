@@ -25,6 +25,7 @@ var CareCartInfo = (function() {
 
     function CareCartInfo(targetQuery, itemInfoHiddenCheckTargetQuery) {
         var self = this;
+        self.selectedItemList = [];
         self._setting(targetQuery, itemInfoHiddenCheckTargetQuery);
         self._bindEvents();
         self._bindPopupEvents();
@@ -83,6 +84,7 @@ var CareCartInfo = (function() {
                     infoData.push(find[0]);
                 }
             });
+            self.selectedItemList = infoData;
 
             //선택된 아이템들 정보
             var $list_ul = self.$itemInfo.find('ul.item-list');
@@ -415,16 +417,23 @@ var CareCartInfo = (function() {
             var self = this;
             var ajaxUrl = $(dm).attr('data-check-url');
 
+            //2021-01-25 수정
+            /*
             var $items = self.$itemInfo.find('li').not('.item-disabled');
-            var submit = []
+            var rtModelSeq = []
             $items.each(function(idx, item){
-                submit.push({"itemID":$(item).attr('data-item-id'),"itemSeq":$(item).attr('data-item-seq')});
+                rtModelSeq.push({"itemID":$(item).attr('data-item-id'),"itemSeq":$(item).attr('data-item-seq')});
+            });
+            */
+            var rtModelSeq = []
+            self.selectedItemList.forEach(function(item, index) {
+                rtModelSeq.push({"itemID":item.itemID,"itemSeq":item.itemSeq});
             });
 
-            var postData = {"submitData":JSON.stringify(submit)};
+            var postData = {"rtModelSeq":JSON.stringify(rtModelSeq)};
             var cardId = self.$paymentInfo.attr('data-card-id');
             if(cardId) {
-                postData["cardId"] = cardId;
+                postData["easyRequestCard"] = cardId;
             }
 
             lgkorUI.requestAjaxData(ajaxUrl, postData, function(result){
@@ -468,6 +477,15 @@ var CareCartInfo = (function() {
             $items.each(function(idx, item){
                 submit.push({"itemID":$(item).attr('data-item-id'),"itemSeq":$(item).attr('data-item-seq')});
             });
+
+            if(submit.length < 1) {
+                var rtModelSeq = []
+                self.selectedItemList.forEach(function(item, index) {
+                    rtModelSeq.push({"itemID":item.itemID,"itemSeq":item.itemSeq});
+                });
+                submit = rtModelSeq;
+            }
+
             lgkorUI.requestAjaxData(ajaxUrl, {"submitData":JSON.stringify(submit)}, function(result){
                 var alert = result.data.alert;
                 if(alert) {
