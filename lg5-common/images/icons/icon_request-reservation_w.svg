@@ -1,0 +1,16 @@
+<svg id="img_CS_phone_MO_160" xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <g id="img_CS_phone_MO_160-2" data-name="img_CS_phone_MO_160">
+    <rect id="Rectangle" width="160" height="160" fill="none"/>
+    <g id="ic" transform="translate(24 30)">
+      <g id="Group_14" data-name="Group 14">
+        <path id="Path" d="M67.282,50.046c-2.891-2.854-6.5-2.854-9.374,0-2.191,2.173-4.383,4.346-6.538,6.556a1.292,1.292,0,0,1-1.8.331c-1.418-.773-2.928-1.4-4.291-2.247A67.985,67.985,0,0,1,28.885,39.77a38.829,38.829,0,0,1-5.875-9.41,1.348,1.348,0,0,1,.331-1.731c2.191-2.118,4.328-4.291,6.482-6.464,3-3.02,3-6.556-.018-9.594-1.713-1.731-3.425-3.425-5.138-5.156-1.768-1.768-3.517-3.554-5.3-5.3-2.891-2.818-6.5-2.818-9.374.018C7.78,4.3,5.663,6.531,3.416,8.667a10.671,10.671,0,0,0-3.352,7.2A30.506,30.506,0,0,0,2.421,29a79.786,79.786,0,0,0,14.162,23.59A87.636,87.636,0,0,0,45.606,75.293c5.083,2.468,10.35,4.364,16.077,4.677,3.941.221,7.366-.773,10.11-3.849,1.878-2.1,4-4.015,5.985-6.022,2.947-2.983,2.965-6.593.037-9.539Q72.567,55.285,67.282,50.046Z" transform="translate(0 26)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="5"/>
+        <path id="말풍선" d="M0,6A6,6,0,0,1,6,0H56.513a8,8,0,0,1,8,8V35.4a8,8,0,0,1-8,8H14.888L3.28,53.073A2,2,0,0,1,0,51.536Z" transform="translate(42.743 0.355)" fill="#fff"/>
+        <g id="Group_15" data-name="Group 15" transform="translate(60 20)">
+          <circle id="Oval_Copy_2" data-name="Oval Copy 2" cx="3" cy="3" r="3" fill="#df0f47"/>
+          <circle id="Oval_Copy_2-2" data-name="Oval Copy 2" cx="3" cy="3" r="3" transform="translate(12)" fill="#df0f47"/>
+          <circle id="Oval_Copy_2-3" data-name="Oval Copy 2" cx="3" cy="3" r="3" transform="translate(24)" fill="#df0f47"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

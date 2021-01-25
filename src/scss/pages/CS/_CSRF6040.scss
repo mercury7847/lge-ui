@@ -307,11 +307,11 @@
 
             .sch-list {
                 padding-top: 24px;
-                ul {
+                .list-item {
                     position: relative;
                     padding-bottom:32px;
                 }
-                li {
+                .list-item > li {
                     position:relative;
                     padding:0 40px 40px 0;
                     

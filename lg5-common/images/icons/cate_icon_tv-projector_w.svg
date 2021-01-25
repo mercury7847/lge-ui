@@ -1,0 +1,17 @@
+<svg id="img_monitor_MO_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="img_monitor_MO_80-2" data-name="img_monitor_MO_80">
+    <g id="ic_monitor_MO_80">
+      <g id="ic_monitor_40">
+        <g id="ic_Monitor_40-2" data-name="ic_Monitor_40">
+          <path id="guidebox" d="M0,80H80V0H0Z" fill="none"/>
+          <g id="Group_11" data-name="Group 11" transform="translate(10 14)">
+            <path id="Stroke_1" data-name="Stroke 1" d="M0,12.6V2.333A2.146,2.146,0,0,1,2.143,0H57.857A2.244,2.244,0,0,1,60,2.333V39.667A2.284,2.284,0,0,1,57.857,42H2.143A2.245,2.245,0,0,1,0,39.667V12.6Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+            <rect id="Rectangle" width="11.875" height="3" rx="1.5" transform="translate(24.662 34.585)" fill="#fff"/>
+            <path id="Stroke_3" data-name="Stroke 3" d="M0,2,13.082,0,26,2" transform="translate(18 49.849)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+            <path id="Stroke_5" data-name="Stroke 5" d="M1,0V6" transform="translate(30 42.741)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

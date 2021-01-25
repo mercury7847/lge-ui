@@ -1,0 +1,19 @@
+<svg id="img_refrigerator_MO_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="img_refrigerator_MO_80-2" data-name="img_refrigerator_MO_80">
+    <g id="ic_refrigerator_MO_80">
+      <g id="ic_refrigerator_40">
+        <g id="ic_Refrigerator_40-2" data-name="ic_Refrigerator_40">
+          <path id="guidebox" d="M0,80H80V0H0Z" fill="none"/>
+          <g id="Group_17" data-name="Group 17" transform="translate(13 6)">
+            <path id="Rectangle" d="M0,34.714V1.27A1.27,1.27,0,0,1,1.27,0H52.063a1.27,1.27,0,0,1,1.27,1.27V25.556H1.27A1.27,1.27,0,0,0,0,26.825" transform="translate(0 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+            <path id="Rectangle-2" data-name="Rectangle" d="M0,0H-52.063a1.27,1.27,0,0,0-1.27,1.27V37.619a1.27,1.27,0,0,0,1.27,1.27H-1.27A1.27,1.27,0,0,0,0,37.619V0Z" transform="translate(53.333 25.556)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+            <path id="Stroke_3" data-name="Stroke 3" d="M.556,0V5.556" transform="translate(5.556 64.444)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.893"/>
+            <path id="Stroke_3-2" data-name="Stroke 3" d="M.556,0V5.556" transform="translate(46.667 64.444)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.893"/>
+            <rect id="Rectangle-3" data-name="Rectangle" width="10.294" height="3" rx="1.5" transform="translate(8.603 32.746)" fill="#fff"/>
+            <rect id="Rectangle-4" data-name="Rectangle" width="10.294" height="3" rx="1.5" transform="translate(8.603 15.776)" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

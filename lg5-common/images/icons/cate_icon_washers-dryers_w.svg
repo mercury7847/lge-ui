@@ -1,0 +1,21 @@
+<svg id="img_washer_MO_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="img_washer_MO_80-2" data-name="img_washer_MO_80" transform="translate(0)">
+    <g id="ic_washer_MO_80">
+      <g id="ic_washer_40">
+        <g id="ic_washer_40-2" data-name="ic_washer_40">
+          <path id="guidebox" d="M0,80H80V0H0Z" transform="translate(0)" fill="none"/>
+          <g id="icon" transform="translate(13 6)">
+            <g id="Group_8" data-name="Group 8">
+              <g id="Group_3" data-name="Group 3">
+                <path id="Rectangle" d="M0,27.462V1.282A1.282,1.282,0,0,1,1.282,0H52.718A1.282,1.282,0,0,1,54,1.282V66.718A1.282,1.282,0,0,1,52.718,68H1.282A1.282,1.282,0,0,1,0,66.718V27.462Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+                <circle id="Oval" cx="14" cy="14" r="14" transform="translate(13 27)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="3"/>
+                <path id="Stroke_3" data-name="Stroke 3" d="M0,.964H52.071" transform="translate(1.929 15.429)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+                <rect id="Rectangle-2" data-name="Rectangle" width="8" height="3" rx="1.5" transform="translate(40 6)" fill="#fff"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
