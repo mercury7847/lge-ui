@@ -567,7 +567,8 @@
             }
         }
         .sect-wrap {
-            margin-top:48px;
+            // margin-top:48px;
+            margin-top:64px;
             @include mobile {
                 margin-top:40px;
             }
@@ -575,10 +576,10 @@
                 margin-top:0;
             }
             .tit-wrap {
-                margin-bottom:12px;
+                margin-bottom:16px;
                 .h2-tit {
                     color:#000;
-                    @include font-small;
+                    @include font-medium;
                     font-weight:700;
                 }
                 &.type2 {
@@ -587,7 +588,7 @@
                         margin-bottom:8px;
                     }
                     .h2-tit {
-                        @include font-large;
+                        @include font-large-2;
                         @include mobile {
                             font-size:18px;
                             line-height:26px;
@@ -738,12 +739,12 @@
                 }
                 dt, dd {
                     display:table-cell;
-                    @include font-medium;
+                    @include font-small;
                     vertical-align:middle;
                 }
                 dt {
                     padding-right:24px;
-                    color:#767676;
+                    color:#000;
                     text-align:left;
                     word-break:keep-all;
                 }
@@ -752,7 +753,7 @@
                     text-align:right;
                     font-weight:500;
                     &.minus {
-                        color:#F04E3E;
+                        color:#da0f47;
                     }
                 }
                 &.total {
@@ -805,7 +806,7 @@
                 color:#000;
                 @include font-medium;
                 em {
-                    color:#EC455A;
+                    color:#000;
                 }
                 small {
                     display:block;
@@ -816,6 +817,12 @@
                 }
                 .btn {
                     margin-top:24px;
+                }
+                .bullet-list {
+                    margin-top:12px;
+                    & + .btn-link {
+                        margin-top:24px;
+                    }
                 }
             }
         }
@@ -1192,7 +1199,7 @@
             }
         }
         .tit {
-            @include font-large-2;
+            @include font-large-1;
             font-weight: $font-weight-bold;
         }
     }
