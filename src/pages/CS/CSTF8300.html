@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/etc"
+    ]
+})
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '설문에 참여해주세요',
+                'pageDesc': '설문에 참여해주시는 분들 중 추첨을 통하여<br>소정의 상품을 드립니다'
+            })
+            <div class="contents support">
+                <div class="cont-wrap">
+
+                    <div class="research-banner"><img src="/lg5-common/images/dummy/img-CSTF8300.jpg" alt=""></div>
+                    <div class="btn-group block-type">
+                        <button type="button" class="btn btn-confirm"><span>설문 참여</span></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+</body>
+</html> 

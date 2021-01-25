@@ -415,6 +415,13 @@
                 width:calc((100% - 12px) / 3);
             }
         }
+        &.block-type {
+            padding: 0;
+            margin-top: 0;
+            .btn {
+                border-radius: 0;
+            }
+        }
     }
 }
 
