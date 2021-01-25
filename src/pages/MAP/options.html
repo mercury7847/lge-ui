@@ -249,17 +249,17 @@
                 },
                 focusout: function(){
                     $(this).closest("div").find("[class*=rst-time]").removeClass("focus");
-                },
-                change : function(){
-                    var value = $(this).val();
-                    $(this).closest("div").find("[class*=rst-time]").text(value);
 
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                        console.log("iphone");
+                        //console.log("iphone");
                     }else{
                         $(this).trigger("blur");
                     }
                     $(".device").html(/iPhone|iPad|iPod/i.test(navigator.userAgent) + "<br>" + userAgent);
+                },
+                change : function(){
+                    var value = $(this).val();
+                    $(this).closest("div").find("[class*=rst-time]").text(value);
 
                     /*
                     var startDate = $(".t-start");
