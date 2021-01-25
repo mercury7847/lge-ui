@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        opacity: 0;
+      }
+
+      .cls-2 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="icon_popup-window">
+    <rect id="icon_area" class="cls-1" width="64" height="64"/>
+    <g id="shape">
+      <path class="cls-2" d="M138.666,1055.58l-9.527-9.38a4.547,4.547,0,0,0-3.2-1.31h-21.4A5.5,5.5,0,0,0,99,1050.34v39.13a5.494,5.494,0,0,0,5.534,5.44h29.919a5.494,5.494,0,0,0,5.534-5.44v-30.74A4.384,4.384,0,0,0,138.666,1055.58Zm-9.969-5.61,6.142,6.04H129.2a0.5,0.5,0,0,1-.5-0.49v-5.55Zm5.761,41.97H104.539a2.5,2.5,0,0,1-2.516-2.47v-39.13a2.5,2.5,0,0,1,2.516-2.47h21.139v7.65a3.5,3.5,0,0,0,3.522,3.47h7.774v30.48A2.5,2.5,0,0,1,134.458,1091.94Z" transform="translate(-87 -1038)"/>
+      <rect id="Rounded_Rectangle_1" data-name="Rounded Rectangle 1" x="21" y="25" width="21" height="3" rx="1.5" ry="1.5"/>
+      <rect id="Rounded_Rectangle_1_copy" data-name="Rounded Rectangle 1 copy" x="21" y="31" width="21" height="3" rx="1.5" ry="1.5"/>
+      <rect id="Rounded_Rectangle_1_copy_2" data-name="Rounded Rectangle 1 copy 2" x="21" y="37" width="13" height="3" rx="1.5" ry="1.5"/>
+      <rect id="Rounded_Rectangle_1_copy_3" data-name="Rounded Rectangle 1 copy 3" x="21" y="43" width="8" height="3" rx="1.5" ry="1.5"/>
+    </g>
+  </g>
+</svg>

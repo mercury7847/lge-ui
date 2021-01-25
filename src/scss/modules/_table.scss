@@ -15,8 +15,9 @@
         thead {
             th {
                 padding: 16px 24px;
-                border-top: 2px solid #222;
+                border-top: 1px solid #666;
                 background-color: #f4f4f4;
+                color:#666;
                 font-weight: 500;
                 @include font-medium;
                 text-align: center;
@@ -25,7 +26,7 @@
         td {
             padding: 24px;
             border-bottom: 1px solid #ddd;
-            color:#767676;
+            color:#000;
             @include font-medium;
             text-align: center;
             &.lower {
@@ -99,10 +100,10 @@
         table {
             th,
             td {
-                border-left:1px solid #d8d8d8;
-                &:first-child {
-                    border-left:none;
-                }
+                // border-left:1px solid #d8d8d8;
+                // &:first-child {
+                //     border-left:none;
+                // }
             }
         }
     }
@@ -202,20 +203,22 @@
         th, td {
             padding: 19px 24px;
             border-top: 1px solid #ddd;
-            @include font-small;
+            @include font-medium;
         }
         tr:first-child {
             th, td {
-                border-top:2px solid #222;
+                border-top:1px solid #666;
             }
         }
         th {
             background:#f4f4f4;
+            color:#666;
             font-weight:500;
+            text-align:center;
             vertical-align:top;
         }
         td {
-            color:#616161;
+            color:#000;
         }
         .al-center {
             text-align:left;

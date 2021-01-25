@@ -188,9 +188,9 @@
                 border-left:none;
                 border-radius:8px;
                 @if $type == basic {
-                    background:#EC455A;
+                    background-image:linear-gradient(343deg, #fb5a72, #fa263e);
                 } @else if $type == first {
-                    background-image:linear-gradient(135deg,  #FF91D1, #D700EC);
+                    background-image:linear-gradient(122deg,  #ff537c, #8d71ec);
                 } @else if $type == disabled {
                     background:#f4f4f4;
                 }

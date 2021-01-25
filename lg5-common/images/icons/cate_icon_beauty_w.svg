@@ -1,0 +1,15 @@
+<svg id="img_mask_MO_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="img_mask_MO_80-2" data-name="img_mask_MO_80">
+    <g id="ic_mask_MO_80">
+      <g id="ic_mask_40">
+        <path id="guidebox" d="M0,80H80V0H0Z" fill="none"/>
+        <g id="icon" transform="translate(14 7)">
+          <g id="Group_16" data-name="Group 16">
+            <path id="Rectangle" d="M0,13.571A13.292,13.292,0,0,1,13.005.281L25.578.009q.432-.009.865,0L39.005.281A13.282,13.282,0,0,1,52,13.56V44.043a21,21,0,0,1-21,21H21a21,21,0,0,1-21-21Z" transform="translate(0 0.373)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="3"/>
+            <path id="Combined_Shape" data-name="Combined Shape" d="M0,0S13.472,3.635,26,3.692C38.528,3.635,52,0,52,0h0A16,16,0,0,1,36,16H16A16,16,0,0,1,0,0Z" transform="translate(0 21)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

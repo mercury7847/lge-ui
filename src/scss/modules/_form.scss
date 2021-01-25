@@ -1604,29 +1604,42 @@ $input: (chk, rdo);
         }
 
         &.btn-type {
+            &:first-child {
+                label {
+                    border-radius:8px 0 0 8px;
+                }
+            }
+            &:last-child {
+                label {
+                    border-radius:0 8px 8px 0;
+                }
+            }
             @if ( $type == rdo ) {
                 input {
                     &+label {
-                        min-width:68px;
+                        position:relative;
+                        min-width:82px;
+                        margin-left:-1px;
                         padding:11px 16px;
                         border:1px solid #ddd;
-                        border-radius:8px;
+                        // border-radius:8px;
                         background:#fff;
-                        color:#767676;
+                        color:#666;
                         @include font-small;
                         text-align:center;
                         font-weight:500;
                         &::before, &::after {
                             display:none;
-                        }
+                        }                        
                         @include mobile {
                             font-size:14px;
                             line-height:22px;
                         }
                     }
                     &:checked+label {
-                        border-color:#EC455A;
-                        color:#EC455A;
+                        z-index:1;
+                        border-color:#da0f47;
+                        color:#da0f47;
                     }
                     &:disabled+label { // 임시. 디자인 나오면 변경 반영해야함.
                         background:#f4f4f4;

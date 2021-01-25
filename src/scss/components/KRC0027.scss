@@ -100,6 +100,21 @@ $block: (block1, block2, block3);
                     margin-left:-16px;
                     margin-right:-16px;
                 }
+                &.align-left {
+                    .cta-box {
+                        text-align:left;
+                    }
+                }
+                &.align-center {
+                    .cta-box {
+                        text-align:center;
+                    }
+                }
+                &.align-right {
+                    .cta-box {
+                        text-align:right;
+                    }
+                }
                 .cta-box {
                     position:absolute;
                     left:24px;
@@ -125,6 +140,16 @@ $block: (block1, block2, block3);
         &.align-center {
             @include mobile {
                 text-align: center;
+            }
+        }
+        &.align-center {
+            .cta-box {
+                text-align:center;
+            }
+        }
+        &.align-right {
+            .cta-box {
+                text-align:right;
             }
         }
         

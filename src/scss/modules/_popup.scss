@@ -195,7 +195,7 @@
         .tit span {
             display:block;
             height:34px;
-            @include font-large-2;
+            @include font-large-1;
             font-weight:700;
             overflow:hidden;
             text-overflow:ellipsis;
@@ -386,6 +386,89 @@
         }
     }
 
+    &.animation {
+        overflow: visible;
+        max-width: 1380px;
+        border-radius: 0;
+        background-color: transparent;
+        @include mobile {
+            background-color: #000;
+            .video-asset {
+                position: absolute;
+                top: 50%;
+                left: 16px;
+                right: 16px;
+                transform: translateY(-50%);
+                overflow: hidden;
+            }
+        }
+        .btn-close {
+            top: -48px;
+            right: 0;
+            width:48px;
+            height:48px;
+            &:before {
+                width:48px;
+                height:48px;
+                background-image: url('/lg5-common/images/icons/btn-close-48-white.svg');
+            }
+            @include mobile {
+                top:24px;
+                right:16px;
+                width: 24px;
+                height: 24px;
+                &:before {
+                    width: 24px;
+                    height: 24px;
+                    background-size: 24px 24px;
+                }
+            }
+        }
+        .pop-conts {
+            max-height: none;
+            padding: 0;
+        }
+        .video-box {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            video {
+                width: 100%;
+                height: 100%;
+            }
+            .video-controller {
+                .btn-video {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    z-index: 2;
+                    width: 80px;
+                    height: 80px;
+                    background: url('/lg5-common/images/icons/btn-play-80.svg') no-repeat 0 0;
+                    background-size: 100% 100%;
+                    @include mobile {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+            }
+        }
+        .video-info {
+            padding-top: 32px;
+            color: $color-white;
+            text-align: center;
+            .title {
+                font-weight: 700;
+                @include font-large-2;
+            }
+            .body-copy {
+                margin-top: 16px;
+                @include font-medium;
+            }
+        }
+    }
+
     &.tit-line2 {
         .pop-header {
             .tit span {
@@ -567,7 +650,8 @@
             }
         }
         .sect-wrap {
-            margin-top:48px;
+            // margin-top:48px;
+            margin-top:64px;
             @include mobile {
                 margin-top:40px;
             }
@@ -575,10 +659,10 @@
                 margin-top:0;
             }
             .tit-wrap {
-                margin-bottom:12px;
+                margin-bottom:16px;
                 .h2-tit {
                     color:#000;
-                    @include font-small;
+                    @include font-medium;
                     font-weight:700;
                 }
                 &.type2 {
@@ -587,7 +671,7 @@
                         margin-bottom:8px;
                     }
                     .h2-tit {
-                        @include font-large;
+                        @include font-large-2;
                         @include mobile {
                             font-size:18px;
                             line-height:26px;
@@ -738,12 +822,12 @@
                 }
                 dt, dd {
                     display:table-cell;
-                    @include font-medium;
+                    @include font-small;
                     vertical-align:middle;
                 }
                 dt {
                     padding-right:24px;
-                    color:#767676;
+                    color:#000;
                     text-align:left;
                     word-break:keep-all;
                 }
@@ -752,7 +836,7 @@
                     text-align:right;
                     font-weight:500;
                     &.minus {
-                        color:#F04E3E;
+                        color:#da0f47;
                     }
                 }
                 &.total {
@@ -805,7 +889,7 @@
                 color:#000;
                 @include font-medium;
                 em {
-                    color:#EC455A;
+                    color:#000;
                 }
                 small {
                     display:block;
@@ -816,6 +900,12 @@
                 }
                 .btn {
                     margin-top:24px;
+                }
+                .bullet-list {
+                    margin-top:12px;
+                    & + .btn-link {
+                        margin-top:24px;
+                    }
                 }
             }
         }
@@ -1192,7 +1282,7 @@
             }
         }
         .tit {
-            @include font-large-2;
+            @include font-large-1;
             font-weight: $font-weight-bold;
         }
     }
@@ -1265,6 +1355,38 @@
                     border-radius: 0;
                 } 
             } 
+        }
+    }
+}
+
+#history-popup {
+    &.lately-popup {
+        .pop-conts {
+            &.support {
+                .lately-list {
+                    ul {
+                        li {
+                            display: block;
+                            dl {
+                                display: block;
+                                dd {
+                                    &.category {
+                                        font-size: 14px;
+                                        font-weight: 500;
+                                        color: #666;
+                                        line-height: 1.71;
+                                        margin-top: 8px;
+                                        @include textEllipsis;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include mobile {
+            left: 0 !important;
         }
     }
 }

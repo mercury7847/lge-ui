@@ -2,7 +2,7 @@
     if(!global['lgkorUI']) global['lgkorUI'] = {};
     
     var csUI = {
-        isLogin: $('#topLoginFlag').val() == 'Y' ? true : false,
+        isLogin: $('#topLoginFlag').length ? ($('#topLoginFlag').val() == 'Y' ? true : false) : ($('html').data('login') == 'Y' ? true : false),
         initProductSlider: function() {
             // 관련 소모품이 필요하신가요?
             $('.product-slider').vcCarousel({

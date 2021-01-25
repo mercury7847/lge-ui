@@ -601,12 +601,20 @@
         $('.order-list li').each(function(idx, item){
             code.push($(item).data('itemId'));
         });
+        
+        var selectCardValue = 0;
+        var isCardRequest = step3Block.find('input[name=cardApplication]').val();
+        if(isCardRequest == "Y"){
+            selectCardValue = step3Block.find('select[name=associatedCard]').find('option:selected').data('discountPrice');
+        }
+        
         var sendata = {
             rtModelSeq: code.join(','),
             waterTestYn: getInputData('waterTestYn'),
-            zipCode: step2Validation.getValues("zipCode")
+            zipCode: step2Validation.getValues("zipCode"),
+            cardDiscountPrice: selectCardValue
         }
-
+        console.log("[setInstallAbledConfirm] sendata:", sendata);
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INSTALL_ABLED_URL, sendata, function(result){
             console.log("success :", result.data.success);
             var abled = "N";
@@ -650,6 +658,7 @@
             } 
 
             productPriceInfo = result.data.productPriceInfo;
+            cardDiscountPrice = result.data.cardDiscountPrice || 0;
             changeProductPriceInfo();
 
             console.log("setInstallAbledConfirm() abled :", abled);

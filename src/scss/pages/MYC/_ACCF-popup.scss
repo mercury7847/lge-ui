@@ -371,7 +371,7 @@
 .h2-tbl-tit {
     margin-bottom:12px;
     color:#000;
-    @include font-small;
+    @include font-medium;
 }
 .lg-comp-infos {
     margin-top:48px;
@@ -389,7 +389,7 @@
         margin-top:16px;
         li {
             margin-top:2px;
-            color:#767676;
+            color:#000;
             @include font-small;
             font-weight:500;
             &:first-child {
@@ -435,7 +435,7 @@
             }
             dt, dd {
                 display:table-cell;
-                @include font-medium;
+                @include font-small;
                 vertical-align:middle;
             }
             dt {
@@ -476,6 +476,11 @@
                 }
             }
         }
+        & + .bullet-list {
+            margin-top:48px;
+            padding-top:24px;
+            border-top:1px solid #ddd;
+        }
     }
 }
 
@@ -496,23 +501,23 @@
         padding-bottom:8px;
         border-bottom:1px solid #ddd;
         color:#000;
-        @include font-small;
+        @include font-medium
     }
     .desc {
         margin-top:20px;
         color:#000;
         @include font-medium;
         em {
-            margin-right:4px;
+            margin-right:8px;
             @include font-large-3;
             font-weight:700;
         }
     }
     .info {
-        margin-top:12px;
-        color:#767676;
+        margin-top:24px;
+        color:#000;
         font-weight:500;
-        @include font-small;
+        @include font-medium
         & + .info {
             margin-top:0;
         }
