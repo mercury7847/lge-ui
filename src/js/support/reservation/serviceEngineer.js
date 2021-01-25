@@ -740,7 +740,7 @@
                 var result = validation.validate();
 
                 if (result.success == true) {    
-                    if (self.isLogin == 'Y') {
+                    if (self.isLogin) {
                         lgkorUI.confirm('', {
                             title:'예약 하시겠습니까?',
                             okBtnName: '확인',
