@@ -246,12 +246,6 @@
                 },
                 focusin : function(){
                     $(this).closest("div").find("[class*=rst-time]").addClass("focus");
-
-                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                        //console.log("iphone");
-                    }else{
-                        $(this).blur();
-                    }
                 },
                 focusout: function(){
                     $(this).closest("div").find("[class*=rst-time]").removeClass("focus");
@@ -260,13 +254,14 @@
                     var value = $(this).val();
                     $(this).closest("div").find("[class*=rst-time]").text(value);
 
-                    /*
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         //console.log("iphone");
+                        $(".device").html("ios");
                     }else{
-                        $(this).trigger("blur");
+                        //$(this).trigger("blur");
+                        $(this).closest("div").attr("tabindex", 0).focus();
+                        $(".device").html("android");
                     }
-                    */
 
                     /*
                     var startDate = $(".t-start");
@@ -420,6 +415,8 @@
     <br>
     <br>
     <button type="button" class="btn-opt-login" id="btn-mkt"><span>마케팅 수신동의 모달 열기</span></button>
+
+    <div class="device" style="position:fixed;left:0;bottom:0;width:100%;height:auto;background:rgba(0, 0, 0, 0.8);color:#fff;z-index:100000"></div>
 
     <div class="lyr-opt-panel">
         <div class="main-panel" aria-hidden="true" tabindex="0">
