@@ -268,11 +268,9 @@
                 var data = result.data;
                 
                 if (data.resultFlag == 'Y') {
-                    if (data.solutionFlag) {
-                        self.$solutionsBanner.show();
-                    } else {
-                        self.$solutionsBanner.hide();
-                    }
+                    self.$solutionsBanner.show();
+                } else {
+                    self.$solutionsBanner.hide();
                 }
             });
         },
