@@ -80,7 +80,7 @@
         @include font-small;
         @include mobile {
             //text-align:center;
-            font-weight:500;
+            // font-weight:500;
         }
         &::after {
             content:none;
@@ -106,9 +106,9 @@
         position:relative;
         margin-top:32px;
         font-size:0;
-        @include mobile {
-            margin-top:24px;
-        }
+        // @include mobile {
+        //     margin-top:32px;
+        // }
         &.wide {
             margin-top:48px;
             @include mobile {
@@ -277,9 +277,9 @@
                 vertical-align:top;
                 word-break: keep-all;
                 @include mobile {
-                    font-size:13px;
-                    line-height:21px;
-                    font-weight:500;
+                    font-size:14px;
+                    line-height:22px;
+                    font-weight:700;
                 }
             }
             .req {
@@ -2161,7 +2161,7 @@ $input: (chk, rdo);
                 max-width:100%;
                 color:#000;
                 @include font-small;
-                font-weight:500;
+                // font-weight:500;
                 text-overflow:ellipsis;
                 white-space:nowrap;
                 word-break:break-all;

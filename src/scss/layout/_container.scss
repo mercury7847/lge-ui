@@ -409,7 +409,11 @@
             }
             .flt-cont {
                 float:right;
+                padding-top:10px;
                 font-size:0;
+                @include mobile {
+                    padding-top:6px;
+                }
                 &.left {
                     float:left;
                     .tit {
@@ -437,8 +441,10 @@
             &.type2 {
                 height:auto;
                 margin-bottom:12px;
+                padding-bottom:16px;
                 // border-bottom:none;
                 @include mobile {
+                    margin-bottom:20px;
                     padding-bottom:14px;
                 }
                 .tit {
@@ -489,9 +495,9 @@
             }
             // 탭 밑에 붙을 때 type4
             &.type4 {
-                padding-top:24px;
+                padding-top:32px;
                 @include mobile {
-                    padding-top:16px;
+                    padding-top:40px;
                 }
             }
             .inner-sub-tit {
@@ -505,7 +511,7 @@
                     margin-top:48px;
                 }
                 @include mobile {
-                    margin-top:40px;
+                    margin-top:60px;
                 }
                 &:first-child {
                     margin-top:0;
