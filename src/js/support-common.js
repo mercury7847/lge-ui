@@ -526,18 +526,13 @@ CS.MD.commonModel = function() {
             self.isRequest = opts.isRequest;
             self.page = opts.page;
             self.totalCount = opts.totalCount;
+            self.selected = opts.selected;
             self.param = {
                 pageCode: self.$el.find('#pageCode').val(),
                 serviceType: self.$el.find('#serviceType').val()
-            }
-            self.selected = {
-                category: self.$el.find('#category').val(),
-                categoryName: self.$el.find('#categoryNm').val(),
-                subCategory: self.$el.find('#subCategory').val(),
-                subCategoryName: self.$el.find('#subCategoryNm').val(),
-                modelCode: self.$el.find('#modelCode').val(),
-                productCode: self.$el.find('#productCode').val()
             };
+            self.isModel = self.selected.modelCode ? true : false;
+            self.isPrivacy = (self.$stepTerms.length && self.$stepTerms.hasClass('active')) ? true : false
 
             self.$modelFilter.find('.ui_select_target').vcSelectTarget();
             
@@ -545,6 +540,8 @@ CS.MD.commonModel = function() {
 
             self._initMyProduct();
             self._initStepTerms();
+            
+            if (self.isModel && !self.isPrivacy) self.$el.trigger('complete', [self.selected, self.resultUrl, true]);
         },
         _bindEvent: function() {
             var self = this;
@@ -556,38 +553,49 @@ CS.MD.commonModel = function() {
 
             // 문의유형 : 제품선택
             self.$stepInquiry.find('.btn-next').on('click', function() {
-                var result = termsValidation.validate();
+                var result;
                 
-                if (result.success) {
-                    self.$selectedModelBar.show();
-                    if (self.isDefault) {
-                        self.$el.trigger('complete', [self.selected, self.resultUrl]);
-                    } else {
-                        self.$myModelArea.show();
-                        self.next(self.$stepModel);
-                        self.$myModelSlider.vcCarousel('resize');
+
+                if (self.isPrivacy) {
+                    result = termsValidation.validate();
+                    if (!result.success) {
+                        return;
                     }
-                    
-                    self.focus(self.$selectedModelBar);
                 }
+
+                self.$selectedModelBar.show();
+                if (self.isDefault) {
+                    self.$el.trigger('complete', [self.selected, self.resultUrl]);
+                } else {
+                    self.$myModelArea.show();
+                    self.next(self.$stepModel);
+                    self.$myModelSlider.vcCarousel('resize');
+                }
+                
+                self.focus(self.$selectedModelBar);
             });
 
             // 문의유형 선택
             self.$stepInquiry.find('.btn-type').on('click', function() {
                 var $this = $(this),
-                    result = termsValidation.validate(),
-                    data = $this.data();
+                    data = $this.data(),
+                    result;
 
-                if (result.success) {
-                    self.$el.find('#category').val(data.category);
-                    self.$el.find('#categoryNm').val(data.categoryName);
-                    self.$el.find('#subCategory').val(data.subCategory);
-                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
-                    
-                    data.isRequest = false;
-
-                    self.$el.trigger('complete', [data]);
+                if (self.isPrivacy) {
+                    result = termsValidation.validate();
+                    if (!result.success) {
+                        return;
+                    }
                 }
+
+                self.$el.find('#category').val(data.category);
+                self.$el.find('#categoryNm').val(data.categoryName);
+                self.$el.find('#subCategory').val(data.subCategory);
+                self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                
+                data.isRequest = false;
+
+                self.$el.trigger('complete', [data]);
             });
 
             // 검색어 검색
@@ -888,7 +896,7 @@ CS.MD.commonModel = function() {
         _initStepTerms: function() {
             var self = this;
 
-            if (!self.$stepTerms.length) return;
+            if (!self.$stepTerms.length || !self.isPrivacy) return;
 
             termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
                 privcyCheck: { msgTarget: '.err-block' }
@@ -900,7 +908,7 @@ CS.MD.commonModel = function() {
                 if (result.success) {
                     self.$selectedModelBar.show();
 
-                    if (self.isDefault) {
+                    if (self.isModel) {
                         self.$el.trigger('complete', [self.selected, self.resultUrl]);
                     } else {
                         self.$myModelArea.show();
@@ -2149,40 +2157,7 @@ $.fn.serializeObject = function() {
 
 (function($){
     function commonInit(){
-        vcui.require(['ui/selectbox', 'ui/carousel'], function () {    
-            // LG제품에 관련된 정보를 확인하세요!
-            $('.info-slider').vcCarousel({
-                infinite: false,
-                autoplay: false,
-                slidesToScroll: 3,
-                slidesToShow: 3,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToScroll: 3,
-                            slidesToShow: 3
-                        }
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            arrows: false,
-                            slidesToScroll: 1,
-                            slidesToShow: 1,
-                            variableWidth: true
-                        }
-                    },
-                    {
-                        breakpoint: 20000,
-                        settings: {
-                            slidesToScroll: 3,
-                            slidesToShow: 3
-                        }
-                    }
-                ]
-            });
-
+        vcui.require(['ui/selectbox'], function () {    
             // 퀵 메뉴 (미정)
             $('#quickMenu').quickMenu();
         });

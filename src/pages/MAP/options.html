@@ -239,10 +239,10 @@
             var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
             var today = month + "/" + day + "/" + fullYear + " ";
 
-            //iOS는 change, blur 순서
-            //Android는 변경 시 blur, change 순서, 변경 안했을 시는 click
+            //iOS는 blur
+            //Android는 변경 시 change, 변경 안했을 시는 click
             $(".time-setting input").on({
-                click : function(e){
+                click : function(){
                     var value = $(this).val();
                     $(this).closest("div").find("[class*=rst-time]").text(value);
                     oldStartValue = $(this).closest(".inner").find("div").eq(0).find("input").val();
@@ -254,7 +254,7 @@
                 focusout: function(){
                     $(this).closest("div").find("[class*=rst-time]").removeClass("focus");
                 },
-                change : function(e){
+                change : function(){
                     var value = $(this).val();
                     $(this).closest("div").find("[class*=rst-time]").text(value);
 
@@ -265,7 +265,8 @@
                         $(this).closest("div").attr("tabindex", 0).focus();
                     }
                 },
-                blur: function(e){
+                blur: function(){
+                    //console.log("iphone");
                     var startDate = $(".t-start");
                     var endDate = $(".t-end");
                     var startDateVal = startDate.val();
@@ -288,6 +289,44 @@
                     }else{
                         toastMessage.init("에티켓 시간이 설정되었습니다.");
                     }
+
+                    /*
+                    $.ajax({
+                        method : "GET",
+                        url : "./options.html",
+                        cache: false,
+                        success: function(data, status, j){
+                            console.log("success");
+                            console.log(j.readyState);
+                        },
+                        error: function(j, status, err){
+                            console.log("error");
+                        }
+                    }).done(function(){
+                        var startDate = $(".t-start");
+                        var endDate = $(".t-end");
+                        var startDateVal = startDate.val();
+                        var endDateVal = endDate.val();
+
+                        var idx = $(this).closest("div").index();
+
+                        if(Date.parse(today + startDateVal) == Date.parse(today + endDateVal)){
+                            //optModal.open("#modalTimeset");
+                            optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
+                            $("#modalTimeset .btn-modal-confirm").on({
+                                click : function(){
+                                    $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
+                                    $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
+                                    optModal.close();
+                                    //$(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
+                                }
+                            });
+                            return false;
+                        }else{
+                            toastMessage.init("에티켓 시간이 설정되었습니다.");
+                        }
+                    });
+                    */
                 }
             });
 

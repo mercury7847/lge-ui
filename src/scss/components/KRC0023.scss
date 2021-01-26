@@ -5,7 +5,7 @@
 .KRC0023 {
     .component-inner {
         @include mobile {
-            padding: 0;
+            padding: 0 !important;
         }
     }
     .carousel-box {
