@@ -509,8 +509,10 @@
         @include font-medium;
         em {
             margin-right:8px;
-            @include font-large-3;
+            // @include font-large-3;
+            font-size:20px;
             font-weight:700;
+            line-height:28px;
         }
     }
     .info {
@@ -520,6 +522,10 @@
         @include font-medium
         & + .info {
             margin-top:0;
+        }
+        @include mobile {
+            margin-top:8px;
+            font-weight:normal;
         }
     }
 }
