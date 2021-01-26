@@ -8,7 +8,7 @@
         padding:24px 40px 80px;
         text-align:center;
         @include mobile {
-            padding:32px 16px;
+            padding:32px 16px 40px;
         }
         .title {
             @include font-large-2;
@@ -439,14 +439,14 @@
                 margin-bottom:12px;
                 // border-bottom:none;
                 @include mobile {
-                    padding-bottom:0;
+                    padding-bottom:14px;
                 }
                 .tit {
                     @include font-large-4;
                     @include mobile {
                         padding:0;
-                        font-size:18px;
-                        line-height:26px;
+                        font-size:24px;
+                        line-height:33px;
                     }
                 }
             }
@@ -516,9 +516,9 @@
                     @include font-large-2;
                     font-weight:700;
                     @include mobile {
-                        font-size:16px;
-                        line-height:24px;
-                        margin-bottom:12px;
+                        font-size:20px;
+                        line-height:28px;
+                        margin-bottom:24px;
                     }
                 }
                 div.inner-tit {

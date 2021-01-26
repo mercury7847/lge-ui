@@ -217,7 +217,7 @@
         background:url('/lg5-common/images/icons/btn-arr-16-black.svg') center no-repeat;
         background-size:14px;
         @include mobile {
-            top:1px;
+            top:4px;
         }
     }
 
@@ -301,7 +301,8 @@
         width:auto;
         margin:32px auto 0;
         @include mobile {
-            margin-top:24px;
+            // margin-top:24px;
+            margin-top:0;
         }
     }
 }

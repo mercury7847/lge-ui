@@ -1631,10 +1631,10 @@ $input: (chk, rdo);
                         &::before, &::after {
                             display:none;
                         }                        
-                        @include mobile {
-                            font-size:14px;
-                            line-height:22px;
-                        }
+                        // @include mobile {
+                        //     font-size:14px;
+                        //     line-height:22px;
+                        // }
                     }
                     &:checked+label {
                         z-index:1;
