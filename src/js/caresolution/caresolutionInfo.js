@@ -301,9 +301,11 @@ var CareCartInfo = (function() {
             });
     
             //청약하기버튼 클릭
+            /*
             self.$subscriptionButton.on('click', function(e) {
                 self._clickSubscriptionButton(this);
             });
+            */
 
             //신청하기버튼 클릭
             self.$paymentButton.on('click', function(e) {

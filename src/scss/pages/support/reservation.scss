@@ -411,21 +411,10 @@
                 text-align:center;
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: center;
                 flex-wrap: wrap;
-                .btn-link {
-                    font-size: 22px;
-                    padding-right: 0;
-                    text-decoration: none;
-                    &:after {
-                        background-image: url(/lg5-common/images/icons/btn-arr-32x32-black.svg);
-                        background-size: 32px;
-                        display: inline-block;
-                        position: relative;
-                        right: auto;
-                        // top: auto;
-                        margin-left: 12px;
-                    }
+                .btn {
+                    width: 100%;
                 }
             }
         }
@@ -498,9 +487,9 @@
                         }
                         &.on {
                             &:before{
-                                background-color:#fff;
                                 border:1px solid #ddd;
                                 box-shadow:2px 4px 8px 0 rgba(0, 0, 0, 0.14);
+                                background: url(/lg5-common/images/icons/icon-process-complete.svg) no-repeat center #fff;
                             }
                         }
                         &.current {
@@ -518,29 +507,11 @@
                     li {
                         flex: 1;
                         position: relative;
-                        &::before {
-                            content: '';
-                            display: block;
-                            width: 1px;
-                            height: 40px;
-                            background-color: #dddddd;
-                            position: absolute;
-                            left: 0;
-                            top: 50%;
-                            transform: translateY(-50%);
-                        }
+                        max-width: 320px;
+                        width: 100%;
+                        margin-left: 32px;
                         &:first-child {
-                            &::before {
-                                display: none;
-                            }
-                        }
-                        .btn-link {
-                            text-decoration: none;
-                            &::after {
-                                background-position: center;
-                                width: 32px;
-                                height: 32px;
-                            }
+                            margin-left: 0;
                         }
                     }
                 }
@@ -555,31 +526,29 @@
                 background-color: #f4f4f4;
                 border-bottom: 0;
                 .group-box {
-                    padding:0;
-                    margin:-12px -8px 0;
+                    padding:40px 16px;
+                    justify-content: flex-start;
                     li {
-                        min-width: 50%;
+                        max-width: calc(50% - 4px);
                         flex: 1;
-                        height: 96px;
-                        display: flex;
+                        margin-left: 8px;
+                        &:nth-child(2n+1) {
+                            margin-left: 0;
+                        }
+                        &:nth-child(n+3) {
+                            margin-top: 12px;
+                        }
+                        &:only-child {
+                            max-width: 100%;
+                        }
+                    }
+                    .btn {
+                        padding-top: 0;
+                        padding-bottom: 0;
+                        height: 56px;
+                        display: inline-flex;
                         align-items: center;
                         justify-content: center;
-                        flex-wrap: wrap;
-                        padding: 20px;
-                        .btn-link {
-                            font-size: 16px;
-                            &::after {
-                                background-size: 22px;
-                                margin-left: 6px;
-                            }
-                        }
-                        &:nth-child(2n+1) {
-                            border-right: 1px solid #ddd;
-                        }
-                        &:nth-child(4n+1),
-                        &:nth-child(4n+2) {
-                            border-bottom: 1px solid #ddd;
-                        }
                     }
                 }
             }
