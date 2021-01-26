@@ -24,7 +24,7 @@
                 > li {
                     display:inline-block;
                     @include font-medium;
-                    color:#767676;
+                    color:#000;
                     vertical-align:top;
                     em {
                         margin-left:4px;
@@ -65,6 +65,7 @@
                     vertical-align:bottom;
                     > li {
                         display:block;
+                        margin-top:8px;
                         &:first-child {
                             margin-top:0;
                         }
@@ -86,7 +87,7 @@
                 p {
                     display:inline-block;
                     color:#000;
-                    @include font-small;
+                    @include font-medium;
                     font-weight:700;
                     vertical-align:top;
                 }
@@ -130,7 +131,8 @@
                     border-radius:8px;
                     box-shadow:2px 4px 16px 0 rgba(#000, .14);
                     .tbody .row {
-                        padding-top:58px;
+                        padding-top:24px;
+                        padding-bottom:24px;
                     }
                 }
                 > .btn-link {
@@ -170,20 +172,20 @@
                 display:table;
                 width:100%;
                 table-layout:fixed;
-                border-top:2px solid #222;
+                border-top:1px solid #666;
                 background:#f4f4f4;
                 .th {
                     display:table-cell;
                     padding:16px 0;
-                    border-left:1px solid #ddd;
-                    color:#000;
+                    // border-left:1px solid #ddd;
+                    color:#666;
                     @include font-medium;
                     font-weight:500;
                     text-align:center;
                     vertical-align:top;
-                    &:first-child {
-                        border-left:none;
-                    }
+                    // &:first-child {
+                    //     border-left:none;
+                    // }
                 }
                 @include mobile {
                     display:none;
@@ -201,7 +203,7 @@
                     border-top:1px solid #ddd;
                     @include mobile {
                         display:block;
-                        padding:24px 0 32px 96px;
+                        padding:24px 0 32px 112px;
                     }
                     &:first-child {
                         border-top:none;
@@ -213,11 +215,11 @@
                     }
                     .col {
                         display:table-cell;
-                        border-left:1px solid #ddd;
+                        // border-left:1px solid #ddd;
                         vertical-align:middle;
-                        &:first-child {
-                            border-left:none;
-                        }
+                        // &:first-child {
+                        //     border-left:none;
+                        // }
                         &.col1 {
                             padding:32px 48px 32px 0;
                         }
@@ -255,28 +257,29 @@
                     border-top:1px solid #ddd;
                     text-align:center;
                 }
-                &::before {
-                    content:' ';
-                    position:absolute;
-                    top:2px;
-                    left:0;
-                    bottom:0;
-                    width:1px;
-                    background:#ddd;
-                    @include mobile {
-                        display:none;
-                    }
-                }
+                // &::before {
+                //     content:' ';
+                //     position:absolute;
+                //     top:2px;
+                //     left:0;
+                //     bottom:0;
+                //     width:1px;
+                //     background:#ddd;
+                //     @include mobile {
+                //         display:none;
+                //     }
+                // }
                 .title {
                     @include pc {
                         padding:16px 0;
-                        border-top:2px solid #222;
+                        border-top:1px solid #666;
                         background:#f4f4f4;
                         text-align:center;
                         font-size:0;
                         white-space:nowrap;
                         p {
                             display:inline-block;
+                            color:#666;
                             @include font-medium;
                             font-weight:500;
                             vertical-align:middle;
@@ -404,6 +407,7 @@
             position:absolute;
             top:2px;
             right:0;
+            margin:0;
             @include mobile {
                 top:16px;
                 right:16px;
@@ -420,19 +424,20 @@
                 border-top:1px solid #ddd;
                 .btn-link {
                     display:block;
-                    padding:18px 0;
-                    color:#616161;
+                    padding:20px 0;
+                    color:#000;
                     font-size:14px;
                     line-height:22px;
-                    font-weight:500;
+                    // font-weight:500;
                     text-align:center;
+                    text-decoration:underline;
                     &::after {
                         display:inline-block;
                         position:relative;
                         right:auto;
                         top:auto;
-                        margin-top:1px;
-                        vertical-align:top;
+                        margin:-2px 0 0 4px;
+                        vertical-align:middle;
                     }
                 }
             }
@@ -501,7 +506,7 @@
                     }
                 }
                 .e-name {
-                    color:#767676;
+                    color:#000;
                     @include font-small;
                     font-weight:500;
                 }
@@ -515,7 +520,7 @@
                         li {
                             display:inline-block;
                             position:relative;
-                            color:#767676;
+                            color:#666;
                             @include font-small;
                             font-weight:500;
                             vertical-align:top;
@@ -541,7 +546,7 @@
                 }
                 .count {
                     margin-top:24px;
-                    color:#767676;
+                    color:#666;
                     @include font-small;
                     font-weight:500;
                     @include mobile {
@@ -608,15 +613,15 @@
         .state-box {
             text-align:center;
             @include mobile {
-                margin-top:24px;
+                margin-top:12px;
                 font-size:0;
             }
             .tit {
-                color:#3B9792;
+                color:#21a9aa;
                 @include font-medium;
                 font-weight:700;
                 &.cancel {
-                    color:#F04E3E;
+                    color:#ff3723;
                 }
                 @include mobile {
                     display:inline-block;
@@ -625,12 +630,12 @@
                 }
             }
             .desc {
-                color:#767676;
+                color:#000;
                 @include font-medium;
-                font-weight:500;
+                // font-weight:500;
                 word-break:keep-all;
                 @include mobile {
-                    display:inline-block;
+                    // display:inline-block;
                     vertical-align:top;
                 }
             }
@@ -773,13 +778,23 @@
                         padding:0;
                     }
                     &.btn-col {
-                        width:15.8%;
+                        width:16.8%;
                         text-align:right;
-                        white-space:nowrap;
+                        //white-space:nowrap;
+                        font-size: 0;
+                        @include tablet {
+                            width:22.8%;
+                        }
+                        .btn:not(:first-child) {
+                            margin-top: 6px;
+                        }
                         @include mobile {
                             width:100%;
                             margin-top:12px;
                             text-align:left;
+                            .btn {
+                                display: block;
+                            }
                         }
                     }
                 }
@@ -799,7 +814,10 @@
             }
             &.disabled {
                 .col-table {
-                    padding-right:15.8%;
+                    padding-right:16.8%;
+                    @include tablet {
+                        width:22.8%;
+                    }
                 }
                 .product-info {
                     .thumb {
@@ -837,31 +855,68 @@
 .contract-steps {
     margin-top:24px;
     overflow:hidden;
+    @include mobile {
+        margin-top:40px;
+    }
     > ol {
         position:relative;
-        margin-bottom:-32px;
+        margin:-24px 0 0 -28px;
         font-size:0;
         @include mobile {
-            margin-bottom:0;
+            margin:0;
         }
         .steps {
-            display:inline-block;
+            float:left;
             position:relative;
-            width:20%;
-            min-width:210px;
-            margin-bottom:32px;
-            padding-right:94px;
+            width:200px;
+            height:250px;
+            margin:24px 0 0 28px;
+            // margin-bottom:32px;
+            // padding-right:94px;
+            padding:32px 24px;
+            border-radius:8px;
+            background-color:#f4f4f4;
+            text-align:center;
             vertical-align:top;
-            @include mobile {
+            &:after {
+                content:' ';
                 display:block;
+                position:absolute;
+                top:50%;
+                right:-20px;
+                width:16px;
+                height:16px;
+                margin-top:-8px;
+                background:url('/lg5-common/images/icons/btn-down-16-gray.svg') no-repeat 0 0;
+                transform:rotate(-90deg);
+                @include mobile {
+                    top:auto;
+                    right:auto;
+                    bottom:-22px;
+                    left:50%;
+                    margin:0 0 0 -16px;
+                    transform:rotate(0deg);
+                }
+            }
+            @include mobile {
+                display:table;
+                float:none;
                 width:100%;
-                min-height:48px;
-                margin-bottom:0;
-                padding-left:68px;
-                padding-right:0;
-                padding-bottom:40px;
+                height:96px;
+                margin:0 0 32px;
+                padding:16px;
+                text-align:left;
+                dl {
+                    display:table-cell;
+                    padding-left:80px;
+                    vertical-align:middle;
+                }
             }
             &:last-child {
+                margin-bottom:0;
+                &:after {
+                    display:none;
+                }
                 @include mobile {
                     width:100%;
                     padding-bottom:0;
@@ -870,18 +925,17 @@
             &::before {
                 content:' ';
                 display:block;
-                width:80px;
-                height:80px;
-                border-radius:50%;
-                margin-bottom:16px;
+                width:64px;
+                height:64px;
+                margin:0 auto 16px;
+                // border-radius:50%;
+                // margin-bottom:16px;
                 overflow:hidden;
                 background-size:100%;
                 @include mobile {
                     position:absolute;
-                    top:0;
-                    left:0;
-                    width:48px;
-                    height:48px;
+                    top:16px;
+                    left:16px;
                 }
             }
             @for $i from 1 through 7 {
@@ -889,36 +943,35 @@
                     background-image:url('/lg5-common/images/MYC/icon-cs#{$i}.svg');
                 }
             }
-            &::after {
-                content:' ';
-                position:absolute;
-                top:38px;
-                left:80px;
-                right:0;
-                height:4px;
-                background:#f4f4f4;
-                @include mobile {
-                    top:40px;
-                    left:23px;
-                    width:3px;
-                    height:auto;
-                    bottom:0;
-                }
-            }
-            &:last-child::after {
-                display:none;
-            }
+            // &::after {
+            //     content:' ';
+            //     position:absolute;
+            //     top:38px;
+            //     left:80px;
+            //     right:0;
+            //     height:4px;
+            //     background:#f4f4f4;
+            //     @include mobile {
+            //         top:40px;
+            //         left:23px;
+            //         width:3px;
+            //         height:auto;
+            //         bottom:0;
+            //     }
+            // }
+            // &:last-child::after {
+            //     display:none;
+            // }
             dl {
                 dt {
                     color:#000;
                     @include font-medium;
-                    font-weight:500;
+                    font-weight:700;
                 }
                 dd {
                     margin-top:8px;
-                    color:#767676;
-                    @include font-small;
-                    font-weight:500;
+                    color:#000;
+                    @include font-medium;
                     word-break:keep-all;
                     @include mobile {
                         margin-top:4px;

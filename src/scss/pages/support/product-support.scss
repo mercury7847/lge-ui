@@ -90,6 +90,13 @@
         .tabs-wrap {
             margin-bottom:12px;
         }
+
+        .driver-inner-serach {
+            margin-bottom:80px;
+            padding:32px;
+            background: #f4f4f4;
+            border-radius:8px;
+        }
         @include mobile {
             .form-wrap {
                 margin-bottom:52px;
@@ -348,15 +355,15 @@
                 }
                 .file-box {
                     position:relative;
-                    padding-right:315px;
+                    padding-right:172px;
                     .options {
                         margin-top:8px;
                     }
                     .btn-area {
                         position:absolute;
-                        left:calc(100% - 315px);
+                        left:calc(100% - 172px);
                         top:50%;
-                        width:315px;
+                        width:172px;
                         transform:translateY(-50%);
                         font-size:0;
                         @include clearfix;

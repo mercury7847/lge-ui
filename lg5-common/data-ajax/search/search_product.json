@@ -13,7 +13,7 @@
         }
     },
     "data":{
-        "count": "243",
+        "allCount": "243",
         "related":[
             "OLED TV",
             "4K OLED TV",
@@ -171,10 +171,10 @@
                 ]
             },
             {
-                "filterType":"check",
+                "filterType":"radio",
                 "filterId":"fid00003",
                 "filterGroupName":"서비스",
-                "filterGroupType":"check",
+                "filterGroupType":"radio",
                 "filterValues":[
                     {"filterValueId":"","filterValueName":"전체"},
                     {"filterValueId":"sd0002","filterValueName":"일반제품"},

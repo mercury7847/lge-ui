@@ -27,140 +27,204 @@
     '{{/each}}';
     var validation;
     var authManager;
+    var dateUtil = vcui.date;
 
     var reservation = {
         init: function() {
             var self = this;
             
             self.$cont = $('.contents');
+            self.$productBar = self.$cont.find('.prod-selected-wrap');
+            self.$myProductWarp = self.$cont.find('.my-product-wrap');
             self.$submitForm = self.$cont.find('#submitForm');
             self.$stepArea = self.$cont.find('.step-area');
             self.$completeBtns = self.$cont.find('.btn-group');
 
+            self.$stepModel = self.$cont.find('#stepModel');
+
+            self.$stepInput = self.$cont.find('#stepInput');
             self.$topicBox = self.$cont.find('#topicBox');
-            self.$topicListWrap = self.$cont.find('#topicList');
-            self.$topicList = self.$topicListWrap.find('.rdo-list');
-
+            self.$topicWrap = self.$cont.find('#topicList');
+            self.$topicList = self.$topicWrap.find('.rdo-list');
             self.$subTopicBox = self.$cont.find('#subTopicBox');
-            self.$subTopicListWrap = self.$cont.find('#subTopicList');
-            self.$subTopicList = self.$subTopicListWrap.find('.rdo-list');
-
+            self.$subTopicWrap = self.$cont.find('#subTopicList');
+            self.$subTopicList = self.$subTopicWrap.find('.rdo-list');
             self.$solutionsBanner = self.$cont.find('#solutionBanner');
             self.$solutionsPopup = $('#solutionsPopup');
-
-            self.$dateWrap = self.$cont.find('.date-wrap');
-            self.$timeWrap = self.$cont.find('.timte-wrap');
+            self.$calendarWrap = self.$cont.find('.calendar-area');
+            self.$calendarDate = self.$calendarWrap.find('.date-wrap');
+            self.$calendarTime = self.$calendarWrap.find('.time-wrap');
 
             self.$authPopup = $('#certificationPopup');
 
-            self.autoFlag = false;
-            self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : 'N';
+            self.isLogin = lgkorUI.isLogin;
 
             var register = {
                 topic: {
                     required: true,
-                    msgTarget: '.topic-msg'
+                    msgTarget: '.topic-msg',
+                    errorMsg: '정확한 제품증상을 선택해주세요.'
                 },
                 subTopic: {
                     required: true,
-                    msgTarget: '.sub-topic-msg'
+                    msgTarget: '.sub-topic-msg',
+                    errorMsg: '정확한 세부증상을 선택해주세요.'
                 },
                 userNm: {
-                    msgTarget: '.err-block' 
+                    required: true,
+                    msgTarget: '.err-block',
+                    pattern: /^[가-힣a-zA-Z]+$/,
+                    errorMsg: '이름을 입력해주세요.',
+                    patternMsg: '한글 또는 영문만 입력 가능합니다.'
                 },
                 phoneNo: {
-                    msgTarget: '.err-block'
+                    required: true,
+                    msgTarget: '.err-block',
+                    pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                    errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                    patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
                 },
                 date: {
+                    required: true,
                     msgTarget: '.err-msg',
+                    errorMsg: '날짜를 선택해주세요.'
                 },
                 time: {
+                    required: true,
                     msgTarget: '.err-msg',
+                    errorMsg: '시간을 선택해주세요.'
                 }
             }
-
-            var authRegister = {
-                authName: {
-                    pattern: /^[가-힣a-zA-Z]+$/,
-                    msgTarget: '.err-block'
+            var authOptions = {
+                elem: {
+                    popup: '#certificationPopup',
+                    name: '#authName',
+                    phone: '#authPhoneNo',
+                    number: '#authNo'
                 },
-                authPhoneNo: {
-                    pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                    msgTarget: '.err-block'
-                },
-                authNo:{
-                    msgTarget: '.err-block'
+                register: {
+                    authName: {
+                        required: true,
+                        msgTarget: '.err-block',
+                        pattern: /^[가-힣a-zA-Z]+$/,
+                        errorMsg: '이름을 입력해주세요.',
+                        patternMsg: '한글 또는 영문만 입력 가능합니다.'
+                    },
+                    authPhoneNo: {
+                        required: true,
+                        msgTarget: '.err-block',
+                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                        errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                    },
+                    authNo:{
+                        required: true,
+                        msgTarget: '.err-block',
+                        errorMsg: '인증번호를 입력해주세요.'
+                    }
                 }
             };
-            vcui.require(['ui/validation', 'ui/formatter'], function () {
-
+            vcui.require(['ui/validation'], function () {
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
                 
-                if (self.isLogin != 'Y') {
-                    authManager = new AuthManager({
-                        elem: {
-                            popup: '#certificationPopup',
-                            name: '#authName',
-                            phone: '#authPhoneNo',
-                            number: '#authNo'
-                        },
-                        register: authRegister
-                    });
-                }
+                if (!self.isLogin) authManager = new AuthManager(authOptions);
+
+                $('#route').val(lgkorUI.isMobile() ? 'WWW2' : 'WWWW1');
 
                 self.$cont.commonModel({
                     register: register
                 });
-
-                $('.date-wrap').calendar({
+                self.$calendarDate.calendar({
                     inputTarget: '#date'
                 });
-
-                $('.time-wrap').timeCalendar({
+                self.$calendarTime.timeCalendar({
                     inputTarget: '#time'
                 });
 
                 self.bindEvent();
             });
         },
-        setTopicList: function(data) {
+        completeModel: function(url) {
             var self = this;
 
-            var html;
-
-            html = vcui.template(topicTmpl, data);
-            self.$topicList.html(html);
+            if (self.model.isRequest) {
+                self.setInputStep(url);
+            } else {
+                self.nextInputStep();
+            }
         },
-        setReserveDate: function(data) {
-            var html;
-        },
-        requestSubTopic: function(url, param) {
+        nextInputStep: function() {
             var self = this;
+            var data = self.model;
+            var summaryOpt = {
+                product: [data.categoryName, data.subCategoryName, data.modelCode],
+                reset: 'product'
+            };
 
-            lgkorUI.requestAjaxData(url, param, function(result) {
-                var data = result.data,
-                    html;
-                    
-                html = vcui.template(subTopicTmpl, data);
+            self.$myProductWarp.hide();
+            self.$completeBtns.show();
 
-                self.$subTopicList.html(html);
-                self.$subTopicBox.show();
+            self.$cont.commonModel('updateSummary', summaryOpt);
+            self.$cont.commonModel('next', self.$stepInput);
+            self.$cont.commonModel('focus', self.$productBar, function() {
+                self.$productBar.vcSticky();
             });
         },
-        reqeustSolutions: function(url, param) {
+        setInputStep: function(url) {
             var self = this;
+            var param = {
+                category: self.model.category,
+                subCategory: self.model.subCategory,
+                modelCode: self.model.modelCode,
+                serviceType: $('#serviceType').val()
+            };
 
-            lgkorUI.requestAjaxData(url, param, function(result) {
-                var data = result.data;
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                var resultData = result.data;
+
+                self.setWarranty(resultData);
+                self.setTopic(resultData);
+                self.setCalendar(resultData);
                 
-                if (data.resultFlag == 'Y') {
-                    if (data.solutionFlag) {
-                        self.$solutionsBanner.show();
-                    } else {
-                        self.$solutionsBanner.hide();
-                    }
-                }
+                self.nextInputStep();
+
+                lgkorUI.hideLoading();
             });
+        },
+        setTopic: function(data) {
+            var self = this;
+            var success = (data.topicList instanceof Array && data.topicList.length) ? true : false;
+            
+            if (success) {
+                self.$topicList.html(vcui.template(topicTmpl, data));
+            }
+        },
+        setCalendar: function(data) {
+            var self = this;
+            var success = (data.dateList instanceof Array && data.dateList.length) ? true : false;
+                fastDate = dateUtil.format(data.fastDate + '' + data.fastTime + '00', 'yyyy.MM.dd hh:mm');
+
+            if (success) {
+                self.$calendarWrap.find('.calendar-info .date').html(fastDate);
+                self.$calendarDate.calendar('update', data.dateList);
+            }
+        },
+        setWarranty: function(data) {
+            var self = this;
+            var $warranty = self.$stepInput.find('[name=buyingdate]');
+
+            if (data.warrantyText && data.warrantValue) {
+                $warranty.closest('.conts').append('<p class="form-text">'+data.warrantyText+'</p>');
+                $warranty.filter('[value='+data.warrantValue+']').prop('checked', true);
+                
+                $warranty.closest('.rdo-list-wrap').hide();
+            } else {
+                $warranty.closest('.conts').find('.form-text').remove();
+                $warranty.prop('checked', false);
+
+                $warranty.closest('.rdo-list-wrap').show();
+            }
         },
         setSolutions: function(url, param, isShown) {
             var self = this;
@@ -187,90 +251,60 @@
                 });
             }, null, "html", true);
         },
-        requestDate: function() {
+        requestSubTopic: function(url, param) {
             var self = this;
-            var url = self.$stepInput.data('ajax'),
-                param = validation.getAllValues(),
-                result;
 
-            param = $.extend(param, {
-                topic: $('input[name=topic]:checked').val(),
-                subTopic: $('input[name=subTopic]:checked').val(),
-                serviceType: $('#serviceType').val(),
-                productCode: $('#productCode').val(),
-                category: $('#category').val(),
-                subCategory: $('#subCategory').val()
+            lgkorUI.requestAjaxData(url, param, function(result) {
+                var data = result.data,
+                    html;
+                    
+                html = vcui.template(subTopicTmpl, data);
+
+                self.$subTopicList.html(html);
+                self.$subTopicBox.show();
             });
+        },
+        reqeustSolutions: function(url, param) {
+            var self = this;
 
-            result = validation.validate(['topic', 'subTopic', 'userNm', 'phoneNo']);
-
-            if (result.success) {
-                lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                    var data = result.data,
-                        dateArr = data.dateList instanceof Array ? data.dateList : [],
-                        fastDate;
-
-                    if (data.resultFlag == 'Y') {
-                        if (dateArr.length) {
-                            fastDate = dateUtil.format(data.fastDate + '' + data.fastTime + '00', 'yyyy.MM.dd hh:mm');
-                        
-                            self.$stepDate.find('.calendar-info .date').html(fastDate);    
-                            $('.date-wrap').calendar('update', data.dateList);
-                            self.dateParam = result.param;
-
-                            self.$stepDate.addClass('active');
-                        }
-                    } else {
-                        if (data.resultMessage) {
-                            if (data.tAlert == 'Y') {
-                            }
-                            lgkorUI.alert("", {
-                                title: data.resultMessage
-                            });
-                        }
-                    }
-                });
-            }
+            lgkorUI.requestAjaxData(url, param, function(result) {
+                var data = result.data;
+                
+                if (data.resultFlag == 'Y') {
+                    self.$solutionsBanner.show();
+                } else {
+                    self.$solutionsBanner.hide();
+                }
+            });
         },
         requestTime: function() {
-            var self = this,
-                url = $('.calendar-area').data('timeUrl'),
-                param = validation.getAllValues(),
-                result;
-
-            param = $.extend(param, {
-                topic: $('input[name=topic]:checked').val(),
-                subTopic: $('input[name=subTopic]:checked').val(),
+            var self = this;
+            var url = $('.calendar-area').data('timeUrl');
+            var param = {
                 serviceType: $('#serviceType').val(),
                 productCode: $('#productCode').val(),
                 category: $('#category').val(),
                 subCategory: $('#subCategory').val(),
                 date: $('#date').val()
-            });
+            };
 
-            result = validation.validate(['topic', 'subTopic', 'userNm', 'phoneNo']);
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                var data = result.data;
 
-            if (result.success) {
-                lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                    var data = result.data;
-
-                    if (data.resultFlag == 'Y') {
-                        $('.time-wrap').timeCalendar('update', data.timeList);
-                        $('.time-wrap').find('.box-desc').hide();
-                        $('.time-wrap').find('.box-table').show();
-                    } else {
-                        if (data.resultMessage) {
-                            if (data.tAlert == 'Y') {
-
-                            }
-                            
-                            lgkorUI.alert("", {
-                                title: data.resultMessage
-                            });
-                        }
+                if (data.resultFlag == 'Y') {
+                    self.$calendarTime.timeCalendar('update', data.timeList);
+                    self.$calendarTime.find('.box-desc').hide();
+                    self.$calendarTime.find('.box-table').show();
+                } else {
+                    if (data.resultMessage) {                            
+                        lgkorUI.alert("", {
+                            title: data.resultMessage
+                        });
                     }
-                });
-            }
+                }
+                lgkorUI.hideLoading();
+            });
         },
         requestComplete: function() {
             var self = this;
@@ -293,50 +327,45 @@
                 }
             }, 'POST');
         },
-        bindEvent: function() {
+        reset: function() {
             var self = this;
 
-            self.$cont.on('reset', function(e, module) {
-                self.$solutionsBanner.hide();
-                module._next(module.$stepModel);
-            });
+            self.$myProductWarp.show();
+            self.$cont.commonModel('next', self.$stepModel);
+
+            self.$topicList.empty();
+            self.$solutionsBanner.hide();
+        
+            self.$stepInput.find('[name=buyingdate]').closest('.conts').find('.form-text').remove();
+            self.$stepInput.find('[name=buyingdate]').prop('checked', false);
+            self.$stepInput.find('#content').val('');
             
-            // 모델 선택 후 이벤트
-            self.$cont.on('complete', function(e, module, data, url) {
-                var param = {
-                    modelCode: data.modelCode,
-                    serviceType: $('#serviceType').val(),
-                    category: data.category,
-                    subCategory: data.subCategory
-                };
+            if (!self.isLogin) {
+                self.$stepInput.find('#userNm').val('');
+                self.$stepInput.find('#phoneNo').val('');
+            }
 
-                lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                    var resultData = result.data;
-
-                    module._updateSummary({
-                        product: [data.categoryName, data.subCategoryName, data.modelCode],
-                        reset: 'product'
-                    });
-
-                    self.$dateWrap.calendar('update', resultData.dateList);
-                    self.setTopicList(resultData)
-                    self.$completeBtns.show();
-                    module.$myModelArea.hide();
-
-                    module._next(module.$stepInput);
-                    module._focus(module.$selectedModelBar, function() {
-                        module.$selectedModelBar.vcSticky();
-                    });
-                });
+            self.$calendarDate.calendar('reset');
+            self.$calendarTime.timeCalendar('reset');
+        },
+        bindEvent: function() {
+            var self = this;
+            
+            // 모델 선택 & 문의 재선택
+            self.$cont.on('complete', function(e, data, url) {
+                self.model = data;
+                self.completeModel(url);
+            }).on('reset', function(e) {
+                self.reset();
             });
 
             // 증상 선택
             self.$topicList.on('change', '[name=topic]', function() {
-                var url = self.$topicListWrap.data('ajax'),
+                var url = self.$topicWrap.data('ajax'),
                     param = {
                         topic : $(this).val(),
-                        serviceType: $('#serviceType').val(),
-                        productCode: $('#productCode').val()
+                        productCode: $('#productCode').val(),
+                        serviceType: $('#serviceType').val()
                     };
                 
                 self.$solutionsBanner.hide();
@@ -346,7 +375,7 @@
             // 세부 증상 선택
             self.$subTopicList.on('change', '[name=subTopic]', function() {
                 var $this = $(this),
-                    url = self.$subTopicListWrap.data('ajax'),
+                    url = self.$subTopicWrap.data('ajax'),
                     param = {
                         topic : $('input[name=topic]:checked').val(),
                         subTopic: $this.val(),
@@ -354,11 +383,9 @@
                     };
                     
                 self.reqeustSolutions(url, param);
-
-                if (self.autoFlag) self.requestDate();
             });
 
-            /// 솔루션 배너
+            // 솔루션 배너
             self.$solutionsBanner.find('.btn-link').on('click', function(){
                 var url = $(this).data('href');
                 var param = {
@@ -371,8 +398,8 @@
                 self.setSolutions(url, param, false);
             });
 
-            /// 날짜 선택
-            $('.date-wrap').on('dateselected', function() {
+            // 날짜 선택
+            self.$calendarDate.on('dateselected', function() {
                 self.requestTime();
             });
 
@@ -381,7 +408,7 @@
                 var result = validation.validate();
 
                 if (result.success == true) {    
-                    if (self.isLogin == 'Y') {
+                    if (self.isLogin) {
                         lgkorUI.confirm('', {
                             title:'예약 하시겠습니까?',
                             okBtnName: '확인',
@@ -391,18 +418,23 @@
                             }
                         });       
                     } else {
-                        authManager.open();
+                        authManager.open(function() {
+                            $('#authName').val($('#userNm').val()).prop('readonly', true);
+                            $('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);  
+                        });
                     }
                 }
             });
 
+            // 인증문자 보내기
             self.$authPopup.find('.btn-send').on('click', function() {
                 authManager.send();
             });
 
+            // 인증 완료 하기
             self.$authPopup.find('.btn-auth').on('click', function() {
-                authManager.confirm(this, function() {
-                    self.requestComplete();
+                authManager.confirm(this, function(success, result) {
+                    success && self.requestComplete();
                 });
             });
         }

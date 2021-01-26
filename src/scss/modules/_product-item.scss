@@ -124,6 +124,7 @@
                     .slide-controls {
                         display: block;
                         margin-top: -16px;
+                        transform: translateX(0);
                         .btn-arrow {
                             width: 32px;
                             height: 32px;
@@ -441,6 +442,17 @@
             }
             &.single {
                 margin: 24px 0 0;
+            }
+            &.double {
+                display: flex;
+                justify-content: center;
+                margin: 24px 0 0;
+                .btn {
+                    @include calc(width,50%,4px);
+                    &:not(:first-child) {
+                        margin-left: 8px;
+                    }
+                }
             }
         }
         .product-wish {

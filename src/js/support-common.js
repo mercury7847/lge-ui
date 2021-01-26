@@ -2,7 +2,7 @@
     if(!global['lgkorUI']) global['lgkorUI'] = {};
     
     var csUI = {
-        isLogin: $('#topLoginFlag').val() == 'Y' ? true : false,
+        isLogin: $('#topLoginFlag').length ? ($('#topLoginFlag').val() == 'Y' ? true : false) : ($('html').data('login') == 'Y' ? true : false),
         initProductSlider: function() {
             // 관련 소모품이 필요하신가요?
             $('.product-slider').vcCarousel({
@@ -236,6 +236,7 @@ CS.MD.search = function() {
         var defaults = {
             data: {},
             template: {
+                autocompleteList: '<li><a href="#">{{keyword}}</a></li>',
                 recentlyList: '<li><a href="#">{{keyword}}</a><button type="button" class="btn-delete"><span class="blind">삭제</span></button></li>',
                 keywordList: '<li><a href="#">{{keyword}}</a></li>'
             }
@@ -253,44 +254,71 @@ CS.MD.search = function() {
             var self = this;
 
             self.autoUrl = self.$el.data('autocompleteUrl');
-            self._setRecently();
+
+            if (self.$el.find('.recently-keyword').length) self._setRecently();
         },
         _setRecently: function() {
             var self = this;
+            var $recentlyKeyword = self.$el.find('.recently-keyword');
             var tmpl = self.options.template,
                 keywordCookie = cookie.getCookie('LG_SupportKeyword'),
                 arr = [];
             
-            $('.recently-keyword').find('ul').empty();
+            $recentlyKeyword.find('ul').empty();
 
             if (keywordCookie && keywordCookie.length > 0) {
                 arr = keywordCookie.split(',');
                 if (arr.length) {
                     arr.forEach(function(item) {
                         var html = tmpl.recentlyList.replace('{{keyword}}', item);
-                        $('.recently-keyword').find('ul').append(html);
+                        $recentlyKeyword.find('ul').append(html);
                     });
-                    $('.recently-keyword').find('ul').show();
-                    $('.recently-keyword').find('.no-keyword').hide();
+                    $recentlyKeyword.find('ul').show();
+                    $recentlyKeyword.find('.no-keyword').hide();
                 } else {    
-                    $('.recently-keyword').find('ul').hide();
-                    $('.recently-keyword').find('.no-keyword').show();
+                    $recentlyKeyword.find('ul').hide();
+                    $recentlyKeyword.find('.no-keyword').show();
                 }
             } else {
-                $('.recently-keyword').find('ul').hide();
-                $('.recently-keyword').find('.no-keyword').show();
+                $recentlyKeyword.find('ul').hide();
+                $recentlyKeyword.find('.no-keyword').show();
             }            
         },
         setPopularKeyword: function(data) {
             var self = this;
+            var $popularKeyword = self.$el.find('.popular-keyword');
             var tmpl = self.options.template,
                 arr = data instanceof Array ? data : [];
+
+            $popularKeyword.find('ul').empty();
 
             if (arr.length) {
                 arr.forEach(function(item) {
                     var html = tmpl.keywordList.replace('{{keyword}}', item);
-                    $('.popular-keyword').find('ul').append(html);
+                    $popularKeyword.find('ul').append(html);
                 });
+            } else {
+                $popularKeyword.find('ul').hide();
+                $popularKeyword.find('.no-keyword').show();
+            }
+        },
+        _setAutoComplete: function(data) {
+            var self = this;
+            var tmpl = self.options.template,
+                arr = data instanceof Array ? data : [];
+
+            self.$el.find('.autocomplete-box').find('ul').empty();
+
+            if (arr.length) {
+                arr.forEach(function(item) {
+                    var html = vcui.template(tmpl.autocompleteList, item);
+                    self.$el.find('.autocomplete-box').find('ul').append(html);
+                });
+                self.$el.find('.autocomplete-box').find('ul').show();
+                self.$el.find('.autocomplete-box').find('.no-keyword').hide();
+            } else {
+                self.$el.find('.autocomplete-box').find('ul').hide();
+                self.$el.find('.autocomplete-box').find('.no-keyword').show();
             }
         },
         _bindEvent: function() {
@@ -306,24 +334,34 @@ CS.MD.search = function() {
                 self.$el.removeClass('on');
             });
 
-            self.$el.on('click', '.search-layer a', function() {
+            self.$el.on('click', '.search-layer .autocomplete-box a', function() {
+                self.$el.trigger('autocompleteClick', [this]);
+            });
+
+            self.$el.on('click', '.search-layer .keyword-box', function() {
                 var val = $(this).text().trim();
                 self.$el.find('input[type=text]').val(val);
                 self.$el.removeClass('on');
             });
 
             self.$el.find('input[type=text]').on('focus', function() {
-                self.$el.addClass('on');
+                if (self.$el.find('.keyword-box').length) {
+                    self.$el.addClass('on');
+                }
             }).on('input', function() {
                 var val = $(this).val();
 
                 if (val.length > 1) {
                     var param = {
                         keyword: val
-                    };
-
+                    };  
+                    
                     self.$el.trigger('autocomplete', [param, self.autoUrl, function(result) {
-                        console.log(result);
+                        self._setAutoComplete(result.searchList)
+                        
+                        $('.autocomplete-box').show();
+                        $('.keyword-box').hide();
+                        self.$el.addClass('on');
                     }]);
                 }
 
@@ -493,20 +531,16 @@ CS.MD.commonModel = function() {
             self.isDefault = $('#category').val() ? true : false;
             self.modelUrl = self.$searchArea.data('modelUrl');
             self.resultUrl = self.$searchArea.data('resultUrl');
+            self.isRequest = opts.isRequest;
             self.page = opts.page;
             self.totalCount = opts.totalCount;
+            self.selected = opts.selected;
             self.param = {
                 pageCode: self.$el.find('#pageCode').val(),
                 serviceType: self.$el.find('#serviceType').val()
-            }
-            self.selected = {
-                category: self.$el.find('#category').val(),
-                categoryName: self.$el.find('#categoryNm').val(),
-                subCategory: self.$el.find('#subCategory').val(),
-                subCategoryName: self.$el.find('#subCategoryNm').val(),
-                modelCode: self.$el.find('#modelCode').val(),
-                productCode: self.$el.find('#productCode').val()
             };
+            self.isModel = self.selected.modelCode ? true : false;
+            self.isPrivacy = (self.$stepTerms.length && self.$stepTerms.hasClass('active')) ? true : false
 
             self.$modelFilter.find('.ui_select_target').vcSelectTarget();
             
@@ -514,6 +548,8 @@ CS.MD.commonModel = function() {
 
             self._initMyProduct();
             self._initStepTerms();
+            
+            if (self.isModel && !self.isPrivacy) self.$el.trigger('complete', [self.selected, self.resultUrl, true]);
         },
         _bindEvent: function() {
             var self = this;
@@ -525,29 +561,49 @@ CS.MD.commonModel = function() {
 
             // 문의유형 : 제품선택
             self.$stepInquiry.find('.btn-next').on('click', function() {
-                var result = termsValidation.validate();
+                var result;
                 
-                if (result.success) {
-                    self._nextStepModel();
+
+                if (self.isPrivacy) {
+                    result = termsValidation.validate();
+                    if (!result.success) {
+                        return;
+                    }
                 }
+
+                self.$selectedModelBar.show();
+                if (self.isDefault) {
+                    self.$el.trigger('complete', [self.selected, self.resultUrl]);
+                } else {
+                    self.$myModelArea.show();
+                    self.next(self.$stepModel);
+                    self.$myModelSlider.vcCarousel('resize');
+                }
+                
+                self.focus(self.$selectedModelBar);
             });
 
             // 문의유형 선택
             self.$stepInquiry.find('.btn-type').on('click', function() {
                 var $this = $(this),
-                    result = termsValidation.validate(),
-                    data = $this.data();
+                    data = $this.data(),
+                    result;
 
-                if (result.success) {
-                    self.$el.find('#category').val(data.category);
-                    self.$el.find('#categoryNm').val(data.categoryName);
-                    self.$el.find('#subCategory').val(data.subCategory);
-                    self.$el.find('#subCategoryNm').val(data.subCategoryName);
-                    
-                    data.isRequest = false;
-
-                    self.$el.trigger('complete', [data]);
+                if (self.isPrivacy) {
+                    result = termsValidation.validate();
+                    if (!result.success) {
+                        return;
+                    }
                 }
+
+                self.$el.find('#category').val(data.category);
+                self.$el.find('#categoryNm').val(data.categoryName);
+                self.$el.find('#subCategory').val(data.subCategory);
+                self.$el.find('#subCategoryNm').val(data.subCategoryName);
+                
+                data.isRequest = false;
+
+                self.$el.trigger('complete', [data]);
             });
 
             // 검색어 검색
@@ -848,7 +904,7 @@ CS.MD.commonModel = function() {
         _initStepTerms: function() {
             var self = this;
 
-            if (!self.$stepTerms.length) return;
+            if (!self.$stepTerms.length || !self.isPrivacy) return;
 
             termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
                 privcyCheck: { msgTarget: '.err-block' }
@@ -860,7 +916,7 @@ CS.MD.commonModel = function() {
                 if (result.success) {
                     self.$selectedModelBar.show();
 
-                    if (self.isDefault) {
+                    if (self.isModel) {
                         self.$el.trigger('complete', [self.selected, self.resultUrl]);
                     } else {
                         self.$myModelArea.show();
@@ -1640,7 +1696,7 @@ CS.MD.timeCalendar = function() {
         },
         update: function update(timeArr) {
             var self = this;
-            
+
             self.timeArr = timeArr;
             if (self.options.inputTarget) {
                 self.$input.val('');
@@ -2109,40 +2165,7 @@ $.fn.serializeObject = function() {
 
 (function($){
     function commonInit(){
-        vcui.require(['ui/selectbox', 'ui/carousel'], function () {    
-            // LG제품에 관련된 정보를 확인하세요!
-            $('.info-slider').vcCarousel({
-                infinite: false,
-                autoplay: false,
-                slidesToScroll: 3,
-                slidesToShow: 3,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToScroll: 3,
-                            slidesToShow: 3
-                        }
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            arrows: false,
-                            slidesToScroll: 1,
-                            slidesToShow: 1,
-                            variableWidth: true
-                        }
-                    },
-                    {
-                        breakpoint: 20000,
-                        settings: {
-                            slidesToScroll: 3,
-                            slidesToShow: 3
-                        }
-                    }
-                ]
-            });
-
+        vcui.require(['ui/selectbox'], function () {    
             // 퀵 메뉴 (미정)
             $('#quickMenu').quickMenu();
         });

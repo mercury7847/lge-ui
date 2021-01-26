@@ -229,7 +229,7 @@
         li {
             margin-top:20px;
             @include mobile {
-                margin-top:14px;
+                margin-top:18px;
             }
             &:first-child {
                 margin-top:0;
@@ -240,8 +240,9 @@
                     display:inline-block;
                     width:234px;
                     padding-right:24px;
-                    color:#767676;
+                    color:#000;
                     @include font-medium;
+                    font-weight:700;
                     vertical-align:top;
                     word-break:keep-all;
                     @include mobile {
@@ -258,9 +259,22 @@
                     em {
                         font-weight:700;
                     }
+                    > span {
+                        display:block;
+                    }
                     .btn-link {
-                        margin-top:1px;
-                        margin-left:24px;
+                        position:relative;
+                        margin-top:8px;
+                        // margin-left:24px;
+                        &:after {
+                            content:' ';
+                            display:inline-block;
+                            width:14px;
+                            height:14px;
+                            background:url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat 0 0;
+                            background-size:14px;
+                            vertical-align:middle;
+                        }
                     }
                     @include mobile {
                         width:66%;

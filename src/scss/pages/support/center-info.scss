@@ -26,7 +26,14 @@
                         }
                     }
                     .box-info {
-                        margin-top: 0;
+                        @include pc {
+                            .status-icon {
+                                margin-left: 6px;
+                                &:first-of-type {
+                                    margin-left: 0;
+                                }
+                            }
+                        }
                     }
                 }
             }

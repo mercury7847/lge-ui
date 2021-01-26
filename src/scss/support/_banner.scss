@@ -22,6 +22,15 @@
             white-space:nowrap;
         }
     }
+
+    &.toggle-banner {
+        display:none;
+
+        &.is-active {
+            display: block;
+        }
+    }
+
     @include mobile {
         margin:40px 0;
         .banner {
@@ -57,6 +66,9 @@
     &.gray {
         background:#f4f4f4;
     }
+    @include tablet {
+        padding:50px 0 80px;
+    }
     @include mobile {
         padding:32px 0 60px;
         border-top:12px solid #f4f4f4;
@@ -77,14 +89,20 @@
             background:#fff;
         }
     }
-
+    
     // 다른 서비스 리스트
+
+    &.service-menu {
+        display:none;
+    }
     .service-list-wrap {
         .service-list {
             margin:0 -12px;
-            @include clearfix;
+            font-size:0;
+            text-align: center;
+
             & > li {
-                float:left;
+                display:inline-block;
                 width:calc(100% / 6);
                 padding:0 12px;
                 a {
@@ -95,6 +113,9 @@
                         width:80px;
                         height:80px;
                         margin:0 auto 16px;
+                        background-repeat : no-repeat;
+                        background-position:0 0;
+                        background-size:100% 100%;
                     }
                 }
                 .tit {
@@ -103,12 +124,25 @@
                     font-weight:$font-weight-medium;
                     text-align:center;
                 }
+
+                &.service_type {
+                    &-chat a:before {background-image: url("/lg5-common/images/icons/icon_chat.svg");} 
+                    &-email a:before {background-image: url("/lg5-common/images/icons/icon_email-inquiry.svg");}
+                    &-tel a:before {background-image: url("/lg5-common/images/icons/icon_request-reservation.svg");}
+                    &-business a:before {background-image: url("/lg5-common/images/icons/icon_engineer-reservation.svg");}
+                    &-center a:before {background-image: url("/lg5-common/images/icons/icon_center-reservation.svg");}
+                    &-store a:before {background-image: url("/lg5-common/images/icons/icon_store-reservation.svg");}
+                }
+                
+                
             }
         }
         @include tablet {
             .service-list {
                 margin-top:-24px;
+                @include clearfix;
                 & > li {
+                    float:left;
                     padding-top:24px;
                     width:calc(100% / 3);
                 }
@@ -270,6 +304,9 @@
     }
 
     // 관련된 정보 리스트
+    &.related-info {
+        display:none;
+    }
     .info-slider {
         position:relative;
         .slide-controls {
@@ -306,22 +343,42 @@
         }
         .item {
             padding:0 12px;
+            
             &-inner {
                 display:block;
+                overflow:hidden;
+                border-radius:8px;
+                box-shadow:2px 3px 14px 0 rgba(0, 0, 0, 0.14);
+
                 .img {
-                    margin-bottom:16px;
+                    // margin-bottom:16px;
                     border-radius:8px;
                     img {
                         width:100%;
                     }
                 }
                 .txt {
+                    padding:16px 32px 40px;
                     @include font-large-1;
                     font-weight:$font-weight-bold;
                     @include textEllipsis;
+                    border-radius:0 0 8px 8px;
                 }
             }
         }
+        @include tablet { 
+            .item {
+                padding:0 12px;
+                
+                &-inner {
+                    .txt {
+                        padding:12px 15px 20px;
+                        @include font-small;
+                    }
+                }
+            }
+        }
+
         @include mobile {
             .slide-controls {
                 .prev, .next {
@@ -337,14 +394,17 @@
                 }
             }
             .item {
+                padding:0 8px;
                 &-inner {
+                    width:calc( 88.888vw);
                     border-radius:8px;
-                    box-shadow:1px 2px 8px 0 rgba(0, 0, 0, 0.07);
+                    box-shadow:1px 4px 7px 2px rgba(0,0,0,0.2);
                     .img {
                         border-radius:0;
                     }
                     .txt {
-                        padding:0 16px 24px;
+                        padding:16px 20px 24px;
+                        font-size:16px;
                     }
                 }
             }

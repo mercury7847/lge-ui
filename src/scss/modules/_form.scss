@@ -80,7 +80,7 @@
         @include font-small;
         @include mobile {
             //text-align:center;
-            font-weight:500;
+            // font-weight:500;
         }
         &::after {
             content:none;
@@ -106,9 +106,9 @@
         position:relative;
         margin-top:32px;
         font-size:0;
-        @include mobile {
-            margin-top:24px;
-        }
+        // @include mobile {
+        //     margin-top:32px;
+        // }
         &.wide {
             margin-top:48px;
             @include mobile {
@@ -277,9 +277,9 @@
                 vertical-align:top;
                 word-break: keep-all;
                 @include mobile {
-                    font-size:13px;
-                    line-height:21px;
-                    font-weight:500;
+                    font-size:14px;
+                    line-height:22px;
+                    font-weight:700;
                 }
             }
             .req {
@@ -1067,7 +1067,29 @@
             background-size:24px;
         }
     }
-
+    &.search {
+        position:relative;
+        input[type=text] {
+            padding-right:80px;
+        }
+        .btn-delete {
+            position:absolute;
+            top:50%;
+            right:54px;
+            width:20px;
+            height:20px;
+            margin-top:-10px;
+            background:url('/lg5-common/images/icons/icon-delete-20.svg') no-repeat 0 0;
+        }
+        .btn-search {
+            position:absolute;
+            top:0;
+            right:0;
+            width:54px;
+            height:48px;
+            background:center/20px 20px url(/lg5-common/images/icons/icon-search-20.svg) no-repeat;;
+        }
+    }
     &.error {
         .total {
             border-color:#f00;
@@ -1582,29 +1604,42 @@ $input: (chk, rdo);
         }
 
         &.btn-type {
+            &:first-child {
+                label {
+                    border-radius:8px 0 0 8px;
+                }
+            }
+            &:last-child {
+                label {
+                    border-radius:0 8px 8px 0;
+                }
+            }
             @if ( $type == rdo ) {
                 input {
                     &+label {
-                        min-width:68px;
+                        position:relative;
+                        min-width:82px;
+                        margin-left:-1px;
                         padding:11px 16px;
                         border:1px solid #ddd;
-                        border-radius:8px;
+                        // border-radius:8px;
                         background:#fff;
-                        color:#767676;
+                        color:#666;
                         @include font-small;
                         text-align:center;
                         font-weight:500;
                         &::before, &::after {
                             display:none;
-                        }
-                        @include mobile {
-                            font-size:14px;
-                            line-height:22px;
-                        }
+                        }                        
+                        // @include mobile {
+                        //     font-size:14px;
+                        //     line-height:22px;
+                        // }
                     }
                     &:checked+label {
-                        border-color:#EC455A;
-                        color:#EC455A;
+                        z-index:1;
+                        border-color:#da0f47;
+                        color:#da0f47;
                     }
                     &:disabled+label { // 임시. 디자인 나오면 변경 반영해야함.
                         background:#f4f4f4;
@@ -2126,7 +2161,7 @@ $input: (chk, rdo);
                 max-width:100%;
                 color:#000;
                 @include font-small;
-                font-weight:500;
+                // font-weight:500;
                 text-overflow:ellipsis;
                 white-space:nowrap;
                 word-break:break-all;

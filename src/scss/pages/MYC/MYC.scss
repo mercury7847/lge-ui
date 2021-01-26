@@ -69,9 +69,10 @@
                 padding:0 16px;
             }
             .filters {
-                margin:24px 0 48px;
+                margin:24px 0;
                 @include mobile {
-                    margin:24px 0 40px;
+                    // margin:24px 0 40px;
+                    margin:0;
                 }
                 &.type2 {
                     margin-top:0;
@@ -81,6 +82,11 @@
                 margin-top:80px;
                 @include mobile {
                     margin-top:32px;
+                }
+            }
+            .inquiry-list-notify {
+                @include mobile {
+                    padding-bottom:24px;
                 }
             }
         }
@@ -196,6 +202,8 @@
         .bullet-list {
             .b-tit {
                 color: $color-gray-1;
+                font-size:0;
+                line-height:0;
             }
         }
         .input-mix-wrap {

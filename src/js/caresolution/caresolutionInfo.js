@@ -11,8 +11,12 @@ var CareCartInfo = (function() {
         '{{#if availableMessage}}<p class="text-disabled"><span>{{availableMessage}}</span></p>{{/if}}</li>'
 
     var paymentItemTemplate = '<li><dl><dt class="text">{{text}}</dt><dd class="price {{appendClass}}">{{price}}</dd></dl></li>';
-    var totalPaymentItemTemplate = '<dt class="text">총 {{count}}건</dt><dd class="price">월 {{price}}원</dd>'
-    
+    var totalPaymentItemTemplate = '<dl><dt class="text">총 {{count}}건</dt>' +
+        '<dd class="price">' +
+            '<span class="total">월 {{price}}원</span>' +
+            '{{#if sale}}<span class="discount">월 {{sale}}원 할인</span>{{/if}}' +
+        '</dd>' +
+    '</dl>'
     /*
     function changeBlindLabelTextSiblingCheckedInput(input, trueText, falseText) {
         $(input).siblings('label').find('span').text($(input).is(':checked')?trueText:falseText);
@@ -21,6 +25,7 @@ var CareCartInfo = (function() {
 
     function CareCartInfo(targetQuery, itemInfoHiddenCheckTargetQuery) {
         var self = this;
+        self.selectedItemList = [];
         self._setting(targetQuery, itemInfoHiddenCheckTargetQuery);
         self._bindEvents();
         self._bindPopupEvents();
@@ -44,8 +49,8 @@ var CareCartInfo = (function() {
             var self = this;
             var resetPaymentData = {
                 "total":{
+                    "price":"0",
                     "count": "0",
-                    "price": "0"
                 },
                 "list":[
                     {
@@ -58,7 +63,8 @@ var CareCartInfo = (function() {
                         "price": "월 0원",
                         "appendClass": ""
                     }
-                ]
+                ],
+                "card":null
             }
             self.updatePaymentInfo(resetPaymentData);
             self.updateItemInfo(null);
@@ -78,6 +84,7 @@ var CareCartInfo = (function() {
                     infoData.push(find[0]);
                 }
             });
+            self.selectedItemList = infoData;
 
             //선택된 아이템들 정보
             var $list_ul = self.$itemInfo.find('ul.item-list');
@@ -107,15 +114,49 @@ var CareCartInfo = (function() {
 
             //요금정보
             var $list_ul = self.$paymentInfo.find('ul.payment-list');
-            $list_ul.empty();
+
+            var $cardInfo = self.$paymentInfo.find('li.payment-card');
+
+            $list_ul.find('>li').remove(':not(".payment-card")');
             if(priceData.length > 0) {
                 priceData.forEach(function(item, index) {
                     $list_ul.append(vcui.template(paymentItemTemplate, item));
                 });
             }
-            
+
+            var cardData = paymentInfo.card;
+            self.$paymentInfo.removeAttr('data-card-id');
+            self.$paymentInfo.removeAttr("data-card-sale");
+            if(cardData) {
+                //카드데이타
+                var selectList = $cardInfo.find('ul.select-list');
+                selectList.empty();
+                var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
+                var cardItemTemplate = '<li><a href="#{{cardId}}" data-card-sale="{{salePrice}}">{{title}}</a></li>';
+                cardData.forEach(function(obj, idx) {
+                    if(obj.groupTitle) {
+                        selectList.append(vcui.template(groupItemTemplate,obj));
+                    }
+                    if(obj.listItem) {
+                        obj.listItem.forEach(function(item, index) {
+                            selectList.append(vcui.template(cardItemTemplate, item));
+                        });
+                    }
+                });
+                $cardInfo.show();
+            } else {
+                $cardInfo.hide();
+            }
+            $list_ul.append($cardInfo);
+            //$list_ul.find('.ui_dropdown').vcDropdown();
+
             var totalData = paymentInfo.total;
+            self.$paymentInfo.removeAttr("data-total");
+            //아마도 따로 펑션을
             if(totalData) {
+                self.$paymentInfo.attr("data-total",JSON.stringify(totalData));
+                //self.calcTotalData();
+                /*
                 var count = totalData.count;
                 if(count > 0) {
                     self.$paymentButton.removeAttr('disabled');
@@ -124,7 +165,58 @@ var CareCartInfo = (function() {
                 }
 
                 totalData.count = totalData.count ? vcui.number.addComma(totalData.count) : '';
-                totalData.price = totalData.price ? vcui.number.addComma(totalData.price) : '';
+                var price = parseInt(totalData.total) - parseInt(totalData.sale);
+                totalData.price = vcui.number.addComma(price);
+
+                self.$paymentInfo.find('div.total-payment-amount dl').html(vcui.template(totalPaymentItemTemplate, totalData));
+                self.$paymentButton.text('총 '+totalData.count +'개 신청하기');
+                */
+            } else {
+                self.$paymentInfo.removeAttr("data-total");
+            }
+
+            //새로 그리기
+            if(cardData) {
+                var firstRow = $cardInfo.find('div.ui_dropdown_list li a:eq(0)');
+                if(firstRow.length > 0) {
+                    firstRow.trigger('click');
+                } else {
+                    var $dropDown = firstRow.parents('.ui_dropdown');
+                    $dropDown.find('a.ui_dropdown_toggle').text('');
+                }
+            } else {
+                self.calcTotalData();
+            }
+        },
+
+        calcTotalData: function() {
+            var self = this;
+            var jsonString = self.$paymentInfo.attr("data-total");
+            if(jsonString) {
+                var totalData = JSON.parse(jsonString);
+                var count = totalData.count;
+                if(count > 0) {
+                    self.$paymentButton.removeAttr('disabled');
+                } else {
+                    self.$paymentButton.attr('disabled',true);
+                }
+
+                totalData.count = totalData.count ? vcui.number.addComma(totalData.count) : '';
+                var price = parseInt(totalData.price) - (!(totalData.sale) ? 0 : parseInt(totalData.sale));
+
+                var cardSale =  self.$paymentInfo.attr("data-card-sale");
+                if(cardSale) {
+                    price = price - parseInt(cardSale);
+                    if(totalData.sale) {
+                        totalData.sale = parseInt(totalData.sale) + parseInt(cardSale);
+                    }
+                }
+                totalData.price = vcui.number.addComma(price);
+                if(totalData.sale) {
+                    totalData.sale = vcui.number.addComma(totalData.sale);
+                } else {
+                    totalData.sale = null;
+                }
 
                 self.$paymentInfo.find('div.total-payment-amount dl').html(vcui.template(totalPaymentItemTemplate, totalData));
                 self.$paymentButton.text('총 '+totalData.count +'개 신청하기');
@@ -194,11 +286,26 @@ var CareCartInfo = (function() {
                 self.$agreementAllCheck.prop('checked', !$itemCheck.is(':not(:checked)'));
             });
             */
+
+            //카드 할인 드롭다운 선택
+            self.$paymentInfo.on('click','li.payment-card div.ui_dropdown_list li a', function(e){
+                e.preventDefault();
+                var $this = $(this);
+                var _id = $this.attr('href').replace("#","");
+                var $dropDown = $this.parents('.ui_dropdown');
+                $dropDown.find('a.ui_dropdown_toggle').text($this.text());
+                self.$paymentInfo.attr('data-card-id',_id);
+                self.$paymentInfo.attr("data-card-sale",$this.attr('data-card-sale'));
+                $dropDown.vcDropdown("close");
+                self.calcTotalData();
+            });
     
             //청약하기버튼 클릭
+            /*
             self.$subscriptionButton.on('click', function(e) {
                 self._clickSubscriptionButton(this);
             });
+            */
 
             //신청하기버튼 클릭
             self.$paymentButton.on('click', function(e) {
@@ -312,12 +419,26 @@ var CareCartInfo = (function() {
             var self = this;
             var ajaxUrl = $(dm).attr('data-check-url');
 
+            //2021-01-25 수정
+            /*
             var $items = self.$itemInfo.find('li').not('.item-disabled');
-            var submit = []
+            var rtModelSeq = []
             $items.each(function(idx, item){
-                submit.push({"itemID":$(item).attr('data-item-id'),"itemSeq":$(item).attr('data-item-seq')});
+                rtModelSeq.push({"itemID":$(item).attr('data-item-id'),"itemSeq":$(item).attr('data-item-seq')});
             });
-            lgkorUI.requestAjaxData(ajaxUrl, {"submitData":JSON.stringify(submit)}, function(result){
+            */
+            var rtModelSeq = []
+            self.selectedItemList.forEach(function(item, index) {
+                rtModelSeq.push({"itemID":item.itemID,"itemSeq":item.itemSeq});
+            });
+
+            var postData = {"rtModelSeq":JSON.stringify(rtModelSeq)};
+            var cardId = self.$paymentInfo.attr('data-card-id');
+            if(cardId) {
+                postData["easyRequestCard"] = cardId;
+            }
+
+            lgkorUI.requestAjaxData(ajaxUrl, postData, function(result){
                 var alert = result.data.alert;
                 if(alert) {
                     self.openCartAlert(alert);
@@ -358,6 +479,15 @@ var CareCartInfo = (function() {
             $items.each(function(idx, item){
                 submit.push({"itemID":$(item).attr('data-item-id'),"itemSeq":$(item).attr('data-item-seq')});
             });
+
+            if(submit.length < 1) {
+                var rtModelSeq = []
+                self.selectedItemList.forEach(function(item, index) {
+                    rtModelSeq.push({"itemID":item.itemID,"itemSeq":item.itemSeq});
+                });
+                submit = rtModelSeq;
+            }
+
             lgkorUI.requestAjaxData(ajaxUrl, {"submitData":JSON.stringify(submit)}, function(result){
                 var alert = result.data.alert;
                 if(alert) {

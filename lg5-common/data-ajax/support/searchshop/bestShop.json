@@ -7,196 +7,282 @@
       {
          "shopID": 893,
          "shopName":"논현역점",
-         "shopTelphone":"02-517-7447",
-         "shopFax":"02-517-3993",
          "shopAdress":"서울특별시 강남구 논현동 50-3 스카이저축은행",
          "bizHours":{
             "week": "09:30~21:00",
-            "saturday": "09:30~21:00",
-            "sunday": "09:30~21:00"
+            "saturday": "09:30~21:00"
          },
          "gpsInfo":{
             "gpsx": "37.51152253100276",
             "gpsy": "127.02182060306917"
          },
-         "flagInfo":[
-               { 
-                  "flagName": "NEW",
-                  "flagClass": ""
-               },
-               {
-                  "flagName": "서비스센터",
-                  "flagClass": "green"
-               }
-            ],
          "bizStatus": {
             "bizStatusClass": "skyblue",
-            "bizStatusColor": "하늘색",
             "bizStatusText": "원할"
-         }
+         },
+         "serviceProduct": [
+            {
+               "name": "모바일",
+               "class": "opt-mobile"
+            },
+            {
+               "name": "IT/모니터",
+               "class": "opt-it-monitor"
+            },
+            {
+               "name": "소형가전",
+               "class": "opt-small-appliances"
+            },
+            {
+               "name": "소모품",
+               "class": "opt-expendables"
+            }
+         ]
       }, 
       {
          "shopID": 4125,
          "shopName":"강남본점",
-         "shopTelphone":"02-3448-5191",
-         "shopFax":"02-3448-5190",
          "shopAdress":"서울특별시 강남구 청담동 86-1 LG 청담빌딩",
          "bizHours":{
             "week": "10:30~20:30",
-            "saturday": "09:30~20:30",
-            "sunday": "09:30~21:00"
+            "saturday": "09:30~20:30"
          },
          "gpsInfo":{
             "gpsx": "37.5235644",
             "gpsy": "127.0395764"
          },
-         "flagInfo":[
-            { 
-               "flagName": "NEW",
-               "flagClass": ""
-            },
-            {
-               "flagName": "서비스센터",
-               "flagClass": "green"
-            }
-         ],
          "bizStatus":  {
             "bizStatusClass": "olive",
-            "bizStatusColor": "올리브색",
             "bizStatusText": "보통"
-         }
+         },
+         "serviceProduct": [
+            {
+               "name": "모바일",
+               "class": "opt-mobile"
+            },
+            {
+               "name": "IT/모니터",
+               "class": "opt-it-monitor"
+            },
+            {
+               "name": "소형가전",
+               "class": "opt-small-appliances"
+            },
+            {
+               "name": "소모품",
+               "class": "opt-expendables"
+            }
+         ]
       }, 
       {
          "shopID": 5647,
          "shopName":"신세계 강남점",
-         "shopTelphone":"02-3444-9057",
-         "shopFax":"02-3448-5190",
          "shopAdress":"서울특별시 강남구 압구정동 429",
          "bizHours":{
             "week": "10:30~20:30",
-            "saturday": "09:30~20:30",
-            "sunday": "09:30~21:00"
+            "saturday": "09:30~20:30"
          },
          "gpsInfo":{
             "gpsx": "37.527342",
             "gpsy": "127.027561"
          },
-         "flagInfo":[],
          "bizStatus": {
             "bizStatusClass": "red",
-            "bizStatusColor": "빨간색",
             "bizStatusText": "혼잡"
-         }
+         },
+         "serviceProduct": [
+            {
+               "name": "모바일",
+               "class": "opt-mobile"
+            },
+            {
+               "name": "IT/모니터",
+               "class": "opt-it-monitor"
+            },
+            {
+               "name": "소형가전",
+               "class": "opt-small-appliances"
+            },
+            {
+               "name": "소모품",
+               "class": "opt-expendables"
+            }
+         ]
       }, 
       {
          "shopID": 5637,
          "shopName":"현대 본점",
-         "shopTelphone":"02-3444-9057",
-         "shopFax":"02-3448-5190",
          "shopAdress":"서울특별시 강남구 압구정동 494",
          "bizHours":{
             "week": "10:30~20:30",
-            "saturday": "09:30~20:30",
-            "sunday": "09:30~21:00"
+            "saturday": "09:30~20:30"
          },
          "gpsInfo":{
             "gpsx": "37.528492",
             "gpsy": "127.039922"
          },
-         "flagInfo":[],
          "bizStatus": {
-            "bizStatusClass": "gray",
-            "bizStatusColor": "회색",
-            "bizStatusText": "근무 중"
-         }
+            "bizStatusClass": "",
+            "bizStatusText": "업무시작 전"
+         },
+         "serviceProduct": [
+            {
+               "name": "모바일",
+               "class": "opt-mobile"
+            },
+            {
+               "name": "IT/모니터",
+               "class": "opt-it-monitor"
+            },
+            {
+               "name": "소형가전",
+               "class": "opt-small-appliances"
+            },
+            {
+               "name": "소모품",
+               "class": "opt-expendables"
+            }
+         ]
       }, 
       {
          "shopID": 5622,
          "shopName":"서초점",
-         "shopTelphone":"02-3444-9057",
-         "shopFax":"02-3448-5190",
          "shopAdress":"서울특별시 서초구 반포동 19-3 센트럴시티",
          "bizHours":{
             "week": "10:30~20:30",
-            "saturday": "09:30~20:30",
-            "sunday": "09:30~21:00"
+            "saturday": "09:30~20:30"
          },
          "gpsInfo":{
             "gpsx": "37.5049608",
             "gpsy": "127.004237"
          },
-         "flagInfo":[],
          "bizStatus": {
-            "bizStatusClass": "skyblue",
-            "bizStatusColor": "하늘색",
-            "bizStatusText": "원할"
-         }
+            "bizStatusClass": "close",
+            "bizStatusText": "업무종료"
+         },
+         "serviceProduct": [
+            {
+               "name": "모바일",
+               "class": "opt-mobile"
+            },
+            {
+               "name": "IT/모니터",
+               "class": "opt-it-monitor"
+            },
+            {
+               "name": "소형가전",
+               "class": "opt-small-appliances"
+            },
+            {
+               "name": "소모품",
+               "class": "opt-expendables"
+            }
+         ]
       }, 
       {
          "shopID": 3065,
          "shopName":"반포점",
-         "shopTelphone":"02-3444-9057",
-         "shopFax":"02-3448-5190",
          "shopAdress":"서울특별시 서초구 잠원동 75-13 반포쇼핑타운",
          "bizHours":{
             "week": "10:30~20:30",
-            "saturday": "09:30~20:30",
-            "sunday": "09:30~21:00"
+            "saturday": "09:30~20:30"
          },
          "gpsInfo":{
             "gpsx": "37.5056944",
             "gpsy": "127.0023219"
          },
-         "flagInfo":[],
          "bizStatus": {
-            "bizStatusClass": "skyblue",
-            "bizStatusColor": "하늘색",
-            "bizStatusText": "원할"
-         }
+            "bizStatusClass": "",
+            "bizStatusText": "휴무"
+         },
+         "serviceProduct": [
+            {
+               "name": "모바일",
+               "class": "opt-mobile"
+            },
+            {
+               "name": "IT/모니터",
+               "class": "opt-it-monitor"
+            },
+            {
+               "name": "소형가전",
+               "class": "opt-small-appliances"
+            },
+            {
+               "name": "소모품",
+               "class": "opt-expendables"
+            }
+         ]
       }, 
       {
          "shopID": 3470,
          "shopName":"서초점",
-         "shopTelphone":"02-3444-9057",
-         "shopFax":"02-3448-5190",
          "shopAdress":"서울특별시 서초구 서초동 1342-4 LG전자대리점",
          "bizHours":{
             "week": "10:30~20:30",
-            "saturday": "09:30~20:30",
-            "sunday": "09:30~21:00"
+            "saturday": "09:30~20:30"
          },
          "gpsInfo":{
             "gpsx": "37.4881898",
             "gpsy": "127.028056"
          },
-         "flagInfo":[],
          "bizStatus": {
-            "bizStatusClass": "skyblue",
-            "bizStatusColor": "하늘색",
-            "bizStatusText": "원할"
-         }
+            "bizStatusClass": "",
+            "bizStatusText": "근무 중"
+         },
+         "serviceProduct": [
+            {
+               "name": "모바일",
+               "class": "opt-mobile"
+            },
+            {
+               "name": "IT/모니터",
+               "class": "opt-it-monitor"
+            },
+            {
+               "name": "소형가전",
+               "class": "opt-small-appliances"
+            },
+            {
+               "name": "소모품",
+               "class": "opt-expendables"
+            }
+         ]
       }, 
       {
-         "shopID": 3470,
+         "shopID": 3471,
          "shopName":"롯데 강남점",
-         "shopTelphone":"02-3444-9057",
-         "shopFax":"02-3448-5190",
          "shopAdress":"서울특별시 강남구 대치동 937",
          "bizHours":{
             "week": "10:30~20:30",
-            "saturday": "09:30~20:30",
-            "sunday": "09:30~21:00"
+            "saturday": "09:30~20:30"
          },
          "gpsInfo":{
             "gpsx": "37.496993",
             "gpsy": "127.053162"
          },
-         "flagInfo":[],
          "bizStatus": {
             "bizStatusClass": "skyblue",
-            "bizStatusColor": "하늘색",
             "bizStatusText": "원할"
-         }
+         },
+         "serviceProduct": [
+            {
+               "name": "모바일",
+               "class": "opt-mobile"
+            },
+            {
+               "name": "IT/모니터",
+               "class": "opt-it-monitor"
+            },
+            {
+               "name": "소형가전",
+               "class": "opt-small-appliances"
+            },
+            {
+               "name": "소모품",
+               "class": "opt-expendables"
+            }
+         ]
       }
    ]
 }

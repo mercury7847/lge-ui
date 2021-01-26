@@ -9,6 +9,8 @@
     <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
     <!-- <script src="/lg5-common/js/common-ui.js"></script> -->
     <script>
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
         var beforeFocusEle = "";
         var optModal = {
             open: function(id, role, txt, confirm, cancel){
@@ -171,6 +173,7 @@
                 }
             });
         }
+
         $(document).ready(function(){
             //로그아웃
             $("#btn-opt-logout").on({
@@ -235,6 +238,9 @@
             var month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
             var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
             var today = month + "/" + day + "/" + fullYear + " ";
+
+            //iOS는 blur
+            //Android는 변경 시 change, 변경 안했을 시는 click
             $(".time-setting input").on({
                 click : function(){
                     var value = $(this).val();
@@ -248,11 +254,19 @@
                 focusout: function(){
                     $(this).closest("div").find("[class*=rst-time]").removeClass("focus");
                 },
-                /*change : function(){*/
-                input : function(){
+                change : function(){
                     var value = $(this).val();
                     $(this).closest("div").find("[class*=rst-time]").text(value);
 
+                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        //console.log("iphone");
+                    }else{
+                        //$(this).trigger("blur");
+                        $(this).closest("div").attr("tabindex", 0).focus();
+                    }
+                },
+                blur: function(){
+                    //console.log("iphone");
                     var startDate = $(".t-start");
                     var endDate = $(".t-end");
                     var startDateVal = startDate.val();
@@ -268,13 +282,51 @@
                                 $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
                                 $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
                                 optModal.close();
-                                $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
+                                //$(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
                             }
                         });
                         return false;
                     }else{
                         toastMessage.init("에티켓 시간이 설정되었습니다.");
                     }
+
+                    /*
+                    $.ajax({
+                        method : "GET",
+                        url : "./options.html",
+                        cache: false,
+                        success: function(data, status, j){
+                            console.log("success");
+                            console.log(j.readyState);
+                        },
+                        error: function(j, status, err){
+                            console.log("error");
+                        }
+                    }).done(function(){
+                        var startDate = $(".t-start");
+                        var endDate = $(".t-end");
+                        var startDateVal = startDate.val();
+                        var endDateVal = endDate.val();
+
+                        var idx = $(this).closest("div").index();
+
+                        if(Date.parse(today + startDateVal) == Date.parse(today + endDateVal)){
+                            //optModal.open("#modalTimeset");
+                            optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
+                            $("#modalTimeset .btn-modal-confirm").on({
+                                click : function(){
+                                    $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
+                                    $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
+                                    optModal.close();
+                                    //$(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
+                                }
+                            });
+                            return false;
+                        }else{
+                            toastMessage.init("에티켓 시간이 설정되었습니다.");
+                        }
+                    });
+                    */
                 }
             });
 
@@ -373,6 +425,10 @@
             });
         });
     </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WL297VL');</script>
+    <!-- End Google Tag Manager -->
 </head>
 <body>
     <button type="button" class="btn-opt-login" id="btn-opt-open"><span>옵션 열기</span></button>
@@ -556,5 +612,9 @@
         </div>
         <!-- //오픈소스 라이선스 -->
     </div>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 </body>
 </html>

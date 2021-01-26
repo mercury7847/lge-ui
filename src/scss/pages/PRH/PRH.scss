@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 @import "../../utilities/variables";
+@import "../../layout/grid";
 @import "../../utilities/mixins";
 
 .pc-only {
@@ -129,6 +130,9 @@
                     content: '';
                 }
             }
+            @include mobile {
+                margin-left: 20px;
+            }
         }
     }
     .tab-contents {
@@ -139,7 +143,16 @@
             @include mobile {
                 max-width: 100%;
                 padding: 0 16px;
+                .gray-box {
+                    margin: 0 -16px;
+                    padding: 40px 16px;
+                }
             }
+
+        }
+        .gray-box {
+            padding: 48px 64px;
+            background-color: $color-bg;
         }
     }
 
@@ -161,10 +174,36 @@
             transform: translateY(0);
         }
     }
+
+    .content-title {
+        margin: 80px 0 48px;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 52px;
+        text-align: center;
+        @include mobile {
+            margin: 60px 0 40px;
+            font-size: 24px;
+            line-height: 33px;
+        }
+        & + .signature-section {
+            margin-top: 0;
+        }
+    }
+
+    .btn.border {
+        &:hover,
+        &:focus,
+        &:active {
+            border-color: inherit;
+            background-image: none;
+            color: inherit;
+        }
+    }
 }
 
 // LG ThinQ
 @import "MKTF1110";
 
 // LG SIGNATURE
-//@import "MKTF1111";
+@import "MKTF1111";

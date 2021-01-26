@@ -141,23 +141,41 @@
                 self.$pagination = self.$wrap.find('.pagination');
                 self.$orderBy = self.$wrap.find('#orderBy');
 
-                self.param = {};
-                self.param['keyword'] = '';
-                self.param['topic'] = 'All';
-                self.param['topicNm'] = 'All';
-                self.param['subTopic'] = 'All';
-                self.param['subTopicNm'] = 'All';
-                self.param['orderBy'] = $('#orderBy').val();
-                self.param['page'] = 1;
                 self.solutionsUrl = self.$wrap.data('solutionsUrl');
+                var test = location.search.substr(location.search.indexOf("?") + 1);
+                test = test.split("&");
+                var qqqq = {};
+                for (var i = 0; i < test.length; i++) {
+                    temp = test[i].split("=");
+                    qqqq[temp[0]] = temp[1] ? temp[1] : '';
+                }
 
+                self.keywords = [];
+                self.param = {};
+                self.param['keywords'] = [];
+                self.param['topic'] = 'All';
+                self.param['topicNm'] = qqqq.topicNm || 'All';
+                self.param['subTopic'] = 'All';
+                self.param['subTopicNm'] = qqqq.subTopicNm || 'All';
+                self.param['orderBy'] = qqqq.sort || $('#orderBy').val();
+                self.param['page'] = qqqq.page || 1;
+                self.param['research'] = false;
+
+                self.bindEvent();
+                console.log(qqqq);
                 self.$pagination.pagination();
                 $('.ui_search').search();
                 self.$cont.commonModel({
-                    register: {}
-                });
-
-                self.bindEvent();                
+                    register: {},
+                    selected: {
+                        category: qqqq.cateCode,
+                        categoryName: '',
+                        subCategory: '',
+                        subCategoryName: '',
+                        modelCode: qqqq.modelCode,
+                        productCode: ''
+                    }
+                });                
             },
             setRecommProduct: function(data){
                 var $productslider = $('.product-slider');
@@ -300,7 +318,7 @@
             reset: function() {
                 var self = this;
 
-                self.param['keyword'] = '';
+                self.param['keywords'] = [];
                 self.param['topic'] = 'All';
                 self.param['topicNm'] = 'All';
                 self.param['subTopic'] = 'All';
@@ -337,7 +355,7 @@
                     self.reset();
                 });
 
-                self.$cont.on('complete', function(e, data, url) { 
+                self.$cont.on('complete', function(e, data, url, auto) { 
                     var param = {
                         modelCode: data.modelCode,
                         category: data.category,
@@ -349,13 +367,15 @@
                     self.param = $.extend(self.param, param); 
 
                     lgkorUI.showLoading();
-                    lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    lgkorUI.requestAjaxDataPost(url, self.param, function(result) {
                         var resultData = result.data;
     
-                        self.$cont.commonModel('updateSummary', {
-                            product: [data.categoryName, data.subCategoryName, data.modelCode],
-                            reset: 'product'
-                        });
+                        if (!auto) {
+                            self.$cont.commonModel('updateSummary', {
+                                product: [data.categoryName, data.subCategoryName, data.modelCode],
+                                reset: 'product'
+                            });
+                        }
 
                         self.setRecommProduct(resultData);
                         self.setServiceMenu(resultData);
@@ -475,6 +495,11 @@
                     }
                 });
 
+                self.$wrap.find('#research').on('change', function() {
+                    self.param.research = self.$wrap.find('#research').is(':checked');
+                    self.keywords = [];
+                });
+
                 // keyword search
                 self.$searchBtn.on('click', function(e, keyword) {
                     var value = keyword || self.$keyword.val(),
@@ -489,9 +514,16 @@
                         param['topicNm'] = 'All';
                         param['subTopic'] = 'All';
                         param['subTopicNm'] = 'All';
+                        self.keywords = [];
+                        self.keywords.push(value);
+                    } else {
+                        if (self.keywords.indexOf(value) != -1) {
+                            self.keywords.splice(self.keywords.indexOf(value), 1);
+                        }
+                        self.keywords.unshift(value);
                     }
 
-                    param['keyword'] = value;
+                    param['keywords'] = self.keywords;
 
                     self.param = $.extend(self.param, param);
 

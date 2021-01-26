@@ -246,7 +246,7 @@
         }
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
             console.log("result.data.success:", result.data.success)
-            if(lgkorUI.stringToBool(result.data.success, true)){
+            if(lgkorUI.stringToBool(result.data.success)){
                 console.log("result.data.listData:", result.data.listData)
                 if(result.data.listData && result.data.listData.length){
                     CURRENT_PAGE = result.param.pagination.page;

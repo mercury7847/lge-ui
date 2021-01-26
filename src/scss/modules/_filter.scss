@@ -602,21 +602,21 @@
 
 // term-filter
 .term-filter {
-    padding:24px 48px;
+    padding:24px 0;
     border-radius:8px;
-    background:#f4f4f4;
+    // background:#f4f4f4;
     @include mobile {
-        padding:24px 16px 32px;
+        padding:40px 0;
     }
     .inner {
         @include clearfix;
         .filter-tit {
-            float:left;
-            width:14%;
+            // float:left;
+            // width:14%;
             color:#000;
             @include font-medium;
             font-weight:700;
-            line-height:48px;
+            line-height:26px;
             @include mobile {
                 float:none;
                 width:100%;
@@ -624,11 +624,14 @@
             }
         }
         .filter-tbl {
-            float:left;
+            // float:left;
             display:table;
-            width:86%;
+            width:100%;
+            margin-top:16px;
+            // width:86%;
             .cell {
                 display:table-cell;
+                width:14%;
                 vertical-align:top;
             }
             .rdo-cell {
@@ -637,10 +640,10 @@
                 font-size:0;
                 white-space:nowrap;
                 .rdo-wrap {
-                    margin-left:8px;
-                    &:first-child {
-                        margin-left:0;
-                    }
+                    // margin-left:8px;
+                    // &:first-child {
+                    //     margin-left:0;
+                    // }
                 }
             }
             @media screen and (max-width: $desktop-s-width) {
@@ -660,12 +663,15 @@
             @include mobile {
                 width:100%;
                 .cell {
-                    margin-top:6px;
+                    width:auto;
+                    margin-top:12px;
                 }
                 .rdo-cell {
+                    margin:0 -5px 0 2px;
                     .rdo-wrap {
-                        width:calc((100% - 18px) / 4);
-                        margin-left:6px;
+                        width:calc(100% / 4);
+                        margin-left:-1px;
+                        // margin-left:6px;
                         input + label {
                             width:100%;
                         }

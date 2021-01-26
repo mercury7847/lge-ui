@@ -2,7 +2,7 @@
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';
     var recentItemTemplate = '<li><span class="box"><a href="#{{text}}">{{text}}</a><button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button></span></li>';
     var relatedItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
-    var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
+    //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
     var productItemTemplate = '<li><div class="item">' +
         '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI._addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
@@ -118,9 +118,22 @@
                     self.updateRecentSearchList();
                     self.bindEvents();
 
+                    self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
+                        self.requestSearch(data);
+                    });
+                    /*
                     self.filterSetting();
                     self.filterBindEvents();
-                    
+                    */
+                    //필터의 검색내 검색 버튼
+                    self.$layFilter.find('div.search-inner button').on('click',function(e){
+                        var $input = $(this).siblings('input');
+                        var searchIn = $input.val();
+                        var $target = self.$searchResult.find('div.search-inner input');                    
+                        $target.attr('data-searchvalue', searchIn);
+                        self.requestSearch(self.filterLayer.getDataFromFilter());
+                    });
+
                     //입력된 검색어가 있으면 선택된 카테고리로 값 조회
                     var value = self.$contentsSearch.attr('data-search-value');
                     value = !value ? null : value.trim(); 
@@ -543,8 +556,12 @@
 
                     //필터세팅
                     if(!filterSearch) {
+                        //jsw
+                        /*
                         self.setFilter();
                         self.updateFilter(data.filterList);
+                        */
+                        self.filterLayer.updateFilter(data.filterList);
                     }
 
                     //리스트 세팅
@@ -680,7 +697,7 @@
             ///필터 관련 메쏘드
 
             //필터 세팅
-            setFilter:function(data) {
+            setFilter:function() {
                 var self = this;
                 self.$contWrap.addClass('w-filter');
                 self.$layFilter.css('display', '');

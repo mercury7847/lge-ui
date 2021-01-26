@@ -181,6 +181,33 @@
             </div>
         </div>
         }
+        @@if (context.doubleButton) {
+        <div class="product-bottom">
+            @@if (context.doubleButton.price) {
+            <div class="price-area">
+                @@if (context.doubleButton.originalPrice) {
+                <div class="original">
+                    <em class="blind">판매가격</em>
+                    <span class="price">5,200,000<em>원</em></span>
+                </div>
+                }
+                <div class="total">
+                    <em class="blind">총 판매가격</em>
+                    <span class="price">4,420,000<em>원</em></span>
+                </div>
+            </div>
+            }
+            <!-- 20210126 장바구니 버튼 분리 -->
+            <div class="product-button double">
+                @@if(context.doubleButton.button) {
+                    @@for ( var i=0; i < doubleButton.button.length; i++ ) {
+                    <a href="#n" class="btn border">`+doubleButton.button[i]+`</a>
+                    }
+                }
+            </div>
+            <!-- // 장바구니 버튼 분리 -->
+        </div>
+        }
         @@if (context.bottom) {
         <div class="product-bottom">
             @@if (context.bottom.benefit) {

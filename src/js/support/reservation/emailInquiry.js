@@ -44,6 +44,7 @@
                         errorMsg: '개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다.'
                     },
                     subsection: {
+                        required: true,
                         msgTarget: '.type-msg',
                         errorMsg: '정확한 제품증상을 선택해주세요.'
                     },
@@ -71,8 +72,20 @@
                     },
                 }
 
+                self.bindEvent();
+
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
-                self.$cont.commonModel({register: register, isDefault: self.isDefault});
+                self.$cont.commonModel({
+                    register: register,
+                    selected: {
+                        category: self.$cont.find('#category').val(),
+                        categoryName: self.$cont.find('#categoryNm').val(),
+                        subCategory: self.$cont.find('#subCategory').val(),
+                        subCategoryName: self.$cont.find('#subCategoryNm').val(),
+                        modelCode: self.$cont.find('#modelCode').val(),
+                        productCode: self.$cont.find('#productCode').val()
+                    }
+                });
 
                 self.$cont.find('.ui_imageinput').vcImageFileInput({
                     totalSize: '10485760',
@@ -82,18 +95,12 @@
                         size: '첨부파일 전체 용량은 10MB 이내로 등록 가능합니다.'
                     }
                 });
-
-                self.bindEvent();
-
-                if (self.isDefault && !self.$stepTerms.length) {
-                    self.$cont.commonModel('complete');
-                }
             });
         },
         selectModel: function(data, url) {
             var self = this;
 
-            if (data.isRequest) {
+            if (url) {
                 self.loadInquiry(data, url);
             } else {
                 self.$inquiryBox.hide();
@@ -137,6 +144,7 @@
             };
 
             self.$myModelArea.hide();
+            self.$selectedModelBar.show();
             self.$completeBtns.show();
 
             self.$cont.commonModel('updateSummary', summaryOpt);
@@ -174,7 +182,7 @@
             self.$rcptNoBox.hide();
             self.$inquiryBox.hide();
             self.$inquiryList.empty();
-            self.$myModelArea.show();
+            // self.$myModelArea.show();
 
             self.$stepInput.find('[name=subsection]').prop('checked', false);
             self.$stepInput.find('[name=record]').eq(0).prop('checked', true);

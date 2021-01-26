@@ -19,7 +19,10 @@
 	.usp-banner-wrap {
 		position:relative;
 		@include mobile {
-			padding-bottom:40px;
+            padding-bottom:40px;
+            &.usp-btm {
+                padding-bottom:0;
+            }
 		}
 
 		// Indicator Area

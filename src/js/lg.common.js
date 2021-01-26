@@ -53,7 +53,6 @@
                             'ui/inputClearButton',
                             "ui/starRating",
                             "ui/tooltipTarget",
-                            "ui/toast",
                             "ui/sticky",
                             "ui/formatter",
                             "ui/scrollNavi",
@@ -85,8 +84,6 @@
             this.find('.ui_scroll_navi').vcScrollNavi();
 
             this.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
-
-            this.find('.toast-message').vcToast();
 
             this.find('.ui_sticky').vcSticky();
 
@@ -478,6 +475,10 @@
             
                     window.open(target, '_blank', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + intLeft + ',top=' + intTop + ',history=no,resizable=no,status=no,scrollbars=yes,menubar=no');
                 });
+                
+                $('.toast-message').remove();
+                $('body').append('<div class="toast-message"></div>');
+                $('.toast-message').vcToast();
             });
 
             self.loadKakaoSdkForShare();
@@ -944,7 +945,11 @@
                     if(callback && typeof callback === 'function') callback(result); 
                 } else {
                     var data = result.data;
-                    if(!self.stringToBool(data.success, true) && data.alert) {
+                    //success가 비어 있으면 성공(Y) 라 친다
+                    if(!data.success && !(typeof(data.success) === "boolean")) {
+                        data.success = "Y";
+                    }
+                    if(!self.stringToBool(data.success) && data.alert) {
                         //에러
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
@@ -996,7 +1001,11 @@
                     if(callback && typeof callback === 'function') callback(result); 
                 } else {
                     var data = result.data;
-                    if(!self.stringToBool(data.success, true) && data.alert) {
+                    //success가 비어 있으면 성공(Y) 라 친다
+                    if(!data.success && !(typeof(data.success) === "boolean")) {
+                        data.success = "Y";
+                    }
+                    if(!self.stringToBool(data.success) && data.alert) {
                         //에러
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
@@ -1112,9 +1121,10 @@
             return str;
         },
 
-        getHiddenInputData: function(iptname, wrapname){
+        getHiddenInputData: function(iptname, wrapname, index){
             var hiddenWrapName = wrapname || "hidden-input-group";
-            var hiddenWrap = $('.' + hiddenWrapName).eq(0);
+            var hiddenIndex = index || "0";
+            var hiddenWrap = $('.' + hiddenWrapName).eq(hiddenIndex);
             var data, str, name;
 
             if(iptname){
@@ -1140,12 +1150,13 @@
             }
         },
 
-        setHiddenInputData: function(iptname, value, wrapname){
+        setHiddenInputData: function(iptname, value, wrapname, index){
             if(!iptname) return false;
 
             var hiddenWrapName = wrapname || "hidden-input-group";
-            var hiddenWrap = $('.' + hiddenWrapName).eq(0);
-            var str, name, val;
+            var hiddenIndex = index || "0";
+            var hiddenWrap = $('.' + hiddenWrapName).eq(hiddenIndex);
+            var str, val;
 
             if(typeof iptname === "object"){
                 for(str in iptname){

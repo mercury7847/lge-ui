@@ -26,30 +26,28 @@
     '</li>' +
     '{{/each}}';
     var engineerTmpl =
-        '{{#each (item, index) in engineerList}}' +
-        '<div class="slide-conts ui_carousel_slide">' +
-            '<div class="engineer-box">' +
-                '{{# if (index == 0) { #}}' +
-                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}" checked>' +
-                '{{# } else { #}}' +
-                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}">' +
-                '{{# } #}}' +
-                '<label for="engineer{{index}}">' +
-                    '<div class="img">' +
-                        '<img src="{{item.image}}" alt="" aria-hidden="true">' +
-                    '</div>' +
-                    '<p class="tit">{{item.engineerName}}</p>' +
-                    '<p class="desc">{{item.centerName}}</p>' +
-                '</label>' +
-            '</div>' +  
-        '</div>' +
-        '{{/each}}';
-
-    var dateUtil = vcui.date;
-
+    '{{#each (item, index) in engineerList}}' +
+    '<div class="slide-conts ui_carousel_slide">' +
+        '<div class="engineer-box">' +
+            '{{# if (index == 0) { #}}' +
+            '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}" checked>' +
+            '{{# } else { #}}' +
+            '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}">' +
+            '{{# } #}}' +
+            '<label for="engineer{{index}}">' +
+                '<div class="img">' +
+                    '<img src="{{item.image}}" alt="" aria-hidden="true">' +
+                '</div>' +
+                '<p class="tit">{{item.engineerName}}</p>' +
+                '<p class="desc">{{item.centerName}}</p>' +
+            '</label>' +
+        '</div>' +  
+    '</div>' +
+    '{{/each}}';
     var validation;
-    var addressFinder;
     var authManager;
+    var addressFinder;
+    var dateUtil = vcui.date;
 
     var reservation = {
         init: function() {
@@ -93,93 +91,103 @@
             self.$authPopup = $('#certificationPopup');
 
             self.autoFlag = false;
-            self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : 'N';
+            self.isLogin = lgkorUI.isLogin;
 
-            vcui.require(['ui/validation', 'ui/formatter'], function () {
-                var register = {
-                    topic: {
-                        required: true,
-                        msgTarget: '.topic-msg'
-                    },
-                    subTopic: {
-                        required: true,
-                        msgTarget: '.sub-topic-msg'
-                    },
-                    bdType: {
-                        required: true,
-                        msgTarget: '.bd-type-msg'
-                    },
-                    fan: {
-                        required: true,
-                        msgTarget: '.fan-msg'
-                    },
-                    addFan: {
-                        required: true,
-                        msgTarget: '.add-fan-msg'
-                    },
-                    installType: {
-                        required: true,
-                        msgTarget: '.install-type-msg'
-                    },
-                    tvPosition: {
-                        required: true,
-                        msgTarget: '.tv-position-msg'
-                    },
-                    userNm: {
-                        msgTarget: '.err-block' 
-                    },
-                    phoneNo: {
-                        msgTarget: '.err-block'
-                    },
-                    zipCode: {
-                        msgTarget: '.address-err-msg'
-                    },
-                    userAddress: {
-                        msgTarget: '.address-err-msg'
-                    },
-                    detailAddress: {
-                        msgTarget: '.address-err-msg'
-                    },
-                    date: {
-                        msgTarget: '.err-msg'
-                    },
-                    time: {
-                        msgTarget: '.err-msg'
-                    }
+            var register = {
+                topic: {
+                    required: true,
+                    msgTarget: '.topic-msg',
+                    errorMsg: '정확한 제품증상을 선택해주세요.'
+                },
+                subTopic: {
+                    required: true,
+                    msgTarget: '.sub-topic-msg',
+                    errorMsg: '정확한 세부증상을 선택해주세요.'
+                },
+                bdType: {
+                    required: true,
+                    msgTarget: '.bd-type-msg'
+                },
+                fan: {
+                    required: true,
+                    msgTarget: '.fan-msg'
+                },
+                addFan: {
+                    required: true,
+                    msgTarget: '.add-fan-msg'
+                },
+                installType: {
+                    required: true,
+                    msgTarget: '.install-type-msg'
+                },
+                tvPosition: {
+                    required: true,
+                    msgTarget: '.tv-position-msg'
+                },
+                userNm: {
+                    required: true,
+                    msgTarget: '.err-block' 
+                },
+                phoneNo: {
+                    required: true,
+                    msgTarget: '.err-block'
+                },
+                zipCode: {
+                    required: true,
+                    msgTarget: '.address-err-msg'
+                },
+                userAddress: {
+                    required: true,
+                    msgTarget: '.address-err-msg'
+                },
+                detailAddress: {
+                    required: true,
+                    msgTarget: '.address-err-msg'
+                },
+                date: {
+                    required: true,
+                    msgTarget: '.err-msg'
+                },
+                time: {
+                    required: true,
+                    msgTarget: '.err-msg'
                 }
-
-                var authRegister = {
+            }
+            var authOptions = {
+                elem: {
+                    popup: '#certificationPopup',
+                    name: '#authName',
+                    phone: '#authPhoneNo',
+                    number: '#authNo'
+                },
+                register: {
                     authName: {
+                        required: true,
+                        msgTarget: '.err-block',
                         pattern: /^[가-힣a-zA-Z]+$/,
-                        msgTarget: '.err-block'
+                        errorMsg: '이름을 입력해주세요.',
+                        patternMsg: '한글 또는 영문만 입력 가능합니다.'
                     },
                     authPhoneNo: {
-                        pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                        msgTarget: '.err-block'
+                        required: true,
+                        msgTarget: '.err-block',
+                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                        errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
                     },
                     authNo:{
+                        required: true,
                         msgTarget: '.err-block'
                     }
-                };
-
+                }
+            };
+            vcui.require(['ui/validation'], function () {
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
                 addressFinder = new AddressFind();
 
-                if (self.isLogin != 'Y') {
-                    authManager = new AuthManager({
-                        elem: {
-                            popup: '#certificationPopup',
-                            name: '#authName',
-                            phone: '#authPhoneNo',
-                            number: '#authNo'
-                        },
-                        register: authRegister
-                    });
-                }
+                if (!self.isLogin) authManager = new AuthManager(authOptions);
 
-                var route = lgkorUI.isMobile() ? 'WWW2' : 'WWWW1';
-
-                $('#route').val(route);
+                $('#route').val(lgkorUI.isMobile() ? 'WWW2' : 'WWWW1');
 
                 self.$engineerSlider.vcCarousel({
                     slidesToShow: 4,
@@ -209,19 +217,27 @@
                     ]
                 });
 
+                self.bindEvent();
+
                 self.$cont.commonModel({
-                    register: register
+                    register: register,
+                    selected: {
+                        category: self.$cont.find('#category').val(),
+                        categoryName: self.$cont.find('#categoryNm').val(),
+                        subCategory: self.$cont.find('#subCategory').val(),
+                        subCategoryName: self.$cont.find('#subCategoryNm').val(),
+                        modelCode: self.$cont.find('#modelCode').val(),
+                        productCode: self.$cont.find('#productCode').val()
+                    }
                 });
 
-                $('.date-wrap').calendar({
+                self.$dateWrap.calendar({
                     inputTarget: '#date'
                 });
 
-                $('.time-wrap').timeCalendar({
+                self.$timeWrap.timeCalendar({
                     inputTarget: '#time'
                 });
-
-                self.bindEvent();
             });
         },
         setTopicList: function(data) {
@@ -252,11 +268,9 @@
                 var data = result.data;
                 
                 if (data.resultFlag == 'Y') {
-                    if (data.solutionFlag) {
-                        self.$solutionsBanner.show();
-                    } else {
-                        self.$solutionsBanner.hide();
-                    }
+                    self.$solutionsBanner.show();
+                } else {
+                    self.$solutionsBanner.hide();
                 }
             });
         },
@@ -732,7 +746,7 @@
                 var result = validation.validate();
 
                 if (result.success == true) {    
-                    if (self.isLogin == 'Y') {
+                    if (self.isLogin) {
                         lgkorUI.confirm('', {
                             title:'예약 하시겠습니까?',
                             okBtnName: '확인',
