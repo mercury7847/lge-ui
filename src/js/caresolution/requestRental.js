@@ -3,6 +3,7 @@
     var INSTALL_ABLED_URL;
     var CARD_ABLED_URL;
     var ARS_AGREE_URL;
+    var REQUEST_SUBMIT_URL;
 
     var requestAgreeChecker;
     var requestButton;
@@ -49,6 +50,7 @@
         INSTALL_ABLED_URL = $('.requestRentalForm').data('installAbledUrl');
         CARD_ABLED_URL = $('.requestRentalForm').data('cardAbledUrl');
         ARS_AGREE_URL = $('.requestRentalForm').data('arsAgreeUrl');
+        REQUEST_SUBMIT_URL = $('.requestRentalForm').data('submitUrl');
 
         step1Block = $('.requestRentalForm ul li:nth-child(1)');
         step2Block = $('.requestRentalForm ul li:nth-child(2)');
@@ -517,31 +519,44 @@
 
     //납부 정보 입력 밸리데이션...
     function setStep3Validation(){
+        console.log("step3 validation start!!");
         var cardApply, chk, value, paymethod, result;
         cardApply = step3Block.find('input[name=cardApplication]:checked').val();
         if(cardApply == "Y"){
             chk = step3Block.find('input[name=cardApplyaAgree]').prop('checked');
             if(!chk){
+                console.log("fail!!! : 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의가 필요합니다." );
                 $(window).trigger("toastshow", "제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의가 필요합니다.");
                 return false;
             } 
 
             value = step3Block.find('select[name=associatedCard] option:selected').val();
             if(value == ""){
+                console.log("fail!!! : 신용카드의 카드사를 선택해주세요." );
                 $(window).trigger("toastshow", "신용카드의 카드사를 선택해주세요.");
                 return false;
             }
         }
 
         paymethod = step3Block.find('.new-type > ul > li.on').index();
-        result = paymethod ? cardValidation.validate() : bankValidation.validate();
-        if(result.success != "Y") return false;
+        console.log("paymethod:",paymethod)
+        result = paymethod ? bankValidation.validate() : cardValidation.validate();
+        if(!result.success){
+            console.log("fail!!! paymethod:",result);
+            return false;
+        }
 
         chk = getInputData('arsAgree');
-        if(!chk !== "Y") return false;
+        if(chk !== "Y"){
+            console.log("fail!!! : arsAgree");
+            return false;
+        }
 
         chk = step3Block.find('input[name=selfClearingAgree]').prop('checked');
-        if(!chk) return false;
+        if(!chk){
+            console.log("fail!!! : selfClearingAgree");
+            return false;
+        }
         
         console.log("step3Validation.validate(); Success!!!");
         
@@ -805,6 +820,8 @@
             item.find('input[name=zipCode]').val(data.zipCode);
             item.find('input[name=userAddress]').val(data.userAddress);
             item.find('input[name=detailAddress]').val(data.detailAddress);
+
+            $('.err-address').hide();
         });
     }
 
@@ -906,7 +923,56 @@
        }
 
         var agreechk = requestAgreeChecker.getAllChecked();
-        console.log(agreechk)
+        if(!agreechk){
+            lgkorUI.alert("", {
+                title:'케어솔루션 청약신청<br>고객동의를 해주세요.'
+            });
+            return;
+        }
+        console.log("requestAgreeChecker:", agreechk)
+
+        var step1Value = step1Validation.getValues(); 
+        var step2Value = step2Validation.getValues();
+        var cardValue = cardValidation.getValues();
+        var bankValue = bankValidation.getValues();
+        var payment = step3Block.find('.new-type > ul > li.on').index();
+        var sendata = {
+            CUST_REG_NO: step1Value.registFrontNumber,
+            CUST_POST_CODE: step1Value.zipCode,
+            CUST_BAS_ADDR: step1Value.userAddress,
+            CUST_DTL_ADDR: step1Value.detailAddress,
+            EMAIL: step1Value.userEmail,
+            REG_FIRST_DIGIT: step1Value.registBackFirst,
+            PREPAY_FLAG: step3Block.find('input[name=rdo04]:checked').val(),
+            TRANS_TYPE: payment ? "B" : "C",
+            TRANS_MEM_NAME: bankValidation.getValues('bankUserName'),
+            TRANS_CORP_NAME: payment ? bankValue.paymentBank : cardValue.paymentCard,
+            TRANS_ACCOUNT_NUM: payment ? bankValue.paymentBankNumber : cardValue.paymentCardNumber,
+            TRANS_CARD_EXPIRY: cardValue.paymentCardPeriod,
+            CARD_REQ_YN: step3Block.find('input[name=cardApplication]:checked').val(),
+            CARD_CORP_TYPE: step3Block.find('select[name=associatedCard] option:selected').val(),
+            RCV_NAME: step2Value.userName,
+            RCV_TEL_NO: step2Value.userTelephone,
+            RCV_HP_NO: step2Value.userPhone,
+            RCV_POST_CODE: step2Value.zipCode,
+            RCV_BAS_ADDR: step2Value.userAddress,
+            RCV_DTL_ADDR: step2Value.detailAddress,
+            INSTALL_PLACE: step2Value.inatallPlace,
+            INST_REQ_DATE: step2Value.inatallDate,
+            NOTES: step2Block.find('input[name=installRequriement]').val(),
+            INFO_USED_AGREE: $('#popup-rentalAgree').find('input[name=rentalAgree-infoUtility]').prop('checked') ? "Y" : "N",
+            MEM_POINT_USED: step3Block.find('input[name=chk03-3]').prop('checked') ? "Y" : "N"
+        };
+        console.log(sendata);
+        lgkorUI.requestAjaxData(REQUEST_SUBMIT_URL, sendata, function(result){
+            if(result.data.success == "Y"){
+                location.href= result.data.sendUrl;
+            } else{
+                lgkorUI.alert("", {
+                    title: result.data.alert.title
+                });
+            }
+        });
     }
 
     document.addEventListener('DOMContentLoaded', function () {
