@@ -1,7 +1,7 @@
 (function() {
     var filterTemplate = 
         '{{#each (item, index) in filterList}}' +
-        '{{# if (index == 0) { #}}' +
+        '{{# if (item.active && item.active == true) { #}}' +
         '<li class="on">' +
         '{{# } else { #}}' +
         '<li>' +
@@ -154,12 +154,18 @@
                 self.param = {};
                 self.param['keywords'] = [];
                 self.param['topic'] = 'All';
-                self.param['topicNm'] = qqqq.topicNm || 'All';
+                self.param['topicNm'] = decodeURI(qqqq.topicNm) || 'All';
                 self.param['subTopic'] = 'All';
-                self.param['subTopicNm'] = qqqq.subTopicNm || 'All';
+                self.param['subTopicNm'] = decodeURI(qqqq.subTopicNm) || 'All';
                 self.param['orderBy'] = qqqq.sort || $('#orderBy').val();
                 self.param['page'] = qqqq.page || 1;
                 self.param['research'] = false;
+
+                if (qqqq) {
+                    self.param['keywords'].push(decodeURI(qqqq.keyword));
+                    $('#orderBy').val(qqqq.sort);
+                    $('#keyword').val(decodeURI(qqqq.keyword));
+                }
 
                 self.bindEvent();
 
@@ -169,7 +175,7 @@
                     register: {},
                     selected: {
                         cateCode: qqqq.cateCode || '',
-                        category: '',
+                        category: qqqq.category || '',
                         categoryName: '',
                         subCategory: '',
                         subCategoryName: '',
@@ -177,6 +183,7 @@
                         productCode: ''
                     }
                 });                
+            
             },
             setRecommProduct: function(data){
                 var $productslider = $('.product-slider');
@@ -239,6 +246,19 @@
                     mHtml = '';
 
                 if (listArr.length) {
+                    if (self.param.topicNm) {
+                        listArr.forEach(function(item) {
+                            console.log(item.name);
+                            console.log(self.param.topicNm);
+                            if (item.name == self.param.topicNm) {
+                                item.active = true;
+                                return;
+                            }
+                        });
+                    } else {
+                        listArr[0].active = true;
+                    }
+
                     pcHtml = vcui.template(filterTemplate, data);
                     mHtml = vcui.template(filterOptionTemplate, data);
 
@@ -265,6 +285,7 @@
 
                 if (arr.length) {
                     arr.forEach(function(item) {
+                        item.title = decodeURI(item.title);
                         html += vcui.template(solutionsTemplate, item);
                     });
 
