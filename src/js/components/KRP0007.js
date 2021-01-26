@@ -141,8 +141,7 @@
 
         $('.KRP0007').buildCommonUI();
 
-        var storageName =   '_lgeProductFilter';
-        var storageFilters = lgkorUI.getStorage(storageName);
+        var storageName =   '__lgeProductFilter';
         var savedFilterArr = firstFilterList || []; // CMS에서 넣어준 firstFilterList를 이용
 
         var KRP0007 = {
@@ -153,11 +152,17 @@
                 self.bindEvents();
 
                 self.filterLayer = new FilterLayer(self.$layFilter, self.$categorySelect, self.$listSorting, self.$btnFilter, function (data) {
-                    //self.requestSearch(data);
                     console.log(data);
+                    lgkorUI.setStorage(storageName, data);
+                    //self.requestSearch(data);
                 });
 
                 self.filterLayer.updateFilter(savedFilterArr);
+
+                var storageFilters = lgkorUI.getStorage(storageName);
+                if(!(vcui.isEmpty(storageFilters)) && storageFilters.filterData) {
+                    self.filterLayer.resetFilter(JSON.parse(storageFilters.filterData));
+                }
             },
 
             setting: function() {

@@ -55,7 +55,7 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
             '<div class="ui-range-slider-bg"></div>' + 
             '<div class="ui-range-slider-range"></div>' + 
             '{{#if list.length > 0}}<ul class="ui-range-slider-value">' + 
-            '{{#each item in list}}<li data-value="{{item.value}}" data-title="{{item.title}}"></li>{{/each}}' + 
+            '{{#each item in list}}<li data-value="{{item.value}}" data-title="{{item.title}}" {{#if item.filterValue}}data-filtervalue="{{item.filterValue}}"{{/if}}></li>{{/each}}' + 
             '</ul>{{/if}}'
         },
         initialize: function initialize(el, options) {

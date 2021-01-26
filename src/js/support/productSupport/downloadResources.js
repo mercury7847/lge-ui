@@ -126,7 +126,7 @@
             vcui.require(['ui/carousel'], function () {    
                 // LG제품에 관련된 정보를 확인하세요!
                 if( !self.el.slider.hasClass('is-active') ) {
-                    console.log('slider init')
+                    
                     self.el.slider.not('.is-active').vcCarousel({
                         infinite: false,
                         autoplay: false,
@@ -160,7 +160,7 @@
                     });
                     self.el.slider.addClass('is-active');
                 } else {
-                    console.log('slider update reinit')
+                    
                     self.el.slider.filter('.is-active').vcCarousel('update');
                     self.el.slider.filter('.is-active').vcCarousel('reinit');
                 }
@@ -210,8 +210,6 @@
             option.forEach(function(v, i){
                 _options += '<option value="' + v.code + '">' + v.codeName + '<' + '/option>';
             })
-            console.log(_options);
-            $target.html(_options);
         }
         $target.vcSelectbox('update');
     }
@@ -312,6 +310,16 @@
                 
                 this.driverSec.find('#os').html(html);
                 this.driverSec.find('#os').vcSelectbox('update');
+            },
+            setOsActive : function(category){
+                var self = this;
+                var $formWrap = this.driverSec.find('.form-wrap');
+
+                if(category == "CT50019564" || category == "CT50019585" ) {
+                   $formWrap.show();
+                } else {
+                   $formWrap.hide();
+                }
             },
             setDriverOption: function(list) {
                 var listArr = list instanceof Array ? list : [];
@@ -427,6 +435,7 @@
 
                         //optionUpdate('#os', resultData.driver.osOption);
                         self.setOsOption(resultData.driver.osOption);
+                        self.setOsActive(data.subCategory)
 
                         $('.contents').commonModel('next', self.$stepInput);
                         $('.contents').commonModel('focus', self.$productBar, function() {
