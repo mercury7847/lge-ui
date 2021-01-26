@@ -239,17 +239,14 @@
             var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
             var today = month + "/" + day + "/" + fullYear + " ";
 
-            //iOS는 change, blur 순서
-            //Android는 변경 시 blur, change 순서, 변경 안했을 시는 click
-            var chkCnt = 0;
+            //iOS는 blur
+            //Android는 변경 시 change, 변경 안했을 시는 click
             $(".time-setting input").on({
-                click : function(e){
+                click : function(){
                     var value = $(this).val();
                     $(this).closest("div").find("[class*=rst-time]").text(value);
                     oldStartValue = $(this).closest(".inner").find("div").eq(0).find("input").val();
                     oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
-
-                    $(this).trigger("change");
                 },
                 focusin : function(){
                     $(this).closest("div").find("[class*=rst-time]").addClass("focus");
@@ -257,21 +254,19 @@
                 focusout: function(){
                     $(this).closest("div").find("[class*=rst-time]").removeClass("focus");
                 },
-                change : function(e){
+                change : function(){
                     var value = $(this).val();
                     $(this).closest("div").find("[class*=rst-time]").text(value);
 
-                    /*
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         //console.log("iphone");
                     }else{
                         //$(this).trigger("blur");
                         $(this).closest("div").attr("tabindex", 0).focus();
                     }
-                    */
                 },
-                blur: function(e){
-                    /*
+                blur: function(){
+                    //console.log("iphone");
                     var startDate = $(".t-start");
                     var endDate = $(".t-end");
                     var startDateVal = startDate.val();
@@ -294,9 +289,8 @@
                     }else{
                         toastMessage.init("에티켓 시간이 설정되었습니다.");
                     }
-                    */
-                },
-                touchstart : function(){
+
+                    /*
                     $.ajax({
                         method : "GET",
                         url : "./options.html",
@@ -332,63 +326,7 @@
                             toastMessage.init("에티켓 시간이 설정되었습니다.");
                         }
                     });
-                }
-            });
-
-            $(".time-setting input").on({
-                click : function(){
-                    $(".event-type").append("click / ");
-                },
-                change : function(){
-                    $(".event-type").append("change / ");
-                },
-                focus : function(){
-                    $(".event-type").append("focus / ");
-                },
-                focusin : function(){
-                    $(".event-type").append("focusin / ");
-                },
-                focusout : function(){
-                    $(".event-type").append("focusout / ");
-                },
-                blur : function(){
-                    $(".event-type").append("blur / ");
-                },
-                keydown : function(){
-                    $(".event-type").append("keydown / ");
-                },
-                keyup : function(){
-                    $(".event-type").append("keyup / ");
-                },
-                keypress : function(){
-                    $(".event-type").append("keypress / ");
-                },
-                mousedown : function(){
-                    $(".event-type").append("mousedown / ");
-                },
-                mouseup : function(){
-                    $(".event-type").append("mouseup / ");
-                },
-                mousemove : function(){
-                    $(".event-type").append("mousemove / ");
-                },
-                datasetchanged : function(){
-                    $(".event-type").append("datasetchanged / ");
-                },
-                datasetcomplete : function(){
-                    $(".event-type").append("datasetcomplete / ");
-                },
-                touchstart : function(){
-                    $(".event-type").append("touchstart / ");
-                },
-                touchmove : function(){
-                    $(".event-type").append("touchmove / ");
-                },
-                touchend : function(){
-                    $(".event-type").append("touchend / ");
-                },
-                touchcancel : function(){
-                    $(".event-type").append("touchcancel / ");
+                    */
                 }
             });
 
@@ -497,8 +435,6 @@
     <br>
     <br>
     <button type="button" class="btn-opt-login" id="btn-mkt"><span>마케팅 수신동의 모달 열기</span></button>
-
-    <div class="event-type" style="position:fixed;left:0;top:0;width:100%;height:auto;background:rgba(0, 0, 0, 0.8);color:#fff;z-index:100000"></div>
 
     <div class="lyr-opt-panel">
         <div class="main-panel" aria-hidden="true" tabindex="0">
