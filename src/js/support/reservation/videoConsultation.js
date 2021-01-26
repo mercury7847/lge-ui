@@ -27,6 +27,7 @@
     '{{/each}}';
     var validation;
     var authManager;
+    var dateUtil = vcui.date;
 
     var reservation = {
         init: function() {

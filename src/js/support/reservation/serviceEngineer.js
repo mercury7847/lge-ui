@@ -217,8 +217,18 @@
                     ]
                 });
 
+                self.bindEvent();
+
                 self.$cont.commonModel({
-                    register: register
+                    register: register,
+                    selected: {
+                        category: self.$cont.find('#category').val(),
+                        categoryName: self.$cont.find('#categoryNm').val(),
+                        subCategory: self.$cont.find('#subCategory').val(),
+                        subCategoryName: self.$cont.find('#subCategoryNm').val(),
+                        modelCode: self.$cont.find('#modelCode').val(),
+                        productCode: self.$cont.find('#productCode').val()
+                    }
                 });
 
                 self.$dateWrap.calendar({
@@ -228,8 +238,6 @@
                 self.$timeWrap.timeCalendar({
                     inputTarget: '#time'
                 });
-
-                self.bindEvent();
             });
         },
         setTopicList: function(data) {
