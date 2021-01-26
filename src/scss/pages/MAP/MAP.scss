@@ -1,33 +1,37 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
-@mixin font($size, $line){
+@mixin font($size, $line) {
     font-size: $size;
     line-height: $line;
 }
 
-.gap{
+.gap {
     height: 54px;
     background-color: #4c3ef0;
     opacity: 0.6;
 }
-html, body{
+
+html,
+body {
     height: 100%;
 }
 
-.btn-opt-close{
+.btn-opt-close {
     position: relative;
     right: 0;
     top: 0;
     width: 39px;
     height: 39px;
-    span{
+
+    span {
         display: block;
         overflow: hidden;
         width: 100%;
         height: 100%;
         position: relative;
         text-indent: -9999px;
-        &:after{
+
+        &:after {
             content: '';
             display: block;
             position: absolute;
@@ -41,7 +45,8 @@ html, body{
         }
     }
 }
-.btn-opt-login{
+
+.btn-opt-login {
     min-width: 70px;
     height: 28px;
     padding: 0 5px;
@@ -51,28 +56,32 @@ html, body{
     font-weight: 400;
     @include font(13px, 19px);
     color: #111;
-    span{
+
+    span {
         position: relative;
     }
 }
-.btn-opt-update{
+
+.btn-opt-update {
     width: 100%;
     height: 50px;
     border-radius: 6px;
     background-color: #e4e4e4;
     @include font(14px, 20px);
     color: #aaa;
-    span{
+
+    span {
         position: relative;
     }
-    &.on{
+
+    &.on {
         border: 1px solid #ec455a;
         background-color: #fff;
         color: #ec455a;
     }
 }
 
-.link{
+.link {
     display: flex;
     position: relative;
     min-height: inherit;
@@ -80,7 +89,8 @@ html, body{
     flex: 1;
     margin: 0 -18px;
     padding: 0 18px;
-    &:after{
+
+    &:after {
         content: '';
         display: block;
         position: absolute;
@@ -93,10 +103,12 @@ html, body{
         transform: translate(0, -50%);
     }
 }
-.txt-guide{
+
+.txt-guide {
     margin: 10px 18px;
 }
-.lyr-opt-panel{
+
+.lyr-opt-panel {
     position: fixed;
     left: 100%;
     top: 0;
@@ -104,7 +116,8 @@ html, body{
     height: 100%;
     background-color: #f4f4f4;
     z-index: 10;
-    .opt-header{
+
+    .opt-header {
         position: fixed;
         width: 100%;
         min-height: 51px;
@@ -112,46 +125,53 @@ html, body{
         background-color: #fff;
         border-bottom: 1px solid #ddd;
         z-index: 5;
-        h1{
+
+        h1 {
             display: block;
             padding: 6px 0 15px;
             font-weight: 700;
             @include font(26px, 38px);
             color: #222;
         }
-        .btn-opt-close{
+
+        .btn-opt-close {
             position: absolute;
             right: 8px;
             top: 6px;
         }
 
-        &.type-sub{
+        &.type-sub {
             margin-bottom: 19px;
-            h1{
+
+            h1 {
                 padding: 6px 32px 20px;
                 padding: 60px 32px 20px;
                 @include font(17px, 25px);
                 color: #000;
             }
-            & + .opt-container{
+
+            & + .opt-container {
                 height: 100%;
                 padding-top: 125px;
             }
         }
-        .btn-opt-prev{
+
+        .btn-opt-prev {
             position: absolute;
             left: 8px;
             bottom: 14px;
             width: 37px;
             height: 37px;
-            span{
+
+            span {
                 display: block;
                 overflow: hidden;
                 width: 100%;
                 height: 100%;
                 position: relative;
                 text-indent: -9999px;
-                &:after{
+
+                &:after {
                     content: '';
                     display: block;
                     position: absolute;
@@ -165,7 +185,8 @@ html, body{
                 }
             }
         }
-        & + .opt-container{
+
+        & + .opt-container {
             height: 100%;
             padding-top: 60px;
             overflow: hidden;
@@ -174,16 +195,19 @@ html, body{
             background-color: #f4f4f4;
         }
     }
-    .gap{
-        & + .opt-header{
-            & + .opt-container{
+
+    .gap {
+        & + .opt-header {
+            & + .opt-container {
                 height: calc(100% - 54px);
             }
         }
     }
-    .opt-controls{
+
+    .opt-controls {
         overflow: hidden;
-        h2{
+
+        h2 {
             display: block;
             padding: 20px 18px 8px;
             padding-top: 0;
@@ -191,12 +215,14 @@ html, body{
             @include font(14px, 20px);
             color: #aaa;
         }
-        &:first-child{
-            h2{
+
+        &:first-child {
+            h2 {
                 padding-top: 19px;
             }
         }
-        & > div{
+
+        & > div {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -204,20 +230,24 @@ html, body{
             padding: 0 18px;
             background-color: #fff;
 
-            & > p{
+            & > p {
                 display: flex;
                 @include font(16px, 24px);
-                &.txt-login-guide{
+
+                &.txt-login-guide {
                     color: #aaa;
                 }
-                & > span{
+
+                & > span {
                     position: relative;
                     @include font(14px, 20px);
                     color: #222;
-                    & + span{
+
+                    & + span {
                         padding-left: 10px;
                         margin-left: 10px;
-                        &:before{
+
+                        &:before {
                             content: '';
                             display: block;
                             position: absolute;
@@ -229,34 +259,38 @@ html, body{
                             transform: translate(0, -50%);
                         }
                     }
-                    em{
+
+                    em {
                         color: #ec455a;
                     }
                 }
             }
 
-            &.v-align{
+            &.v-align {
                 padding-top: 19px;
                 padding-bottom: 18px;
                 align-content: space-between;
                 flex-direction: column;
-                & > p{
+
+                & > p {
                     width: 100%;
                     margin-bottom: 13px;
                 }
             }
 
-            & + div{
+            & + div {
                 margin-top: 10px;
             }
-            &.disabled{
-                & > p{
+
+            &.disabled {
+                & > p {
                     color: #aaa;
                 }
-                .opt-switch{
-                    label{
-                        input{
-                            & + span{
+
+                .opt-switch {
+                    label {
+                        input {
+                            & + span {
                                 background-color: #f4f4f4;
                             }
                         }
@@ -264,37 +298,46 @@ html, body{
                 }
             }
         }
-        & + .opt-controls{
+
+        & + .opt-controls {
             margin-top: 20px;
         }
 
-        .ctrl-area{
+        .ctrl-area {
             display: none;
-            p{
+
+            p {
                 color: #767676;
-                &.on{
+
+                &.on {
                     color: #222;
                 }
             }
-            &.active{
+
+            &.active {
                 display: block;
-                & > div{
+
+                & > div {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
                     min-height: 50px;
-                    &.details{
+
+                    &.details {
                         display: block;
                         margin-top: -10px;
                         padding-bottom: 29px;
-                        p{
+
+                        p {
                             margin: 0;
                             @include font(13px, 19px);
                             color: #aaa;
                         }
-                        &.ctrl-area{
+
+                        &.ctrl-area {
                             display: none;
-                            &.active{
+
+                            &.active {
                                 display: block;
                             }
                         }
@@ -303,29 +346,35 @@ html, body{
             }
         }
 
-        .time-setting{
-            .inner{
+        .time-setting {
+            .inner {
                 display: flex;
-                & > div {
+
+                & > div  {
                     display: flex;
                     position: relative;
                     width: 50%;
                     margin-top: 28px;
                     padding: 0 10px 0 0;
-                    & + div{
+                    outline: 0;
+
+                    & + div {
                         padding-right: 0;
                         padding-left: 10px;
-                        input[type=time]{
+
+                        input[type=time] {
                             right: 0;
                         }
                     }
-                    label{
+
+                    label {
                         display: inline-block;
                         width: 32px;
                         @include font(13px, 40px);
                         color: #aaa;
                         vertical-align: middle;
-                        &[class*=rst-time]{
+
+                        &[class*=rst-time] {
                             flex: 1 2 auto;
                             overflow: hidden;
                             position: relative;
@@ -338,7 +387,8 @@ html, body{
                             @include font(20px, 38px);
                             letter-spacing: 0.6px;
                             color: #ddd;
-                            &:after{
+
+                            &:after {
                                 content: '';
                                 display: block;
                                 position: absolute;
@@ -353,14 +403,15 @@ html, body{
                             }
                         }
                     }
-                    input[type=time]{
+
+                    input[type=time] {
                         position: absolute;
                         top: 0;
                         right: 10px;
                         width: calc(100% - 42px);
                         height: 100%;
                         opacity: 0;
-                        &::-webkit-calendar-picker-indicator{
+                        &::-webkit-calendar-picker-indicator {
                             display: block;
                             width: 100%;
                             height: 100%;
@@ -368,23 +419,28 @@ html, body{
                     }
                 }
             }
-            &.on{
-                p{
+
+            &.on {
+                p {
                     color: #ec455a !important;
                 }
-                .inner{
-                    & > div {
-                        label{
-                            &[class*=rst-time]{
+
+                .inner {
+                    & > div  {
+                        label {
+                            &[class*=rst-time] {
                                 background-color: #fff;
                                 color: #222;
                                 border-color: #aaa;
-                                &:after{
+
+                                &:after {
                                     border-top-color: #222;
                                 }
-                                &:hover, &:focus, &.focus{
+
+                                &:hover, &:focus, &.focus {
                                     color: #ec455a;
-                                    &:after{
+
+                                    &:after {
                                         border-top-color: #ec455a;
                                     }
                                 }
@@ -395,13 +451,15 @@ html, body{
             }
         }
     }
-    .txt-guide{
+
+    .txt-guide {
         overflow: hidden;
         position: relative;
         padding-left: 12px;
         @include font(13px, 19px);
         color: #ec455a;
-        &:before{
+
+        &:before {
             content: '*';
             display: block;
             position: absolute;
@@ -413,17 +471,19 @@ html, body{
         }
     }
 
-    .opt-switch{
-        label{
+    .opt-switch {
+        label {
             display: block;
             position: relative;
-            input{
+
+            input {
                 position: absolute;
                 left: 0;
                 top: 0;
                 width: 100%;
                 height: 100%;
-                & + span{
+
+                & + span {
                     display: inline-block;
                     overflow: hidden;
                     position: relative;
@@ -434,7 +494,8 @@ html, body{
                     cursor: pointer;
                     transition: all ease 0.3s;
                     text-indent: -9999px;
-                    &:after{
+
+                    &:after {
                         content: '';
                         display: block;
                         position: absolute;
@@ -448,10 +509,12 @@ html, body{
                         transition: all ease 0.3s;
                     }
                 }
-                &:checked{
-                    & + span{
+
+                &:checked {
+                    & + span {
                         background-color: #ec455a;
-                        &:after{
+
+                        &:after {
                             left: calc(100% - 28px);
                         }
                     }
@@ -461,7 +524,7 @@ html, body{
     }
 }
 
-.lyr-modal{
+.lyr-modal {
     display: none;
     overflow-y: auto;
     position: fixed;
@@ -474,11 +537,13 @@ html, body{
     background: rgba(0, 0, 0, 0.2);
     -webkit-overflow-scrolling: touch;
     z-index: 15;
-    .lyr-modal-dt{
+
+    .lyr-modal-dt {
         display: table;
         width: 100%;
         height: 100%;
-        .lyr-modal-dc{
+
+        .lyr-modal-dc {
             display: table-cell;
             padding: 18px;
             width: 100%;
@@ -486,7 +551,8 @@ html, body{
             vertical-align: middle;
         }
     }
-    .lyr-modal-inner{
+
+    .lyr-modal-inner {
         overflow: hidden;
         width: 100%;
         /*min-height: 224px;*/
@@ -494,7 +560,8 @@ html, body{
         box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.15);
         background-color: #fff;
         transition: all ease 0.3s;
-        & > div{
+
+        & > div {
             display: flex;
             padding: 70px 16px;
             min-height: 164px;
@@ -503,113 +570,133 @@ html, body{
             justify-content: center;
             flex-direction: column;
             color: #222;
-            &.btn-box{
+
+            &.btn-box {
                 display: flex;
                 height: 60px;
                 min-height: 0;
                 padding: 0;
                 flex-direction: row;
-                [class*="btn-modal"]{
+
+                [class*="btn-modal"] {
                     height: 60px;
                     flex: 1;
                     font-weight: 500;
                     @include font(16px, 1em);
                     letter-spacing: -0.48px;
-                    & > span{
+
+                    & > span {
                         position: relative;
                     }
                 }
-                .btn-modal-cancel{
+
+                .btn-modal-cancel {
                     background-color: #e4e4e4;
                     color: #ec455a
                 }
-                .btn-modal-confirm{
+
+                .btn-modal-confirm {
                     background: linear-gradient(to left, #fb5970, #fa263e);
                     color: #fff
                 }
             }
-            p{
+
+            p {
                 font-weight: 500;
                 @include font(16px, 24px);
                 letter-spacing: -0.48px;
-                strong{
+
+                strong {
                     font-weight: 700;
                 }
             }
-            em{
+
+            em {
                 display: block;
                 font-weight: 700;
                 @include font(20px, 29px);
                 letter-spacing: -0.6px;
                 margin: -10px 0 16px;
-                & + p{
+
+                & + p {
                     margin-bottom: -30px;
                 }
             }
 
-            &.type2{
+            &.type2 {
                 display: block;
                 position: relative;
                 padding: 24px 16px 30px;
                 text-align: left;
-                em{
+
+                em {
                     margin: 0;
                     letter-spacing: 0;
                     padding-bottom: 16px;
                     border-bottom: 2px solid #000;
                 }
-                .btn-opt-close{
+
+                .btn-opt-close {
                     position: absolute;
                     right: 12px;
                     top: 19px;
                 }
-                .txt-guide{
+
+                .txt-guide {
                     position: relative;
                     padding-left: 9px;
                     margin: 14px 0 0;
                     @include font(12px, 18px);
                     letter-spacing: -0.36px;
                     color: #ec455a;
-                    &:before{
+
+                    &:before {
                         content: '*';
                         position: absolute;
                         left: 0;
                         top: 0;
                     }
                 }
-                ul{
+
+                ul {
                     margin-top: 20px;
-                    li{
+
+                    li {
                         display: table;
                         width: 100%;
                         position: relative;
                         padding-left: 84px;
                         color: #222;
-                        > div{
+
+                        > div {
                             display: table-cell;
                             height: 64px;
                             vertical-align: middle;
                         }
-                        .icon{
+
+                        .icon {
                             position: absolute;
                             left: 12px;
                             top: 12px;
                         }
-                        strong{
+
+                        strong {
                             display: block;
                             margin-top: -2px;
                             font-weight: 700;
                             @include font(16px, 24px);
                             letter-spacing: -0.48px;
                         }
-                        p{
+
+                        p {
                             margin-top: 4px;
                             margin-bottom: -2px;
                             @include font(14px, 20px);
                             letter-spacing: -0.42px;
                             color: #222;
                         }
-                        & + li{
+
+                        & + li {
                             margin-top: 22px;
                         }
                     }
@@ -618,21 +705,24 @@ html, body{
         }
     }
 }
-.toast-message{
+
+.toast-message {
     position: fixed;
     left: 0;
     bottom: 50px;
     bottom: -60px;
     width: 100%;
     z-index: 15;
-    & > div{
+
+    & > div {
         position: relative;
         margin: 0 18px;
         background: rgba(0, 0, 0, 0.7);
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
         border-radius: 30px;
         text-align: center;
-        .txt-message{
+
+        .txt-message {
             display: flex;
             height: 60px;
             align-items: center;
@@ -640,19 +730,22 @@ html, body{
             letter-spacing: -0.42px;
             color: #fff;
             justify-content: center;
-            &.type2{
+
+            &.type2 {
                 @include font(13px, 20px);
                 letter-spacing: -0.39px;
             }
         }
-        .btn-toast-close{
+
+        .btn-toast-close {
             position: absolute;
             right: 5px;
             top: 50%;
             width: 35px;
             height: 35px;
             transform: translate(0, -50%);
-            span{
+
+            span {
                 overflow: hidden;
                 display: block;
                 position: absolute;
@@ -669,14 +762,7 @@ html, body{
     }
 }
 
-.main-panel{
-    position: fixed;
-    left: 100%;
-    top: 0;
-    width: 100%;
-    height: 100%;
-}
-.sub-panel{
+.main-panel {
     position: fixed;
     left: 100%;
     top: 0;
@@ -684,7 +770,15 @@ html, body{
     height: 100%;
 }
 
-.icon-camera{
+.sub-panel {
+    position: fixed;
+    left: 100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.icon-camera {
     display: inline-block;
     overflow: hidden;
     width: 32px;
@@ -693,46 +787,54 @@ html, body{
     text-indent: -9999px;
     background: url(/lg5-common/images/MAP/icon-camera.svg) no-repeat left top;
     background-size: 32px 32px;
-    span{
+
+    span {
         position: relative;
     }
-    &.x2{
+
+    &.x2 {
         width: 64px;
         height: 64px;
         background-size: 64px 64px;
     }
-    &.x3{
+
+    &.x3 {
         width: 96px;
         height: 96px;
         background-size: 96px 96px;
     }
 }
 
-.icon{
+.icon {
     display: inline-block;
     width: 40px;
     height: 40px;
     background: url(/lg5-common/images/MAP/modal-icons.png) no-repeat left top;
     background-size: 80px 80px;
     vertical-align: middle;
-    &.icon-map{
+
+    &.icon-map {
         background-position: 0 0;
     }
-    &.icon-alarm{
+
+    &.icon-alarm {
         background-position: -40px 0;
     }
-    &.icon-camera{
+
+    &.icon-camera {
         background-position: 0 -40px;
     }
-    &.icon-phone{
+
+    &.icon-phone {
         background-position: -40px -40px;
     }
 }
 
-.page{
+.page {
     height: 100%;
     color: #000;
-    > div{
+
+    > div {
         display: flex;
         overflow-y: auto;
         position: relative;
@@ -744,7 +846,8 @@ html, body{
         justify-content: center;
         -webkit-overflow-scrolling: touch;
     }
-    .icon-error{
+
+    .icon-error {
         display: inline-block;
         width: 64px;
         height: 64px;
@@ -752,20 +855,23 @@ html, body{
         background-size: 64px 64px;
         vertical-align: middle;
     }
-    strong{
+
+    strong {
         display: block;
         margin-top: 40px;
         font-weight: 700;
         @include font(30px, 40px);
         letter-spacing: -0.3px;
     }
-    p{
+
+    p {
         margin-top: 20px;
         @include font(16px, 28px);
         letter-spacing: -0.48px;
         color: #000;
     }
-    .bg-logo{
+
+    .bg-logo {
         display: inline-block;
         overflow: hidden;
         margin-top: 60px;
@@ -776,14 +882,16 @@ html, body{
         text-indent: -9999px;
         vertical-align: middle;
     }
-    .btn-wrap{
+
+    .btn-wrap {
         position: absolute;
         left: 0;
         bottom: 0;
         width: 100%;
         padding: 0 18px 40px;
     }
-    .btn{
+
+    .btn {
         display: block;
         width: 100%;
         height: 60px;
@@ -792,7 +900,8 @@ html, body{
         @include font(17px, 60px);
         color: #fff;
         text-align: center;
-        span{
+
+        span {
             position: relative;
         }
     }
