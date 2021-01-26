@@ -286,14 +286,20 @@ CS.MD.search = function() {
         },
         setPopularKeyword: function(data) {
             var self = this;
+            var $popularKeyword = self.$el.find('.popular-keyword');
             var tmpl = self.options.template,
                 arr = data instanceof Array ? data : [];
+
+            $popularKeyword.find('ul').empty();
 
             if (arr.length) {
                 arr.forEach(function(item) {
                     var html = tmpl.keywordList.replace('{{keyword}}', item);
-                    self.$el.find('.popular-keyword').find('ul').append(html);
+                    $popularKeyword.find('ul').append(html);
                 });
+            } else {
+                $popularKeyword.find('ul').hide();
+                $popularKeyword.find('.no-keyword').show();
             }
         },
         _setAutoComplete: function(data) {
@@ -308,6 +314,8 @@ CS.MD.search = function() {
                     var html = vcui.template(tmpl.autocompleteList, item);
                     self.$el.find('.autocomplete-box').find('ul').append(html);
                 });
+                self.$el.find('.autocomplete-box').find('ul').show();
+                self.$el.find('.autocomplete-box').find('.no-keyword').hide();
             } else {
                 self.$el.find('.autocomplete-box').find('ul').hide();
                 self.$el.find('.autocomplete-box').find('.no-keyword').show();

@@ -392,7 +392,7 @@
             self._resize();
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
-        searchAddressToCoordinate: function(address) { 
+        searchAddressToCoordinate: function(address, callback) { 
             var self = this;
             var point;
             
@@ -406,6 +406,8 @@
                 var point = response.result.items[0].point;
                 self.latitude = point.x;
                 self.longitude = point.y;
+
+                callback && callback();
             });
         },
         _setTabInit: function(){
@@ -637,19 +639,14 @@
             var keyword = self.$boroughSelect.val() || self.$citySelect.val();
             var trim = keyword.replace(/\s/gi, '');
             if(trim.length){
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function(pos) {
-                        self.latitude = pos.coords.latitude;
-                        self.longitude = pos.coords.longitude;
+                var callback = function() {
+                    self._loadStoreData()
+                };
 
-                        self.searchResultMode = true;
-                        self.schReaultTmplID = "localSearch";
-                        
-                        self._loadStoreData();
-                    }, function(error) {
-                    
-                    }); 
-                }
+                self.searchResultMode = true;
+                self.schReaultTmplID = "localSearch";
+                
+                self.searchAddressToCoordinate(trim, callback);
             }
         },
 
