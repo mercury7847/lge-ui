@@ -664,5 +664,25 @@
         }
     }
 }
+    
+#solutionsPopup {
+    .video-box {
+        height: 240px;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+    @include mobile {
+        .video-box {
+            height: auto;
+            margin-top: 0;
+            margin-bottom: 12px;
+            .column {
+                + .column {
+                    height: 300px;
+                }
+            }
+        }
+    }
+}
 
 @import "../../support/pages/payNwarranty";

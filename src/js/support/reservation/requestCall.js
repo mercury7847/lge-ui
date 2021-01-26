@@ -40,6 +40,7 @@
             self.$stepArea = self.$cont.find('.step-area');
             self.$completeBtns = self.$cont.find('.btn-group');
 
+            self.$stepTerms = self.$cont.find('#stepTerms');
             self.$stepModel = self.$cont.find('#stepModel');
 
             self.$stepInput = self.$cont.find('#stepInput');
@@ -154,7 +155,9 @@
             });
         },
         completeModel: function(url) {
-            this.setInputStep(url);
+            var self = this;
+            
+            self.setInputStep(url);
         },
         nextInputStep: function() {
             var self = this;
