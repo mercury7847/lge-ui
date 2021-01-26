@@ -7,8 +7,8 @@
 
             $('.map').vcStoreMap({
                 keyID: 'vsay0tnzme',
-                latitude : data.longitude,
-                longitude: data.latitude
+                latitude : data.latitude,
+                longitude: data.longitude
             });
             
             $('.photo .ui_carousel_slider').vcCarousel({
