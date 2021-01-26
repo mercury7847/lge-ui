@@ -6,19 +6,19 @@
 	.component-inner {
 		padding:0;
 	}
-	&.full-size {
+	&.stage-full {
 		.component-inner {
 			max-width:1920px !important;
 			padding:0;
 		}
     }
-    &.wide-size {
+    &.stage-wide {
 		.component-inner {
 			max-width:1600px !important;
 			padding:0;
 		}
     }
-    &.standard-size {
+    &.stage-medium {
 		.component-inner {
 			max-width:1380px !important;
 			padding:0;
