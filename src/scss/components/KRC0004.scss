@@ -25,6 +25,25 @@
 	}
 	// size
 	&.stage-full {
+		.component-inner {
+			max-width:1920px !important;
+			padding:0 !important;
+		}
+    }
+    &.stage-wide {
+		.component-inner {
+			max-width:1600px !important;
+			padding:0 !important;
+		}
+    }
+    &.stage-medium {
+		.component-inner {
+			max-width:1380px !important;
+			padding:0 !important;
+		}
+	}
+
+	&.stage-full {
 		.cpt-wrap {
 			> .visual-area,
 			.list-btn-area {
