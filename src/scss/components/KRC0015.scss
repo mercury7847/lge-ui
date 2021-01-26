@@ -10,19 +10,19 @@
         margin: 0 auto;
     }
 
-    &.full-size {
+    &.stage-full {
 		.component-box {
-			max-width:1980px !important;
+			max-width:1920px !important;
 		}
     }
-    &.wide-size {
+    &.stage-wide {
 		.component-box {
 			max-width:1660px !important;
 		}
     }
-    &.medium-size {
+    &.stage-medium {
 		.component-box {
-			max-width:1344px !important;
+			max-width:1380px !important;
 		}
 	}
 

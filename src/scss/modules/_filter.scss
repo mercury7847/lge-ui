@@ -606,7 +606,7 @@
     border-radius:8px;
     // background:#f4f4f4;
     @include mobile {
-        padding:24px 16px 32px;
+        padding:40px 0;
     }
     .inner {
         @include clearfix;
@@ -663,12 +663,15 @@
             @include mobile {
                 width:100%;
                 .cell {
-                    margin-top:6px;
+                    width:auto;
+                    margin-top:12px;
                 }
                 .rdo-cell {
+                    margin:0 -5px 0 2px;
                     .rdo-wrap {
-                        width:calc((100% - 18px) / 4);
-                        margin-left:6px;
+                        width:calc(100% / 4);
+                        margin-left:-1px;
+                        // margin-left:6px;
                         input + label {
                             width:100%;
                         }
