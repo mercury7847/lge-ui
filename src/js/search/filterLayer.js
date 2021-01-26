@@ -71,6 +71,7 @@ var FilterLayer = (function() {
     function FilterLayer($targetFilter, $categorySelect, $listSorting, $targetFilterButton, filterChangeEventFunc) {
         var self = this;
         self.filterData = null;
+        self.resetData = null;
         self.initLoadEnd = false;
         vcui.require(['ui/rangeSlider', 'ui/accordion'], function () {
             self._setting($targetFilter, $categorySelect, $listSorting, $targetFilterButton, filterChangeEventFunc);
@@ -78,6 +79,9 @@ var FilterLayer = (function() {
             self.initLoadEnd = true;
             if(self.filterData) {
                 self.updateFilter(self.filterData);
+            }
+            if(self.resetData) {
+                self.resetFilter(self.resetData);
             }
         });
     }
@@ -194,6 +198,9 @@ var FilterLayer = (function() {
 
         _filterUnbindCustomEvents: function() {
             var self = this;
+            if(!self.$layFilter) {
+                return;
+            }
             // 필터안 슬라이더 이벤트 처리 (가격, 사이즈,..)
             self.$layFilter.find('.ui_filter_slider').off('rangesliderinit rangesliderchange rangesliderchanged');
         },
@@ -201,6 +208,9 @@ var FilterLayer = (function() {
         //커스텀 필터 이벤트 (필터 리스트를 새로 그리면 매번 실행할것)
         _filterBindCustomEvents: function() {
             var self = this;
+            if(!self.$layFilter) {
+                return;
+            }
             // 필터안 슬라이더 이벤트 처리 (가격, 사이즈,..)
             self.$layFilter.find('.ui_filter_slider').on('rangesliderinit rangesliderchange rangesliderchanged', function (e, data) {
                 $(e.currentTarget).siblings('.min').text(vcui.number.addComma(data.minValue.title));
@@ -249,7 +259,9 @@ var FilterLayer = (function() {
                 var values = JSON.parse($el.attr('data-values'));
                 var min = $el.attr('data-min');
                 var max = $el.attr('data-max');
-                var tempArray = values.slice(min,parseInt(max)+1).map(function(a) {return a.filterValue;});
+                var tempArray = values.slice(min,parseInt(max)+1).map(function(a) {
+                    return a.filterValue;
+                });
                 if(tempArray.length != values.length) {
                     selectedFilter = true;
                     filterData[$el.attr('name')] = tempArray;
@@ -323,7 +335,7 @@ var FilterLayer = (function() {
                         case "range":
                             hasSlider = true;
                             item.filterValues.forEach(function(obj, idx){
-                                obj.value = idx;
+                                obj.value = ("" + idx);
                                 obj.filterValue = obj.filterValueId;
                                 obj.title = obj.filterValueName;
                                 item.maxTitle = obj.title;
@@ -377,6 +389,11 @@ var FilterLayer = (function() {
         resetFilter: function(data) {
             var self = this;
             
+            if(!self.initLoadEnd) {
+                self.resetData = data;
+                return;
+            }
+
             /*
             //필터 정렬박스
             self.$layFilter.find('input[name="sorting"]:eq(0)').prop('checked', true);
@@ -394,7 +411,29 @@ var FilterLayer = (function() {
             
             self.$layFilter.find('div.search-inner input').val('');
 
-            if(vcui.isEmpty(data)) {
+            //필터 슬라이더
+            self.$layFilter.find('.ui_filter_slider').each(function(idx, el){
+                var $el = $(el);
+                var values = JSON.parse($el.attr('data-values'));
+                var min = 0;
+                var max = values.length - 1;
+                $el.attr('data-min',(min+""));
+                $el.attr('data-max',(max+""));
+                $el.vcRangeSlider('reset',min+','+max);
+            });
+
+            //필터 라디오버튼
+            self.$layFilter.find('.ui_filter_accordion input[type="radio"]:eq(0)').each(function(idx, el){
+                $(el).prop('checked', true);
+            });
+
+            //필터 체크박스
+            self.$layFilter.find('.ui_filter_accordion input[type="checkbox"]').each(function(idx, el){
+                $(el).prop('checked', false);
+            });
+
+            if(!(vcui.isEmpty(data))) {
+                /*
                 //필터 슬라이더
                 self.$layFilter.find('.ui_filter_slider').each(function(idx, el){
                     var $el = $(el);
@@ -403,7 +442,6 @@ var FilterLayer = (function() {
                     var max = values.length - 1;
                     $el.attr('data-min',min);
                     $el.attr('data-max',max);
-                    console.log($el.attr('name'),values);
                     $el.vcRangeSlider('reset',min+','+max);
                 });
 
@@ -416,27 +454,54 @@ var FilterLayer = (function() {
                 self.$layFilter.find('.ui_filter_accordion input[type="checkbox"]').each(function(idx, el){
                     $(el).prop('checked', false);
                 });
-            } else {
-                //필터 슬라이더
-                self.$layFilter.find('.ui_filter_slider').each(function(idx, el){
-                    var $el = $(el);
-                    var values = JSON.parse($el.attr('data-values'));
-                    var min = 0;
-                    var max = values.length - 1;
-                    $el.attr('data-min',min);
-                    $el.attr('data-max',max);
-                    $el.vcRangeSlider('reset',min+','+max);
-                });
+                */
+                var selectedFilter = false;
+                var $btnFilter = self.$targetFilterButton;
 
-                //필터 라디오버튼
-                self.$layFilter.find('.ui_filter_accordion input[type="radio"]:eq(0)').each(function(idx, el){
-                    $(el).prop('checked', true);
-                });
+                for(key in data){
+                    //console.log(data[key]); //-> 키값, 모든 value 출력
+                    var findRange = self.$layFilter.find('.ui_filter_slider[name="'+key+'"]');
+                    if(findRange.length > 0) {
+                        selectedFilter = true;
+                        var item = data[key];
+                        var tempArray = [];
+                        item.forEach(function(val, index) {
+                            var findDm = findRange.find('li[data-filtervalue="'+val+'"]');
+                            if(findDm.length > 0) {
+                                tempArray.push(findDm.index());
+                            }
+                        });
+                        var min = vcui.array.min(tempArray);
+                        var max = vcui.array.max(tempArray);
+                        findRange.attr('data-min',(min+""));
+                        findRange.attr('data-max',(max+""));
+                        findRange.vcRangeSlider('reset',min+','+max);
+                        var index = findRange.parents('li').index();
+                        findRange.parents('.ui_filter_accordion').vcAccordion('expand',index);
+                    } else {
+                        //check or radio
+                        var item = data[key];
+                        item.forEach(function(val, index) {
+                            var findDm = self.$layFilter.find('.ui_filter_accordion input[value="'+val+'"]');
+                            if(findDm.length > 0) {
+                                selectedFilter = true;
+                                findDm.prop('checked', true);
+                                var index = findDm.parents('li').index();
+                                findDm.parents('.ui_filter_accordion').vcAccordion('expand',index);
+                            }
+                        });
+                    }
+                }
 
-                //필터 체크박스
-                self.$layFilter.find('.ui_filter_accordion input[type="checkbox"]').each(function(idx, el){
-                    $(el).prop('checked', false);
-                });
+                if(selectedFilter) {
+                    $btnFilter.addClass('applied');
+                    $btnFilter.find('a span').text('옵션 적용됨');
+                    self.$layFilter.find('div.btn-reset button').show();
+                } else {
+                    $btnFilter.removeClass('applied');
+                    $btnFilter.find('a span').text('옵션필터');
+                    self.$layFilter.find('div.btn-reset button').hide();
+                }
             }
         },
     }
