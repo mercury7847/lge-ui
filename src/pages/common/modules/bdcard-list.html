@@ -40,9 +40,12 @@
             </div>
         </div>
         @@if ( !context.disabled ) {
+        <!-- 20210126 장바구니 버튼 분리 -->
         <div class="col btn-col">
-            <button type="button" class="btn size border"><span>장바구니</span></button>
+            <button type="button" class="btn size border"><span>구매 장바구니</span></button>
+            <button type="button" class="btn size border"><span>렌탈 장바구니</span></button>
         </div>
+        <!-- // 장바구니 버튼 분리 -->
         }
     </div>
     @@if ( context.soldout ) {
