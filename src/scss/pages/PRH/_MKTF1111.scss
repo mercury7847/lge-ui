@@ -407,6 +407,10 @@
     @include mobile {
         .slide-wrap {
             margin: 0 -16px;
+            padding-bottom: 30px;
+            .indi-wrap {
+                bottom: 0;
+            }
             .slide-content {
                 margin: 0;
                 padding: 0 14px;
