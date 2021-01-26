@@ -416,12 +416,14 @@
                 .btn-link {
                     font-size: 22px;
                     padding-right: 0;
+                    text-decoration: none;
                     &:after {
+                        background-image: url(/lg5-common/images/icons/btn-arr-32x32-black.svg);
                         background-size: 32px;
                         display: inline-block;
                         position: relative;
                         right: auto;
-                        top: auto;
+                        // top: auto;
                         margin-left: 12px;
                     }
                 }
@@ -533,8 +535,11 @@
                             }
                         }
                         .btn-link {
+                            text-decoration: none;
                             &::after {
-                                background-position: center top -4px;
+                                background-position: center;
+                                width: 32px;
+                                height: 32px;
                             }
                         }
                     }
@@ -564,7 +569,8 @@
                         .btn-link {
                             font-size: 16px;
                             &::after {
-                                top: 5px;
+                                background-size: 22px;
+                                margin-left: 6px;
                             }
                         }
                         &:nth-child(2n+1) {
