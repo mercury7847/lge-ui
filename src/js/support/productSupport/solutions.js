@@ -154,11 +154,12 @@
                 self.param = {};
                 self.param['keyword'] = '';
                 self.param['topic'] = 'All';
-                self.param['topicNm'] = 'All';
+                self.param['topicNm'] = qqqq.topicNm || 'All';
                 self.param['subTopic'] = 'All';
-                self.param['subTopicNm'] = 'All';
-                self.param['orderBy'] = qqqq.orderBy || $('#orderBy').val();
+                self.param['subTopicNm'] = qqqq.subTopicNm || 'All';
+                self.param['orderBy'] = qqqq.sort || $('#orderBy').val();
                 self.param['page'] = qqqq.page || 1;
+                self.param['research'] = false;
 
                 self.bindEvent();
                 console.log(qqqq);
@@ -492,6 +493,10 @@
                     if (e.keyCode == 13){
                         self.$searchBtn.trigger('click');        
                     }
+                });
+
+                self.$wrap.find('#research').on('change', function() {
+                    self.param.research = self.$wrap.find('#research').is(':checked');
                 });
 
                 // keyword search
