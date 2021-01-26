@@ -159,6 +159,7 @@
     }
 
     .bullet-list {
+        margin-top:0;
         &:first-child {
             margin-top:0;
         }
@@ -185,6 +186,9 @@
             &:first-child {
                 margin-top:0;
             }
+        }
+        & + .bullet-list {
+            margin-top:12px;
         }
     }
 }
