@@ -407,8 +407,8 @@
                 }
 
                 var point = response.result.items[0].point;
-                self.latitude = point.x;
-                self.longitude = point.y;
+                self.longitude = point.x;
+                self.latitude = point.y;
 
                 callback && callback();
             });
