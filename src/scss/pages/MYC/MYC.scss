@@ -87,6 +87,9 @@
             .inquiry-list-notify {
                 @include mobile {
                     padding-bottom:24px;
+                    & + .btn-moreview {
+                        margin-top:0;
+                    }
                 }
             }
         }
