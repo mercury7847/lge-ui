@@ -63,23 +63,34 @@ var FilterLayer = (function() {
         '</div>' +
     '</li>';
 
-    function FilterLayer($targetFilter, $targetFilterButton, $listSorting, filterChangeEventFunc) {
+    var filterCategoryTopTemplate = '<li><div class="chk-wrap">' +
+        '<input type="checkbox" name="{{filterId}}" id="{{filterId}}-{{index}}" value="{{filterValueId}}">' +
+        '<label for="{{filterId}}-{{index}}">{{filterValueName}}</label>'
+    '</div></li>'
+
+    function FilterLayer($targetFilter, $categorySelect, $listSorting, $targetFilterButton, filterChangeEventFunc) {
         var self = this;
-        self.filterData = {};
+        self.filterData = null;
+        self.initLoadEnd = false;
         vcui.require(['ui/rangeSlider', 'ui/accordion'], function () {
-            self._setting($targetFilter, $targetFilterButton, $listSorting, filterChangeEventFunc);
+            self._setting($targetFilter, $categorySelect, $listSorting, $targetFilterButton, filterChangeEventFunc);
             self._bindEvents();
+            self.initLoadEnd = true;
+            if(self.filterData) {
+                self.updateFilter(self.filterData);
+            }
         });
     }
 
     //public
     FilterLayer.prototype = {
-        _setting: function($targetFilter, $targetFilterButton, $listSorting, filterChangeEventFunc) {
+        _setting: function($targetFilter, $categorySelect, $listSorting, $targetFilterButton, filterChangeEventFunc) {
             var self = this;
             self.filterChangeEventFunc = filterChangeEventFunc;
             self.$layFilter = $targetFilter;
             self.$targetFilterButton = $targetFilterButton;
             self.$listSorting = $listSorting;
+            self.$categorySelect = $categorySelect;
             
             self.$layFilter.find('.ui_filter_slider').vcRangeSlider();
             self.$layFilter.find('.ui_order_accordion').vcAccordion();
@@ -169,6 +180,13 @@ var FilterLayer = (function() {
             });
             */
 
+            // 서브카테고리 이벤트 처리 
+                //$('input[name="categoryCheckbox"]').trigger('change', true);
+
+            self.$categorySelect.on('change', 'input', function(e, noRequest){
+                self.triggerFilterChangeEvent();
+            });
+
             self._filterBindCustomEvents();
         },
 
@@ -249,7 +267,20 @@ var FilterLayer = (function() {
                     }
                 }
             });
-            
+
+            //top 카테고리
+            if(self.$categorySelect) {
+                var items = self.$categorySelect.find('li input:checked');
+                items.each(function(idx, el){
+                    var tempArray = filterData[el.name];
+                    if(!tempArray) {
+                        tempArray = [];
+                    }
+                    tempArray.push(el.value);
+                    filterData[el.name] = tempArray;
+                });
+            }
+
             if(selectedFilter) {
                 $btnFilter.addClass('applied');
                 $btnFilter.find('a span').text('옵션 적용됨');
@@ -260,9 +291,6 @@ var FilterLayer = (function() {
                 self.$layFilter.find('div.btn-reset button').hide();
             }
 
-            var test = data;
-            test.filterData = filterData;
-            
             data["filterData"] = JSON.stringify(filterData);
             return data;
         },
@@ -270,6 +298,11 @@ var FilterLayer = (function() {
         updateFilter: function(data) {
             var self = this;
             
+            if(!self.initLoadEnd) {
+                self.filterData = data;
+                return;
+            }
+
             self.$layFilter.css('display', '');
             self.$layFilter.find('.ui_filter_slider').vcRangeSlider('update',true);
 
@@ -309,6 +342,25 @@ var FilterLayer = (function() {
                             break;
                         case "checkbox":
                             $list_ul.append(vcui.template(filterCheckboxTemplate, item));
+                            break;
+                        default: {
+                                switch(item.filterGroupType){
+                                    case "sub_category":
+                                        if(lgkorUI.stringToBool(item.topFilterFlag) && self.$categorySelect) {
+                                            var $list_category = self.$categorySelect.find('ul');
+                                            $list_category.empty();
+                                            item.filterValues.forEach(function(obj, idx){
+                                                obj.filterId = item.filterId;
+                                                obj.index = idx;
+                                                $list_category.append(vcui.template(filterCategoryTopTemplate, obj));
+                                            });
+                                            self.$categorySelect.vcSmoothScrollTab('refresh');
+                                        }
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
                             break;
                     }
                 });

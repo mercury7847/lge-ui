@@ -1,17 +1,122 @@
 <!DOCTYPE html>
 <html lang="ko">
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0015.min.css">
     <script src="/lg5-common/js/search/filterLayer.min.js"></script>
     @@include('./common/head.html', {
         componentID: "KRP0007",
         isJScompile: true
     })
     <script src="/lg5-common/js/components/KRP0015.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0015.min.css">
 <body>
     <script>
-        var firstFilterList = []; //data[0].filterList 의 내용을 넣어주세요.
+        //var firstFilterList = [];
+        var firstFilterList = [
+            {
+                "filterType":"none",
+                "topFilterFlag": "Y",
+                "filterId":"FM00015001",
+                "filterGroupName":"일반제품_서브카테고리",
+                "filterGroupType":"sub_category",
+                "filterValues":[
+                    {"filterValueId":"FV00046001","filterValueName":"나노셀 TV"},
+                    {"filterValueId":"FV00046002","filterValueName":"울트라 HD TV"},
+                    {"filterValueId":"FV00046003","filterValueName":"올레드 TV"},
+                    {"filterValueId":"FV00046004","filterValueName":"일반 LED TV"},
+                    {"filterValueId":"FV00046005","filterValueName":"나노셀 TV2"},
+                    {"filterValueId":"FV00046006","filterValueName":"울트라 HD TV2"},
+                    {"filterValueId":"FV00046007","filterValueName":"올레드 TV2"},
+                    {"filterValueId":"FV00046008","filterValueName":"일반 LED TV2"},
+                    {"filterValueId":"FV00046009","filterValueName":"나노셀 TV3"},
+                    {"filterValueId":"FV00046010","filterValueName":"울트라 HD TV3"},
+                    {"filterValueId":"FV00046011","filterValueName":"올레드 TV3"},
+                    {"filterValueId":"FV00046012","filterValueName":"일반 LED TV3"},
+                ]
+            },
+            {
+                "filterType":"range",
+                "topFilterFlag": "N",
+                "filterId":"fid00001",
+                "filterGroupName":"판매가",
+                "filterGroupType":"range",
+                "filterValues":[
+                    {"filterValueId":"pd0001","filterValueName":"50,000"},
+                    {"filterValueId":"pd0002","filterValueName":"150,000"},
+                    {"filterValueId":"pd0003","filterValueName":"400,000"},
+                    {"filterValueId":"pd0004","filterValueName":"1,000,000"},
+                    {"filterValueId":"pd0005","filterValueName":"2,000,000"}
+                ]
+            },
+            {
+                "filterType":"range",
+                "topFilterFlag": "N",
+                "filterId":"fid00002",
+                "filterGroupName":"화면크기",
+                "filterGroupType":"range",
+                "filterValues":[
+                    {"filterValueId":"rd0001","filterValueName":"48인치"},
+                    {"filterValueId":"rd0002","filterValueName":"52인치"},
+                    {"filterValueId":"rd0003","filterValueName":"80인치"},
+                    {"filterValueId":"rd0004","filterValueName":"120인치"}
+                ]
+            },
+            {
+                "filterType":"check",
+                "topFilterFlag": "N",
+                "filterId":"fid00003",
+                "filterGroupName":"서비스",
+                "filterGroupType":"check",
+                "filterValues":[
+                    {"filterValueId":"","filterValueName":"전체"},
+                    {"filterValueId":"sd0002","filterValueName":"일반제품"},
+                    {"filterValueId":"sd0003","filterValueName":"케어십 가능 제품"},
+                    {"filterValueId":"sd0004","filterValueName":"기타"}
+                ]
+            },
+            {
+                "filterType":"color",
+                "topFilterFlag": "N",
+                "filterId":"fid00004",
+                "filterGroupName":"색상",
+                "filterGroupType":"color",
+                "filterValues":[
+                    {"filterValueId":"cd0001","filterValueName":"맷 블랙", "topFilterDisplayName":"HA_REF_Matte_Black_Stainless_Steel"},
+                    {"filterValueId":"cd0002","filterValueName":"블랙 스틸", "topFilterDisplayName":"Black-Stainless-Steel"},
+                    {"filterValueId":"cd0003","filterValueName":"스테인레스 스틸", "topFilterDisplayName":"stainless-steel"},
+                    {"filterValueId":"cd0004","filterValueName":"화이트", "topFilterDisplayName":"smooth-white"}
+                ]
+            },
+            {
+                "filterType":"checkbox",
+                "topFilterFlag": "N",
+                "filterId":"fid00005",
+                "filterGroupName":"용량",
+                "filterGroupType":"size",
+                "filterValues":[
+                    {"filterValueId":"yd0001","filterValueName":"용량 11"},
+                    {"filterValueId":"yd0002","filterValueName":"용량 22"},
+                    {"filterValueId":"yd0003","filterValueName":"용량 33"},
+                    {"filterValueId":"yd0004","filterValueName":"용량 44"}
+                ]
+            },
+            {
+                "filterType":"checkbox",
+                "filterId":"fid00006",
+                "filterGroupName":"태그",
+                "filterGroupType":"check",
+                "filterValues":[
+                    {"filterValueId":"td0001","filterValueName":"태그1"},
+                    {"filterValueId":"td0002","filterValueName":"태그2"},
+                    {"filterValueId":"td0003","filterValueName":"태그3"}
+                ]
+            }
+        ]
     </script>
-    <input type="hidden" name="categoryId" value="CT30005620"> <!-- categoryId 을 가져오기 위한 테스트 용 -->
+    <div class="hidden-input-group">
+        <input type="hidden" name="totalCount" value="1">
+        <input type="hidden" name="page" value="1">
+    </div>
+    <!-- <input type="hidden" name="categoryId" value="CT30005620"> -->
+    <!-- categoryId 을 가져오기 위한 테스트 용 -->
     
     <div class="wrap">
         @@include('./common/header.html')
@@ -26,19 +131,29 @@
                 -->
                 
                 <!-- component KRC0009 -->
-                <section class="component KRP0007" aria-label="{category명} product list">
+                <section class="component KRP0007" aria-label="product list"
+                    data-prod-list="/lg5-common/data-ajax/filter/retrieveCategoryProductList.json"
+                >
                     <!-- component -->
                    @@include('./common/partials/KRP0007-cate.html')
                     <!-- // component -->
 
-                    <div class="plp-list-wrap" data-prod-list="/lg5-common/data-ajax/filter/retrieveCategoryProductList.json">
+                    <div class="plp-list-wrap">
                         <!-- component -->
                         
                        @@include('./common/modules/list-filter.html', {
                            "btmLink" : [
                                 {"text" : "나에게 맞는<br>케어솔루션 제품 찾기", "img" : "/lg5-common/images/icons/icon-img02-64.svg"},
                                 {"text" : "매장 방문 예약", "img" : "/lg5-common/images/icons/ic-main-calender-48.svg"}
-                           ]
+                           ],
+                           "select" : [
+                                    {"option" : "추천순", "default":'value="popular"'},
+                                    {"option" : "인기순", "default":'value="popularity"'},
+                                    {"option" : "최신순", "default":'value="latest"'},
+                                    {"option" : "가격 높은순", "default":'value="pricehigh"'},
+                                    {"option" : "가격 낮은순", "default":'value="pricelow"'},
+                                    {"option" : "리뷰 많은순", "default":'value="review"'}
+                                ]
                        })
                         <!-- // component -->
 
@@ -46,12 +161,12 @@
                         <div class="product-list-area">
                             @@include('./common/modules/list-sorting.html', {
                                 "select" : [
-                                    {"option" : "추천순"},
-                                    {"option" : "인기순"},
-                                    {"option" : "최신순"},
-                                    {"option" : "가격 높은순"},
-                                    {"option" : "가격 낮은순"},
-                                    {"option" : "리뷰 많은순"}
+                                    {"option" : "추천순", "default":'value="popular"'},
+                                    {"option" : "인기순", "default":'value="popularity"'},
+                                    {"option" : "최신순", "default":'value="latest"'},
+                                    {"option" : "가격 높은순", "default":'value="pricehigh"'},
+                                    {"option" : "가격 낮은순", "default":'value="pricelow"'},
+                                    {"option" : "리뷰 많은순", "default":'value="review"'}
                                 ]
                             })
                             <div class="list-wrap">

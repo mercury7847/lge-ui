@@ -31,7 +31,43 @@
                         </div>
                         <div class="desc ui_accord_content" id="headId_0">
                             <div class="cont">
-                                <div class="rdo-wrap">
+                                @@if(context.select) {
+                                    @@for (var i = 0; i < 1; i++) {
+                                        <div class="rdo-wrap">
+                                            <input type="radio" name="sorting" id="sort0`+[i]+`" `+select[i].default+` checked>
+                                            <label for="sort0`+[i]+`">`+select[i].option+`</label>
+                                        </div>
+                                    }
+                                    @@for (var i = 1; i < context.select.length; i++) {
+                                        <div class="rdo-wrap">
+                                            <input type="radio" name="sorting" id="sort0`+[i]+`" `+select[i].default+`>
+                                            <label for="sort0`+[i]+`">`+select[i].option+`</label>
+                                        </div>
+                                    }
+                                }
+                                @@if(!context.select) {
+                                    <div class="rdo-wrap">
+                                        <input type="radio" name="sorting" id="sort01" value="accuracy" checked>
+                                        <label for="sort01">정확도순</label>
+                                    </div>
+                                    <div class="rdo-wrap">
+                                        <input type="radio" name="sorting" id="sort02" value="popularity">
+                                        <label for="sort02">인기순</label>
+                                    </div>
+                                    <div class="rdo-wrap">
+                                        <input type="radio" name="sorting" id="sort03" value="latest">
+                                        <label for="sort03">최신순</label>
+                                    </div>
+                                    <div class="rdo-wrap">
+                                        <input type="radio" name="sorting" id="sort04" value="pricehigh">
+                                        <label for="sort04">가격 높은순</label>
+                                    </div>
+                                    <div class="rdo-wrap">
+                                        <input type="radio" name="sorting" id="sort05" value="pricelow">
+                                        <label for="sort05">가격 낮은순</label>
+                                    </div>
+                                }
+                                <!-- <div class="rdo-wrap">
                                     <input type="radio" name="sorting" id="sort01" value="accuracy" checked>
                                     <label for="sort01">정확도순</label>
                                 </div>
@@ -50,7 +86,7 @@
                                 <div class="rdo-wrap">
                                     <input type="radio" name="sorting" id="sort05" value="pricelow">
                                     <label for="sort05">가격 낮은순</label>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </li>
