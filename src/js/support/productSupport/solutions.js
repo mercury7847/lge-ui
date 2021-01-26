@@ -162,13 +162,14 @@
                 self.param['research'] = false;
 
                 self.bindEvent();
-                console.log(qqqq);
+
                 self.$pagination.pagination();
                 $('.ui_search').search();
                 self.$cont.commonModel({
                     register: {},
                     selected: {
-                        category: qqqq.cateCode,
+                        cateCode: qqqq.cateCode || '',
+                        category: '',
                         categoryName: '',
                         subCategory: '',
                         subCategoryName: '',
@@ -357,6 +358,7 @@
 
                 self.$cont.on('complete', function(e, data, url, auto) { 
                     var param = {
+                        cateCode: data.cateCode || '',
                         modelCode: data.modelCode,
                         category: data.category,
                         categoryNm: data.categoryName,
