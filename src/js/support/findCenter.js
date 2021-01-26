@@ -352,8 +352,11 @@
                     
                 }
             });
-            self.$address1.on('keydown', function() {
-
+            self.$address1.on('keyup', function(e) {
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    self.searchCenterName.trigger('click');
+                }
             });
 
             $('.ui_search').on('autocomplete', function(e, param, url, callback) {
@@ -392,7 +395,7 @@
             self._resize();
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
-        searchAddressToCoordinate: function(address) { 
+        searchAddressToCoordinate: function(address, callback) { 
             var self = this;
             var point;
             
@@ -404,8 +407,10 @@
                 }
 
                 var point = response.result.items[0].point;
-                self.latitude = point.x;
-                self.longitude = point.y;
+                self.longitude = point.x;
+                self.latitude = point.y;
+
+                callback && callback();
             });
         },
         _setTabInit: function(){
@@ -613,7 +618,8 @@
                     break;
                 case 'center':
                     keywords = {
-                        searchCity: self.$citySelect2.val(),
+                        latitude:self.latitude,
+                        longitude:self.longitude,
                         searchKeyword: self.$address1.val()
                     };
                     break;
@@ -637,19 +643,14 @@
             var keyword = self.$boroughSelect.val() || self.$citySelect.val();
             var trim = keyword.replace(/\s/gi, '');
             if(trim.length){
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function(pos) {
-                        self.latitude = pos.coords.latitude;
-                        self.longitude = pos.coords.longitude;
+                var callback = function() {
+                    self._loadStoreData()
+                };
 
-                        self.searchResultMode = true;
-                        self.schReaultTmplID = "localSearch";
-                        
-                        self._loadStoreData();
-                    }, function(error) {
-                    
-                    }); 
-                }
+                self.searchResultMode = true;
+                self.schReaultTmplID = "localSearch";
+                
+                self.searchAddressToCoordinate(trim, callback);
             }
         },
 
@@ -721,12 +722,16 @@
             var keyword = self.$address1.val();
             var trim = keyword.replace(/\s/gi, '');
             if(trim.length){
+                var callback = function() {
+                    self._loadStoreData()
+                };
+
                 self.schReaultTmplID = "search";
                 self.searchResultMode = true;
 
                 $(window).off('keyup.searchShop');
 
-                self._loadStoreData();
+                self.searchAddressToCoordinate(self.$citySelect2.val(), callback);
             } else{
                 lgkorUI.alert("", {
                     title: "광역 시/도 선택 후 센터 명을 입력해주세요."

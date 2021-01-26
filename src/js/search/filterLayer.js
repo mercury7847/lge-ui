@@ -183,9 +183,11 @@ var FilterLayer = (function() {
             // 서브카테고리 이벤트 처리 
                 //$('input[name="categoryCheckbox"]').trigger('change', true);
 
-            self.$categorySelect.on('change', 'input', function(e, noRequest){
-                self.triggerFilterChangeEvent();
-            });
+            if(self.$categorySelect) {
+                self.$categorySelect.on('change', 'input', function(e, noRequest){
+                    self.triggerFilterChangeEvent();
+                });
+            }
 
             self._filterBindCustomEvents();
         },
@@ -372,12 +374,13 @@ var FilterLayer = (function() {
             self.$layFilter.find('div.btn-reset button').hide();
         },
 
-        resetFilter: function() {
+        resetFilter: function(data) {
             var self = this;
-
+            
+            /*
             //필터 정렬박스
             self.$layFilter.find('input[name="sorting"]:eq(0)').prop('checked', true);
-            /*
+
             //리스트 정렬박스
             var $target = self.$listSorting.find('.ui_selectbox');
             $target.vcSelectbox('selectedIndex', 0, false);
@@ -391,27 +394,50 @@ var FilterLayer = (function() {
             
             self.$layFilter.find('div.search-inner input').val('');
 
+            if(vcui.isEmpty(data)) {
+                //필터 슬라이더
+                self.$layFilter.find('.ui_filter_slider').each(function(idx, el){
+                    var $el = $(el);
+                    var values = JSON.parse($el.attr('data-values'));
+                    var min = 0;
+                    var max = values.length - 1;
+                    $el.attr('data-min',min);
+                    $el.attr('data-max',max);
+                    console.log($el.attr('name'),values);
+                    $el.vcRangeSlider('reset',min+','+max);
+                });
 
-            //필터 슬라이더
-            self.$layFilter.find('.ui_filter_slider').each(function(idx, el){
-                var $el = $(el);
-                var values = JSON.parse($el.attr('data-values'));
-                var min = 0;
-                var max = values.length - 1;
-                $el.attr('data-min',min);
-                $el.attr('data-max',max);
-                $el.vcRangeSlider('reset',min+','+max);
-            });
+                //필터 라디오버튼
+                self.$layFilter.find('.ui_filter_accordion input[type="radio"]:eq(0)').each(function(idx, el){
+                    $(el).prop('checked', true);
+                });
 
-            //필터 라디오버튼
-            self.$layFilter.find('.ui_filter_accordion input[type="radio"]:eq(0)').each(function(idx, el){
-                $(el).prop('checked', true);
-            });
+                //필터 체크박스
+                self.$layFilter.find('.ui_filter_accordion input[type="checkbox"]').each(function(idx, el){
+                    $(el).prop('checked', false);
+                });
+            } else {
+                //필터 슬라이더
+                self.$layFilter.find('.ui_filter_slider').each(function(idx, el){
+                    var $el = $(el);
+                    var values = JSON.parse($el.attr('data-values'));
+                    var min = 0;
+                    var max = values.length - 1;
+                    $el.attr('data-min',min);
+                    $el.attr('data-max',max);
+                    $el.vcRangeSlider('reset',min+','+max);
+                });
 
-            //필터 체크박스
-            self.$layFilter.find('.ui_filter_accordion input[type="checkbox"]').each(function(idx, el){
-                $(el).prop('checked', false);
-            });
+                //필터 라디오버튼
+                self.$layFilter.find('.ui_filter_accordion input[type="radio"]:eq(0)').each(function(idx, el){
+                    $(el).prop('checked', true);
+                });
+
+                //필터 체크박스
+                self.$layFilter.find('.ui_filter_accordion input[type="checkbox"]').each(function(idx, el){
+                    $(el).prop('checked', false);
+                });
+            }
         },
     }
 

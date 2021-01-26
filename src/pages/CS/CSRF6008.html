@@ -12,29 +12,35 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '드라이버/SW'
+                'pageTitle': '드라이버/SW',
+                'pageDesc': '제품에 필요한 사용설명서, 소프트웨어, 드라이버를 지원해드립니다.'
             })
             
 
-            
-
             <div class="contents support download">
+
                 <!-- 선택 제품 플로팅바 -->
-                @@include('./common/support/selected-model-bar.html')
+                @@include('./common/support/selected-model-bar.html', {
+                    "show": true
+                })
 
                 <!-- 회원 - 제품 없을 시 -->
                 @@include('./common/support/select-my-model.html', {
-                    "noItem": true
+                    "noItem": true,
+                    "show": true
                 })
 
                 <!-- 회원 - 보유제품 펼침 -->
-                @@include('./common/support/select-my-model.html')
+                @@include('./common/support/select-my-model.html', {
+                    "show": true
+                })
 
                 <div class="cont-wrap">
                     <div class="step-area">
                         <!-- 제품 선택 -->
                         <div class="step-box active" id="stepModel">
                             @@include('./common/support/select-model.html', {
+                                "url": "/lg5-common/data-ajax/support/downloadResources/selectModel.json",
                                 "category": [
                                     { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
                                     { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
@@ -61,6 +67,7 @@
                                     <h2 class="tit">제품사용 설명서 <em id="manualCount" class="point">3</em>건
                                         @@include('./common/modules/tooltip.html', {
                                             "type" : "include",
+                                            "text" : "제품사용 설명서 유의사항",
                                             "page" : "tooltip-CSRF6075"
                                         })
                                     </h2>
@@ -75,8 +82,8 @@
                                                     <li>2020.11.03</li>
                                                     <li>한국어</li>
                                                     <!-- 모바일 기기 선택 노출 -->
-                                                    <li>펫네임</li>
-                                                    <li>OS</li>
+                                                    <!-- <li>펫네임</li>
+                                                    <li>OS</li> -->
                                                     <!-- // 모바일 기기 선택 노출 -->
                                                 </ul>
                                                 <div class="btns-area">
@@ -101,7 +108,7 @@
                                     </ul>
                                 </div>
         
-                                <button type="button" class="btn-moreview block"><span>설명서 더보기</span></button>
+                                <button type="button" class="btn-moreview block"><span>더보기</span></button>
         
                                 <!-- data 없을 때 -->
                                 <div class="no-data" style="display:none">
@@ -116,14 +123,26 @@
                                 </div>
         
                                 <!-- 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
-                                <div class="banner-wrap">
+                                <div class="banner-wrap toggle-banner">
                                     <div class="banner">    
-                                        <p class="tit">드라이버/소프트웨어는 LG Update Center[통합 드라이버 설치 프로그램]을 통해 편리하게 설치해 보세요.</p>
-                                        <a href="https://www.lgservice.co.kr/simple/selectSimpleSearchDetail.do?gubun=FAQ&type=keyword&seq=27830&itemId=9438" class="btn-link">LG UPdata Center 가기</a>
+                                        <div class="cont">
+                                            <p class="tit">드라이버/소프트웨어는 LG Update Center[통합 드라이버 설치 프로그램]을 통해 편리하게 설치해 보세요.</p>
+                                        </div>
+                                        <a href="https://www.lgservice.co.kr/simple/selectSimpleSearchDetail.do?gubun=FAQ&type=keyword&seq=27830&itemId=9438" class="btn-link"><span class="underline">LG UPdata Center 가기</span></a>
                                     </div>
                                 </div>
                                 <!-- // 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
-        
+
+                                <!-- 드라이버/SW 결과 내 검색 기능 -->
+                                <div class="keyword-box driver-inner-search">
+                                    @@include('./common/support/search-keyword.html', {
+                                        'id': 'driverKeyword',
+                                        'inputTitle': '검색어 입력',
+                                        'desc': '예시 : 통합 드라이버 설치 프로그램, 무선랜'
+                                    })
+                                </div>
+                                <!-- 드라이버/SW 결과 내 검색 기능 -->
+
                                 <div class="form-wrap">
                                     <div class="forms">
                                         <div class="tit">
@@ -144,7 +163,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="forms">
+                                    <!-- <div class="forms">
                                         <div class="tit">
                                             <label for="driver">드라이버 분류</label>
                                         </div>
@@ -161,9 +180,9 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
-                                <div class="tabs-wrap border-type left ui_tab ui_smooth_scroll">
+                                <!-- <div class="tabs-wrap border-type left ui_tab ui_smooth_scroll">
                                     <ul class="tabs">
                                         <li class="on"><a href="#" data-value="">전체(200) <em class="blind">선택됨</em></a></li>
                                         <li><a href="#" data-value="통합 드라이버 설치프로그램">통합 드라이버 설치프로그램(110)</a></li>
@@ -173,11 +192,11 @@
                                         <li><a href="#" data-value="랜">랜(4)</a></li>
                                         <li><a href="#" data-value="기타">기타(0)</a></li>
                                     </ul>
-                                </div>
+                                </div> -->
                                 <div class="tabs-wrap-description">
                                     <p>제목을 선택하면 상세내용을 확인할 수 있습니다.</p>
                                 </div>
-                                <div class="driver-list-wrap ui_list_accordion">
+                                <div class="driver-list-wrap">
                                     <ul class="driver-list">
                                         <li>
                                             <div class="head">
@@ -192,13 +211,13 @@
                                                         <div class="box">
                                                             <button type="button" class="btn border size"><span>다운로드 1118.4MB</span></button>
                                                         </div>
-                                                        <div class="box">
+                                                        <!-- <div class="box">
                                                             <a href="#" class="accord-btn ui_accord_toggle" data-open-text="이전 버전 보기" data-close-text="이전 버전 닫기"><span class="ui_accord_text">이전 버전 보기</span></a>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="accord-cont ui_accord_content">
+                                            <!-- <div class="accord-cont ui_accord_content">
                                                 <ul class="driver-list">
                                                     <li>
                                                         <div class="file-box">
@@ -231,7 +250,7 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-                                            </div>
+                                            </div> -->
                                         </li>
                                         <li>
                                             <div class="head">
@@ -259,9 +278,15 @@
                                     <p>다운로드/소프트웨어 자료가 없습니다.</p>
                                 </div>
                             </div>
+                            <div class="survey-banner-wrap">
+                                <div class="banner">    
+                                    <p class="tit">고객님이 선택하신 [<strong class="model">OLED48CXKNB</strong>] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
+                                    <button type="button" class="btn border size" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                   
+                    
 
                 </div>
 

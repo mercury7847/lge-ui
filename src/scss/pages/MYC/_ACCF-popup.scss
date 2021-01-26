@@ -374,7 +374,7 @@
     @include font-medium;
 }
 .lg-comp-infos {
-    margin-top:48px;
+    margin-top:60px;
     @include mobile {
         margin-top:40px;
     }
@@ -440,7 +440,7 @@
             }
             dt {
                 padding-right:24px;
-                color:#767676;
+                color:#000;
                 text-align:left;
                 word-break:keep-all;
             }
@@ -470,8 +470,8 @@
                     @include font-large-2;
                     font-weight:700;
                     @include mobile {
-                        font-size:24px;
-                        line-height:32px;
+                        font-size:18px;
+                        line-height:26px;
                     }
                 }
             }
@@ -509,8 +509,10 @@
         @include font-medium;
         em {
             margin-right:8px;
-            @include font-large-3;
+            // @include font-large-3;
+            font-size:20px;
             font-weight:700;
+            line-height:28px;
         }
     }
     .info {
@@ -520,6 +522,10 @@
         @include font-medium
         & + .info {
             margin-top:0;
+        }
+        @include mobile {
+            margin-top:8px;
+            font-weight:normal;
         }
     }
 }
