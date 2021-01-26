@@ -64,9 +64,14 @@
         initialize : function(data){
             var self = this;
     
-            this.setMenuList(self.el.list, data);
+            this.setMenuList(data);
         },
-        setMenuList: function(target, data) {
+        reset : function(){
+            var self = this;
+            self.el.list.html('');
+            self.el.wrap.hide();
+        },
+        setMenuList: function(data) {
             var self = this;
             var data = data.otherService;
             var serviceList = data.serviceList instanceof Array ? data.serviceList : [];
@@ -79,11 +84,10 @@
                 serviceList.forEach(function(item){
                     htmlData += vcui.template(self.template, item);
                 });
-                target.html(htmlData);
+                self.el.list.html(htmlData);
                 self.el.wrap.show();
             } else {
-                target.html('');
-                self.el.wrap.hide();
+                self.reset();
             }
         },
     };
@@ -103,70 +107,92 @@
         el : {
             wrap : $('.related-info'),
             title : $('.related-info .banner-tit'),
-            list : $('.related-info .slide-track')
+            list : $('.related-info .slide-track'),
+            slider : $('.related-info .info-slider')
         },
         initialize : function(data){
             var self = this;
     
-            this.setSlideContent(self.el.list, data);
-            this.sliderInit();
+            self.setSlideContent(data);
+            self.sliderInit();
+        },
+        reset : function(){
+            var self = this;
+            self.el.list.html('');
+            self.el.wrap.hide();
         },
         sliderInit : function(){
+            var self = this;
             vcui.require(['ui/carousel'], function () {    
                 // LG제품에 관련된 정보를 확인하세요!
-                $('.info-slider').vcCarousel({
-                    infinite: false,
-                    autoplay: false,
-                    slidesToScroll: 3,
-                    slidesToShow: 3,
-                    responsive: [
-                        {
-                            breakpoint: 1024,
-                            settings: {
-                                slidesToScroll: 3,
-                                slidesToShow: 3
+                if( !self.el.slider.hasClass('is-active') ) {
+                    console.log('slider init')
+                    self.el.slider.not('.is-active').vcCarousel({
+                        infinite: false,
+                        autoplay: false,
+                        slidesToScroll: 3,
+                        slidesToShow: 3,
+                        responsive: [
+                            {
+                                breakpoint: 1024,
+                                settings: {
+                                    slidesToScroll: 3,
+                                    slidesToShow: 3
+                                }
+                            },
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    arrows: false,
+                                    slidesToScroll: 1,
+                                    slidesToShow: 1,
+                                    variableWidth: true
+                                }
+                            },
+                            {
+                                breakpoint: 20000,
+                                settings: {
+                                    slidesToScroll: 3,
+                                    slidesToShow: 3
+                                }
                             }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                arrows: false,
-                                slidesToScroll: 1,
-                                slidesToShow: 1,
-                                variableWidth: true
-                            }
-                        },
-                        {
-                            breakpoint: 20000,
-                            settings: {
-                                slidesToScroll: 3,
-                                slidesToShow: 3
-                            }
-                        }
-                    ]
-                });
+                        ]
+                    });
+                    self.el.slider.addClass('is-active');
+                } else {
+                    console.log('slider update reinit')
+                    self.el.slider.filter('.is-active').vcCarousel('update');
+                    self.el.slider.filter('.is-active').vcCarousel('reinit');
+                }
             });
-            
         },
-        setSlideContent: function(target, data) {
+        setSlideContent: function(data) {
             var self = this;
             var data = data.relatedInfo;
             var infoList = data.infoList instanceof Array ? data.infoList : [];
             var htmlData = "";
+
+            if( data.title.length ) {
+                self.el.title.html(data.title);
+            }
             
             if( infoList.length ) {
                 htmlData += vcui.template(self.template, data);
-                target.html(htmlData);
+                self.el.list.html(htmlData);
                 self.el.wrap.show();
             } else {
-                target.html('');
-                self.el.wrap.hide();
+                self.reset();
             }
         },
     }
 
+    //배너 토글
     function bannerToggle(modelType) {
         var $banner = $('.banner-wrap.toggle-banner');
+
+        if( modelType == undefined) {
+            $banner.removeClass('is-active');
+        }
 
         if( modelType == "CT50019564" || modelType == "CT50019585") {
             $banner.addClass('is-active');
@@ -175,6 +201,20 @@
         }
     }
 
+    //드라이버 OS 분류 셀렉트 옵션 값 업데이트
+    function optionUpdate(target, option){
+        var $target = $(target);
+        var _options = "";
+
+        if( option.length ) {
+            option.forEach(function(v, i){
+                _options += '<option value="' + v.code + '">' + v.codeName + '<' + '/option>';
+            })
+            console.log(_options);
+            $target.html(_options);
+        }
+        $target.vcSelectbox('update');
+    }
     
 
     
@@ -263,7 +303,7 @@
 
                 if (listArr.length) {
                     listArr.forEach(function(item) {
-                        html += vcui.template('<option value="{{value}}">{{option}}</option>', item);
+                        html += vcui.template('<option value="{{code}}">{{codeName}}</option>', item);
                     });
                 } else {
                     html = '<option value="">없음</option>';
@@ -344,6 +384,15 @@
             bindEvent: function() {
                 var self = this;
 
+                $('.contents').on('reset', function(e) {
+                    self.$myProductWarp.show();
+                    self.$cont.commonModel('next', self.$stepModel);
+                    otherService.reset();
+                    relatedInfo.reset();
+                    $('#driverKeyword').val('');
+                    bannerToggle();
+                });
+
                 // 모델 선택 후 이벤트
                 $('.contents').on('complete', function(e, data, url) {    
                     var param = {
@@ -352,6 +401,7 @@
                         category: data.category,
                         subCategory: data.subCategory
                     };
+                    defaultParam = param;
 
                     lgkorUI.requestAjaxDataPost(url, param, function(result) {
                         var resultData = result.data;
@@ -375,7 +425,8 @@
                         //만족도 평가 박스 모델코드 삽입
                         $('.survey-banner-wrap .model').html(data.modelCode);
 
-
+                        //optionUpdate('#os', resultData.driver.osOption);
+                        self.setOsOption(resultData.driver.osOption);
 
                         $('.contents').commonModel('next', self.$stepInput);
                         $('.contents').commonModel('focus', self.$productBar, function() {
@@ -411,50 +462,72 @@
                     self.searchManualList(param);
                 });
 
-                self.driverSec.find('#os').on('change', function() {
+                //드라이버 다운로드 키워드 검색
+                function downloadSearchKeyword(){
                     var param = $.extend({}, defaultParam, {
-                        os: $('#os').val(),
-                        driver: $('#driver').val(),
+                        os : $('#os').val(),
+                        keyword: $('#driverKeyword').val(),
                         page: 1
                     });
-                    
                     self.searchDriverList(param);
-                });
-                self.driverSec.find('#driver').on('change', function() {
-                    var param = $.extend({}, defaultParam, {
-                        os: $('#os').val(),
-                        driver: $('#driver').val(),
-                        page: 1
-                    });
+                }
 
-                    self.searchDriverList(param);
-
-                    if (val) {
-                        self.driverSec.find('.tabs-wrap').hide();
-                    } else {
-                        self.driverSec.find('.tabs-wrap').show();
-                        self.driverSec.find('.tabs-wrap').vcTab('select', 0);
+                //키워드 입력후 엔터시 검색
+                self.driverSec.find('#driverKeyword').on('keyup', function(e){
+                    if ( e.keyCode == 13 ) {
+                        e.preventDefault();
+                        downloadSearchKeyword();
                     }
-                });
-                self.driverSec.find('.tabs-wrap').on('tabchange', function(e, data) {
-                    var param = $.extend({}, defaultParam, {
-                        os: $('#os').val(),
-                        driver: $(data.button).data('value'),
-                        page: 1
-                    });
+                })
 
-                    self.searchDriverList(param);
+                //키워드 입력후 검색버튼 클릭시 검색
+                $(document).on('click', '.driver-inner-search button', function(e){
+                    downloadSearchKeyword();
                 });
 
+                self.driverSec.find('#os').on('change', function() {
+                    downloadSearchKeyword();
+                });
                 self.driverSec.find('.pagination').on('pageClick', function(e) {
                     var param = $.extend({}, defaultParam, {
                         os: $('#os').val(),
                         driver: $('#driver').val(),
+                        keyword: $('#driverKeyword').val(),
                         page: e.page
                     });
 
                     self.searchDriverList(param);
                 });
+                // self.driverSec.find('#driver').on('change', function() {
+                //     var param = $.extend({}, defaultParam, {
+                //         os: $('#os').val(),
+                //         driver: $('#driver').val(),
+                //         page: 1
+                //     });
+
+                //     self.searchDriverList(param);
+
+                //     if (val) {
+                //         self.driverSec.find('.tabs-wrap').hide();
+                //     } else {
+                //         self.driverSec.find('.tabs-wrap').show();
+                //         self.driverSec.find('.tabs-wrap').vcTab('select', 0);
+                //     }
+                // });
+                // self.driverSec.find('.tabs-wrap').on('tabchange', function(e, data) {
+                //     var param = $.extend({}, defaultParam, {
+                //         os: $('#os').val(),
+                //         driver: $(data.button).data('value'),
+                //         keyword: $('#driverKeyword').val(),
+                //         page: 1
+                //     });
+
+                //     self.searchDriverList(param);
+                // });
+
+               
+                
+                
 
                 self.driverSec.find('.driver-list-wrap').on('click', '.btn-info', function() {
                     var ajaxUrl = $(this).data('href'),

@@ -47,20 +47,20 @@
         "driver": {
             "osOption": [
                 {
-                    "option": "전체",
-                    "value": "전체"
+                    "codeName": "전체",
+                    "code": "전체"
                 },
                 {
-                    "option": "Window XP",
-                    "value": "Window XP"
+                    "codeName": "Window XP",
+                    "code": "Window XP"
                 },
                 {
-                    "option": "Window 2000",
-                    "value": "Window 2000"
+                    "codeName": "Window 2000",
+                    "code": "Window 2000"
                 },
                 {
-                    "option": "Window 7",
-                    "value": "Window 7"
+                    "codeName": "Window 7",
+                    "code": "Window 7"
                 }
             ],
             "listData": [
