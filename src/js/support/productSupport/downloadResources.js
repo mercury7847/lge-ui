@@ -303,7 +303,7 @@
 
                 if (listArr.length) {
                     listArr.forEach(function(item) {
-                        html += vcui.template('<option value="{{value}}">{{option}}</option>', item);
+                        html += vcui.template('<option value="{{code}}">{{codeName}}</option>', item);
                     });
                 } else {
                     html = '<option value="">없음</option>';
@@ -425,9 +425,8 @@
                         //만족도 평가 박스 모델코드 삽입
                         $('.survey-banner-wrap .model').html(data.modelCode);
 
-                        optionUpdate('#os', resultData.driver.osOption);
-
-                        
+                        //optionUpdate('#os', resultData.driver.osOption);
+                        self.setOsOption(resultData.driver.osOption);
 
                         $('.contents').commonModel('next', self.$stepInput);
                         $('.contents').commonModel('focus', self.$productBar, function() {
@@ -463,52 +462,6 @@
                     self.searchManualList(param);
                 });
 
-                self.driverSec.find('#os').on('change', function() {
-                    var param = $.extend({}, defaultParam, {
-                        os: $('#os').val(),
-                        driver: $('#driver').val(),
-                        keyword: $('#driverKeyword').val(),
-                        page: 1
-                    });
-                    
-                    self.searchDriverList(param);
-                });
-                self.driverSec.find('#driver').on('change', function() {
-                    var param = $.extend({}, defaultParam, {
-                        os: $('#os').val(),
-                        driver: $('#driver').val(),
-                        page: 1
-                    });
-
-                    self.searchDriverList(param);
-
-                    if (val) {
-                        self.driverSec.find('.tabs-wrap').hide();
-                    } else {
-                        self.driverSec.find('.tabs-wrap').show();
-                        self.driverSec.find('.tabs-wrap').vcTab('select', 0);
-                    }
-                });
-                self.driverSec.find('.tabs-wrap').on('tabchange', function(e, data) {
-                    var param = $.extend({}, defaultParam, {
-                        os: $('#os').val(),
-                        driver: $(data.button).data('value'),
-                        page: 1
-                    });
-
-                    self.searchDriverList(param);
-                });
-
-                self.driverSec.find('.pagination').on('pageClick', function(e) {
-                    var param = $.extend({}, defaultParam, {
-                        os: $('#os').val(),
-                        driver: $('#driver').val(),
-                        page: e.page
-                    });
-
-                    self.searchDriverList(param);
-                });
-                
                 //드라이버 다운로드 키워드 검색
                 function downloadSearchKeyword(){
                     var param = $.extend({}, defaultParam, {
@@ -531,6 +484,50 @@
                 $(document).on('click', '.driver-inner-search button', function(e){
                     downloadSearchKeyword();
                 });
+
+                self.driverSec.find('#os').on('change', function() {
+                    downloadSearchKeyword();
+                });
+                self.driverSec.find('.pagination').on('pageClick', function(e) {
+                    var param = $.extend({}, defaultParam, {
+                        os: $('#os').val(),
+                        driver: $('#driver').val(),
+                        keyword: $('#driverKeyword').val(),
+                        page: e.page
+                    });
+
+                    self.searchDriverList(param);
+                });
+                // self.driverSec.find('#driver').on('change', function() {
+                //     var param = $.extend({}, defaultParam, {
+                //         os: $('#os').val(),
+                //         driver: $('#driver').val(),
+                //         page: 1
+                //     });
+
+                //     self.searchDriverList(param);
+
+                //     if (val) {
+                //         self.driverSec.find('.tabs-wrap').hide();
+                //     } else {
+                //         self.driverSec.find('.tabs-wrap').show();
+                //         self.driverSec.find('.tabs-wrap').vcTab('select', 0);
+                //     }
+                // });
+                // self.driverSec.find('.tabs-wrap').on('tabchange', function(e, data) {
+                //     var param = $.extend({}, defaultParam, {
+                //         os: $('#os').val(),
+                //         driver: $(data.button).data('value'),
+                //         keyword: $('#driverKeyword').val(),
+                //         page: 1
+                //     });
+
+                //     self.searchDriverList(param);
+                // });
+
+               
+                
+                
 
                 self.driverSec.find('.driver-list-wrap').on('click', '.btn-info', function() {
                     var ajaxUrl = $(this).data('href'),
