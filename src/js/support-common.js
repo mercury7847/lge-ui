@@ -526,18 +526,12 @@ CS.MD.commonModel = function() {
             self.isRequest = opts.isRequest;
             self.page = opts.page;
             self.totalCount = opts.totalCount;
+            self.selected = opts.selected;
             self.param = {
                 pageCode: self.$el.find('#pageCode').val(),
                 serviceType: self.$el.find('#serviceType').val()
-            }
-            self.selected = {
-                category: self.$el.find('#category').val(),
-                categoryName: self.$el.find('#categoryNm').val(),
-                subCategory: self.$el.find('#subCategory').val(),
-                subCategoryName: self.$el.find('#subCategoryNm').val(),
-                modelCode: self.$el.find('#modelCode').val(),
-                productCode: self.$el.find('#productCode').val()
             };
+            self.isModel = self.selected.modelCode ? true : false;
 
             self.$modelFilter.find('.ui_select_target').vcSelectTarget();
             
@@ -545,6 +539,8 @@ CS.MD.commonModel = function() {
 
             self._initMyProduct();
             self._initStepTerms();
+            
+            if (self.isModel) self.$el.trigger('complete', [self.selected, self.resultUrl, true]);
         },
         _bindEvent: function() {
             var self = this;

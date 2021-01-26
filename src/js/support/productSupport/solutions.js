@@ -150,14 +150,29 @@
                 self.param['orderBy'] = $('#orderBy').val();
                 self.param['page'] = 1;
                 self.solutionsUrl = self.$wrap.data('solutionsUrl');
+                var test = location.search.substr(location.search.indexOf("?") + 1);
+                test = test.split("&");
+                var qqqq = {};
+                for (var i = 0; i < test.length; i++) {
+                    temp = test[i].split("=");
+                    qqqq[temp[0]] = temp[1] ? temp[1] : '';
+                }
 
+                self.bindEvent();
+                console.log(qqqq);
                 self.$pagination.pagination();
                 $('.ui_search').search();
                 self.$cont.commonModel({
-                    register: {}
-                });
-
-                self.bindEvent();                
+                    register: {},
+                    selected: {
+                        category: qqqq.cateCode,
+                        categoryName: '',
+                        subCategory: '',
+                        subCategoryName: '',
+                        modelCode: qqqq.modelCode,
+                        productCode: ''
+                    }
+                });                
             },
             setRecommProduct: function(data){
                 var $productslider = $('.product-slider');
@@ -337,7 +352,7 @@
                     self.reset();
                 });
 
-                self.$cont.on('complete', function(e, data, url) { 
+                self.$cont.on('complete', function(e, data, url, auto) { 
                     var param = {
                         modelCode: data.modelCode,
                         category: data.category,
@@ -352,10 +367,12 @@
                     lgkorUI.requestAjaxDataPost(url, param, function(result) {
                         var resultData = result.data;
     
-                        self.$cont.commonModel('updateSummary', {
-                            product: [data.categoryName, data.subCategoryName, data.modelCode],
-                            reset: 'product'
-                        });
+                        if (!auto) {
+                            self.$cont.commonModel('updateSummary', {
+                                product: [data.categoryName, data.subCategoryName, data.modelCode],
+                                reset: 'product'
+                            });
+                        }
 
                         self.setRecommProduct(resultData);
                         self.setServiceMenu(resultData);
