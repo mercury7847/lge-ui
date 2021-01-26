@@ -141,14 +141,6 @@
                 self.$pagination = self.$wrap.find('.pagination');
                 self.$orderBy = self.$wrap.find('#orderBy');
 
-                self.param = {};
-                self.param['keyword'] = '';
-                self.param['topic'] = 'All';
-                self.param['topicNm'] = 'All';
-                self.param['subTopic'] = 'All';
-                self.param['subTopicNm'] = 'All';
-                self.param['orderBy'] = $('#orderBy').val();
-                self.param['page'] = 1;
                 self.solutionsUrl = self.$wrap.data('solutionsUrl');
                 var test = location.search.substr(location.search.indexOf("?") + 1);
                 test = test.split("&");
@@ -157,6 +149,16 @@
                     temp = test[i].split("=");
                     qqqq[temp[0]] = temp[1] ? temp[1] : '';
                 }
+
+
+                self.param = {};
+                self.param['keyword'] = '';
+                self.param['topic'] = 'All';
+                self.param['topicNm'] = 'All';
+                self.param['subTopic'] = 'All';
+                self.param['subTopicNm'] = 'All';
+                self.param['orderBy'] = qqqq.orderBy || $('#orderBy').val();
+                self.param['page'] = qqqq.page || 1;
 
                 self.bindEvent();
                 console.log(qqqq);
@@ -364,7 +366,7 @@
                     self.param = $.extend(self.param, param); 
 
                     lgkorUI.showLoading();
-                    lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    lgkorUI.requestAjaxDataPost(url, self.param, function(result) {
                         var resultData = result.data;
     
                         if (!auto) {
