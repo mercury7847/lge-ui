@@ -118,7 +118,7 @@
                     self.updateRecentSearchList();
                     self.bindEvents();
 
-                    self.filterLayer = new FilterLayer(self.$layFilter, self.$btnFilter, self.$listSorting, function (data) {
+                    self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
                         self.requestSearch(data);
                     });
                     /*

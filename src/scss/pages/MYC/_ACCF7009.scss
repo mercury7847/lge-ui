@@ -10,8 +10,7 @@
             border:1px solid #ddd;
             border-radius:8px;
             @include mobile {
-                margin-top:12px;
-                padding:20px;
+                padding:24px 20px;
             }
             &:first-child {
                 margin-top:0;

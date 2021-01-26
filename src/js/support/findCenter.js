@@ -392,7 +392,7 @@
             self._resize();
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
-        searchAddressToCoordinate: function(address) { 
+        searchAddressToCoordinate: function(address, callback) { 
             var self = this;
             var point;
             
@@ -406,6 +406,8 @@
                 var point = response.result.items[0].point;
                 self.latitude = point.x;
                 self.longitude = point.y;
+
+                callback && callback();
             });
         },
         _setTabInit: function(){
@@ -442,9 +444,11 @@
             var self = this;
 
             lgkorUI.requestAjaxData(self.localUrl, {pcode:encodeURI(val),codeType:'CITY'}, function(result){
+                var arr = result.data instanceof Array ? result.data : [];
+
                 self._setSubwayOption(result.data, self.$boroughSelect, {codeName:"구/군 선택", code:""}, "code");
                 self.$localSearchButton.prop('disabled', false);
-                self.$boroughSelect.prop('disabled', false);
+                self.$boroughSelect.prop('disabled', arr.length ? false : true);
                 self.$boroughSelect.vcSelectbox('update');
             });
         },
@@ -586,8 +590,8 @@
             switch(self.searchType) {
                 case 'local':
                     keywords = {
-                        searchCity: self.$citySelect.val(),
-                        searchBorough: self.$boroughSelect.val()
+                        latitude:self.latitude,
+                        longitude:self.longitude
                     };    
                     break;
                 case 'current':
@@ -632,17 +636,17 @@
         _setLocalSearch: function(){
             var self = this;
 
-            var keyword = self.$boroughSelect.val();
+            var keyword = self.$boroughSelect.val() || self.$citySelect.val();
             var trim = keyword.replace(/\s/gi, '');
             if(trim.length){
+                var callback = function() {
+                    self._loadStoreData()
+                };
+
                 self.searchResultMode = true;
                 self.schReaultTmplID = "localSearch";
                 
-                self._loadStoreData();
-            } else{
-                lgkorUI.alert("", {
-                    title: "구/군을 선택해주세요."
-                });
+                self.searchAddressToCoordinate(trim, callback);
             }
         },
 
