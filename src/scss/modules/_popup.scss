@@ -184,14 +184,15 @@
             position:absolute;
             top:0;
             left:0;
-            width:32px;
-            height:32px;
+            width:24px;
+            height:24px;
             background:url('/lg5-common/images/icons/btn-close-32.svg') no-repeat;
-            @include mobile {
-                width:24px;
-                height:24px;
-                background-size:24px;
-            }
+            background-size:24px;
+            // @include mobile {
+            //     width:24px;
+            //     height:24px;
+            //     background-size:24px;
+            // }
         }
     }
     .pop-header {
@@ -325,7 +326,7 @@
             }
         }
         @include mobile {
-            margin-top:60px;
+            margin-top:20px;
             padding:0;
             &.check-type {
                 padding:12px 24px 24px;
@@ -659,6 +660,12 @@
         .sect-wrap {
             // margin-top:48px;
             margin-top:64px;
+            &.cnt01 {
+                margin-top:80px;
+                @include mobile {
+                    margin-top:64px;
+                }
+            }
             @include mobile {
                 margin-top:40px;
             }
@@ -1266,8 +1273,8 @@
     .pop-header {
         position: fixed;
         width: 100%;
-        height: 96px;
-        padding: 40px 48px 20px;
+        height: 78px;
+        padding: 32px 48px 16px;
         background-color: #fff;
         z-index: 99;
         &:after {
@@ -1281,8 +1288,8 @@
             background-color: #222;
         }
         @include mobile {
-            height: 82px;
-            padding: 24px 16px 26px;
+            height: 60px;
+            padding: 24px 16px 12px;
             &:after {
                 width: calc(100% - 32px);
                 left: 16px;
@@ -1297,8 +1304,8 @@
         position:fixed;
         top:40px;
         right:48px;
-        width:32px;
-        height:32px;
+        width:24px;
+        height:24px;
         z-index: 100;
         @include mobile {
             top:24px;
@@ -1309,10 +1316,10 @@
             position:absolute;
             top:0;
             left:0;
-            width:32px;
-            height:32px;
+            width:24px;
+            height:24px;
             background:url('/lg5-common/images/icons/btn-close-32.svg') no-repeat;
-
+            background-size:24px;
         }
         
     }
