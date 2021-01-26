@@ -945,7 +945,11 @@
                     if(callback && typeof callback === 'function') callback(result); 
                 } else {
                     var data = result.data;
-                    if(!self.stringToBool(data.success, true) && data.alert) {
+                    //success가 비어 있으면 성공(Y) 라 친다
+                    if(!data.success && !(typeof(data.success) === "boolean")) {
+                        data.success = "Y";
+                    }
+                    if(!self.stringToBool(data.success) && data.alert) {
                         //에러
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
@@ -997,7 +1001,11 @@
                     if(callback && typeof callback === 'function') callback(result); 
                 } else {
                     var data = result.data;
-                    if(!self.stringToBool(data.success, true) && data.alert) {
+                    //success가 비어 있으면 성공(Y) 라 친다
+                    if(!data.success && !(typeof(data.success) === "boolean")) {
+                        data.success = "Y";
+                    }
+                    if(!self.stringToBool(data.success) && data.alert) {
                         //에러
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);

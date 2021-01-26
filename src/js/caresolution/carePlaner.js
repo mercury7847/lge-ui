@@ -410,7 +410,7 @@
 
         var tabID = getTabID();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_categoryListUrl, {tabID: tabID}, function(result){
-            if(!lgkorUI.stringToBool(result.data.success, true)){
+            if(!lgkorUI.stringToBool(result.data.success)){
                 lgkorUI.hideLoading();
                 lgkorUI.commonAlertHandler(result.data.alert);
                 return;
@@ -449,7 +449,7 @@
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_prodListUrl, requestData, function(result){
             lgkorUI.hideLoading();
             
-            if(!lgkorUI.stringToBool(result.data.success, true)){
+            if(!lgkorUI.stringToBool(result.data.success)){
                 lgkorUI.commonAlertHandler(result.data.alert);
                 return;
             }
@@ -533,7 +533,7 @@
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_priceStatusUrl, sendata, function(result){
             lgkorUI.hideLoading();
             
-            if(!lgkorUI.stringToBool(result.data.success, true)){
+            if(!lgkorUI.stringToBool(result.data.success)){
                 lgkorUI.commonAlertHandler(result.data.alert);
                 return;
             }
@@ -565,7 +565,7 @@
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_changeColorUrl, sendata, function(result){
             lgkorUI.hideLoading();
             
-            if(!lgkorUI.stringToBool(result.data.success, true)){
+            if(!lgkorUI.stringToBool(result.data.success)){
                 lgkorUI.commonAlertHandler(result.data.alert);
                 return;
             }
@@ -670,7 +670,7 @@
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_putItemUrl, sendata, function(result){
             lgkorUI.hideLoading();
             
-            if(!lgkorUI.stringToBool(result.data.success, true)){
+            if(!lgkorUI.stringToBool(result.data.success)){
                 lgkorUI.commonAlertHandler(result.data.alert);
                 return;
             }
@@ -835,7 +835,7 @@
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_estimateConfirmUrl, sendata, function(result){
             lgkorUI.hideLoading();
             
-            if(!lgkorUI.stringToBool(result.data.success, true)){
+            if(!lgkorUI.stringToBool(result.data.success)){
                 lgkorUI.commonAlertHandler(result.data.alert);
                 return;
             }

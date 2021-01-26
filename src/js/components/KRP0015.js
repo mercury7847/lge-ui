@@ -2,7 +2,6 @@ $(window).ready(function(){
     if(!document.querySelector('.KRP0015')) return false;
 
     $('.KRP0015').buildCommonUI();
-    
     ;(function($, _$){      
         var itemTemplate =             
             '<div class="item-inner" data-id={{id}}>'+
