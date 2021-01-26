@@ -4,13 +4,14 @@
         pageCSS: [
             "CS/CS",
             "support/support",
+            "support/center-info"
         ]
     })
 <body>
     <div class="wrap">
         <div class="container">
             <!-- 센터찾기 -->
-            <div class="contents support store-info-wrap">
+            <div class="contents support store-info-wrap" data-latitude="126.7051511" data-longitude="37.4560537" data-sms-url="/lg5-common/data-ajax/support/searchShop/sms.json">            
                 <div class="cont-wrap">
                     <div class="headline">
                         <h1 class="h1-tit">센터 정보</h1>
@@ -94,15 +95,22 @@
                                     <dd>
                                         <!-- 2021.01.18 status 마크업 수정 -->
                                         <div class="status-icon skyblue">
-                                            <span class="blind">하늘색 표기</span>
                                             <strong class="status">원활</strong>
                                         </div>
                                         <!-- 2021.01.18 status 마크업 수정 -->
-                                        <ul class="optionIcon">
-                                            <li><div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div></li>
-                                            <li><div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div></li>
-                                            <li><div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div></li>
-                                            <li><div class="dummy" style="background-color: rgba(255, 0, 0, 0.2);display: block;width: 48px;height: 48px;"></div></li>
+                                        <ul class="opt-list">
+                                            <li class="opt-mobile">
+                                                <span class="name">모바일</span>
+                                            </li>
+                                            <li class="opt-it-monitor">
+                                                <span class="name">IT/모니터</span>
+                                            </li>
+                                            <li class="opt-small-appliances">
+                                                <span class="name">소형가전</span>
+                                            </li>
+                                            <li class="opt-expendables">
+                                                <span class="name">소모품</span>
+                                            </li>
                                         </ul>
                                     </dd>
                                 </dl>
@@ -162,7 +170,6 @@
                                     <a href="#n" class="btn border size"><span>길찾기</span></a>
                                 </div>
                                 <div class="map">
-                                    <img src="/lg5-common/images/dummy/@img-map3.jpg" alt="">
                                 </div>
                                 <dl>
                                     <dt>위치 안내</dt>
@@ -337,8 +344,6 @@
                             </div>
                             <!-- //이벤트 -->
 
-
-
                             <div class="notice-info">
                                 <div class="txt">“<span class="point">강남본점</span>”의 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</div>
                                 <a href="#n" class="btn dark-gray size-m"><span>평가하기</span></a>
@@ -348,7 +353,7 @@
                     </div>
                     <footer class="footer">
                         <div class="btn-group">
-                            <button type="button" class="btn pink"><span>고객지원 메인</span></button>
+                            <button type="button" class="btn"><span>고객지원 메인</span></button>
                         </div>
                     </footer>
                     <button type="button" class="btn-close"><span class="blind">닫기</span></button>
@@ -361,62 +366,6 @@
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
-    <script>
-        $(function(){
-            vcui.require(['ui/carousel'], function () {
-                $('.photo .ui_carousel_slider').vcCarousel({
-                    infinite: false,
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    variableWidth : true,
-                    responsive: [
-                        {
-                            breakpoint: 10000,
-                            settings: {
-                                infinite: false,
-                                variableWidth : false,
-                                dots: true,
-                                slidesToShow: 2,
-                                slidesToScroll: 2
-                                
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                infinite: false,
-                                variableWidth : true,
-                                dots: true,
-                                slidesToShow: 1, 
-                                slidesToScroll: 1
-                            }
-                        }
-                    ]
-                });
-
-                $('.event .ui_carousel_slider').vcCarousel({
-                    infinite: false,
-                    slidesToShow: 2, 
-                    slidesToScroll: 2,
-                    responsive: [
-                        {
-                            breakpoint: 10000,
-                            settings: 'unslick'
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                infinite: false,
-                                variableWidth : true,
-                                dots: true,
-                                slidesToShow: 1, 
-                                slidesToScroll: 1
-                            }
-                        }
-                    ]
-                });
-            });
-        });
-    </script>
+    <script src="/lg5-common/js/support/findCenterDetail.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,9 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "resultFlag": "Y",
+        "resultMessage": "문자 발송에 성공하였습니다."
+    }
+}

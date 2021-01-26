@@ -5,6 +5,46 @@
 
 // 매장정보
 .store-info-wrap {
+    .opt-list {
+        margin-top:12px;
+        li {
+            display:inline-block;
+            margin-left:32px;
+            padding:0;
+            vertical-align:top;
+            &:first-child {
+                margin-left:0;
+            }
+            &:before {
+                content:'';
+                display:block;
+                width:48px;
+                height:48px;
+                border-radius:50%;
+                background-color:#f4f4f4;
+                background-repeat:no-repeat;
+                background-size:32px 32px;
+                background-position:center center;
+            }
+            .name {
+                display:block;
+                @include font-x-small;
+                text-align:center;
+            }
+            &.opt-mobile:before {
+                background-image:url(/lg5-common/images/icons/cate_icon_mobile.svg);
+            }
+            &.opt-it-monitor:before {
+                background-image:url(/lg5-common/images/icons/cate_icon_it-monitors.svg);
+            }
+            &.opt-small-appliances:before {
+                background-image:url(/lg5-common/images/icons/icon_small-appliances.svg);
+            }
+            &.opt-expendables:before {
+                background-image:url(/lg5-common/images/icons/icon_small-appliances.svg);
+            }
+        }
+    }
     .cont-wrap {
         .detail-info-wrap {
             .right-box {
