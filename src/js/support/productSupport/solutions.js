@@ -150,9 +150,9 @@
                     qqqq[temp[0]] = temp[1] ? temp[1] : '';
                 }
 
-
+                self.keywords = [];
                 self.param = {};
-                self.param['keyword'] = '';
+                self.param['keywords'] = [];
                 self.param['topic'] = 'All';
                 self.param['topicNm'] = qqqq.topicNm || 'All';
                 self.param['subTopic'] = 'All';
@@ -318,7 +318,7 @@
             reset: function() {
                 var self = this;
 
-                self.param['keyword'] = '';
+                self.param['keywords'] = [];
                 self.param['topic'] = 'All';
                 self.param['topicNm'] = 'All';
                 self.param['subTopic'] = 'All';
@@ -497,6 +497,7 @@
 
                 self.$wrap.find('#research').on('change', function() {
                     self.param.research = self.$wrap.find('#research').is(':checked');
+                    self.keywords = [];
                 });
 
                 // keyword search
@@ -513,9 +514,16 @@
                         param['topicNm'] = 'All';
                         param['subTopic'] = 'All';
                         param['subTopicNm'] = 'All';
+                        self.keywords = [];
+                        self.keywords.push(value);
+                    } else {
+                        if (self.keywords.indexOf(value) != -1) {
+                            self.keywords.splice(self.keywords.indexOf(value), 1);
+                        }
+                        self.keywords.unshift(value);
                     }
 
-                    param['keyword'] = value;
+                    param['keywords'] = self.keywords;
 
                     self.param = $.extend(self.param, param);
 
