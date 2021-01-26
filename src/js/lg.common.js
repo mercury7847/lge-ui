@@ -949,8 +949,10 @@
                     if(!data.success && !(typeof(data.success) === "boolean")) {
                         data.success = "Y";
                     }
+                    console.log(self.stringToBool(data.success), data.alert);
                     if(!self.stringToBool(data.success) && data.alert) {
                         //에러
+
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
                     } else {
