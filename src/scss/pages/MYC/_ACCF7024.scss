@@ -840,10 +840,10 @@
 
 // 청약 계약 진행단계 안내
 .contract-steps {
-    margin-top:24px;
+    margin-top:48px;
     overflow:hidden;
     @include mobile {
-        margin-top:40px;
+        margin-top:32px;
     }
     > ol {
         position:relative;
