@@ -84,7 +84,7 @@
         "filterList":[
             {
                 "name": "All",
-                "code": "All"
+                "code": ""
             },
             {
                 "name": "기능",
