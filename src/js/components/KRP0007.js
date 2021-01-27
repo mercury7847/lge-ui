@@ -152,16 +152,30 @@
                 self.bindEvents();
 
                 self.filterLayer = new FilterLayer(self.$layFilter, self.$categorySelect, self.$listSorting, self.$btnFilter, function (data) {
-                    console.log(data);
+                    //console.log(data);
                     lgkorUI.setStorage(storageName, data);
-                    //self.requestSearch(data);
+
+                    var param = data;
+                    param.page = 1;
+                    if(param) {
+                        self.requestSearch(param, true);
+                    }
                 });
 
                 self.filterLayer.updateFilter(savedFilterArr);
 
                 var storageFilters = lgkorUI.getStorage(storageName);
                 if(!(vcui.isEmpty(storageFilters)) && storageFilters.filterData) {
-                    self.filterLayer.resetFilter(JSON.parse(storageFilters.filterData));
+                    var filterData = JSON.parse(storageFilters.filterData);
+                    if(firstEnableFilter) {
+                        for(key in firstEnableFilter){
+                            filterData[key] = firstEnableFilter[key];
+                        }
+                    }
+                    self.filterLayer.resetFilter(filterData, true);
+                } else {
+                    var filterData = firstEnableFilter ? firstEnableFilter : {};
+                    self.filterLayer.resetFilter(filterData, true);
                 }
             },
 
@@ -177,10 +191,57 @@
                 self.$listSorting = self.$section.find('div.list-sorting');
                 //카테고리 셀렉트
                 self.$categorySelect = self.$section.find('div.cate-scroll-wrap.ui_smooth_scrolltab');
+
+                //토탈 카운트
+                self.$totalCount = self.$listSorting.find('#totalCount');
+                //더보기 버튼
+                self.$btnMore = self.$section.find('div.read-more-area button.read-more');
             },
 
             bindEvents: function() {
                 var self = this;
+                self.$btnMore.on('click', function(e) {
+                    var param = self.filterLayer.getDataFromFilter();
+                    var hiddenData = lgkorUI.getHiddenInputData();
+                    param.page = parseInt(hiddenData.page) + 1;
+                    if(param) {
+                        self.requestSearch(param, false);
+                    }
+                });
+            },
+
+            setPageData: function(param) {
+                var self = this;
+                var page = parseInt(param.page);
+                var totalCount = parseInt(param.totalCount);
+                if (page < totalCount) {
+                    self.$btnMore.show();
+                } else {
+                    //더이상 없다
+                    self.$btnMore.hide();
+                }
+
+                lgkorUI.setHiddenInputData({
+                    totalCount: totalCount,
+                    page: page
+                });
+            },
+
+            requestSearch: function(data, isNew){
+                var self = this;
+                var ajaxUrl = self.$section.attr('data-prod-list');
+                lgkorUI.requestAjaxData(ajaxUrl, data, function(result){
+                    var data = result.data;
+                    var param = result.param;
+                    
+                    var totalCount = data.totalCount;
+                    self.$totalCount.text(vcui.number.addComma(totalCount) + "개");
+                    
+                    var listData = (data.listData && data.listData instanceof Array) ? data.listData : [];
+                    //renderProdList(listData, totalCount);
+
+                    self.setPageData(param.pagination);
+                });
             }
         };
         KRP0007.init();

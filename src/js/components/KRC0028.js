@@ -7,7 +7,7 @@ $(window).ready(function(){
         var $KRC0028 = $('.KRC0028');
         var $thumbSlider = $KRC0028.find('.ui_carousel_thumb_slider');
 
-        $KRC0028.find('.ui_carousel_slider').vcCarousel({
+        $KRC0028.find('.ui_carousel_image_slider').vcCarousel({
             infinite: false,
             fade:true,
             swipeToSlide: true,
@@ -39,7 +39,7 @@ $(window).ready(function(){
             slidesToScroll: 1,
             focusOnChange:true,
             focusOnSelect: true,
-            asNavFor: '.ui_carousel_slider'
+            asNavFor: '.ui_carousel_image_slider'
         });
 
         $thumbSlider.find('div.ui_carousel_slide a').on('click', function(e){
