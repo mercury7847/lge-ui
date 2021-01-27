@@ -261,6 +261,16 @@
 }   
 
 .form-wrap {
+    .form-row {
+        display:flex;
+        flex-direction: row;
+    }
+    .form-col {
+        flex:1;
+        & + .form-col {
+            margin-left:24px;
+        }
+    }
     .forms {
         .tit {
             width:calc(18.4% + 24px);
@@ -271,13 +281,36 @@
                 @include font-medium;
             }
         }
+
+        &.align-type-col {
+            .tit {
+                display: block;
+                width:100%;
+            }
+            .conts {
+                display: block;
+                width:100%;
+            }
+        }
     }
     @include mobile {
+        .form-row {
+            display:flex;
+            flex-direction: column;
+        }
+        .form-col {
+            flex:1;
+            & + .form-col {
+                margin-top:28px;
+                margin-left:0;
+            }
+        }
         .forms {
             .tit {
                 width:100%;
             }
             .conts {
+                margin-top:12px;
                 width:100%;
             }
         }
