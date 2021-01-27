@@ -1021,7 +1021,7 @@
             });
         },
 
-        requestCart: function(id, sku, wishListId, wishItemId, postUrl) {
+        requestCart: function(id, sku, wishListId, wishItemId, postUrl, cartType) {
             var postData = {"id":id};
             if(!(!sku)) {
                 postData.sku = sku;
@@ -1032,6 +1032,10 @@
             if(!(!wishItemId)) {
                 postData.wishItemId = wishItemId;
             };
+            if(!(!cartType)) {
+                //렌탈:rental,구매:buy
+                postData.cartType = cartType;
+            }
             lgkorUI.requestAjaxDataPost(postUrl, postData, function(result){
                 var data = result.data;
                 if(lgkorUI.stringToBool(data.success)) {
@@ -1069,8 +1073,8 @@
         },
 
         commonAlertHandler: function(alert){
-            console.log(alert);
-            if(alert.isConfirm) {
+            var isConfirm = lgkorUI.stringToBool(alert.isConfirm);
+            if(isConfirm) {
                 //컨펌
                 var obj ={title: alert.title,
                     typeClass: '',

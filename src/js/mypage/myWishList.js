@@ -17,7 +17,12 @@
                     '{{#if disabledReason}}<p class="soldout-msg m-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
                 '</p>' +
             '</div></div>' +
-            '{{#if !disabled}}<div class="col btn-col"><button type="button" class="btn size border"><span>장바구니</span></button></div>{{/if}}' +
+            '{{#if !disabled}}' +
+                '<div class="col btn-col">' +
+                    '<button type="button" class="btn size border"><span>구매 장바구니</span></button>' +
+                    '<button type="button" class="btn size border"><span>렌탈 장바구니</span></button>' +
+                '</div>' +
+            '{{/if}}' +
         '</div>' +
         '<button type="button" class="btn-delete"><span class="blind">삭제</span></button>' +
     '</li>';
@@ -45,14 +50,22 @@
             bindEvents: function() {
                 var self = this;
 
-                self.$list.on('click','li button', function(e) {
+                self.$list.on('click','li button.btn-delete', function(e) {
                     var $li = $(this).parents('li');
-                    if($(this).hasClass('btn-delete')) {
-                        //삭제
-                        self.requestRemove($li);
+                    console.log('delete');
+                    self.requestRemove($li);
+                });
+
+                self.$list.on('click','li div.btn-col button', function(e) {
+                    var $li = $(this).parents('li');
+                    var index = $(this).index();
+                    console.log(index);
+                    if(index == 0) {
+                        //구매
+                        self.requestCart($li,"buy");
                     } else {
-                        //장바구니
-                        self.requestCart($li);
+                        //렌탈
+                        self.requestCart($li,"rental");
                     }
                 });
 
@@ -105,24 +118,10 @@
                 lgkorUI.confirm(desc, obj);
             },
 
-            requestCart: function($dm) {
+            requestCart: function($dm, cartType) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-cart-url');
-                lgkorUI.requestCart($dm.attr('data-id'),$dm.attr('data-sku'),$dm.attr('data-wishListId'),$dm.attr('data-wishItemId'),ajaxUrl);
-                /*                
-                var postData = {
-                    "id":$dm.attr('data-id'),
-                    "sku":$dm.attr('data-sku'),
-                    "wishListId":$dm.attr('data-wishListId'),
-                    "wishItemId":$dm.attr('data-wishItemId'),
-                }
-                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
-                    var data = result.data;
-                    if(lgkorUI.stringToBool(data.success)) {
-                        $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
-                    }
-                });
-                */
+                lgkorUI.requestCart($dm.attr('data-id'),$dm.attr('data-sku'),$dm.attr('data-wishListId'),$dm.attr('data-wishItemId'),ajaxUrl,cartType);
             },
 
             checkNoData: function() {

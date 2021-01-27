@@ -223,7 +223,11 @@
                 margin-top: 60px;
             }
         }
-
+        .no-data {
+            @include mobile {
+                margin-bottom:60px;
+            }
+        }
     }
 
     //멤버십 포인트 조회
