@@ -3,7 +3,7 @@
         <h1 class="tit pop-title"><span>@@title</span></h1>
     </header>
     <section class="pop-conts common-pop">
-        <div class="form-wrap" id="address-regist-form">
+        <div class="form-wrap" id="address-regist-form"> <!-- 2021.01.27 id 수정-->
             <!-- [12.01 수정] DOM 추가 -->
             <div class="form-infos">
                 <p class="req" aria-disabled="true">필수 입력 사항</p>
@@ -13,7 +13,7 @@
                 <dt class="tit"><label for="ipt1" class="req">주소 별칭<span class="blind">필수입력</span></label></dt><!-- [12.01 수정] 필수입력으로 변경, DOM, class 수정 -->
                 <dd class="conts">
                     <span class="input-wrap block">
-                        <input type="text" id="ipt1" name="addressNickName" placeholder="주소별칭을 입력해주세요." data-required="true">
+                        <input type="text" id="ipt1" name="addressNickName" placeholder="주소별칭을 입력해주세요." data-required="true"> <!-- 2021.01.27 name 수정-->
                         <div class="btm-more err-block"><p class="err-msg"></p></div>
                     </span>
                 </dd>
@@ -37,15 +37,15 @@
                             <div class="btm-more err-block"><p class="err-msg"></p></div>
                         </div>
                         <div class="cell">
-                            <button type="button" class="btn find-address"><span>주소 찾기</span></button>
+                            <button type="button" class="btn find-address"><span>주소 찾기</span></button> <!-- 2021.01.27 class 수정-->
                         </div>
                     </div>
                     <div class="input-wrap">
-                        <input type="text" name="userAddress" value="" placeholder="주소찾기를 선택해주세요." disabled="" data-required="true">
+                        <input type="text" name="userAddress" value="" placeholder="주소찾기를 선택해주세요." disabled="" data-required="true"> <!-- 2021.01.27 name 수정-->
                         <div class="btm-more err-block"><p class="err-msg"></p></div>
                     </div>
                     <div class="input-wrap">
-                        <input type="text" name="detailAddress" value="" placeholder="상세주소를 입력해주세요." data-required="true">
+                        <input type="text" name="detailAddress" value="" placeholder="상세주소를 입력해주세요." data-required="true"> <!-- 2021.01.27 name 수정-->
                         <div class="btm-more err-block"><p class="err-msg"></p></div>
                     </div>
                 </dd>
@@ -67,7 +67,7 @@
                     </span>
                     <!-- [12.01 수정] '기본배송지로 설정' DOM 위치 변경 -->
                     <span class="chk-wrap bottom">
-                        <input type="checkbox" id="chk-defaultAddress" name="defaultAddress">
+                        <input type="checkbox" id="chk-defaultAddress" name="defaultAddress"> <!-- 2021.01.27 name, id, for 수정-->
                         <label for="chk-defaultAddress">기본배송지로 설정</label>
                     </span>
                     <!-- // [12.01 수정] '기본배송지로 설정' DOM 위치 변경 -->
