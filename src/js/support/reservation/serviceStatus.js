@@ -282,9 +282,9 @@
                 var $reason = $('#reason'),
                     $reasonEtc = $('#reasonEtc');
 
-                $reason.find('options.placeholder').prop('selected', true);
+                $reason.find('option.placeholder').prop('selected', true);
                 $reason.vcSelectbox('update');
-                $reasonEtc.val('');
+                $reasonEtc.val('').prop('disabled', true);
                 self.cancelValidation.reset();
             }).on('change', '#reason', function() {
                 var $reason = $(this),
@@ -294,6 +294,7 @@
                     if(reansonValue.indexOf('직접입력') > -1) {
                         $reasonEtc.prop('disabled', false);
                     } else {
+                        $reasonEtc.val('');
                         $reasonEtc.prop('disabled', true);
                     }
 

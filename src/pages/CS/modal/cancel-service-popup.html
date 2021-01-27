@@ -1,17 +1,26 @@
+<!-- 
+    /lg5-common/data-ajax/support/reservationCancel.json
+    resultFlag: 성공 여부 Y or N
+    resultMessage: 노출 메시지
+    url: 성공 시 이동할 페이지 주소
+ -->
 <article id="cancelServicePopup" class="popup-wrap" data-cancel-url="/lg5-common/data-ajax/support/reservationCancel.json">
     <header class="pop-header">
         <h1 class="tit"><span>서비스 예약 취소</span></h1>
     </header>
     <section class="pop-conts cancel-pop">
-        <div class="guide-box">
-            <p class="desc">접수하신 <span class="type">출장 서비스 예약</span>을<br><strong>취소하시겠습니까?</strong></p>
-        </div>
-        <div class="form-wrap">
-            <div class="form-infos">
-                <p class="req" aria-disabled="true">필수 입력 항목</p>
+        <form action="" id="reservationCancelForm" name="reservationCancelForm" method="post">
+            <!-- hidden 데이터 위치 -->
+            <input type="hidden" name="test" id="test" value="test">
+
+            <div class="guide-box">
+                <p class="desc">접수하신 <span class="type">출장 서비스 예약</span>을<br><strong>취소하시겠습니까?</strong></p>
             </div>
-            <div class="forms">
-                <form action="" id="reservationCancelForm" name="reservationCancelForm">
+            <div class="form-wrap">
+                <div class="form-infos">
+                    <p class="req" aria-disabled="true">필수 입력 항목</p>
+                </div>
+                <div class="forms">
                     <div class="tit"><label for="" class="req">예약 취소 사유<span class="blind">필수입력</span></label></div>
                     <div class="conts">
                         <div class="select-wrap">
@@ -50,16 +59,16 @@
                             <p class="err-msg"></p>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
-        @@include('./common/modules/bullet-list.html', {
-            "topBorder" : true,
-            "bulletTxt" : [
-                "예약 일시, 엔지니어 변경은 ‘예약 일시 변경＇에서 가능합니다.",
-                "취소 내역은 예약 결과 조회/변경에서 조회하실 수 있습니다."
-            ]
-        })
+            @@include('./common/modules/bullet-list.html', {
+                "topBorder" : true,
+                "bulletTxt" : [
+                    "예약 일시, 엔지니어 변경은 ‘예약 일시 변경＇에서 가능합니다.",
+                    "취소 내역은 예약 결과 조회/변경에서 조회하실 수 있습니다."
+                ]
+            })
+        </form>
     </section>
     <footer class="pop-footer">
         <div class="btn-group center">
