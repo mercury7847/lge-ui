@@ -40,28 +40,6 @@
                     }
                 ]
             });
-
-            $('.event .ui_carousel_slider').vcCarousel({
-                infinite: false,
-                slidesToShow: 2, 
-                slidesToScroll: 2,
-                responsive: [
-                    {
-                        breakpoint: 10000,
-                        settings: 'unslick'
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            infinite: false,
-                            variableWidth : true,
-                            dots: true,
-                            slidesToShow: 1, 
-                            slidesToScroll: 1
-                        }
-                    }
-                ]
-            });
         });
     });
 })();

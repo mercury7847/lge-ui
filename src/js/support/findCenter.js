@@ -186,8 +186,16 @@
                             '</div>'
                         }
                     }).on('mapinit', function(e,data){
+                        var params = location.search.substr(location.search.indexOf("?") + 1);
+                        var sval = "", temp;
+                        params = params.split("&");
+                        for (var i = 0; i < params.length; i++) {
+                            temp = params[i].split("=");
+                            if ([temp[0]] == 'seq') { sval = temp[1]; }
+                        }
+
                         self.$map = self.$mapContainer.vcStoreMap('instance');
-                        self._loadStoreData();
+                        self._loadStoreData(sval);
                         self._bindEvents();
                     }).on('mapchanged', function(e, data){	console.log(data);
                         self._setItemList(data);
@@ -426,9 +434,13 @@
             self.$citySelect2.val();
         },
 
-        _loadStoreData: function(){
+        _loadStoreData: function(seq){
             var self = this;
             var param = $.extend(self._getKeyword(), self.optionData);
+
+            if (seq) param = $.extend(param, {
+                seq: seq
+            });
 
             lgkorUI.requestAjaxDataPost(self.bestShopUrl, param, function(result){
                 self.storeData = vcui.array.map(result.data, function(item, index){
@@ -437,6 +449,7 @@
                     return item;
                 });
                 self.$map.applyMapData(self.storeData);
+                if (seq) self.$map.selectedMarker(self.storeData[0].id);
 
                 self.userCityName = self.userBoroughName = "";
                 if (self.searchType == 'current' || self.searchType == 'user') self.searchType = 'local';
