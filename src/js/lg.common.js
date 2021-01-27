@@ -942,6 +942,13 @@
                 }
 
                 if(ignoreCommonSuccessCheck) {
+                    var data = result.data;
+                    if(data && !Array.isArray(data) && typeof data === 'object') {
+                        if(!data.success && !(typeof(data.success) === "boolean")) {
+                            data.success = "Y";
+                            result.data = data;
+                        }
+                    }
                     if(callback && typeof callback === 'function') callback(result); 
                 } else {
                     var data = result.data;
