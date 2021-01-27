@@ -162,7 +162,7 @@ var CareCartInfo = (function() {
                         
             var totalData = paymentInfo.total;
             self.$paymentInfo.removeAttr("data-total");
-            //아마도 따로 펑션을
+            
             if(totalData) {
                 self.$paymentInfo.attr("data-total",JSON.stringify(totalData));
                 //self.calcTotalData();
