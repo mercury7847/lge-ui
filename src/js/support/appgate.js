@@ -1,7 +1,12 @@
 (function() {
     var param;
 
-    $(window).ready(function() {
+    $(window).ready(function() {   
+        var cookieVal = $('.product-info').find('.name em').text().split('.')[0];
+        var cookie = lgkorUI.recentlySearch;
+
+        cookie.addCookie(cookieVal);
+
         vcui.require([
             'ui/validation', 'ui/selectTarget'
         ], function() {
