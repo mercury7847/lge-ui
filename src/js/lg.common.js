@@ -1073,8 +1073,8 @@
         },
 
         commonAlertHandler: function(alert){
-            console.log(alert);
-            if(alert.isConfirm) {
+            var isConfirm = lgkorUI.stringToBool(alert.isConfirm);
+            if(isConfirm) {
                 //컨펌
                 var obj ={title: alert.title,
                     typeClass: '',
