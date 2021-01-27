@@ -929,7 +929,13 @@
                 dataType : dtype,
                 data : data
             }).done(function (result) {
-                
+
+                if(dtype != "json") {
+                    if(callback && typeof callback === 'function') callback(result);
+                    return;
+                }
+
+
                 if(result.ssoCheckUrl != undefined && result.ssoCheckUrl != null && result.ssoCheckUrl != ""){
                     location.reload();                
                     return;

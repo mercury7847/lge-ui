@@ -716,6 +716,7 @@ CS.MD.commonModel = function() {
                     opt = self.options;
 
                 self.param = $.extend(self.param, {
+                    keyword: '',
                     category: data.category,
                     categoryNm: data.categoryName,
                     subCategory: data.subCategory,
@@ -961,7 +962,9 @@ CS.MD.commonModel = function() {
 
                 if (arr.length) {
                     arr.forEach(function(item) {
-                        item.name = item.modelCode.replaceAll(self.param.keyword, '<em class="word">'+self.param.keyword+'</em>');
+                        if (item.modelCode) {
+                            item.name = vcui.string.replaceAll(item.modelCode, self.param.keyword, '<em class="word">'+self.param.keyword+'</em>');
+                        }
                         self.$modelSlider.find('.slide-track').append(vcui.template(modelListTmpl, item))
                     });
 
