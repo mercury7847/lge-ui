@@ -84,7 +84,7 @@
         "subFilterList": [
             {
                 "name": "All",
-                "code": "All"
+                "code": ""
             },
             {
                 "name": "퀵 헬프 방법",
