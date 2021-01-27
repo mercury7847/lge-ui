@@ -45,7 +45,42 @@
             }
         }
     }
-    & > .cont-wrap {
+
+    .slide_inner {
+        position:relative;
+        width:100%;
+        padding:0;
+    }
+
+    .link-btn-wrap {
+        a {
+            display:inline-block;
+        }
+
+        .link-btn {
+            min-width:64px;
+            padding:3px 11px;
+            border-radius:16px;
+            font-size:14px;
+            line-height:24px;
+            border:1px solid #000;
+            background: transparent;
+            color: #000;
+        }
+        .btn-toggle-sms {
+            border:1px solid #767676;
+            background: #767676;
+            color:#fff;
+        }
+        .btn-store-consult {
+        
+        }
+    }
+    
+    
+
+
+    .cont-wrap {
         padding-bottom:64px;
         .detail-info-wrap {
             .right-box {
@@ -154,6 +189,11 @@
     }
 
     @include mobile {
+
+        .slide_inner {
+            width:61.1111vw;
+        }
+
         .opt-list {
             li {
                 margin-left:8px;
@@ -162,7 +202,7 @@
                 }
             }
         }
-        & > .cont-wrap {
+        .cont-wrap {
             padding-bottom:116px;
 
             .tit-wrap {
@@ -225,21 +265,6 @@
                             .area {
                                 display: block;
                                 padding-left:0;
-                            }
-                        }
-                    }
-                }
-                .right-box {
-                    .info-list {
-                        dl {
-                            dd {
-                                .item {
-                                    li {
-                                        .btn-link {
-                                            margin-left:0;
-                                        }
-                                    }
-                                }
                             }
                         }
                     }
