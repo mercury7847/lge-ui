@@ -14,19 +14,24 @@
         validateResult : "",
         show : function(){
             var self = this;
-            self.el.layer.not('.active').stop().slideDown(function(){
-                self.el.layer.addClass('active')
-            });
+            self.el.layer.addClass('active').not(':animated').stop().slideDown();
         },
         hide : function(){
             var self = this;
-            self.el.layer.filter('.active').stop().slideUp(function(){
-                self.el.layer.removeClass('active')
-            });
+            self.el.layer.filter('.active').removeClass('active').not(':animated').stop().slideUp();
+            $('#smsAgreeCheck').prop('checked', false);
+            if( self.el.layer.find('.agree-wrap').length ) {
+                $('#smsPhoneNo').prop('disabled', true).val('');
+            }
+            self.el.layer.find('.error-block').hide();
         },
         toggle : function(){
-            this.show();
-            this.hide();
+            var self = this;
+            if( self.el.layer.hasClass('active')) {
+                self.hide();
+            } else {
+                self.show();
+            }
         },
         validateInit : function(){
             var self = this;
@@ -73,6 +78,8 @@
                     
                     if( currentVal ) {
                         $('#smsPhoneNo').prop('disabled', false);
+                    } else {
+                        $('#smsPhoneNo').prop('disabled', true);
                     }
                 });
             } else {
@@ -93,7 +100,6 @@
                         lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
                             if (result.data.resultFlag == 'Y') {
                                 self.hide();
-                                $('#smsPhoneNo').val('');
                             } else {
                                 if (data.resultMessage) {
                                     lgkorUI.alert("", {
