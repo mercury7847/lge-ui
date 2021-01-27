@@ -26,48 +26,67 @@
 		}
 	}
 
-    .ui_carousel_list {
-        overflow:hidden;
-    }
-
-    .btn-arrow {
-        position: absolute;
-        top: 50%;
-        margin-top: -24px;
-        &.prev {
-            left: 50%;
-            margin-left: -754px;
-        }
-        &.next {
-            right: 50%;
-            margin-right: -754px;
-        }
-        @media screen and (max-width: 1508px) {
-            &.prev {
-                left: 16px;
-                margin-left: 0;
+    .slide-wrap {
+        .custom-indi-wrap {
+            bottom: 24px;
+            right: 40px;
+            left: 40px;
+            max-width: 1380px;
+            margin: 0 auto;
+            .custom-indis {
+                max-width: none;
+                margin: 0 -15px;
+                .indis {
+                    width: 100%;
+                    table-layout: fixed;
+                    li {
+                        width: auto;
+                        padding: 0 15px;
+                        &.on {
+                            width: auto;
+                        }
+                    }
+                }
             }
-            &.next {
+            .indi-control {
+                position: absolute;
+                bottom: 16px;
+                right: 0;
+                margin: 0;
+            }
+            @include mobile {
+                bottom: 20px;
                 right: 16px;
-                margin-right: 0;
+                left: 16px;
+                max-width: none;
+                .custom-indis {
+                    margin: 0 -5px;
+                    .indis {
+                        li {
+                            padding: 0 5px;
+                        }
+                    }
+                }
+                .indi-control {
+                    bottom: 20px;
+                }
             }
         }
+        .slide-controls {
+            display: none;
+        }
+        .ui_carousel_list {
+            overflow:hidden;
+        }
+        .slide-conts {
+            height: auto;
+        }
+
         @include mobile {
-            &.prev {
-                left: 4px;
-            }
-            &.next {
-                right: 4px;
+            &.hero-banner .slide-content .slide-conts {
+                height: 530px;
             }
         }
-    }
-
-    .indi-wrap {
-        bottom:20px;
-    }
-
-    .carousel-box {
-        position: relative;
     }
 
     .controller-wrap {
@@ -75,14 +94,38 @@
     }
 
     .visual-area {
-        position: relative;
         overflow: hidden;
+        height: 100%;
         img {
             position: relative;
             width:auto;
             max-width:100%;
             height:auto;
             vertical-align:top;
+        }
+    }
+    .hero-banner {
+        .visual-area {
+            img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                max-width: none;
+            }
+            .animation-area {
+                height: 100%;
+                video {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    z-index: 1;
+                    @include mobile {
+                        width: auto;
+                    }
+                }
+            }
         }
     }
 
@@ -124,7 +167,7 @@
             @include title-h1;
         }
         .copy {
-            @include bodycopy(h1, h1);
+            @include bodycopy(h1, h2);
         }
     }
 

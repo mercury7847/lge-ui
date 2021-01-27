@@ -1362,7 +1362,7 @@
                 line-height:24px;
                 color:#000;
                 white-space:nowrap;
-                word-wrap:break-all;
+                word-break:keep-all;
             }
             .btn-del {
                 position:absolute;
@@ -2177,14 +2177,15 @@ $input: (chk, rdo);
                 width:16px;
                 height:16px;
                 margin-top:-8px;
-                background:url('/lg5-common/images/icons/btn-down-16-black.svg') no-repeat;
+                background:url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat;
+                transform:rotate(90deg);
                 transition:all 0.1s;
             }
         }
         &.on {
             .ui-select-button {
                 .ico {
-                    transform:rotate(180deg);
+                    transform:rotate(270deg);
                 }
             }
         }
@@ -2193,6 +2194,7 @@ $input: (chk, rdo);
             top:34px;
             left:50%;
             overflow:hidden;
+            padding: 4px 0;
             border-radius:4px;
             background:#fff;
             box-shadow:0 4px 12px 0 rgba(0, 0, 0, .15);
@@ -2203,11 +2205,10 @@ $input: (chk, rdo);
                     a {
                         display:block;
                         overflow:hidden;
-                        padding:12px 24px;
+                        padding:8px 24px;
                         border-radius:4px;
                         color:#000;
                         @include font-small;
-                        font-weight:500;
                         white-space:nowrap;
                         word-break:break-all;
                         text-overflow:ellipsis;

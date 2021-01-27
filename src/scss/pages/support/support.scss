@@ -863,6 +863,13 @@
             }
         }
     }
+    .request-link-box {
+        max-width: 1380px;
+        margin: 0 auto 24px;
+        @include mobile {
+            padding: 0 16px;
+        }
+    }
 } //support
 
 
