@@ -10,7 +10,8 @@
         "codeName": "1호선",
         "pcode": "SG",
         "codeOrder": "1",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "841",
         "codeType": "SUBWAY",
@@ -18,7 +19,8 @@
         "codeName": "2호선",
         "pcode": "SG",
         "codeOrder": "2",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "842",
         "codeType": "SUBWAY",
@@ -26,7 +28,8 @@
         "codeName": "3호선",
         "pcode": "SG",
         "codeOrder": "3",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "843",
         "codeType": "SUBWAY",
@@ -34,7 +37,8 @@
         "codeName": "4호선",
         "pcode": "SG",
         "codeOrder": "4",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "844",
         "codeType": "SUBWAY",
@@ -42,7 +46,8 @@
         "codeName": "5호선",
         "pcode": "SG",
         "codeOrder": "5",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "845",
         "codeType": "SUBWAY",
@@ -50,7 +55,8 @@
         "codeName": "6호선",
         "pcode": "SG",
         "codeOrder": "6",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "846",
         "codeType": "SUBWAY",
@@ -58,7 +64,8 @@
         "codeName": "7호선",
         "pcode": "SG",
         "codeOrder": "7",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "847",
         "codeType": "SUBWAY",
@@ -66,7 +73,8 @@
         "codeName": "8호선",
         "pcode": "SG",
         "codeOrder": "8",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "848",
         "codeType": "SUBWAY",
@@ -74,7 +82,8 @@
         "codeName": "9호선",
         "pcode": "SG",
         "codeOrder": "9",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "4173",
         "codeType": "SUBWAY",
@@ -82,7 +91,8 @@
         "codeName": "경강선",
         "pcode": "SG",
         "codeOrder": "21",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "854",
         "codeType": "SUBWAY",
@@ -90,7 +100,8 @@
         "codeName": "경의중앙선",
         "pcode": "SG",
         "codeOrder": "16",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "851",
         "codeType": "SUBWAY",
@@ -98,7 +109,8 @@
         "codeName": "경춘선",
         "pcode": "SG",
         "codeOrder": "12",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "849",
         "codeType": "SUBWAY",
@@ -106,7 +118,8 @@
         "codeName": "공항철도",
         "pcode": "SG",
         "codeOrder": "10",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "4305",
         "codeType": "SUBWAY",
@@ -114,7 +127,8 @@
         "codeName": "김포골드라인",
         "pcode": "SG",
         "codeOrder": "23",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "850",
         "codeType": "SUBWAY",
@@ -122,7 +136,8 @@
         "codeName": "분당선",
         "pcode": "SG",
         "codeOrder": "11",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "4172",
         "codeType": "SUBWAY",
@@ -130,7 +145,8 @@
         "codeName": "서해선",
         "pcode": "SG",
         "codeOrder": "20",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "853",
         "codeType": "SUBWAY",
@@ -138,7 +154,8 @@
         "codeName": "수인선",
         "pcode": "SG",
         "codeOrder": "15",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "865",
         "codeType": "SUBWAY",
@@ -146,7 +163,8 @@
         "codeName": "신분당선",
         "pcode": "SG",
         "codeOrder": "14",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "4170",
         "codeType": "SUBWAY",
@@ -154,7 +172,8 @@
         "codeName": "용인경전철 에버라인",
         "pcode": "SG",
         "codeOrder": "18",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "4171",
         "codeType": "SUBWAY",
@@ -162,7 +181,8 @@
         "codeName": "우이신설경전철",
         "pcode": "SG",
         "codeOrder": "19",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "4174",
         "codeType": "SUBWAY",
@@ -170,7 +190,8 @@
         "codeName": "의정부 경전철",
         "pcode": "SG",
         "codeOrder": "22",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "852",
         "codeType": "SUBWAY",
@@ -178,7 +199,8 @@
         "codeName": "인천1호선",
         "pcode": "SG",
         "codeOrder": "13",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }, {
         "seq": "4169",
         "codeType": "SUBWAY",
@@ -186,6 +208,7 @@
         "codeName": "인천2호선",
         "pcode": "SG",
         "codeOrder": "17",
-        "selFlag": "N"
+        "selFlag": "N",
+        "codeDesc": "37.43453453,126.2345646456"
     }]
 }

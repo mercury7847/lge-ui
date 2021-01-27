@@ -174,12 +174,12 @@
                 self.$cont.commonModel({
                     register: {},
                     selected: {
-                        cateCode: qqqq.cateCode || '',
                         category: qqqq.category || '',
                         categoryName: '',
-                        subCategory: '',
+                        subCategory: qqqq.subCategory || '',
                         subCategoryName: '',
-                        modelCode: qqqq.modelCode,
+                        mktModelCd: qqqq.mktModelCd || '', 
+                        modelCode: qqqq.modelCode || '', 
                         productCode: ''
                     }
                 });                
@@ -285,7 +285,7 @@
 
                 if (arr.length) {
                     arr.forEach(function(item) {
-                        item.title = decodeURI(item.title);
+                        item.title = item.title;
                         html += vcui.template(solutionsTemplate, item);
                     });
 
