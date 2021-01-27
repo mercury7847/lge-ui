@@ -14,7 +14,7 @@
                 $keyword = $('#keyword'),
                 $btnSearch = $('.btn-search');
 
-            var validation = new vcui.ui.CsValidation('.keyword-search', {
+            var validation = new vcui.ui.CsValidation('.input-wrap.search', {
                 register: {
                     keyword: {
                         msgTarget: '.err-msg'
@@ -33,6 +33,12 @@
 
                 parameter += '&topic=' + topicVal + '&subTopic=' + subTopicVal;
                 location.href = url + '?' + parameter;
+            });
+            $keyword.on('keydown', function(e) {
+                if(e.keyCode == 13) {
+                    e.preventDefault();
+                    $btnSearch.trigger('click');        
+                }
             });
             $btnSearch.on('click', function() {
                 var keywordVal = $keyword.val(),
