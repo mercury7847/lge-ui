@@ -410,11 +410,6 @@
 
         var tabID = getTabID();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_categoryListUrl, {tabID: tabID}, function(result){
-            if(!lgkorUI.stringToBool(result.data.success)){
-                lgkorUI.hideLoading();
-                lgkorUI.commonAlertHandler(result.data.alert);
-                return;
-            }
 
             $categoryTab.find('.tabs').empty();
 

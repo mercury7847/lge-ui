@@ -4,50 +4,60 @@
 	}
 }
 .my-sort {
-	margin-top:16px;
+	margin-top:48px;
 	ul {
-		margin-top:-12px;
 		font-size:0;
 		li {
 			display:inline-block;
-			width:181px;
-			margin:12px 12px 0 0;
+			width:calc((100% - 72px) / 4);
+			margin-left:24px;
+			&:first-child {
+				margin-left:0;
+			}
 			a {
 				display:block;
-				height:58px;
+				height:74px;
 				border-radius:8px;
-				box-shadow:2px 2px 16px rgba(0,0,0,0.14);
+				box-shadow:2px 4px 16px rgba(0,0,0,0.14);
 				color:#000;
 				font-size:16px;
 				font-weight:500;
-				line-height:58px;
+				line-height:74px;
 				text-align:center;
+				@media screen and (min-width: 768px) and (max-width: 810px) {
+					font-size:15px;
+				}
 			}
 			&.on {
 				a {
-					border:2px solid #ec455a;
-					color:#ec455a;
-					line-height:54px;
+					border:2px solid #da0f47;
+					color:#da0f47;
+					line-height:70px;
 				}
 			}
 		}
 	}
 	@include mobile {
 		ul {
-			margin-top:-8px;
+			margin:-6px;
 			&:after {
 				content:' ';
 				display:block;
 				clear:both;
 			}
 			li {
-				width:49%;
-				margin:8px 0 0;
-				&:nth-child(odd) {
-					float:left;
+				width:calc((100% - 24px) / 2);
+				margin:6px;
+				&:first-child {
+					margin-left:6px;
 				}
-				&:nth-child(2n) {
-					float:right;
+				a {
+					height:46px;
+					font-size:14px;
+					line-height:46px;
+				}
+				&.on a {
+					line-height:42px;
 				}
 			}
 		}
@@ -56,9 +66,9 @@
 
 .sort-area {
 	.list-count {
-		font-size:14px;
+		font-size:16px;
 		font-weight:700;
-		line-height:24px;
+		line-height:26px;
 		em {
 			color:#ec455a;
 		}
@@ -75,7 +85,7 @@
 }
 
 .my-lists {
-	border-top:2px solid #222;
+	border-top:1px solid #666;
 	> ul {
 		> li {
 			padding:24px 0;
@@ -99,7 +109,7 @@
 					font-size:0;
 					li {
 						display:inline-block;
-						color:#767676;
+						color:#666;
 						font-size:14px;
 						font-weight:500;
 						line-height:24px;
@@ -124,6 +134,7 @@
 	@include mobile {
 		> ul {
 			> li {
+				padding:16px 0;
 				.title {
 					a {
 						font-size:14px;
@@ -133,12 +144,8 @@
 				.info {
 					ul {
 						li {
-							display:block;
 							font-size:13px;
 							line-height:21px;
-							& + li:before {
-								display:none;
-							}
 						}
 					}
 				}
