@@ -150,6 +150,16 @@ var CareCartInfo = (function() {
             $list_ul.append($cardInfo);
             //$list_ul.find('.ui_dropdown').vcDropdown();
 
+            //최대 카드 할인
+            var maxCardSale = paymentInfo.maxCardSale;
+            var $maxCardSale = $cardInfo.find('div.price.sale');
+            if(maxCardSale && $maxCardSale.length > 0) {
+                $maxCardSale.text("월 최대 -"+vcui.number.addComma(maxCardSale)+"원");
+                $maxCardSale.show();
+            } else {
+                $maxCardSale.hide();
+            }
+                        
             var totalData = paymentInfo.total;
             self.$paymentInfo.removeAttr("data-total");
             //아마도 따로 펑션을

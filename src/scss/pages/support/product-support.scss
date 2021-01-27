@@ -811,17 +811,8 @@
     }
     /* 제품해결 */
     &.solutions {
-        .banner-wrap {
-            margin-top:32px;
-            & + .banner-wrpa {
-                margin-top:24px;
-            }
-            @include mobile {
-                margin-top:12px;
-                & + .banner-wrpa {
-                    margin-top:12px;
-                }   
-            }
+        .common-banner {
+            display:none;
         }
     }
     /* 제품 지원 페이지 */

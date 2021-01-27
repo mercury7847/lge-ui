@@ -929,7 +929,13 @@
                 dataType : dtype,
                 data : data
             }).done(function (result) {
-                
+
+                if(dtype != "json") {
+                    if(callback && typeof callback === 'function') callback(result);
+                    return;
+                }
+
+
                 if(result.ssoCheckUrl != undefined && result.ssoCheckUrl != null && result.ssoCheckUrl != ""){
                     location.reload();                
                     return;
@@ -942,14 +948,28 @@
                 }
 
                 if(ignoreCommonSuccessCheck) {
+                    var data = result.data;
+                    if(data && !Array.isArray(data) && typeof data === 'object') {
+                        if(!data.success && !(typeof(data.success) === "boolean")) {
+                            data.success = "Y";
+                            result.data = data;
+                        }
+                    }
                     if(callback && typeof callback === 'function') callback(result); 
                 } else {
                     var data = result.data;
                     //success가 비어 있으면 성공(Y) 라 친다
+                    if(data && !Array.isArray(data) && typeof data === 'object') {
+                        if(!data.success && !(typeof(data.success) === "boolean")) {
+                            data.success = "Y";
+                            result.data = data;
+                        }
+                    }
+                    /*
                     if(!data.success && !(typeof(data.success) === "boolean")) {
                         data.success = "Y";
                     }
-                    console.log(self.stringToBool(data.success), data.alert);
+                    */
                     if(!self.stringToBool(data.success) && data.alert) {
                         //에러
 
@@ -1073,6 +1093,9 @@
         },
 
         commonAlertHandler: function(alert){
+            if(!alert) {
+                return;
+            }
             var isConfirm = lgkorUI.stringToBool(alert.isConfirm);
             if(isConfirm) {
                 //컨펌
