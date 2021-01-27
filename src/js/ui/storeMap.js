@@ -368,7 +368,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             return new naver.maps.LatLngBounds(projection.fromOffsetToCoord(offsetSW), projection.fromOffsetToCoord(offsetNE));
         },
 
-        getAdressPositions: function(){
+        getAdressPositions: function(address, callback){
             var self = this;
 
             naver.maps.Service.geocode({
@@ -376,20 +376,35 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
               }, function(status, response) {
                 if (status === naver.maps.Service.Status.ERROR) {
                   if (!address) {
-                    return alert('Geocode Error, Please check address');
+                    callback({
+                        success: "N",
+                        errMsg: "Geocode Error, Please check address"
+                    });
+                    return;
                   }
-                  return alert('Geocode Error, address:' + address);
+                  callback({
+                      success: "N",
+                      errMsg: 'Geocode Error, address:' + address
+                  });
+                  return;
                 }
             
                 if (response.v2.meta.totalCount === 0) {
-                  return alert('No result.');
+                    callback({
+                        success: "N",
+                        errMsg: 'No result.'
+                    });
+                  return;
                 }
             
-                var htmlAddresses = [],
-                  item = response.v2.addresses[0],
-                  point = new naver.maps.Point(item.x, item.y);
+                  var item = response.v2.addresses[0];
+                  var point = new naver.maps.Point(item.x, item.y);
                   
-                  console.log("point:", point)
+                  callback({
+                      success: "Y",
+                      pointx: point.x,
+                      pointy: point.y
+                  });
               });
         },
 
