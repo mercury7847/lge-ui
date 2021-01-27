@@ -132,7 +132,7 @@
     &.small {
         max-width:444px;
         .pop-conts {
-            padding-top:24px;
+            padding-top:48px;
         }
         @include mobile {
             height:auto;
@@ -151,7 +151,7 @@
                 }
             }
             .pop-conts {
-                padding:24px 16px 40px;
+                padding:32px 16px 40px;
             }
             .btn-close {
                 top:21px;
@@ -658,12 +658,11 @@
             }
         }
         .sect-wrap {
-            // margin-top:48px;
-            margin-top:64px;
+            margin-top:48px;
             &.cnt01 {
                 margin-top:80px;
                 @include mobile {
-                    margin-top:64px;
+                    margin-top:60px;
                 }
             }
             @include mobile {
@@ -1349,7 +1348,12 @@
        .btn-group {
            padding-top: 32px;
            text-align: center;
-       } 
+       }
+       .tabs-wrap.border-type {
+           &:before {
+               display:none;
+           }
+       }
     }
     .pop-footer {
         margin-top: -16px;

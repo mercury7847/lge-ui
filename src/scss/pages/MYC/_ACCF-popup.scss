@@ -374,9 +374,9 @@
     @include font-medium;
 }
 .lg-comp-infos {
-    margin-top:60px;
+    margin-top:80px;
     @include mobile {
-        margin-top:40px;
+        margin-top:60px;
     }
     .logos {
         img {
@@ -401,6 +401,28 @@
 
 // 신용카드 매출전표
 .window-pops {
+    .sects {
+        .tit-wrap {
+            margin-bottom:0;
+            padding-bottom:24px;
+            border-bottom:none;
+            @include mobile {
+                padding-bottom:40px;
+            }
+            .tit {
+                padding-bottom:0;
+            }
+        }
+        .section-inner {
+            padding-top:0;
+            &.type4 {
+                padding-top:32px;
+                @include mobile {
+                    padding-top:40px;
+                }
+            }
+        }
+    }
     .sects .section-inner .dl-infolist-wrap .lists li dl {
         dt {
             width:43%;
@@ -417,10 +439,12 @@
     }
 
     .fee-info-wrap {
+        margin-top:-32px;
         padding:32px;
         border-radius:8px;
         background:#f4f4f4;
         @include mobile {
+            margin-top:-20px;
             padding:24px 20px;
         }
         dl {
