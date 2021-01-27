@@ -13,6 +13,7 @@ $(window).ready(function(){
 		init: function(){
 			var self = this;
             self.setting();
+            
             self.$section.hide();
             var cookieValue = lgkorUI.getCookie(myRecentProductCookieName);
             if(!cookieValue) {
@@ -38,6 +39,11 @@ $(window).ready(function(){
             self.$popup.on('click','.ui_modal_close',function(e){
                 self.$popup.hide();
             });
+
+            $(window).on('resize', function(){
+                self.resize();
+            });
+            self.resize();
         },
         
 		requestData: function(openPopup) {
@@ -83,6 +89,15 @@ $(window).ready(function(){
                 self.$section.hide();
             }
         },
+
+        resize: function(){
+            var self = this;
+            if($(window).width() > 749) {
+                self.$popup.css({'right':''});
+            } else {
+                self.$popup.css({'right':'0'});
+            }
+        }
 	};
 	KRP0032.init();
 })

@@ -235,6 +235,7 @@
         CAREPLANER_KEY: "care_planer",
         CAREPLANER_ID: "putitem_list",
         CAREPLANER_PRICE: "putitem_price",
+        MOBILE_CHECK_WIDTH: 768,
         STICKY_MODULES:[],
         init: function(){
             this._addImgOnloadEvent();
