@@ -129,9 +129,9 @@
                 self.keywords = [];
                 self.param = {
                     keywords: [],
-                    topic: 'All',
+                    topic: '',
                     topicNm: 'All',
-                    subTopic: 'All',
+                    subTopic: '',
                     subTopicNm: 'All',
                     sort: 'new',
                     page: 1,
@@ -139,8 +139,7 @@
                     category: '',
                     categoryName: '',
                     subCategory: '',
-                    subCategoryName: '',
-                    mktModelCd: '', 
+                    subCategoryName: '', 
                     modelCode: '', 
                     productCode: ''
                 };
@@ -342,7 +341,6 @@
                     categoryName: '',
                     subCategory: '',
                     subCategoryName: '',
-                    mktModelCd: '', 
                     modelCode: '', 
                     productCode: ''
                 };
@@ -366,7 +364,6 @@
 
                 self.$cont.on('complete', function(e, data, url, auto) { 
                     var param = {
-                        mktModelCd: data.modelCode, 
                         modelCode: data.modelCode,
                         category: data.category,
                         categoryNm: data.categoryName,
@@ -548,9 +545,7 @@
                         };
                         
                     self.$sort.val(value);
-
                     self.param = $.extend(self.param, param);
-                    
                     self.requestData();
                 });
 
@@ -561,7 +556,6 @@
                     }
 
                     self.param = $.extend(self.param, param);
-
                     self.requestData();
                 });
             }

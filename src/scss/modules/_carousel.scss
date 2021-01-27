@@ -355,21 +355,32 @@
         .indi-control {
             display:inline-block; 
             position:relative; 
-            width:28px;
-            height:28px; 
-            margin-top:12px;
-            margin-left:2px; 
+            width:26px;
+            height:26px;
+            //margin-top:12px;
+            //margin-left:2px;
             font-size:0;
-            line-height:28px;
             text-align:center;
-            &::before, &::after {
-                content:' '; 
-                display:inline-block; 
-                width:2px; 
-                height:10px; 
-                margin:0 2px; 
-                background-color:#fff; 
-                vertical-align:middle;
+            //&::before, &::after {
+            //    content:' ';
+            //    display:inline-block;
+            //    width:2px;
+            //    height:10px;
+            //    margin:0 2px;
+            //    background-color:#fff;
+            //    vertical-align:middle;
+            //}
+            &:before {
+                display: inline-block;
+                width: 26px;
+                height: 26px;
+                background: url('/lg5-common/images/icons/btn-carousel-hero-pause.svg') no-repeat 0 0;
+                content: '';
+            }
+            &.play {
+                &:before {
+                    background-image: url('/lg5-common/images/icons/btn-carousel-hero-play.svg');
+                }
             }
         }
     }
