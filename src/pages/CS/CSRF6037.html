@@ -11,8 +11,8 @@
     <div class="wrap">
         <div class="container">
             <!-- 센터찾기 -->
-            <div class="contents support store-info-wrap" data-latitude="37.4560537" data-longitude="126.7051511" data-sms-url="/lg5-common/data-ajax/support/searchShop/sms.json">            
-                <div class="cont-wrap">
+            <div class="contents support store-info-wrap" data-latitude="37.4560537" data-longitude="126.7051511" data-sms-url="/lg5-common/data-ajax/support/searchShop/sms.json">
+                <div class="cont-wrap store-info-inner">
                     <div class="headline">
                         <h1 class="h1-tit">센터 정보</h1>
                     </div>
@@ -27,18 +27,98 @@
                                 "fixed" : "fixed-right",
                                 "page" : "tooltip-share"
                             })
-                            <div class="link-btn-wrap pc"><!-- pc 일 경우 보임 -->
-                                <a href="#n" class="btn dark-gray size"><span>센터위치 문자받기</span></a>
-                                <a href="#n" class="btn border size"><span>매장 상담 신청</span></a>
+                            <div class="link-btn-wrap">
+                                <a href="#n" class="link-btn btn-toggle-sms"><span>센터위치 문자받기</span></a>
+                                <a href="#n" class="link-btn btn-store-consult"><span>매장 상담 신청</span></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="">
-                        <div></div>
-                        <div class="btn-wrap">
-                            <button type="button" class="btn" class=""><span>취소</span></button>
-                            <button type="button" class="btn" class=""><span>전송</span></button>
+                    <div class="toggle-layer sms-clause-layer">
+                        <div class="layer-inner">
+                            <div class="layer-tit">
+                                <h3 class="tit">문자 전송</h3>
+                            </div>
+                            <div class="layer-content">
+                                <div class="form-infos">
+                                    <p class="req">필수 입력 항목</p>
+                                </div>
+    
+                                <!-- 비회원일 경우 노출 : 개인정보 수집 동의 영역 -->
+                                <!-- 노출시 class ="active" 추가 -->
+                                <div class="agree-wrap active">
+                                    <div class="input-info">
+                                        <div class="agree-tit">
+                                            <p class="tit req">개인정보 수집 및 이용에 대한 동의</p>
+                                        </div>
+                                        <div class="agree-cont-wrap">
+                                            <div class="agree-cont-box">
+                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
+                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
+                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
+                                            </div>
+                                            <div class="agree-input">
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" name="smsAgreeCheck" id="smsAgreeCheck" value="N" data-required="true" data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다." required>
+                                                    <label for="smsAgreeCheck">동의합니다.</label>
+                                                </span>
+                                            </div>
+                                            <div class="err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- //비회원일 경우 노출 : 개인정보 수집 동의 영역 -->
+    
+    
+                                <div class="form-wrap">
+                                    <div class="form-row">
+                                        <div class="form-col">
+                                            <dl class="forms align-type-col">
+                                                <dt class="tit">
+                                                    <label for="smsCenterInfoValue">서비스 센터 정보</label>
+                                                </dt>
+                                                <dd class="conts">
+                                                    <div class="input-wrap"><input type="text" id="smsCenterInfoValue" readonly value="홍대역 서비스 센터"></div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="form-col">
+                                            <dl class="forms align-type-col">
+                                                <dt class="tit">
+                                                    <label for="smsPhoneNo" class="req">휴대폰 정보</label>
+                                                </dt>
+                                                <dd class="conts">
+                                                    <div class="input-wrap"><input type="text" id="smsPhoneNo" name="smsPhoneNo" placeholder="휴대폰 번호 입력" data-required="true" maxlength="11" data-error-msg="정확한 휴대전화 번호를 입력해주세요"  data-pattern-msg="정확한 휴대전화 번호를 입력해주세요" required disabled></div>
+                                                    <div class="btm-more err-block">
+                                                        <p class="err-msg"></p>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "bulletTxt" : [
+                                        "서비스센터 정보를 문자로 발송해 드립니다. ",
+                                        "통신사 사정으로 문자 전송이 지연될 수 있습니다."
+                                    ]
+                                })
+                                <div class="btn-wrap">
+                                    <button type="button" class="btn gray btn-cancel"><span>취소</span></button>
+                                    <button type="button" class="btn btn-apply"><span>전송</span></button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-close"><span class="blind">닫기</span></button>
                         </div>
                     </div>
                     
@@ -60,9 +140,6 @@
                             <div class="info-list">
                                 <div class="info-tit-wrap"> 
                                     <h3 class="h3-tit">센터 안내</h3>
-                                    <div class="link-btn-wrap mo"><!-- mobile 일 경우 보임 -->
-                                        <a href="#n" class="btn border size"><span>매장 상담 신청</span></a>
-                                    </div>
                                 </div>
                                 <dl>
                                     <dt>운영시간</dt>
@@ -238,7 +315,7 @@
                                         <div class="slide-track ui_carousel_track">
                                             <!-- slide -->
                                             <div class="slide-conts ui_carousel_slide">
-                                                <div class="cont-wrap">
+                                                <div class="slide_inner">
                                                     <div class="img">
                                                         <img src="/lg5-common/images/dummy/@img-store01.jpg" alt="매장사진">
                                                     </div>
@@ -247,7 +324,7 @@
                                             <!-- //slide -->
                                             <!-- slide -->
                                             <div class="slide-conts ui_carousel_slide">
-                                                <div class="cont-wrap">
+                                                <div class="slide_inner">
                                                     <div class="img">
                                                         <img src="/lg5-common/images/dummy/@img-store02.jpg" alt="매장사진">
                                                     </div>
@@ -256,7 +333,7 @@
                                             <!-- //slide -->
                                             <!-- slide -->
                                             <div class="slide-conts ui_carousel_slide">
-                                                <div class="cont-wrap">
+                                                <div class="slide_inner">
                                                     <div class="img">
                                                         <img src="/lg5-common/images/dummy/@img-store01.jpg" alt="매장사진">
                                                     </div>
@@ -265,7 +342,7 @@
                                             <!-- //slide -->
                                             <!-- slide -->
                                             <div class="slide-conts ui_carousel_slide">
-                                                <div class="cont-wrap">
+                                                <div class="slide_inner">
                                                     <div class="img">
                                                         <img src="/lg5-common/images/dummy/@img-store02.jpg" alt="매장사진">
                                                     </div>
@@ -288,12 +365,15 @@
                             </div>
                         </div>
                         
+                        
                     </div>
-                    <footer class="footer">
-                        <div class="btn-group">
-                            <button type="button" class="btn"><span>고객지원 메인</span></button>
-                        </div>
-                    </footer>
+
+                    <div class="btn-group bottom-btn-wrap">
+                        <button type="button" class="btn"><span>고객지원 메인</span></button>
+                    </div>
+                    <!-- <footer class="footer">
+                        
+                    </footer> -->
                     <button type="button" class="btn-close"><span class="blind">닫기</span></button>
                 </div>
             </div>
