@@ -72,6 +72,7 @@ var FilterLayer = (function() {
         var self = this;
         self.filterData = null;
         self.resetData = null;
+        self.firstLoadTrigger = false;
         self.initLoadEnd = false;
         vcui.require(['ui/rangeSlider', 'ui/accordion'], function () {
             self._setting($targetFilter, $categorySelect, $listSorting, $targetFilterButton, filterChangeEventFunc);
@@ -81,7 +82,7 @@ var FilterLayer = (function() {
                 self.updateFilter(self.filterData);
             }
             if(self.resetData) {
-                self.resetFilter(self.resetData);
+                self.resetFilter(self.resetData, self.firstLoadTrigger);
             }
         });
     }
@@ -386,11 +387,12 @@ var FilterLayer = (function() {
             self.$layFilter.find('div.btn-reset button').hide();
         },
 
-        resetFilter: function(data) {
+        resetFilter: function(data, triggerFilterChangeEvent) {
             var self = this;
             
             if(!self.initLoadEnd) {
                 self.resetData = data;
+                self.firstLoadTrigger = triggerFilterChangeEvent;
                 return;
             }
 
@@ -490,6 +492,18 @@ var FilterLayer = (function() {
                                 findDm.parents('.ui_filter_accordion').vcAccordion('expand',index);
                             }
                         });
+
+                        //check top Category
+                        if(self.$categorySelect) {
+                            var findCategory = self.$categorySelect.find('input[name="'+key+'"]');
+                            if(findCategory.length > 0) {
+                                findCategory.prop('checked', false);
+                                item.forEach(function(val, index) {
+                                    var findInput = self.$categorySelect.find('input[name='+key+'][value='+val+']');
+                                    findInput.prop('checked', true);
+                                });
+                            }
+                        }
                     }
                 }
 
@@ -502,6 +516,11 @@ var FilterLayer = (function() {
                     $btnFilter.find('a span').text('옵션필터');
                     self.$layFilter.find('div.btn-reset button').hide();
                 }
+            }
+
+            console.log(triggerFilterChangeEvent);
+            if(triggerFilterChangeEvent) {
+                self.triggerFilterChangeEvent();
             }
         },
     }
