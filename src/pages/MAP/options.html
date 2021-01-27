@@ -215,7 +215,7 @@
                     }
                 }
             });
-
+ 
             //시간 설정
             $("#timeSet").on({
                 click : function(){
@@ -257,6 +257,9 @@
                 change : function(){
                     var value = $(this).val();
                     $(this).closest("div").find("[class*=rst-time]").text(value);
+
+                    //oldStartValue = $(this).closest(".inner").find("div").eq(0).find("input").val();
+                    //oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
 
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         //console.log("iphone");
