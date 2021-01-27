@@ -9,7 +9,9 @@
     <script src="/lg5-common/js/components/KRP0015.min.js"></script>
 <body>
     <script>
-        //var firstFilterList = [];
+        var firstEnableFilter = {
+            "FM00015001":["FV00046002","FV00046003"]
+        };
         var firstFilterList = [
             {
                 "filterType":"none",
@@ -109,7 +111,7 @@
                     {"filterValueId":"td0003","filterValueName":"태그3"}
                 ]
             }
-        ]
+        ];
     </script>
     <div class="hidden-input-group">
         <input type="hidden" name="totalCount" value="1">
