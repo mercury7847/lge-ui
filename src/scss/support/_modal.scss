@@ -355,13 +355,16 @@
         // 예약 취소
         &.cancel-pop {
             .guide-box {
-                margin-bottom:12px;
+                margin-bottom:15px;
                 padding:24px;
+                background:#f4f4f4;
+                border-radius:10px;
                 .desc {
-                    @include font-large-2;
+                    font-size:24px;
+                    line-height:1.45;
+                    color:#222;
                     text-align:center;
                     border-radius:8px;
-                    background:#f4f4f4;
                     .type {
                         color:#ec455a;
                     }
@@ -369,7 +372,11 @@
             }
             @include mobile {
                 .guide-box {
-                    padding:20px 16px;
+                    padding:22px 18px;
+
+                    .desc {
+                        font-size:18px;
+                    }
                 }
             }
         }
