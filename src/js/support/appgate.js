@@ -32,11 +32,13 @@
             });
            
             $subTopic.on('change', function() {
-                var topicVal = $topic.val();
-                    subTopicVal = $subTopic.val(),
+                var topicVal = $topic.find('option:checked').text();
+                    subTopicVal = $subTopic.find('option:checked').text(),
                     parameter = param;
 
-                parameter += '&topic=' + topicVal + '&subTopic=' + subTopicVal;
+                if (subTopicVal == 'All') subTopicVal = '';
+
+                parameter += '&topicNm=' + topicVal + '&subTopicNm=' + subTopicVal;
                 location.href = url + '?' + parameter;
             });
             $keyword.on('keydown', function(e) {
