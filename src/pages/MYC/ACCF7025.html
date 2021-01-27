@@ -59,8 +59,10 @@
                             <div class="section-wrap">
                                 <!-- 계약자/실사용자 정보 -->
                                 <div class="sects user viewer">
-                                    <div class="tit-wrap">
-                                        <h5 class="tit">계약자/실사용자 정보</h5>
+                                    <!-- 210127 수정 -->
+                                    <div class="tit-wrap type2">
+                                        <h4 class="tit">계약자/실사용자 정보</h4>
+                                    <!-- //210127 수정 -->
                                         <div class="flt-cont">
                                             <button type="button" class="btn border size"><span>정보변경</span></button>
                                         </div>
@@ -108,8 +110,10 @@
 
                                 <!-- 계약자/실사용자 정보 : 정보변경 활성화 -->
                                 <div class="sects user modify">
-                                    <div class="tit-wrap">
-                                        <h5 class="tit">계약자/실사용자 정보</h5>
+                                    <!-- 210127 수정 -->
+                                    <div class="tit-wrap type2">
+                                        <h4 class="tit">계약자/실사용자 정보</h4>
+                                    <!-- //210127 수정 -->
                                         <div class="flt-cont">
                                             <button type="button" class="btn border size" disabled><span>정보변경</span></button>
                                         </div>
@@ -234,9 +238,11 @@
 
                                 <!-- 계약 정보 -->
                                 <div class="sects">
-                                    <div class="tit-wrap">
+                                    <!-- 210127 수정 -->
+                                    <div class="tit-wrap type2">
                                         <div class="flt-cont left">
-                                            <h5 class="tit">계약 정보</h5>
+                                            <h4 class="tit">계약 정보</h4>
+                                    <!-- //210127 수정 -->
                                             @@include('./common/modules/tooltip.html', {
                                                 "type" : "text",
                                                 "text" : "계약서 발급이 필요하신 분은 발급신청 버튼을 클릭해주세요."
@@ -264,8 +270,10 @@
 
                                 <!-- 납부 정보 -->
                                 <div class="sects payment viewer">
-                                    <div class="tit-wrap">
-                                        <h5 class="tit">납부 정보</h5>
+                                    <!-- 210127 수정 -->
+                                    <div class="tit-wrap type2">
+                                        <h4 class="tit">납부 정보</h4>
+                                    <!-- //210127 수정 -->
                                         <div class="flt-cont">
                                             <button type="button" class="btn border size"><span>납부 정보변경</span></button>
                                         </div>
@@ -294,8 +302,10 @@
 
                                 <!-- 납부 정보 : 정보변경 활성화 -->
                                 <div class="sects payment modify">
-                                    <div class="tit-wrap">
-                                        <h5 class="tit">납부 정보</h5>
+                                    <!-- 210127 수정 -->
+                                    <div class="tit-wrap type2">
+                                        <h4 class="tit">납부 정보</h4>
+                                    <!-- //210127 수정 -->
                                         <div class="flt-cont">
                                             <button type="button" class="btn border size" disabled><span>납부 정보변경</span></button>
                                         </div>
@@ -474,10 +484,41 @@
                                 </div>
                                 <!-- // 납부 정보 : 정보변경 활성화 -->
 
+                                <!-- 210127 추가 -->
+                                <!-- 멤버십 포인트 -->
+                                <div class="sects">
+                                    <div class="tit-wrap type2">
+                                        <h4 class="tit">멤버십 포인트</h4>
+                                        <div class="flt-cont">
+                                            <button type="button" class="btn border size"><span>멤버십 포인트 차감동의</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="section-inner manager-info">
+                                        @@include('./common/modules/dl-infolist.html', {
+                                            "addClass": true,
+                                            "list" : [
+                                                { "dt" : "멤버십 포인트 차감 동의여부", "dd" : "동의 (전액 차감)", "fieldName": "name" }
+                                            ]
+                                        })
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "topBorder" : true,
+                                            "bulletTit" : "납부 정보변경 유의사항",
+                                            "bulletTxt" : [
+                                                "보유하신 LG전자 멤버십 포인트를 최대 5,000원까지 케어솔루션/케어십 월요금 결제에 사용하실 수 있습니다.",
+                                                "멤버십 포인트로 월 요금 결제를 원하시면 [멤버십 포인트 차감동의] 버튼을 눌러주세요."
+                                            ]
+                                        })
+                                    </div>
+                                </div>
+                                <!-- //멤버십 포인트 -->
+                                <!-- //210127 추가 -->
+
                                 <!-- 케어솔루션 매니저 정보 -->
                                 <div class="sects">
-                                    <div class="tit-wrap">
-                                        <h5 class="tit">케어솔루션 매니저 정보</h5>
+                                    <!-- 210127 수정 -->
+                                    <div class="tit-wrap type2">
+                                        <h4 class="tit">케어솔루션 매니저 정보</h4>
+                                    <!-- //210127 수정 -->
                                     </div>
                                     <div class="section-inner manager-info">
                                         @@include('./common/modules/dl-infolist.html', {
