@@ -282,26 +282,34 @@
                 var $reason = $('#reason'),
                     $reasonEtc = $('#reasonEtc');
 
-                $reason.find('options.placeholder').prop('selected', true);
+                $reason.find('option.placeholder').prop('selected', true);
                 $reason.vcSelectbox('update');
-                $reasonEtc.val('');
+                $reasonEtc.val('').prop('disabled', true);
                 self.cancelValidation.reset();
             }).on('change', '#reason', function() {
                 var $reason = $(this),
                     $reasonEtc = $('#reasonEtc'),
-                    reansonValue = $reason.val();
+                    reansonValue = $reason.find('option:selected').text().trim().replace(/ /g,"");
 
-                reansonValue && $reasonEtc.prop('disabled', false);
-            }).on('click', '.btn-group .btn:first-child', function() {
+                    if(reansonValue.indexOf('직접입력') > -1) {
+                        $reasonEtc.prop('disabled', false);
+                    } else {
+                        $reasonEtc.val('');
+                        $reasonEtc.prop('disabled', true);
+                    }
+
+                 
+            }).on('click', '.btn-group .btn-cancel', function() {
                 lgkorUI.confirm('예약 취소가 완료되지 않았습니다.<br />중단하시겠습니까?', {
                     title:'', okBtnName:'확인', cancelBtnName:'취소',
                     ok: function() {
                         self.$cancelPopup.vcModal('hide');
                     }
                 });
-            }).on('click', '.btn-group .btn:last-child', function() {
-                var url = self.$cancelPopup.data('cancelUrl');
-                var result = self.cancelValidation.validate(),
+            }).on('click', '.btn-group .btn-confirm', function() {
+                var url = self.$cancelPopup.data('cancelUrl'),
+                    result = self.cancelValidation.validate(),
+                    $cencelForm = $('#reservationCancelForm'),
                     param;
 
                 if (result.success) {
@@ -310,12 +318,13 @@
                     lgkorUI.requestAjaxDataPost(url, param, function(result) {
                         var data = result.data;
 
+                        if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});
+
                         if (data.resultFlag == 'Y') {
-                            location.href = url;
-                        } else {
-                            lgkorUI.hideLoading();
-                            if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});
-                        }
+                            $cencelForm.attr('action', data.url);
+                            $cencelForm.submit();
+                        } 
+                        lgkorUI.hideLoading();
                     });
                 }
             });

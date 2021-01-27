@@ -1,5 +1,5 @@
 (function() {
-    var param;
+    var map;
 
     $(window).ready(function() {
         vcui.require(['ui/carousel', 'ui/storeMap'], function () {
@@ -9,6 +9,24 @@
                 keyID: 'vsay0tnzme',
                 latitude : data.latitude,
                 longitude: data.longitude
+            }).on('mapinit', function(e){
+                map = $('.map').vcStoreMap('instance');
+                var marker = new naver.maps.Marker({
+                        position: new naver.maps.LatLng(data.latitude, data.longitude),
+                        icon: {
+                            url: '/lg5-common/images/icons/icon-point.svg',
+                            // content: 
+                            //     '<div>'+
+                            //     '   <div class="point on">'+
+                            //     '       <span class="num">-</span>'+
+                            //     '   </div>'+
+                            //     '</div>',
+                            size: new naver.maps.Size(40, 40),
+                            anchor: new naver.maps.Point(20, 40)
+                        }
+                    });
+
+                marker.setMap(map.map);
             });
             
             $('.photo .ui_carousel_slider').vcCarousel({
