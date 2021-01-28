@@ -1,0 +1,12 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "alert":{
+            "title": "1년이내 무상할인이 포함된 제품은<br>1년 요금 선납할인신청이 불가능합니다.",
+            "desc": ""
+        }
+    }
+}

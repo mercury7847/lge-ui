@@ -4,6 +4,7 @@
     var CARD_ABLED_URL;
     var ARS_AGREE_URL;
     var REQUEST_SUBMIT_URL;
+    var PREPAYMENT_CHECKED_URL;
 
     var requestAgreeChecker;
     var requestButton;
@@ -51,6 +52,7 @@
         CARD_ABLED_URL = $('.requestRentalForm').data('cardAbledUrl');
         ARS_AGREE_URL = $('.requestRentalForm').data('arsAgreeUrl');
         REQUEST_SUBMIT_URL = $('.requestRentalForm').data('submitUrl');
+        PREPAYMENT_CHECKED_URL = $('.requestRentalForm').data('prepaymentCheckedUrl');
 
         step1Block = $('.requestRentalForm ul li:nth-child(1)');
         step2Block = $('.requestRentalForm ul li:nth-child(2)');
@@ -403,6 +405,12 @@
         }).on('click', '.arsAgreeRequest', function(e){
             e.preventDefault();
             setArsAgreeConfirm();
+        }).on('change', 'input[name=rdo04]', function(){
+            var chk = $(this).val();
+
+            if(chk == "Y"){
+                setPrepaymentChecked();
+            }
         });
 
         $('input[name=rentalAgree]').on('change', function(){
@@ -902,6 +910,25 @@
             })
         }
         requestInfoBlock.updatePaymentInfo(newPriceInfo);
+    }
+
+    //1년 요금 선납할인 체크
+    function setPrepaymentChecked(){
+        lgkorUI.showLoading();
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PREPAYMENT_CHECKED_URL, {}, function(result){
+            if(result.data.success == "N"){
+                lgkorUI.alert("", {
+                    title: result.data.alert.title
+                });
+
+                step3Block.find('input[name=rdo04]').each(function(idx, item){
+                    console.log(item)
+                    if($(item).val() == "N") $(item).prop('checked', true);
+                    else $(item).prop('checked', false);
+                })
+            }
+            lgkorUI.hideLoading();
+        });
     }
 
     //청약신청하기...
