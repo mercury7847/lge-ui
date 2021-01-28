@@ -44,7 +44,7 @@
                 @@include('./common/support/select-my-model.html')
 
                 <div class="cont-wrap">
-                    <form action="/html/CS/CSTF6031.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/visitCenter.json" novalidate>
+                    <form action="/html/CS/CSTF6031.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/visitCenter/visitCenter-complete.json" novalidate>
                         <div class="step-area">
                             <input type="hidden" name="categoryNm" id="categoryNm" value="">
                             <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="">
@@ -56,6 +56,7 @@
                             <input type="hidden" name="engineerCode" id="engineerCode" value="">
                             <input type="hidden" name="centerNm" id="centerNm" value="">
                             <input type="hidden" name="centerCode" id="centerCode" value="">
+                            <input type="hidden" name="route" id="route" value="">
                             <input type="hidden" name="acptNo" id="acptNo" value="">
                             <input type="hidden" name="serviceType" id="serviceType" value="A">
                             <input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
@@ -80,8 +81,7 @@
                             <!-- 제품 선택 -->
                             <div class="step-box" id="stepModel">
                                 @@include('./common/support/select-model.html', {
-                                    "keyword": "Y",
-                                    "model": "Y",
+                                    "url": "/lg5-common/data-ajax/support/visitCenter/selectModel.json",
                                     "category": [
                                         { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
                                         { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
@@ -100,7 +100,7 @@
                             </div>
                             <!-- // 제품 선택 -->
 
-                            <div class="step-box" id="stepCenter" data-center-url="/lg5-common/data-ajax/support/visitCenter/centerList.json">
+                            <div class="step-box" id="stepCenter" data-center-url="/lg5-common/data-ajax/support/visitCenter/centerList.json" data-local-list-url="/lg5-common/data-ajax/support/searchshop/bestShopArea.json" data-subway-list-url="/lg5-common/data-ajax/support/searchshop/selectSubwayList.json" data-station-list-url="/lg5-common/data-ajax/support/searchshop/selectStation.json" data-user-adress-checked-url="/lg5-common/data-ajax/support/searchshop/userAdressChecked.json" data-detail-url="/html/CS/CSRF6037.html">
                                 <div class="section">
                                     <div class="form-infos">
                                         <p class="req" aria-disabled="true">필수 입력 항목</p>
@@ -109,20 +109,20 @@
                                     <div class="tit-wrap">
                                         <h2 class="tit">방문 센터</h2>
                                     </div>
-                                    <div class="center-info-box">
-                                        <strong class="center-info-title">서비스 센터 표준 운영 시간</strong>
-                                        <ul class="info-list type-A">
+                                    <div class="center-info-wrap">
+                                        <strong class="tit">서비스 센터 표준 운영 시간</strong>
+                                        <ul class="info-list">
                                             <li>
-                                                <div class="title">월요일 ~ 금요일 : </div>
-                                                <div class="description">9시 ~ 18시</div>
+                                                <span class="key">월요일 ~ 금요일 :</span>
+                                                <span class="value">9시 ~ 18시</span>
                                             </li>
                                             <li>
-                                                <div class="title">토요일 : </div>
-                                                <div class="description">9시 ~13시</div>
+                                                <span class="key">토요일 :</span>
+                                                <span class="value">9시 ~13시</span>
                                             </li>
                                             <li>
-                                                <div class="title">일요일/공휴일 : </div>
-                                                <div class="description">휴무</div>
+                                                <span class="key">일요일/공휴일 :</span>
+                                                <span class="value">휴무</span>
                                             </li>
                                         </ul>
                                         @@include('./common/modules/bullet-list.html', {
@@ -147,7 +147,7 @@
                                             <div class="forms">
                                                 <div class="adress-input-box">
                                                     <div class="select-wrap cell">
-                                                        <select id="localSi" class="ui_selectbox" title="광역시/도 선택" data-target="#localGu" data-ajax="/lg5-common/data-ajax/support/visitCenter/selectLocal.json">
+                                                        <select id="localSi" class="ui_selectbox" title="광역시/도 선택">
                                                             <option value="" class="placeholder">광역시/도</option>
                                                             <option value="서울특별시">서울특별시</option>
                                                             <option value="부산광역시">부산광역시</option>
@@ -175,7 +175,7 @@
                                                         <button type="button" class="btn search-local" disabled><span>검색</span></button>
                                                     </div>
                                                     <div class="cell btn-cell">
-                                                        <button type="button" class="btn search-current mo-only"><span>내 위치 검색</span></button>
+                                                        <button type="button" class="btn search-current"><span>내 위치 검색</span></button>
                                                         <button type="button" class="btn search-address"><span>내 주소로 검색</span></button>
                                                     </div>
                                                 </div>
@@ -187,17 +187,29 @@
                                             <div class="forms">
                                                 <div class="adress-input-box">
                                                     <div class="select-wrap cell">
-                                                        <select id="subwayLocal" class="ui_selectbox" title="지역 선택" data-target="#subwayLine" data-ajax="/lg5-common/data-ajax/support/visitCenter/selectSubwayLine.json">
-                                                            <option value="" class="placeholder">지역</option>
-                                                            <option value="수도권">수도권</option>
+                                                        <select id="subwayLocal" class="ui_selectbox" title="지역 선택">
+                                                            <option value="" class="placeholder">광역시/도</option>
+                                                            <option value="서울">서울</option>
+                                                            <option value="인천">인천</option>
                                                             <option value="부산">부산</option>
-                                                            <option value="대전">대전</option>
                                                             <option value="대구">대구</option>
+                                                            <option value="대전">대전</option>
                                                             <option value="광주">광주</option>
+                                                            <option value="울산">울산</option>
+                                                            <option value="제주">제주</option>
+                                                            <option value="경기">경기</option>
+                                                            <option value="세종">세종</option>
+                                                            <option value="경남">경남</option>
+                                                            <option value="경북">경북</option>
+                                                            <option value="충남">충남</option>
+                                                            <option value="충북">충북</option>
+                                                            <option value="전남">전남</option>
+                                                            <option value="전북">전북</option>
+                                                            <option value="강원">강원</option>
                                                         </select>
                                                     </div>
                                                     <div class="select-wrap cell">
-                                                        <select id="subwayLine" class="ui_selectbox" title="호선 선택" data-target="#subwayStation" data-ajax="/lg5-common/data-ajax/support/visitCenter/selectStation.json" disabled>
+                                                        <select id="subwayLine" class="ui_selectbox" title="호선 선택" disabled>
                                                             <option value="" class="placeholder">호선</option>
                                                         </select>
                                                     </div>
@@ -218,86 +230,89 @@
                                             <div class="forms">
                                                 <div class="adress-input-box">
                                                     <div class="select-wrap cell">
-                                                        <select class="ui_selectbox" title="광역시/도 선택">
-                                                            <option value="" class="placeholder">광역시/도</option>
+                                                        <select id="address" class="ui_selectbox" title="광역시/도 선택">
+                                                            <option value="">광역시/도</option>
+                                                            <option value="서울">서울</option>
+                                                            <option value="인천">인천</option>
+                                                            <option value="부산">부산</option>
+                                                            <option value="대구">대구</option>
+                                                            <option value="대전">대전</option>
+                                                            <option value="광주">광주</option>
+                                                            <option value="울산">울산</option>
+                                                            <option value="제주">제주</option>
+                                                            <option value="경기">경기</option>
+                                                            <option value="세종">세종</option>
+                                                            <option value="경남">경남</option>
+                                                            <option value="경북">경북</option>
+                                                            <option value="충남">충남</option>
+                                                            <option value="충북">충북</option>
+                                                            <option value="전남">전남</option>
+                                                            <option value="전북">전북</option>
+                                                            <option value="강원">강원</option>
                                                         </select>
                                                     </div>
-                                                    <div class="search-wrap w-block cell">
-                                                        <div class="search-box">
-                                                            <div class="forms">
-                                                                <div class="keyword-search type-B box">
-                                                                    <div class="input-wrap">
-                                                                        <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="센터명, 지역 또는 주소" title="센터명, 지역 또는 주소" data-clear-button="button.btn-delete" data-required="true" data-error-msg="센터명, 지역 또는 주소를 입력하고 조회해주세요." disabled>
-                                                                        <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
-                                                                        <button type="button" class="btn-search"><span class="blind">검색</span></button>
-                                                                    </div>
-                                                                    <p class="err-msg"></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    @@include('./common/support/search-keyword.html', {
+                                                        'url': '/lg5-common/data-ajax/support/searchShop/searchAutoComplete.json',
+                                                        'id': 'keyword',
+                                                        'inputTitle': '센터 명을 입력해주세요.',
+                                                        'layer': true,
+                                                        'onlyAutocomplete': true,
+                                                        'defaultInput': true,
+                                                        'disabled': true
+                                                    })
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="tb_row tb-row-bl">
-                                        <table>
-                                            <colgroup>
-                                                <col style="width:90px">
-                                                <col style="">
-                                                <col style="width:115px">
-                                            </colgroup>
-                                            <thead>
-                                            <tr>
-                                                <th scope="col">
-                                                    <span class="req">선택<span class="blind">필수항목</span></span>
-                                                </th>
-                                                <th scope="col">서비스 센터</th>
-                                                <th scope="col">상세 정보</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
+                                    <div class="center-list-wrap">
+                                        <div class="tb_row tb-row-bl">
+                                            <table>
+                                                <colgroup>
+                                                    <col style="width:90px">
+                                                    <col style="">
+                                                    <col style="width:115px">
+                                                </colgroup>
+                                                <thead>
                                                 <tr>
-                                                    <td>
-                                                        <div class="rdo-wrap">
-                                                            <input type="radio" name="center" id="center1" value="123" required>
-                                                            <label for="center1"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="adress-box">
-                                                        <label for="center1">
-                                                            <strong class="center-name">강남역 휴대폰서비스센터</strong>
-                                                            <p class="detailed-address">서울특별시 강남구 강남대로 406(역삼동) LG BEST SHOP 강남점 1층</p>
-                                                        </label>
-                                                    </td>
-                                                    <td></td>
+                                                    <th scope="col">
+                                                        <span class="req">선택<span class="blind">필수항목</span></span>
+                                                    </th>
+                                                    <th scope="col">서비스 센터</th>
+                                                    <th scope="col">상세 정보</th>
                                                 </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="rdo-wrap">
-                                                            <input type="radio" name="center" id="center2" value="456">
-                                                            <label for="center2"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="adress-box">
-                                                        <label for="center2">
-                                                            <strong class="center-name">강남역 휴대폰서비스센터</strong>
-                                                            <p class="detailed-address">서울특별시 강남구 강남대로 406(역삼동) LG BEST SHOP 강남점 1층</p>
-                                                        </label>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="btm-more err-block">
-                                            <p class="err-msg"></p>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="rdo-wrap">
+                                                                <input type="radio" name="center" id="center1" value="123" required>
+                                                                <label for="center1"></label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="info">
+                                                            <label for="center1">
+                                                                <p class="name">강남역 휴대폰서비스센터</p>
+                                                                <p class="address">서울특별시 강남구 강남대로 406(역삼동) LG BEST SHOP 강남점 1층</p>
+                                                            </label>
+                                                        </td>
+                                                        <td>
+                                                            <a href="#" class="btn-detail"><span class="blind">상세보기</span></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
                                         </div>
                                     </div>
-
                                     @@include('./common/support/pagination.html', {
                                         'count': 5
                                     })
+                                    <div class="no-data" style="display:none">
+                                        <p>검색 결과가 없습니다.</p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -312,10 +327,10 @@
                                 </div>
                             </div>
                             
-                            <div class="step-box" id="stepInput" data-engineer-url="" >
+                            <div class="step-box" id="stepInput" data-engineer-url="/lg5-common/data-ajax/support/searchEngineer.json">
                                 <div class="section">
                                     <div class="tit-wrap">
-                                        <h2 class="tit">방문할 엔지니어 확인</h2>
+                                        <h2 class="tit">전문 엔지니어 확인</h2>
                                     </div>
                                     <div class="engineer-to-visit">
                                         <div class="engineer-profile">
@@ -395,12 +410,6 @@
                                                         <input type="radio" name="topic" id="topic01" value="NTB10005000" data-error-msg="정확한 제품증상을 선택해주세요." data-required="true" required>
                                                         <label for="topic01"><span>부품/소모품</span></label>
                                                     </span>
-                                                </li>
-                                                <li>
-                                                    <span class="rdo-wrap btn-type3">
-                                                        <input type="radio" name="topic" id="topic02" value="NTB10005001">
-                                                        <label for="topic02"><span>건조</span></label>
-                                                    </span>
                                                 </li> -->
                                             </ul>
                                             <p class="err-msg topic-msg"></p>
@@ -415,12 +424,6 @@
                                                     <span class="rdo-wrap">
                                                         <input type="radio" name="subTopic" id="subTopic01" value="SS000001" data-error-msg="정확한 세부증상을 선택해주세요." data-required="true" required>
                                                         <label for="subTopic01">전기요금 문의</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="rdo-wrap">
-                                                        <input type="radio" name="subTopic" id="subTopic02" value="SS000002">
-                                                        <label for="subTopic02">제품 구입/행사 문의</label>
                                                     </span>
                                                 </li> -->
                                             </ul>
@@ -468,7 +471,7 @@
                                                 </div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="userNm" id="userNm" value="홍길동" placeholder="이름 입력" data-error-msg="이름을 입력해주세요" data-pattern-msg="한글 또는 영문만 입력 가능합니다." data-required="true" readonly required>
+                                                        <input type="text" name="userNm" id="userNm" value="홍길동" placeholder="이름 입력" data-required="true" readonly required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
@@ -481,7 +484,7 @@
                                                 </div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="phoneNo" id="phoneNo" value="01043324025" placeholder="휴대폰 번호 입력" maxlength="11" data-error-msg="정확한 휴대전화 번호를 입력해주세요"  data-pattern-msg="정확한 휴대전화 번호를 입력해주세요" data-required="true" readonly required>
+                                                        <input type="text" name="phoneNo" id="phoneNo" value="01043324025" placeholder="휴대폰 번호 입력" maxlength="11" data-required="true" readonly required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
@@ -546,7 +549,6 @@
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
-    <script src="/lg5-common/js/caresolution/addressManagement.min.js"></script>
     <script src="/lg5-common/js/support/centerVisit.min.js"></script>
 </body>
 </html> 

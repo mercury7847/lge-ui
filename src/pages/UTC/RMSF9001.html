@@ -80,6 +80,7 @@
                                 @ data-submit_url : 청약 신청 submit 유알엘
                             -->
                             <!-- 2021.1.27 data-submit-url 추가-->
+                            <!-- 2021.1.28 ata-prepayment-checked-url 추가-->
                             <div class="accordion-section ui_accordion requestRentalForm" 
                                 data-single-open="false" 
                                 data-open-index="[0]" 
@@ -88,6 +89,7 @@
                                 data-card-abled-url="/lg5-common/data-ajax/caresolution/requestCardAbled.json"
                                 data-ars-agree-url="/lg5-common/data-ajax/caresolution/requestArsAgree.json"
                                 data-submit-url="/lg5-common/data-ajax/caresolution/requestRentalSubmit.json"
+                                data-prepayment-checked-url="/lg5-common/data-ajax/caresolution/requestPrepaymentChecked.json" 
                             >
                             <!-- 
                                 ##데이터 관리 돔속성에서 히든인풋으로 바꿨습니다. 
@@ -674,13 +676,13 @@
                                                             <ul class="ui_radio_visible">
                                                                 <li>
                                                                     <span class="rdo-wrap">
-                                                                        <input type="radio" id="rdo04-1" name="rdo04" value="Y" data-visible-target="" checked>
+                                                                        <input type="radio" id="rdo04-1" name="rdo04" value="Y" data-visible-target=""> <!-- 2021.1.28 checked삭제-->
                                                                         <label for="rdo04-1">신청</label>
                                                                     </span>
                                                                 </li>
                                                                 <li>
                                                                     <span class="rdo-wrap">
-                                                                        <input type="radio" id="rdo04-2" name="rdo04" value="N" data-visible-target="">
+                                                                        <input type="radio" id="rdo04-2" name="rdo04" value="N" data-visible-target="" checked><!-- 2021.1.28 checked추가-->
                                                                         <label for="rdo04-2">미신청</label>
                                                                     </span>
                                                                 </li>

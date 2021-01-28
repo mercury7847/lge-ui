@@ -249,44 +249,169 @@
 
     /* 센터방문 예약 */
     &.visit-center {
-        .center-info-box {
-            padding: 20px 24px;
-            margin-bottom: 40px;
-            border-radius: 8px;
-            border: solid 1px #dddddd;
-            background-color: #ffffff;
-            .center-info-title {
+        .center-info-wrap {
+            margin-bottom:40px;
+            padding:32px 40px;
+            border-radius:8px;
+            border:1px solid #ddd;
+            .tit {
                 display:block;
                 margin-bottom:16px;
                 @include font-medium;
             }
+            .info-list {
+                @include clearfix;
+                li {
+                    float:left;
+                    font-size:0;
+                    & + li {
+                        position:relative;
+                        margin-left:23px;
+                        padding-left:24px;
+                        &:before {
+                            content:'';
+                            position:absolute;
+                            left:0;
+                            top:5px;
+                            width:1px;
+                            height:16px;
+                            background-color:#ddd;
+                        }
+                    }
+                }
+                .key, .value {
+                    display:inline-block;
+                    @include font-medium;
+                    vertical-align:middle;
+                }
+                .key {
+                    margin-right:4px;
+                    color:#767676;
+                }
+            }
             .bullet-list {
                 &.top-border {
-                    margin-top: 16px;
+                    margin-top:16px;
+                    padding-top:12px;
+                }
+                .b-txt {
+                    color:#767676;
+                    font-weight:500;
+                }
+            }
+            @include mobile {
+                margin-bottom:40px;
+                padding:20px 16px;
+                .tit {
+                    margin-bottom:20px;
+                }
+                .info-list {
+                    li {
+                        float:none;
+                        & + li {
+                            margin:12px 0 0 0;
+                            padding-left:0;
+                            &:before {
+                                content:none;
+                            }
+                        }
+                    }
+                }
+                .bullet-list {
+                    &.top-border {
+                        margin-top:12px;
+                    }
                 }
             }
         }
-    
         .tabs-wrap {
-            margin-bottom:40px;
+            margin-bottom:48px;
         }
-
-        .adress-box {
-            text-align: left;
-            label {
-                cursor: pointer;
+        // 주소 선택
+        .adress-input-box {
+            display: flex;
+            .cell {
+                margin-left: 8px;
+                margin-top: 0;
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+            .display-flex {
+                display: flex;
+                .ui-selectbox-wrap {
+                    flex: 1;
+                }
+                .btn {
+                    margin-left: 8px;
+                }
+            }
+            .keyword-search {
+                margin-left:8px;
+            }
+            @include pc {
+                .search-address {
+                    display:none;
+                }
+            }
+            @include mobile {
+                display: block;
+                .cell {
+                    margin-left: 0;
+                    margin-top: 6px;
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                }
+                .btn-cell {
+                    .btn {
+                        width:calc(50% - 3px);
+                        & + .btn {
+                            margin-left:6px;
+                        }
+                        &:only-child {
+                            width:100%;
+                        }
+                    }
+                }
+                .keyword-search {
+                    margin:8px 0 0;
+                }
             }
         }
-        .center-name {
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 1.63;
-            color: #000;
-        }
-        .detailed-address {
-            font-size: 14px;
-            line-height: 1.71;
-            color: #767676;
+        .center-list-wrap {
+            margin-top:48px;
+            .adress-box {
+                text-align: left;
+                label {
+                    cursor: pointer;
+                }
+            }
+            .info {
+                text-align:left;
+                label {
+                    cursor:pointer;
+                }
+                .name {
+                    margin-bottom:4px;
+                    font-weight:500;
+                    @include font-medium;
+                }
+                .address {
+                    color: #767676;
+                    @include font-small;
+                }
+            }
+            .btn-detail {
+                display:inline-block;
+                width:32px;
+                height:32px;
+                background:url(/lg5-common/images/icons/icon_popup-window.svg) no-repeat;
+                background-size:32px 32px;
+            }
+            @include mobile {
+                margin-top:40px;
+            }
         }
     }
     
