@@ -1042,7 +1042,8 @@
             });
         },
 
-        requestCart: function(id, sku, wishListId, wishItemId, postUrl, cartType) {
+        requestCart: function(ajaxUrl, param) {
+            /*
             var postData = {"id":id};
             if(!(!sku)) {
                 postData.sku = sku;
@@ -1057,8 +1058,14 @@
                 //렌탈:rental,구매:buy
                 postData.cartType = cartType;
             }
-            lgkorUI.requestAjaxDataPost(postUrl, postData, function(result){
+            */
+            lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                 var data = result.data;
+                var cartCnt = (typeof data.cartCnt  === 'number') ? ""+data.cartCnt : data.cartCnt;
+                if(cartCnt) {
+                    $('div.header-wrap div.utility span.count').contents()[2].textContent = cartCnt;
+                }
+
                 if(lgkorUI.stringToBool(data.success)) {
                     $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
                 }

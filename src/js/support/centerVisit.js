@@ -1,21 +1,23 @@
 (function() {
-    var optionTmpl = '<option value={{value}}>{{title}}</option>';
+    var localOptTemplate = '<option value={{code}}>{{codeName}}</option>';
     var centerTmpl =
         '{{#each (item, index) in listData}}' +
         '<tr>' +
             '<td>' +
                 '<div class="rdo-wrap">' +
-                    '<input type="radio" name="center" id="rdo{{index+1}}" value="{{item.centerCode}}">' +
+                    '<input type="radio" name="center" id="rdo{{index+1}}" value="{{item.shopID}}">' +
                     '<label for="rdo{{index+1}}"></label>' +
                 '</div>' +
             '</td>' +
-            '<td class="adress-box">' +
+            '<td class="info">' +
                 '<label for="rdo{{index+1}}">' +
-                    '<strong class="center-name">{{item.centerName}}</strong>' +
-                    '<p class="detailed-address">{{item.centerAdress}}</p>' +
+                    '<p class="name">{{item.shopName}}</p>' +
+                    '<p class="address">{{item.shopAdress}}</p>' +
                 '</label>' +
             '</td>' + 
-            '<td></td>' + 
+            '<td>' +
+                '<a href="#{{item.shopID}}" class="btn-detail"><span class="blind">상세보기</span></a>' +
+            '</td>' + 
         '</tr>' +
         '{{/each}}';
     var topicTmpl = 
@@ -76,22 +78,31 @@
             self.autoFlag = false;
 
             self.$cont = $('.contents');
+            self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
+            self.$myProductWrap = self.$cont.find('.my-product-wrap');
             self.$submitForm = self.$cont.find('#submitForm');
-            self.$stepArea = self.$cont.find('.step-area');
             self.$completeBtns = self.$cont.find('.btn-group');
+            self.$stepArea = self.$cont.find('.step-area');
+            self.$stepModel = self.$cont.find('#stepModel');
 
             // 센터찾기
             self.$stepCenter = self.$cont.find('#stepCenter');
             self.$centerPagination = self.$stepCenter.find('.pagination');
-            self.$localSi = self.$stepCenter.find('#localSi');
-            self.$localGu = self.$stepCenter.find('#localGu');
-            self.$localSearch = self.$stepCenter.find('.search-local');
-            self.$currentSearch = self.$stepCenter.find('.search-current');
-            self.$addressSearch = self.$stepCenter.find('.search-address');
-            self.$subwayLocal = self.$stepCenter.find('#subwayLocal');
-            self.$subwayLine = self.$stepCenter.find('#subwayLine');
-            self.$subwayStation = self.$stepCenter.find('#subwayStation');
-            self.$subwaySearch = self.$stepCenter.find('.search-subway');
+
+            self.$citySelect = $('#localSi');
+            self.$boroughSelect = $('#localGu');
+            self.$localSearchButton = $('.search-local');
+            self.$searchUserAdressButton = $('.search-address');
+            self.$searchCurrentButton = $('.search-current');
+            
+            self.$subwayCitySelect = $('#subwayLocal');
+            self.$subwayLineSelect = $('#subwayLine');
+            self.$subwayStationSelect = $('#subwayStation');
+            self.$searchSubwayButton = $('.search-subway');
+
+            self.$citySelect2 = $('#address');
+            self.$address1 = $('#keyword');
+            self.searchCenterName = $('#tab3').find('.btn-search');
 
             // 희망날짜
             self.$stepDate = self.$cont.find('#stepDate');
@@ -118,53 +129,92 @@
             self.$authPopup = $('#certificationPopup');
 
             self.centerUrl = self.$stepCenter.data('centerUrl');
-            self.engineerUrl = self.$stepEngineer.data('engineerUrl');
+            self.localUrl = self.$stepCenter.data('localListUrl');
+            self.subwayUrl = self.$stepCenter.data('subwayListUrl');
+            self.stationUrl = self.$stepCenter.data('stationListUrl');
+            self.userAdressCheckedUrl = self.$stepCenter.data('userAdressCheckedUrl');
+            self.detailUrl = self.$stepCenter.data('detailUrl');
             self.dateUrl = self.$stepDate.data('dateUrl');
             self.timeUrl = self.$stepDate.data('timeUrl');
-            self.param;
-            self.centerParam;
+            self.engineerUrl = self.$stepInput.data('engineerUrl');
+            
+            self.searchType = 'local';
+            self.isLogin = lgkorUI.isLogin;
 
-            vcui.require(['ui/validation', 'ui/formatter'], function () {
-                var register = {
-                    userName: {
-                        msgTarget: '.err-block'
+            var register = {
+                date: {
+                    required: true,
+                    msgTarget: '.err-msg',
+                    errorMsg: '날짜를 선택해주세요.'
+                },
+                time: {
+                    required: true,
+                    msgTarget: '.err-msg',
+                    errorMsg: '시간을 선택해주세요.'
+                },
+                userName: {
+                    required: true,
+                    msgTarget: '.err-block',
+                    errorMsg: '이름을 입력해주세요.',
+                    patternMsg: '한글 또는 영문만 입력 가능합니다.'
+                },
+                phoneNo: {
+                    required: true,
+                    pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
+                    msgTarget: '.err-block',
+                    errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                    patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                }
+            }
+            var authOptions = {
+                elem: {
+                    popup: '#certificationPopup',
+                    name: '#authName',
+                    phone: '#authPhoneNo',
+                    number: '#authNo'
+                },
+                register: {
+                    authName: {
+                        required: true,
+                        msgTarget: '.err-block',
+                        pattern: /^[가-힣a-zA-Z]+$/,
+                        errorMsg: '이름을 입력해주세요.',
+                        patternMsg: '한글 또는 영문만 입력 가능합니다.'
                     },
-                    phoneNo: {
-                        pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                        msgTarget: '.err-block'
+                    authPhoneNo: {
+                        required: true,
+                        msgTarget: '.err-block',
+                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                        errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
                     },
-                    centerAdress: {
-                        msgTarget: '.err-block'
+                    authNo:{
+                        required: true,
+                        msgTarget: '.err-block',
+                        errorMsg: '인증번호를 입력해주세요.'
                     }
                 }
+            };
 
-                var authOptions = {
-                    elem: {
-                        popup: '#certificationPopup',
-                        name: '#authName',
-                        phone: '#authPhoneNo',
-                        number: '#authNo'
-                    },
-                    register: {
-                        authName: {
-                            pattern: /^[가-힣a-zA-Z]+$/,
-                            msgTarget: '.err-block'
-                        },
-                        authPhoneNo: {
-                            pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
-                            msgTarget: '.err-block'
-                        },
-                        authNo:{
-                            msgTarget: '.err-block'
-                        }
-                    }
-                }
-
+            vcui.require(['ui/validation', 'helper/naverMapApi'], function () {
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
-                csUI.isLogin && (authManager = new AuthManager(authOptions));
+
+                if (!self.isLogin) authManager = new AuthManager(authOptions);
+
+                $('#route').val(lgkorUI.isMobile() ? 'WWW2' : 'WWWW1');
+
+                self.bindEvent();
 
                 self.$cont.commonModel({
-                    register: register
+                    register: register,
+                    selected: {
+                        category: self.$cont.find('#category').val(),
+                        categoryName: self.$cont.find('#categoryNm').val(),
+                        subCategory: self.$cont.find('#subCategory').val(),
+                        subCategoryName: self.$cont.find('#subCategoryNm').val(),
+                        modelCode: self.$cont.find('#modelCode').val(),
+                        productCode: self.$cont.find('#productCode').val()
+                    }
                 });
 
                 self.$engineerSlider.vcCarousel({
@@ -202,88 +252,146 @@
                     inputTarget: '#time'
                 });
 
-                self.$localSi.vcSelectTarget();
-                self.$subwayLocal.vcSelectTarget();
-                self.$subwayLine.vcSelectTarget();
+                $('.ui_search').search({
+                    template: {
+                        autocompleteList: '<li><a href="#{{shopID}}" class="btn-detail" title="새창 열림">{{shopName}}</a></li>',
+                    }
+                });
 
-                self.bindEvent();
+                new vcui.helper.NaverMapApi({
+                    mapService: 'naver',
+                    keyID: 'vsay0tnzme',
+                    appKey: 'oqYmIfzrl6E72lYDAvNeII5x9wEWUNwKrcUctzVa'
+                }).load(function(){
+                    
+                });  
             });
         },
         bindEvent: function() {
             var self = this;
 
             // 모델 재선택 하기 후 이벤트
-            self.$cont.on('reset', function(e, module) {
-                self.$solutionsBanner.hide();
-                module._next(module.$stepModel);
+            self.$cont.on('reset', function(e) {
+                self.reset();
             });
 
             // 모델 선택 후 이벤트
-            self.$cont.on('complete', function(e, module, data, url) {    
-                var param = {
-                    modelCode: data.modelCode,
+            self.$cont.on('complete', function(e, data, url) {    
+                self.model = data;
+                self.requestCenterData({
+                    category: self.model.category,
+                    subCategory: self.model.subCategory,
+                    modelCode: self.model.modelCode,
                     serviceType: $('#serviceType').val(),
-                    category: data.category,
-                    subCategory: data.subCategory
-                };
+                    page:1
+                }, url);
 
-                lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                    var resultData = result.data;
+                self.$cont.commonModel('updateSummary', {
+                    product: [data.categoryName, data.subCategoryName, data.modelCode],
+                    reset: 'product'
+                });
+                
+                self.$myProductWrap.hide();
 
-                    module._updateSummary({
-                        product: [data.categoryName, data.subCategoryName, data.modelCode],
-                        reset: true
-                    });
-                    
-                    module.$myModelArea.hide();
-
-                    module._next(self.$stepCenter);
-                    module._focus(module.$selectedModelBar, function() {
-                        module.$selectedModelBar.vcSticky();
-                    });
+                self.$cont.commonModel('next', self.$stepCenter);
+                self.$cont.commonModel('focus', self.$selectedModelBar, function() {
+                    self.$selectedModelBar.vcSticky();
                 });
             });
 
+            $('.ui_tab').on('tabchange', function(e, data) {
+                switch(data.selectedIndex) {
+                    case 0:
+                        self.searchType = 'local';
+                        break;
+                    case 1:
+                        self.searchType = 'subway';
+                        break;
+                    case 2:
+                        self.searchType = 'center';
+                        break;
+                }
+            });
+
             // 지역 검색
-            self.$localSi.on('change', function() {
-                self.$localSearch.prop('disabled', $(this).val() ? false : true);
+            self.$citySelect.on('change', function(e){
+                self._loadLocalAreaList(e.target.value);
             });
-            self.$localGu.on('change', function() {
-
+            self.$localSearchButton.on('click', function(e){
+                self._setLocalSearch();
             });
-            self.$localSearch.on('click', function() {
-                var value = self.$localGu.val();
+            self.$searchUserAdressButton.on('click', function(e){
+                self.searchType = 'user';
+                self._setUserAdressSearch();
+            });
+            self.$searchCurrentButton.on('click', function(e) {
+                self.searchType = 'current';
+                self._setCurrentSearch();               
+            });
 
-                if (!value) {
-                    lgkorUI.alert("", { title: '시/군/구를 선택해주세요.' });
-                    return;
+            // 지하철역 검색
+            self.$subwayCitySelect.on('change', function(e){
+                lgkorUI.requestAjaxData(self.subwayUrl, {codeType:'SUBWAY', pcode:e.target.value}, function(result){
+                    self._setSubwayOption(result.data, self.$subwayLineSelect, {codeName:"호선 선택", code:""}, "code");
+                });
+                self.$subwayLineSelect.prop('disabled', false);
+            });
+            self.$subwayLineSelect.on('change', function(e){
+                lgkorUI.requestAjaxData(self.stationUrl, {codeType:'SUBWAY', pcode:e.target.value}, function(result){
+                    self._setSubwayOption(result.data, self.$subwayStationSelect, {codeName:"역 선택", code:""}, "codeName");
+                });
+                self.$subwayStationSelect.prop('disabled', false);
+            });
+            self.$subwayLineSelect.on('change', function(e){
+                self.$searchSubwayButton.prop('disabled', false);
+            });
+            self.$searchSubwayButton.on('click', function(e){
+                self._setSubwaySearch();
+            });
+
+            // 센터명 검색
+            self.$citySelect2.on('change', function(e){
+                if ($(this).val()) {
+                    self.$address1.prop('disabled', false);
+                } else {
+                    self.$address1.val('').prop('disabled', true);
+                    
+                }
+            });
+            self.$address1.on('keyup', function(e) {
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    self.searchCenterName.trigger('click');
+                }
+            });
+
+            $('.ui_search').on('autocomplete', function(e, param, url, callback) {
+                var data = {
+                    searchCity: self.$citySelect2.val(),
+                    searchKeyword: param.keyword
                 }
 
-                self.centerParam = {
-                    localSi: siVal,
-                    localGu: guVal
-                };
+                lgkorUI.requestAjaxData(url, data, function(result) {
+                    callback(result.data);
+                });
+            });
+            $('.ui_search').on('autocompleteClick', function(e, el) {
+                var id = $(el).attr("href").replace("#", "");
+                var windowHeight = $(window).innerHeight();
+                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
+            });
+            $('.center-list-wrap').on('click', '.btn-detail', function(){
+                var id = $(this).attr("href").replace("#", "");
+                var windowHeight = $(window).innerHeight();
+                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
+            });
 
-                self.setLocalSearch();
+            self.searchCenterName.on('click', function() {
+                self._setSearch();
             });
-            self.$currentSearch.on('click', function() {
+            
 
-            });
-            self.$addressSearch.on('click', function() {
 
-            });
-            self.$subwayLocal.on('change', function() {
-                
-            });
-            self.$subwayLine.on('change', function() {
-                self.$subwaySearch.prop('disabled', $(this).val() ? false : true);
-            });
-            self.$subwayStation.on('change', function() {
-
-            });
-            self.$subwaySearch.on('click', function() {
-                self.setSubwaySearch();
-            });
             self.$centerPagination.on('pageClick', function(e) {
                 var param = {
                     page: e.page
@@ -343,11 +451,7 @@
                 self.requestTime();
             });
             self.$timeWrap.on('timeselected', function() {
-                var url = self.$stepEngineer.data('ajax');
-
-                var param = {};
-
-                self.reqestEngineer(url, param);
+                self.reqestEngineer();
             });
 
             // 엔지니어 선택 팝업 오픈
@@ -394,7 +498,7 @@
                 var result = validation.validate();
 
                 if (result.success == true) {    
-                    if (self.isLogin == 'Y') {
+                    if (self.isLogin) {
                         lgkorUI.confirm('', {
                             title:'예약 하시겠습니까?',
                             okBtnName: '확인',
@@ -404,7 +508,10 @@
                             }
                         });       
                     } else {
-                        authManager.open();
+                        authManager.open(function() {
+                            $('#authName').val($('#userNm').val()).prop('readonly', true);
+                            $('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);  
+                        });
                     }
                 }
             });
@@ -415,68 +522,308 @@
 
             self.$authPopup.find('.btn-auth').on('click', function() {
                 authManager.confirm(this, function() {
-                    self.requestComplete();
+                    success && self.requestComplete();
                 });
             });
         },
-        setSelectOption: function(target, type) {
+        reset: function() {
             var self = this;
-            var tmpl;
 
-            switch(type) {
-                case 'local': 
-                    tmpl
+            self.model = {};
+
+            self.$dateWrap.calendar('reset');
+            self.$timeWrap.timeCalendar('reset');
+
+            self.$topicList.empty();
+            self.$subTopicList.empty();
+            self.$solutionsBanner.hide();
+
+            $('#engineerNm').val('');
+            $('#engineerCode').val('');
+            $('#centerNm').val('');
+            $('#centerCode').val('');
+            $('#date').val('');
+            $('#time').val('');
+        
+            self.$stepInput.find('[name=buyingdate]').closest('.conts').find('.form-text').remove();
+            self.$stepInput.find('[name=buyingdate]').prop('checked', false);
+            self.$stepInput.find('#content').val('');
+
+            if (!self.isLogin) {
+                self.$stepInput.find('#userNm').val('');
+                self.$stepInput.find('#phoneNo').val('');
+            } else {
+                self.$myProductWrap.show();
+            }
+
+            self.$cont.commonModel('next', self.$stepModel);
+        },
+        _getKeyword: function(){
+            var self = this;
+
+            var keywords = {};
+
+            switch(self.searchType) {
+                case 'local':
+                    keywords = {
+                        latitude:self.latitude,
+                        longitude:self.longitude
+                    };    
+                    break;
+                case 'current':
+                    keywords = {
+                        latitude:self.latitude,
+                        longitude:self.longitude
+                    };
+                    break;
+                case 'user':
+                    keywords = {
+                        searchCity: self.userCityName,
+                        searchBorough: self.userBoroughName
+                    };
                     break;
                 case 'subway':
+                    keywords = {
+                        searchSubwayLocal: self.$subwayCitySelect.val(),
+                        searchSubwayLine: self.$subwayLineSelect.val(),
+                        searchSubwayStation: self.$subwayStationSelect.val()
+                    };
                     break;
                 case 'center':
+                    keywords = {
+                        latitude:self.latitude,
+                        longitude:self.longitude,
+                        searchKeyword: self.$address1.val()
+                    };
+                    break;
+                case 'road':
+                    keywords = {
+                        latitude:self.latitude,
+                        longitude:self.longitude
+                    };
                     break;
             };
 
-            target.empty();
+            console.log("keywords :", keywords)
 
-            for (var i in list){
+            return keywords;
+        },
+        searchAddressToCoordinate: function(address, callback) { 
+            var self = this;
+            var point;
+            
+            naver.maps.Service.geocode({
+                address: address
+            }, function(status, response) {
+                if (status === naver.maps.Service.Status.ERROR) {
+                    return alert('Something Wrong!');
+                }
+
+                var point = response.result.items[0].point;
+                self.longitude = point.x;
+                self.latitude = point.y;
+
+                callback && callback();
+            });
+        },
+        _loadLocalAreaList: function(val){
+            var self = this;
+
+            lgkorUI.requestAjaxData(self.localUrl, {pcode:encodeURI(val),codeType:'CITY'}, function(result){
+                var arr = result.data instanceof Array ? result.data : [];
+
+                self._setSubwayOption(result.data, self.$boroughSelect, {codeName:"구/군 선택", code:""}, "code");
+                self.$localSearchButton.prop('disabled', false);
+                self.$boroughSelect.prop('disabled', arr.length ? false : true);
+                self.$boroughSelect.vcSelectbox('update');
+            });
+        },
+        _setSubwayOption: function(result, select, firstdata, valuekey){
+            var self = this;
+            var lines = vcui.array.map(result, function(item, idx){
+                return {
+                    codeName: item.codeName,
+                    code: item[valuekey]
+                }
+            });
+            lines.unshift(firstdata);
+            self._setSelectOption(select, lines);
+            select.vcSelectbox('update');
+        },
+
+        _setSelectOption: function(select, list){
+            var self = this;
+
+            select.empty();
+
+            for(var i in list){
                 var opt = vcui.template(localOptTemplate, list[i]);
                 select.append($(opt).get(0));
             }
         },
-        setLocalSearch: function() {
-            var self = this;
-            
-            self.requestCenterData();
-        },
-        setSubwaySearch: function() {
-            var self = this;
-        
-            self.requestCenterData();
-        },
-        setCenterSearch: function() {
+        //지역 검색...
+        _setLocalSearch: function(){
             var self = this;
 
-            self.requestCenterData();
+            var keyword = self.$boroughSelect.val() || self.$citySelect.val();
+            var trim = keyword.replace(/\s/gi, '');
+            if(trim.length){
+                var callback = function() {
+                    self.requestCenterData()
+                };
+
+                self.searchResultMode = true;
+                self.schReaultTmplID = "localSearch";
+                
+                self.searchAddressToCoordinate(trim, callback);
+            }
         },
-        requestCenterData: function(param) {
+
+        // 내 주소로 검색....
+        _setUserAdressSearch: function(){
             var self = this;
 
-            lgkorUI.requestAjaxDataPost(self.centerUrl, param, function(result) {
-                var data = result.data,
-                    dataArr = data.listData instanceof Array ? data.listData : [],
-                    html;
+            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(self.userAdressCheckedUrl, {}, function(result){
+                if(lgkorUI.stringToBool(result.data.success)){
+                    self.userCityName = result.data.userAdress.cityValue;
+                    self.userBoroughName = result.data.userAdress.boroughValue;
+                    self.searchResultMode = true;
+                    self.schReaultTmplID = "localSearch";
 
-                if (dataArr) {
-                    html = vcui.template(centerTmpl, data);
-                    self.$stepCenter.find('table tbody').html(html);
-                    self.$centerPagination.pagination('update', data.listPage);
+                    self.requestCenterData();
+                } else{
+                    if(result.data.location && result.data.location != ""){
+                        location.href = result.data.location;
+                    } else{
+                        lgkorUI.alert("", {
+                            title: result.data.alert.title
+                        });
+                    }
                 }
             });
         },
 
-        setTopicList: function(data) {
+        // 현재 위치 검색
+        _setCurrentSearch: function() {
             var self = this;
-            var html;
 
-            html = vcui.template(topicTmpl, data);
-            self.$topicList.html(html); 
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(pos) {
+                    self.latitude = pos.coords.latitude;
+                    self.longitude = pos.coords.longitude;
+
+                    self.searchResultMode = true;
+                    self.schReaultTmplID = "localSearch";
+
+                    self.requestCenterData();
+                }, function(error) {
+                    
+                }); 
+            }
+        },
+
+        // 지하철역 검색...
+        _setSubwaySearch: function(){
+            var self = this;
+            console.log("_setSubwaySearch")
+            var keyword = self.$subwayStationSelect.val();
+            var trim = keyword.replace(/\s/gi, '');
+            if(trim.length){
+                self.schReaultTmplID = "subwaySearch";
+                self.searchResultMode = true;
+
+                self.requestCenterData();
+            } else{
+                lgkorUI.alert("", {
+                    title: "지하철 검색의 역명을 선택해 주세요."
+                });
+            }
+        },
+
+        // 센터명 검색...
+        _setSearch: function(){
+            var self = this;
+            
+            var keyword = self.$address1.val();
+            var trim = keyword.replace(/\s/gi, '');
+            if(trim.length){
+                var callback = function() {
+                    self.requestCenterData()
+                };
+
+                self.schReaultTmplID = "search";
+                self.searchResultMode = true;
+
+                $(window).off('keyup.searchShop');
+
+                self.searchAddressToCoordinate(self.$citySelect2.val(), callback);
+            } else{
+                lgkorUI.alert("", {
+                    title: "광역 시/도 선택 후 센터 명을 입력해주세요."
+                });
+            }
+        },
+        setWarranty: function(data) {
+            var self = this;
+            var $warranty = self.$stepInput.find('[name=buyingdate]');
+
+            if (self.isLogin) {
+                if (data.warrantyText && data.warrantValue) {
+                    $warranty.closest('.conts').append('<p class="form-text">'+data.warrantyText+'</p>');
+                    $warranty.filter('[value='+data.warrantValue+']').prop('checked', true);
+                    
+                    $warranty.closest('.rdo-list-wrap').hide();
+                } else {
+                    $warranty.closest('.rdo-list-wrap').show();
+                }
+            }
+        },
+        requestCenterData: function(options, url) {
+            var self = this;
+            var param = self._getKeyword();
+            var url = url || self.centerUrl;
+            
+            if (!options) {
+                var options = {
+                    page:1
+                }
+            }
+
+            param = $.extend(param, options);
+
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                var data = result.data,
+                    dataArr = data.listData instanceof Array ? data.listData : [],
+                    html;
+
+                if (dataArr.length) {
+                    html = vcui.template(centerTmpl, data);
+                    self.$stepCenter.find('table tbody').html(html);
+                    self.$centerPagination.pagination('update', data.listPage);
+
+                    self.$stepCenter.find('.no-data').hide();
+                    self.$stepCenter.find('.center-list-wrap').show();
+                    self.$centerPagination.show();
+                } else {
+                    self.$stepCenter.find('.no-data').show();
+                    self.$stepCenter.find('.center-list-wrap').hide();
+                    self.$centerPagination.hide();
+                }
+
+                self.setWarranty(data);
+                self.setTopic(data);
+
+                lgkorUI.hideLoading();
+            });
+        },
+        setTopic: function(data) {
+            var self = this;
+            var success = (data.topicList instanceof Array && data.topicList.length) ? true : false;
+            
+            if (success) {
+                self.$topicList.html(vcui.template(topicTmpl, data));
+            }
         },
         requestSubTopic: function(url, param) {
             var self = this;
@@ -498,11 +845,9 @@
                 var data = result.data;
                 
                 if (data.resultFlag == 'Y') {
-                    if (data.solutionFlag) {
-                        self.$solutionsBanner.show();
-                    } else {
-                        self.$solutionsBanner.hide();
-                    }
+                    self.$solutionsBanner.show();
+                } else {
+                    self.$solutionsBanner.hide();
                 }
             });
         },
@@ -533,11 +878,13 @@
         },
         requestDate: function() {
             var self = this;
-            var url = self.$stepDate.data('dateUrl');
+            var param = {
+                category: self.model.category,
+                subCategory: self.model.subCategory,
+                serviceType: $('#serviceType').val()
+            };
 
-            var param = {};
-
-            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+            lgkorUI.requestAjaxDataPost(self.dateUrl, param, function(result) {
                 var data = result.data,
                     dateArr = data.dateList instanceof Array ? data.dateList : [],
                     fastDate;
@@ -568,12 +915,16 @@
             });
         },
         requestTime: function() {
-            var self = this,
-                url = self.$stepDate.data('timeUrl');
+            var self = this;
+            var param = {
+                category: self.model.category,
+                subCategory: self.model.subCategory,
+                serviceType: $('#serviceType').val(),
+                date: $('#date').val(),
+                lockUserId: $('#lockUserId').val()
+            };
 
-            var param = {};
-
-            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+            lgkorUI.requestAjaxDataPost(self.timeUrl, param, function(result) {
                     var data = result.data;
 
                     if (data.resultFlag == 'Y') {
@@ -595,12 +946,19 @@
                     }
                 });
         },
-        reqestEngineer: function(url, param) {
+        reqestEngineer: function() {
             var self = this;
+            var param = {
+                serviceType: $('#serviceType').val(),
+                category: $('#category').val(),
+                subCategory: $('#subCategory').val(),
+                lockUserId: $('#lockUserId').val(),
+                productCode: $('#productCode').val(),
+                date: $('#date').val(),
+                time: $('#time').val()
+            }
 
-            param = $.extend(param, self.dateParam);
-
-            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+            lgkorUI.requestAjaxDataPost(self.engineerUrl, param, function(result) {
                 var data = result.data,
                     arr = data.engineerList instanceof Array ? data.engineerList : []; 
 
@@ -655,12 +1013,12 @@
 
             formData = $.extend(formData, self.dateParam);
 
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
                     $('#acptNo').val(data.acptNo);
-
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {
@@ -669,6 +1027,7 @@
                         });
                     }
                 }
+                lgkorUI.hideLoading();
             }, 'POST');
         }
     }

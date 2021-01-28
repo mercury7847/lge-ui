@@ -176,21 +176,17 @@ $(window).ready(function(){
 		requestCart: function($dm) {
 			var self = this;
 			var ajaxUrl = self.$section.attr('data-cart-url');
-			lgkorUI.requestCart($dm.attr('data-id'),$dm.attr('data-sku'),$dm.attr('data-wishListId'),$dm.attr('data-wishItemId'),ajaxUrl);
-			/*
-			var postData = {
+			
+			var param = {
 				"id":$dm.attr('data-id'),
 				"sku":$dm.attr('data-sku'),
 				"wishListId":$dm.attr('data-wishListId'),
 				"wishItemId":$dm.attr('data-wishItemId'),
+				// "categoryId":$dm.attr('data-categoryId'),
+				// "rtSeq":$dm.attr('data-rtSeq'),
+				// "typeFlag":cartType
 			}
-			lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
-				var data = result.data;
-				if(lgkorUI.stringToBool(data.success)) {
-					$(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
-				}
-			});
-			*/
+			lgkorUI.requestCart(ajaxUrl, param);
 		},
 	};
 	KRC0001.init();
