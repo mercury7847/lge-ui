@@ -169,11 +169,46 @@
         }
     }
 
+    .service-list-box {
+        display:flex;
+        overflow-x: auto;
+        margin-top:16px;
+        margin-right:-16px;
+        ul {
+            display:flex;
+            padding-right: 16px;
+            li {
+                width:77px;
+                height:77px;
+                border:1px solid #ddd;
+                border-radius: 4px;
+                a {
+                    display:block;
+                    height:100%;
+                    padding:0 10px;
+                    font-size:0;
+                    line-height:77px;
+                    text-align:center;
+                    span {
+                        display:inline-block;
+                        @include font-small;
+                        vertical-align:middle;
+                        word-break:break-all;
+                    }
+                }
+                & + li {
+                    margin-left:4px;
+                }
+            }
+        }
+    }
+
     .cs-service-menu {
         text-align: center;
         color: #000;
         .service-list {
             display:flex;
+            justify-content: center;
             flex-wrap: wrap;
             .icon {
                 img {
@@ -181,7 +216,11 @@
                 }
             }
         }
-
+        @include pc {
+            .banner-tit {
+                margin-bottom: 32px;
+            }
+        }
         @include mobile {
             padding: 20px  0;
             .banner-tit {
