@@ -104,9 +104,9 @@
                             if (result.data.resultFlag == 'Y') {
                                 self.hide();
                             } else {
-                                if (data.resultMessage) {
+                                if (result.data.resultMessage) {
                                     lgkorUI.alert("", {
-                                        title: data.resultMessage
+                                        title: result.data.resultMessage
                                     });
                                 }
                             }
