@@ -893,6 +893,9 @@
                 width: 100%;
                 li {
                     width: 50%;
+                    &.on {
+                        margin-left:0;
+                    }
                 }
             }
         }
@@ -1534,6 +1537,7 @@
                 .btn {
                     display: table-cell;
                     width: 100%;
+                    border-radius:26px !important;
                     //@include mobile {
                     //    margin-left: 4px;
                     //    border-radius: 4px;
