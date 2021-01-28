@@ -106,7 +106,7 @@
                     if(data.selectedIndex == 0) {
                         location.href = $(this).siblings('div.row-wrap').first().attr('data-url');
                     }
-                })
+                });
 
                 self.cartAllChecker.on('allCheckerChange', function(e, status){
                     _self.requestInfo();
