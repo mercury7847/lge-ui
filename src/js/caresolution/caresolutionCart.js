@@ -278,8 +278,12 @@
                 });
                 if(itemList.length > 0) {
                     var ajaxUrl = self.$cartContent.attr('data-list-url');
-                    var postData = {'itemID': (itemList.length > 0) ? itemList.join() : null,
-                                    'itemSeq': (itemSeqList.length > 0) ? itemSeqList.join() : null};
+                    var postData = {
+                        'itemID': (itemList.length > 0) ? itemList.join() : null,
+                        'itemSeq': (itemSeqList.length > 0) ? itemSeqList.join() : null,
+                    };
+                    var cardId = careCartInfo.getSelectCardId();
+                    postData.easyRequestCard = cardId;
                     lgkorUI.requestAjaxData(ajaxUrl, postData, function(result){
                         var data = result.data;
                         careCartInfo.updateData(data);
@@ -295,7 +299,14 @@
             requestItemTip: function(dm) {
                 var self = this;
                 var ajaxUrl = $(dm).attr('href');
-                lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
+                var $li = $(dm).parents('li');
+                var param = {
+                    'itemID': $li.attr('data-item-id'),
+                    'itemSeq': $li.attr('data-item-seq')
+                };
+                var cardId = careCartInfo.getSelectCardId();
+                param.easyRequestCard = cardId;
+                lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
                     self.openModalFromHtml(result);
                 }, null, "html");
             },

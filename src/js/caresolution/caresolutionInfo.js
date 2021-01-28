@@ -64,6 +64,11 @@ var CareCartInfo = (function() {
             self.updateAgreement(data.agreement);
         },
 
+        getSelectCardId: function() {
+            var self = this;
+            return self.$paymentInfo.attr('data-card-id');
+        },
+
         setEmptyData: function() {
             var self = this;
             self.updatePaymentInfo(self.resetPaymentData);
