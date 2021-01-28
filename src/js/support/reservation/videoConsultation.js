@@ -131,8 +131,18 @@
 
                 $('#route').val(lgkorUI.isMobile() ? 'WWW2' : 'WWWW1');
 
+                self.bindEvent();
+
                 self.$cont.commonModel({
-                    register: register
+                    register: register,
+                    selected: {
+                        category: self.$cont.find('#category').val(),
+                        categoryName: self.$cont.find('#categoryNm').val(),
+                        subCategory: self.$cont.find('#subCategory').val(),
+                        subCategoryName: self.$cont.find('#subCategoryNm').val(),
+                        modelCode: self.$cont.find('#modelCode').val(),
+                        productCode: self.$cont.find('#productCode').val()
+                    }
                 });
                 self.$calendarDate.calendar({
                     inputTarget: '#date'
@@ -140,18 +150,12 @@
                 self.$calendarTime.timeCalendar({
                     inputTarget: '#time'
                 });
-
-                self.bindEvent();
             });
         },
         completeModel: function(url) {
             var self = this;
 
-            if (self.model.isRequest) {
-                self.setInputStep(url);
-            } else {
-                self.nextInputStep();
-            }
+            self.setInputStep(url);
         },
         nextInputStep: function() {
             var self = this;

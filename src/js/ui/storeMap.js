@@ -68,8 +68,8 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     '           </dl>'+
                     '       </div>'+
                     '       <div class="btn-group">'+
-                    '           <a href="#n" class="btn border size">매장 상담 신청</a>'+
-                    '           <a href="#{{shopID}}" class="btn border size detail-view">상세 정보</a>'+
+                    '           <a href="https://www.lge.co.kr/lgekor/bestshop/counsel/counselMain.do?device=w&inflow=bestshop&orgcode={{shopID}}" class="btn border size storeConsult-btn">매장 상담 신청</a>'+
+                    '           <a href="{{detailUrl}}" class="btn border size detail-view">상세 정보</a>'+
                     '       </div>'+
                     '   </div>'+
                     '</div>'
@@ -443,13 +443,18 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
         selectedMarker: function selectedMarker(id){
             var self = this;
 
+            var centerPoint;
             self.itemArr = vcui.array.map(self.itemArr, function(item, index){
                 var selected = item.id == id ? true : false;
-                item.info.selected = selected;         
+                item.info.selected = selected;        
+                
+                if(selected) centerPoint = {x: item.info.gpsInfo.gpsx, y: item.info.gpsInfo.gpsy}
                 return item;
             });
 
             self._changeMarkersState();
+
+            self.map.panTo(new naver.maps.LatLng(centerPoint.x, centerPoint.y), {duration:460, easing:"easeOutCubic"});
         }
     });
     ///////////////////////////////////////////////////////////////////////////////////////

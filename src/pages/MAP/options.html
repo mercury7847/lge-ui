@@ -241,6 +241,15 @@
 
             //iOS는 blur
             //Android는 변경 시 change, 변경 안했을 시는 click
+            var isAndroid_ver4 = false;
+            if(navigator.userAgent.toLocaleLowerCase().indexOf("android 4") > -1){
+                isAndroid_ver4 = true;
+            }
+            function touchStartHandler(event){
+                if(isAndroid_ver4){
+                    event.preventDefault();
+                }
+            }
             $(".time-setting input").on({
                 click : function(e){
                     var value = $(this).val();
@@ -250,11 +259,14 @@
 
                     console.log(e);
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                        //console.log("iphone");
                     }else{
-                        //$(this).trigger("blur");
-                        $(this).closest("div").attr("tabindex", 0).focus();
+                        $(".rst-event").append("click / ");
+                        touchStartHandler();
+                        e.preventDefault();
                     }
+                },
+                keydown : function(e){
+                    $(".rst-event").append(e.keyCode +"/ ");
                 },
                 focusin : function(){
                     $(this).closest("div").find("[class*=rst-time]").addClass("focus");
@@ -273,9 +285,9 @@
                         //console.log("iphone");
                     }else{
                         //$(this).trigger("blur");
-                        //$(this).closest("div").attr("tabindex", 0).focus();
-                        $(".rst-event").append("click / ");
+                        $(this).closest("div").attr("tabindex", 0).focus();
                     }
+                    $(".rst-event").append("change / ");
                 },
                 blur: function(){
                     //console.log("iphone");
@@ -339,24 +351,7 @@
                         }
                     });
                     */
-                }
-            });
-
-            $(window).on({
-                touchend : function(){
-                    $(".rst-event").append("window touchend / ");
-                },
-                mouseup : function(){
-                    $(".rst-event").append("window mouseup / ");
-                }
-            });
-
-            $("html, body").on({
-                touchend : function(){
-                    $(".rst-event").append("body touchend / ");
-                },
-                mouseup : function(){
-                    $(".rst-event").append("body mouseup / ");
+                    $(".rst-event").append("blur / ");
                 }
             });
 
