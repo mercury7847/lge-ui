@@ -282,7 +282,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             var arr = self._getNumberInArea(showItems);
 
             self._setItemInfo(arr);
-
+            console.log('[arr]', arr)
             self.triggerHandler('mapchanged', [arr]);   
         },
 
