@@ -250,10 +250,8 @@
 
                     console.log(e);
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                        //console.log("iphone");
                     }else{
-                        //$(this).trigger("blur");
-                        $(this).closest("div").attr("tabindex", 0).focus();
+                        $(".rst-event").append("click / ");
                     }
                 },
                 focusin : function(){
@@ -273,8 +271,7 @@
                         //console.log("iphone");
                     }else{
                         //$(this).trigger("blur");
-                        //$(this).closest("div").attr("tabindex", 0).focus();
-                        $(".rst-event").append("click / ");
+                        $(this).closest("div").attr("tabindex", 0).focus();
                     }
                 },
                 blur: function(){
@@ -348,15 +345,9 @@
                 },
                 mouseup : function(){
                     $(".rst-event").append("window mouseup / ");
-                }
-            });
-
-            $("html, body").on({
-                touchend : function(){
-                    $(".rst-event").append("body touchend / ");
                 },
-                mouseup : function(){
-                    $(".rst-event").append("body mouseup / ");
+                mousedown : function(){
+                    $(".rst-event").append("window mousedown / ");
                 }
             });
 
