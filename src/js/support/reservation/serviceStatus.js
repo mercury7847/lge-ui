@@ -14,6 +14,25 @@
                 '</ul>' +
             '</a>' +
         '</li>';
+    var engineerTmpl =
+        '{{#each (item, index) in engineerList}}' +
+        '<div class="slide-conts ui_carousel_slide">' +
+            '<div class="engineer-box">' +
+                '{{# if (index == 0) { #}}' +
+                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}" checked>' +
+                '{{# } else { #}}' +
+                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}">' +
+                '{{# } #}}' +
+                '<label for="engineer{{index}}">' +
+                    '<div class="img">' +
+                        '<img src="{{item.image}}" alt="" aria-hidden="true">' +
+                    '</div>' +
+                    '<p class="tit">{{item.engineerName}}</p>' +
+                    '<p class="desc">{{item.centerName}}</p>' +
+                '</label>' +
+            '</div>' +  
+        '</div>' +
+        '{{/each}}';
     
     var searchPage = {
         init: function() {
@@ -98,7 +117,7 @@
 
             $('#phoneForm').find('.btn-confirm').on('click', function() {
                 self.authManager.confirm(this, function(success, result) {
-                    success && self.requestComplete();
+                    success && self.complete();
                 });
             });
 
@@ -187,9 +206,9 @@
             var self = this;
 
             vcui.require(['ui/validation'], function () {
-                self.changeSetting();
+                self.changeSetting.init();
                 self.cancelSetting();
-                self.authSetting();
+                //self.authSetting();
                 self.solutionsSetting();
             });
         },
@@ -206,61 +225,16 @@
                 self.requestSolutions({page:1}, false);
             });
         },
-        authSetting: function() {
-            if (!$('#reservationTimePopup').length) return;
-
-            var self = this;
-            var authRegister = {
-                    authNo: {
-                        msgTarget: '.err-block'
-                    }
-                },
-                managerOpt = {
-                    elem: {
-                        form: '#reservationTimePopup',
-                        name: '#authName',
-                        phone: '#authPhoneNo',
-                        number: '#authNo'
-                    },
-                    register: authRegister
-                }
-            
-            self.authManager = new AuthManager(managerOpt);
-            self.$sendBtn = self.$datePopup.find('.btn-send');
-
-            self.$sendBtn.on('click', function() {
-                self.authManager.send();
-            });
-        },
-        changeSetting: function() {
-            if (!$('#reservationTimePopup').length) return;
-
-            var self = this;
         
-            self.$dateOpenBtn = $('[data-href="#reservationTimePopup"]');
-            self.$datePopup = $('#reservationTimePopup');
-            self.$date = self.$datePopup.find('.date-wrap');
-            self.$time = self.$datePopup.find('.time-wrap');
+        // changeSetting: function() {
 
-            self.$date.calendar();
-            self.$time.timeCalendar();
+            
 
-            // 예약 변경
-            self.$dateOpenBtn.on('click', function() {
-                self.requestDate();
-            });
-            self.$date.on('dateselected', function() {
-                self.requestTime();
-            }); 
-            self.$datePopup.on('modalhide', function() {
-                self.$date.calendar('reset');
-                self.$time.timeCalendar('reset');
-            }).on('click', '.btn-group .btn:last-child', function() {
-                self.authManager.confirm(this, function(success, result) {
-                    self.completeAuth(success, result);
-                });
-            });
-        },
+            
+
+            
+           
+        // },
         cancelSetting: function() {
             if (!$('#cancelServicePopup').length) return;
 
@@ -297,8 +271,6 @@
                         $reasonEtc.val('');
                         $reasonEtc.prop('disabled', true);
                     }
-
-                 
             }).on('click', '.btn-group .btn-cancel', function() {
                 lgkorUI.confirm('예약 취소가 완료되지 않았습니다.<br />중단하시겠습니까?', {
                     title:'', okBtnName:'확인', cancelBtnName:'취소',
@@ -329,60 +301,378 @@
                 }
             });
         },
-        requestDate: function() {
-            var self = this;
-            var url = self.$datePopup.data('dateUrl'),
-                param;
-
-            param = {
-                
-            };
-            lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                var data = result.data,
-                    arr;
-
-                if (data.resultFlag == 'Y') {
-                    arr = data.dateList instanceof Array ? data.dateList : [];
-                    if (arr.length) {
-                        self.$date.calendar('update', arr);
-                        self.$datePopup.vcModal();
-                    }
-                } else {
-                    if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});
+        
+        changeSetting : {
+            validation : null,
+            authManager : null,
+            register : {
+                date: {
+                    required: true,
+                    msgTarget: '.err-msg'
+                },
+                time: {
+                    required: true,
+                    msgTarget: '.err-msg'
                 }
-            });
-        },
-        requestTime: function() {
-            var self = this;
-            var url = self.$datePopup.data('timeUrl'),
-                param;
+            },
+            el : {
+                popup                   : $('#reservationTimePopup'),
+                selectedEngineer        : $('#reservationTimePopup .engineer-to-visit'),
+                toggleOtherBtn          : $('#reservationTimePopup .engineer-to-visit .engineer-desc button'),
+                toggleLayer             : $('#reservationTimePopup .toggle-layer'),
+                closeBtn                : $('#reservationTimePopup .toggle-layer .btn-layer-close'),
+                selectBtn               : $('#reservationTimePopup .toggle-layer .btn-select-engineer'),
+                slider                  : $('#reservationTimePopup .toggle-layer .engineer-slider'),
+                dateOpenBtn             : $('[data-href="#reservationTimePopup"]'),
+                date                    :  $('#reservationTimePopup .date-wrap'),
+                time                    :  $('#reservationTimePopup .time-wrap'),
+            },
+            init : function(){
+                if (!$('#reservationTimePopup').length) return;
 
-            param = {
+                var self = this;
+
+                self.authSetting();
+            
+                self.el.date.calendar({
+                    inputTarget: '#date'
+                });
+                self.el.time.timeCalendar({
+                    inputTarget: '#time'
+                }); 
+
+                // 예약 변경
+                self.el.dateOpenBtn.on('click', function() {
+                    self.requestDate();
+                });
+                self.el.date.on('dateselected', function() {
+                    self.requestTime();
+                }); 
                 
-            };
-            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                self.el.time.on('timeselected', function() {
+                    var param = {
+                        zipId: $('input[name=zipId]').val(),
+                        productCode: $('input[name=productCode]').val(),
+                        userNm: $('input[name=userNm]').val(),
+                        phoneNo: $('input[name=phoneNo]').val(),
+                        svcType: $('input[name=svcType]').val(),
+                        lockUserId: $('input[name=lockUserId]').val(),
+                        date : $('input[name=date]').val(),
+                        time : $('input[name=time]').val(),
+                    }
+
+                    self.request(param);
+                });
+
+                self.el.popup.on('modalhide', function() {
+                    self.el.date.calendar('reset');
+                    self.el.time.timeCalendar('reset');
+                    self.el.selectedEngineer.hide();
+                }).on('click', '.btn-group .btn-confirm', function() {
+                    var result = self.validation.validate();
+                    if( result.success == true) {
+                        self.authManager.confirm(this, function(success, result) {
+                            self.completeAuth(success, result);
+                        });
+                    }
+                });
+
+                self.validation = new vcui.ui.CsValidation('#reservationTimePopup .calendar-area', {
+                    register: self.register
+                });
+
+                self.el.toggleOtherBtn.on('click', function(e){
+                    self.layerToggle();
+                })
+
+                self.el.selectBtn.on('click', function(e){
+                    var url = self.el.toggleLayer.data('lockUrl');
+                    var checkedTarget = self.el.slider.find('[name=engineer]').filter(':checked');
+                    var currentData = checkedTarget.data();
+                    var param ;
+
+                    param = {
+                        serviceType: $('#serviceType').val(),
+                        date: $('#date').val(),
+                        time: $('#time').val(),
+                        lockUserId: $('#lockUserId').val(),
+                        productCode: $('#productCode').val(),
+                    }
+                    
+                    param = $.extend(param, currentData);
+
+                    lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                        var data = result.data;
+
+                        if (data.resultFlag == 'Y') {
+                            self.update(currentData);
+                            self.layerhide();
+                        } else {
+                            if (data.resultMessage) {
+                                self.el.toggleLayer.stop().slideUp();
+                                
+                                lgkorUI.alert("", {
+                                    title: data.resultMessage
+                                });
+                            }
+                        }
+                    });
+                });
+
+                self.el.closeBtn.on('click', function(e){
+                    self.layerhide();
+                })
+            },
+            slideConfig : {
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                responsive: [
+                    {
+                        breakpoint: 10000,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 4,
+                        }
+                    },
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                        }
+                    },
+                    {
+                        breakpoint:767,
+                        settings: {
+                            variableWidth : true,
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            },
+            layerShow : function(){
+                var self = this;
+                self.el.toggleLayer.not('.active').stop().slideDown(function(){
+                    var $this = $(this);
+                    var $slider = $this.find('.engineer-slider');
+                    $this.addClass('active');
+
+                    $slider.filter('.is-loaded').vcCarousel('reinit');
+                    $slider.not('.is-loaded').addClass('is-loaded').vcCarousel(self.slideConfig)
+                });
+                
+            },
+            layerhide : function(){
+                var self = this;
+
+                if( self.el.toggleLayer.hasClass('active')) {
+                    self.el.toggleLayer.stop().slideUp(function(){
+                        $(this).removeClass('active');
+                    })
+                } 
+                
+            },
+            layerToggle : function(){
+                var self = this;
+                if( self.el.toggleLayer.hasClass('active')) {
+                    self.el.toggleLayer.stop().slideDown(function(){
+                        $(this).addClass('removeClass');
+                    })
+                } else {
+                    self.el.toggleLayer.stop().slideDown(function(){
+                        var $this = $(this);
+                        var $slider = $this.find('.engineer-slider');
+                        $this.addClass('active');
+
+                        $slider.filter('.is-loaded').vcCarousel('reinit');
+                        $slider.not('.is-loaded').addClass('is-loaded').vcCarousel(self.slideConfig)
+                    });
+                }
+            },
+            request : function(param) {
+                console.log('request')
+                var self = this;
+                var url = $('#stepEngineer').data('ajax');
+    
+                param = $.extend(param, self.dateParam);
+    
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data,
+                        arr = data.engineerList instanceof Array ? data.engineerList : []; 
+    
+                        console.log('엔지니어 선택!!!!');
+                    if (data.resultFlag == 'Y') {  
+                        if (arr.length) {
+                            self.update(arr[0]);
+                            if (arr.length > 1) {
+                                var html = vcui.template(engineerTmpl, data);
+                                $('.choice-engineer').find('.slide-track').html(html);
+                                $('#stepEngineer').find('.btn').show();
+                            } else {
+                                $('#stepEngineer').find('.btn').hide();
+                            }
+                            $('#stepEngineer').addClass('active');
+                            //$('.choice-engineer .engineer-slider').vcCarousel('reinit');
+                            //self.$completeBtns.show();
+                        }
+                    }
+                });
+            },
+            update: function(data) {
+                var self = this,
+                    $stepEngineer = $('#stepEngineer'),
+                    $engineerBox = $stepEngineer.find('.engineer-info'),
+                    $resultBox = $stepEngineer.find('.engineer-desc'),
+                    topicNm = $('#topic').val(),
+                    subTopicNm = $('#subtopic').val()
+    
+                $stepEngineer.find('.engineer-img img').attr({
+                    'src': data.image,
+                    'alt': data.engineerName
+                });                             
+                $engineerBox.find('.name').html(data.engineerName);
+                $engineerBox.find('.center').html(data.centerName);
+    
+                $resultBox.find('.date').html(vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm"));
+                $resultBox.find('.topic').html(topicNm + '&gt;' + subTopicNm);
+                $resultBox.find('.name').html(data.engineerName);
+    
+                $('#engineerNm').val(data.engineerName);
+                $('#engineerCode').val(data.engineerCode);
+                $('#centerNm').val(data.centerName);
+                $('#centerCode').val(data.centerCode);
+    
+                //self.dateParam['resrvSeq'] = data.resrvSeq;
+            },
+            requestDate: function() {
+                var self = this;
+                var url = self.el.popup.data('dateUrl'),
+                    param;
+    
+                param = {
+                    zipId: $('input[name=zipId]').val(),
+                    productCode: $('input[name=productCode]').val(),
+                    userNm: $('input[name=userNm]').val(),
+                    phoneNo: $('input[name=phoneNo]').val(),
+                    svcType: $('input[name=svcType]').val(),
+                    lockUserId: $('input[name=lockUserId]').val(),
+                    date : $('input[name=date]').val(),
+                };
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data,
+                        arr;
+    
+                    if (data.resultFlag == 'Y') {
+                        arr = data.dateList instanceof Array ? data.dateList : [];
+                        if (arr.length) {
+                            self.el.date.calendar('update', arr);
+                            self.el.popup.vcModal();
+                            console.log('날짜 선택');
+                            console.log(arr);
+                        }
+                    } else {
+                        if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});
+                    }
+                });
+            },
+            requestTime: function() {
+                var self = this;
+                var url = self.el.popup.data('timeUrl'),
+                    param;
+    
+                param = {
+                    zipId: $('input[name=zipId]').val(),
+                    productCode: $('input[name=productCode]').val(),
+                    userNm: $('input[name=userNm]').val(),
+                    phoneNo: $('input[name=phoneNo]').val(),
+                    svcType: $('input[name=svcType]').val(),
+                    lockUserId: $('input[name=lockUserId]').val(),
+                    date : $('input[name=date]').val(),
+                    time : $('input[name=time]').val(),
+                };
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data;
+    
+                    if (data.resultFlag == 'Y') {
+                        arr = data.timeList instanceof Array ? data.timeList : [];
+                        if (arr.length) {
+                            console.log('시간 선택!!')
+                            //self.requestEngineer(param)
+                            self.el.time.timeCalendar('update', arr);
+                        }
+                    } else {
+                        if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});
+                    }
+                });
+            },
+            authSetting: function() {
+                if (!$('#reservationTimePopup').length) return;
+    
+                var self = this;
+                var authRegister = {
+                        authNo: {
+                            msgTarget: '.err-block'
+                        }
+                    },
+                    managerOpt = {
+                        elem: {
+                            form: '#reservationTimePopup',
+                            name: '#authName',
+                            phone: '#authPhoneNo',
+                            number: '#authNo'
+                        },
+                        register: authRegister
+                    }
+                
+                self.authManager = new AuthManager(managerOpt);
+                
+    
+                self.el.popup.find('.btn-send').on('click', function() {
+                    console.log('11111')
+                    self.authManager.send();
+                });
+            },
+            complete : function(){
+                var self = this;
+
+                // if ($('[name=bdType]:checked').val() == 4) {
+                //     $('#productCode').val('CRB');
+                // }
+
+                var url = $('#changeEngineerFormData').data('ajax');
+                var formData = self.validation.getAllValues();
+
+                //formData = $.extend(formData, self.dateParam);
+
+                lgkorUI.requestAjaxDataPost(url, formData, function(result) {
+                    var data = result.data;
+
+                    if (data.resultFlag == 'Y') {
+                        //$('#acptNo').val(data.acptNo);
+
+                        $('#changeEngineerFormData').submit();
+                    } else {
+                        if (data.resultMessage) {
+                            lgkorUI.alert("", {
+                                title: data.resultMessage
+                            });
+                        }
+                    }
+                }, 'POST');
+            },
+            completeAuth: function(success, result) {
+                var self = this;
                 var data = result.data;
-
-                if (data.resultFlag == 'Y') {
-                    arr = data.timeList instanceof Array ? data.timeList : [];
-                    if (arr.length) {
-                        self.$time.timeCalendar('update', arr);
-                    }
+    
+                if (success) {
+                    self.complete();
                 } else {
-                    if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});
+    
                 }
-            });
+            },
         },
-        completeAuth: function(success, result) {
-            var self = this;
-            var data = result.data;
-
-            if (success) {
-                location.href = data.url;
-            } else {
-
-            }
-        },
+        
         requestSolutions: function(data, isShown) {
             var self = this;
             var url = self.$solutionsPopup.data('listUrl'),

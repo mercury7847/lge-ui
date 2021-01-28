@@ -12,64 +12,63 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '전화상담 예약이 완료되었습니다.',
-                'progressArr': [
-                    { 'progress' : '제품 선택'},
-                    { 'progress' : '예약 내용 입력'},
-                    { 'progress' : '예약 완료'}
-                ]
+                'pageTitle': '센터방문 예약이 완료되었습니다.'
             })
             
             <div class="contents support service-status-detail">
+                <div class="result-header">
+                    <h2 class="tit">이메일 문의</h2>
+                </div>
                 <div class="complete-summary">
                     <div class="box">
                         <div class="summary-img type-icon">
-                            <img src="/lg5-common/images/icons/icon-request-reservation-w.svg" alt="전화상담 아이콘">
+                            <img src="/lg5-common/images/icons/icon-center-reservation-w.svg" alt="센터방문 아이콘">
                         </div>
                         <div class="summary-info">
                             <p class="info"><span>접수번호 HA230948WW</span></p>
-                            <p class="status"><span>2020.07.01 13:30</span>에 상담원이 전화를 드려 상담해드릴 예정입니다.</p>
+                            <p class="status"><span>2020.07.01 13:30에 휴대폰서비스 용인터미널분점</span><br>(으)로 방문하시면 고장 증상을 해결해드릴 예정입니다.</p>
                         </div>
                     </div>
                 </div>
                 <div class="result-progress">
-                    <p class="desc">접수 &gt; 상담예정 &gt; 완료 순으로 진행됩니다.</p>
+                    <p class="desc">접수 &gt; 처리 중 &gt; 답변 중 &gt; 답변 완료 순으로 진행됩니다.</p>
                     <div class="progress-box">
-                        <span class="progressing" style="width:calc(100% / 2 * 1)"></span>
+                        <span class="progressing" style="width:calc(100% / 3 * 2)"></span>
                         <ol class="progressbar">
                             <li class="on"><span class="text">접수</span></li>
-                            <li class="on current"><span class="text">상담예정</span><span class="blind">현재 단계</span></li>
-                            <li><span class="text">완료</span></li>
+                            <li class="on"><span class="text">처리 중</span></li>
+                            <li class="on current"><span class="text">답변 중</span><span class="blind">현재 단계</span></li>
+                            <li><span class="text">답변 완료</span></li>
                         </ol>
                     </div>
                 </div>
 
                 <div class="cont-wrap">
-
                     <div class="section">
                         <div class="tit-wrap">
-                            <h2 class="tit">예약 정보</h2>
+                            <h3 class="tit">예약 정보</h3>
                         </div>
+                        
                         <ul class="inquiry-list">
                             <li>
-                                <div class="title"><strong>접수번호</strong></div>
-                                <div class="description">K729401293RL</div>
+                                <div class="title"><strong>접수 번호</strong></div>
+                                <div class="description">HA230948WW</div>
                             </li>
                             <li>
-                                <div class="title"><strong>접수일시</strong></div>
-                                <div class="description">2020.07.01 17:30</div>
+                                <div class="title"><strong>접수 일시</strong></div>
+                                <div class="description">2020.10.01 10:01</div>
                             </li>
                             <li>
-                                <div class="title"><strong>접수경로</strong></div>
+                                <div class="title"><strong>접수 경로</strong></div>
                                 <div class="description">온라인</div>
                             </li>
                             <li>
-                                <div class="title"><strong>진행상태</strong></div>
+                                <div class="title"><strong>진행 상태</strong></div>
                                 <div class="description">접수</div>
                             </li>
                             <li>
                                 <div class="title"><strong>예약일시</strong></div>
-                                <div class="description"><span class="point">2020.07.30 14:00</span></div>
+                                <div class="description color-3">2020.07.30 14:00</div>
                             </li>
                             <li>
                                 <div class="title"><strong>선택 제품</strong></div>
@@ -79,7 +78,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="title"><strong>구입시기</strong></div>
+                                <div class="title"><strong>구입 시기</strong></div>
                                 <div class="description">1개월 이내</div>
                             </li>
                             <li>
@@ -87,31 +86,48 @@
                                 <div class="description">
                                     <span class="line">스마트기능/스마트진단</span>
                                     <span class="line">LG ThinQ 등록 실패</span>
-                                    <button type="button" class="btn border size"><span>제품 문제해결 방법</span></button>
+                                    <button type="button" class="btn border size" data-href="#solutionsPopup"><span>제품 문제해결 방법</span></button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>방문센터</strong></div>
+                                <div class="description">
+                                    <span class="line">강남서비스센터</span>
+                                    <button type="button" class="btn border size" data-href="#solutionsPopup"><span>센터 위치 및 정보</span></button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>엔지니어</strong></div>
+                                <div class="description">
+                                    <div class="engineer-box">
+                                        <div class="image">
+                                            <img src="/lg5-common/images/dummy/@img_manager2.jpg" alt="엔지니어 사진">
+                                        </div>
+                                        <p class="txt">홍길동 / 동대문서비스센터</p>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div class="title"><strong>전달사항</strong></div>
                                 <div class="description">
-                                    <span class="line">안녕하세요.
-ThinQ 등록 방법을 확인하고 메뉴얼 대로 시도해도 연결이 안됩니다.</span>
+                                    <span class="line">천천히 오셔도 돼요</span>
                                 </div>
                             </li>
                         </ul>
-                    </div>
-
+                    </div>                    
                     <div class="section">
                         <div class="tit-wrap">
-                            <h2 class="tit">신청자 정보</h2>
+                            <h3 class="tit">신청자 정보</h3>
                         </div>
+
                         <ul class="inquiry-list">
                             <li>
                                 <div class="title"><strong>이름</strong></div>
-                                <div class="description">홍길동</div>
+                                <div class="description">홍*동</div>
                             </li>
                             <li>
-                                <div class="title"><strong>휴대폰번호</strong></div>
-                                <div class="description">010-****-5678</div>
+                                <div class="title"><strong>휴대 전화</strong></div>
+                                <div class="description">010-****-1234</div>
                             </li>
                         </ul>
                         @@include('./common/modules/bullet-list.html', {
@@ -123,22 +139,32 @@ ThinQ 등록 방법을 확인하고 메뉴얼 대로 시도해도 연결이 안�
                             ]
                         })
                     </div>
-
+                    
+                    <!-- 2021.01.22 마크업 변경 -->
                     <div class="btn-group center">
-                        <a href="#" class="btn">고객지원 메인</a>
+                        <!-- 단건 조회 시 -->
+                        <form method="post" action="/support/service-inquiry-reservation-status/plural">
+                            <button type="submit" class="btn wide-type">고객지원 메인</button>
+                            <div class="block-box">
+                                <button type="button" data-href="#reservationTimePopup" class="btn border"><span>예약 일시 변경</span></button>
+                                <button type="button" data-href="#cancelServicePopup" class="btn border" data-control="modal"><span>예약 취소</span></button>
+                            </div>
+                            <input type="hidden" name="userName2" value="ttt">
+                            <input type="hidden" name="phoneNo" value="01050940905">
+                        </form>
+                            <!-- 다건 조회 시 -->
+                        <!-- <a href="#" class="btn">목록</a> -->
                     </div>
+                    <!-- 2021.01.22 마크업 변경 -->
+
                 </div>
             </div>
         </div>
              
         @@include('./common/footer.html')
-    </div>    
-    
-    <!-- 제품 해결 팝업 -->
-    @@include('./CS/modal/solutions-popup.html')
+    </div>
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
-    <script src="/lg5-common/js/support/reservation/serviceStatus.min.js"></script>
 </body>
 </html> 

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+    <g>
+        <g>
+            <path fill="none" d="M0 0H160V160H0z" opacity=".2"/>
+            <g transform="translate(8 25)">
+                <g fill="none" stroke="#fff" stroke-linejoin="bevel" stroke-miterlimit="10" stroke-width="5">
+                    <path stroke="none" d="M6 0h106.055a6 6 0 0 1 6 6v84.151H0V6a6 6 0 0 1 6-6z" transform="translate(12.481)"/>
+                    <path d="M6 2.5h106.055a3.5 3.5 0 0 1 3.5 3.5v79.151a2.5 2.5 0 0 1-2.5 2.5H5a2.5 2.5 0 0 1-2.5-2.5V6A3.5 3.5 0 0 1 6 2.5z" transform="translate(12.481)"/>
+                </g>
+                <g>
+                    <path fill="#fff" d="M39.754 29.57a3.664 3.664 0 0 0-5.538 0c-1.295 1.284-2.59 2.568-3.863 3.874a.763.763 0 0 1-1.066.2c-.838-.457-1.73-.827-2.535-1.327a40.169 40.169 0 0 1-9.685-8.817 22.942 22.942 0 0 1-3.471-5.56.8.8 0 0 1 .2-1.023c1.295-1.251 2.557-2.535 3.83-3.819a3.678 3.678 0 0 0-.011-5.669C16.6 6.4 15.587 5.4 14.575 4.381c-1.045-1.045-2.078-2.1-3.134-3.134a3.687 3.687 0 0 0-5.541.011C4.6 2.542 3.346 3.859 2.018 5.121a6.305 6.305 0 0 0-1.98 4.254 18.025 18.025 0 0 0 1.393 7.758A47.142 47.142 0 0 0 9.8 31.071a51.78 51.78 0 0 0 17.147 13.417 24.8 24.8 0 0 0 9.5 2.764 6.962 6.962 0 0 0 5.974-2.274c1.11-1.24 2.361-2.372 3.536-3.558a3.7 3.7 0 0 0 .022-5.636q-3.102-3.118-6.225-6.214z" transform="translate(42.545 8.372) translate(0 19.166)"/>
+                    <path fill="none" stroke="#df0f47" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="10" stroke-width="4.6" d="M43.736 37.457a10.981 10.981 0 0 0 0-15.529 10.981 10.981 0 0 0-15.529 0" transform="translate(42.545 8.372)"/>
+                    <path fill="none" stroke="#df0f47" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="10" stroke-width="4.6" d="M50.22 44.742a20.742 20.742 0 0 0 0-29.334 20.742 20.742 0 0 0-29.334 0" transform="translate(42.545 8.372)"/>
+                </g>
+                <g fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="5">
+                    <path stroke="none" d="M0 0h143.017v17.1a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V0z" transform="translate(0 85.176)"/>
+                    <path d="M5 2.5h133.017a2.5 2.5 0 0 1 2.5 2.5v12.1a3.5 3.5 0 0 1-3.5 3.5H6a3.5 3.5 0 0 1-3.5-3.5V5A2.5 2.5 0 0 1 5 2.5z" transform="translate(0 85.176)"/>
+                </g>
+                <rect width="29.735" height="5" fill="#fff" rx="2.5" transform="translate(56.641 94.227)"/>
+            </g>
+        </g>
+    </g>
+</svg>
