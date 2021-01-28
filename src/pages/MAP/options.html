@@ -249,10 +249,6 @@
                     oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
 
                     console.log(e);
-                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                    }else{
-                        //$(".rst-event").append("click / ");
-                    }
                 },
                 focusin : function(){
                     $(this).closest("div").find("[class*=rst-time]").addClass("focus");

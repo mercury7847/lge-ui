@@ -363,6 +363,10 @@ CS.MD.search = function() {
                         $('.keyword-box').hide();
                         self.$el.addClass('on');
                     }]);
+                } else {
+                    self.$el.find('.autocomplete-box').find('ul').empty();
+                    $('.autocomplete-box').hide();
+                    $('.keyword-box').show();
                 }
 
             }).on('keyup', function(e) {
@@ -419,9 +423,6 @@ CS.MD.commonModel = function() {
                     '{{# } #}}' +
                 '</div>' +
                 '{{# } #}}' +
-                // '{{# if (typeof desc != "undefined") { #}}' +
-                // '<p class="desc">{{desc}}</p>' +
-                // '{{# } #}}' +
             '</div>' +
             '{{# if (typeof reset != "undefined") { #}}' +
             '<div class="prod-btn">' +
@@ -697,17 +698,17 @@ CS.MD.commonModel = function() {
                 $(this).closest('.box').removeClass('on').addClass('off');
             });
 
-            self.$modelBox.find('#categorySelect').on('reset', function() {
-                self.param = $.extend(self.param, {
-                    category: '',
-                    categoryNm: '전체',
-                    subCategory: '',
-                    subCategoryNm: '전체',
-                    page: 1
-                });
+            // self.$modelBox.find('#categorySelect').on('reset', function() {
+            //     self.param = $.extend(self.param, {
+            //         category: '',
+            //         categoryNm: '전체',
+            //         subCategory: '',
+            //         subCategoryNm: '전체',
+            //         page: 1
+            //     });
 
-                self._requestData();
-            });
+            //     self._requestData();
+            // });
 
             // 서브 카테고리 선택
             self.$categoryBox.find('.sub-category-list button').on('click', function() {
@@ -762,6 +763,23 @@ CS.MD.commonModel = function() {
                 if (data.modelCode) lgkorUI.recentlySearch.addCookie(data.modelCode);
             });
             
+            self.$modelBox.find('#categorySelect').on('change', function() {
+                var $this = $(this),
+                    $subCategory = self.$modelBox.find('#subCategorySelect');
+                
+                if (!$this.val()) {
+                    self.param = $.extend(self.param, {
+                        category: $this.val(),
+                        categoryNm: $this.find('option:selected').text(),
+                        subCategory: $subCategory.val(),
+                        subCategoryNm: $subCategory.find('option:selected').text(),
+                        page: 1
+                    });
+    
+                    self._requestData();
+                }
+            });
+
             // 모델명 선택 - 서브 카테고리 선택
             self.$modelBox.find('#subCategorySelect').on('change', function() {
                 var $this = $(this),
@@ -1051,27 +1069,19 @@ CS.MD.commonModel = function() {
         },
         updateSummary: function(summary) {
             var self = this;
-            var summary = summary || self.options.defaultSummary,
-                isMyProduct = false;
+            var summary = summary || self.options.defaultSummary;
 
-            if (myModel.length && summary.product && summary.product.length == 3) {
-                if (myModel.indexOf(summary.product[2]) != -1) {
-                    isMyProduct = true;
-                }
-            }
-            var test = [];
-            if (summary.product) {
-                for(var i = 0; i < summary.product.length; i++) {
-                    test[i] = {
-                        name: summary.product[i]
+            if (myModel.length && summary.product) {
+                summary.product.forEach(function(item, index) {
+                    var temp = {};
+
+                    temp.name = item;
+                    if (myModel.indexOf(item) != -1) {
+                        temp.isMyProduct = true;
                     }
-                    if (i == 2) {
-                        test[i]['isMyProduct'] = isMyProduct;
-                    }
-                }
-                summary.product = test;
+                    summary.product[index] = temp;
+                });
             }
-            console.log(isMyProduct);
             self.$selectedModelBar.html(vcui.template(selectedBarTmpl, summary));
         },
         focus: function($target, callback) {
