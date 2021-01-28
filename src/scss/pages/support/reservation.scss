@@ -400,6 +400,8 @@
                 @include font-large-2;
             }
         }
+        
+
         .result-btn-group {
             border-bottom:1px solid #ddd;
             background-color:#fff;
@@ -627,6 +629,143 @@
                             left:50%;
                             transform:translate(-50%, 0);
                         }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#reservationTimePopup {
+    .step-engineer {
+        display:none;
+        margin-top:70px;
+
+        &.active {
+            display:block;
+        }
+    }
+
+    .toggle-layer {
+        display:none;
+        margin-top:30px;
+        padding:30px 32px 60px;
+        border:1px solid #ddd;
+        border-radius:8px;
+        box-sizing:border-box;
+
+        .layer-tit {
+            margin-bottom:52px;
+
+            .tit {
+                font-size:20px;
+                font-weight:bold;
+                padding-bottom:15px;
+                color:#000;
+                border-bottom:1px solid #ddd;
+            }
+            .sub-tit {
+                margin-top:12px;
+                font-size:16px;
+                color:#000;
+            }
+        }
+    }
+
+    .engineer-slider {
+        .slide-controls {
+            button {
+                &.prev {
+                    left:-24px;
+                }
+                &.next {
+                    right:-24px;
+                }
+            }
+        }
+        .indi-wrap {
+            position:absolute;
+            bottom:0;
+            width:100%;
+        }
+        .slide-content {
+            margin:-12px -12px 0;
+            padding:0 0 12px;
+        }
+        .slide-track {
+            @include clearfix;
+        }
+        .slide-conts {
+            float:left;
+            width:25%;
+            padding:12px 12px 24px;
+            
+        }
+        .engineer-box {
+            border-radius:8px;
+            box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+            label {
+                display:block;
+                position:relative;
+                padding:32px 24px;
+                box-sizing:border-box;
+                text-align:center;
+                cursor:pointer;
+                .img {
+                    width:100%;
+                    margin-bottom:24px;
+                    img {
+                        width:100%;
+                    }
+                }
+                .tit {
+                    @include font-large;
+                    font-weight:700;
+                }
+                .desc {
+                    margin-top:4px;
+                    @include font-small;
+                }
+            }
+            input {
+                @include blind;
+                &:checked + label:before {
+                    content:'';
+                    position:absolute;
+                    left:0;
+                    top:0;
+                    width:100%;
+                    height:100%;
+                    border-radius:8px;
+                    border:2px solid #EC455A;
+                }
+            }
+        }
+    }
+
+    @include mobile {
+        .toggle-layer {
+            padding:20px 16px 60px;
+        }
+
+        .engineer-slider {
+            .slide-conts {
+                width:calc(100vw - 16px) / 3 * 2;
+                padding:0 8px 24px;
+            }
+            .engineer-box {
+                .label {
+                    padding:24px;
+
+                    .img {
+                        margin-bottom:24px;
+                    }
+                    .tit {
+                        font-size:14px;
+                    }
+                    .desc {
+                        margin-top:4px;
+                        font-size:14px;
                     }
                 }
             }
