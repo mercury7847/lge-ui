@@ -1,0 +1,110 @@
+{
+    "status":"success",
+    "message":null,
+    "param":{},
+    "data": {
+        "listData":[
+            {
+                "id":"pid00001",
+                "modelCode":"AS128VWA.AKOR",
+                "modelId":"MD08604947",
+                "ordNo":"1055349795",
+                "imageUrl":"/lg5-common/images/dummy/@img-product2.jpg",
+                "imageAlt":"S833TS35E",
+                "disabled":false,
+                "disabledReason":null,
+                "modelName":"LG 올레드 AI TV 1",
+                "enModelName":"OLED65WXKNA",
+                "saleDate":"20190101",
+                "creationDate":"20210121",
+                "useDate":"14",
+                "careService":true,
+                "careState":"신청안함",
+                "nextCareServiceDate":null,
+                "manualBtn":true,
+                "downloadBtn":true,
+                "inquryBtn": {
+                    "title":"케어십 신청하기",
+                    "url":"#",
+                    "tooltip":"케어서비스로 제품을 관리해보세요!"
+                },
+                "linkBtn":[
+                    {
+                        "title":"소모품 조회",
+                        "url":"#"
+                    },
+                    {
+                        "title":"출장 서비스 신청",
+                        "url":"#"
+                    },
+                    {
+                        "title":"리뷰작성",
+                        "url":"#"
+                    }
+                ]
+            },
+            {
+                "id":"pid00002",
+                "modelCode":"AS128VWA.AKOR",
+                "modelId":"MD08604947",
+                "ordNo":"1055349795",
+                "imageUrl":"/lg5-common/images/dummy/@img-product2.jpg",
+                "imageAlt":"S833TS35E",
+                "disabled":false,
+                "disabledReason":null,
+                "modelName":"LG 올레드 AI TV 2",
+                "enModelName":"OLED65WXKNA",
+                "saleDate":"20190101",
+                "creationDate":"20210121",
+                "useDate":"14",
+                "careService":true,
+                "careState":"이용중",
+                "nextCareServiceDate":"20210505",
+                "manualBtn":true,
+                "downloadBtn":true,
+                "inquryBtn": {
+                    "title":"신제품 확인하기",
+                    "url":"#",
+                    "tooltip":"새로운 TV를 확인해보세요!"
+                },
+                "linkBtn":[
+                    {
+                        "title":"소모품 조회",
+                        "url":"#"
+                    },
+                    {
+                        "title":"출장 서비스 신청",
+                        "url":"#"
+                    }
+                ]
+            },
+            {
+                "id":"pid00003",
+                "modelCode":"AS128VWA.AKOR",
+                "modelId":"MD08604947",
+                "ordNo":"1055349795",
+                "imageUrl":"/lg5-common/images/dummy/@img-product2.jpg",
+                "imageAlt":"S833TS35E",
+                "disabled":true,
+                "disabledReason":null,
+                "modelName":"LG 올레드 AI TV 3",
+                "enModelName":"OLED65WXKNA",
+                "saleDate":"20190101",
+                "creationDate":"20210121",
+                "useDate":"14",
+                "careService":false,
+                "careState":"미대상",
+                "nextCareServiceDate":"20210505",
+                "manualBtn":true,
+                "downloadBtn":false,
+                "inquryBtn": null,
+                "linkBtn":[
+                    {
+                        "title":"소모품 조회",
+                        "url":"#"
+                    }
+                ]
+            }
+        ]
+    }
+}

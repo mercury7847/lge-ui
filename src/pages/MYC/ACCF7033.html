@@ -26,7 +26,9 @@
                         })
                         <div class="lnb-contents"
                             data-list-url="/lg5-common/data-ajax/mypage/product/registedProductList.json"
+                            data-own-list-url = "/lg5-common/data-ajax/mypage/product/ownProductList.json"
                             data-remove-url="/lg5-common/data-ajax/mypage/product/deleteProductRegist.json"
+                            data-add-url="/lg5-common/data-ajax/mypage/product/addProductData.json"
                         >
                             <div class="section-wrap">
                                 <div class="sects">
@@ -772,7 +774,7 @@
 
     <!-- 모델명 확인방법 -->
     <article id="modelCheckHelpPopup" class="popup-wrap"
-        data-ajax="/lg5-common/data-ajax/support/searchModelName.json"
+        data-list-url="/lg5-common/data-ajax/support/searchModelName.json"
     >
         <header class="pop-header">
             <h1 class="tit"><span>모델명 확인 방법</span></h1>

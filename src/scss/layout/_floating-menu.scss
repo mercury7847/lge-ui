@@ -290,7 +290,7 @@
         right:-80%;
         left:auto !important;
         z-index:101;
-        width:80%;
+        width:100%;
         &.open {
             right:0;
         }
@@ -406,7 +406,7 @@
     opacity:.7;
     @include mobile {
         &.open {
-            display:block;
+            display:none;
         }
     }
 }

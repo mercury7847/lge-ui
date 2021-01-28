@@ -76,29 +76,11 @@
                         '<img src="{{imgUrl}}" alt="">' +
                     '</div>' +
                     '<div class="product-info">' +
-                        // '<div class="flag-wrap bar-type">' +
-                        //     '{{#each item in flags}}' +
-                        //     '<span class="flag">{{item}}</span>' +
-                        //     '{{/each}}' +
-                        // '</div>' +
                         '<div class="product-name">' +
                             '<p class="name"><a href="#" class="name">{{name}}</a></p>' +
                             '<p class="model">{{modelName}}</p>' +
                         '</div>' +
-                        // '<div class="product-price">' +
-                        //     '<div class="discount">' +
-                        //         '<span class="blind">할인가격</span>' +
-                        //         '<span class="price">{{discountPrice}}원</span>' +
-                        //     '</div>' +
-                        //     '<div class="original">' +
-                        //         '<span class="blind">원가</span>' +
-                        //         '<span class="price">{{price}}원</span>' +
-                        //     '</div>' +
-                        // '</div>' +
                     '</div>' +
-                    // '<div class="product-button">' +
-                    //     '<button type="button" class="btn border"><span>장바구니에 담기</span></button>' + 
-                    // '</div>' +
                 '</div>' +
             '</div>' +
         '</div>';
@@ -136,54 +118,61 @@
 
                 self.$topic = self.$wrap.find('#topic');
                 self.$subTopic = self.$wrap.find('#subTopic');
+                self.$keywordBox = self.$wrap.find('.ui_search');
                 self.$keyword = self.$wrap.find('#keyword');
                 self.$searchBtn = self.$wrap.find('.keyword-search .btn-search');
                 self.$pagination = self.$wrap.find('.pagination');
-                self.$orderBy = self.$wrap.find('#orderBy');
+                self.$sort = self.$wrap.find('#sort');
 
                 self.solutionsUrl = self.$wrap.data('solutionsUrl');
-                var test = location.search.substr(location.search.indexOf("?") + 1);
-                test = test.split("&");
-                var qqqq = {};
-                for (var i = 0; i < test.length; i++) {
-                    temp = test[i].split("=");
-                    qqqq[temp[0]] = temp[1] ? temp[1] : '';
-                }
-
+                
                 self.keywords = [];
-                self.param = {};
-                self.param['keywords'] = [];
-                self.param['topic'] = 'All';
-                self.param['topicNm'] = decodeURI(qqqq.topicNm) || 'All';
-                self.param['subTopic'] = 'All';
-                self.param['subTopicNm'] = decodeURI(qqqq.subTopicNm) || 'All';
-                self.param['orderBy'] = qqqq.sort || $('#orderBy').val();
-                self.param['page'] = qqqq.page || 1;
-                self.param['research'] = false;
+                self.param = {
+                    keywords: [],
+                    topic: '',
+                    topicNm: 'All',
+                    subTopic: '',
+                    subTopicNm: 'All',
+                    sort: 'new',
+                    page: 1,
+                    research: false,
+                    category: '',
+                    categoryName: '',
+                    subCategory: '',
+                    subCategoryName: '', 
+                    modelCode: '', 
+                    productCode: ''
+                };
+                
+                if (location.search.indexOf("?") > -1) {
+                    var paramArr = location.search.substr(location.search.indexOf("?") + 1).split("&");
+                    var param = {};
 
-                if (qqqq) {
-                    self.param['keywords'].push(decodeURI(qqqq.keyword));
-                    $('#orderBy').val(qqqq.sort);
-                    $('#keyword').val(decodeURI(qqqq.keyword));
+                    for (var i = 0; i < paramArr.length; i++) {
+                        var temp = paramArr[i].split("=");
+                        param[temp[0]] = temp[1] ? temp[1] : '';
+                    }
+
+                    for (var key in param) {
+                        self.param[key] = decodeURIComponent(param[key]);
+                        if (key == 'mktModelCd') self.param['modelCode'] = param.mktModelCd;
+                        if (key == 'sort') $('#sort').val(param.sort), $('#sort').vcSelectbox('update');
+                        if (key == 'keyword') $('#keyword').val(decodeURIComponent(param.keyword));
+                    }
                 }
-
+                
                 self.bindEvent();
 
+                self.$keywordBox.search({
+                    // template: {
+                    //     autocompleteList: '<div><p>정보분류</p><ul><li><a href="#"></a></li></ul></div>'
+                    // }
+                });
                 self.$pagination.pagination();
-                $('.ui_search').search();
                 self.$cont.commonModel({
                     register: {},
-                    selected: {
-                        category: qqqq.category || '',
-                        categoryName: '',
-                        subCategory: qqqq.subCategory || '',
-                        subCategoryName: '',
-                        mktModelCd: qqqq.mktModelCd || '', 
-                        modelCode: qqqq.modelCode || '', 
-                        productCode: ''
-                    }
+                    selected: self.param
                 });                
-            
             },
             setRecommProduct: function(data){
                 var $productslider = $('.product-slider');
@@ -218,7 +207,7 @@
                     }
                 });
 
-                if (code !== 'All') {
+                if (code !== '') {
                     self.$filter.find('.filter-link[data-code="'+ code +'"]').closest('.filter-list').addClass('open');
                     self.$subTopic.prop('disabled', false);
                 } else {
@@ -246,17 +235,15 @@
                     mHtml = '';
 
                 if (listArr.length) {
-                    if (self.param.topicNm) {
-                        listArr.forEach(function(item) {
-                            console.log(item.name);
-                            console.log(self.param.topicNm);
+                    if (self.param.topicNm != 'All') {
+                        data.filterList.forEach(function(item) {
                             if (item.name == self.param.topicNm) {
                                 item.active = true;
                                 return;
                             }
                         });
                     } else {
-                        listArr[0].active = true;
+                        data.filterList[0].active = true;
                     }
 
                     pcHtml = vcui.template(filterTemplate, data);
@@ -340,13 +327,23 @@
             reset: function() {
                 var self = this;
 
-                self.param['keywords'] = [];
-                self.param['topic'] = 'All';
-                self.param['topicNm'] = 'All';
-                self.param['subTopic'] = 'All';
-                self.param['subTopicNm'] = 'All';
-                self.param['orderBy'] = $('#orderBy').val();
-                self.param['page'] = 1;
+                self.keywords = [];
+                self.param = {
+                    keywords: [],
+                    topic: 'All',
+                    topicNm: 'All',
+                    subTopic: 'All',
+                    subTopicNm: 'All',
+                    sort: 'new',
+                    page: 1,
+                    research: false,
+                    category: '',
+                    categoryName: '',
+                    subCategory: '',
+                    subCategoryName: '',
+                    modelCode: '', 
+                    productCode: ''
+                };
 
                 self.$filter.find('.open, .on').removeClass('open on');
                 self.$filter.find('.sub-depth').remove();
@@ -365,21 +362,8 @@
             bindEvent: function() {
                 var self = this;
 
-                $('.ui_search').on('autocomplete', function(e, param, url, callback) {
-                    
-                    var param =  $.extend(self.param, param);
-                    lgkorUI.requestAjaxData(url, param, function(result) {
-                        callback(result);
-                    });
-                });
-
-                self.$cont.on('reset', function(e) {
-                    self.reset();
-                });
-
                 self.$cont.on('complete', function(e, data, url, auto) { 
                     var param = {
-                        cateCode: data.cateCode || '',
                         modelCode: data.modelCode,
                         category: data.category,
                         categoryNm: data.categoryName,
@@ -411,18 +395,6 @@
                         lgkorUI.hideLoading();
                     });
 
-                    if (data.subCategory == 'C000136') {
-                        $('#windowUpdate').show();
-                    } else {
-                        $('#windowUpdate').hide();
-                    }
-
-                    if (data.subCategory == '1011' || data.subCategory == '1012') {
-                        $('#mobileUpdate').show();
-                    } else {
-                        $('#mobileUpdate').hide();
-                    }
-
                     self.$myModelArea.hide();
 
                     self.$cont.commonModel('next', self.$stepInput);
@@ -430,7 +402,14 @@
                         self.$selectedModelBar.vcSticky();
                     });
                 }).on('reset', function(e) {
+                    self.reset();
+                });
 
+                self.$keywordBox.on('autocomplete', function(e, param, url, callback) {
+                    var param =  $.extend(self.param, param);
+                    lgkorUI.requestAjaxData(url, param, function(result) {
+                        callback(result);
+                    });
                 });
 
                 // filter
@@ -441,16 +420,15 @@
                             page: 1,
                             topic: code,
                             topicNm: $this.data('name'),
-                            subTopic: 'All',
+                            subTopic: '',
                             subTopicNm: 'All'
                         };
 
                     self.param = $.extend(self.param, param);
 
-                    self.selectFilter(code, this);
                     if ($(this).siblings('.sub-depth').length < 1) {
-                        //self.setSubFilter(code, this);
                         self.requestData(this);
+                        self.selectFilter(code, this);
                     } else {
                         $(this).siblings('.sub-depth').show();
                     }
@@ -559,17 +537,15 @@
                 });
 
                 // list order by
-                self.$orderBy.on('change', function() {
+                self.$sort.on('change', function() {
                     var value = $(this).val(),
                         param = {
                             page: 1,
-                            orderBy: value
+                            sort: value
                         };
                         
-                    self.$orderBy.val(value);
-
+                    self.$sort.val(value);
                     self.param = $.extend(self.param, param);
-                    
                     self.requestData();
                 });
 
@@ -580,7 +556,6 @@
                     }
 
                     self.param = $.extend(self.param, param);
-
                     self.requestData();
                 });
             }
