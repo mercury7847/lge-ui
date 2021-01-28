@@ -1,11 +1,11 @@
 (function() {
-    var listItemTemplate = '<li class="box {{#if disabled}}disabled{{/if}}" data-id={{id}} data-sku={{sku}} data-wishListId={{wishListId}} data-wishItemId={{wishItemId}}>' +
+    var listItemTemplate = '<li class="box {{#if disabled}}disabled{{/if}}" data-id={{id}} data-sku={{modelName}} data-wishListId={{wishListId}} data-wishItemId={{wishItemId}} data-categoryId={{categoryId}} data-rtSeq={{rtSeq}} data-requireCare={{requireCare}}>' +
         '<div class="col-table">' +
             '<div class="col"><div class="product-info">' +
                 '<div class="thumb"><a href="{{pdpUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
                 '<div class="infos">' +
                     '<p class="name"><a href="{{pdpUrl}}"><span class="blind">제품명</span>{{title}}</a></p>' +
-                    '<p class="e-name"><span class="blind">영문제품번호</span>{{sku}}</p>' + 
+                    '<p class="e-name"><span class="blind">영문제품번호</span>{{modelName}}</p>' + 
                     '{{#if disabledReason}}<p class="soldout-msg pc-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
                     '<div class="more"><span class="blind">제품스펙</span><ul>' +
                         '{{#if !disabled}}{{#each item in spec}}<li>{{item}}</li>{{/each}}{{/if}}' +
@@ -19,15 +19,15 @@
             '</div></div>' +
             '{{#if !disabled}}' +
                 '<div class="col btn-col">' +
-                    '<button type="button" class="btn size border"><span>구매 장바구니</span></button>' +
-                    '<button type="button" class="btn size border"><span>렌탈 장바구니</span></button>' +
+                    '{{#if typeFlag=="A"||typeFlag=="P"}}<button type="button" class="btn size border buycart"><span>구매 장바구니</span></button>{{/if}}' +
+                    '{{#if typeFlag=="A"||typeFlag=="C"}}<button type="button" class="btn size border rentalcart"><span>렌탈 장바구니</span></button>{{/if}}' +
                 '</div>' +
             '{{/if}}' +
         '</div>' +
-        '{{#if enableWish}}<span class="chk-wish-wrap">' +
-            '<input type="checkbox" id="chk-like{{index}}" name="chk-like{{index}}" {{#if isWish}}checked{{/if}}>' +
-            '<label for="chk-like{{index}}"><span class="blind">찜하기</span></label>' +
-        '</span>{{/if}}' +
+        // '{{#if enableWish}}<span class="chk-wish-wrap">' +
+        //     '<input type="checkbox" id="chk-like{{index}}" name="chk-like{{index}}" {{#if isWish}}checked{{/if}}>' +
+        //     '<label for="chk-like{{index}}"><span class="blind">찜하기</span></label>' +
+        // '</span>{{/if}}' +
         '<button type="button" class="btn-delete"><span class="blind">삭제</span></button>' +
     '</li>';
 
@@ -60,20 +60,27 @@
 
                 self.$list.on('click','li button.btn-delete', function(e) {
                     var $li = $(this).parents('li');
-                    console.log('delete');
                     self.requestRemove($li);
                 });
 
                 self.$list.on('click','li div.btn-col button', function(e) {
                     var $li = $(this).parents('li');
-                    var index = $(this).index();
-                    console.log(index);
-                    if(index == 0) {
+                    if($(this).hasClass("buycart")) {
                         //구매
-                        self.requestCart($li,"buy");
+                        if($li.attr('data-requireCare')) {
+                            var obj = {
+                                title:'해당 제품은 케어십이 필요한 제품입니다.<br>렌탈 장바구니에서 케어십 청약신청 후<br>구매하실 수 있습니다.',
+                                ok: function (){
+                                    self.requestCart($li,"C");
+                                }
+                            };
+                            lgkorUI.alert(null, obj);
+                        } else {
+                            self.requestCart($li,"P");
+                        }
                     } else {
                         //렌탈
-                        self.requestCart($li,"rental");
+                        self.requestCart($li,"C");
                     }
                 });
             },
@@ -98,15 +105,17 @@
             requestRemove: function($dm) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-remove-url');
-                var postData = {
+                var param = {
                     "id":$dm.attr('data-id'),
                     "sku":$dm.attr('data-sku'),
                     "wishListId":$dm.attr('data-wishListId'),
                     "wishItemId":$dm.attr('data-wishItemId'),
+                    "categoryId":$dm.attr('data-categoryId'),
+                    "rtSeq":$dm.attr('data-rtSeq')
                 }
 
                 var obj = {title:'', cancelBtnName:'취소', okBtnName:'삭제', ok: function (){
-                    lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
+                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                         var data = result.data;
                         var success = lgkorUI.stringToBool(data.success);
                         if (success) {
@@ -121,7 +130,17 @@
             requestCart: function($dm,cartType) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-cart-url');
-                lgkorUI.requestCart($dm.attr('data-id'),$dm.attr('data-sku'),$dm.attr('data-wishListId'),$dm.attr('data-wishItemId'),ajaxUrl,cartType);
+                
+                var param = {
+                    "id":$dm.attr('data-id'),
+                    "sku":$dm.attr('data-sku'),
+                    "wishListId":$dm.attr('data-wishListId'),
+                    "wishItemId":$dm.attr('data-wishItemId'),
+                    "categoryId":$dm.attr('data-categoryId'),
+                    "rtSeq":$dm.attr('data-rtSeq'),
+                    "typeFlag":cartType
+                }
+                lgkorUI.requestCart(ajaxUrl, param);
             },
 
             requestWish: function($dm, wish) {

@@ -13,9 +13,9 @@
                     "groupTitle":null,
                     "listItem":[
                         {
-                            "cardId":"cd00001",
+                            "cardId":null,
                             "title":"이용시 22,000원 할인",
-                            "salePrice":"22000"
+                            "salePrice":"0"
                         }
                     ]
                 },
@@ -72,8 +72,7 @@
                     "price": "월 -5,000원",
                     "appendClass": "sale"
                 }
-            ],
-            "maxCardSale":"35000"
+            ]
         },
         "selectedSeq":[
             "seq00001",
