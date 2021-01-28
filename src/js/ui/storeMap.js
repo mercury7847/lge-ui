@@ -68,7 +68,9 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     '           </dl>'+
                     '       </div>'+
                     '       <div class="btn-group">'+
+                                '{{#if consultFlag == "Y"}}'+
                     '           <a href="https://www.lge.co.kr/lgekor/bestshop/counsel/counselMain.do?device=w&inflow=bestshop&orgcode={{shopID}}" class="btn border size storeConsult-btn">매장 상담 신청</a>'+
+                                '{{/if}}'+
                     '           <a href="{{detailUrl}}" class="btn border size detail-view">상세 정보</a>'+
                     '       </div>'+
                     '   </div>'+
@@ -447,13 +449,22 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 var selected = item.id == id ? true : false;
                 item.info.selected = selected;        
                 
-                if(selected) centerPoint = {x: item.info.gpsInfo.gpsy, y: item.info.gpsInfo.gpsx}
+                if(selected) centerPoint = {lat: item.info.gpsInfo.gps, long: item.info.gpsInfo.gpsx}
                 return item;
             });
 
             self._changeMarkersState();
 
-            self.map.panTo(new naver.maps.LatLng(centerPoint.x, centerPoint.y), {duration:460, easing:"easeOutCubic"});
+            self.map.panTo(new naver.maps.LatLng(centerPoint.lat, centerPoint.long), {duration:460, easing:"easeOutCubic"});
+        },
+
+        addMaker: function(lat, long){
+            var self = this;
+            
+            var maker = new naver.maps.Marker({
+                position: new naver.maps.LatLng(lat, long),
+                map: self.map
+            })
         }
     });
     ///////////////////////////////////////////////////////////////////////////////////////
