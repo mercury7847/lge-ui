@@ -241,15 +241,6 @@
 
             //iOS는 blur
             //Android는 변경 시 change, 변경 안했을 시는 click
-            var isAndroid_ver4 = false;
-            if(navigator.userAgent.toLocaleLowerCase().indexOf("android 4") > -1){
-                isAndroid_ver4 = true;
-            }
-            function touchStartHandler(event){
-                if(isAndroid_ver4){
-                    event.preventDefault();
-                }
-            }
             $(".time-setting input").on({
                 click : function(e){
                     var value = $(this).val();
@@ -258,15 +249,6 @@
                     oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
 
                     console.log(e);
-                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                    }else{
-                        $(".rst-event").append("click / ");
-                        touchStartHandler();
-                        e.preventDefault();
-                    }
-                },
-                keydown : function(e){
-                    $(".rst-event").append(e.keyCode +"/ ");
                 },
                 focusin : function(){
                     $(this).closest("div").find("[class*=rst-time]").addClass("focus");
@@ -287,7 +269,6 @@
                         //$(this).trigger("blur");
                         $(this).closest("div").attr("tabindex", 0).focus();
                     }
-                    $(".rst-event").append("change / ");
                 },
                 blur: function(){
                     //console.log("iphone");
@@ -351,7 +332,6 @@
                         }
                     });
                     */
-                    $(".rst-event").append("blur / ");
                 }
             });
 
