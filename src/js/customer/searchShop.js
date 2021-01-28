@@ -155,7 +155,6 @@
                     self._setTabInit();
                     
                     self.searchType = searchTypeNames[data.selectedIndex];
-                    console.log("self.searchType:", self.searchType)
                 });
 
                 self.$citySelect = $('#select1'); //시/도 선택
@@ -262,13 +261,6 @@
                 self._setSearch();
             });
 
-            self.$mapContainer.on('click', '.storeConsult-btn', function(e){
-                e.preventDefault();
-
-                console.log(this)
-            })
-
-
             self._resize();
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
@@ -297,6 +289,7 @@
                     item["detailUrl"] = 'javascript:window.open("' + self.detailUrl+item['shopID'] + '", "_blank", "width=1070, height=' + self.windowHeight + ', location=no, menubar=no, status=no, toolbar=no")';
                     return item;
                 });
+                console.log("[self.storeData]", self.storeData)
                 self.$map.applyMapData(self.storeData);
             });
         },
@@ -347,7 +340,6 @@
             for(var str in self.defaultOptions){
                 var values = self.defaultOptions[str].split("|");
                 for(var idx in values){
-                    console.log(values[idx])
                     if(values[idx] != "") self.$optionContainer.find('input[name=' + values[idx] + ']').prop('checked', true);
                 }
             }
@@ -577,8 +569,6 @@
                             self.userAddressX = result.pointx;
                             self.userAddressY = result.pointy;
 
-                            console.log(self.userAddressX, self.userAddressY);
-
                             if (self.userAddressX){
                                 self._loadStoreData(true);
                             }
@@ -722,9 +712,6 @@
             var optheight = self.$optionContainer.height();
             var resultheight = $('.result-list-box').height();
             var paddingtop = parseInt(self.$defaultListContainer.find('.sch-list').css('padding-top'));
-            
-
-            console.log(top, titheight, scheight, optheight, resultheight)
 
             var listheight;
             if(self.searchResultMode){
