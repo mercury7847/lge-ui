@@ -11,9 +11,9 @@
 		> li {
 			display:inline-block;
 			width:calc((100% - 48px) / 3 );
-			min-height:252px;
+			min-height:286px;
 			margin-left:24px;
-			padding:24px;
+			padding:32px;
 			border-radius:8px;
 			border:1px solid #ddd;
 			&:first-child {
@@ -22,11 +22,11 @@
 			strong {
 				display:block;
 				padding-bottom:24px;
-				font-size:18px;
+				font-size:24px;
 				font-weight:700;
-				line-height:28px;
+				line-height:34px;
 				em {
-					color:#ec455a;
+					color:#da0f47;
 				}
 			}
 			dl {
@@ -40,14 +40,15 @@
 				}
 				dt {
 					float:left;
-					width:40%;
-					color:#767676;
+					width:37%;
+					color:#000;
 					font-size:16px;
+					font-weight:700;
 					line-height:26px;
 				}
 				dd {
 					float:right;
-					width:60%;
+					width:63%;
 					text-align:right;
 					ul {
 						font-size:0;
@@ -66,7 +67,7 @@
 								vertical-align:middle;
 							}
 							em {
-								color:#ec455a;
+								color:#da0f47;
 							}
 						}
 					}
@@ -82,18 +83,18 @@
 				width:100%;
 				min-height:100%;
 				margin-left:0;
-				padding:20px;
+				padding:24px 20px;
 				& + li {
 					margin-top:16px;
 				}
 				strong {
-					padding-bottom:12px;
-					font-size:15px;
-					line-height:24px;
+					padding-bottom:24px;
+					font-size:20px;
+					line-height:28px;
 				}
 				dl {
 					& + dl {
-						margin-top:12px;
+						margin-top:20px;
 					}
 					dt {
 						font-size:14px;

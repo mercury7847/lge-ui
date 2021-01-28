@@ -91,7 +91,6 @@
 			padding:24px 0;
 			border-bottom:1px solid #ddd;
 			.title {
-				margin-top:2px;
 				a {
 					display:block;
 					color:#000;
@@ -104,14 +103,12 @@
 				}
 			}
 			.info {
-				margin-top:12px;
+				margin-top:8px;
 				ul {
 					font-size:0;
 					li {
 						display:inline-block;
-						color:#666;
 						font-size:14px;
-						font-weight:500;
 						line-height:24px;
 						& + li:before {
 							content:' ';
@@ -125,6 +122,16 @@
 							@include mobile {
 								margin:0 6px;
 							}
+						}
+					}
+					&.model {
+						li {
+							color:#000;
+						}
+					}
+					&.receipt {
+						li {
+							color:#666;
 						}
 					}
 				}

@@ -128,22 +128,20 @@
 	}
 	&.top {
         right:100px;
-        bottom:112px;
-
+        bottom:48px;
         @include mobile {
-            right:24px;
-            bottom:56px;
+            right:20px;
+            bottom:24px;
         }
     }
 	.back-to-top {
-        width:88px;
-        height:88px;
-		background:url('/lg5-common/images/icons/icon-top.svg') no-repeat;
-		background-size:88px 88px;
+        width:56px;
+        height:56px;
+        box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.15);
+		background:url('/lg5-common/images/icons/icon-top-new.svg') no-repeat center center;
 		border-radius:50%;
 		// margin-top:12px;
         line-height:0;
-
 		button{
 			width:100%;
 			height:100%;
@@ -195,13 +193,23 @@
         }
     }
     &.lately {
-        right:112px;
-        bottom:385px;
+        right:100px;
+        bottom:192px;
+        z-index:101;
         @include mobile {
-            right:36px;
-            bottom:333px;
+            right:20px;
+            bottom:160px;
         }
     }
+    &.cs-cst {
+        right:100px;
+        bottom:120px;
+        @include mobile {
+            right:20px;
+            bottom:92px;
+        }
+    }
+
 	.chatbot-linker {
 		width:88px;
         height:88px;
@@ -259,8 +267,8 @@
         }
     }
     .lately-linker {
-        width:64px;
-        height:64px;
+        width:56px;
+        height:56px;
         border-radius:50%;
         box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
         overflow:hidden;
@@ -274,9 +282,22 @@
             }
         }
     }
+    .cs-cst-linker {
+        width:56px;
+        height:56px;
+        border-radius:50%;
+        box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.15);
+        background:url('/lg5-common/images/icons/icon-cs-cst-linker.svg') no-repeat center center;
+        text-align:center;
+        > a {
+            display:block;
+            width:100%;
+            height:100%;
+        }
+    }
 }
 .lately-popup {
-    top:-644px;
+    top:-660px;
     right:0;
     z-index:101;
     width:368px;

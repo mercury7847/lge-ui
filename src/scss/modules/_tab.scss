@@ -301,6 +301,11 @@
                     }
                 }
             }
+            li:first-child:nth-last-child(3), li:first-child:nth-last-child(3) ~ li { 
+                @include mobile {
+                    width:calc(100% / 3);
+                } 
+            }
         }
     }
 }

@@ -16,6 +16,7 @@ $(window).ready(function(){
             
             self.$section.hide();
             var cookieValue = lgkorUI.getCookie(myRecentProductCookieName);
+            console.log("cookieValue:",cookieValue)
             if(!cookieValue) {
                 //self.$section.hide();
             } else {

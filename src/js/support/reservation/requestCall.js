@@ -154,11 +154,6 @@
                 });
             });
         },
-        completeModel: function(url) {
-            var self = this;
-            
-            self.setInputStep(url);
-        },
         nextInputStep: function() {
             var self = this;
             var data = self.model;
@@ -323,24 +318,26 @@
 
                 if (data.resultFlag == 'Y') {
                     $('#acptNo').val(data.acptNo);
+                    self.$submitForm.submit();
                 } else {
-                    lgkorUI.hideLoading();
                     if (data.resultMessage) {
                         lgkorUI.alert("", {
                             title: data.resultMessage
                         });
                     }
                 }
-                self.$submitForm.submit();
+                lgkorUI.hideLoading();
             }, 'POST');
         },
         reset: function() {
             var self = this;
 
-            self.$myProductWarp.show();
+            self.model = {};
+
             self.$cont.commonModel('next', self.$stepModel);
 
             self.$topicList.empty();
+            self.$subTopicList.empty();
             self.$solutionsBanner.hide();
         
             self.$stepInput.find('[name=buyingdate]').closest('.conts').find('.form-text').remove();
@@ -350,6 +347,8 @@
             if (!self.isLogin) {
                 self.$stepInput.find('#userNm').val('');
                 self.$stepInput.find('#phoneNo').val('');
+            } else {
+                self.$myProductWarp.show();
             }
 
             self.$calendarDate.calendar('reset');
@@ -361,7 +360,7 @@
             // 모델 선택 & 문의 재선택
             self.$cont.on('complete', function(e, data, url) {
                 self.model = data;
-                self.completeModel(url);
+                self.setInputStep(url);
             }).on('reset', function(e) {
                 self.reset();
             });
