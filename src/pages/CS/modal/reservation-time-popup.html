@@ -1,10 +1,30 @@
-<article id="reservationTimePopup" class="popup-wrap full" data-date-url="/lg5-common/data-ajax/support/possibleDate.json" data-time-url="/lg5-common/data-ajax/support/possibleTime.json" data-sms-url="/lg5-common/data-ajax/support/authSendSuccess.json" data-auth-url="/lg5-common/data-ajax/support/reservationDateChange.json">
+<article id="reservationTimePopup" class="support popup-wrap full" data-date-url="/lg5-common/data-ajax/support/possibleDate.json" data-time-url="/lg5-common/data-ajax/support/possibleTime.json" data-sms-url="/lg5-common/data-ajax/support/authSendSuccess.json" data-auth-url="/lg5-common/data-ajax/support/reservationDateChange.json">
+    <form id="changeEngineerFormData" action="/html/CS/CSRF6029.html" method="POST" data-ajax="/lg5-common/data-ajax/support/serviceEngineer.json" autocomplete="off" novalidate></form>
     <header class="pop-header">
         <h1 class="tit"><span>예약 일시 변경</span></h1>
     </header>
     <section class="pop-conts reservation-time-pop">
         <input type="hidden" name="authName" id="authName" value="홍길동">
         <input type="hidden" name="authPhoneNo" id="authPhoneNo" value="01044442222">
+            <input type="hidden" name="zipId" id="zipId" value="">
+            <input type="hidden" name="productCode" id="productCode" value="">
+            <input type="hidden" name="userNm" id="userNm" value="">
+            <input type="hidden" name="phoneNo" id="phoneNo" value="">
+            <input type="hidden" name="svcType" id="svcType" value="">
+            <input type="hidden" name="lockUserId" id="lockUserId" value="">
+            <input type="hidden" name="topic" id="topic" value="버튼/리모컨">
+            <input type="hidden" name="subtopic" id="subtopic" value="버튼 잠금 설정">
+
+            <!-- <input type="hidden" name="engineerNm" id="engineerNm" value="">
+            <input type="hidden" name="engineerCode" id="engineerCode" value="">
+            <input type="hidden" name="centerNm" id="centerNm" value="">
+            <input type="hidden" name="centerCode" id="centerCode" value="">
+            <input type="hidden" name="isMyProduct" id="isMyProduct" value="N">
+            <input type="hidden" name="route" id="route" value="">
+            <input type="hidden" name="acptNo" id="acptNo" value="">
+            <input type="hidden" name="serviceType" id="serviceType" value="A">
+            <input type="hidden" name="pageCode" id="pageCode" value="pageCode"> -->
+        
 
         <div class="section">
             <div class="form-infos">
@@ -20,6 +40,76 @@
             @@include('./common/support/desired-date.html', {
                 "onlyCalendar": true
             })
+
+            <!-- 예약/상담 엔지니어 선택 -->
+            <div class="step-box step-engineer" id="stepEngineer" data-ajax="/lg5-common/data-ajax/support/searchEngineer.json";>
+                <div class="selected-engineer">
+                    <div class="tit-wrap">
+                        <h2 class="tit">엔지니어</h2>
+                    </div>
+                    <div class="engineer-to-visit">
+                        <div class="engineer-profile">
+                            <div class="engineer-img">
+                                <img src="/lg5-common/images/CS/default-engineer.jpg" alt="엔지니어 프로필 이미지">
+                            </div>
+                            <div class="engineer-info">
+                                <strong class="name">박두신</strong>
+                                <p class="center">모란역지원센터</p>
+                            </div>
+                        </div>
+                        <div class="engineer-desc">
+                            <p class="txt"><span class="date">2020.08.17 11:20</span>에 <span class="name">홍길동</span> 전문 엔지니어가 입력하신 주소로 방문하여<br> <span class="topic">구입사양 &gt; 전기요금 문의</span>에 대한 증상을<br> 해결해드릴 예정입니다.</p>
+                            <div class="btn-wrap">
+                                <button type="button" data-href="#choiceEngineerPopup" data-control="modal" class="btn border size"><span>다른 엔지니어 선택</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="toggle-layer choice-engineer" data-lock-url="/lg5-common/data-ajax/support/engineer-lock.json"> 
+                    <div class="layer-tit">
+                        <h3 class="tit">다른 엔지니어 선택</h3>
+                        <p class="sub-tit">엔지니어를 선택해주세요.</p>
+                    </div>
+                    <div class="layer-content">
+                        <div class="engineer-slider slide-wrap">
+                            <div class="indi-wrap">
+                                <ul class="indi-conts ui_carousel_dots">
+                                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                </ul>
+                            </div>
+                            <div class="slide-content ui_carousel_list">
+                                <div class="slide-track ui_carousel_track">
+                                    <!-- <div class="slide-conts ui_carousel_slide">
+                                        <div class="engineer-box">
+                                            <input type="radio" name="engineer" id="engineer-1" value="">
+                                            <label for="engineer-1">
+                                                <div class="engineer-image">
+                                                    <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
+                                                </div>
+                                                <p class="tit">박두신</p>
+                                                <p class="desc">모란지역지원센터</p>
+                                            </label>
+                                        </div>  
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="slide-controls">
+                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                            </div>
+                        </div>
+
+                        <div class="btn-group center">
+                            <button type="button" class="btn gray btn-layer-close"><span>취소</span></button>
+                            <button type="button" class="btn btn-select-engineer"><span>엔지니어 선택</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // 예약/상담 엔지니어 선택 -->
+
+            
             @@include('./common/modules/bullet-list.html', {
                 "topBorder" : true,
                 "bulletTxt" : [
@@ -30,7 +120,7 @@
                 ]
             })
         </div>
-        
+
         <div class="section">
             <div class="tit-wrap">
                 <h2 class="tit"><label for="authNo">휴대 전화 인증</label></h2>        
@@ -64,8 +154,9 @@
     <footer class="pop-footer">
         <div class="btn-group center">
             <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
-            <button type="button" class="btn"><span>예약</span></button>
+            <button type="button" class="btn btn-confirm"><span>예약</span></button>
         </div>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</form>
 </article>

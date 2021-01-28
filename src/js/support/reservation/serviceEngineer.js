@@ -336,6 +336,8 @@
                             $('.date-wrap').calendar('update', data.dateList);
                             self.dateParam = result.param;
 
+                            console.log(result.param)
+
                             self.$stepInput.find('.step-btn-wrap').hide();
                             self.$stepDate.addClass('active');
                             self.$stepEngineer.removeClass('active');
