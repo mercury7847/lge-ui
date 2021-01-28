@@ -125,7 +125,7 @@
 
             self._resize();
             
-            vcui.require(['ui/storeMap'], function () {
+            vcui.require(['ui/centerMap'], function () {
                 lgkorUI.requestAjaxData(self.configUrl, {}, function(result){
                     self.bestShopUrl = result.data.bestShopUrl;
                     self.localUrl = result.data.localListUrl;
@@ -134,7 +134,7 @@
                     self.detailUrl = result.data.detailPageUrl;
                     self.userAdressCheckedUrl = result.data.userAdressCheckedUrl;
 
-                    self.$mapContainer.vcStoreMap({
+                    self.$mapContainer.vcCenterMap({
                         keyID: result.data.mapID,
                         appKey: result.data.appKey,
                         longitude : result.data.basicPosition.longitude,
@@ -194,7 +194,7 @@
                             if ([temp[0]] == 'seq') { sval = temp[1]; }
                         }
 
-                        self.$map = self.$mapContainer.vcStoreMap('instance');
+                        self.$map = self.$mapContainer.vcCenterMap('instance');
                         self._loadStoreData(sval);
                         self._bindEvents();
                     }).on('mapchanged', function(e, data){	console.log(data);
