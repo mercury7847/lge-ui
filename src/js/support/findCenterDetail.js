@@ -94,7 +94,10 @@
                     //유효성 검사 완료시
                     if( self.validateResult == true ) {
 
-                        var data = self.validation.getAllValues();
+                        var data = $.extend(self.validation.getAllValues(),{
+                            seq : $('#seq').val()
+                        }) ;
+
                         var ajaxUrl = $('.store-info-wrap').data('smsUrl');
 
                         lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
