@@ -242,11 +242,19 @@
             //iOS는 blur
             //Android는 변경 시 change, 변경 안했을 시는 click
             $(".time-setting input").on({
-                click : function(){
+                click : function(e){
                     var value = $(this).val();
                     $(this).closest("div").find("[class*=rst-time]").text(value);
                     oldStartValue = $(this).closest(".inner").find("div").eq(0).find("input").val();
                     oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
+
+                    console.log(e);
+                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        //console.log("iphone");
+                    }else{
+                        //$(this).trigger("blur");
+                        $(this).closest("div").attr("tabindex", 0).focus();
+                    }
                 },
                 focusin : function(){
                     $(this).closest("div").find("[class*=rst-time]").addClass("focus");
@@ -265,7 +273,8 @@
                         //console.log("iphone");
                     }else{
                         //$(this).trigger("blur");
-                        $(this).closest("div").attr("tabindex", 0).focus();
+                        //$(this).closest("div").attr("tabindex", 0).focus();
+                        $(".rst-event").append("click / ");
                     }
                 },
                 blur: function(){
@@ -330,6 +339,24 @@
                         }
                     });
                     */
+                }
+            });
+
+            $(window).on({
+                touchend : function(){
+                    $(".rst-event").append("window touchend / ");
+                },
+                mouseup : function(){
+                    $(".rst-event").append("window mouseup / ");
+                }
+            });
+
+            $("html, body").on({
+                touchend : function(){
+                    $(".rst-event").append("body touchend / ");
+                },
+                mouseup : function(){
+                    $(".rst-event").append("body mouseup / ");
                 }
             });
 
@@ -438,6 +465,8 @@
     <br>
     <br>
     <button type="button" class="btn-opt-login" id="btn-mkt"><span>마케팅 수신동의 모달 열기</span></button>
+
+    <div class="rst-event" style="position:fixed;left:0;top:0;width:100%;height:auto;background:rgba(0, 0, 0, 0.7);color:#fff;z-index:10000"></div>
 
     <div class="lyr-opt-panel">
         <div class="main-panel" aria-hidden="true" tabindex="0">
