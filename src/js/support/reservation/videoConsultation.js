@@ -147,11 +147,7 @@
         completeModel: function(url) {
             var self = this;
 
-            if (self.model.isRequest) {
-                self.setInputStep(url);
-            } else {
-                self.nextInputStep();
-            }
+            self.setInputStep(url);
         },
         nextInputStep: function() {
             var self = this;
