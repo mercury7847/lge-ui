@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="160" height="160" viewBox="0 0 160 160">
+    <defs>
+        <clipPath id="lu7p54jilc">
+            <use xlink:href="#laek6zulda"/>
+        </clipPath>
+        <clipPath id="nsw3vppsnd">
+            <use xlink:href="#ibwm2gukjb"/>
+        </clipPath>
+    </defs>
+    <g>
+        <path fill="none" d="M0 0H160V160H0z"/>
+        <g stroke-linejoin="bevel" stroke-miterlimit="10">
+            <g fill="none">
+                <g>
+                    <path d="M2.52 0h20.288l2.52 19.473H0z" transform="translate(14 13) translate(17.64 56.44) translate(10.851 57.443)"/>
+                    <path fill="#fff" d="M6.915 5l-1.226 9.473h13.95L18.413 5H6.915M2.52 0h20.288l2.52 19.473H0L2.52 0z" transform="translate(14 13) translate(17.64 56.44) translate(10.851 57.443)"/>
+                </g>
+                <g stroke="#fff" stroke-width="6.3" transform="translate(14 13) translate(17.64 56.44) translate(.935 72.916)">
+                    <path id="laek6zulda" stroke="none" d="M0 0H45.16V4H0z"/>
+                    <path d="M0 .85h45.16M42.01 0v4m3.15-.85H0M3.15 4V0" clip-path="url(#lu7p54jilc)"/>
+                </g>
+                <g stroke="#fff" stroke-width="6.3" transform="translate(14 13) translate(17.64 56.44) translate(73.913 15.834)">
+                    <path id="ibwm2gukjb" stroke="none" d="M0 0H25.328V4H0z"/>
+                    <path d="M0 .85h25.328M22.178 0v4m3.15-.85H0M3.15 4V0" clip-path="url(#nsw3vppsnd)"/>
+                </g>
+                <g stroke="#fff" stroke-width="5" transform="translate(14 13) translate(17.64 56.44) rotate(79.98 43.833 52.28)">
+                    <path stroke="none" d="M0 0H18.365V5H0z"/>
+                    <rect width="13.365" x="2.5" y="2.5"/>
+                </g>
+            </g>
+            <g fill="none">
+                <path d="M74.75 61.589H7.56A7.569 7.569 0 0 1 0 54.029V7.56A7.569 7.569 0 0 1 7.56 0h33.72a26.08 26.08 0 0 0 24.853 33.921 25.79 25.79 0 0 0 16.177-5.627v25.735a7.569 7.569 0 0 1-7.56 7.56z" transform="translate(14 13) translate(0 57.166)"/>
+                <path fill="#fff" d="M74.75 56.589c1.411 0 2.56-1.149 2.56-2.56V36.86c-3.523 1.36-7.288 2.06-11.177 2.06-17.126 0-31.06-13.933-31.06-31.06 0-.958.044-1.913.13-2.861H7.56C6.148 5 5 6.148 5 7.56v46.469c0 1.411 1.148 2.56 2.56 2.56h67.19m0 5H7.56c-4.169 0-7.56-3.392-7.56-7.56V7.56C0 3.391 3.391 0 7.56 0h33.72c-.8 2.533-1.207 5.177-1.207 7.861 0 14.37 11.69 26.06 26.06 26.06 5.939 0 11.532-1.946 16.177-5.627v25.735c0 4.168-3.392 7.56-7.56 7.56z" transform="translate(14 13) translate(0 57.166)"/>
+            </g>
+            <g fill="none">
+                <path d="M74.75 61.589H43.579A25.855 25.855 0 0 0 0 46.5V7.56A7.569 7.569 0 0 1 7.561 0H74.75a7.569 7.569 0 0 1 7.56 7.56v46.469a7.569 7.569 0 0 1-7.56 7.56z" transform="translate(14 13) translate(47.91)"/>
+                <path fill="#fff" d="M74.75 56.589c1.412 0 2.56-1.149 2.56-2.56V7.56c0-1.412-1.148-2.56-2.56-2.56H7.56C6.15 5 5 6.148 5 7.56v29.524c4.016-1.86 8.42-2.841 12.962-2.841 13.87 0 25.929 9.343 29.662 22.346H74.75m0 5H43.58c-1.728-12.74-12.74-22.346-25.617-22.346-6.738 0-13.117 2.577-17.961 7.258V7.56C0 3.391 3.392 0 7.56 0h67.19c4.168 0 7.56 3.391 7.56 7.56v46.469c0 4.168-3.392 7.56-7.56 7.56z" transform="translate(14 13) translate(47.91)"/>
+            </g>
+            <g fill="#fff" stroke="#fff" stroke-width="5" transform="translate(14 13) translate(35.02 34.61)">
+                <circle cx="30.795" cy="30.795" r="30.795" stroke="none"/>
+                <circle cx="30.795" cy="30.795" r="28.295" fill="none"/>
+            </g>
+            <path fill="none" stroke="#da0f47" stroke-linecap="round" stroke-width="4.6" d="M79.9 61.69a20 20 0 00-28.284 0M74.187 67.347a12 12 0 00-16.971 0" transform="translate(14 13)"/>
+            <path fill="none" stroke="#da0f47" stroke-linecap="round" stroke-width="4.6" d="M70.479 73.746a6.756 6.756 0 0 0-9.555 0" transform="translate(14 13)"/>
+        </g>
+    </g>
+</svg>
