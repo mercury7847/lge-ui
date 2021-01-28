@@ -127,13 +127,13 @@
                     longitude : self.currentLongitude,
                     latitude: self.currentLatitude
                 }).on('mapinit', function(e,data){
-
+                    console.log("### mapinit ###");
                     self.$map = self.$mapContainer.vcStoreMap('instance');
                     self._loadStoreData();
 
                     self._bindEvents();
                 }).on('mapchanged', function(e, data){	
-                    
+                    console.log("### mapchanged ###");
                     //self.$defaultListContainer.find('.scroll-wrap').scrollTop(0);
                     self._setItemList(data);
                     self._setItemPosition();                        
@@ -287,8 +287,10 @@
 
         _loadStoreData: function(userAddressAbled){
             var self = this;
-
+            console.log("### _loadStoreData ###");
             lgkorUI.requestAjaxData(self.bestShopUrl, self._getKeyword(userAddressAbled), function(result){
+                console.log("### _loadStoreData load complete ###");
+                console.log("[result]", result)
                 self.storeData = vcui.array.map(result.data, function(item, index){
                     item['id'] = item['shopID']; //info.shopID || agCode    
                     item['info'] = false;
@@ -619,7 +621,8 @@
         //매장리스트 생성...
         _setItemList: function(data){
             var self = this;
-            
+            console.log("### _setItemList ###");
+            console.log("[data]", data)
             self.$defaultListLayer.empty();
             
              for(var i=0; i<data.length; i++){
