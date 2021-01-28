@@ -588,22 +588,57 @@
         line-height:30px;
         text-align:center;
     }
+    .desc {
+        margin-top:-32px;
+        font-size:16px;
+        line-height:26px;
+    }
+    .state-step-wrap {
+        font-size:0;
+        font-weight:700;
+        .state-step {
+            display:inline-block;
+            li {
+                float:left;
+                position:relative;
+                color:#da0f47;
+                font-size:16px;
+                line-height:26px;
+                &:before {
+                    content:'>';
+                    display:inline-block;
+                    margin:0 3px;
+                    font-size:16px;
+                }
+                &:first-child:before {
+                    display:none;
+                }
+            }
+        }
+        .txt {
+            display:inline-block;
+            padding-left:4px;
+            font-size:16px;
+            line-height:26px;
+            vertical-align:top;
+        }
+    }
     .step-box {
         margin-top:24px;
         .step-inner {
             position:relative;
             width:100%;
-            height:18px;
-            border-radius:18px;
+            height:12px;
+            border-radius:10px;
             background-color:#f4f4f4;
             overflow:hidden;
             .bar {
-                height:18px;
+                height:12px;
                 position:absolute;
                 top:0;
                 left:0;
                 border-radius:18px;
-                background-color:#ec455a;
+                background-color:#da0f47;
             }
         }
         .step-txt {
@@ -612,14 +647,43 @@
             height:24px;
             margin-top:12px;
             li {
+                // display:none;
                 position:absolute;
                 bottom:0;
-                color:#aaa;
-                font-size:14px;
+                color:#000;
+                font-size:16px;
                 font-weight:500;
-                line-height:24px;
+                line-height:26px;
+                &:before {
+                    content:' ';
+                    display:block;
+                    position:absolute;
+                    bottom:30px;
+                    width:24px;
+                    height:24px;
+                    margin-left:9px;
+                    background:url('/lg5-common/images/MYC/icon-process-before-24x24.svg') no-repeat 0 0;
+                }
+                &.comp:before {
+                    background-image:url('/lg5-common/images/MYC/icon-process-complete-24x24.svg');
+                }
+                &:first-child:before {
+                    left:0;
+                    margin:0;
+                }
+                &:last-child:before {
+                    right:0;
+                    margin:0;
+                }
                 &.comp {
-                    color:#ec455a;
+                    .txt {
+                        display:none;
+                    }
+                    &.on {
+                        .txt {
+                            display:block;
+                        }
+                    }
                 }
             }
         }
@@ -709,30 +773,28 @@
         }
     }
     .info-box {
-        display:table;
         position:relative;
         width:100%;
-        height:108px;
-        margin-top:32px;
+        height:76px;
+        margin-top:48px;
         padding:24px 40px;
         border-radius:8px;
-        background-color:#222;
-        .ico {
-            display:block;
-            position:absolute;
-            top:50%;
-            left:40px;
-            width:60px;
-            height:60px;
-            transform:translateY(-50%);
-            img {
-                height:100%;
-            }
-        }
+        background-color:#8d71ec;
+        background-image: linear-gradient(94deg, #8d71ec, #f75584 99%);
+        text-align:center;
+        // .ico {
+        //     display:block;
+        //     position:absolute;
+        //     top:50%;
+        //     left:40px;
+        //     width:60px;
+        //     height:60px;
+        //     transform:translateY(-50%);
+        //     img {
+        //         height:100%;
+        //     }
+        // }
         .cont {
-            display:table-cell;
-            padding-left:100px;
-            vertical-align:middle;
             p {
                 color:#fff;
                 font-size:18px;
