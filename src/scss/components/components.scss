@@ -35,9 +35,15 @@
 
 // Title Font Mixin
 @mixin eyebrow {
-    margin-bottom:6px;
-    font-weight:500;
-    @include font-medium;
+    margin-bottom:8px;
+    font-weight:700;
+    font-size:24px;
+    line-height:34px;
+    @include mobile {
+        margin-bottom:6px;
+        font-size:14px;
+        line-height:26px;
+    }
     &:only-child {
         margin-bottom:0;
     }
@@ -67,11 +73,11 @@
 }
 @mixin title-h2 {
     font-size:48px;
-    line-height:64px;
+    line-height:66px;
     font-weight:700;
     @media screen and (max-width: #{$tablet-s-width}) {
-        font-size:24px;
-        line-height:33px;
+        font-size:31px;
+        line-height:42px;
     }
 }
 @mixin title-h3 {
@@ -85,7 +91,7 @@
 }
 @mixin bodycopy ($own, $prev) {
     @if $own == h1 or $own == h2 {
-        @include font-large-1;
+        @include font-large;
     } @else if $own == h3 {
         font-size:16px;
         line-height:26px;
@@ -101,7 +107,7 @@
             margin-top:16px;
         }
     } @else if $prev == h2 {
-        margin-top:24px;
+        margin-top:20px;
         @include mobile {
             margin-top:12px;
         }
@@ -117,17 +123,20 @@
     }
 }
 @mixin cta-btn {
-    margin-top:24px;
+    margin-top:32px;
     font-size:0;
     &:first-child {
         margin-top:0;
     }
-    .btn.border, 
+    .btn.border,
     .text-link {
         margin-right:16px;
         &:last-child {
             margin-right:0;
         }
+    }
+    @include mobile {
+        margin-top: 24px;
     }
 }
 

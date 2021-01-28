@@ -1,6 +1,6 @@
 <!-- components/partials/KRC0003.html -->
 
-<div class="component-wrap">
+<div class="component-wrap @@common.zero">
 	<!--
 		[.component-wrap 옵션]
 		1. 여백
@@ -23,16 +23,34 @@
         .type-narrow : 좁음
 	-->
 	<section class="component KRC0003">
-        <div class="slide-wrap hero-banner ui_carousel_slider">
-            <div class="indi-wrap">
-                <ul class="indi-conts ui_carousel_dots">
-                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                </ul>
-                <!-- [KR수정_210108] 재생버튼 추가 -->
-                <span class="ui_carousel_play play">
-                    <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
-                </span>
-                <!-- // [KR수정_210108] 재생버튼 추가 -->
+        <div class="slide-wrap hero-banner ui_wide_slider"><!-- [KR수정_210126] ui_wide_slider 클래스 수정 -->
+            <!-- [KR수정_210126] custom-indi-wrap 돔 수정 -->
+            <div class="custom-indi-wrap">
+                <div class="custom-indis">
+                    <ul class="indis ui_wideslider_dots">
+                        <li>
+                            <button type="button" class="btn-indi">
+                                <!-- <p>1</p>-->
+                                <div class="bar"></div>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn-indi">
+                                <!-- <p>2</p> -->
+                                <div class="bar"></div>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn-indi">
+                                <!-- <p>3</p> -->
+                                <div class="bar"></div>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" class="indi-control ui_carousel_play play">
+                    <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
+                </button>
             </div>
             <div class="slide-content ui_carousel_list">
                 <ul class="slide-track ui_carousel_track">

@@ -7,7 +7,7 @@
         subway: '<strong>"{{keyword}}역"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
     };
 
-    var localOptTemplate = '<option value={{value}}>{{title}}</option>';
+    var localOptTemplate = '<option value={{value}} data-code-desc={{codeDesc}}>{{title}}</option>';
 
     var searchListTemplate = 
         '<li data-id="{{shopID}}">'+
@@ -99,6 +99,8 @@
             self.currentLatitude = "";
             self.currentLongitude = "";
 
+            self.loginUrl = "";
+
             self.defaultOptions = self._getOptions();
 
             self.$searchField = $('#tab3 .input-sch input');
@@ -117,6 +119,7 @@
                 self.userAddress = $('.map-container').data("userAddress");
                 self.currentLatitude = $('.map-container').data("latitude");
                 self.currentLongitude = $('.map-container').data("longitude");
+                self.loginUrl = $('.map-container').data("loginUrl");
 
                 self.$mapContainer.vcStoreMap({
                     keyID: $('.map-container').data("mapId"),
@@ -124,13 +127,13 @@
                     longitude : self.currentLongitude,
                     latitude: self.currentLatitude
                 }).on('mapinit', function(e,data){
-
+                    console.log("### mapinit ###");
                     self.$map = self.$mapContainer.vcStoreMap('instance');
                     self._loadStoreData();
 
                     self._bindEvents();
                 }).on('mapchanged', function(e, data){	
-                    
+                    console.log("### mapchanged ###");
                     //self.$defaultListContainer.find('.scroll-wrap').scrollTop(0);
                     self._setItemList(data);
                     self._setItemPosition();                        
@@ -152,7 +155,6 @@
                     self._setTabInit();
                     
                     self.searchType = searchTypeNames[data.selectedIndex];
-                    console.log("self.searchType:", self.searchType)
                 });
 
                 self.$citySelect = $('#select1'); //시/도 선택
@@ -186,7 +188,7 @@
                 e.preventDefault();
 
                 var id = $(this).attr("href").replace("#", "");
-                window.open(self.detailUrl+"?shopID="+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no")
+                window.open(self.detailUrl+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no")
             });
 
             self.$searchField.on('focus', function(e){
@@ -277,13 +279,17 @@
 
         _loadStoreData: function(userAddressAbled){
             var self = this;
-
+            console.log("### _loadStoreData ###");
             lgkorUI.requestAjaxData(self.bestShopUrl, self._getKeyword(userAddressAbled), function(result){
+                console.log("### _loadStoreData load complete ###");
+                console.log("[result]", result)
                 self.storeData = vcui.array.map(result.data, function(item, index){
                     item['id'] = item['shopID']; //info.shopID || agCode    
                     item['info'] = false;
+                    item["detailUrl"] = 'javascript:window.open("' + self.detailUrl+item['shopID'] + '", "_blank", "width=1070, height=' + self.windowHeight + ', location=no, menubar=no, status=no, toolbar=no")';
                     return item;
                 });
+                console.log("[self.storeData]", self.storeData)
                 self.$map.applyMapData(self.storeData);
             });
         },
@@ -305,7 +311,8 @@
             var lines = vcui.array.map(result, function(item, idx){
                 return {
                     title: item.codeName,
-                    value: item[valuekey]
+                    value: item[valuekey],
+                    codeDesc: item.codeDesc
                 }
             });
             lines.unshift(firstdata);
@@ -319,6 +326,7 @@
             select.empty();
 
             for(var i in list){
+                if(list[i].codeDesc == undefined || list[i].codeDesc == null) list[i].codeDesc = "";
                 var opt = vcui.template(localOptTemplate, list[i]);
                 select.append($(opt).get(0));
             }
@@ -332,7 +340,6 @@
             for(var str in self.defaultOptions){
                 var values = self.defaultOptions[str].split("|");
                 for(var idx in values){
-                    console.log(values[idx])
                     if(values[idx] != "") self.$optionContainer.find('input[name=' + values[idx] + ']').prop('checked', true);
                 }
             }
@@ -459,9 +466,20 @@
         _getKeyword: function(userAddressAbled){
             var self = this;
 
-            var userAddressPoint = userAddressAbled ? self.userAddressX + "," + self.userAddressY : "";
+            var userAddressPoint;
+            if(userAddressAbled){
+                if(self.userAddressX == "" || self.userAddressY == ""){
+                    userAddressPoint = "N";
+                } else{
+                    userAddressPoint = self.userAddressX + "," + self.userAddressY;
+                }
+            } else{
+                userAddressPoint = ""
+            }
 
             var optdata = self._getOptions();
+
+            var selectCodeDesc = self.$subwayStationSelect.find('option:selected').data("codeDesc");
 
             var keywords = {
                 searchType: self.searchType,
@@ -472,6 +490,7 @@
                 searchSubwayLocal: self.$subwayCitySelect.val(),
                 searchSubwayLine: self.$subwayLineSelect.val(),
                 searchSubwayStation: self.$subwayStationSelect.val(),
+                searchCodeDesc: selectCodeDesc == undefined ? "" : selectCodeDesc,
 
                 searchKeyword: self.$searchField.val(),
 
@@ -539,17 +558,16 @@
             }
         },
 
+        //내 주소 검색
         _setUserAdressSearch: function(){
             var self = this;
 
-            if(self.userAddress){
+            if(self.userAddress != ""){
                 if(self.userAddressX == ""){
                     self.$map.getAdressPositions(self.userAddress, function(result){
                         if(result.success == "Y"){
                             self.userAddressX = result.pointx;
                             self.userAddressY = result.pointy;
-
-                            console.log(self.userAddressX, self.userAddressY);
 
                             if (self.userAddressX){
                                 self._loadStoreData(true);
@@ -560,6 +578,14 @@
                     });
                 } else{
                     self._loadStoreData(true);
+                }
+            } else{
+                if(self.loginUrl == ""){
+                    lgkorUI.alert("", {
+                        title:'등록된 주소 정보가 없습니다.'
+                    });
+                } else{
+                    location.href = self.loginUrl;
                 }
             }
         },
@@ -585,7 +611,8 @@
         //매장리스트 생성...
         _setItemList: function(data){
             var self = this;
-            
+            console.log("### _setItemList ###");
+            console.log("[data]", data)
             self.$defaultListLayer.empty();
             
              for(var i=0; i<data.length; i++){
@@ -685,9 +712,6 @@
             var optheight = self.$optionContainer.height();
             var resultheight = $('.result-list-box').height();
             var paddingtop = parseInt(self.$defaultListContainer.find('.sch-list').css('padding-top'));
-            
-
-            console.log(top, titheight, scheight, optheight, resultheight)
 
             var listheight;
             if(self.searchResultMode){
