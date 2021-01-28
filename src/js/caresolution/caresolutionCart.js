@@ -103,8 +103,11 @@
 
                 $('.ui_tab').on("tabbeforechange", function(e, data){
                     e.preventDefault();
-                    if(data.selectedIndex == 0) {
-                        location.href = $(this).siblings('div.row-wrap').first().attr('data-url');
+                    var $a = $(this).find('li:eq('+data.selectedIndex+') a');
+                    var _id = $a.attr('href').replace("#","");
+                    var url = $('#'+_id).attr('data-url');
+                    if(url) {
+                        location.href = url;
                     }
                 });
 
