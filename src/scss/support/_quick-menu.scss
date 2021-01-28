@@ -179,15 +179,22 @@
                     transform:rotate(0);
                 }
             }
+        }
+        @include pc {
             .btn-fold {
-                @include pc {
-                    width:264px;
-                }
-                @include mobile {
-                    width:234px;
+                &.type-hover {
+                    &:hover,
+                    &:focus {
+                        width:264px;
+                    }
                 }
             }
-        }   
+            &.on {
+                .btn-fold {
+                    width:264px;
+                }
+            }
+        }
         @include mobile {
             &-list {
                 > li {
@@ -197,6 +204,9 @@
             &.on {
                 ul > li {
                     margin-bottom:9px;
+                }
+                .btn-fold {
+                    width:234px;
                 }
             }
         }
