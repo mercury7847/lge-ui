@@ -242,6 +242,9 @@
             //iOS는 blur
             //Android는 변경 시 change, 변경 안했을 시는 click
             var isAndroid_ver4 = false;
+            if(navigator.userAgent.toLocaleLowerCase().indexOf("android 4") > -1){
+                isAndroid_ver4 = true;
+            }
             function touchStartHandler(event){
                 if(isAndroid_ver4){
                     event.preventDefault();
@@ -261,6 +264,9 @@
                         touchStartHandler();
                         e.preventDefault();
                     }
+                },
+                keydown : function(e){
+                    $(".rst-event").append(e.keyCode +"/ ");
                 },
                 focusin : function(){
                     $(this).closest("div").find("[class*=rst-time]").addClass("focus");
