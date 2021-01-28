@@ -282,7 +282,6 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             var arr = self._getNumberInArea(showItems);
 
             self._setItemInfo(arr);
-
             self.triggerHandler('mapchanged', [arr]);   
         },
 
@@ -293,7 +292,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             var info = null;
             for(var i=0; i<self.itemArr.length; i++){
                 info = self.itemArr[i].info;
-                bounds.extend(new naver.maps.LatLng(info.gpsInfo.gpsx, info.gpsInfo.gpsy));
+                bounds.extend(new naver.maps.LatLng(info.gpsInfo.gpsy, info.gpsInfo.gpsx));
             }
             self.map.fitBounds(bounds);  
         },
@@ -345,7 +344,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 
             for(var i=0; i<arr.length; i++){
                 var obj = arr[i];
-                self._addCustomMarker(obj.gpsInfo.gpsx, obj.gpsInfo.gpsy, obj, i);
+                self._addCustomMarker(obj.gpsInfo.gpsy, obj.gpsInfo.gpsx, obj, i);
             }
         },   
 
@@ -448,7 +447,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 var selected = item.id == id ? true : false;
                 item.info.selected = selected;        
                 
-                if(selected) centerPoint = {x: item.info.gpsInfo.gpsx, y: item.info.gpsInfo.gpsy}
+                if(selected) centerPoint = {x: item.info.gpsInfo.gpsy, y: item.info.gpsInfo.gpsx}
                 return item;
             });
 

@@ -7,11 +7,11 @@
         padding-top:32px;
     }
     .ev-detail-top {
-        position:relative;
         @include mobile {
             // padding:0 16px;
         }
         .tit-wrap {
+            position:relative;
             padding:24px 20px 32px;
             @include mobile {
                 padding:32px 16px;
@@ -139,31 +139,33 @@
             }
         }
         .finish-txt {
-            padding:20px 20px;
-            background:#f4f4f4;
-            border-radius:8px;
+            padding:17px 20px;
+            background-color:#555;
             text-align:center;
             @include mobile {
-                margin:0 -16px;
-                padding:16px 16px;
-                border-radius:0;
+                padding:20px 34px;
             }
             p {
                 display:inline-block;
-                @include font-medium;
+                @include font-large-1;
                 font-weight:700;
                 vertical-align:middle;
+                color: $color-white;
                 strong {
-                    color:#ec455a;
+                    color:#fffebe;
                 }
                 @include mobile {
                     display:block;
                 }
             }
-            .btn-link {
-                margin-left:8px;
+            .btn {
+                margin-left:24px;
+                &.border {
+                    border-color: $color-white;
+                    color: $color-white;
+                }
                 @include mobile {
-                    margin:4px 0 0 0;
+                    margin:8px 0 0 0;
                 }
             }
         }

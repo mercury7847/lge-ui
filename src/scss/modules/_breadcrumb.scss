@@ -1,6 +1,12 @@
 // 제품리스트(gray-box list, script)
 .breadcrumb {
+	display:block;
+	flex-wrap:inherit;
+	margin:0;
+	padding:0;
+	border-radius:0;
 	border-top: 1px solid $color-border;
+	background-color:inherit;
 	ul {
 		max-width: 1760px;
 		margin: 0 auto;

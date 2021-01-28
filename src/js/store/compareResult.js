@@ -25,7 +25,32 @@
             var chker = $(this).prop('checked');
             if(chker) setDifferentView();
             else setAllView();
-        })
+        });
+
+        $('div.compare-result').on('click','div.product-button a.btn',function(e){
+            e.preventDefault();
+            var $li = $(this).parents('li');
+            if($(this).hasClass("buycart")) {
+                //구매
+                requestCart($li,"P");
+            } else {
+                //렌탈
+                requestCart($li,"C");
+            }
+        });
+    }
+
+    function requestCart($dm,cartType) {
+        var ajaxUrl = $dm.attr('data-cart-url');
+        
+        var param = {
+            "id":$dm.attr('data-id'),
+            "sku":$dm.attr('data-sku'),
+            "categoryId":$dm.attr('data-categoryId'),
+            "rtSeq":$dm.attr('data-rtSeq'),
+            "typeFlag":cartType
+        }
+        lgkorUI.requestCart(ajaxUrl, param);
     }
 
     function setDifferentView(){
