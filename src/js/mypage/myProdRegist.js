@@ -15,6 +15,46 @@
         '</div>' +
     '</li>'
 
+    var ownListItemTemplate = '<li class="lists">' +
+        '<div class="inner">' +
+            '<div class="thumb{{#if disabled}} saleend{{/if}}" aria-hidden="true">' +
+                '<img src="{{imageUrl}}" alt="{{imageAlt}}">' +
+            '</div>' +
+            '<div class="info-wrap">' +
+                '<p class="name"><span class="blind">모델명</span>{{modelName}}</p>' +
+                '<p class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</p>' +
+                '<ul class="info-lists period">' +
+                    '{{#if saleDate}}<li><dl><dt>구매일자</dt><dd>{{saleDate}}</dd></dl></li>{{/if}}' +
+                    '{{#if creationDate}}<li><dl><dt>등록일자</dt><dd>{{creationDate}}</dd></dl></li>{{/if}}' +
+                    '{{#if useDate}}<li><dl><dt>사용기간</dt><dd>{{useDate}}개월</dd></dl></li>{{/if}}' +
+                    '{{#if careState}}<li><dl><dt>케어십 서비스</dt><dd><em{{#if careService}} class="can"{{/if}}>{{careState}}</em></dd></dl></li>{{/if}}' +
+                    '{{#if nextCareServiceDate}}<li><dl><dt>다음 케어서비스 일자</dt><dd>{{nextCareServiceDate}}</dd></dl></li>{{/if}}' +
+                '</ul>' +
+                '<div class="btns">' +
+                    '{{#if manualBtn}}<button type="button" class="btn size dark-gray manual-btn"><span>사용설명서</span></button>{{/if}}' +
+                    '{{#if downloadBtn}}<button type="button" class="btn size dark-gray download-btn"><span>다운로드/SW</span></button>{{/if}}' +
+                '</div>' +
+                '<div class="btns link-type">' + 
+                    '{{#each item in linkBtn}}' +
+                        '<a href="{{item.url}}" class="btn-link">{{item.title}}</a>' +
+                    '{{/each}}' +
+                '</div>' +
+                '{{#if disabled}}<p class="product-on"><span class="blind">보유중인 제품이</span>{{#if disabledReason}}{{disabledReason}}{{#else}}단종되었습니다.{{/if}}</p>{{/if}}' +
+            '</div>' +
+            '{{#if inquryBtn}}' +
+                '<div class="btn-group">' +
+                    '{{#if inquryBtn.tooltip}}' +
+                        '<div class="notice">' +
+                            '<p>{{inquryBtn.tooltip}}</p>' +
+                            '<button type="button" class="btn-off" aria-hidden="true"><span class="blind">닫기</span></button>' +
+                        '</div>' +
+                    '{{/if}}' +
+                    '<a href="{{inquryBtn.url}}" class="btn border size-m newProdCheck-btn"><span>{{inquryBtn.title}}</span></a>' +
+                '</div>' +
+            '{{/if}}' +
+        '</div>' +
+    '</li>'
+
     var manualListItemTemplate = '<li class="lists"><div class="ui_flexible_box"><div class="inner ui_flexible_cont">' +
         '<p class="guide-tit">제품 사용설명서</p>' +
         '<p class="guide-desc">{{title}}</p>' +
@@ -78,6 +118,7 @@
                     self.bindPopupEvents();
 
                     self.requestMoreData(1);
+                    self.requestOwnData();
                 });
             },
 
@@ -137,8 +178,6 @@
                 //모델병 확인방법 팝업
                 self.$modelCheckHelpPopup = $('#modelCheckHelpPopup');
                 self.modelCheckHelpPopupClone = self.$modelCheckHelpPopup.html();
-
-                self.checkNoData();
             },
 
             bindEvents: function() {
@@ -147,14 +186,20 @@
                 //등록가능제품 등록하기
                 self.$registProductList.on('click','>ul li div.btn-group a', function(e) {
                     e.preventDefault();
-                    self.registMyProductPopupClear();
-
-                    var sku = $(this).parents('li').attr('data-sku');
-                    self.$modelInput.val(sku);
-                    checkModelSuccess = true;
-                    self.$modelCheckOk.show();
-
-                    self.$registMyProductPopup.vcModal();
+                    var _id = $(this).parents('li').attr('data-model-id');
+                    var param = {"id":_id};
+                    var ajaxUrl = self.$contents.attr('data-add-url');
+                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
+                        var item = result.data;
+                        if(item) {
+                            var $list = self.$myProductList.find('>ul');
+                            item.saleDate = vcui.date.format(item.saleDate,'yyyy.MM');
+                            item.creationDate = vcui.date.format(item.creationDate,'yyyy.MM.dd');
+                            item.nextCareServiceDate = item.nextCareServiceDate ? vcui.date.format(item.nextCareServiceDate,'yyyy.MM.dd') : null;
+                            $list.append(vcui.template(ownListItemTemplate, item));
+                            self.checkNoData();
+                        }
+                    });
                 });
 
                 //등록가능제품 더보기
@@ -281,7 +326,8 @@
                                 var param = self.registMyProductValidation.getAllValues();
                                 var ajaxUrl = self.$registMyProductPopup.attr('data-insert-url');
                                 lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
-                                    location.reload();
+                                    self.$registMyProductPopup.vcModal('close');
+                                    self.requestOwnData();
                                 });
                             }
                         } else {
@@ -365,6 +411,24 @@
                 });
             },
 
+            requestOwnData: function() {
+                var self = this;
+                var ajaxUrl = self.$contents.attr('data-own-list-url');
+                lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
+                    var data = result.data;
+                    var arr = data.listData instanceof Array ? data.listData : [];
+                    var $list = self.$myProductList.find('>ul');
+                    $list.empty();
+                    arr.forEach(function(item, index) {
+                        item.saleDate = vcui.date.format(item.saleDate,'yyyy.MM');
+                        item.creationDate = vcui.date.format(item.creationDate,'yyyy.MM.dd');
+                        item.nextCareServiceDate = item.nextCareServiceDate ? vcui.date.format(item.nextCareServiceDate,'yyyy.MM.dd') : null;
+                        $list.append(vcui.template(ownListItemTemplate, item));
+                    });
+                    self.checkNoData();
+                });
+            },
+
             requestMoreData: function(page) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-list-url');
@@ -378,6 +442,7 @@
                         item.date = vcui.date.format(item.date,'yyyy.MM');
                         $list.append(vcui.template(productListItemTemplate, item));
                     });
+                    self.checkNoData();
                 });
             },
 
