@@ -251,7 +251,7 @@
                     console.log(e);
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                     }else{
-                        $(".rst-event").append("click / ");
+                        //$(".rst-event").append("click / ");
                     }
                 },
                 focusin : function(){
@@ -336,18 +336,6 @@
                         }
                     });
                     */
-                }
-            });
-
-            $(window).on({
-                touchend : function(){
-                    $(".rst-event").append("window touchend / ");
-                },
-                mouseup : function(){
-                    $(".rst-event").append("window mouseup / ");
-                },
-                mousedown : function(){
-                    $(".rst-event").append("window mousedown / ");
                 }
             });
 
