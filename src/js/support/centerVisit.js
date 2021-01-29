@@ -276,6 +276,7 @@
             // 모델 선택 후 이벤트
             self.$cont.on('complete', function(e, data, url) {    
                 self.model = data;
+                
                 self.requestCenterData({
                     category: self.model.category,
                     subCategory: self.model.subCategory,
@@ -399,8 +400,8 @@
             });
 
             self.$stepCenter.on('change', '[name=center]', function() {
-                var param = $(this).data();
-                self.requestDate(param);
+                self.param = $(this).data();
+                self.requestDate();
             });
 
 
@@ -527,6 +528,7 @@
             var self = this;
 
             self.model = {};
+            self.param = {};
 
             self.$dateWrap.calendar('reset');
             self.$timeWrap.timeCalendar('reset');
@@ -873,13 +875,14 @@
                 });
             }, null, "html", true);
         },
-        requestDate: function(param) {
+        requestDate: function() {
             var self = this;
             var param = {
                 category: self.model.category,
                 subCategory: self.model.subCategory,
+                productCode: $('#productCode').val(),
                 serviceType: $('#serviceType').val(),
-                deptCode: param.deptCode
+                deptCode: self.param.deptCode
             };
 
             lgkorUI.requestAjaxDataPost(self.dateUrl, param, function(result) {
@@ -917,9 +920,11 @@
             var param = {
                 category: self.model.category,
                 subCategory: self.model.subCategory,
+                productCode: $('#productCode').val(),
                 serviceType: $('#serviceType').val(),
                 date: $('#date').val(),
-                lockUserId: $('#lockUserId').val()
+                lockUserId: $('#lockUserId').val(),
+                deptCode: self.param.deptCode
             };
 
             lgkorUI.requestAjaxDataPost(self.timeUrl, param, function(result) {
@@ -950,10 +955,12 @@
                 serviceType: $('#serviceType').val(),
                 category: $('#category').val(),
                 subCategory: $('#subCategory').val(),
+                productCode: $('#productCode').val(),
                 lockUserId: $('#lockUserId').val(),
                 productCode: $('#productCode').val(),
                 date: $('#date').val(),
-                time: $('#time').val()
+                time: $('#time').val(),
+                deptCode: self.param.deptCode
             }
 
             lgkorUI.requestAjaxDataPost(self.engineerUrl, param, function(result) {
