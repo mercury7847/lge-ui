@@ -663,7 +663,9 @@ var FilterLayer = (function() {
 
         $('.KRP0007').buildCommonUI();
 
-        var storageName =   '__lgeProductFilter';
+        var categoryId = lgkorUI.getHiddenInputData().categoryId;
+        var storageName = categoryId+'_lgeProductFilter';
+        
         var savedFilterArr = firstFilterList || []; // CMS에서 넣어준 firstFilterList를 이용
 
         var KRP0007 = {
