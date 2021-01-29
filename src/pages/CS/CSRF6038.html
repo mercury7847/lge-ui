@@ -169,12 +169,17 @@
                                                 </div>
                                                 @@include('./common/support/search-keyword.html', {
                                                     'url': '/lg5-common/data-ajax/support/searchShop/searchAutoComplete.json',
-                                                    'id': 'address1',
+                                                    'layer': {
+                                                        'keyword': '',
+                                                        'auto': true
+                                                    },
+                                                    'inputId': 'address1',
                                                     'inputTitle': '센터 명을 입력해주세요.',
-                                                    'layer': true,
-                                                    'onlyAutocomplete': true,
-                                                    'defaultInput': true,
-                                                    'disabled': true
+                                                    'inputError': '',
+                                                    'inputType': true,
+                                                    'inputDisabled': true,
+                                                    'desc': '',
+                                                    'checkbox': ''
                                                 })
                                                 <!-- <div class="">
                                                     <div class="input-wrap search block">
