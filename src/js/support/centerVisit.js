@@ -108,7 +108,7 @@
             self.$timeWrap = self.$stepDate.find('.time-wrap');
 
             // 엔지니어
-            self.$stepEngineer = self.$cont.find('#stepEngineer');
+            self.$stepEngineer = self.$cont.find('.engineer-to-visit');
             self.$engineerPopup = $('#choiceEngineerPopup');
             self.$engineerSlider = self.$engineerPopup.find('.engineer-slider');
 
@@ -905,7 +905,6 @@
                         if (data.tAlert == 'Y') {
                             self.$stepInput.find('.step-btn-wrap').show();
                             self.$stepDate.removeClass('active');
-                            self.$stepEngineer.removeClass('active');
                         }
 
                         lgkorUI.alert("", {
@@ -938,7 +937,6 @@
                         if (data.resultMessage) {
                             if (data.tAlert == 'Y') {
                                 self.$stepDate.removeClass('active');
-                                self.$stepEngineer.removeClass('active');
                                 self.$completeBtns.hide();
                             }
                             
@@ -988,9 +986,7 @@
         updateEngineer: function(data) {
             var self = this,
                 $engineerBox = self.$stepEngineer.find('.engineer-info'),
-                $resultBox = self.$stepEngineer.find('.engineer-desc'),
-                topicNm = self.$stepInput.find('[name=topic]:checked').data('topicName'),
-                subTopicNm = self.$stepInput.find('[name=subTopic]:checked').data('subTopicName')
+                $resultBox = self.$stepEngineer.find('.engineer-desc');
 
             self.$stepEngineer.find('.engineer-img img').attr({
                 'src': data.image,
@@ -1000,7 +996,6 @@
             $engineerBox.find('.center').html(data.centerName);
 
             $resultBox.find('.date').html(vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm"));
-            $resultBox.find('.topic').html(topicNm + '&gt;' + subTopicNm);
             $resultBox.find('.name').html(data.engineerName);
 
             $('#engineerNm').val(data.engineerName);
