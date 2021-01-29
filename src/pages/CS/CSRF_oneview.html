@@ -8,7 +8,7 @@
 })
 <body>
     <div class="wrap">
-        @@include('./common/header.html')
+        <!-- (@@)include('./common/header.html') -->
         <div class="container">
             @@include('./common/modules/page-header.html', {
                 'pageTitle': '출장 서비스 예약',
@@ -23,24 +23,9 @@
                 ]
             })
             <div class="contents support service-engineer">
-                <!-- 서비스 안내 -->
-                @@include('./common/support/service-guide.html', {
-                    "txt": [
-                        "3건 이상의 제품에 대해 서비스 접수하실 경우,  1544-7777 로 문의하시면 1명의 서비스 기사로 접수를 할 수 있습니다. ",
-                        "무상 보증 기간 경과 된 제품 또는 사용자 과실 등으로 인한 제품 고장의 서비스 신청 건은 유상으로 서비스 비용이 청구됩니다."
-                    ]
-                })
                 
                 <!-- 선택 제품 플로팅바 -->
                 @@include('./common/support/selected-model-bar.html')
-
-                <!-- 회원 - 제품 없을 시 -->
-                @@include('./common/support/select-my-model.html', {
-                    "noItem": true
-                })
-
-                <!-- 회원 - 보유제품 펼침 -->
-                @@include('./common/support/select-my-model.html')
                 
                 <div class="cont-wrap">
                     <form action="/html/CS/CSRF6029.html" method="POST" data-ajax="/lg5-common/data-ajax/support/serviceEngineer.json" id="submitForm" autocomplete="off" novalidate>
@@ -58,6 +43,22 @@
                             <input type="hidden" name="serviceType" id="serviceType" value="A">
                             <input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
                             <input type="hidden" name="pageCode" id="pageCode" value="pageCode">
+
+                            <!-- 약관 동의 -->
+                            <div class="step-box active" id="stepTerms">
+                                <div class="section">
+                                    <div class="form-infos">
+                                        <p class="req" aria-disabled="true">필수 입력 항목</p>
+                                    </div>
+                                    @@include('./common/support/accept-terms.html', {
+                                        member: true
+                                    })
+                                </div>
+                                <div class="step-btn-wrap">
+                                    <button type="button" class="btn border size-m btn-next"><span>다음</span></button>
+                                </div> 
+                            </div>
+                            <!-- // 약관 동의 -->
 
                             <!-- 제품 선택 -->
                             <div class="step-box" id="stepModel">
@@ -681,7 +682,7 @@
             </div>
         </div>
              
-        @@include('./common/footer.html')
+        <!-- (@@)include('./common/footer.html') -->
     </div>
 
     <!-- 유금 및 보증기간 팝업 -->

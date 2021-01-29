@@ -1071,7 +1071,7 @@ CS.MD.commonModel = function() {
             var self = this;
             var summary = summary || self.options.defaultSummary;
 
-            if (myModel.length && summary.product) {
+            if (summary.product) {
                 summary.product.forEach(function(item, index) {
                     var temp = {};
 
