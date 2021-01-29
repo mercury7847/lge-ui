@@ -23,9 +23,9 @@
                                 { "on": "on", "page": "쿠폰" }
                             ]
                         })
+                        <!-- 2021.1.29 data-coupon-list-url 추가 -->
                         <div class="lnb-contents"
-                            data-coupon-on-list-url="/lg5-common/data-ajax/mypage/shopping/couponOnList.json"
-                            data-coupon-end-list-url="/lg5-common/data-ajax/mypage/shopping/couponEndList.json"
+                            data-coupon-list-url="/lg5-common/data-ajax/mypage/shopping/couponList.json"
                         >
                             <div class="tabs-wrap new-type ui_tab">
                                 <ul class="tabs">
@@ -34,98 +34,19 @@
                                 </ul>
                             </div>
                             <div id="tab-coupon-on" class="tab-contents">
+                                <!-- 2021.1.29 hidden-input-group 삭제
                                 <div class="hidden-input-group">
                                     <input type="hidden" name="totalCount" value="1">
                                     <input type="hidden" name="page" value="1">
                                 </div>
+                                 //2021.1.29 hidden-input-group 삭제-->
                                 <!-- 최초 데이타는 가져와서 js에서 그려질 예정이므로 리스트내용(ul)은 비워주세요 -->
                                 <div class="coupon-list-wrap">
                                     <div class="coupon-lists">
+                                        <!-- 2021.1.29 리스트 삭제 -->
                                         <ul>
-                                            @@loop('./common/modules/coupon-list.html', [
-                                                {
-                                                    "type1" : true,
-                                                    "name" : "첫 구매 쿠폰",
-                                                    "desc" : "구매 이력이 없는 고객님의 첫 구매 시 사용 가능한 쿠폰",
-                                                    "period" : "첫 구매 완료 시 까지",
-                                                    "more" : "최대 100,000원 할인 / 최대 100,000원 할인 / 최대 100,000원 할인 / 최대 100,000원 할인"
-                                                },
-                                                {
-                                                    "type2" : true,
-                                                    "name" : "카테고리 쿠폰",
-                                                    "desc" : "TV 카테고리 전용 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시 / 최대 100,000원 할인"
-                                                },
-                                                {
-                                                    "type2" : true,
-                                                    "name" : "이벤트 쿠폰",
-                                                    "desc" : "해피할로원 할인 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시"
-                                                },
-                                                {
-                                                    "type2" : true,
-                                                    "name" : "카테고리 쿠폰",
-                                                    "desc" : "TV 카테고리 전용 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시 / 최대 100,000원 할인"
-                                                },
-                                                {
-                                                    "type2" : true,
-                                                    "name" : "이벤트 쿠폰",
-                                                    "desc" : "해피할로원 할인 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시"
-                                                },{
-                                                    "type2" : true,
-                                                    "name" : "카테고리 쿠폰",
-                                                    "desc" : "TV 카테고리 전용 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시 / 최대 100,000원 할인"
-                                                },
-                                                {
-                                                    "type2" : true,
-                                                    "name" : "이벤트 쿠폰",
-                                                    "desc" : "해피할로원 할인 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시"
-                                                },{
-                                                    "type2" : true,
-                                                    "name" : "카테고리 쿠폰",
-                                                    "desc" : "TV 카테고리 전용 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시 / 최대 100,000원 할인"
-                                                },
-                                                {
-                                                    "type2" : true,
-                                                    "name" : "이벤트 쿠폰",
-                                                    "desc" : "해피할로원 할인 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시"
-                                                },{
-                                                    "type2" : true,
-                                                    "name" : "카테고리 쿠폰",
-                                                    "desc" : "TV 카테고리 전용 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시 / 최대 100,000원 할인"
-                                                },
-                                                {
-                                                    "type2" : true,
-                                                    "name" : "이벤트 쿠폰",
-                                                    "desc" : "해피할로원 할인 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시"
-                                                },
-                                                {
-                                                    "type2" : true,
-                                                    "name" : "이벤트 쿠폰",
-                                                    "desc" : "해피할로원 할인 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시"
-                                                },
-                                            ]);
                                         </ul>
+                                        <!-- //2021.1.29 리스트 삭제 -->
                                     </div>
                                 </div>
                                 <button type="button" class="btn-moreview block"><span>더보기</span></button>
@@ -143,58 +64,10 @@
                                 <p class="coupon-end-txt">최근 내역 1년 까지만 조회 가능 합니다.</p>
                                 <div class="coupon-list-wrap">
                                     <div class="coupon-lists">
+                                        <!-- 2021.1.29 리스트 삭제 -->
                                         <ul>
-                                            @@loop('./common/modules/coupon-list.html', [
-                                                {
-                                                    "type3" : true,
-                                                    "name" : "첫 구매 쿠폰",
-                                                    "desc" : "구매 이력이 없는 고객님의 첫 구매 시 사용 가능한 쿠폰",
-                                                    "period" : "첫 구매 완료 시 까지",
-                                                    "more" : "최대 100,000원 할인 / 최대 100,000원 할인 / 최대 100,000원 할인 / 최대 100,000원 할인",
-                                                    "end" : "사용완료"
-                                                },
-                                                {
-                                                    "type3" : true,
-                                                    "name" : "카테고리 쿠폰",
-                                                    "desc" : "TV 카테고리 전용 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시 / 최대 100,000원 할인",
-                                                    "end" : "기간만료"
-                                                },
-                                                {
-                                                    "type3" : true,
-                                                    "name" : "이벤트 쿠폰",
-                                                    "desc" : "해피할로원 할인 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시",
-                                                    "end" : "사용완료"
-                                                },
-                                                {
-                                                    "type3" : true,
-                                                    "name" : "카테고리 쿠폰",
-                                                    "desc" : "TV 카테고리 전용 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시 / 최대 100,000원 할인",
-                                                    "end" : "사용완료"
-                                                },
-                                                {
-                                                    "type3" : true,
-                                                    "name" : "이벤트 쿠폰",
-                                                    "desc" : "해피할로원 할인 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시",
-                                                    "end" : "사용완료"
-                                                },
-                                                {
-                                                    "type3" : true,
-                                                    "name" : "이벤트 쿠폰",
-                                                    "desc" : "해피할로원 할인 쿠폰",
-                                                    "period" : "2020.11.01~2020.12.31",
-                                                    "more" : "50만원 이상 구매시",
-                                                    "end" : "기간만료"
-                                                }
-                                            ]);
                                         </ul>
+                                        <!-- //2021.1.29 리스트 삭제 -->
                                     </div>
                                 </div>
                                 <button type="button" class="btn-moreview block" style="display:none;"><span>더보기</span></button>
@@ -212,28 +85,6 @@
         </div>
         
         <article id="couponPopup" class="popup-wrap small">
-            <!-- <header class="pop-header">
-                <h1 class="tit" id="modal_6_title"><span>카테고리 쿠폰</span></h1>
-            </header>
-            <section class="pop-conts common-pop mypage" id="modal_6_content">
-                <div class="coupon-info-moreview">
-                    <p class="title">[TV 카테고리 전용 쿠폰]</p>
-                    <p class="desc"><em>10%</em>할인</p>
-                    <p class="info">유효기간 : 2020.11.01~2020.12.31</p>
-                    <p class="info">50만원 이상 구매시 / 최대 100,000원 할인</p>
-                </div>
-                <ul class="bullet-list">
-                    <li class="b-txt">온라인 전용 사용가능 / 쿠폰 중복 할인 불가능 / 오프라인 매장 사용 불가능</li>
-                    <li class="b-txt">장바구니 주문 결제 시 쿠폰 확인 여부를 확인 할 수 있습니다.</li>
-                    <li class="b-txt">제품에 따라 일부 제품에서 쿠폰 사용이 불가능 할 수 있습니다.</li>
-                </ul>
-            </section>
-            <footer class="pop-footer center" ui-modules="Footer">
-                <div class="btn-group">
-                    <button type="button" class="btn pink"><span>쿠폰 사용 하러 가기</span></button>
-                </div>
-            </footer>
-            <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button> -->
         </article>
 
         @@include('./common/footer.html')
