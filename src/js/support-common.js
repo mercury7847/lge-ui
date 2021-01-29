@@ -617,16 +617,13 @@ CS.MD.commonModel = function() {
                     if (value.length > 1) {
                         self.$categoryBox.removeClass(opt.stepActiveClass);
                         self.$modelBox.addClass(opt.stepActiveClass);
-                        self.$keywordBox.find('.desc').show();
-                        self.$keywordBox.find('.search-error').hide();
+                        self.$keywordBox.find('.search-desc').show();
                         self.param = $.extend(self.param, {
                             keyword: value,
                             page: 1
                         });
 
                         self._requestData();
-                    } else {
-                        self.$keywordBox.find('.search-error').show();
                     }
                 } else {
                     if (value.length > 1 || !value) {
@@ -697,18 +694,6 @@ CS.MD.commonModel = function() {
             self.$categoryBox.find('.btn-close').on('click', function() {
                 $(this).closest('.box').removeClass('on').addClass('off');
             });
-
-            // self.$modelBox.find('#categorySelect').on('reset', function() {
-            //     self.param = $.extend(self.param, {
-            //         category: '',
-            //         categoryNm: '전체',
-            //         subCategory: '',
-            //         subCategoryNm: '전체',
-            //         page: 1
-            //     });
-
-            //     self._requestData();
-            // });
 
             // 서브 카테고리 선택
             self.$categoryBox.find('.sub-category-list button').on('click', function() {
@@ -1133,7 +1118,7 @@ CS.MD.commonModel = function() {
             self.$modelSlider.find('.slide-track').empty();
             self.$modelFilter.find('#categorySelect').vcSelectTarget('reset', 'default');
             self.$keywordBox.show();
-            self.$keywordBox.find('.desc').hide();
+            self.$keywordBox.find('.search-desc').hide();
             self.$selectedModelBar.vcSticky('destroy');
 
             self.updateSummary();
