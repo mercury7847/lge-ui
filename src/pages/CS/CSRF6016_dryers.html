@@ -135,12 +135,6 @@
         @@include('./common/footer.html')
     </div>
 
-    <!-- 유금 및 보증기간 팝업 -->
-    @@include('./CS/modal/rates-warranty-guide-popup.html')
-
-    <!-- 제품 해결 팝업 -->
-    @@include('./CS/modal/solutions-popup.html')
-
     <!-- 휴대폰인증 팝업 -->
     @@include('./CS/modal/phone-certification-popup.html')
 
@@ -154,13 +148,6 @@
             <a href="#" class="btn"><span>확인</span></a>
         </div>
     </article>
-
-    <!-- toast-meassage -->
-    @@include('./common/modules/toast-message.html', {
-        "messageArr": [
-            {"message" : "예약가능한 제품이 아닙니다."}
-        ]
-    })
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
