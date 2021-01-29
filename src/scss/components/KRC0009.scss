@@ -58,6 +58,7 @@
                 }
             }
             .items {
+                margin:0 auto;
                 @include clearfix;
                 .item {
                     float:left;
