@@ -1,6 +1,7 @@
 (function() {
     var ORDER_INQUIRY_LIST_URL;
     var PRODUCT_STATUS_URL;
+    var ORDER_DETAIL_URL;
 
     var inquiryListTemplate =
         '<div class="box" data-id="{{dataID}}">'+
@@ -38,7 +39,7 @@
                         '</div>'+
                         '<div class="infos">'+
                             '{{#if listData.productFlag}}<div class="flag-wrap"><span class="flag">{{listData.productFlag}}</span></div>{{/if}}'+
-                            '<p class="name"><a href="{{listData.productDetailUrl}}"><span class="blind">제품명</span>{{listData.productNameKR}}</a></p>'+
+                            '<p class="name"><a href="{{listData.productPDPurl}}"><span class="blind">제품명</span>{{listData.productNameKR}}</a></p>'+
                             '<p class="e-name"><span class="blind">영문제품번호</span>{{listData.productNameEN}}</p>'+
                             '{{#if listData.specList && listData.specList.length > 0}}'+
                             '<div class="more">'+
@@ -90,6 +91,7 @@
     function setting(){
         ORDER_INQUIRY_LIST_URL = $('.contents.mypage').data('orderInquiryList');
         PRODUCT_STATUS_URL = $('.contents.mypage').data('productStatus');
+        ORDER_DETAIL_URL = $('.contents.mypage').data('orderDetail');
         
         $('.inquiryPeriodFilter').vcDatePeriodFilter();
     }
@@ -164,17 +166,18 @@
             e.preventDefault();
 
             var dataID = $(this).closest('.box').data("id");
-            setProductStatus(dataID);
+            var pdpUrl = $(this).attr("href");
+            setProductStatus(dataID, pdpUrl);
         }).on('click', '.infos .name a', function(e){
             e.preventDefault();
 
             var wrapper = $(this).closest(".contents");
-            var href = $(this).attr("href");
-            if(wrapper.hasClass("orderAndDelivery-detail")){
-                var dataID = $(this).closest('.box').data("id");
-                setProductStatus(dataID);
+            var dataID = $(this).closest('.box').data("id");
+            var pdpUrl = $(this).attr("href");
+            if(wrapper.hasClass("orderAndDelivery-detail")){                
+                setProductStatus(dataID, pdpUrl);
             } else{
-                location.href = href;
+                location.href = ORDER_DETAIL_URL + "?orderNumber=" + ORDER_LIST[dataID].orderNumber;
             }
         });
     }
@@ -246,7 +249,7 @@
         requestOrderInquiry(dateData.startDate, dateData.endDate, CURRENT_PAGE+1);
     }
 
-    function setProductStatus(dataId){
+    function setProductStatus(dataId, pdpUrl){
         lgkorUI.showLoading();
         var sendata = {
             orderNumber: ORDER_LIST[dataId].orderNumber
@@ -257,7 +260,7 @@
                     title: result.data.alert.title
                 });
             } else{
-                location.href = result.data.sendUrl;
+                location.href = pdpUrl;
             }
 
             lgkorUI.hideLoading();
