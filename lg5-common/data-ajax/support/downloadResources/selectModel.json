@@ -116,7 +116,7 @@
             "title" : "원하시는 결과를 찾지 못하셨다면 다른 서비스를 이용해보세요.",
             "serviceList" : [
                 {
-                    "name" : "채팅 상담11",
+                    "name" : "채팅 상담",
                     "url" : "/",
                     "currentClass" : "service_type-chat"
                 },
