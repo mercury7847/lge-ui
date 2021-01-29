@@ -116,13 +116,13 @@
         .slide-controls {
             .prev {
                 position:absolute;
-                top:50%;
+                top:calc(50% - 30px);
                 left:-24px;
                 transform:translateY(-50%);
             }
             .next {
                 position:absolute;
-                top:50%;
+                top:calc(50% - 30px);
                 right:-24px;
                 transform:translateY(-50%);
             }
@@ -263,13 +263,13 @@
         .slide-controls {
             .prev {
                 position:absolute;
-                top:50%;
+                top:calc(50% - 30px);
                 left:-24px;
                 transform:translateY(-50%);
             }
             .next {
                 position:absolute;
-                top:50%;
+                top:calc(50% - 30px);
                 right:-24px;
                 transform:translateY(-50%);
             }

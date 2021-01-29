@@ -90,24 +90,29 @@
 */
 .tit-area {
     position: relative;
-    margin-bottom: 24px;
+    margin-bottom: 48px;
     @include mobile {
-        margin-bottom: 20px;
+        margin-bottom: 32px;
     }
     .content-block {
         .text-block {
             .flag-wrap {
-                margin-bottom: 2px;
+                margin-bottom: 4px;
             }
             .sub-tit {
-                margin-bottom: 8px;
-                @include font-large-3;
-                color: $color-default;
-                font-weight: $font-weight-bold;
+                font-weight: 700;
+                @include font($font-large-4,52px);
             }
             .date {
-                @include font-medium;
-                color: $color-default;
+                color: $color-gray-5;
+            }
+            @include mobile {
+                .flag-wrap {
+                    margin-bottom: 12px;
+                }
+                .sub-tit {
+                    @include font($font-large-2,33px);
+                }
             }
         }
     }
@@ -115,22 +120,26 @@
 
 .form-wrap.search-box {
     width: 100%;
-    margin: 0 auto 64px;
-    padding: 24px;
-    background-color: #f4f4f4;
+    padding-right: 229px;
     @include mobile {
-        margin-bottom: 40px;
-        padding: 16px 14px 20px;
+        padding-right: 0;
     }
     .forms {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        flex-direction: column;
         @include mobile {
             display: block;
         }
         .tit {
             width: auto;
+            padding: 0 0 24px;
+            label,
+            .label {
+                @include font($font-large-2,30px);
+                @include mobile {
+                    @include font($font-large-1,28px);
+                }
+            }
         }
         .conts {
             width: auto;
@@ -149,19 +158,16 @@
     }
 }
 
-.tb-tit {
-    margin-bottom: 8px;
-    @include font-small;
-    color: $color-default;
-    font-weight: $font-weight-bold; 
-    @include mobile {
-        margin-bottom: 12px;
-        font-size: 13px;
-        line-height: 21px;
-    }
-}
 .inner-contents {
+    margin-top: 80px;
+    @include mobile {
+        margin-top: 60px;
+    }
     .table-cont {
+        .tb-tit {
+            margin-bottom: 16px;
+            @include font-medium;
+        }
         .tb_row {
             &.tb-left {
                 text-align: left;
@@ -223,7 +229,7 @@
     }
     
     .table-cont + .table-cont {
-        margin-top: 32px;
+        margin-top: 48px;
     }
 }
 

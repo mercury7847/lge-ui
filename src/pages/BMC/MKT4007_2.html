@@ -13,11 +13,13 @@
             <div class="tit-area">
                 <div class="content-block">
                     <div class="text-block">
-                        <div class="flag-wrap">
+                        <!-- 210126 수정 - 날짜 표시 위치 이동 -->
+                        <div class="flag-wrap bar-type">
                             <span class="flag">당첨자 발표</span>
+                            <span class="flag date">2020.09.04 ~2020.09.30</span>
                         </div>
                         <h2 class="sub-tit">LG전자 로그온 페스티벌</h2>
-                        <p class="date">2020.09.04 ~2020.09.30</p>
+                        <!-- // 210126 수정 -->
                     </div>
                 </div>
             </div>
@@ -36,7 +38,9 @@
                     </dd>
                 </dl>
             </div>
+            <!-- 210126 수정 - .top-border 클래스 추가 -->
             @@include('./common/modules/bullet-list.html', {
+                "topBorder" : true,
                 "bulletTit" : "당첨 및 경품 발송 관련 사항", 
                 "bulletTxt" : [
                     "해당 당첨자 발표 페이지에서는 LG전자 대표 사이트를 통해 이벤트에 응모하신 고객님에 한하여 당첨자 확인이 가능합니다.",

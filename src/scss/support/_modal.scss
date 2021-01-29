@@ -215,16 +215,6 @@
             .agree-wrap {
                 margin-top:64px;
             }
-            .form-wrap {
-                .forms.type2 {
-                    .tit {
-                        label, .label {
-                            padding-left:17px;
-                            text-indent:-17px;
-                        }
-                    }
-                }
-            }
             @include mobile {
                 .agree-wrap {
                     margin-top:32px;

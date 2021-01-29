@@ -108,6 +108,11 @@
     //}
 }
 
+@mixin font($font-size, $line-height) {
+    font-size: $font-size;
+    line-height: $line-height;
+}
+
 /*
  * clearfix
  * @include clearfix;

@@ -51,11 +51,34 @@
 
     // VIEW
     @import "MKT4002";
+
+    &.exhibition {
+        .ev-detail-wrap .ev-detail-top {
+            position: relative;
+            .component-wrap {
+                top:24px;
+                right:24px;
+                @include mobile {
+                    top:30px;
+                    right:16px;
+                }
+            }
+        }
+    }
 }
 
 
 .pop-conts.academy-pop {
     text-align:left;
+
+    .tb-tit {
+        margin-bottom: 16px;
+        @include font-medium;
+        font-weight: $font-weight-bold;
+        @include mobile {
+            margin-bottom: 12px;
+        }
+    }
 
     // PC 아카데미 이벤트 참여하기
     @import "MKT4009";
@@ -73,9 +96,44 @@
     @import "MKT4007";    
 }
 .win-popup-wrap {
-    // 당첨자 발표
-    @import "MKT4007"; 
+    .tb-tit {
+        margin-bottom: 24px;
+        font-weight: 700;
+        @include font-large-2;
+        @include mobile {
+            margin-bottom: 12px;
+        }
+    }
+    .input-info-wrap {
+        .tb-tit {
+            margin-bottom: 16px;
+            @include font-medium;
+            @include mobile {
+                margin-bottom: 12px;
+            }
+            &.req {
+                &::after {
+                    content:'*';
+                    display:inline-block;
+                    margin-left:1px;
+                    color:#EC455A;
+                    font-size:inherit;
+                    line-height:inherit;
+                    vertical-align:top;
+                }
+            }
+        }
+    }
 
+    // 당첨자 발표
+    @import "MKT4007";
+
+    //.pop-conts.academy-pop {
+    //    padding-top: 126px;
+    //    @include mobile {
+    //        padding-top: 100px;
+    //    }
+    //}
     // 미리미리페스티벌 참여하기
     @import "MKT4012";
 
