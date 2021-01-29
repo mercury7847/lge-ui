@@ -22,11 +22,11 @@
             })
             <div class="contents support request-call">
 
-                <div class="request-link-box">
-                    <ul class="bullet-list">
-                        <li class="b-txt">의류건조기 <em class="color-3">전문상담 예약 후 출장서비스 건의 예약 및 상태, 결과를 조회</em> 하실 수 있습니다. <a href="" class="btn-link">바로가기</a></li>
-                    </ul>
-                </div>
+                @@include('./common/support/service-guide.html', {
+                    "txt": [
+                        '의류건조기 <strong class="point">전문상담 예약 후 출장서비스 건의 예약 및 상태, 결과를 조회</strong> 하실 수 있습니다. <a href="#" class="btn-link">바로가기</a>'
+                    ]
+                })
 
 
                 <!-- 비회원 -->
@@ -135,12 +135,6 @@
         @@include('./common/footer.html')
     </div>
 
-    <!-- 유금 및 보증기간 팝업 -->
-    @@include('./CS/modal/rates-warranty-guide-popup.html')
-
-    <!-- 제품 해결 팝업 -->
-    @@include('./CS/modal/solutions-popup.html')
-
     <!-- 휴대폰인증 팝업 -->
     @@include('./CS/modal/phone-certification-popup.html')
 
@@ -154,13 +148,6 @@
             <a href="#" class="btn"><span>확인</span></a>
         </div>
     </article>
-
-    <!-- toast-meassage -->
-    @@include('./common/modules/toast-message.html', {
-        "messageArr": [
-            {"message" : "예약가능한 제품이 아닙니다."}
-        ]
-    })
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>

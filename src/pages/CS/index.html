@@ -37,6 +37,8 @@
 	tr td > .edit.end:after {content:'전달 완료';}
 	tr td > .edit.after {color:green;}
 	tr td > .edit.after:after {content:'수정 중';}
+	tr td > .no {display:block;color:pink}
+	tr td > .no:after {content: '보류'}
 </style>
 </head>
 <body>
@@ -103,7 +105,7 @@
 					<td>제품 문제 해결</td>
 					<td>목록</td>
 					<td class="links">/html/CS/CSRF6002.html</td>
-					<td><span class=""></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -113,7 +115,7 @@
 					<td></td>
 					<td>상세</td>
 					<td class="links">/html/CS/CSRF6003.html</td>
-					<td><span class=""></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -153,7 +155,7 @@
 					<td>다운로드 자료실</td>
 					<td></td>
 					<td class="links">/html/CS/CSRF6008.html</td>
-					<td><span class=""></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -285,7 +287,7 @@
 					<td></td>
 					<td>신청 (의류건조기)</td>
 					<td class="links">/html/CS/CSRF6016_dryers.html</td>
-					<td><span class="edit endbefore"></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -295,7 +297,7 @@
 					<td></td>
 					<td>완료</td>
 					<td class="links">/html/CS/CSRF6017.html</td>
-					<td><span class="edit endbefore"></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -305,7 +307,7 @@
 					<td>원격상담 예약</td>
 					<td>신청 (비회원)</td>
 					<td class="links">/html/CS/CSRF6018_non-member.html</td>
-					<td><span class="edit endbefore"></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -315,7 +317,7 @@
 					<td></td>
 					<td>신청 (회원)</td>
 					<td class="links">/html/CS/CSRF6018_member.html</td>
-					<td><span class="edit endbefore"></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -325,7 +327,7 @@
 					<td></td>
 					<td>완료</td>
 					<td class="links">/html/CS/CSRF6019.html</td>
-					<td><span class="edit endbefore"></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -335,7 +337,7 @@
 					<td>영상상담 예약</td>
 					<td>신청 (비회원)</td>
 					<td class="links">/html/CS/CSRF6021_non-member.html</td>
-					<td><span class=""></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -345,7 +347,7 @@
 					<td></td>
 					<td>신청 (회원)</td>
 					<td class="links">/html/CS/CSRF6021_member.html</td>
-					<td><span class=""></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -355,7 +357,7 @@
 					<td></td>
 					<td>완료</td>
 					<td class="links">/html/CS/CSRF6022.html</td>
-					<td><span class=""></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -455,7 +457,7 @@
 					<td></td>
 					<td>예상 비용 확인(POPUP)</td>
 					<td class="links">/html/CS/CSTF4221.html</td>
-					<td><span class="edit"></span></td>
+					<td><span class="no"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -529,7 +531,7 @@
 					<td>센터찾기</td>
 					<td>검색/결과</td>
 					<td class="links">/html/CS/CSRF6036.html</td>
-					<td><span class=""></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -539,7 +541,7 @@
 					<td></td>
 					<td>서비스센터 상세</td>
 					<td class="links">/html/CS/CSRF6037.html</td>
-					<td><span class=""></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -549,17 +551,7 @@
 					<td>센터찾기 (스마일전용)</td>
 					<td>검색/결과</td>
 					<td class="links">/html/CS/CSRF6038.html</td>
-					<td><span class=""></span></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>CSRF6039</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>서비스센터 상세</td>
-					<td class="links">/html/CS/CSRF6039.html</td>
-					<td><span class=""></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -569,7 +561,7 @@
 					<td>센터방문 예약</td>
 					<td>신청</td>
 					<td class="links">/html/CS/CSRF6030.html</td>
-					<td><span class=""></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -579,7 +571,7 @@
 					<td></td>
 					<td>완료</td>
 					<td class="links">/html/CS/CSRF6031.html</td>
-					<td><span class=""></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<!-- // 센터/매장 찾기 -->
@@ -611,7 +603,7 @@
 					<td>개선해 주세요</td>
 					<td>작성 (비회원)</td>
 					<td class="links">/html/CS/CSRF6056_non-member.html</td>
-					<td><span class="edit endbefore"></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -621,7 +613,7 @@
 					<td></td>
 					<td>작성 (회원)</td>
 					<td class="links">/html/CS/CSRF6056_member.html</td>
-					<td><span class="edit endbefore"></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -631,7 +623,7 @@
 					<td></td>
 					<td>완료</td>
 					<td class="links">/html/CS/CSRF6057.html</td>
-					<td><span class="edit endbefore"></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -945,7 +937,7 @@
 					<td>One View 접수 (mobile 전용)</td>
 					<td></td>
 					<td class="links">/html/CS/CSRF_oneview.html</td>
-					<td><span class="edit"></span></td>
+					<td><span class="edit end"></span></td>
 					<td></td>
 				</tr>
 				<tr>
