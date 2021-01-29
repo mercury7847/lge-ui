@@ -40,8 +40,8 @@
                 var html = '<div class="lyr-modal" id="'+valId+'">';
                     html += '   <div class="lyr-modal-dt">';
                     html += '        <div class="lyr-modal-dc">';
-                    html += '            <div class="lyr-modal-inner" role="'+valRole+'" aria-modal="true" aria-hidden="true" tabindex="0">';
-                    html += '                <div>';
+                    html += '            <div class="lyr-modal-inner" role="'+valRole+'" aria-modal="true" aria-hidden="true" tabindex="0" aria-describedby="modal-cont" aria-labelledby="modal-cont">';
+                    html += '                <div id="modal-cont">';
                     html +=                     txt;
                     html += '                </div>';
                     html += '                <div class="btn-box">';
@@ -131,12 +131,6 @@
                         case "modalShopInfo" :
 
                         break;
-                        case "time-start" :
-                            //setTime();
-                        break;
-                        case "time-end" :
-                            //setTime();
-                        break;
                         default:
 
                         break;
@@ -180,63 +174,12 @@
                         case "modalShopInfo" :
 
                         break;
-                        case "time-start" :
-                            if(!setTime($(this))){
-                                return false;
-                            }
-                        break;
-                        case "time-end" :
-                            if(!setTime($(this))){
-                                return false;
-                            }
-                        break;
                         default:
                         break;
                     }
                     optModal.close();
                 }
             });
-        }
-
-        var setTime = function(el){
-            var startDate = $("#input-time-start");
-            var endDate = $("#input-time-end");
-
-            var $modal = $(el).closest(".lyr-modal");
-            var $id = $modal.attr("id");
-            var $timeVal = $modal.find(".modal-time").val();
-
-            var idx = 0;
-            console.log("$timeVal = "+$timeVal);
-
-            if($id == "time-start"){
-                startDate.val($timeVal);
-                idx = 0;
-            }else{
-                endDate.val($timeVal);
-                idx = 1;
-            }
-            $(".time-setting .inner div").eq(idx).find(".btn-time").text($timeVal);
-            startDateVal = startDate.val();
-            endDateVal = endDate.val();
-
-            if(Date.parse(today + startDateVal) == Date.parse(today + endDateVal)){
-                //optModal.open("#modalTimeset");
-                optModal.close();
-                optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
-                $("#modalTimeset .btn-modal-confirm").on({
-                    click : function(){
-                        $(".time-setting .inner div").eq(idx).find("button").text(idx == 0 ? oldStartValue : oldEndValue);
-                        $(".time-setting .inner div").eq(idx).find("input[type=hidden]").val(idx == 0 ? oldStartValue : oldEndValue);
-                        optModal.close();
-                        //$(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
-                    }
-                });
-                return false;
-            }else{
-                toastMessage.init("에티켓 시간이 설정되었습니다.");
-                return true;
-            }
         }
 
         $(document).ready(function(){
@@ -324,32 +267,58 @@
                         //console.log("iphone");
                     }else{
                         //$(this).trigger("blur");
-                        $(this).closest("div").attr("tabindex", 0).focus();
+                        //$(this).closest("div").attr("tabindex", 0).focus();
+                        var startDate = $(".t-start");
+                        var endDate = $(".t-end");
+                        var startDateVal = startDate.val();
+                        var endDateVal = endDate.val();
+
+                        var idx = $(this).closest("div").index();
+
+                        if(Date.parse(today + startDateVal) == Date.parse(today + endDateVal)){
+                            //optModal.open("#modalTimeset");
+                            optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
+                            $("#modalTimeset .btn-modal-confirm").on({
+                                click : function(){
+                                    $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
+                                    $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
+                                    optModal.close();
+                                    //$(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
+                                }
+                            });
+                            return false;
+                        }else{
+                            toastMessage.init("에티켓 시간이 설정되었습니다.");
+                        }
                     }
                 },
                 blur: function(){
                     //console.log("iphone");
-                    var startDate = $(".t-start");
-                    var endDate = $(".t-end");
-                    var startDateVal = startDate.val();
-                    var endDateVal = endDate.val();
+                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        //console.log("iphone");
 
-                    var idx = $(this).closest("div").index();
+                        var startDate = $(".t-start");
+                        var endDate = $(".t-end");
+                        var startDateVal = startDate.val();
+                        var endDateVal = endDate.val();
 
-                    if(Date.parse(today + startDateVal) == Date.parse(today + endDateVal)){
-                        //optModal.open("#modalTimeset");
-                        optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
-                        $("#modalTimeset .btn-modal-confirm").on({
-                            click : function(){
-                                $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
-                                $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
-                                optModal.close();
-                                //$(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
-                            }
-                        });
-                        return false;
-                    }else{
-                        toastMessage.init("에티켓 시간이 설정되었습니다.");
+                        var idx = $(this).closest("div").index();
+
+                        if(Date.parse(today + startDateVal) == Date.parse(today + endDateVal)){
+                            //optModal.open("#modalTimeset");
+                            optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
+                            $("#modalTimeset .btn-modal-confirm").on({
+                                click : function(){
+                                    $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
+                                    $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
+                                    optModal.close();
+                                    //$(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
+                                }
+                            });
+                            return false;
+                        }else{
+                            toastMessage.init("에티켓 시간이 설정되었습니다.");
+                        }
                     }
 
                     /*
@@ -389,18 +358,6 @@
                         }
                     });
                     */
-                }
-            });
-
-            $(".time-setting button").on({
-                click : function(){
-                    var txt = $(this).text();
-                    var id = $(this).siblings("input").attr("id");
-                    id = id.replace("input-", "");
-                    optModal.open(id, "alertdialog", "<input type='time' class='modal-time' value='"+txt+"'>", "확인", "취소");
-
-                    oldStartValue = $("#input-time-start").val();
-                    oldEndValue = $("#input-time-end").val();
                 }
             });
 
@@ -625,25 +582,6 @@
                                 </label>
                             </div>
                         </div>
-                        <!--
-                        <div class="details">
-                            <div class="time-setting" id="timeSettingCon">
-                                <p class="txt-guide">지정된 시간 동안 푸시 알림 거부</p>
-                                <div class="inner">
-                                    <div>
-                                        <label for="t-start">시작</label>
-                                        <label for="t-start" class="rst-time-start" aria-curent="time">21:00</label>
-                                        <input type="time" id="t-start" class="t-start" value="21:00" disabled>
-                                    </div>
-                                    <div>
-                                        <label for="t-end">종료</label>
-                                        <label for="t-end" class="rst-time-end" aria-curent="time">08:00</label>
-                                        <input type="time" id="t-end" class="t-end" value="08:00" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        -->
                         <div class="details">
                             <div class="time-setting" id="timeSettingCon">
                                 <!-- <p>* 지정된 시간 동안 푸시 알림 거부</p> -->
@@ -651,21 +589,13 @@
                                 <div class="inner">
                                     <div>
                                         <label for="t-start">시작</label>
-                                        <button type="button" class="btn-time"><span>21:00</span></button>
-                                        <input type="hidden" id="input-time-start" value="21:00">
-                                        <!--
                                         <label for="t-start" class="rst-time-start" aria-curent="time">21:00</label>
                                         <input type="time" id="t-start" class="t-start" value="21:00" disabled>
-                                        -->
                                     </div>
                                     <div>
                                         <label for="t-end">종료</label>
-                                        <button type="button" class="btn-time"><span>08:00</span></button>
-                                        <input type="hidden" id="input-time-end" value="08:00">
-                                        <!--
                                         <label for="t-end" class="rst-time-end" aria-curent="time">08:00</label>
                                         <input type="time" id="t-end" class="t-end" value="08:00" disabled>
-                                        -->
                                     </div>
                                 </div>
                             </div>
