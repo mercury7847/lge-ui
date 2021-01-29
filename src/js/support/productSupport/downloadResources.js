@@ -46,8 +46,9 @@
 
     var otherService = {
         template : 
-            '<li class="{{currentClass}}">' +
+            '<li>' +
                 '<a href="{{url}}">' +
+                    '<div class="icon"><img src="{{imgUrl}}" alt=""></div>' + 
                     '<strong class="tit">{{name}}</strong>' +
                 '</a>' +
             '</li>',
@@ -68,13 +69,10 @@
         },
         setMenuList: function(data) {
             var self = this;
-            var data = data.otherService;
-            var serviceList = data.serviceList instanceof Array ? data.serviceList : [];
+            var data = data.serviceMenu;
+            var serviceList = data instanceof Array ? data : [];
             var htmlData = "";
-            
-            if( data.title.length ) {
-                self.el.title.html(data.title)
-            }
+
             if( serviceList.length ) {
                 serviceList.forEach(function(item){
                     htmlData += vcui.template(self.template, item);
