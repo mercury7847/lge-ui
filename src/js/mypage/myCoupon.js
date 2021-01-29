@@ -30,7 +30,9 @@
                 '{{#if more}}<p class="info">{{more}}</p>{{/if}}' +
             '</div>' +
             '<ul class="bullet-list">' +
-                '{{#each item in notice}}<li class="b-txt">{{item}}</li>{{/each}}' +
+                '<li class="b-txt">온라인 전용 사용가능 / 쿠폰 중복 할인 불가능</li>' +
+                '<li class="b-txt">제품에 따라 일부 제품에서 쿠폰 사용이 불가능 할 수 <br>있습니다.</li>' +
+                '<li class="b-txt">장바구니 주문 결제 시 쿠폰 확인 여부를 확인 할 수 있습니다.</li>' +
             '</ul>' +
         '</section>' +
         '<footer class="pop-footer center" ui-modules="Footer">' +
@@ -68,15 +70,18 @@
                 self.$tabCouponEnd = self.$contents.find('#tab-coupon-end');
 
                 self.$couponOnList = self.$tabCouponOn.find('div.coupon-lists ul');
-                self.$couponOnList.data("page", 0);
-
                 self.$couponEndList = self.$tabCouponEnd.find('div.coupon-lists ul');
-                self.$couponEndList.data("page", 0);
 
                 self.$couponOnMore = self.$tabCouponOn.find('button.btn-moreview');
+                self.$couponOnMore.data("page", 0);
+                self.$couponOnMore.data("tabIndex", 0);
+
                 self.$couponEndMore = self.$tabCouponEnd.find('button.btn-moreview');
+                self.$couponEndMore.data("page", 0);
+                self.$couponEndMore.data("tabIndex", 1);
 
                 self.$couponOnNoData = self.$tabCouponOn.find('div.no-data');
+
                 self.$couponEndNoData = self.$tabCouponEnd.find('div.no-data');
 
                 self.$couponPopup = $('#couponPopup');
@@ -94,10 +99,12 @@
                 });
 
                 self.$contents.find('button.btn-moreview').on('click',function(e){
-                    var selectIdx = self.$tab.vcTab('getSelectIdx');
-                    var hiddenData = lgkorUI.getHiddenInputData(null,null,selectIdx);
-                    var page = parseInt(hiddenData.page) + 1;
-                    self.requestCouponData(selectIdx,page);
+                    var tabIndex = $(this).data("tabIndex");
+                    var page = $(this).data("page");
+
+                    $(this).data('page', page+1);
+
+                    self.addCouponList(tabIndex, page+1);
                 });
 
                 self.$couponPopup.on('click','div.btn-group button', function(e){
@@ -119,6 +126,9 @@
                     self.listData.push(result.data.onListData);
                     self.listData.push(result.data.endListData);
 
+                    self.$couponOnMore.hide();
+                    self.$couponEndMore.hide();
+
                     self.setCouponList(0);
                     self.setCouponList(1);
 
@@ -128,9 +138,6 @@
 
             setCouponList: function(idx){
                 var self = this;
-
-                self.$couponOnMore.hide();
-                self.$couponEndMore.hide();
 
                 var targetList, noData;
                 if(idx){
@@ -162,20 +169,25 @@
 
                 var targetList = idx ? self.$couponEndList : self.$couponOnList;
                 var moreButton = idx ? self.$couponEndMore : self.$couponOnMore;
+                var listbottom = targetList.offset().top + targetList.height();
                 var totalList = self.listData[idx].length;
-                var leng = page + self.showListLength;
-                if(leng > totalList) leng = totalList;
-                for(var i=page;i<leng;i++){
+                var start = page*self.showListLength;
+                var end = start + self.showListLength;
+                if(end > totalList) end = totalList;
+                for(var i=start;i<end;i++){
                     var item = self.listData[idx][i];
                     item.startDate = !item.startDate ? null : vcui.date.format(item.startDate,'yyyy.MM.dd');
                     item.endDate = !item.endDate ? null : vcui.date.format(item.endDate,'yyyy.MM.dd');
                     item.jsonString = JSON.stringify(item);
                     targetList.append(vcui.template(couponItemTemplate, item));
                 }
-                console.log(leng, totalList, moreButton);
-                
-                if(leng >= totalList) moreButton.hide();
+
+                if(end >= totalList) moreButton.hide();
                 else moreButton.show();
+
+                if(page > 0){
+                    $('html, body').stop().animate({scrollTop:listbottom}, 420);
+                }
             }
         }
 

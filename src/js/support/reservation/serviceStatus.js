@@ -492,7 +492,6 @@
                 }
             },
             request : function(param) {
-                console.log('request')
                 var self = this;
                 var url = self.el.stepEngineer.data('ajax');
     
@@ -502,7 +501,6 @@
                     var data = result.data,
                         arr = data.engineerList instanceof Array ? data.engineerList : []; 
     
-                        console.log('엔지니어 선택!!!!');
                     if (data.resultFlag == 'Y') {  
                         if (arr.length) {
                             self.update(arr[0]);
@@ -573,8 +571,6 @@
                         if (arr.length) {
                             self.el.date.calendar('update', arr);
                             self.el.popup.vcModal();
-                            console.log('날짜 선택');
-                            console.log(arr);
                         }
                     } else {
                         if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});
@@ -605,7 +601,6 @@
                     if (data.resultFlag == 'Y') {
                         arr = data.timeList instanceof Array ? data.timeList : [];
                         if (arr.length) {
-                            console.log('시간 선택!!')
                             //self.requestEngineer(param)
                             self.el.time.timeCalendar('update', arr);
                         }
@@ -649,9 +644,18 @@
 
                 var $form = $('#changeEngineerFormData');
                 var url = $form.data('ajax');
+                var formParam = {};
                 var formData = self.validation.getAllValues();
 
-                //formData = $.extend(formData, self.dateParam);
+                $form.find('input:hidden').each(function(){
+                    var $this = $(this);
+                    var _name = $this.attr('name');
+                    var _value = $this.val();
+
+                    formParam[_name] = _value;
+                });
+
+                formData = $.extend(formData, formParam);
 
                 lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                     var data = result.data;
