@@ -5,7 +5,7 @@
         '<tr>' +
             '<td>' +
                 '<div class="rdo-wrap">' +
-                    '<input type="radio" name="center" id="rdo{{index+1}}" value="{{item.shopID}}">' +
+                    '<input type="radio" name="center" id="rdo{{index+1}}" value="{{item.shopID}}" data-dept-code="{{item.deptCode}}">' +
                     '<label for="rdo{{index+1}}"></label>' +
                 '</div>' +
             '</td>' +
@@ -74,8 +74,6 @@
     var reservation = {
         init: function() {
             var self = this;
-            
-            self.autoFlag = false;
 
             self.$cont = $('.contents');
             self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
@@ -401,7 +399,8 @@
             });
 
             self.$stepCenter.on('change', '[name=center]', function() {
-                self.requestDate();
+                var param = $(this).data();
+                self.requestDate(param);
             });
 
 
@@ -429,8 +428,6 @@
                     };
                     
                 self.reqeustSolutions(url, param);
-
-                if (self.autoFlag) self.requestDate();
             });
 
             // 솔루션 배너
@@ -876,12 +873,13 @@
                 });
             }, null, "html", true);
         },
-        requestDate: function() {
+        requestDate: function(param) {
             var self = this;
             var param = {
                 category: self.model.category,
                 subCategory: self.model.subCategory,
-                serviceType: $('#serviceType').val()
+                serviceType: $('#serviceType').val(),
+                deptCode: param.deptCode
             };
 
             lgkorUI.requestAjaxDataPost(self.dateUrl, param, function(result) {
