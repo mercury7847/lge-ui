@@ -11,6 +11,8 @@
         "listData":[
             {
                 "id":"pid00001",
+                "ordNo":"on00001",
+                "modelCode":"mc00001",
                 "imageUrl":"/lg5-common/images/dummy/@img-product2.jpg",
                 "imageAlt":"S833TS35E",
                 "sku":"S833TS35E1",
@@ -20,6 +22,8 @@
             },
             {
                 "id":"pid00002",
+                "ordNo":"on00002",
+                "modelCode":"mc00002",
                 "imageUrl":"/lg5-common/images/dummy/@img-product2.jpg",
                 "imageAlt":"S833TS35E",
                 "sku":"S833TS35E2",
@@ -29,6 +33,8 @@
             },
             {
                 "id":"pid00003",
+                "ordNo":"on00003",
+                "modelCode":"mc00003",
                 "imageUrl":"/lg5-common/images/dummy/@img-product2.jpg",
                 "imageAlt":"S833TS35E",
                 "sku":"S833TS35E3",
