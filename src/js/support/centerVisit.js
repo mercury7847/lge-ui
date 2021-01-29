@@ -5,7 +5,7 @@
         '<tr>' +
             '<td>' +
                 '<div class="rdo-wrap">' +
-                    '<input type="radio" name="center" id="rdo{{index+1}}" value="{{item.shopID}}">' +
+                    '<input type="radio" name="center" id="rdo{{index+1}}" value="{{item.shopID}}" data-dept-code="{{item.deptCode}}">' +
                     '<label for="rdo{{index+1}}"></label>' +
                 '</div>' +
             '</td>' +
@@ -74,8 +74,6 @@
     var reservation = {
         init: function() {
             var self = this;
-            
-            self.autoFlag = false;
 
             self.$cont = $('.contents');
             self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
@@ -110,7 +108,7 @@
             self.$timeWrap = self.$stepDate.find('.time-wrap');
 
             // 엔지니어
-            self.$stepEngineer = self.$cont.find('#stepEngineer');
+            self.$stepEngineer = self.$cont.find('.engineer-to-visit');
             self.$engineerPopup = $('#choiceEngineerPopup');
             self.$engineerSlider = self.$engineerPopup.find('.engineer-slider');
 
@@ -278,6 +276,7 @@
             // 모델 선택 후 이벤트
             self.$cont.on('complete', function(e, data, url) {    
                 self.model = data;
+                
                 self.requestCenterData({
                     category: self.model.category,
                     subCategory: self.model.subCategory,
@@ -401,6 +400,7 @@
             });
 
             self.$stepCenter.on('change', '[name=center]', function() {
+                self.param = $(this).data();
                 self.requestDate();
             });
 
@@ -429,8 +429,6 @@
                     };
                     
                 self.reqeustSolutions(url, param);
-
-                if (self.autoFlag) self.requestDate();
             });
 
             // 솔루션 배너
@@ -530,6 +528,7 @@
             var self = this;
 
             self.model = {};
+            self.param = {};
 
             self.$dateWrap.calendar('reset');
             self.$timeWrap.timeCalendar('reset');
@@ -881,7 +880,9 @@
             var param = {
                 category: self.model.category,
                 subCategory: self.model.subCategory,
-                serviceType: $('#serviceType').val()
+                productCode: $('#productCode').val(),
+                serviceType: $('#serviceType').val(),
+                deptCode: self.param.deptCode
             };
 
             lgkorUI.requestAjaxDataPost(self.dateUrl, param, function(result) {
@@ -904,7 +905,6 @@
                         if (data.tAlert == 'Y') {
                             self.$stepInput.find('.step-btn-wrap').show();
                             self.$stepDate.removeClass('active');
-                            self.$stepEngineer.removeClass('active');
                         }
 
                         lgkorUI.alert("", {
@@ -919,9 +919,11 @@
             var param = {
                 category: self.model.category,
                 subCategory: self.model.subCategory,
+                productCode: $('#productCode').val(),
                 serviceType: $('#serviceType').val(),
                 date: $('#date').val(),
-                lockUserId: $('#lockUserId').val()
+                lockUserId: $('#lockUserId').val(),
+                deptCode: self.param.deptCode
             };
 
             lgkorUI.requestAjaxDataPost(self.timeUrl, param, function(result) {
@@ -935,7 +937,6 @@
                         if (data.resultMessage) {
                             if (data.tAlert == 'Y') {
                                 self.$stepDate.removeClass('active');
-                                self.$stepEngineer.removeClass('active');
                                 self.$completeBtns.hide();
                             }
                             
@@ -952,10 +953,12 @@
                 serviceType: $('#serviceType').val(),
                 category: $('#category').val(),
                 subCategory: $('#subCategory').val(),
+                productCode: $('#productCode').val(),
                 lockUserId: $('#lockUserId').val(),
                 productCode: $('#productCode').val(),
                 date: $('#date').val(),
-                time: $('#time').val()
+                time: $('#time').val(),
+                deptCode: self.param.deptCode
             }
 
             lgkorUI.requestAjaxDataPost(self.engineerUrl, param, function(result) {
@@ -983,9 +986,7 @@
         updateEngineer: function(data) {
             var self = this,
                 $engineerBox = self.$stepEngineer.find('.engineer-info'),
-                $resultBox = self.$stepEngineer.find('.engineer-desc'),
-                topicNm = self.$stepInput.find('[name=topic]:checked').data('topicName'),
-                subTopicNm = self.$stepInput.find('[name=subTopic]:checked').data('subTopicName')
+                $resultBox = self.$stepEngineer.find('.engineer-desc');
 
             self.$stepEngineer.find('.engineer-img img').attr({
                 'src': data.image,
@@ -995,7 +996,6 @@
             $engineerBox.find('.center').html(data.centerName);
 
             $resultBox.find('.date').html(vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm"));
-            $resultBox.find('.topic').html(topicNm + '&gt;' + subTopicNm);
             $resultBox.find('.name').html(data.engineerName);
 
             $('#engineerNm').val(data.engineerName);
