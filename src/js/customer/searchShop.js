@@ -101,6 +101,8 @@
 
             self.loginUrl = "";
 
+            self.shopID = "";
+
             self.defaultOptions = self._getOptions();
 
             self.$searchField = $('#tab3 .input-sch input');
@@ -120,6 +122,7 @@
                 self.currentLatitude = $('.map-container').data("latitude");
                 self.currentLongitude = $('.map-container').data("longitude");
                 self.loginUrl = $('.map-container').data("loginUrl");
+                self.shopID = $('.map-container').data("shopId");
 
                 self.$mapContainer.vcStoreMap({
                     keyID: $('.map-container').data("mapId"),
@@ -494,9 +497,13 @@
                 serviceCenterType: optdata.serviceCenterType,
                 storeFormType: optdata.storeFormType,
                 storeType: optdata.storeType,
-                etcType: optdata.etcType
+                etcType: optdata.etcType,
+
+                shopId: self.shopID
             }
-            console.log("keywords :", keywords)
+            console.log("keywords :", keywords);
+
+            self.shopID = "";
 
             return keywords;
         },
