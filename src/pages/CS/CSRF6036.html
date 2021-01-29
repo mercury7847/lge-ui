@@ -60,7 +60,6 @@
                             <div class="store-list-box">
                                 <!-- search -->
                                 <div class="sch-box">
-                                    <!--<div class="tabs-wrap ui_store_search_tab">-->
                                     <div class="tabs-wrap border-type ui_tab">
                                         <ul class="tabs">
                                             <li class="on"><a href="#tab1">지역<em class="blind">선택됨</em></a></li>
@@ -172,11 +171,20 @@
                                                         <option value="강원">강원</option>
                                                     </select>
                                                 </div>
-                                                <div class="input-wrap search block">
-                                                    <input type="text" id="address1" class="ui_input_clearbutton" placeholder="센터 명을 입력해주세요." title="센터 명을 입력해주세요." data-clear-button="button.btn-delete" disabled>
-                                                    <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
-                                                    <button type="button" class="btn-search"><span class="blind">검색</span></button>
-                                                </div>
+                                                @@include('./common/support/search-keyword.html', {
+                                                    'url': '/lg5-common/data-ajax/support/searchShop/searchAutoComplete.json',
+                                                    'layer': {
+                                                        'keyword': '',
+                                                        'auto': true
+                                                    },
+                                                    'inputId': 'address1',
+                                                    'inputTitle': '센터 명을 입력해주세요.',
+                                                    'inputError': '',
+                                                    'inputType': true,
+                                                    'inputDisabled': true,
+                                                    'desc': '',
+                                                    'checkbox': ''
+                                                })
                                             </div>
                                         </div>
                                         <p class="desc">센터명을 입력하여 센터를 찾아보세요.</p>

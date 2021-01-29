@@ -46,8 +46,9 @@
 
     var otherService = {
         template : 
-            '<li class="{{currentClass}}">' +
+            '<li>' +
                 '<a href="{{url}}">' +
+                    '<div class="icon"><img src="{{imgUrl}}" alt=""></div>' + 
                     '<strong class="tit">{{name}}</strong>' +
                 '</a>' +
             '</li>',
@@ -68,13 +69,10 @@
         },
         setMenuList: function(data) {
             var self = this;
-            var data = data.otherService;
-            var serviceList = data.serviceList instanceof Array ? data.serviceList : [];
+            var data = data.serviceMenu;
+            var serviceList = data instanceof Array ? data : [];
             var htmlData = "";
-            
-            if( data.title.length ) {
-                self.el.title.html(data.title)
-            }
+
             if( serviceList.length ) {
                 serviceList.forEach(function(item){
                     htmlData += vcui.template(self.template, item);
@@ -105,6 +103,38 @@
             list : $('.related-info .slide-track'),
             slider : $('.related-info .info-slider')
         },
+        slideActiveClass : "is-active",
+        slideConfig : {
+            infinite: false,
+            autoplay: false,
+            slidesToScroll: 3,
+            slidesToShow: 3,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToScroll: 3,
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        slidesToScroll: 1,
+                        slidesToShow: 1,
+                        variableWidth: true
+                    }
+                },
+                {
+                    breakpoint: 20000,
+                    settings: {
+                        slidesToScroll: 3,
+                        slidesToShow: 3
+                    }
+                }
+            ]
+        },
         initialize : function(data){
             var self = this;
     
@@ -120,44 +150,13 @@
             var self = this;
             vcui.require(['ui/carousel'], function () {    
                 // LG제품에 관련된 정보를 확인하세요!
-                if( !self.el.slider.hasClass('is-active') ) {
-                    
-                    self.el.slider.not('.is-active').vcCarousel({
-                        infinite: false,
-                        autoplay: false,
-                        slidesToScroll: 3,
-                        slidesToShow: 3,
-                        responsive: [
-                            {
-                                breakpoint: 1024,
-                                settings: {
-                                    slidesToScroll: 3,
-                                    slidesToShow: 3
-                                }
-                            },
-                            {
-                                breakpoint: 768,
-                                settings: {
-                                    arrows: false,
-                                    slidesToScroll: 1,
-                                    slidesToShow: 1,
-                                    variableWidth: true
-                                }
-                            },
-                            {
-                                breakpoint: 20000,
-                                settings: {
-                                    slidesToScroll: 3,
-                                    slidesToShow: 3
-                                }
-                            }
-                        ]
-                    });
-                    self.el.slider.addClass('is-active');
+                if( !self.el.slider.hasClass(self.slideActiveClass) ) {
+                    self.el.slider.not('.is-active').vcCarousel(self.slideConfig);
+                    self.el.slider.addClass(self.slideActiveClass);
                 } else {
-                    
-                    self.el.slider.filter('.is-active').vcCarousel('update');
-                    self.el.slider.filter('.is-active').vcCarousel('reinit');
+                    var activeSlider = self.el.slider.filter('.' + self.slideActiveClass);
+                    activeSlider.vcCarousel('update');
+                    activeSlider.vcCarousel('reinit');
                 }
             });
         },
@@ -374,7 +373,7 @@
             },
             searchDriverList: function(formData) {
                 var self = this;
-                var ajaxUrl = self.driverSec.data('ajax');;
+                var ajaxUrl = self.driverSec.data('ajax');
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl, formData, function(result){
@@ -387,7 +386,8 @@
             },
             bindEvent: function() {
                 var self = this;
-
+                
+                //모델 재설정 : 초기화
                 $('.contents').on('reset', function(e) {
                     self.$myProductWarp.show();
                     self.$cont.commonModel('next', self.$stepModel);

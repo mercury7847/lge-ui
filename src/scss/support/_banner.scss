@@ -47,7 +47,8 @@
 }
 
 .common-banner {
-    padding:80px 0 120px;
+    margin-top:120px;
+    padding:0;
     .banner {
         max-width: 1380px + 80px;
         margin:0 auto;
@@ -62,15 +63,20 @@
         .btn-wrap {
             text-align:center;
         }
+
+        .banner-inner {
+            padding:40px 0;
+        }
     }
     &.gray {
         background:#f4f4f4;
     }
     @include tablet {
-        padding:50px 0 80px;
+        padding:0;
     }
     @include mobile {
-        padding:32px 0 60px;
+        margin-top:60px;
+        padding-top:60px;
         border-top:12px solid #f4f4f4;
         .banner { 
             padding:0 16px;
@@ -84,6 +90,9 @@
                     width:100%;
                 }
             }
+            .banner-inner {
+                padding:0;
+            }
         }
         &.gray {
             background:#fff;
@@ -94,70 +103,12 @@
 
     &.service-menu {
         display:none;
-    }
-    .service-list-wrap {
-        .service-list {
-            margin:0 -12px;
-            font-size:0;
-            text-align: center;
 
-            & > li {
-                display:inline-block;
-                width:calc(100% / 6);
-                padding:0 12px;
-                a {
-                    display:block;
-                    &:before {
-                        content:'';
-                        display:block;
-                        width:80px;
-                        height:80px;
-                        margin:0 auto 16px;
-                        background-repeat : no-repeat;
-                        background-position:0 0;
-                        background-size:100% 100%;
-                    }
-                }
-                .tit {
-                    display:block;
-                    @include font-medium;
-                    font-weight:$font-weight-medium;
-                    text-align:center;
-                }
-
-                &.service_type {
-                    &-chat a:before {background-image: url("/lg5-common/images/icons/icon_chat.svg");} 
-                    &-email a:before {background-image: url("/lg5-common/images/icons/icon_email-inquiry.svg");}
-                    &-tel a:before {background-image: url("/lg5-common/images/icons/icon_request-reservation.svg");}
-                    &-business a:before {background-image: url("/lg5-common/images/icons/icon_engineer-reservation.svg");}
-                    &-center a:before {background-image: url("/lg5-common/images/icons/icon_center-reservation.svg");}
-                    &-store a:before {background-image: url("/lg5-common/images/icons/icon_store-reservation.svg");}
-                }
-                
-                
-            }
-        }
-        @include tablet {
-            .service-list {
-                margin-top:-24px;
-                @include clearfix;
-                & > li {
-                    float:left;
-                    padding-top:24px;
-                    width:calc(100% / 3);
-                }
-            }
-        }
-        @include mobile {
-            .service-list {
-                margin:-40px -8px 0;
-                & > li {
-                    width:50%;
-                    padding:40px 8px 0;
-                }
-            }
+        &.active {
+            display: block;
         }
     }
+    
 
     // 관련 소모품 리스트
     .product-slider {
@@ -165,13 +116,13 @@
         .slide-controls {
             .prev {
                 position:absolute;
-                top:50%;
+                top:calc(50% - 30px);
                 left:-24px;
                 transform:translateY(-50%);
             }
             .next {
                 position:absolute;
-                top:50%;
+                top:calc(50% - 30px);
                 right:-24px;
                 transform:translateY(-50%);
             }
@@ -312,13 +263,13 @@
         .slide-controls {
             .prev {
                 position:absolute;
-                top:50%;
+                top:calc(50% - 30px);
                 left:-24px;
                 transform:translateY(-50%);
             }
             .next {
                 position:absolute;
-                top:50%;
+                top:calc(50% - 30px);
                 right:-24px;
                 transform:translateY(-50%);
             }
@@ -407,6 +358,84 @@
                         font-size:16px;
                     }
                 }
+            }
+        }
+    }
+}
+
+.service-list-wrap {
+    .service-list {
+        margin:0 -12px;
+        font-size:0;
+        text-align: center;
+
+        & > li {
+            display:inline-block;
+            width:calc(100% / 6);
+            padding:0 12px;
+            a {
+                display:block;
+                // &:before {
+                //     content:'';
+                //     display:block;
+                //     width:80px;
+                //     height:80px;
+                //     margin:0 auto 16px;
+                //     background-repeat : no-repeat;
+                //     background-position:0 0;
+                //     background-size:100% 100%;
+                // }
+
+                .icon {
+                    display:block;
+                    width:80px;
+                    height:80px;
+                    margin:0 auto 16px;
+
+                    img {
+                        width:100%;
+                    }
+                }
+            }
+            .tit {
+                display:block;
+                @include font-medium;
+                font-weight:$font-weight-medium;
+                text-align:center;
+            }
+
+            &.service_type {
+                &-chat a:before {background-image: url("/lg5-common/images/icons/icon_chat.svg");} 
+                &-email a:before {background-image: url("/lg5-common/images/icons/icon_email-inquiry.svg");}
+                &-tel a:before {background-image: url("/lg5-common/images/icons/icon_request-reservation.svg");}
+                &-business a:before {background-image: url("/lg5-common/images/icons/icon_engineer-reservation.svg");}
+                &-center a:before {background-image: url("/lg5-common/images/icons/icon_center-reservation.svg");}
+                &-store a:before {background-image: url("/lg5-common/images/icons/icon_store-reservation.svg");}
+                &-remote a:before {background-image: url("/lg5-common/images/icons/icon-remote-reservation.svg");}
+                &-consult a:before {background-image: url("/lg5-common/images/icons/icon-consulting-inquiry.svg");}
+                &-service a:before {background-image: url("/lg5-common/images/icons/icon-service-inquiry.svg");}
+                &-install a:before {background-image: url("/lg5-common/images/icons/icon_installation-reservation.svg");}
+            }
+            
+            
+        }
+    }
+    @include tablet {
+        .service-list {
+            margin-top:-24px;
+            @include clearfix;
+            & > li {
+                padding-top:24px;
+                width:calc(100% / 3);
+            }
+        }
+    }
+    @include mobile {
+        .service-list {
+            margin:-40px -8px 0;
+            & > li {
+                width:50%;
+                padding:40px 8px 0;
             }
         }
     }

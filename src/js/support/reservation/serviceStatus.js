@@ -319,6 +319,7 @@
                 popup                   : $('#reservationTimePopup'),
                 selectedEngineer        : $('#reservationTimePopup .engineer-to-visit'),
                 toggleOtherBtn          : $('#reservationTimePopup .engineer-to-visit .engineer-desc button'),
+                stepEngineer            : $('#reservationTimePopup #stepEngineer'),
                 toggleLayer             : $('#reservationTimePopup .toggle-layer'),
                 closeBtn                : $('#reservationTimePopup .toggle-layer .btn-layer-close'),
                 selectBtn               : $('#reservationTimePopup .toggle-layer .btn-select-engineer'),
@@ -360,7 +361,7 @@
                         date : $('input[name=date]').val(),
                         time : $('input[name=time]').val(),
                     }
-
+                    self.layerhide();
                     self.request(param);
                 });
 
@@ -491,9 +492,8 @@
                 }
             },
             request : function(param) {
-                console.log('request')
                 var self = this;
-                var url = $('#stepEngineer').data('ajax');
+                var url = self.el.stepEngineer.data('ajax');
     
                 param = $.extend(param, self.dateParam);
     
@@ -501,18 +501,17 @@
                     var data = result.data,
                         arr = data.engineerList instanceof Array ? data.engineerList : []; 
     
-                        console.log('엔지니어 선택!!!!');
                     if (data.resultFlag == 'Y') {  
                         if (arr.length) {
                             self.update(arr[0]);
                             if (arr.length > 1) {
                                 var html = vcui.template(engineerTmpl, data);
-                                $('.choice-engineer').find('.slide-track').html(html);
-                                $('#stepEngineer').find('.btn').show();
+                                self.el.slider.find('.slide-track').html(html);
+                                self.el.stepEngineer.find('.btn').show();
                             } else {
-                                $('#stepEngineer').find('.btn').hide();
+                                self.el.stepEngineer.find('.btn').hide();
                             }
-                            $('#stepEngineer').addClass('active');
+                            self.el.stepEngineer.addClass('active');
                             //$('.choice-engineer .engineer-slider').vcCarousel('reinit');
                             //self.$completeBtns.show();
                         }
@@ -559,6 +558,10 @@
                     lockUserId: $('input[name=lockUserId]').val(),
                     date : $('input[name=date]').val(),
                 };
+
+                self.layerhide();
+                self.el.stepEngineer.removeClass('active');
+
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var data = result.data,
                         arr;
@@ -568,8 +571,6 @@
                         if (arr.length) {
                             self.el.date.calendar('update', arr);
                             self.el.popup.vcModal();
-                            console.log('날짜 선택');
-                            console.log(arr);
                         }
                     } else {
                         if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});
@@ -591,13 +592,15 @@
                     date : $('input[name=date]').val(),
                     time : $('input[name=time]').val(),
                 };
+
+                self.el.stepEngineer.removeClass("active");
+                self.layerhide();
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var data = result.data;
     
                     if (data.resultFlag == 'Y') {
                         arr = data.timeList instanceof Array ? data.timeList : [];
                         if (arr.length) {
-                            console.log('시간 선택!!')
                             //self.requestEngineer(param)
                             self.el.time.timeCalendar('update', arr);
                         }
@@ -618,8 +621,8 @@
                     managerOpt = {
                         elem: {
                             form: '#reservationTimePopup',
-                            name: '#authName',
-                            phone: '#authPhoneNo',
+                            name: '#userNm',
+                            phone: '#phoneNo',
                             number: '#authNo'
                         },
                         register: authRegister
@@ -641,17 +644,38 @@
 
                 var $form = $('#changeEngineerFormData');
                 var url = $form.data('ajax');
+                var formParam = {};
                 var formData = self.validation.getAllValues();
 
-                //formData = $.extend(formData, self.dateParam);
+                $form.find('input:hidden').each(function(){
+                    var $this = $(this);
+                    var _name = $this.attr('name');
+                    var _value = $this.val();
+
+                    formParam[_name] = _value;
+                });
+
+                formData = $.extend(formData, formParam);
 
                 lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                     var data = result.data;
 
-                    if (data.resultFlag == 'Y') {
+                    if (data.resultFlag == 'Y' && data.url !== "") {
                         //$('#acptNo').val(data.acptNo);
 
-                        $form.submit();
+                        lgkorUI.requestAjaxDataPost(data.url, formData, function(result) {
+                            if( result.data.resultFlag == 'Y') {
+                                $form.submit();
+                            } else {
+                                if ( result.data.resultMessage) {
+                                    lgkorUI.alert("", {
+                                        title: data.resultMessage
+                                    });
+                                }
+                            }
+                        });
+
+                        //$form.submit();
                     } else {
                         if (data.resultMessage) {
                             lgkorUI.alert("", {

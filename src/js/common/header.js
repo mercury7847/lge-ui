@@ -41,8 +41,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var loginInfoUrl = self.$el.attr('data-login-info');
             lgkorUI.requestAjaxDataPost(loginInfoUrl, {}, function(result){
                 self.isLogin = result.data.isLogin;
-                console.log("self.isLogin:", self.isLogin);
-                console.log("result.data.isLogin:", result.data.isLogin)
                 self.$el.find('.login-info').css('display', 'none');
                 if(result.data.isLogin){
                     self.$el.find('.login-info.after-login').css('display', 'block');

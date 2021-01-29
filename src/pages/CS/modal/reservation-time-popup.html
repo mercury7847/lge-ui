@@ -1,5 +1,5 @@
 <article id="reservationTimePopup" class="support popup-wrap full" data-date-url="/lg5-common/data-ajax/support/possibleDate.json" data-time-url="/lg5-common/data-ajax/support/possibleTime.json" data-sms-url="/lg5-common/data-ajax/support/authSendSuccess.json" data-auth-url="/lg5-common/data-ajax/support/reservationDateChange.json">
-    <form id="changeEngineerFormData" action="/html/CS/CSRF6029.html" method="POST" data-ajax="/lg5-common/data-ajax/support/serviceEngineer.json" autocomplete="off" novalidate></form>
+    <form id="changeEngineerFormData" action="/html/CS/CSRF6029.html" method="POST" data-ajax="/lg5-common/data-ajax/support/reservationCancel.json" autocomplete="off" novalidate>
     <header class="pop-header">
         <h1 class="tit"><span>예약 일시 변경</span></h1>
     </header>
@@ -14,6 +14,10 @@
         <input type="hidden" name="lockUserId" id="lockUserId" value="">
         <input type="hidden" name="topic" id="topic" value="버튼/리모컨">
         <input type="hidden" name="subtopic" id="subtopic" value="버튼 잠금 설정">
+        <input type="hidden" name="centerCode" id="centerCode" value="">
+        <input type="hidden" name="engineerNm" id="engineerNm" value="">
+        <input type="hidden" name="engineerCode" id="engineerCode" value="">
+        <input type="hidden" name="centerNm" id="centerNm" value="">
 
         <!-- <input type="hidden" name="engineerNm" id="engineerNm" value="">
         <input type="hidden" name="engineerCode" id="engineerCode" value="">
