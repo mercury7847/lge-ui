@@ -1,5 +1,6 @@
 (function() {
     var ORDER_INQUIRY_LIST_URL;
+    var PRODUCT_STATUS_URL;
 
     var inquiryListTemplate =
         '<div class="box" data-id="{{dataID}}">'+
@@ -88,6 +89,7 @@
 
     function setting(){
         ORDER_INQUIRY_LIST_URL = $('.contents.mypage').data('orderInquiryList');
+        PRODUCT_STATUS_URL = $('.contents.mypage').data('productStatus');
         
         $('.inquiryPeriodFilter').vcDatePeriodFilter();
     }
@@ -159,10 +161,20 @@
 
             setMonthlyPricePop();
         }).on('click', '.thumb a', function(e){
-            var href = $(this).attr('href');
-            if(href == "#none" || href == ""){
-                e.preventDefault();
-                lgkorUI.alert("", {title: "제품이 현재 품절/판매 중지<br>상태로 상세 정보를 확인 하실 수 없습니다"});
+            e.preventDefault();
+
+            var dataID = $(this).closest('.box').data("id");
+            setProductStatus(dataID);
+        }).on('click', '.infos .name a', function(e){
+            e.preventDefault();
+
+            var wrapper = $(this).closest(".contents");
+            var href = $(this).attr("href");
+            if(wrapper.hasClass("orderAndDelivery-detail")){
+                var dataID = $(this).closest('.box').data("id");
+                setProductStatus(dataID);
+            } else{
+                location.href = href;
             }
         });
     }
@@ -232,6 +244,24 @@
     function setMoreOrderList(){
         var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
         requestOrderInquiry(dateData.startDate, dateData.endDate, CURRENT_PAGE+1);
+    }
+
+    function setProductStatus(dataId){
+        lgkorUI.showLoading();
+        var sendata = {
+            orderNumber: ORDER_LIST[dataId].orderNumber
+        }
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PRODUCT_STATUS_URL, sendata, function(result){
+            if(result.data.success == "N"){
+                lgkorUI.alert("", {
+                    title: result.data.alert.title
+                });
+            } else{
+                location.href = result.data.sendUrl;
+            }
+
+            lgkorUI.hideLoading();
+        });
     }
 
     function requestOrderInquiry(startDate, endDate, page){
