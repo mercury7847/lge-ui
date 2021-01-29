@@ -430,12 +430,11 @@
             });
 
             $(document).on({
-                keydown : function(e){
-                    console.log(e.which);
-                    $(".rst-event").append("keydown = " + e.which + "/ ");
+                mouseup : function(e){
+                    $(".rst-event").append("mouseup");
                 },
-                keyup : function(e){
-                    $(".rst-event").append("keyup = " + e.which + "/ ");
+                touchstart : function(e){
+                    $(".rst-event").append("touchstart");
                 }
             });
         });
