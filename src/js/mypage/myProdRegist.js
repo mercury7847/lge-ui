@@ -1,4 +1,3 @@
-
 (function(){
     var productListItemTemplate = '<li class="lists" data-model-id="{{id}}" data-sku="{{sku}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}}">' +
         '<div class="inner">' +
