@@ -281,9 +281,11 @@
 
 
             self.$searchResultContainer.on('click', '.btn-back', function(e){
-                e.preventDefault();
+                // e.preventDefault();
+                
+                // self._returnSearchMode();
 
-                self._returnSearchMode();
+                self.$leftContainer.removeClass('active')
             });
 
             self.$searchContainer.on('click', '.btn-view', function(e){
@@ -321,6 +323,7 @@
             });
             self.$localSearchButton.on('click', function(e){
                 self._setLocalSearch();
+                self.$leftContainer.addClass('active')
             });
             self.$searchUserAdressButton.on('click', function(e){
                 self.searchType = 'user';
@@ -721,6 +724,7 @@
                 self.searchResultMode = true;
 
                 self._loadStoreData();
+                self.$leftContainer.addClass('active');
             } else{
                 lgkorUI.alert("", {
                     title: "지하철 검색의 역명을 선택해 주세요."
@@ -745,6 +749,8 @@
                 $(window).off('keyup.searchShop');
 
                 self.searchAddressToCoordinate(self.$citySelect2.val(), callback);
+
+                self.$leftContainer.addClass('active');
             } else{
                 lgkorUI.alert("", {
                     title: "광역 시/도 선택 후 센터 명을 입력해주세요."
@@ -764,6 +770,8 @@
 
                 $(window).off('keyup.searchShop');
                 self._loadStoreData();
+
+                self.$leftContainer.addClass('active');
             } else{
                 lgkorUI.alert("", {
                     title: "주소찾기 버튼 선택하여 주소 검색 시 확인 가능합니다."
@@ -857,19 +865,21 @@
 
             if(!self.isChangeMode){
                 self.isChangeMode = true;
-
+                self._setListArea();
+                self._setResultText();
+                /* 
                 var listop = self.$defaultListContainer.position().top;
 
-                self._setResultText();
                 $('.result-list-box').stop().css({display:'block', opacity:0, y:100}).transition({opacity:1, y:0}, 410, "easeInOutCubic");
                 
                 var resultheight = $('.result-list-box').outerHeight() + 48;
-                self.$defaultListContainer.css({position:'fixed', top:listop}).transition({top:resultheight}, 420, "easeInOutCubic", function(){
+                self.$defaultListContainer.css({position:'absolute', top:listop}).transition({top:resultheight}, 420, "easeInOutCubic", function(){
                     self.$searchContainer.css('display', 'none');
                 });
 
-                self._setListArea();
                 self.$defaultListContainer.find('.scroll-wrap').animate({scrollTop:0}, 120);
+                 */
+                self.$leftContainer.addClass('active');
             }
         },
 

@@ -656,10 +656,22 @@
                 lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                     var data = result.data;
 
-                    if (data.resultFlag == 'Y') {
+                    if (data.resultFlag == 'Y' && data.url !== "") {
                         //$('#acptNo').val(data.acptNo);
 
-                        $form.submit();
+                        lgkorUI.requestAjaxDataPost(data.url, formData, function(result) {
+                            if( result.data.resultFlag == 'Y') {
+                                $form.submit();
+                            } else {
+                                if ( result.data.resultMessage) {
+                                    lgkorUI.alert("", {
+                                        title: data.resultMessage
+                                    });
+                                }
+                            }
+                        });
+
+                        //$form.submit();
                     } else {
                         if (data.resultMessage) {
                             lgkorUI.alert("", {

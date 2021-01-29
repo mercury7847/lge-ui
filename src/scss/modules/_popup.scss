@@ -239,7 +239,7 @@
         height:auto;
         // max-height:492px;
         max-height:580px;
-        padding:40px 40px 0;
+        padding:48px 40px 0;
         overflow-y:auto;
         &.no-footer {
             max-height:576px + 130px;
@@ -1033,39 +1033,83 @@
         // 모델명 확인 방법
         &.academy-pop {
             .noti-txt {
-                color:#000;
-                @include font-medium;
                 font-weight:700;
+                @include font($font-large-2,34px);
                 em {
                     color: $color-primary;
                 }
             }
             
             .example-list {
-                padding-top: 6px;
+                padding-top: 24px;
+                @include mobile {
+                    padding-top: 32px;
+                }
                 dl {
-                    padding-top:2px;
+                    padding-top:4px;
                     font-size: 0;
+                    @include mobile {
+                        padding-top: 18px;
+                    }
+                    &:first-child {
+                        padding-top:0;
+                    }
                     dt,dd {
                         display: inline-block;
-                        color:#767676;
-                        @include font-small;
-                        font-weight:500;
+                        @include font-medium;
                     }
                     dt {
-                        margin-right: 8px;
-                        color:#000;
+                        width: 83px;
+                        font-weight: 700;
+                        @include mobile {
+                            width: 108px;
+                        }
                     }
-                    @include mobile {
-                        display: flex;
+                    &.sel-category {
+                        margin-top: 48px;
+                        padding-right: 77px;
+                        dt {
+                            display: block;
+                            width: auto;
+                            margin-bottom: 16px;
+                        }
                         dd {
-                            flex: 1;
+                            display: block;
+                            margin-top: 8px;
+                        }
+                        @include mobile {
+                            margin-top: 40px;
+                            padding-right: 0;
+                            dt {
+                                margin-bottom: 8px;
+                            }
+                            dd {
+                                margin-top: 6px;
+                            }
                         }
                     }
                 }
                 .example-img {
+                    margin-top: 80px;
+                    .desc {
+                        margin-bottom: 12px;
+                    }
+                    @include mobile {
+                        margin-top: 60px;
+                        .desc {
+                            margin-bottom: 24px;
+                        }
+                    }
                     img {
                         width:100%;
+                    }
+                    &.no-img {
+                        &:after {
+                            display: block;
+                            min-height: 140px;
+                            background: $color-bg-wt url('/lg5-common/images/icons/noimage-79.png') no-repeat center center;
+                            content: '';
+                        }
                     }
                 }
                 ul {
@@ -1323,20 +1367,23 @@
         
     }
     .pop-conts {
-        padding: 144px 48px 48px;
+        padding: 126px 48px 48px; //content padding-top:48px
         @include mobile {
             //padding: 32px 16px 60px;
-            padding: 114px 16px 115px;
+            padding: 100px 16px 115px;
         }
         .tit-wrap {
-            padding-bottom: 24px;
-            @include mobile {
-                padding-bottom: 20px;
-            }
             .h2-tit {
-                @include font-large-1;
-                color: $color-default;
-                font-weight: $font-weight-bold;
+                font-weight: 700;
+                font-size: $font-large-2;
+                line-height: 34px;
+            }
+            @include mobile {
+                //padding-bottom: 32px;
+                .h2-tit {
+                    font-size: $font-large-1;
+                    line-height: 28px;
+                }
             }
         }
         .h3-tit {
@@ -1346,8 +1393,11 @@
             font-weight: $font-weight-bold;
         }
        .btn-group {
-           padding-top: 32px;
+           padding-top: 48px;
            text-align: center;
+           @include mobile {
+               padding-top: 32px;
+           }
        }
        .tabs-wrap.border-type {
            &:before {
@@ -1356,8 +1406,8 @@
        }
     }
     .pop-footer {
-        margin-top: -16px;
-        padding: 0 0 48px;
+        //margin-top: -16px;
+        padding: 16px 0 48px;
         background: #fff;
         @include mobile {
             position: fixed;
