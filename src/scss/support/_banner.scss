@@ -63,6 +63,10 @@
         .btn-wrap {
             text-align:center;
         }
+
+        .banner-inner {
+            padding:40px 0;
+        }
     }
     &.gray {
         background:#f4f4f4;
@@ -85,6 +89,9 @@
                 .btn {
                     width:100%;
                 }
+            }
+            .banner-inner {
+                padding:0;
             }
         }
         &.gray {
