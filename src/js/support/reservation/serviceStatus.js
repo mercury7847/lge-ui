@@ -629,7 +629,6 @@
                 
     
                 self.el.popup.find('.btn-send').on('click', function() {
-                    console.log('11111')
                     self.authManager.send();
                 });
             },
@@ -640,7 +639,8 @@
                 //     $('#productCode').val('CRB');
                 // }
 
-                var url = $('#changeEngineerFormData').data('ajax');
+                var $form = $('#changeEngineerFormData');
+                var url = $form.data('ajax');
                 var formData = self.validation.getAllValues();
 
                 //formData = $.extend(formData, self.dateParam);
@@ -651,7 +651,7 @@
                     if (data.resultFlag == 'Y') {
                         //$('#acptNo').val(data.acptNo);
 
-                        $('#changeEngineerFormData').submit();
+                        $form.submit();
                     } else {
                         if (data.resultMessage) {
                             lgkorUI.alert("", {
