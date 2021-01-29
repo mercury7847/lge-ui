@@ -63,13 +63,13 @@
                 "totalPrice": "0",
                 "reviewsScore": "0",
                 "reviewsCount": "0",
-                "wishListFlag": null,
+                "wishListFlag": true,
                 "cartListFlag": true,
                 "compatibleModels": [],
                 "videos": [],
                 "bulletFeatures": [
                     "<li><span class='title'>용량 : </span>840L1</li>",
-                    "<li><span class='title'>전체크기(WxHxD) : </span>912 x 1790 x 9271 mm</li>",
+                    "<li><span class='title'>전체크기(WxHxD) : </span>912 x 1,790 x 9271 mm</li>",
                     "<li><span class='title'>형태 : </span>노크온 매직스페이스1</li>",
                     "<li><span class='title'>패턴 : </span>미드나잇1</li>",
                     "<li><span class='care-option'>케어십 가능1</span></li>"
@@ -143,6 +143,7 @@
                         "repOrderNo": 3
                     }
                 ],
+                "detailUrl": "#detail",
                 "siblingType": "COLOR",
                 "siblingModels": [
                     {
