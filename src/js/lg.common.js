@@ -255,7 +255,6 @@
         },
 
         addImgErrorEvent: function(img){
-            console.log("addImgErrorEvent:", img)
             img.onerror = null;
             $(img).attr('src', '/lg5-common/images/icons/noimage.svg');
             $(this).css({
