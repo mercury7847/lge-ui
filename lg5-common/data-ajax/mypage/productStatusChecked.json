@@ -1,0 +1,13 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "N",
+        "sendUrl": "https://wwwdev50.lge.co.kr/",
+        "alert":{
+            "title": "제품이 현재 품절/판매 중지<br>상태로 상세 정보를 확인 하실 수 없습니다",
+            "desc": ""
+        }
+    }
+}

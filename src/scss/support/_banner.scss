@@ -375,15 +375,26 @@
             padding:0 12px;
             a {
                 display:block;
-                &:before {
-                    content:'';
+                // &:before {
+                //     content:'';
+                //     display:block;
+                //     width:80px;
+                //     height:80px;
+                //     margin:0 auto 16px;
+                //     background-repeat : no-repeat;
+                //     background-position:0 0;
+                //     background-size:100% 100%;
+                // }
+
+                .icon {
                     display:block;
                     width:80px;
                     height:80px;
                     margin:0 auto 16px;
-                    background-repeat : no-repeat;
-                    background-position:0 0;
-                    background-size:100% 100%;
+
+                    img {
+                        width:100%;
+                    }
                 }
             }
             .tit {
@@ -403,6 +414,7 @@
                 &-remote a:before {background-image: url("/lg5-common/images/icons/icon-remote-reservation.svg");}
                 &-consult a:before {background-image: url("/lg5-common/images/icons/icon-consulting-inquiry.svg");}
                 &-service a:before {background-image: url("/lg5-common/images/icons/icon-service-inquiry.svg");}
+                &-install a:before {background-image: url("/lg5-common/images/icons/icon_installation-reservation.svg");}
             }
             
             

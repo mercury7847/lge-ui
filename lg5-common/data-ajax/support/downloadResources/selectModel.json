@@ -116,32 +116,32 @@
             {
                 "name" : "채팅 상담",
                 "url" : "/",
-                "currentClass" : "service_type-chat"
+                "imgUrl" : "/lg5-common/images/icons/icon_chat.svg"
             },
             {
                 "name" : "이메일 문의",
                 "url" : "/",
-                "currentClass" : "service_type-email"
+                "imgUrl" : "/lg5-common/images/icons/icon_email-inquiry.svg"
             },
             {
                 "name" : "전화상담예약",
                 "url" : "/",
-                "currentClass" : "service_type-tel"
+                "imgUrl" : "/lg5-common/images/icons/icon_request-reservation.svg"
             },
             {
                 "name" : "출장 서비스 예약",
                 "url" : "/",
-                "currentClass" : "service_type-business"
+                "imgUrl" : "/lg5-common/images/icons/icon_engineer-reservation.svg"
             },
             {
                 "name" : "센터방문예약",
                 "url" : "/",
-                "currentClass" : "service_type-center"
+                "imgUrl" : "/lg5-common/images/icons/icon_center-reservation.svg"
             },
             {
                 "name" : "매장방문예약",
                 "url" : "/",
-                "currentClass" : "service_type-store"
+                "imgUrl" : "/lg5-common/images/icons/icon_store-reservation.svg"
             }
         ]
         ,
