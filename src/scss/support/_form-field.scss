@@ -11,21 +11,16 @@
 
 .keyword-search {
     text-align:center;
-    &.on {
-        .search-layer {
-            display:block;
-        }
-    }
     &.default {
         .search-box {
             width:100%;
         }
         .search-input {
             width:100%;
-            border:1px solid #ddd;
-            border-radius:8px;
-            box-shadow:none;
             input[type=text] {
+                border:1px solid #ddd;
+                border-radius:8px;
+                box-shadow:none;
                 &:disabled {
                     border-color:#ededed;
                     background:#ededed;
@@ -35,6 +30,19 @@
         .search-layer {
             box-shadow:0.1px 4px 16px 0 rgba(0, 0, 0, 0.14);
             border-radius:8px;
+        }
+    }
+    &.on {
+        .search-layer {
+            display:block;
+        }
+        .search-input {
+            position:relative;
+            z-index:2;
+            input[type=text] {
+                border:0;
+                box-shadow:none;
+            }
         }
     }
     .search-box {
@@ -51,17 +59,14 @@
         position:relative;
         width:443px;
         text-align:left;
-        border-radius:24px;
-        border:0 none;
-        background:#fff;
-        box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
         input[type=text] {
-            position:relative;
-            z-index:2;
             width:100%;
             padding:11px 80px 11px 24px;
+            border-radius:24px;
+            border:0 none;
+            background:#fff;
+            box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
             text-transform:uppercase;
-            background:none;
         }
         .btn-delete {
             position:absolute;

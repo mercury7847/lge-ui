@@ -112,41 +112,39 @@
                 "totalCount": 12
             }
         },
-        "otherService"  : {
-            "title" : "원하시는 결과를 찾지 못하셨다면 다른 서비스를 이용해보세요.",
-            "serviceList" : [
-                {
-                    "name" : "채팅 상담",
-                    "url" : "/",
-                    "currentClass" : "service_type-chat"
-                },
-                {
-                    "name" : "이메일 문의",
-                    "url" : "/",
-                    "currentClass" : "service_type-email"
-                },
-                {
-                    "name" : "전화상담예약",
-                    "url" : "/",
-                    "currentClass" : "service_type-tel"
-                },
-                {
-                    "name" : "출장 서비스 예약",
-                    "url" : "/",
-                    "currentClass" : "service_type-business"
-                },
-                {
-                    "name" : "센터방문예약",
-                    "url" : "/",
-                    "currentClass" : "service_type-center"
-                },
-                {
-                    "name" : "매장방문예약",
-                    "url" : "/",
-                    "currentClass" : "service_type-store"
-                }
-            ]
-        },
+        "serviceMenu"  : [
+            {
+                "name" : "채팅 상담",
+                "url" : "/",
+                "currentClass" : "service_type-chat"
+            },
+            {
+                "name" : "이메일 문의",
+                "url" : "/",
+                "currentClass" : "service_type-email"
+            },
+            {
+                "name" : "전화상담예약",
+                "url" : "/",
+                "currentClass" : "service_type-tel"
+            },
+            {
+                "name" : "출장 서비스 예약",
+                "url" : "/",
+                "currentClass" : "service_type-business"
+            },
+            {
+                "name" : "센터방문예약",
+                "url" : "/",
+                "currentClass" : "service_type-center"
+            },
+            {
+                "name" : "매장방문예약",
+                "url" : "/",
+                "currentClass" : "service_type-store"
+            }
+        ]
+        ,
         "relatedInfo" : {
             "title" : "LG제품에 관련된 정보를 확인하세요!",
             "infoList" : [

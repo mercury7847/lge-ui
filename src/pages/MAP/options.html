@@ -174,6 +174,53 @@
             });
         }
 
+        function supportsTouch() {
+            var android = navigator.userAgent.indexOf('Android') != -1;
+            return android || !!('createTouch' in document)
+        }
+
+        function NoClickDelay(el) {
+            this.element = el;
+            if(supportsTouch()) this.element.addEventListener('touchstart', this, false);
+        }
+
+        NoClickDelay.prototype = {
+            handleEvent: function(e) {
+                switch(e.type) {
+                    case 'touchstart': this.onTouchStart(e); break;
+                    case 'touchmove': this.onTouchMove(e); break;
+                    case 'touchend': this.onTouchEnd(e); break;
+                }
+            },
+            onTouchStart: function(e) {
+                e.preventDefault();
+                this.moved = false;
+                this.element.addEventListener('touchmove', this, false);
+                this.element.addEventListener('touchend', this, false);
+
+                $(".rst-event").append("onTouchStart / ");
+            },
+            onTouchMove: function(e) {
+                this.moved = true;
+
+                $(".rst-event").append("onTouchMove / ");
+            },
+            onTouchEnd: function(e) {
+                this.element.removeEventListener('touchmove', this, false);
+                this.element.removeEventListener('touchend', this, false);
+
+                if( !this.moved ) {
+                    var theTarget = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+                    if(theTarget.nodeType == 3) theTarget = theTarget.parentNode;
+                    var theEvent = document.createEvent('MouseEvents');
+                    theEvent.initEvent('click', true, true);
+                    theTarget.dispatchEvent(theEvent);
+                }
+
+                $(".rst-event").append("onTouchEnd / ");
+            }
+        };
+
         $(document).ready(function(){
             //로그아웃
             $("#btn-opt-logout").on({
@@ -244,17 +291,25 @@
             $(".time-setting input").on({
                 click : function(e){
                     var value = $(this).val();
+
+                    var attrId = $(this).attr("id");
+                    var el = document.getElementById(attrId);
                     $(this).closest("div").find("[class*=rst-time]").text(value);
                     oldStartValue = $(this).closest(".inner").find("div").eq(0).find("input").val();
                     oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
-
                     //console.log(e);
+
+                    NoClickDelay(el);
+
+                    $(".rst-event").append("click / ");
                 },
                 focusin : function(){
                     $(this).closest("div").find("[class*=rst-time]").addClass("focus");
                 },
                 focusout: function(){
                     $(this).closest("div").find("[class*=rst-time]").removeClass("focus");
+
+                    $(".rst-event").append("focusout / ");
                 },
                 change : function(){
                     var value = $(this).val();
@@ -269,6 +324,8 @@
                         //$(this).trigger("blur");
                         $(this).closest("div").attr("tabindex", 0).focus();
                     }
+
+                    $(".rst-event").append("change / ");
                 },
                 blur: function(){
                     //console.log("iphone");
@@ -332,6 +389,8 @@
                         }
                     });
                     */
+
+                    $(".rst-event").append("blur / ");
                 }
             });
 
