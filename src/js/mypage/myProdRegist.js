@@ -1,6 +1,6 @@
 
 (function(){
-    var productListItemTemplate = '<li class="lists" data-model-id="{{id}}" data-sku={{sku}}>' +
+    var productListItemTemplate = '<li class="lists" data-model-id="{{id}}" data-sku="{{sku}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}}">' +
         '<div class="inner">' +
             '<div class="thumb" aria-hidden="true"><img src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
             '<div class="info-wrap">' +
@@ -15,7 +15,7 @@
         '</div>' +
     '</li>'
 
-    var ownListItemTemplate = '<li class="lists">' +
+    var ownListItemTemplate = '<li class="lists" data-model-id="{{modelId}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}}">' +
         '<div class="inner">' +
             '<div class="thumb{{#if disabled}} saleend{{/if}}" aria-hidden="true">' +
                 '<img src="{{imageUrl}}" alt="{{imageAlt}}">' +
@@ -52,6 +52,7 @@
                     '<a href="{{inquryBtn.url}}" class="btn border size-m newProdCheck-btn"><span>{{inquryBtn.title}}</span></a>' +
                 '</div>' +
             '{{/if}}' +
+            '<button type="button" class="btn-delete"><span class="blind">보유제품 삭제</span></button>' +
         '</div>' +
     '</li>'
 
@@ -186,8 +187,17 @@
                 //등록가능제품 등록하기
                 self.$registProductList.on('click','>ul li div.btn-group a', function(e) {
                     e.preventDefault();
-                    var _id = $(this).parents('li').attr('data-model-id');
-                    var param = {"id":_id};
+                    var $li = $(this).parents('li');
+                    var _id = $li.attr('data-model-id');
+                    var sku = $li.attr('data-sku');
+                    var ordNo = $li.attr('data-ord-no');
+                    var modelCode = $li.attr('data-model-code');
+                    var param = {
+                        "id":_id,
+                        "sku":sku,
+                        "ordNo":ordNo,
+                        "modelCode":modelCode
+                    };
                     var ajaxUrl = self.$contents.attr('data-add-url');
                     lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                         var item = result.data;
@@ -198,6 +208,8 @@
                             item.nextCareServiceDate = item.nextCareServiceDate ? vcui.date.format(item.nextCareServiceDate,'yyyy.MM.dd') : null;
                             $list.append(vcui.template(ownListItemTemplate, item));
                             self.checkNoData();
+                            $li.remove();
+                            $(window).trigger("toastshow", "제품 등록이 완료되었습니다.");
                         }
                     });
                 });
@@ -219,17 +231,29 @@
                 self.$myProductList.on('click','>ul li button.btn-delete', function(e) {
                     var ajaxUrl = self.$contents.attr('data-remove-url');
                     var $this = $(this);
-                    var _id = $this.parents('li').attr('data-model-id');
-                    if(_id) {
-                        lgkorUI.requestAjaxDataPost(ajaxUrl, {"id":_id}, function(result) {
+
+                    var $li = $this.parents('li');
+                    var modelId = $li.attr('data-model-id');
+                    var ordNo = $li.attr('data-ord-no');
+                    var modelCode = $li.attr('data-model-code');
+                    var param = {
+                        "modelId":modelId,
+                        "ordNo":ordNo,
+                        "modelCode":modelCode
+                    };
+
+                    var obj = {title:'', cancelBtnName:'취소', okBtnName:'삭제', ok: function (){
+                        lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                             var data = result.data;
                             var success = lgkorUI.stringToBool(data.success);
                             if(success) {
-                                $this.parents('li').remove();
+                                $li.remove();
                                 self.checkNoData();
                             }
                         });
-                    }
+                    }};
+                    var desc = '선택하신 제품을<br>보유제품에서 삭제하시겠어요?';
+                    lgkorUI.confirm(desc, obj);
                 });
 
                 //보유제품 툴팁 닫기
