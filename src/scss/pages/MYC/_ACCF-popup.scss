@@ -989,7 +989,7 @@
         border-radius:8px;
         background-color:#f4f4f4;
         &.solv {
-            margin-top:80px;
+            margin-top:64px;
             padding:24px 48px;
             .txt {
                 font-size:16px;
@@ -997,19 +997,19 @@
                 line-height:26px;
                 > span {
                     display:block;
-                    font-weight:normal;
                 }
             }
             a {
                 position:absolute;
-                top:50%;
                 right:48px;
-                padding-right:22px;
-                background:url('/lg5-common/images/icons/btn-arr-20x20-gray.svg') no-repeat right 3px;
-                color:#767676;
-                font-size:14px;
-                line-height:24px;
-                transform:translateY(-50%);
+                bottom:24px;
+                padding-right:18px;
+                background:url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat right 6px;
+                background-size:14px;
+                color:#000;
+                font-size:16px;
+                line-height:26px;
+                text-decoration:underline;
             }
         }
         @include tablet {
