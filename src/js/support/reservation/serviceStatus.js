@@ -618,8 +618,8 @@
                     managerOpt = {
                         elem: {
                             form: '#reservationTimePopup',
-                            name: '#authName',
-                            phone: '#authPhoneNo',
+                            name: '#userNm',
+                            phone: '#phoneNo',
                             number: '#authNo'
                         },
                         register: authRegister
