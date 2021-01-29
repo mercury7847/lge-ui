@@ -640,12 +640,12 @@ var FilterLayer = (function() {
                 '<div class="btn-area-wrap">' +
                     '<div class="wishlist">' +
                         '<span class="chk-wish-wrap large">' +
-                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" {{#if wishListFlag}}checked{{/if}}>' +
+                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{modelName}}" {{#if wishListFlag}}checked{{/if}}>' +
                             '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>' +
                         '</span>' +
                     '</div>' +
                     '<div class="cart">' +
-                        '<a href="#n" class="btn-cart" data-id="{{modelId}}" {{#if !cartListFlag}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
+                        '<a href="#n" class="btn-cart" data-id="{{modelId}}" data-model-name="{{modelName}}" {{#if !cartListFlag}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
                     '</div>' +
                     '<div class="btn-area">' +
                         '<a href="{{detailUrl}}" class="btn border size-m" data-id="{{modelId}}">자세히 보기</a>' +
@@ -747,7 +747,12 @@ var FilterLayer = (function() {
                 self.$productList.on('click','li div.btn-area-wrap div.wishlist input',function(e){
                     var $this = $(this);
                     var _id = $this.attr('data-id');
+                    var modelName = $this.attr('data-model-name');
                     var wish = $this.is(':checked');
+                    var param = {
+                        "id":_id,
+                        "modelName":modelName
+                    }
                     
                     var ajaxUrl = self.$section.attr('data-wish-url');
                     
@@ -759,10 +764,7 @@ var FilterLayer = (function() {
                     };
 
                     lgkorUI.requestWish(
-                        _id,
-                        null,
-                        null,
-                        null,
+                        param,
                         wish,
                         success,
                         fail,
@@ -775,7 +777,8 @@ var FilterLayer = (function() {
                     e.preventDefault();
                     var $this = $(this);
                     var param = {
-                        "id":$this.attr('data-id')
+                        "id":$this.attr('data-id'),
+                        "modelName":$this.attr('data-model-name')
                     }
                     var ajaxUrl = self.$section.attr('data-cart-url');
                     lgkorUI.requestCart(ajaxUrl, param);
@@ -835,9 +838,17 @@ var FilterLayer = (function() {
             requestSearch: function(data, isNew){
                 var self = this;
                 var ajaxUrl = self.$section.attr('data-prod-list');
+                data.categoryId = categoryId;                
                 lgkorUI.requestAjaxData(ajaxUrl, data, function(result){
                     var data = result.data;
                     var param = result.param;
+
+                    if(data.schCategoryId && data.schCategoryId.length > 0) {
+                        categoryId = data.schCategoryId;
+                        lgkorUI.setHiddenInputData({
+                            "categoryId":categoryId
+                        });
+                    }
                     
                     var totalCount = data.totalCount;
                     if(totalCount) {

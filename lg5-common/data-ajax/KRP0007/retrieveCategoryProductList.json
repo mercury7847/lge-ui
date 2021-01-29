@@ -8,12 +8,13 @@
         }
     },
     "data": {
+        "schCategoryId": "returnCategoryId",
         "totalCount": "25",
         "listData": [
             {
                 "affiliateCode": null,
                 "bizType": "PRODUCT",
-                "modelName": null,
+                "modelName": "MDN00000234",
                 "modelDisplayName": "LG SIGNATURE OLED R",
                 "modelId": "MD08739260",
                 "modelStatusCode": null,
