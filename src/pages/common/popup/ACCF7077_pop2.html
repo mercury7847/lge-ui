@@ -3,38 +3,53 @@
         <h1 class="tit"><span>출장 서비스 예약</span></h1>
     </header>
     <section class="pop-conts common-pop mypage">
+		<!-- 210128 수정(구조변경) -->
 		<div class="custom-step-area">
-			<p class="tit">2020.08.17 11:20에 전문 엔지니어가 방문하여 고장 증상을 해결해드릴 예정입니다.</p>
-			<div class="step-box step4">
-				<div class="step-inner">
-					<div class="bar bar1"></div>
-					<!--
-						현재 단계에 따라 클래스 변경
-						접수 : bar
-						방문예정 : bar bar1
-						처리중 : bar bar2
-						완료 : bar3
-					-->
-				</div>
-				<ul class="step-txt">
-					<li class="comp">접수</li> <!-- 해당 영역 위치 시 comp 클래스 추가 -->
-					<li class="comp"><span class="blind">현재 단계</span>방문예정</li>
-					<li>처리중</li>
-					<li>처리완료</li>
-				</ul>
-			</div>
+			<p class="tit"><span class="date">2020.08.17 11:20</span>에 전문 엔지니어가 방문하여 고장 증상을 해결해드릴 예정입니다.</p>
 			<div class="info-box engineer">
 				<span class="ico">
 					<img src="/lg5-common/images/MYC/@img-cs-engineer.jpg" alt="">
 				</span>
 				<div class="cont">
-					<p>엔지니어 : 홍길동 / 동대문 서비스센터</p>
-					<p>접수번호 :  HA230948WW</p>
+					<ul>
+						<li>접수번호 : HA230948WW</li>
+						<li>엔지니어 : 홍길동</li>
+						<li>동대문서비스센터</li>
+					</ul>
 				</div>
 			</div>
 			<div class="section-wrap">
 				<div class="sects">
 					<div class="section-inner">
+						<!-- 진행 상태 -->
+						<div class="inner-box">
+							<p class="inner-tit">진행 상태</p>
+							<div class="state-step-wrap">
+								<ul class="state-step">
+									<li>접수</li>
+									<li>방문 예정</li>
+									<li>완료</li>
+								</ul>
+								<span class="txt">순으로 진행됩니다.</span>
+							</div>
+							<div class="step-box step3">
+								<div class="step-inner">
+									<div class="bar bar1"></div>
+									<!--
+										현재 단계에 따라 클래스 변경
+										접수 : bar
+										방문 예정 : bar bar1
+										완료 : bar bar2
+									-->
+								</div>
+								<ul class="step-txt">
+									<li class="comp"><span class="txt">접수</span></li>
+									<li class="comp on"><span class="blind">현재 단계</span><span class="txt">방문 예정</span></li> <!-- 처리된 이전 상태에 comp 클래스 추가 --> <!-- 해당 영역 위치 시 on 클래스 추가 -->
+									<li><span class="txt">완료</span></li> <!-- 해당 영역 위치 시 on 클래스 추가 -->
+								</ul>
+							</div>
+						</div>
+						<!-- //진행 상태 -->
 						<!-- 서비스 예약 취소 -->
 						<div class="inner-box">
 							<div class="tit-wrap">
@@ -74,6 +89,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- //210128 수정(구조변경) -->
     </section>
     <footer class="pop-footer center">
         <div class="btn-group">

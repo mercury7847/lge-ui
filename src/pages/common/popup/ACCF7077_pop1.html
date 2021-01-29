@@ -3,6 +3,7 @@
         <h1 class="tit"><span>출장 서비스 예약</span></h1>
     </header>
     <section class="pop-conts common-pop mypage">
+		<!-- 210128 수정(구조변경) -->
 		<div class="custom-step-area">
 			<p class="tit"><span class="date">2020.08.17 11:20</span>에 전문 엔지니어가 방문하여 고장 증상을 해결해드릴 예정입니다.</p>
 			<div class="info-box engineer">
@@ -48,12 +49,7 @@
 								</ul>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="section-wrap">
-				<div class="sects">
-					<div class="section-inner">
+						<!-- //진행 상태 -->
 						<!-- 예약/결과 정보 -->
 						<div class="inner-box">
 							<div class="tit-wrap">
@@ -61,6 +57,7 @@
 								<div class="flt-cont">
 									<button type="button" class="btn border size"><span>예약일시변경</span></button>
 									<button type="button" class="btn border size"><span>예약취소</span></button>
+									<button type="button" class="btn border size"><span>사진등록</span></button>
 								</div>
 							</div>
 							@@include('./common/modules/dl-infolist.html', {
@@ -94,6 +91,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- //210128 수정(구조변경) -->
     </section>
     <footer class="pop-footer center">
         <div class="btn-group">
