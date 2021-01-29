@@ -466,7 +466,6 @@ var FilterLayer = (function() {
                 var $btnFilter = self.$targetFilterButton;
 
                 for(key in data){
-                    //console.log(data[key]); //-> 키값, 모든 value 출력
                     var findRange = self.$layFilter.find('.ui_filter_slider[name="'+key+'"]');
                     if(findRange.length > 0) {
                         selectedFilter = true;
@@ -674,6 +673,9 @@ var FilterLayer = (function() {
                 self.setting();
                 self.bindEvents();
 
+                //breackpoint 이벤트 초기실행
+                self.fnBreakPoint();
+                //비교하기 체크
                 self.setCompares();
 
                 self.filterLayer = new FilterLayer(self.$layFilter, self.$categorySelect, self.$listSorting, self.$btnFilter, function (data) {
@@ -701,7 +703,7 @@ var FilterLayer = (function() {
                     }
                     filterData = storageFilterData;
                 }
-                self.filterLayer.resetFilter(filterData, true);
+                self.filterLayer.resetFilter(filterData, false);
             },
 
             setting: function() {
@@ -773,7 +775,6 @@ var FilterLayer = (function() {
                     var param = {
                         "id":$this.attr('data-id')
                     }
-                    console.log('장바구니',param);
                     var ajaxUrl = self.$section.attr('data-cart-url');
                     lgkorUI.requestCart(ajaxUrl, param);
                 });
@@ -795,6 +796,11 @@ var FilterLayer = (function() {
                 $(window).on("changeStorageData", function(){
                     self.setCompares();
                 })
+
+                // 브레이크포인트 이벤트 처리
+                $(window).on('breakpointchange.filter', function(e,data){
+                    self.fnBreakPoint();
+                });
 
                 //더보기
                 self.$btnMore.on('click', function(e) {
@@ -872,11 +878,38 @@ var FilterLayer = (function() {
 
                         self.$productList.find('.ui_plp_carousel').vcCarousel('reinit');
                         self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
+
+                        self.fnBreakPoint();
+                        self.setCompares();
                     });
 
                     self.setPageData(param.pagination);
-                    self.setCompares();
                 });
+            },
+
+            // 상품 아이템 롤링기능을 PC,MOBILE일 때 교체.
+            fnBreakPoint:function(){
+                var self = this;
+                var name = window.breakpoint.name;
+                self.$productList.find('.ui_plp_carousel').off('mouseover mouseout mouseleave').vcCarousel("setOption", {autoplay:false,'speed':300}, true);
+                if(name=="mobile"){
+                    self.$productList.find('.ui_plp_carousel').off('mouseover mouseout mouseleave').vcCarousel("setOption", {autoplay:false,'speed':300}, true);
+                } else if(name=="pc"){
+                    self.$productList.find('.ui_plp_carousel').vcCarousel("setOption", {'speed':0}, true ).on('mouseover mouseout mouseleave', function(e){
+                        // 상품 아이템을 오버시 이미지를 롤링.
+                        if($(e.currentTarget).data('ui_carousel')){
+                            if(e.type == 'mouseover'){
+                                $(e.currentTarget).vcCarousel('play');
+                                
+                            }else{
+                               $(e.currentTarget).vcCarousel('stop');
+                                setTimeout(function(){
+                                    $(e.currentTarget).vcCarousel('goTo', 0);
+                                }, 500);
+                            }
+                        }
+                    });
+                }   
             },
 
             //비교하기 저장 유무 체크...
@@ -888,17 +921,7 @@ var FilterLayer = (function() {
                 if(!isCompare){
                     for(var i in storageCompare[lgkorUI.COMPARE_ID]){
                         var modelID = storageCompare[lgkorUI.COMPARE_ID][i]['id'];
-                        console.log(modelID);
-                        console.log(self.$productList.find('li .product-compare a[data-id=' + modelID + ']'));
                         self.$productList.find('li .product-compare a[data-id=' + modelID + ']').addClass('on');
-                        //console.log($productCompare.find(':[data-id=' + modelID + ']'));
-                        /*
-                        var findDm = $productCompare.find(':[data-id=' + modelID + ']');
-                        if(findDm.length > 0) {
-                            findDm.addClass('on');
-                        }
-                        */
-                        //self.$productList.find(li .product-compare a[data-id=' + modelID + ']').addClass('on');
                     }
                 }
             },
@@ -922,8 +945,6 @@ var FilterLayer = (function() {
                         "productImg": productImg,
                         "productAlt": productAlt
                     }
-
-                    console.log(compareObj);
 
                     var isAdd = lgkorUI.addCompareProd(compareObj);
                     if(isAdd) $this.addClass("on");
