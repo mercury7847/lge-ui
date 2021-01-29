@@ -52,11 +52,17 @@
             &.large {
                 .visual-cell {
                     width:((912px * 100%) / 1380px);
+                    @include mobile {
+                        width:100%;
+                    }
                 }
             }
             &.standard {
                 .visual-cell {
                     width:((678px * 100%) / 1380px);
+                    @include mobile {
+                        width:100%;
+                    }
                 }
             }
         }
