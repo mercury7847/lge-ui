@@ -93,6 +93,10 @@
             self.autoFlag = false;
             self.isLogin = lgkorUI.isLogin;
 
+            if ($('#appCall').length) {
+                self.isLogin = true
+            }
+
             var register = {
                 topic: {
                     required: true,
@@ -554,7 +558,7 @@
 
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var resultData = result.data;
-
+                    console.log(data);
                     self.$cont.commonModel('updateSummary', {
                         product: [data.categoryName, data.subCategoryName, data.modelCode],
                         reset: 'product'
