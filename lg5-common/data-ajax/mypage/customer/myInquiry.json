@@ -130,37 +130,45 @@
                 "id": "mw00001",
                 "regNumber": "S2009354211",
                 "progress": "답변중",
-                "category": "이메일 문의",
+                "inquiryType": "이메일 문의",
                 "title": "타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀타이틀 타이틀 타이틀 초과",
                 "date": "20200911",
-                "product": "제품1>제품2"
+                "modelCategory": "제품1>제품2",
+                "modelName": "LG VELVET(SKT) LM-G900N",
+                "inquiryOption":"제품정보"
             },
             {
                 "id": "mw00002",
                 "regNumber": "S2009354212",
                 "progress": "접수",
-                "category": "이메일 문의",
+                "inquiryType": "이메일 문의",
                 "title": "타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀타이틀 타이틀 타이틀 초과",
                 "date": "20200912",
-                "product": "제품1>제품2"
+                "modelCategory": "제품1>제품2",
+                "modelName": "LG VELVET(SKT) LM-G900N",
+                "inquiryOption":null
             },
             {
                 "id": "mw00003",
                 "regNumber": "S2009354213",
                 "progress": "처리대기",
-                "category": "이메일 문의",
+                "inquiryType": "이메일 문의",
                 "title": "타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀타이틀 타이틀 타이틀 초과",
                 "date": "20200913",
-                "product": "제품1>제품2"
+                "modelCategory": "제품1>제품2",
+                "modelName": "LG VELVET(SKT) LM-G900N",
+                "inquiryOption":"제품정보"
             },
             {
                 "id": "mw00004",
                 "regNumber": "S2009354214",
                 "progress": "처리대기",
-                "category": "이메일 문의",
+                "inquiryType": "이메일 문의",
                 "title": "타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀 타이틀타이틀 타이틀 타이틀 초과",
                 "date": "20200914",
-                "product": "제품1>제품2"
+                "modelCategory": "제품1>제품2",
+                "modelName": "LG VELVET(SKT) LM-G900N",
+                "inquiryOption":null
             }
         ]
     }
