@@ -30,7 +30,9 @@
                 '{{#if more}}<p class="info">{{more}}</p>{{/if}}' +
             '</div>' +
             '<ul class="bullet-list">' +
-                '{{#each item in notice}}<li class="b-txt">{{item}}</li>{{/each}}' +
+                '<li class="b-txt">온라인 전용 사용가능 / 쿠폰 중복 할인 불가능</li>' +
+                '<li class="b-txt">제품에 따라 일부 제품에서 쿠폰 사용이 불가능 할 수 <br>있습니다.</li>' +
+                '<li class="b-txt">장바구니 주문 결제 시 쿠폰 확인 여부를 확인 할 수 있습니다.</li>' +
             '</ul>' +
         '</section>' +
         '<footer class="pop-footer center" ui-modules="Footer">' +
