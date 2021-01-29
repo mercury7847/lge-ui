@@ -51,6 +51,20 @@
 
     // VIEW
     @import "MKT4002";
+
+    &.exhibition {
+        .ev-detail-wrap .ev-detail-top {
+            position: relative;
+            .component-wrap {
+                top:24px;
+                right:24px;
+                @include mobile {
+                    top:30px;
+                    right:16px;
+                }
+            }
+        }
+    }
 }
 
 
