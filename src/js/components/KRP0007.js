@@ -674,6 +674,8 @@ var FilterLayer = (function() {
                 self.setting();
                 self.bindEvents();
 
+                self.setCompares();
+
                 self.filterLayer = new FilterLayer(self.$layFilter, self.$categorySelect, self.$listSorting, self.$btnFilter, function (data) {
                     //console.log(data);
                     lgkorUI.setStorage(storageName, data);
@@ -783,6 +785,17 @@ var FilterLayer = (function() {
                 });
                 */
 
+                //비교하기
+                self.$productList.on('click', 'li .product-compare a', function(e){
+                    e.preventDefault();
+                    self.setCompareState(e.currentTarget);
+                });
+
+                //비교하기 컴포넌트 변화 체크
+                $(window).on("changeStorageData", function(){
+                    self.setCompares();
+                })
+
                 //더보기
                 self.$btnMore.on('click', function(e) {
                     var param = self.filterLayer.getDataFromFilter();
@@ -861,49 +874,62 @@ var FilterLayer = (function() {
                         self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
                     });
 
-                    /*
-                    for(var i=0; i<arr.length; i++){
-                        var data = arr[i];
-    
-                        var siblingType = data.siblingType ? data.siblingType.toLowerCase() : '';
-                        siblingType = siblingType=="color"? "color" : "text";
-
-                        var sliderImages = data.modelRollingImgList.split(',');
-    
-                        item.obsOriginalPrice = item.obsOriginalPrice ? vcui.number.addComma(item.obsOriginalPrice) : null;
-                        item.obsTotalDiscountPrice = item.obsTotalDiscountPrice ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
-
-
-
-                        if(data.rPromoPrice) data.rPromoPrice = vcui.number.addComma(data.rPromoPrice);
-    
-                        var isBigPromotion = data.bigPromotionText && data.bigPromotionImage || false;
-                        var isPrice = data.rPrice && data.discountedRate || false;
-                        var isPromotion = data.promotionText1 || data.promotionText2 || false;
-                        var isBadge = data.productTag1 || data.productTag2;
-                        var isSpecInfo = data.specInfos || false;
-                        var isBenefit = data.benefitInfos || false;
-                        var isCareShip = data.isCareShip || false;
-                        var isPromotionBadge = data.promotionBadge && data.promotionBadge.length > 0 ? true : false;
-    
-                        var obj = vcui.extend(arr[i],{
-                            isBigPromotion : isBigPromotion, 
-                            sliderImages : sliderImages, 
-                            siblingType: siblingType, 
-                            isPrice : isPrice, 
-                            isPromotion : isPromotion, 
-                            isBadge : isBadge, 
-                            isSpecInfo : isSpecInfo, 
-                            isBenefit : isBenefit, 
-                            isCareShip : isCareShip,
-                            isPromotionBadge : isPromotionBadge
-                        });   
-                        html += vcui.template(productItemTmpl,obj);   
-                    }
-                    */
-
                     self.setPageData(param.pagination);
+                    self.setCompares();
                 });
+            },
+
+            //비교하기 저장 유무 체크...
+            setCompares:function(){
+                var self = this;
+                self.$productList.find('li .product-compare a').removeClass('on');
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
+                var isCompare = vcui.isEmpty(storageCompare);
+                if(!isCompare){
+                    for(var i in storageCompare[lgkorUI.COMPARE_ID]){
+                        var modelID = storageCompare[lgkorUI.COMPARE_ID][i]['id'];
+                        console.log(modelID);
+                        console.log(self.$productList.find('li .product-compare a[data-id=' + modelID + ']'));
+                        self.$productList.find('li .product-compare a[data-id=' + modelID + ']').addClass('on');
+                        //console.log($productCompare.find(':[data-id=' + modelID + ']'));
+                        /*
+                        var findDm = $productCompare.find(':[data-id=' + modelID + ']');
+                        if(findDm.length > 0) {
+                            findDm.addClass('on');
+                        }
+                        */
+                        //self.$productList.find(li .product-compare a[data-id=' + modelID + ']').addClass('on');
+                    }
+                }
+            },
+
+            setCompareState:function(atag){
+                var $this = $(atag);
+                var _id = $this.data('id');
+                if(!$this.hasClass('on')){
+                    var compare = $this.closest('.product-compare');
+                    var contents = compare.siblings('.product-contents');
+                    var productName = contents.find('.product-info .product-name a').text();
+                    var productID = contents.find('.product-info .sku').text();
+                    var image = compare.siblings('.product-image');
+                    var productImg = image.find('.slide-content .slide-conts.on a img').attr("src");
+                    var productAlt = image.find('.slide-content .slide-conts.on a img').attr("alt");
+
+                    var compareObj = {
+                        "id": _id,
+                        "productName": productName,
+                        "productID": productID,
+                        "productImg": productImg,
+                        "productAlt": productAlt
+                    }
+
+                    console.log(compareObj);
+
+                    var isAdd = lgkorUI.addCompareProd(compareObj);
+                    if(isAdd) $this.addClass("on");
+                } else{
+                    lgkorUI.removeCompareProd(_id);
+                }
             }
         };
         KRP0007.init();
