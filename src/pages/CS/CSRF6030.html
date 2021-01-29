@@ -253,12 +253,17 @@
                                                     </div>
                                                     @@include('./common/support/search-keyword.html', {
                                                         'url': '/lg5-common/data-ajax/support/searchShop/searchAutoComplete.json',
-                                                        'id': 'keyword',
+                                                        'layer': {
+                                                            'keyword': '',
+                                                            'auto': true
+                                                        },
+                                                        'inputId': 'keyword',
                                                         'inputTitle': '센터 명을 입력해주세요.',
-                                                        'layer': true,
-                                                        'onlyAutocomplete': true,
-                                                        'defaultInput': true,
-                                                        'disabled': true
+                                                        'inputError': '',
+                                                        'inputType': true,
+                                                        'inputDisabled': true,
+                                                        'desc': '',
+                                                        'checkbox': ''
                                                     })
                                                 </div>
                                             </div>

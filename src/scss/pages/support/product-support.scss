@@ -234,9 +234,9 @@
         }
     }
     // 제품사용설명서 리스트
-    .manual-list-wrap {
+    .download-list-wrap {
         margin-top:32px;
-        .manual-list {
+        .download-list {
             margin:-16px -8px 0;
             @include clearfix;
             & > li {
@@ -268,8 +268,9 @@
                 }
             }
             .desc {
-                color:#767676;
+                height:48px;
                 @include font-small;
+                @include textEllipsisClamp(2);
             }
             .options {
                 color:#767676;
@@ -297,11 +298,11 @@
             }
             .info-wrap {
                 display:flex;
-                margin-top:24px;
+                margin-top:12px;
                 align-items:center;
                 justify-content:space-between;
             }
-            .btns-area {
+            .btn-wrap {
                 @include clearfix;
                 .btn {
                     float:left;
@@ -310,17 +311,9 @@
                     }
                 }
             }
-            @media screen and (min-width: 768px) and (max-width: 900px) {
-                .info-wrap {
-                    display:block;
-                    .btns-area {
-                        margin-top:8px;
-                    }
-                }
-            }
         }
         @include mobile {
-            .manual-list {
+            .download-list {
                 margin:0;
                 & > li {
                     float:none;
@@ -330,6 +323,9 @@
                     border-radius:4px;
                     box-shadow:1px 2px 8px 0 rgba(0, 0, 0, 0.14);
                 }
+                .desc {
+                    height:auto;
+                }
                 .options {
                     & > li {
                         &:after {
@@ -338,180 +334,13 @@
                     }
                 }
                 .info-wrap {
-                    margin-top:20px;
-                }
-            }
-        }
-    }
-    // 드라이버/SW 리스트
-    .driver-list-wrap {
-        .driver-list {
-            & > li {
-                padding:24px 32px;
-                border:1px solid #ddd;
-                border-radius:8px;
-                & + li {
-                    margin-top:12px;
-                }
-                .file-box {
-                    position:relative;
-                    padding-right:172px;
-                    .options {
+                    display:block;
+                    margin-top:8px;
+                    .btn-wrap {
                         margin-top:8px;
-                    }
-                    .btn-area {
-                        position:absolute;
-                        left:calc(100% - 172px);
-                        top:50%;
-                        width:172px;
-                        transform:translateY(-50%);
-                        font-size:0;
-                        @include clearfix;
-                        .box {
-                            display:inline-block;
-                            width:172px;
-                            text-align:right;
-                            vertical-align:middle;
-                            & + .box {
-                                width:143px;
-                            }
-                            &.btn_close {
-                                .accord-btn {
-                                    color:#ec455a;
-                                    background-image:url(/lg5-common/images/icons/btn-minus-20.svg);
-                                }
-                            }
-                        }
-                        .accord-btn {
-                            padding-right:22px;
-                            color:#767676;
-                            font-size:14px;
-                            font-weight:500;
-                            line-height:24px;
-                            background:url(/lg5-common/images/icons/btn-more-20-gray.svg) no-repeat;
-                            background-position:right center;
-                        }
-                    }
-                }
-                .accord-cont {
-                    display:none;
-                    .driver-list {
-                        margin-top:24px;
-                        padding:20px 24px;
-                        border-radius:8px;
-                        background:#f4f4f4;
-                        & > li {
-                            margin:20px 0 0 0;
-                            padding:20px 0 0 0;
-                            border-width:1px 0 0 0;
-                            &:first-child {
-                                margin:0;
-                                padding:0;
-                                border:none;
-                            }
-                            .btn-area {
-                                .box {
-                                    width:196px;
-                                }
-                                .btn.border {
-                                    background:#f4f4f4;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            .tit {
-                display:block;
-                @include font-medium;
-                font-weight:700;
-                a, button {
-                    font-size:inherit;
-                    font-weight:inherit;
-                    line-height:inherit;
-                    vertical-align:top;
-                    text-align:left;
-                }
-            }
-            .desc {
-                color:#767676;
-                @include font-small;
-            }
-            .options {
-                color:#767676;
-                @include font-small;
-                @include clearfix;
-                & > li {
-                    position:relative;
-                    display:inline;
-                    &:after {
-                        content:'';
-                        display:inline-block;
-                        width:1px;
-                        height:10px;
-                        margin:7px 8px 0;
-                        background:#ddd;
-                    }
-                    &:last-child {
-                        margin:0;
-                        padding:0;
-                        &:after {
-                            content:none;
-                        }
-                    }
-                }
-            }
-            @include mobile {
-                & > li {
-                    padding:20px;
-                    .file-box {
-                        padding-right:0;
-                        .options {
-                            margin-top:4px;
-                        }
-                        .btn-area {
-                            position:static;
-                            width:100%;
-                            margin-top:20px;
-                            transform:translateY(0);
-                            @include clearfix;
-                            .box {
-                                float:left;
-                                width:auto;
-                                & + .box {
-                                    float:right;
-                                    margin:6px 0 0 0;
-                                }
-                            }
-                        }
-                    }
-                    .accord-cont {
-                        .driver-list {
-                            margin-top:20px;
-                            padding:16px;
-                            & > li {
-                                margin:16px 0 0 0;
-                                padding:16px 0 0 0;
-                                &:first-child {
-                                    margin:0;
-                                    padding:0;
-                                    border:none;
-                                }
-                                .btn-area {
-                                    .box {
-                                        float:none;
-                                        width:100%;
-                                        text-align:center;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                .options {
-                    & > li {
-                        &:after {
-                            margin:6px 6px 0;
+                        text-align:center;
+                        .btn {
+                            float:none;
                         }
                     }
                 }

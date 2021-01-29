@@ -319,6 +319,7 @@
                 popup                   : $('#reservationTimePopup'),
                 selectedEngineer        : $('#reservationTimePopup .engineer-to-visit'),
                 toggleOtherBtn          : $('#reservationTimePopup .engineer-to-visit .engineer-desc button'),
+                stepEngineer            : $('#reservationTimePopup #stepEngineer'),
                 toggleLayer             : $('#reservationTimePopup .toggle-layer'),
                 closeBtn                : $('#reservationTimePopup .toggle-layer .btn-layer-close'),
                 selectBtn               : $('#reservationTimePopup .toggle-layer .btn-select-engineer'),
@@ -360,7 +361,7 @@
                         date : $('input[name=date]').val(),
                         time : $('input[name=time]').val(),
                     }
-
+                    self.layerhide();
                     self.request(param);
                 });
 
@@ -493,7 +494,7 @@
             request : function(param) {
                 console.log('request')
                 var self = this;
-                var url = $('#stepEngineer').data('ajax');
+                var url = self.el.stepEngineer.data('ajax');
     
                 param = $.extend(param, self.dateParam);
     
@@ -507,12 +508,12 @@
                             self.update(arr[0]);
                             if (arr.length > 1) {
                                 var html = vcui.template(engineerTmpl, data);
-                                $('.choice-engineer').find('.slide-track').html(html);
-                                $('#stepEngineer').find('.btn').show();
+                                self.el.slider.find('.slide-track').html(html);
+                                self.el.stepEngineer.find('.btn').show();
                             } else {
-                                $('#stepEngineer').find('.btn').hide();
+                                self.el.stepEngineer.find('.btn').hide();
                             }
-                            $('#stepEngineer').addClass('active');
+                            self.el.stepEngineer.addClass('active');
                             //$('.choice-engineer .engineer-slider').vcCarousel('reinit');
                             //self.$completeBtns.show();
                         }
@@ -559,6 +560,10 @@
                     lockUserId: $('input[name=lockUserId]').val(),
                     date : $('input[name=date]').val(),
                 };
+
+                self.layerhide();
+                self.el.stepEngineer.removeClass('active');
+
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var data = result.data,
                         arr;
@@ -591,6 +596,9 @@
                     date : $('input[name=date]').val(),
                     time : $('input[name=time]').val(),
                 };
+
+                self.el.stepEngineer.removeClass("active");
+                self.layerhide();
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var data = result.data;
     
@@ -618,8 +626,8 @@
                     managerOpt = {
                         elem: {
                             form: '#reservationTimePopup',
-                            name: '#authName',
-                            phone: '#authPhoneNo',
+                            name: '#userNm',
+                            phone: '#phoneNo',
                             number: '#authNo'
                         },
                         register: authRegister

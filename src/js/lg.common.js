@@ -248,29 +248,17 @@
             $('img').not('[data-pc-src]').on('error', function(e){
                 $(this).off('error');
                 $(this).attr('src', '/lg5-common/images/icons/noimage.svg');
-                var parentwid = $(this).parent().width();
-                var parenthei = $(this).parent().height();
-                var wid = parentwid*.3;
-                var hei = parenthei*.3;
                 $(this).css({
-                    opacity: .5,
-                    width: wid,
-                    height: hei
+                    width:'100%'
                 });
             });
         },
 
-        _addImgErrorEvent: function(img){
+        addImgErrorEvent: function(img){
             img.onerror = null;
             $(img).attr('src', '/lg5-common/images/icons/noimage.svg');
-            var parentwid = $(this).parent().width();
-            var parenthei = $(this).parent().height();
-            var wid = parentwid*.3;
-            var hei = parenthei*.3;
             $(this).css({
-                opacity: .5,
-                width: wid,
-                height: hei
+                width:'100%'
             });
         },
 
