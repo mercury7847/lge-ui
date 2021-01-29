@@ -863,8 +863,8 @@
                 self._setResultText();
                 $('.result-list-box').stop().css({display:'block', opacity:0, y:100}).transition({opacity:1, y:0}, 410, "easeInOutCubic");
                 
-                var resultheight = $('.result-list-box').height();
-                self.$defaultListContainer.css({position:'absolute', top:listop}).transition({top:resultheight}, 420, "easeInOutCubic", function(){
+                var resultheight = $('.result-list-box').outerHeight() + 48;
+                self.$defaultListContainer.css({position:'fixed', top:listop}).transition({top:resultheight}, 420, "easeInOutCubic", function(){
                     self.$searchContainer.css('display', 'none');
                 });
 

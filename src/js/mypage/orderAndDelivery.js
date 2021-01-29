@@ -77,8 +77,6 @@
     var ORDER_LIST;
 
     function init(){
-        console.log("Order Inquiry Start!!!");
-    
         vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter'], function () {             
             setting();
             bindEvents();

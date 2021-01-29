@@ -9,7 +9,7 @@
                     '<li>{{date}}</li>' +
                     '<li>{{language}}</li>' +
                 ' </ul>' +
-                '<div class="btns-area">' +
+                '<div class="btn-wrap">' +
                     '{{# for (var i = 0; i < file.length; i++) { #}}' +
                     '<a href="{{file[i].src}}" class="btn border size btn-download"><span>{{file[i].type}}</span></a>' +
                     '{{# } #}}' +
@@ -18,19 +18,14 @@
         '</li>';
     var driverListTemplate = 
         '<li>' +
-            '<div class="head">' +
-                '<div class="file-box">' +
-                    '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{os}} {{title}}</button></p>' +
-                    '<ul class="options">' +
-                        '<li>{{version}}  {{category}}</li>' +
-                        '<li>{{driver}}</li>' +
-                        '<li>{{date}}</li>' +
-                    '</ul>' +
-                    '<div class="btn-area">' +
-                        '<div class="box">' +
-                            '<a href="{{file.src}}" class="btn border size"><span>다운로드 {{file.size}}</span></a>' +
-                        '</div>' +
-                    '</div>' +
+            '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{os}} {{title}}</button></p>' +
+            '<div class="info-wrap">' +
+                '<ul class="options">' +
+                    '<li>{{category}}</li>' +
+                    '<li>{{date}}</li>' +
+                ' </ul>' +
+                '<div class="btn-wrap">' +
+                    '<a href="{{file.src}}" class="btn border size btn-download"><span>다운로드 {{file.size}}</span></a>' +
                 '</div>' +
             '</div>' +
         '</li>';
@@ -262,10 +257,10 @@
                     listArr.forEach(function(item) {
                         html += vcui.template(manualListTemplate, item);
                     });
-                    self.manualSec.find('.manual-list').append(html).show();
+                    self.manualSec.find('.download-list').append(html).show();
                     self.manualSec.find('.no-data').hide();
                 } else {
-                    self.manualSec.find('.manual-list').html('').hide();
+                    self.manualSec.find('.download-list').html('').hide();
                     self.manualSec.find('.no-data').show();
                 }
 
@@ -285,12 +280,12 @@
                     listArr.forEach(function(item) {
                         html += vcui.template(driverListTemplate, item);
                     });
-                    self.driverSec.find('.driver-list').html(html).show();
+                    self.driverSec.find('.download-list').html(html).show();
                     self.driverSec.find('.pagination').show();
                     self.driverSec.find('.pagination').pagination('update', list.listPage);
                     self.driverSec.find('.no-data').hide();
                 } else {
-                    self.driverSec.find('.driver-list').html('').hide();
+                    self.driverSec.find('.download-list').html('').hide();
                     self.driverSec.find('.pagination').hide();
                     self.driverSec.find('.no-data').show();
                 }
@@ -321,44 +316,45 @@
                    $formWrap.hide();
                 }
             },
-            setDriverOption: function(list) {
-                var listArr = list instanceof Array ? list : [];
-                var html = "";
-
-                if (listArr.length) {
-                    listArr.forEach(function(item) {
-                        html += vcui.template('<option value="{{value}}">{{option}}</option>', item);
-                    });
-                
-                    this.driverSec.find('#driver').html(html);
-                    this.driverSec.find('#driver').vcSelectbox('update');
-                    this.driverSec.find('#driver').closest('.forms').show();
-                } else {
-                    this.driverSec.find('#driver').closest('.forms').hide();
-                }
-            },
-            setDriverType: function(list) {
-                var listArr = list instanceof Array ? list : [];
-                var html = "";
-                listArr.forEach(function(item) {
-                    html += vcui.template('<li><a href="#">{{type}}({{count}})</a></li>', item);
-                });
-                this.driverSec.find('.tabs-wrap ul').html(html);
-                this.driverSec.find('.tabs-wrap').vcTab('update').vcTab('select', 0);
-            },
-            searchAllList: function(formData) {
+            searchAllList: function(url, data) {
                 var self = this;
-                var ajaxUrl = '/lg5-common/data-ajax/support/downloadList.json';
 
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxDataPost(ajaxUrl, formData, function(result){
-                    var data = result.data;
+                lgkorUI.requestAjaxDataPost(url, data, function(result){
+                    var resultData = result.data;
     
-                    self.setManualList(data.manual);
-                    self.setDriverList(data.driver);
-                    self.setOsOption(data.driver.osOption);
-                    self.setDriverOption(data.driver.driverOption);
-                    self.setDriverType(data.driver.driver);
+                    self.setManualList(resultData.manual);
+                    self.setDriverList(resultData.driver);
+                    self.setOsOption(resultData.driver.osOption);
+
+                    $('.contents').commonModel('updateSummary', {
+                        product: [data.categoryNm, data.subCategoryNm, data.modelCode],
+                        reset: 'product'
+                    });
+                    
+                    self.$myProductWarp.hide();
+                    
+                    //업데이트 센터 바로가기 배너
+                    bannerToggle(data.subCategory)
+
+                    //하단 다른 서비스 추천
+                    otherService.initialize(resultData);
+
+                    //하단 관련 메뉴
+                    relatedInfo.initialize(resultData);
+
+                    //만족도 평가 박스 모델코드 삽입
+                    $('.survey-banner-wrap .model').html(data.modelCode);
+
+                    //optionUpdate('#os', resultData.driver.osOption);
+                    self.setOsOption(resultData.driver.osOption);
+                    self.setOsActive(data.subCategory)
+
+                    $('.contents').commonModel('next', self.$stepInput);
+                    $('.contents').commonModel('focus', self.$productBar, function() {
+                        self.$productBar.vcSticky();
+                    });
+
 
                     lgkorUI.hideLoading();
                 });
@@ -397,6 +393,7 @@
                     self.$cont.commonModel('next', self.$stepModel);
                     otherService.reset();
                     relatedInfo.reset();
+                    self.manualSec.find('.download-list').empty();
                     $('#driverKeyword').val('');
                     bannerToggle();
                 });
@@ -407,43 +404,13 @@
                         modelCode: data.modelCode,
                         serviceType: $('#serviceType').val(),
                         category: data.category,
-                        subCategory: data.subCategory
+                        categoryNm: data.categoryName,
+                        subCategory: data.subCategory,
+                        subCategoryNm: data.subCategoryName
                     };
                     defaultParam = param;
 
-                    lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                        var resultData = result.data;
-
-                        $('.contents').commonModel('updateSummary', {
-                            product: [data.categoryName, data.subCategoryName, data.modelCode],
-                            reset: 'product'
-                        });
-                        
-                        self.$myProductWarp.hide();
-                        
-                        //업데이트 센터 바로가기 배너
-                        bannerToggle(data.subCategory)
-
-                        //하단 다른 서비스 추천
-                        otherService.initialize(resultData);
-
-                        //하단 관련 메뉴
-                        relatedInfo.initialize(resultData);
-
-                        //만족도 평가 박스 모델코드 삽입
-                        $('.survey-banner-wrap .model').html(data.modelCode);
-
-                        //optionUpdate('#os', resultData.driver.osOption);
-                        self.setOsOption(resultData.driver.osOption);
-                        self.setOsActive(data.subCategory)
-
-                        $('.contents').commonModel('next', self.$stepInput);
-                        $('.contents').commonModel('focus', self.$productBar, function() {
-                            self.$productBar.vcSticky();
-                        });
-                    });
-
-                    
+                    self.searchAllList(url, param);
                 });
 
                 $(document).on('click', '.btn-download', function(e) {
@@ -538,7 +505,7 @@
                 
                 
 
-                self.driverSec.find('.driver-list-wrap').on('click', '.btn-info', function() {
+                self.driverSec.find('.download-list-wrap').on('click', '.btn-info', function() {
                     var ajaxUrl = $(this).data('href'),
                         param = $.extend({}, defaultParam, {
                             cSeq: $(this).data('cseq')

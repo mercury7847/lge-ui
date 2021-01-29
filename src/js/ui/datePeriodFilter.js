@@ -207,7 +207,7 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
         
                 var limitperiod = self.options.dateBetweenCheckYear * 1000 * 60 * 60 * 24 * 365;
                 if(period > limitperiod) {
-                    lgkorUI.alert("", {title: "최대 조회 기간은<br>2년을 넘을 수 없습니다."});
+                    lgkorUI.alert("", {title: "최대 조회 기간은<br>"+self.options.dateBetweenCheckYear+"년을 넘을 수 없습니다."});
                     return false;
                 }
             }

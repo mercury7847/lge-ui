@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["CS/CS"]
+        pageCSS: ["CS/CS"],
+        pageJS: ["customer/shopDetail"]
     })
 <body>
     <div class="wrap">
         <div class="container">
             <!-- 메장정보 -->
-            <div class="contents store-info-wrap">
+            <!-- 2021.1.28 -->
+            <div class="contents store-info-wrap"
+                data-map-id="vsay0tnzme"
+                data-app-key="oqYmIfzrl6E72lYDAvNeII5x9wEWUNwKrcUctzVa"
+                data-latitude="37.5235644" 
+                data-longitude="127.0395764"
+                data-shop-name="강남본점"
+            >
                 <div class="cont-wrap">
                     <div class="headline">
                         <h1 class="h1-tit">매장 정보</h1>
@@ -233,9 +241,13 @@
                                                         <img src="/lg5-common/images/dummy/@img-pop-event.jpg" alt="매장사진">
                                                     </div>
                                                     <div class="desc">
-                                                        <p class="subject">최대 2줄까지 노출 되는 것으로 정의 이벤트 타이틀 최대 2줄 이벤트 타이틀 최대 2줄 이벤트 타이틀 최대 2줄
-                                                            이벤트 타이틀 최대 2줄</p>
-                                                        <p class="date">2020.03.03~2020.09.21</p>
+                                                        <!-- 2021.1.28 a 태그 추가-->            
+                                                        <a href="#n">
+                                                            <p class="subject">최대 2줄까지 노출 되는 것으로 정의 이벤트 타이틀 최대 2줄 이벤트 타이틀 최대 2줄 이벤트 타이틀 최대 2줄
+                                                                이벤트 타이틀 최대 2줄</p>
+                                                            <p class="date">2020.03.03~2020.09.21</p>
+                                                        </a>
+                                                        <!-- //2021.1.28 a 태그 추가-->            
                                                     </div>
                                                 </div>
                                             </div>
@@ -247,8 +259,12 @@
                                                         <img src="/lg5-common/images/dummy/@img-pop-event.jpg" alt="매장사진">
                                                     </div>
                                                     <div class="desc">
-                                                        <p class="subject">결혼X이사 이벤트</p>
-                                                        <p class="date">2020.03.03~2020.09.21</p>
+                                                        <!-- 2021.1.28 a 태그 추가-->            
+                                                        <a href="#n">
+                                                            <p class="subject">결혼X이사 이벤트</p>
+                                                            <p class="date">2020.03.03~2020.09.21</p>
+                                                        </a>
+                                                        <!-- //2021.1.28 a 태그 추가-->            
                                                     </div>
                                                 </div>
                                             </div>
@@ -260,8 +276,12 @@
                                                         <img src="/lg5-common/images/dummy/@img-pop-event.jpg" alt="매장사진">
                                                     </div>
                                                     <div class="desc">
-                                                        <p class="subject">결혼X이사 이벤트</p>
-                                                        <p class="date">2020.03.03~2020.09.21</p>
+                                                        <!-- 2021.1.28 a 태그 추가-->            
+                                                        <a href="#n">
+                                                            <p class="subject">결혼X이사 이벤트</p>
+                                                            <p class="date">2020.03.03~2020.09.21</p>
+                                                        </a>
+                                                        <!-- // 2021.1.28 a 태그 추가-->            
                                                     </div>
                                                 </div>
                                             </div>
@@ -272,9 +292,13 @@
                                                     <div class="img">
                                                         <img src="/lg5-common/images/dummy/@img-pop-event.jpg" alt="매장사진">
                                                     </div>
-                                                    <div class="desc">
-                                                        <p class="subject">결혼X이사 이벤트</p>
-                                                        <p class="date">2020.03.03~2020.09.21</p>
+                                                    <div class="desc">   
+                                                        <!-- 2021.1.28 a 태그 추가-->                                                     
+                                                        <a href="#n"> 
+                                                            <p class="subject">결혼X이사 이벤트</p>
+                                                            <p class="date">2020.03.03~2020.09.21</p>
+                                                        </a>
+                                                        <!-- //2021.1.28 a 태그 추가-->
                                                     </div>
                                                 </div>
                                             </div>
@@ -289,11 +313,12 @@
                             <div class="info-list">
                                 <div class="info-tit-wrap">
                                     <h3 class="h3-tit">오시는길</h3>
-                                    <a href="#n" class="btn border size"><span>길찾기</span></a>
+                                    <a href="#n" target="_balnk" class="btn border size searchRoad-btn"><span>길찾기</span></a> <!-- 2021.1.28 class 추가-->
                                 </div>
+                                <!-- 2021.1.28 img 삭제-->
                                 <div class="map">
-                                    <img src="/lg5-common/images/dummy/@img-map3.jpg" alt="">
                                 </div>
+                                <!-- //2021.1.28 img 삭제-->
                                 <div class="tabs-wrap border-type ui_tab">
                                     <ul class="tabs">
                                         <li class="on"><a href="#tab1">버스<em class="blind">선택됨</em></a></li>
@@ -354,63 +379,5 @@
             <!-- // 메장정보 -->
         </div>
     </div>
-
-    <script>
-        $(function(){
-            vcui.require(['ui/carousel'], function () {
-                $('.photo .ui_carousel_slider').vcCarousel({
-                    infinite: false,
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    variableWidth : true,
-                    responsive: [
-                        {
-                            breakpoint: 10000,
-                            settings: {
-                                infinite: false,
-                                variableWidth : false,
-                                dots: true,
-                                slidesToShow: 2,
-                                slidesToScroll: 2
-                                
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                infinite: false,
-                                variableWidth : true,
-                                dots: true,
-                                slidesToShow: 1, 
-                                slidesToScroll: 1
-                            }
-                        }
-                    ]
-                });
-
-                $('.event .ui_carousel_slider').vcCarousel({
-                    infinite: false,
-                    slidesToShow: 2, 
-                    slidesToScroll: 2,
-                    responsive: [
-                        {
-                            breakpoint: 10000,
-                            settings: 'unslick'
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                infinite: false,
-                                variableWidth : true,
-                                dots: true,
-                                slidesToShow: 1, 
-                                slidesToScroll: 1
-                            }
-                        }
-                    ]
-                });
-            });
-        });
-    </script>
 </body>
 </html>
