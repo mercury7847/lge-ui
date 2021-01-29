@@ -161,6 +161,11 @@
                     background-image:url(/lg5-common/images/icons/icon_small-appliances.svg);
                 }
             }
+            @include mobile {
+                li {
+                    margin-left: 24px;
+                }
+            }
         }
         .store-list-wrap {
             width: 520px;
@@ -184,6 +189,7 @@
                 }
             }
             .sch-box {
+                transition: all ease .1s;
                 .form-wrap {
                     padding-bottom:48px;
                     .box {
@@ -201,6 +207,18 @@
                     }
                     .keyword-search {
                         margin-top:8px;
+                    }
+                }
+                .tabs-wrap {
+                    &.border-type {
+                        .tabs {
+                            >li {
+                                margin-left: 32px;
+                                > a {
+                                    padding-bottom: 16px;
+                                }
+                            }
+                        }
                     }
                 }
                 .tabs-contents {
@@ -231,6 +249,11 @@
                             margin-top:6px;
                         }
                     }
+                    .tabs-contents {
+                        .desc {
+                            padding-top: 0;
+                        }
+                    }
                 }
             }
             .sch-list {
@@ -256,6 +279,7 @@
                                         font-size: 14px;
                                         display: flex;
                                         align-items: center;
+                                        flex-wrap: wrap;
                                         .key {
                                             color: #000;
                                         }
@@ -265,6 +289,11 @@
                                         .cell {
                                             &:nth-of-type(n+2) {
                                                 margin-left: 24px;
+                                            }
+                                            &:last-child {
+                                                margin-left: 0;
+                                                margin-top: 8px;
+                                                width: 100%;
                                             }
                                         }
                                     }
@@ -364,6 +393,60 @@
                                 padding:0;
                             }
                         }
+                    }
+                }
+            }
+            &.active {
+                .result-list-box {
+                    position: static;
+                }
+            }
+            @include pc {
+                h2.tit,
+                .sch-box {
+                    opacity: 1;
+                    transition: opacity 0.5s ease 0.4s;
+                }
+                .result-list-box {
+                    position: absolute;
+                    display: block;
+                }
+                h2.tit,
+                .store-list-box {
+                    transform: translateY(0);
+                    transition: transform ease 0.5s;
+                }
+                &.active {
+                    h2.tit,
+                    .store-list-box {
+                        transform: translateY(-284px);
+                    }
+                    .tabs-contents {
+                        .desc {
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                .view-info-btn {
+                    position: absolute;
+                    bottom: 40px;
+                }
+                .store-list-box {
+                    transform: translateY(0);
+                    transition: transform ease-out .5s;
+                }
+                &.active {
+                    .sch-box {
+                        display: none;
+                    }
+                    .store-list-box {
+                        position: fixed;
+                        transform: translateY(-339px);
+                    }
+                    .result-list-box {
+                        display: block;
                     }
                 }
             }
