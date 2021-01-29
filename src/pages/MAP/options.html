@@ -244,10 +244,12 @@
             $(".time-setting input").on({
                 click : function(e){
                     var value = $(this).val();
+
+                    var attrId = $(this).attr("id");
+                    var el = document.getElementById(attrId);
                     $(this).closest("div").find("[class*=rst-time]").text(value);
                     oldStartValue = $(this).closest(".inner").find("div").eq(0).find("input").val();
                     oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
-
                     //console.log(e);
                 },
                 focusin : function(){
