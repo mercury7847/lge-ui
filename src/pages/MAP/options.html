@@ -18,6 +18,7 @@
         var month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
         var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
         var today = month + "/" + day + "/" + fullYear + " ";
+        var events = false;
 
         var beforeFocusEle = "";
         var optModal = {
@@ -61,6 +62,7 @@
                 $body.append(html);
                 $("#"+id).fadeIn(200, function(){
                     //접근성
+                    $(this).find(".lyr-modal-inner").attr("tabindex", 0);
                     $(this).find(".lyr-modal-inner").attr("tabindex", 0).focus();
                     $(".main-panel, .sub-panel").attr("aria-hidden", true);
                 });
@@ -248,6 +250,8 @@
                     $(this).closest("div").find("[class*=rst-time]").text(value);
                     oldStartValue = $(this).closest(".inner").find("div").eq(0).find("input").val();
                     oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
+
+                    events = true;
                     //console.log(e);
                 },
                 focusin : function(){
@@ -291,6 +295,8 @@
                             toastMessage.init("에티켓 시간이 설정되었습니다.");
                         }
                     }
+
+                    events = true;
                 },
                 blur: function(){
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -315,6 +321,10 @@
                             return false;
                         }else{
                             toastMessage.init("에티켓 시간이 설정되었습니다.");
+                        }
+
+                        if(events){
+                            $(this).attr("tabindex", 0).focus();
                         }
                     }
 
@@ -397,8 +407,8 @@
                     $(".sub-panel.alarm-setting").stop().animate({"left":"0"}, 250, function(){
                         //접근성
                         $(this).attr("aria-hidden", false);
-                        $(this).siblings("div").attr("aria-hidden", true);
                         $(this).attr("tabindex", 0).focus();
+                        $(this).siblings("div").attr("aria-hidden", true);
                     });
                 }
             });
@@ -408,8 +418,8 @@
                     $(".main-panel").stop().animate({"left":"0"}, 250, function(){
                         //접근성
                         $(this).attr("aria-hidden", false);
-                        $(this).siblings("div").attr("aria-hidden", true);
                         $(this).attr("tabindex", 0).focus();
+                        $(this).siblings("div").attr("aria-hidden", true);
                     });
                     $(".sub-panel.alarm-setting").stop().animate({"left":"100%"}, 250);
                 }
@@ -421,8 +431,8 @@
                     $(".sub-panel.source-license").stop().animate({"left":"0"}, 250, function(){
                         //접근성
                         $(this).attr("aria-hidden", false);
-                        $(this).siblings("div").attr("aria-hidden", true);
                         $(this).attr("tabindex", 0).focus();
+                        $(this).siblings("div").attr("aria-hidden", true);
                     });
                 }
             });
@@ -431,9 +441,9 @@
                 click : function(){
                     $(".main-panel").stop().animate({"left":"0"}, 250, function(){
                         //접근성
-                        $(this).attr("aria-hidden", false)
-                        $(this).siblings("div").attr("aria-hidden", true);
+                        $(this).attr("aria-hidden", false);
                         $(this).attr("tabindex", 0).focus();
+                        $(this).siblings("div").attr("aria-hidden", true);
                     });
                     $(".sub-panel.source-license").stop().animate({"left":"100%"}, 250);
                 }
@@ -445,18 +455,6 @@
                     optModal.open("modalShopInfo", "alertdialog", "<em>쇼핑정보가 필요하신가요?</em><p>마케팅 수신동의하고 <br>다양한 이벤트 및 혜택을 받아보세요!</p>", "동의", "동의안함");
                 }
             });
-            /*
-            $(".opt-switch input").on({
-                change : function(){
-                    var checked = $(this).prop("checked");
-                    if(checked){
-                        $(this).siblings("span").text("ON");
-                    }else{
-                        $(this).siblings("span").text("OFF");
-                    }
-                }
-            });
-            */
         });
     </script>
 
@@ -473,10 +471,10 @@
     <div class="rst-event" style="position:fixed;left:0;bottom:0;width:100%;height:auto;background:rgba(0, 0, 0, 0.7);color:#fff;z-index:10000"></div>
 
     <div class="lyr-opt-panel">
-        <div class="main-panel" aria-hidden="true" tabindex="0">
+        <div class="main-panel" aria-hidden="true" aria-labelledby="main-panel-title" tabindex="0">
             <div class="gap"></div>
             <div class="opt-header">
-                <h1>설정</h1>
+                <h1 id="main-panel-title">설정</h1>
                 <button type="button" class="btn-opt-close"><span>설정 닫기</span></button>
             </div>
 
@@ -557,10 +555,10 @@
         </div>
         <!-- //설정 메인 -->
 
-        <div class="sub-panel alarm-setting" aria-hidden="true" tabindex="0">
+        <div class="sub-panel alarm-setting" aria-hidden="true" aria-labelledby="sub-panel-title01" tabindex="0">
             <div class="opt-header type-sub">
                 <button type="button" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
-                <h1>알림설정</h1>
+                <h1 id="sub-panel-title01">알림설정</h1>
             </div>
 
             <div class="opt-container">
@@ -632,10 +630,10 @@
         </div>
         <!-- //알림성정 -->
 
-        <div class="sub-panel source-license" aria-hidden="true" tabindex="0">
+        <div class="sub-panel source-license" aria-hidden="true" aria-labelledby="sub-panel-title02" tabindex="0">
             <div class="opt-header type-sub">
                 <button type="button" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
-                <h1>오픈소스 라이선스</h1>
+                <h1 id="sub-panel-title02">오픈소스 라이선스</h1>
             </div>
             <div class="opt-container">
                 <div>

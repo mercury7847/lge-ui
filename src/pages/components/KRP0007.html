@@ -114,11 +114,12 @@
         ];
     </script>
     <div class="hidden-input-group">
+        <!-- categoryId 을 가져오기 위한 부분 -->
+        <input type="hidden" name="categoryId" value="test_categoryID">
+        <!-- 페이지 더보기 -->
         <input type="hidden" name="totalCount" value="1">
         <input type="hidden" name="page" value="1">
     </div>
-    <!-- <input type="hidden" name="categoryId" value="CT30005620"> -->
-    <!-- categoryId 을 가져오기 위한 테스트 용 -->
     
     <div class="wrap">
         @@include('./common/header.html')
@@ -135,6 +136,8 @@
                 <!-- component KRC0009 -->
                 <section class="component KRP0007" aria-label="product list"
                     data-prod-list="/lg5-common/data-ajax/KRP0007/retrieveCategoryProductList.json"
+                    data-wish-url="/lg5-common/data-ajax/KRP0007/plpWish.json"
+                    data-cart-url="/lg5-common/data-ajax/KRP0007/plpCart.json"
                 >
                     <!-- component -->
                    @@include('./common/partials/KRP0007-cate.html')

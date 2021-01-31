@@ -466,7 +466,6 @@ var FilterLayer = (function() {
                 var $btnFilter = self.$targetFilterButton;
 
                 for(key in data){
-                    //console.log(data[key]); //-> 키값, 모든 value 출력
                     var findRange = self.$layFilter.find('.ui_filter_slider[name="'+key+'"]');
                     if(findRange.length > 0) {
                         selectedFilter = true;
@@ -558,9 +557,9 @@ var FilterLayer = (function() {
                 '</div>' +
                 '<div class="slide-content ui_carousel_list">' +
                     '<div class="slide-track ui_carousel_track">' +
-                        '{{#each (item, idx) in sliderImages}}'+
+                        '{{#each (image, idx) in sliderImages}}'+
                             '<div class="slide-conts ui_carousel_slide">' +
-                                '<a href="#"><img src="{{item}}" alt="{{modelDisplayName}} {{idx}]번 이미지"></a>' +
+                                '<a href="#"><img src="{{image}}" alt="{{modelDisplayName}} {{idx + 1}}]번 이미지"></a>' +
                             '</div>' +
                         '{{/each}}'+
                     '</div>' +
@@ -572,21 +571,21 @@ var FilterLayer = (function() {
             '</div>' +
         '</div>' +
         '<div class="product-contents">' +
-            '<div class="product-option ui_smooth_scrolltab {{#raw siblingType}}">' +
+            '<div class="product-option ui_smooth_scrolltab {{siblingType}}">' +
                 '<div class="ui_smooth_tab">' +
                     '<ul class="option-list" role="radiogroup">' +
                         '{{#each item in siblingModels}}'+
-                            // '<li>'+
-                            //     '<div role="radio" class="{{#if siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
-                            //         '<input type="radio" data-category-id={{categoryId}} id="product-{{item.modelName}}" name="nm_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
-                            //         '{{#if siblingType=="color"}}'+
-                            //             '<label for="product-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
-                            //         '{{#else}}'+
-                            //             '<label for="product-{{item.modelName}}">{{item.siblingValue}}</label>'+
-                            //         '{{/if}}'+
-                            //     '</div>'+
-                            // '</li>'+
-                        '{{/each}}'+
+                            '<li>'+
+                                '<div role="radio" class="{{#if siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
+                                    '<input type="radio" data-category-id={{categoryId}} id="product-{{item.modelName}}" name="nm_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
+                                    '{{#if siblingType=="color"}}'+
+                                        '<label for="product-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
+                                    '{{#else}}'+
+                                        '<label for="product-{{item.modelName}}">{{item.siblingValue}}</label>'+
+                                    '{{/if}}'+
+                                '</div>'+
+                            '</li>'+
+                        '{{/each}}' +
                     '</ul>' +
                 '</div>' +
                 '<div class="scroll-controls ui_smooth_controls">' +
@@ -600,210 +599,73 @@ var FilterLayer = (function() {
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-name">' +
-                    '<a href="#">{{#raw modelDisplayName}}</a>' +
+                    '<a href="#">{{modelDisplayName}}</a>' +
                 '</div>' +
-                '<div class="sku">{{#if salesModelCode}}{{#raw salesModelCode}}{{/if}}</div>' +
+                '<div class="sku">{{#if salesModelCode}}{{salesModelCode}}{{/if}}</div>' +
                     '<div class="review-info">' +
                         '<a href="#">' +
                             '{{#if (reviewsCount > 0)}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
-                            '<div class="average-rating"><span class="blind">평점</span>{{#raw reviewsScore}}</div>' +
-                            '<div class="review-count"><span class="blind">리뷰 수</span>({{#raw reviewsCount}})</div>' +
+                            '<div class="average-rating"><span class="blind">평점</span>{{reviewsScore}}</div>' +
+                            '<div class="review-count"><span class="blind">리뷰 수</span>({{reviewsCount}})</div>' +
                         '</a>' +
                     '</div>' +
                     '<ul class="spec-info">' +
-                    // '{{#raw bulletFeatures}}' +
-                        // '{{#if bulletFeatures}}' +
-                            '{{#each item222 in bulletFeatures}}' +
-                                // '<li>{{#raw item}}</li>' +
-                            '{{/each}' +
+                        '{{#if bulletFeatures}}' +
+                            '{{#each item in bulletFeatures}}' +
+                                '<li>{{#raw item}}</li>' +
+                            '{{/each}}' +
                         // <li><span class="title">용량 : </span>840L</li>
                         // <li><span class="title">전체크기(WxHxD) : </span>912 x 1,790 x 927 mm</li>
                         // <li><span class="title">형태 : </span>노크온 매직스페이스</li>
                         // <li><span class="title">패턴 : </span>미드나잇</li>
                         // <li><span class="care-option">케어십 가능</span></li>
-                        // '{{/if}}' +
+                        '{{/if}}' +
                     '</ul>' +
                 '</div>' +
-            '</div>'
-            // '<div class="product-bottom">' +
-            //     '<div class="flag-wrap bar-type">' +
-            //         '{{#if cashbackBadgeFlag}}<span class="flag">캐시백</span>{{/if}}' +
-            //     '</div>' +
-            //     '<div class="price-area">' +
-            //         '{{#if obsOriginalPrice}}<div class="original">' +
-            //             '<em class="blind">판매가격</em>' +
-            //             '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-            //         '</div>{{/if}}' +
-            //         '{{#if obsTotalDiscountPrice}}<div class="total">' +
-            //             '<em class="blind">총 판매가격</em>' +
-            //             '<span class="price">{{obsTotalDiscountPrice}}<em>원</em></span>' +
-            //         '</div>{{/if}}' +
-            //     '</div>' +
-            //     '<div class="btn-area-wrap">' +
-            //         '<div class="wishlist">' +
-            //             '<span class="chk-wish-wrap large">' +
-            //                 '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" {{#if wishListFlag}}checked{{/if}}>' +
-            //                 '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>' +
-            //             '</span>' +
-            //         '</div>' +
-            //         '<div class="cart">' +
-            //             '<a href="#n" class="btn-cart" data-id="{{modelId}}" {{#if !cartListFlag}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
-            //         '</div>' +
-            //         '<div class="btn-area">' +
-            //             '<a href="#n" class="btn border size-m" data-id="{{modelId}}">자세히 보기</a>' +
-            //         '</div>' +
-            //     '</div>' +
+            '</div>' +
+            '<div class="product-bottom">' +
+                '<div class="flag-wrap bar-type">' +
+                    '{{#if cashbackBadgeFlag}}<span class="flag">캐시백</span>{{/if}}' +
+                '</div>' +
+                '<div class="price-area">' +
+                    '{{#if obsOriginalPrice}}<div class="original">' +
+                        '<em class="blind">판매가격</em>' +
+                        '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
+                    '</div>{{/if}}' +
+                    '{{#if obsTotalDiscountPrice}}<div class="total">' +
+                        '<em class="blind">총 판매가격</em>' +
+                        '<span class="price">{{obsTotalDiscountPrice}}<em>원</em></span>' +
+                    '</div>{{/if}}' +
+                '</div>' +
+                '<div class="btn-area-wrap">' +
+                    '<div class="wishlist">' +
+                        '<span class="chk-wish-wrap large">' +
+                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{modelName}}" {{#if wishListFlag}}checked{{/if}}>' +
+                            '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>' +
+                        '</span>' +
+                    '</div>' +
+                    '<div class="cart">' +
+                        '<a href="#n" class="btn-cart" data-id="{{modelId}}" data-model-name="{{modelName}}" {{#if !cartListFlag}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
+                    '</div>' +
+                    '<div class="btn-area">' +
+                        '<a href="{{detailUrl}}" class="btn border size-m" data-id="{{modelId}}">자세히 보기</a>' +
+                    '</div>' +
+                '</div>' +
             '</div>' +
             '<div class="product-compare">' +
-                '<a href="#n" data-id="{{modelId}}"><span>비교하기</span></a>' +
+                '<a href="#" data-id="{{modelId}}"><span>비교하기</span></a>' +
             '</div>' +
         '</div>' +
     '</li>';
-// <!-- 비활성화 시 btn-cart .disabled 추가 -->
                     
-    var productItemTmpl2 = 
-                '<li>'+
-                '   <div class="item plp-item">'+
-                '       {{#if isPromotionBadge}}'+
-                '       <div class="badge">'+
-                '           <div class="flag-wrap image-type left">'+
-                '               {{#each badge in promotionBadge}}'+
-                '               <span class="big-flag">'+
-                '                   <img src="{{badge.image}}" alt="{{badge.context}}">'+
-                '               </span>'+
-                '               {{/each}}'+
-                '           </div>'+
-                '       </div>'+
-                '       {{/if}}'+
-                '       <div class="product-image" aria-hidden="true">'+
-                '           <div class="slide-wrap ui_plp_carousel">'+
-                '               <div class="indi-wrap">'+
-                '                   <ul class="indi-conts ui_carousel_dots">'+
-                '                       <li><button type="button" class="btn-indi"><span class="blind">##no##번 내용 보기</span></button></li>'+
-                '                   </ul>'+
-                '               </div>'+
-                '               <div class="slide-content ui_carousel_list">'+
-                '                   <div class="slide-track ui_carousel_track">'+
-                '                       {{#each item in sliderImages}}'+
-                '                       <div class="slide-conts ui_carousel_slide">'+
-                '                           <a href="#">'+
-                '                               <img src="{{item}}" alt="{{userFriendlyName}}">'+
-                '                           </a>'+
-                '                       </div>'+
-                '                       {{/each}}'+
-                '                   </div>'+
-                '               </div>'+
-                '               <div class="slide-controls">'+
-                '                   <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>'+
-                '                   <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>'+
-                '               </div>'+
-                '           </div>'+
-                '       </div>'+
-                '       <div class="product-contents">'+     
-                '           {{#if defaultSiblingModelFlag}}'+      
-                '           <div class="product-option {{siblingType}} ui_smooth_scrolltab">'+
-                '               <div class="ui_smooth_tab">'+
-                '                   <ul class="option-list" role="radiogroup">'+
-                '                       {{#each item in siblingModels}}'+
-                '                       <li>'+
-                '                           <div role="radio" class="{{#if siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
-                '                               <input type="radio" data-category-id={{categoryId}} id="product-{{item.modelName}}" name="nm_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
-                '                               {{#if siblingType=="color"}}'+
-                '                               <label for="product-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
-                '                               {{#else}}'+
-                '                               <label for="product-{{item.modelName}}">{{item.siblingValue}}</label>'+
-                '                               {{/if}}'+
-                '                           </div>'+
-                '                       </li>'+
-                '                       {{/each}}'+
-                '                   </ul>'+
-                '               </div>'+
-                '               <div class="scroll-controls ui_smooth_controls">'+
-                '                   <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>'+
-                '                   <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>'+
-                '               </div>'+
-                '           </div>'+
-                '           {{/if}}'+                
-                '           {{#if isBadge}}'+ 
-                '           <div class="flag-wrap bar-type">'+  
-                '               {{#if productTag1}}'+ 
-                '               <span class="flag">{{productTag1}}</span>'+
-                '               {{/if}}'+ 
-                '               {{#if productTag2}}'+ 
-                '               <span class="flag">{{productTag2}}</span>'+
-                '               {{/if}}'+ 
-                '           </div>'+
-                '           {{/if}}'+   
-                '           <div class="product-info">'+
-                '               <div class="product-name">'+
-                '                   <a href="#">{{userFriendlyName}}</a>'+
-                '               </div>'+                
-                '               <div class="sku">{{modelName}}</div>'+                
-                '               <div class="review-info">'+
-                '                   <a href="#">'+                        
-                '                       <div class="star is-review"><span class="blind">리뷰있음</span></div>'+
-                '                       <div class="average-rating"><span class="blind">평점</span>42</div>'+
-                '                       <div class="review-count"><span class="blind">리뷰 수</span>(36)</div>'+
-                '                   </a>'+
-                '               </div>'+    
-                '               <ul class="spec-info">'+
-                '                   {{#if isSpecInfo}}'+
-                '                       {{#each item in specInfos}}'+
-                '                           <li>{{#if item.specName != ""}}<span class="title">{{item.specName}} : </span>{{/if}}{{item.specInfo}}</li>'+
-                '                       {{/each}}'+
-                '                   {{/if}}'+
-                '                   {{#if isCareShip}}'+
-                '                           <li><span class="care-option">케어십 가능</span></li>'+
-                '                   {{/if}}'+
-                '               </ul>'+
-                '           </div>'+
-                '       </div>'+
-                '       <div class="product-bottom">'+            
-                '           <div class="flag-wrap bar-type">'+                
-                '               <span class="flag">캐시백</span>'+                
-                '               <span class="flag">사은품</span>'+                
-                '           </div>'+
-                '           <div class="price-area">'+      
-                '               {{#if rPrice}}'+          
-                '               <div class="original">'+
-                '                   <em class="blind">판매가격</em>'+
-                '                   <span class="price">{{rPrice}}<em>원</em></span>'+
-                '               </div>'+ 
-                '               {{/if}}'+
-                '               {{#if rPromoPrice}}'+
-                '               <div class="total">'+
-                '                   <em class="blind">총 판매가격</em>'+
-                '                   <span class="price">{{rPromoPrice}}<em>원</em></span>'+
-                '               </div>'+
-                '               {{/if}}'+
-                '           </div>'+            
-                '           <div class="btn-area-wrap">'+
-                '               <div class="wishlist">'+
-                '                   <span class="chk-wish-wrap large">'+
-                '                       <input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}">'+
-                '                       <label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>'+
-                '                   </span>'+
-                '               </div>'+
-                '               <div class="cart">'+
-                '                   <a href="#n" class="btn-cart" data-id="{{modelId}}"><span class="blind">장바구니 담기</span></a>'+
-                '               </div>'+
-                '               <div class="btn-area">'+
-                '                   <a href="#n" class="btn border" data-id="{{modelId}}">자세히 보기</a>'+
-                '               </div>'+
-                '           </div>'+
-                '       </div>'+
-                '       <div class="product-compare">'+
-                '           <a href="#n" data-id="{{modelId}}"><span>비교하기</span></a>'+
-                '       </div>'+        
-                '   </div>'+
-                '</li>';
-
     $(window).ready(function(){
         if(!document.querySelector('.KRP0007')) return false;
 
         $('.KRP0007').buildCommonUI();
 
-        var storageName =   '__lgeProductFilter';
+        var categoryId = lgkorUI.getHiddenInputData().categoryId;
+        var storageName = categoryId+'_lgeProductFilter';
+        
         var savedFilterArr = firstFilterList || []; // CMS에서 넣어준 firstFilterList를 이용
 
         var KRP0007 = {
@@ -812,6 +674,11 @@ var FilterLayer = (function() {
 
                 self.setting();
                 self.bindEvents();
+
+                //breackpoint 이벤트 초기실행
+                self.fnBreakPoint();
+                //비교하기 체크
+                self.setCompares();
 
                 self.filterLayer = new FilterLayer(self.$layFilter, self.$categorySelect, self.$listSorting, self.$btnFilter, function (data) {
                     //console.log(data);
@@ -838,7 +705,7 @@ var FilterLayer = (function() {
                     }
                     filterData = storageFilterData;
                 }
-                self.filterLayer.resetFilter(filterData, true);
+                self.filterLayer.resetFilter(filterData, false);
             },
 
             setting: function() {
@@ -875,6 +742,72 @@ var FilterLayer = (function() {
 
             bindEvents: function() {
                 var self = this;
+                
+                //찜하기
+                self.$productList.on('click','li div.btn-area-wrap div.wishlist input',function(e){
+                    var $this = $(this);
+                    var _id = $this.attr('data-id');
+                    var modelName = $this.attr('data-model-name');
+                    var wish = $this.is(':checked');
+                    var param = {
+                        "id":_id,
+                        "modelName":modelName
+                    }
+                    
+                    var ajaxUrl = self.$section.attr('data-wish-url');
+                    
+                    var success = function(data) {
+                        //$this.attr("data-wishItemId",data.wishItemId);
+                    };
+                    var fail = function(data) {
+                        $this.prop("checked",!wish);
+                    };
+
+                    lgkorUI.requestWish(
+                        param,
+                        wish,
+                        success,
+                        fail,
+                        ajaxUrl
+                    );
+                });
+
+                //장바구니
+                self.$productList.on('click','li div.btn-area-wrap div.cart a',function(e){
+                    e.preventDefault();
+                    var $this = $(this);
+                    var param = {
+                        "id":$this.attr('data-id'),
+                        "modelName":$this.attr('data-model-name')
+                    }
+                    var ajaxUrl = self.$section.attr('data-cart-url');
+                    lgkorUI.requestCart(ajaxUrl, param);
+                });
+
+                //자세히보기
+                /*
+                self.$productList.on('click','li div.btn-area-wrap div.btn-area a',function(e){
+                    e.preventDefault();
+                });
+                */
+
+                //비교하기
+                self.$productList.on('click', 'li .product-compare a', function(e){
+                    e.preventDefault();
+                    self.setCompareState(e.currentTarget);
+                });
+
+                //비교하기 컴포넌트 변화 체크
+                $(window).on("changeStorageData", function(){
+                    self.setCompares();
+                })
+
+                // 브레이크포인트 이벤트 처리
+                $(window).on('breakpointchange.filter', function(e,data){
+                    self.fnBreakPoint();
+                });
+
+                //더보기
                 self.$btnMore.on('click', function(e) {
                     var param = self.filterLayer.getDataFromFilter();
                     var hiddenData = lgkorUI.getHiddenInputData();
@@ -905,9 +838,17 @@ var FilterLayer = (function() {
             requestSearch: function(data, isNew){
                 var self = this;
                 var ajaxUrl = self.$section.attr('data-prod-list');
+                data.categoryId = categoryId;                
                 lgkorUI.requestAjaxData(ajaxUrl, data, function(result){
                     var data = result.data;
                     var param = result.param;
+
+                    if(data.schCategoryId && data.schCategoryId.length > 0) {
+                        categoryId = data.schCategoryId;
+                        lgkorUI.setHiddenInputData({
+                            "categoryId":categoryId
+                        });
+                    }
                     
                     var totalCount = data.totalCount;
                     if(totalCount) {
@@ -946,56 +887,83 @@ var FilterLayer = (function() {
                         //찜하기
                         item.cartListFlag = lgkorUI.stringToBool(item.cartListFlag);
                         
-                        console.log(item);
                         self.$productList.append(vcui.template(productItemTemplate, item));
 
                         self.$productList.find('.ui_plp_carousel').vcCarousel('reinit');
                         self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
+
+                        self.fnBreakPoint();
+                        self.setCompares();
                     });
-
-                    /*
-                    for(var i=0; i<arr.length; i++){
-                        var data = arr[i];
-    
-                        var siblingType = data.siblingType ? data.siblingType.toLowerCase() : '';
-                        siblingType = siblingType=="color"? "color" : "text";
-
-                        var sliderImages = data.modelRollingImgList.split(',');
-    
-                        item.obsOriginalPrice = item.obsOriginalPrice ? vcui.number.addComma(item.obsOriginalPrice) : null;
-                        item.obsTotalDiscountPrice = item.obsTotalDiscountPrice ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
-
-
-
-                        if(data.rPromoPrice) data.rPromoPrice = vcui.number.addComma(data.rPromoPrice);
-    
-                        var isBigPromotion = data.bigPromotionText && data.bigPromotionImage || false;
-                        var isPrice = data.rPrice && data.discountedRate || false;
-                        var isPromotion = data.promotionText1 || data.promotionText2 || false;
-                        var isBadge = data.productTag1 || data.productTag2;
-                        var isSpecInfo = data.specInfos || false;
-                        var isBenefit = data.benefitInfos || false;
-                        var isCareShip = data.isCareShip || false;
-                        var isPromotionBadge = data.promotionBadge && data.promotionBadge.length > 0 ? true : false;
-    
-                        var obj = vcui.extend(arr[i],{
-                            isBigPromotion : isBigPromotion, 
-                            sliderImages : sliderImages, 
-                            siblingType: siblingType, 
-                            isPrice : isPrice, 
-                            isPromotion : isPromotion, 
-                            isBadge : isBadge, 
-                            isSpecInfo : isSpecInfo, 
-                            isBenefit : isBenefit, 
-                            isCareShip : isCareShip,
-                            isPromotionBadge : isPromotionBadge
-                        });   
-                        html += vcui.template(productItemTmpl,obj);   
-                    }
-                    */
 
                     self.setPageData(param.pagination);
                 });
+            },
+
+            // 상품 아이템 롤링기능을 PC,MOBILE일 때 교체.
+            fnBreakPoint:function(){
+                var self = this;
+                var name = window.breakpoint.name;
+                self.$productList.find('.ui_plp_carousel').off('mouseover mouseout mouseleave').vcCarousel("setOption", {autoplay:false,'speed':300}, true);
+                if(name=="mobile"){
+                    self.$productList.find('.ui_plp_carousel').off('mouseover mouseout mouseleave').vcCarousel("setOption", {autoplay:false,'speed':300}, true);
+                } else if(name=="pc"){
+                    self.$productList.find('.ui_plp_carousel').vcCarousel("setOption", {'speed':0}, true ).on('mouseover mouseout mouseleave', function(e){
+                        // 상품 아이템을 오버시 이미지를 롤링.
+                        if($(e.currentTarget).data('ui_carousel')){
+                            if(e.type == 'mouseover'){
+                                $(e.currentTarget).vcCarousel('play');
+                                
+                            }else{
+                               $(e.currentTarget).vcCarousel('stop');
+                                setTimeout(function(){
+                                    $(e.currentTarget).vcCarousel('goTo', 0);
+                                }, 500);
+                            }
+                        }
+                    });
+                }   
+            },
+
+            //비교하기 저장 유무 체크...
+            setCompares:function(){
+                var self = this;
+                self.$productList.find('li .product-compare a').removeClass('on');
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
+                var isCompare = vcui.isEmpty(storageCompare);
+                if(!isCompare){
+                    for(var i in storageCompare[lgkorUI.COMPARE_ID]){
+                        var modelID = storageCompare[lgkorUI.COMPARE_ID][i]['id'];
+                        self.$productList.find('li .product-compare a[data-id=' + modelID + ']').addClass('on');
+                    }
+                }
+            },
+
+            setCompareState:function(atag){
+                var $this = $(atag);
+                var _id = $this.data('id');
+                if(!$this.hasClass('on')){
+                    var compare = $this.closest('.product-compare');
+                    var contents = compare.siblings('.product-contents');
+                    var productName = contents.find('.product-info .product-name a').text();
+                    var productID = contents.find('.product-info .sku').text();
+                    var image = compare.siblings('.product-image');
+                    var productImg = image.find('.slide-content .slide-conts.on a img').attr("src");
+                    var productAlt = image.find('.slide-content .slide-conts.on a img').attr("alt");
+
+                    var compareObj = {
+                        "id": _id,
+                        "productName": productName,
+                        "productID": productID,
+                        "productImg": productImg,
+                        "productAlt": productAlt
+                    }
+
+                    var isAdd = lgkorUI.addCompareProd(compareObj);
+                    if(isAdd) $this.addClass("on");
+                } else{
+                    lgkorUI.removeCompareProd(_id);
+                }
             }
         };
         KRP0007.init();
