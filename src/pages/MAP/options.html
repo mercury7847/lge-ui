@@ -92,7 +92,7 @@
                 var $type = type;
                 var $timesetIdx = timesetIdx;
                 var $body = $("body");
-                var html = '<div class="toast-message" aria-modal="true" id="'+id+'" aria-describedby="toast-message-cont" aria-labelledby="toast-message-cont">';
+                var html = '<div class="toast-message" role="alert" aria-modal="true" id="'+id+'" aria-describedby="toast-message-cont" aria-labelledby="toast-message-cont" tabindex="0">';
                     html += '    <div>';
                     html += '        <div class="txt-message ' + $type + '" id="toast-message-cont">' + txt + '</div>';
                     html += '        <button type="button" class="btn-toast-close"><span>닫기</span></button>';
@@ -282,6 +282,7 @@
                     //oldStartValue = $(this).closest(".inner").find("div").eq(0).find("input").val();
                     //oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
 
+                    events = true;
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         //console.log("iphone");
                     }else{
@@ -312,8 +313,6 @@
                             toastMessage.init("에티켓 시간이 설정되었습니다.", "", idx);
                         }
                     }
-
-                    events = true;
                 },
                 blur: function(e){
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -337,12 +336,13 @@
                                         //$(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
                                     }
                                 });
+                                events = false;
                                 return false;
                             }else{
                                 beforeFocusEleToast = $(".time-setting .inner div").eq(idx).find("label:not([class*=rst-time])");
                                 toastMessage.init("에티켓 시간이 설정되었습니다.", "", idx);
+                                events = false;
                             }
-                            events = false;
                         }
                     }
 
