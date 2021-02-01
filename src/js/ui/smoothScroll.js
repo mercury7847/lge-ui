@@ -270,6 +270,10 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             this.enabled = true;
         },
 
+        toggleEnabled: function(chk){
+            this.enabled = chk;
+        },
+
         _initEvents: function _initEvents() {
             var self = this;
             var opt = self.options;
