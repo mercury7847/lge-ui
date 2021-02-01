@@ -168,6 +168,9 @@
                 &.open {
                     overflow:hidden;
                     height:0;
+                    .sub-depth {
+                        display:block;
+                    }
                 }
                 li {
                     margin-top:12px;
@@ -180,6 +183,7 @@
                         vertical-align:top;
                     }
                     .sub-depth {
+                        display:none;
                         position:absolute;
                         width:100%;
                         left:0%;

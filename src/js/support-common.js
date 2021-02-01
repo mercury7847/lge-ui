@@ -252,7 +252,7 @@ CS.MD.search = function() {
     Plugin.prototype = {
         _initialize: function() {
             var self = this;
-
+            
             self.autoUrl = self.$el.data('autocompleteUrl');
 
             if (self.$el.find('.recently-keyword').length) self._setRecently();
@@ -270,7 +270,7 @@ CS.MD.search = function() {
                 arr = keywordCookie.split(',');
                 if (arr.length) {
                     arr.forEach(function(item) {
-                        var html = tmpl.recentlyList.replace('{{keyword}}', item);
+                        var html = tmpl.recentlyList.replace('{{keyword}}', item.toString());
                         $recentlyKeyword.find('ul').append(html);
                     });
                     $recentlyKeyword.find('ul').show();
@@ -288,15 +288,19 @@ CS.MD.search = function() {
             var self = this;
             var $popularKeyword = self.$el.find('.popular-keyword');
             var tmpl = self.options.template,
-                arr = data instanceof Array ? data : [];
+                arr = data instanceof Array ? data : [],
+                html = '';
 
             $popularKeyword.find('ul').empty();
 
             if (arr.length) {
                 arr.forEach(function(item) {
-                    var html = tmpl.keywordList.replace('{{keyword}}', item);
-                    $popularKeyword.find('ul').append(html);
+                    html += tmpl.keywordList.replace('{{keyword}}', item);
                 });
+
+                $popularKeyword.find('ul').html(html);
+                $popularKeyword.find('ul').show();
+                $popularKeyword.find('.no-keyword').hide();
             } else {
                 $popularKeyword.find('ul').hide();
                 $popularKeyword.find('.no-keyword').show();
@@ -310,10 +314,10 @@ CS.MD.search = function() {
             self.$el.find('.autocomplete-box').find('ul').empty();
 
             if (arr.length) {
-                arr.forEach(function(item) {
-                    var html = vcui.template(tmpl.autocompleteList, item);
-                    self.$el.find('.autocomplete-box').find('ul').append(html);
+                var html = vcui.template(tmpl.autocompleteList, {
+                    list: arr
                 });
+                self.$el.find('.autocomplete-box').find('.keyword-list').prepend(html);
                 self.$el.find('.autocomplete-box').find('ul').show();
                 self.$el.find('.autocomplete-box').find('.no-keyword').hide();
             } else {
@@ -338,7 +342,7 @@ CS.MD.search = function() {
                 self.$el.trigger('autocompleteClick', [this]);
             });
 
-            self.$el.on('click', '.search-layer .keyword-box', function() {
+            self.$el.on('click', '.search-layer .keyword-box a', function() {
                 var val = $(this).text().trim();
                 self.$el.find('input[type=text]').val(val);
                 self.$el.removeClass('on');
@@ -1109,6 +1113,7 @@ CS.MD.commonModel = function() {
             self.$el.find('#productCode').val('');
             self.$el.find('#isMyProduct').val('N');
 
+            self.$myModelArea.show();
             self.$keywordInput.val('');
             self.$categoryBox.find('.box').removeClass('on off');
             self.$categoryBox.addClass(opts.stepActiveClass);
@@ -2168,7 +2173,7 @@ $.fn.serializeObject = function() {
             $('#quickMenu').quickMenu();
         });
 
-        if( $('#surveyPop').length) {
+        if( $('#surveyPopup').length) {
             vcui.require(['ui/selectbox', 'ui/satisfactionModal']);
         }
     }

@@ -221,5 +221,17 @@
         "popularKeyword": [
             "인기검색어", "일", "많아", "으아악", "눈물"
         ]
+    },
+    "param": {
+        "topic": {
+            "name": "",
+            "code": ""
+        },
+        "subTopic": {
+            "name": "",
+            "code": ""
+        },
+        "keyword": "",
+        "keywords" : ["스마트폰"]
     }
 }
