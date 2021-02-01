@@ -2168,7 +2168,7 @@ $.fn.serializeObject = function() {
             $('#quickMenu').quickMenu();
         });
 
-        if( $('#surveyPop').length) {
+        if( $('#surveyPopup').length) {
             vcui.require(['ui/selectbox', 'ui/satisfactionModal']);
         }
     }
