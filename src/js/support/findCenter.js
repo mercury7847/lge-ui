@@ -214,7 +214,7 @@
                 addressFinder = new AddressFind();
                 $('.ui_search').search({
                     template: {
-                        autocompleteList: '<li><a href="#{{shopID}}" class="btn-detail" title="새창 열림">{{shopName}}</a></li>',
+                        autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="#{{item.shopID}}" class="btn-detail" title="새창 열림">{{item.shopName}}</a></li>{{/each}}</ul>',
                     }
                 });
 
@@ -550,14 +550,14 @@
                     optop = self.$leftContainer.height() - self.$optionContainer.find('.btn-sel').height();
                     self.$optionContainer.stop().transition({y:'calc(100% - 80px)'}, 350, "easeInOutCubic", function(){
                         self.isTransion = false;
-                        self.$leftContainer.find('.dim').remove();
+                        // self.$leftContainer.find('.dim').remove();
                         self.$optionContainer.removeAttr('style').removeClass('open');
                     });
                 } else{
                     optop = self.$optionContainer.position().top;
 
                     self.$optionContainer.addClass('open');
-                    self.$leftContainer.prepend('<div class="dim"></div>');
+                    // self.$leftContainer.prepend('<div class="dim"></div>');
                     self.$optionContainer.stop().css({y:'calc(100% - 80px)'}).transition({y:0}, 350, "easeInOutCubic", function(){self.isTransion=false;});
                 }
             }
@@ -905,18 +905,16 @@
             var paddingtop = parseInt(self.$defaultListContainer.find('.sch-list').css('padding-top'));
             
 
-            console.log(top, titheight, scheight, optheight, resultheight)
+            console.log(top, titheight, scheight, optheight, resultheight, paddingtop)
 
             var listheight;
             if(self.searchResultMode){
-                // listheight = self.windowHeight - top - resultheight - optheight - paddingtop - 5;
                 listheight = self.windowHeight - resultheight - optheight - paddingtop;
             } else{
-                // listheight = self.windowHeight - top - titheight - scheight - optheight - paddingtop - 5;
-                listheight = self.windowHeight - titheight - scheight - optheight - paddingtop;
+                listheight = self.windowHeight - titheight - scheight - paddingtop;
             }
             
-            self.$defaultListContainer.find('.scroll-wrap').height(listheight);
+            // self.$defaultListContainer.find('.scroll-wrap').height(listheight);
         },
 
         _resize: function(){

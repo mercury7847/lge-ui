@@ -203,17 +203,34 @@
 
                 self.bindEvent();
 
+                var selected = {
+                    category: self.$cont.find('#category').val(),
+                    categoryName: self.$cont.find('#categoryNm').val(),
+                    subCategory: self.$cont.find('#subCategory').val(),
+                    subCategoryName: self.$cont.find('#subCategoryNm').val(),
+                    modelCode: self.$cont.find('#modelCode').val(),
+                    productCode: self.$cont.find('#productCode').val()
+                }
+
                 self.$cont.commonModel({
                     register: register,
-                    selected: {
-                        category: self.$cont.find('#category').val(),
-                        categoryName: self.$cont.find('#categoryNm').val(),
-                        subCategory: self.$cont.find('#subCategory').val(),
-                        subCategoryName: self.$cont.find('#subCategoryNm').val(),
-                        modelCode: self.$cont.find('#modelCode').val(),
-                        productCode: self.$cont.find('#productCode').val()
-                    }
+                    selected: selected
                 });
+
+                var params = location.search.substr(location.search.indexOf("?") + 1);
+                var sval = "", temp;
+                params = params.split("&");
+                for (var i = 0; i < params.length; i++) {
+                    temp = params[i].split("=");
+                    if ([temp[0]] == 'seq') { sval = temp[1]; }
+                }
+
+                if (sval) {
+                    selected = $.extend(selected, {
+                        seq: sval
+                    });
+                    self.$cont.trigger('complete', [selected, $('.prod-search-wrap').data('resultUrl'), true]);
+                }
 
                 self.$engineerSlider.vcCarousel({
                     slidesToShow: 4,
@@ -252,7 +269,7 @@
 
                 $('.ui_search').search({
                     template: {
-                        autocompleteList: '<li><a href="#{{shopID}}" class="btn-detail" title="새창 열림">{{shopName}}</a></li>',
+                        autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="#{{item.shopID}}" class="btn-detail" title="새창 열림">{{item.shopName}}</a></li>{{/each}}</ul>',
                     }
                 });
 
@@ -275,15 +292,25 @@
 
             // 모델 선택 후 이벤트
             self.$cont.on('complete', function(e, data, url) {    
+                var param = {};
+
+                if (data.seq) {
+                    param = {
+                        seq: data.seq,
+                        page: 1
+                    }
+                } else {
+                    param = {
+                        category: self.model.category,
+                        subCategory: self.model.subCategory,
+                        modelCode: self.model.modelCode,
+                        serviceType: $('#serviceType').val(),
+                        page:1
+                    }
+                }
                 self.model = data;
                 
-                self.requestCenterData({
-                    category: self.model.category,
-                    subCategory: self.model.subCategory,
-                    modelCode: self.model.modelCode,
-                    serviceType: $('#serviceType').val(),
-                    page:1
-                }, url);
+                self.requestCenterData(param, url);
 
                 self.$cont.commonModel('updateSummary', {
                     product: [data.categoryName, data.subCategoryName, data.modelCode],
@@ -400,6 +427,7 @@
             });
 
             self.$stepCenter.on('change', '[name=center]', function() {
+                $('#shopID').val($(this).val());
                 self.param = $(this).data();
                 self.requestDate();
             });
@@ -848,6 +876,8 @@
                 } else {
                     self.$solutionsBanner.hide();
                 }
+
+                $('#solutionsFlag').val(data.resultFlag);
             });
         },
         setSolutions: function(url, param, isShown) {

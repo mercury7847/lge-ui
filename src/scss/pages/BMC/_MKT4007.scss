@@ -104,7 +104,8 @@
                 @include font($font-large-4,52px);
             }
             .date {
-                color: $color-gray-5;
+                margin-top: 8px;
+                color: $color-gray-1;
             }
             @include mobile {
                 .flag-wrap {
@@ -112,6 +113,9 @@
                 }
                 .sub-tit {
                     @include font($font-large-2,33px);
+                }
+                .date {
+                    margin-top: 10px;
                 }
             }
         }
@@ -154,6 +158,15 @@
                     }
                 }
             }
+        }
+    }
+
+    & + .bullet-list {
+        margin-top: 48px;
+        padding-top: 24px;
+        border-top: 1px solid $color-border;
+        @include mobile {
+            margin-top: 40px;
         }
     }
 }

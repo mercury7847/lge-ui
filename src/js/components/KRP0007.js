@@ -80,6 +80,9 @@ var FilterLayer = (function() {
             self._bindEvents();
             self.initLoadEnd = true;
             if(self.filterData) {
+                self.filterData = vcui.array.filter(self.filterData, function(item, idx){
+                    return item.filterValues && item.filterValues.length > 0;
+                });
                 self.updateFilter(self.filterData);
             }
             if(self.resetData) {
@@ -729,6 +732,9 @@ var FilterLayer = (function() {
                 //리스트
                 self.$productList = self.$section.find('div.list-wrap ul.product-items');
 
+                //모바일 카테고리 풀다운 메뉴
+                self.$cateFulldown = self.$section.find('.cate-m .cate-wrap .cate-list .mobile-more-btn a');
+
                 self.$productList.find('.ui_plp_carousel').vcCarousel({
                     indicatorNoSeparator:/##no##/,
                     infinite:true, 
@@ -797,6 +803,22 @@ var FilterLayer = (function() {
                     self.setCompareState(e.currentTarget);
                 });
 
+                //모바일 카테고리 풀다운메뉴
+                self.$cateFulldown.on('click', function(e){
+                    e.preventDefault();
+
+                    var catewrap = $(this).closest('.cate-wrap');
+                    catewrap.toggleClass('open');
+
+                    if(catewrap.hasClass('open')){
+                        self.$categorySelect.vcSmoothScrollTab("initPosition", false);
+                    } else{
+                        self.$categorySelect.vcSmoothScrollTab("initPosition", true);
+                    }
+
+                    catewrap.parent().height(catewrap.outerHeight(true));
+                })
+
                 //비교하기 컴포넌트 변화 체크
                 $(window).on("changeStorageData", function(){
                     self.setCompares();
@@ -839,7 +861,8 @@ var FilterLayer = (function() {
                 var self = this;
                 var ajaxUrl = self.$section.attr('data-prod-list');
                 data.categoryId = categoryId;                
-                lgkorUI.requestAjaxData(ajaxUrl, data, function(result){
+                console.log("### requestSearch ###", data)
+                lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
                     var data = result.data;
                     var param = result.param;
 
@@ -896,7 +919,7 @@ var FilterLayer = (function() {
                         self.setCompares();
                     });
 
-                    self.setPageData(param.pagination);
+                    self.setPageData(data.pagination);
                 });
             },
 

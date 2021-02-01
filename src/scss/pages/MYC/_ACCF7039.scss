@@ -11,7 +11,7 @@
             margin:0;
             border-collapse:inherit;
             border-spacing:0;
-            padding:32px 16px;
+            padding:24px 16px;
         }
         li {
             display:inline-block;
@@ -23,7 +23,7 @@
                 width:100%;
                 height:auto; 
                 padding:0;
-                margin-top:28px;
+                margin-top:16px;
                 border-left:none;
                 &:first-child {
                     margin-top:0;
@@ -35,16 +35,24 @@
             > dl {
                 position:relative;
                 text-align:center;
+                &:after {
+                    content:' ';
+                    display:block;
+                    clear:both;
+                }
                 > dt {
                     color:$color-white;
+                    @include mobile {
+                        float:left;
+                    }
                     p {
                         display:inline-block;
                         font-size:16px;
                         line-height:26px;
                         vertical-align:top;
                         @include mobile {
-                            font-size:13px;
-                            line-height:18px;
+                            font-size:14px;
+                            line-height:28px;
                         }
                     }
                     .tooltip-wrap {
@@ -113,9 +121,10 @@
                     line-height:34px;
                     font-weight:700;
                     @include mobile {
-                        margin-top:6px;
-                        font-size:24px;
-                        line-height:33px;
+                        float:right;
+                        margin-top:0;
+                        font-size:20px;
+                        line-height:28px;
                     }
                 }
             }
@@ -127,6 +136,10 @@
         border-radius:0;
         border-top:1px solid rgba(255,255,255,.3);
         background-image:none;
+        @include mobile {
+            margin:0 16px;
+            padding:12px 0;
+        }
         > .tit {
             font-size:16px;
             font-weight:normal;
@@ -204,21 +217,26 @@
                 padding:0;
             }
             .term-filter {
-                padding:24px 16px 32px;
+                // padding:24px 16px 32px;
                 .inner .filter-tbl {
                     > .cell {
+                        float:none;
+                        width:100%;
                         .btn-cell {
                             width:100%;
-                            margin-top:60px;
+                            margin-top:24px;
                             .btn {
                                 min-width:68px;
                             }
                         }
                     }
                     .rdo-check {
-                        position:absolute;
-                        left:0;
-                        bottom:70px;
+                        // position:absolute;
+                        // left:0;
+                        // bottom:70px;
+                        clear:both;
+                        float:none;
+                        margin-top:24px;
                     }
                 }
             }
@@ -275,6 +293,13 @@
                             display: -webkit-box;
                             -webkit-line-clamp: 2;
                             -webkit-box-orient: vertical;
+                        }
+                        @include mobile {
+                            min-height:63px;
+                            strong {
+                                font-size:13px;
+                                line-height:21px;
+                            }
                         }
                         .model-num {
                             color:#000;
@@ -351,14 +376,21 @@
                             min-height:76px;
                             strong {
                                 color: #000;
-                                font-size: 16px;
-                                line-height: 26px;
+                                font-size: 15px;
+                                line-height: 23px;
                                 font-weight: 700;
                                 overflow: hidden;
                                 text-overflow: clip;
                                 display: -webkit-box;
                                 -webkit-line-clamp: 2;
                                 -webkit-box-orient: vertical;
+                            }
+                            @include mobile {
+                                min-height:63px;
+                                strong {
+                                    font-size:13px;
+                                    line-height:21px;
+                                }
                             }
                             .model-num {
                                 display:block;

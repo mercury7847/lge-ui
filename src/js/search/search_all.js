@@ -169,7 +169,16 @@
             '</div>{{/if}}' +
             '{{#if isVideo}}<div class="video-info"><span class="hidden">동영상 포함</span></div>{{/if}}' +
         '</div>' +
-    '</div></li>'
+    '</div></li>';
+
+    var searchBnrTemplate = 
+        '<a href="{{urlName}}">'+
+            '<img data-pc-src="{{pcImage}}" data-m-src="{{mobileImage}}" alt="{{title}}" src="{{pcImage}}">'+
+            '<div class="text-area">'+
+                '<strong class="title">{{#raw title}}</strong>'+
+                '<span class="sub-copy">{{#raw desc}}</span>'+
+            '</div>'+
+        '</a>';
 
     $(window).ready(function() {
         var search = {
@@ -631,6 +640,9 @@
 
                     self.$searchResultCategory.removeClass('on');
                     self.$searchResultCategoryMore.find('span').text('더보기');
+
+                    //센터 배너
+                    self.$searchBanner.empty().append(vcui.template(searchBnrTemplate, data.searchBanner));
 
                     //제품/케어솔루션
                     var $resultListWrap = $searchResult.find('div.result-list-wrap:eq(0)');

@@ -58,6 +58,7 @@
     .search-input {
         position:relative;
         width:443px;
+        margin:0 auto;
         text-align:left;
         input[type=text] {
             width:100%;
@@ -151,17 +152,124 @@
         }
         .autocomplete-box {
             display:none;
-            .keyword-list {
+            font-size:0;
+
+            .keyword-tit {
+                display: block;
+                position:relative;
+                padding:10px 0 14px;
+                font-size:16px;
+                font-weight:bold;
+                color:#000;
+            }
+            .keyword-list:not(:only-child) {
+                border-top:1px solid #ddd;
+                border-bottom:1px solid #ddd;
                 ul > li {
-                    margin-left:-12px;
-                    margin-right:-12px;
+                    position:relative;
+                    margin-top:0;
+                    margin-left:-24px;
+                    margin-right:-24px;
                     a { 
                         display:block;
                         max-width:none;
-                        padding:4px 12px;
-                        &:hover {
-                            border-radius:16px;
+                        padding:13px 24px 14px;
+                        transition:.3s background-color ease-in-out;
+                        &:hover, &:focus {
                             background-color:#f4f4f4;
+                        }
+
+                        .list-head {
+                            font-size:0;
+                            .list-category,.list-sub-category {
+                                display: inline-block;
+                                font-size:14px;
+                                line-height:24px;
+                                vertical-align: top;
+                            }
+                            .list-category {
+                                color:#da0f47;
+                            }
+                            .list-sub-category {
+                                position:relative;
+                                color:#666;
+                                margin-left:7px;
+                                padding-left:8px;
+
+                                &:before {
+                                    content:"";
+                                    display:block;
+                                    position:absolute;
+                                    top:50%;
+                                    left:0;
+                                    width:1px;
+                                    height:14px;
+                                    background: #ddd;
+                                    transform:translateY(-50%);
+                                }
+                            }
+                        }
+                        .list-desc {
+                            overflow:hidden;
+                            text-overflow:ellipsis;
+                            white-space:nowrap;
+                            font-size:16px;
+                            color:#000;
+                            line-height:1.63;
+                        }
+                    }
+                }
+                .no-keyword {
+                    line-height:80px;
+                }
+            }
+            .btn-list-all {
+                display: inline-block;
+                position:absolute;
+                bottom:20px;
+                left:24px;
+                padding-right:20px;
+
+                &:after {
+                    content:"";
+                    display:block;
+                    position:absolute;
+                    top:50%;
+                    right:0;
+                    width:16px;
+                    height:16px;                
+                    background: url("/lg5-common/images/icons/btn-arr-16-black.svg") no-repeat 100% center;
+                    background-size:100% 100%;
+                    transform:translateY(-50%);
+                }
+
+                span {
+                    display: inline-block;
+                    font-size:16px;
+                    padding-bottom:2px;
+                    color:#000;
+                    border-bottom:1px solid #000;
+                }
+            }
+            
+            @include mobile {
+                .keyword-tit {
+                    font-size:14px;
+                }
+                .keyword-list {
+                    ul > li {
+                        a { 
+                            .list-head {
+                                .list-category,.list-sub-category {
+                                    font-size:13px;
+                                }
+                                .list-sub-category {
+                                    display:none;
+                                }
+                            }
+                            .list-desc {
+                                font-size:13px;
+                            }
                         }
                     }
                 }
@@ -408,7 +516,7 @@
         font-size:0;
         li {
             display:inline-block;
-            min-width:152px;
+            // min-width:152px;
             padding:20px 0 0 24px;
             vertical-align:top;
             &.block {

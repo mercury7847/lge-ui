@@ -227,14 +227,6 @@
         },
         
         // changeSetting: function() {
-
-            
-
-            
-
-            
-           
-        // },
         cancelSetting: function() {
             if (!$('#cancelServicePopup').length) return;
 
@@ -661,21 +653,31 @@
                     var data = result.data;
 
                     if (data.resultFlag == 'Y' && data.url !== "") {
-                        //$('#acptNo').val(data.acptNo);
 
-                        lgkorUI.requestAjaxDataPost(data.url, formData, function(result) {
-                            if( result.data.resultFlag == 'Y') {
-                                $form.submit();
-                            } else {
-                                if ( result.data.resultMessage) {
-                                    lgkorUI.alert("", {
-                                        title: data.resultMessage
-                                    });
-                                }
-                            }
-                        });
+                        formData = $.extend(formData, {
+                            acptNo : data.acptNo
+                        })
+                        $('#acptNo').val(result.data.acptNo);
 
-                        //$form.submit();
+                        $form.attr('action', result.data.url);
+                        $form.submit();
+                        
+                        console.log('예약취소 완료');
+                        //console.log(data.url);
+                        // lgkorUI.requestAjaxDataPost(data.url, formData, function(completeResult) {
+                        //     if( completeResult.data.resultFlag == 'Y') {
+                        //         console.log('result url')
+                        //         console.log(result.data.url)
+                        //         $form.attr('action', result.data.url);
+                        //         $form.submit();
+                        //     } else {
+                        //         if ( completeResult.data.resultMessage) {
+                        //             lgkorUI.alert("", {
+                        //                 title: data.resultMessage
+                        //             });
+                        //         }
+                        //     }
+                        // });
                     } else {
                         if (data.resultMessage) {
                             lgkorUI.alert("", {

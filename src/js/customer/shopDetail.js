@@ -85,6 +85,27 @@
             e.preventDefault();
 
             window.close();
+        });
+
+        $('.chk-bookmark-wrap input[type=checkbox]').on('change', function(e){
+            var ipt = $(this);
+            var chk = ipt.prop('checked');
+            var bookMarkerUrl = $('.contents.store-info-wrap').data("bookmarkUrl");
+
+            var sendata = {
+                checked: chk,
+                shopId: $(this).data("shopId")
+            }
+            console.log(sendata)
+            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(bookMarkerUrl, sendata, function(result){
+                if(result.data.success == "N"){
+                    lgkorUI.alert("", {
+                        title: result.data.alert.title
+                    });
+                    
+                    ipt.prop('checked', !chk);
+                }
+            });
         })
     }
 

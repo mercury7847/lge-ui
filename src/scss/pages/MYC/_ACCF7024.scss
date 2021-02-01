@@ -87,7 +87,7 @@
                 p {
                     display:inline-block;
                     color:#000;
-                    @include font-medium
+                    @include font-medium;
                     font-weight:700;
                     vertical-align:top;
                 }
@@ -484,7 +484,7 @@
             }
             .infos {
                 display:table-cell;
-                vertical-align:top;
+                vertical-align:middle;
                 @include mobile {
                     display:block;
                     width:auto;
@@ -750,12 +750,12 @@
         .box {
             position:relative;
             margin:0;
-            border-top:1px solid #ddd;
-            &:first-child {
-                border-top:none;
-            }
+            border-bottom:1px solid #ddd;
+            // &:first-child {
+            //     border-top:none;
+            // }
             @include mobile {
-                padding:32px 0;
+                padding:54px 0 24px;
                 border-radius:0;
                 box-shadow:none;
                 overflow:initial;
@@ -765,8 +765,8 @@
                 width:100%;
                 @include mobile {
                     display:block;
-                    padding-top:30px;
-                    padding-left:112px;
+                    // padding-top:30px;
+                    padding-left:116px;
                 }
                 .col {
                     display:table-cell;
@@ -781,11 +781,32 @@
                         width:15.8%;
                         text-align:right;
                         white-space:nowrap;
+                        .btn {
+                            display: block;
+                        }
                         @include mobile {
                             width:100%;
                             margin-top:12px;
                             text-align:left;
+                            .btn {
+                                &:not(:first-child) {
+                                    margin-top: 4px;
+                                }
+                            }
                         }
+                        @include pc {
+                            .btn {
+                                float: right;
+                                &:not(:first-child) {
+                                    margin-top: 6px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .product-info {
+                    .thumb {
+                        margin-left:-20px;
                     }
                 }
             }
@@ -796,6 +817,9 @@
                 width:24px;
                 height:24px;
                 background:url("/lg5-common/images/icons/btn-close-24.svg") no-repeat;
+                @include mobile {
+                    top:24px;
+                }
             }
             .chk-wish-wrap {
                 position:absolute;
@@ -958,7 +982,7 @@
                 dd {
                     margin-top:8px;
                     color:#000;
-                    @include font-medium
+                    @include font-medium;
                     word-break:keep-all;
                     @include mobile {
                         margin-top:4px;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-login="N">
 @@include('./common/head.html', {
     "pageCSS": [
         "support/support",
@@ -7,7 +7,6 @@
     ]
 })
 <body>
-    <input type="hidden" name="topLoginFlag" id="topLoginFlag" value="Y">
     <div class="wrap">
         @@include('./common/header.html')
 
@@ -56,11 +55,13 @@
                             <input type="hidden" name="engineerCode" id="engineerCode" value="">
                             <input type="hidden" name="centerNm" id="centerNm" value="">
                             <input type="hidden" name="centerCode" id="centerCode" value="">
+                            <input type="hidden" name="shopID" id="shopID" value="">
+                            <input type="hidden" name="solutionsFlag" id="solutionsFlag" value="">
+                            <input type="hidden" name="deptCode" id="deptCode" value="">
                             <input type="hidden" name="route" id="route" value="">
                             <input type="hidden" name="acptNo" id="acptNo" value="">
                             <input type="hidden" name="serviceType" id="serviceType" value="A">
                             <input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
-                            <input type="hidden" name="deptCode" id="deptCode" value="">
                             <input type="hidden" name="pageCode" id="pageCode" value="pageCode">
 
                             <!-- 약관 동의 -->
