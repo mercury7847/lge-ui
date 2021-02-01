@@ -807,7 +807,16 @@ var FilterLayer = (function() {
                 self.$cateFulldown.on('click', function(e){
                     e.preventDefault();
 
-                    $(this).closest('.cate-wrap').toggleClass('open');
+                    var catewrap = $(this).closest('.cate-wrap');
+                    catewrap.toggleClass('open');
+
+                    if(catewrap.hasClass('open')){
+                        self.$categorySelect.vcSmoothScrollTab("initPosition", false);
+                    } else{
+                        self.$categorySelect.vcSmoothScrollTab("initPosition", true);
+                    }
+
+                    catewrap.parent().height(catewrap.outerHeight(true));
                 })
 
                 //비교하기 컴포넌트 변화 체크
@@ -852,6 +861,7 @@ var FilterLayer = (function() {
                 var self = this;
                 var ajaxUrl = self.$section.attr('data-prod-list');
                 data.categoryId = categoryId;                
+                console.log("### requestSearch ###", data)
                 lgkorUI.requestAjaxData(ajaxUrl, data, function(result){
                     var data = result.data;
                     var param = result.param;

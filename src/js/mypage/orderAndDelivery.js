@@ -252,7 +252,7 @@
     function setProductStatus(dataId, pdpUrl){
         lgkorUI.showLoading();
         var sendata = {
-            orderNumber: ORDER_LIST[dataId].orderNumber
+            productNameEN: ORDER_LIST[dataId].productNameEN
         }
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PRODUCT_STATUS_URL, sendata, function(result){
             if(result.data.success == "N"){
