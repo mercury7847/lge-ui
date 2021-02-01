@@ -80,6 +80,9 @@ var FilterLayer = (function() {
             self._bindEvents();
             self.initLoadEnd = true;
             if(self.filterData) {
+                self.filterData = vcui.array.filter(self.filterData, function(item, idx){
+                    return item.filterValues && item.filterValues.length > 0;
+                });
                 self.updateFilter(self.filterData);
             }
             if(self.resetData) {
@@ -729,6 +732,9 @@ var FilterLayer = (function() {
                 //리스트
                 self.$productList = self.$section.find('div.list-wrap ul.product-items');
 
+                //모바일 카테고리 풀다운 메뉴
+                self.$cateFulldown = self.$section.find('.cate-m .cate-wrap .cate-list .mobile-more-btn a');
+
                 self.$productList.find('.ui_plp_carousel').vcCarousel({
                     indicatorNoSeparator:/##no##/,
                     infinite:true, 
@@ -796,6 +802,13 @@ var FilterLayer = (function() {
                     e.preventDefault();
                     self.setCompareState(e.currentTarget);
                 });
+
+                //모바일 카테고리 풀다운메뉴
+                self.$cateFulldown.on('click', function(e){
+                    e.preventDefault();
+
+                    $(this).closest('.cate-wrap').toggleClass('open');
+                })
 
                 //비교하기 컴포넌트 변화 체크
                 $(window).on("changeStorageData", function(){
