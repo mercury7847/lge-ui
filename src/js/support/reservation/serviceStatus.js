@@ -668,6 +668,7 @@
                         $('#acptNo').val(result.data.acptNo);
                         lgkorUI.requestAjaxDataPost(data.url, formData, function(result) {
                             if( result.data.resultFlag == 'Y') {
+                                $form.attr('action', result.data.url);
                                 $form.submit();
                             } else {
                                 if ( result.data.resultMessage) {
