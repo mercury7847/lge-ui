@@ -16,7 +16,7 @@ $(window).ready(function(){
             '</div>'+
             '<button type="button" class="btn-close"><span class="blind">닫기</span></button>';
 
-        var isFirstLoad = true;
+        var isInitChecked = false;
 
         function init(){
             $('.btn-init').on('click', function(e){
@@ -83,12 +83,14 @@ $(window).ready(function(){
                         if(leng >= limit) openCompareBox();
                     }
                 }
+
+                isInitChecked = true;
             } else{
-                if(isFirstLoad){
-                    isFirstLoad = true;
-                    
+                hideCompareBox();
+
+                if(isInitChecked){
+                    isInitChecked = false;
                     addToastAlert();
-                    hideCompareBox();
                 }
             }
         }
