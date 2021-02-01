@@ -65,14 +65,16 @@
                     //접근성
                     $(this).find(".lyr-modal-inner").attr("tabindex", 0);
                     $(this).find(".lyr-modal-inner").attr("tabindex", 0).focus();
-                    $(".main-panel, .sub-panel").attr("aria-hidden", true);
+                    //$(".main-panel, .sub-panel").attr("aria-hidden", true);
+                    $("lyr-opt-panel").attr("aria-hidden", true);
                 });
                 modalControl();
             },
             close: function(){
                 $(document).find(".lyr-modal").fadeOut(200, function(){
                     //접근성
-                    $(".main-panel, .sub-panel").attr("aria-hidden", false);
+                    //$(".main-panel, .sub-panel").attr("aria-hidden", false);
+                    $("lyr-opt-panel").attr("aria-hidden", false);
                     $(beforeFocusEle).focus();
                     beforeFocusEle = "";
                     $(this).remove();
@@ -414,8 +416,8 @@
                 click : function(){
                     $(".lyr-opt-panel, .main-panel").stop().attr("aria-hidden", true).animate({"left":"100%"}, 250, function(){
                         //접근성
-                        $(".main-panel").attr("aria-hidden", true);
-                        $(".main-panel").siblings("div");
+                        $(".main-panel").attr("aria-hidden", true).removeAttr("tabindex");
+                        $("#btn-opt-open").focus();
                     });
                 }
             });
@@ -427,7 +429,7 @@
                         //접근성
                         $(this).attr("aria-hidden", false);
                         $(this).attr("tabindex", 0).focus();
-                        $(this).siblings("div").attr("aria-hidden", true);
+                        $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
                     });
                 }
             });
@@ -438,7 +440,7 @@
                         //접근성
                         $(this).attr("aria-hidden", false);
                         $(this).attr("tabindex", 0).focus();
-                        $(this).siblings("div").attr("aria-hidden", true);
+                        $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
                     });
                     $(".sub-panel.alarm-setting").stop().animate({"left":"100%"}, 250);
                 }
@@ -451,7 +453,7 @@
                         //접근성
                         $(this).attr("aria-hidden", false);
                         $(this).attr("tabindex", 0).focus();
-                        $(this).siblings("div").attr("aria-hidden", true);
+                        $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
                     });
                 }
             });
@@ -462,7 +464,7 @@
                         //접근성
                         $(this).attr("aria-hidden", false);
                         $(this).attr("tabindex", 0).focus();
-                        $(this).siblings("div").attr("aria-hidden", true);
+                        $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
                     });
                     $(".sub-panel.source-license").stop().animate({"left":"100%"}, 250);
                 }
