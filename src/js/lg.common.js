@@ -1051,7 +1051,9 @@
                 var data = result.data;
                 var cartCnt = (typeof data.cartCnt  === 'number') ? ""+data.cartCnt : data.cartCnt;
                 if(cartCnt) {
-                    $('div.header-wrap div.utility span.count').contents()[2].textContent = cartCnt;
+                    var utility = $('div.header-wrap div.utility');
+                    utility.find('.cart span.count').remove();
+                    utility.find('.cart').append('<span class="count"><span class="blind">장바구니 제품 수</span>' + cartCnt + '</span>');
                 }
 
                 if(lgkorUI.stringToBool(data.success)) {
