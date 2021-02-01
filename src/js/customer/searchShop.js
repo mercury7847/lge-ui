@@ -699,17 +699,6 @@
         _setResultText: function(){
             var self = this;
 
-
-            // self.$citySelect = $('#select1'); //시/도 선택
-            // self.$boroughSelect = $('#select2'); //구.군 선택
-            // self.$localSearchButton = $('.search-local'); //지역검색 버튼
-            // self.$searchUserAdressButton = $('.search-userAdress'); //내 주소 검색 버튼
-
-            // self.$subwayCitySelect = $('#select3'); //지역선택
-            // self.$subwayLineSelect = $('#select4'); //호선 선택
-            // self.$subwayStationSelect = $('#select5'); //역 선택
-            // self.$searchSubwayButton = $('.search-subway'); //지하철 검색 버튼
-
             var keywords = self._getKeyword();
             var searchKeyword;
             if(self.searchType == "local"){
