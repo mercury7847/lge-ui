@@ -48,7 +48,12 @@
 }
 
 .contents.event {
-
+    .mob-only {
+        display: none;
+        @include mobile {
+            display: block;
+        }
+    }
     // VIEW
     @import "MKT4002";
 
