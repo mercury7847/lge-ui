@@ -542,7 +542,7 @@
                 $('#centerNm').val(data.centerName);
                 $('#centerCode').val(data.centerCode);
     
-                //self.dateParam['resrvSeq'] = data.resrvSeq;
+                $('#resrvSeq').val(data.resrvSeq);
             },
             requestDate: function() {
                 var self = this;
