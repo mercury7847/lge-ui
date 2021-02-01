@@ -65,14 +65,16 @@
                     //접근성
                     $(this).find(".lyr-modal-inner").attr("tabindex", 0);
                     $(this).find(".lyr-modal-inner").attr("tabindex", 0).focus();
-                    $(".main-panel, .sub-panel").attr("aria-hidden", true);
+                    //$(".main-panel, .sub-panel").attr("aria-hidden", true);
+                    $("lyr-opt-panel").attr("aria-hidden", true);
                 });
                 modalControl();
             },
             close: function(){
                 $(document).find(".lyr-modal").fadeOut(200, function(){
                     //접근성
-                    $(".main-panel, .sub-panel").attr("aria-hidden", false);
+                    //$(".main-panel, .sub-panel").attr("aria-hidden", false);
+                    $("lyr-opt-panel").attr("aria-hidden", false);
                     $(beforeFocusEle).focus();
                     beforeFocusEle = "";
                     $(this).remove();
