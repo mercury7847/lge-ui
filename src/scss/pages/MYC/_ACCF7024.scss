@@ -87,7 +87,7 @@
                 p {
                     display:inline-block;
                     color:#000;
-                    @include font-medium
+                    @include font-medium;
                     font-weight:700;
                     vertical-align:top;
                 }
@@ -781,10 +781,26 @@
                         width:15.8%;
                         text-align:right;
                         white-space:nowrap;
+                        .btn {
+                            display: block;
+                        }
                         @include mobile {
                             width:100%;
                             margin-top:12px;
                             text-align:left;
+                            .btn {
+                                &:not(:first-child) {
+                                    margin-top: 4px;
+                                }
+                            }
+                        }
+                        @include pc {
+                            .btn {
+                                float: right;
+                                &:not(:first-child) {
+                                    margin-top: 6px;
+                                }
+                            }
                         }
                     }
                 }
@@ -958,7 +974,7 @@
                 dd {
                     margin-top:8px;
                     color:#000;
-                    @include font-medium
+                    @include font-medium;
                     word-break:keep-all;
                     @include mobile {
                         margin-top:4px;
