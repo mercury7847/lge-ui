@@ -484,7 +484,7 @@
             }
             .infos {
                 display:table-cell;
-                vertical-align:top;
+                vertical-align:middle;
                 @include mobile {
                     display:block;
                     width:auto;
