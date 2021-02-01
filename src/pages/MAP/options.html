@@ -96,6 +96,7 @@
                     html += '</div>';
 
                 $body.append(html);
+                $("#"+id).attr("tabindex", 0).focus();
                 this.open("#"+id);
             },
             open: function(id){
@@ -294,6 +295,7 @@
                             });
                             return false;
                         }else{
+                            beforeFocusEleToast = $(".time-setting .inner div").eq(idx).find("label:not([class*=rst-time])");
                             toastMessage.init("에티켓 시간이 설정되었습니다.");
                         }
                     }
