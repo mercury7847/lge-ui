@@ -862,7 +862,7 @@ var FilterLayer = (function() {
                 var ajaxUrl = self.$section.attr('data-prod-list');
                 data.categoryId = categoryId;                
                 console.log("### requestSearch ###", data)
-                lgkorUI.requestAjaxData(ajaxUrl, data, function(result){
+                lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
                     var data = result.data;
                     var param = result.param;
 
