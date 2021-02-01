@@ -458,7 +458,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
             var marker = centerPoint.items.item;
             console.log(marker);
-            //marker.setZindex(self.itemArr.length-1);
+            marker.setZIndex(self.itemArr.length-1);
 
             self.map.setZoom(12, true);
             self.map.panTo(new naver.maps.LatLng(centerPoint.lat, centerPoint.long), {duration:460, easing:"easeOutCubic"});
