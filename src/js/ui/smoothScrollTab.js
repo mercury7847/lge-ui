@@ -169,6 +169,13 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
             self.smoothScroll.refresh();
         },
 
+        initPosition: function(chk){
+            var self = this;
+
+            self.smoothScroll.moveFirst();
+            self.smoothScroll.toggleEnabled(chk);
+        }
+
     });
     ///////////////////////////////////////////////////////////////////////////////////////
 
