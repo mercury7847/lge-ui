@@ -2172,8 +2172,8 @@ $.fn.serializeObject = function() {
             // 퀵 메뉴 (미정)
             $('#quickMenu').quickMenu();
         });
-        
-        if( $('#surveyPop').length) {
+
+        if( $('#surveyPopup').length) {
             vcui.require(['ui/selectbox', 'ui/satisfactionModal']);
         }
     }
