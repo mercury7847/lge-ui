@@ -415,7 +415,7 @@
             //알림설정 창 닫기
             $(".alarm-setting .btn-opt-prev").on({
                 click : function(){
-                    $(".main-panel").stop().animate({"left":"0"}, 250, function(){
+                    $(".main-panel").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
                         $(this).attr("aria-hidden", false);
                         $(this).attr("tabindex", 0).focus();
@@ -439,7 +439,7 @@
             //오픈소스 라이센스 창 닫기
             $(".source-license .btn-opt-prev").on({
                 click : function(){
-                    $(".main-panel").stop().animate({"left":"0"}, 250, function(){
+                    $(".main-panel").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
                         $(this).attr("aria-hidden", false);
                         $(this).attr("tabindex", 0).focus();
@@ -557,8 +557,8 @@
 
         <div class="sub-panel alarm-setting" aria-hidden="true" aria-labelledby="sub-panel-title01" tabindex="0">
             <div class="opt-header type-sub">
-                <button type="button" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
                 <h1 id="sub-panel-title01">알림설정</h1>
+                <button type="button" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
             </div>
 
             <div class="opt-container">
@@ -632,8 +632,8 @@
 
         <div class="sub-panel source-license" aria-hidden="true" aria-labelledby="sub-panel-title02" tabindex="0">
             <div class="opt-header type-sub">
-                <button type="button" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
                 <h1 id="sub-panel-title02">오픈소스 라이선스</h1>
+                <button type="button" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
             </div>
             <div class="opt-container">
                 <div>
