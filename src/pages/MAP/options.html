@@ -109,6 +109,7 @@
                 cnt++;
                 var $id = $(id);
 
+                $("html").css("overflow-y","hidden");
                 $id.css("z-index", cnt).animate({'bottom':'50px'}, 200);
                 setTimeout(function(){
                     toastMessage.close($id, timesetIdx);
@@ -123,6 +124,7 @@
                 var $id = $(id);
                 //$id.removeClass("show").remove();
                 $id.css("z-index", cnt).animate({'bottom':'-60px'}, 200, function(){
+                    $("html").css("overflow-y","scroll");
                     $(beforeFocusEleToast).focus();
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         if(timesetIdx != null && timesetIdx != "" && timesetIdx != undefined){
