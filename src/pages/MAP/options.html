@@ -92,7 +92,7 @@
                 var $type = type;
                 var $timesetIdx = timesetIdx;
                 var $body = $("body");
-                var html = '<div class="toast-message" aria-modal="true" id="'+id+'" aria-labelledby="toast-message-cont">';
+                var html = '<div class="toast-message" aria-modal="true" id="'+id+'" aria-describedby="toast-message-cont" aria-labelledby="toast-message-cont">';
                     html += '    <div>';
                     html += '        <div class="txt-message ' + $type + '" id="toast-message-cont">' + txt + '</div>';
                     html += '        <button type="button" class="btn-toast-close"><span>닫기</span></button>';
@@ -301,6 +301,7 @@
                                 click : function(){
                                     $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
                                     $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
+                                    beforeFocusEle = $(".time-setting .inner div").eq(idx).find("input");
                                     optModal.close();
                                     //$(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
                                 }
@@ -331,6 +332,7 @@
                                     click : function(){
                                         $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
                                         $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
+                                        beforeFocusEle = $(".time-setting .inner div").eq(idx).find("input");
                                         optModal.close();
                                         //$(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
                                     }
@@ -641,7 +643,7 @@
                             </label>
                         </div>
                     </div>
-                    <p class="txt-guide">광고성 알림은 에티켓 시간설정과 상관없이 <br><span aria-label="">21:00~08:00</span>에는 발송되지 않습니다.</p>
+                    <p class="txt-guide">광고성 알림은 에티켓 시간설정과 상관없이 <br><span aria-label="오후9시부터 오전8시">21:00~08:00</span>에는 발송되지 않습니다.</p>
                 </div>
             </div>
         </div>
