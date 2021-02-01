@@ -92,7 +92,7 @@
                 var $type = type;
                 var $timesetIdx = timesetIdx;
                 var $body = $("body");
-                var html = '<div class="toast-message" aria-modal="true" id="'+id+'" aria-describedby="toast-message-cont" aria-labelledby="toast-message-cont">';
+                var html = '<div class="toast-message" role="alert" aria-modal="true" id="'+id+'" aria-describedby="toast-message-cont" aria-labelledby="toast-message-cont" tabindex="0">';
                     html += '    <div>';
                     html += '        <div class="txt-message ' + $type + '" id="toast-message-cont">' + txt + '</div>';
                     html += '        <button type="button" class="btn-toast-close"><span>닫기</span></button>';
@@ -282,6 +282,7 @@
                     //oldStartValue = $(this).closest(".inner").find("div").eq(0).find("input").val();
                     //oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
 
+                    events = true;
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         //console.log("iphone");
                     }else{
@@ -312,8 +313,6 @@
                             toastMessage.init("에티켓 시간이 설정되었습니다.", "", idx);
                         }
                     }
-
-                    events = true;
                 },
                 blur: function(e){
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -337,12 +336,13 @@
                                         //$(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
                                     }
                                 });
+                                events = false;
                                 return false;
                             }else{
                                 beforeFocusEleToast = $(".time-setting .inner div").eq(idx).find("label:not([class*=rst-time])");
                                 toastMessage.init("에티켓 시간이 설정되었습니다.", "", idx);
+                                events = false;
                             }
-                            events = false;
                         }
                     }
 
@@ -402,7 +402,7 @@
             //옵션창 열기
             $("#btn-opt-open").on({
                 click : function(){
-                    $(".lyr-opt-panel, .main-panel").stop().animate({"left":"0"}, 250, function(){
+                    $(".lyr-opt-panel, .main-panel").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
                         $(".main-panel").attr("aria-hidden", false)
                         $(".main-panel").attr("tabindex", 0).focus();
@@ -412,7 +412,7 @@
             //옵션창 닫기
             $(".btn-opt-close").on({
                 click : function(){
-                    $(".lyr-opt-panel, .main-panel").stop().animate({"left":"100%"}, 250, function(){
+                    $(".lyr-opt-panel, .main-panel").stop().attr("aria-hidden", true).animate({"left":"100%"}, 250, function(){
                         //접근성
                         $(".main-panel").attr("aria-hidden", true);
                         $(".main-panel").siblings("div");
@@ -423,7 +423,7 @@
             $("#btn-alarm-set").on({
                 click : function(){
                     $(".main-panel").stop().animate({"left":"-100%"}, 250);
-                    $(".sub-panel.alarm-setting").stop().animate({"left":"0"}, 250, function(){
+                    $(".sub-panel.alarm-setting").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
                         $(this).attr("aria-hidden", false);
                         $(this).attr("tabindex", 0).focus();
@@ -447,7 +447,7 @@
             $("#btn-license").on({
                 click : function(){
                     $(".main-panel").stop().animate({"left":"-100%"}, 250);
-                    $(".sub-panel.source-license").stop().animate({"left":"0"}, 250, function(){
+                    $(".sub-panel.source-license").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
                         $(this).attr("aria-hidden", false);
                         $(this).attr("tabindex", 0).focus();
