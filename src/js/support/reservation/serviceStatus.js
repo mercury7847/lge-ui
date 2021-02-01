@@ -658,26 +658,8 @@
                             acptNo : data.acptNo
                         })
                         $('#acptNo').val(result.data.acptNo);
-
                         $form.attr('action', result.data.url);
                         $form.submit();
-                        
-                        console.log('예약취소 완료');
-                        //console.log(data.url);
-                        // lgkorUI.requestAjaxDataPost(data.url, formData, function(completeResult) {
-                        //     if( completeResult.data.resultFlag == 'Y') {
-                        //         console.log('result url')
-                        //         console.log(result.data.url)
-                        //         $form.attr('action', result.data.url);
-                        //         $form.submit();
-                        //     } else {
-                        //         if ( completeResult.data.resultMessage) {
-                        //             lgkorUI.alert("", {
-                        //                 title: data.resultMessage
-                        //             });
-                        //         }
-                        //     }
-                        // });
                     } else {
                         if (data.resultMessage) {
                             lgkorUI.alert("", {
