@@ -251,7 +251,27 @@
                     color:#000;
                     border-bottom:1px solid #000;
                 }
-            }            
+            }
+            
+            @include mobile {
+                .keyword-tit {
+                    font-size:14px;
+                }
+                .keyword-list {
+                    ul > li {
+                        a { 
+                            .list-head {
+                                .list-category,.list-sub-category {
+                                    font-size:13px;
+                                }
+                            }
+                            .list-desc {
+                                font-size:13px;
+                            }
+                        }
+                    }
+                }
+            }
         }
         .keyword-box {
             @include clearfix;
@@ -494,7 +514,7 @@
         font-size:0;
         li {
             display:inline-block;
-            min-width:152px;
+            // min-width:152px;
             padding:20px 0 0 24px;
             vertical-align:top;
             &.block {
