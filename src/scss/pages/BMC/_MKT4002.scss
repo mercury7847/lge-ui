@@ -46,7 +46,7 @@
         .component-wrap {
             position:absolute;
             top:51px;
-            right:48px;
+            right:24px;
             @include mobile {
                 top:30px;
                 right:16px;
@@ -77,42 +77,42 @@
                 @include mobile {
                     padding-top: 24px;
                 }
-                .group {
-                    font-size:0;
-                    dl {
-                        position:relative;
-                        width:auto;
-                        display:inline-block;
-                        vertical-align:top;
-                        margin-top:0;
-                        padding:0 8px;
-                        &:before {
-                            content:'';
-                            position:absolute;
-                            top:50%;
-                            left:0;
-                            display:block;
-                            width:1px;
-                            height:14px;
-                            background:#D8D8D8;
-                            transform:translateY(-50%);
-                        }
-                        &:first-child {
-                            padding-left:0;
-                            &:before {
-                                display:none;
-                            }
-                        }
-                        @include mobile {
-                            display:block;
-                            padding:0;
-                            margin-top:6px;
-                            &:before {
-                                display:none;
-                            }
-                        }
-                    }
-                }
+                //.group {
+                //    font-size:0;
+                //    dl {
+                //        position:relative;
+                //        width:auto;
+                //        display:inline-block;
+                //        vertical-align:top;
+                //        margin-top:0;
+                //        padding:0 8px;
+                //        &:before {
+                //            content:'';
+                //            position:absolute;
+                //            top:50%;
+                //            left:0;
+                //            display:block;
+                //            width:1px;
+                //            height:14px;
+                //            background:#D8D8D8;
+                //            transform:translateY(-50%);
+                //        }
+                //        &:first-child {
+                //            padding-left:0;
+                //            &:before {
+                //                display:none;
+                //            }
+                //        }
+                //        @include mobile {
+                //            display:block;
+                //            padding:0;
+                //            margin-top:6px;
+                //            &:before {
+                //                display:none;
+                //            }
+                //        }
+                //    }
+                //}
                 dl {
                     display:table;
                     width:100%;
@@ -139,6 +139,7 @@
             }
         }
         .finish-txt {
+            margin: 24px -20px -24px;
             padding:17px 20px;
             background-color:#555;
             text-align:center;
@@ -158,12 +159,9 @@
                     display:block;
                 }
             }
-            .btn {
+            .btn-link {
                 margin-left:24px;
-                &.border {
-                    border-color: $color-white;
-                    color: $color-white;
-                }
+                color: $color-white;
                 @include mobile {
                     margin:8px 0 0 0;
                 }
@@ -213,8 +211,8 @@
                         border-color:#222;
                     }
                     &:nth-child(2) {
-                        background:$color-gray-5;
-                        border-color:$color-gray-5;
+                        background:$color-gray-1;
+                        border-color:$color-gray-1;
                     }
                     &:only-child {
                         width:100%;
@@ -341,13 +339,20 @@
         .bullet-list {
             margin-top:0;
         }
-        .link-area {
-            margin:12px 0 22px;
+        .btn-link {
+            margin: 12px 0 0 11px;
+            @include font-small;
             @include mobile {
-                margin:8px 0 24px;
+                margin-top: 8px;
+            }
+        }
+        .link-area {
+            margin-bottom: 22px;
+            @include mobile {
+                margin-bottom: 24px;
             }
             .btn-link {
-                @include font-small;
+                margin-left: 0;
             }
         }
 
