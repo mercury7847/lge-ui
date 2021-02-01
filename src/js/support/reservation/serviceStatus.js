@@ -542,7 +542,7 @@
                 $('#centerNm').val(data.centerName);
                 $('#centerCode').val(data.centerCode);
     
-                //self.dateParam['resrvSeq'] = data.resrvSeq;
+                $('#resrvSeq').val(data.resrvSeq);
             },
             requestDate: function() {
                 var self = this;
@@ -661,10 +661,14 @@
                     var data = result.data;
 
                     if (data.resultFlag == 'Y' && data.url !== "") {
-                        //$('#acptNo').val(data.acptNo);
 
+                        formData = $.extend(formData, {
+                            acptNo : data.acptNo
+                        })
+                        $('#acptNo').val(result.data.acptNo);
                         lgkorUI.requestAjaxDataPost(data.url, formData, function(result) {
                             if( result.data.resultFlag == 'Y') {
+                                $form.attr('action', result.data.url);
                                 $form.submit();
                             } else {
                                 if ( result.data.resultMessage) {
@@ -674,8 +678,6 @@
                                 }
                             }
                         });
-
-                        //$form.submit();
                     } else {
                         if (data.resultMessage) {
                             lgkorUI.alert("", {

@@ -252,7 +252,7 @@
 
                 $('.ui_search').search({
                     template: {
-                        autocompleteList: '<li><a href="#{{shopID}}" class="btn-detail" title="새창 열림">{{shopName}}</a></li>',
+                        autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="#{{item.shopID}}" class="btn-detail" title="새창 열림">{{item.shopName}}</a></li>{{/each}}</ul>',
                     }
                 });
 
@@ -400,6 +400,7 @@
             });
 
             self.$stepCenter.on('change', '[name=center]', function() {
+                $('#shopID').val($(this).val());
                 self.param = $(this).data();
                 self.requestDate();
             });
@@ -848,6 +849,8 @@
                 } else {
                     self.$solutionsBanner.hide();
                 }
+
+                $('#solutionsFlag').val(data.resultFlag);
             });
         },
         setSolutions: function(url, param, isShown) {

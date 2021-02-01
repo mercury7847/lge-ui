@@ -26,6 +26,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             x : 127.0395764,
             y : 37.5235644,
             boundsMargin: 50,
+            viewZoom: 12,
             overlayName : 'ui_overlay_item',
             templates: {
                 customMarker : 
@@ -449,12 +450,17 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 var selected = item.id == id ? true : false;
                 item.info.selected = selected;        
                 
-                if(selected) centerPoint = {lat: item.info.gpsInfo.gps, long: item.info.gpsInfo.gpsx}
+                if(selected) centerPoint = {items: item, lat: item.info.gpsInfo.gpsy, long: item.info.gpsInfo.gpsx}
                 return item;
             });
 
             self._changeMarkersState();
 
+            var marker = centerPoint.items.item;
+            console.log(marker);
+            marker.setZIndex(self.itemArr.length-1);
+
+            self.map.setZoom(12, true);
             self.map.panTo(new naver.maps.LatLng(centerPoint.lat, centerPoint.long), {duration:460, easing:"easeOutCubic"});
         },
 
