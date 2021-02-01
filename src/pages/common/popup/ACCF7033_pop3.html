@@ -1,8 +1,15 @@
-<article id="@@popupID" class="popup-wrap full">
+<!-- 210201 수정 -->
+<article id="@@popupID" class="popup-wrap">
+<!-- //210201 수정 -->
     <header class="pop-header">
-        <h1 class="tit"><span>내 보유 제품 등록</span></h1>
+        <!-- 210201 수정 -->
+        <h1 class="tit"><span>보유 제품 직접 등록</span></h1>
+        <!-- //210201 수정 -->
     </header>
     <section class="pop-conts common-pop mypage"><!-- [12.01 수정] .common-pop class 추가 -->
+        <!-- 210201 추가 -->
+        <p class="info-req"><span class="blind">필수입력</span>필수 입력 항목</p>
+        <!-- //210201 추가 -->
         <div class="form-wrap">
             <dl class="forms">
                 <dt class="tit"><label for="inp01" class="req">제품 모델명<span class="blind">필수입력</span></label></dt>
@@ -10,8 +17,10 @@
                     <div class="box">
                         <div class="input-wrap">
                             <input type="text" id="inp01" value="" placeholder="제품 모델명(코드) 입력">
+                            <!-- 210201 수정 -->
+                            <p class="comp">제품 모델명 확인이 완료되었습니다.</p><!-- 확인 버튼 클릭, 확인 후 출력 -->
                             <p class="link"><a href="#n" class="btn-link">제품 모델명 찾기</a></p>
-                            <p class="comp">제품 모델명 확인완료!</p><!-- 확인 버튼 클릭, 확인 후 출력 -->
+                            <!-- //210201 수정 -->
                         </div>
                         <div class="cell">
                             <button type="button" class="btn"><span>확인</span></button>
@@ -58,7 +67,9 @@
                             <input type="text" id="inp02" value="" placeholder="제조번호(Serial Number) 입력">
                         </div>
                         <div class="cell">
-                            <button type="button" class="btn"><span>제조번호 확인</span></button>
+                            <!-- 210201 수정 -->
+                            <button type="button" class="btn"><span>시리얼 번호 확인</span></button>
+                            <!-- //210201 수정 -->
                         </div>
                     </div>
                 </dd>

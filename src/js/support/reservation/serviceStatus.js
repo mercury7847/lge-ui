@@ -227,14 +227,6 @@
         },
         
         // changeSetting: function() {
-
-            
-
-            
-
-            
-           
-        // },
         cancelSetting: function() {
             if (!$('#cancelServicePopup').length) return;
 
@@ -661,9 +653,14 @@
                     var data = result.data;
 
                     if (data.resultFlag == 'Y' && data.url !== "") {
+
+                        formData = $.extend(formData, {
+                            acptNo : data.acptNo
+                        })
+                        $('#acptNo').val(result.data.acptNo);
                         lgkorUI.requestAjaxDataPost(data.url, formData, function(result) {
                             if( result.data.resultFlag == 'Y') {
-                                $('#acptNo').val(result.data.acptNo);
+                                $form.attr('action', result.data.url);
                                 $form.submit();
                             } else {
                                 if ( result.data.resultMessage) {

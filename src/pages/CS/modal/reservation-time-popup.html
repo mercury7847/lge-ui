@@ -1,24 +1,24 @@
 <article id="reservationTimePopup" class="support popup-wrap full" data-date-url="/lg5-common/data-ajax/support/possibleDate.json" data-time-url="/lg5-common/data-ajax/support/possibleTime.json" data-sms-url="/lg5-common/data-ajax/support/authSendSuccess.json" data-auth-url="/lg5-common/data-ajax/support/reservationDateChange.json">
-    <form id="changeEngineerFormData" action="/html/CS/CSRF6029.html" method="POST" data-ajax="/lg5-common/data-ajax/support/reservationCancel.json" autocomplete="off" novalidate>
     <header class="pop-header">
         <h1 class="tit"><span>예약 일시 변경</span></h1>
     </header>
     <section class="pop-conts reservation-time-pop">
+        <form id="changeEngineerFormData" action="/html/CS/CSRF6029.html" method="POST" data-ajax="/lg5-common/data-ajax/support/reservationCancel.json" autocomplete="off" novalidate>
         <!-- <input type="hidden" name="authName" id="authName" value="홍길동">
         <input type="hidden" name="authPhoneNo" id="authPhoneNo" value="01044442222"> -->
-        <input type="hidden" name="zipId" id="zipId" value="">
-        <input type="hidden" name="productCode" id="productCode" value="">
-        <input type="hidden" name="userNm" id="userNm" value="홍길동">
-        <input type="hidden" name="phoneNo" id="phoneNo" value="01044442222">
-        <input type="hidden" name="svcType" id="svcType" value="">
-        <input type="hidden" name="lockUserId" id="lockUserId" value="">
-        <input type="hidden" name="topic" id="topic" value="버튼/리모컨">
-        <input type="hidden" name="subtopic" id="subtopic" value="버튼 잠금 설정">
-        <input type="hidden" name="centerCode" id="centerCode" value="">
-        <input type="hidden" name="engineerNm" id="engineerNm" value="">
-        <input type="hidden" name="engineerCode" id="engineerCode" value="">
-        <input type="hidden" name="centerNm" id="centerNm" value="">
-        <input type="hidden" id="resrvSeq" name="resrvSeq">
+            <input type="hidden" name="zipId" id="zipId" value="">
+            <input type="hidden" name="productCode" id="productCode" value="">
+            <input type="hidden" name="userNm" id="userNm" value="홍길동">
+            <input type="hidden" name="phoneNo" id="phoneNo" value="01044442222">
+            <input type="hidden" name="svcType" id="svcType" value="">
+            <input type="hidden" name="lockUserId" id="lockUserId" value="">
+            <input type="hidden" name="topic" id="topic" value="버튼/리모컨">
+            <input type="hidden" name="subtopic" id="subtopic" value="버튼 잠금 설정">
+            <input type="hidden" name="centerCode" id="centerCode" value="">
+            <input type="hidden" name="engineerNm" id="engineerNm" value="">
+            <input type="hidden" name="engineerCode" id="engineerCode" value="">
+            <input type="hidden" name="centerNm" id="centerNm" value="">
+            <input type="hidden" id="resrvSeq" name="resrvSeq">
 
         <!-- <input type="hidden" name="engineerNm" id="engineerNm" value="">
         <input type="hidden" name="engineerCode" id="engineerCode" value="">
@@ -155,6 +155,7 @@
                 ]
             })
         </div>
+    </form>
     </section>
     <footer class="pop-footer">
         <div class="btn-group center">
@@ -163,5 +164,4 @@
         </div>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-</form>
 </article>

@@ -102,14 +102,17 @@
                     html += '</div>';
 
                 $body.append(html);
-                $("#"+id).attr("tabindex", 0).focus();
+                //$("#"+id).attr("tabindex", 0).focus();
                 this.open("#"+id, $timesetIdx);
             },
             open: function(id, timesetIdx){
                 cnt++;
                 var $id = $(id);
 
-                $id.css("z-index", cnt).animate({'bottom':'50px'}, 200);
+                $("html").css("overflow-y","hidden");
+                $id.css("z-index", cnt).stop().animate({'bottom':'50px'}, 200, function(){
+                    $(this).attr("tabindex", 0).focus();
+                });
                 setTimeout(function(){
                     toastMessage.close($id, timesetIdx);
                 }, 5000);
@@ -122,7 +125,8 @@
             close: function(id, timesetIdx){
                 var $id = $(id);
                 //$id.removeClass("show").remove();
-                $id.css("z-index", cnt).animate({'bottom':'-60px'}, 200, function(){
+                $id.css("z-index", cnt).stop().animate({'bottom':'-60px'}, 200, function(){
+                    $("html").css("overflow-y","scroll");
                     $(beforeFocusEleToast).focus();
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         if(timesetIdx != null && timesetIdx != "" && timesetIdx != undefined){

@@ -586,6 +586,22 @@
 .popup-wrap {
     .common-pop {
         // 팝업 기본
+        .info-req {
+            margin:-40px 0 48px;
+            font-size:14px;
+            line-height:24px;
+            @include mobile {
+                margin:-24px 0 32px;
+                font-size:13px;
+                line-height:21px;
+            }
+            &:before {
+                content:'*';
+                display:inline-block;
+                margin-right:2px;
+                color:#da0f47;
+            }
+        }
         .form-wrap {
             max-width:630px;
             .forms {
@@ -599,6 +615,9 @@
                     width:70.8%;
                     @include mobile {
                         width:100%;
+                    }
+                    .date-select-box.col-2 {
+                        padding-right:0;
                     }
                 }
             }
@@ -954,6 +973,11 @@
         }
         .btn-link {
             margin-top: 12px;
+        }
+        .link {
+            .btn-link {
+                margin-top:0;
+            }
         }
 
         // 케어솔루션 구매 안내
