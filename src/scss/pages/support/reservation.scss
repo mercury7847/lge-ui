@@ -545,8 +545,23 @@
                 align-items: center;
                 justify-content: center;
                 flex-wrap: wrap;
-                .btn {
-                    width: 100%;
+                .btn-link {
+                    font-size: 20px;
+                    text-decoration: none;
+                    padding-right: 28px;
+                    &::after {
+                        width: 20px;
+                        height: 20px;
+                        top: 4px;
+                        background-size: 18px;
+                    }
+                    &:hover,
+                    &:focus {
+                        color: #da0f47;
+                        &::after {
+                            background-image: url(/lg5-common/images/icons/btn-arr-16-red.svg);
+                        }
+                    }
                 }
             }
         }
