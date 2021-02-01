@@ -124,15 +124,14 @@
                 //$id.removeClass("show").remove();
                 $id.css("z-index", cnt).animate({'bottom':'-60px'}, 200, function(){
                     $(beforeFocusEleToast).focus();
-                    $(this).remove();
-
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         if(timesetIdx != null && timesetIdx != "" && timesetIdx != undefined){
                             if(events){
-                                $(".time-setting .inner div").eq(idx).find("label:not([class*=rst-time])").attr("tabindex", 0).focus().trigger("click");
+                                $(".time-setting .inner div").eq(timesetIdx).find("label:not([class*=rst-time])").attr("tabindex", 0).focus().trigger("click");
                             }
                         }
                     }
+                    $(this).remove();
                 });
             }
         }
@@ -320,14 +319,16 @@
             });
 
             //마케팅 푸시 알림 받기
-            $("#mktPushAlarm").on({
+            $("#mktPushAlarmChk").on({
                 click : function(){
                     var checked = $(this).prop("checked");
-                    beforeFocusEleToast = "#mktPushAlarm";
+                    beforeFocusEleToast = "#mktPushAlarmChk";
+                    var hours = date.getHours();
+                    var txtDate = fullYear + "년" + month + "월" + day + "일 " + hours + "시 ";
                     if(checked){
-                        toastMessage.init("2021년01월14일 12시 <br>알림 허용 처리가 완료되었습니다.", "type2");
+                        toastMessage.init(txtDate + "<br>알림 허용 처리가 완료되었습니다.", "type2");
                     }else{
-                        toastMessage.init("2021년01월14일 12시 <br>알림 거부 처리가 완료되었습니다.", "type2");
+                        toastMessage.init(txtDate + "<br>알림 거부 처리가 완료되었습니다.", "type2");
                     }
                 }
             });
@@ -548,8 +549,8 @@
                     <div>
                         <p>마케팅 푸시 알림 받기</p>
                         <div class="opt-switch">
-                            <label for="mktPushAlarm">
-                                <input type="checkbox" id="mktPushAlarm">
+                            <label for="mktPushAlarmChk">
+                                <input type="checkbox" id="mktPushAlarmChk">
                                 <span></span>
                             </label>
                         </div>
