@@ -227,14 +227,6 @@
         },
         
         // changeSetting: function() {
-
-            
-
-            
-
-            
-           
-        // },
         cancelSetting: function() {
             if (!$('#cancelServicePopup').length) return;
 

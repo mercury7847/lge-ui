@@ -19,47 +19,47 @@
     border-collapse:separate;
     border-spacing:24px 0;
     @include mobile {
-        display:block;
-        width:100%;
-        margin:-8px 0 0;
+        width:auto;
+        margin:-4px;
         border-spacing:0;
     }
     li {
         display:table-cell;
-        height:202px;
-        padding:32px;
+        height:196px;
+        padding:32px 24px;
         border-radius:8px;
         background-color:#f4f4f4;
         text-align:center;
         @include mobile {
             display:inline-block;
-            width:calc((100% - 8px) / 2 );
+            width:calc((100% - 20px) / 2 );
             height:166px;
-            margin-top:8px;
+            margin:4px;
             padding:20px 16px;
             vertical-align:top;
         }
         .ico {
             display:block;
-            width:48px;
-            height:48px;
+            width:64px;
+            height:64px;
             margin:0 auto;
             &.ico01 {
-                background-image:url('/lg5-common/images/icons/icon-main-register-96.svg');
+                background-image:url('/lg5-common/images/icons/icon-cs-as-64.svg');
             }
             &.ico02 {
-                background-image:url('/lg5-common/images/icons/icon-main-careship-96.svg');
+                background-image:url('/lg5-common/images/icons/icon-cs-point-64.svg');
             }
             &.ico03 {
-                background-image:url('/lg5-common/images/icons/icon-alert-email-96.svg');
+                background-image:url('/lg5-common/images/icons/icon-cs-manual-64.svg');
             }
             &.ico04 {
-                background-image:url('/lg5-common/images/icons/icon-main-service-96.svg');
+                background-image:url('/lg5-common/images/icons/icon-cs-technology-64.svg');
             }
         }
         p {
-            margin-top:12px;
+            margin-top:16px;
             font-size:16px;
+            font-weight:500;
             line-height:26px;
             @include mobile {
                 font-size:14px;
@@ -82,18 +82,18 @@
             }
             .inner {
                 position:relative;
-                padding:32px;
+                padding:24px 32px;
                 padding-right:220px;
                 border-radius:8px;
                 box-shadow:2px 4px 16px 0 rgba(#000, .14);
                 @include clearfix;
                 @include mobile {
-                    padding:46px 16px 24px;
+                    padding:24px 16px;
                 }
                 // thumbnail
                 .thumb {
                     float:left;
-                    width:180px;
+                    width:140px;
                     img {
                         width:100%;
                         height:auto;
@@ -105,7 +105,7 @@
                     @include mobile {
                         float:none;
                         position:absolute;
-                        top:46px;
+                        top:24px;
                         left:16px;
                         width:100%;
                         max-width:110px;
@@ -116,25 +116,25 @@
                 .info-wrap {
                     float:left;
                     width:calc(100% - 180px - 24px);
-                    margin-left:24px;
+                    padding-left:24px;
                     @include mobile {
                         float:none;
                         width:100%;
-                        margin:16px 0 0;
+                        // margin:16px 0 0;
                         padding:0 0 0 122px;
                         padding-left:122px;
                     }
                     .name {
                         color:#000;
-                        @include font-large;
+                        @include font-medium;
                         font-weight:700;
                         @include mobile {
-                            font-size:18px;
-                            line-height:26px;
+                            font-size:15px;
+                            line-height:23px;
                         }
                     }
                     .e-name {
-                        color:#767676;
+                        color:#000;
                         @include font-small;
                         font-weight:500;
                     }
@@ -177,9 +177,9 @@
                         }
                     }
                     .info-lists {
-                        max-width:450px;
+                        // max-width:450px;
                         font-size:0;
-                        margin-top:4px;
+                        margin-top:8px;
                         @include mobile {
                             max-width:initial;
                             margin-top:10px;
@@ -192,7 +192,7 @@
                                 display:inline-block;
                                 width:1px;
                                 height:10px;
-                                margin:7px 8px 0;
+                                margin:9px 8px 0;
                                 background:#ddd;
                                 vertical-align:top;
                             }
@@ -206,9 +206,8 @@
                                 dt,
                                 dd {
                                     display:inline-block;
-                                    color:#767676;
+                                    color:#000;
                                     @include font-small;
-                                    font-weight:500;
                                     vertical-align:top;
                                 }
                                 dt::after {
@@ -254,40 +253,40 @@
                 .btn-group {
                     position:absolute;
                     right:32px;
-                    bottom:32px;
+                    bottom:24px;
                     @include mobile {
                         position:relative;
                         right:auto;
                         bottom:auto;
-                        margin-top:20px;
+                        margin-top:24px;
                     }
                     .btn {
                         margin-left:0;
                     }
                     .notice {
                         position:absolute;
-                        top:-44px;
+                        top:-46px;
                         right:0;
                         z-index:1;
                         width:auto;
                         padding:3px 10px;
                         border-radius:8px;
-                        border:1px solid #EC455A;
-                        background:#fdecee;
+                        border:1px solid #da0f47;
+                        background:#fbe7ec;
                         white-space:nowrap;
                         p {
                             display:inline-block;
                             vertical-align:middle;
-                            color:#EC455A;
+                            color:#da0f47;
                             @include font-small;
                             font-weight:500;
                         }
                         .btn-off {
                             display:inline-block;
-                            width:20px;
-                            height:20px;
+                            width:16px;
+                            height:16px;
                             margin-left:4px;
-                            background:url('/lg5-common/images/icons/icon-delete-20-pink.svg') center no-repeat;
+                            background:url('/lg5-common/images/icons/icon-delete-16-pink.svg') center no-repeat;
                             vertical-align:middle;
                         }
                         &::after {
@@ -321,6 +320,7 @@
                 }
                 // delete
                 > .btn-delete {
+                    display:none;
                     position:absolute;
                     top:32px;
                     right:32px;
@@ -361,17 +361,28 @@
                 .inner {
                     height:100%;
                     padding:24px 32px;
+                    @include mobile {
+                        padding:24px 16px;
+                    }
                     .thumb {
                         width:140px;
+                        @include mobile {
+                            width:110px;
+                        }
                     }
                     .info-wrap {
-                        .name {
-                            font-size:16px;
-                            line-height:26px;
+                        padding-top:12px;
+                        @include mobile {
+                            margin-top:0;
+                            padding-top:0;
                         }
                         .info-lists {
                             max-width:100%;
                             margin-top:16px;
+                            @include mobile {
+                                max-width:initial;
+                                margin-top:10px;
+                            }
                             li {
                                 display:block;
                                 &:after {
@@ -381,11 +392,11 @@
                         }
                     }
                     .btn-group {
-                        display:inline-block;
-                        position:relative;
-                        right:auto;
-                        bottom:auto;
-                        margin-top:12px;
+                        // display:inline-block;
+                        // position:relative;
+                        // right:auto;
+                        // bottom:auto;
+                        // margin-top:12px;
                         @include mobile {
                             display:inline-block;
                             // left:122px;
