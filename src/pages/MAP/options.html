@@ -309,12 +309,18 @@
                     //oldStartValue = $(this).closest(".inner").find("div").eq(0).find("input").val();
                     //oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
 
-                    var idx = $(this).closest("div").index();
-                    changeTimeSet(idx);
+                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        events = true;
+                    }else{
+                        var idx = $(this).closest("div").index();
+                        changeTimeSet(idx);
+                    }
                 },
                 blur: function(e){
-                    var idx = $(this).closest("div").index();
-                    changeTimeSet(idx);
+                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        var idx = $(this).closest("div").index();
+                        changeTimeSet(idx);
+                    }
                 }
             });
 
