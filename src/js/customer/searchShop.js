@@ -103,6 +103,8 @@
 
             self.shopID = "";
 
+            self.isUserAddressClick = false;
+
             self.defaultOptions = self._getOptions();
 
             self.$searchField = $('#tab3 .input-sch input');
@@ -465,11 +467,7 @@
 
             var userAddressPoint;
             if(userAddressAbled){
-                if(self.userAddressX == "" || self.userAddressY == ""){
-                    userAddressPoint = "N";
-                } else{
-                    userAddressPoint = self.userAddressX + "," + self.userAddressY;
-                }
+                userAddressPoint = self.userAddressX + "," + self.userAddressY;
             } else{
                 userAddressPoint = ""
             }
@@ -481,8 +479,8 @@
             var keywords = {
                 searchType: self.searchType,
 
-                searchCity: self.userCityName ? self.userCityName : self.$citySelect.val(),
-                searchBorough: self.userBoroughName ? self.userBoroughName : self.$boroughSelect.val(),
+                searchCity: self.$citySelect.val(),
+                searchBorough: self.$boroughSelect.val(),
                 
                 searchSubwayLocal: self.$subwayCitySelect.val(),
                 searchSubwayLine: self.$subwayLineSelect.val(),
@@ -571,6 +569,8 @@
                             self.userAddressY = result.pointy;
 
                             if (self.userAddressX){
+                                self.isUserAddressClick = true;
+                                self.searchResultMode = true;
                                 self._loadStoreData(true);
                             }
                         } else{
@@ -578,6 +578,8 @@
                         }
                     });
                 } else{
+                    self.isUserAddressClick = true;
+                    self.searchResultMode = true;
                     self._loadStoreData(true);
                 }
             } else{
@@ -654,7 +656,7 @@
                 self.isChangeMode = false;
                 self.searchResultMode = false;
 
-                self.$searchContainer.css('display', 'block');
+                self.$searchContainer.css('display', 'block').stop().transition({opacity:1}, 430, "easeInOutCubic");
 
                 $('.result-list-box').stop().transition({opacity:0, y:100}, 350, "easeInOutCubic");
 
@@ -679,6 +681,8 @@
 
                 var listop = self.$defaultListContainer.position().top;
 
+                self.$searchContainer.stop().transition({opacity:0}, 320, "easeInOutCubic");
+
                 self._setResultText();
                 $('.result-list-box').stop().css({display:'block', opacity:0, y:100}).transition({opacity:1, y:0}, 410, "easeInOutCubic");
                 
@@ -695,11 +699,39 @@
         _setResultText: function(){
             var self = this;
 
+
+            // self.$citySelect = $('#select1'); //시/도 선택
+            // self.$boroughSelect = $('#select2'); //구.군 선택
+            // self.$localSearchButton = $('.search-local'); //지역검색 버튼
+            // self.$searchUserAdressButton = $('.search-userAdress'); //내 주소 검색 버튼
+
+            // self.$subwayCitySelect = $('#select3'); //지역선택
+            // self.$subwayLineSelect = $('#select4'); //호선 선택
+            // self.$subwayStationSelect = $('#select5'); //역 선택
+            // self.$searchSubwayButton = $('.search-subway'); //지하철 검색 버튼
+
+            var keywords = self._getKeyword();
+            var searchKeyword;
+            if(self.searchType == "local"){
+                if(!self.isUserAddressClick){
+                    var cityname = self.$citySelect.find('option[value=' + keywords.searchCity + ']').text();
+                    var borough = self.$boroughSelect.find('option[value=' + keywords.searchBorough + ']').text();
+                    searchKeyword = cityname + " " + borough;
+                }else searchKeyword = self.userAddress;
+            } else if(self.searchType == "subway"){
+                var stationame = self.$subwayStationSelect.find('option[value=' + keywords.searchSubwayStation + ']').text();
+                searchKeyword = stationame;
+            } else{
+                searchKeyword = keywords.searchKeyword;
+            }
+
             var resultxt = vcui.template(searchResultText[self.searchType], {
-                keyword: self.searchKeyword,
+                keyword: searchKeyword,
                 total: self.$defaultListLayer.find('> li').length
             });
-            self.$searchResultContainer.find('.result-txt').html(resultxt)
+            self.$searchResultContainer.find('.result-txt').html(resultxt);
+
+            self.isUserAddressClick = false;
         },
 
         //리스트 컨테이너 높이 설정...스크롤영역

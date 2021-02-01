@@ -1060,18 +1060,9 @@
             }, true);
         },
 
-        requestWish: function(id, sku, wishListId, wishItemId, wish, callbackSuccess, callbackFail, postUrl) {
-            var postData = {"id":id, "wish":wish};
-            if(!(!sku)) {
-                postData.sku = sku;
-            };
-            if(!(!wishListId)) {
-                postData.wishListId = wishListId;
-            };
-            if(!(!wishItemId)) {
-                postData.wishItemId = wishItemId;
-            };
-            lgkorUI.requestAjaxDataPost(postUrl, postData, function(result){
+        requestWish: function(param, wish, callbackSuccess, callbackFail, postUrl) {
+            param.wish = wish;
+            lgkorUI.requestAjaxDataPost(postUrl, param, function(result){
                 var data = result.data;
                 if(lgkorUI.stringToBool(data.success)) {
                     if(wish) {

@@ -152,15 +152,22 @@
                 var fail = function(data) {
                     $dm.find('span.chk-wish-wrap input').prop("checked",!wish);
                 };
+
+                var param = {
+                    "id":$dm.attr('data-id'),
+                    "sku":$dm.attr('data-sku'),
+                    "wishListId":$dm.attr('data-wishListId'),
+                    "wishItemId":$dm.attr('data-wishItemId'),
+                    "wish":wish
+                };
+
                 lgkorUI.requestWish(
-                    $dm.attr('data-id'),
-                    $dm.attr('data-sku'),
-                    $dm.attr('data-wishListId'),
-                    $dm.attr('data-wishItemId'),
+                    param,
                     wish,
                     success,
                     fail,
-                    ajaxUrl);
+                    ajaxUrl
+                );
 
                 /*
                 var postData = {
