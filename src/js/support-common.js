@@ -311,7 +311,7 @@ CS.MD.search = function() {
             var tmpl = self.options.template,
                 arr = data instanceof Array ? data : [];
 
-            self.$el.find('.autocomplete-box').find('ul').empty();
+            self.$el.find('.autocomplete-box').find('ul').remove();
 
             if (arr.length) {
                 var html = vcui.template(tmpl.autocompleteList, {

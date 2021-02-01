@@ -750,12 +750,12 @@
         .box {
             position:relative;
             margin:0;
-            border-top:1px solid #ddd;
-            &:first-child {
-                border-top:none;
-            }
+            border-bottom:1px solid #ddd;
+            // &:first-child {
+            //     border-top:none;
+            // }
             @include mobile {
-                padding:32px 0;
+                padding:54px 0 24px;
                 border-radius:0;
                 box-shadow:none;
                 overflow:initial;
@@ -765,8 +765,8 @@
                 width:100%;
                 @include mobile {
                     display:block;
-                    padding-top:30px;
-                    padding-left:112px;
+                    // padding-top:30px;
+                    padding-left:116px;
                 }
                 .col {
                     display:table-cell;
@@ -804,6 +804,11 @@
                         }
                     }
                 }
+                .product-info {
+                    .thumb {
+                        margin-left:-20px;
+                    }
+                }
             }
             .btn-delete {
                 position:absolute;
@@ -812,6 +817,9 @@
                 width:24px;
                 height:24px;
                 background:url("/lg5-common/images/icons/btn-close-24.svg") no-repeat;
+                @include mobile {
+                    top:24px;
+                }
             }
             .chk-wish-wrap {
                 position:absolute;
