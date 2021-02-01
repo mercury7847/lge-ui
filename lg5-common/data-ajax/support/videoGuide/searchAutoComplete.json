@@ -1,0 +1,41 @@
+{
+    "status": "success",
+    "message":null,
+    "data": {
+        "searchList": [
+            {
+                "url": "/html/CS/CSRF6003.html",
+                "subCategory": "스마트폰",
+                "subTopic": "기타 설정 문의",
+                "contTitle": "휴대폰 사용자에 따라 휴대폰 환경을 다르게 설정할 수 있나요?"
+            },
+            {
+                "url": "/html/CS/CSRF6003.html",
+                "subCategory": "스마트폰",
+                "subTopic": "기타 기능(게임툴/플로팅바/미니뷰/멀티윈도우 등)",
+                "contTitle": "V50S, V50, V40, V35, V30, G8, G7, G6에서 공유패널 아이콘을 편집할 수 있나요."
+            },
+            {
+                "url": "/html/CS/CSRF6003.html",
+                "subCategory": "스마트폰",
+                "subTopic": "기타 기능(게임툴/플로팅바/미니뷰/멀티윈도우 등)",
+                "contTitle": "패턴[비밀번호] 분실 시 해제는 어떻게 하나요?"
+            },
+            {
+                "url": "/html/CS/CSRF6003.html",
+                "subCategory": "스마트폰",
+                "subTopic": "기타 기능(게임툴/플로팅바/미니뷰/멀티윈도우 등)",
+                "contTitle": "패턴[비밀번호] 분실 시 해제는 어떻게 하나요?"
+            },
+            {
+                "url": "/html/CS/CSRF6003.html",
+                "subCategory": "스마트폰",
+                "subTopic": "기타 기능(게임툴/플로팅바/미니뷰/멀티윈도우 등)",
+                "contTitle": "패턴[비밀번호] 분실 시 해제는 어떻게 하나요?"
+            }
+        ]
+    },
+    "param": {
+        "search": "검색어"
+    }
+}

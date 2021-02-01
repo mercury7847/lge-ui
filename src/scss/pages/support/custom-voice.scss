@@ -81,7 +81,7 @@
     // 나의 글 보기
     &.my-status {
         .my-status-info {
-            margin:-32px -6px 64px;
+            margin:0 -6px 64px;
             & > ul {
                 @include clearfix;
                 li {

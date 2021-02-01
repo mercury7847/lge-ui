@@ -212,12 +212,12 @@
                 .tabs-wrap {
                     &.border-type {
                         .tabs {
-                            border-bottom: 1px solid #ddd;
+                            width: 100%;
                             >li {
-                                margin-left: 32px;
+                                margin-left: 20px;
                                 margin-bottom: -1px;
                                 > a {
-                                    padding-bottom: 19px;
+                                    padding-bottom: 20px;
                                 }
                                 &:first-child {
                                     margin-left: 0;
@@ -289,16 +289,11 @@
                                             color: #000;
                                         }
                                         .value {
-                                            color: #767676;
+                                            color: #666;
                                         }
                                         .cell {
                                             &:nth-of-type(n+2) {
                                                 margin-left: 24px;
-                                            }
-                                            &:last-child {
-                                                margin-left: 0;
-                                                margin-top: 8px;
-                                                width: 100%;
                                             }
                                         }
                                     }
@@ -309,8 +304,10 @@
                 }
                 .scroll-wrap {
                     .list-item {
+                        padding-right: 14px;
                         > li {
                             padding-bottom: 25px;
+                            padding-right: 0;
                             margin-bottom: 24px;
                             border-bottom: 1px solid #ddd;
                             &:last-child {
@@ -413,20 +410,58 @@
                     transition: opacity 0.5s ease 0.4s;
                     .tabs-wrap {
                         top: -65px;
+                        padding-bottom: 0;
                     }
                 }
                 h2.tit {
                     font-size: 32px;
                     padding-bottom: 18px;
+                    padding-left: 32px;
                 }
                 .result-list-box {
                     position: absolute;
                     display: block;
+                    .result-btn-wrap,
+                    .result-list {
+                        padding-left: 32px;
+                    }
                 }
                 h2.tit,
                 .store-list-box {
                     transform: translateY(0);
                     transition: transform ease 0.5s;
+                }
+                .sch-box {
+                    margin: 0 32px;
+                }
+                .list-wrap {
+                    padding-left: 32px;
+                    .scroll-wrap {
+                        height: calc(100vh - 310px - 80px);
+                    }
+                }
+                .sch-list {
+                    ul {
+                        li {
+                            .store-info-list {
+                                .info-wrap {
+                                    .etc-info {
+                                        .bizHours {
+                                            .cell {
+                                                &:last-child {
+                                                    flex: 1;
+                                                    text-align: right;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .opt-cont {
+                    bottom: -80px;
                 }
                 &.active {
                     h2.tit,
@@ -436,6 +471,11 @@
                     .tabs-contents {
                         .desc {
                             opacity: 0;
+                        }
+                    }
+                    .list-wrap {
+                        .scroll-wrap {
+                            height: calc(100vh - 244px);
                         }
                     }
                 }
@@ -449,16 +489,48 @@
                     transform: translateY(0);
                     transition: transform ease-out .5s;
                 }
+                .sch-list {
+                    .scroll-wrap {
+                        height: calc(100vh - 463px);
+                    }
+                    ul {
+                        li {
+                            .store-info-list {
+                                .info-wrap {
+                                    .etc-info {
+                                        .bizHours {
+                                            .cell {
+                                                &:last-child {
+                                                    margin-left: 0;
+                                                    margin-top: 8px;
+                                                    width: 100%;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .opt-cont {
+                    bottom: -76px;
+                }
                 &.active {
                     .sch-box {
                         display: none;
                     }
                     .store-list-box {
                         position: fixed;
-                        transform: translateY(-339px);
+                        transform: translateY(-422px);
                     }
                     .result-list-box {
                         display: block;
+                    }
+                    .sch-list {
+                        .scroll-wrap {
+                            height: calc(100vh - 273px);
+                        }
                     }
                 }
             }
