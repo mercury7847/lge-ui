@@ -400,6 +400,7 @@
             });
 
             self.$stepCenter.on('change', '[name=center]', function() {
+                $('#shopID').val($(this).val());
                 self.param = $(this).data();
                 self.requestDate();
             });
@@ -848,6 +849,8 @@
                 } else {
                     self.$solutionsBanner.hide();
                 }
+
+                $('#solutionsFlag').val(data.resultFlag);
             });
         },
         setSolutions: function(url, param, isShown) {
