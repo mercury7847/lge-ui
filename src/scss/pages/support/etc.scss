@@ -336,3 +336,17 @@
         font-weight:$font-weight-bold;
     }
 }
+
+.survey {
+    .cont-wrap {
+        @include mobile {
+            padding-bottom:0;
+        }
+    }
+    .survey-banner {
+        text-align:center;
+        img {
+            max-width: 100%;
+        }
+    }
+}

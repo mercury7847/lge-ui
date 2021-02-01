@@ -162,7 +162,7 @@
                 font-weight:bold;
                 color:#000;
             }
-            .keyword-list {
+            .keyword-list:not(:only-child) {
                 border-top:1px solid #ddd;
                 border-bottom:1px solid #ddd;
                 ul > li {
@@ -219,7 +219,6 @@
                         }
                     }
                 }
-
                 .no-keyword {
                     line-height:80px;
                 }
