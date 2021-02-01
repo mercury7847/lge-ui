@@ -162,6 +162,9 @@
             .btn-link {
                 margin-left:24px;
                 color: $color-white;
+                &:after {
+                    background-image: url("/lg5-common/images/icons/btn-arr-16-white.svg");
+                }
                 @include mobile {
                     margin:8px 0 0 0;
                 }
