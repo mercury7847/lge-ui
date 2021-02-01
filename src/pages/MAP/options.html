@@ -21,6 +21,7 @@
         var events = false;
 
         var beforeFocusEle = "";
+        var beforeFocusEleToast = "";
         var optModal = {
             open: function(id, role, txt, confirm, cancel){
                 //var $id = $(id);
@@ -87,14 +88,15 @@
                 var id = "toast"+cnt;
                 var $type = type;
                 var $body = $("body");
-                var html = '<div class="toast-message" id="'+id+'">';
+                var html = '<div class="toast-message" id="'+id+'" aria-labelledby="toast-message-cont">';
                     html += '    <div>';
-                    html += '        <div class="txt-message ' + $type + '">' + txt + '</div>';
+                    html += '        <div class="txt-message ' + $type + '" id="toast-message-cont">' + txt + '</div>';
                     html += '        <button type="button" class="btn-toast-close"><span>닫기</span></button>';
                     html += '    </div>';
                     html += '</div>';
 
                 $body.append(html);
+                $("#"+id).attr("tabindex", 0).focus();
                 this.open("#"+id);
             },
             open: function(id){
@@ -115,6 +117,7 @@
                 var $id = $(id);
                 //$id.removeClass("show").remove();
                 $id.css("z-index", cnt).animate({'bottom':'-60px'}, 200, function(){
+                    $(beforeFocusEleToast).focus();
                     $(this).remove();
                 });
             }
@@ -292,6 +295,7 @@
                             });
                             return false;
                         }else{
+                            beforeFocusEleToast = $(".time-setting .inner div").eq(idx).find("label:not([class*=rst-time])");
                             toastMessage.init("에티켓 시간이 설정되었습니다.");
                         }
                     }
@@ -320,11 +324,12 @@
                             });
                             return false;
                         }else{
+                            beforeFocusEleToast = $(".time-setting .inner div").eq(idx).find("label:not([class*=rst-time])");
                             toastMessage.init("에티켓 시간이 설정되었습니다.");
                         }
 
                         if(events){
-                            $(".time-setting .inner div").eq(idx).find("label:not([class*=rst-time])").attr("tabindex", 0).focus();
+                            $(".time-setting .inner div").eq(idx).find("label:not([class*=rst-time])").attr("tabindex", 0).focus().tirrger("click");
                         }
                     }
 
@@ -372,6 +377,7 @@
             $("#mktPushAlarm").on({
                 click : function(){
                     var checked = $(this).prop("checked");
+                    beforeFocusEleToast = "#mktPushAlarm";
                     if(checked){
                         toastMessage.init("2021년01월14일 12시 <br>알림 허용 처리가 완료되었습니다.", "type2");
                     }else{
