@@ -323,10 +323,12 @@
                 click : function(){
                     var checked = $(this).prop("checked");
                     beforeFocusEleToast = "#mktPushAlarmChk";
+                    var hours = date.getHours();
+                    var txtDate = fullYear + "년" + month + "월" + day + "일 " + hours + "시 ";
                     if(checked){
-                        toastMessage.init("2021년01월14일 12시 <br>알림 허용 처리가 완료되었습니다.", "type2");
+                        toastMessage.init(txtDate + "<br>알림 허용 처리가 완료되었습니다.", "type2");
                     }else{
-                        toastMessage.init("2021년01월14일 12시 <br>알림 거부 처리가 완료되었습니다.", "type2");
+                        toastMessage.init(txtDate + "<br>알림 거부 처리가 완료되었습니다.", "type2");
                     }
                 }
             });

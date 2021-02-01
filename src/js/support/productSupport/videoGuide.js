@@ -35,10 +35,13 @@
             self.isDefault = self.param.subCategory ? true : false;
 
             self.$cont = $('.contents');
+            self.$productBar = self.$cont.find('.prod-selected-wrap');
+            self.$myProductWarp = self.$cont.find('.my-product-wrap');
             self.$stepModel = self.$cont.find('#stepModel');
             self.$stepInput = self.$cont.find('#stepInput');
 
             self.$searchWarp = self.$cont.find('.search-wrap');
+            self.$keywordWrap = self.$cont.find('.ui_search');
             self.$searchKeyword = self.$searchWarp.find('#keyword');
             self.$searchBtn = self.$searchWarp.find('.btn-search');
             self.$searchTopic = self.$searchWarp.find('#topic');
@@ -50,12 +53,16 @@
             self.$resultPopular = self.$resultCont.find('#popular');
             self.$resultNewest = self.$resultCont.find('#newest');
             self.$resultPagination = self.$resultWrap.find('.pagination');
-            self.$noData = self.$resultWrap.find('no-data');
+            self.$noData = self.$resultWrap.find('.no-data');
 
             self.$cont.commonModel();
             self.$resultPagination.pagination();
             self.$searchTopic.vcSelectTarget({
                 addParam: '.contents input[type=hidden]'
+            });
+
+            self.$keywordWrap.search({
+                    
             });
 
             self.bindEvent();
@@ -81,15 +88,17 @@
             var $result, html='';
 
             for (var key in data) {
-                $result = data[key].type == 'popular' ? self.$resultPopular : self.$resultNewest;
-                data[key].listData.forEach(function(item) {
-                    html += vcui.template(listDataTmpl, item);
-                });
+                if (key == 'popular' || key == 'newest') {
+                    $result = data[key].type == 'popular' ? self.$resultPopular : self.$resultNewest;
+                    data[key].listData.forEach(function(item) {
+                        html += vcui.template(listDataTmpl, item);
+                    });
 
-                $result.find('.video-list').html(html);
-                $result.find('.pagination').pagination('update', data[key].listPage);
-                $result.find('.count').html(data[key].listPage.totalCount);   
-                html = '';
+                    $result.find('.video-list').html(html);
+                    $result.find('.pagination').pagination('update', data[key].listPage);
+                    $result.find('.count').html(data[key].listPage.totalCount);   
+                    html = '';
+                }
             }
         },
         drawSummary: function(data) {
@@ -101,6 +110,10 @@
             } else {
                 self.$resultSummary.hide();
             }
+        },
+        setPopularKeyword: function(data) {
+            var arr = data.popularKeyword instanceof Array ? data.popularKeyword : [];
+            this.$keywordWrap.search('setPopularKeyword', arr);
         },
         requestData: function() {
             var self = this;
@@ -129,7 +142,7 @@
         bindEvent: function() {
             var self = this;
 
-            self.$cont.on('complete', function(e, module, data, url) {
+            self.$cont.on('complete', function(e, data, url) {
                 var param = {
                     modelCode: data.modelCode,
                     category: data.category,
@@ -141,19 +154,20 @@
                     var resultData = result.data;
                     
                     self.drawTopicList(resultData);
-                    
+                    self.setPopularKeyword(resultData);
+
                     if (!self.isDefault) {
-                        module.$myModelArea.hide();
-                        module._updateSummary({
+                        self.$myProductWarp.hide();
+                        self.$cont.commonModel('updateSummary', {
                             product: [data.categoryName, data.subCategoryName, data.modelCode],
                             reset: true
                         });
-                        module._next(module.$stepInput);
-                        module._focus(module.$selectedModelBar, function() {
-                            module.$selectedModelBar.vcSticky();
+                        self.$cont.commonModel('next', self.$stepInput);
+                        self.$cont.commonModel('focus', self.$productBar, function() {
+                            self.$productBar.vcSticky();
                         });
                     } else {
-                        module.$selectedModelBar.vcSticky();
+                        self.$productBar.vcSticky();
                     }
                     lgkorUI.hideLoading();
                 });
@@ -170,10 +184,7 @@
                 self.requestData();
             });
 
-            self.$searchKeyword.on('input', function() {
-                var param = { keyword: self.$searchKeyword.val() };
-                self.param = $.extend(self.param, param);
-            }).on('keydown', function(e) {
+            self.$searchKeyword.on('keydown', function(e) {
                 var param;
                 if (e.keyCode == 13) {
                     e.preventDefault();
@@ -181,6 +192,13 @@
                     self.param = $.extend(self.param, param);
                     self.requestData();
                 }
+            });
+
+            self.$keywordWrap.on('autocomplete', function(e, param, url, callback) {
+                var param =  $.extend(self.param, param);
+                lgkorUI.requestAjaxData(url, param, function(result) {
+                    callback(result);
+                });
             });
 
             self.$searchBtn.on('click', function() {
