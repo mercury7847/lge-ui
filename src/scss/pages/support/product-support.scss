@@ -405,7 +405,9 @@
                 }
             }
             @include mobile {
+                margin-top: 56px;
                 margin-bottom:40px;
+                padding: 0 16px;
                 .title {
                     margin-bottom:20px;
                 }
@@ -416,6 +418,7 @@
                             width:100%;
                             & + .select-wrap {
                                 float:none;
+                                margin-top: 6px;
                             }
                         }
                         & + .box {
