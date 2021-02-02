@@ -1,6 +1,6 @@
 (function() {
 
-    var additionalItemTemplate = '<li data-id="{{id}}" data-price="{{price}}">' +
+    var additionalItemTemplate = '<li data-id="{{id}}" data-quantity="1" data-price="{{price}}">' +
         '<dl class="price-info">' +
             '<dt class="text">{{title}}</dt>' +
             '<dd class="content">' +
@@ -14,7 +14,12 @@
             '</dd>' +
         '</dl>' +
         '<button type="button" class="btn-delete"><span class="blind">삭제</span></button>' +
-    '</li>'
+    '</li>';
+
+    var awardPopupItemTemplate = '<li>' +
+        '<span class="image"><img data-src="{{storyPdpThumbnailPath}}{{storyPdpThumbnailServerName}}" alt="{{storyPdpThumbnailAltText}}"></span>' +
+        '<span class="text">{{storyTitle}}</span>' +
+    '</li>';
 
     $(window).ready(function(){
         if(!document.querySelector('.KRP0008')) return false;
@@ -27,8 +32,11 @@
                 self.isDragging = false;
 
                 self.setting();
-                self.bindEvents();
+                self.popUpDataSetting();
+
+                self.bindProductEvents();
                 self.bindPopupEvents();
+                self.bindSideEvents();
             },
 
             setting: function() {
@@ -103,7 +111,24 @@
                 self.$pdpMobileVisual.show();
             },
 
-            bindEvents: function() {
+            popUpDataSetting: function() {
+                var self = this;
+                self.$awardPopup = $('#awardPopup');
+                if(awards) {
+                    var arr = awards instanceof Array ? awards : [];
+                    var $list_ul = self.$awardPopup.find('ul.awards-list');
+                    $list_ul.empty();
+                    arr.forEach(function(item, index) {
+                        $list_ul.append(vcui.template(awardPopupItemTemplate, item));
+                    });
+                }
+
+                self.$benefitInfoPopup = $('#benefitInfoPopup');
+                self.$careshipInfoPopup = $('#careshipInfoPopup');
+                self.$caresolutionInfoPopup = $('#caresolutionInfoPopup');
+            },
+
+            bindProductEvents: function() {
                 var self = this;
 
                 //핀치줌
@@ -190,42 +215,113 @@
                     self.$slideNumber.text(index + 1);
                 });
 
-                //PDP 갤러리 더보기
+
+                //팝업 열기
+                //PDP 갤러리 더보기(수상내역등)
                 self.$pdpMoreInfo.on('click','a.btn-link.popup', function(e) {
                     e.preventDefault();
-                    self.requestModal(this);
+                    self.$awardPopup.vcModal();
                 });
+            },
 
+            bindSideEvents: function() {
+                var self = this;
 
                 //비교하기
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').on('click', function(e) {
+                    /*
                     var itemID = self.$pdpInfo.attr('data-pid');
                     var checked = $(this).is(':checked');
                     self.requestCompareItem(itemID, checked, $(this));
+                    */
                 });
 
-                //즐겨찾기
+                //찜하기
                 self.$pdpInfo.find('.chk-wish-wrap input[type=checkbox]').on('click', function(e) {
-                    var itemID = self.$pdpInfo.attr('data-pid');
+                    var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
                     var checked = $(this).is(':checked');
-                    self.requestWishItem(itemID, checked);
+                    var success = function(data) {
+                    };
+                    var fail = function(data) {
+                        $dm.find('span.chk-wish-wrap input').prop("checked",!checked);
+                    };
+
+                    var param = JSON.parse(JSON.stringify(cartData));
+                    param.wish = checked;
+
+                    lgkorUI.requestWish(
+                        param,
+                        checked,
+                        success,
+                        fail,
+                        ajaxUrl
+                    );
                 });
 
-                //장바구니/구매/예약/렌탈
+                //장바구니
                 self.$pdpInfo.find('div.purchase-button a.cart').on('click', function(e) {
                     e.preventDefault();
-                    var itemID = self.$pdpInfo.attr('data-pid');
-                    self.requestCartItem(itemID);
+                    var ajaxUrl = self.$pdpInfo.attr('data-cart-url');
+                    lgkorUI.requestCart(ajaxUrl, cartData);
                 });
 
                 //구매/예약/렌탈
                 self.$pdpInfo.find('div.purchase-button a:not(.cart)').on('click', function(e) {
                     e.preventDefault();
                     console.log('goto buy');
+                    var $paymentAmount = $(this).parents('.payment-amount')
+                    var param = {};
+                    //소모품이 있는가
+                    var $additionalPurchase = $paymentAmount.siblings('.additional-purchase');
+                    if($additionalPurchase.length > 0) {
+                        var additional = [];
+                        $additionalPurchase.find('ul.additional-list li').each(function(idx, item){
+                            additional.push({
+                                "id":$(item).attr('data-id'),
+                                "quantity":$(item).attr('data-quantity')
+                            })
+                        })
+                        param.additional = additional;
+                    }
+
+                    //케어십 선택
+                    var $careshipService = $paymentAmount.siblings('.careship-service');
+                    var checkinput = $careshipService.find('input[type=radio]:checked');
+                    if(checkinput.length > 0) {
+                        param.careship = checkinput.val();
+                    }
+
+
+                    //선택 수량
+                    var quantity = $paymentAmount.find('div.select-quantity input.quantity');
+                    if(quantity.length > 0) {
+                        param.quantity = quantity.val();
+                    }
+                    console.log(param);
                 });
 
-                //인포 옵션 변경
+                //링크
+                self.$pdpInfo.on('click','a.btn-link:not(.popup)', function(e) {
+                    e.preventDefault();
+                    var url = $(this).attr('href').replace("#","");
+                    if(url) {
+                        location.href = url;
+                    }
+                });
+
+                //구매혜택 팝업
+                self.$pdpInfo.on('click','li.lists.benefit a.btn-link.popup', function(e) {
+                    e.preventDefault();
+                    self.$benefitInfoPopup.vcModal();
+                });
+
+                //인포 옵션 변경 (링크로 바뀜)
                 self.$pdpInfoSiblingOption.on('click','input', function(e){
+                    var val = $(this).val();
+                    if(val) {
+                        location.href = val;
+                    }
+                    /*
                     var $optionList = $(this).parents('.option-list').siblings('div').find('span');
                     if($optionList.length > 0) {
                         $optionList.first().text($(this).siblings('label').find('span').text());
@@ -238,9 +334,10 @@
                         param[$o.attr('name')] = $o.attr('value');
                     });
                     self.requestSelectOption(param);
+                    */
                 });
 
-                //추가구매
+                //소모품 추가구매
                 self.$pdpInfoAdditionalPurchase.on('click','div.selectbox-list a', function(e){
                     e.preventDefault();
                     var $this = $(this);
@@ -261,7 +358,7 @@
                     }
                 });
 
-                //추가구매 수량선택
+                //소모품 추가구매 수량선택
                 self.$pdpInfoAdditionalPurchase.on('click','button.minus,button.plus', function(e){
                     var $this = $(this);
                     var $input = $this.siblings('input');
@@ -286,6 +383,7 @@
                     }
                     $input.val(quantity);
                     var $li = $this.parents('li');
+                    $li.attr('data-quantity',quantity);
                     var $total = $li.find('span.price').contents()[1];
                     var price = $li.attr('data-price');
                     $total.textContent = (vcui.number.addComma(price*quantity) + '원');
@@ -328,9 +426,21 @@
 
                 //케어쉽 서비스 선택 관련
                 self.$pdpInfoCareshipService.on('change','input[type=radio]', function(e){
-                    self.requestSelectCareOption($(this).parents('.careship-service'));
+                    //케어쉽필수 제품인지 체크해서 알림창 뛰움
+                    var val = $(this).val();
+                    if(!lgkorUI.stringToBool(val)) {
+                        if(waterCareRequire) {
+                            $(this).parents('ul').find('input[type=radio][value="Y"]').trigger('click');
+                            $('#waterCareRequirePopup').vcModal();
+                        } else if(careRequire) {
+                            $(this).parents('ul').find('input[type=radio][value="Y"]').trigger('click');
+                            $('#careRequirePopup').vcModal();
+                        }
+                    }
                 });
 
+                ///아마도 다르게
+                /*
                 self.$pdpInfoCareshipService.on('click','div.selectbox-list a', function(e){
                     e.preventDefault();
                     var $this = $(this);
@@ -373,17 +483,27 @@
                     $dropDown.vcDropdown("close");
                     self.requestSelectCareSiblingOption($this.parents('.care-sibling-option'));
                 });
+                */
 
-                self.$pdpInfo.on('click','a.btn-link.popup', function(e) {
+                //케어십 이용요금
+                self.$pdpInfoCareshipService.on('click','dl.price-info a.btn-link.popup', function(e) {
                     e.preventDefault();
-                    self.requestModal(this);
+                    self.$careshipInfoPopup.vcModal();
+                });
+
+                //케어솔루션 이용요금 
+                self.$pdpInfoCareSiblingOption.on('click','dl.price-info a.btn-link.popup', function(e) {
+                    e.preventDefault();
+                    self.$caresolutionInfoPopup.vcModal();
                 });
             },
 
             //팝업 버튼 이벤트
             bindPopupEvents: function() {
-                $('#pdp-modal').on('click', 'button', function(e) {
+                //var self = this;
+                $('article').on('click', 'button', function(e) {
                     var buttonLinkUrl = $(this).attr('data-link-url');
+                    console.log('popup link',buttonLinkUrl);
                     if(buttonLinkUrl) {
                         location.href = buttonLinkUrl;
                     }
@@ -522,22 +642,6 @@
                 $('#pdp-modal').html(html).vcModal();
             },
 
-            //아이템 찜하기
-            requestWishItem: function(itemID, wish) {
-                var self = this;
-                var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
-                var postData = {"itemID":itemID, "wish":wish};
-                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, null);
-            },
-
-            //아이템 카트
-            requestCartItem: function(itemID) {
-                var self = this;
-                var ajaxUrl = self.$pdpInfo.attr('data-cart-url');
-                var postData = {"itemID":itemID};
-                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, null);
-            },
-
             //아이템 비교하기
             requestCompareItem: function(itemID, compare, $dm) {
                 var self = this;
@@ -557,6 +661,8 @@
             },
 
             //선택된 옵션으로 모델 데이타 가져오기
+            //링크로 바뀌어서 안씀
+            /*
             requestSelectOption: function(param) {
                 var self = this;
                 var ajaxUrl = self.$pdpInfo.attr('data-select-url');
@@ -568,6 +674,7 @@
                     self.$pdpInfoProductDetailInfo.find('.sku').text(data.sku);
                 });
             },
+            */
 
             //선택된 옵션으로 케어쉽 가격 가져오기
             requestSelectCareOption: function($dom) {

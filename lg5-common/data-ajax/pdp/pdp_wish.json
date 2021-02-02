@@ -1,5 +1,8 @@
 {
     "status":"success",
     "message":null,
-    "data": null
+    "data": {
+        "success": "Y",
+        "wishItemId" : "returnID0001"
+    }
 }
