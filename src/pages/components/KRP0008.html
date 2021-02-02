@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0015.min.css">
     @@include('./common/head.html', {
         componentID: "KRP0008",
         isJScompile: true
-    })
+    });
+    <script src="/lg5-common/js/components/KRP0015.min.js"></script>
 <body>
     <script>
         // 로그인 유무
@@ -23,7 +25,12 @@
 
         //카트, 찜하기에 필요한 데이타
         var sendData = {
-            "modelId":"제품ID"
+            "modelId":"제품ID",
+            "id": "제품ID",
+            "productName": "LG 올레드 갤러리 TV",
+            "productID": "제품ID",
+            "productImg": "/lg5-common/images/KRP0008/@sample-img.jpg",
+            "productAlt": "LG 올레드 갤러리 TV"
         };
 
         // 수상내역 팝업데이타
@@ -71,7 +78,7 @@
                 },
                 {
                     "years3TotAmt": 27900,
-                    "visitPer": "3",
+                    "visitPer": "1",
                     "rtRgstFeePre": 0,
                     "freeMonthDisplayYn": "Y",
                     "rentalCareType": "R",
@@ -90,7 +97,7 @@
                 },
                 {
                     "years3TotAmt": 27900,
-                    "visitPer": "3",
+                    "visitPer": "2",
                     "rtRgstFeePre": 0,
                     "freeMonthDisplayYn": "Y",
                     "rentalCareType": "R",
@@ -109,7 +116,7 @@
                 },
                 {
                     "years3TotAmt": 27900,
-                    "visitPer": "3",
+                    "visitPer": "4",
                     "rtRgstFeePre": 0,
                     "freeMonthDisplayYn": "Y",
                     "rentalCareType": "R",
@@ -119,7 +126,7 @@
                     "years6TotAmt": 0,
                     "rtFreePeriod": "3",
                     "rtModelSeq": "161135",
-                    "dutyTerm": "3",
+                    "dutyTerm": "5",
                     "representChargeFlag": "N",
                     "contractTerm": "5",
                     "years5TotAmt": 22900,
@@ -128,7 +135,7 @@
                 },
                 {
                     "years3TotAmt": 24900,
-                    "visitPer": "3",
+                    "visitPer": "5",
                     "rtRgstFeePre": 100000,
                     "freeMonthDisplayYn": "Y",
                     "rentalCareType": "R",
@@ -138,7 +145,7 @@
                     "years6TotAmt": 0,
                     "rtFreePeriod": "3",
                     "rtModelSeq": "162125",
-                    "dutyTerm": "3",
+                    "dutyTerm": "6",
                     "representChargeFlag": "N",
                     "contractTerm": "5",
                     "years5TotAmt": 22900,
@@ -147,7 +154,7 @@
                 },
                 {
                     "years3TotAmt": 32900,
-                    "visitPer": "3",
+                    "visitPer": "6",
                     "rtRgstFeePre": 0,
                     "freeMonthDisplayYn": "Y",
                     "rentalCareType": "R",
@@ -157,7 +164,7 @@
                     "years6TotAmt": 0,
                     "rtFreePeriod": "3",
                     "rtModelSeq": "1457284",
-                    "dutyTerm": "3",
+                    "dutyTerm": "5",
                     "representChargeFlag": "N",
                     "contractTerm": "5",
                     "years5TotAmt": 22900,
@@ -831,6 +838,9 @@
                 </div>
 
             </div>
+            <!-- component -->
+            @@include('./common/partials/KRP0015.html')
+            <!-- // component -->
         </div>
         @@include('./common/footer.html')
     </div>
