@@ -433,6 +433,15 @@
 .form-sections {
     .agree-all-chk {
         margin-top: 0;
+        .chk-wrap {
+            input + label {
+                font-size:18px;
+                line-height:28px;
+            }
+        }
+    }
+    .input-info {
+        margin-top:80px;
     }
 }
 
