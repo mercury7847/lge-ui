@@ -291,7 +291,7 @@
                     }
 
                     catewrap.parent().height(catewrap.outerHeight(true));
-                })
+                });
 
                 //비교하기 컴포넌트 변화 체크
                 $(window).on("changeStorageData", function(){
