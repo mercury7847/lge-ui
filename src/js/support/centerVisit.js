@@ -229,7 +229,7 @@
                     selected = $.extend(selected, {
                         seq: sval
                     });
-                    self.$cont.trigger('complete', [selected, $('.prod-search-wrap').data('resultUrl'), true]);
+                    self.$cont.trigger('complete', [selected, self.centerUrl, true]);
                 }
 
                 self.$engineerSlider.vcCarousel({
@@ -293,6 +293,8 @@
             // 모델 선택 후 이벤트
             self.$cont.on('complete', function(e, data, url) {    
                 var param = {};
+                
+                self.model = data;
 
                 if (data.seq) {
                     param = {
@@ -308,7 +310,7 @@
                         page:1
                     }
                 }
-                self.model = data;
+                
                 
                 self.requestCenterData(param, url);
 

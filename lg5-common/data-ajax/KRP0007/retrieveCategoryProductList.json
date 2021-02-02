@@ -2,171 +2,173 @@
     "status": "success",
     "message": null,
     "param":{
-        "pagination":{
-            "page":"1",
-            "totalCount":"3"
-        }
     },
-    "data": {
-        "schCategoryId": "returnCategoryId",
-        "totalCount": "25",
-        "listData": [
-            {
-                "affiliateCode": null,
-                "bizType": "PRODUCT",
-                "modelName": "MDN00000234",
-                "modelDisplayName": "LG SIGNATURE OLED R",
-                "modelId": "MD08739260",
-                "modelStatusCode": null,
-                "modelDiscontinuedDate": null,
-                "discontinuedDisplayEndDate": null,
-                "modelDiscontinuedDisplayFlag": null,
-                "modelPageType": null,
-                "modelGubun": "1",
-                "obsInventoryFlag": null,
-                "obsOriginalPrice": 9890000,
-                "obsMemberPrice": 0,
-                "obsDiscountPrice": 0,
-                "obsTotalDiscountPrice": 5250000,
-                "obsInventoryQty": 0,
-                "obsSellFlag": null,
-                "obsCartFlag": null,
-                "obsTabDisplayFlag": null,
-                "productLevelCode": null,
-                "salesModelCode": null,
-                "salesSuffixCode": null,
-                "beforeVisitModelFlag": null,
-                "membershipFlag": null,
-                "modelComponent": null,
-                "reviewDisplayFlag": "Y",
-                "newProductBadgeFlag": null,
-                "cashbackBadgeFlag": "N",
-                "bestBadgeFlag": "Y",
-                "cashbackBadgeGubun": null,
-                "imageAltText": null,
-                "largeImageAddr": null,
-                "mediumImageAddr": "/lg5-common/images/dummy/@img-product.jpg",
-                "model360Image": null,
-                "model360Title": null,
-                "smallImageAddr": "/lg5-common/images/common/product-default-list-350.jpg",
-                "modelUrlPath": "/tvs/65uj9400",
-                "categoryId": "CT50000025",
-                "categoryName": "TV",
-                "subCategoryId": "CT50000028",
-                "subCategoryName": "올레드 TV",
-                "superCategoryId": "CT50000024",
-                "superCategoryName": "TV/AV",
-                "subCategoryCareshipFlag": "",
-                "lgpickFlag": "Y",
-                "lgpickDisNo": "2",
-                "years1TotAmt": null,
-                "visitPer": null,
-                "totalPrice": "0",
-                "reviewsScore": "0",
-                "reviewsCount": "0",
-                "wishListFlag": true,
-                "cartListFlag": true,
-                "compatibleModels": [],
-                "videos": [],
-                "bulletFeatures": [
-                    "<li><span class='title'>용량 : </span>840L1</li>",
-                    "<li><span class='title'>전체크기(WxHxD) : </span>912 x 1,790 x 9271 mm</li>",
-                    "<li><span class='title'>형태 : </span>노크온 매직스페이스1</li>",
-                    "<li><span class='title'>패턴 : </span>미드나잇1</li>",
-                    "<li><span class='care-option'>케어십 가능1</span></li>"
-                ],
-                "siblings": [],
-                "pdpCompatibleSearchAjaxUrl": null,
-                "compatibleCount": 0,
-                "siblingAjaxUrl": "/mkt/ajax/product/retrieveSiblingProductInfo",
-                "btnFlag": null,
-                "disposableModels": [],
-                "disposableStandards": [],
-                "rTypeCount": "0",
-                "cTypeCount": "0",
-                "retalCareshipInfo": [],
-                "substitutePart": [],
-                "substitutePartCount": 0,
-                "awards": [],
-                "promotionBadges": [
-                    {
-                        "badgeGubun": "promotion",
-                        "badgeId": "BG00003001",
-                        "badgeImgUrl": "/lg5-common/images/dummy/flag-60x66-1.png",
-                        "badgeName": "으뜸효율 10%"
-                    },
-                    {
-                        "badgeGubun": "promotion",
-                        "badgeId": "BG00004002",
-                        "badgeImgUrl": "/lg5-common/images/dummy/flag-60x66-2.png",
-                        "badgeName": "코리아세일 페스타"
-                    }
-                ],
-                "pTypeRewardCount": "0",
-                "cTypeRewardCount": "0",
-                "benefitCards": [
-                    {
-                        "installmentTo": "5",
-                        "cardName": "국민카드",
-                        "billingSalePercent": "100"
-                    },
-                    {
-                        "installmentTo": "3",
-                        "cardName": "신한카드",
-                        "billingSalePercent": "100"
-                    },
-                    {
-                        "installmentTo": "1",
-                        "cardName": "우리카드",
-                        "billingSalePercent": "11"
-                    }
-                ],
-                "galleryImages": [
-                    {
-                        "largeImageAddr": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small01.jpg",
-                        "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large01.jpg",
-                        "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m01.jpg",
-                        "repOrderNo": 1
-                    },
-                    {
-                        "largeImageAddr": "/lg5-common/images/dummy/@img-product.jpg",
-                        "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small02.jpg",
-                        "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large02.jpg",
-                        "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m02.jpg",
-                        "repOrderNo": 2
-                    },
-                    {
-                        "largeImageAddr": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small03.jpg",
-                        "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large03.jpg",
-                        "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m03.jpg",
-                        "repOrderNo": 3
-                    }
-                ],
-                "detailUrl": "#detail",
-                "siblingType": "COLOR",
-                "siblingModels": [
-                    {
-                        "modelName": "LRFCS25D3S",
-                        "siblingCode": "Print-Proof-Stainless-Steel",
-                        "siblingValue": "Print Proof Stainless Steel",
-                        "modelId": "MD07514557"
-                    },
-                    {
-                        "modelName": "LRONC0705V",
-                        "siblingCode": "stainless-steel",
-                        "siblingValue": "stainless-steel",
-                        "modelId": "MD07516355"
-                    },
-                    {
-                        "modelName": "LRONC0705V",
-                        "siblingCode": "lavender",
-                        "siblingValue": "lavender",
-                        "modelId": "MD07516353"
-                    }
-                ]
-            }
-        ]
-    }
+    "data": [
+        {
+            "schCategoryId": "returnCategoryId",
+            "productTotalCount": "25",
+            "pagination":{
+                "page":"1",
+                "totalCount":"3"
+            },
+            "productList": [
+                {
+                    "affiliateCode": null,
+                    "bizType": "PRODUCT",
+                    "modelName": "MDN00000234",
+                    "modelDisplayName": "LG SIGNATURE OLED R",
+                    "modelId": "MD08739260",
+                    "modelStatusCode": null,
+                    "modelDiscontinuedDate": null,
+                    "discontinuedDisplayEndDate": null,
+                    "modelDiscontinuedDisplayFlag": null,
+                    "modelPageType": null,
+                    "modelGubun": "1",
+                    "obsInventoryFlag": null,
+                    "obsOriginalPrice": 9890000,
+                    "obsMemberPrice": 0,
+                    "obsDiscountPrice": 0,
+                    "obsTotalDiscountPrice": 5250000,
+                    "obsInventoryQty": 0,
+                    "obsSellFlag": null,
+                    "obsCartFlag": null,
+                    "obsTabDisplayFlag": null,
+                    "productLevelCode": null,
+                    "salesModelCode": null,
+                    "salesSuffixCode": null,
+                    "beforeVisitModelFlag": null,
+                    "membershipFlag": null,
+                    "modelComponent": null,
+                    "reviewDisplayFlag": "Y",
+                    "newProductBadgeFlag": null,
+                    "cashbackBadgeFlag": "N",
+                    "bestBadgeFlag": "Y",
+                    "cashbackBadgeGubun": null,
+                    "imageAltText": null,
+                    "largeImageAddr": null,
+                    "mediumImageAddr": "/lg5-common/images/dummy/@img-product.jpg",
+                    "model360Image": null,
+                    "model360Title": null,
+                    "smallImageAddr": "/lg5-common/images/common/product-default-list-350.jpg",
+                    "modelUrlPath": "/tvs/65uj9400",
+                    "categoryId": "CT50000025",
+                    "categoryName": "TV",
+                    "subCategoryId": "CT50000028",
+                    "subCategoryName": "올레드 TV",
+                    "superCategoryId": "CT50000024",
+                    "superCategoryName": "TV/AV",
+                    "subCategoryCareshipFlag": "",
+                    "lgpickFlag": "Y",
+                    "lgpickDisNo": "2",
+                    "years1TotAmt": null,
+                    "visitPer": null,
+                    "totalPrice": "0",
+                    "reviewsScore": "0",
+                    "reviewsCount": "0",
+                    "wishListFlag": true,
+                    "cartListFlag": true,
+                    "compatibleModels": [],
+                    "videos": [],
+                    "bulletFeatures": [
+                        "<li><span class='title'>용량 : </span>840L1</li>",
+                        "<li><span class='title'>전체크기(WxHxD) : </span>912 x 1,790 x 9271 mm</li>",
+                        "<li><span class='title'>형태 : </span>노크온 매직스페이스1</li>",
+                        "<li><span class='title'>패턴 : </span>미드나잇1</li>",
+                        "<li><span class='care-option'>케어십 가능1</span></li>"
+                    ],
+                    "siblings": [],
+                    "pdpCompatibleSearchAjaxUrl": null,
+                    "compatibleCount": 0,
+                    "siblingAjaxUrl": "/mkt/ajax/product/retrieveSiblingProductInfo",
+                    "btnFlag": null,
+                    "disposableModels": [],
+                    "disposableStandards": [],
+                    "rTypeCount": "0",
+                    "cTypeCount": "0",
+                    "retalCareshipInfo": [],
+                    "substitutePart": [],
+                    "substitutePartCount": 0,
+                    "awards": [],
+                    "promotionBadges": [
+                        {
+                            "badgeGubun": "promotion",
+                            "badgeId": "BG00003001",
+                            "badgeImgUrl": "/lg5-common/images/dummy/flag-60x66-1.png",
+                            "badgeName": "으뜸효율 10%"
+                        },
+                        {
+                            "badgeGubun": "promotion",
+                            "badgeId": "BG00004002",
+                            "badgeImgUrl": "/lg5-common/images/dummy/flag-60x66-2.png",
+                            "badgeName": "코리아세일 페스타"
+                        }
+                    ],
+                    "pTypeRewardCount": "0",
+                    "cTypeRewardCount": "0",
+                    "benefitCards": [
+                        {
+                            "installmentTo": "5",
+                            "cardName": "국민카드",
+                            "billingSalePercent": "100"
+                        },
+                        {
+                            "installmentTo": "3",
+                            "cardName": "신한카드",
+                            "billingSalePercent": "100"
+                        },
+                        {
+                            "installmentTo": "1",
+                            "cardName": "우리카드",
+                            "billingSalePercent": "11"
+                        }
+                    ],
+                    "galleryImages": [
+                        {
+                            "largeImageAddr": "/lg5-common/images/dummy/@img-product2.jpg",
+                            "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small01.jpg",
+                            "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large01.jpg",
+                            "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m01.jpg",
+                            "repOrderNo": 1
+                        },
+                        {
+                            "largeImageAddr": "/lg5-common/images/dummy/@img-product.jpg",
+                            "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small02.jpg",
+                            "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large02.jpg",
+                            "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m02.jpg",
+                            "repOrderNo": 2
+                        },
+                        {
+                            "largeImageAddr": "/lg5-common/images/dummy/@img-product2.jpg",
+                            "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small03.jpg",
+                            "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large03.jpg",
+                            "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m03.jpg",
+                            "repOrderNo": 3
+                        }
+                    ],
+                    "detailUrl": "#detail",
+                    "siblingType": "COLOR",
+                    "siblingModels": [
+                        {
+                            "modelName": "LRFCS25D3S",
+                            "siblingCode": "Print-Proof-Stainless-Steel",
+                            "siblingValue": "Print Proof Stainless Steel",
+                            "modelId": "MD07514557"
+                        },
+                        {
+                            "modelName": "LRONC0705V",
+                            "siblingCode": "stainless-steel",
+                            "siblingValue": "stainless-steel",
+                            "modelId": "MD07516355"
+                        },
+                        {
+                            "modelName": "LRONC0705V",
+                            "siblingCode": "lavender",
+                            "siblingValue": "lavender",
+                            "modelId": "MD07516353"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }

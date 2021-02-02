@@ -2092,11 +2092,11 @@ var AuthManager = function() {
                     if (resultData.resultFlag == 'Y') {
                         success = true;
 
-                        if (elem.target) {
+                        if (target) {
                             $button.prop('disabled', true);
                             $button.find('span').html(COMPLETETEXT);
-                            $(target.name).val(nameValue);
-                            $(target.phone).val(phoneValue);
+                            $(target.name).val(data.authName);
+                            $(target.phone).val(data.authPhoneNo);
                             $(elem.popup).vcModal('hide');
                         }
 
