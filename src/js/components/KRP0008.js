@@ -240,11 +240,8 @@
 
                 //비교하기
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').on('click', function(e) {
-                    /*
-                    var itemID = self.$pdpInfo.attr('data-pid');
-                    var checked = $(this).is(':checked');
-                    self.requestCompareItem(itemID, checked, $(this));
-                    */
+                   var checked = $(this).is(':checked');
+                   self.requestCompareItem(sendData.modelId, checked, $(this));
                 });
 
                 //찜하기
@@ -496,6 +493,19 @@
                     e.preventDefault();
                     self.$caresolutionInfoPopup.vcModal();
                 });
+
+                //렌탈 가격 정보
+                /*
+                var rentalPriceData = {};
+                rentalInfo.forEach(function(item, index) {
+                    var rtRgstFeePre = rentalPriceData[item.rtRgstFeePre];
+                    if(!rtRgstFeePre) {
+                        rtRgstFeePre = [];
+                    } else {
+                    }
+
+                });
+                */
             },
 
             //팝업 버튼 이벤트
