@@ -246,7 +246,7 @@
                         $dm.find('span.chk-wish-wrap input').prop("checked",!checked);
                     };
 
-                    var param = JSON.parse(JSON.stringify(cartData));
+                    var param = JSON.parse(JSON.stringify(sendData));
                     param.wish = checked;
 
                     lgkorUI.requestWish(
@@ -262,7 +262,7 @@
                 self.$pdpInfo.find('div.purchase-button a.cart').on('click', function(e) {
                     e.preventDefault();
                     var ajaxUrl = self.$pdpInfo.attr('data-cart-url');
-                    lgkorUI.requestCart(ajaxUrl, cartData);
+                    lgkorUI.requestCart(ajaxUrl, sendData);
                 });
 
                 //구매/예약/렌탈
@@ -645,6 +645,7 @@
             //아이템 비교하기
             requestCompareItem: function(itemID, compare, $dm) {
                 var self = this;
+                /*
                 var ajaxUrl = self.$pdpInfo.attr('data-compare-url');
                 var postData = {"itemID":itemID, "compare":compare};
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
@@ -658,6 +659,7 @@
                         }
                     }
                 });
+                */
             },
 
             //선택된 옵션으로 모델 데이타 가져오기
