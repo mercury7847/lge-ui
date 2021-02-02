@@ -47,6 +47,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     self.$el.find('.login-info.after-login a').html('<span>' + result.data.loginToken.name + '</span>님 안녕하세요');
                     
                     if(self.displayMode == "pc") self.$el.find('.mypage.after-login').css('display', 'inline-block');
+
+                    lgkorUI.requestCart(self.$el.attr('data-cart-url'), {}, false);
                 } else{
                     self.$el.find('.login-info.before-login').css('display', 'block');
 

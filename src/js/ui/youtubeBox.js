@@ -12,7 +12,7 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
                 '           {{#if videoType == "youtube"}}'+
                 '           <iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="{{video_url}}"></iframe>'+
                 '           {{#else}}'+
-                '           <video controls {{params}} style="width:100%">'+
+                '           <video controls {{params}} style="width:100%;height:100%">'+
                 '               <source src="{{video_url}}" type="video/mp4">'+
                 '           </video>'+
                 '           {{/if}}'+
@@ -25,7 +25,7 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
                 '   {{#if videoType == "youtube"}}'+
                 '   <iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="{{video_url}}"></iframe>'+
                 '   {{#else}}'+
-                '   <video controls {{params}} style="width:100%">'+
+                '   <video controls {{params}} style="width:100%;height:100%">'+
                 '       <source src="{{video_url}}" type="video/mp4">'+
                 '   </video>'+
                 '   {{/if}}'+

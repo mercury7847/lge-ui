@@ -2,13 +2,16 @@
 
 /* list summary */
 .sorting-wrap {
-    padding-bottom:12px;
+    padding-bottom:16px;
     @include clearfix;
     .total {
         float:left;
-        font-size:14px;
+        font-size:16px;
         font-weight:700;
         line-height:24px;
+        .count {
+            color: #da0f47;
+        }
     }
     .sort-box {
         float:right;
@@ -388,13 +391,13 @@
 /* card list */
 .card-list-wrap {
     .card-list {
-        margin:0 -28px -36px;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
         font-size:0;
         > li {
             display:inline-block;
-            width:25%;
-            margin-bottom:36px;
-            padding:0 28px;
+            margin-top:24px;
             vertical-align:top;
         }
         .item {
@@ -452,6 +455,21 @@
             }
         }
     }
+    @include pc {
+        .card-list {
+            > li {
+                max-width:302px;
+                width: 100%;
+                margin-left:57px;
+                &:nth-child(4n+1) {
+                    margin-left: 0;
+                }
+                &:nth-child(-n+5) {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
     @include tablet {
         .card-list {
             > li {
@@ -464,9 +482,8 @@
             margin:0;
             > li {
                 width:100%;
-                margin-bottom:40px;
                 padding:0;
-                &:last-child {
+                &:first-child {
                     margin-top:0;
                 }
             }
@@ -558,9 +575,12 @@
                     padding-left:9px;
                     color:#767676;
                     &::before {
+                        content: '';
+                        display: block;
                         position:absolute;
                         left:0;
-                        top:4px;
+                        top: 50%;
+                        transform: translateY(-50%);
                         width:1px;
                         height:14px;
                         background-color:#ddd;
@@ -598,7 +618,6 @@
                         padding:0;
                         &:before {
                             content:none;
-
                         }
                     }
                 }
