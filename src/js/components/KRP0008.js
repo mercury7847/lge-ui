@@ -32,7 +32,7 @@
                 self.isDragging = false;
 
                 self.setting();
-                if(self.$component.data('additional')) {
+                if(self.$component.data('consumables')) {
                     vcui.require(['ui/pagination'], function () {
                         self.prepare();
                     });
