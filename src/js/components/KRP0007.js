@@ -311,7 +311,15 @@
 
                 //더보기
                 self.$btnMore.on('click', function(e) {
-                    var param = self.filterLayer.getDataFromFilter();
+                    var filterLayerData = self.filterLayer.getDataFromFilter();
+
+                    var param = {};
+                    var filterdata = JSON.parse(filterLayerData.filterData);
+                    for(var key in filterdata){
+                        param[key] = filterdata[key].join(",");
+                    }
+                    param.order = filterLayerData.order;
+
                     var hiddenData = lgkorUI.getHiddenInputData();
                     param.page = parseInt(hiddenData.page) + 1;
                     if(param) {
