@@ -396,6 +396,13 @@
                     optModal.open("modalShopInfo", "alertdialog", "<em>쇼핑정보가 필요하신가요?</em><p>마케팅 수신동의하고 <br>다양한 이벤트 및 혜택을 받아보세요!</p>", "동의", "동의안함");
                 }
             });
+
+            $("#btn-barcode").on({
+                click : function(){
+                    beforeFocusEle = "#btn-barcode";
+                    optModal.open("modalPrdReg", "alertdialog", "<p>바코드로 편리하게 제품등록 하기위해 <br>APP을 설치하시겠습니까?</p>", "취소", "확인");
+                }
+            });
         });
     </script>
 
@@ -408,6 +415,9 @@
     <br>
     <br>
     <button type="button" class="btn-opt-login" id="btn-mkt"><span>마케팅 수신동의 모달 열기</span></button>
+    <br>
+    <br>
+    <button type="button" class="btn-opt-login" id="btn-barcode"><span>바코드로 제품등록</span></button>
 
     <div class="rst-event" style="position:fixed;left:0;bottom:0;width:100%;height:auto;background:rgba(0, 0, 0, 0.7);color:#fff;z-index:10000"></div>
 
