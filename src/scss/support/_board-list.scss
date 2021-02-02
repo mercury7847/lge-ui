@@ -399,6 +399,7 @@
             display:inline-block;
             margin-top:24px;
             vertical-align:top;
+            margin-left:57px;
         }
         .item {
             display:block;
@@ -454,26 +455,63 @@
                 }   
             }
         }
-    }
-    @include pc {
-        .card-list {
+        &.type-tips {
             > li {
-                max-width:302px;
-                width: 100%;
-                margin-left:57px;
-                &:nth-child(4n+1) {
-                    margin-left: 0;
+                border-radius: 8px;
+                box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+            }
+            .item {
+                &-image {
+                    margin-bottom: 0;
+                    border-radius: 8px 8px 0 0;
                 }
-                &:nth-child(-n+5) {
-                    margin-top: 0;
+                &-conts {
+                    padding: 24px;
                 }
             }
         }
     }
-    @include tablet {
+    @media screen and (min-width: 1024px) {
         .card-list {
             > li {
-                width:calc(100% / 3);
+                width: calc(25% - 43px);
+                &:nth-child(4n+1) {
+                    margin-left: 0;
+                }
+                &:nth-child(-n+4) {
+                    margin-top: 0;
+                }
+            }
+            &.type-tips {
+                > li {
+                    margin-left: 24px;
+                    width: calc(25% - 18px);
+                    &:nth-child(4n+1) {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        .card-list {
+            > li {
+                width: calc(33.3333% - 38px);
+                &:nth-child(-n+3) {
+                    margin-top: 0;
+                }
+                &:nth-child(3n+1) {
+                    margin-left: 0;
+                }
+            }
+            &.type-tips {
+                > li {
+                    margin-left: 24px;
+                    width: calc(33.3333% - 16px);
+                    &:nth-child(3n+1) {
+                        margin-left: 0;
+                    }
+                }
             }
         }
     }
@@ -483,6 +521,7 @@
             > li {
                 width:100%;
                 padding:0;
+                margin-left: 0;
                 &:first-child {
                     margin-top:0;
                 }
@@ -504,6 +543,16 @@
     
                             }
                         }
+                    }
+                }
+            }
+            &.type-tips {
+                > li {
+                    margin-top: 12px;
+                }
+                .item {
+                    &-conts {
+                        padding: 20px;
                     }
                 }
             }
