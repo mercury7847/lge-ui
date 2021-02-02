@@ -32,7 +32,9 @@
                 self.isDragging = false;
 
                 self.setting();
-                if(self.$component.data('additional')) {
+                self.popUpDataSetting();
+
+                if(self.$component.data('consumables')) {
                     vcui.require(['ui/pagination'], function () {
                         self.prepare();
                     });
@@ -43,11 +45,24 @@
 
             prepare: function() {
                 var self = this;
-                self.popUpDataSetting();
+
+                if(!Array.indexOf){
+                    Array.prototype.indexOf = function(obj){
+                        for(var i=0; i<this.length; i++){
+                            if(this[i]==obj){
+                                return i;
+                            }
+                        }
+                        return -1;
+                    }
+                };
 
                 self.bindProductEvents();
                 self.bindPopupEvents();
                 self.bindSideEvents();
+
+                //비교하기 체크
+                self.setCompares();
             },
 
             setting: function() {
@@ -240,12 +255,14 @@
 
                 //비교하기
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').on('click', function(e) {
-                    /*
-                    var itemID = self.$pdpInfo.attr('data-pid');
-                    var checked = $(this).is(':checked');
-                    self.requestCompareItem(itemID, checked, $(this));
-                    */
+                   var checked = $(this).is(':checked');
+                   self.requestCompareItem(sendData.modelId, checked, $(this));
                 });
+
+                //비교하기 컴포넌트 변화 체크
+                $(window).on("changeStorageData", function(){
+                    self.setCompares();
+                })
 
                 //찜하기
                 self.$pdpInfo.find('.chk-wish-wrap input[type=checkbox]').on('click', function(e) {
@@ -496,6 +513,34 @@
                     e.preventDefault();
                     self.$caresolutionInfoPopup.vcModal();
                 });
+
+                //렌탈 가격 정보
+                var rentalPriceData = {};
+                
+                rentalInfo.forEach(function(item, index) {
+                    //가입비
+                    var rtRgstFeePre = ("" + item.rtRgstFeePre);
+                    //의무사용 기간
+                    var dutyTerm = item.dutyTerm;
+                    //방문
+                    var visitPer = item.visitPer;
+
+                    var dataByFee = rentalPriceData[rtRgstFeePre];
+                    if(!dataByFee) {
+                        dataByFee = {};
+                    }
+
+                    var dataByDuty = dataByFee[dutyTerm];
+                    if(!dataByDuty) {
+                        dataByDuty = [];
+                    }
+                    dataByDuty.push(item);
+
+                    dataByFee[dutyTerm] = dataByDuty;
+                    rentalPriceData[rtRgstFeePre] = dataByFee;
+                });
+
+                console.log(rentalPriceData);
             },
 
             //팝업 버튼 이벤트
@@ -687,25 +732,6 @@
                 $('#pdp-modal').html(html).vcModal();
             },
 
-            //아이템 비교하기
-            requestCompareItem: function(itemID, compare, $dm) {
-                var self = this;
-                /*
-                var ajaxUrl = self.$pdpInfo.attr('data-compare-url');
-                var postData = {"itemID":itemID, "compare":compare};
-                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
-                    var data = result.data;
-                    var success = lgkorUI.stringToBool(data.success);
-                    if (!success) {
-                        if(compare) {
-                            $dm.prop('checked',false);
-                        } else {
-                            $dm.prop('checked',true);
-                        }
-                    }
-                });
-                */
-            },
 
             //선택된 옵션으로 모델 데이타 가져오기
             //링크로 바뀌어서 안씀
@@ -765,6 +791,32 @@
                     var data = result.data;
                     $dom.find('span.price').contents()[2].textContent = data.price;
                 });
+            },
+
+            //아이템 비교하기
+            requestCompareItem: function(itemID, compare, $dm) {
+                var self = this;
+
+                if(compare){
+                    var isAdd = lgkorUI.addCompareProd(sendData);
+                    if(!isAdd) $dm.prop('checked', false);
+                } else{
+                    lgkorUI.removeCompareProd(itemID);
+                }
+            },
+
+            //비교하기 저장 유무 체크...
+            setCompares:function(){
+                var self = this;
+                var chk = false;
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
+                var isCompare = vcui.isEmpty(storageCompare);
+                if(!isCompare){
+                    for(var i in storageCompare[lgkorUI.COMPARE_ID]){
+                        if(sendData['id'] == storageCompare[lgkorUI.COMPARE_ID][i]['id']) chk = true;
+                    }
+                }
+                self.$pdpInfo.find('.product-compare input[type=checkbox]').prop('checked', chk)
             }
         };
 
