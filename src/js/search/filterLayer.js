@@ -33,7 +33,7 @@ var FilterLayer = (function() {
     var filterColorTemplate = '<li data-filterId="{{filterId}}">' +
         '<div class="head">' +
             '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span></span></div>' +
+                '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span>(0)</span></div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
@@ -79,6 +79,9 @@ var FilterLayer = (function() {
             self._bindEvents();
             self.initLoadEnd = true;
             if(self.filterData) {
+                self.filterData = vcui.array.filter(self.filterData, function(item, idx){
+                    return item.filterValues && item.filterValues.length > 0;
+                });
                 self.updateFilter(self.filterData);
             }
             if(self.resetData) {
@@ -119,7 +122,7 @@ var FilterLayer = (function() {
                 if(length > 0) {
                     $parent.find('span.sel_num').text('('+length+')');
                 } else {
-                    $parent.find('span.sel_num').text('');
+                    $parent.find('span.sel_num').text('(0)');
                 }
                 self.triggerFilterChangeEvent();
             });
@@ -465,7 +468,6 @@ var FilterLayer = (function() {
                 var $btnFilter = self.$targetFilterButton;
 
                 for(key in data){
-                    //console.log(data[key]); //-> 키값, 모든 value 출력
                     var findRange = self.$layFilter.find('.ui_filter_slider[name="'+key+'"]');
                     if(findRange.length > 0) {
                         selectedFilter = true;
@@ -522,13 +524,10 @@ var FilterLayer = (function() {
                 }
             }
 
-            console.log(triggerFilterChangeEvent);
             if(triggerFilterChangeEvent) {
                 self.triggerFilterChangeEvent();
             }
         },
     }
-
-
     return FilterLayer;
 })();
