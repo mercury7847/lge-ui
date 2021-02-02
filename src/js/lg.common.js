@@ -1048,7 +1048,6 @@
             }
             */
            isToast = isToast == undefined ? true : isToast;
-           console.log("requestCart:", isToast);
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                 var data = result.data;
                 var cartCnt = (typeof data.cartCnt  === 'number') ? ""+data.cartCnt : data.cartCnt;
