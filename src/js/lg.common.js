@@ -1030,7 +1030,7 @@
             });
         },
 
-        requestCart: function(ajaxUrl, param) {
+        requestCart: function(ajaxUrl, param, isToast) {
             /*
             var postData = {"id":id};
             if(!(!sku)) {
@@ -1047,6 +1047,8 @@
                 postData.cartType = cartType;
             }
             */
+           isToast = isToast == undefined ? true : isToast;
+           console.log("requestCart:", isToast);
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                 var data = result.data;
                 var cartCnt = (typeof data.cartCnt  === 'number') ? ""+data.cartCnt : data.cartCnt;
@@ -1056,7 +1058,7 @@
                     utility.find('.cart').append('<span class="count"><span class="blind">장바구니 제품 수</span>' + cartCnt + '</span>');
                 }
 
-                if(lgkorUI.stringToBool(data.success)) {
+                if(isToast && lgkorUI.stringToBool(data.success)) {
                     $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
                 }
             }, true);
