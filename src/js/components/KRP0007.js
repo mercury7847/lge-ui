@@ -152,11 +152,17 @@
 
                 vcui.require(['search/filterLayer.min'], function () {
                     self.filterLayer = new FilterLayer(self.$layFilter, self.$categorySelect, self.$listSorting, self.$btnFilter, function (data) {
-                        //console.log(data);
+                        console.log("filterLayer: ", data);
                         lgkorUI.setStorage(storageName, data);
     
-                        var param = data;
+                        var param = {};
+                        var filterdata = JSON.parse(data.filterData);
+                        for(var key in filterdata){
+                            param[key] = filterdata[key].join(",");
+                        }
+                        param.order = data.order;
                         param.page = 1;
+                        console.log("param:", param)
                         if(param) {
                             self.requestSearch(param, true);
                         }
@@ -305,7 +311,15 @@
 
                 //더보기
                 self.$btnMore.on('click', function(e) {
-                    var param = self.filterLayer.getDataFromFilter();
+                    var filterLayerData = self.filterLayer.getDataFromFilter();
+
+                    var param = {};
+                    var filterdata = JSON.parse(filterLayerData.filterData);
+                    for(var key in filterdata){
+                        param[key] = filterdata[key].join(",");
+                    }
+                    param.order = filterLayerData.order;
+
                     var hiddenData = lgkorUI.getHiddenInputData();
                     param.page = parseInt(hiddenData.page) + 1;
                     if(param) {

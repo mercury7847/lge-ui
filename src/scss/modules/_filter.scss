@@ -207,7 +207,7 @@
                             display:block;
                             padding:24px 0;
                             color:#000;
-                            @include font-medium;
+                            @include font-small;
                             font-weight:$font-weight-bold;
                             word-break:break-all;
                             span {

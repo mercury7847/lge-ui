@@ -122,7 +122,53 @@
                 self.$pdpInfoAdditionalPurchase = self.$pdpInfo.find('.additional-purchase');
                 self.$pdpInfoCareshipService = self.$pdpInfo.find('.careship-service');
                 self.$pdpInfoCareSiblingOption = self.$pdpInfo.find('.care-sibling-option');
+                
+                //렌탈 가격 정보 정리
+                var rentalPriceData = {};
+                                
+                rentalInfo.forEach(function(item, index) {
+                    //가입비
+                    var rtRgstFeePre = ("" + item.rtRgstFeePre);
+                    //의무사용 기간
+                    var dutyTerm = item.dutyTerm;
+                    //방문
+                    var visitPer = item.visitPer;
 
+                    var dataByFee = rentalPriceData[rtRgstFeePre];
+                    if(!dataByFee) {
+                        dataByFee = {};
+                    }
+
+                    var dataByDuty = dataByFee[dutyTerm];
+                    if(!dataByDuty) {
+                        dataByDuty = [];
+                    }
+                    dataByDuty.push(item);
+
+                    dataByFee[dutyTerm] = dataByDuty;
+                    rentalPriceData[rtRgstFeePre] = dataByFee;
+                });
+
+                self.rentalInfoData = rentalPriceData;
+                console.log(self.rentalInfoData);
+                
+                //렌탈 케어솔루션 계약기간
+                self.$caresolutionRentalInfoSelectBox = self.$pdpInfoCareSiblingOption.find('div.info-accordion-wrap .ui_selectbox');
+
+                //가입비 세팅
+                self.rentalInfoSelectBoxUpdate(0,self.rentalInfoData,0,false);
+
+                //의무사용기간 세팅
+                var firstKey = Object.keys(rentalPriceData)[0];
+                var dutyTermData = rentalPriceData[firstKey];
+                self.rentalInfoSelectBoxUpdate(1,dutyTermData,0,false);
+
+                //방문주기
+                firstKey = Object.keys(dutyTermData)[0];
+                var visitPerData = dutyTermData[firstKey];
+                self.rentalInfoSelectBoxUpdate(2,visitPerData,0,false);
+
+                //
                 self.$pdpMobileSlider.vcCarousel({
                     infinite: false,
                     autoplay: false,
@@ -256,7 +302,7 @@
                 //비교하기
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').on('click', function(e) {
                    var checked = $(this).is(':checked');
-                   self.requestCompareItem(sendData.modelId, checked, $(this));
+                   self.requestCompareItem(sendData, checked, $(this));
                 });
 
                 //비교하기 컴포넌트 변화 체크
@@ -514,33 +560,47 @@
                     self.$caresolutionInfoPopup.vcModal();
                 });
 
-                //렌탈 가격 정보
-                var rentalPriceData = {};
-                
-                rentalInfo.forEach(function(item, index) {
-                    //가입비
-                    var rtRgstFeePre = ("" + item.rtRgstFeePre);
-                    //의무사용 기간
-                    var dutyTerm = item.dutyTerm;
-                    //방문
-                    var visitPer = item.visitPer;
+                //렌탈 케어솔루션 계약기간
+                if(self.$caresolutionRentalInfoSelectBox.length > 0) {
+                    self.$caresolutionRentalInfoSelectBox.eq(0).on('change', function(e,data){
+                        var value = $(this).vcSelectbox('selectedOption').value;
+                        self.rentalInfoSelectBoxUpdate(1,self.rentalInfoData[value],0, true);
+                    });
+                    self.$caresolutionRentalInfoSelectBox.eq(1).on('change', function(e,data){
+                        var selectOption = $(this).vcSelectbox('selectedOption');
+                        var itemData = $(selectOption).data('item');
+                        self.rentalInfoSelectBoxUpdate(2,itemData,0, true);
+                    });
+                    self.$caresolutionRentalInfoSelectBox.eq(2).on('change', function(e,data){
+                        var selectOption = $(this).vcSelectbox('selectedOption');
+                        var itemData = $(selectOption).data('item');
+                        console.log('select',itemData);
+                    });
+                };
+            },
 
-                    var dataByFee = rentalPriceData[rtRgstFeePre];
-                    if(!dataByFee) {
-                        dataByFee = {};
+            rentalInfoSelectBoxUpdate: function(selectBoxIndex, selectData, selectIndex, changeEvent) {
+                var self = this;
+                var optionTemplate = '<option value={{value}} {{#if json}}data-item={{json}}{{/if}}>{{title}}</option>';
+                var $selectBox = self.$caresolutionRentalInfoSelectBox.eq(selectBoxIndex);
+                if($selectBox.length > 0) {
+                    $selectBox.empty();
+                    if(selectData instanceof Array) {
+                        selectData.forEach(function(item, index){
+                            $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"1회 / "+ item.visitPer + "개월", "json":JSON.stringify(item)}));
+                        });
+                    } else {
+                        for(key in selectData) {
+                            if(selectBoxIndex == 0) {
+                                $selectBox.append(vcui.template(optionTemplate,{"value":key,"title":vcui.number.addComma(key)+"원","json":null}));
+                            } else {
+                                $selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key+"년","json":JSON.stringify(selectData[key])}));
+                            }
+                        }
                     }
-
-                    var dataByDuty = dataByFee[dutyTerm];
-                    if(!dataByDuty) {
-                        dataByDuty = [];
-                    }
-                    dataByDuty.push(item);
-
-                    dataByFee[dutyTerm] = dataByDuty;
-                    rentalPriceData[rtRgstFeePre] = dataByFee;
-                });
-
-                console.log(rentalPriceData);
+                    $selectBox.vcSelectbox('update');
+                    $selectBox.vcSelectbox('selectedIndex', selectIndex, changeEvent);
+                }
             },
 
             //팝업 버튼 이벤트
@@ -794,14 +854,12 @@
             },
 
             //아이템 비교하기
-            requestCompareItem: function(itemID, compare, $dm) {
-                var self = this;
-
+            requestCompareItem: function(compareData, compare, $dm) {
                 if(compare){
-                    var isAdd = lgkorUI.addCompareProd(sendData);
+                    var isAdd = lgkorUI.addCompareProd(compareData);
                     if(!isAdd) $dm.prop('checked', false);
                 } else{
-                    lgkorUI.removeCompareProd(itemID);
+                    lgkorUI.removeCompareProd(compareData.id);
                 }
             },
 
