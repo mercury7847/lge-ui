@@ -152,11 +152,17 @@
 
                 vcui.require(['search/filterLayer.min'], function () {
                     self.filterLayer = new FilterLayer(self.$layFilter, self.$categorySelect, self.$listSorting, self.$btnFilter, function (data) {
-                        //console.log(data);
+                        console.log("filterLayer: ", data);
                         lgkorUI.setStorage(storageName, data);
     
-                        var param = data;
+                        var param = {};
+                        var filterdata = JSON.parse(data.filterData);
+                        for(var key in filterdata){
+                            param[key] = filterdata[key].join(",");
+                        }
+                        param.order = data.order;
                         param.page = 1;
+                        console.log("param:", param)
                         if(param) {
                             self.requestSearch(param, true);
                         }

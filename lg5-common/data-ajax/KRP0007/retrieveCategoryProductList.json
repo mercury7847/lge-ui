@@ -1,6 +1,8 @@
 {
     "data": [
       {
+        "isLogin":true,
+        "wishListId":"wishID",
         "schCategoryId": "CT50000025",
         "productTotalCount": 69,
         "pagination": {
@@ -328,6 +330,7 @@
         ],
         "productList": [
           {
+            "wishItemId":"wishItemId",
             "affiliateCode": null,
             "bizType": "PRODUCT",
             "modelName": "OLED88Z9KNA.AKRYLHX",
@@ -576,6 +579,7 @@
             ]
           },
           {
+            "wishItemId":"wishItemId",
             "affiliateCode": null,
             "bizType": "PRODUCT",
             "modelName": "43LM5600GNA.AKRQ",
@@ -767,6 +771,7 @@
             ]
           },
           {
+            "wishItemId":"wishItemId",
             "affiliateCode": null,
             "bizType": "PRODUCT",
             "modelName": "43UM7800GNA.AKR",
@@ -958,6 +963,7 @@
             ]
           },
           {
+            "wishItemId":"wishItemId",
             "affiliateCode": null,
             "bizType": "PRODUCT",
             "modelName": "50UM7800GNA.AKR",
@@ -1149,6 +1155,7 @@
             ]
           },
           {
+            "wishItemId":"wishItemId",
             "affiliateCode": null,
             "bizType": "PRODUCT",
             "modelName": "55UM7800GNA.AKR",
