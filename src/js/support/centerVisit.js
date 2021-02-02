@@ -261,21 +261,28 @@
 
             // 모델 선택 후 이벤트
             self.$cont.on('complete', function(e, data) {    
-                var param = {},
+                var url, param = {},
                     data = self.data = $.extend({}, self.data, data);
                 
                 if (data.seq) {
+                    url = self.centerUrl;
                     param = {
                         seq: data.seq,
                         page: 1
                     };
 
-                    self.requestCenterData(param, self.centerUrl);
+                    
                 } else {
-                    self.$stepCenter.find('.no-data').show();
-                    self.$stepCenter.find('.center-result-wrap .tb_row').hide();
-                    self.$centerPagination.hide();
+                    url = self.resultUrl;
+                    param = {
+                        category: data.category,
+                        subCategory: data.subCategory,
+                        modelCode: data.modelCode,
+                        serviceType: data.serviceType
+                    }
                 }
+
+                self.requestCenterData(param, url);
 
                 self.$myProductWrap.hide();
                 self.$cont.commonModel('updateSummary', {
@@ -810,18 +817,22 @@
                 var data = result.data,
                     dataArr = data.listData instanceof Array ? data.listData : [],
                     html;
+                var $listTable = self.$stepCenter.find('.center-result-wrap .tb_row'),
+                    $noData = self.$stepCenter.find('.no-data');
+
+                $listTable.find('tbody').empty();
 
                 if (dataArr.length) {
                     html = vcui.template(centerTmpl, data);
-                    self.$stepCenter.find('table tbody').html(html);
+                    $listTable.find('tbody').html(html);
                     self.$centerPagination.pagination('update', data.listPage);
 
-                    self.$stepCenter.find('.no-data').hide();
-                    self.$stepCenter.find('.center-result-wrap .tb_row').show();
+                    $noData.hide();
+                    $listTable.show();
                     self.$centerPagination.show();
                 } else {
-                    self.$stepCenter.find('.no-data').show();
-                    self.$stepCenter.find('.center-result-wrap .tb_row').hide();
+                    $noData.show();
+                    $listTable.hide();
                     self.$centerPagination.hide();
                 }
 

@@ -42,7 +42,7 @@
                 self.$contWrap = $('div.cont-wrap');
                 self.$lnbContents = self.$contWrap.find('div.lnb-contents');
                 self.$termFilter = self.$lnbContents.find('.filters');
-                self.$termFilter.vcDatePeriodFilter({"dateBetweenCheckYear":3});
+                self.$termFilter.vcDatePeriodFilter({"dateBetweenCheckValue":"3y"});
 
                 self.$serviceUseCount = self.$lnbContents.find('div.tit-wrap .tit em');
                 self.$serviceUseList = self.$lnbContents.find('div.service-use-list');

@@ -41,7 +41,7 @@
                 var self = this;                
                 self.$contents = $('div.lnb-contents');
                 self.$termFilter = self.$contents.find('.filters');
-                self.$termFilter.vcDatePeriodFilter();
+                self.$termFilter.vcDatePeriodFilter({"dateBetweenCheckValue":"3m"});
                 self.$list = self.$contents.find('div.tbl-layout div.tbody');
                 self.$btnMore = self.$contents.find('button.btn-moreview');
                 self.$noData = self.$contents.find('div.no-data');

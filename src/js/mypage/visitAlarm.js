@@ -88,6 +88,10 @@
                 self.$calendarTable = self.$popupChangeVisitDate.find('table.box-table.tb-calendar');
                 self.$timeTable = self.$popupChangeVisitDate.find('table.box-table.tb-timetable');
                 self.$visitDate = self.$popupChangeVisitDate.find('div.box-visit-date span.date');
+                //
+                self.$timeTableWrap = self.$popupChangeVisitDate.find('div.timetable-wrap:eq(0)');
+                self.$timeTableWrapFirst = self.$popupChangeVisitDate.find('div.timetable-wrap:eq(1)');
+                self.$timeTableWrapNoData = self.$popupChangeVisitDate.find('div.timetable-wrap:eq(2)');
             },
 
             bindEvents: function() {
@@ -298,6 +302,9 @@
                     var selectedData = self.getSelectedVisitDayData();
                     self.setVisitDateText(selectedData);
                     
+                    self.$timeTableWrap.hide();
+                    self.$timeTableWrapFirst.show();
+                    self.$timeTableWrapNoData.hide();
                     self.$popupChangeVisitDate.vcModal();
                 }); 
             },
@@ -350,7 +357,6 @@
                 lgkorUI.requestAjaxDataPost(ajaxUrl, selectedData, function(result){
                     var data = result.data;
                     var arr = data instanceof Array ? data : [];
-
                     self.$timeTable.find('tr td.choice').removeClass('choice');
                     self.$timeTable.find('tr th.choice').removeClass('choice');
                     var $td = self.$timeTable.find('tr td');
@@ -368,6 +374,15 @@
                             $item.find('button').attr('disabled',null);
                         }
                     });
+
+                    self.$timeTableWrapFirst.hide();
+                    if(arr.length > 0) {
+                        self.$timeTableWrap.show();
+                        self.$timeTableWrapNoData.hide();
+                    } else {
+                        self.$timeTableWrap.hide();
+                        self.$timeTableWrapNoData.show();
+                    }
 
                     var selectedData = self.getSelectedVisitDayData();
                     self.setVisitDateText(selectedData);
