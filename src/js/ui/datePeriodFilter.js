@@ -14,7 +14,7 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
             msgTarget:'.err-block',
             periodSelectInputName:'periodSelect',
             dateBetweenCheckEnable : true,
-            dateBetweenCheckYear : 2,
+            dateBetweenCheckValue : "2",
         },
 
         initialize: function initialize(el, options) {
@@ -205,10 +205,40 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
                     return false;
                 }
         
-                var limitperiod = self.options.dateBetweenCheckYear * 1000 * 60 * 60 * 24 * 365;
-                if(period > limitperiod) {
-                    lgkorUI.alert("", {title: "최대 조회 기간은<br>"+self.options.dateBetweenCheckYear+"년을 넘을 수 없습니다."});
-                    return false;
+                var checkPeriod = ("" + self.options.dateBetweenCheckValue).toLowerCase();
+                if(checkPeriod.includes("y")) {
+                    //년
+                    var year = checkPeriod.toLowerCase().replace(/y/g, '');//replaceAll('m','');
+                    var limitperiod = year * 1000 * 60 * 60 * 24 * 365;
+                    if(period > limitperiod) {
+                        lgkorUI.alert("", {title: "최대 조회 기간은<br>"+year+"년을 넘을 수 없습니다."});
+                        return false;
+                    }
+                } else if(checkPeriod.includes("m")){
+                    //월
+                    var month = checkPeriod.toLowerCase().replace(/m/g, '');//replaceAll('m','');
+
+                    var m = self.yyyyMMddTodate(endDate);;
+                    m.setMonth(endtime.getMonth() - month);
+                    m.setHours(0, 0, 0);
+                    m.setMilliseconds(0);
+
+                    if(starttime < m) {
+                        lgkorUI.alert("", {title: "최대 조회 기간은<br>"+month+"개월을 넘을 수 없습니다."});
+                        return false;
+                    }
+                } else {
+                    //일
+                    var day = checkPeriod;
+                    var m = self.yyyyMMddTodate(endDate);;
+                    m.setDate(endtime.getDate() - day);
+                    m.setHours(0, 0, 0);
+                    m.setMilliseconds(0);
+
+                    if(starttime < m) {
+                        lgkorUI.alert("", {title: "최대 조회 기간은<br>"+day+"일을 넘을 수 없습니다."});
+                        return false;
+                    }
                 }
             }
             
