@@ -545,7 +545,7 @@ var FilterLayer = (function() {
                 '<div class="flag-wrap image-type left">'+
                     '{{#each badge in promotionBadges}}'+
                         '<span class="big-flag">'+
-                            '<img src="{{badge.badgeImgUrl}}" alt="{{badge.badgeName}}">'+
+                            '<img src="{{badge.badgeImgUrl}}" alt="{{badge.badgeName}}" onError="lgkorUI.addImgErrorEvent(this)">'+
                         '</span>'+
                     '{{/each}}'+
                 '</div>'+
@@ -562,7 +562,7 @@ var FilterLayer = (function() {
                     '<div class="slide-track ui_carousel_track">' +
                         '{{#each (image, idx) in sliderImages}}'+
                             '<div class="slide-conts ui_carousel_slide">' +
-                                '<a href="#"><img src="{{image}}" alt="{{modelDisplayName}} {{idx + 1}}]번 이미지"></a>' +
+                                '<a href="#"><img src="{{image}}" alt="{{#raw modelDisplayName}} {{idx + 1}}]번 이미지" onError="lgkorUI.addImgErrorEvent(this)"></a>' +
                             '</div>' +
                         '{{/each}}'+
                     '</div>' +
@@ -574,35 +574,39 @@ var FilterLayer = (function() {
             '</div>' +
         '</div>' +
         '<div class="product-contents">' +
-            '<div class="product-option ui_smooth_scrolltab {{siblingType}}">' +
-                '<div class="ui_smooth_tab">' +
-                    '<ul class="option-list" role="radiogroup">' +
-                        '{{#each item in siblingModels}}'+
-                            '<li>'+
-                                '<div role="radio" class="{{#if siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
-                                    '<input type="radio" data-category-id={{categoryId}} id="product-{{item.modelName}}" name="nm_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
-                                    '{{#if siblingType=="color"}}'+
-                                        '<label for="product-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
-                                    '{{#else}}'+
-                                        '<label for="product-{{item.modelName}}">{{item.siblingValue}}</label>'+
-                                    '{{/if}}'+
-                                '</div>'+
-                            '</li>'+
-                        '{{/each}}' +
-                    '</ul>' +
+            '{{#if siblings}}'+
+                '{{#each sibling in siblings}}'+
+                '<div class="product-option ui_smooth_scrolltab {{sibling.siblingType}}">' +
+                    '<div class="ui_smooth_tab">' +
+                        '<ul class="option-list" role="radiogroup">' +
+                            '{{#each item in sibling.siblingModels}}'+
+                                '<li>'+
+                                    '<div role="radio" class="{{#if sibling.siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
+                                        '<input type="radio" data-category-id={{categoryId}} id="product-{{sibling.siblingType}}-{{item.modelName}}" name="nm_{{sibling.siblingType}}_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
+                                        '{{#if sibling.siblingType=="color"}}'+
+                                            '<label for="product-{{sibling.siblingType}}-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
+                                        '{{#else}}'+
+                                            '<label for="product-{{sibling.siblingType}}-{{item.modelName}}">{{item.siblingValue}}</label>'+
+                                        '{{/if}}'+
+                                    '</div>'+
+                                '</li>'+
+                            '{{/each}}' +
+                        '</ul>' +
+                    '</div>' +
+                    '<div class="scroll-controls ui_smooth_controls">' +
+                        '<button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>' +
+                        '<button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>' +
+                    '</div>' +
                 '</div>' +
-                '<div class="scroll-controls ui_smooth_controls">' +
-                    '<button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>' +
-                    '<button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>' +
-                '</div>' +
-            '</div>' +
+                '{{/each}}'+
+            '{{/if}}'+
             '<div class="flag-wrap bar-type">' +
                 '{{#if newProductBadgeFlag}}<span class="flag">NEW</span>{{/if}}' +
                 '{{#if bestBadgeFlag}}<span class="flag">BEST</span>{{/if}}' +
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-name">' +
-                    '<a href="#">{{modelDisplayName}}</a>' +
+                    '<a href="#">{{#raw modelDisplayName}}</a>' +
                 '</div>' +
                 '<div class="sku">{{#if salesModelCode}}{{salesModelCode}}{{/if}}</div>' +
                     '<div class="review-info">' +
@@ -910,6 +914,7 @@ var FilterLayer = (function() {
                         //찜하기
                         item.cartListFlag = lgkorUI.stringToBool(item.cartListFlag);
                         
+                        if(!item.detailUrl) item.detailUrl = "#n";
                         self.$productList.append(vcui.template(productItemTemplate, item));
 
                         self.$productList.find('.ui_plp_carousel').vcCarousel('reinit');

@@ -67,7 +67,7 @@
         '{{/each}}';
 
     var dateUtil = vcui.date;
-
+    var cookie = lgkorUI.cookie;
     var validation;
     var authManager;
 
@@ -78,13 +78,17 @@
             self.$cont = $('.contents');
             self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
             self.$myProductWrap = self.$cont.find('.my-product-wrap');
+            self.$searchModelWrap = self.$cont.find('.prod-search-wrap');
+
             self.$submitForm = self.$cont.find('#submitForm');
             self.$completeBtns = self.$cont.find('.btn-group');
             self.$stepArea = self.$cont.find('.step-area');
             self.$stepModel = self.$cont.find('#stepModel');
+            self.$stepCenter = self.$cont.find('#stepCenter');
+            self.$stepDate = self.$cont.find('#stepDate');
+            self.$stepInput = self.$cont.find('#stepInput');
 
             // 센터찾기
-            self.$stepCenter = self.$cont.find('#stepCenter');
             self.$centerPagination = self.$stepCenter.find('.pagination');
 
             self.$citySelect = $('#localSi');
@@ -103,17 +107,15 @@
             self.searchCenterName = $('#tab3').find('.btn-search');
 
             // 희망날짜
-            self.$stepDate = self.$cont.find('#stepDate');
             self.$dateWrap = self.$stepDate.find('.date-wrap');
             self.$timeWrap = self.$stepDate.find('.time-wrap');
 
             // 엔지니어
-            self.$stepEngineer = self.$cont.find('.engineer-to-visit');
+            self.$engineerResult = self.$cont.find('.engineer-to-visit');
             self.$engineerPopup = $('#choiceEngineerPopup');
             self.$engineerSlider = self.$engineerPopup.find('.engineer-slider');
 
             // 정보입력
-            self.$stepInput = self.$cont.find('#stepInput');
             self.$topicBox = self.$stepInput.find('#topicBox');
             self.$topicListWrap = self.$stepInput.find('#topicList');
             self.$topicList = self.$topicListWrap.find('.rdo-list');
@@ -125,7 +127,8 @@
 
             // 본인인증
             self.$authPopup = $('#certificationPopup');
-
+            
+            self.resultUrl = self.$searchModelWrap.data('resultUrl');
             self.centerUrl = self.$stepCenter.data('centerUrl');
             self.localUrl = self.$stepCenter.data('localListUrl');
             self.subwayUrl = self.$stepCenter.data('subwayListUrl');
@@ -138,6 +141,7 @@
             
             self.searchType = 'local';
             self.isLogin = lgkorUI.isLogin;
+            self.isMobile = lgkorUI.isMobile();
 
             var register = {
                 date: {
@@ -199,7 +203,7 @@
 
                 if (!self.isLogin) authManager = new AuthManager(authOptions);
 
-                $('#route').val(lgkorUI.isMobile() ? 'WWW2' : 'WWWW1');
+                self.$cont.find('#route').val(self.isMobile ? 'WWW2' : 'WWWW1');
 
                 self.bindEvent();
 
@@ -277,9 +281,7 @@
                     mapService: 'naver',
                     keyID: 'vsay0tnzme',
                     appKey: 'oqYmIfzrl6E72lYDAvNeII5x9wEWUNwKrcUctzVa'
-                }).load(function(){
-                    
-                });  
+                }).load(function(){});  
             });
         },
         bindEvent: function() {
@@ -594,15 +596,18 @@
 
             switch(self.searchType) {
                 case 'local':
+                case 'current':
+                case 'road':
                     keywords = {
                         latitude:self.latitude,
                         longitude:self.longitude
                     };    
                     break;
-                case 'current':
+                case 'center':
                     keywords = {
                         latitude:self.latitude,
-                        longitude:self.longitude
+                        longitude:self.longitude,
+                        searchKeyword: self.$address1.val()
                     };
                     break;
                 case 'user':
@@ -616,19 +621,6 @@
                         searchSubwayLocal: self.$subwayCitySelect.val(),
                         searchSubwayLine: self.$subwayLineSelect.val(),
                         searchSubwayStation: self.$subwayStationSelect.val()
-                    };
-                    break;
-                case 'center':
-                    keywords = {
-                        latitude:self.latitude,
-                        longitude:self.longitude,
-                        searchKeyword: self.$address1.val()
-                    };
-                    break;
-                case 'road':
-                    keywords = {
-                        latitude:self.latitude,
-                        longitude:self.longitude
                     };
                     break;
             };
@@ -713,19 +705,21 @@
             var self = this;
 
             lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(self.userAdressCheckedUrl, {}, function(result){
-                if(lgkorUI.stringToBool(result.data.success)){
-                    self.userCityName = result.data.userAdress.cityValue;
-                    self.userBoroughName = result.data.userAdress.boroughValue;
+                var data = result.data;
+
+                if(lgkorUI.stringToBool(data.success)){
+                    self.userCityName = data.userAdress.cityValue;
+                    self.userBoroughName = data.userAdress.boroughValue;
                     self.searchResultMode = true;
                     self.schReaultTmplID = "localSearch";
 
                     self.requestCenterData();
                 } else{
-                    if(result.data.location && result.data.location != ""){
-                        location.href = result.data.location;
+                    if(data.location && data.location != ""){
+                        location.href = data.location;
                     } else{
                         lgkorUI.alert("", {
-                            title: result.data.alert.title
+                            title: data.alert.title
                         });
                     }
                 }
@@ -735,19 +729,43 @@
         // 현재 위치 검색
         _setCurrentSearch: function() {
             var self = this;
+            var searchCurrentSearch = function() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(pos) {
+                        self.latitude = pos.coords.latitude;
+                        self.longitude = pos.coords.longitude;
+    
+                        self.searchResultMode = true;
+                        self.schReaultTmplID = "localSearch";
+                        
+                        cookie.setCookie('geoAgree','Y', 1);
 
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(pos) {
-                    self.latitude = pos.coords.latitude;
-                    self.longitude = pos.coords.longitude;
-
-                    self.searchResultMode = true;
-                    self.schReaultTmplID = "localSearch";
-
-                    self.requestCenterData();
-                }, function(error) {
-                    
-                }); 
+                        self.requestCenterData();
+                    }, function(error) {
+                        
+                    }); 
+                }
+            };
+            var obj ={
+                title:'위치 정보 제공 동의', 
+                typeClass:'type2', 
+                okBtnName: '동의',
+                cancelBtnName: '동의 안함',
+                ok : function (){
+                    searchCurrentSearch();
+                },
+                cancel: function() {
+                    lgkorUI.alert('현재 위치를 찾을 수 없습니다.', {
+                        title: '현재 위치 정보',
+                        typeClass: 'type2'
+                    });
+                }};
+            var desc = '<p>고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 매장 안내를 위해서만 이용 됩니다. <br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다. <br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?</p>';
+                
+            if (!cookie.getCookie('geoAgree')) {
+                lgkorUI.confirm(desc, obj);
+            } else {
+                searchCurrentSearch();
             }
         },
 
@@ -1005,9 +1023,9 @@
                             
                             self.$engineerSlider.find('.slide-track').html(html);
                             self.$engineerSlider.vcCarousel('reinit');
-                            self.$stepEngineer.find('.btn').show();
+                            self.$engineerResult.find('.btn').show();
                         } else {
-                            self.$stepEngineer.find('.btn').hide();
+                            self.$engineerResult.find('.btn').hide();
                         }
                         self.$stepInput.addClass('active');
                         self.$completeBtns.show();
@@ -1017,10 +1035,10 @@
         },
         updateEngineer: function(data) {
             var self = this,
-                $engineerBox = self.$stepEngineer.find('.engineer-info'),
-                $resultBox = self.$stepEngineer.find('.engineer-desc');
+                $engineerBox = self.$engineerResult.find('.engineer-info'),
+                $resultBox = self.$engineerResult.find('.engineer-desc');
 
-            self.$stepEngineer.find('.engineer-img img').attr({
+            self.$engineerResult.find('.engineer-img img').attr({
                 'src': data.image,
                 'alt': data.engineerName
             });                             

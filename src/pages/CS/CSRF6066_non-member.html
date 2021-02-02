@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-login="Y">
     @@include('./common/head.html', {
         "pageCSS": [
             "support/support",
@@ -15,8 +15,8 @@
                 'pageTitle': '공기청정 필터 신청',
                 'pageDesc': 'OIT가 포함되지 않은 필터를 신청하세요.',
                 'pageBtn' : [
-                    { 'btn' : '에어컨 3M필터 교체방법 안내', 'attr': 'data-href="#ratesWarrantyGuidePopup" data-control="modal"' },
-                    { 'btn' : '공기청정기 3M필터 교체방법안내', 'attr': 'data-href="#ratesWarrantyGuidePopup" data-control="modal"' }
+                    { 'btn' : '에어컨 3M필터 교체방법 안내', 'attr': '' },
+                    { 'btn' : '공기청정기 3M필터 교체방법안내', 'attr': '' }
                 ]
             })
 
@@ -27,8 +27,15 @@
                 })
 
                 <div class="cont-wrap">
-                    <form action="/html/CS/CSRF6066_complete.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/save.json" novalidate>
+                    <form action="/html/CS/CSRF6066_complete.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/airCare/airCare-complete.json" novalidate>
                         <div class="step-area">
+                            <input type="hidden" name="categoryNm" id="categoryNm" value="">
+                            <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="">
+                            <input type="hidden" name="category" id="category" value="">
+                            <input type="hidden" name="subCategory" id="subCategory" value="">
+                            <input type="hidden" name="productCode" id="productCode" value="">
+                            <input type="hidden" name="serviceType" id="serviceType" value="C">
+                            
                             <!-- 약관동의 -->
                             <div class="step-box active" id="stepTerms">
                                 <div class="section">
@@ -45,7 +52,7 @@
                             </div>
 
                             <!-- 접수 -->
-                            <div class="step-box" id="stepModel">
+                            <div class="step-box" id="stepModel" data-model-check-url="/lg5-common/data-ajax/support/airCare/modelCheck.json" data-serial-check-url="/lg5-common/data-ajax/support/airCare/serialCheck.json">
                                 <div class="section">
                                     <div class="gray-box">
                                         <div class="text-box">
@@ -53,12 +60,11 @@
                                         </div>
                                         <div class="white-box">
                                             <ul class="bullet-list">
-                                                <li class="b-txt">신청대상 : 공기청정기, 스텐드형 에어컨 중 해당 필터적용 모델 <span class="color-3">(벽걸이 에어컨, 시스템 에어컨, 제습기 등은 대상이 아닙니다.)</span>
-                                                </li>
+                                                <li class="b-txt">신청대상 : 공기청정기, 스텐드형 에어컨 중 해당 필터적용 모델 <span class="point">(벽걸이 에어컨, 시스템 에어컨, 제습기 등은 대상이 아닙니다.)</span></li>
                                                 <li class="b-txt">공기청정 필터 무상 모델 1대 당 1회 제공</li>
                                                 <li class="b-txt">모델명, 제조번호는 소유하고 계시는 제품 측면을 확인하시어 정확한 입력을 부탁드립니다.</li>
                                             </ul>
-                                            <div class="btn-group">
+                                            <div class="btn-wrap">
                                                 <button type="button" class="btn border size" data-href="#airCareModelPopup" data-control="modal"><span>3M필터(OTI필터) 미적용 모델 안내</span></button>
                                             </div>
                                         </div>
@@ -70,24 +76,25 @@
                                         })
                                     </div>
                                 </div>
-                                <div class="form-infos">
-                                    <p class="req" aria-disabled="true">필수 입력 항목</p>
-                                </div>
+
                                 <div class="section">
+                                    <div class="form-infos">
+                                        <p class="req" aria-disabled="true">필수 입력 항목</p>
+                                    </div>
                                     <div class="tit-wrap">
                                         <h2 class="tit">제품군, 모델, 제조번호를 입력해 주세요.</h2>
                                     </div>
                                     <div class="form-wrap">
                                         <div class="forms">
                                             <div class="tit">
-                                                <label for="product_family" class="req">제품군 선택<span class="blind">필수항목</span></label>
+                                                <label for="productFamily" class="req">제품군 선택<span class="blind">필수항목</span></label>
                                             </div>
                                             <div class="conts">
                                                 <div class="select-wrap">
-                                                    <select class="ui_selectbox" id="product_family" name="product_family" title="전체 카테고리 선택" data-error-msg="제품명 선택은 필수항목 입니다." data-required="true" required>
-                                                        <option value="" class="placeholder">제품군 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
-                                                        <option value="에어컨">에어컨</option>
-                                                        <option value="공기청정기">공기청정기</option>
+                                                    <select class="ui_selectbox" name="productFamily" id="productFamily" title="제품군 선택" data-error-msg="제품명 선택은 필수항목 입니다." data-required="true" required>
+                                                        <option value="" class="placeholder">제품군 선택</option>
+                                                        <option value="1019">에어컨</option>
+                                                        <option value="CT50019873">공기청정기</option>
                                                     </select>
                                                 </div>
                                                 <div class="btm-more err-block">
@@ -101,8 +108,9 @@
                                                 <label for="model" class="req">모델명<span class="blind">필수항목</span></label>
                                             </div>
                                             <div class="conts">
-                                                <div class="input-wrap">
-                                                    <input type="text" name="model" id="model" class="model-name" value="" placeholder="모델명 전부 입력" data-error-msg="3M필터 적용모델이 아닙니다. 모델명을 다시 입력해주시기 바랍니다." data-pattern-msg="한글 입력 불가" data-required="true" required maxlength="20">
+                                                <div class="input-wrap search">
+                                                    <input type="text" name="modelCode" id="modelCode" placeholder="모델명 전부 입력" data-error-msg="3M필터 적용모델이 아닙니다. 모델명을 다시 입력해주시기 바랍니다." data-pattern-msg="3M필터 적용모델이 아닙니다. 모델명을 다시 입력해주시기 바랍니다." data-required="true" required maxlength="20">
+                                                    <button type="button" class="btn-search"><span class="blind">검색</span></button>
                                                 </div>
                                                 <div class="btm-more err-block">
                                                     <p class="err-msg"></p>
@@ -112,11 +120,12 @@
         
                                         <div class="forms">
                                             <div class="tit">
-                                                <label for="serial_number" class="req">제조번호<span class="blind">필수항목</span></label>
+                                                <label for="serialNumber" class="req">제조번호<span class="blind">필수항목</span></label>
                                             </div>
                                             <div class="conts">
-                                                <div class="input-wrap">
-                                                    <input type="text" name="serial_number" id="serial_number" class="model-name" placeholder="제조번호 입력" data-error-msg="올바른 제조번호를 입력해 주세요." data-required="true" required maxlength="12" readonly>
+                                                <div class="input-wrap search">
+                                                    <input type="text" name="serialNumber" id="serialNumber" placeholder="제조번호 입력" data-error-msg="올바른 제조번호를 입력해 주세요." data-pattern-msg="올바른 제조번호를 입력해 주세요." data-required="true" required maxlength="12" disabled>
+                                                    <button type="button" class="btn-search" disabled><span class="blind">검색</span></button>
                                                 </div>
                                                 @@include('./common/modules/bullet-list.html', {
                                                     "bulletTxt" : [
@@ -167,10 +176,6 @@
                                                         <input type="text" name="phoneNo" id="phoneNo" value="" placeholder="휴대전화 인증 진행"  data-error-msg="휴대전화를 정확히 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" required readonly>
                                                     </div>
                                                     <div class="cell">
-                                                        <!-- 
-                                                            비회원일 경우 disabled 추가
-                                                            회원일 경우 disabled 삭제
-                                                         -->
                                                         <button type="button" class="btn btn-open" data-href="#certificationPopup" data-control="modal"><span>휴대전화 인증</span></button>
                                                     </div>
                                                 </div>
@@ -185,27 +190,29 @@
                                             <div class="conts">
                                                 <div class="box">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="zipcode1" id="zipcode1" readonly placeholder="우편번호" data-error-msg="우편번호를 입력해주세요" data-pattern-msg="올바른 우편번호 형식이 아닙니다." data-required="true" required readonly>
-                                                        <div class="btm-more err-block">
-                                                            <p class="err-msg"></p>
-                                                        </div>
+                                                        <input type="text" name="zipCode" id="zipCode" placeholder="우편번호" data-error-msg="정확한 주소를 입력해주세요." data-required="true" required readonly>
                                                     </div>
                                                     <div class="cell">
-                                                        <button type="button" class="btn"><span>주소 찾기</span></button>
+                                                        <button type="button" class="btn btn-address"><span>주소 찾기</span></button>
                                                     </div>
                                                 </div>
-                                                <div class="box">
-                                                    <div class="input-wrap">
-                                                        <input type="text" name="zipcode2" id="zipcode2" placeholder="주소찾기를 선택해주세요." data-error-msg="주소찾기 또는 배송지 목록을 선택해주세요." data-pattern-msg="" data-required="true" required readonly>
-                                                        <div class="btm-more err-block">
-                                                            <p class="err-msg"></p>
-                                                        </div>
-                                                    </div>
+                                                <div class="input-wrap">
+                                                    <input type="text" name="userAddress" id="userAddress" placeholder="주소" data-error-msg="정확한 주소를 입력해주세요." data-required="true" required readonly>
                                                 </div>
-                                                <span class="chk-wrap">
-                                                    <input type="checkbox" name="chk-add-default" checked="">
-                                                    <label for="chk1-1">기본 주소로 설정</label>
-                                                </span>
+                                                <div class="input-wrap">
+                                                    <input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소를 입력해주세요." data-error-msg="정확한 주소를 입력해주세요." data-required="true" required>
+                                                </div>
+                                                <!-- 비회원일 경우 비노출 -->
+                                                <!-- <div class="btm-more">
+                                                    <span class="chk-wrap">
+                                                        <input type="checkbox" name="defaultAddress" id="defaultAddress" value="Y">
+                                                        <label for="defaultAddress">기본 주소로 설정</label>
+                                                    </span>
+                                                </div> -->
+                                                <!-- // 비회원일 경우 비노출 -->
+                                                <div class="btm-more address-err-msg">
+                                                    <p class="err-msg"></p>
+                                                </div>
                                             </div>
                                         </div>
         
@@ -215,26 +222,23 @@
                                             </div>
                                             <div class="conts">
                                                 <div class="input-wrap count">
-                                                    <textarea class="ui_textcontrol" name="content" id="content" placeholder="요청하실 내용을 150자 내외로 입력해 주세요." maxlength="150" data-limit="150" data-count-target="#txt-count2"></textarea>
-                                                    <span id="txt-count2" class="cell total"><em>0</em> / 150</span>
+                                                    <textarea class="ui_textcontrol" name="content" id="content" placeholder="요청하실 내용을 150자 내외로 입력해 주세요." maxlength="150" data-limit="150" data-count-target="#txt-count1"></textarea>
+                                                    <span id="txt-count1" class="cell total"><em>0</em> / 150</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "topBorder" : true,
-                                            "bulletTxt" : [
-                                                "참조제품 정보 및 고객 정보 입력 오류로 인한 오배송은 배송 처리 후 추후 추가 신청이 불가능 합니다.",
-                                                "신청하시기 버튼을 누르시기 전에 입력하신 내용에 대하여 재확인 부탁드립니다."
-                                            ]
-                                        })
                                     </div>
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "topBorder" : true,
+                                        "bulletTxt" : [
+                                            "참조제품 정보 및 고객 정보 입력 오류로 인한 오배송은 배송 처리 후 추후 추가 신청이 불가능 합니다.",
+                                            "신청하시기 버튼을 누르시기 전에 입력하신 내용에 대하여 재확인 부탁드립니다."
+                                        ]
+                                    })
                                 </div>
                                 <div class="btn-group center">
-                                    <!-- 
-                                        data-url="support main 주소"
-                                     -->
-                                    <button type="button" class="btn gray btn-cancel" data-id="#cancelPop" data-control="modal" data-url="/html/CS/CSRF6068"><span>취소</span></button>
-                                    <button type="button" class="btn btn-confirm" data-id="#confirmPop" data-control="modal"><span>신청</span></button>
+                                    <button type="button" class="btn gray" data-href="#canclePopup" data-control="modal"><span>취소</span></button>
+                                    <button type="button" class="btn btn-confirm"><span>신청</span></button>
                                 </div>
                             </div>
                         </div>
@@ -254,9 +258,21 @@
 
     <!-- 휴대폰인증 팝업 -->
     @@include('./CS/modal/phone-certification-popup.html')
+
+    <!-- 취소 팝업 -->
+    <article id="canclePopup" class="lay-wrap">
+        <section class="lay-conts">
+            <h6>입력하신 정보가 모두 삭제됩니다. 신청을 취소 취소하시겠습니까?</h6>
+        </section>
+        <div class="btn-wrap laypop">
+            <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+            <a href="#" class="btn"><span>확인</span></a>
+        </div>
+    </article>
     
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/caresolution/addressManagement.min.js"></script>
     <script src="/lg5-common/js/support/airFilter.min.js"></script>
 </body>
 </html> 
