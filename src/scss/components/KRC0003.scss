@@ -10,11 +10,10 @@
             bottom: 24px;
             right: 40px;
             left: 40px;
-            max-width: 1380px;
-            margin: 0 auto;
+            //max-width: 1380px;
+            //margin: 0 auto;
             .custom-indis {
-                max-width: none;
-                margin: 0 -15px;
+                max-width: (1380px + 30px);
                 .indis {
                     width: 100%;
                     table-layout: fixed;
@@ -30,8 +29,15 @@
             .indi-control {
                 position: absolute;
                 bottom: 16px;
-                right: 0;
-                margin: 0;
+                right: 50%;
+                margin-right: -690px;
+                @media screen and (max-width: (1460px + 30px)) {
+                    right: 15px;
+                    margin-right: 0;
+                    @include mobile {
+                        right: 0;
+                    }
+                }
             }
             @include mobile {
                 bottom: 20px;
