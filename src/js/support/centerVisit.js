@@ -70,6 +70,7 @@
     var cookie = lgkorUI.cookie;
     var validation;
     var authManager;
+    var naverMap;
 
     var reservation = {
         init: function() {
@@ -104,6 +105,7 @@
 
             self.$citySelect2 = $('#address');
             self.$address1 = $('#keyword');
+            self.$keywordWrap = $('.ui_search');
             self.searchCenterName = $('#tab3').find('.btn-search');
 
             // 희망날짜
@@ -139,10 +141,23 @@
             self.timeUrl = self.$stepDate.data('timeUrl');
             self.engineerUrl = self.$stepInput.data('engineerUrl');
             
+            self.data;
             self.searchType = 'local';
             self.isLogin = lgkorUI.isLogin;
             self.isMobile = lgkorUI.isMobile();
 
+            var seq = lgkorUI.searchParamsToObject('seq');
+            var data = {
+                category: self.$cont.find('#category').val(),
+                categoryName: self.$cont.find('#categoryNm').val(),
+                subCategory: self.$cont.find('#subCategory').val(),
+                subCategoryName: self.$cont.find('#subCategoryNm').val(),
+                modelCode: self.$cont.find('#modelCode').val(),
+                productCode: self.$cont.find('#productCode').val(),
+                serviceType: self.$cont.find('#serviceType').val(),
+                lockUserId: self.$cont.find('#lockUserId').val(),
+                pageCode: self.$cont.find('#pageCode').val()
+            };
             var register = {
                 date: {
                     required: true,
@@ -197,71 +212,28 @@
                     }
                 }
             };
+            
+            if (seq) {
+                self.$cont.find('#seq').val(seq);
+                data = $.extend(data, {seq: sval});
+            }
+            self.$cont.find('#route').val(self.isMobile ? 'WWW2' : 'WWWW1');
 
             vcui.require(['ui/validation', 'helper/naverMapApi'], function () {
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
-
+                naverMap = new vcui.helper.NaverMapApi({
+                    mapService: 'naver',
+                    keyID: 'vsay0tnzme',
+                    appKey: 'oqYmIfzrl6E72lYDAvNeII5x9wEWUNwKrcUctzVa'
+                }).load();  
+                
                 if (!self.isLogin) authManager = new AuthManager(authOptions);
-
-                self.$cont.find('#route').val(self.isMobile ? 'WWW2' : 'WWWW1');
 
                 self.bindEvent();
 
-                var selected = {
-                    category: self.$cont.find('#category').val(),
-                    categoryName: self.$cont.find('#categoryNm').val(),
-                    subCategory: self.$cont.find('#subCategory').val(),
-                    subCategoryName: self.$cont.find('#subCategoryNm').val(),
-                    modelCode: self.$cont.find('#modelCode').val(),
-                    productCode: self.$cont.find('#productCode').val()
-                }
-
                 self.$cont.commonModel({
                     register: register,
-                    selected: selected
-                });
-
-                var params = location.search.substr(location.search.indexOf("?") + 1);
-                var sval = "", temp;
-                params = params.split("&");
-                for (var i = 0; i < params.length; i++) {
-                    temp = params[i].split("=");
-                    if ([temp[0]] == 'seq') { sval = temp[1]; }
-                }
-
-                if (sval) {
-                    selected = $.extend(selected, {
-                        seq: sval
-                    });
-                    self.$cont.trigger('complete', [selected, self.centerUrl, true]);
-                }
-
-                self.$engineerSlider.vcCarousel({
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-                    responsive: [
-                        {
-                            breakpoint: 10000,
-                            settings: {
-                                slidesToShow: 4,
-                                slidesToScroll: 4,
-                            }
-                        },
-                        {
-                            breakpoint: 1024,
-                            settings: {
-                                slidesToShow: 3,
-                                slidesToScroll: 3,
-                            }
-                        },
-                        {
-                            breakpoint:767,
-                            settings: {
-                                slidesToShow: 2,
-                                slidesToScroll: 2
-                            }
-                        }
-                    ]
+                    selected: data
                 });
 
                 self.$dateWrap.calendar({
@@ -270,18 +242,13 @@
                 self.$timeWrap.timeCalendar({
                     inputTarget: '#time'
                 });
-
-                $('.ui_search').search({
+                self.$keywordWrap.search({
                     template: {
                         autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="#{{item.shopID}}" class="btn-detail" title="새창 열림">{{item.shopName}}</a></li>{{/each}}</ul>',
                     }
                 });
 
-                new vcui.helper.NaverMapApi({
-                    mapService: 'naver',
-                    keyID: 'vsay0tnzme',
-                    appKey: 'oqYmIfzrl6E72lYDAvNeII5x9wEWUNwKrcUctzVa'
-                }).load(function(){});  
+                self.data = data;
             });
         },
         bindEvent: function() {
@@ -293,36 +260,28 @@
             });
 
             // 모델 선택 후 이벤트
-            self.$cont.on('complete', function(e, data, url) {    
-                var param = {};
+            self.$cont.on('complete', function(e, data) {    
+                var param = {},
+                    data = self.data = $.extend({}, self.data, data);
                 
-                self.model = data;
-
                 if (data.seq) {
                     param = {
                         seq: data.seq,
                         page: 1
-                    }
-                } else {
-                    param = {
-                        category: self.model.category,
-                        subCategory: self.model.subCategory,
-                        modelCode: self.model.modelCode,
-                        serviceType: $('#serviceType').val(),
-                        page:1
-                    }
-                }
-                
-                
-                self.requestCenterData(param, url);
+                    };
 
+                    self.requestCenterData(param, self.centerUrl);
+                } else {
+                    self.$stepCenter.find('.no-data').show();
+                    self.$stepCenter.find('.center-result-wrap .tb_row').hide();
+                    self.$centerPagination.hide();
+                }
+
+                self.$myProductWrap.hide();
                 self.$cont.commonModel('updateSummary', {
                     product: [data.categoryName, data.subCategoryName, data.modelCode],
                     reset: 'product'
                 });
-                
-                self.$myProductWrap.hide();
-
                 self.$cont.commonModel('next', self.$stepCenter);
                 self.$cont.commonModel('focus', self.$selectedModelBar, function() {
                     self.$selectedModelBar.vcSticky();
@@ -394,8 +353,7 @@
                     self.searchCenterName.trigger('click');
                 }
             });
-
-            $('.ui_search').on('autocomplete', function(e, param, url, callback) {
+            self.$keywordWrap.on('autocomplete', function(e, param, url, callback) {
                 var data = {
                     searchCity: self.$citySelect2.val(),
                     searchKeyword: param.keyword
@@ -405,22 +363,19 @@
                     callback(result.data);
                 });
             });
-            $('.ui_search').on('autocompleteClick', function(e, el) {
+            self.$keywordWrap.on('autocompleteClick', function(e, el) {
                 var id = $(el).attr("href").replace("#", "");
                 var windowHeight = $(window).innerHeight();
                 window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
             });
-            $('.center-list-wrap').on('click', '.btn-detail', function(){
+            $('.center-result-wrap table').on('click', '.btn-detail', function(){
                 var id = $(this).attr("href").replace("#", "");
                 var windowHeight = $(window).innerHeight();
                 window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
             });
-
             self.searchCenterName.on('click', function() {
                 self._setSearch();
             });
-            
-
 
             self.$centerPagination.on('pageClick', function(e) {
                 var param = {
@@ -431,8 +386,14 @@
             });
 
             self.$stepCenter.on('change', '[name=center]', function() {
-                $('#shopID').val($(this).val());
-                self.param = $(this).data();
+                var value = $(this).val(),
+                    deptCode = $(this).data('deptCode');
+                
+                self.$cont.find('#seq').val(value);
+                self.data = $.extend(self.data, {
+                    seq: value,
+                    deptCode: deptCode
+                });
                 self.requestDate();
             });
 
@@ -477,10 +438,12 @@
             });
 
             // 날짜 선택
-            self.$dateWrap.on('dateselected', function() {
+            self.$dateWrap.on('dateselected', function(e, date) {
+                self.data['date'] = date;
                 self.requestTime();
             });
-            self.$timeWrap.on('timeselected', function() {
+            self.$timeWrap.on('timeselected', function(e, time) {
+                self.data['time'] = time;
                 self.reqestEngineer();
             });
 
@@ -494,17 +457,17 @@
                 var url = self.$engineerPopup.data('lockUrl'),
                     $this = self.$engineerPopup.find('[name=engineer]').filter(':checked'),
                     infoData = $this.data(),
-                    param;
+                    param, data;
 
+                self.data = $.extend(self.data, infoData);
+                data = self.data;
                 param = {
-                    serviceType: $('#serviceType').val(),
-                    date: $('#date').val(),
-                    time: $('#time').val(),
-                    lockUserId: $('#lockUserId').val(),
-                    productCode: $('#productCode').val(),
+                    productCode: data.productCode,
+                    serviceType: data.serviceType,
+                    lockUserId: data.lockUserId,
+                    date: data.date,
+                    time: data.time
                 }
-
-                param = $.extend(param, infoData);
 
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var data = result.data;
@@ -539,8 +502,8 @@
                         });       
                     } else {
                         authManager.open(function() {
-                            $('#authName').val($('#userNm').val()).prop('readonly', true);
-                            $('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);  
+                            self.$authPopup.find('#authName').val($('#userNm').val()).prop('readonly', true);
+                            self.$authPopup.find('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);  
                         });
                     }
                 }
@@ -559,8 +522,7 @@
         reset: function() {
             var self = this;
 
-            self.model = {};
-            self.param = {};
+            self.data = {};
 
             self.$dateWrap.calendar('reset');
             self.$timeWrap.timeCalendar('reset');
@@ -573,6 +535,8 @@
             $('#engineerCode').val('');
             $('#centerNm').val('');
             $('#centerCode').val('');
+            $('#seq').val('');
+
             $('#date').val('');
             $('#time').val('');
         
@@ -591,13 +555,13 @@
         },
         _getKeyword: function(){
             var self = this;
-
             var keywords = {};
 
             switch(self.searchType) {
                 case 'local':
                 case 'current':
                 case 'road':
+                case 'user':
                     keywords = {
                         latitude:self.latitude,
                         longitude:self.longitude
@@ -608,12 +572,6 @@
                         latitude:self.latitude,
                         longitude:self.longitude,
                         searchKeyword: self.$address1.val()
-                    };
-                    break;
-                case 'user':
-                    keywords = {
-                        searchCity: self.userCityName,
-                        searchBorough: self.userBoroughName
                     };
                     break;
                 case 'subway':
@@ -631,7 +589,6 @@
         },
         searchAddressToCoordinate: function(address, callback) { 
             var self = this;
-            var point;
             
             naver.maps.Service.geocode({
                 address: address
@@ -708,12 +665,14 @@
                 var data = result.data;
 
                 if(lgkorUI.stringToBool(data.success)){
-                    self.userCityName = data.userAdress.cityValue;
-                    self.userBoroughName = data.userAdress.boroughValue;
+                    var callback = function() {
+                        self.requestCenterData()
+                    };
+
                     self.searchResultMode = true;
                     self.schReaultTmplID = "localSearch";
 
-                    self.requestCenterData();
+                    self.searchAddressToCoordinate(data.userAdress, callback);
                 } else{
                     if(data.location && data.location != ""){
                         location.href = data.location;
@@ -742,8 +701,16 @@
 
                         self.requestCenterData();
                     }, function(error) {
-                        
+                        lgkorUI.alert('현재 위치를 찾을 수 없습니다.', {
+                            title: '현재 위치 정보',
+                            typeClass: 'type2'
+                        });
                     }); 
+                } else {
+                    lgkorUI.alert('위치 기반 서비스를 제공하지 않습니다.', {
+                        title: '현재 위치 정보',
+                        typeClass: 'type2'
+                    });
                 }
             };
             var obj ={
@@ -850,11 +817,11 @@
                     self.$centerPagination.pagination('update', data.listPage);
 
                     self.$stepCenter.find('.no-data').hide();
-                    self.$stepCenter.find('.center-list-wrap').show();
+                    self.$stepCenter.find('.center-result-wrap .tb_row').show();
                     self.$centerPagination.show();
                 } else {
                     self.$stepCenter.find('.no-data').show();
-                    self.$stepCenter.find('.center-list-wrap').hide();
+                    self.$stepCenter.find('.center-result-wrap .tb_row').hide();
                     self.$centerPagination.hide();
                 }
 
@@ -927,12 +894,13 @@
         },
         requestDate: function() {
             var self = this;
+            var data = self.data;
             var param = {
-                category: self.model.category,
-                subCategory: self.model.subCategory,
-                productCode: $('#productCode').val(),
-                serviceType: $('#serviceType').val(),
-                deptCode: self.param.deptCode
+                category: data.category,
+                subCategory: data.subCategory,
+                productCode: data.productCode,
+                serviceType: data.serviceType,
+                deptCode: data.deptCode
             };
 
             lgkorUI.requestAjaxDataPost(self.dateUrl, param, function(result) {
@@ -945,8 +913,8 @@
                         fastDate = dateUtil.format(data.fastDate + '' + data.fastTime + '00', 'yyyy.MM.dd hh:mm');
                     
                         self.$stepDate.find('.calendar-info .date').html(fastDate);    
-                        $('.date-wrap').calendar('update', data.dateList);
-                        self.dateParam = result.param;
+                        self.$dateWrap.calendar('update', data.dateList);
+                        self.data = $.extend(self.data, result.param);
 
                         self.$stepDate.addClass('active');
                     }
@@ -966,50 +934,49 @@
         },
         requestTime: function() {
             var self = this;
+            var data = self.data;
             var param = {
-                category: self.model.category,
-                subCategory: self.model.subCategory,
-                productCode: $('#productCode').val(),
-                serviceType: $('#serviceType').val(),
-                date: $('#date').val(),
-                lockUserId: $('#lockUserId').val(),
-                deptCode: self.param.deptCode
+                category: data.category,
+                subCategory: data.subCategory,
+                productCode: data.productCode,
+                serviceType: data.serviceType,
+                deptCode: data.deptCode,
+                lockUserId: data.lockUserId,
+                date: data.date                
             };
 
-            lgkorUI.requestAjaxDataPost(self.timeUrl, param, function(result) {
-                    var data = result.data;
+            lgkorUI.requestAjaxData(self.timeUrl, param, function(result) {
+                var data = result.data;
 
-                    if (data.resultFlag == 'Y') {
-                        $('.time-wrap').timeCalendar('update', data.timeList);
-                        $('.time-wrap').find('.box-desc').hide();
-                        $('.time-wrap').find('.box-table').show();
-                    } else {
-                        if (data.resultMessage) {
-                            if (data.tAlert == 'Y') {
-                                self.$stepDate.removeClass('active');
-                                self.$completeBtns.hide();
-                            }
-                            
-                            lgkorUI.alert("", {
-                                title: data.resultMessage
-                            });
+                if (data.resultFlag == 'Y') {
+                    self.$timeWrap.timeCalendar('update', data.timeList);
+                    self.$timeWrap.find('.box-desc').hide();
+                    self.$timeWrap.find('.box-table').show();
+                } else {
+                    if (data.resultMessage) {
+                        if (data.tAlert == 'Y') {
+                            self.$stepDate.removeClass('active');
+                            self.$completeBtns.hide();
                         }
+                        
+                        lgkorUI.alert("", { title: data.resultMessage });
                     }
-                });
+                }
+            }, 'POST');
         },
         reqestEngineer: function() {
             var self = this;
-            var param = {
-                serviceType: $('#serviceType').val(),
-                category: $('#category').val(),
-                subCategory: $('#subCategory').val(),
-                productCode: $('#productCode').val(),
-                lockUserId: $('#lockUserId').val(),
-                productCode: $('#productCode').val(),
-                date: $('#date').val(),
-                time: $('#time').val(),
-                deptCode: self.param.deptCode
-            }
+            var data = self.data,
+                param = {
+                    category: data.category,
+                    subCategory: data.subCategory,
+                    productCode: data.productCode,
+                    serviceType: data.serviceType,
+                    deptCode: self.data.deptCode,
+                    lockUserId: data.lockUserId,
+                    date: data.date,
+                    time: data.time      
+                };
 
             lgkorUI.requestAjaxDataPost(self.engineerUrl, param, function(result) {
                 var data = result.data,
@@ -1053,7 +1020,7 @@
             $('#centerNm').val(data.centerName);
             $('#centerCode').val(data.centerCode);
 
-            self.dateParam['resrvSeq'] = data.resrvSeq;
+            self.data['resrvSeq'] = data.resrvSeq;
         },
         requestComplete: function() {
             var self = this;
@@ -1061,7 +1028,7 @@
             var url = self.$submitForm.data('ajax');
             var formData = validation.getAllValues();
 
-            formData = $.extend(formData, self.dateParam);
+            formData = $.extend(formData, self.data);
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(url, formData, function(result) {

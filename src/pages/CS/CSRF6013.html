@@ -16,7 +16,8 @@
                 'pageDesc': 'LG전자 가전 제품 관련한 유용한 생활의 TIP을 알려드립니다.'
             })
             <div class="contents support product-tips">
-                <div class="cont-wrap narrow">
+                <!-- 2021.02.02 narrow 삭제 -->
+                <div class="cont-wrap">
 
                     <div class="board-view-wrap">
                         <!-- 201211 : 게시물 아이디 값 추가 -->
@@ -65,19 +66,21 @@
                                         <div class="view-content-img">
                                             <img src="/lg5-common/images/dummy/@img-board-view.jpg" alt="">
                                         </div>
-                                        <p class="view-content-title">드럼 / 일반형 세탁기의 올바른 세탁 방법</p>
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "bulletTxt" : [
-                                                "수건은 따로 모아서 세탁하세요.",
-                                                "흰 옷은 색깔 옷과 분리하여 세탁하세요.",
-                                                "세제는 적당량을 세제통에 넣어주세요.",
-                                                "흰 옷은 색깔 옷과 분리하여 세탁하세요.",
-                                                "물세탁이 가능한 의료인지 확인하세요.",
-                                                "의류에 달린 금속은 제거하고 지퍼나 후크는 잠근 후 뒤집어서 세탁하세요.",
-                                                "베개/쿠션/방석 등은 내용물을 제거하고 커버만 세탁하세요.",
-                                                "부피가 크고, 가벼운 (털잠바, 솜옷, 솜이불 등) 세탁물은 망에 넣은 후 완전히 물에 잠기게 한 후에 세탁해주세요."
-                                            ]
-                                        })
+                                        <!-- 2021.02.02 btn-wrap 마크업 변경 -->
+                                        <p class="view-content-title"><strong>드럼 / 일반형 세탁기의 올바른 세탁 방법</strong></p>
+                                        <div class="view-content-text">
+                                            <p>- 털 스웨터, 니트 등 보푸라기가 많이 발생하는 옷은 뒤집어서 세탁하거나 분리해서 세탁하세요.</p>
+                                            <p>- 수건은 따로 모아서 세탁하세요.</p>
+                                            <p>- 흰 옷은 색깔 옷과 분리하여 세탁하세요.</p>
+                                            <p>- 속옷, 얇은 옷은 ‘안심’코스를, 청바지, 점퍼는 물살을 ‘강(강력물살)’으로 선택하여 세탁하세요.</p>
+                                            <p>- 세제는 적당량을 세제통에 넣어주세요.</p>
+                                            <p>- 물세탁이 가능한 의료인지 확인하세요.</p>
+                                            <p>- 부분 얼룩은 반드시 세탁 전에 손질하세요.</p>
+                                            <p>- 의류에 달린 금속은 제거하고 지퍼나 후크는 잠근 후 뒤집어서 세탁하세요.</p>
+                                            <p>- 베개/쿠션/방석 등은 내용물을 제거하고 커버만 세탁하세요.</p>
+                                            <p>- 부피가 크고, 가벼운 (털잠바, 솜옷, 솜이불 등) 세탁물은 망에 넣은 후 완전히 물에 잠기게 한 후에 세탁해주세요.</p>
+                                        </div>
+                                        <!-- 2021.02.02 btn-wrap 마크업 변경 -->
                                     </div>
                                 </div>
                                 <div class="survey-content" data-ajax="/lg5-common/data-ajax/support/survey.json">
