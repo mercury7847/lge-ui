@@ -45,24 +45,22 @@
                 <div class="cont-wrap">
                     <form action="/html/CS/CSTF6031.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/visitCenter/visitCenter-complete.json" novalidate>
                         <div class="step-area">
-                            <input type="hidden" name="categoryNm" id="categoryNm" value="">
-                            <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="">
                             <input type="hidden" name="category" id="category" value="">
+                            <input type="hidden" name="categoryNm" id="categoryNm" value="">
                             <input type="hidden" name="subCategory" id="subCategory" value="">
+                            <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="">
                             <input type="hidden" name="modelCode" id="modelCode" value="">
                             <input type="hidden" name="productCode" id="productCode" value="">
                             <input type="hidden" name="engineerNm" id="engineerNm" value="">
                             <input type="hidden" name="engineerCode" id="engineerCode" value="">
                             <input type="hidden" name="centerNm" id="centerNm" value="">
                             <input type="hidden" name="centerCode" id="centerCode" value="">
-                            <input type="hidden" name="shopID" id="shopID" value="">
-                            <input type="hidden" name="solutionsFlag" id="solutionsFlag" value="">
-                            <input type="hidden" name="deptCode" id="deptCode" value="">
+                            <input type="hidden" name="seq" id="seq" value="">
                             <input type="hidden" name="route" id="route" value="">
                             <input type="hidden" name="acptNo" id="acptNo" value="">
-                            <input type="hidden" name="serviceType" id="serviceType" value="A">
-                            <input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
-                            <input type="hidden" name="pageCode" id="pageCode" value="pageCode">
+                            <input type="hidden" name="serviceType" id="serviceType" value="B">
+                            <input type="hidden" name="lockUserId" id="lockUserId" value="113851867205">
+                            <input type="hidden" name="pageCode" id="pageCode" value="B00055">
 
                             <!-- 약관 동의 -->
                             <div class="step-box active" id="stepTerms">
@@ -272,7 +270,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="center-list-wrap">
+                                    <div class="center-result-wrap">
                                         <div class="tb_row tb-row-bl">
                                             <table>
                                                 <colgroup>
@@ -313,12 +311,12 @@
                                                 <p class="err-msg"></p>
                                             </div>
                                         </div>
-                                    </div>
-                                    @@include('./common/support/pagination.html', {
-                                        'count': 5
-                                    })
-                                    <div class="no-data" style="display:none">
-                                        <p>검색 결과가 없습니다.</p>
+                                        @@include('./common/support/pagination.html', {
+                                            'count': 5
+                                        })
+                                        <div class="no-data" style="display:none">
+                                            <p>검색 결과가 없습니다.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

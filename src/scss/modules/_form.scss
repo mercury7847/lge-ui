@@ -511,7 +511,7 @@
                 width: 100%;
                 padding-right: 87px;
                 .box {
-                    position: initial;
+                    position: static;
                     display: table-cell;
                     width: 91px;
                 }
@@ -1120,7 +1120,7 @@
         display:inline-block;
         width:20px;
         height:20px;
-        margin:2px 4px 0 0;
+        margin:3px 4px 0 0;
         background: url("/lg5-common/images/icons/icon-error.svg") center no-repeat;
         vertical-align:top;
         @include mobile {
@@ -1456,7 +1456,7 @@ $input: (chk, rdo);
                     &::after {
                         content:' ';
                         position:absolute;
-                        top:9px;
+                        top:10px;
                         left:6px;
                         width:11px;
                         height:9px;
@@ -1925,14 +1925,14 @@ $input: (chk, rdo);
                 height: 24px;
                 border: 0;
                 border-radius: 0;
-                background: url("/lg5-common/images/icons/ic-marking-off-24.svg") no-repeat 0 0;
+                background: url("/lg5-common/images/icons/icon-marking-off-24.svg") no-repeat 0 0;
                 background-size: 24px 24px;
                 content: '';
             }
         }
         &:checked + label {
             &:before {
-                background-image: url("/lg5-common/images/icons/ic-marking-on-24.svg");
+                background-image: url("/lg5-common/images/icons/icon-marking-on-24.svg");
             }
         }
     }
