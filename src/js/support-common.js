@@ -1036,6 +1036,8 @@ CS.MD.commonModel = function() {
 
                     self.$modelSlider.show();
                     self.$modelNoData.hide();
+
+                    self.$modelSlider.vcCarousel('resize');
                 } else {
                     self.$modelSlider.hide();
                     self.$modelNoData.find('.word').html(self.param.keyword);
