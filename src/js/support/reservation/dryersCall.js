@@ -1,6 +1,7 @@
 (function() {
     var validation;
     var authManager;
+    var termsValidation;
 
     var reservation = {
         init: function() {
@@ -80,26 +81,16 @@
             };
             vcui.require(['ui/validation'], function () {
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
-
+                termsValidation = new vcui.ui.CsValidation('#stepTerms', {
+                    register: {
+                        privcyCheck: { msgTarget: '.err-block' }
+                    }
+                });
                 if (!self.isLogin) authManager = new AuthManager(authOptions);
 
                 $('#route').val(lgkorUI.isMobile() ? 'WWW2' : 'WWWW1');
 
                 self.bindEvent();
-            });
-
-            $('#stepTerms .btn-next').click(function() {
-                if ($('#privcyCheck').is(':checked') == true) {
-                    $('.step-box').removeClass('active');
-                    $('#stepInput').addClass('active');
-                    $('.btn-group').show();
-                } else {
-                    //개인정보 수집 및 이용에 대한 동의 유효성 체크
-                    termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
-                        privcyCheck: { msgTarget: '.err-block' }
-                    }});
-                    termsValidation.validate();
-                }
             });
         },
         requestComplete: function() {
@@ -128,6 +119,18 @@
         
         bindEvent: function() {
             var self = this;
+
+            $('#stepTerms .btn-next').click(function() {
+                var result;
+                
+                //개인정보 수집 및 이용에 대한 동의 유효성 체크
+                result = termsValidation.validate();
+                if (result.success) {
+                    $('.step-box').removeClass('active');
+                    $('#stepInput').addClass('active');
+                    $('.btn-group').show();    
+                }
+            });
 
             // 신청 완료
             self.$completeBtns.find('.btn-confirm').on('click', function() {
