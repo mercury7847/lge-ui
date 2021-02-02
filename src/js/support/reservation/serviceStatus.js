@@ -360,7 +360,7 @@
                 self.el.popup.on('modalhide', function() {
                     self.el.date.calendar('reset');
                     self.el.time.timeCalendar('reset');
-                    self.el.selectedEngineer.hide();
+                    self.el.stepEngineer.removeClass('active');
                 }).on('click', '.btn-group .btn-confirm', function() {
                     var result = self.validation.validate();
                     if( result.success == true) {
