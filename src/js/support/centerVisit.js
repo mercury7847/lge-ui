@@ -229,7 +229,7 @@
                     selected = $.extend(selected, {
                         seq: sval
                     });
-                    self.$cont.trigger('complete', [selected, $('.prod-search-wrap').data('resultUrl'), true]);
+                    self.$cont.trigger('complete', [selected, self.centerUrl, true]);
                 }
 
                 self.$engineerSlider.vcCarousel({
