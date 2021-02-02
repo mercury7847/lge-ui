@@ -17,6 +17,7 @@
         margin-top:2px;
         padding-left:11px;
         // font-weight:500;
+        word-break: keep-all;
         @include mobile {
             margin-top:0;
         }
