@@ -216,7 +216,7 @@
                 self.$contentsSearch = $('div.contents.search');
                 //탭
                 self.$tab = self.$contentsSearch.find('.ui_tab').vcTab();
-                self.tabInstance = self.$tab.vcTab('instance');
+                
                 //input-keyword
                 self.$inputKeyword = self.$contentsSearch.find('div.input-keyword:eq(0)');
                 //검색어 입력input
@@ -503,6 +503,7 @@
                 } else {
                     $tab_li.hide();
                 }
+                self.$tab.vcSmoothScroll('update');
             },
 
             //검색어 입력중 검색
