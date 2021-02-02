@@ -11,7 +11,7 @@
         }
     }
     @include mobile {
-        margin-bottom:40px;
+        margin-bottom:60px;
         padding:32px 12px;
     }
     > .tit {
@@ -41,7 +41,7 @@
     }
     .form-wrap {
         max-width:912px;
-        margin:16px auto 0;
+        margin:24px auto 0;
         .forms {
             .tit {
                 width:117px;
@@ -58,6 +58,9 @@
             .forms {
                 .tit, .conts {
                     width:100%;
+                }
+                .conts {
+                    margin-top:8px;
                 }
             }
         }
