@@ -318,23 +318,20 @@
                 }
                 @include mobile {
                     margin: 4px 0 16px;
-                    li {
-                        display: inline-block;
-                        &:after {
-                            display: inline-block;
-                            width: 1px;
-                            height: 10px;
-                            margin: 0 6px;
-                            background-color: $color-border;
-                            content: '';
-                        }
-                        &:last-child:after {
-                            display: none;
-                        }
-                    }
-                    .title {
-                        display: none;
-                    }
+                    //li {
+                    //    display: inline-block;
+                    //    &:after {
+                    //        display: inline-block;
+                    //        width: 1px;
+                    //        height: 10px;
+                    //        margin: 0 6px;
+                    //        background-color: $color-border;
+                    //        content: '';
+                    //    }
+                    //    &:last-child:after {
+                    //        display: none;
+                    //    }
+                    //}
                 }
             }
             .spec-info2 {
