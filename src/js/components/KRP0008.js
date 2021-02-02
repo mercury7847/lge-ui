@@ -32,6 +32,8 @@
                 self.isDragging = false;
 
                 self.setting();
+                self.popUpDataSetting();
+
                 if(self.$component.data('consumables')) {
                     vcui.require(['ui/pagination'], function () {
                         self.prepare();
@@ -43,7 +45,17 @@
 
             prepare: function() {
                 var self = this;
-                self.popUpDataSetting();
+
+                if(!Array.indexOf){
+                    Array.prototype.indexOf = function(obj){
+                        for(var i=0; i<this.length; i++){
+                            if(this[i]==obj){
+                                return i;
+                            }
+                        }
+                        return -1;
+                    }
+                };
 
                 self.bindProductEvents();
                 self.bindPopupEvents();
@@ -495,17 +507,32 @@
                 });
 
                 //렌탈 가격 정보
-                /*
                 var rentalPriceData = {};
+                
                 rentalInfo.forEach(function(item, index) {
-                    var rtRgstFeePre = rentalPriceData[item.rtRgstFeePre];
-                    if(!rtRgstFeePre) {
-                        rtRgstFeePre = [];
-                    } else {
+                    //가입비
+                    var rtRgstFeePre = ("" + item.rtRgstFeePre);
+                    //의무사용 기간
+                    var dutyTerm = item.dutyTerm;
+                    //방문
+                    var visitPer = item.visitPer;
+
+                    var dataByFee = rentalPriceData[rtRgstFeePre];
+                    if(!dataByFee) {
+                        dataByFee = {};
                     }
 
+                    var dataByDuty = dataByFee[dutyTerm];
+                    if(!dataByDuty) {
+                        dataByDuty = [];
+                    }
+                    dataByDuty.push(item);
+
+                    dataByFee[dutyTerm] = dataByDuty;
+                    rentalPriceData[rtRgstFeePre] = dataByFee;
                 });
-                */
+
+                console.log(rentalPriceData);
             },
 
             //팝업 버튼 이벤트
