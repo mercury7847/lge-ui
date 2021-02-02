@@ -356,9 +356,8 @@
     /* 비디오 가이드 */
     &.video-guide {
         .search-wrap{
-            max-width:912px + 40px;
+            max-width:912px;
             margin:0 auto 48px;
-            padding:0 40px;
             .title {
                 margin-bottom:16px;
                 text-align:center;
@@ -457,7 +456,7 @@
                     }
                 }
                 @include mobile {
-                    margin-bottom:12px;
+                    margin-bottom:40px;
                     padding:0 16px;
                 }
             }
@@ -502,13 +501,44 @@
                     }
                 }
             }
+            .search-no-result {
+                .no-data {
+                    > p {
+                        color: #767676;
+                        &::before {
+                            content: '';
+                            display: block;
+                            margin: 0 auto 18px;
+                            width: 56px;
+                            height: 56px;
+                            background: url(/lg5-common/images/icons/icon-nodata.svg) no-repeat center;
+                            background-size: 100%;
+                        }
+                    }
+                    border: none;
+                    padding: 140px 0;
+                }
+                @include mobile {
+                    .no-data {
+                        padding: 40px 0;
+                        p {
+                            font-size: 14px;
+                            &::before {
+                                margin-bottom: 16px;
+                                width: 60px;
+                                height: 60px;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     /* 카드뉴스 */
     &.card-news {   
         .card-news-view {
             .card-news-tit {
-                margin-bottom:48px;
+                margin-bottom:64px;
                 padding:24px 40px;
                 @include font-medium;
                 border-radius:8px;
@@ -520,8 +550,10 @@
             .view-content-title {
                 margin-bottom: 16px;
                 color: #000;
-                @include font-large;
+                font-size: 24px;
                 font-weight: $font-weight-bold;
+                word-break: keep-all;
+                line-height: 1.4;
             }
             .view-content-text {
                 font-size:16px;
@@ -529,14 +561,15 @@
             }
             .view-content-img {
                 overflow:hidden;
-                margin-bottom: 106px;
+                margin-bottom: 108px;
                 border-radius:8px;
                 img {
                     width:100%;
                 }
             }
             .btn-wrap {
-                margin-top:32px;
+                margin-top:24px;
+                margin-bottom:24px;
             }
             .slide-wrap {
                 overflow:visible;
@@ -560,6 +593,9 @@
                         top:calc(101.3vw - 240px);
                     }
                 }
+                .slide-box {
+                    text-align: center;
+                }
             }
             @include mobile {
                 .sub-tit {
@@ -568,10 +604,11 @@
                 }
                 .view-content-title {
                     margin-bottom:12px;
+                    font-size: 20px;
                 }
                 .view-content-text {
-                    font-size:13px;
-                    line-height:21px;
+                    font-size:14px;
+                    line-height:1.57;
                 }
                 .view-content-img {
                     margin-bottom:70px;
@@ -589,14 +626,26 @@
                         }
                     }
                     .indi-wrap {
-                        top:calc(100.5vw - 32px);
+                        top:97.77777777777777vw;
                     }
                 }
+                .btn-group {
+                    margin-top: 40px;
+                }
             }
+        }
+        .pagination {
+            margin-top: 36px;
         }
         @include mobile {
             .result-wrap {
                 padding:0 16px;
+            }
+            .pagination {
+                margin-top: 35px;
+            }
+            .btn-group {
+                margin-top: 40px;
             }
         }
     }

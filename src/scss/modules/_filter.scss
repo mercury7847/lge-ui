@@ -667,9 +667,11 @@
                     margin-top:12px;
                 }
                 .rdo-cell {
+                    display:flex;
                     margin:0 -5px 0 2px;
                     .rdo-wrap {
-                        width:calc(100% / 4);
+                        // width:calc(100% / 4);
+                        width:100%;
                         margin-left:-1px;
                         // margin-left:6px;
                         input + label {
