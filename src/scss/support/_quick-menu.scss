@@ -145,7 +145,7 @@
             left:0;
             bottom:100%;
             > li {
-                margin-bottom:-72px;
+                margin-bottom:-56px;
                 transition:margin ease 0.5s;
                 a {
                     opacity:0;
@@ -198,7 +198,7 @@
         @include mobile {
             &-list {
                 > li {
-                    margin-bottom:-54px;
+                    margin-bottom:-56px;
                 }
             }
             &.on {
