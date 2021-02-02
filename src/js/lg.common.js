@@ -160,6 +160,7 @@
                     {
                         breakpoint: 768,
                         settings: {
+                            variableWidth: true,
                             slidesToScroll: 1,
                             slidesToShow: 1
                         }
