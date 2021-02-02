@@ -919,7 +919,7 @@ var FilterLayer = (function() {
                         self.setCompares();
                     });
 
-                    self.setPageData(param.pagination);
+                    self.setPageData(data.pagination);
                 });
             },
 
