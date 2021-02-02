@@ -863,7 +863,7 @@ var FilterLayer = (function() {
                 data.categoryId = categoryId;                
                 console.log("### requestSearch ###", data)
                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
-                    var data = result.data;
+                    var data = result.data[0];
                     var param = result.param;
 
                     if(data.schCategoryId && data.schCategoryId.length > 0) {
@@ -873,7 +873,7 @@ var FilterLayer = (function() {
                         });
                     }
                     
-                    var totalCount = data.totalCount;
+                    var totalCount = data.productTotalCount;
                     if(totalCount) {
                         self.$totalCount.text(vcui.number.addComma(totalCount) + "개");
                     }
@@ -882,7 +882,7 @@ var FilterLayer = (function() {
                         self.$productList.empty();
                     }
 
-                    var arr = (data.listData && data.listData instanceof Array) ? data.listData : [];
+                    var arr = (data.productList && data.productList instanceof Array) ? data.productList : [];
 
                     arr.forEach(function(item, index) {
 
