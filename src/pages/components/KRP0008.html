@@ -6,9 +6,15 @@
     })
 <body>
     <script>
+        // 로그인 유무
+        var loginFlag = true;
+
         // 제품 가격
         var productPirce = 175001;
 
+        //사전예약 제품
+        var preOrderFlag = true;
+        
         //케어십 필수 제품 체크
         var careRequire = true;
 
@@ -49,7 +55,7 @@
 
             <div class="component-wrap full">
                 <!-- component KRP0008 -->
-                <section class="component KRP0008" aria-label="{category명} product detail">
+                <section class="component KRP0008" aria-label="{category명} product detail" data-additional="false">
 
                     <div class="pdp-wrap">
                         <!-- component -->
@@ -459,10 +465,10 @@
                     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
                 </article>
 
-                <!-- 케어쉽 필수 상품 안내 -->
-                <article id="careRequirePopup" class="popup-wrap small">
+                <!-- 구매신청 케어쉽 필수 상품 안내 -->
+                <article id="careRequireBuyPopup" class="popup-wrap small">
                     <header class="pop-header">
-                        <h1 class="tit" id="modal_19_title"><span>제품 구매 안내</span></h1>
+                        <h1 class="tit"><span>제품 구매 안내</span></h1>
                     </header>
                     <section class="pop-conts" id="modal_19_content">
                         <div class="layer-careship">
@@ -483,16 +489,46 @@
                     </section>
                     <footer class="pop-footer center" ui-modules="Footer">
                         <div class="btn-group">
+                            <button type="button" class="btn ui_modal_close" data-link-url="#청약신청화면주소"><span>확인</span></button>
+                        </div>
+                    </footer>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
+
+                <!-- 케어쉽 필수 상품 안내 (static)-->
+                <article id="careRequirePopup" class="popup-wrap small" data-link-url="#청약신청화면주소">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>제품 구매 안내</span></h1>
+                    </header>
+                    <section class="pop-conts" id="modal_19_content">
+                        <div class="layer-careship">
+                            <div class="process-info">
+                                <div class="info-box">
+                                    <p>선택하신 제품은 케어십이 필요한 제품입니다.</p>
+                                    <!-- <ul class="process-list">
+                                        <li><span>케어십 신청</span></li>
+                                        <li><span>제품주문</span></li>
+                                        <li><span>완료</span></li>
+                                    </ul> -->
+                                </div>
+                                <ul class="bullet-list">
+                                    <li class="b-txt">케어십은 친절한 케어매니저가 주기적으로 방문하여 관리해드립니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <footer class="pop-footer center" ui-modules="Footer">
+                        <div class="btn-group">
                             <button type="button" class="btn ui_modal_close"><span>확인</span></button>
                         </div>
                     </footer>
                     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
                 </article>
 
-                <!-- 케어쉽 필수 상품 안내 -->
+                <!-- 수질관리 케어쉽 필수 상품 안내(static) -->
                 <article id="waterCareRequirePopup" class="popup-wrap small">
                     <header class="pop-header">
-                        <h1 class="tit" id="modal_16_title"><span>구매 안내</span></h1>
+                        <h1 class="tit"><span>구매 안내</span></h1>
                     </header>
                     <section class="pop-conts" id="modal_16_content">
                         <div class="layer-careship">
@@ -500,6 +536,57 @@
                                 <div class="info-box">
                                     <p>정수기, 정수기형 냉장고 제품은 정수 수질과 관련된 제품으로  케이십신청이 필수 선택입니다.</p>
                                 </div>
+                            </div>
+                        </div>
+                    </section>
+                    <footer class="pop-footer center" ui-modules="Footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn ui_modal_close"><span>확인</span></button>
+                        </div>
+                    </footer>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
+
+                <!-- 회원 구매 안내(로그인 하기)(static) -->
+                <article id="loginPopup" class="popup-wrap small">
+                    <header class="pop-header">
+                        <h1 class="tit" id="modal_16_title"><span>회원 구매 안내</span></h1>
+                    </header>
+                    <section class="pop-conts" id="modal_16_content">
+                        <div class="layer-careship">
+                            <div class="process-info">
+                                <div class="info-box">
+                                    <p>사전예약 제품으로 구매를 위해서는 LG전자 통합 로그인이 필요합니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <footer class="pop-footer center" ui-modules="Footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn ui_modal_close" data-link-url="#로그인주소"><span>로그인 확인</span></button>
+                        </div>
+                    </footer>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
+
+                <!-- 사전 예약 제품 구매 안내 (static) -->
+                <article id="preOrderPopup" class="popup-wrap small">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>사전 예약 제품 안내</span></h1>
+                    </header>
+                    <section class="pop-conts" id="modal_19_content">
+                        <div class="layer-pre-order">
+                            <div class="process-info">
+                                <div class="info-box">
+                                    <p>선택하신 제품은 사전 예약 제품입니다.</p>
+                                    <ul class="process-list">
+                                        <li><span>사전예약 선결제</span></li>
+                                        <li><span>입고 및 배송 시작 안내</span></li>
+                                    </ul>
+                                </div>
+                                <ul class="bullet-list">
+                                    <li class="b-txt">사전예약 제품은 선결제 후 제품이 입고되는 시점에 배송일정이 결정됩니다.</li>
+                                </ul>
                             </div>
                         </div>
                     </section>
