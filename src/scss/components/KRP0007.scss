@@ -209,11 +209,22 @@
                 position:static;
                 height:auto;
                 padding:0;
+                @include mobile {
+                    position:fixed;
+                    height:75px;
+                    padding:0 16px;
+                }
                 .tit {
                     padding:0 0 12px;
                     font-size:14px;
                     font-weight:700;
                     line-height:24px;
+                    @include mobile {
+                        padding-top:24px;
+                        font-size:18px;
+                        font-weight:700;
+                        line-height:27px;
+                    }
                 }
             }
             .plp-filter-wrap {
