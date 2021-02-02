@@ -4,10 +4,7 @@
     "message": null,
     "data": {
         "success": "Y",
-        "userAdress": {
-            "cityValue": "서울",
-            "boroughValue": "강남구"
-        },
+        "userAdress": "서울 마포구 연남동 358-1",
         "location":"",
         "alert":{
             "title": "등록된 주소 정보가 없습니다.",

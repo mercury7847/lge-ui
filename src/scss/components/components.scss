@@ -484,10 +484,13 @@
         @include mobile {
             padding:0 16px;
         }
-        .text-wrap {
-            sup {
-                font-size:initial !important;
-            }
+    }
+    .text-wrap,
+    .title,
+    .sub-title,
+    .head {
+        sup {
+            font-size:initial !important;
         }
     }
 
