@@ -190,6 +190,23 @@
             }
 
             return isMobile;
+        },
+        searchParamsToObject: function(key) {
+            var params = location.search.substr(location.search.indexOf("?") + 1);
+            var temp, valueObject = {};
+
+            params = params.split("&");
+            
+            for (var i = 0; i < params.length; i++) {
+                temp = params[i].split("=");
+                valueObject[temp[0]] = temp[1];
+            }
+
+            if (key) {
+                return valueObject[key] || null;
+            } else {
+                return valueObject;
+            }
         }
     }
 
@@ -1238,7 +1255,7 @@ CS.MD.calendar = function() {
                     self.$input.val(format);
                 }
 
-                self.$el.trigger('dateselected');
+                self.$el.trigger('dateselected', [format]);
             })
 
             self._renderHeader();
@@ -1594,7 +1611,7 @@ CS.MD.timeCalendar = function() {
 
                 if (self.options.inputTarget) self.$input.val(time);
 
-                self.$el.trigger('timeselected');
+                self.$el.trigger('timeselected', [time]);
             });
             
             self._renderTime();
