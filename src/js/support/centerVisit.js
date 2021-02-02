@@ -261,26 +261,21 @@
 
             // 모델 선택 후 이벤트
             self.$cont.on('complete', function(e, data) {    
-                var url, param = {},
+                var param = {},
                     data = self.data = $.extend({}, self.data, data);
                 
                 if (data.seq) {
-                    url = self.centerUrl;
                     param = {
                         seq: data.seq,
                         page: 1
-                    }
+                    };
+
+                    self.requestCenterData(param, self.centerUrl);
                 } else {
-                    url = self.resultUrl;
-                    param = {
-                        category: data.category,
-                        subCategory: data.subCategory,
-                        modelCode: data.modelCode,
-                        page:1
-                    }
+                    self.$stepCenter.find('.no-data').show();
+                    self.$stepCenter.find('.center-result-wrap .tb_row').hide();
+                    self.$centerPagination.hide();
                 }
-                
-                self.requestCenterData(param, url);
 
                 self.$myProductWrap.hide();
                 self.$cont.commonModel('updateSummary', {
@@ -566,6 +561,7 @@
                 case 'local':
                 case 'current':
                 case 'road':
+                case 'user':
                     keywords = {
                         latitude:self.latitude,
                         longitude:self.longitude
@@ -576,12 +572,6 @@
                         latitude:self.latitude,
                         longitude:self.longitude,
                         searchKeyword: self.$address1.val()
-                    };
-                    break;
-                case 'user':
-                    keywords = {
-                        searchCity: self.userCityName,
-                        searchBorough: self.userBoroughName
                     };
                     break;
                 case 'subway':
@@ -675,12 +665,14 @@
                 var data = result.data;
 
                 if(lgkorUI.stringToBool(data.success)){
-                    self.userCityName = data.userAdress.cityValue;
-                    self.userBoroughName = data.userAdress.boroughValue;
+                    var callback = function() {
+                        self.requestCenterData()
+                    };
+
                     self.searchResultMode = true;
                     self.schReaultTmplID = "localSearch";
 
-                    self.requestCenterData();
+                    self.searchAddressToCoordinate(data.userAdress, callback);
                 } else{
                     if(data.location && data.location != ""){
                         location.href = data.location;
@@ -825,11 +817,11 @@
                     self.$centerPagination.pagination('update', data.listPage);
 
                     self.$stepCenter.find('.no-data').hide();
-                    self.$stepCenter.find('.center-list-wrap').show();
+                    self.$stepCenter.find('.center-result-wrap .tb_row').show();
                     self.$centerPagination.show();
                 } else {
                     self.$stepCenter.find('.no-data').show();
-                    self.$stepCenter.find('.center-list-wrap').hide();
+                    self.$stepCenter.find('.center-result-wrap .tb_row').hide();
                     self.$centerPagination.hide();
                 }
 

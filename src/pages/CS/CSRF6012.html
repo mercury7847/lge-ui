@@ -16,7 +16,8 @@
                 'pageDesc': 'LG전자 가전 제품 관련한 유용한 생활의 TIP을 알려드립니다.'
             })
             <div class="contents support product-tips">
-                <div class="cont-wrap narrow">
+                <!-- 2021.02.02 narrow 삭제 -->
+                <div class="cont-wrap">
 
                     <div class="result-wrap" data-ajax="/lg5-common/data-ajax/support/productTipList.json">
                         <div class="sorting-wrap">
@@ -31,7 +32,8 @@
                             </div>
                         </div>
                         <div class="card-list-wrap">
-                            <ul class="card-list">
+                            <!-- 2020.02.02 클래스 추가 : type-tips -->
+                            <ul class="card-list type-tips">
                                 @@for (var i = 0; i < 12; i++) {
                                 <li>
                                     <a href="#" class="item">
