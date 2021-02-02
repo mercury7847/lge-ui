@@ -30,12 +30,16 @@
                             data-list-url="/lg5-common/data-ajax/mypage/store/myStoreList.json"
                             data-bookmark-url="/lg5-common/data-ajax/mypage/store/bookmarkStore.json"
                         >
-                            <div class="my-contract-info gray-box">
+                            <div class="my-contract-info">
+                                <!-- 210202 수정 -->
                                 <p class="tit">이케어 고객님의 단골매장은 총 <em>00</em>개 입니다.</p>
+                                <p class="desc">자주가는 매장을 단골매장으로 등록해 보세요.</p>
                                 <div class="btn-area">
-                                    <a href="#" class="btn-link"><span>매장 추가 등록하러 가기</span></a>
+                                    <a href="#" class="btn border size-m"><span>매장 추가 등록</span></a>
                                 </div>
+                                <!-- //210202 수정 -->
                             </div>
+                            <!-- 210202 수정 -->
                             <div class="list-wrap">
                                 @@include('./common/modules/bookmark-store-list.html', {
                                     "item" : [
@@ -43,20 +47,24 @@
                                             id : "sid00001",
                                             head : "강남본점 BESTSHOP",
                                             title : "서울특별시 강남구 청담동 86-1 LG 청담빌딩 LG BEST SHOP",
-                                            number : "02-3448-5191"
+                                            number : "02-3448-5191",
+                                            detail : "상세보기"
                                         },{
                                             id : "sid00002",
                                             head : "개봉점 BESTSHOP",
                                             title : "서울특별시 구로구 개봉동 144-5 미서빌딩 LG BEST SHOP",
-                                            number : "02-3448-5191"
+                                            number : "02-3448-5191",
+                                            detail : "상세보기"
                                         },{
                                             id : "sid00003",
                                             head : "매장명 매장분류",
                                             title : "[칭찬합니다] 타이틀 최대 1줄, 초과 시 말줄임 처리 타이틀 최대 1줄, 초과 시 말줄임 처리 타이틀 최대 1줄, 초과 시 말줄임 처리 타이틀 최대 1줄, 초과 시 말줄임 처리",
-                                            number : "(N)NN-NNNN-NNNN"
+                                            number : "(N)NN-NNNN-NNNN",
+                                            detail : "상세보기"
                                         }
                                     ]
                                 })
+                            <!-- //210202 수정 -->
                                 <div class="no-data">
                                     <p>검색결과가 없습니다.</p>
                                 </div>
