@@ -10,6 +10,9 @@
         @include mobile {
             padding:32px 16px 40px;
         }
+        &.type2 {
+            padding-bottom: 24px;
+        }
         .title {
             @include font-large-2;
             font-weight:700;
@@ -101,7 +104,7 @@
         }
 
         .step-wrap {
-            margin-top: 24px;
+            margin-top: 12px;
             .steps {
                 font-size: 0;
                 li {
@@ -111,12 +114,13 @@
                     color: $color-gray-4;
                     &:not(:last-child):after {
                         display: inline-block;
-                        width: 24px;
-                        height: 24px;
-                        margin: 0 16px;
-                        background: url('/lg5-common/images/icons/btn-arrow_right_24.svg') no-repeat 0 0;
-                        vertical-align: top;
+                        width: 16px;
+                        height: 16px;
+                        margin: 0 14px;
+                        background: url('/lg5-common/images/icons/btn-down-16-black.svg') no-repeat 0 0;
+                        vertical-align: -3px;
                         opacity: .385;
+                        transform: rotate(-90deg);
                         content: '';
                         @include mobile {
                             width: 16px;
