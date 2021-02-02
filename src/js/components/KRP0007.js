@@ -573,7 +573,7 @@ var FilterLayer = (function() {
                 '</div>' +
             '</div>' +
         '</div>' +
-        '<div class="product-contents">' +
+        '<div class="product-contents" data-sibling-url="{{siblingAjaxUrl}}">' +
             '{{#if siblings}}'+
                 '{{#each sibling in siblings}}'+
                 '<div class="product-option ui_smooth_scrolltab {{sibling.siblingType}}">' +
@@ -807,6 +807,11 @@ var FilterLayer = (function() {
                     self.setCompareState(e.currentTarget);
                 });
 
+                //sibling
+                self.$productList.on('change', '.product-option input[type=radio]', function(e){
+                    self.sendSelectSibling(this);
+                })
+
                 //모바일 카테고리 풀다운메뉴
                 self.$cateFulldown.on('click', function(e){
                     e.preventDefault();
@@ -842,6 +847,15 @@ var FilterLayer = (function() {
                         self.requestSearch(param, false);
                     }
                 });
+            },
+
+            sendSelectSibling: function(rdo){
+                var self = this;
+
+                var ajaxurl = $(rdo).closest('.product-contents').data('siblingUrl');
+                var sendata = {
+                    
+                }
             },
 
             setPageData: function(param) {
