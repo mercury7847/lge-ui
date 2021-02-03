@@ -43,6 +43,9 @@
             @include font-large-1;
             word-break:keep-all;
         }
+        + .cont-wrap {
+            padding-top: 8px;
+        }
         @include mobile {
             padding:16px;
             background-image:url(/lg5-common/images/CS/bg-login-guide-m.jpg);
@@ -223,13 +226,14 @@
                                 width: auto;
                                 height: auto;
                                 font-size: 14px;
-                                color: #767676;
-                                line-height: 1;
+                                color: #000;
+                                line-height: 1.63;
                                 transform: translateY(-50%);
                                 margin-top: 0;
-                                padding-right: 22px;
-                                background: url(/lg5-common/images/icons/btn-more-20-gray.svg) no-repeat right center;
-                                background-size: 20px;
+                                padding-left: 20px;
+                                background: url(/lg5-common/images/icons/btn-more-20-gray.svg) no-repeat left center;
+                                background-size: 16px;
+                                text-decoration: underline;
                             }
                         }
                     }
@@ -238,8 +242,7 @@
                             .accord-btn {
                                 &::after {
                                     content: '닫기';
-                                    color: #ec455a;
-                                    background: url(/lg5-common/images/icons/btn-minus-20.svg) no-repeat right center;
+                                    background-image: url(/lg5-common/images/icons/btn-close-24.svg);
                                 }
                             }
                         }
@@ -334,6 +337,11 @@
         max-width: 1380px + 80px;
         margin: 0 auto 32px;
         padding:0 40px;
+        >ul {
+            >.lists {
+                margin-top: 0;
+            }
+        }
         @include mobile {
             margin: 0 0 24px;
             padding:0 16px;
@@ -710,6 +718,7 @@
                 background: url(/lg5-common/images/icons/icon-error.svg) no-repeat left center;
             }
             ul { 
+                margin-top:0;
                 li{
                     font-size: 14px;
                     line-height: 1.63;
