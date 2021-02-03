@@ -459,18 +459,18 @@
                             // self.$productList.find('.ui_plp_carousel').vcCarousel('reinit').on("carousellazyloadrrror", function(e, data){
                             //     console.log(e, data)
                             // });
-                            self.$productList.find('.ui_plp_carousel').vcCarousel({
-                                indicatorNoSeparator:/##no##/,
-                                infinite:true, 
-                                autoplaySpeed:500, 
-                                speed:0, 
-                                easing:'easeInOutQuad'
-                            }).on("carousellazyloadrrror", function(e, carousel, imgs){
-                                imgs.attr('src', lgkorUI.NO_IMAGE);
-                            });
-                            self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
+                            // self.$productList.find('.ui_plp_carousel').vcCarousel({
+                            //     indicatorNoSeparator:/##no##/,
+                            //     infinite:true, 
+                            //     autoplaySpeed:500, 
+                            //     speed:0, 
+                            //     easing:'easeInOutQuad'
+                            // }).on("carousellazyloadrrror", function(e, carousel, imgs){
+                            //     imgs.attr('src', lgkorUI.NO_IMAGE);
+                            // });
+                            // self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
     
-                            self.fnBreakPoint();
+                            // self.fnBreakPoint();
                             self.setCompares();
                         });
     
