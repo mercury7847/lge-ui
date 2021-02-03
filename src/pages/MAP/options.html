@@ -128,13 +128,13 @@
                 $id.css("z-index", cnt).stop().animate({'bottom':'-60px'}, 200, function(){
                     $("html").css("overflow-y","scroll");
                     $(beforeFocusEleToast).focus();
-                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                    //if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         if(timesetIdx != null && timesetIdx != "" && timesetIdx != undefined){
                             if(events){
                                 $(".time-setting .inner div").eq(timesetIdx).find("label:not([class*=rst-time])").attr("tabindex", 0).focus().trigger("click");
                             }
                         }
-                    }
+                    //}
                     $(this).remove();
                 });
             }
