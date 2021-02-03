@@ -188,17 +188,11 @@
                 }
             }
         }
-        .login-guide {
-            margin-bottom:40px;
-        }
         .search-info {
             margin-bottom:15px;
         }
 
         @include mobile {
-            .login-guide {
-                margin-bottom:32px;
-            }
             .search-info {
                 margin-bottom:15px;
             }

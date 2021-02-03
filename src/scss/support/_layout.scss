@@ -3,9 +3,7 @@
 .container {
     .cont-wrap {
         padding-top:0;
-        & ~ .cont-wrap {
-            padding-top:80px;
-        }
+        
         .section {
             margin-top:0;
 
@@ -54,13 +52,20 @@
             }
         }
     }
+
+    *:not([style*="display: none"]) + .cont-wrap {
+        padding-top:70px;
+
+        .form-infos {
+            &.first-type {
+                margin-top:-62px;
+            }
+        }
+    }
     
     
     @include mobile {
         .cont-wrap {
-            & ~ .cont-wrap {
-                padding-top:0;
-            }
             .section {
                 padding:0 16px;
                 border:0;
@@ -85,6 +90,15 @@
                 }
                 .tabs-wrap .tabs {
                     padding:0;
+                }
+            }
+        }
+        *:not([style*="display: none"]) + .cont-wrap {
+            padding-top:55px;
+    
+            .form-infos {
+                &.first-type {
+                    margin-top:-47px;
                 }
             }
         }
