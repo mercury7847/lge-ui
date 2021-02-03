@@ -126,8 +126,6 @@
                     $paymentAmount.data('quantity',item.value);
                 });
 
-
-
                 self.$pdpInfoAdditionalPurchase = self.$pdpInfo.find('.additional-purchase');
                 self.$pdpInfoCareshipService = self.$pdpInfo.find('.careship-service');
                 self.$pdpInfoCareSiblingOption = self.$pdpInfo.find('.care-sibling-option');
@@ -136,7 +134,6 @@
                 self.rentalInfoData = null;
                 if(typeof rentalInfo !== 'undefined' && rentalInfo.length > 0) {
                     var rentalPriceData = {};
-                    console.log('asdasd');
                     rentalInfo.forEach(function(item, index) {
                         //가입비
                         var rtRgstFeePre = ("" + item.rtRgstFeePre);
@@ -162,8 +159,6 @@
                     self.rentalInfoData = rentalPriceData;
                 }
 
-                console.log(self.rentalInfoData);
-                
                 //렌탈 케어솔루션 계약기간
                 self.$caresolutionRentalInfoSelectBox = self.$pdpInfoCareSiblingOption.find('div.info-accordion-wrap .ui_selectbox');
                 if(self.rentalInfoData && self.$caresolutionRentalInfoSelectBox.length > 0) {
@@ -180,6 +175,7 @@
                         firstKey = Object.keys(dutyTermData)[0];
                         var visitPerData = dutyTermData[firstKey]
                         if(visitPerData) {
+                            self.updateRentalInfoPrice(visitPerData[0]);
                             self.rentalInfoSelectBoxUpdate(2,visitPerData,0,true);
                         }
                     }
@@ -643,7 +639,7 @@
 
             //렌탈 케어솔루션 계약기간 선택에 따른 가격정보 변경
             updateRentalInfoPrice: function(selectRentalInfoData) {
-                console.log('???',selectRentalInfoData);
+                //console.log('change',selectRentalInfoData)
                 var self = this;
                 //월 이용요금
                 var $priceInfo = self.$pdpInfoCareSiblingOption.find('dl.price-info span.price');
@@ -674,7 +670,6 @@
             //구매진행
             productBuy: function($dm) {
                 var $paymentAmount = $dm.parents('.payment-amount')
-                console.log($paymentAmount);
                     var param = {};
                     //소모품이 있는가
                     var $additionalPurchase = $paymentAmount.siblings('.additional-purchase');

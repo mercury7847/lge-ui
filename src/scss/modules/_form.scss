@@ -46,9 +46,9 @@
     .txt-cont {
         color:#767676;
         @include font-small;
-        font-weight:500;
         .dl-txt-cont {
-            margin-top:20px;
+            margin-top:64px;
+            margin-top:24px;
             color: $color-default;
             @include mobile {
                 margin-top:40px;
@@ -57,9 +57,13 @@
                 margin-top:0;
             }
             dt {
-                margin-bottom:8px;
+                margin-bottom:16px;
                 @include font-medium;
                 font-weight:700;
+                @include mobile {
+                    margin-bottom:12px;
+                    margin-bottom: 12px;
+                }
             }
             dd {
                 @include font-medium;
@@ -72,7 +76,7 @@
     }
 }
 .form-infos {
-    margin-bottom:40px;
+    margin-bottom:48px;
     @include mobile {
         margin-bottom:32px;
     }
@@ -98,6 +102,9 @@
     }
     .chk-wrap {
         margin-top: 12px;
+        @include mobile {
+            margin-top: 6px;
+        }
     }
 }
 .form-wrap {
@@ -118,7 +125,7 @@
         &.type2 + .forms.type2 {
             margin-top:48px;
             @include mobile {
-                margin-top:24px;
+                margin-top:40px;
             }
         }
         &.type4 + .forms.type4 {
@@ -410,7 +417,7 @@
             }
             @include pc {
                 .select-list-wrap {
-                    li:first-child {
+                    > ul > li:first-child {
                         padding-left:0;
                     }
                 }
@@ -565,26 +572,26 @@
                 vertical-align:top;
             }
             > .input-wrap {
-                width:140px;
+                width:210px;
                 @include mobile {
-                    width:44%;
+                    width:50%;
                 }
             }
             .cell {
-                &::before {
-                    content:'-';
-                    display:inline-block;
-                    margin:11px 8px;
-                    @include font-medium;
-                }
+                //&::before {
+                //    content:'-';
+                //    display:inline-block;
+                //    margin:11px 8px;
+                //    @include font-medium;
+                //}
                 &::after {
                     content:'······';
                     display:inline-block;
-                    margin-left:3px;
+                    margin-left:5px;
                     color:#000;
                     font-size:40px;
                     line-height:48px;
-                    letter-spacing:-3px;
+                    letter-spacing:3px;
                     vertical-align:top;
                 }
                 .input-wrap {
@@ -981,19 +988,19 @@
         position:relative;
         .box {
             .cell {
-                background-color:#fff !important;
+                //background-color:#fff !important;
                 vertical-align: middle;
             }
         }
-        input,
-        input:read-only {
-            border-color:#ddd;
-            background:transparent
-        }
+        //input,
+        //input:read-only {
+        //    border-color:#ededed;
+        //    background:#ededed
+        //}
         input:read-only + .cell,
         input:disabled + .cell {
-            border-color:#ddd !important;
-            background:transparent !important;
+            border-color:#ededed;
+            background:#ededed;
         }
         button.ui_calendar {
             display:inline-block;
@@ -1004,9 +1011,17 @@
             background-size:24px;
             vertical-align:middle;
         }
-        input.selected + .cell button.ui_calendar {
-            background:url("/lg5-common/images/icons/icon-cal-selected.svg") center no-repeat;
-            background-size:24px;
+        input.selected {
+            border-color:#ddd;
+            background:transparent;
+            & + .cell {
+                border-color:#ddd;
+                background:transparent;
+                button.ui_calendar {
+                    background:url("/lg5-common/images/icons/icon-cal-selected.svg") center no-repeat;
+                    background-size:24px;
+                }
+            }
         }
     }
     &.search {
@@ -1740,7 +1755,7 @@ $input: (chk, rdo);
         //    display: flex;
         //    flex-wrap: wrap;
         }
-        li {
+        > li {
             display:inline-block;
             width:25%;
             margin-top:32px;
@@ -1768,6 +1783,34 @@ $input: (chk, rdo);
         //        width: auto;
         //    }
         //}
+    }
+
+    &.payment-method {
+        > ul {
+            margin-top: -20px;
+            > li {
+                margin-top: 20px;
+                padding-left: 0;
+            }
+        }
+        .tab-panel {
+            margin-top: 16px;
+            border-radius: 8px;
+            background-color: $color-bg;
+        }
+        @include mobile {
+            > ul {
+                margin-top: -16px;
+                margin-left: 0;
+                > li {
+                    margin-top: 16px;
+                    padding-left: 0;
+                }
+            }
+            .tab-panel {
+                padding: 24px 20px;
+            }
+        }
     }
 }
 

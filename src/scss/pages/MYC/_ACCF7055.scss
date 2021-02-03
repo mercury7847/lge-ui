@@ -7,12 +7,19 @@
 	}
 }
 
+.desc-box {
+	padding:24px 20px;
+	border-radius:8px;
+	background-color:#f4f4f4;
+	text-align:center;
+}
+
 .cancel-date-wrap {
 	font-size: 0;
 	.cencel-calender-area {
 		display: inline-block;
 		width: 79.6%;
-		max-width: 795px;
+		max-width: 100%;
 		vertical-align: top;
 		font-size:0;
 		@include mobile {
@@ -22,36 +29,38 @@
 			display: inline-block;
 			vertical-align: top;
 			&.bx-calendar {
-				width: 372px;
+				width: 392px;
 				@include mobile {
 					width: 100%;
 				}
 			}
 			&.bx-timetable {
-				width: 416px;
+				width: 472px;
 				@include mobile {
 					width: 100%;
 				}
 			}
 
 			&.bx-calendar {
-				padding-right: 12px;
+				margin-right:24px;
+				// padding-right: 24px;
 				@include mobile {
 					margin-top: 32px;
 					padding: 0;
 				}
 			}
 			&.bx-timetable {
-				padding-left: 12px;
+				// padding-left: 12px;
 				@include mobile {
 					margin-top: 40px;
 					padding: 0;
 				}
 			}
 			.tit-area {
-				margin-bottom: 12px;
+				margin-bottom: 16px;
 				@include font-small;
 				font-weight: 700;
+				text-align:left;
 				.date {
 					margin-left: 8px;
 					color: $color-primary;
@@ -94,7 +103,7 @@
 		.info {
 			font-size: 0;
 			li {
-				display: inline-block;
+				// display: inline-block;
 				@include font-small;
 				span {
 					display: inline-block;
@@ -117,9 +126,9 @@
 				}
 			}
 			li + li {
-				margin-left: 40px;
+				margin-top:4px;
 				@include mobile {
-					margin-left: 20px;
+					
 				}
 			}
 		}
@@ -138,7 +147,7 @@
 		box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
 		font-size: 0;
 		&.calendar-wrap {
-			padding: 20px 32px 24px;
+			padding: 36px 48px 57px;
 			@include mobile {
 				padding: 16px 34px 20px;
 			}
@@ -166,7 +175,7 @@
 			} 
 		} 
 		&.timetable-wrap {
-			padding: 33px 32px;
+			padding: 26px 32px;
 			@include mobile {
 				padding: 24px 16px;
 			}
@@ -194,7 +203,7 @@
 		thead th,
 		tbody th,    
 		tbody td {    
-			@include font-small;
+			@include font-medium;
 			text-align: center;
 			&.sun {
 				color: $color-primary;
@@ -213,11 +222,11 @@
 			&.disabled {
 				cursor: default;
 				button {
-					color: #ccc;
+					color: #bbb;
 				}
 			}
 			button:disabled {
-				color: #ccc;
+				color: #bbb;
 				cursor: default;
 			}
 			&.expected {
@@ -238,7 +247,7 @@
 		&.tb-calendar {
 			th,
 			td {
-				padding: 3px 0;
+				padding: 6px 0;
 				text-align: center;
 				@include mobile {
 					padding: 0;
@@ -253,13 +262,13 @@
 		 &.tb-timetable {
 			th,
 			td {
-				padding: 2px 0;
+				padding: 7px 0;
 				text-align: center;
 				@include mobile {
 					padding: 0;
 				}
 				button {
-					width: 44px;
+					width: 51px;
 					height: 28px;
 					border-radius: 18px;
 					line-height: 28px;
@@ -269,6 +278,9 @@
 						line-height: 26px;
 					} 
 				}
+			}
+			th {
+				text-align:left;
 			}
 			th.choice {
 				color: $color-primary;
