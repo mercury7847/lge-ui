@@ -216,6 +216,8 @@
                     autoplaySpeed:500, 
                     speed:0, 
                     easing:'easeInOutQuad'
+                }).on("carousellazyloadrrror", function(e, data){
+                    console.log("carousellazyloadrrror:", data)
                 });
 
                 self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
@@ -396,6 +398,7 @@
                 data.categoryId = categoryId;                
                 console.log("### requestSearch ###", data)
                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
+                    console.log("### requestSearch onComplete ###");
                     var data = result.data[0];
 
                     if(data.schCategoryId && data.schCategoryId.length > 0) {
@@ -451,7 +454,18 @@
                             if(!item.detailUrl) item.detailUrl = "#n";
                             self.$productList.append(vcui.template(productItemTemplate, item));
     
-                            self.$productList.find('.ui_plp_carousel').vcCarousel('reinit');
+                            // self.$productList.find('.ui_plp_carousel').vcCarousel('reinit').on("carousellazyloadrrror", function(e, data){
+                            //     console.log(e, data)
+                            // });
+                            self.$productList.find('.ui_plp_carousel').vcCarousel({
+                                indicatorNoSeparator:/##no##/,
+                                infinite:true, 
+                                autoplaySpeed:500, 
+                                speed:0, 
+                                easing:'easeInOutQuad'
+                            }).on("carousellazyloadrrror", function(e, carousel, imgs){
+                                imgs.attr('src', lgkorUI.NO_IMAGE);
+                            });
                             self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
     
                             self.fnBreakPoint();

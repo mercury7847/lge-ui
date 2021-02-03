@@ -238,6 +238,7 @@
         CAREPLANER_PRICE: "putitem_price",
         MOBILE_CHECK_WIDTH: 768,
         STICKY_MODULES:[],
+        NO_IMAGE: "/lg5-common/images/icons/noimage.svg",
         init: function(){
             this._addImgOnloadEvent();
             this._preloadComponents();
@@ -248,18 +249,20 @@
         _addImgOnloadEvent: function(){
             $('img').not('[data-pc-src]').on('error', function(e){
                 $(this).off('error');
-                $(this).attr('src', '/lg5-common/images/icons/noimage.svg');
+                $(this).attr('src', self.NO_IMAGE);
                 $(this).css({
-                    width:'100%'
+                    width:'100%',
+                    height:"100%"
                 });
             });
         },
 
         addImgErrorEvent: function(img){
             img.onerror = null;
-            $(img).attr('src', '/lg5-common/images/icons/noimage.svg');
+            $(img).attr('src', self.NO_IMAGE);
             $(this).css({
-                width:'100%'
+                width:'100%',
+                height:"100%"
             });
         },
 
