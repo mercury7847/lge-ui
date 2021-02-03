@@ -8,7 +8,7 @@ $(window).ready(function(){
         '<dl><a href="{{url}}"><dt>{{title}}</dt><dd>{{#if price}}{{price}}원{{/if}}</dd></a></dl>' +
     '</li>'
 
-    var myRecentProductCookieName = 'myRecentProductTemp';
+    var myRecentProductCookieName = 'myRecentProduct';
 	var KRP0032 = {
 		init: function(){
 			var self = this;

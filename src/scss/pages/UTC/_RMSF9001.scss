@@ -243,11 +243,11 @@
 
 .card-benefit-box {
     position: relative;
-    margin: 28px -137px 40px 0;
-    padding: 24px 40px 24px 133px;
+    margin: 40px -157px 64px 0;
+    padding: 30px 24px 30px 128px;
     border-radius: 8px;
-    background: $color-bg url('/lg5-common/images/UTC/icon-card.svg') no-repeat 40px center;
-    background-size: 77px 50px;
+    background: $color-bg url('/lg5-common/images/icons/icon-img03-64.svg') no-repeat 40px center;
+    background-size: 64px 64px;
     .text {
         display: inline-block;
         font-weight: 700;
@@ -259,9 +259,8 @@
     }
     .btn-link {
         position: absolute;
-        top: 50%;
-        right: 47px;
-        transform: translateY(-50%);
+        bottom: 30px;
+        right: 24px;
     }
 
     @media screen and (max-width: 1284px) {
@@ -269,7 +268,7 @@
     }
     @include mobile {
         position: relative;
-        margin: 0 0 24px;
+        margin: 24px 0 40px;
         padding: 16px 16px 16px 105px;
         background-position: 16px 16px;
         .text {
