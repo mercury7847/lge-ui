@@ -975,6 +975,7 @@
                         transform:translateX(0);
                     }
                     &:last-child .text {
+                        left:auto;
                         right:0;
                         transform:translateX(0);
                     }

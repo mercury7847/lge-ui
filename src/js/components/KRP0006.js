@@ -2,7 +2,7 @@
     $(window).ready(function(){
         if(!document.querySelector('.KRP0006')) return false;
         
-        var myRecentProductCookieName = 'myRecentProductTemp';
+        var myRecentProductCookieName = 'myRecentProduct';
 
         var KRP0006 = {
             init: function() {
@@ -61,7 +61,7 @@
                     var $item = $(item);
                     var _type = $item.attr('data-type');
 
-                    if(_type == "top") {
+                    if(_type == "r-top") {
                         //상단 영역
                         var check = lgkorUI.stringToBool(data.ResponseUITop.success);
                         if(check) {
@@ -76,7 +76,7 @@
                                 self.reloadComponent($item, data.productCurationProposal);
                             }
                         }
-                    } else if(_type == "bottom") {
+                    } else if(_type == "r-bottom") {
                         //하단영역
                         var check = lgkorUI.stringToBool(data.categoryBestProduct.success);
                         if(data.storeConsultation) {
