@@ -136,13 +136,13 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
             if(!self.map) return;
 
             naver.maps.Event.addListener(self.map, 'zoom_changed', function() {                  
-                if(self.searchMode) return;
+                // if(self.searchMode) return;
 
-                self._changeMarkersState();             
+                // self._changeMarkersState();             
             });
 
             naver.maps.Event.addListener(self.map, 'dragend', function() {
-                self._changeMarkersState();
+                // self._changeMarkersState();
             });               
         },  
 
@@ -276,13 +276,13 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
             var self = this;
             console.log("#### _changeMarkersState ###")
             if(!self.map) return;
-
-            var showItems = self._setItemVisible();
+            var items = self.itemArr;
+            // var showItems = self._setItemVisible();
             
-            var arr = self._getNumberInArea(showItems);
-
-            self._setItemInfo(arr);
-            self.triggerHandler('mapchanged', [arr]);   
+            // var arr = self._getNumberInArea(showItems);
+            console.log(items)
+            self._setItemInfo(items);
+            self.triggerHandler('mapchanged', [items]);   
         },
 
         _setMapBounds: function(){
@@ -443,12 +443,11 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
             var self = this;
 
             var centerPoint;
-            self.itemArr = vcui.array.map(self.itemArr, function(item, index){
+            vcui.array.map(self.itemArr, function(item, index){
                 var selected = item.id == id ? true : false;
                 item.info.selected = selected;        
                 
                 if(selected) centerPoint = {x: item.info.gpsInfo.gpsx, y: item.info.gpsInfo.gpsy}
-                return item;
             });
 
             self._changeMarkersState();
