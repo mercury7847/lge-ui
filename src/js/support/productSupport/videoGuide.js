@@ -32,8 +32,6 @@
                 productCode: $('#productCode').val(),
                 page: 1
             };
-            self.isDefault = self.param.subCategory ? true : false;
-
             self.$cont = $('.contents');
             self.$productBar = self.$cont.find('.prod-selected-wrap');
             self.$myProductWarp = self.$cont.find('.my-product-wrap');
@@ -55,25 +53,23 @@
             self.$resultPagination = self.$resultWrap.find('.pagination');
             self.$noData = self.$resultWrap.find('.no-data');
 
-            self.$cont.commonModel();
+            self.bindEvent();
+
+            self.$cont.commonModel({
+                selected: self.param
+            });
             self.$resultPagination.pagination();
             self.$searchTopic.vcSelectTarget({
                 addParam: '.contents input[type=hidden]'
             });
 
             self.$keywordWrap.search({
-                    
+                template: {
+                    autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="#{{item.url}}" title="새창 열림" target="_blank"><div class="list-head"><strong class="list-category">{{item.subCategory}}</strong><span class="list-sub-category">{{item.subTopic}}</span></div><div class="list-desc">{{item.contTitle}}</div></a></li>{{/each}}</ul>',
+                    recentlyList: '<li><a href="#">{{keyword}}</a><button type="button" class="btn-delete"><span class="blind">삭제</span></button></li>',
+                    keywordList: '<li><a href="#">{{keyword}}</a></li>'
+                }
             });
-
-            self.bindEvent();
-            self.setting();
-        },
-        setting: function() {
-            var self = this;
-
-            if (self.isDefault) {
-                self.$cont.commonModel('complete');
-            }
         },
         drawTopicList: function(data) {
             var self = this;
@@ -83,32 +79,47 @@
             self.$searchTopic.append(html).prop('disabled', false);
             self.$searchTopic.vcSelectbox('update');
         },
-        drawList: function(data) {
+        drawList: function(result) {
             var self = this;
             var $result, html='';
+                data = result.data,
+                param = result.param,    
+                popular = data.popular;
 
-            for (var key in data) {
-                if (key == 'popular' || key == 'newest') {
-                    $result = data[key].type == 'popular' ? self.$resultPopular : self.$resultNewest;
-                    data[key].listData.forEach(function(item) {
-                        html += vcui.template(listDataTmpl, item);
-                    });
+            if (popular.listData.length) {
+                for (var key in data) {
+                    if (key == 'popular' || key == 'newest') {
+                        $result = data[key].type == 'popular' ? self.$resultPopular : self.$resultNewest;
+                        data[key].listData.forEach(function(item) {
+                            html += vcui.template(listDataTmpl, item);
+                        });
 
-                    $result.find('.video-list').html(html);
-                    $result.find('.pagination').pagination('update', data[key].listPage);
-                    $result.find('.count').html(data[key].listPage.totalCount);   
-                    html = '';
+                        $result.find('.video-list').html(html);
+                        $result.find('.pagination').pagination('update', data[key].listPage);
+                        $result.find('.count').html(data[key].listPage.totalCount);   
+                        html = '';
+                    }
                 }
+
+                self.drawSummary(param);
+                self.$noData.hide();
+            } else {
+                self.$resultCont.hide();
+                self.$resultCont.find('.video-list').empty();
+                self.$resultSummary.hide();
+                self.$noData.show();
             }
         },
         drawSummary: function(data) {
             var self = this;
 
-            if (data.keyword) {
-                self.$resultSummary.find('.keyword').html(data.keyword);
-                self.$resultSummary.show();
-            } else {
-                self.$resultSummary.hide();
+            if (data) {
+                if (data.keyword) {
+                    self.$resultSummary.find('.keyword').html(data.keyword);
+                    self.$resultSummary.show();
+                } else {
+                    self.$resultSummary.hide();
+                }
             }
         },
         setPopularKeyword: function(data) {
@@ -121,21 +132,7 @@
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxData(url, self.param, function(result) {
-                var data = result.data,
-                    param = result.param,
-                    popular = data.popular;
-
-                if (popular.listData.length) {
-                    self.drawList(data);
-                    self.drawSummary(param);
-                    self.$noData.hide();
-                } else {
-                    self.$resultCont.hide();
-                    self.$resultCont.find('.video-list').empty();
-                    self.$resultSummary.hide();
-                    self.$noData.show();
-                }
-
+                self.drawList(result);
                 lgkorUI.hideLoading();
             }, 'POST', 'json', false);
         },
@@ -144,31 +141,28 @@
 
             self.$cont.on('complete', function(e, data, url) {
                 var param = {
-                    modelCode: data.modelCode,
                     category: data.category,
-                    subCategory: data.subCategory
+                    subCategory: data.subCategory,
+                    modelCode: data.modelCode
                 };
                 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var resultData = result.data;
                     
+                    self.drawList(result);
                     self.drawTopicList(resultData);
                     self.setPopularKeyword(resultData);
 
-                    if (!self.isDefault) {
-                        self.$myProductWarp.hide();
-                        self.$cont.commonModel('updateSummary', {
-                            product: [data.categoryName, data.subCategoryName, data.modelCode],
-                            reset: true
-                        });
-                        self.$cont.commonModel('next', self.$stepInput);
-                        self.$cont.commonModel('focus', self.$productBar, function() {
-                            self.$productBar.vcSticky();
-                        });
-                    } else {
+                    self.$myProductWarp.hide();
+                    self.$cont.commonModel('updateSummary', {
+                        product: [data.categoryName, data.subCategoryName, data.modelCode],
+                        reset: true
+                    });
+                    self.$cont.commonModel('next', self.$stepInput);
+                    self.$cont.commonModel('focus', self.$productBar, function() {
                         self.$productBar.vcSticky();
-                    }
+                    });
                     lgkorUI.hideLoading();
                 });
             });
@@ -197,12 +191,20 @@
             self.$keywordWrap.on('autocomplete', function(e, param, url, callback) {
                 var param =  $.extend(self.param, param);
                 lgkorUI.requestAjaxData(url, param, function(result) {
-                    callback(result);
+                    callback(result.data);
                 });
             });
 
-            self.$searchBtn.on('click', function() {
-                var param = { page:1, keyword: self.$searchKeyword.val() };
+            $('.search-layer').on('click', '.keyword-box a', function(e) {
+                e.preventDefault();
+                self.$searchBtn.trigger('click', [$(this).text().trim()]);      
+            });
+
+            self.$searchBtn.on('click', function(e, keyword) {
+                var param = { 
+                    page:1, 
+                    keyword: keyword || self.$searchKeyword.val() 
+                };
                 self.param = $.extend(self.param, param);
                 self.requestData();
             });
