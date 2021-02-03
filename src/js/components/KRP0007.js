@@ -405,10 +405,8 @@
                         });
                     }
                     
-                    var totalCount = parseInt(data.productTotalCount);
-                    if(totalCount) {
-                        self.$totalCount.text(vcui.number.addComma(totalCount) + "개");
-                    }
+                    var totalCount = data.productTotalCount ? data.productTotalCount : 0;
+                    self.$totalCount.text(vcui.number.addComma(totalCount) + "개");
                     
                     if(isNew) {
                         self.$productList.empty();
