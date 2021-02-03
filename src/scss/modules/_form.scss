@@ -48,7 +48,7 @@
         @include font-small;
         font-weight:500;
         .dl-txt-cont {
-            margin-top:20px;
+            margin-top:64px;
             color: $color-default;
             @include mobile {
                 margin-top:40px;
@@ -57,9 +57,12 @@
                 margin-top:0;
             }
             dt {
-                margin-bottom:8px;
+                margin-bottom:16px;
                 @include font-medium;
                 font-weight:700;
+                @include mobile {
+                    margin-bottom:12px;
+                }
             }
             dd {
                 @include font-medium;

@@ -437,6 +437,10 @@
             input + label {
                 font-size:18px;
                 line-height:28px;
+                @include mobile {
+                    font-size:16px;
+                    line-height:26px;
+                }
             }
         }
     }
