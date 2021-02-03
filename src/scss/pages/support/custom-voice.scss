@@ -42,6 +42,9 @@
 
     // 경영진에게 제안
     &.suggestions {
+        .result-progress {
+            padding-bottom:0;
+        }
         .mymem-lists {
             font-size:0;
             display: flex;
@@ -80,6 +83,9 @@
 
     // 나의 글 보기
     &.my-status {
+        .result-progress {
+            padding-bottom:0;
+        }
         .my-status-info {
             margin:0 -6px 64px;
             & > ul {
@@ -180,6 +186,21 @@
                 @include pc {
                     display:none;
                 }
+            }
+        }
+        .login-guide {
+            margin-bottom:40px;
+        }
+        .search-info {
+            margin-bottom:15px;
+        }
+
+        @include mobile {
+            .login-guide {
+                margin-bottom:32px;
+            }
+            .search-info {
+                margin-bottom:15px;
             }
         }
     }
