@@ -5,7 +5,7 @@
     .page-header {
         max-width:1380px + 80px;
         margin:0 auto;
-        padding:24px 40px 80px;
+        padding:24px 40px 64px;
         text-align:center;
         @include mobile {
             padding:32px 16px 40px;
@@ -27,12 +27,15 @@
             }
         }
         .btn-desc {
-            margin-top:21px;
+            margin-top:24px;
             font-size:0;
             /* display: flex;
             justify-content: center; */
             .btn {
                 margin:0 4px;
+            }
+            @include mobile {
+                margin-top: 18px;
             }
         }
         .link-desc {
@@ -141,7 +144,7 @@
         }
         
         .progress-wrap {
-            margin-top:24px;
+            margin-top:36px;
             margin-left: auto;
             margin-right: auto;
             max-width: 673px;
@@ -212,9 +215,11 @@
             }
             @include mobile {
                 width:100%;
+                margin-top: 32px;
                 ol {
                     flex-wrap:wrap;
                     li {
+                        padding: 0 6px;
                         &:before {
                             width:24px;
                             height:24px;
@@ -343,16 +348,16 @@
             }
             .tit-wrap {
                 position:relative;
-                margin-bottom:40px;
+                margin-bottom:48px;
                 &.margin-sm {
                     margin-bottom:16px;
                 }
                 .tit {
-                    padding-bottom:12px;
+                    padding-bottom:16px;
                     color:#000;
-                    font-size:22px;
+                    font-size:32px;
                     font-weight:700;
-                    line-height:32px;
+                    line-height:1.63;
                     border-bottom:2px solid #222;
                     .point {
                         color:#ec455a;
@@ -615,8 +620,8 @@
     margin:0;
     padding:80px 0;
     // padding:140px 0;
-    border-top:1px solid #666;
-    border-bottom:1px solid #ddd;
+    // border-top:1px solid #666;
+    // border-bottom:1px solid #ddd;
     background-color: #fff;
     text-align:center;
     &.mg-type {

@@ -21,7 +21,7 @@
         }
         .description {
             width:calc(100% - 210px);
-            padding-left:24px;
+            color: #000;
             @include font-medium;
             .point {
                 color:#ec455a;
@@ -74,7 +74,7 @@
                     content: '';
                     width: 3px;
                     height: 3px;
-                    background-color: #222;
+                    background-color: #666;
                     position: absolute;
                     top: 10px;
                     left: 0;
@@ -167,7 +167,7 @@
         dt {
             font-size: 16px;
             color: #000;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
     }
     @include mobile {

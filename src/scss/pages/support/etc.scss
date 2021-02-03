@@ -19,6 +19,9 @@
             border-bottom:2px solid #222;
         }
     }
+    .bullet-list {
+        color:#747474;
+    }
     .btn-download {
         display: inline-block;
         margin-top:4px;
@@ -107,6 +110,11 @@
             }
         }
     }
+    .login-guide + .cont-wrap {
+        .appgate-title {
+            margin-top:40px;
+        }
+    }
     &-title {
         margin-bottom:12px;
         .tit {
@@ -156,6 +164,8 @@
             }
         }
         .appgate-img {
+            width:263.5px;
+            margin:0 auto;
             img {
                 width:100%;
             }
@@ -168,6 +178,8 @@
             }
         }
     }
+
+    
 
     .service-list-box {
         display:flex;
@@ -255,6 +267,7 @@
     }
 
     &-banner {
+        margin-top:60px;
         border-top:12px solid #f4f4f4;
         @include pc {
             margin-top:80px;
@@ -262,6 +275,14 @@
         }
         img {
             width:100%;
+        }
+    }
+
+    @include mobile {
+        .login-guide + .cont-wrap {
+            .appgate-title {
+                margin-top:20px;
+            }
         }
     }
 }

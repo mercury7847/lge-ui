@@ -180,6 +180,7 @@
                     .filter-link {
                         display:inline-block;
                         @include font-medium;
+                        text-align:left;
                         vertical-align:top;
                     }
                     .sub-depth {

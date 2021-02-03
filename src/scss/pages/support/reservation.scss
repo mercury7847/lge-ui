@@ -572,89 +572,7 @@
                 }
             }
         }
-        .result-progress {
-            max-width:1380px + 80px;
-            margin:0 auto;
-            padding:64px 40px 0;
-            &:first-child {
-                padding-top:0;
-            }
-            .desc{
-                margin-bottom:24px;
-                @include font-medium;
-                font-weight:700;
-            }
-            .progress-box {
-                position:relative;
-                &:after {
-                    content:'';
-                    position:absolute;
-                    left:0%;
-                    top:6px;
-                    width:100%;
-                    height:12px;
-                    background:#f4f4f4;
-                }
-                .progressing {
-                    position:absolute;
-                    z-index:1;
-                    left:0%;
-                    top:6px;
-                    width:0;
-                    height:12px;
-                    border-radius:16px;
-                    background:#ec455a;
-                }
-                .progressbar {
-                    display:flex;
-                    justify-content:space-between;
-                    padding-bottom:30px;
-                    li {
-                        position:relative;
-                        text-align:center;
-                        &:before {
-                            content: '';
-                            display:inline-block;
-                            width:24px;
-                            height:24px;
-                            background-color:#aaa;
-                            border-radius: 50%;
-                            position: relative;
-                            z-index:2;
-                        }
-                        .text {
-                            display:none;
-                            position:absolute;
-                            left:50%;
-                            bottom:-30px;
-                            white-space:nowrap;
-                            transform:translateX(-50%);
-                            @include font-medium;
-                        }
-                        &:first-child .text {
-                            left:0;
-                            transform:translateX(0);
-                        }
-                        &:last-child .text {
-                            right:0;
-                            transform:translateX(0);
-                        }
-                        &.on {
-                            &:before{
-                                border:1px solid #ddd;
-                                box-shadow:2px 4px 8px 0 rgba(0, 0, 0, 0.14);
-                                background: url(/lg5-common/images/icons/icon-process-complete.svg) no-repeat center #fff;
-                            }
-                        }
-                        &.current {
-                            .text {
-                                display:block;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+
         @include pc {
             .result-btn-group {
                 .group-box {
@@ -714,30 +632,6 @@
                         display: inline-flex;
                         align-items: center;
                         justify-content: center;
-                    }
-                }
-            }
-
-            .result-progress {
-                padding:60px 16px;
-                .progress-box {
-                    &:after {
-                        height:8px;
-                    }
-                    .progressing {
-                        height:8px;
-                    }
-                    .progressbar {
-                        padding-bottom:28px;
-                        li {
-                            &:before {
-                                width:20px;
-                                height:20px;
-                            }
-                            .text {
-                                bottom:-28px;
-                            }
-                        }
                     }
                 }
             }

@@ -116,7 +116,7 @@
         },
         recentlySearch: {
             cookieName: 'LG_SupportSearch',
-            maxNum: 3,
+            maxNum: 10,
             expire: 30,
             addCookie: function(value) {
                 var self = this;
@@ -533,6 +533,7 @@ CS.MD.commonModel = function() {
             self.$keywordBox = self.$searchArea.find('.keyword-box');
             self.$keywordInput = self.$keywordBox.find('input[type=text]');
             self.$keywordButton = self.$keywordBox.find('.btn-search');
+            self.$keywordError = self.$keywordBox.find('.search-error');
 
             // 검색 영역 : 카테고리 > 서브카테고리
             self.$categoryBox = self.$searchArea.find('.category-box');
@@ -645,6 +646,9 @@ CS.MD.commonModel = function() {
                         });
 
                         self._requestData();
+                        self.$keywordError.hide();
+                    } else {
+                        self.$keywordError.show();
                     }
                 } else {
                     if (value.length > 1 || !value) {
@@ -653,25 +657,31 @@ CS.MD.commonModel = function() {
                             keyword: value,
                             page: 1
                         });
-                        
+                        self.$keywordError.hide();
                         self._requestData();
+                    } else {
+                        self.$keywordError.show();
                     }
                 }
             });
 
             self.$keywordButton.on('click', function() {
                 var opt = self.options;
-                
-                if (result.success) {
+                var value = self.$keywordInput.val().toUpperCase();
+
+                if (value.length > 1 || !value) {
                     self.param = $.extend(self.param, {
-                        keyword: self.$keywordInput.val().toUpperCase(),
+                        keyword: value,
                         page: 1
                     });
 
                     self._requestData();
+                    self.$keywordError.hide();
 
                     self.$categoryBox.removeClass(opt.stepActiveClass);
                     self.$modelBox.addClass(opt.stepActiveClass);
+                } else {
+                    self.$keywordError.show();
                 }
             });
 
@@ -2195,6 +2205,8 @@ $.fn.serializeObject = function() {
         if( $('#surveyPopup').length) {
             vcui.require(['ui/selectbox', 'ui/satisfactionModal']);
         }
+
+        if ($('.ui_common_scroll').length) $('.ui_common_scroll').mCustomScrollbar();
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);
