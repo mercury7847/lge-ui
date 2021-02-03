@@ -1,6 +1,5 @@
-
 (function(){
-    var productListItemTemplate = '<li class="lists" data-model-id="{{id}}" data-sku={{sku}}>' +
+    var productListItemTemplate = '<li class="lists" data-model-id="{{id}}" data-sku="{{sku}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}}">' +
         '<div class="inner">' +
             '<div class="thumb" aria-hidden="true"><img src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
             '<div class="info-wrap">' +
@@ -12,6 +11,47 @@
                 '</ul>' +
                 '<div class="btn-group"><a href="#n" class="btn border size-m"><span>제품 등록</span></a></div>' +
             '</div>' +
+        '</div>' +
+    '</li>'
+
+    var ownListItemTemplate = '<li class="lists" data-model-id="{{modelId}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}}">' +
+        '<div class="inner">' +
+            '<div class="thumb{{#if disabled}} saleend{{/if}}" aria-hidden="true">' +
+                '<img src="{{imageUrl}}" alt="{{imageAlt}}">' +
+            '</div>' +
+            '<div class="info-wrap">' +
+                '<p class="name"><span class="blind">모델명</span>{{modelName}}</p>' +
+                '<p class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</p>' +
+                '<ul class="info-lists period">' +
+                    '{{#if saleDate}}<li><dl><dt>구매일자</dt><dd>{{saleDate}}</dd></dl></li>{{/if}}' +
+                    '{{#if creationDate}}<li><dl><dt>등록일자</dt><dd>{{creationDate}}</dd></dl></li>{{/if}}' +
+                    '{{#if useDate}}<li><dl><dt>사용기간</dt><dd>{{useDate}}개월</dd></dl></li>{{/if}}' +
+                    '{{#if careState}}<li><dl><dt>케어십 서비스</dt><dd><em{{#if careService}} class="can"{{/if}}>{{careState}}</em></dd></dl></li>{{/if}}' +
+                    '{{#if nextCareServiceDate}}<li><dl><dt>다음 케어서비스 일자</dt><dd>{{nextCareServiceDate}}</dd></dl></li>{{/if}}' +
+                '</ul>' +
+                '<div class="btns">' +
+                    '{{#if manualBtn}}<button type="button" class="btn size dark-gray manual-btn"><span>사용설명서</span></button>{{/if}}' +
+                    '{{#if downloadBtn}}<button type="button" class="btn size dark-gray download-btn"><span>다운로드/SW</span></button>{{/if}}' +
+                '</div>' +
+                '<div class="btns link-type">' + 
+                    '{{#each item in linkBtn}}' +
+                        '<a href="{{item.url}}" class="btn-link">{{item.title}}</a>' +
+                    '{{/each}}' +
+                '</div>' +
+                '{{#if disabled}}<p class="product-on"><span class="blind">보유중인 제품이</span>{{#if disabledReason}}{{disabledReason}}{{#else}}단종되었습니다.{{/if}}</p>{{/if}}' +
+            '</div>' +
+            '{{#if inquryBtn}}' +
+                '<div class="btn-group">' +
+                    '{{#if inquryBtn.tooltip}}' +
+                        '<div class="notice">' +
+                            '<p>{{inquryBtn.tooltip}}</p>' +
+                            '<button type="button" class="btn-off" aria-hidden="true"><span class="blind">닫기</span></button>' +
+                        '</div>' +
+                    '{{/if}}' +
+                    '<a href="{{inquryBtn.url}}" class="btn border size-m newProdCheck-btn"><span>{{inquryBtn.title}}</span></a>' +
+                '</div>' +
+            '{{/if}}' +
+            '<button type="button" class="btn-delete"><span class="blind">보유제품 삭제</span></button>' +
         '</div>' +
     '</li>'
 
@@ -68,6 +108,7 @@
     $(window).ready(function() {
 
         var checkModelSuccess = false;
+        var checkSerialSuccess = false;
 
         var myProductRegistration = {         
             init: function() {
@@ -78,6 +119,7 @@
                     self.bindPopupEvents();
 
                     self.requestMoreData(1);
+                    self.requestOwnData();
                 });
             },
 
@@ -137,8 +179,6 @@
                 //모델병 확인방법 팝업
                 self.$modelCheckHelpPopup = $('#modelCheckHelpPopup');
                 self.modelCheckHelpPopupClone = self.$modelCheckHelpPopup.html();
-
-                self.checkNoData();
             },
 
             bindEvents: function() {
@@ -147,14 +187,31 @@
                 //등록가능제품 등록하기
                 self.$registProductList.on('click','>ul li div.btn-group a', function(e) {
                     e.preventDefault();
-                    self.registMyProductPopupClear();
-
-                    var sku = $(this).parents('li').attr('data-sku');
-                    self.$modelInput.val(sku);
-                    checkModelSuccess = true;
-                    self.$modelCheckOk.show();
-
-                    self.$registMyProductPopup.vcModal();
+                    var $li = $(this).parents('li');
+                    var _id = $li.attr('data-model-id');
+                    var sku = $li.attr('data-sku');
+                    var ordNo = $li.attr('data-ord-no');
+                    var modelCode = $li.attr('data-model-code');
+                    var param = {
+                        "id":_id,
+                        "sku":sku,
+                        "ordNo":ordNo,
+                        "modelCode":modelCode
+                    };
+                    var ajaxUrl = self.$contents.attr('data-add-url');
+                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
+                        var item = result.data;
+                        if(item) {
+                            var $list = self.$myProductList.find('>ul');
+                            item.saleDate = vcui.date.format(item.saleDate,'yyyy.MM');
+                            item.creationDate = vcui.date.format(item.creationDate,'yyyy.MM.dd');
+                            item.nextCareServiceDate = item.nextCareServiceDate ? vcui.date.format(item.nextCareServiceDate,'yyyy.MM.dd') : null;
+                            $list.append(vcui.template(ownListItemTemplate, item));
+                            self.checkNoData();
+                            $li.remove();
+                            $(window).trigger("toastshow", "제품 등록이 완료되었습니다.");
+                        }
+                    });
                 });
 
                 //등록가능제품 더보기
@@ -174,17 +231,29 @@
                 self.$myProductList.on('click','>ul li button.btn-delete', function(e) {
                     var ajaxUrl = self.$contents.attr('data-remove-url');
                     var $this = $(this);
-                    var _id = $this.parents('li').attr('data-model-id');
-                    if(_id) {
-                        lgkorUI.requestAjaxDataPost(ajaxUrl, {"id":_id}, function(result) {
+
+                    var $li = $this.parents('li');
+                    var modelId = $li.attr('data-model-id');
+                    var ordNo = $li.attr('data-ord-no');
+                    var modelCode = $li.attr('data-model-code');
+                    var param = {
+                        "modelId":modelId,
+                        "ordNo":ordNo,
+                        "modelCode":modelCode
+                    };
+
+                    var obj = {title:'', cancelBtnName:'취소', okBtnName:'삭제', ok: function (){
+                        lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                             var data = result.data;
                             var success = lgkorUI.stringToBool(data.success);
                             if(success) {
-                                $this.parents('li').remove();
+                                $li.remove();
                                 self.checkNoData();
                             }
                         });
-                    }
+                    }};
+                    var desc = '선택하신 제품을<br>보유제품에서 삭제하시겠어요?';
+                    lgkorUI.confirm(desc, obj);
                 });
 
                 //보유제품 툴팁 닫기
@@ -256,15 +325,18 @@
                     });
                 });
 
+                self.$snInput.on('input', function(e){
+                    console.log('serial inpoyut');
+                    checkSerialSuccess = false;
+                })
+
                 //제조번호 확인
                 self.$snCheckButton.on('click', function(e){
-                    var ajaxUrl = self.$registMyProductPopup.attr('data-sn-url');
-                    lgkorUI.requestAjaxData(ajaxUrl, {"sn":self.$snInput.val()}, function(result) {
-                        var data = result.data;
-                        if(!lgkorUI.stringToBool(data.success)) {
-                            lgkorUI.alert("", {title: "해당 제조번호가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
-                        }
-                    });
+                    var serialRegex = /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/
+                    checkSerialSuccess = serialRegex.test(self.$snInput.val());
+                    if(!checkSerialSuccess) {
+                        lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
+                    }
                 });
 
                 //보유제품 등록
@@ -275,17 +347,22 @@
                         self.$registMyProductPopup.vcModal('close');
                     } else {
                         //등록
-                        if(checkModelSuccess) {
+                        if(checkModelSuccess && checkSerialSuccess) {
                             var result = self.registMyProductValidation.validate().success;
                             if(result) {
                                 var param = self.registMyProductValidation.getAllValues();
                                 var ajaxUrl = self.$registMyProductPopup.attr('data-insert-url');
                                 lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
-                                    location.reload();
+                                    self.$registMyProductPopup.vcModal('close');
+                                    self.requestOwnData();
                                 });
                             }
                         } else {
-                            lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
+                            if(!checkModelSuccess) {
+                                lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
+                            } else if(!checkSerialSuccess) {
+                                lgkorUI.alert("", {title: "제조번호(S/N)를 확인해 주세요."});
+                            }
                         }
                     }
                 });
@@ -365,6 +442,24 @@
                 });
             },
 
+            requestOwnData: function() {
+                var self = this;
+                var ajaxUrl = self.$contents.attr('data-own-list-url');
+                lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
+                    var data = result.data;
+                    var arr = data.listData instanceof Array ? data.listData : [];
+                    var $list = self.$myProductList.find('>ul');
+                    $list.empty();
+                    arr.forEach(function(item, index) {
+                        item.saleDate = vcui.date.format(item.saleDate,'yyyy.MM');
+                        item.creationDate = vcui.date.format(item.creationDate,'yyyy.MM.dd');
+                        item.nextCareServiceDate = item.nextCareServiceDate ? vcui.date.format(item.nextCareServiceDate,'yyyy.MM.dd') : null;
+                        $list.append(vcui.template(ownListItemTemplate, item));
+                    });
+                    self.checkNoData();
+                });
+            },
+
             requestMoreData: function(page) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-list-url');
@@ -378,6 +473,7 @@
                         item.date = vcui.date.format(item.date,'yyyy.MM');
                         $list.append(vcui.template(productListItemTemplate, item));
                     });
+                    self.checkNoData();
                 });
             },
 
@@ -429,6 +525,8 @@
                 var self = this;
 
                 checkModelSuccess = false;
+                checkSerialSuccess = false;
+
                 self.$modelCheckOk.hide();
                 
                 self.$registMyProductPopup.find('input').val("");

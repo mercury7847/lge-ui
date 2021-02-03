@@ -2,15 +2,15 @@
 
 .quick-menu {
     position:fixed;
-    z-index:100;
     right:100px;
-    bottom:112px;
+    bottom:48px;
+    z-index:100;
     &-list {
         li {
             position:relative;
             width:56px;
             height:56px;
-            margin-bottom:12px;
+            margin-bottom:16px;
             &:last-child {
                 margin-bottom:0;
             }
@@ -47,8 +47,8 @@
             }
             img {
                 display:inline-block;
-                width:40px;
-                height:40px;
+                width:34px;
+                height:34px;
                 vertical-align:middle;;
             }
         }
@@ -70,7 +70,7 @@
         // }
     }
     .btn-top {
-        margin-top:12px;
+        margin-top:16px;
 		border-radius:50%;
         background: url(/lg5-common/images/icons/icon-top-new.svg) no-repeat center center #fff;
         opacity:1;
@@ -119,21 +119,17 @@
         //         vertical-align:middle;;
         //     }
         // }
-        // .txt {
-        //     color:#2c2c2c;
-        //     font-size:16px;
-        //     font-weight:500;
-        // }
+        .txt {
+            @include textEllipsis;
+            padding-right: 44px;
+        }
+        &.off {
+            width: 100%;
+        }
         @include pc {
-            &:hover,
-            &:focus {
-                width:264px;
-                padding-left:24px;
-                .icon {
-                    //width:96px;
-                }
-                
-            }
+            padding-left:24px;
+        }
+        @include mobile {
         }
     }
     @include mobile {
@@ -149,14 +145,14 @@
             left:0;
             bottom:100%;
             > li {
-                margin-bottom:-72px;
+                margin-bottom:-56px;
                 transition:margin ease 0.5s;
                 a {
                     opacity:0;
                 }
             }
         }
-        .btn-expand {
+        .btn-option {
             background-color: #da0f47;
             &:before {
                 content:'';
@@ -183,19 +179,34 @@
                     transform:rotate(0);
                 }
             }
-        }   
+        }
+        @include pc {
+            .btn-fold {
+                &.type-hover {
+                    &:hover,
+                    &:focus {
+                        width:264px;
+                    }
+                }
+            }
+            &.on {
+                .btn-fold {
+                    width:264px;
+                }
+            }
+        }
         @include mobile {
             &-list {
                 > li {
-                    margin-bottom:-54px;
-                }
-                a {
-                    width:234px;
+                    margin-bottom:-56px;
                 }
             }
             &.on {
                 ul > li {
                     margin-bottom:9px;
+                }
+                .btn-fold {
+                    width:234px;
                 }
             }
         }

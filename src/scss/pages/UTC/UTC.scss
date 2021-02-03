@@ -9,7 +9,7 @@
 }
 
 .order-list {
-    border-top: 1px solid $color-default;
+    border-top: 1px solid $color-gray-1;
 }
 .order-item {
     display: flex;
@@ -94,13 +94,12 @@
     .sibling-option,
     .item-options2 {
         font-size:0;
-        margin-top:4px;
+        margin-top:12px;
         @include mobile {
             margin-top:6px;
         }
         p {
             display:inline-block;
-            font-weight: 500;
             @include font-small;
             color: $color-gray-1;
             word-break:keep-all;
@@ -138,20 +137,20 @@
                 .original {
                     font-weight: 500;
                     @include font-small;
-                    color: $color-gray-1;
+                    color: $color-gray-5;
                     text-decoration: line-through;
                 }
                 .total {
                     display: inline-block;
                     font-weight: 700;
-                    @include font-large;
+                    @include font-large-1;
                 }
             }
             .btn-info {
                 display: inline-block;
-                width:16px;
-                height:16px;
-                margin:0 0 6px 4px;
+                width:24px;
+                height:24px;
+                margin:0 0 3px 4px;
                 background:url("/lg5-common/images/icons/icon-tooltip.svg") center no-repeat;
                 vertical-align:bottom;
             }
@@ -262,7 +261,7 @@
             }
 
             .err-msg {
-                color: #f04e3e;
+                color: $color-negative;
             }
         }
     }
@@ -274,7 +273,7 @@
             position: relative;
             width: 24px;
             height: 24px;
-            background: url('/lg5-common/images/icons/btn-close-24.svg') no-repeat 0 0;
+            background: url('/lg5-common/images/icons/btn-close-24-black.svg') no-repeat 0 0;
         }
     }
     .chk-wish-wrap {
@@ -317,9 +316,9 @@
 .col-right {
     .info-area {
         @media screen and (max-width: $tablet-l-width) {
-            padding-top: 80px;
+            padding-top: 20px;
             @include mobile {
-                padding:40px 16px 0;
+                padding:40px 16px 60px;
                 border-top: 12px solid $color-bg;
             }
         }
@@ -330,21 +329,28 @@
     }
     .gray-box {
         width: 100%;
-        margin-bottom: 8px;
+        margin-top: 8px;
         padding: 32px;
         border-radius: 8px;
         background-color: $color-bg;
+        &.box-link {
+            padding-top: 24px;
+            padding-bottom: 24px;
+        }
         @include mobile {
-            padding: 32px 20px;
+            padding: 24px 20px;
         }
         .box-title {
             display: block;
             margin-bottom: 16px;
             font-weight: 700;
-            @include font-small;
+            @include font-medium;
         }
         .btn-area {
-            margin-top: 32px;
+            margin-top: 24px;
+            @include mobile {
+                margin-top: 20px;
+            }
             .btn {
                 width: 100%;
             }
@@ -352,6 +358,11 @@
     }
 }
 .contents.cart {
+    .col-left {
+        .section {
+            padding-bottom: 60px;
+        }
+    }
     .col-right {
         .info-area {
             position: relative;
@@ -364,15 +375,25 @@
                 margin-top: 0;
                 margin-left: 0;
                 padding-left: 0;
+                @include mobile {
+                    padding-left: 16px;
+                }
             }
         }
     }
 }
 .box-link {
     p {
-        margin-bottom: 12px;
+        margin-bottom: 16px;
         font-weight: 500;
         @include font-small;
+    }
+    .btn-link {
+        @include font-small;
+        &:after {
+            top: 5px;
+            background-image: url("/lg5-common/images/icons/btn-arr-16-black-sm.svg");
+        }
     }
 }
 .item-info {
@@ -453,6 +474,9 @@
             display: table;
             width: 100%;
             margin-bottom: 8px;
+            @include mobile {
+                margin-bottom: 12px;
+            }
             .text,
             .price {
                 display: table-cell;
@@ -460,9 +484,17 @@
             }
             &.block {
                 display: block;
+                @include mobile {
+                    margin-top: 20px;
+                }
                 .text {
                     display: block;
                     margin-bottom: 8px;
+                    @include mobile {
+                        .tooltip-wrap {
+                            margin-top: -1px;
+                        }
+                    }
                 }
                 .price {
                     display: block;
@@ -473,15 +505,17 @@
     }
 
     .text {
-        font-weight: 500;
         @include font-small;
         em {
             margin-left: 4px;
             color: $color-primary;
         }
+        .tooltip-wrap {
+            margin-top: 1px;
+        }
     }
     .price {
-        font-weight: 500;
+        font-weight: 700;
         @include font-small;
         text-align: right;
         &.sale {
@@ -492,9 +526,14 @@
         margin-top: 16px;
         padding-top: 16px;
         border-top: 1px solid $color-border;
+        @include mobile {
+            padding-top: 18px;
+        }
         dl {
             margin-bottom: 0;
             .text {
+                padding-top: 5px;
+                font-weight: 700;
                 vertical-align: top;
             }
         }
@@ -502,9 +541,11 @@
             @include font-small;
         }
         .price {
-            font-weight: 700;
             .total {
-                @include font-large-1;
+                @include font($font-large-2,34px);
+                @include mobile {
+                    @include font($font-large,26px);
+                }
             }
             .discount {
                 display: block;
@@ -519,6 +560,9 @@
             @include font-small;
             text-align:right;
         }
+        .bullet-list {
+            margin-top: 24px;
+        }
     }
 
     .tooltip-box {
@@ -531,6 +575,7 @@
         }
         .btn-link {
             margin-top: 24px;
+            @include font-small;
         }
     }
     .select-wrap {
@@ -548,10 +593,10 @@
                     position: absolute;
                     top: 50%;
                     right: 16px;
-                    width: 24px;
-                    height: 24px;
-                    margin-top: -12px;
-                    background: url('/lg5-common/images/icons/icon-triangle-24.svg') no-repeat 0 0;
+                    width: 16px;
+                    height: 16px;
+                    margin-top: -8px;
+                    background: url('/lg5-common/images/icons/btn-down-16-black.svg') no-repeat 0 0;
                     transition: all 0.3s;
                     content: '';
                 }

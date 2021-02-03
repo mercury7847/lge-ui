@@ -1,0 +1,13 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "sendUrl": "http://lge.com",
+        "alert":{
+            "title": "등록을 하지 못했습니다.",
+            "desc": ""
+        }
+    }
+}

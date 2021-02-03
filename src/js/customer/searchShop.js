@@ -7,7 +7,7 @@
         subway: '<strong>"{{keyword}}역"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
     };
 
-    var localOptTemplate = '<option value={{value}}>{{title}}</option>';
+    var localOptTemplate = '<option value={{value}} data-code-desc={{codeDesc}}>{{title}}</option>';
 
     var searchListTemplate = 
         '<li data-id="{{shopID}}">'+
@@ -47,12 +47,13 @@
             '</div>'+
         '</li>';
 
+    var searchTypeNames = ["local", "subway", "search"];
+
     var searchShop = {
         init: function(){
             var self = this;
             
             self._setting();
-            self._setOptData();
         },
 
         _setting: function(){
@@ -74,9 +75,6 @@
             self.stationUrl = "";
             self.detailUrl = "";
 
-            self.userCityName = "";
-            self.userBoroughName = "";
-
             self.storeData = [];
 
             self.$leftContainer = $('.store-list-wrap'); //좌측 검색&리스트 컨테이너...
@@ -90,11 +88,24 @@
             self.$mapContainer = $('.map-area'); //맴 모듈 컨테이너...
             
             self.$optionContainer = $('.opt-cont'); //옵션 컨테이너...
-            self.$optionContainer.find('.all-chk input[type=checkbox]').attr('checked', true);
 
             //검색...
             self.searchKeyword = "";
-            self.searchType = "";
+            self.searchType = "local";
+
+            self.userAddressX = "";
+            self.userAddressY = "";
+
+            self.currentLatitude = "";
+            self.currentLongitude = "";
+
+            self.loginUrl = "";
+
+            self.shopID = "";
+
+            self.isUserAddressClick = false;
+
+            self.defaultOptions = self._getOptions();
 
             self.$searchField = $('#tab3 .input-sch input');
             self.$searchButton = $('#tab3 .btn-search');
@@ -109,22 +120,23 @@
                 self.subwayUrl = $('.map-container').data("subwayList");
                 self.stationUrl = $('.map-container').data("stationList");
                 self.detailUrl = $('.map-container').data("detail");
-                self.userAdressCheckedUrl = $('.map-container').data("adressChecked");
+                self.userAddress = $('.map-container').data("userAddress");
+                self.currentLatitude = $('.map-container').data("latitude");
+                self.currentLongitude = $('.map-container').data("longitude");
+                self.loginUrl = $('.map-container').data("loginUrl");
+                self.shopID = $('.map-container').data("shopId");
 
                 self.$mapContainer.vcStoreMap({
                     keyID: $('.map-container').data("mapId"),
                     appKey: $('.map-container').data("appKey"),
-                    longitude : $('.map-container').data("longitude"),
-                    latitude: $('.map-container').data("latitude")
+                    longitude : self.currentLongitude,
+                    latitude: self.currentLatitude
                 }).on('mapinit', function(e,data){
-
                     self.$map = self.$mapContainer.vcStoreMap('instance');
                     self._loadStoreData();
 
                     self._bindEvents();
-
                 }).on('mapchanged', function(e, data){	
-                    
                     //self.$defaultListContainer.find('.scroll-wrap').scrollTop(0);
                     self._setItemList(data);
                     self._setItemPosition();                        
@@ -140,22 +152,23 @@
                     console.log(error);
                 });
 
-                $(".sch-box .tabs-wrap.ui_store_search_tab").vcTab()
+                $(".sch-box .tabs-wrap").vcTab()
                 .on("tabchange", function(e, data){
                     self._setListArea();
-
                     self._setTabInit();
+                    
+                    self.searchType = searchTypeNames[data.selectedIndex];
                 });
 
-                self.$citySelect = $('#select1');
-                self.$boroughSelect = $('#select2');
-                self.$localSearchButton = $('.search-local');
-                self.$searchUserAdressButton = $('.search-userAdress');
+                self.$citySelect = $('#select1'); //시/도 선택
+                self.$boroughSelect = $('#select2'); //구.군 선택
+                self.$localSearchButton = $('.search-local'); //지역검색 버튼
+                self.$searchUserAdressButton = $('.search-userAdress'); //내 주소 검색 버튼
 
-                self.$subwayCitySelect = $('#select3');
-                self.$subwayLineSelect = $('#select4');
-                self.$subwayStationSelect = $('#select5');
-                self.$searchSubwayButton = $('.search-subway');
+                self.$subwayCitySelect = $('#select3'); //지역선택
+                self.$subwayLineSelect = $('#select4'); //호선 선택
+                self.$subwayStationSelect = $('#select5'); //역 선택
+                self.$searchSubwayButton = $('.search-subway'); //지하철 검색 버튼
 			});
         },
 
@@ -178,7 +191,7 @@
                 e.preventDefault();
 
                 var id = $(this).attr("href").replace("#", "");
-                window.open(self.detailUrl+"?shopID="+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no")
+                window.open(self.detailUrl+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no")
             });
 
             self.$searchField.on('focus', function(e){
@@ -231,7 +244,7 @@
                 self._loadLocalAreaList(e.target.value);
             });
             self.$localSearchButton.on('click', function(e){
-                self._setLocalSearch();
+                self._setSearch();
             });
             self.$searchUserAdressButton.on('click', function(e){
                 self._setUserAdressSearch();
@@ -248,7 +261,7 @@
                 });
             });
             self.$searchSubwayButton.on('click', function(e){
-                self._setSubwaySearch();
+                self._setSearch();
             });
 
             self._resize();
@@ -267,24 +280,22 @@
             self.$subwayStationSelect.val();
         },
 
-        _loadStoreData: function(){
+        _loadStoreData: function(userAddressAbled){
             var self = this;
-
-            lgkorUI.requestAjaxData(self.bestShopUrl, self._getKeyword(), function(result){
+            lgkorUI.requestAjaxData(self.bestShopUrl, self._getKeyword(userAddressAbled), function(result){
                 self.storeData = vcui.array.map(result.data, function(item, index){
                     item['id'] = item['shopID']; //info.shopID || agCode    
                     item['info'] = false;
+                    item["detailUrl"] = 'javascript:window.open("' + self.detailUrl+item['shopID'] + '", "_blank", "width=1070, height=' + self.windowHeight + ', location=no, menubar=no, status=no, toolbar=no")';
                     return item;
                 });
                 self.$map.applyMapData(self.storeData);
-
-                self.userCityName = self.userBoroughName = "";
             });
         },
 
         _loadLocalAreaList: function(val){
             var self = this;
-
+            
             lgkorUI.requestAjaxData(self.localUrl, {city:encodeURI(val)}, function(result){
                 self._setSelectOption(self.$boroughSelect, result.data);
                 self.$boroughSelect.prop('disabled', false);
@@ -299,7 +310,8 @@
             var lines = vcui.array.map(result, function(item, idx){
                 return {
                     title: item.codeName,
-                    value: item[valuekey]
+                    value: item[valuekey],
+                    codeDesc: item.codeDesc
                 }
             });
             lines.unshift(firstdata);
@@ -313,48 +325,61 @@
             select.empty();
 
             for(var i in list){
+                if(list[i].codeDesc == undefined || list[i].codeDesc == null) list[i].codeDesc = "";
                 var opt = vcui.template(localOptTemplate, list[i]);
                 select.append($(opt).get(0));
             }
         },
 
-        _setOptData: function(){
+        _setDefaultOption: function(){
             var self = this;
 
-            self.optionData = {
-                shopType: self.$optionContainer.find('.opt-layer .list-item > dl:first-child .rdo-wrap input:checked').attr('id'),
-                serviceType: self.$optionContainer.find('.opt-layer .list-item > dl:nth-child(2) .rdo-wrap input:checked').attr('id'),
-                keywords:{
-                    shop: [],
-                    service: [],
-                    etc: []
+            self.$optionContainer.find('input[type=checkbox]').prop('checked', false);
+            
+            for(var str in self.defaultOptions){
+                var values = self.defaultOptions[str].split("|");
+                for(var idx in values){
+                    if(values[idx] != "") self.$optionContainer.find('input[name=' + values[idx] + ']').prop('checked', true);
                 }
             }
 
-            self.$optionContainer.find('.all-chk > dd > dl:nth-child(1) input').each(function(idx, item){
-                if($(item).prop('checked')) self.optionData.keywords.shop.push($(item).attr('id'));
+            self._optAllChecked();
+        },
+
+        _getOptions: function(){
+            var self = this;
+            
+            var optdata = {
+                storeCompanyCode: self._getCheckedBox('.storeCompanyChker'),
+                serviceCenterType: self._getCheckedBox('.serviceCenterChker'),
+                storeFormType: self._getCheckedBox('.storeFormChker'),
+                storeType: self._getCheckedBox('.storeChker'),
+                etcType: self._getCheckedBox(".etcChker")
+            }
+            
+            return optdata;
+        },
+
+        _getCheckedBox: function(gclass){
+            var checked = [];
+            $(gclass).find('input[type=checkbox]').each(function(idx, item){
+                if($(item).prop('checked')) checked.push($(item).attr('name'));
             });
-            self.$optionContainer.find('.all-chk > dd > dl:nth-child(2) input').each(function(idx, item){
-                if($(item).prop('checked')) self.optionData.keywords.service.push($(item).attr('id'));
-            });
-            self.$optionContainer.find('.all-chk > dd > dl:nth-child(3) input').each(function(idx, item){
-                if($(item).prop('checked')) self.optionData.keywords.etc.push($(item).attr('id'));
-            });
+
+            return checked.join("|");
         },
 
         _setOptINIT: function(){
             var self = this;
 
-            self.$optionContainer.find('.opt-layer .list-item > dl:first-child .rdo-wrap:first-child input').prop("checked", true);
-            self.$optionContainer.find('.opt-layer .list-item > dl:nth-child(2) .rdo-wrap:first-child input').prop("checked", true);
-            self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked', true);
-            self.$optionContainer.find('.all-chk dd input[type=checkbox]').prop('checked', true);
+            self._setDefaultOption();
+            self._loadStoreData();
         },
 
         _setOptApply: function(){
             var self = this;
 
-            self._setOptData();
+            self._loadStoreData();
         },
 
         _optToggleAllChecked: function(){
@@ -437,19 +462,46 @@
             }
         },
 
-        _getKeyword: function(){
+        _getKeyword: function(userAddressAbled){
             var self = this;
+
+            var userAddressPoint;
+            if(userAddressAbled){
+                userAddressPoint = self.userAddressX + "," + self.userAddressY;
+            } else{
+                userAddressPoint = ""
+            }
+
+            var optdata = self._getOptions();
+
+            var selectCodeDesc = self.$subwayStationSelect.find('option:selected').data("codeDesc");
 
             var keywords = {
                 searchType: self.searchType,
-                searchKeyword: self.$searchField.val(),
-                searchCity: self.userCityName ? self.userCityName : self.$citySelect.val(),
-                searchBorough: self.userBoroughName ? self.userBoroughName : self.$boroughSelect.val(),
+
+                searchCity: self.$citySelect.val(),
+                searchBorough: self.$boroughSelect.val(),
+                
                 searchSubwayLocal: self.$subwayCitySelect.val(),
                 searchSubwayLine: self.$subwayLineSelect.val(),
-                searchSubwayStation: self.$subwayStationSelect.val()
+                searchSubwayStation: self.$subwayStationSelect.val(),
+                searchCodeDesc: selectCodeDesc == undefined ? "" : selectCodeDesc,
+
+                searchKeyword: self.$searchField.val(),
+
+                userAddressPoint: userAddressPoint,
+
+                storeCompanyCode: optdata.storeCompanyCode,
+                serviceCenterType: optdata.serviceCenterType,
+                storeFormType: optdata.storeFormType,
+                storeType: optdata.storeType,
+                etcType: optdata.etcType,
+
+                shopId: self.shopID
             }
-            console.log("keywords :", keywords)
+            console.log("keywords :", keywords);
+
+            self.shopID = "";
 
             return keywords;
         },
@@ -457,80 +509,87 @@
         //검색...
         _setSearch: function(){
             var self = this;
-            
-            var keyword = self.$searchField.val();
-            var trim = keyword.replace(/\s/gi, '');
-            if(trim.length){
-                self.searchType = "search";
-                self.searchResultMode = true;
+            var keyword, trim;
+            switch(self.searchType){
+                case "local":
+                    keyword = self.$boroughSelect.val();
+                    trim = keyword.replace(/\s/gi, '');
+                    if(trim.length){
+                        self.searchResultMode = true;
+                        
+                        self._loadStoreData();
+                    } else{
+                        lgkorUI.alert("", {
+                            title: "구/군을 선택해주세요."
+                        });
+                    }
+                    break;
 
-                $(window).off('keyup.searchShop');
+                case "subway":
+                    keyword = self.$subwayStationSelect.val();
+                    trim = keyword.replace(/\s/gi, '');
+                    if(trim.length){
+                        self.searchResultMode = true;
+        
+                        self._loadStoreData();
+                    } else{
+                        lgkorUI.alert("", {
+                            title: "지하철 검색의 역명을 선택해 주세요."
+                        });
+                    }
+                    break;
 
-                self._loadStoreData();
-            } else{
-                lgkorUI.alert("", {
-                    title: "검색어를 입력해주세요."
-                });
+                case "search":
+                    keyword = self.$searchField.val();
+                    trim = keyword.replace(/\s/gi, '');
+                    if(trim.length){
+                        self.searchResultMode = true;
+        
+                        $(window).off('keyup.searchShop');
+        
+                        self._loadStoreData();
+                    } else{
+                        lgkorUI.alert("", {
+                            title: "검색어를 입력해주세요."
+                        });
+                    }
+                    break;
             }
         },
 
+        //내 주소 검색
         _setUserAdressSearch: function(){
             var self = this;
 
-            self.$map.getAdressPositions("불정로 6");
+            if(self.userAddress != ""){
+                if(self.userAddressX == ""){
+                    self.$map.getAdressPositions(self.userAddress, function(result){
+                        if(result.success == "Y"){
+                            self.userAddressX = result.pointx;
+                            self.userAddressY = result.pointy;
 
-            // lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(self.userAdressCheckedUrl, {}, function(result){
-            //     if(lgkorUI.stringToBool(result.data.success)){
-            //         self.userCityName = result.data.userAdress.cityValue;
-            //         self.userBoroughName = result.data.userAdress.boroughValue;
-            //         self.searchResultMode = true;
-            //         self.searchType = "local";
-
-            //         self._loadStoreData();
-            //     } else{
-            //         if(result.data.location && result.data.location != ""){
-            //             location.href = result.data.location;
-            //         } else{
-            //             lgkorUI.alert("", {
-            //                 title: result.data.alert.title
-            //             });
-            //         }
-            //     }
-            // });
-        },
-
-        //지역 검색...
-        _setLocalSearch: function(){
-            var self = this;
-
-            var keyword = self.$boroughSelect.val();
-            var trim = keyword.replace(/\s/gi, '');
-            if(trim.length){
-                self.searchResultMode = true;
-                self.searchType = "local";
-                
-                self._loadStoreData();
+                            if (self.userAddressX){
+                                self.isUserAddressClick = true;
+                                self.searchResultMode = true;
+                                self._loadStoreData(true);
+                            }
+                        } else{
+                            console.log(result.errMsg)
+                        }
+                    });
+                } else{
+                    self.isUserAddressClick = true;
+                    self.searchResultMode = true;
+                    self._loadStoreData(true);
+                }
             } else{
-                lgkorUI.alert("", {
-                    title: "구/군을 선택해주세요."
-                });
-            }
-        },
-
-        _setSubwaySearch: function(){
-            var self = this;
-            console.log("_setSubwaySearch")
-            var keyword = self.$subwayStationSelect.val();
-            var trim = keyword.replace(/\s/gi, '');
-            if(trim.length){
-                self.searchType = "subway";
-                self.searchResultMode = true;
-
-                self._loadStoreData();
-            } else{
-                lgkorUI.alert("", {
-                    title: "지하철 검색의 역명을 선택해 주세요."
-                });
+                if(self.loginUrl == ""){
+                    lgkorUI.alert("", {
+                        title:'등록된 주소 정보가 없습니다.'
+                    });
+                } else{
+                    location.href = self.loginUrl;
+                }
             }
         },
 
@@ -597,7 +656,7 @@
                 self.isChangeMode = false;
                 self.searchResultMode = false;
 
-                self.$searchContainer.css('display', 'block');
+                self.$searchContainer.css('display', 'block').stop().transition({opacity:1}, 430, "easeInOutCubic");
 
                 $('.result-list-box').stop().transition({opacity:0, y:100}, 350, "easeInOutCubic");
 
@@ -622,6 +681,8 @@
 
                 var listop = self.$defaultListContainer.position().top;
 
+                self.$searchContainer.stop().transition({opacity:0}, 320, "easeInOutCubic");
+
                 self._setResultText();
                 $('.result-list-box').stop().css({display:'block', opacity:0, y:100}).transition({opacity:1, y:0}, 410, "easeInOutCubic");
                 
@@ -638,11 +699,28 @@
         _setResultText: function(){
             var self = this;
 
+            var keywords = self._getKeyword();
+            var searchKeyword;
+            if(self.searchType == "local"){
+                if(!self.isUserAddressClick){
+                    var cityname = self.$citySelect.find('option[value=' + keywords.searchCity + ']').text();
+                    var borough = self.$boroughSelect.find('option[value=' + keywords.searchBorough + ']').text();
+                    searchKeyword = cityname + " " + borough;
+                }else searchKeyword = self.userAddress;
+            } else if(self.searchType == "subway"){
+                var stationame = self.$subwayStationSelect.find('option[value=' + keywords.searchSubwayStation + ']').text();
+                searchKeyword = stationame;
+            } else{
+                searchKeyword = keywords.searchKeyword;
+            }
+
             var resultxt = vcui.template(searchResultText[self.searchType], {
-                keyword: self.searchKeyword,
+                keyword: searchKeyword,
                 total: self.$defaultListLayer.find('> li').length
             });
-            self.$searchResultContainer.find('.result-txt').html(resultxt)
+            self.$searchResultContainer.find('.result-txt').html(resultxt);
+
+            self.isUserAddressClick = false;
         },
 
         //리스트 컨테이너 높이 설정...스크롤영역
@@ -655,9 +733,6 @@
             var optheight = self.$optionContainer.height();
             var resultheight = $('.result-list-box').height();
             var paddingtop = parseInt(self.$defaultListContainer.find('.sch-list').css('padding-top'));
-            
-
-            console.log(top, titheight, scheight, optheight, resultheight)
 
             var listheight;
             if(self.searchResultMode){

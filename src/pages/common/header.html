@@ -1,5 +1,9 @@
 <!-- PC / Mobile Default Header -->
-<header class="header" role="header" data-login-info="/lg5-common/data-ajax/common/gnbLoginInfo.json">
+<!--2021.2.2 data-cart-url 추가 -->
+<header class="header" role="header" 
+    data-login-info="/lg5-common/data-ajax/common/gnbLoginInfo.json"
+    data-cart-url="/lg5-common/data-ajax/KRP0007/plpCart.json"
+    >
     <!-- 스킵 네비게이션 -->
     <div class="skip-content">
         <a href="#content" id="skipToContent">본문 바로가기</a>
@@ -126,7 +130,8 @@
                                                                 <li>
                                                                     <a href="#" class="category-item">TV</a>
                                                                     <ul class="sub-category">
-                                                                        <li><a href="#">올레드 TV</a></li>
+                                                                        <!-- 210203 수정 - 새창열림 케이스 -->
+                                                                        <li><a href="#" target="_blank" title="새창열림">올레드 TV</a></li>
                                                                         <li><a href="#">나노셀 TV</a></li>
                                                                         <li><a href="#">울트라 HD TV</a></li>
                                                                         <li><a href="#">일반 LED TV</a></li>

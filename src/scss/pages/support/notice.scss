@@ -5,22 +5,37 @@
 
 .support {
     /* common */
+    .search-wrap {
+        @include mobile {
+            padding:0 16px;
+        }
+    }
+    .result-wrap {
+        @include mobile {
+            padding:0 16px;
+        }
+    }
 
     /* pages */
     /* 공지사항 */
     &.notice {
-        .result-wrap {
-            @include mobile {
-                padding:0 16px;
-            }
+        .search-wrap {
+            margin-bottom:80px;
         }
     }
     /* S/W 업데이트 소식 */
     &.software {
+        .search-wrap {
+            margin-bottom:48px;
+        }
+        .tabs-wrap {
+            margin-bottom:48px;
+        }
         tr {
             td {
                 &:first-child{
                     display:table-cell;
+                    color:#767676;
                 }
                 &:nth-child(3){
                     display:none;
@@ -43,10 +58,13 @@
             }
             
         }
-        .search-wrap {
-            margin-bottom: 48px;
-        }
         @include mobile {
+            .search-wrap {
+                margin-bottom:32px;
+            }
+            .tabs-wrap {
+                margin-bottom:32px;
+            }
             tr {
                 td {
                     &:first-child{
@@ -73,17 +91,12 @@
                 }
                 
             }
-            .search-wrap {
-                margin-bottom: 33px;
-            }
         }
     }
     /* 서비스뉴스 */
     &.service-news {
-        .result-wrap {
-            @include mobile {
-                padding:0 16px;
-            }
+        .search-wrap {
+            margin-bottom:80px;
         }
         .video-content {
             .bullet-list {

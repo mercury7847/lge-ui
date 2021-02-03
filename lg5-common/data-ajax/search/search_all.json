@@ -25,6 +25,13 @@
             "매직스페이스",
             "AV 홈라이프"
         ],
+        "searchBanner":{
+            "pcImage": "/lg5-common/images/UTS/@sample-banner.jpg",
+            "mobileImage": "/lg5-common/images/UTS/@sample-banner-m.jpg",
+            "title": "새출발을 위한 혼수 지원,<br>2020 올 뉴 웨딩 페스타",
+            "desc": "2020 올 뉴 웨딩 페스타 행사 모델<br>동시 구매 시, 최대 250만원<br>상당 혜택!",
+            "urlName": "#n"
+        },
         "category":[
             {
                 "text":"제품>에어컨/에어케어",

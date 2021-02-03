@@ -190,6 +190,23 @@
             }
 
             return isMobile;
+        },
+        searchParamsToObject: function(key) {
+            var params = location.search.substr(location.search.indexOf("?") + 1);
+            var temp, valueObject = {};
+
+            params = params.split("&");
+            
+            for (var i = 0; i < params.length; i++) {
+                temp = params[i].split("=");
+                valueObject[temp[0]] = temp[1];
+            }
+
+            if (key) {
+                return valueObject[key] || null;
+            } else {
+                return valueObject;
+            }
         }
     }
 
@@ -252,7 +269,7 @@ CS.MD.search = function() {
     Plugin.prototype = {
         _initialize: function() {
             var self = this;
-
+            
             self.autoUrl = self.$el.data('autocompleteUrl');
 
             if (self.$el.find('.recently-keyword').length) self._setRecently();
@@ -270,7 +287,7 @@ CS.MD.search = function() {
                 arr = keywordCookie.split(',');
                 if (arr.length) {
                     arr.forEach(function(item) {
-                        var html = tmpl.recentlyList.replace('{{keyword}}', item);
+                        var html = tmpl.recentlyList.replace('{{keyword}}', item.toString());
                         $recentlyKeyword.find('ul').append(html);
                     });
                     $recentlyKeyword.find('ul').show();
@@ -288,15 +305,19 @@ CS.MD.search = function() {
             var self = this;
             var $popularKeyword = self.$el.find('.popular-keyword');
             var tmpl = self.options.template,
-                arr = data instanceof Array ? data : [];
+                arr = data instanceof Array ? data : [],
+                html = '';
 
             $popularKeyword.find('ul').empty();
 
             if (arr.length) {
                 arr.forEach(function(item) {
-                    var html = tmpl.keywordList.replace('{{keyword}}', item);
-                    $popularKeyword.find('ul').append(html);
+                    html += tmpl.keywordList.replace('{{keyword}}', item);
                 });
+
+                $popularKeyword.find('ul').html(html);
+                $popularKeyword.find('ul').show();
+                $popularKeyword.find('.no-keyword').hide();
             } else {
                 $popularKeyword.find('ul').hide();
                 $popularKeyword.find('.no-keyword').show();
@@ -307,13 +328,13 @@ CS.MD.search = function() {
             var tmpl = self.options.template,
                 arr = data instanceof Array ? data : [];
 
-            self.$el.find('.autocomplete-box').find('ul').empty();
+            self.$el.find('.autocomplete-box').find('ul').remove();
 
             if (arr.length) {
-                arr.forEach(function(item) {
-                    var html = vcui.template(tmpl.autocompleteList, item);
-                    self.$el.find('.autocomplete-box').find('ul').append(html);
+                var html = vcui.template(tmpl.autocompleteList, {
+                    list: arr
                 });
+                self.$el.find('.autocomplete-box').find('.keyword-list').prepend(html);
                 self.$el.find('.autocomplete-box').find('ul').show();
                 self.$el.find('.autocomplete-box').find('.no-keyword').hide();
             } else {
@@ -338,7 +359,7 @@ CS.MD.search = function() {
                 self.$el.trigger('autocompleteClick', [this]);
             });
 
-            self.$el.on('click', '.search-layer .keyword-box', function() {
+            self.$el.on('click', '.search-layer .keyword-box a', function() {
                 var val = $(this).text().trim();
                 self.$el.find('input[type=text]').val(val);
                 self.$el.removeClass('on');
@@ -363,6 +384,10 @@ CS.MD.search = function() {
                         $('.keyword-box').hide();
                         self.$el.addClass('on');
                     }]);
+                } else {
+                    self.$el.find('.autocomplete-box').find('ul').empty();
+                    $('.autocomplete-box').hide();
+                    $('.keyword-box').show();
                 }
 
             }).on('keyup', function(e) {
@@ -419,9 +444,6 @@ CS.MD.commonModel = function() {
                     '{{# } #}}' +
                 '</div>' +
                 '{{# } #}}' +
-                // '{{# if (typeof desc != "undefined") { #}}' +
-                // '<p class="desc">{{desc}}</p>' +
-                // '{{# } #}}' +
             '</div>' +
             '{{# if (typeof reset != "undefined") { #}}' +
             '<div class="prod-btn">' +
@@ -511,6 +533,7 @@ CS.MD.commonModel = function() {
             self.$keywordBox = self.$searchArea.find('.keyword-box');
             self.$keywordInput = self.$keywordBox.find('input[type=text]');
             self.$keywordButton = self.$keywordBox.find('.btn-search');
+            self.$keywordError = self.$keywordBox.find('.search-error');
 
             // 검색 영역 : 카테고리 > 서브카테고리
             self.$categoryBox = self.$searchArea.find('.category-box');
@@ -616,16 +639,16 @@ CS.MD.commonModel = function() {
                     if (value.length > 1) {
                         self.$categoryBox.removeClass(opt.stepActiveClass);
                         self.$modelBox.addClass(opt.stepActiveClass);
-                        self.$keywordBox.find('.desc').show();
-                        self.$keywordBox.find('.search-error').hide();
+                        self.$keywordBox.find('.search-desc').show();
                         self.param = $.extend(self.param, {
                             keyword: value,
                             page: 1
                         });
 
                         self._requestData();
+                        self.$keywordError.hide();
                     } else {
-                        self.$keywordBox.find('.search-error').show();
+                        self.$keywordError.show();
                     }
                 } else {
                     if (value.length > 1 || !value) {
@@ -634,25 +657,31 @@ CS.MD.commonModel = function() {
                             keyword: value,
                             page: 1
                         });
-                        
+                        self.$keywordError.hide();
                         self._requestData();
+                    } else {
+                        self.$keywordError.show();
                     }
                 }
             });
 
             self.$keywordButton.on('click', function() {
                 var opt = self.options;
-                
-                if (result.success) {
+                var value = self.$keywordInput.val().toUpperCase();
+
+                if (value.length > 1 || !value) {
                     self.param = $.extend(self.param, {
-                        keyword: self.$keywordInput.val().toUpperCase(),
+                        keyword: value,
                         page: 1
                     });
 
                     self._requestData();
+                    self.$keywordError.hide();
 
                     self.$categoryBox.removeClass(opt.stepActiveClass);
                     self.$modelBox.addClass(opt.stepActiveClass);
+                } else {
+                    self.$keywordError.show();
                 }
             });
 
@@ -697,18 +726,6 @@ CS.MD.commonModel = function() {
                 $(this).closest('.box').removeClass('on').addClass('off');
             });
 
-            self.$modelBox.find('#categorySelect').on('reset', function() {
-                self.param = $.extend(self.param, {
-                    category: '',
-                    categoryNm: '전체',
-                    subCategory: '',
-                    subCategoryNm: '전체',
-                    page: 1
-                });
-
-                self._requestData();
-            });
-
             // 서브 카테고리 선택
             self.$categoryBox.find('.sub-category-list button').on('click', function() {
                 var $this = $(this),
@@ -716,6 +733,7 @@ CS.MD.commonModel = function() {
                     opt = self.options;
 
                 self.param = $.extend(self.param, {
+                    keyword: '',
                     category: data.category,
                     categoryNm: data.categoryName,
                     subCategory: data.subCategory,
@@ -761,6 +779,23 @@ CS.MD.commonModel = function() {
                 if (data.modelCode) lgkorUI.recentlySearch.addCookie(data.modelCode);
             });
             
+            self.$modelBox.find('#categorySelect').on('change', function() {
+                var $this = $(this),
+                    $subCategory = self.$modelBox.find('#subCategorySelect');
+                
+                if (!$this.val()) {
+                    self.param = $.extend(self.param, {
+                        category: $this.val(),
+                        categoryNm: $this.find('option:selected').text(),
+                        subCategory: $subCategory.val(),
+                        subCategoryNm: $subCategory.find('option:selected').text(),
+                        page: 1
+                    });
+    
+                    self._requestData();
+                }
+            });
+
             // 모델명 선택 - 서브 카테고리 선택
             self.$modelBox.find('#subCategorySelect').on('change', function() {
                 var $this = $(this),
@@ -961,7 +996,9 @@ CS.MD.commonModel = function() {
 
                 if (arr.length) {
                     arr.forEach(function(item) {
-                        item.name = item.modelCode.replaceAll(self.param.keyword, '<em class="word">'+self.param.keyword+'</em>');
+                        if (item.modelCode) {
+                            item.name = vcui.string.replaceAll(item.modelCode, self.param.keyword, '<em class="word">'+self.param.keyword+'</em>');
+                        }
                         self.$modelSlider.find('.slide-track').append(vcui.template(modelListTmpl, item))
                     });
 
@@ -1009,6 +1046,8 @@ CS.MD.commonModel = function() {
 
                     self.$modelSlider.show();
                     self.$modelNoData.hide();
+
+                    self.$modelSlider.vcCarousel('resize');
                 } else {
                     self.$modelSlider.hide();
                     self.$modelNoData.find('.word').html(self.param.keyword);
@@ -1048,27 +1087,19 @@ CS.MD.commonModel = function() {
         },
         updateSummary: function(summary) {
             var self = this;
-            var summary = summary || self.options.defaultSummary,
-                isMyProduct = false;
+            var summary = summary || self.options.defaultSummary;
 
-            if (myModel.length && summary.product && summary.product.length == 3) {
-                if (myModel.indexOf(summary.product[2]) != -1) {
-                    isMyProduct = true;
-                }
-            }
-            var test = [];
             if (summary.product) {
-                for(var i = 0; i < summary.product.length; i++) {
-                    test[i] = {
-                        name: summary.product[i]
+                summary.product.forEach(function(item, index) {
+                    var temp = {};
+
+                    temp.name = item;
+                    if (myModel.indexOf(item) != -1) {
+                        temp.isMyProduct = true;
                     }
-                    if (i == 2) {
-                        test[i]['isMyProduct'] = isMyProduct;
-                    }
-                }
-                summary.product = test;
+                    summary.product[index] = temp;
+                });
             }
-            console.log(isMyProduct);
             self.$selectedModelBar.html(vcui.template(selectedBarTmpl, summary));
         },
         focus: function($target, callback) {
@@ -1111,6 +1142,7 @@ CS.MD.commonModel = function() {
             self.$el.find('#productCode').val('');
             self.$el.find('#isMyProduct').val('N');
 
+            self.$myModelArea.show();
             self.$keywordInput.val('');
             self.$categoryBox.find('.box').removeClass('on off');
             self.$categoryBox.addClass(opts.stepActiveClass);
@@ -1120,7 +1152,7 @@ CS.MD.commonModel = function() {
             self.$modelSlider.find('.slide-track').empty();
             self.$modelFilter.find('#categorySelect').vcSelectTarget('reset', 'default');
             self.$keywordBox.show();
-            self.$keywordBox.find('.desc').hide();
+            self.$keywordBox.find('.search-desc').hide();
             self.$selectedModelBar.vcSticky('destroy');
 
             self.updateSummary();
@@ -1235,7 +1267,7 @@ CS.MD.calendar = function() {
                     self.$input.val(format);
                 }
 
-                self.$el.trigger('dateselected');
+                self.$el.trigger('dateselected', [format]);
             })
 
             self._renderHeader();
@@ -1591,7 +1623,7 @@ CS.MD.timeCalendar = function() {
 
                 if (self.options.inputTarget) self.$input.val(time);
 
-                self.$el.trigger('timeselected');
+                self.$el.trigger('timeselected', [time]);
             });
             
             self._renderTime();
@@ -2089,11 +2121,11 @@ var AuthManager = function() {
                     if (resultData.resultFlag == 'Y') {
                         success = true;
 
-                        if (elem.target) {
+                        if (target) {
                             $button.prop('disabled', true);
                             $button.find('span').html(COMPLETETEXT);
-                            $(target.name).val(nameValue);
-                            $(target.phone).val(phoneValue);
+                            $(target.name).val(data.authName);
+                            $(target.phone).val(data.authPhoneNo);
                             $(elem.popup).vcModal('hide');
                         }
 
@@ -2169,6 +2201,12 @@ $.fn.serializeObject = function() {
             // 퀵 메뉴 (미정)
             $('#quickMenu').quickMenu();
         });
+
+        if( $('#surveyPopup').length) {
+            vcui.require(['ui/selectbox', 'ui/satisfactionModal']);
+        }
+
+        if ($('.ui_common_scroll').length) $('.ui_common_scroll').mCustomScrollbar();
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);

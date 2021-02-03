@@ -26,6 +26,25 @@ var CareCartInfo = (function() {
     function CareCartInfo(targetQuery, itemInfoHiddenCheckTargetQuery) {
         var self = this;
         self.selectedItemList = [];
+        self.resetPaymentData = {
+            "total":{
+                "price":"0",
+                "count": "0",
+            },
+            "list":[
+                {
+                    "text": "제품 수",
+                    "price": "0개",
+                    "appendClass": ""
+                },
+                {
+                    "text": "이용요금",
+                    "price": "월 0원",
+                    "appendClass": ""
+                }
+            ],
+            "card":null
+        };
         self._setting(targetQuery, itemInfoHiddenCheckTargetQuery);
         self._bindEvents();
         self._bindPopupEvents();
@@ -45,28 +64,14 @@ var CareCartInfo = (function() {
             self.updateAgreement(data.agreement);
         },
 
+        getSelectCardId: function() {
+            var self = this;
+            return self.$paymentInfo.attr('data-card-id');
+        },
+
         setEmptyData: function() {
             var self = this;
-            var resetPaymentData = {
-                "total":{
-                    "price":"0",
-                    "count": "0",
-                },
-                "list":[
-                    {
-                        "text": "제품 수",
-                        "price": "0개",
-                        "appendClass": ""
-                    },
-                    {
-                        "text": "이용요금",
-                        "price": "월 0원",
-                        "appendClass": ""
-                    }
-                ],
-                "card":null
-            }
-            self.updatePaymentInfo(resetPaymentData);
+            self.updatePaymentInfo(self.resetPaymentData);
             self.updateItemInfo(null);
             self.updateAgreement(null);
         },
@@ -125,20 +130,25 @@ var CareCartInfo = (function() {
             }
 
             var cardData = paymentInfo.card;
-            self.$paymentInfo.removeAttr('data-card-id');
+            self.resetPaymentData.card = cardData;
+            //self.$paymentInfo.removeAttr('data-card-id');
             self.$paymentInfo.removeAttr("data-card-sale");
             if(cardData) {
                 //카드데이타
                 var selectList = $cardInfo.find('ul.select-list');
                 selectList.empty();
                 var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
-                var cardItemTemplate = '<li><a href="#{{cardId}}" data-card-sale="{{salePrice}}">{{title}}</a></li>';
+                var cardItemTemplate = '<li><a href="#{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
                 cardData.forEach(function(obj, idx) {
                     if(obj.groupTitle) {
                         selectList.append(vcui.template(groupItemTemplate,obj));
                     }
                     if(obj.listItem) {
                         obj.listItem.forEach(function(item, index) {
+                            item.label = item.title;
+                            if(!item.cardId) {
+                                item.label = "선택취소"
+                            }
                             selectList.append(vcui.template(cardItemTemplate, item));
                         });
                     }
@@ -152,7 +162,7 @@ var CareCartInfo = (function() {
 
             var totalData = paymentInfo.total;
             self.$paymentInfo.removeAttr("data-total");
-            //아마도 따로 펑션을
+            
             if(totalData) {
                 self.$paymentInfo.attr("data-total",JSON.stringify(totalData));
                 //self.calcTotalData();
@@ -177,7 +187,8 @@ var CareCartInfo = (function() {
 
             //새로 그리기
             if(cardData) {
-                var firstRow = $cardInfo.find('div.ui_dropdown_list li a:eq(0)');
+                var cardId = self.$paymentInfo.attr('data-card-id');
+                var firstRow = (cardId) ? $cardInfo.find('div.ui_dropdown_list li a[href="#'+cardId+'"]') : $cardInfo.find('div.ui_dropdown_list li a:eq(0)');
                 if(firstRow.length > 0) {
                     firstRow.trigger('click');
                 } else {
@@ -293,11 +304,24 @@ var CareCartInfo = (function() {
                 var $this = $(this);
                 var _id = $this.attr('href').replace("#","");
                 var $dropDown = $this.parents('.ui_dropdown');
-                $dropDown.find('a.ui_dropdown_toggle').text($this.text());
+                $dropDown.find('a.ui_dropdown_toggle').text($this.attr('data-card-title'));
                 self.$paymentInfo.attr('data-card-id',_id);
                 self.$paymentInfo.attr("data-card-sale",$this.attr('data-card-sale'));
                 $dropDown.vcDropdown("close");
                 self.calcTotalData();
+
+                var maxCardSale = $this.attr('data-card-sale');
+                var $maxCardSale = $this.parents('li').find('div.price.sale');
+                if(maxCardSale && $maxCardSale.length > 0) {
+                    if(parseInt(maxCardSale) == 0) {
+                        $maxCardSale.hide();
+                    } else {
+                        $maxCardSale.text("월 최대 -"+vcui.number.addComma(maxCardSale)+"원");
+                        $maxCardSale.show();
+                    }
+                } else {
+                    $maxCardSale.hide();
+                }
             });
     
             //청약하기버튼 클릭

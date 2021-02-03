@@ -84,7 +84,7 @@
         "filterList":[
             {
                 "name": "All",
-                "code": "All"
+                "code": ""
             },
             {
                 "name": "기능",
@@ -177,30 +177,36 @@
                 "modelName" : "OLED65CXCNA"
             }
         ],
-        "serviceMenu": [
+        "serviceMenu"  : [
             {
-                "url": "",
-                "name": "채팅상담"
+                "name" : "채팅 상담",
+                "url" : "/",
+                "imgUrl" : "/lg5-common/images/icons/icon_chat.svg"
             },
             {
-                "url": "",
-                "name": "이메일 문의"
+                "name" : "이메일 문의",
+                "url" : "/",
+                "imgUrl" : "/lg5-common/images/icons/icon_email-inquiry.svg"
             },
             {
-                "url": "",
-                "name": "전화상담 예약"
+                "name" : "전화상담예약",
+                "url" : "/",
+                "imgUrl" : "/lg5-common/images/icons/icon_request-reservation.svg"
             },
             {
-                "url": "",
-                "name": "출장 서비스 예약"
+                "name" : "출장 서비스 예약",
+                "url" : "/",
+                "imgUrl" : "/lg5-common/images/icons/icon_engineer-reservation.svg"
             },
             {
-                "url": "",
-                "name": "센터방문 예약"
+                "name" : "센터방문예약",
+                "url" : "/",
+                "imgUrl" : "/lg5-common/images/icons/icon_center-reservation.svg"
             },
             {
-                "url": "",
-                "name": "매장방문 예약"
+                "name" : "매장방문예약",
+                "url" : "/",
+                "imgUrl" : "/lg5-common/images/icons/icon_store-reservation.svg"
             }
         ],
         "updateBanner": [
@@ -215,5 +221,17 @@
         "popularKeyword": [
             "인기검색어", "일", "많아", "으아악", "눈물"
         ]
+    },
+    "param": {
+        "topic": {
+            "name": "",
+            "code": ""
+        },
+        "subTopic": {
+            "name": "",
+            "code": ""
+        },
+        "keyword": "",
+        "keywords" : ["스마트폰"]
     }
 }

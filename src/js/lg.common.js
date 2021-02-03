@@ -160,6 +160,7 @@
                     {
                         breakpoint: 768,
                         settings: {
+                            variableWidth: true,
                             slidesToScroll: 1,
                             slidesToShow: 1
                         }
@@ -235,6 +236,7 @@
         CAREPLANER_KEY: "care_planer",
         CAREPLANER_ID: "putitem_list",
         CAREPLANER_PRICE: "putitem_price",
+        MOBILE_CHECK_WIDTH: 768,
         STICKY_MODULES:[],
         init: function(){
             this._addImgOnloadEvent();
@@ -247,29 +249,17 @@
             $('img').not('[data-pc-src]').on('error', function(e){
                 $(this).off('error');
                 $(this).attr('src', '/lg5-common/images/icons/noimage.svg');
-                var parentwid = $(this).parent().width();
-                var parenthei = $(this).parent().height();
-                var wid = parentwid*.3;
-                var hei = parenthei*.3;
                 $(this).css({
-                    opacity: .5,
-                    width: wid,
-                    height: hei
+                    width:'100%'
                 });
             });
         },
 
-        _addImgErrorEvent: function(img){
+        addImgErrorEvent: function(img){
             img.onerror = null;
             $(img).attr('src', '/lg5-common/images/icons/noimage.svg');
-            var parentwid = $(this).parent().width();
-            var parenthei = $(this).parent().height();
-            var wid = parentwid*.3;
-            var hei = parenthei*.3;
             $(this).css({
-                opacity: .5,
-                width: wid,
-                height: hei
+                width:'100%'
             });
         },
 
@@ -929,7 +919,13 @@
                 dataType : dtype,
                 data : data
             }).done(function (result) {
-                
+
+                if(dtype != "json") {
+                    if(callback && typeof callback === 'function') callback(result);
+                    return;
+                }
+
+
                 if(result.ssoCheckUrl != undefined && result.ssoCheckUrl != null && result.ssoCheckUrl != ""){
                     location.reload();                
                     return;
@@ -942,15 +938,31 @@
                 }
 
                 if(ignoreCommonSuccessCheck) {
+                    var data = result.data;
+                    if(data && !Array.isArray(data) && typeof data === 'object') {
+                        if(!data.success && !(typeof(data.success) === "boolean")) {
+                            data.success = "Y";
+                            result.data = data;
+                        }
+                    }
                     if(callback && typeof callback === 'function') callback(result); 
                 } else {
                     var data = result.data;
                     //success가 비어 있으면 성공(Y) 라 친다
+                    if(data && !Array.isArray(data) && typeof data === 'object') {
+                        if(!data.success && !(typeof(data.success) === "boolean")) {
+                            data.success = "Y";
+                            result.data = data;
+                        }
+                    }
+                    /*
                     if(!data.success && !(typeof(data.success) === "boolean")) {
                         data.success = "Y";
                     }
+                    */
                     if(!self.stringToBool(data.success) && data.alert) {
                         //에러
+
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
                     } else {
@@ -1019,7 +1031,8 @@
             });
         },
 
-        requestCart: function(id, sku, wishListId, wishItemId, postUrl) {
+        requestCart: function(ajaxUrl, param, isToast) {
+            /*
             var postData = {"id":id};
             if(!(!sku)) {
                 postData.sku = sku;
@@ -1030,26 +1043,30 @@
             if(!(!wishItemId)) {
                 postData.wishItemId = wishItemId;
             };
-            lgkorUI.requestAjaxDataPost(postUrl, postData, function(result){
+            if(!(!cartType)) {
+                //렌탈:rental,구매:buy
+                postData.cartType = cartType;
+            }
+            */
+           isToast = isToast == undefined ? true : isToast;
+            lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                 var data = result.data;
-                if(lgkorUI.stringToBool(data.success)) {
+                var cartCnt = (typeof data.cartCnt  === 'number') ? ""+data.cartCnt : data.cartCnt;
+                if(cartCnt) {
+                    var utility = $('div.header-wrap div.utility');
+                    utility.find('.cart span.count').remove();
+                    utility.find('.cart').append('<span class="count"><span class="blind">장바구니 제품 수</span>' + cartCnt + '</span>');
+                }
+
+                if(isToast && lgkorUI.stringToBool(data.success)) {
                     $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
                 }
             }, true);
         },
 
-        requestWish: function(id, sku, wishListId, wishItemId, wish, callbackSuccess, callbackFail, postUrl) {
-            var postData = {"id":id, "wish":wish};
-            if(!(!sku)) {
-                postData.sku = sku;
-            };
-            if(!(!wishListId)) {
-                postData.wishListId = wishListId;
-            };
-            if(!(!wishItemId)) {
-                postData.wishItemId = wishItemId;
-            };
-            lgkorUI.requestAjaxDataPost(postUrl, postData, function(result){
+        requestWish: function(param, wish, callbackSuccess, callbackFail, postUrl) {
+            param.wish = wish;
+            lgkorUI.requestAjaxDataPost(postUrl, param, function(result){
                 var data = result.data;
                 if(lgkorUI.stringToBool(data.success)) {
                     if(wish) {
@@ -1067,8 +1084,11 @@
         },
 
         commonAlertHandler: function(alert){
-            console.log(alert);
-            if(alert.isConfirm) {
+            if(!alert) {
+                return;
+            }
+            var isConfirm = lgkorUI.stringToBool(alert.isConfirm);
+            if(isConfirm) {
                 //컨펌
                 var obj ={title: alert.title,
                     typeClass: '',

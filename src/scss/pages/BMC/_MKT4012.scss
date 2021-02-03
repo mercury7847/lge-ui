@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .shop-selects {
-    margin-top:16px;
+    margin-top:32px;
     > ul {
         margin:0 -4px;
         font-size:0;
@@ -27,16 +27,26 @@
 }
 .academy-pop {
     .input-info  {
-        margin-top: 64px;
+        margin-top: 80px;
+        @include mobile {
+            margin-top: 60px;
+        }
         &:first-child {
             margin-top: 0;
         }
         .input-info-wrap {
-            margin-top: 48px; 
+            margin-top: 48px;
         }
-        @include pc {
-            .form-wrap {
-                padding-right: 186px;
+        .tit-wrap {
+            .chk-input {
+                @include pc {
+                    position: absolute;
+                    top: 4px;
+                    right: 0;
+                }
+                @include mobile {
+                    margin-top: 14px;
+                }
             }
         }
     }
@@ -45,6 +55,10 @@
         margin-top: -19px;
         li {
             margin-top: 19px;
+            padding-left: 0;
+        }
+        @include mobile {
+            margin-left: 0;
         }
     }
     .agree-input {
@@ -53,46 +67,31 @@
 }
 .event-app-form {
     .input-info {
-        margin-top: 64px;
+        margin-top: 80px;
+        @include mobile {
+            margin-top: 60px;
+        }
         &:first-child {
             margin-top: 0;
         }
         .input-info-wrap {
             margin-top: 48px; 
         }
-
-        .form-wrap {
-            & + .bullet-list {
-                margin-top: 48px;
-            }
-            @include pc {
-                padding-right: 186px;
-                & + .bullet-list {
-                    margin-right: 186px;
-                    @include calc(margin-left,25%,24px);
-                }
-            }
-        }
         .tit-wrap {
             .chk-input {
-                padding-top: 16px;
+                @include pc {
+                    position: absolute;
+                    top: 4px;
+                    right: 0;
+                }
+                @include mobile {
+                    margin-top: 14px;
+                }
             }
         }
         .bullet-list + .agree-input {
             margin-top: 12px;
         }
-    }
-}
-
-.tb-tit {
-    margin-bottom: 8px;
-    @include font-small;
-    color: $color-default;
-    font-weight: $font-weight-bold; 
-    @include mobile {
-        margin-bottom: 12px;
-        font-size: 13px;
-        line-height: 21px;
     }
 }
 

@@ -13,9 +13,9 @@
                     "groupTitle":null,
                     "listItem":[
                         {
-                            "cardId":"cd00001",
+                            "cardId":null,
                             "title":"이용시 22,000원 할인",
-                            "salePrice":"22000"
+                            "salePrice":"0"
                         }
                     ]
                 },
@@ -82,6 +82,7 @@
             {
                 "itemID": "item00001",
                 "itemSeq": "seq00001",
+                "check": false,
                 "available": true,
                 "availableMessage": null,
                 "type": "렌탈(케어솔루션)",
@@ -107,6 +108,7 @@
             {
                 "itemID": "item00002",
                 "itemSeq": "seq00002",
+                "check": true,
                 "available": false,
                 "availableMessage": "설치 불가능 제품입니다.",
                 "type": "케어십",

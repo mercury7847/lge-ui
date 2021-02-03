@@ -87,6 +87,9 @@
             .inquiry-list-notify {
                 @include mobile {
                     padding-bottom:24px;
+                    & + .btn-moreview {
+                        margin-top:0;
+                    }
                 }
             }
         }
@@ -220,7 +223,11 @@
                 margin-top: 60px;
             }
         }
-
+        .no-data {
+            @include mobile {
+                margin-bottom:60px;
+            }
+        }
     }
 
     //멤버십 포인트 조회
@@ -426,6 +433,15 @@
 .form-sections {
     .agree-all-chk {
         margin-top: 0;
+        .chk-wrap {
+            input + label {
+                font-size:18px;
+                line-height:28px;
+            }
+        }
+    }
+    .input-info {
+        margin-top:80px;
     }
 }
 

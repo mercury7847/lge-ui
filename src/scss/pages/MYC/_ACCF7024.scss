@@ -450,7 +450,7 @@
             @include mobile {
                 display:block;
                 position:relative;
-                min-height:100px;
+                // min-height:100px;
             }
             .thumb {
                 display:table-cell;
@@ -484,7 +484,7 @@
             }
             .infos {
                 display:table-cell;
-                vertical-align:top;
+                vertical-align:middle;
                 @include mobile {
                     display:block;
                     width:auto;
@@ -545,12 +545,12 @@
                     }
                 }
                 .count {
-                    margin-top:24px;
+                    margin-top:12px;
                     color:#666;
                     @include font-small;
-                    font-weight:500;
+                    // font-weight:500;
                     @include mobile {
-                        margin-top:2px;
+                        margin-top:6px;
                     }
                 }
             }
@@ -678,12 +678,15 @@
 
         // 재입고 알림
         .application-date {
-            color:#767676;
+            color:#000;
             @include font-medium;
             font-weight:500;
             text-align:center;
+            @include mobile {
+                font-weight:normal;
+            }
             &.small {
-                @include font-small;
+                // @include font-small;
                 @include mobile {
                     font-size:14px;
                     line-height:22px;
@@ -698,7 +701,7 @@
                 text-align:left;
                 @at-root .col2 {
                     .application-date {
-                        margin-top:24px;
+                        margin-top:10px;
                     }
                 }
             }
@@ -750,12 +753,12 @@
         .box {
             position:relative;
             margin:0;
-            border-top:1px solid #ddd;
-            &:first-child {
-                border-top:none;
-            }
+            border-bottom:1px solid #ddd;
+            // &:first-child {
+            //     border-top:none;
+            // }
             @include mobile {
-                padding:32px 0;
+                padding:54px 0 24px;
                 border-radius:0;
                 box-shadow:none;
                 overflow:initial;
@@ -765,8 +768,8 @@
                 width:100%;
                 @include mobile {
                     display:block;
-                    padding-top:30px;
-                    padding-left:112px;
+                    // padding-top:30px;
+                    padding-left:116px;
                 }
                 .col {
                     display:table-cell;
@@ -778,24 +781,35 @@
                         padding:0;
                     }
                     &.btn-col {
-                        width:16.8%;
+                        width:15.8%;
                         text-align:right;
-                        //white-space:nowrap;
-                        font-size: 0;
-                        @include tablet {
-                            width:22.8%;
-                        }
-                        .btn:not(:first-child) {
-                            margin-top: 6px;
+                        white-space:nowrap;
+                        .btn {
+                            display: block;
                         }
                         @include mobile {
                             width:100%;
                             margin-top:12px;
                             text-align:left;
                             .btn {
-                                display: block;
+                                &:not(:first-child) {
+                                    margin-top: 4px;
+                                }
                             }
                         }
+                        @include pc {
+                            .btn {
+                                float: right;
+                                &:not(:first-child) {
+                                    margin-top: 6px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .product-info {
+                    .thumb {
+                        margin-left:-20px;
                     }
                 }
             }
@@ -806,6 +820,9 @@
                 width:24px;
                 height:24px;
                 background:url("/lg5-common/images/icons/btn-close-24.svg") no-repeat;
+                @include mobile {
+                    top:24px;
+                }
             }
             .chk-wish-wrap {
                 position:absolute;
@@ -814,10 +831,7 @@
             }
             &.disabled {
                 .col-table {
-                    padding-right:16.8%;
-                    @include tablet {
-                        width:22.8%;
-                    }
+                    padding-right:15.8%;
                 }
                 .product-info {
                     .thumb {
@@ -853,10 +867,10 @@
 
 // 청약 계약 진행단계 안내
 .contract-steps {
-    margin-top:24px;
+    margin-top:48px;
     overflow:hidden;
     @include mobile {
-        margin-top:40px;
+        margin-top:32px;
     }
     > ol {
         position:relative;

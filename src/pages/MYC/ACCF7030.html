@@ -357,7 +357,7 @@
                     <div class="tit-area">
                         <h2 class="h2-tit">02. 방문시간을 선택해주세요. <span>(필수)</span></h2>
                     </div>
-                    <div class="box-wrap timetable-wrap">
+                    <div class="box-wrap timetable-wrap" style="display:none;">
                         <!-- 
                             시간 선택 시:
                                 해당라인 th = class : choice,
@@ -468,6 +468,16 @@
                             </tbody>
                         </table>    
                     </div>
+                    <!-- 210129 추가(케이스) -->
+                    <!-- 변경 요청일 미선택 케이스 -->
+                    <div class="box-wrap timetable-wrap">
+                        <p class="info-txt">변경할 방문일을 선택해주세요.</p>
+                    </div>
+                    <!-- 변경 요청일 선택불가 케이스 -->
+                    <div class="box-wrap timetable-wrap" style="display:none;">
+                        <p class="info-txt">선택가능한 방문일이 없습니다.<br>신청이 불가능한 경우 콜센터(1544-7777)로<br>문의주시기 바랍니다.</p>
+                    </div>
+                    <!-- //210129 추가(케이스) -->
                     <div class="box-info timetable-info">
                         <ul>
                             <li class="black"><span class="blind">검정색 표기</span> 예약가능</li>

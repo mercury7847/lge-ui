@@ -26,6 +26,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             x : 127.0395764,
             y : 37.5235644,
             boundsMargin: 50,
+            viewZoom: 12,
             overlayName : 'ui_overlay_item',
             templates: {
                 customMarker : 
@@ -68,8 +69,10 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     '           </dl>'+
                     '       </div>'+
                     '       <div class="btn-group">'+
-                    '           <a href="#n" class="btn border size">매장 상담 신청</a>'+
-                    '           <a href="#{{shopID}}" class="btn border size detail-view">상세 정보</a>'+
+                                '{{#if consultFlag == "Y"}}'+
+                    '           <a href="https://www.lge.co.kr/lgekor/bestshop/counsel/counselMain.do?device=w&inflow=bestshop&orgcode={{shopID}}" class="btn border size storeConsult-btn">매장 상담 신청</a>'+
+                                '{{/if}}'+
+                    '           <a href="{{detailUrl}}" class="btn border size detail-view">상세 정보</a>'+
                     '       </div>'+
                     '   </div>'+
                     '</div>'
@@ -274,7 +277,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
         _changeMarkersState: function _changeMarkersState(){
             var self = this;
-
+            console.log("#### _changeMarkersState ###")
             if(!self.map) return;
 
             var showItems = self._setItemVisible();
@@ -282,7 +285,6 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             var arr = self._getNumberInArea(showItems);
 
             self._setItemInfo(arr);
-
             self.triggerHandler('mapchanged', [arr]);   
         },
 
@@ -293,7 +295,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             var info = null;
             for(var i=0; i<self.itemArr.length; i++){
                 info = self.itemArr[i].info;
-                bounds.extend(new naver.maps.LatLng(info.gpsInfo.gpsx, info.gpsInfo.gpsy));
+                bounds.extend(new naver.maps.LatLng(info.gpsInfo.gpsy, info.gpsInfo.gpsx));
             }
             self.map.fitBounds(bounds);  
         },
@@ -345,7 +347,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 
             for(var i=0; i<arr.length; i++){
                 var obj = arr[i];
-                self._addCustomMarker(obj.gpsInfo.gpsx, obj.gpsInfo.gpsy, obj, i);
+                self._addCustomMarker(obj.gpsInfo.gpsy, obj.gpsInfo.gpsx, obj, i);
             }
         },   
 
@@ -368,7 +370,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             return new naver.maps.LatLngBounds(projection.fromOffsetToCoord(offsetSW), projection.fromOffsetToCoord(offsetNE));
         },
 
-        getAdressPositions: function(){
+        getAdressPositions: function(address, callback){
             var self = this;
 
             naver.maps.Service.geocode({
@@ -376,20 +378,35 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
               }, function(status, response) {
                 if (status === naver.maps.Service.Status.ERROR) {
                   if (!address) {
-                    return alert('Geocode Error, Please check address');
+                    callback({
+                        success: "N",
+                        errMsg: "Geocode Error, Please check address"
+                    });
+                    return;
                   }
-                  return alert('Geocode Error, address:' + address);
+                  callback({
+                      success: "N",
+                      errMsg: 'Geocode Error, address:' + address
+                  });
+                  return;
                 }
             
                 if (response.v2.meta.totalCount === 0) {
-                  return alert('No result.');
+                    callback({
+                        success: "N",
+                        errMsg: 'No result.'
+                    });
+                  return;
                 }
             
-                var htmlAddresses = [],
-                  item = response.v2.addresses[0],
-                  point = new naver.maps.Point(item.x, item.y);
+                  var item = response.v2.addresses[0];
+                  var point = new naver.maps.Point(item.x, item.y);
                   
-                  console.log("point:", point)
+                  callback({
+                      success: "Y",
+                      pointx: point.x,
+                      pointy: point.y
+                  });
               });
         },
 
@@ -406,7 +423,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
         applyMapData: function(data){
             var self = this;
-
+            console.log("### applyMapData ###");
             self.deleteMapdata();
 
             self.itemArr = [];
@@ -428,13 +445,32 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
         selectedMarker: function selectedMarker(id){
             var self = this;
 
+            var centerPoint;
             self.itemArr = vcui.array.map(self.itemArr, function(item, index){
                 var selected = item.id == id ? true : false;
-                item.info.selected = selected;         
+                item.info.selected = selected;        
+                
+                if(selected) centerPoint = {items: item, lat: item.info.gpsInfo.gpsy, long: item.info.gpsInfo.gpsx}
                 return item;
             });
 
             self._changeMarkersState();
+
+            var marker = centerPoint.items.item;
+            console.log(marker);
+            marker.setZIndex(self.itemArr.length-1);
+
+            self.map.setZoom(12, true);
+            self.map.panTo(new naver.maps.LatLng(centerPoint.lat, centerPoint.long), {duration:460, easing:"easeOutCubic"});
+        },
+
+        addMaker: function(lat, long){
+            var self = this;
+            
+            var maker = new naver.maps.Marker({
+                position: new naver.maps.LatLng(lat, long),
+                map: self.map
+            })
         }
     });
     ///////////////////////////////////////////////////////////////////////////////////////

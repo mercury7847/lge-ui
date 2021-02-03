@@ -5,10 +5,61 @@
 .KRC0003 {
     max-width:1920px;
     margin:0 auto;
-    .indi-wrap {
-        bottom:24px;
-    }
     .slide-wrap.hero-banner {
+        .custom-indi-wrap {
+            bottom: 24px;
+            right: 40px;
+            left: 40px;
+            //max-width: 1380px;
+            //margin: 0 auto;
+            .custom-indis {
+                max-width: (1380px + 30px);
+                .indis {
+                    width: 100%;
+                    table-layout: fixed;
+                    li {
+                        width: auto;
+                        padding: 0 15px;
+                        &.on {
+                            width: auto;
+                        }
+                    }
+                }
+            }
+            .indi-control {
+                position: absolute;
+                bottom: 16px;
+                right: 50%;
+                margin-right: -690px;
+                @media screen and (max-width: (1460px + 30px)) {
+                    right: 15px;
+                    margin-right: 0;
+                    @include mobile {
+                        right: 0;
+                    }
+                }
+            }
+            @include mobile {
+                bottom: 20px;
+                right: 16px;
+                left: 16px;
+                max-width: none;
+                .custom-indis {
+                    margin: 0 -5px;
+                    .indis {
+                        li {
+                            padding: 0 5px;
+                        }
+                    }
+                }
+                .indi-control {
+                    bottom: 20px;
+                }
+            }
+        }
+        .slide-control-wrap {
+            display: none;
+        }
         .slide-content {
             .slide-conts {
                 .text-box {

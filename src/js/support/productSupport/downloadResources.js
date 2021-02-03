@@ -9,7 +9,7 @@
                     '<li>{{date}}</li>' +
                     '<li>{{language}}</li>' +
                 ' </ul>' +
-                '<div class="btns-area">' +
+                '<div class="btn-wrap">' +
                     '{{# for (var i = 0; i < file.length; i++) { #}}' +
                     '<a href="{{file[i].src}}" class="btn border size btn-download"><span>{{file[i].type}}</span></a>' +
                     '{{# } #}}' +
@@ -18,19 +18,14 @@
         '</li>';
     var driverListTemplate = 
         '<li>' +
-            '<div class="head">' +
-                '<div class="file-box">' +
-                    '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{os}} {{title}}</button></p>' +
-                    '<ul class="options">' +
-                        '<li>{{version}}  {{category}}</li>' +
-                        '<li>{{driver}}</li>' +
-                        '<li>{{date}}</li>' +
-                    '</ul>' +
-                    '<div class="btn-area">' +
-                        '<div class="box">' +
-                            '<a href="{{file.src}}" class="btn border size"><span>다운로드 {{file.size}}</span></a>' +
-                        '</div>' +
-                    '</div>' +
+            '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{os}} {{title}}</button></p>' +
+            '<div class="info-wrap">' +
+                '<ul class="options">' +
+                    '<li>{{category}}</li>' +
+                    '<li>{{date}}</li>' +
+                ' </ul>' +
+                '<div class="btn-wrap">' +
+                    '<a href="{{file.src}}" class="btn border size btn-download"><span>다운로드 {{file.size}}</span></a>' +
                 '</div>' +
             '</div>' +
         '</li>';
@@ -51,8 +46,9 @@
 
     var otherService = {
         template : 
-            '<li class="{{currentClass}}">' +
+            '<li>' +
                 '<a href="{{url}}">' +
+                    '<div class="icon"><img src="{{imgUrl}}" alt=""></div>' + 
                     '<strong class="tit">{{name}}</strong>' +
                 '</a>' +
             '</li>',
@@ -64,26 +60,27 @@
         initialize : function(data){
             var self = this;
     
-            this.setMenuList(self.el.list, data);
+            this.setMenuList(data);
         },
-        setMenuList: function(target, data) {
+        reset : function(){
             var self = this;
-            var data = data.otherService;
-            var serviceList = data.serviceList instanceof Array ? data.serviceList : [];
+            self.el.list.html('');
+            self.el.wrap.hide();
+        },
+        setMenuList: function(data) {
+            var self = this;
+            var data = data.serviceMenu;
+            var serviceList = data instanceof Array ? data : [];
             var htmlData = "";
-            
-            if( data.title.length ) {
-                self.el.title.html(data.title)
-            }
+
             if( serviceList.length ) {
                 serviceList.forEach(function(item){
                     htmlData += vcui.template(self.template, item);
                 });
-                target.html(htmlData);
+                self.el.list.html(htmlData);
                 self.el.wrap.show();
             } else {
-                target.html('');
-                self.el.wrap.hide();
+                self.reset();
             }
         },
     };
@@ -103,70 +100,93 @@
         el : {
             wrap : $('.related-info'),
             title : $('.related-info .banner-tit'),
-            list : $('.related-info .slide-track')
+            list : $('.related-info .slide-track'),
+            slider : $('.related-info .info-slider')
+        },
+        slideActiveClass : "is-active",
+        slideConfig : {
+            infinite: false,
+            autoplay: false,
+            slidesToScroll: 3,
+            slidesToShow: 3,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToScroll: 3,
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        slidesToScroll: 1,
+                        slidesToShow: 1,
+                        variableWidth: true
+                    }
+                },
+                {
+                    breakpoint: 20000,
+                    settings: {
+                        slidesToScroll: 3,
+                        slidesToShow: 3
+                    }
+                }
+            ]
         },
         initialize : function(data){
             var self = this;
     
-            this.setSlideContent(self.el.list, data);
-            this.sliderInit();
+            self.setSlideContent(data);
+            self.sliderInit();
+        },
+        reset : function(){
+            var self = this;
+            self.el.list.html('');
+            self.el.wrap.hide();
         },
         sliderInit : function(){
+            var self = this;
             vcui.require(['ui/carousel'], function () {    
                 // LG제품에 관련된 정보를 확인하세요!
-                $('.info-slider').vcCarousel({
-                    infinite: false,
-                    autoplay: false,
-                    slidesToScroll: 3,
-                    slidesToShow: 3,
-                    responsive: [
-                        {
-                            breakpoint: 1024,
-                            settings: {
-                                slidesToScroll: 3,
-                                slidesToShow: 3
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                arrows: false,
-                                slidesToScroll: 1,
-                                slidesToShow: 1,
-                                variableWidth: true
-                            }
-                        },
-                        {
-                            breakpoint: 20000,
-                            settings: {
-                                slidesToScroll: 3,
-                                slidesToShow: 3
-                            }
-                        }
-                    ]
-                });
+                if( !self.el.slider.hasClass(self.slideActiveClass) ) {
+                    self.el.slider.not('.is-active').vcCarousel(self.slideConfig);
+                    self.el.slider.addClass(self.slideActiveClass);
+                } else {
+                    var activeSlider = self.el.slider.filter('.' + self.slideActiveClass);
+                    activeSlider.vcCarousel('update');
+                    activeSlider.vcCarousel('reinit');
+                }
             });
-            
         },
-        setSlideContent: function(target, data) {
+        setSlideContent: function(data) {
             var self = this;
             var data = data.relatedInfo;
             var infoList = data.infoList instanceof Array ? data.infoList : [];
             var htmlData = "";
+
+            if( data.title.length ) {
+                self.el.title.html(data.title);
+            }
             
             if( infoList.length ) {
                 htmlData += vcui.template(self.template, data);
-                target.html(htmlData);
+                self.el.list.html(htmlData);
                 self.el.wrap.show();
             } else {
-                target.html('');
-                self.el.wrap.hide();
+                self.reset();
             }
         },
     }
 
+    //배너 토글
     function bannerToggle(modelType) {
         var $banner = $('.banner-wrap.toggle-banner');
+
+        if( modelType == undefined) {
+            $banner.removeClass('is-active');
+        }
 
         if( modelType == "CT50019564" || modelType == "CT50019585") {
             $banner.addClass('is-active');
@@ -175,6 +195,18 @@
         }
     }
 
+    //드라이버 OS 분류 셀렉트 옵션 값 업데이트
+    function optionUpdate(target, option){
+        var $target = $(target);
+        var _options = "";
+
+        if( option.length ) {
+            option.forEach(function(v, i){
+                _options += '<option value="' + v.code + '">' + v.codeName + '<' + '/option>';
+            })
+        }
+        $target.vcSelectbox('update');
+    }
     
 
     
@@ -224,10 +256,10 @@
                     listArr.forEach(function(item) {
                         html += vcui.template(manualListTemplate, item);
                     });
-                    self.manualSec.find('.manual-list').append(html).show();
+                    self.manualSec.find('.download-list').append(html).show();
                     self.manualSec.find('.no-data').hide();
                 } else {
-                    self.manualSec.find('.manual-list').html('').hide();
+                    self.manualSec.find('.download-list').html('').hide();
                     self.manualSec.find('.no-data').show();
                 }
 
@@ -247,12 +279,12 @@
                     listArr.forEach(function(item) {
                         html += vcui.template(driverListTemplate, item);
                     });
-                    self.driverSec.find('.driver-list').html(html).show();
+                    self.driverSec.find('.download-list').html(html).show();
                     self.driverSec.find('.pagination').show();
                     self.driverSec.find('.pagination').pagination('update', list.listPage);
                     self.driverSec.find('.no-data').hide();
                 } else {
-                    self.driverSec.find('.driver-list').html('').hide();
+                    self.driverSec.find('.download-list').html('').hide();
                     self.driverSec.find('.pagination').hide();
                     self.driverSec.find('.no-data').show();
                 }
@@ -263,7 +295,7 @@
 
                 if (listArr.length) {
                     listArr.forEach(function(item) {
-                        html += vcui.template('<option value="{{value}}">{{option}}</option>', item);
+                        html += vcui.template('<option value="{{code}}">{{codeName}}</option>', item);
                     });
                 } else {
                     html = '<option value="">없음</option>';
@@ -273,44 +305,55 @@
                 this.driverSec.find('#os').html(html);
                 this.driverSec.find('#os').vcSelectbox('update');
             },
-            setDriverOption: function(list) {
-                var listArr = list instanceof Array ? list : [];
-                var html = "";
+            setOsActive : function(category){
+                var self = this;
+                var $formWrap = this.driverSec.find('.form-wrap');
 
-                if (listArr.length) {
-                    listArr.forEach(function(item) {
-                        html += vcui.template('<option value="{{value}}">{{option}}</option>', item);
-                    });
-                
-                    this.driverSec.find('#driver').html(html);
-                    this.driverSec.find('#driver').vcSelectbox('update');
-                    this.driverSec.find('#driver').closest('.forms').show();
+                if(category == "CT50019564" || category == "CT50019585" ) {
+                   $formWrap.show();
                 } else {
-                    this.driverSec.find('#driver').closest('.forms').hide();
+                   $formWrap.hide();
                 }
             },
-            setDriverType: function(list) {
-                var listArr = list instanceof Array ? list : [];
-                var html = "";
-                listArr.forEach(function(item) {
-                    html += vcui.template('<li><a href="#">{{type}}({{count}})</a></li>', item);
-                });
-                this.driverSec.find('.tabs-wrap ul').html(html);
-                this.driverSec.find('.tabs-wrap').vcTab('update').vcTab('select', 0);
-            },
-            searchAllList: function(formData) {
+            searchAllList: function(url, data) {
                 var self = this;
-                var ajaxUrl = '/lg5-common/data-ajax/support/downloadList.json';
 
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxDataPost(ajaxUrl, formData, function(result){
-                    var data = result.data;
+                lgkorUI.requestAjaxDataPost(url, data, function(result){
+                    var resultData = result.data;
     
-                    self.setManualList(data.manual);
-                    self.setDriverList(data.driver);
-                    self.setOsOption(data.driver.osOption);
-                    self.setDriverOption(data.driver.driverOption);
-                    self.setDriverType(data.driver.driver);
+                    self.setManualList(resultData.manual);
+                    self.setDriverList(resultData.driver);
+                    self.setOsOption(resultData.driver.osOption);
+
+                    $('.contents').commonModel('updateSummary', {
+                        product: [data.categoryNm, data.subCategoryNm, data.modelCode],
+                        reset: 'product'
+                    });
+                    
+                    self.$myProductWarp.hide();
+                    
+                    //업데이트 센터 바로가기 배너
+                    bannerToggle(data.subCategory)
+
+                    //하단 다른 서비스 추천
+                    otherService.initialize(resultData);
+
+                    //하단 관련 메뉴
+                    relatedInfo.initialize(resultData);
+
+                    //만족도 평가 박스 모델코드 삽입
+                    $('.survey-banner-wrap .model').html(data.modelCode);
+
+                    //optionUpdate('#os', resultData.driver.osOption);
+                    self.setOsOption(resultData.driver.osOption);
+                    self.setOsActive(data.subCategory)
+
+                    $('.contents').commonModel('next', self.$stepInput);
+                    $('.contents').commonModel('focus', self.$productBar, function() {
+                        self.$productBar.vcSticky();
+                    });
+
 
                     lgkorUI.hideLoading();
                 });
@@ -330,7 +373,7 @@
             },
             searchDriverList: function(formData) {
                 var self = this;
-                var ajaxUrl = self.driverSec.data('ajax');;
+                var ajaxUrl = self.driverSec.data('ajax');
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl, formData, function(result){
@@ -343,6 +386,17 @@
             },
             bindEvent: function() {
                 var self = this;
+                
+                //모델 재설정 : 초기화
+                $('.contents').on('reset', function(e) {
+                    self.$myProductWarp.show();
+                    self.$cont.commonModel('next', self.$stepModel);
+                    otherService.reset();
+                    relatedInfo.reset();
+                    self.manualSec.find('.download-list').empty();
+                    $('#driverKeyword').val('');
+                    bannerToggle();
+                });
 
                 // 모델 선택 후 이벤트
                 $('.contents').on('complete', function(e, data, url) {    
@@ -350,40 +404,13 @@
                         modelCode: data.modelCode,
                         serviceType: $('#serviceType').val(),
                         category: data.category,
-                        subCategory: data.subCategory
+                        categoryNm: data.categoryName,
+                        subCategory: data.subCategory,
+                        subCategoryNm: data.subCategoryName
                     };
+                    defaultParam = param;
 
-                    lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                        var resultData = result.data;
-
-                        $('.contents').commonModel('updateSummary', {
-                            product: [data.categoryName, data.subCategoryName, data.modelCode],
-                            reset: 'product'
-                        });
-                        
-                        self.$myProductWarp.hide();
-                        
-                        //업데이트 센터 바로가기 배너
-                        bannerToggle(data.subCategory)
-
-                        //하단 다른 서비스 추천
-                        otherService.initialize(resultData);
-
-                        //하단 관련 메뉴
-                        relatedInfo.initialize(resultData);
-
-                        //만족도 평가 박스 모델코드 삽입
-                        $('.survey-banner-wrap .model').html(data.modelCode);
-
-
-
-                        $('.contents').commonModel('next', self.$stepInput);
-                        $('.contents').commonModel('focus', self.$productBar, function() {
-                            self.$productBar.vcSticky();
-                        });
-                    });
-
-                    
+                    self.searchAllList(url, param);
                 });
 
                 $(document).on('click', '.btn-download', function(e) {
@@ -411,52 +438,74 @@
                     self.searchManualList(param);
                 });
 
-                self.driverSec.find('#os').on('change', function() {
+                //드라이버 다운로드 키워드 검색
+                function downloadSearchKeyword(){
                     var param = $.extend({}, defaultParam, {
-                        os: $('#os').val(),
-                        driver: $('#driver').val(),
+                        os : $('#os').val(),
+                        keyword: $('#driverKeyword').val(),
                         page: 1
                     });
-                    
                     self.searchDriverList(param);
-                });
-                self.driverSec.find('#driver').on('change', function() {
-                    var param = $.extend({}, defaultParam, {
-                        os: $('#os').val(),
-                        driver: $('#driver').val(),
-                        page: 1
-                    });
+                }
 
-                    self.searchDriverList(param);
-
-                    if (val) {
-                        self.driverSec.find('.tabs-wrap').hide();
-                    } else {
-                        self.driverSec.find('.tabs-wrap').show();
-                        self.driverSec.find('.tabs-wrap').vcTab('select', 0);
+                //키워드 입력후 엔터시 검색
+                self.driverSec.find('#driverKeyword').on('keyup', function(e){
+                    if ( e.keyCode == 13 ) {
+                        e.preventDefault();
+                        downloadSearchKeyword();
                     }
-                });
-                self.driverSec.find('.tabs-wrap').on('tabchange', function(e, data) {
-                    var param = $.extend({}, defaultParam, {
-                        os: $('#os').val(),
-                        driver: $(data.button).data('value'),
-                        page: 1
-                    });
+                })
 
-                    self.searchDriverList(param);
+                //키워드 입력후 검색버튼 클릭시 검색
+                $(document).on('click', '.driver-inner-search button', function(e){
+                    downloadSearchKeyword();
                 });
 
+                self.driverSec.find('#os').on('change', function() {
+                    downloadSearchKeyword();
+                });
                 self.driverSec.find('.pagination').on('pageClick', function(e) {
                     var param = $.extend({}, defaultParam, {
                         os: $('#os').val(),
                         driver: $('#driver').val(),
+                        keyword: $('#driverKeyword').val(),
                         page: e.page
                     });
 
                     self.searchDriverList(param);
                 });
+                // self.driverSec.find('#driver').on('change', function() {
+                //     var param = $.extend({}, defaultParam, {
+                //         os: $('#os').val(),
+                //         driver: $('#driver').val(),
+                //         page: 1
+                //     });
 
-                self.driverSec.find('.driver-list-wrap').on('click', '.btn-info', function() {
+                //     self.searchDriverList(param);
+
+                //     if (val) {
+                //         self.driverSec.find('.tabs-wrap').hide();
+                //     } else {
+                //         self.driverSec.find('.tabs-wrap').show();
+                //         self.driverSec.find('.tabs-wrap').vcTab('select', 0);
+                //     }
+                // });
+                // self.driverSec.find('.tabs-wrap').on('tabchange', function(e, data) {
+                //     var param = $.extend({}, defaultParam, {
+                //         os: $('#os').val(),
+                //         driver: $(data.button).data('value'),
+                //         keyword: $('#driverKeyword').val(),
+                //         page: 1
+                //     });
+
+                //     self.searchDriverList(param);
+                // });
+
+               
+                
+                
+
+                self.driverSec.find('.download-list-wrap').on('click', '.btn-info', function() {
                     var ajaxUrl = $(this).data('href'),
                         param = $.extend({}, defaultParam, {
                             cSeq: $(this).data('cseq')

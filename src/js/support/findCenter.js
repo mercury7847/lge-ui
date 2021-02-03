@@ -125,7 +125,7 @@
 
             self._resize();
             
-            vcui.require(['ui/storeMap'], function () {
+            vcui.require(['ui/centerMap'], function () {
                 lgkorUI.requestAjaxData(self.configUrl, {}, function(result){
                     self.bestShopUrl = result.data.bestShopUrl;
                     self.localUrl = result.data.localListUrl;
@@ -134,7 +134,7 @@
                     self.detailUrl = result.data.detailPageUrl;
                     self.userAdressCheckedUrl = result.data.userAdressCheckedUrl;
 
-                    self.$mapContainer.vcStoreMap({
+                    self.$mapContainer.vcCenterMap({
                         keyID: result.data.mapID,
                         appKey: result.data.appKey,
                         longitude : result.data.basicPosition.longitude,
@@ -186,8 +186,16 @@
                             '</div>'
                         }
                     }).on('mapinit', function(e,data){
-                        self.$map = self.$mapContainer.vcStoreMap('instance');
-                        self._loadStoreData();
+                        var params = location.search.substr(location.search.indexOf("?") + 1);
+                        var sval = "", temp;
+                        params = params.split("&");
+                        for (var i = 0; i < params.length; i++) {
+                            temp = params[i].split("=");
+                            if ([temp[0]] == 'seq') { sval = temp[1]; }
+                        }
+
+                        self.$map = self.$mapContainer.vcCenterMap('instance');
+                        self._loadStoreData(sval);
                         self._bindEvents();
                     }).on('mapchanged', function(e, data){	console.log(data);
                         self._setItemList(data);
@@ -206,7 +214,7 @@
                 addressFinder = new AddressFind();
                 $('.ui_search').search({
                     template: {
-                        autocompleteList: '<li><a href="#{{shopID}}" class="btn-detail" title="새창 열림">{{shopName}}</a></li>',
+                        autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="#{{item.shopID}}" class="btn-detail" title="새창 열림">{{item.shopName}}</a></li>{{/each}}</ul>',
                     }
                 });
 
@@ -273,9 +281,11 @@
 
 
             self.$searchResultContainer.on('click', '.btn-back', function(e){
-                e.preventDefault();
+                // e.preventDefault();
+                
+                // self._returnSearchMode();
 
-                self._returnSearchMode();
+                self.$leftContainer.removeClass('active')
             });
 
             self.$searchContainer.on('click', '.btn-view', function(e){
@@ -313,6 +323,7 @@
             });
             self.$localSearchButton.on('click', function(e){
                 self._setLocalSearch();
+                self.$leftContainer.addClass('active')
             });
             self.$searchUserAdressButton.on('click', function(e){
                 self.searchType = 'user';
@@ -352,8 +363,11 @@
                     
                 }
             });
-            self.$address1.on('keydown', function() {
-
+            self.$address1.on('keyup', function(e) {
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    self.searchCenterName.trigger('click');
+                }
             });
 
             $('.ui_search').on('autocomplete', function(e, param, url, callback) {
@@ -404,8 +418,8 @@
                 }
 
                 var point = response.result.items[0].point;
-                self.latitude = point.x;
-                self.longitude = point.y;
+                self.longitude = point.x;
+                self.latitude = point.y;
 
                 callback && callback();
             });
@@ -423,9 +437,13 @@
             self.$citySelect2.val();
         },
 
-        _loadStoreData: function(){
+        _loadStoreData: function(seq){
             var self = this;
             var param = $.extend(self._getKeyword(), self.optionData);
+
+            if (seq) param = $.extend(param, {
+                seq: seq
+            });
 
             lgkorUI.requestAjaxDataPost(self.bestShopUrl, param, function(result){
                 self.storeData = vcui.array.map(result.data, function(item, index){
@@ -434,6 +452,7 @@
                     return item;
                 });
                 self.$map.applyMapData(self.storeData);
+                if (seq) self.$map.selectedMarker(self.storeData[0].id);
 
                 self.userCityName = self.userBoroughName = "";
                 if (self.searchType == 'current' || self.searchType == 'user') self.searchType = 'local';
@@ -531,14 +550,14 @@
                     optop = self.$leftContainer.height() - self.$optionContainer.find('.btn-sel').height();
                     self.$optionContainer.stop().transition({y:'calc(100% - 80px)'}, 350, "easeInOutCubic", function(){
                         self.isTransion = false;
-                        self.$leftContainer.find('.dim').remove();
+                        // self.$leftContainer.find('.dim').remove();
                         self.$optionContainer.removeAttr('style').removeClass('open');
                     });
                 } else{
                     optop = self.$optionContainer.position().top;
 
                     self.$optionContainer.addClass('open');
-                    self.$leftContainer.prepend('<div class="dim"></div>');
+                    // self.$leftContainer.prepend('<div class="dim"></div>');
                     self.$optionContainer.stop().css({y:'calc(100% - 80px)'}).transition({y:0}, 350, "easeInOutCubic", function(){self.isTransion=false;});
                 }
             }
@@ -615,7 +634,8 @@
                     break;
                 case 'center':
                     keywords = {
-                        searchCity: self.$citySelect2.val(),
+                        latitude:self.latitude,
+                        longitude:self.longitude,
                         searchKeyword: self.$address1.val()
                     };
                     break;
@@ -704,6 +724,7 @@
                 self.searchResultMode = true;
 
                 self._loadStoreData();
+                self.$leftContainer.addClass('active');
             } else{
                 lgkorUI.alert("", {
                     title: "지하철 검색의 역명을 선택해 주세요."
@@ -718,15 +739,21 @@
             var keyword = self.$address1.val();
             var trim = keyword.replace(/\s/gi, '');
             if(trim.length){
+                var callback = function() {
+                    self._loadStoreData()
+                };
+
                 self.schReaultTmplID = "search";
                 self.searchResultMode = true;
 
                 $(window).off('keyup.searchShop');
 
-                self._loadStoreData();
+                self.searchAddressToCoordinate(self.$citySelect2.val(), callback);
+
+                self.$leftContainer.addClass('active');
             } else{
                 lgkorUI.alert("", {
-                    title: "광역 시/도 선택 후 센터 명을 입력해주세요."
+                    title: '광역 시/도 선택 후<br>센터 명을 입력해주세요.'
                 });
             }
         },
@@ -743,6 +770,8 @@
 
                 $(window).off('keyup.searchShop');
                 self._loadStoreData();
+
+                self.$leftContainer.addClass('active');
             } else{
                 lgkorUI.alert("", {
                     title: "주소찾기 버튼 선택하여 주소 검색 시 확인 가능합니다."
@@ -836,19 +865,21 @@
 
             if(!self.isChangeMode){
                 self.isChangeMode = true;
-
+                self._setListArea();
+                self._setResultText();
+                /* 
                 var listop = self.$defaultListContainer.position().top;
 
-                self._setResultText();
                 $('.result-list-box').stop().css({display:'block', opacity:0, y:100}).transition({opacity:1, y:0}, 410, "easeInOutCubic");
                 
-                var resultheight = $('.result-list-box').height();
+                var resultheight = $('.result-list-box').outerHeight() + 48;
                 self.$defaultListContainer.css({position:'absolute', top:listop}).transition({top:resultheight}, 420, "easeInOutCubic", function(){
                     self.$searchContainer.css('display', 'none');
                 });
 
-                self._setListArea();
                 self.$defaultListContainer.find('.scroll-wrap').animate({scrollTop:0}, 120);
+                 */
+                self.$leftContainer.addClass('active');
             }
         },
 
@@ -874,18 +905,16 @@
             var paddingtop = parseInt(self.$defaultListContainer.find('.sch-list').css('padding-top'));
             
 
-            console.log(top, titheight, scheight, optheight, resultheight)
+            console.log(top, titheight, scheight, optheight, resultheight, paddingtop)
 
             var listheight;
             if(self.searchResultMode){
-                // listheight = self.windowHeight - top - resultheight - optheight - paddingtop - 5;
                 listheight = self.windowHeight - resultheight - optheight - paddingtop;
             } else{
-                // listheight = self.windowHeight - top - titheight - scheight - optheight - paddingtop - 5;
-                listheight = self.windowHeight - titheight - scheight - optheight - paddingtop;
+                listheight = self.windowHeight - titheight - scheight - paddingtop;
             }
             
-            self.$defaultListContainer.find('.scroll-wrap').height(listheight);
+            // self.$defaultListContainer.find('.scroll-wrap').height(listheight);
         },
 
         _resize: function(){

@@ -1,5 +1,7 @@
 (function() {
     var ORDER_INQUIRY_LIST_URL;
+    var PRODUCT_STATUS_URL;
+    var ORDER_DETAIL_URL;
 
     var inquiryListTemplate =
         '<div class="box" data-id="{{dataID}}">'+
@@ -33,11 +35,11 @@
                     '<span class="blind">제품정보</span>'+
                     '<div class="product-info">'+
                         '<div class="thumb">'+
-                            '<a href="{{listData.productPDPurl}}"><img src="{{listData.productImage}}" alt="{{listData.productNameKR}}"></a>'+
+                            '<a href="{{listData.productPDPurl}}"><img onError="lgkorUI.addImgErrorEvent(this)" src="{{listData.productImage}}" alt="{{listData.productNameKR}}"></a>'+
                         '</div>'+
                         '<div class="infos">'+
                             '{{#if listData.productFlag}}<div class="flag-wrap"><span class="flag">{{listData.productFlag}}</span></div>{{/if}}'+
-                            '<p class="name"><a href="{{listData.productDetailUrl}}"><span class="blind">제품명</span>{{listData.productNameKR}}</a></p>'+
+                            '<p class="name"><a href="{{listData.productPDPurl}}"><span class="blind">제품명</span>{{listData.productNameKR}}</a></p>'+
                             '<p class="e-name"><span class="blind">영문제품번호</span>{{listData.productNameEN}}</p>'+
                             '{{#if listData.specList && listData.specList.length > 0}}'+
                             '<div class="more">'+
@@ -77,8 +79,6 @@
     var ORDER_LIST;
 
     function init(){
-        console.log("Order Inquiry Start!!!");
-    
         vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter'], function () {             
             setting();
             bindEvents();
@@ -90,6 +90,8 @@
 
     function setting(){
         ORDER_INQUIRY_LIST_URL = $('.contents.mypage').data('orderInquiryList');
+        PRODUCT_STATUS_URL = $('.contents.mypage').data('productStatus');
+        ORDER_DETAIL_URL = $('.contents.mypage').data('orderDetail');
         
         $('.inquiryPeriodFilter').vcDatePeriodFilter();
     }
@@ -161,10 +163,21 @@
 
             setMonthlyPricePop();
         }).on('click', '.thumb a', function(e){
-            var href = $(this).attr('href');
-            if(href == "#none" || href == ""){
-                e.preventDefault();
-                lgkorUI.alert("", {title: "제품이 현재 품절/판매 중지<br>상태로 상세 정보를 확인 하실 수 없습니다"});
+            e.preventDefault();
+
+            var dataID = $(this).closest('.box').data("id");
+            var pdpUrl = $(this).attr("href");
+            setProductStatus(dataID, pdpUrl);
+        }).on('click', '.infos .name a', function(e){
+            e.preventDefault();
+
+            var wrapper = $(this).closest(".contents");
+            var dataID = $(this).closest('.box').data("id");
+            var pdpUrl = $(this).attr("href");
+            if(wrapper.hasClass("orderAndDelivery-detail")){                
+                setProductStatus(dataID, pdpUrl);
+            } else{
+                location.href = ORDER_DETAIL_URL + "?orderNumber=" + ORDER_LIST[dataID].orderNumber;
             }
         });
     }
@@ -234,6 +247,24 @@
     function setMoreOrderList(){
         var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
         requestOrderInquiry(dateData.startDate, dateData.endDate, CURRENT_PAGE+1);
+    }
+
+    function setProductStatus(dataId, pdpUrl){
+        lgkorUI.showLoading();
+        var sendata = {
+            productNameEN: ORDER_LIST[dataId].productNameEN
+        }
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PRODUCT_STATUS_URL, sendata, function(result){
+            if(result.data.success == "N"){
+                lgkorUI.alert("", {
+                    title: result.data.alert.title
+                });
+            } else{
+                location.href = pdpUrl;
+            }
+
+            lgkorUI.hideLoading();
+        });
     }
 
     function requestOrderInquiry(startDate, endDate, page){

@@ -12,7 +12,8 @@
         <section class="pop-conts academy-pop">
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">01. 구입 희망 제품 선택(중복가능)</h2>
+                    <!-- 210126 수정 - 타이틀 번호 삭제  -->
+                    <h2 class="h2-tit">구입 희망 제품 선택</h2>
                 </div>
                 @@include('./common/modules/rdochk-list.html', {
                     "chk" : true,
@@ -52,7 +53,8 @@
 
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">02. 구입 희망 시기</h2>
+                    <!-- 210126 수정 - 타이틀 번호 삭제  -->
+                    <h2 class="h2-tit">구입 희망 시기 선택</h2>
                 </div>
                 @@include('./common/modules/rdochk-list.html', {
                     "rdo" : true,
@@ -73,7 +75,8 @@
 
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">03. 응모 목적 선택</h2>
+                    <!-- 210126 수정 - 타이틀 번호 삭제  -->
+                    <h2 class="h2-tit">응모 목적 선택</h2>
                 </div>
                 @@include('./common/modules/rdochk-list.html', {
                     "rdo" : true,
@@ -89,7 +92,8 @@
 
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">04. 응모 매장 선택</h2>
+                    <!-- 210126 수정 - 타이틀 번호 삭제  -->
+                    <h2 class="h2-tit">응모 매장 선택</h2>
                 </div>
                 <div class="select-list-wrap">
                     <ul class="ui_radio_visible">
@@ -128,7 +132,7 @@
                         </li>
                         <li class="big">
                             <div class="select-wrap">
-                                <select class="ui_selectbox" id="select1" title="매장 선택">
+                                <select class="ui_selectbox" id="select3" title="매장 선택">
                                     <option value="" class="placeholder">매장 선택</option>
                                     <option value="">구로점</option>
                                 </select>
@@ -150,9 +154,11 @@
             <div class="input-info">
                 <div class="input-info-wrap">
                     <div class="tit-wrap">
-                        <h2 class="h2-tit">05. 개인정보 수집 이용 및 처리 위탁 동의</h2> 
+                        <!-- 210126 수정 - 타이틀 번호 삭제 -->
+                        <h2 class="h2-tit">개인정보 수집 이용 및 처리 위탁 동의</h2>
                     </div>
-                    <p class="tb-tit">개인정보 수집 이용 동의(필수)</p>
+                    <!-- 210126 수정 - 필수 표시 변경 -->
+                    <p class="tb-tit req">개인정보 수집 이용 동의<span class="blind">필수</span></p>
                     <div class="tb_row tb-bor">
                         <table>
                             <caption>개인정보 수집 이용 동의 수집항목, 목적, 수집기간, 이용기간 안내</caption>
@@ -195,7 +201,8 @@
                 </div>
 
                 <div class="input-info-wrap">
-                    <p class="tb-tit">업무 위탁 동의(필수)</p>
+                    <!-- 210126 수정 - 필수 표시 변경 -->
+                    <p class="tb-tit req">업무 위탁 동의<span class="blind">필수</span></p>
                     <div class="tb_row tb-bor">
                         <table>
                             <caption>개인정보 처리 업무 위탁 동의 수탁자, 목적 안내</caption>

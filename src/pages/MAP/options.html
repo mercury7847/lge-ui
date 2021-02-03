@@ -11,7 +11,17 @@
     <script>
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
+        var oldStartValue = "";
+        var oldEndValue = "";
+        var date = new Date();
+        var fullYear = date.getFullYear();
+        var month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
+        var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        var today = month + "/" + day + "/" + fullYear + " ";
+        var events = false;
+
         var beforeFocusEle = "";
+        var beforeFocusEleToast = "";
         var optModal = {
             open: function(id, role, txt, confirm, cancel){
                 //var $id = $(id);
@@ -23,7 +33,7 @@
                 }
                 var valRole = role;
                 if(role == null || role == "" || role == undefined){
-                    valRole = "alert";
+                    valRole = "alertdialog";
                 }
                 var valConfirm = confirm;
                 if(confirm == null || confirm == "" || confirm == undefined){
@@ -32,8 +42,8 @@
                 var html = '<div class="lyr-modal" id="'+valId+'">';
                     html += '   <div class="lyr-modal-dt">';
                     html += '        <div class="lyr-modal-dc">';
-                    html += '            <div class="lyr-modal-inner" role="'+valRole+'" aria-modal="true" aria-hidden="true" tabindex="0">';
-                    html += '                <div>';
+                    html += '            <div class="lyr-modal-inner" role="'+valRole+'" aria-modal="true" tabindex="0" aria-describedby="modal-cont" aria-labelledby="modal-cont">';
+                    html += '                <div id="modal-cont">';
                     html +=                     txt;
                     html += '                </div>';
                     html += '                <div class="btn-box">';
@@ -53,15 +63,18 @@
                 $body.append(html);
                 $("#"+id).fadeIn(200, function(){
                     //접근성
-                    $(this).find(".lyr-modal-inner").attr("aria-hidden", false).focus();
-                    $(".main-panel, .sub-panel").attr("aria-hidden", true);
+                    $(this).find(".lyr-modal-inner").attr("tabindex", 0);
+                    $(this).find(".lyr-modal-inner").attr("tabindex", 0).focus();
+                    //$(".main-panel, .sub-panel").attr("aria-hidden", true);
+                    $("lyr-opt-panel").attr("aria-hidden", true);
                 });
                 modalControl();
             },
             close: function(){
                 $(document).find(".lyr-modal").fadeOut(200, function(){
                     //접근성
-                    $(".main-panel, .sub-panel").attr("aria-hidden", false);
+                    //$(".main-panel, .sub-panel").attr("aria-hidden", false);
+                    $("lyr-opt-panel").attr("aria-hidden", false);
                     $(beforeFocusEle).focus();
                     beforeFocusEle = "";
                     $(this).remove();
@@ -70,41 +83,58 @@
         }
         var cnt = 15;
         var toastMessage = {
-            init: function(txt, type){
+            init: function(txt, type, timesetIdx){
                 if(!type){
-                    type= "";
+                    type = "";
+                }
+                if(!timesetIdx){
+                    timesetIdx = 0;
                 }
                 var id = "toast"+cnt;
                 var $type = type;
+                var $timesetIdx = timesetIdx;
                 var $body = $("body");
-                var html = '<div class="toast-message" id="'+id+'">';
+                var html = '<div class="toast-message" role="alertdialog" aria-modal="true" id="'+id+'" aria-describedby="toast-message-cont" aria-labelledby="toast-message-cont" tabindex="0">';
                     html += '    <div>';
-                    html += '        <div class="txt-message ' + $type + '">' + txt + '</div>';
+                    html += '        <div class="txt-message ' + $type + '" id="toast-message-cont">' + txt + '</div>';
                     html += '        <button type="button" class="btn-toast-close"><span>닫기</span></button>';
                     html += '    </div>';
                     html += '</div>';
 
                 $body.append(html);
-                this.open("#"+id);
+                //$("#"+id).attr("tabindex", 0).focus();
+                this.open("#"+id, $timesetIdx);
             },
-            open: function(id){
+            open: function(id, timesetIdx){
                 cnt++;
                 var $id = $(id);
 
-                $id.css("z-index", cnt).animate({'bottom':'50px'}, 200);
+                $("html").css("overflow-y","hidden");
+                $id.css("z-index", (cnt + 500)).stop().animate({'bottom':'50px'}, 200, function(){
+                    $(this).attr("tabindex", 0).focus();
+                });
                 setTimeout(function(){
-                    toastMessage.close($id);
-                }, 3000);
+                    toastMessage.close($id, timesetIdx);
+                }, 5000);
                 $id.find(".btn-toast-close").on({
                     click : function(){
-                        toastMessage.close($id);
+                        toastMessage.close($id, timesetIdx);
                     }
                 });
             },
-            close: function(id){
+            close: function(id, timesetIdx){
                 var $id = $(id);
                 //$id.removeClass("show").remove();
-                $id.css("z-index", cnt).animate({'bottom':'-60px'}, 200, function(){
+                $id.css("z-index", cnt).stop().animate({'bottom':'-60px'}, 200, function(){
+                    $("html").css("overflow-y","scroll");
+                    $(beforeFocusEleToast).focus();
+                    //if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        if(timesetIdx != null && timesetIdx != "" && timesetIdx != undefined){
+                            if(events){
+                                $(".time-setting .inner div").eq(timesetIdx).find("label:not([class*=rst-time])").attr("tabindex", 0).focus().trigger("click");
+                            }
+                        }
+                    //}
                     $(this).remove();
                 });
             }
@@ -174,6 +204,33 @@
             });
         }
 
+        var changeTimeSet = function(idx){
+            var startDate = $(".t-start");
+            var endDate = $(".t-end");
+            var startDateVal = startDate.val();
+            var endDateVal = endDate.val();
+
+            if(events){
+                if(Date.parse(today + startDateVal) == Date.parse(today + endDateVal)){
+                    optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
+                    $("#modalTimeset .btn-modal-confirm").off("click").on({
+                        click : function(){
+                            $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
+                            $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
+                            beforeFocusEle = $(".time-setting .inner div").eq(idx).find("input");
+                            optModal.close();
+                        }
+                    });
+                    events = false;
+                    return false;
+                }else{
+                    beforeFocusEleToast = $(".time-setting .inner div").eq(idx).find("label:not([class*=rst-time])");
+                    toastMessage.init("에티켓 시간이 설정되었습니다.", "", idx);
+                    events = false;
+                }
+            }
+        }
+
         $(document).ready(function(){
             //로그아웃
             $("#btn-opt-logout").on({
@@ -215,7 +272,7 @@
                     }
                 }
             });
-
+ 
             //시간 설정
             $("#timeSet").on({
                 click : function(){
@@ -231,22 +288,16 @@
                     }
                 }
             });
-            var oldStartValue = "";
-            var oldEndValue = "";
-            var date = new Date();
-            var fullYear = date.getFullYear();
-            var month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
-            var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-            var today = month + "/" + day + "/" + fullYear + " ";
 
-            //iOS는 blur
-            //Android는 변경 시 change, 변경 안했을 시는 click
             $(".time-setting input").on({
-                click : function(){
+                click : function(e){
                     var value = $(this).val();
                     $(this).closest("div").find("[class*=rst-time]").text(value);
                     oldStartValue = $(this).closest(".inner").find("div").eq(0).find("input").val();
                     oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
+
+                    events = true;
+                    //console.log(e);
                 },
                 focusin : function(){
                     $(this).closest("div").find("[class*=rst-time]").addClass("focus");
@@ -258,86 +309,38 @@
                     var value = $(this).val();
                     $(this).closest("div").find("[class*=rst-time]").text(value);
 
+                    //oldStartValue = $(this).closest(".inner").find("div").eq(0).find("input").val();
+                    //oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
+
+                    events = true;
+                    var idx = $(this).closest("div").index();
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                        //console.log("iphone");
                     }else{
-                        //$(this).trigger("blur");
-                        $(this).closest("div").attr("tabindex", 0).focus();
+                        //changeTimeSet(idx);
+                        setTimeout(function(){
+                            changeTimeSet(idx);
+                        }, 500);
                     }
                 },
-                blur: function(){
-                    //console.log("iphone");
-                    var startDate = $(".t-start");
-                    var endDate = $(".t-end");
-                    var startDateVal = startDate.val();
-                    var endDateVal = endDate.val();
-
+                blur: function(e){
                     var idx = $(this).closest("div").index();
-
-                    if(Date.parse(today + startDateVal) == Date.parse(today + endDateVal)){
-                        //optModal.open("#modalTimeset");
-                        optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
-                        $("#modalTimeset .btn-modal-confirm").on({
-                            click : function(){
-                                $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
-                                $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
-                                optModal.close();
-                                //$(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
-                            }
-                        });
-                        return false;
-                    }else{
-                        toastMessage.init("에티켓 시간이 설정되었습니다.");
+                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        changeTimeSet(idx);
                     }
-
-                    /*
-                    $.ajax({
-                        method : "GET",
-                        url : "./options.html",
-                        cache: false,
-                        success: function(data, status, j){
-                            console.log("success");
-                            console.log(j.readyState);
-                        },
-                        error: function(j, status, err){
-                            console.log("error");
-                        }
-                    }).done(function(){
-                        var startDate = $(".t-start");
-                        var endDate = $(".t-end");
-                        var startDateVal = startDate.val();
-                        var endDateVal = endDate.val();
-
-                        var idx = $(this).closest("div").index();
-
-                        if(Date.parse(today + startDateVal) == Date.parse(today + endDateVal)){
-                            //optModal.open("#modalTimeset");
-                            optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
-                            $("#modalTimeset .btn-modal-confirm").on({
-                                click : function(){
-                                    $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
-                                    $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
-                                    optModal.close();
-                                    //$(".time-setting .inner div").eq(idx).find("[class*=rst-time]").focus();
-                                }
-                            });
-                            return false;
-                        }else{
-                            toastMessage.init("에티켓 시간이 설정되었습니다.");
-                        }
-                    });
-                    */
                 }
             });
 
             //마케팅 푸시 알림 받기
-            $("#mktPushAlarm").on({
+            $("#mktPushAlarmChk").on({
                 click : function(){
                     var checked = $(this).prop("checked");
+                    beforeFocusEleToast = "#mktPushAlarmChk";
+                    var hours = date.getHours();
+                    var txtDate = fullYear + "년" + month + "월" + day + "일 " + hours + "시 ";
                     if(checked){
-                        toastMessage.init("2021년01월14일 12시 <br>알림 허용 처리가 완료되었습니다.", "type2");
+                        toastMessage.init(txtDate + "<br>알림 허용 처리가 완료되었습니다.", "type2");
                     }else{
-                        toastMessage.init("2021년01월14일 12시 <br>알림 거부 처리가 완료되었습니다.", "type2");
+                        toastMessage.init(txtDate + "<br>알림 거부 처리가 완료되었습니다.", "type2");
                     }
                 }
             });
@@ -345,64 +348,59 @@
             //옵션창 열기
             $("#btn-opt-open").on({
                 click : function(){
-                    $(".lyr-opt-panel, .main-panel").stop().animate({"left":"0"}, 250, function(){
+                    $(".lyr-opt-panel, .main-panel").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
-                        $(".main-panel").focus();
                         $(".main-panel").attr("aria-hidden", false);
+                        $(".main-panel").attr("tabindex", 0).focus();
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                            $(".main-panel").find("h1").focus();
+                        }
                     });
                 }
             });
             //옵션창 닫기
             $(".btn-opt-close").on({
                 click : function(){
-                    $(".lyr-opt-panel, .main-panel").stop().animate({"left":"100%"}, 250, function(){
+                    $(".lyr-opt-panel, .main-panel").stop().attr("aria-hidden", true).animate({"left":"100%"}, 250, function(){
                         //접근성
-                        $(".main-panel").attr("aria-hidden", true).siblings("div");
+                        $(".main-panel").attr("aria-hidden", true).removeAttr("tabindex");
+                        $("#btn-opt-open").focus();
                     });
                 }
             });
-            //알림설정 창 열기
-            $("#btn-alarm-set").on({
-                click : function(){
+            //알림설정, 오픈소스 라이센스 창 열기
+            $(".btn-ctrl-panel").on({
+                click : function(e){
+                    var data = $(this).data("panel");
                     $(".main-panel").stop().animate({"left":"-100%"}, 250);
-                    $(".sub-panel.alarm-setting").stop().animate({"left":"0"}, 250, function(){
+                    $(data).stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
-                        $(this).focus();
-                        $(this).attr("aria-hidden", false).siblings("div").attr("aria-hidden", true);
+                        $(this).attr("aria-hidden", false);
+                        $(this).attr("tabindex", 0).focus();
+                        $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                            $(this).find("h1").focus();
+                        }
                     });
                 }
             });
-            //알림설정 창 닫기
-            $(".alarm-setting .btn-opt-prev").on({
+            //알림설정, 오픈소스 라이센스 창 닫기
+            $(".sub-panel .btn-opt-prev").on({
                 click : function(){
-                    $(".main-panel").stop().animate({"left":"0"}, 250, function(){
+                    var data = $(this).data("panel");
+                    $(".main-panel").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
-                        $(this).focus();
-                        $(this).attr("aria-hidden", false).siblings("div").attr("aria-hidden", true);
+                        $(this).attr("aria-hidden", false);
+                        $(this).attr("tabindex", 0).focus();
+                        $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                            $(this).find("h1").focus();
+                        }
                     });
-                    $(".sub-panel.alarm-setting").stop().animate({"left":"100%"}, 250);
-                }
-            });
-            //오픈소스 라이센스 창 열기
-            $("#btn-license").on({
-                click : function(){
-                    $(".main-panel").stop().animate({"left":"-100%"}, 250);
-                    $(".sub-panel.source-license").stop().animate({"left":"0"}, 250, function(){
-                        //접근성
-                        $(this).focus();
-                        $(this).attr("aria-hidden", false).siblings("div").attr("aria-hidden", true);
-                    });
-                }
-            });
-            //오픈소스 라이센스 창 닫기
-            $(".source-license .btn-opt-prev").on({
-                click : function(){
-                    $(".main-panel").stop().animate({"left":"0"}, 250, function(){
-                        //접근성
-                        $(this).focus();
-                        $(this).attr("aria-hidden", false).siblings("div").attr("aria-hidden", true);
-                    });
-                    $(".sub-panel.source-license").stop().animate({"left":"100%"}, 250);
+                    $(data).stop().animate({"left":"100%"}, 250);
                 }
             });
 
@@ -413,14 +411,10 @@
                 }
             });
 
-            $(".opt-switch input").on({
-                change : function(){
-                    var checked = $(this).prop("checked");
-                    if(checked){
-                        $(this).siblings("span").text("ON");
-                    }else{
-                        $(this).siblings("span").text("OFF");
-                    }
+            $("#btn-barcode").on({
+                click : function(){
+                    beforeFocusEle = "#btn-barcode";
+                    optModal.open("modalPrdReg", "alertdialog", "<p>바코드로 편리하게 제품등록 하기위해 <br>APP을 설치하시겠습니까?</p>", "취소", "확인");
                 }
             });
         });
@@ -435,12 +429,17 @@
     <br>
     <br>
     <button type="button" class="btn-opt-login" id="btn-mkt"><span>마케팅 수신동의 모달 열기</span></button>
+    <br>
+    <br>
+    <button type="button" class="btn-opt-login" id="btn-barcode"><span>바코드로 제품등록</span></button>
+
+    <div class="rst-event" style="position:fixed;left:0;bottom:0;width:100%;height:auto;background:rgba(0, 0, 0, 0.7);color:#fff;z-index:10000"></div>
 
     <div class="lyr-opt-panel">
-        <div class="main-panel" aria-hidden="true" tabindex="0">
+        <div class="main-panel" aria-hidden="true" aria-labelledby="main-panel-title" tabindex="0">
             <div class="gap"></div>
             <div class="opt-header">
-                <h1>설정</h1>
+                <h1 id="main-panel-title">설정</h1>
                 <button type="button" class="btn-opt-close"><span>설정 닫기</span></button>
             </div>
 
@@ -467,7 +466,7 @@
                         <div class="opt-switch">
                             <label for="autoLogin">
                                 <input type="checkbox" id="autoLogin" checked>
-                                <span>ON</span>
+                                <span></span>
                             </label>
                         </div>
                     </div>
@@ -476,7 +475,7 @@
                 <div class="opt-controls">
                     <h2>알림</h2>
                     <div>
-                        <a href="#" class="link" id="btn-alarm-set" role="button">알림설정</a>
+                        <a href="#" class="link btn-ctrl-panel" data-panel=".alarm-setting" role="button">알림설정</a>
                     </div>
                 </div>
 
@@ -487,7 +486,7 @@
                         <div class="opt-switch">
                             <label for="locInfo">
                                 <input type="checkbox" id="locInfo">
-                                <span>OFF</span>
+                                <span></span>
                             </label>
                         </div>
                     </div>
@@ -495,7 +494,7 @@
 
                 <div class="opt-controls">
                     <div>
-                        <a href="#" class="link" id="btn-license" role="button">오픈소스 라이선스</a>
+                        <a href="#" class="link btn-ctrl-panel" data-panel=".source-license" role="button">오픈소스 라이선스</a>
                     </div>
                 </div>
 
@@ -521,10 +520,10 @@
         </div>
         <!-- //설정 메인 -->
 
-        <div class="sub-panel alarm-setting" aria-hidden="true" tabindex="0">
+        <div class="sub-panel alarm-setting" aria-hidden="true" aria-labelledby="sub-panel-title01" tabindex="0">
             <div class="opt-header type-sub">
-                <button type="button" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
-                <h1>알림설정</h1>
+                <h1 id="sub-panel-title01">알림설정</h1>
+                <button type="button" data-panel=".alarm-setting" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
             </div>
 
             <div class="opt-container">
@@ -534,7 +533,7 @@
                         <div class="opt-switch">
                             <label for="pushAlarm">
                                 <input type="checkbox" id="pushAlarm" aria-controls="ctrlArea" aria-expanded="false">
-                                <span>OFF</span>
+                                <span></span>
                             </label>
                         </div>
                     </div>
@@ -545,7 +544,7 @@
                             <div class="opt-switch">
                                 <label for="timeSet">
                                     <input type="checkbox" id="timeSet">
-                                    <span>OFF</span>
+                                    <span></span>
                                 </label>
                             </div>
                         </div>
@@ -556,12 +555,12 @@
                                 <div class="inner">
                                     <div>
                                         <label for="t-start">시작</label>
-                                        <label for="t-start" class="rst-time-start" aria-curent="time">21:00</label>
+                                        <label for="t-start" class="rst-time-start" aria-curent="time" aria-hidden="true">21:00</label>
                                         <input type="time" id="t-start" class="t-start" value="21:00" disabled>
                                     </div>
                                     <div>
                                         <label for="t-end">종료</label>
-                                        <label for="t-end" class="rst-time-end" aria-curent="time">08:00</label>
+                                        <label for="t-end" class="rst-time-end" aria-curent="time" aria-hidden="true">08:00</label>
                                         <input type="time" id="t-end" class="t-end" value="08:00" disabled>
                                     </div>
                                 </div>
@@ -574,7 +573,7 @@
                         <div class="opt-switch">
                             <label for="badgeAlarm">
                                 <input type="checkbox" id="badgeAlarm" disabled>
-                                <span>OFF</span>
+                                <span></span>
                             </label>
                         </div>
                     </div>
@@ -584,22 +583,22 @@
                     <div>
                         <p>마케팅 푸시 알림 받기</p>
                         <div class="opt-switch">
-                            <label for="mktPushAlarm">
-                                <input type="checkbox" id="mktPushAlarm">
-                                <span>OFF</span>
+                            <label for="mktPushAlarmChk">
+                                <input type="checkbox" id="mktPushAlarmChk">
+                                <span></span>
                             </label>
                         </div>
                     </div>
-                    <p class="txt-guide">광고성 알림은 에티켓 시간설정과 상관없이 <br><span>21:00~08:00</span>에는 발송되지 않습니다.</p>
+                    <p class="txt-guide">광고성 알림은 에티켓 시간설정과 상관없이 <br><span aria-label="오후9시부터 오전8시">21:00~08:00</span>에는 발송되지 않습니다.</p>
                 </div>
             </div>
         </div>
         <!-- //알림성정 -->
 
-        <div class="sub-panel source-license" aria-hidden="true" tabindex="0">
+        <div class="sub-panel source-license" aria-hidden="true" aria-labelledby="sub-panel-title02" tabindex="0">
             <div class="opt-header type-sub">
-                <button type="button" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
-                <h1>오픈소스 라이선스</h1>
+                <h1 id="sub-panel-title02">오픈소스 라이선스</h1>
+                <button type="button" data-panel=".source-license" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
             </div>
             <div class="opt-container">
                 <div>

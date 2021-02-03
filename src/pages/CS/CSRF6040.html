@@ -14,18 +14,21 @@
             <!-- 매장찾기 -->
             <div class="contents find-store-wrap">
                 <div class="cont-wrap narrow">
+                    <!-- 2021.1.27 data-user-address 추가-->
                     <div class="map-container" 
                         data-best-shop="/lg5-common/data-ajax/searchshop/bestShop.json"
                         data-local-list="/lg5-common/data-ajax/searchshop/bestShopArea.json"
                         data-subway-list="/lg5-common/data-ajax/searchshop/selectSubwayList.json"
                         data-station-list="/lg5-common/data-ajax/searchshop/selectStation.json"
-                        data-adress-checked="/lg5-common/data-ajax/searchshop/userAdressChecked.json"
                         data-detail="/html/CS/CSRF6041.html"
                         data-map-id="vsay0tnzme"
                         data-app-key="oqYmIfzrl6E72lYDAvNeII5x9wEWUNwKrcUctzVa"
-                        data-latitude="37.5235644"
-                        data-longitude="127.0395764"
-                        >
+                        data-latitude="37.5670135" 
+                        data-longitude="126.9783740"
+                        data-user-address="경기도 김포시 유현로 19"
+                        data-login-url=""
+                        data-shop-id=""
+                    >
                         <div class="store-list-wrap">
                             <h2 class="tit">매장찾기</h2>
                             <div class="btn-list-fold">
@@ -42,9 +45,7 @@
                                             <li><a href="#tab2">지하철역</a></li>
                                             <li><a href="#tab3">검색<em class="blind">선택됨</em></a></li>
                                         </ul>
-                                    </div>
-
-                                    
+                                    </div>                                    
 
                                     <div id="tab1" class="tabs-contents">
                                         <div class="form-wrap sch-input-wrap select">
@@ -55,7 +56,7 @@
                                                 <div class="select-wrap">
                                                     <select class="ui_selectbox" id="select1" title="시/도 선택">
                                                         <option value="">시/도 선택</option>
-                                                        <option value="서울">서울</option>
+                                                        <option value="aa">서울</option>
                                                         <option value="인천">인천</option>
                                                         <option value="부산">부산</option>
                                                         <option value="대구">대구</option>
@@ -171,6 +172,7 @@
                                 <!-- // list -->
 
                                 <!-- option -->
+                                <!-- 2021.1.27 input name, id, for 수정-->
                                 <div class="opt-cont"><!-- 열렸을 때 높이값 계산 : [브라우저 높이 - header - .btn-sel - .opt-btn-wrap] -->
                                     <button type="button" class="btn-sel" id="opt-label"><span>옵션 선택 <span class="blind">열기</span></span></button><!-- 클릭시 .opt-cont에 open클래스 추가 -->
                                     <div class="opt-layer" aria-labelledby="opt-label">
@@ -178,39 +180,39 @@
                                             <div class="list-item">
                                                 <dl class="list-type2">
                                                     <dt>매장 형태</dt>
-                                                    <dd>
+                                                    <dd class="storeCompanyChker">
                                                         <span class="chk-wrap">
-                                                            <input type="checkbox" id="chk1-1" name="chk1" checked>
-                                                            <label for="chk1-1">BESTSHOP</label>
+                                                            <input type="checkbox" id="bestShop" name="bestShop" checked>
+                                                            <label for="bestShop">BESTSHOP</label>
                                                         </span>
                                                         <span class="chk-wrap">
-                                                            <input type="checkbox" id="chk1-2" name="chk1" checked>
-                                                            <label for="chk1-2">백화점</label>
+                                                            <input type="checkbox" id="department" name="department" checked>
+                                                            <label for="department">백화점</label>
                                                         </span>
                                                         <span class="chk-wrap">
-                                                            <input type="checkbox" id="chk1-3" name="chk1" checked>
-                                                            <label for="chk1-3">냉난방시스템</label>
+                                                            <input type="checkbox" id="coolingAndHeat" name="coolingAndHeat" checked>
+                                                            <label for="coolingAndHeat">냉난방시스템</label>
                                                         </span>
                                                         <span class="chk-wrap">
-                                                            <input type="checkbox" id="chk1-4" name="chk1" checked>
-                                                            <label for="chk1-4">커머셜</label>
+                                                            <input type="checkbox" id="commercial" name="commercial" checked>
+                                                            <label for="commercial">커머셜</label>
                                                         </span>
                                                     </dd>
                                                 </dl>
                                                 <dl>
                                                     <dt>서비스센터 입점 형태</dt>
-                                                    <dd>
+                                                    <dd class="serviceCenterChker">
                                                         <span class="chk-wrap">
-                                                            <input type="checkbox" id="chk2-1" name="chk2" checked>
-                                                            <label for="chk2-1">전 제품 접수 가능</label>
+                                                            <input type="checkbox" id="allProduct" name="allProduct" checked>
+                                                            <label for="allProduct">전 제품 접수 가능</label>
                                                         </span>
                                                         <span class="chk-wrap">
-                                                            <input type="checkbox" id="chk2-2" name="chk2">
-                                                            <label for="chk2-2">휴대폰 + PC제품 접수 가능</label>
+                                                            <input type="checkbox" id="phoneAndPc" name="phoneAndPc">
+                                                            <label for="phoneAndPc">휴대폰 + PC제품 접수 가능</label>
                                                         </span>
                                                         <span class="chk-wrap">
-                                                            <input type="checkbox" id="chk2-3" name="chk2">
-                                                            <label for="chk2-3">휴대폰 접수 가능</label>
+                                                            <input type="checkbox" id="handphone" name="handphone">
+                                                            <label for="handphone">휴대폰 접수 가능</label>
                                                         </span>
                                                     </dd>
                                                 </dl>
@@ -224,48 +226,48 @@
                                                     <dd>
                                                         <dl class="item">
                                                             <dt class="tit">입점 형태</dt>
-                                                            <dd>
+                                                            <dd class="storeFormChker">
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk1-1" name="chk1" checked>
-                                                                    <label for="chk1-1">베스트샵 단독 매장</label>
+                                                                    <input type="checkbox" id="onlyBestShop" name="onlyBestShop" checked>
+                                                                    <label for="onlyBestShop">베스트샵 단독 매장</label>
                                                                 </span>
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk1-2" name="chk1">
-                                                                    <label for="chk1-2">백화점 입점 매장</label>
+                                                                    <input type="checkbox" id="enteredDepartment" name="enteredDepartment" checked> <!-- 2021.1.27 checked 추가-->
+                                                                    <label for="enteredDepartment">백화점 입점 매장</label>
                                                                 </span>
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk1-3" name="chk1">
-                                                                    <label for="chk1-3">홈플러스 입점 매장</label>
+                                                                    <input type="checkbox" id="homeplus" name="homeplus" checked> <!-- 2021.1.27 checked 추가-->
+                                                                    <label for="homeplus">홈플러스 입점 매장</label>
                                                                 </span>
                                                             </dd>
                                                         </dl>
                                                         <dl class="item">
                                                             <dt class="tit">타입/서비스 형태</dt>
-                                                            <dd>
+                                                            <dd class="storeChker">
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk2-1" name="chk2" checked>
-                                                                    <label for="chk2-1">LG지인 몰 입점 매장</label>
+                                                                    <input type="checkbox" id="lgzinMall" name="lgzinMall" checked>
+                                                                    <label for="lgzinMall">LG지인 몰 입점 매장</label>
                                                                 </span>
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk2-2" name="chk2">
-                                                                    <label for="chk2-2">뷰티마스터 입점 매장</label>
+                                                                    <input type="checkbox" id="beutyMaster" name="beutyMaster" checked> <!-- 2021.1.27 checked 추가-->
+                                                                    <label for="beutyMaster">뷰티마스터 입점 매장</label>
                                                                 </span>
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk2-3" name="chk2">
-                                                                    <label for="chk2-3">휴대폰 판매 가능 매장</label>
+                                                                    <input type="checkbox" id="phoneMall" name="phoneMall" checked><!-- 2021.1.27 checked 추가-->
+                                                                    <label for="phoneMall">휴대폰 판매 가능 매장</label>
                                                                 </span>
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk2-4" name="chk2">
-                                                                    <label for="chk2-4">시그니처 전용관 입점 매장</label>
+                                                                    <input type="checkbox" id="signature" name="signature" checked><!-- 2021.1.27 checked 추가-->
+                                                                    <label for="signature">시그니처 전용관 입점 매장</label>
                                                                 </span>
                                                             </dd>
                                                         </dl>
                                                         <dl class="item">
                                                             <dt class="tit">기타</dt>
-                                                            <dd>
+                                                            <dd class="etcChker">
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk3-1" name="chk3" checked>
-                                                                    <label for="chk3-1">N 신규 오픈 행사 지점</label>
+                                                                    <input type="checkbox" id="newProduct" name="newProduct" checked>
+                                                                    <label for="newProduct">N 신규 오픈 행사 지점</label>
                                                                 </span>
                                                             </dd>
                                                         </dl>
@@ -282,6 +284,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- //2021.1.27 input name, id, for 수정-->
                                 <!-- //option -->
                             </div>
                             <!-- //filter -->

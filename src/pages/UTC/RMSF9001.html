@@ -79,6 +79,8 @@
                                 @ data-ars-agree-url : ARS 출금 동의 신청 확인 유알엘
                                 @ data-submit_url : 청약 신청 submit 유알엘
                             -->
+                            <!-- 2021.1.27 data-submit-url 추가-->
+                            <!-- 2021.1.28 ata-prepayment-checked-url 추가-->
                             <div class="accordion-section ui_accordion requestRentalForm" 
                                 data-single-open="false" 
                                 data-open-index="[0]" 
@@ -86,7 +88,8 @@
                                 data-install-abled-url="/lg5-common/data-ajax/caresolution/requestInstallAbled.json"
                                 data-card-abled-url="/lg5-common/data-ajax/caresolution/requestCardAbled.json"
                                 data-ars-agree-url="/lg5-common/data-ajax/caresolution/requestArsAgree.json"
-                                data-submit_url=""
+                                data-submit-url="/lg5-common/data-ajax/caresolution/requestRentalSubmit.json"
+                                data-prepayment-checked-url="/lg5-common/data-ajax/caresolution/requestPrepaymentChecked.json" 
                             >
                             <!-- 
                                 ##데이터 관리 돔속성에서 히든인풋으로 바꿨습니다. 
@@ -162,7 +165,7 @@
                                                         <!-- 2020-11-20 -->
                                                         <div class="birth-date-box">
                                                             <div class="input-wrap">
-                                                                <input type="number" id="inp01-3" placeholder="YYMMDD" value="" title="주민등록번호 앞자리" name="registFrontNumber" data-required="true" maxlength="6">
+                                                                <input type="number" id="inp01-3" placeholder="YYYYMMDD" value="" title="주민등록번호 앞자리" name="registFrontNumber" data-required="true" maxlength="8"><!-- 210202 생년월일 입력 조건 수정 -->
                                                             </div>
                                                             <div class="cell">
                                                                 <div class="input-wrap">
@@ -673,13 +676,13 @@
                                                             <ul class="ui_radio_visible">
                                                                 <li>
                                                                     <span class="rdo-wrap">
-                                                                        <input type="radio" id="rdo04-1" name="rdo04" value="Y" data-visible-target="" checked>
+                                                                        <input type="radio" id="rdo04-1" name="rdo04" value="Y" data-visible-target=""> <!-- 2021.1.28 checked삭제-->
                                                                         <label for="rdo04-1">신청</label>
                                                                     </span>
                                                                 </li>
                                                                 <li>
                                                                     <span class="rdo-wrap">
-                                                                        <input type="radio" id="rdo04-2" name="rdo04" value="N" data-visible-target="">
+                                                                        <input type="radio" id="rdo04-2" name="rdo04" value="N" data-visible-target="" checked><!-- 2021.1.28 checked추가-->
                                                                         <label for="rdo04-2">미신청</label>
                                                                     </span>
                                                                 </li>

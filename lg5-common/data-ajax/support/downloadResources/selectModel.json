@@ -47,20 +47,20 @@
         "driver": {
             "osOption": [
                 {
-                    "option": "전체",
-                    "value": "전체"
+                    "codeName": "전체",
+                    "code": "전체"
                 },
                 {
-                    "option": "Window XP",
-                    "value": "Window XP"
+                    "codeName": "Window XP",
+                    "code": "Window XP"
                 },
                 {
-                    "option": "Window 2000",
-                    "value": "Window 2000"
+                    "codeName": "Window 2000",
+                    "code": "Window 2000"
                 },
                 {
-                    "option": "Window 7",
-                    "value": "Window 7"
+                    "codeName": "Window 7",
+                    "code": "Window 7"
                 }
             ],
             "listData": [
@@ -112,41 +112,39 @@
                 "totalCount": 12
             }
         },
-        "otherService"  : {
-            "title" : "원하시는 결과를 찾지 못하셨다면 다른 서비스를 이용해보세요.",
-            "serviceList" : [
-                {
-                    "name" : "채팅 상담11",
-                    "url" : "/",
-                    "currentClass" : "service_type-chat"
-                },
-                {
-                    "name" : "이메일 문의",
-                    "url" : "/",
-                    "currentClass" : "service_type-email"
-                },
-                {
-                    "name" : "전화상담예약",
-                    "url" : "/",
-                    "currentClass" : "service_type-tel"
-                },
-                {
-                    "name" : "출장 서비스 예약",
-                    "url" : "/",
-                    "currentClass" : "service_type-business"
-                },
-                {
-                    "name" : "센터방문예약",
-                    "url" : "/",
-                    "currentClass" : "service_type-center"
-                },
-                {
-                    "name" : "매장방문예약",
-                    "url" : "/",
-                    "currentClass" : "service_type-store"
-                }
-            ]
-        },
+        "serviceMenu"  : [
+            {
+                "name" : "채팅 상담",
+                "url" : "/",
+                "imgUrl" : "/lg5-common/images/icons/icon_chat.svg"
+            },
+            {
+                "name" : "이메일 문의",
+                "url" : "/",
+                "imgUrl" : "/lg5-common/images/icons/icon_email-inquiry.svg"
+            },
+            {
+                "name" : "전화상담예약",
+                "url" : "/",
+                "imgUrl" : "/lg5-common/images/icons/icon_request-reservation.svg"
+            },
+            {
+                "name" : "출장 서비스 예약",
+                "url" : "/",
+                "imgUrl" : "/lg5-common/images/icons/icon_engineer-reservation.svg"
+            },
+            {
+                "name" : "센터방문예약",
+                "url" : "/",
+                "imgUrl" : "/lg5-common/images/icons/icon_center-reservation.svg"
+            },
+            {
+                "name" : "매장방문예약",
+                "url" : "/",
+                "imgUrl" : "/lg5-common/images/icons/icon_store-reservation.svg"
+            }
+        ]
+        ,
         "relatedInfo" : {
             "title" : "LG제품에 관련된 정보를 확인하세요!",
             "infoList" : [

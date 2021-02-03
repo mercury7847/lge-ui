@@ -761,8 +761,12 @@
                         margin-bottom: 0;
                     }
                     a {
+                        padding-right: 18px;
                         @include font-medium;
                         color: #111;
+                        &[target='_blank'] {
+                            background: url('/lg5-common/images/icons/btn-outlink-16.svg') no-repeat right top 5px;
+                        }
                     }
                 }
             }
@@ -781,7 +785,7 @@
             background: url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat right center;
             font-weight: 500;
             @include font-small;
-            color: $color-gray-5;
+            color: $color-gray-1;
         }
     }
     .category-hashtag {
@@ -793,7 +797,7 @@
             border-radius: 8px;
             font-weight: 500;
             @include font-small;
-            color: $color-gray-5;
+            color: $color-gray-1;
         }
     }
 
@@ -840,11 +844,16 @@
             .btn-arrow {
                 position: absolute;
                 top: 6.563vw;
+                box-shadow:2px 4px 16px 0 rgba(#000, .14);
                 &:before {
                     background-image: url('/lg5-common/images/icons/btn-arr-32x32.svg');
+                    box-shadow: none;
                 }
                 &.prev {
                     left: 16px;
+                    &:before {
+                        transform: rotate(-180deg);
+                    }
                 }
                 &.next {
                     right: 16px;

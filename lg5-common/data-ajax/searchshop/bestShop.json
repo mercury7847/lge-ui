@@ -1,202 +1,7322 @@
 {
-   "ssoCheckUrl": null,
-   "status":"success",
-   "message":null,
-   "param":{},
    "data": [
-      {
-         "shopID": 893,
-         "shopName":"논현역점",
-         "shopTelphone":"02-517-7447",
-         "shopFax":"02-517-3993",
-         "shopAdress":"서울특별시 강남구 논현동 50-3 스카이저축은행",
-         "bizHours":{
-            "week": "09:30~21:00",
-            "saturday": "09:30~21:00",
-            "sunday": "09:30~21:00"
-         },
-         "gpsInfo":{
-            "gpsx": "37.51152253100276",
-            "gpsy": "127.02182060306917"
-         },
-         "flagInfo":[
-               { 
-                  "flagName": "NEW",
-                  "flagClass": ""
-               },
-               {
-                  "flagName": "서비스센터",
-                  "flagClass": "green"
-               }
-            ],
-         "bizStatus": {
-            "bizStatusClass": "skyblue",
-            "bizStatusColor": "하늘색",
-            "bizStatusText": "원할"
+     {
+       "shopID": "ST00005604",
+       "orgCode": "0909",
+       "shopName": "롯데 본점",
+       "shopTelphone": "02-756-0980",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 중구 소공동 1 8층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.981643",
+         "gpsy": "37.564739"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
          }
-      }, 
-      {
-         "shopID": 4125,
-         "shopName":"강남본점",
-         "shopTelphone":"02-3448-5191",
-         "shopFax":"02-3448-5190",
-         "shopAdress":"서울특별시 강남구 청담동 86-1 LG 청담빌딩",
-         "bizHours":{
-            "week": "10:30~20:30",
-            "saturday": "09:30~20:30",
-            "sunday": "09:30~21:00"
-         },
-         "gpsInfo":{
-            "gpsx": "37.5235644",
-            "gpsy": "127.0395764"
-         },
-         "flagInfo":[
-            { 
-               "flagName": "NEW",
-               "flagClass": ""
-            },
-            {
-               "flagName": "서비스센터",
-               "flagClass": "green"
-            }
-         ],
-         "bizStatus":  {
-            "bizStatusClass": "olive",
-            "bizStatusColor": "올리브색",
-            "bizStatusText": "보통"
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005623",
+       "orgCode": "0949",
+       "shopName": "신세계 본점",
+       "shopTelphone": "02-310-1481",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 중구 충무로1가 52-5 신세계백화점건물 신관 7층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.9811371",
+         "gpsy": "37.5609239"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
          }
-      }, 
-      {
-         "shopID": 5647,
-         "shopName":"신세계 강남점",
-         "shopTelphone":"02-3444-9057",
-         "shopFax":"02-3448-5190",
-         "shopAdress":"서울특별시 강남구 압구정동 429",
-         "bizHours":{
-            "week": "10:30~20:30",
-            "saturday": "09:30~20:30",
-            "sunday": "09:30~21:00"
-         },
-         "gpsInfo":{
-            "gpsx": "37.527342",
-            "gpsy": "127.027561"
-         },
-         "flagInfo":[],
-         "bizStatus": {
-            "bizStatusClass": "red",
-            "bizStatusColor": "빨간색",
-            "bizStatusText": "혼잡"
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005568",
+       "orgCode": "2206",
+       "shopName": "서울역빌딩점",
+       "shopTelphone": "02-6929-1015",
+       "shopFax": "02-6929-1016",
+       "shopAdress": "서울 중구 남대문로5가 631 서울역빌딩",
+       "bizHours": {
+         "sunday": "",
+         "saturday": "X:X-X:X",
+         "week": "08:30-18:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.9748262431",
+         "gpsy": "37.5538869358"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
          }
-      }, 
-      {
-         "shopID": 5637,
-         "shopName":"현대 본점",
-         "shopTelphone":"02-3444-9057",
-         "shopFax":"02-3448-5190",
-         "shopAdress":"서울특별시 강남구 압구정동 494",
-         "bizHours":{
-            "week": "10:30~20:30",
-            "saturday": "09:30~20:30",
-            "sunday": "09:30~21:00"
-         },
-         "gpsInfo":{
-            "gpsx": "37.528492",
-            "gpsy": "127.039922"
-         },
-         "flagInfo":[],
-         "bizStatus": {
-            "bizStatusClass": "gray",
-            "bizStatusColor": "회색",
-            "bizStatusText": "근무 중"
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002287",
+       "orgCode": "C323",
+       "shopName": "베스트샵 우주전자점",
+       "shopTelphone": "02-718-4888",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 용산구 한강로2가 15-2 나진상가 18동 1층 101호 LG 베스트샵 우주전자",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.9653622",
+         "gpsy": "37.5338622"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
          }
-      }, 
-      {
-         "shopID": 5622,
-         "shopName":"서초점",
-         "shopTelphone":"02-3444-9057",
-         "shopFax":"02-3448-5190",
-         "shopAdress":"서울특별시 서초구 반포동 19-3 센트럴시티",
-         "bizHours":{
-            "week": "10:30~20:30",
-            "saturday": "09:30~20:30",
-            "sunday": "09:30~21:00"
-         },
-         "gpsInfo":{
-            "gpsx": "37.5049608",
-            "gpsy": "127.004237"
-         },
-         "flagInfo":[],
-         "bizStatus": {
-            "bizStatusClass": "skyblue",
-            "bizStatusColor": "하늘색",
-            "bizStatusText": "원할"
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002731",
+       "orgCode": "0826",
+       "shopName": "홍제점",
+       "shopTelphone": "02-379-9400",
+       "shopFax": "02-379-9470",
+       "shopAdress": "서울특별시 서대문구 홍제동 158-33 연세24시사우나 LG전자 베스트샵 홍제점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.946406246412",
+         "gpsy": "37.5861763362183"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
          }
-      }, 
-      {
-         "shopID": 3065,
-         "shopName":"반포점",
-         "shopTelphone":"02-3444-9057",
-         "shopFax":"02-3448-5190",
-         "shopAdress":"서울특별시 서초구 잠원동 75-13 반포쇼핑타운",
-         "bizHours":{
-            "week": "10:30~20:30",
-            "saturday": "09:30~20:30",
-            "sunday": "09:30~21:00"
-         },
-         "gpsInfo":{
-            "gpsx": "37.5056944",
-            "gpsy": "127.0023219"
-         },
-         "flagInfo":[],
-         "bizStatus": {
-            "bizStatusClass": "skyblue",
-            "bizStatusColor": "하늘색",
-            "bizStatusText": "원할"
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002634",
+       "orgCode": "0783",
+       "shopName": "염리점",
+       "shopTelphone": "02-706-4321",
+       "shopFax": "02-706-9950",
+       "shopAdress": "서울특별시 마포구 염리동 156-1 LG전자 베스트샵 염리점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.94511775406427",
+         "gpsy": "37.546131882385204"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
          }
-      }, 
-      {
-         "shopID": 3470,
-         "shopName":"서초점",
-         "shopTelphone":"02-3444-9057",
-         "shopFax":"02-3448-5190",
-         "shopAdress":"서울특별시 서초구 서초동 1342-4 LG전자대리점",
-         "bizHours":{
-            "week": "10:30~20:30",
-            "saturday": "09:30~20:30",
-            "sunday": "09:30~21:00"
-         },
-         "gpsInfo":{
-            "gpsx": "37.4881898",
-            "gpsy": "127.028056"
-         },
-         "flagInfo":[],
-         "bizStatus": {
-            "bizStatusClass": "skyblue",
-            "bizStatusColor": "하늘색",
-            "bizStatusText": "원할"
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002685",
+       "orgCode": "C146",
+       "shopName": "삼선교점",
+       "shopTelphone": "02-324-2000",
+       "shopFax": "02-324-0099",
+       "shopAdress": "서울특별시 성북구 동소문동3가 63-1 삼성빌딩 LG 베스트샵 삼선교점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.01130407850437",
+         "gpsy": "37.5905138216212"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
          }
-      }, 
-      {
-         "shopID": 3470,
-         "shopName":"롯데 강남점",
-         "shopTelphone":"02-3444-9057",
-         "shopFax":"02-3448-5190",
-         "shopAdress":"서울특별시 강남구 대치동 937",
-         "bizHours":{
-            "week": "10:30~20:30",
-            "saturday": "09:30~20:30",
-            "sunday": "09:30~21:00"
-         },
-         "gpsInfo":{
-            "gpsx": "37.496993",
-            "gpsy": "127.053162"
-         },
-         "flagInfo":[],
-         "bizStatus": {
-            "bizStatusClass": "skyblue",
-            "bizStatusColor": "하늘색",
-            "bizStatusText": "원할"
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002227",
+       "orgCode": "B515",
+       "shopName": "청구점",
+       "shopTelphone": "02-2237-7701",
+       "shopFax": "02-2237-7701",
+       "shopAdress": "서울특별시 중구 신당동 292-64 LG 베스트샵 청구점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0148164965068",
+         "gpsy": "37.56151965382124"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
          }
-      }
-   ]
-}
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005620",
+       "orgCode": "0971",
+       "shopName": "현대 신촌점",
+       "shopTelphone": "02-3145-3890",
+       "shopFax": "02-3145-2941",
+       "shopAdress": "서울특별시 서대문구 창천동 30-33 9층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.935704",
+         "gpsy": "37.556086"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003065",
+       "orgCode": "1037",
+       "shopName": "반포점",
+       "shopTelphone": "02-592-4343",
+       "shopFax": "02-592-5494",
+       "shopAdress": "서울특별시 서초구 잠원동  75-13 반포쇼핑타운 반포쇼핑타운 2동 1층 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0023219",
+         "gpsy": "37.5056944"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005622",
+       "orgCode": "0945",
+       "shopName": "신세계 강남점",
+       "shopTelphone": "02-3479-6271",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 서초구 반포동 19-3 센트럴시티 9층 LG전자 베스트샵 신세계 강남점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.004237",
+         "gpsy": "37.5049608"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002774",
+       "orgCode": "0856",
+       "shopName": "상도점",
+       "shopTelphone": "02-813-2772",
+       "shopFax": "02-813-2907",
+       "shopAdress": "서울특별시 동작구 상도동 33-1 LG bestshop 상도점 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.9464612",
+         "gpsy": "37.5042531"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002682",
+       "orgCode": "0707",
+       "shopName": "사당점",
+       "shopTelphone": "02-598-9999",
+       "shopFax": "02-598-8039",
+       "shopAdress": "서울특별시 동작구 사당동 147-53 골든시네마타워 골든시네마 타워 1층 LG전자 베스트샵 사당점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.9816691",
+         "gpsy": "37.4846429"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001113",
+       "orgCode": "A629",
+       "shopName": "남성역점",
+       "shopTelphone": "02-522-7777",
+       "shopFax": "02-598-6777",
+       "shopAdress": "서울특별시 동작구 사당동 318-8 사당시장 LG 베스트샵 남성역점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.9750233",
+         "gpsy": "37.4828627"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003766",
+       "orgCode": "1193",
+       "shopName": "동교점",
+       "shopTelphone": "02-6925-5205",
+       "shopFax": "02-322-3730",
+       "shopAdress": "서울 마포구 동교동 173-17번지",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.92673775979843",
+         "gpsy": "37.5583754813312"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005185",
+       "orgCode": "1865",
+       "shopName": "트윈타워점",
+       "shopTelphone": "02-782-6931",
+       "shopFax": "02-780-7284",
+       "shopAdress": "서울 영등포구 여의도동 LG트윈타워 동관 지하 1층 LG전자 베스트샵 트윈타워점",
+       "bizHours": {
+         "sunday": "",
+         "saturday": "X:X-X:X",
+         "week": "08:30-18:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.92924287157821",
+         "gpsy": "37.52792683523221"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005647",
+       "orgCode": "0967",
+       "shopName": "현대 본점",
+       "shopTelphone": "02-3444-9057",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 강남구 압구정동 429 지하 1층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.027561",
+         "gpsy": "37.527342"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000893",
+       "orgCode": "A965",
+       "shopName": "논현역점",
+       "shopTelphone": "02-517-7447",
+       "shopFax": "02-517-3993",
+       "shopAdress": "서울특별시 강남구 논현동 50-3 스카이저축은행 LG 베스트샵 논현역점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.02182060306917",
+         "gpsy": "37.51152253100276"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002729",
+       "orgCode": "1857",
+       "shopName": "불광본점",
+       "shopTelphone": "02-354-7557",
+       "shopFax": "02-354-7557",
+       "shopAdress": "서울특별시 은평구 불광동 275-1 LG Bestshop 불광점 LG전자 베스트샵 불광본점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.93021927042223",
+         "gpsy": "37.6115686103606"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005646",
+       "orgCode": "0965",
+       "shopName": "현대 미아점",
+       "shopTelphone": "02-2117-1844",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 성북구 길음동 20-1 7층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.02878",
+         "gpsy": "37.608468"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002799",
+       "orgCode": "A832",
+       "shopName": "왕십리점",
+       "shopTelphone": "02-2282-3300",
+       "shopFax": "02-2292-2192",
+       "shopAdress": "서울특별시 성동구 도선동 39-2 SC제일은행 성동지점 LG 베스트샵 왕십리점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:00-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0348935",
+         "gpsy": "37.5619936"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003238",
+       "orgCode": "1070",
+       "shopName": "미아사거리점",
+       "shopTelphone": "02-914-0009",
+       "shopFax": "02-914-0282",
+       "shopAdress": "서울특별시 성북구 하월곡동 196 LG전자 베스트샵 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0299056",
+         "gpsy": "37.6083554"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "C",
+       "storeFormType": "",
+       "storeType": "lgzin, mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002668",
+       "orgCode": "0194",
+       "shopName": "은평점",
+       "shopTelphone": "02-353-6661",
+       "shopFax": "02-358-6662",
+       "shopAdress": "서울특별시 은평구 응암동  86-25 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.9246722",
+         "gpsy": "37.6011447"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002673",
+       "orgCode": "0641",
+       "shopName": "강북본점",
+       "shopTelphone": "02-980-9779",
+       "shopFax": "02-980-9135",
+       "shopAdress": "서울특별시 강북구 미아동 330-15 LG 하이 프라자 LG BEST SHOP 강북본점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0289237",
+         "gpsy": "37.6186292"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005642",
+       "orgCode": "0907",
+       "shopName": "롯데 미아점",
+       "shopTelphone": "02-944-2534",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 강북구 미아동 70-6 8층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.030463",
+         "gpsy": "37.614422"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002681",
+       "orgCode": "0696",
+       "shopName": "종암점",
+       "shopTelphone": "02-917-8300",
+       "shopFax": "02-912-1807",
+       "shopAdress": "서울 성북구 종암동 88-1번지 LG전자 베스트샵 종암점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.03468309078708",
+         "gpsy": "37.599345097048236"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002686",
+       "orgCode": "0749",
+       "shopName": "봉천점",
+       "shopTelphone": "02-882-9800",
+       "shopFax": "02-882-9944",
+       "shopAdress": "서울특별시 관악구 봉천동 893-21 LG전자 베스트샵 봉천점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.9466311",
+         "gpsy": "37.4824115"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00004045",
+       "orgCode": "1264",
+       "shopName": "수유점",
+       "shopTelphone": "02-995-4545",
+       "shopFax": "02-900-7210",
+       "shopAdress": "서울특별시 강북구 수유동 48-1 제네스타워 LG전자 베스트샵 수유점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.02284893172586",
+         "gpsy": "37.63440363127659"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003625",
+       "orgCode": "1141",
+       "shopName": "용두점",
+       "shopTelphone": "02-3295-0303",
+       "shopFax": "02-3295-1038",
+       "shopAdress": "서울특별시 동대문구 용두동 29-6 LG BEST SHOP 용두점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0384458",
+         "gpsy": "37.5754221"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005588",
+       "orgCode": "2236",
+       "shopName": "홈플러스 동대문점",
+       "shopTelphone": "02-2088-8517",
+       "shopFax": "02-2088-8518",
+       "shopAdress": "서울특별시 동대문구 용두동 33-1 홈플러스 동대문점 2층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0387918",
+         "gpsy": "37.5745194"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002214",
+       "orgCode": "A630",
+       "shopName": "봉천역점",
+       "shopTelphone": "02-874-7777",
+       "shopFax": "02-874-7779",
+       "shopAdress": "서울특별시 관악구 봉천동 959-5 LG 베스트샵 봉천역점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.9351471",
+         "gpsy": "37.4851773"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005285",
+       "orgCode": "1931",
+       "shopName": "홈플러스 월곡점",
+       "shopTelphone": "02-6713-5585",
+       "shopFax": "02-911-8887",
+       "shopAdress": "서울특별시 성북구 하월곡동 46-73 코업스타클래스 홈플러스 월곡점 B2층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.04044607366451",
+         "gpsy": "37.601822789182414"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005637",
+       "orgCode": "2254",
+       "shopName": "갤러리아 명품관 WEST점",
+       "shopTelphone": "02-541-5842",
+       "shopFax": "02-541-5843",
+       "shopAdress": "서울특별시 강남구 압구정동 494 5층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.039922",
+         "gpsy": "37.528492"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00004125",
+       "orgCode": "1292",
+       "shopName": "강남본점",
+       "shopTelphone": "02-3448-5191",
+       "shopFax": "02-3448-5190",
+       "shopAdress": "서울특별시 강남구 청담동  86-1 LG 청담빌딩 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0395764",
+         "gpsy": "37.5235644"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "C",
+       "storeFormType": "",
+       "storeType": "lgzin, mobile, signature",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002666",
+       "orgCode": "0217",
+       "shopName": "역촌점",
+       "shopTelphone": "02-387-6800",
+       "shopFax": "02-387-6838",
+       "shopAdress": "서울특별시 은평구 갈현동 465-3 LG전자 베스트샵 역촌점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.916933",
+         "gpsy": "37.6117719"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005595",
+       "orgCode": "B670",
+       "shopName": "북가좌점",
+       "shopTelphone": "02-2038-2996",
+       "shopFax": "02-380-8970",
+       "shopAdress": "서울특별시 서대문구 북가좌동 306-24 LG베스트샵 LG 베스트샵 북가좌점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.910479",
+         "gpsy": "37.5782816"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003470",
+       "orgCode": "1117",
+       "shopName": "서초점",
+       "shopTelphone": "02-584-6868",
+       "shopFax": "02-584-0830",
+       "shopAdress": "서울특별시 서초구 서초동 1342-4 LG전자대리점 LG전자 베스트샵 서초점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.028056",
+         "gpsy": "37.4881898"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005619",
+       "orgCode": "0939",
+       "shopName": "롯데 청량리점",
+       "shopTelphone": "02-3707-1760",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 동대문구 전농동 591-53 7층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.047434",
+         "gpsy": "37.580606"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005615",
+       "orgCode": "0897",
+       "shopName": "롯데 관악점",
+       "shopTelphone": "02-845-8058",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 관악구 봉천동 729-22 6층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.925123",
+         "gpsy": "37.490529"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002632",
+       "orgCode": "0761",
+       "shopName": "관악점",
+       "shopTelphone": "02-884-3338",
+       "shopFax": "02-884-2990",
+       "shopAdress": "서울특별시 관악구 신림동 1444-8 LG하이프라자 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.9247043",
+         "gpsy": "37.4895901"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "B",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005590",
+       "orgCode": "2225",
+       "shopName": "신대방점",
+       "shopTelphone": "02-2138-6081",
+       "shopFax": "02-2138-6082",
+       "shopAdress": "서울특별시 동작구 신대방동 375-1 LG전자 베스트샵 신대방점 LG전자 베스트샵 신대방점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.9204473",
+         "gpsy": "37.4978029"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001057",
+       "orgCode": "A667",
+       "shopName": "월드컵점",
+       "shopTelphone": "02-337-3050",
+       "shopFax": "02-337-9121",
+       "shopAdress": "서울특별시 마포구 성산동 266-1 아트센타 LG 베스트샵 월드컵점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.90521216128008",
+         "gpsy": "37.56196645858694"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005617",
+       "orgCode": "0925",
+       "shopName": "롯데 영등포점",
+       "shopTelphone": "02-2164-5414",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 영등포구 영등포동 618-496 9층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.90709",
+         "gpsy": "37.515913"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005624",
+       "orgCode": "0953",
+       "shopName": "신세계 타임스퀘어점",
+       "shopTelphone": "02-2639-1476",
+       "shopFax": "02-2639-1490",
+       "shopAdress": "서울특별시 영등포구 영등포동 4가 434-5 6층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "11:00-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.905514",
+         "gpsy": "37.517186"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002674",
+       "orgCode": "0647",
+       "shopName": "쌍문본점",
+       "shopTelphone": "02-997-1400",
+       "shopFax": "02-997-7378",
+       "shopAdress": "서울 도봉구 쌍문동 692 LG전자 베스트샵 쌍문본점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.03795449509476",
+         "gpsy": "37.65485567854624"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005557",
+       "orgCode": "2128",
+       "shopName": "홈플러스 월드컵점",
+       "shopTelphone": "02-2039-5247",
+       "shopFax": "070-5067-2877",
+       "shopAdress": "서울특별시 마포구 성산동 515 월드컵주경기장 홈플러스 월드컵점 2층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8972707689",
+         "gpsy": "37.5682897045"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005226",
+       "orgCode": "1887",
+       "shopName": "서초R&D센터점",
+       "shopTelphone": "02-6912-6095",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 서초구 양재동 221 LG전자 서초 R&D 캠퍼스 LG베스트샵 서초 알앤디센터점 (양재동,LG전자서초연구단지)",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "X:X-X:X",
+         "week": "09:00-19:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0346917",
+         "gpsy": "37.4610142"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000053",
+       "orgCode": "A098",
+       "shopName": "도림점",
+       "shopTelphone": "02-849-4848",
+       "shopFax": "02-849-4848",
+       "shopAdress": "서울특별시 영등포구 도림동 246-20 LG 베스트샵 도림점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.90078671832063",
+         "gpsy": "37.50707543620475"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005639",
+       "orgCode": "0895",
+       "shopName": "롯데 강남점",
+       "shopTelphone": "02-531-2809",
+       "shopFax": "02-557-4302",
+       "shopAdress": "서울특별시 강남구 대치동 937 8층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.053162",
+         "gpsy": "37.496993"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005266",
+       "orgCode": "1919",
+       "shopName": "홈플러스 영등포점",
+       "shopTelphone": "02-6713-5840",
+       "shopFax": "02-2068-8912",
+       "shopAdress": "서울특별시 영등포구 문래동3가 55-3 홈플러스 홈플러스 영등포점 1층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.89592321486141",
+         "gpsy": "37.51822540894074"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005225",
+       "orgCode": "1929",
+       "shopName": "홈플러스 방학점",
+       "shopTelphone": "02-6713-5033",
+       "shopFax": "02-954-6373",
+       "shopAdress": "서울특별시 도봉구 방학동 707-7 홈플러스데스코㈜방학점 홈플러스 방학점 B1층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.04374441303844",
+         "gpsy": "37.664840153639986"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002633",
+       "orgCode": "0765",
+       "shopName": "휘경점",
+       "shopTelphone": "02-2248-4300",
+       "shopFax": "02-2248-1900",
+       "shopAdress": "서울특별시 동대문구 휘경동 75-6 휘경빌딩 LG전자 베스트샵 휘경점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.06531422599862",
+         "gpsy": "37.591306089536694"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005645",
+       "orgCode": "0963",
+       "shopName": "현대 무역점",
+       "shopTelphone": "02-3453-0705",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 강남구 삼성동 159-7 현대백화점 4층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.059859",
+         "gpsy": "37.508579"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002669",
+       "orgCode": "0190",
+       "shopName": "문래점",
+       "shopTelphone": "02-2637-5511",
+       "shopFax": "02-2637-5574",
+       "shopAdress": "서울특별시 영등포구 문래동3가 67 엘지전자서비스 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8944833",
+         "gpsy": "37.5182639"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005582",
+       "orgCode": "2221",
+       "shopName": "서울양평점",
+       "shopTelphone": "02-2135-1475",
+       "shopFax": "--0221351476",
+       "shopAdress": "서울특별시 영등포구 양평동3가  70-1 엘지베스트샵 LG베스트샵 서울양평점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8922083",
+         "gpsy": "37.5293565"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002260",
+       "orgCode": "A961",
+       "shopName": "장안중앙점",
+       "shopTelphone": "02-929-6644",
+       "shopFax": "02-929-8686",
+       "shopAdress": "서울특별시 동대문구 장안동 465-10 LG 베스트샵 장안중앙점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.067438",
+         "gpsy": "37.561418"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005591",
+       "orgCode": "2241",
+       "shopName": "삼송점",
+       "shopTelphone": "02-6713-5671",
+       "shopFax": "02-6713-5676",
+       "shopAdress": "경기도 고양시 덕양구 동산동 46-4 LG전자 베스트샵 삼송점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8991553",
+         "gpsy": "37.6466213"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002800",
+       "orgCode": "B016",
+       "shopName": "장한평점",
+       "shopTelphone": "02-2214-9100",
+       "shopFax": "02-2241-8600",
+       "shopAdress": "서울특별시 동대문구 장안동 311-3 LG 베스트샵 장한평점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:00-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0723268290141",
+         "gpsy": "37.575763706583324"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005643",
+       "orgCode": "2167",
+       "shopName": "현대 디큐브시티점",
+       "shopTelphone": "02-2210-9586",
+       "shopFax": "02-2210-9587",
+       "shopAdress": "서울특별시 구로구 신도림동 692 5층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "11:00-21:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.889382",
+         "gpsy": "37.508832"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005616",
+       "orgCode": "0921",
+       "shopName": "롯데 스타점",
+       "shopTelphone": "02-2218-3950",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 광진구 자양동 227-7 9층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.073198",
+         "gpsy": "37.538446"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005641",
+       "orgCode": "0899",
+       "shopName": "롯데 노원점",
+       "shopTelphone": "02-950-2755",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 노원구 상계동 713 7층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.061039",
+         "gpsy": "37.655119"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002777",
+       "orgCode": "0864",
+       "shopName": "구로구청점",
+       "shopTelphone": "02-859-5335",
+       "shopFax": "02-859-5352",
+       "shopAdress": "서울특별시 구로구 구로동 98-2 베스트샵 구로점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.88980775938455",
+         "gpsy": "37.4953775919926"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003765",
+       "orgCode": "1199",
+       "shopName": "금천본점",
+       "shopTelphone": "02-853-1220",
+       "shopFax": "02-830-2420",
+       "shopAdress": "서울특별시 금천구 독산동 1012 LG전자 베스트샵 금천본점 (독산동)",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8984462923343",
+         "gpsy": "37.46936781371113"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002684",
+       "orgCode": "0728",
+       "shopName": "상계점",
+       "shopTelphone": "02-939-4444",
+       "shopFax": "02-937-8200",
+       "shopAdress": "서울특별시 노원구 상계동 1034-4 태광빌딩 LG전자 베스트샵 상계점 (상계동,태광빌딩)",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0556225150058",
+         "gpsy": "37.67111678524308"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "B",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005868",
+       "orgCode": "2329",
+       "shopName": "건대입구점",
+       "shopTelphone": "02-6949-6240",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 광진구 자양동 227-318 베스트샵 건대입구점 (자양동 227-321)",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0763427",
+         "gpsy": "37.5379046"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00004186",
+       "orgCode": "1316",
+       "shopName": "노원본점",
+       "shopTelphone": "02-972-7733",
+       "shopFax": "02-949-7733",
+       "shopAdress": "서울특별시 노원구 공릉동 323-1 엘지전자 베스트샵 공릉점 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.071114",
+         "gpsy": "37.6285344"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002775",
+       "orgCode": "0858",
+       "shopName": "군자점",
+       "shopTelphone": "02-2205-9700",
+       "shopFax": "02-2205-0165",
+       "shopAdress": "서울특별시 광진구 군자동 477-17 LG전자 군자점 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0785017",
+         "gpsy": "37.5562087"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005326",
+       "orgCode": "1935",
+       "shopName": "홈플러스 중계점",
+       "shopTelphone": "02-986-2080",
+       "shopFax": "02-977-5553",
+       "shopAdress": "서울특별시 노원구 중계동 509-2 홈플러스 홈플러스 중계점 B1층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.06860624217569",
+         "gpsy": "37.6399179451924"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005346",
+       "orgCode": "1925",
+       "shopName": "홈플러스 금천점",
+       "shopTelphone": "02-6713-5236",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 금천구 독산동 291-7 삼성홈플러스 홈플러스 금천점 3층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.89689627410826",
+         "gpsy": "37.46868530751576"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002672",
+       "orgCode": "0620",
+       "shopName": "대치본점",
+       "shopTelphone": "02-569-8001",
+       "shopFax": "02-569-8166",
+       "shopAdress": "서울특별시 강남구 대치동 50-8 LG전자 베스트샵 대치점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0704095",
+         "gpsy": "37.4971582"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "C",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005598",
+       "orgCode": "B510",
+       "shopName": "중화점",
+       "shopTelphone": "02-972-0123",
+       "shopFax": "02-973-7890",
+       "shopAdress": "서울특별시 중랑구 중화동 303-4 삼천리프라자 LG베스트샵 중화점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0792426",
+         "gpsy": "37.6009323"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003247",
+       "orgCode": "1065",
+       "shopName": "비산점",
+       "shopTelphone": "031-687-5690",
+       "shopFax": "031-382-7233",
+       "shopAdress": "경기도 안양시 동안구 비산동  1054-6 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.9495333",
+         "gpsy": "37.4012701"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002255",
+       "orgCode": "A167",
+       "shopName": "노원역점",
+       "shopTelphone": "02-933-7777",
+       "shopFax": "02-933-7520",
+       "shopAdress": "서울특별시 노원구 상계동 372-5 강남청솔학원 LG 베스트샵 노원역점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.06719480308215",
+         "gpsy": "37.6568674347968"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002527",
+       "orgCode": "0745",
+       "shopName": "평촌점",
+       "shopTelphone": "031-426-9700",
+       "shopFax": "031-426-9093",
+       "shopAdress": "경기도 안양시 동안구 평촌동 125-1 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.9744348",
+         "gpsy": "37.3932867"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "B",
+       "storeFormType": "",
+       "storeType": "lgzin, mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005681",
+       "orgCode": "1863",
+       "shopName": "전자 MCA연구소점",
+       "shopTelphone": "010-5850-3190",
+       "shopFax": "02-2033-5249",
+       "shopAdress": "서울특별시 금천구 가산동 219-24 LG전자가산 A 전자 MCA연구소점",
+       "bizHours": {
+         "sunday": "",
+         "saturday": "X:X-X:X",
+         "week": "09:00-17:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8893043",
+         "gpsy": "37.4752372"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "N"
+     },
+     {
+       "shopID": "ST00005644",
+       "orgCode": "0961",
+       "shopName": "현대 목동점",
+       "shopTelphone": "02-2163-1052",
+       "shopFax": "02-2163-2080",
+       "shopAdress": "서울특별시 양천구 목동 916 지하 1층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.875209",
+         "gpsy": "37.526544"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002636",
+       "orgCode": "0797",
+       "shopName": "목동점",
+       "shopTelphone": "02-2651-4114",
+       "shopFax": "02-2651-4747",
+       "shopAdress": "서울특별시 양천구 목동 405-112 LG전자 베스트샵 목동점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8754466",
+         "gpsy": "37.5242043"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "C",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005265",
+       "orgCode": "1921",
+       "shopName": "홈플러스 목동점",
+       "shopTelphone": "02-6713-5772",
+       "shopFax": "02-2061-4113",
+       "shopAdress": "서울특별시 양천구 목동 919-7 홈플러스목동점 홈플러스 목동점 B1층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8732617",
+         "gpsy": "37.5303127"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003011",
+       "orgCode": "A981",
+       "shopName": "사가정점",
+       "shopTelphone": "02-434-8828",
+       "shopFax": "02-435-7077",
+       "shopAdress": "서울특별시 중랑구 면목동 637-29 LG 베스트샵 사가정점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.08546922451379",
+         "gpsy": "37.58069661681384"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005682",
+       "orgCode": "1699",
+       "shopName": "전자 가산캠퍼스점",
+       "shopTelphone": "070-4367-7496",
+       "shopFax": "070-4367-7497",
+       "shopAdress": "서울특별시 금천구 가산동 327-23 LG전자 가산 R&D 캠퍼스 전자 가산캠퍼스점",
+       "bizHours": {
+         "sunday": "",
+         "saturday": "X:X-X:X",
+         "week": "08:30-18:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8851844",
+         "gpsy": "37.4705838"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "N"
+     },
+     {
+       "shopID": "ST00005631",
+       "orgCode": "1232",
+       "shopName": "롯데 평촌점",
+       "shopTelphone": "031-8086-9721",
+       "shopFax": "031-8086-9721",
+       "shopAdress": "경기도 안양시 동안구 호계동 1039 7층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.950203",
+         "gpsy": "37.390185"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005584",
+       "orgCode": "0688",
+       "shopName": "구의점",
+       "shopTelphone": "02-452-7676",
+       "shopFax": "02-452-7388",
+       "shopAdress": "서울특별시 광진구 구의동 73-1 LG전자 베스트샵 구의점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0907404",
+         "gpsy": "37.5497151"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002208",
+       "orgCode": "A301",
+       "shopName": "잠실점",
+       "shopTelphone": "02-417-8989",
+       "shopFax": "02-417-3264",
+       "shopAdress": "서울특별시 송파구 삼전동 28-4 Digital LG LG 베스트샵 잠실점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0880365",
+         "gpsy": "37.5039321"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002749",
+       "orgCode": "0862",
+       "shopName": "안양점",
+       "shopTelphone": "031-445-0220",
+       "shopFax": "031-445-0584",
+       "shopAdress": "경기 안양시 만안구 안양동 622-438 LG전자 베스트샵 안양점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.92511748392533",
+         "gpsy": "37.3947835753848"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003985",
+       "orgCode": "1256",
+       "shopName": "의정부시청점",
+       "shopTelphone": "031-821-1625",
+       "shopFax": "031-826-7873",
+       "shopAdress": "경기 의정부시 의정부2동 492번지 LG전자 베스트샵 의정부시청점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0400162906227",
+         "gpsy": "37.73793579717154"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003207",
+       "orgCode": "1059",
+       "shopName": "소하점",
+       "shopTelphone": "02-899-1221",
+       "shopFax": "02-899-1293",
+       "shopAdress": "경기도 광명시 소하동 1340-1 LG BESt SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8817802",
+         "gpsy": "37.4479692"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002613",
+       "orgCode": "0100",
+       "shopName": "의정부점",
+       "shopTelphone": "031-826-8959",
+       "shopFax": "031-826-3004",
+       "shopAdress": "경기도 의정부시 의정부동  369-6 LG BEST SHOP 의정부점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0477595",
+         "gpsy": "37.7323849"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005649",
+       "orgCode": "1250",
+       "shopName": "신세계 의정부점",
+       "shopTelphone": "031-8082-0857",
+       "shopFax": "031-8082-0857",
+       "shopAdress": "경기도 의정부시 의정부동 168-54 8층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "11:00-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.045894",
+         "gpsy": "37.738132"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005245",
+       "orgCode": "1917",
+       "shopName": "홈플러스 강서점",
+       "shopTelphone": "02-6713-5580",
+       "shopFax": "02-2658-9915",
+       "shopAdress": "서울특별시 강서구 등촌동 639-11 홈플러스강서점앤본사사옥 홈플러스 강서점 3층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.855105",
+         "gpsy": "37.5583959"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002744",
+       "orgCode": "0668",
+       "shopName": "강서본점",
+       "shopTelphone": "02-3664-0065",
+       "shopFax": "02-3665-9889",
+       "shopAdress": "서울특별시 강서구 등촌동 655-42 LG BEST SHOP 강서본점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8551497",
+         "gpsy": "37.5553504"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile, signature",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002683",
+       "orgCode": "0709",
+       "shopName": "양천본점",
+       "shopTelphone": "02-2065-4545",
+       "shopFax": "02-2065-4554",
+       "shopAdress": "서울특별시 양천구 신정동 1027-4 LG Bestshop 신정점 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8574483492975",
+         "gpsy": "37.52138920415697"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "lgzin, mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002689",
+       "orgCode": "0188",
+       "shopName": "중랑점",
+       "shopTelphone": "02-493-9800",
+       "shopFax": "02-493-9822",
+       "shopAdress": "서울특별시 중랑구 망우동 359-1 LG전자 베스트샵 중랑점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1010372",
+         "gpsy": "37.5997769"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "B",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005630",
+       "orgCode": "0933",
+       "shopName": "롯데 잠실점",
+       "shopTelphone": "02-415-2236",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 송파구 잠실동 40-1 롯데월드 롯데백화점 10층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0993708",
+         "gpsy": "37.5121289"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002986",
+       "orgCode": "1017",
+       "shopName": "의왕점",
+       "shopTelphone": "031-454-4300",
+       "shopFax": "031-454-4359",
+       "shopAdress": "경기도 의왕시 오전동 120 LG전자 베스트샵 의왕점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.9644797166",
+         "gpsy": "37.3588402447"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000044",
+       "orgCode": "B895",
+       "shopName": "철산점",
+       "shopTelphone": "02-2688-4334",
+       "shopFax": "02-2688-6685",
+       "shopAdress": "경기도 광명시 광명동 33-72 베스트샵 철산점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8620845",
+         "gpsy": "37.4774734"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003246",
+       "orgCode": "1061",
+       "shopName": "개봉점",
+       "shopTelphone": "02-2039-7291",
+       "shopFax": "02-2614-7272",
+       "shopAdress": "서울특별시 구로구 개봉동 144-5 미서빌딩 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8545929",
+         "gpsy": "37.497"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "B",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002209",
+       "orgCode": "1203",
+       "shopName": "송파점",
+       "shopTelphone": "02-402-3939",
+       "shopFax": "02-430-6604",
+       "shopAdress": "서울특별시 송파구 송파동 7 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1045251",
+         "gpsy": "37.5087141"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "lgzin, mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001166",
+       "orgCode": "1063",
+       "shopName": "산본점",
+       "shopTelphone": "031-398-1199",
+       "shopFax": "031-398-1283",
+       "shopAdress": "경기도 군포시 산본동 1123-3 센트로 601 오피스텔 1층 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.9299657",
+         "gpsy": "37.3603839"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "B",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003965",
+       "orgCode": "B277",
+       "shopName": "강동구청역점",
+       "shopTelphone": "02-577-4242",
+       "shopFax": "02-517-7542",
+       "shopAdress": "서울특별시 강동구 성내동 553-25 LG 베스트샵 강동구청역점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.12142085688183",
+         "gpsy": "37.53056344372196"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005570",
+       "orgCode": "2182",
+       "shopName": "홈플러스 의정부점",
+       "shopTelphone": "031-928-5034",
+       "shopFax": "031-928-5035",
+       "shopAdress": "경기도 의정부시 금오동 475-1 삼성홈플러스 홈플러스 의정부점 3층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0710897",
+         "gpsy": "37.7520971"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002523",
+       "orgCode": "0601",
+       "shopName": "금오본점",
+       "shopTelphone": "031-842-3500",
+       "shopFax": "031-842-7380",
+       "shopAdress": "경기도 의정부시 금오동 447-15 LG베스트샵 금오본점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0699851",
+         "gpsy": "37.7537702"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "B",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005592",
+       "orgCode": "2223",
+       "shopName": "사이언스파크점",
+       "shopTelphone": "02-6952-1441",
+       "shopFax": "02-6952-1442",
+       "shopAdress": "서울특별시 강서구 마곡동 770-1 엘지사이언스파크 LG전자 베스트샵 사이언스파크점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "X:X-X:X",
+         "week": "08:00-18:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8321927",
+         "gpsy": "37.5626479"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "N"
+     },
+     {
+       "shopID": "ST00005648",
+       "orgCode": "0977",
+       "shopName": "현대 천호점",
+       "shopTelphone": "02-2225-7093",
+       "shopFax": "000-000-0000",
+       "shopAdress": "서울특별시 강동구 천호동 455-8 10층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.124471",
+         "gpsy": "37.538881"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003186",
+       "orgCode": "1035",
+       "shopName": "행신점",
+       "shopTelphone": "031-972-6262",
+       "shopFax": "031-972-6563",
+       "shopAdress": "경기도 고양시 덕양구 행신동 999 행신스퀘어 2층 LG전자 베스트샵 행신점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8342826",
+         "gpsy": "37.623792"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000031",
+       "orgCode": "A635",
+       "shopName": "암사점",
+       "shopTelphone": "02-3427-7777",
+       "shopFax": "02-478-9125",
+       "shopAdress": "서울특별시 강동구 천호동 287-14 엘지하이프라자 LG 베스트샵 암사점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.12706748639152",
+         "gpsy": "37.54799292794155"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003185",
+       "orgCode": "B218",
+       "shopName": "가락점",
+       "shopTelphone": "02-421-1212",
+       "shopFax": "02-421-7337",
+       "shopAdress": "서울특별시 송파구 가락동 123-7 LG하이프라자 LG 베스트샵 가락점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1237789423239",
+         "gpsy": "37.4948845521902"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002676",
+       "orgCode": "0666",
+       "shopName": "천호점",
+       "shopTelphone": "02-471-4211",
+       "shopFax": "02-473-4300",
+       "shopAdress": "서울특별시 강동구 성내동 19-27 LG전자 베스트샵 천호점 (성내동)",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1294504",
+         "gpsy": "37.5363871"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002657",
+       "orgCode": "0229",
+       "shopName": "화정점",
+       "shopTelphone": "031-978-0087",
+       "shopFax": "031-978-7745",
+       "shopAdress": "경기 고양시 덕양구 화정동 984-1번지 LG전자 베스트샵 화정점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.83067395045076",
+         "gpsy": "37.63170031786432"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005550",
+       "orgCode": "2114",
+       "shopName": "별내점",
+       "shopTelphone": "031-527-5914",
+       "shopFax": "031-527-5916",
+       "shopAdress": "경기 남양주시 별내동 931-9",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1260061276",
+         "gpsy": "37.656863141"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000987",
+       "orgCode": "1802",
+       "shopName": "북수원점",
+       "shopTelphone": "031-546-8724",
+       "shopFax": "031-241-5395",
+       "shopAdress": "경기도 수원시 장안구 송죽동  177-1 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0014547",
+         "gpsy": "37.3066978"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003748",
+       "orgCode": "1160",
+       "shopName": "강동본점",
+       "shopTelphone": "02-488-0650",
+       "shopFax": "02-470-4623",
+       "shopAdress": "서울특별시 강동구 길동 413-45 LG전자 베스트샵 강동본점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1386821",
+         "gpsy": "37.5355168"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003866",
+       "orgCode": "1214",
+       "shopName": "구리인창점",
+       "shopTelphone": "031-554-5090",
+       "shopFax": "031-554-5091",
+       "shopAdress": "경기도 구리시 인창동 412-15 인창프라자 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1380658",
+         "gpsy": "37.6095258"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005587",
+       "orgCode": "2234",
+       "shopName": "홈플러스 북수원점",
+       "shopTelphone": "031-548-1635",
+       "shopFax": "031-548-1636",
+       "shopAdress": "경기도 수원시 장안구 조원동 896 삼성홈플러스 홈플러스 북수원점 3층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0089081",
+         "gpsy": "37.3026738"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000045",
+       "orgCode": "A043",
+       "shopName": "방화점",
+       "shopTelphone": "02-2661-7777",
+       "shopFax": "02-2664-2127",
+       "shopAdress": "서울특별시 강서구 방화동 573-3 주신꽃화원 LG 베스트샵 방화점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.81268212008692",
+         "gpsy": "37.57318303724812"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003686",
+       "orgCode": "1180",
+       "shopName": "구리역점",
+       "shopTelphone": "031-592-6666",
+       "shopFax": "031-592-0082",
+       "shopAdress": "경기도 구리시 수택동 531 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1434087",
+         "gpsy": "37.6016979"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "lgzin, mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005640",
+       "orgCode": "0987",
+       "shopName": "롯데 구리점",
+       "shopTelphone": "031-550-7759",
+       "shopFax": "000-000-0000",
+       "shopAdress": "경기도 구리시 인창동 677 7층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.143677",
+         "gpsy": "37.60277"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00004525",
+       "orgCode": "1709",
+       "shopName": "정자사거리점",
+       "shopTelphone": "031-241-7769",
+       "shopFax": "031-241-7729",
+       "shopAdress": "경기도 수원시 장안구 정자동 79-2 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0033404",
+         "gpsy": "37.2908644"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005632",
+       "orgCode": "2007",
+       "shopName": "현대 판교점",
+       "shopTelphone": "031-5170-1833",
+       "shopFax": "031-5170-1834",
+       "shopAdress": "경기도 성남시 분당구 백현동 541 8층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.111706",
+         "gpsy": "37.392929"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002688",
+       "orgCode": "0701",
+       "shopName": "양주점",
+       "shopTelphone": "031-861-8900",
+       "shopFax": "031-861-8979",
+       "shopAdress": "경기도 양주시 덕계동 509-7 LG전자 베스트샵 양주점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.04989429521608",
+         "gpsy": "37.823858676346816"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001072",
+       "orgCode": "B762",
+       "shopName": "역곡점",
+       "shopTelphone": "032-341-6404",
+       "shopFax": "032-347-6403",
+       "shopAdress": "경기도 부천시 괴안동 129 네오빌 LG 베스트샵 역곡점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8136293050831",
+         "gpsy": "37.48481549191698"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005562",
+       "orgCode": "B740",
+       "shopName": "베스트샵 거여점",
+       "shopTelphone": "02-477-7222",
+       "shopFax": "02-477-7946",
+       "shopAdress": "서울 송파구 거여동 37-3 거여빌딩 1층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1451804146",
+         "gpsy": "37.4932602534"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00004127",
+       "orgCode": "1298",
+       "shopName": "모란역점",
+       "shopTelphone": "031-759-8225",
+       "shopFax": "031-721-9965",
+       "shopAdress": "경기 성남시 중원구 하대원동 100번지 LG전자 베스트샵 모란역점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.13000291277576",
+         "gpsy": "37.42928449373197"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005580",
+       "orgCode": "2227",
+       "shopName": "위례점",
+       "shopTelphone": "031-697-8289",
+       "shopFax": "031-697-8295",
+       "shopAdress": "경기도 성남시 수정구 창곡동  509 위례중앙역 중앙타워 위례중앙타워 5층 504/505호",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1426966",
+         "gpsy": "37.4734762"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002612",
+       "orgCode": "0009",
+       "shopName": "야탑점",
+       "shopTelphone": "031-708-7800",
+       "shopFax": "031-781-4743",
+       "shopAdress": "경기도 성남시 중원구 여수동 183 성남 여수 오렌지카운티 1층/2층 LG전자 베스트샵 야탑점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1282065",
+         "gpsy": "37.418453"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003325",
+       "orgCode": "B028",
+       "shopName": "서수원점",
+       "shopTelphone": "031-298-2700",
+       "shopFax": "031-298-3350",
+       "shopAdress": "경기도 수원시 권선구 구운동 293-4 LG 베스트샵 서수원점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.96940977939113",
+         "gpsy": "37.27656689283555"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005603",
+       "orgCode": "1615",
+       "shopName": "롯데 김포공항점",
+       "shopTelphone": "02-6116-3565",
+       "shopFax": "00-000-0000",
+       "shopAdress": "서울특별시 강서구 방화동 886 5층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.803113",
+         "gpsy": "37.563278"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005556",
+       "orgCode": "2126",
+       "shopName": "홈플러스 야탑점",
+       "shopTelphone": "031-698-2064",
+       "shopFax": "070-5067-2845",
+       "shopAdress": "경기도 성남시 분당구 야탑동 341 분당종합터미널 홈플러스 야탑점 3층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1273284",
+         "gpsy": "37.4131155"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000985",
+       "orgCode": "A072",
+       "shopName": "성남호성점",
+       "shopTelphone": "031-756-7900",
+       "shopFax": "031-756-1022",
+       "shopAdress": "경기도 성남시 수정구 신흥동 5530 LG 베스트샵 성남호성점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.13768853029165",
+         "gpsy": "37.442276107012695"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00004626",
+       "orgCode": "A081",
+       "shopName": "오정점",
+       "shopTelphone": "032-684-0069",
+       "shopFax": "032-554-0048",
+       "shopAdress": "경기도 부천시 원종동 376-4 LG 베스트샵 오정점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.80456066892569",
+         "gpsy": "37.5180724869831"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005627",
+       "orgCode": "0915",
+       "shopName": "롯데 분당점",
+       "shopTelphone": "031-738-2808",
+       "shopFax": "000-000-0000",
+       "shopAdress": "경기도 성남시 분당구 수내동 14 5층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.11419",
+         "gpsy": "37.378474"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002530",
+       "orgCode": "0789",
+       "shopName": "서현점",
+       "shopTelphone": "031-783-7100",
+       "shopFax": "031-783-7103",
+       "shopAdress": "경기도 성남시 분당구 서현동 255-1 풍림아이원플러스 LG전자 베스트샵 서현점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.12247583327203",
+         "gpsy": "37.388952088310006"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "lgzin, mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000230",
+       "orgCode": "A124",
+       "shopName": "성남중앙로점",
+       "shopTelphone": "031-756-8277",
+       "shopFax": "031-721-2646",
+       "shopAdress": "경기도 성남시 수정구 신흥동 6910 일문파이낸스빌딩 LG 베스트샵 성남중앙로점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.14224870598392",
+         "gpsy": "37.43898337980948"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005634",
+       "orgCode": "0981",
+       "shopName": "AK PLAZA 분당점",
+       "shopTelphone": "031-701-7248",
+       "shopFax": "000-000-0000",
+       "shopAdress": "경기도 성남시 분당구 서현동 263 AK플라자 6층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1233476",
+         "gpsy": "37.3850521"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005635",
+       "orgCode": "0983",
+       "shopName": "AK PLAZA 수원점",
+       "shopTelphone": "031-240-1537",
+       "shopFax": "000-000-0000",
+       "shopAdress": "경기도 수원시 팔달구 매산로1가 18 5층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.000515",
+         "gpsy": "37.265459"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005628",
+       "orgCode": "1814",
+       "shopName": "롯데 수원점",
+       "shopTelphone": "031-8066-0820",
+       "shopFax": "031-8066-0837",
+       "shopAdress": "경기도 수원시 권선구 서둔동 296-77 지하 1층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.99779",
+         "gpsy": "37.264398"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003265",
+       "orgCode": "1079",
+       "shopName": "수지점",
+       "shopTelphone": "031-266-0047",
+       "shopFax": "031-266-6336",
+       "shopAdress": "경기 용인시 수지구 성복동 71-3번지 LG전자 베스트샵 수지점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.07952160849656",
+         "gpsy": "37.31334561845351"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "lgzin, mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00004865",
+       "orgCode": "1252",
+       "shopName": "미금점",
+       "shopTelphone": "031-698-4080",
+       "shopFax": "031-712-5803",
+       "shopAdress": "경기도 성남시 분당구 구미동 9-1 분당엠코헤리츠 LG BESt SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1084765",
+         "gpsy": "37.3492695"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "B",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005735",
+       "orgCode": "2311",
+       "shopName": "갤러리아 광교점",
+       "shopTelphone": "031-5174-7801",
+       "shopFax": "000-000-0000",
+       "shopAdress": "경기도 수원시 영통구 하동 871-1 백화점 내 8층 갤러리아 광교점 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0573255",
+         "gpsy": "37.2855657"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003105",
+       "orgCode": "1049",
+       "shopName": "풍동점",
+       "shopTelphone": "031-905-1002",
+       "shopFax": "031-905-2058",
+       "shopAdress": "경기 고양시 일산동구 풍동 881",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8002631911",
+         "gpsy": "37.6619906313"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005881",
+       "orgCode": "2334",
+       "shopName": "홈플러스 동수원점",
+       "shopTelphone": "031-546-0351",
+       "shopFax": "070-5067-6304",
+       "shopAdress": "경기도 수원시 팔달구 인계동 1045 홈플러스동수원점 LG전자 베스트샵 홈플러스 동수원점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0301165",
+         "gpsy": "37.2627677"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001091",
+       "orgCode": "A523",
+       "shopName": "소사점",
+       "shopTelphone": "032-342-9800",
+       "shopFax": "032-342-9800",
+       "shopAdress": "경기도 부천시 소사본동 317-7 동남빌딩 LG베스트샵 소사점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7964186",
+         "gpsy": "37.4691815"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005575",
+       "orgCode": "2213",
+       "shopName": "죽전본점",
+       "shopTelphone": "031-266-6868",
+       "shopFax": "031-266-6894",
+       "shopAdress": "경기 용인시 수지구 죽전동 881-13, 17",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.109303",
+         "gpsy": "37.3322579"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001092",
+       "orgCode": "A517",
+       "shopName": "월피점",
+       "shopTelphone": "031-410-7972",
+       "shopFax": "031-410-7974",
+       "shopAdress": "경기도 안산시 상록구 월피동 445-29 에스엘타운 LG 베스트샵 월피점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.847746499447",
+         "gpsy": "37.32810784730201"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005566",
+       "orgCode": "2181",
+       "shopName": "홈플러스 고양터미널점",
+       "shopTelphone": "031-936-7696",
+       "shopFax": "031-936-7697",
+       "shopAdress": "경기도 고양시 일산동구 백석동 1242 베스트 고양터미널 홈플러스 고양터미널점 B1층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7896989023",
+         "gpsy": "37.6432318604"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002520",
+       "orgCode": "0186",
+       "shopName": "남수원본점",
+       "shopTelphone": "031-235-3337",
+       "shopFax": "031-235-3331",
+       "shopAdress": "경기도 수원시 권선구 세류동 1121-5 LG하이프라자 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0189569",
+         "gpsy": "37.2513713"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005633",
+       "orgCode": "0957",
+       "shopName": "신세계 경기점",
+       "shopTelphone": "031-695-1493",
+       "shopFax": "000-000-0000",
+       "shopAdress": "경기도 용인시 수지구 죽전동 1289 지하2층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "11:00-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.108096",
+         "gpsy": "37.3248"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001007",
+       "orgCode": "2050",
+       "shopName": "상록수점",
+       "shopTelphone": "031-415-3311",
+       "shopFax": "031-415-1065",
+       "shopAdress": "경기 안산시 상록구 본오동 878-6번지 LG전자 베스트샵 상록수점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.86234452514196",
+         "gpsy": "37.30148871803534"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005227",
+       "orgCode": "1943",
+       "shopName": "홈플러스 안산점",
+       "shopTelphone": "031-364-8780",
+       "shopFax": "031-402-7454",
+       "shopAdress": "경기도 안산시 상록구 성포동 586 홈플러스 안산점 홈플러스 안산점 2층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.85006867620672",
+         "gpsy": "37.31719865620821"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001048",
+       "orgCode": "A838",
+       "shopName": "성남은행점",
+       "shopTelphone": "031-735-1010",
+       "shopFax": "031-735-1439",
+       "shopAdress": "경기도 성남시 중원구 은행동 983 LG 베스트샵 은행점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.16485016269809",
+         "gpsy": "37.458085503724774"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002692",
+       "orgCode": "0183",
+       "shopName": "백석점",
+       "shopTelphone": "031-903-9992",
+       "shopFax": "031-906-9992",
+       "shopAdress": "경기도 고양시 일산동구 백석동 1294 1층 LG 베스트샵 백석점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.78570923769288",
+         "gpsy": "37.645257297535146"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002887",
+       "orgCode": "0875",
+       "shopName": "원천점",
+       "shopTelphone": "031-204-9229",
+       "shopFax": "031-204-9228",
+       "shopAdress": "경기도 용인시 기흥구 영덕동 1295 LG 베스트샵 원천점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0675622",
+         "gpsy": "37.2690244"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "B",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000989",
+       "orgCode": "A125",
+       "shopName": "구성점",
+       "shopTelphone": "031-287-9997",
+       "shopFax": "031-281-9995",
+       "shopAdress": "경기도 용인시 기흥구 보정동 700-6 LG전자 LG 베스트샵 구성점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.10619305564775",
+         "gpsy": "37.304631470708124"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005608",
+       "orgCode": "0989",
+       "shopName": "롯데 중동점",
+       "shopTelphone": "032-320-7764",
+       "shopFax": "000-000-0000",
+       "shopAdress": "경기도 부천시 원미구 중동 1140 9층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.775422",
+         "gpsy": "37.502486"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002656",
+       "orgCode": "0531",
+       "shopName": "중동점",
+       "shopTelphone": "032-325-2332",
+       "shopFax": "032-325-2234",
+       "shopAdress": "경기도 부천시 중동  1058-6 엘지하이프라자 LG BEST SHOP 중동점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7743999",
+         "gpsy": "37.5035026"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "lgzin, mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00004167",
+       "orgCode": "1296",
+       "shopName": "봉담점",
+       "shopTelphone": "031-8019-9318",
+       "shopFax": "031-221-3538",
+       "shopAdress": "경기 화성시 봉담읍 와우리 148-3번지 LG전자 베스트샵 봉담점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.97461698849437",
+         "gpsy": "37.221957143381694"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002654",
+       "orgCode": "0590",
+       "shopName": "영통점",
+       "shopTelphone": "031-204-0013",
+       "shopFax": "031-204-2344",
+       "shopAdress": "경기도 수원시 영통구 영통동 979-5 LG전자 베스트샵 영통점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0562816",
+         "gpsy": "37.2461811"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "lgzin, mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002797",
+       "orgCode": "1282",
+       "shopName": "신천점",
+       "shopTelphone": "031-314-4433",
+       "shopFax": "031-314-3323",
+       "shopAdress": "경기도 시흥시 신천동 712-11 SK시흥주유소 LG전자 베스트샵 신천점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.78331746254612",
+         "gpsy": "37.441497679161834"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005555",
+       "orgCode": "2130",
+       "shopName": "홈플러스 영통점",
+       "shopTelphone": "031-546-8294",
+       "shopFax": "070-5067-2850",
+       "shopAdress": "경기도 수원시 영통구 영통동 994-2 영통홈플러스 홈플러스 영통점 3층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0725405107",
+         "gpsy": "37.2517802968"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001088",
+       "orgCode": "A659",
+       "shopName": "중산점",
+       "shopTelphone": "031-977-0600",
+       "shopFax": "031-976-8383",
+       "shopAdress": "경기도 고양시 일산서구 일산동 1672-1 LG 베스트샵 중산점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7775922595",
+         "gpsy": "37.683076196"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005618",
+       "orgCode": "0931",
+       "shopName": "롯데 일산점",
+       "shopTelphone": "031-905-5232",
+       "shopFax": "000-000-0000",
+       "shopAdress": "경기도 고양시 일산구 장항동 784 8층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.772024",
+         "gpsy": "37.660558"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002658",
+       "orgCode": "0243",
+       "shopName": "동두천점",
+       "shopTelphone": "031-867-7600",
+       "shopFax": "031-867-9641",
+       "shopAdress": "경기도 동두천시 생연동  745-2 LG전자 베스트샵 동두천점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0575038",
+         "gpsy": "37.8971904"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000206",
+       "orgCode": "A195",
+       "shopName": "부천점",
+       "shopTelphone": "032-655-9800",
+       "shopFax": "032-654-6978",
+       "shopAdress": "경기도 부천시 송내동 379-2 1층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7695473",
+         "gpsy": "37.4844583"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003405",
+       "orgCode": "1115",
+       "shopName": "일산본점",
+       "shopTelphone": "031-925-0123",
+       "shopFax": "031-925-9070",
+       "shopAdress": "경기도 고양시 일산동구 정발산동 785-3 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7712866",
+         "gpsy": "37.663126"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "lgzin, mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002621",
+       "orgCode": "0244",
+       "shopName": "고잔점",
+       "shopTelphone": "031-486-2286",
+       "shopFax": "031-486-2559",
+       "shopAdress": "경기도 안산시 단원구 고잔동 718-3 AW웨딩컨벤션 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.828905",
+         "gpsy": "37.308366"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003688",
+       "orgCode": "1178",
+       "shopName": "선부점",
+       "shopTelphone": "031-365-3910",
+       "shopFax": "031-487-7719",
+       "shopAdress": "경기 안산시 단원구 선부동 1070-1 안산세이브시티 LG베스트샵 선부점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.8096102576",
+         "gpsy": "37.336253154"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005610",
+       "orgCode": "0975",
+       "shopName": "현대 중동점",
+       "shopTelphone": "032-623-2732",
+       "shopFax": "032-623-2734",
+       "shopAdress": "경기도 부천시 원미구 중동 1164 7층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.762154",
+         "gpsy": "37.504246"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001077",
+       "orgCode": "A073",
+       "shopName": "상동점",
+       "shopTelphone": "032-655-8800",
+       "shopFax": "032-655-2300",
+       "shopAdress": "경기도 부천시 상동 317-9 상동빌딩 상동빌딩",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:00-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7635290700986",
+         "gpsy": "37.488581360626966"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00004165",
+       "orgCode": "1308",
+       "shopName": "신갈점",
+       "shopTelphone": "031-547-9556",
+       "shopFax": "031-274-8919",
+       "shopAdress": "경기도 용인시 기흥구 신갈동 68 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1081671",
+         "gpsy": "37.2712858"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005552",
+       "orgCode": "2314",
+       "shopName": "미사본점",
+       "shopTelphone": "031-793-6200",
+       "shopFax": "031-793-6960",
+       "shopAdress": "경기도 하남시 망월동 1149-2 LG전자 베스트샵 미사본점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1991065",
+         "gpsy": "37.5643857"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000252",
+       "orgCode": "2039",
+       "shopName": "병점점",
+       "shopTelphone": "031-267-0650",
+       "shopFax": "031-267-0652",
+       "shopAdress": "경기 화성시 진안동 507-3번지 LG전자 베스트샵 병점점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.03606405345616",
+         "gpsy": "37.21170403571424"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002728",
+       "orgCode": "1757",
+       "shopName": "송우점",
+       "shopTelphone": "031-541-8292",
+       "shopFax": "031-541-8292",
+       "shopAdress": "경기도 포천시 소흘읍 이동교리 24-1 LG전자 베스트샵 송우점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1397001",
+         "gpsy": "37.8215503"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005345",
+       "orgCode": "1947",
+       "shopName": "홈플러스 병점점",
+       "shopTelphone": "031-546-8239",
+       "shopFax": "000-000-0000",
+       "shopAdress": "경기도 화성시 병점동 399-4 홈플러스 병점점 홈플러스 병점점 B1층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.03670457425772",
+         "gpsy": "37.20368809185908"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005565",
+       "orgCode": "2183",
+       "shopName": "홈플러스 부천상동점",
+       "shopTelphone": "032-715-4297",
+       "shopFax": "032-715-4298",
+       "shopAdress": "경기도 부천시 상동 540-1 삼성홈플러스상동점 홈플러스 부천상동점 1층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7550023121",
+         "gpsy": "37.504314725"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003469",
+       "orgCode": "1113",
+       "shopName": "진접오남점",
+       "shopTelphone": "031-575-3311",
+       "shopFax": "031-575-3704",
+       "shopAdress": "경기도 남양주시 오남읍 양지리 748 LG전자 베스트샵 진접점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1892037",
+         "gpsy": "37.7076423"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002556",
+       "orgCode": "0607",
+       "shopName": "초지점",
+       "shopTelphone": "031-413-1300",
+       "shopFax": "031-413-2969",
+       "shopAdress": "경기도 안산시 단원구 초지동 742-10 메가쇼핑2 LG전자 베스트샵 초지점(초지동,메가쇼핑2)",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.81315767299082",
+         "gpsy": "37.3017708896153"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005208",
+       "orgCode": "1927",
+       "shopName": "홈플러스 남양주진접점",
+       "shopTelphone": "031-523-2043",
+       "shopFax": "031-527-2778",
+       "shopAdress": "경기도 남양주시 진접읍 장현리 216-1 홈플러스 홈플러스 남양주진접점 B1층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1887259462227",
+         "gpsy": "37.72133619966945"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000945",
+       "orgCode": "A689",
+       "shopName": "금촌점",
+       "shopTelphone": "031-945-5666",
+       "shopFax": "031-945-5667",
+       "shopAdress": "경기도 파주시 금촌동 946-16 엘지전자 LG 베스트샵 금촌점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.77401571361918",
+         "gpsy": "37.75821718554665"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005621",
+       "orgCode": "1053",
+       "shopName": "현대 킨텍스점",
+       "shopTelphone": "031-822-3722",
+       "shopFax": "031-822-3723",
+       "shopAdress": "경기도 고양시 일산서구 대화동 2602 7층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.751741",
+         "gpsy": "37.66799"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000940",
+       "orgCode": "A688",
+       "shopName": "파주점",
+       "shopTelphone": "031-949-4479",
+       "shopFax": "031-941-9485",
+       "shopAdress": "경기도 파주시 금촌동 329-205 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7727177",
+         "gpsy": "37.7646979"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002732",
+       "orgCode": "0820",
+       "shopName": "신동탄점",
+       "shopTelphone": "031-613-5020",
+       "shopFax": "031-613-5023",
+       "shopAdress": "경기도 화성시 반송동 90-1 삼성스마트쉐르빌 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0751182",
+         "gpsy": "37.2065539"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002522",
+       "orgCode": "0248",
+       "shopName": "대화점",
+       "shopTelphone": "031-925-7771",
+       "shopFax": "031-925-7774",
+       "shopAdress": "경기도 고양시 일산서구 대화동 2239 KINTEX ZONE LG전자 베스트샵 대화점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7495685566907",
+         "gpsy": "37.674817527592445"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001078",
+       "orgCode": "2288",
+       "shopName": "동백점",
+       "shopTelphone": "031-693-8052",
+       "shopFax": "031-693-8048",
+       "shopAdress": "경기도 용인시 기흥구 상하동 464-1 LG 베스트샵 동백점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.14265516319091",
+         "gpsy": "37.27559901935246"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000048",
+       "orgCode": "1711",
+       "shopName": "계산점",
+       "shopTelphone": "032-715-5127",
+       "shopFax": "032-541-1497",
+       "shopAdress": "인천광역시 계양구 계산동 1063-8 LG전자 베스트샵 계산점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.73486374654895",
+         "gpsy": "37.53840473785763"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005625",
+       "orgCode": "2106",
+       "shopName": "신세계 하남점",
+       "shopTelphone": "031-8072-1232",
+       "shopFax": "031-8072-1281",
+       "shopAdress": "경기도 하남시 신장동 616 스타필드 하남 지하 1층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "11:00-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.223903",
+         "gpsy": "37.545606"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003505",
+       "orgCode": "1121",
+       "shopName": "운정점",
+       "shopTelphone": "031-8071-4100",
+       "shopFax": "031-8071-0764",
+       "shopAdress": "경기 파주시 동패동 106-1 LG전자 베스트샵 운정점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7454928649",
+         "gpsy": "37.7065123002"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005880",
+       "orgCode": "2332",
+       "shopName": "용인기흥점",
+       "shopTelphone": "031-546-8418",
+       "shopFax": "000-000-0000",
+       "shopAdress": "경기도 용인시 기흥구 고매동 889 LG전자 베스트샵 용인기흥점(이케아 앞 리빙파워센터 2층)",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1148513",
+         "gpsy": "37.223741"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005551",
+       "orgCode": "2116",
+       "shopName": "동탄본점",
+       "shopTelphone": "031-831-8027",
+       "shopFax": "031-8631-8042",
+       "shopAdress": "경기도 화성시 오산동 967-3 LG전자 베스트샵 동탄본점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.098168",
+         "gpsy": "37.2031558"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005677",
+       "orgCode": "2274",
+       "shopName": "풍무점",
+       "shopTelphone": "031-8049-3357",
+       "shopFax": "031-8049-3362",
+       "shopAdress": "경기도 김포시 풍무동 248-3 LG전자 베스트샵 풍무점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7297106",
+         "gpsy": "37.6137919"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001071",
+       "orgCode": "A489",
+       "shopName": "부평점",
+       "shopTelphone": "032-523-9192",
+       "shopFax": "032-515-9911",
+       "shopAdress": "인천광역시 부평구 부평동 378-12 LG전자 베스트샵 LG 베스트샵 부평점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7313775476089",
+         "gpsy": "37.49564339063842"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005489",
+       "orgCode": "A352",
+       "shopName": "베스트샵 그린농협점",
+       "shopTelphone": "031-376-1122",
+       "shopFax": "031-376-1125",
+       "shopAdress": "경기도 화성시 영천동 603-1 NH농협하나로마트동탄유통센터 LG베스트샵 그린농협점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "08:00-19:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1055819",
+         "gpsy": "37.2082088"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005730",
+       "orgCode": "2299",
+       "shopName": "디스플레이 파주사업장점",
+       "shopTelphone": "031-8074-9016",
+       "shopFax": "031-8074-9017",
+       "shopAdress": "경기도 파주시 월롱면 덕은리 1239 디스플레이 파주사업장점",
+       "bizHours": {
+         "sunday": "",
+         "saturday": "휴무",
+         "week": "09:00-19:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7711113",
+         "gpsy": "37.8084405"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00004645",
+       "orgCode": "1723",
+       "shopName": "남동구청점",
+       "shopTelphone": "032-715-6080",
+       "shopFax": "032-465-8277",
+       "shopAdress": "인천광역시 남동구 만수동 1072 LG전자 베스트샵 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7345094",
+         "gpsy": "37.4490708"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "C",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002510",
+       "orgCode": "0180",
+       "shopName": "작전점",
+       "shopTelphone": "032-548-8811",
+       "shopFax": "032-551-5440",
+       "shopAdress": "인천광역시 계양구 작전동 866-31 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7230106",
+         "gpsy": "37.5283671"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001059",
+       "orgCode": "B424",
+       "shopName": "문산점",
+       "shopTelphone": "031-952-8686",
+       "shopFax": "031-954-1717",
+       "shopAdress": "경기도 파주시 문산읍 문산리 25-5 LG 베스트샵 문산점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.78605936962369",
+         "gpsy": "37.853322427137535"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00004906",
+       "orgCode": "1941",
+       "shopName": "홈플러스 작전점",
+       "shopTelphone": "032-715-7520",
+       "shopFax": "000-000-0000",
+       "shopAdress": "인천광역시 계양구 작전동 448-7 HOME PLUS 작전점 LG전자 베스트샵 홈플러스작전점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7212727447217",
+         "gpsy": "37.526177526681316"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000189",
+       "orgCode": "A596",
+       "shopName": "만수점",
+       "shopTelphone": "032-464-1600",
+       "shopFax": "032-464-1602",
+       "shopAdress": "인천광역시 남동구 만수동 897-4 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7266162",
+         "gpsy": "37.459179"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005485",
+       "orgCode": "2069",
+       "shopName": "부평구청점",
+       "shopTelphone": "032-715-4099",
+       "shopFax": "032-715-5041",
+       "shopAdress": "인천 부평구 청천동 302-29 LG전자 베스트샵 부평구청점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.7201354514",
+         "gpsy": "37.5071889489"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "C",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002745",
+       "orgCode": "1290",
+       "shopName": "발안점",
+       "shopTelphone": "031-831-3503",
+       "shopFax": "031-366-5666",
+       "shopAdress": "경기도 화성시 향남읍 장짐리 243-22 LG전자 베스트샵  발안점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.913448",
+         "gpsy": "37.1391189"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003788",
+       "orgCode": "1611",
+       "shopName": "평내점",
+       "shopTelphone": "031-564-4700",
+       "shopFax": "031-564-0930",
+       "shopAdress": "경기 남양주시 평내동 121-4  LG전자 베스트샵 평내점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.23889144734554",
+         "gpsy": "37.652014259243955"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005307",
+       "orgCode": "1939",
+       "shopName": "홈플러스 인천논현점",
+       "shopTelphone": "032-429-6384",
+       "shopFax": "000-000-0000",
+       "shopAdress": "인천광역시 남동구 논현동 650-1 홈플러스 인천논현점 B2층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.72560124923272",
+         "gpsy": "37.40054736227668"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002795",
+       "orgCode": "A528",
+       "shopName": "인천논현점",
+       "shopTelphone": "032-427-8866",
+       "shopFax": "032-427-8898",
+       "shopAdress": "인천광역시 남동구 논현동 733-1 LG 베스트샵 인천논현점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.72549199914948",
+         "gpsy": "37.40005774252901"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003845",
+       "orgCode": "1246",
+       "shopName": "오산본점",
+       "shopTelphone": "031-831-5740",
+       "shopFax": "031-372-1642",
+       "shopAdress": "경기도 오산시 원동  335-6 LG베스트샵 LG BEST SHOP 오산점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0715865",
+         "gpsy": "37.1422925"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003585",
+       "orgCode": "A321",
+       "shopName": "간석오거리점",
+       "shopTelphone": "032-421-7007",
+       "shopFax": "032-428-0993",
+       "shopAdress": "인천광역시 남동구 간석동 117-18 LG 베스트샵 간석오거리점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.71201698742183",
+         "gpsy": "37.46559584613336"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002660",
+       "orgCode": "0569",
+       "shopName": "시화점",
+       "shopTelphone": "031-434-2626",
+       "shopFax": "031-434-2623",
+       "shopAdress": "경기 시흥시 정왕1동 1734-7번지 LG전자 베스트샵 시화점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.73847517107464",
+         "gpsy": "37.34495818520281"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002532",
+       "orgCode": "0799",
+       "shopName": "신구월점",
+       "shopTelphone": "032-434-1088",
+       "shopFax": "032-434-1091",
+       "shopAdress": "인천 남동구 구월1동 1144-17번지 LG전자 베스트샵 신구월점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.70741176036392",
+         "gpsy": "37.450917307986934"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005564",
+       "orgCode": "2171",
+       "shopName": "홈플러스 김포점",
+       "shopTelphone": "031-8049-3923",
+       "shopFax": "070-5067-2028",
+       "shopAdress": "경기도 김포시 감정동 692 홈플러스 김포점 1층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.6986065757",
+         "gpsy": "37.623846993"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002519",
+       "orgCode": "A851",
+       "shopName": "김포점",
+       "shopTelphone": "031-997-1400",
+       "shopFax": "031-997-1403",
+       "shopAdress": "경기도 김포시 감정동 506-3 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.696819",
+         "gpsy": "37.6239523"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001046",
+       "orgCode": "A376",
+       "shopName": "탄벌점",
+       "shopTelphone": "031-765-7277",
+       "shopFax": "031-765-7787",
+       "shopAdress": "경기도 광주시 탄벌동  17 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.2488461",
+         "gpsy": "37.4176613"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000151",
+       "orgCode": "A319",
+       "shopName": "전곡점",
+       "shopTelphone": "031-835-2407",
+       "shopFax": "031-835-2408",
+       "shopAdress": "경기도 연천군 전곡읍 전곡리 232-2 LG 베스트샵 전곡점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.07024204901352",
+         "gpsy": "38.015676360133725"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005612",
+       "orgCode": "2276",
+       "shopName": "롯데 인천터미널점",
+       "shopTelphone": "032-242-2566",
+       "shopFax": "000-000-0000",
+       "shopAdress": "인천광역시 미추홀구 관교동 15 인천종합터미널,롯데백화점 롯데백화점 인천터미널점 5층 LG전자 베스트샵 인천 롯데터미널점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "11:00-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.701576",
+         "gpsy": "37.442466"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002529",
+       "orgCode": "0773",
+       "shopName": "용인시청점",
+       "shopTelphone": "031-321-2825",
+       "shopFax": "031-321-2827",
+       "shopAdress": "경기도 용인시 처인구 역북동 423-13 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1884252",
+         "gpsy": "37.2365025"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "B",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002518",
+       "orgCode": "0207",
+       "shopName": "간석점",
+       "shopTelphone": "032- 423-6767",
+       "shopFax": "032- 574-6704",
+       "shopAdress": "인천광역시 부평구 십정동 557-18 LG하이프라자 LG전자 베스트샵 간석점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "11:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.69104694830932",
+         "gpsy": "37.4729431614829"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005563",
+       "orgCode": "2169",
+       "shopName": "홈플러스 간석점",
+       "shopTelphone": "032-715-8346",
+       "shopFax": "070-5067-2029",
+       "shopAdress": "인천광역시 남동구 간석동 616-3 홈플러스 홈플러스 간석점 1층 LG전자 베스트샵",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-22:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.6890125542",
+         "gpsy": "37.4695536423"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002622",
+       "orgCode": "0251",
+       "shopName": "인천본점",
+       "shopTelphone": "032-437-2121",
+       "shopFax": "032-437-2135",
+       "shopAdress": "인천광역시 미추홀구 주안동 1564 엘지전자 인천본점 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.6904373",
+         "gpsy": "37.450311"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "lgzin, mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00004825",
+       "orgCode": "B017",
+       "shopName": "송탄경기대로점",
+       "shopTelphone": "031-665-4905",
+       "shopFax": "031-611-4904",
+       "shopAdress": "경기도 평택시 신장동 504-2 베스트샵 송탄경기대로점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0620925",
+         "gpsy": "37.0888608"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001000",
+       "orgCode": "A401",
+       "shopName": "연희점",
+       "shopTelphone": "032-568-5900",
+       "shopFax": "032-563-2277",
+       "shopAdress": "인천광역시 서구 연희동 687-9 순덕빌딩 LG 베스트샵 연희점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.67663784893477",
+         "gpsy": "37.5475401074222"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002254",
+       "orgCode": "A159",
+       "shopName": "포천신읍점",
+       "shopTelphone": "031-534-8181",
+       "shopFax": "031-534-8361",
+       "shopAdress": "경기도 포천시 신읍동 202-34 LG 베스트샵 포천신읍점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:00-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.20744422616936",
+         "gpsy": "37.89705822159353"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002738",
+       "orgCode": "0836",
+       "shopName": "검단점",
+       "shopTelphone": "032-566-4009",
+       "shopFax": "032-566-0297",
+       "shopAdress": "인천광역시 서구 당하동 1098-7 재원빌딩 LG전자 베스트샵 검단점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.6748765",
+         "gpsy": "37.5885249"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003669",
+       "orgCode": "1119",
+       "shopName": "가좌석남점",
+       "shopTelphone": "032-577-5115",
+       "shopFax": "032-577-5664",
+       "shopAdress": "인천광역시 서구 석남동 582-17 LG전자 베스트샵 가좌석남점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.67171353725364",
+         "gpsy": "37.50133753455962"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003806",
+       "orgCode": "B151",
+       "shopName": "장기점",
+       "shopTelphone": "031-997-1401",
+       "shopFax": "031-997-1402",
+       "shopAdress": "경기도 김포시 장기동 1364 LG 베스트샵 장기점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.67055234227223",
+         "gpsy": "37.64530366195265"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003685",
+       "orgCode": "1182",
+       "shopName": "도화점",
+       "shopTelphone": "032-715-6520",
+       "shopFax": "032-868-3110",
+       "shopAdress": "인천광역시 미추홀구 도화동 552-2 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.6705044",
+         "gpsy": "37.4636312"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         },
+         {
+           "flagName": "서비스센터",
+           "flagClass": "green"
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000902",
+       "orgCode": "A365",
+       "shopName": "연수점",
+       "shopTelphone": "032-811-8116",
+       "shopFax": "032-822-0015",
+       "shopAdress": "인천광역시 연수구 연수동 596-4 LG 베스트샵 연수점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.67733447470154",
+         "gpsy": "37.415888642147"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002509",
+       "orgCode": "0185",
+       "shopName": "송탄점",
+       "shopTelphone": "031-611-6550",
+       "shopFax": "031-611-6578",
+       "shopAdress": "경기도 평택시 이충동 433-5 LG전자 송탄점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.0619186",
+         "gpsy": "37.0583053"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005445",
+       "orgCode": "2056",
+       "shopName": "청라점",
+       "shopTelphone": "032-715-5018",
+       "shopFax": "032-561-3270",
+       "shopAdress": "인천광역시 서구 청라동 162-15 청라비전프라자 LG BEST SHOP 청라점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.6502851",
+         "gpsy": "37.5325555"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00004605",
+       "orgCode": "1318",
+       "shopName": "옥련점",
+       "shopTelphone": "032-715-6014",
+       "shopFax": "032-831-5948",
+       "shopAdress": "인천광역시 연수구 옥련동 283-1 LG전자 베스트샵 옥련점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.65679892163298",
+         "gpsy": "37.42718548866007"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003485",
+       "orgCode": "1322",
+       "shopName": "마석점",
+       "shopTelphone": "031-594-7420",
+       "shopFax": "031-594-7423",
+       "shopAdress": "경기도 남양주시 화도읍 마석우리 266-1 LG전자 베스트샵 마석점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.30751010434422",
+         "gpsy": "37.65127511510991"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001005",
+       "orgCode": "1859",
+       "shopName": "용현점",
+       "shopTelphone": "032-715-7061",
+       "shopFax": "032-861-8222",
+       "shopAdress": "인천광역시 미추홀구 학익동 401-34 LG BEST SHOP",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.6507506",
+         "gpsy": "37.4460583"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005687",
+       "orgCode": "1765",
+       "shopName": "전자 인천캠퍼스점",
+       "shopTelphone": "070-4048-3049",
+       "shopFax": "070-4048-5150",
+       "shopAdress": "인천광역시 서구 경서동 363-80 엘지전자 인천캠퍼스 전자 인천캠퍼스점",
+       "bizHours": {
+         "sunday": "",
+         "saturday": "X:X-X:X",
+         "week": "09:00-19:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.6421638",
+         "gpsy": "37.5543607"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "N"
+     },
+     {
+       "shopID": "ST00002558",
+       "orgCode": "2087",
+       "shopName": "평택본점",
+       "shopTelphone": "031-647-6009",
+       "shopFax": "070-5067-2535",
+       "shopAdress": "경기 평택시 세교동 406-19",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.07181662676376",
+         "gpsy": "37.010970064195746"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "A",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005105",
+       "orgCode": "1843",
+       "shopName": "송도점",
+       "shopTelphone": "032-858-7095",
+       "shopFax": "032-858-7097",
+       "shopAdress": "인천 연수구 송도2동 22-1번지 LG전자 베스트샵 송도점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.64475825976525",
+         "gpsy": "37.39498728160258"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00000261",
+       "orgCode": "A558",
+       "shopName": "안중점",
+       "shopTelphone": "031-681-7778",
+       "shopFax": "031-681-2255",
+       "shopAdress": "경기도 평택시 안중읍 현화리 651-36 LG 베스트샵 안중점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.91516710934698",
+         "gpsy": "36.99032382990999"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00001109",
+       "orgCode": "A819",
+       "shopName": "동인천점",
+       "shopTelphone": "032-885-3111",
+       "shopFax": "032-886-5222",
+       "shopAdress": "인천광역시 중구 신흥동1가 34-38 LG 베스트샵 동인천점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-21:00"
+       },
+       "gpsInfo": {
+         "gpsx": "126.6309175337984",
+         "gpsy": "37.46589951065753"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005506",
+       "orgCode": "2097",
+       "shopName": "김포한강점",
+       "shopTelphone": "031-8049-7310",
+       "shopFax": "070-5067-2074",
+       "shopAdress": "경기 김포시 구래동 6880-2 계림M스퀘어",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.627543578",
+         "gpsy": "37.6461181431"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003630",
+       "orgCode": "B076",
+       "shopName": "초월점",
+       "shopTelphone": "031-766-7234",
+       "shopFax": "031-766-7220",
+       "shopAdress": "경기도 광주시 초월읍 산이리 95-54 LG 베스트샵 초월점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:00-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.31139051241713",
+         "gpsy": "37.36479749861944"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00005636",
+       "orgCode": "0985",
+       "shopName": "AK PLAZA 평택점",
+       "shopTelphone": "031-646-6656",
+       "shopFax": "000-000-0000",
+       "shopAdress": "경기도 평택시 평택동 185-579 6층",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:00"
+       },
+       "gpsInfo": {
+         "gpsx": "127.083449",
+         "gpsy": "36.992205"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "department",
+       "shopTypeName": "백화점",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002733",
+       "orgCode": "0828",
+       "shopName": "남평택본점",
+       "shopTelphone": "031-654-9966",
+       "shopFax": "031-654-9945",
+       "shopAdress": "경기도 안성시 공도읍 진사리 16-4 LG전자 베스트샵 남평택본점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.1425427",
+         "gpsy": "36.9949586"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002264",
+       "orgCode": "1853",
+       "shopName": "마송점",
+       "shopTelphone": "031-988-1887",
+       "shopFax": "031-988-0064",
+       "shopAdress": "경기도 김포시 통진읍 마송리 63-10 LG전자 베스트샵 마송점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "126.6015792646738",
+         "gpsy": "37.68902783633601"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00002741",
+       "orgCode": "0842",
+       "shopName": "안성점",
+       "shopTelphone": "031-676-3191",
+       "shopFax": "031-676-3027",
+       "shopAdress": "경기 안성시 석정동 144-1번지 LG전자 베스트샵 안성맞춤점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "10:30-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.25737554920766",
+         "gpsy": "37.012828459045714"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "B",
+       "storeFormType": "",
+       "storeType": "mobile",
+       "dist": null,
+       "consultFlag": "Y"
+     },
+     {
+       "shopID": "ST00003705",
+       "orgCode": "B174",
+       "shopName": "청평점",
+       "shopTelphone": "031-577-7777",
+       "shopFax": "000-000-0000",
+       "shopAdress": "경기도 가평군 청평면 청평리 617-13 LG 베스트샵 청평점",
+       "bizHours": {
+         "sunday": "휴무",
+         "saturday": "휴무",
+         "week": "09:00-20:30"
+       },
+       "gpsInfo": {
+         "gpsx": "127.41454220890111",
+         "gpsy": "37.736141827191474"
+       },
+       "flagInfo": [
+         {
+           "flagName": "이벤트",
+           "flagClass": ""
+         }
+       ],
+       "shopType": "bestshop",
+       "shopTypeName": "BESTSHOP",
+       "serviceCenterType": "N",
+       "storeFormType": "",
+       "storeType": "",
+       "dist": null,
+       "consultFlag": "Y"
+     }
+   ],
+   "param": null,
+   "message": null,
+   "ssoCheckUrl": null,
+   "status": "success"
+ }

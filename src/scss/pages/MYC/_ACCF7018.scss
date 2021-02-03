@@ -122,7 +122,7 @@
                     @include textEllipsisClamp(2);
                     @include mobile {
                         max-height:42px;
-                        font-weight:500;
+                        // font-weight:500;
                     }
                 }
                 .bottom {
@@ -132,7 +132,7 @@
                     bottom:23px;
                     p {
                         @include font-small;
-                        color:#767676;
+                        color:#666;
                         @if $type == disabled {
                             color:#aaa;
                         }
@@ -148,9 +148,9 @@
                         left:19px;
                         right:20px;
                         bottom:19px;
-                        p {
-                            font-weight:500;
-                        }
+                        // p {
+                        //     font-weight:500;
+                        // }
                     }
                 }
                 .end-flags {
@@ -231,13 +231,17 @@
                     @if $type == disabled {
                         color:#aaa;
                     }
-                    font-size:14px;
-                    line-height:20px;
+                    font-size:16px;
+                    line-height:26px;
                     font-weight:700;
                     letter-spacing:4px;
                     white-space:nowrap;
                     opacity:.7;
                     transform:translateX(-50%) translateY(-50%) rotate(-90deg);
+                    @include mobile {
+                        font-size:14px;
+                        line-height:21px;
+                    }
                 }
             }
         }

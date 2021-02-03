@@ -5,7 +5,7 @@
     //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
     var productItemTemplate = '<li><div class="item">' +
-        '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI._addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
+        '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
@@ -109,6 +109,34 @@
         '</div>' +
     '</li>';
 
+    var recommendProdTemplate = 
+        '<h3 class="title">찾으시는 제품이 없으신가요?</h3>'+
+        '<ul class="box-list-inner">'+
+            '{{#each item in recommendList}}'+
+            '<li class="lists">'+
+                '<div class="list-inner">'+
+                    '<span class="thumb">'+
+                        '<img src="{{item.image}}" alt="" aria-hidden="true">'+
+                    '</span>'+
+                    '<div class="info">'+
+                        '<p class="tit"><span class="blind">라이프스타일 컨설팅</span>{{item.title}}</p>'+
+                        '<p class="copy">{{item.desc}}</p>'+
+                        '<div class="btn-area btm">'+
+                            '<a href="{{item.urlName}}" class="btn border size"><span>{{item.urlTitle}}</span></a>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+            '</li>'+
+            '{{/each}}'+
+        '</ul>';
+
+    var serviceLinkTemplate = 
+        '<ul>'+
+            '{{#each item in serviceLinkers}}'+ 
+            '<li><a href="{{item.urlName}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
+            '{{/each}}'+
+        '</ul>';
+
     $(window).ready(function() {
         var search = {
             init: function() {
@@ -162,7 +190,7 @@
                 self.$contentsSearch = $('div.contents.search');
                 //탭
                 self.$tab = self.$contentsSearch.find('.ui_tab').vcTab();
-                self.tabInstance = self.$tab.vcTab('instance');
+                
                 //input-keyword
                 self.$inputKeyword = self.$contentsSearch.find('div.input-keyword:eq(0)');
                 //검색어 입력input
@@ -422,6 +450,7 @@
                 } else {
                     $tab_li.hide();
                 }
+                self.$tab.vcSmoothScroll('update');
             },
 
             //검색어 입력중 검색
@@ -605,6 +634,19 @@
                     //고객지원
                     count = self.checkCountData(data.customer);
                     self.setTabCount(6, count);
+
+                    //추천 제품
+                    self.$recommendListBox.empty();
+                    if(data.recommendList && data.recommendList.length){
+                        self.$recommendListBox.append(vcui.template(recommendProdTemplate, {recommendList: data.recommendList}))
+                    }
+
+                    //서비스 링크
+                    $('.service-link, .mobile-service-link').empty();
+                    if(data.serviceLinkers && data.serviceLinkers.length){
+                        $('.service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
+                        $('.mobile-service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
+                    }
 
                     //noData 체크
                     if(noData) {

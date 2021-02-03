@@ -1,27 +1,36 @@
 (function() {
     var listItemTemplate = '<li>' +
         '<div class="flag-wrap"><span class="flag">{{progress}}</span></div>' +
-        '<p class="title"><a href="#{{id}}">[{{category}}] {{title}}</a>' +
-        '</p>' +
-        '<div class="info"><ul>' +
-            '{{#if product}}<li>{{product}}</li>{{/if}}' +
-            '<li>접수일 {{date}}</li>' +
-            '<li>접수번호 {{regNumber}}</li>' +
-        '</ul></div>' +
+        '<p class="title"><a href="#{{id}}">[{{inquiryType}}] {{title}}</a></p>' +
+        '<div class="info">' +
+            '<ul class="model">' +
+                '<li>{{#if modelCategory}}{{modelCategory}}{{/if}}{{#if modelCategory&&modelName}} : {{/if}}{{#if modelName}}{{modelName}}{{/if}}</li>' +
+                '{{#if inquiryOption}}<li>{{inquiryOption}}</li>{{/if}}' +
+            '</ul>' +
+            '<ul class="receipt">' +
+                '<li>접수번호 {{regNumber}}</li>' +
+                '<li>접수일 {{date}}</li>' +
+            '</ul>' +
+        '</div>' +
     '</li>';
 
-    var serviceCountItemTemplate = '<dl><dt>{{title}}</dt><dd><ul>' +
-        '{{#if data}}{{#each item in data}}<li>{{item.title}} <em>{{item.count}}</em></li>{{/each}}' +
-        '{{#else}}<li>-</li>{{/if}}' +
-    '</ul></dd></dl>'
+    var serviceCountItemTemplate = '<dl><dt>{{title}}</dt><dd>' +
+        '<ul>' +
+        '{{#if data}}' +
+            '{{#each item in data}}<li>{{item.title}} <em>{{item.count}}</em></li>{{/each}}' +
+        '{{#else}}' +
+            '<li>-</li>' +
+        '{{/if}}' +
+        '</ul>' +
+    '</dd></dl>';
 
-    var popupDetailItemTemplate = '<li><dl><dt>{{title}}</dt><dd>{{#raw desc}}</dd></dl></li>'
+    var popupDetailItemTemplate = '<li><dl><dt>{{title}}</dt><dd>{{#raw desc}}</dd></dl></li>';
 
     $(window).ready(function() {
         var myWrite = {
             init: function() {
                 var self = this;
-                vcui.require(['ui/pagination','ui/validation'], function () {
+                vcui.require(['ui/pagination','ui/validation','ui/datePeriodFilter'], function () {
                     self.setting();
                     self.bindEvents();
                     self.checkNoData();
@@ -32,9 +41,10 @@
                 var self = this;
                 self.$contWrap = $('div.cont-wrap');
                 self.$lnbContents = self.$contWrap.find('div.lnb-contents');
-                self.$termFilter = self.$lnbContents.find('div.term-filter');
+                self.$termFilter = self.$lnbContents.find('.filters');
+                self.$termFilter.vcDatePeriodFilter({"dateBetweenCheckValue":"3y"});
 
-                self.$serviceUseCount = self.$lnbContents.find('div.tit-wrap tit em');
+                self.$serviceUseCount = self.$lnbContents.find('div.tit-wrap .tit em');
                 self.$serviceUseList = self.$lnbContents.find('div.service-use-list');
 
                 self.$sectionInner = self.$lnbContents.find('div.section-inner');
@@ -56,9 +66,11 @@
 
             bindEvents: function() {
                 var self = this;
-                self.$termFilter.on("click", "input", function(e){
-                    var term = $(this).val();
-                    self.requestData({"term":term});
+
+                self.$termFilter.on('dateFilter_submit', function(e, data) {
+                    var param = data;
+                    param.page = 1;
+                    self.requestData(data);
                 });
 
                 self.$myLists.on("click", "a", function(e){
@@ -68,12 +80,9 @@
                 });
 
                 self.$pagination.on('page_click', function(e, data) {
-                    var $input = self.$termFilter.find('input:checked');
-                    var term = $input.val();
-                    self.requestData({
-                        "term":term,
-                        "page": data
-                    });
+                    var param = self.$termFilter.vcDatePeriodFilter('getSelectOption');
+                    param.page = data;
+                    self.requestData(param);
                 });
 
                 //서비스 상세 팝업
@@ -146,7 +155,7 @@
                     self.$serviceUseCount.text(vcui.number.addComma(service.useCount));
                     self.$serviceUseList.find('>ul>li').each(function(idx, obj){
                         var $obj = $(obj);
-                        $obj.find('dl').empty();
+                        $obj.find('dl').remove();
                         var data = null;
                         switch(idx) {
                             case 0:

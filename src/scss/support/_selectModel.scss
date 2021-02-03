@@ -35,9 +35,6 @@
                     transform:rotate(-180deg);
                 }
             }
-            .my-product-slider {
-                
-            }
         }
         .title {
             position:relative;
@@ -404,7 +401,7 @@
     // 키워드 검색
     .keyword-box {
         display:none;
-        margin-bottom:32px;
+        margin-bottom:64px;
         &.active {
             display:block;
         }
@@ -481,16 +478,16 @@
                         top:0;
                         width:100%;
                         height:100%;
-                        padding:62px 16px;
+                        padding:62px 0;
+                        text-align:center;
                         animation-duration: 1s;
                         animation-fill-mode: forwards;
                         animation-name:delayedFadeOut;
-                        ul {
-                            position:relative;
-                            overflow-y:auto;
-                            max-height:228px;
+                        &-box {
                             height:100%;
-                            text-align:center;
+                        }
+                        &-list {
+                            padding:0 16px;
                             li {
                                 button {
                                     color:#fff;
@@ -569,9 +566,8 @@
                             }
                         }
                         .sub-category {
-                            padding:32px 16px;
-                            ul {
-                                max-height:164px;
+                            padding:32px 0;
+                            &-list {
                                 li {
                                     button {
                                         &:hover {
@@ -602,7 +598,7 @@
             display:block;
         }
         .form-wrap {
-            margin-bottom:24px;
+            margin-bottom:48px;
             .forms {
                 .tit {
                     padding-bottom:8px;
@@ -682,9 +678,18 @@
                     display:block;
                     position:relative;
                     height:100%;
+                    padding:32px;
                     text-align:center;
+                    font-size:0;
                     border-radius: 8px;
                     box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+                    &:before {
+                        content:'';
+                        display:inline-block;
+                        width:0;
+                        height:100%;
+                        vertical-align:middle;
+                    }
                     &:hover:after {
                         content:'';
                         position:absolute;
@@ -712,7 +717,8 @@
                         }
                     }
                     .info {
-                        padding:32px;
+                        display:inline-block;
+                        vertical-align:middle;
                     }
                     .category {
                         margin-top:4px;
@@ -774,9 +780,7 @@
                         min-height:80px;
                         padding:0 6px;
                         .item {
-                            .info {
-                                padding:16px;
-                            }
+                            padding:16px;
                             .category {
                                 span {
                                     display:none;
@@ -853,3 +857,4 @@
         opacity: 0
     }
 }
+

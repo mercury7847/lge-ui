@@ -100,10 +100,10 @@
         table {
             th,
             td {
-                // border-left:1px solid #d8d8d8;
-                // &:first-child {
-                //     border-left:none;
-                // }
+                 border-left:1px solid #d8d8d8;
+                 &:first-child {
+                     border-left:none;
+                 }
             }
         }
     }
@@ -169,7 +169,7 @@
                     }
                     &:not(.board-tit) {
                         float:left;
-                        & + td {
+                        & + td:not(.board-tit) {
                             position:relative;
                             margin-left:6px;
                             padding-left:7px;

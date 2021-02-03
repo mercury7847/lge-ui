@@ -1,6 +1,6 @@
 <!-- components/partials/KRP0008-info.html -->
 
-<div class="pdp-info-area" data-id="productID0001" data-pid="pid00001" data-price="1853090" data-select-url="/lg5-common/data-ajax/pdp/pdp_select.json" data-care-select-url="/lg5-common/data-ajax/pdp/pdp_select_care.json" data-wish-url="/lg5-common/data-ajax/pdp/pdp_wish.json" data-cart-url="/lg5-common/data-ajax/pdp/pdp_cart.json" data-compare-url="/lg5-common/data-ajax/pdp/pdp_cart.json">
+<div class="pdp-info-area" data-price="1853090" data-wish-url="/lg5-common/data-ajax/pdp/pdp_wish.json" data-cart-url="/lg5-common/data-ajax/pdp/pdp_cart.json">
     <div class="product-detail-info">
         @@include('./common/modules/flags.html', {
             barType: true,
@@ -198,7 +198,7 @@
                                 </li>
                             </ul>
                             <div class="btn-area">
-                                <a href="/lg5-common/data-ajax/pdp/benefitInfo.html" class="btn-link popup"><span>자세히보기</span></a>
+                                <a href="#" class="btn-link popup"><span>자세히보기</span></a>
                             </div>
                         </div>
                     </li>
@@ -223,7 +223,7 @@
                                 </li>
                             </ul>
                             <div class="btn-area">
-                                <a href="/lg5-common/data-ajax/pdp/benefitInfo.html" class="btn-link popup"><span>자세히보기</span></a>
+                                <a href="#" class="btn-link popup"><span>자세히보기</span></a>
                             </div>
                         </div>
                     </li>
@@ -394,13 +394,13 @@
                         <ul role="radiogroup">
                             <li>
                                 <div role="radio" class="rdo-wrap">
-                                    <input type="radio" id="rdo5-1" name="rdo5" value="yes" checked>
+                                    <input type="radio" id="rdo5-1" name="rdo5" value="Y" checked>
                                     <label for="rdo5-1">신청</label>
                                 </div>
                             </li>
                             <li>
                                 <div role="radio" class="rdo-wrap">
-                                    <input type="radio" id="rdo5-2" name="rdo5" value="no">
+                                    <input type="radio" id="rdo5-2" name="rdo5" value="N">
                                     <label for="rdo5-2">미신청</label>
                                 </div>
                             </li>
@@ -612,7 +612,7 @@
                                     </li>
                                 </ul>
                                 <div class="btn-area">
-                                    <a href="#n" class="btn-link"><span>자세히보기</span></a>
+                                    <a href="#n" class="btn-link popup"><span>자세히보기</span></a>
                                 </div>
                             </div>
                         </li>
@@ -635,13 +635,13 @@
                                         <ul role="radiogroup">
                                             <li>
                                                 <div role="radio" class="rdo-wrap">
-                                                    <input type="radio" id="rdo7-1" name="careSelect" value="yes" checked>
+                                                    <input type="radio" id="rdo7-1" name="careSelect" value="Y" checked>
                                                     <label for="rdo7-1">신청</label>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div role="radio" class="rdo-wrap">
-                                                    <input type="radio" id="rdo7-2" name="careSelect" value="no">
+                                                    <input type="radio" id="rdo7-2" name="careSelect" value="N">
                                                     <label for="rdo7-2">미신청</label>
                                                 </div>
                                             </li>
@@ -697,7 +697,7 @@
                         </div>
                         <dl class="select-info price-info total">
                             <dt class="text">
-                                <a href="#n" class="btn-link" role="button">이용 요금 <span class="blind">이용 요금 팝업 열림</span></a>
+                                <a href="#n" class="btn-link popup" role="button">이용 요금 <span class="blind">이용 요금 팝업 열림</span></a>
                             </dt>
                             <dd class="content">
                                 <span class="price">월 19,900원<em class="desc">무상할인(2개월)</em></span>
@@ -860,7 +860,7 @@
                     </div>
                     <dl class="select-info price-info total">
                         <dt class="text">
-                            <a href="#n" class="btn-link" role="button">이용 요금 <span class="blind">이용 요금 팝업 열림</span></a>
+                            <a href="#n" class="btn-link popup" role="button">이용 요금 <span class="blind">이용 요금 팝업 열림</span></a>
                         </dt>
                         <dd class="content">
                             <span class="price">
@@ -955,7 +955,7 @@
             </div>
             <div class="product-compare">
                 <span class="chk-wrap chk-sm">
-                    <input type="checkbox" id="chk-compare" name="chk-compare" checked>
+                    <input type="checkbox" id="chk-compare" name="chk-compare">
                     <label for="chk-compare">비교하기</label>
                 </span>
             </div>

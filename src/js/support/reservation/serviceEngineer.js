@@ -93,6 +93,10 @@
             self.autoFlag = false;
             self.isLogin = lgkorUI.isLogin;
 
+            if ($('#appCall').length) {
+                self.isLogin = true
+            }
+
             var register = {
                 topic: {
                     required: true,
@@ -336,6 +340,8 @@
                             $('.date-wrap').calendar('update', data.dateList);
                             self.dateParam = result.param;
 
+                            console.log(result.param)
+
                             self.$stepInput.find('.step-btn-wrap').hide();
                             self.$stepDate.addClass('active');
                             self.$stepEngineer.removeClass('active');
@@ -552,7 +558,7 @@
 
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var resultData = result.data;
-
+                    console.log(data);
                     self.$cont.commonModel('updateSummary', {
                         product: [data.categoryName, data.subCategoryName, data.modelCode],
                         reset: 'product'

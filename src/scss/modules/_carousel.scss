@@ -355,21 +355,32 @@
         .indi-control {
             display:inline-block; 
             position:relative; 
-            width:28px;
-            height:28px; 
-            margin-top:12px;
-            margin-left:2px; 
+            width:26px;
+            height:26px;
+            //margin-top:12px;
+            //margin-left:2px;
             font-size:0;
-            line-height:28px;
             text-align:center;
-            &::before, &::after {
-                content:' '; 
-                display:inline-block; 
-                width:2px; 
-                height:10px; 
-                margin:0 2px; 
-                background-color:#fff; 
-                vertical-align:middle;
+            //&::before, &::after {
+            //    content:' ';
+            //    display:inline-block;
+            //    width:2px;
+            //    height:10px;
+            //    margin:0 2px;
+            //    background-color:#fff;
+            //    vertical-align:middle;
+            //}
+            &:before {
+                display: inline-block;
+                width: 26px;
+                height: 26px;
+                background: url('/lg5-common/images/icons/btn-carousel-hero-pause.svg') no-repeat 0 0;
+                content: '';
+            }
+            &.play {
+                &:before {
+                    background-image: url('/lg5-common/images/icons/btn-carousel-hero-play.svg');
+                }
             }
         }
     }
@@ -477,43 +488,48 @@
     // 3 on pc type carousel 
     &.carousel-3 {
         max-width: (1284px + 12px);
+        padding-bottom: 32px;
+        @include mobile {
+            padding-bottom: 20px;
+        }
         .indi-wrap {
-            bottom: -24px;
+            bottom: 0;
         }
-        .slide-controls .btn-arrow {
-            &.prev {
-                left: -12px;
-                @include mobile {
-                    left:4px;
-                }
+        .slide-controls {
+            @include mobile {
+                display: none;
             }
-            &.next {
-                right: -12px;
-                @include mobile {
-                    right:4px;
+            .btn-arrow {
+                &.prev {
+                    left: -12px;
+                    @include mobile {
+                        left:4px;
+                    }
                 }
-            }
-        }
-        .slide-box {
-            padding: 0 40px 32px;
-            .product-name {
-                margin: 8px 0;
-                @include mobile {
-                    margin: 8px 0 16px;
+                &.next {
+                    right: -12px;
+                    @include mobile {
+                        right:4px;
+                    }
                 }
             }
         }
-    }
-    &.carousel-3 {
+        .slide-content {
+            @include mobile {
+                padding: 0 23px 0 10px;
+            }
+        }
         .slide-conts {
             //width: 25%;
             padding: 6px 12px 12px;
             @include mobile {
+                width: 61.944vw;
                 padding: 6px 6px 12px;
             }
         }
         .slide-box {
             position: relative;
+            padding: 0 32px 32px;
             border-radius: 8px;
             background-color: #fff;
             box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
@@ -539,6 +555,10 @@
             }
             .product-name {
                 height: 52px;
+                margin: 8px 0;
+                @include mobile {
+                    margin: 8px 0 16px;
+                }
                 a {
                     font-weight: 700;
                     @include font-medium;

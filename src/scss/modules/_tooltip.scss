@@ -1,9 +1,9 @@
 .tooltip-wrap {
     display:inline-block;
     position:relative;
-    height:16px;
+    height:24px;
     margin-top:4px;
-    line-height:16px;
+    line-height:24px;
     vertical-align:top;
     @include mobile {
         position:static;
@@ -12,8 +12,8 @@
     .tooltip-icon {
         display:block;
         position:relative;
-        width:16px;
-        height:16px;
+        width:24px;
+        height:24px;
         background:url('/lg5-common/images/icons/icon-tooltip.svg') center no-repeat;
         background-size:100%;
         font-size:0;
@@ -86,12 +86,13 @@
     }
 
     &.share {
-        height: 32px;
+        height:32px;
         margin-top: 0;
+        padding:4px;
         .tooltip-icon {
-            width: 32px;
-            height: 32px;
-            background: url('/lg5-common/images/icons/icon-share-32.svg') no-repeat 0 0;
+            width: 24px;
+            height: 24px;
+            background: url('/lg5-common/images/icons/icon-share-24.svg') no-repeat 0 0;
             line-height: 32px;
         }
         .tooltip-box {

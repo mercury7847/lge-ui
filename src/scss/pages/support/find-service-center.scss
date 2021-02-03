@@ -161,6 +161,11 @@
                     background-image:url(/lg5-common/images/icons/icon_small-appliances.svg);
                 }
             }
+            @include mobile {
+                li {
+                    margin-left: 24px;
+                }
+            }
         }
         .store-list-wrap {
             width: 520px;
@@ -184,6 +189,7 @@
                 }
             }
             .sch-box {
+                transition: all ease .1s;
                 .form-wrap {
                     padding-bottom:48px;
                     .box {
@@ -201,6 +207,23 @@
                     }
                     .keyword-search {
                         margin-top:8px;
+                    }
+                }
+                .tabs-wrap {
+                    &.border-type {
+                        .tabs {
+                            width: 100%;
+                            >li {
+                                margin-left: 20px;
+                                margin-bottom: -1px;
+                                > a {
+                                    padding-bottom: 20px;
+                                }
+                                &:first-child {
+                                    margin-left: 0;
+                                }
+                            }
+                        }
                     }
                 }
                 .tabs-contents {
@@ -231,6 +254,11 @@
                             margin-top:6px;
                         }
                     }
+                    .tabs-contents {
+                        .desc {
+                            padding-top: 0;
+                        }
+                    }
                 }
             }
             .sch-list {
@@ -256,11 +284,12 @@
                                         font-size: 14px;
                                         display: flex;
                                         align-items: center;
+                                        flex-wrap: wrap;
                                         .key {
                                             color: #000;
                                         }
                                         .value {
-                                            color: #767676;
+                                            color: #666;
                                         }
                                         .cell {
                                             &:nth-of-type(n+2) {
@@ -275,8 +304,10 @@
                 }
                 .scroll-wrap {
                     .list-item {
+                        padding-right: 14px;
                         > li {
                             padding-bottom: 25px;
+                            padding-right: 0;
                             margin-bottom: 24px;
                             border-bottom: 1px solid #ddd;
                             &:last-child {
@@ -363,6 +394,142 @@
                             .btn-group {
                                 padding:0;
                             }
+                        }
+                    }
+                }
+            }
+            &.active {
+                .result-list-box {
+                    position: static;
+                }
+            }
+            @include pc {
+                h2.tit,
+                .sch-box {
+                    opacity: 1;
+                    transition: opacity 0.5s ease 0.4s;
+                    .tabs-wrap {
+                        top: -65px;
+                        padding-bottom: 0;
+                    }
+                }
+                h2.tit {
+                    font-size: 32px;
+                    padding-bottom: 18px;
+                    padding-left: 32px;
+                }
+                .result-list-box {
+                    position: absolute;
+                    display: block;
+                    .result-btn-wrap,
+                    .result-list {
+                        padding-left: 32px;
+                    }
+                }
+                h2.tit,
+                .store-list-box {
+                    transform: translateY(0);
+                    transition: transform ease 0.5s;
+                }
+                .sch-box {
+                    margin: 0 32px;
+                }
+                .list-wrap {
+                    padding-left: 32px;
+                    .scroll-wrap {
+                        height: calc(100vh - 310px - 80px);
+                    }
+                }
+                .sch-list {
+                    ul {
+                        li {
+                            .store-info-list {
+                                .info-wrap {
+                                    .etc-info {
+                                        .bizHours {
+                                            .cell {
+                                                &:last-child {
+                                                    flex: 1;
+                                                    text-align: right;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .opt-cont {
+                    bottom: -80px;
+                }
+                &.active {
+                    h2.tit,
+                    .store-list-box {
+                        transform: translateY(-284px);
+                    }
+                    .tabs-contents {
+                        .desc {
+                            opacity: 0;
+                        }
+                    }
+                    .list-wrap {
+                        .scroll-wrap {
+                            height: calc(100vh - 244px);
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                .view-info-btn {
+                    position: absolute;
+                    bottom: 40px;
+                }
+                .store-list-box {
+                    transform: translateY(0);
+                    transition: transform ease-out .5s;
+                }
+                .sch-list {
+                    .scroll-wrap {
+                        height: calc(100vh - 463px);
+                    }
+                    ul {
+                        li {
+                            .store-info-list {
+                                .info-wrap {
+                                    .etc-info {
+                                        .bizHours {
+                                            .cell {
+                                                &:last-child {
+                                                    margin-left: 0;
+                                                    margin-top: 8px;
+                                                    width: 100%;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .opt-cont {
+                    bottom: -76px;
+                }
+                &.active {
+                    .sch-box {
+                        display: none;
+                    }
+                    .store-list-box {
+                        position: fixed;
+                        transform: translateY(-422px);
+                    }
+                    .result-list-box {
+                        display: block;
+                    }
+                    .sch-list {
+                        .scroll-wrap {
+                            height: calc(100vh - 273px);
                         }
                     }
                 }

@@ -7,8 +7,8 @@
         <title>lge</title>
         <link rel="stylesheet" href="/lg5-common/css/reset.min.css" />
         <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
-        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0022.min.css" />
-        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRC0015.min.css" />
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRC0003.min.css" />
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0037.min.css" />
         <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
         <script src="/lg5-common/js/libs/jquery.transit.min.js"></script>
         <script src="/lg5-common/js/libs/jquery.event.move.min.js"></script>
@@ -24,97 +24,48 @@
         @@include('./common/header.html')
 
         <div class="container">
+            <!-- 210126 수정 - 페이지 타이틀 추가 -->
+            <div class="page-header type2">
+                <h2 class="title">기획전</h2>
+            </div>
+
             <!-- component -->
-            @@include('./common/partials/KRC0015-hero.html', {
-                "common": {
-                    "marginTop": "zero-top",
-                    "marginBtm": "",
-                    "bg-color": "bg-black"
+            <!-- 210126 수정 - 컴포넌트 변경 KRC0015-hero -> KRC0003 -->
+            @@include('./common/partials/KRC0003.html', {
+                "common" : {
+                    "zero" : "zero-top zero-btm"
                 },
-                "title": {
-                    "font-class1": "font-regular",
-                    "font-class2": "font-underline",
-                    "eyebrow": "공백포함 20자 이내로 작성 권장합니다.",
-                    "headline": "<h2>공백포함 35자 이내로 헤드라인 타이틀 작성 권장합니다.</h2>",
-                    "copy":"바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다."
-                },
-                "carousel": {
-                    "type": "type-hero",
-                    "item1": {
-                        "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                        "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                        "align-class1":"align-left",
-                        "align-class2":"align-top",
-                        "width-class":"type-wide",
-                        "font-color":"text-white",
-                        "font-class1":"font-regular",
-                        "font-class2":""
-                    },
-                    "item2": {
-                        "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                        "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                        "align-class1":"align-left",
-                        "align-class2":"align-top",
-                        "width-class":"type-wide",
-                        "font-color":"text-white",
-                        "font-class1":"font-regular",
-                        "font-class2":""
-                    },
-                    "item3": {
-                        "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                        "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                        "align-class1":"align-right",
-                        "align-class2":"align-middle",
-                        "width-class":"type-narrow",
-                        "font-color":"text-white",
-                        "font-class1":"font-bold",
-                        "font-class2":""
-                    },
-                    "item4": {
-                        "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                        "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                        "align-class1":"align-right",
-                        "align-class2":"align-top",
-                        "width-class":"type-narrow",
-                        "font-color":"text-white",
-                        "font-class1":"font-bold"
-                    },
-                    "item5": {
-                        "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                        "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                        "align-class1":"align-center",
-                        "align-class2":"align-top",
-                        "width-class":"type-narrow",
-                        "font-color":"text-white",
-                        "font-class1":"font-bold",
-                        "font-class2":""
-                    },
-                    "item6": {
-                        "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                        "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                        "align-class1":"align-center",
-                        "align-class2":"align-top",
-                        "width-class":"type-narrow",
-                        "font-color":"text-white",
-                        "font-class1":"font-bold",
-                        "font-class2":""
-                    },
-                    "item7": {
-                        "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                        "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                        "align-class1":"align-center",
-                        "align-class2":"align-middle",
-                        "width-class":"type-narrow",
-                        "font-color":"text-white",
-                        "font-class1":"font-bold",
-                        "font-class2":""
+                "slides" : [
+                    {
+                        "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                        "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                        "boxAlign" : "box-align-left type-wide",
+                        "eyebrow" : "LG전자 멤버십 앱",
+                        "title" : "신규 설치 고객<br>경품 추천 이벤트",
+                        "btn" : "자세히 보기"
+                    },{
+                        "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                        "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                        "boxAlign" : "box-align-center type-narrow",
+                        "eyebrow" : "LG전자 멤버십 앱",
+                        "title" : "신규 설치 고객<br>경품 추천 이벤트",
+                        "btn" : "자세히 보기"
+                    },{
+                        "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                        "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                        "boxAlign" : "box-align-right type-narrow",
+                        "eyebrow" : "LG전자 멤버십 앱",
+                        "title" : "신규 설치 고객<br>경품 추천 이벤트",
+                        "btn" : "자세히 보기"
                     }
-                }
+                ]
             })
             <!-- // component -->
             <!-- component -->
-            @@include('./common/partials/KRP0022.html', {
-                "zero" : "zero-top zero-btm"
+            <!-- 210126 수정 - 컴포넌트 변경 KRP0022 -> KRP0037 -->
+            @@include('./common/partials/KRP0037.html', {
+                "zero" : "zero-top zero-btm",
+                eventModalID:"event-modal-pop"
             })
             <!-- // component -->
         </div>

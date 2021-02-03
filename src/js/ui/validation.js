@@ -604,7 +604,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 if(obj && obj.required){
                     $target = self.$el.find('[name='+ key +']');
                     
-                    if ($target.siblings('.ui-selectbox-wrap').is(':visible')) {
+                    if ($target.siblings('.ui-selectbox-wrap, .ui-rating-wrap').is(':visible')) {
                         val = $target.val();
                         rObj = self._checkValidate(key, obj, val, rObj, flag);
                     } else {
@@ -693,7 +693,8 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             self.$el.find('select').each(function(idx, item){
                 var name = $(item).attr('name');
                 if(name){
-                    result[name] = $(item).find('option:selected').val();
+                    console.log($(item).find('option:selected').not('[hidden]').val())
+                    result[name] = $(item).find('option:selected').not('[hidden]').val();
                 }
             });
             return result;

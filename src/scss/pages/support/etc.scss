@@ -19,6 +19,9 @@
             border-bottom:2px solid #222;
         }
     }
+    .bullet-list {
+        color:#747474;
+    }
     .btn-download {
         display: inline-block;
         margin-top:4px;
@@ -156,6 +159,8 @@
             }
         }
         .appgate-img {
+            width:263.5px;
+            margin:0 auto;
             img {
                 width:100%;
             }
@@ -168,13 +173,15 @@
             }
         }
     }
-    .service-list {
+
+    .service-list-box {
         display:flex;
         overflow-x: auto;
         margin-top:16px;
         margin-right:-16px;
         ul {
             display:flex;
+            padding-right: 16px;
             li {
                 width:77px;
                 height:77px;
@@ -200,7 +207,60 @@
             }
         }
     }
+
+    .cs-service-menu {
+        text-align: center;
+        color: #000;
+        .service-list {
+            display:flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            .icon {
+                img {
+                    max-width: 100%;
+                }
+            }
+        }
+        @include pc {
+            .banner-tit {
+                margin-bottom: 32px;
+            }
+        }
+        @include mobile {
+            padding: 20px  0;
+            .banner-tit {
+                font-size: 24px;
+                font-weight: bold;
+                line-height: 1.38;
+                margin-bottom: 32px;
+                &.type-narrow {
+                    width: 196px;
+                    margin-right: auto;
+                    margin-left: auto;
+                }
+            }
+            .service-list {
+                li {
+                    width: 50%;
+                    margin-bottom: 40px;
+                    &:nth-child(n+3) {
+                        margin-bottom: 0;
+                    }
+                }
+                .icon {
+                    width: 80px;
+                    height: 80px;
+                    margin: 0 auto 16px;
+                }
+                .tit {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
     &-banner {
+        margin-top:60px;
         border-top:12px solid #f4f4f4;
         @include pc {
             margin-top:80px;
@@ -280,5 +340,19 @@
         margin-bottom:8px;
         @include font-small;
         font-weight:$font-weight-bold;
+    }
+}
+
+.survey {
+    .cont-wrap {
+        @include mobile {
+            padding-bottom:0;
+        }
+    }
+    .survey-banner {
+        text-align:center;
+        img {
+            max-width: 100%;
+        }
     }
 }

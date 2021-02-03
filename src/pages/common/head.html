@@ -1,7 +1,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>lge</title>
+    <meta name="description" content="@@pageDesc">
+    <title>@@pageTitle</title>
     <link rel="stylesheet" href="/lg5-common/css/reset.min.css" />
     <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
     @@if (context.componentID) {
@@ -16,6 +17,9 @@
     <script src="/lg5-common/js/libs/jquery.transit.min.js"></script>
     <script src="/lg5-common/js/libs/jquery.event.move.min.js"></script>
     <script src="/lg5-common/js/libs/jquery.twentytwenty.min.js"></script>
+    <!-- CS에서 사용 -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <!-- // CS에서 사용 -->
     @@if (context.libJS) {
         @@for (var i=0; i<context.libJS.length; i++) {
             <script src="/lg5-common/js/libs/`+libJS[i]+`.min.js"></script>

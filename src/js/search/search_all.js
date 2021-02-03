@@ -5,7 +5,7 @@
     var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
     var productItemTemplate = '<li><div class="item">' +
-        '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI._addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
+        '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
@@ -47,7 +47,7 @@
     var eventItemTemplate = '<li><a href="{{url}}" class="item item-type2">' +
         '<div class="result-thumb">' +
             '<div>' +
-                '<img onError="lgkorUI._addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}">' +
+                '<img onError="lgkorUI.addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}">' +
                 '{{#if isEnd}}<span class="flag-end-wrap"><span class="flag">종료</span></span>{{/if}}' +
             '</div>' +
         '</div>' +
@@ -64,7 +64,7 @@
         '</div>' +
     '</a></li>';
     var storyItemTemplate = '<li><a href="{{url}}" class="item item-type2">' +
-        '<div class="result-thumb"><div><img onError="lgkorUI._addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}">{{#if isVideo}}<span class="video-play-btn"><span class="hidden">동영상</span></span>{{/if}}</div></div>' +
+        '<div class="result-thumb"><div><img onError="lgkorUI.addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}">{{#if isVideo}}<span class="video-play-btn"><span class="hidden">동영상</span></span>{{/if}}</div></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
@@ -82,7 +82,7 @@
         '</div>' +
     '</a></li>';
     var additionalItemTemplate = '<li><a href="{{url}}" class="item">' +
-        '<div class="result-thumb"><div><img onError="lgkorUI._addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></div></div>' +
+        '<div class="result-thumb"><div><img onError="lgkorUI.addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></div></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
@@ -132,7 +132,7 @@
     '</div></li>';
     var customerProductItemTemplate = '<li><a href="{{url}}" class="item">' +
         '<div class="result-thumb">' +
-            '<div><img onError="lgkorUI._addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
+            '<div><img onError="lgkorUI.addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
         '</div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
@@ -169,7 +169,16 @@
             '</div>{{/if}}' +
             '{{#if isVideo}}<div class="video-info"><span class="hidden">동영상 포함</span></div>{{/if}}' +
         '</div>' +
-    '</div></li>'
+    '</div></li>';
+
+    var searchBnrTemplate = 
+        '<a href="{{urlName}}">'+
+            '<img data-pc-src="{{pcImage}}" data-m-src="{{mobileImage}}" alt="{{title}}" src="{{pcImage}}">'+
+            '<div class="text-area">'+
+                '<strong class="title">{{#raw title}}</strong>'+
+                '<span class="sub-copy">{{#raw desc}}</span>'+
+            '</div>'+
+        '</a>';
 
     $(window).ready(function() {
         var search = {
@@ -207,7 +216,7 @@
                 self.$contentsSearch = $('div.contents.search');
                 //탭
                 self.$tab = self.$contentsSearch.find('.ui_tab').vcTab();
-                self.tabInstance = self.$tab.vcTab('instance');
+                
                 //input-keyword
                 self.$inputKeyword = self.$contentsSearch.find('div.input-keyword:eq(0)');
                 //검색어 입력input
@@ -494,6 +503,7 @@
                 } else {
                     $tab_li.hide();
                 }
+                self.$tab.vcSmoothScroll('update');
             },
 
             //검색어 입력중 검색
@@ -631,6 +641,9 @@
 
                     self.$searchResultCategory.removeClass('on');
                     self.$searchResultCategoryMore.find('span').text('더보기');
+
+                    //센터 배너
+                    self.$searchBanner.empty().append(vcui.template(searchBnrTemplate, data.searchBanner));
 
                     //제품/케어솔루션
                     var $resultListWrap = $searchResult.find('div.result-list-wrap:eq(0)');

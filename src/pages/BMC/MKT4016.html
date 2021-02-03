@@ -40,14 +40,15 @@
             </div>
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">01. 구매정보</h2>
+                    <!-- 210126 수정 - 타이틀 번호 삭제 -->
+                    <h2 class="h2-tit">구매정보</h2>
                 </div>
                 <div class="form-wrap">
                     <dl class="forms">
                         <dt class="tit"><label for="modelName">모델명</label></dt>
                         <dd class="conts">
                             <div class="input-wrap">
-                                <input type="text" id="modelName" value="AS309DWA" placeholder="모델명을 입력해 주세요." readonly>
+                                <input type="text" id="modelName" value="AS309DWA" placeholder="모델명을 입력해 주세요." disabled>
                             </div>
                         </dd>
                     </dl>
@@ -55,7 +56,7 @@
                         <dt class="tit"><label for="buyDate">구매일자</label></dt>
                         <dd class="conts">
                             <span class="input-wrap">
-                                <input type="text" id="buyDate" value="2020.09.01" placeholder="구매일자를 입력해 주세요." readonly>
+                                <input type="text" id="buyDate" value="2020.09.01" placeholder="구매일자를 입력해 주세요." disabled>
                             </span>
                         </dd>
                     </dl>
@@ -98,7 +99,8 @@
 
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">02. 서비스 요청 정보</h2>
+                    <!-- 210126 수정 - 타이틀 번호 삭제 -->
+                    <h2 class="h2-tit">서비스 요청 정보</h2>
                 </div>
                 <div class="form-wrap">
                     <dl class="forms">
@@ -143,7 +145,8 @@
                     <dl class="forms">
                         <dt class="tit">
                             <label for="slt05" class="req">서비스 요청시기<span class="blind">필수입력</span></label>
-                            <div class="tooltip-wrap"><!-- 활성화시 active -->
+                            <!-- 210126 수정 - 툴팁 삭제
+                            <div class="tooltip-wrap"> !-- 활성화시 active --
                                 <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
                                 <span class="tooltip-box">
                                     <p>선택하신 날짜 이전에 상담사가 사전 연락을 드립니다. </p>
@@ -151,10 +154,11 @@
                                     <p>당첨 발표 이후 서비스 요청 시기 수정은 불가능 합니다.</p>
                                     <button type="button" class="btn-close"><span class="blind">닫기</span></button>
                                 </span>
-                            </div>
+                            </div> -->
                         </dt>
                         <dd class="conts">
-                            <div class="box date-select-box col-2">
+                            <!-- 210126 수정 - .col-2 클래스 삭제 -->
+                            <div class="box date-select-box">
                                 <div class="cell">
                                     <div class="box">
                                         <div class="select-wrap">
@@ -182,6 +186,16 @@
                             </div>
                         </dd>
                     </dl>
+                    <!-- 210126 수정 - 돔 추가 -->
+                    @@include('./common/modules/bullet-list.html', {
+                        "topBorder" : true,
+                        "bulletTxt" : [
+                            "선택하신 날짜 이전에 상담사가 사전 연락을 드립니다.",
+                            "필터 교체와 토탈 케어 서비스는 전문 관리사에 의해 동시에 진행 됩니다.",
+                            "당첨 발표 이후 서비스 요청 시기 수정은 불가능 합니다."
+                        ]
+                    })
+                    <!-- // 210126 수정 -->
                 </div>
             </div>
         </section>

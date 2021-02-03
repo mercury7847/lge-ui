@@ -16,6 +16,8 @@ $(window).ready(function(){
             '</div>'+
             '<button type="button" class="btn-close"><span class="blind">닫기</span></button>';
 
+        var isInitChecked = false;
+
         function init(){
             $('.btn-init').on('click', function(e){
                 setClearCompare();
@@ -65,7 +67,8 @@ $(window).ready(function(){
         function setCompareStatus(){
             console.log("setCompareStatus~~");
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
-            var leng = storageCompare[lgkorUI.COMPARE_ID] == undefined ? "0" : storageCompare[lgkorUI.COMPARE_ID].length;
+            var leng = storageCompare[lgkorUI.COMPARE_ID] == undefined ? 0 : storageCompare[lgkorUI.COMPARE_ID].length;
+            console.log("leng:",leng)
             if(leng){
                 var limit = window.breakpoint.name == "mobile" ? 2 : 3;
                 if(_$('.KRP0015').css('display') == 'none'){
@@ -80,9 +83,15 @@ $(window).ready(function(){
                         if(leng >= limit) openCompareBox();
                     }
                 }
+
+                isInitChecked = true;
             } else{
-                addToastAlert();
                 hideCompareBox();
+
+                if(isInitChecked){
+                    isInitChecked = false;
+                    addToastAlert();
+                }
             }
         }
 
@@ -115,7 +124,7 @@ $(window).ready(function(){
             } else{
                 msg = "비교하기 기능이 초기화되었습니다.";
             }
-            
+
             _$(window).trigger("toastshow", msg);
         }
 

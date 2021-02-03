@@ -14,6 +14,7 @@
 @import "../../support/banner";
 @import "../../support/quick-menu";
 @import "../../support/selectModel";
+@import "../../support/mcustom-scrollbar";
 
 /* 삭제 예정 */
 .dummy {
@@ -42,6 +43,9 @@
             font-weight:$font-weight-bold;
             @include font-large-1;
             word-break:keep-all;
+        }
+        + .cont-wrap {
+            padding-top: 8px;
         }
         @include mobile {
             padding:16px;
@@ -223,13 +227,14 @@
                                 width: auto;
                                 height: auto;
                                 font-size: 14px;
-                                color: #767676;
-                                line-height: 1;
+                                color: #000;
+                                line-height: 1.63;
                                 transform: translateY(-50%);
                                 margin-top: 0;
-                                padding-right: 22px;
-                                background: url(/lg5-common/images/icons/btn-more-20-gray.svg) no-repeat right center;
-                                background-size: 20px;
+                                padding-left: 20px;
+                                background: url(/lg5-common/images/icons/btn-more-20-gray.svg) no-repeat left center;
+                                background-size: 16px;
+                                text-decoration: underline;
                             }
                         }
                     }
@@ -238,8 +243,7 @@
                             .accord-btn {
                                 &::after {
                                     content: '닫기';
-                                    color: #ec455a;
-                                    background: url(/lg5-common/images/icons/btn-minus-20.svg) no-repeat right center;
+                                    background-image: url(/lg5-common/images/icons/btn-close-24.svg);
                                 }
                             }
                         }
@@ -288,6 +292,46 @@
     
 
     .search-wrap {
+        &.narrow {
+            max-width:912px;
+            margin:0 auto;
+        }
+        &.board-top-search {
+            margin-bottom:45px;
+        }
+
+        .sort-search {
+            display:flex;
+            border-radius:8px;
+            border:1px solid #ddd;
+            
+            .select-wrap {
+                width:152px;
+
+                .ui-selectbox-wrap {
+                    .ui-select-button {
+                        border:0;
+                    }
+
+                    &.on {
+                        .ui-select-button {
+                            border:1px solid #000;
+                            border-bottom:0;
+                        }
+                    }
+                }
+
+            }
+            .input-wrap {
+                position:relative;
+                flex:1;
+
+                input[type="text"] {
+                    width:100%;
+                    border:0;
+                }
+            }
+        }
         @include pc {
             .search-box {
                 .forms {
@@ -334,6 +378,11 @@
         max-width: 1380px + 80px;
         margin: 0 auto 32px;
         padding:0 40px;
+        >ul {
+            >.lists {
+                margin-top: 0;
+            }
+        }
         @include mobile {
             margin: 0 0 24px;
             padding:0 16px;
@@ -710,6 +759,7 @@
                 background: url(/lg5-common/images/icons/icon-error.svg) no-repeat left center;
             }
             ul { 
+                margin-top:0;
                 li{
                     font-size: 14px;
                     line-height: 1.63;
@@ -799,12 +849,6 @@
         }
     }
 
-    .research-banner {
-        img {
-            max-width: 100%;
-        }
-    }
-
     .video-box {
         height:360px;
         max-width:1146px;
@@ -861,6 +905,13 @@
                     line-height:21px;
                 }
             }
+        }
+    }
+    .request-link-box {
+        max-width: 1380px;
+        margin: 0 auto 24px;
+        @include mobile {
+            padding: 0 16px;
         }
     }
 } //support

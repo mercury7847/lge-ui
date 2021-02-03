@@ -84,7 +84,7 @@
         "subFilterList": [
             {
                 "name": "All",
-                "code": "All"
+                "code": ""
             },
             {
                 "name": "퀵 헬프 방법",
@@ -118,6 +118,6 @@
             "code": "10000002"
         },
         "keyword": "검색어",
-        "keywords" : ["All", "설치/연결", "검색어"]
+        "keywords" : ["스마트폰", "기능", "퀵 헬프 방법"]
     }
 }

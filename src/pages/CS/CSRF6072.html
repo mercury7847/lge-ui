@@ -24,7 +24,7 @@
         <div class="container">
             @@include('./common/modules/page-header.html', {
                 'pageTitle': '접수 제품 및 설치 환경 사진 등록',
-                'pageDesc': '고장증상이나 설치 환경을 촬영하여 등록해주세요.<br>서비스 엔지니어가 더욱 빠르고 안전한 서비스를 제공합니다.'
+                'pageDesc': '고장증상이나 설치 환경을 촬영하여 등록해주세요.<br>서비스 엔지니어가 더욱 빠르고 <br>안전한 서비스를 제공합니다.'
             })
             <div class="contents support issue-register"> 
                 <div class="cont-wrap narrow">
@@ -146,8 +146,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- 2021/02/02 class top-border 삭제 -->
                             @@include('./common/modules/bullet-list.html', {
-                                "topBorder" : true,
+                                "topBorder" : false,
                                 "bulletTxt" : [
                                     "사진 등록은 최대 2개까지 가능하며 1개당 용량 4MB 까지 등록 가능합니다.",
                                     "사진 파일의 특수 기호가 있는 경우 제외해주시기 바랍니다.",

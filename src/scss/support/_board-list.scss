@@ -2,13 +2,16 @@
 
 /* list summary */
 .sorting-wrap {
-    padding-bottom:12px;
+    padding-bottom:16px;
     @include clearfix;
     .total {
         float:left;
-        font-size:14px;
+        font-size:16px;
         font-weight:700;
         line-height:24px;
+        .count {
+            color: #da0f47;
+        }
     }
     .sort-box {
         float:right;
@@ -388,14 +391,15 @@
 /* card list */
 .card-list-wrap {
     .card-list {
-        margin:0 -28px -36px;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
         font-size:0;
         > li {
             display:inline-block;
-            width:25%;
-            margin-bottom:36px;
-            padding:0 28px;
+            margin-top:24px;
             vertical-align:top;
+            margin-left:57px;
         }
         .item {
             display:block;
@@ -451,11 +455,63 @@
                 }   
             }
         }
+        &.type-tips {
+            > li {
+                border-radius: 8px;
+                box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+            }
+            .item {
+                &-image {
+                    margin-bottom: 0;
+                    border-radius: 8px 8px 0 0;
+                }
+                &-conts {
+                    padding: 24px;
+                }
+            }
+        }
     }
-    @include tablet {
+    @media screen and (min-width: 1024px) {
         .card-list {
             > li {
-                width:calc(100% / 3);
+                width: calc(25% - 43px);
+                &:nth-child(4n+1) {
+                    margin-left: 0;
+                }
+                &:nth-child(-n+4) {
+                    margin-top: 0;
+                }
+            }
+            &.type-tips {
+                > li {
+                    margin-left: 24px;
+                    width: calc(25% - 18px);
+                    &:nth-child(4n+1) {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        .card-list {
+            > li {
+                width: calc(33.3333% - 38px);
+                &:nth-child(-n+3) {
+                    margin-top: 0;
+                }
+                &:nth-child(3n+1) {
+                    margin-left: 0;
+                }
+            }
+            &.type-tips {
+                > li {
+                    margin-left: 24px;
+                    width: calc(33.3333% - 16px);
+                    &:nth-child(3n+1) {
+                        margin-left: 0;
+                    }
+                }
             }
         }
     }
@@ -464,9 +520,9 @@
             margin:0;
             > li {
                 width:100%;
-                margin-bottom:40px;
                 padding:0;
-                &:last-child {
+                margin-left: 0;
+                &:first-child {
                     margin-top:0;
                 }
             }
@@ -487,6 +543,16 @@
     
                             }
                         }
+                    }
+                }
+            }
+            &.type-tips {
+                > li {
+                    margin-top: 12px;
+                }
+                .item {
+                    &-conts {
+                        padding: 20px;
                     }
                 }
             }
@@ -558,9 +624,12 @@
                     padding-left:9px;
                     color:#767676;
                     &::before {
+                        content: '';
+                        display: block;
                         position:absolute;
                         left:0;
-                        top:4px;
+                        top: 50%;
+                        transform: translateY(-50%);
                         width:1px;
                         height:14px;
                         background-color:#ddd;
@@ -598,7 +667,6 @@
                         padding:0;
                         &:before {
                             content:none;
-
                         }
                     }
                 }

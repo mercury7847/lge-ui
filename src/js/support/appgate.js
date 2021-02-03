@@ -1,7 +1,12 @@
 (function() {
     var param;
 
-    $(window).ready(function() {
+    $(window).ready(function() {   
+        var cookieVal = $('.product-info').find('.name em').text().split('.')[0];
+        var cookie = lgkorUI.recentlySearch;
+
+        cookie.addCookie(cookieVal);
+
         vcui.require([
             'ui/validation', 'ui/selectTarget'
         ], function() {
@@ -14,7 +19,7 @@
                 $keyword = $('#keyword'),
                 $btnSearch = $('.btn-search');
 
-            var validation = new vcui.ui.CsValidation('.keyword-search', {
+            var validation = new vcui.ui.CsValidation('.input-wrap.search', {
                 register: {
                     keyword: {
                         msgTarget: '.err-msg'
@@ -27,12 +32,20 @@
             });
            
             $subTopic.on('change', function() {
-                var topicVal = $topic.val();
-                    subTopicVal = $subTopic.val(),
+                var topicVal = $topic.find('option:checked').text();
+                    subTopicVal = $subTopic.find('option:checked').text(),
                     parameter = param;
 
-                parameter += '&topic=' + topicVal + '&subTopic=' + subTopicVal;
+                if (subTopicVal == 'All') subTopicVal = '';
+
+                parameter += '&topicNm=' + topicVal + '&subTopicNm=' + subTopicVal;
                 location.href = url + '?' + parameter;
+            });
+            $keyword.on('keydown', function(e) {
+                if(e.keyCode == 13) {
+                    e.preventDefault();
+                    $btnSearch.trigger('click');        
+                }
             });
             $btnSearch.on('click', function() {
                 var keywordVal = $keyword.val(),

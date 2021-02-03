@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
     <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0015.min.css">
-    <script src="/lg5-common/js/search/filterLayer.min.js"></script>
+    <!-- <script src="/lg5-common/js/search/filterLayer.min.js"></script> -->
     @@include('./common/head.html', {
         componentID: "KRP0007",
         isJScompile: true
@@ -9,7 +9,9 @@
     <script src="/lg5-common/js/components/KRP0015.min.js"></script>
 <body>
     <script>
-        //var firstFilterList = [];
+        var firstEnableFilter = {
+            "FM00015001":["FV00046002","FV00046003"]
+        };
         var firstFilterList = [
             {
                 "filterType":"none",
@@ -39,11 +41,6 @@
                 "filterGroupName":"판매가",
                 "filterGroupType":"range",
                 "filterValues":[
-                    {"filterValueId":"pd0001","filterValueName":"50,000"},
-                    {"filterValueId":"pd0002","filterValueName":"150,000"},
-                    {"filterValueId":"pd0003","filterValueName":"400,000"},
-                    {"filterValueId":"pd0004","filterValueName":"1,000,000"},
-                    {"filterValueId":"pd0005","filterValueName":"2,000,000"}
                 ]
             },
             {
@@ -60,11 +57,11 @@
                 ]
             },
             {
-                "filterType":"check",
+                "filterType":"radio",
                 "topFilterFlag": "N",
                 "filterId":"fid00003",
                 "filterGroupName":"서비스",
-                "filterGroupType":"check",
+                "filterGroupType":"radio",
                 "filterValues":[
                     {"filterValueId":"","filterValueName":"전체"},
                     {"filterValueId":"sd0002","filterValueName":"일반제품"},
@@ -109,14 +106,15 @@
                     {"filterValueId":"td0003","filterValueName":"태그3"}
                 ]
             }
-        ]
+        ];
     </script>
     <div class="hidden-input-group">
+        <!-- categoryId 을 가져오기 위한 부분 -->
+        <input type="hidden" name="categoryId" value="test_categoryID">
+        <!-- 페이지 더보기 -->
         <input type="hidden" name="totalCount" value="1">
         <input type="hidden" name="page" value="1">
     </div>
-    <!-- <input type="hidden" name="categoryId" value="CT30005620"> -->
-    <!-- categoryId 을 가져오기 위한 테스트 용 -->
     
     <div class="wrap">
         @@include('./common/header.html')
@@ -132,7 +130,9 @@
                 
                 <!-- component KRC0009 -->
                 <section class="component KRP0007" aria-label="product list"
-                    data-prod-list="/lg5-common/data-ajax/filter/retrieveCategoryProductList.json"
+                    data-prod-list="/lg5-common/data-ajax/KRP0007/retrieveCategoryProductList.json"
+                    data-wish-url="/lg5-common/data-ajax/KRP0007/plpWish.json"
+                    data-cart-url="/lg5-common/data-ajax/KRP0007/plpCart.json"
                 >
                     <!-- component -->
                    @@include('./common/partials/KRP0007-cate.html')
