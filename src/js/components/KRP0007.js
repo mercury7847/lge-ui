@@ -25,7 +25,7 @@
                     '<div class="slide-track ui_carousel_track">' +
                         '{{#each (image, idx) in sliderImages}}'+
                             '<div class="slide-conts ui_carousel_slide">' +
-                                '<a href="#"><img src="{{image}}" alt="{{#raw modelDisplayName}} {{idx + 1}}]번 이미지" onError="lgkorUI.addImgErrorEvent(this)"></a>' +
+                                '<a href="#"><img data-lazy="{{image}}" alt="{{#raw modelDisplayName}} {{idx + 1}}]번 이미지"></a>' +
                             '</div>' +
                         '{{/each}}'+
                     '</div>' +
