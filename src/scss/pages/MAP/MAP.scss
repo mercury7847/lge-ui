@@ -121,14 +121,15 @@ body {
         position: fixed;
         width: 100%;
         min-height: 51px;
-        padding: 0 18px;
+        /*padding: 0 18px;*/
+        padding: 6px 18px 15px;
         background-color: #fff;
         border-bottom: 1px solid #ddd;
         z-index: 5;
 
         h1 {
-            display: block;
-            padding: 6px 0 15px;
+            display: inline-block;
+            /*padding: 6px 0 15px;*/
             font-weight: 700;
             @include font(26px, 38px);
             color: #222;
@@ -142,10 +143,12 @@ body {
 
         &.type-sub {
             margin-bottom: 19px;
-
+            padding:60px 50px 20px;
             h1 {
+                /*
                 padding: 6px 32px 20px;
                 padding: 60px 32px 20px;
+                */
                 @include font(17px, 25px);
                 color: #000;
             }
