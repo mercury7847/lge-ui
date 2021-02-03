@@ -19,6 +19,9 @@
             border-bottom:2px solid #222;
         }
     }
+    .bullet-list {
+        color:#747474;
+    }
     .btn-download {
         display: inline-block;
         margin-top:4px;
@@ -156,6 +159,8 @@
             }
         }
         .appgate-img {
+            width:263.5px;
+            margin:0 auto;
             img {
                 width:100%;
             }
@@ -255,6 +260,7 @@
     }
 
     &-banner {
+        margin-top:60px;
         border-top:12px solid #f4f4f4;
         @include pc {
             margin-top:80px;
