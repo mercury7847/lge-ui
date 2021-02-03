@@ -69,15 +69,17 @@
         background-color: #fff;
         //border-bottom:1px solid #ededed;
         z-index:20;
-        &::after {
-            display: inline-block;
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 16px;
-            width: calc(100% - 32px);
-            height: 2px;
-            background-color: #222;
+        @include mobile {
+            &::after {
+                display: inline-block;
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 16px;
+                width: calc(100% - 32px);
+                height: 2px;
+                background-color: #222;
+            }
         }
         .tit {
             font-size:18px;
