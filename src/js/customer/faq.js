@@ -38,7 +38,6 @@
 
                 //검색창
                 self.$searchWrap.find('button.btn-search').on("click", function(e){ 
-                    console.log('asdasd');
                     self.searchNewData();
                 });
 

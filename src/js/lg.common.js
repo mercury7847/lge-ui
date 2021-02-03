@@ -642,6 +642,8 @@
         addCompareProd: function(data){
             var self = this;
 
+            self.COMPARE_LIMIT = window.breakpoint.isMobile ? 2 : 3;
+
             var compareStorage = self.getStorage(self.COMPARE_KEY);
             if(compareStorage[self.COMPARE_ID] == undefined){
                 compareStorage[self.COMPARE_ID] = [data];
