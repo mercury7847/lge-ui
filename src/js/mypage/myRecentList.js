@@ -1,5 +1,5 @@
 (function() {
-    var listItemTemplate = '<li class="box {{#if disabled}}disabled{{/if}}" data-id={{id}} data-sku={{modelName}} data-wishListId={{wishListId}} data-wishItemId={{wishItemId}} data-categoryId={{categoryId}} data-rtSeq={{rtSeq}} data-requireCare={{requireCare}}>' +
+    var listItemTemplate = '<li class="box {{#if disabled}}disabled{{/if}}" data-id={{id}} data-sku={{sku}} data-categoryId={{categoryId}} data-rtSeq={{rtSeq}} data-requireCare={{requireCare}}>' +
         '<div class="col-table">' +
             '<div class="col"><div class="product-info">' +
                 '<div class="thumb"><a href="{{pdpUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
@@ -108,8 +108,8 @@
                 var param = {
                     "id":$dm.attr('data-id'),
                     "sku":$dm.attr('data-sku'),
-                    "wishListId":$dm.attr('data-wishListId'),
-                    "wishItemId":$dm.attr('data-wishItemId'),
+                    //"wishListId":$dm.attr('data-wishListId'),
+                    //"wishItemId":$dm.attr('data-wishItemId'),
                     "categoryId":$dm.attr('data-categoryId'),
                     "rtSeq":$dm.attr('data-rtSeq')
                 }
@@ -134,8 +134,8 @@
                 var param = {
                     "id":$dm.attr('data-id'),
                     "sku":$dm.attr('data-sku'),
-                    "wishListId":$dm.attr('data-wishListId'),
-                    "wishItemId":$dm.attr('data-wishItemId'),
+                    //"wishListId":$dm.attr('data-wishListId'),
+                    //"wishItemId":$dm.attr('data-wishItemId'),
                     "categoryId":$dm.attr('data-categoryId'),
                     "rtSeq":$dm.attr('data-rtSeq'),
                     "typeFlag":cartType
