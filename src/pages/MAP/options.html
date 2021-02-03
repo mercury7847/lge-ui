@@ -110,7 +110,7 @@
                 var $id = $(id);
 
                 $("html").css("overflow-y","hidden");
-                $id.css("z-index", cnt).stop().animate({'bottom':'50px'}, 200, function(){
+                $id.css("z-index", (cnt + 500)).stop().animate({'bottom':'50px'}, 200, function(){
                     $(this).attr("tabindex", 0).focus();
                 });
                 setTimeout(function(){
@@ -212,9 +212,8 @@
 
             if(events){
                 if(Date.parse(today + startDateVal) == Date.parse(today + endDateVal)){
-                    //optModal.open("#modalTimeset");
                     optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
-                    $("#modalTimeset .btn-modal-confirm").on({
+                    $("#modalTimeset .btn-modal-confirm").off("click").on({
                         click : function(){
                             $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
                             $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
@@ -317,7 +316,10 @@
                     var idx = $(this).closest("div").index();
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                     }else{
-                        changeTimeSet(idx);
+                        //changeTimeSet(idx);
+                        setTimeout(function(){
+                            changeTimeSet(idx);
+                        }, 500);
                     }
                 },
                 blur: function(e){
