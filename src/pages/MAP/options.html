@@ -33,7 +33,7 @@
                 }
                 var valRole = role;
                 if(role == null || role == "" || role == undefined){
-                    valRole = "alert";
+                    valRole = "alertdialog";
                 }
                 var valConfirm = confirm;
                 if(confirm == null || confirm == "" || confirm == undefined){
@@ -94,7 +94,7 @@
                 var $type = type;
                 var $timesetIdx = timesetIdx;
                 var $body = $("body");
-                var html = '<div class="toast-message" role="alert" aria-modal="true" id="'+id+'" aria-describedby="toast-message-cont" aria-labelledby="toast-message-cont" tabindex="0">';
+                var html = '<div class="toast-message" role="alertdialog" aria-modal="true" id="'+id+'" aria-describedby="toast-message-cont" aria-labelledby="toast-message-cont" tabindex="0">';
                     html += '    <div>';
                     html += '        <div class="txt-message ' + $type + '" id="toast-message-cont">' + txt + '</div>';
                     html += '        <button type="button" class="btn-toast-close"><span>닫기</span></button>';
@@ -110,7 +110,7 @@
                 var $id = $(id);
 
                 $("html").css("overflow-y","hidden");
-                $id.css("z-index", cnt).stop().animate({'bottom':'50px'}, 200, function(){
+                $id.css("z-index", (cnt + 500)).stop().animate({'bottom':'50px'}, 200, function(){
                     $(this).attr("tabindex", 0).focus();
                 });
                 setTimeout(function(){
@@ -128,13 +128,13 @@
                 $id.css("z-index", cnt).stop().animate({'bottom':'-60px'}, 200, function(){
                     $("html").css("overflow-y","scroll");
                     $(beforeFocusEleToast).focus();
-                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                    //if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         if(timesetIdx != null && timesetIdx != "" && timesetIdx != undefined){
                             if(events){
                                 $(".time-setting .inner div").eq(timesetIdx).find("label:not([class*=rst-time])").attr("tabindex", 0).focus().trigger("click");
                             }
                         }
-                    }
+                    //}
                     $(this).remove();
                 });
             }
@@ -212,9 +212,8 @@
 
             if(events){
                 if(Date.parse(today + startDateVal) == Date.parse(today + endDateVal)){
-                    //optModal.open("#modalTimeset");
                     optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
-                    $("#modalTimeset .btn-modal-confirm").on({
+                    $("#modalTimeset .btn-modal-confirm").off("click").on({
                         click : function(){
                             $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
                             $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
@@ -313,16 +312,19 @@
                     //oldStartValue = $(this).closest(".inner").find("div").eq(0).find("input").val();
                     //oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
 
+                    events = true;
+                    var idx = $(this).closest("div").index();
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                        events = true;
                     }else{
-                        var idx = $(this).closest("div").index();
-                        changeTimeSet(idx);
+                        //changeTimeSet(idx);
+                        setTimeout(function(){
+                            changeTimeSet(idx);
+                        }, 500);
                     }
                 },
                 blur: function(e){
+                    var idx = $(this).closest("div").index();
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                        var idx = $(this).closest("div").index();
                         changeTimeSet(idx);
                     }
                 }
@@ -348,8 +350,12 @@
                 click : function(){
                     $(".lyr-opt-panel, .main-panel").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
-                        $(".main-panel").attr("aria-hidden", false)
+                        $(".main-panel").attr("aria-hidden", false);
                         $(".main-panel").attr("tabindex", 0).focus();
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                            $(".main-panel").find("h1").focus();
+                        }
                     });
                 }
             });
@@ -373,6 +379,10 @@
                         $(this).attr("aria-hidden", false);
                         $(this).attr("tabindex", 0).focus();
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                            $(this).find("h1").focus();
+                        }
                     });
                 }
             });
@@ -385,6 +395,10 @@
                         $(this).attr("aria-hidden", false);
                         $(this).attr("tabindex", 0).focus();
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                            $(this).find("h1").focus();
+                        }
                     });
                     $(data).stop().animate({"left":"100%"}, 250);
                 }

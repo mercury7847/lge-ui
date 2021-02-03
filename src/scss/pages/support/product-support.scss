@@ -180,6 +180,7 @@
                     .filter-link {
                         display:inline-block;
                         @include font-medium;
+                        text-align:left;
                         vertical-align:top;
                     }
                     .sub-depth {
@@ -659,20 +660,24 @@
             }
         }
         .product-tips-view {
-            max-width:1146px;
+            max-width:954px;
             margin:0 auto;
             .view-content-title {
                 color: #000;
-                font-size:20px;
+                font-size:24px;
                 font-weight: $font-weight-bold;
                 line-height:28px;
+                margin-bottom: 24px;
             }
             .view-content-img { 
-                margin-bottom:48px;
+                margin-bottom:64px;
                 text-align:center;
                 img {
                     max-width:100%;
                 }
+            }
+            .view-content-text {
+                line-height: 1.63;
             }
             @include mobile {
                 .view-content-title {

@@ -269,17 +269,19 @@
                     param = {
                         seq: data.seq,
                         page: 1
-                    }
+                    };
+
+                    
                 } else {
                     url = self.resultUrl;
                     param = {
                         category: data.category,
                         subCategory: data.subCategory,
                         modelCode: data.modelCode,
-                        page:1
+                        serviceType: data.serviceType
                     }
                 }
-                
+
                 self.requestCenterData(param, url);
 
                 self.$myProductWrap.hide();
@@ -566,6 +568,7 @@
                 case 'local':
                 case 'current':
                 case 'road':
+                case 'user':
                     keywords = {
                         latitude:self.latitude,
                         longitude:self.longitude
@@ -576,12 +579,6 @@
                         latitude:self.latitude,
                         longitude:self.longitude,
                         searchKeyword: self.$address1.val()
-                    };
-                    break;
-                case 'user':
-                    keywords = {
-                        searchCity: self.userCityName,
-                        searchBorough: self.userBoroughName
                     };
                     break;
                 case 'subway':
@@ -675,12 +672,14 @@
                 var data = result.data;
 
                 if(lgkorUI.stringToBool(data.success)){
-                    self.userCityName = data.userAdress.cityValue;
-                    self.userBoroughName = data.userAdress.boroughValue;
+                    var callback = function() {
+                        self.requestCenterData()
+                    };
+
                     self.searchResultMode = true;
                     self.schReaultTmplID = "localSearch";
 
-                    self.requestCenterData();
+                    self.searchAddressToCoordinate(data.userAdress, callback);
                 } else{
                     if(data.location && data.location != ""){
                         location.href = data.location;
@@ -818,18 +817,22 @@
                 var data = result.data,
                     dataArr = data.listData instanceof Array ? data.listData : [],
                     html;
+                var $listTable = self.$stepCenter.find('.center-result-wrap .tb_row'),
+                    $noData = self.$stepCenter.find('.no-data');
+
+                $listTable.find('tbody').empty();
 
                 if (dataArr.length) {
                     html = vcui.template(centerTmpl, data);
-                    self.$stepCenter.find('table tbody').html(html);
+                    $listTable.find('tbody').html(html);
                     self.$centerPagination.pagination('update', data.listPage);
 
-                    self.$stepCenter.find('.no-data').hide();
-                    self.$stepCenter.find('.center-list-wrap').show();
+                    $noData.hide();
+                    $listTable.show();
                     self.$centerPagination.show();
                 } else {
-                    self.$stepCenter.find('.no-data').show();
-                    self.$stepCenter.find('.center-list-wrap').hide();
+                    $noData.show();
+                    $listTable.hide();
                     self.$centerPagination.hide();
                 }
 
