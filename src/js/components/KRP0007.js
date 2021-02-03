@@ -110,12 +110,12 @@
                 '<div class="btn-area-wrap">' +
                     '<div class="wishlist">' +
                         '<span class="chk-wish-wrap large">' +
-                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{modelName}}" data-wish-list-id="{{wishListId}}" data-wishItemId="" {{#if wishListFlag}}checked{{/if}}>' +
+                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{modelName}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' +
                             '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>' +
                         '</span>' +
                     '</div>' +
                     '<div class="cart">' +
-                        '<a href="#n" class="btn-cart" data-id="{{modelId}}" data-model-name="{{modelName}}" {{#if !cartListFlag}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
+                        '<a href="#n" class="btn-cart{{#if cartListFlag}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{modelName}}" data-categoryId="{{categoryId}}" data-rtSeq="{{rtSeq}}" data-typeFlag="{{typeFlag}}" data-requireCare="{{requireCare}}" {{#if !cartListFlag}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
                     '</div>' +
                     '<div class="btn-area">' +
                         '<a href="{{detailUrl}}" class="btn border size-m" data-id="{{modelId}}">자세히 보기</a>' +
@@ -284,13 +284,19 @@
                 self.$productList.on('click','li div.btn-area-wrap div.cart a',function(e){
                     e.preventDefault();
 
-                    var $this = $(this);
-                    var param = {
-                        "id":$this.attr('data-id'),
-                        "modelName":$this.attr('data-model-name')
+                    if(!$(this).hasClass('disabled')){
+                        var $this = $(this);
+                        var param = {
+                            "id":$this.attr('data-id'),
+                            "sku":$this.attr('data-model-name'),
+                            "categoryId":$this.attr('data-categoryId'),
+                            "rtSeq":$this.attr('data-rtSeq'),
+                            "typeFlag":$this.attr('data-type-flag'),
+                            "requireCare":$this.data('requireCare')
+                        }
+                        var ajaxUrl = self.$section.attr('data-cart-url');
+                        lgkorUI.requestCart(ajaxUrl, param);
                     }
-                    var ajaxUrl = self.$section.attr('data-cart-url');
-                    lgkorUI.requestCart(ajaxUrl, param);
                 });
 
                 //자세히보기
@@ -434,7 +440,7 @@
                             item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);
                             //찜하기
                             item.cartListFlag = lgkorUI.stringToBool(item.cartListFlag);
-                            item.wishListId = data.wishListId != undefined && data.wishListId != null ? data.wishListId : "";
+                            if(!item.wishListId) item.wishListId = "";
                             if(!item.wishItemId) item.wishItemId = "";
                             
                             if(!item.detailUrl) item.detailUrl = "#n";
