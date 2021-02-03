@@ -27,12 +27,15 @@
             }
         }
         .btn-desc {
-            margin-top:21px;
+            margin-top:24px;
             font-size:0;
             /* display: flex;
             justify-content: center; */
             .btn {
                 margin:0 4px;
+            }
+            @include mobile {
+                margin-top: 18px;
             }
         }
         .link-desc {
@@ -141,7 +144,7 @@
         }
         
         .progress-wrap {
-            margin-top:24px;
+            margin-top:36px;
             margin-left: auto;
             margin-right: auto;
             max-width: 673px;
@@ -212,9 +215,11 @@
             }
             @include mobile {
                 width:100%;
+                margin-top: 32px;
                 ol {
                     flex-wrap:wrap;
                     li {
+                        padding: 0 6px;
                         &:before {
                             width:24px;
                             height:24px;
