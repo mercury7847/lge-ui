@@ -149,29 +149,31 @@
             setting: function() {
                 var self = this;
                 var url = location.search;
+                var data = $.extend({}, self.options);
 
                 // 옵션
                 self.resultUrl = self.$searchModelWrap.data('resultUrl');
                 self.solutionsUrl = self.$solutionsWrap.data('solutionsUrl');
                 self.keywords = [];
-                self.param = self.options;
                 
                 if (url.indexOf("?") > -1) {
                     var search = url.substring(1);
                     var searchObj = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
 
                     for (var key in searchObj) {
-                        if (key in self.param) {
-                            self.param[key] = decodeURIComponent(searchObj[key]);
+                        if (key in data) {
+                            data[key] = decodeURIComponent(searchObj[key]);
                         }
                         
-                        if (key == 'mktModelCd') self.param['modelCode'] = searchObj.mktModelCd;
+                        if (key == 'mktModelCd') data['modelCode'] = data['mktModelCd'] = searchObj.mktModelCd;
                         if (key == 'sort') $('#sort').val(searchObj.sort), $('#sort').vcSelectbox('update');
                         if (key == 'keyword') $('#keyword').val(decodeURIComponent(searchObj.keyword)), self.keywords.push(keyword);
                     }
 
-                    self.param.categoryNm = $('#category').val();
-                    self.param.subCategoryNm = $('#subCategory').val();
+                    data.categoryNm = $('#category').val();
+                    data.subCategoryNm = $('#subCategory').val();
+
+                    self.param = data;
                 }
             },
             completeModel: function() {
@@ -182,7 +184,7 @@
                 lgkorUI.requestAjaxData(self.resultUrl, model, function(result) {
                     var data = result.data,
                         param = result.param;
-
+                    console.log(model);
                     self.$cont.commonModel('updateSummary', {
                         product: [model.categoryNm, model.subCategoryNm, model.modelCode],
                         reset: 'product'
@@ -399,10 +401,11 @@
                 self.$solutionsFilter.find('.sub-depth').remove();
             },
             reset: function() {
-                var self = this;
+                var self = this,
+                    data = $.extend({}, self.options);
 
                 self.keywords = [];
-                self.param = self.options;
+                self.param = data;
 
                 self.$solutionsFilter.find('.open, .on').removeClass('open on');
                 self.$solutionsFilter.find('.sub-depth').remove();
