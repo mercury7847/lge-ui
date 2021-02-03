@@ -558,11 +558,11 @@
     }
     .btn-wrap {
         &.top {
-            margin-bottom: 24px;
+            margin-bottom: 48px;
         }
         @include mobile {
             &.top {
-                margin-bottom: 16px;
+                margin-bottom: 40px;
             }
         }
     }
@@ -1302,7 +1302,7 @@
                 .h2-tit {
                     display:inline-block;
                     padding-right:100px;
-                    @include font-small;
+                    @include font-medium;
                     vertical-align:middle;
                 }
             }
@@ -1329,6 +1329,23 @@
             margin-top: 48px;
             .bullet-list.top-border {
                 margin-top: 32px;
+            }
+        }
+    }
+
+    .rmsf-pop {
+        .form-infos {
+            margin-top: -40px;
+        }
+        .input-info + .input-info {
+            margin-top: 80px;
+        }
+        @include mobile {
+            .form-infos {
+                margin-top: -20px;
+            }
+            .input-info + .input-info {
+                margin-top: 60px;
             }
         }
     }
