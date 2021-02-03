@@ -116,7 +116,7 @@
         },
         recentlySearch: {
             cookieName: 'LG_SupportSearch',
-            maxNum: 3,
+            maxNum: 10,
             expire: 30,
             addCookie: function(value) {
                 var self = this;

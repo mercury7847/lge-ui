@@ -339,8 +339,8 @@
         @include mobile {
             margin-top:40px;
         }
-        .bullet-list {
-            margin-top:0;
+        .b-tit {
+            @include blind;
         }
         .btn-link {
             margin: 12px 0 0 11px;
@@ -348,7 +348,7 @@
             @include mobile {
                 margin-top: 8px;
             }
-            & + .bullet-list {
+            & + .bullet-text {
                 margin-top:22px;
             }
         }
