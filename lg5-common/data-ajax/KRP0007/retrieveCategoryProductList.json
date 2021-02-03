@@ -383,8 +383,8 @@
             "totalPrice": "0",
             "reviewsScore": "0",
             "reviewsCount": "0",
-            "wishListFlag": null,
-            "cartListFlag": null,
+            "wishListFlag": "Y",
+            "cartListFlag": "Y",
             "compatibleModels": [
               
             ],
