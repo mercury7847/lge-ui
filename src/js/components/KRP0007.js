@@ -345,6 +345,8 @@
 
                 //더보기
                 self.$btnMore.on('click', function(e) {
+                    e.preventDefault();
+
                     var filterLayerData = self.filterLayer.getDataFromFilter();
 
                     var param = {};
@@ -442,6 +444,11 @@
                             item.cartListFlag = lgkorUI.stringToBool(item.cartListFlag);
                             if(!item.wishListId) item.wishListId = "";
                             if(!item.wishItemId) item.wishItemId = "";
+
+                            if(!item.categoryId) item.categoryId = "";
+                            if(!item.rtSeq) item.rtSeq = "";
+                            if(!item.typeFlag) item.typeFlag = "";
+                            if(!item.requireCare) item.requireCare = "";
                             
                             if(!item.detailUrl) item.detailUrl = "#n";
                             self.$productList.append(vcui.template(productItemTemplate, item));
