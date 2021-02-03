@@ -361,7 +361,6 @@
                 console.log("### requestSearch ###", data)
                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
                     var data = result.data[0];
-                    var param = result.param;
 
                     if(data.schCategoryId && data.schCategoryId.length > 0) {
                         categoryId = data.schCategoryId;
@@ -381,43 +380,47 @@
 
                     var arr = (data.productList && data.productList instanceof Array) ? data.productList : [];
 
-                    arr.forEach(function(item, index) {
-
-                        var siblingType = item.siblingType ? item.siblingType.toLowerCase() : '';
-                        item.siblingType = (siblingType == "color") ? "color" : "text";
-
-                        var sliderImages = [item.mediumImageAddr];
-                        if(item.galleryImages && item.galleryImages.length > 0) {
-                            item.galleryImages.forEach(function(obj, idx) {
-                                sliderImages.push(obj.largeImageAddr);
-                            });
-                        }
-                        item.sliderImages = sliderImages;
-                        
-                        item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
-                        item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
-
-                        //flag
-                        item.newProductBadgeFlag = lgkorUI.stringToBool(item.newProductBadgeFlag);
-                        item.bestBadgeFlag = lgkorUI.stringToBool(item.bestBadgeFlag);
-                        item.cashbackBadgeFlag = lgkorUI.stringToBool(item.cashbackBadgeFlag);
-                        
-                        //장바구니
-                        item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);
-                        //찜하기
-                        item.cartListFlag = lgkorUI.stringToBool(item.cartListFlag);
-                        
-                        if(!item.detailUrl) item.detailUrl = "#n";
-                        self.$productList.append(vcui.template(productItemTemplate, item));
-
-                        self.$productList.find('.ui_plp_carousel').vcCarousel('reinit');
-                        self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
-
-                        self.fnBreakPoint();
-                        self.setCompares();
-                    });
-
-                    self.setPageData(data.pagination);
+                    if(arr.length){
+                        arr.forEach(function(item, index) {
+    
+                            var siblingType = item.siblingType ? item.siblingType.toLowerCase() : '';
+                            item.siblingType = (siblingType == "color") ? "color" : "text";
+    
+                            var sliderImages = [item.mediumImageAddr];
+                            if(item.galleryImages && item.galleryImages.length > 0) {
+                                item.galleryImages.forEach(function(obj, idx) {
+                                    sliderImages.push(obj.largeImageAddr);
+                                });
+                            }
+                            item.sliderImages = sliderImages;
+                            
+                            item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
+                            item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
+    
+                            //flag
+                            item.newProductBadgeFlag = lgkorUI.stringToBool(item.newProductBadgeFlag);
+                            item.bestBadgeFlag = lgkorUI.stringToBool(item.bestBadgeFlag);
+                            item.cashbackBadgeFlag = lgkorUI.stringToBool(item.cashbackBadgeFlag);
+                            
+                            //장바구니
+                            item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);
+                            //찜하기
+                            item.cartListFlag = lgkorUI.stringToBool(item.cartListFlag);
+                            
+                            if(!item.detailUrl) item.detailUrl = "#n";
+                            self.$productList.append(vcui.template(productItemTemplate, item));
+    
+                            self.$productList.find('.ui_plp_carousel').vcCarousel('reinit');
+                            self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
+    
+                            self.fnBreakPoint();
+                            self.setCompares();
+                        });
+    
+                        self.setPageData(data.pagination);
+                    } else{
+                        self.setPageData({page:0, totalCount:0});
+                    }
                 });
             },
 

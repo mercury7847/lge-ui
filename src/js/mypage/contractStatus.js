@@ -403,66 +403,76 @@
     }
 
     function setContractInfo(data){
-        var info;
-
-        info = getMaskingData(data.userInfo.user);
-        changeFieldValue('user-info', info);
-
-        info = getMaskingData(data.userInfo.actualUser);
-        changeFieldValue('actual-info', info);
-
-        data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span><a href='#n' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
-        changeFieldValue('contract-info', data.contractInfo);
-
-        info = {
-            monthlyPrice: "<span>" + data.paymentInfo.monthlyPrice + "</span><a href='#n' class='btn-link paymenyList-btn'>납부내역 조회</a>",
-            withdrawDate: data.paymentInfo.withdrawDate
-        }
-        if(data.paymentInfo.paymentMethod == METHOD_CARD){
-            paymentModeIndex = 0;
-
-            info.paymentMethod = "신용카드"
-            info.methodName =  "<span>" + data.paymentInfo.cardInfo.cardComName + "</span><a href='#n' class='btn-link requestCard-btn'>제휴카드 신청</a>";
-            info.methodNumber = txtMasking.card(data.paymentInfo.cardInfo.cardNumber);
+        console.log(data)
+        mypage.find(".no-data").remove();
+        if(data != undefined && data != "" && data != null){
+            var info;
+    
+            mypage.find(".section-wrap").show();
+    
+            info = getMaskingData(data.userInfo.user);
+            changeFieldValue('user-info', info);
+    
+            info = getMaskingData(data.userInfo.actualUser);
+            changeFieldValue('actual-info', info);
+    
+            data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span><a href='#n' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
+            changeFieldValue('contract-info', data.contractInfo);
+    
+            info = {
+                monthlyPrice: "<span>" + data.paymentInfo.monthlyPrice + "</span><a href='#n' class='btn-link paymenyList-btn'>납부내역 조회</a>",
+                withdrawDate: data.paymentInfo.withdrawDate
+            }
+            if(data.paymentInfo.paymentMethod == METHOD_CARD){
+                paymentModeIndex = 0;
+    
+                info.paymentMethod = "신용카드"
+                info.methodName =  "<span>" + data.paymentInfo.cardInfo.cardComName + "</span><a href='#n' class='btn-link requestCard-btn'>제휴카드 신청</a>";
+                info.methodNumber = txtMasking.card(data.paymentInfo.cardInfo.cardNumber);
+            } else{
+                paymentModeIndex = 1;
+    
+                info.paymentMethod = "계좌이체"
+                info.methodName =  data.paymentInfo.bankInfo.bankName;
+                info.methodNumber = txtMasking.substr(data.paymentInfo.bankInfo.bankNumber, 4);
+            }
+            changeFieldValue('payment-info', info);
+    
+            changeFieldValue('manager-info', data.managerInfo);
+                  
+            userInfo = {
+                userName: data.userInfo.user.name,
+                userPhone: data.userInfo.user.phoneNumber,
+                userTelephone: data.userInfo.user.telephoneNumber,
+                userEmail: data.userInfo.user.email,
+                userAdress: data.userInfo.user.adress,
+                actualUserName: data.userInfo.actualUser.name,
+                actualUserPhone: data.userInfo.actualUser.phoneNumber,
+                actualUserTelephone: data.userInfo.actualUser.telephoneNumber,
+                actualUserAdress: data.userInfo.actualUser.adress
+            }
+            userInfoValidation.setValues(userInfo);
+    
+            cardInfo = {
+                paymentCard: data.paymentInfo.cardInfo.cardComValue,
+                paymentCardNumber: data.paymentInfo.cardInfo.cardNumber,
+                paymentCardPeriod: data.paymentInfo.cardInfo.cardPeriod
+            }
+            cardValidation.setValues(cardInfo);
+    
+            bankInfo = {
+                paymentBank: data.paymentInfo.bankInfo.bankValue,
+                paymentBankNumber: data.paymentInfo.bankInfo.bankNumber,
+                paymentUserName: data.paymentInfo.bankInfo.bankUser
+            }
+            bankValidation.setValues(cardInfo);
+    
+            $('.mypage .section-wrap .sects.payment.modify .ui_tab').vcTab('select', paymentModeIndex);
         } else{
-            paymentModeIndex = 1;
+            mypage.find(".section-wrap").hide();
 
-            info.paymentMethod = "계좌이체"
-            info.methodName =  data.paymentInfo.bankInfo.bankName;
-            info.methodNumber = txtMasking.substr(data.paymentInfo.bankInfo.bankNumber, 4);
+            mypage.find(".section-wrap").before('<div class="no-data"><p>보유하신 케어솔루션 계약 정보가 없습니다.</p></div>');
         }
-        changeFieldValue('payment-info', info);
-
-        changeFieldValue('manager-info', data.managerInfo);
-              
-        userInfo = {
-            userName: data.userInfo.user.name,
-            userPhone: data.userInfo.user.phoneNumber,
-            userTelephone: data.userInfo.user.telephoneNumber,
-            userEmail: data.userInfo.user.email,
-            userAdress: data.userInfo.user.adress,
-            actualUserName: data.userInfo.actualUser.name,
-            actualUserPhone: data.userInfo.actualUser.phoneNumber,
-            actualUserTelephone: data.userInfo.actualUser.telephoneNumber,
-            actualUserAdress: data.userInfo.actualUser.adress
-        }
-        userInfoValidation.setValues(userInfo);
-
-        cardInfo = {
-            paymentCard: data.paymentInfo.cardInfo.cardComValue,
-            paymentCardNumber: data.paymentInfo.cardInfo.cardNumber,
-            paymentCardPeriod: data.paymentInfo.cardInfo.cardPeriod
-        }
-        cardValidation.setValues(cardInfo);
-
-        bankInfo = {
-            paymentBank: data.paymentInfo.bankInfo.bankValue,
-            paymentBankNumber: data.paymentInfo.bankInfo.bankNumber,
-            paymentUserName: data.paymentInfo.bankInfo.bankUser
-        }
-        bankValidation.setValues(cardInfo);
-
-        $('.mypage .section-wrap .sects.payment.modify .ui_tab').vcTab('select', paymentModeIndex);
     }
 
     function getMaskingData(data){
