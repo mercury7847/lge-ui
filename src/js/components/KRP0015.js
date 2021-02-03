@@ -61,7 +61,7 @@ $(window).ready(function(){
             }
 
             var leng = storageCompare[lgkorUI.COMPARE_ID] == undefined ? "0" : storageCompare[lgkorUI.COMPARE_ID].length;
-            $('.right-cont .count').text(leng + "/3");
+            $('.right-cont .count').text(leng + "/" + lgkorUI.COMPARE_LIMIT);
         }
 
         function setCompareStatus(){
