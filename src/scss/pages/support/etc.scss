@@ -159,6 +159,8 @@
             }
         }
         .appgate-img {
+            width:263.5px;
+            margin:0 auto;
             img {
                 width:100%;
             }
@@ -258,6 +260,7 @@
     }
 
     &-banner {
+        margin-top:60px;
         border-top:12px solid #f4f4f4;
         @include pc {
             margin-top:80px;
