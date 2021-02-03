@@ -348,8 +348,12 @@
                 click : function(){
                     $(".lyr-opt-panel, .main-panel").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
-                        $(".main-panel").attr("aria-hidden", false).attr("tabindex", 0);
-                        $(".main-panel").find("h1").focus();
+                        $(".main-panel").attr("aria-hidden", false);
+                        $(".main-panel").attr("tabindex", 0);
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                            $(".main-panel").find("h1").focus();
+                        }
                     });
                 }
             });
@@ -370,8 +374,12 @@
                     $(".main-panel").stop().animate({"left":"-100%"}, 250);
                     $(data).stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
-                        $(this).attr("aria-hidden", false).attr("tabindex", 0);
-                        $(this).find("h1").focus();
+                        $(this).attr("aria-hidden", false);
+                        $(this).attr("tabindex", 0);
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                            $(this).find("h1").focus();
+                        }
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
                     });
                 }
@@ -382,8 +390,12 @@
                     var data = $(this).data("panel");
                     $(".main-panel").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
-                        $(this).attr("aria-hidden", false).attr("tabindex", 0);
-                        $(this).find("h1").focus();
+                        $(this).attr("aria-hidden", false);
+                        $(this).attr("tabindex", 0);
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                            $(this).find("h1").focus();
+                        }
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
                     });
                     $(data).stop().animate({"left":"100%"}, 250);
