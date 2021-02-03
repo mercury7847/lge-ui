@@ -839,10 +839,12 @@
 
         // 매월 납부금 할인내역
         .fee-info-wrap {
+            margin-bottom: 80px;
             padding:24px 40px 32px;
             border-radius:8px;
             background:#f4f4f4;
             @include mobile {
+                margin-bottom: 60px;
                 padding:24px 20px;
             }
             dl {
@@ -1274,13 +1276,12 @@
         .tit-wrap {
             @include clearfix;
             position:relative;
-            margin-bottom:16px;
+            margin-bottom:24px;
             padding:0;
             .h2-tit {
-                @include font-medium;
+                @include font($font-large-2,34px);
                 @include mobile {
-                    font-size:18px;
-                    line-height:26px;
+                    @include font($font-large-1,28px);
                 }
                 .point {
                     display: inline-block;
