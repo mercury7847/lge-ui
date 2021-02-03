@@ -153,10 +153,10 @@
                     self.drawList(result);
                     self.drawTopicList(resultData);
                     self.setPopularKeyword(resultData);
-
+                    console.log(data);
                     self.$myProductWarp.hide();
                     self.$cont.commonModel('updateSummary', {
-                        product: [data.categoryName, data.subCategoryName, data.modelCode],
+                        product: [data.categoryNm, data.subCategoryNm, data.modelCode],
                         reset: true
                     });
                     self.$cont.commonModel('next', self.$stepInput);
