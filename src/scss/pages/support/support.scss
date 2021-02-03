@@ -14,6 +14,7 @@
 @import "../../support/banner";
 @import "../../support/quick-menu";
 @import "../../support/selectModel";
+@import "../../support/mcustom-scrollbar";
 
 /* 삭제 예정 */
 .dummy {
@@ -291,6 +292,46 @@
     
 
     .search-wrap {
+        &.narrow {
+            max-width:912px;
+            margin:0 auto;
+        }
+        &.board-top-search {
+            margin-bottom:45px;
+        }
+
+        .sort-search {
+            display:flex;
+            border-radius:8px;
+            border:1px solid #ddd;
+            
+            .select-wrap {
+                width:152px;
+
+                .ui-selectbox-wrap {
+                    .ui-select-button {
+                        border:0;
+                    }
+
+                    &.on {
+                        .ui-select-button {
+                            border:1px solid #000;
+                            border-bottom:0;
+                        }
+                    }
+                }
+
+            }
+            .input-wrap {
+                position:relative;
+                flex:1;
+
+                input[type="text"] {
+                    width:100%;
+                    border:0;
+                }
+            }
+        }
         @include pc {
             .search-box {
                 .forms {

@@ -753,7 +753,7 @@
                 self.$leftContainer.addClass('active');
             } else{
                 lgkorUI.alert("", {
-                    title: "광역 시/도 선택 후 센터 명을 입력해주세요."
+                    title: '광역 시/도 선택 후<br>센터 명을 입력해주세요.'
                 });
             }
         },

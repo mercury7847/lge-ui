@@ -348,14 +348,8 @@
             @include mobile {
                 margin-top: 8px;
             }
-        }
-        .link-area {
-            margin-bottom: 22px;
-            @include mobile {
-                margin-bottom: 24px;
-            }
-            .btn-link {
-                margin-left: 0;
+            & + .bullet-list {
+                margin-top:22px;
             }
         }
 
