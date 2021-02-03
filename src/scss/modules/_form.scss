@@ -986,19 +986,19 @@
         position:relative;
         .box {
             .cell {
-                background-color:#fff !important;
+                //background-color:#fff !important;
                 vertical-align: middle;
             }
         }
-        input,
-        input:read-only {
-            border-color:#ddd;
-            background:transparent
-        }
+        //input,
+        //input:read-only {
+        //    border-color:#ededed;
+        //    background:#ededed
+        //}
         input:read-only + .cell,
         input:disabled + .cell {
-            border-color:#ddd !important;
-            background:transparent !important;
+            border-color:#ededed;
+            background:#ededed;
         }
         button.ui_calendar {
             display:inline-block;
@@ -1009,9 +1009,17 @@
             background-size:24px;
             vertical-align:middle;
         }
-        input.selected + .cell button.ui_calendar {
-            background:url("/lg5-common/images/icons/icon-cal-selected.svg") center no-repeat;
-            background-size:24px;
+        input.selected {
+            border-color:#ddd;
+            background:transparent;
+            & + .cell {
+                border-color:#ddd;
+                background:transparent;
+                button.ui_calendar {
+                    background:url("/lg5-common/images/icons/icon-cal-selected.svg") center no-repeat;
+                    background-size:24px;
+                }
+            }
         }
     }
     &.search {
