@@ -162,16 +162,16 @@
 
                     for (var key in searchObj) {
                         if (key in self.param) {
-                            self.param[key] = decodeURIComponent(param[key]);
+                            self.param[key] = decodeURIComponent(searchObj[key]);
                         }
                         
-                        if (key == 'mktModelCd') self.param['modelCode'] = param.mktModelCd;
-                        if (key == 'sort') $('#sort').val(param.sort), $('#sort').vcSelectbox('update');
-                        if (key == 'keyword') $('#keyword').val(decodeURIComponent(param.keyword)), self.keywords.push(keyword);
+                        if (key == 'mktModelCd') self.param['modelCode'] = searchObj.mktModelCd;
+                        if (key == 'sort') $('#sort').val(searchObj.sort), $('#sort').vcSelectbox('update');
+                        if (key == 'keyword') $('#keyword').val(decodeURIComponent(searchObj.keyword)), self.keywords.push(keyword);
                     }
 
-                    self.param.categoryNm = $('#category');
-                    self.param.subCategoryNm = $('#subCategory');
+                    self.param.categoryNm = $('#category').val();
+                    self.param.subCategoryNm = $('#subCategory').val();
                 }
             },
             completeModel: function() {
@@ -179,7 +179,7 @@
                 var model = self.param;
 
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxDataPost(self.resultUrl, model, function(result) {
+                lgkorUI.requestAjaxData(self.resultUrl, model, function(result) {
                     var data = result.data,
                         param = result.param;
 
@@ -200,7 +200,7 @@
                         self.$selectedModelBar.vcSticky();
                     }); 
                     lgkorUI.hideLoading();
-                });
+                }, 'POST');
             },
             setBanner: function(data) {
                 var self = this;
