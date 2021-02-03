@@ -25,7 +25,7 @@
                     '<div class="slide-track ui_carousel_track">' +
                         '{{#each (image, idx) in sliderImages}}'+
                             '<div class="slide-conts ui_carousel_slide">' +
-                                '<a href="#"><img src="{{image}}" alt="{{#raw modelDisplayName}} {{idx + 1}}]번 이미지" onError="lgkorUI.addImgErrorEvent(this)"></a>' +
+                                '<a href="#"><img data-lazy="{{image}}" alt="{{#raw modelDisplayName}} {{idx + 1}}]번 이미지"></a>' +
                             '</div>' +
                         '{{/each}}'+
                     '</div>' +
@@ -110,12 +110,12 @@
                 '<div class="btn-area-wrap">' +
                     '<div class="wishlist">' +
                         '<span class="chk-wish-wrap large">' +
-                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{modelName}}" {{#if wishListFlag}}checked{{/if}}>' +
+                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{modelName}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' +
                             '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>' +
                         '</span>' +
                     '</div>' +
                     '<div class="cart">' +
-                        '<a href="#n" class="btn-cart" data-id="{{modelId}}" data-model-name="{{modelName}}" {{#if !cartListFlag}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
+                        '<a href="#n" class="btn-cart{{#if cartListFlag}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{modelName}}" data-categoryId="{{categoryId}}" data-rtSeq="{{rtSeq}}" data-typeFlag="{{typeFlag}}" data-requireCare="{{requireCare}}" {{#if !cartListFlag}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
                     '</div>' +
                     '<div class="btn-area">' +
                         '<a href="{{detailUrl}}" class="btn border size-m" data-id="{{modelId}}">자세히 보기</a>' +
@@ -216,6 +216,8 @@
                     autoplaySpeed:500, 
                     speed:0, 
                     easing:'easeInOutQuad'
+                }).on("carousellazyloadrrror", function(e, data){
+                    console.log("carousellazyloadrrror:", data)
                 });
 
                 self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
@@ -225,44 +227,78 @@
                 var self = this;
                 
                 //찜하기
-                self.$productList.on('click','li div.btn-area-wrap div.wishlist input',function(e){
-                    var $this = $(this);
-                    var _id = $this.attr('data-id');
-                    var modelName = $this.attr('data-model-name');
-                    var wish = $this.is(':checked');
-                    var param = {
-                        "id":_id,
-                        "modelName":modelName
-                    }
-                    
-                    var ajaxUrl = self.$section.attr('data-wish-url');
-                    
-                    var success = function(data) {
-                        //$this.attr("data-wishItemId",data.wishItemId);
-                    };
-                    var fail = function(data) {
-                        $this.prop("checked",!wish);
-                    };
+                self.$productList.on('change','li div.btn-area-wrap div.wishlist input',function(e){
+                    var isLogin = lgkorUI.getHiddenInputData().isLogin;
+                    console.log("isLogin:", isLogin)
+                    if(isLogin == "N"){
+                        lgkorUI.alert("", {
+                            title: "로그인이 필요합니다."
+                        });
 
-                    lgkorUI.requestWish(
-                        param,
-                        wish,
-                        success,
-                        fail,
-                        ajaxUrl
-                    );
+                        $(this).prop('checked', false);
+                    } else{
+                        var $this = $(this);
+                        var _id = $this.attr('data-id');
+                        var sku = $this.attr('data-model-name');
+                        var wishListId = $this.data("wishListId");
+                        var wishItemId = $this.data("wishItemId");
+                        var wish = $this.is(':checked');
+                        var param = {
+                            "id":_id,
+                            "sku":sku,
+                            "wishListId": wishListId,
+                            "wishItemId": wishItemId
+                        }
+                        if(wish){
+                            param.type = "add";
+                        } else{
+                            param.type = "remove";
+                        }
+
+                        console.log("requestWish:", param)
+                        
+                        var ajaxUrl = self.$section.attr('data-wish-url');
+                        
+                        var success = function(data) {
+                            //$this.attr("data-wishItemId",data.wishItemId);
+                        };
+                        var fail = function(data) {
+                            $this.prop("checked",!wish);
+
+                            if(data.success == "N"){
+                                lgkorUI.alert("", {
+                                    title: data.alert.title
+                                });
+                            }
+                        };
+    
+                        lgkorUI.requestWish(
+                            param,
+                            wish,
+                            success,
+                            fail,
+                            ajaxUrl
+                        );
+                    }
                 });
 
                 //장바구니
                 self.$productList.on('click','li div.btn-area-wrap div.cart a',function(e){
                     e.preventDefault();
-                    var $this = $(this);
-                    var param = {
-                        "id":$this.attr('data-id'),
-                        "modelName":$this.attr('data-model-name')
+
+                    if(!$(this).hasClass('disabled')){
+                        var $this = $(this);
+                        var param = {
+                            "id":$this.attr('data-id'),
+                            "sku":$this.attr('data-model-name'),
+                            "categoryId":$this.attr('data-categoryId'),
+                            "rtSeq":$this.attr('data-rtSeq'),
+                            "typeFlag":$this.attr('data-type-flag'),
+                            "requireCare":$this.data('requireCare')
+                        }
+                        var ajaxUrl = self.$section.attr('data-cart-url');
+                        lgkorUI.requestCart(ajaxUrl, param);
                     }
-                    var ajaxUrl = self.$section.attr('data-cart-url');
-                    lgkorUI.requestCart(ajaxUrl, param);
                 });
 
                 //자세히보기
@@ -296,7 +332,7 @@
                         self.$categorySelect.vcSmoothScrollTab("initPosition", true);
                     }
 
-                    catewrap.parent().height(catewrap.outerHeight(true));
+                    $(this).closest('.cate-m').parent().height(catewrap.outerHeight(true));
                 });
 
                 //비교하기 컴포넌트 변화 체크
@@ -311,6 +347,8 @@
 
                 //더보기
                 self.$btnMore.on('click', function(e) {
+                    e.preventDefault();
+
                     var filterLayerData = self.filterLayer.getDataFromFilter();
 
                     var param = {};
@@ -360,6 +398,7 @@
                 data.categoryId = categoryId;                
                 console.log("### requestSearch ###", data)
                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
+                    console.log("### requestSearch onComplete ###");
                     var data = result.data[0];
 
                     if(data.schCategoryId && data.schCategoryId.length > 0) {
@@ -369,10 +408,8 @@
                         });
                     }
                     
-                    var totalCount = data.productTotalCount;
-                    if(totalCount) {
-                        self.$totalCount.text(vcui.number.addComma(totalCount) + "개");
-                    }
+                    var totalCount = data.productTotalCount ? data.productTotalCount : 0;
+                    self.$totalCount.text(vcui.number.addComma(totalCount) + "개");
                     
                     if(isNew) {
                         self.$productList.empty();
@@ -386,11 +423,13 @@
                             var siblingType = item.siblingType ? item.siblingType.toLowerCase() : '';
                             item.siblingType = (siblingType == "color") ? "color" : "text";
     
-                            var sliderImages = [item.mediumImageAddr];
-                            if(item.galleryImages && item.galleryImages.length > 0) {
-                                item.galleryImages.forEach(function(obj, idx) {
-                                    sliderImages.push(obj.largeImageAddr);
+                            var sliderImages = [];
+                            if(item.rollingImages && item.rollingImages.length){
+                                item.rollingImages.forEach(function(obj, idx) {
+                                    sliderImages.push(obj);
                                 });
+                            } else{
+                                sliderImages = [item.mediumImageAddr];
                             }
                             item.sliderImages = sliderImages;
                             
@@ -406,11 +445,29 @@
                             item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);
                             //찜하기
                             item.cartListFlag = lgkorUI.stringToBool(item.cartListFlag);
+                            if(!item.wishListId) item.wishListId = "";
+                            if(!item.wishItemId) item.wishItemId = "";
+
+                            if(!item.categoryId) item.categoryId = "";
+                            if(!item.rtSeq) item.rtSeq = "";
+                            if(!item.typeFlag) item.typeFlag = "";
+                            if(!item.requireCare) item.requireCare = "";
                             
                             if(!item.detailUrl) item.detailUrl = "#n";
                             self.$productList.append(vcui.template(productItemTemplate, item));
     
-                            self.$productList.find('.ui_plp_carousel').vcCarousel('reinit');
+                            // self.$productList.find('.ui_plp_carousel').vcCarousel('reinit').on("carousellazyloadrrror", function(e, data){
+                            //     console.log(e, data)
+                            // });
+                            self.$productList.find('.ui_plp_carousel').vcCarousel({
+                                indicatorNoSeparator:/##no##/,
+                                infinite:true, 
+                                autoplaySpeed:500, 
+                                speed:0, 
+                                easing:'easeInOutQuad'
+                            }).on("carousellazyloadrrror", function(e, carousel, imgs){
+                                imgs.attr('src', lgkorUI.NO_IMAGE);
+                            });
                             self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
     
                             self.fnBreakPoint();
