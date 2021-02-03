@@ -121,7 +121,13 @@
         margin-top: 16px;
     }
     .search-info.type-A{
-        margin-bottom:45px;
+        margin-top:40px;
+    }
+
+    @include mobile {
+        .search-info.type-A{
+            margin-top:20px;
+        }
     }
 }
 

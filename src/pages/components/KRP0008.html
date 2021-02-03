@@ -8,6 +8,8 @@
     <script src="/lg5-common/js/components/KRP0015.min.js"></script>
 <body>
     <script>
+        //아래 값은 필수로 넣어주세요.
+
         // 로그인 유무
         var loginFlag = true;
 
@@ -70,7 +72,7 @@
                     "rtModelSeq": "161126",
                     "dutyTerm": "3", // 의무
                     "representChargeFlag": "Y",
-                    "contractTerm": "5", // 계약
+                    "contractTerm": "3", // 계약
                     "years5TotAmt": 22900,
                     "years4TotAmt": 27900,
                     "freeMonth": 1
@@ -171,6 +173,59 @@
                     "freeMonth": 1
                 }
             ];
+        
+        //렌탈 케어솔루션 제휴카드 리스트 정보
+        var rentalAssociatedCardList = [
+            {
+                "cardSubName":"LG전자 베스트렌탈",
+                "defaultPrice":"default",
+                "cardName":"우리카드",
+                "simpleReqFlag":"Y", //간편신청카드
+                "maxSalePrice":110000
+            },
+            {
+                "cardSubName":"LG전자 렌탈애",
+                "defaultPrice":"",
+                "cardName":"신한카드",
+                "simpleReqFlag":"N", //개별신청카드
+                "maxSalePrice":19000
+            },
+            {
+                "cardSubName":"테스트카드",
+                "defaultPrice":"Y",
+                "cardName":"신한카드",
+                "simpleReqFlag":"N",
+                "maxSalePrice":100000
+            }
+        ];
+
+        //케어십 제휴카드 리스트 정보
+        var careshipAssociatedCardList = [
+        {
+                "cardSubName":"LG전자 베스트렌탈",
+                "defaultPrice":"default",
+                "cardName":"우리카드",
+                "simpleReqFlag":"N",
+                "maxSalePrice":110000
+            },
+            {
+                "cardSubName":"LG전자 렌탈애",
+                "defaultPrice":"",
+                "cardName":"신한카드",
+                "simpleReqFlag":"Y",
+                "maxSalePrice":19000
+            },
+            {
+                "cardSubName":"테스트카드",
+                "defaultPrice":"Y",
+                "cardName":"신한카드",
+                "simpleReqFlag":"Y",
+                "maxSalePrice":100000
+            }
+        ];
+
+        //카드 정보
+
     </script>
 
     <div class="wrap">

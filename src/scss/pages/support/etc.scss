@@ -110,6 +110,9 @@
             }
         }
     }
+    .login-guide  {
+        margin-bottom:40px;
+    }
     &-title {
         margin-bottom:12px;
         .tit {
@@ -173,6 +176,8 @@
             }
         }
     }
+
+    
 
     .service-list-box {
         display:flex;
@@ -268,6 +273,12 @@
         }
         img {
             width:100%;
+        }
+    }
+
+    @include mobile {
+        .login-guide {
+           margin-bottom:64px;
         }
     }
 }

@@ -14,44 +14,42 @@
 .complete-wrap {
     position: relative;
     text-align: center;
-    padding-bottom: 40px;
+    padding-bottom: 80px;
+    &:before {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+        margin-bottom: 12px;
+        background: url('/lg5-common/images/icons/icon-complete-64.svg') no-repeat 0 0;
+        vertical-align: -6px;
+        content: '';
+    }
     .text {
+        display: block;
         font-weight: 700;
-        font-size: $font-large-5;
-        line-height: 56px;
-        &:before {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            margin-right: 16px;
-            background: url('/lg5-common/images/icons/icon-complete-40-black.svg') no-repeat 0 0;
-            vertical-align: -6px;
-            content: '';
-        }
+        @include font($font-large-5,56px);
     }
     .small-text {
-        margin-top: 8px;
-        @include font-medium;
+        margin-top: 24px;
+        @include font($font-large,28px);
         word-break: keep-all;
     }
     .btn-link {
-        margin-top: 12px;
+        margin-top: 24px;
     }
 
     @include mobile {
-        margin-top: -24px;
-        padding: 0 30px 32px;
+        margin-top: -40px;
+        padding: 0 24px 60px;
         .text {
-            font-size: $font-large-3;
-            line-height: 32px;
+            @include font($font-large-2,33px);
         }
         .small-text {
             margin-top: 16px;
-            font-size: $font-small;
-            line-height: 22px;
+            @include font($font-small,18px);
         }
         .btn-link {
-            margin-top: 8px;
+            margin-top: 16px;
         }
     }
 }
@@ -60,10 +58,10 @@
     border-top: 0;
     .order-item {
         justify-content: space-between;
-        padding-top: 74px;
-        border-top: 2px solid $color-default;
+        padding-top: 82px;
+        border-top: 1px solid $color-gray-1;
         &:not(:first-child) {
-            margin-top: 24px;
+            margin-top: 48px;
         }
         .product-info {
             //max-width: 514px;
@@ -75,9 +73,9 @@
             //margin-left: auto;
         }
         @include mobile {
-            padding-top: 66px;
-            &:last-child {
-                padding-bottom: 32px;
+            padding-top: 69px;
+            &:not(:first-child) {
+                margin-top: 40px;
             }
             .item-image {
                 top: 85px;
@@ -91,42 +89,49 @@
         }
     }
     & + .total-payment-amount {
-        margin-top: 24px;
+        margin-top: 53px;
         text-align: right;
         .text,
         .price {
             display: inline-block;
-            vertical-align: bottom;
+            vertical-align: middle;
         }
         .text {
-            margin-right: 48px;
-            font-weight: 500;
+            margin-right: 103px;
             @include font-small;
         }
         .price {
             font-weight: 700;
-            @include font-large-1;
+            @include font($font-large-2,34px)
         }
         .desc {
             margin-top: 8px;
             font-weight: 500;
             @include font-small;
-            color: $color-primary;
+            color: $color-gray-1;
+            &:before {
+                content: '(';
+            }
+            &:after {
+                content: ')';
+            }
         }
         @include mobile {
-            margin-top: 16px;
-            .text {
-                margin-right: 20px;
+            margin-top: 24px;
+            dl {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
-            .desc {
-                margin-top: 6px;
+            .price {
+                @include font($font-large,26px)
             }
         }
     }
 }
 
 .care-solution-call-box {
-    margin-top: 48px;
+    margin-top: 64px;
     padding: 24px;
     border-radius: 8px;
     background-color: $color-bg;
@@ -134,28 +139,28 @@
     .call-info {
         font-size: 0;
         .title {
-            display: inline-block;
-            font-weight: 500;
-            @include font-small;
+            font-weight: 700;
+            @include font-medium;
         }
         .number {
-            display: inline-block;
-            margin-left: 12px;
+            margin-top: 12px;
             font-weight: 700;
             @include font-large;
+            color: $color-primary;
+        }
+        .text {
+            margin-top: 4px;
+            font-weight: 400;
+            @include font-small;
         }
     }
 
     @include mobile {
-        margin-top: 60px;
-        padding: 16px 20px;
-        text-align: left;
+        margin-top: 40px;
+        padding: 24px 16px;
         .call-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             .number {
-                margin-left: 0;
+                margin-top: 8px;
             }
         }
     }

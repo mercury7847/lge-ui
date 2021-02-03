@@ -1,14 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
-    <defs>
-        <path id="gzqj3oksua" d="M15.2 1.6h-2.4V.8c0-.442-.358-.8-.8-.8-.442 0-.8.358-.8.8v.8H4.8V.8C4.8.358 4.442 0 4 0c-.442 0-.8.358-.8.8v.8H.8c-.442 0-.8.358-.8.8v12.8c0 .442.358.8.8.8h6.4c.442 0 .8-.358.8-.8 0-.442-.358-.8-.8-.8H1.6v-8h12.8v2.4c0 .442.358.8.8.8.442 0 .8-.358.8-.8V2.4c0-.442-.358-.8-.8-.8zM1.6 4.8h12.8V3.2H1.6v1.6zM4.8 8c-.442 0-.8.358-.8.8 0 .442.358.8.8.8.442 0 .8-.358.8-.8 0-.442-.358-.8-.8-.8m0 3.2c-.442 0-.8.358-.8.8 0 .442.358.8.8.8.442 0 .8-.358.8-.8 0-.442-.358-.8-.8-.8m3.2 0c-.442 0-.8.358-.8.8 0 .442.358.8.8.8.442 0 .8-.358.8-.8 0-.442-.358-.8-.8-.8M8 8c-.442 0-.8.358-.8.8 0 .442.358.8.8.8.442 0 .8-.358.8-.8 0-.442-.358-.8-.8-.8m4 .8c0-.442-.358-.8-.8-.8-.442 0-.8.358-.8.8 0 .442.358.8.8.8.442 0 .8-.358.8-.8m2.634 2.634L12 14.07l-1.034-1.035c-.313-.312-.819-.312-1.132 0-.312.313-.312.819 0 1.132l1.6 1.6c.156.156.361.234.566.234.205 0 .41-.078.566-.234l3.2-3.2c.312-.313.312-.819 0-1.132-.313-.312-.819-.312-1.132 0"/>
-    </defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
     <g fill="none" fill-rule="evenodd">
         <g>
             <g>
                 <g>
-                    <path d="M0 0H20V20H0z" transform="translate(-283 -241) translate(83 189) translate(200 52)"/>
-                    <g transform="translate(-283 -241) translate(83 189) translate(200 52) translate(2 2)">
-                        <use fill="#222" xlink:href="#gzqj3oksua"/>
+                    <g>
+                        <g>
+                            <g>
+                                <path d="M0 0H24V24H0z" transform="translate(-1000 -5728) translate(596 2458) translate(0 2470) translate(0 788) translate(234) translate(170 12)"/>
+                                <g transform="translate(-1000 -5728) translate(596 2458) translate(0 2470) translate(0 788) translate(234) translate(170 12) translate(3 3)">
+                                    <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M10.5 18H2c-1.105 0-2-.895-2-2V4c0-1.105.895-2 2-2h14c1.105 0 2 .895 2 2v7"/>
+                                    <path stroke="#DA0F47" stroke-linecap="round" stroke-linejoin="round" d="M11 15.573L13.56 17.965 18.079 13.5"/>
+                                    <rect width="1" height="3" x="3" fill="#000" rx=".5"/>
+                                    <rect width="1" height="3" x="14" fill="#000" rx=".5"/>
+                                    <path fill="#000" d="M0 5L17.612 5 17.612 6 0 6z"/>
+                                    <g fill="#000">
+                                        <path d="M.223 0H1.723V1.5H.223zM.223 3.5H1.723V5H.223zM3.723 0H5.223V1.5H3.723zM3.723 3.5H5.223V5H3.723zM7.223 0H8.722999999999999V1.5H7.223z" transform="translate(4.5 9)"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
                     </g>
                 </g>
             </g>
