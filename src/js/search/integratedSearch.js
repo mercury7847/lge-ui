@@ -197,7 +197,7 @@
                     var param = result.param;
                     var data = result.data;
 
-                    var searchedValue = param.searchedValue;
+                    var searchedValue = param.search;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     if(data.searchCount) {
