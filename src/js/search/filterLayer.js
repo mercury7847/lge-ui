@@ -379,6 +379,9 @@ var FilterLayer = (function() {
                                             self.$categorySelect.vcSmoothScrollTab('refresh');
                                         }
                                         break;
+                                    case "color":
+                                        $list_ul.append(vcui.template(filterColorTemplate, item));
+                                        break;
                                     default:
                                         break;
                                 }

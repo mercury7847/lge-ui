@@ -20,7 +20,7 @@
         var preOrderFlag = true;
 
         //케어십 필수 제품 체크
-        var careRequire = true;
+        var careRequire = false;
 
         //수질관리 제품 케어십 필수 체크
         var waterCareRequire = false;
@@ -56,127 +56,170 @@
             }
         ];
 
+        //케어십 가격정보
+        var careshipInfo = [
+        {
+                "years3TotAmt": 29900,
+                "visitPer": "2",  // 방문
+                "rtRgstFeePre": 100000,    // 가입비
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 29900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 29900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "161126",
+                "dutyTerm": "3", // 의무
+                "representChargeFlag": "Y",
+                "contractTerm": "3", // 계약
+                "years5TotAmt": 22900,
+                "years4TotAmt": 27900,
+                "freeMonth": 2
+            },
+            {
+                "years3TotAmt": 27900,
+                "visitPer": "5",
+                "rtRgstFeePre": 0,
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 27900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 27900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "161133",
+                "dutyTerm": "3",
+                "representChargeFlag": "N",
+                "contractTerm": "5",
+                "years5TotAmt": 22900,
+                "years4TotAmt": 27900,
+                "freeMonth": 5
+            }
+        ];
+
         //렌탈 가격정보
         var rentalInfo = [
-                {
-                    "years3TotAmt": 29900,
-                    "visitPer": "3",  // 방문
-                    "rtRgstFeePre": 100000,    // 가입비
-                    "freeMonthDisplayYn": "Y",
-                    "rentalCareType": "R",
-                    "years1TotAmt": 29900,
-                    "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
-                    "years2TotAmt": 29900,
-                    "years6TotAmt": 0,
-                    "rtFreePeriod": "3",
-                    "rtModelSeq": "161126",
-                    "dutyTerm": "3", // 의무
-                    "representChargeFlag": "Y",
-                    "contractTerm": "3", // 계약
-                    "years5TotAmt": 22900,
-                    "years4TotAmt": 27900,
-                    "freeMonth": 1
-                },
-                {
-                    "years3TotAmt": 27900,
-                    "visitPer": "1",
-                    "rtRgstFeePre": 0,
-                    "freeMonthDisplayYn": "Y",
-                    "rentalCareType": "R",
-                    "years1TotAmt": 27900,
-                    "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
-                    "years2TotAmt": 27900,
-                    "years6TotAmt": 0,
-                    "rtFreePeriod": "3",
-                    "rtModelSeq": "161133",
-                    "dutyTerm": "3",
-                    "representChargeFlag": "N",
-                    "contractTerm": "5",
-                    "years5TotAmt": 22900,
-                    "years4TotAmt": 27900,
-                    "freeMonth": 1
-                },
-                {
-                    "years3TotAmt": 27900,
-                    "visitPer": "2",
-                    "rtRgstFeePre": 0,
-                    "freeMonthDisplayYn": "Y",
-                    "rentalCareType": "R",
-                    "years1TotAmt": 27900,
-                    "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
-                    "years2TotAmt": 27900,
-                    "years6TotAmt": 0,
-                    "rtFreePeriod": "3",
-                    "rtModelSeq": "161134",
-                    "dutyTerm": "3",
-                    "representChargeFlag": "N",
-                    "contractTerm": "5",
-                    "years5TotAmt": 22900,
-                    "years4TotAmt": 27900,
-                    "freeMonth": 1
-                },
-                {
-                    "years3TotAmt": 27900,
-                    "visitPer": "4",
-                    "rtRgstFeePre": 0,
-                    "freeMonthDisplayYn": "Y",
-                    "rentalCareType": "R",
-                    "years1TotAmt": 27900,
-                    "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
-                    "years2TotAmt": 27900,
-                    "years6TotAmt": 0,
-                    "rtFreePeriod": "3",
-                    "rtModelSeq": "161135",
-                    "dutyTerm": "5",
-                    "representChargeFlag": "N",
-                    "contractTerm": "5",
-                    "years5TotAmt": 22900,
-                    "years4TotAmt": 27900,
-                    "freeMonth": 1
-                },
-                {
-                    "years3TotAmt": 24900,
-                    "visitPer": "5",
-                    "rtRgstFeePre": 100000,
-                    "freeMonthDisplayYn": "Y",
-                    "rentalCareType": "R",
-                    "years1TotAmt": 24900,
-                    "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
-                    "years2TotAmt": 24900,
-                    "years6TotAmt": 0,
-                    "rtFreePeriod": "3",
-                    "rtModelSeq": "162125",
-                    "dutyTerm": "6",
-                    "representChargeFlag": "N",
-                    "contractTerm": "5",
-                    "years5TotAmt": 22900,
-                    "years4TotAmt": 24900,
-                    "freeMonth": 1
-                },
-                {
-                    "years3TotAmt": 32900,
-                    "visitPer": "6",
-                    "rtRgstFeePre": 0,
-                    "freeMonthDisplayYn": "Y",
-                    "rentalCareType": "R",
-                    "years1TotAmt": 32900,
-                    "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
-                    "years2TotAmt": 32900,
-                    "years6TotAmt": 0,
-                    "rtFreePeriod": "3",
-                    "rtModelSeq": "1457284",
-                    "dutyTerm": "5",
-                    "representChargeFlag": "N",
-                    "contractTerm": "5",
-                    "years5TotAmt": 22900,
-                    "years4TotAmt": 27900,
-                    "freeMonth": 1
-                }
-            ];
+            {
+                "years3TotAmt": 29900,
+                "visitPer": "3",  // 방문
+                "rtRgstFeePre": 100000,    // 가입비
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 29900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 29900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "161126",
+                "dutyTerm": "3", // 의무
+                "representChargeFlag": "Y",
+                "contractTerm": "3", // 계약
+                "years5TotAmt": 22900,
+                "years4TotAmt": 27900,
+                "freeMonth": 1
+            },
+            {
+                "years3TotAmt": 27900,
+                "visitPer": "1",
+                "rtRgstFeePre": 0,
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 27900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 27900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "161133",
+                "dutyTerm": "3",
+                "representChargeFlag": "N",
+                "contractTerm": "5",
+                "years5TotAmt": 22900,
+                "years4TotAmt": 27900,
+                "freeMonth": 1
+            },
+            {
+                "years3TotAmt": 27900,
+                "visitPer": "2",
+                "rtRgstFeePre": 0,
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 27900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 27900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "161134",
+                "dutyTerm": "3",
+                "representChargeFlag": "N",
+                "contractTerm": "5",
+                "years5TotAmt": 22900,
+                "years4TotAmt": 27900,
+                "freeMonth": 1
+            },
+            {
+                "years3TotAmt": 27900,
+                "visitPer": "4",
+                "rtRgstFeePre": 0,
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 27900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 27900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "161135",
+                "dutyTerm": "5",
+                "representChargeFlag": "N",
+                "contractTerm": "5",
+                "years5TotAmt": 22900,
+                "years4TotAmt": 27900,
+                "freeMonth": 1
+            },
+            {
+                "years3TotAmt": 24900,
+                "visitPer": "5",
+                "rtRgstFeePre": 100000,
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 24900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 24900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "162125",
+                "dutyTerm": "6",
+                "representChargeFlag": "N",
+                "contractTerm": "5",
+                "years5TotAmt": 22900,
+                "years4TotAmt": 24900,
+                "freeMonth": 1
+            },
+            {
+                "years3TotAmt": 32900,
+                "visitPer": "6",
+                "rtRgstFeePre": 0,
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 32900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 32900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "1457284",
+                "dutyTerm": "5",
+                "representChargeFlag": "N",
+                "contractTerm": "5",
+                "years5TotAmt": 22900,
+                "years4TotAmt": 27900,
+                "freeMonth": 1
+            }
+        ];
         
         //렌탈 케어솔루션 제휴카드 리스트 정보
         var rentalAssociatedCardList = [
             {
+                "cardId":"cid00001",
                 "cardSubName":"LG전자 베스트렌탈",
                 "defaultPrice":"default",
                 "cardName":"우리카드",
@@ -184,6 +227,7 @@
                 "maxSalePrice":110000
             },
             {
+                "cardId":"cid00002",
                 "cardSubName":"LG전자 렌탈애",
                 "defaultPrice":"",
                 "cardName":"신한카드",
@@ -191,6 +235,7 @@
                 "maxSalePrice":19000
             },
             {
+                "cardId":"cid00003",
                 "cardSubName":"테스트카드",
                 "defaultPrice":"Y",
                 "cardName":"신한카드",
@@ -223,8 +268,6 @@
                 "maxSalePrice":100000
             }
         ];
-
-        //카드 정보
 
     </script>
 
