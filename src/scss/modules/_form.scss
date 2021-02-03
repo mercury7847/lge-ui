@@ -47,6 +47,7 @@
         color:#767676;
         @include font-small;
         .dl-txt-cont {
+            margin-top:64px;
             margin-top:24px;
             color: $color-default;
             @include mobile {
@@ -60,6 +61,7 @@
                 @include font-medium;
                 font-weight:700;
                 @include mobile {
+                    margin-bottom:12px;
                     margin-bottom: 12px;
                 }
             }
