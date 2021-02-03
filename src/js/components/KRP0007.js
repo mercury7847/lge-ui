@@ -423,11 +423,13 @@
                             var siblingType = item.siblingType ? item.siblingType.toLowerCase() : '';
                             item.siblingType = (siblingType == "color") ? "color" : "text";
     
-                            var sliderImages = [item.mediumImageAddr];
-                            if(item.galleryImages && item.galleryImages.length > 0) {
-                                item.galleryImages.forEach(function(obj, idx) {
-                                    sliderImages.push(obj.largeImageAddr);
+                            var sliderImages = [];
+                            if(item.rollingImages && item.rollingImages.length){
+                                item.rollingImages.forEach(function(obj, idx) {
+                                    sliderImages.push(obj);
                                 });
+                            } else{
+                                sliderImages = [item.mediumImageAddr];
                             }
                             item.sliderImages = sliderImages;
                             
