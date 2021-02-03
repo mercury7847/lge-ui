@@ -33,7 +33,7 @@
                 }
                 var valRole = role;
                 if(role == null || role == "" || role == undefined){
-                    valRole = "alert";
+                    valRole = "alertdialog";
                 }
                 var valConfirm = confirm;
                 if(confirm == null || confirm == "" || confirm == undefined){
@@ -94,7 +94,7 @@
                 var $type = type;
                 var $timesetIdx = timesetIdx;
                 var $body = $("body");
-                var html = '<div class="toast-message" role="alert" aria-modal="true" id="'+id+'" aria-describedby="toast-message-cont" aria-labelledby="toast-message-cont" tabindex="0">';
+                var html = '<div class="toast-message" role="alertdialog" aria-modal="true" id="'+id+'" aria-describedby="toast-message-cont" aria-labelledby="toast-message-cont" tabindex="0">';
                     html += '    <div>';
                     html += '        <div class="txt-message ' + $type + '" id="toast-message-cont">' + txt + '</div>';
                     html += '        <button type="button" class="btn-toast-close"><span>닫기</span></button>';
