@@ -154,20 +154,21 @@
                 // 옵션
                 self.resultUrl = self.$searchModelWrap.data('resultUrl');
                 self.solutionsUrl = self.$solutionsWrap.data('solutionsUrl');
-                self.keywords = [];
                 
                 if (url.indexOf("?") > -1) {
                     var search = url.substring(1);
                     var searchObj = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
 
                     for (var key in searchObj) {
-                        if (key in data) {
+                        if (key == 'keyword') {
+                            data['keywords'].push(decodeURIComponent(searchObj.keyword));
+                            self.$keywordInput.val(decodeURIComponent(searchObj.keyword));
+                        } else {
                             data[key] = decodeURIComponent(searchObj[key]);
                         }
                         
-                        if (key == 'mktModelCd') data['modelCode'] = data['mktModelCd'] = searchObj.mktModelCd;
-                        if (key == 'sort') $('#sort').val(searchObj.sort), $('#sort').vcSelectbox('update');
-                        if (key == 'keyword') $('#keyword').val(decodeURIComponent(searchObj.keyword)), self.keywords.push(keyword);
+                        if (key == 'mktModelCd') data['modelCode'] = searchObj.mktModelCd;
+                        if (key == 'sort') self.$solutionsSort.val(searchObj.sort).vcSelectbox('update');
                     }
 
                     data.categoryNm = $('#category').val();
@@ -184,7 +185,7 @@
                 lgkorUI.requestAjaxData(self.resultUrl, model, function(result) {
                     var data = result.data,
                         param = result.param;
-                    console.log(model);
+                    
                     self.$cont.commonModel('updateSummary', {
                         product: [model.categoryNm, model.subCategoryNm, model.modelCode],
                         reset: 'product'
@@ -404,13 +405,16 @@
                 var self = this,
                     data = $.extend({}, self.options);
 
-                self.keywords = [];
                 self.param = data;
 
                 self.$solutionsFilter.find('.open, .on').removeClass('open on');
                 self.$solutionsFilter.find('.sub-depth').remove();
 
                 self.$selectTopic.vcSelectbox('selectedIndex', 0);
+                self.$keywordInput.val('');
+                self.$solutionsWrap.find('#research').prop('checked', false);
+                self.$solutionsSort.val(data.sort).vcSelectbox('update');
+                
                 $('#recommProduct').hide();
                 $('#serviceMenu').hide();
                 $('#centerFind').hide();
@@ -559,29 +563,27 @@
                 // keyword search
                 self.$keywordBtn.on('click', function(e, keyword) {
                     var value = keyword || self.$keywordInput.val(),
-                        isChecked = self.param.research,
-                        param = {
-                            page:1
-                        };
-                        
+                        data = $.extend({}, self.param),
+                        isChecked = data.research;
+
+                    data['page'] = 1;
+
                     if (!isChecked) {
                         self.resetFilter();
-                        param['topic'] = '';
-                        param['topicNm'] = 'All';
-                        param['subTopic'] = '';
-                        param['subTopicNm'] = 'All';
-                        self.keywords = [];
-                        self.keywords.push(value);
+                        data['topic'] = '';
+                        data['topicNm'] = 'All';
+                        data['subTopic'] = '';
+                        data['subTopicNm'] = 'All';
+                        data['keywords'] = [];
+                        data['keywords'].push(value);
                     } else {
-                        if (self.keywords.indexOf(value) != -1) {
-                            self.keywords.splice(self.keywords.indexOf(value), 1);
+                        if (data['keywords'].indexOf(value) != -1) {
+                            data['keywords'].splice(data['keywords'].indexOf(value), 1);
                         }
-                        self.keywords.unshift(value);
+                        data['keywords'].unshift(value);
                     }
 
-                    param['keywords'] = self.keywords;
-
-                    self.param = $.extend(self.param, param);
+                    self.param = data;
 
                     self.requestData();
                 });
