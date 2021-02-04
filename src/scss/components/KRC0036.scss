@@ -78,8 +78,28 @@
                     margin-left:auto;
                 }
             }
-            .title * {
-                @include title-h1;
+            .title {
+                h2 {
+                    @include title-h1;
+                }
+                &.title-h1 * {
+                    @include title-h1;
+                }
+                &.title-h2 * {
+                    @include title-h2;
+                }
+                &.title-h3 * {
+                    @include title-h3;
+                }
+                &.title-h4 * {
+                    @include title-h4;
+                }
+                &.title-h5 * {
+                    @include title-h5;
+                }
+                &.title-h6 * {
+                    @include title-h6;
+                }
             }
             .desc {
                 @include bodycopy(h1, h1);
@@ -149,6 +169,24 @@
                 }
                 .title {
                     @include title-h3;
+                    &.title-h1 {
+                        @include title-h1;
+                    }
+                    &.title-h2 {
+                        @include title-h2;
+                    }
+                    &.title-h3 {
+                        @include title-h3;
+                    }
+                    &.title-h4 {
+                        @include title-h4;
+                    }
+                    &.title-h5 {
+                        @include title-h5;
+                    }
+                    &.title-h6 {
+                        @include title-h6;
+                    }
                 }
                 .sub-title {
                     @include bodycopy(h3, h3);

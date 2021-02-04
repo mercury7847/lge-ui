@@ -24,7 +24,11 @@
 		.component-box {
 			max-width:1380px !important;
 		}
-	}
+    }
+    
+    .title * {
+        @include title-h1;
+    }
 
     .slide-wrap {
         .custom-indi-wrap {
@@ -162,9 +166,6 @@
     .text-block {
         .eyebrow {
             @include eyebrow;
-        }
-        .title * {
-            @include title-h1;
         }
         .copy {
             @include bodycopy(h1, h2);
