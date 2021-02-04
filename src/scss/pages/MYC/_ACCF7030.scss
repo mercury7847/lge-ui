@@ -308,7 +308,7 @@
                                 font-weight:500;
                             }
                             .svc-details {
-                                max-height:138px;
+                                max-height:240px;
                                 margin-top:16px;
                                 overflow:hidden;
                                 @include mobile {
@@ -381,15 +381,15 @@
             .tit {
                 padding: 16px 24px;
                 background: #f4f4f4;
-                border-top: 2px solid #222;
+                border-top: 1px solid #666;
                 @include font-medium;
                 font-weight:500;
-                color: #000;
+                color: #666;
             }
             .cont {
                 padding: 24px;
                 @include font-medium;
-                color: #767676;
+                color: #000;
                 @include mobile {
                     padding:21px;
                 }
@@ -517,7 +517,7 @@
 }
 .box-visit-date {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 48px;
     padding: 24px;
     border-radius: 8px;
     background: #f4f4f4;
