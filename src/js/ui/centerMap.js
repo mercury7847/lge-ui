@@ -21,10 +21,10 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
             mapService: 'naver',
             keyID: '',
             appKey:'',
-            longitude : 127.0395764,
-            latitude: 37.5235644, // 최초로딩위치-절대(강남점)            
-            x : 127.0395764,
-            y : 37.5235644,
+            longitude : 126.9784147,
+            latitude: 37.5666805, // 최초로딩위치-절대(서울시청 기준)            
+            x : 126.9784147,
+            y : 37.5666805,
             boundsMargin: 50,
             overlayName : 'ui_overlay_item',
             templates: {
@@ -280,7 +280,6 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
             // var showItems = self._setItemVisible();
             
             // var arr = self._getNumberInArea(showItems);
-            console.log(items)
             self._setItemInfo(items);
             self.triggerHandler('mapchanged', [items]);   
         },
