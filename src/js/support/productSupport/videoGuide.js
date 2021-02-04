@@ -1,7 +1,7 @@
 (function() {
     var listDataTmpl = 
         '<li>' +
-            '<a href="#">' +
+            '<a href="{{url}}">' +
                 '<div class="video-thumb">' +
                     '<img src="//img.youtube.com/vi/{{videoId}}/default.jpg" alt="">' +
                 '</div>' +
@@ -16,7 +16,7 @@
         '</li>';
     var topicTmpl = 
         '{{#each (item, index) in topicList}}' +
-        '<option value="{{item.value}}">{{item.name}}</option>' +
+        '<option value="{{item.code}}">{{item.name}}</option>' +
         '{{/each}}';
 
     var videoGuide = {
@@ -156,8 +156,8 @@
                     console.log(data);
                     self.$myProductWarp.hide();
                     self.$cont.commonModel('updateSummary', {
-                        product: [data.categoryNm, data.subCategoryNm, data.modelCode],
-                        reset: true
+                        product: [data.categoryName, data.subCategoryName, data.modelCode],
+                        reset: 'product'
                     });
                     self.$cont.commonModel('next', self.$stepInput);
                     self.$cont.commonModel('focus', self.$productBar, function() {

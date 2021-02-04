@@ -23,6 +23,9 @@
 			margin-right:auto;
 		}
 	}
+	.title * {
+		@include title-h2;
+	}
 	// size
 	&.stage-full {
 		.component-inner {
@@ -117,10 +120,7 @@
 			.text-area {
 				.eyebrow {
 					@include eyebrow;
-				}
-				.title * {
-					@include title-h2;
-				}
+				}				
 				.interviewee-name {
 					@include title-h3;
 					margin-top:24px;
