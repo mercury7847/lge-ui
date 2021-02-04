@@ -1,0 +1,260 @@
+{
+    "data": [
+      {
+        "productList": [
+          {
+            "wishItemId":"wishItemId",
+            "affiliateCode": null,
+            "bizType": "PRODUCT",
+            "modelName": "OLED88Z9KNA.AKRYLHX",
+            "modelDisplayName": "SIBLING TEST LG SIGNATURE",
+            "modelId": "MD08043605",
+            "modelStatusCode": null,
+            "modelDiscontinuedDate": null,
+            "discontinuedDisplayEndDate": null,
+            "modelDiscontinuedDisplayFlag": null,
+            "modelPageType": null,
+            "modelGubun": "1",
+            "obsInventoryFlag": null,
+            "obsOriginalPrice": 0,
+            "obsMemberPrice": 0,
+            "obsDiscountPrice": 0,
+            "obsTotalDiscountPrice": 0,
+            "obsInventoryQty": 0,
+            "obsSellFlag": null,
+            "obsCartFlag": null,
+            "obsTabDisplayFlag": null,
+            "productLevelCode": null,
+            "salesModelCode": "OLED88Z9KNA",
+            "salesSuffixCode": "AKRYLHX",
+            "beforeVisitModelFlag": null,
+            "membershipFlag": null,
+            "modelComponent": null,
+            "reviewDisplayFlag": "Y",
+            "newProductBadgeFlag": null,
+            "cashbackBadgeFlag": "N",
+            "bestBadgeFlag": "N",
+            "cashbackBadgeGubun": null,
+            "imageAltText": null,
+            "largeImageAddr": null,
+            "mediumImageAddr": "/kr/images/tvs/md08043605/md08043605-350x350.jpg",
+            "model360Image": null,
+            "model360Title": null,
+            "smallImageAddr": "/kr/images/tvs/md08043605/md08043605-280x280.jpg",
+            "modelUrlPath": "/tvs/oled88z9kna",
+            "categoryId": "CT50000025",
+            "categoryName": "TV",
+            "subCategoryId": "CT50000028",
+            "subCategoryName": "올레드 TV",
+            "superCategoryId": "CT50000024",
+            "superCategoryName": "TV/AV",
+            "subCategoryCareshipFlag": "",
+            "lgpickFlag": "N",
+            "lgpickDisNo": null,
+            "years1TotAmt": null,
+            "visitPer": null,
+            "totalPrice": "0",
+            "reviewsScore": "0",
+            "reviewsCount": "0",
+            "wishListFlag": "Y",
+            "cartListFlag": "Y",
+            "compatibleModels": [
+              
+            ],
+            "galleryImages": [
+              {
+                "largeImageAddr": "/kr/images/tvs/md08043605/gallery/medium01.jpg",
+                "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small01.jpg",
+                "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large01.jpg",
+                "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m01.jpg",
+                "repOrderNo": 1
+              },
+              {
+                "largeImageAddr": "/kr/images/tvs/md08043605/gallery/medium02.jpg",
+                "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small02.jpg",
+                "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large02.jpg",
+                "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m02.jpg",
+                "repOrderNo": 2
+              },
+              {
+                "largeImageAddr": "/kr/images/tvs/md08043605/gallery/medium03.jpg",
+                "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small03.jpg",
+                "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large03.jpg",
+                "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m03.jpg",
+                "repOrderNo": 3
+              },
+              {
+                "largeImageAddr": "/kr/images/tvs/md08043605/gallery/medium04.jpg",
+                "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small04.jpg",
+                "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large04.jpg",
+                "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m04.jpg",
+                "repOrderNo": 4
+              },
+              {
+                "largeImageAddr": "/kr/images/tvs/md08043605/gallery/medium05.jpg",
+                "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small05.jpg",
+                "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large05.jpg",
+                "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m05.jpg",
+                "repOrderNo": 5
+              },
+              {
+                "largeImageAddr": "/kr/images/tvs/md08043605/gallery/medium06.jpg",
+                "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small06.jpg",
+                "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large06.jpg",
+                "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m06.jpg",
+                "repOrderNo": 6
+              },
+              {
+                "largeImageAddr": "/kr/images/tvs/md08043605/gallery/medium07.jpg",
+                "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small07.jpg",
+                "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large07.jpg",
+                "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m07.jpg",
+                "repOrderNo": 7
+              },
+              {
+                "largeImageAddr": "/kr/images/tvs/md08043605/gallery/medium08.jpg",
+                "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small08.jpg",
+                "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large08.jpg",
+                "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m08.jpg",
+                "repOrderNo": 8
+              },
+              {
+                "largeImageAddr": "/kr/images/tvs/md08043605/gallery/medium09.jpg",
+                "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small09.jpg",
+                "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large09.jpg",
+                "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m09.jpg",
+                "repOrderNo": 9
+              },
+              {
+                "largeImageAddr": "/kr/images/tvs/md08043605/gallery/medium10.jpg",
+                "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small10.jpg",
+                "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large10.jpg",
+                "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m10.jpg",
+                "repOrderNo": 10
+              },
+              {
+                "largeImageAddr": "/kr/images/tvs/md08043605/gallery/medium11.jpg",
+                "smallImageAddr": "/kr/images/tvs/md08043605/gallery/small11.jpg",
+                "zoomImageAddr": "/kr/images/tvs/md08043605/gallery/large11.jpg",
+                "zoomMobImageAddr": "/kr/images/tvs/md08043605/gallery/large-m11.jpg",
+                "repOrderNo": 11
+              }
+            ],
+            "videos": [
+              
+            ],
+            "bulletFeatures": [
+              
+            ],
+            "siblings": [
+              {
+                "siblingModels": [
+                    {
+                        "modelName": "LRFCS25D3S",
+                        "siblingCode": "Print-Proof-Stainless-Steel",
+                        "siblingValue": "Print Proof Stainless Steel",
+                        "modelId": "MD07514557"
+                    },
+                    {
+                        "modelName": "LRONC0705V",
+                        "siblingCode": "stainless-steel",
+                        "siblingValue": "stainless-steel",
+                        "modelId": "MD07516355"
+                    },
+                    {
+                        "modelName": "LRONC0705T",
+                        "siblingCode": "lavender",
+                        "siblingValue": "lavender",
+                        "modelId": "MD07516353"
+                    }
+                ],
+                "pdpTitle": "TV \u003e 화면크기(Inch)",
+                "target": "NEW",
+                "siblingType": "color"
+              },
+              {
+                "siblingModels": [
+                  {
+                    "modelId": "MD08043605",
+                    "modelName": "OLED88Z9KNA",
+                    "salesModelCode": "OLED88Z9KNA",
+                    "modelUrlPath": "/tvs/oled88z9kna",
+                    "defaultModelFlag": "N",
+                    "siblingCode": "18",
+                    "siblingGroupCode": "Test_Sibling",
+                    "siblingType": "INCH",
+                    "target": "NEW",
+                    "siblingValue": "18",
+                    "pdpTitle": "TV \u003e 화면크기(Inch)"
+                  },
+                  {
+                    "modelId": "MD08043914",
+                    "modelName": "82UM7900KNA",
+                    "salesModelCode": "82UM7900KNA",
+                    "modelUrlPath": "/tvs/82um7900kna",
+                    "defaultModelFlag": "Y",
+                    "siblingCode": "99",
+                    "siblingGroupCode": "Test_Sibling",
+                    "siblingType": "INCH",
+                    "target": "NEW",
+                    "siblingValue": "99",
+                    "pdpTitle": "TV \u003e 화면크기(Inch)"
+                  }
+                ],
+                "pdpTitle": "TV \u003e 화면크기(Inch)",
+                "target": "NEW",
+                "siblingType": "INCH"
+              }
+            ],
+            "pdpCompatibleSearchAjaxUrl": null,
+            "compatibleCount": 0,
+            "siblingAjaxUrl": "/mkt/ajax/product/retrieveSiblingProductInfo",
+            "btnFlag": null,
+            "disposableModels": [
+              
+            ],
+            "disposableStandards": [
+              
+            ],
+            "rTypeCount": "0",
+            "cTypeCount": "0",
+            "retalCareshipInfo": [
+              
+            ],
+            "substitutePart": [
+              
+            ],
+            "substitutePartCount": 0,
+            "awards": [
+              
+            ],
+            "promotionBadges": [
+              
+            ],
+            "pTypeRewardCount": "0",
+            "cTypeRewardCount": "0",
+            "benefitCards": [
+              {
+                "installmentTo": "5",
+                "cardName": "국민카드",
+                "billingSalePercent": "100"
+              },
+              {
+                "installmentTo": "3",
+                "cardName": "신한카드",
+                "billingSalePercent": "100"
+              },
+              {
+                "installmentTo": "1",
+                "cardName": "우리카드",
+                "billingSalePercent": "11"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "message": "",
+    "status": "success",
+    "dataCount": 1
+  }
