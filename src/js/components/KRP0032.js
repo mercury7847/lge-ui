@@ -8,24 +8,16 @@ $(window).ready(function(){
         '<dl><a href="{{url}}"><dt>{{title}}</dt><dd>{{#if price}}{{price}}원{{/if}}</dd></a></dl>' +
     '</li>'
 
-    var myRecentProductCookieName = 'myRecentProduct';
 	var KRP0032 = {
 		init: function(){
-			var self = this;
-            self.setting();
+            var self = this;
             
-            self.$section.hide();
-            var cookieValue = lgkorUI.getCookie(myRecentProductCookieName);
-            console.log("cookieValue:",cookieValue)
-            if(!cookieValue) {
-                //self.$section.hide();
-            } else {
-                self.requestData(false);
-            }
+            self.setting();
 		},
 
 		setting: function() {
-			var self = this;			
+            var self = this;		
+            	
             self.$section = $('div.KRP0032');
             self.$image = self.$section.find('div.lately-linker img');
             self.$a = self.$section.find('div.lately-linker a.head-inner');
@@ -40,27 +32,20 @@ $(window).ready(function(){
             self.$popup.on('click','.ui_modal_close',function(e){
                 self.$popup.hide();
             });
+            
+            self.$section.hide();
 
-            /*
-            $(window).on('resize', function(){
-                self.resize();
-            });
-            self.resize();
-            */
+            var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
+            console.log("### KRP0032 Coolie Name ###:",cookieValue)
+            if(cookieValue) {
+                self.requestData(false);
+            }
         },
         
 		requestData: function(openPopup) {
 			var self = this;
 			var ajaxUrl = self.$popup.attr('data-list-url');
-            var cookieValue = lgkorUI.getCookie(myRecentProductCookieName);
-
-            //test code
-            //lgkorUI.deleteCookie(myRecentProductCookieName);
-            //console.log('first',cookieValue);
-            //lgkorUI.removeCookieArrayValue(myRecentProductCookieName,'000052');
-            //lgkorUI.addCookieArrayValue(myRecentProductCookieName,'000003');
-            //cookieValue = lgkorUI.getCookie(myRecentProductCookieName);
-            //console.log('res',cookieValue);
+            var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
             
             lgkorUI.requestAjaxData(ajaxUrl, {"id":cookieValue}, function(result) {
 				var data = result.data;
@@ -77,7 +62,6 @@ $(window).ready(function(){
                 self.checkNoData();
                 
                 if(openPopup) {
-                    //self.$popup.vcModal();
                     self.$popup.show();
                 }
 			});
@@ -91,18 +75,7 @@ $(window).ready(function(){
             } else {
                 self.$section.hide();
             }
-        },
-
-        /*
-        resize: function(){
-            var self = this;
-            if($(window).width() > 749) {
-                self.$popup.css({'right':''});
-            } else {
-                self.$popup.css({'right':'0'});
-            }
         }
-        */
 	};
 	KRP0032.init();
 })

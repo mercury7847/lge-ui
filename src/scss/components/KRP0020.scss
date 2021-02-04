@@ -7,7 +7,7 @@
     .component-inner { 
         .evt-bnr {
             @include clearfix;
-            h2.tit {
+            .tit {
                 font-size:32px;
                 line-height:42px;
                 font-weight:700;
@@ -15,6 +15,24 @@
                 @include mobile {
                     font-size:24px;
                     line-height:33px;
+                }
+                &.title-h1 {
+                    @include title-h1;
+                }
+                &.title-h2 {
+                    @include title-h2;
+                }
+                &.title-h3 {
+                    @include title-h3;
+                }
+                &.title-h4 {
+                    @include title-h4;
+                }
+                &.title-h5 {
+                    @include title-h5;
+                }
+                &.title-h6 {
+                    @include title-h6;
                 }
             }
             .category {
