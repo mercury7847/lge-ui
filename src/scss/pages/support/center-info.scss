@@ -6,7 +6,7 @@
 // 매장정보
 .store-info-wrap {
     .opt-list {
-        margin-top:12px;
+        margin-bottom:12px;
         li {
             display:inline-block;
             margin-left:32px;
@@ -68,9 +68,20 @@
             color: #000;
         }
         .btn-toggle-sms {
-            border:1px solid #767676;
-            background: #767676;
+            border:1px solid #666;
+            background: #666;
             color:#fff;
+            &:before {
+                content:"";
+                display:inline-block;
+                width:16px;
+                height:16px;
+                background: url("/lg5-common/images/icons/icon-sms-16.svg") no-repeat 0 0/100% 100%;
+                vertical-align: middle;
+                margin-top:-2px;
+                margin-right:5px;
+
+            }
         }
         .btn-store-consult {
         
@@ -109,6 +120,19 @@
                                     margin-left: 0;
                                 }
                             }
+                        }
+                    }
+                    .tabs-wrap {
+                        &:before {
+                            top:48px;
+                            bottom:auto;
+
+                            @include mobile {
+                                top:32.8px;
+                            }
+                        }
+                        &:after {
+                            display:none;
                         }
                     }
                 }
@@ -237,6 +261,9 @@
                             &.btn-toggle-sms {
                                 color:#666;
                                 background:#ededed;
+                                &:before {
+                                    display:none;
+                                }
                             }
 
                             &.btn-store-consult {

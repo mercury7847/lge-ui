@@ -44,9 +44,9 @@
                         '<ul class="option-list" role="radiogroup">' +
                             '{{#each item in sibling.siblingModels}}'+
                                 '<li>'+
-                                    '<div role="radio" class="{{#if sibling.siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
+                                    '<div role="radio" class="{{#if sibling.siblingType=="COLOR"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
                                         '<input type="radio" data-category-id={{categoryId}} id="product-{{sibling.siblingType}}-{{item.modelName}}" name="nm_{{sibling.siblingType}}_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
-                                        '{{#if sibling.siblingType=="color"}}'+
+                                        '{{#if sibling.siblingType=="COLOR"}}'+
                                             '<label for="product-{{sibling.siblingType}}-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
                                         '{{#else}}'+
                                             '<label for="product-{{sibling.siblingType}}-{{item.modelName}}">{{item.siblingValue}}</label>'+
@@ -82,7 +82,7 @@
                     '<ul class="spec-info">' +
                         '{{#if bulletFeatures}}' +
                             '{{#each item in bulletFeatures}}' +
-                                '<li>{{#raw item}}</li>' +
+                                '<li>{{#raw item.specText}}</li>' +
                             '{{/each}}' +
                         '{{/if}}' +
                     '</ul>' +
