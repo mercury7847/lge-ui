@@ -286,7 +286,8 @@
                         }
                         dt {
                             width: 93px;
-                            color:$color-gray-1;
+                            color:#000;
+                            font-weight:bold;
                             @include font-medium;
                             @include mobile {
                                 width: 96px;
@@ -336,6 +337,13 @@
                                         @include mobile {
                                             //padding-left:12px;
                                         }
+                                    }
+                                }
+
+                                &.dir-v {
+                                    li {
+                                        float:none;
+                                        margin-left:0;
                                     }
                                 }
                             }

@@ -81,7 +81,7 @@ body {
     }
 }
 
-.link {
+.btn-link {
     display: flex;
     position: relative;
     min-height: inherit;
@@ -478,6 +478,7 @@ body {
         label {
             display: block;
             position: relative;
+            height:30px;
 
             input {
                 position: absolute;
@@ -491,7 +492,7 @@ body {
                     overflow: hidden;
                     position: relative;
                     width: 52px;
-                    height: 30px;
+                    height: inherit;
                     border-radius: 60px;
                     background-color: #ddd;
                     cursor: pointer;
@@ -709,7 +710,7 @@ body {
     }
 }
 
-.toast-message {
+.toast-message-app {
     position: fixed;
     left: 0;
     bottom: 50px;
@@ -781,6 +782,7 @@ body {
     height: 100%;
 }
 
+/*
 .icon-camera {
     display: inline-block;
     overflow: hidden;
@@ -807,31 +809,7 @@ body {
         background-size: 96px 96px;
     }
 }
-
-.icon {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    background: url(/lg5-common/images/MAP/modal-icons.png) no-repeat left top;
-    background-size: 80px 80px;
-    vertical-align: middle;
-
-    &.icon-map {
-        background-position: 0 0;
-    }
-
-    &.icon-alarm {
-        background-position: -40px 0;
-    }
-
-    &.icon-camera {
-        background-position: 0 -40px;
-    }
-
-    &.icon-phone {
-        background-position: -40px -40px;
-    }
-}
+*/
 
 .page {
     height: 100%;
