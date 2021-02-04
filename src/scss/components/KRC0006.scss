@@ -4,6 +4,10 @@
 
 
 .KRC0006 {
+    .title * {
+        @include title-h3;
+    }
+    
     .inner {
         display:flex;
         flex-wrap:nowrap;
@@ -60,9 +64,6 @@
         width:calc((100% / 3));
         padding:0 12px;
         order:0;
-        .title * {
-            @include title-h3;
-        }
         .text {
             @include bodycopy(h3, h3);
         }
