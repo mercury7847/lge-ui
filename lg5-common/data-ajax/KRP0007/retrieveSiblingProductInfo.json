@@ -1,7 +1,5 @@
 {
     "data": [
-      {
-        "productList": [
           {
             "wishItemId":"wishItemId",
             "affiliateCode": null,
@@ -251,8 +249,6 @@
               }
             ]
           }
-        ]
-      }
     ],
     "message": "",
     "status": "success",

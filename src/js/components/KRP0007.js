@@ -444,7 +444,7 @@
 
                         self.fnBreakPoint();
                     };
-                });
+                }, true);
             },
 
             makeListItem: function(item){
