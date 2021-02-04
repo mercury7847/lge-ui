@@ -8,30 +8,35 @@
             "type": "popular",
             "listData": [
                 {
+                    "url": "",
                     "videoId": "hmYVuY7VDZc",
                     "title": "냉장고에 손이 닿을 때 전기가 느껴져요.1",
                     "category": "TV/프로젝터>올레드",
                     "topic": "증상 > 세부 증상"
                 },
                 {
+                    "url": "",
                     "videoId": "hmYVuY7VDZc",
                     "title": "냉장고에 손이 닿을 때 전기가 느껴져요.2",
                     "category": "TV/프로젝터>올레드",
                     "topic": "증상 > 세부 증상"
                 },
                 {
+                    "url": "",
                     "videoId": "hmYVuY7VDZc",
                     "title": "냉장고에 손이 닿을 때 전기가 느껴져요.3",
                     "category": "TV/프로젝터>올레드",
                     "topic": "증상 > 세부 증상"
                 },
                 {
+                    "url": "",
                     "videoId": "hmYVuY7VDZc",
                     "title": "냉장고에 손이 닿을 때 전기가 느껴져요.4",
                     "category": "TV/프로젝터>올레드",
                     "topic": "증상 > 세부 증상"
                 },
                 {
+                    "url": "",
                     "videoId": "hmYVuY7VDZc",
                     "title": "냉장고에 손이 닿을 때 전기가 느껴져요.5",
                     "category": "TV/프로젝터>올레드",
@@ -47,30 +52,35 @@
             "type": "newest",
             "listData": [
                 {
+                    "url": "",
                     "videoId": "hmYVuY7VDZc",
                     "title": "냉장고에 손이 닿을 때 전기가 느껴져요.6",
                     "category": "TV/프로젝터>올레드",
                     "topic": "증상 > 세부 증상"
                 },
                 {
+                    "url": "",
                     "videoId": "hmYVuY7VDZc",
                     "title": "냉장고에 손이 닿을 때 전기가 느껴져요.7",
                     "category": "TV/프로젝터>올레드",
                     "topic": "증상 > 세부 증상"
                 },
                 {
+                    "url": "",
                     "videoId": "hmYVuY7VDZc",
                     "title": "냉장고에 손이 닿을 때 전기가 느껴져요.8",
                     "category": "TV/프로젝터>올레드",
                     "topic": "증상 > 세부 증상"
                 },
                 {
+                    "url": "",
                     "videoId": "hmYVuY7VDZc",
                     "title": "냉장고에 손이 닿을 때 전기가 느껴져요.9",
                     "category": "TV/프로젝터>올레드",
                     "topic": "증상 > 세부 증상"
                 },
                 {
+                    "url": "",
                     "videoId": "hmYVuY7VDZc",
                     "title": "냉장고에 손이 닿을 때 전기가 느껴져요.0",
                     "category": "TV/프로젝터>올레드",
@@ -85,42 +95,42 @@
         "topicList": [
             {
                 "name": "부품/소모품",
-                "value": "WRA10005000"
+                "code": "WRA10005000"
             },{
                 "name": "구입/사양",
-                "value": "WRAST000732"
+                "code": "WRAST000732"
             },
             {
                 "name": "구조/외관",
-                "value": "WRAST000733"
+                "code": "WRAST000733"
             },
             {
                 "name": "기능관련",
-                "value": "WRAST000734"
+                "code": "WRAST000734"
             },
             {
                 "name": "냄새관련",
-                "value": "WRAST000735"
+                "code": "WRAST000735"
             },
             {
                 "name": "냉방관련",
-                "value": "WRAST000736"
+                "code": "WRAST000736"
             },
             {
                 "name": "누수관련",
-                "value": "WRAST000737"
+                "code": "WRAST000737"
             },
             {
                 "name": "리모컨/버튼",
-                "value": "WRAST000738"
+                "code": "WRAST000738"
             },
             {
                 "name": "서비스관련",
-                "value": "WRAST000741"
+                "code": "WRAST000741"
             },
             {
                 "name": "소음/진동",
-                "value": "WRAST000743"
+                "code": "WRAST000743"
             }
         ],
         "popularKeyword": [

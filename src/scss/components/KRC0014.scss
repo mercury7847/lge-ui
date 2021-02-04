@@ -16,6 +16,10 @@
         vertical-align:top;
     }
 
+    .title * {
+        @include title-h3;
+    }
+
     .hidden-xs {
         display:block !important;
     }
@@ -33,9 +37,9 @@
 
     // common
     .text-area, .text-m-area {
-        .title * {
-            @include title-h3;
-        }
+        // .title * {
+        //     @include title-h3;
+        // }
         .desc-text {
             @include bodycopy(h3, h3);
         }

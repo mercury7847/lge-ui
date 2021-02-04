@@ -79,8 +79,28 @@ $size: (img2, img3, img4);
             } @else if ( $col == img4 ) {
                 width:25%;
             }
-            .title * {
-                @include title-h3;
+            .title {
+                p {
+                    @include title-h3;
+                }
+                &.title-h1 * {
+                    @include title-h1;
+                }
+                &.title-h2 * {
+                    @include title-h2;
+                }
+                &.title-h3 * {
+                    @include title-h3;
+                }
+                &.title-h4 * {
+                    @include title-h4;
+                }
+                &.title-h5 * {
+                    @include title-h5;
+                }
+                &.title-h6 * {
+                    @include title-h6;
+                }
             }
             .body-copy {
                 @include bodycopy(h3, h3);
