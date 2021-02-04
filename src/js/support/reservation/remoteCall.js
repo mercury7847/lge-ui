@@ -337,7 +337,6 @@
         reset: function() {
             var self = this;
 
-            self.$myProductWarp.show();
             self.$cont.commonModel('next', self.$stepModel);
 
             self.$topicList.empty();
@@ -351,6 +350,8 @@
             if (!self.isLogin) {
                 self.$stepInput.find('#userNm').val('');
                 self.$stepInput.find('#phoneNo').val('');
+            } else {
+                self.$myProductWarp.show();
             }
 
             self.$calendarDate.calendar('reset');
