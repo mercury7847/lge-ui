@@ -21,6 +21,11 @@
 			margin-top:40px;
 		}
 	}
+	.title {
+		* {
+			@include title-h2;
+		}
+	}
 	
 	&.standard {
 		.visual-wrap {
@@ -136,11 +141,6 @@
 		vertical-align:middle;
 		@include mobile {
 			display:block;
-		}
-		.title {
-			* {
-				@include title-h2;
-			}
 		}
 		.small-title {
 			display: block;

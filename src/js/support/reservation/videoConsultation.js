@@ -334,11 +334,11 @@
         reset: function() {
             var self = this;
 
-            self.$myProductWarp.show();
             self.$cont.commonModel('next', self.$stepModel);
 
             self.$topicList.empty();
             self.$solutionsBanner.hide();
+            self.$completeBtns.hide();
         
             self.$stepInput.find('[name=buyingdate]').closest('.conts').find('.form-text').remove();
             self.$stepInput.find('[name=buyingdate]').prop('checked', false);
@@ -347,6 +347,8 @@
             if (!self.isLogin) {
                 self.$stepInput.find('#userNm').val('');
                 self.$stepInput.find('#phoneNo').val('');
+            } else {
+                self.$myProductWarp.show();
             }
 
             self.$calendarDate.calendar('reset');

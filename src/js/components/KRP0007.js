@@ -25,7 +25,7 @@
                     '<div class="slide-track ui_carousel_track">' +
                         '{{#each (image, idx) in sliderImages}}'+
                             '<div class="slide-conts ui_carousel_slide">' +
-                                '<a href="#"><img src="{{image}}" alt="{{#raw modelDisplayName}} {{idx + 1}}]번 이미지" onError="lgkorUI.addImgErrorEvent(this)"></a>' +
+                                '<a href="{{modelUrlPath}}"><img data-lazy="{{image}}" alt="{{#raw modelDisplayName}} {{idx + 1}}]번 이미지"></a>' +
                             '</div>' +
                         '{{/each}}'+
                     '</div>' +
@@ -36,7 +36,7 @@
                 '</div>' +
             '</div>' +
         '</div>' +
-        '<div class="product-contents" data-sibling-url="{{siblingAjaxUrl}}">' +
+        '<div class="product-contents">' +
             '{{#if siblings}}'+
                 '{{#each sibling in siblings}}'+
                 '<div class="product-option ui_smooth_scrolltab {{sibling.siblingType}}">' +
@@ -69,7 +69,7 @@
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-name">' +
-                    '<a href="#">{{#raw modelDisplayName}}</a>' +
+                    '<a href="{{modelUrlPath}}">{{#raw modelDisplayName}}</a>' +
                 '</div>' +
                 '<div class="sku">{{#if salesModelCode}}{{salesModelCode}}{{/if}}</div>' +
                     '<div class="review-info">' +
@@ -84,11 +84,6 @@
                             '{{#each item in bulletFeatures}}' +
                                 '<li>{{#raw item}}</li>' +
                             '{{/each}}' +
-                        // <li><span class="title">용량 : </span>840L</li>
-                        // <li><span class="title">전체크기(WxHxD) : </span>912 x 1,790 x 927 mm</li>
-                        // <li><span class="title">형태 : </span>노크온 매직스페이스</li>
-                        // <li><span class="title">패턴 : </span>미드나잇</li>
-                        // <li><span class="care-option">케어십 가능</span></li>
                         '{{/if}}' +
                     '</ul>' +
                 '</div>' +
@@ -110,15 +105,15 @@
                 '<div class="btn-area-wrap">' +
                     '<div class="wishlist">' +
                         '<span class="chk-wish-wrap large">' +
-                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{modelName}}" {{#if wishListFlag}}checked{{/if}}>' +
+                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{modelName}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' +
                             '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>' +
                         '</span>' +
                     '</div>' +
                     '<div class="cart">' +
-                        '<a href="#n" class="btn-cart" data-id="{{modelId}}" data-model-name="{{modelName}}" {{#if !cartListFlag}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
+                        '<a href="#n" class="btn-cart{{#if cartListFlag}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{modelName}}" data-rtSeq="{{rtModelSeq}}" data-typeFlag="{{bizType}}" {{#if !cartListFlag}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
                     '</div>' +
                     '<div class="btn-area">' +
-                        '<a href="{{detailUrl}}" class="btn border size-m" data-id="{{modelId}}">자세히 보기</a>' +
+                        '<a href="{{modelUrlPath}}" class="btn border size-m" data-id="{{modelId}}">자세히 보기</a>' +
                     '</div>' +
                 '</div>' +
             '</div>' +
@@ -210,13 +205,7 @@
                 //모바일 카테고리 풀다운 메뉴
                 self.$cateFulldown = self.$section.find('.cate-m .cate-wrap .cate-list .mobile-more-btn a');
 
-                self.$productList.find('.ui_plp_carousel').vcCarousel({
-                    indicatorNoSeparator:/##no##/,
-                    infinite:true, 
-                    autoplaySpeed:500, 
-                    speed:0, 
-                    easing:'easeInOutQuad'
-                });
+                self.addCarouselModule();
 
                 self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
             },
@@ -225,44 +214,79 @@
                 var self = this;
                 
                 //찜하기
-                self.$productList.on('click','li div.btn-area-wrap div.wishlist input',function(e){
-                    var $this = $(this);
-                    var _id = $this.attr('data-id');
-                    var modelName = $this.attr('data-model-name');
-                    var wish = $this.is(':checked');
-                    var param = {
-                        "id":_id,
-                        "modelName":modelName
-                    }
-                    
-                    var ajaxUrl = self.$section.attr('data-wish-url');
-                    
-                    var success = function(data) {
-                        //$this.attr("data-wishItemId",data.wishItemId);
-                    };
-                    var fail = function(data) {
-                        $this.prop("checked",!wish);
-                    };
+                self.$productList.on('change','li div.btn-area-wrap div.wishlist input',function(e){
+                    var isLogin = lgkorUI.getHiddenInputData().isLogin;
+                    console.log("isLogin:", isLogin)
+                    if(isLogin == "N"){
+                        lgkorUI.alert("", {
+                            title: "로그인이 필요합니다."
+                        });
 
-                    lgkorUI.requestWish(
-                        param,
-                        wish,
-                        success,
-                        fail,
-                        ajaxUrl
-                    );
+                        $(this).prop('checked', false);
+                    } else{
+                        var $this = $(this);
+                        var _id = $this.attr('data-id');
+                        var sku = $this.attr('data-model-name');
+                        var wishListId = $this.data("wishListId");
+                        var wishItemId = $this.data("wishItemId");
+                        var wish = $this.is(':checked');
+                        var param = {
+                            "id":_id,
+                            "sku":sku,
+                            "wishListId": wishListId,
+                            "wishItemId": wishItemId
+                        }
+                        if(wish){
+                            param.type = "add";
+                        } else{
+                            param.type = "remove";
+                        }
+
+                        console.log("requestWish:", param)
+                        
+                        var ajaxUrl = self.$section.attr('data-wish-url');
+                        
+                        var success = function(data) {
+                            //$this.attr("data-wishItemId",data.wishItemId);
+                        };
+                        var fail = function(data) {
+                            $this.prop("checked",!wish);
+
+                            if(data.success == "N"){
+                                lgkorUI.alert("", {
+                                    title: data.alert.title
+                                });
+                            }
+                        };
+    
+                        lgkorUI.requestWish(
+                            param,
+                            wish,
+                            success,
+                            fail,
+                            ajaxUrl
+                        );
+                    }
                 });
 
                 //장바구니
                 self.$productList.on('click','li div.btn-area-wrap div.cart a',function(e){
                     e.preventDefault();
-                    var $this = $(this);
-                    var param = {
-                        "id":$this.attr('data-id'),
-                        "modelName":$this.attr('data-model-name')
+
+                    var typeflag = $this.attr('data-type-flag');
+                    var sendflag = (typeflag == "PRODUCT" || typeflag == "DISPOSABLE") ? "P" : "C";
+
+                    if(!$(this).hasClass('disabled')){
+                        var $this = $(this);
+                        var param = {
+                            "id":$this.attr('data-id'),
+                            "sku":$this.attr('data-model-name'),
+                            "rtSeq":$this.attr('data-rtSeq'),
+                            "typeFlag": sendflag
+                        }
+                        var ajaxUrl = self.$section.attr('data-cart-url');
+                        lgkorUI.requestCart(ajaxUrl, param);
                     }
-                    var ajaxUrl = self.$section.attr('data-cart-url');
-                    lgkorUI.requestCart(ajaxUrl, param);
                 });
 
                 //자세히보기
@@ -280,7 +304,7 @@
 
                 //sibling
                 self.$productList.on('change', '.product-option input[type=radio]', function(e){
-                    self.sendSelectSibling(this);
+                    self.requestSibling(this);
                 })
 
                 //모바일 카테고리 풀다운메뉴
@@ -296,7 +320,7 @@
                         self.$categorySelect.vcSmoothScrollTab("initPosition", true);
                     }
 
-                    catewrap.parent().height(catewrap.outerHeight(true));
+                    $(this).closest('.cate-m').parent().height(catewrap.outerHeight(true));
                 });
 
                 //비교하기 컴포넌트 변화 체크
@@ -311,6 +335,8 @@
 
                 //더보기
                 self.$btnMore.on('click', function(e) {
+                    e.preventDefault();
+
                     var filterLayerData = self.filterLayer.getDataFromFilter();
 
                     var param = {};
@@ -326,15 +352,6 @@
                         self.requestSearch(param, false);
                     }
                 });
-            },
-
-            sendSelectSibling: function(rdo){
-                var self = this;
-
-                var ajaxurl = $(rdo).closest('.product-contents').data('siblingUrl');
-                var sendata = {
-                    
-                }
             },
 
             setPageData: function(param) {
@@ -360,8 +377,8 @@
                 data.categoryId = categoryId;                
                 console.log("### requestSearch ###", data)
                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
+                    console.log("### requestSearch onComplete ###");
                     var data = result.data[0];
-                    var param = result.param;
 
                     if(data.schCategoryId && data.schCategoryId.length > 0) {
                         categoryId = data.schCategoryId;
@@ -370,10 +387,8 @@
                         });
                     }
                     
-                    var totalCount = data.productTotalCount;
-                    if(totalCount) {
-                        self.$totalCount.text(vcui.number.addComma(totalCount) + "개");
-                    }
+                    var totalCount = data.productTotalCount ? data.productTotalCount : 0;
+                    self.$totalCount.text(vcui.number.addComma(totalCount) + "개");
                     
                     if(isNew) {
                         self.$productList.empty();
@@ -381,69 +396,146 @@
 
                     var arr = (data.productList && data.productList instanceof Array) ? data.productList : [];
 
-                    arr.forEach(function(item, index) {
+                    if(arr.length){
+                        arr.forEach(function(item, index) {
+                            var listItem = self.makeListItem(item);
+                            self.$productList.append(listItem);
+                        });
 
-                        var siblingType = item.siblingType ? item.siblingType.toLowerCase() : '';
-                        item.siblingType = (siblingType == "color") ? "color" : "text";
-
-                        var sliderImages = [item.mediumImageAddr];
-                        if(item.galleryImages && item.galleryImages.length > 0) {
-                            item.galleryImages.forEach(function(obj, idx) {
-                                sliderImages.push(obj.largeImageAddr);
-                            });
-                        }
-                        item.sliderImages = sliderImages;
-                        
-                        item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
-                        item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
-
-                        //flag
-                        item.newProductBadgeFlag = lgkorUI.stringToBool(item.newProductBadgeFlag);
-                        item.bestBadgeFlag = lgkorUI.stringToBool(item.bestBadgeFlag);
-                        item.cashbackBadgeFlag = lgkorUI.stringToBool(item.cashbackBadgeFlag);
-                        
-                        //장바구니
-                        item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);
-                        //찜하기
-                        item.cartListFlag = lgkorUI.stringToBool(item.cartListFlag);
-                        
-                        if(!item.detailUrl) item.detailUrl = "#n";
-                        self.$productList.append(vcui.template(productItemTemplate, item));
-
-                        self.$productList.find('.ui_plp_carousel').vcCarousel('reinit');
                         self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
+
+                        self.addCarouselModule();
 
                         self.fnBreakPoint();
                         self.setCompares();
-                    });
-
-                    self.setPageData(data.pagination);
+    
+                        self.setPageData(data.pagination);
+                    } else{
+                        self.setPageData({page:0, totalCount:0});
+                    }
                 });
+            },
+
+            requestSibling: function(rdo){
+                var self = this;
+
+                var modelId = $(rdo).val();
+                var changeItem = $(rdo).closest('.plp-item').parent();
+                var ajaxurl = self.$section.attr('data-sibling-url');
+                var sendata = {
+                    "modelId": modelId,
+                    "callType": "productSummary"
+                }            
+                console.log("@@@ requestSibling @@@", sendata)
+                lgkorUI.requestAjaxDataPost(ajaxurl, sendata, function(result){
+                    console.log("@@@ requestSibling onComplete @@@", result);
+
+                    var arr = (result.data && result.data instanceof Array) ? result.data : [];
+
+                    if(arr.length){
+                        var item = arr[0];
+                        var listItem = self.makeListItem(item);
+                        changeItem.before(listItem);
+                        changeItem.remove();
+
+                        self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
+
+                        self.addCarouselModule();
+
+                        self.fnBreakPoint();
+                    };
+                }, true);
+            },
+
+            makeListItem: function(item){
+                var self = this;
+    
+                var siblingType = item.siblingType ? item.siblingType.toLowerCase() : '';
+                item.siblingType = (siblingType == "color") ? "color" : "text";
+
+                var sliderImages = [];
+                if(item.rollingImages && item.rollingImages.length){
+                    item.rollingImages.forEach(function(obj, idx) {
+                        sliderImages.push(obj);
+                    });
+                } else{
+                    sliderImages = [item.mediumImageAddr];
+                }
+                item.sliderImages = sliderImages;
+                
+                item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
+                item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
+
+                //flag
+                item.newProductBadgeFlag = lgkorUI.stringToBool(item.newProductBadgeFlag);
+                item.bestBadgeFlag = lgkorUI.stringToBool(item.bestBadgeFlag);
+                item.cashbackBadgeFlag = lgkorUI.stringToBool(item.cashbackBadgeFlag);
+                
+                //장바구니
+                item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);
+                //찜하기
+                item.cartListFlag = lgkorUI.stringToBool(item.cartListFlag);
+                if(!item.wishListId) item.wishListId = "";
+                if(!item.wishItemId) item.wishItemId = "";
+
+                if(!item.rtModelSeq) item.rtModelSeq = "";
+
+                return vcui.template(productItemTemplate, item);
             },
 
             // 상품 아이템 롤링기능을 PC,MOBILE일 때 교체.
             fnBreakPoint:function(){
                 var self = this;
                 var name = window.breakpoint.name;
-                self.$productList.find('.ui_plp_carousel').off('mouseover mouseout mouseleave').vcCarousel("setOption", {autoplay:false,'speed':300}, true);
-                if(name=="mobile"){
-                    self.$productList.find('.ui_plp_carousel').off('mouseover mouseout mouseleave').vcCarousel("setOption", {autoplay:false,'speed':300}, true);
-                } else if(name=="pc"){
-                    self.$productList.find('.ui_plp_carousel').vcCarousel("setOption", {'speed':0}, true ).on('mouseover mouseout mouseleave', function(e){
-                        // 상품 아이템을 오버시 이미지를 롤링.
-                        if($(e.currentTarget).data('ui_carousel')){
-                            if(e.type == 'mouseover'){
-                                $(e.currentTarget).vcCarousel('play');
-                                
-                            }else{
-                               $(e.currentTarget).vcCarousel('stop');
-                                setTimeout(function(){
-                                    $(e.currentTarget).vcCarousel('goTo', 0);
-                                }, 500);
+
+                self.$productList.find('.ui_plp_carousel').each(function(idx, item){
+                    var slideLength = $(item).find('.slide-conts').length;
+                    var applyMode = $(item).data("applyMode");
+                    if(slideLength > 1){
+                        if(applyMode != name){
+                            $(item).data('applyMode', name);
+                            $(item).off('mouseover mouseout mouseleave').vcCarousel("setOption", {autoplay:false,'speed':300}, true);
+
+                            if(name == 'pc'){
+                                console.log("fnBreakPoint:", item)
+                                $(item).vcCarousel("setOption", {'speed':0}, true ).on('mouseover mouseout mouseleave', function(e){
+                                    // 상품 아이템을 오버시 이미지를 롤링.
+                                    if($(e.currentTarget).data('ui_carousel')){
+                                        if(e.type == 'mouseover'){
+                                            $(e.currentTarget).vcCarousel('play');
+                                            
+                                        }else{
+                                           $(e.currentTarget).vcCarousel('stop');
+                                            setTimeout(function(){
+                                                $(e.currentTarget).vcCarousel('goTo', 0);
+                                            }, 500);
+                                        }
+                                    }
+                                });
                             }
                         }
-                    });
-                }   
+                    }
+                });
+            },
+
+            addCarouselModule: function(){
+                var self = this;
+
+                self.$productList.find('.ui_plp_carousel').each(function(idx, item){
+                    if(!$(item).data("isApplyCarousel")){
+                        $(item).data('isApplyCarousel', true);
+
+                        $(item).vcCarousel({
+                            indicatorNoSeparator:/##no##/,
+                            infinite:true, 
+                            autoplaySpeed:500, 
+                            speed:0, 
+                            easing:'easeInOutQuad'
+                        }).on("carousellazyloadrrror", function(e, carousel, imgs){
+                            imgs.attr('src', lgkorUI.NO_IMAGE);
+                        });
+                    }
+                });
             },
 
             //비교하기 저장 유무 체크...

@@ -195,15 +195,15 @@
                 display: inline-block;
                 font-weight: 700;
                 &.complete {
-                    color: #3b9792;
+                    color: $color-neutral;
                     em {
                         display: block;
-                        font-weight: 500;
-                        color: $color-gray-1;
+                        font-weight: 400;
+                        color: $color-default;
                     }
                 }
                 &.error {
-                    color: #f04e3e;
+                    color: $color-negative;
                 }
             }
         }
@@ -300,15 +300,13 @@
         top: 0;
         right: 0;
         left: 0;
-        padding: 12px 17px;
+        padding: 16px 24px;
         background-color: $color-bg;
         font-weight: 700;
-        @include font-medium;
-        .text {
-            color: $color-gray-1;
-        }
+        @include font($font-medium, 26px);
         @include mobile {
             padding: 10px 12px;
+            @include font($font-small - 1, 21px);
         }
     }
 }
@@ -318,7 +316,7 @@
         @media screen and (max-width: $tablet-l-width) {
             padding-top: 20px;
             @include mobile {
-                padding:40px 16px 60px;
+                padding:40px 16px 0;
                 border-top: 12px solid $color-bg;
             }
         }
@@ -333,7 +331,8 @@
         padding: 32px;
         border-radius: 8px;
         background-color: $color-bg;
-        &.box-link {
+        &.box-link,
+        &.item-info {
             padding-top: 24px;
             padding-bottom: 24px;
         }
@@ -376,6 +375,7 @@
                 margin-left: 0;
                 padding-left: 0;
                 @include mobile {
+                    padding-bottom: 60px;
                     padding-left: 16px;
                 }
             }
@@ -460,8 +460,8 @@
             }
         }
         > li + li {
-            margin-top: 24px;
-            padding-top: 24px;
+            margin-top: 16px;
+            padding-top: 16px;
             border-top: 1px solid $color-border;
         }
     }
@@ -676,7 +676,9 @@
     .desc {
         margin-bottom: 24px;
         @include font-small;
-        color: $color-gray-1;
+    }
+    .chk-wrap input + label {
+        font-weight: 700;
     }
 }
 .cart-nonmember-info {

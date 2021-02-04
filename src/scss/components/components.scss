@@ -81,14 +81,61 @@
     }
 }
 @mixin title-h3 {
+    font-size:40px;
+    line-height:56px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size:27px;
+        line-height:38px;
+    }
+}
+@mixin title-h4 {
+    font-size:32px;
+    line-height:52px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size:24px;
+        line-height:33px;
+    }
+}
+@mixin title-h5 {
     font-size:24px;
     line-height:34px;
     font-weight:700;
     @media screen and (max-width: #{$tablet-s-width}) {
-        font-size:18px;
-        line-height:26px;
+        font-size:20px;
+        line-height:28px;
     }
 }
+@mixin title-h6 {
+    font-size:24px;
+    line-height:34px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size:20px;
+        line-height:28px;
+    }
+}
+
+.component-wrap .title.title-h1 * {
+    @include title-h1;
+}
+.component-wrap .title.title-h2 * {
+    @include title-h2;
+}
+.component-wrap .title.title-h3 * {
+    @include title-h3;
+}
+.component-wrap .title.title-h4 * {
+    @include title-h4;
+}
+.component-wrap .title.title-h5 * {
+    @include title-h5;
+}
+.component-wrap .title.title-h6 * {
+    @include title-h6;
+}
+
 @mixin bodycopy ($own, $prev) {
     @if $own == h1 or $own == h2 {
         @include font-large;

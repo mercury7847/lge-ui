@@ -420,6 +420,9 @@
     }
 
     .brand-link {
+        display: flex;
+        align-items: center;
+        height: 34px;
         padding: 8px 16px;
         border-radius: 18px;
         background-color: $color-bg;
@@ -427,19 +430,21 @@
         li {
             display: inline-block;
             margin-left: 16px;
-            vertical-align: top;
+            vertical-align: middle;
             &:first-child {
                 margin-left: 0;
             }
             a {
                 display: block;
                 background-color: $color-bg;
+                font-weight: 700;
+                @include font(14px,1);
             }
         }
         &.text {
             padding: 5px 16px;
-            font-weight: 700;
             @include font-small;
+            font-weight: 700;
         }
     }
 
@@ -453,7 +458,7 @@
             line-height: 21px;
         }
         .brand-link {
-            display: flex;
+            height: auto;
             margin-top: 12px;
             padding: 0;
             border-radius: 0;

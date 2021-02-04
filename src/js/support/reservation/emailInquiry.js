@@ -182,7 +182,7 @@
             self.$rcptNoBox.hide();
             self.$inquiryBox.hide();
             self.$inquiryList.empty();
-            // self.$myModelArea.show();
+            self.$completeBtns.hide();
 
             self.$stepInput.find('[name=subsection]').prop('checked', false);
             self.$stepInput.find('[name=record]').eq(0).prop('checked', true);

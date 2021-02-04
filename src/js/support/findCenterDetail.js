@@ -119,16 +119,26 @@
 
     $(window).ready(function() {
         vcui.require(['ui/carousel', 'ui/storeMap'], function () {
-            var data = $('.contents').data();
+            var latitude = $('.contents').data("latitude");
+            var longitude = $('.contents').data("longitude");
+            var shopname = $('.contents').data("shopName");
+
+            var searchRoadUrl;
+            if(vcui.detect.isMobile){
+                searchRoadUrl = "https://m.map.naver.com/route.nhn?ex=" + longitude + "&ey=" + latitude + "&ename=" + shopname + "&menu=route&pathType=1";
+            } else{
+                searchRoadUrl = "https://map.naver.com/index.nhn?elng=" + longitude + "&elat=" + latitude + "&etext=" + shopname + "&menu=route&pathType=1";
+            }
+            $('.searchRoad-btn').attr("href", searchRoadUrl);
 
             $('.map').vcStoreMap({
                 keyID: 'vsay0tnzme',
-                latitude : data.latitude,
-                longitude: data.longitude
+                latitude : latitude,
+                longitude: longitude
             }).on('mapinit', function(e){
                 map = $('.map').vcStoreMap('instance');
                 var marker = new naver.maps.Marker({
-                        position: new naver.maps.LatLng(data.latitude, data.longitude),
+                        position: new naver.maps.LatLng(latitude, longitude),
                         icon: {
                             url: '/lg5-common/images/icons/icon-point.svg',
                             // content: 
@@ -173,6 +183,12 @@
                         }
                     }
                 ]
+            });
+
+            $('.btn-close').on('click', function(e){
+                e.preventDefault();
+    
+                window.close();
             });
         });
 

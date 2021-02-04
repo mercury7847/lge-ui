@@ -3,6 +3,9 @@
 @import "../components-app";
 
 .KRC0012 {
+    .title * {
+        @include title-h2;
+    }
     .component-box {
         max-width:1380px + 80px;
         margin:0 auto;
@@ -53,9 +56,6 @@
                     .text-wrap {
                         width:((936px*100%) / 1380px);
                         padding-left:24px;
-                        .title * {
-                            @include title-h2;
-                        }
                         .text {
                             @include bodycopy(h2, h2);
                         }

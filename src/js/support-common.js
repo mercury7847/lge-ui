@@ -460,9 +460,9 @@ CS.MD.commonModel = function() {
     var modelListTmpl = 
         '<div class="slide-conts">' +
             '{{# if (modelCode != "") { #}}' +
-            '<a href="#" class="item" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{modelCode}}" data-product-code="{{productCode}}" data-category-name="{{categoryNm}}" data-sub-category-name="{{subCategoryNm}}">' +
+            '<a href="#" class="item" data-cst-flag="Y" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{modelCode}}" data-product-code="{{productCode}}" data-category-name="{{categoryNm}}" data-sub-category-name="{{subCategoryNm}}">' +
             '{{# } else { #}}' +
-            '<a href="#" class="item no-model" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{modelCode}}" data-product-code="{{productCode}}" data-category-name="{{categoryNm}}" data-sub-category-name="{{subCategoryNm}}">' +
+            '<a href="#" class="item no-model" data-cst-flag="Y" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{modelCode}}" data-product-code="{{productCode}}" data-category-name="{{categoryNm}}" data-sub-category-name="{{subCategoryNm}}">' +
             '{{# } #}}' +
                 '<div class="info">' +
                     '{{# if (modelCode != "") { #}}' +
@@ -2206,7 +2206,7 @@ $.fn.serializeObject = function() {
             vcui.require(['ui/selectbox', 'ui/satisfactionModal']);
         }
 
-        if ($('.ui_common_scroll').length) $('.ui_common_scroll').mCustomScrollbar();
+        if ($('.ui_common_scroll').length && !lgkorUI.isMobile()) $('.ui_common_scroll').mCustomScrollbar();
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);

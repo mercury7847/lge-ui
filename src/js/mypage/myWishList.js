@@ -138,7 +138,8 @@
                     "wishItemId":$dm.attr('data-wishItemId'),
                     "categoryId":$dm.attr('data-categoryId'),
                     "rtSeq":$dm.attr('data-rtSeq'),
-                    "typeFlag":cartType
+                    "typeFlag":cartType,
+                    "requireCare":$dm.data('requireCare')
                 }
                 lgkorUI.requestCart(ajaxUrl, param);
             },

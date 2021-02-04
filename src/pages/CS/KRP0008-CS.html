@@ -6,6 +6,7 @@
         isJScompile: true
     });
     <script src="/lg5-common/js/components/KRP0015.min.js"></script>
+    <script src="/lg5-common/js/support/consumables.min.js"></script>
 <body>
     <script>
         //아래 값은 필수로 넣어주세요.
@@ -277,7 +278,7 @@
 
             <div class="component-wrap full">
                 <!-- component KRP0008 -->
-                <section class="component KRP0008" aria-label="{category명} product detail" data-consumables="false">
+                <section class="component KRP0008 support" aria-label="{category명} product detail" data-consumables="false">
 
                     <div class="pdp-wrap">
                         <!-- component -->
@@ -285,7 +286,7 @@
                         <!-- // component -->
 
                         <!-- component -->
-                       @@include('./common/partials/KRP0008-info.html')
+                       @@include('./CS/KRP0008-info-CS.html')
                         <!-- // component -->
                     </div>
 

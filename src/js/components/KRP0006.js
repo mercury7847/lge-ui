@@ -1,8 +1,6 @@
 (function() {
     $(window).ready(function(){
         if(!document.querySelector('.KRP0006')) return false;
-        
-        var myRecentProductCookieName = 'myRecentProductTemp';
 
         var KRP0006 = {
             init: function() {
@@ -28,7 +26,7 @@
 
                     //모델아이디가 있으면 쿠키저장
                     if(!(!modelID)) {
-                        lgkorUI.addCookieArrayValue(myRecentProductCookieName,modelID);
+                        lgkorUI.addCookieArrayValue(lgkorUI.RECSNT,modelID);
                     }
             
                     if(self.firstLoad && !(!ajaxUrl)){
@@ -61,14 +59,14 @@
                     var $item = $(item);
                     var _type = $item.attr('data-type');
 
-                    if(_type == "top") {
+                    if(_type == "r-top") {
                         //상단 영역
                         var check = lgkorUI.stringToBool(data.ResponseUITop.success);
                         if(check) {
                             self.reloadComponent($item, data.ResponseUITop);              
                         } else if(data.productCurationProposal) {
                             //PDP페이지를 5번 이상 방문 시(최근 본 제품이 5개 이상일때)
-                            var cookieValue = lgkorUI.getCookie(myRecentProductCookieName);
+                            var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
                             var array = cookieValue.split(',');
                             var count = $item.attr('data-top-cookie-count');
                             var checkCookieCount = !count ? 5 : count; 
@@ -76,7 +74,7 @@
                                 self.reloadComponent($item, data.productCurationProposal);
                             }
                         }
-                    } else if(_type == "bottom") {
+                    } else if(_type == "r-bottom") {
                         //하단영역
                         var check = lgkorUI.stringToBool(data.categoryBestProduct.success);
                         if(data.storeConsultation) {

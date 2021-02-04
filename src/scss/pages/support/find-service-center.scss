@@ -97,75 +97,8 @@
 .find-store-wrap {
     .map-container {
         height:100vh;
-        .store-map-con {
-            @include mobile {
-                height:calc(100vh - 76px - 60px - 353px);
-            }
-        }
-        .map-area {
-            .info-overlaybox {
-                .inner {
-                    width:400px;
-                    .btn-group {
-                        .btn {
-                            width:calc(50% - 4px);
-                        }
-                    }
-                }
-                .tit-wrap {
-                    position:relative;
-                    .status-icon {
-                        position:absolute;
-                        right:0;
-                        top:3px;
-                    }
-                }
-            }
-        }
-        .opt-list {
-            margin-top:12px;
-            li {
-                display:inline-block;
-                margin-left:32px;
-                padding:0;
-                vertical-align:top;
-                &:first-child {
-                    margin-left:0;
-                }
-                &:before {
-                    content:'';
-                    display:block;
-                    width:48px;
-                    height:48px;
-                    border-radius:50%;
-                    background-color:#f4f4f4;
-                    background-repeat:no-repeat;
-                    background-size:32px 32px;
-                    background-position:center center;
-                }
-                .name {
-                    display:block;
-                    @include font-x-small;
-                    text-align:center;
-                }
-                &.opt-mobile:before {
-                    background-image:url(/lg5-common/images/icons/cate_icon_mobile.svg);
-                }
-                &.opt-it-monitor:before {
-                    background-image:url(/lg5-common/images/icons/cate_icon_it-monitors.svg);
-                }
-                &.opt-small-appliances:before {
-                    background-image:url(/lg5-common/images/icons/icon_small-appliances.svg);
-                }
-                &.opt-expendables:before {
-                    background-image:url(/lg5-common/images/icons/icon_small-appliances.svg);
-                }
-            }
-            @include mobile {
-                li {
-                    margin-left: 24px;
-                }
-            }
+        @include csmobile {
+            height:auto;
         }
         .store-list-wrap {
             width: 520px;
@@ -304,15 +237,23 @@
                 }
                 .scroll-wrap {
                     .list-item {
-                        padding-right: 14px;
+                        padding-right:32px;
                         > li {
                             padding-bottom: 25px;
                             padding-right: 0;
                             margin-bottom: 24px;
-                            border-bottom: 1px solid #ddd;
                             &:last-child {
                                 margin-bottom:0;
-                                border-bottom:0;
+                            }
+                            &:after {
+                                display:inline-block;
+                                content:'';
+                                position:absolute;
+                                bottom:0;
+                                left:0;
+                                width:100%;
+                                height:1px;
+                                background-color:#ddd;
                             }
                         }
                     }
@@ -324,6 +265,25 @@
                         top:24px;
                         left:auto;
                     }
+                }
+                .result-list {
+                    padding:0 32px 12px;
+                    &:after {
+                        left:32px;
+                        width:calc(100% - 64px);
+                        background-color: $color-default;
+                           @include mobile {
+                            width:calc(100% - 32px);
+                            left:16px;
+                        }
+                    }
+                }
+            }
+            .list-wrap {
+                padding:0 0 0 32px;
+                .scroll-wrap {
+                    overflow-y:auto;
+                    height: calc(100vh - 310px - 80px);
                 }
             }
             .opt-cont {
@@ -434,12 +394,6 @@
                 .sch-box {
                     margin: 0 32px;
                 }
-                .list-wrap {
-                    padding-left: 32px;
-                    .scroll-wrap {
-                        height: calc(100vh - 310px - 80px);
-                    }
-                }
                 .sch-list {
                     ul {
                         li {
@@ -490,9 +444,6 @@
                     transition: transform ease-out .5s;
                 }
                 .sch-list {
-                    .scroll-wrap {
-                        height: calc(100vh - 463px);
-                    }
                     ul {
                         li {
                             .store-info-list {
@@ -512,9 +463,17 @@
                             }
                         }
                     }
+                    .scroll-wrap {
+                        .list-item {
+                            padding-right:16px;
+                        }
+                    }
                 }
-                .opt-cont {
-                    bottom: -76px;
+                .list-wrap {
+                    padding:0 0 0 16px;
+                    .scroll-wrap {
+                        height: calc(100vh - 463px);
+                    }
                 }
                 &.active {
                     .sch-box {
@@ -522,6 +481,7 @@
                     }
                     .store-list-box {
                         position: fixed;
+                        width:100%;
                         transform: translateY(-422px);
                     }
                     .result-list-box {
@@ -532,6 +492,76 @@
                             height: calc(100vh - 273px);
                         }
                     }
+                }
+            }
+        }
+        .store-map-con {
+            @include mobile {
+                height:calc(100vh - 76px - 60px - 353px);
+            }
+        }
+        .map-area {
+            .info-overlaybox {
+                .inner {
+                    width:400px;
+                    .btn-group {
+                        .btn {
+                            width:calc(50% - 4px);
+                        }
+                    }
+                }
+                .tit-wrap {
+                    position:relative;
+                    .status-icon {
+                        position:absolute;
+                        right:0;
+                        top:3px;
+                    }
+                }
+            }
+        }
+        .opt-list {
+            margin-top:12px;
+            li {
+                display:inline-block;
+                margin-left:32px;
+                padding:0;
+                vertical-align:top;
+                &:first-child {
+                    margin-left:0;
+                }
+                &:before {
+                    content:'';
+                    display:block;
+                    width:48px;
+                    height:48px;
+                    border-radius:50%;
+                    background-color:#f4f4f4;
+                    background-repeat:no-repeat;
+                    background-size:32px 32px;
+                    background-position:center center;
+                }
+                .name {
+                    display:block;
+                    @include font-x-small;
+                    text-align:center;
+                }
+                &.opt-mobile:before {
+                    background-image:url(/lg5-common/images/icons/cate_icon_mobile.svg);
+                }
+                &.opt-it-monitor:before {
+                    background-image:url(/lg5-common/images/icons/cate_icon_it-monitors.svg);
+                }
+                &.opt-small-appliances:before {
+                    background-image:url(/lg5-common/images/icons/icon_small-appliances.svg);
+                }
+                &.opt-expendables:before {
+                    background-image:url(/lg5-common/images/icons/icon_small-appliances.svg);
+                }
+            }
+            @include mobile {
+                li {
+                    margin-left: 24px;
                 }
             }
         }
