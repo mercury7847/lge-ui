@@ -36,7 +36,7 @@
                 '</div>' +
             '</div>' +
         '</div>' +
-        '<div class="product-contents" data-sibling-url="{{siblingAjaxUrl}}">' +
+        '<div class="product-contents">' +
             '{{#if siblings}}'+
                 '{{#each sibling in siblings}}'+
                 '<div class="product-option ui_smooth_scrolltab {{sibling.siblingType}}">' +
@@ -418,7 +418,7 @@
 
                 var modelId = $(rdo).val();
                 var changeItem = $(rdo).closest('.plp-item').parent();
-                var ajaxurl = $(rdo).closest('.product-contents').data('siblingUrl');
+                var ajaxurl = self.$section.attr('data-sibling-url');
                 var sendata = {
                     "modelId": modelId
                 }            
