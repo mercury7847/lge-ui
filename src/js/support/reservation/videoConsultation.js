@@ -339,6 +339,7 @@
 
             self.$topicList.empty();
             self.$solutionsBanner.hide();
+            self.$completeBtns.hide();
         
             self.$stepInput.find('[name=buyingdate]').closest('.conts').find('.form-text').remove();
             self.$stepInput.find('[name=buyingdate]').prop('checked', false);
