@@ -429,22 +429,21 @@
                 console.log("@@@ requestSibling @@@", sendata)
                 lgkorUI.requestAjaxDataPost(ajaxurl, sendata, function(result){
                     console.log("@@@ requestSibling onComplete @@@", result);
-                    // var data = result.data[0];
 
-                    // var arr = (data.productList && data.productList instanceof Array) ? data.productList : [];
+                    var arr = (result.data && result.data instanceof Array) ? result.data : [];
 
-                    // if(arr.length){
-                    //     var item = data.productList[0];
-                    //     var listItem = self.makeListItem(item);
-                    //     changeItem.before(listItem);
-                    //     changeItem.remove();
+                    if(arr.length){
+                        var item = arr[0];
+                        var listItem = self.makeListItem(item);
+                        changeItem.before(listItem);
+                        changeItem.remove();
 
-                    //     self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
+                        self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
 
-                    //     self.addCarouselModule();
+                        self.addCarouselModule();
 
-                    //     self.fnBreakPoint();
-                    // };
+                        self.fnBreakPoint();
+                    };
                 });
             },
 
