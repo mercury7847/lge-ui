@@ -71,7 +71,7 @@
                 '<div class="product-name">' +
                     '<a href="{{modelUrlPath}}">{{#raw modelDisplayName}}</a>' +
                 '</div>' +
-                '<div class="sku">{{#if salesModelCode}}{{salesModelCode}}{{/if}}</div>' +
+                '<div class="sku">{{#if modelName}}{{modelName}}{{/if}}</div>' +
                     '<div class="review-info">' +
                         '<a href="#">' +
                             '{{#if (reviewsCount > 0)}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
