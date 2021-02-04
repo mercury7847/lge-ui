@@ -174,6 +174,12 @@
                     }
                 ]
             });
+
+            $('.btn-close').on('click', function(e){
+                e.preventDefault();
+    
+                window.close();
+            });
         });
 
         sms.init();
