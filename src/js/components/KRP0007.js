@@ -110,7 +110,7 @@
                         '</span>' +
                     '</div>' +
                     '<div class="cart">' +
-                        '<a href="#n" class="btn-cart{{#if cartListFlag}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{modelName}}" data-rtSeq="{{rtModelSeq}}" data-typeFlag="{{typeFlag}}" {{#if !cartListFlag}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
+                        '<a href="#n" class="btn-cart{{#if cartListFlag}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{modelName}}" data-rtSeq="{{rtModelSeq}}" data-typeFlag="{{bizType}}" {{#if !cartListFlag}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
                     '</div>' +
                     '<div class="btn-area">' +
                         '<a href="{{modelUrlPath}}" class="btn border size-m" data-id="{{modelId}}">자세히 보기</a>' +
@@ -273,13 +273,16 @@
                 self.$productList.on('click','li div.btn-area-wrap div.cart a',function(e){
                     e.preventDefault();
 
+                    var typeflag = $this.attr('data-type-flag');
+                    var sendflag = (typeflag == "PRODUCT" || typeflag == "DISPOSABLE") ? "P" : "C";
+
                     if(!$(this).hasClass('disabled')){
                         var $this = $(this);
                         var param = {
                             "id":$this.attr('data-id'),
                             "sku":$this.attr('data-model-name'),
                             "rtSeq":$this.attr('data-rtSeq'),
-                            "typeFlag":$this.attr('data-type-flag')
+                            "typeFlag": sendflag
                         }
                         var ajaxUrl = self.$section.attr('data-cart-url');
                         lgkorUI.requestCart(ajaxUrl, param);
@@ -420,27 +423,28 @@
                 var changeItem = $(rdo).closest('.plp-item').parent();
                 var ajaxurl = self.$section.attr('data-sibling-url');
                 var sendata = {
-                    "modelId": modelId
+                    "modelId": modelId,
+                    "callType": "productSummary"
                 }            
                 console.log("@@@ requestSibling @@@", sendata)
                 lgkorUI.requestAjaxDataPost(ajaxurl, sendata, function(result){
-                    console.log("@@@ requestSibling onComplete @@@");
-                    var data = result.data[0];
+                    console.log("@@@ requestSibling onComplete @@@", result);
+                    // var data = result.data[0];
 
-                    var arr = (data.productList && data.productList instanceof Array) ? data.productList : [];
+                    // var arr = (data.productList && data.productList instanceof Array) ? data.productList : [];
 
-                    if(arr.length){
-                        var item = data.productList[0];
-                        var listItem = self.makeListItem(item);
-                        changeItem.before(listItem);
-                        changeItem.remove();
+                    // if(arr.length){
+                    //     var item = data.productList[0];
+                    //     var listItem = self.makeListItem(item);
+                    //     changeItem.before(listItem);
+                    //     changeItem.remove();
 
-                        self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
+                    //     self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
 
-                        self.addCarouselModule();
+                    //     self.addCarouselModule();
 
-                        self.fnBreakPoint();
-                    };
+                    //     self.fnBreakPoint();
+                    // };
                 });
             },
 
@@ -476,8 +480,6 @@
                 if(!item.wishItemId) item.wishItemId = "";
 
                 if(!item.rtModelSeq) item.rtModelSeq = "";
-                
-                item.typeFlag = (item.bizType == "PRODUCT" || item.bizType == "DISPOSABLE") ? "P" : "C";
 
                 return vcui.template(productItemTemplate, item);
             },
