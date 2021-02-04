@@ -992,15 +992,15 @@
                 vertical-align: middle;
             }
         }
-        //input,
-        //input:read-only {
-        //    border-color:#ededed;
-        //    background:#ededed
-        //}
+        input,
+        input:read-only {
+            border-color:#ddd;
+            background:transparent;
+        }
         input:read-only + .cell,
         input:disabled + .cell {
-            border-color:#ededed;
-            background:#ededed;
+            border-color:#ddd;
+            background:transparent;
         }
         button.ui_calendar {
             display:inline-block;
@@ -1012,15 +1012,26 @@
             vertical-align:middle;
         }
         input.selected {
-            border-color:#ddd;
-            background:transparent;
+            //border-color:#ddd;
+            //background:transparent;
             & + .cell {
-                border-color:#ddd;
-                background:transparent;
+                //border-color:#ddd;
+                //background:transparent;
                 button.ui_calendar {
                     background:url("/lg5-common/images/icons/icon-cal-selected.svg") center no-repeat;
-                    background-size:24px;
                 }
+            }
+        }
+        &.disabled {
+            input,
+            input:read-only {
+                border-color:#ededed;
+                background:#ededed;
+            }
+            input:read-only + .cell,
+            input:disabled + .cell {
+                border-color:#ededed;
+                background:#ededed;
             }
         }
     }
