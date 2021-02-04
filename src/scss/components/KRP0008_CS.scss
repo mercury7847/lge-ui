@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+body {
+    &::before {
+        content: 'asd';
+        display: block;
+        font-size: 100px;
+    }
+}
