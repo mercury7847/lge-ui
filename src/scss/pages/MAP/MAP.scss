@@ -478,6 +478,7 @@ body {
         label {
             display: block;
             position: relative;
+            height:30px;
 
             input {
                 position: absolute;
@@ -491,7 +492,7 @@ body {
                     overflow: hidden;
                     position: relative;
                     width: 52px;
-                    height: 30px;
+                    height: inherit;
                     border-radius: 60px;
                     background-color: #ddd;
                     cursor: pointer;
@@ -709,7 +710,7 @@ body {
     }
 }
 
-.toast-message {
+.toast-message-app {
     position: fixed;
     left: 0;
     bottom: 50px;
