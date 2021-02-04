@@ -5,6 +5,7 @@
     var ARS_AGREE_URL;
     var REQUEST_SUBMIT_URL;
     var PREPAYMENT_CHECKED_URL;
+    var MSG_SEND_URL;
 
     var requestAgreeChecker;
     var requestButton;
@@ -53,6 +54,7 @@
         ARS_AGREE_URL = $('.requestRentalForm').data('arsAgreeUrl');
         REQUEST_SUBMIT_URL = $('.requestRentalForm').data('submitUrl');
         PREPAYMENT_CHECKED_URL = $('.requestRentalForm').data('prepaymentCheckedUrl');
+        MSG_SEND_URL = $('.requestRentalForm').data('msgSendUrl');
 
         step1Block = $('.requestRentalForm ul li:nth-child(1)');
         step2Block = $('.requestRentalForm ul li:nth-child(2)');
@@ -89,8 +91,8 @@
             },
             registBackFirst: {
                 required: true,
-                errorMsg: "생년월일을 다시 확인해주세요.",
-                msgTarget: '.err-regist'
+                errorMsg: "주민번호 뒤 첫자리를 다시 확인해주세요.",
+                msgTarget: '.err-regist-first'
             },
             userEmail:{
                 required: true,
@@ -428,6 +430,11 @@
             step3Block.find('.sendMessage').prop('disabled', !chk);
 
             if(chk) $('#popup-cardApply').vcModal('close');
+        }).on('click', '.msgSend-btn', function(e){
+            e.preventDefault();
+            //문자 동의 발송
+
+            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(MSG_SEND_URL);
         });
 
         $('#popup-selfClearing').on('click', '.btn-group button.btn', function(e){
@@ -686,7 +693,16 @@
 
             console.log("setInstallAbledConfirm() abled :", abled);
             
-            if(abled == "Y") setInstallAdress();
+            if(abled == "Y"){
+                setInstallAdress();
+
+                if(result.data.allOwnedProductYn == "Y"){
+                    step2Block.find('.forAOP').hide();
+                } else{
+                    step2Block.find('.forAOP').show().find('input, select, button').prop('disabled', false);
+                    step2Block.find('.forAOP').find('.ui_selectbox').vcSelectbox('update');
+                }
+            }
             
             setInputData('installAbled', abled);
         });
