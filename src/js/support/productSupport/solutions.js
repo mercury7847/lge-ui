@@ -436,6 +436,8 @@
                         productCode: data.productCode,
                         page: 1
                     };
+
+                    if (data.cstFlag) param['cstFlag'] = data.cstFlag;
                     
                     self.param = $.extend(self.param, param); 
                     self.completeModel();
