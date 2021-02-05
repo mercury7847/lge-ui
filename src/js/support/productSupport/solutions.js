@@ -173,16 +173,27 @@
                         if (key == 'keyword') {
                             data['keywords'].push(decodeURIComponent(searchObj.keyword));
                             self.$keywordInput.val(decodeURIComponent(searchObj.keyword));
+                        } else if (key == 'keywordHistory') {
+                            var temp = searchObj.keywordHistory.split('+');
+                            if (temp.length) {
+                                data['keywords'] = [];
+                                temp.forEach(function(item) {
+                                    data['keywords'].push(decodeURIComponent(item));
+                                });
+                            }
                         } else {
                             data[key] = decodeURIComponent(searchObj[key]);
                         }
                         
                         if (key == 'mktModelCd') data['modelCode'] = searchObj.mktModelCd;
                         if (key == 'sort') self.$solutionsSort.val(searchObj.sort).vcSelectbox('update');
+                        if (key == 'research') self.$solutionsWrap.find('#research').prop('checked', searchObj.research);
                     }
 
-                    data.categoryNm = $('#category').val();
-                    data.subCategoryNm = $('#subCategory').val();
+                    data.category = $('#category').val();
+                    data.categoryNm = $('#categoryNm').val();
+                    data.subCategory = $('#subCategory').val();
+                    data.subCategoryNm = $('#subCategoryNm').val();
                 }
 
                 self.param = data;
@@ -204,6 +215,9 @@
                     self.setBanner(data);
                     self.setPopularKeyword(data);
                     self.setFilter(data);
+                    if (self.param.topic != '') {
+                        self.setSubFilter(data);
+                    }
                     self.setSolutionsList(data);
                     self.setKeyword(param);
 

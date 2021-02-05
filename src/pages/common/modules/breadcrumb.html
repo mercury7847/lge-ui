@@ -4,6 +4,10 @@
         @@for (var i=0; i < breadcrumb.length; i++) {
         <li><a href="#">`+breadcrumb[i]+`</a></li>
         }
+        <!-- 210205 수정 [링크가 없는 경우 추가] -->
+        @@if(context.nonLink) {
+        <li><span>@@nonLink</span></li>
+        }
         <li><strong>현재 페이지</strong></li>
     </ul>
 </div>
