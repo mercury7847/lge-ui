@@ -1,7 +1,7 @@
 (function() {
     var validation;
     var authValidation;
-    var sendValidation;
+    var authManager;
 
     var custom = {
         init: function() {
@@ -18,40 +18,84 @@
                         msgTarget: '.err-block'
                     },
                     userName: {
-                        msgTarget: '.err-block'
+                        required: true,
+                        maxLength: 10,
+                        pattern: /^[가-힣a-zA-Z]+$/,
+                        msgTarget: '.err-block',
+                        errorMsg: '이름을 입력해주세요.',
+                        patternMsg: '한글 또는 영문만 입력 가능합니다.'
                     },
                     phoneNo: {
-                        pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                        msgTarget: '.err-block'
+                        required: true,
+                        minLength: 10,
+                        maxLength: 11,
+                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                        msgTarget: '.err-block',
+                        errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
                     },
                     email:{
+                        required: true,
                         pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        msgTarget: '.err-block'
+                        minLength: 5,
+                        maxLength: 50,
+                        msgTarget: '.err-block',
+                        errorMsg: '이메일 주소를 입력해주세요.',
+                        patternMsg: '올바른 이메일 형식이 아닙니다.'
                     },
                     title: {
-                        msgTarget: '.err-block'
+                        required: true,
+                        maxLength: 40,
+                        msgTarget: '.err-block',
+                        errorMsg: '제목을 입력해주세요.'
                     },
                     content: {
-                        msgTarget: '.err-block'
+                        required: true,
+                        maxLength: 1000,
+                        msgTarget: '.err-block',
+                        errorMsg: '내용을 입력해주세요.'
                     }
                 }
 
-                var authRegister = {
-                    authName: {
-                        pattern: /^[가-힣a-zA-Z]+$/,
-                        msgTarget: '.err-block'
+                var authOptions = {
+                    elem: {
+                        popup: '#certificationPopup',
+                        name: '#authName',
+                        phone: '#authPhoneNo',
+                        number: '#authNo'
                     },
-                    authPhoneNo: {
-                        pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                        msgTarget: '.err-block'
+                    target: {
+                        name: '#userName',
+                        phone: '#phoneNo'
                     },
-                    authNo:{
-                        msgTarget: '.err-block'
+                    register: {
+                        authName: {
+                            required: true,
+                            maxLength: 10,
+                            pattern: /^[가-힣a-zA-Z]+$/,
+                            msgTarget: '.err-block',                        
+                            errorMsg: '이름을 입력해주세요.',
+                            patternMsg: '이름은 한글 또는 영문만 입력 가능합니다.'
+                        },
+                        authPhoneNo: {
+                            required: true,
+                            minLength: 10,
+                            maxLength: 11,
+                            pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                            msgTarget: '.err-block',
+                            errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                            patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                        },
+                        authNo:{
+                            required: true,
+                            msgTarget: '.err-block',
+                            errorMsg: '인증번호를 입력해주세요.',
+                        }
                     }
                 };
 
                 validation = new vcui.ui.CsValidation('#submitForm', {register:register});
-                authValidation = new vcui.ui.CsValidation('#certificationPopup .form-wrap', {register:authRegister});
+                authManager = new AuthManager(authOptions);
 
                 self.bindEvent();
             });
@@ -99,65 +143,30 @@
                 }
             });
 
-            self.$authPopup.on('modalshown', function() {
-                var $this = $(this);
-
-                $this.find('.btn-send').off('click').on('click', function() {
-                    var $btnSend = $(this),
-                        ajaxUrl = $btnSend.data('ajax'),
-                        data = authValidation.getValues(['authName','authPhoneNo']);
-
-                    var result = authValidation.validate(['authName','authPhoneNo']);
-
-                    if (result.success == true) {
-                        lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
-                            if (result.data.resultFlag == 'Y') {
-                                $btnSend.text('인증번호 재발송');
-                                $this.find('#authNo').prop('disabled', false);
-                            }
-    
-                            lgkorUI.alert("", {
-                                title: result.data.resultMessage
-                            });
-                        })
-                    }
-                });
-
-                $this.find('.btn-auth').off('click').on('click', function() {
-                    var result = authValidation.validate(),
-                        ajaxUrl = $this.find('.form-wrap').data('ajax'),
-                        data = authValidation.getValues(['authName','authPhoneNo','authNo']);
-
-                    if (result.success == true) {
-                        if ($('#authNo').prop('disabled')) {
-                            $('#laypop1').vcModal(); 
-                            return false;
-                        }
-
-                        lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
-                            if (result.data.resultFlag == 'Y') {
-                                self.$form.find('#userName').val(self.$authPopup.find('#authName').val());
-                                self.$form.find('#phoneNo').val(self.$authPopup.find('#authPhoneNo').val());
-                                self.$form.find('.btn-open span').html('휴대전화 인증 완료');
-                                self.$form.find('.btn-open').prop('disabled', true);
-                            
-                                self.$authPopup.vcModal('hide');
-                            }
-
-                            lgkorUI.alert("", {title: result.data.resultMessage});
-                        });
-                    }
-                });
-            });
-
             self.$authPopup.on('modalhide', function() {
                 var $this = $(this);
 
                 self.$authPopup.find('.btn-send').text('인증번호 발송');
                 $this.find('#authNo').prop('disabled', true);
                 $this.find('input').val('');
+            });
 
-                authValidation.reset();
+            $('.btn-open').on('click', function() {
+                authManager.open();
+            });
+
+            // 인증문자 보내기
+            self.$authPopup.find('.btn-send').on('click', function() {
+                authManager.send();
+            });
+
+            // 인증 완료 하기
+            self.$authPopup.find('.btn-auth').on('click', function() {
+                authManager.confirm(this, function(success, result) {
+                    if (success) {
+                        console.log(result);
+                    }
+                });
             });
         }
     }

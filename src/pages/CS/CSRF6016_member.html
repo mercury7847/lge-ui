@@ -26,68 +26,66 @@
             })
             <div class="contents support request-call">
                 
-                <div class="">
-                    <div class="accordion-wrap ui_accordion border-type directCall-wrap" data-single-open="true">
-                        <ul>
-                            <li class="lists">
-                                <div class="head">
-                                    <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="열기" data-close-text="닫기">
-                                        <span class="subtitle"><strong>바로 전화하고 싶으신가요?</strong></span>
-                                        <span class="blind ui_accord_text">열기</span>
-                                    </a>
+                <div class="accordion-wrap ui_accordion border-type directCall-wrap" data-single-open="true">
+                    <ul>
+                        <li class="lists">
+                            <div class="head">
+                                <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="열기" data-close-text="닫기">
+                                    <span class="subtitle"><strong>바로 전화하고 싶으신가요?</strong></span>
+                                    <span class="blind ui_accord_text">열기</span>
+                                </a>
+                            </div>
+                            <div class="accord-cont ui_accord_content">
+                                <div class="direct-call-wrap">
+                                    
                                 </div>
-                                <div class="accord-cont ui_accord_content">
-                                    <div class="direct-call-wrap">
-                                        
-                                    </div>
 
-                                    <dl class="inquiry-dl">
-                                        <dt>서비스별 전화번호 안내</dt>
-                                        <dd>
-                                            <ul class="inquiry-list type-bullet">
-                                                <li>
-                                                    <div class="title"><strong>제품 및 서비스 문의</strong></div>
-                                                    <div class="description">1544-7777</div>
-                                                </li>
-                                                <li>
-                                                    <div class="title"><strong>구입제품 배송확인-㈜판토스</strong></div>
-                                                    <div class="description">1577-1185</div>
-                                                </li>
-                                                <li>
-                                                    <div class="title"><strong>케어솔루션 가입</strong></div>
-                                                    <div class="description">080-755-2222</div>
-                                                </li>
-                                                <li>
-                                                    <div class="title"><strong>B2B 서비스 상담</strong></div>
-                                                    <div class="description">1544-8777</div>
-                                                </li>
-                                                <li>
-                                                    <div class="title"><strong>LG전자 베스트샵몰</strong></div>
-                                                    <div class="description">1661-2471</div>
-                                                </li>
-                                                <li>
-                                                    <div class="title"><strong>케어솔루션 수납센터</strong></div>
-                                                    <div class="description">1644-7717</div>
-                                                </li>
-                                                <li>
-                                                    <div class="title"><strong>케어솔루션 서비스 상담</strong></div>
-                                                    <div class="description">케어솔루션 서비스 상담</div>
-                                                </li>
-                                                <li>
-                                                    <div class="title"><strong>LG페이</strong></div>
-                                                    <div class="description">1544-8552</div>
-                                                </li>
-                                                <li>
-                                                    <div class="title"><strong>공기청정 케어십 상담</strong></div>
-                                                    <div class="description">1677-0887</div>
-                                                </li>
-                                            </ul>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                                <dl class="inquiry-dl">
+                                    <dt>서비스별 전화번호 안내</dt>
+                                    <dd>
+                                        <ul class="inquiry-list type-bullet">
+                                            <li>
+                                                <div class="title"><strong>제품 및 서비스 문의</strong></div>
+                                                <div class="description">1544-7777</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>구입제품 배송확인-㈜판토스</strong></div>
+                                                <div class="description">1577-1185</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>케어솔루션 가입</strong></div>
+                                                <div class="description">080-755-2222</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>B2B 서비스 상담</strong></div>
+                                                <div class="description">1544-8777</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>LG전자 베스트샵몰</strong></div>
+                                                <div class="description">1661-2471</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>케어솔루션 수납센터</strong></div>
+                                                <div class="description">1644-7717</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>케어솔루션 서비스 상담</strong></div>
+                                                <div class="description">케어솔루션 서비스 상담</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>LG페이</strong></div>
+                                                <div class="description">1544-8552</div>
+                                            </li>
+                                            <li>
+                                                <div class="title"><strong>공기청정 케어십 상담</strong></div>
+                                                <div class="description">1677-0887</div>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
 
                 <!-- 선택 제품 플로팅바 -->
@@ -117,7 +115,7 @@
                             <!-- 약관 동의 -->
                             <div class="step-box active" id="stepTerms">
                                 <div class="section">
-                                    <div class="form-infos">
+                                    <div class="form-infos first-type">
                                         <p class="req" aria-disabled="true">필수 입력 항목</p>
                                     </div>
                                     @@include('./common/support/accept-terms.html', {
@@ -156,7 +154,7 @@
                             <!-- 예약 내용 입력 -->
                             <div class="step-box" id="stepInput">
                                 <div class="section">
-                                    <div class="form-infos">
+                                    <div class="form-infos first-type">
                                         <p class="req" aria-disabled="true">필수 입력 항목</p>
                                     </div>
                                     <div class="tit-wrap">
@@ -291,7 +289,7 @@
                                                 </div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="userNm" id="userNm" value="홍길동" placeholder="이름 입력" data-error-msg="이름을 입력해주세요" data-pattern-msg="한글 또는 영문만 입력 가능합니다." data-required="true" readonly required>
+                                                        <input type="text" name="userNm" id="userNm" value="홍길동" placeholder="이름 입력" max-length="10" data-error-msg="이름을 입력해주세요" data-pattern-msg="한글 또는 영문만 입력 가능합니다." data-required="true" readonly required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
