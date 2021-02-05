@@ -273,6 +273,14 @@
                         display:none;
                     }
                 }
+
+                .list {
+                    span {
+                        &:before {
+                            background-image: url("/lg5-common/images/CS/btn-viewlist-bk.svg");
+                        }
+                    }
+                }
             }
             .result-list-box {
                 display:none;
@@ -496,7 +504,7 @@
                     }
                 }
                 .list-wrap {
-                    height:calc(100% - 270px - 56px);
+                    height:calc(100% - 270px - 76px);
                     .sch-list {
                         position:relative;
                         height:100%;
@@ -753,6 +761,8 @@
         z-index:1;
 
         .map-container {
+            overflow-x:hidden;
+            overflow-y:visible;
             .btn-list-fold {
                 display:none;
             }
