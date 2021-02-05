@@ -440,10 +440,11 @@
 
                 self.param = data;
 
-                self.$solutionsFilter.find('.open, .on').removeClass('open on');
-                self.$solutionsFilter.find('.sub-depth').remove();
-
-                self.$selectTopic.vcSelectbox('selectedIndex', 0);
+                self.$solutionsFilter.empty();
+                self.$selectTopic.find('option:first-child').prop('selected', true);
+                self.$selectSubTopic.find('option:first-child').prop('selected', true);
+                self.$selectTopic.vcSelectbox('update');
+                self.$selectSubTopic.vcSelectbox('update');
                 self.$keywordInput.val('');
                 self.$solutionsWrap.find('#research').prop('checked', false);
                 self.$solutionsSort.val(data.sort).vcSelectbox('update');
