@@ -36,10 +36,10 @@
                 <div class="cont-wrap">
 
                     <div class="step-area">
-                        <input type="hidden" name="categoryNm" id="categoryNm" value="모바일">
-                        <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="일반폰">
                         <input type="hidden" name="category" id="category" value="1111">
+                        <input type="hidden" name="categoryNm" id="categoryNm" value="모바일">
                         <input type="hidden" name="subCategory" id="subCategory" value="2222">
+                        <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="일반폰">
                         <input type="hidden" name="modelCode" id="modelCode" value="LGP810SPEAK">
                         <input type="hidden" name="productCode" id="productCode" value="NTB">
                         <input type="hidden" name="pageCode" id="pageCode" value="pageCode">
@@ -66,7 +66,7 @@
                         </div>
                         <!-- // 제품 선택 -->
 
-                        <div class="step-box active" id="stepInput" data-list-url="/lg5-common/data-ajax/support/videoList.json">
+                        <div class="step-box active" id="stepInput" data-list-url="/lg5-common/data-ajax/support/videoGuide/videoList.json" data-sub-topic-url="/lg5-common/data-ajax/support/videoGuide/subTopicOption.json">
                             <div class="search-wrap">
                                 <div class="title">
                                     <p class="tit">정보분류와 검색 키워드를 이용하여<br class="mo-only">보다 정확한 해결책을 찾을 수 있습니다.</p>
@@ -74,7 +74,7 @@
                                 <div class="search-inner">
                                     <div class="box">
                                         <div class="select-wrap">
-                                            <select name="topic" id="topic" class="ui_selectbox ui_select_target" data-target="#subTopic" data-ajax="/lg5-common/data-ajax/support/subTopicOption.json" disabled>
+                                            <select name="topic" id="topic" class="ui_selectbox" disabled>
                                                 <option value="" class='placeholder'>전체 분류</option>
                                             </select>
                                         </div>
@@ -94,7 +94,7 @@
                                             },
                                             'inputId': 'keyword',
                                             'inputTitle': '제품명, 모델명 직접 검색',
-                                            'inputError': '',
+                                            'inputError': '검색 키워드를 2자 이상 입력하세요.',
                                             'inputType': 'default',
                                             'inputDisabled': '',
                                             'desc': '',
