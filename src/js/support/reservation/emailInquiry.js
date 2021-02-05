@@ -62,7 +62,7 @@
                     },
                     inquiryContent: {
                         required: true,
-                        maxLength: 100,
+                        maxLength: 1000,
                         msgTarget: '.err-block',
                         errorMsg: '내용을 입력해주세요.'
                     },
