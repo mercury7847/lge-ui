@@ -122,7 +122,7 @@ var FilterLayer = (function() {
                 if(length > 0) {
                     $parent.find('span.sel_num').text('('+length+')');
                 } else {
-                    $parent.find('span.sel_num').text('(0)');
+                    $parent.find('span.sel_num').text(' (0)');
                 }
                 self.triggerFilterChangeEvent();
             });

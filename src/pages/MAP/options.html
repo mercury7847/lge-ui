@@ -5,28 +5,25 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>LGE</title>
     <link rel="stylesheet" href="/lg5-common/css/reset.min.css" />
+    <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
     <link rel="stylesheet" href="/lg5-common/css/pages/MAP/MAP.min.css" />
     <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
-    <!-- <script src="/lg5-common/js/common-ui.js"></script> -->
+    <!-- <script src="/lg5-common/js/app.common.js"></script> -->
     <script>
-        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
+        //var AppUserAgent = navigator.userAgent || navigator.vendor || window.opera;
         var oldStartValue = "";
         var oldEndValue = "";
-        var date = new Date();
-        var fullYear = date.getFullYear();
-        var month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
-        var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-        var today = month + "/" + day + "/" + fullYear + " ";
+        var appDate = new Date();
+        var appFullYear = appDate.getFullYear();
+        var appMonth = (appDate.getMonth() + 1) < 10 ? "0" + (appDate.getMonth() + 1) : (appDate.getMonth() + 1);
+        var appDay = appDate.getDate() < 10 ? "0" + appDate.getDate() : appDate.getDate();
+        var appToday = appMonth + "/" + appDay + "/" + appFullYear + " ";
         var events = false;
 
         var beforeFocusEle = "";
         var beforeFocusEleToast = "";
         var optModal = {
             open: function(id, role, txt, confirm, cancel){
-                //var $id = $(id);
-                //$id.fadeIn(200);
-
                 var valId = id;
                 if(id == null || id == "" || id == undefined){
                     varId = "lyr-modal";
@@ -65,7 +62,6 @@
                     //접근성
                     $(this).find(".lyr-modal-inner").attr("tabindex", 0);
                     $(this).find(".lyr-modal-inner").attr("tabindex", 0).focus();
-                    //$(".main-panel, .sub-panel").attr("aria-hidden", true);
                     $("lyr-opt-panel").attr("aria-hidden", true);
                 });
                 modalControl();
@@ -73,7 +69,6 @@
             close: function(){
                 $(document).find(".lyr-modal").fadeOut(200, function(){
                     //접근성
-                    //$(".main-panel, .sub-panel").attr("aria-hidden", false);
                     $("lyr-opt-panel").attr("aria-hidden", false);
                     $(beforeFocusEle).focus();
                     beforeFocusEle = "";
@@ -81,7 +76,7 @@
                 });
             }
         }
-        var cnt = 15;
+        var appCnt = 15;
         var toastMessage = {
             init: function(txt, type, timesetIdx){
                 if(!type){
@@ -90,27 +85,41 @@
                 if(!timesetIdx){
                     timesetIdx = 0;
                 }
-                var id = "toast"+cnt;
+                var id = "toast"+appCnt;
                 var $type = type;
                 var $timesetIdx = timesetIdx;
                 var $body = $("body");
-                var html = '<div class="toast-message" role="alertdialog" aria-modal="true" id="'+id+'" aria-describedby="toast-message-cont" aria-labelledby="toast-message-cont" tabindex="0">';
+
+                var html = '<div class="toast-message-app" role="alertdialog" aria-modal="true" id="'+id+'" aria-describedby="toast-message-cont" aria-labelledby="toast-message-cont" tabindex="0">';
                     html += '    <div>';
                     html += '        <div class="txt-message ' + $type + '" id="toast-message-cont">' + txt + '</div>';
                     html += '        <button type="button" class="btn-toast-close"><span>닫기</span></button>';
                     html += '    </div>';
                     html += '</div>';
 
+                /*
+                var html = '<div class="toast-message" role="alertdialog" aria-modal="true" id="'+id+'" aria-describedby="toast-message-cont" aria-labelledby="toast-message-cont" tabindex="0">';
+                    html += '    <div class="toast-message-box">';
+                    html += '        <div class="inner">';
+                    html += '            <p class="toast-text" id="toast-message-cont">' + txt + '</p>';
+                    html += '            <a href="#" role="button" class="btn-area"><span class="blind">확인</span></a>';
+                    html += '        </div>';
+                    html += '    </div>';
+                    html += '</div>';
+                */
+
                 $body.append(html);
-                //$("#"+id).attr("tabindex", 0).focus();
                 this.open("#"+id, $timesetIdx);
             },
             open: function(id, timesetIdx){
-                cnt++;
+                appCnt++;
                 var $id = $(id);
 
                 $("html").css("overflow-y","hidden");
-                $id.css("z-index", (cnt + 500)).stop().animate({'bottom':'50px'}, 200, function(){
+                $id.css({
+                    "z-index" : (appCnt + 500),
+                    "display" : "block"
+                }).stop().animate({'bottom':'50px'}, 200, function(){
                     $(this).attr("tabindex", 0).focus();
                 });
                 setTimeout(function(){
@@ -124,8 +133,7 @@
             },
             close: function(id, timesetIdx){
                 var $id = $(id);
-                //$id.removeClass("show").remove();
-                $id.css("z-index", cnt).stop().animate({'bottom':'-60px'}, 200, function(){
+                $id.css("z-index", appCnt).stop().animate({'bottom':'-60px'}, 200, function(){
                     $("html").css("overflow-y","scroll");
                     $(beforeFocusEleToast).focus();
                     //if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -211,7 +219,7 @@
             var endDateVal = endDate.val();
 
             if(events){
-                if(Date.parse(today + startDateVal) == Date.parse(today + endDateVal)){
+                if(Date.parse(appToday + startDateVal) == Date.parse(appToday + endDateVal)){
                     optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
                     $("#modalTimeset .btn-modal-confirm").off("click").on({
                         click : function(){
@@ -235,7 +243,6 @@
             //로그아웃
             $("#btn-opt-logout").on({
                 click : function(){
-                    //optModal.open("#modalLogin");
                     beforeFocusEle = "#btn-opt-logout";
                     optModal.open("modalLogin", "alertdialog", "<p>로그아웃 하시겠습니까?</p>", "확인", "취소");
                 }
@@ -246,10 +253,8 @@
                     beforeFocusEle = "#locInfo";
                     var checked = $(this).prop("checked");
                     if(checked){
-                        //optModal.open("#modalLocationInfo1");
                         optModal.open("modalLocationInfo1", "alertdialog", "<p>사용자 위치정보를 수집하는데 <br>동의하시겠습니까?</p>", "확인", "취소");
                     }else{
-                        //optModal.open("#modalLocationInfo2");
                         optModal.open("modalLocationInfo2", "alertdialog", "<p>위치정보 수집에 대한 <br>동의를 철회하시겠습니까?</p>", "확인", "취소");
                     }
                     return false;
@@ -261,12 +266,10 @@
                     beforeFocusEle = "#pushAlarm";
                     var checked = $(this).prop("checked");
                     if(checked){
-                        //optModal.open("#modalAlarmAgree");
                         optModal.open("modalAlarmAgree", "alert", "<p>알림 수신을 동의하셨습니다.</p>", "확인");
                         //접근성
                         $(this).attr("aria-expanded", true);
                     }else{
-                        //optModal.open("#modalPushAlarm");
                         optModal.open("modalPushAlarm", "alertdialog", "<p>푸시 알림을 해제하시는 경우 <br><strong>서비스 이벤트 혜택 알림을</strong> <br>받을 수 없게 됩니다.<br>알림을 해제 하시겠습니까?</p>", "확인", "취소");
                         return false;
                     }
@@ -297,7 +300,6 @@
                     oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
 
                     events = true;
-                    //console.log(e);
                 },
                 focusin : function(){
                     $(this).closest("div").find("[class*=rst-time]").addClass("focus");
@@ -315,11 +317,14 @@
                     events = true;
                     var idx = $(this).closest("div").index();
                     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        //console.log("iphone");
                     }else{
-                        //changeTimeSet(idx);
+                        changeTimeSet(idx);
+                        /*
                         setTimeout(function(){
                             changeTimeSet(idx);
                         }, 500);
+                        */
                     }
                 },
                 blur: function(e){
@@ -335,8 +340,8 @@
                 click : function(){
                     var checked = $(this).prop("checked");
                     beforeFocusEleToast = "#mktPushAlarmChk";
-                    var hours = date.getHours();
-                    var txtDate = fullYear + "년" + month + "월" + day + "일 " + hours + "시 ";
+                    var hours = appDate.getHours();
+                    var txtDate = appFullYear + "년" + appMonth + "월" + appDay + "일 " + hours + "시 ";
                     if(checked){
                         toastMessage.init(txtDate + "<br>알림 허용 처리가 완료되었습니다.", "type2");
                     }else{
@@ -475,7 +480,7 @@
                 <div class="opt-controls">
                     <h2>알림</h2>
                     <div>
-                        <a href="#" class="link btn-ctrl-panel" data-panel=".alarm-setting" role="button">알림설정</a>
+                        <a href="javascript:void(0);" class="btn-link btn-ctrl-panel" data-panel=".alarm-setting" role="button">알림설정</a>
                     </div>
                 </div>
 
@@ -494,7 +499,7 @@
 
                 <div class="opt-controls">
                     <div>
-                        <a href="#" class="link btn-ctrl-panel" data-panel=".source-license" role="button">오픈소스 라이선스</a>
+                        <a href="javascript:void(0);" class="btn-link btn-ctrl-panel" data-panel=".source-license" role="button">오픈소스 라이선스</a>
                     </div>
                 </div>
 
@@ -506,7 +511,7 @@
                             <span>최신버전 <em>v_00.00</em></span>
                         </p>
                         <!-- 비활성화 -->
-                        <button type="button" class="btn-opt-update"><span>업데이트</span></button>
+                        <button type="button" class="btn-opt-update" disabled><span>업데이트</span></button>
                         <!-- //비활성화 -->
 
                         <!-- 활성화 -->
@@ -550,7 +555,6 @@
                         </div>
                         <div class="details">
                             <div class="time-setting" id="timeSettingCon">
-                                <!-- <p>* 지정된 시간 동안 푸시 알림 거부</p> -->
                                 <p class="txt-guide">지정된 시간 동안 푸시 알림 거부</p>
                                 <div class="inner">
                                     <div>
@@ -601,11 +605,13 @@
                 <button type="button" data-panel=".source-license" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
             </div>
             <div class="opt-container">
-                <div>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur numquam, aliquid facilis dignissimos sed obcaecati at corrupti nihil quod atque facere voluptates iusto exercitationem ex nisi? Ea architecto consectetur nulla.<br>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed iste excepturi nobis laudantium quidem asperiores suscipit unde, atque ipsum officiis at debitis architecto labore molestiae dolorem cumque voluptas, praesentium id.<br>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet sapiente dicta rerum ipsa voluptate, minima odit nulla, facere optio, neque at? Consectetur animi commodi placeat nesciunt distinctio harum magnam dolores!<br>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut beatae mollitia praesentium iure esse provident dolor explicabo possimus ex aperiam. Tempore, sed ratione tempora perspiciatis sint soluta molestias porro ipsa!
+                <div class="opt-controls">
+                    <div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur numquam, aliquid facilis dignissimos sed obcaecati at corrupti nihil quod atque facere voluptates iusto exercitationem ex nisi? Ea architecto consectetur nulla.<br>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed iste excepturi nobis laudantium quidem asperiores suscipit unde, atque ipsum officiis at debitis architecto labore molestiae dolorem cumque voluptas, praesentium id.<br>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet sapiente dicta rerum ipsa voluptate, minima odit nulla, facere optio, neque at? Consectetur animi commodi placeat nesciunt distinctio harum magnam dolores!<br>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut beatae mollitia praesentium iure esse provident dolor explicabo possimus ex aperiam. Tempore, sed ratione tempora perspiciatis sint soluta molestias porro ipsa!
+                    </div>
                 </div>
             </div>
         </div>

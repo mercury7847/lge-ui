@@ -2,6 +2,7 @@
     position:fixed;
     right:100px;
     bottom:48px;
+    z-index:1;
     @include mobile {
         right:20px;
         bottom:24px;

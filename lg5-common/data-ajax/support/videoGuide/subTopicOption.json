@@ -1,0 +1,22 @@
+{
+    "status": "success",
+    "message":null,
+    "data": [
+        {
+            "name": "All",
+            "code": "All" 
+        },
+        {
+            "name": "퀵 헬프 방법",
+            "code": "10000002" 
+        },
+        {
+            "name": "앱 설치",
+            "code": "10000003" 
+        },
+        {
+            "name": "타임머신",
+            "code": "10000004" 
+        }   
+    ]
+}

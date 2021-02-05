@@ -53,7 +53,7 @@
         }
     }
 
-    *:not([style*="display: none"]) + .cont-wrap {
+    *:not([style*="display: none"]) ~ .cont-wrap {
         padding-top:70px;
 
         .form-infos {
@@ -93,7 +93,7 @@
                 }
             }
         }
-        *:not([style*="display: none"]) + .cont-wrap {
+        *:not([style*="display: none"]) ~ .cont-wrap {
             padding-top:55px;
     
             .form-infos {

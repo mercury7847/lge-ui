@@ -5,25 +5,23 @@
         '{{# } else { #}}' +
         '<li>' +
         '{{# } #}}' +
+        '{{# if (typeof subType == "undefined") { #}}' +
         '<button type="button" class="filter-link" data-code="{{code}}" data-name="{{name}}">{{name}}</button>' +
-        '</li>';
-    var subFilterHeadTemplate = 
-        '<div class="sub-depth">' +
-            '<div class="tit-wrap">' +
-                '<button type="button" class="btn-back"><span class="blind">뒤로 가기</span></button>' +
-                '<strong class="tit">{{subTopicName}}</strong>' +
-            '</div>' +
-            '<ul>' +
-            '</ul>' +
-        '</div>';
-    var subFilterTemplate = 
-        '{{# if (active == true) { #}}' +
-        '<li class="on">' +
         '{{# } else { #}}' +
-        '<li>' +
+        '<button type="button" class="sub-filter-link" data-code="{{code}}" data-name="{{name}}">{{name}}</button>' +
         '{{# } #}}' +
-            '<button type="button" class="filter-link" data-code="{{code}}" data-name="{{name}}">{{name}}</button>' +
         '</li>';
+    var filterHeadTemplate = 
+        '<div class="title">' +
+            '{{# if (typeof back != "undefined") { #}}' +
+            '<button type="button" class="btn-back"><span class="blind">뒤로 가기</span></button>' +
+            '<h2 class="tit">{{name}}</h2>' +
+            '{{# } else { #}}' +
+            '<h2 class="tit">증상 선택</h2>' +
+            '{{# } #}}' +
+        '</div>' +
+        '<ul class="filter-list">' +
+        '</ul>';
 
     var filterOptionTemplate =
         '{{# if (active == true) { #}}' +
@@ -50,6 +48,18 @@
         '{{# } #}}' +
         '</a>' +
         '</li>';
+
+    var keywordsTemplate = 
+        '{{# if (typeof topic != "undefined" && topic != "") { #}}' +
+            '{{# if (typeof subTopic != "undefined" && subTopic != "" && topic != "All") { #}}' +
+            '“<span class="point">{{topic}} &gt; {{subTopic}}</span>”' +
+            '{{# } else { #}}' +
+            '“<span class="point">{{topic}}</span>”' +
+            '{{# } #}}' +
+        '{{# } #}}' +
+        '{{# if (typeof keyword != "undefined" && keyword != "") { #}}' +
+        ' “<span class="point">{{keyword}}</span>”' +
+        '{{# } #}}';
 
     var recommProductItemTemplate =         
         '<div class="slide-conts ui_carousel_slide">' +
@@ -163,19 +173,30 @@
                         if (key == 'keyword') {
                             data['keywords'].push(decodeURIComponent(searchObj.keyword));
                             self.$keywordInput.val(decodeURIComponent(searchObj.keyword));
+                        } else if (key == 'keywordHistory') {
+                            var temp = searchObj.keywordHistory.split('+');
+                            if (temp.length) {
+                                data['keywords'] = [];
+                                temp.forEach(function(item) {
+                                    data['keywords'].push(decodeURIComponent(item));
+                                });
+                            }
                         } else {
                             data[key] = decodeURIComponent(searchObj[key]);
                         }
                         
                         if (key == 'mktModelCd') data['modelCode'] = searchObj.mktModelCd;
                         if (key == 'sort') self.$solutionsSort.val(searchObj.sort).vcSelectbox('update');
+                        if (key == 'research') self.$solutionsWrap.find('#research').prop('checked', searchObj.research);
                     }
 
-                    data.categoryNm = $('#category').val();
-                    data.subCategoryNm = $('#subCategory').val();
-
-                    self.param = data;
+                    data.category = $('#category').val();
+                    data.categoryNm = $('#categoryNm').val();
+                    data.subCategory = $('#subCategory').val();
+                    data.subCategoryNm = $('#subCategoryNm').val();
                 }
+
+                self.param = data;
             },
             completeModel: function() {
                 var self = this;
@@ -194,6 +215,9 @@
                     self.setBanner(data);
                     self.setPopularKeyword(data);
                     self.setFilter(data);
+                    if (self.param.topic != '') {
+                        self.setSubFilter(data);
+                    }
                     self.setSolutionsList(data);
                     self.setKeyword(param);
 
@@ -251,21 +275,18 @@
                 var arr = data.popularKeyword instanceof Array ? data.popularKeyword : [];
                 this.$keywordWrap.search('setPopularKeyword', arr);
             },
-            setKeyword: function(data) {
+            setKeyword: function() {
                 var self = this;
-                var keywords = data.keywords instanceof Array ? data.keywords : [], 
-                    html = '';
+                var html = '';
                 
-                if (keywords.length) {
-                    keywords.forEach(function(item) {
-                        if (item != 'undefined' || item != '') {
-                            html += vcui.template('“<span class="point">{{item}}</span>”  ', {item:item});
-                        }
-                    });
-                    
-                    html += '검색 결과';
-                    self.$solutionsResult.find('.tit-wrap h3.tit').html(html);
-                }
+                html = vcui.template(keywordsTemplate, {
+                    topic: self.param.topicNm,
+                    subTopic: self.param.subTopicNm,
+                    keyword: self.param.keywords[0]
+                });
+
+                html += ' 검색 결과';
+                self.$solutionsResult.find('.title .tit').html(html);
             },
             setFilter: function(data) {
                 var self = this;
@@ -273,9 +294,10 @@
                     filterArr = data.filterList instanceof Array ? data.filterList : [],
                     htmlPC = htmlM = '';
 
-                self.$solutionsFilter.find('.filter-list').empty();
-
                 if (filterArr.length) {
+                    self.$solutionsFilter.empty();
+                    self.$solutionsFilter.html(vcui.template(filterHeadTemplate, {}));
+
                     filterArr.forEach(function(item) {
                         if (item.name == param.topicNm) {
                             item.active = true;
@@ -293,26 +315,28 @@
             setSubFilter: function(data) {
                 var self = this;
                 var param = self.param;
-                var $target = self.$solutionsFilter.find('.filter-link[data-code="'+ param.topic +'"]'),
-                    subFilterArr = data.subFilterList instanceof Array ? data.subFilterList : [],
+                var subFilterArr = data.subFilterList instanceof Array ? data.subFilterList : [],
                     htmlPC = htmlM = '';
                 
                 if (subFilterArr.length) {
-                    $target.after(vcui.template(subFilterHeadTemplate, {
-                        subTopicName: param.topicNm
+                    self.$solutionsFilter.empty();  
+                    self.$solutionsFilter.html(vcui.template(filterHeadTemplate, {
+                        back: true,
+                        name: param.topicNm
                     }));
 
                     subFilterArr.forEach(function(item) {
+                        item.subType = true;
                         if (item.name == param.subTopicNm) {
                             item.active = true;
                         } else {
                             item.active = false;
                         }
-                        htmlPC += vcui.template(subFilterTemplate, item);
+                        htmlPC += vcui.template(filterTemplate, item);
                         htmlM += vcui.template(filterOptionTemplate, item);
                     });
 
-                    $target.siblings('.sub-depth').find('ul').html(htmlPC);
+                    self.$solutionsFilter.find('.filter-list').html(htmlPC);
                     self.$selectSubTopic.html(htmlM);
                     self.$selectSubTopic.prop('disabled', false);
                     self.$selectSubTopic.vcSelectbox('update');
@@ -344,21 +368,6 @@
 
                 self.$solutionsResult.find('#solutionsCount').html(data.listPage.totalCount);
             },
-            selectFilter: function(code) {
-                var self = this;
-                var flag = code ? true : false,
-                    $target = self.$solutionsFilter.find('.filter-link[data-code="'+ code +'"]');
-
-                // pc
-                $target.parent('li').addClass('on').siblings('li').removeClass('on');
-                $target.closest('.filter-list')[flag ? 'addClass' : 'removeClass']('open');
-            },
-            selectSubFilter: function(code) {
-                var self = this;
-                var $target = self.$solutionsFilter.find('.filter-link[data-code="'+ code +'"]');
-            
-                $target.parent('li').addClass('on').siblings('li').removeClass('on');
-            },
             selectFilterMobile: function(code) {
                 var self = this;
 
@@ -375,17 +384,41 @@
                 self.$selectSubTopic.val(code);
                 self.$selectSubTopic.vcSelectbox('update');
             },
-            requestData: function() {
+            requestData: function(temp) {
                 var self = this;
 
+                // 임시 스크립트 start
+                var url;
+
+                if (temp == 'click') {
+                    if (self.param.research) {
+                        url = self.solutionsUrl
+                    } else {
+                        url = self.$solutionsWrap.data('filterSolutionsUrl') || self.solutionsUrl;
+                    }
+                } else {
+                    url = self.solutionsUrl
+                }
+                // 임시 스크립트 end
+
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxDataPost(self.solutionsUrl, self.param, function(result) {
+                lgkorUI.requestAjaxDataPost(url, self.param, function(result) {
                     var data = result.data,
                         param = result.param;
 
-                    self.setSubFilter(data);
+                    self.setFilter(data);
+                    
+                    if (self.param.topic != '') {
+                        self.setSubFilter(data);
+                    }
+
                     self.setSolutionsList(data);
-                    self.setKeyword(param);
+                    self.setKeyword();
+
+                    if (self.param.keywords.length) {
+                        self.$keywordInput.val(self.param.keywords[0]);
+                    }
+                    
                     lgkorUI.hideLoading();
                 });
             },
@@ -407,10 +440,11 @@
 
                 self.param = data;
 
-                self.$solutionsFilter.find('.open, .on').removeClass('open on');
-                self.$solutionsFilter.find('.sub-depth').remove();
-
-                self.$selectTopic.vcSelectbox('selectedIndex', 0);
+                self.$solutionsFilter.empty();
+                self.$selectTopic.find('option:first-child').prop('selected', true);
+                self.$selectSubTopic.find('option:first-child').prop('selected', true);
+                self.$selectTopic.vcSelectbox('update');
+                self.$selectSubTopic.vcSelectbox('update');
                 self.$keywordInput.val('');
                 self.$solutionsWrap.find('#research').prop('checked', false);
                 self.$solutionsSort.val(data.sort).vcSelectbox('update');
@@ -434,7 +468,7 @@
                         subCategoryNm: data.subCategoryName,
                         modelCode: data.modelCode,
                         productCode: data.productCode,
-                        page: 1
+                        page: data.page || 1
                     };
 
                     if (data.cstFlag) param['cstFlag'] = data.cstFlag;
@@ -446,7 +480,7 @@
                 });
 
                 // filter
-                self.$solutionsFilter.on('click', '.filter-list > li > .filter-link', function() {
+                self.$solutionsFilter.on('click', '.filter-link', function() {
                     var $this = $(this),
                         code = $this.data('code'), name = $this.data('name'),
                         param = {
@@ -459,17 +493,12 @@
 
                     self.param = $.extend(self.param, param);
     
-                    if ($this.siblings('.sub-depth').length < 1) {
-                        self.resetSubFilter();
-                        self.requestData(this);
-                    }
-
-                    self.selectFilter(code);
+                    self.requestData();
                     self.selectFilterMobile(code);
                 });
 
                 // sub filter
-                self.$solutionsFilter.on('click', '.sub-depth .filter-link', function() {
+                self.$solutionsFilter.on('click', '.sub-filter-link', function() {
                     var code = $(this).data('code'), name = $(this).data('name'),
                         param = {
                             page:1,
@@ -480,13 +509,32 @@
                     self.param = $.extend(self.param, param);
 
                     self.requestData();
-                    self.selectSubFilter(code);
                     self.selectSubFilterMobile(code);
                 });
 
                 // 증상선택 돌아가기
                 self.$solutionsFilter.on('click', '.btn-back', function() {
-                    $(this).closest('.filter-list').removeClass('open');
+                    var data = self.param;
+                    var param = {
+                        keywords: data.keywords,
+                        category: data.category,
+                        categoryNm: data.categoryName,
+                        subCategory: data.subCategory,
+                        subCategoryNm: data.subCategoryName,
+                        modelCode: data.modelCode,
+                        productCode: data.productCode
+                    };
+
+                    // 임시 스크립트
+                    var url = self.$solutionsWrap.data('filterUrl') || self.solutionsUrl;
+
+                    lgkorUI.showLoading();
+                    lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                        var data = result.data;
+
+                        self.setFilter(data);
+                        lgkorUI.hideLoading();
+                    });
                 });
 
                 // mobile filter
@@ -564,30 +612,33 @@
 
                 // keyword search
                 self.$keywordBtn.on('click', function(e, keyword) {
-                    var value = keyword || self.$keywordInput.val(),
-                        data = $.extend({}, self.param),
-                        isChecked = data.research;
+                    var value = keyword || self.$keywordInput.val();
+                    
+                    if (value.trim().length > 1) {
+                        var data = $.extend({}, self.param),
+                            isChecked = data.research;
 
-                    data['page'] = 1;
+                        data['page'] = 1;
 
-                    if (!isChecked) {
-                        self.resetFilter();
-                        data['topic'] = '';
-                        data['topicNm'] = 'All';
-                        data['subTopic'] = '';
-                        data['subTopicNm'] = 'All';
-                        data['keywords'] = [];
-                        data['keywords'].push(value);
-                    } else {
-                        if (data['keywords'].indexOf(value) != -1) {
-                            data['keywords'].splice(data['keywords'].indexOf(value), 1);
+                        if (!isChecked) {
+                            self.resetFilter();
+                            data['topic'] = '';
+                            data['topicNm'] = 'All';
+                            data['subTopic'] = '';
+                            data['subTopicNm'] = 'All';
+                            data['keywords'] = [];
+                            data['keywords'].push(value);
+                        } else {
+                            if (data['keywords'].indexOf(value) != -1) {
+                                data['keywords'].splice(data['keywords'].indexOf(value), 1);
+                            }
+                            data['keywords'].unshift(value);
                         }
-                        data['keywords'].unshift(value);
+
+                        self.param = data;
+
+                        self.requestData('click');
                     }
-
-                    self.param = data;
-
-                    self.requestData();
                 });
 
                 $('.search-layer').on('click', '.keyword-box a', function(e) {

@@ -120,7 +120,7 @@
             self.$mapContainer = $('.map-area'); //맴 모듈 컨테이너...
             
             self.$optionContainer = $('.opt-cont'); //옵션 컨테이너...
-            self.$optionContainer.find('.all-chk input[type=checkbox]').attr('checked', true);
+            //self.$optionContainer.find('.all-chk input[type=checkbox]').attr('checked', true);
 
             //검색...
             self.searchKeyword = "";
@@ -259,6 +259,9 @@
             var self = this;
 
             self.$searchContainer.find('.ui_tab').on('tabchange', function(e, data) {
+                
+
+
                 switch(data.selectedIndex) {
                     case 0:
                         self.searchType = 'local';

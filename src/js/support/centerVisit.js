@@ -215,7 +215,7 @@
             
             if (seq) {
                 self.$cont.find('#seq').val(seq);
-                data = $.extend(data, {seq: sval});
+                data = $.extend(data, {seq: seq});
             }
             self.$cont.find('#route').val(self.isMobile ? 'WWW2' : 'WWWW1');
 

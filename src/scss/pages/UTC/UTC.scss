@@ -220,6 +220,28 @@
     .disabled-message {
         display: none;
     }
+    &.btm-message {
+        padding-bottom: 64px;
+        @include mobile {
+            padding-bottom:24px;
+        }
+        .disabled-message {
+            display: block;
+            @include pc {
+                position: absolute;
+                left: 164px;
+                bottom: 24px;
+            }
+            @include mobile {
+                margin-top: 12px;
+                padding-left: 112px;
+            }
+
+            .err-msg {
+                color: $color-negative;
+            }
+        }
+    }
     &.disabled {
         @include pc {
             padding-bottom: 64px;

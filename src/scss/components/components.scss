@@ -135,6 +135,61 @@
 .component-wrap .title.title-h6 * {
     @include title-h6;
 }
+.component-wrap .title {
+    .logo {
+        float:none;
+        padding:0;
+        vertical-align:top;
+    }
+}
+.component-wrap .title.title-h1 {
+    .logo {
+        height:70px;
+        @include mobile {
+            height:46px;
+        }
+    }
+}
+.component-wrap .title.title-h2 {
+    .logo {
+        height:66px;
+        @include mobile {
+            height:42px;
+        }
+    }
+}
+.component-wrap .title.title-h3 {
+    .logo {
+        height:56px;
+        @include mobile {
+            height:38px;
+        }
+    }
+}
+.component-wrap .title.title-h4 {
+    .logo {
+        height:52px;
+        @include mobile {
+            height:33px;
+        }
+    }
+}
+.component-wrap .title.title-h5 {
+    .logo {
+        height:34px;
+        @include mobile {
+            height:28px;
+        }
+    }
+}
+.component-wrap .title.title-h6 {
+    .logo {
+        height:34px;
+        @include mobile {
+            height:28px;
+        }
+    }
+}
 
 @mixin bodycopy ($own, $prev) {
     @if $own == h1 or $own == h2 {
@@ -538,6 +593,8 @@
     .head {
         sup {
             font-size:initial !important;
+            line-height:initial !important;
+            vertical-align:top;
         }
     }
 

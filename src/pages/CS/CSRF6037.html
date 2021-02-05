@@ -31,7 +31,7 @@
                             <!-- 2021-01-27 수정 -->
                             <div class="link-btn-wrap">
                                 <a href="#n" class="link-btn btn-toggle-sms"><span>센터위치 문자받기</span></a>
-                                <a href="#n" class="link-btn btn-store-consult"><span>매장 상담 신청</span></a>
+                                <a href="#n" class="link-btn btn-store-consult"><span>방문 예약</span></a> <!-- 2021.02.04 문구 수정 -->
                             </div>
                             <!-- 2021-01-27 수정 -->
                         </div>
@@ -187,21 +187,7 @@
                                         <div class="status-icon skyblue">
                                             <strong class="status">원활</strong>
                                         </div>
-                                        <!-- 2021.01.18 status 마크업 수정 -->
-                                        <ul class="opt-list">
-                                            <li class="opt-mobile">
-                                                <span class="name">모바일</span>
-                                            </li>
-                                            <li class="opt-it-monitor">
-                                                <span class="name">IT/모니터</span>
-                                            </li>
-                                            <li class="opt-small-appliances">
-                                                <span class="name">소형가전</span>
-                                            </li>
-                                            <li class="opt-expendables">
-                                                <span class="name">소모품</span>
-                                            </li>
-                                        </ul>
+                                        
                                     </dd>
                                 </dl>
                             </div>
@@ -217,22 +203,36 @@
                                 <dl>
                                     <dt>서비스<br>가능 제품</dt>
                                     <dd>
-                                        <ul class="item">
-                                            <li>
-                                                가전전제품.휴대폰.에어컨.PC
+                                        <!-- 2021.02.04 status 마크업 위치 변경 -->
+                                        <ul class="opt-list">
+                                            <li class="opt-mobile">
+                                                <span class="name">모바일</span>
+                                            </li>
+                                            <li class="opt-it-monitor">
+                                                <span class="name">IT/모니터</span>
+                                            </li>
+                                            <li class="opt-small-appliances">
+                                                <span class="name">소형가전</span>
+                                            </li>
+                                            <li class="opt-expendables">
+                                                <span class="name">소모품</span>
                                             </li>
                                         </ul>
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "bulletTxt" : [
-                                                "단,ODD관련제품은 당일수리불가"
-                                            ]
-                                        })
+
+                                        <!-- 2021.02.04 마크업 수정 -->
+                                        <ul class="item">
+                                            <li>
+                                                가전전제품.휴대폰.에어컨.PC [단,ODD관련제품은 당일수리불가]
+                                            </li>
+                                        </ul>
+
                                     </dd>
                                 </dl>
                                 <dl>
                                     <dt>센터 소식</dt>
                                     <dd>
-                                        <ul class="item">
+
+                                        <ul class="item dir-v"> <!-- 2021.02.04 dir-v 클래스 추가 -->
                                             <li>11:00~12:00 / 15:00~16:00</li>
                                             <li>이 시간을 피해 방문하시면 보다 빠른 서비스를 받으실 수 있습니다.</li>
                                         </ul>
@@ -249,7 +249,7 @@
                                         <ul class="item">
                                             <li>
                                                 LG BEST SHOP 동교점
-                                                <a href="#n" class="btn-link">강남본점 서비스센터</a>
+                                                <a href="/html/CS/CSRF6037.html" class="btn-link">매장 위치 및 정보</a> <!-- 2021.02.04 문구 수정-->
                                             </li>
                                         </ul>
                                     </dd>
@@ -261,7 +261,7 @@
                             <div class="info-list">
                                 <div class="info-tit-wrap">
                                     <h3 class="h3-tit">오시는 길</h3>
-                                    <a href="#" target="_balnk" class="btn border size searchRoad-btn"><span>길찾기</span></a>
+                                    <a href="#" target="_balnk" class="btn size dark-gray searchRoad-btn"><span>길찾기</span></a> <!-- 2021.02.04 class 수정-->
                                 </div>
                                 <div class="map">
                                 </div>
