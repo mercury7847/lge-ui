@@ -273,6 +273,14 @@
                         display:none;
                     }
                 }
+
+                .list {
+                    span {
+                        &:before {
+                            background-image: url("/lg5-common/images/CS/btn-viewlist-bk.svg");
+                        }
+                    }
+                }
             }
             .result-list-box {
                 display:none;
