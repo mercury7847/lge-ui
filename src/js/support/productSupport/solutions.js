@@ -173,12 +173,21 @@
                         if (key == 'keyword') {
                             data['keywords'].push(decodeURIComponent(searchObj.keyword));
                             self.$keywordInput.val(decodeURIComponent(searchObj.keyword));
+                        } else if (key == 'keywordHistory') {
+                            var temp = searchObj.keywordHistory.split('+');
+                            if (temp.length) {
+                                data['keywords'] = [];
+                                temp.forEach(function(item) {
+                                    data['keywords'].push(decodeURIComponent(item));
+                                });
+                            }
                         } else {
                             data[key] = decodeURIComponent(searchObj[key]);
                         }
                         
                         if (key == 'mktModelCd') data['modelCode'] = searchObj.mktModelCd;
                         if (key == 'sort') self.$solutionsSort.val(searchObj.sort).vcSelectbox('update');
+                        if (key == 'research') self.$solutionsWrap.find('#research').prop('checked', searchObj.research);
                     }
 
                     data.category = $('#category').val();
@@ -431,10 +440,11 @@
 
                 self.param = data;
 
-                self.$solutionsFilter.find('.open, .on').removeClass('open on');
-                self.$solutionsFilter.find('.sub-depth').remove();
-
-                self.$selectTopic.vcSelectbox('selectedIndex', 0);
+                self.$solutionsFilter.empty();
+                self.$selectTopic.find('option:first-child').prop('selected', true);
+                self.$selectSubTopic.find('option:first-child').prop('selected', true);
+                self.$selectTopic.vcSelectbox('update');
+                self.$selectSubTopic.vcSelectbox('update');
                 self.$keywordInput.val('');
                 self.$solutionsWrap.find('#research').prop('checked', false);
                 self.$solutionsSort.val(data.sort).vcSelectbox('update');
@@ -453,12 +463,12 @@
                 self.$cont.on('complete', function(e, data) { 
                     var param = {
                         category: data.category,
-                        categoryNm: data.categoryNm,
+                        categoryNm: data.categoryName,
                         subCategory: data.subCategory,
-                        subCategoryNm: data.subCategoryNm,
+                        subCategoryNm: data.subCategoryName,
                         modelCode: data.modelCode,
                         productCode: data.productCode,
-                        page: 1
+                        page: data.page || 1
                     };
 
                     if (data.cstFlag) param['cstFlag'] = data.cstFlag;
@@ -484,7 +494,6 @@
                     self.param = $.extend(self.param, param);
     
                     self.requestData();
-
                     self.selectFilterMobile(code);
                 });
 
@@ -603,30 +612,33 @@
 
                 // keyword search
                 self.$keywordBtn.on('click', function(e, keyword) {
-                    var value = keyword || self.$keywordInput.val(),
-                        data = $.extend({}, self.param),
-                        isChecked = data.research;
+                    var value = keyword || self.$keywordInput.val();
+                    
+                    if (value.trim().length > 1) {
+                        var data = $.extend({}, self.param),
+                            isChecked = data.research;
 
-                    data['page'] = 1;
+                        data['page'] = 1;
 
-                    if (!isChecked) {
-                        self.resetFilter();
-                        data['topic'] = '';
-                        data['topicNm'] = 'All';
-                        data['subTopic'] = '';
-                        data['subTopicNm'] = 'All';
-                        data['keywords'] = [];
-                        data['keywords'].push(value);
-                    } else {
-                        if (data['keywords'].indexOf(value) != -1) {
-                            data['keywords'].splice(data['keywords'].indexOf(value), 1);
+                        if (!isChecked) {
+                            self.resetFilter();
+                            data['topic'] = '';
+                            data['topicNm'] = 'All';
+                            data['subTopic'] = '';
+                            data['subTopicNm'] = 'All';
+                            data['keywords'] = [];
+                            data['keywords'].push(value);
+                        } else {
+                            if (data['keywords'].indexOf(value) != -1) {
+                                data['keywords'].splice(data['keywords'].indexOf(value), 1);
+                            }
+                            data['keywords'].unshift(value);
                         }
-                        data['keywords'].unshift(value);
+
+                        self.param = data;
+
+                        self.requestData('click');
                     }
-
-                    self.param = data;
-
-                    self.requestData('click');
                 });
 
                 $('.search-layer').on('click', '.keyword-box a', function(e) {
