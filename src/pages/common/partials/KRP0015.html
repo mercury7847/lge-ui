@@ -22,14 +22,17 @@
         <div class="sticy-compare toggle-menu">
             
             <div class="compare-title">
+                <!-- 210205 수정 -->
                 <h3 class="title-text">제품 비교하기</h3>
+                <div class="count"><strong><span class="blind">선택된 제품개수</span>0</strong>/<span class="blind">제품비교가능한 전체개수</span>3</div>
                 <div class="right-cont">
-                    <div class="count">0/3</div>
+                    <!-- <div class="count">0/3</div> -->
                     <!--  비교하기 내용 펼침 상태 : open class 추가 
                      비교하기 내용 닫힘 상태 : close class 추가 
                     -->
                     <button type="" class="more-arrow close"><span class="blind">제품 비교하기 펼침</span></button>
                 </div>
+                <!-- //210205 수정 -->
             </div>
             <div class="compare-content toggle-cont" style="display: block">
                 <div class="compare-list">
@@ -39,11 +42,18 @@
                         <li class="item"></li>
                     </ul>
                 </div>
+                <!-- 210205 수정 -->
+                @@include('./common/modules/bullet-list.html', {
+                    "bulletTxt" : [
+                        "해당 제품 카테고리를 벗어날 경우 초기화됩니다."
+                    ]
+                })
                 <div class="btn-group">
                     <!-- button disabled : disabled class 추가 -->
-                    <button class="btn bd-pink text btn-init"><span>초기화하기</span></button>
-                    <button class="btn pink btn-compare"><span>비교하기</span></button>
+                    <button class="btn bd-pink text btn-init"><span>초기화</span></button>
+                    <button class="btn pink btn-compare"><span>결과보기</span></button>
                 </div>
+                <!-- //210205 수정 -->
             </div>
         </div>
         <!-- toast-meassage -->

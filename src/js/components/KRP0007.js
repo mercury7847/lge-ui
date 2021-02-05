@@ -80,11 +80,12 @@
                         '</a>' +
                     '</div>' +
                     '<ul class="spec-info">' +
-                        '{{#if bulletFeatures}}' +
-                            '{{#each item in bulletFeatures}}' +
+                        '{{#if showBulletFeatures}}' +
+                            '{{#each item in showBulletFeatures}}' +
                                 '<li>{{#raw item.specText}}</li>' +
                             '{{/each}}' +
                         '{{/if}}' +
+                        '{{#if cTypeCount > 0}}<li>{{lastBulletName}}</li>{{/if}}'+
                     '</ul>' +
                 '</div>' +
             '</div>' +
@@ -469,6 +470,7 @@
                 item.newProductBadgeName = inputdata.newProductBadgeName;
                 item.bestBadgeName = inputdata.bestBadgeName;
                 item.cashbackBadgeName = inputdata.cashbackBadgeName;
+                item.lastBulletName = inputdata.lastBulletName;
                 
                 //장바구니
                 item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);
@@ -478,6 +480,16 @@
                 if(!item.wishItemId) item.wishItemId = "";
 
                 if(!item.rtModelSeq) item.rtModelSeq = "";
+
+                var bulletLength = item.bulletFeatures.length;
+                var showLength = bulletLength;
+                if(bulletLength > 4){
+                    showLength = item.cTypeCount > 0 ? 4 : bulletLength;
+                }
+                item.showBulletFeatures = [];
+                for(var i=0;i<showLength;i++){
+                    item.showBulletFeatures.push(item.bulletFeatures[i]);
+                }
 
                 console.log("### item.siblingType ###", item.siblingType)
 
