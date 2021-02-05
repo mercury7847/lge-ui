@@ -18,7 +18,7 @@
         '</div><div class="btn-area">' +
             '{{#if subscriptionUrl}}<button type="button" class="btn pink border size" data-url={{subscriptionUrl}}><span>청약신청</span></button>{{#else}}<button type="button" class="btn pink border size" disabled><span>청약신청불가</span></button>{{/if}}' +
         '</div></div>' +
-        '{{#if availableMessage}}<div class="disabled-message"><p class="err-msg">{{availableMessage}}</p></div>{{/if}}' +
+        '{{#if availableMessage}}<div class="disabled-message btm-message"><p class="err-msg">{{availableMessage}}</p></div>{{/if}}' +
         '{{#if isLogin}}<span class="chk-wish-wrap"><input type="checkbox" id="chk-wish-{{itemID}}-{{itemSeq}}" name="chk-wish-{{itemID}}-{{itemSeq}}" {{#if (wish)}}checked{{/if}}><label for="chk-wish-{{itemID}}-{{itemSeq}}"><span class="blind">{{#if wish}}찜한상품{{#else}}찜하기{{/if}}</span></label></span>{{/if}}' +
         '<span class="chk-wrap"><input type="checkbox" id="chk-select-{{itemID}}-{{itemSeq}}" name="chk-select-{{itemID}}-{{itemSeq}}" {{#if (check)}}checked{{/if}}><label for="chk-select-{{itemID}}-{{itemSeq}}"><span class="blind">선택안함</span></label></span>' +
         '<div class="item-delete"><button type="button" class="btn-delete"><span class="blind">제품 삭제</span></button></div>' +
