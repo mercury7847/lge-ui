@@ -43,31 +43,46 @@
             ], function() {
                 var authRegister = {
                     userName2: {
-                        msgTarget: '.err-block',
+                        required: true,
+                        maxLength: 10,
                         pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z\*]+$/,
-                        maxLength: 30
+                        msgTarget: '.err-block',
+                        errorMsg: '이름을 입력해 주세요.',
+                        patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
                     },
                     phoneNo: {
+                        required: true,
+                        minLength: 10,
+                        maxLength: 11,
+                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
                         msgTarget: '.err-block',
-                        pattern: /^[0-9]+$/,
-                        maxLength: 11
+                        errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
                     },
-                    authNo: {
+                    authNo:{
+                        required: true,
                         msgTarget: '.err-block',
+                        errorMsg: '인증번호를 입력해주세요.',
                     }
                 };
 
                 self.numberValidation = new vcui.ui.CsValidation('#numberForm', {
                     register: {
                         userName1: {
-                            msgTarget: '.err-block',
+                            required: true,
+                            maxLength: 10,
                             pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z\*]+$/,
-                            maxLength: 30
+                            msgTarget: '.err-block',
+                            errorMsg: '이름을 입력해 주세요.',
+                            patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
                         },
                         number: {
-                            msgTarget: '.err-block',
+                            required: true,
+                            maxLength: 20,
                             pattern: /^[a-z|A-Z|0-9]+$/,
-                            maxLength: 20
+                            msgTarget: '.err-block',
+                            errorMsg: '접수번호를 입력해 주세요.',
+                            patternMsg: '정확한 접수번호를 입력해 주세요.'
                         }
                     }
                 });

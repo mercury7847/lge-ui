@@ -746,6 +746,9 @@
                     setInputData('safekey', result.data.safekey);
                     setInputData('nicePersonLogSeq', result.data.nicePersonLogSeq);
                     setInputData('creditInquire', 'Y');
+
+                    step1Block.find('input[name=registFrontNumber]').prop("disabled", true);
+                    step1Block.find('input[name=registBackFirst]').prop("disabled", true);
                 } else{
                     setInputData('creditInquire', 'N');
                 }

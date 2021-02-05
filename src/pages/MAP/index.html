@@ -36,7 +36,37 @@
         }
         .responsive table td{white-space:nowrap;}
     </style>
+    <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
     <script>
+        $(document).ready(function(){
+            var tabCon = $(".tabcon");
+            var tabList = $(".tab li");
+
+            tabList.on({
+                click : function(){
+                    var idx = $(this).index();
+                    tabCon.removeClass("on");
+                    tabCon.eq(idx).addClass("on");
+
+                    $(this).addClass("on").siblings("li").removeClass("on");
+
+                }
+            });
+
+            $(".tabcon").each(function(){
+                $(this).find(".no").each(function(idx){
+                    $(this).html(idx + 1);
+                });
+            });
+
+            var location = document.location.href;
+            var id;
+            if(location.indexOf("#") >= 0){
+                id = location.split("#").pop();
+                $("#"+id).trigger("click");
+            }
+        });
+        /*
         window.onload = function(){
             var tabCon = document.querySelectorAll(".tabcon");
             for(var i = 0; i < tabCon.length; i++){
@@ -60,6 +90,7 @@
                 })(i);
             };
         }
+        */
     </script>
 </head>
 <body>
@@ -67,9 +98,9 @@
 
     <div class="tab">
         <ul>
-            <li class="on"><a href="javascript:void(0);" id="mkt">MKT</a></li>
-            <li><a href="javascript:void(0);" id="cs">CS</a></li>
-            <li><a href="javascript:void(0);" id="app">APP</a></li>
+            <li class="on"><a href="#mkt" id="mkt">MKT</a></li>
+            <li><a href="#cs" id="cs">CS</a></li>
+            <li><a href="#app" id="app">APP</a></li>
         </ul>
     </div>
 
@@ -292,9 +323,7 @@
                     <tr>
                         <td class="no"></td>
                         <td><a href="https://wwwdev50.lge.co.kr/lg-objet-collection/event/story">이벤트</a></td>
-                        <td>"<a href="https://wwwdev50.lge.co.kr/lg-objet-collection/event/story">LG 오브제컬렉션
-                            STORY EVENT</a>"
-                            </td>
+                        <td><a href="https://wwwdev50.lge.co.kr/lg-objet-collection/event/story">LG 오브제컬렉션 STORY EVENT</a></td>
                         <td></td>
                         <td></td>
                     </tr>

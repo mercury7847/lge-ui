@@ -316,7 +316,6 @@
                 }, function(){
                     self.$leftContainer.removeClass('active');
                     $(this).removeClass('fixed');
-                    $('.map-container').css('overflow', 'hidden');
                 })
                 
             });
@@ -616,10 +615,10 @@
                     $('.store-map-con').css({
                         position: 'absolute',
                         visibility: 'visible',
-                        top: $('.list-wrap').position().top,
+                        top: maptop,
                         left:0,
                         x: self.windowWidth,
-                        height: $('.list-wrap').outerHeight(),
+                        height: self.$mapContainer.height(),
                         'z-index': 5
                     }).transition({x:0}, 350, "easeInOutCubic", function(){self.isTransion = false;});
         
@@ -1002,7 +1001,6 @@
 
             self.$leftContainer.addClass('active');
             if( window.innerWidth < 768) {
-                $mapContainer.css('overflow', 'visible');
                 self.$leftContainer.find('.store-list-box').stop().animate({
                     marginTop : -$mapContainer.offset().top
                 }, function(){
