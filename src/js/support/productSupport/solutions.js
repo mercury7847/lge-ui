@@ -173,8 +173,8 @@
                         if (key == 'keyword') {
                             data['keywords'].push(decodeURIComponent(searchObj.keyword));
                             self.$keywordInput.val(decodeURIComponent(searchObj.keyword));
-                        } else if (key == 'keywordHistory') {
-                            var temp = searchObj.keywordHistory.split('+');
+                        } else if (key == 'searchKeyword') {
+                            var temp = searchObj.searchKeyword.split('+');
                             if (temp.length) {
                                 data['keywords'] = [];
                                 temp.forEach(function(item) {
