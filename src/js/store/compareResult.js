@@ -59,7 +59,7 @@
             "categoryId":$dm.attr('data-categoryId'),
             "rtSeq":$dm.attr('data-rtSeq'),
             "typeFlag":cartType,
-            "requireCare":$dm.data('requireCare')
+            "requireCare":lgkorUI.stringToBool($dm.attr('data-requireCare'))
         }
 
         lgkorUI.requestCart(ajaxUrl, param);
