@@ -10,8 +10,7 @@
     <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
     <!-- <script src="/lg5-common/js/app.common.js"></script> -->
     <script>
-        var AppUserAgent = navigator.userAgent || navigator.vendor || window.opera;
-
+        //var AppUserAgent = navigator.userAgent || navigator.vendor || window.opera;
         var oldStartValue = "";
         var oldEndValue = "";
         var appDate = new Date();
@@ -137,7 +136,7 @@
                 $id.css("z-index", appCnt).stop().animate({'bottom':'-60px'}, 200, function(){
                     $("html").css("overflow-y","scroll");
                     $(beforeFocusEleToast).focus();
-                    //if (/iPhone|iPad|iPod/i.test(navigator.AppUserAgent)) {
+                    //if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         if(timesetIdx != null && timesetIdx != "" && timesetIdx != undefined){
                             if(events){
                                 $(".time-setting .inner div").eq(timesetIdx).find("label:not([class*=rst-time])").attr("tabindex", 0).focus().trigger("click");
@@ -317,7 +316,8 @@
 
                     events = true;
                     var idx = $(this).closest("div").index();
-                    if (/iPhone|iPad|iPod/i.test(navigator.AppUserAgent)) {
+                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        //console.log("iphone");
                     }else{
                         changeTimeSet(idx);
                         /*
@@ -329,7 +329,7 @@
                 },
                 blur: function(e){
                     var idx = $(this).closest("div").index();
-                    if (/iPhone|iPad|iPod/i.test(navigator.AppUserAgent)) {
+                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         changeTimeSet(idx);
                     }
                 }
@@ -357,7 +357,7 @@
                         //접근성
                         $(".main-panel").attr("aria-hidden", false);
                         $(".main-panel").attr("tabindex", 0).focus();
-                        if (/iPhone|iPad|iPod/i.test(navigator.AppUserAgent)) {
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         }else{
                             $(".main-panel").find("h1").focus();
                         }
@@ -384,7 +384,7 @@
                         $(this).attr("aria-hidden", false);
                         $(this).attr("tabindex", 0).focus();
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
-                        if (/iPhone|iPad|iPod/i.test(navigator.AppUserAgent)) {
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         }else{
                             $(this).find("h1").focus();
                         }
@@ -400,7 +400,7 @@
                         $(this).attr("aria-hidden", false);
                         $(this).attr("tabindex", 0).focus();
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
-                        if (/iPhone|iPad|iPod/i.test(navigator.AppUserAgent)) {
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         }else{
                             $(this).find("h1").focus();
                         }
