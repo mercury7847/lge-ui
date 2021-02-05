@@ -201,7 +201,7 @@
             completeModel: function() {
                 var self = this;
                 var model = self.param;
-
+                console.log(self.param)
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(self.resultUrl, model, function(result) {
                     var data = result.data,
@@ -215,7 +215,7 @@
                     self.setBanner(data);
                     self.setPopularKeyword(data);
                     self.setFilter(data);
-                    if (self.param.topic != '') {
+                    if (self.param.topicNm != 'All') {
                         self.setSubFilter(data);
                     }
                     self.setSolutionsList(data);
@@ -408,7 +408,7 @@
 
                     self.setFilter(data);
                     
-                    if (self.param.topic != '') {
+                    if (self.param.topicNm != 'All') {
                         self.setSubFilter(data);
                     }
 
@@ -468,10 +468,8 @@
                         subCategoryNm: data.subCategoryName,
                         modelCode: data.modelCode,
                         productCode: data.productCode,
-                        page: 1
+                        page: data.page || 1
                     };
-
-                    console.log(data);
 
                     if (data.cstFlag) param['cstFlag'] = data.cstFlag;
                     
@@ -496,7 +494,6 @@
                     self.param = $.extend(self.param, param);
     
                     self.requestData();
-
                     self.selectFilterMobile(code);
                 });
 
@@ -615,30 +612,33 @@
 
                 // keyword search
                 self.$keywordBtn.on('click', function(e, keyword) {
-                    var value = keyword || self.$keywordInput.val(),
-                        data = $.extend({}, self.param),
-                        isChecked = data.research;
+                    var value = keyword || self.$keywordInput.val();
+                    
+                    if (value.trim().length > 1) {
+                        var data = $.extend({}, self.param),
+                            isChecked = data.research;
 
-                    data['page'] = 1;
+                        data['page'] = 1;
 
-                    if (!isChecked) {
-                        self.resetFilter();
-                        data['topic'] = '';
-                        data['topicNm'] = 'All';
-                        data['subTopic'] = '';
-                        data['subTopicNm'] = 'All';
-                        data['keywords'] = [];
-                        data['keywords'].push(value);
-                    } else {
-                        if (data['keywords'].indexOf(value) != -1) {
-                            data['keywords'].splice(data['keywords'].indexOf(value), 1);
+                        if (!isChecked) {
+                            self.resetFilter();
+                            data['topic'] = '';
+                            data['topicNm'] = 'All';
+                            data['subTopic'] = '';
+                            data['subTopicNm'] = 'All';
+                            data['keywords'] = [];
+                            data['keywords'].push(value);
+                        } else {
+                            if (data['keywords'].indexOf(value) != -1) {
+                                data['keywords'].splice(data['keywords'].indexOf(value), 1);
+                            }
+                            data['keywords'].unshift(value);
                         }
-                        data['keywords'].unshift(value);
+
+                        self.param = data;
+
+                        self.requestData('click');
                     }
-
-                    self.param = data;
-
-                    self.requestData('click');
                 });
 
                 $('.search-layer').on('click', '.keyword-box a', function(e) {

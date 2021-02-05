@@ -40,6 +40,7 @@
             vcui.require(['ui/validation', 'ui/formatter', 'ui/imageFileInput'], function () {
                 var register = {
                     privcyCheck: {
+                        required: true,
                         msgTarget: '.err-block',
                         errorMsg: '개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다.'
                     },
@@ -49,26 +50,38 @@
                         errorMsg: '정확한 제품증상을 선택해주세요.'
                     },
                     cRcptNo: {
+                        required: true,
                         msgTArget: '.err-block',
                         errorMsg: '접수 번호를 입력해주세요.'
                     },
                     inquiryTitle: {
+                        required: true,
+                        maxLength: 40,
                         msgTarget: '.err-block',
                         errorMsg: '제목을 입력해주세요.'
                     },
                     inquiryContent: {
+                        required: true,
+                        maxLength: 1000,
                         msgTarget: '.err-block',
                         errorMsg: '내용을 입력해주세요.'
                     },
                     userName: {
+                        required: true,
+                        maxLength: 10,
+                        pattern: /^[가-힣a-zA-Z]+$/,
                         msgTarget: '.err-block',
-                        errorMsg: '이름을 입력해주세요.'
+                        errorMsg: '이름을 입력해주세요.',
+                        patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
                     },
                     userEmail: {
-                        msgTarget: '.err-block',
+                        required: true,
                         pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        minLength: 5,
+                        maxLength: 50,
+                        msgTarget: '.err-block',
                         errorMsg: '이메일 주소를 입력해주세요.',
-                        patternMsg: '이메일 주소를 정확히 입력해주세요.'
+                        patternMsg: '올바른 이메일 형식이 아닙니다.'
                     },
                 }
 
@@ -87,14 +100,7 @@
                     }
                 });
 
-                self.$cont.find('.ui_imageinput').vcImageFileInput({
-                    totalSize: '10485760',
-                    format: 'jpg|jpeg|png|gif',
-                    message: {
-                        format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
-                        size: '첨부파일 전체 용량은 10MB 이내로 등록 가능합니다.'
-                    }
-                });
+                self.$cont.find('.ui_imageinput').vcImageFileInput();
             });
         },
         selectModel: function(data, url) {

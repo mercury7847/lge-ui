@@ -21,30 +21,31 @@ br.m {
         line-height:1;
         text-align:left;
         .tit {
-            color:#000;
-            @include font-large-6;
+            @include font(52px,70px);
             font-weight:700;
+            color:$color-white;
         }
         .tit-desc {
-            margin-top:20px;
-            color:#000;
-            @include font-medium;
+            margin-top:24px;
+            @include font-large-1;
+            color:$color-white;
         }
         .btn.border {
             margin-top:24px;
+            border-color: $color-white;
+            color: $color-white;
         }
     }
     @include mobile {
-        height:270px;
-        background:url('/lg5-common/images/SLC/bg-visual-tit01-m.jpg') center bottom no-repeat;
+        height:530px;
+        background:url('/lg5-common/images/SLC/bg-visual-tit01-m.jpg') center center no-repeat;
         background-size:cover;
         .txt-wrap {
             display:block;
             max-width:70%;
-            padding:32px 16px;
+            padding:40px 16px;
             .tit {
-                font-size:24px;
-                line-height:32px;
+                @include font(34px,46px);
             }
             .tit-desc {
                 margin-top:12px;
@@ -57,15 +58,42 @@ br.m {
     }
 }
 
+.ui_sticky {
+    background-color: $color-bg-wt;
+}
 .csn-tabs {
-    padding-top:40px;
+    max-width:1380px + 80px;
+    margin: 0 auto;
+    padding:40px 40px 0;
+    text-align: left;
+    &:before {
+        right: 40px;
+        left: 40px;
+    }
+    .tabs {
+        padding: 0;
+    }
     @include mobile {
-        padding:12px 0;
-        text-align:center;
+        padding:32px 16px 0;
+        &:before {
+            right: 0;
+            left: 0;
+        }
+        .tabs {
+            width: 100%;
+            li {
+                width: 50%;
+                margin-left: 0;
+                text-align: center;
+                a {
+                    padding-bottom: 15px;
+                }
+            }
+        }
     }
 }
 .csn-tab-contents {
-    padding-top:48px;
+    padding-top:80px;
     @include mobile {
         padding-top:0;
     }
@@ -96,9 +124,9 @@ br.m {
             margin:32px -16px 0;
         }
         &.tab-content {
-            margin-top:28px;
+            margin-top:32px;
             @include mobile {
-                margin:0 -16px;
+                margin:16px -16px 0;
             }
         }
     }
@@ -129,11 +157,12 @@ br.m {
         .csn-section {
             width:100%;
             max-width:initial;
-            margin-top:80px;
+            margin-top:120px;
             @include mobile {
                 margin-top:0;
-                padding:32px 16px 60px;
+                padding:60px 16px;
                 border-top:12px solid #f4f4f4;
+                &:first-child,
                 &.type2 {
                     border-top:none;
                 }
@@ -142,27 +171,29 @@ br.m {
                 margin-top:0;
             }
             .section-inner {
-                margin-top:80px;
+                margin-top:120px;
                 @include mobile {
-                    margin-top:40px;
+                    margin:60px -16px 0;
+                    padding: 40px 16px 0;
+                    border-top:12px solid #f4f4f4;
                 }
                 &:first-child {
                     margin-top:0;
+                    padding-top: 0;
+                    border-top: 0;
                 }
             }
             .tit-wrap {
                 text-align:center;
                 .tit {
-                    font-size:24px;
-                    line-height:30px;
                     font-weight:700;
+                    @include font($font-large-4,52px);
                     @include mobile {
-                        font-size:20px;
-                        line-height:28px;
+                        @include font($font-large-2,33px);
                     }
                 }
                 .desc {
-                    margin-top:12px;
+                    margin-top:16px;
                     @include font-medium;
                     small {
                         display:block;
@@ -179,6 +210,9 @@ br.m {
                         line-height:22px;
                     }
                 }
+                .bullet-list {
+                    margin-top: 8px;
+                }
                 .btn {
                     margin-top:24px;
                     @include mobile {
@@ -190,6 +224,43 @@ br.m {
             &:last-child {
                 margin-bottom:0;
             }
+
+            .tabs-wrap {
+                margin-top: 26px;
+                &.btn-type {
+                    .tabs {
+                        padding: 0;
+                        > li {
+                            &:not(:first-child) {
+                                margin-left: 24px;
+                            }
+                            > a {
+                                padding: 8px 0;
+                                @include font(17px,27px);
+                            }
+                            &.on {
+                                > a {
+                                    border-width: 2px;
+                                }
+                            }
+                        }
+                    }
+                }
+                @include mobile {
+                    margin: 22px -16px 0;
+                    &.btn-type {
+                        .tabs {
+                            padding: 0 16px;
+                            > li {
+                                > a {
+                                    padding: 10px 0;
+                                    @include font(15px,24px);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -198,7 +269,7 @@ br.m {
         position:relative;
         .img {
             display:block;
-            width:calc(60% - 48px);
+            width:calc(60% - 80px);
             border-radius:8px;
             overflow:hidden;
             img {
@@ -219,20 +290,20 @@ br.m {
             width:40%;
             transform:translateY(-50%);
             > dt {
-                color:#000;
-                @include font-large-2;
                 font-weight:700;
+                @include font($font-large-5,56px);
             }
             > dd {
                 width:100%;
-                margin-top:12px;
-                color:#000;
-                @include font-medium;
+                margin-top:24px;
+                @include font-large;
                 word-break:keep-all;
                 .bullet-list {
-                    margin-top:32px;
-                    .b-txt {
-                        word-break:keep-all;
+                    margin-top:48px;
+                    .b-tit {
+                        margin-bottom: 8px;
+                        @include font-small;
+                        color: $color-default;
                     }
                 }
             }
@@ -242,9 +313,15 @@ br.m {
                 top:auto;
                 width:100%;
                 max-width:100%;
-                margin-top:16px;
+                margin-top:32px;
                 transform:translate(0);
                 text-align:center;
+                > dt {
+                    @include font(27px,38px);
+                }
+                > dd {
+                    margin-top:12px;
+                }
             }
         }
     }
@@ -261,7 +338,7 @@ br.m {
                 display:block;
             }
             @include mobile {
-                padding:32px 16px 40px;
+                padding:40px 16px 60px;
                 border-radius:0;
             }
             .csn-video {
@@ -334,19 +411,19 @@ br.m {
             }
         }
         .csn-itr-body {
-            margin-top:48px;
+            margin-top:80px;
             @include mobile {
-                margin-top:32px;
+                margin-top:60px;
                 padding:0 16px;
             }
             &:first-child {
-                margin-top:0px;
+                margin-top:0;
             }
             .csn-icon-list {
                 overflow:hidden;
                 > ul {
-                    margin-top:-48px;
-                    margin-left:-24px;
+                    margin-top:-90px;
+                    margin-left:-60px;
                     font-size:0;
                     @include mobile {
                         margin-top:0;
@@ -355,13 +432,13 @@ br.m {
                     > li {
                         display:inline-block;
                         width:50%;
-                        margin-top:48px;
-                        padding-left:24px;
+                        margin-top:90px;
+                        padding-left:60px;
                         vertical-align:top;
                         @include mobile {
                             display:block;
                             width:100%;
-                            margin-top:32px;
+                            margin-top:40px;
                             padding-left:0;
                             &:first-child {
                                 margin-top:0;
@@ -369,11 +446,11 @@ br.m {
                         }
                         dl {
                             position:relative;
-                            min-height:96px;
-                            padding-left:112px;
+                            //min-height:96px;
+                            padding-left:120px;
                             @include mobile {
                                 max-width:100%;
-                                min-height:80px;
+                                //min-height:80px;
                                 padding-left:96px;
                             }
                             &::before {
@@ -386,10 +463,402 @@ br.m {
                                 background-size:100%;
                                 background-repeat:no-repeat;
                                 background-position:center;
-                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
                                 @include mobile {
                                     width:80px;
                                     height:80px;
+                                }
+                            }
+                            &[class*="csn"] {
+                                // 정수기
+                                &[class*="1-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-water-01.png');
+                                    }
+                                }
+                                &[class*="1-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-water-02.png');
+                                    }
+                                }
+                                &[class*="1-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-water-03.png');
+                                    }
+                                }
+                                &[class*="1-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-water-04.png');
+                                    }
+                                }
+                                &[class*="1-5"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-service.png');
+                                    }
+                                }
+                                // 얼음정수기냉장고
+                                &[class*="2-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-refrigeratior-01.png');
+                                    }
+                                }
+                                &[class*="2-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-refrigeratior-02.png');
+                                    }
+                                }
+                                &[class*="2-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-refrigeratior-03.png');
+                                    }
+                                }
+                                &[class*="2-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-service.png');
+                                    }
+                                }
+                                // 공기청정기
+                                &[class*="3-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-air-01.png');
+                                    }
+                                }
+                                &[class*="3-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-air-02.png');
+                                    }
+                                }
+                                &[class*="3-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-check.png');
+                                    }
+                                }
+                                &[class*="3-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-service.png');
+                                    }
+                                }
+                                // 건조기
+                                &[class*="4-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dryer-01.png');
+                                    }
+                                }
+                                &[class*="4-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dryer-02.png');
+                                    }
+                                }
+                                &[class*="4-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dryer-03.png');
+                                    }
+                                }
+                                &[class*="4-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-service.png');
+                                    }
+                                }
+                                // 스타일러
+                                &[class*="5-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-styler-01.png');
+                                    }
+                                }
+                                &[class*="5-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-styler-02.png');
+                                    }
+                                }
+                                &[class*="5-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-styler-03.png');
+                                    }
+                                }
+                                &[class*="5-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-styler-04.png');
+                                    }
+                                }
+                                &[class*="5-5"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-service.png');
+                                    }
+                                }
+                                // 전기렌인지
+                                &[class*="6-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-stove-01.png');
+                                    }
+                                }
+                                &[class*="6-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-stove-02.png');
+                                    }
+                                }
+                                &[class*="6-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-stove-03.png');
+                                    }
+                                }
+                                &[class*="6-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-stove-04.png');
+                                    }
+                                }
+                                &[class*="6-5"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-service.png');
+                                    }
+                                }
+                                // 식기세척기
+                                &[class*="7-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dishwasher-01.png');
+                                    }
+                                }
+                                &[class*="7-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dishwasher-02.png');
+                                    }
+                                }
+                                &[class*="7-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dishwasher-03.png');
+                                    }
+                                }
+                                &[class*="7-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dishwasher-04.png');
+                                    }
+                                }
+                                &[class*="7-5"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dishwasher-05.png');
+                                    }
+                                }
+                                &[class*="7-6"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-service.png');
+                                    }
+                                }
+                                // 안마의자
+                                &[class*="8-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-chair-01.png');
+                                    }
+                                }
+                                &[class*="8-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-chair-02.png');
+                                    }
+                                }
+                                &[class*="8-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-check.png');
+                                    }
+                                }
+                                &[class*="8-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-service.png');
+                                    }
+                                }
+                                // 맥주제조기
+                                &[class*="9-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-brew-01.png');
+                                    }
+                                }
+                                &[class*="9-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-brew-02.png');
+                                    }
+                                }
+                                &[class*="9-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-brew-03.png');
+                                    }
+                                }
+                                &[class*="9-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-service.png');
+                                    }
+                                }
+                            }
+                            &[class*="mng"] {
+                                min-height: 80px;
+                                padding-left:104px;
+                                @include mobile {
+                                    padding-left: 96px;
+                                }
+                                &::before {
+                                    width:80px;
+                                    height:80px;
+                                }
+                                &[class*="1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-care-benefit-01.svg');
+                                    }
+                                }
+                                &[class*="2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-care-benefit-02.svg');
+                                    }
+                                }
+                                &[class*="3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-care-benefit-03.svg');
+                                    }
+                                }
+                                &[class*="4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-care-benefit-04.svg');
+                                    }
+                                }
+                                &[class*="5"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-care-benefit-05.svg');
+                                    }
+                                }
+                            }
+                            &[class*="careship"] {
+                                &::before {
+                                    width:80px;
+                                    height:80px;
+                                }
+                                &[class*="1-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-refrigeratior-01.png');
+                                    }
+                                }
+                                &[class*="1-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-refrigeratior-02.png');
+                                    }
+                                }
+                                &[class*="1-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-refrigeratior-03.png');
+                                    }
+                                }
+                                &[class*="2-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-water-01.png');
+                                    }
+                                }
+                                &[class*="2-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-water-02.png');
+                                    }
+                                }
+                                &[class*="2-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-water-03.png');
+                                    }
+                                }
+                                &[class*="2-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-water-04.png');
+                                    }
+                                }
+                                &[class*="3-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-air-01.png');
+                                    }
+                                }
+                                &[class*="3-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-air-02.png');
+                                    }
+                                }
+                                &[class*="3-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-check.png');
+                                    }
+                                }
+                                &[class*="4-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dryer-01.png');
+                                    }
+                                }
+                                &[class*="4-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dryer-02.png');
+                                    }
+                                }
+                                &[class*="4-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dryer-03.png');
+                                    }
+                                }
+                                &[class*="5-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-styler-01.png');
+                                    }
+                                }
+                                &[class*="5-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-styler-02.png');
+                                    }
+                                }
+                                &[class*="5-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-styler-03.png');
+                                    }
+                                }
+                                &[class*="5-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-styler-04.png');
+                                    }
+                                }
+                                &[class*="6-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-stove-01.png');
+                                    }
+                                }
+                                &[class*="6-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-stove-02.png');
+                                    }
+                                }
+                                &[class*="6-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-stove-03.png');
+                                    }
+                                }
+                                &[class*="7-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dishwasher-01.png');
+                                    }
+                                }
+                                &[class*="7-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dishwasher-02.png');
+                                    }
+                                }
+                                &[class*="7-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dishwasher-03.png');
+                                    }
+                                }
+                                &[class*="7-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dishwasher-05.png');
+                                    }
+                                }
+                                &[class*="8-1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-cleaner-01.png');
+                                    }
+                                }
+                                &[class*="8-2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-cleaner-02.png');
+                                    }
+                                }
+                                &[class*="8-3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-cleaner-03.png');
+                                    }
                                 }
                             }
                             dt {
@@ -397,17 +866,14 @@ br.m {
                                 font-size:0;
                                 p {
                                     display:inline-block;
-                                    @include font-large-1;
-                                    font-weight:500;
+                                    font-weight:700;
+                                    @include font-medium;
                                     vertical-align:top;
                                 }
                             }
                             dd {
-                                margin-top:16px;
+                                margin-top:4px;
                                 @include font-medium;
-                                @include mobile {
-                                    margin-top:12px;
-                                }
                                 p {
                                     position:relative;
                                     padding-left:10px;
@@ -422,8 +888,8 @@ br.m {
                             }
                         }
                         .bullet-list {
-                            margin-top:12px;
-                            padding-left:112px;
+                            margin-top:8px;
+                            padding-left:120px;
                             @include mobile {
                                 padding-left:96px;
                             }
@@ -495,26 +961,32 @@ br.m {
         }
     }
 
-    // B2B 케어솔루션 전문 상담
+    // B2B 케어솔루션 전문 상담 배너
     .csn-section.csn-b2bs {
         padding:48px 32px;
-        background-image:url('/lg5-common/images/SLC/bg-visual03.jpg');
-        background-size:cover;
-        background-repeat:no-repeat;
-        background-position:center;
+        background-image: linear-gradient(101deg, #8d71ec, #f75584 99%);
         text-align:center;
         @include mobile {
-            padding:32px 16px;
-            background-image:url('/lg5-common/images/SLC/bg-visual03-m.jpg');
+            padding:40px 16px;
             border-top:none;
         }
         .tit-wrap {
+            font-weight:700;
             color:#fff;
+            .tit {
+                @include font($font-large-2,34px);
+                @include mobile {
+                    @include font($font-large-1,28px);
+                }
+            }
             .call {
                 margin-top:4px;
-                font-weight:500;
-                @include mobile {
-                    margin-top:8px;
+                @include font-medium;
+            }
+            @include mobile {
+                .desc,
+                .call {
+                    font-weight: 500;
                 }
             }
         }
@@ -522,9 +994,6 @@ br.m {
             margin-top:24px;
             border-color:#fff;
             color:#fff;
-            @include mobile {
-                display:block;
-            }
         }
     }
     
@@ -532,34 +1001,38 @@ br.m {
     .gray-block-wrap {
         display:table;
         width:auto;
-        margin:32px auto 0;
+        margin:48px auto 0;
         table-layout:fixed;
         border-collapse:separate;
         border-spacing:24px 0;
-        table-layout:fixed;
         @include mobile {
             display:block;
             width:100%;
-            margin-top:20px;
+            margin-top:40px;
+            padding: 0 24px;
         }
         &.type2 {
-            margin-top:8px;
-            margin-bottom:-24px;
-            border-spacing:24px;
+            display: block;
+            margin:24px -12px 0;
             .row {
-                display:table-row;
-                dl dd {
-                    margin-top:12px;
-                }
-                .tit {
-                    @include font-large-1;
+                display:flex;
+                justify-content: center;
+                .blocks {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 176px;
+                    margin: 24px 12px 0;
                 }
             }
             @include mobile {
-                margin-top:32px;
-                margin-bottom:0;
+                margin:28px 0 0;
                 .row {
-                    display:block;
+                    flex-direction: column;
+                    .blocks {
+                        min-height: 118px;
+                        margin: 12px 0 0;
+                    }
                 }
             }
         }
@@ -601,21 +1074,23 @@ br.m {
                     }
                 }
                 dd {
-                    margin-top:8px;
+                    margin-top:4px;
                     @include font-medium;
                     word-break:keep-all;
                     &.num {
-                        margin-top:8px;
-                        color:#EC455A;
-                        @include font-large-1;
+                        margin-top:12px;
                         font-weight:700;
+                        @include font($font-large-1,30px);
+                        color: $color-primary;
+                        @include mobile {
+                            @include font($font-large,26px);
+                        }
                     }
                     small {
                         display:block;
-                        margin-top:2px;
-                        color:#767676;
+                        margin-top:8px;
+                        color:$color-gray-1;
                         @include font-small;
-                        font-weight:500;
                         @include mobile {
                             margin-top:12px;
                         }
@@ -626,7 +1101,7 @@ br.m {
     }
     
     .csn-ars-svc {
-        margin:48px -12px 0;
+        margin:64px -12px 0;
         font-size:0;
         text-align:center;
         @include mobile {
@@ -636,7 +1111,7 @@ br.m {
             position:relative;
             display:inline-block;
             width:calc(100% / 3);
-            padding:100px 12px 0;
+            padding:96px 32px 0;
             vertical-align:top;
             @include mobile {
                 display:block;
@@ -653,11 +1128,26 @@ br.m {
                 width:80px;
                 height:80px;
                 margin-left:-40px;
-                background:url("/lg5-common/images/icons/icon-09-80.svg") center no-repeat;
+                background:center no-repeat;
+            }
+            &.svc1 {
+                &:before {
+                    background-image:url("/lg5-common/images/SLC/icon-caresoultion-always.svg");
+                }
+            }
+            &.svc2 {
+                &:before {
+                    background-image:url("/lg5-common/images/SLC/icon-caresoultion-easy.svg");
+                }
+            }
+            &.svc3 {
+                &:before {
+                    background-image:url("/lg5-common/images/SLC/icon-caresoultion-myinfo.svg");
+                }
             }
             .tit {
                 display:inline-block;
-                @include font-large-1;
+                @include font-medium;
                 font-weight:700;
                 vertical-align:middle;
             }
@@ -677,8 +1167,7 @@ br.m {
                     }
                 }
                 dd {
-                    margin-top:12px;
-                    padding:0 24px;
+                    margin-top:8px;
                     @include font-medium;
                     word-break:keep-all;
                     @include mobile {
@@ -692,36 +1181,42 @@ br.m {
 
     // 앱 qr
     .csn-ars-bottom {
-        margin-top:-40px;
-        padding:48px 32px;
+        margin:-40px 0 120px;
+        padding:48px 40px 60px;
         background:#f4f4f4;
         text-align:center;
         @include mobile {
-            margin-top:0;
-            padding:32px 16px;
+            margin:0 0 60px;
+            padding:40px 20px;
         }
         .tit {
-            @include font-large-2;
             font-weight:700;
+            @include font($font-large-2,34px);
+            @include mobile {
+                @include font($font-large-1,28px);
+            }
         }
         .desc {
-            margin-top:12px;
+            margin-top:16px;
             @include font-medium;
+            @include mobile {
+                margin-top: 12px;
+            }
+        }
+        .bullet-list {
+            margin-top: 8px;
+            @include mobile {
+                margin-top: 6px;
+            }
         }
         .call {
-            margin:8px 0 24px;
-            color:#EC455A;
-            @include font-large-2;
+            margin:12px 0 24px;
+            color:$color-primary;
+            @include font-large-1;
             font-weight:700;
-            @include mobile {
-                margin-bottom:20px;
-            }
         }
         .btn.border {
-            margin-top:32px;
-            @include mobile {
-                display:block;
-            }
+            margin-top:24px;
         }
     }
 
@@ -753,7 +1248,7 @@ br.m {
         margin-top:48px;
         overflow:hidden;
         @include mobile {
-            margin-top:32px;
+            margin-top:40px;
         }
         > ul {
             margin:0 -12px;
@@ -769,42 +1264,30 @@ br.m {
                 text-align:center;
                 > img {
                     width:100%;
-                    max-width:268px;
-                    height:auto;
+                    border-radius: 8px;
                 }
                 dl {
-                    margin-top:20px;
+                    margin-top:24px;
+                    @include font-medium;
                     text-align:center;
                     dt {
-                        @include font-large-1;
                         font-weight:700;
-                        @include mobile {
-                            font-size:16px;
-                            line-height:24px;
-                        }
                     }
                     dd {
-                        margin-top:12px;
-                        @include font-medium;
-                        @include mobile {
-                            margin-top:8px;
-                        }
+                        margin-top:8px;
                     }
                 }
                 @include mobile {
                     display:block;
                     position:relative;
                     width:100%;
-                    margin-top:32px;
+                    margin-top:40px;
                     padding:0;
                     &:first-child {
                         margin-top:0;
                     }
-                    > img {
-                        max-width:210px;
-                    }
                     dl {
-                        margin-top:18px;
+                        margin-top:12px;
                     }
                 }
             }

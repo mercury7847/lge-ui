@@ -89,7 +89,7 @@
         text-align:left;
         input[type=text] {
             width:100%;
-            padding:11px 80px 11px 24px;
+            padding:10px 80px 10px 24px;
             border-radius:24px;
             border:0 none;
             background:#fff;
@@ -146,7 +146,9 @@
                     }
                     .btn-delete {
                         display:inline-block;
+                        position:static;
                         margin-left:8px;
+                        margin-top:4px;
                         vertical-align:middle;
                         width:14px;
                         height:14px;
@@ -301,7 +303,7 @@
     .search-more {
         position:absolute;
         left:calc(100% + 16px);
-        top:50%;
+        top:23px;
         white-space:nowrap;
         transform:translateY(-50%);
         @include mobile {

@@ -45,11 +45,49 @@
         }
         .component-wrap {
             position:absolute;
-            top:51px;
-            right:24px;
+            top:24px;
+            right:20px;
+            .tooltip-wrap.share {
+                height: 48px;
+                padding: 0;
+                .tooltip-icon {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 100px;
+                    background-color: rgba($color-bg-wt,.5);
+                    background-image: none;
+                    line-height: 48px;
+                    text-align: center;
+                    &:before {
+                        display: inline-block;
+                        width: 32px;
+                        height: 32px;
+                        background: url('/lg5-common/images/icons/icon-share-32.svg') no-repeat 0 0;
+                        transform: translateY(calc(50% - 8px));
+                        content: '';
+                    }
+                }
+                .tooltip-box {
+                    top: 56px;
+                }
+            }
             @include mobile {
-                top:30px;
-                right:16px;
+                top:32px;
+                right:14px;
+                .tooltip-wrap.share {
+                    height: 40px;
+                    .tooltip-icon {
+                        width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                        &:before {
+                            transform: translateY(calc(50% - 12px));
+                        }
+                    }
+                    .tooltip-box {
+                        top: 40px;
+                    }
+                }
             }
         }
         // .sns-wrap {
