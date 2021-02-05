@@ -9,7 +9,7 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
         defaults: {
             regex: /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi,
             format: 'jpg|jpeg|png|gif',
-            totalSize: '10000000',
+            totalSize: 10 * 1024 * 1024,
             templateAlert: '<article id="fileAlert" class="lay-wrap"><section class="lay-conts"><h6>{{message}}</h6></section><div class="btn-wrap laypop"><button type="button" class="btn pink ui_modal_close"><span>확인</span></button></div></article>',
             message: {
                 name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
