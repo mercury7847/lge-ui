@@ -97,17 +97,12 @@
 .find-store-wrap {
     .map-container {
         height:100vh;
-        @include csmobile {
-            height:auto;
-        }
+
         .store-list-wrap {
             width: 520px;
             height:100%;
             &.close {
                 left:-520px;
-            }
-            @include tablet {
-                width: 100%;
             }
             .dim {
                 position:absolute;
@@ -124,6 +119,7 @@
             }
             .sch-box {
                 transition: all ease .1s;
+                background: none;
                 .form-wrap {
                     padding-bottom:48px;
                     .box {
@@ -260,12 +256,31 @@
                     }
                 }
             }
+            .view-info-btn {
+                span {
+                    color:#000;
+                    text-decoration:underline;
+                    &:before {
+                        content:"";
+                        display:inline-block;
+                        width:24px;
+                        height:24px;
+                        margin-right:4px;
+                        vertical-align: top;
+                        background:url("/lg5-common/images/CS/btn-viewmap-bk.svg") no-repeat 0 0/100% 100%;
+                    }
+                    &:after {
+                        display:none;
+                    }
+                }
+            }
             .result-list-box {
                 display:none;
                 .result-btn-wrap {
                     .view-info-btn {
                         top:24px;
                         left:auto;
+                        
                     }
                 }
                 .result-list {
@@ -333,7 +348,7 @@
                     }
                     @include mobile {
                         position:absolute;
-                        top:80px;
+                        top:56px;
                         bottom:0;
                         width:100%;
                         padding-bottom:62px;
@@ -370,10 +385,11 @@
                     }
                 }
             }
+
             &.active {
                 .result-list-box {
                     display:block;
-                    position: static;
+                    position: relative;
                 }
                 .opt-cont {
                     top:auto;
@@ -449,14 +465,132 @@
                     }
                 }
             }
+            @include tablet {
+                width: 100%; 
+                .store-list-box {
+                    height:calc(100vh - 2px);
+                }
+                .sch-box {
+                    margin: 0 32px;
+                    .tabs-wrap {
+                        position:relative;
+                        top:auto;
+                        margin:-58px -32px 16px;
+                        padding:12px 32px 0;
+                    }
+                    .form-wrap {
+                        padding-bottom:0;
+                    }
+                }
+                .view-info-btn {
+                    top:12px;
+                    left:auto;
+                    bottom:auto;
+                    right:0;
+                }
+                .result-list-box {
+                    position: absolute;
+                    .result-btn-wrap,
+                    .result-list {
+                        padding-left: 32px;
+                    }
+                }
+                .list-wrap {
+                    height:calc(100% - 270px - 56px);
+                    .sch-list {
+                        position:relative;
+                        height:100%;
+
+                        .scroll-wrap {
+                            height:100%;
+                        }
+                    }
+                }
+                .opt-cont {
+                    position:absolute;
+                    bottom: 0;
+
+                    &.open {
+                        top:-6px;
+                        .opt-layer {
+                            height:calc(100% - 56px - 64px);
+                            box-sizing:border-box;
+                            padding-bottom:0;
+
+                            .scroll-wrap {
+                                max-height:100%;
+                                height:100%;
+                            }
+                        }
+                        .opt-btn-wrap {
+                            .btn-group {
+                                padding:0;
+                            }
+                        }
+                    }
+                }
+                &.active {
+                    h2.tit,
+                    .store-list-box {
+                        transform: translateY(-270px);
+                    }
+                    .store-list-box {
+                        height:calc(100vh + 268px);
+                    }
+                    
+                    .tabs-contents {
+                        .desc {
+                            opacity: 0;
+                        }
+                    }
+                    .result-list-box {
+                        top:0;
+                    }
+                    .list-wrap {
+                        height:calc(100% - 270px - 76px - 134px);
+                    }
+                    .opt-cont {
+                        &.open {
+                            top:264px;
+                        }
+                    }
+                }
+            }
             @include mobile {
                 .view-info-btn {
                     position: absolute;
-                    bottom: 40px;
+                    top:auto;
+                    right:auto;
+                    bottom: 80px;
+                }
+                h2 {
+                    transform: none;
                 }
                 .store-list-box {
-                    transform: translateY(0);
-                    transition: transform ease-out .5s;
+                    transform: none;
+                    transition: none;
+                }
+                .sch-box {
+                    margin:0 16px;
+                    .tabs-wrap {
+                        margin:0 -16px 40px;
+                        padding:35px 16px 0;
+
+                        .tabs {
+                            > li {
+                                & + li {
+                                    margin-left:26px;
+                                }
+                                > a {
+                                    padding:0 6px 16px;
+                                    font-size:17px;
+                                }
+                            }
+                        }
+                    }
+                    .form-wrap {
+                        padding-bottom:83px;
+                    }
                 }
                 .sch-list {
                     ul {
@@ -484,8 +618,11 @@
                         }
                     }
                 }
+
                 .list-wrap {
                     padding:0 0 0 16px;
+                    height:calc(100vh - 333px - 56px);
+
                     .sch-list {
                         position:relative;
                         height:100%;
@@ -498,15 +635,26 @@
                     padding-bottom:76px;
                     box-sizing:border-box;
                 }
+                .opt-cont {
+                    .btn-sel {
+                        height:56px;
+                    }
+                }
                 &.active {
                     .sch-box {
                         display: none;
                     }
                     .store-list-box {
-                        position: fixed;
+                        //position:fixed;
                         width:100%;
-                        height:100vh;
-                        transform: translateY(-422px);
+                        height:auto;
+                        bottom:0;
+                        transform:none;
+
+                        &.fixed {
+                            height:100%;
+                            position:fixed;
+                        }
                     }
                     .sch-list {
                         .scroll-wrap {
@@ -516,14 +664,21 @@
                         }
                     }
                     .list-wrap {
-                        height:calc(100vh - 125px - 76px);
+                        height:calc(100vh - 125px - 56px);
+                    }
+                }
+                &.local:not(.active) {
+                    .list-wrap {
+                        height:calc(100vh - 385px - 56px);
                     }
                 }
             }
+
+            
         }
         .store-map-con {
             @include mobile {
-                height:calc(100vh - 76px - 60px - 353px);
+                height:calc(100vh - 56px - 60px - 353px);
             }
         }
         .map-area {
@@ -596,5 +751,11 @@
     @include mobile {
         position:relative;
         z-index:1;
+
+        .map-container {
+            .btn-list-fold {
+                display:none;
+            }
+        }
     }
 }
