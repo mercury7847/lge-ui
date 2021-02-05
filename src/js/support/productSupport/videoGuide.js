@@ -15,7 +15,7 @@
             '</a>' +
         '</li>';
     var topicTmpl = 
-        '{{#each (item, index) in topicList}}' +
+        '{{#each (item, index) in list}}' +
         '<option value="{{item.code}}">{{item.name}}</option>' +
         '{{/each}}';
 
@@ -35,6 +35,8 @@
             self.$cont = $('.contents');
             self.$productBar = self.$cont.find('.prod-selected-wrap');
             self.$myProductWarp = self.$cont.find('.my-product-wrap');
+            self.$searchModelWrap = self.$cont.find('.prod-search-wrap');
+
             self.$stepModel = self.$cont.find('#stepModel');
             self.$stepInput = self.$cont.find('#stepInput');
 
@@ -53,16 +55,17 @@
             self.$resultPagination = self.$resultWrap.find('.pagination');
             self.$noData = self.$resultWrap.find('.no-data');
 
+
+            self.resultUrl = self.$searchModelWrap.data('resultUrl');
+            self.subTopicUrl = self.$stepInput.data('subTopicUrl');
+            self.listUrl = self.$stepInput.data('listUrl');
+
+
             self.bindEvent();
 
             self.$cont.commonModel({
                 selected: self.param
             });
-            self.$resultPagination.pagination();
-            self.$searchTopic.vcSelectTarget({
-                addParam: '.contents input[type=hidden]'
-            });
-
             self.$keywordWrap.search({
                 template: {
                     autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="#{{item.url}}" title="새창 열림" target="_blank"><div class="list-head"><strong class="list-category">{{item.subCategory}}</strong><span class="list-sub-category">{{item.subTopic}}</span></div><div class="list-desc">{{item.contTitle}}</div></a></li>{{/each}}</ul>',
@@ -70,14 +73,35 @@
                     keywordList: '<li><a href="#">{{keyword}}</a></li>'
                 }
             });
+            self.$resultPagination.pagination();
         },
         drawTopicList: function(data) {
             var self = this;
-            var html = vcui.template(topicTmpl, data);
+            var html = vcui.template(topicTmpl, {
+                list: data.topicList
+            });
 
             self.$searchTopic.find('option:not(.placeholder)').remove();
             self.$searchTopic.append(html).prop('disabled', false);
             self.$searchTopic.vcSelectbox('update');
+        },
+        drawSubTopicList: function(data) {
+            var self = this;
+            var arr = data instanceof Array ? data : [],
+                html = '';
+
+            self.$searchSubTopic.find('option:not(.placeholder)').remove();
+
+            if (arr.length) {
+                html = vcui.template(topicTmpl, {
+                    list: arr
+                });
+                self.$searchSubTopic.append(html).prop('disabled', false);
+            } else {
+                self.$searchSubTopic.prop('disabled', true);
+            }
+
+            self.$searchSubTopic.vcSelectbox('update');
         },
         drawList: function(result) {
             var self = this;
@@ -85,6 +109,8 @@
                 data = result.data,
                 param = result.param,    
                 popular = data.popular;
+
+            self.drawSummary(param);
 
             if (popular.listData.length) {
                 for (var key in data) {
@@ -100,38 +126,57 @@
                         html = '';
                     }
                 }
-
-                self.drawSummary(param);
                 self.$noData.hide();
             } else {
                 self.$resultCont.hide();
                 self.$resultCont.find('.video-list').empty();
-                self.$resultSummary.hide();
                 self.$noData.show();
             }
         },
-        drawSummary: function(data) {
+        drawSummary: function() {
             var self = this;
+            var $keyword = self.$resultSummary.find('.keyword'),
+                keyword = self.param.keyword;
 
-            if (data) {
-                if (data.keyword) {
-                    self.$resultSummary.find('.keyword').html(data.keyword);
-                    self.$resultSummary.show();
-                } else {
-                    self.$resultSummary.hide();
-                }
+            if (keyword) {
+                $keyword.html(keyword);
+                self.$resultSummary.show();
+            } else {
+                self.$resultSummary.hide();
+                $keyword.empty();
             }
+
+            self.$searchKeyword.val(keyword);
         },
         setPopularKeyword: function(data) {
             var arr = data.popularKeyword instanceof Array ? data.popularKeyword : [];
             this.$keywordWrap.search('setPopularKeyword', arr);
         },
-        requestData: function() {
+        requestSubTopic: function() {
             var self = this;
-            var url = self.$stepInput.data('listUrl');
+
+            var param = {
+                topic: self.param.topic,
+                topicNm: self.param.topicName,
+                category: self.param.category,
+                categoryNm: self.param.categoryName,
+                subCategory: self.param.subCategory,
+                subCategoryNm: self.param.subCategoryName
+            }
 
             lgkorUI.showLoading();
-            lgkorUI.requestAjaxData(url, self.param, function(result) {
+            lgkorUI.requestAjaxDataPost(self.subTopicUrl, param, function(result) {
+                var data = result.data.optionData || result.data;
+
+                self.drawSubTopicList(data);
+                lgkorUI.hideLoading();
+            });
+        },
+        requestData: function() {
+            var self = this;
+
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxData(self.listUrl, self.param, function(result) {
                 self.drawList(result);
                 lgkorUI.hideLoading();
             }, 'POST', 'json', false);
@@ -142,10 +187,16 @@
             self.$cont.on('complete', function(e, data, url) {
                 var param = {
                     category: data.category,
+                    categoryNm: data.categoryName,
                     subCategory: data.subCategory,
-                    modelCode: data.modelCode
+                    subCategoryNm: data.subCategoryName,
+                    modelCode: data.modelCode,
+                    productCode: data.productCode,
+                    page: data.page || 1
                 };
-                
+
+                self.param = $.extend(self.param, param);
+
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var resultData = result.data;
@@ -153,10 +204,10 @@
                     self.drawList(result);
                     self.drawTopicList(resultData);
                     self.setPopularKeyword(resultData);
-                    console.log(data);
+                    
                     self.$myProductWarp.hide();
                     self.$cont.commonModel('updateSummary', {
-                        product: [data.categoryName, data.subCategoryName, data.modelCode],
+                        product: [param.categoryNm, param.subCategoryNm, param.modelCode],
                         reset: 'product'
                     });
                     self.$cont.commonModel('next', self.$stepInput);
@@ -168,21 +219,41 @@
             });
 
             self.$searchTopic.on('change', function() {
-                var param = { topic: self.$searchTopic.val() };
+                var param = { topic: self.$searchTopic.val(), topicNm: self.$searchTopic.find('option:selected').text() };
                 self.param = $.extend(self.param, param);
+                self.requestSubTopic();
             });
 
             self.$searchSubTopic.on('change', function() {
-                var param = { page:1, subTopic: self.$searchSubTopic.val() };
+                var param = { 
+                    page:1, 
+                    subTopic: self.$searchSubTopic.val(),
+                    subTopicNm: self.$searchSubTopic.find('option:selected').text()
+                };
                 self.param = $.extend(self.param, param);
                 self.requestData();
             });
 
             self.$searchKeyword.on('keydown', function(e) {
-                var param;
                 if (e.keyCode == 13) {
                     e.preventDefault();
-                    param = { page:1, keyword: self.$searchKeyword.val(), page: 1 };
+                    self.$searchBtn.trigger('click');
+                }
+            });
+
+            $('.search-layer').on('click', '.keyword-box a', function(e) {
+                e.preventDefault();
+                self.$searchBtn.trigger('click', [$(this).text().trim()]);      
+            });
+
+            self.$searchBtn.on('click', function(e, keyword) {
+                var value = keyword || self.$searchKeyword.val();
+
+                if (value.trim().length > 1) {
+                    var param = { 
+                        page:1, 
+                        keyword: value 
+                    };
                     self.param = $.extend(self.param, param);
                     self.requestData();
                 }
@@ -193,20 +264,6 @@
                 lgkorUI.requestAjaxData(url, param, function(result) {
                     callback(result.data);
                 });
-            });
-
-            $('.search-layer').on('click', '.keyword-box a', function(e) {
-                e.preventDefault();
-                self.$searchBtn.trigger('click', [$(this).text().trim()]);      
-            });
-
-            self.$searchBtn.on('click', function(e, keyword) {
-                var param = { 
-                    page:1, 
-                    keyword: keyword || self.$searchKeyword.val() 
-                };
-                self.param = $.extend(self.param, param);
-                self.requestData();
             });
 
             self.$resultPagination.on('pageClick', function(e) {
