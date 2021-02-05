@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
     <link rel="stylesheet" href="/lg5-common/css/pages/MAP/MAP.min.css" />
     <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
-    <!-- <script src="/lg5-common/js/common-ui.js"></script> -->
+    <!-- <script src="/lg5-common/js/app.common.js"></script> -->
     <script>
-        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        var AppUserAgent = navigator.userAgent || navigator.vendor || window.opera;
 
         var oldStartValue = "";
         var oldEndValue = "";
@@ -77,7 +77,7 @@
                 });
             }
         }
-        var cnt = 15;
+        var appCnt = 15;
         var toastMessage = {
             init: function(txt, type, timesetIdx){
                 if(!type){
@@ -86,7 +86,7 @@
                 if(!timesetIdx){
                     timesetIdx = 0;
                 }
-                var id = "toast"+cnt;
+                var id = "toast"+appCnt;
                 var $type = type;
                 var $timesetIdx = timesetIdx;
                 var $body = $("body");
@@ -113,12 +113,12 @@
                 this.open("#"+id, $timesetIdx);
             },
             open: function(id, timesetIdx){
-                cnt++;
+                appCnt++;
                 var $id = $(id);
 
                 $("html").css("overflow-y","hidden");
                 $id.css({
-                    "z-index" : (cnt + 500),
+                    "z-index" : (appCnt + 500),
                     "display" : "block"
                 }).stop().animate({'bottom':'50px'}, 200, function(){
                     $(this).attr("tabindex", 0).focus();
@@ -134,10 +134,10 @@
             },
             close: function(id, timesetIdx){
                 var $id = $(id);
-                $id.css("z-index", cnt).stop().animate({'bottom':'-60px'}, 200, function(){
+                $id.css("z-index", appCnt).stop().animate({'bottom':'-60px'}, 200, function(){
                     $("html").css("overflow-y","scroll");
                     $(beforeFocusEleToast).focus();
-                    //if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                    //if (/iPhone|iPad|iPod/i.test(navigator.AppUserAgent)) {
                         if(timesetIdx != null && timesetIdx != "" && timesetIdx != undefined){
                             if(events){
                                 $(".time-setting .inner div").eq(timesetIdx).find("label:not([class*=rst-time])").attr("tabindex", 0).focus().trigger("click");
@@ -317,7 +317,7 @@
 
                     events = true;
                     var idx = $(this).closest("div").index();
-                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                    if (/iPhone|iPad|iPod/i.test(navigator.AppUserAgent)) {
                     }else{
                         changeTimeSet(idx);
                         /*
@@ -329,7 +329,7 @@
                 },
                 blur: function(e){
                     var idx = $(this).closest("div").index();
-                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                    if (/iPhone|iPad|iPod/i.test(navigator.AppUserAgent)) {
                         changeTimeSet(idx);
                     }
                 }
@@ -357,7 +357,7 @@
                         //접근성
                         $(".main-panel").attr("aria-hidden", false);
                         $(".main-panel").attr("tabindex", 0).focus();
-                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        if (/iPhone|iPad|iPod/i.test(navigator.AppUserAgent)) {
                         }else{
                             $(".main-panel").find("h1").focus();
                         }
@@ -384,7 +384,7 @@
                         $(this).attr("aria-hidden", false);
                         $(this).attr("tabindex", 0).focus();
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
-                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        if (/iPhone|iPad|iPod/i.test(navigator.AppUserAgent)) {
                         }else{
                             $(this).find("h1").focus();
                         }
@@ -400,7 +400,7 @@
                         $(this).attr("aria-hidden", false);
                         $(this).attr("tabindex", 0).focus();
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
-                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        if (/iPhone|iPad|iPod/i.test(navigator.AppUserAgent)) {
                         }else{
                             $(this).find("h1").focus();
                         }
