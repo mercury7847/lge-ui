@@ -3,3 +3,111 @@
 
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
+
+
+.support-home {
+    padding-bottom:120px;
+    .home-section {
+        margin-top:120px;
+    }
+    .home-login {
+        position:relative;
+        overflow:hidden;
+        width:1380px;
+        margin-left:auto;
+        margin-right:auto;
+
+        a {
+            display: block;
+            position:relative;
+            left:50%;
+            width:1920px;
+            transform:translateX(-50%);
+        }
+
+        img {
+            width:100%;
+        }
+    }
+
+    .popular-find {
+        margin-top:0;
+    }
+
+    .main-service {
+        .main-list {
+            position:relative;
+            margin-left:-12px;
+            margin-right:-12px;
+            @include clearfix;
+
+            > li {
+                float:left;
+                padding:0 12px;
+
+                > a {
+                    display:block;
+                    width:327px;
+
+                    img {
+                        width:100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .related-pages {
+        .page-list {
+            position:relative;
+            margin-left:-12px;
+            margin-right:-12px;
+            @include clearfix;
+
+            > li {
+                float:left;
+                padding:0 12px;
+
+                > a {
+                    display:block;
+                    width:444px;
+
+                    img {
+                        width:100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .awards {
+
+        .award-list-wrap {
+            width:1184px;
+            margin:0 auto;
+        }
+        .award-list {
+            position:relative;
+            margin-left:-10px;
+            margin-right:-10px;
+            
+            
+            @include clearfix;
+
+            > li {
+                float:left;
+                padding:0 10px;
+                // padding:0 32px;
+
+                > a {
+                    display:block;
+                    width:276px;
+
+                    img {
+                        width:100%;
+                    }
+                }
+            }
+        }
+    }
+}
