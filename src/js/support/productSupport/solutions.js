@@ -462,13 +462,15 @@
                 self.$cont.on('complete', function(e, data) { 
                     var param = {
                         category: data.category,
-                        categoryNm: data.categoryNm,
+                        categoryNm: data.categoryName,
                         subCategory: data.subCategory,
-                        subCategoryNm: data.subCategoryNm,
+                        subCategoryNm: data.subCategoryName,
                         modelCode: data.modelCode,
                         productCode: data.productCode,
                         page: 1
                     };
+
+                    console.log(data);
 
                     if (data.cstFlag) param['cstFlag'] = data.cstFlag;
                     
