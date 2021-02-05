@@ -201,7 +201,7 @@
             completeModel: function() {
                 var self = this;
                 var model = self.param;
-
+                console.log(self.param)
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(self.resultUrl, model, function(result) {
                     var data = result.data,
@@ -215,7 +215,7 @@
                     self.setBanner(data);
                     self.setPopularKeyword(data);
                     self.setFilter(data);
-                    if (self.param.topic != '') {
+                    if (self.param.topicNm != 'All') {
                         self.setSubFilter(data);
                     }
                     self.setSolutionsList(data);
@@ -408,7 +408,7 @@
 
                     self.setFilter(data);
                     
-                    if (self.param.topic != '') {
+                    if (self.param.topicNm != 'All') {
                         self.setSubFilter(data);
                     }
 
