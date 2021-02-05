@@ -174,11 +174,11 @@
                             data['keywords'].push(decodeURIComponent(searchObj.keyword));
                             self.$keywordInput.val(decodeURIComponent(searchObj.keyword));
                         } else if (key == 'searchKeyword') {
-                            var temp = searchObj.searchKeyword.split('+');
+                            var temp = decodeURIComponent(searchObj.searchKeyword).split('+');
                             if (temp.length) {
                                 data['keywords'] = [];
                                 temp.forEach(function(item) {
-                                    data['keywords'].push(decodeURIComponent(item));
+                                    data['keywords'].push(item);
                                 });
                             }
                         } else {
