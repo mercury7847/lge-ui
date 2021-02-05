@@ -128,12 +128,33 @@
     // 제품 문제 해결 필터 & 리스트
     .solutions-wrap {
         @include clearfix;
+        .title {
+            position:relative;
+            font-size:0;
+            margin-bottom:48px;
+            padding-bottom:16px;
+            border-bottom:2px solid #000;
+            .tit {
+                display:inline-block;
+                @include font-large-1;
+                font-weight:$font-weight-bold;
+                vertical-align:middle;
+                .point {
+                    color:#da0f47;
+                }
+            }
+            .btn-back {
+                display:inline-block;
+                width:24px;
+                height:24px;
+                font-weight:700;
+                vertical-align:middle;
+                background:100% url('/lg5-common/images/icons/icon-btn-arrow-left.svg') no-repeat;
+            }
+        }
         .result-box {
             float:right;
             width:calc(100% - 234px);
-            .tit-wrap {
-                margin-bottom:48px;
-            }
             @include mobile {
                 float:none;
                 width:100%;
@@ -146,54 +167,22 @@
             position:relative;
             float:left;
             width:210px;
-            //margin-top:96px;
-            .tit-wrap {
-                position:relative;
-                font-size:0;
-                .btn-back {
-                    position:absolute;
-                    top:4px;
-                    left:0;
-                    width:24px;
-                    height:24px;
-                    font-weight:700;
-                    background:100% url('/lg5-common/images/icons/icon-btn-arrow-left.svg') no-repeat;
-                    & + .tit {
-                        display:block;
-                        padding-left:28px;
-                    }
-                }
-            }
             .filter-list {
-                &.open {
-                    overflow:hidden;
-                    height:0;
-                    .sub-depth {
-                        display:block;
-                    }
-                }
                 li {
-                    margin-top:12px;
+                    margin-top:16px;
                     &:first-child {
                         margin-top:0;
                     }
-                    .filter-link {
+                    button {
                         display:inline-block;
                         @include font-medium;
+                        font-weight:$font-weight-bold;
                         text-align:left;
                         vertical-align:top;
                     }
-                    .sub-depth {
-                        display:none;
-                        position:absolute;
-                        width:100%;
-                        left:0%;
-                        top:0;
-                        background:#fff;
-                    }
                     &.on {
-                        & > .filter-link {
-                            color:#ec455a;
+                        & > button {
+                            color:#da0f47;
                         }
                     }
                 }
@@ -449,9 +438,11 @@
                     }
                     .btn-delete {
                         display:inline-block;
+                        position:static;
                         width:14px;
                         height:14px;
-                        margin-left:8px;
+                        margin:7px 0 0 8px;
+                        vertical-align:top;
                         background:url('/lg5-common/images/icons/icon-delete-20.svg') no-repeat;
                         background-size:100%;
                     }

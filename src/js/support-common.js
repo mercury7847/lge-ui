@@ -384,21 +384,31 @@ CS.MD.search = function() {
                         $('.keyword-box').hide();
                         self.$el.addClass('on');
                     }]);
+
+                    $('.search-error').hide();
                 } else {
                     self.$el.find('.autocomplete-box').find('ul').empty();
                     $('.autocomplete-box').hide();
                     $('.keyword-box').show();
                 }
-
             }).on('keyup', function(e) {
                 if (e.keyCode == 13) {
                     e.preventDefault();
-                    var val = $(this).val().trim();
-                    if (val.length > 0) {
-                        cookieKeyword.addCookie($(this).val());
-                        self._setRecently();
-                    }
+                    self.$el.find('.btn-search').trigger('click');
                 }
+            });
+
+            self.$el.find('.btn-search').on('click', function() {
+                var val = self.$el.find('input[type=text]').val().trim();
+                if (val.length > 1) {
+                    cookieKeyword.addCookie(val);
+                    self._setRecently();    
+                    $('.search-error').hide();
+                } else {
+                    $('.search-error').show();   
+                }
+
+                self.$el.removeClass('on');
             });
 
             $('body').on('click', function (e) {
