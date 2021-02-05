@@ -110,9 +110,14 @@
                     "sku":$dm.attr('data-sku'),
                     "wishListId":$dm.attr('data-wishListId'),
                     "wishItemId":$dm.attr('data-wishItemId'),
-                    "categoryId":$dm.attr('data-categoryId'),
-                    "rtSeq":$dm.attr('data-rtSeq')
                 }
+
+                var categoryId = $dm.attr('data-categoryId');
+                param.categoryId = categoryId ? categoryId : null;
+                var rtSeq = $dm.attr('data-rtSeq');
+                param.rtSeq = rtSeq ? rtSeq : null;
+                var requireCare = $dm.attr('data-requireCare');
+                param.requireCare = requireCare ? lgkorUI.stringToBool(requireCare) :null;
 
                 var obj = {title:'', cancelBtnName:'취소', okBtnName:'삭제', ok: function (){
                     lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
@@ -136,11 +141,16 @@
                     "sku":$dm.attr('data-sku'),
                     "wishListId":$dm.attr('data-wishListId'),
                     "wishItemId":$dm.attr('data-wishItemId'),
-                    "categoryId":$dm.attr('data-categoryId'),
-                    "rtSeq":$dm.attr('data-rtSeq'),
                     "typeFlag":cartType,
-                    "requireCare":lgkorUI.stringToBool($dm.attr('data-requireCare'))
                 }
+
+                var categoryId = $dm.attr('data-categoryId');
+                param.categoryId = categoryId ? categoryId : null;
+                var rtSeq = $dm.attr('data-rtSeq');
+                param.rtSeq = rtSeq ? rtSeq : null;
+                var requireCare = $dm.attr('data-requireCare');
+                param.requireCare = requireCare ? lgkorUI.stringToBool(requireCare) :null;
+
                 lgkorUI.requestCart(ajaxUrl, param);
             },
 

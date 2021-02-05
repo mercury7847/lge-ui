@@ -134,14 +134,16 @@
                 var param = {
                     "id":$dm.attr('data-id'),
                     "sku":$dm.attr('data-sku'),
-                    //"wishListId":$dm.attr('data-wishListId'),
-                    //"wishItemId":$dm.attr('data-wishItemId'),
-                    "categoryId":$dm.attr('data-categoryId'),
-                    "rtSeq":$dm.attr('data-rtSeq'),
                     "typeFlag":cartType,
-                    "requireCare":lgkorUI.stringToBool($dm.attr('data-requireCare'))
                 }
-                console.log(param);
+
+                var categoryId = $dm.attr('data-categoryId');
+                param.categoryId = categoryId ? categoryId : null;
+                var rtSeq = $dm.attr('data-rtSeq');
+                param.rtSeq = rtSeq ? rtSeq : null;
+                var requireCare = $dm.attr('data-requireCare');
+                param.requireCare = requireCare ? lgkorUI.stringToBool(requireCare) :null;
+                
                 lgkorUI.requestCart(ajaxUrl, param);
             },
 
@@ -161,8 +163,14 @@
                     "wishListId":$dm.attr('data-wishListId'),
                     "wishItemId":$dm.attr('data-wishItemId'),
                     "wish":wish,
-                    "requireCare":lgkorUI.stringToBool($dm.attr('data-requireCare'))
                 };
+
+                var categoryId = $dm.attr('data-categoryId');
+                param.categoryId = categoryId ? categoryId : null;
+                var rtSeq = $dm.attr('data-rtSeq');
+                param.rtSeq = rtSeq ? rtSeq : null;
+                var requireCare = $dm.attr('data-requireCare');
+                param.requireCare = requireCare ? lgkorUI.stringToBool(requireCare) :null;
 
                 lgkorUI.requestWish(
                     param,
