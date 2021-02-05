@@ -257,11 +257,24 @@
 
         _bindEvents: function(){
             var self = this;
+            
+            var activeTabIndex = self.$searchContainer.find('.ui_tab .tabs li.on').index();
+
+            function setStoreClass(index){
+                var $storeListWrap = $('.store-list-wrap');
+
+                if( index == 0) {
+                    $storeListWrap.addClass('local')
+                } else {
+                    $storeListWrap.removeClass('local')
+                }
+            }
+            setStoreClass(activeTabIndex);
 
             self.$searchContainer.find('.ui_tab').on('tabchange', function(e, data) {
                 
-
-
+                
+                setStoreClass(data.selectedIndex);
                 switch(data.selectedIndex) {
                     case 0:
                         self.searchType = 'local';
@@ -303,7 +316,16 @@
                 
                 // self._returnSearchMode();
 
-                self.$leftContainer.removeClass('active')
+                //self.$leftContainer.removeClass('active')
+                //$('.result-list-box').hide();
+                $('.store-list-box').stop().animate({
+                    top: $('.map-container').offset().top
+                }, function(){
+                    self.$leftContainer.removeClass('active');
+                    $(this).removeClass('fixed');
+                    $('.map-container').css('overflow', 'hidden');
+                })
+                
             });
 
             self.$searchContainer.on('click', '.btn-view', function(e){
@@ -680,6 +702,24 @@
                 var callback = function() {
                     self._loadStoreData();
                     self.$leftContainer.addClass('active');
+                    if( window.innerWidth < 768) {
+                        $('.map-container').css('overflow', 'visible');
+                        self.$leftContainer.find('.store-list-box').stop().animate({
+                            marginTop : -$('.map-container').offset().top
+                        }, function(){
+                            $(this).addClass('fixed');
+                            $(this).attr('style', '');
+                        })
+                    }
+                    
+                    
+                    //돌아가기 오픈
+                    $('.map-container').css('overflow', 'auto');
+                    self.$leftContainer.find('.store-list-box').stop().animate({
+                        marginTop : -self.$leftContainer.offset().top
+                    }, function(){
+                        $(this).addClass('fixed');
+                    })
                 };
 
                 self.searchResultMode = true;
@@ -704,6 +744,15 @@
 
                     self.searchAddressToCoordinate(result.data.userAdress, callback);
                     self.$leftContainer.addClass('active');
+                    if( window.innerWidth < 768) {
+                        $('.map-container').css('overflow', 'visible');
+                        self.$leftContainer.find('.store-list-box').stop().animate({
+                            marginTop : -$('.map-container').offset().top
+                        }, function(){
+                            $(this).addClass('fixed');
+                            $(this).attr('style', '');
+                        })
+                    }
                 } else{
                     if(result.data.location && result.data.location != ""){
                         location.href = result.data.location;
@@ -732,6 +781,15 @@
 
                         self._loadStoreData();
                         self.$leftContainer.addClass('active');
+                        if( window.innerWidth < 768) {
+                            $('.map-container').css('overflow', 'visible');
+                            self.$leftContainer.find('.store-list-box').stop().animate({
+                                marginTop : -$('.map-container').offset().top
+                            }, function(){
+                                $(this).addClass('fixed');
+                                $(this).attr('style', '');
+                            })
+                        }
                     }, function(error) {
                         lgkorUI.alert('현재 위치를 찾을 수 없습니다.', {
                             title: '현재 위치 정보',
@@ -780,6 +838,16 @@
 
                 self._loadStoreData();
                 self.$leftContainer.addClass('active');
+                console.log('지하철 검색')
+                if( window.innerWidth < 768) {
+                    $('.map-container').css('overflow', 'visible');
+                    self.$leftContainer.find('.store-list-box').stop().animate({
+                        marginTop : -$('.map-container').offset().top
+                    }, function(){
+                        $(this).addClass('fixed');
+                        $(this).attr('style', '');
+                    })
+                }
             } else{
                 lgkorUI.alert("", {
                     title: "지하철 검색의 역명을 선택해 주세요."
@@ -806,6 +874,16 @@
                 self.searchAddressToCoordinate(self.$citySelect2.val(), callback);
 
                 self.$leftContainer.addClass('active');
+                console.log('센터명 검색')
+                if( window.innerWidth < 768) {
+                    $('.map-container').css('overflow', 'visible');
+                    self.$leftContainer.find('.store-list-box').stop().animate({
+                        marginTop : -$('.map-container').offset().top
+                    }, function(){
+                        $(this).addClass('fixed');
+                        $(this).attr('style', '');
+                    })
+                }
             } else{
                 lgkorUI.alert("", {
                     title: '광역 시/도 선택 후<br>센터 명을 입력해주세요.'
@@ -827,6 +905,15 @@
                 self._loadStoreData();
 
                 self.$leftContainer.addClass('active');
+                if( window.innerWidth < 768) {
+                    $('.map-container').css('overflow', 'visible');
+                    self.$leftContainer.find('.store-list-box').stop().animate({
+                        marginTop : -$('.map-container').offset().top
+                    }, function(){
+                        $(this).addClass('fixed');
+                        $(this).attr('style', '');
+                    })
+                }
             } else{
                 lgkorUI.alert("", {
                     title: "주소찾기 버튼 선택하여 주소 검색 시 확인 가능합니다."
@@ -942,6 +1029,15 @@
                 self.$defaultListContainer.find('.scroll-wrap').animate({scrollTop:0}, 120);
                  */
                 self.$leftContainer.addClass('active');
+                if( window.innerWidth < 768) {
+                    $('.map-container').css('overflow', 'visible');
+                    self.$leftContainer.find('.store-list-box').stop().animate({
+                        marginTop : -$('.map-container').offset().top
+                    }, function(){
+                        $(this).addClass('fixed');
+                        $(this).attr('style', '');
+                    })
+                }
             }
         },
 
