@@ -175,11 +175,11 @@
                         }
                         .item-text {
                             display: table-cell;
-                            text-align:center;
                             vertical-align: middle;
                             @include mobile {
                                 display:block;
                                 margin-top:16px;
+                                text-align:center;
                             }
                             .product-name {
                                 display: -webkit-box;
