@@ -260,6 +260,18 @@
                 span {
                     color:#000;
                     text-decoration:underline;
+                    &:before {
+                        content:"";
+                        display:inline-block;
+                        width:24px;
+                        height:24px;
+                        margin-right:4px;
+                        vertical-align: top;
+                        background:url("/lg5-common/images/CS/btn-viewmap-bk.svg") no-repeat 0 0/100% 100%;
+                    }
+                    &:after {
+                        display:none;
+                    }
                 }
             }
             .result-list-box {
