@@ -176,11 +176,14 @@
                 lgkorUI.hideLoading();
             });
         },
-        requestData: function() {
+        requestData: function(type) {
             var self = this;
+            var param = $.extend({}, self.param);
+
+            param['type'] = type;
 
             lgkorUI.showLoading();
-            lgkorUI.requestAjaxData(self.listUrl, self.param, function(result) {
+            lgkorUI.requestAjaxData(self.listUrl, param, function(result) {
                 self.drawList(result);
                 lgkorUI.hideLoading();
             }, 'POST', 'json', false);
@@ -292,9 +295,11 @@
             });
 
             self.$resultPagination.on('pageClick', function(e) {
-                var param = { page: e.page};
+                var type = $(e.currentTarget).closest('.tabs-contents').attr('id');
+                
+                var param = {page: e.page};
                 self.$param = $.extend(self.param, param);
-                self.requestData();
+                self.requestData(type);
             });
 
             self.$resultSummary.on('click', '.btn-delete', function() {
