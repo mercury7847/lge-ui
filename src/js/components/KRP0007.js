@@ -449,9 +449,11 @@
 
             makeListItem: function(item){
                 var self = this;
-    
-                var siblingType = item.siblingType ? item.siblingType.toLowerCase() : '';
-                item.siblingType = (siblingType == "color") ? "color" : "text";
+
+                for(var str in item.siblings){
+                    var siblingType = item.siblings[str].siblingType ? item.siblings[str].siblingType.toLowerCase() : '';
+                    item.siblings[str].siblingType = (siblingType == "color") ? "color" : "text";
+                }
 
                 var sliderImages = [item.mediumImageAddr];
                 if(item.rollingImages && item.rollingImages.length){
@@ -482,6 +484,8 @@
                 if(!item.wishItemId) item.wishItemId = "";
 
                 if(!item.rtModelSeq) item.rtModelSeq = "";
+
+                console.log("### item.siblingType ###", item.siblingType)
 
                 return vcui.template(productItemTemplate, item);
             },
