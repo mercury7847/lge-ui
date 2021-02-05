@@ -10,14 +10,7 @@
             vcui.require(['ui/validation', 'ui/formatter', 'ui/imageFileInput'], function () {
                 $('#phoneNo').vcFormatter({'format':'num', "maxlength":11});
 
-                $('.ui_imageinput').vcImageFileInput({
-                    totalSize: '10485760',
-                    format: 'jpg|jpeg|png|gif',
-                    message: {
-                        format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
-                        size: '첨부파일 전체 용량은 10MB 이내로 등록 가능합니다.'
-                    }
-                });
+                $('.ui_imageinput').vcImageFileInput();
 
                 var register = {
                     privcyCheck: {
