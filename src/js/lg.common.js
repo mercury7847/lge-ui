@@ -1042,6 +1042,20 @@
             });
         },
 
+        requestCartCount: function(ajaxUrl) {
+            lgkorUI.requestAjaxDataPost(ajaxUrl, null, function(result){
+                var data = result.data;
+                if(lgkorUI.stringToBool(data.success)) {
+                    var cartCnt = (typeof data.cartCnt  === 'number') ? ""+data.cartCnt : data.cartCnt;
+                    if(cartCnt) {
+                        var utility = $('div.header-wrap div.utility');
+                        utility.find('.cart span.count').remove();
+                        utility.find('.cart').append('<span class="count"><span class="blind">장바구니 제품 수</span>' + cartCnt + '</span>');
+                    }
+                }
+            }, true);
+        },
+
         requestCart: function(ajaxUrl, param, isToast) {
             isToast = !(isToast) ? true : isToast;
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
