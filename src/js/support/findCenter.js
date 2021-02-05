@@ -616,10 +616,10 @@
                     $('.store-map-con').css({
                         position: 'absolute',
                         visibility: 'visible',
-                        top: $('.list-wrap').position().top,
+                        top: maptop,
                         left:0,
                         x: self.windowWidth,
-                        height: $('.list-wrap').outerHeight(),
+                        height: self.$mapContainer.height(),
                         'z-index': 5
                     }).transition({x:0}, 350, "easeInOutCubic", function(){self.isTransion = false;});
         
