@@ -1207,13 +1207,10 @@ br.m {
             }
         }
         .call {
-            margin:8px 0 24px;
-            color:#EC455A;
-            @include font-large-2;
+            margin:12px 0 24px;
+            color:$color-primary;
+            @include font-large-1;
             font-weight:700;
-            @include mobile {
-                margin-bottom:20px;
-            }
         }
         .btn.border {
             margin-top:24px;
