@@ -1,21 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="88" height="88" viewBox="0 0 88 88">
-    <defs>
-        <filter id="jtq3rhmt3a" width="104.5%" height="127.9%" x="-2.2%" y="-14%" filterUnits="objectBoundingBox">
-            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
-            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="10"/>
-            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"/>
-            <feMerge>
-                <feMergeNode in="shadowMatrixOuter1"/>
-                <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-        </filter>
-    </defs>
-    <g fill="none" fill-rule="evenodd">
-        <g>
-            <g filter="url(#jtq3rhmt3a)" transform="translate(-1328 -978) translate(0 772)">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="88px" height="88px" viewBox="0 0 88 88" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-642.000000, -242.000000)">
+            <g id="ic_btn_reset_16" transform="translate(678.000000, 278.000000)">
                 <g>
-                    <path d="M0 0H24V24H0z" transform="translate(1360 238)"/>
-                    <path fill="#EC455A" fill-rule="nonzero" d="M12.073 4.63c.143-.237.45-.312.687-.168l3.545 2.154c.067.041.123.097.165.164.145.234.073.543-.161.688l-3.545 2.203c-.08.049-.17.075-.264.075-.276 0-.5-.224-.5-.5v-1.68C9.15 7.741 6.893 10.107 6.893 13c0 3.007 2.438 5.444 5.445 5.444s5.444-2.437 5.444-5.444l.007-.106c.052-.38.377-.672.771-.672.43 0 .778.348.778.778 0 3.866-3.134 7-7 7s-7-3.134-7-7c0-3.752 2.952-6.815 6.661-6.992V4.89c0-.092.025-.181.073-.26z" transform="translate(1360 238)"/>
+                    <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
+                    <g id="ic" transform="translate(2.000000, 0.500000)">
+                        <path d="M6,2.5 C2.6862915,2.5 0,5.1862915 0,8.5 C0,11.8137085 2.6862915,14.5 6,14.5 C9.3137085,14.5 12,11.8137085 12,8.5 C12,7.59616993 11.8001528,6.73901668 11.4422363,5.97031822" id="Path" stroke="#DA0F47" stroke-linecap="round" stroke-linejoin="round" transform="translate(6.000000, 8.500000) rotate(-360.000000) translate(-6.000000, -8.500000) "></path>
+                        <path d="M6.8200922,0.683410167 L8.53906723,2.11588936 C8.75120568,2.2926714 8.77986771,2.60795375 8.60308567,2.8200922 C8.58372606,2.84332373 8.56229876,2.86475103 8.53906723,2.88411064 L6.8200922,4.31658983 C6.60795375,4.49337187 6.2926714,4.46470984 6.11588936,4.25257139 C6.04100811,4.16271389 6,4.04944745 6,3.93247919 L6,1.06752081 C6,0.791378431 6.22385763,0.567520806 6.5,0.567520806 C6.61696825,0.567520806 6.7302347,0.608528916 6.8200922,0.683410167 Z" id="Path" fill="#DA0F47"></path>
+                    </g>
                 </g>
             </g>
         </g>
