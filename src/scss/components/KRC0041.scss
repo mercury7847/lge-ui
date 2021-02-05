@@ -102,6 +102,9 @@
 					top:50%;
 					left:0;
 					transform:translateY(-50%);
+					@include mobile {
+						transform:translateY(0);
+					}
 				}
 				&.middle-center {
 					top:50%;
@@ -115,6 +118,9 @@
 					top:50%;
 					right:0;
 					transform:translateY(-50%);
+					@include mobile {
+						transform:translateY(0);
+					}
 				}
 				&.bottom-left {
 					bottom: 0;
