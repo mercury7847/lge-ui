@@ -2,6 +2,7 @@
     .cont-wrap {
         .section {
             max-width: 1146px;
+            margin: 0 auto;
             @include mobile {
                 max-width: 100%;
             }
