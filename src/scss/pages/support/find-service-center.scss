@@ -761,6 +761,8 @@
         z-index:1;
 
         .map-container {
+            overflow-x:hidden;
+            overflow-y:visible;
             .btn-list-fold {
                 display:none;
             }

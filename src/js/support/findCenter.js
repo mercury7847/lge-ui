@@ -316,7 +316,6 @@
                 }, function(){
                     self.$leftContainer.removeClass('active');
                     $(this).removeClass('fixed');
-                    $('.map-container').css('overflow', 'hidden');
                 })
                 
             });
@@ -1002,7 +1001,6 @@
 
             self.$leftContainer.addClass('active');
             if( window.innerWidth < 768) {
-                $mapContainer.css('overflow', 'visible');
                 self.$leftContainer.find('.store-list-box').stop().animate({
                     marginTop : -$mapContainer.offset().top
                 }, function(){
@@ -1028,14 +1026,8 @@
 
                 mapheight = self.$defaultListContainer.find('.sch-list').outerHeight();
                 $('.store-list-wrap.active').find('.store-list-box').not('.fixed:animated').addClass('fixed');
-                if( $('.store-list-wrap.active')) {
-                    $('.map-container').css('overflow', 'visible');
-                } else {
-                    $('.map-container').css('overflow', 'hidden');
-                }
             } else{
                 $('.store-list-wrap.active').find('.store-list-box').filter('.fixed').not(':animated').removeClass('fixed');
-                $('.map-container').css('overflow', 'hidden');
                 if(self.$leftContainer.hasClass('close')){
                     mapmargin = 24;
                 } else{
