@@ -84,7 +84,7 @@
                 "itemSeq": "seq00001",
                 "check": false,
                 "available": true,
-                "availableMessage": null,
+                "availableMessage": "테스트테스트",
                 "type": "렌탈(케어솔루션)",
                 "wish": false,
                 "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",

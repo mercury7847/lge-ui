@@ -22,7 +22,7 @@
                 <!-- // visual title -->
 
                 <!-- contents -->
-                <div class="tabs-wrap btn-type ui_tab csn-tabs"><!-- 201221 수정 [.btn-type class 추가] -->
+                <div class="tabs-wrap border-type ui_tab csn-tabs"><!-- 210203 수정 [.btn-type -> .border-type 수정] --><!-- 201221 수정 [.btn-type class 추가] -->
                     <ul class="tabs">
                         <li class="on"><a href="#caresolution1">Why 케어솔루션<em class="blind">선택됨</em></a></li>
                         <li><a href="#caresolution2">케어솔루션 매니저</a></li>
@@ -47,7 +47,7 @@
                             <div class="tit-wrap">
                                 <h3 class="tit">제품별 케어솔루션 혜택</h3>
                             </div>
-                            <div class="tabs-wrap border-type ui_tab ui_smooth_scroll"><!-- 201221 수정 [.bar-type -> .border-type 으로 class 수정, .ui_smooth_scroll class 추가] -->
+                            <div class="tabs-wrap btn-type ui_tab ui_smooth_scroll"><!-- 210203 수정 [.border-type -> .btn-type 수정] --><!-- 201221 수정 [.bar-type -> .border-type 으로 class 수정, .ui_smooth_scroll class 추가] -->
                                 <ul class="tabs">
                                     <li class="on"><a href="#prod1">정수기<em class="blind">선택됨</em></a></li>
                                     <li><a href="#prod2">얼음정수기 냉장고</a></li>
@@ -203,19 +203,21 @@
                                 <div class="csn-itr-body">
                                     <div class="csn-icon-list">
                                         <ul>
+                                            <!-- 210203 수정 [필터 무상 교체, 토탈 클리닝 서비스 텍스트 내용 변경] -->
                                             @@loop('./common/modules/csn-icon-list-loop.html', [
                                                 {
                                                     iconName : "csn3-1",
                                                     title : "필터 무상 교체",
-                                                    desc : "정수기의 핵심부품인 필터를 교체주기에 따라 무상으로 교체하여 위생적으로 사용할 수 있습니다.",
+                                                    desc : "필터를 관리하지 않으면 공기청정기 본래의 성능을 발휘할 수 없습니다. 필터별 교체 주기에 따라 전문가가 방문해 직접 교체하여 번거로움이 없고 별도 비용이 들지 않습니다.",
                                                     bullet: [
-                                                        "극세필터는 방문 시 마다 교체, 복합필터는 12개월 마다 교체"
+                                                        "복합필터: 12개월마다 교체",
+                                                        "극세필터: 복합필터 교체 시기인 12개월 이후 방문 시마다 교체"
                                                     ]
                                                 },
                                                 {
                                                     iconName : "csn3-2",
                                                     title : "토탈 클리닝 서비스",
-                                                    desc : "방문 시 마다 필터세척은 물론 보이지 않는 세밀한 곳까지 청소를 통해 청결하게 관리해드립니다.",
+                                                    desc : "방문 시마다 필터 세척은 물론 내/외부의 분해하기 어려운 클린부스터까지 분해 청소하고 보이지 않는 곳까지 관리해 청결하게 사용할 수 있습니다.",
                                                     bullet: [
                                                         "클린부스터 점검 연 1회 제공"
                                                     ]
@@ -259,16 +261,17 @@
                                 <div class="csn-itr-body">
                                     <div class="csn-icon-list">
                                         <ul>
+                                            <!-- 210203 수정 [2중 안심필터 무상 증정, 토탈 클리닝 서비스 텍스트 내용 변경] -->
                                             @@loop('./common/modules/csn-icon-list-loop.html', [
                                                 {
                                                     iconName : "csn4-1",
                                                     title : "2중 안심필터 무상 증정",
-                                                    desc : "최초 1회 방문 시 2중 안심필터 무상으로 추가 증정하여, 기존 필터 세척 후 말리는 동안에 여분의 필터로 사용 가능합니다.",
+                                                    desc : "최초 1회 방문 시 여분의 필터를 추가로 증정해드립니다. 기존 필터 세척 후 말리는 동안에도 사용 가능합니다.",
                                                 },
                                                 {
                                                     iconName : "csn4-2",
                                                     title : "토탈 클리닝 서비스",
-                                                    desc : "제품 내/외부 관리 및 필터세척, 손으로 닦기 힘든 배수통 내부세척까지 관리해드립니다.",
+                                                    desc : "먼지가 축적되면 제품 성능에 영향을 줄 수 있습니다. 필터 장착부를 포함한 제품 내/외부의 클리닝은 물론 세척제를 이용해 2중 안심필터, 배수통, 스팀 물통을 세척하고 습도센서까지 점검·관리해드립니다.",
                                                 },
                                                 {
                                                     iconName : "csn4-3",
@@ -291,7 +294,7 @@
                             <!-- // 건조기 -->
                             <!-- 스타일러 -->
                             <div id="prod5" class="tab-content csn-itr-cont" style="display:none;">
-                                <div class="csn-itr-head">
+                                <!-- 210203 수정 [삭제] <div class="csn-itr-head">
                                     <a href="#youtube5" data-control="modal" class="csn-video" title="LG전자 케어솔루션 디지털광고 스타일러 케어편 보기">
                                         <img src="/lg5-common/images/SLC/img-video05.jpg" alt="" aria-hidden="true">
                                     </a>
@@ -305,30 +308,31 @@
                                             LG가전 전문가가 직접 케어해주는 케어솔루션으로<br>항상 새 스타일러처럼-
                                         </p>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="csn-itr-body">
                                     <div class="csn-icon-list size3">
                                         <ul>
+                                            <!-- 210203 수정 [텍스트 내용 변경] -->
                                             @@loop('./common/modules/csn-icon-list-loop.html', [
                                                 {
                                                     iconName : "csn5-1",
                                                     title : "급/배수통 무상 교체",
-                                                    desc : "2년마다 급/배수통을 무상으로 교체해주어 언제나 새것처럼 위생적으로 사용할 수 있습니다.",
+                                                    desc : "물때가 생기기 쉬운 급/배수통을 2년마다 새것으로 무상 교체해 주어 언제나 위생적으로 사용할 수 있습니다.",
                                                 },
                                                 {
                                                     iconName : "csn5-2",
                                                     title : "토탈 클리닝 서비스",
-                                                    desc : "제품 내/외부는 물론, 보푸라기 필터와 기계실 입구를 청소하고 급/배수통 소독까지 관리해드립니다.",
+                                                    desc : "세정제를 사용해 보푸라기 필터와 급/배수통을 세척하고 제품 내/외부와 기계실 입구까지 관리해 성능 유지는 물론 깨끗하게 사용할 수 있습니다.",
                                                 },
                                                 {
                                                     iconName : "csn5-3",
-                                                    title : "제품 광택 및 코팅",
-                                                    desc : "광택제를 활용한 도어 광택으로 제품 표면의 재오염 및 스크래치 방지로 새 제품처럼 사용할 수 있습니다.",
+                                                    title : "도어 세정 서비스",
+                                                    desc : "세정제를 사용해 도어 표면의 지문 등 오염을 제거하고, 반짝반짝 깨끗하게 관리해드립니다.",
                                                 },
                                                 {
                                                     iconName : "csn5-4",
                                                     title : "향기시트 무상 증정",
-                                                    desc : "옷에 좋은 향기를 더해주는 향기시트를 방문할 때마다 무상으로 증정해드립니다.",
+                                                    desc : "방문 시마다 스타일러 전용 향기시트를 무상으로 증정해 별도 구매의 번거로움과 추가비용 부담 없이 의류를 향기롭게 관리할 수 있습니다.",
                                                 },
                                                 {
                                                     iconName : "csn5-5",
@@ -364,29 +368,30 @@
                                 <div class="csn-itr-body">
                                     <div class="csn-icon-list size3">
                                         <ul>
+                                            <!-- 210203 수정 [텍스트 내용 변경] -->
                                             @@loop('./common/modules/csn-icon-list-loop.html', [
                                                 {
                                                     iconName : "csn6-1",
                                                     title : "상판 무상 교체",
-                                                    desc : "사용했던 상판을 3년 후 새로운 상판으로 무상 교체해 오랫동안 새것처럼 사용할 수 있습니다.",
+                                                    desc : "3년 후 새로운 상판으로 무상 교체해드려 마치 새 제품처럼 기분 좋게 사용할 수 있습니다.",
                                                     bullet: [
-                                                        "2017년 10월 기준 국내 전기레인지 렌탈 업체 중 상판 교체를 무상으로 제공하는 업체는 자사가 최초로 진행"
+                                                        "업계 최초: 국내 전기레인지 렌탈 업체 ’17년 10월 기준"
                                                     ]
                                                 },
                                                 {
                                                     iconName : "csn6-2",
                                                     title : "토탈 클리닝 서비스",
-                                                    desc : "전용 세제 및 전용 클리너도구를 사용하여 상판 세척 및 사각 틈새 이물질을 제거합니다.",
+                                                    desc : "전용세제와 클리너 도구를 사용해 상판을 깨끗하게 세척하고 사각 틈새의 이물질까지 제거하여 청결한 환경에서 요리할 수 있습니다.",
                                                 },
                                                 {
                                                     iconName : "csn6-3",
-                                                    title : "광택 및 코팅",
-                                                    desc : "전용패드에 광택제를 사용하여 상판 표면 재오염 및 스크래치를 방지합니다. 평소에 관리하실 수 있도록 전용 상판 클리너도 추가로 드립니다.",
+                                                    title : "코팅 및 광택 서비스",
+                                                    desc : "전용 패드와 광택제를 사용한 상판 광택 작업으로 재오염 및 스크래치를 방지하여 새것처럼 반짝 반짝하게 관리해드립니다.",
                                                 },
                                                 {
                                                     iconName : "csn6-4",
                                                     title : "무상 재설치 서비스",
-                                                    desc : "제품 이전 시 LG 전문기사를 통한 재설치 서비스를 무상제공",
+                                                    desc : "제품 이전 시 LG 전문기사를 통한 재설치 서비스를 무상제공해드립니다.",
                                                     bullet: [
                                                         "계약기간 내 1회 제공, 재설치 비용에 한함",
                                                         "제품설치 환경에 따라 추가비용 발생할 수 있음"
@@ -408,7 +413,7 @@
                             <!-- // 전기레인지 -->
                             <!-- 식기세척기 -->
                             <div id="prod7" class="tab-content csn-itr-cont" style="display:none;">
-                                <div class="csn-itr-head">
+                                <!-- 210203 수정 [삭제] <div class="csn-itr-head">
                                     <a href="#youtube7" data-control="modal" class="csn-video" title="LG전자 케어솔루션 디지털광고 식기세척기 케어편 보기">
                                         <img src="/lg5-common/images/SLC/img-video07.jpg" alt="" aria-hidden="true">
                                     </a>
@@ -422,7 +427,7 @@
                                             LG가전 전문가가 직접 케어해주는 케어솔루션으로<br>항상 새 식기세척기처럼-
                                         </p>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="csn-itr-body">
                                     <div class="csn-icon-list size3">
                                         <ul>
@@ -770,7 +775,7 @@
                             <div class="tit-wrap">
                                 <h3 class="tit">케어솔루션 매니저 지원 안내</h3>
                                 <p class="desc">케어솔루션 공식 유지관리 서비스 파트너에 도전해 보세요.</p>
-                                <a href="#n" class="btn size border"><span>매니저 모집 안내 바로가기</span></a>
+                                <a href="#n" class="btn size-m border"><span>매니저 모집 안내 바로가기</span></a><!-- 210203 수정 [.size -> .size-m 클래스 변경] -->
                             </div>
                             <!-- 201221 수정 [DOM 수정] -->
                             <div class="gray-block-wrap type2">
