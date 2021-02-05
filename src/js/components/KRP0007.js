@@ -44,9 +44,9 @@
                         '<ul class="option-list" role="radiogroup">' +
                             '{{#each item in sibling.siblingModels}}'+
                                 '<li>'+
-                                    '<div role="radio" class="{{#if sibling.siblingType=="COLOR"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
+                                    '<div role="radio" class="{{#if sibling.siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
                                         '<input type="radio" data-category-id={{categoryId}} id="product-{{sibling.siblingType}}-{{item.modelName}}" name="nm_{{sibling.siblingType}}_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
-                                        '{{#if sibling.siblingType=="COLOR"}}'+
+                                        '{{#if sibling.siblingType=="color"}}'+
                                             '<label for="product-{{sibling.siblingType}}-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
                                         '{{#else}}'+
                                             '<label for="product-{{sibling.siblingType}}-{{item.modelName}}">{{item.siblingValue}}</label>'+
@@ -64,14 +64,14 @@
                 '{{/each}}'+
             '{{/if}}'+
             '<div class="flag-wrap bar-type">' +
-                '{{#if newProductBadgeFlag}}<span class="flag">NEW</span>{{/if}}' +
-                '{{#if bestBadgeFlag}}<span class="flag">BEST</span>{{/if}}' +
+                '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
+                '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-name">' +
                     '<a href="{{modelUrlPath}}">{{#raw modelDisplayName}}</a>' +
                 '</div>' +
-                '<div class="sku">{{#if modelName}}{{modelName}}{{/if}}</div>' +
+                '<div class="sku">{{#if salesModelCode}}{{salesModelCode}}{{/if}}</div>' +
                     '<div class="review-info">' +
                         '<a href="#">' +
                             '{{#if (reviewsCount > 0)}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
@@ -90,7 +90,7 @@
             '</div>' +
             '<div class="product-bottom">' +
                 '<div class="flag-wrap bar-type">' +
-                    '{{#if cashbackBadgeFlag}}<span class="flag">캐시백</span>{{/if}}' +
+                    '{{#if cashbackBadgeFlag}}<span class="flag">{{cashbackBadgeName}}</span>{{/if}}' +
                 '</div>' +
                 '<div class="price-area">' +
                     '{{#if obsOriginalPrice}}<div class="original">' +
@@ -453,13 +453,11 @@
                 var siblingType = item.siblingType ? item.siblingType.toLowerCase() : '';
                 item.siblingType = (siblingType == "color") ? "color" : "text";
 
-                var sliderImages = [];
+                var sliderImages = [item.mediumImageAddr];
                 if(item.rollingImages && item.rollingImages.length){
                     item.rollingImages.forEach(function(obj, idx) {
                         sliderImages.push(obj);
                     });
-                } else{
-                    sliderImages = [item.mediumImageAddr];
                 }
                 item.sliderImages = sliderImages;
                 
@@ -470,6 +468,11 @@
                 item.newProductBadgeFlag = lgkorUI.stringToBool(item.newProductBadgeFlag);
                 item.bestBadgeFlag = lgkorUI.stringToBool(item.bestBadgeFlag);
                 item.cashbackBadgeFlag = lgkorUI.stringToBool(item.cashbackBadgeFlag);
+
+                var inputdata = lgkorUI.getHiddenInputData();
+                item.newProductBadgeName = inputdata.newProductBadgeName;
+                item.bestBadgeName = inputdata.bestBadgeName;
+                item.cashbackBadgeName = inputdata.cashbackBadgeName;
                 
                 //장바구니
                 item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);
@@ -532,6 +535,7 @@
                             speed:0, 
                             easing:'easeInOutQuad'
                         }).on("carousellazyloadrrror", function(e, carousel, imgs){
+                            console.log("### carousellazyloadrrror ###", imgs.attr('src'));
                             imgs.attr('src', lgkorUI.NO_IMAGE);
                         });
                     }
