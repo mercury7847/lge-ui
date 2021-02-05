@@ -372,7 +372,26 @@
             
           ],
           "bulletFeatures": [
-            
+            {
+              "specText": "text1 : trset001",
+              "repOrderNo": "3"
+            },
+            {
+              "specText": "text2 : trset002",
+              "repOrderNo": "3"
+            },
+            {
+              "specText": "text3 : trset003",
+              "repOrderNo": "3"
+            },
+            {
+              "specText": "text4 : trset004",
+              "repOrderNo": "3"
+            },
+            {
+              "specText": "text5 : trset005",
+              "repOrderNo": "3"
+            }
           ],
           "siblings": [
             {
@@ -445,7 +464,7 @@
             
           ],
           "rTypeCount": "0",
-          "cTypeCount": "0",
+          "cTypeCount": "1",
           "retalCareshipInfo": [
             
           ],
@@ -626,7 +645,26 @@
             
           ],
           "bulletFeatures": [
-            
+            {
+              "specText": "text1 : trset001",
+              "repOrderNo": "3"
+            },
+            {
+              "specText": "text2 : trset002",
+              "repOrderNo": "3"
+            },
+            {
+              "specText": "text3 : trset003",
+              "repOrderNo": "3"
+            },
+            {
+              "specText": "text4 : trset004",
+              "repOrderNo": "3"
+            },
+            {
+              "specText": "text5 : trset005",
+              "repOrderNo": "3"
+            }
           ],
           "siblings": [
             
