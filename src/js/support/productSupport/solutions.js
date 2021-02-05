@@ -181,8 +181,10 @@
                         if (key == 'sort') self.$solutionsSort.val(searchObj.sort).vcSelectbox('update');
                     }
 
-                    data.categoryNm = $('#category').val();
-                    data.subCategoryNm = $('#subCategory').val();
+                    data.category = $('#category').val();
+                    data.categoryNm = $('#categoryNm').val();
+                    data.subCategory = $('#subCategory').val();
+                    data.subCategoryNm = $('#subCategoryNm').val();
                 }
 
                 self.param = data;
@@ -204,6 +206,9 @@
                     self.setBanner(data);
                     self.setPopularKeyword(data);
                     self.setFilter(data);
+                    if (self.param.topic != '') {
+                        self.setSubFilter(data);
+                    }
                     self.setSolutionsList(data);
                     self.setKeyword(param);
 
