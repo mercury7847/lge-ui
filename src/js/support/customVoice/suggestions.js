@@ -74,12 +74,7 @@
                     register: register
                 });
 
-                $('.ui_imageinput').vcImageFileInput({
-                    totalSize: 10 * 1024 * 1024,
-                    message: {
-                        size: '첨부파일 전체 용량은 10MB 이내로 등록 가능합니다.'
-                    }
-                });
+                $('.ui_imageinput').vcImageFileInput();
 
                 self.bindEvent();
             });
