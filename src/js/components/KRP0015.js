@@ -7,7 +7,7 @@ $(window).ready(function(){
             '<div class="item-inner" data-id="{{id}}">'+
             '   <span class="img-area">'+
             '       <img src="{{productImg}}" alt="{{productAlt}}">'+
-            '       <p class="hidden">{{#raw productAlt}}</p>'+
+            '       <p class="blind">{{productAlt}}</p>'+
             '   </span>'+
             '   <div class="item-text">'+
             '       <p class="product-name">{{productName}}</p>'+
