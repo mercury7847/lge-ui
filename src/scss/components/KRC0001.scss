@@ -75,9 +75,7 @@
 	}
 
 	.title * {
-		font-size:28px;
-		line-height:42px;
-		font-weight:700;
+		@include title-h4;
 		text-align:center;
 	}
 

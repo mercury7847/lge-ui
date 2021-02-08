@@ -77,7 +77,7 @@
                     }
                     .tit-text {
                         margin-top:24px;
-                        @include title-h3;
+                        @include title-h5;
                         &.title-h1 {
                             @include title-h1;
                         }
@@ -126,7 +126,7 @@
                 }
                 .tit-text {
                     margin-top:24px;
-                    @include title-h3;
+                    @include title-h5;
                 }
             }
             @include mobile {
