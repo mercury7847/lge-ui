@@ -36,6 +36,8 @@
     var step = 0;
 
     var installAdress = {}
+    var cardInputData = {};
+    var bankInputData = {};
 
     function init(){
         console.log("requestRental Start!!!");
@@ -116,7 +118,7 @@
                 msgTarget: '.err-address'
             }
         }
-        step1Validation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(1)',{register:register});
+        step1Validation = new vcui.ui.Validation('.requestRentalForm ul.step-block > li:nth-child(1)',{register:register});
 
 
         register = {
@@ -161,7 +163,7 @@
                 msgTarget: '.err-block'
             }
         }
-        step2Validation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(2)',{register:register});
+        step2Validation = new vcui.ui.Validation('.requestRentalForm ul.step-block > li:nth-child(2)',{register:register});
 
         register = {
             paymentCard:{
@@ -180,7 +182,7 @@
                 msgTarget: '.err-block'
             }
         }
-        cardValidation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(3) .by-card',{register:register});
+        cardValidation = new vcui.ui.Validation('.requestRentalForm ul.step-block > li:nth-child(3) .by-card',{register:register});
 
         register = {
             paymentBank: {
@@ -194,7 +196,7 @@
                 msgTarget: '.err-block'
             }
         }
-        bankValidation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(3) .by-bank',{register:register});
+        bankValidation = new vcui.ui.Validation('.requestRentalForm ul.step-block > li:nth-child(3) .by-bank',{register:register});
 
         deliveryMnger = new AddressManagement("#popup-delivery-list", "#popup-delivery-address");
         addressFinder = new AddressFind();
@@ -514,7 +516,7 @@
 
             var chk = false;
             if(data == "Y"){
-                chk = compareInstallAdress();
+                chk = compareInputData(installAdress, step2Validation.getValues());
                 console.log("chk :", chk)
             }
 
@@ -526,7 +528,7 @@
 
             completed = chk;
         } else{
-            console.log("step2Validation.validate(); Fail!!!", result.validItem);
+            console.log("step2Validation.validate(); Fail!!!", result.validItem, step2Validation.getValues());
         }
 
         return completed;
@@ -553,12 +555,21 @@
             }
         }
 
-        paymethod = step3Block.find('.new-type > ul > li.on').index();
-        console.log("paymethod:",paymethod)
-        result = paymethod ? bankValidation.validate() : cardValidation.validate();
+        paymethod = step3Block.find('.payment-method input[name=method-pay]:checked').data("visibleTarget");
+        result = paymethod == ".by-bank" ? bankValidation.validate() : cardValidation.validate();
         if(!result.success){
             console.log("fail!!! paymethod:",result);
             return false;
+        }
+
+        if(paymethod == ".by-bank"){
+            chk = compareInputData(bankInputData, bankValidation.getValues());
+
+            if(!chk) return false;
+        } else{
+            chk = compareInputData(cardInputData, cardValidation.getValues());
+
+            if(!chk) return false;
         }
 
         chk = getInputData('arsAgree');
@@ -583,30 +594,30 @@
     function setInstallAdress(){
         var values = step2Validation.getValues(); 
         installAdress = {
+            userName: values.userName,
+            userTelephone: values.userTelephone,
+            userPhone: values.userPhone,
             zipCode: values.zipCode,
             userAddress: values.userAddress,
             detailAddress: values.detailAddress
         }
         console.log("setInstallAdress() >", installAdress)
     }
-    //저장한 배송지역 주소 비교...
-    function compareInstallAdress(){
-        var chk = 0;
-        var values = step2Validation.getValues();
-        for(var str in installAdress){
-            console.log("=========================================")
-            console.log("installAdress[", str, '] :', installAdress[str])
-            console.log("values[", str, '] :', values[str])
-            console.log("=========================================")
-            if(installAdress[str] !== values[str]) break;
-            console.log("OK~~~")
-            chk++;
+
+    //입력 후 데이터가 바뀐 경우 체크..
+    function compareInputData(initData, currentData){
+        var chk = true;
+        for(var str in initData){
+            console.log("compareInputData:", initData[str], currentData[str])
+            if(initData[str] !== currentData[str]){
+                chk = false;
+
+                break;
+            }
         }
+        console.log("compareInputData result:", chk)
 
-        console.log("compareInstallAdress(); > chk :", chk)
-
-        if(chk < 3) return false;
-        else return true;
+        return chk;
     }
 
     //설치 가능여부 확인...
@@ -701,6 +712,7 @@
                 } else{
                     step2Block.find('.forAOP').show().find('input, select, button').prop('disabled', false);
                     step2Block.find('.forAOP').find('.ui_selectbox').vcSelectbox('update');
+                    step2Block.find('.datepicker').removeClass('disabled');
                 }
             }
             
@@ -792,6 +804,16 @@
             var chk = lgkorUI.stringToBool(result.data.success);
             setInputData('cardAbled', result.data.success);            
             step3Block.find('.arsAgreeRequest').prop('disabled', !chk);
+
+            if(chk){
+                cardInputData = {
+                    paymentCard: values.paymentCard,
+                    paymentCardNumber: values.paymentCardNumber,
+                    paymentCardPeriod: values.paymentCardPeriod
+                }
+            } else{
+                cardInputData = {};
+            }
         });
     }
     //납부계좌확인...
@@ -812,6 +834,16 @@
             var chk = lgkorUI.stringToBool(result.data.success);
             setInputData('cardAbled', result.data.success);            
             step3Block.find('.arsAgreeRequest').prop('disabled', !chk);
+
+            if(chk){
+                bankInputData = {
+                    bankUserName: bankValidation.getValues('bankUserName'),
+                    paymentBank: values.paymentBank,
+                    paymentBankNumber: values.paymentBankNumber
+                }
+            } else{
+                bankInputData = {};
+            }
         });
     }
 
@@ -941,7 +973,6 @@
                 });
 
                 step3Block.find('input[name=rdo04]').each(function(idx, item){
-                    console.log(item)
                     if($(item).val() == "N") $(item).prop('checked', true);
                     else $(item).prop('checked', false);
                 })
