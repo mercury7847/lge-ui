@@ -40,7 +40,7 @@
                 '{{#if end}}' +
                     '<button type="button" class="btn pink" disabled><span>기간만료/사용불가</span></button>' +
                 '{{#else}}' +
-                    '<button type="button" class="btn pink" data-coupon-url={{url}}><span>쿠폰 사용 하러 가기</span></button>' +
+                    '<button type="button" class="btn pink" data-coupon-url="{{url}}"><span>쿠폰 사용 하러 가기</span></button>' +
                 '{{/if}}' +
             '</div>' +
         '</footer>' +

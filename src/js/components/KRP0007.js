@@ -45,7 +45,7 @@
                             '{{#each item in sibling.siblingModels}}'+
                                 '<li>'+
                                     '<div role="radio" class="{{#if sibling.siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
-                                        '<input type="radio" data-category-id={{categoryId}} id="product-{{sibling.siblingType}}-{{item.modelName}}" name="nm_{{sibling.siblingType}}_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
+                                        '<input type="radio" data-category-id="{{categoryId}}" id="product-{{sibling.siblingType}}-{{item.modelName}}" name="nm_{{sibling.siblingType}}_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
                                         '{{#if sibling.siblingType=="color"}}'+
                                             '<label for="product-{{sibling.siblingType}}-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
                                         '{{#else}}'+
@@ -80,11 +80,12 @@
                         '</a>' +
                     '</div>' +
                     '<ul class="spec-info">' +
-                        '{{#if bulletFeatures}}' +
-                            '{{#each item in bulletFeatures}}' +
+                        '{{#if showBulletFeatures}}' +
+                            '{{#each item in showBulletFeatures}}' +
                                 '<li>{{#raw item.specText}}</li>' +
                             '{{/each}}' +
                         '{{/if}}' +
+                        '{{#if cTypeCount > 0}}<li>{{lastBulletName}}</li>{{/if}}'+
                     '</ul>' +
                 '</div>' +
             '</div>' +
@@ -251,12 +252,6 @@
                         };
                         var fail = function(data) {
                             $this.prop("checked",!wish);
-
-                            if(data.success == "N"){
-                                lgkorUI.alert("", {
-                                    title: data.alert.title
-                                });
-                            }
                         };
     
                         lgkorUI.requestWish(
@@ -475,6 +470,7 @@
                 item.newProductBadgeName = inputdata.newProductBadgeName;
                 item.bestBadgeName = inputdata.bestBadgeName;
                 item.cashbackBadgeName = inputdata.cashbackBadgeName;
+                item.lastBulletName = inputdata.lastBulletName;
                 
                 //장바구니
                 item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);
@@ -484,6 +480,16 @@
                 if(!item.wishItemId) item.wishItemId = "";
 
                 if(!item.rtModelSeq) item.rtModelSeq = "";
+
+                var bulletLength = item.bulletFeatures.length;
+                var showLength = bulletLength;
+                if(bulletLength > 4){
+                    showLength = item.cTypeCount > 0 ? 4 : bulletLength;
+                }
+                item.showBulletFeatures = [];
+                for(var i=0;i<showLength;i++){
+                    item.showBulletFeatures.push(item.bulletFeatures[i]);
+                }
 
                 console.log("### item.siblingType ###", item.siblingType)
 

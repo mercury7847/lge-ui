@@ -887,6 +887,7 @@
                 color:#000;
                 font-size:16px;
                 line-height:26px;
+                white-space: pre-line;
             }
         }
         @include mobile {
@@ -1275,6 +1276,7 @@
             position:relative;
             margin-bottom:10px;
             .file-preview {
+                overflow:hidden;
                 width:93px;
                 height:93px;
                 text-align:center;

@@ -453,7 +453,9 @@ var CareCartInfo = (function() {
             */
             var rtModelSeq = []
             self.selectedItemList.forEach(function(item, index) {
-                rtModelSeq.push({"itemID":item.itemID,"itemSeq":item.itemSeq});
+                if(item.available && item.check) {
+                    rtModelSeq.push({"itemID":item.itemID,"itemSeq":item.itemSeq});
+                }
             });
 
             var postData = {"rtModelSeq":JSON.stringify(rtModelSeq)};
