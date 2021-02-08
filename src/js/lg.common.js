@@ -490,6 +490,7 @@
             
             $('.back-to-top button').on('click', function (e) {
                 e.preventDefault();
+                $(window).trigger('floatingTop');
                 $('html, body').stop().animate({
                     scrollTop: 0
                 }, 400);
