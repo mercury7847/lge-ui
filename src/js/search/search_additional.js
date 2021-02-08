@@ -563,11 +563,11 @@
                     self.setTabCount(1, count);
 
                     //이벤트
-                    count = self.checkCountData(data.story);
+                    count = self.checkCountData(data.event);
                     self.setTabCount(2, count);
 
                     //스토리
-                    count = self.checkCountData(data.additional);
+                    count = self.checkCountData(data.story);
                     self.setTabCount(3, count);
 
                     //센터매장
