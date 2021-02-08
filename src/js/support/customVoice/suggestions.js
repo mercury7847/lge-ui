@@ -35,7 +35,8 @@
                         required: true,
                         minLength: 10,
                         maxLength: 11,
-                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                        //pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                        pattern: /^(010|011|017|018|019)-\d{4}-\d{4}$/,
                         msgTarget: '.err-block',
                         errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
                         patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
