@@ -177,9 +177,9 @@
                 "filterGroupType":"radio",
                 "filterValues":[
                     {"filterValueId":"","filterValueName":"전체"},
-                    {"filterValueId":"sd0002","filterValueName":"일반제품"},
-                    {"filterValueId":"sd0003","filterValueName":"케어십 가능 제품"},
-                    {"filterValueId":"sd0004","filterValueName":"기타"}
+                    {"filterValueId":"sd0002","filterValueName":"일반제품", "count":7},
+                    {"filterValueId":"sd0003","filterValueName":"케어십 가능 제품", "count":7},
+                    {"filterValueId":"sd0004","filterValueName":"기타", "count":7}
                 ]
             },
             {
@@ -188,10 +188,10 @@
                 "filterGroupName":"색상",
                 "filterGroupType":"color",
                 "filterValues":[
-                    {"filterValueId":"cd0001","filterValueName":"맷 블랙", "topFilterDisplayName":"HA_REF_Matte_Black_Stainless_Steel"},
-                    {"filterValueId":"cd0002","filterValueName":"블랙 스틸", "topFilterDisplayName":"Black-Stainless-Steel"},
-                    {"filterValueId":"cd0003","filterValueName":"스테인레스 스틸", "topFilterDisplayName":"stainless-steel"},
-                    {"filterValueId":"cd0004","filterValueName":"화이트", "topFilterDisplayName":"smooth-white"}
+                    {"filterValueId":"cd0001","filterValueName":"맷 블랙", "topFilterDisplayName":"HA_REF_Matte_Black_Stainless_Steel", "count":7},
+                    {"filterValueId":"cd0002","filterValueName":"블랙 스틸", "topFilterDisplayName":"Black-Stainless-Steel", "count":7},
+                    {"filterValueId":"cd0003","filterValueName":"스테인레스 스틸", "topFilterDisplayName":"stainless-steel", "count":7},
+                    {"filterValueId":"cd0004","filterValueName":"화이트", "topFilterDisplayName":"smooth-white", "count":7}
                 ]
             },
             {
@@ -201,9 +201,9 @@
                 "filterGroupType":"size",
                 "filterValues":[
                     {"filterValueId":"yd0001","filterValueName":"용량 11"},
-                    {"filterValueId":"yd0002","filterValueName":"용량 22"},
+                    {"filterValueId":"yd0002","filterValueName":"용량 22", "count":7},
                     {"filterValueId":"yd0003","filterValueName":"용량 33"},
-                    {"filterValueId":"yd0004","filterValueName":"용량 44"}
+                    {"filterValueId":"yd0004","filterValueName":"용량 44", "count":7}
                 ]
             },
             {
@@ -212,9 +212,9 @@
                 "filterGroupName":"태그",
                 "filterGroupType":"check",
                 "filterValues":[
-                    {"filterValueId":"td0001","filterValueName":"태그1"},
-                    {"filterValueId":"td0002","filterValueName":"태그2"},
-                    {"filterValueId":"td0003","filterValueName":"태그3"}
+                    {"filterValueId":"td0001","filterValueName":"태그1", "count":7},
+                    {"filterValueId":"td0002","filterValueName":"태그2", "count":7},
+                    {"filterValueId":"td0003","filterValueName":"태그3", "count":7}
                 ]
             }
         ],
