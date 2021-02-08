@@ -107,197 +107,219 @@
                         <!-- [KR수정_210126] li 태그 변경 / carousel-box -> slide-conts 클래스 변경 -->
                         <!-- animation 타입인 경우 animation-box 클래스 추가 -->
                         <li class="slide-conts animation-box ui_carousel_slide">
-                            <!-- [KR수정_210104] 애니메이션 내부 이미지 삭제 -->
-                            <div class="visual-area">
-                                <div class="animation-area">
-                                    <video autoplay muted loop>
-                                        <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
-                                        <!-- WEBM 동영상을 제공하는 경우
-                                        <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
-                                        -->
-                                    </video>
+                            <!-- 210208 수정(a태그 감싸기 button 변경) -->
+                            <a href="#">
+                                <!-- [KR수정_210104] 애니메이션 내부 이미지 삭제 -->
+                                <div class="visual-area">
+                                    <div class="animation-area">
+                                        <video autoplay muted loop>
+                                            <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                            <!-- WEBM 동영상을 제공하는 경우
+                                            <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                            -->
+                                        </video>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- // [KR수정_210104] 애니메이션 내부 이미지 삭제 -->
+                                <!-- // [KR수정_210104] 애니메이션 내부 이미지 삭제 -->
 
-                            <!-- contents-area -->
-                            <div class="contents-area">
-                                <div class="text-area @@carousel.item1.font-color @@carousel.item1.align-class1 @@carousel.item1.align-class2 @@carousel.item1.width-class @@carousel.item1.boxAlign">
-                                    <div class="text-wrap">
-                                        <div class="inner">
-                                            <div class="text-block">
-                                                <div class="eyebrow">@@title.eyebrow</div>
-                                                <div class="title">@@title.headline</div>
-                                                <div class="copy font-regular">@@title.copy</div>
-                                            </div>
-                                            <div class="cta">
-                                                <div class="cta-button">
-                                                    <a href="#none" class="btn border size-m" data-link-area="hero_image-cta" data-link-name="{link text}"><span>H1 button</span></a><!-- [KR수정_201222] .size-m class 추가 -->
+                                <!-- contents-area -->
+                                <div class="contents-area">
+                                    <div class="text-area @@carousel.item1.font-color @@carousel.item1.align-class1 @@carousel.item1.align-class2 @@carousel.item1.width-class @@carousel.item1.boxAlign">
+                                        <div class="text-wrap">
+                                            <div class="inner">
+                                                <div class="text-block">
+                                                    <div class="eyebrow">@@title.eyebrow</div>
+                                                    <div class="title">@@title.headline</div>
+                                                    <div class="copy font-regular">@@title.copy</div>
                                                 </div>
-                                                <!-- 애니메이션 재생/정지 버튼 -->
-                                                <!-- 모바일 동영상이 업로드 되어 있고 Mobile Use Flag가 N인 경우에는 아래 controller-wrap에 hidden-xs 클래스를 넣어 주세요 -->
-                                                <div class="controller-wrap btn-inline">
-                                                    <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                                                <div class="cta">
+                                                    <div class="cta-button">
+                                                        <button type="button" class="btn border size-m" data-link-area="hero_image-cta" data-link-name="{link text}"><span>H1 button</span></button><!-- [KR수정_201222] .size-m class 추가 -->
+                                                    </div>
+                                                    <!-- 애니메이션 재생/정지 버튼 -->
+                                                    <!-- 모바일 동영상이 업로드 되어 있고 Mobile Use Flag가 N인 경우에는 아래 controller-wrap에 hidden-xs 클래스를 넣어 주세요 -->
+                                                    <div class="controller-wrap btn-inline">
+                                                        <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- // contents-area -->
+                                <!-- // contents-area -->
+                            </a>
+                            <!-- //210208 수정(a태그 감싸기 button 변경) -->
                         </li>
                         <!-- video인 경우 video-box 추가 -->
                         <li class="slide-conts video-box youtube-box @@carousel.item3.font-color ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
-                            <!-- 3. image -->
-                            <div class="visual-area">
-                                <img data-pc-src="@@carousel.item3.visual1" data-m-src="@@carousel.item3.visual2" alt=""><!-- [KR수정] img 수정 -->
-                                <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-                            </div>
-                            <!-- // 3. image -->
+                            <!-- 210208 수정(a태그 감싸기 button 변경) -->
+                            <a href="#">
+                                <!-- 3. image -->
+                                <div class="visual-area">
+                                    <img data-pc-src="@@carousel.item3.visual1" data-m-src="@@carousel.item3.visual2" alt=""><!-- [KR수정] img 수정 -->
+                                    <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                                </div>
+                                <!-- // 3. image -->
 
-                            <!-- contents-area -->
-                            <div class="contents-area">
+                                <!-- contents-area -->
+                                <div class="contents-area">
 
-                                <div class="text-area @@carousel.item3.font-color @@carousel.item3.align-class1 @@carousel.item3.align-class2 @@carousel.item3.width-class @@carousel.item3.boxAlign">
-                                    <div class="text-wrap">
-                                        <div class="inner">
-                                            <div class="text-block">
-                                                <div class="eyebrow">@@title.eyebrow</div>
-                                                <div class="title">@@title.headline</div>
-                                                <div class="copy font-regular">@@title.copy</div>
-                                            </div>
-                                            <div class="cta">
-                                                <div class="cta-button">
-                                                    <a href="#none" class="btn border size-m" data-link-area="hero_image-cta" data-link-name="{link text}"><span>H1 button</span></a><!-- [KR수정_201222] .size-m class 추가 -->
+                                    <div class="text-area @@carousel.item3.font-color @@carousel.item3.align-class1 @@carousel.item3.align-class2 @@carousel.item3.width-class @@carousel.item3.boxAlign">
+                                        <div class="text-wrap">
+                                            <div class="inner">
+                                                <div class="text-block">
+                                                    <div class="eyebrow">@@title.eyebrow</div>
+                                                    <div class="title">@@title.headline</div>
+                                                    <div class="copy font-regular">@@title.copy</div>
                                                 </div>
-                                                <!-- video play button -->
-                                                <div class="video-link">
-                                                    <!-- * youtube video modal은 아래의 방식으로 입력 -->
-                                                    <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww?autoplay=1&" class="btn-video see-video" data-type="youtube" data-link-area="hero_image-video_play" data-link-name="{video id}">제품 영상보기</a>
+                                                <div class="cta">
+                                                    <div class="cta-button">
+                                                        <button type="button" class="btn border size-m" data-link-area="hero_image-cta" data-link-name="{link text}"><span>H1 button</span></button><!-- [KR수정_201222] .size-m class 추가 -->
+                                                    </div>
+                                                    <!-- video play button -->
+                                                    <div class="video-link">
+                                                        <!-- * youtube video modal은 아래의 방식으로 입력 -->
+                                                        <button type="button" data-src="https://www.youtube.com/embed/PetoQo1eUww?autoplay=1&" class="btn-video see-video" data-type="youtube" data-link-area="hero_image-video_play" data-link-name="{video id}">제품 영상보기</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- //contents-area -->
-
+                                <!-- //contents-area -->
+                            </a>
+                            <!-- //210208 수정(a태그 감싸기 button 변경) -->
                         </li>
                         <li class="slide-conts video-box youtube-box @@carousel.item4.font-color ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
-                            <div class="visual-area">
-                                <img data-pc-src="@@carousel.item4.visual1" data-m-src="@@carousel.item4.visual2"  alt=""><!-- [KR수정] img 수정 -->
-                                <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-                            </div>
-                            <!-- contents-area -->
-                            <div class="contents-area">
+                            <!-- 210208 수정(a태그 감싸기 button 변경) -->
+                            <a href="#">
+                                <div class="visual-area">
+                                    <img data-pc-src="@@carousel.item4.visual1" data-m-src="@@carousel.item4.visual2"  alt=""><!-- [KR수정] img 수정 -->
+                                    <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                                </div>
+                                <!-- contents-area -->
+                                <div class="contents-area">
 
-                                <div class="text-area @@carousel.item4.font-color @@carousel.item4.align-class1 @@carousel.item4.align-class2 @@carousel.item4.width-class @@carousel.item4.boxAlign">
-                                    <div class="text-wrap">
-                                        <div class="inner">
-                                            <div class="text-block">
-                                                <div class="eyebrow">@@title.eyebrow</div>
-                                                <div class="title">@@title.headline</div>
-                                                <div class="copy font-regular">@@title.copy</div>
-                                            </div>
-                                            <div class="cta">
-                                                <!--
-                                                    1. a tag에 target="_blank" (optional)
-                                                    2. cta-button 과 cta-link 는 동시 출력되지 않음. 한종류만 선택하여 출력되고 최대 2개까지 출력
-                                                -->
-                                                <div class="cta-link">
-                                                    <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
-                                                    <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
+                                    <div class="text-area @@carousel.item4.font-color @@carousel.item4.align-class1 @@carousel.item4.align-class2 @@carousel.item4.width-class @@carousel.item4.boxAlign">
+                                        <div class="text-wrap">
+                                            <div class="inner">
+                                                <div class="text-block">
+                                                    <div class="eyebrow">@@title.eyebrow</div>
+                                                    <div class="title">@@title.headline</div>
+                                                    <div class="copy font-regular">@@title.copy</div>
                                                 </div>
-                                                <div class="video-link">
-                                                    <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww?autoplay=1&" class="btn-video bc-white see-video" data-type="youtube" data-link-area="hero_image-video_play" data-link-name="{video id}">제품 영상보기</a>
+                                                <div class="cta">
+                                                    <!--
+                                                        1. a tag에 target="_blank" (optional)
+                                                        2. cta-button 과 cta-link 는 동시 출력되지 않음. 한종류만 선택하여 출력되고 최대 2개까지 출력
+                                                    -->
+                                                    <div class="cta-link">
+                                                        <button type="button" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></button>
+                                                        <button type="button" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></button>
+                                                    </div>
+                                                    <div class="video-link">
+                                                        <button type="button" data-src="https://www.youtube.com/embed/PetoQo1eUww?autoplay=1&" class="btn-video bc-white see-video" data-type="youtube" data-link-area="hero_image-video_play" data-link-name="{video id}">제품 영상보기</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--// contents-area -->
-
+                                <!--// contents-area -->
+                            </a>
+                            <!-- //210208 수정(a태그 감싸기 button 변경) -->
                         </li>
                         <li class="slide-conts @@carousel.item5.font-color ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
-                            <div class="visual-area">
-                                <img data-pc-src="@@carousel.item5.visual1" data-m-src="@@carousel.item5.visual2" alt=""><!-- [KR수정] img 수정 -->
-                                <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-                            </div>
-                            <!-- contents-area -->
-                            <div class="contents-area">
-                                <div class="text-area @@carousel.item5.font-color @@carousel.item5.align-class1 @@carousel.item5.align-class2 @@carousel.item5.width-class @@carousel.item5.boxAlign">
-                                    <div class="text-wrap">
-                                        <div class="inner">
-                                            <div class="text-block">
-                                                <div class="eyebrow">@@title.eyebrow</div>
-                                                <div class="title">@@title.headline</div>
-                                                <div class="copy font-regular">@@title.copy</div>
-                                            </div>
-                                            <div class="cta">
-                                                <div class="cta-button">
-                                                    <a href="#none" class="btn border size-m" data-link-area="hero_image-cta" data-link-name="{link text}"><span>H1 button</span></a><!-- [KR수정_201222] .size-m class 추가 -->
+                            <!-- 210208 수정(a태그 감싸기 button 변경) -->
+                            <a href="#">
+                                <div class="visual-area">
+                                    <img data-pc-src="@@carousel.item5.visual1" data-m-src="@@carousel.item5.visual2" alt=""><!-- [KR수정] img 수정 -->
+                                    <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                                </div>
+                                <!-- contents-area -->
+                                <div class="contents-area">
+                                    <div class="text-area @@carousel.item5.font-color @@carousel.item5.align-class1 @@carousel.item5.align-class2 @@carousel.item5.width-class @@carousel.item5.boxAlign">
+                                        <div class="text-wrap">
+                                            <div class="inner">
+                                                <div class="text-block">
+                                                    <div class="eyebrow">@@title.eyebrow</div>
+                                                    <div class="title">@@title.headline</div>
+                                                    <div class="copy font-regular">@@title.copy</div>
+                                                </div>
+                                                <div class="cta">
+                                                    <div class="cta-button">
+                                                        <button type="button" class="btn border size-m" data-link-area="hero_image-cta" data-link-name="{link text}"><span>H1 button</span></button><!-- [KR수정_201222] .size-m class 추가 -->
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- // contents-area -->
+                                <!-- // contents-area -->
+                            </a>
+                            <!-- //210208 수정(a태그 감싸기 button 변경) -->
                         </li>
                         <li class="slide-conts @@carousel.item6.font-color ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
-                            <div class="visual-area">
-                                <img data-pc-src="@@carousel.item6.visual1" data-m-src="@@carousel.item6.visual2" class="lazyload" alt=""><!-- [KR수정] img 수정 -->
-                                <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-                            </div>
-                            <!-- contents-area -->
-                            <div class="contents-area">
-                                <div class="text-area @@carousel.item6.font-color @@carousel.item6.align-class1 @@carousel.item6.align-class2 @@carousel.item6.width-class @@carousel.item6.boxAlign">
-                                    <div class="text-wrap">
-                                        <div class="inner">
-                                            <div class="text-block">
-                                                <div class="eyebrow">@@title.eyebrow</div>
-                                                <div class="title">@@title.headline</div>
-                                                <div class="copy font-regular">@@title.copy</div>
-                                            </div>
-                                            <div class="cta">
-                                                <div class="cta-link">
-                                                    <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
-                                                    <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
+                            <!-- 210208 수정(a태그 감싸기 button 변경) -->
+                            <a href="#">
+                                <div class="visual-area">
+                                    <img data-pc-src="@@carousel.item6.visual1" data-m-src="@@carousel.item6.visual2" class="lazyload" alt=""><!-- [KR수정] img 수정 -->
+                                    <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                                </div>
+                                <!-- contents-area -->
+                                <div class="contents-area">
+                                    <div class="text-area @@carousel.item6.font-color @@carousel.item6.align-class1 @@carousel.item6.align-class2 @@carousel.item6.width-class @@carousel.item6.boxAlign">
+                                        <div class="text-wrap">
+                                            <div class="inner">
+                                                <div class="text-block">
+                                                    <div class="eyebrow">@@title.eyebrow</div>
+                                                    <div class="title">@@title.headline</div>
+                                                    <div class="copy font-regular">@@title.copy</div>
+                                                </div>
+                                                <div class="cta">
+                                                    <div class="cta-link">
+                                                        <button type="button" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></button>
+                                                        <button type="button" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--// contents-area -->
+                                <!--// contents-area -->
+                            </a>
+                            <!-- //210208 수정(a태그 감싸기 button 변경) -->
                         </li>
                         <li class="slide-conts @@carousel.item7.font-color ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
-                            <div class="visual-area">
-                                <img data-pc-src="@@carousel.item7.visual1" data-m-src="@@carousel.item7.visual2" alt=""><!-- [KR수정] img 수정 -->
-                                <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-                            </div>
-                            <!-- contents-area -->
-                            <div class="contents-area">
-                                <div class="text-area @@carousel.item7.font-color @@carousel.item7.align-class1 @@carousel.item7.align-class2 @@carousel.item7.width-class @@carousel.item7.boxAlign">
-                                    <div class="text-wrap">
-                                        <div class="inner">
-                                            <div class="text-block">
-                                                <div class="eyebrow">@@title.eyebrow</div>
-                                                <div class="title">@@title.headline</div>
-                                                <div class="copy font-regular">@@title.copy</div>
-                                            </div>
-                                            <div class="cta">
-                                                <div class="cta-link">
-                                                    <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
-                                                    <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
+                            <!-- 210208 수정(a태그 감싸기 button 변경) -->
+                            <a href="#">
+                                <div class="visual-area">
+                                    <img data-pc-src="@@carousel.item7.visual1" data-m-src="@@carousel.item7.visual2" alt=""><!-- [KR수정] img 수정 -->
+                                    <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                                </div>
+                                <!-- contents-area -->
+                                <div class="contents-area">
+                                    <div class="text-area @@carousel.item7.font-color @@carousel.item7.align-class1 @@carousel.item7.align-class2 @@carousel.item7.width-class @@carousel.item7.boxAlign">
+                                        <div class="text-wrap">
+                                            <div class="inner">
+                                                <div class="text-block">
+                                                    <div class="eyebrow">@@title.eyebrow</div>
+                                                    <div class="title">@@title.headline</div>
+                                                    <div class="copy font-regular">@@title.copy</div>
+                                                </div>
+                                                <div class="cta">
+                                                    <div class="cta-link">
+                                                        <button type="button" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></button>
+                                                        <button type="button" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--// contents-area -->
+                                <!--// contents-area -->
+                            </a>
+                            <!-- //210208 수정(a태그 감싸기 button 변경) -->
                         </li>
                     </ul><!-- [KR수정] .ui_carousel_track DOM 추가 -->
                 </div><!-- [KR수정_210126] slide-content ui_carousel_list DOM 추가 -->

@@ -56,27 +56,31 @@
                 <ul class="slide-track ui_carousel_track">
                     @@for ( var i=0; i < slides.length; i++ ) {
                     <!-- slide -->
+                    <!-- 210208 수정 -->
                     <li class="slide-conts ui_carousel_slide">
-                        <span class="bg ui_bg_switch" data-pc-src="`+slides[i].pcImg+`" data-m-src="`+slides[i].mImg+`" aria-hidden="hidden"></span>
-                        <div class="slide-info-area">
-                            <div class="inner">
-                                <!-- [KR수정_210105] .text-box로 감싸기 -->
-                                <div class="text-box `+slides[i].boxAlign+`">
-                                    <div id="title0`+[i+1]+`" class="text-wrap">
-                                        <p class="eyebrow">`+slides[i].eyebrow+`</p>
-                                        <div class="title">
-                                            <h2>`+slides[i].title+`</h2>
+                        <a href="#">
+                            <span class="bg ui_bg_switch" data-pc-src="`+slides[i].pcImg+`" data-m-src="`+slides[i].mImg+`" aria-hidden="hidden"></span>
+                            <div class="slide-info-area">
+                                <div class="inner">
+                                    <!-- [KR수정_210105] .text-box로 감싸기 -->
+                                    <div class="text-box `+slides[i].boxAlign+`">
+                                        <div id="title0`+[i+1]+`" class="text-wrap">
+                                            <p class="eyebrow">`+slides[i].eyebrow+`</p>
+                                            <div class="title">
+                                                <h2>`+slides[i].title+`</h2>
+                                            </div>
+                                            <p class="date">2020.08.06 ~ 2020.09.11</p>
                                         </div>
-                                        <p class="date">2020.08.06 ~ 2020.09.11</p>
+                                        <div class="cta">
+                                            <button type="button" class="btn border size-m" aria-labelledby="title0`+[i+1]+`"><span>`+slides[i].btn+`</span></button>
+                                        </div>
                                     </div>
-                                    <div class="cta">
-                                        <a href="#n" class="btn border size-m" aria-labelledby="title0`+[i+1]+`"><span>`+slides[i].btn+`</span></a>
-                                    </div>
+                                    <!-- // [KR수정_210105] .text-box로 감싸기 -->
                                 </div>
-                                <!-- // [KR수정_210105] .text-box로 감싸기 -->
                             </div>
-                        </div>
+                        </a>
                     </li>
+                    <!-- //210208 수정 -->
                     <!-- // slide -->
                     }
                 </ul>
