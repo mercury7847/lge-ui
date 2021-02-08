@@ -4,133 +4,25 @@
     var relatedItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
     //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
-    var productItemTemplate = '<li><div class="item">' +
-        '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
+    var eventItemTemplate = '<li><a href="{{url}}" class="item item-type2">' +
+        '<div class="result-thumb">' +
+            '<div>' +
+                '<img onError="lgkorUI.addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}">' +
+                '{{#if isEnd}}<span class="flag-end-wrap"><span class="flag">종료</span></span>{{/if}}' +
+            '</div>' +
+        '</div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
-                '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
+                '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
                 '<div class="result-detail">' +
-                    '<div class="sku">{{sku}}</div>' +
-                    '<div class="review-info">' +
-                        '<a href="{{url}}">' +
-                            '{{#if hasReview}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
-                            '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
-                            '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
-                        '</a>' +
-                    '</div>' +
                     '<div class="info-btm">' +
-                        '<div class="text hashtag-wrap">' +
-                            '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
-                        '</div>' + 
-                        '{{#if hasCare}}<span class="text careflag">케어십 가능</span>{{/if}}' +
+                        '<span class="text date">{{startDate}} ~ {{endDate}}</span>' +
                     '</div>' +
                 '</div>' +
             '</div>' +
-            '<div class="info-price">' +
-                '<a href="#">' +
-                    '<div class="price-info rental">' +
-                        '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
-                    '</div>' +
-                    '<div class="price-info sales">' +
-                        '<div class="original">' +
-                            '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
-                        '</div>' +
-                        '<div class="price-in">' +
-                            '{{#if (carePrice && price)}}<p class="tit">구매</p>{{/if}}{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
-                        '</div>' +
-                    '</div>' +
-                '</a>' +
-            '</div>' +
         '</div>' +
-    '</div></li>';
-
-    //필터 템플릿
-    /*
-    var filterSliderTemplate = '<li data-filterId="{{filterId}}">' +
-        '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{filterGroupName}}</div>' +
-                '<span class="blind ui_accord_text">내용 더 보기</span>' +
-            '</a>' +
-        '</div>' +
-        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
-            '<div class="cont"><div class="range-wrap">' +
-                '<div name="{{filterId}}" class="ui_filter_slider ui_price_slider" data-range="0,{{length}}" data-values="{{filterValues}}" data-min="{{minFilterValue}}" data-max="{{maxFilterValue}}"></div>' +
-                '<p class="min range-num">{{minTitle}}</p><p class="max range-num">{{maxTitle}}</p>' +
-            '</div></div>' +
-        '</div>' +
-    '</li>';
-    var filterRadioTemplate = '<li data-filterId="{{filterId}}">' +
-        '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{filterGroupName}}</div>' +
-                '<span class="blind ui_accord_text">내용 더 보기</span>' +
-            '</a>' +
-        '</div>' +
-        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
-            '<div class="cont">' +
-                '{{#each (item, idx) in filterValues}}<div class="rdo-wrap">' +
-                    '<input type="radio" name="{{filterId}}" value="{{item.filterValueId}}" id="rdo-{{filterId}}-{{idx}}" {{#if idx==0}}checked{{/if}}>' +
-                    '<label for="rdo-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
-                '</div>{{/each}}' +
-            '</div>' +
-        '</div>' +
-    '</li>';
-    var filterColorTemplate = '<li data-filterId="{{filterId}}">' +
-        '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span>(0)</span></div>' +
-                '<span class="blind ui_accord_text">내용 더 보기</span>' +
-            '</a>' +
-        '</div>' +
-        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
-            '<div class="cont">' +
-                '{{#each (item, idx) in filterValues}}<div class="chk-wrap-colorchip {{item.topFilterDisplayName}}">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="color-{{filterId}}-{{idx}}">' +
-                    '<label for="color-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
-                '</div>{{/each}}' +
-            '</div>' +
-        '</div>' +
-    '</li>';
-    var filterCheckboxTemplate = '<li data-filterId="{{filterId}}">' +
-        '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span>(0)</span></div>' +
-                '<span class="blind ui_accord_text">내용 더 보기</span>' +
-            '</a>' +
-        '</div>' +
-        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
-        '<div class="cont">' +
-                '{{#each (item, idx) in filterValues}}<div class="chk-wrap">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="chk-{{filterId}}-{{idx}}">' +
-                    '<label for="chk-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
-                '</div>{{/each}}' +
-            '</div>' +
-        '</div>' +
-    '</li>';
-    */
-
-    var recommendProdTemplate = 
-        '<h3 class="title">찾으시는 제품이 없으신가요?</h3>'+
-        '<ul class="box-list-inner">'+
-            '{{#each item in recommendList}}'+
-            '<li class="lists">'+
-                '<div class="list-inner">'+
-                    '<span class="thumb">'+
-                        '<img src="{{item.image}}" alt="" aria-hidden="true">'+
-                    '</span>'+
-                    '<div class="info">'+
-                        '<p class="tit"><span class="blind">{{#if item.category}}{{item.category}}{{/if}}</span>{{item.title}}</p>'+
-                        '<p class="copy">{{item.desc}}</p>'+
-                        '<div class="btn-area btm">'+
-                            '<a href="{{item.url}}" class="btn border size"><span>{{item.urlTitle}}</span></a>'+
-                        '</div>'+
-                    '</div>'+
-                '</div>'+
-            '</li>'+
-            '{{/each}}'+
-        '</ul>';
+    '</a></li>';
 
     var serviceLinkTemplate = 
         '<ul>'+
@@ -580,7 +472,7 @@
 
                     //nodata Test
                     //data.count = null;
-                    //data.product = null;
+                    //data.event = null;
 
                     var noData = true;
                     var count = self.checkCountData(data);
@@ -589,34 +481,25 @@
                         noData = false;
                     }
 
-                    //self.$contWrap.removeClass('w-filter');
-                    //var $searchResult = self.$contWrap.find('div.search-result-wrap');
-
                     //필터세팅
                     if(!filterSearch) {
-                        //jsw
-                        /*
-                        self.setFilter();
-                        self.updateFilter(data.filterList);
-                        */
                         self.filterLayer.updateFilter(data.filterList);
                     }
 
                     //리스트 세팅
                     var $resultListWrap = self.$searchResult.find('div.result-list-wrap:eq(0)');
-                    arr = self.checkArrayData(data.product);
-                    count = self.checkCountData(data.product);
-                    self.setTabCount(1, count);
+                    arr = self.checkArrayData(data.event);
+                    count = self.checkCountData(data.event);
+                    self.setTabCount(2, count);
                     self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(count)+'개');
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
-                            item.price = item.price ? vcui.number.addComma(item.price) : null;
-                            item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
-                            item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
-                            $list_ul.append(vcui.template(productItemTemplate, item));
+                            item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
+                            item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
+                            $list_ul.append(vcui.template(eventItemTemplate, item));
                         });
                         $resultListWrap.show();
                         self.$listSorting.show();
@@ -626,9 +509,9 @@
                         self.$listSorting.hide();
                     }
 
-                    //이벤트/기획전
-                    count = self.checkCountData(data.event);
-                    self.setTabCount(2, count);
+                    //제품
+                    count = self.checkCountData(data.product);
+                    self.setTabCount(1, count);
 
                     //스토리
                     count = self.checkCountData(data.story);
@@ -647,10 +530,12 @@
                     self.setTabCount(6, count);
 
                     //추천 제품
+                    /*
                     self.$recommendListBox.empty();
                     if(data.recommendList && data.recommendList.length){
                         self.$recommendListBox.append(vcui.template(recommendProdTemplate, {recommendList: data.recommendList}))
                     }
+                    */
 
                     //서비스 링크
                     $('.service-link, .mobile-service-link').empty();
@@ -760,287 +645,6 @@
                     self.$recentKeywordList.find('div.no-data').show();
                 }
             },
-
-
-            ///필터 관련 메쏘드
-
-            //필터 세팅
-            /*
-            setFilter:function() {
-                var self = this;
-                self.$contWrap.addClass('w-filter');
-                self.$layFilter.css('display', '');
-                self.$layFilter.find('.ui_filter_slider').vcRangeSlider('update',true);
-            },
-
-            filterSetting: function() {
-                var self = this;
-                self.$layFilter.find('.ui_filter_slider').vcRangeSlider();
-                self.$layFilter.find('.ui_order_accordion').vcAccordion();
-                self.$layFilter.find('.ui_filter_accordion').vcAccordion();
-            },
-
-            //커스텀 필터 이벤트 (필터 리스트를 새로 그리면 매번 실행할것)
-            filterBindCustomEvents: function() {
-                var self = this;
-                // 필터안 슬라이더 이벤트 처리 (가격, 사이즈,..)
-                self.$layFilter.find('.ui_filter_slider').on('rangesliderinit rangesliderchange rangesliderchanged', function (e, data) {
-                    $(e.currentTarget).siblings('.min').text(vcui.number.addComma(data.minValue.title));
-                    $(e.currentTarget).siblings('.max').text(vcui.number.addComma(data.maxValue.title));
-                    if(e.type=='rangesliderchanged'){
-                        $(this).attr({'data-min':data.minValue.value,'data-max':data.maxValue.value})
-                        self.requestSearch(self.getDataFromFilter());
-                    }
-                });
-            },
-
-            filterUnbindCustomEvents: function() {
-                var self = this;
-                // 필터안 슬라이더 이벤트 처리 (가격, 사이즈,..)
-                self.$layFilter.find('.ui_filter_slider').off('rangesliderinit rangesliderchange rangesliderchanged');
-            },
-
-            //필터 이벤트 (한번만 실행할것)
-            filterBindEvents: function() {
-                var self = this;
-
-                // 필터 아코디언 오픈시 슬라이더 업데이트
-                self.$layFilter.on('accordionexpand', '.ui_filter_accordion',function(e,data){
-                    if(data.content.find('.ui_filter_slider').length > 0) {
-                        data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
-                    }   
-                });
-
-                // 필터안 체크박스 이벤트 처리
-                self.$layFilter.on('change', '.ui_filter_accordion input', function(e){
-                    $parent = $(this).parents('li');
-                    var length = $parent.find('input:checked').length;
-                    $parent.find('span.sel_num').text('('+length+')');
-                    self.requestSearch(self.getDataFromFilter());
-                });
-
-                // 모바일 필터박스 열기
-                $('div.btn-filter a').on('click', function(e){
-                    e.preventDefault();
-                    self.$layFilter.addClass('open');
-                    self.$layFilter.find('.ui_filter_slider').vcRangeSlider('update',true);
-                });
-
-                // 모바일 필터박스 닫기
-                $('.plp-filter-wrap').on('click', '.filter-close button',function(e){
-                    e.preventDefault();
-                    self.$layFilter.removeClass('open');
-                });
-
-                // 모바일 필터박스 확인
-                self.$layFilter.find('div.filter-btn-wrap button.ui_confirm_btn').on('click', function(e){
-                    self.$layFilter.removeClass('open');
-                    self.requestSearch(self.getDataFromFilter());
-                });
-
-                // 초기화버튼 이벤트 처리
-                self.$layFilter.on('click', 'div.btn-reset button', function(e){
-                    self.resetFilter();
-                    self.requestSearch(self.getDataFromFilter());
-                });
-
-                //품절상품 확인
-                self.$listSorting.on('change', 'input[type="checkbox"]', function(e){
-                    self.requestSearch(self.getDataFromFilter());
-                });
-
-                //리스트 정렬 선택시 필터의 정렬 값도 선택하게함
-                self.$listSorting.find('.ui_selectbox').on('change', function(e,data){
-                    var value = e.target.value;
-                    self.$layFilter.find('input[name="sorting"][value="'+ value +'"]').prop('checked', true);
-                    self.requestSearch(self.getDataFromFilter());
-
-                });
-
-                // 필터의 정렬 선택시 리스트의 정렬값도 선택하게 함
-                self.$layFilter.find('.ui_order_accordion div.ui_accord_content').on('change', 'input[name="sorting"]',function(e){
-                    var idx = $('input[name="sorting"]').index(this);
-                    var $target = self.$searchResult.find('div.list-sorting .ui_selectbox');
-                    $target.vcSelectbox('selectedIndex', idx, false);
-                    self.requestSearch(self.getDataFromFilter());
-                });
-
-                //검색내 검색 버튼
-                self.$listSorting.find('div.search-inner button').on('click',function(e){
-                    var $input = $(this).siblings('input');
-                    var searchIn = $input.val();
-                    $input.attr('data-searchvalue', searchIn);
-                    self.requestSearch(self.getDataFromFilter());
-                });
-
-                //필터의 검색내 검색 버튼
-                self.$layFilter.find('div.search-inner button').on('click',function(e){
-                    var $input = $(this).siblings('input');
-                    var searchIn = $input.val();
-                    var $target = self.$searchResult.find('div.search-inner input');                    
-                    $target.attr('data-searchvalue', searchIn);
-                    self.requestSearch(self.getDataFromFilter());
-                });
-
-                self.filterBindCustomEvents();
-            },
-
-            getDataFromFilter: function() {
-                var self = this;
-                var $btnFilter = self.$searchResult.find('div.btn-filter');
-                
-                var data = {};
-                self.$listSorting.find('input').each(function(idx, el){
-                    switch(el.type) {
-                        case "checkbox":
-                            data[el.name] = el.checked;
-                            break;
-                        case "text":
-                            var value = $(el).attr('data-searchValue');
-                            if(value) {
-                                data[el.name] = value;
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                });
-
-                self.$listSorting.find('.ui_selectbox').each(function(idx, el){
-                    data[el.name] = $(el).vcSelectbox('selectedOption').value;
-                });
-
-                var filterData = {};
-                var selectedFilter = false;
-                self.$layFilter.find('.ui_filter_slider').each(function(idx, el){
-                    var $el = $(el);
-                    var values = JSON.parse($el.attr('data-values'));
-                    var min = $el.attr('data-min');
-                    var max = $el.attr('data-max');
-                    var tempArray = values.slice(min,parseInt(max)+1).map(function(a) {return a.filterValue;});
-                    if(tempArray.length != values.length) {
-                        selectedFilter = true;
-                        filterData[$el.attr('name')] = tempArray;
-                    }
-                });
-
-                self.$layFilter.find('.ui_filter_accordion input').each(function(idx, el){
-                    if(el.checked) {
-                        if(!(el.value == null || el.value.trim().length == 0)) {
-                            var tempArray = filterData[el.name];
-                            if(!tempArray) {
-                                tempArray = [];
-                            }
-                            tempArray.push(el.value);
-                            filterData[el.name] = tempArray;
-                            selectedFilter = true;
-                        }
-                    }
-                });
-                
-                if(selectedFilter) {
-                    $btnFilter.addClass('applied');
-                    $btnFilter.find('a span').text('옵션 적용됨');
-                    self.$layFilter.find('div.btn-reset button').show();
-                } else {
-                    $btnFilter.removeClass('applied');
-                    $btnFilter.find('a span').text('옵션필터');
-                    self.$layFilter.find('div.btn-reset button').hide();
-                }
-
-                data["filterData"] = JSON.stringify(filterData);
-
-                return data;
-            },
-
-            updateFilter: function(data) {
-                var self = this;
-                
-                var arr = data instanceof Array ? data : [];
-                if(arr.length > 0) {
-
-                    self.filterUnbindCustomEvents();
-
-                    var $list_ul = self.$layFilter.find('div.ui_filter_accordion > ul');
-                    $list_ul.empty();
-                    arr.forEach(function(item, index) {
-                        item.index = index;
-                        var length = item.filterList instanceof Array ? item.filterList.length : 0;
-                        item.length = (length > 0) ? (length - 1) : 0;
-                        switch(item.filterType) {
-                            case "range":
-                                hasSlider = true;
-                                item.filterValues.forEach(function(obj, idx){
-                                    obj.value = idx;
-                                    obj.filterValue = obj.filterValueId;
-                                    obj.title = obj.filterValueName;
-                                    item.maxTitle = obj.title;
-                                    item.maxFilterValue = ""+idx;
-                                    if(idx == 0) {
-                                        item.minTitle = obj.title;
-                                        item.minFilterValue = "0";
-                                    }
-                                });
-                                item.filterValues = JSON.stringify(item.filterValues);
-                                $list_ul.append(vcui.template(filterSliderTemplate, item));
-                                break;
-                            case "radio":
-                                $list_ul.append(vcui.template(filterRadioTemplate, item));
-                                break;
-                            case "color":
-                                $list_ul.append(vcui.template(filterColorTemplate, item));
-                                break;
-                            case "checkbox":
-                                $list_ul.append(vcui.template(filterCheckboxTemplate, item));
-                                break;
-                        }
-                    });
-                }
-
-                self.filterBindCustomEvents();
-
-                //필터를 초기화 했으니 필터리셋버튼 숨김
-                self.$layFilter.find('div.btn-reset button').hide();
-            },
-
-            resetFilter: function() {
-                var self = this;
-
-                //필터 정렬박스
-                self.$layFilter.find('input[name="sorting"]:eq(0)').prop('checked', true);
-                //리스트 정렬박스
-                var $target = self.$listSorting.find('.ui_selectbox');
-                $target.vcSelectbox('selectedIndex', 0, false);
-
-                //솔드아웃 버튼
-                self.$listSorting.find('input[type="checkbox"]').prop('checked', false);
-
-                //검색내 검색어
-                self.$listSorting.find('div.search-inner input').attr('data-searchvalue', '').val('');
-                self.$layFilter.find('div.search-inner input').val('');
-
-                //필터 슬라이더
-                self.$layFilter.find('.ui_filter_slider').each(function(idx, el){
-                    var $el = $(el);
-                    var values = JSON.parse($el.attr('data-values'));
-                    var min = 0;
-                    var max = values.length - 1;
-                    $el.attr('data-min',min);
-                    $el.attr('data-max',max);
-                    $el.vcRangeSlider('reset',min+','+max);
-                });
-
-                //필터 라디오버튼
-                self.$layFilter.find('.ui_filter_accordion input[type="radio"]:eq(0)').each(function(idx, el){
-                    $(el).prop('checked', true);
-                });
-
-                //필터 체크박스
-                self.$layFilter.find('.ui_filter_accordion input[type="checkbox"]').each(function(idx, el){
-                    $(el).prop('checked', false);
-                });
-            },
-            */
         }
 
         search.init();

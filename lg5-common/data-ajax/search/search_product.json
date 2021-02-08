@@ -247,6 +247,101 @@
                 "image": "/lg5-common/images/icons/ic-main-calender-48.svg",
                 "url": "#n"
             }
+        ],
+        "noDataList":[
+            {
+                "url":"#",
+                "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                "imageAlt":"LG DIOS nodata 노크온 매직스페이스",
+                "title":"LG DIOS nodata 노크온 매직스페이스",
+                "sku":"S833MC85Q1",
+                "price":"4421000",
+                "originalPrice":"4422000",
+                "carePrice":"42000",
+                "flag":[
+                    "미리 페스타",
+                    "으뜸 효율 15%",
+                    "신제품",
+                    "베스트"
+                ],
+                "hash":[
+                    "가전",
+                    "겨울가전"
+                ],
+                "hasCare":true,
+                "hasReview":true,
+                "rating":"40",
+                "review":"34"
+            },
+            {
+                "url":"#",
+                "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                "imageAlt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
+                "sku":"S833MC85Q1",
+                "price":"4422000",
+                "originalPrice":"4421000",
+                "carePrice":"41000",
+                "flag":[
+                    "미리 페스타",
+                    "베스트",
+                    "신제품"
+                ],
+                "hash":[
+                    "가전",
+                    "가을가전"
+                ],
+                "hasCare":false,
+                "hasReview":false,
+                "rating":"39",
+                "review":"33"
+            },
+            {
+                "url":"#",
+                "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                "imageAlt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
+                "sku":"S833MC85Q1",
+                "price":"4422000",
+                "originalPrice":"4433000",
+                "carePrice":null,
+                "flag":[
+                    "미리 페스타",
+                    "베스트",
+                    "신제품"
+                ],
+                "hash":[
+                    "가전",
+                    "가을가전"
+                ],
+                "hasCare":false,
+                "hasReview":false,
+                "rating":"39",
+                "review":"33"
+            },
+            {
+                "url":"#",
+                "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                "imageAlt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
+                "sku":"S833MC85Q1",
+                "price":null,
+                "originalPrice":null,
+                "carePrice":"78000",
+                "flag":[
+                    "미리 페스타",
+                    "베스트",
+                    "신제품"
+                ],
+                "hash":[
+                    "가전",
+                    "가을가전"
+                ],
+                "hasCare":false,
+                "hasReview":false,
+                "rating":"39",
+                "review":"33"
+            }
         ]
     }
 }

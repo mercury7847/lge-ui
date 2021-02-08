@@ -161,7 +161,41 @@
 			100% {
 				transform:translateY(0);
 			}
-		  }
+		}
+		&.active {
+			.img {
+
+			}
+			.text-area {
+
+			}
+			.text-link {
+
+			}
+			.counter {
+
+			}
+			.next-arr {
+				
+			}
+		}
+		&.on {
+			.img {
+
+			}
+			.text-area {
+
+			}
+			.text-link {
+
+			}
+			.counter {
+
+			}
+			.next-arr {
+				
+			}
+		}
 	}
 	.section {
 		max-width:1460px;
