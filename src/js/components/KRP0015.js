@@ -72,9 +72,10 @@ $(window).ready(function(){
             var compare = storageCompare[lgkorUI.COMPARE_ID]; 
             var leng = !compare ? "0" : compare.length;
             var $count = $('div.compare-title div.count');
-            var countContent = $count.contents();
-            countContent[3].textContent = lgkorUI.COMPARE_LIMIT;
-            ($count.find('strong').contents()[1]).textContent = leng;
+            $count.text(leng + "/" + lgkorUI.COMPARE_LIMIT)
+            // var countContent = $count.contents();
+            // countContent[3].textContent = lgkorUI.COMPARE_LIMIT;
+            // ($count.find('strong').contents()[1]).textContent = leng;
         }
 
         function setCompareStatus(){
