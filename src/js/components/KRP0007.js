@@ -25,7 +25,7 @@
                     '<div class="slide-track ui_carousel_track">' +
                         '{{#each (image, idx) in sliderImages}}'+
                             '<div class="slide-conts ui_carousel_slide">' +
-                                '<a href="{{modelUrlPath}}"><img data-lazy="{{image}}" alt="{{#raw modelDisplayName}} {{idx + 1}}]번 이미지"></a>' +
+                                '<a href="{{modelUrlPath}}"><img data-lazy="{{image}}" alt="{{modelDisplayName}} {{idx + 1}}번 이미지"></a>' +
                             '</div>' +
                         '{{/each}}'+
                     '</div>' +
@@ -578,6 +578,7 @@
                     var productImg = image.find('.slide-content .slide-conts.on a img').attr("src");
                     var productAlt = image.find('.slide-content .slide-conts.on a img').attr("alt");
 
+                    console.log(productName);
                     var compareObj = {
                         "id": _id,
                         "productName": productName,
