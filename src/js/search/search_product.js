@@ -121,7 +121,7 @@
                         '<img src="{{item.image}}" alt="" aria-hidden="true">'+
                     '</span>'+
                     '<div class="info">'+
-                        '<p class="tit"><span class="blind">{{category}}</span>{{item.title}}</p>'+
+                        '<p class="tit"><span class="blind">{{#if item.category}}{{item.category}}{{/if}}</span>{{item.title}}</p>'+
                         '<p class="copy">{{item.desc}}</p>'+
                         '<div class="btn-area btm">'+
                             '<a href="{{item.url}}" class="btn border size"><span>{{item.urlTitle}}</span></a>'+
@@ -149,13 +149,8 @@
                     self.bindEvents();
 
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
-                       
                         self.requestSearch(self.makeFilterData(data));
                     });
-                    /*
-                    self.filterSetting();
-                    self.filterBindEvents();
-                    */
 
                     //입력된 검색어가 있으면 선택된 카테고리로 값 조회
                     var value = self.$contentsSearch.attr('data-search-value');
@@ -170,18 +165,16 @@
             },
 
             makeFilterData: function(data) {
-                console.log(data);
                 var filterdata = JSON.parse(data.filterData);
                 var filterlist = [];
                 for(key in filterdata) {
-                    if(key == "fid00002") {
+                    if(key == "categoryId") {
                         data[key] = filterdata[key];
                     } else {
                         filterlist = filterlist.concat(filterdata[key]);
                     }
                 }
                 data.filterData = filterlist;
-                console.log(data);
                 return data;
             },
 
@@ -626,9 +619,11 @@
                             $list_ul.append(vcui.template(productItemTemplate, item));
                         });
                         $resultListWrap.show();
+                        self.$listSorting.show();
                         noData = false;
                     } else {
                         $resultListWrap.hide();
+                        self.$listSorting.hide();
                     }
 
                     //이벤트/기획전
@@ -667,7 +662,23 @@
                     //noData 체크
                     if(noData) {
                         self.$contWrap.removeClass('w-filter');
-                        self.$resultListNoData.show();
+                        if(data.noDataList && (data.noDataList instanceof Array)) {
+                            var $list_ul = self.$resultListNoData.find('ul.result-list');
+                            $list_ul.empty();
+                            data.noDataList.forEach(function(item, index) {
+                                item.price = item.price ? vcui.number.addComma(item.price) : null;
+                                item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
+                                item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
+                                $list_ul.append(vcui.template(productItemTemplate, item));
+                            });
+                            if(data.noDataList.length > 0) {
+                                self.$resultListNoData.show();
+                            } else {
+                                self.$resultListNoData.hide();
+                            }
+                        } else {
+                            self.$resultListNoData.hide();
+                        }
                         self.$searchNotResult.show();
 
                         self.$pagination.hide();
@@ -693,7 +704,6 @@
                     if(!noData) {
                         self.addRecentSearcheText(searchedValue);
                     }
-
                 });
             },
 
