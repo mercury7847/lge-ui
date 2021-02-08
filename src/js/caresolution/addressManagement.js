@@ -234,7 +234,7 @@ var AddressRegist = (function() {
 })();
 
 var AddressManagement = (function() {
-    var addressItemTemplate = '<li class="lists" data-id={{addressID}} data-address={{jsonData}}><div class="inner">' +
+    var addressItemTemplate = '<li class="lists" data-id="{{addressID}}" data-address="{{jsonData}}"><div class="inner">' +
         '<dl class="addr">' +
             '<dt>' +
                 '<p><span class="blind">배송지명</span>{{addressName}}</p>' +

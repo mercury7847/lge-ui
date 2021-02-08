@@ -765,7 +765,7 @@
 
             //케어십 계약기간 셀렉트박스 갱신 펑션
             careshipInfoSelectBoxUpdate: function($selectBox, selectData, selectIndex, changeEvent) {
-                var optionTemplate = '<option value={{value}} {{#if json}}data-item={{json}}{{/if}}>{{title}}</option>';
+                var optionTemplate = '<option value="{{value}}" {{#if json}}data-item="{{json}}"{{/if}}>{{title}}</option>';
                 if($selectBox.length > 0) {
                     $selectBox.empty();
                     if(selectData instanceof Array) {
@@ -781,7 +781,7 @@
             //렌탈 케어솔루션 계약기간 셀렉트박스 갱신 펑션
             rentalInfoSelectBoxUpdate: function(selectBoxIndex, selectData, selectIndex, changeEvent) {
                 var self = this;
-                var optionTemplate = '<option value={{value}} {{#if json}}data-item={{json}}{{/if}}>{{title}}</option>';
+                var optionTemplate = '<option value="{{value}}" {{#if json}}data-item="{{json}}"{{/if}}>{{title}}</option>';
                 var $selectBox = self.$caresolutionRentalInfoSelectBox.eq(selectBoxIndex);
                 if($selectBox.length > 0) {
                     $selectBox.empty();
