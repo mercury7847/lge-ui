@@ -149,6 +149,19 @@
                     self.bindEvents();
 
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
+                        //console.log(data);
+                        var filterdata = JSON.parse(data.filterData);
+                        var filterParam = {};
+                        var filterlist = [];
+                        for(key in filterdata) {
+                            if(key == "fid00002") {
+                                filterParam[key] = filterdata[key];
+                            } else {
+                                filterlist = filterlist.concat(filterdata[key]);
+                            }
+                        }
+                        filterParam.filterData = filterlist;
+                        console.log(filterParam);
                         self.requestSearch(data);
                     });
                     /*
