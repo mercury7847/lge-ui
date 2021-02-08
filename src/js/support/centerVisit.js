@@ -185,6 +185,28 @@
                     msgTarget: '.err-block',
                     errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
                     patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                },
+                topic : {
+                    required : true,
+                    msgTarget : '.topic-msg'
+                },
+                subTopic : {
+                    required : true,
+                    msgTarget : '.sub-topic-msg'
+                },
+                userNm : {
+                    required : true,
+                    msgTarget : '.err-block',
+                    errorMsg: '이름을 입력해주세요.',
+                },
+                phoneNo : {
+                    required: true,
+                    minLength: 10,
+                    maxLength: 11,
+                    pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                    msgTarget: '.err-block',
+                    errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                    patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
                 }
             }
             var authOptions = {
@@ -463,7 +485,12 @@
 
             // 엔지니어 선택 팝업 오픈
             self.$engineerPopup.on('modalshown', function() {
-                self.$engineerSlider.vcCarousel('resize');
+
+                
+                console.log('open')
+
+                self.$engineerSlider.filter('.is-loaded').vcCarousel('reinit');
+                //self.$engineerSlider.not('.is-loaded').addClass('is-loaded').vcCarousel(slideConfig)
             });
 
             // 엔지니어 선택
@@ -934,7 +961,7 @@
                         self.$dateWrap.calendar('update', data.dateList);
                         self.data = $.extend(self.data, result.param);
 
-                        self.$stepDate.addClass('active');
+                        self.$stepDate.addClass('active').attr('tabindex', '0').focus().removeAttr('tabindex');
                     }
                 } else {
                     if (data.resultMessage) {
@@ -995,10 +1022,39 @@
                     date: data.date,
                     time: data.time      
                 };
+            
 
             lgkorUI.requestAjaxDataPost(self.engineerUrl, param, function(result) {
                 var data = result.data,
                     arr = data.engineerList instanceof Array ? data.engineerList : []; 
+                var slideConfig = {
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    responsive: [
+                        {
+                            breakpoint: 10000,
+                            settings: {
+                                slidesToShow: 4,
+                                slidesToScroll: 4,
+                            }
+                        },
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3,
+                            }
+                        },
+                        {
+                            breakpoint:767,
+                            settings: {
+                                variableWidth : true,
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                };
 
                 if (data.resultFlag == 'Y') {  
                     if (arr.length) {
@@ -1007,7 +1063,8 @@
                             var html = vcui.template(engineerTmpl, data);
                             
                             self.$engineerSlider.find('.slide-track').html(html);
-                            self.$engineerSlider.vcCarousel('reinit');
+                            self.$engineerSlider.filter('.is-loaded').vcCarousel('reinit');
+                            self.$engineerSlider.not('.is-loaded').vcCarousel(slideConfig);
                             self.$engineerResult.find('.btn').show();
                         } else {
                             self.$engineerResult.find('.btn').hide();
