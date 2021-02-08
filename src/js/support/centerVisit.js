@@ -1,5 +1,5 @@
 (function() {
-    var localOptTemplate = '<option value={{code}}>{{codeName}}</option>';
+    var localOptTemplate = '<option value="{{code}}">{{codeName}}</option>';
     var centerTmpl =
         '{{#each (item, index) in listData}}' +
         '<tr>' +
@@ -51,9 +51,9 @@
         '<div class="slide-conts ui_carousel_slide">' +
             '<div class="engineer-box">' +
                 '{{# if (index == 0) { #}}' +
-                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}" checked>' +
+                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code="{{item.engineerCode}}" data-center-name="{{item.centerName}}" data-center-code="{{item.centerCode}}" data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}" checked>' +
                 '{{# } else { #}}' +
-                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}">' +
+                '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code="{{item.engineerCode}}" data-center-name="{{item.centerName}}" data-center-code="{{item.centerCode}}" data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}">' +
                 '{{# } #}}' +
                 '<label for="engineer{{index}}">' +
                     '<div class="img">' +

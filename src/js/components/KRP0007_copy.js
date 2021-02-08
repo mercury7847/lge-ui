@@ -66,7 +66,7 @@ $(function () {
                 '                       {{#each item in siblingModels}}'+
                 '                       <li>'+
                 '                           <div role="radio" class="{{#if siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
-                '                               <input type="radio" data-category-id={{categoryId}} id="product-{{item.modelName}}" name="nm_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
+                '                               <input type="radio" data-category-id="{{categoryId}}" id="product-{{item.modelName}}" name="nm_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
                 '                               {{#if siblingType=="color"}}'+
                 '                               <label for="product-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
                 '                               {{#else}}'+
@@ -164,7 +164,7 @@ $(function () {
                     '{{#if item.select}}' +
                         '<strong><span class="blind">현재 페이지</span>{{item.no}}</strong>'+
                     '{{#else}}'+
-                        '<a href="#" data-id={{item.no}} title="{{item.no}}페이지 보기">{{item.no}}</a>'+
+                        '<a href="#" data-id="{{item.no}}" title="{{item.no}}페이지 보기">{{item.no}}</a>'+
                     '{{/if}}'+
                 '{{/each}}'+
             '</span>'+
