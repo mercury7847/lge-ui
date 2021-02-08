@@ -252,12 +252,6 @@
                         };
                         var fail = function(data) {
                             $this.prop("checked",!wish);
-
-                            if(data.success == "N"){
-                                lgkorUI.alert("", {
-                                    title: data.alert.title
-                                });
-                            }
                         };
     
                         lgkorUI.requestWish(

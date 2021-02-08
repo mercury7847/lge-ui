@@ -7,7 +7,7 @@
             'ui/imageFileInput', 'ui/validation'
         ], function() {    
             $('.ui_imageinput').vcImageFileInput({
-                totalSize: '50000',
+                totalSize: 50 * 1024,
                 format: 'jpg|jpeg',
                 message: {
                     format: 'JPG만 업로드 가능합니다.',

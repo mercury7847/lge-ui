@@ -24,6 +24,7 @@ $(window).ready(function() {
         $input.val(quantity);
     });
     
+    //검색어 초기화
     $(".search-input .btn-delete").click(function() {
         var temp_ul = $(this).parents('.model-infomation').find('.model-infomation-list');
         var temp_li = $(temp_ul).find('li');
@@ -35,6 +36,7 @@ $(window).ready(function() {
         $nodata.hide();
     });
 
+    //소모품 대체, 공유 모델명 검색
     $("#keyword").on("input", function() {
         var k = $(this).val();
 

@@ -20,7 +20,7 @@
         '</div></div>' +
         '{{#if availableMessage}}<div class="disabled-message btm-message"><p class="err-msg">{{availableMessage}}</p></div>{{/if}}' +
         '{{#if isLogin}}<span class="chk-wish-wrap"><input type="checkbox" id="chk-wish-{{itemID}}-{{itemSeq}}" name="chk-wish-{{itemID}}-{{itemSeq}}" {{#if (wish)}}checked{{/if}}><label for="chk-wish-{{itemID}}-{{itemSeq}}"><span class="blind">{{#if wish}}찜한상품{{#else}}찜하기{{/if}}</span></label></span>{{/if}}' +
-        '<span class="chk-wrap"><input type="checkbox" id="chk-select-{{itemID}}-{{itemSeq}}" name="chk-select-{{itemID}}-{{itemSeq}}" {{#if (check)}}checked{{/if}}><label for="chk-select-{{itemID}}-{{itemSeq}}"><span class="blind">선택안함</span></label></span>' +
+        '<span class="chk-wrap"><input type="checkbox" id="chk-select-{{itemID}}-{{itemSeq}}" name="chk-select-{{itemID}}-{{itemSeq}}" {{#if (available && check)}}checked{{/if}} {{#if !(available)}}disabled{{/if}}><label for="chk-select-{{itemID}}-{{itemSeq}}"><span class="blind">선택안함</span></label></span>' +
         '<div class="item-delete"><button type="button" class="btn-delete"><span class="blind">제품 삭제</span></button></div>' +
         '</li>';
 
@@ -122,9 +122,9 @@
 
                 //리스트 아이템 찜하기
                 self.$cartList.on('click', 'span.chk-wish-wrap input', function(e) {
-                    var itemID = $(this).parents('li.order-item').attr('data-item-id');
+                    var $li = $(this).parents('li.order-item');
                     var checked = $(this).is(':checked');
-                    self.requestWishItem(itemID, checked);
+                    self.requestWish($li, checked);
                 });
 
                 //선택 삭제
@@ -207,7 +207,7 @@
                     self.cartAllChecker.update();
                 }
                 var $cartItemCheck = self.$cartList.find(self.cartItemCheckQuery);
-                self.$cartAllCheck.prop('checked', !$cartItemCheck.is(':not(:checked)'));
+                self.$cartAllCheck.prop('checked', !$cartItemCheck.is(':not(:checked):not(:disabled)'));
             },
 
             updateList: function(data) {
@@ -267,7 +267,7 @@
             //선택된 제품에 따른 구매정보들 요청
             requestInfo: function() {
                 var self = this;
-                var cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked');
+                var cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked:not(:disabled)');
                 var itemList = [];
                 var itemSeqList = [];
                 cartItemCheck.each(function (index, item) {
@@ -325,21 +325,30 @@
             },
 
             //아이템 찜하기
-            requestWishItem: function(itemID, wish) {
+            requestWish: function($dm, wish) {
+                console.log('wish');
                 var self = this;
                 var ajaxUrl = self.$cartContent.attr('data-wish-url');
-                var postData = {"itemID":itemID, "wish":wish};
-                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, null);
-            },
+                var success = function(data) {
+                    //$dm.attr("data-wishItemId",data.wishItemId);
+                };
+                var fail = function(data) {
+                    $dm.find('span.chk-wish-wrap input').prop("checked",!wish);
+                };
 
-            /*
-            //장바구니에 담기
-            requestCartItem: function(itemID) {
-                var ajaxUrl = self.$cartContent.attr('data-cart-url');
-                var postData = {"itemID":itemID};
-                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, null);
+                var param = {
+                    "itemID":$dm.attr('data-item-id'),
+                    "wish":wish
+                };
+
+                lgkorUI.requestWish(
+                    param,
+                    wish,
+                    success,
+                    fail,
+                    ajaxUrl
+                );
             },
-            */
 
             //dom의 data-url을 읽어서 이동시킴
             locationButtonUrl: function(dm) {
