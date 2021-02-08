@@ -22,41 +22,37 @@
 	}
 
 	.title {
-		display:inline-block;
-		width:50%;
-		font-weight:700;
-		font-size:20px;
-		line-height:30px;
-		color:#000;
-		@include mobile {
-			width:100%;
-			padding:0 16px;
-			font-size:18px;
-			line-height:24px;
-		}
-		* {
-			font-weight:inherit;
-			font-size:inherit;
-			line-height:inherit;
+		h2 {
+			@include title-h4;
+			@include mobile {
+				padding:0 16px;
+			}
 		}
 	}
 
 	.tabs-wrap {
-		position:absolute;
-		top:0;
-		right:0;
+		margin-top:32px;
+		text-align:left;
+		&.btn-type:before {
+			content:' ';
+			display:block;
+			position:absolute;
+			right:0;
+			bottom:0;
+			left:0;
+			height:1px;
+			background-color:#ddd;
+		}
 		@include mobile {
-			position:static;
-			margin-top:18px;
 			.tabs > li {
-				margin-left:16px;
+				margin-left:24px;
 				&:first-child {
 					margin-left:0;
 				}
 				> a {
-					padding-bottom:4px;
-					font-size:16px;
-					line-height:24px;
+					padding:8px 0 4px;
+					font-size:15px;
+					line-height:23px;
 				}
 			}
 		}
@@ -65,23 +61,23 @@
 	.tabs-cont {
 		display:none;
 		clear:both;
-		margin-top:12px;
-		padding:32px 0;
-		border-top:2px solid #222;
+		// margin-top:12px;
+		padding:24px 0;
+		// border-top:2px solid #222;
 		@include mobile {
 			margin:16px;
-			padding:16px 12px;
+			padding:24px 6px;
 			background-color:transparent;
 		}
 		.num-list {
 			ol {
-				padding:0 34px;
+				padding:0 16px;
 				li {
 					list-style: decimal;
 					position:relative;
 					margin-top:2px;
 					padding:0 34px;
-					color:#767676;
+					color:#000;
 					font-size:16px;
 					line-height:26px;
 					&:first-child {
@@ -93,8 +89,8 @@
 				ol {
 					padding:0 12px;
 					li {
-						margin-top:2px;
-						padding:0 56px 0 13px;
+						margin-top:12px;
+						padding:0 13px;
 						&:first-child {
 							margin-top:0;
 						}

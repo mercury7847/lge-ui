@@ -28,9 +28,9 @@
         "searchBanner":{
             "pcImage": "/lg5-common/images/UTS/@sample-banner.jpg",
             "mobileImage": "/lg5-common/images/UTS/@sample-banner-m.jpg",
-            "title": "새출발을 위한 혼수 지원,<br>2020 올 뉴 웨딩 페스타",
+            "title": "새출발을 위한 혼수 지원,<br>2020 올 뉴 웨딩",
             "desc": "2020 올 뉴 웨딩 페스타 행사 모델<br>동시 구매 시, 최대 250만원<br>상당 혜택!",
-            "urlName": "#n"
+            "url": "#n"
         },
         "category":[
             {
