@@ -25,6 +25,78 @@
         }
     }
 
+    .home-notice {
+        display:flex;
+        position: relative;
+        width:800px;
+        flex-direction: row;
+        margin:0 auto;
+        .notice-title {
+            .title {
+                font-size:16px;
+                line-height:70px;
+                color:#222;
+                font-weight:500;
+            }
+        }
+        .notice-list-wrap {
+            position: relative;
+            width:735px;
+            margin-left:10px;
+            padding:0 60px 0 16px;
+            box-sizing:border-box;
+            &:before {
+                content:"";
+                display:block;
+                position: absolute;
+                top:50%;
+                left:0;
+                transform:translateY(-50%);
+                width:1px;
+                height:12px;
+                background: #ddd;
+            }
+            .flag-wrap {
+                display:inline-block;
+                .flag {
+                    font-size:12px;
+                    line-height:1;
+                    vertical-align: middle;
+                }
+            }
+            .notice-list {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width:100%;
+                padding:25px 0 23px;
+                white-space: nowrap;
+            }
+        }
+        .notice-list-controls {
+            position: absolute;
+            top:50%;
+            right:0;
+            width:24px;
+            height:48px;
+            transform:translateY(-50%);
+
+            button {
+                width:24px;
+                height:24px;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: 12px 12px;
+
+                &.prev {
+                    background-image: url('/lg5-common/images/icons/btn-arrow-48.svg');
+                }
+                &.next {
+                    background-image: url('/lg5-common/images/icons/btn-arrow-down.svg');
+                }
+            }
+        }
+    }
+
     .keyword-search {
         margin-top:-33px;
         .search-box {
@@ -93,7 +165,7 @@
     }
 
     .popular-find {
-        margin-top:0;
+        margin-top:-60px;
     }
 
     .home-reservation {
