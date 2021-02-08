@@ -111,7 +111,7 @@
                         '</span>' +
                     '</div>' +
                     '<div class="cart">' +
-                        '<a href="#n" class="btn-cart{{#if cartListFlag}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{modelName}}" data-rtSeq="{{rtModelSeq}}" data-typeFlag="{{bizType}}" {{#if !cartListFlag}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
+                        '<a href="#n" class="btn-cart{{#if obsBtnRule != "enable"}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{modelName}}" data-rtSeq="{{rtModelSeq}}" data-type-flag="{{bizType}}" {{#if obsBtnRule != "enable"}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
                     '</div>' +
                     '<div class="btn-area">' +
                         '<a href="{{modelUrlPath}}" class="btn border size-m" data-id="{{modelId}}">자세히 보기</a>' +
@@ -268,7 +268,7 @@
                 self.$productList.on('click','li div.btn-area-wrap div.cart a',function(e){
                     e.preventDefault();
 
-                    var typeflag = $this.attr('data-type-flag');
+                    var typeflag = $(this).attr('data-type-flag');
                     var sendflag = (typeflag == "PRODUCT" || typeflag == "DISPOSABLE") ? "P" : "C";
 
                     if(!$(this).hasClass('disabled')){
@@ -419,6 +419,7 @@
                 var ajaxurl = self.$section.attr('data-sibling-url');
                 var sendata = {
                     "modelId": modelId,
+                    "pageType": "plp",
                     "callType": "productSummary"
                 }            
                 console.log("@@@ requestSibling @@@", sendata)

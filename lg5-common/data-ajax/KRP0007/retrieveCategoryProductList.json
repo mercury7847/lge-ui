@@ -276,13 +276,14 @@
           "years1TotAmt": null,
           "visitPer": null,
           "totalPrice": "0",
-          "reviewsScore": "0",
-          "reviewsCount": "0",
+          "reviewsScore": "4.5",
+          "reviewsCount": "1",
           "wishListFlag": null,
           "wishListId": null,
           "wishItemId": null,
           "cartListFlag": null,
           "rtModelSeq": null,
+          "obsBtnRule": "enable",
           "compatibleModels": [
             
           ],
@@ -499,6 +500,7 @@
           ]
         },
         {
+          "obsBtnRule": "disenable",
           "affiliateCode": null,
           "bizType": "PRODUCT",
           "modelName": "55NANO87KNB.AKR",
@@ -715,6 +717,7 @@
           ]
         },
         {
+          "obsBtnRule": "enable",
           "affiliateCode": null,
           "bizType": "PRODUCT",
           "modelName": "43UN7800GNC.AKR",
@@ -912,6 +915,7 @@
           ]
         },
         {
+          "obsBtnRule": "enable",
           "affiliateCode": null,
           "bizType": "PRODUCT",
           "modelName": "65NANO93KNB.AKR",
@@ -1109,6 +1113,7 @@
           ]
         },
         {
+          "obsBtnRule": "enable",
           "affiliateCode": null,
           "bizType": "PRODUCT",
           "modelName": "86NANO93KNB.AKR",
@@ -1306,6 +1311,7 @@
           ]
         },
         {
+          "obsBtnRule": "disenable",
           "affiliateCode": null,
           "bizType": "PRODUCT",
           "modelName": "75UN7850GNA.AKR",
@@ -1503,6 +1509,7 @@
           ]
         },
         {
+          "obsBtnRule": "enable",
           "affiliateCode": null,
           "bizType": "PRODUCT",
           "modelName": "75UN7850KNA.AKR",
@@ -1700,6 +1707,7 @@
           ]
         },
         {
+          "obsBtnRule": "enable",
           "affiliateCode": null,
           "bizType": "PRODUCT",
           "modelName": "65UN7850GNA.AKR",
@@ -1897,6 +1905,7 @@
           ]
         },
         {
+          "obsBtnRule": "enable",
           "affiliateCode": null,
           "bizType": "PRODUCT",
           "modelName": "75NANO97KNB.AKR",
@@ -2094,6 +2103,7 @@
           ]
         },
         {
+          "obsBtnRule": "enable",
           "affiliateCode": null,
           "bizType": "PRODUCT",
           "modelName": "86UN8900KNA.AKR",
@@ -2291,6 +2301,7 @@
           ]
         },
         {
+          "obsBtnRule": "enable",
           "affiliateCode": null,
           "bizType": "PRODUCT",
           "modelName": "55UN7800GNA.AKR",
@@ -2488,6 +2499,7 @@
           ]
         },
         {
+          "obsBtnRule": "enable",
           "affiliateCode": null,
           "bizType": "PRODUCT",
           "modelName": "82UN8900KNA.AKR",
