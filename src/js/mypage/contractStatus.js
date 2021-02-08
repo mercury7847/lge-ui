@@ -9,6 +9,7 @@
     var INFO_MODIFY_SAVE;
     var PAYMENT_METHOD_CONFIRM;
     var ARS_AGREE_URL;
+    var REQUEST_CONTRACT_URL;
 
     var mypage;
     var userInfoBlock, userModifyBlock;
@@ -37,6 +38,7 @@
         INFO_MODIFY_SAVE = $('.contents.mypage').data('modifySaveUrl');
         PAYMENT_METHOD_CONFIRM = $('.contents.mypage').data('paymentMethodUrl');
         ARS_AGREE_URL = $('.contents.mypage').data('arsAgreeUrl');
+        REQUEST_CONTRACT_URL = $('.contents.mypage').data('requestContractUrl');
     
         vcui.require(['ui/modal', 'ui/validation', 'ui/formatter', 'ui/tab', 'helper/textMasking'], function () {             
             setting();
@@ -186,6 +188,12 @@
             console.log("해지상담 신청");
         });
 
+        $('#popup-contractIssue').on('click', '.btn-group button.pink', function(e){
+            e.preventDefault();
+
+            sendRequestContract();
+        })
+
         $('#popup-cardIssue').on('click', '.requestIssue-btn', function(e){
             e.preventDefault();
 
@@ -203,6 +211,13 @@
 
         $('select[name=contractInfo]').on('change', function(e, data){
             changeContractInfo();
+        });
+    }
+
+    //계약서 발급 신청
+    function sendRequestContract(){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(REQUEST_CONTRACT_URL, {}, function(result){
+            console.log(result)
         });
     }
 

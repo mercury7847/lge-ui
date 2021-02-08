@@ -503,7 +503,7 @@
                 }
             });
 
-			vcui.require(['ui/scrollNavi','ui/smoothScroll','helper/mousewheel'], function () {
+			vcui.require(['ui/scrollNavi','ui/smoothScroll'], function () {
                 // 플로우배너
                 $('.ui_carousel_slider_banner1').vcCarousel({
                     infinite: true,
@@ -653,7 +653,12 @@
 
             function wheelScene(delta) {
 
-                var nextIndex = (delta < 0) ? 1 : -1;
+                var nextIndex;                
+                if(vcui.detect.isMac){
+                    nextIndex = (delta < 0) ? -1 : 1;
+                }else{
+                    nextIndex = (delta < 0) ? 1 : -1;
+                }
                 nextIndex = nextIndex + currentPage;
                 nextIndex = Math.max(Math.min(nextIndex, maxLens), 0);
                 if(currentPage == nextIndex) return;
@@ -687,11 +692,11 @@
 		        	});
 	        	}, 100);
 
-            }            
+            } 
+            
 
+            document.addEventListener('wheel', function(e){
 
-            $(document).on('mousewheel DOMMouseScroll', function(e, delta){     
-                
                 if(currentPage == maxLens){
                     if(wheelInterval) clearTimeout(wheelInterval);
                     wheelInterval = setTimeout(function(){
@@ -703,14 +708,13 @@
 
                 }else{
 
-                    if(delta>0){
-                        wheelScene(delta);
-                    }else if(delta<0){
-                        wheelScene(delta);
+                    if(e.deltaY>0 || e.deltaY<0){
+                        wheelScene(e.deltaY);
                     }
+                }   
 
-                }                
             });
+
             
 
             $(document).on('touchstart touchend touchcancel', function(e) {
