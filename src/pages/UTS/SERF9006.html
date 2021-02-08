@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["UTS/UTS"]
+        pageCSS: ["UTS/UTS"],
+        pageJS: ["search/filterLayer","search/search_story"]
     })
 <body>
     <div class="wrap">
@@ -9,11 +10,13 @@
 
         <div class="container">
             <!-- search -->
-            <div class="contents search">
+            <div class="contents search" data-search-value="노크온 매직스페이스" data-search-force=false data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json" data-search-url="/lg5-common/data-ajax/search/searchInput.json">
                 <!-- 검색 영역 -->
                 @@include('./common/modules/search.html', {
                     "value" : "노크온 매직스페이스",
-                    "related" : true
+                    "related" : true,
+                    "layer" : true,
+                    "similar" : true
                 })
                 <!-- // 검색 영역 -->
                 
@@ -21,17 +24,28 @@
                 <div class="search-tabs-wrap">
                     <div class="tabs-wrap ui_tab ui_smooth_scroll">
                         <ul class="tabs">
-                            <li><a href="#n">전체(210)</a></li>
-                            <li><a href="#n">제품/케어솔루션(59)</a></li>
-                            <li><a href="#n">이벤트/기획전(5)</a></li>
-                            <li class="on"><a href="#n">스토리(18)<em class="blind">선택됨</em></a></li>
-                            <li><a href="#n">케어용품/소모품(32)</a></li>
-                            <li><a href="#n">센터/매장(2)</a></li>
-                            <li><a href="#n">고객지원(28)</a></li>
+                            <li data-label="전체"><a href="/html/UTS/SERF9002.html" data-category-id="all" data-search-url="/lg5-common/data-ajax/search/search_all.json">전체<span></span></a></li>
+                            <li data-label="제품"><a href="/html/UTS/SERF9003.html" data-category-id="product" data-search-url="/lg5-common/data-ajax/search/search_product.json">제품/케어솔루션<span></span></a></li>
+                            <li data-label="이벤트/기획전"><a href="/html/UTS/SERF9005.html" data-category-id="event" data-search-url="/lg5-common/data-ajax/search/search_event.json">이벤트/기획전<span></span></a></li>
+                            <li class="on" data-label="스토리"><a href="/html/UTS/SERF9006.html" data-category-id="story" data-search-url="/lg5-common/data-ajax/search/search_story.json">스토리<span></span><em class="blind">선택됨</em></a></li>
+                            <li data-label="케어용품/소모품"><a href="/html/UTS/SERF9007.html" data-category-id="additional" data-search-url="/lg5-common/data-ajax/search/search_additional.json">케어용품/소모품<span></span></a></li>
+                            <li data-label="센터/매장"><a href="/html/UTS/SERF9015.html" data-category-id="shop" data-search-url="/lg5-common/data-ajax/search/search_shop.json">센터/매장<span></span></a></li>
+                            <li data-label="고객지원"><a href="/html/UTS/SERF9008.html" data-category-id="customer" data-search-url="/lg5-common/data-ajax/search/search_customer.json">고객지원<span></span></a></li>
                         </ul>
                     </div>
                 </div>
                 <!-- // tabs -->
+
+                <!-- 20210118 검색 결과 없음 추가 -->
+                <div class="search-not-result">
+                    <div class="no-data">
+                        <p>
+                            <span><em>검색결과가 없습니다</em></span>
+                            입력한 검색어를 확인하고 다시 검색해 보세요.
+                        </p>
+                    </div>
+                </div>
+                <!-- // 검색 결과 없음 -->
 
                 <div class="cont-wrap w-filter"><!-- 필터 포함 시 : .w-filter 추가 -->
                     @@include('./common/modules/list-filter.html', {
@@ -68,12 +82,12 @@
                                                 </div>
                                             </div>
                                             <div class="sort-select-wrap">
-                                                <select class="ui_selectbox" id="select1" title="조회할 연차 선택">
-                                                    <option value="">정확도순</option>
-                                                    <option value="">인기순</option>
-                                                    <option value="">최신순</option>
-                                                    <option value="">가격 높은순</option>
-                                                    <option value="">가격 낮은순</option>
+                                                <select class="ui_selectbox" name="order" title="조회할 연차 선택">
+                                                    <option value="accuracy">정확도순</option>
+                                                    <option value="popularity">인기순</option>
+                                                    <option value="latest">최신순</option>
+                                                    <option value="pricehigh">가격 높은순</option>
+                                                    <option value="pricelow">가격 낮은순</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -116,12 +130,72 @@
                                     </ul>
                                 </div>
                             </div> <!-- // 스토리-->
-
-                            @@include('./common/modules/pagination.html', {
+                            <div class="pagination" data-page="1" data-visible-count="5" data-total-count="1"></div>
+                            <!-- @@include('./common/modules/pagination.html', {
                                 count: 5
-                            })
-                        </div>
+                            }) -->
 
+                            <div class="result-list-wrap list-no-data">
+                                <div class="list-head">
+                                    <h2 class="title">이런 제품 어떠세요?</h2>
+                                </div>
+                                <div class="list-wrap">
+                                    <ul class="result-list product-list">
+                                        @@loop('./common/modules/result-list.html', [
+                                            {
+                                                "itemClass" : "",
+                                                "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                                "flags" : ["미리미리 페스타", "으뜸효율 10%", "베스트", "신제품"],
+                                                "tit" : "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                                "sku" : "5203FI3754D",
+                                                "review" : true,
+                                                "isReview" : true,
+                                                "hashtag" : ["가전", "여름가전"],
+                                                "careflag" : true,
+                                                "priceInfo" : true,
+                                                "priceSales" : true,
+                                                "priceRental" : true
+                                            }, {
+                                                "itemClass" : "",
+                                                "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                                "flags" : ["베스트", "신제품"],
+                                                "tit" : "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                                "sku" : "5203FI3754D",
+                                                "review" : true,
+                                                "isReview" : true,
+                                                "hashtag" : ["가전", "여름가전"],
+                                                "careflag" : true
+                                            }, {
+                                                "itemClass" : "",
+                                                "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                                "flags" : ["베스트", "신제품"],
+                                                "tit" : "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                                "sku" : "5203FI3754D",
+                                                "review" : true,
+                                                "isReview" : true,
+                                                "hashtag" : ["가전", "여름가전"],
+                                                "careflag" : true,
+                                                "priceInfo" : true,
+                                                "priceRental" : true
+                                            }, {
+                                                "itemClass" : "",
+                                                "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                                "flags" : ["베스트", "신제품"],
+                                                "tit" : "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                                "sku" : "5203FI3754D",
+                                                "review" : true,
+                                                "isReview" : true,
+                                                "hashtag" : ["가전", "여름가전"],
+                                                "careflag" : true,
+                                                "priceInfo" : true,
+                                                "priceSales" : true
+                                            }
+                                        ])
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>  
                     
                     <div class="mobile-service-link story">
