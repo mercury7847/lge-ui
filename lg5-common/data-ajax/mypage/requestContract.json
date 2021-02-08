@@ -5,7 +5,7 @@
     "data": {
         "success": "Y",
         "alert":{
-            "title": ""
+            "title": "계약서를 발송했습니다."
         }
     }
 }
