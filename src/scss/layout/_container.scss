@@ -42,14 +42,20 @@
             margin-top: 8px;
             .btn-link {
                 color: $color-default;
+                font-size:14px;
+                line-height:24px;
                 &:after {
-                    background-image: url('/lg5-common/images/icons/btn-arr-20x20-black.svg');
+                    width:16px;
+                    height:16px;
                 }
             }
             &.arrow-left {
                 .btn-link {
                     padding-right: 0;
                     padding-left: 22px;
+                    &:hover {
+                        text-decoration:underline;
+                    }
                     &:after {
                         right: auto;
                         left: 0;
