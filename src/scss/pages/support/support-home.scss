@@ -149,18 +149,9 @@
         }
     }
     .home-login {
-        position:relative;
-        overflow:hidden;
-        max-width:1380px;
-        margin-left:auto;
-        margin-right:auto;
-
         a {
             display: block;
             position:relative;
-            left:50%;
-            max-width:1920px;
-            transform:translateX(-50%);
         }
     }
 
@@ -170,8 +161,9 @@
 
     .home-reservation {
         .rersv-wrap {
-            height:461px;
-            padding:55px 55px 48px;
+            position: relative;
+            height:594px;
+            padding:55px 55px 120px;
             background: #f4f4f4;
             border-radius:5px;
             box-sizing:border-box;
@@ -215,7 +207,6 @@
             .form-wrap {
                 .btn-link {
                     margin-left:26px;
-                    text-decoration: none;
                 }
                 .form-head {
                     margin-bottom:25px;
@@ -224,26 +215,31 @@
                 .forms {
                     margin-top:0;
 
+                    .tit {
+                        margin-bottom:0;
+                    }
+
+                    .input-wrap {
+                        input:disabled {
+                            background: #e4e4e4;
+                        }
+                    }
+                    
+
                     &.col2 {
                         display:flex;
                         flex-direction: row;
 
-                        > .input-wrap {
+                        .cont {
                             flex:1;
-
-                            & + .input-wrap {
+                            & + .cont {
                                 margin-left:8px;
-                                margin-top:0;
                             }
                         }
                     }
 
                     & ~ .forms {
                         margin-top:8px;
-                    }
-
-                    > .input-wrap {
-                        width:100%;
                     }
 
                     .rdo-wrap {
@@ -255,7 +251,15 @@
             }
 
             .btn-wrap {
-                margin-top:45px;
+                position: absolute;
+                bottom:48px;
+                left:0;
+                right:0;
+                text-align: center;
+
+                button:disabled {
+                    background: #f4f4f4;
+                }
             }
         }
     }
@@ -269,11 +273,12 @@
 
             > li {
                 float:left;
+                width:25%;
                 padding:0 12px;
 
                 > a {
                     display:block;
-                    width:327px;
+                    // width:327px;
 
                     img {
                         width:100%;
@@ -292,11 +297,12 @@
 
             > li {
                 float:left;
+                width:33.33%;
                 padding:0 12px;
 
                 > a {
                     display:block;
-                    width:444px;
+                    // width:444px;
 
                     img {
                         width:100%;
@@ -311,6 +317,7 @@
         .award-list-wrap {
             width:1184px;
             margin:0 auto;
+            padding-bottom:40px;
         }
         .award-list {
             position:relative;
@@ -335,6 +342,9 @@
                 }
             }
             
+        }
+        .indi-wrap {
+            bottom:0;
         }
         .slide-controls {
             button.prev {
