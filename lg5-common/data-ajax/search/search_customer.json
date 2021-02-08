@@ -38,50 +38,118 @@
             "count":"7"
         },
         "story":{
-            "count":"17",
-            "data":[
-                {
-                    "url":"#",
-                    "imageUrl":"/lg5-common/images/dummy/@img-search.jpg",
-                    "imageAlt":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG ThinQ",
-                    "isVideo":false,
-                    "title":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG ThinQ",
-                    "desc":"코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다.",
-                    "flag":[
-                        "비하인드"
-                    ],
-                    "hash":[
-                        "가전",
-                        "겨울가전"
-                    ],
-                    "date":"20200813"
-                },
-                {
-                    "url":"#",
-                    "imageUrl":"/lg5-common/images/dummy/@img-search.jpg",
-                    "imageAlt":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG",
-                    "isVideo":true,
-                    "title":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG",
-                    "desc":"코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다.",
-                    "flag":[
-                        "비하인드 스토리"
-                    ],
-                    "hash":[
-                        "가전",
-                        "겨울가전"
-                    ],
-                    "date":"20200814"
-                }
-            ]
+            "count":"17"
         },
         "additional":{
             "count":"32"
         },
         "shop":{
-            "count":"3"           
+            "count":"3"          
         },
         "customer":{
-            "count":"4"           
+            "count":"4",
+            "data":[
+                {   
+                    "type":"product",
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@img-cs.jpg",
+                    "imageAlt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q1",
+                    "category":[
+                        "제품설명서",
+                        "드라이버/소프트웨어"
+                    ]
+                },
+                {   
+                    "type":"product",
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@img-cs.jpg",
+                    "imageAlt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q1",
+                    "category":[
+                        "제품설명서",
+                        "제품문제해결"
+                    ]
+                },
+                {
+                    "type":"manual",
+                    "url":"#",
+                    "title":"사용설명서 HTML",
+                    "flag":[
+                        "제품사용설명서"
+                    ],
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "데스크톱/일체형"
+                        ]
+                    ],
+                    "desc":"통합 설치 프로그램",
+                    "hash":[
+                        "한글",
+                        "Ver 7.8"
+                    ],
+                    "date":"20201101",
+                    "linkItem":[
+                        {
+                            "title":"ZIP",
+                            "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true"
+                        },
+                        {
+                            "title":"PDF",
+                            "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true"
+                        }
+                    ]
+                },
+                {
+                    "type":"driver",
+                    "url":"#",
+                    "title":"[프로그램/Win10_64bit] XPION용 LG intelligent Update 프로그램",
+                    "flag":[
+                        "드라이버/소프트웨어"
+                    ],
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "데스크톱/일체형"
+                        ]
+                    ],
+                    "desc":"통합 드라이버 프로그램",
+                    "hash":[
+                        "Ver 7.9",
+                        "통합 설치 프로그램"
+                    ],
+                    "date":"20201102",
+                    "linkItem":[
+                        {
+                            "title":"다운로드 112.4MB",
+                            "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true"
+                        }
+                    ]
+                },
+                {
+                    "type":"trouble",
+                    "url":"#",
+                    "title":"MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
+                    "flag":[
+                        "제품문제해결"
+                    ],
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "데스크톱/일체형"
+                        ]
+                    ],
+                    "desc":"통합 드라이버 프로그램",
+                    "hash":[
+                        "조회수 5,692"
+                    ],
+                    "date":"20201102",
+                    "isVideo":true
+                }
+            ]           
         },
         "filterList": [
             {

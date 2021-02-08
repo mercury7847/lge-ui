@@ -44,25 +44,28 @@
             '</div>' +
         '</div>' +
     '</div></li>';
-    var eventItemTemplate = '<li><a href="{{url}}" class="item item-type2">' +
-        '<div class="result-thumb">' +
-            '<div>' +
-                '<img onError="lgkorUI.addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}">' +
-                '{{#if isEnd}}<span class="flag-end-wrap"><span class="flag">종료</span></span>{{/if}}' +
-            '</div>' +
-        '</div>' +
+    var shopItemTemplate = '<li><div class="item">' +
         '<div class="result-info">' +
             '<div class="info-text">' +
-                '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
-                '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
+                '<div class="flag-wrap bar-type">' +
+                    '{{#each item in flag}}<span class="flag {{item.class}}">{{item.title}}</span>{{/each}}' +
+                '</div>' +
+                '<div class="result-tit">' +
+                    '<a href="{{url}}">{{#raw title}}</a>' +
+                '</div>' +
                 '<div class="result-detail">' +
-                    '<div class="info-btm">' +
-                        '<span class="text date">{{startDate}} ~ {{endDate}}</span>' +
+                    '<div href="{{url}}" class="shop-info">' +
+                        '<a href="{{url}}" class="desc add">{{address}}</a>' +
+                        '<a href="{{url}}" class="desc time">{{time}}</a>' +
                     '</div>' +
+                    '<div class="shop-state"><span class="{{shopStateColor}}">{{shopState}}</span></div>' +
                 '</div>' +
             '</div>' +
+            '<div class="btn-area">' +
+                '{{#each item in linkItem}}<a href="{{item.url}}" class="btn border size"><span>{{item.title}}</span></a>{{/each}}' +
+            '</div>' +
         '</div>' +
-    '</a></li>';
+    '</div></li>';
 
     var serviceLinkTemplate = 
         '<ul>'+
@@ -512,7 +515,7 @@
 
                     //nodata Test
                     //data.count = null;
-                    //data.event = null;
+                    //data.shop = null;
 
                     var noData = true;
                     var count = self.checkCountData(data);
@@ -528,18 +531,16 @@
 
                     //리스트 세팅
                     var $resultListWrap = self.$searchResult.find('div.result-list-wrap:eq(0)');
-                    arr = self.checkArrayData(data.event);
-                    count = self.checkCountData(data.event);
-                    self.setTabCount(2, count);
+                    arr = self.checkArrayData(data.shop);
+                    count = self.checkCountData(data.shop);
+                    self.setTabCount(5, count);
                     self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(count)+'개');
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
-                            item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
-                            item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
-                            $list_ul.append(vcui.template(eventItemTemplate, item));
+                            $list_ul.append(vcui.template(shopItemTemplate, item));
                         });
                         $resultListWrap.show();
                         self.$listSorting.show();
@@ -553,6 +554,10 @@
                     count = self.checkCountData(data.product);
                     self.setTabCount(1, count);
 
+                    //이벤트
+                    count = self.checkCountData(data.event);
+                    self.setTabCount(2, count);
+
                     //스토리
                     count = self.checkCountData(data.story);
                     self.setTabCount(3, count);
@@ -560,10 +565,6 @@
                     //케어용품/소모품
                     count = self.checkCountData(data.additional);
                     self.setTabCount(4, count);
-
-                    //센터매장
-                    count = self.checkCountData(data.shop);
-                    self.setTabCount(5, count);
 
                     //고객지원
                     count = self.checkCountData(data.customer);

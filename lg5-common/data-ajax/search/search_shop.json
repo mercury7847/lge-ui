@@ -38,47 +38,127 @@
             "count":"7"
         },
         "story":{
-            "count":"17",
-            "data":[
-                {
-                    "url":"#",
-                    "imageUrl":"/lg5-common/images/dummy/@img-search.jpg",
-                    "imageAlt":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG ThinQ",
-                    "isVideo":false,
-                    "title":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG ThinQ",
-                    "desc":"코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다.",
-                    "flag":[
-                        "비하인드"
-                    ],
-                    "hash":[
-                        "가전",
-                        "겨울가전"
-                    ],
-                    "date":"20200813"
-                },
-                {
-                    "url":"#",
-                    "imageUrl":"/lg5-common/images/dummy/@img-search.jpg",
-                    "imageAlt":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG",
-                    "isVideo":true,
-                    "title":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG",
-                    "desc":"코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다.",
-                    "flag":[
-                        "비하인드 스토리"
-                    ],
-                    "hash":[
-                        "가전",
-                        "겨울가전"
-                    ],
-                    "date":"20200814"
-                }
-            ]
+            "count":"17"
         },
         "additional":{
             "count":"32"
         },
         "shop":{
-            "count":"3"           
+            "count":"3",
+            "data":[
+                {
+                    "flag":[
+                        {
+                            "clase":"green",
+                            "title":"센터"
+                        },
+                        {
+                            "clase":null,
+                            "title":"이벤트"
+                        }
+                    ],
+                    "title":"홍대입구역 서비스 센터",
+                    "url":"#",
+                    "address":"서울특별시1 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
+                    "time":"월~화 09:00~18:00 토요일 09:00~13:00",
+                    "shopState":"혼잡",
+                    "shopStateColor":"red",
+                    "linkItem":[
+                        {
+                            "title":"길찾기",
+                            "url":"#"
+                        },
+                        {
+                            "title":"방문 예약 신청",
+                            "url":"#"
+                        }
+                    ]
+                },
+                {
+                    "flag":[
+                        {
+                            "clase":"green",
+                            "title":"센터"
+                        },
+                        {
+                            "clase":null,
+                            "title":"NEW"
+                        }
+                    ],
+                    "title":"서울역 서비스 센터",
+                    "url":"#",
+                    "address":"서울특별시2 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
+                    "time":"월~금 09:00~18:00 토요일 09:00~13:00",
+                    "shopState":"원할",
+                    "shopStateColor":"green",
+                    "linkItem":[
+                        {
+                            "title":"길찾기",
+                            "url":"#"
+                        },
+                        {
+                            "title":"매장 상담 신청",
+                            "url":"#"
+                        }
+                    ]
+                },
+                {
+                    "flag":[
+                        {
+                            "clase":"green",
+                            "title":"센터"
+                        },
+                        {
+                            "clase":null,
+                            "title":"NEW"
+                        }
+                    ],
+                    "title":"서울역 서비스 센터",
+                    "url":"#",
+                    "address":"서울특별시2 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
+                    "time":"월~금 09:00~18:00 토요일 09:00~13:00",
+                    "shopState":"보통",
+                    "shopStateColor":"orange",
+                    "linkItem":[
+                        {
+                            "title":"길찾기",
+                            "url":"#"
+                        },
+                        {
+                            "title":"방문 예약 신청",
+                            "url":"#"
+                        }
+                    ]
+                },
+                {
+                    "flag":[
+                        {
+                            "clase":"green",
+                            "title":"센터"
+                        },
+                        {
+                            "clase":null,
+                            "title":"NEW"
+                        }
+                    ],
+                    "title":"서울역 서비스 센터",
+                    "url":"#",
+                    "address":"서울특별시2 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
+                    "time":"월~금 09:00~18:00 토요일 09:00~13:00",
+                    "shopState":"보통",
+                    "shopStateColor":"orange",
+                    "linkItem":[
+                        {
+                            "title":"길찾기",
+                            "url":"#"
+                        },
+                        {
+                            "title":"매장 상담 신청",
+                            "url":"#"
+                        }
+                    ]
+                }
+            ]           
         },
         "customer":{
             "count":"4"           
