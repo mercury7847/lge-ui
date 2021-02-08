@@ -46,6 +46,7 @@
     '</div></li>';
 
     //필터 템플릿
+    /*
     var filterSliderTemplate = '<li data-filterId="{{filterId}}">' +
         '<div class="head">' +
             '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
@@ -108,6 +109,7 @@
             '</div>' +
         '</div>' +
     '</li>';
+    */
 
     var recommendProdTemplate = 
         '<h3 class="title">찾으시는 제품이 없으신가요?</h3>'+
@@ -147,24 +149,29 @@
                     self.bindEvents();
 
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
+                        //console.log(data);
+                        var filterdata = JSON.parse(data.filterData);
+                        var filterParam = {};
+                        var filterlist = [];
+                        for(key in filterdata) {
+                            if(key == "fid00002") {
+                                filterParam[key] = filterdata[key];
+                            } else {
+                                filterlist = filterlist.concat(filterdata[key]);
+                            }
+                        }
+                        filterParam.filterData = filterlist;
+                        console.log(filterParam);
                         self.requestSearch(data);
                     });
                     /*
                     self.filterSetting();
                     self.filterBindEvents();
                     */
-                    //필터의 검색내 검색 버튼
-                    self.$layFilter.find('div.search-inner button').on('click',function(e){
-                        var $input = $(this).siblings('input');
-                        var searchIn = $input.val();
-                        var $target = self.$searchResult.find('div.search-inner input');                    
-                        $target.attr('data-searchvalue', searchIn);
-                        self.requestSearch(self.filterLayer.getDataFromFilter());
-                    });
 
                     //입력된 검색어가 있으면 선택된 카테고리로 값 조회
                     var value = self.$contentsSearch.attr('data-search-value');
-                    value = !value ? null : value.trim(); 
+                    value = !value ? null : value.trim();
                     var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
                     if(!(!value) && value.length > 1) {
                         //현재 선택된 카테고리 기준으로 검색
@@ -266,7 +273,7 @@
                     value = !value ? null : value.trim(); 
                     var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
 
-                    var url = href + "&search="+value+"&force="+force;
+                    var url = href + "?search="+value+"&force="+force;
                     location.href = url;
                 });
 
@@ -368,7 +375,7 @@
                 //페이지
                 self.$pagination.on('page_click', function(e, data) {
                     //기존에 입력된 데이타와 변경된 페이지로 검색
-                    var postData = self.getDataFromFilter();
+                    var postData = self.filterLayer.getDataFromFilter();
                     postData.page = data;
                     self.requestSearch(postData);
                 });
@@ -538,8 +545,13 @@
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     //검색내 검색어 세팅
-                    self.$searchResult.find('div.search-inner input').attr('data-searchvalue', param.searchIn).val(param.searchIn);
-                    self.$layFilter.find('div.search-inner input').val(param.searchIn);
+                    if(self.$listSorting.find('div.search-inner input').length > 0) {
+                        self.$listSorting.find('div.search-inner input').attr('data-searchvalue', param.searchIn).val(param.searchIn);
+                    }
+
+                    if(self.$layFilter.find('div.search-inner input').length > 0) {
+                        self.$layFilter.find('div.search-inner input').val(param.searchIn);
+                    }
 
                     //검색한 검색어
                     self.$searchResultText.html(replaceText + ' 검색 결과');
@@ -575,7 +587,7 @@
 
                     var noData = true;
                     var count = self.checkCountData(data);
-                    self.setTabCount(0, data.count);
+                    self.setTabCount(0, data.allCount);
                     if(count > 0) {
                         noData = false;
                     }
@@ -739,6 +751,7 @@
             ///필터 관련 메쏘드
 
             //필터 세팅
+            /*
             setFilter:function() {
                 var self = this;
                 self.$contWrap.addClass('w-filter');
@@ -1013,6 +1026,7 @@
                     $(el).prop('checked', false);
                 });
             },
+            */
         }
 
         search.init();

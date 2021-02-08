@@ -15,7 +15,21 @@
             width:100%;
             table-layout:fixed;
             @include mobile {
-                display:block;
+                display:flex;
+                flex-wrap:wrap;
+                padding:0;
+                .visual-cell {
+                    order:1;
+                    width:100% !important;
+                    margin:0 !important;
+                    .slide-wrap {
+                        margin:0 -16px;
+                    }
+                }
+                .text-area {
+                    order:2;
+                    margin-top:16px;
+                }
             }
             &.vertical-top {
                 .visual-cell,
