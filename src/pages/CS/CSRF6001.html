@@ -11,14 +11,96 @@
         @@include('./common/header.html')
 
         <div class="container">
-            <div class="home-visual">
-                <img src="/lg5-common/images/CS/home_1.jpg" alt="">
-            </div>
             <div class="contents support support-home">
+                <div class="home-visual">
+                    <img src="/lg5-common/images/CS/home_1.jpg" alt="">
+                </div>
+                <div class="keyword-search">
+
+                    <div class="search-box">
+                        <div class="search-input">
+                            <input type="text" id="keyword01" class="ui_input_clearbutton" placeholder="검색어를 입력해주세요.(예:모델명, 증상 등)" title="제품명, 모델명 직접 검색" autocomplete="off" data-clear-button="button.btn-delete" ui-modules="InputClearButton">
+                            <button type="button" class="btn-delete" style="display: none;"><span class="blind">검색어 삭제</span></button>
+                            <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                        </div>
+                    </div>
+                </div>
                 <div class="home-section popular-find"><img src="/lg5-common/images/CS/home_2.jpg" alt=""></div>
 
                 <div class="home-section home-reservation">
-
+                    <div class="section-inner">
+                        <div class="section-row">
+                            <div class="section-col">
+                                <div class="rersv-wrap">
+                                    <div class="headline">
+                                        <h3 class="title run-reserv">출장 서비스 예약</h3>
+                                    </div>
+                                    <div class="form-wrap">
+                                        <div class="forms form-head">
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="chk01" name="chk1">
+                                                <label for="chk01">개인정보 수집 및 이용에 동의합니다</label>
+                                            </span>
+                                            <a href="#" class="btn-link"><span>전문보기</span></a>
+                                        </div>
+                                        <div class="forms col2">
+                                            <div class="input-wrap">
+                                                <input type="text" name="resrvName" id="resrvName" placeholder="이름 입력">
+                                            </div>
+                                            <div class="input-wrap">
+                                                <input type="text" name="resrvPhoneNumber" id="resrvPhoneNumber" placeholder="휴대전화 번호 입력">
+                                            </div>
+                                        </div>
+                                        <div class="forms">
+                                            <div class="box">
+                                                <div class="input-wrap">
+                                                    <input type="text" name="zipCode" id="zipCode" value="" placeholder="우편번호" data-error-msg="정확한 주소를 입력해주세요." data-required="true" required="">
+                                                </div>
+                                                <div class="cell">
+                                                    <button type="button" class="btn btn-address"><span>주소 찾기</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn-wrap">
+                                        <button type="button" class="btn light-gray"><span>예약하기</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section-col">
+                                <div class="rersv-wrap">
+                                    <div class="headline">
+                                        <h3 class="title inquiry-reserv">문의/예약 결과조회</h3>
+                                    </div>
+                                    <div class="form-wrap">
+                                        <div class="forms form-head">
+                                            <span class="rdo-wrap">
+                                                <input type="radio" id="inqueryChoiceNumber" name="inqueryChoice" checked="">
+                                                <label for="inqueryChoiceNumber">접수번호</label>
+                                            </span>
+                                            <span class="rdo-wrap">
+                                                <input type="radio" id="inqueryChoicePhoneNumber" name="inqueryChoice">
+                                                <label for="inqueryChoicePhoneNumber">휴대전화 인증</label>
+                                            </span>
+                                        </div>
+                                        <div class="forms">
+                                            <div class="input-wrap">
+                                                <input type="text" name="inquiryName" id="inquiryName" value="" placeholder="이름 입력">
+                                            </div>
+                                        </div>
+                                        <div class="forms">
+                                            <div class="input-wrap">
+                                                <input type="text" name="inquiryNumber" id="inquiryNumber" value="" placeholder="접수번호 입력">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn-wrap">
+                                        <button type="button" class="btn light-gray"><span>조회하기</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="home-section home-login"><a href=""><img src="/lg5-common/images/CS/home_3.jpg" alt=""></a></div>
 
@@ -80,29 +162,35 @@
 
                 <div class="common-banner awards">
                     <div class="banner">
-                        <div class="award-list-wrap">
-                            <ul class="award-list">
-                                <li>
-                                    <a href="">
-                                        <img src="/lg5-common/images/CS/home_15.jpg" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <img src="/lg5-common/images/CS/home_16.jpg" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <img src="/lg5-common/images/CS/home_17.jpg" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <img src="/lg5-common/images/CS/home_18.jpg" alt="">
-                                    </a>
-                                </li>
-                            </ul>
+                        <div class="award-list-wrap slide-wrap award-slider ui_carousel_slider">
+                            <div class="award-list slide-content ui_carousel_list">
+                                <div class="slide-track ui_carousel_track">
+                                    <div class="slide-conts ui_carousel_slide">
+                                        <a href="">
+                                            <img src="/lg5-common/images/CS/home_15.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="slide-conts ui_carousel_slide">
+                                        <a href="">
+                                            <img src="/lg5-common/images/CS/home_16.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="slide-conts ui_carousel_slide">
+                                        <a href="">
+                                            <img src="/lg5-common/images/CS/home_17.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="slide-conts ui_carousel_slide">
+                                        <a href="">
+                                            <img src="/lg5-common/images/CS/home_18.jpg" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-controls">
+                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                            </div>
                         </div>
                     </div>
                 </div>
