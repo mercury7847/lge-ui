@@ -241,14 +241,14 @@
 
         $(document).ready(function(){
             //로그아웃
-            $("#btn-opt-logout").on({
+            $("#btn-opt-logout").off("click").on({
                 click : function(){
                     beforeFocusEle = "#btn-opt-logout";
                     optModal.open("modalLogin", "alertdialog", "<p>로그아웃 하시겠습니까?</p>", "확인", "취소");
                 }
             });
             //위치정보 이용동의
-            $("#locInfo").on({
+            $("#locInfo").off("click").on({
                 click : function(){
                     beforeFocusEle = "#locInfo";
                     var checked = $(this).prop("checked");
@@ -261,7 +261,7 @@
                 }
             });
             //푸시 알림 받기
-            $("#pushAlarm").on({
+            $("#pushAlarm").off("click").on({
                 click : function(){
                     beforeFocusEle = "#pushAlarm";
                     var checked = $(this).prop("checked");
@@ -277,7 +277,7 @@
             });
  
             //시간 설정
-            $("#timeSet").on({
+            $("#timeSet").off("click").on({
                 click : function(){
                     var checked = $(this).prop("checked");
                     if(checked){
@@ -292,7 +292,7 @@
                 }
             });
 
-            $(".time-setting input").on({
+            $(".time-setting input").off("click").on({
                 click : function(e){
                     var value = $(this).val();
                     $(this).closest("div").find("[class*=rst-time]").text(value);
@@ -336,7 +336,7 @@
             });
 
             //마케팅 푸시 알림 받기
-            $("#mktPushAlarmChk").on({
+            $("#mktPushAlarmChk").off("click").on({
                 click : function(){
                     var checked = $(this).prop("checked");
                     beforeFocusEleToast = "#mktPushAlarmChk";
@@ -351,7 +351,7 @@
             });
 
             //옵션창 열기
-            $("#btn-opt-open").on({
+            $("#btn-opt-open").off("click").on({
                 click : function(){
                     $(".lyr-opt-panel, .main-panel").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
@@ -365,7 +365,7 @@
                 }
             });
             //옵션창 닫기
-            $(".btn-opt-close").on({
+            $(".btn-opt-close").off("click").on({
                 click : function(){
                     $(".lyr-opt-panel, .main-panel").stop().attr("aria-hidden", true).animate({"left":"100%"}, 250, function(){
                         //접근성
@@ -375,7 +375,7 @@
                 }
             });
             //알림설정, 오픈소스 라이센스 창 열기
-            $(".btn-ctrl-panel").on({
+            $(".btn-ctrl-panel").off("click").on({
                 click : function(e){
                     var data = $(this).data("panel");
                     $(".main-panel").stop().animate({"left":"-100%"}, 250);
@@ -392,7 +392,7 @@
                 }
             });
             //알림설정, 오픈소스 라이센스 창 닫기
-            $(".sub-panel .btn-opt-prev").on({
+            $(".sub-panel .btn-opt-prev").off("click").on({
                 click : function(){
                     var data = $(this).data("panel");
                     $(".main-panel").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
@@ -409,14 +409,14 @@
                 }
             });
 
-            $("#btn-mkt").on({
+            $("#btn-mkt").off("click").on({
                 click : function(){
                     beforeFocusEle = "#btn-mkt";
                     optModal.open("modalShopInfo", "alertdialog", "<em>쇼핑정보가 필요하신가요?</em><p>마케팅 수신동의하고 <br>다양한 이벤트 및 혜택을 받아보세요!</p>", "동의", "동의안함");
                 }
             });
 
-            $("#btn-barcode").on({
+            $("#btn-barcode").off("click").on({
                 click : function(){
                     beforeFocusEle = "#btn-barcode";
                     optModal.open("modalPrdReg", "alertdialog", "<p>바코드로 편리하게 제품등록 하기위해 <br>APP을 설치하시겠습니까?</p>", "취소", "확인");
