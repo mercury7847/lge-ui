@@ -52,75 +52,83 @@
             <div class="carousel-wrap @@carousel.type">
                 <!-- 11. video인 경우 video-box 추가, 동시에 3-1 비디오 버튼도 존재 해야 합니다. -->
                 <div class="carousel-box video-box youtube-box @@carousel.item.font-color">
-                    <!-- 3. image -->
-                    <div class="visual-area">
-                        <img data-pc-src="@@carousel.item.visual1" data-m-src="@@carousel.item.visual2" alt=""><!-- [KR수정] img 수정 -->
-                        <p class="hidden pc">graphic description : </p>
-                        <p class="hidden mobile">graphic description : </p>
-                    </div>
-                    <!-- // 3. image -->
+                    <!-- 210208 수정(a태그 감싸기 button 변경) -->
+                    <a href="#">
+                        <!-- 3. image -->
+                        <div class="visual-area">
+                            <img data-pc-src="@@carousel.item.visual1" data-m-src="@@carousel.item.visual2" alt=""><!-- [KR수정] img 수정 -->
+                            <p class="hidden pc">graphic description : </p>
+                            <p class="hidden mobile">graphic description : </p>
+                        </div>
+                        <!-- // 3. image -->
 
-                    <!-- contents-area -->
-                    <div class="contents-area">
-                        <div class="text-area @@carousel.item.font-color @@carousel.item.align-class1 @@carousel.item.align-class2 @@carousel.item.width-class">
-                            <div class="text-wrap">
-                                <div class="inner">
-                                    <div class="text-block">
-                                        <div class="eyebrow">@@title.eyebrow</div>
-                                        <div class="title">@@title.headline</div>
-                                        <div class="copy font-regular">@@title.copy</div>
-                                    </div>
-                                    <div class="cta">
-                                        <div class="cta-button">
-                                            <a href="#none" class="btn border size-m" data-link-area="hero_image-cta" data-link-name="{link text}"><span>H1 button</span></a><!-- [KR수정_201222] .size-m class 추가 -->
+                        <!-- contents-area -->
+                        <div class="contents-area">
+                            <div class="text-area @@carousel.item.font-color @@carousel.item.align-class1 @@carousel.item.align-class2 @@carousel.item.width-class">
+                                <div class="text-wrap">
+                                    <div class="inner">
+                                        <div class="text-block">
+                                            <div class="eyebrow">@@title.eyebrow</div>
+                                            <div class="title">@@title.headline</div>
+                                            <div class="copy font-regular">@@title.copy</div>
                                         </div>
-                                        <!-- video play button -->
-                                        <div class="video-link">
-                                            <!-- * youtube video는 아래의 방식으로 입력 -->
-                                            <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="btn-video see-video" data-type="youtube" data-link-area="hero_image-video_play" data-link-name="{video id}">제품 영상보기</a>
+                                        <div class="cta">
+                                            <div class="cta-button">
+                                                <button type="button" class="btn border size-m" data-link-area="hero_image-cta" data-link-name="{link text}"><span>H1 button</span></button><!-- [KR수정_201222] .size-m class 추가 -->
+                                            </div>
+                                            <!-- video play button -->
+                                            <div class="video-link">
+                                                <!-- * youtube video는 아래의 방식으로 입력 -->
+                                                <button type="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="btn-video see-video" data-type="youtube" data-link-area="hero_image-video_play" data-link-name="{video id}">제품 영상보기</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- // contents-area -->
+                        <!-- // contents-area -->
+                    </a>
+                    <!-- //210208 수정(a태그 감싸기 button 변경) -->
                 </div>
                 <div class="carousel-box video-box youtube-box @@carousel.item.font-color">
-                    <!-- 3. image -->
-                    <div class="visual-area">
-                        <img data-pc-src="@@carousel.item.visual3" data-m-src="@@carousel.item.visual4" alt="" /><!-- [KR수정] img 수정 -->
-                        <p class="hidden pc">graphic description : </p>
-                        <p class="hidden mobile">graphic description : </p>
-                    </div>
-                    <!-- // 3. image -->
+                    <!-- 210208 수정(a태그 감싸기 button 변경) -->
+                    <a href="#">
+                        <!-- 3. image -->
+                        <div class="visual-area">
+                            <img data-pc-src="@@carousel.item.visual3" data-m-src="@@carousel.item.visual4" alt="" /><!-- [KR수정] img 수정 -->
+                            <p class="hidden pc">graphic description : </p>
+                            <p class="hidden mobile">graphic description : </p>
+                        </div>
+                        <!-- // 3. image -->
 
-                    <!-- contents-area -->
-                    <div class="contents-area">
-                        <div class="text-area text-white align-right align-top @@carousel.item.width-class">
-                            <div class="text-wrap">
-                                <div class="inner">
-                                    <div class="text-block">
-                                        <div class="eyebrow">@@title.eyebrow</div>
-                                        <div class="title">@@title.headline</div>
-                                        <div class="copy font-regular">@@title.copy</div>
-                                    </div>
-                                    <div class="cta">
-                                        <div class="cta-link">
-                                            <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
-                                            <a href="#none" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></a>
+                        <!-- contents-area -->
+                        <div class="contents-area">
+                            <div class="text-area text-white align-right align-top @@carousel.item.width-class">
+                                <div class="text-wrap">
+                                    <div class="inner">
+                                        <div class="text-block">
+                                            <div class="eyebrow">@@title.eyebrow</div>
+                                            <div class="title">@@title.headline</div>
+                                            <div class="copy font-regular">@@title.copy</div>
                                         </div>
-                                        <!-- video play button -->
-                                        <div class="video-link">
-                                            <!-- * youtube video는 아래의 방식으로 입력 -->
-                                            <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="btn-video see-video" data-type="youtube" data-link-area="hero_image-video_play" data-link-name="{video id}">제품 영상보기</a>
+                                        <div class="cta">
+                                            <div class="cta-link">
+                                                <button type="button" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></button>
+                                                <button type="button" class="text-link" data-link-area="hero_image-cta" data-link-name="{link text}"><span>text link button</span></button>
+                                            </div>
+                                            <!-- video play button -->
+                                            <div class="video-link">
+                                                <!-- * youtube video는 아래의 방식으로 입력 -->
+                                                <button type="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="btn-video see-video" data-type="youtube" data-link-area="hero_image-video_play" data-link-name="{video id}">제품 영상보기</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--// contents-area -->
+                        <!--// contents-area -->
+                    </a>
+                    <!-- //210208 수정(a태그 감싸기 button 변경) -->
                 </div>
             </div>
         </div><!-- [KR수정] .component-box DOM 추가 -->
