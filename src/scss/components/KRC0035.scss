@@ -79,7 +79,19 @@
         table-layout:fixed;
         width:100%;
 		@include mobile {
-			display:block;
+			display:flex;
+			flex-wrap:wrap;
+			.visual-wrap {
+				order:1;
+				width:100% !important;
+				margin:0 !important;
+				.slide-wrap {
+					margin:0 -16px;
+				}
+			}
+			.text-wrap {
+				order:2;
+			}
 		}
 	}
 
