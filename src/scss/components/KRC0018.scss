@@ -87,7 +87,7 @@
 
 			.head {
 				h2 {
-					@include title-h3;
+					@include title-h5;
 				}
 				&.title-h1 * {
 					@include title-h1;

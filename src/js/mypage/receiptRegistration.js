@@ -1,5 +1,5 @@
 (function() {
-    var localOptTemplate = '<option value={{value}}>{{title}}</option>';
+    var localOptTemplate = '<option value="{{value}}">{{title}}</option>';
 
     var areaData = [];
     var branchData = [];

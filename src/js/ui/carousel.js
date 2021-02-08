@@ -935,11 +935,20 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             $(_V.CLONED, self.$slider).detach();
 
             if (self.$dots) {
+                var dot = self.$dots.children().first().clone(true);
+
                 if (self.$dots.hasClass('ui_static')) {
+
                     self.$dots.empty().removeClass('ui_static');
+                    if(dot) self.$dots.append(dot);
+
                 } else {
                     self.$dots.remove();
+                    if(dot) self.$dots.append(dot);                  
+
                 }
+
+                self.$dots.hide();
             }
 
             if (self.$prevArrow && self.$prevArrow.length) {
@@ -996,7 +1005,9 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (!refresh) {
                 self.triggerHandler('destroy', [self]);
+                self.supr();
             }
+            
         },
         disableTransition: function disableTransition(slide) {
 
@@ -3143,6 +3154,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             var self = this,
                 opt = self.options;
+
+            self.$dots.show();
 
             if (self.$dots.length) {
                 self.$dots.find('li').removeClass(opt.activeClass).eq(Math.floor(self.currentSlide / opt.slidesToScroll)).addClass(opt.activeClass);

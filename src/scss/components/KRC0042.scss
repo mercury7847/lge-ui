@@ -161,7 +161,7 @@
                     }
                     .title {
                         h2 {
-                            @include title-h3;
+                            @include title-h4;
                         }
                         &.title-h1 * {
                             @include title-h1;

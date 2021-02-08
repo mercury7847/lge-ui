@@ -250,6 +250,7 @@
                         padding: 20px 24px;
                         border-radius: 8px;
                         background-color: #f4f4f4;
+                        display: none;
                         &.no-bg-type {
                             padding: 24px 32px 32px;
                             background-color: transparent;
@@ -887,6 +888,7 @@
                 color:#000;
                 font-size:16px;
                 line-height:26px;
+                white-space: pre-line;
             }
         }
         @include mobile {
@@ -1029,6 +1031,7 @@
     &.error-page {
         padding:0 40px;
         padding-top:((280px * 100%) / 1920px);
+        padding-bottom:((280px * 100%) / 1920px);
         text-align:center;
         br.m-br {
             display:none;
@@ -1275,6 +1278,7 @@
             position:relative;
             margin-bottom:10px;
             .file-preview {
+                overflow:hidden;
                 width:93px;
                 height:93px;
                 text-align:center;

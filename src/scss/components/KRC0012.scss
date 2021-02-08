@@ -4,7 +4,7 @@
 
 .KRC0012 {
     .title * {
-        @include title-h2;
+        @include title-h3;
     }
     .component-box {
         max-width:1380px + 80px;

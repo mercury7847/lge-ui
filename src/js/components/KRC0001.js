@@ -11,7 +11,7 @@ $(window).ready(function(){
 		'<div class="list-contents-wrap ui_carousel_slider">'+
 			'<ul class="items unit-list ui_carousel_track">'+
 				'{{#each item in productList}}'+
-				'<li class="js-model ui_carousel_slide" data-id={{item.id}} data-sku={{item.sku}} data-wishListId={{item.wishListId}} data-wishItemId={{item.wishItemId}}>' +
+				'<li class="js-model ui_carousel_slide" data-id="{{item.id}}" data-sku="{{item.sku}}" data-wishListId="{{item.wishListId}}" data-wishItemId="{{item.wishItemId}}">' +
 					'<div class="item">' +
 						'<div class="product-image">' +
 							'<a href="{{item.url}}"><img data-pc-src="{{item.imagePC}}" data-m-src="{{item.imageMobile}}" alt="{{item.imageAlt}}" aria-hidden="true"></a>' +

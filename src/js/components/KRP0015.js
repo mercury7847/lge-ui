@@ -4,10 +4,10 @@ $(window).ready(function(){
     $('.KRP0015').buildCommonUI();
     ;(function($, _$){      
         var itemTemplate =             
-            '<div class="item-inner" data-id={{id}}>'+
+            '<div class="item-inner" data-id="{{id}}">'+
             '   <span class="img-area">'+
             '       <img src="{{productImg}}" alt="{{productAlt}}">'+
-            '       <p class="hidden">{{productAlt}}</p>'+
+            '       <p class="blind">{{productAlt}}</p>'+
             '   </span>'+
             '   <div class="item-text">'+
             '       <p class="product-name">{{productName}}</p>'+

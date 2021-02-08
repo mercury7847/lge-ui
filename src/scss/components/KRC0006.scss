@@ -5,7 +5,7 @@
 
 .KRC0006 {
     .title * {
-        @include title-h3;
+        @include title-h4;
     }
     
     .inner {
@@ -14,9 +14,21 @@
         align-items:center;
         margin:0 -12px;
         @include mobile {
-            display:block;
-            margin:0;
-        }
+			display:flex;
+			flex-wrap:wrap;
+			.visual-wrap {
+				order:1;
+				width:100% !important;
+				margin:0 !important;
+				.slide-wrap {
+					margin:0 -16px;
+				}
+			}
+			.text-wrap {
+				order:2;
+				margin-top:16px;
+			}
+		}
     }
     
     .visual-wrap {

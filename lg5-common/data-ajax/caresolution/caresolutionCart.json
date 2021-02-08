@@ -82,7 +82,7 @@
             {
                 "itemID": "item00001",
                 "itemSeq": "seq00001",
-                "check": false,
+                "check": true,
                 "available": true,
                 "availableMessage": "테스트테스트",
                 "type": "렌탈(케어솔루션)",
@@ -108,7 +108,7 @@
             {
                 "itemID": "item00002",
                 "itemSeq": "seq00002",
-                "check": true,
+                "check": false,
                 "available": false,
                 "availableMessage": "설치 불가능 제품입니다.",
                 "type": "케어십",

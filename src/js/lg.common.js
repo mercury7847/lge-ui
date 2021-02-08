@@ -490,6 +490,7 @@
             
             $('.back-to-top button').on('click', function (e) {
                 e.preventDefault();
+                $(window).trigger('floatingTop');
                 $('html, body').stop().animate({
                     scrollTop: 0
                 }, 400);
@@ -1042,35 +1043,45 @@
             });
         },
 
+        requestCartCount: function(ajaxUrl) {
+            lgkorUI.requestAjaxDataPost(ajaxUrl, null, function(result){
+                var data = result.data;
+                if(lgkorUI.stringToBool(data.success)) {
+                    var cartCnt = (typeof data.cartCnt  === 'number') ? ""+data.cartCnt : data.cartCnt;
+                    if(cartCnt) {
+                        var utility = $('div.header-wrap div.utility');
+                        utility.find('.cart span.count').remove();
+                        utility.find('.cart').append('<span class="count"><span class="blind">장바구니 제품 수</span>' + cartCnt + '</span>');
+                    }
+                }
+            }, true);
+        },
+
         requestCart: function(ajaxUrl, param, isToast) {
-            /*
-            var postData = {"id":id};
-            if(!(!sku)) {
-                postData.sku = sku;
-            };
-            if(!(!wishListId)) {
-                postData.wishListId = wishListId;
-            };
-            if(!(!wishItemId)) {
-                postData.wishItemId = wishItemId;
-            };
-            if(!(!cartType)) {
-                //렌탈:rental,구매:buy
-                postData.cartType = cartType;
-            }
-            */
-           isToast = isToast == undefined ? true : isToast;
+            isToast = !(isToast) ? true : isToast;
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                 var data = result.data;
-                var cartCnt = (typeof data.cartCnt  === 'number') ? ""+data.cartCnt : data.cartCnt;
-                if(cartCnt) {
-                    var utility = $('div.header-wrap div.utility');
-                    utility.find('.cart span.count').remove();
-                    utility.find('.cart').append('<span class="count"><span class="blind">장바구니 제품 수</span>' + cartCnt + '</span>');
-                }
+                if(lgkorUI.stringToBool(data.success)) {
+                    var cartCnt = (typeof data.cartCnt  === 'number') ? ""+data.cartCnt : data.cartCnt;
+                    if(cartCnt) {
+                        var utility = $('div.header-wrap div.utility');
+                        utility.find('.cart span.count').remove();
+                        utility.find('.cart').append('<span class="count"><span class="blind">장바구니 제품 수</span>' + cartCnt + '</span>');
+                    }
 
-                if(isToast && lgkorUI.stringToBool(data.success)) {
-                    $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
+                    if(isToast && lgkorUI.stringToBool(data.success)) {
+                        $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
+                    }
+                } else {
+                    if(data.alert) {
+                        if(isToast) {
+                            $(window).trigger("toastshow",data.alert.title);
+                        } else {
+                            lgkorUI.alert("", {
+                                title: data.alert.title
+                            });
+                        }
+                    }
                 }
             }, true);
         },
@@ -1081,15 +1092,18 @@
                 var data = result.data;
                 if(lgkorUI.stringToBool(data.success)) {
                     if(wish) {
-                        //$dm.attr("data-wishItemId",data.wishItemId);
                         $(window).trigger("toastshow","선택하신 제품이 찜한 제품에 추가되었습니다.");
                     } else{
                         $(window).trigger("toastshow","찜한 제품 설정이 해제되었습니다.");
                     }
                     callbackSuccess(data);
                 } else {
-                    //$dm.find('span.chk-wish-wrap input').prop("checked",!wish);
                     callbackFail(data);
+                    if(data.alert) {
+                        lgkorUI.alert("", {
+                            title: data.alert.title
+                        });
+                    }
                 }
             }, true);
         },

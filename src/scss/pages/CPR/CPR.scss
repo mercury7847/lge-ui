@@ -41,12 +41,14 @@
                 }
             }
             .item {
-                padding: 24px 48px 40px;
+                padding:40px 48px;
                 border: 1px solid $color-border;
                 box-shadow: none;
                 text-align: center;
                 &.compare-item {
                     padding-bottom: 144px;
+                    border:none;
+                    box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);;
                     @media (min-width: $tablet-s-width + 1) and (max-width: 1146px) {
                         padding-bottom: 204px;
                     }
@@ -66,13 +68,20 @@
                 }
                 .product-info {
                     margin-bottom: 16px;
+                    padding-top:16px;
+                    font-size:0;
                     .product-name {
+                        margin-top:0;
                         a {
                             @include font-medium;
                         }
                     }
                     .sku {
-                        color: $color-gray-1;
+                        margin-right:0;
+                        color:#000;
+                    }
+                    .spec-info3 {
+                        color:#000;
                     }
                 }
                 .price-area {
@@ -80,10 +89,12 @@
                     justify-content: center;
                 }
                 .product-button {
-                    margin-top: 20px;
+                    margin-top: 16px;
                     .btn {
                         max-width: 140px;
-                        padding: 11px 0;
+                        padding: 3px 11px;
+                        font-size:14px;
+                        line-height:24px;
                     }
                     @media all and (max-width: 1146px) {
                         flex-direction: column;
@@ -222,7 +233,7 @@
                 right: 0;
                 padding: 24px 0 28px;
                 .chk-wrap input + label {
-                    @include font-small;
+                    @include font-medium;
                     &:before {
                         top: 3px;
                     }
