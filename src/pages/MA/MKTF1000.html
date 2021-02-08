@@ -689,7 +689,29 @@
 
             }            
 
+            document.addEventListener('wheel', function(e){
 
+                if(currentPage == maxLens){
+                    if(wheelInterval) clearTimeout(wheelInterval);
+                    wheelInterval = setTimeout(function(){
+                        var st = $('.section-cover').scrollTop();
+                        if(st==0){
+                            wheelScene(1);
+                        }
+                    }, 100);
+
+                }else{
+
+                    if(e.deltaY>0){
+                        wheelScene(e.deltaY);
+                    }else if(e.deltaY<0){
+                        wheelScene(e.deltaY);
+                    }
+                }   
+
+            });
+
+            /*
             $(document).on('mousewheel DOMMouseScroll', function(e, delta){     
                 
                 if(currentPage == maxLens){
@@ -711,6 +733,7 @@
 
                 }                
             });
+            */
             
 
             $(document).on('touchstart touchend touchcancel', function(e) {
