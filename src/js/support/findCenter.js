@@ -10,7 +10,7 @@
         currentSearch: '내 위치 기준으로 <strong>{{total}}개</strong>의 센터가 있습니다.'
     };
 
-    var localOptTemplate = '<option value={{code}}>{{codeName}}</option>';
+    var localOptTemplate = '<option value="{{code}}">{{codeName}}</option>';
     var noDataTemplate = '<div class="no-data"><p>검색 결과가 없습니다.</p></div>';
 
     var searchListTemplate = 
