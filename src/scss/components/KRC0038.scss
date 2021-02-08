@@ -224,7 +224,7 @@
                         display:table-cell;
                         vertical-align:middle;
                         .title {
-                            @include title-h3;
+                            @include title-h5;
                         }
                         .body-copy {
                             @include bodycopy(h3, h3);

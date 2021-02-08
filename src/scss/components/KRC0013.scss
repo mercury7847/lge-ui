@@ -124,7 +124,7 @@
 		}
 		.sub-title {
 			h3 {
-				@include title-h2;	
+				@include title-h3;	
 			}
 			&.title-h1 * {
 				@include title-h1;
@@ -149,7 +149,4 @@
 			@include bodycopy(h2, h2);
 		}
 	}
-
-
-    
 }
