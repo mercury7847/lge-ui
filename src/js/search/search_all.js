@@ -172,8 +172,8 @@
     '</div></li>';
 
     var searchBnrTemplate = 
-        '<a href="{{urlName}}">'+
-            '<img data-pc-src="{{pcImage}}" data-m-src="{{mobileImage}}" alt="{{title}}" src="{{pcImage}}">'+
+        '<a href="{{url}}">'+
+            '<img data-pc-src="{{pcImage}}" data-m-src="{{mobileImage}}" alt="{{title}}">'+
             '<div class="text-area">'+
                 '<strong class="title">{{#raw title}}</strong>'+
                 '<span class="sub-copy">{{#raw desc}}</span>'+
@@ -555,7 +555,7 @@
                     self.$contentsSearch.attr('data-search-value',value);
                     self.$contentsSearch.attr('data-search-force',false);
                     var tab = self.getTabItembyCategoryID(data.category);
-                    var url = tab.attr('href') + "&search="+value;
+                    var url = tab.attr('href') + "?search="+value;
                     location.href= url;
                 });
             },
@@ -643,7 +643,12 @@
                     self.$searchResultCategoryMore.find('span').text('더보기');
 
                     //센터 배너
-                    self.$searchBanner.empty().append(vcui.template(searchBnrTemplate, data.searchBanner));
+                    if(data.searchBanner) {
+                        self.$searchBanner.html(vcui.template(searchBnrTemplate, data.searchBanner));
+                        self.$searchBanner.show();
+                    } else {
+                        self.$searchBanner.hide();
+                    }
 
                     //제품/케어솔루션
                     var $resultListWrap = $searchResult.find('div.result-list-wrap:eq(0)');

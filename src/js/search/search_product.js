@@ -121,10 +121,10 @@
                         '<img src="{{item.image}}" alt="" aria-hidden="true">'+
                     '</span>'+
                     '<div class="info">'+
-                        '<p class="tit"><span class="blind">라이프스타일 컨설팅</span>{{item.title}}</p>'+
+                        '<p class="tit"><span class="blind">{{category}}</span>{{item.title}}</p>'+
                         '<p class="copy">{{item.desc}}</p>'+
                         '<div class="btn-area btm">'+
-                            '<a href="{{item.urlName}}" class="btn border size"><span>{{item.urlTitle}}</span></a>'+
+                            '<a href="{{item.url}}" class="btn border size"><span>{{item.urlTitle}}</span></a>'+
                         '</div>'+
                     '</div>'+
                 '</div>'+
@@ -135,7 +135,7 @@
     var serviceLinkTemplate = 
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
-            '<li><a href="{{item.urlName}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
+            '<li><a href="{{item.url}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
             '{{/each}}'+
         '</ul>';
 
@@ -149,20 +149,8 @@
                     self.bindEvents();
 
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
-                        //console.log(data);
-                        var filterdata = JSON.parse(data.filterData);
-                        var filterParam = {};
-                        var filterlist = [];
-                        for(key in filterdata) {
-                            if(key == "fid00002") {
-                                filterParam[key] = filterdata[key];
-                            } else {
-                                filterlist = filterlist.concat(filterdata[key]);
-                            }
-                        }
-                        filterParam.filterData = filterlist;
-                        console.log(filterParam);
-                        self.requestSearch(data);
+                       
+                        self.requestSearch(self.makeFilterData(data));
                     });
                     /*
                     self.filterSetting();
@@ -179,6 +167,22 @@
                         self.requestSearchData(value, force);
                     }
                 });
+            },
+
+            makeFilterData: function(data) {
+                console.log(data);
+                var filterdata = JSON.parse(data.filterData);
+                var filterlist = [];
+                for(key in filterdata) {
+                    if(key == "fid00002") {
+                        data[key] = filterdata[key];
+                    } else {
+                        filterlist = filterlist.concat(filterdata[key]);
+                    }
+                }
+                data.filterData = filterlist;
+                console.log(data);
+                return data;
             },
 
             setting: function() {
@@ -375,7 +379,7 @@
                 //페이지
                 self.$pagination.on('page_click', function(e, data) {
                     //기존에 입력된 데이타와 변경된 페이지로 검색
-                    var postData = self.filterLayer.getDataFromFilter();
+                    var postData = self.makeFilterData(self.filterLayer.getDataFromFilter());
                     postData.page = data;
                     self.requestSearch(postData);
                 });
@@ -509,7 +513,7 @@
                     self.$contentsSearch.attr('data-search-value',value);
                     self.$contentsSearch.attr('data-search-force',false);
                     var tab = self.getTabItembyCategoryID(data.category);
-                    var url = tab.attr('href') + "&search="+value;
+                    var url = tab.attr('href') + "?search="+value;
                     location.href= url;
                 });
             },
