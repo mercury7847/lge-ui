@@ -30,9 +30,9 @@
     '<div class="slide-conts ui_carousel_slide">' +
         '<div class="engineer-box">' +
             '{{# if (index == 0) { #}}' +
-            '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}" checked>' +
+            '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code="{{item.engineerCode}}" data-center-name="{{item.centerName}}" data-center-code="{{item.centerCode}}" data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}" checked>' +
             '{{# } else { #}}' +
-            '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code={{item.engineerCode}} data-center-name="{{item.centerName}}" data-center-code={{item.centerCode}} data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}">' +
+            '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code="{{item.engineerCode}}" data-center-name="{{item.centerName}}" data-center-code="{{item.centerCode}}" data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}">' +
             '{{# } #}}' +
             '<label for="engineer{{index}}">' +
                 '<div class="img">' +
@@ -130,11 +130,20 @@
                 },
                 userNm: {
                     required: true,
-                    msgTarget: '.err-block' 
+                    maxLength: 10,
+                    pattern: /^[가-힣a-zA-Z]+$/,
+                    msgTarget: '.err-block',
+                    errorMsg: '이름을 입력해주세요.',
+                    patternMsg: '한글 또는 영문만 입력 가능합니다.'
                 },
                 phoneNo: {
                     required: true,
-                    msgTarget: '.err-block'
+                    minLength: 10,
+                    maxLength: 11,
+                    pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                    msgTarget: '.err-block',
+                    errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                    patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
                 },
                 zipCode: {
                     required: true,
@@ -167,21 +176,25 @@
                 register: {
                     authName: {
                         required: true,
-                        msgTarget: '.err-block',
+                        maxLength: 10,
                         pattern: /^[가-힣a-zA-Z]+$/,
+                        msgTarget: '.err-block',                        
                         errorMsg: '이름을 입력해주세요.',
                         patternMsg: '한글 또는 영문만 입력 가능합니다.'
                     },
                     authPhoneNo: {
                         required: true,
-                        msgTarget: '.err-block',
+                        minLength: 10,
+                        maxLength: 11,
                         pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                        msgTarget: '.err-block',
                         errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
                         patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
                     },
                     authNo:{
                         required: true,
-                        msgTarget: '.err-block'
+                        msgTarget: '.err-block',
+                        errorMsg: '인증번호를 입력해주세요.',
                     }
                 }
             };

@@ -23,7 +23,7 @@
         init: function() {
             var self = this;
 
-            self.param = {
+            self.options = {
                 category: $('#category').val(),
                 categoryNm: $('#categoryNm').val(),
                 subCategory: $('#subCategory').val(),
@@ -32,6 +32,9 @@
                 productCode: $('#productCode').val(),
                 page: 1
             };
+
+            self.param = $.extend({}, self.options);
+
             self.$cont = $('.contents');
             self.$productBar = self.$cont.find('.prod-selected-wrap');
             self.$myProductWarp = self.$cont.find('.my-product-wrap');
@@ -161,7 +164,8 @@
                 category: self.param.category,
                 categoryNm: self.param.categoryName,
                 subCategory: self.param.subCategory,
-                subCategoryNm: self.param.subCategoryName
+                subCategoryNm: self.param.subCategoryName,
+                productCode: self.param.productCode
             }
 
             lgkorUI.showLoading();
@@ -172,11 +176,14 @@
                 lgkorUI.hideLoading();
             });
         },
-        requestData: function() {
+        requestData: function(type) {
             var self = this;
+            var param = $.extend({}, self.param);
+
+            param['type'] = type;
 
             lgkorUI.showLoading();
-            lgkorUI.requestAjaxData(self.listUrl, self.param, function(result) {
+            lgkorUI.requestAjaxData(self.listUrl, param, function(result) {
                 self.drawList(result);
                 lgkorUI.hideLoading();
             }, 'POST', 'json', false);
@@ -184,17 +191,38 @@
         bindEvent: function() {
             var self = this;
 
+            self.$cont.on('reset', function(e) {
+                self.param = $.extend({}, self.options);
+
+                self.$cont.commonModel('next', self.$stepModel);
+
+                self.$stepInput.find('#keyword').val('');
+
+                self.$searchTopic.find('option:not(.placeholder)').remove();
+                self.$searchSubTopic.find('option:not(.placeholder)').remove();
+                self.$searchTopic.find('option.placeholder').prop('selected', true);
+                self.$searchSubTopic.find('option.placeholder').prop('selected', true);
+                self.$searchTopic.prop('disabled', true).vcSelectbox('update');
+                self.$searchSubTopic.prop('disabled', true).vcSelectbox('update');
+
+                $('.search-summary').hide();
+
+                if (self.isLogin) {
+                    self.$myProductWarp.show();   
+                }
+            });
+
             self.$cont.on('complete', function(e, data, url) {
                 var param = {
                     category: data.category,
-                    categoryNm: data.categoryName,
+                    categoryNm: data.categoryNm || data.categoryName,
                     subCategory: data.subCategory,
-                    subCategoryNm: data.subCategoryName,
+                    subCategoryNm: data.subCategoryNm || data.subCategoryName,
                     modelCode: data.modelCode,
                     productCode: data.productCode,
                     page: data.page || 1
                 };
-
+                console.log(data);
                 self.param = $.extend(self.param, param);
 
                 lgkorUI.showLoading();
@@ -267,9 +295,11 @@
             });
 
             self.$resultPagination.on('pageClick', function(e) {
-                var param = { page: e.page};
+                var type = $(e.currentTarget).closest('.tabs-contents').attr('id');
+                
+                var param = {page: e.page};
                 self.$param = $.extend(self.param, param);
-                self.requestData();
+                self.requestData(type);
             });
 
             self.$resultSummary.on('click', '.btn-delete', function() {

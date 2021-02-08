@@ -25,7 +25,7 @@ var FilterLayer = (function() {
             '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="rdo-wrap">' +
                     '<input type="radio" name="{{filterId}}" value="{{item.filterValueId}}" id="rdo-{{filterId}}-{{idx}}" {{#if idx==0}}checked{{/if}}>' +
-                    '<label for="rdo-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
+                    '<label for="rdo-{{filterId}}-{{idx}}">{{item.filterValueName}}{{#if item.count}} ({{item.count}}){{/if}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
         '</div>' +
@@ -41,7 +41,7 @@ var FilterLayer = (function() {
             '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="chk-wrap-colorchip {{item.topFilterDisplayName}}">' +
                     '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="color-{{filterId}}-{{idx}}">' +
-                    '<label for="color-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
+                    '<label for="color-{{filterId}}-{{idx}}">{{item.filterValueName}}{{#if item.count}} ({{item.count}}){{/if}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
         '</div>' +
@@ -57,7 +57,7 @@ var FilterLayer = (function() {
         '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="chk-wrap">' +
                     '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="chk-{{filterId}}-{{idx}}">' +
-                    '<label for="chk-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
+                    '<label for="chk-{{filterId}}-{{idx}}">{{item.filterValueName}}{{#if item.count}} ({{item.count}}){{/if}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
         '</div>' +
@@ -174,23 +174,31 @@ var FilterLayer = (function() {
             });
 
             //검색내 검색 버튼
-            self.$listSorting.find('div.search-inner button').on('click',function(e){
-                var $input = $(this).siblings('input');
-                var searchIn = $input.val();
-                $input.attr('data-searchvalue', searchIn);
-                self.triggerFilterChangeEvent();
-            });
+            var listSortingSearchin = self.$listSorting.find('div.search-inner button');
+            if(listSortingSearchin.length > 0) {
+                listSortingSearchin.on('click',function(e){
+                    var $input = $(this).siblings('input');
+                    var searchIn = $input.val();
+                    $input.attr('data-searchvalue', searchIn);
+                    self.triggerFilterChangeEvent();
+                });
+            }
 
             //필터의 검색내 검색 버튼
-            /*
-            self.$layFilter.find('div.search-inner button').on('click',function(e){
-                var $input = $(this).siblings('input');
-                var searchIn = $input.val();
-                var $target = self.$searchResult.find('div.search-inner input');                    
-                $target.attr('data-searchvalue', searchIn);
-                self.triggerFilterChangeEvent();
-            });
-            */
+            var filterSearchin = self.$layFilter.find('div.search-inner button');
+            if(filterSearchin.length > 0) {
+                filterSearchin.on('click',function(e){
+                    var $input = $(this).siblings('input');
+                    var searchIn = $input.val();
+                    $input.attr('data-searchvalue', searchIn);
+                    if(listSortingSearchin.length > 0) {
+                        var $listInput = listSortingSearchin.siblings('input');
+                        $listInput.attr('data-searchvalue', searchIn);
+                        console.log($listInput);
+                    }
+                    self.triggerFilterChangeEvent();
+                });
+            }
 
             // 서브카테고리 이벤트 처리 
                 //$('input[name="categoryCheckbox"]').trigger('change', true);
@@ -339,6 +347,14 @@ var FilterLayer = (function() {
                     item.index = index;
                     var length = item.filterList instanceof Array ? item.filterList.length : 0;
                     item.length = (length > 0) ? (length - 1) : 0;
+                    item.filterValues.forEach(function(obj, idx){
+                        if(obj.count) {
+                            obj.count = vcui.number.addComma(obj.count);
+                        } else {
+                            obj.count = null;
+                        }
+                    });
+
                     switch(item.filterType) {
                         case "range":
                             hasSlider = true;

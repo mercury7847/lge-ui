@@ -10,7 +10,7 @@
         currentSearch: '내 위치 기준으로 <strong>{{total}}개</strong>의 센터가 있습니다.'
     };
 
-    var localOptTemplate = '<option value={{code}}>{{codeName}}</option>';
+    var localOptTemplate = '<option value="{{code}}">{{codeName}}</option>';
     var noDataTemplate = '<div class="no-data"><p>검색 결과가 없습니다.</p></div>';
 
     var searchListTemplate = 
@@ -257,11 +257,23 @@
 
         _bindEvents: function(){
             var self = this;
+            
+            var activeTabIndex = self.$searchContainer.find('.ui_tab .tabs li.on').index();
+
+            function setStoreClass(index){
+                var $storeListWrap = $('.store-list-wrap');
+                if( index == 0) {
+                    $storeListWrap.addClass('local')
+                } else {
+                    $storeListWrap.removeClass('local')
+                }
+            }
+            setStoreClass(activeTabIndex);
 
             self.$searchContainer.find('.ui_tab').on('tabchange', function(e, data) {
                 
-
-
+                
+                setStoreClass(data.selectedIndex);
                 switch(data.selectedIndex) {
                     case 0:
                         self.searchType = 'local';
@@ -299,11 +311,13 @@
 
 
             self.$searchResultContainer.on('click', '.btn-back', function(e){
-                // e.preventDefault();
+                $('.store-list-box').stop().animate({
+                    top: $('.map-container').offset().top
+                }, function(){
+                    self.$leftContainer.removeClass('active');
+                    $(this).removeClass('fixed');
+                })
                 
-                // self._returnSearchMode();
-
-                self.$leftContainer.removeClass('active')
             });
 
             self.$searchContainer.on('click', '.btn-view', function(e){
@@ -679,7 +693,9 @@
             if(trim.length){
                 var callback = function() {
                     self._loadStoreData();
-                    self.$leftContainer.addClass('active');
+                    
+
+                    self._showResultLayer();
                 };
 
                 self.searchResultMode = true;
@@ -703,7 +719,7 @@
                     self.schReaultTmplID = "localSearch";
 
                     self.searchAddressToCoordinate(result.data.userAdress, callback);
-                    self.$leftContainer.addClass('active');
+                    self._showResultLayer();
                 } else{
                     if(result.data.location && result.data.location != ""){
                         location.href = result.data.location;
@@ -731,7 +747,7 @@
                         cookie.setCookie('geoAgree','Y', 1);
 
                         self._loadStoreData();
-                        self.$leftContainer.addClass('active');
+                        self._showResultLayer();
                     }, function(error) {
                         lgkorUI.alert('현재 위치를 찾을 수 없습니다.', {
                             title: '현재 위치 정보',
@@ -779,7 +795,7 @@
                 self.searchResultMode = true;
 
                 self._loadStoreData();
-                self.$leftContainer.addClass('active');
+                self._showResultLayer();
             } else{
                 lgkorUI.alert("", {
                     title: "지하철 검색의 역명을 선택해 주세요."
@@ -805,7 +821,7 @@
 
                 self.searchAddressToCoordinate(self.$citySelect2.val(), callback);
 
-                self.$leftContainer.addClass('active');
+                self._showResultLayer();
             } else{
                 lgkorUI.alert("", {
                     title: '광역 시/도 선택 후<br>센터 명을 입력해주세요.'
@@ -826,7 +842,7 @@
                 // $(window).off('keyup.searchShop');
                 self._loadStoreData();
 
-                self.$leftContainer.addClass('active');
+                self._showResultLayer();
             } else{
                 lgkorUI.alert("", {
                     title: "주소찾기 버튼 선택하여 주소 검색 시 확인 가능합니다."
@@ -941,7 +957,7 @@
 
                 self.$defaultListContainer.find('.scroll-wrap').animate({scrollTop:0}, 120);
                  */
-                self.$leftContainer.addClass('active');
+                self._showResultLayer();
             }
         },
 
@@ -979,6 +995,21 @@
             // self.$defaultListContainer.find('.scroll-wrap').height(listheight);
         },
 
+        _showResultLayer  : function(){
+            var self = this;
+            var $mapContainer = $('.map-container');
+
+            self.$leftContainer.addClass('active');
+            if( window.innerWidth < 768) {
+                self.$leftContainer.find('.store-list-box').stop().animate({
+                    marginTop : -$mapContainer.offset().top
+                }, function(){
+                    $(this).addClass('fixed');
+                    $(this).attr('style', '');
+                })
+            }
+        },
+
         _resize: function(){
             var self = this;
 
@@ -994,7 +1025,9 @@
                 mapwidth = self.windowWidth;
 
                 mapheight = self.$defaultListContainer.find('.sch-list').outerHeight();
+                $('.store-list-wrap.active').find('.store-list-box').not('.fixed:animated').addClass('fixed');
             } else{
+                $('.store-list-wrap.active').find('.store-list-box').filter('.fixed').not(':animated').removeClass('fixed');
                 if(self.$leftContainer.hasClass('close')){
                     mapmargin = 24;
                 } else{

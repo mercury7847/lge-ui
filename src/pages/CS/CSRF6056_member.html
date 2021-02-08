@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-login="Y">
     @@include('./common/head.html', {
         "pageCSS": [
             "support/support",
@@ -7,7 +7,6 @@
         ]
     })
 <body>
-    <input type="hidden" name="topLoginFlag" id="topLoginFlag" value="Y">
     <div class="wrap">
         @@include('./common/header.html')
 
@@ -103,7 +102,7 @@
                                                         value="홍길동"
                                                         readonly
                                                     -->
-                                                    <input type="text" name="userName" id="userName"  value="홍길동" placeholder="이름 입력"  data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" readonly required>
+                                                    <input type="text" name="userName" id="userName" value="홍길동" placeholder="이름 입력" maxlength="10" data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" readonly required>
                                                 </div>
                                                 <div class="btm-more err-block">
                                                     <p class="err-msg"></p>
@@ -122,7 +121,7 @@
                                                         value="01011112222"
                                                         readonly
                                                     -->
-                                                    <input type="text" name="phoneNo" id="phoneNo" value="01011112222" placeholder="휴대 전화 입력"  data-error-msg="휴대전화를 정확히 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" readonly required>
+                                                    <input type="text" name="phoneNo" id="phoneNo" value="01011112222" placeholder="휴대 전화 입력" minlength="10" maxlength="11" data-error-msg="휴대전화를 정확히 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" readonly required>
                                                 </div>
                                                 <div class="btm-more err-block">
                                                     <p class="err-msg"></p>
@@ -141,7 +140,7 @@
                                                         value="abcde@naver.com"
                                                         readonly
                                                     -->
-                                                    <input type="text" name="email" id="email" value="abcde@naver.com" placeholder="이메일 주소를 입력해주세요." data-error-msg="이메일 주소를 입력해주세요." data-pattern-msg="올바른 이메일 형식이 아닙니다." data-required="true" readonly required>
+                                                    <input type="text" name="email" id="email" value="abcde@naver.com" placeholder="이메일 주소를 입력해주세요." minlength="5" maxlength="50" data-error-msg="이메일 주소를 입력해주세요." data-pattern-msg="올바른 이메일 형식이 아닙니다." data-required="true" readonly required>
                                                 </div>
                                                 <div class="btm-more err-block">
                                                     <p class="err-msg"></p>
@@ -161,15 +160,15 @@
                                             <div class="conts">
                                                 <div class="contact-box">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="contactPhoneNo1" id="contactPhoneNo1">
+                                                        <input type="text" name="contactPhoneNo1" id="contactPhoneNo1" maxlength="4">
                                                     </div>
                                                     <span class="at">-</span>
                                                     <div class="input-wrap">
-                                                        <input type="text" name="contactPhoneNo2" id="contactPhoneNo2">
+                                                        <input type="text" name="contactPhoneNo2" id="contactPhoneNo2" maxlength="4">
                                                     </div>
                                                     <span class="at">-</span>
                                                     <div class="input-wrap">
-                                                        <input type="text" name="contactPhoneNo3" id="contactPhoneNo3">
+                                                        <input type="text" name="contactPhoneNo3" id="contactPhoneNo3" maxlength="4">
                                                     </div>
                                                 </div>
                                                 @@include('./common/modules/bullet-list.html', {
@@ -221,27 +220,31 @@
                                                 <label for="title" class="req">제목<span class="blind">필수항목</span></label>
                                             </div>
                                             <div class="conts">
-                                                <div class="input-wrap count">
-                                                    <input type="text" class="ui_textcontrol" name="title" id="title" placeholder="제목 입력" maxlength="100" data-limit="100" data-count-target="#txt-count" data-required="true" data-error-msg="제목을 입력해주세요" required>
-                                                    <span id="txt-count" class="cell total"><em>0</em> / 100</span>
-                                                    <div class="btm-more err-block">
-                                                        <p class="err-msg"></p>
+                                                <div class="text-form">
+                                                    <div class="input-wrap">
+                                                        <input type="text" name="title" id="title" class="ui_textcontrol" placeholder="제목 입력" maxlength="40" data-limit="40" data-count-target="#txt-count1" data-error-msg="제목을 입력해주세요." data-required="true" required>
+                                                        <span id="txt-count1" class="inner-text"><em>0</em>/40자</span>
                                                     </div>
+                                                </div>
+                                                <div class="btm-more err-block">
+                                                    <p class="err-msg"></p>
                                                 </div>
                                             </div>
                                         </div>
         
                                         <div class="forms">
                                             <div class="tit">
-                                                <label for="input-content" class="req">내용<span class="blind">필수항목</span></label>
+                                                <label for="content" class="req">내용<span class="blind">필수항목</span></label>
                                             </div>
                                             <div class="conts">
-                                                <div class="input-wrap count">
-                                                    <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-required="true" data-error-msg="내용을 입력해주세요" required></textarea>
-                                                    <span id="txt-count2" class="cell total"><em>0</em> / 1000</span>
-                                                    <div class="btm-more err-block">
-                                                        <p class="err-msg"></p>
+                                                <div class="text-form">   
+                                                    <div class="input-wrap">
+                                                        <textarea name="content" id="content" class="ui_textcontrol" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-error-msg="내용을 입력해주세요." data-required="true" required></textarea>
+                                                        <span id="txt-count2" class="inner-text"><em>0</em>/1000자</span>
                                                     </div>
+                                                </div>
+                                                <div class="btm-more err-block">
+                                                    <p class="err-msg"></p>
                                                 </div>
                                             </div>
                                         </div>

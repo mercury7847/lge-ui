@@ -56,13 +56,17 @@
         var param = {
             "id":$dm.attr('data-id'),
             "sku":$dm.attr('data-sku'),
-            "categoryId":$dm.attr('data-categoryId'),
-            "rtSeq":$dm.attr('data-rtSeq'),
             "typeFlag":cartType,
-            "requireCare":$dm.data('requireCare')
         }
 
-        lgkorUI.requestCart(ajaxUrl, param);
+        var categoryId = $dm.attr('data-categoryId');
+        param.categoryId = categoryId ? categoryId : null;
+        var rtSeq = $dm.attr('data-rtSeq');
+        param.rtSeq = rtSeq ? rtSeq : null;
+        var requireCare = $dm.attr('data-requireCare');
+        param.requireCare = requireCare ? lgkorUI.stringToBool(requireCare) :null;
+
+        lgkorUI.requestCart(ajaxUrl, param, true);
     }
 
     function setDifferentView(){

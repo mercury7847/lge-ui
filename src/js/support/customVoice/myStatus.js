@@ -29,7 +29,7 @@
                     },
                     phoneNo: {
                         msgTarget: '.err-block',
-                        pattern: /^[0-9]+$/,
+                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
                         maxLength: 11
                     },
                     authNo: {

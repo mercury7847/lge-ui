@@ -30,7 +30,7 @@
             '{{#elsif item.type=="enabled"}}' +
                 '<td data-value="{{item.value}}"><button type="button" title="{{item.dateString}}"><span>{{item.day}}</span></button></td>' +
             '{{#elsif item.type=="expected"}}' +
-                '<td class="expected" data-value="{{item.value}}"><button type="button" title="{{item.dateString}}" disabled><span>{{item.day}}</span><span class="blind">방문 예정일</span></button></td>' +
+                '<td class="expected" data-value="{{item.value}}"><button type="button" title="{{item.dateString}}"><span>{{item.day}}</span><span class="blind">방문 예정일</span></button></td>' +
             '{{#else}}' +
                 '<td></td>' +
             '{{/if}}' +
@@ -357,6 +357,7 @@
                 lgkorUI.requestAjaxDataPost(ajaxUrl, selectedData, function(result){
                     var data = result.data;
                     var arr = data instanceof Array ? data : [];
+                    var isEnableDayNone = true;
                     self.$timeTable.find('tr td.choice').removeClass('choice');
                     self.$timeTable.find('tr th.choice').removeClass('choice');
                     var $td = self.$timeTable.find('tr td');
@@ -370,18 +371,19 @@
                             $item.addClass('disabled');
                             $item.find('button').attr('disabled',true);
                         } else {
+                            isEnableDayNone = false;
                             $item.removeClass('disabled');
                             $item.find('button').attr('disabled',null);
                         }
                     });
 
                     self.$timeTableWrapFirst.hide();
-                    if(arr.length > 0) {
-                        self.$timeTableWrap.show();
-                        self.$timeTableWrapNoData.hide();
-                    } else {
+                    if(isEnableDayNone) {
                         self.$timeTableWrap.hide();
                         self.$timeTableWrapNoData.show();
+                    } else {
+                        self.$timeTableWrap.show();
+                        self.$timeTableWrapNoData.hide();
                     }
 
                     var selectedData = self.getSelectedVisitDayData();

@@ -7,9 +7,9 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
     var ImageFileInput = core.ui('ImageFileInput', {
         bindjQuery: 'imageFileInput',
         defaults: {
-            regex: /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi,
+            regex: /[\{\}\/?,;:|*~`!^\+<>@\#$%&\\\=\'\"]/gi,
             format: 'jpg|jpeg|png|gif',
-            totalSize: '10000000',
+            totalSize: 10 * 1024 * 1024,
             templateAlert: '<article id="fileAlert" class="lay-wrap"><section class="lay-conts"><h6>{{message}}</h6></section><div class="btn-wrap laypop"><button type="button" class="btn pink ui_modal_close"><span>확인</span></button></div></article>',
             message: {
                 name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
@@ -120,16 +120,29 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                         self._setPreview($(this), file);
 
                         $this.siblings('.btn-del').off('click').on('click', function() {
-                            var $box = $(this).closest('.file-item');
-            
-                            $this.val('');
-                            $box.removeClass('on');
-                            $box.find('.file-preview').html('');
-                            $box.find('.name').val('');
-                        
-                            var index = $(this).closest('.image-file-wrap').find('.btn-del').index($(this));
-                            totalSize -= selectFiles[index].size;
-                            selectFiles.splice(index,1);
+                            var $btn = $(this);
+
+                            lgkorUI.confirm('', {
+                                title:'삭제하시겠습니까?',
+                                okBtnName: '예',
+                                cancelBtnName: '아니오',
+                                ok: function() {
+                                    var $box = $this.closest('.file-item');
+                
+                                    $this.val('');
+                                    $box.removeClass('on');
+                                    $box.find('.file-preview').html('');
+                                    $box.find('.name').val('');
+
+                                    var index = $btn.closest('.image-file-wrap').find('.btn-del').index($btn);
+                                    totalSize -= selectFiles[index].size;
+                                    selectFiles.splice(index,1);
+
+                                    $(this).vcModal('hide');
+
+                                    console.log(totalSize);
+                                }
+                            });
                         });         
                     } else {
                         self._callAlert(result.message);

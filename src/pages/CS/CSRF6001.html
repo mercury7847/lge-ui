@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko" data-login="Y">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/support-home"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <div class="contents support support-home">
+                <div class="home-visual">
+                    <img src="/lg5-common/images/CS/home_1.jpg" alt="">
+                </div>
+                <div class="keyword-search">
+
+                    <div class="search-box">
+                        <div class="search-input">
+                            <input type="text" id="keyword01" class="ui_input_clearbutton" placeholder="검색어를 입력해주세요.(예:모델명, 증상 등)" title="제품명, 모델명 직접 검색" autocomplete="off" data-clear-button="button.btn-delete" ui-modules="InputClearButton">
+                            <button type="button" class="btn-delete" style="display: none;"><span class="blind">검색어 삭제</span></button>
+                            <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-notice">
+                    <div class="notice-title">
+                        <strong class="title">NOTICE</strong>
+                    </div>
+                    <div class="notice-list-wrap">
+                        <div class="notice-list">
+                            <div class="flag-wrap">
+                                <span class="flag">NEW</span>
+                            </div>
+                            최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 고객 최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 </div>
+                    </div>
+                    <div class="notice-list-controls">
+                        <button class="prev"><span class="blind">이전 목록</span></button>
+                        <button class="next"><span class="blind">다음 목록</span></button>
+                    </div>
+                </div>
+                <div class="home-section popular-find"><img src="/lg5-common/images/CS/home_2.jpg" alt=""></div>
+
+                <div class="home-section home-reservation">
+                    <div class="section-inner">
+                        <div class="section-row">
+                            <div class="section-col">
+
+                                <div class="tab-panel by-card rersv-wrap">
+                                    <div class="headline">
+                                        <h3 class="title run-reserv">출장 서비스 예약</h3>
+                                    </div>
+                                    <div class="form-wrap">
+                                        <div class="forms form-head">
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="chk01" name="chk1">
+                                                <label for="chk01">개인정보 수집 및 이용에 동의합니다</label>
+                                            </span>
+                                            <a href="#" class="btn-link"><span>전문보기</span></a>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-col">
+                                                <dl class="forms inner-type">
+                                                    <dt class="tit"><label for="iptName" class="req">이름<span class="blind">필수입력</span></label></dt>
+                                                    <dd class="conts">
+                                                        <div class="input-wrap">
+                                                            <input type="text" id="iptName" placeholder="이름 입력" value="" class="ui_card_number" name="iptName" data-required="true" ui-modules="Formatter" autocomplete="off">
+                                                        </div>
+                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                            <div class="form-col">
+                                                <dl class="forms inner-type">
+                                                    <dt class="tit"><label for="iptNo" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
+                                                    <dd class="conts">
+                                                        <div class="input-wrap">
+                                                            <input type="text" id="iptNo" placeholder="휴대폰 번호 입력" value="" class="ui_card_number" name="iptNo" data-required="true" ui-modules="Formatter" autocomplete="off">
+                                                        </div>
+                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                        <dl class="forms inner-type">
+                                            <dt class="tit"><label for="ipt-card2">주소</label></dt>
+                                            <dd class="conts">
+                                                <div class="address-box">
+                                                    <div class="box">
+                                                        <div class="input-wrap zip-code">
+                                                            <input type="text" id="inp03-2" value="" placeholder="우편번호" disabled="">
+                                                        </div>
+                                                        <div class="cell">
+                                                            <button type="button" class="btn"><span>주소 찾기</span></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-wrap">
+                                                        <input type="text" value="" placeholder="주소 찾기를 선택해 주세요." disabled="">
+                                                    </div>
+                                                </div>
+                                                <div class="input-wrap">
+                                                    <input type="text" value="" placeholder="상세주소를 입력해주세요." disabled>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="btn-wrap">
+                                        <button type="button" class="btn disabled size-m" disabled=""><span>예약하기</span></button>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="section-col">
+                                <div class="tab-panel by-card rersv-wrap">
+                                    <div class="headline">
+                                        <h3 class="title inquiry-reserv">문의/예약 결과조회</h3>
+                                    </div>
+                                    <div class="form-wrap">
+                                        <div class="forms form-head">
+                                            <span class="rdo-wrap">
+                                                <input type="radio" id="inqueryChoiceNumber" name="inqueryChoice" checked="">
+                                                <label for="inqueryChoiceNumber">접수번호</label>
+                                            </span>
+                                            <span class="rdo-wrap">
+                                                <input type="radio" id="inqueryChoicePhoneNumber" name="inqueryChoice">
+                                                <label for="inqueryChoicePhoneNumber">휴대전화 인증</label>
+                                            </span>
+                                        </div>
+                                        <dl class="forms inner-type">
+                                            <dt class="tit"><label for="inqName" class="req">이름<span class="blind">필수입력</span></label></dt>
+                                            <dd class="conts">
+                                                <div class="input-wrap">
+                                                    <input type="text" id="inqName" placeholder="이름 입력" value="" class="ui_card_number" name="inqName" data-required="true" ui-modules="Formatter" autocomplete="off">
+                                                </div>
+                                                <div class="btm-more err-block"><p class="err-msg"></p></div>
+                                            </dd>
+                                        </dl>
+                                        <dl class="forms inner-type">
+                                            <dt class="tit"><label for="inqNo" class="req">접수번호<span class="blind">필수입력</span></label></dt>
+                                            <dd class="conts">
+                                                <div class="input-wrap">
+                                                    <input type="text" id="inqNo" placeholder="접수 번호 입력" value="" class="ui_card_number" name="inqNo" data-required="true" ui-modules="Formatter" autocomplete="off">
+                                                </div>
+                                                <div class="btm-more err-block"><p class="err-msg"></p></div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="btn-wrap">
+                                        <button type="button" class="btn disabled size-m" disabled=""><span>조회하기</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-section home-login"><a href=""><img src="/lg5-common/images/CS/home_3.jpg" alt=""></a></div>
+
+                <div class="common-banner main-service">
+                    <div class="banner">
+                        <h3 class="banner-tit">LG제품에 관련된 주요 서비스를 확인하세요!</h3>
+                        <div class="main-list-wrap">
+                            <ul class="main-list">
+                                <li>
+                                    <a href="#">
+                                        <img src="/lg5-common/images/CS/home_5.jpg" alt="">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/lg5-common/images/CS/home_6.jpg" alt="">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/lg5-common/images/CS/home_7.jpg" alt="">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/lg5-common/images/CS/home_8.jpg" alt="">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="common-banner related-pages">
+                    <div class="banner">
+                        <h3 class="banner-tit">LG제품에 관련된 정보를 확인하세요!</h3>
+                        <div class="page-list-wrap">
+                            <ul class="page-list">
+                                <li>
+                                    <a href="#">
+                                        <img src="/lg5-common/images/CS/home_10.jpg" alt="">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/lg5-common/images/CS/home_11.jpg" alt="">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/lg5-common/images/CS/home_12.jpg" alt="">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn-moreview block"><span>더보기</span></button>
+                    </div>
+                </div>
+
+                <div class="common-banner awards">
+                    <div class="banner">
+                        <div class="award-list-wrap slide-wrap award-slider ui_carousel_slider">
+                            <div class="indi-wrap">
+                                <ul class="indi-conts ui_carousel_dots">
+                                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                </ul>
+                            </div>
+                            <div class="award-list slide-content ui_carousel_list">
+                                <div class="slide-track ui_carousel_track">
+                                    <div class="slide-conts ui_carousel_slide">
+                                        <a href="">
+                                            <img src="/lg5-common/images/CS/home_15.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="slide-conts ui_carousel_slide">
+                                        <a href="">
+                                            <img src="/lg5-common/images/CS/home_16.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="slide-conts ui_carousel_slide">
+                                        <a href="">
+                                            <img src="/lg5-common/images/CS/home_17.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="slide-conts ui_carousel_slide">
+                                        <a href="">
+                                            <img src="/lg5-common/images/CS/home_18.jpg" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-controls">
+                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>  
+    
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/support-home.min.js"></script>
+</body>
+</html> 

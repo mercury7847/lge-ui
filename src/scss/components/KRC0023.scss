@@ -81,7 +81,7 @@ $size: (img2, img3, img4);
             }
             .title {
                 p {
-                    @include title-h3;
+                    @include title-h5;
                 }
                 &.title-h1 * {
                     @include title-h1;

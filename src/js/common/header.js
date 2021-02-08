@@ -20,7 +20,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self._getLoginInfo();
 
-            lgkorUI.requestCart(self.$el.attr('data-cart-url'), {}, false);
+            lgkorUI.requestCartCount(self.$el.attr('data-cart-url'));
 
             vcui.require(['ui/carousel', 'ui/smoothScroll'], function () {            
                 self._setting();

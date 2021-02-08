@@ -78,8 +78,10 @@
 
     var ORDER_LIST;
 
+    var txtMasking;
+
     function init(){
-        vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter'], function () {             
+        vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter', 'helper/textMasking'], function () {             
             setting();
             bindEvents();
 
@@ -92,7 +94,8 @@
         ORDER_INQUIRY_LIST_URL = $('.contents.mypage').data('orderInquiryList');
         PRODUCT_STATUS_URL = $('.contents.mypage').data('productStatus');
         ORDER_DETAIL_URL = $('.contents.mypage').data('orderDetail');
-        
+        txtMasking = new vcui.helper.TextMasking();
+
         $('.inquiryPeriodFilter').vcDatePeriodFilter();
     }
 
@@ -276,45 +279,79 @@
             page: page || 1
         }
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
-            console.log("result.data.success:", result.data.success)
-            if(lgkorUI.stringToBool(result.data.success)){
-                console.log("result.data.listData:", result.data.listData)
-                if(result.data.listData && result.data.listData.length){
-                    CURRENT_PAGE = result.param.pagination.page;
-                    TOTAL_PAGE = result.param.pagination.totalCount;
+            var data = result.data;
+            console.log("result.data.listData:", data.listData)
+            if(data.listData && data.listData.length){
+                CURRENT_PAGE = result.param.pagination.page;
+                TOTAL_PAGE = result.param.pagination.totalCount;
 
-                    $('.inquiry-list-notify').show();
+                $('.inquiry-list-notify').show();
 
-                    if(CURRENT_PAGE >= TOTAL_PAGE) $('.btn-moreview').hide();
-                    else $('.btn-moreview').show();
+                if(CURRENT_PAGE >= TOTAL_PAGE) $('.btn-moreview').hide();
+                else $('.btn-moreview').show();
 
-                    if(CURRENT_PAGE == 1){
-                        ORDER_LIST = [];
-                        $('.inquiry-list-wrap').empty();
-                    }
-
-                    var leng, cdx, idx, templateList;
-                    var list = result.data.listData;
-                    for(idx in list){
-                        leng = ORDER_LIST.length;
-                        list[idx]['dataID'] = leng.toString();
-
-                        templateList = $(vcui.template(inquiryListTemplate, list[idx])).get(0);
-                        $('.inquiry-list-wrap').append(templateList);
-
-                        for(cdx in list[idx].productList){
-                            list[idx].productList[cdx]["prodID"] = cdx;
-                            list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productPrice"]);
-
-                            var prodlist = list[idx].productList[cdx];
-                            $(templateList).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist}));
-                        }
-
-                        ORDER_LIST.push(list[idx]);
-                    }
-                } else{
-                    setNoData();
+                if(CURRENT_PAGE == 1){
+                    ORDER_LIST = [];
+                    $('.inquiry-list-wrap').empty();
                 }
+
+                var leng, cdx, idx, templateList;
+                var list = data.listData;
+                for(idx in list){
+                    leng = ORDER_LIST.length;
+                    list[idx]['dataID'] = leng.toString();
+
+                    templateList = $(vcui.template(inquiryListTemplate, list[idx])).get(0);
+                    $('.inquiry-list-wrap').append(templateList);
+
+                    for(cdx in list[idx].productList){
+                        list[idx].productList[cdx]["prodID"] = cdx;
+                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productPrice"]);
+
+                        var prodlist = list[idx].productList[cdx];
+                        $(templateList).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist}));
+                    }
+
+                    ORDER_LIST.push(list[idx]);
+                }
+
+                //배송정보
+                var $listBox = $('.inner-box:eq(0)');
+                if(data.shipping && $listBox.length > 0) {
+                    var shipping = data.shipping;
+                    //성명
+                    $listBox.find('li:eq(0) dl dd').html(txtMasking.name(shipping.name));
+                    //배송주소
+                    $listBox.find('li:eq(1) dl dd').html(txtMasking.substr(shipping.postcode + " " + shipping.city + " " + shipping.street,20));
+                    //휴대폰
+                    $listBox.find('li:eq(2) dl dd').html(txtMasking.phone(shipping.telephone));
+                    //연락처
+                    $listBox.find('li:eq(3) dl dd').html(txtMasking.phone(shipping.telephonenumber));
+                    //배송시요청사항
+                    $listBox.find('li:eq(4) dl dd').html(shipping.shippingNoteTxt);
+                    //사전방문신청
+                    $listBox.find('li:eq(5) dl dd').html(lgkorUI.stringToBool(shipping.instpectionVisit) ? "신청" : "미신청");
+                    //폐가전수거
+                    $listBox.find('li:eq(6) dl dd').html(lgkorUI.stringToBool(shipping.recyclingPickup) ? "수거신청" : "해당없음");
+                }
+                //결제정보
+                $listBox = $('.inner-box:eq(1)');
+                if(data.payment && $listBox.length > 0) {
+                    var payment = data.payment;
+                    //결제수단
+                    $listBox.find('li:eq(0) dl dd').html(payment.paymentMethodName);
+                    //주문 금액
+                    $listBox.find('li:eq(1) dl dd').html(vcui.number.addComma(payment.subtotal)+"원");
+                    //할인 금액
+                    $listBox.find('li:eq(2) dl dd').html("-"+vcui.number.addComma(payment.discount)+"원");
+                    //멤버십 포인트
+                    $listBox.find('li:eq(3) dl dd').html("-"+vcui.number.addComma(payment.membershipPoint)+"원");
+                    //총 결제 금액
+                    $listBox.find('li:eq(4) dl dd').html(vcui.number.addComma(payment.grandTotal)+"원");
+                }
+
+            } else{
+                setNoData();
             }
 
             lgkorUI.hideLoading();

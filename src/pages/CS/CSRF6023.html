@@ -11,8 +11,9 @@
         @@include('./common/header.html')
 
         <div class="container">
+            <!-- 2021.02.05 title 변경 -->
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '문의/예약 결과 조회',
+                'pageTitle': '상담결과 조회/변경',
                 'pageDesc': '예약하신 모든 상담/서비스 내역을 조회하실 수 있습니다.'
             })
             <div class="contents support service-status">
@@ -44,7 +45,7 @@
                                                 </div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="userName1" id="userName1" placeholder="이름 입력" data-error-msg="이름을 입력해 주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
+                                                        <input type="text" name="userName1" id="userName1" placeholder="이름 입력" maxlength="10" data-error-msg="이름을 입력해 주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
@@ -57,7 +58,7 @@
                                                 </div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="number" id="number" placeholder="접수 번호 입력" data-error-msg="접수번호를 입력해 주세요." data-required="true" required>
+                                                        <input type="text" name="text" id="number" placeholder="접수 번호 입력" maxlength="20" data-error-msg="접수번호를 입력해 주세요." data-required="true" required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
@@ -105,7 +106,7 @@
                                                 </div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="userName2" id="userName2" placeholder="이름 입력" data-error-msg="이름을 입력해 주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
+                                                        <input type="text" name="userName2" id="userName2" placeholder="이름 입력" maxlength="10" data-error-msg="이름을 입력해 주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
@@ -119,14 +120,14 @@
                                                 <div class="conts">
                                                     <div class="box">
                                                         <div class="input-wrap">
-                                                            <input type="tel" name="phoneNo" id="phoneNo" placeholder="휴대전화 번호 입력" maxlength="11" data-error-msg="휴대전화를 입력해 주세요." data-required="true" required>
+                                                            <input type="tel" name="phoneNo" id="phoneNo" placeholder="휴대전화 번호 입력" minlength="10" maxlength="11" data-error-msg="휴대전화를 입력해 주세요." data-required="true" required>
                                                         </div>
                                                         <div class="cell">
                                                             <button type="button" class="btn btn-send"><span>인증 번호 발송</span></button>
                                                         </div>
                                                     </div>
                                                     <div class="input-wrap">
-                                                        <input type="number" name="authNo" id="authNo" placeholder="인증번호 입력"  data-error-msg="인증번호를 입력해 주세요." data-required="true" disabled required>
+                                                        <input type="text" name="authNo" id="authNo" placeholder="인증번호 입력" maxlength="6" data-error-msg="인증번호를 입력해 주세요." data-required="true" disabled required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>

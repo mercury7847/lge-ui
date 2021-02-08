@@ -15,7 +15,7 @@
             self.$stepModel = self.$cont.find('#stepModel');
             self.$stepInput = self.$cont.find('#stepInput');
 
-            self.isLogin = $('#topLoginFlag').length ? $('#topLoginFlag').val() : 'N';
+            self.isLogin = lgkorUI.isLogin;
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
 
@@ -24,24 +24,47 @@
                         msgTarget: '.err-block'
                     },
                     userName: {
-                        msgTarget: '.err-block'
+                        required: true,
+                        maxLength: 10,
+                        pattern: /^[가-힣a-zA-Z]+$/,
+                        msgTarget: '.err-block',
+                        errorMsg: '이름을 입력해주세요.',
+                        patternMsg: '한글 또는 영문만 입력 가능합니다.'
                     },
                     phoneNo: {
-                        pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                        msgTarget: '.err-block'
+                        required: true,
+                        minLength: 10,
+                        maxLength: 11,
+                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                        msgTarget: '.err-block',
+                        errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
                     },
                     email:{
+                        required: true,
                         pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        msgTarget: '.err-block'
+                        minLength: 5,
+                        maxLength: 50,
+                        msgTarget: '.err-block',
+                        errorMsg: '이메일 주소를 입력해주세요.',
+                        patternMsg: '올바른 이메일 형식이 아닙니다.'
                     },
                     replyCheck: {
-                        msgTarget: '.reply-err-block'
+                        required: true,
+                        msgTarget: '.reply-err-block',
+                        errorMsg: '회신 여부를 체크해주세요.'
                     },
                     title: {
-                        msgTarget: '.err-block'
+                        required: true,
+                        maxLength: 40,
+                        msgTarget: '.err-block',
+                        errorMsg: '제목을 입력해주세요.'
                     },
                     content: {
-                        msgTarget: '.err-block'
+                        required: true,
+                        maxLength: 1000,
+                        msgTarget: '.err-block',
+                        errorMsg: '내용을 입력해주세요.'
                     }
                 }
 
@@ -51,14 +74,7 @@
                     register: register
                 });
 
-                $('.ui_imageinput').vcImageFileInput({
-                    totalSize: '50000',
-                    format: 'jpg|jpeg',
-                    message: {
-                        format: 'JPG만 업로드 가능합니다.',
-                        size: '첨부파일 크기는 50kb 이하로 등록 해주세요.'
-                    }
-                });
+                $('.ui_imageinput').vcImageFileInput();
 
                 self.bindEvent();
             });
@@ -91,14 +107,17 @@
         bindEvent: function() {
             var self = this;
 
-            $('.contents').on('complete', function(e, module, data, url) {
-                var param = {
-                    modelCode: data.modelCode,
-                    serviceType: $('#serviceType').val(),
-                    category: data.category,
-                    subCategory: data.subCategory
-                };
+            $('.contents').on('reset', function() {
+                self.$myModelArea.show();
+                self.$completeBtns.hide();
 
+                self.$cont.commonModel('next', self.$stepModel);
+                self.$cont.commonModel('focus', self.$selectedModelBar, function() {
+                    self.$selectedModelBar.vcSticky();
+                }); 
+            });
+
+            $('.contents').on('complete', function(e, data, url) {
                 self.$cont.commonModel('updateSummary', {
                     product: [data.categoryName, data.subCategoryName, data.modelCode],
                     reset: 'product'

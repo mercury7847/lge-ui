@@ -7,7 +7,7 @@
         subway: '<strong>"{{keyword}}역"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
     };
 
-    var localOptTemplate = '<option value={{value}} data-code-desc={{codeDesc}}>{{title}}</option>';
+    var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
 
     var searchListTemplate = 
         '<li data-id="{{shopID}}">'+

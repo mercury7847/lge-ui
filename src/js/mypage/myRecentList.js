@@ -1,5 +1,5 @@
 (function() {
-    var listItemTemplate = '<li class="box {{#if disabled}}disabled{{/if}}" data-id={{id}} data-sku={{sku}} data-categoryId={{categoryId}} data-rtSeq={{rtSeq}} data-requireCare={{requireCare}}>' +
+    var listItemTemplate = '<li class="box {{#if disabled}}disabled{{/if}}" data-id="{{id}}" data-sku="{{sku}}" data-categoryId="{{categoryId}}" data-rtSeq="{{rtSeq}}" data-requireCare="{{requireCare}}">' +
         '<div class="col-table">' +
             '<div class="col"><div class="product-info">' +
                 '<div class="thumb"><a href="{{pdpUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
@@ -114,7 +114,7 @@
                     "rtSeq":$dm.attr('data-rtSeq')
                 }
 
-                var obj = {title:'', cancelBtnName:'취소', okBtnName:'삭제', ok: function (){
+                var obj = {title:'삭제시 최근 본 제품 목록에서 제외<br>됩니다. 선택하신 제품을<br>최근 본 제품에서 삭제하시겠어요?', cancelBtnName:'취소', okBtnName:'삭제', ok: function (){
                     lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                         var data = result.data;
                         var success = lgkorUI.stringToBool(data.success);
@@ -123,8 +123,8 @@
                         }
                     });
                 }};
-                var desc = '삭제시 최근 본 제품 목록에서 제외<br>됩니다. 선택하신 제품을<br>최근 본 제품에서 삭제하시겠어요?';
-                lgkorUI.confirm(desc, obj);
+                //var desc = '삭제시 최근 본 제품 목록에서 제외<br>됩니다. 선택하신 제품을<br>최근 본 제품에서 삭제하시겠어요?';
+                lgkorUI.confirm(null, obj);
             },
 
             requestCart: function($dm,cartType) {
@@ -134,13 +134,20 @@
                 var param = {
                     "id":$dm.attr('data-id'),
                     "sku":$dm.attr('data-sku'),
-                    //"wishListId":$dm.attr('data-wishListId'),
-                    //"wishItemId":$dm.attr('data-wishItemId'),
+                    "typeFlag":cartType,
                     "categoryId":$dm.attr('data-categoryId'),
                     "rtSeq":$dm.attr('data-rtSeq'),
-                    "typeFlag":cartType,
-                    "requireCare":$dm.data('requireCare')
+                    "requireCare":$dm.attr('data-requireCare')
                 }
+
+                /*
+                var categoryId = $dm.attr('data-categoryId');
+                param.categoryId = categoryId ? categoryId : null;
+                var rtSeq = $dm.attr('data-rtSeq');
+                param.rtSeq = rtSeq ? rtSeq : null;
+                var requireCare = $dm.attr('data-requireCare');
+                param.requireCare = requireCare ? lgkorUI.stringToBool(requireCare) :null;
+                */
                 lgkorUI.requestCart(ajaxUrl, param);
             },
 
@@ -160,9 +167,20 @@
                     "wishListId":$dm.attr('data-wishListId'),
                     "wishItemId":$dm.attr('data-wishItemId'),
                     "wish":wish,
-                    "requireCare":$dm.data('requireCare')
+                    "categoryId":$dm.attr('data-categoryId'),
+                    "rtSeq":$dm.attr('data-rtSeq'),
+                    "requireCare":$dm.attr('data-requireCare')
                 };
 
+                /*
+                var categoryId = $dm.attr('data-categoryId');
+                param.categoryId = categoryId ? categoryId : null;
+                var rtSeq = $dm.attr('data-rtSeq');
+                param.rtSeq = rtSeq ? rtSeq : null;
+                var requireCare = $dm.attr('data-requireCare');
+                param.requireCare = requireCare ? lgkorUI.stringToBool(requireCare) :null;
+                */
+                
                 lgkorUI.requestWish(
                     param,
                     wish,

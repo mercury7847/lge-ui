@@ -1,5 +1,5 @@
 (function() {
-    var eventItemList = '<li class="lists"><div class="list-inner" data-event-id={{eventID}}>' +
+    var eventItemList = '<li class="lists"><div class="list-inner" data-event-id="{{eventID}}">' +
         '<a href="{{url}}">' +
             '<span class="thumb">' +
                 '<img src="{{imageUrl}}" alt="{{imageAlt}}" aria-hidden="true">' +

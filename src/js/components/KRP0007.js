@@ -25,7 +25,7 @@
                     '<div class="slide-track ui_carousel_track">' +
                         '{{#each (image, idx) in sliderImages}}'+
                             '<div class="slide-conts ui_carousel_slide">' +
-                                '<a href="{{modelUrlPath}}"><img data-lazy="{{image}}" alt="{{#raw modelDisplayName}} {{idx + 1}}]번 이미지"></a>' +
+                                '<a href="{{modelUrlPath}}"><img data-lazy="{{image}}" alt="{{modelDisplayName}} {{idx + 1}}번 이미지"></a>' +
                             '</div>' +
                         '{{/each}}'+
                     '</div>' +
@@ -44,9 +44,9 @@
                         '<ul class="option-list" role="radiogroup">' +
                             '{{#each item in sibling.siblingModels}}'+
                                 '<li>'+
-                                    '<div role="radio" class="{{#if sibling.siblingType=="COLOR"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
-                                        '<input type="radio" data-category-id={{categoryId}} id="product-{{sibling.siblingType}}-{{item.modelName}}" name="nm_{{sibling.siblingType}}_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
-                                        '{{#if sibling.siblingType=="COLOR"}}'+
+                                    '<div role="radio" class="{{#if sibling.siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
+                                        '<input type="radio" data-category-id="{{categoryId}}" id="product-{{sibling.siblingType}}-{{item.modelName}}" name="nm_{{sibling.siblingType}}_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
+                                        '{{#if sibling.siblingType=="color"}}'+
                                             '<label for="product-{{sibling.siblingType}}-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
                                         '{{#else}}'+
                                             '<label for="product-{{sibling.siblingType}}-{{item.modelName}}">{{item.siblingValue}}</label>'+
@@ -64,14 +64,14 @@
                 '{{/each}}'+
             '{{/if}}'+
             '<div class="flag-wrap bar-type">' +
-                '{{#if newProductBadgeFlag}}<span class="flag">NEW</span>{{/if}}' +
-                '{{#if bestBadgeFlag}}<span class="flag">BEST</span>{{/if}}' +
+                '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
+                '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-name">' +
                     '<a href="{{modelUrlPath}}">{{#raw modelDisplayName}}</a>' +
                 '</div>' +
-                '<div class="sku">{{#if modelName}}{{modelName}}{{/if}}</div>' +
+                '<div class="sku">{{#if salesModelCode}}{{salesModelCode}}{{/if}}</div>' +
                     '<div class="review-info">' +
                         '<a href="#">' +
                             '{{#if (reviewsCount > 0)}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
@@ -80,17 +80,18 @@
                         '</a>' +
                     '</div>' +
                     '<ul class="spec-info">' +
-                        '{{#if bulletFeatures}}' +
-                            '{{#each item in bulletFeatures}}' +
+                        '{{#if showBulletFeatures}}' +
+                            '{{#each item in showBulletFeatures}}' +
                                 '<li>{{#raw item.specText}}</li>' +
                             '{{/each}}' +
                         '{{/if}}' +
+                        '{{#if cTypeCount > 0}}<li>{{lastBulletName}}</li>{{/if}}'+
                     '</ul>' +
                 '</div>' +
             '</div>' +
             '<div class="product-bottom">' +
                 '<div class="flag-wrap bar-type">' +
-                    '{{#if cashbackBadgeFlag}}<span class="flag">캐시백</span>{{/if}}' +
+                    '{{#if cashbackBadgeFlag}}<span class="flag">{{cashbackBadgeName}}</span>{{/if}}' +
                 '</div>' +
                 '<div class="price-area">' +
                     '{{#if obsOriginalPrice}}<div class="original">' +
@@ -251,12 +252,6 @@
                         };
                         var fail = function(data) {
                             $this.prop("checked",!wish);
-
-                            if(data.success == "N"){
-                                lgkorUI.alert("", {
-                                    title: data.alert.title
-                                });
-                            }
                         };
     
                         lgkorUI.requestWish(
@@ -449,17 +444,17 @@
 
             makeListItem: function(item){
                 var self = this;
-    
-                var siblingType = item.siblingType ? item.siblingType.toLowerCase() : '';
-                item.siblingType = (siblingType == "color") ? "color" : "text";
 
-                var sliderImages = [];
+                for(var str in item.siblings){
+                    var siblingType = item.siblings[str].siblingType ? item.siblings[str].siblingType.toLowerCase() : '';
+                    item.siblings[str].siblingType = (siblingType == "color") ? "color" : "text";
+                }
+
+                var sliderImages = [item.mediumImageAddr];
                 if(item.rollingImages && item.rollingImages.length){
                     item.rollingImages.forEach(function(obj, idx) {
                         sliderImages.push(obj);
                     });
-                } else{
-                    sliderImages = [item.mediumImageAddr];
                 }
                 item.sliderImages = sliderImages;
                 
@@ -470,6 +465,12 @@
                 item.newProductBadgeFlag = lgkorUI.stringToBool(item.newProductBadgeFlag);
                 item.bestBadgeFlag = lgkorUI.stringToBool(item.bestBadgeFlag);
                 item.cashbackBadgeFlag = lgkorUI.stringToBool(item.cashbackBadgeFlag);
+
+                var inputdata = lgkorUI.getHiddenInputData();
+                item.newProductBadgeName = inputdata.newProductBadgeName;
+                item.bestBadgeName = inputdata.bestBadgeName;
+                item.cashbackBadgeName = inputdata.cashbackBadgeName;
+                item.lastBulletName = inputdata.lastBulletName;
                 
                 //장바구니
                 item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);
@@ -479,6 +480,18 @@
                 if(!item.wishItemId) item.wishItemId = "";
 
                 if(!item.rtModelSeq) item.rtModelSeq = "";
+
+                var bulletLength = item.bulletFeatures.length;
+                var showLength = bulletLength;
+                if(bulletLength > 4){
+                    showLength = item.cTypeCount > 0 ? 4 : bulletLength;
+                }
+                item.showBulletFeatures = [];
+                for(var i=0;i<showLength;i++){
+                    item.showBulletFeatures.push(item.bulletFeatures[i]);
+                }
+
+                console.log("### item.siblingType ###", item.siblingType)
 
                 return vcui.template(productItemTemplate, item);
             },
@@ -532,6 +545,7 @@
                             speed:0, 
                             easing:'easeInOutQuad'
                         }).on("carousellazyloadrrror", function(e, carousel, imgs){
+                            console.log("### carousellazyloadrrror ###", imgs.attr('src'));
                             imgs.attr('src', lgkorUI.NO_IMAGE);
                         });
                     }
@@ -564,6 +578,7 @@
                     var productImg = image.find('.slide-content .slide-conts.on a img').attr("src");
                     var productAlt = image.find('.slide-content .slide-conts.on a img').attr("alt");
 
+                    console.log(productName);
                     var compareObj = {
                         "id": _id,
                         "productName": productName,
