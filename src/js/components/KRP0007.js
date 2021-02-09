@@ -156,7 +156,7 @@
                         for(var key in filterdata){
                             param[key] = filterdata[key].join(",");
                         }
-                        param.order = data.order;
+                        param.sortType = data.sortType;
                         param.page = 1;
                         console.log("param:", param)
                         if(param) {
@@ -339,7 +339,7 @@
                     for(var key in filterdata){
                         param[key] = filterdata[key].join(",");
                     }
-                    param.order = filterLayerData.order;
+                    param.sortType = filterLayerData.sortType;
 
                     var hiddenData = lgkorUI.getHiddenInputData();
                     param.page = parseInt(hiddenData.page) + 1;

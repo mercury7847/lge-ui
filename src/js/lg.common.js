@@ -239,7 +239,8 @@
         MOBILE_CHECK_WIDTH: 768,
         STICKY_MODULES:[],
         NO_IMAGE: "/lg5-common/images/icons/noimage.svg",
-        RECENT_PROD_COOKIE_NAME: "myRecentProduct",
+        RECENT_PROD_COOKIE_NAME: "myRecentProduct", //최근 본 제품 쿠키
+        COMPARE_COOKIE_NAME: "LG5_CompareCart", //비교하기 쿠키
         init: function(){
             this._addImgOnloadEvent();
             this._preloadComponents();
