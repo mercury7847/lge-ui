@@ -537,6 +537,10 @@
                         top:20px;
                         right:20px;
                         bottom:auto;
+                        @include csmobile {
+                            top:29px;
+                            left:auto;
+                        }
                         @include mobile {
                             top:25px;
                             left:auto;

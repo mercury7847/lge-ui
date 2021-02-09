@@ -2,7 +2,6 @@
     "status":"success",
     "message":null,
     "param":{
-        "searchedValue":"매직스페이스",
         "pagination":{
             "page":"1",
             "visibleCount":"7",
@@ -10,90 +9,63 @@
         }
     },
     "data": {
-        "totalCount":"63",
-        "category":[
+        "totalCnt":"63",
+        "pagination":{
+            "page":"2",
+            "visibleCount":"7",
+            "totalCount":"23"
+        },
+        "categoryList": [
             {
-                "title":"전체",
-                "value":"all"
+                "categoryName": "정수기",
+                "categoryId": "CT50000175"
             },
             {
-                "title":"스마트폰",
-                "value":"smartphone"
-            },
-            {
-                "title":"태블릿",
-                "value":"tablet"
-            },
-            {
-                "title":"디바이스",
-                "value":"device"
+                "categoryName": "스마트폰",
+                "categoryId": "CT50000182"
             }
         ],
-        "listData":[
+        "awardList":[
             {
-                "id":"aw00001",
-                "url":"#1",
-                "imageUrl":"/lg5-common/images/KRP0028/award01.jpg",
-                "imageAlt":"2021 ENERGY WINNER 수상",
-                "title":"2021 ENERGY WINNER 수상",
-                "flag":[
-                    "주방가전",
-                    "주방"
+                "storyId": "ST00003004",
+                "storyListThumbnailAltText": "1",
+                "storyListThumbnailPath": "https://wwwdev50.lge.co.kr/my-directory/upload/storyThumbnail/",
+                "superCategoryId": "CT50000174",
+                "modelInfo": [
+                    "MD08587613|슬림 스윙 정수기1|https://wwwdev50.lge.co.kr/water-purifiers/WD302AW",
+                    "MD08587608|슬림 스윙 정수기2|https://wwwdev50.lge.co.kr/water-purifiers/WD502AS"
                 ],
-                "desc":"2019 우리아이를 위한 베스트브랜드(BBKI 2019)",
-                "name":"제품 네임"
+                "storyTitle": "수상내역2",
+                "storyUrl": "#",
+                "modelCnt": 2,
+                "storyDesc": "DescriptionDescriptionDescriptionDescriptionDescription",
+                "categoryName": "주방가전"
             },
             {
-                "id":"aw00002",
-                "url":"#2",
-                "imageUrl":"/lg5-common/images/KRP0028/award01.jpg",
-                "imageAlt":"2021 ENERGY WINNER 수상",
-                "title":"2021 ENERGY WINNER 수상",
-                "flag":[
-                    "주방가전",
-                    "주방"
+                "storyId": "ST00003004",
+                "storyListThumbnailAltText": "1",
+                "storyListThumbnailPath": "https://wwwdev50.lge.co.kr/my-directory/upload/storyThumbnail/",
+                "superCategoryId": "CT50000174",
+                "modelInfo": [
+                    "MD08587613|슬림 스윙 정수기|https://wwwdev50.lge.co.kr/water-purifiers/WD302AW"
                 ],
-                "desc":"2019 우리아이를 위한 베스트브랜드(BBKI 2019)",
-                "name":"제품 네임"
+                "storyTitle": "수상내역2",
+                "storyUrl": "#",
+                "modelCnt": 2,
+                "storyDesc": "DescriptionDescriptionDescriptionDescriptionDescription",
+                "categoryName": "주방가전"
             },
             {
-                "id":"aw00003",
-                "url":"#3",
-                "imageUrl":"/lg5-common/images/KRP0028/award01.jpg",
-                "imageAlt":"2021 ENERGY WINNER 수상",
-                "title":"2021 ENERGY WINNER 수상",
-                "flag":[
-                    "주방가전",
-                    "주방"
-                ],
-                "desc":"2019 우리아이를 위한 베스트브랜드(BBKI 2019)",
-                "name":"제품 네임"
-            },
-            {
-                "id":"aw00004",
-                "url":"#4",
-                "imageUrl":"/lg5-common/images/KRP0028/award01.jpg",
-                "imageAlt":"2021 ENERGY WINNER 수상",
-                "title":"2021 ENERGY WINNER 수상",
-                "flag":[
-                    "주방가전",
-                    "주방"
-                ],
-                "desc":"2019 우리아이를 위한 베스트브랜드(BBKI 2019)",
-                "name":"제품 네임"
-            },
-            {
-                "id":"aw00005",
-                "url":"#5",
-                "imageUrl":"/lg5-common/images/KRP0028/award01.jpg",
-                "imageAlt":"2021 ENERGY WINNER 수상",
-                "title":"2021 ENERGY WINNER 수상",
-                "flag":[
-                    "주방가전",
-                    "주방"
-                ],
-                "desc":"2019 우리아이를 위한 베스트브랜드(BBKI 2019)",
-                "name":"제품 네임"
+                "storyId": "ST00003004",
+                "storyListThumbnailAltText": "1",
+                "storyListThumbnailPath": "https://wwwdev50.lge.co.kr/my-directory/upload/storyThumbnail/",
+                "superCategoryId": "CT50000174",
+                "modelInfo": null,
+                "storyTitle": "수상내역2",
+                "storyUrl": "#",
+                "modelCnt": 2,
+                "storyDesc": "DescriptionDescriptionDescriptionDescriptionDescription",
+                "categoryName": "주방가전"
             }
         ]
     }
