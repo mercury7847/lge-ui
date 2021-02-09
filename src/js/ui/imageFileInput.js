@@ -7,7 +7,7 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
     var ImageFileInput = core.ui('ImageFileInput', {
         bindjQuery: 'imageFileInput',
         defaults: {
-            regex: /[\{\}\/?,;:|*~`!^\+<>@\#$%&\\\=\'\"]/gi,
+            regex: /[?!,.&^~]/,
             format: 'jpg|jpeg|png|gif',
             totalSize: 10 * 1024 * 1024,
             templateAlert: '<article id="fileAlert" class="lay-wrap"><section class="lay-conts"><h6>{{message}}</h6></section><div class="btn-wrap laypop"><button type="button" class="btn pink ui_modal_close"><span>확인</span></button></div></article>',
@@ -42,7 +42,7 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
         },
         _checkFileName: function _checkFileName(file) {
             var name = file.name.split('.').slice(0,-1).join('.') || file.name + '';
-            return !this.options.regex.test(name);
+            return this.options.regex.test(name);
         },
         _checkFileSize: function _checkFileSize(file) {
             return totalSize + file.size <= this.options.totalSize
@@ -69,7 +69,7 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
             } else if (!self._checkFileFormat(file)) {
                 success = false;
                 msgType = 'format';
-            } else if (!self._checkFileName(file)) {
+            } else if (self._checkFileName(file)) {
                 success = false;
                 msgType = 'name';
             }
@@ -129,7 +129,7 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                                 ok: function() {
                                     var $box = $this.closest('.file-item');
                 
-                                    $this.val('');
+                                    $this[0].value = '';
                                     $box.removeClass('on');
                                     $box.find('.file-preview').html('');
                                     $box.find('.name').val('');
@@ -145,6 +145,8 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                             });
                         });         
                     } else {
+                        console.log(1);
+                        $this[0].value = '';
                         self._callAlert(result.message);
                     }
                 }
