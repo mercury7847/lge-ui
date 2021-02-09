@@ -171,12 +171,9 @@
                 authManager.open();
             });
 
-            $('#allCheck').on('change', function(){
-                var $this = $(this);
-                var _checked = $this.prop('checked');
-                var $curSection = $this.closest('.section');
-
-                if( _checked) {
+            $('.agree-wrap input:checkbox').on('change', function(){
+                if( $('.agree-wrap input:checkbox').filter(':checked').length == $('.agree-wrap input:checkbox').length ) {
+                    var $curSection = $this.closest('.section');
 
                     var $currentInput = $curSection.next('.section').find('input').not(':disabled').filter(function(){
                         if( $(this).attr('readonly') == false || $(this).attr('readonly') == undefined ){
@@ -185,13 +182,16 @@
                     }).first();
                     // .focus();
 
-                    $('html, body').stop().animate({
-                        scrollTop : $currentInput.closest('.section').offset().top
-                    }, function(){
-                        $currentInput.focus();
-                    });
+                    if( $currentInput.length ) {
+                        $('html, body').stop().animate({
+                            scrollTop : $currentInput.closest('.section').offset().top
+                        }, function(){
+                            $currentInput.focus();
+                        });
+                    }
                 }
             })
+
 
             // 인증문자 보내기
             self.$authPopup.find('.btn-send').on('click', function() {
@@ -206,6 +206,10 @@
                     }
                 });
             });
+
+            $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('keyup', function(e){
+                this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+            })
         }
     }
 
