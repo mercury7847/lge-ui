@@ -401,8 +401,10 @@ CS.MD.search = function() {
             self.$el.find('.btn-search').on('click', function() {
                 var val = self.$el.find('input[type=text]').val().trim();
                 if (val.length > 1) {
-                    cookieKeyword.addCookie(val);
-                    self._setRecently();    
+                    if (self.$el.find('.recently-keyword').length) {
+                        cookieKeyword.addCookie(val);
+                        self._setRecently();
+                    }
                     $('.search-error').hide();
                 } else {
                     $('.search-error').show();   
