@@ -131,12 +131,12 @@
                     appKey: $('.map-container').data("appKey"),
                     longitude : self.currentLongitude,
                     latitude: self.currentLatitude
-                }).on('mapinit', function(e,data){
+                }).on('mapinit', function(e, data){
                     self.$map = self.$mapContainer.vcStoreMap('instance');
-
+                    
                     self._resize();
                     
-                    self._loadStoreData();                  
+                    self._loadStoreData(false, data);                  
 
                     self._bindEvents();
                 }).on('mapchanged', function(e, data){	
@@ -283,9 +283,17 @@
             self.$subwayStationSelect.val();
         },
 
-        _loadStoreData: function(userAddressAbled){
+        _loadStoreData: function(userAddressAbled, userLocation){
             var self = this;
-            lgkorUI.requestAjaxData(self.bestShopUrl, self._getKeyword(userAddressAbled), function(result){
+
+            var keywords = self._getKeyword(userAddressAbled);
+            if(userLocation && userLocation.lat){
+                console.log("### userLocation ###", userLocation)
+                keywords.latitude = userLocation.lat;
+                keywords.longitude = userLocation.long;
+            }
+
+            lgkorUI.requestAjaxData(self.bestShopUrl, keywords, function(result){
                 self.storeData = vcui.array.map(result.data, function(item, index){
                     item['id'] = item['shopID']; //info.shopID || agCode    
                     item['info'] = false;
@@ -456,7 +464,7 @@
         
                     toggle.removeClass("map").addClass('list').find('span').text('리스트보기');
         
-                    self.$map.resize();
+                    self.$map.resize(self.windowWidth, self.$defaultListContainer.height());
                 } else{
                     toggle.removeClass("list").addClass('map').find('span').text('지도보기');
     
@@ -481,6 +489,9 @@
 
             var keywords = {
                 searchType: self.searchType,
+
+                latitude: self.currentLatitude,
+                longitude: self.currentLongitude,
 
                 searchCity: self.$citySelect.val(),
                 searchBorough: self.$boroughSelect.val(),
@@ -657,20 +668,18 @@
             if(self.isChangeMode){
                 self.isChangeMode = false;
                 self.searchResultMode = false;
+                
+                self.$searchContainer.stop().transition({opacity:1}, 320, "easeInOutCubic");
 
-                self.$searchContainer.css('display', 'block').stop().transition({opacity:1}, 430, "easeInOutCubic");
+                $('.result-list-box').stop().css({display:'none'})
+            
+                
+                $('.store-list-wrap .tit').show();
+                self.$searchContainer.css('display', 'block');
+                self.$defaultListContainer.css({paddingTop:0, opacity:0}).animate({opacity:1}, 300);
 
-                $('.result-list-box').stop().transition({opacity:0, y:100}, 350, "easeInOutCubic");
+                self._setListArea();
 
-                var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
-                var scheight = self.$searchContainer.outerHeight(true);
-                self.$defaultListContainer.transition({top:titheight+scheight}, 420, "easeInOutCubic", function(){
-                    $('.result-list-box').css('display', 'none');
-
-                    self.$defaultListContainer.css({position:'relative', top:0});
-
-                    self._setListArea();
-                });
                 self.$defaultListContainer.find('.scroll-wrap').animate({scrollTop:0}, 120);
             };
         },
@@ -681,17 +690,25 @@
             if(!self.isChangeMode){
                 self.isChangeMode = true;
 
-                var listop = self.$defaultListContainer.position().top;
-
                 self.$searchContainer.stop().transition({opacity:0}, 320, "easeInOutCubic");
 
                 self._setResultText();
-                $('.result-list-box').stop().css({display:'block', opacity:0, y:100}).transition({opacity:1, y:0}, 410, "easeInOutCubic");
+
+                $('.store-list-wrap .tit').hide();
+                self.$searchContainer.css('display', 'none');
+
+                $('.result-list-box').stop().css({display:'block', opacity:0}).transition({opacity:1}, 410, "easeInOutCubic");
                 
-                var resultheight = $('.result-list-box').height();
-                self.$defaultListContainer.css({position:'absolute', top:listop}).transition({top:resultheight}, 420, "easeInOutCubic", function(){
-                    self.$searchContainer.css('display', 'none');
-                });
+                var paddingtop = 0;
+                if($(window).innerWidth() < 1025){
+                    var resultop = $('.result-list-box').position().top;
+                    var resultheight = $('.result-list-box').outerHeight(true);
+                    var listop = self.$defaultListContainer.offset().top;
+
+                    paddingtop = resultop + resultheight - listop;
+                }
+
+                self.$defaultListContainer.css({paddingTop:paddingtop, opacity:0}).animate({opacity:1}, 300);
 
                 self._setListArea();
                 self.$defaultListContainer.find('.scroll-wrap').animate({scrollTop:0}, 120);
@@ -734,13 +751,15 @@
             var scheight = self.$searchContainer.outerHeight(true);
             var optheight = self.$optionContainer.height();
             var resultheight = $('.result-list-box').height();
+            var listop = self.$defaultListContainer.offset().top;
+            var listpaddingtop = parseInt(self.$defaultListContainer.css('padding-top'));
             var paddingtop = parseInt(self.$defaultListContainer.find('.sch-list').css('padding-top'));
 
             var listheight;
             if(self.searchResultMode){
-                listheight = self.windowHeight - top - resultheight - optheight - paddingtop - 5;
+                listheight = self.windowHeight - listop - listpaddingtop - paddingtop - optheight;
             } else{
-                listheight = self.windowHeight - top - titheight - scheight - optheight - paddingtop - 5;
+                listheight = self.windowHeight - listop - paddingtop - optheight;
             }
             
             self.$defaultListContainer.find('.scroll-wrap').height(listheight);
@@ -760,7 +779,7 @@
                 mapmargin = 0;
                 mapwidth = self.windowWidth;
 
-                mapheight = self.$defaultListContainer.find('.scroll-wrap').height();
+                mapheight = self.$defaultListContainer.height();
             } else{
                 if(self.$leftContainer.hasClass('close')){
                     mapmargin = 24;
@@ -770,14 +789,14 @@
                 mapwidth = self.windowWidth - mapmargin;            
                 mapheight = $('.map-container').height();
             }
-
+            
             self.$mapContainer.css({
                 width: mapwidth,
                 height: mapheight,
                 'margin-left': mapmargin
             });
 
-            if(self.$map) self.$map.resize();
+            if(self.$map) self.$map.resize(mapwidth, mapheight);
         }
     }
 

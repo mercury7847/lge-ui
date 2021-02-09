@@ -1,28 +1,35 @@
 (function() {
-    var subTabItemTemplate = '<li><a href="#{{value}}">{{title}}</a></li>';
-    var awardsListItemTemplate = '<li class="items" data-id="{{id}}"><div class="inner">' +
+    var subTabItemTemplate = '<li><a href="#{{categoryId}}">{{categoryName}}</a></li>';
+    var awardsListItemTemplate = '<li class="items" data-id="{{storyId}}" data-award-list="{{awardList}}"><div class="inner">' +
         '<div class="thumb">' +
-            '<img src="{{imageUrl}}" alt="{{imageAlt}}">' +
-            '<p class="hidden pc">{{imageAlt}}</p>' +
-            '<p class="hidden mobile">{{imageAlt}}</p>' +
+            '<img src="{{storyListThumbnailPath}}" alt="{{storyListThumbnailAltText}}">' +
+            '<p class="hidden pc">{{storyListThumbnailAltText}}</p>' +
+            '<p class="hidden mobile">{{storyListThumbnailAltText}}</p>' +
         '</div>' +
         '<div class="award-info">' + 
             '<div class="flag-wrap bar-type">' +
-                '{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}' +
+                '<span class="flag">{{categoryName}}</span>' +
             '</div>' +
-            '<p class="tit">{{title}}</p>' +
+            '<p class="tit">{{storyTitle}}</p>' +
             '<div class="desc-wrap">' +
-                '<span class="desc">{{desc}}</span>' +
+                '<span class="desc">{{storyDesc}}</span>' +
             '</div>' +
         '</div>' +
         '<div class="btn-area">' +
+        '{{#if modelInfo&&modelInfo.length > 0}}' +
             '<div class="btn-wrap">' +
-                '<a href="{{url}}" class="btn-text">{{name}}</a>' +
-                '<button type="button" class="btn-more"><span class="hidden">수상내역 더보기</span></button>' +
+                '{{#if modelInfo.length == 1}}' +
+                    '<a href="{{modelInfo[0].url}}" class="btn-text">{{modelInfo[0].name}}</a>' +
+                '{{/if}}' +
+                '{{#if modelInfo.length > 1}}' +
+                    '<a href="#more" class="btn-text">{{modelInfo[0].name}}</a>' +
+                    '<button type="button" class="btn-more"><span class="hidden">수상내역 더보기</span></button>' +
+                '{{/if}}' +
             '</div>' +
+        '{{/if}}' +
         '</div>' + 
     '</div></li>';
-    var awardsPopupListItemTemplage = '{{#each item in list}}<li><a href="{{item.url}}">{{item.title}}</a></li>{{/each}}';
+    var awardsPopupListItemTemplage = '{{#each item in list}}<li><a href="{{item.url}}">{{item.name}}</a></li>{{/each}}';
 
     $(window).ready(function() {
         $('.KRP0028').buildCommonUI();
@@ -54,79 +61,132 @@
                 
                 self.$mainTab.on('click','li a',function(e){
                     var category1 = $(this).attr('href').replace("#","");
-                    self.requestData({"category1":category1,"category2":"all","order":self.$selectOrder.vcSelectbox('value')}, true);
+                    self.requestData({"superCategoryId":category1,"categoryId":"","sort":self.$selectOrder.vcSelectbox('value')}, true);
                 });
 
                 self.$subTab.on('click','li a',function(e){
                     var category1 = self.selectedTabHref(self.$mainTab);
                     var category2 = $(this).attr('href').replace("#","");
-                    self.requestData({"category1":category1,"category2":category2,"order":self.$selectOrder.vcSelectbox('value')}, false);
+                    self.requestData({"superCategoryId":category1,"categoryId":category2,"sort":self.$selectOrder.vcSelectbox('value')}, false);
                 });
 
                 self.$selectOrder.on('change', function(e){
                     var category1 = self.selectedTabHref(self.$mainTab);
                     var category2 = self.selectedTabHref(self.$subTab);
-                    self.requestData({"category1":category1,"category2":category2,"order":self.$selectOrder.vcSelectbox('value')}, false);
+                    self.requestData({"superCategoryId":category1,"categoryId":category2,"sort":self.$selectOrder.vcSelectbox('value')}, false);
                 });
 
-                /*
                 self.$list.on('click', 'li div.btn-area a', function(e){
                     e.preventDefault();
-                    var popupData = JSON.parse($(this).parents('li').find('article').text());
-                    self.openAwardsPopup(popupData);
+                    var url = $(this).attr('href').replace("#","");
+                    if(url) {
+                        if(url == "more") {
+                            $(this).siblings('button').trigger('click');
+
+                        } else {
+                            location.href = url;
+                        }
+                    }
                 });
-                */
 
                 self.$list.on('click', 'li div.btn-area button', function(e){
-                    var _id = $(this).parents('li').attr('data-id');
-                    self.requestAwardPopupData(_id);
+                    var $li = $(this).parents('li');
+                    var awardList = $li.data('awardList');
+                    var categoryName = $li.find('div.flag-wrap span.flag').text();
+                    self.openAwardsPopup(categoryName,awardList);
                 });
 
                 self.$pagination.on('page_click', function(e, data) {
                     var category1 = self.selectedTabHref(self.$mainTab);
                     var category2 = self.selectedTabHref(self.$subTab);
-                    self.requestData({"category1":category1,"category2":category2,"order":self.$selectOrder.vcSelectbox('value'),"page": data}, false);
+                    self.requestData({"superCategoryId":category1,"categoryId":category2,"sort":self.$selectOrder.vcSelectbox('value'),"page": data}, false);
                 });
             },
 
             selectedTabHref: function($tabs) {
-                var index = $tabs.vcTab('getSelectIdx');
-                var selectTab = $tabs.find('li:eq('+index+') a');
-                return selectTab.attr('href').replace("#","");
+                if($tabs.length > 0) {
+                    var index = $tabs.vcTab('getSelectIdx');
+                    var selectTab = $tabs.find('li:eq('+index+') a');
+                    if(selectTab.length > 0) {
+                        return selectTab.attr('href').replace("#","");
+                    }
+                }
+                return "";
             },
+
+            // "categoryList": [
+            //     {
+            //         "categoryName":"전체",
+            //         "categoryId":"all"
+            //     },
+            //     {
+            //         "categoryName": "정수기",
+            //         "categoryId": "CT50000175"
+            //     },
+            //     {
+            //         "categoryName": "스마트폰",
+            //         "categoryId": "CT50000182"
+            //     }
+            // ],
 
             requestData: function(param, isMainTabClick) {
                 var self = this;
                 var ajaxUrl = self.$section.attr('data-list-url');
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                     var data = result.data;
-                    var param = result.param;
+                    //var param = result.param;
                     
-                    self.$pagination.vcPagination('setPageInfo',param.pagination);
+                    self.$pagination.vcPagination('setPageInfo',data.pagination);
 
-                    self.$totalCounter.text('총 '+ vcui.number.addComma(data.totalCount) +'개');
+                    self.$totalCounter.text('총 '+ vcui.number.addComma(data.totalCnt) +'개');
 
                     if(isMainTabClick) {
-                        var arr = data.category instanceof Array ? data.category : [];
+                        var arr = (data.categoryList && data.categoryList instanceof Array) ? data.categoryList : [];
+                        var $ul = self.$subTab.find('ul');
+                        $ul.empty();
                         if(arr.length > 0) {
-                            var $ul = self.$subTab.find('ul');
-                            $ul.empty();
-                            arr.forEach(function(item, index) {
-                                $ul.append(vcui.template(subTabItemTemplate, item));
-                            });
+                            //전체를 넣어준다
+                            arr.unshift({
+                                "categoryName":"전체",
+                                "categoryId":""
+                            })
+                        }
+                        arr.forEach(function(item, index) {
+                            $ul.append(vcui.template(subTabItemTemplate, item));
+                        });
+                        if(arr.length > 0) {
                             self.$subTab.vcTab('update');
                             self.$subTab.vcTab('select',0);
+                            self.$subTab.parents('.tabs-bg').show();
+                        } else {
+                            self.$subTab.parents('.tabs-bg').hide();
                         }
                     }
 
-                    var arr = data.listData instanceof Array ? data.listData : [];
+                    var arr = data.awardList instanceof Array ? data.awardList : [];
                     self.$list.empty();
                     arr.forEach(function(item, index) {
+                        var array = [];
+                        var modelInfo = item.modelInfo;
+                        if(modelInfo) {
+                            modelInfo.forEach(function(item, index) {
+                                var tempArr = item.split('|');
+                                if(tempArr.length > 2) {
+                                    array.push({
+                                        "name":tempArr[1],
+                                        "url":tempArr[2]
+                                    });
+                                }
+                            });
+                        }
+                        item.modelInfo = array;
+                        item.awardList = modelInfo ? modelInfo.join(',') : "";
                         self.$list.append(vcui.template(awardsListItemTemplate, item));
                     });
                 });
             },
             
+            /*
             requestAwardPopupData: function(_id) {
                 var self = this;
                 var ajaxUrl = self.$section.attr('data-popup-url');
@@ -137,15 +197,29 @@
                     }
                 });
             },
+            */
 
-            openAwardsPopup: function(data) {
-                if(data) {
-                    var $popup = $('#awardsPopup');
-                    $popup.find('h1.tit span').text(data.title);
-                    $popup.find('p.com-pop-tit').text(data.subTitle);
-                    $popup.find('ul.com-pop-list').html(vcui.template(awardsPopupListItemTemplage, data));
-                    $popup.vcModal();
+            openAwardsPopup: function(categoryName, awardList) {
+                var $popup = $('#awardsPopup');
+                //$popup.find('h1.tit span').text(data.title);
+                $popup.find('p.com-pop-tit').text(categoryName);
+                
+                var array = [];
+                var modelInfo = awardList.split(',');
+                if(modelInfo) {
+                    modelInfo.forEach(function(item, index) {
+                        var tempArr = item.split('|');
+                        if(tempArr.length > 2) {
+                            array.push({
+                                "name":tempArr[1],
+                                "url":tempArr[2]
+                            });
+                        }
+                    });
                 }
+
+                $popup.find('ul.com-pop-list').html(vcui.template(awardsPopupListItemTemplage, {"list":array}));
+                $popup.vcModal();
             }
         }
         
