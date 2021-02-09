@@ -4,16 +4,10 @@
             <g>
                 <g>
                     <g>
-                        <g>
-                            <g>
-                                <path d="M0 0H16V16H0z" transform="translate(-510 -73) translate(120 64) translate(343 4) translate(47 5)"/>
-                                <g transform="translate(-510 -73) translate(120 64) translate(343 4) translate(47 5) translate(.5 1)">
-                                    <rect width="15" height="15" fill="#DDD" rx="7.5"/>
-                                    <g stroke="#000" stroke-linecap="round">
-                                        <path d="M0 3.5L7 3.5M3.5 0L3.5 7" transform="rotate(90 3.5 7.5)"/>
-                                    </g>
-                                </g>
-                            </g>
+                        <path d="M0 0H16V16H0z" transform="translate(-233 -903) translate(145 893) translate(78) translate(10 10)"/>
+                        <g fill="#000">
+                            <path d="M.5 6h11c.276 0 .5.224.5.5s-.224.5-.5.5H.5C.224 7 0 6.776 0 6.5S.224 6 .5 6z" transform="translate(-233 -903) translate(145 893) translate(78) translate(10 10) translate(2 1.5)"/>
+                            <path d="M.5 6h11c.276 0 .5.224.5.5s-.224.5-.5.5H.5C.224 7 0 6.776 0 6.5S.224 6 .5 6z" transform="translate(-233 -903) translate(145 893) translate(78) translate(10 10) translate(2 1.5) rotate(90 6 6.5)"/>
                         </g>
                     </g>
                 </g>

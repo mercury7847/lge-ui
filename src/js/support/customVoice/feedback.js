@@ -173,6 +173,7 @@
 
             $('.agree-wrap input:checkbox').on('change', function(){
                 if( $('.agree-wrap input:checkbox').filter(':checked').length == $('.agree-wrap input:checkbox').length ) {
+                    var $this = $(this);
                     var $curSection = $this.closest('.section');
 
                     var $currentInput = $curSection.next('.section').find('input').not(':disabled').filter(function(){

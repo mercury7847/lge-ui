@@ -8,9 +8,9 @@
 .main-wrap {
 	max-width:1920px;
 	margin:0 auto;
-	padding-bottom:120px;
+	// padding-bottom:120px;
 	@include mobile {
-		padding-bottom:171px;
+		// padding-bottom:171px;
 	}
 	.scene {
 		position:relative;
@@ -194,6 +194,14 @@
 			}
 			.next-arr {
 				
+			}
+		}
+	}
+	.section-cover {
+		footer {
+			margin-top:120px;
+			@include mobile {
+				margin-top:171px;
 			}
 		}
 	}
