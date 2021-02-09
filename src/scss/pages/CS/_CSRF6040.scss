@@ -100,7 +100,7 @@
                 @include csmobile {
                     display:block;
                     position:absolute;
-                    bottom:54px;
+                    bottom:90px;
                     left:0;
                     span {
                         display:inline-block;
@@ -149,12 +149,24 @@
                 @include csmobile {
                     margin:0 20px;
                 }
+                #tab1 {
+                    .sch-input-wrap {
+                        padding-bottom:64px;
+                        @include csmobile {
+                            padding-bottom:0;
+                        }
+                        @include mobile {
+                            padding-bottom:0;
+                        }
+                    }
+                }
                 .tabs-wrap {
-                    position:absolute;
-                    top:-54px;
-                    right:0;
+                    // position:absolute;
+                    // top:-54px;
+                    // right:0;
+                    margin-bottom:48px;
                     text-align:left;
-                    padding-bottom: 24px;
+                    // padding-bottom: 24px;
 
                     @include csmobile {
                         position:relative;
@@ -172,7 +184,19 @@
                 }
                 .sch-input-wrap {
                     position: relative;
-                    padding-bottom:48px;
+                    margin-bottom:64px;
+                    @include csmobile {
+                        margin-bottom:0;
+                    }
+                    @include mobile {
+                        margin-bottom:0;
+                        padding-bottom:0;
+                    }
+                    .btn-area {
+                        position:absolute;
+                        bottom:0;
+                        left:0;
+                    }
 
                     @include csmobile {
                         //padding-bottom:52px;
@@ -192,11 +216,15 @@
                     .btn-area {
                         @include csmobile {
                             position: absolute;
-                            top: -56px;
-                            right: 16px;
+                            top:auto;
+                            right:0;
+                            bottom:-59px;
+                            text-align:right;
                             @include mobile {
-                                top:-63px;
-                                right:-4px;
+                                top:auto;
+                                right:0;
+                                bottom:-59px;
+                                text-align:right;
                             }
                         }
                     }
@@ -279,14 +307,14 @@
                 }
                 .desc {
                     padding:0 0 12px;
-                    border-bottom: 2px solid $color-default;
-                    @include font-small;
+                    border-bottom: 1px solid $color-default;
+                    @include font-medium;
                     color: $color-default;
                     font-weight: $font-weight-bold;
 
                     @include csmobile {
                         position:relative;
-                        padding:58px 0 12px;
+                        padding:103px 0 12px;
                         /*
                         &:before {
                             content:'';
@@ -307,18 +335,25 @@
 
             .sch-list {
                 padding-top: 24px;
+                @include mobile {
+                    padding-top:16px;
+                }
                 .list-item {
                     position: relative;
                     padding-bottom:32px;
                 }
                 .list-item > li {
                     position:relative;
-                    padding:0 40px 40px 0;
+                    padding:24px 40px 24px 0;
+                    border-bottom:1px solid #ddd;
+                    &:first-child {
+                        padding-top:0;
+                    }
                     
                     @include csmobile {
                         //padding:0 20px 40px 0;
-                        margin-bottom: 20px;
-                        padding: 0 20px 20px 0;
+                        // margin-bottom: 20px;
+                        padding:16px 0;
                         &:after {
                             display: inline-block;
                             content: '';
@@ -390,8 +425,8 @@
                             }
                             
                             .addr {
-                                margin-top:16px;
-                                color:#616161;
+                                margin-top:8px;
+                                color:#000;
                                 font-size:16px;
                                 line-height:24px;
                                 overflow:hidden; 
@@ -408,13 +443,13 @@
                                 }
                             }
                             .etc-info {
-                                margin-top:2px;
+                                margin-top:4px;
                                 font-size:0;
                                 @include csmobile {
                                     margin-top:4px;
                                 }
                                 .tel {
-                                    color:#616161;
+                                    color:#666;
                                     font-size:16px;
                                     line-height:24px;
                                     @include csmobile {
@@ -515,7 +550,7 @@
                         bottom: 0;
                         left: 40px;
                         width: calc(100% - 80px);
-                        height: 2px;
+                        height: 1px;
                         background-color: $color-default;
                         @include mobile {
                             width: calc(100% - 36px);
@@ -534,14 +569,15 @@
                         }
                     }
                     .result-txt {
-                        @include font-small;
+                        padding-right:20px;
+                        @include font-medium;
                         font-weight: $font-weight-bold;
                         @include csmobile {
                             padding:0 0 20px 0;
                         }
                         strong {
                             font-weight:normal;
-                            color:#EC455A;
+                            color:#da0f47;
                         }
                     }
                 }
