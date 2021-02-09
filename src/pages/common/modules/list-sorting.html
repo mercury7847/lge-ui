@@ -2,7 +2,12 @@
     <div class="sort-area">
         <div class="sort-list">
             <div class="sort-select-wrap">
+                @@if(context.selectname) {
+                <select class="ui_selectbox" id="select1" title="정렬 기준 선택" name="@@selectname">
+                }
+                @@if(!context.selectname) {
                 <select class="ui_selectbox" id="select1" title="정렬 기준 선택" name="order">
+                }
                     @@for (var i = 0; i < context.select.length; i++) {
                     <option `+select[i].default+`>`+select[i].option+`</option>
                     }
