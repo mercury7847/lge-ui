@@ -208,9 +208,9 @@
                 });
             });
 
-            $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('keyup', function(e){
-                this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
-            })
+            // $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('keyup', function(e){
+            //     this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+            // })
         }
     }
 
