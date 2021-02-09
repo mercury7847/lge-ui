@@ -171,9 +171,31 @@
                 authManager.open();
             });
 
+            $('#allCheck').on('change', function(){
+                var $this = $(this);
+                var _checked = $this.prop('checked');
+                var $curSection = $this.closest('.section');
+
+                if( _checked) {
+
+                    var $currentInput = $curSection.next('.section').find('input').not(':disabled').filter(function(){
+                        if( $(this).attr('readonly') == false || $(this).attr('readonly') == undefined ){
+                            return true;
+                        }
+                    }).first();
+                    // .focus();
+
+                    $('html, body').stop().animate({
+                        scrollTop : $currentInput.closest('.section').offset().top
+                    }, function(){
+                        $currentInput.focus();
+                    });
+                }
+            })
+
             // 인증문자 보내기
             self.$authPopup.find('.btn-send').on('click', function() {
-                authManager.send();
+                authManager.send(this);
             });
 
             // 인증 완료 하기

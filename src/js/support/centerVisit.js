@@ -570,7 +570,7 @@
             });
 
             self.$authPopup.find('.btn-send').on('click', function() {
-                authManager.send();
+                authManager.send(this);
             });
 
             self.$authPopup.find('.btn-auth').on('click', function() {
