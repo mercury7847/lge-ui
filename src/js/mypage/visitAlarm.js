@@ -259,7 +259,7 @@
                 var _id = self.getSelectedContractID();
                 if(!_id || _id=="all" || _id.length == 0) {
                     //모아보기 팝업
-                    lgkorUI.alert("", {title: "계약정보 선택에서 개별 계약 정보를<br>선택 후, 방문일정 변경요청을<br>신청해주세요."});
+                    lgkorUI.alert("계약정보 선택에서 개별 계약 정보를<br>선택 후, 방문일정 변경요청을 신청해주세요.", {title: "방문일정 변경 안내"});
                     return;
                 };
                 var param = {
@@ -274,8 +274,12 @@
                 lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                     var data = result.data;
 
+                    if(lgkorUI.stringToBool(data.pendingRequest)) {
+                        lgkorUI.alert("방문일정 변경요청이 정상적으로 되었습니다.<br>빠른시일 내에 확인 후 안내드리겠습니다.", {title: "변경요청 승인 대기 안내"});
+                        return;
+                    }
                     //날짜 새로 그리기
-                    var arr = data instanceof Array ? data : [];
+                    var arr = (data.dayList && data.dayList instanceof Array) ? data.dayList : [];
                     $list.empty();
                     arr.forEach(function(obj, index) {
                         obj.expectedDate = date;
