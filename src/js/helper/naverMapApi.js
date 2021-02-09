@@ -49,7 +49,9 @@ vcui.define('helper/naverMapApi', ['jquery', 'vcui'], function ($, core) {
                 if(callback) callback();
             }else{
                 self._importApiJs().done(function(){
-                    if(callback) callback();
+                    naver.maps.onJSContentLoaded = function() {
+                        if(callback) callback();
+                    };
                 }).fail(function(e){
                     alert(e);
                 }) 

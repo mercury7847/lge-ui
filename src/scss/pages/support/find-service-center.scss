@@ -172,6 +172,16 @@
                         }
                     }
                 }
+
+                .select-wrap {
+                    .ui-select-scrollarea {
+                        ul {
+                            overflow-y: scroll;
+                            max-height: 200px;
+                        }
+                    }
+                }
+
                 .sch-input-wrap {
                     position: relative;
                     padding-bottom:48px;
@@ -181,15 +191,7 @@
                         padding-bottom:0;
                         border:none;
                     }
-                    .select-wrap {
-                        .ui-select-scrollarea {
-                            ul {
-                                overflow-y: scroll;
-                                max-height: 200px;
-                            }
-                        }
-                        
-                    }
+
 
                     .btn-area {
                         @include csmobile {
