@@ -279,8 +279,10 @@
         var sendata = {
             startDate: startDate,
             endDate: endDate,
-            page: page || 1
+            page: page || 1,
+            orderNumber: $('.contents.mypage').data('orderNumber')
         }
+        console.log("### requestOrderInquiry ###", sendata)
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
             var data = result.data;
             console.log("result.data.listData:", data.listData);
