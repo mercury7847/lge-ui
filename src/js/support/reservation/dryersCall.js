@@ -37,7 +37,7 @@
             var register = {
                 userNm: {
                     required: true,
-                    maxLength: 10,
+                    maxLength: 30,
                     pattern: /^[가-힣a-zA-Z]+$/,
                     msgTarget: '.err-block',
                     errorMsg: '이름을 입력해주세요.',
@@ -63,7 +63,7 @@
                 register: {
                     authName: {
                         required: true,
-                        maxLength: 10,
+                        maxLength: 30,
                         pattern: /^[가-힣a-zA-Z]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
