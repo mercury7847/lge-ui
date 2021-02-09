@@ -152,6 +152,9 @@
                 #tab1 {
                     .sch-input-wrap {
                         padding-bottom:64px;
+                        @include csmobile {
+                            padding-bottom:0;
+                        }
                         @include mobile {
                             padding-bottom:0;
                         }
@@ -182,6 +185,9 @@
                 .sch-input-wrap {
                     position: relative;
                     margin-bottom:64px;
+                    @include csmobile {
+                        margin-bottom:0;
+                    }
                     @include mobile {
                         margin-bottom:0;
                         padding-bottom:0;
@@ -210,8 +216,10 @@
                     .btn-area {
                         @include csmobile {
                             position: absolute;
-                            top: -56px;
-                            right: 16px;
+                            top:auto;
+                            right:0;
+                            bottom:-59px;
+                            text-align:right;
                             @include mobile {
                                 top:auto;
                                 right:0;
