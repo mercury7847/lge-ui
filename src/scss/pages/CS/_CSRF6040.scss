@@ -196,6 +196,7 @@
                         position:absolute;
                         bottom:0;
                         left:0;
+                        z-index:1;
                     }
 
                     @include csmobile {
@@ -535,6 +536,10 @@
                         top:20px;
                         right:20px;
                         bottom:auto;
+                        @include mobile {
+                            top:25px;
+                            left:auto;
+                        }
                     }
 
                 }
