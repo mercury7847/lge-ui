@@ -239,7 +239,9 @@
         MOBILE_CHECK_WIDTH: 768,
         STICKY_MODULES:[],
         NO_IMAGE: "/lg5-common/images/icons/noimage.svg",
-        RECENT_PROD_COOKIE_NAME: "myRecentProduct",
+        RECENT_PROD_COOKIE_NAME: "myRecentProduct", //최근 본 제품 쿠키
+        COMPARE_COOKIE_NAME: "LG5_CompareCart", //비교하기 쿠키
+        INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
         init: function(){
             this._addImgOnloadEvent();
             this._preloadComponents();
@@ -775,7 +777,7 @@
             if(index != -1) {
                 //array
                 var checkExpire = new Date();
-                var itemArray = cookieValue.split(',');
+                var itemArray = cookieValue.split('|');
                 var valueArray = [];
                 var resultArray = [];
                 itemArray.forEach(function (i, index) {
@@ -805,9 +807,9 @@
                     }
                 });
                 if(resultArray.length != itemArray.length) {
-                    self.setCookie(cookieName, resultArray.join(','));
+                    self.setCookie(cookieName, resultArray.join('|'));
                 }
-                cookieValue = (getRealValue) ? resultArray.join(',') : valueArray.join(',');
+                cookieValue = (getRealValue) ? resultArray.join('|') : valueArray.join('|');
             }
             return cookieValue;
         },
@@ -825,7 +827,7 @@
             var items = self.getCookie(cookieName, true); // 이미 저장된 값을 쿠키에서 가져오기
             var itemArray = [];
             if(items) {
-                itemArray = items.split(',');
+                itemArray = items.split('|');
                 //겹치는 값 제거
                 var findIndex = -1;
                 for(var n=0;n<itemArray.length;n++) {
@@ -852,7 +854,7 @@
 
             addData += ("&&&" + expireDateString);
             itemArray.unshift(addData);
-            items = itemArray.join(',');
+            items = itemArray.join('|');
             self.setCookie(cookieName, items);
         },
 
@@ -861,7 +863,7 @@
             var items = self.getCookie(cookieName, true); // 이미 저장된 값을 쿠키에서 가져오기
             var itemArray = [];
             if(items) {
-                itemArray = items.split(',');
+                itemArray = items.split('|');
                 var findIndex = -1;
                 for(var n=0;n<itemArray.length;n++) {
                     var value = itemArray[n];
@@ -876,7 +878,7 @@
                 };
                 if(findIndex != -1) {
                     itemArray.splice(findIndex, 1);
-                    items = itemArray.join(',');
+                    items = itemArray.join('|');
                     self.setCookie(cookieName, items);
                 }
             }

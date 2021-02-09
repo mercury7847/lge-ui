@@ -290,6 +290,7 @@
             //최근 검색어 삭제
             removeRecentSearcheText:function(text) {
                 var self = this;
+                /*
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 if(!searchedList) {
                     searchedList = [];
@@ -300,6 +301,8 @@
                     searchedList.splice(findIndex, 1);
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
+                */
+                lgkorUI.removeCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text)
                 self.updateRecentSearchList();
             },
 
@@ -307,6 +310,7 @@
             addRecentSearcheText:function(text) {
                 if(!text || text.length < 1) return;
                 var self = this;
+                /*
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 if(!searchedList) {
                     searchedList = [];
@@ -319,13 +323,19 @@
                     }
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
+                */
+                lgkorUI.addCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text);
                 self.updateRecentSearchList();
             },
 
             //최근 검색어 리스트 갱신
             updateRecentSearchList:function() {
                 var self = this;
-                var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+
+                //lgkorUI.addCookieArrayValue(lgkorUI.RECSNT,modelID);
+                var cookieValue = lgkorUI.getCookie(lgkorUI.INTERGRATED_SEARCH_VALUE);
+                var searchedList = cookieValue ? cookieValue.split('|') : [];
+                //var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 var arr = searchedList instanceof Array ? searchedList : [];
                 var $list_ul = self.$recentKeywordList.find('div.keyword-list ul');
                 $list_ul.empty();
@@ -333,10 +343,10 @@
                     arr.forEach(function(item, index) {
                         $list_ul.append(vcui.template(recentItemTemplate, {"text":item}));
                     });
-                    //self.$recentKeywordList.show();
+                    self.$recentKeywordList.show();
                     self.$recentKeywordList.find('div.no-data').hide();
                 } else {
-                    //self.$recentKeywordList.hide();
+                    self.$recentKeywordList.hide();
                     self.$recentKeywordList.find('div.no-data').show();
                 }
             }

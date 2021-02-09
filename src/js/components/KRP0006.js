@@ -67,7 +67,7 @@
                         } else if(data.productCurationProposal) {
                             //PDP페이지를 5번 이상 방문 시(최근 본 제품이 5개 이상일때)
                             var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
-                            var array = cookieValue.split(',');
+                            var array = cookieValue.split('|');
                             var count = $item.attr('data-top-cookie-count');
                             var checkCookieCount = !count ? 5 : count; 
                             if(array.length >= checkCookieCount) {
