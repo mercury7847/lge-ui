@@ -52,12 +52,12 @@
 	}
 	.title {
 		margin-top:8px;
-		font-size:56px;
+		font-size:48px;
 		font-weight:700;
-		line-height:74px;
+		line-height:66px;
 		@include mobile {
 			margin-top:6px;
-			font-size:32px;
+			font-size:31px;
 			line-height:42px;
 		}
 		&.title-h1 {
