@@ -18,6 +18,14 @@
 
     .pdp-wrap {
         @include clearfix;
+        &.pdp-center {
+            @include pc {
+                .pdp-visual-wrap {
+                    float:none;
+                    margin:0 auto;
+                }
+            }
+        }
 
         .btn-modal {
             position: relative;
