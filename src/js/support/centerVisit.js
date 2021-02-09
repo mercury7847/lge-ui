@@ -487,7 +487,6 @@
             });
 
             self.warrantyGuide.on('modalshown', function(){
-                console.log(111)
                 var $this = $(this);
                 var $tab = $this.find('.ui_tab');
                 var $tabCont =  $this.find('.tabs-contents');
