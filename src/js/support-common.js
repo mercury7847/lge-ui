@@ -345,6 +345,13 @@ CS.MD.search = function() {
         _bindEvent: function() {
             var self = this;
 
+            // function maxLengthCheck(object){
+            //     if (object.value.length > object.maxLength){
+            //       object.value = object.value.slice(0, object.maxLength);
+            //     }    
+            //   }
+
+           
             self.$el.on('click', '.search-layer .btn-delete', function() {
                 var $box = $(this).closest('li');
                 cookie.deleteCookie('LG_SupportKeyword', $box.find('a').text())
@@ -2223,6 +2230,13 @@ $.fn.serializeObject = function() {
         }
 
         if ($('.ui_common_scroll').length && !lgkorUI.isMobile()) $('.ui_common_scroll').mCustomScrollbar();
+
+        $(document).on('input', 'input[type="number"]', function(){
+            if (this.value.length > this.maxLength){
+                this.value = this.value.slice(0, this.maxLength);
+              }  
+        });
+
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);
