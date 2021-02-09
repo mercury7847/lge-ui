@@ -25,12 +25,15 @@
             "period": "1년(2020.09.01)",
             "installDate": "2020.09.01",
             "installPlace": "회사",
-            "saleTurn": "3, 6, 9회차"
+            "saleTurn": "3, 6, 9회차",
+            "cancelConsultUrl": "https://wwwdev50.lge.co.kr/"
         },
         "paymentInfo": {
             "monthlyPrice": "38,800원",
             "withdrawDate": "매월 22일",
-            "paymentMethod": "BANK",
+            "paymentMethod": "CARD",
+            "paymentListUrl": "https://wwwdev50.lge.co.kr/",
+            "requestCardUrl": "https://wwwdev50.lge.co.kr/",
             "cardInfo": {
                 "cardComName": "엘지카드",
                 "cardComValue": "11",
@@ -43,6 +46,9 @@
                 "bankValue": "222",
                 "bankNumber": "99999005431259988"
             }
+        },
+        "memberPointInfo":{
+
         },
         "managerInfo": {
             "name": "박진희 매니저",

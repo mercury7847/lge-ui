@@ -34,7 +34,7 @@
                 margin: 0 -8px;
                 > li {
                     width: 50%;
-                    padding: 0 8px;
+                    padding: 0 4px;
                     &:nth-child(3) {
                         display: none;
                     }
@@ -63,8 +63,11 @@
 
                 .product-image {
                     img {
-                        max-width: 180px;
+                        max-width: 160px;
                     }
+                }
+                .product-contents {
+                    padding:0 12px;
                 }
                 .product-info {
                     margin-bottom: 16px;
@@ -155,7 +158,9 @@
 
         .result-tabs {
             position: relative;
-            margin-top: 64px;
+            height:72px;
+            margin-top: 122px;
+            padding:18px 0;
             .tabs-scroll-wrap {
                 position: relative;
                 .tabs {
@@ -169,13 +174,15 @@
                         > a {
                             display: block;
                             position: relative;
-                            border-bottom: 4px solid transparent;
+                            // border-bottom: 4px solid transparent;
                             font-weight: 700;
-                            @include font-large;
-                            color: #aaa;
+                            @include font-medium;
+                            color: #767676;
                         }
                         &.on > a {
-                            border-color: #222;
+                            // border-color: #222;
+                            border-radius:24px;
+                            background-color:#e4e4e4;
                             color: #000;
                         }
 
@@ -185,8 +192,8 @@
                                 margin-left: 0;
                             }
                             > a {
-                                padding-bottom: 8px;
-                                border-width: 3px;
+                                // padding-bottom: 8px;
+                                // border-width: 3px;
                             }
                         }
                     }
@@ -197,7 +204,7 @@
                     .tabs > li {
                         margin-left: 0;
                         > a {
-                            padding: 22px 53px;
+                            padding: 5px 16px;
                             text-align: center;
                         }
                     }
@@ -231,7 +238,7 @@
                 position: absolute;
                 bottom: 0;
                 right: 0;
-                padding: 24px 0 28px;
+                padding: 23px 0;
                 .chk-wrap input + label {
                     @include font-medium;
                     &:before {
@@ -312,7 +319,7 @@
                 }
             }
             .result-tabs {
-                margin-top: 0;
+                margin-top: 24px;
                 @include mobile {
                     margin-top: 10px;
                 }
@@ -323,7 +330,7 @@
     .compare-result-contents {
         max-width: (1146px + 80px);
         margin: 0 auto;
-        padding: 0 40px;
+        padding: 48px 40px;
 
         @include mobile {
             max-width: 100%;
@@ -331,11 +338,16 @@
         }
 
         .section {
-            padding: 48px 0;
-            border-top: 1px solid $color-border;
-            .title {
-                margin-bottom: 24px;
-                @include font-large-1;
+            margin-top:120px;
+            &:first-child {
+                margin-top:0;
+            }
+            .title-wrap {
+                border-bottom:2px solid #000;
+                .title {
+                    padding-bottom:16px;
+                    @include font-large-4;
+                }
             }
             @include mobile {
                 margin: 0 -16px;
@@ -348,6 +360,7 @@
         .lists {
             @include clearfix;
             margin: 0 -24px;
+            padding-top:48px;
             .list {
                 float: left;
                 width: 33%;

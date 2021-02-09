@@ -34,9 +34,25 @@
                         errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
                         patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
                     },
+                    contactPhoneNo1 : {
+                        pattern: /^(010|011|017|018|019)$/,
+                        msgTarget: '.contact-box-err-blocK',
+                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                    },
+                    contactPhoneNo2 : {
+                        pattern: /^d{3,4}$/,
+                        msgTarget: '.contact-box-err-blocK',
+                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                    },
+                    contactPhoneNo3 : {
+                        pattern: /^d{4}$/,
+                        msgTarget: '.contact-box-err-blocK',
+                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                    },
                     email:{
                         required: true,
-                        pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        //pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        pattern : /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/,
                         minLength: 5,
                         maxLength: 50,
                         msgTarget: '.err-block',
@@ -155,9 +171,31 @@
                 authManager.open();
             });
 
+            $('.agree-wrap input:checkbox').on('change', function(){
+                if( $('.agree-wrap input:checkbox').filter(':checked').length == $('.agree-wrap input:checkbox').length ) {
+                    var $curSection = $this.closest('.section');
+
+                    var $currentInput = $curSection.next('.section').find('input').not(':disabled').filter(function(){
+                        if( $(this).attr('readonly') == false || $(this).attr('readonly') == undefined ){
+                            return true;
+                        }
+                    }).first();
+                    // .focus();
+
+                    if( $currentInput.length ) {
+                        $('html, body').stop().animate({
+                            scrollTop : $currentInput.closest('.section').offset().top
+                        }, function(){
+                            $currentInput.focus();
+                        });
+                    }
+                }
+            })
+
+
             // 인증문자 보내기
             self.$authPopup.find('.btn-send').on('click', function() {
-                authManager.send();
+                authManager.send(this);
             });
 
             // 인증 완료 하기
@@ -168,6 +206,10 @@
                     }
                 });
             });
+
+            $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('keyup', function(e){
+                this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+            })
         }
     }
 

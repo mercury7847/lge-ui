@@ -277,7 +277,6 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
         _changeMarkersState: function _changeMarkersState(){
             var self = this;
-            console.log("#### _changeMarkersState ###")
             if(!self.map) return;
 
             var showItems = self._setItemVisible();
@@ -457,7 +456,6 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             self._changeMarkersState();
 
             var marker = centerPoint.items.item;
-            console.log(marker);
             marker.setZIndex(self.itemArr.length-1);
 
             self.map.setZoom(12, true);

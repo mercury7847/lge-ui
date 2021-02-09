@@ -556,7 +556,7 @@
             width: 16px;
             height: 16px;
             margin-left: 2px;
-            background: url('/lg5-common/images/icons/btn-plus-16.svg') no-repeat 0 0;
+            background: url('/lg5-common/images/icons/btn-plus-16-round.svg') no-repeat 0 0;
             vertical-align: -1px;
         }
 
@@ -566,7 +566,7 @@
             &.active {
                 font-weight: 700;
                 .icon-nav {
-                    background-image: url('/lg5-common/images/icons/btn-minus-16.svg');
+                    background-image: url('/lg5-common/images/icons/btn-minus-16-round.svg');
                     vertical-align: -2px;
                 }
             }
@@ -776,7 +776,8 @@
                 }
             }
         }
-        & + .category-related {
+        & + .category-related,
+        & + .category-hashtag {
             margin-top: 48px;
         }
     }

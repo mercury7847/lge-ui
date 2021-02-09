@@ -146,6 +146,12 @@
                     });       
                 }
             });
+
+            $('.agree-wrap input:checkbox').on('change', function(){
+                if( $('.agree-wrap input:checkbox').filter(':checked').length == $('.agree-wrap input:checkbox').length ) {
+                    $('.step-btn-wrap:visible button').focus();
+                }
+            })
         }
     }
 

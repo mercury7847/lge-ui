@@ -133,7 +133,10 @@
                     latitude: self.currentLatitude
                 }).on('mapinit', function(e,data){
                     self.$map = self.$mapContainer.vcStoreMap('instance');
-                    self._loadStoreData();
+
+                    self._resize();
+                    
+                    self._loadStoreData();                  
 
                     self._bindEvents();
                 }).on('mapchanged', function(e, data){	
@@ -616,7 +619,6 @@
             var self = this;
             
             self.$defaultListLayer.empty();
-            
              for(var i=0; i<data.length; i++){
                  var listData = {
                      num: i+1,
@@ -747,7 +749,7 @@
         _resize: function(){
             var self = this;
 
-            self.windowWidth = $(window).width();
+            self.windowWidth = $(window).innerWidth();
             self.windowHeight = $(window).innerHeight();
 
             self._setListArea();

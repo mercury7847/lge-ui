@@ -169,16 +169,18 @@
             e.preventDefault();
 
             var dataID = $(this).closest('.box').data("id");
+            var prodID = $(this).closest('.col-table').data('prodId');
             var pdpUrl = $(this).attr("href");
-            setProductStatus(dataID, pdpUrl);
+            setProductStatus(dataID, prodID, pdpUrl);
         }).on('click', '.infos .name a', function(e){
             e.preventDefault();
 
             var wrapper = $(this).closest(".contents");
             var dataID = $(this).closest('.box').data("id");
+            var prodID = $(this).closest('.col-table').data('prodId');
             var pdpUrl = $(this).attr("href");
             if(wrapper.hasClass("orderAndDelivery-detail")){                
-                setProductStatus(dataID, pdpUrl);
+                setProductStatus(dataID, prodID, pdpUrl);
             } else{
                 location.href = ORDER_DETAIL_URL + "?orderNumber=" + ORDER_LIST[dataID].orderNumber;
             }
@@ -252,11 +254,12 @@
         requestOrderInquiry(dateData.startDate, dateData.endDate, CURRENT_PAGE+1);
     }
 
-    function setProductStatus(dataId, pdpUrl){
+    function setProductStatus(dataId, prodId, pdpUrl){
         lgkorUI.showLoading();
         var sendata = {
-            productNameEN: ORDER_LIST[dataId].productNameEN
+            productNameEN: ORDER_LIST[dataId].productList[prodId].productNameEN
         }
+        console.log("setProductStatus:", sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PRODUCT_STATUS_URL, sendata, function(result){
             if(result.data.success == "N"){
                 lgkorUI.alert("", {
@@ -280,7 +283,14 @@
         }
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
             var data = result.data;
-            console.log("result.data.listData:", data.listData)
+            console.log("result.data.listData:", data.listData);
+
+            var prodcnt = data.productOrderCount ? data.productOrderCount : 0;
+            $('.lnb-contents .tabs-wrap .tabs > li:nth-child(1) .count').text('('+prodcnt+')');
+
+            var carecnt = data.caresolutionOrdercount ? data.caresolutionOrdercount : 0;
+            $('.lnb-contents .tabs-wrap .tabs > li:nth-child(2) .count').text('('+carecnt+')');
+
             if(data.listData && data.listData.length){
                 CURRENT_PAGE = result.param.pagination.page;
                 TOTAL_PAGE = result.param.pagination.totalCount;

@@ -5942,7 +5942,7 @@ if (!window.JSON) {
             try {
                 ret = fn.apply(this, arguments);
             } catch (e) {
-                console.error(e);
+                // console.error(e);
             } finally {
                 this.supr = tmp;
             }
@@ -8488,6 +8488,7 @@ if (!window.JSON) {
 
             self.triggerHandler('destroy');
             self._unsetUIName();
+
             self.$el.off(self.eventNS).removeData('ui_' + self.moduleName);
             self.winOff();
             self.docOff();

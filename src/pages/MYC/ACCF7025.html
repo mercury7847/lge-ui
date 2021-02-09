@@ -14,12 +14,14 @@
                 "pageDesc" : "계약정보를 선택하여 상세한 내용을 확인 하실 수 있습니다."
             })
             <!-- mypage -->
+            <!-- 2021.02.05 data-request-contract-url 추가-->
             <div class="contents mypage"
                 data-contract-info-url="/lg5-common/data-ajax/mypage/contractInfo.json"
                 data-modify-confirm-url="/lg5-common/data-ajax/mypage/infoModifyConfirm.json"
                 data-modify-save-url="/lg5-common/data-ajax/mypage/infoModifySave.json"
                 data-payment-method-url="/lg5-common/data-ajax/mypage/paymentMethodAbled.json"
                 data-ars-agree-url="/lg5-common/data-ajax/caresolution/requestArsAgree.json"
+                data-request-contract-url="/lg5-common/data-ajax/mypage/requestContract.json"
             >
                 <div class="hidden-input-group">
                     <input type="hidden" name="paymentMethodConfirm" value="N" />
@@ -59,7 +61,7 @@
                             <div class="no-data"><p>보유하신 케어솔루션 계약 정보가 없습니다.</p></div>
 
                             <!-- 상세 -->
-                            <div class="section-wrap" style="display:none;">
+                            <div class="section-wrap" style="display:nonde;">
                                 <!-- 계약자/실사용자 정보 -->
                                 <div class="sects user viewer">
                                     <!-- 210127 수정 -->

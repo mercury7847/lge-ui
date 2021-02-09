@@ -9,6 +9,7 @@
     var INFO_MODIFY_SAVE;
     var PAYMENT_METHOD_CONFIRM;
     var ARS_AGREE_URL;
+    var REQUEST_CONTRACT_URL;
 
     var mypage;
     var userInfoBlock, userModifyBlock;
@@ -37,6 +38,7 @@
         INFO_MODIFY_SAVE = $('.contents.mypage').data('modifySaveUrl');
         PAYMENT_METHOD_CONFIRM = $('.contents.mypage').data('paymentMethodUrl');
         ARS_AGREE_URL = $('.contents.mypage').data('arsAgreeUrl');
+        REQUEST_CONTRACT_URL = $('.contents.mypage').data('requestContractUrl');
     
         vcui.require(['ui/modal', 'ui/validation', 'ui/formatter', 'ui/tab', 'helper/textMasking'], function () {             
             setting();
@@ -172,19 +174,29 @@
 
         $('.mypage').on('click', '.contract-btn', function(e){
             e.preventDefault();
+
+            $('#popup-contractIssue').find('.pop-conts .gray-txt-box p em').text(userInfo.userEmail);
+
             $('#popup-contractIssue').vcModal();
         }).on('click', '.requestCard-btn', function(e){
             e.preventDefault();
             $('#popup-cardIssue').vcModal();
-        }).on('click', '.paymenyList-btn', function(e){
+        })
+        // .on('click', '.paymenyList-btn', function(e){
+        //     e.preventDefault();
+
+        //     console.log("납부내역 조회");
+        // }).on('click', '.cancelConsult-btn', function(e){
+        //     e.preventDefault();
+
+        //     console.log("해지상담 신청");
+        // });
+
+        $('#popup-contractIssue').on('click', '.btn-group button.pink', function(e){
             e.preventDefault();
 
-            console.log("납부내역 조회");
-        }).on('click', '.cancelConsult-btn', function(e){
-            e.preventDefault();
-
-            console.log("해지상담 신청");
-        });
+            sendRequestContract();
+        })
 
         $('#popup-cardIssue').on('click', '.requestIssue-btn', function(e){
             e.preventDefault();
@@ -203,6 +215,27 @@
 
         $('select[name=contractInfo]').on('change', function(e, data){
             changeContractInfo();
+        });
+    }
+
+    //계약서 발급 신청
+    function sendRequestContract(){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(REQUEST_CONTRACT_URL, {}, function(result){
+            if(result.data.success == "Y"){
+                $('#popup-contractIssue').vcModal('close');
+
+                if(result.data.alert && result.data.alert.title){
+                    lgkorUI.alert("", {
+                        title: result.data.alert.title
+                    });
+                }
+            } else{
+                if(result.data.alert && result.data.alert.title){
+                    lgkorUI.alert("", {
+                        title: result.data.alert.title
+                    });
+                }
+            }
         });
     }
 
@@ -416,18 +449,18 @@
             info = getMaskingData(data.userInfo.actualUser);
             changeFieldValue('actual-info', info);
     
-            data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span><a href='#n' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
+            data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span><a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
             changeFieldValue('contract-info', data.contractInfo);
     
             info = {
-                monthlyPrice: "<span>" + data.paymentInfo.monthlyPrice + "</span><a href='#n' class='btn-link paymenyList-btn'>납부내역 조회</a>",
+                monthlyPrice: "<span>" + data.paymentInfo.monthlyPrice + "</span><a href='" + data.paymentInfo.paymentListUrl  + "' class='btn-link paymenyList-btn'>납부내역 조회</a>",
                 withdrawDate: data.paymentInfo.withdrawDate
             }
             if(data.paymentInfo.paymentMethod == METHOD_CARD){
                 paymentModeIndex = 0;
     
                 info.paymentMethod = "신용카드"
-                info.methodName =  "<span>" + data.paymentInfo.cardInfo.cardComName + "</span><a href='#n' class='btn-link requestCard-btn'>제휴카드 신청</a>";
+                info.methodName =  "<span>" + data.paymentInfo.cardInfo.cardComName + "</span><a href='" + data.paymentInfo.requestCardUrl  + "' class='btn-link requestCard-btn'>제휴카드 신청</a>";
                 info.methodNumber = txtMasking.card(data.paymentInfo.cardInfo.cardNumber);
             } else{
                 paymentModeIndex = 1;

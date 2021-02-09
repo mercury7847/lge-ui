@@ -7,7 +7,7 @@ $(window).ready(function(){
             '<div class="item-inner" data-id="{{id}}">'+
             '   <span class="img-area">'+
             '       <img src="{{productImg}}" alt="{{productAlt}}">'+
-            '       <p class="hidden">{{productAlt}}</p>'+
+            '       <p class="blind">{{productAlt}}</p>'+
             '   </span>'+
             '   <div class="item-text">'+
             '       <p class="product-name">{{productName}}</p>'+
@@ -19,8 +19,17 @@ $(window).ready(function(){
         var isInitChecked = false;
 
         function init(){
+            //초기화
             $('.btn-init').on('click', function(e){
                 setClearCompare();
+            });
+
+            //결과보기 버튼
+            $('.btn-compare').on('click', function(e){
+                var url = $(this).data('linkUrl');
+                if(url) {
+                    location.href = url;
+                }
             });
 
             $('.sticy-compare .list-inner li').on('click', '.btn-close', function(e){
@@ -60,14 +69,21 @@ $(window).ready(function(){
                 }
             }
 
-            var leng = storageCompare[lgkorUI.COMPARE_ID] == undefined ? "0" : storageCompare[lgkorUI.COMPARE_ID].length;
-            $('.right-cont .count').text(leng + "/" + lgkorUI.COMPARE_LIMIT);
+            var compare = storageCompare[lgkorUI.COMPARE_ID]; 
+            var leng = !compare ? "0" : compare.length;
+            var $count = $('div.compare-title div.count');
+            $count.text(leng + "/" + lgkorUI.COMPARE_LIMIT)
+            // var countContent = $count.contents();
+            // countContent[3].textContent = lgkorUI.COMPARE_LIMIT;
+            // ($count.find('strong').contents()[1]).textContent = leng;
         }
 
         function setCompareStatus(){
             console.log("setCompareStatus~~");
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
-            var leng = storageCompare[lgkorUI.COMPARE_ID] == undefined ? 0 : storageCompare[lgkorUI.COMPARE_ID].length;
+            var compare = storageCompare[lgkorUI.COMPARE_ID]; 
+            var leng = !compare ? "0" : compare.length;
+            //var leng = storageCompare[lgkorUI.COMPARE_ID] == undefined ? 0 : storageCompare[lgkorUI.COMPARE_ID].length;
             console.log("leng:",leng)
             if(leng){
                 var limit = window.breakpoint.name == "mobile" ? 2 : 3;

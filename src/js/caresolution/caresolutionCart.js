@@ -42,7 +42,6 @@
 
                 //nodata
                 self.$noData = self.$cartContent.find('div.no-data-wrap');
-
                 //추천제품
                 self.$recommendProduct = $('div.product-recommend-wrap');
 
@@ -248,9 +247,11 @@
             noData: function(visible) {
                 var self = this;
                 if(visible) {
-                    self.$checkOption.hide();
+                    //self.$checkOption.hide();
+                    self.$cartContent.find('>div:not(.no-data-wrap)').hide();
                     self.$noData.show();
                 } else {
+                    self.$cartContent.find('>div:not(.no-data-wrap)').show();
                     self.$noData.hide();
                 }
             },

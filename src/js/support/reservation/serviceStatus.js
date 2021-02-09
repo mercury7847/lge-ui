@@ -648,7 +648,7 @@
                 
     
                 self.el.popup.find('.btn-send').on('click', function() {
-                    self.authManager.send();
+                    self.authManager.send(this);
                 });
             },
             complete : function(){

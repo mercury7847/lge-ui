@@ -182,19 +182,25 @@
                                         <!-- 2020.12.24 tooltip-wrap 삭제 -->
                                     </div>
                                     <div class="conts">
+                                        <!-- 2021.02.08 패턴 유효성 검사 추가 -->
                                         <div class="contact-box">
                                             <div class="input-wrap">
-                                                <input type="text" name="contactPhoneNo1" id="contactPhoneNo1" maxlength="4">
+                                                <input type="text" name="contactPhoneNo1" id="contactPhoneNo1" maxlength="4" data-pattern-msg="휴대전화를 정확히 입력해주세요">
                                             </div>
                                             <span class="at">-</span>
                                             <div class="input-wrap">
-                                                <input type="text" name="contactPhoneNo2" id="contactPhoneNo2" maxlength="4">
+                                                <input type="text" name="contactPhoneNo2" id="contactPhoneNo2" maxlength="4" data-pattern-msg="휴대전화를 정확히 입력해주세요">
                                             </div>
                                             <span class="at">-</span>
                                             <div class="input-wrap">
-                                                <input type="text" name="contactPhoneNo3" id="contactPhoneNo3" maxlength="4">
+                                                <input type="text" name="contactPhoneNo3" id="contactPhoneNo3" maxlength="4" data-pattern-msg="휴대전화를 정확히 입력해주세요">
                                             </div>
                                         </div>
+                                        <div class="btm-more err-block contact-box-err-blocK">
+                                            <p class="err-msg"></p>
+                                        </div>
+                                        <!-- //2021.02.08 패턴 유효성 검사 추가 -->
+
                                         <!-- 2020.12.24 불릿 리스트 추가 -->
                                         @@include('./common/modules/bullet-list.html', {
                                             "bulletTxt" : [
@@ -220,8 +226,9 @@
                                     <div class="conts">
                                         <div class="text-form">
                                             <div class="input-wrap">
-                                                <input type="text" name="title" id="title" class="ui_textcontrol" placeholder="제목 입력" maxlength="40" data-limit="40" data-count-target="#txt-count1" data-error-msg="제목을 입력해주세요." data-required="true" required>
-                                                <span id="txt-count1" class="inner-text"><em>0</em>/40자</span>
+                                                <input type="text" name="title" id="title" class="ui_textcontrol" placeholder="제목 입력" maxlength="100" data-limit="100" data-count-target="#txt-count1" data-error-msg="제목을 입력해주세요." data-required="true" required>
+                                                <!-- 2021.02.09 글자 수 입력제한 수정 : maxlength, data-limit -->
+                                                <span id="txt-count1" class="inner-text"><em>0</em>/100자</span>
                                             </div>
                                         </div>
                                         <div class="btm-more err-block">

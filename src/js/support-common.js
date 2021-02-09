@@ -2089,7 +2089,11 @@ var AuthManager = function() {
                     var resultData = result.data;
 
                     if (resultData.resultFlag == 'Y') {
-                        $(el).find('span').html(RESENDTEXT);
+                        //$(el).find('span').html(RESENDTEXT);
+                        
+                        console.log($(el))
+                        console.log($(el).html())
+                        $(el).html(RESENDTEXT);
                         $(elem.number).prop('disabled', false);
                     }
 
@@ -2133,7 +2137,7 @@ var AuthManager = function() {
 
                         if (target) {
                             $button.prop('disabled', true);
-                            $button.find('span').html(COMPLETETEXT);
+                            $button.html(COMPLETETEXT);
                             $(target.name).val(data.authName);
                             $(target.phone).val(data.authPhoneNo);
                             $(elem.popup).vcModal('hide');

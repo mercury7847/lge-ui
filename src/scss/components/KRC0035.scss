@@ -25,6 +25,7 @@
 					margin:0 -16px;
 					padding:0;
 				}
+				&.image-align-left,
 				&.image-align-right {
 					margin-top:28px;
 				}
@@ -38,6 +39,7 @@
 					width:100%;
 					padding:0;
 				}
+				&.side-left-text,
 				&.side-right-text {
 					margin-top:28px;
 				}
@@ -54,6 +56,7 @@
 					margin:0 -16px;
 					padding:0;
 				}
+				&.image-align-left,
 				&.image-align-right {
 					margin-top:28px;
 				}
@@ -67,6 +70,7 @@
 					width:100%;
 					padding:0;
 				}
+				&.side-left-text,
 				&.side-right-text {
 					margin-top:28px;
 				}
@@ -91,6 +95,7 @@
 			}
 			.text-wrap {
 				order:2;
+				margin-top:16px;
 			}
 		}
 	}
