@@ -320,7 +320,7 @@
                 e.preventDefault();
 
                 var id = $(this).attr("href").replace("#", "");
-                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbar=yes");
+                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
             });
 
 
