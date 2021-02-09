@@ -491,6 +491,7 @@
                 seq: seq
             });
 
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(self.bestShopUrl, param, function(result){
                 self.storeData = vcui.array.map(result.data, function(item, index){
                     item['id'] = item['shopID']; //info.shopID || agCode    
@@ -502,6 +503,7 @@
 
                 self.userCityName = self.userBoroughName = "";
                 if (self.searchType == 'current' || self.searchType == 'user') self.searchType = 'local';
+                lgkorUI.hideLoading();
             });
         },
 
