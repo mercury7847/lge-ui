@@ -19,11 +19,11 @@
                     },
                     userName: {
                         required: true,
-                        maxLength: 10,
+                        maxLength: 30,
                         pattern: /^[가-힣a-zA-Z]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
-                        patternMsg: '한글 또는 영문만 입력 가능합니다.'
+                        patternMsg: '이름은 한글 또는 영문만 입력 가능합니다.'
                     },
                     phoneNo: {
                         required: true,
@@ -61,7 +61,7 @@
                     },
                     title: {
                         required: true,
-                        maxLength: 40,
+                        maxLength: 100,
                         msgTarget: '.err-block',
                         errorMsg: '제목을 입력해주세요.'
                     },
