@@ -138,6 +138,10 @@
                     self.stationUrl = result.data.stationListUrl;
                     self.detailUrl = result.data.detailPageUrl;
                     self.userAdressCheckedUrl = result.data.userAdressCheckedUrl;
+                    self.defaultLongitude = result.data.basicPosition.longitude;
+                    self.defaultLatitude = result.data.basicPosition.latitude;
+                    self.longitude = result.data.basicPosition.longitude;
+                    self.latitude = result.data.basicPosition.latitude;
 
                     self.$mapContainer.vcCenterMap({
                         keyID: result.data.mapID,
@@ -202,11 +206,21 @@
                         self.$map = self.$mapContainer.vcCenterMap('instance');
 
                         if (sval) {
-                            self._loadStoreData(sval);
-                        } else if (self.isLogin) {
-                            self._setUserAdressSearch();
+                            self._loadStoreData(seq);
                         } else {
-                            self._setCurrentSearch();
+                            if (!vcui.detect.isMobile) { // pc device
+                                if (!self.isLogin) { // 비로그인
+                                    self._loadStoreData();
+                                } else { // 로그인
+                                    self._setUserAdressSearch(true);
+                                }
+                            } else { // mobile device
+                                if (!self.isLogin) { // 비로그인
+                                    self._setCurrentSearch(true);
+                                } else { // 로그인
+                                    self._setUserAdressSearch(true);
+                                }
+                            }
                         }
 
                         self._bindEvents();
@@ -440,8 +454,7 @@
         },
         searchAddressToCoordinate: function(address, callback) { 
             var self = this;
-            var point;
-            
+
             naver.maps.Service.geocode({
                 address: address
             }, function(status, response) {
@@ -450,6 +463,7 @@
                 }
 
                 var point = response.result.items[0].point;
+                
                 self.longitude = point.x;
                 self.latitude = point.y;
 
@@ -679,6 +693,13 @@
                     break;
             };
 
+            if (Object.keys(keywords).length == 0) {
+                keywords = {
+                    latitude:self.latitude,
+                    longitude:self.longitude
+                };
+            }
+
             console.log("keywords :", keywords)
 
             return keywords;
@@ -693,8 +714,6 @@
             if(trim.length){
                 var callback = function() {
                     self._loadStoreData();
-                    
-
                     self._showResultLayer();
                 };
 
@@ -706,7 +725,7 @@
         },
 
         // 내 주소로 검색....
-        _setUserAdressSearch: function(){
+        _setUserAdressSearch: function(init){
             var self = this;
 
             lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(self.userAdressCheckedUrl, {}, function(result){
@@ -715,25 +734,34 @@
                         self._loadStoreData()
                     };
 
-                    self.searchResultMode = true;
+                    self.searchResultMode = init ? false : true;
                     self.schReaultTmplID = "localSearch";
 
+                    // self.$map.getAdressPositions(result.data.userAdress, callback);
                     self.searchAddressToCoordinate(result.data.userAdress, callback);
-                    self._showResultLayer();
+                    !init && self._showResultLayer();
                 } else{
-                    if(result.data.location && result.data.location != ""){
-                        location.href = result.data.location;
-                    } else{
-                        lgkorUI.alert("", {
-                            title: result.data.alert.title
-                        });
+                    if (init) {
+                        if (!vcui.detect.isMobile) { // pc device
+                            self._loadStoreData();
+                        } else { // mobile device
+                            self._setCurrentSearch(true);
+                        }
+                    } else {
+                        if(result.data.location && result.data.location != ""){
+                            location.href = result.data.location;
+                        } else{
+                            lgkorUI.alert("", {
+                                title: result.data.alert.title
+                            });
+                        }
                     }
                 }
             });
         },
 
         // 현재 위치 검색
-        _setCurrentSearch: function() {
+        _setCurrentSearch: function(init) {
             var self = this;
             var searchCurrentSearch = function() {
                 if (navigator.geolocation) {
@@ -741,23 +769,41 @@
                         self.latitude = pos.coords.latitude;
                         self.longitude = pos.coords.longitude;
     
-                        self.searchResultMode = true;
+                        self.searchResultMode = init ? false : true;
                         self.schReaultTmplID = "currentSearch";
                         
                         cookie.setCookie('geoAgree','Y', 1);
 
-                        self._loadStoreData();
-                        self._showResultLayer();
+                        self._loadStoreData();    
+                        !init && self._showResultLayer();
                     }, function(error) {
                         lgkorUI.alert('현재 위치를 찾을 수 없습니다.', {
                             title: '현재 위치 정보',
-                            typeClass: 'type2'
+                            typeClass: 'type2',
+                            ok: function() {
+                                self.searchResultMode = init ? false : true;
+
+                                self.latitude = self.defaultLatitude;
+                                self.longitude = self.defaultLongitude;
+
+                                self._loadStoreData();    
+                                !init && self._showResultLayer();
+                            }
                         });
                     }); 
                 } else {
                     lgkorUI.alert('위치 기반 서비스를 제공하지 않습니다.', {
                         title: '현재 위치 정보',
-                        typeClass: 'type2'
+                        typeClass: 'type2',
+                        ok: function() {
+                            self.searchResultMode = init ? false : true;
+
+                            self.latitude = self.defaultLatitude;
+                            self.longitude = self.defaultLongitude;
+
+                            self._loadStoreData();    
+                            !init && self._showResultLayer();
+                        }
                     });
                 }
             };
@@ -772,7 +818,16 @@
                 cancel: function() {
                     lgkorUI.alert('현재 위치를 찾을 수 없습니다.', {
                         title: '현재 위치 정보',
-                        typeClass: 'type2'
+                        typeClass: 'type2',
+                        ok: function() {
+                            self.searchResultMode = init ? false : true;
+
+                            self.latitude = self.defaultLatitude;
+                            self.longitude = self.defaultLongitude;
+
+                            self._loadStoreData();    
+                            !init && self._showResultLayer();
+                        }
                     });
                 }};
             var desc = '<p>고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 매장 안내를 위해서만 이용 됩니다. <br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다. <br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?</p>';
@@ -995,7 +1050,7 @@
             // self.$defaultListContainer.find('.scroll-wrap').height(listheight);
         },
 
-        _showResultLayer  : function(){
+        _showResultLayer : function(){
             var self = this;
             var $mapContainer = $('.map-container');
 
