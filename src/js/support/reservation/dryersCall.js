@@ -163,7 +163,7 @@
 
             // 인증문자 보내기
             self.$authPopup.find('.btn-send').on('click', function() {
-                authManager.send();
+                authManager.send(this);
             });
 
             // 인증 완료 하기
