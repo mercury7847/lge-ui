@@ -250,8 +250,10 @@
              } 
           }
           .bullet-list {
+              display:inline-block;
               margin-top:36px;
               @include mobile {
+                  display:block;
                   margin-top:12px;
               }
           }
