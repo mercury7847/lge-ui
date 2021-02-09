@@ -47,8 +47,8 @@
                 text-align: center;
                 &.compare-item {
                     padding-bottom: 144px;
-                    border:none;
-                    box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);;
+                    // border:none;
+                    // box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
                     @media (min-width: $tablet-s-width + 1) and (max-width: 1146px) {
                         padding-bottom: 204px;
                     }
@@ -161,6 +161,11 @@
             height:72px;
             margin-top: 122px;
             padding:18px 0;
+            @include mobile {
+                height:100%;
+                margin-top:24px;
+                padding:14px 0;
+            }
             .tabs-scroll-wrap {
                 position: relative;
                 .tabs {
@@ -175,9 +180,10 @@
                             display: block;
                             position: relative;
                             // border-bottom: 4px solid transparent;
+                            padding:7px 16px;
                             font-weight: 700;
                             @include font-medium;
-                            color: #767676;
+                            color: #666;
                         }
                         &.on > a {
                             // border-color: #222;
@@ -187,7 +193,7 @@
                         }
 
                         @include mobile {
-                            margin-left: 24px;
+                            margin-left: 6px;
                             &:first-child {
                                 margin-left: 0;
                             }
@@ -230,7 +236,7 @@
                         }
                     }
                     @include mobile {
-                        display: none;
+                        display: none !important;
                     }
                 }
             }
@@ -246,6 +252,7 @@
                     }
                 }
                 @include mobile {
+                    bottom:10px;
                     padding: 11px 0;
                     background-color: $color-bg-wt;
                     &:before {
@@ -273,7 +280,7 @@
             background-color: $color-bg-wt;
             box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14);
             .product-items {
-                padding-top: 12px;
+                padding-top: 24px;
                 .item {
                     padding: 16px 48px;
                     &.compare-item {
@@ -322,6 +329,7 @@
                 margin-top: 24px;
                 @include mobile {
                     margin-top: 10px;
+                    padding-right:80px;
                 }
             }
         }
@@ -330,11 +338,12 @@
     .compare-result-contents {
         max-width: (1146px + 80px);
         margin: 0 auto;
-        padding: 48px 40px;
+        padding: 64px 40px 120px;
 
         @include mobile {
             max-width: 100%;
-            padding: 0 16px;
+            padding: 60px 16px;
+            border-top:12px solid #f4f4f4;
         }
 
         .section {
@@ -347,11 +356,18 @@
                 .title {
                     padding-bottom:16px;
                     @include font-large-4;
+                    @include mobile {
+                        margin-bottom:0;
+                        padding-bottom:14px;
+                        font-size:24px;
+                        line-height:33px;
+                    }
                 }
             }
             @include mobile {
-                margin: 0 -16px;
-                padding: 40px 16px;
+                // margin: 0 -16px;
+                // padding: 40px 16px;
+                margin-top:60px;
                 .title {
                     margin-bottom: 20px;
                 }
@@ -373,6 +389,7 @@
             }
             @include mobile {
                 margin: 0 -10px;
+                padding-top:32px;
                 .list {
                     width: 50%;
                     padding: 0 10px;

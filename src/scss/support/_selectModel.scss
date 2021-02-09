@@ -428,9 +428,25 @@
                     overflow:hidden;
                     border-radius:8px;
                     box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+
+                    &:after {
+                        content:"";
+                        position:absolute;
+                        right:16px;
+                        bottom:16px;
+                        width:24px;
+                        height:24px;
+                        border-radius:50%;
+                        background:url(/lg5-common/images/icons/icon-plus-40.svg) no-repeat;
+                        background-size:100%;
+                        opacity:1;
+                        transition:opacity .3s;
+                        transition-delay: .7s;
+                    }
                     .category {
                         position:relative;
                         padding:40px 16px 64px;
+                        z-index:1;
                         p {
                             margin-bottom:16px;
                             font-size:22px;
@@ -464,7 +480,7 @@
                             width:24px;
                             height:24px;
                             border-radius:50%;
-                            background:url(/lg5-common/images/icons/icon-plus-40.svg) no-repeat;
+                            //background:url(/lg5-common/images/icons/icon-plus-40.svg) no-repeat;
                             background-size:100%;
                             animation-duration: 1s;
                             animation-fill-mode: forwards;
@@ -483,6 +499,7 @@
                         animation-duration: 1s;
                         animation-fill-mode: forwards;
                         animation-name:delayedFadeOut;
+                        z-index:1;
                         &-box {
                             height:100%;
                         }
@@ -511,10 +528,11 @@
                             height:24px;
                             background:url(/lg5-common/images/icons/btn-close-24-bg-white.svg) no-repeat;
                             background-size:100%;
+                            z-index:1;
                         }
                     }
 
-                    &.off {
+                    &.off {                        
                         .category {
                             .btn-open {
                                 animation-name:btnReduce;
@@ -522,8 +540,12 @@
                         }
                     }
                     &.on {
+                        &:after {
+                            opacity:0;
+                        }
                         .category {
                             .btn-open {
+                                background-image: none;
                                 animation-name:btnExpand;
                             }
                         }
@@ -549,6 +571,10 @@
                     width:50%;
                     padding:12px 6px 0; 
                     .box {
+                        &:after {
+                            right:12px;
+                            bottom:12px;
+                        }
                         .category {
                             position:relative;
                             padding:20px 16px 40px;
