@@ -477,7 +477,8 @@
 
             .result-list-box {
                 display:none;
-                position:absolute;
+                position:relative; /* 2021.2.9 수정 */
+                width:100%; /* 2021.2.9 추가 */
                 top:0;
                 left:0;
                 right:0;
