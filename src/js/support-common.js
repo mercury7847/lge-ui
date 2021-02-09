@@ -2081,8 +2081,6 @@ var AuthManager = function() {
                 result = self.validation.validate([self.nameName, self.phoneName]),
                 data, url;
 
-                console.log($(el))
-
             if (result.success) {
                 url = self.smsUrl;
                 data = self.validation.getValues([self.nameName, self.phoneName]);
@@ -2092,6 +2090,9 @@ var AuthManager = function() {
 
                     if (resultData.resultFlag == 'Y') {
                         //$(el).find('span').html(RESENDTEXT);
+                        
+                        console.log($(el))
+                        console.log($(el).html())
                         $(el).html(RESENDTEXT);
                         $(elem.number).prop('disabled', false);
                     }
@@ -2136,7 +2137,7 @@ var AuthManager = function() {
 
                         if (target) {
                             $button.prop('disabled', true);
-                            $button.find('span').html(COMPLETETEXT);
+                            $button.html(COMPLETETEXT);
                             $(target.name).val(data.authName);
                             $(target.phone).val(data.authPhoneNo);
                             $(elem.popup).vcModal('hide');
