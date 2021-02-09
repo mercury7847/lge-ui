@@ -88,6 +88,7 @@
             self.$stepCenter = self.$cont.find('#stepCenter');
             self.$stepDate = self.$cont.find('#stepDate');
             self.$stepInput = self.$cont.find('#stepInput');
+            self.warrantyGuide = $('#ratesWarrantyGuidePopup');
 
             // 센터찾기
             self.$centerPagination = self.$stepCenter.find('.pagination');
@@ -325,6 +326,8 @@
             });
 
             $('.ui_tab').on('tabchange', function(e, data) {
+                console.log('tab')
+
                 switch(data.selectedIndex) {
                     case 0:
                         self.searchType = 'local';
@@ -483,15 +486,31 @@
                 self.reqestEngineer();
             });
 
+            self.warrantyGuide.on('modalshown', function(){
+                console.log(111)
+                var $this = $(this);
+                var $tab = $this.find('.ui_tab');
+                var $tabCont =  $this.find('.tabs-contents');
+
+                $tabCont.hide().eq(0).show();
+            })
+
+            self.warrantyGuide.find('.ui_tab').on('tabchange', function(e, data){
+                var $this = $(this);
+                var $popupCont = $this.closest('.pop-conts');
+                var $tabCont = $popupCont.find('.tabs-contents');
+
+                $tabCont.hide();
+                $tabCont.filter('#tab' + (data.selectedIndex+1)).show();
+            })
+
             // 엔지니어 선택 팝업 오픈
             self.$engineerPopup.on('modalshown', function() {
-
                 
-                console.log('open')
-
                 self.$engineerSlider.filter('.is-loaded').vcCarousel('reinit');
                 //self.$engineerSlider.not('.is-loaded').addClass('is-loaded').vcCarousel(slideConfig)
             });
+
 
             // 엔지니어 선택
             self.$engineerPopup.find('.btn-group .btn').on('click', function() {
