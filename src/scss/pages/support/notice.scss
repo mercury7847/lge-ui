@@ -134,6 +134,102 @@
             padding: 16px;
         }
     }
+
+    // 개인정보 처리 방침 개정안내
+    .noticeViewWrap {
+        .privacyTitle {
+            border: solid 3px #000;
+            background-color: #e9e9e9;
+            display: block;
+            padding-top: 0.5rem !important;
+            font-size: 0.9rem;
+            padding-bottom: 0.5rem !important;
+            text-align: center;
+        }
+        .tbl_type2 {
+            border-top: solid 3px #000;
+            margin-bottom: 40px;
+            margin-top: 40px;
+            th {
+                height: 2.85rem;
+                padding: 0.35rem 0.6em;
+                background: #f5f5f7;
+                border-left: #ccc solid 1px;
+                border-bottom: #ccc solid 1px;
+                font-weight: 400;
+            }
+            td {
+                height: 2.85rem;
+                padding: 0.35rem 0.6em;
+                border-left: #ccc solid 1px;
+                border-bottom: #ccc solid 1px;
+                text-align: center;
+                word-break: keep-all;
+            }
+            thead {
+                th {
+                    text-align: center;
+                    border-bottom: solid 1px #000;
+                }
+            }
+            tbody {
+                td {
+                    height: 2.3rem;
+                    vertical-align: top;
+                    word-break: break-word;
+                }
+            }
+        }
+
+        .noticeViewTable {
+            border: solid 1px #000;
+            box-sizing: border-box;
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            empty-cells: show;
+            th, td {
+                &:first-child {
+                    border-left: none;
+                    color: inherit;
+                }
+            }
+            thead {
+                td {
+                    background-color: #e9e9e9;
+                    padding: 5px;
+                    border: solid 1px #000;
+                    text-align: center;
+                    font-weight: 400;
+                }
+            }
+            tbody {
+                td {
+                    padding: 10px;
+                    border: solid 1px #000;
+                    vertical-align: top;
+                    &.al {
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+
+    .current-state{margin-top:50px;}
+    .current-state .table-title{position:relative;padding-left:20px;font-size:18px;font-weight:600;}
+    .current-state .table-title:before{content:'';display:inline-block;position:absolute;left:0;top:5px;border-radius:10px;width:10px;height:10px;background:#ce1848;}
+    .current-state .state-table{width:100%;margin-top:25px;border:1px solid #ccc;border-top:1px solid #222;}
+    .current-state .state-table th{padding:10px;text-align:center;font-weight:200;border-left:1px solid #ccc;}
+    .current-state .state-table td{padding:20px 30px;border-top:1px solid #ccc;border-left:1px solid #ccc;}
+    .current-state .state-table th:first-child{border-right:none;}
+    .current-state .state-table td:first-child{padding:20px 0;border-left:none;text-align:center;}
+    .current-state .state-table td > p{margin-bottom:2%;}
+    .current-state .state-table td p+span{vertical-align:middle;}
+    .current-state .state-table td .model{display:inline-block;padding:5px 20px;background:url('/lgekor/mobile/notice/images/img_cellphone.jpg')no-repeat left center;color:#ce1848;}
+    
+    .current-state .state-table.txtCenter td{text-align:center;}
+    
 }
 
 @import "../../support/pages/payNwarranty";

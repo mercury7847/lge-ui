@@ -8,8 +8,6 @@
             self.$form = $('#submitForm');
 
             vcui.require(['ui/validation', 'ui/formatter', 'ui/imageFileInput'], function () {
-                $('#phoneNo').vcFormatter({'format':'num', "maxlength":11});
-
                 $('.ui_imageinput').vcImageFileInput();
 
                 var register = {
@@ -18,7 +16,9 @@
                     },
                     userName: {
                         maxLength : 30,
-                        msgTarget: '.err-block'
+                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                        msgTarget: '.err-block',
+                        patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
                     },
                     phoneNo: {
                         maxLength : 11,
@@ -88,6 +88,7 @@
                                 }
 
                                 if (result.data.resultFlag == 'Y') {
+                                    result.data.seq && $('#seq').val(result.data.seq);
                                     self.$form.submit();
                                 }
                             }).fail(function(err){
