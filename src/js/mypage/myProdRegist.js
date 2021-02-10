@@ -271,6 +271,7 @@
                             var selectbox = self.$modelCheckHelpPopup.find('.ui_selectbox:eq(0)');
                             var data = result.data;
                             self.modelData = data;
+                            selectbox.find('option:not(:eq(0))').remove();
                             var arr = data instanceof Array ? data : [];
                             arr.forEach(function(item, index) {
                                 item.value = item.categoryName
