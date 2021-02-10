@@ -170,28 +170,7 @@
                 authManager.open();
             });
 
-            $('.agree-wrap input:checkbox').on('change', function(){
-                if( $('.agree-wrap input:checkbox').filter(':checked').length == $('.agree-wrap input:checkbox').length ) {
-                    var $this = $(this);
-                    var $curSection = $this.closest('.section');
-
-                    var $currentInput = $curSection.next('.section').find('input').not(':disabled').filter(function(){
-                        if( $(this).attr('readonly') == false || $(this).attr('readonly') == undefined ){
-                            return true;
-                        }
-                    }).first();
-                    // .focus();
-
-                    if( $currentInput.length ) {
-                        $('html, body').stop().animate({
-                            scrollTop : $currentInput.closest('.section').offset().top
-                        }, function(){
-                            $currentInput.focus();
-                        });
-                    }
-                }
-            })
-
+            
 
             // 인증문자 보내기
             self.$authPopup.find('.btn-send').on('click', function() {
