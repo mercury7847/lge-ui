@@ -139,13 +139,10 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                                     selectFiles.splice(index,1);
 
                                     $(this).vcModal('hide');
-
-                                    console.log(totalSize);
                                 }
                             });
                         });         
                     } else {
-                        console.log(1);
                         $this[0].value = '';
                         self._callAlert(result.message);
                     }
