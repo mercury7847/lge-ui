@@ -22,6 +22,7 @@
                 data-payment-method-url="/lg5-common/data-ajax/mypage/paymentMethodAbled.json"
                 data-ars-agree-url="/lg5-common/data-ajax/caresolution/requestArsAgree.json"
                 data-request-contract-url="/lg5-common/data-ajax/mypage/requestContract.json"
+                data-mempoint-deduct-url="/lg5-common/data-ajax/mypage/memberPointDeductAgree.json"
             >
                 <div class="hidden-input-group">
                     <input type="hidden" name="paymentMethodConfirm" value="N" />
@@ -279,7 +280,7 @@
                                     <div class="tit-wrap type2">
                                         <h4 class="tit">납부 정보</h4>
                                     <!-- //210127 수정 -->
-                                        <div class="flt-cont">
+                                        <div class="flt-cont changePayment-btn"> <!-- 2021.2.9 추가-->
                                             <button type="button" class="btn border size"><span>납부 정보변경</span></button>
                                         </div>
                                     </div>
@@ -511,21 +512,23 @@
 
                                 <!-- 210127 추가 -->
                                 <!-- 210202 수정 -->
+                                <!-- 2021.2.9 -->
                                 <!-- 멤버십 포인트 -->
                                 <div class="sects">
                                     <div class="tit-wrap type2">
                                         <h4 class="tit">멤버십 포인트</h4>
                                         <div class="flt-cont">
-                                            <button type="button" class="btn border size"><span>멤버십 포인트 차감동의</span></button>
+                                            <button type="button" class="btn border size mempoint-btn"><span>멤버십 포인트 차감동의</span></button>
                                         </div>
                                     </div>
-                                    <div class="section-inner manager-info">
+                                    <div class="section-inner mempoint-info"> <!-- 210209 추가 -->
                                         <div class="dl-infolist-wrap">
                                             <ul class="lists">
                                                 <li class="name">
                                                     <dl>
                                                         <dt>멤버십 포인트 차감 동의여부</dt>
-                                                        <dd>
+                                                        <dd class="viewer">동의 (전액차감)</dd> <!-- 210209 추가 -->
+                                                        <dd class="modify" style="display:none;"><!-- 210209 추가 -->
                                                             멤버십 포인트로 월 요금 결제를 신청하시면 보유 포인트 내에서 <strong>매월 요금의 5,000원 또는 전액</strong>을 멤버십 포인트로 결제하실 수 있습니다.
                                                             @@include('./common/modules/bullet-list.html', {
                                                                 "bulletTxt" : [
@@ -533,41 +536,41 @@
                                                                 ]
                                                             })
                                                             <!-- 비동의 상태 -->
-                                                            <div class="point-box">
+                                                            <div class="point-box noneAgreeBox"> <!-- 210209 추가 -->
                                                                 <dl>
                                                                     <dt>현재 보유 포인트</dt>
-                                                                    <dd>100,000P</dd>
+                                                                    <dd><em class="userPoint">100,000</em>P</dd> <!-- 210209 추가 -->
                                                                 </dl>
-                                                                <p class="desc">보유하고 계신 멤버십 포인트로 월 요금 차감을 신청하실 수 있으며 5,000P 및  전액 차감 중 선택하실 수 있습니다.</p>
+                                                                <p class="desc">보유하고 계신 멤버십 포인트로 월 요금 차감을 신청하실 수 있으며 <em class="deductPoint">5,000</em>P 및  전액 차감 중 선택하실 수 있습니다.</p><!-- 210209 추가 -->
                                                                 <div class="select-list-wrap w-auto">
                                                                     <ul class="ui_radio_visible">
                                                                         <li>
                                                                             <span class="rdo-wrap">
-                                                                                <input type="radio" id="point-ded01" name="point-ded" checked>
+                                                                                <input type="radio" id="point-ded01" name="point-ded" value="all"> <!-- 210209 추가 -->
                                                                                 <label for="point-ded01">전액 차감</label>
                                                                             </span>
                                                                         </li>
                                                                         <li>
                                                                             <span class="rdo-wrap">
-                                                                                <input type="radio" id="point-ded02" name="point-ded">
-                                                                                <label for="point-ded02">5,000P 차감</label>
+                                                                                <input type="radio" id="point-ded02" name="point-ded" value="deduct"> <!-- 210209 추가 -->
+                                                                                <label for="point-ded02"><em class="deductPoint">5,000</em>P 차감</label><!-- 210209 추가 -->
                                                                             </span>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
                                                             <!-- 동의 상태 -->
-                                                            <div class="point-box">
+                                                            <div class="point-box agreeBox">
                                                                 <dl>
                                                                     <dt>현재 보유 포인트</dt>
-                                                                    <dd>100,000P</dd>
+                                                                    <dd><em class="userPoint">100,000</em>P</dd> <!-- 210209 추가 -->
                                                                 </dl>
                                                                 <p class="desc">고객님은 <span class="date">2021년 MM월 DD일</span>에 멤버십 포인트로 월 요금 결제에 동의하셨습니다. 멤버십 포인트로 월 요금 결제하기를 취소하시겠습니까?</p>
                                                                 <div class="select-list-wrap w-auto">
                                                                     <ul class="ui_radio_visible">
                                                                         <li>
                                                                             <span class="rdo-wrap">
-                                                                                <input type="checkbox" id="point-cancel01" name="point-cancel" checked>
+                                                                                <input type="checkbox" id="point-cancel01" name="point-cancel">
                                                                                 <label for="point-cancel01">취소</label>
                                                                             </span>
                                                                         </li>
@@ -588,7 +591,7 @@
                                             ]
                                         })
                                         <!-- 210209 추가 -->
-                                        <div class="btn-group center">
+                                        <div class="btn-group center" style="display:none;">
                                             <button type="button" class="btn gray cancel-btn"><span>취소</span></button>
                                             <button type="button" class="btn ok-btn"><span>저장</span></button>
                                         </div>
@@ -596,6 +599,7 @@
                                     </div>
                                 </div>
                                 <!-- //멤버십 포인트 -->
+                                <!-- //2021.2.9 -->
                                 <!-- //210202 수정 -->
                                 <!-- //210127 추가 -->
 
