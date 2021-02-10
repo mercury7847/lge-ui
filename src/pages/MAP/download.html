@@ -103,6 +103,31 @@
             }
         }
     </style>
+    <script>
+        window.onload = function(){
+            var tabCon = document.querySelectorAll(".tabcon");
+            for(var i = 0; i < tabCon.length; i++){
+                var noList = tabCon[i].querySelectorAll(".no");
+                for(var j = 0; j < noList.length; j++){
+                    noList[j].innerHTML = j + 1;
+                }
+            }
+
+            var list = document.querySelector(".tab").querySelectorAll("li");
+            for(var i = 0; i < list.length; i++){
+                (function(idx){
+                    list[idx].addEventListener("click", function(){
+                        for(var j = 0; j < list.length; j++){
+                            list[j].classList.remove("on");
+                            tabCon[j].classList.remove("on");
+                        }
+                        this.classList.add("on");
+                        tabCon[idx].classList.add("on");
+                    });
+                })(i);
+            };
+        }
+    </script>
 </head>
 <body>
     <div class="tabcon">
@@ -111,7 +136,7 @@
                 <colgroup>
                     <col style="width:35px;">
                     <col>
-                    <col>
+                    <col style="width:75px;">
                 </colgroup>
                 <thead>
                     <tr>
@@ -122,9 +147,9 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="no">1</td>
+                        <td class="no"></td>
                         <td>(개발)[LG전자 통합 앱 설치] - Android</td>
-                        <td><a href="app-dev-release.apk" class="btn border size">설치</a></td>
+                        <td style="text-align:center;"><a href="app-dev-release.apk" class="btn border size">설치</a></td>
                     </tr>
                 </tbody>
             </table>
