@@ -11,9 +11,7 @@
             self.$authPopup = $('#certificationPopup');
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
-                $('#phoneNo').vcFormatter({'format':'num', "maxlength":11});
-
-                var register = {
+               var register = {
                     privcyCheck: {
                         msgTarget: '.err-block'
                     },
@@ -133,6 +131,7 @@
                             var data = validation.getAllValues();
                             lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
                                 if (result.data.resultFlag == 'Y') {
+                                    result.data.seq && $('#seq').val(result.data.seq);
                                     self.$form.submit();
                                 }
                             })
