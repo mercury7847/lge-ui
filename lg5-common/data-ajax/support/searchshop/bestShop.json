@@ -37,7 +37,8 @@
                "name": "소모품",
                "class": "opt-expendables"
             }
-         ]
+         ],
+         "consultUrl": "/html/CS/CSRF6030.html"
       }, 
       {
          "shopID": 4125,
@@ -72,7 +73,8 @@
                "name": "소모품",
                "class": "opt-expendables"
             }
-         ]
+         ],
+         "consultUrl": "/html/CS/CSRF6030.html"
       }, 
       {
          "shopID": 5647,
@@ -107,7 +109,8 @@
                "name": "소모품",
                "class": "opt-expendables"
             }
-         ]
+         ],
+         "consultUrl": "/html/CS/CSRF6030.html"
       }, 
       {
          "shopID": 5637,
@@ -142,7 +145,8 @@
                "name": "소모품",
                "class": "opt-expendables"
             }
-         ]
+         ],
+         "consultUrl": "/html/CS/CSRF6030.html"
       }, 
       {
          "shopID": 5622,
@@ -177,7 +181,8 @@
                "name": "소모품",
                "class": "opt-expendables"
             }
-         ]
+         ],
+         "consultUrl": "/html/CS/CSRF6030.html"
       }, 
       {
          "shopID": 3065,
@@ -212,7 +217,8 @@
                "name": "소모품",
                "class": "opt-expendables"
             }
-         ]
+         ],
+         "consultUrl": "/html/CS/CSRF6030.html"
       }, 
       {
          "shopID": 3470,
@@ -247,7 +253,8 @@
                "name": "소모품",
                "class": "opt-expendables"
             }
-         ]
+         ],
+         "consultUrl": "/html/CS/CSRF6030.html"
       }, 
       {
          "shopID": 3471,
@@ -282,7 +289,8 @@
                "name": "소모품",
                "class": "opt-expendables"
             }
-         ]
+         ],
+         "consultUrl": "/html/CS/CSRF6030.html"
       }
    ]
 }

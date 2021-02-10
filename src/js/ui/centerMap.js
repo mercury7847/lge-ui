@@ -322,6 +322,20 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
             };   
         },
 
+        selectInfoWindow: function(id) {
+            var self = this;
+            var items;
+
+            items = self.itemArr.filter(function(item, index){
+                return item.id == id;   
+            });
+
+            if(items[0].infoWindow.getMap()) items[0].infoWindow.close();
+            else items[0].infoWindow.open(self.map, items[0].item);
+
+            self.selectedMarker(items[0].id);
+        },
+
         _addCustomMarker : function _addCustomMarker(x,y,info,idx) {
             var self = this;
             if(!self.map) return;		
