@@ -11,16 +11,14 @@
             self.$authPopup = $('#certificationPopup');
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
-                $('#phoneNo').vcFormatter({'format':'num', "maxlength":11});
-
-                var register = {
+               var register = {
                     privcyCheck: {
                         msgTarget: '.err-block'
                     },
                     userName: {
                         required: true,
                         maxLength: 30,
-                        pattern: /^[가-힣a-zA-Z]+$/,
+                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
                         patternMsg: '이름은 한글 또는 영문만 입력 가능합니다.'
@@ -88,7 +86,7 @@
                         authName: {
                             required: true,
                             maxLength: 30,
-                            pattern: /^[가-힣a-zA-Z]+$/,
+                            pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
                             msgTarget: '.err-block',                        
                             errorMsg: '이름을 입력해주세요.',
                             patternMsg: '이름은 한글 또는 영문만 입력 가능합니다.'
@@ -133,6 +131,7 @@
                             var data = validation.getAllValues();
                             lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
                                 if (result.data.resultFlag == 'Y') {
+                                    result.data.seq && $('#seq').val(result.data.seq);
                                     self.$form.submit();
                                 }
                             })

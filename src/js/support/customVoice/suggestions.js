@@ -18,7 +18,6 @@
             self.isLogin = lgkorUI.isLogin;
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
-
                 var register = {
                     privcyCheck: {
                         msgTarget: '.err-block'
@@ -26,7 +25,7 @@
                     userName: {
                         required: true,
                         maxLength: 30,
-                        pattern: /^[가-힣a-zA-Z]+$/,
+                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
                         patternMsg: '한글 또는 영문만 입력 가능합니다.'
@@ -94,6 +93,7 @@
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
+                    result.data.seq && $('#seq').val(result.data.seq);
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {

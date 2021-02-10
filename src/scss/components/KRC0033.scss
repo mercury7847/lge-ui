@@ -147,6 +147,15 @@
 					}
 					.thumbnail-box {
 						margin-top:24px;
+                        &:first-child {
+                            margin-top:0;
+                        }
+                        & + .title {
+                            margin-top:24px;
+                            @include mobile {
+                                margin-top:12px;
+                            }
+                        }
 						img {
 							width:auto;
 							max-width:100%;
@@ -158,6 +167,12 @@
 			}
 		}
 	}
+    .fc-white,
+    .fc-white * {
+        @include mobile {
+            color:#000 !important;
+        }
+    }
 }
 
 

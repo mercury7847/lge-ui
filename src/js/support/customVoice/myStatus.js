@@ -10,7 +10,7 @@
                 register: {
                     userName1: {
                         msgTarget: '.err-block',
-                        pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z\*]+$/,
+                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
                         maxLength: 30
                     },
                     number: {
@@ -24,7 +24,7 @@
                 register: {
                     userName2: {
                         msgTarget: '.err-block',
-                        pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z\*]+$/,
+                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
                         maxLength: 30
                     },
                     phoneNo: {
@@ -97,7 +97,7 @@
                         var data = result.data;
     
                         if (data.resultFlag == 'Y') {
-                            $(this).find('span').html('인증 번호 재발송');
+                            $(this).html('인증 번호 재발송');
                             $('#authNo').prop('disabled', false);
                         }
 

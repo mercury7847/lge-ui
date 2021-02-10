@@ -292,6 +292,33 @@
                     }
                 }
             }
+            @include mobile {
+                .slide-controls {
+                    display:none;
+                }
+                .engineer-slider {
+                    .slide-conts {
+                        width:calc((100vw - 16px) / 3 * 2);
+                        padding:0 8px 24px;
+                    }
+                    .engineer-box {
+                        .label {
+                            padding:24px;
+        
+                            .img {
+                                margin-bottom:24px;
+                            }
+                            .tit {
+                                font-size:14px;
+                            }
+                            .desc {
+                                margin-top:4px;
+                                font-size:14px;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         // 예약 일시 변경

@@ -2086,6 +2086,17 @@ var AuthManager = function() {
         self.validation = new vcui.ui.CsValidation(self.popFlag ? options.elem.popup : options.elem.form, {
             register: register
         });
+
+        $(options.elem.popup).on('modalhide', function(){
+            $(this).find('.btn-send').html(SENDTEXT);
+            $(options.elem.number).attr('disabled', 'disabled').val('');
+
+            if( options.target ) {
+                $(options.elem.name).val('');
+                $(options.elem.phone).val('');
+            }
+        });
+
     }
 
     AuthManager.prototype = {
@@ -2225,7 +2236,9 @@ $.fn.serializeObject = function() {
 
 (function($){
     function commonInit(){
-        vcui.require(['ui/selectbox'], function () {    
+        vcui.require(['ui/selectbox', 'ui/formatter'], function () {    
+            $('[data-format=koreng]').vcFormatter({format:'koreng'});
+            
             // 퀵 메뉴 (미정)
             $('#quickMenu').quickMenu();
         });
@@ -2237,9 +2250,13 @@ $.fn.serializeObject = function() {
         if ($('.ui_common_scroll').length && !lgkorUI.isMobile()) $('.ui_common_scroll').mCustomScrollbar();
 
         $(document).on('input', 'input[type="number"]', function(){
-            if (this.value.length > this.maxLength){
+            if (this.maxLength > 0 && this.value.length > this.maxLength){
                 this.value = this.value.slice(0, this.maxLength);
-              }  
+            }  
+        });
+        $(document).on('mousewheel', 'input[type="number"]', function(e){
+            e.preventDefault();
+            e.stopPropagation();
         });
 
     }

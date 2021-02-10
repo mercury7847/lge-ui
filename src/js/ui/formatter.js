@@ -23,6 +23,7 @@ vcui.define('ui/formatter', ['jquery', 'vcui'], function ($, core) {
         alphaRegex: /[^a-zA-Z]/g,
         alnumRegex: /[^a-zA-Z0-9]/g,
         engnumRegex: /[^a-zA-Z0-9\s]/g,
+        korengRegex: /[^가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z\s]/g,
 
         isPressedMetaKey: function isPressedMetaKey(e) {
             return e.ctrlKey || e.shiftKey || e.altKey;
@@ -56,6 +57,10 @@ vcui.define('ui/formatter', ['jquery', 'vcui'], function ($, core) {
             if (focusin) {
                 core.dom.setCaretPos(el, Math.min(caret.begin, el.value.length));
             }
+        },
+        korengKey: function korengKey(e) {
+            var kc = e.keyCode;
+            return !(kc < 31 || (kc > 33 &&  kc < 65) || (kc > 122 && kc <= 127) || (kc > 90 && kc <= 96) && kc !== 32)
         }
     };
 
@@ -208,7 +213,7 @@ vcui.define('ui/formatter', ['jquery', 'vcui'], function ($, core) {
                 format = self.options.format,
                 old;
 
-            if (format === 'eng' || format === 'alnum' || format === 'num') {
+            if (format === 'eng' || format === 'alnum' || format === 'num' || format === 'koreng') {
                 self.$el.on('keydown focusin keyup focusout paste', function (e) {
                     var el = this;
                     switch (e.type) {
