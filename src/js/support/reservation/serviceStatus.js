@@ -377,6 +377,7 @@
                         date : $('input[name=date]').val(),
                         time : $('input[name=time]').val(),
                     }
+                                       
                     self.layerhide();
                     self.request(param);
                 });
@@ -559,6 +560,14 @@
                 $('#centerCode').val(data.centerCode);
     
                 $('#resrvSeq').val(data.resrvSeq);
+
+                var loginFlag = $('html').data('login') === 'Y' ? true : false;
+
+                if( loginFlag ) {
+                    $engineerBox.find('button:visible').first().focus();
+                } else {
+                    $engineerBox.closest('.section').next('.section').find('button').first().focus();
+                }
             },
             requestDate: function() {
                 var self = this;
