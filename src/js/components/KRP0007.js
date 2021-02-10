@@ -156,7 +156,8 @@
                         for(var key in filterdata){
                             param[key] = filterdata[key].join(",");
                         }
-                        param.sortType = data.sortType;
+                        var sort = data.sortType|data.order;
+                        param.sortType = sort;
                         param.page = 1;
                         console.log("param:", param)
                         if(param) {

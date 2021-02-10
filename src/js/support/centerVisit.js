@@ -391,12 +391,12 @@
             self.$keywordWrap.on('autocompleteClick', function(e, el) {
                 var id = $(el).attr("href").replace("#", "");
                 var windowHeight = $(window).innerHeight();
-                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
+                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
             });
             $('.center-result-wrap table').on('click', '.btn-detail', function(){
                 var id = $(this).attr("href").replace("#", "");
                 var windowHeight = $(window).innerHeight();
-                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
+                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
             });
             self.searchCenterName.on('click', function() {
                 self._setSearch();

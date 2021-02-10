@@ -442,7 +442,7 @@ function moveDetail(el, detailUrl, windowHeight) {
             });
             $('.ui_search').on('autocompleteClick', function(e, el) {
                 var id = $(el).attr("href").replace("#", "");
-                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
+                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
             });
 
             self.searchCenterName.on('click', function() {

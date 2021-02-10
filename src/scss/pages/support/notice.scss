@@ -215,6 +215,21 @@
             }
         }
     }
+
+    .current-state{margin-top:50px;}
+    .current-state .table-title{position:relative;padding-left:20px;font-size:18px;font-weight:600;}
+    .current-state .table-title:before{content:'';display:inline-block;position:absolute;left:0;top:5px;border-radius:10px;width:10px;height:10px;background:#ce1848;}
+    .current-state .state-table{width:100%;margin-top:25px;border:1px solid #ccc;border-top:1px solid #222;}
+    .current-state .state-table th{padding:10px;text-align:center;font-weight:200;border-left:1px solid #ccc;}
+    .current-state .state-table td{padding:20px 30px;border-top:1px solid #ccc;border-left:1px solid #ccc;}
+    .current-state .state-table th:first-child{border-right:none;}
+    .current-state .state-table td:first-child{padding:20px 0;border-left:none;text-align:center;}
+    .current-state .state-table td > p{margin-bottom:2%;}
+    .current-state .state-table td p+span{vertical-align:middle;}
+    .current-state .state-table td .model{display:inline-block;padding:5px 20px;background:url('/lgekor/mobile/notice/images/img_cellphone.jpg')no-repeat left center;color:#ce1848;}
+    
+    .current-state .state-table.txtCenter td{text-align:center;}
+    
 }
 
 @import "../../support/pages/payNwarranty";
