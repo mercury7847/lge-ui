@@ -370,6 +370,7 @@ CS.MD.search = function() {
                 var val = $(this).text().trim();
                 self.$el.find('input[type=text]').val(val);
                 self.$el.removeClass('on');
+                self.$el.trigger('keywordClick');
             });
 
             self.$el.find('input[type=text]').on('focus', function() {
