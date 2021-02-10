@@ -8,8 +8,6 @@
             self.$form = $('#submitForm');
 
             vcui.require(['ui/validation', 'ui/formatter', 'ui/imageFileInput'], function () {
-                $('#phoneNo').vcFormatter({'format':'num', "maxlength":11});
-
                 $('.ui_imageinput').vcImageFileInput();
 
                 var register = {
@@ -90,6 +88,7 @@
                                 }
 
                                 if (result.data.resultFlag == 'Y') {
+                                    result.data.seq && $('#seq').val(result.data.seq);
                                     self.$form.submit();
                                 }
                             }).fail(function(err){
