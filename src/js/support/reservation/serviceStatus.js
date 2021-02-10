@@ -541,7 +541,8 @@
                     $engineerBox = $stepEngineer.find('.engineer-info'),
                     $resultBox = $stepEngineer.find('.engineer-desc'),
                     topicNm = $('#topic').val(),
-                    subTopicNm = $('#subtopic').val()
+                    subTopicNm = $('#subtopic').val(),
+                    tid = 0;
     
                 $stepEngineer.find('.engineer-img img').attr({
                     'src': data.image,
@@ -563,11 +564,23 @@
 
                 var loginFlag = $('html').data('login') === 'Y' ? true : false;
 
-                if( loginFlag ) {
-                    $engineerBox.find('button:visible').first().focus();
-                } else {
-                    $engineerBox.closest('.section').next('.section').find('button').first().focus();
-                }
+                clearTimeout(tid);
+
+                tid = setTimeout(function(){
+                    if( loginFlag ) {
+                        if($stepEngineer.find('button:visible').length) {
+                            $stepEngineer.find('button:visible').first().focus();
+                        } else {
+                            $stepEngineer.attr('tabindex', '1').focus().removeAttr('tabindex');
+                        }
+                    } else {
+                        $engineerBox.closest('.section').next('.section').find('button').first().focus();
+                        if( $engineerBox.closest('.section').next('.section').length ) {
+                            $stepEngineer.closest('.pop-conts').scrollTop($engineerBox.closest('.section').next('.section').offset().top);
+                        }
+                    }
+                }, 100)
+
             },
             requestDate: function() {
                 var self = this;
