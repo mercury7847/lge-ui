@@ -2259,6 +2259,43 @@ $.fn.serializeObject = function() {
             e.stopPropagation();
         });
 
+        $(document).on('change', '.agree-wrap input:checkbox', function(){
+            var $this = $(this);
+            var $wrap = $this.closest('.agree-wrap');
+            var $stepBox = $wrap.closest('.step-box');
+            var tid = 0;
+        
+            clearInterval(tid);
+        
+            if( $wrap.find('input:checkbox').filter(':checked').length == $wrap.find('input:checkbox').length ) {
+                var $this = $(this);
+                var $curSection = $this.closest('.section').next('.section');
+                var $stepBox = $this.closest('.step-box');
+                var $stepBtn = $('.step-btn-wrap');
+                var $curTarget = null;
+        
+                
+        
+                if( $curSection.length ) {
+                    $curTarget = $curSection.find('input, button, a').first();
+                } else {
+                    if( $stepBox.find('.step-btn-wrap button').length) {
+                        $curTarget = $stepBox.find('.step-btn-wrap button');
+                    } 
+                    if($stepBox.next('.step-box.active').length) {
+                        $curTarget = $stepBox.next('.step-box').find('input, button, a').first()
+                    }
+                }
+        
+                if( $curTarget != null) {
+                    tid = setTimeout(function(){
+                        $curTarget.focus();
+                    }, 100)
+                }
+            }
+        })
+        
+        
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);
