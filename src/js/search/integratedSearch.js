@@ -77,6 +77,14 @@
                 self.$searchSimilar.hide();
             },
 
+            sendSearchPage: function(searchUrl, search, force) {
+                if(searchUrl) {
+                    var fi = searchUrl.indexOf('?');
+                    var url = searchUrl + ((fi<0) ? "?" : "&") +"search="+search+"&force="+force;
+                    location.href = url;
+                }
+            },
+
             bindEvents: function() {
                 var self = this;
 
@@ -94,8 +102,9 @@
                 //검색버튼
                 self.$buttonSearch.on('click', function(e){
                     clearTimeout(self.searchTimer);
+                    var url = self.$searchLayer.attr('data-link-url');
                     var searchVal = self.$inputSearch.val();
-                    self.requestSearch(searchVal, true);
+                    self.sendSearchPage(url,searchVal,false);
                 });
 
                 //검색 타이머
@@ -118,47 +127,41 @@
                 //자동완성 리스트 클릭
                 self.$autoComplete.on('click', 'div.keyword-list ul li a', function(e){
                     e.preventDefault();
-                    //self.searchItem($(this));
-                    var url = self.$searchLayer.attr('data-link-url');
-                    if(url) {
-                        var searchVal = $(this).attr('href').replace("#", "");
-                        url += ("?search=" + searchVal);
-                        location.href = url;
-                    }
+                    self.searchItem($(this), true);
                 });
 
                 //자동완성 리스트 오버
                 self.$autoComplete.on('mouseover', 'div.keyword-list ul li a', function(e){
                     e.preventDefault();
-                    console.log('mouse in');
-                    self.searchItem($(this));
-                }).on('mouseout', 'div.keyword-list ul li a', function(e){
+                    //console.log('mouse in');
+                    self.searchItem($(this),false);
+                });/*.on('mouseout', 'div.keyword-list ul li a', function(e){
                     e.preventDefault();
-                    console.log('mouse out');
-                });
+                    //console.log('mouse out');
+                });*/
 
                 //연관검색어 클릭
                 self.$searchSimilar.on('click', 'a', function(e){
                     e.preventDefault();
-                    self.searchItem($(this));
+                    self.searchItem($(this),true);
                 });
 
                 //인기검색어 클릭
                 self.$popularKeywordList.on('click', 'div.keyword-list ul li a', function(e){
                     e.preventDefault();
-                    self.searchItem($(this));
+                    self.searchItem($(this),true);
                 });
 
                 //추천태그 클릭
                 self.$suggestedTagsList.on('click', 'div.keyword-list ul li a', function(e){
                     e.preventDefault();
-                    self.searchItem($(this));
+                    self.searchItem($(this),true);
                 });
 
                 //최근검색어 클릭
                 self.$recentKeywordList.on('click', 'div.keyword-list ul li span a', function(e){
                     e.preventDefault();
-                    self.searchItem($(this));
+                    self.searchItem($(this),true);
                 });
 
                 //최근검색어 삭제 클릭
@@ -169,11 +172,15 @@
             },
 
             //검색어창에 입력후 검색
-            searchItem:function($item) {
+            searchItem:function($item, sendSearchPage) {
                 var self = this;
                 var searchVal = $item.attr('href').replace("#", "");
-                self.$inputSearch.val(searchVal);
-                self.$buttonSearch.trigger('click');
+                if(sendSearchPage) {
+                    self.$inputSearch.val(searchVal);
+                    self.$buttonSearch.trigger('click');
+                } else {
+                    self.requestSearch(searchVal, true);
+                }
             },
 
             showAnimation:function($item) {
