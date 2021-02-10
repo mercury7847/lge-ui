@@ -492,6 +492,8 @@
                     item.showBulletFeatures.push(item.bulletFeatures[i]);
                 }
 
+                if(!item.obsBtnRule) item.obsBtnRule = "";
+
                 console.log("### item.siblingType ###", item.siblingType)
 
                 return vcui.template(productItemTemplate, item);
