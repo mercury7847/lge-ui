@@ -179,8 +179,8 @@
                     if (data.resultMessage) {
                         lgkorUI.alert("", { title: data.resultMessage });
                     }
+                    lgkorUI.hideLoading();
                 }
-                lgkorUI.hideLoading();
             }, 'POST');
         },
         reset: function() {
