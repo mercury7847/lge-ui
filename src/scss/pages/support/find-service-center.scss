@@ -172,6 +172,16 @@
                         }
                     }
                 }
+                .keyword-search {
+                    .autocomplete-box {
+                        .keyword-list > ul{
+                            max-height:230px;
+                            overflow-y:auto;
+                            margin-right:-24px;
+                            padding-right:24px;
+                        }
+                    }
+                }
 
                 .select-wrap {
                     .ui-select-scrollarea {
