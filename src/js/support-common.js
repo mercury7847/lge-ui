@@ -1896,13 +1896,13 @@ CS.MD.pagination = function() {
 
                 if ($this.hasClass(self.options.disabledClass) || $this.attr('aria-disabled') == true) return;
 
-                if (!(self.options.lastView && ($this.hasClass(self.options.prevClass) || $this.hasClass(self.options.nextClass)))) {
+                if (self.options.lastView && ($this.hasClass(self.options.prevClass) || $this.hasClass(self.options.nextClass))) {
+                    self._update(page);
+                } else {    
                     self.$el.trigger({
                         type: 'pageClick',
                         page: page
                     });
-                } else {    
-                    self._update(page);
                 }
             });
         }
