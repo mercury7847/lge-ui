@@ -232,7 +232,7 @@
             $('.btn-center-link').on('click', function(){
                 var url = $(this).attr("href");
                 var windowHeight = $(window).innerHeight();
-                window.open(url, "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
+                window.open(url, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
             });
         },
 
