@@ -46,14 +46,16 @@
                 <div class="conts">
                     <div class="box">
                         <div class="input-wrap">
-                            <input type="tel" name="authPhoneNo" id="authPhoneNo" placeholder="휴대전화를 정확히 입력해주세요" minlength="10" maxlength="11" data-error-msg="휴대전화를 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" required>
+							<!-- 2021-02-10 type number로 수정 -->
+                            <input type="number" name="authPhoneNo" id="authPhoneNo" placeholder="휴대전화를 정확히 입력해주세요" minlength="10" maxlength="11" data-error-msg="휴대전화를 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" required>
                         </div>
                         <div class="cell">
                             <button type="button" class="btn btn-send">인증번호 발송</button>
                         </div>
                     </div>
                     <div class="input-wrap">
-                        <input type="number" name="authNo" id="authNo" placeholder="인증번호를 입력해주세요" maxlength="6" data-error-msg="인증번호를 입력해주세요" data-required="true" disabled required>
+						<!-- 2021-02-10 maxlength 삭제 -->
+                        <input type="number" name="authNo" id="authNo" placeholder="인증번호를 입력해주세요" data-error-msg="인증번호를 입력해주세요" data-required="true" disabled required>
                     </div>
                     <div class="btm-more err-block">
                         <p class="err-msg"></p>
