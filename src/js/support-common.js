@@ -420,6 +420,10 @@ CS.MD.search = function() {
                 self.$el.removeClass('on');
             });
 
+            self.$el.find('.btn-list-all').on('click', function() {
+                self.$el.find('.btn-search').trigger('click');
+            }); 
+
             $('body').on('click', function (e) {
                 if (!$(e.target).parents('.keyword-search')[0]) {
                     self.$el.removeClass('on');

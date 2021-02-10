@@ -77,6 +77,7 @@
                 }
             });
             self.$resultPagination.pagination();
+            self.$productBar.vcSticky();
         },
         drawTopicList: function(data) {
             var self = this;
@@ -222,7 +223,7 @@
                     productCode: data.productCode,
                     page: data.page || 1
                 };
-                console.log(data);
+
                 self.param = $.extend(self.param, param);
 
                 lgkorUI.showLoading();
