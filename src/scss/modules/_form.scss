@@ -47,7 +47,6 @@
         color:#767676;
         @include font-small;
         .dl-txt-cont {
-            margin-top:64px;
             margin-top:24px;
             color: $color-default;
             @include mobile {
@@ -61,7 +60,6 @@
                 @include font-medium;
                 font-weight:700;
                 @include mobile {
-                    margin-bottom:12px;
                     margin-bottom: 12px;
                 }
             }
@@ -1408,20 +1406,20 @@
             background: #fff no-repeat center center;
             &.minus {
                 border-radius: 6px 0 0 6px;
-                background-image: url('/lg5-common/images/icons/btn-minus-12.svg');
+                background-image: url('/lg5-common/images/icons/btn-minus-16.svg');
             }
             &.plus {
                 border-radius: 0 6px 6px 0;
-                background-image: url('/lg5-common/images/icons/btn-plus-12.svg');
+                background-image: url('/lg5-common/images/icons/btn-plus-16.svg');
             }
             &.disabled,
             &:disabled {
                 cursor: default;
                 &.minus {
-                    background-image: url('/lg5-common/images/icons/btn-minus-12-gray.svg');
+                    background-image: url('/lg5-common/images/icons/btn-minus-16-gray.svg');
                 }
                 &.plus {
-                    background-image: url('/lg5-common/images/icons/btn-plus-12-gray.svg');
+                    background-image: url('/lg5-common/images/icons/btn-plus-16-gray.svg');
                 }
             }
         }
@@ -1450,14 +1448,17 @@ $input: (chk, rdo);
         position:relative;
         display:inline-block;
         input {
-            position:absolute;
-            overflow:hidden;
-            width:1px;
-            height:1px;
-            margin:-1px;
-            padding:0;
-            border:none;
-            clip:rect(0,0,0,0);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: transparent;
+            //-moz-appearance:none;
+            //-webkit-appearance:none;
+            //appearance:none;
+            &::-ms-check{
+                display:none;
+            }
             &+label {
                 position:relative;
                 display:inline-block;
@@ -1764,7 +1765,7 @@ $input: (chk, rdo);
 }
 
 .select-list-wrap {
-    overflow:hidden;
+    //overflow:hidden; 포커스 이동시 라인 잘림
     > ul {
         font-size:0;
         margin-top:-32px;
@@ -1846,14 +1847,14 @@ $input: (chk, rdo);
     position:relative;
     display:inline-block;
     input {
-        position:absolute;
-        overflow:hidden;
-        width:1px;
-        height:1px;
-        margin:-1px;
-        padding:0;
-        border:none;
-        clip:rect(0,0,0,0);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        &::-ms-check{
+            display:none;
+        }
         &+label {
             position:relative;
             display:inline-block;
@@ -1907,13 +1908,13 @@ $input: (chk, rdo);
     display: inline-block;
     input {
         position: absolute;
-        overflow: hidden;
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        padding: 0;
+        width: 100%;
+        height: 100%;
         border: none;
-        clip: rect(0, 0, 0, 0);
+        background: transparent;
+        &::-ms-check{
+            display:none;
+        }
         & + label {
             position: relative;
             display: inline-block;
@@ -1963,13 +1964,13 @@ $input: (chk, rdo);
     position: relative;
     input {
         position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        padding: 0;
+        width: 100%;
+        height: 100%;
         border: none;
-        clip: rect(0,0,0,0);
-        overflow: hidden;
+        background: transparent;
+        &::-ms-check{
+            display:none;
+        }
         & + label {
             display: inline-block;
             position: relative;

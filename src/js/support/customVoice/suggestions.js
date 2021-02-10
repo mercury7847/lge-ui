@@ -18,15 +18,14 @@
             self.isLogin = lgkorUI.isLogin;
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
-
                 var register = {
                     privcyCheck: {
                         msgTarget: '.err-block'
                     },
                     userName: {
                         required: true,
-                        maxLength: 10,
-                        pattern: /^[가-힣a-zA-Z]+$/,
+                        maxLength: 30,
+                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
                         patternMsg: '한글 또는 영문만 입력 가능합니다.'
@@ -43,7 +42,7 @@
                     email:{
                         required: true,
                         pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        minLength: 5,
+                        minLength: 1,
                         maxLength: 50,
                         msgTarget: '.err-block',
                         errorMsg: '이메일 주소를 입력해주세요.',
@@ -56,7 +55,7 @@
                     },
                     title: {
                         required: true,
-                        maxLength: 40,
+                        maxLength: 100,
                         msgTarget: '.err-block',
                         errorMsg: '제목을 입력해주세요.'
                     },
@@ -94,6 +93,7 @@
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
+                    result.data.seq && $('#seq').val(result.data.seq);
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {

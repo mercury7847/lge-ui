@@ -36,7 +36,12 @@
                             </a>
                         </li>
                     </ul>
+                    @@if (!context.layer.autoError) {
                     <p class="no-keyword">검색 결과가 없습니다.</p>
+                    }
+                    @@if (context.layer.autoError) {
+                        <p class="no-keyword">@@layer.autoError</p>
+                    }
                 </div>
                 @@if (context.layer.notKeyword) {
                 <button class="btn-list-all"><span>전체보기</span></button>

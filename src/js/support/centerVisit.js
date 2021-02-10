@@ -170,23 +170,6 @@
                     msgTarget: '.err-msg',
                     errorMsg: '시간을 선택해주세요.'
                 },
-                userName: {
-                    required: true,
-                    maxLength: 10,
-                    pattern: /^[가-힣a-zA-Z]+$/,
-                    msgTarget: '.err-block',
-                    errorMsg: '이름을 입력해주세요.',
-                    patternMsg: '한글 또는 영문만 입력 가능합니다.'
-                },
-                phoneNo: {
-                    required: true,
-                    minLength: 10,
-                    maxLength: 11,
-                    pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
-                    msgTarget: '.err-block',
-                    errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                    patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
-                },
                 topic : {
                     required : true,
                     msgTarget : '.topic-msg'
@@ -195,12 +178,15 @@
                     required : true,
                     msgTarget : '.sub-topic-msg'
                 },
-                userNm : {
-                    required : true,
-                    msgTarget : '.err-block',
+                userNm: {
+                    required: true,
+                    maxLength: 30,
+                    pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                    msgTarget: '.err-block',
                     errorMsg: '이름을 입력해주세요.',
+                    patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
                 },
-                phoneNo : {
+                phoneNo: {
                     required: true,
                     minLength: 10,
                     maxLength: 11,
@@ -220,11 +206,11 @@
                 register: {
                     authName: {
                         required: true,
-                        maxLength: 10,
-                        pattern: /^[가-힣a-zA-Z]+$/,
+                        maxLength: 30,
+                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
-                        patternMsg: '한글 또는 영문만 입력 가능합니다.'
+                        patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
                     },
                     authPhoneNo: {
                         required: true,
@@ -279,6 +265,7 @@
                 });
 
                 self.data = data;
+                self.options = data;
             });
         },
         bindEvent: function() {
@@ -311,7 +298,6 @@
                         serviceType: data.serviceType
                     }
                 }
-
                 self.requestCenterData(param, url);
 
                 self.$myProductWrap.hide();
@@ -581,7 +567,7 @@
         reset: function() {
             var self = this;
 
-            self.data = {};
+            self.data = $.extend({}, self.options);
 
             self.$dateWrap.calendar('reset');
             self.$timeWrap.timeCalendar('reset');
@@ -966,6 +952,7 @@
                 deptCode: data.deptCode
             };
 
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(self.dateUrl, param, function(result) {
                 var data = result.data,
                     dateArr = data.dateList instanceof Array ? data.dateList : [],
@@ -993,6 +980,8 @@
                         });
                     }
                 }
+
+                lgkorUI.hideLoading();
             });
         },
         requestTime: function() {

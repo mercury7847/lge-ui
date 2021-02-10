@@ -39,40 +39,27 @@
         init: function() {
             var self = this;
             
+            self.listSetting();
+            self.detailSetting();
+        },
+        listSetting: function() {
+            var self = this;
+
+            if (!$('.result-wrap').length) return;
+
             self.$resultWrap = $('.result-wrap');
             self.$resultSort = self.$resultWrap.find('#orderType');
             self.$resultCount = self.$resultWrap.find('#count');
             self.$resultPagination = self.$resultWrap.find('.pagination');
             self.$resultList = self.$resultWrap.find('.card-list-wrap');
 
-            self.$boardWrap = $('.board-view-wrap');
-            self.$boardSurvey = $boardWrap.find('.survey-content'); 
-        
             self.params = {
                 'orderType': self.$resultSort.vcSelectbox('value'),
                 'page': 1
             };
 
-            self.$resultPagination.vcCsPagination({
-                pageCount: 12
-            });
+            self.$resultPagination.pagination();
 
-            if (self.$boardSurvey.length) {            
-                surveyValidation = new vcui.ui.CsValidation('.survey-content', {
-                    register: {
-                        rating: {
-                            required: true,
-                            msgTarget: '.err-msg'
-                        }
-                    }
-                });
-            }
-        
-            self.bindEvent();
-        },
-        bindEvent: function() {
-            var self = this;
-        
             self.$resultSort.on('change', function() {
                 self.params = $.extend({}, self.params, {
                     'orderType': self.$resultSort.vcSelectbox('value'),
@@ -87,22 +74,43 @@
                 });
                 self.searchList();
             });
+        },
+        detailSetting: function() {
+            var self = this;
 
-            self.$surveyWrap.find('.btn-survey').on('click', function(e) {
-                var result = surveyValidation.validate();
+            if (!$('.board-view-wrap').length) return;
 
-                if (result.success) {
-                    var score = self.$surveyWrap.find('#rating').vcStarRating('value'),
-                        text = self.$surveyWrap.find('#ratingContent').val();
-                        seq = self.$boardWrap.find('#seq').val();
+            self.$boardWrap = $('.board-view-wrap');
+                       
+            self.$boardSurvey = self.$boardWrap.find('.survey-content');
+            self.$boardSurveyBtn = self.$boardWrap.find('.btn-survey');
 
-                    self.reqeustSurvey({
-                        score: score,
-                        input: text,
-                        seq: seq
-                    });
-                }
-            });
+            if (self.$boardSurvey.length) {
+                surveyValidation = new vcui.ui.CsValidation('.survey-content', {
+                    register: {
+                        rating: {
+                            required: true,
+                            msgTarget: '.err-msg'
+                        }
+                    }
+                });
+
+                self.$boardSurveyBtn.on('click', function(e) {
+                    var result = surveyValidation.validate();
+    
+                    if (result.success) {
+                        var score = self.$boardSurvey.find('#rating').vcStarRating('value'),
+                            text = self.$boardSurvey.find('#ratingContent').val();
+                            seq = self.$boardWrap.find('#seq').val();
+    
+                        self.reqeustSurvey({
+                            score: score,
+                            input: text,
+                            seq: seq
+                        });
+                    }
+                });
+            }
         },
         searchList: function() {
             var self = this;
@@ -110,7 +118,7 @@
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(url, self.params, function(result) {
-                var data = result.date,
+                var data = result.data,
                     dataArr = data.listData instanceof Array ? data.listData : [],
                     page = data.listPage,
                     isCard = $('.card-news').length ? true : false,
@@ -118,20 +126,20 @@
                  
                 self.$resultList.find('ul').empty();
                 if (dataArr.length) {
-                    data.forEach(function(item) {
+                    dataArr.forEach(function(item) {
                         html += vcui.template(isCard ? cardListTmpl : tipListTmpl, item);
                     });
                     
                     self.$resultCount.html(page.totalCount);
                     self.$resultList.find('ul').html(html);
-                    self.$resultPagination.vcCsPagination('update', page);
+                    self.$resultPagination.pagination('update', page);
                 }
                 lgkorUI.hideLoading();
             });
         },
         reqeustSurvey: function(param) {
             var self = this;
-            var url = self.$surveyWrap.data('ajax');
+            var url = self.$boardSurvey.data('ajax');
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(url, param, function(result) {
@@ -139,8 +147,8 @@
                 var obj = {
                     title:'평가해 주셔서 감사합니다.',
                     ok: function() {    
-                        self.$surveyWrap.find('#rating').vcStarRating('selectedIndex', 0);
-                        self.$surveyWrap.find('#ratingContent').val('');
+                        self.$boardSurvey.find('#rating').vcStarRating('selectedIndex', 0);
+                        self.$boardSurvey.find('#ratingContent').val('');
                     }
                 };
                 var desc = '더 나은 콘텐츠를 제공해 드리기 위한 자료로 활용합니다.';

@@ -1,6 +1,6 @@
 <!-- components/partials/KRP0008-info.html -->
 
-<div class="pdp-info-area" data-price="1853090" data-wish-url="/lg5-common/data-ajax/pdp/pdp_wish.json" data-cart-url="/lg5-common/data-ajax/pdp/pdp_cart.json">
+<div class="pdp-info-area" data-wish-url="/lg5-common/data-ajax/pdp/pdp_wish.json" data-cart-url="/lg5-common/data-ajax/pdp/pdp_cart.json">
     <div class="product-detail-info">
         @@include('./common/modules/flags.html', {
             barType: true,
@@ -183,31 +183,23 @@
                 <!-- 알림신청 - 비회원/로그인 전 -->
                 <div class="purchase-button pre-order">
                     <div class="btn-group">
-                        <a href="#n" class="btn disabled" role="button"><span>품절</span></a>
-                        <button type="button" class="btn border" data-href="#push-apply-login" data-control="modal"><span>알림신청</span></button>
+                        <a href="#n" class="btn disabled" role="button" disabled><span>품절</span></a>
+                        <button type="button" class="btn border" data-href="#pushApplyLoginPopup" data-control="modal"><span>알림신청</span></button>
                     </div>
                 </div>
                 <!-- // 알림신청 - 비회원/로그인 전 -->
-                <!-- 알림신청 - 에러 -->
-                <div class="purchase-button pre-order">
-                    <div class="btn-group">
-                        <a href="#n" class="btn disabled" role="button"><span>품절</span></a>
-                        <button type="button" class="btn border" data-href="#push-apply-error" data-control="modal"><span>알림신청</span></button>
-                    </div>
-                </div>
-                <!-- // 알림신청 - 에러 -->
                 <!-- 알림신청 - 로그인 회원 -->
                 <div class="purchase-button pre-order">
                     <div class="btn-group">
-                        <a href="#n" class="btn disabled" role="button"><span>품절</span></a>
-                        <button type="button" class="btn border" data-href="#push-apply-form" data-control="modal"><span>알림신청</span></button>
+                        <a href="#n" class="btn disabled" role="button" disabled><span>품절</span></a>
+                        <button type="button" class="btn border" data-href="#pushApplyPopup" data-control="modal"><span>알림신청</span></button>
                     </div>
                 </div>
                 <!-- // 알림신청 - 로그인 회원 -->
                 <!-- 알림신청 완료 -->
-                <div class="purchase-button rental">
+                <div class="purchase-button pre-order">
                     <div class="btn-group">
-                        <button type="button" class="btn border"><span>알림신청 완료</span></button>
+                        <button type="button" class="btn disabled" disabled><span>알림신청 완료</span></button>
                     </div>
                 </div>
                 <!-- // 알림신청 완료 -->

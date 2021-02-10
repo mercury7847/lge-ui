@@ -54,7 +54,8 @@
                                                 </div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="userName1" id="userName1" placeholder="이름 입력" maxlength="10" data-error-msg="이름을 입력해 주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
+                                                        <!-- 2021.02.10 input 수정 -->
+                                                        <input type="text" name="userName1" id="userName1" placeholder="이름 입력" maxlength="30" data-format="koreng" data-error-msg="이름을 입력해 주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
@@ -100,7 +101,8 @@
                                                 </div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="userName2" id="userName2" placeholder="이름 입력" maxlength="10" data-error-msg="이름을 입력해 주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
+                                                        <!-- 2021.02.10 maxlength 수정 -->
+                                                        <input type="text" name="userName2" id="userName2" placeholder="이름 입력" maxlength="30" data-format="koreng" data-error-msg="이름을 입력해 주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
@@ -114,7 +116,8 @@
                                                 <div class="conts">
                                                     <div class="box">
                                                         <div class="input-wrap">
-                                                            <input type="tel" name="phoneNo" id="phoneNo" placeholder="휴대전화 번호 입력" minlength="10" maxlength="11" data-error-msg="휴대전화를 입력해 주세요." data-pattern-mgs="정확한 휴대전화 번호를 입력해주세요." data-required="true" required>
+															<!-- 2021.02.10 type number로 수정 -->
+                                                            <input type="number" name="phoneNo" id="phoneNo" placeholder="휴대전화 번호 입력" minlength="10" maxlength="11" data-error-msg="휴대전화를 입력해 주세요." data-pattern-mgs="정확한 휴대전화 번호를 입력해주세요." data-required="true" required>
                                                         </div>
                                                         <div class="cell">
                                                             <!-- 
@@ -131,6 +134,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="input-wrap">
+														<!-- 2021.02.10 type number로 수정 -->
                                                         <input type="number" name="authNo" id="authNo" placeholder="인증번호 입력"  data-error-msg="인증번호를 입력해 주세요." data-required="true" disabled required>
                                                     </div>
                                                     <div class="btm-more err-block">

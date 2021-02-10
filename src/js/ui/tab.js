@@ -55,7 +55,7 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
             if (!$child.is('ul')) {
                 self.options.tabsSelector = '>' + $child[0].tagName.toLowerCase() + self.options.tabsSelector;
                 if ($child.css('overflow') === 'hidden') {
-                    $child.vcSmoothScroll();
+                    $child.vcSmoothScroll({eventPassthrough:'horizontal'});
                 }
             }
 

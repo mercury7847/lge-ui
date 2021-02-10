@@ -71,12 +71,13 @@
             });
             self.$keywordWrap.search({
                 template: {
-                    autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="#{{item.url}}" title="새창 열림" target="_blank"><div class="list-head"><strong class="list-category">{{item.subCategory}}</strong><span class="list-sub-category">{{item.subTopic}}</span></div><div class="list-desc">{{item.contTitle}}</div></a></li>{{/each}}</ul>',
+                    autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="{{item.url}}"><div class="list-head"><strong class="list-category">{{item.subCategory}}</strong><span class="list-sub-category">{{item.subTopic}}</span></div><div class="list-desc">{{item.contTitle}}</div></a></li>{{/each}}</ul>',
                     recentlyList: '<li><a href="#">{{keyword}}</a><button type="button" class="btn-delete"><span class="blind">삭제</span></button></li>',
                     keywordList: '<li><a href="#">{{keyword}}</a></li>'
                 }
             });
             self.$resultPagination.pagination();
+            self.$productBar.vcSticky();
         },
         drawTopicList: function(data) {
             var self = this;
@@ -222,7 +223,7 @@
                     productCode: data.productCode,
                     page: data.page || 1
                 };
-                console.log(data);
+
                 self.param = $.extend(self.param, param);
 
                 lgkorUI.showLoading();
@@ -269,8 +270,7 @@
                 }
             });
 
-            $('.search-layer').on('click', '.keyword-box a', function(e) {
-                e.preventDefault();
+            self.$keywordWrap.on('keywordClick', function(e) {
                 self.$searchBtn.trigger('click', [$(this).text().trim()]);      
             });
 

@@ -26,7 +26,9 @@ $(window).ready(function(){
 
             //결과보기 버튼
             $('.btn-compare').on('click', function(e){
-                var url = $(this).data('linkUrl');
+                saveCookie();
+
+                var url = $(this).data('url');
                 if(url) {
                     location.href = url;
                 }
@@ -72,17 +74,25 @@ $(window).ready(function(){
             var compare = storageCompare[lgkorUI.COMPARE_ID]; 
             var leng = !compare ? "0" : compare.length;
             var $count = $('div.compare-title div.count');
-            $count.text(leng + "/" + lgkorUI.COMPARE_LIMIT)
-            // var countContent = $count.contents();
-            // countContent[3].textContent = lgkorUI.COMPARE_LIMIT;
-            // ($count.find('strong').contents()[1]).textContent = leng;
+            $count.text(leng + "/" + lgkorUI.COMPARE_LIMIT);
+        }
+        function saveCookie(){
+            var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
+            var compare = storageCompare[lgkorUI.COMPARE_ID]; 
+            var leng = !compare ? 0 : compare.length;
+            if(leng){
+                var cookie = [];
+                for(var i in storageCompare[lgkorUI.COMPARE_ID]){
+                    cookie.push(storageCompare[lgkorUI.COMPARE_ID][i]['id']);
+                }
+            }
         }
 
         function setCompareStatus(){
             console.log("setCompareStatus~~");
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
             var compare = storageCompare[lgkorUI.COMPARE_ID]; 
-            var leng = !compare ? "0" : compare.length;
+            var leng = !compare ? 0 : compare.length;
             //var leng = storageCompare[lgkorUI.COMPARE_ID] == undefined ? 0 : storageCompare[lgkorUI.COMPARE_ID].length;
             console.log("leng:",leng)
             if(leng){

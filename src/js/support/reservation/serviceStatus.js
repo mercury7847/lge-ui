@@ -44,8 +44,8 @@
                 var authRegister = {
                     userName2: {
                         required: true,
-                        maxLength: 10,
-                        pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z\*]+$/,
+                        maxLength: 30,
+                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해 주세요.',
                         patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
@@ -70,8 +70,8 @@
                     register: {
                         userName1: {
                             required: true,
-                            maxLength: 10,
-                            pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z\*]+$/,
+                            maxLength: 30,
+                            pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
                             msgTarget: '.err-block',
                             errorMsg: '이름을 입력해 주세요.',
                             patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
@@ -232,7 +232,7 @@
             $('.btn-center-link').on('click', function(){
                 var url = $(this).attr("href");
                 var windowHeight = $(window).innerHeight();
-                window.open(url, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
+                window.open(url, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
             });
         },
 
@@ -377,6 +377,7 @@
                         date : $('input[name=date]').val(),
                         time : $('input[name=time]').val(),
                     }
+                                       
                     self.layerhide();
                     self.request(param);
                 });
@@ -559,6 +560,14 @@
                 $('#centerCode').val(data.centerCode);
     
                 $('#resrvSeq').val(data.resrvSeq);
+
+                var loginFlag = $('html').data('login') === 'Y' ? true : false;
+
+                if( loginFlag ) {
+                    $engineerBox.find('button:visible').first().focus();
+                } else {
+                    $engineerBox.closest('.section').next('.section').find('button').first().focus();
+                }
             },
             requestDate: function() {
                 var self = this;

@@ -8,8 +8,6 @@
             self.$form = $('#submitForm');
 
             vcui.require(['ui/validation', 'ui/formatter', 'ui/imageFileInput'], function () {
-                $('#phoneNo').vcFormatter({'format':'num', "maxlength":11});
-
                 $('.ui_imageinput').vcImageFileInput();
 
                 var register = {
@@ -17,13 +15,19 @@
                         msgTarget: '.err-block'
                     },
                     userName: {
-                        msgTarget: '.err-block'
+                        maxLength : 30,
+                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                        msgTarget: '.err-block',
+                        patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
                     },
                     phoneNo: {
+                        maxLength : 11,
                         pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
                         msgTarget: '.err-block'
                     },
                     email:{
+                        minLength: 1,
+                        maxLength: 50,
                         pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                         msgTarget: '.err-block'
                     },
@@ -84,6 +88,7 @@
                                 }
 
                                 if (result.data.resultFlag == 'Y') {
+                                    result.data.seq && $('#seq').val(result.data.seq);
                                     self.$form.submit();
                                 }
                             }).fail(function(err){

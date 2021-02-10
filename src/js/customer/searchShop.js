@@ -105,6 +105,7 @@
 
             self.isUserAddressClick = false;
 
+            self.applyOptions;
             self.defaultOptions = self._getOptions();
 
             self.$searchField = $('#tab3 .input-sch input');
@@ -150,7 +151,7 @@
 
                 }).on('mapsearchnodata', function(e){
                     //검색 결과 없을 때...
-                    alert("검색 결과가 없습니다.");
+                    //alert("검색 결과가 없습니다.");
                 }).on('maperror', function(e, error){
                     console.log(error);
                 });
@@ -293,6 +294,8 @@
                 keywords.longitude = userLocation.long;
             }
 
+            self.applyOptions = self._getOptions();
+
             lgkorUI.requestAjaxData(self.bestShopUrl, keywords, function(result){
                 self.storeData = vcui.array.map(result.data, function(item, index){
                     item['id'] = item['shopID']; //info.shopID || agCode    
@@ -342,13 +345,27 @@
             }
         },
 
+        //적용 된 옵션 되돌리기
+        _applyOptionChecked: function(){
+            var self = this;
+
+            self._setOptionStatus(self.applyOptions);
+        },
+
+        //옵션 초기화
         _setDefaultOption: function(){
+            var self = this;
+
+            self._setOptionStatus(self.defaultOptions);
+        },
+
+        _setOptionStatus: function(data){
             var self = this;
 
             self.$optionContainer.find('input[type=checkbox]').prop('checked', false);
             
-            for(var str in self.defaultOptions){
-                var values = self.defaultOptions[str].split("|");
+            for(var str in data){
+                var values = data[str].split("|");
                 for(var idx in values){
                     if(values[idx] != "") self.$optionContainer.find('input[name=' + values[idx] + ']').prop('checked', true);
                 }
@@ -384,11 +401,12 @@
             var self = this;
 
             self._setDefaultOption();
-            self._loadStoreData();
         },
 
         _setOptApply: function(){
             var self = this;
+
+            self._toggleOptContainer();
 
             self._loadStoreData();
         },
@@ -410,6 +428,7 @@
             self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked', chked);
         },
 
+        //옵션 레이어 열기 / 닫기
         _toggleOptContainer: function(){
             var self = this;
 
@@ -427,6 +446,8 @@
                     });
                 } else{
                     optop = self.$optionContainer.position().top;
+
+                    self._applyOptionChecked();
 
                     self.$optionContainer.addClass('open');
 
@@ -630,20 +651,27 @@
             var self = this;
             
             self.$defaultListLayer.empty();
-             for(var i=0; i<data.length; i++){
-                 var listData = {
-                     num: i+1,
-                     shopName: data[i].info.shopName,
-                     bizHours: data[i].info.bizHours,
-                     flagInfo: data[i].info.flagInfo,
-                     shopAdress: data[i].info.shopAdress,
-                     shopTelphone: data[i].info.shopTelphone,
-                     shopID: data[i].info.shopID,
-                     selected: data[i].info.selected ? " on" : ""
-                 }
-                 var list = vcui.template(searchListTemplate, listData);
-                 self.$defaultListLayer.append(list);
-             }
+
+            if(data.length){
+                for(var i=0; i<data.length; i++){
+                    var listData = {
+                        num: i+1,
+                        shopName: data[i].info.shopName,
+                        bizHours: data[i].info.bizHours,
+                        flagInfo: data[i].info.flagInfo,
+                        shopAdress: data[i].info.shopAdress,
+                        shopTelphone: data[i].info.shopTelphone,
+                        shopID: data[i].info.shopID,
+                        selected: data[i].info.selected ? " on" : ""
+                    }
+                    var list = vcui.template(searchListTemplate, listData);
+                    self.$defaultListLayer.append(list);
+                }
+            } else{
+                var keywords = self._getKeyword();
+                var nodata = self.searchType == searchTypeNames[2] ? '"' + keywords.searchKeyword + '"에 대한 ' : "";
+                self.$defaultListLayer.append('<div class="no-data"><p>' + nodata + '검색 결과가 없습니다.</p></div>');
+            }
         },
 
         _setItemPosition: function(){
@@ -687,12 +715,12 @@
         _setSearchResultMode: function(){
             var self = this;
 
+            self._setResultText();
+
             if(!self.isChangeMode){
                 self.isChangeMode = true;
 
                 self.$searchContainer.stop().transition({opacity:0}, 320, "easeInOutCubic");
-
-                self._setResultText();
 
                 $('.store-list-wrap .tit').hide();
                 self.$searchContainer.css('display', 'none');
@@ -733,9 +761,10 @@
                 searchKeyword = keywords.searchKeyword;
             }
 
+            var total = self.$defaultListLayer.find('> li').length;
             var resultxt = vcui.template(searchResultText[self.searchType], {
                 keyword: searchKeyword,
-                total: self.$defaultListLayer.find('> li').length
+                total: total ? total.toString() : "0"
             });
             self.$searchResultContainer.find('.result-txt').html(resultxt);
 

@@ -26,7 +26,11 @@
                 },
                 name: {
                     required: true,
-                    msgTarget: '.err-block'
+                    maxLength: 30,
+                    pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                    msgTarget: '.err-block',
+                    errorMsg: '이름을 입력해주세요.',
+                    patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
                 },
                 imageFile: {
                     required: true,
