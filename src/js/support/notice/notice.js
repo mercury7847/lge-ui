@@ -92,19 +92,40 @@
 
                     if (val.length > 1) {
                         self.params = $.extend({}, self.params, {
-                            'keyword': self.$searchWrap.find('input[type="text"]').val(),
+                            'keyword': val,
                             'page': 1
                         });
                         
                         $('.search-error').hide();
 
                         self.searchList();
-                    } else {
+                    } else if (val.length == 1) {
                         $('.search-error').show();
+                    } else {
+                        self.params = $.extend({}, self.params, {
+                            'keyword': '',
+                            'page': 1
+                        });
+
+                        self.searchList();
+
+                        $('.search-error').hide();
                     }
                 });
 
-                self.$sortSelect.on('change', function() {
+                self.$sortSelect.filter('#category').on('change', function() {
+                    self.$searchWrap.find('input[type="text"]').val('');
+                   
+                    self.params = $.extend({}, self.params, {
+                        'keyword': '',
+                        'category': self.$sortSelect.filter('#category').vcSelectbox('value'),
+                        'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
+                        'page': 1
+                    });
+                    self.searchList();
+                });
+
+                self.$sortSelect.filter('#orderType').on('change', function() {
                     self.params = $.extend({}, self.params, {
                         'category': self.$sortSelect.filter('#category').vcSelectbox('value'),
                         'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
