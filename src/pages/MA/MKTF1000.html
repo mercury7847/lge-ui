@@ -710,7 +710,7 @@
 
 		        	$('html, body').stop(true).animate({
 		        		scrollTop: scrollTopData
-		        	}, speed, 'easeInOutQuart',  function() {
+		        	}, speed, 'easeInOutQuart',  function() { // easeInOutQuad, easeInOutQuart, easeInOutCubic
                         canScroll = true
 		        		currentPage = idx;                        
 			        	$('html').removeClass('sceneMoving');
