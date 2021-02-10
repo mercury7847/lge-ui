@@ -457,11 +457,26 @@
                     item.siblings[str].siblingType = (siblingType == "color") ? "color" : "text";
                 }
 
+                /*
                 var sliderImages = [item.mediumImageAddr];
                 if(item.rollingImages && item.rollingImages.length){
                     item.rollingImages.forEach(function(obj, idx) {
-                        sliderImages.push(obj);
+                        if(obj && obj.mediumImageAddr) {
+                            sliderImages.push(obj.mediumImageAddr);
+                        }
                     });
+                }
+                */
+
+                var sliderImages = [];
+                if(item.rollingImages && item.rollingImages.length){
+                    item.rollingImages.forEach(function(obj, idx) {
+                    if(obj && obj.smallImageAddr) {
+                        sliderImages.push(obj.smallImageAddr);
+                        }
+                    });
+                } else {
+                    sliderImages.push(item.smallImageAddr);
                 }
                 item.sliderImages = sliderImages;
                 
@@ -500,7 +515,7 @@
 
                 if(!item.obsBtnRule) item.obsBtnRule = "";
 
-                console.log("### item.siblingType ###", item.siblingType)
+                //console.log("### item.siblingType ###", item.siblingType)
 
                 return vcui.template(productItemTemplate, item);
             },
