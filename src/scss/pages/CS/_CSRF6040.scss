@@ -196,6 +196,7 @@
                         position:absolute;
                         bottom:0;
                         left:0;
+                        z-index:1;
                     }
 
                     @include csmobile {
@@ -476,7 +477,8 @@
 
             .result-list-box {
                 display:none;
-                position:absolute;
+                position:relative; /* 2021.2.9 수정 */
+                width:100%; /* 2021.2.9 추가 */
                 top:0;
                 left:0;
                 right:0;
@@ -535,6 +537,14 @@
                         top:20px;
                         right:20px;
                         bottom:auto;
+                        @include csmobile {
+                            top:29px;
+                            left:auto;
+                        }
+                        @include mobile {
+                            top:25px;
+                            left:auto;
+                        }
                     }
 
                 }

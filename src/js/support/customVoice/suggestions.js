@@ -25,7 +25,7 @@
                     },
                     userName: {
                         required: true,
-                        maxLength: 10,
+                        maxLength: 30,
                         pattern: /^[가-힣a-zA-Z]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
@@ -35,8 +35,7 @@
                         required: true,
                         minLength: 10,
                         maxLength: 11,
-                        //pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
-                        pattern: /^(010|011|017|018|019)-\d{4}-\d{4}$/,
+                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
                         msgTarget: '.err-block',
                         errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
                         patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
@@ -44,7 +43,7 @@
                     email:{
                         required: true,
                         pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        minLength: 5,
+                        minLength: 1,
                         maxLength: 50,
                         msgTarget: '.err-block',
                         errorMsg: '이메일 주소를 입력해주세요.',
@@ -57,7 +56,7 @@
                     },
                     title: {
                         required: true,
-                        maxLength: 40,
+                        maxLength: 100,
                         msgTarget: '.err-block',
                         errorMsg: '제목을 입력해주세요.'
                     },
@@ -147,6 +146,12 @@
                     });       
                 }
             });
+
+            $('.agree-wrap input:checkbox').on('change', function(){
+                if( $('.agree-wrap input:checkbox').filter(':checked').length == $('.agree-wrap input:checkbox').length ) {
+                    $('.step-btn-wrap:visible button').focus();
+                }
+            })
         }
     }
 

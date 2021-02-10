@@ -18,6 +18,14 @@
 
     .pdp-wrap {
         @include clearfix;
+        &.pdp-center {
+            @include pc {
+                .pdp-visual-wrap {
+                    float:none;
+                    margin:0 auto;
+                }
+            }
+        }
 
         .btn-modal {
             position: relative;
@@ -32,10 +40,10 @@
 
     .pdp-visual-wrap {
 		float:left;
-		width:calc(100% - 585px);
+		width:calc(100% - 660px);
 
         @media screen and (max-width: 1024px) {
-            width:calc(100% - 432px);
+            width:calc(100% - 464px);
         }
 		@include mobile {
             float:none;
@@ -80,7 +88,6 @@
                         display: inline-block;
                         &:not(:first-child) {
                             margin-top: 0;
-                            margin-left: 8px;
                         }
                     }
                 }
@@ -381,8 +388,8 @@
 
     .pdp-more-info {
         width: 100%;
-        margin-top: 31px;
-        padding: 21px 16px;
+        margin-top: 32px;
+        padding: 18px 16px;
         border: 1px solid #ddd;
         border-radius: 8px;
         .inner {
@@ -391,7 +398,8 @@
             .text-info {
                 position: relative;
                 float: left;
-                padding-left: 52px;
+                padding-left: 44px;
+                font-weight: 500;
                 @include font-medium;
                 .img-area {
                     position: absolute;
@@ -402,8 +410,9 @@
             }
             .btn-link {
                 float: right;
+                font-weight: 500;
                 @include font-small;
-                color: $color-gray-1;
+                text-decoration: none;
             }
         }
 
@@ -468,11 +477,10 @@
 
             .product-name {
                 position: relative;
-                margin: 4px 0 8px;
+                margin: 4px 0;
                 .name {
                     font-weight: 700;
-                    font-size: 26px;
-                    line-height: 36px;
+                    @include font($font-large-4,52px);
                 }
             }
             .sku {
@@ -483,8 +491,8 @@
                     display: inline-block;
                     width: 1px;
                     height: 12px;
-                    margin: 0 12px;
-                    background-color: #616161;
+                    margin: 0 8px;
+                    background-color: $color-border;
                     content: '';
                 }
             }
@@ -537,17 +545,23 @@
         }
         .product-detail-option {
             .sibling-option {
-                margin-bottom: 32px;
-                padding: 48px 24px 32px;
+                margin-bottom: 24px;
+                padding: 32px 24px 24px;
                 border-bottom: 1px solid $color-border;
                 > [class*="sibling-"] {
                     display: flex;
-                    justify-content: space-between;
+                    //justify-content: space-between;
                     width: 100%;
                     &[class*="select"] {
                         margin-top: 24px;
                     }
                     &[class*="color"] {
+                        .text {
+                            padding-top: 0;
+                        }
+                    }
+                    &[class*="text"] {
+                        margin-top: 24px;
                         .text {
                             padding-top: 0;
                         }
@@ -558,6 +572,9 @@
                         width: 116px;
                         padding-top: 8px;
                         @include font-small;
+                    }
+                    &:first-child {
+                        margin-top: 0;
                     }
                 }
                 @include mobile {
@@ -600,7 +617,7 @@
                                             @include calc(top,50%,-7px);
                                             @include calc(left,50%,-7px);
                                             width: 10px;
-                                            height: 7px;
+                                            height: 8px;
                                             border: 0;
                                             border-bottom: 2px solid #fff;
                                             border-left: 2px solid #fff;
@@ -612,9 +629,8 @@
                             }
                         }
                         .color-text {
-                            margin-top: 16px;
-                            font-weight: 700;
-                            @include font-medium;
+                            margin-top: 8px;
+                            @include font-small;
                         }
                     }
                     &.select {
@@ -628,7 +644,7 @@
                             input {
                                 & + label {
                                     width: 67px;
-                                    padding: 6px 8px;
+                                    padding: 5px 0;
                                     color: $color-gray-1;
                                 }
                                 &:checked {
@@ -640,6 +656,9 @@
                         }
                     }
                 }
+                .text-option {
+                    @include font-small;
+                }
             }
 
             .price-info {
@@ -648,32 +667,19 @@
                     float: left;
                     @include font-small;
                     .btn-link {
-                        color: $color-default;
-                        &:after {
-                            background-image: url('/lg5-common/images/icons/btn-arr-20x20-black.svg');
-                        }
+                        @include font-small;
                     }
                 }
                 .content {
                     float: right;
                     text-align: right;
                     .original {
-                        position: relative;
-                        margin-right: 8px;
+                        margin-right: 6px;
                         @include font-small;
-                        color: $color-gray-4;
-                        &:after {
-                            position: absolute;
-                            top: 50%;
-                            left: 0;
-                            width: 100%;
-                            height: 1px;
-                            background-color: $color-gray-4;
-                            content: '';
-                        }
+                        color: $color-gray-5;
+                        @include text-through($color-gray-5);
                     }
                     .price {
-                        font-weight: 500;
                         @include font-small;
                         & + .price {
                             display: block;
@@ -689,38 +695,31 @@
                     }
                     .price {
                         font-weight: 700;
-                        @include font-large;
+                        @include font-large-1;
                         .sub-text {
-                            font-weight: 500;
+                            font-weight: 400;
                             margin-right: 8px;
                             @include font-small;
-                            color: $color-gray-4;
+                            color: $color-gray-1;
                         }
                         .desc {
                             display: block;
-                            font-weight: 500;
+                            font-weight: 400;
                             @include font-small;
-                            color: #3b9792;
+                            color: $color-neutral;
                         }
                     }
                 }
                 &.discount {
                     .price {
+                        font-weight: 400;
                         color: $color-primary;
                     }
                 }
                 &.total-discount {
-                    margin-top: 12px;
+                    margin-top: 8px;
                     .price {
                         font-weight: 700;
-                    }
-                }
-                &.card-benefit {
-                    .price {
-                        .block {
-                            font-weight: 700;
-                            color: $color-primary;
-                        }
                     }
                 }
                 &.quantity {
@@ -734,22 +733,16 @@
                     }
                 }
                 &.total-payment {
-                    //margin-top: 16px;
                     .text {
-                        padding-top: 6px;
+                        padding-top: 5px;
                     }
                     .price {
                         font-weight: 700;
-                        font-size: 26px;
-                        line-height: 36px;
+                        @include font-large-2;
                     }
                     @include mobile {
                         .text {
                             padding-top: 3px;
-                        }
-                        .price {
-                            font-size: 18px;
-                            line-height: 27px;
                         }
                     }
                 }
@@ -766,26 +759,27 @@
                     }
                     .head {
                         position: relative;
+                        padding-top: 24px;
                         .accord-text {
                             @include font-small;
                         }
                     }
-                    .ui_accord_content {
-                        &.border {
-                            margin-top: 24px;
-                            padding-top: 16px;
-                            border-top: 1px solid $color-border;
-                        }
-                    }
+                    //.ui_accord_content {
+                    //    &.border {
+                    //        margin-top: 24px;
+                    //        padding-top: 16px;
+                    //        border-top: 1px solid $color-border;
+                    //    }
+                    //}
                     .btn-toggle {
                         position: absolute;
-                        top: 50%;
+                        @include calc(top,50%,-12px);
                         right: 0;
-                        transform: translateY(-50%);
+                        transform: translateY(-50%) rotate(90deg);
                         //transition: all .3s ease;
-                        width: 24px;
-                        height: 24px;
-                        background: url('/lg5-common/images/icons/icon-triangle-24.svg') no-repeat 0 0;
+                        width: 16px;
+                        height: 16px;
+                        background: url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat 0 0;
                     }
                     .article-box {
                         margin-top: 16px;
@@ -819,8 +813,16 @@
                         @include mobile {
                             padding: 24px 12px;
                         }
+                        .head {
+                            padding-top: 0;
+                        }
+                        .ui_accord_content {
+                            margin-top: 16px;
+                            border-top: 1px solid $color-gray-6;
+                        }
                         .btn-toggle {
-                            transform: translateY(-50%) rotate(-180deg);
+                            top: 50%;
+                            transform: translateY(-50%) rotate(-90deg);
                         }
                         .article-box {
                             display: none;
@@ -838,7 +840,7 @@
                     }
                     &.member {
                         .ui_accord_content {
-                            padding-top: 24px;
+                            padding-top: 16px;
                         }
                     }
                     &.benefit {
@@ -847,10 +849,24 @@
                             ul > li {
                                 &:not(:first-child) {
                                     .price-info {
-                                        margin-top: 12px;
+                                        margin-top: 8px;
                                     }
                                 }
                             }
+                            .price {
+                                font-weight: 700;
+                            }
+                            .card-benefit {
+                                .price {
+                                    font-weight: 400;
+                                }
+                            }
+                        }
+                        .btn-toggle {
+                            top: 36px;
+                        }
+                        &.on .btn-toggle {
+                            top: 12px;
                         }
                     }
                     .price-info {
@@ -858,15 +874,19 @@
                     }
                 }
                 &.care-solution-payment-info {
-                    margin-top: 32px;
+                    margin-top: 24px;
                     margin-bottom: 0;
                     .lists {
                         padding: 16px 24px;
                         border-radius: 8px 8px 0 0;
                         background-color: $color-bg;
-
+                        .head {
+                            padding-top: 0;
+                        }
+                        .btn-toggle {
+                            top: 50%;
+                        }
                         &.on {
-                            padding: 24px;
                             border-radius: 8px 8px 0 0;
                         }
                     }
@@ -874,15 +894,16 @@
                 .desc {
                     margin-top: 12px;
                     padding-right: 28px;
-                    font-weight: 500;
                     @include font-small;
-                    color: $color-gray-1;
                     word-break: keep-all;
                 }
                 .btn-area {
-                    margin-top: 16px;
+                    margin-top: 24px;
                     padding-right: 30px;
                     text-align: right;
+                    .btn-link {
+                        @include font-small;
+                    }
                 }
             }
         }
@@ -904,21 +925,18 @@
             @include clearfix;
             position: relative;
             &.text-box {
-                padding: 11px 48px 11px 16px;
+                padding: 12px 40px 12px 16px;
+                @include font-small;
                 .text {
                     float: left;
-                    font-weight: 500;
-                    @include font-small;
                 }
                 .content {
                     float: right;
-                    font-weight: 700;
-                    @include font-medium;
                 }
             }
             &.radio-box {
                 &.first {
-                    margin-bottom: 25px;
+                    margin-bottom: 24px;
                 }
             }
             &.select-box {
@@ -926,26 +944,32 @@
             }
             &.dropdown-box {
                 .select-text {
-                    top: 0;
+                    top: -1px;
                     left: -1px;
                     transform: translateY(0);
-                    padding: 11px 16px;
+                    padding: 12px 16px;
                     border-radius: 8px 0 0 8px;
-                    background-image: radial-gradient(circle at 15% 4%, #6f6dd3, #9d5597 79%), linear-gradient(to bottom, #e5599d 2%, #e07676), linear-gradient(to bottom, #222222, #222222);
+                    background-image: linear-gradient(113deg, #8d71ec, #ff537c 99%);
                     color: $color-white;
-                    .tooltip-wrap .tooltip-icon {
-                        background-image: url('/lg5-common/images/icons/icon-tooltip-white.svg');
+                    .tooltip-wrap {
+                        margin-top: 0;
+                        .tooltip-icon {
+                            background-image: url('/lg5-common/images/icons/icon-tooltip-white.svg');
+                        }
                     }
                 }
                 .select-wrap {
                     .select-button {
-                        border-color: #6f6dd3;
+                        border-color: $color-primary;
                     }
                 }
             }
             &.price-info {
                 &.total {
-                    margin-top: 18px;
+                    margin-top: 16px;
+                    .price {
+                        @include font-large;
+                    }
                 }
             }
             .select-text {
@@ -955,21 +979,25 @@
                 z-index: 3;
                 transform: translateY(-50%);
                 @include font-small;
-                color: $color-gray-1;
             }
 
             .select-wrap {
                 .ui-selectbox-wrap {
                     .ui-select-button {
+                        padding: 11px 40px 11px 15px;
                         text-align: right;
                         @include mobile {
                             padding: 10px 48px 10px 15px;
+                        }
+                        .ui-select-text {
+                            @include font-small;
                         }
                     }
                     .ui-selectbox-list {
                         z-index: 4;
                         ul li a {
-                            padding-right: 48px;
+                            padding: 12px 40px 12px 15px;
+                            @include font-small;
                             text-align: right;
                         }
                         @include mobile {
@@ -980,21 +1008,21 @@
                 .select-button {
                     display: block;
                     position: relative;
-                    padding: 10px 48px 10px 15px;
+                    padding: 11px 40px 11px 15px;
                     border: 1px solid $color-border;
                     border-radius: 8px;
                     background: $color-bg-wt;
-                    @include font-medium;
+                    @include font-small;
                     text-align: right;
                     .ui_dropdown_toggle {
                         &:after {
                             position: absolute;
                             top: 50%;
                             right: 16px;
-                            width: 24px;
-                            height: 24px;
-                            margin-top: -12px;
-                            background: url('/lg5-common/images/icons/icon-triangle-24.svg') no-repeat 0 0;
+                            width: 16px;
+                            height: 16px;
+                            margin-top: -8px;
+                            background: url('/lg5-common/images/icons/btn-down-16-black.svg') no-repeat 0 0;
                             transition: all 0.3s;
                             content: '';
                         }
@@ -1014,11 +1042,11 @@
                 .select-list {
                     margin-top: 48px;
                     padding-bottom: 12px;
-                    @include font-medium;
+                    @include font-small;
                     text-align: right;
                     a {
                         display: block;
-                        padding: 10px 48px 10px 16px;
+                        padding: 13px 40px 13px 16px;
                         &:hover,
                         &:focus,
                         &.on {
@@ -1026,7 +1054,7 @@
                         }
                     }
                     .divide {
-                        padding: 10px 48px 10px 16px;
+                        padding: 13px 40px 13px 16px;
                         .inner {
                             position: relative;
                             overflow: hidden;
@@ -1038,7 +1066,7 @@
                             top: 50%;
                             right: 0;
                             transform: translateY(-50%);
-                            @include font-medium;
+                            @include font-small;
                             color: $color-gray-1;
                             white-space: nowrap;
                         }
@@ -1059,9 +1087,11 @@
                         }
                         .select-text {
                             background-image: none;
-                            color: $color-gray-1;
+                            color: $color-default;
                             .tooltip-wrap {
-                                display: none;
+                                .tooltip-icon {
+                                    background-image: url('/lg5-common/images/icons/icon-tooltip.svg');
+                                }
                             }
                         }
                     }
@@ -1082,31 +1112,39 @@
         .care-solution-payment-info {
             .info-box {
                 margin-top: 16px;
+                padding-bottom: 8px;
                 .text {
                     @include font-small;
-                    color: $color-gray-1;
                 }
                 .bullet-list {
                     margin-top: 4px;
                     margin-bottom: 8px;
+                    .b-txt {
+                        padding-left: 11px;
+                        &:before {
+                            display: inline-block !important;
+                            width: 2px;
+                            height: 2px;
+                            background-color: $color-default;
+                        }
+                    }
                 }
             }
         }
 
         .care-planner-link {
             @include clearfix;
-            padding: 10px 16px;
-            background-image: radial-gradient(circle at 15% 4%, #6f6dd3, #9d5597 79%);
-            font-weight: 500;
-            font-size: $font-small;
-            line-height: 20px;
+            padding: 8px 16px;
+            background-image: linear-gradient(95deg, #8d71ec, #ff537c 99%);
             .text {
                 display: inline-block;
-                color: #f5b75f;
+                @include font-small;
+                color: #fffd7c;
                 vertical-align: middle;
             }
             .btn-link {
                 float: right;
+                @include font-small;
                 color: $color-white;
                 &:after {
                     background-image: url('/lg5-common/images/icons/btn-arr-20x20-white.svg');
@@ -1127,8 +1165,7 @@
 
         .product-share {
             position: absolute;
-            top: 0;
-            //top: 0;
+            top: 10px;
             right: 0;
         }
         .info-bottom {
@@ -1136,7 +1173,6 @@
             margin-top: 16px;
             .link-area {
                 float: right;
-                color: $color-gray-1;
                 ul {
                     font-size: 0;
                     > li {
@@ -1144,11 +1180,11 @@
                         padding-left: 28px;
                         @include font-small;
                         &.reservation {
-                            background: url('/lg5-common/images/icons/icon-counsel-24-gray.svg') no-repeat 0 center;
+                            background: url('/lg5-common/images/icons/icon-location-24.svg') no-repeat 0 center;
                         }
                         &.find-store {
                             margin-left: 16px;
-                            background: url('/lg5-common/images/icons/icon-shop-24-gray.svg') no-repeat 0 center;
+                            background: url('/lg5-common/images/icons/icon-store-24.svg') no-repeat 0 center;
                         }
                     }
                 }
@@ -1193,7 +1229,6 @@
                     border: 1px solid $color-border;
                     background-color: $color-bg-wt;
                     @include font-small;
-                    color: $color-gray-1;
                     @include mobile {
                         border-radius: 4px;
                         font-size: 14px;
@@ -1222,19 +1257,17 @@
                     left: 0;
                     z-index: 1;
                     border-radius: 8px;
-                    box-shadow: 2px 4px 12px 0 rgba(0,0,0,0.16);
-                    border: 1px solid #111;
+                    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
                     background-color: $color-bg-wt;
                 }
                 &.open {
                     .select-button {
                         position: absolute;
-                        top: 1px;
-                        right: 1px;
-                        left: 1px;
+                        top: 0;
+                        right: 0;
+                        left: 0;
                         z-index: 2;
-                        border: 0;
-                        @include font-medium;
+                        border-color: $color-white;
                         &:after {
                             transform: rotate(180deg);
                         }
@@ -1256,7 +1289,7 @@
                         a {
                             display: table;
                             width: 100%;
-                            padding: 12px 16px;
+                            padding: 11px 16px;
                             .item-image {
                                 display: table-cell;
                             }
@@ -1274,16 +1307,7 @@
                         &:hover,
                         &.on {
                             a {
-                                background-color: #f4f4f4;
-                            }
-                            .item-image {
-                                opacity: 1;
-                            }
-                            .item-info {
-                                dt,
-                                dd .price {
-                                    color: $color-default;
-                                }
+                                background-color: $color-bg;
                             }
                         }
                     }
@@ -1291,8 +1315,7 @@
 
                 .item-image {
                     width: 60px;
-                    padding-right: 16px;
-                    opacity: .5;
+                    padding-right: 12px;
                     img {
                         width: 60px;
                         height: 60px;
@@ -1300,23 +1323,13 @@
                 }
                 .item-info {
                     @include font-medium;
-                    color: $color-gray-1;
                     dd {
                         text-align: right;
                         .original {
-                            position: relative;
                             display: inline-block;
-                            margin-bottom: 2px;
                             @include font-small;
-                            &:after {
-                                position: absolute;
-                                top: 50%;
-                                left: 0;
-                                width: 100%;
-                                height: 1px;
-                                background-color: $color-gray-4;
-                                content: '';
-                            }
+                            color: $color-gray-5;
+                            @include text-through($color-gray-5);
                         }
                         .price {
                             display: block;
@@ -1366,7 +1379,7 @@
         .additional-payment {
             .price-info {
                 margin-top: 16px;
-                padding-right: 48px;
+                padding: 0 36px 0 11px;
                 .text {
                     float: none;
                     margin-bottom: 8px;
@@ -1378,8 +1391,7 @@
                     }
                     .price {
                         display: block;
-                        padding-top: 4px;
-                        @include font-large;
+                        padding: 7px 0;
                     }
                 }
             }
@@ -1388,11 +1400,11 @@
                     position: relative;
                     .btn-delete {
                         position: absolute;
-                        bottom: 8px;
+                        bottom: 11px;
                         right: 16px;
-                        width: 24px;
-                        height: 24px;
-                        background: url('/lg5-common/images/icons/btn-close-24.svg') no-repeat 0 0;
+                        width: 16px;
+                        height: 16px;
+                        background: url('/lg5-common/images/icons/btn-clear-16.svg') no-repeat 0 0;
                     }
                 }
             }
@@ -1418,22 +1430,24 @@
             //background-color: $color-bg;
             text-align: center;
             .text {
-                @include font-small;
+                @include font-medium;
                 color: $color-primary;
             }
         }
 
         .careship-service {
             @include clearfix;
-            margin-top: 32px;
-            padding: 25px 24px 0;
-            border-top: 1px solid $color-border;
+            margin-top: 40px;
+            padding: 0 24px;
             .box {
                 margin: 7px -24px 0;
             }
             .text {
                 float: left;
                 @include font-small;
+                .tooltip-wrap {
+                    margin-top: 0;
+                }
             }
             .select-option {
                 float: right;
@@ -1447,7 +1461,7 @@
         }
 
         .payment-amount {
-            margin-top: 16px;
+            margin-top: 24px;
             ul > li {
                 &:not(:first-child) {
                     .price-info {
@@ -1536,23 +1550,17 @@
                 width: 100%;
                 .btn {
                     display: table-cell;
+                    margin-left: 0;
                     width: 100%;
-                    border-radius:26px !important;
-                    //@include mobile {
-                    //    margin-left: 4px;
-                    //    border-radius: 4px;
-                    //    &:first-child {
-                    //        margin-left: 0;
-                    //    }
-                    //}
+                    vertical-align: middle;
                 }
             }
             .btn {
                 &.like,
                 &.cart {
                     width: auto;
-                    min-width: 52px;
-                    padding: 0 8px 0 0;
+                    min-width: 32px;
+                    padding: 0 16px 0 0;
                     border: 0;
                     background-color: transparent;
                     background-image: none;
@@ -1562,38 +1570,31 @@
                     .chk-wish-wrap {
                         input {
                             & + label {
-                                width: 52px;
-                                height: 52px;
+                                width: 32px;
+                                height: 32px;
                                 &:before {
-                                    width: 52px;
-                                    height: 52px;
-                                    background-image: url('/lg5-common/images/icons/btn-like-off-52.svg');
+                                    width: 32px;
+                                    height: 32px;
+                                    background-image: url('/lg5-common/images/icons/btn-like-off-32.svg');
                                     background-size: 100%;
                                 }
                             }
                             &:checked + label {
                                 &:before {
-                                    background-image: url('/lg5-common/images/icons/btn-like-on-52.svg');
+                                    background-image: url('/lg5-common/images/icons/btn-like-on-32.svg');
                                 }
                             }
                         }
                     }
                 }
                 &.cart {
+                    padding-right: 21px;
                     &:before {
                         display: inline-block;
-                        width: 52px;
-                        height: 52px;
-                        background: url('/lg5-common/images/icons/btn-cart-off-52.svg') no-repeat center center;
+                        width: 32px;
+                        height: 32px;
+                        background: url('/lg5-common/images/icons/btn-cart-32.svg') no-repeat center center;
                         content: '';
-                    }
-                    &:before {
-                    }
-                    &:hover,
-                    &:focus {
-                        &:before {
-                            background-image: url('/lg5-common/images/icons/btn-cart-on-52.svg');
-                        }
                     }
                 }
             }
@@ -1634,19 +1635,23 @@
     }
 
     .care-solution-info {
-        margin-top: 89px;
-        padding: 24px;
-        border-radius: 8px;
-        background-color: $color-bg;
         @include mobile {
             margin-top: 48px;
             padding: 24px 12px;
         }
         .bullet-list {
-            margin-top: 0;
+            margin-top: 80px;
+            padding-top: 24px;
+            border-top: 1px solid $color-border;
+            .b-txt {
+                padding-left: 11px;
+                &:before {
+                    display: inline-block !important;
+                }
+            }
         }
         .btn-area {
-            margin-top: 12px;
+            margin-top: 24px;
             font-size: 0;
             .btn {
                 &:nth-child(2) {
@@ -1693,14 +1698,13 @@
 
     // 구매혜택
     .payment-info {
-        padding: 8px 24px 32px;
+        padding-bottom: 24px;
     }
     .price-info {
         @include clearfix;
         .text {
             float: left;
             @include font-small;
-
         }
         .content {
             float: right;
@@ -1719,12 +1723,12 @@
                 }
             }
             .price {
-                font-weight: 500;
+                font-weight: 700;
                 @include font-small;
             }
         }
         &.total {
-            margin-bottom: 16px;
+            margin-bottom: 18px;
             .text {
                 padding-top: 2px;
             }
@@ -1735,11 +1739,12 @@
         }
         &.discount {
             .price {
+                font-weight: 400;
                 color: $color-primary;
             }
         }
         &.total-discount {
-            margin-top: 12px;
+            margin-top: 16px;
             .price {
                 font-weight: 700;
             }
@@ -1779,18 +1784,17 @@
         }
     }
     .additional {
-        padding: 32px 24px;
+        padding: 24px 0;
         border-top: 1px solid $color-border;
         .title {
-            margin-bottom: 16px;
+            margin-bottom: 24px;
             font-weight: 700;
             @include font-large;
         }
         .membership {
-            padding-bottom: 24px;
+            padding-bottom: 40px;
             .text {
                 position: relative;
-                font-weight: 700;
             }
             .cash-back {
                 .head {
@@ -1847,10 +1851,11 @@
             //}
         }
         .info-text {
-            margin-top: 24px;
+            margin-top: 16px;
+            padding-top: 16px;
             padding-left: 17px;
+            border-top: 1px solid $color-border;
             @include font-small;
-            color: $color-gray-1;
             text-indent: -17px;
         }
         .ui_accordion {
@@ -1862,12 +1867,13 @@
                 //transition: all .3s ease;
                 width: 24px;
                 height: 24px;
-                background: url('/lg5-common/images/icons/icon-triangle-24.svg') no-repeat 0 0;
+                background: url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat top 4px left 4px;
+                transform: rotate(90deg);
                 vertical-align: top;
             }
             .ui_accord_content {
                 .info-box {
-                    margin: 16px -24px 0;
+                    margin: 8px 0 0;
                     padding: 24px;
                     border-radius: 8px;
                     background-color: $color-bg;
@@ -1879,22 +1885,17 @@
             .lists {
                 &.on {
                     .btn-toggle {
-                        transform: rotate(-180deg);
+                        transform: rotate(270deg);
                     }
                 }
             }
         }
     }
     .total-point {
-        padding-top: 32px;
-        border-top: 1px solid $color-border;
         .price-info {
             padding: 24px;
             border-radius: 8px;
             background-color: $color-bg;
-            .text {
-                font-weight: 700;
-            }
             .price {
                 color: $color-primary;
             }
@@ -2449,20 +2450,18 @@
     }
 }
 .awards-list {
-    margin-top: 24px;
+    //margin-top: 24px;
     height: auto;
     background: #fff;
     z-index: 1000;
     li {
         display: table;
         margin-bottom: 16px;
-        //padding: 0 0 0 72px;
         font-size: 16px;
         line-height: 24px;
         color: #616161;
         .text {
             display: table-cell;
-            //padding: 12px 0;
             @include font-medium;
             vertical-align: middle;
         }

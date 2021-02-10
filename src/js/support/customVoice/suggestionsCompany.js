@@ -17,13 +17,17 @@
                         msgTarget: '.err-block'
                     },
                     userName: {
+                        maxLength : 30,
                         msgTarget: '.err-block'
                     },
                     phoneNo: {
+                        maxLength : 11,
                         pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
                         msgTarget: '.err-block'
                     },
                     email:{
+                        minLength: 1,
+                        maxLength: 50,
                         pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                         msgTarget: '.err-block'
                     },

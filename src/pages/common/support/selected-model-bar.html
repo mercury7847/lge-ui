@@ -10,6 +10,11 @@
         <div class="prod-info">
             <p class="tit">서비스이용을 위해 제품을 선택해 주세요.</p>
         </div>
+        @@if(context.btn) {
+        <div class="prod-btn">
+            <button type="button" class="btn border size reset btn-reset">제품 선택</button>
+        </div>
+        }
     </div>
 </div>
 }

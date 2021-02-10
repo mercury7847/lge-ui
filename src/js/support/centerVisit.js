@@ -172,7 +172,7 @@
                 },
                 userName: {
                     required: true,
-                    maxLength: 10,
+                    maxLength: 30,
                     pattern: /^[가-힣a-zA-Z]+$/,
                     msgTarget: '.err-block',
                     errorMsg: '이름을 입력해주세요.',
@@ -220,7 +220,7 @@
                 register: {
                     authName: {
                         required: true,
-                        maxLength: 10,
+                        maxLength: 30,
                         pattern: /^[가-힣a-zA-Z]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
@@ -487,7 +487,6 @@
             });
 
             self.warrantyGuide.on('modalshown', function(){
-                console.log(111)
                 var $this = $(this);
                 var $tab = $this.find('.ui_tab');
                 var $tabCont =  $this.find('.tabs-contents');

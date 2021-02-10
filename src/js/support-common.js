@@ -345,6 +345,13 @@ CS.MD.search = function() {
         _bindEvent: function() {
             var self = this;
 
+            // function maxLengthCheck(object){
+            //     if (object.value.length > object.maxLength){
+            //       object.value = object.value.slice(0, object.maxLength);
+            //     }    
+            //   }
+
+           
             self.$el.on('click', '.search-layer .btn-delete', function() {
                 var $box = $(this).closest('li');
                 cookie.deleteCookie('LG_SupportKeyword', $box.find('a').text())
@@ -401,8 +408,10 @@ CS.MD.search = function() {
             self.$el.find('.btn-search').on('click', function() {
                 var val = self.$el.find('input[type=text]').val().trim();
                 if (val.length > 1) {
-                    cookieKeyword.addCookie(val);
-                    self._setRecently();    
+                    if (self.$el.find('.recently-keyword').length) {
+                        cookieKeyword.addCookie(val);
+                        self._setRecently();
+                    }
                     $('.search-error').hide();
                 } else {
                     $('.search-error').show();   
@@ -410,6 +419,10 @@ CS.MD.search = function() {
 
                 self.$el.removeClass('on');
             });
+
+            self.$el.find('.btn-list-all').on('click', function() {
+                self.$el.find('.btn-search').trigger('click');
+            }); 
 
             $('body').on('click', function (e) {
                 if (!$(e.target).parents('.keyword-search')[0]) {
@@ -1883,13 +1896,13 @@ CS.MD.pagination = function() {
 
                 if ($this.hasClass(self.options.disabledClass) || $this.attr('aria-disabled') == true) return;
 
-                if (!(self.options.lastView && ($this.hasClass(self.options.prevClass) || $this.hasClass(self.options.nextClass)))) {
+                if (self.options.lastView && ($this.hasClass(self.options.prevClass) || $this.hasClass(self.options.nextClass))) {
+                    self._update(page);
+                } else {    
                     self.$el.trigger({
                         type: 'pageClick',
                         page: page
                     });
-                } else {    
-                    self._update(page);
                 }
             });
         }
@@ -2221,6 +2234,13 @@ $.fn.serializeObject = function() {
         }
 
         if ($('.ui_common_scroll').length && !lgkorUI.isMobile()) $('.ui_common_scroll').mCustomScrollbar();
+
+        $(document).on('input', 'input[type="number"]', function(){
+            if (this.value.length > this.maxLength){
+                this.value = this.value.slice(0, this.maxLength);
+              }  
+        });
+
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);

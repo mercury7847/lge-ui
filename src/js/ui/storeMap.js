@@ -65,7 +65,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     '           </dl>'+
                     '           <dl>'+
                     '               <dt>일요일</dt>'+
-                    '               <dd>{{bizHours.subday}}</dd>'+
+                    '               <dd>{{bizHours.sunday}}</dd>'+
                     '           </dl>'+
                     '       </div>'+
                     '       <div class="btn-group">'+
@@ -92,46 +92,85 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             self.centerID = 0;
             self.centerMarker;
 
+            self.userLatitude = "";
+            self.userLongitude = "";
+
             new core.helper.NaverMapApi({
                 mapService: self.options.mapService,
                 keyID: self.options.keyID,
                 appKey: self.options.appKey
             }).load(function(){
-                self._setting();
+                if(window.breakpoint.isMobile){
+                
+                    lgkorUI.confirm("고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 매장 안내를 위해서만 이용 됩니다.<br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다.<br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?", {
+                        typeClass: "type2",
+                        title: "위치 정보 제공 동의",
+                        cancelBtnName: "아니요",
+                        okBtnName: "네",
+                        cancel: function(){
+                            self._setting();
+                        },
+                        ok:function(){
+                            self._getCurrentLocation();
+                        }
+                    });
+                } else self._setting();
             });            
         },
 
-        _setting : function _setting(){
+        _setting : function _setting(lat, long){
             var self = this;
+
+            var firstLat = lat ? lat : self.latitude;
+            var firstLong = long ? long : self.longitude;
+
             var options = {
-                center: new naver.maps.LatLng(self.latitude, self.longitude),
+                center: new naver.maps.LatLng(firstLat, firstLong),
                 level: 3
             };
             self.map = new naver.maps.Map(self.$el[0], options);
 
             self._bindEvent();
             
-            self.triggerHandler('mapinit');
+            self.triggerHandler('mapinit', {lat: self.userLatitude, long: self.userLongitude});
         },
         
         _getCurrentLocation : function _getCurrentLocation() {
             var self = this;       
             if (navigator.geolocation) {
+                console.log("### _getCurrentLocation ###");
                 navigator.geolocation.getCurrentPosition(
                     function(e){
-                        console.log("1")
                         self._onSuccessGeolocation(e);
                     }, 
                     function(e){
-                        console.log("2")
-                        self._onErrorGeolocation(e);
+                        self._onErrorGeolocation();
                     }
                 );
             } else {
-                console.log("3")
                 self._onErrorGeolocation();
             }        
         },
+
+        _onSuccessGeolocation : function _onSuccessGeolocation(position) {
+            var self = this;
+
+            self.userLatitude = position.coords.latitude;
+            self.userLongitude = position.coords.longitude;
+
+            self._setting(self.userLatitude, self.userLongitude);
+        },
+        
+        _onErrorGeolocation : function _onErrorGeolocation() {
+            var self = this;
+
+            lgkorUI.alert("", {
+                title: "현재 위치를 찾을 수 없습니다.",
+                ok: function(){
+                    self._setting();
+                }
+            });
+        },     
 
         _bindEvent: function _bindEvent() {
             var self = this;
@@ -176,21 +215,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 size: new naver.maps.Size(34, 48),
                 anchor: new naver.maps.Point(17, 48)
             };
-        },
-
-        _onSuccessGeolocation : function _onSuccessGeolocation(position) {
-            var self = this;
-            if(!self.map) return;
-
-            self.latitude = position.coords.latitude;
-            self.longitude = position.coords.longitude;
-
-            self.map.setCenter(new kakao.maps.LatLng(self.latitude, self.longitude));
-        },
-        
-        _onErrorGeolocation : function _onErrorGeolocation() {
-            var self = this;
-        },      
+        }, 
 
         _getDistance : function _getDistance(lat1,lng1,lat2,lng2) {                    
             var R = 6371;
@@ -435,8 +460,10 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             self._changeMarkersState(); 
         },
 
-        resize: function resize(){
+        resize: function resize(width, height){
             var self = this;
+
+            self.map.setSize({width: width, height: height})
 
             self._changeMarkersState();
         },
