@@ -45,7 +45,7 @@
                     userName2: {
                         required: true,
                         maxLength: 30,
-                        pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z\*]+$/,
+                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해 주세요.',
                         patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
@@ -71,7 +71,7 @@
                         userName1: {
                             required: true,
                             maxLength: 30,
-                            pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z\*]+$/,
+                            pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
                             msgTarget: '.err-block',
                             errorMsg: '이름을 입력해 주세요.',
                             patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'

@@ -10,7 +10,7 @@
                 register: {
                     userName1: {
                         msgTarget: '.err-block',
-                        pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z\*]+$/,
+                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
                         maxLength: 30
                     },
                     number: {
@@ -24,7 +24,7 @@
                 register: {
                     userName2: {
                         msgTarget: '.err-block',
-                        pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z\*]+$/,
+                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
                         maxLength: 30
                     },
                     phoneNo: {

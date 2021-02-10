@@ -175,6 +175,7 @@
                         }
                         .item-text {
                             display: table-cell;
+                            padding-left: 24px;
                             vertical-align: middle;
                             @include mobile {
                                 display:block;
