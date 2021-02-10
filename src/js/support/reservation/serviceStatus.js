@@ -44,7 +44,7 @@
                 var authRegister = {
                     userName2: {
                         required: true,
-                        maxLength: 10,
+                        maxLength: 30,
                         pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z\*]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해 주세요.',
@@ -70,7 +70,7 @@
                     register: {
                         userName1: {
                             required: true,
-                            maxLength: 10,
+                            maxLength: 30,
                             pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z\*]+$/,
                             msgTarget: '.err-block',
                             errorMsg: '이름을 입력해 주세요.',
@@ -232,7 +232,7 @@
             $('.btn-center-link').on('click', function(){
                 var url = $(this).attr("href");
                 var windowHeight = $(window).innerHeight();
-                window.open(url, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
+                window.open(url, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
             });
         },
 

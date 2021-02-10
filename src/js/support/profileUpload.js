@@ -25,6 +25,7 @@
                     msgTarget: '.err-block'
                 },
                 name: {
+                    maxLength : 30,
                     required: true,
                     msgTarget: '.err-block'
                 },

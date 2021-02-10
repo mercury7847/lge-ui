@@ -19,11 +19,11 @@
                     },
                     userName: {
                         required: true,
-                        maxLength: 10,
+                        maxLength: 30,
                         pattern: /^[가-힣a-zA-Z]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
-                        patternMsg: '한글 또는 영문만 입력 가능합니다.'
+                        patternMsg: '이름은 한글 또는 영문만 입력 가능합니다.'
                     },
                     phoneNo: {
                         required: true,
@@ -53,7 +53,7 @@
                         required: true,
                         //pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                         pattern : /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/,
-                        minLength: 5,
+                        minLength: 1,
                         maxLength: 50,
                         msgTarget: '.err-block',
                         errorMsg: '이메일 주소를 입력해주세요.',
@@ -61,7 +61,7 @@
                     },
                     title: {
                         required: true,
-                        maxLength: 40,
+                        maxLength: 100,
                         msgTarget: '.err-block',
                         errorMsg: '제목을 입력해주세요.'
                     },
@@ -208,9 +208,9 @@
                 });
             });
 
-            $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('keyup', function(e){
-                this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
-            })
+            // $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('keyup', function(e){
+            //     this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+            // })
         }
     }
 

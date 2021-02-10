@@ -308,6 +308,19 @@ $wide-screen: "(min-width: 1600px)";
     }
 }
 
+@mixin text-through ($color) {
+    position: relative;
+    &:after {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $color;
+      content: '';
+    }
+}
+
 @mixin progress-on-icon {
     color: #ec455a;
     &::before {

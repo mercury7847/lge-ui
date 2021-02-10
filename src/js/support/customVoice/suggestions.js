@@ -25,7 +25,7 @@
                     },
                     userName: {
                         required: true,
-                        maxLength: 10,
+                        maxLength: 30,
                         pattern: /^[가-힣a-zA-Z]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
@@ -43,7 +43,7 @@
                     email:{
                         required: true,
                         pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        minLength: 5,
+                        minLength: 1,
                         maxLength: 50,
                         msgTarget: '.err-block',
                         errorMsg: '이메일 주소를 입력해주세요.',
@@ -56,7 +56,7 @@
                     },
                     title: {
                         required: true,
-                        maxLength: 40,
+                        maxLength: 100,
                         msgTarget: '.err-block',
                         errorMsg: '제목을 입력해주세요.'
                     },
