@@ -410,6 +410,11 @@
                 self.requestCenterData(param)
             });
 
+            // 엔지니어 선택 팝업 오픈
+            self.$engineerPopup.on('modalshown', function() {
+                self.$engineerSlider.vcCarousel('resize');
+            });
+
             self.$stepCenter.on('change', '[name=center]', function() {
                 var value = $(this).val(),
                     deptCode = $(this).data('deptCode');
@@ -488,13 +493,6 @@
                 $tabCont.hide();
                 $tabCont.filter('#tab' + (data.selectedIndex+1)).show();
             })
-
-            // 엔지니어 선택 팝업 오픈
-            self.$engineerPopup.on('modalshown', function() {
-                
-                self.$engineerSlider.filter('.is-loaded').vcCarousel('reinit');
-                //self.$engineerSlider.not('.is-loaded').addClass('is-loaded').vcCarousel(slideConfig)
-            });
 
 
             // 엔지니어 선택
