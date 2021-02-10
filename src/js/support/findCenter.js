@@ -188,7 +188,7 @@
                             '       </ul>'+
                             '       {{# } #}}' +
                             '       <div class="btn-group">'+
-                            '           <a href="#n" class="btn dark-gray size">방문 예약</a>'+
+                            '           <a href="{{consultUrl}}" class="btn dark-gray size" target="_blank" title="새창 열림">방문 예약</a>'+
                             '           <a href="#{{shopID}}" class="btn dark-gray size detail-view">상세 보기</a>'+
                             '       </div>'+
                             '   </div>'+
@@ -314,9 +314,16 @@
                 var $target = $(e.currentTarget);
                 var id = $target.parent().data('id');
                 
-                self.$map.selectedMarker(id);
+                self.$map.selectInfoWindow(id);
             })
             .on('click', 'li > .ui_marker_selector .btn-link', function(e){
+                e.preventDefault();
+
+                var id = $(this).attr("href").replace("#", "");
+                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
+            });
+
+            self.$mapContainer.on('click', '.detail-view', function(e) {
                 e.preventDefault();
 
                 var id = $(this).attr("href").replace("#", "");
@@ -965,7 +972,10 @@
                 var scrolltop = scrollwrap.scrollTop();
                 var itemtop = parent.position().top;
                 var itembottom = -scrolltop + itemtop + parent.height();
-                if(itemtop < scrolltop || itembottom > scrollwrap.height()){
+                
+                if (!vcui.detect.isMobile) {
+                    self.$defaultListContainer.find('.scroll-wrap').mCustomScrollbar("scrollTo", parent, {timeout: 220});
+                } else {
                     self.$defaultListContainer.find('.scroll-wrap').stop().animate({scrollTop: itemtop}, 220);
                 }
             }
