@@ -115,6 +115,11 @@
                     }
                 }
             })
+
+            self.el.layer.find('.btn-cancel').on('click', function(e){
+                e.preventDefault();
+                self.hide();
+            })
         }
     }
     
