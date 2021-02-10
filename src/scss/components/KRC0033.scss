@@ -167,6 +167,12 @@
 			}
 		}
 	}
+    .fc-white,
+    .fc-white * {
+        @include mobile {
+            color:#000 !important;
+        }
+    }
 }
 
 
