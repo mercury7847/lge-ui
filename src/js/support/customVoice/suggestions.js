@@ -93,6 +93,7 @@
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
+                    result.data.seq && $('#seq').val(result.data.seq);
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {
