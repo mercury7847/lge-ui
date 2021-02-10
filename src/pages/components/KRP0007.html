@@ -171,12 +171,11 @@
                         <div class="product-list-area">
                             @@include('./common/modules/list-sorting.html', {
                                 "select" : [
-                                    {"option" : "추천순", "default":'value="popular"'},
-                                    {"option" : "인기순", "default":'value="popularity"'},
-                                    {"option" : "최신순", "default":'value="latest"'},
-                                    {"option" : "가격 높은순", "default":'value="pricehigh"'},
-                                    {"option" : "가격 낮은순", "default":'value="pricelow"'},
-                                    {"option" : "리뷰 많은순", "default":'value="review"'}
+                                    {"option" : "인기순", "default":'value="sort_popular"'},
+                                    {"option" : "최신순", "default":'value="sort_new"'},
+                                    {"option" : "가격 높은순", "default":'value="sort_max_price"'},
+                                    {"option" : "가격 낮은순", "default":'value="sort_min_price"'},
+                                    {"option" : "리뷰 많은순", "default":'value="sort_max_review"'}
                                 ],
                                 "selectname":"sortType"
                             })
