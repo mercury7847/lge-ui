@@ -77,6 +77,7 @@
                 }
             });
             self.$resultPagination.pagination();
+            self.$productBar.vcSticky();
         },
         drawTopicList: function(data) {
             var self = this;
