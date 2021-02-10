@@ -353,6 +353,9 @@
                 var self = this;
                 var page = parseInt(param.page);
                 var totalCount = parseInt(param.totalCount);
+
+                console.log("setPageData:", page, totalCount)
+
                 if (page < totalCount) {
                     self.$btnMore.show();
                 } else {

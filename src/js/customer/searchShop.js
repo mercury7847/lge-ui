@@ -149,9 +149,8 @@
                         self._setSearchResultMode();
                     }
 
-                }).on('mapsearchnodata', function(e){
-                    //검색 결과 없을 때...
-                    //alert("검색 결과가 없습니다.");
+                }).on('changemarkerstatus', function(e, id){
+                    self._setMarkerSelected(id);
                 }).on('maperror', function(e, error){
                     console.log(error);
                 });
@@ -168,6 +167,10 @@
                 self.$boroughSelect = $('#select2'); //구.군 선택
                 self.$localSearchButton = $('.search-local'); //지역검색 버튼
                 self.$searchUserAdressButton = $('.search-userAdress'); //내 주소 검색 버튼
+
+                self.$localSearchButton.prop('disabled', false);
+                self.$boroughSelect.prop('disabled', false);
+                self.$boroughSelect.vcSelectbox('update');
 
                 self.$subwayCitySelect = $('#select3'); //지역선택
                 self.$subwayLineSelect = $('#select4'); //호선 선택
@@ -195,7 +198,7 @@
                 e.preventDefault();
 
                 var id = $(this).attr("href").replace("#", "");
-                window.open(self.detailUrl+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no")
+                window.open(self.detailUrl+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no");void(0);
             });
 
             self.$searchField.on('focus', function(e){
@@ -300,10 +303,11 @@
                 self.storeData = vcui.array.map(result.data, function(item, index){
                     item['id'] = item['shopID']; //info.shopID || agCode    
                     item['info'] = false;
+                    item["selected"] = false;
                     item["detailUrl"] = 'javascript:window.open("' + self.detailUrl+item['shopID'] + '", "_blank", "width=1070, height=' + self.windowHeight + ', location=no, menubar=no, status=no, toolbar=no")';
                     return item;
                 });
-                self.$map.applyMapData(self.storeData);
+                self.$map.applyMapData(self.storeData, self.searchType, {lat: self.currentLatitude, long:self.currentLongitude});
             });
         },
 
@@ -312,10 +316,7 @@
             
             lgkorUI.requestAjaxData(self.localUrl, {city:encodeURI(val)}, function(result){
                 self._setSelectOption(self.$boroughSelect, result.data);
-                self.$boroughSelect.prop('disabled', false);
                 self.$boroughSelect.vcSelectbox('update');
-
-                self.$localSearchButton.prop('disabled', false);
             });
         },
 
@@ -545,50 +546,69 @@
         _setSearch: function(){
             var self = this;
             var keyword, trim;
+
+
+            self.$citySelect = $('#select1'); //시/도 선택
+            self.$boroughSelect = $('#select2'); //구.군 선택
+            self.$localSearchButton = $('.search-local'); //지역검색 버튼
+            self.$searchUserAdressButton = $('.search-userAdress'); //내 주소 검색 버튼
+
+            self.$localSearchButton.prop('disabled', false);
+            self.$boroughSelect.prop('disabled', false);
+            self.$boroughSelect.vcSelectbox('update');
+
+            self.$subwayCitySelect = $('#select3'); //지역선택
+            self.$subwayLineSelect = $('#select4'); //호선 선택
+            self.$subwayStationSelect = $('#select5'); //역 선택
+            self.$searchSubwayButton = $('.search-subway'); //지하철 검색 버튼
+
+
             switch(self.searchType){
                 case "local":
-                    keyword = self.$boroughSelect.val();
-                    trim = keyword.replace(/\s/gi, '');
-                    if(trim.length){
-                        self.searchResultMode = true;
-                        
-                        self._loadStoreData();
-                    } else{
-                        lgkorUI.alert("", {
-                            title: "구/군을 선택해주세요."
-                        });
+                    if(self._searchFieldValidation(self.$citySelect, "시/도를 선택해주세요.")){
+                        if(self._searchFieldValidation(self.$boroughSelect, "구/군을 선택해주세요.")){
+                            self.searchResultMode = true;
+                            
+                            self._loadStoreData();
+                        }
                     }
                     break;
 
                 case "subway":
-                    keyword = self.$subwayStationSelect.val();
-                    trim = keyword.replace(/\s/gi, '');
-                    if(trim.length){
-                        self.searchResultMode = true;
-        
-                        self._loadStoreData();
-                    } else{
-                        lgkorUI.alert("", {
-                            title: "지하철 검색의 역명을 선택해 주세요."
-                        });
+                    if(self._searchFieldValidation(self.$subwayCitySelect, "지역을 선택해주세요.")){
+                        if(self._searchFieldValidation(self.$subwayLineSelect, "지하철 호선을 선택해주세요.")){
+                            if(self._searchFieldValidation(self.$subwayStationSelect, "지하철역을 선택해주세요.")){
+                                self.searchResultMode = true;
+                
+                                self._loadStoreData();
+                            }
+                        }
                     }
                     break;
 
                 case "search":
-                    keyword = self.$searchField.val();
-                    trim = keyword.replace(/\s/gi, '');
-                    if(trim.length){
+                    if(self._searchFieldValidation(self.$searchField, "검색어를 입력해주세요.")){
                         self.searchResultMode = true;
         
                         $(window).off('keyup.searchShop');
         
                         self._loadStoreData();
-                    } else{
-                        lgkorUI.alert("", {
-                            title: "검색어를 입력해주세요."
-                        });
                     }
                     break;
+            }
+        },
+
+        _searchFieldValidation: function(field, errmsg){
+            var self = this;
+            
+            var trim = field.val().replace(/\s/gi, '');
+            if(trim.length){
+                return true;
+            } else{
+                lgkorUI.alert("", {
+                    title: errmsg
+                });
+                return false;
             }
         },
 
