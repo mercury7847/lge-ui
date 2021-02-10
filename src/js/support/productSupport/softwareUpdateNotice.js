@@ -75,14 +75,36 @@
             },
             bindEvent: function() {
                 var self = this;
+
+                self.$searchWrap.find('input[type="text"]').on('input', function() {
+                    var val = $(this).val().trim();
+
+                    if (val.length > 1) {
+                        $('.search-error').hide();
+                    }
+                });
+
+                self.$searchWrap.find('input[type="text"]').on('keyup', function(e) {
+                    if (e.keyCode == 13) { 
+                        self.$searchWrap.find('.btn-search').trigger('click');
+                    }
+                });
                 
                 self.$searchWrap.find('.btn-search').on('click', function() {
-                    self.params = $.extend({}, self.params, {
-                        'keyword': self.$searchWrap.find('input[type="text"]').val(),
-                        'page': 1
-                    });
-                    
-                    self.searchList();
+                    var val = self.$searchWrap.find('input[type="text"]').val().trim();
+
+                    if (val.length > 1) {
+                        self.params = $.extend({}, self.params, {
+                            'keyword': self.$searchWrap.find('input[type="text"]').val(),
+                            'page': 1
+                        });
+                        
+                        $('.search-error').hide();
+
+                        self.searchList();
+                    } else {
+                        $('.search-error').show();
+                    }
                 });
 
                 self.$sortSelect.on('change', function() {
