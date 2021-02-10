@@ -10,9 +10,6 @@
         })
 
         <div class="container">
-
-
-            
             <!-- LG ThinQ -->
             <div class="contents thinq-main">
                 <div class="sub-main">
@@ -22,10 +19,10 @@
                             <div class="scene01">
                                 <div class="image ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/img-visual01.jpg')" data-pc-src="/lg5-common/images/PRH/img-visual01.jpg" data-m-src="/lg5-common/images/PRH/img-visual01-m.jpg" aria-hidden="true"></div>
                                 <div class="content">
-                                    <div class="cont1">
+                                    <div class="cont1" data-frame-duration="200" data-frame-stay="200" data-ani-start="opacity:0; transform[swing]: translateY(150%);" data-ani-end="opacity:1; transform[swing]: translateY(0%);">
                                         <span>한번도 느껴보지 <br class="mo-only">못한 자유</span>
                                     </div>
-                                    <div class="cont2">
+                                    <div class="cont2" data-frame-duration="200" data-frame-stay="200" data-frame-delay="200" data-ani-start="opacity:0; transform[swing]: translateY(150%);" data-ani-end="opacity:1; transform[swing]: translateY(0%);">
                                         <p>Think Wise. Be Free.</p>
                                         <div class="logo-area"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" alt="LG ThinQ"></div>
                                     </div>
@@ -35,27 +32,21 @@
                                 </div>
                                 <div class="next-arr">
                                     <a href="#" class="arr"><span class="blind">아래로 스크롤</span></a>
-                                </div>
+                                </div>    
+                                <div class="dimmed"></div>  
                             </div>
-                            <div class="count">
-                                <span>1/3</span>
-                            </div>
-                            <div class="next-arr">
-                                <a href="#" class="arr"><span class="blind">아래로 스크롤</span></a>
-                            </div>
-                            <div class="dimmed"></div>
-                        </div>
-                        <div class="scene02">
-                            <div class="image ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/img-visual02.jpg')" data-pc-src="/lg5-common/images/PRH/img-visual02.jpg" data-m-src="/lg5-common/images/PRH/img-visual02-m.jpg" aria-hidden="true"></div>
-                            <div class="content">
-                                <div class="cont1">
-                                    <span>LG만의 인공지능기술이 <br>적용된 LG ThinQ</span>
-                                </div>
-                                <div class="count">
-                                    <span>2/3</span>
-                                </div>
-                                <div class="next-arr">
-                                    <a href="#" class="arr"><span class="blind">아래로 스크롤</span></a>
+                            <div class="scene02">
+                                <div class="image ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/img-visual02.jpg')" data-pc-src="/lg5-common/images/PRH/img-visual02.jpg" data-m-src="/lg5-common/images/PRH/img-visual02-m.jpg" aria-hidden="true"></div>
+                                <div class="content">
+                                    <div class="cont1">
+                                        <span>LG만의 인공지능기술이 <br>적용된 LG ThinQ</span>
+                                    </div>
+                                    <div class="count">
+                                        <span>2/3</span>
+                                    </div>
+                                    <div class="next-arr">
+                                        <a href="#" class="arr"><span class="blind">아래로 스크롤</span></a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="scene03">
@@ -1315,46 +1306,8 @@
                 var skroll = null;
                 
                 $('#fixed-wrap').css({'position':'fixed', 'width':'100%'});
+                $('#fixed-wrap').find('.dimmed').hide();
 
-                $window.on('breakpointchange', function(e){
-                    /*
-
-                    var data = window.breakpoint;
-                    var isRecom = $('.recom-list-slide').data('ui_carousel');
-                    var isBenefit = $('.benefit-list-slide').data('ui_carousel');
-
-                    if(data.name == 'mobile'){
-
-                        if(!isRecom){
-                            $('.recom-list-slide').vcCarousel({                        
-                                infinite: false,
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            });
-                        }
-
-                        if(!isBenefit){
-                            $('.benefit-list-slide').vcCarousel({                        
-                                infinite: false,
-                                slidesToShow: 1,
-                                slidesToScroll: 1                                
-                            });
-                        }
-
-                    }else if(data.name == 'pc'){
-
-                        $('.recom-list-slide').find('.ui_carousel_dots').hide();
-                        $('.benefit-list-slide').find('.ui_carousel_dots').hide();
-                        if(isRecom){
-                            $('.recom-list-slide').vcCarousel('destroy');
-                        }
-                        if(isBenefit){
-                            $('.benefit-list-slide').vcCarousel('destroy');
-                        }
-                    }
-                    */
-
-                })
 
                 $window.on('resizeend', function(e){
                     render();                    
@@ -1364,17 +1317,6 @@
                     render(0);
                 });         
 
-
-                function _findIdx(py){
-                    var idx = 0;
-                    for(var i=0; i<posArr.length; i++){
-                        if(posArr[i]>py){
-                            idx = i;
-                            break;
-                        }
-                    }
-                    return idx;                
-                }
 
                 
                 function render(idx){                    
@@ -1387,14 +1329,7 @@
                     var prevAllHeight = $prevTarget.offset().top + $prevTarget.height(); 
                     var totalHeight = winHeight;
                     var itemHeight = winHeight;
-
-
-                    //data-0="top:157px" data-157="top:0px" 
-                    //data-1000="top:0px" data-2000="top:-1000px" 
-                    //data-3000="top:-1000px" data-4000="top:-2000px" 
-                    //data-5000="top:-2000px" data-6000="top:-3000px"
-
-                    var gArr = [400,400,400,400];
+                    var durationArr = [600,600,600,600,600];
 
                     var attr = {
                         ['data-0']:"top:"+ prevAllHeight +"px",
@@ -1410,7 +1345,7 @@
                     for(var i =0; i<(maxLens+1)*2; i++){
 
                         if(i%2 != 0){  
-                            frame += gArr[cnt];
+                            frame += durationArr[cnt];
                             attr['data-'+(itemHeight*(i)+frame)] = "top:-"+ 100*(cnt) +"%";
                             attr['data-'+(itemHeight*(i+1)+frame)] =  "top:-"+ 100*(cnt+1) +"%";
                             nArr.push(itemHeight*(i)+frame);
@@ -1426,37 +1361,71 @@
                     }
 
                     totalHeight = totalHeight-prevAllHeight;
-                    // console.log(attr);
-                    console.log(posArr);
 
+
+                    var contObj = {}   
 
                     $scenes.each(function(i){
 
-                        var str = parseInt(posArr[i]['start']);
-                        var end = parseInt(posArr[i]['end'])-160;
+                        var pStart = parseInt(posArr[i]['start']);
+                        var pEnd = parseInt(posArr[i]['end']);
+                        var $target = $(this).find('[data-frame-duration]');
 
-                        $(this).find('.cont1').css({'position':'absolute'});
-                        // $(this).find('.cont2').css({'position':'absolute'});
+                        $target.each(function(idx){
 
-                        $(this).find('.cont1').attr({
-                            ['data-'+ str]:"top:250%",
-                            ['data-'+ end]:"top:-100%"
-                        })
+                            var duration = $(this).data('frameDuration');
+                            if (duration == undefined) return false;
+                            duration = duration!=undefined? parseInt(duration) : 0;
 
-                        // $(this).find('.cont2').attr({
-                        //     ['data-'+ str]:"top:150%",
-                        //     ['data-'+ end]:"top:-100%"
-                        // })
+                            var delay = $(this).data('frameDelay');
+                            delay = delay!=undefined? parseInt(delay) : 0;   
+                            
+                            var stay = $(this).data('frameStay');
+                            stay = stay!=undefined? parseInt(stay) : 0;  
+
+                            var aniStart = $(this).data('aniStart');
+                            aniStart = aniStart!=undefined? aniStart : '';
+
+                            var aniEnd = $(this).data('aniEnd');
+                            aniEnd = aniEnd!=undefined? aniEnd : '';
+
+                            var startName = 'element_start'+i+'_'+idx;
+                            var endName = 'element_end'+i+'_'+idx;
+
+                            $(this).attr({
+                                ['data-_'+ startName] : aniStart,
+                                ['data-_'+ endName] : aniEnd
+                            });
+
+                            var sp = pStart + delay;
+                            if(sp < pStart) sp = pStart;
+
+                            var ep = pStart + delay + duration + stay;
+                            if(ep > pEnd) ep = pEnd;
+
+                            contObj[startName] = sp;
+                            contObj[endName] = ep;
+
+                        });
+
+                        $target.removeAttr('data-frame-duration data-frame-stay data-frame-delay data-ani-start data-ani-end');
+
+                        
                     });
+
+                    
+
+
 
                     $('#fixed-wrap').attr(attr);
                     $('.thinq-hero').css({height:totalHeight});
 
                     if(!skroll){
                         skroll = skrollr.init({
-                            smoothScrolling : true,
-                            // smoothScrollingDuration : 500,
+                            smoothScrolling : false,
+                            smoothScrollingDuration : 0,
                             mobileDeceleration : 0.05,
+                            constants: contObj,
                             // easing: 'quadratic',
                             render : function(data){                                
 
