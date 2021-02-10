@@ -26,14 +26,11 @@
 
                 <!-- 회원 - 제품 없을 시 -->
                 @@include('./common/support/select-my-model.html', {
-                    "noItem": true,
-                    "show": true
+                    "noItem": true
                 })
 
                 <!-- 회원 - 보유제품 펼침 -->
-                @@include('./common/support/select-my-model.html', {
-                    "show": true
-                })
+                @@include('./common/support/select-my-model.html')
 
                 <div class="cont-wrap">
 
@@ -47,7 +44,7 @@
                         <input type="hidden" name="pageCode" id="pageCode" value="pageCode">
 
                         <!-- 제품 선택 -->
-                        <div class="step-box active" id="stepModel">
+                        <div class="step-box" id="stepModel">
                             @@include('./common/support/select-model.html', {
                                 "url": '/lg5-common/data-ajax/support/videoGuide/selectModel.json',
                                 "category": [
@@ -68,7 +65,7 @@
                         </div>
                         <!-- // 제품 선택 -->
 
-                        <div class="step-box" id="stepInput" data-list-url="/lg5-common/data-ajax/support/videoGuide/videoList.json" data-sub-topic-url="/lg5-common/data-ajax/support/videoGuide/subTopicOption.json">
+                        <div class="step-box active" id="stepInput" data-list-url="/lg5-common/data-ajax/support/videoGuide/videoList.json" data-sub-topic-url="/lg5-common/data-ajax/support/videoGuide/subTopicOption.json">
                             <div class="search-wrap">
                                 <div class="title">
                                     <p class="tit">정보분류와 검색 키워드를 이용하여<br class="mo-only">보다 정확한 해결책을 찾을 수 있습니다.</p>
