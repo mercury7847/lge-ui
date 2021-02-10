@@ -979,6 +979,8 @@
 
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
+
+                        lgkorUI.hideLoading();
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
                     } 

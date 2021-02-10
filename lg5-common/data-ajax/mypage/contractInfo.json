@@ -29,6 +29,7 @@
             "cancelConsultUrl": "https://wwwdev50.lge.co.kr/"
         },
         "paymentInfo": {
+            "isGrouping": true,
             "monthlyPrice": "38,800원",
             "withdrawDate": "매월 22일",
             "paymentMethod": "CARD",
@@ -48,7 +49,10 @@
             }
         },
         "memberPointInfo":{
-
+            "isAgree": false,
+            "deductType": "deduct",
+            "userPoint": 990000,
+            "deductPoint": 5000
         },
         "managerInfo": {
             "name": "박진희 매니저",
