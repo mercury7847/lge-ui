@@ -563,6 +563,7 @@
                 $('#resrvSeq').val(data.resrvSeq);
 
                 var loginFlag = $('html').data('login') === 'Y' ? true : false;
+                var $formSection = $engineerBox.closest('.section').next('.section');
 
                 clearTimeout(tid);
 
@@ -574,10 +575,14 @@
                             $stepEngineer.attr('tabindex', '1').focus().removeAttr('tabindex');
                         }
                     } else {
-                        $engineerBox.closest('.section').next('.section').find('button').first().focus();
-                        if( $engineerBox.closest('.section').next('.section').length ) {
-                            $stepEngineer.closest('.pop-conts').scrollTop($engineerBox.closest('.section').next('.section').offset().top);
-                        }
+                        
+                        if( $formSection.length ) {
+                            if( $formSection.find('button:visible').length ) {
+                                $formSection.find('button:visible').first().focus();
+                            } else {
+                                $stepEngineer.closest('.pop-conts').scrollTop($formSection.offset().top);
+                            }
+                        } 
                     }
                 }, 100)
 
