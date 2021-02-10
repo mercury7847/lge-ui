@@ -270,8 +270,7 @@
                 }
             });
 
-            $('.search-layer').on('click', '.keyword-box a', function(e) {
-                e.preventDefault();
+            self.$keywordWrap.on('keywordClick', function(e) {
                 self.$searchBtn.trigger('click', [$(this).text().trim()]);      
             });
 
