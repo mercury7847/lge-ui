@@ -669,8 +669,8 @@
                     break;
                 case 'user':
                     keywords = {
-                        searchCity: self.userCityName,
-                        searchBorough: self.userBoroughName
+                        latitude:self.latitude,
+                        longitude:self.longitude
                     };
                     break;
                 case 'subway':
