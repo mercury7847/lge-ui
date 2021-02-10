@@ -2086,6 +2086,17 @@ var AuthManager = function() {
         self.validation = new vcui.ui.CsValidation(self.popFlag ? options.elem.popup : options.elem.form, {
             register: register
         });
+
+        $(options.elem.popup).on('modalhide', function(){
+            $(this).find('.btn-send').html(SENDTEXT);
+            $(options.elem.number).attr('disabled', 'disabled').val('');
+
+            if( options.target ) {
+                $(options.elem.name).val('');
+                $(options.elem.phone).val('');
+            }
+        });
+
     }
 
     AuthManager.prototype = {
