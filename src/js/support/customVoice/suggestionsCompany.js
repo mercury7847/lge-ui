@@ -18,7 +18,9 @@
                     },
                     userName: {
                         maxLength : 30,
-                        msgTarget: '.err-block'
+                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                        msgTarget: '.err-block',
+                        patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
                     },
                     phoneNo: {
                         maxLength : 11,

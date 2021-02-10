@@ -74,10 +74,10 @@
                 userNm: {
                     required: true,
                     maxLength: 30,
-                    pattern: /^[가-힣a-zA-Z]+$/,
+                    pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
                     msgTarget: '.err-block',
                     errorMsg: '이름을 입력해주세요.',
-                    patternMsg: '한글 또는 영문만 입력 가능합니다.'
+                    patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
                 },
                 phoneNo: {
                     required: true,
@@ -110,10 +110,10 @@
                     authName: {
                         required: true,
                         maxLength: 30,
-                        pattern: /^[가-힣a-zA-Z]+$/,
-                        msgTarget: '.err-block',                        
+                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                        msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
-                        patternMsg: '이름은 한글 또는 영문만 입력 가능합니다.'
+                        patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
                     },
                     authPhoneNo: {
                         required: true,
