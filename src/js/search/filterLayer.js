@@ -141,7 +141,7 @@ var FilterLayer = (function() {
             });
 
             // 모바일 필터박스 확인
-            self.$layFilter.find('div.filter-btn-wrap button.ui_confirm_btn').on('click', function(e){
+            self.$layFilter.find('div.filter-btn-wrap button').on('click', function(e){
                 self.$layFilter.removeClass('open');
                 self.triggerFilterChangeEvent();
             });
