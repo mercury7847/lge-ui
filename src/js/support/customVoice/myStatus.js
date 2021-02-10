@@ -97,7 +97,7 @@
                         var data = result.data;
     
                         if (data.resultFlag == 'Y') {
-                            $(this).find('span').html('인증 번호 재발송');
+                            $(this).html('인증 번호 재발송');
                             $('#authNo').prop('disabled', false);
                         }
 
