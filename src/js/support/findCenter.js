@@ -188,7 +188,9 @@
                             '       </ul>'+
                             '       {{# } #}}' +
                             '       <div class="btn-group">'+
+                            '           {{#if typeof consultUrl != "undfined"}}'+
                             '           <a href="{{consultUrl}}" class="btn dark-gray size" target="_blank" title="새창 열림">방문 예약</a>'+
+                            '           {{/if}}'+
                             '           <a href="#{{shopID}}" class="btn dark-gray size detail-view">상세 보기</a>'+
                             '       </div>'+
                             '   </div>'+
@@ -224,7 +226,7 @@
                         }
 
                         self._bindEvents();
-                    }).on('mapchanged', function(e, data){	console.log(data);
+                    }).on('mapchanged', function(e, data){
                         self._setItemList(data);
                         self._setItemPosition();                        
 
@@ -937,6 +939,7 @@
             var self = this;
             
             self.$defaultListLayer.empty();
+            self.$defaultListLayer.siblings('.no-data').remove();
             
             if (data.length) {
                 for(var i=0; i<data.length; i++){
@@ -955,7 +958,6 @@
                     self.$defaultListLayer.append(list);
                 }
                 self.$defaultListLayer.show();
-                self.$defaultListLayer.siblings('.no-data').remove();
             } else {
                 self.$defaultListLayer.hide();
                 self.$defaultListLayer.after(noDataTemplate);
@@ -972,7 +974,7 @@
                 var scrolltop = scrollwrap.scrollTop();
                 var itemtop = parent.position().top;
                 var itembottom = -scrolltop + itemtop + parent.height();
-                
+
                 if (!vcui.detect.isMobile) {
                     self.$defaultListContainer.find('.scroll-wrap').mCustomScrollbar("scrollTo", parent, {timeout: 220});
                 } else {
@@ -1033,8 +1035,9 @@
 
             var resultxt = vcui.template(searchResultText[self.schReaultTmplID], {
                 keyword: self.searchKeyword,
-                total: self.$defaultListLayer.find('> li').length
+                total: self.$defaultListLayer.find('> li').length.toString()
             });
+            
             self.$searchResultContainer.find('.result-txt').html(resultxt)
         },
 
