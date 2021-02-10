@@ -383,7 +383,10 @@
 			} @else if $bg == dark {
                 background-color: #333;
                 * {
-                    color:#fff;
+                    color:#000;
+                    @include mobile {
+                        color:#fff;
+                    }
                 }
                 .component {
                     .btn.border {
@@ -407,7 +410,10 @@
 			} @else if $bg == black {
                 background-color: #000;
                 * {
-                    color:#fff;
+                    color:#000;
+                    @include mobile {
+                        color:#fff;
+                    }
                 }
                 .component {
                     .btn.border {

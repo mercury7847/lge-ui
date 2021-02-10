@@ -287,7 +287,8 @@
                     value = !value ? null : value.trim(); 
                     var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
 
-                    var url = href + "?search="+value+"&force="+force;
+                    var url = href + "&search="+value+"&force="+force;
+                    console.log(url);
                     location.href = url;
                 });
 
