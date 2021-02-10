@@ -2243,6 +2243,10 @@ $.fn.serializeObject = function() {
                 this.value = this.value.slice(0, this.maxLength);
             }  
         });
+        $(document).on('mousewheel', 'input[type="number"]', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+        });
 
     }
 

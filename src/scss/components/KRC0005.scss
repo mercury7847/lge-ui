@@ -104,8 +104,14 @@
 			flex-wrap:wrap;
 			.visual-wrap {
 				order:1;
-				width:100% !important;
-				margin:0 !important;
+				//width:100% !important;
+				//margin:0 !important;
+				.animation-box {
+					padding: 0 16px;
+					& + .bullet-list {
+						padding: 0 32px;
+					}
+				}
 				.slide-wrap {
 					margin:0 -16px;
 				}

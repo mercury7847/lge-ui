@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["SLC/SLC"]
+        pageCSS: ["SLC/SLC"],
+        pageJS: ["caresolution/careWhyTab"]
     })
 <body>
     <div class="wrap">
@@ -10,7 +11,11 @@
         })
 
         <main class="container">
-            <div class="contents caresolution">
+            <div class="contents caresolution"
+                data-prod-list="/lg5-common/data-ajax/caresolution/carePlanerProductList.json"
+                data-color-model="/lg5-common/data-ajax/caresolution/carePlanerColorChange.json"
+                data-price-status="/lg5-common/data-ajax/caresolution/carePlanerPriceStatus.json"
+            >
                 <!-- visual title -->
                 <div class="visual-tit-wrap">
                     <div class="txt-wrap">
