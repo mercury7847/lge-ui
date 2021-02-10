@@ -159,7 +159,7 @@
                         for(var key in filterdata){
                             param[key] = filterdata[key].join(",");
                         }
-                        var sort = data.sortType|data.order;
+                        var sort = data.sortType ? data.sortType : data.order;
                         param.sortType = sort;
                         param.page = 1;
                         console.log("param:", param)
