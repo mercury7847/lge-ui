@@ -141,6 +141,9 @@
                 self.setting();
                 self.bindEvents();
 
+                //더보기 버튼 체크
+                self.setPageData(lgkorUI.getHiddenInputData());
+
                 //breackpoint 이벤트 초기실행
                 self.fnBreakPoint();
                 //비교하기 체크
@@ -156,7 +159,7 @@
                         for(var key in filterdata){
                             param[key] = filterdata[key].join(",");
                         }
-                        var sort = data.sortType|data.order;
+                        var sort = data.sortType ? data.sortType : data.order;
                         param.sortType = sort;
                         param.page = 1;
                         console.log("param:", param)
@@ -352,19 +355,21 @@
 
             setPageData: function(param) {
                 var self = this;
-                var page = parseInt(param.page);
-                var totalCount = parseInt(param.totalCount);
-                if (page < totalCount) {
-                    self.$btnMore.show();
-                } else {
-                    //더이상 없다
-                    self.$btnMore.hide();
-                }
+                if(param && param.page && param.totalCount) {
+                    var page = parseInt(param.page);
+                    var totalCount = parseInt(param.totalCount);
+                    if (page < totalCount) {
+                        self.$btnMore.show();
+                    } else {
+                        //더이상 없다
+                        self.$btnMore.hide();
+                    }
 
-                lgkorUI.setHiddenInputData({
-                    totalCount: totalCount,
-                    page: page
-                });
+                    lgkorUI.setHiddenInputData({
+                        totalCount: totalCount,
+                        page: page
+                    });
+                }
             },
 
             requestSearch: function(data, isNew){
