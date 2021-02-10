@@ -2274,24 +2274,17 @@ $.fn.serializeObject = function() {
                 var $stepBtn = $('.step-btn-wrap');
                 var $curTarget = null;
         
-                
-        
-                if( $curSection.length ) {
-                    $curTarget = $curSection.find('input, button, a').first();
-                } else {
-                    if( $stepBox.find('.step-btn-wrap button').length) {
-                        $curTarget = $stepBox.find('.step-btn-wrap button');
-                    } 
-                    if($stepBox.next('.step-box.active').length) {
-                        $curTarget = $stepBox.next('.step-box').find('input, button, a').first()
+                tid = setTimeout(function(){
+                    if( $curSection.length ) {
+                        $curSection.attr('tabindex', '0').focus().removeAttr('tabindex');
+                    } else {
+                        if( $stepBox.find('.step-btn-wrap button').length ) {
+                            $stepBox.find('.step-btn-wrap button').focus();
+                        } else {
+                            $stepBox.next('.step-box').attr('tabindex', '0').focus().removeAttr('tabindex');
+                        }
                     }
-                }
-        
-                if( $curTarget != null) {
-                    tid = setTimeout(function(){
-                        $curTarget.focus();
-                    }, 100)
-                }
+                }, 100)
             }
         })
         
