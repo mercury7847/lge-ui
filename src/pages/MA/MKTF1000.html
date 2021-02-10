@@ -12,8 +12,11 @@
 				<div class="main-wrap">
                     <div class="scene-cover">
                         <div class="scene">
-                            <div class="img"><img src="/lg5-common/images/MA/img-main-01.jpg" alt=""></div>
-                            <div class="text-area">
+                            <div class="img">
+                                <img src="/lg5-common/images/MA/img-main-01.jpg" alt="">
+                                <!-- <div class="video" data-src="/lg5-common/videos/signature_rain_view" data-ext="mp4" data-alt="signature_rain_view"></div> -->
+                            </div>
+                            <div class="text-cont">
                                 <p><span class="opac">혁신이 만들어낸</span><br>TV이상의, 作</p>
                             </div>
                             <div class="text-link">
@@ -25,11 +28,10 @@
                             <div class="next-arr">
                                 <a href="#" class="arr"><span class="blind">다음 테마관 이동</span></a>
                             </div>
-                            <div class="dim"></div>
                         </div>
                         <div class="scene">
                             <div class="img"><img src="/lg5-common/images/MA/img-main-02.jpg" alt=""></div>
-                            <div class="text-area">
+                            <div class="text-cont">
                                 <p><span class="opac">최고를 위해<br>최고가 만든</span><br>초 프리미엄</p>
                             </div>
                             <div class="flow-banner">
@@ -102,11 +104,10 @@
                             <div class="next-arr">
                                 <a href="#" class="arr"><span class="blind">다음 테마관 이동</span></a>
                             </div>
-                            <div class="dim"></div>
                         </div>
                         <div class="scene">
                             <div class="img"><img src="/lg5-common/images/MA/img-main-03.jpg" alt=""></div>
-                            <div class="text-area">
+                            <div class="text-cont">
                                 <p><span class="opac">우리집 가전을<br>걱정없이</span><br>늘 새 것처럼?</p>
                             </div>
                             <div class="flow-banner">
@@ -179,11 +180,10 @@
                             <div class="next-arr">
                                 <a href="#" class="arr"><span class="blind">다음 테마관 이동</span></a>
                             </div>
-                            <div class="dim"></div>
                         </div>
                         <div class="scene">
                             <div class="img"><img src="/lg5-common/images/MA/img-main-04.jpg" alt=""></div>
-                            <div class="text-area">
+                            <div class="text-cont">
                                 <p><span class="opac">당신처럼<br>생각하고</span><br>행동합니다</p>
                             </div>
                             <div class="text-link">
@@ -195,11 +195,10 @@
                             <div class="next-arr">
                                 <a href="#" class="arr"><span class="blind">다음 테마관 이동</span></a>
                             </div>
-                            <div class="dim"></div>
                         </div>
                         <div class="scene">
                             <div class="img"><img src="/lg5-common/images/MA/img-main-05.jpg" alt=""></div>
-                            <div class="text-area">
+                            <div class="text-cont">
                                 <p>두근두근<br><span class="opac">사랑가득</span><br>우리집은?</p>
                             </div>
                             <div class="text-link">
@@ -211,11 +210,10 @@
                             <div class="next-arr">
                                 <a href="#" class="arr"><span class="blind">다음 테마관 이동</span></a>
                             </div>
-                            <div class="dim"></div>
                         </div>
                         <div class="scene">
                             <div class="img"><img src="/lg5-common/images/MA/img-main-06.jpg" alt=""></div>
-                            <div class="text-area">
+                            <div class="text-cont">
                                 <p>가족의 건강을<br><span class="opac">생각한다면?</span></p>
                             </div>
                             <div class="text-link">
@@ -227,7 +225,6 @@
                             <div class="next-arr">
                                 <a href="#" class="arr"><span class="blind">다음 테마관 이동</span></a>
                             </div>
-                            <div class="dim"></div>
                         </div>
                     </div>
                     <div class="section-cover">
@@ -511,7 +508,26 @@
 
 			vcui.require(['ui/scrollNavi','ui/smoothScroll'], function () {
                 // 플로우배너
-                $('.ui_carousel_slider_banner1').vcCarousel({
+
+                $('.ui_carousel_slider_banner1').find('.flow-bar').css({
+                    'transition': 'all 0.5s ease-out'
+                });
+
+                $('.ui_carousel_slider_banner2').find('.flow-bar').css({
+                    'transition': 'all 0.5s ease-out'
+                });
+
+
+                $('.ui_carousel_slider_banner1').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
+                    
+                    var wd = $(this).find('.flow-bar-wrap').width();
+                    var dotWd = Math.ceil(wd/carousel.slideCount);
+                    $(this).find('.flow-bar').css({
+                        'width':dotWd,
+                        'left':dotWd*index
+                    });
+
+                }).vcCarousel({
                     infinite: true,
                     //autoplay: true,
                     //autoplaySpeed: 2000,
@@ -550,7 +566,16 @@
                     ]
                 });
 
-                $('.ui_carousel_slider_banner2').vcCarousel({
+                $('.ui_carousel_slider_banner2').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
+                    
+                    var wd = $(this).find('.flow-bar-wrap').width();
+                    var dotWd = Math.ceil(wd/carousel.slideCount);
+                    $(this).find('.flow-bar').css({
+                        'width':dotWd,
+                        'left':dotWd*index
+                    });
+
+                }).vcCarousel({
                     infinite: true,
                     //autoplay: true,
                     //autoplaySpeed: 2000,
@@ -659,12 +684,7 @@
 
             function wheelScene(delta) {
 
-                var nextIndex;                
-                if(vcui.detect.isMac){
-                    nextIndex = (delta < 0) ? 1 : -1;
-                }else{
-                    nextIndex = (delta < 0) ? -1 : 1;
-                }
+                var nextIndex = (delta < 0) ? -1 : 1;
                 nextIndex = nextIndex + currentPage;
                 nextIndex = Math.max(Math.min(nextIndex, maxLens), 0);
                 if(currentPage == nextIndex) return;
@@ -694,7 +714,18 @@
                         canScroll = true
 		        		currentPage = idx;                        
 			        	$('html').removeClass('sceneMoving');
-                        $scenes.removeClass('on active').eq(idx).addClass('on');
+                        $scenes.removeClass('on').eq(idx).addClass('on');
+
+                        $scenes.each(function() {
+                            if ( $(this).find('video').length != 0 ) {
+                                if ( $(this).hasClass('on') ) {
+                                    $(this).find('video')[0].play();
+                                }else {
+                                    $(this).find('video')[0].pause();
+                                    $(this).find('video')[0].currentTime = 0;							
+                                }
+                            }
+                        });
 		        	});
 	        	}, 100);
 
@@ -722,7 +753,6 @@
             });
 
             
-
             $(document).on('touchstart touchend touchcancel', function(e) {
 
                 var data = _getEventPoint(e);
@@ -763,7 +793,6 @@
                 };
             }
 
-
             function setCenterImage (target, boxW, boxH, targetW, targetH) {
 
                 var rate, newW, newH;
@@ -791,6 +820,110 @@
                 }
                 return idx;                
             }
+
+
+            function updateVideo(video) {
+
+				var $o        = $(video||this),
+					$wrap     = $o.closest('.img'),
+					$image    = $wrap.find('img'),
+					key       = $o.data('key'),
+					loaded    = $o.data('loaded'),
+					src       = $o.data('src'),
+
+                    // modeV     = 5, // 사이즈별로 로드시
+					isAndroid = vcui.detect.isAndroid,
+					srcArr = (function() {
+						var s5 = $o.data('src-v5') || $o.data('src'),
+							s4 = $o.data('src-v4') || s5,
+							s3 = $o.data('src-v3') || s4,
+							s2 = $o.data('src-v2') || s3,
+							s1 = $o.data('src-v1') || s2,
+							arr = [null,s1,s2,s3,s4,s5];
+						return arr;
+					})(),
+					// src    = srcArr[modeV],
+					src    = $o.data('src'),
+                    
+					videoAttr = $o.data('options') || 'autoplay loop playsinline muted',
+					$video    = $o.find('video'),
+					$sources  = $o.find('source'),
+					oVideo;
+
+				// 비디오 요소 생성.
+				var createVideoObject = function() {
+
+					
+					var extArr = $o.data('ext').toLowerCase().replace(/\s/g, '').split(',');
+					if ( !extArr.length ) return false;
+
+
+					var $video = $('<video '+ videoAttr +'></video>');
+
+					for (var i = extArr.length - 1; i >= 0; i--) {
+						if (extArr[i] == 'mp4') {
+							$('<source>', {src: src+'.mp4', type: 'video/mp4', prependTo: $video});
+						} else if (extArr[i] == 'webm') {
+							$('<source>', {src: src+'.webm', type: 'video/webm', appendTo: $video});
+						} else if (extArr[i] == 'ogv' || extArr[i] == 'ogg') {
+							$('<source>', {src: src+'.ogv', type: 'video/ogg', appendTo: $video});
+						}
+					}
+                        
+					if ( $o.data('alt') != null ) {
+						$('<p>').text($o.data('alt')).appendTo($video);
+					}
+					$video.data($o.data());
+					$o.replaceWith($video);
+
+					$video   = $wrap.find('video');
+					$sources = $video.find('source');
+
+                    // width: auto !important;
+                    // height: auto !important;
+                    // min-width: 100%;
+                    // min-height: 100%;
+                    // top: 50%;
+                    // left: 50%;
+                    // transform: translate(-50%,-50%);
+                    // -webkit-transform: translate(-50%,-50%);
+                    // -ms-transform: translate(-50%,-50%);
+                    // z-index: 1;
+                    
+
+                    $video.css({
+                        'position':'absolute',
+                        'width': 'auto !important',
+                        'height': 'auto !important',
+                        'min-width': '100%',
+                        'min-height': '100%',
+                        'top': '50%',
+                        'left': '50%',
+                        'transform': 'translate(-50%,-50%)'
+                    })
+					oVideo   = $video[0];
+
+					if ( isAndroid ) {
+						$(document).one('touchstart.videoPlay', function() {
+							oVideo.play();
+						});
+					}
+					$wrap.addClass('video');
+
+					$video.on('loadeddata', function(e) {
+						$video.data('loaded', true);
+						$wrap.trigger('videoLoaded');
+                        oVideo.play();
+					}).trigger('load');
+                    
+				}
+
+
+                createVideoObject();
+
+
+			}
+
 
             function render(idx){
 
@@ -831,6 +964,12 @@
 
                     setCenterImage($(this).find('.img'), winWidth, itemHeight, imageSize.width, imageSize.height);
                     totalHeight += itemHeight;
+
+
+                    $(this).find('.img > .video').each(function() {
+                        updateVideo(this);
+                    });
+
                                    
                 });  
 

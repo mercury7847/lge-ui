@@ -193,7 +193,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                             '       </ul>'+
                             '       {{# } #}}' +
                             '       <div class="btn-group">'+
-                            '           {{#if typeof consultUrl != "undfined"}}'+
+                            '           {{#if typeof consultUrl != "undefined"}}'+
                             '           <a href="{{consultUrl}}" class="btn dark-gray size" target="_blank" title="새창 열림">방문 예약</a>'+
                             '           {{/if}}'+
                             '           <a href="#{{shopID}}" class="btn dark-gray size detail-view" onclick="moveDetail(this, \''+self.detailUrl+'\', '+self.windowHeight+');">상세 보기</a>'+

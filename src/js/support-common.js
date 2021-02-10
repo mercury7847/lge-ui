@@ -370,6 +370,7 @@ CS.MD.search = function() {
                 var val = $(this).text().trim();
                 self.$el.find('input[type=text]').val(val);
                 self.$el.removeClass('on');
+                self.$el.trigger('keywordClick');
             });
 
             self.$el.find('input[type=text]').on('focus', function() {
@@ -2236,9 +2237,9 @@ $.fn.serializeObject = function() {
         if ($('.ui_common_scroll').length && !lgkorUI.isMobile()) $('.ui_common_scroll').mCustomScrollbar();
 
         $(document).on('input', 'input[type="number"]', function(){
-            if (this.value.length > this.maxLength){
+            if (this.maxLength > 0 && this.value.length > this.maxLength){
                 this.value = this.value.slice(0, this.maxLength);
-              }  
+            }  
         });
 
     }
