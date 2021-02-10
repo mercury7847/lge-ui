@@ -10,6 +10,7 @@
     var PAYMENT_METHOD_CONFIRM;
     var ARS_AGREE_URL;
     var REQUEST_CONTRACT_URL;
+    var MEMPOINT_DEDUCT_URL;
 
     var mypage;
     var userInfoBlock, userModifyBlock;
@@ -39,6 +40,7 @@
         PAYMENT_METHOD_CONFIRM = $('.contents.mypage').data('paymentMethodUrl');
         ARS_AGREE_URL = $('.contents.mypage').data('arsAgreeUrl');
         REQUEST_CONTRACT_URL = $('.contents.mypage').data('requestContractUrl');
+        MEMPOINT_DEDUCT_URL = $('.contents.mypage').data('mempointDeductUrl');
     
         vcui.require(['ui/modal', 'ui/validation', 'ui/formatter', 'ui/tab', 'helper/textMasking'], function () {             
             setting();
@@ -192,6 +194,21 @@
         //     console.log("해지상담 신청");
         // });
 
+        $('.mempoint-btn').on('click', function(e){
+            e.preventDefault();
+
+            showMempointModify();
+        });
+        $('.mempoint-info').on('click', '.cancel-btn', function(e){
+            e.preventDefault();
+
+            cancelMempointModify();
+        }).on('click', '.ok-btn', function(e){
+            e.preventDefault();
+
+            okMempointModify();
+        });
+
         $('#popup-contractIssue').on('click', '.btn-group button.pink', function(e){
             e.preventDefault();
 
@@ -288,6 +305,8 @@
     }
     //사용자 정보변경 저장...
     function saveUserInfoOk(){
+        lgkorUI.showLoading();
+
         var sendata = userInfoValidation.getAllValues();
         sendata.confirmType = MODE_USER;
         console.log("saveUserInfo : [sendata] ", sendata);
@@ -295,6 +314,8 @@
             if(lgkorUI.stringToBool(result.data.success)){
                 changeContractInfo();
             }
+
+            lgkorUI.hideLoading();
         });
     }
 
@@ -361,11 +382,15 @@
     function savePaymentInfoOk(){
         var payments = paymentInfoValidation();
         if(payments.result){
+            lgkorUI.showLoading();
+
             console.log("savePaymentInfo : [sendata] ", paymentInfo);
             lgkorUI.requestAjaxData(INFO_MODIFY_SAVE, paymentInfo, function(result){
                 if(lgkorUI.stringToBool(result.data.success)){
                     changeContractInfo();
                 }
+
+                lgkorUI.hideLoading();
             });
         } else{
             lgkorUI.alert("", {
@@ -429,6 +454,51 @@
         }
     }
 
+    function showMempointModify(){
+        $('.mempoint-info .viewer').hide();
+
+        $('.mempoint-info .modify').show();
+        $('.mempoint-info .btn-group').show();
+    }
+    function cancelMempointModify(){
+        $('.mempoint-info .viewer').show();
+
+        $('.mempoint-info .modify').hide();
+        $('.mempoint-info .btn-group').hide();
+    }
+    //멤버십 포인트 차감동의 저장
+    function okMempointModify(){
+        lgkorUI.showLoading();
+
+        var sendata = {
+            isAgree: $('.mempoint-info').data('isAgree'),
+            deductType: $('.mempoint-info').data('deductType'),
+            userPoint: $('.mempoint-info').data('userPoint'),
+            deductPoint: $('.mempoint-info').data('deductPoint')
+        }
+        if(sendata.isAgree){
+            var chk = $('.mempoint-info').find('input[name=point-cancel]').prop('checked');
+            sendata.isAgree = !chk;
+        } else{
+            sendata.deductType = $('.mempoint-info').find('input[name=point-ded]:checked').val();
+            console.log("$('.mempoint-info').find('input[name=point-ded]').val():", $('.mempoint-info').find('input[name=point-ded]:checked').val())
+
+            if(sendata.deductType == undefined || sendata.deductType == null){
+                lgkorUI.alert("", {title:"차감 포인트를 선택해 주세요."});
+                return;
+            }
+        }
+        console.log("### okMempointModify ###", sendata);
+
+        lgkorUI.requestAjaxData(MEMPOINT_DEDUCT_URL, sendata, function(result){
+            if(lgkorUI.stringToBool(result.data.success)){
+                changeContractInfo();
+            }
+
+            lgkorUI.hideLoading();
+        });
+    }
+
     function changeFieldValue(gname, data){
         for(var key in data){
             $("."+gname).find('ul li[class=' + key + '] dd').empty().html(data[key]);
@@ -436,7 +506,6 @@
     }
 
     function setContractInfo(data){
-        console.log(data)
         mypage.find(".no-data").remove();
         if(data != undefined && data != "" && data != null){
             var info;
@@ -470,7 +539,43 @@
                 info.methodNumber = txtMasking.substr(data.paymentInfo.bankInfo.bankNumber, 4);
             }
             changeFieldValue('payment-info', info);
-    
+            if(data.paymentInfo.isGrouping){
+                $('.payment-info .requestCard-btn, .changePayment-btn').hide();
+            } else{
+                $('.payment-info .requestCard-btn, .changePayment-btn').show();
+            }
+
+            var isAgreeText = "";
+            var isAgree = data.memberPointInfo.isAgree;
+            var deductype = data.memberPointInfo.deductType;
+            var userpoint = data.memberPointInfo.userPoint;
+            var deductpoint = data.memberPointInfo.deductPoint;
+            var userpointComma = vcui.number.addComma(userpoint);
+            var deductpointComma = vcui.number.addComma(deductpoint);
+            if(isAgree){
+                if(deductype == "deduct"){
+                    isAgreeText = "동의 ("+deductpointComma+"P차감)";
+                    $('.mempoint-info input[value=deduct]').prop('checked', true);
+                } else{
+                    isAgreeText = "동의 (전액 차감)";
+                    $('.mempoint-info input[value=all]').prop('checked', true);
+                }
+                $('.mempoint-info .agreeBox').show();
+                $('.mempoint-info .noneAgreeBox').hide();
+            } else{
+                isAgreeText = "미동의";
+                $('.mempoint-info .agreeBox').hide();
+                $('.mempoint-info .noneAgreeBox').show();
+            }
+            $('.mempoint-info').find('.userPoint').text(userpointComma);
+            $('.mempoint-info').find('.deductPoint').text(deductpointComma);
+            $('.mempoint-info').find('.viewer').text(isAgreeText);
+            $('.mempoint-info').data('isAgree', isAgree);
+            $('.mempoint-info').data('deductType', deductype);
+            $('.mempoint-info').data('userPoint', userpoint);
+            $('.mempoint-info').data('deductPoint', deductpoint);
+            cancelMempointModify();
+
             changeFieldValue('manager-info', data.managerInfo);
                   
             userInfo = {

@@ -1,0 +1,18 @@
+{
+    "status":"success",
+    "message":null,
+    "data": {
+        "popular":[
+            "LG 그램",
+            "스팀 건조기",
+            "LG 스타일"
+        ],
+        "recommend":[
+            "#LG 그램",
+            "#스팀 건조기",
+            "#LG 스타일",
+            "#태그",
+            "#공기 청정기 이벤트"
+        ]
+    }
+}
