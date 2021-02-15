@@ -391,6 +391,23 @@
             };
         });
 
+
+        //카드 할인 드롭다운 선택
+        $('#pop-estimate').find('.alliance-card').on('click','.select-list li a', function(e){
+            e.preventDefault();
+            
+            var $this = $(this);
+            var _id = $this.attr('href').replace("#","");
+            var $dropDown = $this.parents('.ui_dropdown');
+            $dropDown.find('a.ui_dropdown_toggle').text($this.attr('data-card-title'));
+            
+            $dropDown.vcDropdown("close");
+
+            var maxCardSale = $this.attr('data-card-sale');
+            if(maxCardSale > 0) $('#pop-estimate').find('.alliance-card .price').show().text("월 최대 " + vcui.number.addComma(maxCardSale) + "원 청구할인");
+            else $('#pop-estimate').find('.alliance-card .price').hide();
+        });
+
         $(window).on("scroll", function(){
             var scrolltop = $(window).scrollTop();
             var winheight = $(window).height();
@@ -875,11 +892,9 @@
             } else {
                 $cardInfo.hide();
             }
+            $('#pop-estimate').find('.alliance-card .price').hide();
             //$list_ul.append($cardInfo);
-            $('#pop-estimate').find('.select-wrap').vcDropdown();
-            
-
-
+            //$('#pop-estimate').find('.select-wrap').vcDropdown();
             
             $('#pop-estimate').find('.tit-wrap span.leng').empty().html("총 "+"<strong>"+result.data.totalCnt+"</strong>개");
 

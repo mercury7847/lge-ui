@@ -327,11 +327,11 @@
 
 .fc-pink,
 .fc-pink * {
-    color:#ec455a !important;
+    color:#da0f47 !important;
 }
 .fc-pink:before,
 .fc-pink *:before {
-    background-color:#ec455a !important;
+    background-color:#da0f47 !important;
 }
 
 .component-wrap {
@@ -575,11 +575,11 @@
 
                 .fc-pink,
                 .fc-pink * {
-                    color:#ec455a !important;
+                    color:#da0f47 !important;
                 }
                 .fc-pink:before,
                 .fc-pink *:before {
-                    background-color:#ec455a !important;
+                    background-color:#da0f47 !important;
                 }
             }
 		}
@@ -772,7 +772,7 @@
             &.on .btn-indi {
                 width:28px;
                 border-radius:6px;
-                background:#ec455a;
+                background:#da0f47;
                 @include mobile {
                     width:18px;
                     border-radius:4px;
