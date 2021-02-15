@@ -37,7 +37,7 @@
         '<li>' +
         '{{# } #}}' +
         '<a href="{{url}}" class="item">' +
-        '<p class="tit">{{title}}</p>' +
+        '<p class="tit">{{#raw title}}</p>' +
         '<p class="desc">{{topic}}</p>' +
         '<ul class="options">' +
         '<li>{{date}}</li>' +
@@ -351,8 +351,8 @@
 
                 if (arr.length) {
                     arr.forEach(function(item) {
-                        item.title.replace(/'¶HS¶'/g, '<span class="keyword">');
-                        item.title.replace(/'¶HE¶'/g, '</span>');
+                        item.title = item.title.replace(/¶HS¶/g, '<span class="keyword">');
+                        item.title = item.title.replace(/¶HE¶/g, '</span>');
 
                         html += vcui.template(solutionsTemplate, item);
                     });
