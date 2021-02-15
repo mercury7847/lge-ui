@@ -653,11 +653,22 @@ CS.MD.commonModel = function() {
                 self.$el.trigger('complete', [data]);
             });
 
+            
+
             // 검색어 검색
             self.$keywordInput.on('input', function(e) {
                 var $this = $(this),
                     value = $this.val().toUpperCase(),
                     opt = self.options;
+
+                var regex = /[^a-zA-Z0-9.]/;
+
+                if (regex.test(value)) {
+                    $this.val(value.replace(regex,""));
+                    return;
+                }
+
+                value = $this.val().toUpperCase();
 
                 if (!self.$modelBox.hasClass(opt.stepActiveClass)) {
                     if (value.length > 1) {
@@ -713,6 +724,15 @@ CS.MD.commonModel = function() {
             self.$modelInput.on('input', function() {
                 var $this = $(this),
                     value = $this.val().toUpperCase();
+
+                var regex = /[^a-zA-Z0-9.]/;
+
+                if (regex.test(value)) {
+                    $this.val(value.replace(regex,""));
+                    return;
+                }
+
+                value = $this.val().toUpperCase();
                     
                 if (value.length > 1 || !value) {
                     self.param = $.extend(self.param, {
