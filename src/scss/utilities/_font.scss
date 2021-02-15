@@ -1,6 +1,7 @@
 /* Noto Sans */
 @font-face {
 	font-family: 'Noto Sans'; /* Regular */
+	font-display:swap;
 	src: url('/lg5-common/fonts/NotoSans-Regular.eot');
 	src: local('☺'),
         url('/lg5-common/fonts/NotoSans-Regular.eot#iefix') format('embedded-opentype'),
@@ -12,6 +13,7 @@
 
 @font-face {
 	font-family: 'Noto Sans'; /* Medium */
+	font-display:swap;
 	src: url('/lg5-common/fonts/NotoSans-Medium.eot');
 	src: local('☺'),
         url('/lg5-common/fonts/NotoSans-Medium.eot#iefix') format('embedded-opentype'),
@@ -24,6 +26,7 @@
 
 @font-face {
 	font-family: 'Noto Sans'; /* Bold */
+	font-display:swap;
 	src: url('/lg5-common/fonts/NotoSans-Bold.eot');
 	src: local('☺'),
         url('/lg5-common/fonts/NotoSans-Bold.eot#iefix') format('embedded-opentype'),
