@@ -242,6 +242,7 @@
         COMPARE_COOKIE_NAME: "LG5_CompareCart", //비교하기 쿠키
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
         init: function(){
+            this._switchLinker();
             this._addImgOnloadEvent();
             this._preloadComponents();
             this._addTopButtonCtrl();
@@ -368,6 +369,8 @@
                     for(var idx in self.resizeCallbacks){
                         self.resizeCallbacks[idx].call();
                     }
+
+                    self._switchLinker();
 
                     self.resetFlexibleBox();
                 });  
@@ -496,6 +499,12 @@
                     scrollTop: 0
                 }, 400);
             });
+        },
+
+        _switchLinker: function(){
+            var self = this;
+
+            if(vcui.detect.isMobileDevice){}
         },
 
         resetFlexibleBox: function(){
