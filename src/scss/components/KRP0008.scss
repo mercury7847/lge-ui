@@ -495,6 +495,7 @@
                 position: relative;
                 margin: 4px 0;
                 .name {
+                    padding-right: 32px;
                     font-weight: 700;
                     @include font($font-large-4,52px);
                 }
