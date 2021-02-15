@@ -39,7 +39,7 @@
                 }
 
                 &[class*="2"] {
-                    top: 150%;
+                    top: 50%;
                     @include mobile {
                         p:nth-child(2) {
                             margin-top: 24px;
@@ -47,7 +47,7 @@
                     }
                 }
                 &[class*="3"] {
-                    top: 250%;
+                    top: 50%;
                 }
             }
         }
