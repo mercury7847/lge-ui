@@ -71,17 +71,27 @@
     }
     .btn-close {
         position: absolute;
-        top: 16px;
-        right: 16px;
-        width: 24px;
-        height: 24px;
+        top: 32px;
+        right: 32px;
+        width: 32px;
+        height: 32px;
         &:after {
             content: '';
             display:block;
-            width:24px;
-            height:24px;
-            background:url('/lg5-common/images/icons/btn-close-24.svg') no-repeat;
-            
+            width:32px;
+            height:32px;
+            background:url('/lg5-common/images/icons/btn-close-32.svg') no-repeat;
+            background-size: 100%;
+        }
+        @include mobile {
+            top: 24px;
+            right: 24px;
+            width: 24px;
+            height: 24px;
+            &:after {
+                width:24px;
+                height:24px;
+            }
         }
     }
 
@@ -97,25 +107,33 @@
         }
         .tooltip-box {
             top: 34px;
-            min-width: 332px;
-            padding: 16px 24px;
+            min-width: 348px;
+            //padding: 32px;
             border-radius: 8px;
             box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.16);
             line-height: 0;
+            @include mobile {
+                min-width: 320px;
+            }
         }
 
         .title {
             display: block;
             font-weight: 700;
-            @include font-medium;
+            @include font-large-1;
         }
         .sns-wrap {
+            margin-top: 16px;
             padding-top: 16px;
+            border-top: 2px solid $color-default;
             .sns-list {
                 > li {
                     display: inline-block;
                     &:not(:first-child) {
                         margin-left: 20px;
+                        @include mobile {
+                            margin-left: 16px;
+                        }
                     }
                 }
             }
@@ -124,10 +142,8 @@
 
     [data-fixed="fixed-right"] {
         & + .tooltip-box {
-            @include pc {
-                left: auto;
-                right: 0;
-            }
+            left: auto;
+            right: 0;
         }
     }
 }
