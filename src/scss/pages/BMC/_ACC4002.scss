@@ -26,14 +26,28 @@
                     margin-top:0;
                 }
             }
+            &:first-child {
+                dl {
+                    &:before {
+                        background-image:url("/lg5-common/images/icons/icon-point-64-01.svg");    
+                    }
+                }
+            }
+            &:last-child {
+                dl {
+                    &:before {
+                        background-image:url("/lg5-common/images/icons/icon-point-64-02.svg");    
+                    }
+                }
+            }
             dl {
                 &::before {
                     content:' ';
                     display:block;
-                    width:48px;
-                    height:48px;
-                    margin:0 auto 12px;
-                    background:url("/lg5-common/images/icons/icon-point-48.svg") center no-repeat;
+                    width:64px;
+                    height:64px;
+                    margin:0 auto 16px;
+                    background:url("/lg5-common/images/icons/icon-point-64-01.svg") center no-repeat;
                     @include mobile {
                         margin-bottom:15px;
                     }
@@ -52,5 +66,59 @@
                 }
             }
         }
+    }
+}
+
+.slide-wrap {
+    .custom-indi-wrap {
+        bottom: 24px;
+        right: 40px;
+        left: 40px;
+        max-width: 1380px;
+        margin: 0 auto;
+        .custom-indis {
+            max-width: none;
+            margin: 0 -15px;
+            .indis {
+                width: 100%;
+                table-layout: fixed;
+                li {
+                    width: auto;
+                    padding: 0 15px;
+                    &.on {
+                        width: auto;
+                    }
+                }
+            }
+        }
+        .indi-control {
+            position: absolute;
+            bottom: 16px;
+            right: 0;
+            margin: 0;
+        }
+        @include mobile {
+            bottom: 20px;
+            right: 16px;
+            left: 16px;
+            max-width: none;
+            .custom-indis {
+                margin: 0 -5px;
+                .indis {
+                    li {
+                        padding: 0 5px;
+                    }
+                }
+            }
+            .indi-control {
+                bottom: 20px;
+            }
+        }
+    }
+    .slide-controls {
+        display: none;
+    }
+    .ui_carousel_list {
+        overflow:hidden;
     }
 }
