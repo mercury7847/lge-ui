@@ -391,12 +391,12 @@
             self.$keywordWrap.on('autocompleteClick', function(e, el) {
                 var id = $(el).attr("href").replace("#", "");
                 var windowHeight = $(window).innerHeight();
-                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
+                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
             });
             $('.center-result-wrap table').on('click', '.btn-detail', function(){
                 var id = $(this).attr("href").replace("#", "");
                 var windowHeight = $(window).innerHeight();
-                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no");
+                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
             });
             self.searchCenterName.on('click', function() {
                 self._setSearch();
@@ -408,6 +408,11 @@
                 };
 
                 self.requestCenterData(param)
+            });
+
+            // 엔지니어 선택 팝업 오픈
+            self.$engineerPopup.on('modalshown', function() {
+                self.$engineerSlider.vcCarousel('resize');
             });
 
             self.$stepCenter.on('change', '[name=center]', function() {
@@ -488,13 +493,6 @@
                 $tabCont.hide();
                 $tabCont.filter('#tab' + (data.selectedIndex+1)).show();
             })
-
-            // 엔지니어 선택 팝업 오픈
-            self.$engineerPopup.on('modalshown', function() {
-                
-                self.$engineerSlider.filter('.is-loaded').vcCarousel('reinit');
-                //self.$engineerSlider.not('.is-loaded').addClass('is-loaded').vcCarousel(slideConfig)
-            });
 
 
             // 엔지니어 선택

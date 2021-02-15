@@ -291,12 +291,14 @@
                 }
             });
         },
-        setSolutions: function(url, param, isShown) {
+        setSolutions: function(param, isShown) {
             var self = this;
+            var url = self.$solutionsPopup.data('listUrl');
 
             lgkorUI.requestAjaxData(url, param, function(result){
                 self.$solutionsPopup.find('.pop-conts').html(result);
                 self.$solutionsPopup.find('.pagination').pagination();
+                
                 if (isShown) {
                     self.$solutionsPopup.find('.ui_accordion').vcAccordion();
                 } else {
@@ -304,15 +306,14 @@
                 }
 
                 self.$solutionsPopup.find('.pagination').on('pageClick', function(e) {
-                    var url = self.$solutionsPopup.data('listUrl'),
-                        param = {
+                    var param = {
                             topic : $('input[name=topic]:checked').val(),
                             subToic : $('input[name=subTopic]:checked').val(),
                             productCode : $('#productCode').val(),
                             page: e.page
                         };
 
-                    self.setSolutions(url, param, true);
+                    self.setSolutions(param, true);
                 });
             }, null, "html", true);
         },
@@ -534,10 +535,16 @@
                 var notInput = '';
                 if (self.isLogin) {
                     notInput += '#userNm, #phoneNo';
-                    if ($('#detailAddress').prop('readonly')) {
+                    if ($('#detailAddress').data('defaultValue')) {
                         notInput += ', #zipCode, #userAddress, #detailAddress';
+                        $('[data-default-value]').each(function() {
+                            $(this).val($(this).data('defaultValue')).prop('readonly', true);
+                        });
                     }
+                    $('.address-err-msg + .chk-wrap').hide();
+                    $('.address-err-msg + .chk-wrap').find('input[type=radio]').prop('checked', false);
                 }
+
                 $('input[type=text], textarea').not(notInput).val('');
 
                 $('#fanEtc').prop('disabled', true);
@@ -567,6 +574,21 @@
                         salesDt: data.salesDt,
                         memberModel: data.memberModel
                     });
+                }
+
+                if (data.subCategory == 'CT50019275') {
+                    lgkorUI.confirm('의류 건조기 제품은 불편 사항 및 제품 환경 확인 등이 필요 함에 따라 고객 상담실 1544-7777로 전화주시면 신속한 상담에 도움드리고 있습니다.<br>업무 시간 외, 공휴일, 상담사 통화가 어려운 경우 아래 ’예약’ 버튼을 클릭하시어 연락처 등을 남겨 주시기 바랍니다. 다만, 접수된 순으로 처리하고 있어 다소 지연되는 점 양해 부탁드립니다.',{
+                        title:'',
+                        okBtnName: '예약',
+                        cancelBtnName: '이전',
+                        ok: function() {
+                            location.href = '/support/request-call-reservation-dryer';
+                        },
+                        cancel: function() {
+                            self.$cont.commonModel('reset');
+                        }
+                    });
+                    return;
                 }
 
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
@@ -657,7 +679,6 @@
 
             // 솔루션 배너
             self.$solutionsBanner.find('.btn-link').on('click', function(){
-                var url = $(this).data('href');
                 var param = {
                     topic : $('input[name=topic]:checked').val(),
                     subToic : $('input[name=subTopic]:checked').val(),
@@ -665,7 +686,7 @@
                     page: 1
                 };   
 
-                self.setSolutions(url, param, false);
+                self.setSolutions(param, false);
             });
 
             // 주소 찾기

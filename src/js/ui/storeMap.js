@@ -87,6 +87,8 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             self.latitude = parseFloat(self.options.latitude || self.options.y);
             self.longitude = parseFloat(self.options.longitude || self.options.x);
 
+            self.searchType = "local";
+
             self.itemArr = [];
 
             self.centerID = 0;
@@ -177,21 +179,22 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
             if(!self.map) return;
 
-            naver.maps.Event.addListener(self.map, 'zoom_changed', function() {                  
-                if(self.searchMode) return;
+            // naver.maps.Event.addListener(self.map, 'zoom_changed', function() {                  
+            //     if(self.searchMode) return;
 
-                self._changeMarkersState();             
-            });
+            //     self._changeMarkersState();             
+            // });
 
-            naver.maps.Event.addListener(self.map, 'dragend', function() {
-                self._changeMarkersState();
-            });               
+            // naver.maps.Event.addListener(self.map, 'dragend', function() {
+            //     self._changeMarkersState();
+            // });               
         },  
 
         _setItemInfo : function _setItemInfo(arr){
             var self = this;
             for(var i=0; i<arr.length; i++){    
                 var items = arr[i];
+                items.num = i;
                 items.item.setIcon(self._getMarkerIcon(items.info, i));    
             }
         },   
@@ -235,7 +238,8 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             var nArr = [];
             var mp, distance;
             var bounds = self._getMapBounds();
-            var center = self.map.getCenter();
+            var center = self.searchType == "search" ? {_lat: self.latitude, _lng: self.longitude} : self.map.getCenter();
+            console.log("### center ###", center)
 
             for(var i=0; i<arr.length; i++){
                 mp = arr[i]['item'].getPosition();
@@ -304,9 +308,10 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             var self = this;
             if(!self.map) return;
 
-            var showItems = self._setItemVisible();
+            //var showItems = self._setItemVisible();
             
-            var arr = self._getNumberInArea(showItems);
+            //var arr = self._getNumberInArea(showItems);
+            var arr = self._getNumberInArea(self.itemArr);
 
             self._setItemInfo(arr);
             self.triggerHandler('mapchanged', [arr]);   
@@ -445,10 +450,14 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             }
         },
 
-        applyMapData: function(data){
+        applyMapData: function(data, searchtype){
             var self = this;
             console.log("### applyMapData ###");
             self.deleteMapdata();
+
+            self.searchType = searchtype;
+
+            self.markerIndex = 0;
 
             self.itemArr = [];
             self._draw(data);   
@@ -465,7 +474,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
             self.map.setSize({width: width, height: height})
 
-            self._changeMarkersState();
+            //self._changeMarkersState();
         },
 
         selectedMarker: function selectedMarker(id){
@@ -474,19 +483,35 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             var centerPoint;
             self.itemArr = vcui.array.map(self.itemArr, function(item, index){
                 var selected = item.id == id ? true : false;
+                var isChange = item.info.selected == selected;
                 item.info.selected = selected;        
                 
-                if(selected) centerPoint = {items: item, lat: item.info.gpsInfo.gpsy, long: item.info.gpsInfo.gpsx}
+                if(!selected){
+                    if(item.infoWindow && item.infoWindow.getMap()){
+                        item.infoWindow.close();
+                    }
+                } else{
+                    if(item.infoWindow){
+                        if(!item.infoWindow.getMap()) item.infoWindow.open(self.map, item.item);
+                    }    
+                    centerPoint = {items: item, lat: item.info.gpsInfo.gpsy, long: item.info.gpsInfo.gpsx}
+                }
+
+                if(!isChange) item.item.setIcon(self._getMarkerIcon(item.info, item.num));
+                
                 return item;
             });
 
-            self._changeMarkersState();
+            //self._changeMarkersState();
 
             var marker = centerPoint.items.item;
-            marker.setZIndex(self.itemArr.length-1);
+            self.markerIndex++;
+            marker.setZIndex(self.markerIndex);
 
-            self.map.setZoom(12, true);
-            self.map.panTo(new naver.maps.LatLng(centerPoint.lat, centerPoint.long), {duration:460, easing:"easeOutCubic"});
+            self.map.setZoom(12);
+            self.map.panTo(new naver.maps.LatLng(centerPoint.lat, centerPoint.long), {duration:350, easing:"easeOutCubic"});
+
+            self.triggerHandler('changemarkerstatus', [id]);   
         },
 
         addMaker: function(lat, long){

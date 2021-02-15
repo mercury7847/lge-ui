@@ -320,7 +320,7 @@
         })
 
         step2Block.on('change', 'input[name=installInpuType]', function(e){
-            changeInstallInputType($(this).val());
+            changeInstallInputType($(this).prop("checked"));
         }).on('change', 'input[name=preVisitRequest]', function(e){
             changePrevisitRequest($(this).val());
         }).on('change', 'input[name=preVisitAgree]', function(e){
@@ -770,7 +770,8 @@
 
     //설치 정보 입력 타입 선택...
     function changeInstallInputType(type){
-        if(type == "equal"){
+        console.log("### changeInstallInputType ###", type)
+        if(type){
             var step1Value = step1Validation.getValues();
 
             for(var str in step1Value){

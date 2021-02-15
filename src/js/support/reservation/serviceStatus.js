@@ -541,7 +541,8 @@
                     $engineerBox = $stepEngineer.find('.engineer-info'),
                     $resultBox = $stepEngineer.find('.engineer-desc'),
                     topicNm = $('#topic').val(),
-                    subTopicNm = $('#subtopic').val()
+                    subTopicNm = $('#subtopic').val(),
+                    tid = 0;
     
                 $stepEngineer.find('.engineer-img img').attr({
                     'src': data.image,
@@ -562,12 +563,29 @@
                 $('#resrvSeq').val(data.resrvSeq);
 
                 var loginFlag = $('html').data('login') === 'Y' ? true : false;
+                var $formSection = $engineerBox.closest('.section').next('.section');
 
-                if( loginFlag ) {
-                    $engineerBox.find('button:visible').first().focus();
-                } else {
-                    $engineerBox.closest('.section').next('.section').find('button').first().focus();
-                }
+                clearTimeout(tid);
+
+                tid = setTimeout(function(){
+                    if( loginFlag ) {
+                        if($stepEngineer.find('button:visible').length) {
+                            $stepEngineer.find('button:visible').first().focus();
+                        } else {
+                            $stepEngineer.attr('tabindex', '1').focus().removeAttr('tabindex');
+                        }
+                    } else {
+                        
+                        if( $formSection.length ) {
+                            if( $formSection.find('button:visible').length ) {
+                                $formSection.find('button:visible').first().focus();
+                            } else {
+                                $stepEngineer.closest('.pop-conts').scrollTop($formSection.offset().top);
+                            }
+                        } 
+                    }
+                }, 100)
+
             },
             requestDate: function() {
                 var self = this;

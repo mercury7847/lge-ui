@@ -77,6 +77,14 @@
                 self.$searchSimilar.hide();
             },
 
+            sendSearchPage: function(searchUrl, search, force) {
+                if(searchUrl) {
+                    var fi = searchUrl.indexOf('?');
+                    var url = searchUrl + ((fi<0) ? "?" : "&") +"search="+search+"&force="+force;
+                    location.href = url;
+                }
+            },
+
             bindEvents: function() {
                 var self = this;
 
@@ -94,8 +102,9 @@
                 //검색버튼
                 self.$buttonSearch.on('click', function(e){
                     clearTimeout(self.searchTimer);
+                    var url = self.$searchLayer.attr('data-link-url');
                     var searchVal = self.$inputSearch.val();
-                    self.requestSearch(searchVal, true);
+                    self.sendSearchPage(url,searchVal,false);
                 });
 
                 //검색 타이머
@@ -118,47 +127,41 @@
                 //자동완성 리스트 클릭
                 self.$autoComplete.on('click', 'div.keyword-list ul li a', function(e){
                     e.preventDefault();
-                    //self.searchItem($(this));
-                    var url = self.$searchLayer.attr('data-link-url');
-                    if(url) {
-                        var searchVal = $(this).attr('href').replace("#", "");
-                        url += ("?search=" + searchVal);
-                        location.href = url;
-                    }
+                    self.searchItem($(this), true);
                 });
 
                 //자동완성 리스트 오버
                 self.$autoComplete.on('mouseover', 'div.keyword-list ul li a', function(e){
                     e.preventDefault();
-                    console.log('mouse in');
-                    self.searchItem($(this));
-                }).on('mouseout', 'div.keyword-list ul li a', function(e){
+                    //console.log('mouse in');
+                    self.searchItem($(this),false);
+                });/*.on('mouseout', 'div.keyword-list ul li a', function(e){
                     e.preventDefault();
-                    console.log('mouse out');
-                });
+                    //console.log('mouse out');
+                });*/
 
                 //연관검색어 클릭
                 self.$searchSimilar.on('click', 'a', function(e){
                     e.preventDefault();
-                    self.searchItem($(this));
+                    self.searchItem($(this),true);
                 });
 
                 //인기검색어 클릭
                 self.$popularKeywordList.on('click', 'div.keyword-list ul li a', function(e){
                     e.preventDefault();
-                    self.searchItem($(this));
+                    self.searchItem($(this),true);
                 });
 
                 //추천태그 클릭
                 self.$suggestedTagsList.on('click', 'div.keyword-list ul li a', function(e){
                     e.preventDefault();
-                    self.searchItem($(this));
+                    self.searchItem($(this),true);
                 });
 
                 //최근검색어 클릭
                 self.$recentKeywordList.on('click', 'div.keyword-list ul li span a', function(e){
                     e.preventDefault();
-                    self.searchItem($(this));
+                    self.searchItem($(this),true);
                 });
 
                 //최근검색어 삭제 클릭
@@ -169,11 +172,15 @@
             },
 
             //검색어창에 입력후 검색
-            searchItem:function($item) {
+            searchItem:function($item, sendSearchPage) {
                 var self = this;
                 var searchVal = $item.attr('href').replace("#", "");
-                self.$inputSearch.val(searchVal);
-                self.$buttonSearch.trigger('click');
+                if(sendSearchPage) {
+                    self.$inputSearch.val(searchVal);
+                    self.$buttonSearch.trigger('click');
+                } else {
+                    self.requestSearch(searchVal, true);
+                }
             },
 
             showAnimation:function($item) {
@@ -219,7 +226,7 @@
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
                     
                     //자동완성 리스트 갱신
-                    var arr = (data && data instanceof Array) ? data : [];
+                    var arr = (data && data.listData instanceof Array) ? data.listData : [];
                     if(arr.length > 0) {
                         var $list_ul = self.$autoComplete.find('div.keyword-list ul');
                         $list_ul.empty();
@@ -228,9 +235,18 @@
                         });
                         self.$autoComplete.show();
                         self.hideAnimation(self.$searchKeywordArea);
+                        self.$searchSimilar.hide();
                     } else {
                         self.hideSearchResultArea();
-                        self.showAnimation(self.$searchKeywordArea);
+                        //연관검색어가 있으면 연관검색어를 표시하고 아니면 숨기기
+                        if(data.similarText) {
+                            self.$searchSimilar.html(vcui.template(similarTextTemplate, {"text":data.similarText}));
+                            self.$searchSimilar.show();
+                            self.hideAnimation(self.$searchKeywordArea);
+                        } else {
+                            self.$searchSimilar.hide();
+                            self.showAnimation(self.$searchKeywordArea);
+                        }
                     }
                 });
             },
@@ -261,9 +277,9 @@
 
                     //카테고리 리스트 갱신
                     var arr = (data.category && data.category) instanceof Array ? data.category : [];
+                    var $list_ul = self.$resultCategory.find('ul');
+                    $list_ul.empty();
                     if(arr.length > 0) {
-                        var $list_ul = self.$resultCategory.find('ul');
-                        $list_ul.empty();
                         arr.forEach(function(item, index) {
                             $list_ul.append(vcui.template(categoryItemTemplate, {"url":item.url,"text":item.text.replaceAll(searchedValue,replaceText)}));
                         });
@@ -275,9 +291,9 @@
                     
                     //검색 미리보기 리스트 갱신
                     arr = (data.preview && data.preview) instanceof Array ? data.preview : [];
+                    var $list_ul = self.$resultPreviewList.find('ul');
+                    $list_ul.empty();
                     if(arr.length > 0) {
-                        var $list_ul = self.$resultPreviewList.find('ul');
-                        $list_ul.empty();
                         arr.forEach(function(item, index) {
                             item.title = item.title.replaceAll(searchedValue,replaceText);
                             item.price = vcui.number.addComma(item.price);
@@ -289,7 +305,6 @@
                         self.$resultPreviewList.hide();
                     }
 
-
                     if(showSearchResultArea) {
                         //검색결과가 있는 경우.
                         self.hideAnimation(self.$searchKeywordArea);
@@ -298,6 +313,8 @@
                         if(isSaveRecentKeyword) self.addRecentSearcheText(searchedValue);
                     } else {
                         //검색결과를 표시할것이 없을경우
+                        self.$searchSimilar.hide();
+                        /*
                         //연관검색어가 있으면 연관검색어를 표시하고 아니면 숨기기
                         if(data.similarText) {
                             self.hideAnimation(self.$searchKeywordArea);
@@ -311,6 +328,7 @@
                             self.hideSearchResultArea();
                             self.$searchSimilar.hide();
                         }
+                        */
                     }
                 });
             },

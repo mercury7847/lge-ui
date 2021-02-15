@@ -141,6 +141,9 @@
                 self.setting();
                 self.bindEvents();
 
+                //더보기 버튼 체크
+                self.setPageData(lgkorUI.getHiddenInputData());
+
                 //breackpoint 이벤트 초기실행
                 self.fnBreakPoint();
                 //비교하기 체크
@@ -148,7 +151,6 @@
 
                 vcui.require(['search/filterLayer.min'], function () {
                     self.filterLayer = new FilterLayer(self.$layFilter, self.$categorySelect, self.$listSorting, self.$btnFilter, function (data) {
-                        console.log("filterLayer: ", data);
                         lgkorUI.setStorage(storageName, data);
     
                         var param = {};
@@ -156,9 +158,9 @@
                         for(var key in filterdata){
                             param[key] = filterdata[key].join(",");
                         }
-                        param.sortType = data.sortType;
+                        var sort = data.sortType ? data.sortType : data.order;
+                        param.sortType = sort;
                         param.page = 1;
-                        console.log("param:", param)
                         if(param) {
                             self.requestSearch(param, true);
                         }
@@ -170,15 +172,21 @@
                     //페이지에 선언된 필터와 비교해서 합침
                     var storageFilters = lgkorUI.getStorage(storageName);
                     var filterData = firstEnableFilter ? firstEnableFilter : {};
+
+                    console.log("### storageFilters ###", storageFilters)
     
+                    var change = false;
                     if(!(vcui.isEmpty(storageFilters)) && storageFilters.filterData) {
                         var storageFilterData = JSON.parse(storageFilters.filterData);
+                        if(Object.keys(storageFilterData).length) change = true;
+
                         for(key in filterData) {
                             storageFilterData[key] = filterData[key]; 
                         }
                         filterData = storageFilterData;
                     }
-                    self.filterLayer.resetFilter(filterData, false);
+                    console.log("change:",change)
+                    self.filterLayer.resetFilter(filterData, change);
                 });
             },
 
@@ -351,19 +359,21 @@
 
             setPageData: function(param) {
                 var self = this;
-                var page = parseInt(param.page);
-                var totalCount = parseInt(param.totalCount);
-                if (page < totalCount) {
-                    self.$btnMore.show();
-                } else {
-                    //더이상 없다
-                    self.$btnMore.hide();
-                }
+                if(param && param.page && param.totalCount) {
+                    var page = parseInt(param.page);
+                    var totalCount = parseInt(param.totalCount);
+                    if (page < totalCount) {
+                        self.$btnMore.show();
+                    } else {
+                        //더이상 없다
+                        self.$btnMore.hide();
+                    }
 
-                lgkorUI.setHiddenInputData({
-                    totalCount: totalCount,
-                    page: page
-                });
+                    lgkorUI.setHiddenInputData({
+                        totalCount: totalCount,
+                        page: page
+                    });
+                }
             },
 
             requestSearch: function(data, isNew){
@@ -451,11 +461,26 @@
                     item.siblings[str].siblingType = (siblingType == "color") ? "color" : "text";
                 }
 
+                /*
                 var sliderImages = [item.mediumImageAddr];
                 if(item.rollingImages && item.rollingImages.length){
                     item.rollingImages.forEach(function(obj, idx) {
-                        sliderImages.push(obj);
+                        if(obj && obj.mediumImageAddr) {
+                            sliderImages.push(obj.mediumImageAddr);
+                        }
                     });
+                }
+                */
+
+                var sliderImages = [];
+                if(item.rollingImages && item.rollingImages.length){
+                    item.rollingImages.forEach(function(obj, idx) {
+                    if(obj && obj.smallImageAddr) {
+                        sliderImages.push(obj.smallImageAddr);
+                        }
+                    });
+                } else {
+                    sliderImages.push(item.smallImageAddr);
                 }
                 item.sliderImages = sliderImages;
                 
@@ -494,7 +519,7 @@
 
                 if(!item.obsBtnRule) item.obsBtnRule = "";
 
-                console.log("### item.siblingType ###", item.siblingType)
+                //console.log("### item.siblingType ###", item.siblingType)
 
                 return vcui.template(productItemTemplate, item);
             },
@@ -558,12 +583,16 @@
             //비교하기 저장 유무 체크...
             setCompares:function(){
                 var self = this;
+
                 self.$productList.find('li .product-compare a').removeClass('on');
+
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
                 var isCompare = vcui.isEmpty(storageCompare);
                 if(!isCompare){
-                    for(var i in storageCompare[lgkorUI.COMPARE_ID]){
-                        var modelID = storageCompare[lgkorUI.COMPARE_ID][i]['id'];
+                    if(vcui.isEmpty(storageCompare[categoryId]))
+                    for(var i in storageCompare[categoryId]){
+                        var modelID = storageCompare[categoryId][i]['id'];
                         self.$productList.find('li .product-compare a[data-id=' + modelID + ']').addClass('on');
                     }
                 }
@@ -572,6 +601,7 @@
             setCompareState:function(atag){
                 var $this = $(atag);
                 var _id = $this.data('id');
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 if(!$this.hasClass('on')){
                     var compare = $this.closest('.product-compare');
                     var contents = compare.siblings('.product-contents');
@@ -589,11 +619,11 @@
                         "productImg": productImg,
                         "productAlt": productAlt
                     }
-
-                    var isAdd = lgkorUI.addCompareProd(compareObj);
+                    
+                    var isAdd = lgkorUI.addCompareProd(categoryId, compareObj);
                     if(isAdd) $this.addClass("on");
                 } else{
-                    lgkorUI.removeCompareProd(_id);
+                    lgkorUI.removeCompareProd(categoryId, _id);
                 }
             }
         };

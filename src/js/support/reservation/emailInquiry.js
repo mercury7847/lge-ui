@@ -169,6 +169,7 @@
                 formData.append(key, param[key]);
             }
 
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxFileData(url, formData, function(result) {
                 var data = result.data;
 
@@ -178,6 +179,7 @@
                     if (data.resultMessage) {
                         lgkorUI.alert("", { title: data.resultMessage });
                     }
+                    lgkorUI.hideLoading();
                 }
             }, 'POST');
         },

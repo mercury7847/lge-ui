@@ -26,8 +26,6 @@ $(window).ready(function(){
 
             //결과보기 버튼
             $('.btn-compare').on('click', function(e){
-                saveCookie();
-
                 var url = $(this).data('url');
                 if(url) {
                     location.href = url;
@@ -60,40 +58,31 @@ $(window).ready(function(){
         function setCompares(){
             $('.sticy-compare .list-inner li').empty();
 
+            var categoryId = lgkorUI.getHiddenInputData().categoryId;
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
             var isCompare = vcui.isEmpty(storageCompare);
             if(!isCompare){
-                for(var i in storageCompare[lgkorUI.COMPARE_ID]){
-                    var name = "compare-" + storageCompare[lgkorUI.COMPARE_ID][i]['id'];
+                if(vcui.isEmpty(storageCompare[categoryId]))
+                for(var i in storageCompare[categoryId]){
+                    var name = "compare-" + storageCompare[categoryId][i]['id'];
                     var list = $('.sticy-compare .list-inner li').eq(i);                    
-                    var listItem = vcui.template(itemTemplate, storageCompare[lgkorUI.COMPARE_ID][i]);
+                    var listItem = vcui.template(itemTemplate, storageCompare[categoryId][i]);
                     list.html(listItem);
                 }
             }
 
-            var compare = storageCompare[lgkorUI.COMPARE_ID]; 
+            var compare = storageCompare[categoryId]; 
             var leng = !compare ? "0" : compare.length;
             var $count = $('div.compare-title div.count');
             $count.text(leng + "/" + lgkorUI.COMPARE_LIMIT);
         }
-        function saveCookie(){
-            var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
-            var compare = storageCompare[lgkorUI.COMPARE_ID]; 
-            var leng = !compare ? 0 : compare.length;
-            if(leng){
-                var cookie = [];
-                for(var i in storageCompare[lgkorUI.COMPARE_ID]){
-                    cookie.push(storageCompare[lgkorUI.COMPARE_ID][i]['id']);
-                }
-            }
-        }
 
         function setCompareStatus(){
             console.log("setCompareStatus~~");
+            var categoryId = lgkorUI.getHiddenInputData().categoryId;
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
-            var compare = storageCompare[lgkorUI.COMPARE_ID]; 
+            var compare = storageCompare[categoryId]; 
             var leng = !compare ? 0 : compare.length;
-            //var leng = storageCompare[lgkorUI.COMPARE_ID] == undefined ? 0 : storageCompare[lgkorUI.COMPARE_ID].length;
             console.log("leng:",leng)
             if(leng){
                 var limit = window.breakpoint.name == "mobile" ? 2 : 3;
@@ -155,7 +144,8 @@ $(window).ready(function(){
         }
 
         function setClearCompare(){
-            lgkorUI.initCompareProd();
+            var categoryId = lgkorUI.getHiddenInputData().categoryId;
+            lgkorUI.initCompareProd(categoryId);
         }
 
         init();

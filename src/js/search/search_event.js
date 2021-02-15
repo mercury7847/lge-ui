@@ -190,6 +190,14 @@
                 self.$resultListNoData = self.$contWrap.find('div.result-list-wrap.list-no-data');
             },
 
+            sendSearchPage: function(searchUrl, search, force) {
+                if(searchUrl) {
+                    var fi = searchUrl.indexOf('?');
+                    var url = searchUrl + ((fi<0) ? "?" : "&") +"search="+search+"&force="+force;
+                    location.href = url;
+                }
+            },
+
             bindEvents: function() {
                 var self = this;
 
@@ -202,8 +210,7 @@
                     value = !value ? null : value.trim(); 
                     var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
 
-                    var url = href + "?search="+value+"&force="+force;
-                    location.href = url;
+                    self.sendSearchPage(href,value,force);
                 });
 
                 //검색어 창 동기화
@@ -403,7 +410,7 @@
                     var showAutoComplete = false;
 
                     //자동완성 리스트 갱신
-                    var arr = data instanceof Array ? data : [];
+                    var arr = (data && data.listData instanceof Array) ? data.listData : [];
                     if(arr.length > 0) {
                         var $list_ul = self.$autoComplete.find('div.keyword-list ul');
                         $list_ul.empty();
@@ -438,8 +445,7 @@
                     self.$contentsSearch.attr('data-search-value',value);
                     self.$contentsSearch.attr('data-search-force',false);
                     var tab = self.getTabItembyCategoryID(data.category);
-                    var url = tab.attr('href') + "?search="+value;
-                    location.href= url;
+                    self.sendSearchPage(tab.attr('href'),value,false);
                 });
             },
 

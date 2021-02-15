@@ -73,16 +73,59 @@
             bindEvent: function() {
                 var self = this;
                 
+                self.$searchWrap.find('input[type="text"]').on('input', function() {
+                    var val = $(this).val().trim();
+
+                    if (val.length > 1) {
+                        $('.search-error').hide();
+                    }
+                });
+
+                self.$searchWrap.find('input[type="text"]').on('keyup', function(e) {
+                    if (e.keyCode == 13) { 
+                        self.$searchWrap.find('.btn-search').trigger('click');
+                    }
+                });
+                
                 self.$searchWrap.find('.btn-search').on('click', function() {
+                    var val = self.$searchWrap.find('input[type="text"]').val().trim();
+
+                    if (val.length > 1) {
+                        self.params = $.extend({}, self.params, {
+                            'keyword': val,
+                            'page': 1
+                        });
+                        
+                        $('.search-error').hide();
+
+                        self.searchList();
+                    } else if (val.length == 1) {
+                        $('.search-error').show();
+                    } else {
+                        self.params = $.extend({}, self.params, {
+                            'keyword': '',
+                            'page': 1
+                        });
+
+                        self.searchList();
+
+                        $('.search-error').hide();
+                    }
+                });
+
+                self.$sortSelect.filter('#category').on('change', function() {
+                    self.$searchWrap.find('input[type="text"]').val('');
+                   
                     self.params = $.extend({}, self.params, {
-                        'keyword': self.$searchWrap.find('input[type="text"]').val(),
+                        'keyword': '',
+                        'category': self.$sortSelect.filter('#category').vcSelectbox('value'),
+                        'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
                         'page': 1
                     });
-                    
                     self.searchList();
                 });
 
-                self.$sortSelect.on('change', function() {
+                self.$sortSelect.filter('#orderType').on('change', function() {
                     self.params = $.extend({}, self.params, {
                         'category': self.$sortSelect.filter('#category').vcSelectbox('value'),
                         'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
