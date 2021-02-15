@@ -1163,11 +1163,12 @@
 
             //아이템 비교하기
             requestCompareItem: function(compareData, compare, $dm) {
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 if(compare){
-                    var isAdd = lgkorUI.addCompareProd(compareData);
+                    var isAdd = lgkorUI.addCompareProd(categoryId, compareData);
                     if(!isAdd) $dm.prop('checked', false);
                 } else{
-                    lgkorUI.removeCompareProd(compareData.id);
+                    lgkorUI.removeCompareProd(categoryId, compareData.id);
                 }
             },
 
@@ -1177,9 +1178,11 @@
                 var chk = false;
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
                 var isCompare = vcui.isEmpty(storageCompare);
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 if(!isCompare){
-                    for(var i in storageCompare[lgkorUI.COMPARE_ID]){
-                        if(sendData['id'] == storageCompare[lgkorUI.COMPARE_ID][i]['id']) chk = true;
+                    if(vcui.isEmpty(storageCompare[categoryId]))
+                    for(var i in storageCompare[categoryId]){
+                        if(sendData['id'] == storageCompare[categoryId][i]['id']) chk = true;
                     }
                 }
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').prop('checked', chk)

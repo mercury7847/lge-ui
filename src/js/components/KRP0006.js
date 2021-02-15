@@ -26,7 +26,7 @@
 
                     //모델아이디가 있으면 쿠키저장
                     if(!(!modelID)) {
-                        lgkorUI.addCookieArrayValue(lgkorUI.RECSNT,modelID);
+                        lgkorUI.addCookieArrayValue(lgkorUI.RECENT_PROD_COOKIE_NAME,modelID);
                     }
             
                     if(self.firstLoad && !(!ajaxUrl)){
