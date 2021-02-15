@@ -150,13 +150,6 @@
                     }
                 });
             });
-            self.$form.find('#privcyCheck').on('change', function() {
-                if ($(this).is(':checked')) {
-                    self.$form.find('.btn-open').prop('disabled', false);
-                } else {
-                    self.$form.find('.btn-open').prop('disabled', true);
-                }
-            });
 
             self.$authPopup.on('modalhide', function() {
                 var $this = $(this);
@@ -167,10 +160,15 @@
             });
 
             $('.btn-open').on('click', function() {
-                authManager.open();
-            });
+                var result = validation.validate(['privcyCheck']);
 
-            
+                if (result.success) {
+                    authManager.open(function() {
+                        $('#authName').val($('#userName').val()).prop('readonly', true);
+                        $('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);  
+                    });
+                }
+            });
 
             // 인증문자 보내기
             self.$authPopup.find('.btn-send').on('click', function() {
@@ -179,9 +177,9 @@
 
             // 인증 완료 하기
             self.$authPopup.find('.btn-auth').on('click', function() {
-                authManager.confirm(this, function(success, result) {
+                authManager.confirm('.btn-open', function(success, result) {
                     if (success) {
-                        console.log(result);
+                        
                     }
                 });
             });
