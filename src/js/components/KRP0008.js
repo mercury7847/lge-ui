@@ -126,6 +126,7 @@
                 } else {
                     self.$pdpInfoPaymentAmount.data('price',0);
                 }
+                
                 var $paymentInput = self.$pdpInfoPaymentAmount.find('input.quantity');
                 $paymentInput.each(function(index, item){
                     var $paymentAmount = $(item).parents('.payment-amount');
@@ -396,8 +397,52 @@
                 //장바구니
                 self.$pdpInfo.find('div.purchase-button a.cart').on('click', function(e) {
                     e.preventDefault();
+/*
+                    var param = JSON.parse(JSON.stringify(sendData));
+
+                    var $paymentAmount = $(this).parents('.payment-amount');
+                    if($paymentAmount.hasClass('rental')) {
+                        //렌탈타입
+                        param.typeFlag = "C";
+                    } else {
+                        //제품타입
+                        param.typeFlag = "P";
+                        //케어십 선택
+                        var $careshipService = $paymentAmount.siblings('.careship-service');
+                        var checkinput = $careshipService.find('input[type=radio]:checked');
+                        if(checkinput.length > 0) {
+                            var checkCareSelect = lgkorUI.stringToBool(checkinput.val());
+                            if(checkCareSelect) {
+
+                            }
+                        } 
+
+                    }
+                    //케어십 선택
+                    var $careshipService = $paymentAmount.siblings('.careship-service');
+                    var checkinput = $careshipService.find('input[type=radio]:checked');
+                    if(checkinput.length > 0) {
+                        param.careship = checkinput.val();
+                    } else {
+                        var $careSiblingOption = $paymentAmount.siblings('.care-sibling-option');
+                        //케어쉽필수 제품인지 체크해서 알림창 뛰움
+                        if($careSiblingOption.length < 1) {
+                            if(careRequire) {
+                                $('#careRequireBuyPopup').vcModal();
+                            }
+                        }
+                    }
+                    */
+
+
                     var ajaxUrl = self.$pdpInfo.attr('data-cart-url');
                     lgkorUI.requestCart(ajaxUrl, sendData);
+                });
+
+                //매장방문예약 (모바일pc구분)
+                self.$pdpInfo.find('div.info-bottom li.reservation a').on('click', function(e) {
+                    e.preventDefault();
+                    console.log('asdasdasd');
                 });
 
                 //구매/예약/렌탈
@@ -865,6 +910,8 @@
                 var cardData = $paymentAmount.data('cardData');
                 var prefix = $paymentAmount.data('prefix');
                 prefix = !prefix ? "" : prefix + " ";
+
+                //console.log(price, quantity, carePrice, cardData, prefix);
 
                 if(cardData && cardData.cardSale) {
                     carePrice -= cardData.cardSale;
