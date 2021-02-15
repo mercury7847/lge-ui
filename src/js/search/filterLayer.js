@@ -159,19 +159,21 @@ var FilterLayer = (function() {
 
             //리스트 정렬 선택시 필터의 정렬 값도 선택하게함
             self.$listSorting.find('.ui_selectbox').on('change', function(e,data){
-                var value = e.target.value;
-                self.$layFilter.find('input[name="sorting"][value="'+ value +'"]').prop('checked', true);
+                //var value = e.target.value;
+                //self.$layFilter.find('input[name="sorting"][value="'+ value +'"]').prop('checked', true);
                 self.triggerFilterChangeEvent();
             });
 
 
             // 필터의 정렬 선택시 리스트의 정렬값도 선택하게 함
+            /*
             self.$layFilter.find('.ui_order_accordion div.ui_accord_content').on('change', 'input[name="sorting"]',function(e){
                 var idx = $('input[name="sorting"]').index(this);
                 var $target = self.$listSorting.find('.ui_selectbox');
                 $target.vcSelectbox('selectedIndex', idx, false);
                 self.triggerFilterChangeEvent();
             });
+            */
 
             //검색내 검색 버튼
             var listSortingSearchin = self.$listSorting.find('div.search-inner button');
