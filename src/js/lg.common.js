@@ -242,6 +242,7 @@
         COMPARE_COOKIE_NAME: "LG5_CompareCart", //비교하기 쿠키
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
         init: function(){
+            this._bindErrBackEvent();
             this._switchLinker();
             this._addImgOnloadEvent();
             this._preloadComponents();
@@ -506,6 +507,20 @@
                 var href = vcui.detect.isMobileDevice ? $(item).data("mHref") : $(item).data("pcHref");
                 $(item).attr('href', href);
             });
+        },
+
+        //에러 페이지 되돌아가기
+        _bindErrBackEvent: function(){
+            $('body').find('.contents.error-page .btns a').on('click', function(e){
+                e.preventDefault();
+
+                var referrer = document.referrer;
+                var index = referrer.indexOf('lge.co.kr');
+                // if(index > 0) history.back();
+                // else location.href = 
+
+                history.back();
+            })
         },
 
         resetFlexibleBox: function(){
