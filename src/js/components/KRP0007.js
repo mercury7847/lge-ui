@@ -25,7 +25,7 @@
                     '<div class="slide-track ui_carousel_track">' +
                         '{{#each (image, idx) in sliderImages}}'+
                             '<div class="slide-conts ui_carousel_slide">' +
-                                '<a href="{{modelUrlPath}}"><img data-lazy="{{image}}" alt="{{modelDisplayName}} {{idx + 1}}번 이미지"></a>' +
+                                '<a href="{{modelUrlPath}}"><img data-lazy="{{image}}" alt="{{imageAltText}} {{idx + 1}}번 이미지"></a>' +
                             '</div>' +
                         '{{/each}}'+
                     '</div>' +
@@ -95,14 +95,21 @@
                 '</div>' +
                 '{{#if obsBtnRule == "enable"}}'+
                 '<div class="price-area">' +
-                    '{{#if obsOriginalPrice}}<div class="original">' +
-                        '<em class="blind">판매가격</em>' +
-                        '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-                    '</div>{{/if}}' +
-                    '{{#if obsTotalDiscountPrice}}<div class="total">' +
-                        '<em class="blind">총 판매가격</em>' +
-                        '<span class="price">{{obsTotalDiscountPrice}}<em>원</em></span>' +
-                    '</div>{{/if}}' +
+                    '{{#if obsTotalDiscountPrice}}'+
+                        '{{#if obsOriginalPrice}}<div class="original">' +
+                            '<em class="blind">판매가격</em>' +
+                            '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
+                        '</div>{{/if}}' +
+                        '{{#if obsSellingPrice}}<div class="total">' +
+                            '<em class="blind">총 판매가격</em>' +
+                            '<span class="price">{{obsSellingPrice}}<em>원</em></span>' +
+                        '</div>{{/if}}' +
+                    '{{#else}}'+
+                        '{{#if obsOriginalPrice}}<div class="total">' +
+                            '<em class="blind">총 판매가격</em>' +
+                            '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
+                        '</div>{{/if}}' +
+                    '{{/if}}'+
                 '</div>' +
                 '{{/if}}'+
                 '<div class="btn-area-wrap">' +
@@ -219,6 +226,8 @@
                 self.addCarouselModule();
 
                 self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
+
+                self.cateWrapStatus();
             },
 
             bindEvents: function() {
@@ -357,6 +366,12 @@
                         self.requestSearch(param, false);
                     }
                 });
+
+                if(!$('.cate-m .cate-wrap').length){
+                    $(window).on('resize', function(){
+                        self.cateWrapStatus();
+                    })
+                }
             },
 
             setPageData: function(param) {
@@ -521,7 +536,9 @@
 
                 if(!item.obsBtnRule) item.obsBtnRule = "";
 
-                if(!item.sku) item.sku = "";
+                if(!item.sku) item.sku = item.modelName;
+
+                if(!item.obsSellingPrice) item.obsSellingPrice = "";
 
                 //console.log("### item.siblingType ###", item.siblingType)
 
@@ -628,6 +645,13 @@
                     if(isAdd) $this.addClass("on");
                 } else{
                     lgkorUI.removeCompareProd(categoryId, _id);
+                }
+            },
+
+            cateWrapStatus: function(){
+                if(!$('.cate-m .cate-wrap').length){
+                    if($(window).innerWidth() > 1024) $('.cate-m').hide();
+                    else $('.cate-m').show();
                 }
             }
         };

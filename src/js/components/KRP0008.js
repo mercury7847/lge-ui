@@ -397,11 +397,12 @@
                 //장바구니
                 self.$pdpInfo.find('div.purchase-button a.cart').on('click', function(e) {
                     e.preventDefault();
-/*
+
                     var param = JSON.parse(JSON.stringify(sendData));
 
                     var $paymentAmount = $(this).parents('.payment-amount');
-                    if($paymentAmount.hasClass('rental')) {
+                    var $purchaseButton = $(this).parents('.purchase-button');
+                    if($purchaseButton.hasClass('rental')) {
                         //렌탈타입
                         param.typeFlag = "C";
                     } else {
@@ -413,30 +414,34 @@
                         if(checkinput.length > 0) {
                             var checkCareSelect = lgkorUI.stringToBool(checkinput.val());
                             if(checkCareSelect) {
-
-                            }
-                        } 
-
-                    }
-                    //케어십 선택
-                    var $careshipService = $paymentAmount.siblings('.careship-service');
-                    var checkinput = $careshipService.find('input[type=radio]:checked');
-                    if(checkinput.length > 0) {
-                        param.careship = checkinput.val();
-                    } else {
-                        var $careSiblingOption = $paymentAmount.siblings('.care-sibling-option');
-                        //케어쉽필수 제품인지 체크해서 알림창 뛰움
-                        if($careSiblingOption.length < 1) {
-                            if(careRequire) {
-                                $('#careRequireBuyPopup').vcModal();
+                                //케어쉽 선택
+                                param.typeFlag = "C";
                             }
                         }
                     }
-                    */
 
+                    if(param.typeFlag == "C") {
+                        if(typeof careshipOnlyFlag !== 'undefined') {
+                            param.requireCare = careshipOnlyFlag;
+                        }
 
+                        var careData = $paymentAmount.data('careData');
+                        if(careData) {
+                            param.rtSeq = careData.rtModelSeq;
+                        }
+
+                        var cardData = $paymentAmount.data('cardData');
+                        if(cardData) {
+                            if(lgkorUI.stringToBool(cardData.simpleReqFlag)) {
+                                //간편신청카드
+                                param.easyRequestCard = cardData.cardNameCode + "|" + cardData.cardSubName;
+                            }
+                        }
+                    }
+
+                    console.log(param);
                     var ajaxUrl = self.$pdpInfo.attr('data-cart-url');
-                    lgkorUI.requestCart(ajaxUrl, sendData);
+                    lgkorUI.requestCart(ajaxUrl, param);
                 });
 
                 //매장방문예약 (모바일pc구분)
@@ -959,57 +964,84 @@
 
             //구매진행
             productBuy: function($dm) {
+                var self = this;
                 var param = JSON.parse(JSON.stringify(sendData));
-                var $paymentAmount = $dm.parents('.payment-amount')
-                //소모품이 있는가
-                var $additionalPurchase = $paymentAmount.siblings('.additional-purchase');
-                if($additionalPurchase.length > 0) {
-                    var additional = [];
-                    $additionalPurchase.find('ul.additional-list li').each(function(idx, item){
-                        additional.push({
-                            "id":$(item).data('id'),
-                            "quantity":$(item).data('quantity')
-                        })
-                    })
-                    param.additional = additional;
-                }
+                var $paymentAmount = $dm.parents('.payment-amount');
+                var $purchaseButton = $dm.parents('.purchase-button');
+                if($purchaseButton.hasClass('rental')) {
+                    //렌탈타입
+                    var careData = $paymentAmount.data('careData');
+                    if(careData) {
+                        param.rtModelSeq = careData.rtModelSeq;
+                    }
 
-                //케어십 선택
-                var $careshipService = $paymentAmount.siblings('.careship-service');
-                var checkinput = $careshipService.find('input[type=radio]:checked');
-                if(checkinput.length > 0) {
-                    param.careship = checkinput.val();
-                } else {
-                    var $careSiblingOption = $paymentAmount.siblings('.care-sibling-option');
-                    //케어쉽필수 제품인지 체크해서 알림창 뛰움
-                    if($careSiblingOption.length < 1) {
-                        if(careRequire) {
-                            $('#careRequireBuyPopup').vcModal();
+                    var cardData = $paymentAmount.data('cardData');
+                    if(cardData) {
+                        if(lgkorUI.stringToBool(cardData.simpleReqFlag)) {
+                            //간편신청카드
+                            param.easyRequestCard = cardData.cardNameCode + "|" + cardData.cardSubName;
                         }
                     }
-                }
 
-                //선택 수량
-                var quantity = $paymentAmount.find('div.select-quantity input.quantity');
-                if(quantity.length > 0) {
-                    param.quantity = quantity.val();
-                }
+                    var ajaxUrl = self.$pdpInfo.attr('data-rental-url');
+                    if(ajaxUrl) {
+                        lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
+                            console.log(result);
+                        });
+                    }
+                } else {
+                    //구매타입
 
-                var careData = $paymentAmount.data('careData');
-                if(careData) {
-                    param.rtModelSeq = careData.rtModelSeq;
-                    param.caresolutionSalesCodeSuffix = careData.caresolutionSalesCodeSuffix;
-                }
-                var cardData = $paymentAmount.data('cardData');
-                if(cardData && cardData.cardId) {
-                    param.cardId = cardData.cardId;
-                }
+                    //소모품이 있는가
+                    var $additionalPurchase = $paymentAmount.siblings('.additional-purchase');
+                    if($additionalPurchase.length > 0) {
+                        var additional = [];
+                        $additionalPurchase.find('ul.additional-list li').each(function(idx, item){
+                            additional.push({
+                                "id":$(item).data('id'),
+                                "quantity":$(item).data('quantity')
+                            })
+                        })
+                        param.additional = additional;
+                    }
 
-                var ajaxUrl = $dm.data('ajaxUrl');
-                if(ajaxUrl) {
-                    lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
-                        console.log(result);
-                    });
+                    //케어십 선택
+                    var $careshipService = $paymentAmount.siblings('.careship-service');
+                    var checkinput = $careshipService.find('input[type=radio]:checked');
+                    if(checkinput.length > 0) {
+                        param.careship = checkinput.val();
+                    } else {
+                        var $careSiblingOption = $paymentAmount.siblings('.care-sibling-option');
+                        //케어쉽필수 제품인지 체크해서 알림창 뛰움
+                        if($careSiblingOption.length < 1) {
+                            if(careRequire) {
+                                $('#careRequireBuyPopup').vcModal();
+                            }
+                        }
+                    }
+
+                    //선택 수량
+                    var quantity = $paymentAmount.find('div.select-quantity input.quantity');
+                    if(quantity.length > 0) {
+                        param.quantity = quantity.val();
+                    }
+
+                    var careData = $paymentAmount.data('careData');
+                    if(careData) {
+                        param.rtModelSeq = careData.rtModelSeq;
+                        param.caresolutionSalesCodeSuffix = careData.caresolutionSalesCodeSuffix;
+                    }
+                    var cardData = $paymentAmount.data('cardData');
+                    if(cardData && cardData.cardId) {
+                        param.cardId = cardData.cardId;
+                    }
+
+                    var ajaxUrl = $dm.data('ajaxUrl');
+                    if(ajaxUrl) {
+                        lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
+                            console.log(result);
+                        });
+                    }
                 }
             },
 
