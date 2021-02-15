@@ -502,9 +502,10 @@
         },
 
         _switchLinker: function(){
-            var self = this;
-
-            if(vcui.detect.isMobileDevice){}
+            $('body').find('a[data-pc-href]').each(function(idx, item){
+                var href = vcui.detect.isMobileDevice ? $(item).data("mHref") : $(item).data("pcHref");
+                $(item).attr('href', href);
+            });
         },
 
         resetFlexibleBox: function(){
