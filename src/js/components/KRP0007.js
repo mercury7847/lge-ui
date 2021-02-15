@@ -151,7 +151,6 @@
 
                 vcui.require(['search/filterLayer.min'], function () {
                     self.filterLayer = new FilterLayer(self.$layFilter, self.$categorySelect, self.$listSorting, self.$btnFilter, function (data) {
-                        console.log("filterLayer: ", data);
                         lgkorUI.setStorage(storageName, data);
     
                         var param = {};
@@ -162,7 +161,6 @@
                         var sort = data.sortType ? data.sortType : data.order;
                         param.sortType = sort;
                         param.page = 1;
-                        console.log("param:", param)
                         if(param) {
                             self.requestSearch(param, true);
                         }
@@ -174,6 +172,8 @@
                     //페이지에 선언된 필터와 비교해서 합침
                     var storageFilters = lgkorUI.getStorage(storageName);
                     var filterData = firstEnableFilter ? firstEnableFilter : {};
+
+                    console.log("### storageFilters ###", storageFilters)
     
                     if(!(vcui.isEmpty(storageFilters)) && storageFilters.filterData) {
                         var storageFilterData = JSON.parse(storageFilters.filterData);
@@ -182,7 +182,7 @@
                         }
                         filterData = storageFilterData;
                     }
-                    self.filterLayer.resetFilter(filterData, false);
+                    self.filterLayer.resetFilter(filterData, true);
                 });
             },
 
