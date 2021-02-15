@@ -631,9 +631,9 @@
         var itemList = _putItemList.concat();
         itemList.unshift({
             rtModelSeq: _currentItemList[idx]['rtModelSeq'],
-            modelId: optionData.optdata.siblingColors.modelId,
-            siblingCd: optionData.optdata.siblingColors.value,
-            siblingGroupCd: optionData.optdata.siblingColors.groupId
+            modelId: optionData.optdata.siblingColors ? optionData.optdata.siblingColors.modelId : _currentItemList[idx]['modelId'],
+            siblingCd: optionData.optdata.siblingColors ? optionData.optdata.siblingColors.value : "",
+            siblingGroupCd: optionData.optdata.siblingColors ? optionData.optdata.siblingColors.groupId : ""
         });
 
         var sendata = {
@@ -673,11 +673,19 @@
             if(result.data.isLogin){
                 $('.freeCareshipBox').remove();
                 if(result.data.contract.freeCareShip == "Y"){
+                    $('.login-empty').hide();
+
                     var addlist = vcui.template(freeCareshipTemplate);
+                    $('.prd-contract-wrap.ui_active_toggle_wrap').show();
                     $('.ui_total_prod .ui_carousel_slider .slide-track').prepend(addlist);
-                } 
+                }
                 $('.ui_total_prod .ui_carousel_slider').vcCarousel('reinit');
                 lgkorUI.resetFlexibleBox();
+
+                if($('.ui_total_prod .ui_carousel_slider .slide-track').children().length == 1){
+                    $('.prd-contract-wrap.ui_active_toggle_wrap').hide();
+                    $('.login-empty').show();
+                } 
 
                 $('.ui_total_prod .ui_carousel_slider').find('.ui_flexible_box').removeClass('comb-type');
                 if(result.data.contract.transModelCheck){                    
@@ -840,16 +848,38 @@
             estimatePrice.after(newelement);
             estimatePrice.remove();
 
-            var cardSelector = $('#pop-estimate').find('.alliance-card .ui_selectbox');
-            cardSelector.find('option').remove();
-            for(var key in result.data.cardList){
-                console.log(result.data.cardList[key].cardValue)
-                cardSelector.append("<option value='" + result.data.cardList[key].cardValue + "'>" + result.data.cardList[key].cardName + "</option>");
+         
+            var $cardInfo = $('#pop-estimate').find('.alliance-card');
+            var cardData = result.data.paymentInfo.card;
+            if(cardData) {
+                //카드데이타
+                var selectList = $cardInfo.find('ul.select-list');
+                selectList.empty();
+                var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
+                var cardItemTemplate = '<li><a href="#{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
+                cardData.forEach(function(obj, idx) {
+                    if(obj.groupTitle) {
+                        selectList.append(vcui.template(groupItemTemplate,obj));
+                    }
+                    if(obj.listItem) {
+                        obj.listItem.forEach(function(item, index) {
+                            item.label = item.title;
+                            if(!item.cardId) {
+                                item.label = "선택취소"
+                            }
+                            selectList.append(vcui.template(cardItemTemplate, item));
+                        });
+                    }
+                });
+                $cardInfo.show();
+            } else {
+                $cardInfo.hide();
             }
-            cardSelector.vcSelectbox('update');
+            //$list_ul.append($cardInfo);
+            $('#pop-estimate').find('.select-wrap').vcDropdown();
+            
 
-            if(result.data.cardDescription) $('#pop-estimate').find('.alliance-card .price').text(result.data.cardDescription).show();
-            else $('#pop-estimate').find('.alliance-card .price').hide();
+
             
             $('#pop-estimate').find('.tit-wrap span.leng').empty().html("총 "+"<strong>"+result.data.totalCnt+"</strong>개");
 
