@@ -10,25 +10,73 @@
             "usedPrice" : "월 36,000원",
             "requestUrl": "lge.com"
         },
-        "cardList":[
-            {
-                "cardValue": "",
-                "cardName": "제휴카드 할인"
+        "paymentInfo": {
+            "card": [
+                {
+                    "groupTitle":null,
+                    "listItem":[
+                        {
+                            "cardId":null,
+                            "title":"이용시 22,000원 할인",
+                            "salePrice":"0"
+                        }
+                    ]
+                },
+                {
+                    "groupTitle":"------------------- 개별 신청 필요 카드 -------------------",
+                    "listItem":[
+                        {
+                            "cardId":"cd00002",
+                            "title":"[BC] BC글로벌 할인",
+                            "salePrice":"10000"
+                        },
+                        {
+                            "cardId":"cd00003",
+                            "title":"[VISA] VISA글로벌 할인",
+                            "salePrice":"25000"
+                        }
+                    ]
+
+                },
+                {
+                    "groupTitle":"------------------- 간편 신청 가능 카드 -------------------",
+                    "listItem":[
+                        {
+                            "cardId":"cd00004",
+                            "title":"[BC] BC 리빙 할인",
+                            "salePrice":"20000"
+                        },
+                        {
+                            "cardId":"cd00005",
+                            "title":"[VISA] VISA 리빙 할인",
+                            "salePrice":"35000"
+                        }
+                    ]
+                }
+            ],
+            "total":{
+                "count": "3",
+                "price":"98001",
+                "sale":"5000"
             },
-            {
-                "cardValue": "하나카드",
-                "cardName": "[하나]하나전자 렌탈플러스"
-            },
-            {
-                "cardValue": "국민카드",
-                "cardName": "[국민]국민전자 렌탈플러스"
-            },
-            {
-                "cardValue": "신한카드",
-                "cardName": "[신한]신한전자 렌탈플러스"
-            }
-        ],
-        "cardDescription": "월 최대 3,000원 청구할인",
+            "list":[
+                {
+                    "text": "제품 수",
+                    "price": "3개",
+                    "appendClass": "num"
+                },
+                {
+                    "text": "이용요금",
+                    "price": "월 98,001원",
+                    "appendClass": ""
+                },
+                {
+                    "text": "결합할인 금액",
+                    "price": "월 -5,000원",
+                    "appendClass": "sale"
+                }
+            ]
+        },
         "itemList":[
             {
                 "modelId": "item00001",
