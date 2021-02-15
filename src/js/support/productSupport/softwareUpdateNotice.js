@@ -95,15 +95,24 @@
 
                     if (val.length > 1) {
                         self.params = $.extend({}, self.params, {
-                            'keyword': self.$searchWrap.find('input[type="text"]').val(),
+                            'keyword': val,
                             'page': 1
                         });
                         
                         $('.search-error').hide();
 
                         self.searchList();
-                    } else {
+                    } else if (val.length == 1) {
                         $('.search-error').show();
+                    } else {
+                        self.params = $.extend({}, self.params, {
+                            'keyword': '',
+                            'page': 1
+                        });
+
+                        self.searchList();
+
+                        $('.search-error').hide();
                     }
                 });
 

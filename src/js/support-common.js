@@ -2259,6 +2259,36 @@ $.fn.serializeObject = function() {
             e.stopPropagation();
         });
 
+        $(document).on('change', '.agree-wrap input:checkbox', function(){
+            var $this = $(this);
+            var $wrap = $this.closest('.agree-wrap');
+            var $stepBox = $wrap.closest('.step-box');
+            var tid = 0;
+        
+            clearInterval(tid);
+        
+            if( $wrap.find('input:checkbox').filter(':checked').length == $wrap.find('input:checkbox').length ) {
+                var $this = $(this);
+                var $curSection = $this.closest('.section').next('.section');
+                var $stepBox = $this.closest('.step-box');
+                var $stepBtn = $('.step-btn-wrap');
+                var $curTarget = null;
+        
+                tid = setTimeout(function(){
+                    if( $curSection.length ) {
+                        $curSection.attr('tabindex', '0').focus().removeAttr('tabindex');
+                    } else {
+                        if( $stepBox.find('.step-btn-wrap button').length ) {
+                            $stepBox.find('.step-btn-wrap button').focus();
+                        } else {
+                            $stepBox.next('.step-box').attr('tabindex', '0').focus().removeAttr('tabindex');
+                        }
+                    }
+                }, 100)
+            }
+        })
+        
+        
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);
