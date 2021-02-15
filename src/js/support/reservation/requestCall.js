@@ -232,12 +232,14 @@
                 }
             }
         },
-        setSolutions: function(url, param, isShown) {
+        setSolutions: function(param, isShown) {
             var self = this;
+            var url = self.$solutionsPopup.data('listUrl');
 
             lgkorUI.requestAjaxData(url, param, function(result){
                 self.$solutionsPopup.find('.pop-conts').html(result);
                 self.$solutionsPopup.find('.pagination').pagination();
+                
                 if (isShown) {
                     self.$solutionsPopup.find('.ui_accordion').vcAccordion();
                 } else {
@@ -245,15 +247,14 @@
                 }
 
                 self.$solutionsPopup.find('.pagination').on('pageClick', function(e) {
-                    var url = self.$solutionsPopup.data('listUrl'),
-                        param = {
-                            topic : $('#topic').val(),
-                            subToic : $('#subTopic').val(),
+                    var param = {
+                            topic : $('input[name=topic]:checked').val(),
+                            subToic : $('input[name=subTopic]:checked').val(),
                             productCode : $('#productCode').val(),
                             page: e.page
                         };
 
-                    self.setSolutions(url, param, true);
+                    self.setSolutions(param, true);
                 });
             }, null, "html", true);
         },
@@ -400,7 +401,6 @@
 
             // 솔루션 배너
             self.$solutionsBanner.find('.btn-link').on('click', function(){
-                var url = $(this).data('href');
                 var param = {
                     topic : $('input[name=topic]:checked').val(),
                     subToic : $('input[name=subTopic]:checked').val(),
@@ -408,7 +408,7 @@
                     page: 1
                 };   
 
-                self.setSolutions(url, param, false);
+                self.setSolutions(param, false);
             });
 
             // 날짜 선택

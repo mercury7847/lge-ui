@@ -178,7 +178,7 @@
 
     .animate-target {
         opacity: .3;
-        transform: translateY(100px);
+        // transform: translateY(100px);
         transition: transform 0.8s ease-out, opacity 0.5s ease-out;
         &.animated {
             opacity: 1;
