@@ -351,6 +351,9 @@
 
                 if (arr.length) {
                     arr.forEach(function(item) {
+                        item.title.replace(/'¶HS¶'/g, '<span class="keyword">');
+                        item.title.replace(/'¶HE¶'/g, '</span>');
+
                         html += vcui.template(solutionsTemplate, item);
                     });
 
