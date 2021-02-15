@@ -67,6 +67,7 @@
                 .cate-scroll-wrap {
                     position: relative;
                     .tabs {
+                        padding:3px 0;
                         white-space: nowrap;
                         font-size: 0;
                         @media screen and (max-width: 1024px) {

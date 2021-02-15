@@ -233,14 +233,109 @@
     @include mobile {
         padding-top:32px;
     }
+    // .select-wrap {
+    //     display:inline-block;
+    //     width:60%;
+    //     vertical-align:middle;
+    //     @include mobile {
+    //         width:100%;
+    //     }
+    // }
     .select-wrap {
-        display:inline-block;
-        width:60%;
-        vertical-align:middle;
-        @include mobile {
-            width:100%;
+        display: block;
+        .select-button {
+            display: block;
+            position: relative;
+            padding: 10px 48px 10px 15px;
+            border: 1px solid $color-border;
+            border-radius: 8px;
+            background: $color-bg-wt;
+            @include font-medium;
+            .ui_dropdown_toggle {
+                &:after {
+                    position: absolute;
+                    top: 50%;
+                    right: 16px;
+                    width: 16px;
+                    height: 16px;
+                    margin-top: -8px;
+                    background: url('/lg5-common/images/icons/btn-down-16-black.svg') no-repeat 0 0;
+                    transition: all 0.3s;
+                    content: '';
+                }
+            }
+        }
+        .selectbox-list {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1;
+            border-radius: 8px;
+            border: 1px solid $color-default;
+            background-color: $color-bg-wt;
+        }
+        .select-list {
+            margin-top: 48px;
+            padding-bottom: 12px;
+            @include font-medium;
+            a {
+                display: block;
+                padding: 10px 16px;
+                &:hover,
+                &:focus,
+                &.on {
+                    background-color: $color-bg;
+                }
+            }
+            .divide {
+                padding: 10px 16px;
+                .inner {
+                    position: relative;
+                    overflow: hidden;
+                    display: block;
+                    height: 22px;
+                }
+                em {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    @include font-medium;
+                    color: $color-gray-1;
+                    white-space: nowrap;
+                }
+            }
+        }
+        &.open {
+            .select-button {
+                position: absolute;
+                top: 1px;
+                right: 1px;
+                left: 1px;
+                z-index: 2;
+                border: 0;
+                .ui_dropdown_toggle {
+                    &:after {
+                        transform:rotate(180deg);
+                    }
+                }
+                .select-text {
+                    background-image: none;
+                    color: $color-gray-1;
+                    .tooltip-wrap {
+                        display: none;
+                    }
+                }
+            }
+            .selectbox-list {
+                display: block;
+            }
         }
     }
+
+    
     .price {
         position:relative;
         margin-top:8px;
