@@ -94,7 +94,7 @@
             border:0 none;
             background:#fff;
             box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
-            text-transform:uppercase;
+            // text-transform:uppercase;
         }
         
         @include mobile {
@@ -176,60 +176,81 @@
                 font-weight:bold;
                 color:#000;
             }
+            .keyword-list {
+                ul {
+                    margin-left:-12px;
+                    margin-right:-12px;
+                    li {
+                        padding:4px 12px;
+                        &:hover {
+                            border-radius:16px;
+                            background-color:#f4f4f4;
+                        }
+                    }
+                }
+            }
             .keyword-list:not(:only-child) {
                 border-top:1px solid #ddd;
                 border-bottom:1px solid #ddd;
-                ul > li {
-                    position:relative;
-                    margin-top:0;
-                    margin-left:-24px;
-                    margin-right:-24px;
-                    a { 
-                        display:block;
-                        max-width:none;
-                        padding:13px 24px 14px;
-                        transition:.3s background-color ease-in-out;
-                        &:hover, &:focus {
-                            background-color:#f4f4f4;
+                ul {
+                    margin:0;
+                    li {
+                        position:relative;
+                        margin-top:0;
+                        margin-left:-24px;
+                        margin-right:-24px;
+                        padding:0;
+                        &:hover {
+                            border-radius:0;
+                            background:transparent;
                         }
-
-                        .list-head {
-                            font-size:0;
-                            .list-category,.list-sub-category {
-                                display: inline-block;
-                                font-size:14px;
-                                line-height:24px;
-                                vertical-align: top;
+                        a { 
+                            display:block;
+                            max-width:none;
+                            padding:13px 24px 14px;
+                            transition:.3s background-color ease-in-out;
+                            &:hover, &:focus {
+                                background-color:#f4f4f4;
                             }
-                            .list-category {
-                                color:#da0f47;
-                            }
-                            .list-sub-category {
-                                position:relative;
-                                color:#666;
-                                margin-left:7px;
-                                padding-left:8px;
-
-                                &:before {
-                                    content:"";
-                                    display:block;
-                                    position:absolute;
-                                    top:50%;
-                                    left:0;
-                                    width:1px;
-                                    height:14px;
-                                    background: #ddd;
-                                    transform:translateY(-50%);
+    
+                            .list-head {
+                                font-size:0;
+                                .list-category,.list-sub-category {
+                                    display: inline-block;
+                                    font-size:14px;
+                                    line-height:24px;
+                                    vertical-align: top;
+                                }
+                                .list-category {
+                                    color:#da0f47;
+                                }
+                                .list-sub-category {
+                                    position:relative;
+                                    color:#666;
+                                    margin-left:7px;
+                                    padding-left:8px;
+    
+                                    &:before {
+                                        content:"";
+                                        display:block;
+                                        position:absolute;
+                                        top:50%;
+                                        left:0;
+                                        width:1px;
+                                        height:14px;
+                                        background: #ddd;
+                                        transform:translateY(-50%);
+                                    }
                                 }
                             }
-                        }
-                        .list-desc {
-                            overflow:hidden;
-                            text-overflow:ellipsis;
-                            white-space:nowrap;
-                            font-size:16px;
-                            color:#000;
-                            line-height:1.63;
+                            .list-desc {
+                                overflow:hidden;
+                                text-overflow:ellipsis;
+                                white-space:nowrap;
+                                font-size:16px;
+                                color:#000;
+                                line-height:1.63;
+                            }
                         }
                     }
                 }
@@ -298,6 +319,17 @@
             .popular-keyword {
                 float:right;
                 width:calc(50% - 12px);
+            }
+            .keyword-list {
+                margin-left:-12px;
+                margin-right:-12px;
+                li {
+                    padding:4px 12px;
+                    &:hover {
+                        border-radius:16px;
+                        background-color:#f4f4f4;
+                    }
+                }
             }
         }
     }
