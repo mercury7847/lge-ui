@@ -447,7 +447,7 @@
                     var showAutoComplete = false;
 
                     //자동완성 리스트 갱신
-                    var arr = data instanceof Array ? data : [];
+                    var arr = (data && data.listData instanceof Array) ? data.listData : [];
                     if(arr.length > 0) {
                         var $list_ul = self.$autoComplete.find('div.keyword-list ul');
                         $list_ul.empty();

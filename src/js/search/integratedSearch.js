@@ -226,7 +226,7 @@
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
                     
                     //자동완성 리스트 갱신
-                    var arr = (data && data instanceof Array) ? data : [];
+                    var arr = (data && data.listData instanceof Array) ? data.listData : [];
                     if(arr.length > 0) {
                         var $list_ul = self.$autoComplete.find('div.keyword-list ul');
                         $list_ul.empty();
@@ -235,9 +235,18 @@
                         });
                         self.$autoComplete.show();
                         self.hideAnimation(self.$searchKeywordArea);
+                        self.$searchSimilar.hide();
                     } else {
                         self.hideSearchResultArea();
-                        self.showAnimation(self.$searchKeywordArea);
+                        //연관검색어가 있으면 연관검색어를 표시하고 아니면 숨기기
+                        if(data.similarText) {
+                            self.$searchSimilar.html(vcui.template(similarTextTemplate, {"text":data.similarText}));
+                            self.$searchSimilar.show();
+                            self.hideAnimation(self.$searchKeywordArea);
+                        } else {
+                            self.$searchSimilar.hide();
+                            self.showAnimation(self.$searchKeywordArea);
+                        }
                     }
                 });
             },
@@ -268,9 +277,9 @@
 
                     //카테고리 리스트 갱신
                     var arr = (data.category && data.category) instanceof Array ? data.category : [];
+                    var $list_ul = self.$resultCategory.find('ul');
+                    $list_ul.empty();
                     if(arr.length > 0) {
-                        var $list_ul = self.$resultCategory.find('ul');
-                        $list_ul.empty();
                         arr.forEach(function(item, index) {
                             $list_ul.append(vcui.template(categoryItemTemplate, {"url":item.url,"text":item.text.replaceAll(searchedValue,replaceText)}));
                         });
@@ -282,9 +291,9 @@
                     
                     //검색 미리보기 리스트 갱신
                     arr = (data.preview && data.preview) instanceof Array ? data.preview : [];
+                    var $list_ul = self.$resultPreviewList.find('ul');
+                    $list_ul.empty();
                     if(arr.length > 0) {
-                        var $list_ul = self.$resultPreviewList.find('ul');
-                        $list_ul.empty();
                         arr.forEach(function(item, index) {
                             item.title = item.title.replaceAll(searchedValue,replaceText);
                             item.price = vcui.number.addComma(item.price);
@@ -296,7 +305,6 @@
                         self.$resultPreviewList.hide();
                     }
 
-
                     if(showSearchResultArea) {
                         //검색결과가 있는 경우.
                         self.hideAnimation(self.$searchKeywordArea);
@@ -305,9 +313,6 @@
                         if(isSaveRecentKeyword) self.addRecentSearcheText(searchedValue);
                     } else {
                         //검색결과를 표시할것이 없을경우
-                        self.showAnimation(self.$searchKeywordArea);
-                        //self.hideAnimation(self.$searchResultArea);
-                        self.hideSearchResultArea();
                         self.$searchSimilar.hide();
                         /*
                         //연관검색어가 있으면 연관검색어를 표시하고 아니면 숨기기
