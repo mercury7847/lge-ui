@@ -305,6 +305,11 @@
                         if(isSaveRecentKeyword) self.addRecentSearcheText(searchedValue);
                     } else {
                         //검색결과를 표시할것이 없을경우
+                        self.showAnimation(self.$searchKeywordArea);
+                        //self.hideAnimation(self.$searchResultArea);
+                        self.hideSearchResultArea();
+                        self.$searchSimilar.hide();
+                        /*
                         //연관검색어가 있으면 연관검색어를 표시하고 아니면 숨기기
                         if(data.similarText) {
                             self.hideAnimation(self.$searchKeywordArea);
@@ -318,6 +323,7 @@
                             self.hideSearchResultArea();
                             self.$searchSimilar.hide();
                         }
+                        */
                     }
                 });
             },

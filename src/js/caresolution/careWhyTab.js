@@ -126,6 +126,9 @@
                 self.visibleCount = 8;
                 self.setting();
                 self.bindEvents();
+                //
+                var categoryID = self.findSelectCategoryID();
+                self.requestProdList(categoryID);
             },
 
             setting: function() {
