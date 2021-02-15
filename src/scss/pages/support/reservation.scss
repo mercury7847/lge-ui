@@ -54,10 +54,15 @@
                 margin-top:12px;
                 color:#fff;
                 @include font-medium;
-                span {
+                > span {
                     color:#fffd7c;
                 }
             }
+        }
+        .btn-center-link {
+            border-color: #fff;
+            color: #fff;
+            margin-left: auto;
         }
         @include mobile {
             .box {
@@ -166,7 +171,7 @@
         }
         @media screen and (min-width: 768px) and (max-width: 808px) {
             .section-box {
-                padding-right: 0;
+                padding-right: 0; 
             }
         }
     }

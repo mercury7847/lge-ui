@@ -2,16 +2,16 @@
 
 .pay-warranty {
     .tab-wrap {
-        max-width: 1178px;
+        // max-width: 1178px;
         margin: 0 auto;
         position: relative;
-        padding: 40px 0 60px;
+        padding: 0 0 60px;
         @include mobile {
             padding: 34px 0 ;
         }
     }
     .tabs-contents {
-        border-top: 8px solid #f4f4f4;
+        // border-top: 8px solid #f4f4f4;
     }
     .tbl {
         &-list {
@@ -75,7 +75,7 @@
         @include mobile {
             > dd {
                 > p {
-                    margin-top: 16px;
+                    // margin-top: 16px;
                 }
             }   
         }
@@ -92,17 +92,24 @@
             margin-top: 8px;
         }
         &-4 {
-            margin-top: 16px;
+            // margin-top: 16px;
         }
         &-5 {
             margin-bottom: 16px;
+        }
+        &-6 {
+            font-size: 14px;
+        }
+        &-7 {
+            font-size: 14px;
+            color: #666;
         }
     }
 
     .ui_tab-notice {
         position: relative;
         margin: 0 auto;
-        margin-bottom: 24px;
+        margin-bottom: 48px;
         @include mobile {
             margin-bottom: 16px;
             // margin-top: 68px;
@@ -124,25 +131,35 @@
             font-size: 20px;
             font-weight: bold;
             line-height: 1.42;
-            margin-bottom: 25px;
+            // margin-bottom: 12px;
             @include mobile {
-                margin-bottom: 24px;
+                margin-bottom: 12px;
             }
         }
         &[class*="-4"] {
-            font-size: 16px;
+            font-size: 18px;
             line-height: 1.5;
             margin-bottom: 16px;
-            font-weight: normal;
+            font-weight: bold;
+        }
+        &[class*="-subtitle"] {
+            font-size: 16px;
+            margin-top: 16px;
+            margin-bottom: 30px;
+            @include mobile {
+                margin-top: 12px;
+                margin-bottom: 24px;
+            }
         }
     }
 
     .dl-list {
+        margin-top: 30px;
         dt {
             font-size: 18px;
             font-weight: bold;
             line-height: 1.44;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
         dd {
             font-size: 16px;
@@ -170,10 +187,10 @@
             }
         }
         > li {
-            margin-top: 16px;
-            margin-left: 48px;
+            margin-top: 2px;
+            margin-left: 23px;
             text-indent: -1.5em;
-            > ul:not(.dot-list02) {
+            > ul:not(.bullet-list) {
                 > li {
                     margin-left: 24px;
                     text-indent: -24px;
@@ -183,7 +200,7 @@
                         }
                     }
                 }
-                &.dot-list02 {
+                &.bullet-list {
                     li {
                         text-indent: 0;
                     }
@@ -195,7 +212,7 @@
                     margin-top: 12px;
                 }
             }
-            > .dot-list02 {
+            > .bullet-list {
                 text-indent: 0;
             }
         }
@@ -203,13 +220,13 @@
             > li {
                 margin-left: 16px;
                 text-indent: 0;
-                > ul:not(.dot-list02) {
+                > ul:not(.bullet-list) {
                     > li {
                         margin-left: 40px;
                         text-indent: -24px;
                     }
                 }
-                > .dot-list02 {
+                > .bullet-list {
                     > li {
                         margin-left: 16px;
                         text-indent: 0;
@@ -255,4 +272,46 @@
         }
     }
 
+    &.pop-conts {
+        .tabs-contents {
+            padding-top: 0;
+        }
+    }
+
+    .bullet-list {
+        font-size: 16px;
+        margin-top: 0;
+    }
+
+    .tb_row {
+        &.tb-row-bl {
+            table {
+                tr {
+                    th,
+                    td {
+                        border-left: 1px solid #ddd;
+                        &:first-child {
+                            border-left: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .note-box {
+        background-color: #f4f4f4;
+        padding: 24px 40px;
+        .in-note-box {
+            margin-top: 2px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        @include mobile {
+            padding: 20px;
+        }
+    }
+    sup {
+        font-size: 0.625em;
+    }
 }
