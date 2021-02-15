@@ -395,6 +395,14 @@
 }
 
 .prod-search-wrap {
+    .keyword-search {
+        .search-input {
+            input[type=text] {
+                text-transform:uppercase;
+            }
+        }
+    }
+    
     @include mobile {
         padding:40px 16px 0;
     }
