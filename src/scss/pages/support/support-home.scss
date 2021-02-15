@@ -16,12 +16,129 @@
         }
     }
 
-    .home-visual {
+    .home-hero-area {
         max-width:1920px;
+        height:640px;
         margin:0 auto;
+        padding:48px 80px;
+        box-sizing:border-box;
+        background: #666;
 
         img {
             width:100%;
+        }
+
+        .headline {
+            .hero-tit {
+                display:inline-block;
+                font-size:18px;
+                color:#fff;
+                line-height:1.56;
+                font-weight:bold;
+            }
+            .btn-fast-support {
+                display: inline-block;
+                margin-left:24px;
+                padding:18px 32px 16px;
+                font-size:18px;
+                font-weight:500;
+                color:#000;
+                background: #fff;
+                border-radius:30px;
+                vertical-align: middle;
+
+                &:before {
+                    content:"";
+                    display:inline-block;
+                    width:32px;
+                    height:32px;
+                    margin-right:4px;
+                    background: url("/lg5-common/images/CS/icon-install-action-support.svg") no-repeat 0 0/100% 100%;
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        .support-list-wrap {
+            display:flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: row;
+            height:392px;
+
+            .support-list {
+                flex:1;
+                opacity:0.7;
+                transition:opacity .4s ease-in-out;
+
+                & + .support-list {
+                    margin-left:90px; 
+                }
+                &.active {
+                    opacity:1;
+
+                    .list-header {
+                        .btn-list-toggle {
+                            transform:rotate(-180deg);
+                        }
+                    }
+                }
+                &.product-support {
+                    
+                }
+                &.consult {
+                    
+                }
+                &.reservation {
+                    
+                }
+                .list-header {
+                    position: relative;
+                    display: inline-block;
+                    .list-tit {
+                        display: inline-block;
+                        font-size:40px;
+                        color:#fff;
+                        font-weight:bold;
+                        line-height:1.4;
+                    }
+                    .btn-list-toggle {
+                        display: inline-block;
+                        position: absolute;
+                        top:0;
+                        right:-88px;
+                        width:56px;
+                        height:56px;
+                        background: url("/lg5-common/images/CS/btn-arr-down-56-white.svg") no-repeat 0 0/100% 100%;
+                        vertical-align: top;
+                    }
+                }
+
+                ul {
+                    display: none;
+                    max-width:436px;
+                    position: relative;
+                    font-size:0;
+                    margin-top:28px;
+                    > li {
+                        display:inline-block;
+                        width:50%;
+                        padding:4px;
+
+                        a {
+                            display: block;
+                            height:48px;
+                            line-height:46px;
+                            text-align: center;
+                            font-size:14px;
+                            color:#fff;
+                            text-align: center;
+                            border:1px solid #fff;
+                            border-radius:30px;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -40,8 +157,10 @@
             }
         }
         .notice-list-wrap {
+            overflow:hidden;
             position: relative;
             width:735px;
+            height:74px;
             margin-left:10px;
             padding:0 60px 0 16px;
             box-sizing:border-box;
@@ -75,14 +194,17 @@
         .notice-list-controls {
             position: absolute;
             top:50%;
+            left:auto;
             right:0;
             width:24px;
             height:48px;
             transform:translateY(-50%);
 
             button {
+                position:static;
                 width:24px;
                 height:24px;
+                transform:none;
                 background-repeat: no-repeat;
                 background-position: center center;
                 background-size: 12px 12px;
@@ -127,7 +249,7 @@
 
         .section-inner {
             position:relative;
-            width:1380px;
+            max-width:1380px;
             margin:0 auto;
         }
 
@@ -149,14 +271,227 @@
         }
     }
     .home-login {
-        a {
-            display: block;
-            position:relative;
+        padding:80px 0;
+        color:#fff;
+        background: linear-gradient(104deg, #8d71ec, #ff537c 99%);
+        
+        .section-inner {
+            text-align: center;
+        }
+
+        .login-tit {
+            margin-bottom:32px;
+            font-size:48px;
+            line-height:1.38;
+        }
+        .login-useful-list {
+            ul {
+                font-size:18px;
+                color:#fff;
+                line-height:1.56;
+
+                > li {
+                    &:before {
+                        content:"";
+                        display:inline-block;
+                        width:24px;
+                        height:24px;
+                        margin-right:8px;
+                        vertical-align: middle;
+                        background: url("/lg5-common/images/CS/icon-check-wht.svg") no-repeat 0 0/100% 100%;
+                    }
+                }
+            }
+        }
+        .btn-wrap {
+            margin-top:48px;
+
+            .btn-login {
+                display: inline-block;
+                width:275px;
+                color:#fff;
+                font-size:16px;
+                text-align: center;
+                line-height:46px;
+                border-radius:30px;
+                border:2px solid #fff;
+                box-sizing: border-box;
+                transition:.3s color ease-in-out, .3s background-color ease-in-out;
+
+                &:focus, &:hover {
+                    color:#de64a0;
+                    background: #fff;
+                }
+            }
+        }
+
+        @include mobile {
+            padding:60px 0;
+
+            .login-tit {
+                margin-bottom:24px;
+                font-size:28px;
+                line-height:1.32;
+            }
+            .login-useful-list {
+                ul {
+                    font-size:14px;
+    
+                    > li {
+                        &:before {
+                            content:"";
+                            width:16px;
+                            height:16px;
+                            margin-right:6px;
+                        }
+                    }
+                }
+            }
+            .btn-wrap {
+                margin-top:40px;
+    
+                .btn-login {
+                    width:288px;
+                    font-size:16px;
+                    line-height:54px;
+                    border-radius:50px;
+                    border:1px solid #fff;
+                }
+            }
         }
     }
 
     .popular-find {
-        margin-top:-60px;
+        .headline {
+            position: relative;
+            .title {
+                display: inline-block;
+                font-size:32px;
+                line-height:1.63;
+                color:#000;
+            }
+            .list-filter {
+                display: inline-block;
+                margin-left:16px;
+
+                span {
+                    display: inline-block;
+                    font-size:16px;
+                    color:#000;
+                }
+                .btn-filter-toggle {
+                    display: inline-block;
+                    position:relative;
+                    width:60px;
+                    height:32px;
+                    margin-left:8px;
+                    background: #aaa;
+                    border-radius:20px;
+                    border:2px solid #aaa;
+                    box-sizing:border-box;
+                    transition:background-color .3s ease-in-out, border-color .3s ease-in-out;
+
+                    &:before {
+                        content:"";
+                        display: block;
+                        width:28px;
+                        height:28px;
+                        background: #fff;
+                        border-radius:50%;
+                        transition:.3s transform ease-in-out;
+                    }
+
+                    &.active {
+                        background-color: #da0f47;
+                        border-color: #da0f47;
+                        &:before {
+                            transform:translateX(100%);
+                        }
+                    }
+                }
+            }
+
+            .btn-solution-link {
+                display: inline-block;
+                position: absolute;
+                right:0;
+                bottom:0;
+                padding:19px 24px 18px;
+                font-size:18px;
+                font-weight:500;
+                text-align: center;
+                color:#000;
+                background: #fff;
+                border-radius:30px;
+                box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+
+                &:before {
+                    content:"";
+                    display: inline-block;
+                    width:24px;
+                    height:24px;
+                    margin-right:4px;
+                    background: url("/lg5-common/images/CS/icon-install-action-support-check.svg") no-repeat 0 0/100% 100%;
+                    vertical-align: middle;
+
+                }
+            }
+        }
+
+        .popular-list-wrap {
+            position: relative;
+            margin-top:48px;
+            margin-left:-12px;
+            margin-right:-12px;
+            @include clearfix;
+
+            .item-list {
+                float:left;
+                width:468px;
+                padding:0 12px;
+                box-sizing:border-box;
+
+                a {
+                    display: block;
+                    padding:32px;
+                    border-radius:5px;
+                    box-shadow:  2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+                }
+
+                .item-category {
+                    margin-bottom:32px;
+                    font-size:16px;
+                    .category-thumb {
+                        display:inline-block;
+                        width:40px;
+                        height:40px;
+                        margin-right:8px;
+                        vertical-align: middle;
+                    }
+                }
+
+                .item-tit {
+                    display: -webkit-box;
+                    overflow:hidden;
+                    height:2.84em;
+                    text-overflow: ellipsis;
+                    word-break: break-word;                    
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    font-size:24px;
+                    line-height:1.42;
+                }
+                .bullet-list {
+                    margin-top:16px;
+                    li {
+                        width:100%;
+                        overflow:hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
     }
 
     .home-reservation {
@@ -265,23 +600,73 @@
     }
 
     .main-service {
-        .main-list {
+        .item-list {
             position:relative;
             margin-left:-12px;
             margin-right:-12px;
             @include clearfix;
 
-            > li {
+            .item {
                 float:left;
+                position: relative;
                 width:25%;
                 padding:0 12px;
 
-                > a {
-                    display:block;
-                    // width:327px;
+                img {
+                    width:100%;
+                }
 
-                    img {
-                        width:100%;
+                .item-cont {
+                    position:absolute;
+                    bottom:0;
+                    left:12px;
+                    right:12px;
+                    padding:28px 32px;
+                    box-sizing: border-box;
+                }
+
+                .item-tit {
+                    display: block;
+                    font-size:32px;
+                    font-weight:bold;
+                    line-height:1.63;
+                    color:#fff;
+                    white-space: pre-line;
+                }
+
+                .item-link {
+                    display:inline-block;
+                    margin-top:24px;
+                    padding:0 16px;
+                    color:#fff;
+                    font-size:14px;
+                    border-radius:30px;
+                    line-height:40px;
+                    border:1px solid #fff;
+                    transition:.3s color ease-in-out, .3s background-color ease-in-out;
+                    
+
+                    &:hover, &:focus {
+                        color:#000;
+                        background-color: #fff;
+                    }
+                }
+            }
+        }
+
+        @include pc-size-m {
+            .item-list {
+
+                .item {
+                    .item-cont {
+                        padding:28px 15px;
+                    }
+                    .item-tit {
+                        font-size:24px;
+                    }
+                    .item-link {
+                        padding:0 10px;
+                        font-size:12px;
                     }
                 }
             }
@@ -289,41 +674,76 @@
     }
 
     .related-pages {
-        .page-list {
+        .item-list {
             position:relative;
             margin-left:-12px;
             margin-right:-12px;
+
+            
+
             @include clearfix;
 
-            > li {
+            .item {
                 float:left;
+                position: relative;
                 width:33.33%;
-                padding:0 12px;
+                padding:12px;
+
+                &.hidden {
+                    display:none;
+    
+                    &.show {
+                        display: block;
+                    }
+                }
 
                 > a {
                     display:block;
+                    position: relative;
                     // width:444px;
 
                     img {
                         width:100%;
                     }
+
+                    .item-cont {
+                        position: absolute;
+                        top:0;
+                        left:0;
+                        width:100%;
+                        padding:28px 32px;
+                        box-sizing:border-box;
+
+                        font-size:24px;
+                        font-weight:bold;
+                        color:#000;
+                        line-height:1.42;
+                    }
+                }
+            }
+        }
+
+        @include mobile {
+            .item-list {
+                .item {
+                    float:none;
+                    width:100%;
                 }
             }
         }
     }
 
     .awards {
+        padding-bottom:40px;
 
         .award-list-wrap {
-            width:1184px;
+            
             margin:0 auto;
-            padding-bottom:40px;
         }
         .award-list {
             position:relative;
-            margin-left:-10px;
-            margin-right:-10px;
-            
+            margin:0 56px;
+            box-sizing:border-box;
             .slide-track {
                 @include clearfix;
                 .slide-conts {
@@ -332,11 +752,23 @@
                     // padding:0 32px;
     
                     > a {
-                        display:block;
+                        display:flex;
+                        flex-direction: row;
+                        align-items: center;
                         width:276px;
-    
-                        img {
-                            width:100%;
+
+                        .slide-thumb {
+                            width:80px;
+
+                            img {
+                                width:100%;
+                            }
+                        }
+                        .slide-text {
+                            margin-left:16px;
+                            font-size:16px;
+                            line-height:1.63;
+                            color:#222;
                         }
                     }
                 }
@@ -344,14 +776,48 @@
             
         }
         .indi-wrap {
-            bottom:0;
+            bottom:-40px;
+
+            .btn-play {
+                display: inline-block;
+                width:16px;
+                height:16px;
+                margin:0 8px;
+                background: url("/lg5-common/images/icons/btn-pause-16-gray.svg") no-repeat 0 0/100% 100%;
+                vertical-align: middle;
+
+                &.pause {
+                    background-image: url("/lg5-common/images/icons/btn-play-16-gray.svg");
+                }
+            }
         }
         .slide-controls {
             button.prev {
-                left:-60px;
+                left:0;
             }
             button.next {
-                right:-60px;
+                right:0;
+            }
+        }
+
+        @include mobile {
+            .award-list {
+                .slide-track {
+                    .slide-conts {
+                        > a {
+                            width:100%;
+
+                            {
+                                .slide-text {
+                                    font-size:14px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .slide-controls {
+                display: none;
             }
         }
     }
