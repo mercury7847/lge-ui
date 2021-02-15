@@ -308,6 +308,14 @@
                 &.menu-center a:before {
                     background-image:url('/lg5-common/images/icons/icon_center-reservation.svg');
                 }
+                &.menu-resolution a:before {
+                    background-image:url('/lg5-common/images/icons/icon-product-resolution-64.svg');
+                    width: 64px;
+                    height: 64px;
+                    border-radius: 50%;
+                    background-color: #f4f4f4;
+                    left: 24px;
+                }
             }
         }
         @include mobile {
