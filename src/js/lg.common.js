@@ -665,6 +665,10 @@
             }
             self.setStorage(self.COMPARE_KEY, compareStorage);
 
+            for(var str in compareStorage){
+                console.log(compareStorage[str])
+            }
+
             return true;
         },
 
