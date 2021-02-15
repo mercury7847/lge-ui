@@ -722,6 +722,15 @@
                 }
             }
         }
+
+        @include mobile {
+            .item-list {
+                .item {
+                    float:none;
+                    width:100%;
+                }
+            }
+        }
     }
 
     .awards {
@@ -788,6 +797,27 @@
             }
             button.next {
                 right:0;
+            }
+        }
+
+        @include mobile {
+            .award-list {
+                .slide-track {
+                    .slide-conts {
+                        > a {
+                            width:100%;
+
+                            {
+                                .slide-text {
+                                    font-size:14px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .slide-controls {
+                display: none;
             }
         }
     }

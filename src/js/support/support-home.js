@@ -124,6 +124,7 @@
                 {
                     breakpoint: 768,
                     settings: {
+                        arrows: false,
                         slidesToScroll: 1,
                         slidesToShow: 1,
                     }
