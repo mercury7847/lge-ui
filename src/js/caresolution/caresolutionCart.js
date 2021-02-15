@@ -1,11 +1,11 @@
 (function() {
-    var cartItemTemplate = '<li class="order-item is-check {{#if !(available)}}disabled{{/if}}" data-item-id="{{itemID}}" data-item-seq="{{itemSeq}}">' +
+    var cartItemTemplate = '<li class="order-item is-check btm-message {{#if !(available)}}disabled{{/if}}" data-item-id="{{itemID}}" data-item-seq="{{itemSeq}}">' +
         '<div class="item-image"><a href="{{itemUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="product-info">' +
             '<div class="flag-wrap bg-type">' +
                 '<span class="flag"><span class="blind">제품타입</span>{{type}}</span>' +
             '</div>' +
-            '<div class="item-name"><a href="{{itemUrl}}">{{title}}</a></div>' +
+            '<div class="item-name"><a href="{{itemUrl}}">{{#raw title}}</a></div>' +
             '<div class="item-options"><div class="sku"><span class="blind">제품번호</span>{{sku}}</div><div class="sibling-option"><span class="blind">제품옵션</span>{{colorOption}}</div></div>' +
             '<div class="item-options2">{{#each (item, index) in option}}<p>{{#if index == 0}}옵션 : {{/if}}{{item}}</P>{{/each}}</div>' +
         '</div>' +
@@ -18,12 +18,12 @@
         '</div><div class="btn-area">' +
             '{{#if subscriptionUrl}}<button type="button" class="btn pink border size" data-url="{{subscriptionUrl}}"><span>청약신청</span></button>{{#else}}<button type="button" class="btn pink border size" disabled><span>청약신청불가</span></button>{{/if}}' +
         '</div></div>' +
-        '{{#if availableMessage}}<div class="disabled-message btm-message"><p class="err-msg">{{availableMessage}}</p></div>{{/if}}' +
+        '{{#if availableMessage}}<div class="disabled-message"><p class="err-msg">{{availableMessage}}</p></div>{{/if}}' +
         '{{#if isLogin}}<span class="chk-wish-wrap"><input type="checkbox" id="chk-wish-{{itemID}}-{{itemSeq}}" name="chk-wish-{{itemID}}-{{itemSeq}}" {{#if (wish)}}checked{{/if}}><label for="chk-wish-{{itemID}}-{{itemSeq}}"><span class="blind">{{#if wish}}찜한상품{{#else}}찜하기{{/if}}</span></label></span>{{/if}}' +
         '<span class="chk-wrap"><input type="checkbox" id="chk-select-{{itemID}}-{{itemSeq}}" name="chk-select-{{itemID}}-{{itemSeq}}" {{#if (available && check)}}checked{{/if}} {{#if !(available)}}disabled{{/if}}><label for="chk-select-{{itemID}}-{{itemSeq}}"><span class="blind">선택안함</span></label></span>' +
         '<div class="item-delete"><button type="button" class="btn-delete"><span class="blind">제품 삭제</span></button></div>' +
         '</li>';
-
+        
     $(window).ready(function() {
         var careCartInfo = new CareCartInfo('div.col-right');
 

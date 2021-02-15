@@ -33,7 +33,7 @@
                         @@for (var i = 0; i < context.colorSet.length; i++) {
                         <li>
                             <div role="radio" class="chk-wrap-colorchip `+colorSet[i].color+`" title="`+colorSet[i].title+`">
-                                <input type="radio" id="`+colorSet[i].id+`" name="`+colorSet[i].name+`" `+colorSet[i].checked+`>
+                                <input type="radio" id="`+colorSet[i].id+`" name="`+colorSet[i].name+`" `+colorSet[i].checked+` value="MD08045006"> <!-- 2021.2.10 vlaue=modelId 추가-->
                                 <label for="`+colorSet[i].id+`"><span class="blind">`+colorSet[i].title+`</span></label>
                             </div>
                         </li>
@@ -240,7 +240,7 @@
                 </div>
                 <div class="cart">
                     <!-- 비활성화 시 .disabled 추가 -->
-                    <a href="#n" class="btn-cart"><span class="blind">장바구니 담기</span></a>
+                    <a href="#n" class="btn-cart" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="PRODUCT" disable=""><span class="blind">장바구니 담기</span></a>
                 </div>
                 <div class="btn-area">
                     <a href="#n" class="btn border size-m">@@bottom.button</a>
@@ -281,7 +281,8 @@
             <div class="btn-area-wrap">
                 <div class="cart">
                     <!-- 비활성화 시 .disabled 추가 -->
-                    <a href="#n" class="btn-cart"><span class="blind">장바구니 담기</span></a>
+                    <!--2021.2.10 data-id(modelId), data-model-name(modelName), data-rtseq(rtModelSeq), data-type-flag(bizType) 추가-->
+                    <a href="#n" class="btn-cart" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="PRODUCT"><span class="blind">장바구니 담기</span></a>
                 </div>
                 <div class="btn-area">
                     <a href="#n" class="btn border size-m">@@eventItem.button</a>

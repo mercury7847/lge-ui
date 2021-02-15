@@ -231,7 +231,6 @@
     
     global['lgkorUI'] = {
         COMPARE_KEY: "prod_compare",
-        COMPARE_ID: "compare_list",
         COMPARE_LIMIT: 3,
         CAREPLANER_KEY: "care_planer",
         CAREPLANER_ID: "putitem_list",
@@ -646,18 +645,18 @@
             
         }(),
 
-        addCompareProd: function(data){
+        addCompareProd: function(categoryId, data){
             var self = this;
 
             self.COMPARE_LIMIT = window.breakpoint.isMobile ? 2 : 3;
 
             var compareStorage = self.getStorage(self.COMPARE_KEY);
-            if(compareStorage[self.COMPARE_ID] == undefined){
-                compareStorage[self.COMPARE_ID] = [data];
+            if(compareStorage[categoryId] == undefined){
+                compareStorage[categoryId] = [data];
             } else{
-                var leng = compareStorage[self.COMPARE_ID].length;
+                var leng = compareStorage[categoryId].length;
                 if(leng < self.COMPARE_LIMIT){
-                    compareStorage[self.COMPARE_ID].push(data);
+                    compareStorage[categoryId].push(data);
                 } else{
                     $(window).trigger('excessiveCompareStorage');
                     return false;
@@ -665,25 +664,29 @@
             }
             self.setStorage(self.COMPARE_KEY, compareStorage);
 
+            for(var str in compareStorage){
+                console.log(compareStorage[str])
+            }
+
             return true;
         },
 
-        removeCompareProd: function(id){
+        removeCompareProd: function(categoryId, id){
             var self = this;
 
             var compareStorage = self.getStorage(self.COMPARE_KEY);
-            compareStorage[self.COMPARE_ID] = vcui.array.filter(compareStorage[self.COMPARE_ID], function(item){
+            compareStorage[categoryId] = vcui.array.filter(compareStorage[categoryId], function(item){
                 return item['id'] != id;
             });
 
             self.setStorage(self.COMPARE_KEY, compareStorage);
         },
 
-        initCompareProd: function(){
+        initCompareProd: function(categoryId){
             var self = this;
             
             var obj = {};
-            obj[self.COMPARE_ID] = [];
+            obj[categoryId] = [];
             self.setStorage(self.COMPARE_KEY, obj);
         },
 

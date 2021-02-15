@@ -151,7 +151,6 @@
 
                 vcui.require(['search/filterLayer.min'], function () {
                     self.filterLayer = new FilterLayer(self.$layFilter, self.$categorySelect, self.$listSorting, self.$btnFilter, function (data) {
-                        console.log("filterLayer: ", data);
                         lgkorUI.setStorage(storageName, data);
     
                         var param = {};
@@ -162,7 +161,6 @@
                         var sort = data.sortType ? data.sortType : data.order;
                         param.sortType = sort;
                         param.page = 1;
-                        console.log("param:", param)
                         if(param) {
                             self.requestSearch(param, true);
                         }
@@ -174,15 +172,21 @@
                     //페이지에 선언된 필터와 비교해서 합침
                     var storageFilters = lgkorUI.getStorage(storageName);
                     var filterData = firstEnableFilter ? firstEnableFilter : {};
+
+                    console.log("### storageFilters ###", storageFilters)
     
+                    var change = false;
                     if(!(vcui.isEmpty(storageFilters)) && storageFilters.filterData) {
                         var storageFilterData = JSON.parse(storageFilters.filterData);
+                        if(Object.keys(storageFilterData).length) change = true;
+
                         for(key in filterData) {
                             storageFilterData[key] = filterData[key]; 
                         }
                         filterData = storageFilterData;
                     }
-                    self.filterLayer.resetFilter(filterData, false);
+                    console.log("change:",change)
+                    self.filterLayer.resetFilter(filterData, change);
                 });
             },
 
@@ -579,12 +583,16 @@
             //비교하기 저장 유무 체크...
             setCompares:function(){
                 var self = this;
+
                 self.$productList.find('li .product-compare a').removeClass('on');
+
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
                 var isCompare = vcui.isEmpty(storageCompare);
                 if(!isCompare){
-                    for(var i in storageCompare[lgkorUI.COMPARE_ID]){
-                        var modelID = storageCompare[lgkorUI.COMPARE_ID][i]['id'];
+                    if(vcui.isEmpty(storageCompare[categoryId]))
+                    for(var i in storageCompare[categoryId]){
+                        var modelID = storageCompare[categoryId][i]['id'];
                         self.$productList.find('li .product-compare a[data-id=' + modelID + ']').addClass('on');
                     }
                 }
@@ -593,6 +601,7 @@
             setCompareState:function(atag){
                 var $this = $(atag);
                 var _id = $this.data('id');
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 if(!$this.hasClass('on')){
                     var compare = $this.closest('.product-compare');
                     var contents = compare.siblings('.product-contents');
@@ -610,11 +619,11 @@
                         "productImg": productImg,
                         "productAlt": productAlt
                     }
-
-                    var isAdd = lgkorUI.addCompareProd(compareObj);
+                    
+                    var isAdd = lgkorUI.addCompareProd(categoryId, compareObj);
                     if(isAdd) $this.addClass("on");
                 } else{
-                    lgkorUI.removeCompareProd(_id);
+                    lgkorUI.removeCompareProd(categoryId, _id);
                 }
             }
         };

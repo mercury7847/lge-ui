@@ -21,6 +21,11 @@
                 vertical-align:top;
             }
         }
+        &.video {
+            .see-video {
+                display:block;
+            }
+        }
     }
     .caption {
         @include bodycopy(h3, h3);

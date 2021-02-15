@@ -41,7 +41,9 @@
                 <!-- // visual slider -->
 
                 <div class="page-tabs">
-                    <div class="tabs-wrap btn-type">
+                    <!-- 210215 수정 -->
+                    <div class="tabs-wrap border-type left">
+                    <!-- //210215 수정 -->
                         <ul class="tabs">
                             <li class="on"><a href="#n"><em class="blind">현재 화면</em>멤버십 소개</a></li>
                             <li><a href="#n">등급별 혜택</a></li>
@@ -50,13 +52,19 @@
                     </div>
                 </div>
 
-                <div class="cont-wrap narrow">
+                <!-- 210215 수정 -->
+                <div class="cont-wrap">
+                <!-- //210215 수정 -->
                     <div class="section-wrap">
                         <div class="sects">
-                            <div class="tit-wrap">
+                            <!-- 210215 수정 -->
+                            <div class="tit-wrap type2 align-center">
+                            <!-- //210215 수정 -->
                                 <h2 class="tit">LG전자 멤버십 혜택</h2>
                             </div>
-                            <div class="section-inner type2">
+                            <!-- 210215 수정 -->
+                            <div class="section-inner">
+                            <!-- //210215 수정 -->
                                 <div class="benefit-info-box">
                                     <ul>
                                         <li class="lists">
@@ -86,62 +94,88 @@
                         </div>
 
                         <div class="sects">
-                            <div class="tit-wrap">
-                                <h2 class="tit">무상 서비스 기간연장 혜택제품 안내</h2>
+                            <!-- 210215 수정 -->
+                            <div class="tit-wrap type2 align-center">
+                                <h2 class="tit">멤버십 운영매장</h2>
                             </div>
-                            <div class="section-inner type2">
-                                <p class="inner-sub-tit">골드, 로얄골드 등급과 LG SIGNATURE 별도 케어서비스의 등급 선정 전/후 1년간 구매한 5대 가전에 무상 서비스 기간연장 혜택 서비스가 적용됩니다.</p>
-                                <div class="product-list-wrap type2">
-                                    <ul class="product-lists ui_flexible_height">
-                                        @@loop('./common/modules/product-list-loop.html', [
-                                            {
-                                                "img" : "/lg5-common/images/STC/img-prod01.jpg",
-                                                "name" : "TV",
-                                                "info" : [
-                                                    "LED, LCD, PDP, 울트라HD, 올레드 <small>* 벽걸이/스탠드 자재 제외</small>"
-                                                ]
-                                            },
-                                            {
-                                                "img" : "/lg5-common/images/STC/img-prod01.jpg",
-                                                "name" : "김치 냉장고",
-                                                "info" : [
-                                                    "김치 냉장고 전제품"
-                                                ]
-                                            },
-                                            {
-                                                "img" : "/lg5-common/images/STC/img-prod01.jpg",
-                                                "name" : "세탁기",
-                                                "info" : [
-                                                    "트윈워시, 트롬, 통돌이, 미니세탁기(미니워시, 꼬망스) <small>* 세탁기 받침대 제외</small>"
-                                                ]
-                                            },
-                                            {
-                                                "img" : "/lg5-common/images/STC/img-prod01.jpg",
-                                                "name" : "냉장고",
-                                                "info" : [
-                                                    "상냉장, 양문형, 정수기냉장고, 일반, 냉동고, 와인셀러"
-                                                ]
-                                            },
-                                            {
-                                                "img" : "/lg5-common/images/STC/img-prod01.jpg",
-                                                "name" : "에어컨",
-                                                "info" : [
-                                                    "스탠드, 벽걸이, 일반 냉난방기, 시스템 에어컨, 배관자재 제외"
-                                                ]
-                                            }
-                                        ])
+                            <!-- //210215 수정 -->
+                            <!-- 210215 수정 -->
+                            <div class="section-inner">
+                                <!-- <p class="inner-sub-tit">골드, 로얄골드 등급과 LG SIGNATURE 별도 케어서비스의 등급 선정 전/후 1년간 구매한 5대 가전에 무상 서비스 기간연장 혜택 서비스가 적용됩니다.</p> -->
+                                <div class="oper-store-list">
+                                    <ul>
+                                        <li>
+                                            <div class="logo"><img src="/lg5-common/images/BMC/img-oper-store-01.svg" alt="LG전자 BEST SHOP"></div>
+                                            <div class="info-flag">
+                                                <span class="flag">모든 혜택 가능</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="logo"><img src="/lg5-common/images/BMC/img-oper-store-02.svg" alt="LOTTE"></div>
+                                            <div class="info-flag">
+                                                <span class="flag">모든 포인트 가능</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="logo"><img src="/lg5-common/images/BMC/img-oper-store-03.svg" alt="SHINSEGAE"></div>
+                                            <div class="info-flag">
+                                                <span class="flag">멤버십 가입</span>
+                                                <span class="flag">VIP 멤버십</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="logo"><img src="/lg5-common/images/BMC/img-oper-store-04.svg" alt="the galleria 갤러리아"></div>
+                                            <div class="info-flag">
+                                                <span class="flag">멤버십 가능</span>
+                                                <span class="flag">VIP 멤버십</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="logo"><img src="/lg5-common/images/BMC/img-oper-store-05.svg" alt="THE HYUNDAI"></div>
+                                            <div class="info-flag">
+                                                <span class="flag">멤버십 가능</span>
+                                                <span class="flag">VIP 멤버십</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="logo"><img src="/lg5-common/images/BMC/img-oper-store-06.svg" alt="Homeplus"></div>
+                                            <div class="info-flag">
+                                                <span class="flag">멤버십 가능</span>
+                                                <span class="flag">VIP 멤버십</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="logo"><img src="/lg5-common/images/BMC/img-oper-store-07.svg" alt="emart"></div>
+                                            <div class="info-flag">
+                                                <span class="flag">멤버십 가능</span>
+                                                <span class="flag">VIP 멤버십</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="logo"><img src="/lg5-common/images/BMC/img-oper-store-08.svg" alt="전자랜드"></div>
+                                            <div class="info-flag">
+                                                <span class="flag">멤버십 가능</span>
+                                                <span class="flag">VIP 멤버십</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="logo"><img src="/lg5-common/images/BMC/img-oper-store-09.svg" alt="LG전자 서비스"></div>
+                                            <div class="info-flag">
+                                                <span class="flag">멤버십 가능</span>
+                                                <span class="flag">VIP 멤버십</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="logo"><img src="/lg5-common/images/BMC/img-oper-store-10.svg" alt="SIGNATURE KITCHEN SUITE"></div>
+                                            <div class="info-flag">
+                                                <span class="flag">멤버십 가능</span>
+                                                <span class="flag">VIP 멤버십</span>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
-                                @@include('./common/modules/bullet-list.html', {
-                                    "topBorder" : true,
-                                    "bulletTit" : "무상 서비스 적용기준",
-                                    "bulletTxt" : [
-                                        "무상 서비스 기간 : 설치 일자 기준 3년 적용",
-                                        "멤버십 등급 산정 : 멤버십 가입한 고객의 1년간 구매금액 합산 관리",
-                                        "고장성 불량에 한해서 적용(소비자 과실에 의한 서비스는 미 적용), 온라인 몰 구매제품 제외"
-                                    ]
-                                })
                             </div>
+                            <!-- //210215 수정 -->
                         </div>
                     </div>
                     <div class="btn-group center">

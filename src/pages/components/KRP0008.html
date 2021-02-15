@@ -8,8 +8,6 @@
     <script src="/lg5-common/js/components/KRP0015.min.js"></script>
 <body>
     <script>
-        //아래 값은 필수로 넣어주세요.
-
         // 로그인 유무
         var loginFlag = true;
 
@@ -282,6 +280,10 @@
             <div class="component-wrap full">
                 <!-- component KRP0008 -->
                 <section class="component KRP0008" aria-label="{category명} product detail" data-consumables="false">
+                    <!-- 2021.2.15 categoryId 을 가져오기 위한 부분 -->
+                    <div class="hidden-input-group">
+                        <input type="hidden" name="categoryId" value="test_categoryID">
+                    </div>
 
                     <div class="pdp-wrap"> <!-- pdp-info-area 영역 내용 없을 경우 pdp-center 클래스 적용 -->
                         <!-- component -->
