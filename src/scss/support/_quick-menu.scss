@@ -296,6 +296,7 @@
             .history-list {
                 margin-right: 64px;
                 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+                    /* ie 호환성 이슈 */
                     width: 184px;
                 }
             }
