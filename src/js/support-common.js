@@ -2130,6 +2130,7 @@ var AuthManager = function() {
             if( options.target ) {
                 $(options.elem.name).val('');
                 $(options.elem.phone).val('');
+                self.validation.reset();
             }
         });
 
