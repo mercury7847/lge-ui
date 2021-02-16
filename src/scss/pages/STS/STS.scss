@@ -440,4 +440,26 @@
             }
         }
     }
+
+}
+
+// [팝업] 라이프 스타일에 맞는 가전을 찾아볼까요?
+.tag-subscribe-wrap {
+    &.story-tag-wrap {
+        .tag-lists .sect {
+            margin-top: 48px;
+            &:first-child {
+                margin-top: 0;
+            }
+            .tag-group > ul {
+                margin-top: -8px;
+                .tags {
+                    margin: 8px 0 0 8px;
+                    .chk-btn input + label {
+                        border-radius: 8px;
+                    }
+                }
+            }
+        }
+    }
 }

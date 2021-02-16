@@ -98,7 +98,7 @@
             }
             &.type-wide {
                 .box-inner {
-                    @include boxs(w);
+                    @include boxs(n);
                 }
             }
             &.type-narrow {
@@ -194,7 +194,7 @@
                 .list {
                     position:relative;
                     display:table;
-                    width:((561px * 100%) / 1380px);
+                    width:((700px * 100%) / 1380px);
                     margin-top:32px;
                     text-align:left;
                     @include mobile {
