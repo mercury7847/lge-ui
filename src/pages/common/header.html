@@ -6,7 +6,7 @@
     >
     <!-- 스킵 네비게이션 -->
     <div class="skip-content">
-        <a href="#content" id="skipToContent">본문 바로가기</a>
+        <a href="#content" id="skipToContent">본문 바로가기</a> <!-- 컴포넌트의 경우 id="" 값 동일하게 적용 필요  -->
     </div>
     <!-- 20201230 자바스크립트 안내 추가 -->
     <!-- 자바스크립트 동작 안됨 안내 -->
@@ -1703,6 +1703,8 @@
     "nonLink" : "3Depth"
 })
 <!-- // Breadcrumb -->
+
+<div id="content"></div> <!-- 컴포넌트의 경우 id="" 값 동일하게 적용 필요  -->
 
 <!-- hidden title -->
 @@if ( context.hiddenTitle ) {
