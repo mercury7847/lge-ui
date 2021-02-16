@@ -202,6 +202,19 @@
                 }
             });
 
+            // 주소 찾기
+            self.$cont.find('.btn-address').on('click', function() { 
+                addressFinder.open(function(data) { 
+                    var address = data.userSelectedType == 'R' ? data.roadAddress : data.jibunAddress;
+
+                    self.$cont.find('#zipCode').val(data.zonecode);
+                    self.$cont.find('#userAddress').val(address);
+                    self.$cont.find('#detailAddress').val('').prop('readonly', false);
+
+                    self.$cont.find('.btm-more.both .chk-wrap').show();
+                }); 
+            });
+
             // 신청 완료
             self.$completeBtns.find('.btn-confirm').on('click', function() {
                 var result = validation.validate();
