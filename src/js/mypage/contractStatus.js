@@ -122,6 +122,7 @@
         }
         bankValidation = new vcui.ui.Validation('.mypage .section-wrap .sects.payment.modify .by-bank',{register:register});
         bankInfo = bankValidation.getAllValues();
+        console.log("### bankInfo ###", bankInfo);
 
         paymentModeIndex = $('.mypage .section-wrap .sects.payment.modify .ui_tab ul li[class=on]').index();
 
@@ -367,6 +368,7 @@
             cardValidation.setValues(cardInfo);
             $('.ui_card_number').vcFormatter('update');
     
+            console.log("### savePaymentInfoCancel bankInfo ###", bankInfo)
             bankValidation.setValues(bankInfo);
             setHiddenData('paymentMethodConfirm', "N");
             setHiddenData('arsAgree', "N");

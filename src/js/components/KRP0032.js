@@ -4,8 +4,8 @@ $(window).ready(function(){
 	$('.KRP0032').buildCommonUI();
 
 	var popuplistItemTemplate = '<li>' +
-        '<div class="img"><a href="{{url}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
-        '<dl><a href="{{url}}"><dt>{{title}}</dt><dd>{{#if price}}{{price}}원{{/if}}</dd></a></dl>' +
+        '<div class="img"><a href="{{modelUrlPath}}"><img src="{{smallImageAddr}}" alt="{{imageAltText}}"></a></div>' +
+        '<dl><a href="{{modelUrlPath}}"><dt>{{#raw modelDisplayName}}</dt><dd>{{#if price}}{{price}}원{{/if}}</dd></a></dl>' +
     '</li>'
 
 	var KRP0032 = {
@@ -45,17 +45,17 @@ $(window).ready(function(){
 		requestData: function(openPopup) {
 			var self = this;
 			var ajaxUrl = self.$popup.attr('data-list-url');
-            var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
+            //var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
             
-            lgkorUI.requestAjaxData(ajaxUrl, {"id":cookieValue}, function(result) {
+            lgkorUI.requestAjaxDataPost(ajaxUrl, null/*{"id":cookieValue}*/, function(result) {
 				var data = result.data;
 				var arr = data instanceof Array ? data : [];
 				self.$list.empty();
 				arr.forEach(function(item, index) {
                     if(index == 0) {
-                        self.$image.attr({"src":item.imageUrl,"alt":item.imageAlt})
+                        self.$image.attr({"src":item.smallImageAddr,"alt":item.imageAltText})
                     }
-                    item.price = item.price ? vcui.number.addComma(item.price) : null;
+                    item.price = item.price ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
 					self.$list.append(vcui.template(popuplistItemTemplate, item));
                 });
 

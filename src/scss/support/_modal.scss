@@ -172,14 +172,15 @@
                         float:left;
                         margin:4px 0 0;
                     }
-                    button {
+                    .btn {
                         float:right;
                     }
                 }
             }
             #driverDatilContent {
                 p {
-                    @include font-small;       
+                    @include font-small;    
+                    white-space:pre-line;
                 }
                 img {
                     max-width:100%;
