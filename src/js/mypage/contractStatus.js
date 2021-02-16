@@ -628,15 +628,23 @@
     function changeContractInfo(){
         lgkorUI.showLoading();
 
+        console.log("### changeContractInfo start ###");
+
         var info = $('select[name=contractInfo]').find('option:selected').val().split("|");
 
+
+        console.log("$('select[name=contractInfo]').find('option:selected').val().split('|'):", info)
+
         saveUserInfoCancel();
+        console.log("saveUserInfoCancel();")
         savePaymentInfoCancel();
+        console.log("savePaymentInfoCancel();")
 
         var sendata = {
             modelID: info[0],
             contractID: info[1]
         }
+        console.log("sendata:", sendata);
         lgkorUI.requestAjaxData(CONTRACT_INFO, sendata, function(result){
             setContractInfo(result.data);
 
@@ -644,6 +652,7 @@
 
             $('html, body').animate({scrollTop:0}, 220);
         });
+        console.log("### changeContractInfo end ###");
     }
 
     function setHiddenData(iptname, value){
