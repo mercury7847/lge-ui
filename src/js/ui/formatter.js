@@ -54,8 +54,10 @@ vcui.define('ui/formatter', ['jquery', 'vcui'], function ($, core) {
         cleanChars: function cleanChars(type, el, focusin) {
             var caret = core.dom.getCaretPos(el);
             el.value = el.value.replace(utils[type + 'Regex'], '');
-            if (focusin) {
-                core.dom.setCaretPos(el, Math.min(caret.begin, el.value.length));
+            if (type != 'koreng') {
+                if (focusin) {
+                    core.dom.setCaretPos(el, Math.min(caret.begin, el.value.length));
+                }
             }
         },
         korengKey: function korengKey(e) {
