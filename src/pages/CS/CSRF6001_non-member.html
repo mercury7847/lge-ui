@@ -222,27 +222,25 @@
                     <div class="section-inner">
                         <div class="section-row">
                             <div class="section-col">
-
-                                <div class="tab-panel by-card rersv-wrap">
+                                <div class="rersv-wrap engineer-reserv">
                                     <div class="headline">
                                         <h3 class="title run-reserv">출장 서비스 예약</h3>
                                     </div>
                                     <div class="form-wrap">
                                         <div class="forms form-head">
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk01" name="chk1">
-                                                <label for="chk01">개인정보 수집 및 이용에 동의합니다</label>
+                                                <input type="checkbox" id="agreePrivacyCheck" name="agreePrivacyCheck" value="N">
+                                                <label for="agreePrivacyCheck">개인정보 수집 및 이용에 동의합니다</label>
                                             </span>
-                                            <!-- <a href="#" class="btn-link" data-href="#agreePrivacyPopup" data-control="modal"><span>전문보기</span></a> --> 
                                             <button type="button" class="btn-link" data-href="#agreePrivacyPopup" data-control="modal"><span>전문보기</span></button>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-col">
                                                 <dl class="forms inner-type">
-                                                    <dt class="tit"><label for="iptName" class="req">이름<span class="blind">필수입력</span></label></dt>
+                                                    <dt class="tit"><label for="engineerUserName" class="req">이름<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="iptName" placeholder="이름 입력" value="" name="iptName" data-required="true" disabled maxlength="30">
+                                                            <input type="text" id="engineerUserName" placeholder="이름 입력" value="" name="engineerUserName" data-required="true" required disabled maxlength="30" data-format="koreng" data-error-msg="이름을 입력해주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요">
                                                         </div>
                                                         <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                     </dd>
@@ -250,11 +248,11 @@
                                             </div>
                                             <div class="form-col">
                                                 <dl class="forms inner-type">
-                                                    <dt class="tit"><label for="iptNo" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
+                                                    <dt class="tit"><label for="engineerPhoneNo" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
 															<!-- 2021.02.10 type number로 수정, minlength, maxlength 추가-->
-                                                            <input type="number" id="iptNo" placeholder="휴대폰 번호 입력" value="" name="iptNo" data-required="true" minlength="10" maxlength="11" disabled>
+                                                            <input type="number" id="engineerPhoneNo" placeholder="휴대폰 번호 입력" value="" name="engineerPhoneNo" data-error-msg="휴대전화를 정확히 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" disabled required>
                                                         </div>
                                                         <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                     </dd>
@@ -262,23 +260,23 @@
                                             </div>
                                         </div>
                                         <dl class="forms inner-type">
-                                            <dt class="tit"><label for="iptZipCode">주소</label></dt>
+                                            <dt class="tit"><label for="engineerZipCode">주소</label></dt>
                                             <dd class="conts">
                                                 <div class="address-box">
                                                     <div class="box">
                                                         <div class="input-wrap zip-code">
-                                                            <input type="text" id="iptZipCode" value="" placeholder="우편번호" disabled="">
+                                                            <input type="text" id="engineerZipCode" value="" placeholder="우편번호" disabled="">
                                                         </div>
                                                         <div class="cell">
-                                                            <button type="button" class="btn"><span>주소 찾기</span></button>
+                                                            <button type="button" class="btn btn-address"><span>주소 찾기</span></button>
                                                         </div>
                                                     </div>
                                                     <div class="input-wrap">
-                                                        <input type="text" value="" placeholder="주소 찾기를 선택해 주세요." disabled="">
+                                                        <input type="text" value="" id="engineerUserAddress" name="engineerUserAddress" placeholder="주소" data-error-msg="정확한 주소를 입력해주세요." disabled="">
                                                     </div>
                                                 </div>
                                                 <div class="input-wrap">
-                                                    <input type="text" value="" placeholder="상세주소를 입력해주세요." disabled>
+                                                    <input type="text" value="" id="engineerDetailAddress" name="engineerDetailAddress" placeholder="상세주소를 입력해주세요." disabled>
                                                 </div>
                                             </dd>
                                         </dl>
@@ -287,10 +285,9 @@
                                         <button type="button" class="btn disabled size-m" disabled=""><span>예약하기</span></button>
                                     </div>
                                 </div>
-                                
                             </div>
                             <div class="section-col">
-                                <div class="tab-panel by-card rersv-wrap">
+                                <div class="rersv-wrap reserv-inquiry">
                                     <div class="headline">
                                         <h3 class="title inquiry-reserv">문의/예약 결과조회</h3>
                                     </div>
@@ -624,6 +621,7 @@
     
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/caresolution/addressManagement.min.js"></script>
     <script src="/lg5-common/js/support/support-home.min.js"></script>
 </body>
 </html> 

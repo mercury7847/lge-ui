@@ -308,7 +308,7 @@
                     width:16px;
                     height:16px;
                     background-image: url("/lg5-common/images/icons/btn-arr-16-white.svg");
-                    bacgkround-size:100% 100%;
+                    background-size:100% 100%;
                 }
                 
             }
@@ -1191,7 +1191,9 @@
         }
 
         @include pc-size-m {
-            padding-bottom:36px;
+            .banner {
+                padding-bottom:42px;
+            }
             .item-list {
                 .item {
                     .item-cont {
@@ -1224,8 +1226,6 @@
         }
 
         @include mobile {
-            padding-bottom:32px;
-            
             .main-list-wrap {
                 position: relative;
                 overflow:visible !important;
