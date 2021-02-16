@@ -82,11 +82,11 @@
 
     .visual-area {
         position: relative;
-        height:480px;
+        height:530px;
         overflow: hidden;
         @include mobile {
             height:0;
-            padding-top:116.7%;
+            padding-top:132.5%;
         }
         img {
             position: absolute;
