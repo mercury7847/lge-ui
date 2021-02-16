@@ -138,6 +138,9 @@
                     @include mobile {
                         height: auto;
                     }
+                    > span {
+                        word-break:break-all;
+                    }
                 }
                 .btn-area {
                     clear: both;
