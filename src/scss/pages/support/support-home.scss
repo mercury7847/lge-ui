@@ -26,11 +26,8 @@
     
 
     .support-list-slider {
-        .indi-wrap {
+        .indi-wrap, .slide-controls {
             display:none;
-        }
-        .slide-controls {
-            display: none;
         }
 
         @include tablet {
@@ -47,6 +44,12 @@
                     right:-40px;
                 }
             }   
+        }
+
+        @include mobile {
+            .slide-controls {
+                display:none;
+            }
         }
     }
 
@@ -1122,6 +1125,9 @@
     }
 
     .main-service {
+        .banner {
+            overflow:hidden;
+        }
         .item-list {
             position:relative;
             margin:0 auto;

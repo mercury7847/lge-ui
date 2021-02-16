@@ -229,12 +229,16 @@
                 }
                 
             },
-            init : function(){
-                var self = this;
-
+            firstInit : function(){
                 if( window.innerWidth > 1024) {
                     $('.support-toggle-list-wrap').addClass('only-desktop');
+                } else {
+                    $('.support-toggle-list-wrap').removeClass('only-desktop');
                 };
+            },
+            init : function(){
+                var self = this;
+                
                 vcui.require(['ui/carousel'], function () {    
                     //공지사항 슬라이드
                     self.notice.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.notice.config);
@@ -281,6 +285,8 @@
             this.toggleList.init();
         }
     }
+
+    supportHome.slide.firstInit();
 
     
     $(window).ready(function(){
