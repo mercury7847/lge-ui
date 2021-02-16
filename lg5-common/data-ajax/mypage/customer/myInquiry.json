@@ -135,7 +135,8 @@
                 "date": "20200911",
                 "modelCategory": "제품1>제품2",
                 "modelName": "LG VELVET(SKT) LM-G900N",
-                "inquiryOption":"제품정보"
+                "inquiryOption":"제품정보",
+                "serviceUrl":"/lg5-common/data-ajax/mypage/customer/myInquiryService.html"
             },
             {
                 "id": "mw00002",
@@ -146,7 +147,8 @@
                 "date": "20200912",
                 "modelCategory": "제품1>제품2",
                 "modelName": "LG VELVET(SKT) LM-G900N",
-                "inquiryOption":null
+                "inquiryOption":null,
+                "serviceUrl":"/lg5-common/data-ajax/mypage/customer/myInquiryService.html"
             },
             {
                 "id": "mw00003",
@@ -157,7 +159,8 @@
                 "date": "20200913",
                 "modelCategory": "제품1>제품2",
                 "modelName": "LG VELVET(SKT) LM-G900N",
-                "inquiryOption":"제품정보"
+                "inquiryOption":"제품정보",
+                "serviceUrl":"/lg5-common/data-ajax/mypage/customer/myInquiryService.html"
             },
             {
                 "id": "mw00004",
@@ -168,7 +171,8 @@
                 "date": "20200914",
                 "modelCategory": "제품1>제품2",
                 "modelName": "LG VELVET(SKT) LM-G900N",
-                "inquiryOption":null
+                "inquiryOption":null,
+                "serviceUrl":"/lg5-common/data-ajax/mypage/customer/myInquiryService.html"
             }
         ]
     }

@@ -4,7 +4,7 @@
         '<li>'+
             '<div class="item evt-item">' +
                 '<div class="product-image" aria-hidden="true">' +
-                '<a href="{{modelUrlPath}}"><img src="{{sliderImages}}" alt="{{modelDisplayName}}"></a>' +
+                '<a href="{{modelUrlPath}}"><img src="{{mediumImageAddr}}" alt="{{imageAltText}}"></a>' +
             '</div>' +
             '<div class="product-contents">' +
                 '{{#if siblings}}'+
@@ -68,14 +68,20 @@
                             '<em class="blind">판매가격</em>' +
                             '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
                         '</div>{{/if}}' +
-                        '{{#if obsTotalDiscountPrice}}<div class="total">' +
+                        '{{#if obsSellingPrice}}<div class="total">' +
                             '<em class="blind">총 판매가격</em>' +
-                            '<span class="price">{{obsTotalDiscountPrice}}<em>원</em></span>' +
+                            '<span class="price">{{obsSellingPrice}}<em>원</em></span>' +
                         '</div>{{/if}}' +
+                        '{{#if discount}}'+
+                        '<div class="discount">'+
+                            '<em class="blind">할인율</em>'+
+                            '<span class="percentage">{{discount}}%</span>'+
+                        '</div>'+
+                        '{{/if}}'+
                     '</div>' +
                     '<div class="btn-area-wrap">' +
                         '<div class="cart">' +
-                            '<a href="#n" class="btn-cart{{#if obsBtnRule != "enable"}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{modelName}}" data-rtSeq="{{rtModelSeq}}" data-type-flag="{{bizType}}" {{#if obsBtnRule != "enable"}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
+                            '<a href="#n" class="btn-cart{{#if obsBtnRule != "enable"}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-rtSeq="{{rtModelSeq}}" data-type-flag="{{bizType}}" {{#if obsBtnRule != "enable"}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
                         '</div>' +
                         '<div class="btn-area">' +
                             '<a href="{{modelUrlPath}}" class="btn border size-m" data-id="{{modelId}}">자세히 보기</a>' +
@@ -84,7 +90,7 @@
                 '</div>' +
             '</div>'+
         '</li>';
-
+        
     var $contents;
 
     function init(){
@@ -125,9 +131,11 @@
     function requestSibling(rdo){
         var modelId = $(rdo).val();
         var changeItem = $(rdo).closest('.evt-item').parent();
+        var bizType = changeItem.find('.product-bottom .btn-area-wrap .cart a').attr('data-type-flag');
         var ajaxurl = $contents.attr('data-sibling-url');
         var sendata = {
             "modelId": modelId,
+            "bizType": bizType,
             "pageType": "plp",
             "callType": "productSummary"
         }            
@@ -175,11 +183,10 @@
         item.bestBadgeFlag = lgkorUI.stringToBool(item.bestBadgeFlag);
         item.cashbackBadgeFlag = lgkorUI.stringToBool(item.cashbackBadgeFlag);
 
-        var inputdata = lgkorUI.getHiddenInputData();
-        item.newProductBadgeName = inputdata.newProductBadgeName;
-        item.bestBadgeName = inputdata.bestBadgeName;
-        item.cashbackBadgeName = inputdata.cashbackBadgeName;
-        item.lastBulletName = inputdata.lastBulletName;
+        if(!item.newProductBadgeName) item.newProductBadgeName = "신제품"
+        if(!item.bestBadgeName) item.bestBadgeName = "베스트";
+        if(!item.cashbackBadgeName) item.cashbackBadgeName = "캐시백"
+        if(!item.lastBulletName) item.lastBulletName = "케어십 가능";
         
         //장바구니
         item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);
@@ -201,6 +208,12 @@
         }
 
         if(!item.obsBtnRule) item.obsBtnRule = "";
+
+        if(!item.sku) item.sku = item.modelName;
+
+        if(!item.discount) item.discount = "";
+
+        if(!item.obsSellingPrice) item.obsSellingPrice = "";
 
         //console.log("### item.siblingType ###", item.siblingType)
 

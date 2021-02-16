@@ -3,7 +3,7 @@
     var productItemTemplate =
     '<li>' +
         '<div class="item plp-item">' +
-        '{{#if promotionBadges}}'+
+        '{{#if obsBtnRule == "enable" && promotionBadges}}'+
             '<div class="badge">' +
                 '<div class="flag-wrap image-type left">'+
                     '{{#each badge in promotionBadges}}'+
@@ -25,7 +25,7 @@
                     '<div class="slide-track ui_carousel_track">' +
                         '{{#each (image, idx) in sliderImages}}'+
                             '<div class="slide-conts ui_carousel_slide">' +
-                                '<a href="{{modelUrlPath}}"><img data-lazy="{{image}}" alt="{{modelDisplayName}} {{idx + 1}}번 이미지"></a>' +
+                                '<a href="{{modelUrlPath}}"><img data-lazy="{{image}}" alt="{{imageAltText}} {{idx + 1}}번 이미지"></a>' +
                             '</div>' +
                         '{{/each}}'+
                     '</div>' +
@@ -93,25 +93,34 @@
                 '<div class="flag-wrap bar-type">' +
                     '{{#if cashbackBadgeFlag}}<span class="flag">{{cashbackBadgeName}}</span>{{/if}}' +
                 '</div>' +
+                '{{#if obsBtnRule == "enable"}}'+
                 '<div class="price-area">' +
-                    '{{#if obsOriginalPrice}}<div class="original">' +
-                        '<em class="blind">판매가격</em>' +
-                        '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-                    '</div>{{/if}}' +
-                    '{{#if obsTotalDiscountPrice}}<div class="total">' +
-                        '<em class="blind">총 판매가격</em>' +
-                        '<span class="price">{{obsTotalDiscountPrice}}<em>원</em></span>' +
-                    '</div>{{/if}}' +
+                    '{{#if obsTotalDiscountPrice}}'+
+                        '{{#if obsOriginalPrice}}<div class="original">' +
+                            '<em class="blind">판매가격</em>' +
+                            '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
+                        '</div>{{/if}}' +
+                        '{{#if obsSellingPrice}}<div class="total">' +
+                            '<em class="blind">총 판매가격</em>' +
+                            '<span class="price">{{obsSellingPrice}}<em>원</em></span>' +
+                        '</div>{{/if}}' +
+                    '{{#else}}'+
+                        '{{#if obsOriginalPrice}}<div class="total">' +
+                            '<em class="blind">총 판매가격</em>' +
+                            '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
+                        '</div>{{/if}}' +
+                    '{{/if}}'+
                 '</div>' +
+                '{{/if}}'+
                 '<div class="btn-area-wrap">' +
                     '<div class="wishlist">' +
                         '<span class="chk-wish-wrap large">' +
-                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{modelName}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' +
-                            '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>' +
+                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}} {{#if obsBtnRule != "enable"}}disabled{{/if}}>' +
+                            '<label for="wish-{{modelId}}" {{#if obsBtnRule != "enable"}}style="opacity:.3;"{{/if}}><span class="blind">찜하기</span></label>' +
                         '</span>' +
                     '</div>' +
                     '<div class="cart">' +
-                        '<a href="#n" class="btn-cart{{#if obsBtnRule != "enable"}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{modelName}}" data-rtSeq="{{rtModelSeq}}" data-type-flag="{{bizType}}" {{#if obsBtnRule != "enable"}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
+                        '<a href="#n" class="btn-cart{{#if obsBtnRule != "enable"}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-rtSeq="{{rtModelSeq}}" data-type-flag="{{bizType}}" {{#if obsBtnRule != "enable"}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
                     '</div>' +
                     '<div class="btn-area">' +
                         '<a href="{{modelUrlPath}}" class="btn border size-m" data-id="{{modelId}}">자세히 보기</a>' +
@@ -217,6 +226,8 @@
                 self.addCarouselModule();
 
                 self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
+
+                self.cateWrapStatus();
             },
 
             bindEvents: function() {
@@ -355,6 +366,12 @@
                         self.requestSearch(param, false);
                     }
                 });
+
+                if(!$('.cate-m .cate-wrap').length){
+                    $(window).on('resize', function(){
+                        self.cateWrapStatus();
+                    })
+                }
             },
 
             setPageData: function(param) {
@@ -384,13 +401,6 @@
                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
                     console.log("### requestSearch onComplete ###");
                     var data = result.data[0];
-
-                    if(data.schCategoryId && data.schCategoryId.length > 0) {
-                        categoryId = data.schCategoryId;
-                        lgkorUI.setHiddenInputData({
-                            "categoryId":categoryId
-                        });
-                    }
                     
                     var totalCount = data.productTotalCount ? data.productTotalCount : 0;
                     self.$totalCount.text(vcui.number.addComma(totalCount) + "개");
@@ -461,7 +471,6 @@
                     item.siblings[str].siblingType = (siblingType == "color") ? "color" : "text";
                 }
 
-                /*
                 var sliderImages = [item.mediumImageAddr];
                 if(item.rollingImages && item.rollingImages.length){
                     item.rollingImages.forEach(function(obj, idx) {
@@ -470,8 +479,8 @@
                         }
                     });
                 }
-                */
 
+                /*
                 var sliderImages = [];
                 if(item.rollingImages && item.rollingImages.length){
                     item.rollingImages.forEach(function(obj, idx) {
@@ -482,10 +491,12 @@
                 } else {
                     sliderImages.push(item.smallImageAddr);
                 }
+                */
                 item.sliderImages = sliderImages;
                 
                 item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
                 item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
+                item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
 
                 //flag
                 item.newProductBadgeFlag = lgkorUI.stringToBool(item.newProductBadgeFlag);
@@ -519,6 +530,10 @@
 
                 if(!item.obsBtnRule) item.obsBtnRule = "";
 
+                if(!item.sku) item.sku = item.modelName;
+
+                if(!item.obsSellingPrice) item.obsSellingPrice = "";
+
                 //console.log("### item.siblingType ###", item.siblingType)
 
                 return vcui.template(productItemTemplate, item);
@@ -538,7 +553,6 @@
                             $(item).off('mouseover mouseout mouseleave').vcCarousel("setOption", {autoplay:false,'speed':300}, true);
 
                             if(name == 'pc'){
-                                console.log("fnBreakPoint:", item)
                                 $(item).vcCarousel("setOption", {'speed':0}, true ).on('mouseover mouseout mouseleave', function(e){
                                     // 상품 아이템을 오버시 이미지를 롤링.
                                     if($(e.currentTarget).data('ui_carousel')){
@@ -590,7 +604,7 @@
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
                 var isCompare = vcui.isEmpty(storageCompare);
                 if(!isCompare){
-                    if(vcui.isEmpty(storageCompare[categoryId]))
+                    if(!vcui.isEmpty(storageCompare[categoryId]))
                     for(var i in storageCompare[categoryId]){
                         var modelID = storageCompare[categoryId][i]['id'];
                         self.$productList.find('li .product-compare a[data-id=' + modelID + ']').addClass('on');
@@ -598,10 +612,12 @@
                 }
             },
 
+            //비교하기 담기
             setCompareState:function(atag){
                 var $this = $(atag);
                 var _id = $this.data('id');
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                console.log("### setCompareState ###", categoryId)
                 if(!$this.hasClass('on')){
                     var compare = $this.closest('.product-compare');
                     var contents = compare.siblings('.product-contents');
@@ -624,6 +640,13 @@
                     if(isAdd) $this.addClass("on");
                 } else{
                     lgkorUI.removeCompareProd(categoryId, _id);
+                }
+            },
+
+            cateWrapStatus: function(){
+                if(!$('.cate-m .cate-wrap').length){
+                    if($(window).innerWidth() > 1024) $('.cate-m').hide();
+                    else $('.cate-m').show();
                 }
             }
         };

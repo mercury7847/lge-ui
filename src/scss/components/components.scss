@@ -138,7 +138,7 @@
 .component-wrap .title {
     .logo {
         float:none;
-        height:52px;
+        height:66px;
         padding:0;
         vertical-align:top;
     }
@@ -959,6 +959,12 @@
         max-width:100%;
     }
 
+}
+
+.component-wrap {
+    .component[class*=KRC] * {
+        word-break:keep-all;
+    }
 }
 
 html.modal-open {

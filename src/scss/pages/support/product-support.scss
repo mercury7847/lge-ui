@@ -142,6 +142,10 @@
                 .point {
                     color:#da0f47;
                 }
+                .btn-delete {
+                    position:static;
+                    margin:-4px 0 0 4px;    
+                }
             }
             .btn-back {
                 display:inline-block;
@@ -155,6 +159,13 @@
         .result-box {
             float:right;
             width:calc(100% - 234px);
+            .list-wrap {
+                .tit {
+                    .keyword {
+                        color:#da0f47;
+                    }
+                }
+            }
             @include mobile {
                 float:none;
                 width:100%;
@@ -221,6 +232,9 @@
             padding:32px 24px;
             border-radius:8px;
             background-color: #f4f4f4;
+            .search-more {
+                display:none;
+            }
             @include mobile {
                 margin-bottom:40px;
                 padding:32px 16px;
@@ -531,13 +545,6 @@
         .card-news-view {
             .card-news-tit {
                 margin-bottom:64px;
-                padding:24px 40px;
-                @include font-medium;
-                border-radius:8px;
-                background:#f4f4f4;
-                strong {
-                    font-weight:$font-weight-bold;
-                }
             }
             .view-content-title {
                 margin-bottom: 16px;

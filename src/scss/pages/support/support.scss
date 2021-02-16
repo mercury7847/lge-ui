@@ -1138,6 +1138,16 @@
             }
         }
     }
+
+    .card-news-tit {
+        padding:24px 40px;
+        @include font-medium;
+        border-radius:8px;
+        background:#f4f4f4;
+        strong {
+            font-weight:$font-weight-bold;
+        }
+    }
 } //support
 
 

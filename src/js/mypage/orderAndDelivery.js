@@ -73,6 +73,20 @@
                 '</div>'+
             '</div>'+
         '</div>';
+    
+    var shippingListTemplate = '<li><dl><dt>성명</dt><dd>{{maskingName}}</dd></dl></li>' +
+        '<li><dl><dt>배송주소</dt><dd>{{postcode}} {{maskingAddress}}</dd></dl></li>' +
+        '<li><dl><dt>휴대폰</dt><dd>{{maskingTelephone}}</dd></dl></li>' +
+        '<li><dl><dt>연락처</dt><dd>{{maskingTelephonenumber}}</dd></dl></li>' +
+        '<li><dl><dt>배송시 요청사항</dt><dd>{{shippingNoteTxt}}</dd></dl></li>' +
+        '<li><dl><dt>사전 방문 신청</dt><dd>{{#if instpectionVisit}}신청{{#else}}미신청{{/if}}</dd></dl></li>' +
+        '<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>';
+
+    var paymentListTemplate = '<li><dl><dt>결제 수단</dt><dd>신용카드(분할결제) 결제수단</dd></dl></li>' +
+        '<li><dl><dt>주문 금액</dt><dd>10,000원</dd></dl></li>' +
+        '<li><dl><dt>할인 금액</dt><dd>-6,000원</dd></dl>' +
+        '</li><li><dl><dt>멤버십포인트</dt><dd>-340원</dd></dl>' +
+        '</li><li><dl><dt>총 결제 금액</dt><dd>4,000원</dd></dl></li>';
 
     var CURRENT_PAGE, TOTAL_PAGE;
 
@@ -257,9 +271,8 @@
     function setProductStatus(dataId, prodId, pdpUrl){
         lgkorUI.showLoading();
         var sendata = {
-            productNameEN: ORDER_LIST[dataId].productList[prodId].productNameEN
+            "sku": ORDER_LIST[dataId].productList[prodId].productNameEN
         }
-        console.log("setProductStatus:", sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PRODUCT_STATUS_URL, sendata, function(result){
             if(result.data.success == "N"){
                 lgkorUI.alert("", {
@@ -282,10 +295,8 @@
             page: page || 1,
             orderNumber: $('.contents.mypage').data('orderNumber')
         }
-        console.log("### requestOrderInquiry ###", sendata)
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
             var data = result.data;
-            console.log("result.data.listData:", data.listData);
 
             var prodcnt = data.productOrderCount ? data.productOrderCount : 0;
             $('.lnb-contents .tabs-wrap .tabs > li:nth-child(1) .count').text('('+prodcnt+')');
@@ -328,38 +339,29 @@
                 }
 
                 //배송정보
-                var $listBox = $('.inner-box:eq(0)');
+                var $listBox = $('.inner-box:eq(0) ul');
                 if(data.shipping && $listBox.length > 0) {
                     var shipping = data.shipping;
-                    //성명
-                    $listBox.find('li:eq(0) dl dd').html(txtMasking.name(shipping.name));
-                    //배송주소
-                    $listBox.find('li:eq(1) dl dd').html(txtMasking.substr(shipping.postcode + " " + shipping.city + " " + shipping.street,20));
-                    //휴대폰
-                    $listBox.find('li:eq(2) dl dd').html(txtMasking.phone(shipping.telephone));
-                    //연락처
-                    $listBox.find('li:eq(3) dl dd').html(txtMasking.phone(shipping.telephonenumber));
-                    //배송시요청사항
-                    $listBox.find('li:eq(4) dl dd').html(shipping.shippingNoteTxt);
-                    //사전방문신청
-                    $listBox.find('li:eq(5) dl dd').html(lgkorUI.stringToBool(shipping.instpectionVisit) ? "신청" : "미신청");
-                    //폐가전수거
-                    $listBox.find('li:eq(6) dl dd').html(lgkorUI.stringToBool(shipping.recyclingPickup) ? "수거신청" : "해당없음");
+                    shipping.maskingName = txtMasking.name(shipping.name);
+                    shipping.maskingAddress = txtMasking.substr(shipping.city + " " + shipping.street,14);
+                    shipping.maskingTelephone = txtMasking.phone(shipping.telephone);
+                    shipping.maskingTelephonenumber = txtMasking.phone(shipping.telephonenumber);
+                    shipping.instpectionVisit = lgkorUI.stringToBool(shipping.instpectionVisit);
+                    shipping.recyclingPickup = lgkorUI.stringToBool(shipping.recyclingPickup);
+
+                    $listBox.html(vcui.template(shippingListTemplate, shipping));
                 }
+
                 //결제정보
-                $listBox = $('.inner-box:eq(1)');
+                $listBox = $('.inner-box:eq(1) ul');
                 if(data.payment && $listBox.length > 0) {
                     var payment = data.payment;
-                    //결제수단
-                    $listBox.find('li:eq(0) dl dd').html(payment.paymentMethodName);
-                    //주문 금액
-                    $listBox.find('li:eq(1) dl dd').html(vcui.number.addComma(payment.subtotal)+"원");
-                    //할인 금액
-                    $listBox.find('li:eq(2) dl dd').html("-"+vcui.number.addComma(payment.discount)+"원");
-                    //멤버십 포인트
-                    $listBox.find('li:eq(3) dl dd').html("-"+vcui.number.addComma(payment.membershipPoint)+"원");
-                    //총 결제 금액
-                    $listBox.find('li:eq(4) dl dd').html(vcui.number.addComma(payment.grandTotal)+"원");
+                    payment.subtotal = vcui.number.addComma(payment.subtotal);
+                    payment.discount = vcui.number.addComma(payment.discount);
+                    payment.membershipPoint = vcui.number.addComma(payment.membershipPoint);
+                    payment.grandTotal = vcui.number.addComma(payment.grandTotal);
+
+                    $listBox.html(vcui.template(paymentListTemplate, payment));
                 }
 
             } else{

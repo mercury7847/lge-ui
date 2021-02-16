@@ -242,10 +242,12 @@
         COMPARE_COOKIE_NAME: "LG5_CompareCart", //비교하기 쿠키
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
         init: function(){
+            this._bindErrBackEvent();
             this._addImgOnloadEvent();
             this._preloadComponents();
             this._addTopButtonCtrl();
             this._createMainWrapper();
+            this._switchLinker();
         },
 
         _addImgOnloadEvent: function(){
@@ -368,6 +370,8 @@
                     for(var idx in self.resizeCallbacks){
                         self.resizeCallbacks[idx].call();
                     }
+
+                    self._switchLinker();
 
                     self.resetFlexibleBox();
                 });  
@@ -496,6 +500,27 @@
                     scrollTop: 0
                 }, 400);
             });
+        },
+
+        _switchLinker: function(){
+            $('body').find('a[data-pc-href]').each(function(idx, item){
+                var href = vcui.detect.isMobileDevice ? $(item).data("mHref") : $(item).data("pcHref");
+                $(item).attr('href', href);
+            });
+        },
+
+        //에러 페이지 되돌아가기
+        _bindErrBackEvent: function(){
+            $('body').find('.contents.error-page .btns a').on('click', function(e){
+                e.preventDefault();
+
+                var referrer = document.referrer;
+                var index = referrer.indexOf('lge.co.kr');
+                // if(index > 0) history.back();
+                // else location.href = 
+
+                history.back();
+            })
         },
 
         resetFlexibleBox: function(){
@@ -648,6 +673,8 @@
         addCompareProd: function(categoryId, data){
             var self = this;
 
+            console.log("### addCompareProd ###", categoryId)
+
             self.COMPARE_LIMIT = window.breakpoint.isMobile ? 2 : 3;
 
             var compareStorage = self.getStorage(self.COMPARE_KEY);
@@ -663,10 +690,6 @@
                 }
             }
             self.setStorage(self.COMPARE_KEY, compareStorage);
-
-            for(var str in compareStorage){
-                console.log(compareStorage[str])
-            }
 
             return true;
         },
@@ -685,9 +708,21 @@
         initCompareProd: function(categoryId){
             var self = this;
             
-            var obj = {};
-            obj[categoryId] = [];
-            self.setStorage(self.COMPARE_KEY, obj);
+            self.removeStorage(self.COMPARE_KEY, categoryId);
+        },
+
+        setCompapreCookie: function(categoryId){
+            var self = this;
+
+            var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
+            var compareIDs = [];
+            for(var idx in compareStorage) compareIDs.push(compareStorage[idx].id);
+
+            var compareCookie = compareIDs.join("|");
+
+            console.log("### setCompapreCookie ###", compareCookie);
+
+            self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);
         },
 
         setStorage: function(key, value){
@@ -695,6 +730,8 @@
             var storageData = storage? JSON.parse(storage) : {};        
             storageData = Object.assign(storageData, value);
             sessionStorage.setItem(key, JSON.stringify(storageData));
+
+            console.log("### setStorage ###", storageData)
             
             $(window).trigger("changeStorageData");
 

@@ -1,7 +1,7 @@
 (function() {
     var listItemTemplate = '<li>' +
         '<div class="flag-wrap"><span class="flag">{{progress}}</span></div>' +
-        '<p class="title"><a href="#{{id}}">[{{inquiryType}}] {{title}}</a></p>' +
+        '<p class="title"><a href="{{serviceUrl}}">[{{inquiryType}}] {{title}}</a></p>' +
         '<div class="info">' +
             '<ul class="model">' +
                 '<li>{{#if modelCategory}}{{modelCategory}}{{/if}}{{#if modelCategory&&modelName}} : {{/if}}{{#if modelName}}{{modelName}}{{/if}}</li>' +
@@ -75,8 +75,7 @@
 
                 self.$myLists.on("click", "a", function(e){
                     e.preventDefault();
-                    var _id = $(this).attr('href').replace("#","");
-                    self.openServiceDetailPopup(_id);
+                    self.requestModal(this);
                 });
 
                 self.$pagination.on('page_click', function(e, data) {
@@ -86,7 +85,7 @@
                 });
 
                 //서비스 상세 팝업
-                var $detailPopup = self.$contWrap.find('article.popup-wrap');
+                var $detailPopup = self.$contWrap.find('#event-modal');
 
                 //예약취소/변경 버튼
                 $detailPopup.on('click', 'div.flt-cont button', function(e) {
@@ -200,6 +199,19 @@
                 }
             },
 
+            requestModal: function(dm) {
+                var self = this;
+                var ajaxUrl = $(dm).attr('href');
+                lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
+                    self.openModalFromHtml(result);
+                }, null, "html");
+            },
+
+            openModalFromHtml: function(html) {
+                $('#event-modal').html(html).vcModal();
+            },
+
+            /*
             openServiceDetailPopup: function(id) {
                 var self = this;
                 var ajaxUrl = self.$lnbContents.attr('data-service-url');
@@ -380,6 +392,7 @@
                     $popup.vcModal();
                 });
             },
+            */
 
             selectPopupConfirmType: function($popup, type) {
                 $popup.attr('data-type', type);

@@ -79,7 +79,7 @@
                 bottom: 0;
                 left: 0;
                 padding: 5px 0;
-                background-color: rgba(#000, .4);
+                //background-color: rgba(#000, .4);
                 transform: none;
                 .arr {
                     width: 100%;
@@ -103,7 +103,11 @@
 }
 
 .brand-wrap {
-    .ui_sticky {
+    &.on {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
         background-color: $color-bg-wt;
     }
     .tabs-wrap {

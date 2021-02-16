@@ -456,7 +456,6 @@
 
             // 솔루션 배너
             self.$solutionsBanner.find('.btn-link').on('click', function(){
-                var url = $(this).data('href');
                 var param = {
                     topic : $('input[name=topic]:checked').val(),
                     subToic : $('input[name=subTopic]:checked').val(),
@@ -464,7 +463,7 @@
                     page: 1
                 };   
 
-                self.setSolutions(url, param, false);
+                self.setSolutions(param, false);
             });
 
             // 날짜 선택
@@ -574,6 +573,26 @@
             self.$subTopicList.empty();
             self.$solutionsBanner.hide();
 
+            self.$citySelect.find('option:first-child').prop('selected', true);
+            self.$citySelect.vcSelectbox('update');
+            self.$boroughSelect.find('option:first-child').prop('selected', true);
+            self.$boroughSelect.prop('disabled', true).vcSelectbox('update');
+            self.$localSearchButton.prop('disabled', true);
+            
+            self.$subwayCitySelect.find('option:first-child').prop('selected', true);
+            self.$subwayCitySelect.vcSelectbox('update');
+            self.$subwayLineSelect.find('option:first-child').prop('selected', true);
+            self.$subwayLineSelect.prop('disabled', true).vcSelectbox('update');
+            self.$subwayStationSelect.find('option:first-child').prop('selected', true);
+            self.$subwayStationSelect.prop('disabled', true).vcSelectbox('update');
+            self.$searchSubwayButton.prop('disabled', true);
+
+            self.$citySelect2.find('option:first-child').prop('selected', true);
+            self.$citySelect2.vcSelectbox('update');
+            self.$address1.val('').prop('disabled', true);
+
+
+
             $('#engineerNm').val('');
             $('#engineerCode').val('');
             $('#centerNm').val('');
@@ -593,6 +612,8 @@
             } else {
                 self.$myProductWrap.show();
             }
+
+            self.$completeBtns.hide();
 
             self.$cont.commonModel('next', self.$stepModel);
         },
@@ -914,12 +935,14 @@
                 $('#solutionsFlag').val(data.resultFlag);
             });
         },
-        setSolutions: function(url, param, isShown) {
+        setSolutions: function(param, isShown) {
             var self = this;
+            var url = self.$solutionsPopup.data('listUrl');
 
             lgkorUI.requestAjaxData(url, param, function(result){
                 self.$solutionsPopup.find('.pop-conts').html(result);
                 self.$solutionsPopup.find('.pagination').pagination();
+                
                 if (isShown) {
                     self.$solutionsPopup.find('.ui_accordion').vcAccordion();
                 } else {
@@ -927,15 +950,14 @@
                 }
 
                 self.$solutionsPopup.find('.pagination').on('pageClick', function(e) {
-                    var url = self.$solutionsPopup.data('listUrl'),
-                        param = {
+                    var param = {
                             topic : $('input[name=topic]:checked').val(),
                             subToic : $('input[name=subTopic]:checked').val(),
                             productCode : $('#productCode').val(),
                             page: e.page
                         };
 
-                    self.setSolutions(url, param, true);
+                    self.setSolutions(param, true);
                 });
             }, null, "html", true);
         },
