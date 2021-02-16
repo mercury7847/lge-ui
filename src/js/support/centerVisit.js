@@ -573,6 +573,26 @@
             self.$subTopicList.empty();
             self.$solutionsBanner.hide();
 
+            self.$citySelect.find('option:first-child').prop('selected', true);
+            self.$citySelect.vcSelectbox('update');
+            self.$boroughSelect.find('option:first-child').prop('selected', true);
+            self.$boroughSelect.prop('disabled', true).vcSelectbox('update');
+            self.$localSearchButton.prop('disabled', true);
+            
+            self.$subwayCitySelect.find('option:first-child').prop('selected', true);
+            self.$subwayCitySelect.vcSelectbox('update');
+            self.$subwayLineSelect.find('option:first-child').prop('selected', true);
+            self.$subwayLineSelect.prop('disabled', true).vcSelectbox('update');
+            self.$subwayStationSelect.find('option:first-child').prop('selected', true);
+            self.$subwayStationSelect.prop('disabled', true).vcSelectbox('update');
+            self.$searchSubwayButton.prop('disabled', true);
+
+            self.$citySelect2.find('option:first-child').prop('selected', true);
+            self.$citySelect2.vcSelectbox('update');
+            self.$address1.val('').prop('disabled', true);
+
+
+
             $('#engineerNm').val('');
             $('#engineerCode').val('');
             $('#centerNm').val('');
@@ -592,6 +612,8 @@
             } else {
                 self.$myProductWrap.show();
             }
+
+            self.$completeBtns.hide();
 
             self.$cont.commonModel('next', self.$stepModel);
         },
