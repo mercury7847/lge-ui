@@ -14,15 +14,15 @@
             <div class="contents thinq-main" >
                 <div class="sub-main">
                     <!-- Hero Banner -->
-                    <div class="brand-hero thinq-hero">
+                    <div class="brand-hero thinq-hero" id='skrollr-body'>
                         <div id="fixed-wrap">
                             <div class="scene01">
                                 <div class="image ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/img-visual01.jpg')" data-pc-src="/lg5-common/images/PRH/img-visual01.jpg" data-m-src="/lg5-common/images/PRH/img-visual01-m.jpg" aria-hidden="true"></div>
                                 <div class="content">
-                                    <div class="cont1" data-step-0="opacity:0, y:-100px" data-step-1="opacity:1, y:0px" data-step-2="opacity:0, y:0px">
+                                    <div class="cont1" data-frame-0="opacity:0; transform[quadratic]: translateY(500%);" data-frame-400="opacity:1; transform[quadratic]: translateY(0%);" data-frame-800="opacity:1; transform[quadratic]: translateY(0%);" data-frame-1200="opacity:0; transform[quadratic]: translateY(-600%);">
                                         <span>한번도 느껴보지 <br class="mo-only">못한 자유</span>
                                     </div>
-                                    <div class="cont2" data-step-1="opacity:0, y:-100" data-step-2="opacity:1, y:0">
+                                    <div class="cont2" data-frame-900="opacity:0; transform[quadratic]: translateY(300%);" data-frame-1300="opacity:1; transform[quadratic]: translateY(-100%);">
                                         <p>Think Wise. Be Free.</p>
                                         <div class="logo-area"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" alt="LG ThinQ"></div>
                                     </div>
@@ -33,31 +33,29 @@
                                 <div class="next-arr">
                                     <a href="#" class="arr"><span class="blind">아래로 스크롤</span></a>
                                 </div>    
-                                <div class="dimmed" data-step-0="display:block, opacity:0" data-step-1="opacity:1"></div>  
+                                <div class="dimmed" data-frame-0="display:block; opacity:0;" data-frame-400="opacity:1;"></div>  
                             </div>
-
-
                             <div class="scene02">
-                                <div class="image ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/img-visual02.jpg')" data-pc-src="/lg5-common/images/PRH/img-visual02.jpg" data-m-src="/lg5-common/images/PRH/img-visual02-m.jpg" aria-hidden="true"></div>
+                                <div class="image ui_bg_switch" data-frame-0="opacity:0.5;" data-frame-200="opacity:1;" style="background-image:url('/lg5-common/images/PRH/img-visual02.jpg')" data-pc-src="/lg5-common/images/PRH/img-visual02.jpg" data-m-src="/lg5-common/images/PRH/img-visual02-m.jpg" aria-hidden="true"></div>
                                 <div class="content">
-                                    <div class="cont1" data-step-0="opacity:0, y:100%" data-step-1="opacity:1, y:0%">
+                                    <div class="cont1" data-frame-200="opacity:0; transform[quadratic]: translateY(100%);" data-frame-600="opacity:1; transform[quadratic]: translateY(0%);">
                                         <span>LG만의 인공지능기술이 <br>적용된 LG ThinQ</span>
-                                    </div>                                    
-                                </div>
-                                <div class="count">
-                                    <span>2/3</span>
-                                </div>
-                                <div class="next-arr">
-                                    <a href="#" class="arr"><span class="blind">아래로 스크롤</span></a>
+                                    </div>
+                                    <div class="count">
+                                        <span>2/3</span>
+                                    </div>
+                                    <div class="next-arr">
+                                        <a href="#" class="arr"><span class="blind">아래로 스크롤</span></a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="scene03">
                                 <div class="image ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/img-visual03.jpg')" data-pc-src="/lg5-common/images/PRH/img-visual03.jpg" data-m-src="/lg5-common/images/PRH/img-visual03-m.jpg" aria-hidden="true"></div>
                                 <div class="content">
-                                    <div class="cont1" data-step-0="opacity:0, y:100%" data-step-1="opacity:1, y:0%">
+                                    <div class="cont1" data-frame-0="opacity:0; transform[quadratic]: translateY(100%);" data-frame-400="opacity:1; transform[quadratic]: translateY(0%);">
                                         <span>당신의 삶이 보다 쉽고, <br>더 자유롭고, 더 나은</span>
                                     </div>
-                                    <div class="cont2" data-step-1="opacity:0, y:100%" data-step-2="opacity:1, y:0%">
+                                    <div class="cont2" data-frame-300="opacity:0; transform[quadratic]: translateY(100%);" data-frame-700="opacity:1; transform[quadratic]: translateY(0%);">
                                         <span>LG ThinQ는 단순히 기술을 위한 기술이 아닌 </span>
                                         <span>당신의 삶이 보다 쉽고, 더 자유롭고, 더 나은 삶이 될 수 있도록 돕습니다. </span>
                                         <span>이제 ThinQ를 통해 한번도 느껴보지 못한 자유를 누려보세요.</span>
@@ -74,7 +72,7 @@
                     </div>
                     <!-- // Hero Banner -->
                     <div class="brand-wrap thinq-wrap">
-                        <div>
+                        <div class="ui_sticky">
                             <div class="tabs-wrap thinq-tabs ui_tab">
                                 <ul class="tabs">
                                     <li class="on"><a href="#thinq-cont1">LG ThinQ<em class="blind">선택됨</em></a></li>
@@ -329,8 +327,8 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="mobile-device" style="position: fixed; top:0;">
-                                    <div class="frame" style="transform: scale(0.5);">
+                                <div class="mobile-device">
+                                    <div class="frame">
                                         <div class="device">
                                             <img src="/lg5-common/images/PRH/lg-phone-device.png" alt="" aria-hidden="true">
                                         </div>
@@ -1176,20 +1174,19 @@
                             </div>
                         </div>
                         <!-- // 제품 -->
-                        @@include('./common/footer.html')
                     </div>
                 </div>
             </div>
             <!-- // LG ThinQ -->
         </div>
         
-        <!-- @@include('./common/footer.html') -->
+        @@include('./common/footer.html')
     </div>
     <script>
 
         $(function() {
 
-            vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {
+            vcui.require(['ui/skrollr','ui/carousel'], function () {
 
                 $.extend( $.easing,{
                 def: 'easeOutQuad',
@@ -1298,74 +1295,25 @@
                 }); 
                 
                 
-                var $window   = $(window);
-                var aniSpeed = 800;
-                var wheelAniInterval = null;
-                var wheelInterval = null;            
+                var $window   = $(window);           
                 var canScroll = true;
                 var winHeight = $window.height();            
-                var currentStep = 0;
                 var currentPage = 0;
                 var touchSy = 0;
-                var $scenes = $('#fixed-wrap').children().add('.thinq-wrap');
-                var maxLens = $scenes.length-1;
-                var stepLens = 0;
+                var $scenes = $('#fixed-wrap').children();
+                var maxLens = $scenes.length - 1;
                 var posArr = [];
-                var wheelArr = [];
+                var skroll = null;
 
-                var regex = /^data-step-(-?\d*)/;
+	            var rexg = /^data-frame-(-?\d*)/;
 
-
-                $('#fixed-wrap').children().css({'overflow':'hidden'});
-                $('html').css({'overflow':'hidden'});
-                $('.container').css({'overflow':'visible', 'height':'auto'});     
                 
-                $('.next-arr').on('a', function(e){
-                    e.preventDefault();
-                });
+                $('#fixed-wrap').css({'position':'fixed', 'width':'100%'});
+                $('#fixed-wrap').find('.dimmed').hide();
 
-                /*
-                $window.on('breakpointchange', function(e){
-
-                    var data = window.breakpoint;
-                    var isRecom = $('.recom-list-slide').data('ui_carousel');
-                    var isBenefit = $('.benefit-list-slide').data('ui_carousel');
-
-                    if(data.name == 'mobile'){
-
-                        if(!isRecom){
-                            $('.recom-list-slide').vcCarousel({                        
-                                infinite: false,
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            });
-                        }
-
-                        if(!isBenefit){
-                            $('.benefit-list-slide').vcCarousel({                        
-                                infinite: false,
-                                slidesToShow: 1,
-                                slidesToScroll: 1                                
-                            });
-                        }
-
-                    }else if(data.name == 'pc'){
-
-                        $('.recom-list-slide').find('.ui_carousel_dots').hide();
-                        $('.benefit-list-slide').find('.ui_carousel_dots').hide();
-                        if(isRecom){
-                            $('.recom-list-slide').vcCarousel('destroy');
-                        }
-                        if(isBenefit){
-                            $('.benefit-list-slide').vcCarousel('destroy');
-                        }
-                    }
-
-                })
-                */
 
                 $window.on('resizeend', function(e){
-                    render();
+                    render();                    
                 });
 
                 $window.on('floatingTop', function(){
@@ -1373,404 +1321,115 @@
                 });         
 
 
-                function moveStep(step){
-
-                    if(!canScroll) return;  
-                    if(currentStep == step) return;
-
-                    canScroll = false; 
-
-                    var arr = wheelArr[step];
-                    if(!vcui.isArray(arr)){ 
-                        currentStep = step;
-                        return; 
-                    }
-
-                    for(var i =0; i<arr.length; i++){
-                        var item = arr[i];
-                        var $target = $(item.target);
-                        if(i==0){
-                            $target.transit(item.transit, function(){
-                                currentStep = step;
-                                canScroll = true
-                            });
-                        }else{
-                            $target.transit(item.transit);
-                        }   
-                    }
-
-                }
-
-
-                function wheelScene(delta) {
-
-                    if(!canScroll) return; 
-                    var nextStep = (delta < 0) ? -1 : 1;
-                    nextStep = nextStep + currentStep;
-                    nextStep = Math.max(Math.min(nextStep, stepLens), 0);                   
-                    if(currentStep == nextStep) return;
-                    //if(!direct && currentStep == nextStep) return;
-
-                    var arr = wheelArr[nextStep];
-
-                    if(vcui.isArray(arr)){
-                        var pageId = arr[0]['pageId'];
-                        if(currentPage == pageId){
-                            moveStep(nextStep);
-                        }else{
-                            moveScene(pageId, nextStep);
-                        }                        
-
-                    }else{
-                        moveScene(arr, nextStep);
-                    }
-                    
-                }
-
-                function stringToObj(str){
-                    
-                    var regex = /(.*)\:(.*)/;
-                    var arr = str.replace(/ /gi, "").split(',');
-                    var obj = {};
-
-                    for(var i=0; i<arr.length; i++){
-                        var match = arr[i].match(regex);
-                        if(match !== null){
-                            obj[match[1]] = match[2];
-                        }
-                    }
-
-                    return obj;
-
-                }
-
-                function moveScene(idx, step, speed){
-
-                    if(!canScroll) return;  
-                    canScroll = false;   
-
-                    $('.brand-wrap').scrollTop(0);                
-                    $('html').addClass('sceneMoving');                    
-                    if ( speed == undefined ) speed = aniSpeed;
-                    var scrollTopData = winHeight * idx;                    
-                    $scenes.removeClass('active').eq(idx).addClass('active');
-                    
-                    if(wheelAniInterval) clearTimeout(wheelAniInterval);
-                    wheelAniInterval = setTimeout(function() {
-                        if(! $('html').hasClass('sceneMoving')){
-                            return false;
-                        }
-
-                        $('html, body').stop(true).animate({
-                            scrollTop: scrollTopData
-                        }, speed, 'easeInOutQuart',  function() { 
-                            canScroll = true
-                            currentPage = idx;     
-                            moveStep(step);          
-                            $('html').removeClass('sceneMoving');
-                            $scenes.removeClass('on').eq(idx).addClass('on');
-                            
-                            $scenes.each(function() {
-                                if ( $(this).find('video').length != 0 ) {
-                                    if ( $(this).hasClass('on') ) {
-                                        $(this).find('video')[0].play();
-                                    }else {
-                                        $(this).find('video')[0].pause();
-                                        $(this).find('video')[0].currentTime = 0;							
-                                    }
-                                }
-                            });
-                        });
-                    }, 100);
-
-                } 
                 
-
-                document.addEventListener('wheel', function(e){
-                    
-                    if(currentStep == stepLens){
-                        if(wheelInterval) clearTimeout(wheelInterval);
-                        wheelInterval = setTimeout(function(){
-                            var st = $('.brand-wrap').scrollTop();
-                            if(st==0 && e.deltaY<0){
-                                wheelScene(-1);
-                            }
-                        }, 100);
-                    }else{
-                        if(e.deltaY>0 || e.deltaY<0){
-                            wheelScene(e.deltaY);
-                        }
-                    }  
-
-                });
-
-                
-                $(document).on('touchstart touchend touchcancel', function(e) {
-
-                    var data = _getEventPoint(e);
-                    if (e.type == 'touchstart') {
-                        touchSy = data.y;
-                    } else {
-
-                        if(currentStep == stepLens){
-                            if(wheelInterval) clearTimeout(wheelInterval);
-                            wheelInterval = setTimeout(function(){
-                                var st = $('.brand-wrap').scrollTop();
-                                if(st==0){
-                                    wheelScene(-1, true);
-                                }
-                            }, 100);
-
-                        }else{
-
-                            if (touchSy - data.y > 80) {
-                                wheelScene(1);
-                            } else if (touchSy - data.y < -80) {
-                                wheelScene(-1);
-                            }
-                        }    
-                        
-                    }
-                });
-
-
-                function _getEventPoint(ev, type) {
-                    var e = ev.originalEvent || ev;
-                    if (type === 'end'|| ev.type === 'touchend') e = e.changedTouches && e.changedTouches[0] || e;
-                    else e = e.touches && e.touches[0] || e;
-
-                    return {
-                        x : e.pageX || e.clientX,
-                        y : e.pageY || e.clientY
-                    };
-                }
-
-                function _findIdx(py){
-                    var idx = 0;
-                    for(var i=0; i<posArr.length; i++){
-                        if(posArr[i]>py){
-                            idx = i;
-                            break;
-                        }
-                    }
-                    return idx;                
-                }
-
-
-                function updateVideo(video) {
-
-                    var $o        = $(video||this),
-                        $wrap     = $o.closest('.img'),
-                        $image    = $wrap.find('img'),
-                        key       = $o.data('key'),
-                        loaded    = $o.data('loaded'),
-                        src       = $o.data('src'),
-
-                        // modeV     = 5, // 사이즈별로 로드시
-                        isAndroid = vcui.detect.isAndroid,
-                        srcArr = (function() {
-                            var s5 = $o.data('src-v5') || $o.data('src'),
-                                s4 = $o.data('src-v4') || s5,
-                                s3 = $o.data('src-v3') || s4,
-                                s2 = $o.data('src-v2') || s3,
-                                s1 = $o.data('src-v1') || s2,
-                                arr = [null,s1,s2,s3,s4,s5];
-                            return arr;
-                        })(),
-                        // src    = srcArr[modeV],
-                        src    = $o.data('src'),
-                        
-                        videoAttr = $o.data('options') || 'autoplay loop playsinline muted',
-                        $video    = $o.find('video'),
-                        $sources  = $o.find('source'),
-                        oVideo;
-
-                    // 비디오 요소 생성.
-                    var createVideoObject = function() {
-
-                        
-                        var extArr = $o.data('ext').toLowerCase().replace(/\s/g, '').split(',');
-                        if ( !extArr.length ) return false;
-
-
-                        var $video = $('<video '+ videoAttr +'></video>');
-
-                        for (var i = extArr.length - 1; i >= 0; i--) {
-                            if (extArr[i] == 'mp4') {
-                                $('<source>', {src: src+'.mp4', type: 'video/mp4', prependTo: $video});
-                            } else if (extArr[i] == 'webm') {
-                                $('<source>', {src: src+'.webm', type: 'video/webm', appendTo: $video});
-                            } else if (extArr[i] == 'ogv' || extArr[i] == 'ogg') {
-                                $('<source>', {src: src+'.ogv', type: 'video/ogg', appendTo: $video});
-                            }
-                        }
-                            
-                        if ( $o.data('alt') != null ) {
-                            $('<p>').text($o.data('alt')).appendTo($video);
-                        }
-                        $video.data($o.data());
-                        $o.replaceWith($video);
-
-                        $video   = $wrap.find('video');
-                        $sources = $video.find('source');
-
-                        $video.css({
-                            'position':'absolute',
-                            'width': 'auto !important',
-                            'height': 'auto !important',
-                            'min-width': '100%',
-                            'min-height': '100%',
-                            'top': '50%',
-                            'left': '50%',
-                            'transform': 'translate(-50%,-50%)'
-                        })
-                        oVideo   = $video[0];
-
-                        if ( isAndroid ) {
-                            $(document).one('touchstart.videoPlay', function() {
-                                oVideo.play();
-                            });
-                        }
-                        $wrap.addClass('video');
-
-                        $video.on('loadeddata', function(e) {
-                            $video.data('loaded', true);
-                            $wrap.trigger('videoLoaded');
-                            oVideo.play();
-                        }).trigger('load');
-                        
-                    }
-
-
-                    createVideoObject();
-
-
-                }
-
-
-                function render(page){
-
-                    if(wheelAniInterval) clearTimeout(wheelAniInterval);
-                    if(wheelInterval) setTimeout(wheelInterval);
-                    wheelAniInterval = null;
-                    wheelInterval = null;
-
-                    $('html, body').stop(true);
-                    $('html').removeClass('sceneMoving');   
-
-                    canScroll = true;    
+                function render(idx){                    
+  
                     winWidth = $window.width();
                     winHeight = $window.height();
                     posArr = [];
-                    wheelArr = [];
                                 
                     var $prevTarget = $('.container').prevAll(':visible:first');
                     var prevAllHeight = $prevTarget.offset().top + $prevTarget.height(); 
                     var totalHeight = winHeight;
                     var itemHeight = winHeight;
-                    var allHeight = 0;
+                    var durationArr = [];
+
+                    var attr = {
+                        ['data-0']:"top:"+ prevAllHeight +"px",
+                        ['data-'+ prevAllHeight] : "top:0px"
+                    };
 
                     
-                    $scenes.each(function(i) {
-                        
-                        var maxStep = 0;
-                        var arr = [];
-
-                        $(this).find('*').each(function(j){
+                    $scenes.each(function(i){
+                        var maxFrame = 0;
+                        $(this).find('*').each(function(){
 
                             var attributeIndex = 0;
-                            var attributesLength = this.attributes.length;   
-                            var cssVal = null;
-
+                            var attributesLength = this.attributes.length;
+                            var aObj = {};
+                            
                             for (; attributeIndex < attributesLength; attributeIndex++) {
                                 var attr = this.attributes[attributeIndex];
-                                var match = attr.name.match(regex);
+                                var match = attr.name.match(rexg);
                                 if(match === null) continue;
-                                if(attributeIndex==1) cssVal = stringToObj(attr.value);
-                                arr.push({
-                                    sort : match[1],
-                                    target : this,
-                                    transit : stringToObj(attr.value),
-                                    pageId : i                                 
-                                });                                
+                                aObj[match[0]] = attr.value;
+                                maxFrame = Math.max(maxFrame, parseInt(match[1]));
                             }
-                            if(cssVal) $(this).css(cssVal);
-
-                        });
-
-                        arr.sort(function(a,b){
-                            return parseInt(a.sort) - parseInt(b.sort);
-                        });
-
-                        var nArr = [];
-
-                        if(arr.length>0){
-
-                            var fArr = [arr[0]];
-                            for(var k=0; k<arr.length; k++){
-                                var obj1 = arr[k];  
-                                var obj2 = arr[k+1];  
-                                if(obj2){                            
-                                    if( obj1.sort !== obj2.sort){
-                                        wheelArr.push(fArr);
-                                        fArr = [obj2];
-                                    }else{
-                                        fArr.push(obj2);
-                                    }
-                                }else{
-                                    wheelArr.push(fArr);
-                                }
+                            if(!$.isEmptyObject(aObj)) {
+                                $(this).addClass('isframe').data('frame', aObj);
                             }
-                        }else{
-                            wheelArr.push(i);
-                        }                     
-
-
-                        if(i==0){
-                            itemHeight = winHeight-prevAllHeight;   
-                        }else{
-                            itemHeight = winHeight;    
-                        }
-                        allHeight += itemHeight;
-                        posArr.push(allHeight);
-                        $(this).height(itemHeight);
-                        totalHeight += itemHeight;
-
-
-                        $(this).find('.img > .video').each(function() {
-                            updateVideo(this);
                         });
-                                    
-                    });  
+                        durationArr.push(maxFrame);
+                    });
 
 
-                    stepLens = wheelArr.length-1;
-                    
-                    $('.brand-wrap').css({'overflow':'auto','height':winHeight});
-                    $('.contents').css({'overflow':'hidden', 'height':totalHeight});
+                    var cnt = 0;
+                    var frame = 0;
+                    var nArr = [];
+                    nArr.push(prevAllHeight);
 
-                    if(page!==undefined){
-                        currentPage = page;
-                        moveScene(currentPage,0);
+                    for(var i =0; i<(maxLens+1)*2; i++){
+                        if(i%2 != 0){  
+                            frame += durationArr[cnt];
+                            attr['data-'+(itemHeight*(i)+frame)] = "top:-"+ 100*(cnt) +"%";
+                            attr['data-'+(itemHeight*(i+1)+frame)] =  "top:-"+ 100*(cnt+1) +"%";
+                            nArr.push(itemHeight*(i)+frame);
+                            nArr.push(itemHeight*(i+1)+frame);
+                            totalHeight = itemHeight*(i+1)+frame;
+                            cnt++;
+                        }  
+                    }
+
+
+                    for(var j=0; j<nArr.length-1; j++){
+                        if(j%2 == 0) posArr.push({'start':nArr[j], 'end':nArr[j+1]});
+                    }
+                    totalHeight = totalHeight-prevAllHeight;
+
+                    $scenes.each(function(i){
+                        $(this).find('.isframe').each(function(){
+
+                            var frameObj = $(this).data('frame');
+                            if(frameObj){
+                                var pObj = posArr[i];
+                                var start = parseInt(pObj.start);
+                                var end = parseInt(pObj.end);
+                                var attrObj = {};
+
+                                $.each(frameObj, function(key, value){
+                                    var nKey = key.replace('data-frame-','');
+                                    attrObj['data-'+(parseInt(nKey) + start)] = value;
+                                });
+
+                                $(this).attr(attrObj);
+
+                            }
+                            
+                        });
+                    });
+
+
+
+                    $('#fixed-wrap').attr(attr);
+                    $('.thinq-hero').css({height:totalHeight});
+
+                    if(!skroll){
+                        skroll = skrollr.init({
+                            smoothScrolling : false,
+                            smoothScrollingDuration : 0,
+                        });
                     }else{
-                        setTimeout(function(){
-                            currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
-
-                            console.log(currentPage);
-
-                            var findArr = vcui.array.filterOne(wheelArr, function(item, index) {
-				                return typeof item === 'String';
-		                    });
-
-
-                            moveScene(currentPage,0);
-                        }, 100);
+                        skroll.refresh();
                     }
                     
+                    
+
                 }
 
                 $window.trigger('breakpointchange');
                 $window.trigger('resizeend');
+               
+
 
 
             });

@@ -40,7 +40,6 @@
                             top: 100px;
                         }
                         &[class*="2"] {
-                            @include calc(top,100%,-100px);
                         }
                     }
                 }
