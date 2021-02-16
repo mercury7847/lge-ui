@@ -538,13 +538,6 @@
         .card-news-view {
             .card-news-tit {
                 margin-bottom:64px;
-                padding:24px 40px;
-                @include font-medium;
-                border-radius:8px;
-                background:#f4f4f4;
-                strong {
-                    font-weight:$font-weight-bold;
-                }
             }
             .view-content-title {
                 margin-bottom: 16px;
