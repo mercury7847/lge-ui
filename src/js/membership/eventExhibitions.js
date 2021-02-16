@@ -131,9 +131,11 @@
     function requestSibling(rdo){
         var modelId = $(rdo).val();
         var changeItem = $(rdo).closest('.evt-item').parent();
+        var bizType = changeItem.find('.product-bottom .btn-area-wrap .cart a').attr('data-type-flag');
         var ajaxurl = $contents.attr('data-sibling-url');
         var sendata = {
             "modelId": modelId,
+            "bizType": bizType,
             "pageType": "plp",
             "callType": "productSummary"
         }            
