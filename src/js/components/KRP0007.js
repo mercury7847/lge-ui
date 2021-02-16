@@ -401,13 +401,6 @@
                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
                     console.log("### requestSearch onComplete ###");
                     var data = result.data[0];
-
-                    if(data.schCategoryId && data.schCategoryId.length > 0) {
-                        categoryId = data.schCategoryId;
-                        lgkorUI.setHiddenInputData({
-                            "categoryId":categoryId
-                        });
-                    }
                     
                     var totalCount = data.productTotalCount ? data.productTotalCount : 0;
                     self.$totalCount.text(vcui.number.addComma(totalCount) + "개");
@@ -503,6 +496,7 @@
                 
                 item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
                 item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
+                item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
 
                 //flag
                 item.newProductBadgeFlag = lgkorUI.stringToBool(item.newProductBadgeFlag);
@@ -559,7 +553,6 @@
                             $(item).off('mouseover mouseout mouseleave').vcCarousel("setOption", {autoplay:false,'speed':300}, true);
 
                             if(name == 'pc'){
-                                console.log("fnBreakPoint:", item)
                                 $(item).vcCarousel("setOption", {'speed':0}, true ).on('mouseover mouseout mouseleave', function(e){
                                     // 상품 아이템을 오버시 이미지를 롤링.
                                     if($(e.currentTarget).data('ui_carousel')){
@@ -611,7 +604,7 @@
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
                 var isCompare = vcui.isEmpty(storageCompare);
                 if(!isCompare){
-                    if(vcui.isEmpty(storageCompare[categoryId]))
+                    if(!vcui.isEmpty(storageCompare[categoryId]))
                     for(var i in storageCompare[categoryId]){
                         var modelID = storageCompare[categoryId][i]['id'];
                         self.$productList.find('li .product-compare a[data-id=' + modelID + ']').addClass('on');
@@ -619,10 +612,12 @@
                 }
             },
 
+            //비교하기 담기
             setCompareState:function(atag){
                 var $this = $(atag);
                 var _id = $this.data('id');
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                console.log("### setCompareState ###", categoryId)
                 if(!$this.hasClass('on')){
                     var compare = $this.closest('.product-compare');
                     var contents = compare.siblings('.product-contents');

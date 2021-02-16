@@ -26,6 +26,11 @@ $(window).ready(function(){
 
             //결과보기 버튼
             $('.btn-compare').on('click', function(e){
+                e.preventDefault();
+
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                lgkorUI.setCompapreCookie(categoryId);
+
                 var url = $(this).data('url');
                 if(url) {
                     location.href = url;
@@ -35,8 +40,9 @@ $(window).ready(function(){
             $('.sticy-compare .list-inner li').on('click', '.btn-close', function(e){
                 e.preventDefault();
 
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 var id = $(this).siblings('.item-inner').data("id");
-                lgkorUI.removeCompareProd(id);
+                lgkorUI.removeCompareProd(categoryId, id);
             });
 
             $('.right-cont .more-arrow').on('click', function(e){
@@ -59,20 +65,21 @@ $(window).ready(function(){
             $('.sticy-compare .list-inner li').empty();
 
             var categoryId = lgkorUI.getHiddenInputData().categoryId;
-            var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
+            var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
             var isCompare = vcui.isEmpty(storageCompare);
             if(!isCompare){
-                if(vcui.isEmpty(storageCompare[categoryId]))
-                for(var i in storageCompare[categoryId]){
-                    var name = "compare-" + storageCompare[categoryId][i]['id'];
-                    var list = $('.sticy-compare .list-inner li').eq(i);                    
-                    var listItem = vcui.template(itemTemplate, storageCompare[categoryId][i]);
-                    list.html(listItem);
+                console.log("### storageCompare ###", storageCompare)
+                if(!vcui.isEmpty(storageCompare)){
+                    for(var i in storageCompare){
+                        console.log("storageCompare[i]['id']:",storageCompare[i]['id'])
+                        var list = $('.sticy-compare .list-inner li').eq(i);                    
+                        var listItem = vcui.template(itemTemplate, storageCompare[i]);
+                        list.html(listItem);
+                    }
                 }
             }
 
-            var compare = storageCompare[categoryId]; 
-            var leng = !compare ? "0" : compare.length;
+            var leng = !storageCompare ? "0" : storageCompare.length;
             var $count = $('div.compare-title div.count');
             $count.text(leng + "/" + lgkorUI.COMPARE_LIMIT);
         }
@@ -80,10 +87,8 @@ $(window).ready(function(){
         function setCompareStatus(){
             console.log("setCompareStatus~~");
             var categoryId = lgkorUI.getHiddenInputData().categoryId;
-            var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
-            var compare = storageCompare[categoryId]; 
-            var leng = !compare ? 0 : compare.length;
-            console.log("leng:",leng)
+            var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
+            var leng = !storageCompare ? 0 : storageCompare.length;
             if(leng){
                 var limit = window.breakpoint.name == "mobile" ? 2 : 3;
                 if(_$('.KRP0015').css('display') == 'none'){
