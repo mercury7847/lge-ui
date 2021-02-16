@@ -8,7 +8,7 @@
         url('/lg5-common/fonts/NotoSans-Regular.woff2') format('woff2'),
         url('/lg5-common/fonts/NotoSans-Regular.woff') format('woff'),
         url('/lg5-common/fonts/NotoSans-Regular.otf') format('opentype');
-	// font-weight: 400;
+	font-weight: 400;
 }
 
 @font-face {
@@ -20,7 +20,7 @@
         url('/lg5-common/fonts/NotoSans-Medium.woff2') format('woff2'),
         url('/lg5-common/fonts/NotoSans-Medium.woff') format('woff'),
         url('/lg5-common/fonts/NotoSans-Medium.otf') format('opentype');
-	// font-weight: 500;
+	font-weight: 500;
 	font-style: normal;
 }
 
@@ -33,6 +33,6 @@
         url('/lg5-common/fonts/NotoSans-Bold.woff2') format('woff2'),
         url('/lg5-common/fonts/NotoSans-Bold.woff') format('woff'),
         url('/lg5-common/fonts/NotoSans-Bold.otf') format('opentype');
-	// font-weight: 700;
+	font-weight: 700;
 	font-style: normal;
 }
