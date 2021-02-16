@@ -2131,6 +2131,7 @@ var AuthManager = function() {
                 $(options.elem.name).val('');
                 $(options.elem.phone).val('');
             }
+            self.validation.reset();
         });
 
     }
@@ -2329,3 +2330,6 @@ $.fn.serializeObject = function() {
 
     document.addEventListener('DOMContentLoaded', commonInit);
 })(jQuery);
+
+var _AceGID=(function(){var Inf=['gtp20.acecounter.com','8080','AH5A40639666759','AW','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;var _T=new Image(0,0);if(_CI.join('.').indexOf(Inf[3])<0){ _T.src ="https://"+ Inf[0] +'/?cookie'; _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
+var _AceCounter=(function(){var G=_AceGID;var _sc=document.createElement('script');var _sm=document.getElementsByTagName('script')[0];if(G.o!=0){var _A=G.val[G.o-1];var _G=(_A[0]).substr(0,_A[0].indexOf('.'));var _C=(_A[7]!='0')?(_A[2]):_A[3];var _U=(_A[5]).replace(/\,/g,'_');_sc.src='https:'+'//cr.acecounter.com/Web/AceCounter_'+_C+'.js?gc='+_A[2]+'&py='+_A[4]+'&gd='+_G+'&gp='+_A[1]+'&up='+_U+'&rd='+(new Date().getTime());_sm.parentNode.insertBefore(_sc,_sm);return _sc.src;}})();

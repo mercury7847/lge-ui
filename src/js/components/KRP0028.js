@@ -132,7 +132,7 @@
             requestData: function(param, isMainTabClick) {
                 var self = this;
                 var ajaxUrl = self.$section.attr('data-list-url');
-                lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
+                lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                     var data = result.data;
                     //var param = result.param;
                     
