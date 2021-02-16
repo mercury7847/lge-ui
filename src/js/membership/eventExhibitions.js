@@ -181,11 +181,10 @@
         item.bestBadgeFlag = lgkorUI.stringToBool(item.bestBadgeFlag);
         item.cashbackBadgeFlag = lgkorUI.stringToBool(item.cashbackBadgeFlag);
 
-        var inputdata = lgkorUI.getHiddenInputData();
-        item.newProductBadgeName = inputdata.newProductBadgeName;
-        item.bestBadgeName = inputdata.bestBadgeName;
-        item.cashbackBadgeName = inputdata.cashbackBadgeName;
-        item.lastBulletName = inputdata.lastBulletName;
+        if(!item.newProductBadgeName) item.newProductBadgeName = "신제품"
+        if(!item.bestBadgeName) item.bestBadgeName = "베스트";
+        if(!item.cashbackBadgeName) item.cashbackBadgeName = "캐시백"
+        if(!item.lastBulletName) item.lastBulletName = "케어십 가능";
         
         //장바구니
         item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);
@@ -211,6 +210,8 @@
         if(!item.sku) item.sku = item.modelName;
 
         if(!item.discount) item.discount = "";
+
+        if(!item.obsSellingPrice) item.obsSellingPrice = "";
 
         //console.log("### item.siblingType ###", item.siblingType)
 
