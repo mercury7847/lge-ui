@@ -33,7 +33,7 @@ var FilterLayer = (function() {
     var filterColorTemplate = '<li data-filterId="{{filterId}}">' +
         '<div class="head">' +
             '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span>(0)</span></div>' +
+                '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span> (0)</span></div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
@@ -49,7 +49,7 @@ var FilterLayer = (function() {
     var filterCheckboxTemplate = '<li data-filterId="{{filterId}}">' +
         '<div class="head">' +
             '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span>(0)</span></div>' +
+                '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span> (0)</span></div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
@@ -120,7 +120,7 @@ var FilterLayer = (function() {
                 $parent = $(this).parents('li');
                 var length = $parent.find('input:checked').length;
                 if(length > 0) {
-                    $parent.find('span.sel_num').text('('+length+')');
+                    $parent.find('span.sel_num').text(' ('+length+')');
                 } else {
                     $parent.find('span.sel_num').text(' (0)');
                 }
