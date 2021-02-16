@@ -398,6 +398,7 @@ CS.MD.search = function() {
                     self.$el.find('.autocomplete-box').find('ul').empty();
                     $('.autocomplete-box').hide();
                     $('.keyword-box').show();
+                    self.$el.addClass('on');
                 }
             }).on('keyup', function(e) {
                 if (e.keyCode == 13) {
@@ -785,6 +786,20 @@ CS.MD.commonModel = function() {
                     page: 1
                 });
 
+                if (self.$el.hasClass('service-engineer') && data.subCategory == 'CT50019275') {
+                    lgkorUI.confirm('의류 건조기 제품은 불편 사항 및 제품 환경 확인 등이 필요 함에 따라 고객 상담실 1544-7777로 전화주시면 신속한 상담에 도움드리고 있습니다.<br>업무 시간 외, 공휴일, 상담사 통화가 어려운 경우 아래 ’예약’ 버튼을 클릭하시어 연락처 등을 남겨 주시기 바랍니다. 다만, 접수된 순으로 처리하고 있어 다소 지연되는 점 양해 부탁드립니다.',{
+                        title:'',
+                        okBtnName: '예약',
+                        cancelBtnName: '이전',
+                        ok: function() {
+                            location.href = '/support/request-call-reservation-dryer';
+                        },
+                        cancel: function() {
+                            self.$cont.commonModel('reset');
+                        }
+                    });
+                }
+
                 self.updateSummary({
                     product: [data.categoryName, data.subCategoryName]
                 });
@@ -993,8 +1008,6 @@ CS.MD.commonModel = function() {
                 var result = termsValidation.validate();
                 
                 if (result.success) {
-                    self.$selectedModelBar.show();
-
                     if (self.isModel) {
                         self.$el.trigger('complete', [self.selected, self.resultUrl]);
                     } else {
@@ -1003,7 +1016,10 @@ CS.MD.commonModel = function() {
                         self.$myModelSlider.vcCarousel('resize');
                     }
                     
-                    self.focus(self.$selectedModelBar);
+                    if (self.$selectedModelBar.length) {
+                        self.$selectedModelBar.show();
+                        self.focus(self.$selectedModelBar);
+                    }
                 }
             });
         },
