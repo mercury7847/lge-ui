@@ -961,6 +961,12 @@
 
 }
 
+.component-wrap {
+    .component[class*=KRC] * {
+        word-break:keep-all;
+    }
+}
+
 html.modal-open {
     overflow: hidden;
 }
