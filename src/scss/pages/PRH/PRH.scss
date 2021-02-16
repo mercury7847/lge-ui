@@ -103,12 +103,25 @@
 }
 
 .brand-wrap {
-    &.on {
+    .thinq-tabs {
+        opacity: 0;
+        transition: opacity 0.2s;
         position: fixed;
         top: 0;
         right: 0;
         left: 0;
         background-color: $color-bg-wt;
+    }
+    &.on {
+        .thinq-tabs {
+            opacity: 1;
+            transition: opacity 0.5s ease 0.3s;
+        }
+    }
+    &.active {
+        .tab-contents {
+            padding-top: 83px;
+        }
     }
     .tabs-wrap {
         max-width: 1380px;
