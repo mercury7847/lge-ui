@@ -256,10 +256,30 @@ br.pc {
                 display: inline-block;
                 position: relative;
                 padding: 88px 24px 0;
-                @include font-large-6;
+                @include font-large-5;
                 color: $color-gray-4;
                 font-weight: 700;
+                line-height:56px;
                 text-align: left;
+                &:hover {
+                    color:#000;
+                    &:after {
+                        content:' ';
+                        position:absolute;
+                        right:-36px;
+                        bottom:6px;
+                        width:56px;
+                        height:56px;
+                        background:url('/lg5-common/images/icons/icon-arrow-left-b-56.svg') no-repeat 0 0;
+                        @include mobile {
+                            right:-18px;
+                            bottom:4px;
+                            width:28px;
+                            height:28px;
+                            background-size:28px;
+                        }
+                    }
+                }
                 @media screen and (max-width: 1024px){
                 //@include mobile {
                     padding: 44px 14px 0;
@@ -305,7 +325,8 @@ br.pc {
                     background: url(/lg5-common/images/icons/ic-main-care-link-3-off.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
-                &.on a:before {
+                &.on a:before,
+                &:hover a:before {
                     background: url(/lg5-common/images/icons/ic-main-care-link-3-on.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
@@ -315,7 +336,8 @@ br.pc {
                     background: url(/lg5-common/images/icons/ic-main-care-link-2-off.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
-                &.on a:before {
+                &.on a:before,
+                &:hover a:before {
                     background: url(/lg5-common/images/icons/ic-main-care-link-2-on.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
@@ -325,7 +347,8 @@ br.pc {
                     background: url(/lg5-common/images/icons/ic-main-care-link-1-off.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
-                &.on a:before {
+                &.on a:before,
+                &:hover a:before {
                     background: url(/lg5-common/images/icons/ic-main-care-link-1-on.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
@@ -336,7 +359,8 @@ br.pc {
                     background: url(/lg5-common/images/icons/ic-main-careship-cal-off.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
-                &.on span:before {
+                &.on span:before,
+                &:hover span:before {
                     background: url(/lg5-common/images/icons/ic-main-careship-cal-on.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
@@ -645,8 +669,8 @@ br.pc {
                 .text-cont {
                     max-width: 1380px;
                     padding: 0 100px;
-                    font-size: $font-large-6;
-                    line-height: 64px;
+                    font-size: $font-large-5;
+                    line-height: 56px;
                     color: $color-gray-4;
                     text-align: center;
                     font-weight: 700;
@@ -929,7 +953,7 @@ br.pc {
             li {
                 position: relative;
                 display: inline-block;
-                width: 50%;
+                width: 33.33%;
                 padding: 12px;
                 @include mobile {
                     width: auto;
@@ -938,6 +962,7 @@ br.pc {
                 .thumb {
                     img {
                         width: 100%;
+                        height:333px;
                         border-radius: 8px;
                     }
                 }
@@ -953,8 +978,8 @@ br.pc {
         }
         &.benefit-cont-1 {
             .conts li {
-                &:nth-child(3) {
-                    width: 100%;
+                &:nth-child(2) {
+                    width: 66.66%;
                 }
                 .text-area {
                     position: absolute;
