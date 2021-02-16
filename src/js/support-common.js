@@ -795,9 +795,10 @@ CS.MD.commonModel = function() {
                             location.href = '/support/request-call-reservation-dryer';
                         },
                         cancel: function() {
-                            self.$cont.commonModel('reset');
+                            self.reset();
                         }
                     });
+                    return;
                 }
 
                 self.updateSummary({
