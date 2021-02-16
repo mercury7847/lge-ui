@@ -15,17 +15,134 @@
         }
     }
 
+    .btn-moreview {
+        &.close {
+            &:before {
+                background-image: url("/lg5-common/images/icons/btn-minus.svg");
+            }
+        }
+    }
+
+    
+
+    .support-list-slider {
+        .indi-wrap {
+            display:none;
+        }
+        .slide-controls {
+            display: none;
+        }
+
+        @include tablet {
+            .indi-wrap {
+                display:block;
+            }
+            .slide-controls {
+                display: block;
+
+                .prev {
+                    left:-40px;
+                }
+                .next {
+                    right:-40px;
+                }
+            }   
+        }
+    }
+
     .support-toggle-list-wrap {
-        display:flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: row;
-        height:392px;
+        &.only-desktop {
+            .slide-track {
+                display:flex !important;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: row;
+                transform: none !important;
+                width:100% !important;
+                height:392px;
+            }
+
+            .support-list {
+                float:none !important;
+
+                &.product-support {
+                    width:430px;
+                }
+                &.consult {
+                    width:500px;
+                }
+                &.reservation {
+                    width:440px;
+                }
+                @media screen and (max-width:1920px) {
+                    &.product-support {
+                        width:22.3958vw;
+                    }
+                    &.consult {
+                        width:26.0416vw;
+                    }
+                    &.reservation {
+                        width:22.9166vw;
+                    }
+                    .list-header {
+                        .list-tit {
+                            font-size:2.0833vw;
+                        }
+                        .btn-list-toggle {
+                            width:2.9166vw;
+                            height:2.9166vw;
+                        }
+                    }
+    
+                    ul {
+                        max-width:22.7083vw;
+    
+                        > li {
+                            width:11.3541vw;
+                        }
+                    }
+                }
+    
+                @include pc-size-l {
+                    &.product-support {
+                        width:get-vw(380px);
+                    }
+                    &.consult {
+                        width:get-vw(430px);
+                    }
+                    &.reservation {
+                        width:get-vw(390px);
+                    }
+                    .list-header {
+                        .list-tit {
+                            font-size:get-vw(32px);
+                        }
+                        .btn-list-toggle {
+                            width:get-vw(56px);
+                            height:get-vw(56px);
+                        }
+                    }
+                    ul {
+                        max-width:get-vw(386px);
+    
+                        > li {
+                            width:get-vw(193px);
+    
+                            a {
+                                font-size:12px;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        
 
         .support-list {
             flex:none;
             opacity:0.7;
-            transition:opacity .4s ease-in-out;
+            transition:opacity .4s ease-in-out;           
 
             &.active {
                 opacity:1;
@@ -36,15 +153,7 @@
                     }
                 }
             }
-            &.product-support {
-                width:430px;
-            }
-            &.consult {
-                width:500px;
-            }
-            &.reservation {
-                width:440px;
-            }
+            
             .list-header {
                 position: relative;
                 .list-tit {
@@ -66,8 +175,7 @@
                     vertical-align: top;
                 }
 
-            }
-            
+            }           
 
             ul {
                 display: none;
@@ -91,63 +199,70 @@
                     }
                 }
             }
+          
+        }
 
-            @media screen and (max-width:1920px) {
-                &.product-support {
-                    width:22.3958vw;
-                }
-                &.consult {
-                    width:26.0416vw;
-                }
-                &.reservation {
-                    width:22.9166vw;
-                }
+
+        @include tablet {
+            .support-list {
+                width:100%;
+                opacity:1;
+                padding:80px 0 60px;
+                text-align: center;
+
                 .list-header {
                     .list-tit {
-                        font-size:2.0833vw;
+                        font-size:40px;
                     }
                     .btn-list-toggle {
-                        width:2.9166vw;
-                        height:2.9166vw;
+                        display:none;
                     }
+    
                 }
-
+                
+    
                 ul {
-                    max-width:22.7083vw;
-
+                    display: block !important;
+                    max-width:672px;
+                    margin:28px auto 0;
+                    text-align: left;
                     > li {
-                        width:11.3541vw;
+                        width:50%;
+                        padding:4px;
+                        a {
+                            height:66px;
+                            line-height:64px;
+                        }
                     }
                 }
             }
+        }
 
-            @include pc-size-l {
-                &.product-support {
-                    width:get-vw(380px);
-                }
-                &.consult {
-                    width:get-vw(430px);
-                }
-                &.reservation {
-                    width:get-vw(390px);
-                }
+        @include mobile {
+            .support-list {
+                width:100%;
+                opacity:1;
+                padding:43px 0 85px;
+                text-align: center;
+
                 .list-header {
                     .list-tit {
-                        font-size:get-vw(32px);
-                    }
-                    .btn-list-toggle {
-                        width:get-vw(56px);
-                        height:get-vw(56px);
+                        font-size:27px;
                     }
                 }
+                
+    
                 ul {
-                    max-width:get-vw(386px);
-
+                    width:336px;
+                    margin:24px auto 0;
+                    text-align: left;
                     > li {
-                        width:get-vw(193px);
-
+                        width:168px;
+                        padding:4px;
                         a {
-                            font-size:12px;
+                            font-size:13px;
+                            height:43px;
+                            line-height:41px;
                         }
                     }
                 }
@@ -523,12 +638,9 @@
             }
         }
 
-        @include mobile {
-            margin-top:60px;
-            
-            .section-inner {
-                padding:0 16px;
-            }
+        @include tablet {
+            margin-top:80px;
+
             .section-row {
                 flex-direction: column;
 
@@ -536,11 +648,20 @@
                     flex:1;
     
                     & + .section-col {
-                        margin-top:12px;
+                        margin-top:24px;
                         margin-left:0;
                     }
                 }
             }
+        }
+
+        @include mobile {
+            margin-top:60px;
+            
+            .section-inner {
+                padding:0 16px;
+            }
+            
         }
 
         
@@ -566,6 +687,9 @@
                 line-height:1.56;
 
                 > li {
+                    & + li {
+                        margin-top:10px;
+                    }
                     &:before {
                         content:"";
                         display:inline-block;
@@ -722,7 +846,7 @@
 
             .item-list {
                 float:left;
-                width:468px;
+                width:33.33%;
                 padding:0 12px;
                 box-sizing:border-box;
 
@@ -756,6 +880,22 @@
                     li {
                         @include textEllipsis;
                     }
+                }
+            }
+        }
+
+        @include tablet {
+            .popular-list-wrap {
+                margin-left:0;
+                margin-right:0;
+                .item-list {
+                    float:none;
+                    width:100%;
+                    padding:0;
+                    & + .item-list {
+                        margin-top:12px;
+                    }
+    
                 }
             }
         }
@@ -800,18 +940,8 @@
     
             .popular-list-wrap {
                 margin-top:12px;
-                margin-left:0;
-                margin-right:0;
     
                 .item-list {
-                    float:none;
-                    width:100%;
-                    padding:0;
-
-                    & + .item-list {
-                        margin-top:12px;
-                    }
-    
                     a {
                         padding:24px 20px;
                         box-shadow: 3px 6px 24px 0 rgba(0, 0, 0, 0.14);
@@ -838,7 +968,7 @@
     .home-reservation {
         .rersv-wrap {
             position: relative;
-            height:594px;
+            height:100%;
             padding:55px 55px 120px;
             background: #f4f4f4;
             border-radius:5px;
@@ -914,6 +1044,47 @@
             }
         }
 
+        @include pc-size-l {
+            .rersv-wrap { 
+                padding:45px 35px 120px;
+            }
+        }
+
+        @include tablet {
+            .rersv-wrap {
+                padding:45px 25px 80px;
+
+                .headline {
+                    margin-bottom:30px;
+                    padding-bottom:12px;
+                    .title {
+                        font-size:26px;
+                    }
+                }
+    
+                .form-wrap {
+                    .btn-link {
+                        margin-left:20px;
+                    }
+                    .form-head {
+                        margin-bottom:20px;
+                    }
+    
+                    .forms {
+                        margin-top:0;
+    
+                        .tit {
+                            margin-bottom:0;
+                        }
+                    }
+                }
+    
+                .btn-wrap {
+                    bottom:20px;
+                }
+            }
+        }
+
         @include mobile {
             .rersv-wrap {
                 height:auto;
@@ -929,18 +1100,6 @@
     
                 .form-wrap {
                     .forms {
-                        &.col2 {
-                            display:flex;
-                            flex-direction: row;
-    
-                            .cont {
-                                flex:1;
-                                & + .cont {
-                                    margin-left:8px;
-                                }
-                            }
-                        }
-    
                         & ~ .forms {
                             margin-top:24px;
                         }

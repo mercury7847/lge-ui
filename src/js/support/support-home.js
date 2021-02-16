@@ -20,10 +20,11 @@
             toggle : function(){
                 var self = this;
     
-                $(self.el.btn).on('click', function(e){
+                $(document).on('click', self.el.btn, function(e){
                     var $this = $(this);
                     var $listWrap = $this.closest(self.el.wrap);
                     var $list = $listWrap.find(self.el.list);
+                    console.log('toggle')
                     e.preventDefault();
     
                     if( $listWrap.hasClass('active')) {
@@ -57,9 +58,14 @@
                     var $wrap = $this.closest(self.el.container);
                     var $hiddenItem = $wrap.find(self.el.hidden);
                     
-                    console.log($hiddenItem.length)
-                    $hiddenItem.show();
-                    $this.hide();
+                    if( $hiddenItem.filter('.show').length ) {
+                        $hiddenItem.removeClass('show');
+                        $this.removeClass('close').text('더보기');
+                    } else {
+                        $hiddenItem.addClass('show');
+                        $this.addClass('close').text('접기');
+                    }
+                    
                     e.preventDefault();
                 })
             },
@@ -71,6 +77,33 @@
             slideActiveClass : "is-active",
             controls : {
                 play : $('.btn-play')
+            },
+            supportList : {
+                el : {
+                    slider : $('.support-list-slider')
+                },
+                config : {
+                    infinite: false,
+                    autoplay: false,
+                    dots : false,
+                    arrows : false,
+                    slidesToScroll: 1,
+                    slidesToShow: 3,
+                    variableWidth : true,
+                    responsive: [
+                        {
+                            breakpoint: 1025,
+                            settings: {
+                                dots : true,
+                                arrows : true,
+                                swipe : true,
+                                slidesToScroll: 1,
+                                slidesToShow: 1,
+                                variableWidth : false
+                            }
+                        }
+                    ]
+                }
             },
             notice : {
                 el : {
@@ -186,13 +219,36 @@
                     ]
                 },
             },
+            resize : function(){
+                var self = this;
+
+                if( window.innerWidth > 1024) {
+                    $('.support-toggle-list-wrap').not('.only-desktop').addClass('only-desktop');
+                } else {
+                    $('.support-toggle-list-wrap').removeClass('only-desktop');
+                }
+                
+            },
             init : function(){
                 var self = this;
+
+                if( window.innerWidth > 1024) {
+                    $('.support-toggle-list-wrap').addClass('only-desktop');
+                };
                 vcui.require(['ui/carousel'], function () {    
                     //공지사항 슬라이드
                     self.notice.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.notice.config);
                     self.notice.el.slider.addClass(self.slideActiveClass);
+                    
+                    //히어로 영역 제품 지원
+                    self.supportList.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.supportList.config);
+                    self.supportList.el.slider.addClass(self.slideActiveClass);
+                    // if( window.innerWidth <= 768) {
+                    // } else {
+                    //     //self.supportList.el.slider.filter('.' + self.slideActiveClass).vcCarousel('destroy').removeClass(self.slideActiveClass);
+                    // }
 
+                    // 주요 서비스 
                     self.main_service.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.main_service.config);
                     self.main_service.el.slider.addClass(self.slideActiveClass);
 
@@ -217,8 +273,6 @@
                     })
                 });
             }
-
-
         },
         initialize: function(){
             this.loginTooltip();
@@ -231,5 +285,9 @@
     
     $(window).ready(function(){
         supportHome.initialize();
+    })
+
+    $(window).on('resize', function(){
+        supportHome.slide.resize();
     })
 })();
