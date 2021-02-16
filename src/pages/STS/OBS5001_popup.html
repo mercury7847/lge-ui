@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["STS/STS"]
+    })
+<body>
+
+    <div class="wrap">
+        <button type="button" data-href="#modal" data-control="modal" class="btn pink"><span>라이프 스타일에 맞는 가전을 찾아볼까요?</span></button>
+    </div>
+
+    <!-- [팝업] 라이프 스타일에 맞는 가전을 찾아볼까요 -->
+    @@include('./common/popup/OBS5001_pop.html', {
+        popupID: 'modal'
+    })
+
+</body>
+</html>
