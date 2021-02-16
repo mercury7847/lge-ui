@@ -80,7 +80,10 @@
                     self.bindEvents();
 
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
-                        self.requestSearch(self.makeFilterData(data));
+                        var filterdata = JSON.parse(data.filterData);
+                        data.filterData = filterdata;
+                        self.requestSearch(data);
+                        //self.requestSearch(self.makeFilterData(data));
                     });
 
                     //입력된 검색어가 있으면 선택된 카테고리로 값 조회
