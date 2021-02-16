@@ -10,7 +10,7 @@
 		<div class="container">
 			<div class="contents">
 				<div class="main-wrap">
-                    <div class="scene-cover">
+                    <div class="scene-cover">                        
                         <div class="scene">
                             <div class="img">
                                 <img src="/lg5-common/images/MA/img-main-01.jpg" alt="">
@@ -823,73 +823,59 @@
 
 
             function updateVideo(video) {
-
-				var $o        = $(video||this),
-					$wrap     = $o.closest('.img'),
-					$image    = $wrap.find('img'),
-					key       = $o.data('key'),
-					loaded    = $o.data('loaded'),
-					src       = $o.data('src'),
-
-                    // modeV     = 5, // 사이즈별로 로드시
-					isAndroid = vcui.detect.isAndroid,
-					srcArr = (function() {
-						var s5 = $o.data('src-v5') || $o.data('src'),
-							s4 = $o.data('src-v4') || s5,
-							s3 = $o.data('src-v3') || s4,
-							s2 = $o.data('src-v2') || s3,
-							s1 = $o.data('src-v1') || s2,
-							arr = [null,s1,s2,s3,s4,s5];
-						return arr;
-					})(),
-					// src    = srcArr[modeV],
-					src    = $o.data('src'),
+                var $target   = $(video||this),
+                    $wrap     = $target.closest('.img'),
+                    $image    = $wrap.find('img'),
+                    key       = $target.data('key'),
+                    loaded    = $target.data('loaded'),
+                    src       = $target.data('src'),
                     
-					videoAttr = $o.data('options') || 'autoplay loop playsinline muted',
-					$video    = $o.find('video'),
-					$sources  = $o.find('source'),
-					oVideo;
+                    isAndroid = vcui.detect.isAndroid,
+                    /*
+                    modeV     = 5, // 사이즈별로 로드시
+                    srcArr = (function() {
+                        var s5 = $target.data('src-v5') || $target.data('src'),
+                            s4 = $target.data('src-v4') || s5,
+                            s3 = $target.data('src-v3') || s4,
+                            s2 = $target.data('src-v2') || s3,
+                            s1 = $target.data('src-v1') || s2,
+                            arr = [null,s1,s2,s3,s4,s5];
+                        return arr;
+                    })(),
+                    src  = srcArr[modeV],
+                    */
+                    src    = $target.data('src'),
+                    
+                    videoAttr = $target.data('options') || 'autoplay loop playsinline muted',
+                    $video    = $target.find('video'),
+                    $sources  = $target.find('source'),
+                    oVideo;
 
-				// 비디오 요소 생성.
-				var createVideoObject = function() {
+                // 비디오 요소 생성.
+                var createVideoObject = function() {
+                    
+                    var extArr = $target.data('ext').toLowerCase().replace(/\s/g, '').split(',');
+                    if ( !extArr.length ) return false;
 
-					
-					var extArr = $o.data('ext').toLowerCase().replace(/\s/g, '').split(',');
-					if ( !extArr.length ) return false;
+                    var $video = $('<video '+ videoAttr +'></video>');
 
-
-					var $video = $('<video '+ videoAttr +'></video>');
-
-					for (var i = extArr.length - 1; i >= 0; i--) {
-						if (extArr[i] == 'mp4') {
-							$('<source>', {src: src+'.mp4', type: 'video/mp4', prependTo: $video});
-						} else if (extArr[i] == 'webm') {
-							$('<source>', {src: src+'.webm', type: 'video/webm', appendTo: $video});
-						} else if (extArr[i] == 'ogv' || extArr[i] == 'ogg') {
-							$('<source>', {src: src+'.ogv', type: 'video/ogg', appendTo: $video});
-						}
-					}
+                    for (var i = extArr.length - 1; i >= 0; i--) {
+                        if (extArr[i] == 'mp4') {
+                            $('<source>', {src: src+'.mp4', type: 'video/mp4', prependTo: $video});
+                        } else if (extArr[i] == 'webm') {
+                            $('<source>', {src: src+'.webm', type: 'video/webm', appendTo: $video});
+                        } else if (extArr[i] == 'ogv' || extArr[i] == 'ogg') {
+                            $('<source>', {src: src+'.ogv', type: 'video/ogg', appendTo: $video});
+                        }
+                    }
                         
-					if ( $o.data('alt') != null ) {
-						$('<p>').text($o.data('alt')).appendTo($video);
-					}
-					$video.data($o.data());
-					$o.replaceWith($video);
-
-					$video   = $wrap.find('video');
-					$sources = $video.find('source');
-
-                    // width: auto !important;
-                    // height: auto !important;
-                    // min-width: 100%;
-                    // min-height: 100%;
-                    // top: 50%;
-                    // left: 50%;
-                    // transform: translate(-50%,-50%);
-                    // -webkit-transform: translate(-50%,-50%);
-                    // -ms-transform: translate(-50%,-50%);
-                    // z-index: 1;
-                    
+                    if ( $target.data('alt') != null ) {
+                        $('<p>').text($target.data('alt')).appendTo($video);
+                    }
+                    $video.data($target.data());
+                    $target.replaceWith($video);
+                    $video   = $wrap.find('video');
+                    $sources = $video.find('source');
 
                     $video.css({
                         'position':'absolute',
@@ -901,29 +887,25 @@
                         'left': '50%',
                         'transform': 'translate(-50%,-50%)'
                     })
-					oVideo   = $video[0];
+                    oVideo   = $video[0];
 
-					if ( isAndroid ) {
-						$(document).one('touchstart.videoPlay', function() {
-							oVideo.play();
-						});
-					}
-					$wrap.addClass('video');
+                    if ( isAndroid ) {
+                        $(document).one('touchstart.videoPlay', function() {
+                            oVideo.play();
+                        });
+                    }
+                    $wrap.addClass('video');
 
-					$video.on('loadeddata', function(e) {
-						$video.data('loaded', true);
-						$wrap.trigger('videoLoaded');
+                    $video.on('loadeddata', function(e) {
+                        $video.data('loaded', true);
+                        $wrap.trigger('videoLoaded');
                         oVideo.play();
-					}).trigger('load');
+                    }).trigger('load');
                     
-				}
-
+                }
 
                 createVideoObject();
-
-
-			}
-
+            }
 
             function render(idx){
 
