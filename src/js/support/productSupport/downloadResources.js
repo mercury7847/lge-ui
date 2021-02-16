@@ -142,7 +142,7 @@
                     activeSlider.vcCarousel('update');
                     activeSlider.vcCarousel('reinit');
                 }
-                this.el.wrap.show();
+                self.el.wrap.show();
             });
         }
     }
