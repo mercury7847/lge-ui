@@ -8,9 +8,9 @@
         @import "ACC4002";
     }
     .page-tabs {
-        max-width:1380px;
+        max-width:1460px;
         margin:0 auto;
-        padding-top:40px;
+        padding:40px 40px 0;
         @include mobile {
             margin-bottom:32px;
             .tabs-wrap {

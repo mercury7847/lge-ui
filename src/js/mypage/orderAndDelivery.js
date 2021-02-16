@@ -82,6 +82,12 @@
         '<li><dl><dt>사전 방문 신청</dt><dd>{{#if instpectionVisit}}신청{{#else}}미신청{{/if}}</dd></dl></li>' +
         '<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>';
 
+    var paymentListTemplate = '<li><dl><dt>결제 수단</dt><dd>신용카드(분할결제) 결제수단</dd></dl></li>' +
+        '<li><dl><dt>주문 금액</dt><dd>10,000원</dd></dl></li>' +
+        '<li><dl><dt>할인 금액</dt><dd>-6,000원</dd></dl>' +
+        '</li><li><dl><dt>멤버십포인트</dt><dd>-340원</dd></dl>' +
+        '</li><li><dl><dt>총 결제 금액</dt><dd>4,000원</dd></dl></li>';
+
     var CURRENT_PAGE, TOTAL_PAGE;
 
     var ORDER_LIST;
@@ -267,7 +273,6 @@
         var sendata = {
             "sku": ORDER_LIST[dataId].productList[prodId].productNameEN
         }
-        console.log("setProductStatus:", sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PRODUCT_STATUS_URL, sendata, function(result){
             if(result.data.success == "N"){
                 lgkorUI.alert("", {
@@ -290,9 +295,7 @@
             page: page || 1,
             orderNumber: $('.contents.mypage').data('orderNumber')
         }
-        console.log("### requestOrderInquiry ###", sendata)
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
-            console.log(result);
             var data = result.data;
 
             var prodcnt = data.productOrderCount ? data.productOrderCount : 0;
@@ -350,19 +353,15 @@
                 }
 
                 //결제정보
-                $listBox = $('.inner-box:eq(1)');
+                $listBox = $('.inner-box:eq(1) ul');
                 if(data.payment && $listBox.length > 0) {
                     var payment = data.payment;
-                    //결제수단
-                    $listBox.find('li:eq(0) dl dd').html(payment.paymentMethodName);
-                    //주문 금액
-                    $listBox.find('li:eq(1) dl dd').html(vcui.number.addComma(payment.subtotal)+"원");
-                    //할인 금액
-                    $listBox.find('li:eq(2) dl dd').html("-"+vcui.number.addComma(payment.discount)+"원");
-                    //멤버십 포인트
-                    $listBox.find('li:eq(3) dl dd').html("-"+vcui.number.addComma(payment.membershipPoint)+"원");
-                    //총 결제 금액
-                    $listBox.find('li:eq(4) dl dd').html(vcui.number.addComma(payment.grandTotal)+"원");
+                    payment.subtotal = vcui.number.addComma(payment.subtotal);
+                    payment.discount = vcui.number.addComma(payment.discount);
+                    payment.membershipPoint = vcui.number.addComma(payment.membershipPoint);
+                    payment.grandTotal = vcui.number.addComma(payment.grandTotal);
+
+                    $listBox.html(vcui.template(paymentListTemplate, payment));
                 }
 
             } else{

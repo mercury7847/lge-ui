@@ -122,6 +122,7 @@
         }
         bankValidation = new vcui.ui.Validation('.mypage .section-wrap .sects.payment.modify .by-bank',{register:register});
         bankInfo = bankValidation.getAllValues();
+        console.log("### bankInfo ###", bankInfo);
 
         paymentModeIndex = $('.mypage .section-wrap .sects.payment.modify .ui_tab ul li[class=on]').index();
 
@@ -363,19 +364,24 @@
 
     //납부 정보변경 취소...
     function savePaymentInfoCancel(){
-        cardValidation.setValues(cardInfo);
-        $('.ui_card_number').vcFormatter('update');
-
-        bankValidation.setValues(bankInfo);
-        setHiddenData('paymentMethodConfirm', "N");
-        setHiddenData('arsAgree', "N");
-        paymentModifyBlock.find('input[name=selfClearingAgree]').prop('checked', false);
-        paymentModifyBlock.find('input[name=pointUseAgree]').prop('checked', false);
-
-        $('.mypage .section-wrap .sects.payment.modify .ui_tab').vcTab('select', paymentModeIndex);
-
-        paymentInfoBlock.show();
-        paymentModifyBlock.hide();
+        try{
+            cardValidation.setValues(cardInfo);
+            $('.ui_card_number').vcFormatter('update');
+    
+            console.log("### savePaymentInfoCancel bankInfo ###", bankInfo)
+            bankValidation.setValues(bankInfo);
+            setHiddenData('paymentMethodConfirm', "N");
+            setHiddenData('arsAgree', "N");
+            paymentModifyBlock.find('input[name=selfClearingAgree]').prop('checked', false);
+            paymentModifyBlock.find('input[name=pointUseAgree]').prop('checked', false);
+    
+            $('.mypage .section-wrap .sects.payment.modify .ui_tab').vcTab('select', paymentModeIndex);
+    
+            paymentInfoBlock.show();
+            paymentModifyBlock.hide();
+        } catch(err){
+            console.log(err);
+        }
     }
 
     //납부 정보변경 저장...
@@ -628,15 +634,23 @@
     function changeContractInfo(){
         lgkorUI.showLoading();
 
+        console.log("### changeContractInfo start ###");
+
         var info = $('select[name=contractInfo]').find('option:selected').val().split("|");
 
+
+        console.log("$('select[name=contractInfo]').find('option:selected').val().split('|'):", info)
+
         saveUserInfoCancel();
+        console.log("saveUserInfoCancel();")
         savePaymentInfoCancel();
+        console.log("savePaymentInfoCancel();")
 
         var sendata = {
             modelID: info[0],
             contractID: info[1]
         }
+        console.log("sendata:", sendata);
         lgkorUI.requestAjaxData(CONTRACT_INFO, sendata, function(result){
             setContractInfo(result.data);
 
@@ -644,6 +658,7 @@
 
             $('html, body').animate({scrollTop:0}, 220);
         });
+        console.log("### changeContractInfo end ###");
     }
 
     function setHiddenData(iptname, value){

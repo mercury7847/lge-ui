@@ -198,7 +198,7 @@
                 e.preventDefault();
 
                 var id = $(this).attr("href").replace("#", "");
-                window.open(self.detailUrl+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no");void(0);
+                void(window.open(self.detailUrl+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no"));
             });
 
             self.$searchField.on('focus', function(e){
@@ -304,7 +304,7 @@
                     item['id'] = item['shopID']; //info.shopID || agCode    
                     item['info'] = false;
                     item["selected"] = false;
-                    item["detailUrl"] = 'javascript:window.open("' + self.detailUrl+item['shopID'] + '", "_blank", "width=1070, height=' + self.windowHeight + ', location=no, menubar=no, status=no, toolbar=no")';
+                    item["detailUrl"] = 'javascript:void(window.open("' + self.detailUrl+item['shopID'] + '", "_blank", "width=1070, height=' + self.windowHeight + ', location=no, menubar=no, status=no, toolbar=no"))';
                     return item;
                 });
                 self.$map.applyMapData(self.storeData, self.searchType, {lat: self.currentLatitude, long:self.currentLongitude});
