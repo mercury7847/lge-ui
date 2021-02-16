@@ -363,19 +363,23 @@
 
     //납부 정보변경 취소...
     function savePaymentInfoCancel(){
-        cardValidation.setValues(cardInfo);
-        $('.ui_card_number').vcFormatter('update');
-
-        bankValidation.setValues(bankInfo);
-        setHiddenData('paymentMethodConfirm', "N");
-        setHiddenData('arsAgree', "N");
-        paymentModifyBlock.find('input[name=selfClearingAgree]').prop('checked', false);
-        paymentModifyBlock.find('input[name=pointUseAgree]').prop('checked', false);
-
-        $('.mypage .section-wrap .sects.payment.modify .ui_tab').vcTab('select', paymentModeIndex);
-
-        paymentInfoBlock.show();
-        paymentModifyBlock.hide();
+        try{
+            cardValidation.setValues(cardInfo);
+            $('.ui_card_number').vcFormatter('update');
+    
+            bankValidation.setValues(bankInfo);
+            setHiddenData('paymentMethodConfirm', "N");
+            setHiddenData('arsAgree', "N");
+            paymentModifyBlock.find('input[name=selfClearingAgree]').prop('checked', false);
+            paymentModifyBlock.find('input[name=pointUseAgree]').prop('checked', false);
+    
+            $('.mypage .section-wrap .sects.payment.modify .ui_tab').vcTab('select', paymentModeIndex);
+    
+            paymentInfoBlock.show();
+            paymentModifyBlock.hide();
+        } catch(err){
+            console.log(err);
+        }
     }
 
     //납부 정보변경 저장...
