@@ -243,11 +243,11 @@
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
         init: function(){
             this._bindErrBackEvent();
-            this._switchLinker();
             this._addImgOnloadEvent();
             this._preloadComponents();
             this._addTopButtonCtrl();
             this._createMainWrapper();
+            this._switchLinker();
         },
 
         _addImgOnloadEvent: function(){
@@ -673,6 +673,8 @@
         addCompareProd: function(categoryId, data){
             var self = this;
 
+            console.log("### addCompareProd ###", categoryId)
+
             self.COMPARE_LIMIT = window.breakpoint.isMobile ? 2 : 3;
 
             var compareStorage = self.getStorage(self.COMPARE_KEY);
@@ -688,10 +690,6 @@
                 }
             }
             self.setStorage(self.COMPARE_KEY, compareStorage);
-
-            for(var str in compareStorage){
-                console.log(compareStorage[str])
-            }
 
             return true;
         },
@@ -710,9 +708,21 @@
         initCompareProd: function(categoryId){
             var self = this;
             
-            var obj = {};
-            obj[categoryId] = [];
-            self.setStorage(self.COMPARE_KEY, obj);
+            self.removeStorage(self.COMPARE_KEY, categoryId);
+        },
+
+        setCompapreCookie: function(categoryId){
+            var self = this;
+
+            var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
+            var compareIDs = [];
+            for(var idx in compareStorage) compareIDs.push(compareStorage[idx].id);
+
+            var compareCookie = compareIDs.join("|");
+
+            console.log("### setCompapreCookie ###", compareCookie);
+
+            self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);
         },
 
         setStorage: function(key, value){
@@ -720,6 +730,8 @@
             var storageData = storage? JSON.parse(storage) : {};        
             storageData = Object.assign(storageData, value);
             sessionStorage.setItem(key, JSON.stringify(storageData));
+
+            console.log("### setStorage ###", storageData)
             
             $(window).trigger("changeStorageData");
 
