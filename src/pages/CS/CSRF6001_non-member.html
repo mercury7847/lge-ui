@@ -31,41 +31,54 @@
                             <h2 class="hero-tit">환영합니다. <br class="mo-only">무엇을 도와드릴까요?</h2>
                             <a href="#" class="btn-fast-support">빠른 제품지원</a>
                         </div>
-                        <div class="support-toggle-list-wrap" data-toggle-list="container">
-                            <div class="support-list product-support" data-toggle-list="wrap">
-                                <div class="list-header">
-                                    <strong class="list-tit">제품에 문제가 있으면 <br>직접 해결해보세요.</strong>
-                                    <button class="btn-list-toggle" data-toggle-list="btn" ><span class="blind">목록 보기</span></button>
-                                </div>
-                                <ul data-toggle-list="list">
-                                    <li><a href="">제품 문제 해결</a></li>
-                                    <li><a href="">동영상 가이드</a></li>
-                                    <li><a href="">드라이버/SW</a></li>
+                        <div class="slide-wrap ui_carousel_slider support-list-slider">
+                            <div class="indi-wrap">
+                                <ul class="indi-conts ui_carousel_dots">
+                                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
                                 </ul>
                             </div>
-                            <div class="support-list consult" data-toggle-list="wrap">
-                                <div class="list-header">
-                                    <strong class="list-tit">사이트 및 제품 이용이 <br>궁금하시면 문의해주세요.</strong>
-                                    <button class="btn-list-toggle" data-toggle-list="btn"><span class="blind">목록 보기</span></button>
+                            <div class="support-toggle-list-wrap only-desktop slide-content ui_carousel_list" data-toggle-list="container">
+                                <div class="slide-track ui_carousel_track">
+                                    <div class="support-list product-support ui_carousel_slide slide-conts" data-toggle-list="wrap">
+                                        <div class="list-header">
+                                            <strong class="list-tit">제품에 문제가 있으면 <br>직접 해결해보세요.</strong>
+                                            <button class="btn-list-toggle" data-toggle-list="btn" ><span class="blind">목록 보기</span></button>
+                                        </div>
+                                        <ul data-toggle-list="list">
+                                            <li><a href="">제품 문제 해결</a></li>
+                                            <li><a href="">동영상 가이드</a></li>
+                                            <li><a href="">드라이버/SW</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="support-list consult ui_carousel_slide slide-conts" data-toggle-list="wrap">
+                                        <div class="list-header">
+                                            <strong class="list-tit">사이트 및 제품 이용이 <br>궁금하시면 문의해주세요.</strong>
+                                            <button class="btn-list-toggle" data-toggle-list="btn"><span class="blind">목록 보기</span></button>
+                                        </div>
+                                        <ul data-toggle-list="list">
+                                            <li><a href="">채팅상담</a></li>
+                                            <li><a href="">이메일 문의</a></li>
+                                            <li><a href="">전화 상담 예약</a></li>
+                                            <li><a href="">원격 상담 예약</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="support-list reservation ui_carousel_slide slide-conts" data-toggle-list="wrap">
+                                        <div class="list-header">
+                                            <strong class="list-tit">출장/방문이 필요하면 <br>예약해주세요.</strong>
+                                            <button class="btn-list-toggle" data-toggle-list="btn"><span class="blind">목록 보기</span></button>
+                                        </div>
+                                        <ul data-toggle-list="list">
+                                            <li><a href="">서비스 출장 예약</a></li>
+                                            <li><a href="">제품 설치/철거 예약</a></li>
+                                            <li><a href="">센터 방문 예약</a></li>
+                                            <li><a href="">매장 방문 예약</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <ul data-toggle-list="list">
-                                    <li><a href="">채팅상담</a></li>
-                                    <li><a href="">이메일 문의</a></li>
-                                    <li><a href="">전화 상담 예약</a></li>
-                                    <li><a href="">원격 상담 예약</a></li>
-                                </ul>
                             </div>
-                            <div class="support-list reservation" data-toggle-list="wrap">
-                                <div class="list-header">
-                                    <strong class="list-tit">출장/방문이 필요하면 <br>예약해주세요.</strong>
-                                    <button class="btn-list-toggle" data-toggle-list="btn"><span class="blind">목록 보기</span></button>
-                                </div>
-                                <ul data-toggle-list="list">
-                                    <li><a href="">서비스 출장 예약</a></li>
-                                    <li><a href="">제품 설치/철거 예약</a></li>
-                                    <li><a href="">센터 방문 예약</a></li>
-                                    <li><a href="">매장 방문 예약</a></li>
-                                </ul>
+                            <div class="slide-controls">
+                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                             </div>
                         </div>
                     </div>
@@ -220,7 +233,8 @@
                                                 <input type="checkbox" id="chk01" name="chk1">
                                                 <label for="chk01">개인정보 수집 및 이용에 동의합니다</label>
                                             </span>
-                                            <a href="#" class="btn-link"><span>전문보기</span></a>
+                                            <!-- <a href="#" class="btn-link" data-href="#agreePrivacyPopup" data-control="modal"><span>전문보기</span></a> --> 
+                                            <button type="button" class="btn-link" data-href="#agreePrivacyPopup" data-control="modal"><span>전문보기</span></button>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-col">
@@ -342,7 +356,7 @@
                 <!-- 주요 서비스 -->
                 <div class="common-banner main-service">
                     <div class="banner">
-                        <h3 class="banner-tit">LG제품에 관련된 주요 서비스를 확인하세요!</h3>
+                        <h3 class="banner-tit">LG제품에 관련된 <br class="mo-only">주요 서비스를 확인하세요!</h3>
                         <div class="main-service-slider slide-wrap ui_carousel_slider">
                             <div class="indi-wrap">
                                 <ul class="indi-conts ui_carousel_dots">
@@ -409,12 +423,12 @@
                         </div>
                     </div>
                 </div>
-                <!-- //주요 서비스 -->
+                <!-- //주요 서비스 --> 
                 
                 <!-- 관련 정보 -->
                 <div class="common-banner related-pages">
                     <div class="banner" data-more="container">
-                        <h3 class="banner-tit">LG제품에 관련된 정보를 확인하세요!</h3>
+                        <h3 class="banner-tit">LG제품에 관련된 <br class="mo-only">정보를 확인하세요!</h3>
                         <div class="page-list-wrap">
                             <div class="item-list">
                                 <!-- default 노출 3개 -->
@@ -603,6 +617,10 @@
              
         @@include('./common/footer.html')
     </div>  
+
+    <!-- 개인정보 수집 및 신용정보 제공 동의 popup -->
+    @@include('./CS/modal/agree-privacy-popup.html')
+    <!-- // 개인정보 수집 및 신용정보 제공 동의 popup -->
     
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
