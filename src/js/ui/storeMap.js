@@ -508,7 +508,9 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             self.markerIndex++;
             marker.setZIndex(self.markerIndex);
 
-            self.map.setZoom(12);
+            var zoom = self.map.getZoom();
+            if(zoom < 12) self.map.setZoom(12);
+            
             self.map.panTo(new naver.maps.LatLng(centerPoint.lat, centerPoint.long), {duration:350, easing:"easeOutCubic"});
 
             self.triggerHandler('changemarkerstatus', [id]);   
