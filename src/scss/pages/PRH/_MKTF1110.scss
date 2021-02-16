@@ -3,6 +3,14 @@
 
 .thinq-hero {
     [class*="scene"] {
+        .image.blur {
+            @include pc {
+                display: none;
+            }
+            @include mobile {
+                display: block;
+            }
+        }
         &[class*="01"] {
             font-weight: 700;
             font-size: 48px;
@@ -71,29 +79,24 @@
                     line-height: 30px;
                 }
                 @include mobile {
-                    position: static;
+                    top: 0;
+                    bottom: auto;
                     max-width: none;
+                    margin-right: 0;
+                    padding: 80px 32px;
                     text-align: left;
-                    [class*="cont"] {
-                        position: absolute;
-                        left: 0;
-                        right: 0;
-                        padding: 80px 32px;
-                        &[class*="1"] {
-                            top: 0;
-                            font-size: 34px;
-                            line-height: 44px;
-                        }
-                        &[class*="2"] {
-                            top: 0;
-                            margin-top: 0;
-                            line-height: 28px;
-                            span {
-                                display: block;
-                                margin-top: 40px;
-                                &:first-child {
-                                    margin-top: 0;
-                                }
+                    .cont1 {
+                        font-size: 34px;
+                        line-height: 44px;
+                    }
+                    .cont2 {
+                        margin-top: 60px;
+                        line-height: 28px;
+                        span {
+                            display: block;
+                            margin-top: 40px;
+                            &:first-child {
+                                margin-top: 0;
                             }
                         }
                     }
@@ -123,29 +126,24 @@
                     @include font(20px,30px);
                 }
                 @include mobile {
-                    position: static;
+                    top: 0;
+                    left: 0;
                     max-width: none;
-                    [class*="cont"] {
-                        position: absolute;
-                        left: 0;
-                        right: 0;
-                        padding: 80px 32px;
-                        color: $color-white;
-                        &[class*="1"] {
-                            top: 0;
-                            font-size: 34px;
-                            line-height: 44px;
-                        }
-                        &[class*="2"] {
-                            top: 0;
-                            margin-top: 0;
-                            @include font(20px,28px);
-                            span {
-                                display: block;
-                                margin-top: 40px;
-                                &:first-child {
-                                    margin-top: 0;
-                                }
+                    margin-left: 0;
+                    padding: 80px 32px;
+                    color: $color-white;
+                    .cont1 {
+                        font-size: 34px;
+                        line-height: 44px;
+                    }
+                    .cont2 {
+                        margin-top: 60px;
+                        @include font(20px,28px);
+                        span {
+                            display: block;
+                            margin-top: 40px;
+                            &:first-child {
+                                margin-top: 0;
                             }
                         }
                     }
