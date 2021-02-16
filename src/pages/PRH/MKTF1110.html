@@ -19,10 +19,10 @@
                             <div class="scene01">
                                 <div class="image ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/img-visual01.jpg')" data-pc-src="/lg5-common/images/PRH/img-visual01.jpg" data-m-src="/lg5-common/images/PRH/img-visual01-m.jpg" aria-hidden="true"></div>
                                 <div class="content">
-                                    <div class="cont1" data-step-0="opacity:0, y:-100px" data-step-1="opacity:1, y:0px" data-step-2="opacity:0, y:0px">
+                                    <div class="cont1" data-step-0="opacity:0, y:200px" data-step-1="opacity:1, y:0px" data-step-2="opacity:0, y:-200px">
                                         <span>한번도 느껴보지 <br class="mo-only">못한 자유</span>
                                     </div>
-                                    <div class="cont2" data-step-1="opacity:0, y:-100" data-step-2="opacity:1, y:0">
+                                    <div class="cont2" data-step-1="opacity:0, y:200" data-step-2="opacity:1, y:0">
                                         <p>Think Wise. Be Free.</p>
                                         <div class="logo-area"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" alt="LG ThinQ"></div>
                                     </div>
@@ -36,15 +36,14 @@
                                 <div class="dimmed" data-step-0="display:block, opacity:0" data-step-1="opacity:1"></div>  
                             </div>
 
-
                             <div class="scene02">
                                 <div class="image ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/img-visual02.jpg')" data-pc-src="/lg5-common/images/PRH/img-visual02.jpg" data-m-src="/lg5-common/images/PRH/img-visual02-m.jpg" aria-hidden="true"></div>
                                 <div class="image blur" style="background-image:url('/lg5-common/images/PRH/img-visual02-m-blur.jpg')" aria-hidden="true"></div>
                                 <div class="content">
-                                    <div class="cont1" data-step-0="opacity:0, y:100%" data-step-1="opacity:1, y:0%">
+                                    <div class="cont1" data-step-0="opacity:1, y:0" data-step-1="opacity:0, y:-200">
                                         <span>LG만의 인공지능기술이 <br>적용된 LG ThinQ</span>
                                     </div>
-                                    <div class="cont2">
+                                    <div class="cont2" data-step-0="opacity:0, y:200" data-step-1="opacity:1, y:0">
                                         <span>LG ThinQ는 LG만의 인공지능기술이 적용된 제품과 서비스 브랜드입니다. </span>
                                         <span>가전에서 모바일까지, </span>
                                         <span>LG는 오랫동안 당신의 일상과 함께 했기에 일상 속에서 당신을 어떻게 도울 수 있을지 잘 알고 있습니다.</span>
@@ -141,7 +140,7 @@
                                         <h3 class="title"><span>ThinQ로 만드는 <br class="pc-only">여유로운 생활</span></h3>
                                     </div>
                                     <div class="free-life">
-                                        <div class="box animate-target animated">
+                                        <div class="box animate-target">
                                             <div class="image">
                                                 <img data-pc-src="/lg5-common/images/PRH/img-lifestyle01.jpg" data-m-src="/lg5-common/images/PRH/img-lifestyle01-m.jpg" alt="">
                                             </div>
@@ -334,13 +333,9 @@
                                         </a>
                                     </div>
                                 </div>
-<<<<<<< HEAD
-                                <div class="mobile-device" style="position: fixed; top:0;">
-                                    <div class="frame" style="transform: scale(0.5);">
-=======
-                                <div class="mobile-device" style="position:fixed;top:0;">
+                                <!-- <div class="mobile-device" style="position:fixed;top:0;"> -->
+                                <div class="mobile-device">
                                     <div class="frame" style="transform:scale(0.63);">
->>>>>>> c90444435a2b57810afb9b8e7afbfdc1de37cc68
                                         <div class="device">
                                             <img src="/lg5-common/images/PRH/lg-phone-device.png" alt="" aria-hidden="true">
                                         </div>
@@ -1199,7 +1194,7 @@
 
         $(function() {
 
-            vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {
+            vcui.require(['ui/carousel','ui/inviewScroll','libs/jquery.transit.min'], function () {
 
                 $.extend( $.easing,{
                 def: 'easeOutQuad',
@@ -1387,7 +1382,6 @@
 
                     if(!canScroll) return;  
                     if(currentStep == step) return;
-
                     canScroll = false; 
 
                     var arr = wheelArr[step];
@@ -1419,7 +1413,6 @@
                     nextStep = nextStep + currentStep;
                     nextStep = Math.max(Math.min(nextStep, stepLens), 0);                   
                     if(currentStep == nextStep) return;
-                    //if(!direct && currentStep == nextStep) return;
 
                     var arr = wheelArr[nextStep];
 
@@ -1566,42 +1559,68 @@
                     return idx;                
                 }
 
+                function findStep(page){
+                    for(var i=0; i<wheelArr.length; i++){
+                        var arr = wheelArr[i];
+                        if(vcui.isArray(arr)){
+                            var pageId = arr[0]['pageId'];
+                            if(pageId == page) return i;
+                        }else{
+                            return i;
+                        }
+                    }
+                    return 0;
+                }
+
+                function setBeforeCss(step){
+
+                    for(var k=0; k<step; k++){
+                        var arr = wheelArr[k];
+                        if(vcui.isArray(arr)){
+                            for(var j=0; j<arr.length; j++){
+                                var obj = arr[j];
+                                var target = obj['target'];
+                                var transit = obj['transit'];
+                                $(target).css(transit);
+                            }
+                        }
+                    }
+                }
 
                 function updateVideo(video) {
-
-                    var $o        = $(video||this),
-                        $wrap     = $o.closest('.img'),
+                    var $target   = $(video||this),
+                        $wrap     = $target.closest('.img'),
                         $image    = $wrap.find('img'),
-                        key       = $o.data('key'),
-                        loaded    = $o.data('loaded'),
-                        src       = $o.data('src'),
-
-                        // modeV     = 5, // 사이즈별로 로드시
+                        key       = $target.data('key'),
+                        loaded    = $target.data('loaded'),
+                        src       = $target.data('src'),
+                        
                         isAndroid = vcui.detect.isAndroid,
+                        /*
+                        modeV     = 5, // 사이즈별로 로드시
                         srcArr = (function() {
-                            var s5 = $o.data('src-v5') || $o.data('src'),
-                                s4 = $o.data('src-v4') || s5,
-                                s3 = $o.data('src-v3') || s4,
-                                s2 = $o.data('src-v2') || s3,
-                                s1 = $o.data('src-v1') || s2,
+                            var s5 = $target.data('src-v5') || $target.data('src'),
+                                s4 = $target.data('src-v4') || s5,
+                                s3 = $target.data('src-v3') || s4,
+                                s2 = $target.data('src-v2') || s3,
+                                s1 = $target.data('src-v1') || s2,
                                 arr = [null,s1,s2,s3,s4,s5];
                             return arr;
                         })(),
-                        // src    = srcArr[modeV],
-                        src    = $o.data('src'),
+                        src  = srcArr[modeV],
+                        */
+                        src    = $target.data('src'),
                         
-                        videoAttr = $o.data('options') || 'autoplay loop playsinline muted',
-                        $video    = $o.find('video'),
-                        $sources  = $o.find('source'),
+                        videoAttr = $target.data('options') || 'autoplay loop playsinline muted',
+                        $video    = $target.find('video'),
+                        $sources  = $target.find('source'),
                         oVideo;
 
                     // 비디오 요소 생성.
                     var createVideoObject = function() {
-
                         
-                        var extArr = $o.data('ext').toLowerCase().replace(/\s/g, '').split(',');
+                        var extArr = $target.data('ext').toLowerCase().replace(/\s/g, '').split(',');
                         if ( !extArr.length ) return false;
-
 
                         var $video = $('<video '+ videoAttr +'></video>');
 
@@ -1615,12 +1634,11 @@
                             }
                         }
                             
-                        if ( $o.data('alt') != null ) {
-                            $('<p>').text($o.data('alt')).appendTo($video);
+                        if ( $target.data('alt') != null ) {
+                            $('<p>').text($target.data('alt')).appendTo($video);
                         }
-                        $video.data($o.data());
-                        $o.replaceWith($video);
-
+                        $video.data($target.data());
+                        $target.replaceWith($video);
                         $video   = $wrap.find('video');
                         $sources = $video.find('source');
 
@@ -1651,10 +1669,7 @@
                         
                     }
 
-
                     createVideoObject();
-
-
                 }
 
 
@@ -1664,10 +1679,8 @@
                     if(wheelInterval) setTimeout(wheelInterval);
                     wheelAniInterval = null;
                     wheelInterval = null;
-
                     $('html, body').stop(true);
-                    $('html').removeClass('sceneMoving');   
-
+                    $('html').removeClass('sceneMoving'); 
                     canScroll = true;    
                     winWidth = $window.width();
                     winHeight = $window.height();
@@ -1679,15 +1692,10 @@
                     var totalHeight = winHeight;
                     var itemHeight = winHeight;
                     var allHeight = 0;
-
                     
-                    $scenes.each(function(i) {
-                        
-                        var maxStep = 0;
+                    $scenes.each(function(i) {                        
                         var arr = [];
-
                         $(this).find('*').each(function(j){
-
                             var attributeIndex = 0;
                             var attributesLength = this.attributes.length;   
                             var cssVal = null;
@@ -1695,7 +1703,7 @@
                             for (; attributeIndex < attributesLength; attributeIndex++) {
                                 var attr = this.attributes[attributeIndex];
                                 var match = attr.name.match(regex);
-                                if(match === null) continue;
+                                if(match === null) continue;                                
                                 if(attributeIndex==1) cssVal = stringToObj(attr.value);
                                 arr.push({
                                     sort : match[1],
@@ -1746,7 +1754,6 @@
                         $(this).height(itemHeight);
                         totalHeight += itemHeight;
 
-
                         $(this).find('.img > .video').each(function() {
                             updateVideo(this);
                         });
@@ -1761,24 +1768,75 @@
 
                     if(page!==undefined){
                         currentPage = page;
-                        moveScene(currentPage,0);
+                        currentStep = findStep(currentPage);
+                        setBeforeCss(currentStep);
+                        moveScene(currentPage,currentStep,0);
                     }else{
                         setTimeout(function(){
                             currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
-
-                            console.log(currentPage);
-
-                            var findArr = vcui.array.filterOne(wheelArr, function(item, index) {
-				                return typeof item === 'String';
-		                    });
-
-
-                            moveScene(currentPage,0);
+                            currentStep = findStep(currentPage);
+                            setBeforeCss(currentStep);
+                            moveScene(currentPage,currentStep,0);
                         }, 100);
                     }
                     
                 }
 
+                /*
+                $.fn.inViewport = function(offsetVh){
+                    var elOffsetVh = ~~Math.round(parseFloat(offsetVh)) || 0;
+                    var elT = $(this).offset().top;
+
+                    console.log(elT);
+
+                    var elB = elT + $(this).outerHeight();
+                    var viewT = $('.brand-wrap').scrollTop();
+                    var viewB = viewT + ($('.brand-wrap').height() + elOffsetVh);
+                    return elB > viewT && elT < viewB;
+                };
+
+                $('.brand-wrap').on('scroll', function() {
+
+                    $('.animate-target').each(function() {
+                        if($(this).inViewport('0')) {
+                            
+                            if(!$(this).hasClass('inview')){
+                                console.log(this);
+                                $(this).addClass('inview');
+                            }
+                        } else {
+                            $(this).removeClass('inview');
+                        }
+                    });
+                });
+                */
+
+
+               
+
+                // $('.animate-target').vcInviewScroll({
+                //     delay: 0,
+                //     offset: {
+                //         top: 0,
+                //         bottom: 0
+                //     },
+                //     on: {
+                //         enter: function (target) {
+                //             console.log(target)
+
+                //             // $(target).find('.txt_wrap').transition({
+                //             //     y:0,
+                //             //     opacity: 1,
+                //             //     duration: 500,
+                //             //     delay: 300,
+                //             //     easing: 'easeOutQuad'
+                //             // });
+
+                //         }
+                //     }
+                // });
+
+                
                 $window.trigger('breakpointchange');
                 $window.trigger('resizeend');
 
