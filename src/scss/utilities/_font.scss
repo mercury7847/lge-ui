@@ -1,38 +1,85 @@
-/* Noto Sans */
-@font-face {
-	font-family: 'Noto Sans'; /* Regular */
-	font-display:swap;
-	src: url('/lg5-common/fonts/NotoSans-Regular.eot');
-	src: local('☺'),
-        url('/lg5-common/fonts/NotoSans-Regular.eot#iefix') format('embedded-opentype'),
-        url('/lg5-common/fonts/NotoSans-Regular.woff2') format('woff2'),
-        url('/lg5-common/fonts/NotoSans-Regular.woff') format('woff'),
-        url('/lg5-common/fonts/NotoSans-Regular.otf') format('opentype');
-	font-weight: 400;
+// /* Noto Sans */
+// @font-face {
+// 	font-family: 'Noto Sans'; /* Regular */
+// 	font-display:swap;
+// 	src: url('/lg5-common/fonts/NotoSans-Regular.eot');
+// 	src: local('☺'),
+//         url('/lg5-common/fonts/NotoSans-Regular.eot#iefix') format('embedded-opentype'),
+//         url('/lg5-common/fonts/NotoSans-Regular.woff2') format('woff2'),
+//         url('/lg5-common/fonts/NotoSans-Regular.woff') format('woff'),
+//         url('/lg5-common/fonts/NotoSans-Regular.otf') format('opentype');
+// 	font-weight: 400;
+// }
+
+// @font-face {
+// 	font-family: 'Noto Sans'; /* Medium */
+// 	font-display:swap;
+// 	src: url('/lg5-common/fonts/NotoSans-Medium.eot');
+// 	src: local('☺'),
+//         url('/lg5-common/fonts/NotoSans-Medium.eot#iefix') format('embedded-opentype'),
+//         url('/lg5-common/fonts/NotoSans-Medium.woff2') format('woff2'),
+//         url('/lg5-common/fonts/NotoSans-Medium.woff') format('woff'),
+//         url('/lg5-common/fonts/NotoSans-Medium.otf') format('opentype');
+// 	font-weight: 500;
+// 	font-style: normal;
+// }
+
+// @font-face {
+// 	font-family: 'Noto Sans'; /* Bold */
+// 	font-display:swap;
+// 	src: url('/lg5-common/fonts/NotoSans-Bold.eot');
+// 	src: local('☺'),
+//         url('/lg5-common/fonts/NotoSans-Bold.eot#iefix') format('embedded-opentype'),
+//         url('/lg5-common/fonts/NotoSans-Bold.woff2') format('woff2'),
+//         url('/lg5-common/fonts/NotoSans-Bold.woff') format('woff'),
+//         url('/lg5-common/fonts/NotoSans-Bold.otf') format('opentype');
+// 	font-weight: 700;
+// 	font-style: normal;
+// }
+@charset "UTF-8";@font-face {
+    font-family: 'LG Smart Bold';
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+    src: local("☺"),url(/lg5-common/fonts/LG_Smart_Bold.woff2) format("woff2"),url(/lg5-common/fonts/LG_Smart_Bold.woff) format("woff")
 }
 
 @font-face {
-	font-family: 'Noto Sans'; /* Medium */
-	font-display:swap;
-	src: url('/lg5-common/fonts/NotoSans-Medium.eot');
-	src: local('☺'),
-        url('/lg5-common/fonts/NotoSans-Medium.eot#iefix') format('embedded-opentype'),
-        url('/lg5-common/fonts/NotoSans-Medium.woff2') format('woff2'),
-        url('/lg5-common/fonts/NotoSans-Medium.woff') format('woff'),
-        url('/lg5-common/fonts/NotoSans-Medium.otf') format('opentype');
-	font-weight: 500;
-	font-style: normal;
+    font-family: 'LG Smart Bold';
+    font-display: swap;
+    font-weight: 400;
+    font-style: italic;
+    src: local("☺"),url(/lg5-common/fonts/LG_Smart_Bold_Italic.woff2) format("woff2"),url(/lg5-common/fonts/LG_Smart_Bold_Italic.woff) format("woff")
 }
 
 @font-face {
-	font-family: 'Noto Sans'; /* Bold */
-	font-display:swap;
-	src: url('/lg5-common/fonts/NotoSans-Bold.eot');
-	src: local('☺'),
-        url('/lg5-common/fonts/NotoSans-Bold.eot#iefix') format('embedded-opentype'),
-        url('/lg5-common/fonts/NotoSans-Bold.woff2') format('woff2'),
-        url('/lg5-common/fonts/NotoSans-Bold.woff') format('woff'),
-        url('/lg5-common/fonts/NotoSans-Bold.otf') format('opentype');
-	font-weight: 700;
-	font-style: normal;
+    font-family: 'LG Smart Light';
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+    src: local("☺"),url(/lg5-common/fonts/LG_Smart_Light.woff2) format("woff2"),url(/lg5-common/fonts/LG_Smart_Light.woff) format("woff")
+}
+
+@font-face {
+    font-family: 'LG Smart Regular';
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+    src: local("☺"),url(/lg5-common/fonts/LG_Smart_Regular.woff2) format("woff2"),url(/lg5-common/fonts/LG_Smart_Regular.woff) format("woff")
+}
+
+@font-face {
+    font-family: 'LG Smart Regular';
+    font-display: swap;
+    font-weight: 400;
+    font-style: italic;
+    src: local("☺"),url(/lg5-common/fonts/LG_Smart_Regular_Italic.woff2) format("woff2"),url(/lg5-common/fonts/LG_Smart_Regular_Italic.woff) format("woff")
+}
+
+@font-face {
+    font-family: 'LG Smart SemiBold';
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+    src: local("☺"),url(/lg5-common/fonts/LG_Smart_SemiBold.woff2) format("woff2"),url(/lg5-common/fonts/LG_Smart_SemiBold.woff) format("woff")
 }
