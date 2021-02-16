@@ -227,6 +227,7 @@
                         {
                             breakpoint:767,
                             settings: {
+                                variableWidth : true,
                                 slidesToShow: 2,
                                 slidesToScroll: 2
                             }
