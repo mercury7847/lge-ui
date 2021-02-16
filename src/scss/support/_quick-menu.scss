@@ -218,11 +218,10 @@
             position:absolute;
             right:0;
             top:0;
-            width:72px;
             margin-right: 0;
             transition: margin ease .5s;
             li {
-                margin:0 -56px 0 0;
+                margin-right:-56px;
                 transition:margin ease 0.5s;
                 &:first-child {
                     margin-right: 0;
@@ -296,6 +295,10 @@
             width:auto;
             .history-list {
                 margin-right: 64px;
+                @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+                    /* ie 호환성 이슈 */
+                    width: 184px;
+                }
             }
             li {
                 margin-right: 8px;

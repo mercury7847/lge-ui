@@ -142,6 +142,10 @@
                 .point {
                     color:#da0f47;
                 }
+                .btn-delete {
+                    position:static;
+                    margin:-4px 0 0 4px;    
+                }
             }
             .btn-back {
                 display:inline-block;
@@ -228,6 +232,9 @@
             padding:32px 24px;
             border-radius:8px;
             background-color: #f4f4f4;
+            .search-more {
+                display:none;
+            }
             @include mobile {
                 margin-bottom:40px;
                 padding:32px 16px;

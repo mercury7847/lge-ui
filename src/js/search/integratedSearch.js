@@ -4,7 +4,7 @@
     //인기검색어
     var popularItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>'
     //추천태그
-    var recommendItemTemplate = '<li><a href="#{{text}}" class="rounded"><span class="text">{{text}}</span></a></li>'
+    var recommendItemTemplate = '<li><a href="#{{text}}" class="rounded"><span class="text">#{{text}}</span></a></li>'
 
     //자동완성
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';

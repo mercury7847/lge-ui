@@ -253,7 +253,7 @@ var FilterLayer = (function() {
             self.$listSorting.find('input').each(function(idx, el){
                 switch(el.type) {
                     case "checkbox":
-                        data[el.name] = el.checked;
+                        data[el.name] = el.checked ? "Y" : "N";
                         break;
                     case "text":
                         var value = $(el).attr('data-searchValue');

@@ -471,7 +471,6 @@
                     item.siblings[str].siblingType = (siblingType == "color") ? "color" : "text";
                 }
 
-                /*
                 var sliderImages = [item.mediumImageAddr];
                 if(item.rollingImages && item.rollingImages.length){
                     item.rollingImages.forEach(function(obj, idx) {
@@ -480,8 +479,8 @@
                         }
                     });
                 }
-                */
 
+                /*
                 var sliderImages = [];
                 if(item.rollingImages && item.rollingImages.length){
                     item.rollingImages.forEach(function(obj, idx) {
@@ -492,6 +491,7 @@
                 } else {
                     sliderImages.push(item.smallImageAddr);
                 }
+                */
                 item.sliderImages = sliderImages;
                 
                 item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
