@@ -398,6 +398,7 @@ CS.MD.search = function() {
                     self.$el.find('.autocomplete-box').find('ul').empty();
                     $('.autocomplete-box').hide();
                     $('.keyword-box').show();
+                    self.$el.addClass('on');
                 }
             }).on('keyup', function(e) {
                 if (e.keyCode == 13) {
@@ -785,6 +786,20 @@ CS.MD.commonModel = function() {
                     page: 1
                 });
 
+                if (self.$el.hasClass('service-engineer') && data.subCategory == 'CT50019275') {
+                    lgkorUI.confirm('의류 건조기 제품은 불편 사항 및 제품 환경 확인 등이 필요 함에 따라 고객 상담실 1544-7777로 전화주시면 신속한 상담에 도움드리고 있습니다.<br>업무 시간 외, 공휴일, 상담사 통화가 어려운 경우 아래 ’예약’ 버튼을 클릭하시어 연락처 등을 남겨 주시기 바랍니다. 다만, 접수된 순으로 처리하고 있어 다소 지연되는 점 양해 부탁드립니다.',{
+                        title:'',
+                        okBtnName: '예약',
+                        cancelBtnName: '이전',
+                        ok: function() {
+                            location.href = '/support/request-call-reservation-dryer';
+                        },
+                        cancel: function() {
+                            self.$cont.commonModel('reset');
+                        }
+                    });
+                }
+
                 self.updateSummary({
                     product: [data.categoryName, data.subCategoryName]
                 });
@@ -993,8 +1008,6 @@ CS.MD.commonModel = function() {
                 var result = termsValidation.validate();
                 
                 if (result.success) {
-                    self.$selectedModelBar.show();
-
                     if (self.isModel) {
                         self.$el.trigger('complete', [self.selected, self.resultUrl]);
                     } else {
@@ -1003,7 +1016,10 @@ CS.MD.commonModel = function() {
                         self.$myModelSlider.vcCarousel('resize');
                     }
                     
-                    self.focus(self.$selectedModelBar);
+                    if (self.$selectedModelBar.length) {
+                        self.$selectedModelBar.show();
+                        self.focus(self.$selectedModelBar);
+                    }
                 }
             });
         },
@@ -2115,6 +2131,7 @@ var AuthManager = function() {
                 $(options.elem.name).val('');
                 $(options.elem.phone).val('');
             }
+            self.validation.reset();
         });
 
     }
@@ -2313,3 +2330,6 @@ $.fn.serializeObject = function() {
 
     document.addEventListener('DOMContentLoaded', commonInit);
 })(jQuery);
+
+var _AceGID=(function(){var Inf=['gtp20.acecounter.com','8080','AH5A40639666759','AW','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;var _T=new Image(0,0);if(_CI.join('.').indexOf(Inf[3])<0){ _T.src ="https://"+ Inf[0] +'/?cookie'; _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
+var _AceCounter=(function(){var G=_AceGID;var _sc=document.createElement('script');var _sm=document.getElementsByTagName('script')[0];if(G.o!=0){var _A=G.val[G.o-1];var _G=(_A[0]).substr(0,_A[0].indexOf('.'));var _C=(_A[7]!='0')?(_A[2]):_A[3];var _U=(_A[5]).replace(/\,/g,'_');_sc.src='https:'+'//cr.acecounter.com/Web/AceCounter_'+_C+'.js?gc='+_A[2]+'&py='+_A[4]+'&gd='+_G+'&gp='+_A[1]+'&up='+_U+'&rd='+(new Date().getTime());_sm.parentNode.insertBefore(_sc,_sm);return _sc.src;}})();

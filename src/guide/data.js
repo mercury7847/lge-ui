@@ -250,7 +250,8 @@ var res = {
 				"LG SIGNATURE" : ["/html/PRH/MKTF1111.html","","진행중"]
 			},
 			"스토리(STS)" : {
-				"홈(서브메인)" : ["/html/STS/OBS5001.html","",""]
+				"홈(서브메인)" : ["/html/STS/OBS5001.html","",""],
+				"팝업" : ["/html/STS/OBS5001_popup.html","",""]
 			},
 			"스토리(STC)" : {
 				"모바일 서비스" : {

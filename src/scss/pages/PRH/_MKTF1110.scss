@@ -40,7 +40,7 @@
                             top: 100px;
                         }
                         &[class*="2"] {
-                            @include calc(top,100%,-100px);
+                            top: 100px;
                         }
                     }
                 }
@@ -85,7 +85,7 @@
                             line-height: 44px;
                         }
                         &[class*="2"] {
-                            top: 100%;
+                            top: 0;
                             margin-top: 0;
                             line-height: 28px;
                             span {
@@ -120,7 +120,7 @@
                 .cont2 {
                     margin-top: 24px;
                     font-weight: 700;
-                    @include font-large-1;
+                    @include font(20px,30px);
                 }
                 @include mobile {
                     position: static;
@@ -137,9 +137,9 @@
                             line-height: 44px;
                         }
                         &[class*="2"] {
-                            top: 100%;
+                            top: 0;
                             margin-top: 0;
-                            line-height: 28px;
+                            @include font(20px,28px);
                             span {
                                 display: block;
                                 margin-top: 40px;

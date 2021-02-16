@@ -58,7 +58,7 @@
             '{{# } #}}' +
         '{{# } #}}' +
         '{{# if (typeof keyword != "undefined" && keyword != "") { #}}' +
-        ' “<span class="point">{{keyword}}</span>”' +
+        ' “<span class="point">{{keyword}}<button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button></span>”' +
         '{{# } #}}';
 
     var recommProductItemTemplate =         
@@ -173,6 +173,7 @@
                         if (key == 'keyword') {
                             data['keywords'].push(decodeURIComponent(searchObj.keyword));
                             self.$keywordInput.val(decodeURIComponent(searchObj.keyword));
+                            self.$keywordWrap.find('.search-more').show();
                         } else if (key == 'searchKeyword') {
                             var temp = decodeURIComponent(searchObj.searchKeyword).split('+');
                             if (temp.length) {
@@ -180,6 +181,7 @@
                                 temp.forEach(function(item) {
                                     data['keywords'].push(item);
                                 });
+                                self.$keywordWrap.find('.search-more').show();
                             }
                         } else {
                             data[key] = decodeURIComponent(searchObj[key]);
@@ -363,10 +365,13 @@
                     self.$solutionsResult.find('.list-wrap').show();
                     self.$solutionsResult.find('.pagination').show();
                     self.$solutionsResult.find('.no-data').hide();
+                    self.$keywordWrap.find('.search-more').show();
                 } else {
                     self.$solutionsResult.find('.list-wrap').hide();
                     self.$solutionsResult.find('.pagination').hide();
                     self.$solutionsResult.find('.no-data').show();
+                    self.$keywordWrap.find('.search-more').hide();
+                    self.$keywordWrap.find('.search-more').find('input[type=checkbox]').prop('checked', false);
                 }
 
                 self.$solutionsResult.find('#solutionsCount').html(data.listPage.totalCount);
@@ -406,8 +411,7 @@
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, self.param, function(result) {
-                    var data = result.data,
-                        param = result.param;
+                    var data = result.data;
 
                     self.setFilter(data);
                     
@@ -449,6 +453,7 @@
                 self.$selectTopic.vcSelectbox('update');
                 self.$selectSubTopic.vcSelectbox('update');
                 self.$keywordInput.val('');
+                self.$solutionsWrap.find('.search-more').hide();
                 self.$solutionsWrap.find('#research').prop('checked', false);
                 self.$solutionsSort.val(data.sort).vcSelectbox('update');
                 
@@ -480,6 +485,12 @@
                     self.completeModel();
                 }).on('reset', function(e) {
                     self.reset();
+                });
+
+                self.$solutionsResult.find('.title .tit').on('click', '.btn-delete', function() {
+                    self.$keywordInput.val('');
+                    self.param.keywords = [];
+                    self.requestData('click');
                 });
 
                 // filter
