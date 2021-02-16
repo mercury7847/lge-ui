@@ -362,6 +362,7 @@
                 self.el.dateOpenBtn.on('click', function() {
                     self.requestDate();
                 });
+                
                 self.el.date.on('dateselected', function() {
                     self.requestTime();
                 }); 
@@ -663,7 +664,7 @@
                     },
                     managerOpt = {
                         elem: {
-                            form: '#reservationTimePopup',
+                            popup: '#reservationTimePopup',
                             name: '#userNm',
                             phone: '#phoneNo',
                             number: '#authNo'
