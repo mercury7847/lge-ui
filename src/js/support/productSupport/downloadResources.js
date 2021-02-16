@@ -25,7 +25,7 @@
                     '<li>{{date}}</li>' +
                 ' </ul>' +
                 '<div class="btn-wrap">' +
-                    '<a href="{{file.src}}" class="btn border size btn-download"><span>다운로드 {{file.size}}</span></a>' +
+                    '<a href="{{file.src}}" class="btn border size btn-download"><span>다운로드 {{#if file.size}}{{file.size}}{{/if}}{{#if file.os}}{{file.os}}{{/if}}</span></a>' +
                 '</div>' +
             '</div>' +
         '</li>';
@@ -179,8 +179,6 @@
     
 
     $(window).ready(function() {
-        //테스트
-
         var download = {
             initialize: function() {
                 var self = this;
@@ -218,6 +216,7 @@
                 var html = "";
 
                 $('#page').val(list.listPage.page);
+                $('#manualCount').html(list.listPage.totalCount);
 
                 if (listArr.length) {
                     listArr.forEach(function(item) {
@@ -239,8 +238,9 @@
             setDriverList: function(list) {
                 var self = this;
                 var listArr = list.listData instanceof Array ? list.listData : [];
-                var pageInfo = list.listPage;
                 var html = "";
+
+                $('#driverCount').html(list.listPage.totalCount);
             
                 if (listArr.length) {
                     listArr.forEach(function(item) {
