@@ -56,7 +56,7 @@ vcui.define('ui/checkboxAllChecker', ['jquery', 'vcui'], function ($, core) {
                 self.$items = self.$el.find('input[type=checkbox]').not(self.options.allCheckClass).not(":disabled");
             }
             self.total = self.$items.size();
-            console.log("self.total:", self.total)
+            //console.log("self.total:", self.total)
 
             self.$items.off('change');
             self.$items.on('change', function (e) {

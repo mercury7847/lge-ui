@@ -20,7 +20,7 @@
         '</div></div>' +
         '{{#if availableMessage}}<div class="disabled-message"><p class="err-msg">{{availableMessage}}</p></div>{{/if}}' +
         '{{#if isLogin}}<span class="chk-wish-wrap"><input type="checkbox" id="chk-wish-{{itemID}}-{{itemSeq}}" name="chk-wish-{{itemID}}-{{itemSeq}}" {{#if (wish)}}checked{{/if}}><label for="chk-wish-{{itemID}}-{{itemSeq}}"><span class="blind">{{#if wish}}찜한상품{{#else}}찜하기{{/if}}</span></label></span>{{/if}}' +
-        '<span class="chk-wrap"><input type="checkbox" id="chk-select-{{itemID}}-{{itemSeq}}" name="chk-select-{{itemID}}-{{itemSeq}}" {{#if (available && check)}}checked{{/if}} {{#if !(available)}}disabled{{/if}}><label for="chk-select-{{itemID}}-{{itemSeq}}"><span class="blind">선택안함</span></label></span>' +
+        '<span class="chk-wrap"><input type="checkbox" id="chk-select-{{itemID}}-{{itemSeq}}" name="chk-select" {{#if (available && check)}}checked{{/if}} {{#if !(available)}}disabled{{/if}}><label for="chk-select-{{itemID}}-{{itemSeq}}"><span class="blind">선택안함</span></label></span>' +
         '<div class="item-delete"><button type="button" class="btn-delete"><span class="blind">제품 삭제</span></button></div>' +
         '</li>';
         
@@ -45,9 +45,9 @@
                 //추천제품
                 self.$recommendProduct = $('div.product-recommend-wrap');
 
-                vcui.require(['ui/checkboxAllChecker'], function () {
-                    self.$cartWrap.vcCheckboxAllChecker({checkBoxItemsTargetQuery:self.cartItemCheckQuery});
-                    self.cartAllChecker = self.$cartWrap.vcCheckboxAllChecker('instance');
+                //vcui.require(['ui/checkboxAllChecker'], function () {
+                    //self.$cartWrap.vcCheckboxAllChecker({checkBoxItemsTargetQuery:self.cartItemCheckQuery});
+                    //self.cartAllChecker = self.$cartWrap.vcCheckboxAllChecker('instance');
 
                     self.bindEvents();
                     self.bindPopupEvents();
@@ -73,7 +73,7 @@
                             }
                         });
                     }
-                });
+                //});
             },
 
             bindEvents: function() {
@@ -110,7 +110,24 @@
                     }
                 });
 
+                /*
                 self.cartAllChecker.on('allCheckerChange', function(e, status){
+                    self.requestInfo();
+                });
+                */
+
+                //전체선택 체크박스
+                self.$cartAllCheck.on('change', function (e) {
+                    var $cartItemCheck = self.$cartList.find(self.cartItemCheckQuery);
+                    $cartItemCheck.prop('checked', self.$cartAllCheck.is(':checked'));
+                    $cartItemCheck.each(function (index, item) {
+                        self.changeBlindLabelTextSiblingCheckedInput(item,'선택함','선택안함');
+                    });
+                    self.requestInfo();
+                });
+
+                //선택 체크박스
+                self.$cartList.on('change', 'li span.chk-wrap input', function(e) {
                     self.requestInfo();
                 });
 
@@ -202,9 +219,11 @@
             //전체선택 버튼 상태 갱신
             updateCartItemCheck: function() {
                 var self = this;
+                /*
                 if(self.cartAllChecker) {
                     self.cartAllChecker.update();
                 }
+                */
                 var $cartItemCheck = self.$cartList.find(self.cartItemCheckQuery);
                 self.$cartAllCheck.prop('checked', !$cartItemCheck.is(':not(:checked):not(:disabled)'));
             },
@@ -237,6 +256,7 @@
                     self.$cartWrap.hide();
                 }
                 self.updateCartItemCheck();
+
                 self.checkNoData();
             },
 
@@ -293,6 +313,7 @@
                 } else {
                     //선택된 제품이 없다
                     careCartInfo.setEmptyData();
+                    self.updateCartItemCheck();
                 }
             },
 
@@ -327,7 +348,6 @@
 
             //아이템 찜하기
             requestWish: function($dm, wish) {
-                console.log('wish');
                 var self = this;
                 var ajaxUrl = self.$cartContent.attr('data-wish-url');
                 var success = function(data) {
