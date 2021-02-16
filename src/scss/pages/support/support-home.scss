@@ -679,8 +679,6 @@
             margin-left:-12px;
             margin-right:-12px;
 
-            
-
             @include clearfix;
 
             .item {
@@ -744,36 +742,43 @@
             position:relative;
             margin:0 56px;
             box-sizing:border-box;
-            .slide-track {
+        }
+        .slide {
+            &-track {
                 @include clearfix;
-                .slide-conts {
-                    float:left;
-                    padding:0 10px;
-                    // padding:0 32px;
-    
-                    > a {
-                        display:flex;
-                        flex-direction: row;
-                        align-items: center;
-                        width:276px;
+            }
+            &-conts {
+                float:left;
+                padding:0 10px;
 
-                        .slide-thumb {
-                            width:80px;
-
-                            img {
-                                width:100%;
-                            }
-                        }
-                        .slide-text {
-                            margin-left:16px;
-                            font-size:16px;
-                            line-height:1.63;
-                            color:#222;
-                        }
-                    }
+                > a {
+                    display:flex;
+                    flex-direction: row;
+                    align-items: center;
+                    width:276px;
                 }
             }
-            
+            &-thumb {
+                width:80px;
+
+                img {
+                    width:100%;
+                }
+            }
+            &-text {
+                margin-left:16px;
+                font-size:16px;
+                line-height:1.63;
+                color:#222;
+            }
+            &-controls {
+                .prev {
+                    left:0;
+                }
+                .next {
+                    right:0;
+                }
+            }
         }
         .indi-wrap {
             bottom:-40px;
@@ -791,33 +796,20 @@
                 }
             }
         }
-        .slide-controls {
-            button.prev {
-                left:0;
-            }
-            button.next {
-                right:0;
-            }
-        }
 
         @include mobile {
-            .award-list {
-                .slide-track {
-                    .slide-conts {
-                        > a {
-                            width:100%;
-
-                            {
-                                .slide-text {
-                                    font-size:14px;
-                                }
-                            }
-                        }
+            .slide {
+                &-conts {
+                    > a {
+                        width:100%;
                     }
                 }
-            }
-            .slide-controls {
-                display: none;
+                &-text {
+                    font-size:14px;
+                }
+                &-controls {
+                    display: none;
+                }
             }
         }
     }
