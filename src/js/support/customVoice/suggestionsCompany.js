@@ -82,7 +82,7 @@
                                     if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});
                                     lgkorUI.hideLoading();
                                 }
-                            });
+                            }, 'POST');
                         }
                     });
                 }
