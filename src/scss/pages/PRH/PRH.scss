@@ -103,8 +103,14 @@
 }
 
 .brand-wrap {
-    .ui_sticky {
-        background-color: $color-bg-wt;
+    .tabs-fixed {
+        &.active {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            background-color: $color-bg-wt;
+        }
     }
     .tabs-wrap {
         max-width: 1380px;

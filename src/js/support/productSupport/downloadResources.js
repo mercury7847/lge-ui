@@ -86,17 +86,6 @@
     };
 
     var relatedInfo = {
-        template : 
-            '{{#each item in infoList}}' + 
-                '<div class="item">' + 
-                    '<a href="{{item.url}}" class="item-inner">' + 
-                        '<div class="img">' + 
-                            '<img src="{{item.imgUrl}}" alt="{{item.imgAlt}}">' + 
-                        '</div>' + 
-                        '<p class="txt">{{item.title}}</p>' + 
-                    '</a>' + 
-                '</div>' + 
-            '{{/each}}',
         el : {
             wrap : $('.related-info'),
             title : $('.related-info .banner-tit'),
@@ -135,16 +124,11 @@
                 }
             ]
         },
-        initialize : function(data){
-            var self = this;
-    
-            self.setSlideContent(data);
-            self.sliderInit();
+        initialize : function(){
+            this.sliderInit();
         },
         reset : function(){
-            var self = this;
-            self.el.list.html('');
-            self.el.wrap.hide();
+            this.el.wrap.hide();
         },
         sliderInit : function(){
             var self = this;
@@ -158,26 +142,9 @@
                     activeSlider.vcCarousel('update');
                     activeSlider.vcCarousel('reinit');
                 }
-            });
-        },
-        setSlideContent: function(data) {
-            var self = this;
-            var data = data.relatedInfo;
-            var infoList = data.infoList instanceof Array ? data.infoList : [];
-            var htmlData = "";
-
-            if( data.title.length ) {
-                self.el.title.html(data.title);
-            }
-            
-            if( infoList.length ) {
-                htmlData += vcui.template(self.template, data);
-                self.el.list.html(htmlData);
                 self.el.wrap.show();
-            } else {
-                self.reset();
-            }
-        },
+            });
+        }
     }
 
     //배너 토글

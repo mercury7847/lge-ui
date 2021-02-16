@@ -91,7 +91,13 @@ $(window).ready(function(){
                 display = percent <= 0 ? 'none' : 'block';
                 bar.css({width: percent+"%", display: display});
             });            
-         });
+		 });
+		 
+		 $(window).on('resize', function(){
+			 if($('.KRP0009').length){
+				$('.KRC0040').vcSticky("setMarginTop", [$('.KRC0040').outerHeight(true)]);
+			 }
+		 })
     });
 
     if($('body').hasClass('iw-fullscreen-edit')) {

@@ -98,12 +98,12 @@
             }
             &.type-wide {
                 .box-inner {
-                    @include boxs(w);
+                    width:((603px * 100%) / 1380px);
                 }
             }
             &.type-narrow {
                 .box-inner {
-                    @include boxs(n);
+                    width:((603px * 100%) / 1380px);
                 }
             }
             &.box-align-left {
@@ -194,7 +194,7 @@
                 .list {
                     position:relative;
                     display:table;
-                    width:((561px * 100%) / 1380px);
+                    width:((603px * 100%) / 1380px);
                     margin-top:32px;
                     text-align:left;
                     @include mobile {

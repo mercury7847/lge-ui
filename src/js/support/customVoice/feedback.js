@@ -164,8 +164,10 @@
 
                 if (result.success) {
                     authManager.open(function() {
-                        $('#authName').val($('#userName').val()).prop('readonly', true);
-                        $('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);  
+                        if ($('#userName').val()) {
+                            $('#authName').val($('#userName').val()).prop('readonly', true);
+                            $('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);
+                        }
                     });
                 }
             });

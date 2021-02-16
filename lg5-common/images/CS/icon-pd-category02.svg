@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+    <defs>
+        <linearGradient id="36ab8hfwsa" x1="0%" x2="100%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#FE3F6D"/>
+            <stop offset="100%" stop-color="#F2C37C"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g transform="translate(-770 -1213) translate(270 1029) translate(468 152) translate(32 32)">
+                            <circle cx="20" cy="20" r="20" fill="url(#36ab8hfwsa)"/>
+                            <g>
+                                <g>
+                                    <path d="M0 24L24 24 24 0 0 0z" transform="translate(8 8)"/>
+                                    <g stroke="#FFF" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M0 3.899V.722C0 .382.19 0 .643 0h16.714c.355 0 .643.323.643.722v11.556c0 .39-.296.722-.643.722H.643C.288 13 0 12.676 0 12.278V3.899zM5 16L9.025 15 13 16M9 13L9 14.8" transform="translate(8 8) translate(3 4)"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

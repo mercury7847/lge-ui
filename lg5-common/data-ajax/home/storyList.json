@@ -8,11 +8,7 @@
         }
     },
     "data":{
-        "selectTags":{
-            "tagCode": "가전은역시LG",
-            "tagName": "가전은역시LG",
-            "isSubscription": true
-        },
+        "selectTags": null,
         "storyList": [
             {
                 "contentsType": "image",
