@@ -179,7 +179,8 @@
             }
             #driverDatilContent {
                 p {
-                    @include font-small;       
+                    @include font-small;    
+                    white-space:pre-line;
                 }
                 img {
                     max-width:100%;
