@@ -13,114 +13,125 @@
         <div class="container">
             <div class="contents support support-home">
 
+                <!-- 로그인 툴팁 -->
+                <div class="tooltip-login">
+                    <div class="tooltip-inner">
+                        <p>LG전자에서 제공하는 <strong>회원전용 서비스</strong>로 더 편리하게 이용할 수 있어요. </p>
+                        <a href="" class="btn-link">LOGIN</a>
+                        <button class="btn-tooltip-close"><span class="blind">접기</span></button>
+                    </div>
+                </div>
+                <!-- //로그인 툴팁 -->
+
+
                 <!-- hero 영역 -->
                 <div class="home-hero-area">
-                    <div class="headline">
-                        <h2 class="hero-tit">환영합니다. 무엇을 도와드릴까요?</h2>
-                        <a href="#" class="btn-fast-support">빠른 제품지원</a>
+                    <div class="home-hero">
+                        <div class="headline">
+                            <h2 class="hero-tit">환영합니다. <br class="mo-only">무엇을 도와드릴까요?</h2>
+                            <a href="#" class="btn-fast-support">빠른 제품지원</a>
+                        </div>
+                        <div class="support-toggle-list-wrap" data-toggle-list="container">
+                            <div class="support-list product-support" data-toggle-list="wrap">
+                                <div class="list-header">
+                                    <strong class="list-tit">제품에 문제가 있으면 <br>직접 해결해보세요.</strong>
+                                    <button class="btn-list-toggle" data-toggle-list="btn" ><span class="blind">목록 보기</span></button>
+                                </div>
+                                <ul data-toggle-list="list">
+                                    <li><a href="">제품 문제 해결</a></li>
+                                    <li><a href="">동영상 가이드</a></li>
+                                    <li><a href="">드라이버/SW</a></li>
+                                </ul>
+                            </div>
+                            <div class="support-list consult" data-toggle-list="wrap">
+                                <div class="list-header">
+                                    <strong class="list-tit">사이트 및 제품 이용이 <br>궁금하시면 문의해주세요.</strong>
+                                    <button class="btn-list-toggle" data-toggle-list="btn"><span class="blind">목록 보기</span></button>
+                                </div>
+                                <ul data-toggle-list="list">
+                                    <li><a href="">채팅상담</a></li>
+                                    <li><a href="">이메일 문의</a></li>
+                                    <li><a href="">전화 상담 예약</a></li>
+                                    <li><a href="">원격 상담 예약</a></li>
+                                </ul>
+                            </div>
+                            <div class="support-list reservation" data-toggle-list="wrap">
+                                <div class="list-header">
+                                    <strong class="list-tit">출장/방문이 필요하면 <br>예약해주세요.</strong>
+                                    <button class="btn-list-toggle" data-toggle-list="btn"><span class="blind">목록 보기</span></button>
+                                </div>
+                                <ul data-toggle-list="list">
+                                    <li><a href="">서비스 출장 예약</a></li>
+                                    <li><a href="">제품 설치/철거 예약</a></li>
+                                    <li><a href="">센터 방문 예약</a></li>
+                                    <li><a href="">매장 방문 예약</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="support-list-wrap" data-toggle-list="container">
-                        <div class="support-list product-support" data-toggle-list="wrap">
-                            <div class="list-header">
-                                <strong class="list-tit">제품에 문제가 있으면 <br>직접 해결해보세요.</strong>
-                                <button class="btn-list-toggle" data-toggle-list="btn" ><span class="blind">목록 보기</span></button>
+                    <!-- 검색 -->
+                    <div class="keyword-search">
+                        <form action="" id="searchKeyword">
+                            <div class="search-box">
+                                <div class="search-input">
+                                    <input type="text" id="keyword01" class="ui_input_clearbutton" placeholder="검색어를 입력해주세요.(예:모델명, 증상 등)" title="제품명, 모델명 직접 검색" autocomplete="off" data-clear-button="button.btn-delete" ui-modules="InputClearButton">
+                                    <button type="button" class="btn-delete" style="display: none;"><span class="blind">검색어 삭제</span></button>
+                                    <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                </div>
                             </div>
-                            <ul data-toggle-list="list">
-                                <li><a href="">제품 문제 해결</a></li>
-                                <li><a href="">동영상 가이드</a></li>
-                                <li><a href="">드라이버/SW</a></li>
-                            </ul>
+                        </form>
+                    </div>
+                    <!-- //검색 -->
+    
+                    <!-- 공지사항 -->
+                    <div class="home-notice">
+                        <div class="notice-title">
+                            <strong class="title">NOTICE</strong>
                         </div>
-                        <div class="support-list consult" data-toggle-list="wrap">
-                            <div class="list-header">
-                                <strong class="list-tit">사이트 및 제품 이용이 <br>궁금하시면 문의해주세요.</strong>
-                                <button class="btn-list-toggle" data-toggle-list="btn"><span class="blind">목록 보기</span></button>
+                        <div class="notice-list-wrap slide-wrap notice-slider ui_carousel_slider">
+                            <div class="slide-content ui_carousel_list">
+                                <div class="slide-track ui_carousel_track">
+                                    <div class="notice-list">
+                                        <div class="flag-wrap">
+                                            <span class="flag">NEW</span>
+                                        </div>
+                                        최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 고객 최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 
+                                    </div>
+                                    <div class="notice-list">
+                                        <div class="flag-wrap">
+                                            <span class="flag">NEW</span>
+                                        </div>
+                                        최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 고객 최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 
+                                    </div>
+                                    <div class="notice-list">
+                                        <div class="flag-wrap">
+                                            <span class="flag">NEW</span>
+                                        </div>
+                                        최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 고객 최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 
+                                    </div>
+                                </div>
+                               
                             </div>
-                            <ul data-toggle-list="list">
-                                <li><a href="">채팅상담</a></li>
-                                <li><a href="">이메일 문의</a></li>
-                                <li><a href="">전화 상담 예약</a></li>
-                                <li><a href="">원격 상담 예약</a></li>
-                            </ul>
-                        </div>
-                        <div class="support-list reservation" data-toggle-list="wrap">
-                            <div class="list-header">
-                                <strong class="list-tit">출장/방문이 필요하면 <br>예약해주세요.</strong>
-                                <button class="btn-list-toggle" data-toggle-list="btn"><span class="blind">목록 보기</span></button>
+                            <div class="notice-list-controls slide-controls">
+                                <button class="prev ui_carousel_prev"><span class="blind">이전 목록</span></button>
+                                <button class="next ui_carousel_next"><span class="blind">다음 목록</span></button>
                             </div>
-                            <ul data-toggle-list="list">
-                                <li><a href="">서비스 출장 예약</a></li>
-                                <li><a href="">제품 설치/철거 예약</a></li>
-                                <li><a href="">센터 방문 예약</a></li>
-                                <li><a href="">매장 방문 예약</a></li>
-                            </ul>
                         </div>
                     </div>
+                    <!-- //공지사항 -->
                 </div>
                 <!-- //hero 영역 -->
-
-                <!-- 검색 -->
-                <div class="keyword-search">
-                    <form action="" id="searchKeyword">
-                        <div class="search-box">
-                            <div class="search-input">
-                                <input type="text" id="keyword01" class="ui_input_clearbutton" placeholder="검색어를 입력해주세요.(예:모델명, 증상 등)" title="제품명, 모델명 직접 검색" autocomplete="off" data-clear-button="button.btn-delete" ui-modules="InputClearButton">
-                                <button type="button" class="btn-delete" style="display: none;"><span class="blind">검색어 삭제</span></button>
-                                <button type="button" class="btn-search"><span class="blind">검색</span></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- //검색 -->
-
-                <!-- 공지사항 -->
-                <div class="home-notice">
-                    <div class="notice-title">
-                        <strong class="title">NOTICE</strong>
-                    </div>
-                    <div class="notice-list-wrap slide-wrap notice-slider ui_carousel_slider">
-                        <div class="slide-content ui_carousel_list">
-                            <div class="slide-track ui_carousel_track">
-                                <div class="notice-list">
-                                    <div class="flag-wrap">
-                                        <span class="flag">NEW</span>
-                                    </div>
-                                    최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 고객 최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 
-                                </div>
-                                <div class="notice-list">
-                                    <div class="flag-wrap">
-                                        <span class="flag">NEW</span>
-                                    </div>
-                                    최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 고객 최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 
-                                </div>
-                                <div class="notice-list">
-                                    <div class="flag-wrap">
-                                        <span class="flag">NEW</span>
-                                    </div>
-                                    최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 고객 최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 
-                                </div>
-                            </div>
-                           
-                        </div>
-                        <div class="notice-list-controls slide-controls">
-                            <button class="prev ui_carousel_prev"><span class="blind">이전 목록</span></button>
-                            <button class="next ui_carousel_next"><span class="blind">다음 목록</span></button>
-                        </div>
-                    </div>
-                </div>
-                <!-- //공지사항 -->
-
                 
                 <!-- 인기 컨텐츠 -->
                 <div class="home-section popular-find">
                     <div class="section-inner">
                         <div class="headline">
-                            <h3 class="title">가장 많이 <br>찾아본 콘텐츠에요.</h3>
+                            <a href="#" class="btn-solution-link">제품 문제해결</a>
+                            <h3 class="title">가장 많이 <br class="pc-only">찾아본 콘텐츠에요.</h3>
                             <div class="list-filter">
                                 <span>보유제품 기준</span>
                                 <button class="btn-filter-toggle"><span class="blind">목록 보기</span></button>
                             </div>
-                            <a href="#" class="btn-solution-link">제품 문제해결</a>
                         </div>
 
                         <div class="popular-list-wrap">
@@ -332,57 +343,68 @@
                 <div class="common-banner main-service">
                     <div class="banner">
                         <h3 class="banner-tit">LG제품에 관련된 주요 서비스를 확인하세요!</h3>
-                        <div class="main-list-wrap">
-                            <div class="item-list">
-                                <div class="item">
-                                    <div class="item-thumb">
-                                        <img src="/lg5-common/images/CS/img_main_service01.jpg" alt="">
+                        <div class="main-service-slider slide-wrap ui_carousel_slider">
+                            <div class="indi-wrap">
+                                <ul class="indi-conts ui_carousel_dots">
+                                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                </ul>
+                            </div>
+                            <div class="main-list-wrap slide-content ui_carousel_list">
+                                <div class="item-list ui_carousel_track">
+                                    <div class="item ui_carousel_slide slide-conts">
+                                        <div class="item-thumb">
+                                            <img src="/lg5-common/images/CS/img_main_service01.jpg" alt="">
+                                        </div>
+                                        <div class="item-cont">
+                                            <strong class="item-tit">
+                                                맵맵맵맵맵맵
+                                                맵맵맵맵맵맵
+                                                맵맵맵맵맵맵
+                                                맵맵
+                                            </strong>
+                                            <a href="#" class="item-link">마마마마마마마마마마마마마마마</a>
+                                        </div>
                                     </div>
-                                    <div class="item-cont">
-                                        <strong class="item-tit">
-                                            맵맵맵맵맵맵 
-                                            맵맵맵맵맵맵
-                                            맵맵맵맵맵맵
-                                            맵맵
-                                        </strong>
-                                        <a href="#" class="item-link">마마마마마마마마마마마마마마마</a>
+                                    <div class="item ui_carousel_slide slide-conts">
+                                        <div class="item-thumb">
+                                            <img src="/lg5-common/images/CS/img_main_service02.jpg" alt="">
+                                        </div>
+                                        <div class="item-cont">
+                                            <strong class="item-tit">
+                                                가전제품
+                                                얼마나 알고
+                                                쓰세요?
+                                            </strong>
+                                            <a href="#" class="item-link">가전제품 생활의 팁</a>
+                                        </div>
+                                    </div>
+                                    <div class="item ui_carousel_slide slide-conts">
+                                        <div class="item-thumb"><img src="/lg5-common/images/CS/img_main_service03.jpg" alt=""></div>
+                                        <div class="item-cont">
+                                            <strong class="item-tit">
+                                                근처 서비스
+                                                센터에서 A/S를
+                                                받고 싶다면
+                                            </strong>
+                                            <a href="#" class="item-link">서비스 센터 찾기</a>
+                                        </div>
+                                    </div>
+                                    <div class="item ui_carousel_slide slide-conts">
+                                        <div class="item-thumb"><img src="/lg5-common/images/CS/img_main_service04.jpg" alt=""></div>
+                                        <div class="item-cont">
+                                            <strong class="item-tit">
+                                                내 제품에 딱맞는
+                                                소모품 알아보기
+                                            </strong>
+                                            <a href="#" class="item-link">LG전자 소모품샵</a>
+                                        </div>
+                            
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <div class="item-thumb">
-                                        <img src="/lg5-common/images/CS/img_main_service02.jpg" alt="">
-                                    </div>
-                                    <div class="item-cont">
-                                        <strong class="item-tit">
-                                            가전제품 
-                                            얼마나 알고 
-                                            쓰세요?
-                                        </strong>
-                                        <a href="#" class="item-link">가전제품 생활의 팁</a>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-thumb"><img src="/lg5-common/images/CS/img_main_service03.jpg" alt=""></div>
-                                    <div class="item-cont">
-                                        <strong class="item-tit">
-                                            근처 서비스 
-                                            센터에서 A/S를 
-                                            받고 싶다면
-                                        </strong>
-                                        <a href="#" class="item-link">서비스 센터 찾기</a>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-thumb"><img src="/lg5-common/images/CS/img_main_service04.jpg" alt=""></div>
-                                    <div class="item-cont">
-                                        <strong class="item-tit">
-                                            내 제품에 딱맞는 
-                                            소모품 알아보기
-                                        </strong>
-                                        <a href="#" class="item-link">LG전자 소모품샵</a>
-                                    </div>
-                                    
-                                </div>
+                            </div>
+                            <div class="slide-controls">
+                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                             </div>
                         </div>
                     </div>
@@ -391,7 +413,7 @@
                 
                 <!-- 관련 정보 -->
                 <div class="common-banner related-pages">
-                    <div class="banner">
+                    <div class="banner" data-more="container">
                         <h3 class="banner-tit">LG제품에 관련된 정보를 확인하세요!</h3>
                         <div class="page-list-wrap">
                             <div class="item-list">
@@ -424,7 +446,7 @@
 
                                 
                                 <!-- 숨겨진 목록 class hidden  -->
-                                <div class="item hidden">
+                                <div class="item hidden" data-more="hidden">
                                     <a href="#">
                                         <div class=item-thumb"><img src="/lg5-common/images/CS/img_related_pages01.jpg" alt=""></div>
                                         <div class="item-cont">
@@ -432,7 +454,7 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="item hidden">
+                                <div class="item hidden" data-more="hidden">
                                     <a href="#">
                                         <div class=item-thumb"><img src="/lg5-common/images/CS/img_related_pages01.jpg" alt=""></div>
                                         <div class="item-cont">
@@ -440,7 +462,7 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="item hidden">
+                                <div class="item hidden" data-more="hidden">
                                     <a href="#">
                                         <div class=item-thumb"><img src="/lg5-common/images/CS/img_related_pages01.jpg" alt=""></div>
                                         <div class="item-cont">
@@ -448,7 +470,7 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="item hidden">
+                                <div class="item hidden" data-more="hidden">
                                     <a href="#">
                                         <div class=item-thumb"><img src="/lg5-common/images/CS/img_related_pages01.jpg" alt=""></div>
                                         <div class="item-cont">
@@ -456,7 +478,7 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="item hidden">
+                                <div class="item hidden" data-more="hidden">
                                     <a href="#">
                                         <div class=item-thumb"><img src="/lg5-common/images/CS/img_related_pages01.jpg" alt=""></div>
                                         <div class="item-cont">
@@ -464,7 +486,7 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="item hidden">
+                                <div class="item hidden" data-more="hidden">
                                     <a href="#">
                                         <div class=item-thumb"><img src="/lg5-common/images/CS/img_related_pages01.jpg" alt=""></div>
                                         <div class="item-cont">
@@ -475,7 +497,7 @@
                                <!-- //숨겨진 목록 class hidden  -->
                             </div>
                         </div>
-                        <button type="button" class="btn-moreview block"><span>더보기</span></button>
+                        <button type="button" class="btn-moreview block" data-more="btn"><span>더보기</span></button>
                     </div>
                 </div>
                 <!-- //관련 정보 -->
