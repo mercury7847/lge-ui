@@ -151,24 +151,23 @@
                         &.size3 {
                             > ul {
                                 > li {
-                                    width:calc((100% / 3) - 24px);
+                                    width:444px;
                                     height:188px;
                                     text-align:left;
+                                    @media screen and (min-width:768px) and (max-width:1460px) {
+                                        width:calc((100% / 2) - 24px);
+                                    }
                                     .inner {
-                                        display:flex;
-                                        flex-wrap:wrap;
-                                        align-items: center;
-                                        height:100%;
-                                        padding:24px;
+                                        position:relative;
+                                        padding:0 24px;
                                         .img {
-                                            max-width:140px;
+                                            position:absolute;
+                                            top:24px;
+                                            left:24px;
+                                            width:140px;
                                         }
                                         .info-cont {
-                                            display:flex;
-                                            flex:1;
-                                            flex-wrap:wrap;
-                                            flex-direction:column;
-                                            padding-left:24px;
+                                            padding-left:164px;
                                             dl {
                                                 dt {
                                                     font-size:16px;
@@ -186,8 +185,12 @@
                                             }
                                         }
                                     }
-                                    @include mobile {
+                                }
+                                @include mobile {
+                                    margin-left:0;
+                                    > li {
                                         width:100%;
+                                        margin-left:0;
                                         .inner {
                                             padding:16px 20px;
                                         }

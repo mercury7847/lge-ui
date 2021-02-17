@@ -39,7 +39,7 @@
                     padding:114px 8px 30px;
                     text-align:center;
                     color:#000;
-                    @include font-large-1;
+                    @include font-large;
                     font-weight:700;
                     @include mobile {
                         padding:104px 8px 14px;
@@ -98,7 +98,7 @@
             li {
                 width:calc((100% - 144px) / 4);
                 @include mobile {
-                    width:210px;
+                    width:280px;
                 }
             }
         }
@@ -115,7 +115,7 @@
             margin-right:52px;
             vertical-align:top;
             @include mobile {
-                width:210px;
+                width:280px;
                 margin-right:48px;
             }
             &::after {
@@ -182,12 +182,12 @@
             vertical-align:top;
             @include mobile {
                 display:block;
-                text-align:left;
+                text-align:center;
             }
             li {
                 display:inline-block;
                 vertical-align:top;
-                margin-left:48px;
+                margin-left:24px;
                 text-align:center;
                 @include mobile {
                     margin-left:24px;
@@ -196,17 +196,20 @@
                     margin-left:0;
                 }
                 p {
-                    margin-bottom:12px;
-                    color:#000;
+                    margin-top:8px;
+                    padding:4px 0;
+                    border-radius:8px;
+                    background-color:#666;
+                    color:#fff;
                     @include font-medium;
                     font-weight:500;
-                    @include mobile {
-                        margin-bottom:16px;
-                    }
                 }
                 .img {
                     display:block;
-                    width:124px;
+                    width:128px;
+                    border-radius:8px;
+                    border:1px solid #ddd;
+                    overflow:hidden;
                     img {
                         width:100%;
                         height:auto;
@@ -217,7 +220,7 @@
         }
         .down-link-lists {
             display:inline-block;
-            margin-left:64px;
+            margin-left:120px;
             vertical-align:top;
             text-align:left;
             @include mobile {
@@ -230,6 +233,7 @@
                 color:#000;
                 @include font-medium;
                 font-weight:500;
+                text-align:center;
                 @include mobile {
                     margin-bottom:8px;
                 }
@@ -237,6 +241,7 @@
             a {
                 display:block;
                 width:190px;
+                margin:0 auto;
                 padding:12px 0;
                 padding-left:15px;
                 border:1px solid #ddd;

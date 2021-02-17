@@ -338,7 +338,7 @@
                                 <!-- <div class="mobile-device" style="position:fixed;top:0;"> -->
                                 <!-- .fixed 추가
                                      모바일 .static 추가 -->
-                                <div class="mobile-device ui_device static">
+                                <div class="mobile-device ui_device">
                                     <div class="frame">
                                         <div class="device">
                                             <img src="/lg5-common/images/PRH/lg-phone-device.png" alt="" aria-hidden="true">
@@ -369,7 +369,7 @@
                                     <div class="inner">
                                         <div class="slide-wrap ui_carousel_slider">
                                             <div class="indi-wrap">
-                                                <ul class="indi-conts">
+                                                <ul class="indi-conts ui_carousel_dots">
                                                     <li class="on"><button type="button" class="btn-indi"><span class="blind">1번 내용 보기</span></button></li>
                                                     <li><button type="button" class="btn-indi"><span class="blind">2번 내용 보기</span></button></li>
                                                     <li><button type="button" class="btn-indi"><span class="blind">3번 내용 보기</span></button></li>
@@ -1238,18 +1238,6 @@
         
         <!-- @@include('./common/footer.html') -->
     </div>
-    <script>
-        $(function() {
-
-            vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {
-                $('.install-wrap .ui_carousel_slider').vcCarousel({
-                    infinite: false,
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                });
-            });
-        });
-    </script>
     <script src="/lg5-common/js/home/brandHome.min.js"></script>
 </body>
 </html>

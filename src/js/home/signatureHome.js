@@ -1,36 +1,31 @@
 $(function() {
 
     vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {     
-        
-        $('.install-wrap .ui_carousel_slider').on('carouselafterchange', function(e, carousel, index){
 
-            var $items = $('.ui_device').find('.screen-slider > li');
-            var xp = -428;
-            if(carousel.previousSlide < index) xp = 428;
-            $items.eq(carousel.previousSlide).css({x:0, opacity:1}).transit({x:-xp});
-            $items.eq(index).css({x:xp, opacity:1}).transit({x:0});
 
-        }).vcCarousel({
-            infinite: false,
+        $('.signature-theme .ui_carousel_slider').vcCarousel({
             slidesToShow: 1,
             slidesToScroll: 1
         });
 
+        $('.signature-showroom .ui_carousel_slider').vcCarousel({
+            settings: "unslick",
+            responsive: [
+                {
+                    breakpoint: 10000,
+                    settings: "unslick"
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
 
-        $.fn.inViewport = function(wrapClass, tabHeight, offsetVh){
-
-            var marginTop = ~~Math.round(parseFloat(tabHeight)) || 0;
-            var elOffsetVh = ~~Math.round(parseFloat(offsetVh)) || 0;
-            var ty = $(this).position().top + marginTop;
-            var tb = ty + $(this).outerHeight();
-            var sy = $(wrapClass).scrollTop();
-            var vh = $(wrapClass).height() + sy + elOffsetVh;
-
-            if($(wrapClass).height() < $(this).outerHeight()) {
-                return Math.abs(ty - sy) < 100;
-            }
-            return ty > sy && vh > tb;
-        };
+        
 
         $.extend( $.easing,{
             def: 'easeOutQuad',
@@ -90,54 +85,6 @@ $(function() {
                 return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
             }
         });
-
-        $('.app-use-wrap .ui_carousel_slider').vcCarousel({
-            infinite: false,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            responsive: [
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
-
-        $('.app-smart-wrap .ui_carousel_slider').vcCarousel({
-            settings: "unslick",
-            responsive: [
-                {
-                    breakpoint: 10000,
-                    settings: "unslick"
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
-
-        $('.magazine-wrap .ui_carousel_slider').vcCarousel({
-            infinite: false,
-            slidesToShow: 5,
-            slidesToScroll: 5,
-            responsive: [
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2
-                    }
-                }
-            ]
-        }); 
-        
         
         var $window   = $(window);
         var aniSpeed = 800;
@@ -148,7 +95,8 @@ $(function() {
         var currentStep = 0;
         var currentPage = 0;
         var touchSy = 0;
-        var $scenes = $('#fixed-wrap').children().add('.thinq-wrap');
+        var $scenes = $('.signature-hero').children().add('.signature-wrap');
+        var maxLens = $scenes.length-1;
         var stepLens = 0;
         var posArr = [];
         var wheelArr = [];
@@ -156,15 +104,11 @@ $(function() {
         var regex = /^data-step-(-?\d*)/;
 
 
-        $('#fixed-wrap').children().css({'overflow':'hidden'});
+        $('.signature-hero').children().css({'overflow':'hidden'});
         $('html').css({'overflow':'hidden'});
         $('.container').css({'overflow':'visible', 'height':'auto'});     
         
         $('.next-arr').on('a', function(e){
-            e.preventDefault();
-        });
-
-        $(document).on('click', 'a,button', function(e){
             e.preventDefault();
         });
 
@@ -174,7 +118,12 @@ $(function() {
 
         $window.on('floatingTop', function(){
             render(0);
-        });         
+        });     
+        
+        $(document).on('click', 'a,button', function(e){
+            e.preventDefault();
+        });
+
 
 
         function moveStep(step){
@@ -251,8 +200,7 @@ $(function() {
             if(!canScroll) return;  
             canScroll = false;   
 
-            $('.brand-wrap').scrollTop(0);   
-            appMotion(0); 
+            $('.brand-wrap').scrollTop(0); 
 
             $('html').addClass('sceneMoving');                    
             if ( speed == undefined ) speed = aniSpeed;
@@ -514,6 +462,8 @@ $(function() {
                     return parseInt(a.sort) - parseInt(b.sort);
                 });
 
+                var nArr = [];
+
                 if(arr.length>0){
                     var fArr = [arr[0]];
                     for(var k=0; k<arr.length; k++){
@@ -550,7 +500,6 @@ $(function() {
                             
             });  
 
-
             stepLens = wheelArr.length-1;                    
             $('.brand-wrap').css({'overflow':'auto','height':winHeight});
             $('.contents').css({'overflow':'hidden', 'height':totalHeight});
@@ -569,116 +518,13 @@ $(function() {
                 }, 100);
             }
             
-        }          
-
-        $('.app-wrap').css('position','relative');
-
-        var deviceY = 0;
-        var deviceH = 612;
-        var isLifeWrap = false;
-        var isThinqApp = false;
+        }    
         
-        $('.thinq-tabs').on('tabchange', function(e, data){
-
+        $('.signature-tabs').on('tabchange', function(e, data){
             $('.brand-wrap').scrollTop(0); 
-            $('.brand-wrap').off('scroll.app');  
-            $('.brand-wrap').off('scroll.lifestyle');
-            appMotion(0); 
 
-            if(data.content[0] == $('.thinq-app')[0]){                
-                deviceY = $('.ui_device').position().top;
-                isThinqApp = true;                
-                $('.brand-wrap').on('scroll.app', scrollEvent);  
-            }else{
-                isThinqApp = false;
-            }
-
-            if(data.content[0] == $('.thinq-lifestyle')[0]){
-                isLifeWrap = true;
-                $('.brand-wrap').on('scroll.lifestyle', scrollEvent);  
-            }else{
-                isLifeWrap = false;
-            }
-
-        })
+        });
         
-        $('.ui_device').find('.frame').css({'transition':'transform 0.1s'})
-        $('.ui_device').find('.screen').css({'transition':'opacity 0.1s'})
-        $('.typography').css({'transition':'opacity 0.1s'});
-
-        function transFunc(distance, start, end, scroll, sy){
-            var progress = sy? ((sy - scroll) - distance) /distance : (scroll - distance) /distance;
-            if (progress <= 0.001) progress = 0;
-            if (progress >= 0.999) progress = 1;   
-            var cal = (end - start) * progress;
-            var val = start + cal;
-            return val;
-        }
-
-        var isMobile = false;
-
-        $window.on('breakpointchange', function(e){
-
-            var data = window.breakpoint;    
-            if(data.name == 'mobile'){    
-                isMobile = true;    
-            }else if(data.name == 'pc'){    
-                isMobile = false;
-            }    
-        })
-
-        function appMotion(strollTop){
-
-            var st = strollTop - 88; 
-            var val = transFunc(110, 1, isMobile? 0.78 : 0.63, st, 0);
-            var val2 = transFunc(300, 1, 0.0, st, 0);
-            var val3 = transFunc(300, 1, 0.0, st, 1000);
-            var val4 = transFunc(300, 1, 0.0, st, 2000);
-
-            $('.ui_device').find('.frame').css({'scale':val});
-            $('.typography').css({'opacity':val2});
-            $('.ui_device').find('.intro').css({'opacity':val3});
-            $('.ui_device').find('.ui_last').css({'opacity':val4});
-
-            var useWrap = $('.app-use-wrap').position().top;
-
-            if(st + deviceH*2 - 188 > useWrap){
-                var ny = st + deviceH*2 - 188 - useWrap;
-                $('.ui_device').css('top', -ny);
-            }
-
-
-
-            if(!isMobile){
-                if(st > deviceY+15){
-                    $('.ui_device').css('left','calc(50% - 7px)').addClass('fixed');
-                }else{
-                    $('.ui_device').css({'left':'','top':''}).removeClass('fixed');
-                }                
-            }
-
-            if(strollTop == 0){
-               $('.ui_device').css({'left':'','top':''}).removeClass('fixed');
-            }
-
-        }
-
-        function scrollEvent(){
-            if(isThinqApp){
-                appMotion($('.brand-wrap').scrollTop());                
-            }   
-            if(isLifeWrap){
-                $('.free-life-wrap').find('.animate-target').each(function() {
-                    if($(this).inViewport('.brand-wrap',88)) {                            
-                        if(!$(this).hasClass('animated')){
-                            $(this).addClass('animated');
-                        }
-                    }
-                });
-            }
-        }
-        
-        $window.trigger('breakpointchange');
         $window.trigger('resizeend');
 
 
