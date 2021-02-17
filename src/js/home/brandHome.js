@@ -271,8 +271,6 @@ $(function() {
         
 
         document.addEventListener('wheel', function(e){
-
-            e.preventDefault();
             
             if(currentStep == stepLens){
                 if(wheelInterval) clearTimeout(wheelInterval);
@@ -565,7 +563,7 @@ $(function() {
         $('.ui_tab').on('tabchange', function(e, data){
 
             if(data.content[0] == $('.thinq-app')[0]){
-                deviceY = $('.mobile-device').position().top;
+                deviceY = $('.ui_device').position().top;
                 isThinqApp = true;
             }else{
                 isThinqApp = false;
@@ -579,24 +577,34 @@ $(function() {
 
         })
         
+        $('.ui_device').find('.frame').css({'transition':'transform 0.1s'})
+        $('.typography').css({'transition':'opacity 0.1s'})
 
         $('.brand-wrap').on('scroll', function() {
 
             if(isThinqApp){
+
                 var st = $('.brand-wrap').scrollTop() - 88; 
 
-                var progress = (st - deviceY) /deviceY;
+                var progress = (st - 110) /110;
                 if (progress <= 0.001) progress = 0;
                 if (progress >= 0.999) progress = 1;   
                 var cal = (0.63 - 1) * progress;
                 var val = 1 + cal;
-                $('.mobile-device').css({'scale':val});
+
+                var cal2 = (0.0 - 1.0) * progress;
+                var val2 = 1 + cal2;
+
+                $('.ui_device').find('.frame').css({'scale':val});
+                $('.typography').css({'opacity':val2});
+
 
 
                 if(st > deviceY){
-                    $('.mobile-device').css({'position':'fixed', 'top':0});
+                    $('.ui_device').addClass('fixed');
+
                 }else{
-                    $('.mobile-device').css({'position':'', 'top':''});
+                    $('.ui_device').removeClass('fixed');
                 }
             }           
 
