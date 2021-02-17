@@ -874,6 +874,9 @@ CS.MD.commonModel = function() {
             });
             
             // 모델 리스트 슬라이더
+            $(window).on('resize', function() {
+                self._resetFlexibleBox();
+            });
             self.$modelSlider.on('carouselinit carouselreInit carouselafterchange carouselresize', function() {
                 self._resetFlexibleBox();
             });
@@ -1027,16 +1030,18 @@ CS.MD.commonModel = function() {
         },
         _resetFlexibleBox: function() {
             var self = this;
+            var maxheight = 0;
 
             self.$el.find('.ui_carousel_track .ui_carousel_current').each(function(idx, item){
-                var maxheight = 0;
                 $(item).find('.slide-conts').each(function(cdx, child){
                     var flexiblebox = $(child).find('.info');
                     maxheight = Math.max(maxheight, flexiblebox.outerHeight(true));
                 });
 
-                $(item).find('.slide-conts').height(maxheight);
+                // $(item).find('.slide-conts').height(maxheight);
             });
+
+            self.$el.find('.ui_carousel_track .slide-conts').height(maxheight);
         },
         _toggleArrow: function($arrow, flag) {
             $arrow[flag ? 'removeClass' : 'addClass']('disabled')
