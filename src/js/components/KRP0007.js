@@ -8,7 +8,7 @@
                 '<div class="flag-wrap image-type left">'+
                     '{{#each badge in promotionBadges}}'+
                         '<span class="big-flag">'+
-                            '<img src="{{badge.badgeImgUrl}}" alt="{{badge.badgeName}}" onError="lgkorUI.addImgErrorEvent(this)">'+
+                            '<img src="{{badge.badgeImgUrl}}" alt="{{badge.badgeName}}" onError="lgkorUI.addImgErrorEvent(this);">'+
                         '</span>'+
                     '{{/each}}'+
                 '</div>'+

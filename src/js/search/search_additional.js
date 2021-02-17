@@ -5,7 +5,7 @@
     //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
     var productItemTemplate = '<li><div class="item">' +
-        '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
+        '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
@@ -45,7 +45,7 @@
         '</div>' +
     '</div></li>';
     var additionalItemTemplate = '<li><a href="{{url}}" class="item">' +
-        '<div class="result-thumb"><div><img onError="lgkorUI.addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></div></div>' +
+        '<div class="result-thumb"><div><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></div></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
