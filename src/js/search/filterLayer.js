@@ -199,7 +199,6 @@ var FilterLayer = (function() {
                     if(listSortingSearchin.length > 0) {
                         var $listInput = listSortingSearchin.siblings('input');
                         $listInput.attr('data-searchvalue', searchIn);
-                        //console.log($listInput);
                     }
                     self.triggerFilterChangeEvent();
                 });
