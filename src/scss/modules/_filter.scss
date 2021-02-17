@@ -69,7 +69,7 @@
             font-weight:700;
             @include font(14px,24px);
         }
-        @include mobile {
+        @include tablet {
             position: fixed;
             z-index:20;
             height:75px;
@@ -454,7 +454,7 @@
 
         .filter-close {
             position:fixed;
-            top:28px;
+            top:24px;
             right:16px;
             width:32px;
             height:32px;
@@ -529,7 +529,7 @@
         top: 57px;
     }
     @include mobile {
-        top: 34px;
+        top: 28px;
     }
     .ico-filter {
         display: inline-block;
