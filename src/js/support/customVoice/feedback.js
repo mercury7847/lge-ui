@@ -131,7 +131,7 @@
                             var data = validation.getAllValues();
                             lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
                                 if (result.data.resultFlag == 'Y') {
-                                    result.data.seq && $('#seq').val(result.data.seq);
+                                    result.data.nomemberId && $('#nomemberId').val(result.data.nomemberId);
                                     self.$form.submit();
                                 }
                             })
