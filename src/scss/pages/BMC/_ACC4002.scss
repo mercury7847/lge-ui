@@ -20,8 +20,8 @@
             vertical-align:top;
             @include mobile {
                 display:block;
-                margin-top:24px;
-                padding:32px 12px;
+                margin-top:12px;
+                padding:32px 14px;
                 &:first-child {
                     margin-top:0;
                 }
@@ -49,12 +49,12 @@
                     margin:0 auto 16px;
                     background:url("/lg5-common/images/icons/icon-point-64-01.svg") center no-repeat;
                     @include mobile {
-                        margin-bottom:15px;
+                        margin-bottom:12px;
                     }
                 }
                 dt {
                     color:#000;
-                    @include font-large;
+                    @include font-large-1;
                     font-weight:700;
                 }
                 dd {

@@ -415,7 +415,13 @@
 
             // 날짜 선택
             self.$calendarDate.on('dateselected', function() {
+                validation.validate(['date']);
                 self.requestTime();
+            });
+
+            // 날짜 선택
+            self.$calendarTime.on('timeselected', function() {
+                validation.validate(['time']);
             });
 
             // 신청 완료

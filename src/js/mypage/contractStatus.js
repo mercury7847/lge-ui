@@ -45,6 +45,7 @@
         vcui.require(['ui/modal', 'ui/validation', 'ui/formatter', 'ui/tab', 'helper/textMasking'], function () {             
             setting();
             bindEvents();
+            changeContractInfo();
         });
     }
 
@@ -122,7 +123,6 @@
         }
         bankValidation = new vcui.ui.Validation('.mypage .section-wrap .sects.payment.modify .by-bank',{register:register});
         bankInfo = bankValidation.getAllValues();
-        console.log("### bankInfo ###", bankInfo);
 
         paymentModeIndex = $('.mypage .section-wrap .sects.payment.modify .ui_tab ul li[class=on]').index();
 
@@ -257,7 +257,7 @@
         });
     }
 
-    //접보변경 확인...
+    //정보변경 확인...
     function sendChangeConfirm(item){
 
         var alertitle, alertmsg, sendata;
@@ -368,7 +368,6 @@
             cardValidation.setValues(cardInfo);
             $('.ui_card_number').vcFormatter('update');
     
-            console.log("### savePaymentInfoCancel bankInfo ###", bankInfo)
             bankValidation.setValues(bankInfo);
             setHiddenData('paymentMethodConfirm', "N");
             setHiddenData('arsAgree', "N");
@@ -418,7 +417,6 @@
         var chk = 0;
         var values = paymentMethodIndex ? bankValidation.getAllValues() : cardValidation.getAllValues();
         for(var key in values){
-            console.log("paymentInfo["+key+"]:", paymentInfo[key])
             if(values[key] == paymentInfo[key]) chk++;
         }
         
@@ -487,7 +485,6 @@
             sendata.isAgree = !chk;
         } else{
             sendata.deductType = $('.mempoint-info').find('input[name=point-ded]:checked').val();
-            console.log("$('.mempoint-info').find('input[name=point-ded]').val():", $('.mempoint-info').find('input[name=point-ded]:checked').val())
 
             if(sendata.deductType == undefined || sendata.deductType == null){
                 lgkorUI.alert("", {title:"차감 포인트를 선택해 주세요."});
@@ -634,17 +631,12 @@
     function changeContractInfo(){
         lgkorUI.showLoading();
 
-        console.log("### changeContractInfo start ###");
-
         var info = $('select[name=contractInfo]').find('option:selected').val().split("|");
 
-
-        console.log("$('select[name=contractInfo]').find('option:selected').val().split('|'):", info)
-
         saveUserInfoCancel();
-        console.log("saveUserInfoCancel();")
-        savePaymentInfoCancel();
-        console.log("savePaymentInfoCancel();")
+
+        paymentInfoBlock.show();
+        paymentModifyBlock.hide();
 
         var sendata = {
             modelID: info[0],
@@ -658,7 +650,6 @@
 
             $('html, body').animate({scrollTop:0}, 220);
         });
-        console.log("### changeContractInfo end ###");
     }
 
     function setHiddenData(iptname, value){

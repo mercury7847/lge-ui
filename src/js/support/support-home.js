@@ -4,7 +4,6 @@
             var $tooltip = $('.tooltip-login');
             var $btnClose = $tooltip.find('.btn-tooltip-close');
 
-
             $btnClose.on('click', function(e){
                 $tooltip.hide();
                 e.preventDefault();
@@ -184,6 +183,7 @@
                 config : {
                     infinite: true,
                     autoplay: true,
+                    autoplaySpeed : 2000,
                     slidesToScroll: 1,
                     slidesToShow: 4,
                     responsive: [
@@ -278,11 +278,111 @@
                 });
             }
         },
+        reservation : {
+            engineerReserv : {
+                el : {
+                    container : $('.engineer-reserv'),
+                    agreeChk : $('#agreePrivacyCheck'),
+                    popup : $('#agreePrivacyPopup')
+                },
+                validation : null,
+                addressFinder : null,
+                validateInit : function(){
+                    var self = this;
+                   
+                    vcui.require(['ui/validation', 'ui/formatter'], function () {
+                        self.addressFinder = new AddressFind();
+                        $('#engineerPhoneNo').vcFormatter({'format':'num', "maxlength":11});
+        
+                        var register = {
+                            engineerUserName : {
+                                required : true,
+                                msgTarget : ".err-block"
+                            },
+                            engineerPhoneNo : {
+                                required : true,
+                                maxLength : 11,
+                                pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
+                                msgTarget : ".err-block",
+                            }
+                        };
+                        self.validation = new vcui.ui.CsValidation('.engineer-reserv', {register : register});
+                    });
+                    
+                },
+                inputVisible : function(){
+                    var self = this;
+                    self.el.container.find('#engineerUserName, #engineerPhoneNo').attr('disabled', false);
+                },
+                inputDisable : function(){
+                    var self = this;
+                    self.el.container.find('#engineerUserName, #engineerPhoneNo').attr('disabled', true);
+                },
+                init : function(){
+                    var self = this;
+
+                    self.validateInit();
+
+                    self.el.agreeChk.on('input', function(e){
+                        var $this = $(this);
+                        var _checked = $this.prop('checked');
+
+                        if( _checked ) {
+                            self.inputVisible();
+                        } else {
+                            self.inputDisable();
+                        }
+                    });
+
+                    self.el.popup.find('.btn-agree').on('click', function(e){
+                        e.preventDefault();
+                        console.log(1)
+
+                        if( self.el.agreeChk.prop('checked') == false) {
+                            self.el.agreeChk.trigger('click');
+                        }
+                    });
+                    
+
+                    self.el.container.find('input[data-required]').on('input', function(){
+                        //self.validation.validate();
+                        // var validationResult = self.validation.validate().success;
+                        // if( validationResult ) {
+                        //     console.log(111)
+                        // }
+                    });
+
+
+                    self.el.container.find('.btn-address').on('click', function() { 
+                        self.addressFinder.open(function(data) { 
+                            var address = data.userSelectedType == 'R' ? data.roadAddress : data.jibunAddress;
+        
+                            self.el.container.find('#engineerZipCode').val(data.zonecode);
+                            self.el.container.find('#engineerUserAddress').val(address);
+                            self.el.container.find('#engineerDetailAddress').val('').prop('disabled', false);
+        
+                            //self.el.container.find('.btm-more.both .chk-wrap').show();
+                        }); 
+                    });
+                }
+            },
+            reservInquiry : {
+                el : {
+                    container : $('.engineer-reserv'),
+                    agreeChk : $('#agreePrivacyCheck'),
+                    popup : $('#agreePrivacyPopup')
+                },
+            },
+            init : function(){
+                this.engineerReserv.init();
+            }
+        },
         initialize: function(){
             this.loginTooltip();
             this.moreShow.init();
             this.slide.init();
             this.toggleList.init();
+            this.reservation.init();
         }
     }
 
