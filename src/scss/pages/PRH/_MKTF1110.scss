@@ -584,13 +584,13 @@
                 top: 0;
                 z-index: 11;
             }
-            //모바일용
-            &.static {
+            @include mobile {
                 position: static;
                 left: 0;
                 transform: translateY(0);
                 width: 100%;
                 padding: 0 17.222vw;
+
             }
             img {
                 width: 100%;
