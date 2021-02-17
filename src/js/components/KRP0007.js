@@ -187,7 +187,12 @@
                     var change = false;
                     if(!(vcui.isEmpty(storageFilters)) && storageFilters.filterData) {
                         var storageFilterData = JSON.parse(storageFilters.filterData);
+                        var firstSortType = self.$orderSorting.find('option').eq(0).val();
+
                         if(Object.keys(storageFilterData).length) change = true;
+                        else{
+                            if(firstSortType != storageFilters.sortType) change = true;
+                        }
 
                         for(key in filterData) {
                             storageFilterData[key] = filterData[key]; 
@@ -211,6 +216,9 @@
                 self.$listSorting = self.$section.find('div.list-sorting');
                 //카테고리 셀렉트
                 self.$categorySelect = self.$section.find('div.cate-scroll-wrap.ui_smooth_scrolltab');
+
+                //순서 셀렉트 풀다운
+                self.$orderSorting = self.$listSorting.find('select[name=sortType]');
 
                 //토탈 카운트
                 self.$totalCount = self.$listSorting.find('#totalCount');
@@ -627,7 +635,6 @@
                     var productImg = image.find('.slide-content .slide-conts.on a img').attr("src");
                     var productAlt = image.find('.slide-content .slide-conts.on a img').attr("alt");
 
-                    console.log(productName);
                     var compareObj = {
                         "id": _id,
                         "productName": productName,

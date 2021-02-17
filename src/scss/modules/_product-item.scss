@@ -107,34 +107,33 @@
                 }
             }
 
+
             .slide-wrap {
                 .indi-wrap {
                     display: none;
                 }
-            }
-
-            @include pc {
                 .slide-controls {
-                    display: none;
-                }
-            }
-
-            @include mobile {
-                .slide-wrap {
-                    .slide-controls {
+                    @include pc {
+                        display: none;
+                    }
+                    @include mobile {
                         display: block;
-                        margin-top: -16px;
                         transform: translateX(0);
                         .btn-arrow {
-                            width: 32px;
-                            height: 32px;
+                            width: 40px;
+                            height: 40px;
                             &:before {
                                 width: 32px;
                                 height: 32px;
+                                background-image: url("/lg5-common/images/icons/btn-arr-64-black.svg");
                                 background-size: 32px 32px;
+                                box-shadow: none;
                             }
                             &.prev {
                                 left: 8px;
+                                &:before {
+                                    transform: rotate(180deg);
+                                }
                             }
                             &.next {
                                 right: 8px;
@@ -153,6 +152,13 @@
                     height: auto;
                 }
             }
+            @include pc {
+                .flag-wrap {
+                    &:first-child {
+                        margin-top: 56px;
+                    }
+                }
+            }
         }
         .product-option {
             position: relative;
@@ -167,16 +173,11 @@
                 white-space: nowrap;
                 li {
                     display: inline-block;
-                    padding: 0 1px;
-                    &:first-child {
-                        padding-left: 56px;
-                    }
-                    &:last-child {
-                        padding-right: 56px;
-                    }
+                    padding: 0 2px;
                 }
             }
             .scroll-controls {
+                display: none !important;
                 position: absolute;
                 top: 50%;
                 left: 50%;
@@ -238,10 +239,10 @@
                     font-size: 0;
                     input {
                         & + label {
-                            padding: 5px 16px;
+                            padding: 3px 12px;
                             border: 1px solid $color-border;
-                            border-radius: 18px;
-                            @include font-small;
+                            border-radius: 15px;
+                            @include font-x-small;
                             &:before,
                             &:after {
                                 display: none;

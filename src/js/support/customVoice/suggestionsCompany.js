@@ -76,7 +76,7 @@
                                 $modal.vcModal('hide');
 
                                 if (data.resultFlag == 'Y') {
-                                    data.seq && $('#seq').val(data.seq);
+                                    data.nomemberId && $('#nomemberId').val(data.nomemberId);
                                     self.$form.submit();
                                 } else {
                                     if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});

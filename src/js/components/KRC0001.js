@@ -11,31 +11,27 @@ $(window).ready(function(){
 		'<div class="list-contents-wrap ui_carousel_slider">'+
 			'<ul class="items unit-list ui_carousel_track">'+
 				'{{#each item in productList}}'+
-				'<li class="js-model ui_carousel_slide" data-id="{{item.id}}" data-sku="{{item.sku}}" data-wishListId="{{item.wishListId}}" data-wishItemId="{{item.wishItemId}}">' +
+				'<li class="js-model ui_carousel_slide" data-id="{{item.modelId}}" data-sku="{{item.sku}}">' +
 					'<div class="item">' +
 						'<div class="product-image">' +
-							'<a href="{{item.url}}"><img data-pc-src="{{item.imagePC}}" data-m-src="{{item.imageMobile}}" alt="{{item.imageAlt}}" aria-hidden="true"></a>' +
+							'<a href="{{item.modelUrlPath}}"><img src="{{item.mediumImageAddr}}" alt="{{item.imageAltText}}" aria-hidden="true" onError="lgkorUI.addImgErrorEvent(this)"></a>' +
 						'</div>' +
 						'<div class="product-contents">' +
 							'<strong class="product-name">' +
-								'<a href="{{item.url}}"><span class="blind">모델명</span>{{item.title}}</a>' +
+								'<a href="{{item.modelUrlPath}}"><span class="blind">모델명</span>{{#raw item.modelDisplayName}}</a>' +
 							'</strong>' +
-							'<p class="product-sku"><span class="blind">모델넘버</span>{{item.sku}}</p>' +
+							'<p class="product-sku"><span class="blind">모델넘버</span>{{item.salesModelCode}}</p>' +
 							'<div class="review-info">' +
-								'{{#if item.hasReview}}' +
-									'<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
-								'{{#else}}' +
-									'<div class="star"><span class="blind">리뷰없음</span></div>' +
-								'{{/if}}' +
-								'<div class="average-rating"><span class="blind">평점</span>{{item.rating}}</div>' +
-								'<div class="review-count"><span class="blind">리뷰 수</span>(<span>{{item.review}}</span>개)</div>' +
+								'{{#if (item.reviewsCount > 0)}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
+								'<div class="average-rating"><span class="blind">평점</span>{{item.reviewsScore}}</div>' +
+								'<div class="review-count"><span class="blind">리뷰 수</span>({{item.reviewsCount}})</div>' +
 							'</div>' +
 							'<div class="product-price">' +
-								'{{#if item.originalPrice}}<div class="original"><span class="blind">판매가</span><em>{{item.originalPrice}}</em>원</div>{{/if}}' +
-								'{{#if item.price}}<div class="total"><span class="blind">총 판매가</span><em>{{item.price}}</em>원</div>{{/if}}' +
+								'{{#if item.obsOriginalPrice}}<div class="original"><span class="blind">판매가</span><em>{{item.obsOriginalPrice}}</em>원</div>{{/if}}' +
+								'{{#if item.obsSellingPrice}}<div class="total"><span class="blind">총 판매가</span><em>{{item.obsSellingPrice}}</em>원</div>{{/if}}' +
 							'</div>' +
 						'</div>' +
-						'<div class="product-button"><a href="#" class="btn border">장바구니에 담기</a></div>' +
+						'<div class="product-button"><a href="#" class="btn border" data-id="{{item.modelId}}" data-model-name="{{item.sku}}" data-rtSeq="{{item.rtModelSeq}}" data-type-flag="{{item.bizType}}" {{#if item.obsBtnRule != "enable"}}disable{{/if}}>장바구니에 담기</a></div>' +
 					'</div>' +
 				'</li>'+
 				'{{/each}}'+

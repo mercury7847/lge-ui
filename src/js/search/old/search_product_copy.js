@@ -482,7 +482,8 @@
                 if(!filterQueryData) {
                     //postData.filter = null;
                 } else {
-                    Object.assign(postData,filterQueryData);
+                    //Object.assign(postData,filterQueryData);
+                    $.extend(postData,filterQueryData);
                     //postData.filter = JSON.stringify(filterQueryData);
                 }
 
