@@ -3,6 +3,8 @@
 
 
     $(window).ready(function() {
+        var isMobile = vcui.detect.isMobileDevice;
+
         vcui.require([
             'ui/imageFileInput'
         ], function() {    
@@ -55,7 +57,11 @@
                     }
                     obj = $.extend(obj, {
                         ok: function() {
-                            location.href = $('#submitForm').attr('action');
+                            if (isMobile) {
+                                location.href = $('#submitForm').attr('action');
+                            } else {
+                                window.close();
+                            }
                         }
                     });
                 } else if (data.resultFlag == 'N') {

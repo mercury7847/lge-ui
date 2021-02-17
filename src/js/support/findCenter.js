@@ -1115,7 +1115,7 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.$mapContainer.css({
                 width: mapwidth,
                 height: mapheight,
-                'margin-left': mapmargin
+                // 'margin-left': mapmargin
             });
 
             if(self.$map) self.$map.resize();
