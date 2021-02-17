@@ -103,10 +103,16 @@
                                     .key {
                                         .sp {
                                             margin-left: 1em;
+                                            @include mobile {
+                                                padding-left: 0;
+                                            }
                                         }
                                     }
                                     .btn-link {
                                         margin-left: 24px;
+                                    }
+                                    .bullet-text {
+                                        margin-left: 4.2em;
                                     }
                                 }
                             }
