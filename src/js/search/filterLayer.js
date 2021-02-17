@@ -117,13 +117,16 @@ var FilterLayer = (function() {
 
             // 필터안 체크박스 이벤트 처리
             self.$layFilter.on('change', '.ui_filter_accordion input', function(e){
-                $parent = $(this).parents('li');
+                /*
+                var $parent = $(this).parents('li');
                 var length = $parent.find('input:checked').length;
                 if(length > 0) {
                     $parent.find('span.sel_num').text(' ('+length+')');
                 } else {
                     $parent.find('span.sel_num').text(' (0)');
                 }
+                */
+                self.resetSelectFilterCount(this);
                 self.triggerFilterChangeEvent();
             });
 
@@ -534,6 +537,11 @@ var FilterLayer = (function() {
                     }
                 }
 
+                console.log(self.$layFilter.find('.ui_filter_accordion>input[type=checkbox]:checked'));
+                self.$layFilter.find('.ui_filter_accordion input[type=checkbox]:checked').each(function(idx,obj){
+                    self.resetSelectFilterCount(obj);
+                });
+
                 if(selectedFilter) {
                     $btnFilter.addClass('applied');
                     $btnFilter.find('a span').text('옵션 적용됨');
@@ -549,6 +557,19 @@ var FilterLayer = (function() {
                 self.triggerFilterChangeEvent();
             }
         },
+
+        resetSelectFilterCount: function(filterItem) {
+            var $parent = $(filterItem).parents('li');
+            var $selNum = $parent.find('span.sel_num');
+            if($selNum.length > 0) {
+                var length = $parent.find('input:checked').length;
+                if(length > 0) {
+                    $selNum.text(' ('+length+')');
+                } else {
+                    $selNum.text(' (0)');
+                }
+            }
+        }
     }
     return FilterLayer;
 })();
