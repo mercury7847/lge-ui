@@ -557,19 +557,24 @@ $(function() {
 
 
         var deviceY = 0;
+        var deviceH = 612;
         var isLifeWrap = false;
         var isThinqApp = false;
         
         $('.ui_tab').on('tabchange', function(e, data){
 
+            $('.brand-wrap').scrollTop(0); 
+            appMotion(0); 
+
             if(data.content[0] == $('.thinq-app')[0]){
+                
                 deviceY = $('.ui_device').position().top;
                 isThinqApp = true;
             }else{
                 isThinqApp = false;
             }
 
-            if(data.content[0] == $('.happy-life-wrap')[0]){
+            if(data.content[0] == $('.thinq-lifestyle')[0]){
                 isLifeWrap = true;
             }else{
                 isLifeWrap = false;
@@ -578,39 +583,60 @@ $(function() {
         })
         
         $('.ui_device').find('.frame').css({'transition':'transform 0.1s'})
+        $('.ui_device').find('.screen').css({'transition':'opacity 0.1s'})
         $('.typography').css({'transition':'opacity 0.1s'})
+
+
+        function transFunc(distance, start, end, scroll, sy){
+            var progress = sy? ((sy - scroll) - distance) /distance : (scroll - distance) /distance;
+            if (progress <= 0.001) progress = 0;
+            if (progress >= 0.999) progress = 1;   
+            var cal = (end - start) * progress;
+            var val = start + cal;
+            return val;
+        }
+
+        function appMotion(strollTop){
+
+            var st = strollTop - 88; 
+            // var st = $('.brand-wrap').scrollTop() - 88; 
+
+            var val = transFunc(110, 1, 0.63, st, 0);
+            var val2 = transFunc(300, 1, 0.0, st, 0);
+            var val3 = transFunc(300, 1, 0.0, st, 1000);
+            var val4 = transFunc(300, 1, 0.0, st, 2000);
+
+            $('.ui_device').find('.frame').css({'scale':val});
+            $('.typography').css({'opacity':val2});
+            $('.ui_device').find('.intro').css({'opacity':val3});
+            $('.ui_device').find('.ui_last').css({'opacity':val4});
+
+            var inner = $('.inner').position().top;
+
+            if(st+deviceH-88 > inner){
+                var ny = st + deviceH - 88 - inner;
+                $('.ui_device').css('top', -ny);
+            }
+
+            if(st > deviceY+15){
+                $('.ui_device').css('left','calc(50% - 7px)').addClass('fixed');
+                // $('.ui_device').addClass('fixed');
+            }else{
+                $('.ui_device').css({'left':'','top':''}).removeClass('fixed');
+            }
+
+        }
+        
 
         $('.brand-wrap').on('scroll', function() {
 
             if(isThinqApp){
-
-                var st = $('.brand-wrap').scrollTop() - 88; 
-
-                var progress = (st - 110) /110;
-                if (progress <= 0.001) progress = 0;
-                if (progress >= 0.999) progress = 1;   
-                var cal = (0.63 - 1) * progress;
-                var val = 1 + cal;
-
-                var cal2 = (0.0 - 1.0) * progress;
-                var val2 = 1 + cal2;
-
-                $('.ui_device').find('.frame').css({'scale':val});
-                $('.typography').css({'opacity':val2});
-
-
-
-                if(st > deviceY){
-                    $('.ui_device').addClass('fixed');
-
-                }else{
-                    $('.ui_device').removeClass('fixed');
-                }
+                appMotion($('.brand-wrap').scrollTop());                
             }           
 
 
             if(isLifeWrap){
-                $('.happy-life-wrap').find('.animate-target').each(function() {
+                $('.free-life-wrap').find('.animate-target').each(function() {
                     if($(this).inViewport('.brand-wrap',88)) {                            
                         if(!$(this).hasClass('animated')){
                             $(this).addClass('animated');
