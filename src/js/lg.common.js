@@ -730,7 +730,9 @@
         setStorage: function(key, value){
             var storage = sessionStorage.getItem(key);
             var storageData = storage? JSON.parse(storage) : {};        
-            storageData = Object.assign(storageData, value);
+            //Internet Explorer 불가
+            //storageData = Object.assign(storageData, value);
+            $.extend(storageData, value);
             sessionStorage.setItem(key, JSON.stringify(storageData));
 
             console.log("### setStorage ###", storageData)

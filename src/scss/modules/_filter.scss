@@ -61,15 +61,19 @@
     .fiter-head,
     .filter-head {
         //position:relative;
-        position: fixed;
         width:100%;
-        //text-align:center;
-        height:75px;
-        padding: 0 16px;
         background-color: #fff;
-        //border-bottom:1px solid #ededed;
-        z-index:20;
-        @include mobile {
+        //text-align:center;
+        .tit {
+            padding-bottom: 12px;
+            font-weight:700;
+            @include font(14px,24px);
+        }
+        @include tablet {
+            position: fixed;
+            z-index:20;
+            height:75px;
+            padding: 0 16px;
             &::after {
                 display: inline-block;
                 content: '';
@@ -80,16 +84,14 @@
                 height: 2px;
                 background-color: #222;
             }
+            .tit {
+                padding-top:24px;
+                font-size: 16px;
+            }
         }
-        .tit {
-            font-size:18px;
-            padding-top:24px;
-            line-height:27px;
-            font-weight:$font-weight-bold;
-        }
-        @media screen and (min-width: 1024px) {
-            display:none;
-        }
+        //@media screen and (min-width: 1024px) {
+        //    display:none;
+        //}
     }
 
     .plp-filter-wrap {
@@ -115,7 +117,7 @@
                         width:20px;
                         height:20px;
                         margin-top:-10px;
-                        background:url('/lg5-common/images/icons/icon-reset-20.svg') no-repeat;
+                        background:url('/lg5-common/images/icons/icon-reset-20.svg') no-repeat center center;
                     }
                 }
             }
@@ -123,7 +125,7 @@
                 //display:none;
                 position: fixed;
                 top: 24px;
-                right: 52px;
+                right: 56px;
                 width: 32px;
                 height: 32px;
                 margin: 0 !important;
@@ -142,9 +144,10 @@
                             transform: translate(-50%, -50%);
                             width: 32px;
                             height: 32px;
+                            padding: 4px;
                             margin-top: 0;
-                            background:url('/lg5-common/images/icons/icon-reset-40.svg') no-repeat;
-                            background-size: 32px 32px;
+                            background:url('/lg5-common/images/icons/icon-reset-48.svg') no-repeat center center;
+                            background-size: 24px 24px;
                         }
                     }
                 } 
@@ -257,12 +260,6 @@
                                 .ui-range-slider-range {
                                     height: 4px;
                                     border-radius: 2px;
-                                }
-                                .ui-range-slider-handler {
-                                    width: 12px;
-                                    height: 12px;
-                                    border: 1px solid #adadad;
-                                    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.28);
                                 }
                             }
                             .range-num {
@@ -457,26 +454,31 @@
 
         .filter-close {
             position:fixed;
-            top:28px;
-            right:24px;
-            width:24px;
-            height:24px;
+            top:24px;
+            right:16px;
+            width:32px;
+            height:32px;
             z-index:20;
             @media screen and (min-width: 1025px) {
                 display:none;
             }
+            @include mobile {
+                top:24px;
+
+            }
             .btn-close {
                 position:relative;
-                width:24px;
-                height:24px;
+                width:32px;
+                height:32px;
                 &:after {
                     content: '';
                     position:absolute;
                     top:0;
                     left:0;
-                    width: 24px;
-                    height: 24px;
-                    background: url('/lg5-common/images/icons/btn-close-48-2.svg') no-repeat;
+                    width: 32px;
+                    height: 32px;
+                    padding: 4px;
+                    background: url('/lg5-common/images/icons/btn-close-24-black.svg') no-repeat center;
                     background-size: 24px 24px;
                 }
                 /*
@@ -523,8 +525,11 @@
         background: url("/lg5-common/images/KRP0007/bg-filter-grad.svg") no-repeat 0 0;
         background-size:80px 40px;
     }
+    @include tablet {
+        top: 57px;
+    }
     @include mobile {
-        top: 15px;
+        top: 24px;
     }
     .ico-filter {
         display: inline-block;
@@ -532,13 +537,14 @@
         z-index:1;
         width: 32px;
         height: 32px;
-        margin: 4px 24px 0 0;
+        margin-right: 24px;
         background: url("/lg5-common/images/icons/btn-filter-32.svg") no-repeat 0 0;
         background-size: 32px 32px;
         @media screen and (min-width: 1025px) {
             display: none;
         }
         @include mobile {
+            top:3px;
             margin-right: 20px;
             background-size: 32px 32px;
         }
