@@ -1194,7 +1194,7 @@
 
         $(function() {
 
-            vcui.require(['ui/carousel','ui/inviewScroll','libs/jquery.transit.min'], function () {
+            vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {
 
                 $.extend( $.easing,{
                 def: 'easeOutQuad',
@@ -1514,7 +1514,6 @@
                     if (e.type == 'touchstart') {
                         touchSy = data.y;
                     } else {
-
                         if(currentStep == stepLens){
                             if(wheelInterval) clearTimeout(wheelInterval);
                             wheelInterval = setTimeout(function(){
@@ -1523,9 +1522,7 @@
                                     wheelScene(-1, true);
                                 }
                             }, 100);
-
                         }else{
-
                             if (touchSy - data.y > 80) {
                                 wheelScene(1);
                             } else if (touchSy - data.y < -80) {
@@ -1541,7 +1538,6 @@
                     var e = ev.originalEvent || ev;
                     if (type === 'end'|| ev.type === 'touchend') e = e.changedTouches && e.changedTouches[0] || e;
                     else e = e.touches && e.touches[0] || e;
-
                     return {
                         x : e.pageX || e.clientX,
                         y : e.pageY || e.clientY
@@ -1573,7 +1569,6 @@
                 }
 
                 function setBeforeCss(step){
-
                     for(var k=0; k<step; k++){
                         var arr = wheelArr[k];
                         if(vcui.isArray(arr)){
@@ -1593,8 +1588,7 @@
                         $image    = $wrap.find('img'),
                         key       = $target.data('key'),
                         loaded    = $target.data('loaded'),
-                        src       = $target.data('src'),
-                        
+                        src       = $target.data('src'),                        
                         isAndroid = vcui.detect.isAndroid,
                         /*
                         modeV     = 5, // 사이즈별로 로드시
@@ -1609,8 +1603,7 @@
                         })(),
                         src  = srcArr[modeV],
                         */
-                        src    = $target.data('src'),
-                        
+                        src    = $target.data('src'),                        
                         videoAttr = $target.data('options') || 'autoplay loop playsinline muted',
                         $video    = $target.find('video'),
                         $sources  = $target.find('source'),
@@ -1665,8 +1658,7 @@
                             $video.data('loaded', true);
                             $wrap.trigger('videoLoaded');
                             oVideo.play();
-                        }).trigger('load');
-                        
+                        }).trigger('load');                        
                     }
 
                     createVideoObject();
@@ -1723,7 +1715,6 @@
                         var nArr = [];
 
                         if(arr.length>0){
-
                             var fArr = [arr[0]];
                             for(var k=0; k<arr.length; k++){
                                 var obj1 = arr[k];  
@@ -1741,8 +1732,7 @@
                             }
                         }else{
                             wheelArr.push(i);
-                        }                     
-
+                        }        
 
                         if(i==0){
                             itemHeight = winHeight-prevAllHeight;   
@@ -1761,8 +1751,7 @@
                     });  
 
 
-                    stepLens = wheelArr.length-1;
-                    
+                    stepLens = wheelArr.length-1;                    
                     $('.brand-wrap').css({'overflow':'auto','height':winHeight});
                     $('.contents').css({'overflow':'hidden', 'height':totalHeight});
 
@@ -1782,60 +1771,77 @@
                     
                 }
 
-                /*
+
+                function _getRectangle($el) {
+                    var self = this;
+                    var top = $el.offset().top;        
+                    var left = $el.offset().left;
+                    var width = $el.outerWidth();            
+                    var height = $el.outerHeight();
+                    return { top: top, bottom: top + height , left: left, right: left + width, width: width, height: height };
+                }
+
+
                 $.fn.inViewport = function(offsetVh){
                     var elOffsetVh = ~~Math.round(parseFloat(offsetVh)) || 0;
                     var elT = $(this).offset().top;
 
-                    console.log(elT);
+                    var elT2 = $('.brand-wrap').offset().top;
 
-                    var elB = elT + $(this).outerHeight();
-                    var viewT = $('.brand-wrap').scrollTop();
-                    var viewB = viewT + ($('.brand-wrap').height() + elOffsetVh);
-                    return elB > viewT && elT < viewB;
+                    var elB = elT;// + $(this).outerHeight();
+                    var viewT = elT2 + $('.brand-wrap').scrollTop();
+
+                    console.log(elB, viewT)
+                    //var viewB = viewT + ($('.brand-wrap').height() + elOffsetVh);
+                    // return elB > viewT && elT < viewB;
+                    return elB > viewT;
                 };
 
                 $('.brand-wrap').on('scroll', function() {
 
-                    $('.animate-target').each(function() {
-                        if($(this).inViewport('0')) {
+                    var ty = $('.brand-wrap').offset().top;
+                    var ey = $('.animate-target').eq(0).offset().top;
+                    var scrollTop  = $('.brand-wrap').scrollTop();
+
+                    
+
+                    //if(ty-ey < scrollTop){
+                        console.log(ty-ey+scrollTop+ty, scrollTop);
+
+                    //}
+
+                    // console.log($('.brand-wrap').scrollTop());
+
+                    // var scrollTop = $('.brand-wrap').scrollTop();
+                    // var containerRect = _getRectangle($('.brand-wrap'));
+                    // var stickyRect = _getRectangle($('.animate-target').eq(0));
+
+
+
+                    // if (scrollTop + stickyRect.height  > containerRect.bottom) {
+                    //     console.log('active')
+                    // } else {
+                       
+                    // }
+
+                    /*
+
+                    $('.animate-target').eq(0).each(function() {
+                        if($(this).inViewport('-200')) {
                             
-                            if(!$(this).hasClass('inview')){
-                                console.log(this);
-                                $(this).addClass('inview');
+                            if(!$(this).hasClass('animated')){
+                                // console.log(this);
+                                $(this).addClass('animated');
                             }
                         } else {
-                            $(this).removeClass('inview');
+                            $(this).removeClass('animated');
                         }
                     });
+                    */
                 });
-                */
 
 
                
-
-                // $('.animate-target').vcInviewScroll({
-                //     delay: 0,
-                //     offset: {
-                //         top: 0,
-                //         bottom: 0
-                //     },
-                //     on: {
-                //         enter: function (target) {
-                //             console.log(target)
-
-                //             // $(target).find('.txt_wrap').transition({
-                //             //     y:0,
-                //             //     opacity: 1,
-                //             //     duration: 500,
-                //             //     delay: 300,
-                //             //     easing: 'easeOutQuad'
-                //             // });
-
-                //         }
-                //     }
-                // });
-
                 
                 $window.trigger('breakpointchange');
                 $window.trigger('resizeend');
