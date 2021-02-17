@@ -101,7 +101,7 @@
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
-                    result.data.seq && $('#seq').val(result.data.seq);
+                    result.data.nomemberId && $('#nomemberId').val(result.data.nomemberId);
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {

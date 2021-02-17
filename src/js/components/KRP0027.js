@@ -184,6 +184,7 @@ $(window).ready(function(){
             var sendata = {
                 storyId: sid
             }
+            console.log("### setViewContents ###", sendata)
             lgkorUI.requestAjaxData(VIEWER_DATA_URL, sendata, function(result){    
                 changeViewContents(result.data);
 
