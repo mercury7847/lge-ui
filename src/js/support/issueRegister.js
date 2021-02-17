@@ -58,9 +58,9 @@
                     obj = $.extend(obj, {
                         ok: function() {
                             if (isMobile) {
-                                window.close();
-                            } else {
                                 location.href = $('#submitForm').attr('action');
+                            } else {
+                                window.close();
                             }
                         }
                     });
