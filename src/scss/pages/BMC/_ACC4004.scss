@@ -30,7 +30,7 @@
                     }
                 }
                 &.on::before {
-                    border:2px solid #EC455A;
+                    border:2px solid #da0f47;
                 }
                 a {
                     display:block;
@@ -94,6 +94,14 @@
         &.type2 {
             border-radius:8px 8px 0 0;
         }
+        &.size4 {
+            li {
+                width:calc((100% - 144px) / 4);
+                @include mobile {
+                    width:210px;
+                }
+            }
+        }
         @include mobile {
             margin:0 -16px;
             padding:32px 16px;
@@ -113,11 +121,11 @@
             &::after {
                 content:' ';
                 position:absolute;
-                top:27px;
+                top:36px;
                 right:-52px;
-                width:52px;
-                height:54px;
-                background:url("/lg5-common/images/BMC/icon-arrow.svg") center no-repeat;
+                width:32px;
+                height:32px;
+                background:url('/lg5-common/images/icons/icon-arrow-left-b-56.svg') center no-repeat;
                 background-size:100%;
                 @include mobile {
                     right:-40px;
@@ -143,7 +151,7 @@
                     font-weight:700;
                     small {
                         display:block;
-                        color:#EC455A;
+                        color:#da0f47;
                         @include font-small;
                         font-weight:500;
                     }
