@@ -7,14 +7,13 @@
     margin:0 auto;
     @include clearfix;
     .cate-wrap {      
-        height:102px;
-        padding:24px 0 0;
+        //height:102px;
+        padding:48px 0 24px;
         background:#fff;
         //border-bottom: 8px solid #f4f4f4;
         @include mobile {
             height: auto;
-            padding-top:0;
-            padding-bottom: 12px;
+            padding: 24px 0 12px;
             //border-bottom: 12px solid #f4f4f4;
         }
         .cate-list {
@@ -67,7 +66,7 @@
                 .cate-scroll-wrap {
                     position: relative;
                     .tabs {
-                        padding:3px 0;
+                        //padding:3px 0;
                         white-space: nowrap;
                         font-size: 0;
                         @media screen and (max-width: 1024px) {
@@ -82,7 +81,7 @@
                         > li {
                             position: relative;
                             display: inline-block;
-                            vertical-align: middle;
+                            vertical-align: top;
                             margin-left: 16px;
                             padding-left: 16px;
                             &:first-child {
@@ -128,23 +127,22 @@
             .mobile-more-btn {
                 display: none;
                 position: absolute;
-                top: 8px;
+                top: 0;
                 right: 16px;
                 height: 100%;
+                padding-top: 10px;
                 background-color: #fff;
                 a {
                     display: inline-block;
                     width: 32px;
                     height: 32px;
-                    margin-top: 6px;
-                    background: #fff url('/lg5-common/images/icons/btn-arrow-down.svg') no-repeat;
+                    background: #fff url('/lg5-common/images/icons/btn-arrow-down.svg') no-repeat center center;
                     background-size: 32px 32px;
                 }
                 &::before {
                     display: inline-block;
                     content: '';
                     position: absolute;
-                    right: 0;
                     top: 0;
                     right: 32px;
                     width: 40px;
@@ -206,31 +204,29 @@
         .lay-filter {
             margin-top:0;
             .filter-head {
-                display:block;
-                position:static;
-                height:auto;
-                padding:0;
-                @include mobile {
-                    position:fixed;
-                    height:75px;
-                    padding:0 16px;
-                }
-                .tit {
-                    padding:0 0 12px;
-                    font-size:14px;
-                    font-weight:700;
-                    line-height:24px;
-                    @include mobile {
-                        padding-top:24px;
-                        font-size:18px;
-                        font-weight:700;
-                        line-height:27px;
-                    }
-                }
+                //display:block;
+                //position:static;
+                //height:auto;
+                //padding:0;
+                //@include mobile {
+                //    position:fixed;
+                //    height:75px;
+                //    padding:0 16px;
+                //}
+                //.tit {
+                //    padding:0 0 12px;
+                //    @include mobile {
+                //        padding-top:24px;
+                //        font-size:18px;
+                //        font-weight:700;
+                //        line-height:27px;
+                //    }
+                //}
             }
             .plp-filter-wrap {
                 .btn-reset {
                     margin:23px 0 12px;
+                    text-align: right;
                 }
                 .btn-visit {
                     margin-top:16px;
@@ -260,7 +256,7 @@
                         padding: 0;
                     }
                     .btn {
-                        padding:8px 30px !important;
+                        padding:8px 0 !important;
                         border-color: $color-default !important;
                         color:#000;
                         font-size:14px;
