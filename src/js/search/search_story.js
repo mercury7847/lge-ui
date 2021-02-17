@@ -101,7 +101,7 @@
                 for(key in filterdata) {
                     makeData[key] = filterdata[key].join(",");
                 }
-                data.filterData = makeData;
+                data.filterData = JSON.stringify(makeData);
                 return data;
             },
 
