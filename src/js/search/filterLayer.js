@@ -199,7 +199,7 @@ var FilterLayer = (function() {
                     if(listSortingSearchin.length > 0) {
                         var $listInput = listSortingSearchin.siblings('input');
                         $listInput.attr('data-searchvalue', searchIn);
-                        console.log($listInput);
+                        //console.log($listInput);
                     }
                     self.triggerFilterChangeEvent();
                 });
@@ -537,7 +537,6 @@ var FilterLayer = (function() {
                     }
                 }
 
-                console.log(self.$layFilter.find('.ui_filter_accordion>input[type=checkbox]:checked'));
                 self.$layFilter.find('.ui_filter_accordion input[type=checkbox]:checked').each(function(idx,obj){
                     self.resetSelectFilterCount(obj);
                 });

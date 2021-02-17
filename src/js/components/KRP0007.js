@@ -627,7 +627,6 @@
                     var productImg = image.find('.slide-content .slide-conts.on a img').attr("src");
                     var productAlt = image.find('.slide-content .slide-conts.on a img').attr("alt");
 
-                    console.log(productName);
                     var compareObj = {
                         "id": _id,
                         "productName": productName,
