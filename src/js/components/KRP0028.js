@@ -2,7 +2,7 @@
     var subTabItemTemplate = '<li><a href="#{{categoryId}}">{{categoryName}}</a></li>';
     var awardsListItemTemplate = '<li class="items" data-id="{{storyId}}" data-award-list="{{awardList}}"><div class="inner">' +
         '<div class="thumb">' +
-            '<img src="{{storyListThumbnailPath}}" alt="{{storyListThumbnailAltText}}">' +
+            '<img src="{{storyListThumbnailPath}}" alt="{{storyListThumbnailAltText}}" onError="lgkorUI.addImgErrorEvent(this);">' +
             '<p class="hidden pc">{{storyListThumbnailAltText}}</p>' +
             '<p class="hidden mobile">{{storyListThumbnailAltText}}</p>' +
         '</div>' +
@@ -114,21 +114,6 @@
                 return "";
             },
 
-            // "categoryList": [
-            //     {
-            //         "categoryName":"전체",
-            //         "categoryId":"all"
-            //     },
-            //     {
-            //         "categoryName": "정수기",
-            //         "categoryId": "CT50000175"
-            //     },
-            //     {
-            //         "categoryName": "스마트폰",
-            //         "categoryId": "CT50000182"
-            //     }
-            // ],
-
             requestData: function(param, isMainTabClick) {
                 var self = this;
                 var ajaxUrl = self.$section.attr('data-list-url');
@@ -136,16 +121,14 @@
                     var tempData = result.data;
                     var data = (tempData && tempData instanceof Array && tempData.length > 0) ? tempData[0] : {};
                     //var param = result.param;
-                    console.log(data);
                     self.$pagination.vcPagination('setPageInfo',data.pagination);
-
-                    console.log(data.totalCnt,vcui.number.addComma(data.totalCnt));
                     self.$totalCounter.text('총 '+ vcui.number.addComma(data.totalCnt) +'개');
 
                     if(isMainTabClick) {
                         var arr = (data.categoryList && data.categoryList instanceof Array) ? data.categoryList : [];
                         var $ul = self.$subTab.find('ul');
                         $ul.empty();
+                        $ul.removeAttr("style");
                         if(arr.length > 0) {
                             //전체를 넣어준다
                             arr.unshift({
@@ -157,6 +140,7 @@
                             $ul.append(vcui.template(subTabItemTemplate, item));
                         });
                         if(arr.length > 0) {
+                            self.$subTab.find()
                             self.$subTab.vcTab('update');
                             self.$subTab.vcTab('select',0);
                             self.$subTab.parents('.tabs-bg').show();

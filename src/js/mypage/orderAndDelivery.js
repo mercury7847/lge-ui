@@ -35,7 +35,7 @@
                     '<span class="blind">제품정보</span>'+
                     '<div class="product-info">'+
                         '<div class="thumb">'+
-                            '<a href="{{listData.productPDPurl}}"><img onError="lgkorUI.addImgErrorEvent(this)" src="{{listData.productImage}}" alt="{{listData.productNameKR}}"></a>'+
+                            '<a href="{{listData.productPDPurl}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{listData.productImage}}" alt="{{listData.productNameKR}}"></a>'+
                         '</div>'+
                         '<div class="infos">'+
                             '{{#if listData.productFlag}}<div class="flag-wrap"><span class="flag">{{listData.productFlag}}</span></div>{{/if}}'+
