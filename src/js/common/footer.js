@@ -48,7 +48,9 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
                     var id = $(item).data('groupId');
                     //console.log(id)
                     $(item).find('> li').each(function(cdx, child){
-                        itemList[id].push($(child).clone());
+                        if (itemList[id] instanceof Array) {
+                            itemList[id].push($(child).clone());
+                        }
                     });
                 });
 

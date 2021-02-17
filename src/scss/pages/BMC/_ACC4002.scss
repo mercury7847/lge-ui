@@ -26,20 +26,6 @@
                     margin-top:0;
                 }
             }
-            &:first-child {
-                dl {
-                    &:before {
-                        background-image:url("/lg5-common/images/icons/icon-point-64-01.svg");    
-                    }
-                }
-            }
-            &:last-child {
-                dl {
-                    &:before {
-                        background-image:url("/lg5-common/images/icons/icon-point-64-02.svg");    
-                    }
-                }
-            }
             dl {
                 &::before {
                     content:' ';
@@ -54,7 +40,7 @@
                 }
                 dt {
                     color:#000;
-                    @include font-large-1;
+                    @include font-large;
                     font-weight:700;
                 }
                 dd {
@@ -63,6 +49,49 @@
                     color:#000;
                     @include font-medium;
                     word-break:keep-all;
+                }
+            }
+        }
+    }
+    &.size2 {
+        ul {
+            li:nth-child(1) {
+                dl {
+                    &:before {
+                        background-image:url('/lg5-common/images/icons/icon-point-64-01.svg');
+                    }
+                }
+            }
+            li:nth-child(2) {
+                dl {
+                    &:before {
+                        background-image:url('/lg5-common/images/icons/icon-point-64-02.svg');    
+                    }
+                }
+            }
+        }
+    }
+    &.size3 {
+        ul {
+            li:nth-child(1) {
+                dl {
+                    &:before {
+                        background-image:url('/lg5-common/images/icons/icon-condition-clear-64-01.svg');
+                    }
+                }
+            }
+            li:nth-child(2) {
+                dl {
+                    &:before {
+                        background-image:url('/lg5-common/images/icons/icon-condition-clear-64-02.svg');    
+                    }
+                }
+            }
+            li:nth-child(3) {
+                dl {
+                    &:before {
+                        background-image:url('/lg5-common/images/icons/icon-condition-clear-64-03.svg');
+                    }
                 }
             }
         }
