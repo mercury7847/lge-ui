@@ -652,8 +652,7 @@
                 //margin-top: calc(135.0vw + 120px);
                 padding: 120px 0 60px;
             }
-            .inner {
-                position: relative;
+            .slide-wrap {
                 @include mobile {
                     padding-bottom: 44px;
                 }
