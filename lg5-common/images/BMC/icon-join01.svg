@@ -1,30 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon-join01</title>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
     <defs>
-        <rect id="path-1" x="0.5" y="0" width="51" height="38.8860759" rx="1.82278481"></rect>
+        <rect id="rodb3wym9a" width="51" height="38.886" x=".5" y="0" rx="1.823"/>
     </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group-16">
-            <rect id="Rectangle" x="0" y="0" width="64" height="64"></rect>
-            <g id="Group-12" transform="translate(6.000000, 7.000000)">
-                <g id="Rectangle">
-                    <mask id="mask-2" fill="white">
-                        <use xlink:href="#path-1"></use>
-                    </mask>
-                    <use id="Mask" stroke="#222222" stroke-width="2.06896552" xlink:href="#path-1"></use>
-                    <rect stroke="#222222" stroke-width="2.06896552" mask="url(#mask-2)" x="0" y="29.164557" width="52" height="11.660942"></rect>
-                    <g id="Point" mask="url(#mask-2)" fill="#EC455A">
-                        <g transform="translate(16.000000, 20.247196)">
-                            <circle id="Oval" cx="2.49150064" cy="2.49150064" r="2.49150064"></circle>
-                            <circle id="Oval" cx="8.48240907" cy="2.49150064" r="1.2803181"></circle>
-                            <circle id="Oval-Copy" cx="13.262135" cy="2.49150064" r="1.2803181"></circle>
-                            <circle id="Oval-Copy-5" cx="18.0418609" cy="2.49150064" r="1.2803181"></circle>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <path d="M0 0H64V64H0z"/>
+            <g>
+                <g transform="translate(6.5 7.129)">
+                    <g>
+                        <mask id="kqs0fcfdcb" fill="#fff">
+                            <use xlink:href="#rodb3wym9a"/>
+                        </mask>
+                        <use stroke="#000" stroke-width="2" xlink:href="#rodb3wym9a"/>
+                        <path stroke="#000" stroke-width="2" d="M0 29.165H52V40.826H0z" mask="url(#kqs0fcfdcb)"/>
+                        <g mask="url(#kqs0fcfdcb)">
+                            <g fill="#DA0F47" transform="translate(19.5 21.458)">
+                                <circle cx="1.28" cy="1.28" r="1.28"/>
+                                <circle cx="6.06" cy="1.28" r="1.28"/>
+                                <circle cx="10.84" cy="1.28" r="1.28"/>
+                            </g>
                         </g>
                     </g>
+                    <path stroke="#000" stroke-width="2" d="M19.405 38.886L33.203 38.886 34.203 48 18.405 48z"/>
+                    <rect width="31.508" height="2" x="10.55" y="47" fill="#000" rx="1"/>
                 </g>
-                <path d="M35.2370144,37.8515932 L17.3705805,37.8515932 L17.3705805,49.0344828 L35.2370144,49.0344828 L35.2370144,37.8515932 Z M33.168,39.92 L33.168,46.965 L19.439,46.965 L19.439,39.92 L33.168,39.92 Z" id="Rectangle" fill="#222222" fill-rule="nonzero"></path>
-                <rect id="Rectangle" fill="#222222" x="10.549914" y="46.75" width="31.5077669" height="2.5" rx="1.25"></rect>
             </g>
         </g>
     </g>
