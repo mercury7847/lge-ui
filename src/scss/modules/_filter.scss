@@ -529,7 +529,7 @@
         top: 57px;
     }
     @include mobile {
-        top: 28px;
+        top: 24px;
     }
     .ico-filter {
         display: inline-block;
@@ -544,6 +544,7 @@
             display: none;
         }
         @include mobile {
+            top:3px;
             margin-right: 20px;
             background-size: 32px 32px;
         }

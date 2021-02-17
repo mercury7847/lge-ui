@@ -730,7 +730,9 @@
         setStorage: function(key, value){
             var storage = sessionStorage.getItem(key);
             var storageData = storage? JSON.parse(storage) : {};        
-            storageData = Object.assign(storageData, value);
+            //Internet Explorer 불가
+            //storageData = Object.assign(storageData, value);
+            $.extend(storageData, value);
             sessionStorage.setItem(key, JSON.stringify(storageData));
 
             console.log("### setStorage ###", storageData)
@@ -1093,10 +1095,16 @@
             lgkorUI.requestAjaxDataPost(ajaxUrl, null, function(result){
                 var data = result.data;
                 if(lgkorUI.stringToBool(data.success)) {
-                    var cartCnt = (typeof data.cartCnt  === 'number') ? ""+data.cartCnt : data.cartCnt;
-                    if(cartCnt) {
-                        var utility = $('div.header-wrap div.utility');
-                        utility.find('.cart span.count').remove();
+                    var cartCnt = data.cartCnt ? ((typeof data.cartCnt  === 'number') ? data.cartCnt : parseInt(data.cartCnt)) : 0;
+                    var utility = $('div.header-wrap div.utility');
+                    utility.find('.cart span.count').remove();
+                    if(cartCnt == 0) {
+                        //제거
+                    } else if(cartCnt > 99) {
+                        //99개 넘음
+                        utility.find('.cart').append('<span class="count"><span class="blind">장바구니 제품 수</span>99+</span>');
+                    } else {
+                        //NN
                         utility.find('.cart').append('<span class="count"><span class="blind">장바구니 제품 수</span>' + cartCnt + '</span>');
                     }
                 }
@@ -1108,10 +1116,16 @@
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                 var data = result.data;
                 if(lgkorUI.stringToBool(data.success)) {
-                    var cartCnt = (typeof data.cartCnt  === 'number') ? ""+data.cartCnt : data.cartCnt;
-                    if(cartCnt) {
-                        var utility = $('div.header-wrap div.utility');
-                        utility.find('.cart span.count').remove();
+                    var cartCnt = data.cartCnt ? ((typeof data.cartCnt  === 'number') ? data.cartCnt : parseInt(data.cartCnt)) : 0;
+                    var utility = $('div.header-wrap div.utility');
+                    utility.find('.cart span.count').remove();
+                    if(cartCnt == 0) {
+                        //제거
+                    } else if(cartCnt > 99) {
+                        //99개 넘음
+                        utility.find('.cart').append('<span class="count"><span class="blind">장바구니 제품 수</span>99+</span>');
+                    } else {
+                        //NN
                         utility.find('.cart').append('<span class="count"><span class="blind">장바구니 제품 수</span>' + cartCnt + '</span>');
                     }
 
