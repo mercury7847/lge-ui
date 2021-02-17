@@ -978,6 +978,7 @@
                     dateArr = data.dateList instanceof Array ? data.dateList : [],
                     fastDate;
 
+
                 if (data.resultFlag == 'Y') {
                     if (dateArr.length) {
                         fastDate = dateUtil.format(data.fastDate + '' + data.fastTime + '00', 'yyyy.MM.dd hh:mm');
@@ -987,6 +988,8 @@
                         self.data = $.extend(self.data, result.param);
 
                         self.$stepDate.addClass('active').attr('tabindex', '0').focus().removeAttr('tabindex');
+                        
+
                         self.$timeWrap.timeCalendar('reset');
                         self.$stepInput.removeClass('active');
                         self.$completeBtns.hide();
@@ -1002,6 +1005,13 @@
                             title: data.resultMessage
                         });
                     }
+
+                    self.$stepDate.removeClass('active');
+                    self.$stepInput.removeClass('active');
+                    self.$completeBtns.hide();
+
+                    self.$dateWrap.calendar('reset');
+                    self.$timeWrap.timeCalendar('reset');
                 }
 
                 lgkorUI.hideLoading();

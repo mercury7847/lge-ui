@@ -25,6 +25,14 @@
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
+        &.blur {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+        }
     }
 
     [class*="scene"] {
@@ -104,24 +112,32 @@
 
 .brand-wrap {
     .thinq-tabs {
-        opacity: 0;
-        transition: opacity 0.2s;
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
         background-color: $color-bg-wt;
     }
-    &.on {
-        .thinq-tabs {
-            opacity: 1;
-            transition: opacity 0.5s ease 0.3s;
+    &.on {        
+        &.active {
+            .thinq-tabs {
+                position: fixed;
+                top: 0;
+                right: 0;
+                left: 0;
+                z-index: 1;
+            }
+            .tab-contents {
+                padding-top: 83px;
+            }
         }
     }
     &.active {
-        .tab-contents {
-            padding-top: 83px;
+        .thinq-tabs {
+            position: static;
         }
+        .tab-contents {
+            padding-top: 0;
+        }
+    }
+    .tab-contents {
+        padding-top: 0;
     }
     .tabs-wrap {
         max-width: 1380px;

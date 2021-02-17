@@ -594,8 +594,8 @@
                     title:options && options.title? options.title:''
                 }
                 var el = $(vcui.template(confirmTmpl, tmplObj)).appendTo('body');
-                if(tmplObj.title) $(el).find('.lay-conts.ui-alert-msg').html(msg);
-                else $(el).find('.lay-conts h6.ui-alert-msg').html(msg);
+                if(tmplObj.title) $(el).find('.lay-conts.ui-alert-msg').html(msg), $(el).find('.lay-conts:not(.ui-alert-msg)').remove();
+                else $(el).find('.lay-conts h6.ui-alert-msg').html(msg), $(el).find('.lay-conts.ui-alert-msg').remove();
                 
 
                 var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true }, options)).vcModal('instance');

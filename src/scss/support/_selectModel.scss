@@ -711,8 +711,7 @@
                 .item{
                     display:block;
                     position:relative;
-                    height:100%;
-                    padding:32px;
+                    height:100%; 
                     text-align:center;
                     font-size:0;
                     border-radius: 8px;
@@ -752,6 +751,8 @@
                     }
                     .info {
                         display:inline-block;
+                        width:100%;
+                        padding:32px;
                         vertical-align:middle;
                     }
                     .category {
@@ -814,7 +815,9 @@
                         min-height:80px;
                         padding:0 6px;
                         .item {
-                            padding:16px;
+                            .info {
+                                padding:16px;
+                            }
                             .category {
                                 span {
                                     display:none;
