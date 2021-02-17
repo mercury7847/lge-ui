@@ -251,6 +251,7 @@
         },
 
         _addImgOnloadEvent: function(){
+            var self = this;
             $('img').not('[data-pc-src]').on('error', function(e){
                 $(this).off('error');
                 $(this).attr('src', self.NO_IMAGE);
@@ -262,9 +263,10 @@
         },
 
         addImgErrorEvent: function(img){
+            var self = this;
             img.onerror = null;
             $(img).attr('src', self.NO_IMAGE);
-            $(this).css({
+            $(img).css({
                 width:'100%',
                 height:"100%"
             });
