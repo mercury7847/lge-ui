@@ -1,9 +1,6 @@
 $(function() {
 
-    vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {
-
-
-        
+    vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {        
 
 
         $.fn.inViewport = function(wrapClass, tabHeight, offsetVh){
@@ -14,6 +11,10 @@ $(function() {
             var tb = ty + $(this).outerHeight();
             var sy = $(wrapClass).scrollTop();
             var vh = $(wrapClass).height() + sy + elOffsetVh;
+
+            if($(wrapClass).height() < $(this).outerHeight()) {
+                return Math.abs(ty - sy) < 100;
+            }
             return ty > sy && vh > tb;
         };
 
@@ -233,7 +234,9 @@ $(function() {
             if(!canScroll) return;  
             canScroll = false;   
 
-            $('.brand-wrap').scrollTop(0);                
+            $('.brand-wrap').scrollTop(0);   
+            appMotion(0); 
+
             $('html').addClass('sceneMoving');                    
             if ( speed == undefined ) speed = aniSpeed;
             var scrollTopData = winHeight * idx;                    
@@ -584,7 +587,9 @@ $(function() {
         
         $('.ui_device').find('.frame').css({'transition':'transform 0.1s'})
         $('.ui_device').find('.screen').css({'transition':'opacity 0.1s'})
-        $('.typography').css({'transition':'opacity 0.1s'})
+        $('.typography').css({'transition':'opacity 0.1s'});
+
+        //static
 
 
         function transFunc(distance, start, end, scroll, sy){
@@ -611,7 +616,8 @@ $(function() {
             $('.ui_device').find('.intro').css({'opacity':val3});
             $('.ui_device').find('.ui_last').css({'opacity':val4});
 
-            var inner = $('.inner').position().top;
+            var inner = $('.inner').find('.indi-wrap').position().top;
+            console.log(inner, st);
 
             if(st+deviceH-88 > inner){
                 var ny = st + deviceH - 88 - inner;

@@ -231,7 +231,7 @@
                         var $list_ul = self.$autoComplete.find('div.keyword-list ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(autoCompleteItemTemplate, {"input":item, "text":item.replaceAll(searchedValue,replaceText)}));
+                            $list_ul.append(vcui.template(autoCompleteItemTemplate, {"input":item, "text":vcui.string.replaceAll(item, searchedValue, replaceText)}));
                         });
                         self.$autoComplete.show();
                         self.hideAnimation(self.$searchKeywordArea);
@@ -281,7 +281,7 @@
                     $list_ul.empty();
                     if(arr.length > 0) {
                         arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(categoryItemTemplate, {"url":item.url,"text":item.text.replaceAll(searchedValue,replaceText)}));
+                            $list_ul.append(vcui.template(categoryItemTemplate, {"url":item.url,"text":vcui.string.replaceAll(item.text, searchedValue, replaceText)}));
                         });
                         self.$resultCategory.show();
                         showSearchResultArea = true;
@@ -295,7 +295,7 @@
                     $list_ul.empty();
                     if(arr.length > 0) {
                         arr.forEach(function(item, index) {
-                            item.title = item.title.replaceAll(searchedValue,replaceText);
+                            item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.price = vcui.number.addComma(item.price);
                             $list_ul.append(vcui.template(previewItemTemplate, item));
                         });

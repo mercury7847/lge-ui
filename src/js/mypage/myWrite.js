@@ -148,6 +148,7 @@
                     $findItem.empty();
                     var arr = data.listData instanceof Array ? data.listData : [];
                     arr.forEach(function(item, index) {
+                        item.desc = vcui.string.replaceAll(item.desc, '\n', '<br>');
                         $findItem.append(vcui.template(popupDetailItemTemplate, item));
                     });
 
@@ -160,6 +161,7 @@
                         $findItem.empty();
                         var arr = reply instanceof Array ? reply : [];
                         arr.forEach(function(item, index) {
+                            item.desc = vcui.string.replaceAll(item.desc, '\n', '<br>');
                             $findItem.append(vcui.template(popupDetailItemTemplate, item));
                         });
                     } else {

@@ -27,6 +27,7 @@
                     //모델아이디가 있으면 쿠키저장
                     var _type = $item.attr('data-type');
                     if(_type == "r-top" && !(!modelID)) {
+                        //console.log("### KRP0006 setting(); ###", _typem, modelID )
                         lgkorUI.addCookieArrayValue(lgkorUI.RECENT_PROD_COOKIE_NAME,modelID);
                     }
             
@@ -37,8 +38,11 @@
                             "modelID":modelID,
                             "sku":sku
                         }
-            
+                        //console.log("### KRP0006 requestAjaxData(); ###", ajaxUrl, param)
                         lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
+
+                            //console.log("### KRP0006 requestAjaxData result###", result.data)
+
                             var data = result.data ? result.data : {};
                             self.reloadData(data);
                         });
