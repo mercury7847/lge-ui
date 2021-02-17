@@ -631,7 +631,7 @@
     function changeContractInfo(){
         lgkorUI.showLoading();
 
-        var info = $('select[name=contractInfo]').find('option:selected').val().split("|");
+        var info = $('select[name=contractInfo]').find('option:selected').val();
 
         saveUserInfoCancel();
 
@@ -639,8 +639,7 @@
         paymentModifyBlock.hide();
 
         var sendata = {
-            modelID: info[0],
-            contractID: info[1]
+            contractInfo: info
         }
         console.log("sendata:", sendata);
         lgkorUI.requestAjaxData(CONTRACT_INFO, sendata, function(result){
