@@ -13,6 +13,7 @@
             font-size:0;
             display: flex;
             align-items: center;
+            position: relative;
         }
         .summary-img {
             display:inline-block;
@@ -64,18 +65,30 @@
             color: #fff;
             margin-left: auto;
         }
+        @include pc {
+            .btn-center-link {
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
         @include mobile {
             .box {
                 padding:20px 16px;
             }
+            .btn-center-link {
+                margin-top: 16px;
+            }
             .summary-img {
-                width:130px;
+                width:80px;
+                margin-right: 0;
                 img {
                     width:100%;
                 }
             }
             .summary-info {
-                width:calc(100% - 130px);
+                flex: 1;
                 padding-left:16px;
                 .info {
                     span {
