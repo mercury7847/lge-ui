@@ -36,7 +36,7 @@ $(window).ready(function(){
             self.$section.hide();
 
             var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
-            console.log("### KRP0032 Coolie Name ###:",cookieValue)
+            //console.log("### KRP0032 Coolie Name ###:",cookieValue)
             if(cookieValue) {
                 self.requestData(false);
             }
