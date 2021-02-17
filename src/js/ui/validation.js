@@ -733,7 +733,11 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     }
                     
                 }else{
-                    $first.focus();
+                    if ($first.is(':hidden')) {
+                        $first.parent().attr('tabindex', 0).focus().removeAttr('tabindex');
+                    } else {
+                        $first.focus();
+                    }
                 }                
                 self.triggerHandler('nextfocus', [$first]);
             }
