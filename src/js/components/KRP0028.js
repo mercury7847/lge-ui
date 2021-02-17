@@ -133,11 +133,13 @@
                 var self = this;
                 var ajaxUrl = self.$section.attr('data-list-url');
                 lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
-                    var data = result.data;
+                    var tempData = result.data;
+                    var data = (tempData && tempData instanceof Array && tempData.length > 0) ? tempData[0] : {};
                     //var param = result.param;
-                    
+                    console.log(data);
                     self.$pagination.vcPagination('setPageInfo',data.pagination);
 
+                    console.log(data.totalCnt,vcui.number.addComma(data.totalCnt));
                     self.$totalCounter.text('총 '+ vcui.number.addComma(data.totalCnt) +'개');
 
                     if(isMainTabClick) {

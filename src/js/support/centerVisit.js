@@ -987,6 +987,9 @@
                         self.data = $.extend(self.data, result.param);
 
                         self.$stepDate.addClass('active').attr('tabindex', '0').focus().removeAttr('tabindex');
+                        self.$timeWrap.timeCalendar('reset');
+                        self.$stepInput.removeClass('active');
+                        self.$completeBtns.hide();
                     }
                 } else {
                     if (data.resultMessage) {
