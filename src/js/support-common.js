@@ -1048,7 +1048,7 @@ CS.MD.commonModel = function() {
             var self = this;
             var maxheight = 0;
 
-            self.$el.find('.ui_carousel_track .ui_carousel_current').each(function(idx, item){
+            self.$modelSlider.find('.ui_carousel_current').each(function(idx, item){
                 $(item).find('.slide-conts').each(function(cdx, child){
                     var flexiblebox = $(child).find('.info');
                     maxheight = Math.max(maxheight, flexiblebox.outerHeight(true));
@@ -1057,7 +1057,7 @@ CS.MD.commonModel = function() {
                 // $(item).find('.slide-conts').height(maxheight);
             });
 
-            self.$el.find('.ui_carousel_track .slide-conts').height(maxheight);
+            self.$modelSlider.find('.slide-conts').height(maxheight);
         },
         _toggleArrow: function($arrow, flag) {
             $arrow[flag ? 'removeClass' : 'addClass']('disabled')
