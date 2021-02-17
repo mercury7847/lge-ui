@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <path id="q6q7lv8nha" d="M0 0H63.84V63.84H0z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g transform="translate(-1395 -1107) translate(270 879) translate(0 196) translate(936) translate(189 32)">
+                                <mask id="ifv7ca91tb" fill="#fff">
+                                    <use xlink:href="#q6q7lv8nha"/>
+                                </mask>
+                                <g mask="url(#ifv7ca91tb)">
+                                    <g transform="translate(10.42 7.92)">
+                                        <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.26 44.6H2.095C.938 44.6 0 43.684 0 42.554V5.046C0 3.916.938 3 2.095 3h8.904m16.705 0h8.601c1.157 0 2.095.916 2.095 2.046v16.081"/>
+                                        <circle cx="34.718" cy="36.223" r="12.423" stroke="#DA0F47" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                        <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.717 0.162L19.2 1.415 26.683 0.162 26.683 5.838 11.717 5.838z"/>
+                                        <g fill="#000" transform="translate(7.2 14.2)">
+                                            <rect width="24" height="2" rx="1"/>
+                                            <rect width="18.355" height="2" y="7.6" rx="1"/>
+                                            <path d="M1 15.2h10.237c.552 0 1 .448 1 1s-.448 1-1 1H1c-.552 0-1-.448-1-1s.448-1 1-1z"/>
+                                        </g>
+                                        <path stroke="#DA0F47" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M34.718 30.4L34.718 36.223 41.317 36.223"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

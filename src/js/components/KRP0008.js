@@ -787,7 +787,7 @@
 
             //제휴카드리스트 갱신
             updateAssociatedCardList: function ($cardInfo, cardData) {
-                if(cardData) {
+                if(cardData && cardData.length > 0) {
                     //카드데이타
                     var selectList = $cardInfo.find('ul.select-list');
                     selectList.empty();
@@ -857,7 +857,7 @@
             updateRentalInfoPrice: function(selectRentalInfoData) {
                 var self = this;
                 self.selectRentalInfoData = selectRentalInfoData;
-                var carePrice = selectRentalInfoData.years1TotAmt;
+                var carePrice = parseInt(selectRentalInfoData.years1TotAmt);
                 var $paymentAmount = self.$pdpInfoCareSiblingOption.siblings('.payment-amount');
   
                 //선택된 카드 데이타
@@ -883,7 +883,7 @@
             updateCareshipInfoPrice: function(selectCareshipInfoData) {
                 var self = this;
                 self.selectCareshipInfoData = selectCareshipInfoData;
-                var carePrice = selectCareshipInfoData.years1TotAmt;
+                var carePrice = parseInt(selectCareshipInfoData.years1TotAmt);
                 var $paymentAmount = self.$pdpInfoCareshipService.siblings('.payment-amount');
 
                 //선택된 카드 데이타
@@ -910,8 +910,8 @@
                 var self = this;
 
                 var quantity = $paymentAmount.data('quantity');
-                var price = $paymentAmount.data('price');
-                var carePrice = $paymentAmount.data('carePrice');
+                var price = parseInt($paymentAmount.data('price'));
+                var carePrice = parseInt($paymentAmount.data('carePrice'));
                 var cardData = $paymentAmount.data('cardData');
                 var prefix = $paymentAmount.data('prefix');
                 prefix = !prefix ? "" : prefix + " ";
@@ -919,7 +919,7 @@
                 //console.log(price, quantity, carePrice, cardData, prefix);
 
                 if(cardData && cardData.cardSale) {
-                    carePrice -= cardData.cardSale;
+                    carePrice -= parseInt(cardData.cardSale);
                 }
                 var totalPrice = price + (carePrice ? carePrice : 0);
 

@@ -2,7 +2,7 @@
     var subTabItemTemplate = '<li><a href="#{{categoryId}}">{{categoryName}}</a></li>';
     var awardsListItemTemplate = '<li class="items" data-id="{{storyId}}" data-award-list="{{awardList}}"><div class="inner">' +
         '<div class="thumb">' +
-            '<img src="{{storyListThumbnailPath}}" alt="{{storyListThumbnailAltText}}">' +
+            '<img src="{{storyListThumbnailPath}}" alt="{{storyListThumbnailAltText}}" onError="lgkorUI.addImgErrorEvent(this);">' +
             '<p class="hidden pc">{{storyListThumbnailAltText}}</p>' +
             '<p class="hidden mobile">{{storyListThumbnailAltText}}</p>' +
         '</div>' +

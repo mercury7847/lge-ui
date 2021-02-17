@@ -103,6 +103,9 @@
                                     .key {
                                         .sp {
                                             margin-left: 1em;
+                                            @include mobile {
+                                                padding-left: 0;
+                                            }
                                         }
                                     }
                                     .btn-link {
