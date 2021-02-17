@@ -122,9 +122,9 @@
                 right: 0;
                 left: 0;
                 z-index: 1;
-            }
-            .tab-contents {
-                padding-top: 83px;
+                & ~ .tab-contents {
+                    padding-top: 83px;
+                }
             }
         }
     }

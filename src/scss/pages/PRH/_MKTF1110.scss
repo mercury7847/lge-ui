@@ -41,6 +41,11 @@
             @include mobile {
                 font-size: 28px;
                 line-height: 38px;
+                .logo-area {
+                    img {
+                        max-width: 168px;
+                    }
+                }
                 .content {
                     [class*="cont"] {
                         transform: translateY(0);
@@ -571,19 +576,24 @@
         }
         .mobile-device {
             position: absolute;
-            //position: fixed;
-            //top: 0;
             left: 50%;
             transform: translateX(-50%);
             z-index: 1;
-            img {
-                width: 100%;
+            &.fixed {
+                position: fixed;
+                top: 0;
+                z-index: 11;
             }
-            @include mobile {
+            //모바일용
+            &.static {
+                position: static;
                 left: 0;
-                transform: translateX(0);
+                transform: translateY(0);
                 width: 100%;
                 padding: 0 17.222vw;
+            }
+            img {
+                width: 100%;
             }
             .frame {
                 position: relative;
@@ -604,19 +614,25 @@
             .screen {
                 overflow: hidden;
                 position: absolute;
-                top: 53px;
-                left: 24px;
+                top: 52px;
+                left: 23px;
                 z-index: 1;
                 width: 428px;
                 height: 853px;
                 @include mobile {
-                    top: 7.361vw;
+                    width: 59.744vw;
+                    height: 118.472vw;
+                    top: 7.161vw;
                     left: 3.194vw;
                     right: 2.778vw;
-                    width: auto;
-                    height: auto;
                 }
-
+                .screen-slider {
+                    li {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
+                }
             }
         }
         .typography {
@@ -632,11 +648,15 @@
         .install-wrap {
             margin-top: 1408px;
             @include mobile {
-                margin-top: calc(135.0vw + 120px);
-                padding-bottom: 60px;
+                margin-top: 0;
+                //margin-top: calc(135.0vw + 120px);
+                padding: 120px 0 60px;
             }
             .inner {
                 position: relative;
+                @include mobile {
+                    padding-bottom: 44px;
+                }
             }
             .indi-wrap {
                 position: absolute;
@@ -645,8 +665,7 @@
                 bottom: 120px;
                 z-index: 10;
                 @include mobile {
-                    top: 93.056vw;
-                    bottom: auto;
+                    bottom: 0;
                 }
             }
             .slide-controls {
@@ -665,6 +684,38 @@
                     &.next {
                         right: 40px;
                     }
+                }
+                @include mobile {
+                    .btn-arrow {
+                        @include calc(top,50%,84px);
+                        &.prev {
+                            left: 6px;
+                        }
+                        &.next {
+                            right: 6px;
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                .image {
+                    display: none;
+                }
+            }
+            .mobile-device {
+                @include pc {
+                    display: none;
+                }
+                position: static;
+                left: 0;
+                transform: translateY(0);
+                width: 100%;
+                padding: 0 22.083vw;
+                .screen {
+                    width: 43.067vw;
+                    height: 84.672vw;
+                    top: 5.161vw;
+                    left: 1.994vw;
                 }
             }
             .text-area {
@@ -696,7 +747,7 @@
                     transform: translateY(0);
                     width: 100%;
                     margin-left: 0;
-                    padding-top: 52px;
+                    padding-top: 24px;
                     text-align: center;
                 }
             }
@@ -794,7 +845,7 @@
                 padding: 0 40px;
                 @include mobile {
                     display: block;
-                    padding-bottom: 32px;
+                    padding: 0 0 32px;
                 }
                 .app-smart-tabs {
                     //position: absolute;
@@ -873,6 +924,18 @@
                 .slide-wrap {
                     .indi-wrap {
                         bottom: -32px;
+                    }
+                    @include mobile {
+                        .slide-controls {
+                            .btn-arrow {
+                                &.prev {
+                                    left: -10px;
+                                }
+                                &.next {
+                                    right: -10px;
+                                }
+                            }
+                        }
                     }
                     .ui_carousel_slide {
                         .text-area {

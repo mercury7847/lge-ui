@@ -783,7 +783,7 @@
 
             var cookieText = escape(cookieName) + '=' + escape(cookieValue);
             cookieText += (cookieExpire ? ('; EXPIRES='+cookieExpire.toUTCString()) : '');
-            cookieText += (cookiePath ? ('; PATH='+cookiePath) : '');
+            cookieText += '; PATH=/';/*(cookiePath ? ('; PATH='+cookiePath) : '')*/;
             cookieText += (cookieDomain ? ('; DOMAIN='+cookieDomain) : '');
             cookieText += (cookieSecure ? '; SECURE' : '');
 
