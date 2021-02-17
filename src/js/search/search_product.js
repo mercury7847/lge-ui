@@ -5,7 +5,7 @@
     //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
     var productItemTemplate = '<li><div class="item">' +
-        '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this)" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
+        '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
@@ -149,10 +149,7 @@
                     self.bindEvents();
 
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
-                        var filterdata = JSON.parse(data.filterData);
-                        data.filterData = filterdata;
-                        self.requestSearch(data);
-                        //self.requestSearch(self.makeFilterData(data));
+                        self.requestSearch(self.makeFilterData(data));
                     });
 
                     //입력된 검색어가 있으면 선택된 카테고리로 값 조회
@@ -167,6 +164,7 @@
                 });
             },
 
+            /*
             makeFilterData: function(data) {
                 var filterdata = JSON.parse(data.filterData);
                 var filterlist = [];
@@ -178,6 +176,16 @@
                     }
                 }
                 data.filterData = filterlist;
+                return data;
+            },
+            */
+            makeFilterData: function(data) {
+                var filterdata = JSON.parse(data.filterData);
+                var makeData = {};
+                for(key in filterdata) {
+                    makeData[key] = filterdata[key].join(",");
+                }
+                data.filterData = JSON.stringify(makeData);
                 return data;
             },
 
@@ -541,6 +549,7 @@
                     //postData.filter = JSON.stringify(filterQueryData);
                 }
 
+                console.log(postData);
                 lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
                     self.openSearchInputLayer(false);
 
