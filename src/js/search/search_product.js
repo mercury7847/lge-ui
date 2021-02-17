@@ -164,6 +164,7 @@
                 });
             },
 
+            /*
             makeFilterData: function(data) {
                 var filterdata = JSON.parse(data.filterData);
                 var filterlist = [];
@@ -175,6 +176,16 @@
                     }
                 }
                 data.filterData = filterlist;
+                return data;
+            },
+            */
+            makeFilterData: function(data) {
+                var filterdata = JSON.parse(data.filterData);
+                var makeData = {};
+                for(key in filterdata) {
+                    makeData[key] = filterdata[key].join(",");
+                }
+                data.filterData = makeData;
                 return data;
             },
 
@@ -538,6 +549,7 @@
                     //postData.filter = JSON.stringify(filterQueryData);
                 }
 
+                console.log(postData);
                 lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
                     self.openSearchInputLayer(false);
 

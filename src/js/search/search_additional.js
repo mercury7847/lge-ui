@@ -106,15 +106,11 @@
 
             makeFilterData: function(data) {
                 var filterdata = JSON.parse(data.filterData);
-                var filterlist = [];
+                var makeData = {};
                 for(key in filterdata) {
-                    if(key == "categoryId") {
-                        data[key] = filterdata[key];
-                    } else {
-                        filterlist = filterlist.concat(filterdata[key]);
-                    }
+                    makeData[key] = filterdata[key].join(",");
                 }
-                data.filterData = filterlist;
+                data.filterData = makeData;
                 return data;
             },
 

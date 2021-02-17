@@ -60,40 +60,29 @@
                         okBtnName: '확인',
                         cancelBtnName: '취소',
                         ok: function() {
-                            var ajaxUrl = self.$form.data('ajax');
-                            var data = validation.getAllValues();
-                            var formData = new FormData();
+                            var $modal = $(this);
+                            var url = self.$form.data('ajax'),
+                                allData = validation.getAllValues(),
+                                formData = new FormData();
    
-                            for (var key in data) {
-                                formData.append(key, data[key]);
+                            for (var key in allData) {
+                                formData.append(key, allData[key]);
                             }
-
-                            $.ajax({
-                                type : 'POST',
-                                url : ajaxUrl,
-                                dataType : 'json',
-                                data : formData,
-                                enctype: 'multipart/form-data',
-                                processData: false,
-                                contentType: false
-                            }).done(function (result) {
-                                if(result.ssoCheckUrl != undefined && result.ssoCheckUrl != null && result.ssoCheckUrl != ""){
-                                    location.reload();                
-                                    return;
-                                }
+                            
+                            lgkorUI.showLoading();
+                            lgkorUI.requestAjaxFileData(url, formData, function(result) {
+                                var data = result.data;
                                 
-                                if(result.status != 'success'){
-                                    alert(result.message ? result.message : '오류발생');
-                                    return;
-                                }
+                                $modal.vcModal('hide');
 
-                                if (result.data.resultFlag == 'Y') {
-                                    result.data.seq && $('#seq').val(result.data.seq);
+                                if (data.resultFlag == 'Y') {
+                                    data.seq && $('#seq').val(data.seq);
                                     self.$form.submit();
+                                } else {
+                                    if (data.resultMessage) lgkorUI.alert("", {title: data.resultMessage});
+                                    lgkorUI.hideLoading();
                                 }
-                            }).fail(function(err){
-                                alert(err.message);
-                            });
+                            }, 'POST');
                         }
                     });
                 }

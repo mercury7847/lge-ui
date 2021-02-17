@@ -45,6 +45,7 @@
         vcui.require(['ui/modal', 'ui/validation', 'ui/formatter', 'ui/tab', 'helper/textMasking'], function () {             
             setting();
             bindEvents();
+            changeContractInfo();
         });
     }
 
@@ -256,7 +257,7 @@
         });
     }
 
-    //접보변경 확인...
+    //정보변경 확인...
     function sendChangeConfirm(item){
 
         var alertitle, alertmsg, sendata;
@@ -416,7 +417,6 @@
         var chk = 0;
         var values = paymentMethodIndex ? bankValidation.getAllValues() : cardValidation.getAllValues();
         for(var key in values){
-            console.log("paymentInfo["+key+"]:", paymentInfo[key])
             if(values[key] == paymentInfo[key]) chk++;
         }
         
@@ -485,7 +485,6 @@
             sendata.isAgree = !chk;
         } else{
             sendata.deductType = $('.mempoint-info').find('input[name=point-ded]:checked').val();
-            console.log("$('.mempoint-info').find('input[name=point-ded]').val():", $('.mempoint-info').find('input[name=point-ded]:checked').val())
 
             if(sendata.deductType == undefined || sendata.deductType == null){
                 lgkorUI.alert("", {title:"차감 포인트를 선택해 주세요."});
@@ -632,21 +631,15 @@
     function changeContractInfo(){
         lgkorUI.showLoading();
 
-        console.log("### changeContractInfo start ###");
-
-        var info = $('select[name=contractInfo]').find('option:selected').val().split("|");
-
-
-        console.log("$('select[name=contractInfo]').find('option:selected').val().split('|'):", info)
+        var info = $('select[name=contractInfo]').find('option:selected').val();
 
         saveUserInfoCancel();
-        console.log("saveUserInfoCancel();")
-        savePaymentInfoCancel();
-        console.log("savePaymentInfoCancel();")
+
+        paymentInfoBlock.show();
+        paymentModifyBlock.hide();
 
         var sendata = {
-            modelID: info[0],
-            contractID: info[1]
+            contractInfo: info
         }
         console.log("sendata:", sendata);
         lgkorUI.requestAjaxData(CONTRACT_INFO, sendata, function(result){
@@ -656,7 +649,6 @@
 
             $('html, body').animate({scrollTop:0}, 220);
         });
-        console.log("### changeContractInfo end ###");
     }
 
     function setHiddenData(iptname, value){
