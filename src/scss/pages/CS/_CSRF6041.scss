@@ -303,8 +303,6 @@
                             .item {
                                 @include clearfix;
                                 li {
-                                    float:left;
-                                    margin-left:16px;
                                     color:#111;
                                     @include font-medium;
                                     @include mobile {
