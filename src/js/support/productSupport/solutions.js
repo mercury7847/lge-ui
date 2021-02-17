@@ -365,7 +365,6 @@
                     self.$solutionsResult.find('.list-wrap').show();
                     self.$solutionsResult.find('.pagination').show();
                     self.$solutionsResult.find('.no-data').hide();
-                    self.$keywordWrap.find('.search-more').show();
                 } else {
                     self.$solutionsResult.find('.list-wrap').hide();
                     self.$solutionsResult.find('.pagination').hide();
@@ -650,7 +649,7 @@
                         }
 
                         self.param = data;
-
+                        self.$keywordWrap.find('.search-more').show();
                         self.requestData('click');
                     }
                 });
