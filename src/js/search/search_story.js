@@ -539,6 +539,7 @@
                         arr.forEach(function(item, index) {
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                            item.isVideo = lgkorUI.stringToBool(item.isVideo);
                             $list_ul.append(vcui.template(storyItemTemplate, item));
                         });
                         $resultListWrap.show();

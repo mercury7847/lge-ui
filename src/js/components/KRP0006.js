@@ -25,7 +25,8 @@
                     //ajaxUrl = "http://mktsvc.lgekrdev.lge.co.kr/kr/mkt" + "/api/responsible/retrieveResponseUI";
 
                     //모델아이디가 있으면 쿠키저장
-                    if(!(!modelID)) {
+                    var _type = $item.attr('data-type');
+                    if(_type == "r-top" && !(!modelID)) {
                         lgkorUI.addCookieArrayValue(lgkorUI.RECENT_PROD_COOKIE_NAME,modelID);
                     }
             
