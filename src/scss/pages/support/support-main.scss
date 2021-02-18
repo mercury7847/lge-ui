@@ -1511,7 +1511,7 @@
         .rersv-wrap {
             position: relative;
             height:100%;
-            padding:55px 55px 120px;
+            padding:55px 55px 140px;
             background: #f4f4f4;
             border-radius:5px;
             box-sizing:border-box;
@@ -1612,7 +1612,7 @@
 
         @include tablet {
             .rersv-wrap {
-                padding:45px 25px 80px;
+                padding:45px 25px 120px;
 
                 .headline {
                     margin-bottom:30px;
@@ -1673,7 +1673,7 @@
     
                 .btn-wrap {
                     position: static;
-                    margin-top:32px;
+                    margin-top:55px;
                     text-align: center;
                 }
             }
