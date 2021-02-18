@@ -246,6 +246,7 @@ $(function() {
                 // if(wheelInterval) clearTimeout(wheelInterval);
                 // wheelInterval = setTimeout(function(){
                     var st = $('.brand-wrap').scrollTop();
+                    console.log(st, e.deltaY)
                     if(st==0 && e.deltaY<0){
                         wheelScene(-1);
                     }

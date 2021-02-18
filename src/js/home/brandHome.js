@@ -182,9 +182,12 @@ $(function() {
 
         function moveStep(step, flag){
 
-            if(!canScroll) return;  
+            
+            if(!canScroll) return;
             if(currentStep == step) return;
-            canScroll = false; 
+            canScroll = false;
+
+            console.log('moveStep');
 
             var arr = wheelArr[step];
             if(!vcui.isArray(arr)){ 
@@ -203,6 +206,8 @@ $(function() {
                 wheelInterval = setTimeout(function(){
                     currentStep = step;
                     canScroll = true;
+                   // isWheel = true;  
+                    console.log('1111');
                 }, 400);
             }
         }
@@ -210,7 +215,8 @@ $(function() {
 
         function wheelScene(delta) {
 
-            if(!canScroll) return; 
+            if(!canScroll) return;
+
             var nextStep = (delta < 0) ? -1 : 1;
             nextStep = nextStep + currentStep;
             nextStep = Math.max(Math.min(nextStep, stepLens), 0);                   
@@ -249,11 +255,15 @@ $(function() {
 
         }
 
+        $window.on('scroll',function(){
+            console.log('scroll');
+        })
+
         function moveScene(idx, step, speed){
 
-            if(!canScroll) return;  
-            canScroll = false;   
-
+             
+            if(!canScroll) return;
+            canScroll = false;
             $('.brand-wrap').scrollTop(0);   
             appMotion(0); 
 
@@ -263,7 +273,7 @@ $(function() {
             $scenes.removeClass('active').eq(idx).addClass('active');
             
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
-            wheelAniInterval = setTimeout(function() {
+            //wheelAniInterval = setTimeout(function() {
                 if(! $('html').hasClass('sceneMoving')){
                     return false;
                 }
@@ -273,7 +283,8 @@ $(function() {
                 }, speed, 'easeInOutQuart',  function() { 
                     canScroll = true
                     currentPage = idx;     
-                    moveStep(step, true);          
+                    moveStep(step, true); 
+                    isWheel = true;         
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
                     
@@ -288,13 +299,19 @@ $(function() {
                         }
                     });
                 });
-            }, 100);
+            //}, 100);
 
         } 
         
-
+        var isWheel = false;
         document.addEventListener('wheel', function(e){
             
+            if(!isWheel) return;
+            isWheel = false;
+
+
+
+            console.log('wheel');
             if(currentStep == stepLens){
                 // if(wheelInterval) clearTimeout(wheelInterval);
                 // wheelInterval = setTimeout(function(){
@@ -304,6 +321,7 @@ $(function() {
                     }
                 //}, 100);
             }else{
+                // console.log(e.deltaY);
                 if(e.deltaY>0 || e.deltaY<0){
                     wheelScene(e.deltaY);
                 }
@@ -311,13 +329,15 @@ $(function() {
 
         });
 
-        
+        console.log('1111');
         $(document).on('touchstart touchend touchcancel', function(e) {
 
             var data = _getEventPoint(e);
             if (e.type == 'touchstart') {
                 touchSy = data.y;
             } else {
+
+                console.log('asdfsdf');
 
                 if(currentStep == stepLens){
                     if(wheelInterval) clearTimeout(wheelInterval);
@@ -559,7 +579,6 @@ $(function() {
             $('.brand-wrap').css({'overflow':'auto','height':winHeight});
             $('.contents').css({'overflow':'hidden', 'height':totalHeight});
 
-            console.log(wheelArr);
 
             if(page!==undefined){
                 currentPage = page;
