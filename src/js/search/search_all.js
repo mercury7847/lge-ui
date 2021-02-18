@@ -649,7 +649,7 @@
                     self.$searchResultCategoryMore.find('span').text('더보기');
 
                     //센터 배너
-                    if(data.searchBanner) {
+                    if(data.searchBanner && !vcui.isEmpty(data.searchBanner)) {
                         self.$searchBanner.html(vcui.template(searchBnrTemplate, data.searchBanner));
                         self.$searchBanner.show();
                     } else {
