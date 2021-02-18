@@ -244,7 +244,7 @@ $(function() {
             var curTime = +new Date();
             var timeDiff = curTime-prevTime;
             prevTime = curTime;
-            if (timeDiff < 100) {
+            if (timeDiff < 40) {
                 return;
             }
             
