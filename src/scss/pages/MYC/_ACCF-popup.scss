@@ -1065,6 +1065,25 @@
         }
         .flt-cont {
             float:right;
+            &.btn-type {
+                .btn-link {
+                    margin-top:0;
+                }
+                .btn-bundle {
+                    display:inline-block;
+                }
+                @include mobile {
+                    padding-bottom:72px;
+                    a.btn-link {
+                        margin-top:4px;
+                    }
+                    .btn-bundle {
+                        position:absolute;
+                        bottom:24px;
+                        left:0;
+                    }
+                }
+            }
         }
     }
 }

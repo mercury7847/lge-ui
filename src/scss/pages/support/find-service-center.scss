@@ -1790,10 +1790,8 @@
         &.result-map {
             overflow-x: visible;
             .store-map-con {
-                height: calc(100vh - 181px);
-                top: -351px;
-                &.local-map {
-                }
+                height: calc(100vh - 240px);
+                top: -291px;
             }
             .store-list-wrap {
                 &.active {
