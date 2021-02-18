@@ -141,6 +141,9 @@
         height:66px;
         padding:0;
         vertical-align:top;
+        @include mobile {
+            height:42px;
+        }
     }
 }
 .component-wrap .title.title-h1 {
