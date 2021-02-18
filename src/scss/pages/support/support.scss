@@ -1148,6 +1148,31 @@
             font-weight:$font-weight-bold;
         }
     }
+
+    &.popup-wrap {
+        // 레이어팝업 체크박스
+        .pop-footer {
+            &.check-type {
+                input {
+                    &+label {
+                        padding-left: 30px;
+                        font-size: 16px;
+                        line-height: 26px;
+                        &::before {
+                            width: 20px;
+                            height: 20px;
+                        }
+                        &::after {
+                            top: 9px;
+                            left: 7px;
+                            width: 11px;
+                            height: 9px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 } //support
 
 
