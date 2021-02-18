@@ -35,10 +35,7 @@
             vertical-align: middle;
         }
 
-        @include tablet {
-            display: inline-block;
-            
-            
+        @include mobile {
             padding:11px 20px 10px;
             font-size:13px;
             border-radius:30px;
@@ -193,12 +190,12 @@
             .support-list-slider { 
                 .indi-wrap {
                     display: block;
+                    bottom:30px;
                 }
             }
         }
-
-        
     }
+
     .support-toggle-list-wrap {
         &.only-desktop {
             .slide-track {
@@ -390,6 +387,13 @@
                     max-width:336px;
                     margin:24px auto 0;
                     text-align: left;
+
+                    &.list-dir-col {
+                        width:213px;
+                        > li {
+                            width:100%;
+                        }
+                    }
                     > li {
                         width:50%;
                         padding:4px;
@@ -994,10 +998,6 @@
                     display:flex;
                     flex-direction: column;
                     justify-content: center;
-                }
-
-                .indi-wrap {
-                    position:static;
                 }
 
                 .slide-track {
