@@ -1893,7 +1893,7 @@ CS.MD.pagination = function() {
             }
 
             for (var i = startPage; i <= endPage; i++) {
-                if (page == i) {
+                if (self.options.page == i) {
                     html += '<strong><span class="blind">현재 페이지</span>' + i + '</strong>';
                 } else {
                     html += '<a href="#" data-page="' + i + '" title="' + i + '페이지 보기">' + i + '</a>';
