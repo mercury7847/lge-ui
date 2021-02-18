@@ -241,24 +241,22 @@ $(function() {
         
 
         document.addEventListener('wheel', function(e){
-
-            // e.stopPropagation();
             
             if(currentStep == stepLens){
-                if(wheelInterval) clearTimeout(wheelInterval);
-                wheelInterval = setTimeout(function(){
+                // if(wheelInterval) clearTimeout(wheelInterval);
+                // wheelInterval = setTimeout(function(){
                     var st = $('.brand-wrap').scrollTop();
                     if(st==0 && e.deltaY<0){
                         wheelScene(-1);
                     }
-                }, 100);
+                // }, 100);
             }else{
                 if(e.deltaY>0 || e.deltaY<0){
                     wheelScene(e.deltaY);
                 }
             }  
 
-        },true);
+        });
 
         
         $(document).on('touchstart touchend touchcancel', function(e) {

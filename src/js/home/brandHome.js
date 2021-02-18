@@ -294,7 +294,6 @@ $(function() {
         
 
         document.addEventListener('wheel', function(e){
-
             
             if(currentStep == stepLens){
                 // if(wheelInterval) clearTimeout(wheelInterval);

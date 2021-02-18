@@ -245,6 +245,7 @@ $(function () {
 
     function wheelScene(delta) {
 
+        if(!canScroll) return; 
         var nextIndex = (delta < 0) ? -1 : 1;
         nextIndex = nextIndex + currentPage;
         nextIndex = Math.max(Math.min(nextIndex, maxLens), 0);
@@ -296,13 +297,13 @@ $(function () {
     document.addEventListener('wheel', function(e){
 
         if(currentPage == maxLens){
-            if(wheelInterval) clearTimeout(wheelInterval);
-            wheelInterval = setTimeout(function(){
+            // if(wheelInterval) clearTimeout(wheelInterval);
+            // wheelInterval = setTimeout(function(){
                 var st = $('.section-cover').scrollTop();
                 if(st==0 && e.deltaY<0){
                     wheelScene(-1);
                 }
-            }, 100);
+            // }, 100);
 
         }else{
 
