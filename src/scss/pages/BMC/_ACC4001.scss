@@ -136,25 +136,38 @@
     padding:0 40px;
     text-align:center;
     .infos {
-        margin:0 -40px;
         font-size:0;
         @include mobile {
             margin:0;
         }
         li {
             display:inline-block;
-            width:33.3%;
-            max-width:280px + 80px;
+            width:calc((100% /3) - 24px);
+            height:333px;
+            margin-left:24px;
             padding:0 40px;
+            color:#fff;
             vertical-align:top;
+            &:first-child {
+                margin-left:0;
+            }
             @include mobile {
                 display:block;
                 width:100%;
                 max-width:100%;
                 margin-top:24px;
-                &:first-child {
-                    margin-top:0;
-                }
+            }
+            &.bg1 {
+                background:url('/lg5-common/images/BMC/img-mem-info-01.jpg') no-repeat 0 0;
+                background-size:cover;
+            }
+            &.bg2 {
+                background:url('/lg5-common/images/BMC/img-mem-info-02.jpg') no-repeat 0 0;
+                background-size:cover;
+            }
+            &.bg3 {
+                background:url('/lg5-common/images/BMC/img-mem-info-03.jpg') no-repeat 0 0;
+                background-size:cover;
             }
             .tit {
                 @include font-large-2;
