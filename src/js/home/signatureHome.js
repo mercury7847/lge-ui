@@ -125,7 +125,7 @@ $(function() {
             }            
         });
 
-        function moveStep(step, flag){
+        function moveStep(step){
 
             if(!canScroll) return;  
             if(currentStep == step) return;
@@ -139,16 +139,15 @@ $(function() {
 
             for(var i =0; i<arr.length; i++){
                 var item = arr[i];
-                var $target = $(item.target);                
-                $target.transit(item.transit);                
-            }
-
-            if(!flag){
-                if(wheelInterval) clearTimeout(wheelInterval);
-                wheelInterval = setTimeout(function(){
-                    currentStep = step;
-                    canScroll = true;
-                }, 400);
+                var $target = $(item.target);    
+                if(i==0){
+                    $target.transit(item.transit, function(){
+                        currentStep = step;
+                        canScroll = true;
+                    });  
+                }else{
+                    $target.transit(item.transit);  
+                }                               
             }
         }
 
@@ -217,7 +216,7 @@ $(function() {
                 }, speed, 'easeInOutQuart',  function() { 
                     canScroll = true
                     currentPage = idx;     
-                    moveStep(step, true);          
+                    moveStep(step);          
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
                     
@@ -237,24 +236,27 @@ $(function() {
         } 
 
 
-
-        
+        var prevTime = new Date().getTime();
 
         document.addEventListener('wheel', function(e){
-            
-            if(currentStep == stepLens){
-                // if(wheelInterval) clearTimeout(wheelInterval);
-                // wheelInterval = setTimeout(function(){
-                    var st = $('.brand-wrap').scrollTop();
-                    if(st==0 && e.deltaY<0){
-                        wheelScene(-1);
+
+            var curTime = new Date().getTime();
+            if(typeof prevTime !== 'undefined'){
+                var timeDiff = curTime-prevTime;
+                if(timeDiff > 200){
+                    if(currentStep == stepLens){
+                        var st = $('.brand-wrap').scrollTop();
+                        if(st==0 && e.deltaY<0){
+                            wheelScene(-1);
+                        }
+                    }else{
+                        if(e.deltaY>0 || e.deltaY<0){
+                            wheelScene(e.deltaY);
+                        }
                     }
-                // }, 100);
-            }else{
-                if(e.deltaY>0 || e.deltaY<0){
-                    wheelScene(e.deltaY);
-                }
-            }  
+                }                    
+            }            
+            prevTime = curTime;              
 
         });
 

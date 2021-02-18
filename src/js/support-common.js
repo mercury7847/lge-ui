@@ -271,8 +271,10 @@ CS.MD.search = function() {
             var self = this;
             
             self.autoUrl = self.$el.data('autocompleteUrl');
+            self.keyword;
+            self.isKeyword = self.$el.find('.keyword-box').length ? true : false;
 
-            if (self.$el.find('.recently-keyword').length) self._setRecently();
+            self.isKeyword && self._setRecently();
         },
         _setRecently: function() {
             var self = this;
@@ -344,13 +346,6 @@ CS.MD.search = function() {
         },
         _bindEvent: function() {
             var self = this;
-
-            // function maxLengthCheck(object){
-            //     if (object.value.length > object.maxLength){
-            //       object.value = object.value.slice(0, object.maxLength);
-            //     }    
-            //   }
-
            
             self.$el.on('click', '.search-layer .btn-delete', function() {
                 var $box = $(this).closest('li');
@@ -374,22 +369,23 @@ CS.MD.search = function() {
             });
 
             self.$el.find('input[type=text]').on('focus', function() {
-                if (self.$el.find('.keyword-box').length) {
-                    self.$el.addClass('on');
-                }
-            }).on('input', function() {
+                self.isKeyword && self.$el.addClass('on');
+            }).on('input', function(e) {
                 var val = $(this).val();
+
+                if (self.keyword == val) return;
 
                 if (val.length > 1) {
                     var param = {
                         keyword: val
                     };  
-                    
+
                     self.$el.trigger('autocomplete', [param, self.autoUrl, function(result) {
                         self._setAutoComplete(result.searchList)
                         
                         $('.autocomplete-box').show();
                         $('.keyword-box').hide();
+
                         self.$el.addClass('on');
                     }]);
 
@@ -398,8 +394,10 @@ CS.MD.search = function() {
                     self.$el.find('.autocomplete-box').find('ul').empty();
                     $('.autocomplete-box').hide();
                     $('.keyword-box').show();
-                    self.$el.addClass('on');
+                    !self.isKeyword && self.$el.removeClass('on');
                 }
+
+                self.keyword = val;
             }).on('keyup', function(e) {
                 if (e.keyCode == 13) {
                     e.preventDefault();
@@ -420,6 +418,7 @@ CS.MD.search = function() {
                 }
 
                 self.$el.removeClass('on');
+                self.$el.trigger('searchafter');
             });
 
             self.$el.find('.btn-list-all').on('click', function() {
@@ -1894,7 +1893,7 @@ CS.MD.pagination = function() {
             }
 
             for (var i = startPage; i <= endPage; i++) {
-                if (page == i) {
+                if (self.options.page == i) {
                     html += '<strong><span class="blind">현재 페이지</span>' + i + '</strong>';
                 } else {
                     html += '<a href="#" data-page="' + i + '" title="' + i + '페이지 보기">' + i + '</a>';

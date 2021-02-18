@@ -101,7 +101,10 @@
                     self.updateRecentSearchList();
                     self.bindEvents();
 
+                    self.savedFilterData = null;
+                    
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
+                        self.savedFilterData = JSON.parse(JSON.stringify(data));
                         self.requestSearch(self.makeFilterData(data));
                     });
 
@@ -112,7 +115,8 @@
                     if(!(!value) && value.length > 1) {
                         //현재 선택된 카테고리 기준으로 검색
                         self.setinputSearchValue(value);
-                        self.requestSearchData(value, force);
+                        var filterQueryData = self.getListSortingData();
+                        self.requestSearchData(value, force, filterQueryData, true);
                     }
                 });
             },
@@ -207,6 +211,31 @@
                 self.$resultListNoData = self.$contWrap.find('div.result-list-wrap.list-no-data');
             },
 
+            getListSortingData: function() {
+                var self = this;
+                var data = {};
+                self.$listSorting.find('input').each(function(idx, el){
+                    switch(el.type) {
+                        case "checkbox":
+                            data[el.name] = el.checked ? "Y" : "N";
+                            break;
+                        case "text":
+                            var value = $(el).attr('data-searchValue');
+                            if(value) {
+                                data[el.name] = value;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                });
+
+                self.$listSorting.find('.ui_selectbox').each(function(idx, el){
+                    data[el.name] = $(el).vcSelectbox('selectedOption').value;
+                });
+                return data;
+            },
+            
             sendSearchPage: function(searchUrl, search, force) {
                 if(searchUrl) {
                     var fi = searchUrl.indexOf('?');
@@ -312,7 +341,8 @@
                     var searchVal = $(this).attr('href').replace("#", "");
                     self.setinputSearchValue(searchVal);
                     //현재 선택된 카테고리 기준으로 검색
-                    self.requestSearchData(searchVal, true);
+                    var filterQueryData = self.getListSortingData();
+                    self.requestSearchData(searchVal, true, filterQueryData, true);
                 });
 
                 //연관검색어 펼치기
@@ -562,8 +592,12 @@
                     }
 
                     //필터세팅
-                    if(!filterSearch) {
+                    if(data.filterList && data.filterList.length > 0) {
                         self.filterLayer.updateFilter(data.filterList);
+                        if(self.savedFilterData && self.savedFilterData.filterData) {
+                            var filterData = JSON.parse(self.savedFilterData.filterData);
+                            self.filterLayer.resetFilter(filterData);
+                        }
                     }
 
                     //리스트 세팅
