@@ -91,12 +91,14 @@
                 //통합검색 노출
                 $('div.contents.search div.cont-wrap a').on("click", function(e) {
                     self.showAnimation(self.$searchLayer);
+                    //$('#layerSearchPopup').vcModal();
                 });
 
                 //통합검색 닫음
                 self.$searchLayer.find('button.btn-close').on("click", function(e) {
                     clearTimeout(self.searchTimer);
                     self.hideAnimation(self.$searchLayer);
+                    //$('#layerSearchPopup').vcModal('close');
                 });
 
                 //검색버튼
