@@ -85,7 +85,8 @@
                         if(data.storeConsultation) {
                             //제품 비교하기 페이지에서 제품 페이지 진입 시
                             var referrer = document.referrer;
-                            var compareUrl = $item.attr('data-bottom-compare-url');
+                            var currentUrl = location.href.split("//")[1].split('/')[0];
+                            var compareUrl = currentUrl + $item.attr('data-bottom-compare-url');
                             if(!(!compareUrl) && referrer && (referrer.indexOf(compareUrl) != -1)) {
                                 self.reloadComponent($item, data.storeConsultation);
                             } else if(check) {
