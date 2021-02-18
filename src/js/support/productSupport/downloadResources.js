@@ -29,21 +29,7 @@
                 '</div>' +
             '</div>' +
         '</li>';
-
-    var defaultParam;
-
-    function getObject(parameter) {
-        var valueObject = {}, hash;
-        var hashes = parameter.split('&');
-
-        for(var i = 0; i < hashes.length; i++) {
-            hash = hashes[i].split('=');
-            valueObject[hash[0]] = hash[1];
-        }
-            
-        return valueObject;
-    }
-
+        
     var otherService = {
         template : 
             '<li>' +
@@ -88,8 +74,6 @@
     var relatedInfo = {
         el : {
             wrap : $('.related-info'),
-            title : $('.related-info .banner-tit'),
-            list : $('.related-info .slide-track'),
             slider : $('.related-info .info-slider')
         },
         slideActiveClass : "is-active",
@@ -125,12 +109,6 @@
             ]
         },
         initialize : function(){
-            this.sliderInit();
-        },
-        reset : function(){
-            this.el.wrap.hide();
-        },
-        sliderInit : function(){
             var self = this;
             vcui.require(['ui/carousel'], function () {    
                 // LG제품에 관련된 정보를 확인하세요!
@@ -144,6 +122,9 @@
                 }
                 self.el.wrap.show();
             });
+        },
+        reset : function(){
+            this.el.wrap.hide();
         }
     }
 
@@ -160,19 +141,6 @@
         } else {
             $banner.removeClass('is-active');
         }
-    }
-
-    //드라이버 OS 분류 셀렉트 옵션 값 업데이트
-    function optionUpdate(target, option){
-        var $target = $(target);
-        var _options = "";
-
-        if( option.length ) {
-            option.forEach(function(v, i){
-                _options += '<option value="' + v.code + '">' + v.codeName + '<' + '/option>';
-            })
-        }
-        $target.vcSelectbox('update');
     }
     
     var download = {
@@ -204,7 +172,10 @@
             self.$driverCount = self.$driverSec.find('#driverCount');
             self.$driverPagination = self.$driverSec.find('.pagination');
             self.$driverKeyword = self.$driverSec.find('#driverKeyword');
+            self.$driverBtn = self.$driverSec.find('.btn-search');
             
+            self.$fileDetailPopup = $('#fileDetailPopup');
+
             self.setting();
             self.bindEvent();
 
@@ -295,6 +266,8 @@
                 $noData.show();
                 self.$driverPagination.hide();
             }
+
+            self.$driverKeyword.val(self.driverParam.keyword);
         },
         setOsOption: function(data) {
             var self = this;
@@ -436,21 +409,30 @@
             self.$driverKeyword.on('keyup', function(e){
                 if (e.keyCode == 13) {
                     e.preventDefault();
+                    self.$driverBtn.trigger('click');
+                }
+            }).on('input', function() {
+                var $error = self.$driverSec.find('.search-error');
+                var keyword = $(this).val().trim();
+
+                keyword.length && $error.hide(); 
+            });
+
+            //키워드 입력후 검색버튼 클릭시 검색
+            self.$driverBtn.on('click', function(e) {
+                var $error = self.$driverSec.find('.search-error');
+                var keyword = self.$driverKeyword.val().trim();
+
+                if (keyword.length) { 
                     self.driverParam = $.extend(self.driverParam, {
                         keyword: self.$driverKeyword.val(),
                         page: 1
                     });
                     self.searchDriverList();
+                    $error.hide();
+                } else {
+                    $error.show();
                 }
-            });
-
-            //키워드 입력후 검색버튼 클릭시 검색
-            $(document).on('click', '.driver-inner-search button', function(e){
-                self.driverParam = $.extend(self.driverParam, {
-                    keyword: self.$driverKeyword.val(),
-                    page: 1
-                });
-                self.searchDriverList();
             });
 
             self.$driverSec.find('#os').on('change', function() {
@@ -468,26 +450,27 @@
                 self.searchDriverList();
             });
             
-            self.$driverSec.find('.download-list-wrap').on('click', '.btn-info', function() {
-                var ajaxUrl = $(this).data('href'),
-                    param = $.extend({}, defaultParam, {
-                        cSeq: $(this).data('cseq')
+            self.$driverSec.on('click', '.btn-info', function() {
+                var $this = $(this);
+                var url = $this.data('href'),
+                    param = $.extend(self.param, {
+                        cSeq: $this.data('cseq')
                     });
 
-                lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
-                    $('#fileDetailPopup').html(result).vcModal();
-                    $('#fileDetailPopup').off('click').on('click', '.btn-more', function() {
-                        var $list = $(this).parent();
-    
-                        if ($list.hasClass('on')) {
-                            $list.removeClass('on');
-                        } else {
-                            $list.addClass('on');
-                        }
-                    });
+                lgkorUI.requestAjaxData(url, param, function(result){
+                    self.$fileDetailPopup.html(result).vcModal();
                 }, null, "html", true);
             });
 
+            self.$fileDetailPopup.on('click', '.btn-more', function() {
+                var $list = $(this).parent();
+
+                if ($list.hasClass('on')) {
+                    $list.removeClass('on');
+                } else {
+                    $list.addClass('on');
+                }
+            });
             
         }
     }
