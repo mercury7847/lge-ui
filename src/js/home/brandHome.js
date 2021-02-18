@@ -164,8 +164,11 @@ $(function() {
             e.preventDefault();
         });
 
-        $(document).on('click', 'a,button', function(e){
-            e.preventDefault();
+        $(document).on('click', 'a', function(e){
+            var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
+            if(href == '#'){
+                e.preventDefault();
+            }            
         });
 
         $window.on('resizeend', function(e){
@@ -177,11 +180,14 @@ $(function() {
         });         
 
 
-        function moveStep(step){
+        function moveStep(step, flag){
+
+            
+            if(!canScroll) return;
+            if(currentStep == step) return;
+            canScroll = false;
 
             console.log('moveStep');
-
-            if(currentStep == step) return;
 
             var arr = wheelArr[step];
             if(!vcui.isArray(arr)){ 
@@ -191,22 +197,25 @@ $(function() {
 
             for(var i =0; i<arr.length; i++){
                 var item = arr[i];
-                var $target = $(item.target);
-                console.log(item)
-                if(i==0){
-                    $target.transit(item.transit, function(){
-                        currentStep = step;
-                        canScroll = true
-                    });
-                }else{
-                    $target.transit(item.transit);
-                }   
+                var $target = $(item.target);                
+                $target.transit(item.transit);                
             }
 
+            if(!flag){
+                if(wheelInterval) clearTimeout(wheelInterval);
+                wheelInterval = setTimeout(function(){
+                    currentStep = step;
+                    canScroll = true;
+                   // isWheel = true;  
+                    console.log('1111');
+                }, 400);
+            }
         }
 
 
         function wheelScene(delta) {
+
+            if(!canScroll) return;
 
             var nextStep = (delta < 0) ? -1 : 1;
             nextStep = nextStep + currentStep;
@@ -246,10 +255,15 @@ $(function() {
 
         }
 
+        $window.on('scroll',function(){
+            console.log('scroll');
+        })
+
         function moveScene(idx, step, speed){
 
              
-
+            if(!canScroll) return;
+            canScroll = false;
             $('.brand-wrap').scrollTop(0);   
             appMotion(0); 
 
@@ -269,7 +283,8 @@ $(function() {
                 }, speed, 'easeInOutQuart',  function() { 
                     canScroll = true
                     currentPage = idx;     
-                    moveStep(step);          
+                    moveStep(step, true); 
+                    isWheel = true;         
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
                     
@@ -288,24 +303,25 @@ $(function() {
 
         } 
         
-
+        var isWheel = false;
         document.addEventListener('wheel', function(e){
             
-            if(!canScroll) return;  
-            canScroll = false;  
+            if(!isWheel) return;
+            isWheel = false;
+
+
 
             console.log('wheel');
-
             if(currentStep == stepLens){
-                if(wheelInterval) clearTimeout(wheelInterval);
-                //wheelInterval = setTimeout(function(){
+                // if(wheelInterval) clearTimeout(wheelInterval);
+                // wheelInterval = setTimeout(function(){
                     var st = $('.brand-wrap').scrollTop();
                     if(st==0 && e.deltaY<0){
                         wheelScene(-1);
                     }
                 //}, 100);
             }else{
-                console.log(e.deltaY);
+                // console.log(e.deltaY);
                 if(e.deltaY>0 || e.deltaY<0){
                     wheelScene(e.deltaY);
                 }
@@ -506,6 +522,7 @@ $(function() {
                         var match = attr.name.match(regex);
                         if(match === null) continue;                                
                         if(attributeIndex==1) cssVal = stringToObj(attr.value);
+
                         arr.push({
                             sort : match[1],
                             target : this,
@@ -561,6 +578,7 @@ $(function() {
             stepLens = wheelArr.length-1;                    
             $('.brand-wrap').css({'overflow':'auto','height':winHeight});
             $('.contents').css({'overflow':'hidden', 'height':totalHeight});
+
 
             if(page!==undefined){
                 currentPage = page;
@@ -653,8 +671,6 @@ $(function() {
                 var ny = st + deviceH*2 - 188 - useWrap;
                 $('.ui_device').css('top', -ny);
             }
-
-
 
             if(!isMobile){
                 if(st > deviceY+15){

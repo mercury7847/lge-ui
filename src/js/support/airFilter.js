@@ -188,14 +188,23 @@
                         var data = result.data;
 
                         if (data.resultFlag == 'N') {
-                            lgkorUI.confirm('', {
-                                title:'해당 제품으로 이미 신청하신 내역이 있습니다. 신청하신 상세결과를 조회하시겠습니까?',
-                                okBtnName: '확인',
-                                cancelBtnName: '취소',
-                                ok: function() {
-                                    location.href = data.url;
+                            if (data.resultMessage) {
+                                if (data.url) {
+                                    lgkorUI.confirm('', {
+                                        title: data.resultMessage,
+                                        okBtnName: '확인',
+                                        cancelBtnName: '취소',
+                                        ok: function() {
+                                            location.href = data.url;
+                                        }
+                                    });
+                                } else {
+                                    lgkorUI.alert('', {
+                                        title: data.resultMessage,
+                                        okBtnName: '확인'
+                                    });
                                 }
-                            });
+                            }
                         }
                         lgkorUI.hideLoading();
                     });
