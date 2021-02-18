@@ -379,7 +379,7 @@ var isApp = function(){
                         self.resizeCallbacks[idx].call();
                     }
 
-                    self._switchLinker();
+                    //self._switchLinker();
 
                     self.resetFlexibleBox();
                 });  

@@ -411,11 +411,13 @@
                 },
                 inputVisible : function(){
                     var self = this;
-                    self.el.container.find('#engineerUserName, #engineerPhoneNo').attr('disabled', false).val('');
+                    self.el.container.find('#engineerUserName, #engineerPhoneNo, .btn-reservation').attr('disabled', false).val('');
+                    self.el.container.find('.btn-reservation').removeClass('disabled');
                 },
                 inputDisable : function(){
                     var self = this;
-                    self.el.container.find('#engineerUserName, #engineerPhoneNo').attr('disabled', true).val('');
+                    self.el.container.find('#engineerUserName, #engineerPhoneNo, .btn-reservation').attr('disabled', true).val('');
+                    self.el.container.find('.btn-reservation').addClass('disabled');
                 },
                 init : function(){
                     var self = this;
@@ -447,9 +449,10 @@
                         var validationResult = self.validation.validate().success;
                         if( validationResult ) {
                             //각 인풋의 value를 히든 인풋에 담은 뒤에 서브밋
+                            
+                            console.log(11)
 
-
-                            //self.el.container.find('#engineerReservationForm').submit();
+                            self.el.container.find('#engineerReservationForm').submit();
                         }
                     })
 
@@ -461,8 +464,6 @@
                             self.el.container.find('#engineerZipCode').val(data.zonecode);
                             self.el.container.find('#engineerUserAddress').val(address);
                             self.el.container.find('#engineerDetailAddress').val('').prop('disabled', false);
-        
-                            //self.el.container.find('.btm-more.both .chk-wrap').show();
                         }); 
                     });
                 }
@@ -552,8 +553,6 @@
                                 if( validationResult ) {
                                     //각 인풋의 value를 히든 인풋에 담은 뒤에 서브밋
         
-        
-                                    //self.el.container.find('#engineerReservationForm').submit();
                                     $('#authDataForm1').submit();
                                 }
                             }
@@ -567,37 +566,6 @@
                             }
 
                         })
-    
-
-                        // self.el.container.find('.btn-auth-confirm').on('click', function() {
-                        //     var result = self.validation.validate(['inquiryAuthName, inquiryAuthPhoneNo']);
-
-                        //     console.log(result.success)
-            
-                        //     if (result.success) {
-                        //         console.log(1111)
-                        //         self.authManager.open(function() {
-                        //             if ($('#userName').val()) {
-                        //                 $('#authName').val($('#inquiryAuthName').val()).prop('readonly', true);
-                        //                 $('#authPhoneNo').val($('#inquiryAuthPhoneNo').val()).prop('readonly', true);
-                        //             }
-                        //         });
-                        //     }
-                        // });
-
-                        // 인증문자 보내기
-                        // self.$authPopup.find('.btn-send').on('click', function() {
-                        //     authManager.send(this);
-                        // });
-
-                        // 인증 완료 하기
-                        // self.$authPopup.find('.btn-auth').on('click', function() {
-                        //     authManager.confirm('.btn-open', function(success, result) {
-                        //         if (success) {
-                                    
-                        //         }
-                        //     });
-                        // });
                     });
                     
                 },

@@ -508,7 +508,10 @@ var FilterLayer = (function() {
                         findRange.attr('data-max',(max+""));
                         findRange.vcRangeSlider('reset',min+','+max);
                         var index = findRange.parents('li').index();
-                        findRange.parents('.ui_filter_accordion').vcAccordion('expand',index);
+                        var $pa = findRange.parents('.ui_filter_accordion');
+                        $pa.vcAccordion('setOption','useAnimate',false);
+                        $pa.vcAccordion('expand',index);
+                        $pa.vcAccordion('setOption','useAnimate',true);
                     } else {
                         //check or radio
                         var item = data[key];
@@ -518,7 +521,10 @@ var FilterLayer = (function() {
                                 selectedFilter = true;
                                 findDm.prop('checked', true);
                                 var index = findDm.parents('li').index();
-                                findDm.parents('.ui_filter_accordion').vcAccordion('expand',index);
+                                var $pa = findDm.parents('.ui_filter_accordion');
+                                $pa.vcAccordion('setOption','useAnimate',false);
+                                $pa.vcAccordion('expand',index);
+                                $pa.vcAccordion('setOption','useAnimate',true);
                             }
                         });
 
