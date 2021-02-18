@@ -131,39 +131,41 @@
     }
 }
 
-.pop-conts{
-    &.air-care{
-        .section-title{
-            .tit{
-                font-size:14px;
-            }
-        }
-        .gray-box{
-            font-size:14px;
-            line-height:24px;
-            padding:32px;
-        }
-        .text-box{
-            margin-bottom:12px;
-            font-size:14px;
-            color:#767676;
-        }
-        .tbl-list{
-            th,td{
-                text-align:left;
-            }
-            thead th{
-                font-weight:normal;
-                @include mobile{
-                    min-width:120px;
+.popup-wrap {
+    .pop-conts{
+        &.air-care{
+            .section-title{
+                .tit{
+                    font-size:14px;
                 }
             }
-            .line{
-                width:560px;
-             }
-        }
-        .bullet-list{
-            margin-bottom:15px;
+            .gray-box{
+                font-size:14px;
+                line-height:24px;
+                padding:32px;
+            }
+            .text-box{
+                margin-bottom:12px;
+                font-size:14px;
+                color:#767676;
+            }
+            .tbl-list{
+                th,td{
+                    text-align:left;
+                }
+                thead th{
+                    font-weight:normal;
+                    @include mobile{
+                        min-width:120px;
+                    }
+                }
+                .line{
+                    width:560px;
+                }
+            }
+            .bullet-list{
+                margin-bottom:15px;
+            }
         }
     }
 }

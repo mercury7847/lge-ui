@@ -19,6 +19,9 @@
             @include mobile {
                 padding:0 16px 32px;
             }
+            &.solo {
+                padding-bottom:0;
+            }
             .ui_carousel_list {
                 overflow:hidden;
             }

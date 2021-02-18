@@ -227,14 +227,14 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 }
 
                 $(item).data('subwidth', categorywidth);
-                $(item).on('mouseover', '> a', function(e){
+                $(item).on('mouseover focus', '> a', function(e){
                     self._setOver(idx, -1);
                 }).on('mouseout', '> a', function(e){    
                     self._setOut();
                 });
 
                 $(item).find('> .nav-category-container > ul >li').each(function(cdx, child){
-                    $(child).on('mouseover', '> a', function(e){
+                    $(child).on('mouseover focus', '> a, focus', function(e){
                         self._setOver(idx, cdx);
                     }).on('mouseout', '> a', function(){
                         self._setOut();
