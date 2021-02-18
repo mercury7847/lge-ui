@@ -291,31 +291,27 @@
 
         }         
 
-        var prevTime = +new Date();
+        var prevTime = new Date().getTime();
 
         document.addEventListener('wheel', function(e){
 
-            var curTime = +new Date();
-            var timeDiff = curTime-prevTime;
-            prevTime = curTime;
-            if (timeDiff < 300) {
-                return;
-            }
-            
-            if(currentStep == stepLens){
-                // if(wheelInterval) clearTimeout(wheelInterval);
-                // wheelInterval = setTimeout(function(){
-                    var st = $('.brand-wrap').scrollTop();
-                    if(st==0 && e.deltaY<0){
-                        wheelScene(-1);
+            var curTime = new Date().getTime();
+            if(typeof prevTime !== 'undefined'){
+                var timeDiff = curTime-prevTime;
+                if(timeDiff > 200){
+                    if(currentStep == stepLens){
+                        var st = $('.brand-wrap').scrollTop();
+                        if(st==0 && e.deltaY<0){
+                            wheelScene(-1);
+                        }
+                    }else{
+                        if(e.deltaY>0 || e.deltaY<0){
+                            wheelScene(e.deltaY);
+                        }
                     }
-                // }, 100);
-            }else{
-                // console.log(e.deltaY);
-                if(e.deltaY>0 || e.deltaY<0){
-                    wheelScene(e.deltaY);
-                }
-            }  
+                }                    
+            }            
+            prevTime = curTime;              
 
         });
 
