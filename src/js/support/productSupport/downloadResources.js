@@ -175,327 +175,324 @@
         $target.vcSelectbox('update');
     }
     
+    var download = {
+        options: {
+            category: '',
+            categoryNm: '',
+            subCategory: '',
+            subCategoryNm: '', 
+            modelCode: '', 
+            productCode: '',
+            page:1
+        },
+        initialize: function() {
+            var self = this;
 
-    
+            self.$cont = $('.contents');
+            self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
+            self.$myModelWrap = self.$cont.find('.my-product-wrap');
+            self.$searchModelWrap = self.$cont.find('.prod-search-wrap');
 
-    $(window).ready(function() {
-        var download = {
-            initialize: function() {
-                var self = this;
+            self.$stepArea = self.$cont.find('.step-area');
+            self.$stepModel = self.$stepArea.find('#stepModel');
+            self.$stepInput = self.$stepArea.find('#stepInput');
 
-                self.$cont = $('.contents');
-                self.$productBar = self.$cont.find('.prod-selected-wrap');
-                self.$myProductWarp = self.$cont.find('.my-product-wrap');
-                self.$submitForm = self.$cont.find('#submitForm');
-                self.$stepArea = self.$cont.find('.step-area');
-                self.$completeBtns = self.$cont.find('.btn-group');
-
-                self.$stepModel = self.$cont.find('#stepModel');
-
-                self.$stepInput = self.$cont.find('#stepInput');
-
-                self.manualSec = $('.manual-section');
-                self.driverSec = $('.driver-section');
-                
-                // self.driverSec.find('.ui_list_accordion').vcAccordion({
-                //     toggleSelector: '>.head .ui_accord_toggle'
-                // });
-                self.driverSec.find('.pagination').pagination();
-
-                defaultParam = getObject($('#submitForm').serialize());
-
-                $('.contents').commonModel({
-                    register:{}
-                })
-
-                self.bindEvent();
-            },
-            setManualList: function(list) {
-                var self = this;
-                var listArr = list.listData instanceof Array ? list.listData : [];
-                var html = "";
-
-                $('#page').val(list.listPage.page);
-                $('#manualCount').html(list.listPage.totalCount);
-
-                if (listArr.length) {
-                    listArr.forEach(function(item) {
-                        html += vcui.template(manualListTemplate, item);
-                    });
-                    self.manualSec.find('.download-list').append(html).show();
-                    self.manualSec.find('.no-data').hide();
-                } else {
-                    self.manualSec.find('.download-list').html('').hide();
-                    self.manualSec.find('.no-data').show();
-                }
-
-                if (list.listPage.view == 'Y') {
-                    self.manualSec.find('.btn-moreview').show();
-                } else {
-                    self.manualSec.find('.btn-moreview').hide();
-                }
-            },
-            setDriverList: function(list) {
-                var self = this;
-                var listArr = list.listData instanceof Array ? list.listData : [];
-                var html = "";
-
-                $('#driverCount').html(list.listPage.totalCount);
+            self.$manualSec = self.$cont.find('.manual-section');
+            self.$manualCount = self.$manualSec.find('#manualCount');
+            self.$manualPagination = self.$manualSec.find('.btn-moreview');
+            self.$driverSec = self.$cont.find('.driver-section');
+            self.$driverCount = self.$driverSec.find('#driverCount');
+            self.$driverPagination = self.$driverSec.find('.pagination');
+            self.$driverKeyword = self.$driverSec.find('#driverKeyword');
             
-                if (listArr.length) {
-                    listArr.forEach(function(item) {
-                        html += vcui.template(driverListTemplate, item);
-                    });
-                    self.driverSec.find('.download-list').html(html).show();
-                    self.driverSec.find('.pagination').show();
-                    self.driverSec.find('.pagination').pagination('update', list.listPage);
-                    self.driverSec.find('.no-data').hide();
-                } else {
-                    self.driverSec.find('.download-list').html('').hide();
-                    self.driverSec.find('.pagination').hide();
-                    self.driverSec.find('.no-data').show();
-                }
-            },
-            setOsOption: function(list) {
-                var listArr = list instanceof Array ? list : [];
-                var html = "";
+            self.setting();
+            self.bindEvent();
 
-                if (listArr.length) {
-                    listArr.forEach(function(item) {
-                        html += vcui.template('<option value="{{code}}">{{codeName}}</option>', item);
-                    });
-                } else {
-                    html = '<option value="">없음</option>';
-                    this.driverSec.find('select').vcSelectbox ('disabled');
+            self.$cont.commonModel({
+                register: {},
+                selected: self.param
+            });
+
+            self.$manualPagination.data('page', 1);
+            self.$driverPagination.pagination();
+        },
+        setting: function() {
+            var self = this;
+            var url = location.search;
+            var data = $.extend({}, self.options);
+
+            // 옵션
+            self.resultUrl = self.$searchModelWrap.data('resultUrl');
+            self.manualUrl = self.$manualSec.data('manualUrl');
+            self.driverUrl = self.$driverSec.data('driverUrl');
+            
+            if (url.indexOf("?") > -1) {
+                var search = url.substring(1);
+                var searchObj = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+
+                for (var key in searchObj) {
+                    data[key] = decodeURIComponent(searchObj[key]);
+                    if (key == 'mktModelCd') data['modelCode'] = searchObj.mktModelCd;
                 }
+
+                data.category = $('#category').val();
+                data.categoryNm = $('#categoryNm').val();
+                data.subCategory = $('#subCategory').val();
+                data.subCategoryNm = $('#subCategoryNm').val();
+            }
+
+            self.isLogin = lgkorUI.isLogin;
+            self.param = data;
+            self.manualParam = data;
+            self.driverParam = $.extend(data, {
+                keyword: ''
+            });
+        },
+        setManualList: function(data) {
+            var self = this;
+            var $list = self.$manualSec.find('.download-list'),
+                $noData = self.$manualSec.find('.no-data');
+            var listArr = data.listData instanceof Array ? data.listData : [];
+                page = data.listPage,
+                html = "";
+
+            self.$manualCount.html(page.totalCount);
+
+            if (listArr.length) {
+                listArr.forEach(function(item) {
+                    html += vcui.template(manualListTemplate, item);
+                });
+                $list.append(html).show();
+                $noData.hide();
+            } else {
+                $list.hide().empty();
+                $noData.show();
+            }
+
+            self.$manualPagination.data('page', page.page);
+            self.$manualPagination[page.view == 'Y' ? 'show': 'hide']();
+        },
+        setDriverList: function(data) {
+            var self = this;
+            var $list = self.$driverSec.find('.download-list'),
+                $noData = self.$driverSec.find('.no-data');
+            var listArr = data.listData instanceof Array ? data.listData : [],
+                page = data.listPage,
+                html = "";
+
+            self.$driverCount.html(page.totalCount);
+        
+            if (listArr.length) {
+                listArr.forEach(function(item) {
+                    html += vcui.template(driverListTemplate, item);
+                });
+                $list.html(html).show();
+                $noData.hide();
+                self.$driverPagination.show();
+                self.$driverPagination.pagination('update', page);
+            } else {
+                $list.html('').hide();
+                $noData.show();
+                self.$driverPagination.hide();
+            }
+        },
+        setOsOption: function(data) {
+            var self = this;
+            var $select = self.$dirverSec.find('#os');
+            var listArr = data instanceof Array ? data : [],
+                html = "";
+
+            if (listArr.length) {
+                listArr.forEach(function(item) {
+                    html += vcui.template('<option value="{{code}}">{{codeName}}</option>', item);
+                });
+            } else {
+                html = '<option value="">없음</option>';
+                $select.vcSelectbox('disabled');
+            }
+            
+            $select.html(html);
+            $select.vcSelectbox('update');
+        },
+        setOsActive: function(os) {
+            var self = this;
+            var $formWrap = self.$driverSec.find('.form-wrap');
+            var subCategory = self.param.subCategory;
+
+            if (subCategory == "CT50019564" || subCategory == "CT50019585" ) {
+                self.setOsOptions(os);
+                $formWrap.show();
+            } else {
+                $formWrap.hide();
+            }
+        },
+        searchAllList: function() {
+            var self = this;
+            var param = $.extend({}, self.param);
+
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxDataPost(self.resultUrl, param, function(result){
+                var data = result.data;
+
+                self.setManualList(data.manual);
+                self.setDriverList(data.driver);
+                self.setOsActive(data.driver.osOption)
+
+                self.$cont.commonModel('updateSummary', {
+                    product: [param.categoryNm, param.subCategoryNm, param.modelCode],
+                    reset: 'product'
+                });
                 
-                this.driverSec.find('#os').html(html);
-                this.driverSec.find('#os').vcSelectbox('update');
-            },
-            setOsActive : function(category){
-                var self = this;
-                var $formWrap = this.driverSec.find('.form-wrap');
-
-                if(category == "CT50019564" || category == "CT50019585" ) {
-                   $formWrap.show();
-                } else {
-                   $formWrap.hide();
-                }
-            },
-            searchAllList: function(url, data) {
-                var self = this;
-
-                lgkorUI.showLoading();
-                lgkorUI.requestAjaxDataPost(url, data, function(result){
-                    var resultData = result.data;
-    
-                    self.setManualList(resultData.manual);
-                    self.setDriverList(resultData.driver);
-                    self.setOsOption(resultData.driver.osOption);
-
-                    $('.contents').commonModel('updateSummary', {
-                        product: [data.categoryNm, data.subCategoryNm, data.modelCode],
-                        reset: 'product'
-                    });
-                    
-                    self.$myProductWarp.hide();
-                    
-                    //업데이트 센터 바로가기 배너
-                    bannerToggle(data.subCategory)
-
-                    //하단 다른 서비스 추천
-                    otherService.initialize(resultData);
-
-                    //하단 관련 메뉴
-                    relatedInfo.initialize(resultData);
-
-                    //만족도 평가 박스 모델코드 삽입
-                    $('.survey-banner-wrap .model').html(data.modelCode);
-
-                    //optionUpdate('#os', resultData.driver.osOption);
-                    self.setOsOption(resultData.driver.osOption);
-                    self.setOsActive(data.subCategory)
-
-                    $('.contents').commonModel('next', self.$stepInput);
-                    $('.contents').commonModel('focus', self.$productBar, function() {
-                        self.$productBar.vcSticky();
-                    });
-
-
-                    lgkorUI.hideLoading();
-                });
-            },
-            searchManualList: function(formData) {
-                var self = this;
-                var ajaxUrl = self.manualSec.data('ajax');
-
-                lgkorUI.showLoading();
-                lgkorUI.requestAjaxDataPost(ajaxUrl, formData, function(result){
-                    var data = result.data;
-    
-                    self.setManualList(data.manual);
-
-                    lgkorUI.hideLoading();
-                });
-            },
-            searchDriverList: function(formData) {
-                var self = this;
-                var ajaxUrl = self.driverSec.data('ajax');
-
-                lgkorUI.showLoading();
-                lgkorUI.requestAjaxDataPost(ajaxUrl, formData, function(result){
-                    var data = result.data;
-    
-                    self.setDriverList(data.driver);
-
-                    lgkorUI.hideLoading();
-                });
-            },
-            bindEvent: function() {
-                var self = this;
+                self.isLogin && self.$myModelWrap.hide();
                 
-                //모델 재설정 : 초기화
-                $('.contents').on('reset', function(e) {
-                    self.$myProductWarp.show();
-                    self.$cont.commonModel('next', self.$stepModel);
-                    otherService.reset();
-                    relatedInfo.reset();
-                    self.manualSec.find('.download-list').empty();
-                    $('#driverKeyword').val('');
-                    bannerToggle();
+                //업데이트 센터 바로가기 배너
+                bannerToggle(param.subCategory)
+
+                //하단 다른 서비스 추천
+                otherService.initialize(data);
+
+                //하단 관련 메뉴
+                relatedInfo.initialize(data);
+
+                //만족도 평가 박스 모델코드 삽입
+                $('.survey-banner-wrap .model').html(param.modelCode);
+
+                self.$cont.commonModel('next', self.$stepInput);
+                self.$cont.commonModel('focus', self.$selectedModelBar, function() {
+                    self.$selectedModelBar.vcSticky();
+                });
+                lgkorUI.hideLoading();
+            });
+        },
+        searchManualList: function() {
+            var self = this;
+
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxDataPost(self.manualUrl, self.manualParam, function(result){
+                self.setManualList(result.data.manual);
+                lgkorUI.hideLoading();
+            });
+        },
+        searchDriverList: function() {
+            var self = this;
+
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxDataPost(self.driverUrl, self.driverParam, function(result){
+                self.setDriverList(result.data.driver);
+                lgkorUI.hideLoading();
+            });
+        },
+        bindEvent: function() {
+            var self = this;
+            
+            //모델 재설정 : 초기화
+            self.$cont.on('reset', function(e) {
+                var data = $.extend({}, self.options);
+
+                self.param = data;
+
+                self.isLogin && self.$myModelWrap.show();
+                self.$cont.commonModel('next', self.$stepModel);
+                
+                self.$manualSec.find('.download-list').empty();
+                self.$manualPagination.data('page', 1);
+
+                self.$driverSec.find('.download-list').empty();
+                self.$driverKeyword.val('');
+
+                otherService.reset();
+                relatedInfo.reset();
+                
+                bannerToggle();
+            });
+
+            // 모델 선택 후 이벤트
+            self.$cont.on('complete', function(e, data) {    
+                var param = {
+                    category: data.category,
+                    categoryNm: data.categoryName,
+                    subCategory: data.subCategory,
+                    subCategoryNm: data.subCategoryName,
+                    modelCode: data.modelCode,
+                    productCode: data.productCode
+                };
+
+                self.param = $.extend(self.param, param);
+                self.manualParam = $.extend(self.manualParam, param);
+                self.driverParam = $.extend(self.driverParam, param);
+
+                self.searchAllList();
+            });
+
+            self.$manualPagination.on('click', function() {
+                self.manualParam = $.extend(self.manualParam, {
+                    page: parseInt($(this).data('page')) + 1
                 });
 
-                // 모델 선택 후 이벤트
-                $('.contents').on('complete', function(e, data, url) {    
-                    var param = {
-                        modelCode: data.modelCode,
-                        serviceType: $('#serviceType').val(),
-                        category: data.category,
-                        categoryNm: data.categoryName,
-                        subCategory: data.subCategory,
-                        subCategoryNm: data.subCategoryName
-                    };
-                    defaultParam = param;
+                self.searchManualList();
+            });
 
-                    self.searchAllList(url, param);
-                });
-
-                $(document).on('click', '.btn-download', function(e) {
+            //키워드 입력후 엔터시 검색
+            self.$driverKeyword.on('keyup', function(e){
+                if (e.keyCode == 13) {
                     e.preventDefault();
-
-                    var fileUrl = $(this).attr('href'),
-                        infoArr = fileUrl.split('?'),
-                        url = infoArr[0],
-                        param = infoArr[1] + '&check="R"';
-
-                    lgkorUI.requestAjaxData(url, param, function(result) {
-                        var data = result.data;
-
-                        if (data.resultFlag == 'Y') {
-                            location.href = fileUrl + '&check=true';
-                        }
-                    });  
-                });
-
-                self.manualSec.find('.btn-moreview').on('click', function() {
-                    var param = $.extend({}, defaultParam, {
-                        page: parseInt($('#page').val()) + 1
-                    });
-
-                    self.searchManualList(param);
-                });
-
-                //드라이버 다운로드 키워드 검색
-                function downloadSearchKeyword(){
-                    var param = $.extend({}, defaultParam, {
-                        os : $('#os').val(),
-                        keyword: $('#driverKeyword').val(),
+                    self.driverParam = $.extend(self.driverParam, {
+                        keyword: self.$driverKeyword.val(),
                         page: 1
                     });
-                    self.searchDriverList(param);
+                    self.searchDriverList();
                 }
+            });
 
-                //키워드 입력후 엔터시 검색
-                self.driverSec.find('#driverKeyword').on('keyup', function(e){
-                    if ( e.keyCode == 13 ) {
-                        e.preventDefault();
-                        downloadSearchKeyword();
-                    }
-                })
+            //키워드 입력후 검색버튼 클릭시 검색
+            $(document).on('click', '.driver-inner-search button', function(e){
+                self.driverParam = $.extend(self.driverParam, {
+                    keyword: self.$driverKeyword.val(),
+                    page: 1
+                });
+                self.searchDriverList();
+            });
 
-                //키워드 입력후 검색버튼 클릭시 검색
-                $(document).on('click', '.driver-inner-search button', function(e){
-                    downloadSearchKeyword();
+            self.$driverSec.find('#os').on('change', function() {
+                self.driverParam = $.extend(self.driverParam, {
+                    os : $('#os').val(),
+                    page: 1
+                });
+                self.searchDriverList();
+            });
+            self.$driverSec.find('.pagination').on('pageClick', function(e) {
+                self.driverParam = $.extend(self.driverParam, {
+                    page: e.page
                 });
 
-                self.driverSec.find('#os').on('change', function() {
-                    downloadSearchKeyword();
-                });
-                self.driverSec.find('.pagination').on('pageClick', function(e) {
-                    var param = $.extend({}, defaultParam, {
-                        os: $('#os').val(),
-                        driver: $('#driver').val(),
-                        keyword: $('#driverKeyword').val(),
-                        page: e.page
+                self.searchDriverList();
+            });
+            
+            self.$driverSec.find('.download-list-wrap').on('click', '.btn-info', function() {
+                var ajaxUrl = $(this).data('href'),
+                    param = $.extend({}, defaultParam, {
+                        cSeq: $(this).data('cseq')
                     });
 
-                    self.searchDriverList(param);
-                });
-                // self.driverSec.find('#driver').on('change', function() {
-                //     var param = $.extend({}, defaultParam, {
-                //         os: $('#os').val(),
-                //         driver: $('#driver').val(),
-                //         page: 1
-                //     });
+                lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
+                    $('#fileDetailPopup').html(result).vcModal();
+                    $('#fileDetailPopup').off('click').on('click', '.btn-more', function() {
+                        var $list = $(this).parent();
+    
+                        if ($list.hasClass('on')) {
+                            $list.removeClass('on');
+                        } else {
+                            $list.addClass('on');
+                        }
+                    });
+                }, null, "html", true);
+            });
 
-                //     self.searchDriverList(param);
-
-                //     if (val) {
-                //         self.driverSec.find('.tabs-wrap').hide();
-                //     } else {
-                //         self.driverSec.find('.tabs-wrap').show();
-                //         self.driverSec.find('.tabs-wrap').vcTab('select', 0);
-                //     }
-                // });
-                // self.driverSec.find('.tabs-wrap').on('tabchange', function(e, data) {
-                //     var param = $.extend({}, defaultParam, {
-                //         os: $('#os').val(),
-                //         driver: $(data.button).data('value'),
-                //         keyword: $('#driverKeyword').val(),
-                //         page: 1
-                //     });
-
-                //     self.searchDriverList(param);
-                // });
-
-               
-                
-                
-
-                self.driverSec.find('.download-list-wrap').on('click', '.btn-info', function() {
-                    var ajaxUrl = $(this).data('href'),
-                        param = $.extend({}, defaultParam, {
-                            cSeq: $(this).data('cseq')
-                        });
-
-                    lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
-                        $('#fileDetailPopup').html(result).vcModal();
-                        $('#fileDetailPopup').off('click').on('click', '.btn-more', function() {
-                            var $list = $(this).parent();
-        
-                            if ($list.hasClass('on')) {
-                                $list.removeClass('on');
-                            } else {
-                                $list.addClass('on');
-                            }
-                        });
-                    }, null, "html", true);
-                });
-
-                
-            }
+            
         }
+    }
 
+    $(window).ready(function() {
         download.initialize();
     });
 })();
