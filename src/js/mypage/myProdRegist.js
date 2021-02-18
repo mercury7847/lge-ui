@@ -333,7 +333,7 @@
 
                 //제조번호 확인
                 self.$snCheckButton.on('click', function(e){
-                    var serialRegex = /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/
+                    var serialRegex = /^\d{3}[A-Z]{4}[\d\A-Z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
                     checkSerialSuccess = serialRegex.test(self.$snInput.val());
                     if(!checkSerialSuccess) {
                         lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
