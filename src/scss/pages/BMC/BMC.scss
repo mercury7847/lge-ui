@@ -43,8 +43,8 @@
         .section-wrap {
             .sects {
                 .tit-wrap {
-                    // border-bottom:none;
                     &.align-center {
+                        border-bottom:none;
                         text-align:center;
                         .tit {
                             float:none;
