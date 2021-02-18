@@ -1037,7 +1037,11 @@
                 margin: 0 -12px;
                 .slide-conts {
                     padding: 0 12px;
-                    &.slide_on {
+                    a {
+                        display: block;
+                    }
+                    &.slide_on,
+                    &.slide_on:focus {
                         .thumb {
                             position: relative;
                             &:after {
