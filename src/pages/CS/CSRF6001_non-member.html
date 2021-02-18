@@ -225,8 +225,14 @@
                     <div class="section-inner">
                         <div class="section-row">
                             <div class="section-col">
-                                <div class="rersv-wrap engineer-reserv">
-                                    <form action="/" id="engineerReservationForm" name="engineerReservationForm">
+                                <div class="rersv-wrap service-reserv">
+                                    <form action="./" method="post" id="serviceReservationForm" name="serviceReservationForm">
+                                        <input type="hidden" id="userName" name="userName" value="">
+                                        <input type="hidden" id="userPhoneNo" name="userPhoneNo" value="">
+                                        <input type="hidden" id="userZipCode" name="userZipCode" value="">
+                                        <input type="hidden" id="userAddress" name="userAddress" value="">
+                                        <input type="hidden" id="userDetailAddress" name="userDetailAddress" value="">
+
                                         <div class="headline">
                                             <h3 class="title run-reserv">출장 서비스 예약</h3>
                                         </div>
@@ -244,53 +250,54 @@
                                         
                                             <div class="form-row">
                                                 <div class="form-col">
-                                                    <dl class="forms inner-type">
-                                                        <dt class="tit"><label for="engineerUserName" class="req">이름<span class="blind">필수입력</span></label></dt>
+                                                    <dl class="forms block-type">
+                                                        <dt class="tit"><label for="serviceUserName" class="req">이름<span class="blind">필수입력</span></label></dt>
                                                         <dd class="conts">
                                                             <div class="input-wrap">
-                                                                <input type="text" id="engineerUserName" placeholder="이름 입력" value="" name="engineerUserName" data-required="true" required disabled maxlength="30" data-format="koreng" data-error-msg="이름을 입력해주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요">
+                                                                <input type="text" id="serviceUserName" placeholder="이름 입력" value="" name="serviceUserName" data-required="true" required disabled maxlength="30" data-format="koreng" data-error-msg="이름을 입력해주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요">
                                                             </div>
                                                             <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                         </dd>
                                                     </dl>
                                                 </div>
                                                 <div class="form-col">
-                                                    <dl class="forms inner-type">
-                                                        <dt class="tit"><label for="engineerPhoneNo" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
+                                                    <dl class="forms block-type">
+                                                        <dt class="tit"><label for="servicePhoneNo" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
                                                         <dd class="conts">
                                                             <div class="input-wrap">
                                                                                                     <!-- 2021.02.10 type number로 수정, minlength, maxlength 추가-->
-                                                                <input type="number" id="engineerPhoneNo" placeholder="휴대폰 번호 입력" value="" minlength="10" maxlength="11" name="engineerPhoneNo" data-error-msg="휴대전화를 정확히 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" disabled required>
+                                                                <input type="number" id="servicePhoneNo" placeholder="휴대폰 번호 입력" value="" minlength="10" maxlength="11" name="servicePhoneNo" data-error-msg="휴대전화를 정확히 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" disabled required>
                                                             </div>
                                                             <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                         </dd>
                                                     </dl>
                                                 </div>
                                             </div>
-                                            <dl class="forms inner-type">
-                                                <dt class="tit"><label for="engineerZipCode">주소</label></dt>
+                                            <dl class="forms block-type">
+                                                <dt class="tit"><label for="serviceZipCode">주소</label></dt>
                                                 <dd class="conts">
                                                     <div class="address-box">
                                                         <div class="box">
                                                             <div class="input-wrap zip-code">
-                                                                <input type="text" id="engineerZipCode" value="" placeholder="우편번호" disabled="">
+                                                                <input type="text" id="serviceZipCode" value="" placeholder="우편번호" disabled="">
                                                             </div>
                                                             <div class="cell">
                                                                 <button type="button" class="btn btn-address"><span>주소 찾기</span></button>
                                                             </div>
                                                         </div>
                                                         <div class="input-wrap">
-                                                            <input type="text" value="" id="engineerUserAddress" name="engineerUserAddress" placeholder="주소" data-error-msg="정확한 주소를 입력해주세요." disabled="">
+                                                            <input type="text" value="" id="serviceUserAddress" name="serviceUserAddress" placeholder="주소" data-error-msg="정확한 주소를 입력해주세요." disabled="">
                                                         </div>
                                                     </div>
                                                     <div class="input-wrap">
-                                                        <input type="text" value="" id="engineerDetailAddress" name="engineerDetailAddress" placeholder="상세주소를 입력해주세요." disabled>
+                                                        <input type="text" value="" id="serviceDetailAddress" name="serviceDetailAddress" placeholder="상세주소를 입력해주세요." disabled>
                                                     </div>
                                                 </dd>
                                             </dl>
                                         </div>
                                         <div class="btn-wrap">
-                                            <button type="button" class="btn size-m btn-reservation"><span>예약하기</span></button>
+                                            <!-- 2021.02.18 disabled 추가 -->
+                                            <button type="button" class="btn size-m btn-reservation disabled" disabled><span>예약하기</span></button>
                                         </div>
                                     </form>
                                 </div>
@@ -301,6 +308,7 @@
                                         <h3 class="title inquiry-reserv">문의/예약 결과조회</h3>
                                     </div>
                                     <div class="form-wrap">
+                                        
                                         <div class="forms form-head">
                                             <span class="rdo-wrap">
                                                 <input type="radio" id="inquiryNumber" name="inquiryRdo" checked="" value="0">
@@ -311,45 +319,71 @@
                                                 <label for="inquiryPhone">휴대전화 인증</label>
                                             </span>
                                         </div>
-                                        <dl class="forms inner-type">
-                                            <dt class="tit"><label for="inquiryAuthName" class="req">이름<span class="blind">필수입력</span></label></dt>
-                                            <dd class="conts">
-                                                <div class="input-wrap">
-                                                    <input type="text" id="inquiryAuthName" placeholder="이름 입력" value="" name="inquiryAuthName" data-required="true">
-                                                </div>
-                                                <div class="btm-more err-block"><p class="err-msg"></p></div>
-                                            </dd>
-                                        </dl>
 
                                         <!-- 접수번호 or 휴대폰 번호 인증 컨텐츠 전환 active class -->
-                                        <dl class="forms inner-type toggle-forms active">
-                                            <dt class="tit"><label for="inquiryAuthNo" class="req">접수번호<span class="blind">필수입력</span></label></dt>
-                                            <dd class="conts">
-                                                <div class="input-wrap">
-                                                    <!-- 2021.02.10 maxlength 추가 -->
-                                                    <input type="text" id="inquiryAuthNo" placeholder="접수 번호 입력" value="" maxlength="20" name="inquiryAuthNo" data-required="true">
-                                                </div>
-                                                <div class="btm-more err-block"><p class="err-msg"></p></div>
-                                            </dd>
-                                        </dl>
-                                        <dl class="forms inner-type toggle-forms">
-                                            <dt class="tit"><label for="inquiryAuthPhoneNo" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
-                                            <dd class="conts">
-                                                <div class="box">
-                                                    <div class="input-wrap">
-                                                        <input type="number" id="inquiryAuthPhoneNo" value="" placeholder="휴대폰 번호 입력" minlength="10" maxlength="11" name="inquiryAuthPhoneNo" data-required="true" data-pattern-msg="정확한 휴대전화 번호를 입력해주세요." data-error-msg="정확한 휴대전화 번호를 입력해주세요.">
-                                                    </div>
-                                                    <div class="cell">
-                                                        <button type="button" class="btn btn-auth-confirm" ><span>인증 번호 발송</span></button>
-                                                    </div>
-                                                </div>
-                                                <div class="input-wrap">
-                                                    <input type="number" id="inquiryAuthReceiveNo" title="인증번호 입력" value="" placeholder="인증번호 입력" disabled="" data-error-msg="인증번호를 입력해주세요.">
-                                                </div>
-                                                <div class="btm-more err-block"><p class="err-msg"></p></div>
-                                            </dd>
-                                        </dl>
-                                        <!-- //접수번호 or 휴대폰 번호 인증 컨텐츠 전환 active class -->
+                                        <div class="toggle-forms active auth-type-no">
+                                            <form action="" id="authDataForm1" method="post" name="authDataForm1">
+                                                <input type="hidden" id="authName" name="authName" value="">
+                                                <input type="hidden" id="authNo" name="authNo" value="">
+
+                                                <dl class="forms block-type">
+                                                    <dt class="tit"><label for="inquiryAuthName" class="req">이름<span class="blind">필수입력</span></label></dt>
+                                                    <dd class="conts">
+                                                        <div class="input-wrap">
+                                                            <input type="text" id="inquiryAuthName" placeholder="이름 입력" value="" name="inquiryAuthName" data-required="true" required maxlength="30" data-format="koreng" data-error-msg="이름을 입력해주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요">
+                                                        </div>
+                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
+                                                    </dd>
+                                                </dl>
+                                                
+                                                <dl class="forms block-type">
+                                                    <dt class="tit"><label for="inquiryAuthNo" class="req">접수번호<span class="blind">필수입력</span></label></dt>
+                                                    <dd class="conts">
+                                                        <div class="input-wrap">
+                                                            <input type="text" id="inquiryAuthNo" placeholder="접수번호 입력" value="" maxlength="20" name="inquiryAuthNo" data-required="true" data-error-msg="접수번호를 입력해주세요.">
+                                                        </div>
+                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
+                                                    </dd>
+                                                </dl>
+                                            </form>
+                                        </div>
+
+
+                                        <!-- 접수번호 or 휴대폰 번호 인증 컨텐츠 전환 active class -->
+                                        <div class="toggle-forms auth-type-phone">
+                                            <form action="" id="authDataForm2" method="post" name="authDataForm2" data-auth-url="/lg5-common/data-ajax/support/authSuccess.json" data-sms-url="/lg5-common/data-ajax/support/authSendSuccess.json">
+                                                <input type="hidden" id="authName2" name="authName2" value="">
+                                                <input type="hidden" id="authPhoneNo" name="authPhoneNo" value="">
+                                                <input type="hidden" id="authReceiveNo" name="authReceiveNo" value="">
+
+                                                <dl class="forms block-type">
+                                                    <dt class="tit"><label for="inquiryAuthName2" class="req">이름<span class="blind">필수입력</span></label></dt>
+                                                    <dd class="conts">
+                                                        <div class="input-wrap">
+                                                            <input type="text" id="inquiryAuthName2" placeholder="이름 입력" value="" name="inquiryAuthName2" data-required="true" required maxlength="30" data-format="koreng" data-error-msg="이름을 입력해주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요">
+                                                        </div>
+                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
+                                                    </dd>
+                                                </dl>
+                                                <dl class="forms block-type">
+                                                    <dt class="tit"><label for="inquiryAuthPhoneNo" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
+                                                    <dd class="conts">
+                                                        <div class="box">
+                                                            <div class="input-wrap">
+                                                                <input type="number" id="inquiryAuthPhoneNo" value="" placeholder="휴대폰 번호 입력" minlength="10" maxlength="11" name="inquiryAuthPhoneNo" data-required="true" data-pattern-msg="정확한 휴대전화 번호를 입력해주세요." data-error-msg="정확한 휴대전화 번호를 입력해주세요.">
+                                                            </div>
+                                                            <div class="cell">
+                                                                <button type="button" class="btn btn-auth-confirm" ><span>인증 번호 발송</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="input-wrap">
+                                                            <input type="number" id="inquiryAuthReceiveNo" name="inquiryAuthReceiveNo" title="인증번호 입력" value="" placeholder="인증번호 입력" data-error-msg="인증번호를 입력해 주세요." data-required="true" disabled required>
+                                                        </div>
+                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
+                                                    </dd>
+                                                </dl>
+                                            </form>
+                                        </div>
                                     </div>
                                     <div class="btn-wrap">
                                         <button type="button" class="btn size-m btn-inquiry"><span>조회하기</span></button>
@@ -651,6 +685,16 @@
     <!-- 개인정보 수집 및 신용정보 제공 동의 popup -->
     @@include('./CS/modal/agree-privacy-popup.html')
     <!-- // 개인정보 수집 및 신용정보 제공 동의 popup -->
+
+    <!-- 휴대폰인증 팝업 -->
+    @@include('./CS/modal/phone-certification-popup.html')
+
+    <!-- 인증 번호 발송 버튼을 클릭하지 않고 확인 버튼 눌렀을 경우 -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop1",
+        "msgOnly" : true,
+        "msg" : "인증 번호 발송 버튼을 선택해 주세요."
+    })
     
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>

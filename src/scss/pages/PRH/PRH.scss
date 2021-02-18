@@ -109,103 +109,40 @@
     }
 }
 
-.signature-wrap {
-    .signature-tabs {
-        background-color: $color-bg-wt;
-    }
-    &.on {        
-        &.active {
-            .signature-tabs {
-                position: fixed;
-                top: 0;
-                right: 0;
-                left: 0;
-                z-index: 15;
-                & ~ .tab-contents {
-                    padding-top: 83px;
-                }
-            }
-        }
-    }
-    &.active {
-        .signature-tabs {
-            position: static;
-        }
-        .tab-contents {
-            padding-top: 0;
-        }
-    }
-    .tab-contents {
-        padding-top: 0;
-    }
-    .tabs-wrap {
-        max-width: 1380px;
-        margin: 0 auto;
-        padding: 40px 0 0;
-        text-align: left;
-        &:before {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            height: 1px;
-            background: $color-border;
-            content: '';
-        }
-        .tabs > li {
-            margin-left: 40px;
-            &:first-child {
-                margin-left: 0;
-            }
-            > a {
-                padding: 0 8px 20px;
-                @include font-large;
-            }
-            &.on {
-                > a:after {
-                    position: absolute;
-                    left: 0;
-                    bottom: 0;
-                    width: 100%;
-                    height: 5px;
-                    border-radius: 5px 5px 0 0;
-                    background-color: $color-default;
-                    content: '';
-                }
-            }
-            @include mobile {
-                margin-left: 20px;
-            }
-        }
-    }
-
-}
-
 .brand-wrap {
+    .signature-tabs,
     .thinq-tabs {
         background-color: $color-bg-wt;
     }
-    &.on {        
+    &.on {
         &.active {
+            .signature-tabs,
             .thinq-tabs {
                 position: fixed;
                 top: 0;
-                right: 0;
+                right: 17px;
                 left: 0;
                 z-index: 15;
+                @at-root .mac & {
+                    right: 0;
+                }
                 & ~ .tab-contents {
-                    padding-top: 83px;
+                    padding-top: 88px;
+                    @include mobile {
+                        padding-top: 83px;
+                    }
                 }
             }
         }
     }
     &.active {
-        .thinq-tabs {
-            position: static;
-        }
-        .tab-contents {
-            padding-top: 0;
-        }
+        //.signature-tabs,
+        //.thinq-tabs {
+        //    position: static;
+        //}
+        //.tab-contents {
+        //    padding-top: 0;
+        //}
     }
     .tab-contents {
         padding-top: 0;
@@ -250,6 +187,7 @@
             }
         }
     }
+
     .tab-contents {
         .inner {
             max-width: (1380px + 80px);

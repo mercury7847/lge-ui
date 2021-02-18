@@ -89,20 +89,20 @@
                     autoplay: false,
                     dots : true,
                     arrows : true,
-                    slidesToScroll: 1,
+                    slidesToScroll: 3,
                     slidesToShow: 3,
                     responsive: [
                         {
                             breakpoint: 1920,
                             settings: {
-                                slidesToScroll: 1,
+                                slidesToScroll: 3,
                                 slidesToShow: 3,
                             }
                         },
                         {
                             breakpoint: 1460,
                             settings: {
-                                slidesToScroll: 1,
+                                slidesToScroll: 2,
                                 slidesToShow: 2,
                                 variableWidth : true
                             }
@@ -111,6 +111,7 @@
                             breakpoint: 1024,
                             settings: {
                                 arrows : false,
+                                dots : true,
                                 slidesToScroll: 1,
                                 slidesToShow: 1,
                                 variableWidth : true
@@ -374,9 +375,9 @@
             }
         },
         reservation : {
-            engineerReserv : {
+            serviceReserv : {
                 el : {
-                    container : $('.engineer-reserv'),
+                    container : $('.service-reserv'),
                     agreeChk : $('#agreePrivacyCheck'),
                     popup : $('#agreePrivacyPopup'),
                 },
@@ -387,35 +388,37 @@
                    
                     vcui.require(['ui/validation', 'ui/formatter'], function () {
                         self.addressFinder = new AddressFind();
-                        $('#engineerPhoneNo').vcFormatter({'format':'num', "maxlength":11});
+                        $('#servicePhoneNo').vcFormatter({'format':'num', "maxlength":11});
         
                         var register = {
                             agreePrivacyCheck : {
                                 required : true,
                                 msgTarget : ".err-block"
                             },
-                            engineerUserName : {
+                            serviceUserName : {
                                 required : true,
                                 msgTarget : ".err-block"
                             },
-                            engineerPhoneNo : {
+                            servicePhoneNo : {
                                 required : true,
                                 maxLength : 11,
                                 pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
                                 msgTarget : ".err-block",
                             }
                         };
-                        self.validation = new vcui.ui.CsValidation('.engineer-reserv', {register : register});
+                        self.validation = new vcui.ui.CsValidation('.service-reserv', {register : register});
                     });
                     
                 },
                 inputVisible : function(){
                     var self = this;
-                    self.el.container.find('#engineerUserName, #engineerPhoneNo').attr('disabled', false);
+                    self.el.container.find('#serviceUserName, #servicePhoneNo, .btn-reservation').attr('disabled', false).val('');
+                    self.el.container.find('.btn-reservation').removeClass('disabled');
                 },
                 inputDisable : function(){
                     var self = this;
-                    self.el.container.find('#engineerUserName, #engineerPhoneNo').attr('disabled', true);
+                    self.el.container.find('#serviceUserName, #servicePhoneNo, .btn-reservation').attr('disabled', true).val('');
+                    self.el.container.find('.btn-reservation').addClass('disabled');
                 },
                 init : function(){
                     var self = this;
@@ -435,7 +438,6 @@
 
                     self.el.popup.find('.btn-agree').on('click', function(e){
                         e.preventDefault();
-                        console.log(1)
 
                         if( self.el.agreeChk.prop('checked') == false) {
                             self.el.agreeChk.trigger('click');
@@ -447,20 +449,26 @@
                         self.validation.validate();
                         var validationResult = self.validation.validate().success;
                         if( validationResult ) {
-                            console.log(111)
+                            //각 인풋의 value를 히든 인풋에 담은 뒤에 서브밋
+                            
+                            $('#userName').val($('#serviceUserName').val());
+                            $('#userPhoneNo').val($('#servicePhoneNo').val())
+                            $('#userZipCode').val($('#serviceZipCode').val())
+                            $('#userAddress').val($('#serviceUserAddress').val())
+                            $('#userDetailAddress').val($('#serviceDetailAddress').val())
+
+                            self.el.container.find('#serviceReservationForm').submit();
                         }
-                    })
+                    });
 
 
                     self.el.container.find('.btn-address').on('click', function() { 
                         self.addressFinder.open(function(data) { 
                             var address = data.userSelectedType == 'R' ? data.roadAddress : data.jibunAddress;
         
-                            self.el.container.find('#engineerZipCode').val(data.zonecode);
-                            self.el.container.find('#engineerUserAddress').val(address);
-                            self.el.container.find('#engineerDetailAddress').val('').prop('disabled', false);
-        
-                            //self.el.container.find('.btm-more.both .chk-wrap').show();
+                            self.el.container.find('#serviceZipCode').val(data.zonecode);
+                            self.el.container.find('#serviceUserAddress').val(address);
+                            self.el.container.find('#serviceDetailAddress').val('').prop('disabled', false);
                         }); 
                     });
                 }
@@ -470,6 +478,98 @@
                     container : $('.reserv-inquiry'),
                     authChangeRdo : '[name="inquiryRdo"]',
                     changeCont : $('.reserv-inquiry .toggle-forms')
+                },
+                validation : null,
+                authManager : null,
+                validateInit : function(){
+                    var self = this;
+                   
+                    vcui.require(['ui/validation', 'ui/formatter'], function () {
+                        $('#inquiryAuthPhoneNo').vcFormatter({'format':'num', "maxlength":11});
+        
+                        var register = {
+                            inquiryAuthName : {
+                                required : true,
+                                msgTarget : ".err-block"
+                            },
+                            inquiryAuthNo : {
+                                required: true,
+                                msgTarget: '.err-block',
+                                errorMsg: '접수번호를 입력해주세요.'
+                            }
+                        };
+
+                        var authOptions = {
+                            elem: {
+                                form: '#authDataForm2',
+                                name: '#inquiryAuthName2',
+                                phone: '#inquiryAuthPhoneNo',
+                                number: '#inquiryAuthReceiveNo'
+                            },
+                            register: {
+                                inquiryAuthName2: {
+                                    required: true,
+                                    maxLength: 30,
+                                    pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                                    msgTarget: '.err-block',                        
+                                    errorMsg: '이름을 입력해주세요.',
+                                    patternMsg: '이름은 한글 또는 영문만 입력 가능합니다.'
+                                },
+                                inquiryAuthPhoneNo: {
+                                    required: true,
+                                    minLength: 10,
+                                    maxLength: 11,
+                                    pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                                    msgTarget: '.err-block',
+                                    errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                                    patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                                },
+                                inquiryAuthReceiveNo:{
+                                    required: true,
+                                    msgTarget: '.err-block',
+                                    errorMsg: '인증번호를 입력해주세요.',
+                                }
+                            }
+                        };
+
+                        if( self.el.container.find('.form-wrap').length) {
+                            self.validation = new vcui.ui.CsValidation('.reserv-inquiry .auth-type-no', {register : register});
+                            self.authManager = new AuthManager(authOptions);
+    
+                            self.el.container.find('.btn-auth-confirm').on('click', function() {
+                                self.authManager.send(this);
+                            });
+    
+                            self.el.container.find('.btn-inquiry').on('click', function(){
+    
+                                if( self.el.container.find('.auth-type-no.active').length ) {
+
+                                    self.validation.validate();
+                                    var validationResult = self.validation.validate().success;
+
+                                    if( validationResult ) {
+                                        //각 인풋의 value를 히든 인풋에 담은 뒤에 서브밋
+                                        $('#authName').val($('#inquiryAuthName').val());
+                                        $('#authNo').val($('#inquiryAuthNo').val())
+                                        $('#authDataForm1').submit();
+                                    }
+                                }
+                                
+                                if( self.el.container.find('.auth-type-phone.active').length ) {
+                                    self.authManager.confirm('.btn-auth-confirm', function(success, result) {
+                                        if (success) {
+                                            $('#authName2').val($('#inquiryAuthName2').val());
+                                            $('#authPhoneNo').val($('#inquiryAuthPhoneNo').val())
+                                            $('#authReceiveNo').val($('#inquiryAuthReceiveNo').val())
+                                            $('#authDataForm2').submit();
+                                        }
+                                    })
+                                }
+    
+                            })
+                        }
+                    });
+                    
                 },
                 toggle : function(){
                     var self = this;
@@ -489,11 +589,15 @@
                     })
                 },
                 init :function(){
-                    this.toggle();
+                    var self = this;
+                    self.toggle();
+
+                    self.validateInit();
+                    
                 }
             },
             init : function(){
-                this.engineerReserv.init();
+                this.serviceReserv.init();
                 this.reservInquiry.init();
             }
         },

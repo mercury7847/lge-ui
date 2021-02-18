@@ -164,8 +164,11 @@ $(function() {
             e.preventDefault();
         });
 
-        $(document).on('click', 'a,button', function(e){
-            e.preventDefault();
+        $(document).on('click', 'a', function(e){
+            var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
+            if(href == '#'){
+                e.preventDefault();
+            }            
         });
 
         $window.on('resizeend', function(e){
@@ -177,7 +180,7 @@ $(function() {
         });         
 
 
-        function moveStep(step){
+        function moveStep(step, flag){
 
             if(!canScroll) return;  
             if(currentStep == step) return;
@@ -191,17 +194,17 @@ $(function() {
 
             for(var i =0; i<arr.length; i++){
                 var item = arr[i];
-                var $target = $(item.target);
-                if(i==0){
-                    $target.transit(item.transit, function(){
-                        currentStep = step;
-                        canScroll = true
-                    });
-                }else{
-                    $target.transit(item.transit);
-                }   
+                var $target = $(item.target);                
+                $target.transit(item.transit);                
             }
 
+            if(!flag){
+                if(wheelInterval) clearTimeout(wheelInterval);
+                wheelInterval = setTimeout(function(){
+                    currentStep = step;
+                    canScroll = true;
+                }, 400);
+            }
         }
 
 
@@ -270,7 +273,7 @@ $(function() {
                 }, speed, 'easeInOutQuart',  function() { 
                     canScroll = true
                     currentPage = idx;     
-                    moveStep(step);          
+                    moveStep(step, true);          
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
                     
@@ -293,13 +296,13 @@ $(function() {
         document.addEventListener('wheel', function(e){
             
             if(currentStep == stepLens){
-                if(wheelInterval) clearTimeout(wheelInterval);
-                wheelInterval = setTimeout(function(){
+                // if(wheelInterval) clearTimeout(wheelInterval);
+                // wheelInterval = setTimeout(function(){
                     var st = $('.brand-wrap').scrollTop();
                     if(st==0 && e.deltaY<0){
                         wheelScene(-1);
                     }
-                }, 100);
+                //}, 100);
             }else{
                 if(e.deltaY>0 || e.deltaY<0){
                     wheelScene(e.deltaY);
@@ -499,6 +502,7 @@ $(function() {
                         var match = attr.name.match(regex);
                         if(match === null) continue;                                
                         if(attributeIndex==1) cssVal = stringToObj(attr.value);
+
                         arr.push({
                             sort : match[1],
                             target : this,
@@ -554,6 +558,8 @@ $(function() {
             stepLens = wheelArr.length-1;                    
             $('.brand-wrap').css({'overflow':'auto','height':winHeight});
             $('.contents').css({'overflow':'hidden', 'height':totalHeight});
+
+            console.log(wheelArr);
 
             if(page!==undefined){
                 currentPage = page;
@@ -646,8 +652,6 @@ $(function() {
                 var ny = st + deviceH*2 - 188 - useWrap;
                 $('.ui_device').css('top', -ny);
             }
-
-
 
             if(!isMobile){
                 if(st > deviceY+15){

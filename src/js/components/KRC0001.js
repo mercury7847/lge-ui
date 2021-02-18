@@ -31,7 +31,9 @@ $(window).ready(function(){
 								'{{#if item.obsSellingPrice}}<div class="total"><span class="blind">총 판매가</span><em>{{item.obsSellingPrice}}</em>원</div>{{/if}}' +
 							'</div>' +
 						'</div>' +
-						'<div class="product-button"><a href="#" class="btn border" data-id="{{item.modelId}}" data-model-name="{{item.sku}}" data-rtSeq="{{item.rtModelSeq}}" data-type-flag="{{item.bizType}}" {{#if item.obsBtnRule != "enable"}}disable{{/if}}>장바구니에 담기</a></div>' +
+						'{{#if item.obsInventoryFlg == "Y" && item.obsSellFlag == "Y" && obsBtnRulle == "enable"}}'+
+						'<div class="product-button"><a href="#" class="btn border" data-id="{{item.modelId}}" data-model-name="{{item.sku}}" data-rtSeq="{{item.rtModelSeq}}" data-type-flag="{{item.bizType}}">장바구니에 담기</a></div>' +
+						'{{/if}}'+	
 					'</div>' +
 				'</li>'+
 				'{{/each}}'+
@@ -84,8 +86,17 @@ $(window).ready(function(){
 				
 				if(listID){
 					var sendata = {};
-					lgkorUI.requestAjaxData(productListUrl, sendata, function(result) {
-						var lists = vcui.template(listItemTemplate, result.data);
+					lgkorUI.requestAjaxDataPost(productListUrl, sendata, function(result) {
+
+						var data = result.data[0];
+						for(var key in data.productList){
+							var item = data.productList[key];
+							item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
+							item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
+							item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
+						}
+
+						var lists = vcui.template(listItemTemplate, data);
 						$("#"+listID).append(lists);
 						self.setCarousel($("#"+listID).find('.ui_carousel_slider'));
 						// var data = result.data;

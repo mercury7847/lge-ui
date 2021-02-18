@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="480px" height="317px" viewBox="0 0 480 317" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="30.4888284%" x2="98.7723597%" y2="69.0300344%" id="linearGradient-1">
+            <stop stop-color="#8D71EC" offset="0%"></stop>
+            <stop stop-color="#F75584" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="46" y="30" width="389" height="243" rx="18.6795948"></rect>
+        <filter x="-14.9%" y="-15.6%" width="129.8%" height="147.7%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="20" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="16" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.811764706   0 0 0 0 0.376470588   0 0 0 0 0.674509804  0 0 0 0.443072552 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <filter x="-183.9%" y="-183.9%" width="454.8%" height="454.8%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="4" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.567198822   0 0 0 0 0.509095528   0 0 0 0 0.509095528  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <polygon id="path-6" points="15.12 7.56 15.12 23.76 19.44 23.76 19.44 22.316565 16.3516751 22.316565 16.3516751 7.56"></polygon>
+        <filter x="-625.0%" y="-166.7%" width="1257.4%" height="408.6%" filterUnits="objectBoundingBox" id="filter-7">
+            <feOffset dx="-2" dy="-2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M9.71787819,10.8 C10.910334,10.8 11.88,9.83198034 11.88,8.64318428 C11.88,7.44801966 10.910334,6.48 9.71787819,6.48 C8.52966601,6.48 7.56,7.44801966 7.56,8.64318428 C7.56,9.83198034 8.52966601,10.8 9.71787819,10.8" id="path-8"></path>
+        <filter x="-625.0%" y="-625.0%" width="1257.4%" height="1257.4%" filterUnits="objectBoundingBox" id="filter-9">
+            <feOffset dx="-2" dy="-2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M15.8363506,0.0148976001 C15.6554002,0.00638468576 15.2956283,0 15.1189356,0 C6.78457445,0 0,6.78266451 0,15.1231923 C0,19.160442 1.56468849,22.95933 4.41944667,25.8132845 C7.284849,28.6693673 11.0848068,30.24 15.1189356,30.24 C19.1551932,30.24 22.955151,28.6693673 25.8162957,25.8132845 C28.6710539,22.95933 30.24,19.160442 30.24,15.1231923 L30.24,14.4336463 L29.6354129,14.4379027 L19.4447138,14.4379027 L19.4447138,15.8425336 L28.80517,15.8425336 L28.80517,16.0425871 C28.3240549,23.1764093 22.3675945,28.8289844 15.1189356,28.8289844 C11.4594805,28.8289844 8.01929461,27.4030713 5.42638226,24.8151453 C2.83559873,22.2250911 1.40928405,18.7858737 1.40928405,15.1231923 C1.40928405,11.4626392 2.83559873,8.01703709 5.42638226,5.42911113 C8.01929461,2.83905694 11.4594805,1.41314378 15.1189356,1.41314378 C15.2849842,1.41314378 15.6724308,1.41952847 15.8363506,1.4216567 L15.8363506,0.0148976001 Z" id="path-10"></path>
+        <filter x="-89.3%" y="-89.3%" width="265.3%" height="265.3%" filterUnits="objectBoundingBox" id="filter-11">
+            <feOffset dx="-2" dy="-2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-185.000000, -159.000000)">
+            <g id="img_card" transform="translate(185.000000, 159.000000)">
+                <polygon id="Rectangle" points="0 2.27263954e-13 480 2.27263954e-13 480 317 0 317"></polygon>
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <g id="Mask">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-2"></use>
+                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                </g>
+                <g id="LG-Logo" filter="url(#filter-5)" mask="url(#mask-3)">
+                    <g transform="translate(72.360000, 55.840000)">
+                        <g id="Fill-10">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-7)" xlink:href="#path-6"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-6"></use>
+                        </g>
+                        <g id="Fill-12">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-8"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-8"></use>
+                        </g>
+                        <g id="Fill-14">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-11)" xlink:href="#path-10"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-10"></use>
+                        </g>
+                    </g>
+                </g>
+                <text id="LG-MEMBERSHIP" fill-rule="nonzero" mask="url(#mask-3)" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-size="18" font-weight="normal" line-spacing="28" fill="#FFFFFF">
+                    <tspan x="270.327" y="242">LG MEMBERSHIP</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

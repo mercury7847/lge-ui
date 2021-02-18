@@ -8,6 +8,8 @@ var isApp = function(){
 
     if(global['lgkorUI']) return;
     console.log("lgkorUI start!!!");
+    if(vcui.detect.isMac) $('html').addClass('mac');
+
 
     var alertTmpl =  '<article id="laypop" class="lay-wrap {{typeClass}}" style="display:block;" role="alert">\n'+
         '   <header class="lay-header">\n'+
@@ -379,7 +381,7 @@ var isApp = function(){
                         self.resizeCallbacks[idx].call();
                     }
 
-                    self._switchLinker();
+                    //self._switchLinker();
 
                     self.resetFlexibleBox();
                 });  

@@ -445,9 +445,30 @@
                 });
 
                 //매장방문예약 (모바일pc구분)
+                /*
                 self.$pdpInfo.find('div.info-bottom li.reservation a').on('click', function(e) {
+                    //e.preventDefault();
+                });
+                */
+
+                //전시매장 찾기
+                self.$pdpInfo.find('div.info-bottom li.find-store a').on('click', function(e) {
                     e.preventDefault();
-                    console.log('asdasdasd');
+                    var url = $(this).attr('href').replace("#","");
+                    if(url) {
+                        if(typeof outletStockFlag !== 'undefined' && lgkorUI.stringToBool(outletStockFlag)){
+                            location.href = url;
+                        } else {
+                            lgkorUI.confirm('', {
+                                title:'해당 제품을 전시하는 매장이 없습니다.<br>가까운 매장에서 비슷한 제품을<br>전시하는지 확인해보시겠어요?',
+                                okBtnName: '예',
+                                cancelBtnName: '아니오',
+                                ok: function() {
+                                    location.href = url;
+                                }
+                            });
+                        }
+                    }
                 });
 
                 //구매/예약/렌탈
