@@ -87,7 +87,9 @@
                 self.$searchWrap.find('input[type="text"]').on('input', function() {
                     var val = $(this).val().trim();
 
-                    val.length && $('.search-error').hide();
+                    if (val.length > 1) {
+                        $('.search-error').hide();
+                    }
                 });
 
                 self.$searchWrap.find('input[type="text"]').on('keyup', function(e) {
@@ -99,7 +101,7 @@
                 self.$searchWrap.find('.btn-search').on('click', function() {
                     var val = self.$searchWrap.find('input[type="text"]').val().trim();
 
-                    if (val.length) {
+                    if (val.length > 1) {
                         self.params = $.extend({}, self.params, {
                             'keyword': val,
                             'page': 1
@@ -108,13 +110,18 @@
                         $('.search-error').hide();
 
                         self.searchList();
+                    } else if (val.length == 1) {
+                        $('.search-error').show();
                     } else {
                         self.params = $.extend({}, self.params, {
                             'keyword': '',
                             'page': 1
                         });
 
-                        $('.search-error').show();
+                        self.searchList();
+
+                        $('.search-error').hide();
+
                     }
                 });
 
