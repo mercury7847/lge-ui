@@ -91,11 +91,12 @@
 .tit-area {
     position: relative;
     height:214px;
-    margin:0 -48px 48px;
+    margin:-48px -48px 48px;
     padding:48px;
     background:url('/lg5-common/images/BMC/bg-win-announc.svg') no-repeat center center;
     background-size:cover;
     @include mobile {
+        margin-top:-40px;
         margin-bottom: 32px;
         background-image:url('/lg5-common/images/BMC/bg-win-announc-m.svg');
     }
