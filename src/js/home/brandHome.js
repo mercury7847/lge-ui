@@ -1,4 +1,4 @@
-$(function() {
+;$(function() {
 
     vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {     
         
@@ -298,7 +298,7 @@ $(function() {
             var curTime = +new Date();
             var timeDiff = curTime-prevTime;
             prevTime = curTime;
-            if (timeDiff < 500) {
+            if (timeDiff < 300) {
                 return;
             }
             
