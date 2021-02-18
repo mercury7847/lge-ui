@@ -187,7 +187,7 @@
                     lgkorUI.requestAjaxData(self.serialCheckUrl, param, function(result) {
                         var data = result.data;
 
-                        if (data.resultFlag == 'Y') {
+                        if (data.resultFlag == 'N') {
                             lgkorUI.confirm('', {
                                 title:'해당 제품으로 이미 신청하신 내역이 있습니다. 신청하신 상세결과를 조회하시겠습니까?',
                                 okBtnName: '확인',
