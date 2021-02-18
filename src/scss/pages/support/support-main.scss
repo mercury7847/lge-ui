@@ -35,10 +35,7 @@
             vertical-align: middle;
         }
 
-        @include tablet {
-            display: inline-block;
-            
-            
+        @include mobile {
             padding:11px 20px 10px;
             font-size:13px;
             border-radius:30px;
@@ -193,12 +190,12 @@
             .support-list-slider { 
                 .indi-wrap {
                     display: block;
+                    bottom:30px;
                 }
             }
         }
-
-        
     }
+
     .support-toggle-list-wrap {
         &.only-desktop {
             .slide-track {
@@ -390,6 +387,13 @@
                     max-width:336px;
                     margin:24px auto 0;
                     text-align: left;
+
+                    &.list-dir-col {
+                        width:213px;
+                        > li {
+                            width:100%;
+                        }
+                    }
                     > li {
                         width:50%;
                         padding:4px;
@@ -996,10 +1000,6 @@
                     justify-content: center;
                 }
 
-                .indi-wrap {
-                    position:static;
-                }
-
                 .slide-track {
                     max-height:360px;
                 }
@@ -1527,24 +1527,38 @@
                 }
             }
 
+            .toggle-forms {
+                display: none;
+
+                &.active {
+                    display: block;
+                }
+            }
+
             .form-wrap {
                 .btn-link {
                     margin-left:26px;
                 }
-                .form-head {
-                    margin-bottom:25px;
-                }
 
-                .forms {
+                .err-block {
+                    position: relative;
                     margin-top:0;
 
-                    &.toggle-forms {
-                        display: none;
-
-                        &.active {
-                            display: block;
-                        }
+                    .err-msg {
+                        position: absolute;
+                        top:8px;
                     }
+                }
+                
+
+                .forms {
+                    margin-top:50px;
+
+                    &.form-head {
+                        margin-top:0;
+                    }
+
+                    
 
                     .tit {
                         margin-bottom:0;
@@ -1567,10 +1581,6 @@
                                 margin-left:8px;
                             }
                         }
-                    }
-
-                    & ~ .forms {
-                        margin-top:8px;
                     }
 
                     .rdo-wrap {
@@ -1649,11 +1659,10 @@
                 }
     
                 .form-wrap {
+                    .form-col + .form-col {
+                        margin-top:50px;
+                    }
                     .forms {
-                        & ~ .forms {
-                            margin-top:24px;
-                        }
-    
                         .rdo-wrap {
                             & ~ .rdo-wrap {
                                 margin-left:24px;

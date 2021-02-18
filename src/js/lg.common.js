@@ -1,3 +1,9 @@
+//통합앱 구축팀 요청...통합앱 식별 스크립트
+var isApp = function(){
+    return /LGEAPP|lgeapp\/[0-9\.]+$/.test(userAgent);
+}
+
+
 ;(function(global){
 
     if(global['lgkorUI']) return;
