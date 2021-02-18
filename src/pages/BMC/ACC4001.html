@@ -29,11 +29,10 @@
                 <!-- 컴포넌트로 변경 -->
                 <!-- visual slider -->
                 <!-- component -->
+                <!-- 210215 수정 -->
                 @@include('./common/partials/KRC0015-hero.html', {
                     "common": {
-                        "marginTop": "zero-top",
-                        "marginBtm": "",
-                        "bg-color": "bg-black"
+                        "zero": "zero-top zero-btm",
                     },
                     "title": {
                         "font-class1": "font-regular",
@@ -43,7 +42,7 @@
                         "copy":"바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다."
                     },
                     "carousel": {
-                        "type": "type-hero",
+                        "type": "hero-banner",
                         "item1": {
                             "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
                             "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
@@ -115,15 +114,17 @@
                         }
                     }
                 })
+                <!-- //210215 수정 -->
                 <!-- // component -->
                 <!-- // visual slider -->
                 <!-- //컴포넌트로 변경 -->
 
-                <div class="page-tabs type2">
-                    <div class="tabs-wrap btn-type">
+                <!-- 210215 수정 -->
+                <div class="page-tabs">
+                    <div class="tabs-wrap border-type left">
                         <ul class="tabs">
-                            <li><a href="#n">멤버십 소개<em class="blind">선택됨</em></a></li>
-                            <li><a href="#n">등급별 혜택</a></li>
+                            <li><a href="#n">멤버십 소개</a></li>
+                            <li><a href="#n">VIP 멤버십 혜택</a></li>
                             <li><a href="#n">가입 안내</a></li>
                         </ul>
                     </div>

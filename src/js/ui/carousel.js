@@ -1428,7 +1428,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 }
             }
 
-            if(self.$slides.length < 2){
+            if(self.$el.find('.indi-wrap').children().length < 2){
                 self.$el.find('.indi-wrap').hide();
             }
 

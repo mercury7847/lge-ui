@@ -885,17 +885,25 @@
 
         .store-map-con {
             position:absolute;
-            top:0;
+            top: 0;
             left:0;
             right:0;
             bottom:0;
             width:100%;
             z-index:1;
+            transition: all 0.5s ease;
             @include csmobile {
                 visibility: hidden;
                 left:-9999px;
                 height:calc(100vh - 126px - 60px - 217px - 76px);
                 overflow:hidden;
+            }
+            @include mobile {
+                height:calc(100vh - 56px - 60px - 324px);
+                top: 334px;
+                &.local-map {
+                    top: 385px;
+                }
             }
         }
 
@@ -1127,7 +1135,7 @@
 
 .find-store-wrap {
     .map-container {
-        height:100vh;
+        // height:100vh;
 
         .store-list-wrap {
             width: 520px;
@@ -1413,7 +1421,7 @@
                         }
                     }
                     @include mobile {
-                        top:0 !important;
+                        // top:0 !important;
                         height:auto;
 
                         .opt-btn-wrap {
@@ -1590,7 +1598,7 @@
                     }
                     .opt-cont {
                         &.open {
-                            top:264px;
+                            top: 0;
                         }
                     }
                 }
@@ -1608,6 +1616,8 @@
                 .store-list-box {
                     transform: none;
                     transition: none;
+                    padding-bottom:76px;
+                    box-sizing:border-box;
                 }
                 .sch-box {
                     margin:0 16px;
@@ -1670,10 +1680,6 @@
                         height: calc(100vh - 463px);
                     }
                 }
-                .store-list-box {
-                    padding-bottom:76px;
-                    box-sizing:border-box;
-                }
                 .opt-cont {
                     .btn-sel {
                         height:56px;
@@ -1714,11 +1720,6 @@
             }
 
             
-        }
-        .store-map-con {
-            @include mobile {
-                height:calc(100vh - 56px - 60px - 353px);
-            }
         }
         .map-area {
             .info-overlaybox {
@@ -1782,6 +1783,30 @@
             @include mobile {
                 li {
                     margin-left: 24px;
+                }
+            }
+        }
+
+        &.result-map {
+            overflow-x: visible;
+            .store-map-con {
+                height: calc(100vh - 181px);
+                top: -351px;
+                &.local-map {
+                }
+            }
+            .store-list-wrap {
+                &.active {
+                    .store-list-box {
+                        top: -476px;
+                        position: absolute;
+                    }
+                    .opt-cont {
+                        bottom: 0;
+                        position: fixed;
+                    }
+                }
+                &.local {
                 }
             }
         }
