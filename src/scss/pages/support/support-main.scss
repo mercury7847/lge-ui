@@ -1517,6 +1517,9 @@
             box-sizing:border-box;
 
             .headline {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
                 margin-bottom:50px;
                 padding-bottom:15px;
                 border-bottom:1px solid #000;
@@ -1524,6 +1527,15 @@
                     font-size:32px;
                     color:#000;
                     font-weight:bold;
+                }
+            }
+
+            .user-guide-txt {
+                font-size:16px;
+
+                strong {
+                    font-weight:bold;
+                    color:#da0f47;
                 }
             }
 
@@ -1536,6 +1548,9 @@
             }
 
             .form-wrap {
+                .btn {
+                    background: none;
+                }
                 .btn-link {
                     margin-left:26px;
                 }
@@ -1600,6 +1615,12 @@
 
                 button:disabled {
                     background: #f4f4f4;
+                }
+            }
+
+            .reserv-inquiry-slider {
+                .item-list {
+                    
                 }
             }
         }
@@ -1795,7 +1816,7 @@
 
             .item-list {
                 .item {
-                    width:calc(88.8888vw);
+                    width:70vw;
 
                     .item-cont {
                         padding:40px 32px;
