@@ -347,6 +347,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     self.$leftContainer.removeClass('active');
                     // $(this).removeClass('fixed');
                     $(this).attr('style', '');
+                    $('.store-map-con').css('top', '');
                 })
                 $('.map-container').removeClass('result-map');
             });
@@ -1152,7 +1153,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                 top: - waiting_state_h - page_header_h - mobile_nav_wrap_h - header_h
             });
 
-            $('.store-map-con').css({
+            $('.result-map .store-map-con').css({
                 top: - waiting_state_h - page_header_h - mobile_nav_wrap_h - header_h + 127
             });
         },
