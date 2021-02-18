@@ -779,6 +779,11 @@
                 }
             }
         }
+        @include mobile {
+            .slide-solo {
+                padding-bottom:0;
+            }
+        }
     }
 
     // button 공통
