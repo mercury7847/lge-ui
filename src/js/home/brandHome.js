@@ -179,9 +179,9 @@ $(function() {
 
         function moveStep(step){
 
-            if(!canScroll) return;  
+            console.log('moveStep');
+
             if(currentStep == step) return;
-            canScroll = false; 
 
             var arr = wheelArr[step];
             if(!vcui.isArray(arr)){ 
@@ -192,6 +192,7 @@ $(function() {
             for(var i =0; i<arr.length; i++){
                 var item = arr[i];
                 var $target = $(item.target);
+                console.log(item)
                 if(i==0){
                     $target.transit(item.transit, function(){
                         currentStep = step;
@@ -207,7 +208,6 @@ $(function() {
 
         function wheelScene(delta) {
 
-            if(!canScroll) return; 
             var nextStep = (delta < 0) ? -1 : 1;
             nextStep = nextStep + currentStep;
             nextStep = Math.max(Math.min(nextStep, stepLens), 0);                   
@@ -248,8 +248,7 @@ $(function() {
 
         function moveScene(idx, step, speed){
 
-            if(!canScroll) return;  
-            canScroll = false;   
+             
 
             $('.brand-wrap').scrollTop(0);   
             appMotion(0); 
@@ -260,7 +259,7 @@ $(function() {
             $scenes.removeClass('active').eq(idx).addClass('active');
             
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
-            wheelAniInterval = setTimeout(function() {
+            //wheelAniInterval = setTimeout(function() {
                 if(! $('html').hasClass('sceneMoving')){
                     return false;
                 }
@@ -285,22 +284,28 @@ $(function() {
                         }
                     });
                 });
-            }, 100);
+            //}, 100);
 
         } 
         
 
         document.addEventListener('wheel', function(e){
             
+            if(!canScroll) return;  
+            canScroll = false;  
+
+            console.log('wheel');
+
             if(currentStep == stepLens){
                 if(wheelInterval) clearTimeout(wheelInterval);
-                wheelInterval = setTimeout(function(){
+                //wheelInterval = setTimeout(function(){
                     var st = $('.brand-wrap').scrollTop();
                     if(st==0 && e.deltaY<0){
                         wheelScene(-1);
                     }
-                }, 100);
+                //}, 100);
             }else{
+                console.log(e.deltaY);
                 if(e.deltaY>0 || e.deltaY<0){
                     wheelScene(e.deltaY);
                 }
@@ -308,13 +313,15 @@ $(function() {
 
         });
 
-        
+        console.log('1111');
         $(document).on('touchstart touchend touchcancel', function(e) {
 
             var data = _getEventPoint(e);
             if (e.type == 'touchstart') {
                 touchSy = data.y;
             } else {
+
+                console.log('asdfsdf');
 
                 if(currentStep == stepLens){
                     if(wheelInterval) clearTimeout(wheelInterval);
