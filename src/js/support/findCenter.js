@@ -284,9 +284,11 @@ function moveDetail(el, detailUrl, windowHeight) {
             function setStoreClass(index){
                 var $storeListWrap = $('.store-list-wrap');
                 if( index == 0) {
-                    $storeListWrap.addClass('local')
+                    $storeListWrap.addClass('local');
+                    $('.store-map-con').addClass('local-map');
                 } else {
                     $storeListWrap.removeClass('local')
+                    $('.store-map-con').removeClass('local-map');
                 }
             }
             setStoreClass(activeTabIndex);
@@ -343,15 +345,38 @@ function moveDetail(el, detailUrl, windowHeight) {
                     top: $('.map-container').offset().top
                 }, function(){
                     self.$leftContainer.removeClass('active');
-                    $(this).removeClass('fixed');
+                    // $(this).removeClass('fixed');
                 })
-                
+                $('.map-container').removeClass('result-map');
             });
 
-            self.$searchContainer.on('click', '.btn-view', function(e){
+            self.$leftContainer.on('click', '.btn-view', function(e){
                 e.preventDefault();
 
                 self._showMap();
+            });
+
+            self.$searchContainer.on('click', '.btn-view', function(e){
+                // mapheight = self.$defaultListContainer.find('.sch-list').outerHeight();
+                // self.$mapContainer.css({
+                //     height: mapheight,
+                // });
+                $('.store-map-con').css({
+                    // position: 'absolute',
+                    // height: self.$mapContainer.height()
+                });
+            });
+
+            self.$searchResultContainer.on('click', '.btn-view', function(e){
+                // $('.map-container').toggleClass('result-map');
+                $('.store-map-con').css({
+                    // position: 'fixed',
+                    // height: 'calc(100vh - 181px)'
+                    // top: resultheight
+                })
+                self.$mapContainer.css({
+                    // height: '100%'
+                });
             });
 
             self.$leftContainer.on('click', '.btn-fold', function(e){
@@ -383,7 +408,11 @@ function moveDetail(el, detailUrl, windowHeight) {
             });
             self.$localSearchButton.on('click', function(e){
                 self._setLocalSearch();
-                self.$leftContainer.addClass('active')
+                self.$leftContainer.addClass('active');
+                $('.map-container').addClass('result-map');
+                $('html').scrollTop(0);
+
+                _calculationTop();
             });
             self.$searchUserAdressButton.on('click', function(e){
                 self.searchType = 'user';
@@ -391,7 +420,7 @@ function moveDetail(el, detailUrl, windowHeight) {
             });
             self.$searchCurrentButton.on('click', function(e) {
                 self.searchType = 'current';
-                self._setCurrentSearch();               
+                self._setCurrentSearch();          
             });
 
             // 지하철역 검색
@@ -412,6 +441,8 @@ function moveDetail(el, detailUrl, windowHeight) {
             });
             self.$searchSubwayButton.on('click', function(e){
                 self._setSubwaySearch();
+                $('.map-container').addClass('result-map');
+                $('html').scrollTop(0);
             });
 
             // 센터명 검색
@@ -447,6 +478,8 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             self.searchCenterName.on('click', function() {
                 self._setSearch();
+                $('.map-container').addClass('result-map');
+                $('html').scrollTop(0);
             });
 
             // 주소 검색
@@ -461,6 +494,8 @@ function moveDetail(el, detailUrl, windowHeight) {
             });
             self.$searchAddressButton.on('click', function() {
                 self._setKakaoSearch();
+                $('.map-container').addClass('result-map');
+                $('html').scrollTop(0);
             });
 
             self._resize();
@@ -639,16 +674,15 @@ function moveDetail(el, detailUrl, windowHeight) {
             if(!self.isTransion){
                 self.isTransion = true;
                 
-                var toggle = self.$searchContainer.find('.btn-view');
+                var toggle = self.$leftContainer.find('.btn-view');
                 if(toggle.hasClass('map')){
                     var maptop = self.$defaultListContainer.position().top;
                     $('.store-map-con').css({
-                        position: 'absolute',
                         visibility: 'visible',
-                        top: maptop,
+                        // top: maptop,
                         left:0,
                         x: self.windowWidth,
-                        height: self.$mapContainer.height(),
+                        // height: self.$mapContainer.height(),
                         'z-index': 5
                     }).transition({x:0}, 350, "easeInOutCubic", function(){self.isTransion = false;});
         
@@ -1079,10 +1113,30 @@ function moveDetail(el, detailUrl, windowHeight) {
                 self.$leftContainer.find('.store-list-box').stop().animate({
                     marginTop : -$mapContainer.offset().top
                 }, function(){
-                    $(this).addClass('fixed');
+                    // $(this).addClass('fixed');
                     $(this).attr('style', '');
                 })
             }
+        },
+
+        //검색 시 .store-list-box 위치 계산
+        _calculationTop : function() {
+            waiting_state_h = $('.waiting-state').height();
+            page_header_h = $('.page-header').height();
+            mobile_nav_wrap_h = $('.mobile-nav-wrap').height();
+            header_h = $('.header').height();
+            mobile_nav_wrap_mtop = parseInt($('html').find('.mobile-nav-wrap .nav').css('margin-top'));
+            console.log(waiting_state_h, page_header_h, mobile_nav_wrap_h, mobile_nav_wrap_mtop, header_h, '검색 시 .store-list-box 위치 계산')
+
+
+            $('.store-list-box').css({
+                top: - waiting_state_h - page_header_h - mobile_nav_wrap_h - header_h
+            });            
+        },
+
+        //모바일 지도보기 클릭 시 맵 높이 설정
+        _setMobileMapCon: function() {
+
         },
 
         _resize: function(){
@@ -1100,9 +1154,9 @@ function moveDetail(el, detailUrl, windowHeight) {
                 mapwidth = self.windowWidth;
 
                 mapheight = self.$defaultListContainer.find('.sch-list').outerHeight();
-                $('.store-list-wrap.active').find('.store-list-box').not('.fixed:animated').addClass('fixed');
+                // $('.store-list-wrap.active').find('.store-list-box').not('.fixed:animated').addClass('fixed');
             } else{
-                $('.store-list-wrap.active').find('.store-list-box').filter('.fixed').not(':animated').removeClass('fixed');
+                // $('.store-list-wrap.active').find('.store-list-box').filter('.fixed').not(':animated').removeClass('fixed');
                 if(self.$leftContainer.hasClass('close')){
                     mapmargin = 24;
                 } else{
@@ -1114,7 +1168,7 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             self.$mapContainer.css({
                 width: mapwidth,
-                height: mapheight,
+                // height: mapheight,
                 // 'margin-left': mapmargin
             });
 
