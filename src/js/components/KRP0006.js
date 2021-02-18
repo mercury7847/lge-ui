@@ -38,10 +38,10 @@
                             "modelID":modelID,
                             "sku":sku
                         }
-                        //console.log("### KRP0006 requestAjaxData(); ###", ajaxUrl, param)
+                        console.log("### KRP0006 requestAjaxData(); ###", ajaxUrl, param)
                         lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
 
-                            //console.log("### KRP0006 requestAjaxData result###", result.data)
+                            console.log("### KRP0006 requestAjaxData result###", result.data)
 
                             var data = result.data ? result.data : {};
                             self.reloadData(data);
@@ -79,7 +79,7 @@
                                 self.reloadComponent($item, data.productCurationProposal);
                             }
                         }
-                    } else if(_type == "r-bottom") {
+                    } else if(_type == "r-btm") {
                         //하단영역
                         var check = lgkorUI.stringToBool(data.categoryBestProduct.success);
                         if(data.storeConsultation) {
