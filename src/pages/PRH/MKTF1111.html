@@ -15,16 +15,16 @@
                     <div class="brand-hero signature-hero">
                         <div class="scene01">
                             <div class="image ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/img-signature-visual.jpg')" data-pc-src="/lg5-common/images/PRH/img-signature-visual.jpg" data-m-src="/lg5-common/images/PRH/img-signature-visual-m.jpg" aria-hidden="true"></div>
-                            <div class="image blur" style="background-image:url('/lg5-common/images/PRH/img-signature-visual-blur1.jpg')" data-pc-src="/lg5-common/images/PRH/img-signature-visual-blur1.jpg" data-m-src="/lg5-common/images/PRH/img-signature-visual-m-blur1.jpg" aria-hidden="true"></div>
-                            <div class="image blur" style="background-image:url('/lg5-common/images/PRH/img-signature-visual-blur2.jpg')" data-pc-src="/lg5-common/images/PRH/img-signature-visual-blur2.jpg" data-m-src="/lg5-common/images/PRH/img-signature-visual-m-blur2.jpg" aria-hidden="true"></div>
+                            <div class="image blur" data-step-0="opacity:0" data-step-1="opacity:1" style="background-image:url('/lg5-common/images/PRH/img-signature-visual-blur1.jpg')" data-pc-src="/lg5-common/images/PRH/img-signature-visual-blur1.jpg" data-m-src="/lg5-common/images/PRH/img-signature-visual-m-blur1.jpg" aria-hidden="true"></div>
+                            <div class="image blur" data-step-1="opacity:0" data-step-2="opacity:1" style="background-image:url('/lg5-common/images/PRH/img-signature-visual-blur2.jpg')" data-pc-src="/lg5-common/images/PRH/img-signature-visual-blur2.jpg" data-m-src="/lg5-common/images/PRH/img-signature-visual-m-blur2.jpg" aria-hidden="true"></div>
                             <div class="content">
-                                <div class="cont2">
+                                <div class="cont2" data-step-0="opacity:0, y:200px" data-step-1="opacity:1, y:0px" data-step-2="opacity:0, y:-200px">
                                     <p>예술은 기술에 <br class="mo-only">영감을 줍니다.</p>
                                     <p>기술은 예술을 <br class="mo-only">완성합니다.</p>
                                 </div>
-                                <div class="cont3">
+                                <div class="cont3" data-step-1="opacity:0, y:200px" data-step-2="opacity:1, y:0px">
                                     <p>가전, 작품이 되다<br>LG SIGNATURE</p>
-                                    <div class="btn-group">
+                                    <div class="btn-group" data-step-1="opacity:0, y:300px" data-step-2="opacity:1, y:0px">
                                         <a href="#" class="btn border size-m"><span>LG SIGNATURE 작품 보기</span></a>
                                         <a href="#" class="btn border size-m"><span>LG SIGNATURE 광고 보기</span></a>
                                     </div>
@@ -37,15 +37,13 @@
                     </div>
                     <!-- // Hero Banner -->
                     <div class="brand-wrap signature-wrap">
-                        <div class="ui_sticky">
-                            <div class="tabs-wrap signature-tabs ui_tab ui_smooth_scroll">
-                                <ul class="tabs">
-                                    <li class="on"><a href="#signature-cont1">LG SIGNATURE<em class="blind">선택됨</em></a></li>
-                                    <li><a href="#signature-cont2">브랜드 철학</a></li>
-                                    <li><a href="#signature-cont3">전시 기록</a></li>
-                                    <li><a href="#signature-cont4">작품 정보</a></li>
-                                </ul>
-                            </div>
+                        <div class="tabs-wrap signature-tabs ui_tab">
+                            <ul class="tabs">
+                                <li class="on"><a href="#signature-cont1">LG SIGNATURE<em class="blind">선택됨</em></a></li>
+                                <li><a href="#signature-cont2">브랜드 철학</a></li>
+                                <li><a href="#signature-cont3">전시 기록</a></li>
+                                <li><a href="#signature-cont4">작품 정보</a></li>
+                            </ul>
                         </div>
                         <!-- LG SIGNATURE -->
                         <div id="signature-cont1" class="tab-contents signature-brand">
@@ -710,40 +708,15 @@
                             </div>
                         </div>
                         <!-- // 작품 정보 -->
+                        @@include('./common/footer.html')
                     </div>
                 </div>
             </div>
             <!-- // LG SIGNATURE -->
         </div>
         
-        @@include('./common/footer.html')
+        <!-- @@include('./common/footer.html') -->
     </div>
-    <script>
-        $(function() {
-            vcui.require(['ui/carousel'], function () {
-                $('.signature-theme .ui_carousel_slider').vcCarousel({
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                });
-
-                $('.signature-showroom .ui_carousel_slider').vcCarousel({
-                    settings: "unslick",
-                    responsive: [
-                        {
-                            breakpoint: 10000,
-                            settings: "unslick"
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        }
-                    ]
-                });
-            });
-        });
-    </script>
+    <script src="/lg5-common/js/home/signatureHome.min.js"></script>
 </body>
 </html>
