@@ -378,7 +378,7 @@
                 el : {
                     container : $('.engineer-reserv'),
                     agreeChk : $('#agreePrivacyCheck'),
-                    popup : $('#agreePrivacyPopup')
+                    popup : $('#agreePrivacyPopup'),
                 },
                 validation : null,
                 addressFinder : null,
@@ -390,6 +390,10 @@
                         $('#engineerPhoneNo').vcFormatter({'format':'num', "maxlength":11});
         
                         var register = {
+                            agreePrivacyCheck : {
+                                required : true,
+                                msgTarget : ".err-block"
+                            },
                             engineerUserName : {
                                 required : true,
                                 msgTarget : ".err-block"
@@ -439,13 +443,13 @@
                     });
                     
 
-                    self.el.container.find('input[data-required]').on('input', function(){
-                        //self.validation.validate();
-                        // var validationResult = self.validation.validate().success;
-                        // if( validationResult ) {
-                        //     console.log(111)
-                        // }
-                    });
+                    self.el.container.find('.btn-reservation').on('click', function(){
+                        self.validation.validate();
+                        var validationResult = self.validation.validate().success;
+                        if( validationResult ) {
+                            console.log(111)
+                        }
+                    })
 
 
                     self.el.container.find('.btn-address').on('click', function() { 
