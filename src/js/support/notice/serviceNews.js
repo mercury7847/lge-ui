@@ -121,6 +121,7 @@
                         self.searchList();
 
                         $('.search-error').hide();
+
                     }
                 });
 

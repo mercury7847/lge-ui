@@ -99,17 +99,6 @@ $(window).ready(function(){
 						var lists = vcui.template(listItemTemplate, data);
 						$("#"+listID).append(lists);
 						self.setCarousel($("#"+listID).find('.ui_carousel_slider'));
-						// var data = result.data;
-						// var arr = data instanceof Array ? data : [];
-						// var $list_ul = self.$slider.find('ul');
-						// $list_ul.empty();
-						// arr.forEach(function(item, index) {
-						// 	item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
-						// 	item.price = item.price ? vcui.number.addComma(item.price) : null;
-						// 	$list_ul.append(vcui.template(listItemTemplate, item));
-						// });
-						// $list_ul.vcImageSwitch('reload');
-						// self.$slider.vcCarousel('reinit');
 					});
 				}
 			});

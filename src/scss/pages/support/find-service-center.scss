@@ -914,6 +914,7 @@
             right:0;
             bottom:0;
             height:100%;
+            width: 100vw;
 
             .point-wrap {
                 display:block;
@@ -1786,30 +1787,6 @@
                 }
             }
         }
-
-        &.result-map {
-            overflow-x: visible;
-            .store-map-con {
-                height: calc(100vh - 181px);
-                top: -351px;
-                &.local-map {
-                }
-            }
-            .store-list-wrap {
-                &.active {
-                    .store-list-box {
-                        top: -476px;
-                        position: absolute;
-                    }
-                    .opt-cont {
-                        bottom: 0;
-                        position: fixed;
-                    }
-                }
-                &.local {
-                }
-            }
-        }
     }
 
     @include mobile {
@@ -1821,6 +1798,27 @@
             overflow-y:visible;
             .btn-list-fold {
                 display:none;
+            }
+            &.result-map {
+                overflow-x: visible;
+                .store-map-con {
+                    height: calc(100vh - 240px);
+                    top: -291px;
+                }
+                .store-list-wrap {
+                    &.active {
+                        .store-list-box {
+                            top: -476px;
+                            position: absolute;
+                        }
+                        .opt-cont {
+                            bottom: 0;
+                            position: fixed;
+                        }
+                    }
+                    &.local {
+                    }
+                }
             }
         }
     }

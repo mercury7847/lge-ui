@@ -342,10 +342,12 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             self.$searchResultContainer.on('click', '.btn-back', function(e){
                 $('.store-list-box').stop().animate({
-                    top: $('.map-container').offset().top
+                    // top: $('.map-container').offset().top
                 }, function(){
                     self.$leftContainer.removeClass('active');
                     // $(this).removeClass('fixed');
+                    $(this).attr('style', '');
+                    $('.store-map-con').css('top', '');
                 })
                 $('.map-container').removeClass('result-map');
             });
@@ -412,7 +414,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                 $('.map-container').addClass('result-map');
                 $('html').scrollTop(0);
 
-                _calculationTop();
+                self._calculationTop();
             });
             self.$searchUserAdressButton.on('click', function(e){
                 self.searchType = 'user';
@@ -440,9 +442,12 @@ function moveDetail(el, detailUrl, windowHeight) {
                 self.$searchSubwayButton.prop('disabled', false);
             });
             self.$searchSubwayButton.on('click', function(e){
+                //  지하철역 검색
                 self._setSubwaySearch();
                 $('.map-container').addClass('result-map');
                 $('html').scrollTop(0);
+
+                self._calculationTop();
             });
 
             // 센터명 검색
@@ -477,9 +482,12 @@ function moveDetail(el, detailUrl, windowHeight) {
             });
 
             self.searchCenterName.on('click', function() {
+                // 센터명 검색
                 self._setSearch();
                 $('.map-container').addClass('result-map');
                 $('html').scrollTop(0);
+
+                self._calculationTop();
             });
 
             // 주소 검색
@@ -493,9 +501,12 @@ function moveDetail(el, detailUrl, windowHeight) {
                 }); 
             });
             self.$searchAddressButton.on('click', function() {
+                // 주소 검색
                 self._setKakaoSearch();
                 $('.map-container').addClass('result-map');
                 $('html').scrollTop(0);
+
+                self._calculationTop();
             });
 
             self._resize();
@@ -548,6 +559,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     return item;
                 });
                 self.$map.applyMapData(self.storeData);
+                self._setResultText();
                 if (seq) self.$map.selectedMarker(self.storeData[0].id);
 
                 self.userCityName = self.userBoroughName = "";
@@ -675,25 +687,33 @@ function moveDetail(el, detailUrl, windowHeight) {
                 self.isTransion = true;
                 
                 var toggle = self.$leftContainer.find('.btn-view');
-                if(toggle.hasClass('map')){
-                    var maptop = self.$defaultListContainer.position().top;
-                    $('.store-map-con').css({
-                        visibility: 'visible',
-                        // top: maptop,
-                        left:0,
-                        x: self.windowWidth,
-                        // height: self.$mapContainer.height(),
-                        'z-index': 5
-                    }).transition({x:0}, 350, "easeInOutCubic", function(){self.isTransion = false;});
+                if($(window).width() < 768) {
+                    if(toggle.hasClass('map')){
+                        var maptop = self.$defaultListContainer.position().top;
+                        $('.store-map-con').css({
+                            visibility: 'visible',
+                            // top: maptop,
+                            left:0,
+                            x: self.windowWidth,
+                            // height: self.$mapContainer.height(),
+                            'z-index': 5
+                        }).transition({x:0}, 350, "easeInOutCubic", function(){self.isTransion = false;});
+            
+                        toggle.removeClass("map").addClass('list').find('span').text('리스트보기');
+            
+                        self.$map.resize();
+                    } else{
+                        toggle.removeClass("list").addClass('map').find('span').text('지도보기');
         
-                    toggle.removeClass("map").addClass('list').find('span').text('리스트보기');
-        
-                    self.$map.resize();
-                } else{
-                    toggle.removeClass("list").addClass('map').find('span').text('지도보기');
-    
-                    $('.store-map-con').stop().transition({x:self.windowWidth}, 350, "easeInOutCubic", function(){self.isTransion = false;})
+                        $('.store-map-con').stop().transition({x:self.windowWidth}, 350, "easeInOutCubic", function(){self.isTransion = false;})
+                    }
                 }
+                // PC버전으로 돌아가면 지도 영역 스타일 초기화
+                $(window).resize(function() {
+                    if($(window).width() > 1024) {
+                        $('.store-map-con').removeAttr('style');
+                    }
+                });
             }
         },
 
@@ -1111,27 +1131,41 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.$leftContainer.addClass('active');
             if( window.innerWidth < 768) {
                 self.$leftContainer.find('.store-list-box').stop().animate({
-                    marginTop : -$mapContainer.offset().top
+                    // marginTop : -$mapContainer.offset().top
                 }, function(){
                     // $(this).addClass('fixed');
-                    $(this).attr('style', '');
+                    // $(this).attr('style', '');
                 })
+                $(window).resize(function() { 
+                    self._calculationTop();
+
+                    var toggle = self.$leftContainer.find('.btn-view');
+                    if(toggle.hasClass('map')){
+                        $('.store-map-con').stop().transition({x:self.windowWidth}, 350, "easeInOutCubic", function(){self.isTransion = false;})
+                    }
+                });
             }
         },
 
-        //검색 시 .store-list-box 위치 계산
+        // 리사이즈 시 .store-map-con 위치 다시 계산
+
+        //검색 시 .store-list-box, .store-map-con 위치 계산
         _calculationTop : function() {
-            waiting_state_h = $('.waiting-state').height();
-            page_header_h = $('.page-header').height();
-            mobile_nav_wrap_h = $('.mobile-nav-wrap').height();
-            header_h = $('.header').height();
-            mobile_nav_wrap_mtop = parseInt($('html').find('.mobile-nav-wrap .nav').css('margin-top'));
-            console.log(waiting_state_h, page_header_h, mobile_nav_wrap_h, mobile_nav_wrap_mtop, header_h, '검색 시 .store-list-box 위치 계산')
+            if($(window).width() < 768) {
+                waiting_state_h = $('.waiting-state').outerHeight();
+                page_header_h = $('.page-header').outerHeight();
+                mobile_nav_wrap_h = $('.mobile-nav-wrap').outerHeight();
+                mobile_nav_wrap_mtop = $('html').find('.mobile-nav-wrap .nav').css('margin-top');
+                header_h = $('.header').outerHeight();
 
+                $('.store-list-box').css({
+                    top: - waiting_state_h - page_header_h - mobile_nav_wrap_h - header_h
+                });
 
-            $('.store-list-box').css({
-                top: - waiting_state_h - page_header_h - mobile_nav_wrap_h - header_h
-            });            
+                $('.result-map .store-map-con').css({
+                    top: - waiting_state_h - page_header_h - mobile_nav_wrap_h - header_h + 127
+                });
+             }
         },
 
         //모바일 지도보기 클릭 시 맵 높이 설정
@@ -1167,7 +1201,7 @@ function moveDetail(el, detailUrl, windowHeight) {
             }
 
             self.$mapContainer.css({
-                width: mapwidth,
+                // width: mapwidth,
                 // height: mapheight,
                 // 'margin-left': mapmargin
             });

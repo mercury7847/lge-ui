@@ -59,6 +59,7 @@ $(function () {
         }
     });
 
+
     vcui.require(['ui/scrollNavi','ui/smoothScroll'], function () {
         // 플로우배너
 
@@ -69,7 +70,6 @@ $(function () {
         $('.ui_carousel_slider_banner2').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'
         });
-
 
         $('.ui_carousel_slider_banner1').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
             
@@ -169,6 +169,7 @@ $(function () {
     });
 
 
+
     var $window   = $(window);
     var aniSpeed = 800;
     var wheelAniInterval = null;
@@ -187,6 +188,13 @@ $(function () {
     
     $('.next-arr').on('a', function(e){
         e.preventDefault();
+    });
+
+    $(document).on('click', 'a', function(e){
+        var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
+        if(href == '#'){
+            e.preventDefault();
+        }            
     });
 
     $window.on('breakpointchange', function(e){
@@ -237,6 +245,7 @@ $(function () {
 
     function wheelScene(delta) {
 
+        if(!canScroll) return; 
         var nextIndex = (delta < 0) ? -1 : 1;
         nextIndex = nextIndex + currentPage;
         nextIndex = Math.max(Math.min(nextIndex, maxLens), 0);
@@ -288,13 +297,13 @@ $(function () {
     document.addEventListener('wheel', function(e){
 
         if(currentPage == maxLens){
-            if(wheelInterval) clearTimeout(wheelInterval);
-            wheelInterval = setTimeout(function(){
+            // if(wheelInterval) clearTimeout(wheelInterval);
+            // wheelInterval = setTimeout(function(){
                 var st = $('.section-cover').scrollTop();
                 if(st==0 && e.deltaY<0){
                     wheelScene(-1);
                 }
-            }, 100);
+            // }, 100);
 
         }else{
 

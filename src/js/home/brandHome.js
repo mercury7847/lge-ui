@@ -1,4 +1,4 @@
-$(function() {
+;$(function() {
 
     vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {     
         
@@ -152,6 +152,7 @@ $(function() {
         var stepLens = 0;
         var posArr = [];
         var wheelArr = [];
+        
 
         var regex = /^data-step-(-?\d*)/;
 
@@ -164,8 +165,11 @@ $(function() {
             e.preventDefault();
         });
 
-        $(document).on('click', 'a,button', function(e){
-            e.preventDefault();
+        $(document).on('click', 'a', function(e){
+            var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
+            if(href == '#'){
+                e.preventDefault();
+            }            
         });
 
         $window.on('resizeend', function(e){
@@ -179,9 +183,10 @@ $(function() {
 
         function moveStep(step){
 
-            if(!canScroll) return;  
+            
+            if(!canScroll) return;
             if(currentStep == step) return;
-            canScroll = false; 
+            canScroll = false;
 
             var arr = wheelArr[step];
             if(!vcui.isArray(arr)){ 
@@ -191,23 +196,22 @@ $(function() {
 
             for(var i =0; i<arr.length; i++){
                 var item = arr[i];
-                var $target = $(item.target);
+                var $target = $(item.target);    
                 if(i==0){
                     $target.transit(item.transit, function(){
                         currentStep = step;
-                        canScroll = true
-                    });
+                        canScroll = true;
+                    });  
                 }else{
-                    $target.transit(item.transit);
-                }   
+                    $target.transit(item.transit);  
+                }                               
             }
-
         }
 
 
         function wheelScene(delta) {
 
-            if(!canScroll) return; 
+            if(!canScroll) return;
             var nextStep = (delta < 0) ? -1 : 1;
             nextStep = nextStep + currentStep;
             nextStep = Math.max(Math.min(nextStep, stepLens), 0);                   
@@ -241,16 +245,14 @@ $(function() {
                     obj[match[1]] = match[2];
                 }
             }
-
             return obj;
-
         }
 
+
         function moveScene(idx, step, speed){
-
-            if(!canScroll) return;  
-            canScroll = false;   
-
+             
+            if(!canScroll) return;
+            canScroll = false;
             $('.brand-wrap').scrollTop(0);   
             appMotion(0); 
 
@@ -287,28 +289,32 @@ $(function() {
                 });
             }, 100);
 
-        } 
-        
+        }         
+
+        var prevTime = new Date().getTime();
 
         document.addEventListener('wheel', function(e){
-            
-            if(currentStep == stepLens){
-                if(wheelInterval) clearTimeout(wheelInterval);
-                wheelInterval = setTimeout(function(){
-                    var st = $('.brand-wrap').scrollTop();
-                    if(st==0 && e.deltaY<0){
-                        wheelScene(-1);
+
+            var curTime = new Date().getTime();
+            if(typeof prevTime !== 'undefined'){
+                var timeDiff = curTime-prevTime;
+                if(timeDiff > 200){
+                    if(currentStep == stepLens){
+                        var st = $('.brand-wrap').scrollTop();
+                        if(st==0 && e.deltaY<0){
+                            wheelScene(-1);
+                        }
+                    }else{
+                        if(e.deltaY>0 || e.deltaY<0){
+                            wheelScene(e.deltaY);
+                        }
                     }
-                }, 100);
-            }else{
-                if(e.deltaY>0 || e.deltaY<0){
-                    wheelScene(e.deltaY);
-                }
-            }  
+                }                    
+            }            
+            prevTime = curTime;              
 
         });
 
-        
         $(document).on('touchstart touchend touchcancel', function(e) {
 
             var data = _getEventPoint(e);
@@ -499,6 +505,7 @@ $(function() {
                         var match = attr.name.match(regex);
                         if(match === null) continue;                                
                         if(attributeIndex==1) cssVal = stringToObj(attr.value);
+
                         arr.push({
                             sort : match[1],
                             target : this,
@@ -646,8 +653,6 @@ $(function() {
                 var ny = st + deviceH*2 - 188 - useWrap;
                 $('.ui_device').css('top', -ny);
             }
-
-
 
             if(!isMobile){
                 if(st > deviceY+15){

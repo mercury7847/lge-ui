@@ -383,7 +383,7 @@
 			} @else if $bg == dark {
                 background-color: #333;
                 * {
-                    color:#000;
+                    color:#fff;
                     @include mobile {
                         color:#fff;
                     }
@@ -410,7 +410,7 @@
 			} @else if $bg == black {
                 background-color: #000;
                 * {
-                    color:#000;
+                    color:#fff;
                     @include mobile {
                         color:#fff;
                     }
@@ -777,6 +777,11 @@
                     width:18px;
                     border-radius:4px;
                 }
+            }
+        }
+        @include mobile {
+            .slide-solo {
+                padding-bottom:0;
             }
         }
     }

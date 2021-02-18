@@ -168,7 +168,7 @@
                     font-size: $font-large;
                     line-height: 28px;
                     @include mobile {
-                        padding-bottom:8px;
+                        padding-bottom:16px;
                         border-width:3px;
                         font-size:($font-large - 1);
                         line-height:25px;

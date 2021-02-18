@@ -1511,12 +1511,15 @@
         .rersv-wrap {
             position: relative;
             height:100%;
-            padding:55px 55px 120px;
+            padding:55px 55px 140px;
             background: #f4f4f4;
             border-radius:5px;
             box-sizing:border-box;
 
             .headline {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
                 margin-bottom:50px;
                 padding-bottom:15px;
                 border-bottom:1px solid #000;
@@ -1524,6 +1527,15 @@
                     font-size:32px;
                     color:#000;
                     font-weight:bold;
+                }
+            }
+
+            .user-guide-txt {
+                font-size:16px;
+
+                strong {
+                    font-weight:bold;
+                    color:#da0f47;
                 }
             }
 
@@ -1536,6 +1548,9 @@
             }
 
             .form-wrap {
+                .btn {
+                    background: none;
+                }
                 .btn-link {
                     margin-left:26px;
                 }
@@ -1602,6 +1617,12 @@
                     background: #f4f4f4;
                 }
             }
+
+            .reserv-inquiry-slider {
+                .item-list {
+                    
+                }
+            }
         }
 
         @include pc-size-l {
@@ -1612,7 +1633,7 @@
 
         @include tablet {
             .rersv-wrap {
-                padding:45px 25px 80px;
+                padding:45px 25px 120px;
 
                 .headline {
                     margin-bottom:30px;
@@ -1673,7 +1694,7 @@
     
                 .btn-wrap {
                     position: static;
-                    margin-top:32px;
+                    margin-top:55px;
                     text-align: center;
                 }
             }
@@ -1795,7 +1816,7 @@
 
             .item-list {
                 .item {
-                    width:calc(88.8888vw);
+                    width:70vw;
 
                     .item-cont {
                         padding:40px 32px;

@@ -24,7 +24,6 @@ $(window).ready(function(){
 				'<div class="visual-area">'+
 					'<div class="visual-box">'+
 						'<div class="box-inner">'+
-							'<img src="{{storyMainThumbnailPat}}{{storyMainThumbnailServerName}}" alt="{{storyMainThumbnailAltText}}">'+
 							'<p class="hidden pc">{{storyTitle}}</p>'+
 							'<p class="hidden mobile">{{storyTitle}}</p>'+
 							'<iframe src="{{storyMovieUrl}}" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="{{storyTitle}}"></iframe>'+
@@ -52,7 +51,7 @@ $(window).ready(function(){
 				'{{#if modelList && modelList.length > 0}}'+
 				'<div class="btn-area">'+
 					'<div class="btn-wrap">'+
-						'<a href="#n" class="btn-text btn-modelName">{{modelList[0].models[0].modelDisplayName}}</a>'+
+						'<a href="#n" class="btn-text btn-modelName">{{#raw modelList[0].models[0].modelDisplayName}}</a>'+
 						'{{#if isMoreModel}}'+
 						'<button type="button" class="btn-more btn-moreModel"><span class="hidden">수상내역 더보기</span></button>'+
 						'{{/if}}'+
@@ -82,7 +81,7 @@ $(window).ready(function(){
 				'</div>'+
 				'<div class="desc">'+
 					'<div class="inner">'+
-						'{{#raw stroyDesc}}'+
+						'{{#raw storyDesc}}'+
 					'</div>'+
 					'<button class="more-btn"><span class="hidden">열기</span></button>'+
 				'</div>'+
@@ -103,7 +102,7 @@ $(window).ready(function(){
                 '<ul class="com-pop-list">'+
                     '{{#each model in models}}'+         
                     '<li>'+
-                        '<a href="{{model.modelUrlPath}}">{{model.modelDisplayName}}</a>'+
+                        '<a href="{{model.modelUrlPath}}">{{#raw model.modelDisplayName}}</a>'+
                     '</li>'+
                     '{{/each}}'+             
                 '</ul>'+
@@ -113,7 +112,7 @@ $(window).ready(function(){
             '<li>'+
 				'<a href="#n" data-story-id="{{storyId}}">'+
 					'<span class="thumb">'+
-						'<img src="{{storyMainThumbnailPath}}{{storyMainThumbnailServerName}}" alt="{{storyMainThumbnailAltText}}">'+
+						'<img src="{{storyListThumbnailPath}}{{storyListThumbnailServerName}}" alt="{{storyListThumbnailAltText}}">'+
 					'</span>'+
 					'<span class="tit"><span>{{storyTitle}}</span></span>'+
 				'</a>'+
@@ -144,7 +143,7 @@ $(window).ready(function(){
 
             superCategoryTab = $('.ui_supercategory_tab');
             categoryTab = $('.ui_category_tab').hide();
-            yearTab = $('.ui_year_tab');
+            yearTab = $('.video-list-wrap .ui_tab');
             contList = $('.cont_list');
         }
 
@@ -185,8 +184,8 @@ $(window).ready(function(){
                 storyId: sid
             }
             console.log("### setViewContents ###", sendata)
-            lgkorUI.requestAjaxData(VIEWER_DATA_URL, sendata, function(result){    
-                changeViewContents(result.data);
+            lgkorUI.requestAjaxDataPost(VIEWER_DATA_URL, sendata, function(result){    
+                changeViewContents(result.data[0].storyinfo);
 
                 lgkorUI.hideLoading();
             });
@@ -195,20 +194,26 @@ $(window).ready(function(){
         function changeViewContents(data){
             $('.video-wrap').empty();
 
-            var isMoreModel = false;
-            var modelist = data.modelList;
-            if(modelist.length > 1 || modelist[0].models.length > 1){
-                isMoreModel = true;
-            }
-            data.isMoreModel = isMoreModel;
+            console.log("### changeViewContents ###", data)
 
-            var templateList = vcui.template(viewerTemplate, data);
-            $('.video-wrap').append(templateList);
-
-            $('#match-models .pop-conts').empty();
-            for(var key in data.modelList){
-                var poptemplate = vcui.template(matchModelPopTemplate, data.modelList[key]);
-                $('#match-models .pop-conts').append(poptemplate);
+            if(data != undefined){
+                var isMoreModel = false;
+                var modelist = data.modelList;
+                if(modelist && modelist.length > 1){
+                    if(modelist[0].models.length > 1) isMoreModel = true;
+                }
+                data.isMoreModel = isMoreModel;
+    
+                if(!data.videoType) data.videoType = "youtube";
+    
+                var templateList = vcui.template(viewerTemplate, data);
+                $('.video-wrap').append(templateList);
+    
+                $('#match-models .pop-conts').empty();
+                for(var key in data.modelList){
+                    var poptemplate = vcui.template(matchModelPopTemplate, data.modelList[key]);
+                    $('#match-models .pop-conts').append(poptemplate);
+                }
             }
         }
 
@@ -243,15 +248,16 @@ $(window).ready(function(){
                 year: idxs.year
             }
             
-            lgkorUI.requestAjaxData(VIDEO_LIST_URL, sendata, function(result){
-                var page = result.data.pagination.page;
-                var totalpage = result.data.pagination.totalCount;
+            lgkorUI.requestAjaxDataPost(VIDEO_LIST_URL, sendata, function(result){
+                var data = result.data[0];
+                var page = data.pagination.page;
+                var totalpage = data.pagination.totalCount;
                 contList.data('page', page);
                 contList.data('totalpage', totalpage);
 
                 if(page == 1) contList.find('.video-list').empty();
-                for(var key in result.data.storyList){
-                    var contlistemplate = vcui.template(contListTemplate, result.data.storyList[key]);
+                for(var key in data.storyList){
+                    var contlistemplate = vcui.template(contListTemplate, data.storyList[key]);
                     contList.find('.video-list').append(contlistemplate);
                 }
 
@@ -262,23 +268,23 @@ $(window).ready(function(){
                         categoryTab.find('.tabs').empty();
 
                         if(tabIdxs.superCategoryId != ""){
-                            tabTemplate = vcui.template(categoryTabTemplate, {categoryList: result.data.categoryList});
+                            tabTemplate = vcui.template(categoryTabTemplate, {categoryList: data.categoryList});
                             categoryTab.find('.tabs').append(tabTemplate);
                             categoryTab.show().find('.ui_tab').vcTab('update').vcSmoothScroll('refresh');
                         } else{
                             categoryTab.hide();
                         }
 
-                        changeYearTab(result.data.storyListByYear);
+                        changeYearTab(data.storyListByYear);
                     break;
 
                     case REQUEST_MODE_CATEGORY:
-                        changeYearTab(result.data.storyListByYear);
+                        changeYearTab(data.storyListByYear);
                     break;
                 }
 
                 console.log("contLoadMode:",contLoadMode, REQUEST_MODE_SCROLL)
-                if(contLoadMode != REQUEST_MODE_SCROLL) changeViewContents(result.data.storyinfo);
+                if(contLoadMode != REQUEST_MODE_SCROLL) changeViewContents(data.storyinfo);
 
                 scrollAbled = true;
 
