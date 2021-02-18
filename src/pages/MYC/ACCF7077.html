@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+    <!-- 210218 수정 -->
     @@include('./common/head.html', {
-        pageCSS: ["MYC/MYC"]
+        pageCSS: [
+            "MYC/MYC",
+            "support/support"
+        ]
     })
+    <!-- //210218 수정 -->
 <body>
     <div class="wrap">
 		<button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>출장 서비스 예약 - 예약 일반</span></button><br><br>
@@ -11,7 +16,8 @@
 		<button type="button" data-href="#popup4" data-control="modal" class="btn pink"><span>출장 서비스 예약 - 예약 의류건조기</span></button><br><br>
 		<button type="button" data-href="#popup5" data-control="modal" class="btn pink"><span>출장 서비스 예약 - 예약 의류건조기 - 서비스예약취소</span></button><br><br>
 		<button type="button" data-href="#popup6" data-control="modal" class="btn pink"><span>출장 서비스 예약 - 예약 의류건조기 - 예약일시변경</span></button><br><br> -->
-		<button type="button" data-href="#popup7" data-control="modal" class="btn pink"><span>이메일 문의</span></button>
+		<button type="button" data-href="#popup7" data-control="modal" class="btn pink"><span>이메일 문의</span></button><br><br>
+        <button type="button" data-href="#popup8" data-control="modal" class="btn pink"><span>전화상담예약</span></button>
     </div>
 
     <!-- 예약 일반 -->
@@ -55,5 +61,11 @@
         popupID: 'popup7'
     })
     <!-- //이메일 문의 -->
+
+    <!-- 전화 상담 예약 -->
+    @@include('./common/popup/ACCF7077_pop8.html', {
+        popupID: 'popup8'
+    })
+    <!-- //전화 상담 예약 -->
 </body>
 </html>

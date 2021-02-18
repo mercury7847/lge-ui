@@ -411,11 +411,11 @@
                 },
                 inputVisible : function(){
                     var self = this;
-                    self.el.container.find('#engineerUserName, #engineerPhoneNo').attr('disabled', false);
+                    self.el.container.find('#engineerUserName, #engineerPhoneNo').attr('disabled', false).val('');
                 },
                 inputDisable : function(){
                     var self = this;
-                    self.el.container.find('#engineerUserName, #engineerPhoneNo').attr('disabled', true);
+                    self.el.container.find('#engineerUserName, #engineerPhoneNo').attr('disabled', true).val('');
                 },
                 init : function(){
                     var self = this;
@@ -435,7 +435,6 @@
 
                     self.el.popup.find('.btn-agree').on('click', function(e){
                         e.preventDefault();
-                        console.log(1)
 
                         if( self.el.agreeChk.prop('checked') == false) {
                             self.el.agreeChk.trigger('click');
@@ -447,7 +446,10 @@
                         self.validation.validate();
                         var validationResult = self.validation.validate().success;
                         if( validationResult ) {
-                            console.log(111)
+                            //각 인풋의 value를 히든 인풋에 담은 뒤에 서브밋
+
+
+                            //self.el.container.find('#engineerReservationForm').submit();
                         }
                     })
 
@@ -471,6 +473,134 @@
                     authChangeRdo : '[name="inquiryRdo"]',
                     changeCont : $('.reserv-inquiry .toggle-forms')
                 },
+                validation : null,
+                authManager : null,
+                validateInit : function(){
+                    var self = this;
+                   
+                    vcui.require(['ui/validation', 'ui/formatter'], function () {
+                        $('#inquiryAuthPhoneNo').vcFormatter({'format':'num', "maxlength":11});
+        
+                        var register = {
+                            inquiryAuthName : {
+                                required : true,
+                                msgTarget : ".err-block"
+                            },
+                            inquiryAuthNo : {
+                                required: true,
+                                msgTarget: '.err-block',
+                                errorMsg: '접수번호를 입력해주세요.'
+                            },
+                            // inquiryAuthPhoneNo : {
+                            //     required : true,
+                            //     maxLength : 11,
+                            //     pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
+                            //     msgTarget : ".err-block",
+                            // },
+                            // inquiryAuthReceiveNo : {
+                            //     required: true,
+                            //     msgTarget: '.err-block',
+                            //     errorMsg: '인증번호를 입력해주세요.'
+                            // }
+                        };
+
+                        var authOptions = {
+                            elem: {
+                                form: '#authDataForm2',
+                                name: '#inquiryAuthName2',
+                                phone: '#inquiryAuthPhoneNo',
+                                number: '#inquiryAuthReceiveNo'
+                            },
+                            register: {
+                                inquiryAuthName2: {
+                                    required: true,
+                                    maxLength: 30,
+                                    pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                                    msgTarget: '.err-block',                        
+                                    errorMsg: '이름을 입력해주세요.',
+                                    patternMsg: '이름은 한글 또는 영문만 입력 가능합니다.'
+                                },
+                                inquiryAuthPhoneNo: {
+                                    required: true,
+                                    minLength: 10,
+                                    maxLength: 11,
+                                    pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                                    msgTarget: '.err-block',
+                                    errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                                    patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                                },
+                                inquiryAuthReceiveNo:{
+                                    required: true,
+                                    msgTarget: '.err-block',
+                                    errorMsg: '인증번호를 입력해주세요.',
+                                }
+                            }
+                        };
+
+                        self.validation = new vcui.ui.CsValidation('.reserv-inquiry .auth-type-no', {register : register});
+                        self.authManager = new AuthManager(authOptions);
+
+                        self.el.container.find('.btn-auth-confirm').on('click', function() {
+                            self.authManager.send(this);
+                        });
+
+                        self.el.container.find('.btn-inquiry').on('click', function(){
+
+                            if( self.el.container.find('.auth-type-no.active').length ) {
+                                self.validation.validate();
+                                var validationResult = self.validation.validate().success;
+                                if( validationResult ) {
+                                    //각 인풋의 value를 히든 인풋에 담은 뒤에 서브밋
+        
+        
+                                    //self.el.container.find('#engineerReservationForm').submit();
+                                    $('#authDataForm1').submit();
+                                }
+                            }
+                            
+                            if( self.el.container.find('.auth-type-phone.active').length ) {
+                                self.authManager.confirm('.btn-auth-confirm', function(success, result) {
+                                    if (success) {
+                                        $('#authDataForm2').submit();
+                                    }
+                                })
+                            }
+
+                        })
+    
+
+                        // self.el.container.find('.btn-auth-confirm').on('click', function() {
+                        //     var result = self.validation.validate(['inquiryAuthName, inquiryAuthPhoneNo']);
+
+                        //     console.log(result.success)
+            
+                        //     if (result.success) {
+                        //         console.log(1111)
+                        //         self.authManager.open(function() {
+                        //             if ($('#userName').val()) {
+                        //                 $('#authName').val($('#inquiryAuthName').val()).prop('readonly', true);
+                        //                 $('#authPhoneNo').val($('#inquiryAuthPhoneNo').val()).prop('readonly', true);
+                        //             }
+                        //         });
+                        //     }
+                        // });
+
+                        // 인증문자 보내기
+                        // self.$authPopup.find('.btn-send').on('click', function() {
+                        //     authManager.send(this);
+                        // });
+
+                        // 인증 완료 하기
+                        // self.$authPopup.find('.btn-auth').on('click', function() {
+                        //     authManager.confirm('.btn-open', function(success, result) {
+                        //         if (success) {
+                                    
+                        //         }
+                        //     });
+                        // });
+                    });
+                    
+                },
                 toggle : function(){
                     var self = this;
                     var $rdo = self.el.container.find(self.el.authChangeRdo);
@@ -489,7 +619,11 @@
                     })
                 },
                 init :function(){
-                    this.toggle();
+                    var self = this;
+                    self.toggle();
+
+                    self.validateInit();
+                    
                 }
             },
             init : function(){

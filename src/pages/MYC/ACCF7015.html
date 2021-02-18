@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/myEvent"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+				"pageTitle": "리뷰 관리"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+				<div class="hidden-input-group">
+					<input type="hidden" name="totalCount" value="5"/>
+					<input type="hidden" name="page" value="1"/>
+				</div>
+                <div class="cont-wrap no-bd">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect2" : [
+                                { "on": "on", "page": "계약현황" },
+                                { "on": "", "page": "납부내역" },
+                                { "on": "", "page": "방문 알리미" }
+                            ]
+                        })
+                        <div class="lnb-contents">
+							내용
+                        </div>
+                    </div>
+                </div>
+			</div>
+			<article id="event-modal" class="popup-wrap"></article>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>
