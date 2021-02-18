@@ -322,25 +322,25 @@
 
                                         <!-- 접수번호 or 휴대폰 번호 인증 컨텐츠 전환 active class -->
                                         <div class="toggle-forms active auth-type-no">
-                                            <form action="" id="authDataForm1" method="post" name="authDataForm1">
-                                                <input type="hidden" id="authName" name="authName" value="">
-                                                <input type="hidden" id="authNo" name="authNo" value="">
-
+                                            <form action="/html/CS/CSRF6026.html" id="authDataForm1" method="POST" name="authDataForm1" data-ajax="/lg5-common/data-ajax/support/receptionDetailsSuccess.json">
                                                 <dl class="forms block-type">
-                                                    <dt class="tit"><label for="inquiryAuthName" class="req">이름<span class="blind">필수입력</span></label></dt>
+                                                    <!-- 2021.02.18 id, name for 값 수정 -->
+                                                    <dt class="tit"><label for="userName1" class="req">이름<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inquiryAuthName" placeholder="이름 입력" value="" name="inquiryAuthName" data-required="true" required maxlength="30" data-format="koreng" data-error-msg="이름을 입력해주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요">
+                                                            <input type="text" id="userName1" placeholder="이름 입력" value="" name="userName1" data-required="true" required maxlength="30" data-format="koreng" data-error-msg="이름을 입력해주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요">
                                                         </div>
                                                         <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                     </dd>
                                                 </dl>
                                                 
                                                 <dl class="forms block-type">
-                                                    <dt class="tit"><label for="inquiryAuthNo" class="req">접수번호<span class="blind">필수입력</span></label></dt>
+                                                    <!-- 2021.02.18 id, name for 값 수정 -->
+                                                    <dt class="tit"><label for="number" class="req">접수번호<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inquiryAuthNo" placeholder="접수번호 입력" value="" maxlength="20" name="inquiryAuthNo" data-required="true" data-error-msg="접수번호를 입력해주세요.">
+                                                            <!-- 2021.02.18 id, name for 값 수정 -->
+                                                            <input type="text" id="number" placeholder="접수번호 입력" value="" maxlength="20" name="number" data-required="true" data-error-msg="접수번호를 입력해주세요.">
                                                         </div>
                                                         <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                     </dd>
@@ -352,32 +352,33 @@
                                         <!-- 접수번호 or 휴대폰 번호 인증 컨텐츠 전환 active class -->
                                         <div class="toggle-forms auth-type-phone">
                                             <form action="" id="authDataForm2" method="post" name="authDataForm2" data-auth-url="/lg5-common/data-ajax/support/authSuccess.json" data-sms-url="/lg5-common/data-ajax/support/authSendSuccess.json">
-                                                <input type="hidden" id="authName2" name="authName2" value="">
-                                                <input type="hidden" id="authPhoneNo" name="authPhoneNo" value="">
-                                                <input type="hidden" id="authReceiveNo" name="authReceiveNo" value="">
-
                                                 <dl class="forms block-type">
-                                                    <dt class="tit"><label for="inquiryAuthName2" class="req">이름<span class="blind">필수입력</span></label></dt>
+                                                    <!-- 2021.02.18 id, name for 값 수정 -->
+                                                    <dt class="tit"><label for="userName2" class="req">이름<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inquiryAuthName2" placeholder="이름 입력" value="" name="inquiryAuthName2" data-required="true" required maxlength="30" data-format="koreng" data-error-msg="이름을 입력해주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요">
+                                                            <!-- 2021.02.18 id, name for 값 수정 -->
+                                                            <input type="text" id="userName2" placeholder="이름 입력" value="" name="userName2" data-required="true" required maxlength="30" data-format="koreng" data-error-msg="이름을 입력해주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요">
                                                         </div>
                                                         <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                     </dd>
                                                 </dl>
                                                 <dl class="forms block-type">
-                                                    <dt class="tit"><label for="inquiryAuthPhoneNo" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
+                                                    <!-- 2021.02.18 id, name for 값 수정 -->
+                                                    <dt class="tit"><label for="phoneNo" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="box">
                                                             <div class="input-wrap">
-                                                                <input type="number" id="inquiryAuthPhoneNo" value="" placeholder="휴대폰 번호 입력" minlength="10" maxlength="11" name="inquiryAuthPhoneNo" data-required="true" data-pattern-msg="정확한 휴대전화 번호를 입력해주세요." data-error-msg="정확한 휴대전화 번호를 입력해주세요.">
+                                                                <!-- 2021.02.18 id, name for 값 수정 -->
+                                                                <input type="number" id="phoneNo" value="" placeholder="휴대폰 번호 입력" minlength="10" maxlength="11" name="phoneNo" data-required="true" data-pattern-msg="정확한 휴대전화 번호를 입력해주세요." data-error-msg="정확한 휴대전화 번호를 입력해주세요.">
                                                             </div>
                                                             <div class="cell">
                                                                 <button type="button" class="btn btn-auth-confirm" ><span>인증 번호 발송</span></button>
                                                             </div>
                                                         </div>
                                                         <div class="input-wrap">
-                                                            <input type="number" id="inquiryAuthReceiveNo" name="inquiryAuthReceiveNo" title="인증번호 입력" value="" placeholder="인증번호 입력" data-error-msg="인증번호를 입력해 주세요." data-required="true" disabled required>
+                                                            <!-- 2021.02.18 id, name for 값 수정 -->
+                                                            <input type="number" id="authNo" name="authNo" title="인증번호 입력" value="" placeholder="인증번호 입력" data-error-msg="인증번호를 입력해 주세요." data-required="true" disabled required>
                                                         </div>
                                                         <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                     </dd>

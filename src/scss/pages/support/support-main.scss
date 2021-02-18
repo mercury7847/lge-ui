@@ -92,6 +92,7 @@
 
             .section-col {
                 flex:1;
+                width:50%;
 
                 & + .section-col {
                     margin-left:24px;
@@ -106,8 +107,6 @@
                 flex-direction: column;
 
                 .section-col {
-                    flex:1;
-    
                     & + .section-col {
                         margin-top:24px;
                         margin-left:0;
@@ -1619,8 +1618,86 @@
             }
 
             .reserv-inquiry-slider {
+                .slide-track {
+                    position: relative;
+                }
                 .item-list {
-                    
+                    float:left;
+                    width:50%;
+                    padding:0 8px;
+                    box-sizing:border-box;
+
+                    > a {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        padding:24px;
+                        height:168px;
+                        box-sizing:border-box;
+                        border-radius:10px;
+                        background: #fff;
+                    }
+
+                    .item-date {
+                        display: block;
+                        font-size:16px;
+                        margin-bottom:4px;
+                        line-height: 1.63;
+                        font-weight: bold;
+                    }
+
+                    .item-cont {
+                        flex:1;
+                        font-size:14px;
+                        line-height:1.71;
+
+                        .bullet-list {
+                            margin-top:0;
+                        }
+                    }
+
+                    .item-status-cont {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-top:10px;
+
+                        .item-status {
+                            font-size:16px;
+                            font-weight:bold;
+                            line-height:1.63;
+                            
+                            &:before {
+                                content:"";
+                                display: inline-block;
+                                width:16px;
+                                height:16px;
+                                margin-right:5px;
+                                vertical-align: middle;
+                                background-size: 100% 100%;
+                                background-position: 0 0;
+                                background-repeat: no-repeat;
+                            }
+
+                            &.comp {
+                                color:#21a9aa;
+                                &:before {
+                                    background-image: url("/lg5-common/images/CS/icon-chk-positive.svg");
+                                }
+                            }
+                            &.ing {
+                                color:#da0f47;
+                                &:before {
+                                    background-image: url("/lg5-common/images/CS/icon-loading-dot.svg");
+                                }
+                            }
+                        }
+                        .st-flag {
+                            font-size:12px;
+                            color:#666;
+                        }
+                    }
                 }
             }
         }
