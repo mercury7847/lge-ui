@@ -183,9 +183,10 @@ $(function() {
 
         function moveStep(step){
 
-            if(!canScroll) return;  
+            
+            if(!canScroll) return;
             if(currentStep == step) return;
-            canScroll = false; 
+            canScroll = false;
 
             var arr = wheelArr[step];
             if(!vcui.isArray(arr)){ 
@@ -210,7 +211,7 @@ $(function() {
 
         function wheelScene(delta) {
 
-            if(!canScroll) return; 
+            if(!canScroll) return;
             var nextStep = (delta < 0) ? -1 : 1;
             nextStep = nextStep + currentStep;
             nextStep = Math.max(Math.min(nextStep, stepLens), 0);                   
@@ -244,16 +245,14 @@ $(function() {
                     obj[match[1]] = match[2];
                 }
             }
-
             return obj;
-
         }
 
+
         function moveScene(idx, step, speed){
-
-            if(!canScroll) return;  
-            canScroll = false;   
-
+             
+            if(!canScroll) return;
+            canScroll = false;
             $('.brand-wrap').scrollTop(0);   
             appMotion(0); 
 
@@ -312,6 +311,7 @@ $(function() {
                     }
                 // }, 100);
             }else{
+                // console.log(e.deltaY);
                 if(e.deltaY>0 || e.deltaY<0){
                     wheelScene(e.deltaY);
                 }
@@ -319,7 +319,6 @@ $(function() {
 
         });
 
-        
         $(document).on('touchstart touchend touchcancel', function(e) {
 
             var data = _getEventPoint(e);
