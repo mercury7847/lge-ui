@@ -84,8 +84,8 @@ $(window).ready(function(){
 				
 				if(listID){
 					var sendata = {};
-					lgkorUI.requestAjaxData(productListUrl, sendata, function(result) {
-						var lists = vcui.template(listItemTemplate, result.data);
+					lgkorUI.requestAjaxDataPost(productListUrl, sendata, function(result) {
+						var lists = vcui.template(listItemTemplate, result.data[0]);
 						$("#"+listID).append(lists);
 						self.setCarousel($("#"+listID).find('.ui_carousel_slider'));
 						// var data = result.data;
