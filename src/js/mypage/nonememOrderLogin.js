@@ -1,5 +1,6 @@
 ;(function(){
     var LOGIN_CONFIRM_URL;
+    var SUPPLY_CONFIRM_URL;
 
     var emailInquiryValidation;
     var phoneInquiryValidation;
@@ -13,6 +14,7 @@
 
     function setting(){
         LOGIN_CONFIRM_URL = $('.contents.non-members').data('confirmUrl');
+        SUPPLY_CONFIRM_URL = $('.contents.non-members').data('serviceConfirmUrl');
 
         var register;
 
@@ -91,16 +93,17 @@
             userEmail: emailValues.userEmail,
             phoneNumber: phoneValues.userPhone
         }
-        console.log("sendata:",sendata)
-        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(LOGIN_CONFIRM_URL, sendata, function(result){
-            if(result.data.success == "Y"){
-                var query = "?inquiryType="+sendata.inquiryType;
-                query += "&orderNumber="+sendata.orderNumber;
-                query += "&userName="+sendata.userName;
-                query += "&userEmail="+sendata.userEmail;
-                query += "&phoneNumber="+sendata.phoneNumber;
 
-                location.href = result.data.sendUrl + query;
+        var firstSpeling = sendata.orderNumber.substr(0,1).toUpperCase();
+        var ajaxUrl = firstSpeling == "N" ? SUPPLY_CONFIRM_URL : LOGIN_CONFIRM_URL;
+
+        console.log("sendata:",sendata)
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, sendata, function(result){
+            if(result.data.success == "Y"){
+                lgkorUI.setHiddenInputData(sendata);
+
+                $('#noneMemberForm').attr('action', result.data.sendUrl);
+                $('#noneMemberForm').submit();
             } else{
                 if(result.data.alert.isCustom){
                     lgkorUI.alert("", {
