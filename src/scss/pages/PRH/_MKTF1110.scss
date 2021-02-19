@@ -582,7 +582,11 @@
             &.fixed {
                 position: fixed;
                 top: 0;
+                right: -17px;
                 z-index: 11;
+                @at-root .mac & {
+                    right: 0;
+                }
             }
             @include mobile {
                 position: static;
