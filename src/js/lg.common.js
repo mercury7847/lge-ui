@@ -1003,6 +1003,11 @@ var isApp = function(){
                                 result.data = data;
                             }
                         } else {
+                            if(result.message) {
+                                lgkorUI.alert("", {
+                                    title: result.message
+                                });
+                            }
                             result.data = {"success" : "N"};
                         }
                         if(callback && typeof callback === 'function') callback(result); 
