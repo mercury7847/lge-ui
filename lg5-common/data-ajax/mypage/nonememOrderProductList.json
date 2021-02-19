@@ -1,93 +1,160 @@
 {
-    "data": {
+  "ssoCheckUrl": null,
+  "status": "success",
+  "message": null,
+  "param":{
+      "pagination": {
+          "page": 1,
+          "totalCount": 1
+      }
+  },
+  "data": {
+      "productOrderCount": 5,
+      "caresolutionOrdercount": 3,
       "listData": [
-        {
-          "orderNumber": "000001201",
-          "orderType": "NS",
-          "orderDate": "2021-02-05 00:45:00",
-          "status": "Canceled",
-          "orderTotal": 2,
-          "productList": [
-            {
-              "productNameKR": "Clothes Dryer",
-              "productNameEN": "BB052S.AKOR",
-              "modelID": "MD08600410",
-              "productImage": "null",
-              "productPDPurl": "null",
-              "quantityOrdered": "2",
-              "quantityShipped": "0",
-              "productPrice": "1384416",
-              "productSalePriceCurrency": "KRW",
-              "productFlag": "",
-              "discountPrice": "",
-              "memberShipPoint": "",
-              "productTotal": "1",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "",
-                "statusClass": ""
-              },
-              "statusButtonList": [
-                
+          {
+              "orderDate": "2020.09.05",
+              "orderNumber": "20203987102999",
+              "orderTotal": "3",
+              "orderCancelAbleYn": "Y",
+              "productList": [
+                  {
+                      "modelID": "ADC495769328",
+                      "productFlag": "케어십",
+                      "productNameKR": "LG 디오스 상냉장하냉동",
+                      "productNameEN": "OLED55BXPUA",
+                      "productImage": "/lg5-common/images/dummy/@img-productw.jpg",
+                      "productPDPurl": "#none",
+                      "productDetailUrl": "http://www.lge.com",
+                      "specList": ["Silver"],
+                      "productTotal": "",
+                      "productPrice": "1760000",
+                      "discountPrice": "50000",
+                      "memberShipPoint":"0",
+                      "orderStatus": {
+                          "disabled": "",
+                          "statusText": "결제완료",
+                          "statusClass": "",
+                          "statusDate": "배송희망일 2020.09.18"
+                      },
+                      "statusButtonList": [],
+                      "itemCancelAbleYn": "Y"
+                  },
+                  {
+                      "modelID": "ADC4957639428",
+                      "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
+                      "productNameEN": "OLED552445UA",
+                      "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
+                      "productPDPurl": "http://www.lge.com",
+                      "productDetailUrl": "http://www.lge.com",
+                      "specList": [],
+                      "productTotal": "1",
+                      "productPrice": "50000",
+                      "discountPrice": "5000",
+                      "orderStatus": {
+                          "disabled": "",
+                          "statusText": "결제완료",
+                          "statusClass": "",
+                          "statusDate": "배송희망일 2020.09.18"
+                      },
+                      "statusButtonList": [
+                          {
+                              "className": "deliveryInquiry",
+                              "buttonName": "배송조회"
+                          },
+                          {
+                              "className": "deliveryRequest",
+                              "buttonName": "배송문의"
+                          },
+                          {
+                              "className": "takeBackInner",
+                              "buttonName": "반품신청"
+                          }
+                      ]
+                  },
+                  {
+                      "modelID": "ADC4957639428",
+                      "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
+                      "productNameEN": "OLED552445UA",
+                      "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
+                      "productPDPurl": "http://www.lge.com",
+                      "productDetailUrl": "http://www.lge.com",
+                      "specList": [],
+                      "productTotal": "1",
+                      "productPrice": "50000",
+                      "discountPrice": "5000",
+                      "orderStatus": {
+                          "disabled": "",
+                          "statusText": "결제완료",
+                          "statusClass": "",
+                          "statusDate": "배송희망일 2020.09.18"
+                      },
+                      "statusButtonList": [
+                          {
+                              "className": "deliveryInquiry",
+                              "buttonName": "배송조회"
+                          },
+                          {
+                              "className": "deliveryRequest",
+                              "buttonName": "배송문의"
+                          },
+                          {
+                              "className": "productReview",
+                              "buttonName": "제품리뷰"
+                          }
+                      ]
+                  }
               ],
-              "itemCancelAbleYn": ""
-            },
-            {
-              "productNameKR": "Cross Divison PTO",
-              "productNameEN": "BEI3GTRA1.AKOR",
-              "modelID": "MD08005026",
-              "productImage": "null",
-              "productPDPurl": "null",
-              "quantityOrdered": "1",
-              "quantityShipped": "0",
-              "productPrice": "5577792",
-              "productSalePriceCurrency": "KRW",
-              "productFlag": "",
-              "discountPrice": "",
-              "memberShipPoint": "",
-              "productTotal": "1",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "",
-                "statusClass": ""
-              },
-              "statusButtonList": [
-                
-              ],
-              "itemCancelAbleYn": ""
-            }
-          ],
-          "orderCancelAbleYn": "Y"
-        }
+              "repaymentInfo": {
+                  "bankUserName": "이엘지",
+                  "bankList": [
+                      {
+                          "bankValue": "국민은행_코드",
+                          "bankName": "국민은행"
+                      },
+                      {
+                          "bankValue": "하나은행_코드",
+                          "bankName": "하나은행"
+                      },
+                      {
+                          "bankValue": "기업은행_코드",
+                          "bankName": "기업은행"
+                      },
+                      {
+                          "bankValue": "우리은행_코드",
+                          "bankName": "우리은행"
+                      },
+                      {
+                          "bankValue": "신한은행_코드",
+                          "bankName": "신한은행"
+                      }
+                  ]
+              }
+          }
       ],
-      "payment": {
-        
+      "payment":{
+          "paymentMethodName":"신용카드(분할결제) 결제수단",
+          "receiptUrl": "/html/MYC/ACCF7105.html",
+          "orderPrice": 2834060,
+          "discountPrice": 834060,
+          "memberShipPoint": 0,
+          "totalPrice": 2000000
       },
-      "shipping": {
-        "name": "대저로 -",
-        "email": "promiser@naver.com",
-        "street": "부산 강서구 대저로235번길 9 (대저1동)\nhnnn",
-        "city": "-",
-        "countryId": "KR",
-        "postcode": "46702",
-        "telephone": "12343131331",
-        "telephonenumber": "12343131331",
-        "company": "Wise13",
-        "recyclingPickup": "Y",
-        "shippingNoteTxt": "",
-        "instpectionVisit": "Y"
+      "shipping":{
+          "name":"이연철",
+          "street":"디지털로10길 22 (가산동, LG전자가산 B) 123",
+          "city":"서울",
+          "postcode":"08513",
+          "telephone":"01093696245",
+          "telephonenumber":"01093696245",
+          "recyclingPickup":"Y",
+          "shippingNoteTxt":"배송요청사항",
+          "instpectionVisit":"Y"
       },
-      "orderuser":{
+      "orderUser":{
         "userName": "박엘지",
-        "phoneNumber": "01083947263",
+        "phoneNumber": "01098738946",
         "email": "lg@lge.com"
       }
-    },
-    "param": {
-      "pagination": {
-        "page": "1"
-      }
-    },
-    "message": "success",
-    "status": "success"
   }
+}

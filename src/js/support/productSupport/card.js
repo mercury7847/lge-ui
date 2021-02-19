@@ -58,7 +58,9 @@
                 'page': 1
             };
 
-            self.$resultPagination.pagination();
+            self.$resultPagination.pagination({
+                pageCount: 12
+            });
 
             self.$resultSort.on('change', function() {
                 self.params = $.extend({}, self.params, {

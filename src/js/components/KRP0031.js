@@ -78,7 +78,7 @@ $(window).ready(function(){
 
                     self.$modelPopup.vcModal();
                     lgkorUI.hideLoading();
-                });
+                }, 'POST');
             });
 
             $('#select1').on('change', function() {
@@ -105,7 +105,7 @@ $(window).ready(function(){
                     $('#select2').vcSelectbox('update');
 
                     lgkorUI.hideLoading();
-                });
+                }, 'POST');
             });
 
             $('#select2').on('change', function() {
@@ -123,7 +123,7 @@ $(window).ready(function(){
                     $('.example-result .img img').attr('alt', data.imageAlt);
 
                     lgkorUI.hideLoading();
-                });
+                }, 'POST');
             });
 
             self.$modelPopup.on('modalhidden', function() {

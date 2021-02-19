@@ -132,23 +132,30 @@
         '<li><dl><dt>멤버십포인트</dt><dd>{{memberShipPoint}}원</dd></dl></li>'+        
         '<li><dl><dt>총 결제 금액</dt><dd><em>{{totalPrice}}원</em></dd></dl></li>';
 
+    var noneMemPaymentTemplate = 
+    '<li><dl><dt>결제 수단</dt><dd><span>{{paymentMethodName}}</span>'+
+    '{{#if receiptUrl}}<a href="{{receiptUrl}}" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
+    '</dd></dl></li>'+        
+    '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+            
+    '<li><dl><dt>총 결제 금액</dt><dd><em>{{totalPrice}}원</em></dd></dl></li>';
+
     var orderUserTemplate = 
         '<li>'+
             '<dl>'+
                 '<dt>주문하는 분</dt>'+
-                '<dd>이*지</dd>'+
+                '<dd>{{userName}}</dd>'+
             '</dl>'+
         '</li>'+        
         '<li>'+
             '<dl>'+
                 '<dt>휴대폰</dt>'+
-                '<dd>010-****-1234</dd>'+
+                '<dd>{{phoneNumber}}</dd>'+
             '</dl>'+
         '</li>'+        
         '<li>'+
             '<dl>'+
                 '<dt>이메일</dt>'+
-                '<dd>lg****@naver.com</dd>'+
+                '<dd>{{email}}</dd>'+
             '</dl>'+
         '</li>';
 
@@ -529,19 +536,19 @@
                     if(payment.discountPrice != "0") payment.discountPrice = "-" + payment.discountPrice;
                     if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
 
-                    $listBox.html(vcui.template(paymentListTemplate, payment));
+                    var template = isNonMember ? noneMemPaymentTemplate : paymentListTemplate;
+                    $listBox.html(vcui.template(template, payment));
                 }
 
                 //주문자 정보
                 $listBox = $('.inner-box.orderuser ul');
-                if(data.payment && $listBox.length > 0) {
-                    var payment = data.payment;
-                    payment.subtotal = vcui.number.addComma(payment.subtotal);
-                    payment.discount = vcui.number.addComma(payment.discount);
-                    payment.membershipPoint = vcui.number.addComma(payment.membershipPoint);
-                    payment.grandTotal = vcui.number.addComma(payment.grandTotal);
+                if(data.orderUser && $listBox.length > 0) {
+                    var orderusers = data.orderUser;
+                    orderusers.userName = txtMasking.name(orderusers.userName);
+                    orderusers.phoneNumber = txtMasking.phone(orderusers.phoneNumber);
+                    orderusers.email = txtMasking.email(orderusers.email);
 
-                    $listBox.html(vcui.template(paymentListTemplate, payment));
+                    $listBox.html(vcui.template(orderUserTemplate, orderusers));
                 }
 
             } else{
