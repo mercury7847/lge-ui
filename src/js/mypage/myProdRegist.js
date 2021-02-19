@@ -113,13 +113,19 @@
         var myProductRegistration = {         
             init: function() {
                 var self = this;
-                vcui.require(['ui/modal', 'ui/validation', 'ui/pagination'], function () {             
+                vcui.require(['ui/validation', 'ui/pagination'], function () {             
                     self.setting();
                     self.bindEvents();
                     self.bindPopupEvents();
 
                     self.requestMoreData(1);
                     self.requestOwnData();
+
+                    self.modelCode = lgkorUI.getParameterByName('modelCode');
+                    if(self.modelCode) {
+                        self.registMyProductPopupClear();                    
+                        self.$registMyProductPopup.vcModal();
+                    }
                 });
             },
 
@@ -327,7 +333,6 @@
                 });
 
                 self.$snInput.on('input', function(e){
-                    console.log('serial inpoyut');
                     checkSerialSuccess = false;
                 })
 
@@ -531,6 +536,9 @@
                 self.$modelCheckOk.hide();
                 
                 self.$registMyProductPopup.find('input').val("");
+                if(self.modelCode) {
+                    self.$registMyProductPopup.find('input[name=sku]').val(self.modelCode);
+                }
                 self.$registMyProductPopup.find('.ui_selectbox').vcSelectbox('selectedIndex',0);
                 self.$registMyProductPopup.find('.err-block').hide();
             },
