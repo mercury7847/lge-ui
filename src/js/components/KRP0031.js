@@ -101,7 +101,7 @@ $(window).ready(function(){
                     });
 
                     $('#select2').find('option:not(.placeholder)').remove();
-                    $('#select2').append(html);
+                    $('#select2').append(html).prop('disabled', false);
                     $('#select2').vcSelectbox('update');
 
                     lgkorUI.hideLoading();
