@@ -448,7 +448,8 @@
                 var sendata = {
                     "modelId": modelId,
                     "pageType": "plp",
-                    "callType": "productSummary"
+                    "callType": "productSummary",
+                    "categoryId": lgkorUI.getHiddenInputData().categoryId
                 }            
                 console.log("@@@ requestSibling @@@", sendata)
                 lgkorUI.requestAjaxDataPost(ajaxurl, sendata, function(result){
