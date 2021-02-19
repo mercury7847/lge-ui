@@ -107,6 +107,7 @@
                 flex-direction: column;
 
                 .section-col {
+                    width:100%;
                     & + .section-col {
                         margin-top:24px;
                         margin-left:0;
@@ -1618,12 +1619,19 @@
             }
 
             .reserv-inquiry-slider {
+                width:calc(100% + 16px);
+                margin-left:-8px;
+                padding-bottom:50px;
                 .slide-track {
                     position: relative;
                 }
+                .indi-wrap {
+                    bottom:0;
+                }
                 .item-list {
                     float:left;
-                    width:50%;
+                    //width:50%;
+                    width:299px;
                     padding:0 8px;
                     box-sizing:border-box;
 
@@ -1708,9 +1716,26 @@
             }
         }
 
+        @media screen and (max-width:1280px) {
+            .rersv-wrap { 
+                .reserv-inquiry-slider {
+                    width:100%;
+                    margin-left:0;
+                    .item-list {
+                        padding:0;
+                    }
+                }
+
+            }
+        }
+
         @include tablet {
             .rersv-wrap {
                 padding:45px 25px 120px;
+
+                &.view-type {
+                    padding-bottom:45px;
+                }
 
                 .headline {
                     margin-bottom:30px;
@@ -1991,6 +2016,34 @@
                 }
             }
         }
+        
+    }
+
+    //제품지원
+    .support-solution {
+        
+        background-image: linear-gradient(106deg, #8d71ec, #ff537c 99%);
+
+        .section-inner {
+            position: relative;
+            height:536px;
+            padding:48px 0;
+            box-sizing: border-box;
+        }
+        .home-cont-top {
+            text-align: right;
+        }
+
+        .support-toggle-list-wrap {
+            .support-list {
+                .list-header {
+                    .list-tit {
+                        font-size:32px;
+                    }
+                }
+            }
+        }
+
         
     }
 

@@ -300,8 +300,8 @@ $(function () {
         var curTime = new Date().getTime();
         if(typeof prevTime !== 'undefined'){
             var timeDiff = curTime-prevTime;
-            if(timeDiff > 200){
-                if(currentStep == stepLens){
+            if(timeDiff > 40){
+                if(currentPage == maxLens){
                     var st = $('.section-cover').scrollTop();
                     if(st==0 && e.deltaY<0){
                         wheelScene(-1);
