@@ -14,7 +14,7 @@
 
     function setting(){
         LOGIN_CONFIRM_URL = $('.contents.non-members').data('confirmUrl');
-        SUPPLY_CONFIRM_URL = $('.contents.non-members').data('serviceConfirmUrl');
+        SUPPLY_CONFIRM_URL = $('.contents.non-members').data('disposableConfirmUrl');
 
         var register;
 
@@ -100,7 +100,13 @@
         console.log("sendata:",sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, sendata, function(result){
             if(result.data.success == "Y"){
-                lgkorUI.setHiddenInputData(sendata);
+                lgkorUI.setHiddenInputData({
+                    sendInquiryType: sendata.inquiryType,
+                    sendOrderNumber: sendata.orderNumber,
+                    sendUserName: sendata.userName,
+                    sendUserEmail: sendata.userEmail,
+                    snedPhoneNumber: sendata.phoneNumber
+                });
 
                 $('#noneMemberForm').attr('action', result.data.sendUrl);
                 $('#noneMemberForm').submit();

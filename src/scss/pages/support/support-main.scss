@@ -17,8 +17,9 @@
 
     .btn-fast-support {
         display: inline-block;
-        padding:18px 32px 16px;
-        font-size:18px;
+        padding:12px 24px 12px;
+        font-size:16px;
+        line-height:32px;
         font-weight:500;
         color:#000;
         background: #fff;
@@ -66,6 +67,70 @@
                 margin-bottom:32px;
             }
         }
+    }
+
+    // 상단 로그인 툴팁 박스
+    .tooltip {
+        &-login {
+            max-width:1920px;
+            margin:0 auto;
+            background-image: linear-gradient(92deg, #9c86e7, #ff537c 97%);
+        }
+        &-inner {
+            position: relative;
+            max-width:1380px;
+            margin:0 auto;
+            padding:18px 0;
+            text-align: center;
+            p {
+                display: inline-block;
+                color:#fff;
+                font-size:16px;
+                line-height:26px;
+                
+                vertical-align: middle;
+                
+                strong {
+                    font-weight:bold;
+                }
+            }
+
+            .btn-link {
+                margin-left:16px;
+                color:#fff;
+                font-weight:bold;
+                text-decoration: none;
+
+                &:after {
+                    width:16px;
+                    height:16px;
+                    background-image: url("/lg5-common/images/icons/btn-arr-16-white.svg");
+                    background-size:100% 100%;
+                }
+                
+            }
+            .btn-tooltip-close {
+                position: absolute;
+                top:50%;
+                right:0;
+                transform:translateY(-50%);
+                width:48px;
+                height:48px;
+                background: url("/lg5-common/images/icons/btn-close-24-white.svg") no-repeat center center/24px 24px;
+            }
+            @include mobile {
+                text-align: left;
+                padding:20px 16px;
+                p {
+                    display: block;
+                    font-size:13px;
+                }
+                .btn-link {
+                    margin-left:0;
+                }
+            }
+        }
+
     }
 
 
@@ -129,6 +194,14 @@
     }
 
     .home-cont-top {
+        position: absolute;
+        top:48px; 
+        left:0;
+        width:100%;
+        padding:0 40px;
+        text-align: right;
+        z-index:1;
+        box-sizing:border-box;
         .cont-top-tit {
             display:inline-block;
             font-size:18px;
@@ -149,10 +222,12 @@
 
         @include mobile {
             display: flex;
-            flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            
+            top:24px; 
+            left:0;
+            padding:0 16px;
+
             .cont-top-tit {
                 font-size:14px;
             }
@@ -163,24 +238,20 @@
     }
 
     
+
+    
     // 히어로 영역 or 컨텐츠 영역 내에 들어가는 제품 지원 컨텐츠
     .support-nav-container {
         position: relative;
-        display: flex;
-        flex-direction: column;
+        max-width:1460px;
         height:100%;
+        margin:0 auto;
+        padding:48px 40px;
         justify-content: center;
 
-        .home-cont-top {
-            flex:unset;
-            position: absolute;
-            top:0; 
-            left:0;
-            width:100%;
-            z-index:1;
-        }
-
         .support-list-slider {
+            position: relative;
+            height: 100%;
             .indi-wrap, .slide-controls {
                 display:none;
             }
@@ -194,129 +265,55 @@
                 }
             }
         }
+
+        @include mobile {
+            padding:24px 16px;
+        }
     }
 
     .support-toggle-list-wrap {
-        &.only-desktop {
-            .slide-track {
-                display:flex !important;
-                align-items: center;
-                justify-content: space-between;
-                flex-direction: row;
-                transform: none !important;
-                width:100% !important;
-            }
-
-            .support-list {
-                float:none !important;
-                flex:1;
-                display: flex;
-                flex-direction: column;
-
-                .list-header {
-                    display: flex;
-                }
-            }
-            @media screen and (max-width:1920px) {
-                .support-list {
-                    .list-header {
-                        .list-tit {
-                            font-size:2.0833vw;
-                        }
-                        .btn-list-toggle {
-                            width:2.9166vw;
-                            height:2.9166vw;
-                        }
-                    }
-    
-                    ul {
-                        max-width:22.7083vw;
-    
-                        > li {
-                            width:11.3541vw;
-                        }
-                    }
-                }
-            }
-
-            @include pc-size-l {
-                
-                .support-list {
-                    .list-header {
-                        .list-tit {
-                            font-size:get-vw(32px);
-                        }
-                        .btn-list-toggle {
-                            width:get-vw(56px);
-                            height:get-vw(56px);
-                        }
-                    }
-                    ul {
-                        max-width:get-vw(386px);
-    
-                        > li {
-                            width:get-vw(193px);
-    
-                            a {
-                                font-size:12px;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
+        position: relative;
+        height:100%;
         .support-list {
             flex:none;
-            opacity:0.7;
-            transition:opacity .4s ease-in-out;           
-
-            &.active {
-                opacity:1;
-
-                .list-header {
-                    .btn-list-toggle {
-                        transform:rotate(-180deg);
-                    }
-                }
-            }
             
             .list-header {
                 position: relative;
+                
+
                 .list-tit {
                     display: block;
-                    font-size:40px;
+                    font-size:32px;
                     color:#fff;
                     font-weight:bold;
-                    line-height:1.4;
+                    line-height:1.6;
                 }
                 .btn-list-toggle {
                     display: inline-block;
+                    position: absolute;
+                    top:0; 
+                    right:0;
                     width:56px;
                     height:56px;
-                    margin-left:16px;
                     background: url("/lg5-common/images/CS/btn-arr-down-56-white.svg") no-repeat 0 0/100% 100%;
                     vertical-align: top;
                 }
-
             }           
 
             ul {
                 display: none;
-                max-width:436px;
+                width:342px;
                 position: relative;
                 font-size:0;
-                margin-top:28px;
+                margin-top:20px;
 
-                &.list-dir-col {
-                    > li {
-                        display: block;
-                    }
-                }
+                @include clearfix;
 
                 > li {
-                    display:inline-block;
+                    float:left;
+                    width:50%;
                     padding:4px;
+
                     a {
                         display: inline-block;
                         width:100%;
@@ -333,37 +330,150 @@
             }
           
         }
+        &.only-desktop {
+            .slide-track {
+                display:flex !important;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: row;
+                transform: none !important;
+                width:100% !important;
+                height:100%;
+            }
+
+            .support-list {
+                float:none !important;
+                width:436px;
+                display: flex;
+                flex-direction: column;
+
+                &.product-support {
+                    padding-right:61px;
+                }
+
+                &.consult {
+                    
+                }
+
+                &.reservation {
+                    padding-left:63px;
+                }
+
+                .list-header {
+                    padding-right:70px;
+
+                    .list-tit {
+                        color:rgba(255,255,255,0.4);
+                        transition:.6s color;
+
+                        .txt-highlight {
+                            color:#fff;
+                            transition:.6s color;
+                        }
+                    }
+                }
+
+                &.active {
+                    .list-header {
+                        .list-tit {
+                            color:#fff;
+                        }
+                        .btn-list-toggle {
+                            transform:rotate(-180deg);
+                        }
+                    }
+                }
+                &.siblings {
+                    .list-header {
+                        .list-tit {
+                            color:rgba(255,255,255,0.4);
+
+                            .txt-highlight {
+                                color:rgba(255,255,255,0.4);
+                            }
+                        }
+                    }
+                }
+            }
+
+            @include pc-size-l {
+                
+                .support-list {
+                    width:365px;
+                    .list-header {
+                        padding-right:50px;
+                        .list-tit {
+                            font-size:26px;
+                        }
+                        .btn-list-toggle {
+                            width:40px;
+                            height:40px;
+                        }
+                    }
+                    ul {
+                        width:295px;
+                        > li {
+                            a {
+                                font-size:12px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            @media screen and (max-width:1280px) {
+                .support-list {
+                    width:290px;
+
+                    &.product-support {
+                        padding-right:0;
+                    }
+    
+                    &.consult {
+                        
+                    }
+    
+                    &.reservation {
+                        padding-left:0;
+                    }
+
+                    .list-header {
+                        .list-tit {
+                            font-size:22px;
+                        }
+                    }
+                    ul {
+                        width:260px;
+                    }
+                }
+            }
+        }
 
         @include tablet {
             .support-list {
                 width:100%;
-                opacity:1;
-                padding:80px 0 60px;
+                padding:110px 0 60px;
                 text-align: center;
 
                 .list-header {
                     .list-tit {
-                        font-size:40px;
+                        font-size:32px;
                     }
                     .btn-list-toggle {
                         display:none;
                     }
-    
                 }
                 
     
                 ul {
                     display: block !important;
-                    max-width:672px;
-                    margin:28px auto 0;
-                    text-align: left;
+                    width:342px;
+                    margin:20px auto 0;
+
                     > li {
-                        width:50%;
-                        margin:0 auto;
-                        padding:4px;
                         a {
-                            height:66px;
-                            line-height:64px;
+                            height:48px;
+                            line-height:46px;
                         }
                     }
                 }
@@ -385,18 +495,7 @@
     
                 ul {
                     max-width:336px;
-                    margin:24px auto 0;
-                    text-align: left;
-
-                    &.list-dir-col {
-                        width:213px;
-                        > li {
-                            width:100%;
-                        }
-                    }
                     > li {
-                        width:50%;
-                        padding:4px;
                         a {
                             font-size:13px;
                             height:43px;
@@ -408,26 +507,22 @@
         }
     }
 
+    // 히어로 영역 로그인 후 보유 제품 슬라이드
     .had-pd-container {
         position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        max-width:1380px;
+        margin:0 auto;
         height:100%;
         
         .had-pd-inner {
-            max-width:1384px;
             width:100%;
             margin:0 auto;
-            padding:0 95px;
+            padding:0 93px;
         }
 
-        .home-cont-top {
-            position: absolute;
-            top:0;
-            left:0;
-            width:100%;
-        }
         .headline {
             .tit {
                 margin-bottom:24px;
@@ -682,12 +777,27 @@
                 
             }
         }
+        
 
         @include tablet {
+            .headline {
+                .tit {
+                    font-size:20px;
+                }
+            }
             .had-pd-inner {
                 padding:0 70px;
             }
-            .had-pd-slider { 
+
+            .had-pd-slider {
+                //margin:0 -12px;
+                $tabletPadding : 20px 20px 38px;
+    
+                .slide-track {
+                    height:200px;
+                    margin:0 -12px;
+                }
+    
                 .slide-controls {
                     .prev {
                         left:-70px;
@@ -696,11 +806,134 @@
                         right:-70px;
                     }
                 }
+    
+                .indi-wrap {
+                    bottom:-44px;
+                }
+    
+                .item-list {
+                    padding:0 12px;
+    
+                    &.history-type {
+                        .item-card {
+                            padding:$tabletPadding;
+                        }
+                    }
+    
+                    &.regist-type {
+                        .item-card {
+                            padding:$tabletPadding;
+                        }
+                    }
+                }
+                .item-card {
+                    width:320px;
+                    height:200px;
+    
+                    .card-tit {
+                        margin-bottom:12px;
+                        font-size:16px;
+                    }
+    
+                    .card-desc {
+                        margin-top:8px;
+                        font-size:14px;
+                    }
+                    
+                    .icon-regist {
+                        width:50px;
+                        height:50px;
+                    }
+    
+                    .card-info-box {
+                        .card-pd {
+                            &-info {
+                                margin-left:12px;
+                                font-size:13px;
+                            }
+                            &-tit {
+                                font-size:14px;
+                            }
+                        }
+                    }
+    
+                    .card-btn-wrap {
+                        margin-top:20px;
+    
+                        .btn-link {
+                            font-size:13px;
+                            & + .btn-link {
+                                margin-left:12px;
+                            }
+                        }
+                    }
+    
+                    .card-bottom {
+                        padding: 14px 16px;
+                        font-size:14px;
+                        height:48px;
+                    }
+    
+                    .card-front {
+                        padding:$tabletPadding;
+                        .pd-category {
+                            margin-bottom:12px;
+                            font-size:14px;
+                            line-height:1.6;
+        
+                            .thumb {
+                                width:36px;
+                                height:36px;
+                                margin-right:6px;
+                            }
+                        }
+        
+                        .pd-name {
+                            font-size:20px;
+                        }
+                        .pd-code {
+                            font-size:14px;
+                        }
+                    }
+    
+                    .card-back {
+                        padding:20px 0 38px;
+    
+                        &-cont {
+                            height:132px;
+    
+                            .mCSB_container {
+                                padding-left:20px;
+                            }
+                        }
+    
+                        .pd-info-list {
+                            > li {
+                                a {
+                                    font-size:13px;
+                                }
+                            }
+                        }
+                    }
+                    
+                    .btn-goto-back {
+                        bottom:13px;
+                        right:13px;
+                    }
+    
+                    .btn-goto-front {
+                        bottom:13px;
+                        right:13px;
+                    }
+    
+                    
+                }
             }
         }
 
         @include mobile {
-            
+            padding:24px 16px;
+
             .had-pd-inner {
                 padding:0;
             }
@@ -844,70 +1077,6 @@
         }
     }
 
-    // 상단 로그인 툴팁 박스
-    .tooltip {
-        &-login {
-            max-width:1920px;
-            margin:0 auto;
-            background-image: linear-gradient(92deg, #9c86e7, #ff537c 97%);
-        }
-        &-inner {
-            position: relative;
-            max-width:1380px;
-            margin:0 auto;
-            padding:18px 0;
-            text-align: center;
-            p {
-                display: inline-block;
-                color:#fff;
-                font-size:16px;
-                line-height:26px;
-                
-                vertical-align: middle;
-                
-                strong {
-                    font-weight:bold;
-                }
-            }
-
-            .btn-link {
-                margin-left:16px;
-                color:#fff;
-                font-weight:bold;
-                text-decoration: none;
-
-                &:after {
-                    width:16px;
-                    height:16px;
-                    background-image: url("/lg5-common/images/icons/btn-arr-16-white.svg");
-                    background-size:100% 100%;
-                }
-                
-            }
-            .btn-tooltip-close {
-                position: absolute;
-                top:50%;
-                right:0;
-                transform:translateY(-50%);
-                width:48px;
-                height:48px;
-                background: url("/lg5-common/images/icons/btn-close-24-white.svg") no-repeat center center/24px 24px;
-            }
-            @include mobile {
-                text-align: left;
-                padding:20px 16px;
-                p {
-                    display: block;
-                    font-size:13px;
-                }
-                .btn-link {
-                    margin-left:0;
-                }
-            }
-        }
-
-    }
-    
     //히어로 영역
     .home-hero {
         max-width:1920px;
@@ -915,9 +1084,9 @@
 
         .hero-container {
             position: relative;
-            height:700px;
+            height:640px;
             margin:0 auto;
-            padding:48px 0 48px 80px;
+            //padding:48px 0 48px 80px;
             box-sizing:border-box;
             background: rgba(34, 23, 23, 0.6);
 
@@ -937,46 +1106,28 @@
         &.member-type {
             .hero-container {
                 height:700px;
-                padding:48px 80px;
+                // padding:48px 80px;
             }
         }
 
-        @media screen and (max-width:1920px) {
-            .hero-container {
-                height:36.4583vw;
-            }
-            &.member-type {
-                .hero-container {
-                    height:700px;
-                }
-            }
-        }
-
-        @include pc-size-m {
+        @include pc-size-l {
             .hero-container {
                 height:535px;
             }
             &.member-type {
                 .hero-container {
                     height:700px;
-                    padding:30px 50px;
                 }
-            }
-        }
-
-        @include tablet {
-            .hero-container {
-                padding:38px 40px;
-                height:700px;
             }
         }
 
         @include mobile {
             border-bottom:12px solid #f4f4f4;
 
+            
+
             .hero-container {
                 height:460px;
-                padding:24px 16px;
 
                 &:before {
                     background-image: url("/lg5-common/images/CS/img-support-home-hero-mo.png");
@@ -988,7 +1139,6 @@
             &.member-type {
                 .hero-container {
                     height:602px;
-                    padding:24px 16px;
                 }
             }
 
@@ -1007,6 +1157,7 @@
         }
         
     }
+    
     
     //공지사항
     .home-notice {
@@ -1725,7 +1876,6 @@
                         padding:0;
                     }
                 }
-
             }
         }
 
@@ -1798,6 +1948,29 @@
                     position: static;
                     margin-top:55px;
                     text-align: center;
+                }
+                .reserv-inquiry-slider {
+                    .item-list {
+                        > a {
+                            height:158px;
+                        }
+    
+                        .item-date {
+                            font-size:14px;
+                        }
+    
+                        .item-cont {
+                            font-size:13px;
+                        }
+    
+                        .item-status-cont {
+                            margin-top:10px;
+    
+                            .item-status {
+                                font-size:14px;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -2021,30 +2194,34 @@
 
     //제품지원
     .support-solution {
-        
+        position: relative;
+        height:536px;
+        box-sizing: border-box;
         background-image: linear-gradient(106deg, #8d71ec, #ff537c 99%);
 
-        .section-inner {
-            position: relative;
-            height:536px;
-            padding:48px 0;
-            box-sizing: border-box;
-        }
-        .home-cont-top {
-            text-align: right;
+
+        @include pc-size-m {
+            height:480px
         }
 
-        .support-toggle-list-wrap {
-            .support-list {
-                .list-header {
-                    .list-tit {
-                        font-size:32px;
+        @include mobile {
+            .support-nav-container {
+                padding:60px 16px;
+
+                .support-list-slider {
+                    .indi-wrap {
+                        bottom:0;
                     }
                 }
             }
-        }
+            .home-cont-top {
+                top:60px;
+                justify-content: center;
+                text-align: center;
+            }
 
-        
+            
+        }
     }
 
     //하단 수상 목록
