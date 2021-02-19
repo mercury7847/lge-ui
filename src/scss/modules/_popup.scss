@@ -579,7 +579,15 @@
         }
     }
     &.youtube {
-
+        .video-asset {
+            overflow: hidden;
+            width: 100%;
+            height: calc((100vw - 15px) * (9/16));
+            iframe {
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
     &.animation {
         .video-box {
