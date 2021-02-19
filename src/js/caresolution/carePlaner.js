@@ -429,6 +429,8 @@
     function sendRequestConfirm(url){
         lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(url, {}, function(result){
+            lgkorUI.hideLoading();
+            
             var alert = result.data.alert;
             if(alert) {
                 if(alert.isConfirm) {
@@ -466,7 +468,7 @@
                     lgkorUI.alert(desc, obj);
                 }
             } else {
-                window.location.href = result.data.url;
+                window.location.href = result.data.sendUrl;
             }
         });
     }
