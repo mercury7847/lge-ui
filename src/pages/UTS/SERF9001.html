@@ -12,8 +12,8 @@
 
 
     <!-- 검색 중 -->
-    <!-- <article id="layerSearchPopup" class="popup-wrap video"> -->
-    <article class="search-layer" id="layerSearch"
+    <article class="search-layer" id="layerSearch" style="display: none;"
+        data-remove-modal-css = true
         data-basic-url="http://schapi.lgekrdev.lge.co.kr:3100/searchgnb/populartag"
         data-autocomplete-url="http://schapi.lgekrdev.lge.co.kr:3100/autocomplete/search"
         data-search-url="http://schapi.lgekrdev.lge.co.kr:3100/searchgnb/search"
@@ -24,7 +24,7 @@
             <div class="input-keyword-wrap">
                 <div class="input-keyword">
                     @@include('./common/modules/search-input.html', {
-                        "value" : "에어"
+                        "value" : ""
                     })
                 </div>
 
@@ -200,8 +200,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
     </article>
-    <!-- </article> -->
 </body>
 </html>

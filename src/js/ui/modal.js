@@ -196,7 +196,8 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             cssTitle: '.ui_modal_title',
             useTransformAlign: true,
             variableWidth: true, 
-            variableHeight: true
+            variableHeight: true,
+            removeModalCss: false
         },
 
         events: {
@@ -249,6 +250,9 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
 
             self.isShown = false;
             self._originalDisplay = self.$el.css('display');
+
+            var removeModalCss = self.$el.data('removeModalCss');
+            self.options.removeModalCss = removeModalCss ? removeModalCss : false;
 
             /* 
             // self.$el.css('left') : % 값도 px 값으로 출력됨.    
@@ -517,7 +521,11 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 }
             }
 
-            self.$el.stop().css(css);
+            if(self.options.removeModalCss) {
+                self.$el.stop();
+            } else {
+                self.$el.stop().css(css);
+            }
         },
 
         /**

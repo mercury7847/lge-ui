@@ -68,6 +68,9 @@
 
                 self.numberValidation = new vcui.ui.CsValidation('#numberForm', {
                     register: {
+                        privcyCheck: {
+                            msgTarget: '.err-block'
+                        },
                         userName1: {
                             required: true,
                             maxLength: 30,
@@ -256,6 +259,9 @@
 
             var self = this;
             var register = {
+                    privcyCheck: {
+                        msgTarget: '.err-block'
+                    },
                     reason: {
                         msgTarget: '.err-block'
                     },

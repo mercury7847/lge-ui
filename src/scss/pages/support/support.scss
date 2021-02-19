@@ -738,6 +738,9 @@
         .bullet-list {
             font-size: 16px;
         }
+        @include mobile {
+            padding: 20px;
+        }
     }
 
     .mobile-notice{
