@@ -40,7 +40,7 @@
                 //타이머
                 self.searchTimer = null;
                 //타이머 검색 딜레이
-                self.searchDelay = 2000;
+                self.searchDelay = 1000;
 
                 //통합검색 레이어
                 self.$searchLayer = $('#layerSearch');
@@ -89,16 +89,19 @@
                 var self = this;
 
                 //통합검색 노출
+                /*
                 $('div.contents.search div.cont-wrap a').on("click", function(e) {
-                    self.showAnimation(self.$searchLayer);
-                    //$('#layerSearchPopup').vcModal();
+                    //self.showAnimation(self.$searchLayer);
+                    self.$searchLayer.vcModal();
                 });
+                */
 
                 //통합검색 닫음
                 self.$searchLayer.find('button.btn-close').on("click", function(e) {
                     clearTimeout(self.searchTimer);
-                    self.hideAnimation(self.$searchLayer);
-                    //$('#layerSearchPopup').vcModal('close');
+                    //self.hideAnimation(self.$searchLayer);
+                    console.log('close modal');
+                    //self.$searchLayer.vcModal('close');
                 });
 
                 //검색버튼
