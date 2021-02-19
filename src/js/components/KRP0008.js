@@ -439,7 +439,6 @@
                         }
                     }
 
-                    console.log(param);
                     var ajaxUrl = self.$pdpInfo.attr('data-cart-url');
                     lgkorUI.requestCart(ajaxUrl, param);
                 });
@@ -750,13 +749,23 @@
 
             //팝업 버튼 이벤트
             bindPopupEvents: function() {
-                //var self = this;
+                var self = this;
+                
                 $('article').on('click', 'button', function(e) {
                     var buttonLinkUrl = $(this).attr('data-link-url');
-                    console.log('popup link',buttonLinkUrl);
+                    //console.log('popup link',buttonLinkUrl);
                     if(buttonLinkUrl) {
                         location.href = buttonLinkUrl;
                     }
+                });
+
+                $('#pop-pdp-visual').on('modalshown',function(e){
+                    var index = $(this).data('selectIndex');
+                    self.clickModalThumbnail(index);
+                });
+
+                self.$popPdpVisualImage.find('div.zoom-area img').on('load',function(e) {
+                    self.pinchZoom.update(true);
                 });
             },
 
@@ -1007,7 +1016,7 @@
                     var ajaxUrl = self.$pdpInfo.attr('data-rental-url');
                     if(ajaxUrl) {
                         lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
-                            console.log(result);
+                            //console.log(result);
                         });
                     }
                 } else {
@@ -1060,7 +1069,7 @@
                     var ajaxUrl = $dm.data('ajaxUrl');
                     if(ajaxUrl) {
                         lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
-                            console.log(result);
+                            //console.log(result);
                         });
                     }
                 }
@@ -1110,7 +1119,10 @@
             //PDP모달 오픈
             openVisualModal: function(index) {
                 var self = this;
-                self.clickModalThumbnail(index);
+                //self.clickModalThumbnail(index);
+                var popPdp = $('#pop-pdp-visual');
+                popPdp.data('selectIndex',index);
+                self.$popPdpVisualImage.hide();
                 $('#pop-pdp-visual').vcModal();
             },
 
@@ -1129,7 +1141,7 @@
                 self.$selectModalItemTarget = thumbItem;
                 self.$selectModalItemTarget.addClass('active');
     
-                self.pinchZoom.runZoom(1, false);
+                //self.pinchZoom.runZoom(1, false);
                 //self.$popPdpVisualVideo.html('');
                 self.$popPdpVisualAnimation.find('div.animation-box').vcVideoBox('reset');
     
@@ -1141,6 +1153,7 @@
                         self.$popPdpVisual360.show();
                         break;
                     case "image":
+                        self.pinchZoom.runZoom(1, false);
                         self.$popPdpVisualImage.find('div.zoom-area img').attr({'data-pc-src':item.imagePC,'data-m-src':item.imageMobile});
                         self.$popPdpVisualImage.vcImageSwitch('reload');
                         self.$popPdpVisualImage.show();
