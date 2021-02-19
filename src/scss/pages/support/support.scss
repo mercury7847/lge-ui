@@ -370,6 +370,14 @@
         }
     }
 
+    .select-wrap {
+        .ui-selectbox-wrap {
+            .ui-selectbox-list {
+                z-index: 12;
+            }
+        }
+    }
+
     
 
     .directCall-wrap {
