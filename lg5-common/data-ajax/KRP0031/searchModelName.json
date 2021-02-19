@@ -1,0 +1,39 @@
+{
+    "data": [
+        {
+            "superCategoryId": "CT50000003",
+            "superCateName": "모바일"
+        },
+        {
+            "superCategoryId": "CT50000024",
+            "superCateName": "TV/AV"
+        },
+        {
+            "superCategoryId": "CT50000100",
+            "superCateName": "생활가전"
+        },
+        {
+            "superCategoryId": "CT50000197",
+            "superCateName": "IT / 모니터"
+        },
+        {
+            "superCategoryId": "CT50019021",
+            "superCateName": "TV / 프로젝터"
+        },
+        {
+            "superCategoryId": "CT50019183",
+            "superCateName": "에어컨"
+        },
+        {
+            "superCategoryId": "CT50021003",
+            "superCateName": "세탁기/스타일러"
+        },
+        {
+            "superCategoryId": "CT50025001",
+            "superCateName": "청소기"
+        }
+    ],
+    "message": "",
+    "status": "success",
+    "dataCount": 8
+}

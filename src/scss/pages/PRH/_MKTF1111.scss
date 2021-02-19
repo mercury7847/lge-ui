@@ -717,6 +717,13 @@
             }
         }
     }
+    .btn-moreview {
+        &.fold {
+            &:before {
+                background-image: url('/lg5-common/images/icons/btn-minus.svg');
+            }
+        }
+    }
 }
 
 .signature-product {

@@ -27,6 +27,12 @@
             font-size:20px;
             line-height:28px;
         }
+        & + .btn-area {
+            margin-top:24px;
+            @include mobile {
+                margin-top:16px;
+            }
+        }
     }
     > .desc {
         margin-top:12px;
