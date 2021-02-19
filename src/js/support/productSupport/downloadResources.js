@@ -5,10 +5,16 @@
             '<p class="tit">{{type}}</p>' +
             '<p class="desc">{{title}}</p>' +
             '<div class="info-wrap">' +
+                '{{# if (typeof language != "undefined" || typeof date != "undefined") { #}}' +
                 '<ul class="options">' +
-                    '<li>{{date}}</li>' +
+                    '{{# if (typeof language != "undefined") { #}}' +
                     '<li>{{language}}</li>' +
+                    '{{# } #}}' +
+                    '{{# if (typeof date != "undefined") { #}}' +
+                    '<li>{{date}}</li>' +
+                    '{{# } #}}' +
                 ' </ul>' +
+                '{{# } #}}' +
                 '<div class="btn-wrap">' +
                     '{{# for (var i = 0; i < file.length; i++) { #}}' +
                     '<a href="{{file[i].src}}" class="btn border size btn-download"><span>{{file[i].type}}</span></a>' +
@@ -18,12 +24,18 @@
         '</li>';
     var driverListTemplate = 
         '<li>' +
-            '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{os}} {{title}}</button></p>' +
+            '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{#if os}}{{os}} {{/if}}{{#if title}}{{title}}{{/if}}</button></p>' +
             '<div class="info-wrap">' +
+                '{{# if (typeof category != "undefined" || typeof date != "undefined") { #}}' +
                 '<ul class="options">' +
+                    '{{# if (typeof category != "undefined") { #}}' +
                     '<li>{{category}}</li>' +
+                    '{{# } #}}' +
+                    '{{# if (typeof date != "undefined") { #}}' +
                     '<li>{{date}}</li>' +
+                    '{{# } #}}' +
                 ' </ul>' +
+                '{{# } #}}' +
                 '<div class="btn-wrap">' +
                     '<a href="{{file.src}}" class="btn border size btn-download"><span>다운로드 {{#if file.size}}{{file.size}}{{/if}}{{#if file.os}}{{file.os}}{{/if}}</span></a>' +
                 '</div>' +
