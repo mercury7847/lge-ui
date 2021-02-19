@@ -1,6 +1,6 @@
 {
     "data": {
-      "listData": 
+      "listData": [
         {
           "orderNumber": "000001201",
           "orderType": "NS",
@@ -58,17 +58,10 @@
             }
           ],
           "orderCancelAbleYn": "Y"
-        },
+        }
+      ],
       "payment": {
-        "creditCard": "",
-        "installment": "",
-        "paymentDate": "",
-        "bankName": "",
-        "bankAccountNo": "",
-        "bankAccountNm": "",
-        "depositExpectedDate": "",
-        "membershipPoint": "",
-        "paymentMethodName": ""
+        
       },
       "shipping": {
         "name": "대저로 -",
@@ -83,6 +76,11 @@
         "recyclingPickup": "Y",
         "shippingNoteTxt": "",
         "instpectionVisit": "Y"
+      },
+      "orderuser":{
+        "userName": "박엘지",
+        "phoneNumber": "01083947263",
+        "email": "lg@lge.com"
       }
     },
     "param": {
