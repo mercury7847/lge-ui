@@ -149,14 +149,16 @@
     }
 
     &.question {
-        padding-left:36px;
+        position:relative;
+        padding-left:32px;
+        @include font-small;
         &:before {
             content:'';
             position:absolute;
             left:14px;
             top:50%;
-            width:16px;
-            height:16px;
+            width:14px;
+            height:14px;
             transform: translateY(-50%);
             background:url("/lg5-common/images/icons/icon-question-16.svg") center no-repeat;
         }
