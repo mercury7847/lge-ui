@@ -1,7 +1,15 @@
 $(function() {
 
-    vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {     
+    $.extend( $.easing,{
+        def: 'easeOutQuad',
+        easeInOutQuart: function (x, t, b, c, d) {
+            if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
+            return -c/2 * ((t-=2)*t*t*t - 2) + b;
+        }
+    });
+    
 
+    vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {     
 
         $('.signature-theme .ui_carousel_slider').vcCarousel({
             slidesToShow: 1,
@@ -25,66 +33,9 @@ $(function() {
             ]
         });
 
-        $.extend( $.easing,{
-            def: 'easeOutQuad',
-            swing: function (x, t, b, c, d) {
-                return $.easing[$.easing.def](x, t, b, c, d);
-            },
-            easeInQuad: function (x, t, b, c, d) {
-                return c*(t/=d)*t + b;
-            },
-            easeOutQuad: function (x, t, b, c, d) {
-                return -c *(t/=d)*(t-2) + b;
-            },
-            easeInOutQuad: function (x, t, b, c, d) {
-                if ((t/=d/2) < 1) return c/2*t*t + b;
-                return -c/2 * ((--t)*(t-2) - 1) + b;
-            },
-            easeInCubic: function (x, t, b, c, d) {
-                return c*(t/=d)*t*t + b;
-            },
-            easeOutCubic: function (x, t, b, c, d) {
-                return c*((t=t/d-1)*t*t + 1) + b;
-            },
-            easeInOutCubic: function (x, t, b, c, d) {
-                if ((t/=d/2) < 1) return c/2*t*t*t + b;
-                return c/2*((t-=2)*t*t + 2) + b;
-            },
-            easeInQuart: function (x, t, b, c, d) {
-                return c*(t/=d)*t*t*t + b;
-            },
-            easeOutQuart: function (x, t, b, c, d) {
-                return -c * ((t=t/d-1)*t*t*t - 1) + b;
-            },
-            easeInOutQuart: function (x, t, b, c, d) {
-                if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
-                return -c/2 * ((t-=2)*t*t*t - 2) + b;
-            },
-            easeInQuint: function (x, t, b, c, d) {
-                return c*(t/=d)*t*t*t*t + b;
-            },
-            easeOutQuint: function (x, t, b, c, d) {
-                return c*((t=t/d-1)*t*t*t*t + 1) + b;
-            },
-            easeInOutQuint: function (x, t, b, c, d) {
-                if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
-                return c/2*((t-=2)*t*t*t*t + 2) + b;
-            },
-            easeInExpo: function (x, t, b, c, d) {
-                return (t==0) ? b : c * Math.pow(2, 10 * (t/d - 1)) + b;
-            },
-            easeOutExpo: function (x, t, b, c, d) {
-                return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
-            },
-            easeInOutExpo: function (x, t, b, c, d) {
-                if (t==0) return b;
-                if (t==d) return b+c;
-                if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
-                return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
-            }
-        });
         
         var $window   = $(window);
+        var $contentWrap = $('.signature-wrap');
         var aniSpeed = 800;
         var wheelAniInterval = null;
         var wheelInterval = null;            
@@ -94,13 +45,10 @@ $(function() {
         var currentPage = 0;
         var touchSy = 0;
         var $scenes = $('.signature-hero').children().add('.signature-wrap');
-        var maxLens = $scenes.length-1;
         var stepLens = 0;
         var posArr = [];
         var wheelArr = [];
-
         var regex = /^data-step-(-?\d*)/;
-
 
         $('.signature-hero').children().css({'overflow':'hidden'});
         $('html').css({'overflow':'hidden'});
@@ -110,14 +58,14 @@ $(function() {
             e.preventDefault();
         });
 
-        $window.on('resizeend', function(e){
-            render();
-        });
+        
+        
 
         $window.on('floatingTop', function(){
             render(0);
         });     
 
+        // element 애니메이션 스탭
         function moveStep(step){
 
             if(!canScroll) return;  
@@ -144,7 +92,7 @@ $(function() {
             }
         }
 
-
+        // 휠 애니메이션 스탭
         function wheelScene(delta) {
 
             if(!canScroll) return; 
@@ -169,29 +117,13 @@ $(function() {
             
         }
 
-        function stringToObj(str){
-            
-            var regex = /(.*)\:(.*)/;
-            var arr = str.replace(/ /gi, "").split(',');
-            var obj = {};
 
-            for(var i=0; i<arr.length; i++){
-                var match = arr[i].match(regex);
-                if(match !== null){
-                    obj[match[1]] = match[2];
-                }
-            }
-
-            return obj;
-
-        }
-
+        // 씬으로 이동
         function moveScene(idx, step, speed){
 
             if(!canScroll) return;  
             canScroll = false;   
-
-            $('.brand-wrap').scrollTop(0); 
+            $contentWrap.scrollTop(0); 
 
             $('html').addClass('sceneMoving');                    
             if ( speed == undefined ) speed = aniSpeed;
@@ -229,8 +161,10 @@ $(function() {
         } 
 
 
+
         var prevTime = new Date().getTime();
 
+        // 휠 이벤트 처리
         document.addEventListener('wheel', function(e){
 
             var curTime = new Date().getTime();
@@ -238,7 +172,7 @@ $(function() {
                 var timeDiff = curTime-prevTime;
                 if(timeDiff > 40){
                     if(currentStep == stepLens){
-                        var st = $('.brand-wrap').scrollTop();
+                        var st = $contentWrap.scrollTop();
                         if(st==0 && e.deltaY<0){
                             wheelScene(-1);
                         }
@@ -253,7 +187,7 @@ $(function() {
 
         });
 
-        
+        // 터치 이벤트 처리
         $(document).on('touchstart touchend touchcancel', function(e) {
 
             var data = _getEventPoint(e);
@@ -264,9 +198,9 @@ $(function() {
                 if(currentStep == stepLens){
                     if(wheelInterval) clearTimeout(wheelInterval);
                     wheelInterval = setTimeout(function(){
-                        var st = $('.brand-wrap').scrollTop();
+                        var st = $contentWrap.scrollTop();
                         if(st==0 && touchSy - data.y < -80){
-                            wheelScene(-1, true);
+                            wheelScene(-1);
                         }
                     }, 100);
                 }else{
@@ -280,6 +214,20 @@ $(function() {
             }
         });
 
+        function _stringToObj(str){
+            
+            var regex = /(.*)\:(.*)/;
+            var arr = str.replace(/ /gi, "").split(',');
+            var obj = {};
+
+            for(var i=0; i<arr.length; i++){
+                var match = arr[i].match(regex);
+                if(match !== null){
+                    obj[match[1]] = match[2];
+                }
+            }
+            return obj;
+        }
 
         function _getEventPoint(ev, type) {
             var e = ev.originalEvent || ev;
@@ -315,6 +263,7 @@ $(function() {
             return 0;
         }
 
+        // 스탭 이전 스타일 적용
         function setBeforeCss(step){
             for(var k=0; k<step; k++){
                 var arr = wheelArr[k];
@@ -329,11 +278,11 @@ $(function() {
             }
         }
 
+        // 비디오 태그 생성
         function updateVideo(video) {
             var $target   = $(video||this),
                 $wrap     = $target.closest('.img'),
                 $image    = $wrap.find('img'),
-                key       = $target.data('key'),
                 loaded    = $target.data('loaded'),
                 src       = $target.data('src'),                        
                 isAndroid = vcui.detect.isAndroid,
@@ -352,7 +301,6 @@ $(function() {
                 */
                 src    = $target.data('src'),                        
                 videoAttr = $target.data('options') || 'autoplay loop playsinline muted',
-                $video    = $target.find('video'),
                 $sources  = $target.find('source'),
                 oVideo;
 
@@ -412,7 +360,8 @@ $(function() {
         }
 
 
-        function render(page){
+        // 렌더링
+        var render = function(page){
 
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
             if(wheelInterval) setTimeout(wheelInterval);
@@ -443,11 +392,11 @@ $(function() {
                         var attr = this.attributes[attributeIndex];
                         var match = attr.name.match(regex);
                         if(match === null) continue;                                
-                        if(attributeIndex==1) cssVal = stringToObj(attr.value);
+                        if(attributeIndex==1) cssVal = _stringToObj(attr.value);
                         arr.push({
                             sort : match[1],
                             target : this,
-                            transit : stringToObj(attr.value),
+                            transit : _stringToObj(attr.value),
                             pageId : i                                 
                         });                                
                     }
@@ -458,8 +407,6 @@ $(function() {
                 arr.sort(function(a,b){
                     return parseInt(a.sort) - parseInt(b.sort);
                 });
-
-                var nArr = [];
 
                 if(arr.length>0){
                     var fArr = [arr[0]];
@@ -498,7 +445,7 @@ $(function() {
             });  
 
             stepLens = wheelArr.length-1;                    
-            $('.brand-wrap').css({'overflow':'auto','height':winHeight});
+            $contentWrap.css({'overflow':'auto','height':winHeight});
             $('.contents').css({'overflow':'hidden', 'height':totalHeight});
 
             if(page!==undefined){
@@ -513,12 +460,12 @@ $(function() {
                     setBeforeCss(currentStep);
                     moveScene(currentPage,currentStep,0);
                 }, 100);
-            }
-            
+            }            
         }    
         
+        // 탭이동 이벤트 처리
         $('.signature-tabs .ui_tab').on('tabchange', function(e, data){
-            $('.brand-wrap').scrollTop(0); 
+            $contentWrap.scrollTop(0); 
         });
 
 
@@ -536,7 +483,15 @@ $(function() {
             }      
         });
 
+        // 앱 대응시 주석처리
+        $window.on('resizeend', function(e){
+            render();
+        });
         $window.trigger('resizeend');
+        // 앱 대응시 주석처리 end
+
+        window.resizeScene = render;
+
 
 
     });

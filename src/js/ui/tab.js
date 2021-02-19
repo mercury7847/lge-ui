@@ -190,7 +190,7 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
             var self = this;
             if(self.panelNameArr.length == 0) return;
             var index = vcui.array.indexOf(self.panelNameArr, name);
-            self.select(index, noTrigger);
+            if(index>-1) self.select(index, noTrigger);
         },
         
         /**
