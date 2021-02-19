@@ -1,17 +1,34 @@
 ;$(function() {
 
+    $.fn.inViewport = function(wrapClass, tabHeight, offsetVh){
+
+        var marginTop = ~~Math.round(parseFloat(tabHeight)) || 0;
+        var elOffsetVh = ~~Math.round(parseFloat(offsetVh)) || 0;
+        var ty = $(this).position().top + marginTop;
+        var tb = ty + $(this).outerHeight();
+        var sy = $(wrapClass).scrollTop();
+        var vh = $(wrapClass).height() + sy + elOffsetVh;
+
+        if($(wrapClass).height() < $(this).outerHeight()) {
+            return Math.abs(ty - sy) < 100;
+        }
+        return ty > sy && vh > tb;
+    };
+    
+    $.extend( $.easing,{
+        def: 'easeOutQuad',
+        easeInOutQuart: function (x, t, b, c, d) {
+            if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
+            return -c/2 * ((t-=2)*t*t*t - 2) + b;
+        }
+    });
+
     vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {     
         
         $('.install-wrap .ui_carousel_slider').on('carouselbeforechange', function(e, carousel, index, nextIdx){
 
-            var $items = $('.ui_device').find('.screen-slider > li');
+            var $items = $device.find('.screen-slider > li');
             var xp = -428;
-            /* carouselafterchange 
-            if(carousel.previousSlide < index) xp = 428;
-            $items.eq(carousel.previousSlide).css({x:0, opacity:1}).transit({x:-xp});
-            $items.eq(index).css({x:xp, opacity:1}).transit({x:0});
-            */
-
            if(nextIdx < index) xp = 428;
            $items.eq(index).css({x:0, opacity:1}).transit({x:xp});
            $items.eq(nextIdx).css({x:-xp, opacity:1}).transit({x:0});
@@ -21,81 +38,6 @@
             infinite: false,
             slidesToShow: 1,
             slidesToScroll: 1
-        });
-
-
-        $.fn.inViewport = function(wrapClass, tabHeight, offsetVh){
-
-            var marginTop = ~~Math.round(parseFloat(tabHeight)) || 0;
-            var elOffsetVh = ~~Math.round(parseFloat(offsetVh)) || 0;
-            var ty = $(this).position().top + marginTop;
-            var tb = ty + $(this).outerHeight();
-            var sy = $(wrapClass).scrollTop();
-            var vh = $(wrapClass).height() + sy + elOffsetVh;
-
-            if($(wrapClass).height() < $(this).outerHeight()) {
-                return Math.abs(ty - sy) < 100;
-            }
-            return ty > sy && vh > tb;
-        };
-
-        $.extend( $.easing,{
-            def: 'easeOutQuad',
-            swing: function (x, t, b, c, d) {
-                return $.easing[$.easing.def](x, t, b, c, d);
-            },
-            easeInQuad: function (x, t, b, c, d) {
-                return c*(t/=d)*t + b;
-            },
-            easeOutQuad: function (x, t, b, c, d) {
-                return -c *(t/=d)*(t-2) + b;
-            },
-            easeInOutQuad: function (x, t, b, c, d) {
-                if ((t/=d/2) < 1) return c/2*t*t + b;
-                return -c/2 * ((--t)*(t-2) - 1) + b;
-            },
-            easeInCubic: function (x, t, b, c, d) {
-                return c*(t/=d)*t*t + b;
-            },
-            easeOutCubic: function (x, t, b, c, d) {
-                return c*((t=t/d-1)*t*t + 1) + b;
-            },
-            easeInOutCubic: function (x, t, b, c, d) {
-                if ((t/=d/2) < 1) return c/2*t*t*t + b;
-                return c/2*((t-=2)*t*t + 2) + b;
-            },
-            easeInQuart: function (x, t, b, c, d) {
-                return c*(t/=d)*t*t*t + b;
-            },
-            easeOutQuart: function (x, t, b, c, d) {
-                return -c * ((t=t/d-1)*t*t*t - 1) + b;
-            },
-            easeInOutQuart: function (x, t, b, c, d) {
-                if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
-                return -c/2 * ((t-=2)*t*t*t - 2) + b;
-            },
-            easeInQuint: function (x, t, b, c, d) {
-                return c*(t/=d)*t*t*t*t + b;
-            },
-            easeOutQuint: function (x, t, b, c, d) {
-                return c*((t=t/d-1)*t*t*t*t + 1) + b;
-            },
-            easeInOutQuint: function (x, t, b, c, d) {
-                if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
-                return c/2*((t-=2)*t*t*t*t + 2) + b;
-            },
-            easeInExpo: function (x, t, b, c, d) {
-                return (t==0) ? b : c * Math.pow(2, 10 * (t/d - 1)) + b;
-            },
-            easeOutExpo: function (x, t, b, c, d) {
-                return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
-            },
-            easeInOutExpo: function (x, t, b, c, d) {
-                if (t==0) return b;
-                if (t==d) return b+c;
-                if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
-                return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
-            }
         });
 
         $('.app-use-wrap .ui_carousel_slider').vcCarousel({
@@ -147,6 +89,7 @@
         
         
         var $window   = $(window);
+        var $contentWrap = $('.thinq-wrap');        
         var aniSpeed = 800;
         var wheelAniInterval = null;
         var wheelInterval = null;            
@@ -158,8 +101,7 @@
         var $scenes = $('#fixed-wrap').children().add('.thinq-wrap');
         var stepLens = 0;
         var posArr = [];
-        var wheelArr = [];
-        
+        var wheelArr = [];       
 
         var regex = /^data-step-(-?\d*)/;
 
@@ -171,19 +113,9 @@
         $('.next-arr').on('a', function(e){
             e.preventDefault();
         });
-
         
-        $window.on('resizeend', function(e){
-            render();
-        });
-
-        $window.on('floatingTop', function(){
-            render(0);
-        });         
-
-
+        
         function moveStep(step){
-
             
             if(!canScroll) return;
             if(currentStep == step) return;
@@ -234,27 +166,13 @@
             
         }
 
-        function stringToObj(str){
-            
-            var regex = /(.*)\:(.*)/;
-            var arr = str.replace(/ /gi, "").split(',');
-            var obj = {};
-
-            for(var i=0; i<arr.length; i++){
-                var match = arr[i].match(regex);
-                if(match !== null){
-                    obj[match[1]] = match[2];
-                }
-            }
-            return obj;
-        }
-
+        
 
         function moveScene(idx, step, speed){
              
             if(!canScroll) return;
             canScroll = false;
-            $('.brand-wrap').scrollTop(0);   
+            $contentWrap.scrollTop(0);   
             appMotion(0); 
 
             $('html').addClass('sceneMoving');                    
@@ -301,7 +219,7 @@
                 var timeDiff = curTime-prevTime;
                 if(timeDiff > 40){
                     if(currentStep == stepLens){
-                        var st = $('.brand-wrap').scrollTop();
+                        var st = $contentWrap.scrollTop();
                         if(st==0 && e.deltaY<0){
                             wheelScene(-1);
                         }
@@ -326,7 +244,7 @@
                 if(currentStep == stepLens){
                     if(wheelInterval) clearTimeout(wheelInterval);
                     wheelInterval = setTimeout(function(){
-                        var st = $('.brand-wrap').scrollTop();
+                        var st = $contentWrap.scrollTop();
                         if(st==0 && touchSy - data.y < -80){
                             wheelScene(-1, true);
                         }
@@ -352,6 +270,22 @@
                 y : e.pageY || e.clientY
             };
         }
+
+        function _stringToObj(str){
+            
+            var regex = /(.*)\:(.*)/;
+            var arr = str.replace(/ /gi, "").split(',');
+            var obj = {};
+
+            for(var i=0; i<arr.length; i++){
+                var match = arr[i].match(regex);
+                if(match !== null){
+                    obj[match[1]] = match[2];
+                }
+            }
+            return obj;
+        }
+
 
         function _findIdx(py){
             var idx = 0;
@@ -395,7 +329,6 @@
             var $target   = $(video||this),
                 $wrap     = $target.closest('.img'),
                 $image    = $wrap.find('img'),
-                key       = $target.data('key'),
                 loaded    = $target.data('loaded'),
                 src       = $target.data('src'),                        
                 isAndroid = vcui.detect.isAndroid,
@@ -414,7 +347,6 @@
                 */
                 src    = $target.data('src'),                        
                 videoAttr = $target.data('options') || 'autoplay loop playsinline muted',
-                $video    = $target.find('video'),
                 $sources  = $target.find('source'),
                 oVideo;
 
@@ -474,7 +406,7 @@
         }
 
 
-        function render(page){
+        var render = function(page){
 
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
             if(wheelInterval) setTimeout(wheelInterval);
@@ -505,12 +437,12 @@
                         var attr = this.attributes[attributeIndex];
                         var match = attr.name.match(regex);
                         if(match === null) continue;                                
-                        if(attributeIndex==1) cssVal = stringToObj(attr.value);
+                        if(attributeIndex==1) cssVal = _stringToObj(attr.value);
 
                         arr.push({
                             sort : match[1],
                             target : this,
-                            transit : stringToObj(attr.value),
+                            transit : _stringToObj(attr.value),
                             pageId : i                                 
                         });                                
                     }
@@ -540,7 +472,8 @@
                     }
                 }else{
                     wheelArr.push(i);
-                }        
+                }      
+                
 
                 if(i==0){
                     itemHeight = winHeight-prevAllHeight;   
@@ -560,7 +493,7 @@
 
 
             stepLens = wheelArr.length-1;                    
-            $('.brand-wrap').css({'overflow':'auto','height':winHeight});
+            $contentWrap.css({'overflow':'auto','height':winHeight});
             $('.contents').css({'overflow':'hidden', 'height':totalHeight});
 
             if(page!==undefined){
@@ -577,42 +510,51 @@
                 }, 100);
             }
             
-        }          
+        }    
+        
+        
+        ////////////////////////////////////
+        // 탭 내부 스크립트
+                
 
-        $('.app-wrap').css('position','relative');
-
+        var $device = $('.thinq-app').find('.ui_device'); // app 탭내 핸드폰
+        var $typography = $('.thinq-app').find('.typography');
         var deviceY = 0;
-        var deviceH = 612;
+        var deviceH = 612; // 핸드폰 사이즈
         var isLifeWrap = false;
         var isThinqApp = false;
+
+        $('.thinq-app').find('.app-wrap').css('position','relative'); //$device.position().top 값을 구하기 위해 position 값이 필요 
         
         $('.thinq-tabs .ui_tab').on('tabchange', function(e, data){
 
-            $('.brand-wrap').scrollTop(0); 
-            $('.brand-wrap').off('scroll.app');  
-            $('.brand-wrap').off('scroll.lifestyle');
+            $contentWrap.scrollTop(0); 
+            $contentWrap.off('scroll.app');  
+            $contentWrap.off('scroll.lifestyle');
+
+            $device.css('top', '');
             appMotion(0); 
 
             if(data.content[0] == $('.thinq-app')[0]){                
-                deviceY = $('.ui_device').position().top;
+                deviceY = $device.position().top;
                 isThinqApp = true;                
-                $('.brand-wrap').on('scroll.app', scrollEvent);  
+                $contentWrap.on('scroll.app', scrollEvent);  
             }else{
                 isThinqApp = false;
             }
 
             if(data.content[0] == $('.thinq-lifestyle')[0]){
                 isLifeWrap = true;
-                $('.brand-wrap').on('scroll.lifestyle', scrollEvent);  
+                $contentWrap.on('scroll.lifestyle', scrollEvent);  
             }else{
                 isLifeWrap = false;
             }
 
         })
         
-        $('.ui_device').find('.frame').css({'transition':'transform 0.1s'})
-        $('.ui_device').find('.screen').css({'transition':'opacity 0.1s'})
-        $('.typography').css({'transition':'opacity 0.1s'});
+        $device.find('.frame').css({'transition':'transform 0.1s'})
+        $device.find('.screen').css({'transition':'opacity 0.1s'})
+        $typography.css({'transition':'opacity 0.1s'});
 
         function transFunc(distance, start, end, scroll, sy){
             var progress = sy? ((sy - scroll) - distance) /distance : (scroll - distance) /distance;
@@ -635,8 +577,6 @@
             }    
         })
 
-        var isMac = vcui.detect.isMac;
-
         function appMotion(strollTop){
 
             var st = strollTop - 88; 
@@ -645,32 +585,30 @@
             var val3 = transFunc(300, 1, 0.0, st, 1000);
             var val4 = transFunc(300, 1, 0.0, st, 2000);
 
-            $('.ui_device').find('.frame').css({'scale':val});
-            $('.typography').css({'opacity':val2});
-            $('.ui_device').find('.intro').css({'opacity':val3});
-            $('.ui_device').find('.ui_last').css({'opacity':val4});
+            $device.find('.frame').css({'scale':val});
+            $typography.css({'opacity':val2});
+            $device.find('.intro').css({'opacity':val3});
+            $device.find('.ui_last').css({'opacity':val4});
 
-            var useWrap = $('.app-use-wrap').position().top;
+            var useWrap = $('.app-use-wrap').position().top;            
 
             if(st + deviceH*2 - 188 > useWrap){
                 var ny = st + deviceH*2 - 188 - useWrap;
-                $('.ui_device').css('top', -ny);
+                $device.css('top', -ny);
             }
 
             if(!isMobile){
-                if(st > deviceY+15){
-                    if(isMac){
-                        $('.ui_device').addClass('fixed');
-                    }else{
-                        $('.ui_device').css('left','calc(50% - 7px)').addClass('fixed');
-                    }
+
+                if(st > deviceY+15){                    
+                    $device.addClass('fixed');
+                    
                 }else{
-                    $('.ui_device').css({'left':'','top':''}).removeClass('fixed');
+                    $device.css({'top':''}).removeClass('fixed');
                 }                
             }
 
             if(strollTop == 0){
-               $('.ui_device').css({'left':'','top':''}).removeClass('fixed');
+               $device.css({'top':''}).removeClass('fixed');
             }
 
         }
@@ -678,7 +616,7 @@
         function scrollEvent(){
 
             if(isThinqApp){
-                appMotion($('.brand-wrap').scrollTop());                
+                appMotion($contentWrap.scrollTop());                
             }   
             if(isLifeWrap){
                 $('.free-life-wrap').find('.animate-target').each(function() {
@@ -730,25 +668,36 @@
             }      
         });
 
-        /*
-        function doWheelfixedElement(){
+        function doWheelfixedElement(selector){
             function fixedScrolled(e) {
                 var evt = e || window.event;
-                var delta = evt.detail? evt.detail * (-120) : evt.wheelDelta; //delta returns +120 when wheel is scrolled up, -120 when scrolled down
-                $(".brand-wrap").scrollTop($(".brand-wrap").scrollTop() - delta);
+                var delta = evt.detail? evt.detail * (-120) : evt.wheelDelta; 
+                $contentWrap.scrollTop($contentWrap.scrollTop() - delta);
             }
             var mousewheelevt = (/Gecko\//i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";    
-            document.querySelectorAll('.fixed-scroll').forEach(function(item){
+            document.querySelectorAll(selector).forEach(function(item){
                 if (item.attachEvent) item.attachEvent("on" + mousewheelevt, fixedScrolled);
                 else if (item.addEventListener) item.addEventListener(mousewheelevt, fixedScrolled, false);
             });
         }
-        doWheelfixedElement(); 
-        */
-        
+
+        doWheelfixedElement('.ui_device');         
         setMagazineVideo();
-        $window.trigger('breakpointchange');
+
+
+        $window.on('floatingTop', function(){
+            render(0);
+        });     
+
+        // 앱 대응시 주석처리
+        $window.on('resizeend', function(e){
+            render();
+        });
         $window.trigger('resizeend');
+        // 앱 대응시 주석처리 end
+        
+        $window.trigger('breakpointchange');
+        window.resizeScene = render;        
 
     });
 });
