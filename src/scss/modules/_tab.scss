@@ -91,7 +91,7 @@
             display:inline-block;
             font-size:0;
             vertical-align:top;
-            overflow-x:hidden;
+            // overflow-x:hidden; /* 0219 원복(다른경우 새로운 클래스 상속 필요) */
             > li {
                 display:inline-block;
                 margin-left:32px;
