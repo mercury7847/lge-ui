@@ -207,9 +207,6 @@
                 });
             });
 
-            MD08045026%26%26%2620210816135150
-
-
             self.$searchButton.on('click', function(e){
                 e.preventDefault();
 
