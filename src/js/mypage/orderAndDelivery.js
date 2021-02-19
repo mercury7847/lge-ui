@@ -457,11 +457,18 @@
     function requestOrderInquiry(startDate, endDate, page){
         lgkorUI.showLoading();
 
+        var memInfos = lgkorUI.getHiddenInputData();
+
         var sendata = {
             startDate: startDate,
             endDate: endDate,
             page: page || 1,
-            orderNumber: $('.contents.mypage').data('orderNumber')
+            orderNumber: $('.contents.mypage').data('orderNumber'),
+            inquiryType: memInfos.inquiryType,
+            orderNumber: memInfos.orderNumber,
+            userName: memInfos.userName,
+            userEmail: memInfos.userEmail,
+            phoneNumber: memInfos.phoneNumber
         }
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
 
