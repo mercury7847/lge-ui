@@ -14,7 +14,7 @@
 
     function setting(){
         LOGIN_CONFIRM_URL = $('.contents.non-members').data('confirmUrl');
-        SUPPLY_CONFIRM_URL = $('.contents.non-members').data('serviceConfirmUrl');
+        SUPPLY_CONFIRM_URL = $('.contents.non-members').data('disposableConfirmUrl');
 
         var register;
 
