@@ -1,0 +1,95 @@
+{
+    "data": {
+      "listData": 
+        {
+          "orderNumber": "000001201",
+          "orderType": "NS",
+          "orderDate": "2021-02-05 00:45:00",
+          "status": "Canceled",
+          "orderTotal": 2,
+          "productList": [
+            {
+              "productNameKR": "Clothes Dryer",
+              "productNameEN": "BB052S.AKOR",
+              "modelID": "MD08600410",
+              "productImage": "null",
+              "productPDPurl": "null",
+              "quantityOrdered": "2",
+              "quantityShipped": "0",
+              "productPrice": "1384416",
+              "productSalePriceCurrency": "KRW",
+              "productFlag": "",
+              "discountPrice": "",
+              "memberShipPoint": "",
+              "productTotal": "1",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "",
+                "statusClass": ""
+              },
+              "statusButtonList": [
+                
+              ],
+              "itemCancelAbleYn": ""
+            },
+            {
+              "productNameKR": "Cross Divison PTO",
+              "productNameEN": "BEI3GTRA1.AKOR",
+              "modelID": "MD08005026",
+              "productImage": "null",
+              "productPDPurl": "null",
+              "quantityOrdered": "1",
+              "quantityShipped": "0",
+              "productPrice": "5577792",
+              "productSalePriceCurrency": "KRW",
+              "productFlag": "",
+              "discountPrice": "",
+              "memberShipPoint": "",
+              "productTotal": "1",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "",
+                "statusClass": ""
+              },
+              "statusButtonList": [
+                
+              ],
+              "itemCancelAbleYn": ""
+            }
+          ],
+          "orderCancelAbleYn": "Y"
+        },
+      "payment": {
+        "creditCard": "",
+        "installment": "",
+        "paymentDate": "",
+        "bankName": "",
+        "bankAccountNo": "",
+        "bankAccountNm": "",
+        "depositExpectedDate": "",
+        "membershipPoint": "",
+        "paymentMethodName": ""
+      },
+      "shipping": {
+        "name": "대저로 -",
+        "email": "promiser@naver.com",
+        "street": "부산 강서구 대저로235번길 9 (대저1동)\nhnnn",
+        "city": "-",
+        "countryId": "KR",
+        "postcode": "46702",
+        "telephone": "12343131331",
+        "telephonenumber": "12343131331",
+        "company": "Wise13",
+        "recyclingPickup": "Y",
+        "shippingNoteTxt": "",
+        "instpectionVisit": "Y"
+      }
+    },
+    "param": {
+      "pagination": {
+        "page": "1"
+      }
+    },
+    "message": "success",
+    "status": "success"
+  }

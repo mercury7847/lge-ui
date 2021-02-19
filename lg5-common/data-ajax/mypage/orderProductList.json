@@ -16,7 +16,7 @@
                 "orderDate": "2020.09.05",
                 "orderNumber": "20203987102999",
                 "orderTotal": "3",
-                "cancelAbled": "Y",
+                "orderCancelAbleYn": "Y",
                 "productList": [
                     {
                         "modelID": "ADC495769328",
@@ -37,7 +37,8 @@
                             "statusClass": "",
                             "statusDate": "배송희망일 2020.09.18"
                         },
-                        "statusButtonList": []
+                        "statusButtonList": [],
+                        "itemCancelAbleYn": "Y"
                     },
                     {
                         "modelID": "ADC4957639428",
@@ -134,8 +135,7 @@
                 "orderDate": "2020.09.05",
                 "orderNumber": "20203987102999",
                 "orderTotal": "3",
-                "cancelAbled": "N",
-                "takebackAbled": "Y",
+                "orderCancelAbleYn": "N",
                 "productList": [
                     {
                         "modelID": "ADC495769328",
