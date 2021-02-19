@@ -132,7 +132,7 @@
 
             $('#phoneForm').find('.btn-confirm').on('click', function() {
                 self.authManager.confirm(this, function(success, result) {
-                    success && self.complete();
+                    //success && self.complete();
                 });
             });
 

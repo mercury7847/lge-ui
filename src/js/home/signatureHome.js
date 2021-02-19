@@ -117,15 +117,8 @@ $(function() {
         $window.on('floatingTop', function(){
             render(0);
         });     
-        
-        $(document).on('click', 'a', function(e){
-            var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
-            if(href == '#'){
-                e.preventDefault();
-            }            
-        });
 
-        function moveStep(step, flag){
+        function moveStep(step){
 
             if(!canScroll) return;  
             if(currentStep == step) return;
@@ -139,16 +132,15 @@ $(function() {
 
             for(var i =0; i<arr.length; i++){
                 var item = arr[i];
-                var $target = $(item.target);                
-                $target.transit(item.transit);                
-            }
-
-            if(!flag){
-                if(wheelInterval) clearTimeout(wheelInterval);
-                wheelInterval = setTimeout(function(){
-                    currentStep = step;
-                    canScroll = true;
-                }, 400);
+                var $target = $(item.target);    
+                if(i==0){
+                    $target.transit(item.transit, function(){
+                        currentStep = step;
+                        canScroll = true;
+                    });  
+                }else{
+                    $target.transit(item.transit);  
+                }                               
             }
         }
 
@@ -217,7 +209,7 @@ $(function() {
                 }, speed, 'easeInOutQuart',  function() { 
                     canScroll = true
                     currentPage = idx;     
-                    moveStep(step, true);          
+                    moveStep(step);          
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
                     
@@ -237,25 +229,27 @@ $(function() {
         } 
 
 
-
-        
+        var prevTime = new Date().getTime();
 
         document.addEventListener('wheel', function(e){
-            
-            if(currentStep == stepLens){
-                // if(wheelInterval) clearTimeout(wheelInterval);
-                // wheelInterval = setTimeout(function(){
-                    var st = $('.brand-wrap').scrollTop();
-                    console.log(st, e.deltaY)
-                    if(st==0 && e.deltaY<0){
-                        wheelScene(-1);
+
+            var curTime = new Date().getTime();
+            if(typeof prevTime !== 'undefined'){
+                var timeDiff = curTime-prevTime;
+                if(timeDiff > 40){
+                    if(currentStep == stepLens){
+                        var st = $('.brand-wrap').scrollTop();
+                        if(st==0 && e.deltaY<0){
+                            wheelScene(-1);
+                        }
+                    }else{
+                        if(e.deltaY>0 || e.deltaY<0){
+                            wheelScene(e.deltaY);
+                        }
                     }
-                // }, 100);
-            }else{
-                if(e.deltaY>0 || e.deltaY<0){
-                    wheelScene(e.deltaY);
-                }
-            }  
+                }                    
+            }            
+            prevTime = curTime;              
 
         });
 
@@ -523,49 +517,25 @@ $(function() {
             
         }    
         
-        $('.signature-tabs').on('tabchange', function(e, data){
+        $('.signature-tabs .ui_tab').on('tabchange', function(e, data){
             $('.brand-wrap').scrollTop(0); 
-            $('.brand-wrap').off('scroll.philosophy'); 
-
-            if(data.content[0] == $('#signature-cont2')[0]){                      
-                $('.brand-wrap').on('scroll.philosophy', scrollEvent);  
-            }
-
         });
 
 
+        $(document).on('click', 'a', function(e){
+            var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
+            if(href == '#' || href == '#n'){
+                e.preventDefault();
+            }else{
+                if (href && /^(#|\.)\w+/.test(href)) {                    
+                    var $compareTarget = $('.signature-tabs .ui_tab').find('a[href="'+href+'"]');
+                    if($compareTarget[0] != e.currentTarget) {
+                        $('.signature-tabs .ui_tab').vcTab('selectByName', href);
+                    }
+                }                
+            }      
+        });
 
-
-        function scrollEvent(e){
-            var ht = $window.height();
-            // var st = $('.brand-wrap').scrollTop();
-            var ft = parseFloat($('.ui_floor').position().top); 
-            var yp = 2*ht - ft;
-            if(yp >= 0){
-                $('.image-floor').css('bottom',yp);
-            }
-        }
-        
-
-        function doWheelfixedElement(){
-
-            console.log('-----');
-
-            function fixedScrolled(e) {
-                var evt = e || window.event;
-                var delta = evt.detail? evt.detail * (-120) : evt.wheelDelta; //delta returns +120 when wheel is scrolled up, -120 when scrolled down
-                $(".brand-wrap").scrollTop($(".brand-wrap").scrollTop() - delta);
-            }
-            var mousewheelevt = (/Gecko\//i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";    
-
-            document.querySelectorAll('.fixed-scroll').forEach(function(item){
-                if (item.attachEvent) item.attachEvent("on" + mousewheelevt, fixedScrolled);
-                else if (item.addEventListener) item.addEventListener(mousewheelevt, fixedScrolled, false);
-            });
-
-        }
-
-        //doWheelfixedElement();        
         $window.trigger('resizeend');
 
 

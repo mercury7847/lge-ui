@@ -90,9 +90,15 @@
 */
 .tit-area {
     position: relative;
-    margin-bottom: 48px;
+    height:214px;
+    margin:-48px -48px 48px;
+    padding:48px;
+    background:url('/lg5-common/images/BMC/bg-win-announc.svg') no-repeat center center;
+    background-size:cover;
     @include mobile {
+        margin-top:-40px;
         margin-bottom: 32px;
+        background-image:url('/lg5-common/images/BMC/bg-win-announc-m.svg');
     }
     .content-block {
         .text-block {
@@ -104,8 +110,9 @@
                 @include font($font-large-4,52px);
             }
             .date {
-                margin-top: 8px;
-                color: $color-gray-1;
+                margin-top: 12px;
+                color: $color-default;
+                @include font-large;
             }
             @include mobile {
                 .flag-wrap {
