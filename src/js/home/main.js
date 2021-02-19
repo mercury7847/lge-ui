@@ -241,6 +241,7 @@ $(function () {
         // 휠 이벤트 처리
         document.addEventListener('wheel', function(e){
 
+<<<<<<< HEAD
             var curTime = new Date().getTime();
             if(typeof prevTime !== 'undefined'){
                 var timeDiff = curTime-prevTime;
@@ -254,6 +255,20 @@ $(function () {
                         if(e.deltaY>0 || e.deltaY<0){
                             wheelScene(e.deltaY);
                         }
+=======
+        var curTime = new Date().getTime();
+        if(typeof prevTime !== 'undefined'){
+            var timeDiff = curTime-prevTime;
+            if(timeDiff > 40){
+                if(currentPage == maxLens){
+                    var st = $('.section-cover').scrollTop();
+                    if(st==0 && e.deltaY<0){
+                        wheelScene(-1);
+                    }
+                }else{
+                    if(e.deltaY>0 || e.deltaY<0){
+                        wheelScene(e.deltaY);
+>>>>>>> 2eba7f8e7c6d163fc4fa6ad5a5cd8493c2e0ac67
                     }
                 }                    
             }            

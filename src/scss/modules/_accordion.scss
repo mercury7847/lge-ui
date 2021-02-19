@@ -250,7 +250,8 @@
         }
         .title {
             font-weight: 700;
-            @include font($font-large-4,52px);
+            // @include font($font-large-4,52px);
+            @include font-large-3;
         }
         .title.type2{
             @include font-large-1;

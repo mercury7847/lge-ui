@@ -68,7 +68,7 @@ vcui.define('ui/checkboxAllChecker', ['jquery', 'vcui'], function ($, core) {
             var self = this;
 
             var chk = self.$allChecker.prop('checked');
-            self.$items.prop('checked', chk).trigger('change');
+            self.$items.prop('checked', chk);
 
             self.trigger('allCheckerChange', [self.getAllChecked()]);
         },
@@ -94,6 +94,19 @@ vcui.define('ui/checkboxAllChecker', ['jquery', 'vcui'], function ($, core) {
 
             var leng = self.$items.closest(':checked').length;
             return self.total === leng;
+        },
+
+        setAllChecked: function(){
+            var self = this;
+
+            self.$items.prop('checked', true);
+            self.$allChecker.prop('checked', true);
+        },
+
+        getCheckItems: function(){
+            var self = this;
+
+            return self.$items.closest(':checked');
         }
     });
 });

@@ -94,7 +94,13 @@
         console.log("sendata:",sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(LOGIN_CONFIRM_URL, sendata, function(result){
             if(result.data.success == "Y"){
-                location.href = result.data.sendUrl;
+                var query = "?inquiryType="+sendata.inquiryType;
+                query += "&orderNumber="+sendata.orderNumber;
+                query += "&userName="+sendata.userName;
+                query += "&userEmail="+sendata.userEmail;
+                query += "&phoneNumber="+sendata.phoneNumber;
+
+                location.href = result.data.sendUrl + query;
             } else{
                 if(result.data.alert.isCustom){
                     lgkorUI.alert("", {
