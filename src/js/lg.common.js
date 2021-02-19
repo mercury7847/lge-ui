@@ -995,10 +995,24 @@ var isApp = function(){
                 if(dtype == 'json' && result.status != 'success'){
                     //alert(result.message ? result.message : '오류발생');
                     console.log('resultStatusFail',url,result);
-                    lgkorUI.alert("", {
-                        title: result.message
-                    });
-
+                    if(ignoreCommonSuccessCheck) {
+                        var data = result.data;
+                        if(data && !Array.isArray(data) && typeof data === 'object') {
+                            if(!data.success && !(typeof(data.success) === "boolean")) {
+                                data.success = "N";
+                                result.data = data;
+                            }
+                        } else {
+                            result.data = {"success" : "N"};
+                        }
+                        if(callback && typeof callback === 'function') callback(result); 
+                    } else {
+                        if(result.message) {
+                            lgkorUI.alert("", {
+                                title: result.message
+                            });
+                        }
+                    }
                     lgkorUI.hideLoading();
                     return;
                 }
@@ -1141,7 +1155,7 @@ var isApp = function(){
                         $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
                     }
                 } else {
-                    if(data.alert) {
+                    if(data.alert && !vcui.isEmpty(data.alert)) {
                         if(isToast) {
                             $(window).trigger("toastshow",data.alert.title);
                         } else {
@@ -1168,7 +1182,7 @@ var isApp = function(){
                     callbackSuccess(data);
                 } else {
                     callbackFail(data);
-                    if(data.alert) {
+                    if(data.alert && !vcui.isEmpty(data.alert)) {
                         self.commonAlertHandler(data.alert);
                         /*
                         lgkorUI.alert("", {
