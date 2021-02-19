@@ -1211,7 +1211,7 @@
             }
 
             .example-result {
-                padding-top: 64px;
+                padding-top:80px;
                 @include mobile {
                     padding-top:60px;
                 }
@@ -1219,7 +1219,7 @@
                     @include font-medium;
                 }
                 .img {
-                    margin-top:16px;
+                    margin-top:12px;
                     img {
                         width:100%;
                         height:auto;
@@ -1229,7 +1229,10 @@
             }
             
             .category-select {
-                margin-top: 24px;
+                margin-top: 48x;
+                @include mobile {
+                    margin-top: 40px;
+                }
             }
         }
         //케어십 절차 안내
