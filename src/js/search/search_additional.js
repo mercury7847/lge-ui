@@ -127,7 +127,7 @@
                 //타이머
                 self.searchTimer = null;
                 //타이머 검색 딜레이
-                self.searchDelay = 2000;
+                self.searchDelay = 1000;
 
                 //통합검색 레이어
                 self.$contentsSearch = $('div.contents.search');
