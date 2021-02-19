@@ -21,7 +21,7 @@
                 <!-- // 검색 영역 -->
                 <!-- 검색 결과 영역 -->
                 <div class="search-tabs-wrap">
-                    <div class="tabs-wrap ui_tab ui_smooth_scroll">
+                    <div class="tabs-wrap border-type ui_tab ui_smooth_scroll"><!-- 210218 수정 [.border-type 클래스 추가] -->
                         <ul class="tabs">
                             <li class="on" data-label="전체"><a href="/html/UTS/SERF9002.html" data-category-id="all" data-search-url="/lg5-common/data-ajax/search/search_all.json">전체<span>(210)</span><em class="blind">선택됨</em></a></li>
                             <li data-label="제품"><a href="/html/UTS/SERF9003.html" data-category-id="product" data-search-url="/lg5-common/data-ajax/search/search_product.json">제품/케어솔루션<span>(59)</span></a></li>
@@ -33,34 +33,276 @@
                         </ul>
                     </div>
                 </div>
-                <!-- 더보기 클릭 시 .on 추가 -->
+                <!-- 210218 수정 [추천 큐레이션, 스마트 필터 추가, 바로가기 영역 수정] -->
+                <!-- 추천 큐레이션 -->
+                <div class="recommended-curation">
+                    <div class="inner">
+                        <h2 class="title">추천 큐레이션</h2>
+                        <div class="ui_smooth_scrolltab">
+                            <div class="ui_smooth_tab">
+                                <ul class="curation-list">
+                                    <li><a href="#" class="curation selected"><span>재택근무를 위한 대화면 노트북</span></a></li>
+                                    <li><a href="#" class="curation"><span>학생에게 추천 가성비 갑 노트북</span></a></li>
+                                    <li><a href="#" class="curation"><span>학생에게 추천 가성비 갑 노트북</span></a></li>
+                                    <li><a href="#" class="curation"><span>학생에게 추천 가성비 갑 노트북</span></a></li>
+                                    <li><a href="#" class="curation"><span>재택근무를 위한 대화면 노트북</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="scroll-controls ui_smooth_controls">
+                                <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
+                                <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 추천 큐레이션 -->
+                <!-- 스마트 필터 -->
+                <div class="smart-filter">
+                    <div class="inner">
+                        <h2 class="title">스마트 필터</h2>
+                        <div class="filter-list">
+                            <!-- Default - li 3줄만 보여짐 -->
+                            <!-- 필터 항목 선택 시 .selected 추가  -->
+                            <ul class="default">
+                                <li class="row">
+                                    <div class="label">사이즈</div>
+                                    <div class="content">
+                                        <div class="fold-box">
+                                            <div class="chk-group">
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-size1" name="size">
+                                                    <label for="chk-size1">14인치</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-size2" name="size">
+                                                    <label for="chk-size2">15인치</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-size3" name="size">
+                                                    <label for="chk-size3">16인치</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-size4" name="size">
+                                                    <label for="chk-size4">17인치</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="row">
+                                    <div class="label">프로세스</div>
+                                    <div class="content">
+                                        <!-- .btn-fold 클릭 시 .unfold 추가 -->
+                                        <div class="fold-box">
+                                            <div class="chk-group">
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-process1" name="process">
+                                                    <label for="chk-process1">인텔 11세대 타이거레이크 i7</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-process2" name="process" checked>
+                                                    <label for="chk-process2">인텔 10세대 타이거레이크 i7 </label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-process3" name="process" checked>
+                                                    <label for="chk-process3">인텔 10세대 타이거레이크 i5</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-process4" name="process">
+                                                    <label for="chk-process4">인텔 10세대 타이거레이크 i5</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-process5" name="process">
+                                                    <label for="chk-process5">인텔 9세대 타이거레이크 i7</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-process6" name="process">
+                                                    <label for="chk-process6">인텔 9세대 타이거레이크 i5</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-process7" name="process">
+                                                    <label for="chk-process7">세부 필터 항목명</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-process8" name="process">
+                                                    <label for="chk-process8">인텔 9세대 타이거레이크 i7</label>
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn-fold"><span class="blind">항목 더보기</span></button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="row">
+                                    <div class="label">저장장치</div>
+                                    <div class="content">
+                                        <div class="fold-box">
+                                            <div class="chk-group">
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-storage1" name="storage" checked>
+                                                    <label for="chk-storage1">SSD 1TB</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-storage2" name="storage">
+                                                    <label for="chk-storage2">SSD 512GB</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-storage3" name="storage">
+                                                    <label for="chk-storage3">SSD 25</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="row">
+                                    <div class="label">메모리 용량</div>
+                                    <div class="content">
+                                        <div class="fold-box">
+                                            <div class="chk-group">
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-memory1" name="memory">
+                                                    <label for="chk-memory1">LPDDR4x16GB</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-memory2" name="memory" checked>
+                                                    <label for="chk-memory2">LPDDR4x32GB</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="row">
+                                    <div class="label">부가기능</div>
+                                    <div class="content">
+                                        <div class="fold-box">
+                                            <div class="chk-group">
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-added1" name="added">
+                                                    <label for="chk-added1">터치펜</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-added2" name="added">
+                                                    <label for="chk-added2">터치고속충전</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-added3" name="added">
+                                                    <label for="chk-added3">키보드라이트</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="row">
+                                    <div class="label">영상출력</div>
+                                    <div class="content">
+                                        <div class="fold-box">
+                                            <div class="chk-group">
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-output1" name="output">
+                                                    <label for="chk-output1">miniHDMI</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-output2" name="output">
+                                                    <label for="chk-output2">WiDi(무선연결)</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-output3" name="output">
+                                                    <label for="chk-output3">다중모니터연결(2개)</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-output4" name="output">
+                                                    <label for="chk-output4">HDMI</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-output5" name="output">
+                                                    <label for="chk-output5">다중모니터연결(3개)</label>
+                                                </div>
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" id="chk-output6" name="output">
+                                                    <label for="chk-output6">HDMI(2.0)</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- 클릭 시 .fold 추가, toggle text - 필터 더보기 / 필터 접기 -->
+                        <button type="button" class="btn-moreview block"><span>필터 더보기</span></button>
+
+                        <!-- 스마트 필터 선택한 항목 표시 -->
+                        <div class="filter-result">
+                            <ul class="rounded-list">
+                                <li>
+                                    <div class="rounded">
+                                        <span class="text">SSD 1TB</span>
+                                        <button type="button" class="btn-delete"><span class="blind">선택한 항목 삭제</span></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rounded">
+                                        <span class="text">LPDDR4x32GB</span>
+                                        <button type="button" class="btn-delete"><span class="blind">선택한 항목 삭제</span></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rounded">
+                                        <span class="text">인텔 10세대 타이거레이크 i7</span>
+                                        <button type="button" class="btn-delete"><span class="blind">선택한 항목 삭제</span></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rounded">
+                                        <span class="text">인텔 10세대 타이거레이크 i5</span>
+                                        <button type="button" class="btn-delete"><span class="blind">선택한 항목 삭제</span></button>
+                                    </div>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn-reset"><span>초기화</span></button>
+                        </div>
+                        <!-- 스마트 필터 선택한 항목 표시 -->
+                    </div>
+                </div>
+                <!-- 스마트 필터 -->
+                <!-- 바로가기 -->
                 <div class="search-result-category">
                     <div class="inner">
-                        <ul class="rounded-list">
-                            <li><a href="#" class="rounded"><span class="text">제품&gt;에어컨/에어케어</span></a></li>
-                            <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV</span></a></li>
-                            <li><a href="#" class="rounded"><span class="text">제품&gt;TV/AV&gt;OLED TV</span></a></li>
-                            <li><a href="#" class="rounded"><span class="text">고객지원&gt;경로&gt;출장서비스예약</span></a></li>
-                            <li><a href="#" class="rounded"><span class="text">제품&gt;TV/AV&gt;OLED TV</span></a></li>
-                            <li><a href="#" class="rounded"><span class="text">고객지원&gt;경로&gt;출장서비스예약</span></a></li>
-                            <li><a href="#" class="rounded"><span class="text">제품&gt;TV/AV&gt;OLED TV</span></a></li>
-                            <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV&gt;OLED TV</span></a></li>
-                            <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV&gt;OLED TV</span></a></li>
-                            <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV</span></a></li>
-                        </ul>
+                        <h3 class="title">바로가기</h3>
+                        <div class="ui_smooth_scrolltab">
+                            <div class="ui_smooth_tab">
+                                <ul class="rounded-list">
+                                    <li><a href="#" class="rounded"><span class="text">제품&gt;에어컨/에어케어</span></a></li>
+                                    <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV</span></a></li>
+                                    <li><a href="#" class="rounded"><span class="text">제품&gt;TV/AV&gt;OLED TV</span></a></li>
+                                    <li><a href="#" class="rounded"><span class="text">고객지원&gt;경로&gt;출장서비스예약</span></a></li>
+                                    <li><a href="#" class="rounded"><span class="text">제품&gt;TV/AV&gt;OLED TV</span></a></li>
+                                    <li><a href="#" class="rounded"><span class="text">고객지원&gt;경로&gt;출장서비스예약</span></a></li>
+                                    <li><a href="#" class="rounded"><span class="text">제품&gt;TV/AV&gt;OLED TV</span></a></li>
+                                    <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV&gt;OLED TV</span></a></li>
+                                    <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV&gt;OLED TV</span></a></li>
+                                    <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="scroll-controls ui_smooth_controls">
+                                <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
+                                <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
+                            </div>
+                        </div>
                     </div>
-                    <!-- toggle text - 더보기 / 접기 -->
-                    <a href="#" class="btn-moreview block"><span>더보기</span></a>
                 </div>
+                <!-- // 바로가기 -->
+                <!-- // 210218 수정 [추천 큐레이션, 스마트 필터 추가, 바로가기 영역 수정] -->
+                <!-- 210218 수정 [이미지 변경, br 태그 위치 수정] -->
                 <div class="search-banner">
                     <a href="#n">
-                        <img data-pc-src="/lg5-common/images/UTS/@sample-banner.jpg" data-m-src="/lg5-common/images/UTS/@sample-banner-m.jpg" alt="">
+                        <img data-pc-src="/lg5-common/images/UTS/img-banner.jpg" data-m-src="/lg5-common/images/UTS/img-banner-m.jpg" alt="">
                         <div class="text-area">
                             <strong class="title">새출발을 위한 혼수 지원,<br>2020 올 뉴 웨딩 페스타</strong>
-                            <span class="sub-copy">2020 올 뉴 웨딩 페스타 행사 모델<br>동시 구매 시, 최대 250만원<br>상당 혜택!</span>
+                            <span class="sub-copy">2020 올 뉴 웨딩 페스타 행사 모델<br>동시 구매 시, 최대 250만원 상당 혜택!</span>
                         </div>
                     </a>
                 </div>
+                <!-- // 210218 수정 [이미지 변경, br 태그 위치 수정] -->
 
                 <div class="search-not-result">
                     <div class="no-data">

@@ -19,17 +19,17 @@
         '{{#if modelInfo&&modelInfo.length > 0}}' +
             '<div class="btn-wrap">' +
                 '{{#if modelInfo.length == 1}}' +
-                    '<a href="{{modelInfo[0].url}}" class="btn-text">{{modelInfo[0].name}}</a>' +
+                    '<a href="{{modelInfo[0].url}}" class="btn-text">{{#raw modelInfo[0].name}}</a>' +
                 '{{/if}}' +
                 '{{#if modelInfo.length > 1}}' +
-                    '<a href="#more" class="btn-text">{{modelInfo[0].name}}</a>' +
+                    '<a href="#more" class="btn-text">{{#raw modelInfo[0].name}}</a>' +
                     '<button type="button" class="btn-more"><span class="hidden">수상내역 더보기</span></button>' +
                 '{{/if}}' +
             '</div>' +
         '{{/if}}' +
         '</div>' + 
     '</div></li>';
-    var awardsPopupListItemTemplage = '{{#each item in list}}<li><a href="{{item.url}}">{{item.name}}</a></li>{{/each}}';
+    var awardsPopupListItemTemplage = '{{#each item in list}}<li><a href="{{item.url}}">{{#raw item.name}}</a></li>{{/each}}';
 
     $(window).ready(function() {
         $('.KRP0028').buildCommonUI();
