@@ -21,6 +21,15 @@
         }
     }*/
 
+    .page-header.border {
+        border-bottom:8px solid #f4f4f4;
+    }
+    .page-header.border .tabs-wrap.btn-type {
+        max-width:1280px;
+        margin:0 auto;
+        padding:20px 0 24px;
+    }
+
     .title {
         &.title-h1 {
             @include title-h1;
