@@ -687,7 +687,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                 self.isTransion = true;
                 
                 var toggle = self.$leftContainer.find('.btn-view');
-                if($(window).width() < 768) {
+                if($(window).width() < 1025) {
                     if(toggle.hasClass('map')){
                         var maptop = self.$defaultListContainer.position().top;
                         $('.store-map-con').css({
@@ -705,13 +705,16 @@ function moveDetail(el, detailUrl, windowHeight) {
                     } else{
                         toggle.removeClass("list").addClass('map').find('span').text('지도보기');
         
-                        $('.store-map-con').stop().transition({x:self.windowWidth}, 350, "easeInOutCubic", function(){self.isTransion = false;})
+                        $('.store-map-con').stop().transition({x:'100vw'}, 350, "easeInOutCubic", function(){self.isTransion = false;})
                     }
                 }
                 // PC버전으로 돌아가면 지도 영역 스타일 초기화
                 $(window).resize(function() {
                     if($(window).width() > 1024) {
                         $('.store-map-con').removeAttr('style');
+                        if(toggle.hasClass('list')){
+                            toggle.removeClass("list").addClass('map').find('span').text('지도보기');
+                        }
                     }
                 });
             }
@@ -1129,7 +1132,7 @@ function moveDetail(el, detailUrl, windowHeight) {
             var $mapContainer = $('.map-container');
 
             self.$leftContainer.addClass('active');
-            if( window.innerWidth < 768) {
+            if( window.innerWidth < 1025) {
                 self.$leftContainer.find('.store-list-box').stop().animate({
                     // marginTop : -$mapContainer.offset().top
                 }, function(){
@@ -1138,11 +1141,6 @@ function moveDetail(el, detailUrl, windowHeight) {
                 })
                 $(window).resize(function() { 
                     self._calculationTop();
-
-                    var toggle = self.$leftContainer.find('.btn-view');
-                    if(toggle.hasClass('map')){
-                        $('.store-map-con').stop().transition({x:self.windowWidth}, 350, "easeInOutCubic", function(){self.isTransion = false;})
-                    }
                 });
             }
         },
@@ -1151,21 +1149,30 @@ function moveDetail(el, detailUrl, windowHeight) {
 
         //검색 시 .store-list-box, .store-map-con 위치 계산
         _calculationTop : function() {
-            if($(window).width() < 768) {
-                waiting_state_h = $('.waiting-state').outerHeight();
-                page_header_h = $('.page-header').outerHeight();
-                mobile_nav_wrap_h = $('.mobile-nav-wrap').outerHeight();
-                mobile_nav_wrap_mtop = $('html').find('.mobile-nav-wrap .nav').css('margin-top');
-                header_h = $('.header').outerHeight();
-
+            waiting_state_h = $('.waiting-state').outerHeight();
+            page_header_h = $('.page-header').outerHeight();
+            mobile_nav_wrap_h = $('.mobile-nav-wrap').outerHeight();
+            mobile_nav_wrap_mtop = $('html').find('.mobile-nav-wrap .nav').css('margin-top');
+            header_h = $('.header').outerHeight();
+            breadcrumb = $('.breadcrumb').outerHeight();
+            
+            if($(window).width() < 767) {
                 $('.store-list-box').css({
                     top: - waiting_state_h - page_header_h - mobile_nav_wrap_h - header_h
                 });
 
-                $('.result-map .store-map-con').css({
-                    top: - waiting_state_h - page_header_h - mobile_nav_wrap_h - header_h + 127
+                // $('.result-map .store-map-con').css({
+                //     top: - waiting_state_h - page_header_h - mobile_nav_wrap_h - header_h + 127
+                // });
+            }  else if (767 <= $(window).width() < 1025) {
+                $('.store-list-box').css({
+                    top:  - header_h - breadcrumb - waiting_state_h +57
                 });
-             }
+
+                // $('.result-map .store-map-con').css({
+                //     top: - waiting_state_h - page_header_h - header_h + 241
+                // });
+            }
         },
 
         //모바일 지도보기 클릭 시 맵 높이 설정
