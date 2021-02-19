@@ -142,13 +142,15 @@
         }
 
 
-        function wheelScene(delta) {
+        function wheelScene(nextStep) {
 
-            if(!canScroll) return;
-            var nextStep = (delta < 0) ? -1 : 1;
-            nextStep = nextStep + currentStep;
-            nextStep = Math.max(Math.min(nextStep, stepLens), 0);                   
-            if(currentStep == nextStep) return;
+            // if(!canScroll) return;
+            // var nextStep = (delta < 0) ? -1 : 1;
+            // nextStep = nextStep + currentStep;
+            // nextStep = Math.max(Math.min(nextStep, stepLens), 0);                   
+            // if(currentStep == nextStep) return;
+
+
 
             var arr = wheelArr[nextStep];
 
@@ -230,10 +232,9 @@
 
         function wheelEvent(e) {
             var curTime = +new Date();
-            e = e || window.event;
+            e = e || window.event;            
             var value = e.wheelDelta || -e.deltaY || -e.detail;
             var delta = Math.max(-1, Math.min(1, value));
-
             var horizontalDetection = typeof e.wheelDeltaX !== 'undefined' || typeof e.deltaX !== 'undefined';
             var isScrollingVertically = (Math.abs(e.wheelDeltaX) < Math.abs(e.wheelDelta)) || (Math.abs(e.deltaX ) < Math.abs(e.deltaY) || !horizontalDetection);
 
@@ -241,63 +242,38 @@
                 scrollings.shift();
             }
             scrollings.push(Math.abs(value));
-
             e.preventDefault ? e.preventDefault() : e.returnValue = false;
 
             var timeDiff = curTime-prevTime;
             prevTime = curTime;
-
             if (timeDiff > 500) {
                 scrollings = [];
             }
 
-
-            if (canScroll ) {
-                
+            if (canScroll ) {                
                 var averageEnd = getAverage(scrollings, 10);
                 var averageMiddle = getAverage(scrollings, 70);
                 var isAccelerating = averageEnd >= averageMiddle;
+                var nextStep = (delta < 0) ? -1 : 1;
+                nextStep = nextStep + currentStep;
+                nextStep = Math.max(Math.min(nextStep, stepLens), 0);    
 
-                if(isAccelerating && isScrollingVertically) {
-
+                if(isAccelerating && isScrollingVertically ){
                     if(currentStep == stepLens){
                         var st = $contentWrap.scrollTop();
-                        if(st==0 && delta<0){
-                            wheelScene(-1);
+                        if(st==0 && delta < 0){
+                            wheelScene(nextStep);
                         }
-                    }else{
-                        wheelScene(delta);
+                    }else if(currentStep != nextStep){
+                        wheelScene(nextStep);
                     }
                 }
-
             }
+            return false;
         }
 
 
-
-        document.addEventListener('wheel', function(e){
-
-            wheelEvent(e);
-
-            // var curTime = new Date().getTime();
-            // if(typeof prevTime !== 'undefined'){
-            //     var timeDiff = curTime-prevTime;
-            //     if(timeDiff > 40){
-            //         if(currentStep == stepLens){
-            //             var st = $contentWrap.scrollTop();
-            //             if(st==0 && e.deltaY<0){
-            //                 wheelScene(-1);
-            //             }
-            //         }else{
-            //             if(e.deltaY>0 || e.deltaY<0){
-            //                 wheelScene(e.deltaY);
-            //             }
-            //         }
-            //     }                    
-            // }            
-            // prevTime = curTime;              
-
-        });
+        $(document).on('DOMMouseScroll mousewheel', wheelEvent);
 
         $(document).on('touchstart touchend touchcancel', function(e) {
 

@@ -121,12 +121,17 @@
         .recent-keyword,
         .popular-keyword {
             //display: table-cell;
-            width: ((100% / 10) * 3);
+            flex: 1;
+            //width: ((100% / 10) * 3);
             padding-right: 64px;
         }
         .suggested-tags {
+            flex: 1.6;
             //display: table-cell;
-            width: ((100% / 10) * 4);
+            //width: ((100% / 10) * 4);
+        }
+        .recent-keyword + .suggested-tags {
+            flex: 1;
         }
         @include mobile {
             display: block;
