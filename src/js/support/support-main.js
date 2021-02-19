@@ -275,10 +275,17 @@
                     slidesToShow: 2,
                     responsive: [
                         {
-                            breakpoint: 1024,
+                            breakpoint: 1920,
                             settings: {
                                 slidesToScroll: 1,
                                 slidesToShow: 2,
+                            }
+                        },
+                        {
+                            breakpoint: 1280,
+                            settings: {
+                                slidesToScroll: 1,
+                                slidesToShow: 1,
                             }
                         },
                         {
@@ -386,6 +393,7 @@
                     //로그인 후 화면 조회 슬라이드
                     self.inquiry.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.inquiry.config);
                     self.inquiry.el.slider.addClass(self.slideActiveClass);
+                    self.inquiry.el.slider.vcCarousel('resize');
 
 
                     //재생/정지 버튼

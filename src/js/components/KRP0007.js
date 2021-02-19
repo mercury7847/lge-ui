@@ -244,7 +244,7 @@
                 //찜하기
                 self.$productList.on('change','li div.btn-area-wrap div.wishlist input',function(e){
                     var isLogin = lgkorUI.getHiddenInputData().isLogin;
-                    console.log("isLogin:", isLogin)
+                    console.log("isLogin:", isLogin);
                     if(isLogin == "N"){
                         lgkorUI.alert("", {
                             title: "로그인이 필요합니다."
