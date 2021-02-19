@@ -363,8 +363,6 @@ $(function() {
         // 렌더링
         var render = function(page){
 
-            console.log('render')
-
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
             if(wheelInterval) setTimeout(wheelInterval);
             wheelAniInterval = null;
@@ -491,7 +489,7 @@ $(function() {
         });
         $window.trigger('resizeend');
         // 앱 대응시 주석처리 end
-        
+
         window.resizeScene = render;
 
 
