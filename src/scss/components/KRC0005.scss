@@ -43,12 +43,12 @@
 				&.image-align-left,
 				&.image-align-right {
 					width:auto;
-					margin:0 -16px;
+					margin:28px -16px 0;
 					padding:0;
 				}
-				&.image-align-right {
-					margin-top:28px;
-				}
+				// &.image-align-right {
+				// 	margin-top:28px;
+				// }
 			}
 		}
 		.text-wrap {

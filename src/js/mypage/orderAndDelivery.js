@@ -180,7 +180,7 @@
 
     function setting(){
         ORDER_INQUIRY_LIST_URL = $('.contents.mypage').data('orderInquiryList');
-        ORDER_CANCEL_POP = $('.contents.mypage').data('cancelPop');
+        ORDER_CANCEL_POP = $('.contents.mypage').data('orderInquiryList');
         PRODUCT_STATUS_URL = $('.contents.mypage').data('productStatus');
         ORDER_DETAIL_URL = $('.contents.mypage').data('orderDetail');
         txtMasking = new vcui.helper.TextMasking();
@@ -278,10 +278,19 @@
 
     function openCancelPop(dataId){
         lgkorUI.showLoading();
+    
+        var memInfos = lgkorUI.getHiddenInputData();
+        var isNonMember = $('.contents.mypage').hasClass('non-members');    
+        var orderNumber = isNonMember ? memInfos.orderNumber : $('.contents.mypage').data('orderNumber');
 
         var sendata = {
-            callType: "cancelPopup"
-        };
+            callType: "cancelPopup",
+            orderNumber: orderNumber,
+            inquiryType: memInfos.inquiryType,
+            userName: memInfos.userName,
+            userEmail: memInfos.userEmail,
+            phoneNumber: memInfos.phoneNumber
+        }
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_CANCEL_POP, sendata, function(result){
             lgkorUI.hideLoading();
 
@@ -456,24 +465,22 @@
 
     function requestOrderInquiry(startDate, endDate, page){
         lgkorUI.showLoading();
-
+    
         var memInfos = lgkorUI.getHiddenInputData();
+        var isNonMember = $('.contents.mypage').hasClass('non-members');    
+        var orderNumber = isNonMember ? memInfos.orderNumber : $('.contents.mypage').data('orderNumber');
 
         var sendata = {
             startDate: startDate,
             endDate: endDate,
             page: page || 1,
-            orderNumber: $('.contents.mypage').data('orderNumber'),
+            orderNumber: orderNumber,
             inquiryType: memInfos.inquiryType,
-            orderNumber: memInfos.orderNumber,
             userName: memInfos.userName,
             userEmail: memInfos.userEmail,
             phoneNumber: memInfos.phoneNumber
         }
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
-
-            var isNonMember = $('.contents.mypage').hasClass('non-members');
-            console.log("### isNonMember ###",isNonMember)
 
             var data = result.data;
 

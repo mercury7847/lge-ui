@@ -626,7 +626,6 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit.min'], funct
         _getInitialZoomFactor: function _getInitialZoomFactor() {
             var xZoomFactor = this.$container.outerWidth() / this.$el.outerWidth();
             var yZoomFactor = this.$container.outerHeight() / this.$el.outerHeight();
-
             return Math.min(xZoomFactor, yZoomFactor);
         },
 
