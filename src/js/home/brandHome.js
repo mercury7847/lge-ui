@@ -2,13 +2,20 @@
 
     vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {     
         
-        $('.install-wrap .ui_carousel_slider').on('carouselafterchange', function(e, carousel, index){
+        $('.install-wrap .ui_carousel_slider').on('carouselbeforechange', function(e, carousel, index, nextIdx){
 
             var $items = $('.ui_device').find('.screen-slider > li');
             var xp = -428;
+            /* carouselafterchange 
             if(carousel.previousSlide < index) xp = 428;
             $items.eq(carousel.previousSlide).css({x:0, opacity:1}).transit({x:-xp});
             $items.eq(index).css({x:xp, opacity:1}).transit({x:0});
+            */
+
+           if(nextIdx < index) xp = 428;
+           $items.eq(index).css({x:0, opacity:1}).transit({x:xp});
+           $items.eq(nextIdx).css({x:-xp, opacity:1}).transit({x:0});
+
 
         }).vcCarousel({
             infinite: false,
@@ -165,13 +172,7 @@
             e.preventDefault();
         });
 
-        $(document).on('click', 'a', function(e){
-            var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
-            if(href == '#'){
-                e.preventDefault();
-            }            
-        });
-
+        
         $window.on('resizeend', function(e){
             render();
         });
@@ -298,7 +299,7 @@
             var curTime = new Date().getTime();
             if(typeof prevTime !== 'undefined'){
                 var timeDiff = curTime-prevTime;
-                if(timeDiff > 200){
+                if(timeDiff > 40){
                     if(currentStep == stepLens){
                         var st = $('.brand-wrap').scrollTop();
                         if(st==0 && e.deltaY<0){
@@ -585,7 +586,7 @@
         var isLifeWrap = false;
         var isThinqApp = false;
         
-        $('.thinq-tabs').on('tabchange', function(e, data){
+        $('.thinq-tabs .ui_tab').on('tabchange', function(e, data){
 
             $('.brand-wrap').scrollTop(0); 
             $('.brand-wrap').off('scroll.app');  
@@ -634,6 +635,8 @@
             }    
         })
 
+        var isMac = vcui.detect.isMac;
+
         function appMotion(strollTop){
 
             var st = strollTop - 88; 
@@ -656,7 +659,11 @@
 
             if(!isMobile){
                 if(st > deviceY+15){
-                    $('.ui_device').css('left','calc(50% - 7px)').addClass('fixed');
+                    if(isMac){
+                        $('.ui_device').addClass('fixed');
+                    }else{
+                        $('.ui_device').css('left','calc(50% - 7px)').addClass('fixed');
+                    }
                 }else{
                     $('.ui_device').css({'left':'','top':''}).removeClass('fixed');
                 }                
@@ -669,6 +676,7 @@
         }
 
         function scrollEvent(){
+
             if(isThinqApp){
                 appMotion($('.brand-wrap').scrollTop());                
             }   
@@ -682,10 +690,65 @@
                 });
             }
         }
+
+
+        function setMagazineVideo(){
+
+            var videoTmpl = '<iframe src={{link}} '+
+            'id="videoPlayerCode" frameborder="0" allowfullscreen="1" '+
+            'allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" '+
+            'title="YouTube video player"></iframe>';
+
+            $('#thinq-cont4').off('click', '.video-thumb a');
+
+            $('#thinq-cont4').on('click', '.video-thumb a', function(e){
+                var href = $(e.currentTarget).attr('data-url').replace(/ /gi, "");
+                $('#thinq-cont4').find('.video-box').empty().html(vcui.template(videoTmpl,{link:href}));   
+                var $videoBtns = $('#thinq-cont4').find('.magazine-wrap .ui_carousel_slider .ui_carousel_slide');
+                $videoBtns.removeClass('slide_on');
+                $(e.currentTarget).closest('.ui_carousel_slide').addClass('slide_on');
+            });
+            
+            var $videoBtns = $('#thinq-cont4').find('.magazine-wrap .ui_carousel_slider .ui_carousel_slide');
+            var $videoOnBtn = $videoBtns.siblings('.slide_on').find('a[data-url]');
+            $videoOnBtn.trigger('click');
+        }
+
         
+
+        $(document).on('click', 'a', function(e){
+            var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
+            if(href == '#' || href == '#n'){
+                e.preventDefault();
+            }else{
+                if (href && /^(#|\.)\w+/.test(href)) {                    
+                    var $compareTarget = $('.thinq-tabs .ui_tab').find('a[href="'+href+'"]');
+                    if($compareTarget[0] != e.currentTarget) {
+                        $('.thinq-tabs .ui_tab').vcTab('selectByName', href);
+                    }
+                }                
+            }      
+        });
+
+        /*
+        function doWheelfixedElement(){
+            function fixedScrolled(e) {
+                var evt = e || window.event;
+                var delta = evt.detail? evt.detail * (-120) : evt.wheelDelta; //delta returns +120 when wheel is scrolled up, -120 when scrolled down
+                $(".brand-wrap").scrollTop($(".brand-wrap").scrollTop() - delta);
+            }
+            var mousewheelevt = (/Gecko\//i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";    
+            document.querySelectorAll('.fixed-scroll').forEach(function(item){
+                if (item.attachEvent) item.attachEvent("on" + mousewheelevt, fixedScrolled);
+                else if (item.addEventListener) item.addEventListener(mousewheelevt, fixedScrolled, false);
+            });
+        }
+        doWheelfixedElement(); 
+        */
+        
+        setMagazineVideo();
         $window.trigger('breakpointchange');
         $window.trigger('resizeend');
-
 
     });
 });

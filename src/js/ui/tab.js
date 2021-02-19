@@ -59,6 +59,8 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
                 }
             }
 
+            self.panelNameArr = [];
+
             self.update();
             self._bindEvents();
 
@@ -91,6 +93,7 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
                     if (($panel = $tab.find('>div')).length) {
                         self.$contents = self.$contents.add($panel);
                     } else {
+                        self.panelNameArr.push(href);
                         self.$contents = self.$contents.add($(href));
                     }
                 }
@@ -176,6 +179,20 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
                 self.$tabs.find('a').css('height', maxHeight);
             }
         },
+
+        /**
+         * name으로 해당하는 탭을 활성화
+         * @param {string} name 패널이름
+         * @example
+         * $('#tab').tab('selectByName', '#패널이름');
+         */
+        selectByName:function selectByName(name, noTrigger){
+            var self = this;
+            if(self.panelNameArr.length == 0) return;
+            var index = vcui.array.indexOf(self.panelNameArr, name);
+            self.select(index, noTrigger);
+        },
+        
         /**
          * index에 해당하는 탭을 활성화
          * @param {number} index 탭버튼 인덱스

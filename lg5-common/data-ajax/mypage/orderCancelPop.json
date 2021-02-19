@@ -1,0 +1,276 @@
+{
+    "data": {
+      "bankList": [
+        {
+          "commonCodeName": "산업은행",
+          "sortNo": 1,
+          "commonCodeId": "02"
+        },
+        {
+          "commonCodeName": "기업은행",
+          "sortNo": 2,
+          "commonCodeId": "03"
+        },
+        {
+          "commonCodeName": "국민은행",
+          "sortNo": 3,
+          "commonCodeId": "04"
+        },
+        {
+          "commonCodeName": "외환은행",
+          "sortNo": 4,
+          "commonCodeId": "05"
+        },
+        {
+          "commonCodeName": "수협중앙",
+          "sortNo": 5,
+          "commonCodeId": "07"
+        },
+        {
+          "commonCodeName": "농협중앙회",
+          "sortNo": 6,
+          "commonCodeId": "11"
+        },
+        {
+          "commonCodeName": "단위농협",
+          "sortNo": 7,
+          "commonCodeId": "12"
+        },
+        {
+          "commonCodeName": "우리은행",
+          "sortNo": 8,
+          "commonCodeId": "20"
+        },
+        {
+          "commonCodeName": "신한은행",
+          "sortNo": 9,
+          "commonCodeId": "21"
+        },
+        {
+          "commonCodeName": "SC제일",
+          "sortNo": 10,
+          "commonCodeId": "23"
+        },
+        {
+          "commonCodeName": "KEB하나은행(구하나,구외환)",
+          "sortNo": 11,
+          "commonCodeId": "25"
+        },
+        {
+          "commonCodeName": "씨티은행",
+          "sortNo": 12,
+          "commonCodeId": "27"
+        },
+        {
+          "commonCodeName": "대구은행",
+          "sortNo": 13,
+          "commonCodeId": "31"
+        },
+        {
+          "commonCodeName": "부산은행",
+          "sortNo": 14,
+          "commonCodeId": "32"
+        },
+        {
+          "commonCodeName": "광주은행",
+          "sortNo": 15,
+          "commonCodeId": "34"
+        },
+        {
+          "commonCodeName": "제주은행",
+          "sortNo": 16,
+          "commonCodeId": "35"
+        },
+        {
+          "commonCodeName": "전북은행",
+          "sortNo": 17,
+          "commonCodeId": "37"
+        },
+        {
+          "commonCodeName": "경남은행",
+          "sortNo": 18,
+          "commonCodeId": "39"
+        },
+        {
+          "commonCodeName": "마을금고",
+          "sortNo": 19,
+          "commonCodeId": "45"
+        },
+        {
+          "commonCodeName": "신용협동",
+          "sortNo": 20,
+          "commonCodeId": "48"
+        },
+        {
+          "commonCodeName": "상호저축",
+          "sortNo": 21,
+          "commonCodeId": "50"
+        },
+        {
+          "commonCodeName": "HSBC은행",
+          "sortNo": 22,
+          "commonCodeId": "54"
+        },
+        {
+          "commonCodeName": "도이치",
+          "sortNo": 23,
+          "commonCodeId": "55"
+        },
+        {
+          "commonCodeName": "우체국",
+          "sortNo": 24,
+          "commonCodeId": "71"
+        },
+        {
+          "commonCodeName": "K뱅크",
+          "sortNo": 25,
+          "commonCodeId": "89"
+        },
+        {
+          "commonCodeName": "카카오뱅크",
+          "sortNo": 26,
+          "commonCodeId": "90"
+        }
+      ],
+      "listData": [
+        {
+          "orderNumber": "000001201",
+          "orderType": "NS",
+          "orderDate": "2021-02-05 00:45:00",
+          "status": "Canceled",
+          "orderTotal": 2,
+          "productList": [
+            {
+              "productNameKR": "Clothes Dryer",
+              "productNameEN": "BB052S.AKOR",
+              "modelID": "MD08600410",
+              "productImage": "null",
+              "productPDPurl": "null",
+              "quantityOrdered": "2",
+              "quantityShipped": "0",
+              "productPrice": "1384416",
+              "productSalePriceCurrency": "KRW",
+              "productFlag": "",
+              "discountPrice": "20000",
+              "memberShipPoint": "5000",
+              "productTotal": "1",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "",
+                "statusClass": ""
+              },
+              "statusButtonList": [
+                
+              ],
+              "itemCancelAbleYn": "Y"
+            },
+            {
+              "productNameKR": "Clothes Dryer",
+              "productNameEN": "BB052S.AKOR",
+              "modelID": "MD08600410",
+              "productImage": "null",
+              "productPDPurl": "null",
+              "quantityOrdered": "2",
+              "quantityShipped": "0",
+              "productPrice": "1384416",
+              "productSalePriceCurrency": "KRW",
+              "productFlag": "",
+              "discountPrice": "20000",
+              "memberShipPoint": "5000",
+              "productTotal": "1",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "",
+                "statusClass": ""
+              },
+              "statusButtonList": [
+                
+              ],
+              "itemCancelAbleYn": "Y"
+            },
+            {
+              "productNameKR": "Clothes Dryer",
+              "productNameEN": "BB052S.AKOR",
+              "modelID": "MD08600410",
+              "productImage": "null",
+              "productPDPurl": "null",
+              "quantityOrdered": "2",
+              "quantityShipped": "0",
+              "productPrice": "1384416",
+              "productSalePriceCurrency": "KRW",
+              "productFlag": "",
+              "discountPrice": "20000",
+              "memberShipPoint": "5000",
+              "productTotal": "1",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "",
+                "statusClass": ""
+              },
+              "statusButtonList": [
+                
+              ],
+              "itemCancelAbleYn": "N"
+            },
+            {
+              "productNameKR": "Cross Divison PTO",
+              "productNameEN": "BEI3GTRA1.AKOR",
+              "modelID": "MD08005026",
+              "productImage": "null",
+              "productPDPurl": "null",
+              "quantityOrdered": "1",
+              "quantityShipped": "0",
+              "productPrice": "5577792",
+              "productSalePriceCurrency": "KRW",
+              "productFlag": "",
+              "discountPrice": "",
+              "memberShipPoint": "",
+              "productTotal": "1",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "",
+                "statusClass": ""
+              },
+              "statusButtonList": [
+                
+              ],
+              "itemCancelAbleYn": "Y"
+            }
+          ],
+          "orderCancelAbleYn": "N"
+        }
+      ],
+      "payment": {
+        "creditCard": "",
+        "installment": "",
+        "paymentDate": "",
+        "bankName": "",
+        "bankAccountNo": "",
+        "bankAccountNm": "",
+        "depositExpectedDate": "",
+        "membershipPoint": "",
+        "paymentMethodName": ""
+      },
+      "shipping": {
+        "name": "대저로 -",
+        "email": "promiser@naver.com",
+        "street": "부산 강서구 대저로235번길 9 (대저1동)\nhnnn",
+        "city": "-",
+        "countryId": "KR",
+        "postcode": "46702",
+        "telephone": "12343131331",
+        "telephonenumber": "12343131331",
+        "company": "Wise13",
+        "recyclingPickup": "Y",
+        "shippingNoteTxt": "",
+        "instpectionVisit": "Y"
+      }
+    },
+    "param": {
+      "pagination": {
+        "page": "1"
+      }
+    },
+    "message": "success",
+    "status": "success"
+  }

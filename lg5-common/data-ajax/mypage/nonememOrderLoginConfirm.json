@@ -3,7 +3,7 @@
     "status": "success",
     "message": null,
     "data": {
-        "success": "N",
+        "success": "Y",
         "sendUrl": "http://lge.com",
         "alert":{
             "isCustom": false,

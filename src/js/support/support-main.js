@@ -264,6 +264,40 @@
                     ]
                 }
             },
+            inquiry : {
+                el : {
+                    slider : $('.reserv-inquiry-slider')
+                },
+                config : {
+                    infinite: false,
+                    autoplay: false,
+                    slidesToScroll: 1,
+                    slidesToShow: 2,
+                    responsive: [
+                        {
+                            breakpoint: 1920,
+                            settings: {
+                                slidesToScroll: 1,
+                                slidesToShow: 2,
+                            }
+                        },
+                        {
+                            breakpoint: 1280,
+                            settings: {
+                                slidesToScroll: 1,
+                                slidesToShow: 1,
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToScroll: 1,
+                                slidesToShow: 1,
+                            }
+                        }
+                    ]
+                }
+            },
             award : {
                 el : {
                     slider : $('.award-slider'),
@@ -355,6 +389,11 @@
                     //수상목록
                     self.award.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.award.config);
                     self.award.el.slider.addClass(self.slideActiveClass);
+                    
+                    //로그인 후 화면 조회 슬라이드
+                    self.inquiry.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.inquiry.config);
+                    self.inquiry.el.slider.addClass(self.slideActiveClass);
+                    self.inquiry.el.slider.vcCarousel('resize');
 
 
                     //재생/정지 버튼
@@ -488,11 +527,11 @@
                         $('#inquiryAuthPhoneNo').vcFormatter({'format':'num', "maxlength":11});
         
                         var register = {
-                            inquiryAuthName : {
+                            userName1 : {
                                 required : true,
                                 msgTarget : ".err-block"
                             },
-                            inquiryAuthNo : {
+                            number : {
                                 required: true,
                                 msgTarget: '.err-block',
                                 errorMsg: '접수번호를 입력해주세요.'
@@ -502,12 +541,12 @@
                         var authOptions = {
                             elem: {
                                 form: '#authDataForm2',
-                                name: '#inquiryAuthName2',
-                                phone: '#inquiryAuthPhoneNo',
-                                number: '#inquiryAuthReceiveNo'
+                                name: '#userName2',
+                                phone: '#phoneNo',
+                                number: '#authNo'
                             },
                             register: {
-                                inquiryAuthName2: {
+                                userName2: {
                                     required: true,
                                     maxLength: 30,
                                     pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
@@ -515,7 +554,7 @@
                                     errorMsg: '이름을 입력해주세요.',
                                     patternMsg: '이름은 한글 또는 영문만 입력 가능합니다.'
                                 },
-                                inquiryAuthPhoneNo: {
+                                phoneNo: {
                                     required: true,
                                     minLength: 10,
                                     maxLength: 11,
@@ -524,7 +563,7 @@
                                     errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
                                     patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
                                 },
-                                inquiryAuthReceiveNo:{
+                                authNo:{
                                     required: true,
                                     msgTarget: '.err-block',
                                     errorMsg: '인증번호를 입력해주세요.',
@@ -538,6 +577,7 @@
     
                             self.el.container.find('.btn-auth-confirm').on('click', function() {
                                 self.authManager.send(this);
+                                self.el.container.find('#authNo').attr('disabled', false);
                             });
     
                             self.el.container.find('.btn-inquiry').on('click', function(){
@@ -546,24 +586,33 @@
 
                                     self.validation.validate();
                                     var validationResult = self.validation.validate().success;
+                                    var resultData = self.validation.getAllValues();
 
                                     if( validationResult ) {
-                                        //각 인풋의 value를 히든 인풋에 담은 뒤에 서브밋
-                                        $('#authName').val($('#inquiryAuthName').val());
-                                        $('#authNo').val($('#inquiryAuthNo').val())
-                                        $('#authDataForm1').submit();
+                                        lgkorUI.showLoading();
+                                        lgkorUI.requestAjaxDataPost($('#authDataForm1').data('ajax'), resultData, function(result) {
+                                            if (result.data.resultFlag == 'Y') {
+                                                $('#authDataForm1').attr('action', result.data.url).submit();
+                                            } else if (result.data.resultFlag == 'N') {
+                                                lgkorUI.alert("", {
+                                                    title: result.data.resultMessage,
+                                                    ok: function(el) {
+                                                        if (result.data.url) {
+                                                            location.href = result.data.url; 
+                                                        } else {
+                                                            $(el).vcModal('hide');
+                                                        }
+                                                    }
+                                                });
+                                            }
+                    
+                                            lgkorUI.hideLoading();
+                                        });
                                     }
                                 }
                                 
                                 if( self.el.container.find('.auth-type-phone.active').length ) {
-                                    self.authManager.confirm('.btn-auth-confirm', function(success, result) {
-                                        if (success) {
-                                            $('#authName2').val($('#inquiryAuthName2').val());
-                                            $('#authPhoneNo').val($('#inquiryAuthPhoneNo').val())
-                                            $('#authReceiveNo').val($('#inquiryAuthReceiveNo').val())
-                                            $('#authDataForm2').submit();
-                                        }
-                                    })
+                                    self.authManager.confirm('.btn-auth-confirm')
                                 }
     
                             })
