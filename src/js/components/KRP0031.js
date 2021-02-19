@@ -78,7 +78,7 @@ $(window).ready(function(){
 
                     self.$modelPopup.vcModal();
                     lgkorUI.hideLoading();
-                });
+                }, 'POST');
             });
 
             $('#select1').on('change', function() {
@@ -101,11 +101,11 @@ $(window).ready(function(){
                     });
 
                     $('#select2').find('option:not(.placeholder)').remove();
-                    $('#select2').append(html);
+                    $('#select2').append(html).prop('disabled', false);
                     $('#select2').vcSelectbox('update');
 
                     lgkorUI.hideLoading();
-                });
+                }, 'POST');
             });
 
             $('#select2').on('change', function() {
@@ -116,14 +116,14 @@ $(window).ready(function(){
                 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(self.searchModelNameUrl, param, function(result) {
-                    var data = result.data;
+                    var data = result.data[0];
                     
                     $('.example-result .txt').html(data.text);
                     $('.example-result .img img').attr('src', data.imageUrl);
                     $('.example-result .img img').attr('alt', data.imageAlt);
 
                     lgkorUI.hideLoading();
-                });
+                }, 'POST');
             });
 
             self.$modelPopup.on('modalhidden', function() {

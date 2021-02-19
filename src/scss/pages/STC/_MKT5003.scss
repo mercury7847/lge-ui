@@ -106,10 +106,11 @@
 .lgpay-content {
     width: 100%;
     max-width: calc(1146px + 80px);
-    margin: 0 auto;
+    margin: 64px auto;
     padding: 0 40px;
     @include mobile {
         max-width: 100%;
+        margin:60px auto;
         padding: 0 16px;
     }
     .lgpay-introdution {

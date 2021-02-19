@@ -58,7 +58,9 @@
                 'page': 1
             };
 
-            self.$resultPagination.pagination();
+            self.$resultPagination.pagination({
+                pageCount: 12
+            });
 
             self.$resultSort.on('change', function() {
                 self.params = $.extend({}, self.params, {
@@ -86,29 +88,31 @@
             self.$boardSurveyBtn = self.$boardWrap.find('.btn-survey');
 
             if (self.$boardSurvey.length) {
-                surveyValidation = new vcui.ui.CsValidation('.survey-content', {
-                    register: {
-                        rating: {
-                            required: true,
-                            msgTarget: '.err-msg'
+                vcui.require(['ui/validation'], function () {
+                    surveyValidation = new vcui.ui.CsValidation('.survey-content', {
+                        register: {
+                            rating: {
+                                required: true,
+                                msgTarget: '.err-msg'
+                            }
                         }
-                    }
-                });
-
-                self.$boardSurveyBtn.on('click', function(e) {
-                    var result = surveyValidation.validate();
+                    });
     
-                    if (result.success) {
-                        var score = self.$boardSurvey.find('#rating').vcStarRating('value'),
-                            text = self.$boardSurvey.find('#ratingContent').val();
-                            seq = self.$boardWrap.find('#seq').val();
-    
-                        self.reqeustSurvey({
-                            score: score,
-                            input: text,
-                            seq: seq
-                        });
-                    }
+                    self.$boardSurveyBtn.on('click', function(e) {
+                        var result = surveyValidation.validate();
+        
+                        if (result.success) {
+                            var score = self.$boardSurvey.find('#rating').vcStarRating('value'),
+                                text = self.$boardSurvey.find('#ratingContent').val();
+                                seq = self.$boardWrap.find('#seq').val();
+        
+                            self.reqeustSurvey({
+                                score: score,
+                                input: text,
+                                seq: seq
+                            });
+                        }
+                    });
                 });
             }
         },
