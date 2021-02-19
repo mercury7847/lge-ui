@@ -115,15 +115,15 @@
         });
         
         
-        function moveStep(step){
+        function moveStep(step){            
             
             if(!canScroll) return;
-            if(currentStep == step) return;
-            canScroll = false;
+            canScroll = false;            
 
             var arr = wheelArr[step];
             if(!vcui.isArray(arr)){ 
                 currentStep = step;
+                canScroll = true;
                 return; 
             }
 
@@ -150,8 +150,6 @@
             // nextStep = Math.max(Math.min(nextStep, stepLens), 0);                   
             // if(currentStep == nextStep) return;
 
-
-
             var arr = wheelArr[nextStep];
 
             if(vcui.isArray(arr)){
@@ -177,24 +175,24 @@
             $contentWrap.scrollTop(0);   
             appMotion(0); 
 
-            $('html').addClass('sceneMoving');                    
+            // $('html').addClass('sceneMoving');                    
             if ( speed == undefined ) speed = aniSpeed;
             var scrollTopData = winHeight * idx;                    
             $scenes.removeClass('active').eq(idx).addClass('active');
             
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
             wheelAniInterval = setTimeout(function() {
-                if(! $('html').hasClass('sceneMoving')){
-                    return false;
-                }
+                // if(! $('html').hasClass('sceneMoving')){
+                //     return false;
+                // }
 
                 $('html, body').stop(true).animate({
                     scrollTop: scrollTopData
                 }, speed, 'easeInOutQuart',  function() { 
                     canScroll = true
-                    currentPage = idx;     
-                    moveStep(step);          
-                    $('html').removeClass('sceneMoving');
+                    currentPage = idx;  
+                    moveStep(step);    
+                    // $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
                     
                     $scenes.each(function() {
@@ -217,10 +215,8 @@
 
         function getAverage(elements, number){
             var sum = 0;
-
             //taking `number` elements from the end to make the average, if there are not enought, 1
             var lastElements = elements.slice(Math.max(elements.length - number, 1));
-
             for(var i = 0; i < lastElements.length; i++){
                 sum = sum + lastElements[i];
             }
@@ -232,7 +228,8 @@
 
         function wheelEvent(e) {
             var curTime = +new Date();
-            e = e || window.event;            
+            e = e || window.event;    
+            
             var value = e.wheelDelta || -e.deltaY || -e.detail;
             var delta = Math.max(-1, Math.min(1, value));
             var horizontalDetection = typeof e.wheelDeltaX !== 'undefined' || typeof e.deltaX !== 'undefined';
@@ -250,15 +247,16 @@
                 scrollings = [];
             }
 
-            if (canScroll ) {                
+            if (canScroll) {                
                 var averageEnd = getAverage(scrollings, 10);
                 var averageMiddle = getAverage(scrollings, 70);
                 var isAccelerating = averageEnd >= averageMiddle;
                 var nextStep = (delta < 0) ? -1 : 1;
                 nextStep = nextStep + currentStep;
-                nextStep = Math.max(Math.min(nextStep, stepLens), 0);    
-
+                nextStep = Math.max(Math.min(nextStep, stepLens), 0);
+                
                 if(isAccelerating && isScrollingVertically ){
+
                     if(currentStep == stepLens){
                         var st = $contentWrap.scrollTop();
                         if(st==0 && delta < 0){
@@ -547,6 +545,8 @@
                     currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
                     currentStep = _findStep(currentPage);
                     setBeforeCss(currentStep);
+
+                    console.log(currentStep);
                     moveScene(currentPage,currentStep,0);
                 }, 100);
             }
@@ -721,12 +721,6 @@
                 if (item.attachEvent) item.attachEvent("on" + mousewheelevt, fixedScrolled);
                 else if (item.addEventListener) item.addEventListener(mousewheelevt, fixedScrolled, false);
             });
-            /*
-            document.querySelectorAll(selector).forEach(function(idx,item){
-                if (item.attachEvent) item.attachEvent("on" + mousewheelevt, fixedScrolled);
-                else if (item.addEventListener) item.addEventListener(mousewheelevt, fixedScrolled, false);
-            });
-            */
         }
 
         doWheelfixedElement('.ui_device');         
