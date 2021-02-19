@@ -425,9 +425,9 @@
                                                         ]
                                                     })
                                                     <h3 class="title"><span>본래 아름다움 그대로</span></h3>
-                                                    <div class="btn-group">
+                                                    <div class="btn-group youtube-box">
                                                         <a href="#" class="btn border size"><span>기사 보기</span></a>
-                                                        <a href="#modal2" data-control="modal" class="btn border size"><span>영상 보기</span></a>
+                                                        <a href="#" data-src="https://www.youtube.com/embed/MLnyvXaAQKQ" data-type="youtube" data-target="modal" class="btn border size see-video"><span>영상 보기</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -445,9 +445,9 @@
                                                         ]
                                                     })
                                                     <h3 class="title"><span>예술의 종착지</span></h3>
-                                                    <div class="btn-group">
+                                                    <div class="btn-group youtube-box">
                                                         <a href="#" class="btn border size"><span>기사 보기</span></a>
-                                                        <a href="#" class="btn border size"><span>영상 보기</span></a>
+                                                        <a href="#" data-src="https://www.youtube.com/embed/MLnyvXaAQKQ" data-type="youtube" data-target="modal" class="btn border size see-video"><span>영상 보기</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -465,9 +465,9 @@
                                                         ]
                                                     })
                                                     <h3 class="title"><span>예술의 유희</span></h3>
-                                                    <div class="btn-group">
+                                                    <div class="btn-group youtube-box">
                                                         <a href="#" class="btn border size"><span>기사 보기</span></a>
-                                                        <a href="#" class="btn border size"><span>영상 보기</span></a>
+                                                        <a href="#" data-src="https://www.youtube.com/embed/MLnyvXaAQKQ" data-type="youtube" data-target="modal" class="btn border size see-video"><span>영상 보기</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -485,9 +485,9 @@
                                                         ]
                                                     })
                                                     <h3 class="title"><span>작업실에서 미술관으로</span></h3>
-                                                    <div class="btn-group">
+                                                    <div class="btn-group youtube-box">
                                                         <a href="#" class="btn border size"><span>기사 보기</span></a>
-                                                        <a href="#" class="btn border size"><span>영상 보기</span></a>
+                                                        <a href="#" data-src="https://www.youtube.com/embed/MLnyvXaAQKQ" data-type="youtube" data-target="modal" class="btn border size see-video"><span>영상 보기</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -505,9 +505,9 @@
                                                         ]
                                                     })
                                                     <h3 class="title"><span>돌과 바람의 미술관</span></h3>
-                                                    <div class="btn-group">
+                                                    <div class="btn-group youtube-box">
                                                         <a href="#" class="btn border size"><span>기사 보기</span></a>
-                                                        <a href="#" class="btn border size"><span>영상 보기</span></a>
+                                                        <a href="#" data-src="https://www.youtube.com/embed/MLnyvXaAQKQ" data-type="youtube" data-target="modal" class="btn border size see-video"><span>영상 보기</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -525,9 +525,9 @@
                                                         ]
                                                     })
                                                     <h3 class="title"><span>화이트로 물든 공간</span></h3>
-                                                    <div class="btn-group">
+                                                    <div class="btn-group youtube-box">
                                                         <a href="#" class="btn border size"><span>기사 보기</span></a>
-                                                        <a href="#" class="btn border size"><span>영상 보기</span></a>
+                                                        <a href="#" data-src="https://www.youtube.com/embed/MLnyvXaAQKQ" data-type="youtube" data-target="modal" class="btn border size see-video"><span>영상 보기</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -720,8 +720,8 @@
     </div>
 
     <!-- 테마(mp4) 영상 보기 팝업 -->
-    <article id="modal1" class="popup-wrap animation">
-        <section class="pop-conts no-footer">
+    <div class="video-modal video-box-closeset animation" id="modal1" style="display:none;">
+        <div class="modal-video-asset">
             <div class="video-asset animation-box">
                 <div class="video-box">
                     <video muted>
@@ -736,21 +736,9 @@
                     <p class="body-copy">단순함이 궁극의 세련미를 만듭니다.<br>가전, 작품이 되다</p>
                 </div>
             </div>
-        </section>
-        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-    </article>
-
-    <!-- 전시기록(youtube) 영상 보기 팝업 -->
-    <article id="modal2" class="popup-wrap video">
-        <section class="pop-conts no-footer">
-            <div class="video-asset youtube-box">
-                <div class="video-box">
-                    <iframe id="videoPlayerCode2" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/MLnyvXaAQKQ"></iframe>
-                </div>
-            </div>
-        </section>
-        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-    </article>
+        </div>
+        <button class="close-video">동영상 닫기</button>
+    </div>
 
     <script src="/lg5-common/js/home/signatureHome.min.js"></script>
 </body>
