@@ -220,6 +220,9 @@
             top:4px;
         }
     }
+    &:hover {
+        text-decoration:underline;
+    }
 
     &.white{
         color:#fff;
