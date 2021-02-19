@@ -212,25 +212,91 @@
 
         var prevTime = new Date().getTime();
 
-        document.addEventListener('wheel', function(e){
 
-            var curTime = new Date().getTime();
-            if(typeof prevTime !== 'undefined'){
-                var timeDiff = curTime-prevTime;
-                if(timeDiff > 40){
+        function getAverage(elements, number){
+            var sum = 0;
+
+            //taking `number` elements from the end to make the average, if there are not enought, 1
+            var lastElements = elements.slice(Math.max(elements.length - number, 1));
+
+            for(var i = 0; i < lastElements.length; i++){
+                sum = sum + lastElements[i];
+            }
+
+            return Math.ceil(sum/number);
+        }
+
+        var scrollings = [];
+
+        function wheelEvent(e) {
+            var curTime = +new Date();
+            e = e || window.event;
+            var value = e.wheelDelta || -e.deltaY || -e.detail;
+            var delta = Math.max(-1, Math.min(1, value));
+
+            var horizontalDetection = typeof e.wheelDeltaX !== 'undefined' || typeof e.deltaX !== 'undefined';
+            var isScrollingVertically = (Math.abs(e.wheelDeltaX) < Math.abs(e.wheelDelta)) || (Math.abs(e.deltaX ) < Math.abs(e.deltaY) || !horizontalDetection);
+
+            if (scrollings.length > 149){
+                scrollings.shift();
+            }
+            scrollings.push(Math.abs(value));
+
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+            var timeDiff = curTime-prevTime;
+            prevTime = curTime;
+
+            if (timeDiff > 500) {
+                scrollings = [];
+            }
+
+
+            if (canScroll ) {
+                
+                var averageEnd = getAverage(scrollings, 10);
+                var averageMiddle = getAverage(scrollings, 70);
+                var isAccelerating = averageEnd >= averageMiddle;
+
+                if(isAccelerating && isScrollingVertically) {
+
                     if(currentStep == stepLens){
                         var st = $contentWrap.scrollTop();
-                        if(st==0 && e.deltaY<0){
+                        if(st==0 && delta<0){
                             wheelScene(-1);
                         }
                     }else{
-                        if(e.deltaY>0 || e.deltaY<0){
-                            wheelScene(e.deltaY);
-                        }
+                        wheelScene(delta);
                     }
-                }                    
-            }            
-            prevTime = curTime;              
+                }
+
+            }
+            return false;
+        }
+
+
+
+        document.addEventListener('wheel', function(e){
+
+            wheelEvent(e);
+
+            // var curTime = new Date().getTime();
+            // if(typeof prevTime !== 'undefined'){
+            //     var timeDiff = curTime-prevTime;
+            //     if(timeDiff > 40){
+            //         if(currentStep == stepLens){
+            //             var st = $contentWrap.scrollTop();
+            //             if(st==0 && e.deltaY<0){
+            //                 wheelScene(-1);
+            //             }
+            //         }else{
+            //             if(e.deltaY>0 || e.deltaY<0){
+            //                 wheelScene(e.deltaY);
+            //             }
+            //         }
+            //     }                    
+            // }            
+            // prevTime = curTime;              
 
         });
 
