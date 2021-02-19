@@ -116,7 +116,7 @@ $(window).ready(function(){
                 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(self.searchModelNameUrl, param, function(result) {
-                    var data = result.data;
+                    var data = result.data[0];
                     
                     $('.example-result .txt').html(data.text);
                     $('.example-result .img img').attr('src', data.imageUrl);
