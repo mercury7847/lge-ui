@@ -58,8 +58,6 @@ $(function() {
             e.preventDefault();
         });
 
-        
-        
 
         $window.on('floatingTop', function(){
             render(0);
@@ -75,6 +73,7 @@ $(function() {
             var arr = wheelArr[step];
             if(!vcui.isArray(arr)){ 
                 currentStep = step;
+                canScroll = true;
                 return; 
             }
 
@@ -170,7 +169,7 @@ $(function() {
             var curTime = new Date().getTime();
             if(typeof prevTime !== 'undefined'){
                 var timeDiff = curTime-prevTime;
-                if(timeDiff > 40){
+                if(timeDiff > 35){
                     if(currentStep == stepLens){
                         var st = $contentWrap.scrollTop();
                         if(st==0 && e.deltaY<0){
