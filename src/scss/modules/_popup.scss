@@ -481,56 +481,6 @@
         }
     }
 
-    //&.tit-line2 {
-    //    .pop-header {
-    //        .tit span {
-    //            br {
-    //                display:none;
-    //            }
-    //            @include mobile {
-    //                height:64px;
-    //                br {
-    //                    display:block;
-    //                }
-    //            }
-    //        }
-    //    }
-    //    @include mobile {
-    //        .pop-conts {
-    //            height:calc(100% - 142px - 32px);
-    //            max-height:calc(100% - 142px - 32px);
-    //            &.no-footer {
-    //                height:calc(100% - 114px);
-    //                max-height:calc(100% - 114px);
-    //            }
-    //        }
-    //    }
-    //}
-    //&.tit-line3 {
-    //    .pop-header {
-    //        .tit span {
-    //            br {
-    //                display:none;
-    //            }
-    //            @include mobile {
-    //                height:96px;
-    //                br {
-    //                    display:block;
-    //                }
-    //            }
-    //        }
-    //    }
-    //    @include mobile {
-    //        .pop-conts {
-    //            height:calc(100% - 142px - 32px - 32px);
-    //            max-height:calc(100% - 142px - 32px - 32px);
-    //            &.no-footer {
-    //                height:calc(100% - 129px);
-    //                max-height:calc(100% - 129px);
-    //            }
-    //        }
-    //    }
-    //}
     .text-area {
         padding: 46px 8px 0;
         .tit {
@@ -580,6 +530,103 @@
                 background: url('/lg5-common/images/icons/icon-sms-16.svg') no-repeat 0 0;
                 vertical-align: -2px;
                 content: '';
+            }
+        }
+    }
+}
+
+.video-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    background-color: rgba(#000,.7);
+    .close-video {
+        overflow: hidden;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1;
+        width:48px;
+        height:48px;
+        font-size: 0;
+        &:before {
+            display: block;
+            width:48px;
+            height:48px;
+            background-image: url('/lg5-common/images/icons/btn-close-48-white.svg');
+            content: '';
+        }
+        @include mobile {
+            top: 24px;
+            right: 16px;
+        }
+    }
+    .modal-video-asset {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 100%;
+        max-width: 1380px + 80px;
+        padding: 0 40px;
+        border-radius: 0;
+        background-color: transparent;
+        @include mobile {
+            padding: 0 16px;
+        }
+    }
+    &.youtube {
+        .video-asset {
+            overflow: hidden;
+            width: 100%;
+            height: calc((100vw - 15px) * (9/16));
+            iframe {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    &.animation {
+        .video-box {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            video {
+                width: 100%;
+                height: 100%;
+            }
+            .video-controller {
+                .btn-video {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    z-index: 2;
+                    width: 80px;
+                    height: 80px;
+                    background: url('/lg5-common/images/icons/btn-play-80.svg') no-repeat 0 0;
+                    background-size: 100% 100%;
+                    @include mobile {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+            }
+        }
+        .video-info {
+            padding-top: 32px;
+            color: $color-white;
+            text-align: center;
+            .title {
+                font-weight: 700;
+                @include font-large-2;
+            }
+            .body-copy {
+                margin-top: 16px;
+                @include font-medium;
             }
         }
     }
@@ -1229,7 +1276,7 @@
             }
             
             .category-select {
-                margin-top: 48x;
+                margin-top: 48px;
                 @include mobile {
                     margin-top: 40px;
                 }

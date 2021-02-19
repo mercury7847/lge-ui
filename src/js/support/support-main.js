@@ -23,14 +23,13 @@
                     var $this = $(this);
                     var $listWrap = $this.closest(self.el.wrap);
                     var $list = $listWrap.find(self.el.list);
-                    console.log('toggle')
                     e.preventDefault();
     
                     if( $listWrap.hasClass('active')) {
-                        $listWrap.removeClass('active');
+                        $listWrap.removeClass('active').siblings().removeClass('siblings');
                         $list.stop().slideUp();
                     } else {
-                        $listWrap.addClass('active').siblings().removeClass('active').find(self.el.list).stop().slideUp(function(){
+                        $listWrap.removeClass('siblings').addClass('active').siblings().removeClass('active').addClass('siblings').find(self.el.list).stop().slideUp(function(){
                             $(this).attr('style', '');
                         });
                         $list.stop().slideDown();

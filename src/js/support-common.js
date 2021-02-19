@@ -477,6 +477,9 @@ CS.MD.commonModel = function() {
                 '{{# if (reset == "product") { #}}' +
                 '<button type="button" class="btn border size reset btn-reset">제품 재선택</button>' +
                 '{{# } #}}' +
+                '{{# if (reset == "noProduct") { #}}' +
+                '<button type="button" class="btn border size reset btn-reset">제품 선택</button>' +
+                '{{# } #}}' +
             '</div>' +
             '{{# } #}}' +
         '</div>';
