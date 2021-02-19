@@ -1371,7 +1371,14 @@ var isApp = function(){
                     $(this).val(str.slice(0, maxleng));
                 }
             });
-        }
+        },
+
+        getParameterByName: function(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        },
     }
 
     document.addEventListener('DOMContentLoaded', function () {
