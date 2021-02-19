@@ -123,11 +123,41 @@
         '<li><dl><dt>사전 방문 신청</dt><dd>{{#if instpectionVisit}}신청{{#else}}미신청{{/if}}</dd></dl></li>' +
         '<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>';
 
-    var paymentListTemplate = '<li><dl><dt>결제 수단</dt><dd>신용카드(분할결제) 결제수단</dd></dl></li>' +
-        '<li><dl><dt>주문 금액</dt><dd>10,000원</dd></dl></li>' +
-        '<li><dl><dt>할인 금액</dt><dd>-6,000원</dd></dl>' +
-        '</li><li><dl><dt>멤버십포인트</dt><dd>-340원</dd></dl>' +
-        '</li><li><dl><dt>총 결제 금액</dt><dd>4,000원</dd></dl></li>';
+    var paymentListTemplate = 
+        '<li><dl><dt>결제 수단</dt><dd><span>{{paymentMethodName}}</span>'+
+        '{{#if receiptUrl}}<a href="{{receiptUrl}}" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
+        '</dd></dl></li>'+        
+        '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+        
+        '<li><dl><dt>할인 금액</dt><dd>{{discountPrice}}원</dd></dl></li>'+        
+        '<li><dl><dt>멤버십포인트</dt><dd>{{memberShipPoint}}원</dd></dl></li>'+        
+        '<li><dl><dt>총 결제 금액</dt><dd><em>{{totalPrice}}원</em></dd></dl></li>';
+
+    var noneMemPaymentTemplate = 
+    '<li><dl><dt>결제 수단</dt><dd><span>{{paymentMethodName}}</span>'+
+    '{{#if receiptUrl}}<a href="{{receiptUrl}}" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
+    '</dd></dl></li>'+        
+    '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+            
+    '<li><dl><dt>총 결제 금액</dt><dd><em>{{totalPrice}}원</em></dd></dl></li>';
+
+    var orderUserTemplate = 
+        '<li>'+
+            '<dl>'+
+                '<dt>주문하는 분</dt>'+
+                '<dd>{{userName}}</dd>'+
+            '</dl>'+
+        '</li>'+        
+        '<li>'+
+            '<dl>'+
+                '<dt>휴대폰</dt>'+
+                '<dd>{{phoneNumber}}</dd>'+
+            '</dl>'+
+        '</li>'+        
+        '<li>'+
+            '<dl>'+
+                '<dt>이메일</dt>'+
+                '<dd>{{email}}</dd>'+
+            '</dl>'+
+        '</li>';
 
     var CURRENT_PAGE, TOTAL_PAGE;
 
@@ -440,8 +470,6 @@
 
             var data = result.data;
 
-            if(isNonMember) data.listData = [data.listData];
-
             var prodcnt = data.productOrderCount ? data.productOrderCount : 0;
             $('.lnb-contents .tabs-wrap .tabs > li:nth-child(1) .count').text('('+prodcnt+')');
 
@@ -483,7 +511,7 @@
                 }
 
                 //배송정보
-                var $listBox = $('.inner-box:eq(0) ul');
+                var $listBox = $('.inner-box.shipping ul');
                 if(data.shipping && $listBox.length > 0) {
                     var shipping = data.shipping;
                     shipping.maskingName = txtMasking.name(shipping.name);
@@ -495,17 +523,32 @@
 
                     $listBox.html(vcui.template(shippingListTemplate, shipping));
                 }
-
+                
                 //결제정보
-                $listBox = $('.inner-box:eq(1) ul');
+                $listBox = $('.inner-box.payment ul');
                 if(data.payment && $listBox.length > 0) {
                     var payment = data.payment;
-                    payment.subtotal = vcui.number.addComma(payment.subtotal);
-                    payment.discount = vcui.number.addComma(payment.discount);
-                    payment.membershipPoint = vcui.number.addComma(payment.membershipPoint);
-                    payment.grandTotal = vcui.number.addComma(payment.grandTotal);
+                    payment.orderPrice = vcui.number.addComma(payment.orderPrice);
+                    payment.discountPrice = vcui.number.addComma(payment.discountPrice);
+                    payment.memberShipPoint = vcui.number.addComma(payment.memberShipPoint);
+                    payment.totalPrice = vcui.number.addComma(payment.totalPrice);
 
-                    $listBox.html(vcui.template(paymentListTemplate, payment));
+                    if(payment.discountPrice != "0") payment.discountPrice = "-" + payment.discountPrice;
+                    if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
+
+                    var template = isNonMember ? noneMemPaymentTemplate : paymentListTemplate;
+                    $listBox.html(vcui.template(template, payment));
+                }
+
+                //주문자 정보
+                $listBox = $('.inner-box.orderuser ul');
+                if(data.orderUser && $listBox.length > 0) {
+                    var orderusers = data.orderUser;
+                    orderusers.userName = txtMasking.name(orderusers.userName);
+                    orderusers.phoneNumber = txtMasking.phone(orderusers.phoneNumber);
+                    orderusers.email = txtMasking.email(orderusers.email);
+
+                    $listBox.html(vcui.template(orderUserTemplate, orderusers));
                 }
 
             } else{

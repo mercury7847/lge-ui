@@ -740,11 +740,18 @@
                 var delta = evt.detail? evt.detail * (-120) : evt.wheelDelta; 
                 $contentWrap.scrollTop($contentWrap.scrollTop() - delta);
             }
-            var mousewheelevt = (/Gecko\//i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";    
-            document.querySelectorAll(selector).forEach(function(item){
+            var mousewheelevt = (/Gecko\//i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
+            var nodes = document.querySelectorAll(selector);
+            Array.prototype.forEach.call(nodes, function(item){
                 if (item.attachEvent) item.attachEvent("on" + mousewheelevt, fixedScrolled);
                 else if (item.addEventListener) item.addEventListener(mousewheelevt, fixedScrolled, false);
             });
+            /*
+            document.querySelectorAll(selector).forEach(function(idx,item){
+                if (item.attachEvent) item.attachEvent("on" + mousewheelevt, fixedScrolled);
+                else if (item.addEventListener) item.addEventListener(mousewheelevt, fixedScrolled, false);
+            });
+            */
         }
 
         doWheelfixedElement('.ui_device');         

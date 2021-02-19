@@ -370,6 +370,14 @@
         }
     }
 
+    .select-wrap {
+        .ui-selectbox-wrap {
+            .ui-selectbox-list {
+                z-index: 12;
+            }
+        }
+    }
+
     
 
     .directCall-wrap {
@@ -737,6 +745,9 @@
         }
         .bullet-list {
             font-size: 16px;
+        }
+        @include mobile {
+            padding: 20px;
         }
     }
 

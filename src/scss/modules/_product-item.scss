@@ -413,6 +413,29 @@
                     line-height: 23px;
                 }
             }
+
+            &.care {
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: flex-end;
+                .total-price {
+                    .text {
+                        font-weight: 500;
+                        @include font-x-small;
+                    }
+                    .price {
+                        display: block;
+                        font-weight: 700;
+                        @include font-large-1;
+                    }
+                }
+                .small-text {
+                    margin-top: 0;
+                    margin-left: 12px;
+                    @include font-small;
+                    color: $color-gray-5;
+                }
+            }
         }
         .hashtag-wrap {
             margin-top: 60px;

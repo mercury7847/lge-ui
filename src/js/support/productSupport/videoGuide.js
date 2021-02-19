@@ -66,9 +66,6 @@
 
             self.bindEvent();
 
-            self.$cont.commonModel({
-                selected: self.param
-            });
             self.$keywordWrap.search({
                 template: {
                     autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="{{item.url}}"><div class="list-head"><strong class="list-category">{{item.subCategory}}</strong><span class="list-sub-category">{{item.subTopic}}</span></div><div class="list-desc">{{item.contTitle}}</div></a></li>{{/each}}</ul>',
@@ -76,18 +73,27 @@
                     keywordList: '<li><a href="#">{{keyword}}</a></li>'
                 }
             });
+            self.$cont.commonModel({
+                selected: self.param
+            });
+            self.$cont.commonModel('complete');
             self.$resultPagination.pagination();
             self.$productBar.vcSticky();
         },
         drawTopicList: function(data) {
             var self = this;
-            var html = vcui.template(topicTmpl, {
-                list: data.topicList
-            });
+            var listArr = data.topicList instanceof Array ? data.topicList : [],
+                html = '';
 
-            self.$searchTopic.find('option:not(.placeholder)').remove();
-            self.$searchTopic.append(html).prop('disabled', false);
-            self.$searchTopic.vcSelectbox('update');
+            if (listArr.length) {
+                html = vcui.template(topicTmpl, {
+                    list: listArr
+                });
+
+                self.$searchTopic.find('option:not(.placeholder)').remove();
+                self.$searchTopic.append(html).prop('disabled', false);
+                self.$searchTopic.vcSelectbox('update');
+            }
         },
         drawSubTopicList: function(data) {
             var self = this;
@@ -208,9 +214,7 @@
 
                 $('.search-summary').hide();
 
-                if (self.isLogin) {
-                    self.$myProductWarp.show();   
-                }
+                if (self.isLogin) self.$myProductWarp.show();   
             });
 
             self.$cont.on('complete', function(e, data, url) {
@@ -235,14 +239,25 @@
                     self.setPopularKeyword(resultData);
                     
                     self.$myProductWarp.hide();
-                    self.$cont.commonModel('updateSummary', {
-                        product: [param.categoryNm, param.subCategoryNm, param.modelCode],
-                        reset: 'product'
-                    });
-                    self.$cont.commonModel('next', self.$stepInput);
-                    self.$cont.commonModel('focus', self.$productBar, function() {
+
+                    if (param.subCategory) {
+                        self.$cont.commonModel('updateSummary', {
+                            product: [param.categoryNm, param.subCategoryNm, param.modelCode],
+                            reset: 'product'
+                        });
+
+                        self.$cont.commonModel('next', self.$stepInput);
+                        self.$cont.commonModel('focus', self.$productBar, function() {
+                            self.$productBar.vcSticky();
+                        });
+                    } else {
+                        self.$cont.commonModel('updateSummary', {
+                            tit: '서비스이용을 위해 제품을 선택해 주세요.',
+                            reset: 'noProduct'
+                        });
                         self.$productBar.vcSticky();
-                    });
+                    }
+                    
                     lgkorUI.hideLoading();
                 });
             });

@@ -393,7 +393,7 @@
 
 
         //카드 할인 드롭다운 선택
-        $('#pop-estimate').find('.alliance-card').on('click','.select-list li a', function(e){
+        $('#pop-estimate').on('click','.alliance-card .select-list li a', function(e){
             e.preventDefault();
             
             var $this = $(this);
@@ -406,6 +406,11 @@
             var maxCardSale = $this.attr('data-card-sale');
             if(maxCardSale > 0) $('#pop-estimate').find('.alliance-card .price').show().text("월 최대 " + vcui.number.addComma(maxCardSale) + "원 청구할인");
             else $('#pop-estimate').find('.alliance-card .price').hide();
+        }).on('click', '.estimate-price a', function(e){
+            e.preventDefault();
+
+            var href = $(this).attr('href');
+            sendRequestConfirm(href);
         });
 
         $(window).on("scroll", function(){
@@ -417,6 +422,53 @@
             
             if(bottomy + 100 < winheight){
                 setNextProdList();
+            }
+        });
+    }
+
+    function sendRequestConfirm(url){
+        lgkorUI.showLoading();
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(url, {}, function(result){
+            lgkorUI.hideLoading();
+            
+            var alert = result.data.alert;
+            if(alert) {
+                if(alert.isConfirm) {
+                    //컨펌
+                    var obj ={title: alert.title,
+                        typeClass: '',
+                        cancelBtnName: alert.cancelBtnName,
+                        okBtnName: alert.okBtnName,
+                        ok: alert.okUrl ? function (){
+                            location.href = alert.okUrl;
+                        } : function (){},
+                        cancel: alert.cancelUrl ? function (){
+                            location.href = alert.cancelUrl;
+                        } : function (){}
+                    };
+    
+                    var desc = alert.desc ? alert.desc : null;
+                    if(alert.title && alert.desc) {
+                        obj.typeClass = 'type2'
+                    }
+                    lgkorUI.confirm(desc, obj);
+                } else {
+                    //알림
+                    var obj ={title: alert.title,
+                        typeClass: '',
+                        cancelBtnName: alert.cancelBtnName,
+                        okBtnName: alert.okBtnName,
+                        ok: function (){}
+                    };
+    
+                    var desc = alert.desc;
+                    if(desc) {
+                        obj.typeClass = 'type2'
+                    }
+                    lgkorUI.alert(desc, obj);
+                }
+            } else {
+                window.location.href = result.data.sendUrl;
             }
         });
     }
@@ -859,6 +911,8 @@
                 lgkorUI.commonAlertHandler(result.data.alert);
                 return;
             }
+
+            console.log(result)
 
             var estimatePrice = $('#pop-estimate').find('.estimate-price');
             var newelement = vcui.template(_estimatePriceTemplate, result.data.priceInfo);
