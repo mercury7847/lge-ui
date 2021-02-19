@@ -194,11 +194,12 @@
             }
         ],
         "payment":{
-            "membershipPoint":340,
-            "subtotal": 10000,
-            "discount":6000,
-            "grandTotal":4000,
-            "paymentMethodName":"신용카드(분할결제) 결제수단"
+            "paymentMethodName":"신용카드(분할결제) 결제수단",
+            "receiptUrl": "/html/MYC/ACCF7105.html",
+            "orderPrice": 2834060,
+            "discountPrice": 834060,
+            "memberShipPoint": 0,
+            "totalPrice": 2000000
         },
         "shipping":{
             "name":"이연철",
