@@ -115,32 +115,36 @@
                     @@if ( !context.shopInfo) {
                     <div class="info-btm">
                     }    
-                    @@if (context.date) {
-                    <span class="text date">@@date</span>
-                    }
-                    @@if (context.hashtag) {
-                    <div class="text hashtag-wrap">
-                        @@for ( var i=0; i < hashtag.length; i++ ) {
-                        <span class="hashtag"><span>#</span>`+hashtag[i]+`</span>
+                        @@if (context.careflag) {
+                        <!-- 210218 수정 [돔 - 앞으로 이동] -->
+                        <span class="text careflag">
+                            케어십 가능
+                        </span>
+                        <!-- // 210218 수정 [돔 - 앞으로 이동] -->
                         }
-                    </div>
-                    }
-                    @@if (context.model) {
-                    <div class="text model">
-                        @@model
-                    </div>
-                    }
-                    @@if (context.careflag) {
-                    <span class="text careflag">
-                        케어십 가능
-                    </span>
-                    }
+                        @@if (context.hashtag) {
+                        <!-- 210218 수정 [돔 - 앞으로 이동] -->
+                        <div class="text hashtag-wrap">
+                            @@for ( var i=0; i < hashtag.length; i++ ) {
+                            <span class="hashtag"><span>#</span>`+hashtag[i]+`</span>
+                            }
+                        </div>
+                        <!-- 210218 수정 [돔 - 앞으로 이동] -->
+                        }
+                        @@if (context.date) {
+                        <span class="text date">@@date</span>
+                        }
+                        @@if (context.model) {
+                        <div class="text model">
+                            @@model
+                        </div>
+                        }
 
-                    @@if (context.InfoText) {
-                        @@for ( var i=0; i < InfoText.length; i++ ) {
-                        <span class="text">`+InfoText[i]+`</span>
+                        @@if (context.InfoText) {
+                            @@for ( var i=0; i < InfoText.length; i++ ) {
+                            <span class="text">`+InfoText[i]+`</span>
+                            }
                         }
-                    }
 
                     @@if ( !context.shopInfo) {    
                     </div>
@@ -150,7 +154,10 @@
                         <div href="#" class="shop-info">
                             <a href="#" class="desc add">서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP</a>
                             @@if (context.shopTime) {
-                            <a href="#" class="desc time">월~금 09:00~18:00 토요일 09:00~13:00</a>
+                            <a href="#" class="desc time"><!-- 210218 수정 [span, em 태그 추가] -->
+                                <span><em>월~금</em> 09:00~18:00</span>
+                                <span><em>토요일</em> 09:00~13:00</span>
+                            </a>
                             }
                             @@if (context.shopTel) {
                             <span class="desc tel">02-3448-5191</span>
@@ -170,8 +177,9 @@
 
                 @@if (context.btnA) {
                 <div class="btn-area">
+                    <!-- 210218 수정 [버튼 클래스 .size -> size-m 수정] -->
                     @@for ( var i=0; i < btnA.length; i++ ) {
-                    <a href="#n" class="btn border size"><span>`+btnA[i]+`</span></a> 
+                    <a href="#n" class="btn border size-m"><span>`+btnA[i]+`</span></a>
                     }
                 </div>    
                 }  

@@ -7,7 +7,7 @@
             display: flex;
             flex-wrap: wrap;
             min-height: 176px;
-            padding: 28px 48px;
+            padding: 32px 48px;
             align-items: center;
             border-radius: 8px;
             box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
@@ -38,7 +38,7 @@
             position: relative;
             width: 120px;
             height: 120px;
-            margin-right: 64px;
+            margin-right: 40px;
             @include mobile {
                 margin-right: 16px;
             }
@@ -114,8 +114,20 @@
             .info-price {
                 display: flex;
                 flex-direction: column;
-                text-align: right;
-                //align-items: flex-end;
+                align-items: flex-start;
+                min-width: 232px;
+                @include pc {
+                    padding-left: 32px;
+                    &:before {
+                        position: absolute;
+                        top: 24px;
+                        bottom: 24px;
+                        right: 280px;
+                        width: 1px;
+                        background-color: $color-border;
+                        content: '';
+                    }
+                }
                 @include mobile {
                     margin-top: 16px;
                     text-align: left;
@@ -136,6 +148,12 @@
                 .price-info.sales {
                     display: flex;
                     align-items: flex-end;
+                    @include pc {
+                        flex-direction: row-reverse;
+                        .original {
+                            margin: 0 0 0 8px;
+                        }
+                    }
                     @include mobile {
                         position: relative;
                         .original + .price-in {
@@ -176,12 +194,12 @@
         }
         
         .flag-wrap {
-            margin-bottom: 4px;
+            margin-bottom: 8px;
         }
         .result-tit {
             display: -webkit-box;
             max-height: 52px;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             text-overflow: clip;
             //text-overflow:ellipsis;
             -webkit-line-clamp: 2;
@@ -228,18 +246,17 @@
         }
         @include pc {
             .sku {
-                margin-right: 12px;
+                margin-right: 8px;
             }
         }
         .info-btm {
-            margin-top: 12px;
+            margin-top: 20px;
             .text {
                 display: inline-block;
                 position: relative;
-                margin-left: 4px;
-                padding-left: 4px;
+                margin-left: 6px;
+                padding-left: 6px;
                 @include font-small;
-                color: $color-gray-1;
                 &:first-child {
                     margin-left: 0;
                     padding-left: 0;  
@@ -299,7 +316,9 @@
         
         .sku {
             display: inline-block;
+            font-weight: 500;
             @include font-small;
+            color: $color-primary;
             vertical-align: top;
         }
         
@@ -314,54 +333,6 @@
                 }
             }
         }
-        /*
-        .sku,
-        .careflag {
-            display: inline-block;
-            @include font-small;
-            vertical-align: top;
-        }
-        .careflag {
-            color: $color-gray-1;
-            @include mobile {
-                margin-left: 0;
-                margin-top: 4px;
-                font-size: 13px;
-                line-height: 13px;
-                
-            }
-        }
-        .date + .hashtag-wrap,
-        .hashtag-wrap + .careflag {
-            &:before {
-                display: inline-block;
-                content: '';
-                width: 1px;
-                height: 12px;
-                padding-left: 2px;
-                background: #ddd;
-
-            }
-        }*/
-        /*
-        .model {
-            margin-top: 8px;
-            @include font-small;
-            color: $color-gray-1;
-            @include mobile {
-                margin-top: 4px;
-                font-size: 13px;
-                line-height: 13px;
-            }
-        }
-        .date {
-            display: inline-block;
-            @include font-small;
-            color: $color-gray-1;
-            @include mobile {
-                margin-top: 8px;
-            }
-        }*/
         
         .desc {
             display: -webkit-box;

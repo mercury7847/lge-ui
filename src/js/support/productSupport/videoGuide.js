@@ -136,6 +136,7 @@
                         html = '';
                     }
                 }
+                self.$resultCont.show();
                 self.$noData.hide();
             } else {
                 self.$resultCont.hide();
