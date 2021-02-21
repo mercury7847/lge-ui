@@ -534,6 +534,14 @@
         return completed;
     }
 
+    //결제수단 체크
+    function getPaymentMethod(){
+        var paymethod = step3Block.find('.payment-method input[name=method-pay]:checked').data("visibleTarget");
+        var result = paymethod == ".by-bank" ? "bank" : "card";
+
+        return result;
+    }
+
     //납부 정보 입력 밸리데이션...
     function setStep3Validation(){
         console.log("step3 validation start!!");
@@ -555,14 +563,14 @@
             }
         }
 
-        paymethod = step3Block.find('.payment-method input[name=method-pay]:checked').data("visibleTarget");
-        result = paymethod == ".by-bank" ? bankValidation.validate() : cardValidation.validate();
+        paymethod = getPaymentMethod();
+        result = paymethod == "bank" ? bankValidation.validate() : cardValidation.validate();
         if(!result.success){
             console.log("fail!!! paymethod:",result);
             return false;
         }
 
-        if(paymethod == ".by-bank"){
+        if(paymethod == "bank"){
             chk = compareInputData(bankInputData, bankValidation.getValues());
 
             if(!chk) return false;
@@ -658,6 +666,9 @@
         console.log("[setInstallAbledConfirm] sendata:", sendata);
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INSTALL_ABLED_URL, sendata, function(result){
             console.log("success :", result.data.success);
+
+            productPriceInfo = result.data.productPriceInfo;
+
             var abled = "N";
             if(lgkorUI.stringToBool(result.data.success)){
                 lgkorUI.alert(result.data.alert.desc, {
@@ -698,7 +709,6 @@
                 });
             } 
 
-            productPriceInfo = result.data.productPriceInfo;
             cardDiscountPrice = result.data.cardDiscountPrice || 0;
             changeProductPriceInfo();
 
@@ -968,7 +978,7 @@
     function setPrepaymentChecked(){
         lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PREPAYMENT_CHECKED_URL, {}, function(result){
-            if(result.data.success == "N"){
+            if(result.data.success == "Y"){
                 lgkorUI.alert("", {
                     title: result.data.alert.title
                 });
@@ -1013,7 +1023,8 @@
         var step2Value = step2Validation.getValues();
         var cardValue = cardValidation.getValues();
         var bankValue = bankValidation.getValues();
-        var payment = step3Block.find('.new-type > ul > li.on').index();
+        var payment = getPaymentMethod() == "bank";
+        console.log("### rentalRequest ###", payment)
         var sendata = {
             CUST_REG_NO: step1Value.registFrontNumber,
             CUST_POST_CODE: step1Value.zipCode,
