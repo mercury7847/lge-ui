@@ -244,7 +244,7 @@ $(function () {
             var curTime = new Date().getTime();
             if(typeof prevTime !== 'undefined'){
                 var timeDiff = curTime-prevTime;
-                if(timeDiff > 40){
+                if(timeDiff > 35){
                     if(currentPage == maxLens){
                         var st = $contentWrap.scrollTop();
                         if(st==0 && e.deltaY<0){

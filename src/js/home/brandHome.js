@@ -142,7 +142,7 @@
         }
 
 
-        function wheelScene(nextStep) {
+        function wheelScene(delta) {
 
             if(!canScroll) return;
             var nextStep = (delta < 0) ? -1 : 1;
@@ -175,24 +175,23 @@
             $contentWrap.scrollTop(0);   
             appMotion(0); 
 
-            // $('html').addClass('sceneMoving');                    
+            $('html').addClass('sceneMoving');                    
             if ( speed == undefined ) speed = aniSpeed;
             var scrollTopData = winHeight * idx;                    
             $scenes.removeClass('active').eq(idx).addClass('active');
             
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
             wheelAniInterval = setTimeout(function() {
-                // if(! $('html').hasClass('sceneMoving')){
-                //     return false;
-                // }
-
+                if(! $('html').hasClass('sceneMoving')){
+                    return false;
+                }
                 $('html, body').stop(true).animate({
                     scrollTop: scrollTopData
                 }, speed, 'easeInOutQuart',  function() { 
-                    canScroll = true
+                    canScroll = true;
                     currentPage = idx;  
                     moveStep(step);    
-                    // $('html').removeClass('sceneMoving');
+                    $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
                     
                     $scenes.each(function() {
@@ -219,7 +218,7 @@
             var curTime = new Date().getTime();
             if(typeof prevTime !== 'undefined'){
                 var timeDiff = curTime-prevTime;
-                if(timeDiff > 40){
+                if(timeDiff > 35){
                     if(currentStep == stepLens){
                         var st = $contentWrap.scrollTop();
                         if(st==0 && e.deltaY<0){
