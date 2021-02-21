@@ -4,6 +4,7 @@
     "message": null,
     "data": {
         "success": "Y",
+        "sendEmail": "lge888@lge.com",
         "alert":{
             "title": "계약서를 발송했습니다."
         }

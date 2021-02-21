@@ -8,6 +8,7 @@
     var INFO_MODIFY_CONFIRM;
     var INFO_MODIFY_SAVE;
     var PAYMENT_METHOD_CONFIRM;
+    var PAYMENT_SAVE_URL;
     var ARS_AGREE_URL;
     var REQUEST_CONTRACT_URL;
     var MEMPOINT_DEDUCT_URL;
@@ -19,15 +20,15 @@
     var userInfo = {};
     var cardInfo = {};
     var bankInfo = {};
-    var paymentModeIndex;
+    var paymentMode;
 
     var paymentInfo = {};
+
+    var receiveContractInfo;
 
     var userInfoValidation;
 
     var cardValidation, bankValidation;
-
-    var cardIssueValidation;
 
     var txtMasking;
 
@@ -38,6 +39,7 @@
         INFO_MODIFY_CONFIRM = $('.contents.mypage').data('modifyConfirmUrl');
         INFO_MODIFY_SAVE = $('.contents.mypage').data('modifySaveUrl');
         PAYMENT_METHOD_CONFIRM = $('.contents.mypage').data('paymentMethodUrl');
+        PAYMENT_SAVE_URL = $('.contents.mypage').data('paymentSaveUrl');
         ARS_AGREE_URL = $('.contents.mypage').data('arsAgreeUrl');
         REQUEST_CONTRACT_URL = $('.contents.mypage').data('requestContractUrl');
         MEMPOINT_DEDUCT_URL = $('.contents.mypage').data('mempointDeductUrl');
@@ -123,10 +125,6 @@
         }
         bankValidation = new vcui.ui.Validation('.mypage .section-wrap .sects.payment.modify .by-bank',{register:register});
         bankInfo = bankValidation.getAllValues();
-
-        paymentModeIndex = $('.mypage .section-wrap .sects.payment.modify .ui_tab ul li[class=on]').index();
-
-        cardIssueValidation = new vcui.ui.Validation($('#popup-cardIssue'));
 
         txtMasking = new vcui.helper.TextMasking();
     }
@@ -238,7 +236,11 @@
 
     //계약서 발급 신청
     function sendRequestContract(){
-        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(REQUEST_CONTRACT_URL, {}, function(result){
+        var sendata = {
+            userEmail:userInfo.userEmail
+        }
+        for(var key in receiveContractInfo) sendata[key] = receiveContractInfo[key];
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(REQUEST_CONTRACT_URL, sendata, function(result){
             if(result.data.success == "Y"){
                 $('#popup-contractIssue').vcModal('close');
 
@@ -277,6 +279,7 @@
             cancelBtnName: "취소",
             okBtnName: "본인인증",
             ok: function(){
+                for(var key in receiveContractInfo) sendata[key] = receiveContractInfo[key];
                 lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INFO_MODIFY_CONFIRM, sendata, function(result){
                     if(lgkorUI.stringToBool(result.data.success)){
                         if(sendata.confirmType == MODE_USER){
@@ -310,6 +313,7 @@
 
         var sendata = userInfoValidation.getAllValues();
         sendata.confirmType = MODE_USER;
+        for(var key in receiveContractInfo) sendata[key] = receiveContractInfo[key];
         console.log("saveUserInfo : [sendata] ", sendata);
         lgkorUI.requestAjaxData(INFO_MODIFY_SAVE, sendata, function(result){
             if(lgkorUI.stringToBool(result.data.success)){
@@ -336,6 +340,7 @@
             sendata = bankValidation.getValues();
             sendata.confirmType = METHOD_BANK;
         }
+        for(var key in receiveContractInfo) sendata[key] = receiveContractInfo[key];
         console.log("paymentMethodAbled(); sendata :", sendata);
         lgkorUI.requestAjaxData(PAYMENT_METHOD_CONFIRM, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
@@ -353,7 +358,7 @@
 
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
-        lgkorUI.requestAjaxData(ARS_AGREE_URL, {}, function(result){
+        lgkorUI.requestAjaxData(ARS_AGREE_URL, receiveContractInfo, function(result){
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
@@ -374,7 +379,7 @@
             paymentModifyBlock.find('input[name=selfClearingAgree]').prop('checked', false);
             paymentModifyBlock.find('input[name=pointUseAgree]').prop('checked', false);
     
-            $('.mypage .section-wrap .sects.payment.modify .ui_tab').vcTab('select', paymentModeIndex);
+            setPaymentModeCont();
     
             paymentInfoBlock.show();
             paymentModifyBlock.hide();
@@ -389,8 +394,12 @@
         if(payments.result){
             lgkorUI.showLoading();
 
+            var sendata = {}
+            for(var key in receiveContractInfo) sendata[key] = receiveContractInfo[key];
+            for(key in paymentInfo) sendata[key] = paymentInfo[key];
+
             console.log("savePaymentInfo : [sendata] ", paymentInfo);
-            lgkorUI.requestAjaxData(INFO_MODIFY_SAVE, paymentInfo, function(result){
+            lgkorUI.requestAjaxData(PAYMENT_SAVE_URL, sendata, function(result){
                 if(lgkorUI.stringToBool(result.data.success)){
                     changeContractInfo();
                 }
@@ -405,7 +414,7 @@
     }
 
     function paymentInfoValidation(){
-        var paymentMethodIndex = $('.mypage .section-wrap .sects.payment.modify .ui_tab ul li[class=on]').index();
+        var paymentMethodIndex = $('.mypage .section-wrap .sects.payment.modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
         var paymentMethodAbled = getHiddenData("paymentMethodConfirm");
         if(paymentMethodAbled  == "N"){
             return{
@@ -448,7 +457,7 @@
     }
 
     function requestCardIssue(){
-        var result = cardIssueValidation.validate();
+        
         if(!result.success){
             lgkorUI.alert("", {
                 title: result.validArray[0].errmsg
@@ -493,6 +502,7 @@
         }
         console.log("### okMempointModify ###", sendata);
 
+        for(var key in receiveContractInfo) sendata[key] = receiveContractInfo[key];
         lgkorUI.requestAjaxData(MEMPOINT_DEDUCT_URL, sendata, function(result){
             if(lgkorUI.stringToBool(result.data.success)){
                 changeContractInfo();
@@ -521,6 +531,9 @@
             info = getMaskingData(data.userInfo.actualUser);
             changeFieldValue('actual-info', info);
     
+            receiveContractInfo = {};
+            for(var key in data.contractInfo) receiveContractInfo[key] = data.contractInfo[key];
+
             data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span><a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
             changeFieldValue('contract-info', data.contractInfo);
     
@@ -529,13 +542,13 @@
                 withdrawDate: data.paymentInfo.withdrawDate
             }
             if(data.paymentInfo.paymentMethod == METHOD_CARD){
-                paymentModeIndex = 0;
+                paymentMode = "card";
     
                 info.paymentMethod = "신용카드"
                 info.methodName =  "<span>" + data.paymentInfo.cardInfo.cardComName + "</span><a href='" + data.paymentInfo.requestCardUrl  + "' class='btn-link requestCard-btn'>제휴카드 신청</a>";
                 info.methodNumber = txtMasking.card(data.paymentInfo.cardInfo.cardNumber);
             } else{
-                paymentModeIndex = 1;
+                paymentMode = "bank";
     
                 info.paymentMethod = "계좌이체"
                 info.methodName =  data.paymentInfo.bankInfo.bankName;
@@ -607,13 +620,21 @@
                 paymentUserName: data.paymentInfo.bankInfo.bankUser
             }
             bankValidation.setValues(cardInfo);
-    
-            $('.mypage .section-wrap .sects.payment.modify .ui_tab').vcTab('select', paymentModeIndex);
+
+            setPaymentModeCont();
         } else{
             mypage.find(".section-wrap").hide();
 
             mypage.find(".section-wrap").before('<div class="no-data"><p>보유하신 케어솔루션 계약 정보가 없습니다.</p></div>');
         }
+    }
+
+    function setPaymentModeCont(){
+        $('.mypage .section-wrap .sects.payment.modify input[data-visible-target]').prop("checked", false);
+        $('.mypage .section-wrap .sects.payment.modify input[data-visible-target=".by-' + paymentMode + '"]').prop("checked", true);
+
+        $('.mypage .section-wrap .sects.payment.modify').find('.tab-panel').hide();
+        $('.mypage .section-wrap .sects.payment.modify').find('.tab-panel.by-' + paymentMode).show();
     }
 
     function getMaskingData(data){

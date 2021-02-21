@@ -6,15 +6,15 @@
         "userInfo":{
             "user": {
                 "name": "이엘지",
-                "phoneNumber": "010345629787",
+                "phoneNumber": "01087650989",
                 "telephoneNumber": "01023442345",
                 "email": "lgkor@lge.com",
                 "adress": "214565 서울특별시 엘지구 엘지로 엘지동 348-12"
             },
             "actualUser": {
-                "name": "이엘지",
-                "phoneNumber": "010345629787",
-                "telephoneNumber": "01023442345",
+                "name": "박엘지",
+                "phoneNumber": "01034569999",
+                "telephoneNumber": "01023445657",
                 "email": "lgkor@lge.com",
                 "adress": "214565 서울특별시 엘지구 엘지로 엘지동 348-12"
             }
@@ -29,7 +29,7 @@
             "cancelConsultUrl": "https://wwwdev50.lge.co.kr/"
         },
         "paymentInfo": {
-            "isGrouping": true,
+            "isGrouping": false,
             "monthlyPrice": "38,800원",
             "withdrawDate": "매월 22일",
             "paymentMethod": "CARD",
