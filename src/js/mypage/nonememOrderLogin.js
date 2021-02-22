@@ -94,7 +94,7 @@
             snedPhoneNumber: phoneValues.userPhone
         }
 
-        var firstSpeling = sendata.snedPhoneNumber.substr(0,1).toUpperCase();
+        var firstSpeling = sendata.sendOrderNumber.substr(0,1).toUpperCase(); 
         var ajaxUrl = firstSpeling == "N" ? SUPPLY_CONFIRM_URL : LOGIN_CONFIRM_URL;
 
         console.log("sendata:",sendata)
