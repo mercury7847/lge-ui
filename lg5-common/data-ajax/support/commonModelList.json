@@ -33,7 +33,8 @@
                 "subCategoryNm": "드럼 세탁기",
                 "category": "1020",
                 "subCategory": "CT50019309",
-                "productCode": "DRW"
+                "productCode": "DRW",
+                "salesModelCode": "S5MBC.AKOR"
             },
             {
                 "modelCode": "OLED48CXKNB",
@@ -41,7 +42,8 @@
                 "subCategoryNm": "의류 건조기",
                 "category": "1005",
                 "subCategory": "CT50019275",
-                "productCode": "LCL"
+                "productCode": "LCL",
+                "salesModelCode": "S5MBC.AKOR"
             },
             {
                 "modelCode": "OLED48CXKNB",

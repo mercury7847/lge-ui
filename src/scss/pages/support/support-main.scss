@@ -5,6 +5,52 @@
 @import "../../utilities/mixins";
 
 
+.ui_modal_wrap {
+    &.init-type {
+        display: flex;
+        margin:0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+
+        .popup-wrap {
+            position: relative;
+            min-height:50%;
+            max-height:70%;
+
+            &.active + .active {
+                margin-left:40px;
+            }
+            
+        }
+        .pop-footer {
+            &.align-between {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+    }
+    @include tablet {
+        &.init-type {
+
+            flex-direction: column;
+    
+            .popup-wrap {
+                flex:1;
+
+                &.active + .active {
+                    margin-left:0;
+                    margin-top:40px;
+                }
+            }
+        }
+    }
+}
+
 .support-home {
     padding-bottom:120px;
     .btn {
