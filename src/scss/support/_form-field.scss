@@ -695,12 +695,11 @@
         }
         & + .calendar-box {
             display:inline-block;
-            width:calc(100% - 230px - 28px);
+            flex: 1;
             vertical-align:top;
         }
     }
     .info {            
-        margin-top:24px;
         & > li {
             @include font-small;
             & + li {
@@ -722,6 +721,11 @@
             }
         }
     }
+    .text {
+        +.info {
+            margin-top:24px;
+        }
+    }
     .calendar-box {
         display:block;
         width:100%;
@@ -730,10 +734,10 @@
             display:inline-block;
             vertical-align:top;
             &.date {
-                width:44%;
+                width:45%;
             }
             &.time {
-                width:56%;
+                width:55%;
                 padding-left:24px;
             }
             .box-tit {
@@ -856,6 +860,9 @@
         }
     }
     
+    @include pc {
+        display: flex;
+    }
     @media screen and (max-width: #{$desktop-s-width}) {
         .calendar-info {
             display:block;
@@ -880,6 +887,13 @@
         
 	}
     @include mobile {
+        .calendar-info {
+            margin-bottom: 18px;
+            .info {
+                margin-top: 24px;
+            }
+        }
+
         .calendar-box {
             .box-inner {
                 &.date {
@@ -890,7 +904,16 @@
                     margin-top:40px;
                     padding-left:0;
                 }
+                .box-tit {
+                    margin-bottom: 8px;
+                }
             }
         }
+    }
+}
+
+.form-infos {
+    @include mobile {
+        margin-bottom: 40px;
     }
 }

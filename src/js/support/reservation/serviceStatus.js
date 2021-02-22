@@ -585,7 +585,11 @@
                         
                         if( $formSection.length ) {
                             if( $formSection.find('button:visible').length ) {
-                                $formSection.find('button:visible').first().focus();
+                                // 날짜 선택 시 인증 번호 발송 버튼으로 포커싱
+                                // $formSection.find('button:visible').first().focus();
+
+                                // 날짜 선택 시 엔지니어 영역으로 포커싱
+                                $('#reservationTimePopup #stepEngineer').focus();
                             } else {
                                 $stepEngineer.closest('.pop-conts').scrollTop($formSection.offset().top);
                             }
