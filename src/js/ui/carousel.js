@@ -1431,7 +1431,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             if(self.$el.find('.indi-wrap').find('li').length < 2){
                 self.$el.find('.indi-wrap').hide();
 
-                self.$el.addClass('solo');
+                self.$el.addClass('slide-solo');
             }
 
             setTimeout(function(){

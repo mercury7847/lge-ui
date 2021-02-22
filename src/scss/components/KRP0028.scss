@@ -30,6 +30,12 @@
         padding:20px 0 24px;
     }
 
+    .tabs-bg {
+        .tabs-wrap {
+            margin: 0 auto;
+        }
+    }
+
     .title {
         &.title-h1 {
             @include title-h1;
