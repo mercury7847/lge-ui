@@ -1,0 +1,10 @@
+{   
+    "status": "success",
+    "data": {
+        "resultFlag" : "Y",
+        "url" : "/", 
+        "listData": [
+            
+        ]
+    }
+}
