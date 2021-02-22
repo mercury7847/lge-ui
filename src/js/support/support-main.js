@@ -60,8 +60,6 @@
                         $hiddenItem.removeClass('show');
                         $this.removeClass('close').text('더보기');
                     } else {
-
-                        console.log($hiddenItem.length)
                         $hiddenItem.addClass('show');
                         $this.addClass('close').text('접기');
                     }
@@ -81,6 +79,7 @@
             heroPd : {
                 el : {
                     slider : '.had-pd-slider',
+                    front : '.card-front',
                     backContList : '.card-back-cont',
                     btnBackOpen : '.btn-goto-back',
                     btnBackClose : '.btn-goto-front'
@@ -128,7 +127,7 @@
                     var $btnBackClose = $container.find('.btn-goto-front');
 
 
-                    $(document).on('click', self.el.btnBackOpen, function(e){
+                    $(document).on('click', self.el.front, function(e){
                         var $this = $(this);
                         var $card = $this.closest('.item-card');
                         var $backCard = $card.find('.card-back');
@@ -735,6 +734,69 @@
                 
             }
         },
+        modal : {
+            el : {
+                modal : '<div class="ui_modal_wrap init-type" style="position:fixed; z-index:9000; top:0; left:0; width:100%; height:100%;"/>',
+                dimm : '<div class="ui_modal_dim" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7)"/>',
+                popup : '.popup-init',
+                check : '[data-role="today-cookie-check"]',
+                close : '.btn-close'
+            },
+            init : function(){
+                var self = this;
+                var $popup = $(self.el.popup);
+
+
+                if($popup.length ) {
+                    $popup.each(function(v, i){
+                        var $this = $(this);
+                        var _id = $this.attr('id');
+
+                        if( lgkorUI.cookie.getCookie(_id) == "done") {
+                            $this.addClass('hidden');
+                        }
+                    })
+                    $popup.not('.hidden').addClass('active');
+
+                    if( $popup.filter('.active').length ) {
+                        $popup.filter('.active').wrapAll(self.el.modal);
+                        $('.ui_modal_wrap.init-type').prepend(self.el.dimm);
+                        $popup.stop().fadeIn();
+                    }
+                }
+
+                $popup.find(self.el.close).on('click', function(e){
+                    var $this =$(this);
+                    var $curModal = $this.closest('.popup-init');
+                    var $modalWrap = $this.closest('.ui_modal_wrap');
+                    var $dimm = $modalWrap.find('.ui_modal_dim');
+                    var $check = $curModal.find(self.el.check).find('input:checkbox');
+                    var _id = $curModal.attr('id');
+
+                    if( $check.prop('checked')) {
+                        lgkorUI.cookie.setCookie(_id, "done", 1);
+                    }
+                    
+                    if( $modalWrap.find('.popup-init:visible').length == 1) {
+                        $modalWrap.stop().fadeOut(function(){
+                            $dimm.remove();
+                            $popup.unwrap();
+                            $curModal.hide().removeClass('active');
+                        });
+                    } else {
+                        $curModal.stop().fadeOut(function(){
+                            $(this).removeClass('active');
+                        })
+                    }
+                    e.preventDefault();
+                });
+
+                $('.ui_modal_wrap.init-type .ui_modal_dim').on('click', function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                })
+            }
+        },
         initialize: function(){
             this.loginTooltip();
             this.moreShow.init();
@@ -742,67 +804,14 @@
             this.toggleList.init();
             this.reservation.init();
             this.getRegisterdProduct.init();
-            //$('#supportGuideTextPopup').vcModal();
-
-            var $initPopup = $('.popup-init');
-
-            var uiModal = '<div class="ui_modal_wrap init-type" />';
-            var $uiModalDimm = $('<div class="ui_modal_dim" />')
-
-            if($initPopup.length ) {
-                $initPopup.addClass('active');
-                $initPopup.wrapAll(uiModal);
-                $('.ui_modal_wrap.init-type').prepend($uiModalDimm);
-                $('.ui_modal_wrap.init-type').css({
-                    'position' : 'fixed',
-                    'z-index' : 9000,
-                    'top' : 0,
-                    'left' : 0,
-                    'width' : '100%',
-                    'height' : '100%'
-                });
-                $('.ui_modal_dim').css({
-                    'position' : 'fixed',
-                    'top' : 0,
-                    'left' : 0,
-                    'width' : '100%',
-                    'height' : '100%',
-                    'background' : 'rgb(0, 0, 0, 0.7)'
-                });
-                $initPopup.stop().fadeIn();
-            }
-
-            $initPopup.find('.btn-close').on('click', function(e){
-                var $this =$(this);
-                var $curModal = $this.closest('.popup-init');
-                var $modalWrap = $this.closest('.ui_modal_wrap');
-                var $dimm = $modalWrap.find('.ui_modal_dim');
-
-                
-                if( $modalWrap.find('.popup-init:visible').length == 1) {
-                    $modalWrap.stop().fadeOut(function(){
-                        $dimm.remove();
-                        $initPopup.unwrap();
-                        $curModal.hide().removeClass('active');
-                    });
-                } else {
-                    $curModal.stop().fadeOut().removeClass('active');
-                }
-                e.preventDefault();
-            });
-
-            $('.ui_modal_wrap.init-type .ui_modal_dim').on('click', function(e){
-                e.preventDefault();
-                e.stopPropagation();
-            })
+            this.modal.init();
         }
     }
-
-    supportHome.initialize();
+    
     supportHome.slide.firstInit();
 
     $(window).ready(function(){
-        
+        supportHome.initialize();    
     })
 
     $(window).on('resize', function(){
