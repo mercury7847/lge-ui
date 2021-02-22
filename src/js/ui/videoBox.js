@@ -19,6 +19,8 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
             self.$ctrler = self.$el.find('.controller-wrap button');
             self.$acctrler = self.$el.find(".play-animaion-btn");
 
+            self.$captionBtn = self.$el.find('.caption-wrap button');
+
             if(self.$el.find("video").attr("autoplay") != 'autoplay'){
                 self.$ctrler.removeClass("pause").addClass("play");
                 self._ariaBuild();
@@ -80,6 +82,32 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
 
                 self._ariaBuild();
             });
+
+            self.$captionBtn.on('click', function(e){
+                e.preventDefault();
+
+                self._addCaption();
+            })
+        },
+
+        _addCaption: function(){
+            var self = this;
+
+            $('.component.ani-caption').remove();
+
+            var caption = self.$el.find('article.cap-section');
+            
+            $('body').append('<div class="component ani-caption"><button type="button" class="btn-close"><span class="blind">닫기</span></button></div>');
+            $('.component.ani-caption').prepend(caption.clone().show());
+            $('.component.ani-caption').css({y:'100%'}).transition({y:0}, 350, 'easeOutQuart');
+            $('.component.ani-caption').on('click', '.btn-close', function(e){
+                e.preventDefault();
+
+                $('.component.ani-caption').off('click', '.btn-close');
+                $('.component.ani-caption').transition({y:'100%'}, 350, 'easeOutQuart', function(){
+                    $('.component.ani-caption').remove();
+                });
+            })
         },
 
         _ariaBuild: function(){
