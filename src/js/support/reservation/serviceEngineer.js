@@ -779,7 +779,7 @@
                     date: $('#date').val(),
                     time: $('#time').val(),
                     lockUserId: $('#lockUserId').val(),
-                    productCode: $('#productCode').val(),
+                    productCode: productCode
                 }
 
                 param = $.extend(param, infoData);
