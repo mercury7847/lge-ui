@@ -20,10 +20,10 @@
                         '</a>' +
                     '</div>' +
                     '<div class="info-btm">' +
+                        '{{#if hasCare}}<span class="text careflag">케어십 가능</span>{{/if}}' +
                         '<div class="text hashtag-wrap">' +
                             '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
-                        '</div>' + 
-                        '{{#if hasCare}}<span class="text careflag">케어십 가능</span>{{/if}}' +
+                        '</div>' +
                     '</div>' +
                 '</div>' +
             '</div>' +
