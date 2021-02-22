@@ -1352,7 +1352,7 @@
                 padding:0 0 0 32px;
                 .scroll-wrap {
                     overflow-y:auto;
-                    height: calc(100vh - 310px - 80px);
+                    // height: calc(100vh - 310px - 80px);
                 }
             }
             .opt-cont {
@@ -1860,6 +1860,14 @@
                     }
                 }
             }
+        }
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .find-store-wrap {
+        .map-container {
+            height: calc(100vh - 80px);
         }
     }
 }
