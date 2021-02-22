@@ -59,7 +59,7 @@
 .header-wrap {
     max-width: (1680px + 80px);
     margin: 0 auto;
-    padding-bottom: 20px;
+    padding-bottom: 16px;
     @include mobile {
         max-width: 100%;
         padding: 0 16px;
@@ -68,98 +68,119 @@
 
 .header-top {
     @include clearfix;
-    padding: 20px 0;
+    padding: 18px 0;
 
     @include mobile {
-        padding: 15px 0 0;
+        padding: 21px 0;
     }
 }
 
 @include mobile {
     .mobile-nav-wrap {
-        padding: 0 8px;
+        padding: 0 10px;
         font-size: 0;
         .nav {
-            margin-top: 14px;
+            //margin-top: 14px;
+            display: flex;
+            justify-content: space-between;
             > li {
                 display: inline-block;
                 border-top: 0;
             }
             .nav-item {
-                padding: 12px 8px;
+                padding: 2px 6px 9px;
+                font-weight: 500;
+                @include font($font-medium - 1,23px);
+                color: $color-gray-1;
                 &:after {
                     display: none;
+                }
+                &.on {
+                    position: relative;
+                    font-weight: 700;
+                    color: $color-default;
+                    &:after {
+                        display: block;
+                        position: absolute;
+                        top: auto;
+                        bottom: 0;
+                        right: auto;
+                        left: 0;
+                        width: 100%;
+                        height: 4px;
+                        background-color: $color-default;
+                    }
                 }
             }
         }
         .btn-back {
             position: relative;
             display: inline-block;
-            width: 36px;
-            height: 45px;
-            background: url('/lg5-common/images/icons/btn-arr-32-black.svg') no-repeat left 8px center;
-            background-size: 16px 16px;
+            width: 28px;
+            height: 34px;
+            padding: 5px 2px;
+            background: url('/lg5-common/images/icons/btn-back-48.svg') no-repeat center center;
+            background-size: 24px;
             vertical-align: top;
         }
-        .nav-item {
-            display: inline-block;
-            padding: 11px 0;
-            font-weight: 500;
-            font-size: $font-medium - 1;
-            line-height: 23px;
-        }
-        &.is-depth {
-            position: relative;
-            .nav-item {
-                position: relative;
-                &:after {
-                    position: absolute;
-                    top: 50%;
-                    right: -20px;
-                    width: 16px;
-                    height: 16px;
-                    margin-top: -8px;
-                    background: url('/lg5-common/images/icons/btn-arr-32-black.svg') no-repeat left center;
-                    background-size: 100% 100%;
-                    transform: rotate(-90deg);
-                    transition: all ease 200ms;
-                    vertical-align: bottom;
-                    content: '';
-                }
-                &.on {
-                    &:after {
-                        transform: rotate(90deg);
-                    }
-                }
-            }
-            .nav-category-container {
-                position: absolute;
-                top: 45px;
-                right: -8px;
-                left: -8px;
-                z-index: 10;
-                padding: 0 0 12px;
-                background-color: #fff;
-                box-shadow: 0 4px 8px 0 rgba(0,0,0,.08);
-                > ul {
-                    > li {
-                        display: block;
-                        a {
-                            display: block;
-                            padding: 9px 52px;
-                            font-weight: 500;
-                            font-size: $font-small;
-                            line-height: 22px;
-                            color: $color-gray-4;
-                            &:focus,
-                            &.on {
-                                color: $color-default;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        //.nav-item {
+        //    display: inline-block;
+        //    padding: 11px 0;
+        //    font-weight: 500;
+        //    @include font($font-medium - 1,23px);
+        //}
+        //&.is-depth {
+        //    position: relative;
+        //    .nav-item {
+        //        position: relative;
+        //        &:after {
+        //            position: absolute;
+        //            top: 50%;
+        //            right: -20px;
+        //            width: 16px;
+        //            height: 16px;
+        //            margin-top: -8px;
+        //            background: url('/lg5-common/images/icons/btn-arr-32-black.svg') no-repeat left center;
+        //            background-size: 100% 100%;
+        //            transform: rotate(-90deg);
+        //            transition: all ease 200ms;
+        //            vertical-align: bottom;
+        //            content: '';
+        //        }
+        //        &.on {
+        //            &:after {
+        //                transform: rotate(90deg);
+        //            }
+        //        }
+        //    }
+        //    .nav-category-container {
+        //        position: absolute;
+        //        top: 45px;
+        //        right: -8px;
+        //        left: -8px;
+        //        z-index: 10;
+        //        padding: 0 0 12px;
+        //        background-color: #fff;
+        //        box-shadow: 0 4px 8px 0 rgba(0,0,0,.08);
+        //        > ul {
+        //            > li {
+        //                display: block;
+        //                a {
+        //                    display: block;
+        //                    padding: 9px 52px;
+        //                    font-weight: 500;
+        //                    font-size: $font-small;
+        //                    line-height: 22px;
+        //                    color: $color-gray-4;
+        //                    &:focus,
+        //                    &.on {
+        //                        color: $color-default;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
     }
 }
 
@@ -184,12 +205,11 @@
 
 .logo {
     float: left;
-    padding-top: 2px;
-    padding-left: 40px;
+    padding-left: 56px;
     a {
         display: block;
-        width: 74px;
-        height: 20px;
+        width: 76px;
+        height: 21px;
         background-image: url("/lg5-common/images/header/logo.svg");
     }
 
@@ -198,8 +218,8 @@
         padding-top: 0;
         padding-left: 0;
         a {
-            width: 80px;
-            height: 21px;
+            width: 70px;
+            height: 18px;
             background-image: url("/lg5-common/images/header/logo-m.svg");
             background-size: 100% 100%;
         }
@@ -210,6 +230,9 @@
 .utility {
     float: right;
     padding-right: 224px;
+    @media screen and (min-width: 1760px) {
+        padding-right: 240px;
+    }
     .shortcut {
         font-size: 0;
         > li {
@@ -217,6 +240,8 @@
             display: inline-block;
             width: 24px;
             height: 24px;
+            background: no-repeat center center;
+            background-size: 24px 24px;
             &:not(:first-child) {
                 margin-left: 16px;
             }
@@ -225,21 +250,21 @@
                 height: 100%;
             }
             &.search {
-                background: url("/lg5-common/images/icons/icon-search.svg") no-repeat center center;
+                background-image: url("/lg5-common/images/icons/icon-search-48.svg");
             }
             &.mypage {
                 display: none;
-                background: url("/lg5-common/images/icons/icon-person.svg") no-repeat center center;
+                background-image: url("/lg5-common/images/icons/icon-person.svg");
                 &.after-login {
                     position: relative;
                     &:after {
                         position: absolute;
                         top: 0;
-                        right: 5px;
+                        right: 2px;
                         width: 4px;
                         height: 4px;
                         border-radius: 2px;
-                        background-color: $color-positive;
+                        background-color: $color-primary;
                         content: '';
                     }
                     .mypage-layer {
@@ -281,24 +306,24 @@
                 }
             }
             &.cart {
-                background: url("/lg5-common/images/icons/icon-cart.svg") no-repeat center center;
+                background-image: url("/lg5-common/images/icons/icon-cart-48.svg");
             }
             &.notice {
-                background: url("/lg5-common/images/icons/icon-notice-20.svg") no-repeat center center;
+                background-image: url("/lg5-common/images/icons/icon-notice-20.svg");
             }
             .count {
                 position: absolute;
-                top: -6px;
-                left: 14px;
+                top: -5px;
+                left: 10px;
                 display: block;
-                min-width: 16px;
-                height: 16px;
+                min-width: 14px;
+                height: 14px;
                 padding: 2px 4px;
                 border-radius: 8px;
                 background-color: $color-primary;
                 font-weight: 700;
-                font-size: 11px;
-                line-height: 11px;
+                font-size: 10px;
+                line-height: 10px;
                 color: $color-white;
                 text-align: center;
             }
@@ -309,23 +334,22 @@
         float: none;
         padding-right: 0;
         position: absolute;
-        top: 5px;
-        right: 50px;
+        top: 12px;
+        right: 51px;
         z-index: 1;
         .shortcut {
             li {
-                width: 38px;
-                height: 38px;
+                width: 34px;
+                height: 34px;
                 &:not(:first-child) {
-                    margin-left: 0;
+                    margin-left: 6px;
                 }
                 a {
-                    padding: 9px;
+                    padding: 5px;
                 }
                 .count {
-                    top: 3px;
-                    right: 1px;
-                    left: auto;
+                    top: 1px;
+                    left: 15px;
                 }
                 &.mypage {
                     display: none;
@@ -354,7 +378,7 @@
     }
     @media screen and (min-width: 1760px) {
         right: 50%;
-        margin-right: -840px;
+        margin-right: -824px;
     }
 
     .links {
@@ -372,13 +396,14 @@
     }
 
     @include mobile {
-        padding: 24px 16px;
+        padding: 32px 16px;
         border-top: 12px solid $color-bg;
         .links {
+            width: 100%;
+            font-size: 0;
             li {
-                &:first-child {
-                    margin-left: 0;
-                }
+                width: 50%;
+                margin-left: 0;
                 a {
                     font-weight: 500;
                 }
@@ -514,6 +539,7 @@
             font-size: $font-medium - 1;
             line-height: 23px;
             color: $color-white;
+            text-shadow: 0 1px 20px rgba(0, 0, 0, 0.4);
         }
     }
 }
@@ -524,7 +550,7 @@
 
         > li {
             display: inline-block;
-            padding-left: 20px;
+            padding-left: 24px;
             vertical-align: top;
             &:last-child {
                 padding-right: 0;
@@ -533,10 +559,21 @@
 
         .nav-category {
             &.active {
-                margin-left: 4px;
+                margin-left: 8px;
                 padding: 0 16px;
                 border-radius: 18px;
                 background-color: $color-bg;
+            }
+            @include pc {
+                &:hover,
+                &:focus,
+                &.active {
+                    .nav-item {
+                        &:after {
+                            right: 21px;
+                        }
+                    }
+                }
             }
         }
     }
@@ -557,6 +594,7 @@
             height: 16px;
             margin-left: 2px;
             background: url('/lg5-common/images/icons/btn-plus-16-round.svg') no-repeat 0 0;
+            transition: all ease 500ms;
             vertical-align: -1px;
         }
 
@@ -565,9 +603,9 @@
             &:focus,
             &.active {
                 font-weight: 700;
+                @include text-underline(7px,$color-default);
                 .icon-nav {
-                    background-image: url('/lg5-common/images/icons/btn-minus-16-round.svg');
-                    vertical-align: -2px;
+                    transform: rotate(135deg);
                 }
             }
 
@@ -638,21 +676,23 @@
                 display: inline-block;
             }
         }
+
+        .super-category-item {
+            &:hover,
+            &:focus,
+            &.active {
+                font-weight: 500;
+                color: $color-default;
+            }
+        }
     }
 
     .super-category-item {
         display: block;
         position: relative;
         padding: 5px 0 5px 12px;
-        font-weight: 500;
         @include font-small;
-        color: $color-gray-4;
-
-        &:hover,
-        &:focus,
-        &.active {
-            color: $color-default;
-        }
+        color: $color-gray-1;
         &.active {
             & + .nav-category-layer {
                 display: block;
@@ -920,7 +960,7 @@
     .btn-nav-arrow {
         display: none;
         position: absolute;
-        top: 64px;
+        top: 60px;
         z-index: 5;
         width: 54px;
         height: 34px;
@@ -1125,8 +1165,14 @@
                     padding: 6px 28px;
                     font-size: $font-small - 1;
                     line-height: 19px;
+                    color: $color-gray-1;
                     &:after {
-                        background: none;
+                        display: none;
+                    }
+                    &:active,
+                    &.focus {
+                        font-weight: 500;
+                        color: $color-default;
                     }
                 }
                 //span.category-item { 보류....
@@ -1151,10 +1197,11 @@
 }
 
 .shortcut-service-link {
-    padding: 24px 16px;
+    padding: 32px 16px;
     border-top: 12px solid #f5f5f5;
     .title {
-        display: block;
+        @include blind;
+        //display: block;
         margin-bottom: 4px;
         font-weight: 500;
         font-size: $font-small - 1;
@@ -1162,17 +1209,21 @@
     }
     .links {
         @include clearfix;
+        margin-top: -16px;
         li {
             float: left;
             width: 50%;
-            margin-top: 8px;
+            margin-top: 16px;
             a {
-                padding-right: 22px;
-                background: url('/lg5-common/images/icons/btn-arr-40-black.svg') no-repeat right center;
-                background-size: 20px 20px;
-                font-weight: 700;
-                font-size: $font-small - 1;
-                line-height: 21px;
+                //padding-right: 22px;
+                //background: url('/lg5-common/images/icons/btn-arr-40-black.svg') no-repeat right center;
+                //background-size: 20px 20px;
+                font-weight: 500;
+                @include font($font-small - 1,21px);
+                &:focus,
+                &:active {
+                    @include text-underline(1px,$color-default);
+                }
             }
         }
     }
@@ -1180,13 +1231,13 @@
 
 .mobile-nav-button {
     position: absolute;
-    top: 6px;
-    right: 7px;
-    width: 38px;
-    height: 38px;
-    padding: 9px;
-    background: url('/lg5-common/images/icons/btn-hamburger-40.svg') no-repeat center center;
-    background-size: 20px 20px;
+    top: 12px;
+    right: 11px;
+    width: 34px;
+    height: 34px;
+    padding: 5px;
+    background: url('/lg5-common/images/icons/btn-hamburger-48.svg') no-repeat center center;
+    background-size: 24px;
 
     span[class^=line-],
     .mobile-nav-close {
@@ -1194,8 +1245,8 @@
     }
 
     &.active {
-        top: 21px;
-        right: 13px;
+        top: 11px;
+        right: 11px;
         z-index: 100;
         width: auto;
         height: auto;
@@ -1203,17 +1254,17 @@
         background: none;
         .mobile-nav-close {
             display: block;
-            width: 38px;
-            height: 38px;
-            padding: 3px;
-            background: url('/lg5-common/images/icons/btn-close-32.svg') no-repeat center center;
+            width: 34px;
+            height: 34px;
+            padding: 5px;
+            background: url('/lg5-common/images/icons/btn-close-24-black.svg') no-repeat center center;
         }
 
         & + .header-bottom {
             @include mobile {
                 display: block;
                 position: fixed;
-                top: 72px;
+                top: 60px;
                 right: 0;
                 bottom: 0;
                 left: 0;
@@ -1235,7 +1286,7 @@
         left: 0;
         z-index: 1;
         width: 100%;
-        height: 72px;
+        height: 60px;
         background-color: $color-bg-wt;
         content: '';
     }

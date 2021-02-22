@@ -14,7 +14,7 @@ $(window).ready(function(){
 
     var KRP0031 = {
         options: {
-            text: '제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.',
+            txt: '제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.',
             imageUrl: '/lg5-common/images/CS/img-model-name-example.jpg',
             imageAlt: '모델명 및 제조번호 확인 예시 이미지'
         },
@@ -118,7 +118,7 @@ $(window).ready(function(){
                 lgkorUI.requestAjaxData(self.searchModelNameUrl, param, function(result) {
                     var data = result.data[0];
                     
-                    $('.example-result .txt').html(data.text);
+                    $('.example-result .txt').html(data.txt);
                     $('.example-result .img img').attr('src', data.imageUrl);
                     $('.example-result .img img').attr('alt', data.imageAlt);
 
@@ -129,7 +129,7 @@ $(window).ready(function(){
             self.$modelPopup.on('modalhidden', function() {
                 var options = self.options;
 
-                $('.example-result .txt').html(options.text);
+                $('.example-result .txt').html(options.txt);
                 $('.example-result .img img').attr('src', options.imageUrl);
                 $('.example-result .img img').attr('alt', options.imageAlt);
 
