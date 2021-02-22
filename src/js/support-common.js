@@ -1769,7 +1769,7 @@ CS.MD.timeCalendar = function() {
                     html += '" data-hour="' + hour + '" data-min="' + min + '">';
                     
                     html += tmpl({
-                        title: dateUtil.format(nowd, opts.titleFormat) + (isDisabled ? " 선택할 수 없음" : ""),
+                        title: hour + "시" + min + "분" + (isDisabled ? " 선택할 수 없음" : ""),
                         time: min,
                         disabled: isDisabled
                     });

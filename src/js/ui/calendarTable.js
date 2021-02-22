@@ -38,8 +38,11 @@ vcui.define('ui/calendarTable', ['jquery', 'vcui'], function ($, core) {
                 return self.release();
             }
 
-            var arr = self.options.dateArr instanceof Array ? self.options.dateArr : [];
+            if (self.options.inputTarget) {
+                self.$input = $(self.options.inputTarget);
+            }
 
+            var arr = self.options.dateArr instanceof Array ? self.options.dateArr : [];
 
             if (arr.length) {
                 for (var i = 0; i < arr.length; i++) {
@@ -48,10 +51,6 @@ vcui.define('ui/calendarTable', ['jquery', 'vcui'], function ($, core) {
                 self.currDate = arr[0];
             } else {
                 self.currDate = self.options.today;
-            }
-
-            if (self.options.inputTarget) {
-                self.$input = $(self.options.inputTarget);
             }
 
             self.dateArr = arr;
