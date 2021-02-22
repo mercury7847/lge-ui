@@ -1,0 +1,207 @@
+{   
+    "status": "success",
+    "message":null,
+    "data": {
+        "listData": [
+            {
+                "sort": "모바일",
+                "partName": "로워커버",
+                "partModel": "LGF700K.AKTFSV",
+                "partOld": {
+                    "number": "CRU30385101",
+                    "price": "50,000"
+                },
+                "partNew": {
+                    "number": "ACQ88888001",
+                    "price": "74,000"
+                }
+            },
+            {
+                "sort": "모바일",
+                "partName": "로워커버",
+                "partModel": "LGF700L.ALGTSV",
+                "partOld": {
+                    "number": "CRU30385101",
+                    "price": "50,000"
+                },
+                "partNew": {
+                    "number": "ACQ88888001",
+                    "price": "74,000"
+                }
+            },
+            {
+                "sort": "모바일",
+                "partName": "로워커버",
+                "partModel": "LGF700L.ALGTSV",
+                "partOld": {
+                    "number": "CRU30385101",
+                    "price": "50,000"
+                },
+                "partNew": {
+                    "number": "ACQ88888001",
+                    "price": "74,000"
+                }
+            },
+            {
+                "sort": "모바일",
+                "partName": "로워커버",
+                "partModel": "LGF700L.ALGTSV",
+                "partOld": {
+                    "number": "CRU30385101",
+                    "price": "50,000"
+                },
+                "partNew": {
+                    "number": "ACQ88888001",
+                    "price": "74,000"
+                }
+            },
+            {
+                "sort": "모바일",
+                "partName": "로워커버",
+                "partModel": "LGF700L.ALGTSV",
+                "partOld": {
+                    "number": "CRU30385101",
+                    "price": "50,000"
+                },
+                "partNew": {
+                    "number": "ACQ88888001",
+                    "price": "74,000"
+                }
+            },
+            {
+                "sort": "모바일",
+                "partName": "로워커버",
+                "partModel": "LGF700L.ALGTSV",
+                "partOld": {
+                    "number": "CRU30385101",
+                    "price": "50,000"
+                },
+                "partNew": {
+                    "number": "ACQ88888001",
+                    "price": "74,000"
+                }
+            },
+            {
+                "sort": "모바일",
+                "partName": "로워커버",
+                "partModel": "LGF700L.ALGTSV",
+                "partOld": {
+                    "number": "CRU30385101",
+                    "price": "50,000"
+                },
+                "partNew": {
+                    "number": "ACQ88888001",
+                    "price": "74,000"
+                }
+            },
+            {
+                "sort": "모바일",
+                "partName": "로워커버",
+                "partModel": "LGF700L.ALGTSV",
+                "partOld": {
+                    "number": "CRU30385101",
+                    "price": "50,000"
+                },
+                "partNew": {
+                    "number": "ACQ88888001",
+                    "price": "74,000"
+                }
+            },
+            {
+                "sort": "모바일",
+                "partName": "로워커버",
+                "partModel": "LGF700L.ALGTSV",
+                "partOld": {
+                    "number": "CRU30385101",
+                    "price": "50,000"
+                },
+                "partNew": {
+                    "number": "ACQ88888001",
+                    "price": "74,000"
+                }
+            },
+            {
+                "sort": "모바일",
+                "partName": "로워커버",
+                "partModel": "LGF700L.ALGTSV",
+                "partOld": {
+                    "number": "CRU30385101",
+                    "price": "50,000"
+                },
+                "partNew": {
+                    "number": "ACQ88888001",
+                    "price": "74,000"
+                }
+            },
+            {
+                "sort": "모바일",
+                "partName": "로워커버",
+                "partModel": "LGF700L.ALGTSV",
+                "partOld": {
+                    "number": "CRU30385101",
+                    "price": "50,000"
+                },
+                "partNew": {
+                    "number": "ACQ88888001",
+                    "price": "74,000"
+                }
+            },
+            {
+                "sort": "모바일",
+                "partName": "로워커버",
+                "partModel": "LGF700L.ALGTSV",
+                "partOld": {
+                    "number": "CRU30385101",
+                    "price": "50,000"
+                },
+                "partNew": {
+                    "number": "ACQ88888001",
+                    "price": "74,000"
+                }
+            },
+            {
+                "sort": "모바일",
+                "partName": "로워커버",
+                "partModel": "LGF700L.ALGTSV",
+                "partOld": {
+                    "number": "CRU30385101",
+                    "price": "50,000"
+                },
+                "partNew": {
+                    "number": "ACQ88888001",
+                    "price": "74,000"
+                }
+            },
+            {
+                "sort": "모바일",
+                "partName": "로워커버",
+                "partModel": "LGF700L.ALGTSV",
+                "partOld": {
+                    "number": "CRU30385101",
+                    "price": "50,000"
+                },
+                "partNew": {
+                    "number": "ACQ88888001",
+                    "price": "74,000"
+                }
+            },
+            {
+                "sort": "모바일",
+                "partName": "로워커버",
+                "partModel": "LGF700L.ALGTSV",
+                "partOld": {
+                    "number": "CRU30385101",
+                    "price": "50,000"
+                },
+                "partNew": {
+                    "number": "ACQ88888001",
+                    "price": "74,000"
+                }
+            }
+        ],
+        "listPage": {
+            "page": 1,
+            "totalCount": 20
+        }
+    }
+}

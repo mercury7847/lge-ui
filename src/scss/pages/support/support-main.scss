@@ -5,6 +5,52 @@
 @import "../../utilities/mixins";
 
 
+.ui_modal_wrap {
+    &.init-type {
+        display: flex;
+        margin:0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+
+        .popup-wrap {
+            position: relative;
+            min-height:50%;
+            max-height:70%;
+
+            &.active + .active {
+                margin-left:40px;
+            }
+            
+        }
+        .pop-footer {
+            &.align-between {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+    }
+    @include tablet {
+        &.init-type {
+
+            flex-direction: column;
+    
+            .popup-wrap {
+                flex:1;
+
+                &.active + .active {
+                    margin-left:0;
+                    margin-top:40px;
+                }
+            }
+        }
+    }
+}
+
 .support-home {
     padding-bottom:120px;
     .btn {
@@ -536,14 +582,28 @@
             //margin:0 -12px;
             $defaultPadding : 35px 32px 48px;
 
+            &.ui_carousel_initialized {
+                .slide-controls, .indi-wrap {
+                    display: block;
+                }
+
+                .item-list {
+                    float:left;
+                }
+            }
+
             .slide-track {
                 overflow:hidden;
                 height:240px;
                 margin:0 -12px;
+                font-size:0;
+                text-align: center;
+                vertical-align: top;
                 @include clearfix;
             }
 
             .slide-controls {
+                display: none;
                 .prev {
                     left:-95px;
                 }
@@ -553,13 +613,16 @@
             }
 
             .indi-wrap {
+                display: none;
                 bottom:-44px;
             }
 
             .item-list {
-                float:left;
+                display:inline-block;
                 padding:0 12px;
                 border-radius:10px;
+                text-align: left;
+                vertical-align: top;
 
                 &.default-type {
                     &:nth-child(3n+1) {
@@ -824,6 +887,7 @@
         
 
         @include tablet {
+
             .headline {
                 .tit {
                     font-size:20px;
@@ -836,6 +900,19 @@
             .had-pd-slider {
                 //margin:0 -12px;
                 $tabletPadding : 20px 20px 38px;
+
+                &.ui_carousel_initialized {
+                    .slide-controls {
+                        display: none;
+                    }
+                    .indi-wrap {
+                        display: block !important;
+                    }
+    
+                    .item-list {
+                        float:left;
+                    }
+                }
     
                 .slide-track {
                     height:200px;

@@ -339,9 +339,12 @@
                 subCategory: $('#subCategory').val()
             });
 
+            $('.time-wrap').timeCalendar('reset');
+
             result = validation.validate(['topic', 'subTopic', 'bdType', 'fan', 'addFan', 'installType', 'tvPosition', 'userNm', 'phoneNo', 'zipCode', 'userAddress', 'detailAddress']);
 
             if (result.success) {
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var data = result.data,
                         dateArr = data.dateList instanceof Array ? data.dateList : [],
@@ -376,6 +379,7 @@
                             });
                         }
                     }
+                    lgkorUI.hideLoading();
                 });
             }
         },
@@ -434,7 +438,7 @@
             var self = this;
 
             param = $.extend(param, self.dateParam);
-
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(url, param, function(result) {
                 var data = result.data,
                     arr = data.engineerList instanceof Array ? data.engineerList : []; 
@@ -454,7 +458,11 @@
                         self.$stepEngineer.addClass('active');
                         self.$completeBtns.show();
                     }
+                } else {
+
                 }
+
+                lgkorUI.hideLoading();
             });
         },
         updateEngineer: function(data) {
@@ -651,6 +659,10 @@
                 });
             });
 
+            self.$cont.find('[name=bdType]').on('change', function() {
+                if (self.autoFlag) self.requestDate();
+            });
+
             // 증상 선택
             self.$topicList.on('change', '[name=topic]', function() {
                 var url = self.$topicListWrap.data('ajax'),
@@ -755,6 +767,12 @@
                     $this = self.$engineerPopup.find('[name=engineer]').filter(':checked'),
                     infoData = $this.data(),
                     param;
+
+                var productCode = $('#productCode').val();
+
+                if ($('[name=bdType]:checked').val() == 4) {
+                    productCode = 'CRB';
+                }
 
                 param = {
                     serviceType: $('#serviceType').val(),

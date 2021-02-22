@@ -116,7 +116,7 @@
                     '<div class="wishlist">' +
                         '<span class="chk-wish-wrap large">' +
                             '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}} {{#if obsBtnRule != "enable"}}disabled{{/if}}>' +
-                            '<label for="wish-{{modelId}}" {{#if obsBtnRule != "enable"}}style="opacity:.3;"{{/if}}><span class="blind">찜하기</span></label>' +
+                            '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>' +
                         '</span>' +
                     '</div>' +
                     '<div class="cart">' +

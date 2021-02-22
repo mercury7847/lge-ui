@@ -6,11 +6,11 @@
                     <g>
                         <g>
                             <g>
-                                <path d="M0 0H16V16H0z" transform="translate(-510 -73) translate(120 64) translate(343 4) translate(47 5)"/>
-                                <g transform="translate(-510 -73) translate(120 64) translate(343 4) translate(47 5) translate(.5 1)">
-                                    <rect width="15" height="15" fill="#DDD" rx="7.5"/>
-                                    <g stroke="#000" stroke-linecap="round">
-                                        <path d="M0 3.5L7 3.5M3.5 0L3.5 7" transform="rotate(90 3.5 7.5)"/>
+                                <path d="M0 0H16V16H0z" transform="translate(-524 -69) translate(128 60) translate(347 4) translate(49 5)"/>
+                                <g>
+                                    <path fill="#666" d="M7 .5c-3.871 0-7 3.129-7 7s3.129 7 7 7 7-3.129 7-7-3.129-7-7-7z" transform="translate(-524 -69) translate(128 60) translate(347 4) translate(49 5) translate(1 .5)"/>
+                                    <g stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                        <path d="M8 4L0 4M4 0L4 8" transform="translate(-524 -69) translate(128 60) translate(347 4) translate(49 5) translate(1 .5) translate(3 3.5)"/>
                                     </g>
                                 </g>
                             </g>
