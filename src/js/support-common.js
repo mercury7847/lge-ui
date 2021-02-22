@@ -464,7 +464,7 @@ CS.MD.commonModel = function() {
                         '{{# } #}}' +
                     '</ul>' +
                     '{{# if (product.length == 3 && product[2].name && lgkorUI.isLogin && !product[2].isMyProduct) { #}}' +
-                    '<a href="#" class="btn-add-product"><span>보유제품 추가</span></a>' +
+                    '<a href="/my-page/manage-products" class="btn-add-product" target="_blank" title="새창 이동"><span>보유제품 추가</span></a>' +
                     '{{# } #}}' +
                 '</div>' +
                 '{{# } #}}' +
@@ -487,7 +487,7 @@ CS.MD.commonModel = function() {
     var modelListTmpl = 
         '<div class="slide-conts">' +
             '{{# if (modelCode != "") { #}}' +
-            '<a href="#" class="item" data-cst-flag="Y" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{modelCode}}" data-product-code="{{productCode}}" data-category-name="{{categoryNm}}" data-sub-category-name="{{subCategoryNm}}">' +
+            '<a href="#" class="item" data-cst-flag="Y" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{modelCode}}" data-product-code="{{productCode}}" data-category-name="{{categoryNm}}" data-sub-category-name="{{subCategoryNm}}"{{#if typeof salesModelCode != "undefined" && salesModelCode}} data-sales-model-code="{{salesModelCode}}"{{/if}}>' +
             '{{# } else { #}}' +
             '<a href="#" class="item no-model" data-cst-flag="Y" data-category="{{category}}" data-sub-category="{{subCategory}}" data-model-code="{{modelCode}}" data-product-code="{{productCode}}" data-category-name="{{categoryNm}}" data-sub-category-name="{{subCategoryNm}}">' +
             '{{# } #}}' +
@@ -603,6 +603,16 @@ CS.MD.commonModel = function() {
         },
         _bindEvent: function() {
             var self = this;
+
+            self.$selectedModelBar.on('click', '.btn-add-product', function(e) {
+                e.preventDefault();
+
+                var salesModelCode = self.selected.salesModelCode;
+                var href = $(this).attr('href');
+
+                window.open(href + '?modelCode=' + salesModelCode);
+
+            });
 
             // 제품 재선택
             self.$selectedModelBar.on('click', '.btn-reset', function() {
@@ -828,6 +838,8 @@ CS.MD.commonModel = function() {
                     url;
 
                 url = self.$searchArea.data('resultUrl');  
+
+                self.selected = $.extend(self.selected, data);
 
                 data.isRequest = true;
                 self.$el.find('#category').val(data.category);
