@@ -5,6 +5,7 @@
 
 .KRP0027 {
   .cont-wrap {
+    max-width:1460px;
     padding: 0 40px;
     @include mobile {
         padding: 0;
