@@ -107,9 +107,13 @@
                     sendUserEmail: sendata.userEmail,
                     snedPhoneNumber: sendata.phoneNumber
                 });
+                console.log("### lgkorUI.getHiddenInputData() ###", lgkorUI.getHiddenInputData());
 
                 $('#noneMemberForm').attr('action', result.data.sendUrl);
-                $('#noneMemberForm').submit();
+
+                setTimeout(function(){
+                    $('#noneMemberForm').submit();  
+                }, 100);
             } else{
                 if(result.data.alert.isCustom){
                     lgkorUI.alert("", {
