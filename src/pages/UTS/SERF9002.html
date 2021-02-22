@@ -2,8 +2,8 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTS/UTS"],
-        pageJS: ["search/search_all"]
     })
+<!--        pageJS: ["search/search_all"]-->
 <body>
     <div class="wrap">
         @@include('./common/header.html')
@@ -235,7 +235,7 @@
                         <button type="button" class="btn-moreview block"><span>필터 더보기</span></button>
 
                         <!-- 스마트 필터 선택한 항목 표시 -->
-                        <div class="filter-result">
+                        <div class="filter-result" style="display:none">
                             <ul class="rounded-list">
                                 <li>
                                     <div class="rounded">
