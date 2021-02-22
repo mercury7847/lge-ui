@@ -73,8 +73,10 @@
         }
         .tabs-wrap.btn-type {
             padding-top:20px;
+            padding-bottom:24px;
             &:only-child {
                 padding-top:24px;
+                padding-bottom:12px;
             }
         }
         &.no-title {
@@ -82,7 +84,8 @@
             background:#f4f4f4;
         }
         // 추가
-        &.border {
+        &.border.wide {
+            padding: 10px 0 0;
             border-bottom: 8px solid $color-bg;
             @include mobile {
                 border-bottom: 0;
@@ -97,7 +100,7 @@
         &.wide {
             max-width: 100%;
             margin-bottom: 48px;
-            padding: 10px 0 0;
+            padding: 10px 0 8px;
             @include mobile {
                 margin-bottom: 32px;
                 padding: 0;
