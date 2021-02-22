@@ -730,6 +730,10 @@
                         }
                     } else {
                         //비로그인
+
+                        var _url = $this.data('href');
+                        
+                        location.href= _url;
                     }
                     
                 })
@@ -743,6 +747,7 @@
             this.toggleList.init();
             this.reservation.init();
             this.getRegisterdProduct.init();
+            //$('#supportGuideTextPopup').vcModal();
         }
     }
 
