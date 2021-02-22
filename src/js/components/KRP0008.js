@@ -377,6 +377,7 @@
                     var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
                     var checked = $(this).is(':checked');
                     var success = function(data) {
+                        sendData['wishItemId'] = data.wishItemId;
                     };
                     var fail = function(data) {
                         $dm.find('span.chk-wish-wrap input').prop("checked",!checked);

@@ -275,7 +275,7 @@
                         var ajaxUrl = self.$section.attr('data-wish-url');
                         
                         var success = function(data) {
-                            //$this.attr("data-wishItemId",data.wishItemId);
+                            $this.data("wishListId",data.wishItemId);
                         };
                         var fail = function(data) {
                             $this.prop("checked",!wish);
