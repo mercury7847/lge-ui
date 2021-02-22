@@ -11,7 +11,11 @@
         <div class="container">
 
             <!-- search -->
-            <div class="contents search" data-search-value="노크온 매직스페이스" data-search-force=false data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json" data-search-url="/lg5-common/data-ajax/search/searchInput.json">
+            <div class="contents search" data-search-value="노크온 매직스페이스" data-search-force=false
+                data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json"
+                data-search-url="/lg5-common/data-ajax/search/searchInput.json"
+                data-basic-url="http://schapi.lgekrdev.lge.co.kr:3100/searchgnb/populartag"
+            >
                 <!-- 검색 영역 -->
                 @@include('./common/modules/search.html', {
                     "value" : "노크온 매직스페이스",
