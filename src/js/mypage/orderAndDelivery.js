@@ -281,15 +281,15 @@
     
         var memInfos = lgkorUI.getHiddenInputData();
         var isNonMember = $('.contents.mypage').hasClass('non-members');    
-        var orderNumber = isNonMember ? memInfos.orderNumber : $('.contents.mypage').data('orderNumber');
+        var orderNumber = isNonMember ? memInfos.sendOrderNumber : $('.contents.mypage').data('orderNumber');
 
         var sendata = {
             callType: "cancelPopup",
             orderNumber: orderNumber,
-            inquiryType: memInfos.inquiryType,
-            userName: memInfos.userName,
-            userEmail: memInfos.userEmail,
-            phoneNumber: memInfos.phoneNumber
+            inquiryType: memInfos.sendInquiryType,
+            userName: memInfos.sendUserName,
+            userEmail: memInfos.sendUserEmail,
+            phoneNumber: memInfos.snedPhoneNumber
         }
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_CANCEL_POP, sendata, function(result){
             lgkorUI.hideLoading();
@@ -468,17 +468,17 @@
     
         var memInfos = lgkorUI.getHiddenInputData();
         var isNonMember = $('.contents.mypage').hasClass('non-members');    
-        var orderNumber = isNonMember ? memInfos.orderNumber : $('.contents.mypage').data('orderNumber');
+        var orderNumber = isNonMember ? memInfos.sendOrderNumber : $('.contents.mypage').data('orderNumber');
 
         var sendata = {
             startDate: startDate,
             endDate: endDate,
             page: page || 1,
             orderNumber: orderNumber,
-            inquiryType: memInfos.inquiryType,
-            userName: memInfos.userName,
-            userEmail: memInfos.userEmail,
-            phoneNumber: memInfos.phoneNumber
+            inquiryType: memInfos.sendInquiryType,
+            userName: memInfos.sendUserName,
+            userEmail: memInfos.sendUserEmail,
+            phoneNumber: memInfos.snedPhoneNumber
         }
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
 
