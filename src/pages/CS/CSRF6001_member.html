@@ -35,14 +35,16 @@
                                     <div class="slide-content ui_carousel_list">
                                         <div class="slide-track ui_carousel_track">
                                             <!-- 보유제품 기본 노출 -->
-                                            <div class="item-list default-type bg-color-01">
+                                            <div class="item-list default-type">
                                                 <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/CS/icon-pd-category02.svg" alt=""></span>TV</div>
+                                                    <!-- 2021.02.22 card-front 태그 a태그로 변경 -->
+                                                    <a href="#" class="card-front">
+                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_tv-projector_w.svg" alt=""></span>TV</div>
                                                         <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
                                                         <span class="pd-code">OLED88ZXKNA</span>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
+                                                        <!-- 2021.02.22 btn-goto-back 태그 span으로 변경 -->
+                                                        <span class="btn-goto-back"><span class="blind">자세히 보기</span></span>
+                                                    </a>
                                                     <div class="card-back">
                                                         <div class="card-back-cont">
                                                             <ul class="pd-info-list">
@@ -79,486 +81,45 @@
                                 
                                             </div>
                                             <!-- //보유제품 기본 노출 -->
-                                            <!-- 펫네임이 없는 경우 -->
-                                            <div class="item-list default-type bg-color-02">
-                                                <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
-                                                        <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
-                                                    <div class="card-back">
-                                                        <div class="card-back-cont">
-                                                            <ul class="pd-info-list">
-                                                                <li><a href="">제품지원</a></li>
-                                                                <li><a href="">원격 상담 예약</a></li>
-                                                                <li><a href="">제품 문제해결</a></li>
-                                                                <li><a href="">전화 상담 예약</a></li>
-                                                                <li><a href="">다운로드 자료실</a></li>
-                                                                <li><a href="">영상 상담 에약</a></li>
-                                                                <li><a href="">개선해 주세요</a></li>
-                                                                <li><a href="">센터 방문 예약</a></li>
-                                                                <li><a href="">이메일 문의</a></li>
-                                                                <li><a href="">출장 서비스 에약</a></li>
-                                                                <li><a href="">케어용품/소모품</a></li>
-                                                                <li><a href="">제품 설치/철거 예약</a></li>
-                                                            </ul>
+
+                                            @@for ( var i = 0; i < 2; i++) {
+                                                <!-- 펫네임이 없는 경우 -->
+                                                <div class="item-list default-type">
+                                                    <div class="item-card">
+                                                        <!-- 2021.02.22 card-front 태그 a태그로 변경 -->
+                                                        <a href="#" class="card-front">
+                                                            <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
+                                                            <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
+                                                            <!-- 2021.02.22 btn-goto-back 태그 span으로 변경 -->
+                                                            <span class="btn-goto-back"><span class="blind">자세히 보기</span></span>
+                                                        </a>
+                                                        <div class="card-back">
+                                                            <div class="card-back-cont">
+                                                                <ul class="pd-info-list">
+                                                                    <li><a href="">제품지원</a></li>
+                                                                    <li><a href="">원격 상담 예약</a></li>
+                                                                    <li><a href="">제품 문제해결</a></li>
+                                                                    <li><a href="">전화 상담 예약</a></li>
+                                                                    <li><a href="">다운로드 자료실</a></li>
+                                                                    <li><a href="">영상 상담 에약</a></li>
+                                                                    <li><a href="">개선해 주세요</a></li>
+                                                                    <li><a href="">센터 방문 예약</a></li>
+                                                                    <li><a href="">이메일 문의</a></li>
+                                                                    <li><a href="">출장 서비스 에약</a></li>
+                                                                    <li><a href="">케어용품/소모품</a></li>
+                                                                    <li><a href="">제품 설치/철거 예약</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="card-bottom">구매일 2019.10.10</div>
+                                                            <button class="btn-goto-front"><span class="blind">닫기</span></button>
                                                         </div>
-                                                        <div class="card-bottom">구매일 2019.10.10</div>
-                                                        <button class="btn-goto-front"><span class="blind">닫기</span></button>
                                                     </div>
+                                    
                                                 </div>
-                                
-                                            </div>
-                                            <!-- //펫네임이 없는 경우 -->
-                                            <!-- 펫네임이 없는 경우 -->
-                                            <div class="item-list default-type bg-color-02">
-                                                <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
-                                                        <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
-                                                    <div class="card-back">
-                                                        <div class="card-back-cont">
-                                                            <ul class="pd-info-list">
-                                                                <li><a href="">제품지원</a></li>
-                                                                <li><a href="">원격 상담 예약</a></li>
-                                                                <li><a href="">제품 문제해결</a></li>
-                                                                <li><a href="">전화 상담 예약</a></li>
-                                                                <li><a href="">다운로드 자료실</a></li>
-                                                                <li><a href="">영상 상담 에약</a></li>
-                                                                <li><a href="">개선해 주세요</a></li>
-                                                                <li><a href="">센터 방문 예약</a></li>
-                                                                <li><a href="">이메일 문의</a></li>
-                                                                <li><a href="">출장 서비스 에약</a></li>
-                                                                <li><a href="">케어용품/소모품</a></li>
-                                                                <li><a href="">제품 설치/철거 예약</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-bottom">구매일 2019.10.10</div>
-                                                        <button class="btn-goto-front"><span class="blind">닫기</span></button>
-                                                    </div>
-                                                </div>
-                                
-                                            </div>
-                                            <!-- //펫네임이 없는 경우 -->
-                                            <!-- 펫네임이 없는 경우 -->
-                                            <div class="item-list default-type bg-color-02">
-                                                <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
-                                                        <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
-                                                    <div class="card-back">
-                                                        <div class="card-back-cont">
-                                                            <ul class="pd-info-list">
-                                                                <li><a href="">제품지원</a></li>
-                                                                <li><a href="">원격 상담 예약</a></li>
-                                                                <li><a href="">제품 문제해결</a></li>
-                                                                <li><a href="">전화 상담 예약</a></li>
-                                                                <li><a href="">다운로드 자료실</a></li>
-                                                                <li><a href="">영상 상담 에약</a></li>
-                                                                <li><a href="">개선해 주세요</a></li>
-                                                                <li><a href="">센터 방문 예약</a></li>
-                                                                <li><a href="">이메일 문의</a></li>
-                                                                <li><a href="">출장 서비스 에약</a></li>
-                                                                <li><a href="">케어용품/소모품</a></li>
-                                                                <li><a href="">제품 설치/철거 예약</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-bottom">구매일 2019.10.10</div>
-                                                        <button class="btn-goto-front"><span class="blind">닫기</span></button>
-                                                    </div>
-                                                </div>
-                                
-                                            </div>
-                                            <!-- //펫네임이 없는 경우 -->
-                                            <!-- 펫네임이 없는 경우 -->
-                                            <div class="item-list default-type bg-color-02">
-                                                <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
-                                                        <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
-                                                    <div class="card-back">
-                                                        <div class="card-back-cont">
-                                                            <ul class="pd-info-list">
-                                                                <li><a href="">제품지원</a></li>
-                                                                <li><a href="">원격 상담 예약</a></li>
-                                                                <li><a href="">제품 문제해결</a></li>
-                                                                <li><a href="">전화 상담 예약</a></li>
-                                                                <li><a href="">다운로드 자료실</a></li>
-                                                                <li><a href="">영상 상담 에약</a></li>
-                                                                <li><a href="">개선해 주세요</a></li>
-                                                                <li><a href="">센터 방문 예약</a></li>
-                                                                <li><a href="">이메일 문의</a></li>
-                                                                <li><a href="">출장 서비스 에약</a></li>
-                                                                <li><a href="">케어용품/소모품</a></li>
-                                                                <li><a href="">제품 설치/철거 예약</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-bottom">구매일 2019.10.10</div>
-                                                        <button class="btn-goto-front"><span class="blind">닫기</span></button>
-                                                    </div>
-                                                </div>
-                                
-                                            </div>
-                                            <!-- //펫네임이 없는 경우 -->
-                                            <!-- 펫네임이 없는 경우 -->
-                                            <div class="item-list default-type bg-color-02">
-                                                <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
-                                                        <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
-                                                    <div class="card-back">
-                                                        <div class="card-back-cont">
-                                                            <ul class="pd-info-list">
-                                                                <li><a href="">제품지원</a></li>
-                                                                <li><a href="">원격 상담 예약</a></li>
-                                                                <li><a href="">제품 문제해결</a></li>
-                                                                <li><a href="">전화 상담 예약</a></li>
-                                                                <li><a href="">다운로드 자료실</a></li>
-                                                                <li><a href="">영상 상담 에약</a></li>
-                                                                <li><a href="">개선해 주세요</a></li>
-                                                                <li><a href="">센터 방문 예약</a></li>
-                                                                <li><a href="">이메일 문의</a></li>
-                                                                <li><a href="">출장 서비스 에약</a></li>
-                                                                <li><a href="">케어용품/소모품</a></li>
-                                                                <li><a href="">제품 설치/철거 예약</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-bottom">구매일 2019.10.10</div>
-                                                        <button class="btn-goto-front"><span class="blind">닫기</span></button>
-                                                    </div>
-                                                </div>
-                                
-                                            </div>
-                                            <!-- //펫네임이 없는 경우 -->
-                                            <!-- 펫네임이 없는 경우 -->
-                                            <div class="item-list default-type bg-color-02">
-                                                <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
-                                                        <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
-                                                    <div class="card-back">
-                                                        <div class="card-back-cont">
-                                                            <ul class="pd-info-list">
-                                                                <li><a href="">제품지원</a></li>
-                                                                <li><a href="">원격 상담 예약</a></li>
-                                                                <li><a href="">제품 문제해결</a></li>
-                                                                <li><a href="">전화 상담 예약</a></li>
-                                                                <li><a href="">다운로드 자료실</a></li>
-                                                                <li><a href="">영상 상담 에약</a></li>
-                                                                <li><a href="">개선해 주세요</a></li>
-                                                                <li><a href="">센터 방문 예약</a></li>
-                                                                <li><a href="">이메일 문의</a></li>
-                                                                <li><a href="">출장 서비스 에약</a></li>
-                                                                <li><a href="">케어용품/소모품</a></li>
-                                                                <li><a href="">제품 설치/철거 예약</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-bottom">구매일 2019.10.10</div>
-                                                        <button class="btn-goto-front"><span class="blind">닫기</span></button>
-                                                    </div>
-                                                </div>
-                                
-                                            </div>
-                                            <!-- //펫네임이 없는 경우 -->
-                                            <!-- 펫네임이 없는 경우 -->
-                                            <div class="item-list default-type bg-color-02">
-                                                <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
-                                                        <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
-                                                    <div class="card-back">
-                                                        <div class="card-back-cont">
-                                                            <ul class="pd-info-list">
-                                                                <li><a href="">제품지원</a></li>
-                                                                <li><a href="">원격 상담 예약</a></li>
-                                                                <li><a href="">제품 문제해결</a></li>
-                                                                <li><a href="">전화 상담 예약</a></li>
-                                                                <li><a href="">다운로드 자료실</a></li>
-                                                                <li><a href="">영상 상담 에약</a></li>
-                                                                <li><a href="">개선해 주세요</a></li>
-                                                                <li><a href="">센터 방문 예약</a></li>
-                                                                <li><a href="">이메일 문의</a></li>
-                                                                <li><a href="">출장 서비스 에약</a></li>
-                                                                <li><a href="">케어용품/소모품</a></li>
-                                                                <li><a href="">제품 설치/철거 예약</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-bottom">구매일 2019.10.10</div>
-                                                        <button class="btn-goto-front"><span class="blind">닫기</span></button>
-                                                    </div>
-                                                </div>
-                                
-                                            </div>
-                                            <!-- //펫네임이 없는 경우 -->
-                                            <!-- 펫네임이 없는 경우 -->
-                                            <div class="item-list default-type bg-color-02">
-                                                <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
-                                                        <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
-                                                    <div class="card-back">
-                                                        <div class="card-back-cont">
-                                                            <ul class="pd-info-list">
-                                                                <li><a href="">제품지원</a></li>
-                                                                <li><a href="">원격 상담 예약</a></li>
-                                                                <li><a href="">제품 문제해결</a></li>
-                                                                <li><a href="">전화 상담 예약</a></li>
-                                                                <li><a href="">다운로드 자료실</a></li>
-                                                                <li><a href="">영상 상담 에약</a></li>
-                                                                <li><a href="">개선해 주세요</a></li>
-                                                                <li><a href="">센터 방문 예약</a></li>
-                                                                <li><a href="">이메일 문의</a></li>
-                                                                <li><a href="">출장 서비스 에약</a></li>
-                                                                <li><a href="">케어용품/소모품</a></li>
-                                                                <li><a href="">제품 설치/철거 예약</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-bottom">구매일 2019.10.10</div>
-                                                        <button class="btn-goto-front"><span class="blind">닫기</span></button>
-                                                    </div>
-                                                </div>
-                                
-                                            </div>
-                                            <!-- //펫네임이 없는 경우 -->
-                                            <!-- 펫네임이 없는 경우 -->
-                                            <div class="item-list default-type bg-color-02">
-                                                <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
-                                                        <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
-                                                    <div class="card-back">
-                                                        <div class="card-back-cont">
-                                                            <ul class="pd-info-list">
-                                                                <li><a href="">제품지원</a></li>
-                                                                <li><a href="">원격 상담 예약</a></li>
-                                                                <li><a href="">제품 문제해결</a></li>
-                                                                <li><a href="">전화 상담 예약</a></li>
-                                                                <li><a href="">다운로드 자료실</a></li>
-                                                                <li><a href="">영상 상담 에약</a></li>
-                                                                <li><a href="">개선해 주세요</a></li>
-                                                                <li><a href="">센터 방문 예약</a></li>
-                                                                <li><a href="">이메일 문의</a></li>
-                                                                <li><a href="">출장 서비스 에약</a></li>
-                                                                <li><a href="">케어용품/소모품</a></li>
-                                                                <li><a href="">제품 설치/철거 예약</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-bottom">구매일 2019.10.10</div>
-                                                        <button class="btn-goto-front"><span class="blind">닫기</span></button>
-                                                    </div>
-                                                </div>
-                                
-                                            </div>
-                                            <!-- //펫네임이 없는 경우 -->
-                                            <!-- 펫네임이 없는 경우 -->
-                                            <div class="item-list default-type bg-color-02">
-                                                <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
-                                                        <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
-                                                    <div class="card-back">
-                                                        <div class="card-back-cont">
-                                                            <ul class="pd-info-list">
-                                                                <li><a href="">제품지원</a></li>
-                                                                <li><a href="">원격 상담 예약</a></li>
-                                                                <li><a href="">제품 문제해결</a></li>
-                                                                <li><a href="">전화 상담 예약</a></li>
-                                                                <li><a href="">다운로드 자료실</a></li>
-                                                                <li><a href="">영상 상담 에약</a></li>
-                                                                <li><a href="">개선해 주세요</a></li>
-                                                                <li><a href="">센터 방문 예약</a></li>
-                                                                <li><a href="">이메일 문의</a></li>
-                                                                <li><a href="">출장 서비스 에약</a></li>
-                                                                <li><a href="">케어용품/소모품</a></li>
-                                                                <li><a href="">제품 설치/철거 예약</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-bottom">구매일 2019.10.10</div>
-                                                        <button class="btn-goto-front"><span class="blind">닫기</span></button>
-                                                    </div>
-                                                </div>
-                                
-                                            </div>
-                                            <!-- //펫네임이 없는 경우 -->
-                                            <!-- 펫네임이 없는 경우 -->
-                                            <div class="item-list default-type bg-color-02">
-                                                <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
-                                                        <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
-                                                    <div class="card-back">
-                                                        <div class="card-back-cont">
-                                                            <ul class="pd-info-list">
-                                                                <li><a href="">제품지원</a></li>
-                                                                <li><a href="">원격 상담 예약</a></li>
-                                                                <li><a href="">제품 문제해결</a></li>
-                                                                <li><a href="">전화 상담 예약</a></li>
-                                                                <li><a href="">다운로드 자료실</a></li>
-                                                                <li><a href="">영상 상담 에약</a></li>
-                                                                <li><a href="">개선해 주세요</a></li>
-                                                                <li><a href="">센터 방문 예약</a></li>
-                                                                <li><a href="">이메일 문의</a></li>
-                                                                <li><a href="">출장 서비스 에약</a></li>
-                                                                <li><a href="">케어용품/소모품</a></li>
-                                                                <li><a href="">제품 설치/철거 예약</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-bottom">구매일 2019.10.10</div>
-                                                        <button class="btn-goto-front"><span class="blind">닫기</span></button>
-                                                    </div>
-                                                </div>
-                                
-                                            </div>
-                                            <!-- //펫네임이 없는 경우 -->
-                                            <!-- 펫네임이 없는 경우 -->
-                                            <div class="item-list default-type bg-color-02">
-                                                <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
-                                                        <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
-                                                    <div class="card-back">
-                                                        <div class="card-back-cont">
-                                                            <ul class="pd-info-list">
-                                                                <li><a href="">제품지원</a></li>
-                                                                <li><a href="">원격 상담 예약</a></li>
-                                                                <li><a href="">제품 문제해결</a></li>
-                                                                <li><a href="">전화 상담 예약</a></li>
-                                                                <li><a href="">다운로드 자료실</a></li>
-                                                                <li><a href="">영상 상담 에약</a></li>
-                                                                <li><a href="">개선해 주세요</a></li>
-                                                                <li><a href="">센터 방문 예약</a></li>
-                                                                <li><a href="">이메일 문의</a></li>
-                                                                <li><a href="">출장 서비스 에약</a></li>
-                                                                <li><a href="">케어용품/소모품</a></li>
-                                                                <li><a href="">제품 설치/철거 예약</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-bottom">구매일 2019.10.10</div>
-                                                        <button class="btn-goto-front"><span class="blind">닫기</span></button>
-                                                    </div>
-                                                </div>
-                                
-                                            </div>
-                                            <!-- //펫네임이 없는 경우 -->
-                                            <!-- 펫네임이 없는 경우 -->
-                                            <div class="item-list default-type bg-color-02">
-                                                <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
-                                                        <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
-                                                    <div class="card-back">
-                                                        <div class="card-back-cont">
-                                                            <ul class="pd-info-list">
-                                                                <li><a href="">제품지원</a></li>
-                                                                <li><a href="">원격 상담 예약</a></li>
-                                                                <li><a href="">제품 문제해결</a></li>
-                                                                <li><a href="">전화 상담 예약</a></li>
-                                                                <li><a href="">다운로드 자료실</a></li>
-                                                                <li><a href="">영상 상담 에약</a></li>
-                                                                <li><a href="">개선해 주세요</a></li>
-                                                                <li><a href="">센터 방문 예약</a></li>
-                                                                <li><a href="">이메일 문의</a></li>
-                                                                <li><a href="">출장 서비스 에약</a></li>
-                                                                <li><a href="">케어용품/소모품</a></li>
-                                                                <li><a href="">제품 설치/철거 예약</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-bottom">구매일 2019.10.10</div>
-                                                        <button class="btn-goto-front"><span class="blind">닫기</span></button>
-                                                    </div>
-                                                </div>
-                                
-                                            </div>
-                                            <!-- //펫네임이 없는 경우 -->
-                                            <!-- 펫네임이 없는 경우 -->
-                                            <div class="item-list default-type bg-color-02">
-                                                <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
-                                                        <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
-                                                    <div class="card-back">
-                                                        <div class="card-back-cont">
-                                                            <ul class="pd-info-list">
-                                                                <li><a href="">제품지원</a></li>
-                                                                <li><a href="">원격 상담 예약</a></li>
-                                                                <li><a href="">제품 문제해결</a></li>
-                                                                <li><a href="">전화 상담 예약</a></li>
-                                                                <li><a href="">다운로드 자료실</a></li>
-                                                                <li><a href="">영상 상담 에약</a></li>
-                                                                <li><a href="">개선해 주세요</a></li>
-                                                                <li><a href="">센터 방문 예약</a></li>
-                                                                <li><a href="">이메일 문의</a></li>
-                                                                <li><a href="">출장 서비스 에약</a></li>
-                                                                <li><a href="">케어용품/소모품</a></li>
-                                                                <li><a href="">제품 설치/철거 예약</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-bottom">구매일 2019.10.10</div>
-                                                        <button class="btn-goto-front"><span class="blind">닫기</span></button>
-                                                    </div>
-                                                </div>
-                                
-                                            </div>
-                                            <!-- //펫네임이 없는 경우 -->
-                                            <!-- 펫네임이 없는 경우 -->
-                                            <div class="item-list default-type bg-color-02">
-                                                <div class="item-card">
-                                                    <div class="card-front">
-                                                        <div class="pd-category"><span class="thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>TV</div>
-                                                        <strong class="pd-name">LG SIGNATURE OLED 8K</strong>
-                                                        <button class="btn-goto-back"><span class="blind">자세히 보기</span></button>
-                                                    </div>
-                                                    <div class="card-back">
-                                                        <div class="card-back-cont">
-                                                            <ul class="pd-info-list">
-                                                                <li><a href="">제품지원</a></li>
-                                                                <li><a href="">원격 상담 예약</a></li>
-                                                                <li><a href="">제품 문제해결</a></li>
-                                                                <li><a href="">전화 상담 예약</a></li>
-                                                                <li><a href="">다운로드 자료실</a></li>
-                                                                <li><a href="">영상 상담 에약</a></li>
-                                                                <li><a href="">개선해 주세요</a></li>
-                                                                <li><a href="">센터 방문 예약</a></li>
-                                                                <li><a href="">이메일 문의</a></li>
-                                                                <li><a href="">출장 서비스 에약</a></li>
-                                                                <li><a href="">케어용품/소모품</a></li>
-                                                                <li><a href="">제품 설치/철거 예약</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-bottom">구매일 2019.10.10</div>
-                                                        <button class="btn-goto-front"><span class="blind">닫기</span></button>
-                                                    </div>
-                                                </div>
-                                
-                                            </div>
-                                            <!-- //펫네임이 없는 경우 -->
+                                                <!-- //펫네임이 없는 경우 -->
+                                            }
+                                           
+                                            
                                             <!-- 상담 이력이 있는 경우 -->
                                             <div class="item-list history-type">
                                                 <div class="item-card">
@@ -648,6 +209,8 @@
                             </div>
                             <div class="notice-list-controls slide-controls">
                                 <button class="prev ui_carousel_prev"><span class="blind">이전 목록</span></button>
+                                <!-- 2021.02.22 재생/정지 버튼 추가 -->
+                                <button class="btn-play"><span class="blind">재생</span></button>
                                 <button class="next ui_carousel_next"><span class="blind">다음 목록</span></button>
                             </div>
                         </div>
@@ -655,100 +218,6 @@
                     <!-- //공지사항 -->
                 </div>
                 <!-- //hero 영역 -->
-                
-                <!-- 인기 컨텐츠 -->
-                <div class="home-section popular-find" data-ajax="/lg5-common/data-ajax/support/registeredProductList.json"><!-- 2021.02.19 데이터 속성 추가 -->
-                    <div class="section-inner">
-                        <div class="headline">
-                            <a href="#" class="btn-solution-link">제품 문제해결</a>
-                            <h3 class="title">가장 많이 <br class="pc-only">찾아본 콘텐츠에요.</h3>
-                            <div class="list-filter">
-                                <span>보유제품 기준</span>
-
-                                <!-- 비로그인시 로그인창으로 이동 -->
-                                <button class="btn-filter-toggle" data-href=""><span class="blind">보유 제품 목록 보기</span></button>
-                            </div>
-                        </div>
-                        
-
-                        <!-- default list -->
-                        <div class="solution-pd-content default-pd active" data-more="container">
-                            <div class="popular-list-wrap">
-    
-                                <!-- default 리스트 3건 -->
-    
-                                @@for(var i = 0; i < 3; i++) {
-                                <div class="item-list">
-                                    <a href="#">
-                                        <div class="item-category">
-                                            <span class="category-thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>
-                                            에어컨
-                                        </div>
-                                        
-                                        <strong class="item-tit">
-                                            Mode [모드별] 기능에 대해서 
-                                            알고 싶어요.
-                                        </strong>
-    
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "bulletTxt" : [
-                                                "에어컨 > 3in1 2in1",
-                                                "스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG 스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG",
-                                            ]
-                                        })
-                                    </a>
-                                </div>
-                                }
-                                <!-- //default 리스트 3건 -->
-    
-    
-                                <!-- 2021.02.19 히든 리스트 추가 -->
-                                <!-- hidden 리스트 -->
-                                @@for(var i = 0; i < 9; i++) {
-                                <div class="item-list" data-more="hidden">
-                                    <a href="#">
-                                        <div class="item-category">
-                                            <span class="category-thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>
-                                            에어컨
-                                        </div>
-                                        
-                                        <strong class="item-tit">
-                                            Mode [모드별] 기능에 대해서 
-                                            알고 싶어요.
-                                        </strong>
-    
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "bulletTxt" : [
-                                                "에어컨 > 3in1 2in1",
-                                                "스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG 스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG",
-                                            ]
-                                        })
-                                    </a>
-                                </div>
-                                }
-                                <!-- //hidden 리스트 -->
-                            </div>
-                            <button type="button" class="btn-moreview block" data-more="btn"><span>더보기</span></button>
-                        </div>
-                        <!-- //default list -->
-
-
-                        <!-- active list -->
-                        <div class="solution-pd-content registerd-pd" data-more="container">
-                            <div class="popular-list-wrap">
-
-                            </div>
-                            <button type="button" class="btn-moreview block" data-more="btn"><span>더보기</span></button>
-                        </div>
-                        <!-- //active list -->
-                        
-
-                        
-                        
-                    </div>
-                </div>
-                <!-- //인기 컨텐츠 -->
-
 
                 <!-- 출장 서비스 예약/결과조회 -->
                 <div class="home-section home-reservation">
@@ -861,6 +330,102 @@
                     </div>
                 </div>
                 <!-- //출장 서비스 예약/결과조회 -->
+                
+                <!-- 인기 컨텐츠 -->
+                <div class="home-section popular-find" data-ajax="/lg5-common/data-ajax/support/registeredProductList.json"><!-- 2021.02.19 데이터 속성 추가 -->
+                    <div class="section-inner">
+                        <div class="headline">
+                            <a href="#" class="btn-solution-link">제품 문제해결</a>
+                            <h3 class="title">가장 많이 <br class="pc-only">찾아본 콘텐츠에요.</h3>
+                            <div class="list-filter">
+                                <span>보유제품 기준</span>
+
+                                <!-- 비로그인시 로그인창으로 이동 -->
+                                <button class="btn-filter-toggle" data-href=""><span class="blind">보유 제품 목록 보기</span></button>
+                            </div>
+                        </div>
+                        
+
+                        <!-- default list -->
+                        <div class="solution-pd-content default-pd active" data-more="container">
+                            <div class="popular-list-wrap">
+    
+                                <!-- default 리스트 3건 -->
+    
+                                @@for(var i = 0; i < 3; i++) {
+                                <div class="item-list">
+                                    <a href="#">
+                                        <div class="item-category">
+                                            <span class="category-thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>
+                                            에어컨
+                                        </div>
+                                        
+                                        <strong class="item-tit">
+                                            Mode [모드별] 기능에 대해서 
+                                            알고 싶어요.
+                                        </strong>
+    
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "에어컨 > 3in1 2in1",
+                                                "스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG 스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG",
+                                            ]
+                                        })
+                                    </a>
+                                </div>
+                                }
+                                <!-- //default 리스트 3건 -->
+    
+    
+                                <!-- 2021.02.19 히든 리스트 추가 -->
+                                <!-- hidden 리스트 -->
+                                @@for(var i = 0; i < 9; i++) {
+                                <div class="item-list" data-more="hidden">
+                                    <a href="#">
+                                        <div class="item-category">
+                                            <span class="category-thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>
+                                            에어컨
+                                        </div>
+                                        
+                                        <strong class="item-tit">
+                                            Mode [모드별] 기능에 대해서 
+                                            알고 싶어요.
+                                        </strong>
+    
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "에어컨 > 3in1 2in1",
+                                                "스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG 스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG",
+                                            ]
+                                        })
+                                    </a>
+                                </div>
+                                }
+                                <!-- //hidden 리스트 -->
+                            </div>
+                            <button type="button" class="btn-moreview block" data-more="btn"><span>더보기</span></button>
+                        </div>
+                        <!-- //default list -->
+
+
+                        <!-- active list -->
+                        <div class="solution-pd-content registerd-pd" data-more="container">
+                            <div class="popular-list-wrap">
+
+                            </div>
+                            <button type="button" class="btn-moreview block" data-more="btn"><span>더보기</span></button>
+                        </div>
+                        <!-- //active list -->
+                        
+
+                        
+                        
+                    </div>
+                </div>
+                <!-- //인기 컨텐츠 -->
+
+
+                
 
                 <!-- 제품 지원 -->
                 <div class="home-section support-solution">
@@ -902,9 +467,11 @@
                                         </div>
                                         <ul data-toggle-list="list">
                                             <li><a href="">서비스 출장 예약</a></li>
-                                            <li><a href="">제품 설치/철거 예약</a></li>
+                                            <!-- 2021.02.22 url ,target 추가 -->
+                                            <li><a href="https://move.pantos.com/mvinst/order.jsp" target="_blank">제품 설치/철거 예약</a></li>
                                             <li><a href="">센터 방문 예약</a></li>
-                                            <li><a href="" target="_blank">매장 방문 예약</a></li>
+                                            <!-- 2021.02.22 url ,target 추가 -->
+                                            <li><a href="https://www.lge.co.kr/lgekor/bestshop/counsel/counselMain.do?device=w&inflow=service" target="_blank">매장 방문 예약</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1185,8 +752,14 @@
     </div>  
 
     <!-- 안내  popup -->
+    <!-- 2021.02.22 class popup-init 추가 -->
     @@include('./CS/modal/support-guide-text-popup.html')
     <!-- // 안내 -->
+
+    <!-- 안내  동영상 타입 popup 2021.02.22 추가 -->
+    @@include('./CS/modal/support-guide-video-popup.html')
+    <!-- //안내  동영상 타입 popup -->
+
 
     <!-- 개인정보 수집 및 신용정보 제공 동의 popup -->
     @@include('./CS/modal/agree-privacy-popup.html')

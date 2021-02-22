@@ -168,11 +168,39 @@
 		}
 	}
     .fc-white,
-    .fc-white * {
-        @include mobile {
-            color:#000 !important;
+    .fc-lightgray {
+        & {
+            @include mobile {
+                color:#000 !important;
+            }
+        }
+        .logo {
+            filter:brightness(0) invert(1);
+            @include mobile {
+                filter:brightness(1) invert(0);
+            }
         }
     }
+    .fc-black,
+    .fc-dark {
+        & {
+            @include mobile {
+                color:#fff !important;
+            }
+        }
+        .logo {
+            filter:brightness(1) invert(0);
+            @include mobile {
+                filter:brightness(0) invert(1);
+            }
+        }
+    }
+    // .fc-white,
+    // .fc-white * {
+    //     @include mobile {
+    //         color:#000 !important;
+    //     }
+    // }
 }
 
 

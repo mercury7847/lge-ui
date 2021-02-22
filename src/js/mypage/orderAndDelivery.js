@@ -290,7 +290,7 @@
             sendInquiryType: memInfos.sendInquiryType,
             sendUserName: memInfos.sendUserName,
             sendUserEmail: memInfos.sendUserEmail,
-            snedPhoneNumber: memInfos.snedPhoneNumber
+            sendPhoneNumber: memInfos.sendPhoneNumber
         }
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_CANCEL_POP, sendata, function(result){
             lgkorUI.hideLoading();
@@ -476,11 +476,11 @@
             endDate: endDate,
             page: page || 1,
             orderNumber: orderNumber,
-            sendOrderNumber: orderNumber,
             sendInquiryType: memInfos.sendInquiryType,
+            sendOrderNumber: orderNumber,
             sendUserName: memInfos.sendUserName,
             sendUserEmail: memInfos.sendUserEmail,
-            snedPhoneNumber: memInfos.snedPhoneNumber
+            sendPhoneNumber: memInfos.sendPhoneNumber
         }
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
 
