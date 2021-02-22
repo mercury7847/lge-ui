@@ -1854,8 +1854,17 @@
                         height: calc(100vh + 213px);
                         .opt-cont{
                             &.open {
-                                top: 213px;
+                                // top: 213px;
                             }
+                        }
+                    }
+
+                    &.active {
+                        .store-list-box {
+                            // width: 100%;
+                            // height: auto;
+                            // bottom: 0;
+                            transform: none;
                         }
                     }
                 }

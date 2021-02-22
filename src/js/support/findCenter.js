@@ -1166,7 +1166,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                 // });
             }  else if (767 <= $(window).width() < 1025) {
                 $('.store-list-box').css({
-                    top:  - header_h - breadcrumb - waiting_state_h +57
+                    top:  - header_h - breadcrumb - waiting_state_h + 212
                 });
 
                 // $('.result-map .store-map-con').css({
