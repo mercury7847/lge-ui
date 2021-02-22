@@ -79,6 +79,7 @@
             heroPd : {
                 el : {
                     slider : '.had-pd-slider',
+                    front : '.card-front',
                     backContList : '.card-back-cont',
                     btnBackOpen : '.btn-goto-back',
                     btnBackClose : '.btn-goto-front'
@@ -126,7 +127,7 @@
                     var $btnBackClose = $container.find('.btn-goto-front');
 
 
-                    $(document).on('click', self.el.btnBackOpen, function(e){
+                    $(document).on('click', self.el.front, function(e){
                         var $this = $(this);
                         var $card = $this.closest('.item-card');
                         var $backCard = $card.find('.card-back');
