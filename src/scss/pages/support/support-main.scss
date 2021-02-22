@@ -761,6 +761,18 @@
                     .pd-info-list {
                         @include clearfix;
 
+                        &:hover {
+                            > li {
+                                a {
+                                    opacity:0.4;
+                                    &:hover {
+                                        opacity:1;
+                                        text-decoration: underline;
+                                    }
+                                }
+                            }
+                        }
+
                         > li {
                             float:left;
                             width:50%;
@@ -768,9 +780,10 @@
                             a {
                                 display: block;
                                 font-size:14px;
+                                line-height:30px;
                                 color:#000;
                                 font-weight:500;
-                                line-height:1.71;
+                                transition:opacity .3s;
                             }
                         }
                     }
