@@ -146,6 +146,20 @@
         }
     }
 }
+.component-wrap {
+    .fc-white,
+    .fc-lightgray {
+        .logo {
+            filter:brightness(0) invert(1);
+        }
+    }
+    .fc-black,
+    .fc-dark {
+        .logo {
+            filter:brightness(1) invert(0);
+        }
+    }
+}
 .component-wrap .title.title-h1 {
     .logo {
         height:70px;
