@@ -92,11 +92,11 @@
                         <!-- 20201230 브랜드 추가 / 20210120  순서 변경 -->
                         <!-- 브랜드 로고 이미지 사용의 경우 -->
                         <ul class="brand-link">
-                            <li><a href="#"><img src="/lg5-common/images/header/logo-objet-collection.svg" alt="LG Objet Collection"></a></li>
                             <li><a href="#"><img src="/lg5-common/images/header/logo-signature.svg" alt="LG SIGNATURE"></a></li>
                             <!-- <li><a href="#"><img src="/lg5-common/images/header/logo-thinq.png" alt="LG ThinQ"></a></li> -->
                             <!-- 210204 수정 [브랜드 텍스트 사용의 경우 추가] -->
                             <li><a href="#"><span>LG ThinQ</span></a></li>
+                            <li><a href="#"><img src="/lg5-common/images/header/logo-objet-collection.svg" alt="LG Objet Collection"></a></li>
                         </ul>
                     </div>
                     <!-- 20201230 레이어 내 메뉴 위치/텍스트 수정되었으니 전체적으로 확인 -->
@@ -1646,7 +1646,8 @@
             <!-- // 20201230 수정 -->
             <div class="mobile-nav-banner">
                 <div class="banner-inner">
-                    <img data-src="/lg5-common/images/header/@banner-m.jpg" alt="" class="lazyload">
+                    <!-- 210222 수정 [a 태그 누락 추가] -->
+                    <a href="#"><img data-src="/lg5-common/images/header/@banner-m.jpg" alt="" class="lazyload"></a>
                     <!-- <div class="banner-text">
                         <span class="title">프리미엄 Zone</span>
                         <span class="copy">LG전자의 차원이 다른<br>프리미엄 라인 가전</span>
@@ -1660,41 +1661,22 @@
 
 <!-- 20210104 모바일 메뉴 돔 이동 -->
 <!-- Mobile 메인 메뉴 -->
+<!-- 210222 수정 [활성화 상태 추가(.on)] -->
 <div class="mobile-nav-wrap">
     <ul class="nav">
-        <li><a href="#n" class="nav-item">홈</a></li>
+        <li><a href="#n" class="nav-item on">홈</a></li>
         <li><a href="#n" class="nav-item">스토어</a></li>
-        <li><a href="#n" class="nav-item">케어솔루션</a></li>
         <li><a href="#n" class="nav-item">스토리</a></li>
         <li><a href="#n" class="nav-item">고객지원</a></li>
+        <li><a href="#n" class="nav-item">케어솔루션</a></li>
     </ul>
 </div>
 
 <!-- Mobile Sub Menu Header -->
-@@if (context.mobileCase === "all" || context.mobileCase === "isDepth") {
-<!-- Mobile Depth (동일메뉴 존재) -->
-<div class="mobile-nav-wrap is-depth">
-    <a href="#" class="btn-back"><span class="blind">뒤로가기</span></a>
-    <a href="#n" class="nav-item">청소기</a>
-    <div class="nav-category-container">
-        <ul>
-            <li><a href="#" class="on">워시타워</a></li><!-- 20201230 클래스 수정 (기존 .active) -->
-            <li><a href="#">세탁기</a></li>
-            <li><a href="#">건조기</a></li>
-            <li><a href="#">스타일러</a></li>
-            <li><a href="#">안마의자</a></li>
-        </ul>
-    </div>
-</div>
-}
-
-@@if (context.mobileCase === "all" || context.mobileCase === "noneDepth") {
-<!-- Mobile Depth (동일메뉴, 하위메뉴 미존재) -->
+<!-- 210222 수정 [뒤로가기 버튼만 남기고 모두 삭제] -->
 <div class="mobile-nav-wrap">
     <a href="#" class="btn-back"><span class="blind">뒤로가기</span></a>
-    <span class="nav-item">코드제로 A9</span>
 </div>
-}
 <!-- // 20210104 모바일 메뉴 돔 이동 -->
 
 <!-- Breadcrumb -->
