@@ -2,8 +2,8 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTC/UTC"],
-        pageJS: ["caresolution/caresolutionInfo","caresolution/caresolutionCart"]
     })
+<!--        pageJS: ["caresolution/caresolutionInfo","caresolution/caresolutionCart"]-->
 <body>
     <div class="wrap">
        @@include('./common/header.html')
@@ -67,7 +67,7 @@
                                                         "price" : "월 56,900원",
                                                         "tooltip" : true,
                                                         "btn" : true,
-                                                        "btnValue" : "청약신청"
+                                                        "btnValue" : "개별신청하기"
                                                     },{
                                                         "itemID" : "id000002",
                                                         "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
@@ -93,7 +93,7 @@
                                                         "price" : "월 56,900원",
                                                         "tooltip" : true,
                                                         "btn" : true,
-                                                        "btnValue" : "청약신청"
+                                                        "btnValue" : "개별신청하기"
                                                     },{
                                                         "itemID" : "id000003",
                                                         "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
@@ -114,8 +114,30 @@
                                                         "price" : "월 56,900원",
                                                         "tooltip" : true,
                                                         "btn" : true,
-                                                        "btnValue" : "청약신청불가",
-                                                        "message" : "청약신청 불가 제품입니다."
+                                                        "btnValue" : "개별신청불가",
+                                                        "message" : "청약신청이 불가능한 제품입니다."
+                                                    },{
+                                                        "itemID" : "id000003",
+                                                        "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
+                                                        "disabled" : "disabled",
+                                                        "checkOption" : true,
+                                                        "select" : true,
+                                                        "check" : [
+                                                            {
+                                                                "class" : "chk-wrap",
+                                                                "id" : "chk-select3",
+                                                                "text" : "제품 선택",
+                                                                "checked" : "checked",
+                                                            }
+                                                        ],
+                                                        "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                        "modelName" : "LG TROMM 스타일러 블랙에디션",
+                                                        "options" : "<p>가입비 100,000원 선납</p><p>계약기간 60개월(무상할인 2개월 포함)</p><p>의무 사용기간 36개월</p><p>방문 주기 1회/6개월</p>",
+                                                        "price" : "월 56,900원",
+                                                        "tooltip" : true,
+                                                        "btn" : true,
+                                                        "btnValue" : "개별신청불가",
+                                                        "message" : "해당 제품을 포함해 2개이상 선택한 경우, 청약이 불가능합니다."
                                                     },{
                                                         "itemID" : "id000004",
                                                         "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어십</span>",
@@ -138,7 +160,7 @@
                                                         "price" : "월 31,100원",
                                                         "tooltip" : true,
                                                         "btn" : true,
-                                                        "btnValue" : "청약신청"
+                                                        "btnValue" : "개별신청하기"
                                                     },{
                                                         "itemID" : "id000005",
                                                         "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어십</span>",
@@ -164,7 +186,7 @@
                                                         "price" : "월 36,100원",
                                                         "tooltip" : true,
                                                         "btn" : true,
-                                                        "btnValue" : "청약신청"
+                                                        "btnValue" : "개별신청하기"
                                                     },{
                                                         "itemID" : "id000006",
                                                         "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어십</span>",
@@ -185,15 +207,35 @@
                                                         "price" : "월 36,100원",
                                                         "tooltip" : true,
                                                         "btn" : true,
-                                                        "btnValue" : "청약신청불가",
-                                                        "message" : "청약신청 불가 제품입니다."
+                                                        "btnValue" : "개별신청불가",
+                                                        "message" : "청약신청이 불가능한 제품입니다."
+                                                    },{
+                                                        "itemID" : "id000006",
+                                                        "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어십</span>",
+                                                        "disabled" : "disabled",
+                                                        "checkOption" : true,
+                                                        "select" : true,
+                                                        "check" : [
+                                                            {
+                                                                "class" : "chk-wrap",
+                                                                "id" : "chk-select6",
+                                                                "text" : "제품 선택",
+                                                                "checked" : "checked",
+                                                            }
+                                                        ],
+                                                        "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                        "modelName" : "LG TROMM 스타일러 블랙에디션",
+                                                        "options" : "<p>신규 결합할인 월 -5,000원</p><p>계약기간 12개월(무상할인 2개월 포함)</p><p>의무 사용기간 12개월</p><p>방문 주기 1회/6개월</p>",
+                                                        "price" : "월 36,100원",
+                                                        "tooltip" : true,
+                                                        "btn" : true,
+                                                        "btnValue" : "개별신청불가",
+                                                        "message" : "기존 계약이 있을 경우 해당제품은 개별 청약이 불가능합니다."
                                                     }
                                                 ])
                                             </ul>
                                         </div>
                                     </div>
-
-
 
                                     <!-- 210201 수정 - 유의사항 텍스트 수정 -->
                                     @@include('./common/modules/bullet-list.html', {
@@ -208,7 +250,8 @@
                                             "의무 사용기간 내에 해지 시 위약금 등 비용이 발생할 수 있으며 의무 사용기간이 경과하였더라도, 계약기간 이내에 해지할 경우 철거료 등 부대비용이 일부 발생할 수 있습니다.",
                                             "제휴카드를 사용하시는 경우 전월 실적에 따라 케어솔루션 월 요금이 청구할인됩니다.",
                                             "케어솔루션 계약기간 종료 후에는 케어십을 이용하실 수 있습니다.",
-                                            "기존결합 할인 적용은 청약 신청 단계에서 달라질 수 있습니다."
+                                            "기존결합 할인 적용은 청약 신청 단계에서 달라질 수 있습니다.",
+                                            "결합 혜택이 적용될 경우, 해당 요금으로 개별신청이 불가능합니다.<!-- 210222 수정 [유의사항 텍스트 수정] -->"
                                         ]
                                     })
                                     <!-- // 210201 수정 - 유의사항 텍스트 수정 -->
