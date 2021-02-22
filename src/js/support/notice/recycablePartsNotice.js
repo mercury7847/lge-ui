@@ -106,7 +106,8 @@
                 if (flag) {
                     self.param = $.extend(self.param, {
                         sort: sortVal,
-                        keyword: keywordVal
+                        keyword: keywordVal,
+                        page:1
                     });
                     self.requestData();   
                 } else {
