@@ -522,10 +522,11 @@
                     display: inline-block;
                     width: 32px;
                     height: 32px;
-                    background: url('/lg5-common/images/icons/btn-cart-on-32.svg') no-repeat 0 0;
+                    background: url('/lg5-common/images/icons/btn-cart-32.svg') no-repeat 0 0;
                     background-size: 32px 32px;
                     &.disabled {
-                        background-image: url('/lg5-common/images/icons/btn-cart-off-32.svg');
+                        background-image: url('/lg5-common/images/icons/btn-cart-32-gray.svg');
+                        cursor: default;
                     }
                 }
             }
