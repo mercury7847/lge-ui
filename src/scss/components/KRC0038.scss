@@ -98,12 +98,14 @@
             }
             &.type-wide {
                 .box-inner {
-                    width:((603px * 100%) / 1380px);
+                    // width:((603px * 100%) / 1380px);
+                    @include boxs(w);
                 }
             }
             &.type-narrow {
                 .box-inner {
-                    width:((603px * 100%) / 1380px);
+                    // width:((603px * 100%) / 1380px);
+                    @include boxs(n);
                 }
             }
             &.box-align-left {

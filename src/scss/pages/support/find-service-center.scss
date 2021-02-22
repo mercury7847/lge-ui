@@ -1807,7 +1807,7 @@
             &.result-map {
                 overflow-x: visible;
                 .store-map-con {
-                    height: calc(100vh - 240px);
+                    height: calc(100vh - 181px);
                 }
                 .store-list-wrap {
                     &.active {
@@ -1833,9 +1833,14 @@
             &.result-map {
                 .store-map-con {
                     position: fixed;
-                    top: 184px;
+                    top: 125px;
                 }
             }
+        }
+    }
+    .mobile-nav-wrap {
+        .nav {
+            display: none;
         }
     }
 }
