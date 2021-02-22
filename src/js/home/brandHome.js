@@ -115,15 +115,15 @@
         });
         
         
-        function moveStep(step){
+        function moveStep(step){            
             
             if(!canScroll) return;
-            if(currentStep == step) return;
-            canScroll = false;
+            canScroll = false;            
 
             var arr = wheelArr[step];
             if(!vcui.isArray(arr)){ 
                 currentStep = step;
+                canScroll = true;
                 return; 
             }
 
@@ -142,15 +142,13 @@
         }
 
 
-        function wheelScene(nextStep) {
+        function wheelScene(delta) {
 
-            // if(!canScroll) return;
-            // var nextStep = (delta < 0) ? -1 : 1;
-            // nextStep = nextStep + currentStep;
-            // nextStep = Math.max(Math.min(nextStep, stepLens), 0);                   
-            // if(currentStep == nextStep) return;
-
-
+            if(!canScroll) return;
+            var nextStep = (delta < 0) ? -1 : 1;
+            nextStep = nextStep + currentStep;
+            nextStep = Math.max(Math.min(nextStep, stepLens), 0);                   
+            if(currentStep == nextStep) return;
 
             var arr = wheelArr[nextStep];
 
@@ -187,13 +185,12 @@
                 if(! $('html').hasClass('sceneMoving')){
                     return false;
                 }
-
                 $('html, body').stop(true).animate({
                     scrollTop: scrollTopData
                 }, speed, 'easeInOutQuart',  function() { 
-                    canScroll = true
-                    currentPage = idx;     
-                    moveStep(step);          
+                    canScroll = true;
+                    currentPage = idx;  
+                    moveStep(step);    
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
                     
@@ -212,68 +209,34 @@
 
         }         
 
+
         var prevTime = new Date().getTime();
 
+        // 휠 이벤트 처리
+        document.addEventListener('wheel', function(e){
 
-        function getAverage(elements, number){
-            var sum = 0;
-
-            //taking `number` elements from the end to make the average, if there are not enought, 1
-            var lastElements = elements.slice(Math.max(elements.length - number, 1));
-
-            for(var i = 0; i < lastElements.length; i++){
-                sum = sum + lastElements[i];
-            }
-
-            return Math.ceil(sum/number);
-        }
-
-        var scrollings = [];
-
-        function wheelEvent(e) {
-            var curTime = +new Date();
-            e = e || window.event;            
-            var value = e.wheelDelta || -e.deltaY || -e.detail;
-            var delta = Math.max(-1, Math.min(1, value));
-            var horizontalDetection = typeof e.wheelDeltaX !== 'undefined' || typeof e.deltaX !== 'undefined';
-            var isScrollingVertically = (Math.abs(e.wheelDeltaX) < Math.abs(e.wheelDelta)) || (Math.abs(e.deltaX ) < Math.abs(e.deltaY) || !horizontalDetection);
-
-            if (scrollings.length > 149){
-                scrollings.shift();
-            }
-            scrollings.push(Math.abs(value));
-            e.preventDefault ? e.preventDefault() : e.returnValue = false;
-
-            var timeDiff = curTime-prevTime;
-            prevTime = curTime;
-            if (timeDiff > 500) {
-                scrollings = [];
-            }
-
-            if (canScroll ) {                
-                var averageEnd = getAverage(scrollings, 10);
-                var averageMiddle = getAverage(scrollings, 70);
-                var isAccelerating = averageEnd >= averageMiddle;
-                var nextStep = (delta < 0) ? -1 : 1;
-                nextStep = nextStep + currentStep;
-                nextStep = Math.max(Math.min(nextStep, stepLens), 0);    
-
-                if(isAccelerating && isScrollingVertically ){
+            var curTime = new Date().getTime();
+            if(typeof prevTime !== 'undefined'){
+                var timeDiff = curTime-prevTime;
+                if(timeDiff > 35){
                     if(currentStep == stepLens){
                         var st = $contentWrap.scrollTop();
-                        if(st==0 && delta < 0){
-                            wheelScene(nextStep);
+                        if(st==0 && e.deltaY<0){
+                            wheelScene(-1);
                         }
-                    }else if(currentStep != nextStep){
-                        wheelScene(nextStep);
+                    }else{
+                        if(e.deltaY>0 || e.deltaY<0){
+                            wheelScene(e.deltaY);
+                        }
                     }
-                }
-            }
-            return false;
-        }
+                }                    
+            }            
+            prevTime = curTime;              
+
+        });
 
 
-        $(document).on('DOMMouseScroll mousewheel', wheelEvent);
+
 
         $(document).on('touchstart touchend touchcancel', function(e) {
 
@@ -547,6 +510,8 @@
                     currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
                     currentStep = _findStep(currentPage);
                     setBeforeCss(currentStep);
+
+                    console.log(currentStep);
                     moveScene(currentPage,currentStep,0);
                 }, 100);
             }
@@ -721,12 +686,6 @@
                 if (item.attachEvent) item.attachEvent("on" + mousewheelevt, fixedScrolled);
                 else if (item.addEventListener) item.addEventListener(mousewheelevt, fixedScrolled, false);
             });
-            /*
-            document.querySelectorAll(selector).forEach(function(idx,item){
-                if (item.attachEvent) item.attachEvent("on" + mousewheelevt, fixedScrolled);
-                else if (item.addEventListener) item.addEventListener(mousewheelevt, fixedScrolled, false);
-            });
-            */
         }
 
         doWheelfixedElement('.ui_device');         

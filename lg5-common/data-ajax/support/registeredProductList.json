@@ -1,0 +1,99 @@
+{   
+    "status": "success",
+    "data": {
+        "resultFlag" : "Y",
+        "url" : "/", 
+        "listData": [
+            {  
+                "item_id" : "aaa",
+                "item_title": "Mode [모드별] 기능에 대해서 알고 싶어요.",
+                "parent_category" : "aaaaa",
+                "category" : "bbbb",
+                "icon_path" : "/lg5-common/images/CS/icon-pd-category01.svg",
+                "parent_cate_name" : "에어컨",
+                "cate_name" : "3in1 2in1",
+                "symp_name" : "스마트기능/스마트진단",
+                "symp_sub_name" : "LG ThinQ 사용",
+                "errContext": "스마트기능/스마트진단 > LG ThinQ 사용"
+            },
+            {  
+                "item_id" : "aaa",
+                "item_title": "Mode [모드별] 기능에 대해서 알고 싶어요.",
+                "parent_category" : "aaaaa",
+                "category" : "bbbb",
+                "icon_path" : "/lg5-common/images/CS/icon-pd-category01.svg",
+                "parent_cate_name" : "에어컨",
+                "cate_name" : "3in1 2in1",
+                "symp_name" : "스마트기능/스마트진단",
+                "symp_sub_name" : "LG ThinQ 사용",
+                "errContext": "스마트기능/스마트진단 > LG ThinQ 사용"
+            },{  
+                "item_id" : "aaa",
+                "item_title": "Mode [모드별] 기능에 대해서 알고 싶어요.",
+                "parent_category" : "aaaaa",
+                "category" : "bbbb",
+                "icon_path" : "/lg5-common/images/CS/icon-pd-category01.svg",
+                "parent_cate_name" : "에어컨",
+                "cate_name" : "3in1 2in1",
+                "symp_name" : "스마트기능/스마트진단",
+                "symp_sub_name" : "LG ThinQ 사용",
+                "errContext": "스마트기능/스마트진단 > LG ThinQ 사용"
+            },{  
+                "item_id" : "aaa",
+                "item_title": "Mode [모드별] 기능에 대해서 알고 싶어요.",
+                "parent_category" : "aaaaa",
+                "category" : "bbbb",
+                "icon_path" : "/lg5-common/images/CS/icon-pd-category01.svg",
+                "parent_cate_name" : "에어컨",
+                "cate_name" : "3in1 2in1",
+                "symp_name" : "스마트기능/스마트진단",
+                "symp_sub_name" : "LG ThinQ 사용",
+                "errContext": "스마트기능/스마트진단 > LG ThinQ 사용"
+            },{  
+                "item_id" : "aaa",
+                "item_title": "Mode [모드별] 기능에 대해서 알고 싶어요.",
+                "parent_category" : "aaaaa",
+                "category" : "bbbb",
+                "icon_path" : "/lg5-common/images/CS/icon-pd-category01.svg",
+                "parent_cate_name" : "에어컨",
+                "cate_name" : "3in1 2in1",
+                "symp_name" : "스마트기능/스마트진단",
+                "symp_sub_name" : "LG ThinQ 사용",
+                "errContext": "스마트기능/스마트진단 > LG ThinQ 사용"
+            },{  
+                "item_id" : "aaa",
+                "item_title": "Mode [모드별] 기능에 대해서 알고 싶어요.",
+                "parent_category" : "aaaaa",
+                "category" : "bbbb",
+                "icon_path" : "/lg5-common/images/CS/icon-pd-category01.svg",
+                "parent_cate_name" : "에어컨",
+                "cate_name" : "3in1 2in1",
+                "symp_name" : "스마트기능/스마트진단",
+                "symp_sub_name" : "LG ThinQ 사용",
+                "errContext": "스마트기능/스마트진단 > LG ThinQ 사용"
+            },{  
+                "item_id" : "aaa",
+                "item_title": "Mode [모드별] 기능에 대해서 알고 싶어요.",
+                "parent_category" : "aaaaa",
+                "category" : "bbbb",
+                "icon_path" : "/lg5-common/images/CS/icon-pd-category01.svg",
+                "parent_cate_name" : "에어컨",
+                "cate_name" : "3in1 2in1",
+                "symp_name" : "스마트기능/스마트진단",
+                "symp_sub_name" : "LG ThinQ 사용",
+                "errContext": "스마트기능/스마트진단 > LG ThinQ 사용"
+            },{  
+                "item_id" : "aaa",
+                "item_title": "Mode [모드별] 기능에 대해서 알고 싶어요.",
+                "parent_category" : "aaaaa",
+                "category" : "bbbb",
+                "icon_path" : "/lg5-common/images/CS/icon-pd-category01.svg",
+                "parent_cate_name" : "에어컨",
+                "cate_name" : "3in1 2in1",
+                "symp_name" : "스마트기능/스마트진단",
+                "symp_sub_name" : "LG ThinQ 사용",
+                "errContext": "스마트기능/스마트진단 > LG ThinQ 사용"
+            }
+        ]
+    }
+}

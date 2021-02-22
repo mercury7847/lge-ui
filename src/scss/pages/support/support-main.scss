@@ -1528,9 +1528,17 @@
             }
         }
 
+        .solution-pd-content {
+            display: none;
+
+            &.active {
+                display: block;
+            }
+        }
+
         .popular-list-wrap {
             position: relative;
-            margin-top:48px;
+            margin-top:36px;
             margin-left:-12px;
             margin-right:-12px;
             @include clearfix;
@@ -1538,8 +1546,16 @@
             .item-list {
                 float:left;
                 width:33.33%;
-                padding:0 12px;
+                padding:12px;
                 box-sizing:border-box;
+
+                &[data-more="hidden"] {
+                    display:none;
+
+                    &.show {
+                        display: block;
+                    }
+                }
 
                 a {
                     display: block;

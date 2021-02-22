@@ -60,6 +60,8 @@
                         $hiddenItem.removeClass('show');
                         $this.removeClass('close').text('더보기');
                     } else {
+
+                        console.log($hiddenItem.length)
                         $hiddenItem.addClass('show');
                         $this.addClass('close').text('접기');
                     }
@@ -649,12 +651,103 @@
                 this.reservInquiry.init();
             }
         },
+        getRegisterdProduct : {
+            el : {
+                container :'.popular-find',
+                toggleBtn : '.btn-filter-toggle',
+                listWrap : '.popular-list-wrap',
+                pdCont : '.solution-pd-content',
+            },
+            template : 
+                '{{#each (item, index) in listData}}' + 
+                '{{#if (index < 3)}}' + 
+                '<div class="item-list">' +
+                '{{#else}}' + 
+                '<div class="item-list" data-more="hidden">' +
+                '{{/if}}'+
+                    '<a href="/support/solutions-{{item.item_id}}?category={{item.parent_category}}&subCategory={{item.category}}">' + 
+                        '<div class="item-category"><span class="category-thumb"><img src="{{item.icon_path}}" alt=""></span> {{item.parent_cate_name}}</div>' + 
+                        '<strong class="item-tit">{{item.item_title}}</strong>' + 
+                        '<ul class="bullet-list">' + 
+                            '<li class="b-txt">{{item.parent_cate_name}} > {{item.cate_name}}</li>' + 
+                            '<li class="b-txt">{{item.symp_name}} > {{item.symp_sub_name}}</li>' + 
+                        '</ul>' + 
+                    '</a>' + 
+                '</div>' + 
+                '{{/each}}',
+            getProduct : function(){
+                var self = this;
+                var $container = $(self.el.container);
+                var $pdCont = $container.find(self.el.pdCont);
+                var ajaxUrl = $container.data('ajax');
+                
+
+                lgkorUI.showLoading();
+                lgkorUI.requestAjaxData(ajaxUrl, {}, function(result) {
+                    var data = result.data,
+                        listData = data.listData,
+                        html;
+                      
+                        if( listData.length ) {
+                            html = vcui.template(self.template, data);
+                            $pdCont.filter('.registerd-pd').find(self.el.listWrap).html(html);   
+                            $pdCont.filter('.registerd-pd').addClass('active').siblings().removeClass('active').find('.btn-moreview').removeClass('close').text('더보기');;
+                            $(self.el.toggleBtn).addClass('active');
+                            lgkorUI.hideLoading();
+                        } else {
+                            lgkorUI.hideLoading();
+                            lgkorUI.confirm('등록된 제품이 없습니다. <br>보유제품을 등록하시겠습니까?',{
+                                typeClass:'type2',
+                                title:'',
+                                okBtnName: '네',
+                                cancelBtnName: '아니요',
+                                ok: function() {
+                                    location.href = data.url;
+                                },
+                                cancel: function() {
+                                    
+                                }
+                            });
+                        }
+                });
+            },
+            init : function(){
+                var self = this;
+                var $container = $(self.el.container);
+                var $pdCont = $container.find(self.el.pdCont);
+
+                
+                $container.find(self.el.toggleBtn).on('click', function(e){
+                    var $this = $(this);
+
+                    if( lgkorUI.isLogin ) {
+                        e.preventDefault();
+                        if( $this.hasClass('active') ) {
+                            $this.removeClass('active');
+                            $pdCont.filter('.default-pd').addClass('active').siblings().removeClass('active').find('.btn-moreview').removeClass('close').text('더보기');
+                        } else {
+                            self.getProduct();
+                        }
+                    } else {
+                        //비로그인
+
+                        var _url = $this.data('href');
+                        
+                        location.href= _url;
+                    }
+                    
+                })
+                
+            }
+        },
         initialize: function(){
             this.loginTooltip();
             this.moreShow.init();
             this.slide.init();
             this.toggleList.init();
             this.reservation.init();
+            this.getRegisterdProduct.init();
+            //$('#supportGuideTextPopup').vcModal();
         }
     }
 

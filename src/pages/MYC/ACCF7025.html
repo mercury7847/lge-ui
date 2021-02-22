@@ -15,11 +15,13 @@
             })
             <!-- mypage -->
             <!-- 2021.02.05 data-request-contract-url 추가-->
+            <!-- 2021.2.19 data-payment-save-url 추가-->
             <div class="contents mypage"
                 data-contract-info-url="/lg5-common/data-ajax/mypage/contractInfo.json"
                 data-modify-confirm-url="/lg5-common/data-ajax/mypage/infoModifyConfirm.json"
                 data-modify-save-url="/lg5-common/data-ajax/mypage/infoModifySave.json"
                 data-payment-method-url="/lg5-common/data-ajax/mypage/paymentMethodAbled.json"
+                data-payment-save-url = "/lg5-common/data-ajax/mypage/infoModifySave.json"
                 data-ars-agree-url="/lg5-common/data-ajax/caresolution/requestArsAgree.json"
                 data-request-contract-url="/lg5-common/data-ajax/mypage/requestContract.json"
                 data-mempoint-deduct-url="/lg5-common/data-ajax/mypage/memberPointDeductAgree.json"
@@ -89,10 +91,11 @@
                                         </div>
                                         <div class="inner-box actual-info">
                                             <p class="inner-tit">실사용자 정보</p>
+                                            <!-- 2021.2.19 이름 input name 추가 -->
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "addClass": true,
                                                 "list" : [
-                                                    { "dt" : "이름", "dd" : "이*어", "fieldName": "" },
+                                                    { "dt" : "이름", "dd" : "이*어", "fieldName": "name" },
                                                     { "dt" : "휴대폰", "dd" : "010****1234", "fieldName": "phoneNumber" },
                                                     { "dt" : "일반전화", "dd" : "010****1234", "fieldName": "telephoneNumber" },
                                                     { "dt" : "주소", "dd" : "21655 서울특별시 엘지구 엘지로 ********", "fieldName": "adress" },
@@ -145,7 +148,7 @@
                                                     <dt class="tit"><label for="inp02">휴대폰</label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="number" id="inp02" value="01012341234" maxlength="11" rname="userPhone" readonly>
+                                                            <input type="number" id="inp02" value="01012341234" maxlength="11" name="userPhone" readonly> <!-- 2021.2.19 rname 오타수정 -->
                                                         </div>
                                                     </dd>
                                                 </dl>

@@ -995,10 +995,29 @@ var isApp = function(){
                 if(dtype == 'json' && result.status != 'success'){
                     //alert(result.message ? result.message : '오류발생');
                     console.log('resultStatusFail',url,result);
-                    lgkorUI.alert("", {
-                        title: result.message
-                    });
-
+                    if(ignoreCommonSuccessCheck) {
+                        var data = result.data;
+                        if(data && !Array.isArray(data) && typeof data === 'object') {
+                            if(!data.success && !(typeof(data.success) === "boolean")) {
+                                data.success = "N";
+                                result.data = data;
+                            }
+                        } else {
+                            if(result.message) {
+                                lgkorUI.alert("", {
+                                    title: result.message
+                                });
+                            }
+                            result.data = {"success" : "N"};
+                        }
+                        if(callback && typeof callback === 'function') callback(result); 
+                    } else {
+                        if(result.message) {
+                            lgkorUI.alert("", {
+                                title: result.message
+                            });
+                        }
+                    }
                     lgkorUI.hideLoading();
                     return;
                 }
@@ -1141,7 +1160,7 @@ var isApp = function(){
                         $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
                     }
                 } else {
-                    if(data.alert) {
+                    if(data.alert && !vcui.isEmpty(data.alert)) {
                         if(isToast) {
                             $(window).trigger("toastshow",data.alert.title);
                         } else {
@@ -1155,6 +1174,7 @@ var isApp = function(){
         },
 
         requestWish: function(param, wish, callbackSuccess, callbackFail, postUrl) {
+            var self = this;
             param.wish = wish;
             lgkorUI.requestAjaxDataPost(postUrl, param, function(result){
                 var data = result.data;
@@ -1167,10 +1187,13 @@ var isApp = function(){
                     callbackSuccess(data);
                 } else {
                     callbackFail(data);
-                    if(data.alert) {
+                    if(data.alert && !vcui.isEmpty(data.alert)) {
+                        self.commonAlertHandler(data.alert);
+                        /*
                         lgkorUI.alert("", {
                             title: data.alert.title
                         });
+                        */
                     }
                 }
             }, true);
@@ -1185,8 +1208,8 @@ var isApp = function(){
                 //컨펌
                 var obj ={title: alert.title,
                     typeClass: '',
-                    cancelBtnName: alert.cancelBtnName,
-                    okBtnName: alert.okBtnName,
+                    cancelBtnName: alert.cancelBtnName ? alert.cancelBtnName : "취소",
+                    okBtnName: alert.okBtnName ? alert.okBtnName : "확인",
                     ok: alert.okUrl ? function (){
                         location.href = alert.okUrl;
                     } : function (){},
@@ -1204,11 +1227,11 @@ var isApp = function(){
                 //알림
                 var obj ={title: alert.title,
                     typeClass: '',
-                    okBtnName: alert.okBtnName,
+                    okBtnName: alert.okBtnName ? alert.okBtnName : "확인",
                     ok: function (){}
                 };
     
-                var desc = alert.desc;
+                var desc = alert.desc ? alert.desc : null;
                 if(desc) {
                     obj.typeClass = 'type2'
                 }
@@ -1353,7 +1376,14 @@ var isApp = function(){
                     $(this).val(str.slice(0, maxleng));
                 }
             });
-        }
+        },
+
+        getParameterByName: function(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        },
     }
 
     document.addEventListener('DOMContentLoaded', function () {
