@@ -743,6 +743,58 @@
             this.reservation.init();
             this.getRegisterdProduct.init();
             //$('#supportGuideTextPopup').vcModal();
+
+            var $initPopup = $('.popup-init');
+
+            var uiModal = '<div class="ui_modal_wrap init-type" />';
+            var $uiModalDimm = $('<div class="ui_modal_dim" />')
+
+            if($initPopup.length ) {
+                $initPopup.addClass('active');
+                $initPopup.wrapAll(uiModal);
+                $('.ui_modal_wrap.init-type').prepend($uiModalDimm);
+                $('.ui_modal_wrap.init-type').css({
+                    'position' : 'fixed',
+                    'z-index' : 9000,
+                    'top' : 0,
+                    'left' : 0,
+                    'width' : '100%',
+                    'height' : '100%'
+                });
+                $('.ui_modal_dim').css({
+                    'position' : 'fixed',
+                    'top' : 0,
+                    'left' : 0,
+                    'width' : '100%',
+                    'height' : '100%',
+                    'background' : 'rgb(0, 0, 0, 0.7)'
+                });
+                $initPopup.stop().fadeIn();
+            }
+
+            $initPopup.find('.btn-close').on('click', function(e){
+                var $this =$(this);
+                var $curModal = $this.closest('.popup-init');
+                var $modalWrap = $this.closest('.ui_modal_wrap');
+                var $dimm = $modalWrap.find('.ui_modal_dim');
+
+                
+                if( $modalWrap.find('.popup-init:visible').length == 1) {
+                    $modalWrap.stop().fadeOut(function(){
+                        $dimm.remove();
+                        $initPopup.unwrap();
+                        $curModal.hide().removeClass('active');
+                    });
+                } else {
+                    $curModal.stop().fadeOut().removeClass('active');
+                }
+                e.preventDefault();
+            });
+
+            $('.ui_modal_wrap.init-type .ui_modal_dim').on('click', function(e){
+                e.preventDefault();
+                e.stopPropagation();
+            })
         }
     }
 
