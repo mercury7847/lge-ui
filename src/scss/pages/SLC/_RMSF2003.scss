@@ -190,13 +190,13 @@ br.pc-only {
         }
         .box {
             position:relative;
-            padding-left:120px;
+            padding-left:88px;
             @include mobile {
                 padding-left:112px;
             }
             p {
-                @include font-small;
-                font-weight:500;
+                @include font-medium;
+                // font-weight:500;
             }
             .btn-link {
                 margin-top:12px;
@@ -208,14 +208,14 @@ br.pc-only {
                     top:50%;
                     left:0;
                     transform:translateY(-50%);
-                    width:80px;
-                    height:80px;
+                    width:40px;
+                    height:40px;
                     margin-right:2px;
-                    background:url('/lg5-common/images/icons/icon-13-80.svg') no-repeat;
+                    background:url('/lg5-common/images/SLC/img-add-product-40.svg') no-repeat;
                     @include mobile {
                         width:100px;
                         height:100px;
-                        background:url('/lg5-common/images/icons/icon-01-100.svg') no-repeat;
+                        // background:url('/lg5-common/images/icons/icon-01-100.svg') no-repeat;
                         background-size:100px 100px;
                     }
             }
