@@ -15,7 +15,13 @@
             })
             <!-- //210203 수정 -->
             <!-- mypage -->
-            <div class="contents mypage">
+            <div class="contents mypage"
+                data-request-url=""
+            >
+            <div class="hidden-input-group">
+                <input type="hidden" name="createCertify" value="Y" />
+                <input type="hidden" name="creditInquire" value="N" />
+            </div>
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
