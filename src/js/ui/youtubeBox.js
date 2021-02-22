@@ -60,7 +60,7 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
             isModal = item.data('target') == "modal" ? true : false;
 
             video_url = item.attr('data-src');
-console.log(video_url)
+            
             var params = "";
             var urlsplit = video_url.split("?");
             var isMp4 = urlsplit[0].indexOf(".mp4");
@@ -85,6 +85,9 @@ console.log(video_url)
 
                 self._removeVideoLayer(e);
             });
+
+            var caption = self.$el.find('article.cap-section');
+            if(caption.length) $(self.$videoLayer).find('.modal-video-asset').append(caption.clone().show());
 
             if(isModal) $('body').addClass('modal-open').append(self.$videoLayer);
             else self.$el.append(self.$videoLayer);
