@@ -9,7 +9,7 @@
             "cancelBtnName":"취소",
             "cancelUrl":null,
             "okBtnName":"로그인",
-            "okUrl":"로그인주소"
+            "okUrl":"/sso/api/Login?state="
         }
     }
 }

@@ -1188,6 +1188,9 @@ var isApp = function(){
                 } else {
                     callbackFail(data);
                     if(data.alert && !vcui.isEmpty(data.alert)) {
+                        if(data.alert.isConfirm && data.alert.okUrl) {
+                            data.alert.okUrl = data.alert.okUrl + location.href;
+                        }
                         self.commonAlertHandler(data.alert);
                         /*
                         lgkorUI.alert("", {
