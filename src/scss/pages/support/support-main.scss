@@ -712,6 +712,7 @@
     
                         .thumb {
                             display: inline-block;
+                            position: relative;
                             overflow: hidden;
                             width:40px;
                             height:40px;
@@ -722,7 +723,11 @@
                             box-sizing: border-box;
 
                             img {
-                                width:100%;
+                                position: absolute;
+                                top:50%;
+                                left:50%;
+                                transform:translate(-50%, -50%);
+                                width:70%;
                                 vertical-align: top;
                             }
                         }
@@ -761,6 +766,18 @@
                     .pd-info-list {
                         @include clearfix;
 
+                        &:hover {
+                            > li {
+                                a {
+                                    opacity:0.4;
+                                    &:hover {
+                                        opacity:1;
+                                        text-decoration: underline;
+                                    }
+                                }
+                            }
+                        }
+
                         > li {
                             float:left;
                             width:50%;
@@ -768,9 +785,10 @@
                             a {
                                 display: block;
                                 font-size:14px;
+                                line-height:30px;
                                 color:#000;
                                 font-weight:500;
-                                line-height:1.71;
+                                transition:opacity .3s;
                             }
                         }
                     }
@@ -937,6 +955,7 @@
                             > li {
                                 a {
                                     font-size:13px;
+                                    line-height:26px;
                                 }
                             }
                         }
@@ -1618,6 +1637,7 @@
                     margin-bottom:32px;
                     font-size:16px;
                     .category-thumb {
+                        position: relative;
                         display:inline-block;
                         overflow:hidden;
                         width:40px;
@@ -1625,6 +1645,14 @@
                         margin-right:8px;
                         vertical-align: middle;
                         border-radius:50%;
+
+                        img {
+                            position: absolute;
+                            top:50%;
+                            left:50%;
+                            width:70%;
+                            transform:translate(-50%, -50%);
+                        }
                     }
                 }
 

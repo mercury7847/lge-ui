@@ -87,11 +87,11 @@
         var phoneValues = phoneInquiryValidation.getValues();
 
         var sendata = {
-            inquiryType: type,
-            orderNumber: type == "EMAIL" ? emailValues.orderNumber : phoneValues.orderNumber,
-            userName: type == "EMAIL" ? emailValues.userName : phoneValues.userName,
-            userEmail: emailValues.userEmail,
-            phoneNumber: phoneValues.userPhone
+            sendInquiryType: type,
+            sendOrderNumber: type == "EMAIL" ? emailValues.orderNumber : phoneValues.orderNumber,
+            sendUserName: type == "EMAIL" ? emailValues.userName : phoneValues.userName,
+            sendUserEmail: emailValues.userEmail,
+            snedPhoneNumber: phoneValues.userPhone
         }
 
         var firstSpeling = sendata.orderNumber.substr(0,1).toUpperCase();
@@ -100,16 +100,14 @@
         console.log("sendata:",sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, sendata, function(result){
             if(result.data.success == "Y"){
-                lgkorUI.setHiddenInputData({
-                    sendInquiryType: sendata.inquiryType,
-                    sendOrderNumber: sendata.orderNumber,
-                    sendUserName: sendata.userName,
-                    sendUserEmail: sendata.userEmail,
-                    snedPhoneNumber: sendata.phoneNumber
-                });
+                lgkorUI.setHiddenInputData(sendata);
+                console.log("### lgkorUI.getHiddenInputData() ###", lgkorUI.getHiddenInputData());
 
                 $('#noneMemberForm').attr('action', result.data.sendUrl);
-                $('#noneMemberForm').submit();
+
+                setTimeout(function(){
+                    $('#noneMemberForm').submit();  
+                }, 100);
             } else{
                 if(result.data.alert.isCustom){
                     lgkorUI.alert("", {

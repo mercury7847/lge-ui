@@ -307,21 +307,21 @@
                 config : {
                     infinite: true,
                     autoplay: true,
-                    autoplaySpeed : 2000,
-                    slidesToScroll: 1,
+                    autoplaySpeed : 5000,
+                    slidesToScroll: 4,
                     slidesToShow: 4,
                     responsive: [
                         {
                             breakpoint: 1460,
                             settings: {
-                                slidesToScroll: 1,
+                                slidesToScroll: 3,
                                 slidesToShow: 3
                             }
                         },
                         {
                             breakpoint: 1024,
                             settings: {
-                                slidesToScroll: 1,
+                                slidesToScroll: 2,
                                 slidesToShow: 2,
                             }
                         },
@@ -336,7 +336,7 @@
                         {
                             breakpoint: 20000,
                             settings: {
-                                slidesToScroll: 1,
+                                slidesToScroll: 4,
                                 slidesToShow: 4
                             }
                         }
@@ -732,7 +732,7 @@
                         //비로그인
 
                         var _url = $this.data('href');
-                        
+
                         location.href= _url;
                     }
                     
