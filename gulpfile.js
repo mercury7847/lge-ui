@@ -112,7 +112,22 @@ const concatNames = [
     src + "/js/ui/selectbox.js",
     src + "/js/ui/smoothScroll.js",
     src + "/js/ui/tab.js",
-    src + "/js/ui/lazyLoader.js"
+    src + "/js/ui/lazyLoader.js",
+    src + "/js/ui/calendar.js",
+    src + "/js/ui/videoBox.js",
+    src + "/js/ui/youtubeBox.js",
+    src + "/js/ui/imageSwitch.js",
+    src + "/js/ui/textControl.js",
+    src + "/js/ui/fileInput.js",
+    src + "/js/ui/radioShowHide.js",
+    src + "/js/ui/inputClearButton.js",
+    src + "/js/ui/starRating.js",
+    src + "/js/ui/tooltipTarget.js",
+    src + "/js/ui/sticky.js",
+    src + "/js/ui/formatter.js",
+    src + "/js/ui/scrollNavi.js",
+    src + "/js/ui/smoothScrollTab.js",
+    src + "/js/ui/checkboxAllChecker.js"
 ];
 gulp.task("concat-js", () => gulp
     .src(concatNames)
