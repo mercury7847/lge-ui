@@ -6,9 +6,8 @@
     @include clearfix;
     .total {
         float:left;
-        font-size:16px;
         font-weight:700;
-        line-height:24px;
+        @include font-medium;
         .count {
             color: #da0f47;
         }
@@ -22,8 +21,12 @@
                 margin-left:0;
             }
         }
+        .unit {
+            @include font-small;
+        }
     }
     @include mobile {
+        padding-bottom:12px;
         .sort-box {
             .sort-select-wrap {
                 margin-left:20px;

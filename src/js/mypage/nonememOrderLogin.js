@@ -91,7 +91,7 @@
             sendOrderNumber: type == "EMAIL" ? emailValues.orderNumber : phoneValues.orderNumber,
             sendUserName: type == "EMAIL" ? emailValues.userName : phoneValues.userName,
             sendUserEmail: emailValues.userEmail,
-            snedPhoneNumber: phoneValues.userPhone
+            sendPhoneNumber: phoneValues.userPhone
         }
 
         var firstSpeling = sendata.sendOrderNumber.substr(0,1).toUpperCase(); 
