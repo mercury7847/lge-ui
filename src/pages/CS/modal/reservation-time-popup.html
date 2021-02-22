@@ -1,4 +1,4 @@
-<article id="reservationTimePopup" class="support popup-wrap full" data-date-url="/lg5-common/data-ajax/support/possibleDate.json" data-time-url="/lg5-common/data-ajax/support/possibleTime.json" data-sms-url="/lg5-common/data-ajax/support/authSendSuccess.json" data-auth-url="/lg5-common/data-ajax/support/reservationDateChange.json">
+<article id="reservationTimePopup" class="support popup-wrap wide" data-date-url="/lg5-common/data-ajax/support/possibleDate.json" data-time-url="/lg5-common/data-ajax/support/possibleTime.json" data-sms-url="/lg5-common/data-ajax/support/authSendSuccess.json" data-auth-url="/lg5-common/data-ajax/support/reservationDateChange.json">
     <header class="pop-header">
         <h1 class="tit"><span>예약 일시 변경</span></h1>
     </header>
@@ -37,17 +37,16 @@
             </div>
             <div class="tit-wrap">
                 <h2 class="tit">희망 예약 일시 선택</h2>
-                <ul class="info">
-                    <li class="black"><span class="blind">검정색 표기</span> 예약가능</li>
-                    <li class="red"><span class="blind">빨간색 표기</span> 선택</li>
-                </ul>
+                <!-- 2021.02.22 .info 삭제-->
             </div>
+            <!-- 2021.02.22 .calendar-info 추가 -->
             @@include('./common/support/desired-date.html', {
-                "onlyCalendar": true
+                "onlyCalendar": false,
+                "onlyCalendarInfo": true
             })
 
             <!-- 예약/상담 엔지니어 선택 -->
-            <div class="step-box step-engineer" id="stepEngineer" data-ajax="/lg5-common/data-ajax/support/searchEngineer.json";>
+            <div class="step-box step-engineer" id="stepEngineer" data-ajax="/lg5-common/data-ajax/support/searchEngineer.json"; tabindex="0"><!-- 2021.02.22 tabindex="0" 추가 -->
                 <div class="selected-engineer">
                     <div class="tit-wrap">
                         <h2 class="tit">엔지니어</h2>
@@ -74,6 +73,7 @@
                 <div class="toggle-layer choice-engineer" data-lock-url="/lg5-common/data-ajax/support/engineer-lock.json"> 
                     <div class="layer-tit">
                         <h3 class="tit">다른 엔지니어 선택</h3>
+                        <button type="button" class="btn-layer-close"><span>취소</span></button><!-- 2021.02.22 .btn-layer-close 추가 -->
                         <p class="sub-tit">엔지니어를 선택해주세요.</p>
                     </div>
                     <div class="layer-content">
@@ -106,8 +106,9 @@
                         </div>
 
                         <div class="btn-group center">
-                            <button type="button" class="btn gray btn-layer-close"><span>취소</span></button>
-                            <button type="button" class="btn btn-select-engineer"><span>엔지니어 선택</span></button>
+                            <!-- 2021.02.22 취소 버튼 삭제, 엔지니어 선택 class 변경 -->
+                            <button type="button" class="btn border size-m btn-select-engineer"><span>엔지니어 선택</span></button>
+                            <!-- //2021.02.22 취소 버튼 삭제, 엔지니어 선택 class 변경 -->
                         </div>
                     </div>
                 </div>
