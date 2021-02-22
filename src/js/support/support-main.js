@@ -158,13 +158,6 @@
                         
                         e.preventDefault();
                     })
-
-                    $(document).on('mouseenter', self.el.backContList, function(){
-                        var $this = $(this);
-                        var $container = $this.closest('.pd-info-list');
-
-
-                    });
                 }
             },
             supportList : {
@@ -307,21 +300,21 @@
                 config : {
                     infinite: true,
                     autoplay: true,
-                    autoplaySpeed : 2000,
-                    slidesToScroll: 1,
+                    autoplaySpeed : 5000,
+                    slidesToScroll: 4,
                     slidesToShow: 4,
                     responsive: [
                         {
                             breakpoint: 1460,
                             settings: {
-                                slidesToScroll: 1,
+                                slidesToScroll: 3,
                                 slidesToShow: 3
                             }
                         },
                         {
                             breakpoint: 1024,
                             settings: {
-                                slidesToScroll: 1,
+                                slidesToScroll: 2,
                                 slidesToShow: 2,
                             }
                         },
@@ -336,7 +329,7 @@
                         {
                             breakpoint: 20000,
                             settings: {
-                                slidesToScroll: 1,
+                                slidesToScroll: 4,
                                 slidesToShow: 4
                             }
                         }
@@ -365,8 +358,10 @@
                 
                 vcui.require(['ui/carousel'], function () {    
                     //히어로 보유제품 슬라이드
-                    $(self.heroPd.el.slider).not('.' + self.slideActiveClass).vcCarousel(self.heroPd.config);
-                    $(self.heroPd.el.slider).addClass(self.slideActiveClass);
+                    if( $(self.heroPd.el.slider).find('.item-list').length >= 2) {
+                        $(self.heroPd.el.slider).not('.' + self.slideActiveClass).vcCarousel(self.heroPd.config);
+                        $(self.heroPd.el.slider).addClass(self.slideActiveClass);
+                    }
                     
                     //히어로 보유제품 슬라이드 관련 이벤트 초기 실행
                     self.heroPd.init();
@@ -732,7 +727,7 @@
                         //비로그인
 
                         var _url = $this.data('href');
-                        
+
                         location.href= _url;
                     }
                     
@@ -751,11 +746,11 @@
         }
     }
 
+    supportHome.initialize();
     supportHome.slide.firstInit();
 
-    
     $(window).ready(function(){
-        supportHome.initialize();
+        
     })
 
     $(window).on('resize', function(){

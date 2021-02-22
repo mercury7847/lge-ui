@@ -2,15 +2,19 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTS/UTS"],
-        pageJS: ["search/search_all"]
     })
+<!--        pageJS: ["search/search_all"]-->
 <body>
     <div class="wrap">
         @@include('./common/header.html')
 
         <div class="container">
             <!-- 통합검색 -->
-            <div class="contents search" data-search-value="노크온 매직스페이스" data-search-force=false data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json" data-search-url="/lg5-common/data-ajax/search/searchInput.json">
+            <div class="contents search" data-search-value="노크온 매직스페이스" data-search-force=false
+                data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json"
+                data-search-url="/lg5-common/data-ajax/search/searchInput.json"
+                data-basic-url="http://schapi.lgekrdev.lge.co.kr:3100/searchgnb/populartag"
+            >
                 <!-- 검색 영역 -->
                 @@include('./common/modules/search.html', {
                     "value" : "노크온 매직스페이스",
@@ -86,6 +90,7 @@
                                                     <label for="chk-size4">17인치</label>
                                                 </div>
                                             </div>
+                                            <button type="button" class="btn-fold"><span class="blind">항목 더보기</span></button>
                                         </div>
                                     </div>
                                 </li>
@@ -150,6 +155,7 @@
                                                     <label for="chk-storage3">SSD 25</label>
                                                 </div>
                                             </div>
+                                            <button type="button" class="btn-fold"><span class="blind">항목 더보기</span></button>
                                         </div>
                                     </div>
                                 </li>
@@ -167,6 +173,7 @@
                                                     <label for="chk-memory2">LPDDR4x32GB</label>
                                                 </div>
                                             </div>
+                                            <button type="button" class="btn-fold"><span class="blind">항목 더보기</span></button>
                                         </div>
                                     </div>
                                 </li>
@@ -188,6 +195,7 @@
                                                     <label for="chk-added3">키보드라이트</label>
                                                 </div>
                                             </div>
+                                            <button type="button" class="btn-fold"><span class="blind">항목 더보기</span></button>
                                         </div>
                                     </div>
                                 </li>
@@ -221,6 +229,7 @@
                                                     <label for="chk-output6">HDMI(2.0)</label>
                                                 </div>
                                             </div>
+                                            <button type="button" class="btn-fold"><span class="blind">항목 더보기</span></button>
                                         </div>
                                     </div>
                                 </li>
@@ -231,7 +240,7 @@
                         <button type="button" class="btn-moreview block"><span>필터 더보기</span></button>
 
                         <!-- 스마트 필터 선택한 항목 표시 -->
-                        <div class="filter-result">
+                        <div class="filter-result" style="display:none">
                             <ul class="rounded-list">
                                 <li>
                                     <div class="rounded">

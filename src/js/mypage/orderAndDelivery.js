@@ -476,8 +476,8 @@
             endDate: endDate,
             page: page || 1,
             orderNumber: orderNumber,
-            sendOrderNumber: orderNumber,
             sendInquiryType: memInfos.sendInquiryType,
+            sendOrderNumber: orderNumber,
             sendUserName: memInfos.sendUserName,
             sendUserEmail: memInfos.sendUserEmail,
             snedPhoneNumber: memInfos.snedPhoneNumber

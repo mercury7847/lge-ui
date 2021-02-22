@@ -536,14 +536,28 @@
             //margin:0 -12px;
             $defaultPadding : 35px 32px 48px;
 
+            &.ui_carousel_initialized {
+                .slide-controls, .indi-wrap {
+                    display: block;
+                }
+
+                .item-list {
+                    float:left;
+                }
+            }
+
             .slide-track {
                 overflow:hidden;
                 height:240px;
                 margin:0 -12px;
+                font-size:0;
+                text-align: center;
+                vertical-align: top;
                 @include clearfix;
             }
 
             .slide-controls {
+                display: none;
                 .prev {
                     left:-95px;
                 }
@@ -553,13 +567,16 @@
             }
 
             .indi-wrap {
+                display: none;
                 bottom:-44px;
             }
 
             .item-list {
-                float:left;
+                display:inline-block;
                 padding:0 12px;
                 border-radius:10px;
+                text-align: left;
+                vertical-align: top;
 
                 &.default-type {
                     &:nth-child(3n+1) {
@@ -712,6 +729,7 @@
     
                         .thumb {
                             display: inline-block;
+                            position: relative;
                             overflow: hidden;
                             width:40px;
                             height:40px;
@@ -722,7 +740,11 @@
                             box-sizing: border-box;
 
                             img {
-                                width:100%;
+                                position: absolute;
+                                top:50%;
+                                left:50%;
+                                transform:translate(-50%, -50%);
+                                width:70%;
                                 vertical-align: top;
                             }
                         }
@@ -761,6 +783,18 @@
                     .pd-info-list {
                         @include clearfix;
 
+                        &:hover {
+                            > li {
+                                a {
+                                    opacity:0.4;
+                                    &:hover {
+                                        opacity:1;
+                                        text-decoration: underline;
+                                    }
+                                }
+                            }
+                        }
+
                         > li {
                             float:left;
                             width:50%;
@@ -768,9 +802,10 @@
                             a {
                                 display: block;
                                 font-size:14px;
+                                line-height:30px;
                                 color:#000;
                                 font-weight:500;
-                                line-height:1.71;
+                                transition:opacity .3s;
                             }
                         }
                     }
@@ -806,6 +841,7 @@
         
 
         @include tablet {
+
             .headline {
                 .tit {
                     font-size:20px;
@@ -818,6 +854,19 @@
             .had-pd-slider {
                 //margin:0 -12px;
                 $tabletPadding : 20px 20px 38px;
+
+                &.ui_carousel_initialized {
+                    .slide-controls {
+                        display: none;
+                    }
+                    .indi-wrap {
+                        display: block !important;
+                    }
+    
+                    .item-list {
+                        float:left;
+                    }
+                }
     
                 .slide-track {
                     height:200px;
@@ -937,6 +986,7 @@
                             > li {
                                 a {
                                     font-size:13px;
+                                    line-height:26px;
                                 }
                             }
                         }
@@ -1618,6 +1668,7 @@
                     margin-bottom:32px;
                     font-size:16px;
                     .category-thumb {
+                        position: relative;
                         display:inline-block;
                         overflow:hidden;
                         width:40px;
@@ -1625,6 +1676,14 @@
                         margin-right:8px;
                         vertical-align: middle;
                         border-radius:50%;
+
+                        img {
+                            position: absolute;
+                            top:50%;
+                            left:50%;
+                            width:70%;
+                            transform:translate(-50%, -50%);
+                        }
                     }
                 }
 
