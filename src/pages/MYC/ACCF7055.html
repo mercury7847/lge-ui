@@ -15,14 +15,17 @@
             })
             <!-- //210203 수정 -->
             <!-- mypage -->
-            <div class="contents mypage"
-                data-request-url=""
-            >
-            <div class="hidden-input-group">
-                <input type="hidden" name="createCertify" value="Y" />
-                <input type="hidden" name="creditInquire" value="N" />
-            </div>
-                <div class="cont-wrap">
+            <div class="contents mypage">
+                <div class="cont-wrap"
+                    data-time-url="/lg5-common/data-ajax/mypage/care/selectCancelCounselDate.json"
+                    data-request-url="/lg5-common/data-ajax/mypage/care/selectCancelCounselDate.json"
+                >
+                    <div class="hidden-input-group">
+                        <input type="hidden" name="contLineSeq" value="contLineSeqTest" />
+                        <input type="hidden" name="rtModelSeq" value="rtModelSeqTest" />
+                        <input type="hidden" name="selectDate" value="" data-required="true"/>
+                        <input type="hidden" name="selectTime" value="" data-required="true"/>
+                    </div>
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
                             "sect2" : [
@@ -61,11 +64,13 @@
                                                 <dt class="tit"><label for="text01" class="req">해지 신청사유<span class="blind">필수입력</span></label></dt>
                                                 <dd class="conts text-form"> <!-- 201222 class : text-form 추가 -->
                                                     <span class="input-wrap block">
-                                                        <textarea id="text01" placeholder="해지 신청사유를 입력해주세요."></textarea>
-                                                        <!-- 201222 추가 -->
-                                                        <span class="inner-text">0/200자</span>
+                                                        <!-- 210222 textarea 변경-->
+                                                        <textarea name="inputReason" class="ui_textcontrol" placeholder="해지 신청사유를 입력해주세요." maxlength="200" data-limit="200" data-count-target="#txt-count-req" data-required="true"></textarea>
+                                                        <span id="txt-count-req" class="inner-text"><em>0</em>/200자</span>
                                                     </span>
-                                                    
+                                                    <div class="err-block">
+                                                        <p class="err-msg"></p>
+                                                    </div>
                                                 </dd>
                                             </dl>
                                         </div>
@@ -93,10 +98,11 @@
                                                 <div class="box-inner bx-calendar">
                                                     <p class="tit-area">
                                                         <span class="req">날짜 선택 <span class="blind">필수입력</span> </span>
-                                                        <span class="date">2020.09.22</span>
+                                                        <span class="date" style="display: none;">2020.09.22</span>
+                                                        <span class="desc">날짜를 선택해주세요.</span>
                                                     </p>
                                                     <div class="box-wrap calendar-wrap">
-                                                        <div class="month-wrap">
+                                                        <div class="month-wrap" style="visibility: hidden;">
                                                             <button type="button" class="arrow pre"><span class="blind">이전</span></button>
                                                             <span class="month">2020.01</span>
                                                             <button class="arrow next"><span class="blind">다음</span></button>
@@ -105,7 +111,7 @@
                                                             선택 불가 = td class : disabled, button disabled,
                                                             선택 = td class : choice
                                                         -->
-                                                        <table class="box-table tb-calendar">
+                                                        <table class="box-table tb-calendar" style="visibility: hidden;">
                                                             <caption>방문일정 변경요청 달력</caption>
                                                             <thead>
                                                                 <tr>
@@ -167,22 +173,17 @@
                                                                     <td><button type="button" title="2020년 9월 28일"><span>28</span></button></td>
                                                                     <td><button type="button" title="2020년 9월 29일"><span>29</span></button></td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td><button type="button" title="2020년 9월 30일"><span>30</span></button></td>
-                                                                    <td><button type="button" title="2020년 9월 31일"><span>31</span></button></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                </tr>
                                                             </tbody>
                                                         </table>
+                                                    </div>
+                                                    <div class="err-block">
+                                                        <p class="err-msg"></p>
                                                     </div>    
                                                 </div>
                                                 <div class="box-inner bx-timetable">
                                                     <p class="tit-area">
-                                                        <span class="req">시간 선택<span class="blind">필수입력</span></span>  
+                                                        <span class="req">시간 선택<span class="blind">필수입력</span></span>
+                                                        <span class="date" style="display: none;">15시30분</span>
                                                         <span class="desc">시간을 선택해주세요.</span>
                                                     </p>
                                                     <div class="box-wrap timetable-wrap">
@@ -194,7 +195,7 @@
                                                         -->
                                                         <table class="box-table tb-timetable">
                                                             <caption>방문일정 변경 타임테이블</caption>
-                                                            <tbody>
+                                                            <tbody style="display: none;">
                                                                 <tr>
                                                                     <th scope="row">09시</th>
                                                                     <td class="disabled"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
@@ -277,9 +278,11 @@
                                                                     <td class=""><button type="button" title=""><span>50분</span></button></td>
                                                                 </tr>
                                                             </tbody>
+                                                            <p class="info-txt">날짜를 선택하시면 가능한 시간을 <br>확인하실 수 있습니다.</p>
                                                         </table>
-                                                        <!-- 변경 요청일 미선택 케이스 -->
-                                                        <p class="info-txt">변경할 방문일을 선택해주세요.</p>
+                                                    </div>
+                                                    <div class="err-block">
+                                                        <p class="err-msg"></p>
                                                     </div>
                                                 </div>
                                             </div>

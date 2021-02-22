@@ -17,7 +17,7 @@ vcui.define('ui/calendarTable', ['jquery', 'vcui'], function ($, core) {
         defaults: {
             weekNames: ['일', '월', '화', '수', '목', '금', '토'],
             titleFormat: 'yyyy년 MM월 dd일',
-            inputTarget: '', // 날짜를 선택했을 때, 날짜가 들어갈 인풋박스의 셀렉터
+            inputTarget: null, // 날짜를 선택했을 때, 날짜가 들어갈 인풋박스의 셀렉터
             date: new Date(), // 처음에 표시할 기본 날짜
             today: new Date(), // 오늘 날짜
             template: {
@@ -153,7 +153,7 @@ vcui.define('ui/calendarTable', ['jquery', 'vcui'], function ($, core) {
                     
                     html += (j === 0 ? ' ui-calendar-sunday' : j === 6 ? ' ui-calendar-saturday' : '') + (isToday ? ' ui-calendar-today' : '') + (!isDisabled && isSelectDay ? ' choice' : '');
                     
-                    html += '" data-year="' + y + '" data-month="' + m + '" data-day="' + d + '" data-date="' + vcui.date.format(nowd, "yyyyMMdd") + '">';
+                    html += '" data-year="' + y + '" data-month="' + m + '" data-day="' + d + /*'" data-date="' + vcui.date.format(nowd, "yyyyMMdd") +*/ '">';
 
                     if (!isOtherMonth) {
                         html += tmpl({

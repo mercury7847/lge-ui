@@ -193,6 +193,9 @@
 					&.pre {
 						transform:rotate(180deg);
 					}
+					&.disabled {
+						display: none;
+					}
 				}
 			} 
 		} 
