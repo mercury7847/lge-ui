@@ -396,13 +396,14 @@
     }
 
     @include mobile {
-        padding: 24px 16px;
+        padding: 32px 16px;
         border-top: 12px solid $color-bg;
         .links {
+            width: 100%;
+            font-size: 0;
             li {
-                &:first-child {
-                    margin-left: 0;
-                }
+                width: 50%;
+                margin-left: 0;
                 a {
                     font-weight: 500;
                 }
@@ -538,6 +539,7 @@
             font-size: $font-medium - 1;
             line-height: 23px;
             color: $color-white;
+            text-shadow: 0 1px 20px rgba(0, 0, 0, 0.4);
         }
     }
 }
@@ -674,6 +676,15 @@
                 display: inline-block;
             }
         }
+
+        .super-category-item {
+            &:hover,
+            &:focus,
+            &.active {
+                font-weight: 500;
+                color: $color-default;
+            }
+        }
     }
 
     .super-category-item {
@@ -682,13 +693,6 @@
         padding: 5px 0 5px 12px;
         @include font-small;
         color: $color-gray-1;
-
-        &:hover,
-        &:focus,
-        &.active {
-            font-weight: 500;
-            color: $color-default;
-        }
         &.active {
             & + .nav-category-layer {
                 display: block;
@@ -1161,8 +1165,14 @@
                     padding: 6px 28px;
                     font-size: $font-small - 1;
                     line-height: 19px;
+                    color: $color-gray-1;
                     &:after {
-                        background: none;
+                        display: none;
+                    }
+                    &:active,
+                    &.focus {
+                        font-weight: 500;
+                        color: $color-default;
                     }
                 }
                 //span.category-item { 보류....
@@ -1187,10 +1197,11 @@
 }
 
 .shortcut-service-link {
-    padding: 24px 16px;
+    padding: 32px 16px;
     border-top: 12px solid #f5f5f5;
     .title {
-        display: block;
+        @include blind;
+        //display: block;
         margin-bottom: 4px;
         font-weight: 500;
         font-size: $font-small - 1;
@@ -1198,17 +1209,21 @@
     }
     .links {
         @include clearfix;
+        margin-top: -16px;
         li {
             float: left;
             width: 50%;
-            margin-top: 8px;
+            margin-top: 16px;
             a {
-                padding-right: 22px;
-                background: url('/lg5-common/images/icons/btn-arr-40-black.svg') no-repeat right center;
-                background-size: 20px 20px;
-                font-weight: 700;
-                font-size: $font-small - 1;
-                line-height: 21px;
+                //padding-right: 22px;
+                //background: url('/lg5-common/images/icons/btn-arr-40-black.svg') no-repeat right center;
+                //background-size: 20px 20px;
+                font-weight: 500;
+                @include font($font-small - 1,21px);
+                &:focus,
+                &:active {
+                    @include text-underline(1px,$color-default);
+                }
             }
         }
     }
@@ -1230,8 +1245,8 @@
     }
 
     &.active {
-        top: 21px;
-        right: 13px;
+        top: 11px;
+        right: 11px;
         z-index: 100;
         width: auto;
         height: auto;
@@ -1239,17 +1254,17 @@
         background: none;
         .mobile-nav-close {
             display: block;
-            width: 38px;
-            height: 38px;
-            padding: 3px;
-            background: url('/lg5-common/images/icons/btn-close-32.svg') no-repeat center center;
+            width: 34px;
+            height: 34px;
+            padding: 5px;
+            background: url('/lg5-common/images/icons/btn-close-24-black.svg') no-repeat center center;
         }
 
         & + .header-bottom {
             @include mobile {
                 display: block;
                 position: fixed;
-                top: 72px;
+                top: 60px;
                 right: 0;
                 bottom: 0;
                 left: 0;
@@ -1271,7 +1286,7 @@
         left: 0;
         z-index: 1;
         width: 100%;
-        height: 72px;
+        height: 60px;
         background-color: $color-bg-wt;
         content: '';
     }
