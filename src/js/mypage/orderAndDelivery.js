@@ -286,10 +286,11 @@
         var sendata = {
             callType: "cancelPopup",
             orderNumber: orderNumber,
-            inquiryType: memInfos.sendInquiryType,
-            userName: memInfos.sendUserName,
-            userEmail: memInfos.sendUserEmail,
-            phoneNumber: memInfos.snedPhoneNumber
+            sendOrderNumber: orderNumber,
+            sendInquiryType: memInfos.sendInquiryType,
+            sendUserName: memInfos.sendUserName,
+            sendUserEmail: memInfos.sendUserEmail,
+            snedPhoneNumber: memInfos.snedPhoneNumber
         }
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_CANCEL_POP, sendata, function(result){
             lgkorUI.hideLoading();
@@ -475,10 +476,11 @@
             endDate: endDate,
             page: page || 1,
             orderNumber: orderNumber,
-            inquiryType: memInfos.sendInquiryType,
-            userName: memInfos.sendUserName,
-            userEmail: memInfos.sendUserEmail,
-            phoneNumber: memInfos.snedPhoneNumber
+            sendOrderNumber: orderNumber,
+            sendInquiryType: memInfos.sendInquiryType,
+            sendUserName: memInfos.sendUserName,
+            sendUserEmail: memInfos.sendUserEmail,
+            snedPhoneNumber: memInfos.snedPhoneNumber
         }
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
 

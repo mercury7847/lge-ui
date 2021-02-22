@@ -354,11 +354,8 @@ var FilterLayer = (function() {
                     var length = item.filterList instanceof Array ? item.filterList.length : 0;
                     item.length = (length > 0) ? (length - 1) : 0;
                     item.filterValues.forEach(function(obj, idx){
-                        if(obj.count) {
-                            obj.count = vcui.number.addComma(obj.count);
-                        } else {
-                            obj.count = null;
-                        }
+                        obj.count = obj.count ? obj.count = vcui.number.addComma(obj.count) : null;
+                        obj.filterValueName = obj.topFilterDisplayName ? obj.topFilterDisplayName : obj.filterValueName;
                     });
 
                     switch(item.filterType) {
