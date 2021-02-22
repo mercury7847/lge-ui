@@ -1943,6 +1943,12 @@ $input: (chk, rdo);
                 background-image: url("/lg5-common/images/icons/btn-like-on-32.svg");
             }
         }
+        &:disabled + label {
+            cursor: default;
+            &:before {
+                background-image: url("/lg5-common/images/icons/btn-like-32-gray.svg");
+            }
+        }
     }
     &.large {
         input {

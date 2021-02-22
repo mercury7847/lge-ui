@@ -32,6 +32,20 @@
 /* //삭제 예정 */
 
 .support {
+    .tb_row {
+        &.tb-row-bl {
+            table {
+                th,
+                td {
+                    border-left:1px solid #d8d8d8;
+                    &:first-child {
+                        border-left:none;
+                    }
+                }
+            }
+        }
+    }
+
     .login-guide {
         padding:20px 0;
         text-align:center;
