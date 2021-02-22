@@ -15,7 +15,13 @@
             })
             <!-- //210203 수정 -->
             <!-- mypage -->
-            <div class="contents mypage">
+            <div class="contents mypage"
+                data-request-url=""
+            >
+            <div class="hidden-input-group">
+                <input type="hidden" name="createCertify" value="Y" />
+                <input type="hidden" name="creditInquire" value="N" />
+            </div>
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
@@ -271,7 +277,9 @@
                                                                     <td class=""><button type="button" title=""><span>50분</span></button></td>
                                                                 </tr>
                                                             </tbody>
-                                                        </table>    
+                                                        </table>
+                                                        <!-- 변경 요청일 미선택 케이스 -->
+                                                        <p class="info-txt">변경할 방문일을 선택해주세요.</p>
                                                     </div>
                                                 </div>
                                             </div>
