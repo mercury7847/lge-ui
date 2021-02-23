@@ -37,7 +37,7 @@
         '{{/each}}' +
     '</tr>';
 
-    $(window).ready(function() {
+    //$(window).ready(function() {
         var visitAlarm = {
             init: function(){
                 var self = this;
@@ -396,7 +396,7 @@
                 }); 
             }
         }
-
+    $(window).ready(function() {
         visitAlarm.init();
     });
 })();
