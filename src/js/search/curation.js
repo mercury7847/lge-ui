@@ -6,7 +6,7 @@ var Curation = (function() {
         '<div class="content">' +
             '<div class="fold-box">' +
                 '<div class="chk-group">' +
-                    '{{#each (item, idx) in  filterValues}}' +
+                    '{{#each (item, idx) in filterValues}}' +
                         '<div class="chk-wrap">' +
                             '<input type="checkbox" id="{{filterId}}-{{idx}}" name="{{filterId}}" value="{{item.filterValueId}}">' +
                             '<label for="{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
@@ -20,6 +20,9 @@ var Curation = (function() {
 
     function Curation($targetCuration) {
         var self = this;
+        self._setting($targetCuration);
+        self._bindEvents();
+
         /*
         vcui.require(['ui/rangeSlider', 'ui/accordion'], function () {
             self._setting($targetFilter, $categorySelect, $listSorting, $targetFilterButton, filterChangeEventFunc);
@@ -50,6 +53,46 @@ var Curation = (function() {
 
         _bindEvents: function() {
             var self = this;
+        },
+
+        setCurationData: function(data) {
+            var self = this;
+            var curationData = data.curation;
+            if(curationData && curationData.length > 0) {
+                var $list_ul = self.$curation.find('ul.curation-list');
+                $list_ul.empty();
+                curationData.forEach(function(item,index) {
+                    $list_ul.append(vcui.template(curationTemplate, item));
+                });
+                self.$curation.find('ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
+                
+                self.$curation.show();
+            } else {
+                self.$curation.hide();
+            }
+
+            var smartFilterData = data.smartFilterList;
+            if(smartFilterData && smartFilterData.length > 0) {
+                var $list_ul = self.$smartFilterList.find('ul.default');
+                $list_ul.empty();
+                smartFilterData.forEach(function(item,index) {
+                    $list_ul.append(vcui.template(sFilterTemplate, item));
+                });
+
+                $list_ul = self.$smartFilterResult.find('ul.rounded-list');
+                $list_ul.empty();
+
+                self.$smartFilterList.show();
+                self.$smartFilterResult.hide();
+            } else {
+
+                var $list_ul = self.$smartFilterResult.find('ul.rounded-list');
+                $list_ul.empty();
+
+                self.$smartFilterList.hide();
+                self.$smartFilterResult.hide();
+
+            }
         }
     }
     return Curation;

@@ -353,6 +353,7 @@
             setVisitDateText: function(selectedData) {
                 var self = this;
                 self.$visitDate.text(vcui.date.format(selectedData.date,'yyyy.MM.dd') + " " + (!selectedData.time?"":selectedData.time));
+                self.$popupChangeVisitDate.find('div.month-wrap span.month').text(vcui.date.format(selectedData.date,'yyyy.MM'));
             },
 
             requestEnableVisitTime:function(selectedData) {
