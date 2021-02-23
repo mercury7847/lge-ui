@@ -265,7 +265,7 @@
                     self.$bannerMenu.show();
                 }
 
-                if (updateArr.length) {
+                if (updateArr.length && !vcui.detect.isMobile) {
                     var html = '';
                     html = vcui.template(updateBannerTemplate, data);
                     self.$solutionsWrap.prepend(html);
