@@ -23,7 +23,8 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             usedAnchor: false,
             isHidden: true,
             actClass: "active",
-            anchorClass: "a"
+            anchorClass: "a",
+            isContainerAbled: true
         },
         initialize: function initialize(el, options) {
             var self = this;
@@ -86,7 +87,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
                 }
 
                 self.stickyRect = self._getRectangle(self.$el);
-                self.containerRect = self._getRectangle(self.$container);
+                self.containerRect = self._getContainerRectangle();
 
                 if(e.type == "scroll"){
                     var dist = self.scrollTop - self.prevScrollTop;
@@ -136,7 +137,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             self.$anchor = self.$el.find(self.options.anchorClass);
             
             self.stickyRect = self._getRectangle(self.$el);
-            self.containerRect = self._getRectangle(self.$container);
+            self.containerRect = self._getContainerRectangle();
             self.marginTop = opt.marginTop;
             self.marginBottom = opt.marginBottom;
             self.firstMarginTop = opt.firstMarginTop;
@@ -150,10 +151,9 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
 
             if(!self.isFirstRender && opt.wrap){
                 self.isFirstRender = true;
-                // self.wrapper = self.$el.wrap(opt.wrapWith).parent().css({ 
-                //     height: self.$el.outerHeight(true)
-                // });
-                self.wrapper = self.$el;
+                self.wrapper = self.$el.wrap(opt.wrapWith).parent().css({ 
+                    height: self.$el.outerHeight(true)
+                });
             }
 
             if (self.stickyRect.bottom < self.containerRect.bottom && opt.stickyFor < self.vpWidth && !self.active) {
@@ -168,7 +168,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
 
             self.posArr = [];
             self.stickyRect = self._getRectangle(self.$el);
-            self.containerRect = self._getRectangle(self.$container);   
+            self.containerRect = self._getContainerRectangle();
             var lasty = $(document).outerHeight() - $(window).height();
             var $target,top,anchorName;
             
@@ -327,6 +327,32 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             return { top: top, bottom: top + height , left: left, right: left + width, width: width, height: height };
         },
 
+        _getContainerRectangle: function(){
+            var self = this;
+
+            if(self.options.isContainerAbled){
+                return self._getRectangle(self.$container);
+            } else{
+                var leng = self.$anchor.length;
+                var firstAnchorName = self.$anchor[0].attr('href');
+                var lastAnchorName = self.$anchor[leng-1].attr('href');
+                var firstarget = self.$container.find(firstAnchorName);
+                var lastarget = self.$container.find(lastAnchorName);
+
+                var top = firstarget.offset().top;
+                var left = firstarget.offset().left;
+                var width = firstarget.outerWidth();
+                var height = lastarget.offset().top + lastconty.outerHeight() - top;
+                return{
+                    top: top,
+                    bottom: top + height,
+                    left: left,
+                    right: left + width,
+                    height: height
+                }
+            }
+        },
+
         _getSelectIdx:function _getSelectIdx(y){
             var self = this;
             var idx = -1, lastconty, anchorname;
@@ -337,9 +363,6 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
                     break;
                 }
             }
-
-            if(idx < 0) console.log(self.posArr[leng-1], y)
-            if(idx < 0 && self.posArr[leng-1] > y) idx = leng-1;
 
             return idx;
         },
