@@ -53,6 +53,10 @@ var Curation = (function() {
 
         _bindEvents: function() {
             var self = this;
+            
+            $(window).on('resize', function(){
+                self.resizeCalcSmartFilter();
+            });
         },
 
         setCurationData: function(data) {
@@ -82,6 +86,17 @@ var Curation = (function() {
                 $list_ul = self.$smartFilterResult.find('ul.rounded-list');
                 $list_ul.empty();
 
+                self.resizeCalcSmartFilter();
+
+                self.$smartFilterList.off('.fold').on('click.fold','button.btn-fold',function(e){
+                    var parent = $(this).parents();
+                    if(parent.hasClass('unfold')) {
+                        parent.removeClass('unfold');
+                    } else {
+                        parent.addClass('unfold');
+                    }
+                });
+
                 self.$smartFilterList.show();
                 self.$smartFilterResult.hide();
             } else {
@@ -93,6 +108,21 @@ var Curation = (function() {
                 self.$smartFilterResult.hide();
 
             }
+        },
+
+        resizeCalcSmartFilter: function() {
+            var self = this;
+            var $content = self.$smartFilterList.find('div.content');
+            $content.each(function(idx, item){
+                var $item = $(item);
+                var height = $item.find('div.chk-group').outerHeight();
+                if(height > 72) {
+                    $item.find('button.btn-fold').show();
+                } else {
+                    $item.find('button.btn-fold').hide();
+                }
+                
+            });
         }
     }
     return Curation;
