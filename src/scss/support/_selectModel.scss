@@ -102,17 +102,17 @@
                     float:left;
                     width:calc(100% / 3); 
                     &:nth-child(3n+1) {
-                        .category:before {
+                        .thumb {
                             background-image:linear-gradient(135deg, #8d71ec, #f75584 99%);
                         }
                     }
                     &:nth-child(3n+2) {
-                        .category:before {
+                        .thumb {
                             background-image:linear-gradient(135deg, #fe3f6d, #f2c37c);
                         }
                     }
                     &:nth-child(3n+3) {
-                        .category:before {
+                        .thumb {
                             background-image:linear-gradient(135deg, #f47a48 10%, #f1c246 100%);
                         }
                     }
@@ -129,23 +129,24 @@
                         position:relative;
                         min-height:40px;
                         margin-bottom:12px;
-                        padding-left:48px;
-                        line-height:40px;
-                        &:before {
-                            content:'';
-                            position:absolute;
-                            left:0;
-                            top:50%;
+                        @include font-medium;
+                        font-weight:500;
+                        .thumb {
+                            display:inline-block;
+                            position:relative;
                             width:40px;
                             height:40px;
+                            margin-right:8px;
+                            vertical-align: middle;
                             border-radius:50%;
-                            background-size:40px;
-                            background-repeat:no-repeat;
-                            transform:translateY(-50%);
-                        }
-                        span {
-                            @include font-medium;
-                            font-weight:500;
+                            img {
+                                position:absolute;
+                                top:50%;
+                                left:50%;
+                                transform:translate(-50%, -50%);
+                                width:70%;
+                                vertical-align:top;
+                            }
                         }
                     }   
                     .name {
@@ -163,21 +164,6 @@
                         border:1px solid rgba(0, 0, 0, 0.4);
                         border-radius:4px;
                     }
-                    // &.phone {
-                    //     .category:before {
-                    //         background-image:url(/lg5-common/images/icons/icon-category01-48.svg);
-                    //     }
-                    // }   
-                    // &.tv {
-                    //     .category:before {
-                    //         background-image:url(/lg5-common/images/icons/icon-category02-48.svg);
-                    //     }
-                    // }
-                    // &.memories {
-                    //     .category:before {
-                    //         background-image:url(/lg5-common/images/icons/icon-category03-48.svg);
-                    //     }
-                    // }
                 }
             }
         }
@@ -233,12 +219,6 @@
                         .category {
                             height:24px;
                             margin-bottom:12px;
-                            padding-left:30px;
-                            &:before {
-                                width:24px;
-                                height:24px;
-                                background-size:24px;
-                            }
                         }   
                         .status {
                             top:12px;

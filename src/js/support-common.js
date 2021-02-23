@@ -880,6 +880,11 @@ CS.MD.commonModel = function() {
                 self.$el.find('#modelCode').val(data.modelCode);
                 self.$el.find('#productCode').val(data.productCode);
                 self.$el.find('#isMyProduct').val('N');
+
+                if (data.salesModelCode && self.$el.find('#salesModelCode').length) {
+                    self.$el.find('#salesModelCode').val(data.salesModelCode);
+                }
+
                 self.$el.trigger('complete', [data, url]);
 
                 if (data.modelCode) lgkorUI.recentlySearch.addCookie(data.modelCode);
@@ -1277,6 +1282,10 @@ CS.MD.commonModel = function() {
             self.$el.find('#modelCode').val('');
             self.$el.find('#productCode').val('');
             self.$el.find('#isMyProduct').val('N');
+
+            if (data.salesModelCode && self.$el.find('#salesModelCode').length) {
+                self.$el.find('#salesModelCode').val('');
+            }
 
             self.$myModelArea.show();
             self.$keywordInput.val('');
