@@ -283,7 +283,7 @@
         },
         setOsOption: function(data) {
             var self = this;
-            var $select = self.$dirverSec.find('#os');
+            var $select = self.$driverSec.find('#os');
             var listArr = data instanceof Array ? data : [],
                 html = "";
 
