@@ -464,7 +464,7 @@ CS.MD.commonModel = function() {
                         '{{# } #}}' +
                     '</ul>' +
                     '{{# if (product.length == 3 && product[2].name && lgkorUI.isLogin && !product[2].isMyProduct) { #}}' +
-                    '<a href="/my-page/manage-products" class="btn-add-product" target="_blank" title="새창 이동"><span>보유제품 추가</span></a>' +
+                    '<a href="/my-page/manage-products" class="btn-add-product"><span>보유제품 추가</span></a>' +
                     '{{# } #}}' +
                 '</div>' +
                 '{{# } #}}' +
@@ -880,6 +880,11 @@ CS.MD.commonModel = function() {
                 self.$el.find('#modelCode').val(data.modelCode);
                 self.$el.find('#productCode').val(data.productCode);
                 self.$el.find('#isMyProduct').val('N');
+
+                if (data.salesModelCode && self.$el.find('#salesModelCode').length) {
+                    self.$el.find('#salesModelCode').val(data.salesModelCode);
+                }
+
                 self.$el.trigger('complete', [data, url]);
 
                 if (data.modelCode) lgkorUI.recentlySearch.addCookie(data.modelCode);
@@ -923,7 +928,7 @@ CS.MD.commonModel = function() {
                     return;
                 }
 
-                if (self.$el.hasClass('service-engineer') && (data.subCategory == 'CT50019259' || data.subCategory == 'CT50019244') && $('#hiDownTimeFlag').val() == 'Y') {                    
+                if (self.$el.hasClass('service-engineer') && ($this.val() == 'CT50019259' || $this.val() == 'CT50019244') && $('#hiDownTimeFlag').val() == 'Y') {                    
                     lgkorUI.alert('(자세한 내용은 공지사항을 확인하시기 바랍니다.)<br>점검시간 : '+ $('#hirunDownStartTime').val() +' ~ '+ $('#hirunDownStartTime').val(),{
                         title: '시스템 점검 중으로, <br>\'시스템에어컨\', \'업소용 스탠드형\'<br>신청 및 조회가 불가합니다.'
                     });
@@ -1277,6 +1282,10 @@ CS.MD.commonModel = function() {
             self.$el.find('#modelCode').val('');
             self.$el.find('#productCode').val('');
             self.$el.find('#isMyProduct').val('N');
+
+            if (self.$el.find('#salesModelCode').length) {
+                self.$el.find('#salesModelCode').val('');
+            }
 
             self.$myModelArea.show();
             self.$keywordInput.val('');
