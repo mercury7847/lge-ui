@@ -239,6 +239,7 @@
         
     }
 
+    //히어로 or 제품 지원 영역 상단
     .home-cont-top {
         position: absolute;
         top:48px; 
@@ -282,8 +283,6 @@
             }
         }
     }
-
-    
 
     
     // 히어로 영역 or 컨텐츠 영역 내에 들어가는 제품 지원 컨텐츠
@@ -1262,9 +1261,9 @@
             border-bottom:12px solid #f4f4f4;
 
             
-
             .hero-container {
                 height:460px;
+                background: none;
 
                 &:before {
                     background-image: url("/lg5-common/images/CS/img-support-home-hero-mo.png");
@@ -2462,6 +2461,8 @@
                 color:#222;
             }
             &-controls {
+                opacity:0;
+                transition:.3s opacity;
                 .prev {
                     left:0;
                 }
@@ -2484,6 +2485,12 @@
                 &.pause {
                     background-image: url("/lg5-common/images/icons/btn-play-16-gray.svg");
                 }
+            }
+        }
+        
+        &:hover {
+            .slide-controls {
+                opacity: 1;
             }
         }
 

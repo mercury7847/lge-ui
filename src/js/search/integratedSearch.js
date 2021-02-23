@@ -100,16 +100,16 @@
                 self.$searchLayer.find('button.btn-close').on("click", function(e) {
                     clearTimeout(self.searchTimer);
                     //self.hideAnimation(self.$searchLayer);
-                    console.log('close modal');
+                    //console.log('close modal');
                     //self.$searchLayer.vcModal('close');
                 });
 
                 //검색버튼
                 self.$buttonSearch.on('click', function(e){
                     clearTimeout(self.searchTimer);
-                    var url = self.$searchLayer.attr('data-link-url');
+
                     var searchVal = self.$inputSearch.val();
-                    self.sendSearchPage(url,searchVal,false);
+                    self.requestSearchInput(searchVal);
                 });
 
                 //검색 타이머
@@ -222,7 +222,7 @@
             //검색어 입력중 검색
             requestSearchAutoComplete:function(value) {
                 var self = this;
-                var ajaxUrl = self.$searchLayer.attr('data-autocomplete-url');
+                var ajaxUrl = self.$searchLayer.data('autocompleteUrl');
                 lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
                     var param = result.param;
                     var data = result.data;
@@ -256,10 +256,10 @@
                 });
             },
 
-            //검색어 입력중 검색
+            //검색어 미리보기 검색
             requestSearch:function(value, isSaveRecentKeyword) {
                 var self = this;
-                var ajaxUrl = self.$searchLayer.attr('data-search-url');
+                var ajaxUrl = self.$searchLayer.data('searchUrl');
                 lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
                     var param = result.param;
                     var data = result.data;
@@ -405,7 +405,7 @@
             //기초 데이타 갱신
             updateBasicData:function() {
                 var self = this;
-                var ajaxUrl = self.$searchLayer.attr('data-basic-url');
+                var ajaxUrl = self.$searchLayer.data('basicUrl');
                 lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
                     var data = result.data;
 
@@ -435,7 +435,22 @@
                         self.$suggestedTagsList.hide();
                     }
                 });
-            }
+            },
+
+            //검색버튼 검색
+            requestSearchInput:function(value) {
+                var self = this;
+                var ajaxUrl = self.$searchLayer.data('searchInputUrl');
+                lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
+                    self.hideSearchResultArea();
+                    self.$searchSimilar.hide();
+                    var data = result.data;
+                    var url = self.$searchLayer.data(data.category+"Url");
+                    if(url) {
+                        self.sendSearchPage(url,value,false);
+                    }
+                });
+            },
         }
 
         intergratedSearch.init();
