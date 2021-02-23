@@ -820,11 +820,17 @@
 
                     &-cont {
                         position:relative;
+                        overflow:auto;
+                        padding:0 32px;
                         height:152px;
 
-                        .mCSB_container {
-                            padding-left:32px;
+                        &.mCustomScrollbar {
+                            padding:0;
+                            .mCSB_container {
+                                padding:0 32px;
+                            }
                         }
+
                     }
 
                     .pd-info-list {
@@ -1022,11 +1028,15 @@
                         padding:20px 0 38px;
     
                         &-cont {
+                            padding:0 20px;
                             height:132px;
-    
-                            .mCSB_container {
-                                padding-left:20px;
+
+                            &.mCustomScrollbar {
+                                .mCSB_container {
+                                    padding:0 20px;
+                                }
                             }
+    
                         }
     
                         .pd-info-list {
@@ -1165,11 +1175,15 @@
                         padding:24px 0 49px;
     
                         &-cont {
+                            padding:0 24px;
                             height:127px;
-    
-                            .mCSB_container {
-                                padding-left:24px;
+
+                            &.mCustomScrollbar {
+                                .mCSB_container {
+                                    padding:0 24px;
+                                }
                             }
+    
                         }
     
                         .pd-info-list {
@@ -2034,6 +2048,13 @@
                         }
                     }
                 }
+
+            }
+            .nodata {
+                padding:100px 20px 100px;
+                text-align: center;
+                font-size:16px;
+                color:#666;
             }
         }
 
