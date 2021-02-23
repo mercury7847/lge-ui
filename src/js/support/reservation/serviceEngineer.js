@@ -814,7 +814,6 @@
                             cancelBtnName: '취소',
                             ok: function() {
                                 self.requestComplete();
-                                window.close();
                             }
                         });       
                     } else {
