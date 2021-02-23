@@ -555,6 +555,10 @@ var FilterLayer = (function() {
                     $btnFilter.find('a span').text('옵션필터');
                     self.$layFilter.find('div.btn-reset button').hide();
                 }
+            } else {
+                self.$layFilter.find('.ui_filter_accordion input[type=checkbox]').each(function(idx,obj){
+                    self.resetSelectFilterCount(obj);
+                });
             }
 
             if(triggerFilterChangeEvent) {
