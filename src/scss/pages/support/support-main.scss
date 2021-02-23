@@ -26,10 +26,11 @@
             }
 
             .pop-conts {
-                overflow:hidden;
+                overflow:auto;
                 height:392px;
 
                 &.mCustomScrollbar {
+                    overflow:hidden;
                     padding:0;
 
                     > .mCustomScrollBox > .mCSB_container {
@@ -71,13 +72,17 @@
                 }
     
                 .video-figure {
-                    overflow:hidden;
+                    overflow:auto;
                     height:160px;
                     margin-top:15px;
                     padding:3px 0;
                     border:1px solid #ddd;
                     border-radius:10px;
                     box-sizing:border-box;
+
+                    &.mCustomScrollBox {
+                        overflow:hidden;
+                    }
     
                     .figure-inner {
                         padding:24px;
@@ -178,6 +183,7 @@
             .popup-wrap {
 
                 .pop-conts {
+                    padding:40px 16px 10px;
                     &.mCustomScrollbar {
                         padding:0;
     
@@ -2042,6 +2048,7 @@
 
             .user-guide-txt {
                 font-size:16px;
+                line-height:1.63;
 
                 strong {
                     font-weight:bold;
