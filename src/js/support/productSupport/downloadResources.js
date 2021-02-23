@@ -305,7 +305,7 @@
             var subCategory = self.param.subCategory;
 
             if (subCategory == "CT50019564" || subCategory == "CT50019585" ) {
-                self.setOsOptions(os);
+                self.setOsOption(os);
                 $formWrap.show();
             } else {
                 $formWrap.hide();
