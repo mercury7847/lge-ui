@@ -4,6 +4,7 @@ $(window).ready(function(){
     vcui.require(['ui/sticky'], function () {
         var firstmargin = $('.KRC0040').outerHeight(true);
         $('.KRP0009').vcSticky({usedAnchor:true, anchorClass:".tab-menu > a", firstMarginTop:firstmargin}).on('changeanchor', function(e, data){
+            console.log("data.selectIdx:", data.selectIdx)
             if(data.selectIdx < 1){
                 $('.KRC0040').slideDown(150);
             } else{
