@@ -1,0 +1,30 @@
+
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+.support {
+    &.non-members {
+        .cont-wrap {
+            max-width: 1460px;
+        }
+        .membership-benefit {
+            background-image: none;
+            padding: 0;
+        }
+    }
+    &.mypage {
+        .info-tbl-wrap {
+            .box {
+                .state-box {
+                    .desc {
+                        a {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
