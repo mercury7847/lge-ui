@@ -483,31 +483,23 @@ $(function () {
             render(0);
         });          
 
-        // if(isApp()){
-        //     render();
+        if(isApp()){
+            render();
     
-        //     var leng = $scenes.length;
-        //     var lastScene = $scenes.eq(leng-1);
-        //     var height = lastScene.height();
-        //     var padding = parseInt($('footer').css('padding-bottom'));
-        //     lastScene.height(height+160);
-        //     $('footer').css({paddingBottom:padding + 160});
-        // } else{
-        //     // 앱 대응시 주석처리
-        //     $window.on('resizeend', function(e){
-        //         render();
-        //     });
-        //     $window.trigger('resizeend');
-        //     // 앱 대응시 주석처리 end
-        // }
-        render();
-    
-        var leng = $scenes.length;
-        var lastScene = $scenes.eq(leng-1);
-        var height = lastScene.height();
-        var padding = parseInt($('footer').css('padding-bottom'));
-        lastScene.height(height+160);
-        $('footer').css({paddingBottom:padding + 160});
+            var leng = $scenes.length;
+            var lastScene = $scenes.eq(leng-1);
+            var height = lastScene.height();
+            var padding = parseInt($('footer').css('padding-bottom'));
+            lastScene.height(height+160);
+            $('footer').css({paddingBottom:padding + 160});
+        } else{
+            // 앱 대응시 주석처리
+            $window.on('resizeend', function(e){
+                render();
+            });
+            $window.trigger('resizeend');
+            // 앱 대응시 주석처리 end
+        }
         
         $window.trigger('breakpointchange');
         window.resizeScene = render;
