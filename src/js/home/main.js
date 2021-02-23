@@ -489,8 +489,9 @@ $(function () {
             var leng = $scenes.length;
             var lastScene = $scenes.eq(leng-1);
             var height = lastScene.height();
-            lastScene.height(height+100)
-            $('footer').css({paddingBottom:160});
+            var padding = parseInt($('footer').css('padding-bottom'));
+            lastScene.height(height+160);
+            $('footer').css({paddingBottom:padding + 160});
         } else{
             // 앱 대응시 주석처리
             $window.on('resizeend', function(e){
