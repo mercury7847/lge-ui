@@ -5,9 +5,11 @@
             vcui.require(['ui/validation', 'ui/calendarTable','ui/timeTable'], function () {
                 self.setting();
                 self.bindEvents();
-                self.$calendar.vcCalendarTable({"inputTarget":"div.hidden-input-group input[name=selectDate]"});
-                self.$timeTable.vcTimeTable({"inputTarget":"div.hidden-input-group input[name=selectTime]"});
-                self.$calendar.vcCalendarTable('update', ["20210222","20210223","20210224","20210225","20210226","20210227","20210302","20210303","20210304","20210305","20210306"]);
+
+                var param = lgkorUI.getHiddenInputData();
+                if(param.dateList) {
+                    self.$calendar.vcCalendarTable('update', param.dateList.split(','));
+                };
             });
         },
 
@@ -18,6 +20,9 @@
             self.$timeTable = $('div.timetable-wrap');
             self.$cancelButton = self.$contWrap.find('div.btn-group button:eq(0)');
             self.$okButton = self.$contWrap.find('div.btn-group button:eq(1)');
+
+            self.$calendar.vcCalendarTable({"inputTarget":"div.hidden-input-group input[name=selectDate]"});
+            self.$timeTable.vcTimeTable({"inputTarget":"div.hidden-input-group input[name=selectTime]"});
 
             var register = {
                 inputReason:{
@@ -96,6 +101,7 @@
             var param = lgkorUI.getHiddenInputData();
             param.date = param.selectDate;
             param.selectDate = null;
+            param.dateList = null;
 
             lgkorUI.requestAjaxDataPost(url, param, function(result) {
                 var data = result.data;
@@ -114,10 +120,13 @@
             param.selectDate = null;
             param.time = param.selectTime;
             param.selectTime = null;
-            console.log(url, param);
+            param.dateList = null;
+
+            param.reason =  self.registValidation.getValues('inputReason');
+
             lgkorUI.requestAjaxDataPost(url, param, function(result) {
                 //var data = result.data;
-                //history.back();
+                history.back();
             });
         }
     }
