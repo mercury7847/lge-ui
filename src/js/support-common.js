@@ -464,7 +464,7 @@ CS.MD.commonModel = function() {
                         '{{# } #}}' +
                     '</ul>' +
                     '{{# if (product.length == 3 && product[2].name && lgkorUI.isLogin && !product[2].isMyProduct) { #}}' +
-                    '<a href="/my-page/manage-products" class="btn-add-product" target="_blank" title="새창 이동"><span>보유제품 추가</span></a>' +
+                    '<a href="/my-page/manage-products" class="btn-add-product"><span>보유제품 추가</span></a>' +
                     '{{# } #}}' +
                 '</div>' +
                 '{{# } #}}' +
