@@ -804,6 +804,7 @@
 
             // 신청 완료
             self.$completeBtns.find('.btn-confirm').on('click', function() {
+                console.log(1)
                 var result = validation.validate();
 
                 if (result.success == true) {    
@@ -814,6 +815,7 @@
                             cancelBtnName: '취소',
                             ok: function() {
                                 self.requestComplete();
+                                window.close();
                             }
                         });       
                     } else {
