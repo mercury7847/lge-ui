@@ -1,7 +1,142 @@
 $(window).ready(function(){
     if(!document.querySelector('.KRC0040')) return false;
+	
+    ;(function(){
+        var $component;
+        var $items;
+        var $mainSticky;
 
-    var marginTop = $('.KRP0009').length ? $('.KRC0040').outerHeight(true) : 0;
+        var selectIdx;
+        var comptop;
+
+        function init(){
+            setting();
+            bindEvents();
+        }
+
+        function setting(){
+            $component = $('.KRC0040');
+            $items = $component.find('.tab-menu-belt li');
+
+            $mainSticky = $('.KRP0009');
+
+            selectIdx = 0;
+
+            comptop = $component.offset().top;
+        }
+
+        function bindEvents(){
+    
+            $component.on('click', '.tab-menu-belt li a', function(e){
+                e.preventDefault();
+        
+                var id = $(this).attr('href');
+                scrollMoved(id);
+            })
+        
+            $(window).on('scroll.KRC0040', function(e){
+                var scrolltop = $(window).scrollTop();                
+                var compheight = $component.height();
+                
+                if(-scrolltop + comptop < $mainSticky.height()){
+                    $component.addClass('fixed').css({
+                        position:"fixed",
+						top:$mainSticky.height()-2,
+						width:'100%',
+                        zIndex:91
+                    })
+                } else{
+                    $component.removeClass('fixed').removeAttr('style');
+                }
+				
+				$component.find('.info-tab').each(function(idx, item){
+					var percent = 0, display;
+					var contID = $(item).find('a').attr('href');
+					var bar = $(item).find('a .bar');
+					var cont = $(contID);
+					var conty = cont.offset().top;
+					var contheight = cont.outerHeight(true);
+					
+					var endanchor = $(item).find('a').data('endTarget');
+					if(endanchor && $(endanchor).length){
+						var endy = $(endanchor).offset().top;
+						var endheight = $(endanchor).outerHeight(true);
+						contheight = endy - conty + endheight;
+					}
+	
+					var contop = -scrolltop + conty;
+					if(contop < marginTop){
+						var scrolldist = marginTop - contop;
+						percent = scrolldist / contheight * 100;
+	
+						if(percent > 100) percent = 0;
+					}
+					display = percent <= 0 ? 'none' : 'block';
+					bar.css({width: percent+"%", display: display});
+				});    
+            });
+        }
+
+        function selectIndex(idx){            
+            $items.removeClass('active');
+
+            selectIdx = idx;
+
+            if(selectIdx > -1) $items.eq(selectIdx).addClass('active');
+        }
+
+        function scrollMoved(id){
+            if($(id).length){
+                var movtop = $(id).offset().top - $component.height();
+    
+                $('html, body').stop().animate({scrollTop:movtop}, 200);
+            }
+        }
+    
+        init();
+    })();
+    
+    // vcui.require(['ui/sticky'], function () {
+    //      $('.KRC0040').vcSticky({marginTop:marginTop, usedAnchor:true});
+
+    //      marginTop += $('.KRC0040').outerHeight(true);
+
+    //      $(window).on('scroll', function(e){
+    //         var scrolltop = $(window).scrollTop();
+            
+    //         $('.KRC0040').find('.info-tab').each(function(idx, item){
+    //             var percent = 0, display;
+    //             var contID = $(item).find('a').attr('href');
+    //             var bar = $(item).find('a .bar');
+	// 			var cont = $(contID);
+	// 			var conty = cont.offset().top;
+	// 			var contheight = cont.outerHeight(true);
+				
+	// 			var endanchor = $(item).find('a').data('endTarget');
+	// 			if(endanchor && $(endanchor).length){
+	// 				var endy = $(endanchor).offset().top;
+	// 				var endheight = $(endanchor).outerHeight(true);
+	// 				contheight = endy - conty + endheight;
+	// 			}
+
+    //             var contop = -scrolltop + conty;
+    //             if(contop < marginTop){
+    //                 var scrolldist = marginTop - contop;
+    //                 percent = scrolldist / contheight * 100;
+
+    //                 if(percent > 100) percent = 0;
+    //             }
+    //             display = percent <= 0 ? 'none' : 'block';
+    //             bar.css({width: percent+"%", display: display});
+    //         });            
+	// 	 });
+		 
+	// 	 $(window).on('resize', function(){
+	// 		 if($('.KRP0009').length){
+	// 			$('.KRC0040').vcSticky("setMarginTop", [$('.KRC0040').outerHeight(true)]);
+	// 		 }
+	// 	 })
+    // });
     
 	// Make it easier to find ID values ​​in the teamsite edit screen
 	window.Clipboard = (function (window, document, navigator) {
@@ -56,49 +191,7 @@ $(window).ready(function(){
 		return {
 			copy: copy
 		};
-    })(window, document, navigator);
-    
-    vcui.require(['ui/sticky'], function () {
-         $('.KRC0040').vcSticky({marginTop:marginTop, usedAnchor:true});
-
-         marginTop += $('.KRC0040').outerHeight(true);
-
-         $(window).on('scroll', function(e){
-            var scrolltop = $(window).scrollTop();
-            
-            $('.KRC0040').find('.info-tab').each(function(idx, item){
-                var percent = 0, display;
-                var contID = $(item).find('a').attr('href');
-                var bar = $(item).find('a .bar');
-				var cont = $(contID);
-				var conty = cont.offset().top;
-				var contheight = cont.outerHeight(true);
-				
-				var endanchor = $(item).find('a').data('endTarget');
-				if(endanchor && $(endanchor).length){
-					var endy = $(endanchor).offset().top;
-					var endheight = $(endanchor).outerHeight(true);
-					contheight = endy - conty + endheight;
-				}
-
-                var contop = -scrolltop + conty;
-                if(contop < marginTop){
-                    var scrolldist = marginTop - contop;
-                    percent = scrolldist / contheight * 100;
-
-                    if(percent > 100) percent = 0;
-                }
-                display = percent <= 0 ? 'none' : 'block';
-                bar.css({width: percent+"%", display: display});
-            });            
-		 });
-		 
-		 $(window).on('resize', function(){
-			 if($('.KRP0009').length){
-				$('.KRC0040').vcSticky("setMarginTop", [$('.KRC0040').outerHeight(true)]);
-			 }
-		 })
-    });
+	})(window, document, navigator);
 
     if($('body').hasClass('iw-fullscreen-edit')) {
 		$('.component-wrap').each(function() {
