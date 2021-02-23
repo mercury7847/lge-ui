@@ -758,9 +758,9 @@
                         }
                     })
                     $popup.not('.hidden').addClass('active');
-                    $('html').css('overflow', 'hidden');
 
                     if( $popup.filter('.active').length ) {
+                        $('html').css('overflow', 'hidden');
                         $popup.filter('.active').wrapAll(self.el.modal);
                         if( $popup.filter('.active').length == 1) {
                             $('.ui_modal_wrap.init-type').addClass('center-only');
