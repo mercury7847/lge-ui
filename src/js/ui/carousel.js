@@ -1701,10 +1701,29 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     var image = $(this),
                         imageSource = $(this).attr('data-lazy'),
                         imageSrcSet = $(this).attr('data-srcset'),
-                        imageSizes = $(this).attr('data-sizes') || self.$slider.attr('data-sizes'),
-                        imageToLoad = document.createElement('img');
+                        imageSizes = $(this).attr('data-sizes') || self.$slider.attr('data-sizes');
+
+                        image.css({opacity:1});
+
+                        if (imageSrcSet) {
+                            image.attr('srcset', imageSrcSet);
+
+                            if (imageSizes) {
+                                image.attr('sizes', imageSizes);
+                            }
+                        }
+
+                        image.onerror = function () {
+                            image.onerror = null;
+                            image.removeAttr('data-lazy').removeClass(_V.LOADING).addClass(_N + '-lazyload-error').css({opacity:1});
+                            self.triggerHandler(_N + 'lazyloadrrror', [self, image, imageSource]);
+                        };
+                        image.attr('src', imageSource).removeAttr('data-lazy data-srcset data-sizes').removeClass(_V.LOADING);
+                        
+                        //imageToLoad = document.createElement('img');
 
 
+                        /*
                     imageToLoad.onload = function () {
 
                         // image.animate({opacity: 0}, 100, function () {
@@ -1746,6 +1765,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     };
 
                     imageToLoad.src = imageSource;
+                    */
                 });
             }
 
@@ -1999,8 +2019,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 image,
                 imageSource,
                 imageSrcSet,
-                imageSizes,
-                imageToLoad;
+                imageSizes;
+                //imageToLoad;
 
             if ($imgsToLoad.length) {
 
@@ -2008,6 +2028,24 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 imageSource = image.attr('data-lazy');
                 imageSrcSet = image.attr('data-srcset');
                 imageSizes = image.attr('data-sizes') || self.$slider.attr('data-sizes');
+                
+                image.onerror = function () {
+                    if (tryCount < 3) {
+
+                        setTimeout(function () {
+                            self.progressiveLazyLoad(tryCount + 1);
+                        }, 500);
+                    } else {
+
+                        image.removeAttr('data-lazy').removeClass(_V.LOADING).addClass(_N + '-lazyload-error');
+
+                        self.triggerHandler(_N + 'lazyloaderror', [self, image, imageSource]);
+
+                        self.progressiveLazyLoad();
+                    }
+                };
+                image.attr('src', imageSource).removeAttr('data-lazy data-srcset data-sizes').removeClass(_V.LOADING);
+                /*
                 imageToLoad = document.createElement('img');
 
                 imageToLoad.onload = function () {
@@ -2034,11 +2072,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
                     if (tryCount < 3) {
 
-                        /**
-                         * try to load the image 3 times,
-                         * leave a slight delay so we don't get
-                         * servers blocking the request.
-                         */
                         setTimeout(function () {
                             self.progressiveLazyLoad(tryCount + 1);
                         }, 500);
@@ -2053,6 +2086,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 };
 
                 imageToLoad.src = imageSource;
+                */
             } else {
                 self.triggerHandler(_N + 'allimagesloaded', [self]);
             }
