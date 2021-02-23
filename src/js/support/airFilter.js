@@ -2,6 +2,43 @@
     var validation;
     var addressFinder;
 
+    var modalInit = {
+        el : {
+            container : '[data-role="modal-init"]',
+            check : '[data-role="today-cookie-check"] input:checkbox'
+        },
+        hiddenClass : '.hidden',
+        hidden : function(){
+            var self = this;
+            $(self.el.container).each(function(){
+                var $this = $(this);
+                var cookieName = $this.attr('id');
+                var cookieFlag = lgkorUI.cookie.getCookie(cookieName);
+        
+                if( cookieFlag == "done" ) {
+                    $this.addClass('hidden');
+                } 
+            });
+        },
+        init : function(){
+            var self = this;
+
+            self.hidden();
+            if( $(self.el.container).not(self.hiddenClass).length == 1 ) {
+                $(self.el.container).not(self.hiddenClass).vcModal();
+            }
+
+            $(self.el.container).on('modalhide', function(){
+                var $this = $(this);
+                var cookieName = $this.attr('id');
+                var $chk = $this.find(self.el.check);
+        
+                if ( $chk.prop('checked')) {
+                    lgkorUI.cookie.setCookie(cookieName, "done", 1);
+                }
+            })
+        }
+    }
     var reservation = {
         init: function() {
             var self = this;
@@ -99,7 +136,7 @@
                 }
             };
 
-            $('#airCarePopup').vcModal();
+            
 
             vcui.require(['ui/validation'], function () {
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
@@ -254,5 +291,6 @@
 
     $(window).ready(function() {
         reservation.init();
+        modalInit.init();
     });
 })();

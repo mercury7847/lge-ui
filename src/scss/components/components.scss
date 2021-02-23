@@ -707,10 +707,8 @@
         //     padding:60px 0;
         // }
 
-        @include mobile {
-            .ui_carousel_slider.slide-solo {
-                padding-bottom:0 !important;
-            }
+        .ui_carousel_slider.slide-solo {
+            padding-bottom:0 !important;
         }
     }
 
