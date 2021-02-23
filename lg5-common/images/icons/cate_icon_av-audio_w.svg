@@ -1,26 +1,18 @@
-<svg id="img_speaker_MO_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
-  <g id="img_speaker_MO_80-2" data-name="img_speaker_MO_80">
-    <g id="ic_speaker_MO_80">
-      <g id="ic_speaker_40">
-        <rect id="Rectangle" width="80" height="80" fill="#50e3c2" opacity="0"/>
-        <g id="Group_4" data-name="Group 4" transform="translate(20 8)">
-          <rect id="Rectangle-2" data-name="Rectangle" width="40" height="64" fill="none" stroke="#fff" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
-          <g id="Group_5" data-name="Group 5" transform="translate(6 9)">
-            <g id="Oval" transform="translate(0 19)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="3">
-              <circle cx="14" cy="14" r="14" stroke="none"/>
-              <circle cx="14" cy="14" r="12.5" fill="none"/>
-            </g>
-            <g id="Oval-2" data-name="Oval" transform="translate(6)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="3">
-              <circle cx="8" cy="8" r="8" stroke="none"/>
-              <circle cx="8" cy="8" r="6.5" fill="none"/>
-            </g>
-            <g id="Oval-3" data-name="Oval" transform="translate(6 25)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="3">
-              <circle cx="8" cy="8" r="8" stroke="none"/>
-              <circle cx="8" cy="8" r="6.5" fill="none"/>
-            </g>
-          </g>
-        </g>
-      </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="cate_icon_av-audio_w">
+    <rect id="icon_area" class="cls-1" width="80" height="80"/>
+    <path class="cls-2" d="M292.5,7h-34a4.505,4.505,0,0,0-4.5,4.5v58a4.505,4.505,0,0,0,4.5,4.5h34a4.505,4.505,0,0,0,4.5-4.5v-58A4.505,4.505,0,0,0,292.5,7ZM294,69.5a1.5,1.5,0,0,1-1.5,1.5h-34a1.5,1.5,0,0,1-1.5-1.5v-58a1.5,1.5,0,0,1,1.5-1.5h34a1.5,1.5,0,0,1,1.5,1.5v58ZM275.5,39A13.5,13.5,0,1,0,289,52.5,13.515,13.515,0,0,0,275.5,39Zm0,24A10.5,10.5,0,1,1,286,52.5,10.512,10.512,0,0,1,275.5,63Zm0.023-19.5a9,9,0,1,0,9,9A9.01,9.01,0,0,0,275.523,43.5Zm0,15a6,6,0,1,1,6-6A6.007,6.007,0,0,1,275.523,58.5ZM275.5,36a9.5,9.5,0,1,0-9.5-9.5A9.511,9.511,0,0,0,275.5,36Zm0-16a6.5,6.5,0,1,1-6.5,6.5A6.508,6.508,0,0,1,275.5,20Z" transform="translate(-235)"/>
   </g>
 </svg>

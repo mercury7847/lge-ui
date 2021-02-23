@@ -153,6 +153,7 @@
                     ok: function() {    
                         self.$boardSurvey.find('#rating').vcStarRating('selectedIndex', 0);
                         self.$boardSurvey.find('#ratingContent').val('');
+                        $('.input-wrap.count .total em').text(0);
                     }
                 };
                 var desc = '더 나은 콘텐츠를 제공해 드리기 위한 자료로 활용하겠습니다.';
