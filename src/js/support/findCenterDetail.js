@@ -125,7 +125,7 @@
     
 
     $(window).ready(function() {
-        vcui.require(['ui/carousel', 'ui/storeMap'], function () {
+        vcui.require(['ui/carousel', 'ui/centerMap'], function () {
             var latitude = $('.contents').data("latitude");
             var longitude = $('.contents').data("longitude");
             var shopname = $('.contents').data("shopName");
@@ -138,12 +138,12 @@
             }
             $('.searchRoad-btn').attr("href", searchRoadUrl);
 
-            $('.map').vcStoreMap({
+            $('.map').vcCenterMap({
                 keyID: 'vsay0tnzme',
                 latitude : latitude,
                 longitude: longitude
             }).on('mapinit', function(e){
-                map = $('.map').vcStoreMap('instance');
+                map = $('.map').vcCenterMap('instance');
                 var marker = new naver.maps.Marker({
                         position: new naver.maps.LatLng(latitude, longitude),
                         icon: {
