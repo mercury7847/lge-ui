@@ -483,19 +483,25 @@ $(function () {
             render(0);
         });          
 
-        // 앱 대응시 주석처리
-        $window.on('resizeend', function(e){
+        if(isApp()){
             render();
-        });
-        $window.trigger('resizeend');
-        // 앱 대응시 주석처리 end
+    
+            var leng = $scenes.length;
+            var lastScene = $scenes.eq(leng-1);
+            var height = lastScene.height();
+            lastScene.height(height+100)
+            $('footer').css({paddingBottom:160});
+        } else{
+            // 앱 대응시 주석처리
+            $window.on('resizeend', function(e){
+                render();
+            });
+            $window.trigger('resizeend');
+            // 앱 대응시 주석처리 end
+        }
         
         $window.trigger('breakpointchange');
         window.resizeScene = render;
         
     });
-
-
-
-
 });
