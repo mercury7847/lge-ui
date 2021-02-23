@@ -1283,7 +1283,7 @@ CS.MD.commonModel = function() {
             self.$el.find('#productCode').val('');
             self.$el.find('#isMyProduct').val('N');
 
-            if (data.salesModelCode && self.$el.find('#salesModelCode').length) {
+            if (self.$el.find('#salesModelCode').length) {
                 self.$el.find('#salesModelCode').val('');
             }
 

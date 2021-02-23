@@ -860,7 +860,7 @@
         }
     }
     
-    @include pc {
+    @media screen and (min-width: 1285px) {
         display: flex;
     }
     @media screen and (max-width: #{$desktop-s-width}) {
