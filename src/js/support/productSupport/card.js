@@ -155,7 +155,7 @@
                         self.$boardSurvey.find('#ratingContent').val('');
                     }
                 };
-                var desc = '더 나은 콘텐츠를 제공해 드리기 위한 자료로 활용합니다.';
+                var desc = '더 나은 콘텐츠를 제공해 드리기 위한 자료로 활용하겠습니다.';
 
                 if (data.resultFlag == 'Y') {
                     $('#score').html(data.score);
