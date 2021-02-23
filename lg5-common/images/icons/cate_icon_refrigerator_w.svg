@@ -1,19 +1,22 @@
-<svg id="img_refrigerator_MO_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
-  <g id="img_refrigerator_MO_80-2" data-name="img_refrigerator_MO_80">
-    <g id="ic_refrigerator_MO_80">
-      <g id="ic_refrigerator_40">
-        <g id="ic_Refrigerator_40-2" data-name="ic_Refrigerator_40">
-          <path id="guidebox" d="M0,80H80V0H0Z" fill="none"/>
-          <g id="Group_17" data-name="Group 17" transform="translate(13 6)">
-            <path id="Rectangle" d="M0,34.714V1.27A1.27,1.27,0,0,1,1.27,0H52.063a1.27,1.27,0,0,1,1.27,1.27V25.556H1.27A1.27,1.27,0,0,0,0,26.825" transform="translate(0 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
-            <path id="Rectangle-2" data-name="Rectangle" d="M0,0H-52.063a1.27,1.27,0,0,0-1.27,1.27V37.619a1.27,1.27,0,0,0,1.27,1.27H-1.27A1.27,1.27,0,0,0,0,37.619V0Z" transform="translate(53.333 25.556)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
-            <path id="Stroke_3" data-name="Stroke 3" d="M.556,0V5.556" transform="translate(5.556 64.444)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.893"/>
-            <path id="Stroke_3-2" data-name="Stroke 3" d="M.556,0V5.556" transform="translate(46.667 64.444)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.893"/>
-            <rect id="Rectangle-3" data-name="Rectangle" width="10.294" height="3" rx="1.5" transform="translate(8.603 32.746)" fill="#fff"/>
-            <rect id="Rectangle-4" data-name="Rectangle" width="10.294" height="3" rx="1.5" transform="translate(8.603 15.776)" fill="#fff"/>
-          </g>
-        </g>
-      </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0.2;
+      }
+
+      .cls-2 {
+        opacity: 0;
+      }
+
+      .cls-3 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="cate_icon_refrigerator_w" class="cls-1">
+    <rect id="icon_area" class="cls-2" width="80" height="80"/>
+    <path class="cls-3" d="M526.5,7h-34a4.505,4.505,0,0,0-4.5,4.5v58a4.505,4.505,0,0,0,4.5,4.5h34a4.505,4.505,0,0,0,4.5-4.5v-58A4.505,4.505,0,0,0,526.5,7Zm1.5,4.5V43H511V10h15.5A1.5,1.5,0,0,1,528,11.5ZM492.5,10H508V43H491V11.5A1.5,1.5,0,0,1,492.5,10ZM491,69.5V46h17V71H492.5A1.5,1.5,0,0,1,491,69.5ZM526.5,71H511V46h17V69.5A1.5,1.5,0,0,1,526.5,71Zm-10-33h6a3.5,3.5,0,0,0,3.5-3.5v-16a3.5,3.5,0,0,0-3.5-3.5h-6a3.5,3.5,0,0,0-3.5,3.5v16A3.5,3.5,0,0,0,516.5,38ZM516,18.5a0.5,0.5,0,0,1,.5-0.5h6a0.5,0.5,0,0,1,.5.5v16a0.5,0.5,0,0,1-.5.5h-6a0.5,0.5,0,0,1-.5-0.5v-16Z" transform="translate(-469)"/>
   </g>
 </svg>
