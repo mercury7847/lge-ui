@@ -134,7 +134,9 @@
 
                         if(!$backCard.hasClass('active')) {
                             $backCard.css('opacity', 0).show();
-                            $backCard.find('.card-back-cont').mCustomScrollbar()
+                            if( !vcui.detect.isMobileDevice ) {
+                                $backCard.find('.card-back-cont').mCustomScrollbar()
+                            }
                             $backCard.stop().animate({opacity:1}, function(){
                                 $(this).addClass('active').removeAttr('style');
                             })
@@ -151,7 +153,7 @@
                             
                             $backCard.stop().fadeOut(function(){
                                 $(this).removeClass('active').removeAttr('style');
-                                $(this).find('.card-back-cont').mCustomScrollbar('destroy');
+                                $(this).find('.card-back-cont.mCustomScrollbar').mCustomScrollbar('destroy');
                             })
                         }
                         
