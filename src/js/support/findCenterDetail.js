@@ -210,6 +210,13 @@
             window.close();
         });
 
+        //현재 창 닫고 해당 url로 이동
+        $(document).on('click', '[data-goto-url]', function(e){
+            var $this = $(this);
+            var _url = $this.data('gotoUrl');
+            window.open(_url);
+            e.preventDefault();
+        })
         
     });
 })();
