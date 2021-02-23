@@ -232,6 +232,9 @@
                                         cancelBtnName: '취소',
                                         ok: function() {
                                             location.href = data.url;
+                                        },
+                                        cancel : function(){
+                                            $('#serialNumber').val('');
                                         }
                                     });
                                 } else {
