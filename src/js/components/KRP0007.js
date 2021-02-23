@@ -3,7 +3,7 @@
     var productItemTemplate =
     '<li>' +
         '<div class="item plp-item">' +
-        '{{#if obsBtnRule == "enable" && promotionBadges}}'+
+        '{{#if promotionBadges}}'+
             '<div class="badge">' +
                 '<div class="flag-wrap image-type left">'+
                     '{{#each badge in promotionBadges}}'+

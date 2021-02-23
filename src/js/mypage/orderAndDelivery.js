@@ -495,8 +495,12 @@
             if(isNonMember) data.listData = [data.listData];
 
             if(data.listData && data.listData.length){
-                CURRENT_PAGE = result.param.pagination.page;
-                TOTAL_PAGE = result.param.pagination.totalCount;
+                if(result.param){
+                    CURRENT_PAGE = result.param.pagination.page;
+                    TOTAL_PAGE = result.param.pagination.totalCount;
+                } else{
+                    CURRENT_PAGE = TOTAL_PAGE = 1;
+                }
 
                 $('.inquiry-list-notify').show();
 
