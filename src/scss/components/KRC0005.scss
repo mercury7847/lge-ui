@@ -17,7 +17,7 @@
 
 	@include mobile {
 		.component-inner {
-			padding:0;
+			// padding:0;
 			.text-wrap {
 				padding:0 16px !important;
 			}
@@ -58,7 +58,7 @@
 				&.side-left-text,
 				&.side-right-text {
 					width:100%;
-					padding:0;
+					padding:0 !important;
 				}
 				&.side-right-text {
 					margin-top:28px;
@@ -76,9 +76,9 @@
 					margin:0 -16px;
 					padding:0;
 				}
-				&.image-align-right {
-					margin-top:28px;
-				}
+				// &.image-align-right {
+				// 	margin-top:28px;
+				// }
 			}
 		}
 		.text-wrap {
@@ -109,7 +109,7 @@
 				//margin:0 !important;
 				.animation-box,
 				.youtube-box {
-					padding: 0 16px;
+					// padding: 0 16px;
 					& + .bullet-list {
 						padding: 0 32px;
 					}

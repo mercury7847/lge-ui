@@ -413,6 +413,10 @@ var res = {
 					"비회원 주문배송조회 상세" : ["/html/UTC/OBSF9039.html","","검수완료"],
 					"비회원 주문/결제 팝업" : ["/html/UTC/OBSF9039_popup.html","","검수완료"],
 					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
+				},
+				"메일폼" : {
+					"주문완료(가상계좌)" : ["/html/UTC/OBSF9021_1.html","","검수완료"],
+					"주문완료(신용카드)" : ["/html/UTC/OBSF9021_2.html","","검수완료"],
 				}
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],

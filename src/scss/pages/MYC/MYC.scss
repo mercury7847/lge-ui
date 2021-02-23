@@ -721,9 +721,27 @@
         .result-progress {
             max-width:1380px + 80px;
             margin:0 auto;
-            padding:64px 40px 80px;
+            padding:40px 0 0;
+            // padding:64px 40px 80px;
             &:first-child {
                 padding-top:0;
+            }
+            & + .cont-wrap {
+                margin-top:80px;
+                @include mobile {
+                    margin-top:60px;
+                }
+            }
+            .inner-tit {
+                margin-bottom:24px;
+                font-size:24px;
+                font-weight:700;
+                line-height:34px;
+                @include mobile {
+                    margin-bottom:8px;
+                    font-size:20px;
+                    line-height:28px;
+                }
             }
             .desc{
                 margin-bottom:24px;
@@ -805,7 +823,7 @@
                 }
             }
             @include mobile {
-                padding:60px 16px;
+                padding:60px 0 0;
                 .progress-box {
                     &:after {
                         height:8px;
@@ -832,7 +850,9 @@
             .section {
                 .tit-wrap {
                     position:relative;
-                    margin-bottom:0;
+                    @include mobile {
+                        margin-bottom:0;
+                    }
                     &:after {
                         content:' ';
                         display:block;
@@ -840,6 +860,7 @@
                     }
                     .tit {
                         float:left;
+                        border-bottom:none;
                     }
                     .flt-cont {
                         float:right;
