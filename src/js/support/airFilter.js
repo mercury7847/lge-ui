@@ -8,9 +8,8 @@
             check : '[data-role="today-cookie-check"] input:checkbox'
         },
         hiddenClass : '.hidden',
-        hidden : function(){
-            var self = this;
-            $(self.el.container).each(function(){
+        hidden : function(target){
+            $(target).each(function(){
                 var $this = $(this);
                 var cookieName = $this.attr('id');
                 var cookieFlag = lgkorUI.cookie.getCookie(cookieName);
@@ -23,7 +22,7 @@
         init : function(){
             var self = this;
 
-            self.hidden();
+            self.hidden(self.el.container);
             if( $(self.el.container).not(self.hiddenClass).length == 1 ) {
                 $(self.el.container).not(self.hiddenClass).vcModal();
             }
