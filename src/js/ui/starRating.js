@@ -21,10 +21,11 @@ vcui.define('ui/starRating', ['jquery', 'vcui'], function ($, core) {
         defaults: {
             activeClass: 'on',
             wrapperClass: 'ui-rating-wrap',
-            title: '선택'
+            title: '선택',
+            label: false
         },
         templates: {
-            // label: '<span class="ui-select-label">{{text}}</span>',
+            label: '<span class="ui-select-label"><em class="score">{{score}}</em>/5점</span>',
             option: '<a href="#" data-value="{{value}}" data-text="{{text}}" title="{{title}}">{{text}}</a>'
         },
         initialize: function initialize(el, options) {
@@ -49,7 +50,7 @@ vcui.define('ui/starRating', ['jquery', 'vcui'], function ($, core) {
             self.$ratingBox.insertAfter(self.$el);
 
             self._creatOption();
-            // self._creatLabel();
+            self._creatLabel();
             self._update();
         },
         _creatOption: function _creatOption() {
@@ -74,11 +75,13 @@ vcui.define('ui/starRating', ['jquery', 'vcui'], function ($, core) {
             self.$ratingBox.html(html);
         },
         _creatLabel: function _creatLabel() {
-            var self = this,
-                defaultText = self.$ratingBox.data('defaultText');
+            var self = this;
+            var opts = self.options;
 
+            if (!opts.label) return;
+ 
             self.$label = $(self.tmpl('label', {
-                text: defaultText
+                score: self.el.value
             }));
             self.$ratingBox.append(self.$label);
         },
@@ -92,12 +95,15 @@ vcui.define('ui/starRating', ['jquery', 'vcui'], function ($, core) {
             });
         },
         _update: function _update() {
-            var self = this,
+            var self = this;
+            var opts = self.options,
                 index = self.el.selectedIndex;
-                // text = index <= 0 ? self.$ratingBox.data('defaultText') : self.$ratingBox.find('a').eq(index - 1).data('text');
 
             self.$ratingBox.find('a').removeClass('on');
-            // self.$label.text(text);
+            
+            if (opts.label) {
+                self.$label.find('.score').html(self.el.value); 
+            }
 
             index > 0 && self.$ratingBox.find('a').slice(0, index).addClass('on');
         },
