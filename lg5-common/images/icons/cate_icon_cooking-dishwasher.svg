@@ -1,25 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
-    <g fill="none" fill-rule="evenodd">
-        <g>
-            <g>
-                <g>
-                    <g>
-                        <g>
-                            <g>
-                                <path d="M0 80L80 80 80 0 0 0z" transform="translate(-1519 -2945) translate(1127 2353) translate(0 56) translate(392 536)"/>
-                                <g>
-                                    <g transform="translate(-1519 -2945) translate(1127 2353) translate(0 56) translate(392 536) translate(10 11)">
-                                        <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M3.75 8.153v-6.87C3.75.573 4.324 0 5.032 0h49.936c.708 0 1.282.574 1.282 1.282v16.436c0 .708-.574 1.282-1.282 1.282H5.032c-.708 0-1.282-.574-1.282-1.282v-6.13h0V8.152zM4.897 58.375h50.206c.653 0 1.202-.491 1.274-1.14L60 24.625h0H0l3.623 32.61c.072.649.621 1.14 1.274 1.14z"/>
-                                        <path stroke="#000" stroke-linecap="square" stroke-width="3" d="M6.6 10.313L53.4 10.313"/>
-                                        <path stroke="#000" stroke-linejoin="round" stroke-width="3" d="M0 19H60V24.625H0z"/>
-                                        <rect width="7.5" height="2.813" x="45" y="3.75" fill="#000" rx="1.406"/>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
+    <g fill="none" fill-rule="evenodd" transform="translate(7 17)">
+        <rect width="63" height="43" x="1.5" y="1.5" stroke="#000" stroke-width="3" rx="3"/>
+        <g transform="translate(33 12)">
+            <circle cx="11" cy="11" r="11" stroke="#000" stroke-width="3"/>
+            <rect width="12" height="3" x="10" y="10" fill="#000" rx="1.5"/>
         </g>
+        <circle cx="17" cy="14" r="6" stroke="#000" stroke-width="3"/>
+        <circle cx="17" cy="32" r="6" stroke="#000" stroke-width="3"/>
     </g>
 </svg>
