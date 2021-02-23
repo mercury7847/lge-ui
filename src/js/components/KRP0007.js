@@ -304,7 +304,8 @@
                             "id":$this.attr('data-id'),
                             "sku":$this.attr('data-model-name'),
                             "rtSeq":$this.attr('data-rtSeq'),
-                            "typeFlag": sendflag
+                            "typeFlag": sendflag,
+                            "pageType": "plp"
                         }
                         var ajaxUrl = self.$section.attr('data-cart-url');
                         lgkorUI.requestCart(ajaxUrl, param);
@@ -404,7 +405,8 @@
             requestSearch: function(data, isNew){
                 var self = this;
                 var ajaxUrl = self.$section.attr('data-prod-list');
-                data.categoryId = categoryId;                
+                data.categoryId = categoryId;
+                data.pageType = "plp";
                 console.log("### requestSearch ###", data)
                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
                     console.log("### requestSearch onComplete ###");
