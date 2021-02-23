@@ -1,6 +1,6 @@
 //통합앱 구축팀 요청...통합앱 식별 스크립트
 var isApp = function(){
-    return /LGEAPP|lgeapp\/[0-9\.]+$/.test(userAgent);
+    return /LGEAPP|lgeapp\/[0-9\.]+$/.test(navigator.userAgent);
 }
 
 
@@ -256,6 +256,8 @@ var isApp = function(){
             this._addTopButtonCtrl();
             this._createMainWrapper();
             this._switchLinker();
+
+            $('body').find('.container').attr('id', 'content');
         },
 
         _addImgOnloadEvent: function(){
@@ -408,6 +410,10 @@ var isApp = function(){
                             }
                             if(this.$('.ui_smooth_scroll').length>0){
                                 this.$('.ui_smooth_scroll').vcSmoothScroll('refresh');
+                            }
+
+                            if(this.$('.ui_pop_sticky').length > 0){
+                                this.$('.ui_pop_sticky').vcSticky();
                             }
                         }
                     }

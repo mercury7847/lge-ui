@@ -105,6 +105,8 @@
     .search-layer {
         display:none;
         position:absolute;
+        overflow:auto;
+        bottom:auto;
         top:0;
         right:0;
         left:0;
@@ -116,6 +118,7 @@
         .btn-close {
             position:absolute;
             right:24px;
+            top:auto;
             bottom:16px;
             width:24px;
             height:24px;
@@ -860,7 +863,7 @@
         }
     }
     
-    @include pc {
+    @media screen and (min-width: 1285px) {
         display: flex;
     }
     @media screen and (max-width: #{$desktop-s-width}) {

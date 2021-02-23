@@ -601,6 +601,59 @@
                 }
             }
         }
+        .survey-banner-wrap {
+            display:none;
+            margin:0 auto 16px;
+            .banner {
+                display:flex;
+                align-items:center;
+                justify-content:space-between;
+                padding:28px 48px;
+                border-radius:8px;
+                background:#f4f4f4;
+                p {
+                    position:relative;
+                    padding:0 20px 0 64px;
+                    @include font-medium;
+                    font-weight:700;
+                    &:before {
+                        content:'';   
+                        position:absolute;
+                        left:0;
+                        top:50%;
+                        width:48px;
+                        height:48px;
+                        transform:translate(0, -50%);
+                        background:url("/lg5-common/images/icons/icon-12-80.svg") no-repeat;
+                        background-size:48px 48px;
+                    }
+                    .model {
+                        color:#ec455a;
+                    }
+                }
+                button {
+                    min-width:84px;
+                }
+            }
+            @include mobile {
+                display:block;
+                // padding:0 16px;
+                margin-bottom:37px;
+                .banner {
+                    display:block;
+                    padding:16px 24px;
+                    text-align:center;
+                    p {
+                        padding:56px 0 16px;
+                        &:before {
+                            top:0;
+                            left:50%;
+                            transform:translate(-50%, 0);
+                        }
+                    }
+                }
+            }
+        }
 
         @include pc {
             .result-btn-group {
@@ -668,7 +721,7 @@
         .result-progress {
             max-width:1380px + 80px;
             margin:0 auto;
-            padding:64px 40px 0;
+            padding:64px 40px 80px;
             &:first-child {
                 padding-top:0;
             }
@@ -775,5 +828,39 @@
                 }
             }
         }
+        .cont-wrap {
+            .section {
+                .tit-wrap {
+                    position:relative;
+                    margin-bottom:0;
+                    &:after {
+                        content:' ';
+                        display:block;
+                        clear:both;
+                    }
+                    .tit {
+                        float:left;
+                    }
+                    .flt-cont {
+                        float:right;
+                        @include mobile {
+                            padding-bottom:72px;
+                        }
+                        .btn-link {
+                            margin-top:0;
+                        }
+                        .btn-bundle {
+                            display:inline-block;
+                            @include mobile {
+                                position:absolute;
+                                bottom:24px;
+                                left:0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+

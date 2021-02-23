@@ -4,9 +4,12 @@
 
 .KRP0011 {
     .component-inner {
-        max-width:1146px + 80px;
+        // max-width:1146px + 80px;
+        max-width:100%;
+        background-color:#f4f4f4;
+        padding:120px 0;
         @include mobile {
-            padding:0;
+            padding:60px 0;
         }
     }
     .title {
@@ -28,23 +31,54 @@
     }
 
     .recommend-wrap {
-        padding:64px;
-        border-radius:8px;
-        background:#f4f4f4;
+        max-width:1226px;
+        margin:0 auto;
+        padding:0 40px;
+        // padding:64px;
+        // border-radius:8px;
+        // background:#f4f4f4;
         @include mobile {
             padding:40px 12px;
             border-radius:0;
         }
         .prod-box {
             float:left;
+            @include mobile {
+                width:50%;
+            }
+            .product-items {
+                margin:0;
+                > li {
+                    width:366px;
+                    padding:0;
+                    @include mobile {
+                        width:100%;
+                    }
+                    .product-image {
+                        width:240px;
+                        height:240px;
+                        margin:0 auto;
+                        @include mobile {
+                            width:130px;
+                            height:130px;
+                        }
+                    }
+                }
+            }
             &.now {
                 // width:((356px * 100%) / 1018px);
                 // padding-right:88px;
+                .tit {
+                    color:#da0f47;
+                }
                 .product-items {
                     margin:0;
                     > li {
-                        width:100%;
-                        padding:0 12px;
+                        // width:100%;
+                        // padding:0 12px;
+                        .item {
+                            border:2px solid #da0f47;
+                        }
                     }
                 }
                 @include mobile {
@@ -55,6 +89,7 @@
             &.recommend {
                 // float:right;
                 position:relative;
+                padding-left:24px;
                 // width:((660px * 100%) / 1018px);
                 // padding-left:88px;
                 // &::before {
@@ -76,8 +111,11 @@
                 .product-items {
                     // margin:0 -12px;
                     > li {
-                        width:50%;
-                        padding:0 12px;
+                        // width:50%;
+                        // padding:0 12px;
+                        & + li {
+                            margin-left:24px;
+                        }
                     }
                     @include mobile {
                         margin:0;
@@ -107,10 +145,10 @@
                 padding-bottom:0;
             }
             .item.rec-items {
-                padding:12px 32px 32px;
+                padding:40px 32px 32px;
                 box-shadow:none;
                 a img {
-                    max-width:180px;
+                    max-width:240px;
                 }
                 @include mobile {
                     padding:12px 12px 24px;
@@ -125,7 +163,7 @@
                 }
                 .product-info {
                     min-height:92px;
-                    padding-top:8px;
+                    padding-top:16px;
                     @include mobile {
                         min-height:99px;
                         padding-top:4px;
@@ -134,9 +172,12 @@
                         margin-top:0;
                         a {
                             max-height:52px;
-                            @include font-medium;
+                            @include font-large;
                         }
                     }
+                }
+                .price-area {
+                    margin-top:24px;
                 }
             }
         }
@@ -144,10 +185,10 @@
 
 	.bottom-area {
         clear:both;
-        padding-top:36px;
+        padding-top:64px;
         text-align:center;
         @include mobile {
-            padding-top:16px;
+            padding-top:32px;
         }
 	}
 }
