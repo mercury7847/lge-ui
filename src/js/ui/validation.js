@@ -91,9 +91,11 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
                 self.nameArr.push(item.name);
             });
+
             self.register = newObj;
 
             self.nameArr = vcui.array.unique(self.nameArr);
+
             self._build();
             self._bindEvent();
             
@@ -311,6 +313,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             for(var i=0;i<self.nameArr.length; i++){
                 key = self.nameArr[i];
                 obj = self.register[key];
+
                 if(obj && obj.required){
                     $target = self.$el.find('[name='+ key +']');
                     if($target.is(':checkbox') || $target.is(':radio')){
@@ -404,7 +407,6 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 if(msg){ 
                     var errblock = self._getMsgBlock($target, msg);
                     errblock.show();
-
                     var errfield = self._getMsgField(errblock);
                     errfield.text(nobj.errorMsg);
                 }
@@ -693,7 +695,6 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             self.$el.find('select').each(function(idx, item){
                 var name = $(item).attr('name');
                 if(name){
-                    console.log($(item).find('option:selected').not('[hidden]').val())
                     result[name] = $(item).find('option:selected').not('[hidden]').val();
                 }
             });
