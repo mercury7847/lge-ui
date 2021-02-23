@@ -116,13 +116,17 @@
             width: 194px;
             .engineer-img {
                 width: 160px;
-                height: 160px;
+                height: 0;
+                padding-top: 100%;
                 position: relative;
                 overflow: hidden;
-                text-align: center;
                 img {
                     max-width: 100%;
                     max-height: 100%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
                 }
             }
             .engineer-info {
@@ -754,7 +758,8 @@
     }
 }
 
-#reservationTimePopup {
+#reservationTimePopup, 
+#choiceEngineerPopup {
     .step-engineer {
         display:none;
         margin-top:20px;
@@ -840,14 +845,15 @@
                 cursor:pointer;
                 .img {
                     width: 100%;
-                    margin-bottom: 24px;
-                    position: relative;
-                    padding-top: 100%;
-                    overflow: hidden;
                     height: 0;
+                    margin-bottom: 24px;
+                    padding-top: 100%;
+                    position: relative;
+                    overflow: hidden;
                     img {
                         max-width:100%;
                         max-height: 100%;
+                        width: auto;
                         position: absolute;
                         top: 50%;
                         left: 50%;
