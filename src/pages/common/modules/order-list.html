@@ -1,8 +1,8 @@
 @@if(context.checkOption) {
-<li class="order-item @@disabled is-check" data-item-id="@@itemID"><!-- 판매종료/일시품절 시 disabled -->
+<li class="order-item @@itemClass is-check" data-item-id="@@itemID"><!-- 판매종료/일시품절 시 disabled -->
 }
 @@if(!context.checkOption) {
-<li class="order-item @@disabled" data-item-id="@@itemID"><!-- 판매종료/일시품절 시 disabled -->
+<li class="order-item @@itemClass" data-item-id="@@itemID"><!-- 판매종료/일시품절 시 disabled -->
 }
     @@if(context.number) {
     <div class="order-number">
@@ -47,7 +47,7 @@
         @@if(context.btn) {
         <div class="btn-area">
             <!-- 210222 수정 [버튼명 변경] -->
-            <button type="button" class="btn border size-m" data-url="#n" @@disabled><span>@@btnValue</span></button><!-- 20201221 수정 (버튼 클래스 수정) -->
+            <button type="button" class="btn border size-m" data-url="#n" @@btn.disabled><span>@@btnValue</span></button><!-- 20201221 수정 (버튼 클래스 수정) -->
         </div>
         }
     </div>

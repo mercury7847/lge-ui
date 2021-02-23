@@ -492,6 +492,8 @@
             var carecnt = data.caresolutionOrdercount ? data.caresolutionOrdercount : 0;
             $('.lnb-contents .tabs-wrap .tabs > li:nth-child(2) .count').text('('+carecnt+')');
 
+            if(isNonMember) data.listData = [data.listData];
+
             if(data.listData && data.listData.length){
                 CURRENT_PAGE = result.param.pagination.page;
                 TOTAL_PAGE = result.param.pagination.totalCount;

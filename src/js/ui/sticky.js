@@ -46,6 +46,13 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             // });           
             self.update();
             self._bindEvents();
+
+            self.docHeight = $(document).outerHeight(true);
+
+            if(self.options.usedAnchor){
+                var idx = self.$anchor.parent('.on').index();
+                if(idx>0) self.scollToIndex(idx, 0);
+            }
         },
 
 
@@ -62,6 +69,13 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             }
             $win.on('scroll.sticky resize.sticky load.sticky', function(e) {
                 self.scrollTop = $win.scrollTop();
+
+                var docheight = $(document).outerHeight(true);
+                if(self.docHeight != docheight){
+                    console.log("### update ###");
+                    self.update();
+                    self.docHeight = $(document).outerHeight(true);
+                }
 
                 if(self.options.usedAnchor){
                     idx = self._getSelectIdx(self.scrollTop);
@@ -136,9 +150,10 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
 
             if(!self.isFirstRender && opt.wrap){
                 self.isFirstRender = true;
-                self.wrapper = self.$el.wrap(opt.wrapWith).parent().css({ 
-                    height: self.$el.outerHeight(true)
-                });
+                // self.wrapper = self.$el.wrap(opt.wrapWith).parent().css({ 
+                //     height: self.$el.outerHeight(true)
+                // });
+                self.wrapper = self.$el;
             }
 
             if (self.stickyRect.bottom < self.containerRect.bottom && opt.stickyFor < self.vpWidth && !self.active) {
@@ -146,32 +161,44 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             }
             self._calcPos();
             self._setPosition();
-
-            if(self.options.usedAnchor){
-                var idx = self.$anchor.parent('.on').index();
-                if(idx>0) self.scollToIndex(idx, 0);
-            }
         },
 
-        _handleResize: function _handleResize(e) {
+        _calcPos: function () {
             var self = this;
-            var opt = self.options;
 
-            var outerheight = self.$el.outerHeight(true);
-            var wrapheight = self.$el.parent().height();
-            if(wrapheight != outerheight) self.$el.parent().height(outerheight);
-
-            self.vpHeight = $win.height();
-            self.vpWidth = $win.width();
-            self._calcPos();
-
-            if (self.stickyRect.bottom < self.containerRect.bottom && opt.stickyFor < self.vpWidth && !self.active) {
-                self.active = true;
-            } else if (self.stickyRect.bottom >= self.containerRect.bottom || opt.stickyFor >= self.vpWidth && self.active) {
-                self.active = false;
-            }
+            self.posArr = [];
+            self.stickyRect = self._getRectangle(self.$el);
+            self.containerRect = self._getRectangle(self.$container);   
+            var lasty = $(document).outerHeight() - $(window).height();
+            var $target,top,anchorName;
             
-            self._setPosition();
+            if(self.options.usedAnchor){
+                self.$anchor.each(function(index, item){
+    
+                    anchorName = $(item).attr('href');
+                    try{
+                        $target = self.$container.find(anchorName);
+        
+                        if(index==-1){
+                            self.posArr.push(self.containerRect.top - self.marginTop);
+                        }else{
+                            //2020.10.16 $target이 없을 시...
+                            if ($target.length){
+                                top = $target.offset().top - (self.stickyRect.height + self.marginTop);
+                                
+                                if(index == 0) top -= self.firstMarginTop;
+
+                                self.posArr.push(top>lasty? lasty-10 : top);
+                                if(index == self.$anchor.length-1){
+                                    top = $target.outerHeight() + $target.offset().top;
+                                    self.posArr.push(top);
+                                }
+                            }
+                        }   
+                    } catch(err){}         
+                });
+            }
+            // console.log(self.posArr);
         },
 
         _setPosition: function _setPosition() {
@@ -230,6 +257,27 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             self._setStickyMobileStatus();
         },
 
+        _handleResize: function _handleResize(e) {
+            var self = this;
+            var opt = self.options;
+
+            var outerheight = self.$el.outerHeight(true);
+            var wrapheight = self.$el.parent().height();
+            if(wrapheight != outerheight) self.$el.parent().height(outerheight);
+
+            self.vpHeight = $win.height();
+            self.vpWidth = $win.width();
+            self._calcPos();
+
+            if (self.stickyRect.bottom < self.containerRect.bottom && opt.stickyFor < self.vpWidth && !self.active) {
+                self.active = true;
+            } else if (self.stickyRect.bottom >= self.containerRect.bottom || opt.stickyFor >= self.vpWidth && self.active) {
+                self.active = false;
+            }
+            
+            self._setPosition();
+        },
+
         //모바일에서 스크롤방향에 따라 
         _setStickyMobileStatus: function(){
             if(vcui.detect.isMobileDevice){
@@ -279,44 +327,6 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             return { top: top, bottom: top + height , left: left, right: left + width, width: width, height: height };
         },
 
-        _calcPos: function () {
-            var self = this;
-
-            self.posArr = [];
-            self.stickyRect = self._getRectangle(self.$el);
-            self.containerRect = self._getRectangle(self.$container);   
-            var lasty = $(document).outerHeight() - $(window).height();
-            var $target,top,anchorName;
-            
-            if(self.options.usedAnchor){
-                self.$anchor.each(function(index, item){
-    
-                    anchorName = $(item).attr('href');
-                    try{
-                        $target = self.$container.find(anchorName);
-        
-                        if(index==-1){
-                            self.posArr.push(self.containerRect.top - self.marginTop);
-                        }else{
-                            //2020.10.16 $target이 없을 시...
-                            if ($target.length){
-                                top = $target.offset().top - (self.stickyRect.height + self.marginTop);
-                                
-                                if(index == 0) top -= self.firstMarginTop;
-
-                                self.posArr.push(top>lasty? lasty-10 : top);
-                                if(index == self.$anchor.length-1){
-                                    top = $target.outerHeight() + $target.offset().top;
-                                    self.posArr.push(top);
-                                }
-                            }
-                        }   
-                    } catch(err){}         
-                });
-            }
-            // console.log(self.posArr);
-        },
-
         _getSelectIdx:function _getSelectIdx(y){
             var self = this;
             var idx = -1, lastconty, anchorname;
@@ -327,6 +337,9 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
                     break;
                 }
             }
+
+            if(idx < 0) console.log(self.posArr[leng-1], y)
+            if(idx < 0 && self.posArr[leng-1] > y) idx = leng-1;
 
             return idx;
         },

@@ -1707,26 +1707,40 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
                     imageToLoad.onload = function () {
 
-                        image.animate({opacity: 0}, 100, function () {
+                        // image.animate({opacity: 0}, 100, function () {
 
-                            if (imageSrcSet) {
-                                image.attr('srcset', imageSrcSet);
+                        //     if (imageSrcSet) {
+                        //         image.attr('srcset', imageSrcSet);
 
-                                if (imageSizes) {
-                                    image.attr('sizes', imageSizes);
-                                }
+                        //         if (imageSizes) {
+                        //             image.attr('sizes', imageSizes);
+                        //         }
+                        //     }
+
+                        //     image.attr('src', imageSource).animate({opacity: 1}, 0, function () {
+                        //         image.removeAttr('data-lazy data-srcset data-sizes').removeClass(_V.LOADING);
+                        //     });
+                        //     self.triggerHandler(_N + 'lazyloaded', [self, image, imageSource]);
+                        // });
+
+                        image.css({opacity:1});
+
+                        if (imageSrcSet) {
+                            image.attr('srcset', imageSrcSet);
+
+                            if (imageSizes) {
+                                image.attr('sizes', imageSizes);
                             }
+                        }
 
-                            image.attr('src', imageSource).animate({opacity: 1}, 200, function () {
-                                image.removeAttr('data-lazy data-srcset data-sizes').removeClass(_V.LOADING);
-                            });
-                            self.triggerHandler(_N + 'lazyloaded', [self, image, imageSource]);
-                        });
+                        image.attr('src', imageSource).removeAttr('data-lazy data-srcset data-sizes').removeClass(_V.LOADING);
+                        
+                        self.triggerHandler(_N + 'lazyloaded', [self, image, imageSource]);
                     };
 
                     imageToLoad.onerror = function () {
 
-                        image.removeAttr('data-lazy').removeClass(_V.LOADING).addClass(_N + '-lazyload-error');
+                        image.removeAttr('data-lazy').removeClass(_V.LOADING).addClass(_N + '-lazyload-error').css({opacity:1});
 
                         self.triggerHandler(_N + 'lazyloadrrror', [self, image, imageSource]);
                     };
