@@ -483,6 +483,18 @@
                     $list.addClass('on');
                 }
             });
+
+
+            // 테스트
+            $(document).on('click', '.btn-download', function(e) {
+                var url = $(this).attr('href');
+                
+                e.preventDefault();
+                
+                lgkorUI.requestAjaxData(url, '', function(result){
+                    
+                });
+            });
             
         }
     }
