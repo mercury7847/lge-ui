@@ -18,12 +18,12 @@ $gap-height: 54px;      // 설정 화면 상단 Gap 높이값
     background-color: #4c3ef0;
     opacity: 0.6;
 }
-
+/*
 html,
 body {
     height: 100%;
 }
-
+*/
 .btn-opt-close {
     position: relative;
     right: 0;
@@ -89,29 +89,6 @@ body {
     }
 }
 
-.btn-link {
-    display: flex;
-    position: relative;
-    min-height: inherit;
-    align-items: center;
-    flex: 1;
-    margin: 0 -18px;
-    padding: 0 18px;
-
-    &:after {
-        content: '';
-        display: block;
-        position: absolute;
-        right: 18px;
-        top: 50%;
-        width: 10px;
-        height: 17px;
-        background: url(/lg5-common/images/MAP/opt-icons.png) no-repeat 1px -27px;
-        background-size: 55px 45px;
-        transform: translate(0, -50%);
-    }
-}
-
 .txt-guide {
     margin: 10px 18px;
 }
@@ -124,6 +101,29 @@ body {
     height: 100%;
     background-color: #f4f4f4;
     z-index: 10;
+
+    .btn-link {
+        display: flex;
+        position: relative;
+        min-height: inherit;
+        align-items: center;
+        flex: 1;
+        margin: 0 -18px;
+        padding: 0 18px;
+    
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            width: 10px;
+            height: 17px;
+            background: url(/lg5-common/images/MAP/opt-icons.png) no-repeat 1px -27px;
+            background-size: 55px 45px;
+            transform: translate(0, -50%);
+        }
+    }
 
     .opt-header {
         position: fixed;

@@ -21,10 +21,10 @@
         '<span class="text">{{storyTitle}}</span>' +
     '</li>';
 
-    $(window).ready(function(){
-        if(!document.querySelector('.KRP0008')) return false;
+    //$(window).ready(function(){
+        //if(!document.querySelector('.KRP0008')) return false;
 
-        $('.KRP0008').buildCommonUI();
+        //$('.KRP0008').buildCommonUI();
         
         var KRP0008 = {
             init: function() {
@@ -1303,6 +1303,9 @@
             }
         };
 
+    $(window).ready(function(){
+        if(!document.querySelector('.KRP0008')) return false;
+        $('.KRP0008').buildCommonUI();
         KRP0008.init();
     });
 })();
