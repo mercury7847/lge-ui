@@ -598,7 +598,7 @@
                             speed:0, 
                             easing:'easeInOutQuad'
                         }).on("carousellazyloadrrror", function(e, carousel, imgs){
-                            console.log("### carousellazyloadrrror ###", imgs.attr('src'));
+                            //console.log("### carousellazyloadrrror ###", imgs.attr('src'));
                             imgs.attr('src', lgkorUI.NO_IMAGE);
                         });
                     }
