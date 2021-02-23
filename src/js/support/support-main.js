@@ -134,7 +134,9 @@
 
                         if(!$backCard.hasClass('active')) {
                             $backCard.css('opacity', 0).show();
-                            if(!$('html').hasClass('touch')) $backCard.find('.card-back-cont').mCustomScrollbar()
+                            if( !vcui.detect.isMobileDevice ) {
+                                $backCard.find('.card-back-cont').mCustomScrollbar()
+                            }
                             $backCard.stop().animate({opacity:1}, function(){
                                 $(this).addClass('active').removeAttr('style');
                             })
