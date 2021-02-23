@@ -739,7 +739,6 @@
         modal : {
             el : {
                 modal : '<div class="ui_modal_wrap init-type" style="position:fixed; z-index:9000; top:0; left:0; width:100%; height:100%;"/>',
-                dimm : '<div class="ui_modal_dim" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7)"/>',
                 popup : '.popup-init',
                 check : '[data-role="today-cookie-check"]',
                 close : '.btn-close'
@@ -761,9 +760,17 @@
                     $popup.not('.hidden').addClass('active');
 
                     if( $popup.filter('.active').length ) {
+                        $('html').css('overflow', 'hidden');
                         $popup.filter('.active').wrapAll(self.el.modal);
-                        $('.ui_modal_wrap.init-type').prepend(self.el.dimm);
-                        $popup.stop().fadeIn();
+                        if( $popup.filter('.active').length == 1) {
+                            $('.ui_modal_wrap.init-type').addClass('center-only');
+                        }
+                        $popup.filter('.active').stop().fadeIn();
+
+                        if( !vcui.detect.isMobileDevice) {
+                            $popup.filter('.active').not('.mCustomScrollbar').find('.pop-conts').mCustomScrollbar();
+                            $popup.filter('.active').not('.mCustomScrollbar').find('.video-figure').mCustomScrollbar();
+                        }
                     }
                 }
 
@@ -779,15 +786,19 @@
                         lgkorUI.cookie.setCookie(_id, "done", 1);
                     }
                     
-                    if( $modalWrap.find('.popup-init:visible').length == 1) {
+                    if( $modalWrap.find('.popup-init.active').length == 1) {
                         $modalWrap.stop().fadeOut(function(){
-                            $dimm.remove();
                             $popup.unwrap();
                             $curModal.hide().removeClass('active');
+                            $('html').css('overflow', 'visible');
                         });
                     } else {
                         $curModal.stop().fadeOut(function(){
                             $(this).removeClass('active');
+
+                            if( $modalWrap.find('.popup-init.active').length == 1) {
+                                $modalWrap.addClass('center-only');
+                            }
                         })
                     }
                     e.preventDefault();

@@ -264,7 +264,7 @@
                 //검색 결과 - 카테고리
                 self.$searchResultCategory = self.$contentsSearch.find('div.search-result-category');
                 //카테고리 더보기 버튼
-                self.$searchResultCategoryMore = self.$searchResultCategory.find('a.btn-moreview');
+                //self.$searchResultCategoryMore = self.$searchResultCategory.find('a.btn-moreview');
 
                 //cont-wrap
                 self.$contWrap = self.$contentsSearch.find('div.cont-wrap');
@@ -394,6 +394,7 @@
                 });
                 
                 //카테고리 더보기 클릭
+                /*
                 self.$searchResultCategoryMore.on('click', function(e){
                     e.preventDefault();
                     if(self.$searchResultCategory.hasClass('on')) {
@@ -404,6 +405,7 @@
                         self.$searchResultCategoryMore.find('span').text('접기');
                     }
                 });
+                */
 
                 //전체검색 항목별 더보기 클릭
                 var $searchResult = self.$contWrap.find('div.search-result-wrap.all');
@@ -639,14 +641,15 @@
                         arr.forEach(function(item, index) {
                             $list_ul.append(vcui.template(categoryItemTemplate, {"url":item.url,"text":item.text}));
                         });
+                        self.$searchResultCategory.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
                         self.$searchResultCategory.show();
                         noData = false;
                     } else {
                         self.$searchResultCategory.hide();
                     }
 
-                    self.$searchResultCategory.removeClass('on');
-                    self.$searchResultCategoryMore.find('span').text('더보기');
+                    //self.$searchResultCategory.removeClass('on');
+                    //self.$searchResultCategoryMore.find('span').text('더보기');
 
                     //센터 배너
                     if(data.searchBanner && !vcui.isEmpty(data.searchBanner)) {

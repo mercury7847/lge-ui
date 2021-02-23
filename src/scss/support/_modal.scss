@@ -97,61 +97,7 @@
                 }
             }
         }
-        .headline {
-            margin-bottom:24px;
-            line-height:1.63;
-        }
-        .text-cont {
-            margin-top:32px;
-            font-size:16px;
-            line-height:1.63;
-        }
-        .btn-wrap {
-            margin-top:24px;
-            text-align: center;
-        }
-
-        .video-container {
-            .video-box {
-                margin-bottom:32px;
-                iframe, video {
-                    width:100%;
-                }
-            }
-            .video-tit {
-                font-size:24px;
-                font-weight:bold;
-                color:#000;
-                line-height:1.42;
-            }
-
-            .video-figure {
-                overflow:hidden;
-                height:160px;
-                margin-top:15px;
-                border:1px solid #ddd;
-                border-radius:10px;
-                box-sizing:border-box;
-
-                .figure-inner {
-                    padding:24px;
-                    font-size:14px;
-                    line-height:1.71;
-                    word-break: break-all;
-                    white-space: pre-line;
-                }
-            }
-
-            .btn-wrap {
-                margin-top:25px;
-            }
-            .btn {
-                &.full {
-                    width:100%;
-                    max-width:none;
-                }
-            }
-        }
+        
     }
     @include mobile {
         .pop-conts {
