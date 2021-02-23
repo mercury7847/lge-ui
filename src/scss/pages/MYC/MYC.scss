@@ -721,7 +721,7 @@
         .result-progress {
             max-width:1380px + 80px;
             margin:0 auto;
-            padding:64px 40px 0;
+            padding:64px 40px 80px;
             &:first-child {
                 padding-top:0;
             }
@@ -822,6 +822,39 @@
                             }
                             .text {
                                 bottom:-28px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .cont-wrap {
+            .section {
+                .tit-wrap {
+                    position:relative;
+                    margin-bottom:0;
+                    &:after {
+                        content:' ';
+                        display:block;
+                        clear:both;
+                    }
+                    .tit {
+                        float:left;
+                    }
+                    .flt-cont {
+                        float:right;
+                        @include mobile {
+                            padding-bottom:72px;
+                        }
+                        .btn-link {
+                            margin-top:0;
+                        }
+                        .btn-bundle {
+                            display:inline-block;
+                            @include mobile {
+                                position:absolute;
+                                bottom:24px;
+                                left:0;
                             }
                         }
                     }
