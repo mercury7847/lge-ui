@@ -4,14 +4,22 @@
 
 
 .KRP0027 {
-  .cont-wrap {
+    .page-header.border.wide {
+        .tabs-wrap.btn-type {
+            padding:20px 0 24px;
+            @include mobile {
+                padding-bottom:12px;
+            }
+        }
+    }
+    .cont-wrap {
     max-width:1460px;
     margin:0 auto;
     padding: 0 40px;
     @include mobile {
         padding: 0;
     }
-  }
+    }
     .title {
         &.title-h1 {
             @include title-h1;
@@ -45,6 +53,7 @@
      }
     .video-wrap {
        flex: 1;
+       padding-right:80px;
        @include mobile {
             padding: 0 16px;
             border-bottom: 12px solid #f4f4f4;
@@ -64,8 +73,8 @@
        }
     }
     .video-list-wrap {
-        width: 351px;
-        padding-left: 24px;
+        width: 327px;
+        // padding-left: 80px;
         overflow: hidden;
         @include mobile {
             width: 100%;
@@ -131,8 +140,18 @@
                 overflow: visible;
             } 
         }*/
+        .tabs-wrap {
+            height:53px;
+            padding:11px 0 16px;
+            text-align:left;
+            @include mobile {
+                height:69px;
+                padding:24px 0;
+            }
+        }
         .tabs-cont {
             height: 865px;
+            margin-top:24px;
             overflow-y: auto;
             @include mobile {
                 height: auto;
